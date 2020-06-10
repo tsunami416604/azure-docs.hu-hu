@@ -3,13 +3,14 @@ title: 'Rövid útmutató: Language Understanding (LUIS) az ügyféloldali kódt
 description: Ismerkedjen meg a LUIS ügyféloldali függvénytárával ebben a rövid útmutatóban. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 ms.topic: quickstart
 ms.date: 05/28/2020
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 4a3ffb9ce6907658767af9e39569e7d9016e3145
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c4f974935b5385b9df017af2f25b9f536ec5cddb
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171343"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605748"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>Rövid útmutató: Language Understanding (LUIS) az ügyféloldali kódtár készítése
 

@@ -10,13 +10,14 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 5a398ea01faafd1566ed3b8300d17fcf89d918b1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 0b2ab2c438abca9fda071f83adc18c234fbdb63e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994136"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606734"
 ---
 # <a name="quickstart-use-the-translator-to-get-a-list-of-supported-languages"></a>Rövid útmutató: a támogatott nyelvek listájának lekérése a Translator használatával
 
@@ -42,7 +43,7 @@ Ebben a rövid útmutatóban a fordító segítségével lefordíthatja a fordí
 [!INCLUDE [Python quickstart](includes/languages-python.md)]
 ::: zone-end
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Szöveg lefordítása](quickstart-translate.md)
 * [Szöveg átírása](quickstart-transliterate.md)

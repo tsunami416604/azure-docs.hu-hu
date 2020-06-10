@@ -10,12 +10,13 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 991a31898bb010dab3db7a545cd115a60bfe3ed1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.custom: tracking-python
+ms.openlocfilehash: 6621967584ee79dd514b6d9d4a9d0e2d240e7905
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995716"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608111"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Oktatóanyag: lombik-alkalmazás létrehozása az Azure Cognitive Services
 
@@ -60,7 +61,7 @@ Tekintsük át az oktatóanyaghoz szükséges szoftvereket és előfizetési kul
 
 Ahogy korábban említettük, három előfizetési kulcsra lesz szüksége ehhez az oktatóanyaghoz. Ez azt jelenti, hogy létre kell hoznia egy erőforrást az Azure-fiókjában a következőkhöz:
 * Translator
-* Szövegelemzés
+* Text Analytics
 * Beszédfelismerési szolgáltatások
 
 Erőforrások létrehozásához használja [a Cognitive Services fiók létrehozása a Azure Portalban](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakört.
@@ -182,7 +183,7 @@ Ez a kód biztosítja, hogy amikor egy felhasználó navigál a `http://your-web
 
 Habár ezek a minták bemutatják, hogyan lehet HTML-lapokat megjeleníteni egy felhasználó számára, az útvonalak az API-k meghívására is használhatók gomb lenyomásakor, vagy tetszőleges számú művelet elvégzése anélkül, hogy el kellene érni a kezdőlapot. Ez a művelet akkor jelenik meg, ha útvonalakat hoz létre a fordításhoz, a hangulathoz és a beszédfelismeréshez.
 
-### <a name="get-started"></a>Bevezetés
+### <a name="get-started"></a>Első lépések
 
 1. Nyissa meg a projektet az IDE-ben, majd hozzon létre egy nevű fájlt `app.py` a munkakönyvtár gyökerében. Ezután másolja be a kódot a következőre, `app.py` és mentse:
 
@@ -959,7 +960,7 @@ Navigáljon a megadott kiszolgálócím-címre. Írja be a szövegbeviteli terü
 
 A projekt forráskódja elérhető a [githubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fordítói dokumentáció](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Text Analytics API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)

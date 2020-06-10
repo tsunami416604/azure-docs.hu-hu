@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c88a60fdc6d064fba91f4b6d79e1637f45bf2716
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 90a404ca25d4b5512b508fe150ba4a2f6ec61139
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403219"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610943"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rövid útmutató: az arcok észlelése egy képpel a Face REST API és a Python használatával
 
@@ -23,7 +24,7 @@ Ebben a rövid útmutatóban az Azure Face REST API a Python használatával ism
 
 ![Egy férfi és egy nő, egy téglalapot rajzolt az arcaik körül, és a képen látható kor és szex jelenik meg](../images/labelled-faces-python.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -43,7 +44,7 @@ Ezt a rövid útmutatót a parancssorból is futtathatja a következő lépések
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
 1. Szükség szerint hajtsa végre a következő módosításokat a kódban:
     1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
-    1. A értékének `face_api_url` szerkesztésével belefoglalhatja a Face API erőforrás végponti URL-címét.
+    1. A értékének szerkesztésével `face_api_url` belefoglalhatja a Face API erőforrás végponti URL-címét.
     1. Ha szeretné, cserélje le az `image_url` értéket egy másik elemzendő kép URL-címére.
 1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `detect-face.py`.
 1. Nyisson meg egy parancsablakot.
@@ -258,7 +259,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ.
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
 

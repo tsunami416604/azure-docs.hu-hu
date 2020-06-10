@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: b22ba1df6eeddfaf04d11e542acb4f2b8ab00d76
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 428542010e592dcc1e50308b7a133eda051670c9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673118"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637586"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Windows beszédfelismerési eszközökhöz készült SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként való használatához. A beszélgetések átírásához csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott. Más beszédekhez a mikrofonos tömb geometriáját biztosító lineáris MIC-tömbök támogatottak.
 
@@ -50,11 +50,11 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl**  >  **új**  >  **Java-projekt**lehetőség kiválasztásával. Ha nem érhető el, válassza a **projekt** , majd a **Java-projekt**lehetőséget.
 
-1. Elindul az **új Java-projekt** varázsló. **Tallózással keresse** meg a minta projekt helyét. Válassza a **Finish** (Befejezés) elemet.
+1. Elindul az **új Java-projekt** varázsló. **Tallózással keresse** meg a minta projekt helyét. Válassza a **Befejezés** gombot.
 
    ![A New Java Project varázsló képernyőképe](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza **Configure**  >  a helyi menü**Konvertálás a Maven-re projektre** parancsát. Válassza a **Finish** (Befejezés) elemet.
+1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza **Configure**  >  a helyi menü**Konvertálás a Maven-re projektre** parancsát. Válassza a **Befejezés** gombot.
 
    ![A Package Explorer képernyőképe](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -74,7 +74,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.12.0</version>
+             <version>1.12.1</version>
         </dependency>
     </dependencies>
    ```
