@@ -10,13 +10,13 @@ ms.author: abnarain
 author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
-ms.date: 10/31/2018
-ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106627"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655734"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Megosztott, saját üzemeltetésű integrációs modul létrehozása Azure Data Factory
 
@@ -28,21 +28,19 @@ Ez az útmutató bemutatja, hogyan hozhat létre megosztott, saját üzemelteté
 
 Ha közösen üzemeltetett IR-t szeretne létrehozni Azure Data Factory felhasználói felülettel, hajtsa végre a következő lépéseket:
 
-1. A saját üzemeltetésű integrációs modulban adja meg azt az adat-előállítót, amelyben létre kívánja hozni a társított IR-t.
+1. A saját üzemeltetésű integrációs modulban válassza a hozzáférés **engedélyezése egy másik adat-előállítónak** lehetőséget, majd az "Integration Runtime Setup" lapon válassza ki azt az adat-előállítót, amelyben létre kívánja hozni a csatolt IR-t.
       
-    ![Engedélyek megadására szolgáló gomb a megosztás lapon](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
-      
-    ![Engedélyek hozzárendelésének kiválasztása](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![Engedélyek megadására szolgáló gomb a megosztás lapon](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
-2. Jegyezze fel a megosztott saját üzemeltetésű integrációs modul erőforrás-AZONOSÍTÓját.
-      
-   ![Az erőforrás-azonosító helye](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
-    
+2. Jegyezze fel, és másolja a saját üzemeltetésű integrációs modul fenti "erőforrás-AZONOSÍTÓját" a megosztáshoz.
+         
 3. Hozzon létre egy új, saját üzemeltetésű IR-t (csatolt) az adatelőállítóban, és adja meg az erőforrás-azonosítót.
       
-   ![A társított saját üzemeltetésű integrációs modul létrehozásának gombja](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
-      
-    ![Név és erőforrás-azonosító mezői](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![Saját üzemeltetésű integrációs modul létrehozásának gombja](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+   
+    ![A társított saját üzemeltetésű integrációs modul létrehozásának gombja](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+
+    ![Név és erőforrás-azonosító mezői](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Megosztott saját üzemeltetésű IR létrehozása Azure PowerShell használatával
 
@@ -101,7 +99,7 @@ Ha Azure PowerShell használatával szeretné létrehozni a megosztott saját ü
     > [!NOTE]  
     > Ez a lépés nem kötelező. Ha már rendelkezik egy adatelőállítóval, ugorja át ezt a lépést. 
 
-    Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy nevű `myResourceGroup` erőforráscsoportot a WestEurope helyen: 
+    Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy nevű erőforráscsoportot `myResourceGroup` a WestEurope helyen: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -216,7 +214,7 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [az Integration Runtime fogalmait a Azure Data Factoryban](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
 

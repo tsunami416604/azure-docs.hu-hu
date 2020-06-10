@@ -3,12 +3,12 @@ title: Az alkalmazás rendelkezésre állásának javítása Azure Advisor
 description: Az Azure-beli üzemelő példányok magas rendelkezésre állásának javításához használja a Azure Advisor.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: bed092a51b5a4aba1dfa64c17f5ed3d6f72212da
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788025"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658465"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Az alkalmazás rendelkezésre állásának javítása Azure Advisor
 
@@ -29,7 +29,7 @@ Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a v
 
 Azok a virtuális gépek, amelyek olyan rendelkezésre állási csoportban találhatók, amelyekben a Storage-fiókokat vagy a tárolási méretezési egységeket osztják meg, nem rugalmasak egyetlen tárolási skálázási egység meghibásodása esetén a leállás során. Az Advisor azonosítja ezeket a rendelkezésre állási csoportokat, és javaslatot tesz az Azure Managed Disks-ra való áttérésre. Ezzel biztosíthatja, hogy a rendelkezésre állási csoport különböző virtuális gépei lemezei elég elszigeteltek legyenek, hogy elkerülje az adott meghibásodási pontot. 
 
-## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Ismert probléma az ellenőrzési pont hálózati virtuális berendezésének rendszerkép-verziójával
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>A Check Point hálózati virtuális berendezés rendszerkép-verziójával kapcsolatos ismert hiba
 
 Az Advisor képes azonosítani, hogy a virtuális gép futtathatja-e a következő, a platform karbantartási művelete esetén elveszített, hálózati kapcsolattal rendelkező ellenőrzési pont lemezképét. Az Advisor javaslata segítséget nyújt a probléma megoldására szolgáló rendszerkép újabb verziójára való frissítéshez. Ez biztosítja az üzletmenet folytonosságát a jobb hálózati kapcsolaton keresztül.
 
@@ -93,6 +93,14 @@ A Azure Advisor Azure Cosmos DB azonosítja a Java SDK régi verzióit használ�
 
 A Azure Advisor azonosítja a Cosmos DB Spark-összekötő régi verzióit használó Azure Cosmos DB-fiókokat, és javasolja a Maven legújabb verzióra való frissítését a legújabb javításokkal, a teljesítménnyel kapcsolatos fejlesztésekkel és az új funkciókkal. [További információ a Cosmos DB Spark-összekötőről](https://aka.ms/cosmosdb/spark-connector)
 
+## <a name="upgrade-recommendation-for-deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Frissítési javaslat a Kafka 1,1-es verziójának elavulttá tételéhez a HDInsight 4,0 Kafka-fürtben
+
+2020. július 1-től kezdve az ügyfelek nem hozhatnak létre új Kafka-fürtöket a Kafka 1.1 használatával a HDInsight 4.0-ban. A meglévő fürtök a jelenlegi állapotukban futnak tovább, Microsoft-támogatás nélkül. Fontolja meg, hogy a HDInsight 4.0-ban átvált a Kafka 2.1-re 2020. június 30-ig, a rendszerhasználat/támogatás esetleges megszakításának elkerülése érdekében.
+
+## <a name="upgrade-recommendation-for-deprecation-of-older-spark-versions-in-hdinsight-spark-cluster"></a>Frissítési javaslat a régebbi Spark-verziók elavult HDInsight Spark-fürtben való elavulttá tételéhez
+
+2020. július 1-től kezdve az ügyfelek nem hozhatnak létre új Spark-fürtöket a Spark 2.1 és 2.2 használatával a HDInsight 3.6-ban, illetve a Spark 2.3 használatával a HDInsight 4.0-ban. A meglévő fürtök a jelenlegi állapotukban futnak tovább, Microsoft-támogatás nélkül. ",
+
 ## <a name="enable-virtual-machine-replication"></a>Virtuális gépek replikálásának engedélyezése
 Azok a virtuális gépek, amelyek nem rendelkeznek egy másik régióba való replikálással, nem rugalmasak a regionális kimaradások esetén. A virtuális gépek replikálása csökkenti az Azure-régió meghibásodása során fellépő hátrányos üzleti hatásokat. Az Advisor felismeri azokat a virtuális gépeket, amelyeken nincs engedélyezve a replikáció, és a replikáció engedélyezését javasolja, hogy a leállás esetén gyorsan üzembe lehessen hozni a virtuális gépeket egy távoli Azure-régióban. [További információ a virtuális gépek replikálásáról](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
@@ -102,10 +110,10 @@ Azok a virtuális gépek, amelyek nem rendelkeznek egy másik régióba való re
 
 2.  Az Advisor Irányítópultján kattintson a **magas rendelkezésre állás** fülre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további információkért lásd:
-* [Bevezetés a Azure Advisorba](advisor-overview.md)
+* [Az Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
 * [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)

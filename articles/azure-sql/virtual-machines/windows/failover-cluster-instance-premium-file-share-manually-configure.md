@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 01787fbf3339a7e079b705fb4be27ba1e30aee1b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 6929f6a8ca79c63d6d6d6fc2f3eee1b22ec49d39
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342875"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656902"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure-ban Virtual Machines
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ez a cikk azt ismerteti, hogyan hozható létre egy SQL Server feladatátvevő fürt példánya (verzió) az Azure-Virtual Machines egy [prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md)használatával.
@@ -46,7 +47,9 @@ Ezen technológiák általános megismerése is szükséges:
 - [Azure-erőforráscsoportok](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Jelenleg SQL Server Azure Virtual Machines-beli feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítmény](sql-server-iaas-agent-extension-automate-management.md) [egyszerűsített felügyeleti módjával](sql-vm-resource-provider-register.md#management-modes) támogatottak. Ha a teljes bővítmény módból egyszerűre szeretne váltani, törölje a megfelelő virtuális gépekhez tartozó **SQL** -virtuálisgép-erőforrást, majd az egyszerűsített módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, **törölje a megfelelő virtuális gép melletti jelölőnégyzet**jelölését. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni az SQL virtuális gépeken, miután az ügynököt egyszerűsített felügyeleti módban újratelepítette.
+> Jelenleg SQL Server Azure Virtual Machines-beli feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítmény](sql-server-iaas-agent-extension-automate-management.md) [egyszerűsített felügyeleti módjával](sql-vm-resource-provider-register.md#management-modes) támogatottak. Ha a teljes bővítmény módból egyszerűre szeretne váltani, törölje a megfelelő virtuális gépekhez tartozó **SQL** -virtuálisgép-erőforrást, majd az egyszerűsített módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, **törölje a megfelelő virtuális gép melletti jelölőnégyzet**jelölését. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem működnek az SQL virtuális gépeken, miután az ügynök újratelepítése egyszerűsített felügyeleti módban történik.
+> 
+
 
 A prémium szintű fájlmegosztás biztosítja a IOPS és az átviteli kapacitást, amely megfelel a sok számítási feladat igényeinek. Az i/o-igényű számítási feladatokhoz a felügyelt prémium lemezeken vagy az ultra Disks [szolgáltatáson alapuló SQL Server feladatátvevő fürt példányainak közvetlen tárolóhelyek](failover-cluster-instance-storage-spaces-direct-manually-configure.md)-mel kell rendelkezniük.  
 
@@ -64,7 +67,7 @@ Az utólagos elszámolású licencelési szolgáltatással az Virtual Machines A
 
 Ha frissítési garanciával rendelkező Nagyvállalati Szerződés rendelkezik, az egyes aktív csomópontok esetében egyetlen szabad passzív verzió-csomópontot is használhat. Ahhoz, hogy használhassa ezt az előnyt az Azure-ban, használja a BYOL virtuálisgép-rendszerképeket, és használja ugyanazt a licencet a (z) és a (z)%-os aktív és passzív További információ: [nagyvállalati szerződés](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
-Az Azure Virtual Machines SQL Server utólagos elszámolású és BYOL licencelésének összehasonlítását lásd: Ismerkedés [az SQL virtuális gépekkel](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
+Az Azure-beli virtuális gépen SQL Server utólagos elszámolású és BYOL licencelésének összehasonlítását lásd: Ismerkedés [a SQL Server virtuális gépekkel](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
 
 A licencelési SQL Serverával kapcsolatos teljes információkért tekintse meg a [díjszabást](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
@@ -76,17 +79,17 @@ A FileStream nem támogatott egy prémium szintű fájlmegosztást használó fe
 
 A cikk lépéseinek elvégzése előtt a következőket kell tennie:
 
-- Egy Microsoft Azure-előfizetéssel.
+- Microsoft Azure előfizetés.
 - Egy Windows-tartomány az Azure Virtual Machineson.
 - Olyan tartományi felhasználói fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel az Azure Virtual Machines és a Active Directoryban.
-- Egy tartományi felhasználói fiók a SQL Server szolgáltatás futtatásához, és a fájlmegosztás csatlakoztatásakor bejelentkezhet a virtuális gépre.  
+- Egy tartományi felhasználói fiók, amely a SQL Server szolgáltatást futtatja, és amely a fájlmegosztás csatlakoztatásakor használható a virtuális gépre való bejelentkezéshez. 
 - Az alábbi összetevőkhöz elegendő IP-címmel rendelkező Azure-beli virtuális hálózat és alhálózat:
-   - Két virtuális gép.
-   - A feladatátvevő fürt IP-címe.
-   - Egy IP-cím minden egyes egyes adattömbhöz.
+   - Két virtuális gép
+   - A feladatátvevő fürt IP-címe
+   - Egy IP-cím minden egyes
 - DNS konfigurálva az Azure-hálózaton, amely a tartományvezérlőkre mutat.
 - A fürtözött meghajtóként használandó [prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) az adatfájlok adatbázisának tárolási kvótája alapján.
-- Ha a Windows Server 2012 R2-es vagy újabb verzióját használja, szüksége lesz egy másik fájlmegosztást, amelyet tanúsító fájlmegosztásként kíván használni, mivel a Felhőbeli tanúk a Windows 2016 és újabb rendszereken támogatottak. Használhat egy másik Azure-fájlmegosztást, vagy használhat egy fájlmegosztást egy különálló virtuális gépen is. Ha másik Azure-fájlmegosztást fog használni, csatlakoztathatja azt ugyanazzal a folyamattal, mint a fürtözött meghajtóhoz használt prémium fájlmegosztás esetében. 
+- Ha Windows Server 2012 R2 és régebbi operációs rendszert használ, szüksége lesz egy másik fájlmegosztás, amelyet tanúsító fájlmegosztásként kell használni, mivel a Felhőbeli tanúk a Windows 2016 és újabb rendszereken támogatottak. Használhat egy másik Azure-fájlmegosztást, vagy használhat egy fájlmegosztást egy különálló virtuális gépen is. Ha másik Azure-fájlmegosztást fog használni, csatlakoztathatja azt ugyanazzal a folyamattal, mint a fürtözött meghajtóhoz használt prémium fájlmegosztás esetében. 
 
 Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a feladatátvevő fürtöt. Első lépésként hozza létre a virtuális gépeket.
 
@@ -125,19 +128,21 @@ Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a fela
 
       >[!IMPORTANT]
       >A virtuális gép létrehozása után a rendelkezésre állási csoport nem állítható be és nem módosítható.
+      >
 
    Válasszon egy rendszerképet az Azure Marketplace-ről. Használhat olyan Azure Marketplace-rendszerképet, amely tartalmazza a Windows Servert és a SQL Servert, vagy használhatja azt is, hogy csak a Windows Servert tartalmazza. Részletekért lásd: [Az Azure Virtual Machines SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md).
 
    Az Azure katalógusában található hivatalos SQL Server rendszerképek közé tartozik egy telepített SQL Server példány, a SQL Server telepítési szoftver és a szükséges kulcs.
 
-   >[!IMPORTANT]
+   > [!IMPORTANT]
    > A virtuális gép létrehozása után távolítsa el az előre telepített önálló SQL Server példányt. Az előre telepített SQL Server adathordozó létrehozásával létrehozhatja a SQL Server-t, miután beállította a feladatátvevő fürtöt és a prémium szintű fájlmegosztást tárolóként.
+   > 
 
    Azt is megteheti, hogy csak az operációs rendszert tartalmazó Azure Marketplace-lemezképeket használja. Válasszon ki egy **Windows Server 2016 Datacenter** -rendszerképet, és telepítse a SQL Server a következőt, miután beállította a feladatátvevő fürtöt és a prémium szintű fájlmegosztást tárolóként. Ez a rendszerkép nem tartalmaz SQL Server telepítési adathordozót. Helyezze a SQL Server telepítési adathordozót egy olyan helyre, ahol az egyes kiszolgálókon futtathatja.
 
-1. Miután az Azure létrehozta a virtuális gépeket, csatlakozzon mindegyikhez RDP használatával.
+1. Miután az Azure létrehozta a virtuális gépeket, kapcsolódjon egymáshoz RDP protokoll (RDP) használatával.
 
-   Amikor az RDP használatával először csatlakozik egy virtuális géphez, a rendszer megkérdezi, hogy szeretné-e, hogy a számítógép felderíthető legyen a hálózaton. Válassza az **Igen** lehetőséget.
+   Amikor először csatlakozik egy RDP-vel rendelkező virtuális géphez, a rendszer rákérdez, hogy szeretné-e, hogy a számítógép felderíthető legyen a hálózaton. Válassza az **Igen** lehetőséget.
 
 1. Ha a SQL Server-alapú virtuálisgép-rendszerképek egyikét használja, távolítsa el a SQL Server példányt.
 
@@ -154,7 +159,7 @@ Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a fela
 
    Az egyes virtuális gépeken nyissa meg ezeket a portokat a Windows tűzfalon:
 
-   | Cél | TCP-port | Megjegyzések
+   | Szerep | TCP-port | Megjegyzések
    | ------ | ------ | ------
    | SQL Server | 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot.
    | Állapotadat-mintavétel | 59999 | Bármilyen nyitott TCP-port. Egy későbbi lépésben konfigurálja a terheléselosztó [állapotának](#probe) mintavételét és a fürtöt, hogy ezt a portot használja.
@@ -185,10 +190,11 @@ A virtuális gépek létrehozása és konfigurálása után beállíthatja a pr�
   > [!IMPORTANT]
   > - Érdemes lehet külön fájlmegosztást használni a biztonságimásolat-fájlokhoz, hogy mentse a megosztás IOPS és tárterületét az adatfájlok és a naplófájlok számára. A biztonsági másolati fájlok prémium vagy standard fájlmegosztást is használhatnak.
   > - Ha Windows 2012 R2 vagy régebbi operációs rendszert használ, kövesse ugyanezen lépéseket a tanúsító fájlmegosztásként használni kívánt fájlmegosztás csatlakoztatásához. 
+  > 
 
 ## <a name="step-3-configure-the-failover-cluster"></a>3. lépés: a feladatátvevő fürt konfigurálása
 
-A következő lépés a feladatátvevő fürt konfigurálása. Ebben a lépésben a következő allépéseket hajtja végre:
+Most konfigurálja a feladatátvevő fürtöt. Ebben a szakaszban a következő lépéseket hajtja végre:
 
 1. Adja hozzá a Windows Server feladatátvételi fürtszolgáltatást.
 1. Ellenőrizze a fürtöt.
@@ -223,14 +229,14 @@ A fürt a felhasználói felületen való ellenőrzéséhez hajtsa végre a köv
 
 1. A **Kiszolgálókezelő**területen válassza az **eszközök**, majd a **Feladatátvevőfürt-kezelő**lehetőséget.
 1. A **Feladatátvevőfürt-kezelő**alatt válassza a **művelet**, majd a **Konfiguráció ellenőrzése**lehetőséget.
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 1. A **kiszolgálók vagy fürt kijelölése**területen adja meg mindkét virtuális gép nevét.
-1. A **tesztelési beállítások**területen válassza a **csak a kiválasztott tesztek futtatása**lehetőséget. Kattintson a **Tovább** gombra.
+1. A **tesztelési beállítások**területen válassza a **csak a kiválasztott tesztek futtatása**lehetőséget. Válassza a **Tovább** lehetőséget.
 1. A **teszt kiválasztása**területen válassza a minden teszt lehetőséget a **tárolás** és a **közvetlen tárolóhelyek**kivételével, ahogy az itt látható:
 
    :::image type="content" source="media/manually-configure-failover-cluster-instance-premium-file-share/cluster-validation.png" alt-text="Fürt-ellenőrzési tesztek kiválasztása":::
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 1. A **megerősítés**területen válassza a **tovább**lehetőséget.
 
 A **Konfiguráció ellenőrzése varázsló** futtatja az ellenőrző teszteket.
@@ -246,8 +252,9 @@ A fürt érvényesítése után hozza létre a feladatátvevő fürtöt.
 ### <a name="create-the-failover-cluster"></a>A feladatátvevő fürt létrehozása
 
 A feladatátvevő fürt létrehozásához a következők szükségesek:
+
 - A fürtcsomópontok lesznek a virtuális gépek nevei.
-- A feladatátvevő fürt neve
+- A feladatátvevő fürt neve.
 - A feladatátvevő fürt IP-címe. Olyan IP-címet is használhat, amely nem szerepel ugyanazon az Azure-beli virtuális hálózaton és az alhálózaton, mint a fürtcsomópontok.
 
 #### <a name="windows-server-2012-through-windows-server-2016"></a>Windows Server 2012 a Windows Server 2016 használatával
@@ -267,9 +274,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness-win-2016-"></a>Felhőbeli tanúsító létrehozása (Win 2016 +)
+### <a name="create-a-cloud-witness-win-2016-and-later"></a>Felhőbeli tanúsító létrehozása (Win 2016 és újabb verziók)
 
-Ha a Windows Server 2016-es és újabb operációs rendszert használ, létre kell hoznia egy Felhőbeli tanúsító. A Felhőbeli tanúsító az Azure Storage-blobokban tárolt fürtözött kvórum tanúsító új típusa. Ezzel a művelettel megszűnik a tanúsító megosztást üzemeltető különálló virtuális gép, illetve egy különálló fájlmegosztás használata.
+Ha a Windows Server 2016-es vagy újabb verzióját használja, létre kell hoznia egy Felhőbeli tanúsító. A Felhőbeli tanúsító a fürt olyan új típusa, amely egy Azure Storage-blobban van tárolva. Ezzel a művelettel megszűnik a tanúsító megosztást üzemeltető különálló virtuális gép, illetve egy különálló fájlmegosztás használata.
 
 1. [Hozzon létre egy Felhőbeli tanúsító a feladatátvevő fürthöz](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
@@ -279,7 +286,7 @@ Ha a Windows Server 2016-es és újabb operációs rendszert használ, létre ke
 
 ### <a name="configure-quorum"></a>Kvórum konfigurálása 
 
-A Windows Server 2016-es és újabb rendszereken konfigurálja úgy a fürtöt, hogy az imént létrehozott Felhőbeli tanúsító használja. Kövesse az összes lépést a [kvórum tanúsító konfigurálásához a felhasználói felületen](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+A Windows Server 2016-es és újabb verzióiban konfigurálja úgy a fürtöt, hogy az imént létrehozott Felhőbeli tanúsító használja. Kövesse az összes lépést a [kvórum tanúsító konfigurálásához a felhasználói felületen](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
 
 A Windows Server 2012 R2 és régebbi verziók esetében kövesse a [kvórum tanúsító konfigurálása a felhasználói felületen](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) , de a **kvórum tanúsító kijelölése** lapon jelölje be a tanúsító **fájlmegosztás beállítása** lehetőséget. Adja meg a tanúsító fájlmegosztás számára lefoglalt fájlmegosztást, függetlenül attól, hogy egy különálló virtuális gépen van-e konfigurálva, vagy az Azure-ból van-e csatlakoztatva. 
 
@@ -304,7 +311,7 @@ Miután konfigurálta a feladatátvevő fürtöt, létrehozhatja a SQL Server-t.
 
 1. Válassza az **új SQL Server feladatátvevő fürt telepítése**lehetőséget. A varázsló utasításait követve telepítse a SQL Server-t.
 
-   Az adatkönyvtárak a prémium fájlmegosztás esetében szükségesek. Adja meg a megosztás teljes elérési útját a következő formában: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Megjelenik egy figyelmeztetés, amely arról tájékoztat, hogy a fájlkiszolgáló adatkönyvtárként van megadva. Ez a figyelmeztetés várható. Győződjön meg arról, hogy a fájlmegosztás megtartása után a virtuális géphez RDP-t használó felhasználói fiók ugyanaz a fiók, amelyet a SQL Server szolgáltatás használ a lehetséges hibák elkerülése érdekében.
+   Az adatkönyvtárak a prémium fájlmegosztás esetében szükségesek. Adja meg a megosztás teljes elérési útját a következő formában: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Megjelenik egy figyelmeztetés, amely arról tájékoztat, hogy a fájlkiszolgáló adatkönyvtárként van megadva. Ez a figyelmeztetés várható. Győződjön meg arról, hogy a fájlmegosztás megtartásakor a virtuális gép RDP-kapcsolaton keresztüli elérésére használt felhasználói fiók ugyanaz a fiók, amelyet a SQL Server szolgáltatás a lehetséges hibák elkerülése érdekében használ.
 
    :::image type="content" source="media/manually-configure-failover-cluster-instance-premium-file-share/use-file-share-as-data-directories.png" alt-text="Fájlmegosztás használata SQL-adatkönyvtárakként":::
 
@@ -318,6 +325,7 @@ Miután konfigurálta a feladatátvevő fürtöt, létrehozhatja a SQL Server-t.
 
    >[!NOTE]
    >Ha SQL Server használatával Azure Marketplace-katalógust használt, SQL Server eszközöket tartalmazott a rendszerképben. Ha nem használja ezeket a képeket, telepítse külön a SQL Server-eszközöket. Lásd: [SQL Server Management Studio letöltése (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >
 
 ## <a name="step-6-create-the-azure-load-balancer"></a>6. lépés: az Azure Load Balancer létrehozása
 
@@ -331,7 +339,7 @@ A terheléselosztó létrehozása:
 
 1. A Azure Portal lépjen a virtuális gépeket tartalmazó erőforráscsoporthoz.
 
-1. Válassza a **Hozzáadás** lehetőséget. Keresse meg **Load Balancer**az Azure Marketplace piactéren. Válassza a **Load Balancer**lehetőséget.
+1. Válassza a **Hozzáadás** elemet. Keresse meg **Load Balancer**az Azure Marketplace piactéren. Válassza a **Load Balancer**lehetőséget.
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -368,7 +376,7 @@ A terheléselosztó létrehozása:
 
 1. A terheléselosztó panelen válassza az **állapot**-mintavétel lehetőséget.
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 1. Az **állapotfelmérés hozzáadása** panelen állítsa be a következő <span id="probe"> </span> állapot-mintavételi paramétereket.
 
@@ -378,13 +386,13 @@ A terheléselosztó létrehozása:
    - **Intervallum**: 5 másodperc.
    - Nem megfelelő **állapot küszöbértéke**: 2 egymást követő hiba.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ### <a name="set-load-balancing-rules"></a>Terheléselosztási szabályok beállítása
 
 1. A terheléselosztó panelen válassza a **terheléselosztási szabályok**lehetőséget.
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 1. Állítsa be a terheléselosztási szabály paramétereit:
 
@@ -398,7 +406,7 @@ A terheléselosztó létrehozása:
    - **Üresjárati időkorlát (perc)**: 4.
    - **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)**: engedélyezve.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="step-7-configure-the-cluster-for-the-probe"></a>7. lépés: a fürt konfigurálása a mintavételhez
 
@@ -429,6 +437,7 @@ A következő lista azokat az értékeket ismerteti, amelyeket frissítenie kell
 
 >[!IMPORTANT]
 >A fürt paraméterének alhálózati maszkjának a TCP IP-szórási címnek kell lennie: `255.255.255.255` .
+>
 
 A fürt mintavételének beállítása után a PowerShellben láthatja a fürt összes paraméterét. Futtassa a következő parancsfájlt:
 
@@ -456,17 +465,19 @@ A kapcsolat teszteléséhez jelentkezzen be egy másik virtuális gépre ugyanab
 
 >[!NOTE]
 >Ha szükséges, [letöltheti SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+>
 
 ## <a name="limitations"></a>Korlátozások
 
-Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és a [standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md)tárolásával.
+Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019-ben a fürtözött megosztott kötetek (CSV) és a [standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md)tárolásával.
+
 
 Az Azure Virtual Machines-on az MSDTC nem támogatott a Windows Server 2016-es vagy újabb verzióiban, mert:
 
 - A fürtözött MSDTC-erőforrás nem konfigurálható megosztott tároló használatára. Windows Server 2016 rendszeren, ha MSDTC-erőforrást hoz létre, az nem fog tudni használni megosztott tárterületet, még akkor sem, ha rendelkezésre áll tárterület. Ezt a problémát a Windows Server 2019-es verzióban javítottuk.
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

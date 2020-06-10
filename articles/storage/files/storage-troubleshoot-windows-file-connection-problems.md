@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 40b8616f40f2ce33332fc42ec68532e4ae0ecdb0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 2b49598d51fb785872fccec966ac11a95ef3cede
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267817"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657731"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
 
@@ -167,7 +167,7 @@ Keresse meg azt a Storage-fiókot, ahol az Azure-fájlmegosztás található, ka
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nem sikerült törölni egy fájlt vagy könyvtárt valamelyik Azure-fájlmegosztásban
 Amikor megpróbál törölni egy fájlt, a következő hibaüzenet jelenhet meg:
 
-A megadott erőforrás egy SMB-ügyfél általi törlésre van megjelölve.
+Egy SMB-ügyfél törlésre jelölte meg a megadott erőforrást.
 
 ### <a name="cause"></a>Ok
 Ez a probléma általában akkor fordul elő, ha a fájl vagy könyvtár nyitott leíróval rendelkezik. 
@@ -330,7 +330,7 @@ Jelenleg a HRE DS újratelepítését egy új tartományi DNS-névvel végezheti
 ### <a name="self-diagnostics-steps"></a>Saját diagnosztika lépései
 Először is győződjön meg arról, hogy követte az [Azure Files ad-hitelesítés engedélyezéséhez](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)szükséges négy lépést.
 
-Másodszor, próbálja meg [csatlakoztatni az Azure-fájlmegosztást a Storage-fiók kulcsaként](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Ha nem sikerült csatlakoztatni, töltse le a [AzFileDiagnostics. ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) eszközt, hogy segítsen ellenőrizni a környezetet futtató ügyfelet, és felismeri a nem kompatibilis ügyfél-konfigurációt, amely a Azure Fileshoz való hozzáférési hibát okozna, útmutatást ad az önjavításhoz, és összegyűjti a diagnosztikai nyomkövetéseket.
+Másodszor, próbálja meg [csatlakoztatni az Azure-fájlmegosztást a Storage-fiók kulcsaként](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Ha nem sikerült csatlakoztatni, töltse le [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , hogy segítsen ellenőrizni a környezetet futtató ügyfelet, és felismeri a nem kompatibilis ügyfél-konfigurációt, amely a Azure Files hozzáférési hibáját okozhatja, az önjavításra és a diagnosztikai Nyomkövetések gyűjtésére szolgáló részletes útmutatást nyújt.
 
 Harmadszor, futtathatja a Debug-AzStorageAccountAuth parancsmagot, amellyel alapszintű ellenőrzéseket végezhet az AD konfigurációjában a bejelentkezett AD-felhasználóval. Az [AzFilesHybrid v0.1.2+ verziója](https://github.com/Azure-Samples/azure-files-samples/releases) támogatja ezt a parancsmagot. A parancsmagot egy olyan AD-felhasználóval kell futtatnia, aki tulajdonosi engedéllyel rendelkezik a cél tárfiókon.  
 ```PowerShell
@@ -345,9 +345,9 @@ A parancsmag az alábbi ellenőrzéseket hajtja végre egymás után, és útmut
 3. CheckADObject: Ellenőrizze, hogy a bejelentkezett felhasználó érvényes képviselettel rendelkezik-e abban az Active Directory-tartományban, amelyhez a Storage-fiók társítva van
 4. CheckGetKerberosTicket: kísérlet a Storage-fiókhoz való kapcsolódáshoz szükséges Kerberos-jegy beszerzésére 
 5. CheckADObjectPasswordIsCorrect: Győződjön meg arról, hogy a Storage-fiókot jelképező AD-identitáson konfigurált Jelszó megfelel a Storage-fiókhoz tartozó kulcsnak.
-6. CheckSidHasAadUser: a bejelentkezett AD-felhasználó szinkronizálása az Azure AD-be
-
-Aktívan dolgozunk a diagnosztikai parancsmag kibővítésén, hogy jobb hibaelhárítási útmutatást nyújtson.
+6. CheckSidHasAadUser: Győződjön meg róla, hogy a bejelentkezett AD-felhasználó szinkronizálva van az Azure AD-vel. Ha szeretné megkeresni, hogy egy adott AD-felhasználó szinkronizálva van-e az Azure AD-val, megadhatja a-UserName és a-domain paramétert a bemeneti paraméterekben.
+7. CheckAadUserHasSid: Ellenőrizze, hogy egy ből AD-felhasználó rendelkezik-e SID-vel az AD-ben, a felhasználónak be kell írnia az Azure AD-felhasználó objektumazonosító-azonosítóját a-ObjectId. 
+8. CheckStorageAccountDomainJoined: Ellenőrizze, hogy regisztrált-e egy identitást az AD-ben a Storage-fiók jelölésére. 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nem lehet konfigurálni a címtár/fájl szintű engedélyeket (Windows ACL) a Windows fájlkezelővel
 
