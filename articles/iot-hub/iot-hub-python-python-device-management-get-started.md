@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: f376831175840284fdfd15f367542d33ad9f7177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 3e48e52294884294a2e4649e8fc0e0b9c42e0c0a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759757"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608536"
 ---
 # <a name="get-started-with-device-management-python"></a>Ismerkedés az Eszközkezelővel (Python)
 
@@ -68,7 +68,7 @@ Ebben a szakaszban:
 
 2. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_device.** -es nevű fájlt a munkakönyvtárában.
 
-3. Adja hozzá a `import` következő utasításokat a **dmpatterns_getstarted_device.** a fájl elején.
+3. Adja hozzá a következő `import` utasításokat a **dmpatterns_getstarted_device.** a fájl elején.
 
     ```python
     import threading
@@ -77,7 +77,7 @@ Ebben a szakaszban:
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. Adja hozzá a **CONNECTION_STRING** változót. Cserélje le `{deviceConnectionString}` a helyőrző értékét az eszköz csatlakoztatási karakterláncára. Ezt a kapcsolattípus-karakterláncot korábban a [IoT hub új eszközének regisztrálása](#register-a-new-device-in-the-iot-hub)során másolta.  
+4. Adja hozzá a **CONNECTION_STRING** változót. Cserélje le a `{deviceConnectionString}` helyőrző értékét az eszköz csatlakoztatási karakterláncára. Ezt a kapcsolattípus-karakterláncot korábban a [IoT hub új eszközének regisztrálása](#register-a-new-device-in-the-iot-hub)során másolta.  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -161,7 +161,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy t�
 
 2. Egy szövegszerkesztővel hozzon létre egy **dmpatterns_getstarted_service.** -es nevű fájlt a munkakönyvtárában.
 
-3. Adja hozzá a `import` következő utasításokat a **dmpatterns_getstarted_service.** a fájl elején.
+3. Adja hozzá a következő `import` utasításokat a **dmpatterns_getstarted_service.** a fájl elején.
 
     ```python
     import sys, time
@@ -170,7 +170,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy t�
     from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
-4. Adja hozzá a következő változó deklarációkat. Cserélje le `{IoTHubConnectionString}` a helyőrző értékét a korábban átmásolt IoT hub-beli [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)elemre. Cserélje le `{deviceId}` a helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával.
+4. Adja hozzá a következő változó deklarációkat. Cserélje le a `{IoTHubConnectionString}` helyőrző értékét a korábban átmásolt IoT hub-beli [IoT hub-kapcsolatok karakterláncának lekérése](#get-the-iot-hub-connection-string)elemre. Cserélje le a `{deviceId}` helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával.
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

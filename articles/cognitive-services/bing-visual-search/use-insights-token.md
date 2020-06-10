@@ -10,18 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ac704ff7213b08072debf9d56da10a74e8315c68
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67341725"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607033"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Elemzések lekérése a rendszerképekről
 
-A Bing Visual Search API információkat ad vissza egy Ön által megadott képről. A kép feltöltéséhez használhatja a kép URL-címét, egy megállapítási jogkivonatot, vagy feltöltheti magát a képet. Ezekről a beállításokról a [Mi az Bing Visual Search API?](overview.md)című témakörben olvashat bővebben. Ez a cikk az adatellenőrzési jogkivonat használatát mutatja be. Az olyan példákat, amelyek bemutatják, hogyan tölthet fel egy képet az elemzések lekéréséhez, lásd a gyors útmutatókat ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)).
+A Bing Visual Search API információkat ad vissza egy Ön által megadott képről. A kép feltöltéséhez használhatja a kép URL-címét, egy megállapítási jogkivonatot, vagy feltöltheti magát a képet. Ezekről a beállításokról a [Mi az Bing Visual Search API?](overview.md)című témakörben olvashat bővebben. Ez a cikk az adatellenőrzési jogkivonat használatát mutatja be. Az olyan példákat, amelyek bemutatják, hogyan tölthet fel egy képet az elemzések lekéréséhez, lásd a gyors útmutatókat ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [Node. js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
 
-Ha képtokent vagy URL-címet küld Bing Visual Search, az alábbi ábrán láthatók a bejegyzés törzsében szerepeltetni kívánt űrlapadatok. Az űrlapon szerepelnie kell `Content-Disposition` a fejlécnek, és a `name` paramétert "knowledgeRequest" értékre kell állítania. Az `imageInfo` objektum részleteit a kérelemben tekintheti meg:
+Ha képtokent vagy URL-címet küld Bing Visual Search, az alábbi ábrán láthatók a bejegyzés törzsében szerepeltetni kívánt űrlapadatok. Az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek, és a `name` paramétert "knowledgeRequest" értékre kell állítania. Az objektum részleteit a `imageInfo` kérelemben tekintheti meg:
 
 ```json
 {
@@ -43,7 +44,7 @@ Ha képtokent vagy URL-címet küld Bing Visual Search, az alábbi ábrán láth
 }
 ```
 
-Az ebben a cikkben szereplő példák bemutatják, hogyan használhatja az adatellenőrzési tokent. Egy/images/Search API-válaszban lévő `Image` objektumból beolvassa az adatkivonatot. További információ az adatfelismerési token beszerzéséről: [Mi a Bing Image Search API?](../Bing-Image-Search/overview.md).
+Az ebben a cikkben szereplő példák bemutatják, hogyan használhatja az adatellenőrzési tokent. Egy `Image` /images/Search API-válaszban lévő objektumból beolvassa az adatkivonatot. További információ az adatfelismerési token beszerzéséről: [Mi a Bing Image Search API?](../Bing-Image-Search/overview.md).
 
 ```
 --boundary_1234-abcd
@@ -58,7 +59,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Az információkból álló tokent használó Példákért lásd: [C#](#use-with-c) | [Java](#use-with-java) | [Node. js](#use-with-nodejs) | [Python](#use-with-python).
+Az információkból álló tokent használó Példákért lásd: [C#](#use-with-c)  |  [Java](#use-with-java)  |  [Node. js](#use-with-nodejs)  |  [Python](#use-with-python).
 
 ## <a name="use-with-c"></a>Használat a C használatával #
 
@@ -67,14 +68,14 @@ Az információkból álló tokent használó Példákért lásd: [C#](#use-with
 - A [Visual Studio 2019](https://www.visualstudio.com/downloads/) bármely verziója a Windows rendszeren futó kód beszerzéséhez.
 - Azure-előfizetés. Ebben a rövid útmutatóban egy [ingyenes próbaverziós](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcsot vagy egy fizetős előfizetési kulcsot is használhat.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy konzolos megoldást a Visual Studióban.
 2. Cserélje le a Program.cs tartalmát az ebben a rövid útmutatóban látható kóddal.
 3. Cserélje le az `accessKey` értéket saját előfizetői azonosítójára.
-4. Cserélje le `insightsToken` az értéket egy/images/Search-válaszból származó, bepillantást kapott jogkivonatra.
+4. Cserélje le az `insightsToken` értéket egy/images/Search-válaszból származó, bepillantást kapott jogkivonatra.
 5. Futtassa a programot.
 
 ```csharp
@@ -474,7 +475,7 @@ if __name__ == '__main__':
     main()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Visual Search egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)  
 [Mi az a Bing Visual Search API?](overview.md)  

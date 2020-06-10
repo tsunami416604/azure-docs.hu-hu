@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 1d721e89534c09a5572e5674796f28355f652165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: ea63b4bd40a610227b4315f9e6e858c39ff9ff6a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527401"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606462"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Feladatok ütemezett és szórása (Python)
 
@@ -77,7 +78,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
 
 2. Egy szövegszerkesztővel hozzon létre egy új **simDevice.py** -fájlt a munkakönyvtárában.
 
-3. Adja hozzá a `import` következő utasításokat és változókat a **simDevice.py** fájl elejéhez. Cserélje `deviceConnectionString` le a szöveget a fent létrehozott eszközhöz tartozó kapcsolatok sztringre:
+3. Adja hozzá a következő `import` utasításokat és változókat a **simDevice.py** fájl elejéhez. Cserélje le a szöveget a `deviceConnectionString` fent létrehozott eszközhöz tartozó kapcsolatok sztringre:
 
     ```python
     import threading
@@ -162,7 +163,7 @@ Ha olyan megosztott hozzáférési szabályzatot szeretne létrehozni, amely a *
 
 3. A szabályzatok listájának felső menüjében válassza a **Hozzáadás**lehetőséget.
 
-4. A **megosztott hozzáférési házirend hozzáadása** panelen adjon meg egy leíró nevet a szabályzatnak; például: *serviceAndRegistryReadWrite*. Az **engedélyek**területen válassza a **szolgáltatás kapcsolódása** és a **beállításjegyzék írása** lehetőséget (a**beállításjegyzék olvasása** beállítás automatikusan kiválasztásra kerül a beállításjegyzék **írásakor**). Ezután válassza a **Létrehozás**lehetőséget.
+4. A **megosztott hozzáférési házirend hozzáadása** panelen adjon meg egy leíró nevet a szabályzatnak; például: *serviceAndRegistryReadWrite*. Az **engedélyek**területen válassza a **szolgáltatás kapcsolódása** és a **beállításjegyzék írása** lehetőséget (a**beállításjegyzék olvasása** beállítás automatikusan kiválasztásra kerül a beállításjegyzék **írásakor**). Ezután kattintson a **Létrehozás** elemre.
 
     ![Új megosztott elérési házirend hozzáadásának megjelenítése](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
@@ -186,7 +187,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely egy k�
 
 2. Egy szövegszerkesztővel hozzon létre egy új **scheduleJobService.py** -fájlt a munkakönyvtárában.
 
-3. Adja hozzá a `import` következő utasításokat és változókat a **scheduleJobService.py** fájl elejéhez. Cserélje le `{IoTHubConnectionString}` a helyőrzőt arra a IoT hub-IoT, amelyet korábban átmásolt a [beolvasás az hub-kapcsolatok karakterláncában](#get-the-iot-hub-connection-string). Cserélje le `{deviceId}` a helyőrzőt az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával:
+3. Adja hozzá a következő `import` utasításokat és változókat a **scheduleJobService.py** fájl elejéhez. Cserélje le a `{IoTHubConnectionString}` helyőrzőt arra a IoT hub-IoT, amelyet korábban átmásolt a [beolvasás az hub-kapcsolatok karakterláncában](#get-the-iot-hub-connection-string). Cserélje le a `{deviceId}` helyőrzőt az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával:
 
     ```python
     import sys
@@ -333,7 +334,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![IoT Hub Job minta 2 – eszköz kimenete](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen metódust ütemez egy eszközre, és az eszköz Twin tulajdonságainak frissítését.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e0b25b07e3517bbbf17dce95660f209bd74bcccb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: bedc0f6a457fe27d7358aea1219126427c924e1d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561737"
+ms.locfileid: "84627925"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
 
@@ -59,6 +59,9 @@ A flow-naplók a Felhőbeli környezet összes hálózati tevékenységének az 
 - A hálózati biztonsági csoport (NSG) olyan _biztonsági szabályok_ listáját tartalmazza, amelyek engedélyezik vagy megtagadják a hálózati forgalmat a kapcsolódó erőforrásokban. A NSG a virtuális gépekhez (Resource Manager) csatolt alhálózatokhoz, egyéni virtuális gépekhez vagy egyedi hálózati adapterekhez (NIC) is társítható. További információ: [hálózati biztonsági csoport áttekintése](https://docs.microsoft.com/azure/virtual-network/security-overview?toc=%2Fazure%2Fnetwork-watcher%2Ftoc.json).
 - A hálózatban lévő összes adatforgalom kiértékelése a vonatkozó NSG található szabályok alapján történik.
 - Ezen értékelések eredménye a NSG. A flow-naplókat az Azure platformon gyűjtjük össze, és nem szükséges módosítani az ügyfél erőforrásait.
+- Megjegyzés: a szabályok két típusból állnak – az & megszakítása leáll, amelyek mindegyike különböző naplózási viselkedéssel rendelkezik.
+- - A NSG megtagadási szabályai leállnak. A forgalmat megtagadó NSG naplózza a folyamat naplófájljaiban, és a feldolgozás ebben az esetben leáll, miután bármely NSG megtagadja a forgalmat. 
+- - A NSG engedélyezési szabályai nem állnak le, ami azt jelenti, hogy még akkor is, ha egy NSG engedélyezi, a feldolgozás a következő NSG fog folytatódni. A forgalmat engedélyező utolsó NSG naplózza a forgalmat a flow-naplókba.
 - A NSG a Storage-fiókokba vannak írva, ahonnan elérhetők.
 - A flow-naplókat exportálhatja, feldolgozhatja, elemezheti és megjelenítheti olyan eszközökkel, mint például a TA, a splunk, a Grafana, a Stealthwatch stb.
 
@@ -351,9 +354,9 @@ A **Storage-fiókkal kapcsolatos megfontolások**:
 
 A **flow naplózási költségei**: a NSG folyamatának naplózása a létrehozott naplók mennyiségétől függ. A nagy forgalmú kötetek nagy flow-naplózási kötetet és a hozzájuk kapcsolódó költségeket okozhatják. A NSG-forgalmi napló díjszabása nem tartalmazza a tárterület alapjául szolgáló költségeket. Az adatmegőrzési házirend szolgáltatás NSG flow-naplózással való használata esetén a tárolási költségek hosszabb ideig tartanak. Ha nincs szüksége az adatmegőrzési házirend funkcióra, azt javasoljuk, hogy állítsa 0 értékre. További információkért tekintse meg a [Network Watcher díjszabását](https://azure.microsoft.com/pricing/details/network-watcher/) és az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető témakört.
 
-Az internetes IP-címekről a nyilvános IP-címek **nélküli virtuális gépekre naplózott bejövő folyamatok**: olyan virtuális gépek, amelyek nem rendelkeznek nyilvános IP-címmel a hálózati adapterhez társított nyilvános IP-címen keresztül, vagy amelyek egy alapszintű terheléselosztó-készlet részét képezik, az [alapértelmezett SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) használják, és az Azure által hozzárendelt IP-címmel rendelkeznek a kimenő kapcsolatok megkönnyítéséhez. Ennek eredményeképpen előfordulhat, hogy az internetes IP-címekről érkező adatfolyamok esetében a flow-naplóbejegyzések megjelennek, ha a folyamat a SNAT hozzárendelt portok tartományában lévő portra van szánva. Amíg az Azure nem engedélyezi ezeket a folyamatokat a virtuális gép számára, a rendszer naplózza a kísérletet, és a Network Watcher NSG flow-naplójában jelenik meg. Javasoljuk, hogy a nem kívánt bejövő internetes forgalmat explicit módon tiltsa le a NSG.
+**Helytelen bájtok és csomagok száma a bejövő folyamatokhoz**: a [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview) [állapot-nyilvántartó tűzfalként](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)vannak implementálva. A platform korlátai miatt azonban a bejövő folyamatokat szabályozó szabályok állapot nélküli módon valósulnak meg. Ezen folyamatok esetében a bájtok és a csomagok száma nem kerül rögzítésre. Következésképpen a NSG-naplók (és Traffic Analytics) által jelentett bájtok és csomagok száma nem lehet azonos a tényleges számokkal. Emellett a bejövő folyamatok mostantól nem állnak le. Ezt a korlátozást az ütemezi, hogy a 2020 decemberében rögzítettek legyenek.
 
-**Az állapot nélküli folyamatok esetében helytelen a bájt és a csomagok száma**: a [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview) [állapot-nyilvántartó tűzfalként](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)vannak implementálva. A forgalom áramlását szabályozó alapértelmezett/belső szabályok azonban állapot nélküli módon lesznek implementálva. A platformok korlátai miatt a rendszer nem rögzíti a bájtok és a csomagok számát az állapot nélküli folyamatok esetében (azaz az állapot nélküli szabályokon keresztüli forgalom), csak állapot-nyilvántartó folyamatokban lesznek rögzítve. Következésképpen a NSG-naplók (és Traffic Analytics) által jelentett bájtok és csomagok száma eltérő lehet a tényleges folyamatokban. Ezt a korlátozást az ütemezi, hogy a 2020-es időpontban rögzítettek legyenek.
+Az internetes IP-címekről a nyilvános IP-címek **nélküli virtuális gépekre naplózott bejövő folyamatok**: olyan virtuális gépek, amelyek nem rendelkeznek nyilvános IP-címmel a hálózati adapterhez társított nyilvános IP-címen keresztül, vagy amelyek egy alapszintű terheléselosztó-készlet részét képezik, az [alapértelmezett SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) használják, és az Azure által hozzárendelt IP-címmel rendelkeznek a kimenő kapcsolatok megkönnyítéséhez. Ennek eredményeképpen előfordulhat, hogy az internetes IP-címekről érkező adatfolyamok esetében a flow-naplóbejegyzések megjelennek, ha a folyamat a SNAT hozzárendelt portok tartományában lévő portra van szánva. Amíg az Azure nem engedélyezi ezeket a folyamatokat a virtuális gép számára, a rendszer naplózza a kísérletet, és a Network Watcher NSG flow-naplójában jelenik meg. Javasoljuk, hogy a nem kívánt bejövő internetes forgalmat explicit módon tiltsa le a NSG.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

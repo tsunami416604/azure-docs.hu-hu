@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 74f89629c783a444633fe276d99dc75d6c7fc8d8
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 1b5d51eafc0cb21a02f8a750bd78b5be7aca734f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331967"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605510"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -305,7 +305,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 ```
 Íme egy magyarázat arról, hogy az előző sablon hogyan épül fel, az erőforrástípus szerinti bontásban.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>Folyamatok
     
 * Az elérési út bármely tulajdonsága `activities/typeProperties/waitTimeInSeconds` paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
 * Hasonlóképpen, egy nevű tulajdonság `headers` (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
@@ -361,6 +361,14 @@ Alább látható az aktuális alapértelmezett paraméterezés-sablon. Ha csak n
                         "value": "-::secureString"
                     },
                     "resourceId": "="
+                },
+                "computeProperties": {
+                    "dataFlowProperties": {
+                        "externalComputeInfo": [{
+                                "accessToken": "-::secureString"
+                            }
+                        ]
+                    }
                 }
             }
         }
@@ -395,6 +403,7 @@ Alább látható az aktuális alapértelmezett paraméterezés-sablon. Ha csak n
                     "accessKeyId": "=",
                     "servicePrincipalId": "=",
                     "userId": "=",
+                    "host": "=",
                     "clientId": "=",
                     "clusterUserName": "=",
                     "clusterSshUserName": "=",
@@ -413,7 +422,10 @@ Alább látható az aktuális alapértelmezett paraméterezés-sablon. Ha csak n
                     "systemNumber": "=",
                     "server": "=",
                     "url":"=",
+                    "environmentUrl": "=",
                     "aadResourceId": "=",
+                    "sasUri": "|:-sasUri:secureString",
+                    "sasToken": "|",
                     "connectionString": "|:-connectionString:secureString"
                 }
             }

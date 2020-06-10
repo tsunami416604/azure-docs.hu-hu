@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ca8285eb9553e0c69a024714c2f5a258bd9b0ba0
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712230"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628191"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -172,7 +172,7 @@ A felhasználói kiépítési szolgáltatás által futtatott összes művelet r
 
 Az Azure AD-kiépítési szolgáltatás megőrzi a forrás-és a megcélzott rendszereket a kiépítési fiókok szinkronizálásával, ha a felhasználóknak többé nem férnek hozzá. 
 
-Az Azure AD-kiépítési szolgáltatás helyreállítja a felhasználót az alkalmazásban, ha az alkalmazás suupports a Soft deletes (Update Request with Active = false), és az alábbi események bármelyike előfordul:
+Az Azure AD-kiépítési szolgáltatás helyreállítja a felhasználót egy alkalmazásban, ha az alkalmazás támogatja a Soft deletes (Update Request with Active = false) és az alábbi események bármelyikét:
 
 * A felhasználói fiók törlődik az Azure AD-ben
 *   A felhasználó nincs kiosztva az alkalmazásból

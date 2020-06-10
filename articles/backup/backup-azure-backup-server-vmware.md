@@ -2,13 +2,13 @@
 title: VMware virtuális gépek biztonsági mentése a Azure Backup Server
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek biztonsági mentésére.
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.openlocfilehash: c4bf61e2a02200b2e6af814ef4509081649e202d
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.date: 05/24/2020
+ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204718"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628443"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
@@ -371,6 +371,21 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
     ![Védelmi csoport tagja és a beállítás összegzése](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
+## <a name="vmware-parallel-backups"></a>VMware párhuzamos biztonsági mentések
+
+>[!NOTE]
+> Ez a funkció a MABS v3 UR1 esetében alkalmazható.
+
+A MABS korábbi verzióival a párhuzamos biztonsági mentések csak a védelmi csoportokon keresztül lettek elvégezve. A MABS v3 UR1 egyetlen védelmi csoportban lévő összes VMWare virtuális gép biztonsági mentése párhuzamosan történik, ami gyorsabb virtuális gépek biztonsági mentését eredményezi. Minden VMWare-különbözeti replikációs feladat párhuzamosan fut. Alapértelmezés szerint a párhuzamosan futtatandó feladatok száma 8.
+
+A feladatok számát a beállításkulcs használatával módosíthatja az alább látható módon (alapértelmezés szerint nem jelenik meg):
+
+**Kulcs elérési útja**:`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**Kulcs típusa**: DWORD (32 bites) érték.
+
+> [!NOTE]
+> A feladatok számát magasabb értékre módosíthatja. Ha a feladatok számát 1 értékre állítja, a replikációs feladatok sorosan futnak. Ha nagyobb értékre szeretné emelni a számot, meg kell fontolnia a VMWare-teljesítményt. Vegye figyelembe a használatban lévő erőforrások számát és a VMWare vSphere-kiszolgálón szükséges további használatot, és határozza meg a párhuzamosan futtatandó különbözeti replikációs feladatok számát. Emellett ez a változás csak az újonnan létrehozott védelmi csoportokat érinti. Meglévő védelmi csoportok esetében ideiglenesen hozzá kell adnia egy másik virtuális gépet a védelmi csoporthoz. Ennek megfelelően frissítenie kell a védelmi csoport konfigurációját. Ezt a virtuális gépet a következő eljárás befejezése után távolíthatja el a védelmi csoportból.
+
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
 A 6,7-es vSphere biztonsági mentéséhez tegye a következőket:
@@ -402,6 +417,126 @@ Windows Registry Editor Version 5.00
 "SchUseStrongCrypto"=dword:00000001
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="exclude-disk-from-vmware-vm-backup"></a>Lemez kizárása a VMware virtuális gép biztonsági másolatából
+
+> [!NOTE]
+> Ez a funkció a MABS v3 UR1 esetében alkalmazható.
+
+A MABS v3 UR1 kihagyhatja a VMware virtuális gép biztonsági mentésének adott lemezét. A **ExcludeDisk. ps1** konfigurációs parancsfájl a alkalmazásban található `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
+
+A lemezek kizárásának konfigurálásához kövesse az alábbi lépéseket:
+
+### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>A kizárni kívánt VMWare virtuális gép és lemez adatainak azonosítása
+
+  1. A VMware-konzolon lépjen a virtuális gép beállításaihoz, amelyekhez ki szeretné zárni a lemezt.
+  2. Válassza ki a kizárni kívánt lemezt, és jegyezze fel a lemez elérési útját.
+
+        Ha például ki szeretné zárni a 2. merevlemezt a TestVM4, a 2. merevlemez elérési útja **[datastore1] TestVM4/TestVM4 \_ 1. VMDK**.
+
+        ![Kizárni kívánt merevlemez](./media/backup-azure-backup-server-vmware/test-vm.png)
+
+### <a name="configure-mabs-server"></a>MABS-kiszolgáló konfigurálása
+
+Navigáljon arra a MABS-kiszolgálóra, ahol a VMware virtuális gép védelemre van konfigurálva a lemezek kizárásának konfigurálásához.
+
+  1. Szerezze be a MABS-kiszolgálón védett VMware-gazdagép részleteit.
+
+        ```powershell
+        $psInfo = get-DPMProductionServer
+        $psInfo
+        ```
+
+        ```output
+        ServerName   ClusterName     Domain            ServerProtectionState
+        ----------   -----------     ------            ---------------------
+        Vcentervm1                   Contoso.COM       NoDatasourcesProtected
+        ```
+
+  2. Válassza ki a VMware-gazdagépet, és sorolja fel a VMware-gazdagép virtuális gépek védelmét.
+
+        ```powershell
+        $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
+        $vmDsInfo
+        ```
+
+        ```output
+        Computer     Name     ObjectType
+        --------     ----     ----------
+        Vcentervm1  TestVM2      VMware
+        Vcentervm1  TestVM1      VMware
+        Vcentervm1  TestVM4      VMware
+        ```
+
+  3. Válassza ki azt a virtuális gépet, amelynek ki szeretné zárni a lemezét.
+
+        ```powershell
+        $vmDsInfo[2]
+        ```
+
+        ```output
+        Computer     Name      ObjectType
+        --------     ----      ----------
+        Vcentervm1   TestVM4   VMware
+        ```
+
+  4. A lemez kizárásához navigáljon a `Bin` mappához, és futtassa a *ExcludeDisk. ps1* parancsfájlt a következő paraméterekkel:
+
+        > [!NOTE]
+        > A parancs futtatása előtt állítsa le a DPMRA szolgáltatást a MABS-kiszolgálón. Ellenkező esetben a parancsfájl sikeres értéket ad vissza, de nem frissíti a kizárási listát. Győződjön meg arról, hogy a szolgáltatás leállítása előtt nincsenek folyamatban lévő feladatok.
+
+     **A lemez kizárásból való hozzáadásához vagy eltávolításához futtassa a következő parancsot:**
+
+      ```powershell
+      ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
+      ```
+
+     **Példa**:
+
+     A következő parancs futtatásával adhatja hozzá a TestVM4 tartozó lemezek kizárását:
+
+       ```powershell
+      C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
+       ```
+
+      ```output
+       Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
+       Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
+      ```
+
+  5. Győződjön meg arról, hogy a lemez hozzá lett adva a kizáráshoz.
+
+     **Adott virtuális gépek meglévő kizárásának megtekintéséhez futtassa a következő parancsot:**
+
+        ```powershell
+        ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
+        ```
+
+     **Példa**
+
+        ```powershell
+        C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
+        ```
+
+        ```output
+        <VirtualMachine>
+        <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
+        <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
+        </VirtualMachine>
+        ```
+
+     A virtuális gép védelmének konfigurálása után a kizárt lemez nem jelenik meg a védelem során.
+
+        > [!NOTE]
+        > Ha egy már védett virtuális gépen hajtja végre ezeket a lépéseket, a lemez kizárása után manuálisan kell futtatnia a konzisztencia-ellenőrzést.
+
+### <a name="remove-the-disk-from-exclusion"></a>A lemez eltávolítása a kizárásból
+
+A lemez kizárásból való eltávolításához futtassa a következő parancsot:
+
+```powershell
+C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 A biztonsági másolatok beállítása során felmerülő problémák elhárításához tekintse át a [Azure Backup Server hibaelhárítási útmutatóját](./backup-azure-mabs-troubleshoot.md).

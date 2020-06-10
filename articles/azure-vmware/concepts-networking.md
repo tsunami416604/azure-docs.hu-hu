@@ -3,18 +3,18 @@ title: Fogalmak – hálózati kapcsolat
 description: Ismerje meg az Azure VMware-megoldás (AVS) legfontosabb szempontjait és a Hálózatkezelés és az összekapcsolhatóság alkalmazási eseteit
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 1d869601110266f7ad16e23b66453c44793cdf31
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 35d886fe0f6a68e522d7f2cf20b450b5d9afc199
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457082"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629207"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware-megoldás (AVS) – előzetes hálózati és összekapcsolási fogalmak
 
 Az Azure VMware-megoldás (AVS) privát felhők és a helyszíni környezetek, illetve az Azure-beli virtuális hálózatok közötti hálózati kapcsolat lehetővé teszi a privát felhő elérését és használatát. Ebben a cikkben néhány kulcsfontosságú hálózatkezelési és összekapcsolási fogalmat is ismertetünk, amelyek az összekapcsolások alapját alkotják.
 
-Az összekapcsolhatóság hasznos perspektívája az, hogy figyelembe vegye az AVS Private Cloud implementációinak két típusát. A megvalósítások alapszintű, csak az Azure-hoz való csatlakozással és a teljes helyszíni és a saját felhőalapú kapcsolattal rendelkező implementációkkal.
+Az összekapcsolhatóság hasznos perspektívája az, hogy figyelembe veszik az AVS Private Cloud implementációinak két típusát: a megvalósítások alapszintű Azure-alapú, a teljes helyszíni és a saját felhőalapú összekapcsolást biztosító implementációk.
 
 Az AVS privát felhők használati esetei a következők:
 - új VMware virtuális gép számítási feladatok a felhőben
@@ -25,7 +25,7 @@ Az AVS privát felhők használati esetei a következők:
 
  Az AVS szolgáltatás összes használati esete engedélyezve van a helyszíni és a saját felhőalapú kapcsolat között. Az alapszintű összekapcsolási modell olyan AVS-értékelések vagy-implementációk esetében ajánlott, amelyek nem igényelnek hozzáférést a helyszíni környezetekhez.
 
-Az alábbi szakaszokban az AVS Private Cloud-kapcsolat két típusát ismertetjük.  A legalapvetőbb kapcsolat az "Azure Virtual Network connectivity", amely lehetővé teszi, hogy a saját felhőjét csak egyetlen, az Azure-beli virtuális hálózattal kezelhesse és használja. A "helyszíni kapcsolat" című témakörben ismertetett kapcsolat kibővíti a virtuális hálózati kapcsolatot, hogy a helyszíni környezetek és az AVS privát felhők közötti összekapcsolást is magában foglalja.
+Az alábbi szakaszokban az AVS Private Cloud-kapcsolat két típusát ismertetjük.  A legalapvetőbb kapcsolat az "Azure Virtual Network connectivity"; lehetővé teszi, hogy a saját felhőjét csak egyetlen virtuális hálózattal kezelhesse és használja az Azure-ban. A "helyszíni kapcsolat" című témakörben ismertetett kapcsolat kibővíti a virtuális hálózati kapcsolatot, hogy a helyszíni környezetek és az AVS privát felhők közötti összekapcsolást is magában foglalja.
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Azure-beli virtuális hálózatok összekapcsolása
 
@@ -37,7 +37,7 @@ Az alábbi ábrán látható, a privát felhőalapú központi telepítés idej�
 
 ![Alapszintű virtuális hálózat – privát Felhőbeli kapcsolat](./media/concepts/adjacency-overview-drawing-single.png)
 
-Az ebben a virtuális hálózatban lévő ExpressRoute áramkört a rendszer akkor hozza létre, amikor az előfizetésben lévő virtuális hálózatról hoz létre kapcsolatot a saját felhő ExpressRoute áramkörével. A társítás egy engedélyezési kulcsot és egy olyan áramkör-azonosítót használ, amelyet a Azure Portal kér. A ExpressRoute létesített kapcsolat a privát felhő és a virtuális hálózat között egy privát, egy-az-egyhez kapcsolat. Kezelheti saját felhőjét, felhasználhatja a saját Felhőbeli munkaterheléseket, és hozzáférhet az Azure-szolgáltatásokhoz az ExpressRoute-kapcsolaton keresztül.
+Az ebben a virtuális hálózatban lévő ExpressRoute áramkört a rendszer akkor hozza létre, amikor az előfizetésben lévő virtuális hálózatról hoz létre kapcsolatot a saját felhő ExpressRoute áramkörével. A társítás egy engedélyezési kulcsot és egy olyan áramkör-azonosítót használ, amelyet a Azure Portal kér. A ExpressRoute létrehozott kapcsolat egy privát, egy-az-egyhez kapcsolat a privát felhő és a virtuális hálózat között. Kezelheti saját felhőjét, felhasználhatja a saját Felhőbeli munkaterheléseket, és hozzáférhet az Azure-szolgáltatásokhoz az ExpressRoute-kapcsolaton keresztül.
 
 Az AVS Private Cloud üzembe helyezése esetén egyetlen/22 magánhálózati címtartomány szükséges. Ez a Címterület nem fedi át az előfizetésben lévő más virtuális hálózatokban használt címeket. Ezen a címterületon belül a felügyelet, a kiépítés és a vMotion hálózat automatikusan kiépítve. Az Útválasztás BGP-alapú, és alapértelmezés szerint automatikusan kiépítve és engedélyezve van minden egyes privát Felhőbeli telepítéshez.
 

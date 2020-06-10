@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: f505f8222bd5959a9bb0213dc5c8c48092723bba
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 67c25d7065136f4748b6c0f57a8627db445c1a4e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266627"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610967"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Áttekintés – helyszíni Active Directory tartományi szolgáltatások hitelesítés SMB-en keresztül az Azure-fájlmegosztás esetében
 
@@ -57,7 +57,7 @@ Az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése előtt győző
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az AD DS-hitelesítés Azure Files az [összes nyilvános régióban és az Azure gov-régiókban](https://azure.microsoft.com/global-infrastructure/locations/)érhető el.
+Az AD DS-hitelesítés Azure Files a [nyilvános, az Azure gov és a China régiókban](https://azure.microsoft.com/global-infrastructure/locations/)is elérhető.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -83,7 +83,7 @@ Az alábbi ábra a teljes munkafolyamatot mutatja be, amely lehetővé teszi az 
 
 Az Azure-fájlmegosztás eléréséhez használt identitásokat szinkronizálni kell az Azure AD-vel, hogy a [szerepköralapú hozzáférés-vezérlési (RBAC)](../../role-based-access-control/overview.md) modell használatával kényszerítse a megosztási szintű fájlok engedélyeit. A meglévő fájlkiszolgálók által átvitt fájlok/könyvtárak [Windows-stílusú DACL-listái](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) megmaradnak és érvényben lesznek. Ez zökkenőmentes integrációt biztosít a vállalati AD DS környezettel. Amikor az Azure-fájlmegosztás használatával cseréli le a helyszíni fájlkiszolgálók szolgáltatást, a meglévő felhasználók az Azure-fájlmegosztást az aktuális ügyfelektől egyszeri bejelentkezéssel érhetik el, a használatban lévő hitelesítő adatok módosítása nélkül.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha engedélyezni szeretné a helyszíni AD DS hitelesítést az Azure-fájlmegosztás számára, folytassa a következő cikkel:
 

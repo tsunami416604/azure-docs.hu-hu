@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 02cbf64261bbfbf50561e1b7466b46b27b688e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e06cf07809d3eca208fc18f4ee6022538400d315
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67148282"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610593"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Hibák elhárítása a lemezek Azure Data Box Diskban való feloldásával kapcsolatban
 
@@ -47,17 +47,17 @@ Ez a szakasz részletesen ismerteti a Data Box Disk üzembe helyezése során fe
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Probléma: a meghajtó nem oldható fel a BitLockerből
  
-**Okozhat** 
+**Ok** 
 
 A BitLocker párbeszédablakban használta a jelszót, és a BitLocker zárolásának feloldása párbeszédpanelen megpróbálta feloldani a lemez zárolását. Ez nem fog működni.
 
-**Resolution** (Osztás)
+**Felbontás**
 
 A Data Box lemezek zárolásának feloldásához a Data Box Disk-feloldási eszközt kell használnia, és meg kell adnia a jelszót a Azure Portal. További információt a következő [oktatóanyagban olvashat: kicsomagolás, kapcsolódás és zárolás feloldása Azure Data Box Disk](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Probléma: nem lehetett feloldani vagy ellenőrizni néhány kötetet. Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával.
  
-**Okozhat**
+**Ok**
 
 A következő hibaüzenet jelenhet meg a naplófájlban, és nem oldható fel vagy ellenőrizhető néhány kötet.
 
@@ -65,12 +65,12 @@ A következő hibaüzenet jelenhet meg a naplófájlban, és nem oldható fel va
  
 Ez azt jelzi, hogy a Windows PowerShell megfelelő verziója valószínűleg hiányzik a Windows-ügyfélen.
 
-**Resolution** (Osztás)
+**Felbontás**
 
 Telepítheti a [Windows PowerShell v 5,0](https://www.microsoft.com/download/details.aspx?id=54616) -et, és újrapróbálkozhat a művelettel.
  
 Ha továbbra sem tudja feloldani a kötetek zárolását, másolja a naplófájlokat a Data Box Disk-feloldási eszközt tartalmazó mappából, és [vegye fel a kapcsolatot Microsoft ügyfélszolgálata](data-box-disk-contact-microsoft-support.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató az [érvényesítési problémák elhárításához](data-box-disk-troubleshoot.md).

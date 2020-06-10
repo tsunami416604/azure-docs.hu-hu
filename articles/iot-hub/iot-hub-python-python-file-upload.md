@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 47fb7c615389e24322450ed1785aa7da9ec50db6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 9a3782c0d5791f20f14aabb53d486fc012518c1f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759694"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608502"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Python)
 
@@ -62,7 +62,7 @@ Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt
 
 1. Egy szövegszerkesztővel hozzon létre egy **FileUpload.py** -fájlt a munkamappában.
 
-1. Adja hozzá a `import` következő utasításokat és változókat a **FileUpload.py** fájl elejéhez.
+1. Adja hozzá a következő `import` utasításokat és változókat a **FileUpload.py** fájl elejéhez.
 
     ```python
     import os
@@ -75,7 +75,7 @@ Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt
     PATH_TO_FILE = r"[Full path to local file]"
     ```
 
-1. A fájlban cserélje le a `[Device Connection String]` helyére az IoT hub-eszközhöz tartozó kapcsolatok sztringjét. Cserélje `[Full path to local file]` le a helyére a létrehozott tesztüzenet elérési útját, vagy bármely olyan fájlt, amelyet fel szeretne tölteni az eszközön.
+1. A fájlban cserélje le a helyére `[Device Connection String]` az IoT hub-eszközhöz tartozó kapcsolatok sztringjét. Cserélje le a helyére a `[Full path to local file]` létrehozott tesztüzenet elérési útját, vagy bármely olyan fájlt, amelyet fel szeretne tölteni az eszközön.
 
 1. Hozzon létre egy függvényt, amely feltölti a fájlt a blob Storage-ba:
 
@@ -177,7 +177,7 @@ Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt
 
 1. Mentse és zárjuk be a **UploadFile.py** fájlt.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Most már készen áll az alkalmazás futtatására.
 
@@ -195,7 +195,7 @@ Most már készen áll az alkalmazás futtatására.
 
     ![Feltöltött fájl](./media/iot-hub-python-python-file-upload/view-blob.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja a IoT Hub fájlfeltöltés funkcióit az eszközökről történő fájlfeltöltés egyszerűsítése érdekében. A IoT hub funkcióit és forgatókönyveit továbbra is megismerheti a következő cikkekkel:
 

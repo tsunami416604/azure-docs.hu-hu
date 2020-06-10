@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: c7d55a7b10f0c874fd84f32db1dcf21fb60c231f
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76768951"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636635"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal
 
@@ -21,39 +21,43 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási repli
 ## <a name="prerequisites"></a>Előfeltételek
 Egy [Azure Database for PostgreSQL kiszolgáló](quickstart-create-server-database-portal.md) a főkiszolgálóként.
 
+## <a name="azure-replication-support"></a>Azure-beli replikálás támogatása
+
+Az [olvasási replikák](concepts-read-replicas.md) és a [logikai dekódolás](concepts-logical.md) a postgres írási előre megadott naplójától (Wal) függ. Ehhez a két szolgáltatáshoz különböző naplózási szintek szükségesek a postgres. A logikai dekódolás magasabb szintű naplózást igényel, mint az olvasási replikák.
+
+A megfelelő naplózási szint konfigurálásához használja az Azure-replikáció támogatási paraméterét. Az Azure-beli replikáció támogatásának három beállítási lehetősége van:
+
+* **Off** – a legkevesebb információt helyezi el a Wal-ben. Ez a beállítás nem érhető el a legtöbb Azure Database for PostgreSQL kiszolgálón.  
+* **Replika** – részletesebb, mint a **kikapcsolás**. Az [olvasási replikák](concepts-read-replicas.md) működéséhez szükséges naplózás minimális szintje. Ez a beállítás az alapértelmezett a legtöbb kiszolgálón.
+* **Logikai** – részletesebb, mint a **replika**. Ez a minimális szintű naplózás a logikai dekódolás működéséhez. Ebben a beállításban az olvasási replikák is működnek.
+
+A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg ez a paraméter a és a postgres paramétereket állítja be `wal_level` `max_replication_slots` `max_wal_senders` .
+
 ## <a name="prepare-the-master-server"></a>A fő kiszolgáló előkészítése
-Ezeket a lépéseket kell használni a főkiszolgáló előkészítéséhez a általános célú vagy a memória optimalizált szintjein. Az Azure. replication_support paraméter beállításával a főkiszolgáló készen áll a replikálásra. Ha a replikációs paraméter módosul, a módosítás érvénybe léptetéséhez újra kell indítani a kiszolgálót. A Azure Portal a két lépést egyetlen gombnyomással ágyazza be, **engedélyezze a replikáció támogatását**.
 
-1. A Azure Portal válassza ki a meglévő Azure Database for PostgreSQL-kiszolgálót, amelyet főkiszolgálóként kíván használni.
+1. A Azure Portal válasszon ki egy meglévő Azure Database for PostgreSQL-kiszolgálót, amelyet főkiszolgálóként kíván használni.
 
-2. A kiszolgáló oldalsávjának **Beállítások**területén válassza a **replikálás**elemet.
+2. A kiszolgáló menüjében válassza a **replikálás**lehetőséget. Ha az Azure-replikáció támogatásának értéke legalább **replika**, létrehozhat olvasási replikákat. 
 
-> [!NOTE] 
-> Ha a **replikáció támogatásának letiltása** szürkén jelenik meg, a replikálási beállítások alapértelmezés szerint már be vannak állítva a kiszolgálón. A következő lépéseket kihagyhatja, és az olvasási replika létrehozása lehetőségre ugorhat. 
+3. Ha az Azure-beli replikálás támogatása nem a legalább **replika**értékre van beállítva, állítsa be. Kattintson a **Mentés** gombra.
 
-3. Válassza a **replikáció támogatásának engedélyezése**lehetőséget. 
+   ![Azure Database for PostgreSQL – replikálás – replika beállítása és mentés](./media/howto-read-replicas-portal/set-replica-save.png)
 
-   ![Replikáció támogatásának engedélyezése](./media/howto-read-replicas-portal/enable-replication-support.png)
+4. A módosítás alkalmazásához indítsa újra a kiszolgálót az **Igen**lehetőség kiválasztásával.
 
-4. Erősítse meg, hogy szeretné engedélyezni a replikáció támogatását. Ez a művelet újraindítja a főkiszolgálót. 
+   ![Azure Database for PostgreSQL – replikálás – újraindítás megerősítése](./media/howto-read-replicas-portal/confirm-restart.png)
 
-   ![Replikációs támogatás engedélyezésének megerősítése](./media/howto-read-replicas-portal/confirm-enable-replication.png)
-   
 5. A művelet befejezését követően két Azure Portal értesítést fog kapni. A kiszolgálói paraméter frissítése egyetlen értesítéssel történik. A kiszolgáló azonnali újraindítására vonatkozóan egy másik értesítés is van, amely azonnal következik.
 
-   ![Sikeres értesítések – engedélyezés](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![Sikeres értesítések](./media/howto-read-replicas-portal/success-notifications.png)
 
 6. Frissítse a Azure Portal lapot a replikálási eszköztár frissítéséhez. Most már létrehozhat olvasási replikákat ehhez a kiszolgálóhoz.
-
-   ![Frissített eszköztár](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-A replikáció támogatásának engedélyezése a főkiszolgálón egyszeri művelet. Az Ön kényelme érdekében meg kell adni a **replikálási támogatás letiltása** gombot. Nem javasoljuk a replikálás támogatásának letiltását, hacsak nem biztos benne, hogy soha nem fog replikát létrehozni ezen a főkiszolgálón. A replikálás támogatása nem tiltható le, amíg a főkiszolgáló meglévő replikákkal rendelkezik.
-
 
 ## <a name="create-a-read-replica"></a>Olvasási replika létrehozása
 Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
-1. Válassza ki azt a meglévő Azure Database for PostgreSQL kiszolgálót, amelyet főkiszolgálóként kíván használni. 
+1. Válasszon ki egy meglévő Azure Database for PostgreSQL kiszolgálót, amelyet főkiszolgálóként kíván használni. 
 
 2. A kiszolgáló oldalsávjának **Beállítások**területén válassza a **replikálás**elemet.
 
@@ -180,6 +184,6 @@ A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció �
  
 3. Az **összesítéshez**válassza a **Max**lehetőséget. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [az olvasási replikákkal kapcsolatban Azure Database for PostgreSQL](concepts-read-replicas.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI-ben és a REST APIban](howto-read-replicas-cli.md).

@@ -8,14 +8,14 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d1fafa131a39ab72f6fc09663c7eb5b06107539
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644859"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608757"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Oktatóanyag: a Azure Toolkit for IntelliJ használata a Spark-készletek Apache Spark-alkalmazásainak létrehozásához (előzetes verzió)
+# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>Oktatóanyag: Apache Spark-alkalmazások létrehozása a IntelliJ a szinapszis szinapszis Analytics (munkaterületek előzetes verzió) használatával
 
 Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Toolkit for IntelliJ beépülő modul olyan Apache Spark-alkalmazások fejlesztéséhez, amelyek a [Scala](https://www.scala-lang.org/)-ben íródtak, majd egy Spark-készletbe (előzetes verzió) közvetlenül a IntelliJ integrált fejlesztői környezetből (ide). A beépülő modult többféleképpen is használhatja:
 
@@ -53,7 +53,7 @@ Az oktatóanyag a következőket ismerteti:
 
     ![IntelliJ IDEA új projekt párbeszédpanel](./media/intellij-tool-synapse/create-synapse-application01.png)
 
-5. Kattintson a **Tovább** gombra.
+5. Válassza a **Tovább** lehetőséget.
 6. Az **új projekt** ablakban adja meg a következő információkat:
 
     | Tulajdonság | Leírás |
@@ -66,7 +66,7 @@ Az oktatóanyag a következőket ismerteti:
 
     ![Az Apache Spark SDK kiválasztása](./media/intellij-tool-synapse/create-synapse-application02.png)
 
-7. Válassza a **Finish** (Befejezés) elemet. A projekt elérhetővé válása néhány percet igénybe vehet.
+7. Válassza a **Befejezés** gombot. A projekt elérhetővé válása néhány percet igénybe vehet.
 8. A Spark-projekt automatikusan létrehoz egy összetevőt. Az összetevő megtekintéséhez hajtsa végre a következő műveleteket:
 
    a. A menüsávban navigáljon a **fájl**  >  **projekt szerkezete...** elemre.

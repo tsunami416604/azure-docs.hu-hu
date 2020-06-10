@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a345b5a8a4d6a99b1b3928d61b22dfba0ba2735b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 319e6a4bff4d4d5675a03359176ac765cae80116
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248838"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608078"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Bevezetés a kiépített átviteli sebességbe Azure Cosmos DB
 
@@ -32,7 +32,9 @@ A kiépített átviteli sebesség egy tárolón való beállítása a leggyakrab
 
 A tárolók számára kiépített átviteli sebesség egyenletesen oszlik meg a fizikai partíciók között, és feltételezi, hogy a logikai partíciók egyenletes elosztása a fizikai partíciók között történik, az átviteli sebesség egyenletesen oszlik el a tároló összes logikai partícióján is. A logikai partíciók átviteli sebességét nem lehet szelektív módon megadni. Mivel a tárolók egy vagy több logikai partíciója egy fizikai partíción fut, a fizikai partíciók kizárólag a tárolóhoz tartoznak, és támogatják a tárolón kiosztott átviteli sebességet. 
 
-Ha a logikai partíción futó munkaterhelés több, mint az adott logikai partícióhoz lefoglalt átviteli sebesség, a műveletek lekérési díja korlátozott. Az arány korlátozása esetén növelheti a kiosztott átviteli sebességet a teljes tárolón, vagy megismételheti a műveleteket. További információ a particionálásról: [logikai partíciók](partition-data.md).
+Ha a logikai partíción futó munkaterhelés több, mint a mögöttes fizikai partícióhoz lefoglalt átviteli sebesség, lehetséges, hogy a műveletek mértéke korlátozott lesz. Az úgynevezett gyakori _partíció_ akkor fordul elő, ha egy logikai partíció aránytalanul több kérést tartalmaz, mint a többi partíciós kulcs értéke.
+
+Az arány korlátozása esetén növelheti a kiosztott átviteli sebességet a teljes tárolón, vagy megismételheti a műveleteket. Azt is meg kell adnia, hogy olyan partíciós kulcsot válasszon, amely egyenletesen osztja el a tárolót és a kérelmek mennyiségét. További információ a particionálásról: [particionálás és horizontális skálázás Azure Cosmos DBban](partition-data.md).
 
 Azt javasoljuk, hogy az átviteli sebességet a tároló részletessége szerint konfigurálja, ha a tárolóhoz garantált teljesítményt szeretne használni.
 
@@ -114,7 +116,7 @@ Ez a táblázat a kiépítési standard (manuális) átviteli sebességének ös
 |Egy tároló logikai partíciójának maximális átviteli sebessége|10K RU/s|10K RU/s|10K RU/s|10K RU/s|
 |Tárolók logikai partícióinak maximális tárterülete (adatsorok és indexek)|20 GB|20 GB|20 GB|20 GB|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [logikai partíciókhoz](partition-data.md).
 * Ismerje meg, hogyan hozhat [létre standard (manuális) Azure Cosmos-tárolón](how-to-provision-container-throughput.md).

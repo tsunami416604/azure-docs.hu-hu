@@ -8,12 +8,13 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 05b94ca9bd14392bad5288882a80f5c75590ef7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 167bcf4364b88529256b79574c6b8c03098fed02
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76931794"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607125"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
 
@@ -22,7 +23,7 @@ Ebben a rövid útmutatóban egy Azure Blob Storage-fiókba tölti fel a bemenet
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
-- [Python 2.7.12 +](https://www.python.org/downloads/release/python-2714/), `pip` telepített és `python` a rendszer elérési útjában. A Microsoft Genomics ügyfél nem kompatibilis a Python 3 rendszerrel. 
+- [Python 2.7.12 +](https://www.python.org/downloads/release/python-2714/), `pip` telepített és a `python` rendszer elérési útjában. A Microsoft Genomics ügyfél nem kompatibilis a Python 3 rendszerrel. 
 
 ## <a name="set-up-create-a-microsoft-genomics-account-in-the-azure-portal"></a>Előkészületek: Microsoft Genomics-fiók létrehozása az Azure Portalon
 
@@ -49,7 +50,7 @@ További információ a Microsoft Genomicsről: [Mi az Microsoft Genomics?](over
 
 Telepítenie kell a Pythont és a Microsoft Genomics Python-ügyfelet a helyi környezetben. 
 
-### <a name="install-python"></a>Telepítse a Pythont
+### <a name="install-python"></a>A Python telepítése
 
 A Microsoft Genomics Python-ügyfél kompatibilis a Python 2.7.12 vagy újabb 2.7. xx-es verziójával. a 2.7.14 a javasolt verzió. A letöltés [itt](https://www.python.org/downloads/release/python-2714/) található. 
 
@@ -58,15 +59,15 @@ A Microsoft Genomics Python-ügyfél kompatibilis a Python 2.7.12 vagy újabb 2.
 
 ### <a name="install-the-microsoft-genomics-client"></a>A Microsoft Genomics-kliens telepítése
 
-A Python `pip` használatával telepítse az Microsoft Genomics- `msgen`ügyfelet. Az alábbi utasítások feltételezik, hogy a Python már telepítve van a rendszer elérési útján. Ha a telepítés során `pip` problémák merülnek fel, akkor a rendszer elérési útjához hozzá kell adnia a Pythont és a szkriptek almappáját.
+A Python használatával `pip` telepítse az Microsoft Genomics-ügyfelet `msgen` . Az alábbi utasítások feltételezik, hogy a Python már telepítve van a rendszer elérési útján. Ha a telepítés során problémák merülnek `pip` fel, akkor a rendszer elérési útjához hozzá kell adnia a Pythont és a szkriptek almappáját.
 
 ```
 pip install --upgrade --no-deps msgen
 pip install msgen
 ```
 
-Ha nem szeretné teljes egészében `msgen` telepíteni a rendszerszintű bináris fájlokat, és módosítani a rendszerszintű Python- `–-user` csomagokat, `pip`használja a jelzőt a következővel:.
-Ha a csomag alapú telepítést vagy a setup.py fájlt használja, azzal minden szükséges csomagot telepít. Ellenkező esetben a szükséges alapszintű `msgen` csomagok 
+Ha nem szeretné teljes egészében telepíteni a rendszerszintű `msgen` bináris fájlokat, és módosítani a rendszerszintű Python-csomagokat, használja a jelzőt a következővel: `–-user` `pip` .
+Ha a csomag alapú telepítést vagy a setup.py fájlt használja, azzal minden szükséges csomagot telepít. Ellenkező esetben a szükséges alapszintű csomagok `msgen` 
 
  * [Azure-Storage](https://pypi.python.org/pypi/azure-storage). 
  * [Kérések](https://pypi.python.org/pypi/requests). 
@@ -125,9 +126,9 @@ Nyissa meg a genomikai fiókjából letöltött *config. txt* fájlt. A megadhat
 
 ![Genomikai konfiguráció](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Genomikai konfiguráció")
 
-Ha a GATK4-t szeretné futtatni, állítsa a `process_name` paramétert `gatk4`a következőre:.
+Ha a GATK4-t szeretné futtatni, állítsa a paramétert a következőre: `process_name` `gatk4` .
 
-Alapértelmezés szerint a genomikai szolgáltatás a (vagy Ha gVCF kimenetet szeretne, és nem `-emitRefConfidence` egy vcf kimenetet (a GATK 3. x és `emit-ref-confidence` a 4. x GATK), adja hozzá a `emit_ref_confidence` paramétert a *config. txt* fájlhoz, és állítsa `gvcf`be a értékre az előző ábrán látható módon.  Ha vissza szeretné állítani a VCF kimenetét, távolítsa el a *config. txt* fájlból, `emit_ref_confidence` vagy állítsa `none`a paramétert a következőre:. 
+Alapértelmezés szerint a genomikai szolgáltatás a (vagy Ha gVCF kimenetet szeretne, és nem egy VCF kimenetet (a `-emitRefConfidence` GATK 3. x és `emit-ref-confidence` a 4. x GATK), adja hozzá a `emit_ref_confidence` paramétert a *config. txt* fájlhoz, és állítsa be a értékre `gvcf` az előző ábrán látható módon.  Ha vissza szeretné állítani a VCF kimenetét, távolítsa el a *config. txt* fájlból, vagy állítsa a paramétert a következőre: `emit_ref_confidence` `none` . 
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>Munkafolyamat elküldése a Microsoft Genomics szolgáltatásba a Microsoft Genomics-kliensen keresztül
 
@@ -144,5 +145,5 @@ msgen list -f c:\temp\config.txt
 
 A munkafolyamat befejezése után megtekintheti az Azure Storage-fiókban lévő kimeneti fájlokat a konfigurált kimeneti tárolóban. 
 
-## <a name="next-steps"></a>További lépések
-Ebben a cikkben a minta bemeneti adatokat feltöltötte az Azure Storage-ba, és elküldte a munkafolyamatot a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfélen keresztül. Ha többet szeretne megtudni a Microsoft Genomics szolgáltatással használható bemeneti fájltípusokkal kapcsolatban, tekintse meg a következő lapokat: [párosított FASTQ](quickstart-input-pair-FASTQ.md) | [Bam](quickstart-input-BAM.md) | [több FASTQ vagy Bam](quickstart-input-multiple.md). Ezt az oktatóanyagot megtalálhatja az [Azure Notebooks-oktatóanyagok](https://aka.ms/genomicsnotebook) között is.
+## <a name="next-steps"></a>Következő lépések
+Ebben a cikkben a minta bemeneti adatokat feltöltötte az Azure Storage-ba, és elküldte a munkafolyamatot a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfélen keresztül. Ha többet szeretne megtudni a Microsoft Genomics szolgáltatással használható bemeneti fájltípusokkal kapcsolatban, tekintse meg a következő lapokat: [párosított FASTQ](quickstart-input-pair-FASTQ.md)  |  [Bam](quickstart-input-BAM.md)  |  [több FASTQ vagy Bam](quickstart-input-multiple.md). Ezt az oktatóanyagot megtalálhatja az [Azure Notebooks-oktatóanyagok](https://aka.ms/genomicsnotebook) között is.

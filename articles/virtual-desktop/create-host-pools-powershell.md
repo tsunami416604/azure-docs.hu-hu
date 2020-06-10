@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a4d0c22318399370b9ec11046c33a4eb5460eb3
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 8c9c9a7d1845875fd80471ad2380a1ec7933cfb3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860120"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607669"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
@@ -114,7 +114,7 @@ A Windows rendszerű virtuális asztali ügynökök regisztrálásához tegye a 
 1. [Kapcsolódjon a virtuális géphez](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
 2. Töltse le és telepítse a Windows rendszerű virtuális asztali ügynököt.
    - Töltse le a [Windows rendszerű virtuális asztali ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
-   - Indítsa el a telepítőt. Ha a telepítő megkérdezi a regisztrációs jogkivonatot, adja meg az **export-AzWVDRegistrationInfo** parancsmagból kapott értéket.
+   - Indítsa el a telepítőt. Ha a telepítő megkérdezi a regisztrációs tokent, adja meg a **Get-AzWvdRegistrationInfo** parancsmag által kapott értéket.
 3. Töltse le és telepítse a Windows rendszerű virtuális asztali ügynök rendszerbetöltőjét.
    - Töltse le a [Windows rendszerű virtuális asztali ügynök Rendszerbetöltőjét](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
    - Indítsa el a telepítőt.
@@ -122,7 +122,7 @@ A Windows rendszerű virtuális asztali ügynökök regisztrálásához tegye a 
 >[!IMPORTANT]
 >A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](../security-center/security-center-just-in-time.md). Javasoljuk továbbá, hogy a virtuális gépeket ne rendeljen nyilvános IP-címekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozott egy gazdagépet, feltöltheti azt a RemoteApps szolgáltatással. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg az alkalmazáscsoport kezelése oktatóanyagot.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 0d1aa15c572f8ddec38cef913b170ed795ba1505
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dda71869411cbb37a24c2d39ef1d78563cfe6cab
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297921"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604099"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events a Windows rendszerű virtuális gépekhez
 
@@ -56,7 +56,7 @@ Ha a virtuális gép nem egy Virtual Networkon belül jön létre, a Cloud Servi
 ### <a name="version-and-region-availability"></a>Verzió és régió elérhetősége
 A Scheduled Events szolgáltatás verziója. A verziók kötelezőek, a jelenlegi verzió pedig `2019-01-01` .
 
-| Verzió | Kiadás típusa | Régiók | Release Notes (Kibocsátási megjegyzések) | 
+| Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - |
 | 2019-08-01 | Általános elérhetőség | Mind | <li> EventSource-támogatás hozzáadva |
 | 2019-04-01 | Általános elérhetőség | Mind | <li> Az esemény leírásának támogatása hozzáadva |
@@ -118,7 +118,7 @@ A DocumentIncarnation egy ETag, és egyszerűen megvizsgálhatja, hogy az esemé
 | Napszállta | Az esemény globálisan egyedi azonosítója. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | Ez az esemény okozza a hatását. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép néhány másodpercig szünetelteti az ütemezést. Előfordulhat, hogy a processzor és a hálózati kapcsolat fel van függesztve, de nincs hatással a memóriára vagy a megnyitott fájlokra. <li>`Reboot`: A virtuális gép újraindításra van ütemezve (nem állandó memória elvész). <li>`Redeploy`: A virtuális gép egy másik csomópontra való áthelyezésre van ütemezve (az ideiglenes lemezek elvesznek). <li>`Preempt`: A helyszíni virtuális gép törlődik (az ideiglenes lemezek elvesznek). <li> `Terminate`: A virtuális gép törlésre van ütemezve. |
 | ResourceType | Az esemény által gyakorolt erőforrás típusa <br><br> Értékek: <ul><li>`VirtualMachine`|
-| További források| Az események által gyakorolt erőforrások listája. Ez garantáltan legfeljebb egy [frissítési tartományból](manage-availability.md)származó gépeket tartalmazhat, de nem tartalmazhatja az UD összes számítógépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Erőforrások| Az események által gyakorolt erőforrások listája. Ez garantáltan legfeljebb egy [frissítési tartományból](manage-availability.md)származó gépeket tartalmazhat, de nem tartalmazhatja az UD összes számítógépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Esemény állapota | Az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény a tulajdonságban megadott idő után indul el `NotBefore` .<li>`Started`: Ez az esemény megkezdődött.</ul> A rendszer nem adta meg vagy nem hasonló állapotot, mert az eseményt a rendszer `Completed` már nem adja vissza az esemény befejezésekor.
 | NotBefore| Az az idő, amely után ez az esemény kezdődhet. <br><br> Példa: <br><ul><li> Hétfő, 19 Sep 2016 18:29:47 GMT  |
 | Leírás | Az esemény leírása. <br><br> Példa: <br><ul><li> A gazdagép-kiszolgáló karbantartás alatt áll. |
@@ -142,10 +142,18 @@ Az egyes események ütemezése a jövőben az esemény típusa alapján várhat
 Az ütemezett események a következőre érkeznek:
  - Önálló Virtual Machines.
  - Minden Virtual Machines egy felhőalapú szolgáltatásban.     
- - Egy rendelkezésre állási csoport összes Virtual Machines.     
+ - Egy rendelkezésre állási csoport összes Virtual Machines. 
+ - Egy rendelkezésre állási zónában lévő összes Virtual Machines.
  - Az összes Virtual Machines egy méretezési csoport elhelyezési csoportjában (beleértve a Batch-t).       
 
-Ennek eredményeképpen be kell jelölnie az `Resources` esemény mezőjét annak meghatározására, hogy mely virtuális gépek lesznek hatással a rendszerre. 
+> [!NOTE]
+> Egy rendelkezésre állási zónában az ütemezett események csak egyetlen, a rendelkezésre állási zónában érintett virtuális gépekre mutatnak.
+> 
+> Például egy rendelkezésre állási csoport esetében, ha 100 virtuális gép van a készletben, és az egyik virtuális gép frissítéssel rendelkezik, az ütemezett esemény a rendelkezésre állási csoport összes 100 virtuális gépre mutat.
+>
+> Ha a rendelkezésre állási zónában 100 virtuális gépek vannak, a rendelkezésre állási zónában az esemény csak az érintett virtuális gépre mutat.
+>
+> Ennek eredményeképpen ellenőriznie kell az `Resources` esemény mezőjét annak azonosításához, hogy mely virtuális gépek lesznek érintettek. 
 
 ### <a name="starting-an-event"></a>Esemény indítása 
 
@@ -230,7 +238,7 @@ foreach($event in $scheduledEvents.Events)
 }
 ``` 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - Tekintse meg az Azure Friday [Scheduled Events bemutatóját](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) . 
 - Tekintse át a Scheduled Events kód mintáit az [Azure-példány metaadatainak Scheduled Events GitHub-tárházban](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/30/2020
-ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5549f9eaf2bc44dfa7e99df04fd7864dd4b655ce
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422472"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610899"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
 
@@ -42,6 +42,12 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
 
    A tűzfalszabályokat az [Azure Portal](howto-manage-firewall-portal.md) vagy az [Azure CLI](howto-manage-firewall-cli.md) használatával frissítheti.
 
+> [!NOTE]
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
+
 ## <a name="configure-the-master-server"></a>A főkiszolgáló konfigurálása
 
 A következő lépések előkészítik és konfigurálja a helyszínen üzemeltetett MariaDB-kiszolgálót egy virtuális gépen vagy egy felhőalapú adatbázis-szolgáltatásban felhőbe irányuló replikálás számára. A MariaDB-kiszolgáló a felhőbe irányuló replikálás főkiszolgálója.
@@ -60,13 +66,13 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   Ha a változó [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) visszaadja az `ON`értéket, a bináris naplózás engedélyezve van a kiszolgálón.
+   Ha a változó [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) visszaadja az értéket `ON` , a bináris naplózás engedélyezve van a kiszolgálón.
 
-   Ha `log_bin` az értéket `OFF`adja vissza, szerkessze a **My. cnf** fájlt `log_bin=ON` úgy, hogy az bekapcsolja a bináris naplózást. Indítsa újra a kiszolgálót a módosítás érvénybe léptetéséhez.
+   Ha `log_bin` az értéket adja vissza `OFF` , szerkessze a **My. cnf** fájlt úgy, hogy az `log_bin=ON` bekapcsolja a bináris naplózást. Indítsa újra a kiszolgálót a módosítás érvénybe léptetéséhez.
 
 3. A főkiszolgáló beállításainak konfigurálása.
 
-    Felhőbe irányuló replikálás megköveteli, hogy `lower_case_table_names` a paraméter konzisztens legyen a fő-és a replika-kiszolgálók között. A `lower_case_table_names` paraméter alapértelmezett értéke `1` Azure Database for MariaDB.
+    Felhőbe irányuló replikálás megköveteli `lower_case_table_names` , hogy a paraméter konzisztens legyen a fő-és a replika-kiszolgálók között. A `lower_case_table_names` paraméter `1` alapértelmezett értéke Azure Database for MariaDB.
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -78,7 +84,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    
    Ha szeretné megtudni, hogyan adhat hozzá felhasználói fiókokat a főkiszolgálón, tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/library/create-user/).
 
-   Az alábbi parancsok használatával az új replikációs szerepkör bármely gépről elérheti a főkiszolgálót, nem csak a főkiszolgálót üzemeltető gépet. Ehhez a hozzáféréshez a **(\@z) "%" syncuser** kell megadnia a parancsban a felhasználó létrehozásához.
+   Az alábbi parancsok használatával az új replikációs szerepkör bármely gépről elérheti a főkiszolgálót, nem csak a főkiszolgálót üzemeltető gépet. Ehhez a hozzáféréshez a ** \@ (z) "%" syncuser** kell megadnia a parancsban a felhasználó létrehozásához.
    
    A MariaDB-dokumentációval kapcsolatos további tudnivalókért tekintse [meg a fiókok nevének megadásával](https://mariadb.com/kb/en/library/create-user/#account-names)foglalkozó témakört.
 
@@ -128,7 +134,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
 6. Az aktuális bináris naplófájl nevének és eltolásának beolvasása.
 
-   Az aktuális bináris naplófájl nevének és eltolásának meghatározásához futtassa a parancsot [`show master status`](https://mariadb.com/kb/en/library/show-master-status/).
+   Az aktuális bináris naplófájl nevének és eltolásának meghatározásához futtassa a parancsot [`show master status`](https://mariadb.com/kb/en/library/show-master-status/) .
     
    ```sql
    show master status;
@@ -141,7 +147,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
    
 7. A GTID pozíciójának beolvasása (nem kötelező, a GTID való replikáláshoz szükséges).
 
-   Futtassa a függvényt [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) a megfelelő BinLog-fájlnév és eltolás GTID pozíciójának lekéréséhez.
+   Futtassa a függvényt a [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) megfelelő BinLog-fájlnév és ELTOLÁS GTID pozíciójának lekéréséhez.
   
     ```sql
     select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
@@ -177,7 +183,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
    Az összes felhőbe irányuló replikálás függvényt tárolt eljárások hajtják végre. Az összes eljárást [felhőbe irányuló replikálás tárolt eljárásokban](reference-data-in-stored-procedures.md)találja. A tárolt eljárások a MySQL-rendszerhéjban vagy a MySQL Workbenchben is futtathatók.
 
-   Két kiszolgáló összekapcsolásához és a replikáció megkezdéséhez jelentkezzen be a cél másodpéldány-kiszolgálóra az Azure DB for MariaDB szolgáltatásban. Ezután állítsa be a külső példányt főkiszolgálóként a `mysql.az_replication_change_master` vagy tárolt eljárás használatával `mysql.az_replication_change_master_with_gtid` a MariaDB-KISZOLGÁLÓHOZ tartozó Azure-adatbázison.
+   Két kiszolgáló összekapcsolásához és a replikáció megkezdéséhez jelentkezzen be a cél másodpéldány-kiszolgálóra az Azure DB for MariaDB szolgáltatásban. Ezután állítsa be a külső példányt főkiszolgálóként a `mysql.az_replication_change_master` vagy `mysql.az_replication_change_master_with_gtid` tárolt eljárás használatával a MariaDB-kiszolgálóhoz tartozó Azure-adatbázison.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
@@ -204,7 +210,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
    - Replikáció SSL használatával
 
-       Hozza létre a `@cert` változót a következő parancsok futtatásával:
+       Hozza létre a változót a `@cert` következő parancsok futtatásával:
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
@@ -227,7 +233,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
 2. Replikáció elindítása.
 
-   A replikálás `mysql.az_replication_start` elindításához hívja meg a tárolt eljárást.
+   A `mysql.az_replication_start` replikálás elindításához hívja meg a tárolt eljárást.
 
    ```sql
    CALL mysql.az_replication_start;
@@ -235,19 +241,19 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
 
 3. Replikáció állapotának bejelölése.
 
-   A replikálási állapot megtekintéséhez hívja meg a [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) parancsot a replika kiszolgálóján.
+   A [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) replikálási állapot megtekintéséhez hívja meg a parancsot a replika kiszolgálóján.
     
    ```sql
    show slave status;
    ```
 
-   Ha `Slave_IO_Running` a `Slave_SQL_Running` és az állapotban `yes`van, és a értéke `Seconds_Behind_Master` `0`, a replikálás működik. `Seconds_Behind_Master`azt jelzi, hogy a replika milyen későn van. Ha az érték nem `0`, akkor a replika frissíti a frissítéseket.
+   Ha `Slave_IO_Running` a és az `Slave_SQL_Running` állapotban van `yes` , és a értéke `Seconds_Behind_Master` , a `0` replikálás működik. `Seconds_Behind_Master`azt jelzi, hogy a replika milyen későn van. Ha az érték nem `0` , akkor a replika frissíti a frissítéseket.
 
 4. Frissítse a megfelelő kiszolgálói változókat az adatreplikálás biztonságosabbá tételéhez (csak a GTID nélküli replikáláshoz szükséges).
     
-    A MariaDB-ben a natív replikálás korlátozása miatt a GTID- [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) forgatókönyv [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) nélkül kell beállítania és konfigurálnia a replikálást.
+    A MariaDB-ben a natív replikálás korlátozása miatt [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) a GTID-forgatókönyv nélkül kell beállítania és konfigurálnia [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) a replikálást.
 
-    Ellenőrizze a Slave-kiszolgáló `sync_master_info` és `sync_relay_log_info` a változóit, és ellenőrizze, hogy az adatreplikáció stabil-e, és állítsa `1`be a változókat a következőre:.
+    Ellenőrizze a Slave-kiszolgáló `sync_master_info` és a `sync_relay_log_info` változóit, és ellenőrizze, hogy az adatreplikáció stabil-e, és állítsa be a változókat a következőre: `1` .
     
 ## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
 
@@ -275,5 +281,5 @@ A replikálási hibák kihagyásához és a replikáció engedélyezéséhez has
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Azure Database for MariaDB [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

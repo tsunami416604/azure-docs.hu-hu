@@ -10,16 +10,35 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: bc79dabe82ab02166e3aa60a378ff394bca25028
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725550"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628052"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
 
-A Microsoft beszédfelismerés pontosságának tesztelésekor vagy egyéni modelljeinek betanításakor a hang-és szöveges adatokra lesz szüksége. Ezen az oldalon bemutatjuk az adattípusokat, a használatot és a felügyeletet.
+A Microsoft beszédfelismerés pontosságának tesztelésekor vagy egyéni modelljeinek betanításakor a hang-és szöveges adatokra lesz szüksége. Ezen az oldalon az egyéni beszédfelismerési modell által igényelt adattípusokat fedi le.
+
+## <a name="data-diversity"></a>Az adatok sokfélesége
+
+Az egyéni modell tesztelésére és betanítására használt szöveg és hang a különböző hangszórókból származó mintákat, valamint a modell felismeréséhez szükséges forgatókönyveket kell tartalmaznia.
+Vegye figyelembe ezeket a tényezőket az egyéni modellek tesztelésére és betanítására szolgáló adatok összegyűjtésekor:
+
+* A szöveges és a beszédfelismerési hangadatoknak le kell fedniük a felhasználók által a modellel való interakció során végrehajtandó szóbeli utasítások fajtáit. Például egy olyan modell, amely felváltja és csökkenti a hőmérsékletet, a nyilatkozatokban szereplő személyeknek az ilyen jellegű módosításokat kell elvégezniük.
+* Az adatainak tartalmazniuk kell az összes olyan beszédfelismerési eltérést, amelyet a modellnek fel kell ismernie. Számos tényező eltérő lehet a beszéd, például az ékezetek, a dialektusok, a nyelvtanulás, a kor, a nemek, a hangfelvételi szint, a stressz szintje és a napszak.
+* Különböző környezetekben (beltéri, kültéri, közúti zaj) lévő mintákat kell tartalmaznia, ahol a modellt használni fogja.
+* A hanganyagot az éles rendszer által használt hardvereszközök használatával kell összegyűjteni. Ha a modellnek azonosítania kell a különböző minőségű eszközökön rögzített hanganyagot, a modell betanításához megadott hangadatoknak is ezeket a különböző forgatókönyveket kell tartalmazniuk.
+* Később további adatokat adhat hozzá a modellhez, de gondoskodhat arról, hogy az adatkészlet sokrétű és a projekt igényeinek megfelelően legyen látható.
+* Az egyéni modell-felismerési igényekhez *nem* tartozó olyan adatmennyiségeket is tartalmazhat, amelyek a modell által nem igényelt adatmennyiséget befolyásolják.
+
+A forgatókönyvek egy részhalmazára betanított modell csak jól tudja elvégezni ezeket a forgatókönyveket. Gondosan válassza ki azokat az adattípusokat, amelyek az egyéni modell felismeréséhez szükséges forgatókönyvek teljes körét jelölik.
+
+> [!TIP]
+> Kezdjen el kis mennyiségű mintaadatok közül, amelyek megfelelnek a modellnek.
+> Például rögzítheti egy kis, de reprezentatív hangmintát ugyanazon a hardveren, és ugyanabban az akusztikai környezetben, amelyet a modell éles környezetben talál.
+> A reprezentatív adat kis adatkészletei problémákat okozhatnak, mielőtt befektetett egy sokkal nagyobb adatkészletbe a képzéshez.
 
 ## <a name="data-types"></a>Adattípusok
 
@@ -27,9 +46,9 @@ Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adatt
 
 | Adattípus | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
-| [Hang](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/A |
-| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1 – 1000 órányi hang |
-| [Kapcsolódó szöveg](#related-text-data-for-training) | Nem | N/a | Igen | 1-200 MB kapcsolódó szöveg |
+| [Hang](#audio-data-for-testing) | Yes<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | No | N/A |
+| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Yes | 1 – 1000 órányi hang |
+| [Kapcsolódó szöveg](#related-text-data-for-training) | No | N/a | Yes | 1-200 MB kapcsolódó szöveg |
 
 A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és. zip fájlként kell feltölteni. Az egyes adatkészletek csak egyetlen adattípust tartalmazhatnak.
 

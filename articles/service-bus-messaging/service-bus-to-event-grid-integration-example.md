@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 548a51fef693aae6e9b9068f9731b82aaa85dfe3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067766"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610493"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Oktatóanyag: válaszadás a Azure Event Grid által a Azure Functions és a Azure Logic Apps használatával kapott Azure Service Bus eseményekre
 Ebből az oktatóanyagból megtudhatja, hogyan válaszolhat a Azure Event Grid használatával fogadott Azure Service Bus eseményekre Azure Functions és Azure Logic Apps használatával. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Service Bus-névtér létrehozása
 > * Minta alkalmazás előkészítése üzenetek küldéséhez
@@ -122,19 +122,25 @@ Ezután hajtsa végre a következő lépéseket:
     }
     
     ```
-2. Kattintson a **Mentés és futtatás** elemre.
+2. A függvény kódjának mentéséhez válassza az eszköztár **Mentés** elemét.
 
-    ![Függvény alkalmazás kimenete](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+    ![Függvény kódjának mentése](./media/service-bus-to-event-grid-integration-example/save-function-code.png)
+3. Válassza a **tesztelés/Futtatás** lehetőséget az eszköztáron, adjon meg egy nevet a törzsben, és válassza a **Futtatás**lehetőséget. 
+
+    ![Teszt futtatása](./media/service-bus-to-event-grid-integration-example/test-run-function.png)
+4. Ellenőrizze, hogy látható-e a kimenet és a naplók az alábbi képen látható módon. 
+
+    ![Teszt futtatása – kimenet](./media/service-bus-to-event-grid-integration-example/test-run-output.png)
 3. Válassza a **függvény URL-címének lekérése** és az URL-cím lekérése 
 
     ![Függvény URL-címének lekérése](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. Válassza az URL-szöveg melletti **Másolás** gombot.    
+    ![Függvény URL-címének másolása](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 # <a name="azure-functions-v1"></a>[Azure Functions v1](#tab/v1)
 
 1. Konfigurálja a függvényt a **v1** verzió használatára: 
     1. Válassza ki a Function alkalmazást a fanézetben, és válassza a **Function app Settings**elemet. 
-
-        ![A függvényalkalmazás beállításai]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
     2. Válassza a **~ 1** lehetőséget a **futtatókörnyezet verziójának**kiválasztásához. 
 2. Bontsa ki a **függvények** csomópontot a fanézetben, majd válassza ki a függvényt. Cserélje le a függvény kódját a következő kódra: 
 
@@ -184,9 +190,11 @@ Ezután hajtsa végre a következő lépéseket:
 4. Kattintson a **Mentés és futtatás** elemre.
 
     ![Függvény alkalmazás kimenete](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-4. Válassza a **függvény URL-címének lekérése** és az URL-cím lekérése 
+4. Válassza a **függvény URL-címének beolvasása** lehetőséget az eszköztáron. 
 
     ![Függvény URL-címének lekérése](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. Válassza az URL-szöveg melletti **Másolás** gombot.    
+    ![Függvény URL-címének másolása](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 ---
 
@@ -201,16 +209,20 @@ Azure Event Grid előfizetés létrehozásához kövesse az alábbi lépéseket:
 2. Válassza az **+ esemény-előfizetés** lehetőséget az eszköztáron. 
 3. Az **esemény-előfizetés létrehozása** oldalon hajtsa végre a következő lépéseket:
     1. Adja meg az előfizetés **nevét** . 
+    2. Adja meg a **rendszer témakör** **nevét** . A rendszertémakörök az Azure-erőforrások, például az Azure Storage-fiók és a Azure Service Bus számára létrehozott témakörök. További információ a rendszertémakörökről: a [rendszertémakörök áttekintése](../event-grid/system-topics.md).
     2. Válassza a **webes Hook** lehetőséget a **végpont típusához**. 
 
         ![Service Bus – Event Grid előfizetés](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
-    3. **Válasszon ki egy végpontot**, illessze be a függvény URL-címét, majd válassza a **kijelölés megerősítése**lehetőséget. 
+    3. Válassza a **végpont kiválasztása**lehetőséget, illessze be a függvény URL-címét, majd válassza a **kijelölés megerősítése**lehetőséget. 
 
         ![Függvény – a végpont kiválasztása](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
-    4. Váltson a **szűrők** lapra, adja meg az **első előfizetés** nevét a korábban létrehozott Service Bus témakörhöz, majd kattintson a **Létrehozás** gombra. 
+    4. Váltson a **szűrők** lapra, és végezze el a következő feladatokat:
+        1. Válassza ki a **tulajdonos szűrésének engedélyezése** lehetőséget.
+        2. Adja meg az **első előfizetés** nevét a korábban létrehozott Service Bus témakörhöz.
+        3. Válassza a **Létrehozás** gombot. 
 
-        ![Esemény-előfizetés szűrője](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
-4. Ellenőrizze, hogy megjelenik-e az esemény-előfizetés a listában.
+            ![Esemény-előfizetés szűrője](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
+4. Váltson az **események** oldal **esemény-előfizetések** lapjára, és ellenőrizze, hogy megjelenik-e az esemény-előfizetés a listában.
 
     ![Esemény-előfizetés a listában](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
@@ -242,11 +254,15 @@ Ez a szakasz az üzenetek fogadását és feldolgozását ismerteti az eseménye
         ![A függvény közzétételi profiljának beolvasása](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
     4. Mentse a fájlt a projekt mappájába. 
 4. A Visual Studióban kattintson a jobb gombbal az **SBEventGridIntegration** elemre, és válassza a **Közzététel** lehetőséget. 
-5. Kattintson a **Start gombra** a **közzétételi** lapon. 
-6. A **Közzététel célhelyének** kiválasztása lapon hajtsa végre a következő lépéseket, majd válassza a **profil importálása**lehetőséget. 
+5. A **Közzététel**oldalon hajtsa végre a következő lépéseket: 
+    1. Kattintson a **Start** gombra a **közzétételi** lapon 
+    2. A **cél**mezőben válassza a **profil importálása**lehetőséget. 
+    3. Válassza a **Tovább** lehetőséget. 
 
-    ![Visual Studio – profil importálása gomb](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
-7. Válassza ki a korábban letöltött **közzétételi profil fájlt** . 
+        ![Visual Studio – profil importálása gomb](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
+7. Válassza ki a korábban letöltött **közzétételi profilt** , és válassza a **Befejezés**lehetőséget.
+
+    ![A közzétételi profil kiválasztása](./media/service-bus-to-event-grid-integration-example/select-publish-profile.png)
 8. Válassza a **Közzététel** elemet a **közzétételi** oldalon. 
 
     ![Visual Studio – közzététel](./media/service-bus-to-event-grid-integration-example/select-publish.png)
@@ -319,7 +335,7 @@ Az alábbi lépéseket követve összekapcsolhatók a logikai alkalmazások Azur
 
     ![Logic Apps Designer – logikai alkalmazás futtatása](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók az [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) szolgáltatásról.
 * További tudnivalók az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.

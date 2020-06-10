@@ -5,20 +5,22 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/5/2020
-ms.openlocfilehash: 7f43e47975b797b68b250399ee31bf56e0f01d21
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.date: 6/8/2020
+ms.openlocfilehash: 4036fe5b08a087f1f26027d5c5d98da851fb377c
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483385"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610287"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Kapcsolódás Azure Database for MySQLhoz átirányítás használatával
 
 Ez a témakör azt ismerteti, hogyan lehet egy alkalmazást Azure Database for MySQL-kiszolgálót átirányítási móddal összekapcsolni. Az átirányítás célja az ügyfélalkalmazások és a MySQL-kiszolgálók közötti hálózati késés csökkentése azáltal, hogy az alkalmazások közvetlenül a háttérbeli kiszolgáló csomópontjaihoz csatlakoznak.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Azure Database for MySQL-kiszolgáló létrehozása a 5,6, 5,7 vagy 8,0 verziójú motorral. Részletekért lásd: [Azure Database for MySQL kiszolgáló létrehozása a portálról](quickstart-create-mysql-server-database-using-azure-portal.md) , vagy [Azure Database for MySQL kiszolgáló létrehozása a parancssori felület használatával](quickstart-create-mysql-server-database-using-azure-cli.md).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Azure Database for MySQL-kiszolgáló létrehozása a 5,6, 5,7 vagy 8,0 verziójú motorral. 
+
+Részletekért lásd: Azure Database for MySQL kiszolgáló létrehozása a [Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) vagy az [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)használatával.
 
 ## <a name="enable-redirection"></a>Átirányítás engedélyezése
 

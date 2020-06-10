@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/09/2020
 tags: connectors
-ms.openlocfilehash: 33075173385a6e36829199c5bda854c78a4424fc
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325116"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609519"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatási végpontok hívása HTTP vagy HTTPS protokollon keresztül Azure Logic Apps
 
@@ -33,41 +33,6 @@ Ez a cikk bemutatja, hogyan adhat hozzá HTTP-triggert vagy műveletet a logikai
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps](../logic-apps/logic-apps-overview.md)?
 
 * Az a logikai alkalmazás, amelyről meg szeretné hívni a célként megadott végpontot. A HTTP-trigger elindításához [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). A HTTP-művelet használatához indítsa el a logikai alkalmazást a kívánt triggerrel. Ez a példa a HTTP-triggert használja első lépésként.
-
-<a name="tls-support"></a>
-
-## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
-
-A célként megadott végponti képesség alapján a kimenő hívások támogatják Transport Layer Security (TLS), amely korábban SSL (SSL), 1,0, 1,1 és 1,2 verziójú. Logic Apps a lehető legmagasabb támogatott verzió használatával egyeztet a végponttal.
-
-Ha például a végpont támogatja a 1,2-et, a HTTP-összekötő először a 1,2-et használja. Ellenkező esetben az összekötő a következő legmagasabb támogatott verziót használja.
-
-<a name="self-signed"></a>
-
-## <a name="self-signed-certificates"></a>Önaláírt tanúsítványok
-
-* A globális, több-bérlős Azure-környezetben található Logic apps esetében a HTTP-összekötő nem engedélyezi az önaláírt TLS/SSL-tanúsítványokat. Ha a logikai alkalmazás HTTP-hívást kezdeményez egy kiszolgálónak, és egy TLS/SSL önaláírt tanúsítványt jelenít meg, akkor a HTTP-hívás `TrustFailure` hibával meghiúsul.
-
-* Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében a http-összekötő engedélyezi az önaláírt tanúsítványokat a TLS/SSL-kézfogásokhoz. Először is engedélyeznie kell az [önaláírt tanúsítvány-támogatást](../logic-apps/create-integration-service-environment-rest-api.md#request-body) egy meglévő ISE vagy új ISE számára a Logic apps REST API használatával, és a nyilvános tanúsítványt a helyen kell telepíteni `TrustedRoot` .
-
-## <a name="known-issues"></a>Ismert problémák
-
-### <a name="omitted-http-headers"></a>Kihagyott HTTP-fejlécek
-
-Ha egy HTTP-trigger vagy-művelet tartalmazza ezeket a fejléceket, Logic Apps eltávolítja ezeket a fejléceket a generált kérési üzenetből a figyelmeztetés vagy a hiba megjelenítése nélkül:
-
-* `Accept-*`
-* `Allow`
-* `Content-*`a következő kivételekkel: `Content-Disposition` , `Content-Encoding` és`Content-Type`
-* `Cookie`
-* `Expires`
-* `Host`
-* `Last-Modified`
-* `Origin`
-* `Set-Cookie`
-* `Transfer-Encoding`
-
-Bár a Logic Apps nem állítja le a HTTP-triggert vagy műveletet használó logikai alkalmazások mentését ezekkel a fejlécekkel, Logic Apps figyelmen kívül hagyja ezeket a fejléceket.
 
 <a name="http-trigger"></a>
 
@@ -131,6 +96,22 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
 1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
+
+A célként megadott végponti képesség alapján a kimenő hívások támogatják Transport Layer Security (TLS), amely korábban SSL (SSL), 1,0, 1,1 és 1,2 verziójú. Logic Apps a lehető legmagasabb támogatott verzió használatával egyeztet a végponttal.
+
+Ha például a végpont támogatja a 1,2-et, a HTTP-összekötő először a 1,2-et használja. Ellenkező esetben az összekötő a következő legmagasabb támogatott verziót használja.
+
+<a name="self-signed"></a>
+
+## <a name="self-signed-certificates"></a>Önaláírt tanúsítványok
+
+* A globális, több-bérlős Azure-környezetben található Logic apps esetében a HTTP-összekötő nem engedélyezi az önaláírt TLS/SSL-tanúsítványokat. Ha a logikai alkalmazás HTTP-hívást kezdeményez egy kiszolgálónak, és egy TLS/SSL önaláírt tanúsítványt jelenít meg, akkor a HTTP-hívás `TrustFailure` hibával meghiúsul.
+
+* Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében a http-összekötő engedélyezi az önaláírt tanúsítványokat a TLS/SSL-kézfogásokhoz. Először is engedélyeznie kell az [önaláírt tanúsítvány-támogatást](../logic-apps/create-integration-service-environment-rest-api.md#request-body) egy meglévő ISE vagy új ISE számára a Logic apps REST API használatával, és a nyilvános tanúsítványt a helyen kell telepíteni `TrustedRoot` .
+
 ## <a name="content-with-multipartform-data-type"></a>Tartalom multipart/form-adattípus
 
 A `multipart/form-data` http-kérelmekben szereplő tartalom kezeléséhez hozzáadhat egy JSON-objektumot, amely tartalmazza a `$content-type` http- `$multipart` kérelem törzsének és attribútumainak a formátum használatával történő kezelését.
@@ -177,6 +158,90 @@ Az alábbi példa a HTTP-művelet JSON-definícióját mutatja be az alapul szol
 }
 ```
 
+<a name="asynchronous-pattern"></a>
+
+## <a name="asynchronous-request-response-behavior"></a>Aszinkron kérelem – válasz viselkedése
+
+Alapértelmezés szerint a Azure Logic Apps összes HTTP-alapú művelete követi a normál [aszinkron műveleti mintát](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply). Ez a minta azt adja meg, hogy egy HTTP-művelet vagy egy, a végpontra, szolgáltatásra, rendszerre vagy API-ra irányuló kérés küldése után a fogadó azonnal ["202 elfogadott"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) választ ad vissza. Ez a kód megerősíti, hogy a fogadó elfogadta a kérést, de nem fejezte be a feldolgozást. A válasz tartalmazhat egy `location` fejlécet, amely meghatározza az URL-címet és a frissítési azonosítót, amelyet a hívó használhat az aszinkron kérelem állapotának lekéréséhez vagy a fogadó leállításához, illetve az ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) sikerességi válasz vagy más nem 202 válasz visszaadását. A hívónak azonban nem kell megvárnia, amíg a kérés befejezte a feldolgozást, és továbbra is futtathatja a következő műveletet. További információ: az [aszinkron szolgáltatások integrációja a szolgáltatásbeli önállóságot kényszeríti](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+
+* A Logic app Designerben a HTTP-művelet, de az trigger nem, **aszinkron mintázatú** beállítással rendelkezik, amely alapértelmezés szerint engedélyezve van. Ezzel a beállítással megadhatja, hogy a hívó ne várjon a feldolgozás befejezésére, és továbblép a következő műveletre, de továbbra is ellenőrzi az állapotot, amíg a feldolgozás leáll. Ha le van tiltva, ez a beállítás azt határozza meg, hogy a hívó a következő műveletre való áttérés előtt megvárja a feldolgozás befejeződését.
+
+  A beállítás megkereséséhez kövesse az alábbi lépéseket:
+
+  1. A HTTP-művelet címsorán válassza az ellipszisek (**..**.) gombot, amely megnyitja a művelet beállításait.
+
+  1. Az **aszinkron minta** beállításának megkeresése.
+
+     !["Aszinkron minta" beállítás](./media/connectors-native-http/asynchronous-pattern-setting.png)
+
+* A HTTP-művelet alapjául szolgáló JavaScript Object Notation (JSON) definíciója implicit módon követi az aszinkron műveleti mintát.
+
+<a name="disable-asynchronous-operations"></a>
+
+## <a name="disable-asynchronous-operations"></a>Aszinkron műveletek letiltása
+
+Időnként előfordulhat, hogy bizonyos helyzetekben a HTTP-művelet aszinkron viselkedését szeretné használni, például a következőket:
+
+* [A hosszú ideig futó feladatok HTTP-időtúllépésének elkerülése](#avoid-http-timeouts)
+* [Helyadatok ellenőrzésének letiltása](#disable-location-header-check)
+
+<a name="turn-off-asynchronous-pattern-setting"></a>
+
+### <a name="turn-off-asynchronous-pattern-setting"></a>**Aszinkron mintázat** beállításának kikapcsolása
+
+1. A Logic app Designerben a HTTP-művelet címsorán válassza az ellipszisek (**..**.) gombot, amely megnyitja a művelet beállításait.
+
+1. Keresse meg az **aszinkron minta** beállítást, kapcsolja **ki** a beállítást, ha engedélyezve van, és válassza a **kész**lehetőséget.
+
+   ![Az "aszinkron minta" beállítás letiltása](./media/connectors-native-http/disable-asynchronous-pattern-setting.png)
+
+<a name="add-disable-async-pattern-option"></a>
+
+### <a name="disable-asynchronous-pattern-in-actions-json-definition"></a>Aszinkron minta letiltása a művelet JSON-definíciójában
+
+A HTTP-művelet alapjául szolgáló JSON-definícióban [adja hozzá a `"DisableAsyncPattern"` művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options) definícióját a művelethez, hogy a művelet a szinkron műveleti mintát követi. További információ: [műveletek futtatása szinkron műveleti mintában](../logic-apps/logic-apps-workflow-actions-triggers.md#disable-asynchronous-pattern).
+
+<a name="avoid-http-timeouts"></a>
+
+## <a name="avoid-http-timeouts-for-long-running-tasks"></a>A hosszú ideig futó feladatok HTTP-időtúllépésének elkerülése
+
+A HTTP-kérelmek [időtúllépési korláttal](../logic-apps/logic-apps-limits-and-config.md#http-limits)rendelkeznek. Ha olyan hosszan futó HTTP-művelettel rendelkezik, amely túllépi a korlátot, a következő lehetőségek közül választhat:
+
+* [Tiltsa le a http-művelet aszinkron műveleti mintáját](#disable-asynchronous-operations) , így a művelet nem kérdezi le folyamatosan a lekérdezést, vagy nem vizsgálja meg a kérelem állapotát. Ehelyett a művelet megvárja, amíg a fogadó válaszol az állapotra és az eredményekre, miután a kérés befejezte a feldolgozást.
+
+* Cserélje le a HTTP-műveletet a [http webhook műveletre](../connectors/connectors-native-webhook.md), amely arra vár, hogy a fogadó válaszoljon az állapotra és az eredményekre, miután a kérés befejezte a feldolgozást.
+
+<a name="disable-location-header-check"></a>
+
+## <a name="disable-checking-location-headers"></a>Helyadatok ellenőrzésének letiltása
+
+Egyes végpontok, szolgáltatások, rendszerek vagy API-k "202 elfogadott" választ adnak vissza, amely nem tartalmaz `location` fejlécet. Ha el szeretné kerülni, hogy a HTTP-műveletek folyamatosan ellenőrizzék a kérés állapotát, ha a `location` fejléc nem létezik, a következő lehetőségek közül választhat:
+
+* [Tiltsa le a http-művelet aszinkron műveleti mintáját](#disable-asynchronous-operations) , így a művelet nem kérdezi le folyamatosan a lekérdezést, vagy nem vizsgálja meg a kérelem állapotát. Ehelyett a művelet megvárja, amíg a fogadó válaszol az állapotra és az eredményekre, miután a kérés befejezte a feldolgozást.
+
+* Cserélje le a HTTP-műveletet a [http webhook műveletre](../connectors/connectors-native-webhook.md), amely arra vár, hogy a fogadó válaszoljon az állapotra és az eredményekre, miután a kérés befejezte a feldolgozást.
+
+## <a name="known-issues"></a>Ismert problémák
+
+<a name="omitted-headers"></a>
+
+### <a name="omitted-http-headers"></a>Kihagyott HTTP-fejlécek
+
+Ha egy HTTP-trigger vagy-művelet tartalmazza ezeket a fejléceket, Logic Apps eltávolítja ezeket a fejléceket a generált kérési üzenetből a figyelmeztetés vagy a hiba megjelenítése nélkül:
+
+* `Accept-*`
+* `Allow`
+* `Content-*`a következő kivételekkel: `Content-Disposition` , `Content-Encoding` és`Content-Type`
+* `Cookie`
+* `Expires`
+* `Host`
+* `Last-Modified`
+* `Origin`
+* `Set-Cookie`
+* `Transfer-Encoding`
+
+Bár a Logic Apps nem állítja le a HTTP-triggert vagy műveletet használó logikai alkalmazások mentését ezekkel a fejlécekkel, Logic Apps figyelmen kívül hagyja ezeket a fejléceket.
+
 ## <a name="connector-reference"></a>Összekötő-referencia
 
 Az trigger-és műveleti paraméterekkel kapcsolatos további információkért tekintse meg a következő részeket:
@@ -188,14 +253,14 @@ Az trigger-és műveleti paraméterekkel kapcsolatos további információkért 
 
 Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
 
-| Tulajdonság neve | Típus | Leírás |
-|---------------|------|-------------|
-| fejlécek | objektum | A kérelemben szereplő fejlécek |
-| body (Törzs) | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
-| állapotkód | int | A kérelemben szereplő állapotkód |
+| Tulajdonság | Típus | Leírás |
+|----------|------|-------------|
+| `headers` | JSON-objektum | A kérelemben szereplő fejlécek |
+| `body` | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| `status code` | Egész szám | A kérelemben szereplő állapotkód |
 |||
 
-| Állapotkód | Description |
+| Állapotkód | Leírás |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Elfogadva |

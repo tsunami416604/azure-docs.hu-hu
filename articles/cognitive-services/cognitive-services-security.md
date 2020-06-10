@@ -9,12 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: dapine
-ms.openlocfilehash: fa0ad8c7f75a977e1a39ff6ffd6fee08d977f57a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202014"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608451"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
@@ -110,7 +111,7 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 Környezeti változó beszerzéséhez a memóriába kell beolvasni. A használt nyelvtől függően vegye figyelembe az alábbi kódrészleteket. Ezek a kódrészletek bemutatják, hogyan kérheti le a környezeti változót `ENVIRONMENT_VARIABLE_KEY` , és hogyan rendelhet hozzá egy nevű változóhoz `value` .
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 További információ: <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
@@ -200,7 +201,7 @@ NSString* value =
 
 Ügyfélszéf érhető el ehhez a kognitív szolgáltatáshoz:
 
-* Fordító
+* Translator
 
 Language Understanding esetén a Microsoft Engineers nem fér hozzá a E0 SKU-ban lévő összes ügyfél-adatszolgáltatáshoz. Ha a E0 SKU használatára van lehetősége, töltse ki és küldje el a [Luis szolgáltatási kérelem űrlapját](https://aka.ms/cogsvc-cmk). Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a E0 SKU-val a LUIS-t, létre kell hoznia egy új Language Understanding-erőforrást a Azure Portal, és a E0 kell választania. A felhasználók nem fognak tudni frissíteni a F0 az új E0 SKU-ra.
 

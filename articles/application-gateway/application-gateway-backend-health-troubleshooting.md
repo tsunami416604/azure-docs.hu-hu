@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 626f52aa8a14cd16d36bef8930cfb75654ef3f32
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648446"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628781"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>A Application Gateway háttérbeli állapotával kapcsolatos problémák elhárítása
 ==================================================
@@ -81,7 +81,7 @@ Miután a háttérbeli készlet összes kiszolgálójára vonatkozóan egy nem k
 A **részletek** oszlopban megjelenő üzenet részletesebb információkat nyújt a problémáról, és ezek alapján megkezdheti a probléma elhárítását.
 
 > [!NOTE]
-> Az alapértelmezett mintavételi kérelmet a (z \< \> )://127.0.0.1: \< port \> /. protokoll formátumban küldi el a rendszer. Például http://127.0.0.1:80 egy http-mintavétel esetén a 80-es porton. Csak a 200 és 399 közötti HTTP-állapotkódok kifogástalannak tekintendők. A protokoll és a célport a HTTP-beállításoktól örökölt. Ha azt Application Gateway szeretné, hogy a mintavétel egy másik protokollon, állomásnéven vagy elérési úton történjen, és egy másik állapotkódot ismer fel Kifogástalan állapotba, állítson be egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
+> Az alapértelmezett mintavételi kérelmet \<protocol\> ://127.0.0.1:/. formátumban küldi el a rendszer \<port\> . Például http://127.0.0.1:80 egy http-mintavétel esetén a 80-es porton. Csak a 200 és 399 közötti HTTP-állapotkódok kifogástalannak tekintendők. A protokoll és a célport a HTTP-beállításoktól örökölt. Ha azt Application Gateway szeretné, hogy a mintavétel egy másik protokollon, állomásnéven vagy elérési úton történjen, és egy másik állapotkódot ismer fel Kifogástalan állapotba, állítson be egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
 
 <a name="error-messages"></a>Hibaüzenetek
 ------------------------
@@ -109,7 +109,7 @@ Az időtúllépési érték növeléséhez kövesse az alábbi lépéseket:
 
 **OK:** Ha a háttér-készlet IP-cím/FQDN vagy App Service típusú, Application Gateway a tartománynévrendszer (DNS) (egyéni vagy Azure alapértelmezett) által megadott teljes tartománynév IP-címére lesz feloldva, és megpróbál csatlakozni a kiszolgálóhoz a HTTP-beállításokban említett TCP-porton. Ha azonban ez az üzenet jelenik meg, azt javasolja, hogy Application Gateway nem tudta sikeresen feloldani a megadott teljes tartománynév IP-címét.
 
-**Felbontás**
+**Megoldás:**
 
 1.  Ellenőrizze, hogy a háttér-készletben megadott teljes tartománynév helyes-e, és hogy a nyilvános tartomány-e, majd próbálja meg feloldani a helyi gépről.
 
@@ -170,7 +170,7 @@ Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-cí
 
 **Üzenet:** A háttérbeli \' s http-válasz állapotkód nem felelt meg a mintavételi beállításnak. Várt: {HTTPStatusCode0} érkezett: {HTTPStatusCode1}.
 
-**OK:** A TCP-kapcsolatok létrehozása és a TLS-kézfogás elvégzése után (ha a TLS engedélyezve van), Application Gateway a mintavételt HTTP GET kérelemként fogja elküldeni a háttér-kiszolgálónak. A korábban leírtaknak megfelelően az alapértelmezett mintavétel a következő \< lesz \> :://127.0.0.1: \< port \> /, és a Rage 200-ben a 399-as kifogástalan állapotú válaszokat veszi figyelembe. Ha a kiszolgáló más állapotkódot ad vissza, az üzenet nem megfelelőként lesz megjelölve.
+**OK:** A TCP-kapcsolatok létrehozása és a TLS-kézfogás elvégzése után (ha a TLS engedélyezve van), Application Gateway a mintavételt HTTP GET kérelemként fogja elküldeni a háttér-kiszolgálónak. A fentiekben leírtak szerint az alapértelmezett mintavétel \<protocol\> :://127.0.0.1: \<port\> /, és a Rage 200-ben a 399-as kifogástalan állapot-kódokat veszi figyelembe. Ha a kiszolgáló más állapotkódot ad vissza, az üzenet nem megfelelőként lesz megjelölve.
 
 **Megoldás:** A háttér-kiszolgáló válaszának kódjától függően a következő lépéseket hajthatja végre. Néhány gyakori állapotkód itt látható:
 
@@ -209,7 +209,7 @@ További információ a [Application Gateway mintavétel egyeztetéséről](http
 
 #### <a name="backend-server-certificate-invalid-ca"></a>A háttér-kiszolgáló tanúsítványa érvénytelen CA
 
-**Üzenet:** A háttérrendszer által használt kiszolgálói tanúsítványt nem a jól ismert hitelesítésszolgáltató (CA) írta alá. Az Application Gateway a háttér-engedélyezési lista a háttér által használt kiszolgálótanúsítvány főtanúsítványának feltöltésével engedélyezhető.
+**Üzenet:** A háttérrendszer által használt kiszolgálói tanúsítványt nem a jól ismert hitelesítésszolgáltató (CA) írta alá. Engedélyezze a háttérrendszer használatát a Application Gateway a háttér által használt kiszolgálói tanúsítvány főtanúsítványának feltöltésével.
 
 **OK:** Application Gateway v2 végpontok közötti SSL használatához a háttér-kiszolgáló tanúsítványát ellenőrizni kell annak érdekében, hogy a kiszolgáló kifogástalan legyen.
 A TLS/SSL-tanúsítvány megbízhatósága érdekében a háttér-kiszolgáló tanúsítványát olyan HITELESÍTÉSSZOLGÁLTATÓnak kell kiállítania, amely a Application Gateway megbízható tárolójában szerepel. Ha a tanúsítványt nem megbízható HITELESÍTÉSSZOLGÁLTATÓ állította ki (például önaláírt tanúsítvány használata esetén), a felhasználóknak fel kell tölteniük a kiállító tanúsítványát Application Gateway.
@@ -395,7 +395,7 @@ Ez a viselkedés a következő okok közül egyet vagy többet okozhat:
 
 1.  Annak ellenőrzéséhez, hogy a Application Gateway állapota Kifogástalan-e, nyissa meg a portál **Resource Health** lehetőségét, és ellenőrizze, hogy az állapot **kifogástalan**-e. Ha **sérült** vagy **csökkentett teljesítményű** állapotot lát, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).
 
-<a name="next-steps"></a>További lépések
+<a name="next-steps"></a>Következő lépések
 ----------
 
 További információ a [Application Gateway diagnosztika és naplózás](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).

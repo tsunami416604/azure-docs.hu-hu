@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e60e8452b5cd3750a7b3478c860de95d8992528d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6b6294abe986115d86826fee8aad09f468b3d651
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300147"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628007"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C új Alkalmazásregisztrációk felülete
 
-A Azure Active Directory Azure AD B2C (Azure AD B2C) új **[Alkalmazásregisztrációk](https://aka.ms/b2cappregistrations)** -felülete már általánosan elérhető. Ha többet szeretne megtudni az **alkalmazások** Azure ad B2Cre való regisztrálásához, amelyet a "régi felhasználói élmény" című témakörben talál, akkor ez az útmutató az új felület használatának első lépéseit mutatja be.
+A Azure Active Directory B2C (Azure AD B2C) új **[Alkalmazásregisztrációk](https://aka.ms/b2cappregistrations)** -felülete már általánosan elérhető. Ha többet szeretne megtudni az **alkalmazások** Azure ad B2Cre való regisztrálásához, amelyet a "régi felhasználói élmény" című témakörben talál, akkor ez az útmutató az új felület használatának első lépéseit mutatja be.
 
 ## <a name="overview"></a>Áttekintés
 Korábban a régi felhasználói felülettel felügyelheti a Azure AD B2C a felhasználó által megjelenő alkalmazásokat a többi alkalmazástól függetlenül. Ez különböző alkalmazások létrehozását jelentette az Azure különböző helyein.
@@ -109,7 +109,7 @@ Az új felhasználói élmény a következő korlátozásokkal jár:
 <!-- - Azure AD B2C doesn't currently support the single-page application "SPA" app type.  -->
 - A támogatott fiókok értékének módosítása nem támogatott a felhasználói felületen. Az alkalmazás jegyzékfájlját kell használnia, kivéve, ha az Azure AD egybérlős és a több-bérlő közötti váltást végzi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az új alkalmazás regisztrációs élményének megkezdéséhez:
 * Útmutató [webalkalmazások regisztrálásához](tutorial-register-applications.md)

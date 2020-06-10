@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: daperlov
-ms.openlocfilehash: 0dce717461754ac1259bc666adf4eb9f7ef9d6c2
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 1764036413d6e4f634ed156f7cfb441b4a2bb1e6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465269"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604957"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Közös adatmodell-formátum a Azure Data Factoryban
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,9 +30,9 @@ A Common adatmodell a forrásként és a fogadóként is elérhető [beágyazott
 
 ### <a name="source-properties"></a>Forrás tulajdonságai
 
-Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepelnek.
+Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepelnek. Ezeket a tulajdonságokat a **forrás beállításai** lapon módosíthatja.
 
-| Name | Description | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| Name | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formátum | A formátumot kötelező megadni`cdm` | igen | `cdm` | formátumban |
 | Metaadatok formátuma | Ahol az entitás az adatelemre hivatkozik. Ha a CDM 1,0-es verzióját használja, válassza a jegyzékfájlt. Ha 1,0 előtti CDM-verziót használ, válassza a Model. JSON elemet. | Yes | `'manifest'` vagy `'model'` | manifestType |
@@ -49,7 +49,13 @@ Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepe
 | Corpus-entitás | Entitás hivatkozásának elérési útja | igen | Sztring | entitás |
 | Nem található fájlok engedélyezése | Ha az értéke igaz, a rendszer nem dobja el a hibát, ha nem található fájl | nem | `true` vagy `false` | ignoreNoFilesFound |
 
-#### <a name="cdm-source-example"></a>A CDM forrásának példája
+#### <a name="import-schema"></a>Séma importálása
+
+A CDM csak beágyazott adatkészletként érhető el, és alapértelmezés szerint nem rendelkezik társított sémával. Az oszlop metaadatainak beszerzéséhez kattintson a **vetítés** lapon található **séma importálása** gombra. Ez lehetővé teszi a corpus által megadott oszlopnevek és adattípusok hivatkozását. A séma importálásához egy [adatfolyam-hibakeresési munkamenetnek](concepts-data-flow-debug-mode.md) aktívnak kell lennie.
+
+![Séma importálása](media/format-common-data-model/import-schema-source.png)
+
+### <a name="cdm-source-example"></a>A CDM forrásának példája
 
 Az alábbi képen egy példa látható egy CDM-forrás konfigurációra az adatfolyamatok leképezése során.
 
@@ -79,12 +85,11 @@ source(output(
     fileSystem: 'data') ~> CDMSource
 ```
 
-
 ### <a name="sink-properties"></a>Fogadó tulajdonságai
 
-Az alábbi táblázatban a CDM-fogadó által támogatott tulajdonságok szerepelnek.
+Az alábbi táblázatban a CDM-fogadó által támogatott tulajdonságok szerepelnek. Ezeket a tulajdonságokat a **Beállítások** lapon módosíthatja.
 
-| Name | Description | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| Name | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formátum | A formátumot kötelező megadni`cdm` | igen | `cdm` | formátumban |
 | Gyökér helye: tároló | A CDM-mappa tárolójának neve | igen | Sztring | Fájlrendszer |
@@ -103,7 +108,7 @@ Az alábbi táblázatban a CDM-fogadó által támogatott tulajdonságok szerepe
 | Oszlop elválasztója | Ha DelimitedText ír, az oszlopok lehatároló módja | igen, ha írás a DelimitedText | Sztring | columnDelimiter |
 | Első sor fejlécként | DelimitedText használata esetén, hogy az oszlopnevek fejlécként vannak-e hozzáadva | nem | `true` vagy `false` | columnNamesAsHeader |
 
-#### <a name="cdm-sink-example"></a>CDM-gyűjtő – példa
+### <a name="cdm-sink-example"></a>CDM-gyűjtő – példa
 
 Az alábbi ábrán egy példa látható egy CDM-fogadó konfigurációra az adatfolyamatok leképezése során.
 

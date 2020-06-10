@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 296bf84c22313723c328e1775f697ee19dcb8f04
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e56b526dff9e18f19275cb248fd6955dd680324f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220555"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605098"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése SQL Database, SQL felügyelt példányhoz és az Azure szinapszis Analytics szolgáltatáshoz
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ Ezen a ponton a kiszolgáló vagy a felügyelt példány csak egyetlen SQL-bejel
 
   - Hozzon létre egy további SQL-bejelentkezést a Master adatbázisban.
   - Adja hozzá a bejelentkezést a [sysadmin rögzített kiszolgálói szerepkörhöz](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) az [Alter Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) utasítás használatával. Ez a bejelentkezés teljes rendszergazdai jogosultságokkal fog rendelkezni.
-  - Másik lehetőségként hozzon létre egy [Azure ad-bejelentkezési](authentication-aad-configure.md)#provision-Azure-ad-admin-SQL-Managed-instance) a [create login](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) szintaxis használatával.
+  - Másik lehetőségként hozzon létre egy [Azure ad-bejelentkezést](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) a [bejelentkezési szintaxis létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) paranccsal.
 
 - **A SQL Database-ban hozzon létre SQL-bejelentkezéseket korlátozott rendszergazdai engedélyekkel**
 
@@ -169,6 +169,6 @@ A hatékony hozzáférés-vezérlés Active Directory biztonsági csoportokhoz, 
 - Az [adatmaszkolás](dynamic-data-masking-overview.md) használatával korlátozhatja a bizalmas adatok megjelenítését.
 - A [tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az összes Azure SQL Database és SQL felügyelt példány biztonsági funkciójának áttekintését lásd: [biztonsági áttekintés](security-overview.md).

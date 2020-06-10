@@ -8,31 +8,55 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 06/08/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: ecd1c650456bf506f22366ca1d59a3634751b9e0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 13a7250bc89b1c9f81996dfa4e15d7d4469779ab
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800237"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607873"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
-## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020 – májusi kiadás
-
-**Az Azure Speech CLI**
-- Az **SPX** egy új parancssori eszköz, amellyel elvégezhető a parancssorból való felismerés, szintézis, fordítás, kötegelt átírás és egyéni beszédfelismerés. Ezzel tesztelheti az Azure Speech Service-t, vagy elvégezheti a szükséges Speech Service-feladatok futtatását. Töltse le az eszközt, és olvassa el [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)a dokumentációt.
+## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1:2020 – júniusi kiadás
+**Speech CLI (más néven SPX)**
+-   Megjelent a CLI súgó Keresési funkciói:
+    -   `spx help find --text TEXT`
+    -   `spx help find --topic NAME`
+-   Frissítve, hogy működjön az újonnan telepített v 3.0 batch és Custom Speech API-kkal:
+    -   `spx help batch examples`
+    -   `spx help csr examples`
 
 **Új funkciók**
+-   **C \# , C++**: Speaker Recognition előzetes verzió: Ez a funkció lehetővé teszi a beszélők azonosítását (ki beszél?) és a hangszórók ellenőrzését (ez az, aki a következőt igényli?). Először [tekintse át az áttekintést](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/speaker-recognition-overview), olvassa el a [Speaker Recognition alapjairól szóló cikket](https://docs.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-basics), vagy az API- [referenciák dokumentációját](https://docs.microsoft.com/rest/api/speakerrecognition/).
 
+**Hibajavítások**
+-   **C \# , C++**: a rögzített mikrofon rögzítése nem működik a 1,12-ben a hangszórók felismerése során.
+-   **JavaScript**: javítások a Firefox szöveg-beszédéhez és a Safari MacOS és iOS rendszeren.
+-   Javítás a Windows-alkalmazás-ellenőrző hozzáférés-megsértésének összeomlása a beszélgetés átírásakor a 8 csatornás adatfolyam használata esetén.
+-   Javítsa ki a Windows-alkalmazás-ellenőrző hozzáférés-megsértésének összeomlását a többeszközes beszélgetések fordításakor.
+
+**Példák**
+-   **C#**: [kód minta](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/speaker-recognition) a hangszórók felismeréséhez.
+-   **C++**: [kód minta](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/speaker-recognition) a hangszórók felismeréséhez.
+-   **Java**: [mintakód a szándék](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/intent-recognition) -felismeréshez Androidon. 
+
+**COVID – 19 rövidített tesztelés:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legkevesebb kézi ellenőrzési tesztet végrehajtani, mint általában. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
+Egészségesek maradjanak!
+
+
+## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020 – májusi kiadás
+**Speech CLI (más néven SPX)**
+- Az **SPX** egy új parancssori eszköz, amellyel elvégezhető a parancssorból való felismerés, szintézis, fordítás, kötegelt átírás és egyéni beszédfelismerés. A segítségével tesztelheti a beszédfelismerési szolgáltatást, vagy parancsfájlban megadhatja a végrehajtani kívánt beszédfelismerési szolgáltatás feladatait. Töltse le az eszközt, és olvassa el [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)a dokumentációt.
+
+**Új funkciók**
 - **Go**: új go nyelvi támogatás a [beszédfelismeréshez](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) és az [Egyéni hangsegédekhez](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go). [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-go)állíthatja be a fejlesztői környezetet. A mintakód esetében lásd a minták szakaszt alább. 
 - **JavaScript**: a böngésző támogatja a szöveg és a beszéd használatát. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file?pivots=programming-language-JavaScript)találja a dokumentációt.
-- **C++, C#, Java**: új KeywordRecognizer objektum és API-k támogatott Windows, Android, Linux & iOS platformokon. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-overview)olvashatja el a dokumentációt. A mintakód esetében lásd a minták szakaszt alább. 
+- **C++, C#, Java**: új `KeywordRecognizer` objektum és API-k támogatottak Windows, Android, Linux & iOS platformokon. Olvassa el [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-overview)a dokumentációt. A mintakód esetében lásd a minták szakaszt alább. 
 - **Java**: többeszközes beszélgetés hozzáadva a fordítási támogatással. Tekintse meg a dokumentációt [itt](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription).
 
 **& optimalizálások fejlesztése**
-
 - **JavaScript**: optimalizált böngésző-mikrofon implementálása a beszédfelismerés pontosságának növelésével.
 - **Java**: a VEDEL nélküli közvetlen JNI implementációt használó kötések újrabontása. Ezzel a megoldással a Windows, Android, Linux és Mac rendszerekhez használt összes Java-csomag esetében 10x-re csökkenti a kötések méretét, és megkönnyíti a beszédfelismerési SDK Java-implementációjának további fejlesztését.
 - **Linux**: frissített támogatási [dokumentáció](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux) a legújabb RHEL 7-re vonatkozó megjegyzésekkel.
@@ -40,30 +64,24 @@ ms.locfileid: "83800237"
 - Frissítettük a [Portal.Azure.com](https://portal.azure.com) Speech rövid útmutatót, amely segít a fejlesztőknek az Azure Speech utazás következő lépésében.
 
 **Hibajavítások**
-
 - **C#, Java**: javítva a [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587) az SDK-kódtárak betöltésével a Linux ARM-on (32 és 64 bit).
 - **C#**: az TranslationRecognizer, a IntentRecognizer és a kapcsolatok objektumaihoz tartozó natív fogópontok explicit ártalmatlanítása.
 - **C#**: rögzített hangbemeneti életciklus-kezelés a ConversationTranscriber objektumhoz.
-- Kijavított egy hibát, amelyben az IntentRecognizer eredményének oka nem volt megfelelően beállítva az egyszerű kifejezésekből származó leképezések felismerése során.
-- Kijavított egy hibát, amelyben a SpeechRecognitionEventArgs-eredmény eltolása helytelenül lett beállítva.
-- Rögzített egy versenyhelyzet, amelyben az SDK hálózati üzenetet próbált elküldeni a WebSocket-kapcsolat megnyitása előtt. Megismételhető a TranslationRecognizer a résztvevők hozzáadásakor.
+- Kijavított egy hibát `IntentRecognizer` , amelyben az eredmény oka nem volt megfelelően beállítva az egyszerű kifejezésekből származó leképezések felismerése során.
+- Kijavított egy hibát, amelyben az `SpeechRecognitionEventArgs` eredmény eltolása helytelenül lett beállítva.
+- Rögzített egy versenyhelyzet, amelyben az SDK hálózati üzenetet próbált elküldeni a WebSocket-kapcsolat megnyitása előtt. Reprodukálható a `TranslationRecognizer` résztvevők hozzáadásakor.
 - Rögzített memória-szivárgás a kulcsszó-felismerő motorban.
 
 **Példák**
-
 - **Go**: a [beszédfelismeréshez](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) és az [Egyéni hangsegédhez](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)hozzáadott gyors útmutatók. [Itt](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)megtalálhatja a mintakód kódját. 
 - **JavaScript**: gyors útmutató a [szöveg-beszéd](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript), a [fordítás](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript)és a [Szándékfelismeréshoz](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript).
 - Kulcsszavas felismerési minták a [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) és a [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) rendszerhez.  
 
-**COVID – 19 rövidített tesztelés:**
-
-Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legkevesebb kézi ellenőrzési tesztet végrehajtani, mint általában. Erre példa a mikrofon bemenetének és a hangszórók kimenetének tesztelése Linux, iOS és macOS rendszereken. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt ezen a platformon, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen).<br>
+**COVID – 19 rövidített tesztelés:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legkevesebb kézi ellenőrzési tesztet végrehajtani, mint általában. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
 Egészségesek maradjanak!
 
 ## <a name="speech-sdk-1110-2020-march-release"></a>Speech SDK 1.11.0:2020 – márciusi kiadás
-
 **Új funkciók**
-
 - Linux: a Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 támogatása a System for Speech SDK konfigurálására [vonatkozó utasításokkal](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) .
 - Linux: a .NET Core C# támogatása a Linux ARM32 és a ARM64. További tudnivalók [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux). 
 - C#, C++: a `UtteranceId` (z) `ConversationTranscriptionResult` rendszerhez hozzáadva egy egységes azonosítót az összes köztes és a végső beszédfelismerési eredményben. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)– részletek.
@@ -73,7 +91,6 @@ Egészségesek maradjanak!
 - JavaScript: új API-k hozzáadása az összes küldési és fogadási üzenet ellenőrzésének engedélyezéséhez. További információ [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript). 
         
 **Hibajavítások**
-
 - C#, C++: javítva a probléma, hogy `SendMessageAsync` most bináris típusúként küld bináris üzenetet. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)– részletek.
 - C#, C++: javítva a probléma, hogy az `Connection MessageReceived` esemény használata összeomlást okozhat `Recognizer` , ha az objektumot az objektum előtt dobja el a rendszer `Connection` . [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)– részletek.
 - Android: a mikrofon hangpufferének mérete a 800ms-ról a 100ms-re csökkent a késés javítása érdekében.
@@ -82,13 +99,10 @@ Egészségesek maradjanak!
 - JavaScript: további hibaüzenetek hozzáadása a NodeJS-től érkező sikertelen kapcsolatok esetén.
         
 **Példák**
-
 - Unity: a szándék-felismerés nyilvános mintája rögzített, ahol a LUIS JSON-importálás sikertelen volt. Részletek [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369).
 - Python: minta hozzáadva a következőhöz: `Language ID` . Részletek [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py).
     
-**Covid19 – rövidített tesztelés**
-
-Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legtöbb kézi eszköz-ellenőrzési tesztet végrehajtani, mint általában. Erre példa a mikrofon bemenetének és a hangszórók kimenetének tesztelése Linux, iOS és macOS rendszereken. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt ezen a platformon, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen).<br> Köszönjük a folyamatos támogatást. Ahogy mindig, tegye fel kérdéseit vagy visszajelzéseit a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) vagy a [stack Overflowon](https://stackoverflow.microsoft.com/questions/tagged/731).<br>
+**Covid19 rövidített tesztelése:** Az elmúlt néhány hét során távolról végzett munka miatt nem sikerült a lehető legtöbb kézi eszköz-ellenőrzési tesztet végrehajtani, mint általában. Erre példa a mikrofon bemenetének és a hangszórók kimenetének tesztelése Linux, iOS és macOS rendszereken. Nem történt semmilyen olyan változás, amelyet úgy gondolunk, hogy bármi megszakadt ezen a platformon, és az automatizált tesztek mindegyike sikeres volt. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br> Köszönjük a folyamatos támogatást. Ahogy mindig, tegye fel kérdéseit vagy visszajelzéseit a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) vagy a [stack Overflowon](https://stackoverflow.microsoft.com/questions/tagged/731).<br>
 Egészségesek maradjanak!
 
 ## <a name="speech-sdk-1100-2020-february-release"></a>Speech SDK 1.10.0:2020 – februári kiadás

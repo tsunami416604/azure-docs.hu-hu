@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4622ae1fa87a47915094b7ab90390c753b82dbb
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461735"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609114"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Támogatási jegy megnyitása Azure Data Box
 
@@ -80,7 +80,7 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan lehet [elhárítani a Data Box Disk kapcsolatos problémákat](data-box-disk-troubleshoot.md).
 Ismerje meg, hogyan lehet [elhárítani a Data Box kapcsolatos problémákat](data-box-troubleshoot.md).

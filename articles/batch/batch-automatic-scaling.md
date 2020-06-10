@@ -4,12 +4,12 @@ description: A készletben lévő számítási csomópontok számának dinamikus
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 223ba348ce1f8b69791581a70cd21af621c28b24
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780251"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609012"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -127,6 +127,9 @@ A szolgáltatás által definiált változók értékének beszerzésével a Bat
 | $CurrentLowPriorityNodes |Az alacsony prioritású számítási csomópontok aktuális száma, beleértve a előzik összes csomópontját. |
 | $PreemptedNodeCount | A készletben lévő azon csomópontok száma, amelyek előzik állapotban vannak. |
 
+> [!IMPORTANT]
+> A feladat kiadásával kapcsolatos feladatok jelenleg nem szerepelnek a fenti változóknál, amelyek a feladatok számát biztosítják, például $ActiveTasks és $PendingTasks. Az automatikus méretezési képlettől függően ez azt eredményezheti, hogy a csomópontok el lesznek távolítva, és nem érhetők el csomópontok a feladat kiadási feladatainak futtatásához.
+
 > [!TIP]
 > Az előző táblázatban szereplő írásvédett, szolgáltatás által definiált változók olyan *objektumok* , amelyek különböző módszereket biztosítanak az egyes adatbázisokhoz kapcsolódó adateléréshez. További információ: [Mintaadatok beszerzése](#getsampledata) a cikk későbbi részében.
 >
@@ -162,7 +165,7 @@ Ezek a típusok a következő képletekben támogatottak:
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 
@@ -187,7 +190,7 @@ Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 
 Ternáris operátorral () való dupla tesztelés esetén a nem `double ? statement1 : statement2` nulla érték **igaz**, és a nulla **hamis**.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 Ezek az előre definiált **függvények** használhatók az automatikus skálázási képlet definiálásához.
 
 | Függvény | Visszatérési típus | Leírás |
@@ -727,7 +730,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Azure batch számítási erőforrások használatának maximalizálása egyidejű csomópont-feladatokkal](batch-parallel-node-tasks.md) : részletes információ arról, hogy miként hajtható végre egyszerre több feladat a készlet számítási csomópontjain. Az automatikus skálázás mellett ez a funkció bizonyos munkaterhelések esetében csökkentheti a feladatok időtartamát, így pénzt takaríthat meg.
 * Egy másik hatékonysági emlékeztető esetén győződjön meg arról, hogy a Batch-alkalmazás a legoptimálisabb módon kérdezi le a Batch szolgáltatást. Lásd: [a Azure batch szolgáltatás hatékony lekérdezése](batch-efficient-list-queries.md) , amelyből megtudhatja, hogy miként lehet korlátozni a drótot keresztező adatok mennyiségét, ha egy akár több ezer számítási csomópont vagy feladat állapotát kérdezi le.

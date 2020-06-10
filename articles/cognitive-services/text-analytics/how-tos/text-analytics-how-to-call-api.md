@@ -90,7 +90,7 @@ A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy
 
    A Poster esetében a válasz a következő ablakban, egyetlen JSON-dokumentumként jelenik meg, a kérelemben megadott összes dokumentum-AZONOSÍTÓhoz tartozó elemmel.
 
-## <a name="see-also"></a>További információ 
+## <a name="see-also"></a>Lásd még 
 
  [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

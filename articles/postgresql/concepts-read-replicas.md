@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 545d04bdede76a6ce25c9e4665f39c01ff6caa73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: be9e396a778b81e730906e4a6971505e164dfa43
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531983"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636716"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -85,7 +85,7 @@ Azure Database for PostgreSQL két mérőszámot biztosít a replikáció figyel
 
 A **replikák közötti maximális késés** a fő és a legkésleltetett replika közötti késést mutatja bájtban. Ez a metrika csak a főkiszolgálón érhető el.
 
-A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció óta eltelt időt mutatja. Ha nincs tranzakció a főkiszolgálón, a metrika ezt az időbeli késést tükrözi. Ez a metrika csak replika kiszolgálók esetében érhető el. A replika késését a `pg_stat_wal_receiver` nézetből számítjuk ki:
+A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció óta eltelt időt mutatja. Ha nincs tranzakció a főkiszolgálón, a metrika ezt az időbeli késést tükrözi. Ez a metrika csak replika kiszolgálók esetében érhető el. A replika késését a nézetből számítjuk ki `pg_stat_wal_receiver` :
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
@@ -147,7 +147,15 @@ Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, 
 Ez a szakasz az olvasási replika szolgáltatással kapcsolatos szempontokat foglalja össze.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Olvasási replika létrehozása előtt a `azure.replication_support` paramétert a főkiszolgálón lévő **replika** értékre kell beállítani. Ha módosítja ezt a paramétert, a módosítás érvénybe léptetéséhez újra kell indítani a kiszolgálót. A `azure.replication_support` paraméter csak a általános célú és a memória optimalizált szintjeire vonatkozik.
+Az olvasási replikák és a [logikai dekódolás](concepts-logical.md) a postgres írási előre megadott naplójától (Wal) függ. Ehhez a két szolgáltatáshoz különböző naplózási szintek szükségesek a postgres. A logikai dekódolás magasabb szintű naplózást igényel, mint az olvasási replikák.
+
+A megfelelő naplózási szint konfigurálásához használja az Azure-replikáció támogatási paraméterét. Az Azure-beli replikáció támogatásának három beállítási lehetősége van:
+
+* **Off** – a legkevesebb információt helyezi el a Wal-ben. Ez a beállítás nem érhető el a legtöbb Azure Database for PostgreSQL kiszolgálón.  
+* **Replika** – részletesebb, mint a **kikapcsolás**. Az [olvasási replikák](concepts-read-replicas.md) működéséhez szükséges naplózás minimális szintje. Ez a beállítás az alapértelmezett a legtöbb kiszolgálón.
+* **Logikai** – részletesebb, mint a **replika**. Ez a minimális szintű naplózás a logikai dekódolás működéséhez. Ebben a beállításban az olvasási replikák is működnek.
+
+A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg ez a paraméter a és a postgres paramétereket állítja be `wal_level` `max_replication_slots` `max_wal_senders` .
 
 ### <a name="new-replicas"></a>Új replikák
 Az olvasási replika új Azure Database for PostgreSQL-kiszolgálóként jön létre. Egy meglévő kiszolgálót nem lehet replikába készíteni. Egy másik olvasási replika replikája nem hozható létre.
@@ -158,14 +166,14 @@ A replika ugyanazokkal a számítási és tárolási beállításokkal jön lét
 > [!IMPORTANT]
 > A főbeállítás új értékre frissítése előtt frissítse a replika konfigurációját egy egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika összhangban lehessen a főkiszolgálón végrehajtott módosításokkal.
 
-A PostgreSQL megköveteli, hogy az `max_connections` olvasási replika paraméterének értéke nagyobb legyen, mint a főérték; Ellenkező esetben a replika nem indul el. A Azure Database for PostgreSQL a `max_connections` paraméter értéke az SKU-on alapul. További információ: [Limits in Azure Database for PostgreSQL](concepts-limits.md). 
+A PostgreSQL megköveteli `max_connections` , hogy az olvasási replika paraméterének értéke nagyobb legyen, mint a főérték, ellenkező esetben a replika nem indul el. A Azure Database for PostgreSQL a `max_connections` paraméter értéke az SKU-on alapul. További információ: [Limits in Azure Database for PostgreSQL](concepts-limits.md). 
 
 Ha a fent ismertetett kiszolgálói értékeket próbálja meg frissíteni, de nem tartja be a korlátozásokat, hibaüzenetet kap.
 
 A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterek beállításai nem öröklődnek a főkiszolgálóról a replikára a replika létrehozásakor vagy azt követően.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-A [PostgreSQL megköveteli](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , hogy az `max_prepared_transactions` olvasási replika paraméterének értéke nagyobb legyen, mint a főérték; Ellenkező esetben a replika nem indul el. Ha módosítani `max_prepared_transactions` szeretné a főkiszolgálót, először módosítsa a replikákat.
+A [PostgreSQL megköveteli](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) `max_prepared_transactions` , hogy az olvasási replika paraméterének értéke nagyobb legyen, mint a főérték, ellenkező esetben a replika nem indul el. Ha módosítani szeretné a `max_prepared_transactions` főkiszolgálót, először módosítsa a replikákat.
 
 ### <a name="stopped-replicas"></a>Leállított replikák
 Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika között, a replika újraindul a módosítás alkalmazásához. A leállított replika önálló kiszolgáló lesz, amely fogadja az olvasásokat és az írásokat is. Az önálló kiszolgáló nem hozható létre újra replikába.
@@ -173,6 +181,6 @@ Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika kö
 ### <a name="deleted-master-and-standalone-servers"></a>Törölt fő-és önálló kiszolgálók
 Főkiszolgáló törlésekor az összes olvasási replikája önálló kiszolgáló lesz. A rendszer újraindítja a replikákat, hogy tükrözze ezt a változást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portalban](howto-read-replicas-portal.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI-ben és a REST APIban](howto-read-replicas-cli.md).

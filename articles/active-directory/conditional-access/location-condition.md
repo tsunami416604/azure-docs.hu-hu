@@ -13,12 +13,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: f9f80cf0c42bdc6e45d62cac930c0bce4b20ee60
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220612"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605459"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>A hely feltételének használata feltételes hozzáférési házirendben 
 
@@ -34,7 +34,7 @@ A szervezetek a következő általános feladatokhoz használhatják ezt a hál�
 A hálózati helyet az ügyfél által a Azure Active Directory számára biztosított nyilvános IP-cím határozza meg. A feltételes hozzáférési szabályzatok alapértelmezés szerint az összes IPv4-és IPv6-címre érvényesek. 
 
 > [!TIP]
-> Az IPV6-tartományok csak a **[nevesített hely (előzetes verzió)](#preview-features)** felületén támogatottak. 
+> Az IPv6-tartományok csak a **[nevesített hely (előzetes verzió)](#preview-features)** felületén támogatottak. 
 
 ## <a name="named-locations"></a>Nevesített helyek
 
@@ -50,7 +50,7 @@ A konfigurálható elnevezett helyszínek számát a kapcsolódó objektum mére
 - Legfeljebb 90 elnevezett helyet, amelyek mindegyike egy IP-tartománnyal van társítva.
 
 > [!TIP]
-> Az IPV6-tartományok csak a **[nevesített hely (előzetes verzió)](#preview-features)** felületén támogatottak. 
+> Az IPv6-tartományok csak a **[nevesített hely (előzetes verzió)](#preview-features)** felületén támogatottak. 
 
 ### <a name="trusted-locations"></a>Megbízható helyek
 
@@ -65,7 +65,7 @@ Ez a beállítás a feltételes hozzáférési házirendekben fordulhat elő, ah
 Egyes szervezetek dönthetnek úgy, hogy a feltételes hozzáférési szabályzatok elnevezett helyei szerint határozzák meg az összes országot vagy régióbeli IP-határokat. Ezeket a helyeket akkor használhatják, amikor blokkolják a szükségtelen forgalmat, ha tudják, hogy az érvényes felhasználók soha nem olyan helyről származnak, mint az Észak-Korea. Az IP-cím és az ország közötti leképezések rendszeresen frissülnek. 
 
 > [!NOTE]
-> Az országok nem tartalmaznak IPv6-címtartományt, csak az ismert IPv4-címtartományt.
+> Az országok nem tartalmaznak IPv6-címtartományt, csak az ismert IPv4-címtartományt, és nem jelölhetők meg megbízhatóként.
 
 ![Új ország vagy régió alapú hely létrehozása a Azure Portal](./media/location-condition/new-named-location-country-region.png)
 
@@ -102,7 +102,7 @@ A megnevezett hely előzetes verziójával lehetősége van
 
 - Akár 195 elnevezett helyszín konfigurálása
 - Akár 2000 IP-tartomány konfigurálása egy nevesített helyen
-- IPv6-címek konfigurálása
+- IPv6-címek konfigurálása IPv4-címek mellett
 
 További ellenőrzéseket is felvettünk, amelyek segítenek csökkenteni a helytelen konfiguráció változását.
 
@@ -115,7 +115,7 @@ Az előzetes verzióban mostantól két létrehozási lehetőség közül válas
 - **IP-címtartományok helye**
 
 > [!NOTE]
-> Az országok nem tartalmaznak IPv6-címtartományt, csak az ismert IPv4-címtartományt.
+> Az országok nem tartalmaznak IPv6-címtartományt, csak az ismert IPv4-címtartományt, és nem jelölhetők meg megbízhatóként.
 
 ![Elnevezett helyszínek előzetes kezelőfelülete](./media/location-condition/named-location-preview.png)
 
@@ -173,7 +173,7 @@ Ha egy felhőalapú proxy van érvényben, a tartományhoz csatlakoztatott eszk�
 
 Az API és a PowerShell még nem támogatott a nevesített helyein.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a [feltételes hozzáférési szabályzat létrehozásával](concept-conditional-access-policies.md)foglalkozó cikket.
 - A hely feltételét használó példát keres? Tekintse meg a következő cikket [: feltételes hozzáférés letiltása hely szerint](howto-conditional-access-policy-location.md)

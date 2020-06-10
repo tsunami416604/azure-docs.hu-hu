@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: f0760f6e61904295771ba349f8101e2d6dc6afe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 12d25fd06ddfa8265dbf046093d3854f7fde4f33
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759740"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609556"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Python)
 
@@ -58,7 +58,7 @@ Ebben a szakaszban egy Python-konzol alkalmazást hoz létre, amely szimulálja 
 
 1. Egy szövegszerkesztővel hozzon létre egy **SimulatedDevice.py**nevű fájlt.
 
-1. Adja hozzá a `import` következő utasításokat és változókat a **SimulatedDevice.py** fájl elejéhez:
+1. Adja hozzá a következő `import` utasításokat és változókat a **SimulatedDevice.py** fájl elejéhez:
 
     ```python
     import threading
@@ -68,7 +68,7 @@ Ebben a szakaszban egy Python-konzol alkalmazást hoz létre, amely szimulálja 
     RECEIVED_MESSAGES = 0
     ```
 
-1. Adja hozzá a következő kódot a **SimulatedDevice.py** fájlhoz. A `{deviceConnectionString}` helyőrző értékét cserélje le a telemetria eszközről [egy IoT hub-re való küldéséhez](quickstart-send-telemetry-python.md) létrehozott eszközhöz tartozó eszköz-kapcsolódási karakterláncra:
+1. Adja hozzá a következő kódot a **SimulatedDevice.py** fájlhoz. A helyőrző értékét cserélje le a telemetria eszközről `{deviceConnectionString}` [egy IoT hub-re való küldéséhez](quickstart-send-telemetry-python.md) létrehozott eszközhöz tartozó eszköz-kapcsolódási karakterláncra:
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -140,7 +140,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
 
 1. Egy szövegszerkesztővel hozzon létre egy **SendCloudToDeviceMessage.py**nevű fájlt.
 
-1. Adja hozzá a `import` következő utasításokat és változókat a **SendCloudToDeviceMessage.py** fájl elejéhez:
+1. Adja hozzá a következő `import` utasításokat és változókat a **SendCloudToDeviceMessage.py** fájl elejéhez:
 
     ```python
     import random
@@ -152,7 +152,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-1. Adja hozzá a következő kódot a **SendCloudToDeviceMessage.py** fájlhoz. Cserélje le `{iot hub connection string}` a `{device id}` és a helyőrző értékeket az IoT hub-beli kapcsolatok karakterláncára és a korábban FELjegyzett eszköz azonosítóra:
+1. Adja hozzá a következő kódot a **SendCloudToDeviceMessage.py** fájlhoz. Cserélje le a `{iot hub connection string}` és a `{device id}` helyőrző értékeket az IoT hub-beli kapcsolatok karakterláncára és a korábban feljegyzett eszköz azonosítóra:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -233,7 +233,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![Üzenet érkezett](./media/iot-hub-python-python-c2d/device-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan küldhet és fogadhat üzeneteket a felhőből az eszközre.
 

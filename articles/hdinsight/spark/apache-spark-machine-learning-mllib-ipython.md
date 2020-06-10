@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
-ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: c67e8a79e2339c4a329e276c52703bd749137037
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559939"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608417"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Gépi tanulási alkalmazások készítése és adatkészletek elemzése Apache Spark MLlib használatával
 
@@ -180,7 +180,7 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
 
     ![SQL-lekérdezés kimenete](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-lekérdezés kimenete")
 
-3. A Matplotlib-t, az adatvizualizációk létrehozásához használt könyvtárat is használhatja a mintaterület létrehozásához. Mivel a parcellát a helyileg megőrzött **countResultsdf** dataframe kell létrehozni, a kódrészletnek a `%%local` mágia kell kezdődnie. Ez a művelet biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
+3. A Matplotlib-t, az adatvizualizációk létrehozásához használt könyvtárat is használhatja a mintaterület létrehozásához. Mivel a parcellát a helyileg megőrzött **countResultsdf** dataframe kell létrehozni, a kódrészletnek a mágia kell kezdődnie `%%local` . Ez a művelet biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
 
     ```PySpark
     %%local
@@ -207,7 +207,7 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
 
      A többi eredmény ("üzleti nem található" vagy "üzleti tevékenység") nem hasznos, és az eredmények egy kis hányadát is elvégzik.
 
-4. A következő kód futtatásával alakítsa át a meglévő dataframe`df`() egy új dataframe, ahol az egyes ellenőrzések címke-megsértési párokként jelennek meg. Ebben az esetben a címkéje a `0.0` hibát jelképező címkét jelöli `1.0` , a címke pedig a sikert jelképezi, a két eredmény pedig az eredményeket `-1.0` jelképezi.
+4. A következő kód futtatásával alakítsa át a meglévő dataframe ( `df` ) egy új dataframe, ahol az egyes ellenőrzések címke-megsértési párokként jelennek meg. Ebben az esetben a címkéje a hibát jelképező címkét jelöli, a címke pedig a sikert jelképezi, a `0.0` `1.0` `-1.0` két eredmény pedig az eredményeket jelképezi.
 
     ```PySpark
     def labelForResults(s):
@@ -313,7 +313,7 @@ A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellen
 
 Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményeinek indoklásában.
 
-1. Első lépésként Kinyeri a korábban létrehozott **előrejelzési** ideiglenes tábla különböző előrejelzéseit és eredményeit. A következő lekérdezések elkülönítik a kimenetet *true_positive*, *false_positive*, *true_negative*és *false_negativeként*. Az alábbi lekérdezésekben kapcsolja ki a vizualizációt a használatával `-q` , és mentse a kimenetet (a `-o`használatával) a dataframes, amelyet aztán használhat a `%%local` Magic segítségével.
+1. Első lépésként Kinyeri a korábban létrehozott **előrejelzési** ideiglenes tábla különböző előrejelzéseit és eredményeit. A következő lekérdezések elkülönítik a kimenetet *true_positive*, *false_positive*, *true_negative*és *false_negativeként*. Az alábbi lekérdezésekben kapcsolja ki a vizualizációt a használatával, `-q` és mentse a kimenetet (a használatával `-o` ) a dataframes, amelyet aztán használhat a Magic segítségével `%%local` .
 
     ```PySpark
     %%sql -q -o true_positive
@@ -359,7 +359,7 @@ Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményein
 
 Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a notebookot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)

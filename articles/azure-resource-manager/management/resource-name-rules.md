@@ -3,12 +3,12 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 1ed8db4c7f780af8ac06074c514a602cc1654554
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 5baf9ce63442ee60d212362df92a44d0fa2723fa
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456876"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610304"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -174,8 +174,8 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | galériák/lemezképek/verziók | image | 32 bites egész szám | Számok és időszakok. |
 > | images | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
 > | pillanatképek | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
-> | virtualMachines | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/""[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
-> | virtualMachineScaleSets | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/""[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
+> | virtualMachines | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
+> | virtualMachineScaleSets | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
 
 > [!NOTE]
 > Az Azure-beli virtuális gépek két különböző névvel rendelkeznek: az erőforrás neve és az állomásnév. Amikor létrehoz egy virtuális gépet a portálon, ugyanazt az értéket használja mindkét névhez. Az előző táblázatban szereplő korlátozások az állomásnévre vonatkoznak. A tényleges erőforrásnév legfeljebb 64 karakterből állhat.

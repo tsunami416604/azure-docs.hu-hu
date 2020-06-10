@@ -7,18 +7,16 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.author: rogarana
-ms.openlocfilehash: 436f0ae3e19b2a0591a2727bde48bae66b91a94e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: b8ff58e830d9ca992db4461ee5c75659120c89c1
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509253"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629584"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Harmadik rész: a könyvtár-és a fájl szintű engedélyek konfigurálása SMB protokollon keresztül 
 
 A cikk elkezdése előtt győződjön meg arról, hogy végrehajtotta az előző cikket, [rendeljen hozzá megosztási szintű engedélyeket egy identitáshoz](storage-files-identity-ad-ds-assign-permissions.md). Győződjön meg arról, hogy a megosztási szintű engedélyek vannak érvényben.
-
-Miután megosztási szintű engedélyeket rendelt a RBAC-hez, hozzá kell rendelnie a megfelelő Windows ACL-eket (más néven NTFS-engedélyeket) a gyökér, a könyvtár vagy a fájl szintjén, hogy kihasználhassa a részletes hozzáférés-vezérlés előnyeit. Gondoljon arra, hogy a RBAC engedélyek magas szintű forgalomirányító, amely meghatározza, hogy a felhasználó hozzáférhet-e a megosztáshoz. Míg a Windows ACL-ek részletesebben határozzák meg, hogy a felhasználó milyen műveleteket végezhet el a címtár vagy a fájl szintjén.
 
 Miután megosztási szintű engedélyeket rendelt a RBAC-hez, a megfelelő Windows ACL-eket kell konfigurálnia a gyökér, a könyvtár vagy a fájl szintjén, hogy kihasználhassa a részletes hozzáférés-vezérlés előnyeit. Gondoljon arra, hogy a RBAC engedélyek magas szintű forgalomirányító, amely meghatározza, hogy a felhasználó hozzáférhet-e a megosztáshoz. Míg a Windows ACL-ek részletesebben működnek, hogy megtudja, milyen műveleteket végezhet a felhasználó a címtár vagy a fájl szintjén. A megosztási szint és a fájl/könyvtár szintű engedélyek akkor is érvénybe lépnek, ha egy felhasználó egy fájlhoz vagy könyvtárhoz próbál hozzáférni, tehát ha a kettő között különbség van, akkor csak a legszigorúbb korlátozás lesz érvényben. Ha például egy felhasználó rendelkezik írási/olvasási hozzáféréssel a fájl szintjén, de csak egy megosztási szinten olvas, akkor csak a fájlt tudja olvasni. Ugyanez igaz lehet, ha fordították, és a felhasználó olvasási/írási hozzáféréssel rendelkezik a megosztás szintjén, de csak a fájl szintjén olvashatja el.
 

@@ -10,12 +10,12 @@ ms.date: 06/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 143820eb3c58d2aaac4d4176c4456fca676a0e45
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5bc433615b19b36681796056ff4baf95d080d457
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554099"
+ms.locfileid: "84629420"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -62,8 +62,8 @@ A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok t�
 |    Tárfiók típusa    |    Támogatott régiók    |    Támogatott szolgáltatások    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 |    Általános célú v2<sup>1</sup>    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Dél-Afrika északi régiója<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója    |    Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
-|    <sup>1</sup> . BlockBlobStorage    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Blobok letiltása    |
-|    FileStorage    | Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
+|    <sup>1</sup> . BlockBlobStorage    | Délkelet-Ázsia<br /> Nyugat-Európa<br /> USA keleti régiója    |    Csak Blobok letiltása    |
+|    FileStorage    | Délkelet-Ázsia<br /> Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
 
 <sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
 <sup>2</sup> a virtuális gépekhez készült Azure Managed Disks-t tartalmazó Storage-fiókok mindig a LRS-t használják. Az Azure Unmanaged Disks szolgáltatásnak a LRS is használnia kell. Létrehozhat egy Storage-fiókot az Azure nem felügyelt, GRS használó lemezek számára, de az aszinkron geo-replikációval kapcsolatos lehetséges problémák miatt nem ajánlott. Sem a felügyelt, sem a nem felügyelt lemezek támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -159,7 +159,7 @@ Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e 
 | Kimaradási forgatókönyv                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Az adatközpontban lévő csomópont elérhetetlenné válik                                                                 | Igen                             | Igen                              | Igen                                  | Igen                                 |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen<sup>1</sup>                                  | Igen                                  |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen<sup>1</sup>                                  | Yes                                  |
 | Az elsődleges régióban az egész régióra kiterjedő leállás következik be                                                                                     | Nem                              | Nem                               | Igen<sup>1</sup>                                  | Igen<sup>1</sup>                                  |
 | A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem                              | Nem                               | Igen (az RA-GRS-vel)                                   | Igen (az RA-GZRS-vel)                                 |
 
@@ -184,7 +184,7 @@ Az egyes redundancia-lehetőségek díjszabásáról az [Azure Storage díjszab�
 
 Az Azure Storage rendszeresen ellenőrzi a ciklikus redundancia-ellenőrzések (FCSF) használatával tárolt adatok integritását. Ha a rendszer az adatsérülést észleli, a redundáns adatvesztéssel kerül kijavításra. Az Azure Storage az összes hálózati forgalom ellenőrzőösszegét is kiszámítja, hogy észlelje az adatcsomagok sérülését az adatok tárolása vagy beolvasása során.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
 - [Storage-fiók redundancia beállításának módosítása](redundancy-migration.md)

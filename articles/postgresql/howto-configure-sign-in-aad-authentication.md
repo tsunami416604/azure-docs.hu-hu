@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: cbec7843b16298abfb9da683fc4dcec1e0a63a9d
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236321"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636002"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory használata a PostgreSQL-sel való hitelesítéshez
 
@@ -131,6 +131,15 @@ Mostantól a következőhöz hasonló módon kezdeményezheti a kapcsolatokat Az
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
+Fontos szempontok a csatlakozáskor:
+
+* `user@tenant.onmicrosoft.com`annak az Azure AD-felhasználónak vagy-csoportnak a neve, amelyhez csatlakozni próbál
+* Mindig fűzze hozzá a kiszolgálónevet az Azure AD-felhasználó/csoport neve után (például `@mydb` )
+* Ügyeljen arra, hogy pontosan az Azure AD-felhasználó vagy-csoport nevének pontos módját használja
+* Az Azure AD felhasználói és csoportjai neve megkülönbözteti a kis-és nagybetűket
+* Csoportként való csatlakozáskor csak a csoport nevét használja (például). `GroupName@mydb`
+* Ha a név szóközöket tartalmaz, akkor az `\` egyes területek előtt használja a megszökni
+
 Most már hitelesítve van a PostgreSQL-kiszolgálón az Azure AD-hitelesítéssel.
 
 ## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure AD-felhasználók létrehozása a Azure Database for PostgreSQLban
@@ -196,7 +205,7 @@ GRANT azure_ad_user TO "DBReadUser";
 
 Ez azt feltételezi, hogy létrehozott egy "DBReadUser" csoportot az Azure AD-ben. Az adott csoportba tartozó felhasználók mostantól a felhasználóként bejelentkezhetnek az adatbázisba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [Azure Database for PostgreSQL – egyetlen kiszolgálóval Azure Active Directory hitelesítéssel](concepts-aad-authentication.md) kapcsolatos általános fogalmakat
 

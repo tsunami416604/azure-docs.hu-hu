@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 00f93086fec62c08c5241d868fc5104a1197cff3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248328"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605408"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Első lépések az Azure szinapszis Analytics használatával
 
@@ -164,7 +164,7 @@ A (z) egy táblájában elérhetők az adatkészletek `SQLDB1` . Most betöltjü
 
 1. Navigáljon az **adatközponthoz** , kattintson a jobb gombbal az **adatbázisok** elemre, és válassza a **frissítés**lehetőséget.
 1. Most ezeket az adatbázisokat kell látnia:
-    - SQLDB (SQL-készlet)
+    - SQLDB1 (SQL-készlet)
     - nyctaxi (Spark)
       
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>A New York-i taxi-adat elemzése a Spark és a notebook használatával
@@ -190,10 +190,10 @@ A (z) egy táblájában elérhetők az adatkészletek `SQLDB1` . Most betöltjü
       WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
-    """) 
-    display(df)
-    df.write.saveAsTable("nyctaxi.passengercountstats")
-    ```
+   """) 
+   display(df)
+   df.write.saveAsTable("nyctaxi.passengercountstats")
+   ```
 
 1. A cella eredményei között válassza a **diagram** lehetőséget az adatvizualizáció megjelenítéséhez
  
@@ -251,7 +251,7 @@ Az Azure szinapszis számos feladatát felhasználhatja. Ebben a szakaszban lát
 1. Húzza a jegyzetfüzetet a folyamatba.
 1. A folyamatban válassza az **trigger hozzáadása > új/szerkesztés**lehetőséget.
 1. Az **eseményindító** kiválasztása területen válassza az **új**lehetőséget, majd az ismétlődés beállításnál állítsa az eseményindítót 1 óránként futtatva.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 1. Válassza az **összes közzététele** lehetőséget, és a folyamat óránként fog futni.
 1. Ha azt szeretné, hogy a folyamat most a következő órára való várakozás nélkül fusson, válassza az **trigger hozzáadása > új/szerkesztés**lehetőséget.
 
@@ -282,7 +282,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. **Felhasználók kiválasztása (elsődleges) "**
 1. Ekkor megjelenik egy nevű mappa `NYCTaxi` . A belsejében két mappát kell látnia `PassengerCountStats.csv` `PassengerCountStats.parquet` .
 1. Navigáljon a `PassengerCountStats.parquet` mappába.
-1. Kattintson a jobb gombbal a parketta-fájlra, és válassza az **új jegyzetfüzet**lehetőséget, majd hozzon létre egy jegyzetfüzetet a következőhöz hasonló cellával:
+1. Kattintson a jobb gombbal a `.parquet` fájlra, és válassza az **új jegyzetfüzet**lehetőséget, majd hozzon létre egy jegyzetfüzetet a következőhöz hasonló cellával:
 
     ```py
     %%pyspark
@@ -374,7 +374,7 @@ Power BI munkaterületet összekapcsolhatja a szinapszis munkaterülettel. Ez le
 1. Ezen a helyen megtekintheti a munkaterületen zajló összes tevékenység előzményeit, és azokat is, amelyek aktívak.
 1. Ismerkedjen meg a **folyamat futtatásával**, **Apache Spark alkalmazásokkal**és **SQL-kérelmekkel** , és megtekintheti, hogy mit tett a munkaterületen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure szinapszis Analytics (előzetes verzió) szolgáltatásról](overview-what-is.md)
 

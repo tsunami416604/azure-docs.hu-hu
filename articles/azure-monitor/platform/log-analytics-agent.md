@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: cbefe2e2b25db7ce16a7a1bde423f60fda412590
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773355"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608366"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](/azure/security-center/)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -114,6 +114,24 @@ A 2018 augusztusa után kiadott verzióktól kezdve a következő módosítások
 >[!NOTE]
 >Ha olyan disztribúciót vagy verziót használ, amely jelenleg nem támogatott, és nem a támogatási modellhez igazodik, javasoljuk, hogy a tárházat elágazással lássa el, és tudomásul veszi, hogy a Microsoft támogatási szolgálata nem nyújt segítséget a villás ügynök verzióihoz.
 
+
+### <a name="python-2-requirement"></a>Python 2 követelmény
+ A Log Analytics ügynökhöz a Python 2 szükséges. Ha a virtuális gép olyan disztribúciót használ, amely alapértelmezés szerint nem tartalmazza a Python 2-et, akkor telepítenie kell azt. A következő minta parancsok a Python 2 különböző disztribúciókban való telepítését teszik ki.
+
+ - Red Hat, CentOS, Oracle:`yum install -y python2`
+ - Ubuntu, Debian:`apt-get install -y python2`
+ - SUSE`zypper install -y python2`
+
+A python2 végrehajtható fájljának a "Python" aliashoz kell tartoznia a következő parancs használatával:
+
+```
+alternatives --set python /usr/sbin/python2
+```
+
+### <a name="supported-distros"></a>Támogatott disztribúciók
+
+A Linux-ügynök a Linux operációs rendszer következő verzióit támogatja hivatalosan:
+
 * Amazon Linux 2017,09 (x64)
 * CentOS Linux 6 (x64) és 7 (x64)  
 * Oracle Linux 6 és 7 (x64) 
@@ -170,10 +188,10 @@ A következő táblázat a Linux-és Windows-ügynökök Azure Monitor naplókka
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.blob.core.windows.net |443-es port |Kimenő|Igen |
-|*.azure-automation.net |443-es port |Kimenő|Igen |
+|*.ods.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.oms.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.blob.core.windows.net |443-es port |Kimenő|Yes |
+|*.azure-automation.net |443-es port |Kimenő|Yes |
 
 A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
@@ -205,9 +223,8 @@ Például:`https://user01:password@proxy01.contoso.com:30443`
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az [adatforrásokat](agent-data-sources.md) , és Ismerje meg, hogy milyen adatforrások érhetők el az adatok Windows vagy Linux rendszerből való gyűjtéséhez. 
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 
 * Ismerkedjen meg azokkal a [figyelési megoldásokkal](../insights/solutions.md) , amelyek a Azure monitor funkciókat bővítik, és adatokat gyűjtenek a log Analytics munkaterületen.
-

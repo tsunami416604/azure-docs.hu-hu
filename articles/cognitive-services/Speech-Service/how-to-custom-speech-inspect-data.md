@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7a8fec876556d943d29756a38ffc27ae8095e3c4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: e871d2c8e0fe00fa7db3144a787447163c82e62d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466238"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629036"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech-adatok vizsgálata
 
@@ -33,7 +33,7 @@ Ezen az oldalon megtudhatja, hogyan vizsgálhatja meg a Microsoft alapvető besz
 Teszt létrehozásához kövesse az alábbi utasításokat:
 
 1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
-2. Navigáljon a **beszéd-szöveg > Custom Speech > teszteléshez**.
+2. Navigáljon a **beszéd – szöveg > Custom Speech > [a projekt neve] > tesztelése**elemre.
 3. Kattintson a **teszt hozzáadása**gombra.
 4. Válassza a **minőség vizsgálata (csak hangalapú adatok)** lehetőséget. Adja meg a teszt nevét, leírását, és válassza ki a hangkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.

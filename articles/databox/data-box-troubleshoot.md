@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 461c5b1603a4c06e680aab671238a1c8ccd5dacd
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628895"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609080"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy kapcsolatos problémák elhárítása
 
@@ -51,8 +51,8 @@ Ezek a tárolókkal és a megosztási nevekkel kapcsolatos hibák.
     - A nevek csak betűket, számokat és kötőjeleket tartalmazhatnak.
     - A nevek nem kezdődhetnek és nem végződhet kötőjelekkel.
     - A nevek nem rendelkezhetnek egymást követő kötőjelekkel.
-    - Példák érvényes nevekre: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Példák a nem érvényes nevekre: `my-folder_1`, `my` `--myfolder`,, `myfolder--`,`myfolder!`
+    - Példák érvényes nevekre: `my-folder-1` ,`my-really-extra-long-folder-111`
+    - Példák a nem érvényes nevekre: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` ,`myfolder!`
 
     További információ: az Azure elnevezési konvenciói a [tárolók neveihez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
@@ -70,8 +70,8 @@ Ezek a tárolókkal és a megosztási nevekkel kapcsolatos hibák.
     - A nevek csak betűket, számokat és kötőjeleket tartalmazhatnak.
     - A nevek nem kezdődhetnek és nem végződhet kötőjelekkel.
     - A nevek nem rendelkezhetnek egymást követő kötőjelekkel.
-    - Példák érvényes nevekre: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Példák a nem érvényes nevekre: `my-folder_1`, `my` `--myfolder`,, `myfolder--`,`myfolder!`
+    - Példák érvényes nevekre: `my-folder-1` ,`my-really-extra-long-folder-111`
+    - Példák a nem érvényes nevekre: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` ,`myfolder!`
 
     További információ: az Azure elnevezési konvenciói a [tárolók neveihez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
@@ -88,8 +88,8 @@ Ezek a tárolókkal és a megosztási nevekkel kapcsolatos hibák.
     - A nevek csak betűket, számokat és kötőjeleket tartalmazhatnak.
     - A nevek nem kezdődhetnek és nem végződhet kötőjelekkel.
     - A nevek nem rendelkezhetnek egymást követő kötőjelekkel.
-    - Példák érvényes nevekre: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Példák a nem érvényes nevekre: `my-folder_1`, `my` `--myfolder`,, `myfolder--`,`myfolder!`
+    - Példák érvényes nevekre: `my-folder-1` ,`my-really-extra-long-folder-111`
+    - Példák a nem érvényes nevekre: `my-folder_1` ,,, `my` `--myfolder` `myfolder--` ,`myfolder!`
 
     További információ: az Azure elnevezési konvenciói a [tárolók neveihez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
     
@@ -102,7 +102,7 @@ Ezek a tárolókkal és a megosztási nevekkel kapcsolatos hibák.
 - A helyi webes felhasználói felület kapcsolódás és másolás lapján töltse le a fájlt, és tekintse át a hibákat tartalmazó mappanevek azonosításához szükséges fájlokat. 
 - Nevezze át a könyvtárat vagy a tárolókat annak biztosítására, hogy megfeleljenek az Azure elnevezési konvencióinak.
 
-További információ: az Azure elnevezési konvenciói a [címtárakhoz](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) és a [tárolóhoz](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
+További információ: az Azure elnevezési konvenciói a [címtárakhoz](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   és a [tárolóhoz](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
 
 ## <a name="container-or-share-size-limit-errors"></a>Tároló vagy megosztási méretkorlát hibái
 
@@ -254,6 +254,6 @@ További információ: az Azure elnevezési konvenciói a Blobok neveihez és f�
 További információ: [Másolás felügyelt lemezekre](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [blob Storage rendszerkövetelményeinek Data Box](data-box-system-requirements-rest.md)megismerése.

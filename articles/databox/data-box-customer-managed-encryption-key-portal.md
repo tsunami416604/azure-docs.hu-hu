@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 6f543b3f5c2bb7d4949c431580771c4b0d965e4d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125494"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634999"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box
 
@@ -103,7 +103,7 @@ Az ügyfél által felügyelt kulcs konfigurálása a Azure Data Box esetében n
 
 Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhárításhoz használja a következő táblázatot.
 
-| Hibakód| Hibaüzenet| Részletek|
+| Hibakód| A hiba részletei| Helyreállítható?|
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| Nem sikerült beolvasni a hitelesítő kulcsot, mert a felhasználó által felügyelt kulcs le van tiltva.| Igen, a kulcs verziójának engedélyezésével.|
 | SsemUserErrorEncryptionKeyExpired| A hitelesítő kulcs beolvasása sikertelen volt, mert az ügyfél által felügyelt kulcs lejárt.| Igen, a kulcs verziójának engedélyezésével.|
@@ -114,6 +114,6 @@ Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhár
 | Általános hiba  | A hitelesítő kulcs beolvasása sikertelen.| Ez egy általános hiba. A hiba megoldásához forduljon a Microsoft ügyfélszolgálatahoz, és határozza meg a következő lépéseket.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

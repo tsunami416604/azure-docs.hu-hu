@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171555"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629642"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -35,11 +35,10 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 > * Projekt létrehozása
 > * A projekt adatának és szerkezetének meghatározása
 > * A projekt futtatása és figyelése
-> * Címkék exportálása
+> * A címkék exportálása
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-
 
 * A címkével ellátni kívánt, helyi vagy Azure Blob Storage-beli adatfájlok.
 * Az alkalmazni kívánt címkék halmaza.
@@ -67,6 +66,8 @@ Ha készen áll a folytatásra, válassza a **tovább** lehetőséget.
 
 Ha már létrehozott egy adatkészletet, amely az adatokat tartalmazza, válassza ki azt a **meglévő adatkészlet kiválasztása** legördülő listából. Vagy válassza az **adatkészlet létrehozása** meglévő Azure-adattár használatára vagy a helyi fájlok feltöltéséhez lehetőséget.
 
+> [!NOTE]
+> Egy projekt legfeljebb 500 000 képet tartalmazhat.  Ha az adatkészlet több is van, akkor csak az első 500 000 lemezkép lesz betöltve.  
 
 ### <a name="create-a-dataset-from-an-azure-datastore"></a>Adatkészlet létrehozása Azure-adattárból
 
@@ -85,8 +86,6 @@ Adatkészlet létrehozása az Azure Blob Storage-ban már tárolt adatokból:
 1. Válassza a **Tovább** lehetőséget.
 1. Erősítse meg a részleteket. A **vissza** gombra kattintva módosíthatja a beállításokat, vagy **létrehozhatja** az adatkészletet.
 
-> [!NOTE]
-> A rendszer betölti a kiválasztott adatait a projektbe.  A projekt létrehozása után a projektben nem jelennek meg több információ az adattárhoz.  
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>Adatkészlet létrehozása a feltöltött adatokból
 
@@ -102,6 +101,19 @@ Az adatok közvetlen feltöltéséhez:
 1. Erősítse meg a részleteket. A **vissza** gombra kattintva módosíthatja a beállításokat, vagy **létrehozhatja** az adatkészletet.
 
 A rendszer feltölti az adatait a Machine Learning munkaterület alapértelmezett blob-tárolójába ("workspaceblobstore").
+
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Növekményes frissítés konfigurálása
+
+Ha új lemezképeket szeretne hozzáadni az adatkészlethez, a Növekményes frissítés használatával adja hozzá ezeket az új lemezképeket a projekthez.   Ha a **Növekményes frissítés** engedélyezve van, a rendszer rendszeres időközönként ellenőrzi, hogy az új lemezképek felvehetők-e a projektbe a címkézési befejezési arány alapján.   Az új adatértékek ellenőrzése leáll, ha a projekt tartalmazza a maximális 500 000-es képet.
+
+Ha további lemezképeket szeretne hozzáadni a projekthez, a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával töltse fel a blob Storage megfelelő mappájába. 
+
+Jelölje be a **Növekményes frissítés engedélyezése** jelölőnégyzetet, ha azt szeretné, hogy a projekt folyamatosan figyelje az adattár új adatait.
+
+Törölje a jelet a jelölőnégyzetből, ha nem szeretné, hogy az adattárban megjelenő új lemezképek megjelenjenek a projekthez.
+
+A legutóbbi frissítés időbélyegzője a projekt **részletek** lapjának **Növekményes frissítés** szakaszában található.
+
 
 ## <a name="specify-label-classes"></a>Címke osztályok meghatározása
 
@@ -194,7 +206,7 @@ A következő lépések segítségével adhat hozzá egy vagy több címkét egy
 1. Szükség szerint módosítsa az utasítások lapját az új felirat (ok) hoz.
 1. Miután hozzáadta az összes új címkét, a lap tetején kattintson a **Start** gombra a projekt újraindításához.  
 
-## <a name="export-the-labels"></a>Címkék exportálása
+## <a name="export-the-labels"></a>A címkék exportálása
 
 A Machine Learning kísérletezéshez bármikor exportálhatja a címkézési adattípust. A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) vagy Azure Machine learning adatkészletként lehet exportálni. Használja az **Exportálás** gombot a címkéző projekt **Project Details (projekt részletei** ) lapján.
 

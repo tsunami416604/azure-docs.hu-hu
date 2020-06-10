@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79474d85d9b2349c79aeff0c33ffed9afad690fb
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 241e5baf7f00bc9897e84fb0c10ac7db605fb712
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169699"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628316"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Az eszközök identitásának kezelése a Azure Portal használatával
 
@@ -143,7 +143,7 @@ Egy eszköz törléséhez két lehetőség közül választhat:
    - Eltávolítja az eszközhöz csatolt összes adatot, például a BitLocker-kulcsokat a Windows-eszközökhöz.  
    - Nem helyreállítható tevékenységet jelöl, és nem ajánlott, ha szükséges.
 
-Ha egy eszközt egy másik felügyeleti hatóság felügyel (például Microsoft Intune), győződjön meg róla, hogy az eszköz törölve lett vagy ki lett vonva, mielőtt törölné az eszközt az Azure AD-ben. Tekintse át, hogyan [kezelheti az elavult eszközöket](device-management-azure-portal.md) az eszközök törlése előtt.
+Ha egy eszközt egy másik felügyeleti hatóság felügyel (például Microsoft Intune), győződjön meg róla, hogy az eszköz törölve lett vagy ki lett vonva, mielőtt törölné az eszközt az Azure AD-ben. Tekintse át, hogyan [kezelheti az elavult eszközöket](manage-stale-devices.md) az eszközök törlése előtt.
 
 ### <a name="view-or-copy-device-id"></a>Eszköz AZONOSÍTÓjának megtekintése vagy másolása
 
@@ -190,7 +190,7 @@ Az előnézet szűrési funkciójának engedélyezése a **minden eszköz** néz
 
 Mostantól lehetősége lesz **szűrők hozzáadására** a **minden eszköz** nézethez.
 
-## <a name="audit-logs"></a>Naplók
+## <a name="audit-logs"></a>Auditnaplók
 
 Az eszközök tevékenységeit a tevékenység naplóiban érheti el. Ezek a naplók az eszköz regisztrációs szolgáltatása és a felhasználók által aktivált tevékenységeket foglalják magukban:
 
@@ -207,11 +207,11 @@ A napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:
 - Egy tevékenység kezdeményezője/szereplője
 - A tevékenység (mi)
 
-![Naplók](./media/device-management-azure-portal/63.png)
+![Auditnaplók](./media/device-management-azure-portal/63.png)
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
-![Naplók](./media/device-management-azure-portal/64.png)
+![Auditnaplók](./media/device-management-azure-portal/64.png)
 
 A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a naplózott adatokat:
 
@@ -224,7 +224,7 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 
 A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
-![Naplók](./media/device-management-azure-portal/65.png)
+![Auditnaplók](./media/device-management-azure-portal/65.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

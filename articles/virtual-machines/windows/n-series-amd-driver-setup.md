@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 745ec7ebf792fe1165022516be4c83fb9e864cc9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: c53396b26d649ba3b6f9adf2409c7c3695bb1822
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799886"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606139"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Az AMD GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken
 
@@ -38,9 +38,11 @@ Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részlet
 
 1. Kapcsolódjon Távoli asztal az egyes NVv4-sorozatú virtuális gépekhez.
 
-2. Töltse le és telepítse a legújabb illesztőprogramot.
+2. Ha el kell távolítania az illesztőprogram előző verzióját, majd le kell töltenie az AMD [CleanUp segédprogramot](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe) , kérjük, ne használja az illesztőprogram előző verzióját tartalmazó segédprogramot.
 
-3. Indítsa újra a virtuális gépet.
+3. Töltse le és telepítse a legújabb illesztőprogramot.
+
+4. Indítsa újra a virtuális gépet.
 
 ## <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
 
