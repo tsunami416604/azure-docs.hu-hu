@@ -56,7 +56,7 @@ Modellek kiértékelése egymás mellett:
 3. Kattintson a **teszt hozzáadása**gombra.
 4. Válassza ki a **pontosság kiértékelése**elemet. Adja meg a teszt nevét, leírását, és válassza ki a hang + emberi-címkével ellátott átírási adatkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymás mellett.
 

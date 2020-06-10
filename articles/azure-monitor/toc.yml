@@ -155,6 +155,8 @@
           displayname: VM
     - name: Kezelés és konfigurálás
       items:
+        - name: Nagy léptékű üzembe helyezés
+          href: platform/deploy-scale.md
         - name: Szerepköri engedélyek és biztonság
           href: platform/roles-permissions-security.md
         - name: IP-címek

@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
     ![Power BI társított szolgáltatás telepítésének megjelenítése.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>Power BI munkaterület megtekintése a szinapszis Studióban
 

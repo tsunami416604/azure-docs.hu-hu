@@ -37,7 +37,7 @@ Teszt létrehozásához kövesse az alábbi utasításokat:
 3. Kattintson a **teszt hozzáadása**gombra.
 4. Válassza a **minőség vizsgálata (csak hangalapú adatok)** lehetőséget. Adja meg a teszt nevét, leírását, és válassza ki a hangkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-6. Kattintson a **Létrehozás**gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 Egy teszt sikeres létrehozása után megtekintheti, hogy egy modell hogyan írja át a megadott hangkészletet, vagy összehasonlítja a két modell eredményeit egymás mellett.
 

@@ -967,8 +967,6 @@
                   items:
                     - name: Azure SQL VM CLI
                       href: virtual-machines/windows/availability-group-az-cli-configure.md
-                    - name: Azure Portal-sablon
-                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
                     - name: Azure-gyorssablonok
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: Több régió

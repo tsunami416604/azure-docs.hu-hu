@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
@@ -84,7 +84,7 @@ Az Azure IoT Central alkalmazásban adjon hozzá egy valós eszközt az előző 
 
 1. Válassza az **+ új**lehetőséget.
 
-1. Győződjön meg arról, hogy a **szimulált** érték **ki van kapcsolva**. Ezután válassza a **Létrehozás**lehetőséget.
+1. Győződjön meg arról, hogy a **szimulált** érték **ki van kapcsolva**. Ezután kattintson a **Létrehozás** elemre.
 
 Kattintson az eszköz nevére, majd válassza a **Csatlakoztatás**lehetőséget. Jegyezze fel az eszköz csatlakoztatására vonatkozó információkat az eszköz **csatlakoztatása** lapon – **azonosító hatókör**, **eszköz azonosítója**és **elsődleges kulcs**. Ezekre az értékekre szüksége lesz az eszköz kódjának létrehozásakor:
 

@@ -19,8 +19,6 @@
       href: terminology.md
     - name: Szerepkörök és követelmények
       href: concepts-roles-permissions.md
-    - name: Vészhelyreállítás
-      href: disaster-recovery.md
 - name: Példák
   items:
     - name: Kódminták
@@ -43,6 +41,10 @@
       href: how-to-delete-invitation.md
     - name: Megosztási előfizetés visszavonása
       href: how-to-revoke-share-subscription.md
+    - name: Biztonság
+      href: security.md
+    - name: Vészhelyreállítás
+      href: disaster-recovery.md
 - name: Referencia
   items:
     - name: .NET
