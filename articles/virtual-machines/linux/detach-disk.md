@@ -3,16 +3,16 @@ title: Adatlemez leválasztása Linux rendszerű virtuális gépről – Azure
 description: Megtudhatja, hogyan választhat adatlemezt az Azure-beli virtuális gépről az Azure CLI vagy a Azure Portal használatával.
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0c827a19fd2b3e946154a3ee0acf6dddc6ad45a0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7a9915f0c523afd755223393e70595364676cd3a
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830004"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658222"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Adatlemez leválasztása Linux rendszerű virtuális gépről
 
@@ -115,6 +115,6 @@ A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha újra fel szeretné használni az adatlemezt, egyszerűen [csatolhatja azt egy másik virtuális géphez](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

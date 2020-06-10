@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: how-to
 ms.date: 05/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 5ece7beaea709c9b1e52cf2130484663da0aa4ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: db86f22247b757ed2f1cc2c168421346ad90a1fc
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664549"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657643"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus névtér üzenetkezelési egységeinek automatikus frissítése 
 Ez a cikk bemutatja, hogyan lehet automatikusan frissíteni egy Service Bus névtér [üzenetkezelési egységeit](service-bus-premium-messaging.md) erőforrás-(CPU-vagy memória-) használat alapján. 
@@ -75,10 +75,10 @@ Részletes útmutatásért lásd: [modul importálása a modul-galériából](..
         if ($schemaId -eq "AzureMonitorMetricAlert") {
 
             # Get the resource group name from the alert context
-            $resourceGroupName = $AlertContext.resourceGroupName
+            $resourceGroupName = $WebhookBody.resourceGroupName
             
             # Get the namespace name from the alert context
-            $namespaceName = $AlertContext.resourceName
+            $namespaceName = $WebhookBody.resourceName
         }
     }
     
@@ -177,5 +177,5 @@ Az alábbi eljárás bemutatja, hogyan hozhat létre olyan riasztást, amely eli
     > [!NOTE]
     > Ha a névtér CPU-használata a 75-nál nagyobb, akkor a riasztás elindítja az Automation runbook, ami növeli az Service Bus névtér üzenetkezelési egységeit. Hasonlóképpen létrehozhat egy riasztást egy másik Automation-runbook is, amely csökkenti az üzenetkezelési egységeket, ha a névtér CPU-kihasználtsága 25 alá kerül. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az üzenetkezelési egységekről a prémium szintű [üzenetkezelés](service-bus-premium-messaging.md) című témakörben olvashat bővebben.

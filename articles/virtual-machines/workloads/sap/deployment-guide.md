@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: ddcf1d05933daadd29bf2f93850ac3299dc9e734
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a850f7ceaeb57678738084cb14f383b46c7dfe84
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020115"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660644"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -122,9 +122,19 @@ ms.locfileid: "84020115"
 [deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
 [deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
 [deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Az SAP-hez készült Azure-bővítmény konfigurálása)
+[deployment-guide-configure-new-extension-ps]:deployment-guide.md#2ad55a0d-9937-4943-9dd2-69bc2b5d3de0 (Az SAP-hez készült új Azure-bővítmény konfigurálása Azure PowerShell)
+[deployment-guide-configure-new-extension-cli]:deployment-guide.md#c8749c24-fada-42ad-b114-f9aae2dc37da (Az új Azure-bővítmény konfigurálása az SAP-hoz az Azure CLI-vel)
 [deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Az SAP-hez készült Azure-bővítmény készültségének megkeresése)
+[deployment-guide-5.1-new]:deployment-guide.md#7bf24f59-7347-4c7a-b094-4693e4687ee5 (Az SAP-hez készült új Azure-bővítmény készültségének keresése)
 [deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Az SAP-konfiguráció Azure-bővítményének állapot-keresése)
+[deployment-guide-5.2-new]:deployment-guide.md#464ac96d-7d3c-435d-a5ae-3faf3bfef4b3 (Az SAP-konfiguráció új Azure-bővítményének állapot-keresése)
 [deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (Az SAP-hez készült Azure-bővítmény hibaelhárítása)
+[deployment-guide-5.3-new]:deployment-guide.md#b7afb8ef-a64c-495d-bb37-2af96688c530 (Az SAP-hez készült új Azure-bővítmény hibáinak elhárítása)
+[deployment-guide-contact-support]:deployment-guide.md#3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2 (Az SAP-hez készült Azure-bővítmény hibaelhárítása – Kapcsolatfelvétel az ügyfélszolgálattal)
+[deployment-guide-run-the-script]:deployment-guide.md#0d2847ad-865d-4a4c-a405-f9b7baaa00c7 (Az SAP-hez készült Azure-bővítmény hibaelhárítása – a telepítési parancsfájl futtatása)
+[deployment-guide-redeploy-after-sysprep]:deployment-guide.md#2cd61f22-187d-42ed-bb8c-def0c983d756 (Azure-bővítmény hibaelhárítása SAP-re – újbóli üzembe helyezés a Sysprep után)
+[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 (Az SAP-hez készült Azure-bővítmény hibaelhárítása – internetkapcsolat javítása)
+
 
 [deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (Virtuálisgép-bővítmény konfigurálása)
 [deployment-guide-configure-proxy]:deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (A proxy konfigurálása)
@@ -150,7 +160,7 @@ ms.locfileid: "84020115"
 [deployment-guide-figure-azure-cli-installed]:deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]:deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]:deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Az SAP-gazdagép ügynökének végpontok közötti adatgyűjtésének ellenőrzése és hibaelhárítása)
+[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (Ellenőrzések és hibaelhárítás)
 
 [deploy-template-cli]:../../../resource-group-template-deploy-cli.md
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
@@ -308,6 +318,10 @@ ms.locfileid: "84020115"
 [vpn-gateway-vpn-faq]:../../../vpn-gateway/vpn-gateway-vpn-faq.md
 [xplat-cli]:../../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
+[qs-configure-powershell-windows-vm]:../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md
+[qs-configure-cli-windows-vm]:../../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md
+[howto-assign-access-powershell]:../../../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md
+[howto-assign-access-cli]:../../../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -381,7 +395,7 @@ Az SAP-szoftverek központi telepítésének beállításakor a következő SAP-
 * Az [1984787] -es SAP-Megjegyzés általános információkat tartalmaz a SUSE Linux Enterprise Server 12.
 * Az [2002167] -es SAP-Megjegyzés általános információkat tartalmaz az Red Hat Enterprise Linux 7. x-ről.
 * Az [2069760] -es SAP-Megjegyzés általános információkat tartalmaz az Oracle Linux 7. x-ről.
-* Az SAP Megjegyzés [1999351] további hibaelhárítási információkat tartalmaz az SAP-hez készült Azure Enhanced monitoring bővítménnyel kapcsolatban.
+* Az SAP Megjegyzés [1999351] további hibaelhárítási információkat tartalmaz az SAP-hez készült Azure-bővítményhez.
 * Az [1597355] -es SAP-Megjegyzés általános információkat tartalmaz a Linux-alapú swap-területről.
 * Az [SAP az Azure-beli állapotváltozás oldalán](https://wiki.scn.sap.com/wiki/x/Pia7Gg) Hírek és hasznos erőforrások gyűjteménye szerepel.
 * Az [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik minden szükséges SAP-megjegyzéssel a Linux rendszerhez.
@@ -520,7 +534,7 @@ Ahhoz, hogy az SAP támogassa a környezetét, állítsa be az SAP-hez készült
 
 #### <a name="vm-extension-for-sap-check"></a>VM-bővítmény az SAP-hez
 
-Ellenőrizze, hogy az SAP virtuálisgép-bővítménye működik-e, az [SAP Host Agent teljes adatgyűjtésének ellenőrzése és hibaelhárítása][deployment-guide-troubleshooting-chapter]című témakörben leírtak szerint.
+Ellenőrizze, hogy működik-e az SAP virtuálisgép-bővítménye, az [ellenőrzések és hibaelhárítás][deployment-guide-troubleshooting-chapter]című részben leírtak szerint.
 
 #### <a name="post-deployment-steps"></a>Üzembe helyezés utáni lépések
 
@@ -662,7 +676,7 @@ Ahhoz, hogy az SAP támogassa a környezetét, állítsa be az SAP-hez készült
 
 #### <a name="sap-vm-extension-check"></a>SAP virtuálisgép-bővítmény-ellenőrzési
 
-Ellenőrizze, hogy az SAP virtuálisgép-bővítménye működik-e, az [SAP Host Agent teljes adatgyűjtésének ellenőrzése és hibaelhárítása][deployment-guide-troubleshooting-chapter]című témakörben leírtak szerint.
+Ellenőrizze, hogy működik-e az SAP virtuálisgép-bővítménye, az [ellenőrzések és hibaelhárítás][deployment-guide-troubleshooting-chapter]című részben leírtak szerint.
 
 
 ### <a name="scenario-3-moving-an-on-premises-vm-by-using-a-non-generalized-azure-vhd-with-sap"></a><a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>3. forgatókönyv: helyszíni virtuális gép áthelyezése egy nem általánosított Azure VHD-vel az SAP használatával
@@ -752,7 +766,7 @@ Ahhoz, hogy az SAP támogassa a környezetét, állítsa be az SAP-hez készült
 
 #### <a name="sap-vm-check"></a>SAP virtuális gép-ellenőrzési
 
-Ellenőrizze, hogy az SAP virtuálisgép-bővítménye működik-e, az [SAP Host Agent teljes adatgyűjtésének ellenőrzése és hibaelhárítása][deployment-guide-troubleshooting-chapter]című témakörben leírtak szerint.
+Ellenőrizze, hogy működik-e az SAP virtuálisgép-bővítménye, az [ellenőrzések és hibaelhárítás][deployment-guide-troubleshooting-chapter]című részben leírtak szerint.
 
 ## <a name="update-the-configuration-of-azure-extension-for-sap"></a>Az SAP-hez készült Azure-bővítmény konfigurációjának frissítése
 
@@ -771,18 +785,9 @@ Ez a szakasz részletesen ismerteti a konfigurációs és központi telepítési
 
 ### <a name="deploy-azure-powershell-cmdlets"></a><a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell-parancsmagok üzembe helyezése
 
-1. Ugrás [Microsoft Azure letöltésekre](https://azure.microsoft.com/downloads/).
-1. A **parancssori eszközök**alatt, a **PowerShell**alatt válassza a **Windows telepítés**lehetőséget.
-1. A letöltött fájlhoz (például WindowsAzurePowershellGet. 3F. 3F. 3fnew. exe) a Microsoft Download Manager párbeszédpanelen válassza a **Futtatás**lehetőséget.
-1. A Microsoft webplatform-telepítő (Microsoft Web PI) futtatásához válassza az **Igen**lehetőséget.
-1. Az alábbihoz hasonló oldal jelenik meg:
+Kövesse a [Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps) című cikkben ismertetett lépéseket.
 
-   ![Azure PowerShell-parancsmagok telepítési lapja][deployment-guide-figure-500]<a name="figure-5"></a>
-
-1. Válassza a **telepítés**lehetőséget, majd fogadja el a Microsoft szoftverlicenc-feltételeit.
-1. A PowerShell telepítve van. A telepítővarázsló bezárásához kattintson a **Befejezés** gombra.
-
-Rendszeresen keressen a PowerShell-parancsmagok frissítéseire, amelyek általában havonta frissülnek. A frissítések keresésének legegyszerűbb módja az előző telepítési lépések végrehajtása, amely az 5. lépésben látható telepítési lapra mutat. A parancsmagok kiadási és kiadási száma az 5. lépésben látható oldalon található. Ha nincs megadva a [1928533] -es SAP-Megjegyzés vagy a [2015553]-es SAP-Megjegyzés, javasoljuk, hogy működjön az Azure PowerShell-parancsmagok legújabb verziójával.
+Rendszeresen keressen a PowerShell-parancsmagok frissítéseire, amelyek általában havonta frissülnek. Kövesse a [jelen](https://docs.microsoft.com/powershell/azure/install-az-ps#update-the-azure-powershell-module) cikkben ismertetett lépéseket. Ha nincs megadva a [1928533] -es SAP-Megjegyzés vagy a [2015553]-es SAP-Megjegyzés, javasoljuk, hogy működjön az Azure PowerShell-parancsmagok legújabb verziójával.
 
 A számítógépen telepített Azure PowerShell-parancsmagok verziójának vizsgálatához futtassa a következő PowerShell-parancsot:
 
@@ -790,41 +795,17 @@ A számítógépen telepített Azure PowerShell-parancsmagok verziójának vizsg
 (Get-Module Az.Compute).Version
 ```
 
-Az eredmény így néz ki:
-
-![Azure PowerShell parancsmag verziójának ellenőrzésének eredménye][deployment-guide-figure-600]
-<a name="figure-6"></a>
-
-Ha a számítógépre telepített Azure-parancsmag verziója a jelenlegi verzió, a telepítővarázsló első lapja azt jelzi, hogy hozzáadja **(telepített)** a termék címéhez (lásd a következő képernyőképet). A PowerShell Azure-parancsmagjai naprakészek. A telepítővarázsló bezárásához kattintson a **Kilépés**elemre.
-
-![Azure PowerShell-parancsmagok telepítési lapja, amely azt jelzi, hogy a Azure PowerShell-parancsmagok legújabb verziója van telepítve.][deployment-guide-figure-700]
-<a name="figure-7"></a>
-
 ### <a name="deploy-azure-cli"></a><a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Az Azure CLI üzembe helyezése
 
-1. Ugrás [Microsoft Azure letöltésekre](https://azure.microsoft.com/downloads/).
-1. Az **Azure parancssori felület**alatti **parancssori eszközök**területen válassza ki az operációs rendszerének **telepítési** hivatkozását.
-1. A letöltött fájlhoz (például WindowsAzureXPlatCLI. 3F. 3F. 3fnew. exe) a Microsoft Download Manager párbeszédpanelen válassza a **Futtatás**lehetőséget.
-1. A Microsoft webplatform-telepítő (Microsoft Web PI) futtatásához válassza az **Igen**lehetőséget.
-1. Az alábbihoz hasonló oldal jelenik meg:
+Kövesse az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) című cikkben ismertetett lépéseket.
 
-   ![Azure PowerShell-parancsmagok telepítési lapja][deployment-guide-figure-500]<a name="figure-5"></a>
-
-1. Válassza a **telepítés**lehetőséget, majd fogadja el a Microsoft szoftverlicenc-feltételeit.
-1. Az Azure CLI telepítve van. A telepítővarázsló bezárásához kattintson a **Befejezés** gombra.
-
-Rendszeresen keressen frissítéseket az Azure CLI-hez, amely általában havonta frissül. A frissítések keresésének legegyszerűbb módja az előző telepítési lépések végrehajtása, amely az 5. lépésben látható telepítési lapra mutat.
+Rendszeresen keressen frissítéseket az Azure CLI-hez, amely általában havonta frissül.
 
 A számítógépen telepített Azure CLI verziójának vizsgálatához futtassa a következő parancsot:
 
 ```console
-azure --version
+az --version
 ```
-
-Az eredmény így néz ki:
-
-![Az Azure CLI-verzió ellenőrzésének eredménye][deployment-guide-figure-760]
-<a name="0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda"></a>
 
 ### <a name="join-a-vm-to-an-on-premises-domain-windows-only"></a><a name="31d9ecd6-b136-4c73-b61e-da4a29bbc9cc"></a>Virtuális gép csatlakoztatása helyszíni tartományhoz (csak Windows)
 
@@ -885,7 +866,7 @@ A proxybeállításokat helyesen kell beállítani ahhoz, hogy a helyi rendszerf
 1. Törölje **A beállítások automatikus észlelése** jelölőnégyzet kijelölését.
 1. Jelölje be a **proxykiszolgáló használata a helyi hálózaton** jelölőnégyzetet, majd adja meg a proxy címe és a port mezőt.
 1. Kattintson a **speciális** gombra.
-1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Kattintson az **OK** gombra.
+1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Válassza az **OK** lehetőséget.
 
 #### <a name="linux"></a>Linux
 
@@ -934,9 +915,22 @@ A felhasználó által megadott útvonalakkal kapcsolatos további információk
 
 ### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Az SAP-hez készült Azure-bővítmény konfigurálása
 
+> [!NOTE]
+> Általános támogatási nyilatkozat: mindig nyisson meg egy, az SAP-vel kapcsolatos incidenst a BC-OP-NT-AZR for Windows vagy a BC-OP-LNX-AZR esetében, ha az SAP-hez készült Azure-bővítmény támogatása szükséges.
+> Az SAP-támogatási rendszeren vannak olyan dedikált Microsoft támogatási mérnökök, akik a közös ügyfeleink segítségére vannak.
+
 Ha előkészítette a virtuális gépet az Azure-beli virtuális [gépek üzembe helyezési forgatókönyvei][deployment-guide-3]című témakörben leírtak szerint, az Azure-beli virtuálisgép-ügynök telepítve van a virtuális gépen. A következő lépés az SAP-hez készült Azure-bővítmény üzembe helyezése, amely a globális Azure-adatközpontok Azure Extension adattárában érhető el. További információ: [Azure Virtual Machines tervezése és implementálása az SAP NetWeaver-][planning-guide-9.1]ban.
 
-A PowerShell vagy az Azure CLI használatával telepítheti és konfigurálhatja az SAP-hez készült Azure-bővítményt. Ha Windows-vagy Linux-alapú virtuális gépen szeretné telepíteni a bővítményt, tekintse meg a következőt: [Azure PowerShell][deployment-guide-4.5.1]. Ha Linux rendszerű asztali gépen szeretné telepíteni a bővítményt Linux rendszerű virtuális gépre, tekintse meg az [Azure CLI][deployment-guide-4.5.2]-t.
+Az SAP-hez készült Azure-bővítmény új verziójának kiadása folyamatban van. Az új bővítmény a virtuális gép rendszerhez rendelt identitását használja a csatlakoztatott lemezek, a hálózati adapterek és a virtuális gép adatainak lekérésére. Ahhoz, hogy hozzáférhessenek ezekhez az erőforrásokhoz, a virtuális gép rendszeridentitásának olvasási engedéllyel kell rendelkeznie a virtuális géphez, az operációsrendszer-lemezhez, az adatlemezekhez és a hálózati adapterekhez. Jelenleg a következő esetekben javasoljuk, hogy csak az új bővítményt telepítse:
+
+1. A bővítményt a Terraform, Azure Resource Manager-sablonokkal vagy az Azure CLI-vel vagy más módon szeretné telepíteni Azure PowerShell
+1. A bővítményt a SUSE SLES 15 vagy újabb verzióra szeretné telepíteni.
+1. A Microsoft vagy az SAP támogatási szolgálata megkéri az új bővítmény telepítését
+1. Az Azure Ultra Disk vagy a standard Managed Disks szeretné használni
+
+Ezekhez a forgatókönyvekhez kövesse az [új Azure-bővítmény az SAP][deployment-guide-configure-new-extension-ps] -hez Azure PowerShell a Azure PowerShell vagy [az új Azure-bővítmény az SAP][deployment-guide-configure-new-extension-cli] -hez az Azure CLI-vel való konfigurálásához című fejezet lépéseit.
+
+Kövesse [Azure PowerShell][deployment-guide-4.5.1] vagy az [Azure CLI][deployment-guide-4.5.2] -t az SAP-hez készült Azure-bővítmény standard verziójának telepítéséhez és konfigurálásához.
 
 #### <a name="azure-powershell-for-linux-and-windows-vms"></a><a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Azure PowerShell Linux és Windows rendszerű virtuális gépekhez
 
@@ -944,7 +938,7 @@ Az Azure-bővítmény telepítése az SAP-hez a PowerShell használatával:
 
 1. Győződjön meg arról, hogy telepítette a Azure PowerShell parancsmag legújabb verzióját. További információ: Azure PowerShell- [parancsmagok telepítése][deployment-guide-4.1].  
 1. Futtassa az alábbi PowerShell-parancsmagot.
-    Az elérhető környezetek listájáért futtassa a parancsot `commandlet Get-AzEnvironment` . Ha globális Azure-t szeretne használni, a környezet **AzureCloud**. Az Azure-ban Kínában válassza a **AzureChinaCloud**lehetőséget.
+    Az elérhető környezetek listájáért futtassa a parancsot `commandlet Get-AzEnvironment` . Ha globális Azure-t szeretne használni, a környezet **AzureCloud**. Az Azure China 21Vianet válassza a **AzureChinaCloud**lehetőséget.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -954,7 +948,7 @@ Az Azure-bővítmény telepítése az SAP-hez a PowerShell használatával:
     Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
     ```
 
-A fiókadatok megadása és az Azure-beli virtuális gép azonosítása után a parancsfájl telepíti a szükséges bővítményeket, és engedélyezi a szükséges szolgáltatásokat. Ez néhány percig tarthat.
+A fiókadatok megadása után a parancsfájl telepíti a szükséges bővítményeket, és engedélyezi a szükséges szolgáltatásokat. Ez néhány percig tarthat.
 További információ `Set-AzVMAEMExtension` : [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
 ![Az SAP-specifikus Azure-parancsmag-AzVMAEMExtension sikeres végrehajtása][deployment-guide-figure-900]
@@ -1030,7 +1024,86 @@ Az Azure-bővítmény telepítése az SAP-hez az Azure CLI használatával:
    ...
    ```
 
-## <a name="checks-and-troubleshooting-for-end-to-end-data-collection-for-sap-host-agent"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Az SAP-gazdagép ügynökének végpontok közötti adatgyűjtésének ellenőrzése és hibaelhárítása
+#### <a name="configure-the-new-azure-extension-for-sap-with-azure-powershell"></a><a name="2ad55a0d-9937-4943-9dd2-69bc2b5d3de0"></a>Az SAP-hez készült új Azure-bővítmény konfigurálása Azure PowerShell
+
+Az SAP új virtuálisgép-bővítménye a virtuális géphez hozzárendelt felügyelt identitást használja a virtuális gép figyelési és konfigurációs adatainak eléréséhez. Ha az új Azure-bővítményt az SAP-hoz szeretné telepíteni a PowerShell használatával, először hozzá kell rendelnie egy ilyen identitást a virtuális géphez, és biztosítania kell, hogy az identitás hozzáférhessen az adott virtuális gép által használt összes erőforráshoz, például lemezekhez és hálózati adapterekhez.
+
+A folyamat Azure PowerShell (> 4.2.0) következő verziójában automatikusan automatizálva lesz. Az új verzió elérhetővé tétele után frissíteni fogjuk ezt a cikket. Addig is kövesse ezeket a lépéseket a bővítmény manuális telepítéséhez.
+
+1. Győződjön meg arról, hogy telepítette a Azure PowerShell parancsmag legújabb verzióját. További információ: Azure PowerShell- [parancsmagok telepítése][deployment-guide-4.1].
+1. Kövesse a [felügyelt identitások konfigurálása][qs-configure-powershell-windows-vm] Azure-beli virtuális gépen az Azure-beli virtuális gépeken a PowerShell használatával című cikkben ismertetett lépéseket, hogy lehetővé váljon a rendszerhez rendelt felügyelt identitás a virtuális géphez. A felhasználó által hozzárendelt felügyelt identitások nem támogatottak az SAP-hez készült virtuálisgép-bővítményben. Ugyanakkor engedélyezheti a rendszerhez rendelt és a felhasználó által hozzárendelt identitást is.
+    
+    Példa:
+    ```powershell
+    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
+    Update-AzVM -ResourceGroupName $vm.ResourceGroupName -VM $vm -IdentityType SystemAssigned
+    ```
+
+1. Rendelje hozzá a felügyelt identitáshoz való hozzáférést a virtuális gép erőforráscsoporthoz vagy az összes hálózati adapterhez, a felügyelt lemezekhez és a virtuális géphez, a következő témakörben leírtak szerint: [felügyelt identitáshoz való hozzáférés hozzáadása egy erőforráshoz PowerShell][howto-assign-access-powershell] -példa használatával
+
+    ```powershell
+    $spID = (Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>).identity.principalid
+    $rg = Get-AzResourceGroup -Name $vm.ResourceGroupName
+    New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope $rg.ResourceId
+    ```
+
+1. Futtassa az alábbi PowerShell-parancsmagot az SAP-hez készült Azure-bővítmény telepítéséhez.
+    A bővítmény jelenleg csak a AzureCloud támogatott. Az Azure China 21Vianet, Azure Government vagy más speciális környezetek még nem támogatottak.
+
+    ```powershell
+    $env = Get-AzEnvironment -Name AzureCloud
+    Connect-AzAccount -Environment $env
+    Set-AzContext -SubscriptionName <subscription name>
+
+    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
+    if ($vm.StorageProfile.OsDisk.OsType -eq "Windows") {
+      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Windows -Name MonitorX64Windows -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
+    } else {
+      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Linux -Name MonitorX64Linux -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
+    }
+    ```
+
+#### <a name="configure-the-new-azure-extension-for-sap-with-azure-cli"></a><a name="c8749c24-fada-42ad-b114-f9aae2dc37da"></a>Az új Azure-bővítmény konfigurálása az SAP-hoz az Azure CLI-vel
+
+Az SAP új virtuálisgép-bővítménye a virtuális géphez hozzárendelt felügyelt identitást használja a virtuális gép figyelési és konfigurációs adatainak eléréséhez. Ha az Azure CLI-vel szeretné telepíteni az új Azure-bővítményt az SAP-hez, először hozzá kell rendelnie egy ilyen identitást a virtuális géphez, és biztosítania kell, hogy az identitás hozzáférhessen az adott virtuális gép által használt összes erőforráshoz, például lemezekhez és hálózati adapterekhez.
+
+1. Telepítse az Azure CLI 2,0-et az [Azure cli 2,0 telepítése][azure-cli-2]című témakörben leírtak szerint.
+
+1. Jelentkezzen be az Azure-fiókjával:
+
+   ```azurecli
+   az login
+   ```
+
+1. Kövesse az Azure-beli [virtuális gépek felügyelt identitások konfigurálása][qs-configure-cli-windows-vm] Azure-beli virtuális gépen az Azure CLI használatával című cikket, amely lehetővé teszi a rendszerhez rendelt felügyelt identitások használatát a virtuális géphez. A felhasználó által hozzárendelt felügyelt identitások nem támogatottak az SAP-hez készült virtuálisgép-bővítményben. Ugyanakkor engedélyezheti a rendszerhez rendelt és a felhasználó által hozzárendelt identitást is.
+
+   Példa:
+   ```azurecli
+   az vm identity assign -g <resource-group-name> -n <vm name>
+   ```
+
+1. Rendelje hozzá a felügyelt identitás hozzáférését a virtuális gép erőforráscsoporthoz vagy az összes hálózati adapterhez, a felügyelt lemezekhez és a virtuális géphez, a [felügyelt identitáshoz való hozzáférés az Azure CLI használatával][howto-assign-access-cli]
+
+    Példa:
+
+    ```azurecli
+    spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
+    rgId=$(az group show -g <resource-group-name> --query id --out tsv)
+    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
+    ```
+
+1. Az SAP-hez készült Azure-bővítmény telepítéséhez futtassa az alábbi Azure CLI-parancsot.
+    A bővítmény jelenleg csak a AzureCloud támogatott. Az Azure China 21Vianet, Azure Government vagy más speciális környezetek még nem támogatottak.
+
+    ```azurecli
+    # For Linux machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+
+    #For Windows machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+    ```
+
+## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Ellenőrzések és hibaelhárítás
 
 Miután üzembe helyezte az Azure-beli virtuális gépet, és beállította az SAP-hoz kapcsolódó Azure-bővítményt, győződjön meg arról, hogy a bővítmény összes összetevője a várt módon működik-e.
 
@@ -1038,7 +1111,7 @@ Futtassa az SAP-hez készült Azure-bővítmény készültség-ellenőrzését a
 
 ### <a name="readiness-check-for-the-azure-extension-for-sap"></a><a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Az SAP-hez készült Azure-bővítmény készültségének megkeresése
 
-Ez az ellenőrzés ellenőrzi, hogy az SAP-alkalmazáson belül megjelenő összes teljesítménymutatót az SAP-hoz tartozó Azure-bővítmény biztosítja-e.
+Ez az ellenőrzés ellenőrzi, hogy az SAP-alkalmazáson belül megjelenő összes teljesítménymutatót az SAP-hoz tartozó Azure-bővítmény biztosítja-e. Ha telepítette az új Azure-bővítményt az SAP-hoz, kövesse a jelen útmutató az SAP-hez készült [új Azure-bővítményre][deployment-guide-5.1-new] vonatkozó szakaszának készültség-ellenőrzését.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>A készültség-ellenőrzési szolgáltatás futtatása Windows rendszerű virtuális gépen
 
@@ -1050,31 +1123,31 @@ Ez az ellenőrzés ellenőrzi, hogy az SAP-alkalmazáson belül megjelenő össz
 
    ![Az SAP-hez készült Azure-bővítményt futtató szolgáltatás tulajdonságai][deployment-guide-figure-1000]
 
-1. A parancssorban a **azperflib. exe** parancsot paraméterek nélkül futtassa.
+1. A parancssorban paraméterek nélkül futtassa **azperflib.exe** .
 
    > [!NOTE]
-   > A Azperflib. exe ciklusban fut, és 60 másodpercenként frissíti az összegyűjtött számlálókat. A hurok befejezéséhez zárjuk be a parancssorablakot.
+   > Azperflib.exe fut egy hurokban, és minden 60 másodpercenként frissíti az összegyűjtött számlálókat. A hurok befejezéséhez zárjuk be a parancssorablakot.
    >
    >
 
 Ha az SAP-hez készült Azure-bővítmény nincs telepítve, vagy a AzureEnhancedMonitoring szolgáltatás nem fut, a bővítmény nincs megfelelően konfigurálva. A bővítmény üzembe helyezésével kapcsolatos részletes információkért lásd [az SAP-hez készült Azure-bővítmény hibaelhárítása][deployment-guide-5.3]című témakört.
 
 > [!NOTE]
-> A Azperflib. exe olyan összetevő, amely nem használható saját célra. Ez egy olyan összetevő, amely kizárólag az SAP-gazdagéphez tartozó virtuális géphez kapcsolódó Azure-infrastruktúrával kapcsolatos adategységeket biztosít.
+> A Azperflib.exe olyan összetevő, amely nem használható saját célra. Ez egy olyan összetevő, amely kizárólag az SAP-gazdagéphez tartozó virtuális géphez kapcsolódó Azure-infrastruktúrával kapcsolatos adategységeket biztosít.
 > 
 
-##### <a name="check-the-output-of-azperflibexe"></a>A azperflib. exe kimenetének keresése
+##### <a name="check-the-output-of-azperflibexe"></a>azperflib.exe kimenetének keresése
 
-A Azperflib. exe kimenetben az összes kitöltött Azure-teljesítményszámláló megjelenik az SAP számára. Az összegyűjtött számlálók listájának alján az összefoglalás és az állapotjelző az SAP-hez készült Azure-bővítmény állapotát jeleníti meg.
+Azperflib.exe kimenetben az összes kitöltött Azure-teljesítményszámláló megjelenik az SAP számára. Az összegyűjtött számlálók listájának alján az összefoglalás és az állapotjelző az SAP-hez készült Azure-bővítmény állapotát jeleníti meg.
 
-![Az állapot-ellenőrzés kimenete a azperflib. exe futtatásával, amely azt jelzi, hogy nem léteznek problémák][deployment-guide-figure-1100]
+![Az állapot-ellenőrzés kimenete azperflib.exe végrehajtásával, amely azt jelzi, hogy nem léteznek problémák][deployment-guide-figure-1100]
 <a name="figure-11"></a>
 
 Az előző ábrán látható módon tekintse meg a **számlálók összes** kimenetének eredményét, amely üresként van jelezve, valamint az **állapot állapotaként**.
 
 Az eredményül kapott értékeket a következőképpen értelmezheti:
 
-| Azperflib. exe eredmény értékei | Azure-bővítmény az SAP Health status szolgáltatáshoz |
+| Azperflib.exe eredmény értékei | Azure-bővítmény az SAP Health status szolgáltatáshoz |
 | --- | --- |
 | **API-hívások – nem érhető el** | Előfordulhat, hogy a nem elérhető számlálók nem alkalmazhatók a virtuális gép konfigurációjához, vagy hibásak. **Állapot**megtekintése. |
 | **Összes számláló – üres** |A következő két Azure Storage-számláló lehet üres: <ul><li>Tárolás olvasási op késési kiszolgáló MS</li><li>Tárolási olvasási op késés E2E MS</li></ul>Minden más számlálónak értékkel kell rendelkeznie. |
@@ -1131,16 +1204,78 @@ Ha az előző ellenőrzés sikertelen volt, futtassa a következő további elle
 
    c.  Győződjön meg arról, hogy a **Virtualization_Configuration \enhanced-figyelési hozzáférési** metrika **igaz értékű**-e.
 
-Ha már telepítve van egy SAP NetWeaver ABAP-alkalmazáskiszolgáló, nyissa meg a tranzakció ST06, és ellenőrizze, hogy engedélyezve van-e a fokozott figyelés.
+Ha már telepítve van egy SAP NetWeaver ABAP-alkalmazáskiszolgáló, nyissa meg a tranzakció ST06, és ellenőrizze, hogy engedélyezve van-e a figyelés.
 
 Ha ezek közül bármelyik ellenőrzés meghiúsul, és részletes információkat talál a bővítmény újratelepítéséről, olvassa el [az SAP-hez készült Azure-bővítmény hibaelhárítása][deployment-guide-5.3]című témakört.
+
+### <a name="readiness-check-for-the-new-azure-extension-for-sap"></a><a name="7bf24f59-7347-4c7a-b094-4693e4687ee5"></a>Az SAP-hez készült új Azure-bővítmény készültségének megkeresése
+
+Ez az ellenőrzés ellenőrzi, hogy az SAP-alkalmazáson belül megjelenő összes teljesítménymutatót az SAP-hoz tartozó Azure-bővítmény biztosítja-e. Ha központilag telepítette a régi Azure-bővítményt az SAP-hoz, kövesse a jelen útmutató az SAP-hez készült [Azure-bővítményre vonatkozó készültség-ellenőrzési][deployment-guide-5.1] szakaszát.
+
+#### <a name="run-the-readiness-check-on-a-windows-vm"></a>A készültség-ellenőrzési szolgáltatás futtatása Windows rendszerű virtuális gépen
+
+1. Jelentkezzen be az Azure-beli virtuális gépre (a rendszergazdai fiók használata nem szükséges).
+1. Nyisson meg egy webböngészőt, és navigáljon a következőrehttp://127.0.0.1:11812/azure4sap/metrics
+1. A böngészőnek meg kell jelennie vagy le kell töltenie egy XML-fájlt, amely a virtuális gép figyelési adatait tartalmazza. Ha ez nem igaz, ellenőrizze, hogy telepítve van-e az Azure-bővítmény az SAP-hez.
+
+##### <a name="check-the-content-of-the-xml-file"></a>Az XML-fájl tartalmának keresése
+
+Az elérhető XML-fájl tartalmazza az összes, az http://127.0.0.1:11812/azure4sap/metrics SAP számára kitöltött Azure-teljesítményszámlálókat. Az SAP-hez készült Azure-bővítmény állapotának összegzését és állapotát is tartalmazza.
+
+A **szolgáltató állapota Description** elem értékének bejelölése. Ha az érték nem megfelelő **, kövesse**az [állapot-ellenőrzési új Azure-bővítmény az SAP-konfigurációhoz][deployment-guide-5.2-new]című témakör utasításait.
+
+#### <a name="run-the-readiness-check-on-a-linux-vm"></a>A készültségi vizsgálat futtatása Linux rendszerű virtuális gépen
+
+1. Csatlakozzon az Azure-beli virtuális géphez az SSH használatával.
+
+1. A következő parancs kimenetének megtekintése
+
+    ```console
+    curl http://127.0.0.1:11812/azure4sap/metrics
+    ```
+    
+   **Várt eredmény**: egy XML-dokumentumot ad vissza, amely tartalmazza a virtuális gép, a lemezek és a hálózati adapterek figyelési információit.
+
+Ha az előző ellenőrzés sikertelen volt, futtassa a következő további ellenőrzéseket:
+
+1. Győződjön meg arról, hogy a waagent telepítve és engedélyezve van.
+
+   a.  Futtassa a `sudo ls -al /var/lib/waagent/` parancsot.
+
+     **Várt eredmény**: felsorolja a waagent könyvtárának tartalmát.
+
+   b.  Futtassa a `ps -ax | grep waagent` parancsot.
+
+   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg:`python /usr/sbin/waagent -daemon`
+
+1. Győződjön meg arról, hogy az SAP-hez készült Azure-bővítmény telepítve van és fut.
+
+   a.  Futtassa a `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'` parancsot.
+
+   **Várt eredmény**: FELSOROLJA az SAP-címtárhoz készült Azure-bővítmény tartalmát.
+
+   b. Futtassa a `ps -ax | grep AzureEnhanced` parancsot.
+
+   **Várt eredmény**: egy, a következőhöz hasonló bejegyzést jelenít meg:`/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
+
+1. Telepítse az SAP-gazdagép ügynököt az SAP Note [1031096]-as verziójában leírtak szerint, és ellenőrizze a kimenetét `saposcol` .
+
+   a.  Futtassa a `/usr/sap/hostctrl/exe/saposcol -d` parancsot.
+
+   b.  Futtassa a `dump ccm` parancsot.
+
+   c.  Győződjön meg arról, hogy a **Virtualization_Configuration \enhanced-figyelési hozzáférési** metrika **igaz értékű**-e.
+
+Ha már telepítve van egy SAP NetWeaver ABAP-alkalmazáskiszolgáló, nyissa meg a tranzakció ST06, és ellenőrizze, hogy engedélyezve van-e a figyelés.
+
+Ha ezek közül bármelyik ellenőrzés meghiúsul, és a bővítmény újbóli üzembe helyezésével kapcsolatos részletes információkért tekintse meg [az SAP-hez készült új Azure-bővítmény hibaelhárítása][deployment-guide-5.3-new]című témakört.
 
 ### <a name="health-check-for-the-azure-extension-for-sap-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Az SAP-konfiguráció Azure-bővítményének állapot-keresése
 
 Ha bizonyos infrastruktúra-információk nem jelennek meg megfelelően az [Azure-bővítmény az SAP-hez való készültségének ellenőrzése][deployment-guide-5.1]című témakörben leírtak szerint, futtassa a `Test-AzVMAEMExtension` parancsmagot annak ellenőrzéséhez, hogy az Azure-infrastruktúra és az SAP-bővítmény megfelelően van-e konfigurálva.
 
 1. Győződjön meg arról, hogy telepítette a Azure PowerShell parancsmag legújabb verzióját a [Azure PowerShell parancsmagok telepítése][deployment-guide-4.1]című cikkben leírtak szerint.
-1. Futtassa az alábbi PowerShell-parancsmagot. Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . A globális Azure használatához válassza ki a **AzureCloud** -környezetet. Az Azure-ban Kínában válassza a **AzureChinaCloud**lehetőséget.
+1. Futtassa az alábbi PowerShell-parancsmagot. Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . A globális Azure használatához válassza ki a **AzureCloud** -környezetet. Az Azure China 21Vianet válassza a **AzureChinaCloud**lehetőséget.
 
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>
@@ -1148,10 +1283,6 @@ Ha bizonyos infrastruktúra-információk nem jelennek meg megfelelően az [Azur
    Set-AzContext -SubscriptionName <subscription name>
    Test-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
    ```
-
-1. Adja meg a fiókadatok adatait, és azonosítsa az Azure-beli virtuális gépet.
-
-   ![Az SAP-specifikus Azure cmdlet test-VMConfigForSAP_GUI bemeneti lapja][deployment-guide-figure-1200]
 
 1. A parancsfájl ellenőrzi a kiválasztott virtuális gép konfigurációját.
 
@@ -1162,6 +1293,22 @@ Győződjön meg arról, hogy minden állapot-ellenőrzési eredmény **rendben*
 > [!Note]
 > Bizonyos figyelmeztetések olyan esetekben is előfordulhatnak, amikor felügyelt szabványos Azure-lemezeket használ. A figyelmeztetések az "OK" kifejezés helyett a tesztek után jelennek meg. Ez normális, és a lemez típusa esetén szükséges. Lásd még: [az SAP-hez készült Azure-bővítmény hibaelhárítása][deployment-guide-5.3]
 > 
+
+### <a name="health-check-for-the-new-azure-extension-for-sap-configuration"></a><a name="464ac96d-7d3c-435d-a5ae-3faf3bfef4b3"></a>Az SAP-konfiguráció új Azure-bővítményének állapot-keresése
+
+Ha bizonyos infrastruktúra-információk nem jelennek meg megfelelően az [Azure-bővítmény az SAP-hez való készültségi ellenőrzése][deployment-guide-5.1-new]című témakörben leírtak szerint, futtassa a `Get-AzVMExtension` parancsmagot annak ellenőrzéséhez, hogy telepítve van-e az Azure-bővítmény az SAP-hoz. A `Test-AzVMAEMExtension` még nem támogatja az új bővítményt. Miután a parancsmag támogatja az új bővítményt, frissíteni fogjuk ezt a cikket.
+
+1. Győződjön meg arról, hogy telepítette a Azure PowerShell parancsmag legújabb verzióját a [Azure PowerShell parancsmagok telepítése][deployment-guide-4.1]című cikkben leírtak szerint.
+1. Futtassa az alábbi PowerShell-parancsmagot. Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . A globális Azure használatához válassza ki a **AzureCloud** -környezetet. Az Azure China 21Vianet válassza a **AzureChinaCloud**lehetőséget.
+
+   ```powershell
+   $env = Get-AzEnvironment -Name <name of the environment>
+   Connect-AzAccount -Environment $env
+   Set-AzContext -SubscriptionName <subscription name>
+   Get-AzVMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   ```
+
+1. A parancsmag a kiválasztott virtuális gép összes bővítményét listázza. Győződjön meg arról, hogy az SAP-hez készült Azure-bővítmény telepítve van a virtuális gépen.
 
 ### <a name="troubleshooting-azure-extension-for-sap"></a><a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Az SAP-hez készült Azure-bővítmény hibaelhárítása
 
@@ -1185,9 +1332,9 @@ A bővítmény nincs telepítve. Állapítsa meg, hogy ez egy proxy-probléma (a
 
 A AzureEnhancedMonitoring Windows-szolgáltatás nem létezik.
 
-A Azperflib. exe kimenete hibát jelez:
+Azperflib.exe kimenet hibát jelez:
 
-![A azperflib. exe futtatása azt jelzi, hogy az SAP-hez készült Azure-bővítmény szolgáltatás nem fut][deployment-guide-figure-1400]
+![azperflib.exe végrehajtása azt jelzi, hogy az SAP-hez készült Azure-bővítmény szolgáltatás nem fut][deployment-guide-figure-1400]
 <a name="figure-14"></a>
 
 ###### <a name="solution"></a>Megoldás
@@ -1238,11 +1385,11 @@ WARNING: [WARN] Standard Managed Disks are not supported. Extension will be inst
 WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
 </code></pre>
 
-A azperfli. exe futtatása a korábban leírtak szerint a nem kifogástalan állapotot jelző eredményt kaphat. 
+azperfli.exe végrehajtása a korábban leírtak szerint, a nem kifogástalan állapotot jelző eredményt kaphat. 
 
 ###### <a name="solution"></a>Megoldás
 
-Az üzeneteket az a tény okozza, hogy a standard Managed Disks nem a SAP SAP-bővítmény által használt API-kat használják a standard Azure Storage-fiókok statisztikáinak ellenőrzéséhez. Ez nem jelent problémát. A standard Disk Storage-fiókok gyűjtési adatok bevezetésének oka a gyakran előforduló I/o-szabályozás volt. A felügyelt lemezek a Storage-fiókban lévő lemezek számának korlátozásával elkerülhetők az ilyen szabályozások. Ezért az ilyen típusú adattípusok nem kritikus fontosságúak.
+Az üzeneteket az a tény okozza, hogy a standard Managed Disks nem a SAP SAP-bővítmény által használt API-kat használják a standard Azure Storage-fiókok statisztikáinak ellenőrzéséhez. Ez nem jelent problémát. A standard Disk Storage-fiókok gyűjtési adatok bevezetésének oka a gyakran előforduló bemenetek és kimenetek szabályozása volt. A felügyelt lemezek a Storage-fiókban lévő lemezek számának korlátozásával elkerülhetők az ilyen szabályozások. Ezért az ilyen típusú adattípusok nem kritikus fontosságúak.
 
 
 #### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Egyes Azure-teljesítményszámlálók hiányoznak
@@ -1252,3 +1399,121 @@ Az Azure-beli teljesítmény-mérőszámokat egy démon gyűjti, amely több for
 Az ismert problémák teljes és naprakész listáját lásd: SAP Note [1999351], amely az SAP-hez készült Azure-bővítmény további hibaelhárítási információit tartalmazza.
 
 Ha a [1999351] -es SAP-Megjegyzés használatával végzett hibaelhárítás nem oldja meg a problémát, futtassa újra a `Set-AzVMAEMExtension` konfigurációs parancsfájlt az [Azure-bővítmény konfigurálása az SAP-hez][deployment-guide-4.5]című részben leírtak szerint. Előfordulhat, hogy várnia kell egy órát, mert a Storage Analytics vagy a diagnosztikai számlálók nem hozhatók létre azonnal, miután engedélyezve lettek. Ha a probléma továbbra is fennáll, nyisson meg egy SAP-ügyfélszolgálati üzenetet a BC-OP-NT-AZR for Windows vagy BC-OP-LNX-AZR összetevővel Linux rendszerű virtuális gépen.
+
+### <a name="troubleshooting-the-new-azure-extension-for-sap"></a><a name="b7afb8ef-a64c-495d-bb37-2af96688c530"></a>Az SAP-hez készült új Azure-bővítmény hibáinak elhárítása
+
+#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
+
+A AzureEnhancedMonitoring folyamat teljesítmény-mérőszámokat gyűjt az Azure-ban. Ha a folyamat nem fut a virtuális gépen, a teljesítmény-metrikák gyűjtése nem végezhető el.
+
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>Az SAP-hez készült Azure-bővítmény telepítési könyvtára üres
+
+###### <a name="issue"></a>Probléma
+
+A telepítési könyvtár C: \\ Packages \\ plugins \\ Microsoft. AzureCAT. AzureEnhancedMonitoring. MonitorX64Windows \\ &lt; Version> üres.
+
+###### <a name="solution"></a>Megoldás
+
+A bővítmény nincs telepítve. Állapítsa meg, hogy ez egy proxy-probléma (a korábban leírtak szerint). Előfordulhat, hogy újra kell indítania a gépet, vagy újra kell telepítenie a virtuálisgép-bővítményt.
+
+#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Egyes Azure-teljesítményszámlálók hiányoznak
+
+A AzureEnhancedMonitoring Windows-folyamat teljesítmény-mérőszámokat gyűjt az Azure-ban. A folyamat különböző forrásokból származó adatokkal rendelkezik. Bizonyos konfigurációs adatokat a rendszer helyileg gyűjt, és egyes teljesítmény-metrikák beolvasása Azure Monitor.
+
+Ha a [1999351]-es SAP-Megjegyzés használatával végez hibaelhárítást, nyisson meg egy SAP-ügyfélszolgálati üzenetet a BC-op-NT-AZR for Windows vagy BC-op-LNX-AZR számára Linux rendszerű virtuális gép esetén.
+
+#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
+
+Az Azure-ban a teljesítmény-mérőszámokat egy démon gyűjti. Ha a démon nem fut, a teljesítmény-mérőszámok nem gyűjthetők össze.
+
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>Az SAP-hez készült Azure-bővítmény telepítési könyvtára üres
+
+###### <a name="issue"></a>Probléma
+
+A \\ következő könyvtár \\ \\ \\ nem rendelkezik ALkönyvtárral az SAP-hez készült Azure-bővítményhez: var lib waagent.
+
+###### <a name="solution"></a>Megoldás
+
+A bővítmény nincs telepítve. Állapítsa meg, hogy ez egy proxy-probléma (a korábban leírtak szerint). Előfordulhat, hogy újra kell indítania a számítógépet, vagy újra kell telepítenie a virtuálisgép-bővítményt.
+
+#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Egyes Azure-teljesítményszámlálók hiányoznak
+
+Az Azure-beli teljesítmény-mérőszámokat egy démon gyűjti, amely több forrásból származó adatokat kap. Bizonyos konfigurációs adatokat a rendszer helyileg gyűjt, és egyes teljesítmény-metrikák beolvasása Azure Monitor.
+
+Az ismert problémák teljes és naprakész listáját lásd: SAP Note [1999351], amely az SAP-hez készült Azure-bővítmény további hibaelhárítási információit tartalmazza.
+
+Ha a [1999351] -es SAP-Megjegyzés használatával végzett hibaelhárítás nem oldja meg a problémát, telepítse újra a bővítményt az [SAP-hez készült Azure-bővítmény konfigurálása][deployment-guide-4.5]című részben leírtak szerint. Ha a probléma továbbra is fennáll, nyisson meg egy SAP-ügyfélszolgálati üzenetet a BC-OP-NT-AZR for Windows vagy BC-OP-LNX-AZR összetevővel Linux rendszerű virtuális gépen.
+
+## <a name="azure-extension-error-codes"></a>Azure-bővítmény Hibakódai
+
+| Hiba azonosítója | Hibaleírás | Megoldás |
+|---|---|---|
+| <a name="cfg_018"></a>cfg/018 | Az alkalmazás konfigurációja hiányzik. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="cfg_019"></a>cfg/019 | Nincs üzembe helyezési azonosító az alkalmazás konfigurációjában. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_020"></a>cfg/020 | Nincs RoleInstanceId az alkalmazás konfigurációjában. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_022"></a>cfg/022 | Nincs RoleInstanceId az alkalmazás konfigurációjában. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_031"></a>cfg/031 | Az Azure-konfiguráció nem olvasható. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_021"></a>cfg/021 | Hiányzik az alkalmazás konfigurációs fájlja. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="cfg_015"></a>cfg/015 | Nincs virtuális gép mérete az alkalmazás konfigurációjában. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="cfg_016"></a>cfg/016 | A GlobalMemoryStatusEx számláló nem sikerült. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_023"></a>cfg/023 | A MaxHwFrequency számláló nem sikerült. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_024"></a>cfg/024 | A hálózati adapterek számlálói sikertelenek voltak. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_025"></a>cfg/025 | A lemez-hozzárendelési számláló nem sikerült. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_026"></a>cfg/026 | A processzor neve számláló nem sikerült. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_027"></a>cfg/027 | A lemez-hozzárendelési számláló nem sikerült. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_038"></a>cfg/038 | A "lemez típusa" metrika hiányzik a bővítmény konfigurációs fájljából config.xml. A "lemez típusa" és más számlálók a v 2.2.0.68 12/16/2015-ben lettek bevezetve. Ha 12/16/2015 előtt telepítette a bővítményt, a a régi konfigurációs fájlt használja. Az Azure-bővítmény keretrendszere automatikusan frissíti a bővítményt egy újabb verzióra, de a config.xml változatlan marad. A konfiguráció frissítéséhez töltse le és hajtsa végre a PowerShell legújabb telepítési parancsfájlját. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="cfg_039"></a>cfg/039 | Nincs lemezes gyorsítótárazás. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="cfg_036"></a>cfg/036 | Nincs a lemez SLA-átviteli sebessége. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="cfg_037"></a>cfg/037 | Nincs a lemez SLA-IOPS. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="cfg_028"></a>cfg/028 | A lemez-hozzárendelési számláló nem sikerült. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_029"></a>cfg/029 | A legutóbbi hardverkonfiguráció számlálója sikertelen volt. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_030"></a>cfg/030 | Sikertelen hálózati adapterek számlálói | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_017"></a>cfg/017 | A virtuális gép Sysprep-je miatt megváltoztak a Windows biztonsági azonosító. | [újraüzembe helyezés a Sysprep után][deployment-guide-redeploy-after-sysprep] |
+| <a name="str_007"></a>Str/007 | Nem sikerült hozzáférni a Storage Analytics szolgáltatáshoz. <br /><br />Ha egy újonnan létrehozott virtuális gépen a Storage Analytics-beli adatmennyiséget akár fél óráig is el lehet végezni, előfordulhat, hogy a hiba egy kis idő elteltével eltűnik. Ha a hiba továbbra is megjelenik, futtassa újra a telepítési parancsfájlt. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="str_010"></a>Str/010 | Nincsenek Storage Analytics számlálók. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="str_009"></a>Str/009 | Storage Analytics sikertelen. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="wad_004"></a>wad/004 | Helytelen WAD-konfiguráció. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="wad_002"></a>wad/002 | Váratlan WAD formátum. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="wad_001"></a>wad/001 | Nem találhatók WAD-számlálók. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="wad_040"></a>wad/040 | Elavult WAD számlálók találhatók. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="wad_003"></a>wad/003 | A WAD tábla nem olvasható. Nem található a WAD táblához való kapcsolódás. Ennek számos oka lehet:<br /><br /> 1) elavult konfiguráció <br />2) nincs hálózati kapcsolódás az Azure-hoz <br />3) problémák a WAD-telepítéssel kapcsolatban | [telepítési parancsfájl futtatása][deployment-guide-run-the-script]<br />[internetkapcsolat javítása][deployment-guide-fix-internet-connection]<br />[Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="prf_011"></a>prf/011 | A perfmon NIC mérőszámai sikertelenek voltak. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="prf_012"></a>prf/012 | A perfmon lemez metrikái nem sikerültek. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="prf_013"></a>prf/013 | Néhány prefmon-metrika nem sikerült. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="prf_014"></a>prf/014 | A perfmon nem tudott létrehozni egy számlálót. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="cfg_035"></a>cfg/035 | Nincsenek konfigurált metrika-szolgáltatók. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+| <a name="str_006"></a>Str/006 | Helytelen Storage Analytics konfiguráció. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="str_032"></a>Str/032 | Storage Analytics mérőszámok sikertelenek voltak. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="cfg_033"></a>cfg/033 | Az egyik metrikai szolgáltató sikertelen volt. | [telepítési parancsfájl futtatása][deployment-guide-run-the-script] |
+| <a name="str_034"></a>Str/034 | A szolgáltatói szál nem sikerült. | [Kapcsolatfelvétel az ügyfélszolgálattal][deployment-guide-contact-support] |
+
+### <a name="detailed-guidelines-on-solutions-provided"></a>A megadott megoldásokra vonatkozó részletes irányelvek
+
+#### <a name="run-the-setup-script"></a><a name="0d2847ad-865d-4a4c-a405-f9b7baaa00c7"></a>A telepítési parancsfájl futtatása
+
+Az ebben az útmutatóban található, [az SAP-hez készült Azure-bővítmény konfigurálása][deployment-guide-4.5] című rész lépéseit követve telepítse újra a bővítményt. Vegye figyelembe, hogy egyes számlálók esetében akár 30 percet is igénybe vehet a kiépítés.
+
+Ha a hibák nem szűnnek meg, [forduljon az ügyfélszolgálathoz][deployment-guide-contact-support].
+
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel a támogatási szolgáltatással
+
+Váratlan hiba történt, vagy nincs ismert megoldás. Gyűjtsön a C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) vagy a/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) mappában található AzureEnhancedMonitoring_service. log fájlt, és további segítségért forduljon az SAP támogatási szolgálatához.
+
+#### <a name="redeploy-after-sysprep"></a><a name="2cd61f22-187d-42ed-bb8c-def0c983d756"></a>Újraüzembe helyezés a Sysprep után
+
+Ha olyan általánosított Sysprep használatával létrehozott operációsrendszer-rendszerképet szeretne létrehozni (amely tartalmazhatja az SAP szoftvert), azt javasoljuk, hogy ez a rendszerkép ne tartalmazza az SAP-hez készült Azure-bővítményt. Az általános operációsrendszer-lemezkép új példányának telepítése után telepítenie kell az SAP-hez készült Azure-bővítményt.
+
+Ha azonban az általános és a Sysprep használatával létrehozott operációsrendszer-lemezkép már tartalmazza az SAP-hez készült Azure-bővítményt, akkor a következő megkerülő megoldás alkalmazásával újrakonfigurálhatja a bővítményt az újonnan telepített virtuálisgép-példányon:
+
+* Az újonnan telepített VM-példányon törölje a következő mappák tartalmát:  
+  C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \RuntimeSettings C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Status
+
+* Az ebben az útmutatóban található, [az SAP-hez készült Azure-bővítmény konfigurálása][deployment-guide-4.5] című rész lépéseit követve telepítse újra a bővítményt.
+
+#### <a name="fix-internet-connection"></a><a name="e92bc57d-80d9-4a2b-a2f4-16713a22ad89"></a>Internetkapcsolat javítása
+
+Az SAP-hez készült Azure-bővítményt futtató Microsoft Azure virtuális gépnek internet-hozzáférésre van szüksége. Ha ez az Azure-beli virtuális gép egy Azure-Virtual Network vagy egy helyszíni tartomány része, akkor győződjön meg arról, hogy a megfelelő proxybeállítások be vannak állítva. Ezeknek a beállításoknak érvényesnek kell lenniük a LocalSystem fiókhoz is az Internet eléréséhez. Kövesse [a proxy konfigurálása][deployment-guide-configure-proxy] című részt az útmutatóban.
+
+Emellett, ha statikus IP-címet kell beállítania az Azure-beli virtuális géphez, ne állítsa be manuálisan az Azure-beli virtuális gépen, de a [Azure PowerShell](../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md), az [Azure CLI](../../../virtual-network/virtual-networks-static-private-ip-arm-cli.md) [Azure Portal](../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)használatával állítsa be. A statikus IP-címet az Azure DHCP szolgáltatással propagálja a rendszer.
+
+Az Azure virtuális gépen belüli statikus IP-cím manuális beállítása nem támogatott, és az SAP-hez készült Azure-bővítménysel kapcsolatos problémákat okozhat.

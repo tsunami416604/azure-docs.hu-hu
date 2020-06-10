@@ -3,16 +3,16 @@ title: Szoftveres RAID konfigurálása Linux rendszerű virtuális gépen
 description: Ismerje meg, hogyan konfigurálhatja a mdadm a RAID használatára az Azure-ban Linux rendszeren.
 author: rickstercdn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3471ccfa0899f73969c511dea283c2d0d7051af8
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250256"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659783"
 ---
 # <a name="configure-software-raid-on-linux"></a>Szoftveres RAID konfigurálása Linuxon
 A Linux rendszerű virtuális gépeken az Azure-ban a szoftveres RAID használatával egyetlen RAID-eszközként több csatlakoztatott adatlemezt is be lehet mutatni. Ez általában a teljesítmény javítása és a jobb átviteli sebesség lehetővé tétele, mint a csak egyetlen lemez használata.
@@ -43,7 +43,7 @@ RAID-eszköz konfigurálásához legalább két üres adatlemez szükséges.  A 
 ## <a name="create-the-disk-partitions"></a>A lemezpartíciók létrehozása
 Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.-on. Az új lemezpartíció neve/dev/sdc1. lesz.
 
-1. `fdisk` A partíciók létrehozásának megkezdése
+1. `fdisk`A partíciók létrehozásának megkezdése
 
     ```bash
     sudo fdisk /dev/sdc
@@ -77,14 +77,14 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
     Partition number (1-4): 1
     ```
 
-1. Válassza ki az új partíció kiindulási pontját, `<enter>` vagy nyomja meg a gombot, hogy fogadja el az alapértelmezett értéket, hogy a partíciót a szabad terület elején helyezze el a meghajtón:
+1. Válassza ki az új partíció kiindulási pontját, vagy nyomja meg a gombot, `<enter>` hogy fogadja el az alapértelmezett értéket, hogy a partíciót a szabad terület elején helyezze el a meghajtón:
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-1. Válassza ki a partíció méretét, például a "+ 10G" típust egy 10 gigabájtos partíció létrehozásához. Vagy nyomja meg `<enter>` a teljes meghajtót átívelő egyetlen partíció létrehozása:
+1. Válassza ki a partíció méretét, például a "+ 10G" típust egy 10 gigabájtos partíció létrehozásához. Vagy nyomja meg a `<enter>` teljes meghajtót átívelő egyetlen partíció létrehozása:
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
@@ -107,7 +107,7 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
     ```
 
 ## <a name="create-the-raid-array"></a>A RAID-tömb létrehozása
-1. A következő példa a "Stripe" (0. RAID-szint) három partíciót mutat be három különálló adatlemezen (sdc1, sdd1, sde1).  A parancs futtatása után létrejön egy új, **/dev/md127** nevű RAID-eszköz. Azt is vegye figyelembe, hogy ha ezek az adatlemezek korábban egy másik inaktív RAID-tömb részét képezték `--force` , akkor szükség `mdadm` lehet a paraméter hozzáadására a parancshoz:
+1. A következő példa a "Stripe" (0. RAID-szint) három partíciót mutat be három különálló adatlemezen (sdc1, sdd1, sde1).  A parancs futtatása után létrejön egy új, **/dev/md127** nevű RAID-eszköz. Azt is vegye figyelembe, hogy ha ezek az adatlemezek korábban egy másik inaktív RAID-tömb részét képezték, akkor szükség lehet a paraméter hozzáadására `--force` a `mdadm` parancshoz:
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
@@ -179,7 +179,7 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
 
     Ha ez a parancs hibaüzenetet eredményez, ellenőrizze a szintaxist az/etc/fstab fájlban.
    
-    A következő `mount` parancs futtatásával győződjön meg arról, hogy a fájlrendszer csatlakoztatva van:
+    A következő parancs futtatásával `mount` Győződjön meg arról, hogy a fájlrendszer csatlakoztatva van:
 
     ```bash   
     mount
@@ -191,7 +191,7 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
    
     **fstab-konfiguráció**
    
-    Számos disztribúció tartalmazza az `nobootwait` /etc/fstab fájlhoz `nofail` adható vagy csatlakoztatási paramétereket. Ezek a paraméterek lehetővé teszik a meghibásodást egy adott fájlrendszer csatlakoztatásakor, és lehetővé teszik a Linux rendszernek a rendszerindítás folytatását akkor is, ha nem tudja megfelelően csatlakoztatni a RAID fájlrendszert. A paraméterekkel kapcsolatos további információkért tekintse meg a terjesztés dokumentációját.
+    Számos disztribúció tartalmazza az `nobootwait` `nofail` /etc/fstab fájlhoz adható vagy csatlakoztatási paramétereket. Ezek a paraméterek lehetővé teszik a meghibásodást egy adott fájlrendszer csatlakoztatásakor, és lehetővé teszik a Linux rendszernek a rendszerindítás folytatását akkor is, ha nem tudja megfelelően csatlakoztatni a RAID fájlrendszert. A paraméterekkel kapcsolatos további információkért tekintse meg a terjesztés dokumentációját.
    
     Példa (Ubuntu):
 
@@ -201,9 +201,9 @@ Ebben a példában egyetlen lemezpartíció-partíciót hozunk létre a/dev/SDC.
 
     **Linux rendszerindítási paraméterek**
    
-    A fenti paraméterek mellett a (z) "`bootdegraded=true`" kernel paraméter a rendszerindítást is lehetővé teszi, még akkor is, ha a RAID sérült vagy csökkentett teljesítményű, például ha egy adatmeghajtót véletlenül eltávolítottak a virtuális gépről. Ez alapértelmezés szerint nem rendszerindító rendszert is eredményezhet.
+    A fenti paraméterek mellett a (z) "" kernel paraméter a `bootdegraded=true` rendszerindítást is lehetővé teszi, még akkor is, ha a RAID sérült vagy csökkentett teljesítményű, például ha egy adatmeghajtót véletlenül eltávolítottak a virtuális gépről. Ez alapértelmezés szerint nem rendszerindító rendszert is eredményezhet.
    
-    A rendszermag paramétereinek megfelelő szerkesztéséhez tekintse meg a disztribúció dokumentációját. Például sok disztribúcióban (CentOS, Oracle Linux, SLES 11) ezeket a paramétereket manuálisan is hozzáadhatja a "`/boot/grub/menu.lst`" fájlhoz.  Ubuntu esetén ez a paraméter a "/etc/default/grub" `GRUB_CMDLINE_LINUX_DEFAULT` változóhoz adható hozzá.
+    A rendszermag paramétereinek megfelelő szerkesztéséhez tekintse meg a disztribúció dokumentációját. Például sok disztribúcióban (CentOS, Oracle Linux, SLES 11) ezeket a paramétereket manuálisan is hozzáadhatja a " `/boot/grub/menu.lst` " fájlhoz.  Ubuntu esetén ez a paraméter a `GRUB_CMDLINE_LINUX_DEFAULT` "/etc/default/grub" változóhoz adható hozzá.
 
 
 ## <a name="trimunmap-support"></a>TRIM/LEKÉPEZÉSÉNEK megszüntetése-támogatás
@@ -214,13 +214,13 @@ Egyes linuxos kernelek támogatják a TRIM/LEKÉPEZÉSÉNEK megszüntetése műv
 
 A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-támogatás. A szokásos módon tekintse meg az ajánlott módszert az eloszlásban:
 
-- Használja a `discard` csatlakoztatási lehetőséget `/etc/fstab`a alkalmazásban, például:
+- Használja a `discard` csatlakoztatási lehetőséget a alkalmazásban `/etc/fstab` , például:
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
     ```
 
-- Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, `fstrim` hogy manuálisan futtatja a parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
+- Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, hogy manuálisan futtatja a `fstrim` parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
 
     **Ubuntu**
 

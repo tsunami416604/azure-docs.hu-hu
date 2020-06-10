@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 0a6294b0e937d13b58cc54bd2529c4d38edb9d69
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 27b8e27aa93cd163323cfd388e6e1d2e84a903d9
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636036"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660816"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Privát hivatkozás létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgáló számára a parancssori felület használatával
 
@@ -72,7 +72,7 @@ az vm create \
 Hozzon létre egy Azure Database for PostgreSQL az az postgres Server Create paranccsal. Ne feledje, hogy a PostgreSQL-kiszolgáló nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie: 
 
 ```azurecli-interactive
-# Create a logical server in the resource group 
+# Create a server in the resource group 
 az postgres server create \
 --name mydemoserver \
 --resource-group myresourcegroup \
@@ -84,13 +84,20 @@ az postgres server create \
 
 ## <a name="create-the-private-endpoint"></a>A magánhálózati végpont létrehozása 
 Hozzon létre egy privát végpontot a PostgreSQL-kiszolgálóhoz a Virtual Networkban: 
+
+A kiszolgáló erőforrás-azonosítójának beolvasása
 ```azurecli-interactive
+$resourceid = $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforPostgreSQL/servers" --query "id")
+```
+
+```azurecli-interactive
+#Use the resourceid defined above
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforPostgreSQL/servers/$Servername" \  
+    --private-connection-resource-id $resourceid \  
     --group-id postgresqlServer \  
     --connection-name myConnection  
  ```
@@ -173,7 +180,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     | Beállítás | Érték |
     | ------- | ----- |
     | Kiszolgáló típusa| Válassza a **PostgreSQL**lehetőséget.|
-    | Kiszolgálónév| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* kiválasztása |
+    | Kiszolgáló neve| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* kiválasztása |
     | Felhasználónév | Adja meg username@servername a PostgreSQL-kiszolgáló létrehozásakor megadott felhasználónevet. |
     |Jelszó |Adja meg a PostgreSQL-kiszolgáló létrehozásakor megadott jelszót. |
     |SSL|Válassza a **kötelező**lehetőséget.|

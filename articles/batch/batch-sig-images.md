@@ -4,12 +4,12 @@ description: Az egyéni lemezképek hatékony módszer a számítási csomópont
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: tracking-python
-ms.openlocfilehash: bd71983a5c932b515a7d41a680a55772567694ca
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8e81d0954d391210563641531b4c572325ae946f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561251"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656608"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Egyéni készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
@@ -44,6 +44,8 @@ A forgatókönyvhöz konfigurált megosztott rendszerkép használata több elő
 
 > [!NOTE]
 > A megosztott rendszerképnek a Batch-fiókkal megegyező előfizetésben kell lennie. A rendszerkép különböző régiókban lehet, amíg a Batch-fiókkal azonos régióban található replikák találhatók.
+
+Ha egy Azure AD-alkalmazással hoz létre egyéni képtárat egy megosztott képkatalógus-lemezképpel, az alkalmazásnak rendelkeznie kell egy [Azure beépített szerepkörrel](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) , amely hozzáférést biztosít a megosztott rendszerképhez. Ezt a hozzáférést a Azure Portal a megosztott rendszerképre való navigálással, a **hozzáférés-vezérlés (iam)** lehetőség kiválasztásával, valamint az alkalmazáshoz tartozó szerepkör-hozzárendelés hozzáadásával adhatja meg.
 
 ## <a name="prepare-a-custom-image"></a>Egyéni rendszerkép előkészítése
 

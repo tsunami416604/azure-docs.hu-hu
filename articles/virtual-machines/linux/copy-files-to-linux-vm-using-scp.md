@@ -4,16 +4,16 @@ description: A fájlokat biztonságosan helyezheti át az Azure-ban lévő Linux
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 531edf5bb857b570e595fc1a179a887013e094f3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969603"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659765"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Fájlok áthelyezése Linux rendszerű virtuális gépről SCP használatával
 
@@ -41,9 +41,9 @@ Példaként egy Linux rendszerű virtuális gépre helyezünk át egy Azure-beli
 
 ## <a name="ssh-key-pair-authentication"></a>SSH-kulcspár hitelesítése
 
-Az SCP SSH-t használ a szállítási réteghez. Az SSH kezeli a hitelesítést a cél gazdagépen, és a fájlt egy, az SSH-val alapértelmezés szerint elérhető titkosított alagútba helyezi át. Az SSH-hitelesítéshez felhasználóneveket és jelszavakat lehet használni. Az SSH nyilvános és titkos kulcsú hitelesítés azonban ajánlott biztonsági eljárás. Miután az SSH hitelesítette a kapcsolódást, az SCP megkezdi a fájl másolását. A megfelelően konfigurált `~/.ssh/config` és az SSH nyilvános és titkos kulcsok használatával az scp-kapcsolatok csak kiszolgálónév (vagy IP-cím) használatával állíthatók be. Ha csak egy SSH-kulccsal rendelkezik, a SZOLGÁLTATÁSKAPCSOLÓDÁSI pont a könyvtárban keresi `~/.ssh/` a könyvtárat, és alapértelmezés szerint a virtuális gépre való bejelentkezéshez használja.
+Az SCP SSH-t használ a szállítási réteghez. Az SSH kezeli a hitelesítést a cél gazdagépen, és a fájlt egy, az SSH-val alapértelmezés szerint elérhető titkosított alagútba helyezi át. Az SSH-hitelesítéshez felhasználóneveket és jelszavakat lehet használni. Az SSH nyilvános és titkos kulcsú hitelesítés azonban ajánlott biztonsági eljárás. Miután az SSH hitelesítette a kapcsolódást, az SCP megkezdi a fájl másolását. A megfelelően konfigurált `~/.ssh/config` és az SSH nyilvános és titkos kulcsok használatával az scp-kapcsolatok csak kiszolgálónév (vagy IP-cím) használatával állíthatók be. Ha csak egy SSH-kulccsal rendelkezik, a SZOLGÁLTATÁSKAPCSOLÓDÁSI pont a könyvtárban keresi a `~/.ssh/` könyvtárat, és alapértelmezés szerint a virtuális gépre való bejelentkezéshez használja.
 
-A nyilvános és a `~/.ssh/config` titkos ssh-kulcsok konfigurálásával kapcsolatos további információkért lásd: SSH- [kulcsok létrehozása](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A nyilvános és a titkos SSH-kulcsok konfigurálásával kapcsolatos további információkért `~/.ssh/config` lásd: [ssh-kulcsok létrehozása](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>SZOLGÁLTATÁSKAPCSOLÓDÁSI pont egy fájl Linux rendszerű virtuális géphez
 
@@ -65,8 +65,8 @@ A következő parancs fájlokat másol az Azure-beli virtuális gép */Home/azur
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-A `-r` jelző arra UTASÍTJA az scp-t, hogy rekurzív módon másolja a fájlokat és a címtárakat a parancsban felsorolt könyvtár pontjából.  Azt is figyelje meg, hogy a parancssori szintaxis hasonló a `cp` másolási parancshoz.
+A `-r` jelző arra utasítja az scp-t, hogy rekurzív módon másolja a fájlokat és a címtárakat a parancsban felsorolt könyvtár pontjából.  Azt is figyelje meg, hogy a parancssori szintaxis hasonló a `cp` másolási parancshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A VMAccess-bővítmény használatával kezelheti a felhasználókat, SSH-t, és megvizsgálhatja vagy kijavíthatja az Azure Linux virtuális gépek lemezeit](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

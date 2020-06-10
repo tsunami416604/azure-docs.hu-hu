@@ -10,12 +10,12 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: c8531af9e8d43dfe1279306cea57a93cf89ded90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 88fffc083b918157857c5c170cddda2016944c89
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045794"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660329"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>A szolgáltatással segített alhálózat konfigurációjának engedélyezése a felügyelt Azure SQL-példányhoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Az automatikusan konfigurált hálózati biztonsági csoportok és útválasztá
 A szolgáltatással segített konfiguráció automatikusan engedélyezve van, ha bekapcsolja az [alhálózat delegálását](../../virtual-network/subnet-delegation-overview.md) az `Microsoft.Sql/managedInstances` erőforrás-szolgáltatónál.
 
 > [!IMPORTANT] 
-> Ha az alhálózat – delegálás be van kapcsolva, nem kapcsolhatja ki, amíg el nem távolítja az utolsó virtuális fürtöt az alhálózatról. A virtuális fürt törlésével kapcsolatos további információkért tekintse meg a következő [cikket](virtual-cluster-delete.md#delete-virtual-cluster-from-the-azure-portal).
+> Ha az alhálózat – delegálás be van kapcsolva, nem kapcsolhatja ki, amíg el nem távolítja az utolsó virtuális fürtöt az alhálózatról. A virtuális fürt törlésével kapcsolatos további információkért tekintse meg a következő [cikket](virtual-cluster-delete.md#delete-a-virtual-cluster-from-the-azure-portal).
 
 > [!NOTE] 
 > Mivel a szolgáltatással segített alhálózati konfiguráció elengedhetetlen az SLA fenntartásához, a 2020. május 1-től kezdődően a felügyelt példányokat nem lehet olyan alhálózatokban telepíteni, amelyek nem a felügyelt példány erőforrás-szolgáltatóhoz vannak delegálva. Július 1-jén 2020 a felügyelt példányokat tartalmazó összes alhálózat automatikusan delegálásra kerül a felügyelt példány erőforrás-szolgáltatója számára. 

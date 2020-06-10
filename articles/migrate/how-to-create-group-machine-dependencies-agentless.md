@@ -3,12 +3,12 @@ title: Ügynök nélküli függőségi elemzés beállítása Azure Migrate Serv
 description: Az ügynök nélküli függőségek elemzésének beállítása Azure Migrate Server Assessment-ben.
 ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: 3259c861b0e64b560eb2a17a832a02b87855bebf
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 68c95c74768f9d9628f92b061754c942b080565c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449192"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659983"
 ---
 # <a name="set-up-agentless-dependency-visualization"></a>Ügynök nélküli függőségi vizualizáció beállítása 
 
@@ -103,8 +103,7 @@ A függőségek felderítésének megkezdése után hat órán belül megjelení
 
 A függőségi adatfájlok exportálása és letöltése CSV-formátumban történik. A letöltött fájl a függőségi elemzéshez engedélyezett összes gépen tartalmazza a függőségi adataikat. 
 
-    ![Export dependencies](./media/how-to-create-group-machine-dependencies-agentless/export.png)
-
+![Függőségek exportálása](./media/how-to-create-group-machine-dependencies-agentless/export.png)
 
 ## <a name="stop-dependency-discovery"></a>Függőségi felderítés leállítása
 

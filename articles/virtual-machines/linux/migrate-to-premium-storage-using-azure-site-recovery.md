@@ -3,16 +3,16 @@ title: Linux rendszerű virtuális gépek migrálása az Azure Premium Storageba
 description: Áttelepítheti a meglévő virtuális gépeket az Azure Premium Storageba Site Recovery használatával. A Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az Azure-Virtual Machines futó I/O-igényes számítási feladatokhoz.
 author: luywang
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 03e26c344284541116a5b98bc330804b71a64e28
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 734d4f9e3c9832d08b61d98c9f9c8fe860998135
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833775"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660196"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás Premium Storagere Azure Site Recovery használatával
 
@@ -205,7 +205,7 @@ Site Recovery létre fog hozni egy virtuálisgép-példányt, amelynek típusa a
 * [A virtuális gépek és a fizikai kiszolgálók védelmének figyelése és hibakeresése](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
 * [A Microsoft Q&egy kérdés oldalt Microsoft Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális gépek áttelepítésére vonatkozó konkrét forgatókönyvek esetében tekintse meg a következő forrásokat:
 
@@ -216,7 +216,7 @@ A virtuális gépek áttelepítésére vonatkozó konkrét forgatókönyvek eset
 Az Azure Storage szolgáltatással és az Azure Virtual Machinesával kapcsolatos további információkért tekintse meg a következő forrásokat is:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-* [Azure-Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
+* [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [IaaS-alapú virtuális gépek lemeztípusának kiválasztása](disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png

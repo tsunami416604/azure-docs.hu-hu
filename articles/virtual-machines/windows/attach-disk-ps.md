@@ -3,16 +3,16 @@ title: Adatlemez csatlakoztatása egy Windows rendszerű virtuális géphez az A
 description: Új vagy meglévő adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell és a Resource Manager-alapú üzemi modell használatával.
 author: roygara
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f16784d89d1f3edec491d5c7ae312dbd46212f1
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267754"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658133"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell-lel
 
@@ -49,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Felügyelt lemezek használata rendelkezésre állási zónában
 
-Ha lemezt szeretne létrehozni egy rendelkezésre állási zónában, használja a `-Zone` [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) paramétert. Az alábbi példa egy lemezt hoz létre az *1*. zónában.
+Ha lemezt szeretne létrehozni egy rendelkezésre állási zónában, használja a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) `-Zone` paramétert. Az alábbi példa egy lemezt hoz létre az *1*. zónában.
 
 ```powershell
 $rgName = 'myResourceGroup'
@@ -115,6 +115,6 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt lemezeket sablonok használatával is üzembe helyezheti. További információ: [Managed Disks használata Azure Resource Manager sablonokban](using-managed-disks-template-deployments.md) vagy a gyors üzembe helyezési [sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) több adatlemez telepítéséhez.

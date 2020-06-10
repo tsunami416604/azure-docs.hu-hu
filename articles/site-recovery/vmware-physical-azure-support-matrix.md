@@ -2,13 +2,13 @@
 title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Site Recovery
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: b9f7deb16269aac94f5363a1588b2e1ed4ee9206
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/10/2020
+ms.openlocfilehash: a5348379979b14f321cbe4f32d6107fdfe7a4639
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488598"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661081"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -28,8 +28,8 @@ Fizikai kiszolgálók vész-helyreállítása | Helyszíni Windows-/Linux-alapú
 
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
-vCenter Server | 6,7, 6,5, 6,0 vagy 5,5 verzió | Javasoljuk, hogy használjon egy vCenter-kiszolgálót a vész-helyreállítási környezetben.
-vSphere-gazdagépek | 6,7, 6,5, 6,0 vagy 5,5 verzió | Azt javasoljuk, hogy a vSphere-gazdagépek és a vCenter-kiszolgálók ugyanabban a hálózatban legyenek, mint a Process Server. Alapértelmezés szerint a Process Server fut a konfigurációs kiszolgálón. [További információk](vmware-physical-azure-config-process-server-overview.md).
+vCenter Server | 7,0, 6,7, 6,5, 6,0 vagy 5,5 verzió | Javasoljuk, hogy használjon egy vCenter-kiszolgálót a vész-helyreállítási környezetben.
+vSphere-gazdagépek | 7,0, 6,7, 6,5, 6,0 vagy 5,5 verzió | Azt javasoljuk, hogy a vSphere-gazdagépek és a vCenter-kiszolgálók ugyanabban a hálózatban legyenek, mint a Process Server. Alapértelmezés szerint a Process Server fut a konfigurációs kiszolgálón. [További információ](vmware-physical-azure-config-process-server-overview.md).
 
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery konfigurációs kiszolgáló
@@ -66,13 +66,13 @@ Site Recovery támogatja a támogatott gépen futó munkaterhelések replikálá
 **Összetevő** | **Részletek**
 --- | ---
 Számítógép beállításai | Az Azure-ba replikált gépeknek meg kell felelniük az [Azure-követelményeknek](#azure-vm-requirements).
-Gépi munkaterhelés | Site Recovery támogatja a támogatott gépen futó munkaterhelések replikálását. [További információk](https://aka.ms/asr_workload).
+Gépi munkaterhelés | Site Recovery támogatja a támogatott gépen futó munkaterhelések replikálását. [További információ](https://aka.ms/asr_workload).
 Számítógépnév | Győződjön meg arról, hogy a számítógép megjelenítendő neve nem tartozik az Azure-beli [fenntartott erőforrás-nevekhez](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name)<br/><br/> A logikai kötetek neve nem megkülönbözteti a kis-és nagybetűket. Győződjön meg arról, hogy az eszközön nincs két kötet ugyanazzal a névvel. Például: a "voLUME1", a "voLUME1" névvel rendelkező kötetek nem védhetők Azure Site Recoveryon keresztül.
 Windows Server 2019 | A [34 kumulatív frissítés](https://support.microsoft.com/help/4490016) (a mobilitási szolgáltatás 9,22-es verziója) támogatott.
 Windows Server 2016 64 bites | A Server Core és a Server asztali felhasználói felülettel támogatott.
 Windows Server 2012 R2/Windows Server 2012 | Támogatott.
 Windows Server 2008 R2 SP1 és újabb verziók. | Támogatott.<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve telepítenie kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 2008 R2 SP1 vagy újabb verzióját futtató gépekre. Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
-Windows Server 2008 SP2 vagy újabb (64 bites/32 bites) |  Csak Migrálás esetén támogatott. [További információk](migrate-tutorial-windows-server-2008.md).<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 2008 SP2 rendszerű gépekre telepíteni kell a [SSU](https://support.microsoft.com/help/4493730) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) . A ISHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
+Windows Server 2008 SP2 vagy újabb (64 bites/32 bites) |  Csak Migrálás esetén támogatott. [További információ](migrate-tutorial-windows-server-2008.md).<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 2008 SP2 rendszerű gépekre telepíteni kell a [SSU](https://support.microsoft.com/help/4493730) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) . A ISHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
 Windows 10, Windows 8.1, Windows 8 | Támogatott.
 Windows 7 SP1 64 bites | A [36 kumulatív frissítés](https://support.microsoft.com/help/4503156) (a mobilitási szolgáltatás 9,22-es verziója) támogatott. </br></br> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 7 SP1 rendszerű gépeken telepíteni kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) .  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
 Linux | Csak a 64 bites rendszer támogatott. a 32 bites rendszer nem támogatott.<br/><br/>Minden Linux-kiszolgálón telepítve kell lennie a [Linux Integration Services (lis) összetevőknek](https://www.microsoft.com/download/details.aspx?id=55106) . A feladatátvétel/feladatátvételi teszt után a kiszolgálót az Azure-ban kell elindítania. Ha a beépített LIS-összetevők hiányoznak, győződjön meg arról, hogy az [összetevőket](https://www.microsoft.com/download/details.aspx?id=55106) telepíteni kell, mielőtt engedélyezné a gépek replikálását az Azure-ban. <br/><br/> Site Recovery összehangolja a feladatátvételt, hogy Linux-kiszolgálókat futtasson az Azure-ban. Előfordulhat azonban, hogy a Linux-szállítók csak olyan terjesztési verziókra korlátozzák a támogatást, amelyek nem értek véget az élettartamuk.<br/><br/> A Linux-disztribúciók esetében csak a terjesztési alverzió kiadásának vagy frissítésének részét képező állomány-kernelek támogatottak.<br/><br/> Nem támogatott a védett gépek frissítése a nagy Linux-disztribúciós verziók között. A frissítéshez tiltsa le a replikálást, frissítse az operációs rendszert, majd engedélyezze újra a replikációt.<br/><br/> [További](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) információ a Linux és a nyílt forráskódú technológiák támogatásáról az Azure-ban.
@@ -179,43 +179,43 @@ Vendég/kiszolgáló hálózata több hálózati adapterrel | Igen.
 
 **Összetevő** | **Támogatott**
 --- | ---
-Azure ExpressRoute | Igen
-ILB | Igen
-ELB | Igen
-Azure Traffic Manager | Igen
-Több hálózati adapter | Igen
-Fenntartott IP címe | Igen
-IPv4 | Igen
-Forrás IP-címének megőrzése | Igen
-Azure Virtual Network szolgáltatásbeli végpontok<br/> | Igen
-Gyorsított hálózatkezelés | Nem
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Több hálózati adapter | Yes
+Fenntartott IP címe | Yes
+IPv4 | Yes
+Forrás IP-címének megőrzése | Yes
+Azure Virtual Network szolgáltatásbeli végpontok<br/> | Yes
+Gyorsított hálózatkezelés | No
 
 ## <a name="storage"></a>Storage
 **Összetevő** | **Támogatott**
 --- | ---
 Dinamikus lemez | Az operációsrendszer-lemeznek alaplemeznek kell lennie. <br/><br/>Az adatlemezek lehetnek dinamikus lemezek
-Docker-lemez konfigurációja | Nem
+Docker-lemez konfigurációja | No
 NFS-gazdagép | Igen, VMware-hez<br/><br/> Nem a fizikai kiszolgálók esetében
-Gazdagép SAN (iSCSI/FC) | Igen
+Gazdagép SAN (iSCSI/FC) | Yes
 Gazdagép vSAN | Igen, VMware-hez<br/><br/> N/A fizikai kiszolgálókhoz
 Gazdagép többutas (MPIO) | Igen, tesztelték a Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM for CLARiiON
 Gazdagép virtuális kötetei (VVols) | Igen, VMware-hez<br/><br/> N/A fizikai kiszolgálókhoz
-Vendég/kiszolgáló VMDK | Igen
-Vendég/kiszolgáló megosztott fürtözött lemeze | Nem
-Vendég/kiszolgáló által titkosított lemez | Nem
-Vendég/kiszolgáló NFS | Nem
+Vendég/kiszolgáló VMDK | Yes
+Vendég/kiszolgáló megosztott fürtözött lemeze | No
+Vendég/kiszolgáló által titkosított lemez | No
+Vendég/kiszolgáló NFS | No
 Vendég/kiszolgáló iSCSI | Áttelepítéshez – igen<br/>Vész-helyreállítás esetén az iSCSI a virtuális géphez csatlakoztatott lemezként fogja felvenni a feladat-visszavételt
-Vendég/kiszolgáló SMB 3,0 | Nem
-Vendég/kiszolgáló RDM | Igen<br/><br/> N/A fizikai kiszolgálókhoz
+Vendég/kiszolgáló SMB 3,0 | No
+Vendég/kiszolgáló RDM | Yes<br/><br/> N/A fizikai kiszolgálókhoz
 Vendég/kiszolgáló lemez > 1 TB | Igen, a lemeznek nagyobbnak kell lennie, mint 1024 MB<br/><br/>Akár 8 192 GB a felügyelt lemezekre való replikáláskor (9,26-es verzió)<br></br> Akár 4 095 GB a Storage-fiókokba való replikáláskor
-Vendég/kiszolgáló lemez 4K logikai és 4k fizikai szektor méretével | Nem
-Vendég/kiszolgáló lemez 4K logikai és 512 bájtos fizikai szektor méretével | Nem
-Vendég/kiszolgáló kötet szalagos lemezzel >4 TB | Igen
+Vendég/kiszolgáló lemez 4K logikai és 4k fizikai szektor méretével | No
+Vendég/kiszolgáló lemez 4K logikai és 512 bájtos fizikai szektor méretével | No
+Vendég/kiszolgáló kötet szalagos lemezzel >4 TB | Yes
 Logikai kötet kezelése (LVM)| Sűrű kiépítés – igen <br></br> Dinamikus kiépítés – nem
-Vendég/kiszolgáló – tárolóhelyek | Nem
-Vendég/kiszolgáló – gyors Hozzáadás/Eltávolítás lemez | Nem
-Vendég/kiszolgáló – lemez kizárása | Igen
-Vendég/kiszolgáló többutas (MPIO) | Nem
+Vendég/kiszolgáló – tárolóhelyek | No
+Vendég/kiszolgáló – gyors Hozzáadás/Eltávolítás lemez | No
+Vendég/kiszolgáló – lemez kizárása | Yes
+Vendég/kiszolgáló többutas (MPIO) | No
 Vendég/kiszolgáló GPT-partíciók | Az 37-es [kumulatív frissítés](https://support.microsoft.com/help/4508614/) (a mobilitási szolgáltatás 9,25-es verziója) a következő öt partíciót támogatja:. Korábban négy támogatott volt.
 ReFS | A rugalmas fájlrendszer a mobilitási szolgáltatás 9,23-es vagy újabb verziójával támogatott
 Vendég/kiszolgáló EFI/UEFI rendszerindítás | – A Windows Server 2012-es vagy újabb verzióiban támogatott, a SLES 12 SP4 és a RHEL 8,0 a mobilitási ügynök verziójának 9,30-as verziójával<br/> – A Secure UEFI rendszerindítási típus nem támogatott. [További információ.](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
@@ -224,35 +224,35 @@ Vendég/kiszolgáló EFI/UEFI rendszerindítás | – A Windows Server 2012-es v
 
 |**Replikáció típusa**   |**Támogatott**  |
 |---------|---------|
-|Kiszervezett adatátvitel (ODX)    |       Nem  |
-|Offline előkészítés        |   Nem      |
-| Azure Data Box | Nem
+|Kiszervezett adatátvitel (ODX)    |       No  |
+|Offline előkészítés        |   No      |
+| Azure Data Box | No
 
 ## <a name="azure-storage"></a>Azure Storage tárterület
 
 **Összetevő** | **Támogatott**
 --- | ---
-Helyileg redundáns tárolás | Igen
-Georedundáns tárolás | Igen
-Írásvédett georedundáns tárolás (RA-GRS) | Igen
-Ritkán használt tároló | Nem
-Gyors tárolás| Nem
-Blokkblobok | Nem
-Titkosítás – Rest (SSE)| Igen
+Helyileg redundáns tárolás | Yes
+Georedundáns tárolás | Yes
+Írásvédett georedundáns tárolás (RA-GRS) | Yes
+Ritkán használt tároló | No
+Gyors tárolás| No
+Blokkblobok | No
+Titkosítás – Rest (SSE)| Yes
 Titkosítás – Rest (CMK)| Igen (a PowerShell az 3.3.0 modultól kezdődően)
-Prémium szintű Storage | Igen
-Importálási/exportálási szolgáltatás | Nem
+Prémium szintű Storage | Yes
+Importálási/exportálási szolgáltatás | No
 Azure Storage-tűzfalak a virtuális hálózatok | Igen.<br/> A cél Storage/cache Storage-fiókra van konfigurálva (a replikációs adattároláshoz használatos).
 Általános célú v2 Storage-fiókok (gyakori és ritka elérésű szintek) | Igen (a tranzakciós költségek lényegesen magasabbak a v2-höz képest, mint a v1)
 
 ## <a name="azure-compute"></a>Azure-számítás
 
-**Szolgáltatás** | **Támogatott**
+**Funkció** | **Támogatott**
 --- | ---
-Rendelkezésre állási csoportok | Igen
-Rendelkezésre állási zónák | Nem
-HUB | Igen
-Felügyelt lemezek | Igen
+Rendelkezésre állási csoportok | Yes
+Rendelkezésre állási zónák | No
+HUB | Yes
+Felügyelt lemezek | Yes
 
 ## <a name="azure-vm-requirements"></a>Azure virtuálisgép-követelmények
 
@@ -306,10 +306,10 @@ Folyamatkiszolgáló által támogatott napi adatváltozás maximuma | 2 TB
 
 **Művelet** | **Támogatott**
 --- | ---
-Tár áthelyezése az erőforráscsoportok között | Nem
-Tár áthelyezése az előfizetések között | Nem
-Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között | Nem
-Helyezze át a tárterületet, a hálózatot és az Azure-beli virtuális gépeket az előfizetések között. | Nem
+Tár áthelyezése az erőforráscsoportok között | No
+Tár áthelyezése az előfizetések között | No
+Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között | No
+Helyezze át a tárterületet, a hálózatot és az Azure-beli virtuális gépeket az előfizetések között. | No
 
 
 ## <a name="obtain-latest-components"></a>Legújabb összetevők beszerzése

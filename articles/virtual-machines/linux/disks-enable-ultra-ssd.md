@@ -3,16 +3,16 @@ title: Ultra Disks Linux rendszerű virtuális gépekhez – Azure Managed Disks
 description: Tudnivalók az Azure-beli virtuális gépekhez használható Ultra-lemezekről
 author: roygara
 ms.service: virtual-machines
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 35eeab099f988941c5acd7ef3da9aa818193bbef
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 900781efa2a000c1062db45c6b8d0543f3939443
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197377"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659238"
 ---
 # <a name="using-azure-ultra-disks"></a>Az Azure Ultra Disks használata
 

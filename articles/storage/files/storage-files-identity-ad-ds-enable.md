@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: rogarana
-ms.openlocfilehash: 4423067fde70728a5449485434cc40c5c3d3ee8f
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 759b80ff3cf20bee1dd909cba59e67f5d36023b2
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324096"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660795"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Első rész: az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése 
 
@@ -20,23 +20,21 @@ A Active Directory tartományi szolgáltatások (AD DS) hitelesítés engedélye
 
 Ez a cikk a Active Directory tartományi szolgáltatások (AD DS) hitelesítésének engedélyezéséhez szükséges folyamatot ismerteti a Storage-fiókban. A szolgáltatás engedélyezése után konfigurálnia kell a Storage-fiókot és a AD DS, hogy AD DS hitelesítő adatokat lehessen használni az Azure-fájlmegosztás hitelesítéséhez. Az Azure-fájlmegosztás SMB-en keresztüli AD DS hitelesítésének engedélyezéséhez regisztrálnia kell a Storage-fiókját a AD DS, majd be kell állítania a szükséges tartományi tulajdonságokat a Storage-fiókban. Ha a szolgáltatás engedélyezve van a Storage-fiókon, akkor az a fiók összes új és meglévő fájljára érvényes lesz.
 
-## <a name="option-one-recommended-use-the-script"></a>1. lehetőség (ajánlott): használja a parancsfájlt.
+## <a name="option-one-recommended-use-azfileshybrid-powershell-module"></a>1. lehetőség (ajánlott): AzFilesHybrid PowerShell-modul használata
 
-A cikkben található szkript végrehajtja a szükséges módosításokat, és lehetővé teszi a funkció használatát. Mivel a szkript egyes részei a helyszíni AD DSkal együttműködnek, elmagyarázjuk, mi a szkript, így megállapíthatja, hogy a módosítások összhangban vannak-e a megfelelőségi és biztonsági házirendekkel, és hogy rendelkezik-e a megfelelő engedélyekkel a szkript végrehajtásához. Bár a szkript használatát javasoljuk, ha nem tudja megtenni ezt, a lépéseket manuálisan is végrehajthatja.
+A AzFilesHybrid PowerShell-modul parancsmagai elvégzik a szükséges módosításokat, és lehetővé teszik a funkció használatát. Mivel a parancsmagok egyes részei a helyszíni AD DSkel együttműködnek, elmagyarázjuk, mi a parancsmag, így megállapíthatja, hogy a módosítások összhangban vannak-e a megfelelőségi és biztonsági házirendekkel, és hogy rendelkezik-e a megfelelő engedélyekkel a parancsmagok végrehajtásához. Bár javasoljuk, hogy a AzFilesHybrid modult használja, ha nem tudja megtenni, a lépéseket manuálisan is végrehajthatja.
 
-### <a name="script-prerequisites"></a>Parancsfájlok előfeltételei
+### <a name="download-azfileshybrid-module"></a>AzFilesHybrid modul letöltése
 
-- [Töltse le és csomagolja ki a AzFilesHybrid modult](https://github.com/Azure-Samples/azure-files-samples/releases)
+- [Töltse le és csomagolja ki a AzFilesHybrid modult](https://github.com/Azure-Samples/azure-files-samples/releases) (GA-modul: v 0.2.0 +)
 - Telepítse és hajtsa végre a modult egy olyan eszközön, amely tartományhoz van csatlakoztatva a helyszíni AD DS olyan AD DS hitelesítő adatokkal, amelyek engedéllyel rendelkeznek a szolgáltatás bejelentkezési fiókjának vagy a célszámítógép fiókjának létrehozásához a cél AD-ben.
 -  Futtassa a parancsfájlt egy helyszíni AD DS hitelesítő adat használatával, amely szinkronizálva van az Azure AD-vel. A helyszíni AD DS hitelesítő adatnak rendelkeznie kell a Storage-fiók tulajdonosával vagy a közreműködő RBAC szerepkör-jogosultságokkal.
 
-### <a name="offline-domain-join"></a>Kapcsolat nélküli tartományhoz való csatlakozás
+### <a name="run-join-azstorageaccountforauth"></a>Join-AzStorageAccountForAuth futtatása
 
 A `Join-AzStorageAccountForAuth` parancsmag egy kapcsolat nélküli tartományhoz való csatlakozást hajt végre a megadott Storage-fiók nevében. A szkript a parancsmag használatával hoz létre egy fiókot az AD-tartományban, vagy egy [számítógépfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy egy [szolgáltatás bejelentkezési fiókja](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts). Ha a parancs manuális futtatását választja, válassza ki a környezete számára legmegfelelőbb fiókot.
 
 A parancsmag által létrehozott AD DS fiók a Storage-fiókot jelöli. Ha a AD DS fiók egy szervezeti egység (OU) alatt jön létre, amely kikényszeríti a jelszó lejáratát, akkor a jelszó maximális kora előtt frissítenie kell a jelszót. Sikertelen volt a fiók jelszavának frissítése, mielőtt a kapu hitelesítési hibát eredményez az Azure-fájlmegosztás elérésekor. A jelszó frissítésével kapcsolatos további információkért lásd: [AD DS fiók jelszavának frissítése](storage-files-identity-ad-ds-update-password.md).
-
-### <a name="use-the-script-to-enable-ad-ds-authentication"></a>AD DS hitelesítés engedélyezése a parancsfájl használatával
 
 Ne felejtse el lecserélni a helyőrző értékeket az alábbi paraméterekkel, mielőtt végrehajtja a PowerShellben.
 > [!IMPORTANT]
@@ -66,20 +64,20 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
 # You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
-# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
+# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account (default parameter value), depends on the AD permission you have and preference. 
 # Run Get-Help Join-AzStorageAccountForAuth for more details on this cmdlet.
 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName $ResourceGroupName `
         -Name $StorageAccountName `
-        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" ` #Default set to "ComputerAccount" if parameter is omitted
+        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" `
         -OrganizationalUnitName "<ou-name-here>" #You can also use -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" instead. If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
 
 #You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, see Azure Files Windows troubleshooting guide.
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 
-## <a name="option-2-manually-perform-the-script-actions"></a>2. lehetőség: a parancsfájl műveleteinek manuális végrehajtása
+## <a name="option-2-manually-perform-the-enablement-actions"></a>2. lehetőség: az engedélyezési műveletek manuális végrehajtása
 
 Ha a `Join-AzStorageAccountForAuth` fenti szkriptet már sikeresen végrehajtotta, lépjen a [funkció megerősítése lehetőségre](#confirm-the-feature-is-enabled) . A következő kézi lépéseket nem kell végrehajtania.
 

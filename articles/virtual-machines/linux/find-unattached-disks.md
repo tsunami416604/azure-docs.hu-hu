@@ -3,16 +3,16 @@ title: Nem csatolt, Azure által felügyelt és nem felügyelt lemezek keresése
 description: Az Azure által felügyelt és nem felügyelt (VHD/oldal Blobok) lemezek az Azure CLI használatával történő megkeresése és törlése.
 author: roygara
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b4a46e79b3bb2feabe7af739086b8e0166c4ac55
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 87fe277bbd2fa618d43ce3274c1d2c05a5d7b396
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296289"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660166"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>Az Azure által felügyelt és nem felügyelt lemezek megkeresése és törlése az Azure CLI használatával
 Amikor töröl egy virtuális gépet (VM) az Azure-ban, alapértelmezés szerint a virtuális géphez csatolt összes lemez nem törlődik. Ez a funkció segít megakadályozni az adatvesztést a virtuális gépek véletlen törlése miatt. A virtuális gép törlése után továbbra is fizetnie kell a nem csatlakoztatott lemezekre. Ez a cikk bemutatja, hogyan keresheti meg és törölheti a nem csatolt lemezeket, és csökkentheti a szükségtelen költségeket. 
@@ -103,7 +103,7 @@ do
 done 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: Storage- [fiók törlése](../../storage/common/storage-account-create.md#delete-a-storage-account).
 

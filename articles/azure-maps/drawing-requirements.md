@@ -3,19 +3,19 @@ title: A csomagra vonatkozó követelmények a Azure Maps Creatorban
 description: A Azure Maps átalakítási szolgáltatással megtudhatja, hogyan alakíthatja át a létesítmény fájljait az adatleképezésre a rajzi csomag követelményeivel
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 5/18/2020
+ms.date: 6/09/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cb34cb386939fc1160ee5a7db0007cfbf500ccb8
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681906"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660616"
 ---
-# <a name="drawing-package-requirements"></a>A rajzolási csomagra vonatkozó követelmények
+# <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
 
 A [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) lehetővé teszi a feltöltött rajzok leképezési adatként való átalakítását. Ez a cikk az átalakítási API-hoz tartozó rajzi csomagok követelményeit ismerteti. Egy minta csomag megtekintéséhez letöltheti a minta [rajzolási csomagot](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
@@ -42,7 +42,7 @@ A dokumentumban használt kifejezések glosszáriuma.
 A rajzfájl egy. zip-archívum, amely a következő fájlokat tartalmazza:
 
 * DWG-fájlok az AutoCAD DWG-fájlformátumban.
-* Egyetlen létesítményhöz tartozó _manifest. JSON_ fájl.
+* Egyetlen létesítmény _manifest.jsa_ fájlon.
 
 A DWG-fájlok bármilyen módon rendezhetők a mappában belül, de a jegyzékfájlnak a mappa gyökérkönyvtárában kell futnia. A mappának egy. zip kiterjesztésű, egyetlen archív fájlban kell lennie. A következő részekben részletesen ismertetjük a DWG-fájlokra, a jegyzékfájlokra és a fájlok tartalmára vonatkozó követelményeket.  
 
@@ -77,7 +77,7 @@ Minden rétegbeli entitásnak a következő típusok egyikének kell lennie: von
 
 Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típusait és támogatott funkcióit ismerteti. Ha egy réteg nem támogatott entitás-típusokat tartalmaz, akkor a [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) figyelmen kívül hagyja ezeket az entitásokat.  
 
-| Réteg | Entitástípusok | Funkciók |
+| Réteg | Entitástípusok | Szolgáltatások |
 | :----- | :-------------------| :-------
 | [Külső](#exterior-layer) | Sokszög, vonallánc (lezárt), kör | Szintek
 | [Egység](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
@@ -167,7 +167,7 @@ A Zonelabel réteg példája az ZONELABELS rétegként látható a [minta rajzol
 
 ## <a name="manifest-file-requirements"></a>Manifest-fájlra vonatkozó követelmények
 
-A zip-mappának tartalmaznia kell egy jegyzékfájlt a könyvtár legfelső szintjén, és a fájlnak **manifest. JSON**néven kell szerepelnie. Leírja azokat a DWG-fájlokat, amelyek lehetővé teszik a [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) számára a tartalom elemzését. Csak a jegyzékfájlban azonosított fájlok lesznek betöltve. A rendszer figyelmen kívül hagyja a zip mappában található, de a jegyzékfájlban nem szereplő fájlokat.
+A zip-mappának tartalmaznia kell egy jegyzékfájlt a könyvtár legfelső szintjén, és a fájlnak **manifest.js**nevűnek kell lennie. Leírja azokat a DWG-fájlokat, amelyek lehetővé teszik a [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) számára a tartalom elemzését. Csak a jegyzékfájlban azonosított fájlok lesznek betöltve. A rendszer figyelmen kívül hagyja a zip mappában található, de a jegyzékfájlban nem szereplő fájlokat.
 
 A fájl elérési útjai a jegyzékfájl **buildingLevels** objektumában a zip-mappa gyökeréhez viszonyítva kell, hogy legyenek. A DWG-fájl nevének pontosan egyeznie kell a létesítmény szintjének nevével. Például a "alagsor" szintjén található DWG-fájl "alagsor. DWG" lenne. A 2. szintű DWG-fájl neve "level_2. DWG" lesz. Ha a szint neve szóközt tartalmaz, használjon aláhúzást. 
 
@@ -188,14 +188,14 @@ A következő részek részletezik az egyes objektumok követelményeit.
 
 | Tulajdonság  | típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-| name      | karakterlánc/int | igaz   |  Az építési név. |
-| streetAddress|    karakterlánc/int |    hamis    | Az építési címe. |
-|egység     | karakterlánc/int    |  hamis    |  Egység az épületben. |
-| településen |    karakterlánc/int |    hamis |    Terület, környék vagy régió neve. Például: "túltó" vagy "központi körzet". A helység nem része a levelezési címnek. |
+| name      | sztring | igaz   |  Az építési név. |
+| streetAddress|    sztring |    hamis    | Az építési címe. |
+|egység     | sztring    |  hamis    |  Egység az épületben. |
+| településen |    sztring |    hamis |    Terület, környék vagy régió neve. Például: "túltó" vagy "központi körzet". A helység nem része a levelezési címnek. |
 | adminDivisions |    Karakterláncok JSON-tömbje |    hamis     | A címek megjelölését (ország, állam, város) vagy (ország, prefektúra, város, város) tartalmazó tömb. Az ISO 3166 országkódok és az ISO 3166-2 állapot/terület kódok használata. |
-| Irányítószám |    karakterlánc/int    | hamis    | A levél rendezési kódja. |
+| Irányítószám |    sztring    | hamis    | A levél rendezési kódja. |
 | hoursOfOperation |    sztring |     hamis | Betartja az [OSM nyitvatartási idejét](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification) . |
-| telefon    | karakterlánc/int |    hamis |    A létrehozáshoz társított telefonszám. Tartalmaznia kell az országkódot. |
+| telefon    | sztring |    hamis |    A létrehozáshoz társított telefonszám. Tartalmaznia kell az országkódot. |
 | Honlap    | sztring |    hamis    | Az épületben társított webhely. M kezdés http-vagy https-kapcsolattal. |
 | nonPublic |    logikai    | hamis | Jelölő, amely megadja, hogy az épület nyitva van-e a nyilvánosság számára. |
 | anchorLatitude | numerikus |    hamis | A létesítményi horgony (gombostű) földrajzi szélessége |
@@ -209,11 +209,11 @@ Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazz
 
 | Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-|Szint    |karakterlánc/int    |igaz |    Leíró szint neve. Például: Floor 1, lobby, Blue parkoló, alagsor stb.|
+|Szint    |sztring    |igaz |    Leíró szint neve. Például: Floor 1, lobby, Blue parkoló, alagsor stb.|
 |sorszámok | egész szám |    igaz | A szintek függőleges sorrendjének meghatározásához a sorszámot kell használni. Minden létesítménynek 0 sorszámú szinten kell lennie. |
 |heightAboveFacilityAnchor | numerikus |    hamis |    A magasság szintje a talajszint felett méterben. |
 | verticalExtent | numerikus | hamis | A szint és a felső határ közötti magasság (vastagság) mértékegysége (méter). |
-|fájlnév |    karakterlánc/int |    igaz |    A CAD-rajz fájlrendszerbeli elérési útja egy építési szinthez. Az értéknek az épületben található zip-fájl gyökeréhez viszonyítva kell lennie. |
+|fájlnév |    sztring |    igaz |    A CAD-rajz fájlrendszerbeli elérési útja egy építési szinthez. Az értéknek az épületben található zip-fájl gyökeréhez viszonyítva kell lennie. |
 
 ### <a name="georeference"></a>Georeference
 
@@ -227,13 +227,13 @@ Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazz
 
 | Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-|külső    |Karakterláncok/csoportcsomagból tömbje|    igaz|    A külső felépítési profilt meghatározó réteg (ek) neve.|
-|egység|    Karakterláncok/csoportcsomagból tömbje|    igaz|    Az egységeket meghatározó réteg (ek) neve.|
-|fal|    Karakterláncok/csoportcsomagból tömbje    |hamis|    A falakat meghatározó réteg (ek) neve.|
-|ajtajának    |Karakterláncok/csoportcsomagból tömbje|    hamis   | Az ajtókat meghatározó réteg (ek) neve.|
-|unitLabel    |Karakterláncok/csoportcsomagból tömbje|    hamis    |Az egységek nevét meghatározó réteg (ek) neve.|
-|zóna | Karakterláncok/csoportcsomagból tömbje    | hamis    | A zónákat meghatározó réteg (ek) neve.|
-|zoneLabel | Karakterláncok/csoportcsomagból tömbje |     hamis |    A zónák nevét meghatározó réteg (ek) neve.|
+|külső    |Karakterláncok tömbje|    igaz|    A külső felépítési profilt meghatározó réteg (ek) neve.|
+|egység|    Karakterláncok tömbje|    igaz|    Az egységeket meghatározó réteg (ek) neve.|
+|fal|    Karakterláncok tömbje    |hamis|    A falakat meghatározó réteg (ek) neve.|
+|ajtajának    |Karakterláncok tömbje|    hamis   | Az ajtókat meghatározó réteg (ek) neve.|
+|unitLabel    |Karakterláncok tömbje|    hamis    |Az egységek nevét meghatározó réteg (ek) neve.|
+|zóna | Karakterláncok tömbje    | hamis    | A zónákat meghatározó réteg (ek) neve.|
+|zoneLabel | Karakterláncok tömbje |     hamis |    A zónák nevét meghatározó réteg (ek) neve.|
 
 ### <a name="unitproperties"></a>unitProperties
 
@@ -241,15 +241,15 @@ Az `unitProperties` objektum az egység tulajdonságainak JSON-tömbjét tartalm
 
 | Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-|unitName    |karakterlánc/int    |igaz    |A rekorddal társítandó egység neve `unitProperty` . Ez a rekord csak akkor érvényes, ha a `unitName` réteg (ek) ban címkével egyező címke található `unitLabel` . |
-|categoryName|    karakterlánc/int|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |
+|unitName    |sztring    |igaz    |A rekorddal társítandó egység neve `unitProperty` . Ez a rekord csak akkor érvényes, ha a `unitName` réteg (ek) ban címkével egyező címke található `unitLabel` . |
+|categoryName|    sztring|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |
 |navigableBy| Karakterláncok tömbje |    hamis    |Az egységet áthaladó navigáló ügynökök típusát jelöli. Például: "sétáló". Ez a tulajdonság tájékoztatja a wayfinding képességeit.  A megengedett értékek:,,,,,,,,,, `pedestrian` `wheelchair` `machine` `bicycle` `automobile` `hiredAuto` `bus` `railcar` `emergency` `ferry` `boat` és `disallowed` .|
 |routeThroughBehavior|    sztring|    hamis    |Az egység viselkedési útvonala. A megengedett értékek: `disallowed` , `allowed` és `preferred` . Az alapértelmezett érték: `allowed` .|
 |utasok    |DirectoryInfo objektumok tömbje |hamis    |Az egység utasainak listája. |
-|nameAlt|    karakterlánc/int|    hamis|    Az egység alternatív neve. |
-|nameSubtitle|    karakterlánc/int    |hamis|    Az egység alcíme. |
-|addressRoomNumber|    karakterlánc/int|    hamis|    Az egységhez tartozó szoba/egység/apartman/csomag száma.|
-|verticalPenetrationCategory|    karakterlánc/int|    hamis| Ha ez a tulajdonság meg van adva, az eredményül kapott funkció egy egység helyett függőlegesen (VRT) lesz. A VRTs a fenti vagy alatti szintek más VRT szolgáltatásaihoz is felhasználhatók. A függőleges behatolás a [Kategória](https://aka.ms/pa-indoor-spacecategories) neve. Ha ez a tulajdonság meg van adva, a categoryName tulajdonság felülbírálva van a verticalPenetrationCategory. |
+|nameAlt|    sztring|    hamis|    Az egység alternatív neve. |
+|nameSubtitle|    sztring    |hamis|    Az egység alcíme. |
+|addressRoomNumber|    sztring|    hamis|    Az egységhez tartozó szoba/egység/apartman/csomag száma.|
+|verticalPenetrationCategory|    sztring|    hamis| Ha ez a tulajdonság meg van adva, az eredményül kapott funkció egy egység helyett függőlegesen (VRT) lesz. A VRTs a fenti vagy alatti szintek más VRT szolgáltatásaihoz is felhasználhatók. A függőleges behatolás a [Kategória](https://aka.ms/pa-indoor-spacecategories) neve. Ha ez a tulajdonság meg van adva, a categoryName tulajdonság felülbírálva van a verticalPenetrationCategory. |
 |verticalPenetrationDirection|    sztring|    hamis    |Ha `verticalPenetrationCategory` meg van adva, nem kötelezően megadhatja az utazás érvényes irányát. A megengedett értékek:,, `lowToHigh` `highToLow` `both` és `closed` . Az alapértelmezett érték: `both` .|
 | nonPublic | logikai | hamis | Azt jelzi, hogy az egység nyitva van-e a nyilvános számára. |
 | isRoutable | logikai | hamis | Ha a értékre van állítva `false` , az egység nem navigálható a következőre:. Az alapértelmezett érték: `true` . |
@@ -261,10 +261,10 @@ Az `zoneProperties` objektum a zóna tulajdonságainak JSON-tömbjét tartalmazz
 
 | Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-|zoneName        |karakterlánc/int    |igaz    |A rekordhoz társítandó zóna neve `zoneProperty` . Ez a rekord csak akkor érvényes, ha a `zoneName` zóna rétegében szerepel a címke egyezése `zoneLabel` .  |
-|categoryName|    karakterlánc/int|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |
-|zoneNameAlt|    karakterlánc/int|    hamis    |A zóna alternatív neve.  |
-|zoneNameSubtitle|    karakterlánc/int |    hamis    |A zóna alcíme. |
+|zoneName        |sztring    |igaz    |A rekordhoz társítandó zóna neve `zoneProperty` . Ez a rekord csak akkor érvényes, ha a `zoneName` zóna rétegében szerepel a címke egyezése `zoneLabel` .  |
+|categoryName|    sztring|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |
+|zoneNameAlt|    sztring|    hamis    |A zóna alternatív neve.  |
+|zoneNameSubtitle|    sztring |    hamis    |A zóna alcíme. |
 
 ### <a name="sample-drawing-package-manifest"></a>Minta rajzolási csomag jegyzékfájlja
 
@@ -400,7 +400,7 @@ Alább látható a minta rajzolási csomaghoz tartozó jegyzékfájl-fájl. A te
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a rajzolási csomag megfelel a követelményeknek, a [Azure Maps konverziós szolgáltatással](https://docs.microsoft.com/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával. A beltéri térképek modul használatáról a következő cikkekből tájékozódhat:
 

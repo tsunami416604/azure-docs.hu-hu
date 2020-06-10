@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685991"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660758"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
@@ -120,9 +120,9 @@ Az alábbi táblázat a Microsoft-eszközöket és az Azure-fájlmegosztás jele
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Támogatott. Az Azure-fájlmegosztás hálózati meghajtóként is csatlakoztatható. | Teljes hűség. * |
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Natívan integrálva van az Azure-fájlmegosztásba. | Teljes hűség. * |
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Storage áttelepítési szolgáltatás | Közvetetten támogatott. Az Azure-fájlmegosztás hálózati meghajtóként is csatlakoztatható SMS-célkiszolgálón. | Teljes hűség. * |
+|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, 10,4-es vagy újabb verzió| Támogatott. | Teljes hűség. * |
 |![Nem teljes mértékben ajánlott](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Támogatott. | Nem másolja a metaadatokat. [A Data Box a Azure file Sync használatával használható](storage-sync-offline-data-transfer.md). |
-|![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Támogatott. | Nem másolja a metaadatokat. |
-|![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| Azure Storage Explorer | Támogatott. | Nem másolja a metaadatokat. |
+|![Nem teljes mértékben ajánlott](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer, 1,14-es verzió | Támogatott. | Nem másolja át az ACL-eket. Az időbélyegeket támogatja.  |
 |![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Támogatott. | Nem másolja a metaadatokat. |
 |||||
 
@@ -144,7 +144,7 @@ Az eszköz használatával perspektívát hozhat létre [Azure file Sync közpon
 
 Az eszköz tesztelt verziója a 4.4.1-es verzió. Kompatibilis a Felhőbeli rétegbeli fájlokkal. Az eszköz a normál működés közben nem idézi elő a rétegekből származó fájlok felidézését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 1. Hozzon létre egy tervet, amely az Azure-fájlmegosztás (csak felhőalapú vagy hibrid) telepítését kívánja használni.
 1. Tekintse át az elérhető áttelepítési útmutatók listáját, és keresse meg az Azure-fájlmegosztás forrására és üzembe helyezésére vonatkozó részletes útmutatót.

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogy
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: c481561f649e546170bf24c6401006734581e53d
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 70dbe927c3d106e6a853f215f93c51bd7e547150
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433083"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658514"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
 
@@ -19,7 +19,7 @@ Az Azure Kubernetes Service (ak) egy felügyelt Kubernetes szolgáltatás, amely
 
 Ez a cikk azt feltételezi, hogy alapvető ismereteket Kubernetes a fogalmakról. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -86,7 +86,7 @@ az aks create \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.16.7 \
+    --kubernetes-version 1.16.9 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -113,7 +113,7 @@ az aks nodepool add \
     --os-type Windows \
     --name npwin \
     --node-count 1 \
-    --kubernetes-version 1.16.7
+    --kubernetes-version 1.16.9
 ```
 
 A fenti parancs létrehoz egy *npwin* nevű új csomópont-készletet, és hozzáadja azt a *myAKSCluster*. Ha Windows Server-tárolókat futtató csomópont-készletet hoz létre, akkor a *Node-VM méret* alapértelmezett értéke *Standard_D2s_v3*. Ha úgy dönt, hogy beállítja a *Node-VM-size* paramétert, ellenőrizze a korlátozott virtuálisgép- [méretek][restricted-vm-sizes]listáját. A minimális ajánlott méret *Standard_D2s_v3*. A fenti parancs a futtatáskor létrehozott alapértelmezett vnet található alapértelmezett alhálózatot is használja `az aks create` .
@@ -142,11 +142,11 @@ A következő példa kimenete a fürt összes csomópontját mutatja. Győződj�
 
 ```output
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.7
-aksnpwin987654                      Ready    agent   108s   v1.16.7
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.9
+aksnpwin987654                      Ready    agent   108s   v1.16.9
 ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a cikkben egy jegyzékfájlt használunk a ASP.NET-minta alkalmazás Windows Server-tárolóban való futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl egy [Kubernetes-telepítést][kubernetes-deployment] tartalmaz a ASP.net-minta alkalmazáshoz és egy külső [Kubernetes szolgáltatáshoz][kubernetes-service] az alkalmazás internetről való eléréséhez.
 

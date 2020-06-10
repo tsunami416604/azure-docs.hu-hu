@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: f00d93a639bacd1d0862fed7b6b003302bb2920e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/9/2020
+ms.openlocfilehash: 95891e35d2f30bfceb6282c6d9b3f9e7e21b3df8
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097659"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660870"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Árképzési szintek Azure Database for MariaDB
 
 A Azure Database for MariaDB-kiszolgálót a három különböző díjszabási szint egyikében hozhatja létre: alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Az összes erőforrást a MariaDB-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
-|    | **Basic** | **általános célú** | **Memória optimalizálva** |
+|    | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | 5. gen |5. gen | 5. gen |
 | Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ A Azure Database for MariaDB-kiszolgálót a három különböző díjszabási s
 
 | Tarifacsomag | Kívánt teljesítményprofilok |
 |:-------------|:-----------------|
-| Basic | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
+| Alapszintű | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
 | Általános célú | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web-és mobil alkalmazások és más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
 | Memóriaoptimalizált | Nagy teljesítményű adatbázis-munkaterhelések, amelyek memóriabeli teljesítményt igényelnek a gyorsabb tranzakció-feldolgozáshoz és a nagyobb egyidejűséghez. Ilyenek például a valós idejű és a nagy teljesítményű tranzakciós vagy analitikai alkalmazások feldolgozására szolgáló kiszolgálók.|
 
@@ -43,11 +43,11 @@ A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapu
 
 Az Ön által kiépített tárterület a Azure Database for MariaDB-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tároló az adatbázisfájlok, az ideiglenes fájlok, a tranzakciós naplók és a MariaDB-kiszolgáló naplóihoz használható. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
-|    | **Basic** | **általános célú** | **Memória optimalizálva** |
+|    | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Tárolási típus | Alapszintű tárterület | általános célú Storage | általános célú Storage |
 | Tárterület mérete | 5 GB – 1 TB | 5 GB – 4 TB | 5 GB – 4 TB |
-| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
+| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
 | IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS |
 
 A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzáadhat, és lehetővé teheti, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően.
@@ -58,6 +58,20 @@ A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzá
 Az alapszintű csomag nem biztosít IOPS garanciát. A általános célú és a memória optimalizált díjszabási szintjein a IOPS a kiépített tároló méretével, 3:1 arányban méretezhető.
 
 Az I/O-használatot a Azure Portal vagy az Azure CLI-parancsok használatával figyelheti. A figyelni kívánt mérőszámok a [tárolási korlát, a tárolási százalék, a felhasznált tárterület és az IO százalék](concepts-monitoring.md).
+
+### <a name="large-storage-preview"></a>Nagyméretű tároló (előzetes verzió)
+
+A tárolási korlátokat a általános célú és a memória optimalizált szintjein növeljük. Az előzetes verzióra engedélyező újonnan létrehozott kiszolgálók legfeljebb 16 TB tárhellyel rendelkezhetnek. A IOPS-skála 3:1-ig terjedő arányban 20 000 IOPS. A jelenlegi általánosan elérhető tárolóhoz hasonlóan további tárolókapacitást is hozzáadhat a kiszolgáló létrehozása után, és lehetővé teszi, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően.
+
+|              | **általános célú** | **Memória optimalizálva** |
+|:-------------|:--------------------|:---------------------|
+| Tárolási típus | Azure-Premium Storage | Azure-Premium Storage |
+| Tárterület mérete | 32 GB – 16 TB| 32 – 16 TB |
+| Tárolási növekmény mérete | 1 GB | 1 GB |
+| IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
+
+> [!IMPORTANT]
+> A nagyméretű tároló jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: USA keleti régiója, USA 2. keleti régiója, az USA középső régiója, az USA északi középső régiója, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Kelet-Ausztrália Korea, Közép-Korea
 
 ### <a name="reaching-the-storage-limit"></a>A tárolási korlát elérése
 
@@ -95,7 +109,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időtartamána
 
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/mariadb/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for MariaDB** a beállítások testreszabásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg a [szolgáltatási korlátozásokat](concepts-limits.md).
 - Megtudhatja, hogyan [hozhat létre MariaDB-kiszolgálót a Azure Portalban](quickstart-create-mariadb-server-database-using-azure-portal.md).
 

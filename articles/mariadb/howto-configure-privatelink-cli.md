@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 82d28a7ac5475752e3969a6af1185bc254b0fa7f
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: ca889f30f8c89bae60ea5f0076c4e9bbc75311aa
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636138"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660676"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Azure Database for MariaDB magánhálózati hivatkozás létrehozása és kezelése a parancssori felület használatával
 
@@ -72,7 +72,7 @@ az vm create \
 Hozzon létre egy Azure Database for MariaDB az az MariaDB Server Create paranccsal. Ne feledje, hogy a MariaDB-kiszolgáló nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie: 
 
 ```azurecli-interactive
-# Create a logical server in the resource group 
+# Create a server in the resource group 
 az mariadb server create \
 --name mydemoserver \
 --resource-group myResourcegroup \
@@ -88,13 +88,20 @@ az mariadb server create \
 
 ## <a name="create-the-private-endpoint"></a>A magánhálózati végpont létrehozása 
 Hozzon létre egy privát végpontot a MariaDB-kiszolgálóhoz a Virtual Networkban: 
+
+A kiszolgáló erőforrás-azonosítójának beolvasása
 ```azurecli-interactive
+$resourceid = $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMariaDB/servers" --query "id")
+```
+
+```azurecli-interactive
+#Use the resourceid defined above
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforMariaDB/servers/$Servername" \  
+    --private-connection-resource-id $resourceid \  
     --group-id mariadbServer \  
     --connection-name myConnection  
  ```

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 2f3932f3374367e260685ae5145da8858384c3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/08/2020
+ms.openlocfilehash: a023599cb026a62aee034846dd390cda730d5df4
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194767"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660284"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Az Azure szinapszis Analyticsbe való betöltés Azure Data Factory használatával
 
@@ -136,11 +136,13 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 1. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább gombra**.
 
     ![Összefoglaló lap](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. A folyamat (feladat) figyeléséhez az **üzembe helyezés lapon**kattintson a **figyelés** elemre.
 
-1. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva. Ha a folyamat futása sikeresen befejeződött, válassza a **folyamat neve** oszlopban a **CopyFromSQLToSQLDW** hivatkozást a tevékenység futtatási részleteinek megtekintéséhez és a folyamat újrafuttatásához.
+1. A folyamat (feladat) figyeléséhez az **Üzembe helyezés** lapon kattintson a **Monitorozás** elemre. 
+ 
+1. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva. Ha a folyamat futása sikeresen befejeződött, válassza a **folyamat neve** oszlopban a **CopyFromSQLToSQLDW** hivatkozást a tevékenység futtatási részleteinek megtekintéséhez vagy a folyamat újrafuttatásához.
 
     [![Folyamatfuttatások monitorozása](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+
 1. Ha vissza szeretne váltani a folyamat futási nézetére, válassza az **összes folyamat futtatása** hivatkozást a felső részen. A lista frissítéséhez kattintson a **Frissítés** gombra.
 
     ![Tevékenységfuttatások monitorozása](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
@@ -150,7 +152,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
     ![Tevékenység-futtatási részletek figyelése](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megismerheti az Azure szinapszis Analytics támogatását:
 

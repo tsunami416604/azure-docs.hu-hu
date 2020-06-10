@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 90a058b7702dd51d3f93a83ae3e3d85f534808f3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6bf218f14b0fc783bead5183b22e4abcefe87b5a
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552207"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660006"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – útmutató
 
@@ -92,6 +92,9 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 |**A RootManageSharedAccessKey kivételével minden engedélyezési szabályt el kell távolítani Service Bus névtérből**|Service Bus-ügyfelek nem használhatnak névtér szintű hozzáférési szabályzatot, amely hozzáférést biztosít a névtérben lévő összes várólistához és témakörhöz. A legalacsonyabb jogosultsági szintű biztonsági modellel való összehangoláshoz hozzáférési házirendeket kell létrehoznia az entitások szintjén a várólistákhoz és a témakörökhöz, hogy csak az adott entitáshoz lehessen hozzáférést biztosítani.<br>(Kapcsolódó házirend: a RootManageSharedAccessKey kivételével minden engedélyezési szabályt el kell távolítani Service Bus névtérből)|Alacsony|N|Számítási erőforrások (Service Bus)|
 |**A RootManageSharedAccessKey kivételével az összes engedélyezési szabályt el kell távolítani az Event hub-névtérből**|Az Event hub-ügyfelek nem használhatnak olyan névtér szintű hozzáférési szabályzatot, amely hozzáférést biztosít a névtérben lévő összes várólistához és témakörhöz. A legalacsonyabb jogosultsági szintű biztonsági modellel való összehangoláshoz hozzáférési házirendeket kell létrehoznia az entitások szintjén a várólistákhoz és a témakörökhöz, hogy csak az adott entitáshoz lehessen hozzáférést biztosítani.<br>(Kapcsolódó házirend: a RootManageSharedAccessKey kivételével az összes engedélyezési szabályt el kell távolítani az Event hub-névtérből)|Alacsony|N|Számítási erőforrások (Event hub)|
 |**Az Event hub-entitás engedélyezési szabályait definiálni kell**|Az Event hub-entitás engedélyezési szabályainak naplózása a legkevésbé privilegizált hozzáférés biztosításához.<br>(Kapcsolódó szabályzat: az Event hub-entitás engedélyezési szabályainak meghatározása szükséges)|Alacsony|N|Számítási erőforrások (Event hub)|
+|**A monitorozási ügynök telepítése a virtuális gépeken**|Telepítse a figyelési ügynököt az adatgyűjtés engedélyezéséhez, a frissítések vizsgálatához, az alapkonfiguráció vizsgálatához és az Endpoint Protection szolgáltatáshoz az egyes gépeken.<br>(Nincs kapcsolódó házirend)|Magasság|**I**|Gép|
+|**A vendég konfigurációs bővítményt a Windows rendszerű virtuális gépekre kell telepíteni (előzetes verzió)**|Telepítse a vendég konfigurációs ügynököt, hogy engedélyezze a naplózási beállításokat a gépen belül, például: az operációs rendszer konfigurációja, az alkalmazás konfigurációja vagy a jelenlét, környezeti beállítások. A telepítés után a vendégen belüli szabályzatok elérhetők lesznek, például a "Windows Exploit Guard engedélyezése".<br>(Kapcsolódó szabályzat: a Windows rendszerű virtuális gépeken a vendég-konfigurációs házirendek engedélyezéséhez szükséges előfeltételek naplózása)|Magasság|**I**|Gép|
+|**A Windows Defender Exploit Guard-nek engedélyezve kell lennie a gépeken (előzetes verzió)**|A Windows Defender Exploit Guard a Azure Policy vendég konfigurációs ügynököt használja. A kiaknázási Gárda négy összetevőből áll, amelyek célja, hogy zárolják az eszközöket a különböző támadási vektorok és a kártevők elleni támadásokban leggyakrabban használt viselkedések blokkolásával, miközben lehetővé teszik a vállalatok számára a biztonsági kockázatok és a termelékenységi követelmények kiegyensúlyozását (csak Windows).<br>(Kapcsolódó szabályzat: azon Windows-alapú virtuális gépek naplózása, amelyeken a Windows Defender Exploit Guard nincs engedélyezve)|Közepes|N|Gép|
 |**A monitorozási ügynök telepítése a virtuális gépeken**|Telepítse a figyelési ügynököt az adatgyűjtés engedélyezéséhez, a frissítések vizsgálatához, az alapkonfiguráció vizsgálatához és az Endpoint Protection szolgáltatáshoz az egyes gépeken.<br>(Nincs kapcsolódó házirend)|Magasság|**I**|Gép|
 |**A figyelési ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken**|A teljes Security Center védelem érdekében a hibaelhárítási útmutató utasításait követve oldja meg a figyelési ügynökkel kapcsolatos problémákat a számítógépeken.<br>(Nincs kapcsolódó szabályzat – a figyelési ügynök telepítése a virtuális gépeken)|Közepes|N|Gép|
 |**Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken**|Az alkalmazások vezérlésének engedélyezésével szabályozhatja, hogy mely alkalmazások futhatnak az Azure-ban található virtuális gépeken. Ez segít megerősíteni a virtuális gépeket a kártevők ellen. Security Center a gépi tanulás segítségével elemzi az egyes virtuális gépeken futó alkalmazásokat, és segít az engedélyezési szabályok alkalmazásában az intelligenciával. Ez a funkció leegyszerűsíti az alkalmazások engedélyezési szabályainak konfigurálását és karbantartását.<br>(Kapcsolódó szabályzat: az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken)|Magasság|N|Gép|

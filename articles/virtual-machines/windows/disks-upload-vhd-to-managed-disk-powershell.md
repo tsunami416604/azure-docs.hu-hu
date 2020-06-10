@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan tölthet fel egy virtuális merevlemezt egy Azu
 author: roygara
 ms.author: rogarana
 ms.date: 03/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 6242baf5a541231d367d456450388ef455312780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 153bbc39ceba52548d667fa4c83d0edc867fcb93
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182514"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660602"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD feltöltése az Azure-ba vagy egy felügyelt lemez másolása egy másik régióba – Azure PowerShell
 
@@ -38,15 +38,15 @@ Az ilyen felügyelt lemez két egyedi állapottal rendelkezik:
 - ActiveUpload, ami azt jelenti, hogy a lemez készen áll a feltöltés fogadására, és a SAS létrejött.
 
 > [!NOTE]
-> Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak `revoke-access` akkor lesz érvényes, ha a felügyelt lemezre van meghívva, ami szükséges ahhoz, hogy csatlakoztatni lehessen a lemezt egy virtuális géphez.
+> Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak akkor lesz érvényes `revoke-access` , ha a felügyelt lemezre van meghívva, ami szükséges ahhoz, hogy csatlakoztatni lehessen a lemezt egy virtuális géphez.
 
 ## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása
 
-Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, szüksége lesz a feltölteni kívánt VHD-fájl méretére (bájtban). A példában szereplő kód a következőt fogja használni: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Ez az érték a **-UploadSizeInBytes** paraméter megadásakor használatos.
+Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, szüksége lesz a feltölteni kívánt VHD-fájl méretére (bájtban). A példában szereplő kód a következőt fogja használni: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` . Ez az érték a **-UploadSizeInBytes** paraméter megadásakor használatos.
 
 Most a helyi rendszerhéjon hozzon létre egy üres szabványos HDD-t a feltöltéshez, és adja meg a **feltöltési** beállítást a **-CreateOption** paraméterben, valamint a **-UploadSizeInBytes** paramétert a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) parancsmagban. Ezután hívja a [New-AzDisk-](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) t a lemez létrehozásához.
 
-Cserélje `<yourdiskname>`le `<yourresourcegroupname>`,, `<yourregion>` majd futtassa a következő parancsokat:
+Cserélje le `<yourdiskname>` , `<yourresourcegroupname>` , majd `<yourregion>` futtassa a következő parancsokat:
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -60,7 +60,7 @@ Ha prémium szintű SSD-t vagy standard SSD-t szeretne feltölteni, cserélje le
 
 Most, hogy létrehozott egy üres felügyelt lemezt, amely a feltöltési folyamathoz van konfigurálva, feltöltheti a virtuális merevlemezt. A virtuális merevlemezek lemezre való feltöltéséhez írható SAS szükséges, hogy a feltöltés céljának megfelelően hivatkozzon legyen rá.
 
-Az üres felügyelt lemezről írható SAS létrehozásához cserélje le `<yourdiskname>`a `<yourresourcegroupname>`és a parancsot, majd használja a következő parancsokat:
+Az üres felügyelt lemezről írható SAS létrehozásához cserélje le a `<yourdiskname>` és `<yourresourcegroupname>` a parancsot, majd használja a következő parancsokat:
 
 ```powershell
 $diskSas = Grant-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>' -DurationInSecond 86400 -Access 'Write'
@@ -82,7 +82,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlo
 
 Miután a feltöltés befejeződött, és többé nem kell további adatokra írnia a lemezt, vonja vissza a SAS-t. Az SAS visszavonása megváltoztatja a felügyelt lemez állapotát, és lehetővé teszi a lemez csatlakoztatását egy virtuális géphez.
 
-Cserélje `<yourdiskname>`le `<yourresourcegroupname>`, majd futtassa a következő parancsot:
+Cserélje `<yourdiskname>` le `<yourresourcegroupname>` , majd futtassa a következő parancsot:
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>'
@@ -97,7 +97,7 @@ A következő szkript ezt elvégzi Önnek, a folyamat hasonló a korábban ismer
 > [!IMPORTANT]
 > Ha az Azure-ból felügyelt lemez mérete bájtban van megadva, akkor 512 eltolást kell hozzáadnia. Ennek az az oka, hogy az Azure kihagyja a láblécet a lemez méretének visszaadása során. Ha ezt nem teszi meg, a másolás sikertelen lesz. A következő szkript ezt már elvégezte Önnek.
 
-Cserélje le `<sourceResourceGroupHere>`a `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` , `<yourTargetLocationHere>` és (például a uswest2) értéket az értékekkel, majd futtassa a következő parancsfájlt a felügyelt lemez másolásához.
+Cserélje le a,,, `<sourceResourceGroupHere>` `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` , `<yourOSTypeHere>` és `<yourTargetLocationHere>` (például a uswest2) értéket az értékekkel, majd futtassa a következő parancsfájlt a felügyelt lemez másolásához.
 
 ```powershell
 
@@ -127,7 +127,7 @@ Revoke-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName
 Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy sikeresen feltöltött egy virtuális merevlemezt egy felügyelt lemezre, csatlakoztathatja a lemezt egy virtuális géphez, és megkezdheti a használatát.
 

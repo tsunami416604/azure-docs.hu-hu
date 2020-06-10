@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 31681397961045da02add7ccb37f29f6c835c08d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267086"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659895"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurálja a felhasználó által kezelt kulcsokat az Azure Cosmos-fiókjához az Azure Key Vaulttal
 
@@ -30,9 +30,9 @@ Az ügyfél által felügyelt kulcsokat a [Azure Key Vaultban](../key-vault/gene
 
    !["Erőforrás-szolgáltatók" bejegyzés a bal oldali menüben](./media/how-to-setup-cmk/portal-rp.png)
 
-1. Keresse meg a **Microsoft. DocumentDB** erőforrás-szolgáltatót. Ellenőrizze, hogy az erőforrás-szolgáltató már regisztráltként van-e megjelölve. Ha nem, válassza ki az erőforrás-szolgáltatót, és válassza a **regisztráció**lehetőséget:
+1. Keresse meg a **Microsoft.DocumentDB** erőforrás-szolgáltatót. Ellenőrizze, hogy az erőforrás-szolgáltató már regisztráltként van-e megjelölve. Ha nem, válassza ki az erőforrás-szolgáltatót, és válassza a **regisztráció**lehetőséget:
 
-   ![A Microsoft. DocumentDB erőforrás-szolgáltató regisztrálása](./media/how-to-setup-cmk/portal-rp-register.png)
+   ![A Microsoft.DocumentDB erőforrás-szolgáltató regisztrálása](./media/how-to-setup-cmk/portal-rp-register.png)
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Az Azure Key Vault-példány konfigurálása
 
@@ -59,7 +59,7 @@ Ha meglévő Azure Key Vault példányt használ, ellenőrizheti, hogy ezek a tu
 
    ![A megfelelő engedélyek kiválasztása](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. A **rendszerbiztonsági tag kiválasztása**területen válassza a **nincs kiválasztva**lehetőséget. Ezután keressen rá **Azure Cosmos db** rendszerbiztonsági tag elemre, és válassza ki azt (hogy könnyebb legyen megkeresni, a résztvevő azonosítója: `a232010e-820c-4083-83bb-3ace5fc29d0b` bármely Azure-régió esetében, Azure Government kivéve a rendszerbiztonsági tag azonosítóját `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Végül válassza a **kijelölés alul lehetőséget** . Ha a **Azure Cosmos db** rendszerbiztonsági tag nem szerepel a listában, lehet, hogy újra regisztrálnia kell a **Microsoft. DocumentDB** erőforrás-szolgáltatót a jelen cikk [erőforrás-szolgáltató regisztrálása](#register-resource-provider) című szakaszában leírtak szerint.
+1. A **rendszerbiztonsági tag kiválasztása**területen válassza a **nincs kiválasztva**lehetőséget. Ezután keressen rá **Azure Cosmos db** rendszerbiztonsági tag elemre, és válassza ki azt (hogy könnyebb legyen megkeresni, a résztvevő azonosítója: `a232010e-820c-4083-83bb-3ace5fc29d0b` bármely Azure-régió esetében, Azure Government kivéve a rendszerbiztonsági tag azonosítóját `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Végül válassza a **kijelölés alul lehetőséget** . Ha a **Azure Cosmos db** rendszerbiztonsági tag nem szerepel a listában, akkor előfordulhat, hogy újra kell regisztrálnia a **Microsoft.DocumentDB** erőforrás-szolgáltatót a jelen cikk [erőforrás-szolgáltató regisztrálása](#register-resource-provider) című szakaszában leírtak szerint.
 
    ![Azure Cosmos DB rendszerbiztonsági tag kiválasztása](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
@@ -220,6 +220,31 @@ az cosmosdb show \
     --query keyVaultKeyUri
 ```
 
+## <a name="key-rotation"></a>Kulcsrotálás
+
+Az Azure Cosmos-fiók által használt ügyfél által felügyelt kulcs elforgatása kétféleképpen végezhető el.
+
+- Hozza létre az Azure Key Vault által jelenleg használt kulcs új verzióját:
+
+  ![Új kulcs verziójának létrehozása](./media/how-to-setup-cmk/portal-akv-rot.png)
+
+- A fiók tulajdonságának frissítésével cserélje le az aktuálisan használt kulcsot egy teljesen eltérő értékre `keyVaultKeyUri` . Útmutató a PowerShellben:
+
+    ```powershell
+    $resourceGroupName = "myResourceGroup"
+    $accountName = "mycosmosaccount"
+    $newKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-new-key>"
+    
+    $account = Get-AzResource -ResourceGroupName $resourceGroupName -Name $accountName `
+        -ResourceType "Microsoft.DocumentDb/databaseAccounts"
+    
+    $account.Properties.keyVaultKeyUri = $newKeyUri
+    
+    $account | Set-AzResource -Force
+    ```
+
+Az előző kulcs vagy kulcs verziószáma 24 óra elteltével letiltható, vagy ha a [Azure Key Vault naplók](../key-vault/general/logging.md) nem jelenítik meg az adott kulcs vagy kulcs verziójának Azure Cosmos db tevékenységeit.
+    
 ## <a name="error-handling"></a>Hibakezelés
 
 Ha az ügyfél által felügyelt kulcsokat (CMK) Azure Cosmos DBban használja, akkor a Azure Cosmos DB a válaszban szereplő HTTP-alállapot-kóddal együtt visszaadja a hiba részleteit. Ezt az alállapot-kódot használhatja a probléma kiváltó okának a hibakereséséhez. Tekintse meg a http- [állapotkódok Azure Cosmos db](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) cikket a támogatott http-alállapot-kódok listájának lekéréséhez.
@@ -268,14 +293,6 @@ Programozott módon beolvashatja az Azure Cosmos-fiók adatait, és megkeresheti
 
 A Azure Cosmos DB [rendszeres és automatikus biztonsági mentést](./online-backup-and-restore.md) készít a fiókjában tárolt adatairól. Ezzel a művelettel biztonsági másolatot készít a titkosított adatforgalomról. A visszaállított biztonsági mentés használatához a biztonsági mentés időpontjában használt titkosítási kulcsot kötelező megadni. Ez azt jelenti, hogy nem történt visszavonás, és a biztonsági mentés idején használt kulcs verziószáma továbbra is engedélyezve lesz.
 
-### <a name="how-do-i-rotate-an-encryption-key"></a>Hogyan elforgatni egy titkosítási kulcsot?
-
-A kulcsok elforgatása a kulcs új verziójának létrehozásával történik Azure Key Vaultban:
-
-![Új kulcs verziójának létrehozása](./media/how-to-setup-cmk/portal-akv-rot.png)
-
-Az előző verzió letiltható 24 óra elteltével, vagy ha a [Azure Key Vault](../key-vault/general/logging.md) naplója már nem jeleníti meg az adott verzió Azure Cosmos db tevékenységeit.
-
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Hogyan visszavon egy titkosítási kulcsot?
 
 A kulcs visszavonása a kulcs legújabb verziójának letiltásával végezhető el:
@@ -290,7 +307,7 @@ Másik lehetőségként a Azure Key Vault-példány összes kulcsának visszavon
 
 Az egyetlen művelet lehetséges, ha a titkosítási kulcs visszavonva van, a fiók törlése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Cosmos db adattitkosításáról](./database-encryption-at-rest.md).
 - Tekintse át a [Cosmos db lévő adathozzáférések biztonságos elérését](secure-access-to-data.md)ismertető cikket.

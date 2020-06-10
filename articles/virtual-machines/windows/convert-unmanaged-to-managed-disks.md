@@ -4,15 +4,15 @@ description: Windows rendszerű virtuális gép konvertálása nem felügyelt le
 author: roygara
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: d8069b174b7a69cc2e6c47171159569c56a15563
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081948"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658193"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 
@@ -35,7 +35,7 @@ Ha már van olyan Windows rendszerű virtuális gép (VM), amely nem felügyelt 
 ## <a name="convert-single-instance-vms"></a>Egypéldányos virtuális gépek konvertálása
 Ez a szakasz bemutatja, hogyan alakíthatja át a nem felügyelt lemezekről származó egypéldányos Azure-beli virtuális gépeket a felügyelt lemezekre. (Ha a virtuális gépek rendelkezésre állási csoportban találhatók, tekintse meg a következő szakaszt.) 
 
-1. Szabadítsa fel a virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) parancsmag használatával. A következő példa felszabadítja a nevű virtuális gépet `myVM` a nevű `myResourceGroup`erőforráscsoporthoz: 
+1. Szabadítsa fel a virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) parancsmag használatával. A következő példa felszabadítja a nevű virtuális gépet `myVM` a nevű erőforráscsoporthoz `myResourceGroup` : 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -55,7 +55,7 @@ Ez a szakasz bemutatja, hogyan alakíthatja át a nem felügyelt lemezekről sz�
 
 Ha a felügyelt lemezekre átalakítani kívánt virtuális gépek rendelkezésre állási csoportba kerülnek, először át kell alakítania a rendelkezésre állási készletet egy felügyelt rendelkezésre állási csoportba.
 
-1. Alakítsa át a rendelkezésre állási készletet az [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) parancsmag használatával. Az alábbi példa frissíti a nevű erőforráscsoport `myAvailabilitySet` -beli rendelkezésre állási csoportot `myResourceGroup`:
+1. Alakítsa át a rendelkezésre állási készletet az [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) parancsmag használatával. Az alábbi példa frissíti a nevű erőforráscsoport-beli rendelkezésre állási `myAvailabilitySet` csoportot `myResourceGroup` :
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -65,7 +65,7 @@ Ha a felügyelt lemezekre átalakítani kívánt virtuális gépek rendelkezésr
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
    ```
 
-   Ha az a régió, ahol a rendelkezésre állási csoport található, csak 2 felügyelt tartalék tartománnyal rendelkezik, de a nem felügyelt tartalék tartományok száma 3, ez a parancs a következőhöz hasonló hibaüzenetet jelenít meg: "a megadott tartalék tartomány 3. számának az 1 és 2 közötti tartományba kell esnie." A hiba elhárításához frissítse a tartalék tartományt 2-re, és `Sku` frissítse `Aligned` a következőre:
+   Ha az a régió, ahol a rendelkezésre állási csoport található, csak 2 felügyelt tartalék tartománnyal rendelkezik, de a nem felügyelt tartalék tartományok száma 3, ez a parancs a következőhöz hasonló hibaüzenetet jelenít meg: "a megadott tartalék tartomány 3. számának az 1 és 2 közötti tartományba kell esnie." A hiba elhárításához frissítse a tartalék tartományt 2-re, és frissítse a `Sku` `Aligned` következőre:
 
    ```azurepowershell-interactive
    $avSet.PlatformFaultDomainCount = 2
@@ -88,7 +88,7 @@ Ha a felügyelt lemezekre átalakítani kívánt virtuális gépek rendelkezésr
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha az átalakítás során hiba történt, vagy ha egy virtuális gép egy korábbi konverzióval kapcsolatos probléma miatt sikertelen állapotban van, futtassa újra a `ConvertTo-AzVMManagedDisk` parancsmagot. Egy egyszerű újrapróbálkozás általában feloldja a helyzetet.
+Ha az átalakítás során hiba történt, vagy ha egy virtuális gép egy korábbi konverzióval kapcsolatos probléma miatt sikertelen állapotban van, futtassa `ConvertTo-AzVMManagedDisk` újra a parancsmagot. Egy egyszerű újrapróbálkozás általában feloldja a helyzetet.
 A konvertálás előtt győződjön meg arról, hogy az összes virtuálisgép-bővítmény a "kiépítés sikeres" állapotban van, vagy a konverzió sikertelen lesz a 409-es hibakód miatt.
 
 ## <a name="convert-using-the-azure-portal"></a>Konvertálás a Azure Portal használatával
@@ -103,7 +103,7 @@ A nem felügyelt lemezeket a Azure Portal használatával is konvertálhatja a f
 
 A rendszer a Migrálás befejezése után leállítja és újraindítja a virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Standard szintű felügyelt lemezek átalakítása prémium szintre](convert-disk-storage.md)
 

@@ -3,16 +3,16 @@ title: Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez
 description: Az Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával az Azure CLI-vel
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066653"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658152"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával
 
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy új Storage-fiókot a létrehozott erőforráscsoport keretében az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Ez a példa létrehoz egy *mystorageacct kifejezést\<Random Number>* nevű Storage-fiókot, és az adott Storage-fiók nevét a **storageacct tárfiókban**változóba helyezi. A Storage-fiók nevének egyedinek kell `$RANDOM` lennie, ezzel egy számot fűz a végponthoz, hogy az egyedi legyen.
+Hozzon létre egy új Storage-fiókot a létrehozott erőforráscsoport keretében az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Ez a példa létrehoz egy *mystorageacct kifejezést \<random number> * nevű Storage-fiókot, és a **storageacct tárfiókban**változóban helyezi el a Storage-fiók nevét. A Storage-fiók nevének egyedinek kell lennie, ezzel `$RANDOM` egy számot fűz a végponthoz, hogy az egyedi legyen.
 
 ```azurecli
 STORAGEACCT=$(az storage account create \
@@ -93,7 +93,7 @@ Csatlakoztassa az Azure-fájlmegosztást a helyi könyvtárba.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-A fenti parancs a [Mount](https://linux.die.net/man/8/mount) parancs használatával csatlakoztatja az Azure-fájlmegosztást és a [CIFS](https://linux.die.net/man/8/mount.cifs)-ra vonatkozó beállításokat. Pontosabban a file_mode és a dir_mode beállítások a fájlok és a könyvtárak `0777`engedélyezésére vannak beállítva. Az `0777` engedély olvasási, írási és végrehajtási engedélyeket biztosít az összes felhasználó számára. Ezeket az engedélyeket megváltoztathatja az értékek más chmod- [engedélyekkel](https://en.wikipedia.org/wiki/Chmod)való lecserélésével. Más [CIFS](https://linux.die.net/man/8/mount.cifs) -beállításokat is használhat, mint például a GID vagy az UID. 
+A fenti parancs a [Mount](https://linux.die.net/man/8/mount) parancs használatával csatlakoztatja az Azure-fájlmegosztást és a [CIFS](https://linux.die.net/man/8/mount.cifs)-ra vonatkozó beállításokat. Pontosabban a file_mode és a dir_mode beállítások a fájlok és a könyvtárak engedélyezésére vannak beállítva `0777` . Az `0777` engedély olvasási, írási és végrehajtási engedélyeket biztosít az összes felhasználó számára. Ezeket az engedélyeket megváltoztathatja az értékek más chmod- [engedélyekkel](https://en.wikipedia.org/wiki/Chmod)való lecserélésével. Más [CIFS](https://linux.die.net/man/8/mount.cifs) -beállításokat is használhat, mint például a GID vagy az UID. 
 
 
 ## <a name="persist-the-mount"></a>A csatlakoztatás fenntartása
@@ -106,7 +106,7 @@ A Linux rendszerű virtuális gép újraindításakor a csatlakoztatott SMB-mego
 
 Az éles környezetek fokozott biztonsága érdekében a hitelesítő adatokat az fstab-n kívül kell tárolnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Linux rendszerű virtuális gép testreszabása a Cloud-init használatával a létrehozás során](using-cloud-init.md)
 - [Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)](add-disk.md)

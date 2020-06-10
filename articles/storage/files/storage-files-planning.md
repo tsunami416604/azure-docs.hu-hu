@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856895"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659634"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
@@ -57,7 +57,7 @@ Bár a technikai szempontból jóval egyszerűbb az Azure-fájlmegosztás nyilv�
 
 - **Hálózati bújtatás ExpressRoute, helyek közötti vagy pont – hely típusú VPN használatával**: a virtuális hálózatba való bújtatás lehetővé teszi az Azure-fájlmegosztás helyszíni elérését, még akkor is, ha az 445-es port le van tiltva.
 - **Privát végpontok**: a magánhálózati végpontok dedikált IP-címet biztosítanak a Storage-fióknak a virtuális hálózat címterület területén. Ez lehetővé teszi a hálózati bújtatást anélkül, hogy az Azure Storage-fürtök által birtokolt összes IP-címtartományt meg kellene nyitni a helyszíni hálózatokat. 
-- **DNS-továbbítás**: konfigurálja a helyszíni DNS-t úgy, hogy feloldja a Storage-fiók ( `storageaccount.file.core.windows.net` azaz a nyilvános felhő régiói) nevét a privát végpontok IP-címére való feloldáshoz.
+- **DNS-továbbítás**: konfigurálja a helyszíni DNS-t úgy, hogy feloldja a Storage-fiók (azaz `storageaccount.file.core.windows.net` a nyilvános felhő régiói) nevét a privát végpontok IP-címére való feloldáshoz.
 
 Az Azure-fájlmegosztás üzembe helyezéséhez kapcsolódó hálózatkezelés megtervezéséhez tekintse meg [Azure Files hálózatkezelési megfontolásokat](storage-files-networking-overview.md).
 
@@ -94,7 +94,7 @@ További információ az átvitel közbeni titkosításról: [biztonságos átvi
     - A standard fájlmegosztás minden Azure-régióban elérhető.
 - Az Azure Kubernetes Service (ak) prémium szintű fájlmegosztás használatát támogatja a 1,13-es és újabb verziókban.
 
-Ha egy fájlmegosztás prémium vagy standard fájlmegosztásként lett létrehozva, akkor nem alakíthatja át automatikusan a másik szintre. Ha a másik szintjére szeretne váltani, új fájlmegosztást kell létrehoznia az adott szinten, és manuálisan át kell másolnia az eredeti megosztás adatait az újonnan létrehozott megosztásra. Azt javasoljuk, `robocopy` hogy a Windowshoz vagy `rsync` MacOS és Linux rendszerhez használja a másolást.
+Ha egy fájlmegosztás prémium vagy standard fájlmegosztásként lett létrehozva, akkor nem alakíthatja át automatikusan a másik szintre. Ha a másik szintjére szeretne váltani, új fájlmegosztást kell létrehoznia az adott szinten, és manuálisan át kell másolnia az eredeti megosztás adatait az újonnan létrehozott megosztásra. Azt javasoljuk `robocopy` , hogy a Windowshoz vagy MacOS és Linux rendszerhez használja a `rsync` másolást.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>A prémium fájlmegosztás kiépítés ismertetése
 A prémium fájlmegosztást rögzített GiB/IOPS/átviteli sebesség alapján kell kiépíteni. Minden egyes GiB-kiosztás esetén a megosztás egy IOPS és 0,1 MiB/s átviteli sebességgel fog kiadni, a maximálisan megengedett határértékek száma szerint. A minimálisan engedélyezett kiépítés a 100 GiB és a min IOPS/átviteli sebesség.
@@ -127,7 +127,7 @@ Az alábbi táblázat néhány példát mutat be a kiosztott megosztási mérete
 |10 240      | 10 240  | Akár 30 720  | 675 | 450   |
 |33 792      | 33 792  | Akár 100 000 | 2 088 | 1 392   |
 |51 200      | 51 200  | Akár 100 000 | 3 132 | 2 088   |
-|102 400     | 100 000 | Akár 100 000 | 6 204 | 4 136   |
+|102 400     | 100.000 | Akár 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. Például a 8 KiB írási/olvasási IO-méretekkel rendelkező belső tesztelésen alapuló, egyetlen Windowsos virtuális gép, *Standard F16s_v2*, a prémium szintű fájlmegosztás SMB-hez való csatlakoztatása 20000 olvasási IOPS és 15 000 FORDULAT írási IOPS. Az 512 MiB-írási/írási IO-méretekkel ugyanez a virtuális gép elérheti a 1,1 GiB/s kimenő forgalmat és a 370 MiB/s adatátviteli sebességet. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori teljesítménnyel kapcsolatos problémák és a megkerülő megoldások [hibaelhárítási útmutatójában](storage-troubleshooting-files-performance.md) olvashat.
@@ -160,17 +160,12 @@ Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben.
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>Migrálás
-Sok esetben nem fog létrehozni nettó új fájlmegosztást a szervezet számára, hanem inkább egy meglévő fájlmegosztást telepít át egy helyszíni fájlkiszolgálón vagy NAS-eszközről a Azure Filesra. A Microsoft és a harmadik felek egyaránt számos eszközt biztosítanak a fájlmegosztás áttelepítésére, de nagyjából két kategóriába oszthatók:
+Sok esetben nem fog létrehozni nettó új fájlmegosztást a szervezet számára, hanem inkább egy meglévő fájlmegosztást telepít át egy helyszíni fájlkiszolgálón vagy NAS-eszközről a Azure Filesra. A Migrálás sikerességéhez fontos a megfelelő áttelepítési stratégia és eszköz kiválogatása a forgatókönyvhöz. 
 
-- **A fájlrendszer attribútumait, például ACL-eket és időbélyegeket karbantartó eszközök**:
-    - **[Azure file Sync](storage-sync-files-planning.md)**: a Azure file Sync használható az Azure-fájlmegosztásba való betöltéshez, még akkor is, ha a kívánt végponti telepítés nem tart fenn helyszíni jelenlétet. Azure File Sync a meglévő Windows Server 2012 R2, a Windows Server 2016 és a Windows Server 2019 rendszerű központi telepítések esetén telepíthető. A Azure File Sync betöltési mechanizmusként való használatának előnye, hogy a végfelhasználók továbbra is használhatják a meglévő fájlmegosztást. Az Azure-fájlmegosztás kivágása akkor fordulhat elő, ha az összes adat feltöltése befejeződött a háttérben.
-    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: a Robocopy egy jól ismert másolási eszköz, amely a Windows és a Windows Server rendszerű kiszolgálókon található. A Robocopy felhasználható az adatok Azure Filesba történő átvitelére a fájlmegosztás helyi csatlakoztatásával, majd a csatlakoztatott hely célként való használatával a Robocopy parancsban.
+Az [áttelepítést áttekintő cikk](storage-files-migration-overview.md) röviden ismerteti az alapokat, és tartalmaz egy táblázatot, amely a forgatókönyvét valószínűleg magában foglaló áttelepítési útmutatókba vezet.
 
-- A **fájlrendszer attribútumait nem fenntartó eszközök**:
-    - **Data Box**: a Data Box offline adatátviteli mechanizmust biztosít az adatok Azure-ba való fizikai szállításához. Ez a módszer az átviteli sebesség növelésére és a sávszélesség megtakarítására szolgál, de jelenleg nem támogatja a fájlrendszer-attribútumokat, például az időbélyegeket és az ACL-eket.
-    - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: a AzCopy egy parancssori segédprogram, amely az adatok átmásolását Azure Files, valamint az Azure Blob Storage-t használja az optimális teljesítményű egyszerű parancsok használatával.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure File Sync központi telepítésének tervezése](storage-sync-files-planning.md)
 * [Azure Files üzembe helyezése](storage-files-deployment-guide.md)
 * [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
+* [Tekintse át az áttelepítési áttekintést ismertető cikket a forgatókönyv áttelepítési útmutatójának megkereséséhez](storage-files-migration-overview.md)

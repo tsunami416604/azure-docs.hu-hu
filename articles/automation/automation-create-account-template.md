@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/22/2020
-ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 06/09/2020
+ms.openlocfilehash: 6b26db522db246add48941da9af4784ed2942a0a
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837144"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661029"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
 
@@ -35,8 +35,8 @@ A következő táblázat felsorolja az ebben a példában használt erőforráso
 
 | Erőforrás | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
-| Munkaterület | munkaterületek | 2017-03-15 – előzetes verzió |
-| Automation-fiók | automation | 2015-10-31 | 
+| Munkaterület | munkaterületek | 2020-03-01 – előzetes verzió |
+| Automation-fiók | automation | 2018-06-30 | 
 
 ## <a name="before-you-use-the-template"></a>A sablon használata előtt
 
@@ -48,14 +48,14 @@ A JSON-sablon úgy van konfigurálva, hogy a következőre Kérdezzen:
 
 * A munkaterület neve.
 * Az a régió, amelyben létre kívánja hozni a munkaterületet.
+* Az erőforrás vagy a munkaterület engedélyeinek engedélyezéséhez.
 * Az Automation-fiók neve.
-* Az a régió, amelyben létre kell hozni a fiókot.
+* Az a régió, amelybe az Automation-fiókot létre kell hozni.
 
 A sablonban a következő paraméterek a Log Analytics munkaterület alapértelmezett értékével vannak beállítva:
 
 * az *SKU* alapértelmezett értéke az április 2018 díjszabási modellben megjelent GB-os díjszabási szinten.
 * a *dataRetention* alapértelmezett értéke 30 nap.
-* a *capacityReservationLevel* alapértelmezett értéke 100 GB.
 
 >[!WARNING]
 >Ha egy Log Analytics munkaterületet szeretne létrehozni vagy konfigurálni egy olyan előfizetésben, amely az áprilisi 2018 díjszabási modellre van kiválasztva, akkor az egyetlen érvényes Log Analytics díjszabási csomag *PerGB2018*.
@@ -63,7 +63,7 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
 
 A JSON-sablon olyan alapértelmezett értéket határoz meg a többi paraméter számára, amely valószínűleg a környezetben megszokott konfigurációként lesz használva. A sablont egy Azure Storage-fiókban is tárolhatja a szervezet megosztott hozzáféréséhez. További információ a sablonok használatáról: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../azure-resource-manager/templates/deploy-cli.md).
 
-Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a következő konfigurációs adatokat. Az új Automation-fiókhoz kapcsolódó Log Analytics munkaterületek létrehozásakor, konfigurálásakor és használatakor elkerülheti a hibák elhárítását. 
+Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a következő konfigurációs adatokat. Az új Automation-fiókhoz kapcsolódó Log Analytics munkaterületek létrehozásakor, konfigurálásakor és használatakor elkerülheti a hibák elhárítását.
 
 * [További részletekért](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) tekintse át a munkaterület-konfigurációs beállításokat, például a hozzáférés-vezérlési módot, a díjszabási szintet, a megőrzést és a kapacitás foglalási szintjét.
 
@@ -107,14 +107,7 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
             "minValue": 7,
             "maxValue": 730,
             "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can have only 7 days."
-            }
-        },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This applies only when retention is being set to 30 days."
+                "description": "Number of days to retain data."
             }
         },
         "location": {
@@ -122,6 +115,12 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -176,13 +175,11 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -194,7 +191,7 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
         "resources": [
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [
@@ -209,7 +206,7 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
             "resources": [
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('sampleGraphicalRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -229,7 +226,7 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePowerShellRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -249,7 +246,7 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePython2RunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -270,10 +267,10 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
                 ]
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -290,7 +287,7 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
 2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Érdemes lehet [Resource Manager-paramétert](../azure-resource-manager/templates/parameter-files.md) létrehozni, ahelyett, hogy a paramétereket beágyazott értékként adja át.
 
-3. Mentse ezt a fájlt deployAzAutomationAccttemplate. JSON néven egy helyi mappába.
+3. Mentse ezt a fájlt deployAzAutomationAccttemplate.jsként egy helyi mappába.
 
 4. Most már készen áll a sablon üzembe helyezésére. Használhatja a PowerShellt vagy az Azure CLI-t is. Ha a rendszer a munkaterület és az Automation-fiók nevének megadását kéri, adjon meg egy olyan nevet, amely globálisan egyedi az összes Azure-előfizetésen belül.
 
@@ -310,6 +307,6 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
     ![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](media/automation-create-account-template/template-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A runbook-feladatok állapotának és a feladatok adatfolyamoknak a csatolt Log Analytics munkaterületre való továbbításához tekintse át a [Azure Automation-feladatok továbbítása Azure monitor naplókba](automation-manage-send-joblogs-log-analytics.md). Ezzel konfigurálja az Automation-fiók diagnosztikai beállításait Azure PowerShell parancsok használatával, hogy elvégezze a naplók a munkaterületre való küldésének integrálását elemzés céljából. 

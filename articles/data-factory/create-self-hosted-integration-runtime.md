@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/13/2020
-ms.openlocfilehash: 705c35570484f604e9281b9c19ceb734180ba3e1
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.date: 06/09/2020
+ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418262"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655864"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
 
@@ -56,13 +56,13 @@ Saját üzemeltetésű integrációs modul létrehozásához és beállításáh
 
 A következő lépésekkel hozhat létre saját üzemeltetésű integrációs modult Azure Data Factory felhasználói felület használatával.
 
-1. Azure Data Factory felhasználói felületének első **lépések** oldalán válassza a **Szerző** fület a bal szélső ablaktáblán.
+1. Azure Data Factory felhasználói felületének első **lépések** oldalán válassza a [kezelés fület](https://docs.microsoft.com/azure/data-factory/author-management-hub) a bal szélső ablaktáblán.
 
-   ![A Kezdőlap létrehozás gombja](media/doc-common-process/get-started-page-author-button.png)
+   ![A Kezdőlap kezelés gombja](media/doc-common-process/get-started-page-manage-button.png)
 
-1. A bal szélső ablaktábla alján válassza a **kapcsolatok** lehetőséget, majd a **kapcsolatok** ablakban válassza az **Integration Runtimes (integrációs** modulok) lehetőséget. Válassza az **+ új**lehetőséget.
+1. Válassza az **integrációs** modulok lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új**lehetőséget.
 
-   ![Integrációs modul létrehozása](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
+   ![Integrációs modul létrehozása](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. Az **Integration Runtime telepítése** lapon válassza az **Azure, a saját**üzemeltetésű lehetőséget, majd kattintson a **Folytatás**gombra. 
 
@@ -97,7 +97,7 @@ A saját üzemeltetésű IR-telepítőt automatizálhatja egy Azure-beli virtuá
 
 Egy meglévő, saját üzemeltetésű integrációs modul beállításához vagy kezeléséhez használhatja a parancssort. Ez a használat különösen segít automatizálni a saját üzemeltetésű IR-csomópontok telepítését és regisztrálását.
 
-A Dmgcmd. exe a saját üzemeltetésű telepítő részét képezi. Ez általában a C:\Program Files\Microsoft Integration Runtime\4.0\Shared\ mappában található. Ez az alkalmazás támogatja a különböző paramétereket, és az automatizáláshoz használható batch-parancsfájlok használatával parancssorból hívható meg.
+A Dmgcmd.exe a saját üzemeltetésű telepítő része. Ez általában a C:\Program Files\Microsoft Integration Runtime\4.0\Shared\ mappában található. Ez az alkalmazás támogatja a különböző paramétereket, és az automatizáláshoz használható batch-parancsfájlok használatával parancssorból hívható meg.
 
 Az alkalmazást a következőképpen használhatja:
 
@@ -109,22 +109,22 @@ Az alábbiakban az alkalmazás paramétereinek és tulajdonságainak részleteit
 
 | Tulajdonság                                                    | Leírás                                                  | Kötelező |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal. | Nem       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével. | Nem       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről. | Nem       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut. | Nem       |
-| **DisableRemoteAccess**                                         | Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre. | Nem       |
-| **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | Nem       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | Nem       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | Nem       |
-| **Újraindítás**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | Nem       |
-| **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | Nem       |
-| **Leállítás**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | Nem       |
-| **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | Nem       |
-| **StopUpgradeService**                                          | Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.        | Nem       |
-| **TurnOnAutoUpdate**                                            | Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.        | Nem       |
-| **TurnOffAutoUpdate**                                           | Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.       | Nem       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót. | Nem       |
+| **RegisterNewNode** "`<AuthenticationKey>`"                     | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal. | No       |
+| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével. | No       |
+| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről. | No       |
+| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut. | No       |
+| **DisableRemoteAccess**                                         | Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre. | No       |
+| **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | No       |
+| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | No       |
+| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | No       |
+| **Újraindítás**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | No       |
+| **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | No       |
+| **Leállítás**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | No       |
+| **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | No       |
+| **StopUpgradeService**                                          | Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.        | No       |
+| **TurnOnAutoUpdate**                                            | Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.        | No       |
+| **TurnOffAutoUpdate**                                           | Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.       | No       |
+| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót. | No       |
 
 
 ## <a name="command-flow-and-data-flow"></a>A parancs folyamata és adatfolyama
@@ -352,8 +352,8 @@ Ha be van állítva, a saját üzemeltetésű integrációs modul a proxykiszolg
 Három konfigurációs lehetőség közül választhat:
 
 - Ne **használja a proxyt**: a saját üzemeltetésű integrációs modul nem használ explicit módon semmilyen proxyt a Cloud Serviceshez való csatlakozáshoz.
-- A **rendszerproxy használata**: a saját üzemeltetésű integrációs modul a diahost. exe. config és a diawp. exe. config fájlban konfigurált proxy-beállítást használja. Ha ezek a fájlok nem határoznak meg proxy-konfigurációt, a saját üzemeltetésű integrációs modul közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez.
-- **Egyéni proxy használata**: KONFIGURÁLJA a http-proxy beállítását a saját üzemeltetésű integrációs modulhoz a diahost. exe. config és a diawp. exe. config fájlban található konfigurációk használata helyett. A **címek** és a **portok** értékének megadása kötelező. A proxy hitelesítési beállításától függően a **Felhasználónév** és a **jelszó** értéke nem kötelező. Az összes beállítás titkosítása a Windows DPAPI a saját üzemeltetésű integrációs modulban és helyileg, a gépen történik.
+- A **System proxy használata**: a saját üzemeltetésű integrációs modul a diahost.exe.config és diawp.exe.config konfigurált proxybeállításokat használja. Ha ezek a fájlok nem határoznak meg proxy-konfigurációt, a saját üzemeltetésű integrációs modul közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez.
+- **Egyéni proxy használata**: KONFIGURÁLJA a http-proxy beállítását a saját üzemeltetésű integrációs modulhoz a diahost.exe.config és diawp.exe.config konfigurációk használata helyett. A **címek** és a **portok** értékének megadása kötelező. A proxy hitelesítési beállításától függően a **Felhasználónév** és a **jelszó** értéke nem kötelező. Az összes beállítás titkosítása a Windows DPAPI a saját üzemeltetésű integrációs modulban és helyileg, a gépen történik.
 
 Az Integration Runtime Host szolgáltatás automatikusan újraindul a frissített proxybeállítások mentése után.
 
@@ -373,11 +373,11 @@ A Configuration Manager eszköz használatával megtekintheti és frissítheti a
 
 ### <a name="configure-proxy-server-settings"></a>Proxykiszolgáló beállításainak konfigurálása
 
-Ha a **rendszerproxy használata** lehetőséget választja a http-proxyhoz, a saját üzemeltetésű integrációs modul a diahost. exe. config és a diawp. exe. config fájl proxybeállításait használja. Ha ezek a fájlok nem határoznak meg proxyt, a saját üzemeltetésű integrációs modul közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez. Az alábbi eljárás útmutatást nyújt a diahost. exe. config fájl frissítéséhez:
+Ha a **rendszerproxy használata** lehetőséget választja a http-proxyhoz, a saját üzemeltetésű integrációs modul a proxybeállításokat használja diahost.exe.config és diawp.exe.config. Ha ezek a fájlok nem határoznak meg proxyt, a saját üzemeltetésű integrációs modul közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez. Az alábbi eljárás útmutatást nyújt a diahost.exe.config fájl frissítéséhez:
 
 1. A Fájlkezelőben készítse el a C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config biztonságos másolatát az eredeti fájl biztonsági másolatából.
 1. Nyissa meg rendszergazdaként a Jegyzettömb alkalmazást.
-1. A Jegyzettömbben nyissa meg a C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config. szövegfájlt.
+1. A Jegyzettömbben nyissa meg a C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config szövegfájlt.
 1. Keresse meg az alapértelmezett **System.net** címkét az alábbi kódban látható módon:
 
     ```xml
@@ -407,7 +407,7 @@ Ha a **rendszerproxy használata** lehetőséget választja a http-proxyhoz, a s
    Ha a szolgáltatás nem indul el, valószínűleg helytelen XML-címkét ad hozzá a szerkesztett alkalmazás konfigurációs fájljában.
 
 > [!IMPORTANT]
-> Ne felejtse el frissíteni a diahost. exe. config és a diawp. exe. config fájlt is.
+> Ne felejtse el frissíteni a diahost.exe.config és diawp.exe.config is.
 
 Emellett meg kell győződnie arról, hogy Microsoft Azure a vállalat engedélyezési listájában van. Az érvényes Azure IP-címek listáját letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=41653).
 

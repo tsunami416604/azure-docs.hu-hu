@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan vehet fel állandó adatlemezt a linuxos virtu�
 author: roygara
 manager: twooley
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a80a1fe21ba0b40aebf9e426e3d49f499c2d2a21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb18207c15007820bf93254886ab38a43bc5b48f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250412"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658334"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan csatolhat állandó lemezt a virtuális géphez, így megőrizheti adatait – még akkor is, ha a virtuális gépet karbantartás vagy átméretezés miatt újra kiépítik.
@@ -50,7 +50,7 @@ Az új lemez particionálásához, formázásához és csatlakoztatásához, íg
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-A virtuális géphez való csatlakozás után készen áll a lemez csatlakoztatására. Először keresse meg a lemezt a `dmesg` használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a dmesg-et használja az *SCSI* -lemezek szűrésére:
+A virtuális géphez való csatlakozás után készen áll a lemez csatlakoztatására. Először keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a dmesg-et használja az *SCSI* -lemezek szűrésére:
 
 ```bash
 dmesg | grep SCSI
@@ -69,13 +69,13 @@ A kimenet a következő példához hasonló:
 > [!NOTE]
 > Azt javasoljuk, hogy használja az fdisk legújabb verzióit, illetve azokat, amelyek elérhetők a disztribúcióhoz.
 
-Itt a *SDC* a kívánt lemez. Particionálja a lemezt `parted`, ha a lemez mérete 2 Tebibájt (TiB) vagy nagyobb, akkor a GPT particionálást kell használnia, ha az 2TiB alatt van, akkor az MBR-vagy a GPT-particionálást is használhatja. Ha MBR-particionálást használ, használhatja a t `fdisk`. Legyen az 1. partíció elsődleges lemeze, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatot a */dev/SDC*:
+Itt a *SDC* a kívánt lemez. Particionálja a lemezt `parted` , ha a lemez mérete 2 tebibájt (TiB) vagy nagyobb, akkor a GPT particionálást kell használnia, ha az 2TiB alatt van, akkor az MBR-vagy a GPT-particionálást is használhatja. Ha MBR-particionálást használ, használhatja a t `fdisk` . Legyen az 1. partíció elsődleges lemeze, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatot a */dev/SDC*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Az `n` paranccsal adhat hozzá egy új partíciót. Ebben a példában az elsődleges partíciót is `p` választjuk, és elfogadjuk a többi alapértelmezett értéket. A kimenet az alábbi példához hasonló lesz:
+Az `n` paranccsal adhat hozzá egy új partíciót. Ebben a példában az elsődleges partíciót is választjuk, `p` és elfogadjuk a többi alapértelmezett értéket. A kimenet az alábbi példához hasonló lesz:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -97,7 +97,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-A partíciós tábla kinyomtatásához írja `p` be `w` a parancsot, majd írja be a táblát a lemezre, és lépjen ki. A kimenetnek az alábbi példához hasonlóan kell kinéznie:
+A partíciós tábla kinyomtatásához írja be a parancsot, `p` majd `w` írja be a táblát a lemezre, és lépjen ki. A kimenetnek az alábbi példához hasonlóan kell kinéznie:
 
 ```bash
 Command (m for help): p
@@ -154,13 +154,13 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Most hozzon létre egy könyvtárat a fájlrendszer csatlakoztatásához a `mkdir`használatával. A következő példa egy könyvtárat hoz létre a */datadrive*:
+Most hozzon létre egy könyvtárat a fájlrendszer csatlakoztatásához a használatával `mkdir` . A következő példa egy könyvtárat hoz létre a */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Ezzel `mount` a paranccsal csatlakoztathatja a fájlrendszert. Az alábbi példa a */dev/sdc1* partíciót csatlakoztatja a */datadrive* csatlakoztatási ponthoz:
+Ezzel a paranccsal `mount` csatlakoztathatja a fájlrendszert. Az alábbi példa a */dev/sdc1* partíciót csatlakoztatja a */datadrive* csatlakoztatási ponthoz:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
@@ -212,7 +212,7 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, `fstrim` hogy manuálisan futtatja a parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
+* Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, hogy manuálisan futtatja a `fstrim` parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
 
     **Ubuntu**
 
@@ -232,7 +232,7 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A linuxos virtuális gép megfelelő konfigurálásának biztosítása érdekében tekintse át a Linux rendszerű [gépek teljesítményével kapcsolatos javaslatok optimalizálását](optimization.md) ismertető oktatóanyagot.
 * Bővítse a tárolókapacitást további lemezek hozzáadásával és a [RAID konfigurálásával](configure-raid.md) a további teljesítmény érdekében.

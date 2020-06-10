@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 9b59f6e091143e5c10be393620e4cc042faac36a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 569b1fd964665e3efec87adebd5f9a76de01f381
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216377"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659650"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Az Azure SQL felügyelt példányának üzembe helyezése egy példány-készleten
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,11 +30,11 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 
 |Parancs|Azure Portal|PowerShell|
 |:---|:---|:---|
-|Példány-készlet létrehozása|Nem|Igen|
-|Példány készletének frissítése (korlátozott számú tulajdonság)|Nem |Igen |
-|Példány-készlet használatának és tulajdonságainak keresése|Nem|Igen |
-|Példány-készlet törlése|Nem|Igen|
-|Felügyelt példány létrehozása egy példány-készleten belül|Nem|Igen|
+|Példány-készlet létrehozása|Nem|Yes|
+|Példány készletének frissítése (korlátozott számú tulajdonság)|Nem |Yes |
+|Példány-készlet használatának és tulajdonságainak keresése|Nem|Yes |
+|Példány-készlet törlése|Nem|Yes|
+|Felügyelt példány létrehozása egy példány-készleten belül|Nem|Yes|
 |Felügyelt példány erőforrás-használatának frissítése|Igen |Igen|
 |Felügyelt példány használatának és tulajdonságainak keresése|Igen|Igen|
 |Felügyelt példány törlése a készletből|Igen|Igen|
@@ -54,7 +54,7 @@ Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/a
 
 A PowerShell használatához [telepítse a PowerShell Core legújabb verzióját](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell), és kövesse az utasításokat az [Azure PowerShell modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-A készleteken és az önálló példányokon belüli példányokkal kapcsolatos műveletekhez használja a szabványos [felügyelt példányok parancsait](api-references-create-manage-instance.md#powershell-create-and-manage-managed-instances), de a *példány neve* tulajdonságot fel kell tölteni, ha egy készlet egy példányához használja ezeket a parancsokat.
+A készleteken és az önálló példányokon belüli példányokkal kapcsolatos műveletekhez használja a szabványos [felügyelt példányok parancsait](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances), de a *példány neve* tulajdonságot fel kell tölteni, ha egy készlet egy példányához használja ezeket a parancsokat.
 
 ## <a name="deployment-process"></a>Üzembehelyezési folyamat
 
@@ -253,7 +253,7 @@ Meglévő adatbázisok áthelyezése:
 Ha több adatbázis van, ismételje meg a folyamatot az egyes adatbázisokhoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).
 - További információ a VNet konfigurálásáról: [SQL felügyelt példány VNet konfigurációja](connectivity-architecture-overview.md).

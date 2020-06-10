@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása Azure Advisor
 description: Az Advisor használatával optimalizálja az Azure-beli üzemelő példányok teljesítményét.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 230466c7c0e8de2681737bbf9d74341dea7f7b8f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d0b309fd35fa0a78685017e25eea0caf3f97da03
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196418"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658411"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure-alkalmazások teljesítményének javítása Azure Advisor
 
@@ -58,6 +58,11 @@ Az adatok eldöntése szükségtelen adatáthelyezést vagy erőforrás-szűk ke
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>A lekérdezési teljesítmény növeléséhez hozzon létre vagy frissítsen elavult tábla statisztikáit az SQL-adattárház táblában
 
 Az Advisor olyan táblákat azonosít, amelyek nem rendelkeznek naprakész [táblázat statisztikával](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) , és a tábla statisztikáinak létrehozását és frissítését javasolja. Az SQL-adattárház-lekérdezés-optimalizáló a lekérdezési eredményben a naprakész statika értékkel becsüli meg, hogy a lekérdezés-optimalizáló magas színvonalú lekérdezési tervet hozzon létre a leggyorsabb teljesítmény érdekében.
+
+## <a name="improve-mysql-connection-management"></a>A MySQL-kapcsolatkezelés fejlesztése
+
+Az Advisor Analysis segítségével azt jelezheti, hogy az alkalmazás, amely a MySQL-kiszolgálóhoz csatlakozik, nem lehet hatékonyan kezelni a kapcsolatokat. Ez felesleges erőforrás-használathoz és az alkalmazások magasabb átlagos késéséhez vezethet. A kapcsolatkezelés javítása érdekében javasoljuk, hogy csökkentse a rövid élettartamú kapcsolatok számát, valamint szüntesse meg a felesleges tétlen kapcsolatokat. Ezt egy kiszolgálóoldali kapcsolatkészletező (például a ProxySQL) konfigurálásával teheti meg.
+
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Vertikális felskálázás a gyorsítótár kihasználtságának optimalizálásához a SQL Data Warehouse táblákon a lekérdezési teljesítmény növeléséhez
 
@@ -135,13 +140,13 @@ A Azure Advisor azonosítja Azure Cosmos DB tárolókat, amelyek a 100-es lekér
 
 2.  Az Advisor Irányítópultján kattintson a **teljesítmény** fülre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 
 * [Az Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
+* [Az Advisor költségekkel kapcsolatos javaslatai](advisor-cost-recommendations.md)
 * [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 * [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)

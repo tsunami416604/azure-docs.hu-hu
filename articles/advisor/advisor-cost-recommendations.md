@@ -3,12 +3,12 @@ title: A szolgáltatási költségek csökkentése Azure Advisor használatával
 description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 13e7b1d7c6b0fe342020c40e1bb4abeba97d18bb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 99dfec669d8981a557b2e8a8d8979292af74616f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788093"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658561"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -21,6 +21,9 @@ Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredmény
 Az ajánlott műveletek leállnak, és a rendszer a számára ajánlott erőforrásra vonatkozik. Az Advisor a javasolt műveletek becsült költségmegtakarítását jeleníti meg – átméretezheti vagy leállíthatja. Emellett a javasolt művelet átméretezéséhez az Advisor az aktuális és a célként megadott SKU-információkat is biztosítja. 
 
 Ha agresszíven szeretne lenni a kihasználatlan virtuális gépek azonosításához, a CPU-kihasználtsági szabályt előfizetések alapján is módosíthatja.
+
+## <a name="optimize-spend-for-mariadb-mysql-and-postgresql-servers-by-right-sizing"></a>A MariaDB, a MySQL és a PostgreSQL-kiszolgálók esetében a megfelelő méretezéssel optimalizálható a kiadások 
+Az Advisor elemzi a használatot, és azt javasolja, hogy a MariaDB/MySQL/PostgreSQL adatbázis-kiszolgáló erőforrásainak kihasználása az elmúlt 7 napban hosszabb ideig megtörténjen. Az alacsony erőforrás-használat nem kívánt kiadásokat eredményez, amelyek elkerülhetők úgy, hogy az ne befolyásolja jelentősen a teljesítményt. A költségek csökkentése és az erőforrások hatékony kezelése érdekében javasoljuk, hogy csökkentse a felére a számítási méretet (a virtuális magok számát).
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>A költségek csökkentése a nem kiépített ExpressRoute-áramkörök eltávolításával
 
@@ -36,6 +39,27 @@ Az Advisor áttekinti a virtuális gépek használatát az elmúlt 30 napban, é
 
 Az Advisor emellett értesíti Önt a fenntartott példányokról, amelyek a következő 30 napban lejárnak. Javasoljuk, hogy az utólagos elszámolású díjszabás kifizetésének elkerüléséhez új fenntartott példányokat vásároljon.
 
+## <a name="buy-reserved-instances-for-several-resource-types-to-save-over-your-pay-as-you-go-costs"></a>Fenntartott példányok vásárlása több erőforrástípus számára az utólagos elszámolású költségek megtakarítása érdekében
+
+Elemezzük a használati mintát az alábbi erőforrások listáján, az elmúlt 30 napban, és a fenntartott kapacitás megvásárlását ajánljuk, amely maximalizálja a megtakarítást. 
+### <a name="cosmos-db-reserved-capacity"></a>Fenntartott Cosmos DB-kapacitás
+Az Ön elmúlt 30 napos Cosmos DB-használati mintájának elemzése alapján fenntartott kapacitások vásárlását ajánljuk Önnek a lehető legnagyobb megtakarítás érdekében. Fenntartott kapacitással előre vásárolhat óránkénti használati jogot a Cosmos DB-adatbázishoz, így a használatalapú fizetést elkerülve pénzt takaríthat meg. A fenntartott kapacitás egy számlázási kedvezmény, amely az új vagy meglévő üzemelő példányokra automatikusan vonatkozik. A megtakarításra vonatkozó becsléseinket 3 éves fenntartott kapacitási díjszabással, az elmúlt 30 napban megfigyelt használati minta kiterjesztésével számítjuk ki, és egyéni előfizetésekre vonatkoznak. A fenntartott kapacitás megvásárlásával elérhetők megosztott hatókörre vonatkozó javaslatok, amelyek további megtakarítást tesznek lehetővé.
+
+### <a name="sql-paas-reserved-capacity"></a>SQL Péter lefoglalt kapacitása
+Az SQL PaaS rugalmas készletek és a felügyelt példányok elmúlt 30 napban megfigyelt használati mintájának elemzése alapján fenntartott kapacitások vásárlását ajánljuk Önnek a lehető legnagyobb megtakarítás érdekében. Fenntartott kapacitással előre vásárolhat óránkénti használati jogot az SQL DB-adatbázishoz, így megtakaríthatja az SQL-számítási költségeket. Az SQL-licenc számlázása külön történik, így a fenntartott kapacitás vásárlásához nem jár kedvezményes licenc. A fenntartott kapacitás egy számlázási kedvezmény, amely az új vagy meglévő üzemelő példányokra automatikusan vonatkozik. A megtakarításra vonatkozó becsléseinket 3 éves fenntartott kapacitási díjszabással, az elmúlt 30 napban megfigyelt használati minta kiterjesztésével számítjuk ki, és egyéni előfizetésekre vonatkoznak. A fenntartott kapacitás megvásárlásával elérhetők megosztott hatókörre vonatkozó javaslatok, amelyek további megtakarítást tesznek lehetővé.
+
+### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service-bélyegző díja fenntartott kapacitása
+Elemezzük a App Service izolált környezet pecsétjét az elmúlt 30 nap során, és javaslatot tesz a fenntartott kapacitás megvásárlására, amely maximalizálja a megtakarítást. Fenntartott kapacitással előre vásárolhat óránkénti használati jogot az izolált környezeti bélyegdíjhoz, így a használatalapú fizetést elkerülve pénzt takaríthat meg. Vegye figyelembe, hogy a fenntartott kapacitás csak a bélyegdíjra vonatkozik, az App Service-példányokra nem. A fenntartott kapacitás egy számlázási kedvezmény, amely az új vagy meglévő üzemelő példányokra automatikusan vonatkozik. A megtakarításra vonatkozó becsléseinket 3 éves fenntartott kapacitási díjszabással, az elmúlt 30 nap használati mintája alapján számítjuk ki, és egyéni előfizetésekre vonatkoznak.
+
+### <a name="blob-storage-reserved-capacity"></a>BLOB Storage fenntartott kapacitása
+Az Ön elmúlt 30 napos Azure Blob és Data Lake Storage-használata alapján kiszámoltuk, hogy fenntartott kapacitások vásárlásával érhetné el a lehető legnagyobb megtakarítást. Fenntartott kapacitással előre vásárolhat óránkénti használati jogot, így pénzt takaríthat meg a jelenlegi, igény szerinti használathoz képest. A fenntartott Blob Storage-kapacitás csak az Azure Blobban (GPv2) és az Azure Data Lake Storage-ban (2. generáció) tárolt adatokra vonatkozik. A fenntartott kapacitás egy számlázási kedvezmény, amely az új vagy meglévő üzemelő példányokra automatikusan vonatkozik. A megtakarításra vonatkozó becsléseinket 3 éves fenntartott kapacitási díjszabással, az elmúlt 30 napban megfigyelt használati minta alapján számítjuk ki, és egyéni előfizetésekre vonatkoznak. A fenntartott kapacitás megvásárlásával elérhetők megosztott hatókörre vonatkozó javaslatok, amelyek további megtakarítást tesznek lehetővé.
+
+### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>A MariaDB, a MySQL és a PostgreSQL fenntartott kapacitása
+Elemezzük a Azure Database for MariaDB, a MySQL és a PostgreSQL használati mintáját az elmúlt 30 napban, és javaslatot tesz a fenntartott kapacitás megvásárlására, amely maximalizálja a megtakarítást. A fenntartott kapacitással előre megvásárolhatja a MariaDB, a MySQL és a PostgreSQL óradíjas használatát, és megtakaríthatja a költségeket. A fenntartott kapacitás egy számlázási kedvezmény, amely az új vagy meglévő üzemelő példányokra automatikusan vonatkozik. A megtakarításra vonatkozó becsléseinket 3 éves fenntartott kapacitási díjszabással, az elmúlt 30 nap használati mintája alapján számítjuk ki, és egyéni előfizetésekre vonatkoznak. A fenntartott kapacitás megvásárlásával elérhetők megosztott hatókörre vonatkozó javaslatok, amelyek további megtakarítást tesznek lehetővé.
+
+### <a name="synapse-analytics-formerly-sql-dw-reserved-capacity"></a>A szinapszis Analytics (korábban SQL DW) fenntartott kapacitása
+Az elmúlt 30 napban elemezzük az Azure szinapszis Analytics használati mintáját, és javaslatot teszünk a fenntartott kapacitás megvásárlására, amely maximalizálja a megtakarítást. Fenntartott kapacitással előre vásárolhat óránkénti használati jogot a Synapse Analyticshez, hogy pénzt takarítson meg az igény szerinti használathoz képest. A fenntartott kapacitás egy számlázási kedvezmény, amely az új vagy meglévő üzemelő példányokra automatikusan vonatkozik. A megtakarításra vonatkozó becsléseinket 3 éves fenntartott kapacitási díjszabással, az elmúlt 30 napban megfigyelt használati minta alapján számítjuk ki, és egyéni előfizetésekre vonatkoznak. A fenntartott kapacitás megvásárlásával elérhetők megosztott hatókörre vonatkozó javaslatok, amelyek további megtakarítást tesznek lehetővé.
+
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>A nem társított nyilvános IP-címek törlése a pénz megtakarítása érdekében
 
 Az Advisor olyan nyilvános IP-címeket azonosít, amelyek jelenleg nem tartoznak Azure-erőforrásokhoz, például Terheléselosztóokhoz vagy virtuális gépekhez. Ezek a nyilvános IP-címek névleges díjat számítanak fel. Ha nem tervezi használni őket, a törlésük költségmegtakarítást eredményezhet.
@@ -50,8 +74,9 @@ A 60%-os megtakarítás érdekében javasoljuk, hogy a pillanatképeket a Standa
 ## <a name="utilize-lifecycle-management"></a>Életciklus-felügyelet használata
 A Azure Advisor az Azure Blob Storage-objektumok számával, a teljes mérettel és a tranzakciókkal kapcsolatos intelligenciát fogja használni annak észleléséhez, hogy egy vagy több Storage-fiók a legjobb megoldás-e az életciklus-felügyelethez a rétegek adatai számára. Arra fogja kérni, hogy életciklus-kezelési szabályokat hozzon létre, hogy a tárolási költségek optimalizálása érdekében automatikusan leszűkítse az adatait az Azure Blob Storage szolgáltatásban az alkalmazások kompatibilitása érdekében.
 
-## <a name="create-an-ephemeral-os-disk-recommendation"></a>Ideiglenes operációsrendszer-lemezre vonatkozó javaslat létrehozása
-Az [elmúló operációsrendszer-lemezzel](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)az ügyfelek megkapják a következő előnyöket: az operációsrendszer-lemez tárolási díjainak mentése. Csökkentse az írási/olvasási késleltetést az operációsrendszer-lemezre. A virtuális gép rendszerképének gyorsabb működése az operációs rendszer (és az ideiglenes lemez) eredeti állapotába való alaphelyzetbe állításával. A rövid élettartamú IaaS-alapú virtuális gépekhez és az állapot nélküli számítási feladatokhoz tartozó virtuális gépekhez inkább ideiglenes operációsrendszer-lemezeket kell használni. Az Advisor olyan erőforrásokra vonatkozó javaslatot tartalmaz, amelyek az elmúló operációsrendszer-lemezzel kapcsolatos előnyöket is igénybe vehetnek. 
+## <a name="create-an-ephemeral-os-disk-recommendation"></a>Javasolt a rövid élettartamú operációsrendszer-lemezek létrehozása
+Az [elmúló operációsrendszer-lemezzel](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)az ügyfelek megkapják a következő előnyöket: az operációsrendszer-lemez tárolási díjainak mentése. Az operációsrendszer-lemez írási/olvasási késésének csökkentése. Az operációs rendszer (és az ideiglenes lemez) eredeti állapotába történő visszaállításával gyorsabb a virtuális gépek rendszerképének alaphelyzetbe állítása. A rövid élettartamú IaaS-alapú virtuális gépekhez és az állapot nélküli számítási feladatokhoz tartozó virtuális gépekhez inkább érdemes elmúló operációsrendszer-lemezt használni. Az Advisor olyan erőforrásokra vonatkozó javaslatot tartalmaz, amelyek az elmúló operációsrendszer-lemezzel kapcsolatos előnyöket is igénybe vehetnek. 
+
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>A Cost javaslatokhoz való hozzáférés Azure Advisor
 
@@ -61,12 +86,13 @@ Az [elmúló operációsrendszer-lemezzel](https://docs.microsoft.com/azure/virt
 
 1. Az **Advisor** irányítópulton válassza a **Cost (Cost** ) lapot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)
-* [Első lépések](advisor-get-started.md)
+* [Bevezetés az Advisor használatába](advisor-get-started.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 * [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)
+

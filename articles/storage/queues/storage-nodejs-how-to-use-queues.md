@@ -1,6 +1,6 @@
 ---
-title: Az Azure üzenetsor-tároló használata a Node. js-ben – Azure Storage
-description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az Azure Queue szolgáltatás használatával, valamint hogyan szúrhat be, kérhet le és törölhet üzeneteket. Node. js-ben írt minták.
+title: Az Azure üzenetsor-tároló használata a Node.js-Azure Storage-ból
+description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az Azure Queue szolgáltatás használatával, valamint hogyan szúrhat be, kérhet le és törölhet üzeneteket. Node.jsban írt minták.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/08/2016
@@ -9,30 +9,33 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: c7b5e679fa47437e7019884317d0ab14792055f3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 878c4a5028b114ad10d19c03c0239c9d7a8bc6ce
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465422"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659567"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Várólisták létrehozása és törlése az Azure Queue Service-ben a Node. js használatával
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Várólisták létrehozása és törlése az Azure Queue Service használatával Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket a Microsoft Azure Queue szolgáltatás használatával. A mintákat a Node. js API-val kell írni. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása**és **törlése** , valamint a **várólisták létrehozása és törlése**.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket a Microsoft Azure Queue szolgáltatás használatával. A minták a Node.js API használatával íródnak. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása**és **törlése** , valamint a **várólisták létrehozása és törlése**.
+
+> [!IMPORTANT]
+> Ez a cikk a JavaScripthez készült Azure Storage ügyféloldali kódtár örökölt verziójára vonatkozik. A legújabb verzió használatának megkezdéséhez tekintse meg a következőt: gyors útmutató [: Azure üzenetsor Storage ügyféloldali kódtár a javascripthez](storage-quickstart-queues-nodejs.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-nodejs-application"></a>Node. js-alkalmazás létrehozása
-Hozzon létre egy üres Node. js-alkalmazást. A Node. js-alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Node. js-Webalkalmazás létrehozása Azure app Serviceban](../../app-service/app-service-web-get-started-nodejs.md), a [Node. js-alkalmazások kiépítése és üzembe helyezése egy Azure Cloud Service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) -ben a Windows PowerShell vagy a [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)használatával.
+## <a name="create-a-nodejs-application"></a>Node.js-alkalmazás létrehozása
+Hozzon létre egy üres Node.js alkalmazást. Node.js alkalmazás létrehozásával kapcsolatos utasításokért lásd: [Node.js-Webalkalmazás létrehozása a Azure app Service-ban](../../app-service/app-service-web-get-started-nodejs.md), [Node.js alkalmazás létrehozása és üzembe helyezése Azure Cloud Service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) -ben Windows PowerShell vagy [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)használatával.
 
 ## <a name="configure-your-application-to-access-storage"></a>Az alkalmazás konfigurálása a tároló elérésére
-Az Azure Storage használatához szüksége lesz a Node. js-hez készült Azure Storage SDK-ra, amely a tárolási REST-szolgáltatásokkal kommunikáló kényelmi könyvtárak készletét tartalmazza.
+Az Azure Storage használatához szüksége lesz a Node.js Azure Storage SDK-ra, amely a tárolási REST-szolgáltatásokkal kommunikáló kényelmi könyvtárakat tartalmaz.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>A csomag beszerzéséhez használja a Node Package Managert (NPM)
 1. Használjon parancssori felületet (például **PowerShell** -(Windows-) **terminál** (Mac) vagy **bash** (UNIX), Navigáljon arra a mappára, ahol létrehozta a minta alkalmazást.
@@ -54,7 +57,7 @@ Az Azure Storage használatához szüksége lesz a Node. js-hez készült Azure 
 3. Az **ls** parancs manuális futtatásával ellenőrizheti, hogy létrejött-e a **csomópont- \_ modulok** mappája. A mappában található az **azure-storage** csomag, amely a tárhely eléréséhez szükséges kódtárakat tartalmazza.
 
 ### <a name="import-the-package"></a>A csomag importálása
-A Jegyzettömb vagy egy másik szövegszerkesztő használatával adja hozzá a következőt annak az alkalmazásnak a **Server. js** fájljához, ahol a Storage-t használni szeretné:
+A Jegyzettömb vagy egy másik szövegszerkesztő használatával adja hozzá a következőt annak az alkalmazásnak a legfelső **server.js** fájljához, amelyen a Storage-t használni szeretné:
 
 ```javascript
 var azure = require('azure-storage');

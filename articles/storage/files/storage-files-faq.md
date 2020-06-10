@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ac9d9fddc45abbcbe4890d1060dcc2c931c72182
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3724392cc50e910c5caf4a3f6cba85070a6d107f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265165"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661098"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -24,7 +24,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. Microsoft ügyfélszolgálata. Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem**lehetőséget.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 * <a id="why-files-useful"></a>
   **Hogyan hasznos a Azure Files?**  
    A Azure Files használatával hozhat létre fájlmegosztást a felhőben anélkül, hogy a felelős a fizikai kiszolgáló, eszköz vagy berendezés terhelésének kezeléséért. Az Ön számára monoton munkát végezünk, beleértve az operációs rendszer frissítéseinek alkalmazását és a hibás lemezek cseréjét. Ha többet szeretne megtudni azokról a forgatókönyvekről, amelyeket a Azure Files segíthetnek, tekintse meg a [miért Azure Files hasznos](storage-files-introduction.md#why-azure-files-is-useful).
@@ -109,7 +109,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
    
     \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
-    A CompanyReport. docx első ütközése például CompanyReport-CentralServer. docx lesz, ha a CentralServer a régebbi írás történt. A második ütközés neve CompanyReport-CentralServer-1. docx lesz. A Azure File Sync fájlon keresztül támogatja az 100-es ütközési fájlokat. Ha elérte az ütköző fájlok maximális számát, a fájl szinkronizálása sikertelen lesz, amíg az ütköző fájlok száma nem haladja meg a 100-ot.
+    Például az első ütközés a CompanyReport.docx CompanyReport-CentralServer.docx, ha a CentralServer, ahol a régebbi írás történt. A második ütközés neve CompanyReport-CentralServer-1.docx. A Azure File Sync fájlon keresztül támogatja az 100-es ütközési fájlokat. Ha elérte az ütköző fájlok maximális számát, a fájl szinkronizálása sikertelen lesz, amíg az ütköző fájlok száma nem haladja meg a 100-ot.
 
 * <a id="afs-storage-redundancy"></a>
   **A Geo-redundáns tárolás Azure File Sync támogatott?**  
@@ -160,7 +160,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 * <a id="afs-ntfs-acls"></a>
   **A Azure File Sync a könyvtár/fájl szintű NTFS ACL-ek és a Azure Files tárolt adathozzáférések megőrzése mellett?**
 
-    Február 24-én a 2020-es verzióban az Azure file Sync által létrehozott új és meglévő ACL-ek NTFS-formátumban lesznek tárolva, és az Azure-fájlmegosztás felé irányuló ACL-módosítások szinkronizálása a szinkronizálási csoport összes kiszolgálójára történik. A Azure Files hozzáférés-vezérlési listáin végrehajtott módosítások az Azure file Sync használatával lesznek szinkronizálva. Az adatok Azure Filesba való másolása során az SMB használatával férhet hozzá a megosztáshoz, és megőrizheti a hozzáférés-vezérlési listákat. A meglévő REST-alapú eszközök, például a AzCopy vagy a Storage Explorer nem őrzik meg az ACL-eket.
+    Február 24-én a 2020-es verzióban az Azure file Sync által létrehozott új és meglévő ACL-ek NTFS-formátumban lesznek tárolva, és az Azure-fájlmegosztás felé irányuló ACL-módosítások szinkronizálása a szinkronizálási csoport összes kiszolgálójára történik. A Azure Files hozzáférés-vezérlési listáin végrehajtott módosítások az Azure file Sync használatával lesznek szinkronizálva. Az adatok Azure Filesba másolásakor győződjön meg arról, hogy olyan másolási eszközt használ, amely támogatja a szükséges "hűséget" ahhoz, hogy az attribútumokat, az időbélyegeket és az ACL-eket egy Azure-fájlmegosztásba másolja – SMB vagy REST használatával. Az Azure Copy-eszközök, például a AzCopy használata esetén fontos, hogy a legújabb verziót használja. Tekintse át a fájlmásolás- [eszközök táblázatát](storage-files-migration-overview.md#file-copy-tools) , és tekintse át az Azure Copy Tools eszközt, és győződjön meg arról, hogy a fájl összes fontos metaadatát át tudja másolni.
 
     Ha engedélyezte a Azure Backup a file Sync Managed file shares szolgáltatásban, a fájl ACL-ek továbbra is visszaállíthatók a biztonsági mentés visszaállítási munkafolyamatának részeként. Ez a teljes megosztásra vagy egyedi fájlokra/könyvtárakra is használható.
 

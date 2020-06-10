@@ -3,12 +3,12 @@ title: Az Azure-előfizetések működési Uram javítása Azure Advisor
 description: Az Advisor használatával optimalizálhatja és kihasználhatja az Azure-előfizetések működési kiválóságát
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 4133fbe40c0fc1bdaf9c3f734bc19f94437c9acb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 861b12c2267ffa89985ff11357de92da5a4ac870
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187416"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658455"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Az operatív kiválóság elérése Azure Advisor
 
@@ -18,6 +18,7 @@ Azure Advisor működési kiválósági javaslatok segítenek az ügyfeleknek a 
 
 Javasoljuk, hogy Azure Service Health riasztások beállításával értesítést kapjon, ha az Azure-szolgáltatással kapcsolatos problémák érintik Önt. A [Azure Service Health](https://azure.microsoft.com/features/service-health/) egy ingyenes szolgáltatás, amely személyre szabott útmutatást és támogatást nyújt, ha egy Azure-szolgáltatással kapcsolatos probléma jelentkezik. Az Advisor olyan előfizetéseket azonosít, amelyek nincsenek konfigurálva riasztások, és azt javasolja, hogy hozzon létre egyet.
 
+
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Tervezze meg a Storage-fiókokat, hogy megakadályozza a maximális előfizetési korlátot
 
 Egy Azure-régió legfeljebb 250 Storage-fiókot tud támogatni előfizetésre. Ha elérte a korlátot, nem fog tudni további Storage-fiókokat létrehozni az adott régióban/előfizetések kombinációjában. Az Advisor megkeresi az előfizetéseket és a felületre vonatkozó javaslatokat, hogy kevesebb Storage-fiókot tervezzen meg, amelyek közel állnak a maximális korlát eléréséhez.
@@ -25,6 +26,10 @@ Egy Azure-régió legfeljebb 250 Storage-fiókot tud támogatni előfizetésre. 
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ellenőrizze, hogy van-e hozzáférése az Azure Cloud experthez, amikor szüksége van rá
 
 Üzleti szempontból kritikus fontosságú számítási feladatok futtatásakor fontos, hogy szükség esetén hozzáférhessen a technikai támogatáshoz. Az Advisor olyan potenciális üzleti szempontból kritikus előfizetéseket azonosít, amelyek nem rendelkeznek technikai támogatással a támogatási csomagban, és javaslatot tesz arra, hogy a technikai támogatást tartalmazó lehetőségre frissítsen.
+
+## <a name="delete-and-recreate-your-pool-to-remove-a-deprecated-internal-component"></a>Törölje, majd hozza létre újra a készletet az elavult belső összetevők eltávolításához
+
+A készlet elavult belső összetevőt használ. A nagyobb stabilitás és a jobb teljesítmény érdekében törölje, majd hozza létre újra a készletet.
 
 ## <a name="repair-invalid-log-alert-rules"></a>Érvénytelen naplózási riasztási szabályok javítása
 
@@ -39,7 +44,7 @@ Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályz
 4. „Felügyelt lemezeket nem használó virtuális gépek naplózása” szabályzat kényszerítése az Azure Policyval
 5. A "tag öröklése az erőforráscsoportok közül" a Azure Policy használatával: a házirend hozzáadja vagy lecseréli a megadott címkét és értéket a szülő erőforráscsoporthoz bármely erőforrás létrehozásakor vagy frissítésekor. A meglévő erőforrások egy javítási feladat indításával javíthatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)

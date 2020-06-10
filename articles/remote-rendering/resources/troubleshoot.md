@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4fccf7b786de91c8bcce0b2073e0519ef6c1f2ab
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 0aa09ffe5b5dd9dd0f49204495ecdd7179a0f36f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424394"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660026"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -145,6 +145,12 @@ Ennek a határolókeretnak két problémája lehet, amely láthatatlan geometri�
 Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, hogy elvégezze a képkockák összeállítását a videóval, és hogy elvégezze az újravetítést. Ha szeretné ellenőrizni, hogy ezek a hookok léteznek-e, nyissa meg a menüt *:::no-loc text="Window > Analysis > Frame debugger":::* . Engedélyezze, és győződjön meg arról, hogy a folyamat két bejegyzéssel rendelkezik `HolographicRemotingCallbackPass` :
 
 ![Unity frame Debugger](./media/troubleshoot-unity-pipeline.png)
+
+## <a name="the-rendered-image-in-unity-is-upside-down"></a>A megjelenített rendszerkép (Unity)
+
+Ügyeljen arra, hogy pontosan kövesse a [projekt telepítési útmutatóját](../tutorials/unity/project-setup.md) . A lefelé irányuló kép azt jelzi, hogy az egységnek a képernyőn kívüli megjelenítési cél létrehozásához kell tartoznia. Ez a viselkedés jelenleg nem támogatott, és óriási teljesítménybeli hatást eredményez a 2. HoloLens.
+
+A probléma oka a MSAA, a HDR vagy a post Processing engedélyezése lehet. Győződjön meg arról, hogy az alacsony színvonalú profil van kiválasztva, és alapértelmezettként van beállítva az egységben. Ehhez lépjen a *> projekt beállításainak szerkesztése... > minőség*gombra.
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>A távoli renderelési API-t használó Unity kód nem fordítható le
 

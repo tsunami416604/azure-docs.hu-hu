@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: a8201b1c8443bd99ec9045fdc4b074a4f3eec4f2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1d9289b6304a9c9e93afeddd98b3a229dae91797
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553082"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660584"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -21,7 +21,7 @@ A Pythonban futó önálló függvények esetében tekintse meg a [Python függv
 
 A Azure Functions egy olyan állapot nélküli metódust vár a Python-parancsfájlban, amely feldolgozza a bemenetet, és kimenetet hoz létre. Alapértelmezés szerint a futtatókörnyezet azt várja, hogy a metódus a fájlban megadott globális metódusként legyen implementálva `main()` `__init__.py` . [Alternatív belépési pontot is megadhat](#alternate-entry-point).
 
-Az eseményindítók és kötések adatai a Function `name` *. JSON* fájlban megadott tulajdonság használatával a metódus attribútumain keresztül vannak kötve. Az alábbi _function. JSON_ például a következő nevű HTTP-kérelem által aktivált egyszerű függvényt írja le `req` :
+Az eseményindítók és kötések adatai a metódus attribútumain keresztül a függvényhez vannak kötve a `name` *function.js* fájlban megadott tulajdonság használatával. Az alábbi _function.js_ például egy, a nevű HTTP-kérelem által aktivált egyszerű függvényt ismertet `req` :
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
@@ -48,7 +48,7 @@ Használja az [Azure. functions. *](/python/api/azure-functions/azure.functions?
 
 ## <a name="alternate-entry-point"></a>Másodlagos belépési pont
 
-A függvények alapértelmezett viselkedését megváltoztathatja, ha a `scriptFile` `entryPoint` *function. JSON* fájlban a és a tulajdonságokat is megadja. Az alábbi _function. JSON_ például arra utasítja a futtatókörnyezetet, hogy az `customentry()` _Main.py_ -fájlban lévő metódust használja az Azure-függvény belépési pontjaként.
+A függvények alapértelmezett viselkedését megváltoztathatja, ha a és a tulajdonságokat is `scriptFile` Megadja `entryPoint` a *function.js* fájljában. Az alábbi _function.js_ például azt jelzi, hogy a futtatókörnyezet a `customentry()` metódust használja a _Main.py_ fájlban, az Azure-függvény belépési pontja.
 
 ```json
 {
@@ -83,14 +83,14 @@ A Python functions projekt javasolt mappastruktúrát a következő példához h
 ```
 A fő projekt mappája ( \_ \_ alkalmazás \_ \_ ) a következő fájlokat tartalmazza:
 
-* *Local. Settings. JSON*: az Alkalmazásbeállítások és a kapcsolódási karakterláncok helyi futtatásakor való tárolásához használatos. Ez a fájl nem jelenik meg az Azure-ban. További információ: [Local. Settings. file](functions-run-local.md#local-settings-file).
-* *követelmények. txt*: az Azure-ba való közzétételkor a rendszer által telepített csomagok listáját tartalmazza.
-* a *Host. JSON*: olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [Host. JSON](functions-host-json.md).
+* *local.settings.json*: az Alkalmazásbeállítások és a kapcsolódási karakterláncok helyi futtatásakor való tárolásához használatos. Ez a fájl nem jelenik meg az Azure-ban. További információ: [Local. Settings. file](functions-run-local.md#local-settings-file).
+* *requirements.txt*: azon csomagok listáját tartalmazza, amelyeket a rendszeren az Azure-ba való közzétételkor telepít.
+* *host.json*: olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [host.json](functions-host-json.md).
 * *. funcignore*: (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban.
-* *. gitignore*: (nem kötelező) a git-tárházból kizárt fájlokat deklarálja, például a local. Settings. JSON fájlt.
+* *. gitignore*: (opcionális) deklarálja a git-tárházból kizárt fájlokat, például a local.settings.js.
 * *Docker*: (nem kötelező) a projekt [Egyéni tárolóban](functions-create-function-linux-custom-image.md)történő közzétételekor használatos.
 
-Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function. JSON).
+Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function.js).
 
 Ha a projektet egy Azure-beli Function alkalmazásba helyezi üzembe, a fő projekt (* \_ \_ alkalmazás \_ \_ *) mappájának teljes tartalmát bele kell foglalni a csomagba, de nem maga a mappa. Javasoljuk, hogy a teszteket a Project mappától eltérő mappában tartsa karban, ebben a példában `tests` . Így a tesztelési kód üzembe helyezése az alkalmazással megtartható. További információ: [Unit Testing (egység tesztelése](#unit-testing)).
 
@@ -391,7 +391,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f'My app setting value:{my_app_setting_value}')
 ```
 
-Helyi fejlesztés esetén az Alkalmazásbeállítások a [Local. Settings. JSON fájlban maradnak](functions-run-local.md#local-settings-file).
+Helyi fejlesztés esetén az Alkalmazásbeállítások a [fájl local.settings.jsmaradnak](functions-run-local.md#local-settings-file).
 
 ## <a name="python-version"></a>Python-verzió
 
@@ -424,14 +424,14 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Közzététel az Azure-ban
 
-Ha készen áll a közzétételre, győződjön meg arról, hogy az összes nyilvánosan elérhető függőség szerepel a Project könyvtárának gyökérkönyvtárában található követelmények. txt fájlban.
+Ha készen áll a közzétételre, győződjön meg arról, hogy az összes nyilvánosan elérhető függőség megjelenik a requirements.txt fájlban, amely a projekt könyvtára gyökérkönyvtárában található.
 
 A közzétételből kizárt projektfájlok és mappák, beleértve a virtuális környezet mappáját is, a. funcignore fájlban vannak felsorolva.
 
 A Python-projekt az Azure-ba való közzétételéhez három Build művelet támogatott:
 
-+ Távoli Build: a függőségek a követelmények. txt fájl tartalmától függően távolról szerezhetők be. A [távoli Build](functions-deployment-technologies.md#remote-build) a javasolt Build módszer. A távoli az Azure-eszközök alapértelmezett Build-beállítása is.
-+ Helyi Build: a függőségek a követelmények. txt fájl tartalmától függően helyileg szerezhetők be.
++ Távoli Build: a függőségek a requirements.txt fájl tartalma alapján érhetők el. A [távoli Build](functions-deployment-technologies.md#remote-build) a javasolt Build módszer. A távoli az Azure-eszközök alapértelmezett Build-beállítása is.
++ Helyi Build: a függőségek a requirements.txt fájl tartalmától függően helyi szinten szerezhetők be.
 + Egyéni függőségek: a projekt nem nyilvánosan elérhető csomagokat használ az eszközeink számára. (A Docker szükséges.)
 
 A függőségek létrehozásához és a folyamatos kézbesítés (CD) rendszer használatával történő közzétételhez [használja az Azure-folyamatokat](functions-how-to-azure-devops.md).
@@ -458,7 +458,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 Ne felejtse el lecserélni a `<APP_NAME>` Function alkalmazás nevét az Azure-ban.
 
-A beállítás használatával a `--build local` Project függőségei a követelmények. txt fájlból származnak, és ezek a függő csomagok letöltése és telepítése helyileg történik. A Project Files és a függőségek a helyi számítógépről az Azure-ba vannak telepítve. Ennek eredményeképpen egy nagyobb üzembehelyezési csomag tölthető fel az Azure-ba. Ha valamilyen okból kifolyólag, a követelmények. txt fájlhoz tartozó függőségek nem szerezhetők meg a Core Tools által, az egyéni függőségek lehetőséget kell használni a közzétételhez.
+A beállítás használatával a rendszer `--build local` a requirements.txt fájlból olvassa be a projektek függőségeit, és a függő csomagokat a rendszer helyileg tölti le és telepíti. A Project Files és a függőségek a helyi számítógépről az Azure-ba vannak telepítve. Ennek eredményeképpen egy nagyobb üzembehelyezési csomag tölthető fel az Azure-ba. Ha valamilyen okból kifolyólag a requirements.txt fájlban lévő függőségek nem szerezhetők meg a Core Tools használatával, az egyéni függőségek lehetőséget kell használni a közzétételhez.
 
 ### <a name="custom-dependencies"></a>Egyéni függőségek
 
@@ -630,6 +630,44 @@ from os import listdir
 
 Javasoljuk, hogy a teszteket egy, a Project mappától eltérő mappában tartsa karban. Így a tesztelési kód üzembe helyezése az alkalmazással megtartható.
 
+## <a name="preinstalled-libraries"></a>Előre telepített kódtárak
+
+Van néhány könyvtár a Python functions futtatókörnyezettel.
+
+### <a name="python-standard-library"></a>Python standard könyvtár
+
+A Python standard Library tartalmazza a beépített Python-modulok listáját, amelyeket az egyes Python-disztribúciók szállítanak. A legtöbb ilyen függvénytár segítséget nyújt a rendszerfunkciók elérésében, például a fájl I/O-ban. Windows rendszereken ezek a kódtárak telepítve vannak a Python-val. A UNIX-alapú rendszereken a csomagokat a csomagok gyűjteményei adják meg.
+
+A könyvtárak listájának részletes ismertetését az alábbi hivatkozásokon tekintheti meg:
+
+* [Python 3,6 standard könyvtár](https://docs.python.org/3.6/library/)
+* [Python 3,7 standard könyvtár](https://docs.python.org/3.7/library/)
+* [Python 3,8 standard könyvtár](https://docs.python.org/3.8/library/)
+
+### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python Worker függőségei
+
+A Python-feldolgozó függvények a kódtárak egy adott készletét igénylik. Ezeket a kódtárakat a függvények is használhatják, de nem a Python standard részét képezik. Ha a függvények bármelyik könyvtárra támaszkodnak, előfordulhat, hogy nem lesznek elérhetők a kódban, ha Azure Functionson kívül futnak. A [Setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) fájl **telepítés \_ szükséges** függőségeinek részletes listáját a telepítési feltételek című szakaszban találja.
+
+### <a name="azure-functions-python-library"></a>Azure Functions Python-könyvtár
+
+Minden Python Worker-frissítés tartalmazza a [Azure functions Python Library (Azure. functions)](https://github.com/Azure/azure-functions-python-library)új verzióját. A futásidejű függvénytár verzióját az Azure rögzíti, és requirements.txt nem bírálható felül. A `azure-functions` requirements.txt bejegyzése csak a kihelyezésre és a felhasználói tájékoztatásra szolgál.
+
+Ennek a döntésnek az az oka, hogy a Azure Functions Python-alkalmazások egyszerű, folyamatos frissítését. A Python-függvénytár frissítése nem lehet az ügyfél számára, mivel minden frissítés visszamenőlegesen kompatibilis. A könyvtár kiadásának listája megtalálható az [Azure-functions PyPi](https://pypi.org/project/azure-functions/#history).
+
+A következő sorral követheti nyomon a Python functions Library tényleges verzióját a futtatókörnyezetben:
+
+```python
+getattr(azure.functions, '__version__', '< 1.2.1')
+```
+
+### <a name="runtime-system-libraries"></a>Futásidejű rendszerkönyvtárak
+
+Az előre telepített rendszerkönyvtárak listáját a Python Worker Docker-lemezképekben kövesse az alábbi hivatkozásokon:
+|  Függvények futtatókörnyezete  | Debian-verzió | Python-verziók |
+|------------|------------|------------|
+| 2-es verzió. x | Stretch  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3. x verzió | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3,8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+
 ## <a name="cross-origin-resource-sharing"></a>Eltérő eredetű erőforrások megosztása
 
 [!INCLUDE [functions-cors](../../includes/functions-cors.md)]
@@ -638,7 +676,7 @@ A CORS teljes mértékben támogatott a Python-függvények alkalmazásaiban.
 
 ## <a name="known-issues-and-faq"></a>Ismert problémák és gyakori kérdések
 
-Az értékes visszajelzéseknek köszönhetően a gyakori problémákra vonatkozó hibaelhárítási útmutatók listáját is megtarthatja:
+A következő lista a gyakori problémákkal kapcsolatos hibaelhárítási útmutatókat tartalmazza:
 
 * [ModuleNotFoundError és ImportError](recover-module-not-found.md)
 
