@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: menchi
-ms.openlocfilehash: f846af548913e0cb3e872560e4b8438da306a255
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: f324b04dd87f84a07c07394f2ee7c3efdc30c3e1
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756945"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607074"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (Python)
 
@@ -263,7 +264,7 @@ Ebben a szakaszban a **ReceiveModuleTwinDesiredPropertiesPatch** -eszköz alkalm
 
    ![Az eszköz alkalmazás kimenete a kívánt tulajdonságok javítását mutatja](./media/iot-hub-python-python-module-twin-getstarted/device-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

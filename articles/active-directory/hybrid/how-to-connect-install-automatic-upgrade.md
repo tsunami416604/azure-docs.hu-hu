@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 232a1b714802ce9531a9932bc2af4c6b6f35dffd
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: db7c0595d109efddb092f5e96babda17038e5e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324215"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635815"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
 Ez a szolgáltatás a Build [1.1.105.0 (2016. február) jelent](reference-connect-version-history.md#111050)meg.  Ez a szolgáltatás a [build 1.1.561](reference-connect-version-history.md#115610) lett frissítve, és mostantól támogatja azokat a további forgatókönyveket, amelyek korábban nem támogatottak.
@@ -56,6 +56,10 @@ Ha a kapcsolódási példány nem a várt módon frissül, kövesse az alábbi l
 Először is ne várja meg az automatikus frissítést, hogy az első nap új verziót szabadítson fel. A frissítés megkezdése előtt szándékos véletlenszerűség történt, ezért ne legyen riasztás, ha a telepítés nem azonnal frissül.
 
 Ha úgy gondolja, hogy valami nem megfelelő, először futtassa a parancsot, `Get-ADSyncAutoUpgrade` hogy az automatikus frissítés engedélyezve legyen.
+
+Ha az állapot fel van függesztve, a használatával `Get-ADSyncAutoUpgrade -Detail` megtekintheti az okát.  A felfüggesztési ok bármilyen sztringet tartalmazhat, de általában a UpgradeResult karakterlánc értékét fogja tartalmazni, azaz a vagy a értéket `UpgradeNotSupportedNonLocalDbInstall` `UpgradeAbortedAdSyncExeInUse` .  Egy összetett értéket is vissza lehet adni, például: `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed` .
+
+Olyan eredmény is lehetséges, amely nem UpgradeResult, azaz "AADHealthEndpointNotDefined" vagy "DirSyncInPlaceUpgradeNonLocalDb".
 
 Ezután győződjön meg arról, hogy megnyitotta a szükséges URL-címeket a proxyban vagy a tűzfalban. Az automatikus frissítés a Azure AD Connect Health használja az [Áttekintés](#overview)című témakörben leírtak szerint. Ha proxyt használ, győződjön meg róla, hogy az állapot [proxykiszolgáló](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)használatára van konfigurálva. Tesztelje az Azure AD-vel való [rendszerállapot-kapcsolatot](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) is.
 

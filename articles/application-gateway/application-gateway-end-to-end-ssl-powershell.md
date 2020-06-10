@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/8/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 57f2ce1fb8bf6415387eac5c760dadeb04e65648
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2b5d2687ce95ca7db139ae06ab83bc3ecee8cf8a
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648415"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628809"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Végpontok közötti TLS konfigurálása a Application Gateway és a PowerShell használatával
 
@@ -167,7 +167,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
    > [!NOTE]
    > Az alapértelmezett mintavétel lekéri a nyilvános kulcsot a háttér IP-címéhez tartozó *alapértelmezett* TLS-kötésből, és összehasonlítja az itt megadott nyilvános kulcs értékét. 
    > 
-   > Ha a háttérben használ állomásfejléc-t és Kiszolgálónév jelzése (SNI), akkor előfordulhat, hogy a beolvasott nyilvános kulcs nem az a kívánt hely, ahová a forgalom áramlik. Ha kétségei vannak, látogasson el a https://127.0.0.1/ háttér-kiszolgálók elemre, és erősítse meg, hogy melyik tanúsítványt használja a rendszer az *alapértelmezett* TLS-kötéshez. Az adott kérelemből származó nyilvános kulcs használata ebben a szakaszban. Ha a gazdagép-fejléceket és a SNI HTTPS-kötéseken használja, és nem kap választ és tanúsítványt a https://127.0.0.1/ háttér-kiszolgálókon futó kézi böngészőtől, akkor a rájuk vonatkozó alapértelmezett TLS-kötést kell beállítania. Ha ezt nem teszi meg, a mintavétel meghiúsul, és a háttér nem rendelkezik engedélyezési listával.
+   > Ha a háttérben használ állomásfejléc-t és Kiszolgálónév jelzése (SNI), akkor előfordulhat, hogy a beolvasott nyilvános kulcs nem az a kívánt hely, ahová a forgalom áramlik. Ha kétségei vannak, látogasson el a https://127.0.0.1/ háttér-kiszolgálók elemre, és erősítse meg, hogy melyik tanúsítványt használja a rendszer az *alapértelmezett* TLS-kötéshez. Az adott kérelemből származó nyilvános kulcs használata ebben a szakaszban. Ha a gazdagép-fejléceket és a SNI HTTPS-kötéseken használja, és nem kap választ és tanúsítványt a https://127.0.0.1/ háttér-kiszolgálókon futó kézi böngészőtől, akkor a rájuk vonatkozó alapértelmezett TLS-kötést kell beállítania. Ha ezt nem teszi meg, a mintavétel meghiúsul, és a háttér nem engedélyezett.
    
    A Application Gateway SNI kapcsolatos további információkért lásd: a TLS-leállítás [és a teljes körű TLS](ssl-overview.md)-végpont áttekintése a Application Gateway használatával.
 
@@ -176,7 +176,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
    ```
 
    > [!NOTE]
-   > Az előző lépésben megadott tanúsítványnak a háttérben lévő. pfx-tanúsítvány nyilvános kulcsának kell lennie. Exportálja a tanúsítványt (nem a főtanúsítványt) az igénylés, a bizonyíték és az indoklás (CER) formátumba, és használja azt ebben a lépésben. Ezzel a lépéssel engedélyezheti a háttérben az Application Gateway-t.
+   > Az előző lépésben megadott tanúsítványnak a háttérben lévő. pfx-tanúsítvány nyilvános kulcsának kell lennie. Exportálja a tanúsítványt (nem a főtanúsítványt) az igénylés, a bizonyíték és az indoklás (CER) formátumba, és használja azt ebben a lépésben. Ez a lépés lehetővé teszi a háttér használatát az Application Gateway használatával.
 
    Ha a Application Gateway v2 SKU-t használja, akkor hitelesítési tanúsítvány helyett hozzon létre egy megbízható főtanúsítványt. További információ: [a végpontok közötti TLS áttekintése Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku)használatával:
 
@@ -357,7 +357,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a webalkalmazások biztonságának a webalkalmazási tűzfallal való megkeményedéséről Application Gatewayon keresztül: [webalkalmazási tűzfal – áttekintés](application-gateway-webapplicationfirewall-overview.md).
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 3af744c7ce73544fa35af79a7904701a74241aab
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 59ef47ac67955ef5b9b7cb51ae6f39a9e0d30c3b
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555166"
+ms.locfileid: "84634933"
 ---
 # <a name="quickstart-create-a-search-index-in-net"></a>Gyors útmutató: keresési index létrehozása a .NET-ben
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Ehhez a projekthez használja a `Microsoft.Azure.Search` NuGet csomag 9-es verzi
 
 1. Kattintson a **Browse** (Tallózás) gombra.
 
-1. Keresse meg `Microsoft.Azure.Search` és válassza ki a 9.0.1 vagy újabb verziót.
+1. Keresse meg `Microsoft.Azure.Search` és válassza ki a 9.0.1 vagy újabb verziót (a legújabb stabil verzió a 10.1.0).
 
 1. A jobb oldalon kattintson a **telepítés** gombra a szerelvény projekthez és megoldáshoz való hozzáadásához.
 
@@ -89,26 +89,27 @@ Ehhez a projekthez használja a `Microsoft.Azure.Search` NuGet csomag 9-es verzi
 
 1. Adja hozzá a fájlt a kimeneti könyvtárhoz. Kattintson a jobb gombbal a appSettings. JSON fájlra, és válassza a **Tulajdonságok**lehetőséget. A **Másolás kimeneti könyvtárba**lapon válassza a **Másolás, ha újabb**lehetőséget.
 
-1. Másolja a következő JSON-t az új JSON-fájlba. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) és a felügyeleti API-kulcsot (a-ADMIN-API-KEY) érvényes értékekkel. Ha a szolgáltatás végpontja `https://mydemo.search.windows.net` , a szolgáltatás neve "mydemo" lesz.
+1. Másolja a következő JSON-t az új JSON-fájlba. 
 
-```json
-{
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
-  "SearchIndexName": "hotels-quickstart"
-}
-```
+    ```json
+    {
+      "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
+      "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+      "SearchIndexName": "hotels-quickstart"
+    }
+    ```
+
+1. Cserélje le a keresési szolgáltatás nevét (a-SEARCH-SERVICE-NAME) és a felügyeleti API-kulcsot (a-ADMIN-API-KEY) érvényes értékekkel. Ha a szolgáltatás végpontja `https://mydemo.search.windows.net` , a szolgáltatás neve "mydemo" lesz.
 
 ### <a name="add-class-method-files-to-your-project"></a>Osztály hozzáadása ". Metódus "fájlok a projekthez
 
-Amikor kinyomtatja az eredményeket a konzol ablakába, a Hotel objektum egyedi mezőinek karakterláncként kell szerepelnie. A [ToString ()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) használatával végrehajthatja ezt a feladatot, és a szükséges kódot két új fájlba másolhatja.
+Ez a lépés szükséges az értelmes kimenet létrehozásához a-konzolon. Amikor kinyomtatja az eredményeket a konzol ablakába, a Hotel objektum egyedi mezőinek karakterláncként kell szerepelnie. Ez a lépés a [ToString ()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) megvalósítását valósítja meg a feladat végrehajtásához, amelyet a szükséges kód két új fájlba másolásával hajt végre.
 
 1. Két üres osztály-definíció hozzáadása a projekthez: Address.Methods.cs, Hotel.Methods.cs
 
-1. A Address.Methods.cs írja felül az alapértelmezett tartalmakat a következő kóddal, a 1-32-es [sorokkal](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L32).
+1. A Address.Methods.cs írja felül az alapértelmezett tartalmakat a következő kóddal, a 1-25-es [sorokkal](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25).
 
-1. A Hotel.Methods.cs-ben másolja a [1-66 sorokat](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L66).
-
+1. A Hotel.Methods.cs-ben másolja a [1-68 sorokat](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68).
 
 ## <a name="1---create-index"></a>1 – index létrehozása
 
@@ -273,7 +274,7 @@ A Hotels index egyszerű és összetett mezőket tartalmaz, ahol egy egyszerű m
             // The fields of the index are defined by calling the FieldBuilder.BuildForType() method.
             private static void CreateIndex(string indexName, SearchServiceClient serviceClient)
             {
-                var definition = new Index()
+                var definition = new Microsoft.Azure.Search.Models.Index()
                 {
                     Name = indexName,
                     Fields = FieldBuilder.BuildForType<Hotel>()

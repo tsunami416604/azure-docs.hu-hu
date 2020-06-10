@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9061cbbae0b30881fffe1762208216cb8009594a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1ded745b5a734fd92a8ace851e3ecfc4a7a487d5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791578"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636393"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Oktatóanyag: Windowsos virtuális gépek rendszerképeinek létrehozása a Azure PowerShell
 
@@ -50,7 +50,7 @@ A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="get-the-vm"></a>A virtuális gép beszerzése
 
@@ -117,7 +117,7 @@ A képverzió megengedett karaktereinek száma számok és időszakok. A számok
 
 Ebben a példában a rendszerkép verziója a *1.0.0* , és a rendszer az *USA keleti* és *déli középső* régiójában lévő adatközpontokra replikálja. A célcsoportok replikáláshoz való kiválasztásakor meg kell adnia a *forrás* régiót a replikálás célhelye.
 
-A virtuális gépről származó rendszerkép-verzió létrehozásához használja `$vm.Id.ToString()` a következőt: `-Source`.
+A virtuális gépről származó rendszerkép-verzió létrehozásához használja a `$vm.Id.ToString()` következőt: `-Source` .
 
 ```azurepowershell-interactive
    $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -140,7 +140,7 @@ Eltarthat egy ideig, amíg a rendszer replikálja a rendszerképet az összes me
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása 
 
-Ha speciális rendszerképet használ, létrehozhat egy vagy több új virtuális gépet. A [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag használata. A rendszerkép használatához használja a "set-AzVMSourceImage` and set the `-id" tulajdonságot a rendszerkép-DEFINÍCIÓs azonosítóra (ebben az esetben a $GalleryImage. ID azonosítóra), hogy mindig a legújabb lemezkép-verziót használja. 
+Ha speciális rendszerképet használ, létrehozhat egy vagy több új virtuális gépet. A [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag használata. A rendszerkép használatához használja `Set-AzVMSourceImage` és állítsa be a `-Id` lemezkép-definíció azonosítóját (ebben az esetben a $GalleryImage. ID azonosítót), hogy mindig a legújabb lemezkép-verziót használja. 
 
 Szükség szerint cserélje le az erőforrás-neveket ebben a példában. 
 
@@ -179,7 +179,7 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="share-the-gallery"></a>A katalógus megosztása
 
-Javasoljuk, hogy a Képtár szintjén ossza meg a hozzáférést. Használjon e-mail-címet és a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) parancsmagot a felhasználó objektumazonosító beszerzéséhez, majd a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) használatával adja meg nekik a katalógushoz való hozzáférést. Cserélje le a példában szereplő alinne_montes@contoso.com e-mailt a saját adataira.
+Javasoljuk, hogy a Képtár szintjén ossza meg a hozzáférést. Használjon e-mail-címet és a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) parancsmagot a felhasználó objektumazonosító beszerzéséhez, majd a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) használatával adja meg nekik a katalógushoz való hozzáférést. Cserélje le a példában szereplő e-mailt a alinne_montes@contoso.com saját adataira.
 
 ```azurepowershell-interactive
 # Get the object ID for the user
@@ -193,7 +193,7 @@ New-AzRoleAssignment `
    -ResourceGroupName $resourceGroup.ResourceGroupName
 ```
    
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsmagot az erőforráscsoport és az összes kapcsolódó erőforrás eltávolításához:
 
@@ -209,7 +209,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy speciális virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

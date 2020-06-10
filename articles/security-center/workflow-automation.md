@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9e905e78a835c833abe415d8b76c09ce672f849c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300114"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629394"
 ---
 # <a name="workflow-automation"></a>Munkafolyamat-automatizálás
 
@@ -43,7 +43,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 - Felhők 
     - ✔ Kereskedelmi felhők
     - ✔ US Gov
-    - ✘ Kínai gov, egyéb gov
+    - ✘ China gov, egyéb gov
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Logikai alkalmazás létrehozása és az automatikus futtatásának meghatározása 
@@ -104,7 +104,7 @@ Egy logikai alkalmazás manuális futtatásához nyisson meg egy riasztást vagy
 
 A logikai alkalmazás-példánynak átadott biztonsági riasztások vagy javaslatok eseményeinek nyers esemény-sémáit a munkafolyamat- [automatizálási adattípusok sémái](https://aka.ms/ASCAutomationSchemas)között tekintheti meg. Ez olyan esetekben lehet hasznos, amikor nem használja a fent említett Security Center beépített logikai alkalmazás-összekötőit, de ehelyett a Logic app általános HTTP-összekötőjét használja – az Event JSON-sémával manuálisan elemezheti azt, ahogy jónak látja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan hozhat létre Logic Apps, hogyan automatizálhatja a végrehajtást a Security Centerban, és hogyan futtathatja őket manuálisan. 
 

@@ -6,16 +6,22 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4bc57bd896eb8d250975ec8e9300d0498d70835
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474040"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604151"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
 
 Ez a cikk azt ismerteti, hogyan állíthatja be a felhőbe irányuló replikálás a Azure Database for MySQLban a fő-és a replika-kiszolgálók konfigurálásával. Ez a cikk azt feltételezi, hogy a MySQL-kiszolgálókkal és-adatbázisokkal kapcsolatos korábbi tapasztalatokkal rendelkezik.
+
+> [!NOTE]
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
 
 Ahhoz, hogy replikát hozzon létre a Azure Database for MySQL szolgáltatásban, felhőbe irányuló replikálás szinkronizálja a helyszíni, a Virtual Machines (VM) vagy a Cloud Database Services szolgáltatásban található fő MySQL-kiszolgáló adatait.
 
@@ -59,11 +65,11 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
    Ha a változót [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) "on" értékre adja vissza, a bináris naplózás engedélyezve van a kiszolgálón. 
 
-   Ha `log_bin` a értéket "off" értékkel adja vissza, kapcsolja be a bináris naplózást a saját. cnf fájl szerkesztésével, `log_bin=ON` és indítsa újra a kiszolgálót a módosítás érvénybe léptetéséhez.
+   Ha a `log_bin` értéket "off" értékkel adja vissza, kapcsolja be a bináris naplózást a saját. cnf fájl szerkesztésével, `log_bin=ON` és indítsa újra a kiszolgálót a módosítás érvénybe léptetéséhez.
 
 3. Fő kiszolgáló beállításai
 
-   Felhőbe irányuló replikálás megköveteli, `lower_case_table_names` hogy a paraméter konzisztens legyen a fő-és a replika-kiszolgálók között. Ez a paraméter a Azure Database for MySQL alapértelmezés szerint 1. 
+   Felhőbe irányuló replikálás megköveteli `lower_case_table_names` , hogy a paraméter konzisztens legyen a fő-és a replika-kiszolgálók között. Ez a paraméter a Azure Database for MySQL alapértelmezés szerint 1. 
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -199,7 +205,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
 1. Replikáció indítása
 
-   A replikáció `mysql.az_replication_start` indításához hívja meg a tárolt eljárást.
+   A `mysql.az_replication_start` replikáció indításához hívja meg a tárolt eljárást.
 
    ```sql
    CALL mysql.az_replication_start;
@@ -207,13 +213,13 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
 1. Replikáció állapotának megtekintése
 
-   A replikálási állapot megtekintéséhez hívja meg a [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) parancsot a replika kiszolgálóján.
+   A [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) replikálási állapot megtekintéséhez hívja meg a parancsot a replika kiszolgálóján.
     
    ```sql
    show slave status;
    ```
 
-   Ha az állapota `Slave_IO_Running` és `Slave_SQL_Running` a értéke "igen", és a " `Seconds_Behind_Master` 0" értékre van állítva, a replikálás jól működik. `Seconds_Behind_Master`azt jelzi, hogy a replika milyen későn van. Ha az érték nem "0", az azt jelenti, hogy a replika frissítéseket dolgoz fel. 
+   Ha az állapota `Slave_IO_Running` és `Slave_SQL_Running` a értéke "igen", és a "0" értékre van állítva `Seconds_Behind_Master` , a replikálás jól működik. `Seconds_Behind_Master`azt jelzi, hogy a replika milyen későn van. Ha az érték nem "0", az azt jelenti, hogy a replika frissítéseket dolgoz fel. 
 
 ## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
 
@@ -241,5 +247,5 @@ A replikálási hibák kihagyásához és a replikálás folytatásához haszná
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a Azure Database for MySQL [felhőbe irányuló replikálásról](concepts-data-in-replication.md) . 

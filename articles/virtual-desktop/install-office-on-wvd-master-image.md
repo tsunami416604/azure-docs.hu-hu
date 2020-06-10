@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b93f26a6799a50868feb1f3350a3dc4a73a0b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d53c21af77204a5e83687d3ce893f3f6f45101f2
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127849"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628990"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Az Office telepítése egy fő virtuálisgép-rendszerképre
 
@@ -38,7 +38,7 @@ Az Office-telepítő eszköznek konfigurációs XML-fájlt kell megadnia. Az al�
 
 A példaként megadott konfigurációs XML-fájl a következő műveleteket végzi el:
 
-- Telepítse az Office-t a havi csatornáról, és adja meg a frissítéseket a havi csatornáról, amikor azok végrehajtása folyamatban van.
+- • Telepítse az Office-t a havi nagyvállalati csatornáról, és frissítse a havi nagyvállalati csatorna frissítéseit.
 - Használja az x64 architektúrát.
 - Az automatikus frissítések letiltása.
 - Távolítsa el az Office meglévő példányait, és telepítse át a beállításait.
@@ -53,7 +53,7 @@ A minta konfigurációs XML-fájl nem fog megjelenni:
 - Telepítse a OneDrive-t felhasználónkénti módban. További információ: [a OneDrive telepítése számítógépenkénti módban](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->A megosztott számítógép aktiválása Csoportházirend objektumok (GPO-k) vagy beállításjegyzék-beállítások használatával állítható be. A csoportházirend-objektum a **számítógép-\\konfigurációs\\\\szabályzatok felügyeleti sablonok Microsoft Office 2016 (\\gép) licencelési beállításai** között található.
+>A megosztott számítógép aktiválása Csoportházirend objektumok (GPO-k) vagy beállításjegyzék-beállítások használatával állítható be. A csoportházirend-objektum a **számítógép \\ -konfigurációs szabályzatok \\ Felügyeleti sablonok \\ Microsoft Office 2016 (gép) \\ licencelési beállításai** között található.
 
 Az Office-telepítő eszköz tartalmazza a Setup. exe fájlt. Az Office telepítéséhez futtassa a következő parancsot egy parancssorban:
 
@@ -63,11 +63,11 @@ Setup.exe /configure configuration.xml
 
 #### <a name="sample-configurationxml"></a>Példa a Configuration. XML fájlra
 
-A következő XML-minta fogja telepíteni a havi kiadást.
+A következő XML-minta a havi nagyvállalati csatorna kiadását fogja telepíteni.
 
 ```xml
 <Configuration>
-  <Add OfficeClientEdition="64" Channel="Monthly">
+  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise">
     <Product ID="O365ProPlusRetail">
       <Language ID="en-US" />
       <Language ID="MatchOS" />
@@ -116,11 +116,11 @@ A OneDrive telepítése általában felhasználónként történik. Ebben a kör
 
 A következőképpen telepítheti a OneDrive-t gépi módban:
 
-1. Először hozzon létre egy helyet a OneDrive-telepítő előkészítéséhez. A helyi lemez mappája vagy\\\\az [UNC] (file://UNC) hely rendben van.
+1. Először hozzon létre egy helyet a OneDrive-telepítő előkészítéséhez. A helyi lemez mappája vagy \\ \\ az [UNC] (file://UNC) hely rendben van.
 
 2. Töltse le a OneDriveSetup. exe fájlt a szakaszos helyre a következő hivatkozással:<https://aka.ms/OneDriveWVD-Installer>
 
-3. Ha az Office-t a OneDrive-mel telepítette, akkor a ** \<ExcludeApp ID\>= "OneDrive" vagy**a következő parancs futtatásával távolítsa el a meglévő OneDrive felhasználónkénti telepítéseit egy emelt szintű parancssorból:
+3. Ha az Office-t a OneDrive-mel telepítette **\<ExcludeApp ID="OneDrive" /\>** , a következő parancs futtatásával távolítsa el a meglévő OneDrive felhasználónkénti telepítéseit egy emelt szintű parancssorból:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
@@ -160,6 +160,6 @@ A következőképpen telepítheti a OneDrive-t gépi módban:
 
 A Windows rendszerű virtuális asztal nem támogatja a Skype vállalati és munkacsoportok használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy hozzáadta az Office-t a lemezképhez, továbbra is testreszabhatja a fő VHD-lemezképet. Lásd: [a fő VHD-lemezkép előkészítése és testreszabása](set-up-customize-master-image.md).

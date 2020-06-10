@@ -5,17 +5,28 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: e9be14548704557b4bdd39119294671852040348
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774807"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636580"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Olvasási replikák létrehozása és kezelése az Azure CLI-ből, REST API
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási replikákat Azure Database for PostgreSQL az Azure CLI és a REST API használatával. Az olvasási replikákkal kapcsolatos további tudnivalókért tekintse meg az [áttekintést](concepts-read-replicas.md).
+
+## <a name="azure-replication-support"></a>Azure-beli replikálás támogatása
+Az [olvasási replikák](concepts-read-replicas.md) és a [logikai dekódolás](concepts-logical.md) a postgres írási előre megadott naplójától (Wal) függ. Ehhez a két szolgáltatáshoz különböző naplózási szintek szükségesek a postgres. A logikai dekódolás magasabb szintű naplózást igényel, mint az olvasási replikák.
+
+A megfelelő naplózási szint konfigurálásához használja az Azure-replikáció támogatási paraméterét. Az Azure-beli replikáció támogatásának három beállítási lehetősége van:
+
+* **Off** – a legkevesebb információt helyezi el a Wal-ben. Ez a beállítás nem érhető el a legtöbb Azure Database for PostgreSQL kiszolgálón.  
+* **Replika** – részletesebb, mint a **kikapcsolás**. Az [olvasási replikák](concepts-read-replicas.md) működéséhez szükséges naplózás minimális szintje. Ez a beállítás az alapértelmezett a legtöbb kiszolgálón.
+* **Logikai** – részletesebb, mint a **replika**. Ez a minimális szintű naplózás a logikai dekódolás működéséhez. Ebben a beállításban az olvasási replikák is működnek.
+
+A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg ez a paraméter a és a postgres paramétereket állítja be `wal_level` `max_replication_slots` `max_wal_senders` .
 
 ## <a name="azure-cli"></a>Azure CLI
 Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelheti.
@@ -27,22 +38,20 @@ Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelh
 
 
 ### <a name="prepare-the-master-server"></a>A fő kiszolgáló előkészítése
-Ezeket a lépéseket kell használni a főkiszolgáló előkészítéséhez a általános célú vagy a memória optimalizált szintjein.
 
-A `azure.replication_support` paramétert a főkiszolgálón lévő **replika** értékre kell beállítani. Ha a statikus paraméter módosul, a módosítás érvénybe léptetéséhez újra kell indítani a kiszolgálót.
+1. Keresse meg a főkiszolgáló `azure.replication_support` értékét. Az olvasási replikák működéséhez legalább REPLIKÁnak kell lennie.
 
-1. A `azure.replication_support` replika értékre van állítva.
+   ```azurecli-interactive
+   az postgres server configuration show --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support
+   ```
+
+2. Ha `azure.replication_support` a nem legalább replika, állítsa be. 
 
    ```azurecli-interactive
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
-> [!NOTE]
-> Ha "érvénytelen értéket adott meg" hibaüzenet jelenik meg, miközben megpróbálta beállítani az Azure-t. replication_support az Azure CLI-ből, akkor valószínű, hogy a kiszolgáló alapértelmezés szerint már rendelkezik REPLIKAKÉSZLET-készlettel. A hiba megakadályozza, hogy ez a beállítás megfelelően tükrözze az újabb kiszolgálókon, ahol a REPLIKA a belső alapértelmezett. <br><br>
-> Kihagyhatja a Master előkészítése lépéseket, és a replika létrehozása lehetőségre ugorhat. <br><br>
-> Ha szeretné megerősíteni, hogy a kiszolgáló ebben a kategóriában található, látogasson el a kiszolgáló replikálás lapjára a Azure Portal. A "replikáció letiltása" szürkén jelenik meg, a "replika hozzáadása" pedig aktív lesz az eszköztáron.
-
-2. A módosítás alkalmazásához indítsa újra a kiszolgálót.
+3. A módosítás alkalmazásához indítsa újra a kiszolgálót.
 
    ```azurecli-interactive
    az postgres server restart --name mydemoserver --resource-group myresourcegroup
@@ -55,8 +64,8 @@ Az az [postgres Server replika Create](/cli/azure/postgres/server/replica?view=a
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | resource-group | myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létre lesz hozva.  |
-| név | mydemoserver – replika | A létrehozott új replika-kiszolgáló neve. |
-| source-server | mydemoserver | A replikálni kívánt létező főkiszolgáló neve vagy erőforrás-azonosítója. |
+| name | mydemoserver – replika | A létrehozott új replika-kiszolgáló neve. |
+| source-server | mydemoserver | A replikálni kívánt létező főkiszolgáló neve vagy erőforrás-azonosítója. Ha azt szeretné, hogy a replika és a főkiszolgáló erőforráscsoportok eltérőek legyenek, használja az erőforrás-azonosítót. |
 
 Az alábbi CLI-példában a replika a főkiszolgálóval megegyező régióban jön létre.
 
@@ -64,7 +73,7 @@ Az alábbi CLI-példában a replika a főkiszolgálóval megegyező régióban j
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-Egy több régióból származó olvasási replika létrehozásához használja `--location` a paramétert. Az alábbi CLI-példa létrehozza a replikát az USA nyugati régiójában.
+Egy több régióból származó olvasási replika létrehozásához használja a `--location` paramétert. Az alábbi CLI-példa létrehozza a replikát az USA nyugati régiójában.
 
 ```azurecli-interactive
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -109,11 +118,14 @@ az postgres server delete --name myserver --resource-group myresourcegroup
 Az olvasási replikákat az [Azure REST API](/rest/api/azure/)használatával hozhatja létre és kezelheti.
 
 ### <a name="prepare-the-master-server"></a>A fő kiszolgáló előkészítése
-Ezeket a lépéseket kell használni a főkiszolgáló előkészítéséhez a általános célú vagy a memória optimalizált szintjein.
 
-A `azure.replication_support` paramétert a főkiszolgálón lévő **replika** értékre kell beállítani. Ha a statikus paraméter módosul, a módosítás érvénybe léptetéséhez újra kell indítani a kiszolgálót.
+1. Keresse meg a főkiszolgáló `azure.replication_support` értékét. Az olvasási replikák működéséhez legalább REPLIKÁnak kell lennie.
 
-1. A `azure.replication_support` replika értékre van állítva.
+   ```http
+   GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
+   ```
+
+2. Ha `azure.replication_support` a nem legalább replika, állítsa be.
 
    ```http
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
@@ -194,6 +206,6 @@ Főkiszolgáló törlésekor a rendszer leállítja a replikálást az összes o
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}?api-version=2017-12-01
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [az olvasási replikákkal kapcsolatban Azure Database for PostgreSQL](concepts-read-replicas.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portalban](howto-read-replicas-portal.md).

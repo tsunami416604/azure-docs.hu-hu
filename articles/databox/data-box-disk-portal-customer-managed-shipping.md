@@ -5,15 +5,15 @@ services: databox
 author: priestlg
 ms.service: databox
 ms.subservice: disk
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 70c37b60d3b01c939b9b06d6b053b526e036904a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 04165398b65bcaa6751c83c77c21266ee1b64be8
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266508"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610627"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>A Azure Portal Azure Data Box Disk önfelügyelt szállítás használata
 
@@ -84,6 +84,6 @@ Data Box Disk rendelés elhelyezésekor kiválaszthatja az önállóan felügyel
 
 11. Az eszköz fogadása után az Adatmásolás folytatódni fog. A másolás befejezésekor a rendelés elkészült.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: Azure Data Box Disk üzembe helyezése a Azure Portal használatával](data-box-disk-quickstart-portal.md)

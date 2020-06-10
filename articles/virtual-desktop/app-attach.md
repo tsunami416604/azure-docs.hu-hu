@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c6544a0536a99261d1ebc13748a5365b9893e789
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310614"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605194"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
@@ -90,7 +90,7 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Miután letiltotta az automatikus frissítéseket, engedélyeznie kell a Hyper-V-t, mert a halom-VHD parancsot fogja használni a kilépéshez és a virtuális merevlemez leválasztásához. 
+Miután letiltotta az automatikus frissítéseket, engedélyeznie kell a Hyper-V-t, mert a Mount-VHD parancsot fogja használni a kilépéshez és a virtuális merevlemez leválasztásához. 
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -472,7 +472,7 @@ catch [Exception]
 }  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a funkció jelenleg nem támogatott, de kérdéseket tehet fel a Közösségnek a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 

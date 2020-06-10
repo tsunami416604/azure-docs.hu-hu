@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 31178284313ad7dafb094b109a75d4550cabd39c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560371"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608706"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Az adatküldés Azure Data Box vagy Azure Data Box Heavy használatával a megfelelő Azure Storage blob-szintjére
 
@@ -48,7 +48,7 @@ Azt is megteheti, hogy először létrehoz egy Storage-fiókot a megadott hozzá
 Ha Data Box eszközről származó adatok feltöltése az alapértelmezett rétegbe történik, előfordulhat, hogy át szeretné helyezni az adatok egy nem alapértelmezett szintjére. Ezeket az értékeket kétféleképpen helyezheti át egy nem alapértelmezett rétegbe.
 
 - Az **Azure Blob Storage életciklus-kezelője** – házirend-alapú megközelítéssel automatikusan elvégezheti az adatréteget, vagy lejárhat az életciklus végén. További információért látogasson el [Az Azure Blob Storage életciklusának kezelésére](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
-- **Parancsfájlok** – parancsfájlokkal elválasztott megközelítést használhat Azure PowerShellon keresztül a blob szintű rétegek engedélyezéséhez. A `SetBlobTier` művelet meghívásával beállíthatja a szintet a blobon.
+- **Parancsfájlok** – parancsfájlokkal elválasztott megközelítést használhat Azure PowerShellon keresztül a blob szintű rétegek engedélyezéséhez. A művelet meghívásával `SetBlobTier` beállíthatja a szintet a blobon.
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>A blob-rétegek beállításához használja a Azure PowerShell
 
@@ -114,7 +114,7 @@ A következő lépések azt írják le, hogyan állíthatja be a blob-rétegek a
    > [!TIP]
    > Ha azt szeretné, hogy az adatok betöltés közben is archiválva legyenek, állítsa a fiók alapértelmezett rétegét Gyorsra. Ha az alapértelmezett szint nem megfelelő, akkor a rendszer egy 30 napos korai törlési szankciót alkalmaz, ha az adatok azonnal archiválásra kerülnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -  Ismerje meg, hogyan lehet kezelni a [közös adatfeldolgozási forgatókönyveket életciklus-szabályzatokkal](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples)
 

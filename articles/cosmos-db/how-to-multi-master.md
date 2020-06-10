@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.custom: tracking-python
-ms.openlocfilehash: 62dedd4cf91143ee7b31b92880135ac6c7953ef9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 70b9f1aaeaedd7968aeaf09aebe4e53682a60019
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561248"
+ms.locfileid: "84629364"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Több főkiszolgálós konfiguráció konfigurálása a Azure Cosmos DBt használó alkalmazásokban
 
@@ -56,7 +56,26 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-async-sdk"></a><a id="java"></a>Java Async SDK
+## <a name="java-v4-sdk"></a>Java v4 SDK
+
+Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásban, hívja meg a (z) és a (z `.multipleWriteRegionsEnabled(true)` `.preferredRegions(preferredRegions)` ) ügyfelet, ahol a egy `preferredRegions` `List` elemet tartalmaz – ez az a régió, amelyben az alkalmazás üzembe helyezése zajlik, és ahol a Cosmos db replikálódik:
+
+### <a id="java4-multi-master"></a>
+#### <a name="async"></a>[Aszinkron](#tab/api-async)
+
+   [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) aszinkron API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ConfigureMultimasterAsync)]
+
+#### <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+
+   [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Sync API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ConfigureMultimasterSync)]
+
+--- 
+
+## <a name="async-java-v2-sdk-maven-commicrosoftazureazure-cosmosdb"></a><a id="java"></a>[Aszinkron Java v2 SDK](sql-api-sdk-async-java.md) (Maven [com. microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásban, állítsa be `policy.setUsingMultipleWriteLocations(true)` és állítsa be `policy.setPreferredLocations` azt a régiót, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálja:
 

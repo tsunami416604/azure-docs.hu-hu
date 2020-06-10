@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62dce0204f77ab65473fc1735015e41f483dddb1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: eddb63f82669821914edefc1b75a7b4dcdc0ca2d
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049133"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636155"
 ---
 # <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>SQL Server rendelkezésre állási csoportok bemutatása Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,11 +41,12 @@ A redundancia és a magas rendelkezésre állás növeléséhez a SQL Server vir
 
 |  | Windows Server-verzió | SQL Server verziója | SQL Server kiadás | WSFC kvórum konfigurációja | DR több régióval | Több alhálózatot támogató támogatás | Meglévő AD támogatása | DR többzónás azonos régióval | Dist-AG támogatás AD-tartomány nélkül | A dist-AG támogatása fürt nélkül |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [SQL VIRTUÁLIS GÉP PARANCSSORI FELÜLETE](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | ENT | Felhőbeli tanúsító | Nem | Igen | Igen | Igen | Nem | Nem |
-| [Gyorsindítás sablonok](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | ENT | Felhőbeli tanúsító | Nem | Igen | Igen | Igen | Nem | Nem |
-| [Portál sablonja](availability-group-azure-marketplace-template-configure.md) | 2016 </br>2012 R2 | 2016</br>2014 | ENT | Fájlmegosztás | Nem | Nem | Nem | Nem | Nem | Nem |
-| [Kézi](availability-group-manually-configure-prerequisites-tutorial.md) | Az összes | Az összes | Az összes | Az összes | Igen | Igen | Igen | Igen | Igen | Igen |
+| [SQL VIRTUÁLIS GÉP PARANCSSORI FELÜLETE](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | ENT | Felhőbeli tanúsító | No | Igen | Igen | Igen | Nem | Nem |
+| [Gyorsindítás sablonok](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | ENT | Felhőbeli tanúsító | No | Igen | Igen | Igen | Nem | Nem |
+| [Kézi](availability-group-manually-configure-prerequisites-tutorial.md) | Mind | Mind | Mind | Mind | Igen | Igen | Igen | Igen | Igen | Igen |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+
+A **SQL Server AlwaysOn-fürt (előzetes verzió)** sablon el lett távolítva az Azure Marketplace-ről, és már nem érhető el. 
 
 Ha készen áll egy SQL Server rendelkezésre állási csoport létrehozására az Azure Virtual Machines-on, tekintse meg ezeket az oktatóanyagokat.
 
@@ -73,6 +74,6 @@ Saját maga is létrehozhatja a virtuális gépeket a sablon nélkül. Először
 
 - [Always On rendelkezésre állási csoport létrehozása a rendelkezésre állás és a vész-helyreállítás javítása érdekében](availability-group-manually-configure-tutorial.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [SQL Server always on rendelkezésre állási csoport konfigurálása az Azure Virtual Machines különböző régiókban](availability-group-manually-configure-multiple-regions.md)

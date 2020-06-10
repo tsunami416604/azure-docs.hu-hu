@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/29/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: c5b86319752fc70e754e34b787bbdc12f18636f0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3317410408754519bcd8b52e78dee4a81b3ab070
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656028"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609488"
 ---
-# <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-analytics-workspace-preview"></a>Rövid útmutató: Power BI munkaterület összekapcsolása egy szinapszis Analytics-munkaterülettel (előzetes verzió)
+# <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Gyors útmutató: Power BI munkaterület összekapcsolása egy szinapszis-munkaterülettel
 
 Ebből a rövid útmutatóból megtudhatja, hogyan csatlakoztatható egy Power BI munkaterület a szinapszis Analytics-munkaterülethez új Power BI jelentések és adatkészletek létrehozásához a szinapszis studióból (előzetes verzió).
 

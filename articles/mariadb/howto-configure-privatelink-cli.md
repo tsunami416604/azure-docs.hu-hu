@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 45233fd869a664844a9378af66892a74bea8c7f2
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 82d28a7ac5475752e3969a6af1185bc254b0fa7f
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485066"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636138"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Azure Database for MariaDB magánhálózati hivatkozás létrehozása és kezelése a parancssori felület használatával
 
@@ -95,7 +95,7 @@ az network private-endpoint create \
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
     --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforMariaDB/servers/$Servername" \  
-    --group-ids mariadbServer \  
+    --group-id mariadbServer \  
     --connection-name myConnection  
  ```
 
@@ -184,7 +184,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 8. A távoli asztali kapcsolat bezárásával myVm.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása 
 Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az erőforráscsoportot és a hozzá tartozó összes erőforrást: 
 
 ```azurecli-interactive

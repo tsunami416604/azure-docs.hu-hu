@@ -2,13 +2,13 @@
 title: Ügyfelek és delegált erőforrások megtekintése és kezelése
 description: Az Azure-beli delegált erőforrás-kezelést használó szolgáltatóként megtekintheti az összes delegált ügyfél-erőforrást és-előfizetést, ha a Azure Portalban lévő ügyfelekre kerül.
 ms.date: 01/22/2020
-ms.topic: conceptual
-ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 4b069c2e78021c31a85ea8fca005152e2d28231e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76543426"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636478"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Ügyfelek és delegált erőforrások megtekintése és kezelése
 
@@ -69,7 +69,7 @@ Ha ezt követően olyan szolgáltatáshoz fér hozzá, amely támogatja a [több
 
 A delegált előfizetésekhez vagy erőforráscsoportokhöz kapcsolódó funkciókat a több-bérlős felügyeletet támogató szolgáltatásokon belül is elérheti, ha kijelöli az előfizetést vagy az erőforráscsoportot a szolgáltatáson belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - Ismerje meg, hogy az ügyfelek hogyan [tekinthetik meg és kezelhetik a szolgáltatókat](view-manage-service-providers.md) a Azure Portalban **található szolgáltatók** használatával.

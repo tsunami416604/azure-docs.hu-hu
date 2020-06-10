@@ -9,12 +9,13 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 350bc92193a27b595158f65b6ae54edc1c934e35
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78194054"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608791"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: kereshető tartalom előállítása az Azure-blobokból a Python és a AI használatával
 
@@ -110,9 +111,9 @@ Ahogy az Azure Blob Storage-hoz, szánjon egy kis időt a hozzáférési kulcs g
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Rendszergazdai API-kulcs és URL-cím beszerzése az Azure Cognitive Search
 
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon szerezze be a keresési szolgáltatás nevét. A szolgáltatás nevét a végpont URL-címének áttekintésével ellenőrizheti. Ha a végpont URL- `https://mydemo.search.windows.net`címe volt, a szolgáltatás neve `mydemo`a következő lesz:.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon szerezze be a keresési szolgáltatás nevét. A szolgáltatás nevét a végpont URL-címének áttekintésével ellenőrizheti. Ha a végpont URL-címe volt `https://mydemo.search.windows.net` , a szolgáltatás neve a következő lesz: `mydemo` .
 
-2. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
@@ -164,7 +165,7 @@ Az Azure Cognitive Searchban az AI-feldolgozás az indexelés (vagy az adatfeldo
 
 Az [adatforrás-objektumok](https://docs.microsoft.com/rest/api/searchservice/create-data-source) biztosítják a kapcsolódási karakterláncot a fájlokat tartalmazó blob-tárolóhoz.
 
-A következő parancsfájlban cserélje le a helyőrzőt a-BLOB-RESOURCE-replace-STRING értékre az előző lépésben létrehozott blobhoz tartozó kapcsolatok karakterláncával. Cserélje le a tároló helyőrző szövegét. Ezután futtassa a parancsfájlt egy nevű `cogsrch-py-datasource`adatforrás létrehozásához.
+A következő parancsfájlban cserélje le a helyőrzőt a-BLOB-RESOURCE-replace-STRING értékre az előző lépésben létrehozott blobhoz tartozó kapcsolatok karakterláncával. Cserélje le a tároló helyőrző szövegét. Ezután futtassa a parancsfájlt egy nevű adatforrás létrehozásához `cogsrch-py-datasource` .
 
 ```python
 # Create a data source
@@ -203,7 +204,7 @@ Ebben a lépésben az adataira vonatkozó dúsítási lépések készletét fogj
 
 + A [Kulcskifejezések kinyerése](cognitive-search-skill-keyphrases.md) lehívja a leggyakoribb kulcskifejezéseket. 
 
-Futtassa a következő szkriptet egy nevű `cogsrch-py-skillset`készségkészlet létrehozásához.
+Futtassa a következő szkriptet egy nevű készségkészlet létrehozásához `cogsrch-py-skillset` .
 
 ```python
 # Create a skillset
@@ -291,9 +292,9 @@ print(r.status_code)
 
 A kérelemnek 201-as állapotkódot kell visszaadnia.
 
-Az egyes lapokon a kinyerési képességre vonatkozó kifejezést alkalmazzuk. A környezetének `"document/pages/*"`beállításával ezt a gazdagító a dokumentum/lapok tömb minden egyes tagja számára futtatja (a dokumentum minden oldalához).
+Az egyes lapokon a kinyerési képességre vonatkozó kifejezést alkalmazzuk. A környezetének beállításával `"document/pages/*"` ezt a gazdagító a dokumentum/lapok tömb minden egyes tagja számára futtatja (a dokumentum minden oldalához).
 
-Minden képesség a dokumentum tartalmán fut le. A feldolgozás során az Azure Cognitive Search kihasználja az egyes dokumentumokat a különböző fájlformátumokból származó tartalmak olvasásához. A forrásfájlban található szöveg egy `content` mezőbe kerül, egy pedig minden dokumentumhoz. Ezért állítsa be a bemenetet `"/document/content"`a következőként:.
+Minden képesség a dokumentum tartalmán fut le. A feldolgozás során az Azure Cognitive Search kihasználja az egyes dokumentumokat a különböző fájlformátumokból származó tartalmak olvasásához. A forrásfájlban található szöveg egy `content` mezőbe kerül, egy pedig minden dokumentumhoz. Ezért állítsa be a bemenetet a következőként: `"/document/content"` .
 
 Alább a képességcsoport grafikai ábrázolása látható.
 
@@ -309,11 +310,11 @@ Ebben a szakaszban megadhatja az index sémát úgy, hogy megadja a kereshető i
 
 A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 
-| mezőnevek: | id         | content   | languageCode | keyPhrases         | organizations     |
+| mezőnevek: | id         | tartalom   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | mezőtípusok: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
-Futtassa ezt a szkriptet a nevű `cogsrch-py-index`index létrehozásához.
+Futtassa ezt a szkriptet a nevű index létrehozásához `cogsrch-py-index` .
 
 ```python
 # Create an index
@@ -383,7 +384,7 @@ Ha ezeket az objektumokat egy indexelő alkalmazásban szeretné összekapcsolni
 
 A bemenetek kimenetekhez való csatlakoztatása mellett mező-hozzárendelések is használhatók az adatstruktúrák leállításához. További információ: [a dúsított mezők leképezése kereshető indexbe](cognitive-search-output-field-mapping.md).
 
-Futtassa ezt a parancsfájlt egy nevű `cogsrch-py-indexer`indexelő létrehozásához.
+Futtassa ezt a parancsfájlt egy nevű indexelő létrehozásához `cogsrch-py-indexer` .
 
 ```python
 # Create an indexer
@@ -537,13 +538,13 @@ A [beépített képességek](cognitive-search-predefined-skills.md) , valamint a
 
 Végezetül megtanulta, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszer további iterációkat. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Ebben a kiadásban szerepel egy belső szerkezetek (a rendszer által létrehozott bővített dokumentumok) megjelenítésére szolgáló mechanizmus. Azt is megtanulta, hogyan ellenőrizhető az indexelő állapota, és milyen objektumokat kell törölni a folyamat újrafuttatása előtt.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 

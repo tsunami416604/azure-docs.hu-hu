@@ -1,6 +1,6 @@
 ---
 title: Adatok másolása SFTP-kiszolgálóra
-description: Tudnivalók az adatoknak az SFTP-kiszolgálóra való másolásáról Azure Data Factory használatával.
+description: Megtudhatja, hogyan másolhat adatok a és az SFTP-kiszolgálóra Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -12,41 +12,41 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: f61560b01c2ac7bc4db18c31399fcce1743f4824
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cd06076e18e4c675f4b2eac8082994884ed0dbf5
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653739"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629656"
 ---
-# <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Adatok másolása az SFTP-kiszolgálóra a Azure Data Factory használatával
+# <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Adatok másolása a és az SFTP-kiszolgálóra Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használni kívánt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-sftp-connector.md)
 > * [Aktuális verzió](connector-sftp.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk az adatok és az SFTP-kiszolgáló közötti Adatmásolás módját ismerteti. A Azure Data Factoryről a [bevezető cikkben](introduction.md)olvashat bővebben.
+Ez a cikk az adatok és a biztonságos FTP (SFTP) kiszolgálóra történő másolását ismerteti. A Azure Data Factoryről a [bevezető cikkben](introduction.md)olvashat bővebben.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Ez az SFTP-összekötő a következő tevékenységek esetén támogatott:
+Az SFTP-összekötő a következő tevékenységeknél támogatott:
 
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 - [Tevékenység törlése](delete-activity.md)
 
-Pontosabban ez az SFTP-összekötő a következőket támogatja:
+Az SFTP-összekötő a következőket támogatja:
 
-- Fájlok másolása az SFTP-ből/-ból az **alapszintű** vagy a **SshPublicKey** hitelesítés használatával.
-- Fájlok másolása a-ként vagy a fájlok elemzése/létrehozása a [támogatott fájlformátumokkal és tömörítési kodekekkel](supported-file-formats-and-compression-codecs.md).
+- Fájlok másolása az SFTP-kiszolgálóról az *alapszintű* vagy a *SshPublicKey* hitelesítés használatával.
+- A fájlok másolása, illetve a [támogatott fájlformátumokat és tömörítési kodekeket](supported-file-formats-and-compression-codecs.md)tartalmazó fájlok elemzése vagy létrehozása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -56,24 +56,24 @@ A következő szakaszokban részletesen ismertetjük az SFTP-re vonatkozó Data 
 
 Az SFTP társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SFTP**. |Igen |
-| gazda | Az SFTP-kiszolgáló neve vagy IP-címe. |Igen |
-| port | Az a port, amelyen az SFTP-kiszolgáló figyel.<br/>Az engedélyezett értékek: egész szám, az alapértelmezett érték **22**. |Nem |
-| skipHostKeyValidation | Megadhatja, hogy kihagyja-e a gazdagép kulcsának érvényesítését<br/>Az engedélyezett értékek: **true**, **false** (alapértelmezett).  | Nem |
-| hostKeyFingerprint | A gazdagép kulcsának ujj-nyomtatását határozza meg. | Igen, ha a "skipHostKeyValidation" értéke false (hamis).  |
-| authenticationType | Adja meg a hitelesítési típust.<br/>Az engedélyezett értékek a következők: **Alapszintű**, **SshPublicKey**. Tekintse meg az [alapszintű hitelesítés használatát](#using-basic-authentication) és az [SSH nyilvános kulcsú hitelesítés](#using-ssh-public-key-authentication) használatát ismertető SZAKASZT további tulajdonságok és JSON-minták használatával. |Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A Type tulajdonságot az *SFTP*értékre kell beállítani. |Yes |
+| gazda | Az SFTP-kiszolgáló neve vagy IP-címe. |Yes |
+| port | Az a port, amelyen az SFTP-kiszolgáló figyel.<br/>Az engedélyezett érték egész szám, az alapértelmezett érték pedig *22*. |No |
+| skipHostKeyValidation | Megadhatja, hogy kihagyja-e a gazdagép kulcsának érvényesítését<br/>Az engedélyezett értékek: *true* és *false* (alapértelmezett).  | No |
+| hostKeyFingerprint | A gazda kulcs ujjlenyomatának meghatározása. | Igen, ha a "skipHostKeyValidation" értéke false (hamis).  |
+| authenticationType | Adja meg a hitelesítési típust.<br/>Az engedélyezett értékek az *alapszintű* és a *SshPublicKey*. További tulajdonságok: az [Egyszerű hitelesítés használata](#use-basic-authentication) szakasz. JSON-példákat az [SSH nyilvános kulcsú hitelesítés használata](#use-ssh-public-key-authentication) című szakaszban talál. |Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További információt az [Előfeltételek](#prerequisites) című szakaszban talál. Ha nincs megadva az Integration Runtime, a szolgáltatás az alapértelmezett Azure Integration Runtime használja. |No |
 
-### <a name="using-basic-authentication"></a>Alapszintű hitelesítés használata
+### <a name="use-basic-authentication"></a>Egyszerű hitelesítés használata
 
-Az alapszintű hitelesítés használatához állítsa az "authenticationType" tulajdonságot alapértékre, és adja meg a következő tulajdonságokat az SFTP-összekötő általános beállításai **mellett, az**utolsó szakaszban bemutatottak szerint:
+Az alapszintű hitelesítés használatához állítsa a *authenticationType* tulajdonságot alapértékre, és adja meg az alábbi TULAJDONSÁGOKAT az SFTP-összekötő általános tulajdonságai *mellett, amelyek*az előző szakaszban lettek bevezetve:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| userName (Felhasználónév) | Az a felhasználó, aki hozzáfér az SFTP-kiszolgálóhoz. |Igen |
-| jelszó | A felhasználó jelszava (userName). Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| userName (Felhasználónév) | Az a felhasználó, aki hozzáfér az SFTP-kiszolgálóhoz. |Yes |
+| jelszó | A felhasználó jelszava (userName). Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja azt az adatgyárban, vagy [hivatkozzon az Azure Key vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
 
 **Például**
 
@@ -96,26 +96,26 @@ Az alapszintű hitelesítés használatához állítsa az "authenticationType" t
             }
         },
         "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
+            "referenceName": "<name of integration runtime>",
             "type": "IntegrationRuntimeReference"
         }
     }
 }
 ```
 
-### <a name="using-ssh-public-key-authentication"></a>Nyilvános SSH-kulcsos hitelesítés használata
+### <a name="use-ssh-public-key-authentication"></a>Nyilvános SSH-kulcsos hitelesítés használata
 
 Az SSH nyilvános kulcsú hitelesítés használatához állítsa a "authenticationType" tulajdonságot **SshPublicKey**értékre, és adja meg a következő TULAJDONSÁGOKAT az SFTP-összekötő általános beállításai mellett, az utolsó szakaszban bemutatottak szerint:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| userName (Felhasználónév) | Az SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó |Igen |
-| privateKeyPath | A Integration Runtime számára elérhető titkos kulcsfájl abszolút elérési útjának megadása. Csak akkor érvényes, ha a "Connectvia tulajdonsággal" elemben a Integration Runtime saját üzemeltetésű típusa van megadva. | Válassza a `privateKeyPath` vagy a `privateKeyContent` .  |
-| privateKeyContent | Base64 kódolású titkos SSH-kulcs tartalma. Az SSH titkos kulcsának OpenSSH formátumúnak kell lennie. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Válassza a `privateKeyPath` vagy a `privateKeyContent` . |
-| Jelszót | Adja meg a pass kifejezést/jelszót a titkos kulcs visszafejtéséhez, ha a kulcsot egy pass kifejezés védi. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen, ha a titkos kulcs fájlját egy pass kifejezés védi. |
+| userName (Felhasználónév) | Az a felhasználó, aki hozzáfér az SFTP-kiszolgálóhoz. |Yes |
+| privateKeyPath | Itt adhatja meg az integrációs modul által elérhető titkos kulcsfájl abszolút elérési útját. Ez csak akkor érvényes, ha az integrációs modul helyi típusa "Connectvia tulajdonsággal" van megadva. | Adjon meg `privateKeyPath` vagy `privateKeyContent` .  |
+| privateKeyContent | Base64 kódolású titkos SSH-kulcs tartalma. Az SSH titkos kulcsának OpenSSH formátumúnak kell lennie. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja azt az adatgyárban, vagy [hivatkozzon az Azure Key vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Adjon meg `privateKeyPath` vagy `privateKeyContent` . |
+| Jelszót | A titkos kulcs visszafejtéséhez adja meg a pass kifejezést vagy a jelszót, ha a kulcsot egy pass kifejezés védi. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja azt az adatgyárban, vagy [hivatkozzon az Azure Key vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen, ha a titkos kulcs fájlját egy pass kifejezés védi. |
 
 > [!NOTE]
-> Az SFTP-összekötő támogatja az RSA/DSA OpenSSH-kulcsot. Győződjön meg arról, hogy a kulcsfájl tartalma "-----BEGIN [RSA/DSA] titkos kulccsal-----". Ha a titkos kulcs fájlja PPK-formátumú fájl, a PuTTY eszközzel konvertálhatja a. PPK-ből az OpenSSH formátumba. 
+> Az SFTP-összekötő támogatja az RSA/DSA OpenSSH-kulcsot. Győződjön meg arról, hogy a kulcsfájl tartalma a következővel kezdődik: "-----BEGIN [RSA/DSA] titkos kulcs-----". Ha a titkos kulcsfájl PPK-formátumú fájl, a PuTTY eszköz használatával alakítsa át a PPK-ből az OpenSSH formátumba. 
 
 **1. példa: SshPublicKey-hitelesítés a titkos kulcs filePath használatával**
 
@@ -138,7 +138,7 @@ Az SSH nyilvános kulcsú hitelesítés használatához állítsa a "authenticat
             }
         },
         "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
+            "referenceName": "<name of integration runtime>",
             "type": "IntegrationRuntimeReference"
         }
     }
@@ -169,7 +169,7 @@ Az SSH nyilvános kulcsú hitelesítés használatához állítsa a "authenticat
             }
         },
         "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
+            "referenceName": "<name of integration runtime>",
             "type": "IntegrationRuntimeReference"
         }
     }
@@ -182,13 +182,13 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-A következő tulajdonságokat támogatja az SFTP a `location` Format-alapú adatkészlet beállításai területen:
+A következő tulajdonságokat támogatja az SFTP a `location` Format-alapú adatkészlet beállítások területén:
 
-| Tulajdonság   | Description                                                  | Kötelező |
+| Tulajdonság   | Leírás                                                  | Kötelező |
 | ---------- | ------------------------------------------------------------ | -------- |
-| típus       | Az `location` adatkészletben található Type tulajdonságot **SftpLocation**értékre kell állítani. | Igen      |
-| folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | Nem       |
-| fileName   | A fájlnév a megadott folderPath alatt. Ha helyettesítő karaktereket szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | Nem       |
+| típus       | Az *type* `location` adatkészletben található Type tulajdonságot *SftpLocation*értékre kell állítani. | Yes      |
+| folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és határozza meg az elérési utat a tevékenység forrásának beállításai között. | No       |
+| fileName   | A megadott folderPath tartozó fájlnév. Ha helyettesítő karaktert szeretne használni a fájlok szűréséhez, hagyja ki ezt a beállítást, és adja meg a fájl nevét a tevékenység forrásának beállításaiban. | No       |
 
 **Például**
 
@@ -226,19 +226,19 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az SFTP `storeSettings` Formátum-alapú másolási forrás beállításai alatt a következő tulajdonságok támogatottak:
 
-| Tulajdonság                 | Description                                                  | Kötelező                                      |
+| Tulajdonság                 | Leírás                                                  | Kötelező                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| típus                     | A Type tulajdonságot a `storeSettings` **SftpReadSettings**értékre kell állítani. | Igen                                           |
-| ***Keresse meg a másolandó fájlokat:*** |  |  |
+| típus                     | A *Type* tulajdonságot a `storeSettings` *SftpReadSettings*értékre kell állítani. | Yes                                           |
+| ***A másolandó fájlok megkeresése*** |  |  |
 | 1. lehetőség: statikus elérési út<br> | Másolja az adatkészletben megadott mappa vagy fájl elérési útját. Ha az összes fájlt egy mappából szeretné másolni, azt is meg kell adnia `wildcardFileName` `*` . |  |
-| 2. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^` <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Nem                                            |
-| 2. lehetőség: helyettesítő karakter<br>- wildcardFileName | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^`  További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Igen |
-| 3. lehetőség: a fájlok listája<br>- fileListPath | Egy adott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját, soronként egy fájlt, amely az adatkészletben konfigurált útvonal relatív elérési útja.<br/>Ha ezt a beállítást használja, ne adja meg a fájl nevét az adatkészletben. További példákat a [fájllista példákban](#file-list-examples)talál. |Nem |
-| ***További beállítások:*** |  | |
-| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a rekurzív értéke TRUE (igaz), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát. <br>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |Nem |
-| modifiedDatetimeStart    | A fájlok szűrése a következő attribútum alapján: utoljára módosítva. <br>A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időtartományon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok értéke lehet NULL, ami azt jelenti, hogy nem lesz alkalmazva a file Attribute szűrő az adatkészletre.  Ha `modifiedDatetimeStart` a dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha `modifiedDatetimeEnd` a dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok, amelyek utolsó módosítási attribútuma kisebb, mint a DateTime érték, ki lesz választva.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | Nem                                            |
-| modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | Nem                                            |
-| maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem                                            |
+| 2. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (a nulla vagy egyetlen karakternek felelnek meg); `^` Ha a tényleges mappa neve helyettesítő karakter, vagy a escape-karakter szerepel a következőben, használja a Escape karaktert. <br>További példákat a [mappa-és fájlszűrő-példák](#folder-and-file-filter-examples)című témakörben talál. | No                                            |
+| 2. lehetőség: helyettesítő karakter<br>- wildcardFileName | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (a nulla vagy egyetlen karakternek felelnek meg); `^` Ha a tényleges mappa neve helyettesítő karakter, vagy a escape-karakter szerepel a következőben, használja a Escape karaktert.  További példákat a [mappa-és fájlszűrő-példák](#folder-and-file-filter-examples)című témakörben talál. | Yes |
+| 3. lehetőség: a fájlok listája<br>- fileListPath | Egy megadott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját (egy-egy fájl soronként, az adatkészletben konfigurált elérési út relatív elérési útjával).<br/>Ha ezt a beállítást használja, ne adja meg a fájl nevét az adatkészletben. További példákat itt talál: [fájllista példák](#file-list-examples). |No |
+| ***További beállítások*** |  | |
+| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha a rekurzív értéke TRUE (igaz), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másol vagy hoz létre üres mappát vagy almappát. <br>Az engedélyezett értékek: *true* (alapértelmezett) és *false (hamis*).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |No |
+| modifiedDatetimeStart    | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. <br>A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik *2018-12-01T05:00:00Z*formátumban. <br> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | No                                            |
+| modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | No                                            |
+| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No                                            |
 
 **Például**
 
@@ -281,22 +281,22 @@ Az SFTP `storeSettings` Formátum-alapú másolási forrás beállításai alatt
 ]
 ```
 
-### <a name="sftp-as-sink"></a>SFTP fogadóként
+### <a name="sftp-as-a-sink"></a>SFTP fogadóként
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Az SFTP a következő tulajdonságokat támogatja a `storeSettings` Format-alapú másolási fogadó beállításainál:
+A következő tulajdonságok támogatottak az SFTP `storeSettings` Formátum alapú másolási fogadóban lévő beállítások területen:
 
-| Tulajdonság                 | Description                                                  | Kötelező |
+| Tulajdonság                 | Leírás                                                  | Kötelező |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| típus                     | A Type tulajdonságot a `storeSettings` **SftpWriteSettings**értékre kell állítani. | Igen      |
-| copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | Nem       |
-| maxConcurrentConnections | Az adattárhoz való kapcsolódáshoz szükséges kapcsolatok száma egyszerre. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem       |
-| useTempFileRename | Jelezze, hogy fel kell-e tölteni az ideiglenes fájl (ok) ra és az átnevezésre, vagy közvetlenül írnia kell a célmappába vagy a fájl mappájába. Alapértelmezés szerint az ADF először ír az ideiglenes fájl (ok) ra, majd a feltöltés befejezésekor elvégzi a fájl átnevezését. az ütközések elkerülése érdekében a rendszer megsérült fájlt eredményezett, ha más folyamatokat ír ugyanarra a fájlra, és 2.) győződjön meg arról, hogy a fájl eredeti verziója létezik a teljes átvitel során. Ha az SFTP-kiszolgáló nem támogatja az átnevezési műveletet, tiltsa le ezt a beállítást, és győződjön meg arról, hogy nem rendelkezik egyidejű írással a célfájl számára. Lásd a táblázat alatti hibaelhárítási tippet. | Nem. Az alapértelmezett érték TRUE (igaz). |
-| operationTimeout | Az a várakozási idő, ameddig az SFTP-kiszolgálóra való írási kérelem időtúllépése megtörténjen. Az alapértelmezett érték 60 perc (01:00:00).|Nem |
+| típus                     | A *Type* tulajdonságot a `storeSettings` *SftpWriteSettings*értékre kell állítani. | Yes      |
+| copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No       |
+| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No       |
+| useTempFileRename | Jelezze, hogy az ideiglenes fájlokra kíván-e feltölteni, majd átnevezni, vagy közvetlenül a célmappába vagy a fájl helyére írja. Alapértelmezés szerint a Azure Data Factory először az ideiglenes fájlokba ír, majd átnevezi őket a feltöltés befejezésekor. Ez a szakasz segít (1) elkerülni az olyan ütközéseket, amelyek sérült fájlokat okozhatnak, ha más folyamatokat ír ugyanarra a fájlra, és (2) győződjön meg arról, hogy a fájl eredeti verziója létezik az átvitel során. Ha az SFTP-kiszolgáló nem támogatja az átnevezési műveletet, tiltsa le ezt a beállítást, és győződjön meg arról, hogy nem rendelkezik párhuzamos írási fájllal a célfájl számára. További információkért tekintse meg a tábla végén található hibaelhárítási tippet. | Nem. Az alapértelmezett érték *true (igaz*). |
+| operationTimeout | Az a várakozási idő, ameddig az SFTP-kiszolgálóra való írási kérelem időtúllépése megtörténjen. Az alapértelmezett érték 60 perc (01:00:00).|No |
 
 >[!TIP]
->Ha a "UserErrorSftpPathNotFound", "UserErrorSftpPermissionDenied" vagy "SftpOperationFail" hibát észlel az SFTP-be való íráskor, és a használt SFTP-felhasználó rendelkezik a megfelelő engedélyekkel, ellenőrizze, hogy az SFTP-kiszolgáló támogatja-e a fájl átnevezési műveletét – ha nem, tiltsa le a "feltöltés ideiglenes fájllal" ( `useTempFileRename` ) beállítást, és próbálkozzon újra. További információ erről a tulajdonságról a fenti táblázatból. Ha a másoláshoz saját üzemeltetésű Integration Runtime használ, ügyeljen arra, hogy a 4,6-es vagy újabb verziót használja.
+>Ha a "UserErrorSftpPathNotFound", "UserErrorSftpPermissionDenied" vagy "SftpOperationFail" hibaüzenet jelenik meg az SFTP-be való írás során, és *a használt SFTP-felhasználó rendelkezik a* megfelelő engedélyekkel, ellenőrizze, hogy működik-e az SFTP-kiszolgáló a fájl átnevezési műveletének támogatásával. Ha nem, tiltsa le a **feltöltés a temp file** ( `useTempFileRename` ) kapcsolóval, és próbálkozzon újra. A tulajdonsággal kapcsolatos további tudnivalókért tekintse meg az előző táblázatot. Ha a másolási tevékenységhez saját üzemeltetésű integrációs modult használ, ügyeljen arra, hogy a 4,6-es vagy újabb verziót használja.
 
 **Például**
 
@@ -335,7 +335,7 @@ Az SFTP a következő tulajdonságokat támogatja a `storeSettings` Format-alap�
 
 ### <a name="folder-and-file-filter-examples"></a>Példák a mappák és a fájlok szűrésére
 
-Ez a szakasz a mappa elérési útjának és fájlnevének a helyettesítő karakteres szűrőkkel való viselkedését írja le.
+Ez a szakasz azt a viselkedést ismerteti, amely a mappák elérési útjaival és fájlnevekkel rendelkező helyettesítő szűrők használatával jár.
 
 | folderPath | fileName | rekurzív | A forrás mappa szerkezete és a szűrő eredménye (a **félkövérrel szedett** fájlok beolvasása)|
 |:--- |:--- |:--- |:--- |
@@ -346,48 +346,46 @@ Ez a szakasz a mappa elérési útjának és fájlnevének a helyettesítő kara
 
 ### <a name="file-list-examples"></a>Példák a fájllista
 
-Ez a szakasz a fájllista elérési útjának a másolási tevékenység forrásában való használatának eredményét írja le.
+Ez a táblázat a másolási tevékenység forrásában lévő fájllista elérési útját eredményező viselkedést ismerteti. Feltételezi, hogy rendelkezik a következő forrás-mappa struktúrával, és a félkövéren szedett fájlokat szeretné másolni:
 
-Feltételezve, hogy rendelkezik a következő forrás-mappa struktúrájával, és félkövéren szeretné átmásolni a fájlokat:
-
-| Példa a forrás struktúrájára                                      | Tartalom a FileListToCopy. txt fájlban                             | ADF-konfiguráció                                            |
+| Példa a forrás struktúrájára                                      | Tartalom a FileListToCopy. txt fájlban                             | Azure Data Factory konfiguráció                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
-| legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Fájl3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metaadatok<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy. txt | File1. csv<br>Subfolder1/fájl3. csv<br>Subfolder1/File5. csv | **Az adatkészletben:**<br>-Mappa elérési útja:`root/FolderA`<br><br>**A másolási tevékenység forrása:**<br>-Fájllista elérési útja:`root/Metadata/FileListToCopy.txt` <br><br>A fájl-lista elérési útja ugyanazon az adattárban található szövegfájlra mutat, amely tartalmazza a másolni kívánt fájlok listáját, és soronként egy fájlt az adatkészletben konfigurált útvonal relatív elérési útjával. |
+| legfelső szintű<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mappa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fájl2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Fájl3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metaadatok<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy. txt | File1. csv<br>Subfolder1/fájl3. csv<br>Subfolder1/File5. csv | **Az adatkészletben:**<br>-Mappa elérési útja:`root/FolderA`<br><br>**A másolási tevékenység forrása:**<br>-Fájllista elérési útja:`root/Metadata/FileListToCopy.txt` <br><br>A fájllista elérési útja ugyanazon az adattárban található szövegfájlra mutat, amely tartalmazza a másolni kívánt fájlok listáját (egy sor, soronként egy fájl, az adatkészletben konfigurált elérési út relatív elérési útját). |
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+További információ a keresési tevékenység tulajdonságairól: [keresési tevékenység Azure Data Factoryban](control-flow-lookup-activity.md).
 
 ## <a name="getmetadata-activity-properties"></a>GetMetadata tevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md) 
+További információ a GetMetadata tevékenység tulajdonságairól: [GetMetaData Activity in Azure Data Factory](control-flow-get-metadata-activity.md). 
 
 ## <a name="delete-activity-properties"></a>Tevékenység tulajdonságainak törlése
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység törlése](delete-activity.md) lehetőséget.
+A törlési tevékenység tulajdonságaival kapcsolatos információkért lásd: [tevékenység törlése a Azure Data Factoryban](delete-activity.md).
 
 ## <a name="legacy-models"></a>Örökölt modellek
 
 >[!NOTE]
->A következő modellek továbbra is támogatottak a visszamenőleges kompatibilitás érdekében. Azt javasoljuk, hogy használja a fenti szakaszban említett új modellt, és az ADF authoring felhasználói felülete átvált az új modell generálására.
+>A következő modellek továbbra is támogatottak a visszamenőleges kompatibilitás érdekében. Javasoljuk, hogy a korábban tárgyalt új modellt használja, mert a Azure Data Factory szerzői felhasználói felülete átváltott az új modell generálására.
 
 ### <a name="legacy-dataset-model"></a>Örökölt adatkészlet-modell
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **fájlmegosztás** |Igen |
-| folderPath | A mappa elérési útja. A helyettesítő karakteres szűrő támogatott, az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy az egyetlen karakternek felel meg); `^` Ha a tényleges fájlnév helyettesítő karakter vagy a escape-karakter szerepel a rendszerben, használja a Escape karaktert. <br/><br/>Példák: gyökérmappa/almappa/, további példák a [mappák és a fájlok szűrése példákban](#folder-and-file-filter-examples). |Igen |
-| fileName |  A fájl (ok) **neve vagy helyettesítő szűrője** a megadott "folderPath". Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában található összes fájlra mutat. <br/><br/>A Filter (szűrő) esetében az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg).<br/>– 1. példa:`"fileName": "*.csv"`<br/>– 2. példa:`"fileName": "???20180427.txt"`<br/>A (z `^` ) használatával elkerülheti a mappát, ha az aktuális mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a |Nem |
-| modifiedDatetimeStart | A fájlok szűrése a következő attribútum alapján: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időtartományon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br/><br/> Ügyeljen arra, hogy az adatáthelyezés általános teljesítményét a beállítás engedélyezésével befolyásolja, ha nagy mennyiségű fájlból szeretne szűrni a fájlmegosztást. <br/><br/> A tulajdonságok értéke NULL lehet, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha `modifiedDatetimeStart` a dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha `modifiedDatetimeEnd` a dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok, amelyek utolsó módosítási attribútuma kisebb, mint a DateTime érték, ki lesz választva.| Nem |
-| modifiedDatetimeEnd | A fájlok szűrése a következő attribútum alapján: utoljára módosítva. A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időtartományon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br/><br/> Ügyeljen arra, hogy az adatáthelyezés általános teljesítményét a beállítás engedélyezésével befolyásolja, ha nagy mennyiségű fájlból szeretne szűrni a fájlmegosztást. <br/><br/> A tulajdonságok értéke NULL lehet, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha `modifiedDatetimeStart` a dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha `modifiedDatetimeEnd` a dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok, amelyek utolsó módosítási attribútuma kisebb, mint a DateTime érték, ki lesz választva.| Nem |
-| formátumban | Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban.<br/><br/>Ha a fájlokat egy adott formátummal szeretné elemezni, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](supported-file-formats-and-compression-codecs-legacy.md#text-format), JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [ork-formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és a [parketta formátuma](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) című rész. |Nem (csak bináris másolási forgatókönyv esetén) |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>A támogatott szintek a következők: **optimális** és **leggyorsabb**. |Nem |
+| típus | Az adatkészlet *Type* tulajdonságát *fájlmegosztás*értékre kell állítani. |Yes |
+| folderPath | A mappa elérési útja. Helyettesítő karakteres szűrő használata támogatott. Az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (a nulla vagy egyetlen karakternek felelnek meg); `^` Ha a tényleges fájl neve helyettesítő karakter, vagy a escape-karakter szerepel a következőben, használja a Escape karaktert. <br/><br/>Példák: gyökérmappa/almappa/, további példák a [mappák és a fájlok szűrése példákban](#folder-and-file-filter-examples). |Yes |
+| fileName |  A megadott "folderPath" alatt lévő fájlok **neve vagy helyettesítő karakteres szűrője** . Ha nem ad meg értéket ehhez a tulajdonsághoz, az adatkészlet a mappában található összes fájlra mutat. <br/><br/>A szűrő esetében az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (nulla vagy egyetlen karakter).<br/>– 1. példa:`"fileName": "*.csv"`<br/>– 2. példa:`"fileName": "???20180427.txt"`<br/>A (z `^` ) használatával elkerülheti a mappát, ha az aktuális mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter szerepel a |No |
+| modifiedDatetimeStart | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik *2018-12-01T05:00:00Z*formátumban. <br/><br/> Ha nagy számú fájlból szeretne szűrni, a rendszer az adatáthelyezés általános teljesítményét fogja érinteni. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| No |
+| modifiedDatetimeEnd | A fájlok szűrése a *legutóbb módosított*attribútum alapján történik. A fájlok akkor vannak kiválasztva, ha az utolsó módosítás időpontja a következő tartományon belül van: `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik *2018-12-01T05:00:00Z*formátumban. <br/><br/> Ha nagy számú fájlból szeretne szűrni, a rendszer az adatáthelyezés általános teljesítményét fogja érinteni. <br/><br/> A tulajdonságok lehetnek NULL értékűek, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de null értékű, az azt jelenti, hogy azok a fájlok vannak kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.| No |
+| formátumban | Ha fájlokat szeretne másolni a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban.<br/><br/>Ha a fájlokat egy adott formátummal szeretné elemezni, a következő fájlformátum-típusok támogatottak: *Szövegformátum*, *JsonFormat*, *AvroFormat*, *OrcFormat*és *ParquetFormat*. A *Type (típus* ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](supported-file-formats-and-compression-codecs-legacy.md#text-format), JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [ork-formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és a [parketta formátuma](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) című rész. |Nem (csak bináris másolási forgatókönyv esetén) |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>A támogatott típusok a *gzip*, a *deflate*, a *BZip2*és a *ZipDeflate*.<br/>A támogatott szintek *optimálisak* és *leggyorsabbak*. |No |
 
 >[!TIP]
->Egy mappa összes fájljának másolásához csak a **folderPath** kell megadni.<br>Egy adott névvel rendelkező egyetlen fájl másolásához adja meg a **folderPath** és a fájlnév nevű **fájlnevet** .<br>Ha egy mappában lévő fájlok egy részhalmazát szeretné másolni, akkor a **folderPath** és a **filename** paramétert a helyettesítő karakteres szűrővel.
+>Egy mappa összes fájljának másolásához csak a *folderPath* kell megadni.<br>Egy megadott névvel rendelkező fájl másolásához adja meg a *folderPath* a mappa részét és *fájlnevét* a fájlnévvel.<br>Ha egy mappában lévő fájlok egy részhalmazát szeretné átmásolni, akkor a *folderPath* és a *fájlnevet* a helyettesítő karakteres szűrővel kell megadnia.
 
 >[!NOTE]
->Ha a "fileFilter" tulajdonságot használta a fájl szűrőhöz, a rendszer továbbra is támogatja a-t, míg a rendszer a "fileName" kifejezéshez hozzáadott új szűrő funkció használatát javasolja.
+>Ha a *fileFilter* tulajdonságot használta a fájl szűrőhöz, azt a rendszer továbbra is támogatja, de azt javasoljuk, hogy mostantól a *fájlnévhez* hozzáadott új szűrő funkciót használja.
 
 **Például**
 
@@ -422,11 +420,11 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 
 ### <a name="legacy-copy-activity-source-model"></a>Örökölt másolási tevékenység forrásának modellje
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **FileSystemSource** |Igen |
-| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az alárendelt mappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a rekurzív értéke TRUE (igaz), a fogadó pedig a fájl alapú tároló, akkor a rendszer nem másolja/hozza létre az üres mappát/almappát a fogadóban.<br/>Az engedélyezett értékek: **true** (alapértelmezett), **false** | Nem |
-| maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem |
+| típus | A másolási tevékenység forrásának *Type* tulajdonságát *FileSystemSource* értékre kell állítani. |Yes |
+| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha a rekurzív értéke TRUE ( *igaz* ), a fogadó pedig egy fájl alapú tároló, az üres mappákat és almappákat a rendszer nem másolja vagy hozza létre a fogadón.<br/>Az engedélyezett értékek értéke *true* (alapértelmezett) és *false (hamis* ) | No |
+| maxConcurrentConnections | A tárolási tárolóhoz egyidejűleg csatlakozható kapcsolatok száma. Csak akkor válasszon számot, ha szeretné korlátozni az egyidejű kapcsolatokat az adattárral. | No |
 
 **Például**
 
@@ -460,5 +458,5 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Következő lépések
+A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listájáért lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

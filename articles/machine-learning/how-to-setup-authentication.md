@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 12/17/2019
 ms.custom: has-adal-ref
-ms.openlocfilehash: 57160088c283b1f2c686429168cc858fee58324a
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e6fd2ba9210aa8f133ed08e850e4ded978682988
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433120"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629241"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,9 +71,14 @@ A teszteléshez és a tanuláshoz is hasznos, az interaktív hitelesítés nem s
 
 Ez a folyamat egy adott felhasználói bejelentkezéstől leválasztott hitelesítés engedélyezéséhez szükséges, amely lehetővé teszi, hogy hitelesítse a Azure Machine Learning Python SDK-t az automatizált munkafolyamatokban. Az egyszerű szolgáltatás hitelesítése lehetővé teszi [a REST API hitelesítését](#azure-machine-learning-rest-api-auth)is.
 
-Az egyszerű szolgáltatás hitelesítésének beállításához először létre kell hoznia egy alkalmazást a Azure Active Directoryban, majd az alkalmazás szerepköralapú hozzáférését kell adnia az ML-munkaterülethez. A beállítás végrehajtásának legegyszerűbb módja a Azure Portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) . Miután bejelentkezett a portálra, kattintson az `>_` oldal jobb felső sarkában található ikonra a Shell megnyitásához.
+> [!TIP]
+> Az egyszerű szolgáltatásoknak az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md)használatával kell rendelkezniük a munkaterülethez való hozzáféréssel.
+>
+> A **tulajdonos** vagy **közreműködő** beépített szerepköreinek használata a munkaterületen lehetővé teszi, hogy az egyszerű szolgáltatás végrehajtsa az összes olyan tevékenységet, mint például a modell betanítása, a modell üzembe helyezése stb. További információ a szerepkörök használatáról: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
 
-Ha még nem használta a Cloud shellt az Azure-fiókjában, létre kell hoznia egy Storage-fiók erőforrást az összes megírt fájl tárolásához. Általánosságban elmondható, hogy ez a Storage-fiók egy elhanyagolható havi költséget von maga után. Ha korábban még nem használta a következő paranccsal, telepítse a Machine learning-bővítményt.
+Az egyszerű szolgáltatás hitelesítésének beállításához először létre kell hoznia egy alkalmazást a Azure Active Directoryban, majd hozzá kell rendelnie egy szerepkört az alkalmazáshoz. A beállítás végrehajtásának legegyszerűbb módja a Azure Portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) . Miután bejelentkezett a portálra, kattintson az `>_` oldal jobb felső sarkában található ikonra a Shell megnyitásához.
+
+Ha még nem használta a Cloud Shell az Azure-fiókjában, létre kell hoznia egy Storage-fiók erőforrást az összes megírt fájl tárolásához. Általánosságban elmondható, hogy ez a Storage-fiók egy elhanyagolható havi költséget von maga után. Ha korábban még nem használta a következő paranccsal, telepítse a Machine learning-bővítményt.
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -307,6 +312,9 @@ A jogkivonat-hitelesítés vezérléséhez használja a `token_auth_enabled` par
 
 Ha engedélyezve van a jogkivonat-hitelesítés, a metódus használatával kérhet `get_token` le egy JSON web token (JWT) és a jogkivonat lejárati idejét:
 
+> [!TIP]
+> Ha a jogkivonat lekéréséhez egyszerű szolgáltatásnevet használ, és azt szeretné, hogy a jogkivonat lekéréséhez minimálisan szükséges legyen a hozzáférés, rendelje hozzá a munkaterülethez tartozó **olvasó** szerepkörhöz.
+
 ```python
 token, refresh_by = service.get_token()
 print(token)
@@ -323,5 +331,6 @@ print(token)
 
 ## <a name="next-steps"></a>Következő lépések
 
+* A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Rendszerkép-besorolási modell betanítása és üzembe helyezése](tutorial-train-models-with-aml.md).
 * [Webszolgáltatásként üzembe helyezett Azure Machine learning modell](how-to-consume-web-service.md)használata.

@@ -7,16 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74069624"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609165"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatások
 
  Az analitikai összetevők optimális rendelkezésre állásának biztosítása érdekében a HDInsight egy egyedi architektúrával lett kifejlesztve, amely biztosítja a kritikus szolgáltatások magas rendelkezésre állását (HA). Az architektúra egyes összetevőit a Microsoft fejlesztette ki automatikus feladatátvétel biztosításához. A többi összetevő a szabványos Apache-összetevők, amelyek az adott szolgáltatások támogatására lettek telepítve. Ez a cikk ismerteti az IF Service-modell architektúráját a HDInsight-ben, hogy a HDInsight hogyan támogatja a feladatátvételt a HA szolgáltatások esetében, valamint az ajánlott eljárásokat a más szolgáltatásokból való helyreállításhoz.
+ 
+> [!NOTE]
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
+
 
 ## <a name="high-availability-infrastructure"></a>Magas rendelkezésre állású infrastruktúra
 
@@ -48,9 +55,9 @@ A következő szakaszokban részletesebben tájékozódhat arról, hogy ezek a s
 
 A Microsoft támogatja a négy apache-szolgáltatást a következő táblázatban a HDInsight-fürtökben. Az Apache-összetevők által támogatott magas rendelkezésre állású szolgáltatásokból való különbségtételhez *HDINSIGHT ha-szolgáltatásoknak*nevezzük.
 
-| Szolgáltatás | Fürtcsomópontok | Fürtök típusai | Cél |
+| Szolgáltatás | Fürtcsomópontok | Fürtök típusai | Szerep |
 |---|---|---|---|
-| Apache Ambari-kiszolgáló| Aktív átjárócsomóponthoz | Összes | Figyeli és kezeli a fürtöt.|
+| Apache Ambari-kiszolgáló| Aktív átjárócsomóponthoz | Mind | Figyeli és kezeli a fürtöt.|
 | Application Timeline-kiszolgáló Apache-SZÁLhoz | Aktív átjárócsomóponthoz | A Kafka kivételével | A fürtön futó fonal-feladatokkal kapcsolatos hibakeresési adatokat kezeli.|
 | A Hadoop MapReduce tartozó korábbi feladatok kiszolgálója | Aktív átjárócsomóponthoz | A Kafka kivételével | A MapReduce-feladatok hibakeresési adatait kezeli.|
 | Apache Livy | Aktív átjárócsomóponthoz | Spark | Egyszerű interakciót tesz lehetővé egy Spark-fürttel REST-felületen keresztül |
@@ -131,7 +138,7 @@ A fonal erőforráskezelő magas rendelkezésre állása független a NameNode �
 
 A HDInsight HBase-fürtök támogatják HBase Master magas rendelkezésre állást. A átjárócsomópontokkal-on futó egyéb HA-szolgáltatásokkal ellentétben a HBase-főkiszolgálók a három Zookeeper csomóponton futnak, ahol az egyik az aktív főkiszolgáló, a másik kettő pedig készenléti. A NameNode-hez hasonlóan HBase Master az Apache Zookeeper-vel való koordinátákat a Leader-választásokhoz, és automatikus feladatátvételt hajt végre, ha a jelenlegi aktív főkiszolgáló problémába Egyszerre csak egy aktív HBase Master van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](hdinsight-high-availability-linux.md)
 - [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)

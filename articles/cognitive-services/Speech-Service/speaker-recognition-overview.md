@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261785"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635169"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Mi az Azure Speaker Recognition szolgáltatás?
 
@@ -27,7 +27,7 @@ Speaker Verification leegyszerűsíti a regisztrált hangszórók azonosításá
 
 ### <a name="how-does-speaker-verification-work"></a>Hogyan működik Speaker Verification?
 
-![Hogyan működik a beszélő ellenőrzése?](media/speaker-recognition/speaker-rec.png)
+:::image type="content" source="media/speaker-recognition/speaker-rec.png" alt-text="Speaker Verification folyamatábra.":::
 
 A beszélő ellenőrzése szövegtől függő vagy szövegtől független lehet. A **szövegtől függő** ellenőrzés azt jelenti, hogy a hangszóróknak ugyanazt a jelszót kell kiválasztaniuk, amelyet a regisztrálási és ellenőrzési fázisokban is használni kell. A **szövegtől független** ellenőrzés azt jelenti, hogy a hangszórók a beléptetési és ellenőrző kifejezésekben a mindennapos nyelven szólalnak fel.
 
@@ -56,7 +56,8 @@ Szabályozhatja, hogy mennyi ideig kell megőrizni az adatmegőrzési időtartam
 
 Akárcsak az összes Cognitive Services erőforrás esetében, a Speaker Recognition szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. Győződjön meg arról, hogy megkapta a megfelelő engedélyeket a felhasználóktól Speaker Recognition számára. További információkért tekintse meg a [Cognitive Services page](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)   Microsoft adatvédelmi központjának Cognitive Services lapját. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
+> * Az alkalmazásokban használható általános tervezési minták futtatásához hajtsa végre a Speaker Recognition [alapjaival](speaker-recognition-basics.md) foglalkozó cikket.
 > * Tekintse meg a szöveg-független hangszórók ellenőrzésének [videós oktatóanyagát](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) .

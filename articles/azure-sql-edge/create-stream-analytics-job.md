@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 323ec00667350917e6b16827f908ac1abeee77d6
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4b09df3110907d58badda2c389b9ee39a9b02532
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233305"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636189"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió) 
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan lehet T-SQL streaming-feladatot létrehozni az A
 2. A folyamatos átviteli feladatok létrehozásának részeként adja meg a folyamatos átviteli feladatok lekérdezését.
 
 > [!NOTE]
-> Az Azure SQL Edge-ben a T-SQL streaming funkció engedélyezéséhez engedélyezze a TF 11515-as indítási lehetőséget, vagy használja a [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) parancsot. További információ a nyomkövetési jelzők MSSQL. conf fájl használatával történő engedélyezéséről: [Konfigurálás az MSSQL. conf fájllal](configure.md#configure-using-mssqlconf-file). Ez a követelmény el lesz távolítva az Azure SQL Edge (előzetes verzió) jövőbeli frissítéseiben.
+> Az Azure SQL Edge-ben a T-SQL streaming funkció engedélyezéséhez engedélyezze a TF 11515-as indítási lehetőséget, vagy használja a [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) parancsot. A nyomkövetési jelzők MSSQL. conf fájllal való engedélyezésével kapcsolatos további információkért lásd [az MSSQL. conf fájl használatával történő konfigurálást](configure.md#configure-by-using-an-mssqlconf-file)ismertető témakört. Ez a követelmény el lesz távolítva az Azure SQL Edge (előzetes verzió) jövőbeli frissítéseiben.
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>Külső stream bemeneti és kimeneti objektumának konfigurálása
 
@@ -44,10 +44,10 @@ Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-
 
 | Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub | Y | Y | Az adatforrást az adatfolyamok Azure IoT Edge hubhoz való olvasására és írására. Azure IoT Edge hubhoz vonatkozó további információkért lásd: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
-| SQL Database | N | Y | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. A SQL Database lehet helyi SQL Edge-adatbázis vagy távoli SQL Server vagy Azure SQL Database|
-| Azure Blob Storage | N | Y | Adatforrás, amely az Azure Storage-fiókban lévő blobba írja az adatforrást. |
-| Kafka | Y | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. Ez az adapter jelenleg csak az Azure SQL Edge Intel/AMD verziójához érhető el, és nem érhető el az SQL Edge ARM64 verziójához.|
+| Azure IoT Edge hub | I | I | Az adatforrást az adatfolyamok Azure IoT Edge hubhoz való olvasására és írására. Azure IoT Edge hubhoz vonatkozó további információkért lásd: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
+| SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. A SQL Database lehet helyi SQL Edge-adatbázis vagy távoli SQL Server vagy Azure SQL Database|
+| Azure Blob Storage | N | I | Adatforrás, amely az Azure Storage-fiókban lévő blobba írja az adatforrást. |
+| Kafka | I | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. Ez az adapter jelenleg csak az Azure SQL Edge Intel/AMD verziójához érhető el, és nem érhető el az SQL Edge ARM64 verziójához.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Példa: külső stream bemeneti/kimeneti objektum létrehozása Azure IoT Edge hubhoz
 

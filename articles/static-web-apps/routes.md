@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4a9639343827ebc5bb17a6d62d9b65d0b561e932
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 84067917a43fc7c84770b8852f11622ffe2af930
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597743"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629312"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Útvonalak az Azure statikus Web Apps előzetes verziójában
 
@@ -45,10 +45,10 @@ A Routes _. JSON_ fájlban az útvonalakat a tulajdonsághoz tartozó útvonal-s
 
 | Szabály tulajdonsága  | Kötelező | Alapértelmezett érték | Megjegyzés                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Igen      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \* _ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja az _index. html_.</ul>|
-| `serve`        | Nem       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` meg van adva egy érték, a rendszer a kért elérési utat használja. |
-| `allowedRoles` | Nem       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz a [meghívások](authentication-authorization.md)útján vannak társítva.</ul> |
-| `statusCode`   | Nem       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
+| `route`        | Yes      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \* _ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja az _index. html_.</ul>|
+| `serve`        | No       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` meg van adva egy érték, a rendszer a kért elérési utat használja. |
+| `allowedRoles` | No       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz a [meghívások](authentication-authorization.md)útján vannak társítva.</ul> |
+| `statusCode`   | No       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
 
 ## <a name="securing-routes-with-roles"></a>Útvonalak biztonságossá tétele szerepkörökkel
 
@@ -214,6 +214,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre útválasztási szabályokat s
     },
     {
       "errorType": "Unauthenticated",
+      "statusCode": "301",
       "serve": "/login"
     }
   ]
@@ -242,7 +243,7 @@ Az alábbi példák azt írják le, mi történik, ha egy kérelem megfelel egy 
 - Az _Routes. JSON_ fájl nem lehet nagyobb, mint 100 kb
 - Az _Routes. JSON_ fájl legfeljebb 50 különböző szerepkört támogat
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hitelesítés és engedélyezés beállítása](authentication-authorization.md)

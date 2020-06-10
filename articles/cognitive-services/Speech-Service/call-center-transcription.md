@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806320"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636126"
 ---
 # <a name="speech-service-for-telephony-data"></a>Beszédfelismerési szolgáltatás a telefonos adatkezeléshez
 
@@ -40,7 +40,7 @@ A beszédfelismerési szolgáltatás funkcióinak funkcionális aspektusán fel�
 - A valós idejű elemzések, amelyek a hangjelek feldolgozását végzik a különböző elemzések kinyeréséhez, miközben a hívás zajlik (a hangulat Kiemelt használati eset).
 - A hangvezérelt asszisztensek (robotok), vagy az ügyfél és a robot közötti párbeszédet vezetik be arra, hogy az ügyfél nem vesz részt az ügynök részvételével, vagy hogy a mesterséges intelligencia (AI) protokollok alkalmazásával segítse az ügynököt.
 
-A Batch-forgatókönyv megvalósításának tipikus architektúrás ábrája a Call Center transzkripciós Architecture alábbi ![ábrán látható.](media/scenarios/call-center-transcription-architecture.png)
+A Batch-forgatókönyv megvalósításának tipikus architektúrás ábrája a ![ Call Center transzkripciós Architecture alábbi ábrán látható.](media/scenarios/call-center-transcription-architecture.png)
 
 ## <a name="speech-analytics-technology-components"></a>A Speech Analytics technológiai összetevői
 
@@ -62,7 +62,7 @@ Nem ritka, hogy egy támogatási hívás 35%-ában a nem beszélgetési időpont
 
 Néhány vállalat kísérletezik az idegen nyelvi támogatási hívások fordításával, így a kézbesítő vezetők megismerhetik az ügyfelek globális felhasználói élményét. A [fordítási](translation.md) képességek felülmúlhatatlanok. Nagy számú területi beállításhoz hang-hang vagy hang-szöveg is fordítható.
 
-### <a name="text-to-speech"></a>Szövegfelolvasás
+### <a name="text-to-speech"></a>Text to Speech
 
 A [szöveg és a beszéd](text-to-speech.md) egy másik fontos része az ügyfelekkel kommunikáló robotok megvalósításának. A tipikus elérési út az, hogy az ügyfél beszél, a hangjuk szövegbe kerül, a szöveget pedig a szándékok alapján elemezzük, a válasz a felismert szándékon alapul, és az eszköz felszínre kerül az ügyfél számára, vagy egy szintetizált hangválasztó jön létre. Természetesen mindeznek gyorsan kell történnie – ezért az alacsony késés a rendszerek sikeres sikerének fontos eleme.
 
@@ -97,7 +97,7 @@ Egy tipikus megoldás ezeket a szolgáltatásokat használja:
 - A [Azure functions](https://docs.microsoft.com/azure/azure-functions/) a közös hozzáférésű aláírások (SAS) URI-azonosítójának létrehozására szolgál az egyes rögzítésekhez, és a http post-kérés elindításával indíthatja el az átírást. Emellett Azure Functions a Batch-átírási API-val történő átírások beolvasására és törlésére vonatkozó kérések létrehozására szolgál.
 
 Belsőleg a fenti technológiákat használjuk a Microsoft ügyfél-hívások kötegelt módban történő támogatásához.
-![Batch-architektúra](media/scenarios/call-center-batch-pipeline.png)
+:::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="A Microsoft ügyfél-hívások kötegelt módban történő támogatásához használt technológiák.":::
 
 ## <a name="real-time-transcription-for-call-center-data"></a>A Call Center-adattovábbítás valós idejű átírása
 
@@ -125,7 +125,7 @@ Egy másik forgatókönyv a közvetlen integráció a munkamenet-kezdeményező 
 | -------------- | ----- | ----------- |
 | Diktálás | [Akusztikai modell](how-to-customize-acoustic-models.md) | Hozzon létre egy egyéni akusztikai modellt olyan alkalmazásokhoz, eszközökhöz vagy eszközökhöz, amelyeket az adott környezetben, például autóban vagy gyári szinten használnak, és amelyek külön rögzítési feltételekkel rendelkeznek. Ilyenek például az ékezetes beszédek, a konkrét háttérzajok, vagy egy adott mikrofon használata a rögzítéshez. |
 |                | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható az iparágra jellemző szókincs és nyelvtan, például az orvosi szakkifejezések vagy az informatikai szakzsargonk átírása. |
-|                | [Kiejtési modell](how-to-customize-pronunciation.md) | Egyéni kiejtési modellel megadhatja a fonetikus űrlapot, és megjelenítheti egy szót vagy kifejezést. Ez hasznos a testreszabott kifejezések, például a terméknév vagy a betűszók kezelésére. Mindössze annyit kell tennie, hogy megkezdi a kiejtési fájlt, `.txt` amely egy egyszerű fájl. |
+|                | [Kiejtési modell](how-to-customize-pronunciation.md) | Egyéni kiejtési modellel megadhatja a fonetikus űrlapot, és megjelenítheti egy szót vagy kifejezést. Ez hasznos a testreszabott kifejezések, például a terméknév vagy a betűszók kezelésére. Mindössze annyit kell tennie, hogy megkezdi a kiejtési fájlt, amely egy egyszerű `.txt` fájl. |
 | Szövegfelolvasás | [Hangtípusok](how-to-customize-voice-font.md) | Az egyéni hangbetűkészletek lehetővé teszik a márka felismerhető, egyfajta hangjának létrehozását. A kezdéshez csak kis mennyiségű adat szükséges. Minél több, az Ön által megadott információ, annál természetesebb és emberi – például a hangbetűkészletek is megszólalnak. |
 
 ## <a name="sample-code"></a>Mintakód
@@ -144,7 +144,7 @@ A mintakód a GitHubon érhető el a beszédfelismerési szolgáltatás egyes fu
 - [REST API: szövegről beszédre](rest-text-to-speech.md)
 - [REST API: kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 81ed10f0b3b2a8042f0766f89bb99d7cad950fca
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140929"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637482"
 ---
 > [!NOTE]
 > Az észleléshez `PHI` használja a `domain=phi` paramétert és a modell verzióját, `2020-04-01` vagy később.
@@ -22,7 +22,7 @@ ms.locfileid: "84140929"
  
 A rendszer a következő entitás-kategóriákat adja vissza a végpontra irányuló kérelmek küldésekor `/v3.1-preview.1/entities/recognition/pii` .
 
-| Kategória   | Subcategory | Description                          | Modell verziójának indítása | Megjegyzések |
+| Kategória   | Subcategory | Leírás                          | Modell verziójának indítása | Megjegyzések |
 |------------|-------------|--------------------------------------|------------------------|---|
 | Személy     | N/A         | Személyek nevei.  | `2019-10-01`  | Szintén visszaadott `domain=phi` . |
 | PersonType | N/A         | Egy személy által birtokolt feladattípusok vagy szerepkörök. | `2020-02-01` | |
@@ -40,14 +40,14 @@ A rendszer a következő entitás-kategóriákat adja vissza a végpontra irány
 | DateTime | Dátum | Naptári dátumok. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
 | Mennyiség | N/A | Számok és numerikus mennyiségek. | `2019-10-01` |  |
 | Mennyiség | Kor | Alábbi korhatárt szabja. | `2019-10-01` | | |
-| Betegségek nemzetközi osztályozása (ICD-10-CM) | N/A | A betegségek nemzetközi besorolásával, a kilencedik változattal kapcsolatos entitások.   | `2020-04-01` | Szintén visszaadott `domain=phi` . |
-| Betegségek nemzetközi osztályozása (ICD-10-CM) | N/A | A betegségek nemzetközi besorolásával, tizedik változatával kapcsolatos entitások.    | `2020-04-01` | Szintén visszaadott `domain=phi` . |
+| Betegségek nemzetközi osztályozása (ICD-10-CM) | N/A | A betegségek nemzetközi besorolásával, a kilencedik változattal kapcsolatos entitások.   | `2020-04-01` | |
+| Betegségek nemzetközi osztályozása (ICD-10-CM) | N/A | A betegségek nemzetközi besorolásával, tizedik változatával kapcsolatos entitások.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure-információk
 
 Az entitás kategóriája tartalmaz egy azonosítható Azure-információt, beleértve a hitelesítési adatokat és a kapcsolatok karakterláncait. A modell verziójától kezdődően érhető el `2019-10-01` . A paraméterrel nem tért vissza `domain=phi` .
 
-| Subcategory                           | Description                                                                 |
+| Subcategory                           | Leírás                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Azure DocumentDB-hitelesítési kulcs             | Egy Azure DocumentDB-kiszolgáló engedélyezési kulcsa.                           |
 | Azure IAAS adatbázis-kapcsolatok karakterlánca és Azure SQL-kapcsolatok karakterlánca | Az Azure infrastruktúra-szolgáltatás (IaaS) adatbázisának és az SQL-kapcsolatok karakterláncának a kapcsolatainak karakterlánca. |

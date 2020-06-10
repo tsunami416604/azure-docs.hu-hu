@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: db7bfbef7435c47aa011c5f19e8c52d013c88dc3
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229860"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636682"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
@@ -124,6 +124,15 @@ mysql -h mydb.mysql.database.azure.com \
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
 
+Fontos szempontok a csatlakozáskor:
+
+* `user@tenant.onmicrosoft.com`annak az Azure AD-felhasználónak vagy-csoportnak a neve, amelyhez csatlakozni próbál
+* Mindig fűzze hozzá a kiszolgálónevet az Azure AD-felhasználó/csoport neve után (például `@mydb` )
+* Ügyeljen arra, hogy pontosan az Azure AD-felhasználó vagy-csoport nevének pontos módját használja
+* Az Azure AD felhasználói és csoportjai neve megkülönbözteti a kis-és nagybetűket
+* Csoportként való csatlakozáskor csak a csoport nevét használja (például). `GroupName@mydb`
+* Ha a név szóközöket tartalmaz, akkor az `\` egyes területek előtt használja a megszökni
+
 Vegye figyelembe, hogy az "Enable-titkosítatlan-plugin" beállítással hasonló konfigurációt kell használnia más ügyfelekkel, hogy a tokent a rendszer a kivonat nélkül küldje el a kiszolgálónak.
 
 Most már hitelesítette a MySQL-kiszolgálót az Azure AD-hitelesítés használatával.
@@ -199,7 +208,7 @@ A legtöbb illesztőprogram támogatott, azonban győződjön meg arról, hogy a
 * Indítás
   * Go-SQL-illesztőprogram: támogatott, Hozzáadás `?tls=true&allowCleartextPasswords=true` a kapcsolódási karakterlánchoz
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat Azure Database for MySQL
 

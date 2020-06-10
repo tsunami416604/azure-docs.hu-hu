@@ -13,12 +13,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 925e6788035952a4e7b54b8d50b910243a754a09
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 31dba12023643f96018d1192111a19c80d0ba3ef
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041282"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636206"
 ---
 # <a name="tutorial-add-a-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -429,7 +429,7 @@ Virtuális hálózat létrehozásához kövesse az alábbi lépéseket:
 
     | **Mező** | Érték |
     | --- | --- |
-    | **Név** |  Annak a virtuális hálózatnak a neve, amelyet a másodlagos SQL felügyelt példánya használni fog, például: `vnet-sql-mi-secondary` . |
+    | **Name (Név)** |  Annak a virtuális hálózatnak a neve, amelyet a másodlagos SQL felügyelt példánya használni fog, például: `vnet-sql-mi-secondary` . |
     | **Címtér** | A virtuális hálózat címterület, például: `10.128.0.0/16` . | 
     | **Előfizetés** | Az az előfizetés, amelyben az elsődleges SQL felügyelt példánya és az erőforráscsoport található. |
     | **Régió** | Az a hely, ahová telepíteni fogja a másodlagos SQL felügyelt példányát. |
@@ -458,7 +458,7 @@ Hozza létre a másodlagos SQL felügyelt példányt a Azure Portal használatá
 
 1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon. 
 1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A különböző adatbázisokkal kapcsolatos további információkat az adatbázisok csempén a Részletek megjelenítése lehetőség kiválasztásával tekintheti meg.
-1. Válassza a **Létrehozás** lehetőséget az **SQL SQL felügyelt példányok** csempén. 
+1. Válassza a **Létrehozás** lehetőséget a **felügyelt SQL-példányok** csempén. 
 
     ![SQL felügyelt példány kiválasztása](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
@@ -762,7 +762,7 @@ Hozza létre az elsődleges SQL felügyelt példány virtuális hálózatának �
     | **Mező** | Érték |
     | --- | --- |
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges SQL felügyelt példánya. |
-    | **Név** | A virtuális hálózati átjáró neve, például: `primary-mi-gateway` . | 
+    | **Name (Név)** | A virtuális hálózati átjáró neve, például: `primary-mi-gateway` . | 
     | **Régió** | Az a régió, ahol az elsődleges SQL felügyelt példánya. |
     | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
     | **VPN-típus** | **Útvonal-alapú** |
@@ -844,7 +844,7 @@ A Azure Portal használatával ismételje meg az előző szakaszban leírt lép�
    | **Mező** | Érték |
    | --- | --- |
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos SQL felügyelt példánya. |
-   | **Név** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . | 
+   | **Name (Név)** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . | 
    | **Régió** | Az a régió, amelyben a másodlagos SQL felügyelt példánya van. |
    | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
    | **VPN-típus** | **Útvonal-alapú** |
@@ -1149,7 +1149,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy feladatátvételi csoportot konfigurált két SQL felügyelt példány között. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

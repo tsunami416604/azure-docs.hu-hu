@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 0d0e3220d38f9824b9504a0077d6742a62aeb9e8
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 81c14da762e0ff92305456aa89f06949c7039868
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204990"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629278"
 ---
 # <a name="enhanced-secure-score-preview-in-azure-security-center"></a>Bővített biztonságos pontszám (előzetes verzió) Azure Security Center
 
@@ -106,7 +106,7 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Biztonságos felügyeleti portok (max. pontszám 8)</p></strong>A találgatásos támadás célja, hogy hozzáférjen a virtuális géphez. Mivel a portok nem mindig nyílnak meg, az egyik kockázatcsökkentő stratégia az igény szerinti hálózati hozzáférés-vezérléssel, a hálózati biztonsági csoportokkal és a virtuálisgép-portok felügyeletével való kitettség csökkentése.<br>Mivel számos informatikai szervezet nem blokkolja a hálózatról kimenő SSH-kommunikációt, a támadók olyan titkosított alagutakat hozhatnak létre, amelyek lehetővé teszik a fertőzött rendszereken lévő RDP-portok számára a támadók számára a kiszolgálók vezérlését. A támadók a Rendszerfelügyeleti webszolgáltatások alrendszerével később áthelyezhetik a környezetét, és ellopott hitelesítő adatokkal érhetik el a hálózat egyéb erőforrásait.</td>
-    <td class="tg-lboi"; width=55%>-Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken<br>-A virtuális gépeket hálózati biztonsági csoporttal kell társítani<br>-A felügyeleti portokat be kell zárni a virtuális gépeken</td>
+    <td class="tg-lboi"; width=55%>-A virtuális gépek felügyeleti portjait az igény szerinti hálózati hozzáférés-vezérléssel kell védeni<br>-A virtuális gépeket hálózati biztonsági csoporttal kell társítani<br>-A felügyeleti portokat be kell zárni a virtuális gépeken</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Rendszerfrissítések alkalmazása (max. pontszám 6)</p></strong>A rendszerfrissítések biztosítják a szervezetek számára a működési hatékonyság fenntartását, csökkentik a biztonsági réseket, és stabilabb környezetet biztosítanak a végfelhasználók számára. A frissítések nem vonatkoznak a nem javított biztonsági rések és a támadásokra fogékony környezetek eredményeire. Ezek a sebezhetőségek felhasználhatók, és az adatvesztés, az adatkiszűrése, a ransomware és az erőforrás-visszaélések eléréséhez vezethetnek. A rendszerfrissítések központi telepítéséhez a <a href="https://docs.microsoft.com/azure/automation/automation-update-management">Update Management megoldás segítségével kezelheti a virtuális gépek javításait és frissítéseit</a> . Az Update Management a szoftverek kiadásainak központi telepítésének és karbantartásának szabályozása.</td>
@@ -186,7 +186,7 @@ Igen. Javasoljuk, hogy tiltsa le a javaslatokat, ha azok nem alkalmazhatók a k�
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>Ha egy biztonsági vezérlő nulla pontot biztosít a biztonságos pontszám felé, figyelmen kívül hagyhatom?
 Bizonyos esetekben a vezérlőelem maximális pontszáma nullánál nagyobb lesz, de a hatás nulla. Ha az erőforrások kijavításának növekményes pontszáma elhanyagolható, a rendszer nulla értékűre kerekíti. Ne hagyja figyelmen kívül ezeket az ajánlásokat, mivel azok továbbra is biztonsági javítást tesznek lehetővé. Az egyetlen kivétel a "további ajánlott eljárás" vezérlő. Szervizelését ezekkel az ajánlásokkal nem növeli a pontszámát, de a teljes biztonságot is növeli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a biztonságos pontszámot és az általa bevezetett biztonsági ellenőrzéseket ismerteti. A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 

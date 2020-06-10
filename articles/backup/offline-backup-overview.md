@@ -3,12 +3,12 @@ title: Az offline biztonsági mentés áttekintése
 description: További információ az offline biztonsági mentés összetevőiről. Az Azure import/export szolgáltatás alapján Azure Data Box és offline biztonsági mentésen alapuló offline biztonsági mentést is tartalmaznak.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744637"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628347"
 ---
 # <a name="overview-of-offline-backup"></a>Az offline biztonsági mentés áttekintése
 
@@ -60,7 +60,7 @@ Az architektúra összefoglalása:
 
 Ha az Azure import/export szolgáltatáson alapuló offline biztonsági mentést szeretné használni a MARS-ügynökkel, tekintse [meg a Azure Backup offline biztonsági mentési munkafolyamatát](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
 
-Ha a MABS vagy a DPM-A szolgáltatással együtt szeretné használni, tekintse meg a [DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
+Ha a MABS vagy a DPM-A szolgáltatással együtt szeretné használni, tekintse meg a [DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
 
 ## <a name="offline-backup-support-summary"></a>Offline biztonsági mentési támogatás összegzése
 
@@ -79,8 +79,8 @@ A következő táblázat összehasonlítja a két elérhető lehetőséget, így
 
 * Ha az országa vagy régiója nem rendelkezik Azure-adatközpontgal, a lemezeket egy másik országban/régióban lévő Azure-adatközpontba kell szállítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Offline biztonsági mentés Azure Backup Azure Data Box használatával](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Offline biztonsági mentési munkafolyamat a Azure Backup](backup-azure-backup-import-export.md)
-- [A DPM és a Azure Backup Server kapcsolat nélküli biztonsági mentési munkafolyamata](backup-azure-backup-server-import-export-.md)
+- [A DPM és a Azure Backup Server kapcsolat nélküli biztonsági mentési munkafolyamata](backup-azure-backup-server-import-export.md)

@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 03/12/2020
+ms.date: 06/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 2473d864e0ad0fca4a886a6135a9caac0742e3d7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 021d548c56810021af7257b25c40d7d4cc68ec12
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557074"
+ms.locfileid: "84629450"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,9 @@ A végpont kimeneti adatok és válaszok összegyűjtése mellett a következők
 >[!Important]
 > Az Azure Application Insights csak a legfeljebb 64 kb adattartalmakat naplózza. Ha eléri ezt a korlátot, a rendszer csak a modell legújabb kimeneteit naplózza. 
 
-A szolgáltatás metaadatainak és válaszai – a webszolgáltatás metaadatainak és a modell előrejelzésének megfelelően – a rendszer az üzenetben az Azure Application Insights-nyomkövetésre van naplózva `"model_data_collection"` . Az Azure Application Insights közvetlenül is lekérdezheti az adatok eléréséhez, vagy beállíthat [folyamatos exportálást](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) egy Storage-fiókba a hosszú megőrzés vagy a további feldolgozás érdekében. A modell adatai ezután felhasználhatók a Azure Machine Learning a címkézés, az átképzés, a magyarázat, az adatelemzés vagy más felhasználás beállításához. 
+A webszolgáltatásra irányuló kérések adatainak naplózásához adjon hozzá `print` utasításokat a score.py-fájlhoz. Minden `print` utasítás egy bejegyzést eredményez az Application Insights nyomkövetési táblájában, az üzenet alatt `STDOUT` . Az utasítás tartalma a `print` `customDimensions` és `Contents` a nyomkövetési táblában is szerepelni fog. Ha JSON-karakterláncot nyomtat ki, akkor az a nyomkövetési kimenetben hierarchikus adatstruktúrát hoz létre `Contents` .
+
+Az Azure Application Insights közvetlenül is lekérdezheti az adatok eléréséhez, vagy beállíthat [folyamatos exportálást](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) egy Storage-fiókba a hosszú megőrzés vagy a további feldolgozás érdekében. A modell adatai ezután felhasználhatók a Azure Machine Learning a címkézés, az átképzés, a magyarázat, az adatelemzés vagy más felhasználás beállításához. 
 
 <a name="python"></a>
 
@@ -71,10 +73,48 @@ A szolgáltatás metaadatainak és válaszai – a webszolgáltatás metaadatain
 
 Ha egyéni nyomkövetést szeretne naplózni, kövesse a normál üzembe helyezési folyamatot az AK vagy ACI esetében a dokumentum [üzembe helyezése és helye témakörben](how-to-deploy-and-where.md) . Ezután kövesse az alábbi lépéseket:
 
-1. A pontozási fájl frissítése nyomtatási utasítások hozzáadásával
+1. Ha a következtetés során Application Insights adatokat szeretne küldeni, frissítse a pontozási fájlt a Print utasítások hozzáadásával. Összetettebb információk naplózása, például a kérelem adatai és a válasz, US a JSON-struktúra. A következő példa score.py a modell inicializálásának időpontját, a bemenetet és a kimenetet a következtetés során, valamint az esetleges hibák időpontját:
     
     ```python
-    print ("model initialized" + time.strftime("%H:%M:%S"))
+    import pickle
+    import json
+    import numpy 
+    from sklearn.externals import joblib
+    from sklearn.linear_model import Ridge
+    from azureml.core.model import Model
+    import time
+
+    def init():
+        global model
+        #Print statement for appinsights custom traces:
+        print ("model initialized" + time.strftime("%H:%M:%S"))
+        
+        # note here "sklearn_regression_model.pkl" is the name of the model registered under the workspace
+        # this call should return the path to the model.pkl file on the local disk.
+        model_path = Model.get_model_path(model_name = 'sklearn_regression_model.pkl')
+        
+        # deserialize the model file back into a sklearn model
+        model = joblib.load(model_path)
+    
+
+    # note you can pass in multiple rows for scoring
+    def run(raw_data):
+        try:
+            data = json.loads(raw_data)['data']
+            data = numpy.array(data)
+            result = model.predict(data)
+            # Log the input and output data to appinsights:
+            info = {
+                "input": raw_data,
+                "output": result.tolist()
+                }
+            print(json.dumps(info))
+            # you can return any datatype as long as it is JSON-serializable
+            return result.tolist()
+        except Exception as e:
+            error = str(e)
+            print (error + time.strftime("%H:%M:%S"))
+            return error
     ```
 
 2. A szolgáltatás konfigurációjának frissítése
@@ -118,19 +158,19 @@ A megtekintéshez:
 
     [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. A szolgáltatáshoz tartozó mérőszámok alapszintű készletének megjelenítéséhez válassza az **Áttekintés** lapot
+1. A bal oldali lista **Áttekintés** lapján vagy a __figyelés__ szakaszban válassza a __naplók__lehetőséget.
 
-   [![Áttekintés](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+    [![A figyelés áttekintése lap](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-1. A webszolgáltatás-kérelem metaadatainak és válaszának megtekintéséhez jelölje ki a **kérelmek** táblát a **naplók (Analitika)** szakaszban, és válassza a **Futtatás** lehetőséget a kérelmek megtekintéséhez.
+1. A score.py-fájlból naplózott információk megtekintéséhez tekintse meg a __nyomkövetési__ táblázatot. A következő lekérdezés olyan naplókat keres, amelyekben a __bemeneti__ érték naplózva lett:
 
-   [![Adatmodellezés](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
+    ```kusto
+    traces
+    | where customDimensions contains "input"
+    | limit 10
+    ```
 
-
-3. Az egyéni Nyomkövetések kereséséhez válassza az **elemzés** lehetőséget
-4. A séma szakaszban válassza a **Nyomkövetések**lehetőséget. Ezután válassza a **Futtatás** lehetőséget a lekérdezés futtatásához. Az adattartalomnak táblázatos formátumban kell szerepelnie, és a pontozási fájlban lévő egyéni hívásokra kell leképeznie
-
-   [![Egyéni Nyomkövetések](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![nyomkövetési adat](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 Ha többet szeretne megtudni az Azure Application Insights használatáról, tekintse meg a [Mi az a Application Insights?](../azure-monitor/app/app-insights-overview.md)című témakört.
 
@@ -139,7 +179,7 @@ Ha többet szeretne megtudni az Azure Application Insights használatáról, tek
 >[!Important]
 > Az Azure Application Insights csak a blob Storage-ba való exportálást támogatja. Az exportálási lehetőség további korlátai az alkalmazás-elemzések [Exportálás telemetria](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration)találhatók.
 
-Az Azure Application Insights [folyamatos exportálásával](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) üzeneteket küldhet egy támogatott Storage-fiókba, ahol megtarthat egy nagyobb adatmegőrzést. A `"model_data_collection"` rendszer JSON formátumban tárolja az üzeneteket, és könnyen elemezheti a modell-adatok kinyerését. 
+Az Azure Application Insights [folyamatos exportálásával](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) üzeneteket küldhet egy támogatott Storage-fiókba, ahol megtarthat egy nagyobb adatmegőrzést. Az adatok JSON formátumban tárolódnak, és könnyen elemezhetők a modell-adatok kinyeréséhez. 
 
 A Azure Data Factory, az Azure ML-feldolgozási folyamatai vagy más adatfeldolgozási eszközök is használhatók az adatátalakításhoz igény szerint. Ha átalakította az adatokat, akkor a Azure Machine Learning munkaterületre is regisztrálhat adatkészletként. Ehhez lásd: [adatkészletek létrehozása és regisztrálása](how-to-create-register-datasets.md).
 

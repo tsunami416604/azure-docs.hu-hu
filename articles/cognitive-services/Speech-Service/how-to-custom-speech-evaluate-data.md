@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806096"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629059"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>A Custom Speech pontosságának értékelése
 
@@ -33,7 +33,7 @@ A helytelenül azonosított szavak három kategóriába sorolhatók:
 * Törlés (D): a hipotézis átiratában nem észlelhető szavak
 * Helyettesítő (k): a hivatkozás és a hipotézis között helyettesített szavak
 
-Például:
+Íme egy példa:
 
 ![Helytelenül azonosított szavak – példa](./media/custom-speech/custom-speech-dis-words.png)
 
@@ -52,7 +52,7 @@ Ha szeretné kipróbálni a Microsoft beszéd-szöveg típusú alapmodelljét va
 Modellek kiértékelése egymás mellett:
 
 1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
-2. Navigáljon a **beszéd-szöveg > Custom Speech > teszteléshez**.
+2. Navigáljon a **beszéd – szöveg > Custom Speech > [a projekt neve] > tesztelése**elemre.
 3. Kattintson a **teszt hozzáadása**gombra.
 4. Válassza ki a **pontosság kiértékelése**elemet. Adja meg a teszt nevét, leírását, és válassza ki a hang + emberi-címkével ellátott átírási adatkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
@@ -64,12 +64,12 @@ A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymá
 
 A teszt befejezése után az állapot változása *sikeres*volt, a tesztben szereplő mindkét modellhez meg kell adni egy wer-számot. Kattintson a teszt nevére a tesztelési részletek oldal megtekintéséhez. Ez a részletes lap felsorolja az adatkészlet összes hosszúságú kimondott szöveg, amely a két modell felismerési eredményét jelzi a beküldött adatkészlet átírása mellett. Az egymás melletti összehasonlítások megvizsgálása érdekében különböző típusú hibákat válthat ki, beleértve a beszúrást, a törlést és a helyettesítést is. Ha az egyes oszlopokban figyeli a hangot, és összehasonlítja a felismerés eredményét, amely az emberi címkével ellátott átírást és az eredményeket mutatja két beszéd – szöveg modell esetében, eldöntheti, hogy melyik modell megfelel az igényeinek, és további képzésre és tökéletesítésekre van szükség.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A modell betanítása](how-to-custom-speech-train-model.md)
 * [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

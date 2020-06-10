@@ -11,19 +11,19 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255170"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609250"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: az RDS MySQL migrálása Azure Database for MySQL online-ba a DMS használatával
 
 A Azure Database Migration Service segítségével telepíthet át adatbázisokat egy RDS MySQL-példányból, hogy [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) , amíg a forrásadatbázis online állapotban marad az áttelepítés során. Más szóval a Migrálás az alkalmazás minimális állásidővel is elérhető. Ebben az oktatóanyagban áttelepíti az **alkalmazottak** minta adatbázisát az RDS MySQL egy példányáról, hogy Azure Database for MySQL a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 >
 > * Telepítse át a minta sémát a mysqldump és a MySQL segédprogram használatával.
@@ -67,6 +67,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 1. Új paraméterérték létrehozásához kövesse az AWS-ben a [MySQL-adatbázis naplófájljai](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.MySQL.html)című cikkben szereplő utasításokat a **bináris naplózási formátum** szakaszban.
 2. Hozzon létre egy új paraméter-csoportot a következő konfigurációval:
+    * log_bin = bekapcsolva
     * binlog_format = row
     * binlog_checksum = nincs
 3. Mentse az új paraméter csoportot.
@@ -260,7 +261,7 @@ A kezdeti teljes terhelés befejezése után az adatbázisok **készen**állnak 
 
 A Azure Database for MySQL MySQL helyi példányának online áttelepítése most már befejeződött.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
 * További információ a Azure Database for MySQLről: mi a [Azure Database for MySQL?](https://docs.microsoft.com/azure/mysql/overview).

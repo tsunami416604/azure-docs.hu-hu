@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196507"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628394"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt (előzetes verzió) létrehozása a többosztályos képek besorolásához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -110,6 +110,12 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
 1. Kattintson a **tovább** gombra a projekt létrehozásának folytatásához.
 
+### <a name="incremental-refresh"></a>Növekményes frissítés
+
+Ha új lemezképeket szeretne hozzáadni az adatkészlethez, a Növekményes frissítés megkeresi ezeket az új képeket, és hozzáadja őket a projekthez.  Ha engedélyezi ezt a funkciót, a projekt rendszeresen ellenőrzi az új lemezképeket.  Ebben az oktatóanyagban nem fog új rendszerképeket hozzáadni az adattárhoz, ezért a funkció nincs bejelölve.
+
+A folytatáshoz kattintson a **Tovább** gombra.
+
 ### <a name="label-classes"></a>Címkézési osztályok
 
 1. A **címkézési osztályok** űrlapon írja be a címke nevét, majd válassza a **+ címke hozzáadása** lehetőséget a következő címke beírásához.  Ebben a projektben a címkék a következők: **Cat**, **Dog**és **bizonytalan**.
@@ -122,7 +128,7 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
 1. A feladat rövid leírását közvetlenül is hozzáadhatja az űrlapon.  Írja be a **címkézési oktatóanyagot – macskák & kutyák.**
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 
 1. A **ml által támogatott címkéző** űrlapon ne jelölje be a jelölőnégyzetet. A ML által támogatott címkézés több olyan adattípust igényel, mint amit ebben az oktatóanyagban használ.
 
@@ -196,12 +202,12 @@ A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) va
 
 1. A címkék sikeres exportálása után a bal oldalon található **adatkészletek** elemre kattintva megtekintheti az eredményeket.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a képeket címkézte.  Most használja a címkével ellátott adatait:
 

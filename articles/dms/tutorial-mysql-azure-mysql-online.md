@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 7c8087a01bb71657e816be89b6a562dd4783b271
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9fc2913a526e01ea5279c476e3deab779db88c1
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240740"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609233"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 
 A Azure Database Migration Service segítségével telepítheti át az adatbázisokat egy helyszíni MySQL-példányból, hogy [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) minimális állásidővel. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban áttelepíti az **alkalmazottak** minta-adatbázisát a MySQL 5,7 helyszíni példányáról, hogy Azure Database for MySQL a Azure Database Migration Service Online áttelepítési tevékenységével.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 >
 > * A mintaséma migrálása a mysqldump segédprogrammal.
@@ -37,6 +37,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!IMPORTANT]
 > Az optimális áttelepítési élmény érdekében a Microsoft azt javasolja, hogy Azure Database Migration Service-példányt hozzon létre ugyanabban az Azure-régióban, mint a célként megadott adatbázis. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
+
+> [!NOTE]
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -71,7 +78,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Engedélyezze a bináris naplózást a forrásadatbázisban szereplő my.ini (Windows) vagy a my.cnf (Unix) fájlban az alábbi konfiguráció használatával:
 
   * **server_id** = 1 vagy nagyobb (csak a MySQL 5.6-os verziójára vonatkozik)
-  * a **log-bin** = \<elérési útja> (csak MySQL 5,6 esetén releváns), például: log-bin = e:\ MySQL_logs \binlog
+  * **log-bin** = \<path> (csak a MySQL 5,6 esetén releváns)    Például: log-bin = E:\ MySQL_logs \BinLog
   * **binlog_format** = row
   * **Expire_logs_days** = 5 (javasolt, hogy ne használjon nullát, ami csak a MySQL 5,6 esetén szükséges)
   * **Binlog_row_image** = full (csak a MySQL 5.6-os verziójára vonatkozik)
@@ -263,7 +270,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 3. Kattintson a **Megerősítés**, majd az **Alkalmaz** gombra.
 4. Ha az adatbázis migrálási állapota **Befejezve** értékre vált, csatlakoztassa alkalmazásait az új Azure SQL-céladatbázishoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database for MySQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for MySQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-mysql-online.md).
 * További információ a Azure Database Migration Serviceről: mi a [Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

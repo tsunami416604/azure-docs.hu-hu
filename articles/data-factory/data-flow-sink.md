@@ -9,20 +9,20 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/03/2020
-ms.openlocfilehash: 2c57ddd88046044cccd13b0ade23144cd5649455
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 143c94527b947495709d2e94f107dc578e7f2866
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433314"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610191"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az adatátalakítást követően az adatokat egy célként megadott adatkészletbe lehet elosztani. Minden adatfolyamhoz szükség van legalább egy fogadó átalakításra, de az átalakítási folyamat befejezéséhez annyi süllyedés szükséges, amennyit csak lehet. További mosogatók írásához hozzon létre új streameket új ágak és feltételes felosztások segítségével.
+Miután befejezte az adatátalakítást, írja azt egy célhelyre a fogadó transzformáció használatával. Minden adatfolyamhoz szükség van legalább egy fogadó átalakításra, de az átalakítási folyamat befejezéséhez annyi süllyedés szükséges, amennyit csak lehet. További mosogatók írásához hozzon létre új streameket új ágak és feltételes felosztások segítségével.
 
-Minden fogadó transzformáció pontosan egy Data Factory adatkészlethez van társítva. Az adatkészlet meghatározza a írni kívánt adat alakját és helyét.
+Minden fogadó transzformáció pontosan egy Azure Data Factory adatkészlet-objektumhoz vagy társított szolgáltatáshoz van társítva. A fogadó átalakítás meghatározza a írni kívánt adatmennyiséget és helyet.
 
 ## <a name="inline-datasets"></a>Beágyazott adatkészletek
 
@@ -36,30 +36,28 @@ Ha egy beágyazott adatkészletet szeretne használni, válassza ki a kívánt f
 
 ![Beágyazott adatkészlet](media/data-flow/inline-selector.png "Beágyazott adatkészlet")
 
-### <a name="supported-inline-dataset-formats"></a>Támogatott beágyazott adatkészlet-formátumok
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>Támogatott fogadó típusok
 
-Jelenleg az egyetlen elérhető beágyazott adatkészlet-formátum a [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md)beolvasott [közös adatmodell](format-common-data-model.md#sink-properties) .
+Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) módszert követ, és az Azure-ban mind az *előkészítési* adatkészletekkel működik. A forrás-átalakítás jelenleg a következő adatkészleteket használhatja:
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Támogatott fogadó összekötők a leképezési adatfolyamban
+| Összekötő | Formátum | Adatkészlet/beágyazott |
+| --------- | ------ | -------------- |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common adatmodell (előzetes verzió)](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 
-Jelenleg a következő adatkészletek használhatók a fogadó átalakításban:
-    
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, szöveg, parketta)
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, szöveg, parketta)
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, szöveg, parketta)
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure-CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+Az ezekhez az összekötőhöz tartozó beállítások a **Beállítások** lapon találhatók. az információ-és adatfolyam-szkriptek példái a következő beállításokon találhatók az összekötő dokumentációjában. 
 
-Az ezekhez az összekötőhöz tartozó beállítások a **Beállítások** lapon találhatók. ezekkel a beállításokkal kapcsolatos információk az összekötő dokumentációjában találhatók. 
-
-Az Azure Data Factorynek több mint [90 natív összekötőhöz](connector-overview.md) van hozzáférése. Ha az adatfolyamból más összekötők számára szeretne adatírást készíteni, a másolási tevékenységgel betöltheti az adatok egyikét a támogatott átmeneti területekről az adatfolyamat befejezése után.
+Az Azure Data Factorynek több mint [90 natív összekötőhöz](connector-overview.md) van hozzáférése. Ha az adatfolyamatból más forrásoknak is szeretne adatírást készíteni, a másolási tevékenység használatával töltse be az adatok egy támogatott fogadóból.
 
 ## <a name="sink-settings"></a>Fogadó beállításai
 
 Miután hozzáadta a fogadót, konfigurálja a fogadó **lapon.** Itt kiválaszthatja vagy létrehozhatja azt az adatkészletet, amelyet a fogadó ír. Az alábbi videó számos különböző fogadó lehetőséget mutat be a szöveges tagolt fájltípusok esetében:
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
 ![Fogadó beállításai](media/data-flow/sink-settings.png "Fogadó beállításai")
 

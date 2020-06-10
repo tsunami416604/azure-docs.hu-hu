@@ -1,6 +1,6 @@
 ---
-title: GYIK – Azure szinapszis Analytics
-description: Az Azure szinapszis Analytics szolgáltatással kapcsolatos gyakori kérdések
+title: Gyakori kérdések – Azure szinapszis Analytics (munkaterületek – előzetes verzió)
+description: Gyakori kérdések az Azure szinapszis Analytics szolgáltatásról (munkaterületek előzetes verzió)
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,20 +9,20 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 999a181a812157a3e408d3e95b3e7fc00e29ecea
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118389"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609148"
 ---
-# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterület előzetes verziója) – gyakori kérdések
+# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterületek előzetes verzió) – gyakori kérdések
 
 Ebben az útmutatóban megtalálja a szinapszis-elemzések leggyakrabban feltett kérdéseit.
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="q-what-is-azure-synapse-analytics"></a>K: Mi az az Azure szinapszis Analytics?
 

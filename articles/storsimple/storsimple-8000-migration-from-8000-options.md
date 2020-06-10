@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 03/25/2020
 ms.author: v-grpr
-ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e4aa492567f3357867a3a3f385e8339ada093e9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767057"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608933"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Beállítások az adatok áttelepíthetők a StorSimple 8000 sorozatból
 
@@ -40,6 +40,12 @@ Az adatok Azure File Syncba való áttelepítésével kapcsolatos további infor
 A StorSimple 5000-7000 Series és a StorSimple 8000 Series ügyfelei áttelepíthetik a Panzura Freedom NAS-ra, hogy megőrizze az Azure-ban tárolt adatait. A Panzura Freedom megoldás olyan NAS-megoldást biztosít, amely az adatközpontok, az irodák, a nyilvános és a privát felhők számára is elérhetővé vált. A megoldás lehetővé teszi a helyi, hibrid és Felhőbeli munkafolyamatokat az NFS-, SMB-és mobil ügyfelek számára.
 
 Ezt az áttelepítést a Panzura és az ügyfelek is támogatják, ha a [Panzura webhely](https://panzura.com/migrate-storsimple-panzura/)áttelepítési támogatását kéri.
+
+#### <a name="migrate-to-nasuni"></a>Migrálás a Nasuni
+
+A teljes StorSimple-környezet egy stabil, biztonságos, nagy teljesítményű Fájlszolgáltatások-platformra való áthelyezésével egyszerűen Nasuni. A Nasuni az Azure méretezhetőségével és tartósságával ötvözi a helyszíni fájlok tárterületének biztonságát és teljesítményét.  A vezető Azure független szoftvergyártók (ISV-Nasuni) révén a StorSimple-adatokat egy modern platformra helyezheti át, amely lehetővé teszi a fájlok megosztását és együttműködését több helyen.
+
+Ismerkedjen meg még ma: [Nasuni-webhely](https://info.nasuni.com/storsimple8000-webinar).
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity
@@ -103,6 +109,6 @@ A. Azure File Sync használata esetén előfordulhat, hogy a szolgáltatáshoz t
 
 A. Az adatok áttelepítésének ideje az adatok mennyiségétől és a kiválasztott verziófrissítési lehetőségtől függ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Adatok migrálása StorSimple 8000-sorozatból Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)

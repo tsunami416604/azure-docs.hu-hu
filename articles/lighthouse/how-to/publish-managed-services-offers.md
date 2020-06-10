@@ -2,13 +2,13 @@
 title: Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez irányítja.
 ms.date: 05/04/2020
-ms.topic: conceptual
-ms.openlocfilehash: 04da33d0232371f4175a935bf1e35925376babbc
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.topic: how-to
+ms.openlocfilehash: f1aef8bbf5279891fb8edf2222cc1dda3326bdd6
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788739"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636512"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 
@@ -51,7 +51,7 @@ Miután az ügyfél hozzáadja az ajánlatot, [egy vagy több konkrét előfizet
 
 Miután az ügyfél delegált egy előfizetést (vagy egy vagy több erőforráscsoportot egy előfizetésen belül), a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez, és a bérlő felhasználói hozzáférhetnek a delegált erőforrásokhoz az ajánlatban foglalt jogosultságok alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [kereskedelmi piactérről](../../marketplace/partner-center-portal/commercial-marketplace-overview.md).
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).

@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: a7dfc58258c8c7c6e8bbf7567d743abf90d3a7e5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194897"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609930"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -153,13 +153,10 @@ Ezek az utasítások bemutatják, hogyan tölthet fel fájlokat a Azure Portalba
 
 Objektumok feltöltése a *$web* tárolóba egy forrás könyvtárából.
 
-> [!NOTE]
-> Ha Azure Cloud Shell használ, ügyeljen arra, hogy `\` a tárolóra hivatkozó Escape-karaktert vegyen fel `$web` (például: `\$web` ). Ha az Azure CLI helyi telepítését használja, akkor nem kell használni az Escape-karaktert.
-
 Ez a példa feltételezi, hogy Azure Cloud Shell-munkamenetből futtat parancsokat.
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
 > [!NOTE] 
@@ -275,7 +272,7 @@ A metrikák engedélyezése után a **$web** tárolóban található fájlokra v
    >[!NOTE]
    > A **GetWebContent** jelölőnégyzet csak akkor jelenik meg, ha az API-tag egy adott időkereten belül volt használva. A portál csak az adott időkereten belül használt API-tagokat jeleníti meg, hogy csak az adatvisszaadó tagokra összpontosítsanak. Ha nem talál egy adott API-tagot ebben a listában, bontsa ki az időkeretet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan konfigurálhat egy egyéni tartományt a statikus webhellyel. Lásd: [egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md).
 

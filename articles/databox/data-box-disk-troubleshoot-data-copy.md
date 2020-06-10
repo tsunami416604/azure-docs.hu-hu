@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 760f5c6c929aa082993683d7a466a71c6484289a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 14c5413939deeedfd7c4e894b1919031062bf13a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67148347"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610610"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>A Azure Data Box Disk adatmásolási problémáinak elhárítása
 
@@ -26,7 +26,7 @@ Ez a szakasz a Linux-ügyfelek lemezekre másolásakor felmerülő leggyakoribb 
 
 ### <a name="issue-drive-getting-mounted-as-read-only"></a>Probléma: a meghajtó csak olvashatóként van csatlakoztatva
  
-**Okozhat** 
+**Ok** 
 
 Ennek oka lehet egy nem tiszta fájlrendszer.
 
@@ -36,7 +36,7 @@ A meghajtó újracsatlakoztatása írható-olvashatóként nem működik Data Bo
 
 Bár az újracsatlakoztatás sikeres volt, a rendszer nem őrzi meg az adatmennyiséget.
 
-**Resolution** (Osztás)
+**Felbontás**
 
 Hajtsa végre a következő lépéseket a Linux rendszeren:
 
@@ -47,7 +47,7 @@ Hajtsa végre a következő lépéseket a Linux rendszeren:
     unmount /mnt/DataBoxDisk/mountVol1
     ```
 
-3. Futtassa `ntfsfix` a parancsot a megfelelő elérési úton. A kijelölt számnak meg kell egyeznie a 2. lépéssel.
+3. Futtassa a parancsot `ntfsfix` a megfelelő elérési úton. A kijelölt számnak meg kell egyeznie a 2. lépéssel.
 
     ```
     ntfsfix /mnt/DataBoxDisk/bitlockerVol1/dislocker-file
@@ -72,11 +72,11 @@ Hajtsa végre a következő lépéseket a Linux rendszeren:
  
 ### <a name="issue-error-with-data-not-persisting-after-copy"></a>Probléma: a másolás után nem megőrzött adatmegőrzési hiba
  
-**Okozhat** 
+**Ok** 
 
 Ha úgy látja, hogy a meghajtó nem rendelkezik a leválasztást követően (bár az adatmásolt), akkor lehetséges, hogy a meghajtót csak olvashatóként csatlakoztatta újra írásra.
 
-**Resolution** (Osztás)
+**Felbontás**
  
 Ebben az esetben tekintse meg a [csak olvashatóként csatlakoztatott meghajtók](#issue-drive-getting-mounted-as-read-only)feloldását.
 
@@ -97,6 +97,6 @@ Az alábbi táblázatban láthatók a megosztott másolási eszközök több lem
 |[Hiba] A következő kivétel történt: Hibás JSON-feloldókarakter. |Ezt az üzenetet akkor kapja, ha a config.json fájl érvénytelen formátumot használ. <br> A fájl mentése előtt ellenőrizze a `config.json` fájlt a [JSONlint](https://jsonlint.com/) eszközzel.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogy miként lehet [elhárítani az ellenőrző eszköz hibáit](data-box-disk-troubleshoot.md).

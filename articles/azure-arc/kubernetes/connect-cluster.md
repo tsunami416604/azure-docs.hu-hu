@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure arc szolgáltatással
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: 868964361e6089eb3417b0f2e2681d82d4aa0b75
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 85ef8bb9868784df66199a4aea261e6b752ae7f8
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299643"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636257"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 
@@ -24,10 +24,33 @@ Kubernetes-fürt összekötése az Azure-ív használatával.
 
 Győződjön meg arról, hogy az alábbi követelmények állnak készen:
 
-* Kubernetes-fürt, amely működik és fut
-* Szüksége lesz a kubeconfig és a fürt rendszergazdai hozzáférésére.
+* Kubernetes-fürt, amely működik. Ha nem rendelkezik meglévő Kubernetes-fürttel, a következő útmutatók egyikével hozhat létre egy tesztelési fürtöt:
+  * Kubernetes-fürt létrehozása a [Kubernetes használatával a Docker-ben (fajta)](https://kind.sigs.k8s.io/)
+  * Kubernetes-fürt létrehozása a Docker használatával [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) vagy [Windows rendszerhez](https://docs.docker.com/docker-for-windows/#kubernetes)
+* Szüksége lesz egy kubeconfig-fájlra a fürt és a fürt rendszergazdai szerepkörének eléréséhez a fürtön az arc-kompatibilis Kubernetes-ügynökök telepítéséhez.
 * A (z) és a (z) paranccsal használt felhasználónak vagy szolgáltatásnak " `az login` `az connectedk8s connect` READ" és "Write" engedélyekkel kell rendelkeznie a "Microsoft. Kubernetes/connectedclusters" erőforrástípus számára. Az "Azure-Kubernetes bevezetéséhez" szerepkör, amelynek az engedélyei használhatók az Azure CLI-vel való bevezetéshez használt felhasználó vagy szolgáltatásnév szerepkör-hozzárendeléseihez.
-* A *connectedk8s* -és *k8sconfiguration* -bővítmények legújabb verziója
+* A connectedk8s-bővítmény használatával a fürt bevezetéséhez a Helm 3 szükséges. [Telepítse a Helm 3 legújabb kiadását](https://helm.sh/docs/intro/install) , hogy megfeleljen ennek a követelménynek.
+* Az Azure CLI-hez készült Kubernetes CLI-bővítmények telepítéséhez az Azure CLI 2.3-s verziója szükséges. [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t vagy frissítsen a legújabb verzióra, és győződjön meg arról, hogy az Azure CLI 2.3-as vagy újabb verziója van.
+* Az arc-kompatibilis Kubernetes CLI-bővítményeinek telepítése:
+  
+  Telepítse a `connectedk8s` bővítményt, amely segít a Kubernetes-fürtök az Azure-hoz való összekapcsolásában:
+  
+  ```console
+  az extension add --name connectedk8s
+  ```
+  
+  A `k8sconfiguration` bővítmény telepítése:
+  
+  ```console
+  az extension add --name k8sconfiguration
+  ```
+  
+  Ha később szeretné frissíteni ezeket a bővítményeket, futtassa a következő parancsokat:
+  
+  ```console
+  az extension update --name connectedk8s
+  az extension update --name k8sconfiguration
+  ```
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
@@ -69,31 +92,6 @@ az provider show -n Microsoft.Kubernetes -o table
 ```console
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
-
-## <a name="install-azure-cli-and-arc-enabled-kubernetes-extensions"></a>Az Azure CLI és az arc-kompatibilis Kubernetes-bővítmények telepítése
-Az Azure CLI-hez készült Kubernetes CLI-bővítmények telepítéséhez az Azure CLI 2.3-s verziója szükséges. [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t vagy frissítsen a legújabb verzióra, és győződjön meg arról, hogy az Azure CLI 2.3-as vagy újabb verziója van.
-
-Telepítse a `connectedk8s` bővítményt, amely segít a Kubernetes-fürtök az Azure-hoz való összekapcsolásában:
-
-```console
-az extension add --name connectedk8s
-```
-
-A `k8sconfiguration` bővítmény telepítése:
-
-```console
-az extension add --name k8sconfiguration
-```
-
-Futtassa a következő parancsokat a bővítmények legújabb verzióra való frissítéséhez.
-
-```console
-az extension update --name connectedk8s
-az extension update --name k8sconfiguration
-```
-
-## <a name="install-helm"></a>A Helm telepítése
-A connectedk8s-bővítmény használatával a fürt bevezetéséhez a Helm 3 szükséges. [Telepítse a Helm 3 legújabb kiadását](https://helm.sh/docs/intro/install) , hogy megfeleljen ennek a követelménynek.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -171,7 +169,7 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-Ezt az erőforrást az [Azure betekintő portálon](https://preview.portal.azure.com/)is megtekintheti. Miután megnyitotta a portált a böngészőben, navigáljon az erőforráscsoporthoz és az Azure arc-kompatibilis Kubernetes-erőforráshoz a parancs korábbi részében használt erőforrás neve és erőforráscsoport-név bemenete alapján `az connectedk8s connect` .
+Ezt az erőforrást a [Azure Portal](https://portal.azure.com/)is megtekintheti. Miután megnyitotta a portált a böngészőben, navigáljon az erőforráscsoporthoz és az Azure arc-kompatibilis Kubernetes-erőforráshoz a parancs korábbi részében használt erőforrás neve és erőforráscsoport-név bemenete alapján `az connectedk8s connect` .
 
 Az Azure arc-kompatibilis Kubernetes üzembe helyez néhány operátort a `azure-arc` névtérben. Ezeket a központi telepítéseket és hüvelyeket itt tekintheti meg:
 
@@ -230,7 +228,7 @@ Az Azure arc-kompatibilis Kubernetes néhány ügynököt (operátort) tartalmaz
   az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [GitOps használata csatlakoztatott fürtben](./use-gitops-connected-cluster.md)
 * [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

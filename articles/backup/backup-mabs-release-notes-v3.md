@@ -2,14 +2,14 @@
 title: A Microsoft Azure Backup Server v3 kibocsátási megjegyzései
 description: Ez a cikk a Microsoft Azure Backup Server (MABS) v3 ismert problémáit és megkerülő megoldásait ismerteti.
 ms.topic: conceptual
-ms.date: 11/22/2018
+ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: a5c99bcb95fde39bddc9e9db9ab000881c89081a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185625"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629179"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup-kiszolgáló kibocsátási megjegyzései
 
@@ -71,6 +71,40 @@ Ez a cikk az Microsoft Azure Backup Server (MABS) v3 ismert problémáit és meg
 
 9. Indítsa el a MSDPM szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>A UR1 telepítése után a MABS-jelentések nem frissülnek az új RDL-fájlokkal
 
-[Az MABS v3 újdonságai](backup-mabs-whats-new-mabs.md)
+**Leírás**: a UR1 a MABS-jelentés formázásával kapcsolatos problémát a frissített RDL-fájlok rögzítik. Az új RDL-fájlok nem lettek automatikusan lecserélve a meglévő fájlokra.
+
+**Áthidaló megoldás**: az RDL-fájlok cseréjéhez kövesse az alábbi lépéseket:
+
+1. A MABS gépen nyissa meg SQL Reporting Services webes portál URL-címét.
+1. A webportál URL-címében a DPMReports mappa a következő formátumban jelenik meg:**`DPMReports_<GUID>`**
+
+    >[!NOTE]
+    >Az elnevezési konvenciónak mindig csak egy mappája van. Ha a MABS egy korábbi verzióról frissít, lehet, hogy egy másik régebbi mappa is létezik, de nem fogja tudni megnyitni.
+
+    ![DPMReports mappa](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
+
+1. Válassza ki és nyissa meg a **`DPMReports_<GUID>`** mappát. Az egyes jelentési fájlok az alább látható módon lesznek felsorolva.
+
+    ![Az egyes jelentési fájlok listája](./media/backup-mabs-release-notes-v3/individual-report-files.png)
+
+1. Jelölje ki **a jelentéssel**nem rendelkező jelentések fájljait, kattintson a jobb gombbal a **lehetőségre** , és válassza a **kezelés**lehetőséget.
+
+    ![A jelentési fájlok kezelésének kiválasztása](./media/backup-mabs-release-notes-v3/manage-files.png)
+
+1. Az új lapon válassza a **replace (csere** ) lehetőséget, hogy a fájlokat a legújabb jelentési fájlokkal cserélje le.
+
+    A legfrissebb jelentési fájlok az elérési útban találhatók`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    Például:`C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    ![Cserélje le a fájlokat a legújabb jelentési fájlokra](./media/backup-mabs-release-notes-v3/replace-files.png)
+
+    A fájlok cseréje után ügyeljen arra, hogy a **név** és a **Leírás** sértetlen legyen, és ne legyen üres.
+
+1. A fájlok cseréje után indítsa újra a MABS-szolgáltatásokat, és használja a jelentési fájlokat.
+
+## <a name="next-steps"></a>Következő lépések
+
+[A MABS újdonságai](backup-mabs-whats-new-mabs.md)

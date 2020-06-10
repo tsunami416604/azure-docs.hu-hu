@@ -1,7 +1,7 @@
 ---
-title: Oktatóanyag – Data Science VM Resource Manager-sablon létrehozása
+title: 'Gyors útmutató: Data Science VM – Resource Manager-sablon létrehozása'
 titleSuffix: Azure Data Science Virtual Machine
-description: Ebben az oktatóanyagban egy Azure Resource Manager sablonnal végezheti el a gyors üzembe helyezést Data Science Virtual Machine
+description: Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal végezheti el a Data Science Virtual Machine gyors üzembe helyezését
 services: machine-learning
 author: lobrien
 ms.author: laobri
@@ -9,18 +9,18 @@ ms.custom: subject-armqs
 ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.topic: tutorial
-ms.openlocfilehash: a0bce8a3de7832b589646668b877ce8396d16bc8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.topic: quickstart
+ms.openlocfilehash: e89f3d85156081106f4e1dbb55ee6c895e7e7a2d
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84562049"
+ms.locfileid: "84636750"
 ---
 # <a name="tutorial-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Oktatóanyag: Ubuntu-Data Science Virtual Machine létrehozása Resource Manager-sablonnal
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre Ubuntu 18,04 Data Science Virtual Machine Azure Resource Manager sablon használatával. Az adatelemzési Virtual Machines az adatelemzési és gépi tanulási keretrendszerek és eszközök által előre feltöltött felhőalapú virtuális gépek. GPU-alapú számítási erőforrásokon való üzembe helyezéskor az összes eszköz és könyvtár a GPU használatára van konfigurálva. 
+Ez a rövid útmutató bemutatja, hogyan hozhat létre Ubuntu 18,04 Data Science Virtual Machine Azure Resource Manager sablonnal. Az adatelemzési Virtual Machines az adatelemzési és gépi tanulási keretrendszerek és eszközök által előre feltöltött felhőalapú virtuális gépek. GPU-alapú számítási erőforrásokon való üzembe helyezéskor az összes eszköz és könyvtár a GPU használatára van konfigurálva. 
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -94,7 +94,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy Data Science Virtual Machine egy Azure Resource Manager sablonból. 
+Ebben a rövid útmutatóban létrehozott egy Data Science Virtual Machine egy Azure Resource Manager sablonból. 
 
 > [!div class="nextstepaction"]
 > [Minta programok & ML-útmutató](dsvm-samples-and-walkthroughs.md)

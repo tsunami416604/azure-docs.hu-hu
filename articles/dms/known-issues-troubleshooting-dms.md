@@ -11,16 +11,22 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 0f108c8b9d86a527764d2c7b8dddc6fb239b00d2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 40c7b1b0ae2065ed00cf21f99ab2046e25970237
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196262"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609437"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service problémák és hibák elhárítása
 
 Ez a cikk néhány olyan gyakori problémát és hibát ismertet, amelyekkel Azure Database Migration Service felhasználók származhatnak. A cikk a problémák és hibák megoldásával kapcsolatos információkat is tartalmaz.
+
+> [!NOTE]
+> Elfogultság – ingyenes kommunikáció
+>
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+>
 
 ## <a name="migration-activity-in-queued-state"></a>Áttelepítési tevékenység várólistán lévő állapotban
 
@@ -124,7 +130,7 @@ Ha egy vagy több elnevezett példányon vagy dinamikus porton futó SQL Server-
 * [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for MySQL](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
 * [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for PostgreSQL](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [Azure Database Migration Service PowerShellt](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)ismertető cikket.
 * A Azure Portal használatával megtekintheti a [kiszolgáló paramétereinek konfigurálása Azure Database for MySQLben](https://docs.microsoft.com/azure/mysql/howto-server-parameters)című cikket.
