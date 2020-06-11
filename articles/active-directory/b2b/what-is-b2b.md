@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 87da588806908566bd1980da4c3120c0d4537b4a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585824"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673139"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -44,7 +44,7 @@ Az Azure AD B2B esetén a partner saját identitáskezelési megoldását haszn�
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Vendégfelhasználók meghívása egyszerű meghívási és érvényesítési folyamattal
 
-A vendégfelhasználók a saját munkahelyi, iskolai vagy közösségi identitásukkal jelentkeznek be az alkalmazásokba és szolgáltatásokba. Ha a Vendég felhasználó nem rendelkezik Microsoft-fiókkal vagy Azure AD-fiókkal, akkor a meghívó beváltásakor annak a létrehozása is megtörténik. 
+A vendégfelhasználók a saját munkahelyi, iskolai vagy közösségi identitásukkal jelentkeznek be az alkalmazásokba és szolgáltatásokba. Ha a vendég felhasználó nem rendelkezik Microsoft-fiók vagy Azure AD-fiókkal, akkor a rendszer létrehoz egyet, amikor beváltják a meghívót. 
 
 - Hívja meg a vendégfelhasználókat az általuk választott e-mail azonosítóval.
 - Küldhet közvetlen az alkalmazásra mutató hivatkozást vagy meghívót a felhasználó saját hozzáférési paneljére.
@@ -84,7 +84,7 @@ A vendégfelhasználók kezelését rábízhatja a felhasználó tulajdonosokra,
 
 ## <a name="customize-the-onboarding-experience-for-b2b-guest-users"></a>A B2B vendég felhasználók bevezetési élményének testreszabása
 
-Külső partnereit saját szervezete igényeinek megfelelően vegye fel.
+A szervezet igényei szerint testre szabott módon hozhatja ki a külső partnereit.
 
 - A [külső felhasználók hozzáférését kezelő](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)házirendek konfigurálásához használja az [Azure ad-jogosultságok kezelését](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) .
 - A [B2B együttműködés Meghívási API-jai](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) segítségével testre szabhatja a bevezetési élményeket.
@@ -98,11 +98,12 @@ Az Azure AD olyan külső identitás-szolgáltatókat támogat, mint például a
 
 ## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat létrehozása (előzetes verzió)
 
-Az önkiszolgáló regisztrációs felhasználói folyamattal létrehozhat egy regisztrációs élményt azon külső felhasználók számára, akik szeretnének hozzáférni az alkalmazásokhoz. A regisztrálási folyamat részeként különböző közösségi vagy vállalati identitás-szolgáltatók beállításait is megadhatja, és adatokat gyűjthet a felhasználóról. Ismerje meg az önkiszolgáló regisztrációt és a beállítását.
+Az önkiszolgáló regisztrációs felhasználói folyamattal létrehozhat egy regisztrációs élményt azon külső felhasználók számára, akik szeretnének hozzáférni az alkalmazásokhoz. A regisztrálási folyamat részeként különböző közösségi vagy vállalati identitás-szolgáltatók beállításait is megadhatja, és adatokat gyűjthet a felhasználóról. Ismerje meg az [önkiszolgáló regisztrációt és a beállítását](self-service-sign-up-overview.md).
+<!-- You can also use [API connectors](api-connectors-overview.md) to integrate your user flows with external systems, for example user approval systems, user input validation systems, or custom business logic. -->
 
 ![A felhasználói folyamatok lapját ábrázoló képernyőfelvétel](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD B2B-együttműködés licencelési útmutató](licensing-guidance.md)
 - [B2B közreműködő vendégfelhasználók hozzáadása a portálon](add-users-administrator.md)

@@ -4,7 +4,6 @@ description: Ez az oktatóanyag bemutatja, hogyan hozhat létre SQL Server alway
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -15,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f42d5e823dc8884044c04eed55c1b27bb961ce4b
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 9845780eaeaa42dc38f97344f86b7e9af3d37180
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657420"
+ms.locfileid: "84669383"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Oktatóanyag: SQL Server rendelkezésre állási csoport konfigurálása az Azure Virtual Machines-on manuálisan
 
@@ -40,7 +39,7 @@ Az oktatóanyag feltételezi, hogy rendelkezik SQL Server always on rendelkezés
 
 A következő táblázat felsorolja azokat az előfeltételeket, amelyeket el kell végeznie az oktatóanyag megkezdése előtt:
 
-|  |Követelmény |Leírás |
+|  |Követelmény |Description |
 |----- |----- |----- |
 |![Square](./media/availability-group-manually-configure-tutorial/square.png) | Két SQL Server példány | – Azure-beli rendelkezésre állási csoport <br/> -Egyetlen tartományban <br/> -A feladatátvételi fürtszolgáltatás telepített funkciója |
 |![Square](./media/availability-group-manually-configure-tutorial/square.png)| Windows Server | Fájlmegosztás a tanúsító fürthöz |  

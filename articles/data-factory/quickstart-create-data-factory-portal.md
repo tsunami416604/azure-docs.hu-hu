@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248532"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655813"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyors útmutató: a Azure Data Factory felhasználói felületének használatával létrehozhatja az adatelőállítót
 
@@ -42,8 +42,6 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Lépjen a [Azure Portal](https://portal.azure.com). 
 1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet.
-   
-   ![Válassza az erőforrás létrehozása lehetőséget Azure Portal menüből](./media/doc-common-process/create-a-resource.png)
 1. Válassza az **elemzés**lehetőséget, majd válassza a **Data Factory**lehetőséget. 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -80,8 +78,12 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 ## <a name="create-a-linked-service"></a>Társított szolgáltatás létrehozása
 Ebben az eljárásban létrehoz egy társított szolgáltatást, amely összekapcsolja az Azure Storage-fiókot az adatelőállítóval. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor a hozzá való kapcsolódáshoz.
 
-1. Válassza a **kapcsolatok**lehetőséget, majd az eszköztáron kattintson az **új** gombra (a**kapcsolatok** gomb a bal oldali oszlop alján található a **gyári erőforrások**alatt). 
+1. Nyissa meg a [kezelés fület](https://docs.microsoft.com/azure/data-factory/author-management-hub) a bal oldali ablaktáblán.
 
+1. A társított szolgáltatások lapon válassza az **+ új** lehetőséget egy új társított szolgáltatás létrehozásához.
+
+   ![Új társított szolgáltatás](./media/doc-common-process/new-linked-service.png)
+   
 1. Az **Új társított szolgáltatás** lapon válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** gombra. 
 
 1. Az új társított szolgáltatás (Azure Blob Storage) lapon hajtsa végre a következő lépéseket: 
@@ -123,9 +125,9 @@ A társított szolgáltatás beállításaiban a forrásadatokat tartalmazó Azu
 
     c. **Fájl elérési útja**: kattintson a **Tallózás** gombra.
 
-    d. A **fájl vagy mappa kiválasztása** ablakban keresse meg a **bemeneti** mappát az **adftutorial** tárolóban, válassza ki az **EMP. txt** fájlt, majd kattintson az **OK gombra**.
+    d. A **fájl vagy mappa kiválasztása** ablakban keresse meg a **bemeneti** mappát az **adftutorial** tárolóban, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
     
-    e. Kattintson az **OK** gombra.   
+    e. Válassza az **OK** lehetőséget.   
 
     ![InputDataset tulajdonságainak beállítása](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
 1. A kimeneti adatkészlet létrehozásához ismételje meg ezeket a lépéseket:  
@@ -140,7 +142,7 @@ A társított szolgáltatás beállításaiban a forrásadatokat tartalmazó Azu
 
     e. A **fájl elérési útja**területen adja meg az **adftutorial/output**értéket. Ha a **kimeneti** mappa nem létezik, a másolási tevékenység futásidőben hozza létre.
 
-    f. Kattintson az **OK** gombra.   
+    f. Válassza az **OK** lehetőséget.   
 
     ![OutputDataset tulajdonságainak beállítása](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
 
@@ -221,5 +223,5 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
 
 1. Győződjön meg arról, hogy a megadott befejezési dátumig és időpontig futtatott minden folyamatfuttatáshoz létrejött egy kimeneti fájl az **output** mappában. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra az Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információért tekintse meg az [oktatóanyagokat](tutorial-copy-data-portal.md). 

@@ -2,13 +2,13 @@
 title: Üzembehelyezési előzmények törlései
 description: Ismerteti, hogyan Azure Resource Manager automatikusan törli a központi telepítéseket az üzembe helyezési előzményekből. A központi telepítések akkor törlődnek, ha az előzmények meghaladják a 800-as korlátot.
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: 2d87cc1dcc0d3a41cb32bf7750ccdd832019f8bf
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/10/2020
+ms.openlocfilehash: c16b71646e20b71c0d0ca8c9f8e028773983022f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462736"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673989"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatikus törlés az üzembe helyezési előzményekből
 
@@ -18,10 +18,12 @@ A június 2020-től kezdődően Azure Resource Manager automatikusan törli az e
 
 > [!NOTE]
 > Egy központi telepítés az előzményekből való törlése nem befolyásolja az üzembe helyezett erőforrásokat.
+>
+> Ha egy [CanNotDelete zárolva](../management/lock-resources.md) van, az adott erőforráscsoport központi telepítése nem törölhető. A zárolást el kell távolítania, hogy kihasználhassa az automatikus törlés előnyeit az üzembe helyezési előzményekben.
 
 ## <a name="when-deployments-are-deleted"></a>Központi telepítések törlésekor
 
-A központi telepítések csak akkor törlődnek az üzembe helyezési előzményekből, ha az 800-es korlát közelében van. Azure Resource Manager törli a legrégebbi üzemelő példányok egy kis készletét, így a későbbi központi telepítések számára nem szabad helyet kialakítani. Az előzmények többsége változatlan marad. A legrégebbi üzemelő példányokat a rendszer mindig először törli.
+A központi telepítések az üzembe helyezési előzményekből törlődnek, amikor eléri a 790-es üzemelő példányokat. Azure Resource Manager törli a legrégebbi üzemelő példányok egy kis készletét, így a későbbi központi telepítések számára nem szabad helyet kialakítani. Az előzmények többsége változatlan marad. A legrégebbi üzemelő példányokat a rendszer mindig először törli.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Törlések az üzembe helyezési előzményekből":::
 

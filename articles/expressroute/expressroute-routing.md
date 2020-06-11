@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8c86e88f481c6ad27f551a87afae7547c32a331
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273045"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676251"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -220,17 +220,18 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 
 | **Szolgáltatás** | **BGP-közösségérték** |
 | --- | --- |
-| Exchange Online * * | 12076:5010 |
-| SharePoint Online * * | 12076:5020 |
-| Skype vállalati online verzió * * | 12076:5030 |
-| CRM Online * * * |12076:5040 |
-| Azure globális szolgáltatások * | 12076:5050 |
+| Exchange Online\*\* | 12076:5010 |
+| SharePoint Online\*\* | 12076:5020 |
+| Skype vállalati online verzió\*\*/\*\*\* | 12076:5030 |
+| CRM Online\*\*\*\* |12076:5040 |
+| Azure globális szolgáltatások\* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | Egyéb Office 365 online szolgáltatások * * | 12076:5100 |
 
-* Az Azure Global Services jelenleg csak az Azure DevOps tartalmazza. \
-* * Engedélyezés szükséges a Microsofttól, lásd [: útválasztási szűrők konfigurálása a Microsoft-partnerek számára](how-to-routefilter-portal.md)\
-A CRM Online támogatja a Dynamics v 8.2-es vagy régebbi verzióit. A magasabb verziók esetében válassza ki a regionális Közösséget a Dynamics-környezetekben.
+\*Az Azure Global Services jelenleg csak az Azure DevOps tartalmazza. \
+\*\*Engedélyezés szükséges a Microsofttól, lásd [: útválasztási szűrők konfigurálása a Microsoft-partnerek számára](how-to-routefilter-portal.md)\
+\*\*\*Ez a Közösség a Microsoft Teams Services szükséges útvonalait is közzéteszi. \
+\*\*\*\*A CRM Online támogatja a Dynamics v 8.2-es vagy régebbi verzióit. A magasabb verziók esetében válassza ki a regionális Közösséget a Dynamics-környezetekben.
 
 > [!NOTE]
 > A Microsoft nem fogadja el a Microsoft számára meghirdetett útvonalakon beállított BGP-közösségértékeket.
@@ -241,7 +242,7 @@ A CRM Online támogatja a Dynamics v 8.2-es vagy régebbi verzióit. A magasabb 
 
 | **Országos felhőkörnyezetek – Azure-régió**| **BGP-közösségérték** |
 | --- | --- |
-| **USA-beli államigazgatás** |  |
+| **USA kormánya** |  |
 | USA-beli államigazgatás – Arizona | 12076:51106 |
 | US Gov Iowa | 12076:51109 |
 | USA-beli államigazgatás – Virginia | 12076:51105 |
@@ -252,13 +253,13 @@ A CRM Online támogatja a Dynamics v 8.2-es vagy régebbi verzióit. A magasabb 
 
 | **Szolgáltatás országos felhőkörnyezetekben** | **BGP-közösségérték** |
 | --- | --- |
-| **USA-beli államigazgatás** |  |
+| **USA kormánya** |  |
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype Vállalati online verzió |12076:5130 |
 | Egyéb Office 365-szolgáltatások |12076:5200 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [Kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-arm.md)
