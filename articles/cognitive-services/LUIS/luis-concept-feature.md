@@ -2,29 +2,70 @@
 title: Funkciók – LUIS
 description: Adjon hozzá funkciókat a nyelvi modellhez, hogy javaslatokat nyújtson a címkével vagy osztályozással ellátott bemenetek felismeréséhez.
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/10/2020
+ms.openlocfilehash: 823c51f0b58481e30ff54814dde03285ad094b9e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742718"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677591"
 ---
 # <a name="machine-learning-ml-features"></a>Gépi tanulás (ML) funkciói
 
-A gépi tanulásban a **funkció**   a rendszer által megfigyelt adattípusok megkülönböztető tulajdonságai vagy adatattribútuma.
+A gépi tanulásban a **funkció**   a rendszer által megfigyelt és megszerzett adattípusok megkülönböztető tulajdonságai vagy adatattribútuma.
 
 A Machine learning-funkciók lehetővé teszik a LUIS számára, hogy hol találják meg a koncepciót megkülönböztető dolgokat. Arra utalnak, hogy LUIS használható, de nem rögzített szabályok.  Ezeket a mutatókat a címkékkel együtt használva keresheti meg az adatgyűjtést.
 
- A LUIS támogatja a kifejezések listáját, és más entitásokat is használ a szolgáltatásként:
+## <a name="what-is-a-feature"></a>Mi az a funkció?
+
+A szolgáltatás egy megkülönböztető tulajdonság, amely a következő függvényként használható: f (x) = y. A szolgáltatás segítségével megtudhatja, hol tekintheti meg a megkülönböztető tulajdonságot a példában a Kimondás során. A séma létrehozásakor tudnia kell, hogy mi a példa a tulajdonságra? A válasz a legjobb útmutató a funkciók létrehozásához.
+
+## <a name="types-of-features"></a>A szolgáltatások típusai
+
+ A LUIS a kifejezések listáját és modelljét is támogatja a szolgáltatásként:
 * Kifejezés-lista funkció
 * Modell (szándék vagy entitás) szolgáltatásként
 
 A funkciókat a séma kialakításának szükséges részévé kell tekinteni.
 
+## <a name="how-you-find-features-in-your-example-utterances"></a>A példa hosszúságú kimondott szöveg funkcióinak megkeresése
+
+Mivel a LUIS egy nyelvfüggő alkalmazás, a funkciók Text-alapúak lesznek. Válassza ki a megkülönböztetni kívánt tulajdonságot jelző szöveget. LUIS esetében a szöveg-alapú legkisebb egység a jogkivonat. Az angol nyelv esetében a token egy összefüggő tartomány, amely nem tartalmazhat szóközöket vagy írásjeleket, betűkből és számokból. A szóköz nem token.
+
+Mivel a szóközök és a központozás nem jogkivonatok, a funkciókként használható szöveges nyomokra koncentrálhat. Ne feledje, hogy a Word más változatait is tartalmazza:
+* többes számú űrlap
+* művelet feszült
+* rövidítése
+* helyesírás és elírás
+
+A szöveg, mint megkülönböztető tulajdonság:
+* Pontos szó vagy kifejezés egyeztetése – érdemes lehet egy reguláris kifejezéssel rendelkező entitást vagy egy lista entitást hozzáadni az entitáshoz vagy szándékhoz.
+* Egy jól ismert fogalom, például dátumok, időpontok vagy személyek neveinek egyeztetése – egy előre összeépített entitást használhat az entitás vagy szándék szolgáltatásként.
+* Ismerje meg az új példákat az idő múlásával – példaként tekintse meg a fogalmat az entitás vagy a szándék funkciójának kifejezési listájával
+
+## <a name="combine-features"></a>Funkciók egyesítése
+
+Mivel számos választási lehetőség van a tulajdonságok leírására, több funkciót is használhat, amelyek segítenek leírni ezt a tulajdonságot vagy fogalmat. Gyakori párosítás egy kifejezés-lista funkció használata, valamint a szolgáltatásként leggyakrabban használt entitások egyike: előre összeépített entitás, reguláris kifejezés entitás vagy lista entitás.
+
+### <a name="ticket-booking-entity-example"></a>Példa a Ticket foglalási entitásra
+
+Első példaként vegye fontolóra egy olyan alkalmazás foglalását, amely egy repülési foglalási szándékot és egy Ticket foglalási entitást foglal le.
+
+A Ticket foglalási entitás egy gépi megtanult entitás a repülési célhoz. A hely kinyeréséhez a következő két funkcióval lehet segíteni:
+* A kapcsolódó szavak, például,, `plane` , és kifejezések listája `flight` `reservation``ticket`
+* Előre felépített `geographyV2` entitás mint funkció az entitás számára
+
+### <a name="pizza-entity-example"></a>Pizza-entitás – példa
+
+Egy másik példaként vegye fontolóra egy olyan alkalmazás megrendelését, amely egy pizzát hoz létre egy pizza Order szándékkal és egy pizza-entitással.
+
+A pizza-entitás egy, a pizza részleteit megtanult entitás. A részletek kibontásához használja a következő két funkció segítségét:
+* A kapcsolódó szavak, például,, `cheese` , és kifejezések listája `crust` `pepperoni``pineapple`
+* Előre felépített `number` entitás mint funkció az entitás számára
+
 ## <a name="a-phrase-list-for-a-particular-concept"></a>Egy adott fogalomhoz tartozó kifejezések listája
 
-A kifejezések listája egy adott fogalom beágyazására szolgáló szavak vagy kifejezések listája.
+A kifejezések listája olyan szavak vagy kifejezések listája, amelyek egy adott fogalomba kerülnek, és kis-és nagybetűket nem megkülönböztető egyezésként alkalmazzák a jogkivonat szintjén.
 
 A kifejezések listájának hozzáadásakor a következőképpen állíthatja be a szolgáltatást:
 * **[Globális](#global-features)**. A globális funkció a teljes alkalmazásra vonatkozik.
@@ -55,6 +96,18 @@ Ha ki szeretné bontani az orvosi feltételeket:
 * Először hozzon létre például hosszúságú kimondott szöveg és címkézett orvosi kifejezéseket a hosszúságú kimondott szöveg belül.
 * Ezután hozzon létre egy kifejezéseket tartalmazó listát a tárgy tartományon belüli kifejezésekre vonatkozó példákkal. A kifejezések listájának tartalmaznia kell a ténylegesen felcímkézett kifejezést és más, ugyanezen fogalmakat leíró kifejezéseket.
 * Adja hozzá a kifejezés listát ahhoz a entitáshoz vagy alentitáshoz, amely kibontja a kifejezés listában használt fogalmat. A leggyakoribb forgatókönyv a gépi tanulási entitások egyik összetevője (gyermeke). Ha a kifejezések listáját az összes leképezésben vagy entitásban alkalmazni kell, akkor a kifejezések listáját a globális kifejezés listaként kell megjelölnie. A `enabledForAllModels` jelző a modell hatókörét szabályozza az API-ban.
+
+### <a name="token-matches-for-a-phrase-list"></a>Egy kifejezés listához tartozó token egyezése
+
+A kifejezések listája a jogkivonat szintjén érvényes, függetlenül az esettől. A következő diagram azt mutatja be, hogy a szót tartalmazó kifejezési lista hogyan `Ann` legyen alkalmazva az adott sorrendben szereplő azonos karakterek változatára.
+
+
+| Token variációja`Ann` | A kifejezések listája megegyezik a jogkivonat megtalálása esetén |
+|--------------------------|---------------------------------------|
+| ANN<br>aNN<br>           | Igen – a token`Ann`                  |
+| Ann 's                    | Igen – a token`Ann`                  |
+| Anne                     | Nem jogkivonat`Anne`                  |
+
 
 <a name="how-to-use-phrase-lists"></a>
 <a name="how-to-use-a-phrase-lists"></a>
@@ -158,7 +211,7 @@ Mivel a felhasználónak a második nyelvet kell használnia bármilyen szándé
 ## <a name="best-practices"></a>Ajánlott eljárások
 Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az alkalmazás modelljeinek [kiterjesztése](schema-change-prediction-runtime.md) előrejelzési futtatókörnyezetben
 * További információ a szolgáltatások hozzáadása a LUIS-alkalmazáshoz [című témakörben](luis-how-to-add-features.md) talál további információt.

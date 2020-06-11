@@ -3,18 +3,24 @@ title: Újdonságok – Language Understanding (LUIS)
 description: Ez a cikk rendszeresen frissül az Azure Cognitive Services Language Understanding APIával kapcsolatos hírekkel.
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 45bfe4e703942a7fa38329bd0905833e904e0ab1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675954"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678749"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="june-2020"></a>Június 2020
+
+* [Előzetes verzió – 3,0 authoring](luis-migration-authoring-entities.md) SDK
+    * 3.2.0 verziója – előzetes verzió. 3 – [.net-NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
+    * Version 4.0.0 – előzetes verzió. 3 – [js – NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
 
 ### <a name="may-2020---build"></a>Május 2020 – Build
 

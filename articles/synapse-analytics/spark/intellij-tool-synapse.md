@@ -8,14 +8,14 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 3971d49befd228c111b1a8da5fce44e25abfaa65
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608757"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657834"
 ---
-# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>Oktatóanyag: Apache Spark-alkalmazások létrehozása a IntelliJ a szinapszis szinapszis Analytics (munkaterületek előzetes verzió) használatával
+# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazások létrehozása a IntelliJ a szinapszis-munkaterület használatával
 
 Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Toolkit for IntelliJ beépülő modul olyan Apache Spark-alkalmazások fejlesztéséhez, amelyek a [Scala](https://www.scala-lang.org/)-ben íródtak, majd egy Spark-készletbe (előzetes verzió) közvetlenül a IntelliJ integrált fejlesztői környezetből (ide). A beépülő modult többféleképpen is használhatja:
 
@@ -38,7 +38,7 @@ Az oktatóanyag a következőket ismerteti:
 - Scala beépülő modul – telepítés a [IntelliJ beépülő modulból](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
 - Ez az előfeltétel csak Windows-felhasználók számára érhető el.
 
-  Ha a helyi Spark Scala alkalmazást Windows rendszerű számítógépen futtatja, előfordulhat, hogy a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)című részben leírtak szerint kivételt tapasztal. A kivétel oka, hogy a WinUtils. exe fájl hiányzik a Windows rendszerből.
+  Ha a helyi Spark Scala alkalmazást Windows rendszerű számítógépen futtatja, előfordulhat, hogy a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)című részben leírtak szerint kivételt tapasztal. A kivétel oka, hogy WinUtils.exe hiányzik a Windows rendszerből.
   A hiba elhárításához töltse le a [WinUtils végrehajtható fájlt](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, mint például a **C:\WinUtils\bin**. Ezután adja hozzá **HADOOP_HOME**környezeti változót, és állítsa a változó értékét **C:\WinUtils**értékre.
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>Spark Scala-alkalmazás létrehozása Spark-készlethez
@@ -169,9 +169,9 @@ Az alábbi útmutatást követve állíthatja be a helyi futtatást és a helyi 
 
     ![IntelliJ helyi futtatású hibakeresési konfigurációk futtatása](./media/intellij-tool-synapse/local-run-synapse.png)
 
-    - A környezeti változók és a WinUtils. exe hely csak Windows-felhasználók számára használható.
+    - A környezeti változók és a WinUtils.exe helye csak Windows-felhasználók számára használható.
     - Környezeti változók: a rendszerkörnyezeti változó automatikusan észlelhető, ha korábban már beállította, és nem kell manuálisan hozzáadnia.
-    - [WinUtils. exe helye](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): a jobb oldalon található mappa ikonra kattintva megadhatja a WinUtils helyét.
+    - [WinUtils.exe helye](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): a jobb oldalon található mappa ikonra kattintva megadhatja a WinUtils helyét.
 
 2. Ezután kattintson a helyi lejátszás gombra.
 
@@ -210,7 +210,7 @@ Futtathatja a Spark helyi konzolt (Scala), vagy futtathatja a Spark Livy interak
 
 ### <a name="spark-local-console-scala"></a>Spark helyi konzol (Scala)
 
-Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
+Győződjön meg arról, hogy teljesítette a WINUTILS.EXE előfeltételt.
 
 1. A menüsávban navigáljon **a**  >  **konfigurációk szerkesztése..**. lehetőségre.
 2. A **Futtatás/hibakeresés konfigurációk** ablakban, a bal oldali ablaktáblán navigáljon a **Apache Sparkra a szinapszisban**  >  **[a Spark on szinapszis] SajátPr**.
@@ -220,7 +220,7 @@ Győződjön meg arról, hogy meggyőződött a WINUTILS. Az EXE előfeltétele.
     |Tulajdonság |Érték |
     |----|----|
     |Környezeti változók|Győződjön meg arról, hogy a HADOOP_HOME értéke helyes.|
-    |WINUTILS. exe helye|Győződjön meg arról, hogy az elérési út helyes.|
+    |WINUTILS.exe helye|Győződjön meg arról, hogy az elérési út helyes.|
 
     ![Helyi konzol beállítása – konfiguráció](./media/intellij-tool-synapse/local-console-synapse01.png)
 

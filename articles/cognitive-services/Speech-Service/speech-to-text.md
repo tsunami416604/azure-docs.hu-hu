@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: 4181491053dd1f8d66afcd5f1df7cb96313011da
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1e84f9acb439324317ed2f0d11ed06eb3e43ad8
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650608"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678066"
 ---
 # <a name="what-is-speech-to-text"></a>Mi az a diktálás?
 
@@ -25,7 +25,7 @@ A beszédfelismerési szolgáltatásból, más néven beszédfelismerésből sz�
 
 A beszédfelismerési szolgáltatás alapértelmezés szerint az univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adataival lett betanítva, és a felhőben van üzembe helyezve. Ez optimális a társalgási és a diktálási forgatókönyvek esetében. A beszédfelismerés és az átiratok egyedi környezetben való használatakor egyéni akusztikai, nyelvi és kiejtési modelleket hozhat létre és állíthat be. A Testreszabás hasznos lehet a környezeti zaj vagy az iparágra jellemző szókincs kezelése során.
 
-A szövegbeviteli és a beszéd-szöveges szolgáltatás további hivatkozásokkal is lehetővé teszi a [kiejtés értékelését](rest-speech-to-text.md#pronunciation-assessment-parameters) , hogy kiértékelje a beszéd kiejtését, és visszajelzéseket küldjön a beszélők pontosságáról és a beszélt hangról. A kiejtés értékelésével a nyelvi tanulók felhasználhatják az azonnali visszajelzéseket, és javíthatják a kiejtését, hogy biztosan beszéljenek és a helyükön legyenek. A pedagógusok képesek a több beszélő kiejtésének valós idejű kiértékelésére. A szolgáltatás jelenleg az amerikai angol nyelvet támogatja, és nagyszámú, szakértők által végzett beszédfelismerési felméréssel összefügg.
+A szövegbeviteli és a beszéd-szöveges szolgáltatás további hivatkozásokkal is lehetővé teszi a [kiejtés értékelését](rest-speech-to-text.md#pronunciation-assessment-parameters) , hogy kiértékelje a beszéd kiejtését, és visszajelzéseket küldjön a beszélők pontosságáról és a beszélt hangról. A kiejtés értékelésével a nyelvi tanulók felhasználhatják az azonnali visszajelzéseket, és javíthatják a kiejtését, hogy biztosan beszéljenek és a helyükön legyenek. A pedagógusok képesek a több beszélő kiejtésének valós idejű kiértékelésére. A szolgáltatás jelenleg az USA angol nyelvét támogatja, és a szakértők által készített beszédfelismerési felmérésekkel szorosan összefügg.
 
 > [!NOTE]
 > A Bing Speech 2019. október 15-én lett leszerelve. Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat használják, a beszédfelismerési szolgáltatásba való Migrálás megkönnyítéséhez útmutatókat hoztunk létre.
@@ -61,7 +61,7 @@ A standard Speech Service-modellen kívül egyéni modelleket is létrehozhat. A
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
 - [A Speech SDK beszerzése](speech-sdk.md)

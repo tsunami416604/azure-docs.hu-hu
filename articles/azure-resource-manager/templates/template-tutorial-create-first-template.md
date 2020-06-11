@@ -2,15 +2,15 @@
 title: Oktatóanyag – & üzembe helyezési sablon létrehozása
 description: Hozza létre az első Azure Resource Manager-sablonját. Az oktatóanyagban megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
 author: mumian
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dff1dd15f7f161f25ef7de54e36fa83e3e0036d2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e2419e8ee9f8648ae8f929638ac2c85ea8b67a0f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235214"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676148"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése
 
@@ -34,9 +34,10 @@ A sablonok JSON-fájlok. Sablonok létrehozásához jó JSON-szerkesztőre van s
 
 A sablon telepítéséhez Azure PowerShell vagy Azure CLI is szükséges. Ha az Azure CLI-t használja, a legújabb verziót kell használnia. A telepítési utasításokért lásd:
 
-- [Azure PowerShell telepítése](/powershell/azure/install-az-ps)
+- [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
 - [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
 - [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
+- [Az Azure CLI telepítése macOS rendszeren](/cli/azure/install-azure-cli-macos)
 
 A Azure PowerShell vagy az Azure CLI telepítését követően ellenőrizze, hogy az első alkalommal jelentkezik-e be. Segítségért lásd: [Bejelentkezés – PowerShell](/powershell/azure/install-az-ps#sign-in) vagy [Bejelentkezés – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
@@ -50,7 +51,7 @@ Most már készen áll a sablonok megismerésének megkezdésére.
 1. Nyissa meg a Visual Studio Code-ot, és telepítse a Resource Manager Tools bővítményt.
 1. Új fájl létrehozásához a **fájl** menüben válassza az **új fájl** elemet.
 1. A **fájl** menüben válassza a **Mentés másként**lehetőséget.
-1. Nevezze el a fájlt **azuredeploy** , és válassza ki a **JSON** -fájl kiterjesztését. A **azuredeploy. JSON**fájl teljes neve.
+1. Nevezze el a fájlt **azuredeploy** , és válassza ki a **JSON** -fájl kiterjesztését. A fájl teljes neve **azuredeploy.js**.
 1. Mentse a fájlt a munkaállomásra. Olyan elérési utat adjon meg, amely könnyen megjegyezhető, mert a sablon telepítésekor később is megadhatja ezt az útvonalat.
 1. Másolja és illessze be a következő JSON-fájlt a fájlba:
 
@@ -200,7 +201,7 @@ A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a
 
    ![Központi telepítés összegzésének megtekintése](./media/template-tutorial-create-first-template/view-deployment-summary.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
@@ -211,7 +212,7 @@ Ha most leáll, érdemes törölni az erőforráscsoportot.
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Létrehozott egy egyszerű sablont az Azure-ba való üzembe helyezéshez. A következő oktatóanyagban hozzá kell adnia egy Storage-fiókot a sablonhoz, és telepítenie kell azt az erőforráscsoporthoz.
 

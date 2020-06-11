@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: b65213bd87f6b82391733a135e096077127765d7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344016"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669902"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
@@ -133,9 +133,9 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. Kattintson a **következőre: build >** gombra a Build konfigurációjának szerkesztéséhez
 
-1. Az _alkalmazás helyének_ beállítása **nyilvánosra**.
+1. Az _alkalmazás helyének_ beállítása a következőre: **/** .
 
-1. Hagyja üresen az alkalmazás-összetevő _helyét_ .
+1. Az _alkalmazás-összetevő helyének_ beállítása **nyilvánosra**.
 
    Az API-k _helyének_ értéke nem szükséges, mivel jelenleg nem TELEPÍTenek API-t.
 
@@ -187,7 +187,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
    :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 

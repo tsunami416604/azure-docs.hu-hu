@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c05daa998829c4ac0687f75ae5678695127a50b0
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300589"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659913"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Oktatóanyag: Unity-projekt létrehozása a semmiből
 
@@ -105,6 +105,7 @@ Válassza ki a **fő kamera** csomópontot.
 
 1. Nyissa meg a *> projekt beállításainak szerkesztése...*
 1. A bal oldali listában válassza a minőség lehetőséget.
+1. Módosítsa az **aktív minőségi szintet** *alacsonyra* a kiválasztásával
 1. Az **alapértelmezett minőségi szint** *alacsonyra* váltása
 
     ![a projekt minőségi beállításainak módosítása](media/settings-quality.png)
@@ -801,7 +802,7 @@ A távoli munkamenethez való csatlakozáskor a szövegnek a streaming statiszti
 
 A kód a szerkesztőn kívül letiltja a statisztikák frissítését, mivel a fej nélküli szövegmező nem vonható le. Kifinomultabb implementáció található a gyors üzembe helyezési [projektben](../../quickstarts/render-model.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte az üres Unity-projekt elvégzéséhez szükséges összes lépést, és az Azure Remote rendering használatával működik együtt. A következő oktatóanyagban alaposabban szemügyre vesszük, hogyan használhatók a távoli entitások.
 

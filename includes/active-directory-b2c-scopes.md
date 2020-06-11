@@ -5,16 +5,16 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: bbbc606497b53a0790d667a63b45101a3c18bbc4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3ebe1ec4c0292a530e5ef2c754e9b002e931300e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297487"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84680338"
 ---
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/) 
 
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Válassza ki a *webapi1* alkalmazást az **áttekintő** oldal megnyitásához.
 1. A **kezelés**területen válassza **az API közzététele**lehetőséget.
 1. Az **alkalmazás-azonosító URI-ja**mellett válassza a **beállítás** hivatkozást.
@@ -29,9 +29,9 @@ ms.locfileid: "84297487"
     1. **Rendszergazdai engedély megjelenítendő neve**:`Write access to demo API`
     1. **Rendszergazdai engedély leírása**:`Allows write access to the demo API`
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
-1. Válassza az **alkalmazások**lehetőséget.
+1. Válassza az **alkalmazások (örökölt)** lehetőséget.
 1. Válassza ki a *webapi1* alkalmazást a **Tulajdonságok** lap megnyitásához.
 1. Válassza a **közzétett hatókörök**elemet. A közzétett hatókörökkel egy ügyfélalkalmazás bizonyos engedélyeket biztosíthat a webes API-nak.
 1. A **hatókör**, a `demo.read` és a **Leírás**mezőbe írja be a következőt: `Read access to the web API` .

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 708236cbbd9bf10c6e9edf6b59a3d8e814a40e9f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/08/2020
+ms.openlocfilehash: f11498812c3923f75ca84e66cab9098e86cc192e
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194615"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660990"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
 
@@ -100,7 +100,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. Hozzon létre egy újat a **tárolók** ablakban a **+ tároló** elemre kattintva.
 
-1. Az **Új tároló** ablak **Név** mezőjébe írja be az **adftutorial** nevet. Ezután válassza a **Létrehozás**lehetőséget.
+1. Az **Új tároló** ablak **Név** mezőjébe írja be az **adftutorial** nevet. Ezután kattintson a **Létrehozás** elemre.
 
 1. A tárolók listájában válassza ki az imént létrehozott **adftutorial** .
 
@@ -159,7 +159,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
 1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját**üzemeltetésű lehetőséget, majd kattintson a **Folytatás**gombra.
 
-1. A név mezőben adja meg a **TutorialIntegrationRuntime**. Ezután válassza a **Létrehozás**lehetőséget.
+1. A név mezőben adja meg a **TutorialIntegrationRuntime**. Ezután kattintson a **Létrehozás** elemre.
 
 1. A beállítások lapon **kattintson ide a számítógép expressz telepítésének elindításához**. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
     ![Integrációs modul telepítése](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
@@ -182,7 +182,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
     f. Válassza a **Kapcsolat tesztelése** elemet. Ezzel a lépéssel ellenőrizheti, hogy Data Factory tud-e csatlakozni a SQL Server-adatbázishoz a létrehozott saját üzemeltetésű integrációs modul használatával.
 
-    g. A társított szolgáltatás mentéséhez válassza a **Létrehozás**lehetőséget.
+    : A társított szolgáltatás mentéséhez válassza a **Létrehozás**lehetőséget.
  
     ![Új társított szolgáltatás (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
 
@@ -192,7 +192,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
     b. A **tábla neve**területen válassza a **[dbo] elemet. [ EMP]**.
     
-    c. Kattintson az **OK** gombra.
+    c. Válassza az **OK** lehetőséget.
 
 1. Lépjen az **SQLServerToBlobPipeline** folyamatot tartalmazó lapra, vagy válassza az **SQLServerToBlobPipeline** folyamatot a fanézetben.
 
@@ -208,7 +208,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
 1. Az **új társított szolgáltatás (Azure Blob Storage)** párbeszédpanelen írja be a **AzureStorageLinkedService** nevet, válassza ki a Storage-fiók nevét a **Storage-fiók** neve listából. Tesztelje a kapcsolódást, majd válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
 
-1. A társított szolgáltatás létrehozása után vissza kell térnie a **set Properties (tulajdonságok beállítása** ) lapra. Kattintson az **OK** gombra.
+1. A társított szolgáltatás létrehozása után vissza kell térnie a **set Properties (tulajdonságok beállítása** ) lapra. Válassza az **OK** lehetőséget.
 
 1. Nyissa meg a fogadó adatkészletet. A **Kapcsolat** lapon hajtsa végre az alábbi lépéseket:
 
@@ -219,7 +219,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
     c. A **fájl** résznél válassza a **dinamikus tartalom hozzáadása**lehetőséget.
     ![dinamikus kifejezés a fájlnév feloldásához](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-    d. Adja hozzá `@CONCAT(pipeline().RunId, '.txt')` , majd válassza a **Befejezés**lehetőséget. Ez a művelet átnevezi a fájlt a PipelineRunID. txt fájlba.
+    d. Adja hozzá `@CONCAT(pipeline().RunId, '.txt')` , majd válassza a **Befejezés**lehetőséget. Ez a művelet átnevezi a fájlt a PipelineRunID.txt.
 
 1. Lépjen a megnyitott folyamatot tartalmazó lapra, vagy válassza ki a folyamatot a fanézetben. Ellenőrizze, hogy a **Fogadó-adatkészlet** mezőben az **AzureBlobDataset** érték van-e kiválasztva.
 
@@ -248,7 +248,7 @@ Válassza az **trigger hozzáadása** elemet a folyamat eszköztárán, majd vá
 A folyamat automatikusan létrehozza a *fromonprem* nevű kimeneti mappát az `adftutorial` blobtárolóban. Ellenőrizze, hogy a *[pipeline().RunId].txt* fájl megjelenik-e a kimeneti mappában.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra a Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

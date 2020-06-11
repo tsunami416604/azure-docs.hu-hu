@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a59fafccecaf2fc266a6c7864174c477e1831186
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/08/2020
+ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561152"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661063"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a Azure Portal
 
@@ -58,7 +58,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 **A forrás Azure SQL Database előkészítése**:
 
-Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázis összes tábláját egy Azure szinapszis Analyticsre (korábban SQL DW) másolja.
+Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikk alapján. Ez az oktatóanyag az ebből a mintaadatbázisból származó összes táblázatot egy Azure szinapszis Analytics (korábban SQL DW) adatbázisba másolja.
 
 **A fogadó Azure szinapszis Analytics (korábban SQL DW) előkészítése**:
 
@@ -92,7 +92,7 @@ A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg a kiszolgáló
      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. Válassza ki a Data Factory **helyét**. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
    
 1. A Data Factory felhasználóifelület-alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
@@ -108,13 +108,16 @@ Ebben az oktatóanyagban összekapcsolja az Azure SQL Database, az Azure szinaps
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>A forrás Azure SQL Database-beli társított szolgáltatás létrehozása
 Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja. 
 
-1. Az ablak alján kattintson a **kapcsolatok** elemre, majd az eszköztáron kattintson az **+ új** elemre (a**kapcsolatok** gomb a bal oldali oszlop alján található a **gyári erőforrások**alatt). 
+1. Nyissa meg a [kezelés fület](https://docs.microsoft.com/azure/data-factory/author-management-hub) a bal oldali ablaktáblán.
 
+1. A társított szolgáltatások lapon válassza az **+ új** lehetőséget egy új társított szolgáltatás létrehozásához.
+
+   ![Új társított szolgáltatás](./media/doc-common-process/new-linked-service.png)
 1. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre. 
 1. Az **új társított szolgáltatás (Azure SQL Database)** ablakban végezze el a következő lépéseket: 
 
     a. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet.
-    
+
     b. **Kiszolgáló kiválasztása** a kiszolgálónévhez
     
     c. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL-adatbázisát. 
@@ -146,7 +149,7 @@ Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL-
      
     f. Ha tesztelni szeretné az Azure SQL-adatbázissal létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
      
-    : Kattintson a **Létrehozás**gombra.
+    : Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Az átmeneti Azure Storage-beli társított szolgáltatás létrehozása
 Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure Blob Storage-ot átmeneti területként használja a PolyBase engedélyezéséhez.
@@ -158,8 +161,7 @@ Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure B
     a. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.                                                 
     b. A **Storage-fiók neve** elemnél válassza ki saját **Azure Storage-fiókját**.
     
-    c. Kattintson a **Létrehozás**gombra.
-
+    c. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Ebben az oktatóanyagban létrehozza a forrás- és fogadó-adatkészletet, amelyek meghatározzák az adatok tárolásának helyét. 

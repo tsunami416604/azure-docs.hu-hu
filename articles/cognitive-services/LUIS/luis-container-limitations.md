@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745370"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672663"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUIS) tároló korlátozásai
 
@@ -49,6 +49,7 @@ A LUIS-tárolók támogatják a LUIS megfelelő által [támogatott nyelvek](lui
 | Nyelv | Területi beállítás | Előre elkészített tartomány | Előre elkészített entitás | Kifejezések listája – javaslatok | **[Szöveges elemzés](../text-analytics/language-support.md)<br>(Hangulat és<br>Kulcsszavak|
 |--|--|:--:|:--:|:--:|:--:|
 | angol (Egyesült Államok) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Arab (előzetes verzió – modern standard arab) |`ar-AR`|❌|❌|❌|❌|
 | *[kínai](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | Francia (Franciaország) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Francia (Kanada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
@@ -56,9 +57,12 @@ A LUIS-tárolók támogatják a LUIS megfelelő által [támogatott nyelvek](lui
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | Olasz |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Koreai |`ko-KR` | ✔️ | ❌ | ❌ | Csak a *kulcs kifejezése* |
+| marathi | `mr-IN`|❌|❌|❌|❌|
 | Portugál (Brazília) |`pt-BR` | ✔️ | ✔️ | ✔️ | nem minden alkultúra |
 | Spanyol (Spanyolország) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | Spanyol (Mexikó)|`es-MX` | ❌ | ❌ |✔️|✔️|
+| tamil | `ta-IN`|❌|❌|❌|❌|
+| telugu | `te-IN`|❌|❌|❌|❌|
 | Török | `tr-TR` |✔️| ❌ | ❌ | Csak *hangulat* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]

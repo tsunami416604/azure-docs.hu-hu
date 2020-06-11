@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e82ed66240144f94e18c3343dc0559f47722a2c4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558365"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667094"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: az első ML-modell betanítása
 
@@ -138,7 +138,7 @@ experiment
 
 ## <a name="view-training-results-in-studio"></a>Képzés eredményeinek megtekintése a Studióban
 
-A **Azure Machine learning studióra mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték ( `alpha_value` és `rmse` ebben az esetben) az egyes futtatások mezői lesznek, és elérhetővé válnak a kísérlet oldal tetején található diagramok és csempék számára is. Egy naplózott metrika diagramhoz vagy csempéhez való hozzáadásához vigye fölé a kurzort, kattintson a Szerkesztés gombra, és keresse meg az egyéni naplózott metrikát.
+A **Azure Machine learning studióra mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték ( `alpha_value` és `rmse` ebben az esetben) az egyes futtatások mezői lesznek, és elérhetővé válnak a diagramok számára is. Ha egy új diagramot naplózott metrikával szeretne kijelölni, kattintson a diagram hozzáadása elemre, és válassza ki a nyomtatandó mérőszámot.
 
 Ha több száz vagy több ezer különálló futtatást használ, ezen az oldalon könnyedén megtekintheti a betanított modelleket, és hogy miként változnak az egyedi mérőszámok az idő múlásával.
 

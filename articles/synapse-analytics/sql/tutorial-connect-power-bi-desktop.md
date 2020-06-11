@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az SQL on-demand (előzetes verzió) összekapcsolása Power BI Desktop & jelentés létrehozása'
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban Power BI Desktophoz, és hogyan hozhat létre bemutató jelentést egy nézet alapján.
+title: 'Oktatóanyag: az SQL igény szerinti összekapcsolása Power BI Desktop & jelentés létrehozása'
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az SQL on-demand az Azure szinapszis Analytics szolgáltatásban Power BI asztalhoz, és hogyan hozhat létre bemutató jelentést egy nézet alapján.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1b71e8108ecab0f6d420e404bd602a900ebfcfb2
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 3f32dc14163df6694c69258be365fcbb1390c926
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258283"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660234"
 ---
-# <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: SQL on-demand (előzetes verzió) használata Power BI Desktop & jelentés létrehozása
+# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: az SQL igény szerinti használata Power BI Desktop & jelentés létrehozása
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -100,7 +100,7 @@ A bemutatóban szereplő adat a következő adatkészleteket tartalmazza:
 
 Az USA népessége nemek és faji hovatartozás szerint, a 2000-es és a 2010-es Decennial-népszámlálás a parketta formátumában.
 
-| Mappa elérési útja                                                  | Leírás                                                  |
+| Mappa elérési útja                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release parancsot                                                    | A demo Storage-fiókban lévő adatszülő mappa               |
 | /Release/us_population_county/                               | Az USA-beli populációs adatfájlok parkettás formátumban, évről évre particionálva a kaptár/Hadoop particionálási sémával. |
@@ -151,7 +151,7 @@ Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtás
 
    ![Válassza ki a kívánt oszlopokat a térképes jelentés létrehozásához.](./media/tutorial-connect-power-bi-desktop/step-6-select-columns-of-interest.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépésekkel:
 
@@ -173,6 +173,6 @@ Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépé
    DROP DATABASE Demo;
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a [lekérdezési tároló fájljaival](develop-storage-files-overview.md) , hogy megtudja, hogyan kérdezheti le a tárolási fájlokat a szinapszis SQL használatával.

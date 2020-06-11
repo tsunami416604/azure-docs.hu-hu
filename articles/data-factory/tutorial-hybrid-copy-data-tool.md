@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/09/2018
-ms.openlocfilehash: badf6ed4e4a330aae288cd6a2b102941901a0461
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/09/2020
+ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194592"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660951"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba a Adatok másolása eszköz használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -146,18 +146,15 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre.
 
-
 1. Az **új társított szolgáltatás**területen keressen **SQL Server**, majd válassza a **Folytatás**lehetőséget.
 
 1. Az **új társított szolgáltatás (SQL Server)** párbeszédpanel **név**mezőjébe írja be a következőt: **SqlServerLinkedService**. Válassza a **+Új** elemet a **Csatlakozás integrációs modulon keresztül** résznél. Létre kell hoznia egy saját üzemeltetésű integrációs modult, le kell töltenie a gépére, és regisztrálnia kell a Data Factoryban. A saját üzemeltetésű integrációs modul adatokat másol a helyszíni környezetből a felhőbe.
 
+1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját**üzemeltetésű lehetőséget. Ezután válassza a **Folytatás** elemet.
 
-1. A **Integration Runtime telepítés** párbeszédpanelen válassza a **saját**üzemeltetésű lehetőséget. Ezután válassza a **tovább**lehetőséget.
+   ![Integrációs modul létrehozása](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-   ![Integrációs modul létrehozása](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
-
-1. A **Integration Runtime beállítása** párbeszédpanel név területén írja be a **TutorialIntegrationRuntime** **nevet**. Ezután válassza a **tovább**lehetőséget.
-
+1. A **Integration Runtime beállítása** párbeszédpanel név területén írja be a **TutorialIntegrationRuntime** **nevet**. Ezután kattintson a **Létrehozás** elemre.
 
 1. A **Integration Runtime telepítés** párbeszédpanelen válassza **a kattintson ide, hogy elindítsa a számítógép expressz telepítését**. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
 
@@ -179,7 +176,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
     f. Adja meg a felhasználó **jelszavát** .
 
-    g. Tesztelje a kapcsolatokat, és válassza a **Befejezés**lehetőséget.
+    : Tesztelje a kapcsolatokat, és válassza a **Befejezés**lehetőséget.
 
       ![Integrációs modul kiválasztva](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
 
@@ -216,23 +213,20 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. Az **Összefoglaló** párbeszédpanelen tekintse át az összes beállítás értékét, és kattintson a **Tovább** gombra.
 
-1. A létrehozott folyamat vagy feladat monitorozásához az **Üzembe helyezés** lapon válassza a **Monitorozás** elemet.
+1. A folyamat (feladat) figyeléséhez az **Üzembe helyezés** lapon kattintson a **Monitorozás** elemre. 
 
-   ![Üzembe helyezés lap](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
+1. Ha a folyamat futása befejeződött, megtekintheti a létrehozott folyamat állapotát. 
 
-1. A **Monitorozás** lapon megtekintheti a létrehozott folyamat állapotát. A **Művelet** oszlop hivatkozásaival megtekintheti a folyamat futásához társított tevékenységfuttatásokat, illetve újra futtathatja a folyamatot.
+1. A folyamat futtatása lapon kattintson a **frissítés** gombra a lista frissítéséhez. Kattintson a **folyamat neve** alatt látható hivatkozásra a tevékenység futtatási részleteinek megtekintéséhez vagy a folyamat újrafuttatásához. 
 
-1. Kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra a folyamat futásához társított tevékenységfuttatások megtekintéséhez. A másolási művelet részleteinek megtekintéséhez válassza a **Műveletek** oszlop **Részletek** hivatkozását (szemüveg ikon). Ha vissza szeretne váltani a **folyamat futási** nézetére, válassza a felső **folyamat futtatása** lehetőséget.
+1. A másolási művelettel kapcsolatos további információkért a tevékenység futtatása lapon válassza a **részletek** hivatkozást (szemüveg ikon) a **tevékenység neve** oszlopban. Ha vissza szeretne térni a folyamat futási nézetéhez, válassza a **minden folyamat futtatása** hivatkozást a navigációs menüben. A nézet frissítéséhez válassza a **Frissítés** parancsot.
 
 1. Ellenőrizze, hogy látja-e a kimeneti fájlt az **adftutorial** tároló **fromonprem** mappájában.
 
-
 1. A szerkesztő módra való váltáshoz kattintson a bal oldalon található **Szerkesztés** fülre. A szerkesztővel frissítheti a társított szolgáltatásokat, az adatkészleteket és az eszközzel létrehozott folyamatokat. A szerkesztőben megnyitott entitáshoz társított JSON-kód megtekintéséhez kattintson a **Kód** elemre. Az entitások Data Factory felhasználói felületen való szerkesztéséről [a jelen oktatóanyag Azure Portal-verziójában](tutorial-copy-data-portal.md) talál további információt.
 
-   ![Szerkesztés lap](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az ebben a példában szereplő folyamat átmásolja az adatait egy SQL Server adatbázisból a blob Storage-ba. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

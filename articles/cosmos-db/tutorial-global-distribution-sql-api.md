@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 1b4c9aff6889d7c95d82470a2db57ddc14103edc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d50217bed3850f0e9021dda4bf1b577d006839d1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561588"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674482"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
 
@@ -79,14 +79,14 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node. js/JavaScript
+## <a name="nodejsjavascript"></a>Node.js/JavaScript
 
 > [!NOTE]
 > A végpontok URL-címei nem tekinthetők hosszú élettartamú állandóknak. A szolgáltatás bármikor frissítheti őket. Az SDK automatikusan kezeli ezt a módosítást.
 >
 >
 
-Alább látható egy példa a Node. js-hez vagy a Javascripthez.
+Alább látható egy példa a Node.js/JavaScript.
 
 ```JavaScript
 // Setting read region selection preference, in the following order -
@@ -111,18 +111,17 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v4-sdk"></a>Java v4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a>Java v4 SDK
 
 A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Java SDK használatával:
 
-### <a id="java4-preferred-locations"></a>
-#### <a name="async"></a>[Aszinkron](#tab/api-async)
+# <a name="async"></a>[Aszinkron](#tab/api-async)
 
    [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) aszinkron API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
 
-#### <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+# <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
 
    [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Sync API
 

@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 6c562f9b19082f01cd8447eb727ce830b003f396
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f227021f6cd71686eb58b43dc16a03d6fc010b83
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298761"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672524"
 ---
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/) 
 
 1. A **kezelés**területen válassza a **tanúsítványok & Secrets**elemet.
 1. Válassza az **Új titkos ügyfélkód** lehetőséget.
@@ -20,7 +20,7 @@ ms.locfileid: "84298761"
 1. A **lejárat**szakaszban válassza ki azt az időtartamot, amelynek a titka érvényes, majd válassza a **Hozzáadás**lehetőséget.
 1. Jegyezze fel a titkos kulcs **értékét**. Ezt az értéket egy későbbi lépésben kell használni a konfigurációhoz.
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
 1. Az **API-hozzáférés**területen válassza a **kulcsok**lehetőséget.
 1. A kulcs **leírása** mezőben adja meg a kulcs leírását. Például: *clientsecret1*.

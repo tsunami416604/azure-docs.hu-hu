@@ -13,6 +13,7 @@
     - name: Privát végpont létrehozása – Azure CLI
       href: create-private-endpoint-cli.md
     - name: Privát végpont létrehozása – ARM-sablon
+      displayName: Resource Manager
       href: create-private-endpoint-template.md
     - name: Privát kapcsolati szolgáltatás létrehozása – Portal
       href: create-private-link-service-portal.md
@@ -21,6 +22,7 @@
     - name: Privát kapcsolati szolgáltatás létrehozása – Azure CLI
       href: create-private-link-service-cli.md
     - name: Privát kapcsolati szolgáltatás létrehozása – ARM-sablon
+      displayName: Resource Manager
       href: create-private-link-service-template.md
 - name: Alapelvek
   items:

@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: e945a30ca1fcd62fdfccd16d4e853540dbf73d8a
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 27d602f22aa3915f39f21ac924afa42b98e70720
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637167"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667146"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-secret-store-csi-driver-on-kubernetes"></a>Oktatóanyag: a Kubernetes-on található Secret Store CSI-illesztőprogram Azure Key Vault-szolgáltatójának konfigurálása és futtatása
 
@@ -20,11 +20,12 @@ Ebben az oktatóanyagban a titkokat a Secrets Store CSI (Container Storage Inter
 Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> * Egyszerű szolgáltatás létrehozása
-> * Azure Kubernetes Service-fürt üzembe helyezése
+> * Egyszerű szolgáltatásnév létrehozása vagy felügyelt identitások használata
+> * Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI-vel
 > * A Helm és a Secrets Store CSI-illesztőprogramjának telepítése
 > * Azure Key Vault létrehozása és a titkos kódok beállítása
 > * Saját SecretProviderClass objektum létrehozása
+> * Szolgáltatásnév kiosztása vagy felügyelt identitások használata
 > * A pod üzembe helyezése csatlakoztatott titkokkal Key Vault
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -62,8 +63,8 @@ Kövesse ezt az [útmutatót](https://docs.microsoft.com/azure/aks/kubernetes-wa
 az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
 ```
 
-1. [Állítsa a PATH környezeti változót](https://www.java.com/en/download/help/path.xml) a letöltött "kubectl. exe" fájlra.
-1. Az alábbi parancs használatával keresse meg a Kubernetes verzióját. A parancs kimenete az ügyfél és a kiszolgáló verziója lesz. Az ügyfél verziója a telepített "kubectl. exe", miközben a kiszolgáló verziója azon Azure Kubernetes-szolgáltatások, amelyeken a fürt fut.
+1. [Állítsa a PATH környezeti változót](https://www.java.com/en/download/help/path.xml) a letöltött "kubectl.exe" fájlra.
+1. Az alábbi parancs használatával keresse meg a Kubernetes verzióját. A parancs kimenete az ügyfél és a kiszolgáló verziója lesz. Az ügyfél verziója a telepített "kubectl.exe", miközben a kiszolgáló verziója azon Azure Kubernetes-szolgáltatások, amelyeken a fürt fut.
     ```azurecli
     kubectl version
     ```
@@ -78,7 +79,7 @@ az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 
 
     Ez a kimenet mindkét paraméter kiemelve.
     
-    ![Rendszerkép ](../media/kubernetes-key-vault-5.png) ![](../media/kubernetes-key-vault-6.png)
+    ![Rendszerkép ](../media/kubernetes-key-vault-2.png) ![](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-secrets-store-csi-driver"></a>A Helm és a Secrets Store CSI-illesztőprogramjának telepítése
 
@@ -157,7 +158,7 @@ spec:
 ```
 Alább látható az "az kulcstartó show--Name contosoKeyVault5" konzol kimenete a kapcsolódó Kiemelt metaadatokkal:
 
-![Kép](../media/kubernetes-key-vault-2.png)
+![Kép](../media/kubernetes-key-vault-4.png)
 
 ## <a name="assign-your-service-principal-or-use-managed-identities"></a>Szolgáltatásnév kiosztása vagy felügyelt identitások használata
 
@@ -172,7 +173,7 @@ Egyszerű szolgáltatásnév használata esetén. Engedélyt kell adnia a szolg�
 
     Alább látható a parancs kimenete: 
 
-    ![Kép](../media/kubernetes-key-vault-3.png)
+    ![Kép](../media/kubernetes-key-vault-5.png)
 
 1. Adja meg az egyszerű szolgáltatás engedélyeit a titkok beszerzéséhez:
     ```azurecli
@@ -206,19 +207,19 @@ Felügyelt identitások használata esetén rendeljen meghatározott szerepkör�
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```
 
-1. Telepítse a Azure Active Directory (Azure AD) identitását az AK-ba.
+1. Telepítse a Azure Active Directory (HRE) identitást az AK-ba.
     ```azurecli
     helm repo add aad-pod-identity https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
 
     helm install pod-identity aad-pod-identity/aad-pod-identity
     ```
 
-1. Hozzon létre egy Azure AD-identitást. Másolja le a **clientId** és a **principalId**.
+1. Hozzon létre egy HRE-identitást. Másolja le a **clientId** és a **principalId**.
     ```azurecli
     az identity create -g $resourceGroupName -n $identityName
     ```
 
-1. Rendelje hozzá az olvasó szerepkört az imént a Key Vault létrehozott Azure AD-identitáshoz. Ezután adja meg a személyazonosságot a Key Vault titkainak beszerzéséhez. Az imént létrehozott Azure-identitásból fogja használni a **clientId** és a **principalId** .
+1. Rendelje hozzá az olvasó szerepkört ahhoz a HRE-identitáshoz, amelyet az imént hozott létre a Key Vaulthoz. Ezután adja meg a személyazonosságot a Key Vault titkainak beszerzéséhez. Az imént létrehozott Azure-identitásból fogja használni a **clientId** és a **principalId** .
     ```azurecli
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
@@ -309,7 +310,7 @@ A pod állapotának megtekintéséhez használja a következő parancsot:
 kubectl describe pod/nginx-secrets-store-inline
 ```
 
-![Kép](../media/kubernetes-key-vault-4.png)
+![Kép](../media/kubernetes-key-vault-6.png)
 
 Az üzembe helyezett Pod "Running" állapotban kell lennie. Az "Events" (események) szakasz alján a bal oldali események összes típusa "NORMAL" besorolású.
 Miután ellenőrizte, hogy fut-e a pod, ellenőrizheti, hogy a pod rendelkezik-e a Key Vault titkaival.

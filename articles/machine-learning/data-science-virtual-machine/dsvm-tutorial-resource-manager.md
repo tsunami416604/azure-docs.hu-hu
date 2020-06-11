@@ -10,14 +10,14 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: e89f3d85156081106f4e1dbb55ee6c895e7e7a2d
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 7e3e45d96839be06deec238deccdc9873492d68f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636750"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660249"
 ---
-# <a name="tutorial-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Oktatóanyag: Ubuntu-Data Science Virtual Machine létrehozása Resource Manager-sablonnal
+# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Gyors útmutató: Ubuntu-Data Science Virtual Machine létrehozása Resource Manager-sablonnal
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Ubuntu 18,04 Data Science Virtual Machine Azure Resource Manager sablonnal. Az adatelemzési Virtual Machines az adatelemzési és gépi tanulási keretrendszerek és eszközök által előre feltöltött felhőalapú virtuális gépek. GPU-alapú számítási erőforrásokon való üzembe helyezéskor az összes eszköz és könyvtár a GPU használatára van konfigurálva. 
@@ -34,7 +34,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre Ubuntu 18,04 Data Science
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/)származik. A cikk teljes sablonja túl hosszú ahhoz, hogy megjelenjen itt. A teljes sablon megtekintéséhez tekintse meg a [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json)fájlt. Itt látható a DSVM sajátosságait meghatározó rész:
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/)származik. A cikk teljes sablonja túl hosszú ahhoz, hogy megjelenjen itt. A teljes sablon megtekintéséhez lásd: [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Itt látható a DSVM sajátosságait meghatározó rész:
 
 :::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
 
