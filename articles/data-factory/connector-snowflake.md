@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: fd067a0a0e99291dd4cea924a15c1157bc3b9f9f
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 74e2c452d229373d271225dcbb28359b6af1524d
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84425501"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84670497"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Adatok másolása a-ből és a hópehely-ből a Azure Data Factory használatával
 
@@ -48,11 +48,11 @@ A hópehely társított szolgáltatás a következő tulajdonságokat támogatja
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | :--------------- | :----------------------------------------------------------- | :------- |
-| típus             | A Type tulajdonságot a **hópehely**értékre kell beállítani.              | Igen      |
-| connectionString | Konfigurálja a [teljes fiók nevét](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (beleértve a régiót és a felhőalapú platformot azonosító további szegmenseket), a felhasználónevet, a jelszót, az adatbázist és a tárházat. A hópehely-példányhoz való kapcsolódáshoz válassza a JDBC kapcsolati karakterláncot. A jelszót Azure Key Vault is elvégezheti. További részletekért tekintse meg a táblázat alatti példákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben.| Igen      |
-| Connectvia tulajdonsággal       | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhat Azure Integration Runtime vagy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem       |
+| típus             | A Type tulajdonságot a **hópehely**értékre kell beállítani.              | Yes      |
+| connectionString | Konfigurálja a [teljes fiók nevét](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (beleértve a régiót és a felhőalapú platformot azonosító további szegmenseket), a felhasználónevet, a jelszót, az adatbázist és a tárházat. A hópehely-példányhoz való kapcsolódáshoz válassza a JDBC kapcsolati karakterláncot. A jelszót Azure Key Vault is elvégezheti. További részletekért tekintse meg a táblázat alatti példákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben.| Yes      |
+| Connectvia tulajdonsággal       | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhat Azure Integration Runtime vagy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | No       |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -104,11 +104,11 @@ A hópehely adatkészlet a következő tulajdonságokat támogatja:
 
 | Tulajdonság  | Leírás                                                  | Kötelező                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| típus      | Az adatkészlet Type tulajdonságát **SnowflakeTable**értékre kell állítani. | Igen                         |
+| típus      | Az adatkészlet Type tulajdonságát **SnowflakeTable**értékre kell állítani. | Yes                         |
 | séma | A séma neve. |Nem, forrás, igen, fogadó  |
 | tábla | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -143,13 +143,13 @@ Az adatok a hópehely-ből történő másolásához a másolási tevékenység 
 
 | Tulajdonság                     | Leírás                                                  | Kötelező |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| típus                         | A másolási tevékenység forrásának Type tulajdonságát **SnowflakeSource**értékre kell állítani. | Igen      |
-| lekérdezés          | Meghatározza azt az SQL-lekérdezést, amely a hópehely adatok olvasására szolgál. | Nem       |
-| exportSettings | A hópehely adatok lekérésére használt speciális beállítások. Az által támogatott példányok konfigurálásához másolja az ADF-et az utasítás meghívásakor. | Nem       |
+| típus                         | A másolási tevékenység forrásának Type tulajdonságát **SnowflakeSource**értékre kell állítani. | Yes      |
+| lekérdezés          | Meghatározza azt az SQL-lekérdezést, amely a hópehely adatok olvasására szolgál.<br>A tárolt eljárás végrehajtása nem támogatott. | No       |
+| exportSettings | A hópehely adatok lekérésére használt speciális beállítások. Az által támogatott példányok konfigurálásához másolja az ADF-et az utasítás meghívásakor. | No       |
 | ***Alatt `exportSettings` :*** |  |  |
-| típus | Az exportálási parancs típusa **SnowflakeExportCopyCommand**értékre van állítva. | Igen |
-| additionalCopyOptions | További másolási lehetőségek a kulcs-érték párok szótáraként megadva. Példák: MAX_FILE_SIZE, FELÜLÍRÁS. További információ a [hópehely másolási lehetőségeiről](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | Nem |
-| additionalFormatOptions | További fájlformátum-beállítások a Másolás parancshoz, amelyet a kulcs-érték párok szótára biztosít. Példák: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. További információ a [hópehely formátum típusú beállításokról](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | Nem |
+| típus | Az exportálási parancs típusa **SnowflakeExportCopyCommand**értékre van állítva. | Yes |
+| additionalCopyOptions | További másolási lehetőségek a kulcs-érték párok szótáraként megadva. Példák: MAX_FILE_SIZE, FELÜLÍRÁS. További információ a [hópehely másolási lehetőségeiről](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | No |
+| additionalFormatOptions | További fájlformátum-beállítások a Másolás parancshoz, amelyet a kulcs-érték párok szótára biztosít. Példák: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. További információ a [hópehely formátum típusú beállításokról](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | No |
 
 #### <a name="direct-copy-from-snowflake"></a>Közvetlen másolás a hópehely-ból
 
@@ -168,7 +168,7 @@ Ha a fogadó adattár és a formátum megfelel az ebben a szakaszban ismertetett
 3. A másolási tevékenység forrása területen nincs `additionalColumns` megadva.
 4. Nincs megadva az oszlop-hozzárendelés.
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -220,7 +220,7 @@ A szolgáltatás használatához hozzon létre egy [azure blob Storage társíto
 >
 > Az átmeneti Azure Blob társított szolgáltatásnak a hópehely MÁSOLÁSi parancs által megkövetelt közös hozzáférésű aláírás-hitelesítést kell használnia. 
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -271,13 +271,13 @@ Ha az Adatmásolást a hópehely-ba szeretné másolni, a másolási **tevékeny
 
 | Tulajdonság          | Leírás                                                  | Kötelező                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| típus              | A másolási tevékenység fogadójának Type tulajdonságát **SnowflakeSink**értékre kell állítani. | Igen                                           |
-| preCopyScript     | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatáskor beírja az adatbevitelt a hópehely-ba. Ezzel a tulajdonsággal törölheti az előre feltöltött adatkészleteket. | Nem                                            |
+| típus              | A másolási tevékenység fogadójának Type tulajdonságát **SnowflakeSink**értékre kell állítani. | Yes                                           |
+| preCopyScript     | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatáskor beírja az adatbevitelt a hópehely-ba. Ezzel a tulajdonsággal törölheti az előre feltöltött adatkészleteket. | No                                            |
 | importSettings | *Az adatíráshoz használt speciális beállítások a hópehely-ban. Az által támogatott példányok konfigurálásához másolja az ADF-et az utasítás meghívásakor.* | *Nem* |
 | ***Alatt `importSettings` :*** |                                                              |  |
-| típus | Az importálási parancs típusa **SnowflakeImportCopyCommand**értékre van állítva. | Igen |
-| additionalCopyOptions | További másolási lehetőségek a kulcs-érték párok szótáraként megadva. Példák: ON_ERROR, FORCE, LOAD_UNCERTAIN_FILES. További információ a [hópehely másolási lehetőségeiről](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | Nem |
-| additionalFormatOptions | További fájlformátum-beállítások a Másolás parancshoz, amelyet a kulcs-érték párok szótára biztosít. Példák: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. További információ a [hópehely formátum típusú beállításokról](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | Nem |
+| típus | Az importálási parancs típusa **SnowflakeImportCopyCommand**értékre van állítva. | Yes |
+| additionalCopyOptions | További másolási lehetőségek a kulcs-érték párok szótáraként megadva. Példák: ON_ERROR, FORCE, LOAD_UNCERTAIN_FILES. További információ a [hópehely másolási lehetőségeiről](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | No |
+| additionalFormatOptions | További fájlformátum-beállítások a Másolás parancshoz, amelyet a kulcs-érték párok szótára biztosít. Példák: DATE_FORMAT, TIME_FORMAT, TIMESTAMP_FORMAT. További információ a [hópehely formátum típusú beállításokról](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | No |
 
 #### <a name="direct-copy-to-snowflake"></a>Közvetlen másolás a hópehely-ba
 
@@ -301,7 +301,7 @@ Ha a forrás-adattár és-formátum megfelel az ebben a szakaszban ismertetett f
    - Ha a forrás mappa, a `recursive` tulajdonságot igaz értékre kell beállítani.
    - `prefix`, `modifiedDateTimeStart` `modifiedDateTimeEnd` nincsenek megadva.
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -352,7 +352,7 @@ A szolgáltatás használatához hozzon létre egy [azure blob Storage társíto
 >
 > Az átmeneti Azure Blob társított szolgáltatásnak a hópehely MÁSOLÁSi parancs által megkövetelt közös hozzáférésű aláírás-hitelesítést kell használnia.
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[

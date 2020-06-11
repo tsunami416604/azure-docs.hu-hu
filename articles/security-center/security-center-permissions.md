@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: memildin
-ms.openlocfilehash: 2552012678300e944a513f9d7167fa582424bf8f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 16c2669dbb0a483a00d093871dfeeed65c5f9f20
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558854"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669783"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
@@ -43,8 +43,8 @@ A következő táblázat a szerepköröket és az engedélyezett műveleteket mu
 |Műveletek|Biztonsági olvasó/ <br> Olvasó |Biztonsági rendszergazda  |Erőforráscsoport közreműködői/ <br> Erőforráscsoport tulajdonosa  |Előfizetés közreműködői  |Előfizetés tulajdonosa  |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |Biztonsági házirend szerkesztése|-|✔|-|-|✔|
-|Előfizetés díjszabási szintjének módosítása|-|✔|-|-|-|
-|Automatikus kiépítés engedélyezése/letiltása|-|✔|-|-|-|
+|Előfizetés díjszabási szintjének módosítása|-|✔|-|-|✔|
+|Automatikus kiépítés engedélyezése/letiltása|-|✔|-|-|✔|
 |Erőforrásokra vonatkozó biztonsági javaslatok alkalmazása</br> (és használjon [gyors javítást!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
 |Riasztások bezárása|-|✔|-|✔|✔|
 |Riasztások és javaslatok megtekintése|✔|✔|✔|✔|✔|

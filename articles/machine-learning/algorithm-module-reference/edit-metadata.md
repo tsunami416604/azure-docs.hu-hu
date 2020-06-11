@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 9853a3decc8d145fee58d1da526926e224ee2030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 6683dd445b4d209a6420c7490216b8e325b34c91
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064243"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669970"
 ---
 # <a name="edit-metadata-module"></a>Metaadat-modul szerkesztése
 
@@ -34,7 +34,7 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 + Oszlopok átnevezése.
   
- A metaadatok szerkesztése lehetőséggel bármikor módosíthatja az oszlopok definícióját, jellemzően egy alsóbb rétegbeli modul követelményeinek megfelelően. Egyes modulok például csak bizonyos adattípusokkal működnek, vagy jelölőket igényelnek az oszlopokon, például `IsFeature` vagy `IsCategorical`.  
+ A metaadatok szerkesztése lehetőséggel bármikor módosíthatja az oszlopok definícióját, jellemzően egy alsóbb rétegbeli modul követelményeinek megfelelően. Egyes modulok például csak bizonyos adattípusokkal működnek, vagy jelölőket igényelnek az oszlopokon, például `IsFeature` vagy `IsCategorical` .  
   
  A szükséges művelet elvégzése után visszaállíthatja a metaadatokat az eredeti állapotába.
   
@@ -55,7 +55,8 @@ A metaadatok tipikus változásai a következők lehetnek:
     + Az oszlop típusa és értékei a metaadatok szerkesztése művelet végrehajtása után változnak. Az oszlop adattípusának alaphelyzetbe állításához a metaadatok szerkesztése lehetőséggel bármikor helyreállíthatja az eredeti adattípust.  
 
     > [!NOTE]
-    > Ha bármilyen típusú számot módosít a **datetime** típusra, hagyja üresen a **datetime formátum** mezőt. Jelenleg nem lehet megadnia a célként megadott adatformátumot.  
+        > A **datetime formátum** a [Python beépített datetime formátumát](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)követi.  
+        > Ha bármilyen típusú számot módosít a **datetime** típusra, hagyja üresen a **datetime formátum** mezőt. Jelenleg nem lehet megadnia a célként megadott adatformátumot.
 
 1. Válassza a **kategorikus** lehetőséget annak megadásához, hogy a kijelölt oszlopokban szereplő értékeket kategóriákként kell kezelni.
 
@@ -96,6 +97,6 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 1. A folyamat elküldése.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

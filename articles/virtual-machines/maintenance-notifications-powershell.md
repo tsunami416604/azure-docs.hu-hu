@@ -4,15 +4,15 @@ description: Megtekintheti az Azure-ban futó virtuális gépek karbantartási �
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79ef649502af8962253121ea18804966b1fa043e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77916082"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677933"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Tervezett karbantartás kezelés a PowerShell használatával
 
@@ -29,7 +29,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 A MaintenanceRedeployStatus alatt a következő tulajdonságokat adja vissza: 
 
-| Érték | Leírás   |
+| Érték | Description   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Azt jelzi, hogy most elindítható-e a virtuális gép karbantartása. |
 | PreMaintenanceWindowStartTime         | A karbantartás önkiszolgáló ablakának kezdete, ha a virtuális gépen karbantartást kezdeményezhet |
@@ -100,6 +100,6 @@ A klasszikus virtuális gép karbantartásának megkezdéséhez írja be a köve
 Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tervezett karbantartást az [Azure CLI](maintenance-notifications-cli.md) vagy a [portál](maintenance-notifications-portal.md)használatával is kezelheti.

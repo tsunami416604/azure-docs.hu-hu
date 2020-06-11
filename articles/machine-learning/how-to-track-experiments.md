@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: bbe4cfe2cce70735e765601e46cb62cd3939c693
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433098"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675202"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML-kísérletek futtatásának és metrikáinak monitorozása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -127,6 +127,8 @@ A __Python-szkript végrehajtása__ modul használatával felvehet egy naplózá
         run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
 
         # Log the mean absolute error to the parent run to see the metric in the run details page.
+        # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
+        # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
         run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
     
         return dataframe1,
@@ -207,9 +209,11 @@ A betanított modell metrikáit a használatával tekintheti meg ```run.get_metr
 
 Ha egy kísérlet befejezte a futását, keresse meg a rögzített kísérlet futtatási rekordját. Az előzményeket a [Azure Machine learning studióból](https://ml.azure.com)érheti el.
 
-Navigáljon a kísérletek lapra, és válassza ki a kísérletet. A kísérlet futtatása irányítópultra kerül, ahol megtekintheti az egyes futtatásokhoz naplózott mérőszámokat és diagramokat. Ebben az esetben naplózta az MSE és az Alpha értékeket.
+Navigáljon a kísérletek lapra, és válassza ki a kísérletet. A kísérlet futtatása irányítópultra kerül, ahol megtekintheti az egyes futtatásokhoz naplózott mérőszámokat és diagramokat. 
 
-  ![Részletek futtatása a Azure Machine Learning Studióban](./media/how-to-track-experiments/experiment-dashboard.png)
+A futtatási lista tábla szerkesztésével megjelenítheti a futtatások utolsó, minimális vagy maximális naplózott értékét. A Futtatás listában kiválaszthat vagy kiválaszthat több futtatást, és a kiválasztott futtatások feltöltik a diagramokat az adataival. Új diagramokat is hozzáadhat, vagy szerkeszthet diagramokat a naplózott metrikák (minimális, maximális, utolsó vagy az összes érték) összehasonlításához több futtatás során. Az adatai hatékonyabb megismeréséhez maximalizálhatja a diagramokat is.
+
+:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Részletek futtatása a Azure Machine Learning Studióban":::
 
 Egy adott Futtatás részletezésével megtekintheti a kimeneteit vagy naplóit, vagy letöltheti az elküldött kísérlet pillanatképét, így megoszthatja a kísérlet mappáját másokkal.
 

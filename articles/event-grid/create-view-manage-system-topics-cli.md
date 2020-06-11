@@ -7,15 +7,29 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: c361e7303f73aee1d2e60bd4dd0b9ed0d0e4746f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 19a22a0a3b528a9a72fdd51c589e42bf2fba5ce7
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457462"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669936"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Event Grid rendszertémakörök létrehozása, megtekintése és kezelése az Azure CLI használatával
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet rendszertémaköröket az Azure CLI használatával. A rendszertémakörök áttekintését itt találja: [rendszertémakörök](system-topics.md).
+
+## <a name="install-extension-for-azure-cli"></a>Az Azure CLI-bővítmény telepítése
+Az Azure CLI esetén a [Event Grid bővítményre](/cli/azure/azure-cli-extensions-list)van szükség.
+
+A Cloudshellben-ben:
+
+- Ha korábban már telepítette a bővítményt, frissítse a következőket:`az extension update -n eventgrid`
+- Ha korábban még nem telepítette a bővítményt, telepítse a következőket:`az extension add -n eventgrid`
+
+Helyi telepítés esetén:
+
+1. [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t. Ellenőrizze, hogy rendelkezik-e a legújabb verzióval az az--Version paranccsal.
+2. Távolítsa el a bővítmény korábbi verzióit:`az extension remove -n eventgrid`
+3. Telepítse a eventgrid bővítményt a`az extension add -n eventgrid`
 
 ## <a name="create-a-system-topic"></a>Rendszerbeli témakör létrehozása
 

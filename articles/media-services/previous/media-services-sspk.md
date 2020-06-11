@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 423597da44a74afb60e69c4e32cbd6353f81e726
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344033"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677168"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>A Microsoft &reg; Smooth streaming ügyféloldali Porting Kit licencelése 
 ## <a name="overview"></a>Áttekintés
@@ -29,7 +29,7 @@ Az alábbiakban látható egy magas szintű architektúra és IIS-Smooth Streami
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Leírás
+## <a name="description"></a>Description
 A SSPK a kiváló üzleti értékkel rendelkező feltételekkel rendelkezik. A SSPK-licenc a következőket biztosítja az iparág számára:
 
 * Smooth Streaming a Porting Kit forrása a C++-ban 
@@ -113,52 +113,41 @@ Az ideiglenes és a végleges SSPK-licencek technikai kérdéseket is beküldhet
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>A Microsoft Smooth Streaming ügyfél végleges termékre vonatkozó licencszerződései
 * Speciális digitális szórásos biztonsági társítás
 * AirTies Kablosuz Iletism Sanayive dis Ticaret A.S.
-* Albis Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
-* Arion Technology, Inc.
-* ATMACA ELEKTRONIK SAN. VE TIC. A. Asszonyvására
-* Brit Sky-műsorszolgáltatás korlátozott
-* CastPal Technology Inc., Shenzhen
+* Arcelik. S
 * Compal Electronics, Inc.
-* Dongguan digitális AV Technology Corp., Ltd.
-* EchoStar-vásárlási vállalat
-* Enseo, Inc.
-* FilmFlex Movies Limited
+* EXPRESSZ SZERENCSE TECHNOLOGY LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
-* Gibson Innovations Limited
-* Haier információ-pályázó S. R. L
-* HANDAN BroadInfoCom Co., Ltd.
 * Hisense International Co., Ltd. 
-* Homecast Co., Ltd
-* Hon Hai Precision Industry Co., Ltd.
-* Infomir GMBH
+* HKC Corporation Limited
+* Hong Kong Konka Ltd
+* Innolux Corporation
+* Innopia Technologies, Inc
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
+* Mega Fame Electronics Co. Limited
+* MIRC Electronics Limited
 * Nintendo Co., Ltd.
-* Narancssárga SA
-* Sáfrányos digitális korlátozott
-* Sagemcom broadband SAS
+* ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
+* Panasonic Corporation
+* Qingdao Haier OPTRONICS Co., Ltd.
+* Shenzhen ATEKO PHOTO áramszolgáltató Co., Ltd.
 * Shenzhen Chuangwei – RGB Elektronika Co., Ltd.
-* Shenzheni együttes elektronika CO., LTD.
 * Shenzhen Jiuzhou Electric Co., Ltd
 * Shenzhen KTC Technology Co., Ltd. 
+* Shenzhen Maxmade Technology Co., Ltd
+* Shenzhen MTC Co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Szecsuán Changhong, Electric Co., Ltd.
 * Skardin Industrial Corp.
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV S.A.
+* SMARDTV GLOBÁLIS SAS
 * SoftAtHome
 * Sony Corporation
 * Technicolor kézbesítési technológiák, SAS
-* Tongfang Global Ltd.
 * Top Victory Investments, Ltd.
-* Toshiba Lifestyle Products & Services Corporation
-* Universal Media Corporation/Slovakia/s.r.o.
-* VEZÍR, Inc.
-* Tud Corporation
+* UMC Lengyelország SP. z. o.o.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai

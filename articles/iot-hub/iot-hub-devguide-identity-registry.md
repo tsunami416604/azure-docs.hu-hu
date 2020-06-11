@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2ef259bf76815fdf8672b696d2260fe6a143b798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730178"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674954"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub Identity Registry ismertetése
 
@@ -110,7 +110,7 @@ Tulajdonságok: az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `
 
 Értesítési üzenet az eszközhöz:
 
-| Name (Név) | Érték |
+| Name | Érték |
 | --- | --- |
 |$content típusa | application/json |
 |$iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -122,7 +122,7 @@ Tulajdonságok: az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `
 |operationTimestamp | A művelet ISO8601 időbélyege |
 |iothub – üzenet – séma | deviceLifecycleNotification |
 
-Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ikerét jelöli. Például:
+Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ikerét jelöli. Példa:
 
 ```json
 {
@@ -146,7 +146,7 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ike
 ```
 Értesítési üzenet a modulhoz:
 
-| Name (Név) | Érték |
+| Name | Érték |
 | --- | --- |
 $content típusa | application/json |
 $iothub – enqueuedtime |  Az értesítés elküldésének ideje |
@@ -158,7 +158,7 @@ moduleId | A modul azonosítója |
 operationTimestamp | A művelet ISO8601 időbélyege |
 iothub – üzenet – séma | moduleLifecycleNotification |
 
-Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás ikerét jelöli. Például:
+Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás ikerét jelöli. Példa:
 
 ```json
 {
@@ -186,9 +186,9 @@ Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás iker�
 
 Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Leírás |
+| Tulajdonság | Beállítások | Description |
 | --- | --- | --- |
-| deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből `- . + % _ # * ? ! ( ) , = @ $ '`:. |
+| deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
 | ETAG |kötelező, csak olvasható |Egy olyan karakterlánc, amely az eszköz identitásának gyenge ETag jelöli, mint [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | Auth |választható |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
@@ -204,16 +204,16 @@ Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tul
 > A kapcsolási állapot csak a kapcsolatok állapotának IoT Hub nézetét jelenítheti meg. Az állapot frissítései a hálózati feltételektől és konfigurációktól függően késleltetve lehetnek.
 
 > [!NOTE]
-> Az eszköz-SDK-k jelenleg nem támogatják `+` a `#` és a karaktereket a **deviceId**-ben.
+> Az eszköz-SDK-k jelenleg nem támogatják a `+` és a `#` karaktereket a **deviceId**-ben.
 
 ## <a name="module-identity-properties"></a>Modul identitásának tulajdonságai
 
 A modul identitásai JSON-dokumentumokként jelennek meg a következő tulajdonságokkal:
 
-| Tulajdonság | Beállítások | Leírás |
+| Tulajdonság | Beállítások | Description |
 | --- | --- | --- |
-| deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből `- . + % _ # * ? ! ( ) , = @ $ '`:. |
-| moduleId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből `- . + % _ # * ? ! ( ) , = @ $ '`:. |
+| deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
+| moduleId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
 | ETAG |kötelező, csak olvasható |Egy olyan karakterlánc, amely az eszköz identitásának gyenge ETag jelöli, mint [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | Auth |választható |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
@@ -226,7 +226,7 @@ A modul identitásai JSON-dokumentumokként jelennek meg a következő tulajdons
 | lastActivityTime |csak olvasható |Egy időbeli jelző, amely azt mutatja, hogy az eszköz Mikor kapcsolódott, illetve mikor érkezett, illetve mikor küldött üzenetet. |
 
 > [!NOTE]
-> Az eszköz-SDK-k jelenleg nem támogatják `+` a `#` és a karaktereket a **deviceId** és a **moduleId**használatával.
+> Az eszköz-SDK-k jelenleg nem támogatják a `+` és a `#` karaktereket a **DeviceID** és a **moduleId**használatával.
 
 ## <a name="additional-reference-material"></a>További referenciaanyagok
 
@@ -242,7 +242,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * [IOT hub MQTT-támogatás](iot-hub-mqtt-support.md) további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan használhatja a IoT Hub Identity registryt, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információt:
 

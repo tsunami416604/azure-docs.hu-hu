@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b6294abe986115d86826fee8aad09f468b3d651
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 2344b339575c7338049bfa74c2fc72911e39a362
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628007"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672170"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C új Alkalmazásregisztrációk felülete
 
@@ -58,7 +58,7 @@ Az új felhasználói élményben válasszon ki egy támogatási fiókot a köve
 
 A különböző fióktípus megismeréséhez válassza a létrehozási **élmény lehetőséget.** 
 
-A régi élményben az alkalmazások létrehozása mindig ügyfél-alkalmazásként történt. Ezekhez az alkalmazásokhoz a fiók típusa **bármely szervezeti címtárban vagy bármely identitás-szolgáltatóban található fiókra van beállítva. Felhasználók hitelesítéséhez Azure AD B2C.**. 
+A régi élményben az alkalmazások létrehozása mindig ügyfél-alkalmazásként történt. Ezekhez az alkalmazásokhoz a fiók típusa **bármely szervezeti címtárban vagy bármely identitás-szolgáltatóban található fiókra van beállítva. A felhasználók Azure AD B2C használatával történő hitelesítéséhez**.
 > [!NOTE]
 > Ez a beállítás ahhoz szükséges, hogy Azure AD B2C felhasználói folyamatokat futtasson az alkalmazás felhasználóinak hitelesítéséhez. Megtudhatja [, hogyan regisztrálhat egy alkalmazást felhasználói folyamatokkal való használatra.](tutorial-register-applications.md)
 
@@ -72,29 +72,29 @@ Előfordulhat, hogy nem látja az összes Microsoft Graph engedélyt, mert az en
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Rendszergazdai engedély és offline_access + OpenID-hatókörök  
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
-Az **OpenID** hatókörre azért van szükség, hogy Azure ad B2C be tudja jelentkezni a felhasználókat egy alkalmazásba. A **offline_access** hatókörre van szükség egy felhasználó frissítési jogkivonatának kibocsátásához. Ezek a hatókörök korábban lettek hozzáadva, és a rendszergazdai beleegyező értékkel lettek megadva. A létrehozási folyamat során könnyedén hozzáadhat engedélyeket ezekhez a hatókörökhöz, ha **engedélyezi a rendszergazdai jóváhagyást az OpenID-hez, és a offline_access engedélyek beállítás be** van jelölve. Más esetben a Microsoft Graph engedélyek a meglévő alkalmazások **API-engedélyeinek** beállításaiban adhatók hozzá rendszergazdai jogosultsággal.
+Az **OpenID** hatókörre azért van szükség, hogy Azure ad B2C be tudja jelentkezni a felhasználókat egy alkalmazásba. A **offline_access** hatókörre van szükség egy felhasználó frissítési jogkivonatának kibocsátásához. Ezek a hatókörök korábban lettek hozzáadva, és a rendszergazdai beleegyező értékkel lettek megadva. A létrehozási folyamat során könnyedén hozzáadhat engedélyeket ezekhez a hatókörökhöz azáltal, hogy a **rendszergazdai jóváhagyás megadása OpenID-és offline_access engedélyek beállítás be** van jelölve. Más esetben a Microsoft Graph engedélyek a meglévő alkalmazások **API-engedélyeinek** beállításaiban adhatók hozzá rendszergazdai jogosultsággal.
 
 További információ az [engedélyekről és a beleegyezik](../active-directory/develop/v2-permissions-and-consent.md).
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformok/hitelesítés: válasz URL-címek/átirányítási URI-k
 A régi felhasználói felületen a különböző platformok típusait a **Tulajdonságok** szakaszban kezeltük a Web Apps/API-k és a natív ügyfelek ÁTirányítási URI-ja alapján. A "natív ügyfelek" a "nyilvános ügyfelek" néven is ismertek, és az iOS-, macOS-, Android-és egyéb mobil-és asztali alkalmazás-típusok alkalmazásai is lehetnek. 
 
-Az új felhasználói felületen a válasz URL-címei és az átirányítási URI-k is hivatkoznak átirányítási URI-ként, és megtalálhatók az alkalmazás **hitelesítési** szakaszában. Alkalmazásregisztrációk nem kizárólag webalkalmazás/API vagy natív alkalmazás lehet. A megfelelő átirányítási URI-k regisztrálásával ugyanazt az alkalmazást használhatja a platform összes típusához. 
+Az új felhasználói felületen a válasz URL-címei és az átirányítási URI-k is hivatkoznak átirányítási URI-ként, és megtalálhatók az alkalmazás **hitelesítési** szakaszában. Alkalmazásregisztrációk nem kizárólag webalkalmazás vagy natív alkalmazás lehet. A megfelelő átirányítási URI-k regisztrálásával ugyanazt az alkalmazást használhatja a platform összes típusához. 
 
 Az átirányítási URI-k szükségesek a web vagy a Public (Mobile és Desktop) típusú alkalmazásokhoz való társításhoz. [További információ az átirányítási URI-k használatáról](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
-Azt határozza meg, hogy az alkalmazás a nyilvános ügyfélként legyen-e kezelve az átirányítási URI platform típusától függően, ha lehetséges. A **kezelt alkalmazás nyilvános ügyfélként** beállításának *Igen* értéknek kell lennie olyan folyamatok esetében, amelyek nem használnak átirányítási URI-t, például a ROPC folyamatokat.
+<!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 
 Az **iOS-, MacOS** -és **Android** -platformok nyilvános ügyfél típusúak. Egyszerű módszert biztosítanak az iOS/macOS vagy Android rendszerű alkalmazások konfigurálásához a megfelelő átirányítási URI-k használatával a MSAL-hez való használathoz. További információ az [alkalmazás konfigurációs beállításairól](../active-directory/develop/msal-client-applications.md).
 
 
 ## <a name="application-certificates--secrets"></a>Alkalmazás-tanúsítványok & Secrets
 
-A **kulcsok**helyett az új felhasználói élményben a tanúsítványok **& Secrets** panelen kezelheti a tanúsítványokat és a titkos kulcsokat. A hitelesítő adatok lehetővé teszik, hogy az alkalmazások azonosítsák magukat a hitelesítési szolgáltatásban, amikor jogkivonatokat fogadnak a webes címezhető helyen (HTTPS-séma használatával). Javasoljuk, hogy az ügyfél hitelesítő adatai helyett egy tanúsítványt használjon az Azure AD-vel való hitelesítéshez. A tanúsítványok nem használhatók a Azure AD B2C való hitelesítéshez.
+A **kulcsok**helyett az új felhasználói élményben a tanúsítványok **& Secrets** panelen kezelheti a tanúsítványokat és a titkos kulcsokat. A tanúsítványok & titkos kódok lehetővé teszik az alkalmazások számára, hogy azonosítsák magukat a hitelesítési szolgáltatásban, amikor jogkivonatokat fogadnak a webes címezhető helyen (HTTPS-séma használatával). Javasoljuk, hogy az ügyfél hitelesítő adatai helyett egy tanúsítványt használjon az Azure AD-vel való hitelesítéshez. A tanúsítványok nem használhatók a Azure AD B2C való hitelesítéshez.
 
 
-## <a name="features-not-available-in-azure-ad-b2c-tenants"></a>Azure AD B2C bérlők nem érhetők el szolgáltatások
-A következő Azure AD-alkalmazás-regisztrációs képességek nem alkalmazhatók Azure AD B2C bérlők esetén:
+## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C bérlők nem alkalmazható szolgáltatásai
+A következő Azure AD-alkalmazás-regisztrációs képességek nem alkalmazhatók Azure AD B2C bérlők számára, illetve nem érhetők el:
 - **Szerepkörök és rendszergazdák** – ehhez olyan prémium szintű Azure ad P1 vagy P2 licencre van szükség, amely jelenleg nem érhető el Azure ad B2Choz.
 - **Branding** – a felhasználói felület/UX testreszabása a **vállalati védjegyezési** felületen vagy felhasználói folyamat részeként van konfigurálva. Ismerkedjen meg [a Azure Active Directory B2C felhasználói felületének testreszabásával](customize-ui-overview.md).
 - **Közzétevő tartományának ellenőrzése** – az alkalmazás regisztrálva van a *. onmicrosoft.com*, amely nem ellenőrzött tartomány. Emellett a közzétevői tartományt elsődlegesen a felhasználói jóváhagyás biztosítására használják, amely nem vonatkozik Azure AD B2C alkalmazásokra a felhasználói hitelesítéshez. [További információ a közzétevő tartományáról](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
@@ -112,9 +112,9 @@ Az új felhasználói élmény a következő korlátozásokkal jár:
 ## <a name="next-steps"></a>Következő lépések
 
 Az új alkalmazás regisztrációs élményének megkezdéséhez:
-* Útmutató [webalkalmazások regisztrálásához](tutorial-register-applications.md)
-* Útmutató [webes API-k regisztrálásához](add-web-api-application.md)
-* Ismerje meg [, hogyan regisztrálhat egy natív ügyfélalkalmazás](add-native-application.md)
+* Ismerje meg [, hogyan regisztrálhat egy webalkalmazást](tutorial-register-applications.md).
+* Ismerje meg [, hogyan regisztrálhat webes API-t](add-web-api-application.md).
+* Ismerje meg [, hogyan regisztrálhat egy natív ügyfélalkalmazás](add-native-application.md).
 * Megtudhatja [, hogyan regisztrálhat egy Microsoft Graph alkalmazást Azure ad B2C erőforrások kezeléséhez](microsoft-graph-get-started.md).
 * Ismerje meg [, hogyan használhatja a Azure ad B2C SAML-](identity-provider-adfs2016-custom.md) szolgáltatóként.
-* Tudnivalók az [alkalmazások típusairól](application-types.md)
+* További információ az [alkalmazások típusairól](application-types.md).

@@ -3,12 +3,12 @@ title: Felhasználó által definiált függvények a sablonokban
 description: Ismerteti, hogyan lehet felhasználó által definiált függvényeket definiálni és használni egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69f4e98d389cc8dbe5cd3f4b628189676c501106
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943218"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672935"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Felhasználó által definiált függvények Azure Resource Manager sablonban
 
@@ -48,7 +48,7 @@ A következő példa egy olyan sablont mutat be, amely egy felhasználó által 
 
 ```json
 {
- "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+ "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
  "contentVersion": "1.0.0.0",
  "parameters": {
    "storageNamePrefix": {
@@ -104,7 +104,7 @@ A felhasználói függvények meghatározásakor bizonyos korlátozások vonatko
 * A függvény paraméterei nem rendelkezhetnek alapértelmezett értékekkel.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felhasználó által definiált függvények elérhető tulajdonságainak megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.
 * A sablonhoz elérhető függvények listáját itt tekintheti meg: [Azure Resource Manager template functions](template-functions.md).

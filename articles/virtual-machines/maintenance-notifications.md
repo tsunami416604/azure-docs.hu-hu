@@ -4,15 +4,15 @@ description: Az Azure-ban futó virtuális gépek karbantartási értesítésein
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 68159577cb31145be5063bb19af6db71ca1727bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e65b2c94b5042f857a6ea5fc61136c572b780764
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77115680"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678511"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Tervezett karbantartási értesítések feldolgozása
 
@@ -119,7 +119,7 @@ További információ a magas rendelkezésre állásról: [virtuális gépek ren
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) vagy [Portal](maintenance-notifications-portal.md)használatával kezelheti a tervezett karbantartást.
 

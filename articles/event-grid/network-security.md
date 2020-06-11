@@ -7,29 +7,29 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 073878d6dfb0637b8d0fb7fdf5c7f6d77d2b2c8d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857049"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672646"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid erőforrások hálózati biztonsága
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Event Grid használatával: 
 
-- Szolgáltatások címkéi a kimenő forgalomhoz (előzetes verzió)
+- Szolgáltatás-címkék a kimenő forgalomhoz
 - IP-tűzfalszabályok a bejövő forgalomhoz (előzetes verzió)
-- Privát végpontok a bejövő forgalomhoz (előzetes verzió)
+- Magánhálózati végpontok a bejövő forgalomhoz
 
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatás címkével kapcsolatos további információkért lásd: [szolgáltatási címkék áttekintése](../virtual-network/service-tags-overview.md).
 
-A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **AzureEventGrid**) megadásával a szabály megfelelő *forrás* vagy *cél* mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
+A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules)   vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **AzureEventGrid**) megadásával a szabály megfelelő *forrás*   vagy *cél*   mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
-| Szolgáltatáscímke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
-| --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid. <br/><br/>*Megjegyzés:* Ez a címke az USA déli középső régiójában, az USA keleti régiójában, az USA keleti régiójában, az USA 2. nyugati régiójában és az USA középső régiójában található Azure Event Grid | Mindkettő | Nem | Nem |
+| Szolgáltatáscímke | Szerep | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| --- | -------- |:---:|:---:|:---:|
+| AzureEventGrid | Azure Event Grid. | Mindkettő | Nem | Nem |
 
 
 ## <a name="ip-firewall"></a>IP-tűzfal 
@@ -54,14 +54,14 @@ Ha a VNet egy témakörhöz vagy tartományhoz hoz létre privát végpontot, a 
 A privát végpontot használó VNet közzétevői ugyanazt a kapcsolati karakterláncot használják a témakörhöz vagy a tartományhoz, mint a nyilvános végponthoz csatlakozó ügyfelek. A DNS-feloldás automatikusan átirányítja a kapcsolatokat a VNet a témakörre vagy tartományra egy privát hivatkozáson keresztül. A Event Grid alapértelmezés szerint létrehoz egy [saját DNS-zónát](../dns/private-dns-overview.md) , amely a VNet csatolva van a saját végpontokhoz szükséges frissítéssel. Ha azonban a saját DNS-kiszolgálóját használja, előfordulhat, hogy további módosításokat kell végeznie a DNS-konfigurációban.
 
 ### <a name="dns-changes-for-private-endpoints"></a>A magánhálózati végpontok DNS-módosításai
-Privát végpont létrehozásakor az erőforráshoz tartozó DNS CNAME rekord az előtaggal `privatelink`rendelkező altartományban található aliasra frissül. Alapértelmezés szerint a rendszer létrehoz egy magánhálózati DNS-zónát, amely megfelel a magánhálózati kapcsolat altartományának. 
+Privát végpont létrehozásakor az erőforráshoz tartozó DNS CNAME rekord az előtaggal rendelkező altartományban található aliasra frissül `privatelink` . Alapértelmezés szerint a rendszer létrehoz egy magánhálózati DNS-zónát, amely megfelel a magánhálózati kapcsolat altartományának. 
 
 Ha a témakör vagy a tartomány végpontjának URL-címét a VNet kívülről a privát végpontra oldja fel, a megoldás a szolgáltatás nyilvános végpontját oldja fel. A "Topica" DNS-erőforrásrekordjait, ha a privát végpontot üzemeltető **VNet kívülről** oldották fel, a következő lesz:
 
 | Name                                          | Típus      | Érték                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
-| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure Traffic Manager-profil\>
+| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
 
 Az [IP-tűzfal](#ip-firewall)használatával megtagadhatja vagy szabályozhatja az VNet kívüli ügyfelek hozzáférését a nyilvános végponton keresztül. 
 
@@ -74,9 +74,9 @@ A privát végpontot futtató VNet feloldva a témakör vagy a tartomány végpo
 
 Ez a megközelítés lehetővé teszi, hogy a témakörhöz vagy tartományhoz ugyanazt a kapcsolati karakterláncot használja, mint a privát végpontokat üzemeltető VNet és a VNet kívüli ügyfelek számára.
 
-Ha a hálózaton egyéni DNS-kiszolgálót használ, akkor az ügyfelek a témakör vagy a tartomány végpontjának teljes tartománynevét feloldják a magánhálózati végpont IP-címére. Konfigurálja a DNS-kiszolgálót úgy, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához, vagy konfigurálja `topicOrDomainName.regionName.privatelink.eventgrid.azure.net` a rekordokat a saját végpont IP-címével.
+Ha a hálózaton egyéni DNS-kiszolgálót használ, akkor az ügyfelek a témakör vagy a tartomány végpontjának teljes tartománynevét feloldják a magánhálózati végpont IP-címére. Konfigurálja a DNS-kiszolgálót úgy, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához, vagy konfigurálja a rekordokat a `topicOrDomainName.regionName.privatelink.eventgrid.azure.net` saját végpont IP-címével.
 
-Az ajánlott DNS-zóna neve `privatelink.eventgrid.azure.net`:.
+Az ajánlott DNS-zóna neve: `privatelink.eventgrid.azure.net` .
 
 ### <a name="private-endpoints-and-publishing"></a>Privát végpontok és közzététel
 
@@ -84,7 +84,7 @@ A következő táblázat ismerteti a magánhálózati végponti kapcsolatok kül
 
 | Kapcsolatok állapota   |  Sikeres közzététel (igen/nem) |
 | ------------------ | -------------------------------|
-| Approved           | Igen                            |
+| Approved           | Yes                            |
 | Elutasítva           | No                             |
 | Függőben            | No                             |
 | Leválasztott       | No                             |
@@ -96,7 +96,7 @@ A **privát végpontok** a Event Grid alapszintű és prémium szintű csomagjai
 
 Az **IP-tűzfal** funkció a Event Grid alapszintű és prémium szintjein is elérhető. Egy témakör vagy tartomány alapján legfeljebb 16 IP-tűzfalszabály hozható létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Event Grid erőforrás IP-tűzfalát úgy is beállíthatja, hogy a nyilvános interneten keresztül csak az IP-címek és az IP-címtartományok egyetlen kiválasztott készletével korlátozza a hozzáférést. Részletes útmutatásért lásd: az [IP-tűzfal konfigurálása](configure-firewall.md).
 
 A privát végpontokat úgy is beállíthatja, hogy csak a kiválasztott virtuális hálózatokról korlátozza a hozzáférést. Részletes útmutatásért lásd: [privát végpontok konfigurálása](configure-private-endpoints.md).

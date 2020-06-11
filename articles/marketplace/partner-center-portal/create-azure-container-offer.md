@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 1a027eb4cb3351934738319f342afac8d8407e6f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 538baee092ea6e11469f7d0331cc1b89eaf9a161
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848804"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672714"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
 
@@ -144,7 +144,7 @@ Az ajánlat rövid leírása. Ez akár 100 karakter hosszú lehet, és a piacté
 
 Az ajánlat részletesebb leírása. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -278,9 +278,7 @@ Ezen a lapon kiválaszthatja, hogy a terv mely felhőknél érhető el. Az ezen 
 
 #### <a name="cloud-availability"></a>Felhőbeli rendelkezésre állás
 
-A csomagnak legalább egy felhőben elérhetőnek kell lennie.
-
-Válassza ki az **Azure globális** lehetőséget, hogy a tervet a kereskedelmi piactért használó összes globális Azure-régióban ügyfelei használhatják. Részletekért lásd: a [földrajzi Elérhetőség és a pénznemek támogatása](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Az Azure-beli tárolók ajánlatait az **Azure Global**-ban automatikusan elérhetővé kell tenni.  A tervet a kereskedelmi piactért használó összes globális Azure-régióban használhatja. Részletekért lásd: a [földrajzi Elérhetőség és a pénznemek támogatása](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
 Válassza a [**Azure Government Cloud (felhő**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) ) lehetőséget a megoldás megjelenítéséhez. Ez egy kormányzati közösségi felhő, amely az Egyesült Államok szövetségi, állami és helyi vagy törzsi szerveinek ügyfeleinek, valamint az azok kiszolgálására jogosult partnereknek szóló szabályozott hozzáféréssel rendelkezik. Közzétevőként Ön felelős a felhőalapú Közösség megfelelőségi ellenőrzésével, biztonsági intézkedéseivel és ajánlott eljárásaival. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).
 

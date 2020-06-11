@@ -1,16 +1,16 @@
 ---
-title: Erőforrás tulajdonságainak megtekintése
+title: Erőforrás-tulajdonságok felderítése
 description: Az erőforrás-tulajdonságok keresésének módját ismerteti.
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: 5714a25cfdc2e2dd76bfe2953040ebb961b51932
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/10/2020
+ms.openlocfilehash: 6e00ee875d9b0f7fadf27a44c55920872c815045
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466565"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668559"
 ---
-# <a name="view-resource-properties"></a>Erőforrás tulajdonságainak megtekintése
+# <a name="discover-resource-properties"></a>Erőforrás-tulajdonságok felderítése
 
 A Resource Manager-sablonok létrehozása előtt meg kell ismernie, hogy milyen típusú erőforrástípusok érhetők el, és hogy milyen értékeket kell használni a sablonban. Ebből a cikkből megtudhatja, hogyan keresheti meg a sablonban szerepeltetni kívánt tulajdonságokat.
 

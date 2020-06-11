@@ -1,18 +1,18 @@
 ---
 title: DC sorozat – Azure Virtual Machines
 description: A DC sorozatú virtuális gépek specifikációi.
-services: virtual-machines
 author: susaxen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/20/2020
-ms.author: lahugh
-ms.openlocfilehash: 955b3d967d2e62e1158f329a58f040121ca8b416
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.author: jushiman
+ms.openlocfilehash: e5a4c9d1afcc4caa0f9ac0db8b59274006ab3097
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220972"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676556"
 ---
 # <a name="dcsv2-series"></a>DCsv2 sorozat
 
@@ -56,6 +56,6 @@ Memória-megőrzési frissítések: nem támogatott
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

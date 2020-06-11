@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f187cc47d9c64c8257cc097734fa41e10629f1c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0b0acd84112e9fd997cb0d60a914da9528cffd9a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597449"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673037"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>Egyéni attribútumok definiálása felhasználói folyamatokhoz (előzetes verzió)
 |     |
@@ -25,13 +25,13 @@ ms.locfileid: "83597449"
 
 Az egyes alkalmazásokhoz különböző követelmények vonatkoznak a regisztráció során gyűjteni kívánt információkra. Az Azure AD az attribútumokban tárolt beépített információkkal (például Utónév, vezetéknév, város és irányítószám) rendelkezik. Az Azure AD segítségével kiterjesztheti a vendég fiókokban tárolt attribútumok készletét, ha a külső felhasználó egy felhasználói folyamaton keresztül jelentkezik be.
 
-Létrehozhat egyéni attribútumokat a Azure Portalban, és használhatja azokat az önkiszolgáló bejelentkezési felhasználói folyamatokban. Ezeket az attribútumokat a [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)használatával is elolvashatja és elvégezheti. Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API-bővítmény attribútumai az egyezmény használatával vannak elnevezve `extension_<Application-client-id>_attributename` . Például:
+Létrehozhat egyéni attribútumokat a Azure Portalban, és használhatja azokat az önkiszolgáló bejelentkezési felhasználói folyamatokban. Ezeket az attribútumokat a [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)használatával is elolvashatja és elvégezheti. Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API-bővítmény attribútumai az egyezmény használatával vannak elnevezve `extension_<aad-extensions-app-id>_attributename` . Például:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-Az `<Application-client-id>` **alkalmazás (ügyfél) azonosítója**melletti **Alkalmazásregisztrációk** oldalon található. Ez az azonosító a bérlőre vonatkozik.
+A a `<aad-extensions-app-id>` bérlőre jellemző. Az azonosító megkereséséhez navigáljon a Azure Active Directory > Alkalmazásregisztrációk > minden alkalmazás elemre. Keresse meg a "HRE-Extensions-app" kezdetű alkalmazást, és jelölje ki. Az alkalmazás áttekintés lapján jegyezze fel az alkalmazás (ügyfél) AZONOSÍTÓját.
 
 ## <a name="create-a-custom-attribute"></a>Egyéni attribútum létrehozása
 
@@ -55,8 +55,8 @@ Az `<Application-client-id>` **alkalmazás (ügyfél) azonosítója**melletti **
 
 Az egyéni attribútum már elérhető a felhasználói attribútumok listájában és a felhasználói folyamatokban való használathoz. Egyéni attribútum csak akkor jön létre, amikor az első alkalommal használja a felhasználói folyamatokban, és nem, amikor hozzáadja a felhasználói attribútumok listájához.
 
-Miután létrehozott egy új felhasználót egy olyan felhasználói folyamat használatával, amely az újonnan létrehozott egyéni attribútumot használja, az objektum [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)kérdezhető le. Ekkor látnia kell a **ShoeSize** a regisztrációs útvonalon összegyűjtött attribútumok listájában, és az alkalmazásnak visszaadott tokenben tekintheti meg. A jogcímek az alkalmazásnak visszaadott tokenbe való felvételével kapcsolatos további információkért lásd: [címtárszolgáltatás választható jogcímek konfigurálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims#configuring-directory-extension-optional-claims)
+Miután létrehozott egy új felhasználót egy olyan felhasználói folyamat használatával, amely az újonnan létrehozott egyéni attribútumot használja, az objektum [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)kérdezhető le. Ekkor látnia kell a **ShoeSize** a felhasználói objektumon a regisztráció során gyűjtött attribútumok listájában. Meghívhatja az alkalmazásból az Graph API az adatoknak a felhasználói objektumhoz való hozzáadása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz](self-service-sign-up-user-flow.md)

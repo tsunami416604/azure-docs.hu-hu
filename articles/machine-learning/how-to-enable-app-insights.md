@@ -11,12 +11,12 @@ ms.author: larryfr
 author: blackmist
 ms.date: 06/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 021d548c56810021af7257b25c40d7d4cc68ec12
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 30b6412ed5a8462b1ce0d8351e9e86a16b2082da
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629450"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84670038"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ A végpont kimeneti adatok és válaszok összegyűjtése mellett a következők
 
 ## <a name="web-service-metadata-and-response-data"></a>Webszolgáltatás metaadatainak és válaszideje
 
->[!Important]
+> [!IMPORTANT]
 > Az Azure Application Insights csak a legfeljebb 64 kb adattartalmakat naplózza. Ha eléri ezt a korlátot, a rendszer csak a modell legújabb kimeneteit naplózza. 
 
 A webszolgáltatásra irányuló kérések adatainak naplózásához adjon hozzá `print` utasításokat a score.py-fájlhoz. Minden `print` utasítás egy bejegyzést eredményez az Application Insights nyomkövetési táblájában, az üzenet alatt `STDOUT` . Az utasítás tartalma a `print` `customDimensions` és `Contents` a nyomkövetési táblában is szerepelni fog. Ha JSON-karakterláncot nyomtat ki, akkor az a nyomkövetési kimenetben hierarchikus adatstruktúrát hoz létre `Contents` .
@@ -74,6 +74,9 @@ Az Azure Application Insights közvetlenül is lekérdezheti az adatok elérés�
 Ha egyéni nyomkövetést szeretne naplózni, kövesse a normál üzembe helyezési folyamatot az AK vagy ACI esetében a dokumentum [üzembe helyezése és helye témakörben](how-to-deploy-and-where.md) . Ezután kövesse az alábbi lépéseket:
 
 1. Ha a következtetés során Application Insights adatokat szeretne küldeni, frissítse a pontozási fájlt a Print utasítások hozzáadásával. Összetettebb információk naplózása, például a kérelem adatai és a válasz, US a JSON-struktúra. A következő példa score.py a modell inicializálásának időpontját, a bemenetet és a kimenetet a következtetés során, valamint az esetleges hibák időpontját:
+
+    > [!IMPORTANT]
+    > Az Azure Application Insights csak a legfeljebb 64 kb adattartalmakat naplózza. Ha eléri ezt a korlátot, a rendszer csak a modell legújabb kimeneteit naplózza. Ha a naplózni kívánt adatok nagyobb 64 kb, akkor ehelyett a blob Storage-tárolóban kell tárolnia az [adatok gyűjtése az éles modellekben](how-to-enable-data-collection.md)című témakörben leírtak alapján.
     
     ```python
     import pickle

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 4c34996cb47b1f09f47454f162674248820ce975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 4033437db5c14abcd0376fbfeca22cca915908d2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118555"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677185"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
 
@@ -23,7 +23,7 @@ Ez a dokumentum a Linux diagnosztikai bővítmény 3,0-es és újabb verzióját
 > [!IMPORTANT]
 > A 2,3-es és régebbi verzióval kapcsolatos információkért tekintse meg [ezt a dokumentumot](../linux/classic/diagnostic-extension-v2.md).
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A Linux diagnosztikai bővítmény segítségével a felhasználók figyelheti Microsoft Azure-on futó Linux rendszerű virtuális gépek állapotát. A következő képességekkel rendelkezik:
 
@@ -451,7 +451,7 @@ A naplófájlok rögzítését vezérli. A LAD rögzíti az új szövegsorok ír
 
 Elem | Érték
 ------- | -----
-file | A figyelni és rögzíteni kívánt naplófájl teljes elérési útja. Az elérési útnak egyetlen fájlt kell megadnia; nem lehet könyvtárat átnevezni, és nem tartalmazhat helyettesítő karaktereket.
+file | A figyelni és rögzíteni kívánt naplófájl teljes elérési útja. Az elérési útnak egyetlen fájlt kell megadnia; nem lehet könyvtárat átnevezni, és nem tartalmazhat helyettesítő karaktereket. A "omsagent" felhasználói fióknak olvasási hozzáféréssel kell rendelkeznie a fájl elérési útjához.
 tábla | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (a védett konfigurációban megadott módon), amelybe a fájl "farok" új sorai íródnak.
 fogadóként | választható Vesszővel tagolt lista azoknak a további mosogatóknak a neveiről, amelyeknek a naplózási sorai elküldése megtörténjen.
 
@@ -566,7 +566,7 @@ Az összes lemez összesített értékei a beállítás alapján szerezhetők be
 
 ## <a name="installing-and-configuring-lad-30-via-cli"></a>LAD 3.0 telepítése és konfigurálása CLI-n keresztül
 
-Feltételezve, hogy a védett beállítások a PrivateConfig. JSON fájlban vannak, és a nyilvános konfigurációs adatok a PublicConfig. JSON fájlban találhatók, futtassa ezt a parancsot:
+Ha azt feltételezi, hogy a védett beállítások szerepelnek a PrivateConfig.jsfájlban, és a nyilvános konfigurációs adatok PublicConfig.jsbe van kapcsolva, futtassa ezt a parancsot:
 
 ```azurecli
 az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
@@ -578,7 +578,7 @@ A parancs feltételezi, hogy az Azure CLI Azure Resource Management (ARM) üzemm
 
 Az előző definíciók alapján Íme egy példa a 3,0-es, néhány magyarázattal ellátott bővítmény-konfigurációra. Ha alkalmazni szeretné a mintát az esetére, használja a saját Storage-fiók nevét, a fiók SAS-tokenjét és a EventHubs SAS-tokeneket.
 
-### <a name="privateconfigjson"></a>PrivateConfig. JSON
+### <a name="privateconfigjson"></a>PrivateConfig.jsbekapcsolva
 
 Ezek a magánhálózati beállítások a következőket konfigurálják:
 
@@ -628,7 +628,7 @@ Ezek a magánhálózati beállítások a következőket konfigurálják:
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig. JSON
+### <a name="publicconfigjson"></a>PublicConfig.jsbekapcsolva
 
 Ezek a nyilvános beállítások a következőt okozzák:
 

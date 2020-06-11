@@ -9,16 +9,15 @@ ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
-manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 4aa8d35e48c28cadecb6acc1f56ca6c44a145719
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b7cf4ab817f222f3a36a047e1e4d379f5bd6b73e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266967"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668406"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>A SQL Database és az SQL felügyelt példányának átmeneti csatlakoztatási hibáinak elhárítása
 
@@ -150,7 +149,7 @@ Ha például a Count értéke 3, az intervallum pedig 10 másodperc, akkor a csa
 A **ConnectRetryCount** és a **ConnectRetryInterval** paraméterekkel a **SqlConnection** objektum újra próbálkozik a kapcsolódási művelettel anélkül, hogy elmondja vagy zavarja a programot, például a vezérlés visszaadása a programnak. Az újrapróbálkozások a következő helyzetekben fordulhatnak elő:
 
 - mySqlConnection. open metódus hívása
-- mySqlConnection. Execute metódus hívása
+- mySqlConnection.ExeCute metódus hívása
 
 Van egy finomság. Ha átmeneti hiba történik a *lekérdezés* végrehajtása közben, a **SqlConnection** objektum nem próbálkozik újra a kapcsolódási művelettel. Bizonyára nem próbálja meg újra a lekérdezést. A **SqlConnection** azonban nagyon gyorsan ellenőrzi a kapcsolódást, mielőtt elküldi a lekérdezést a végrehajtáshoz. Ha a gyors vizsgálat csatlakozási problémát észlel, a **SqlConnection** újrapróbálkozik a csatlakozási művelettel. Ha az Újrapróbálkozás sikeres, a rendszer elküldi a lekérdezést a végrehajtáshoz.
 
@@ -227,7 +226,7 @@ Ha a program nem tud csatlakozni az adatbázishoz SQL Database-ben, az egyik dia
 
 Bármelyik Windows-számítógépen kipróbálhatja a következő segédprogramokat:
 
-- SQL Server Management Studio (SSMS. exe), amely a ADO.NET használatával csatlakozik
+- SQL Server Management Studio (ssms.exe), amely a ADO.NET használatával csatlakozik
 - `sqlcmd.exe`, amely az [ODBC](https://msdn.microsoft.com/library/jj730308.aspx) használatával csatlakozik
 
 Ha a program csatlakoztatva van, tesztelje, hogy egy rövid SQL SELECT lekérdezés működik-e.
@@ -243,7 +242,7 @@ Linux rendszeren a következő segédprogramok hasznosak lehetnek:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Módosítsa a példában szereplő értéket az IP-címére.
 
-Windows rendszeren a [Portqry. exe](https://www.microsoft.com/download/details.aspx?id=17148) segédprogram hasznos lehet. Íme egy példa a végrehajtásra, amely lekérdezte a port helyzetét egy SQL Database adatbázisán, és egy hordozható számítógépen futott:
+Windows rendszeren a [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) segédprogram hasznos lehet. Íme egy példa a végrehajtásra, amely lekérdezte a port helyzetét egy SQL Database adatbázisán, és egy hordozható számítógépen futott:
 
 ```cmd
 [C:\Users\johndoe\]
@@ -277,7 +276,7 @@ Az Enterprise Library 6 (EntLib60) .NET által felügyelt osztályokat kínál a
 
 Íme néhány Transact-SQL SELECT utasítás, amely a hibák naplóit és egyéb információkat kérdezi le.
 
-| Napló lekérdezése | Leírás |
+| Napló lekérdezése | Description |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |A [sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nézet az egyes eseményekről nyújt információkat, amelyek között lehetnek átmeneti hibák vagy csatlakozási hibák.<br/><br/>Ideális esetben összekapcsolhatja a **start_time** vagy **end_time** értékeket, ha az ügyfélprogram problémát észlelt.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |A [sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nézet a további diagnosztikai események összesített számát kínálja.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
@@ -444,7 +443,7 @@ public bool IsTransient(Exception ex)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQL Database és SQL Serverhoz tartozó kapcsolatok kódtárai](connect-query-content-reference-guide.md#libraries)
 - [Kapcsolatok készletezése (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)

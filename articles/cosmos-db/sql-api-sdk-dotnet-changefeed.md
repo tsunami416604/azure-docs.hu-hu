@@ -8,20 +8,21 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 43096e61fee740c6d1f1093cd441b8d2ee5901f8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d7b2e5b811e6e9972c94862a92b8f5808dcbe592
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171633"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678120"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed Processor SDK: letöltési és kibocsátási megjegyzések
 
 > [!div class="op_single_selector"]
 >
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
@@ -30,14 +31,14 @@ ms.locfileid: "84171633"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API-dokumentáció**|[A hírcsatorna-feldolgozó függvénytár API-referenciájának módosítása – dokumentáció](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Bevezetés**|[Ismerkedés a Change feed Processor .NET SDK-val](change-feed.md)|
+|**Első lépések**|[Ismerkedés a Change feed Processor .NET SDK-val](change-feed.md)|
 |**Jelenleg támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET mag](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
@@ -98,7 +99,7 @@ ms.locfileid: "84171633"
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
 * Új API hozzáadása, feladat &lt; IReadOnlyList &lt; RemainingPartitionWork &gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Ez az egyes partíciók becsült munkájának lekérésére használható.
-* A támogatja a Microsoft. Azure. DocumentDB SDK 2,0-es verziója. A Microsoft. Azure. DocumentDB 2,0-es vagy újabb verziójára van szükség.
+* A Microsoft.Azure.DocumentDB SDK 2,0-es verziója. A Microsoft.Azure.DocumentDB 2,0-es vagy újabb verziójára van szükség.
 
 ### <a name="206"></a><a name="2.0.6"></a>clickstream
 * A ChangeFeedEventHost. HostName nyilvános tulajdonsága a v1-vel való kompatibilitáshoz lett hozzáadva.
@@ -115,10 +116,10 @@ ms.locfileid: "84171633"
   * A GetEstimatedRemainingWork API 0 értéket adott vissza, ha nem találhatók bérletek a címbérleti gyűjteményben.
 
 * A következő kivételek nyilvánosak. A IPartitionProcessor megvalósító bővítmények kihasználhatják ezeket a kivételeket.
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. LeaseLostException. 
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionException. 
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionNotFoundException.
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. kivétellistájára. PartitionSplitException. 
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. kivétellistájára. LeaseLostException. 
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. kivétellistájára. PartitionException. 
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. kivétellistájára. PartitionNotFoundException.
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. kivétellistájára. PartitionSplitException. 
 
 ### <a name="202-prerelease"></a><a name="2.0.2-prerelease"></a>2.0.2 – előzetes verzió
 * Másodlagos API-változások:

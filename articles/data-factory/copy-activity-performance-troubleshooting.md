@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 694f10b53d02d44d189cbe7cbe492f48ac3b5669
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/10/2020
+ms.openlocfilehash: 6a7c04bec8a794a234f2f0c6fad75dc94c12d291
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299774"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668338"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
 
@@ -53,11 +53,11 @@ A teljesítmény-hangolási tippek jelenleg a következő esetekben nyújtanak j
 
 A másolási tevékenység figyelése nézet alján a végrehajtás részletei és időtartama a másolási tevékenység lépéseit ismerteti (lásd a cikk elején található példát), amely különösen hasznos a másolási teljesítmény hibaelhárításához. A másolási Futtatás szűk keresztmetszete a leghosszabb időtartamú. Tekintse meg az alábbi táblázatot az egyes fázisok definíciójában, és Ismerje meg, hogyan lehet [elhárítani a másolási tevékenységet a Azure IR](#troubleshoot-copy-activity-on-azure-ir) és a [másolási tevékenységet a saját](#troubleshoot-copy-activity-on-self-hosted-ir) üzemeltetésű integrációs modulban az ilyen adatokkal.
 
-| Fázis           | Leírás                                                  |
+| Fázis           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Várólista           | Az az eltelt idő, amíg a másolási tevékenység ténylegesen nem indul el az integrációs modulban. |
 | Másolás előtti parancsfájl | A másolási tevékenység és a másolási tevékenység közötti eltelt idő a fogadó adattárban lévő előmásolási parancsfájl végrehajtásának befejezése után. Az adatbázis-nyelők előmásolási parancsfájljának konfigurálásakor alkalmazza, például amikor az adatírást Azure SQL Database az új Adatmásolás előtt törli az adatbevitelt. |
-| Átvitel        | Az előző lépés vége és a forrás és a fogadó közötti összes adatok átvitele között eltelt idő. Az "átvitel" alatt az allépések párhuzamosan futnak.<br><br>- **Első bájtig eltelt idő:** Az előző lépés vége és az az idő, amikor az IR megkapja az első bájtot a forrás adattárból. A nem fájl alapú forrásokra vonatkozik.<br>- **Listaelem forrása:** A forrásfájlok vagy az adatpartíciók számbavételére fordított idő mennyisége. Az utóbbi akkor érvényes, ha az adatbázis-források partíciós beállításait konfigurálja, például az adatok olyan adatbázisokból való másolásakor, mint például az Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Olvasás a forrástól:** Az adatok forrás adattárból való beolvasásához felhasznált idő mennyisége.<br/>- **Írás a** fogadóba: Az adattárolási adattárba való adatírás során eltöltött idő mennyisége. |
+| Átvitel        | Az előző lépés vége és a forrás és a fogadó közötti összes adatok átvitele között eltelt idő. <br/>Figyelje meg, hogy az átvitel alatt álló allépések párhuzamosan futnak, és egyes műveletek nem jelennek meg, pl. a fájlformátum elemzése/létrehozása.<br><br/>- **Első bájtig eltelt idő:** Az előző lépés vége és az az idő, amikor az IR megkapja az első bájtot a forrás adattárból. A nem fájl alapú forrásokra vonatkozik.<br>- **Listaelem forrása:** A forrásfájlok vagy az adatpartíciók számbavételére fordított idő mennyisége. Az utóbbi akkor érvényes, ha az adatbázis-források partíciós beállításait konfigurálja, például az adatok olyan adatbázisokból való másolásakor, mint például az Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Olvasás a forrástól:** Az adatok forrás adattárból való beolvasásához felhasznált idő mennyisége.<br/>- **Írás a** fogadóba: Az adattárolási adattárba való adatírás során eltöltött idő mennyisége. |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Azure IR másolási tevékenységének hibáinak megoldása
 
@@ -70,7 +70,6 @@ Ha a másolási tevékenység teljesítménye nem felel meg az elvárásoknak, a
 - **"Átvitel – az első bájtig eltelt idő" hosszú ideig tartó munkavégzést**eredményezett: Ez azt jelenti, hogy a forrás lekérdezése sokáig tart, és az adatok visszaadása A lekérdezés vagy a kiszolgáló keresése és optimalizálása. Ha további segítségre van szüksége, vegye fel a kapcsolatot az adattár csapatával.
 
 - **"A továbbítási lista forrása" hosszú munkaidőtartamot tapasztalt**: a forrásfájlok vagy a forrás-adatbázis adatpartícióinak számbavétele lassú.
-
   - Ha fájl-alapú forrásból másol adatokat, ha **helyettesítő szűrőt** használ a mappa elérési útján vagy a fájlnéven ( `wildcardFolderPath` vagy `wildcardFileName` ), vagy a **fájl utolsó módosításának időszűrőjét** ( `modifiedDatetimeStart` vagy) használja `modifiedDatetimeEnd` , vegye figyelembe, hogy az ilyen szűrő a másolási tevékenységet fogja eredményezni a megadott mappában lévő összes fájlnak a kliens oldalára való listázásakor, majd alkalmazza a szűrőt. Ilyenkor előfordulhat, hogy a fájl enumerálása különösen szűk keresztmetszetet jelenthet, ha csak a fájlok kis halmaza felel meg a szűrési szabálynak.
 
     - Győződjön meg arról, hogy [a fájlok másolását a DateTime partíciós fájl elérési útja vagy neve alapján](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)végezheti el. Ez a módszer nem jelent terhet a forrás oldal listázására.
@@ -185,7 +184,7 @@ Az alábbiakban a támogatott adattárak némelyikének teljesítmény-figyelés
 * SQL Server: [a teljesítmény figyelése és finomhangolása](https://msdn.microsoft.com/library/ms189081.aspx).
 * Helyszíni fájlkiszolgáló: a [fájlkiszolgálók teljesítményének finomhangolása](https://msdn.microsoft.com/library/dn567661.aspx).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 5/13/2020
-ms.openlocfilehash: 3d3eee7dc57a2438ccf726851025c700824a5e3a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 6/10/2020
+ms.openlocfilehash: 00c60a0ff20c67b63b2ca93f9e5997e78a283f26
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322065"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667590"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,7 +66,7 @@ A következő táblázat összefoglalja a kiszolgáló nélküli számítási r�
 
 | | **Kiszolgáló nélküli számítástechnika** | **Kiépített számítás** |
 |:---|:---|:---|
-|**Adatbázis-használati minta**| Időszakos, előre jelezhető használat kisebb átlagos számítási használattal az idő múlásával. |  A rendszeres használati minták nagyobb átlagos számítási kihasználtságot és rugalmas készleteket használó több adatbázist használnak.|
+|**Adatbázis-használati minta**| Időszakos, előre jelezhető használat kisebb átlagos számítási használattal az idő múlásával. | A rendszeres használati minták nagyobb átlagos számítási kihasználtságot és rugalmas készleteket használó több adatbázist használnak.|
 | **Teljesítmény-felügyeleti tevékenység** |Lower|Magasabb|
 |**Számítási skálázás**|Automatikus|Kézi|
 |**Számítási rugalmasság**|Alacsonyabb az inaktív időszakok után|Azonnali|
@@ -161,19 +161,8 @@ Ha az [ügyfél által felügyelt transzparens adattitkosítást](transparent-da
 
 Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló nélküli számítási rétegbe helyez át, a következő két lépéssel megegyező mintát kell létrehoznia egy új adatbázis létrehozásához a kiépített számítási szinten.
 
-1. A szolgáltatási cél meghatározása. A szolgáltatási cél a szolgáltatási szintet, a hardverek létrehozását és a maximális virtuális mag írja elő. A következő táblázat a szolgáltatási cél beállításait mutatja be:
+1. A szolgáltatási cél meghatározása. A szolgáltatási cél a szolgáltatási szintet, a hardverek létrehozását és a maximális virtuális mag írja elő. A szolgáltatás céljának beállításaival kapcsolatban lásd: [kiszolgáló nélküli erőforrás-korlátok](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
 
-   |Szolgáltatási cél neve|Szolgáltatásszint|Hardver létrehozása|Maximális virtuális mag|
-   |---|---|---|---|
-   |GP_S_Gen5_1|Általános célú|Gen5|1|
-   |GP_S_Gen5_2|Általános célú|Gen5|2|
-   |GP_S_Gen5_4|Általános célú|Gen5|4|
-   |GP_S_Gen5_6|Általános célú|Gen5|6|
-   |GP_S_Gen5_8|Általános célú|Gen5|8|
-   |GP_S_Gen5_10|Általános célú|Gen5|10|
-   |GP_S_Gen5_12|Általános célú|Gen5|12|
-   |GP_S_Gen5_14|Általános célú|Gen5|14|
-   |GP_S_Gen5_16|Általános célú|Gen5|16|
 
 2. Szükség esetén megadhatja a minimális virtuális mag és az automatikus szüneteltetés késleltetését is, ha módosítani szeretné az alapértelmezett értékeket. A következő táblázat a paraméterek elérhető értékeit tartalmazza.
 

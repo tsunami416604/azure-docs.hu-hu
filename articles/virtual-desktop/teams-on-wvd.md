@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3a14ffc9f103e58681418eacbb35b72b704f2d61
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 8b065a79abe4a4f5c23e28be111b09e51e5e6484
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267137"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667046"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -32,7 +32,7 @@ A Microsoft Teams-hez készült Media Optimization szolgáltatással a Windows a
 Ahhoz, hogy a Microsoft Teams szolgáltatást használhassa a Windows rendszerű virtuális asztalon, ezeket a következő műveleteket kell végrehajtania:
 
 - [Készítse elő a hálózatát](/microsoftteams/prepare-network/) a Microsoft Teams szolgáltatásban.
-- Telepítse a [Windows asztali ügyfelet](connect-windows-7-and-10.md) olyan Windows 10-es eszközre, amely megfelel a Microsoft Teams Windows [rendszerű számítógépekre vonatkozó hardverkövetelmények](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
+- Telepítse a [Windows asztali ügyfelet](connect-windows-7-and-10.md) egy Windows 10 vagy Windows 10 IoT Enterprise rendszerű eszközre, amely megfelel a Microsoft Teams [Windows rendszerű számítógépekre vonatkozó hardverkövetelmények](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Csatlakozhat egy Windows 10 rendszerű többmunkamenetes vagy Windows 10 Enterprise rendszerű virtuális géphez (VM).
 - Telepítse a Teams Desktop alkalmazást a gazdagépre számítógépenkénti telepítés használatával. A Microsoft Teams-hez készült média-optimalizáláshoz a Teams Desktop-alkalmazás 1.3.00.4461 vagy újabb verziója szükséges.
 
@@ -53,7 +53,7 @@ A csapatok számítógépenkénti telepítésének engedélyezéséhez állítsa
 
 ### <a name="install-the-teams-websocket-service"></a>A Teams WebSocket szolgáltatás telepítése
 
-Telepítse a [WebSocket szolgáltatást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vkL6) a virtuálisgép-rendszerképre. Ha telepítési hibába ütközik, telepítse a [legújabb Microsoft Visual C++ újraterjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomagot, és próbálkozzon újra.
+Telepítse a [WebSocket szolgáltatást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) a virtuálisgép-rendszerképre. Ha telepítési hibába ütközik, telepítse a [legújabb Microsoft Visual C++ újraterjeszthető](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) csomagot, és próbálkozzon újra.
 
 ### <a name="install-microsoft-teams"></a>A Microsoft Teams telepítése
 
@@ -131,9 +131,9 @@ Küldjön visszajelzést a Microsoft Teams szolgáltatáshoz a Windows Virtual D
 
 ## <a name="collect-teams-logs"></a>Csapatok naplóinak összegyűjtése
 
-Ha a Windows rendszerű virtuális asztali környezetben problémák lépnek fel a csapatok asztali alkalmazásával kapcsolatban, Gyűjtse össze az ügyfél naplóit a **%AppData%\Microsoft\Teams\logs.txt** alatt a gazda virtuális gépen.
+Ha a Windows rendszerű virtuális asztali környezetben problémák merülnek fel a csapatok asztali alkalmazásával kapcsolatban, Gyűjtse össze az ügyfél naplóit a gazdagép virtuális gépen található **% AppData% \Microsoft\Teams\logs.txt** alatt.
 
-Ha a hívásokkal és értekezletekkel kapcsolatos problémákba ütközik, Gyűjtse össze a csapat webes ügyfél naplóit a **CTRL**  +  **ALT**  +  **SHIFT**  +  **1**billentyűkombinációval. A naplókat a rendszer a gazda virtuális gépen található **DATE_TIME. txt%USERPROFILE%\Downloads\MSTeams diagnosztikai naplóba** írja.
+Ha a hívásokkal és értekezletekkel kapcsolatos problémákba ütközik, Gyűjtse össze a csapat webes ügyfél naplóit a **CTRL**  +  **ALT**  +  **SHIFT**  +  **1**billentyűkombinációval. A naplókat a rendszer a **%USERPROFILE%\Downloads\MSTeams diagnosztikai naplóba DATE_TIME.txt** fogja írni a gazda virtuális gépen.
 
 ## <a name="contact-microsoft-teams-support"></a>Kapcsolatfelvétel a Microsoft Teams ügyfélszolgálatával
 

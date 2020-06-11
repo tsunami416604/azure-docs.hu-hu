@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 0fe167490cd466ca30857c2ed324846e80ab581d
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 3b32468c9795f603ac38854415bca9d653d7c101
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635594"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674977"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -75,7 +75,6 @@ További információ a különböző protokollok használatával elküldött ü
 
 A Rendszertulajdonságok nevei attól függően változnak, hogy az üzenetek milyen végponton vannak átirányítva. Ezekről a nevekről az alábbi táblázatban talál további információt.
 
-
 |Rendszertulajdonság neve|Event Hubs|Azure Storage|Service Bus|Event Grid|
 |--------------------|----------|-------------|-----------|----------|
 |Üzenet azonosítója|üzenet-azonosító|messageId|MessageId|üzenet-azonosító|
@@ -86,7 +85,7 @@ A Rendszertulajdonságok nevei attól függően változnak, hogy az üzenetek mi
 |Kapcsolatok hitelesítési módszere|iothub – kapcsolatok – hitelesítés – módszer|connectionAuthMethod|iothub – kapcsolatok – hitelesítés – módszer|iothub – kapcsolatok – hitelesítés – módszer|
 |contentType|Content-Type|contentType|ContentType|iothub – tartalomtípus|
 |contentEncoding|Content-Encoding|contentEncoding|ContentEncoding|iothub – tartalom kódolása|
-|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime|     |iothub – enqueuedtime|
+|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| N.A. |iothub – enqueuedtime|
 |iothub – csatoló neve|iothub – csatoló neve|interfaceName|Iothub – csatoló neve|iothub – csatoló neve|
 |CorrelationId|korrelációs azonosító|correlationId|CorrelationId|korrelációs azonosító|
 

@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 15b3f2e48b78036c02ef86446f2ab920f22f7c76
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 92fdb48f11d4d8753706d61fab9fd32e2b06f488
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295439"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668185"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
 
@@ -45,7 +45,7 @@ Az alhálózatot, amelyhez a privát végpontot csatlakoztatja, más erőforrás
 A privát végpontot a webalkalmazástól eltérő régióban is üzembe helyezheti. 
 
 > [!Note]
->A VNet-integrációs szolgáltatás nem használhatja ugyanazt az alhálózatot, mint a privát végpont, ez a VNet-integrációs szolgáltatás korlátozása.
+>A VNet-integrációs szolgáltatás nem tudja használni a magánhálózati végponttal megegyező alhálózatot, ez a VNet-integrációs szolgáltatás korlátozása.
 
 Biztonsági szempontból:
 
@@ -84,7 +84,7 @@ Az előzetes verzió ideje alatt a rendszer csak az üzemi tárolóhelyet teszi 
 
 Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Privát végpont üzembe helyezése a webalkalmazáshoz a portálon keresztül: a [webalkalmazásokhoz való magánhálózati kapcsolódás][howtoguide]
 

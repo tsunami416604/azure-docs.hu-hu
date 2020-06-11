@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416622"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669834"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Adatok másolása Sybase használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -37,8 +37,10 @@ A Sybase-adatbázisból bármilyen támogatott fogadó adattárba másolhat adat
 
 Ez a Sybase-összekötő a következőket támogatja:
 
-- SAP Sybase SQL Anywhere (ASA) **16. és újabb verzió**; Az IQ és a bemutató nem támogatott.
+- Az SAP Sybase SQL Anywhere (ASA) **16. és újabb verziója**.
 - Adatok másolása az **alapszintű** vagy a **Windows** -hitelesítéssel.
+
+A Sybase IQ-ja és a kiegészítője nem támogatott. Ehelyett használhatja az általános ODBC-összekötőt a Sybase-illesztőprogrammal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,13 +61,13 @@ A Sybase társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **Sybase** | Igen |
-| kiszolgáló | A Sybase-kiszolgáló neve. |Igen |
-| adatbázis | A Sybase-adatbázis neve. |Igen |
-| authenticationType | A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű**és **Windows**. |Igen |
-| felhasználónév | Adja meg a Sybase-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Sybase** | Yes |
+| kiszolgáló | A Sybase-kiszolgáló neve. |Yes |
+| adatbázis | A Sybase-adatbázis neve. |Yes |
+| authenticationType | A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű**és **Windows**. |Yes |
+| felhasználónév | Adja meg a Sybase-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Yes |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Yes |
 
 **Például**
 
@@ -100,10 +102,10 @@ A Sybase-adatok másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SybaseTable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SybaseTable** | Yes |
 | tableName | A Sybase-adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -120,7 +122,7 @@ A Sybase-adatok másolásához a következő tulajdonságok támogatottak:
 }
 ```
 
-Ha a beírt adatkészletet használta `RelationalTable` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+Ha `RelationalTable` a beírt adatkészletet használta, a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
@@ -132,8 +134,8 @@ A Sybase adatainak másolásához a másolási tevékenység **forrása** szakas
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SybaseSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SybaseSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Például**
 
@@ -167,7 +169,7 @@ A Sybase adatainak másolásához a másolási tevékenység **forrása** szakas
 ]
 ```
 
-Ha a beírt forrást használta `RelationalSource` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+Ha `RelationalSource` a beírt forrást használta, a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
 
 ## <a name="data-type-mapping-for-sybase"></a>Sybase adattípusának leképezése
 
@@ -181,5 +183,5 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

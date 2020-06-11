@@ -1,18 +1,19 @@
 ---
-title: NVv4 sorozat – Azure Virtual Machines
+title: NVv4 sorozat
 description: A NVv4 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
+ms.subservice: sizes
 author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 0295ed7d44d64fcc1aeb68e1beaa37987b177edb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 856ad9cede58b7a8dd0856cac9568832702d4b23
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273845"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678054"
 ---
 # <a name="nvv4-series"></a>NVv4 sorozat 
 
@@ -54,6 +55,6 @@ Az AMD GPU-illesztőprogramok manuális telepítéséhez lásd: [N-sorozatú AMD
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

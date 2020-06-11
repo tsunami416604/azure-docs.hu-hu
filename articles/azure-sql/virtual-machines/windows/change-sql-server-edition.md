@@ -4,7 +4,6 @@ description: Megtudhatja, hogyan módosíthatja a SQL Server virtuális gép kia
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: article
@@ -14,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 598060c028708ed4ac138914a561f7edb62487ca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 228f76c9ecb262ffca7851f4339b73c5574f09dc
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046186"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669166"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Az SQL Server Edition helyszíni módosítása az Azure-beli virtuális gépen
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +45,7 @@ A SQL Server kiadásának helyben történő megváltoztatásához a következő
 
 SQL Server kiadásának frissítéséhez szerezze be a SQL Server kívánt kiadásához tartozó SQL Server telepítési adathordozót, majd tegye a következőket:
 
-1. Nyissa meg a Setup. exe fájlt a SQL Server telepítési adathordozóról. 
+1. Nyissa meg Setup.exe a SQL Server telepítési adathordozóról. 
 1. Lépjen a **karbantartás** menüpontra, és válassza a **kiadás frissítése** lehetőséget. 
 
    ![SQL Server kiadásának frissítésére szolgáló kijelölés](./media/change-sql-server-edition/edition-upgrade.png)
@@ -95,7 +94,7 @@ Miután módosította SQL Server kiadását a telepítési adathordozó használ
 - A kiadás módosításának lehetősége az SQL VM erőforrás-szolgáltató szolgáltatása. Egy Azure Marketplace-rendszerkép üzembe helyezése a Azure Portal automatikusan regisztrálja az SQL Server VM az erőforrás-szolgáltatóval. A SQL Server önálló telepítését végző ügyfeleknek azonban manuálisan kell [regisztrálniuk SQL Server VM](sql-vm-resource-provider-register.md).
 - SQL Server VM hozzáadása egy rendelkezésre állási csoporthoz újra kell létrehozni a virtuális gépet. A rendelkezésre állási csoportba felvett virtuális gépek vissza lesznek állítva az alapértelmezett kiadásra, és a kiadást újra módosítani kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket: 
 

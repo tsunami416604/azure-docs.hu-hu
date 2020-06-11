@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75561867"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676131"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions megbízható események feldolgozása
 
@@ -91,7 +91,7 @@ Az áramkör-megszakítót egy eseményvezérelt folyamat megvalósításához k
 
 A megvalósítás részletei eltérőek lehetnek, de a példányok közötti megosztáshoz szükség van egy tárolási mechanizmusra. Dönthet úgy, hogy az állapotot az Azure Storage-ban, egy Redis-gyorsítótárban vagy bármely más, a függvények gyűjteménye által elérhető fiókban tárolja.
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) vagy [tartós entitások](./durable/durable-functions-overview.md) természetes illeszkedést biztosítanak a munkafolyamatok és az áramköri állapot kezeléséhez. Más szolgáltatások is ugyanúgy működhetnek, de ehhez a példához a Logic apps is használható. A Logic Apps használatával szüneteltetheti és újraindíthatja a függvények végrehajtását, így az áramkör-megszakító minta megvalósításához szükséges vezérlőt is megadhatja.
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) -vagy [tartós függvények](./durable/durable-functions-overview.md) természetes illeszkedést biztosítanak a munkafolyamatok és az áramköri állapot kezeléséhez. Más szolgáltatások is ugyanúgy működhetnek, de ehhez a példához a Logic apps is használható. A Logic Apps használatával szüneteltetheti és újraindíthatja a függvények végrehajtását, így az áramkör-megszakító minta megvalósításához szükséges vezérlőt is megadhatja.
 
 ### <a name="define-a-failure-threshold-across-instances"></a>Hiba küszöbértékének meghatározása példányok között
 
@@ -120,12 +120,12 @@ Az e-mail-címzett megvizsgálhatja az áramkör állapotát, és ha szükséges
 
 Ennek a módszernek a használatával egyetlen üzenet sem vész el, az összes üzenet feldolgozása sorrendben történik, és szükség esetén az áramkört is megszüntetheti.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 - [Megbízható esemény-feldolgozási minták](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions áramkör-megszakító](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Azure tartós entitás áramkör-megszakítója](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következőket:
 

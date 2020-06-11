@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: biztonsági másolat visszaállítása (SSMS)'
-titleSuffix: Azure SQL SQL Managed Instance
-description: Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja vissza az adatbázis biztonsági másolatát egy felügyelt Azure SQL SQL-példányra SQL Server-felügyelet (SSMS) használatával.
+titleSuffix: Azure SQL Managed Instance
+description: Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja vissza az adatbázisok biztonsági mentését az Azure SQL felügyelt példányaira SQL Server Management Studio (SSMS) használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,45 +12,45 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: c750912e942d5dadeb97e6675427f1730912704a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 23deba1dd2bbb706d1c76cb71cf1c08330049036
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267579"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659309"
 ---
-# <a name="quickstart-restore-a-database-to-an-azure-sql-managed-instance-with-ssms"></a>Gyors útmutató: adatbázis visszaállítása egy felügyelt Azure SQL-példányra a SSMS használatával
+# <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Gyors útmutató: adatbázis visszaállítása az Azure SQL felügyelt példányára a SSMS használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Ebben a rövid útmutatóban SQL Server Management Studio (SSMS) használatával állítja vissza az adatbázist (a Wide World Importers-standard Backup fájlt) az Azure Blob Storage-ból egy [felügyelt Azure SQL-példányba](sql-managed-instance-paas-overview.md).
+Ebben a rövid útmutatóban SQL Server Management Studio (SSMS) használatával állítja vissza az adatbázist (a Wide World Importers-standard Backup fájlt) az Azure Blob Storage-ból az [Azure SQL felügyelt példányaira](sql-managed-instance-paas-overview.md).
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> A Azure Database Migration Service (DMS) használatával történő áttelepítéssel kapcsolatos további információkért lásd: [SQL felügyelt példányok áttelepítése a DMS használatával](../../dms/tutorial-sql-server-to-managed-instance.md).
+> A Azure Database Migration Service használatával történő áttelepítéssel kapcsolatos további információkért lásd: [SQL felügyelt példányok áttelepítése Database Migration Service használatával](../../dms/tutorial-sql-server-to-managed-instance.md).
 > A különböző áttelepítési módszerekkel kapcsolatos további információkért lásd: [SQL Server Migrálás az Azure SQL felügyelt példányára](migrate-to-instance-from-sql-server.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a rövid útmutató:
 
-- Erőforrásokat használ a [felügyelt SQL-példányok létrehozása](instance-create-quickstart.md) című rövid útmutatóban.
-- A [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) legújabb verzióját kell telepíteni.
-- A használatához a SSMS használata szükséges az SQL felügyelt példányhoz való kapcsolódáshoz. A kapcsolódás menetét a következő útmutatókban tekintheti meg:
+- Erőforrásokat használ a [felügyelt példány létrehozása](instance-create-quickstart.md) rövid útmutatóból.
+- A [SSMS](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) legújabb verzióját kell telepíteni.
+- A használatához a SSMS használata szükséges a felügyelt SQL-példányhoz való kapcsolódáshoz. A kapcsolódás menetét a következő útmutatókban tekintheti meg:
   - [Nyilvános végpont engedélyezése](public-endpoint-configure.md) az SQL felügyelt példányain – ez az oktatóanyag ajánlott megközelítése.
-  - [Kapcsolódás SQL felügyelt példányhoz egy Azure-beli virtuális gépen](connect-vm-instance-configure.md)
-  - [Pont – hely kapcsolat konfigurálása egy SQL felügyelt példányhoz a helyszínen](point-to-site-p2s-configure.md).
+  - [Kapcsolódjon az SQL felügyelt példányhoz egy Azure-beli virtuális](connect-vm-instance-configure.md)gépről.
+  - [Pont – hely kapcsolat konfigurálása az SQL felügyelt példányához a helyszínen](point-to-site-p2s-configure.md).
 
 > [!NOTE]
 > A SQL Server-adatbázisok Azure Blob Storage használatával történő biztonsági mentéséről és visszaállításáról további [információt a](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [SQL Server biztonsági mentés az URL-címre](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017)című témakörben talál.
 
 ## <a name="restore-from-a-backup-file"></a>Visszaállítás biztonságimásolat-fájlból
 
-A SQL Server Management Studio (SSMS) alkalmazásban az alábbi lépéseket követve állítsa vissza a Wide World importőr-adatbázist az SQL felügyelt példányára. Az adatbázis biztonságimásolat-fájlját egy előre konfigurált Azure Blob Storage-fiók tárolja.
+A SQL Server Management Studio az alábbi lépéseket követve állítsa vissza a Wide World Importers-adatbázist az SQL felügyelt példányára. Az adatbázis biztonságimásolat-fájlját egy előre konfigurált Azure Blob Storage-fiók tárolja.
 
-1. Nyissa meg a SSMS, és kapcsolódjon a felügyelt SQL-példányhoz.
-2. A **Object Explorerban**kattintson a jobb gombbal az SQL felügyelt példányára, és válassza az **Új lekérdezés** lehetőséget egy új lekérdezési ablak megnyitásához.
-3. Futtassa a következő SQL-parancsfájlt, amely egy előre konfigurált Storage-fiókot és egy SAS-kulcsot használ a [hitelesítő adatok létrehozásához](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) az SQL felügyelt példányában.
+1. Nyissa meg a SSMS, és kapcsolódjon a felügyelt példányhoz.
+2. A **Object Explorerban**kattintson a jobb gombbal a felügyelt példányra, és válassza az **Új lekérdezés** lehetőséget egy új lekérdezési ablak megnyitásához.
+3. Futtassa a következő SQL-parancsfájlt, amely egy előre konfigurált Storage-fiókot és egy SAS-kulcsot használ [egy hitelesítő adat létrehozásához](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) a felügyelt példányban.
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
@@ -91,10 +91,10 @@ A SQL Server Management Studio (SSMS) alkalmazásban az alábbi lépéseket köv
 7. Ha a visszaállítás befejeződött, tekintse meg az adatbázist Object Explorerban. A [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézet használatával ellenőrizheti, hogy az adatbázis-visszaállítás befejeződött-e.
 
 > [!NOTE]
-> Az adatbázis-visszaállítási művelet aszinkron és újrapróbálható. Előfordulhat, hogy a rendszer bizonyos hibákat SQL Server Management Studio, ha a kapcsolatok megszakadnak, vagy bizonyos időtúllépés lejár. Azure SQL Database továbbra is megkísérli visszaállítani az adatbázist a háttérben, és nyomon követheti a visszaállítás előrehaladását a [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek használatával.
+> Az adatbázis-visszaállítási művelet aszinkron és újrapróbálható. Előfordulhat, hogy a rendszer hibát jelez SQL Server Management Studio, ha a kapcsolatok megszakadnak, vagy lejár az időtúllépés. Azure SQL Database továbbra is megkísérli visszaállítani az adatbázist a háttérben, és nyomon követheti a visszaállítás előrehaladását a [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek használatával.
 > A visszaállítási folyamat egyes fázisaiban egyedi azonosítót fog látni a rendszernézetek tényleges neve helyett. Ismerje meg az `RESTORE` utasítások viselkedésével kapcsolatos [here](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)eltéréseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha az 5. lépésben az adatbázis-visszaállítás a 22003-es AZONOSÍTÓJÚ üzenettel megszűnik, hozzon létre egy új biztonságimásolat-fájlt, amely biztonsági mentési ellenőrzőösszegeket tartalmaz, és végezze el a visszaállítást. A biztonsági mentés vagy a visszaállítás során olvassa el a [biztonsági másolatok ellenőrzőösszegének engedélyezése vagy letiltása](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)című témakört.
 - Az URL-címekre történő biztonsági mentés hibaelhárítását lásd: [SQL Server biztonsági mentés az URL-címekhez – ajánlott eljárások és hibaelhárítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).

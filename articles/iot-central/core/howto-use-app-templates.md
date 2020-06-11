@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: e05256d26da2c061559bcc8e50e9ecce6d8425a0
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248209"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678171"
 ---
 # <a name="export-your-application"></a>Az alkalmazás exportálása
 
@@ -59,7 +59,6 @@ Alkalmazás sablonjának létrehozásakor az nem tartalmazza a következő eleme
 
 - Eszközök
 - Felhasználók
-- Feladatdefiníciók
 - Folyamatos adatexportálási definíciók
 
 Ezeket az elemeket manuálisan adja hozzá az alkalmazás sablonból létrehozott összes alkalmazáshoz.
@@ -89,6 +88,6 @@ Ha töröl egy alkalmazást, már nem használhatja a korábban létrehozott meg
 
 Az alkalmazás sablonjának frissítéséhez módosítsa a sablon nevét vagy leírását az **alkalmazás sablon exportálása** lapon. Ezután kattintson ismét az **Exportálás** gombra. Ez a művelet létrehoz egy új **megosztható hivatkozást** , és érvényteleníti az előző **megosztható hivatkozás** URL-címét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az alkalmazás sablonjainak használatát, a javasolt következő lépés az, hogy megtudja, hogyan [figyelheti az IoT Central alkalmazáshoz csatlakoztatott eszközök általános állapotát](howto-monitor-application-health.md) .

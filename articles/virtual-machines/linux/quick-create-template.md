@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 0e9ce74d62bb45c84f8bca2d71579b05c0ba656a
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7fc7e4d5d402bfb21a30798f64e31cbbef8ccdd0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485741"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677950"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-a-resource-manager-template"></a>Gyors útmutató: Ubuntu Linux virtuális gép létrehozása Resource Manager-sablonnal
 
@@ -21,10 +21,15 @@ Ez a rövid útmutató bemutatja, hogyan használható egy Resource Manager-sabl
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="review-the-template"></a>A sablon áttekintése
+Nincsenek.
+
+## <a name="create-an-ubuntu-linux-virtual-machine"></a>Ubuntu Linux virtuális gép létrehozása
+
+### <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)származik.
 
@@ -35,19 +40,17 @@ Több erőforrás van definiálva a sablonban:
 
 - [**Microsoft. Network/virtualNetworks/Subnets**](/azure/templates/Microsoft.Network/virtualNetworks/subnets): hozzon létre egy alhálózatot.
 - [**Microsoft. Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts): hozzon létre egy Storage-fiókot.
-- [**Microsoft. Network/nyilvános IP**](/azure/templates/Microsoft.Network/publicIPAddresses): hozzon létre egy nyilvános IP-címet.
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces): hozzon létre egy hálózati adaptert.
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/Microsoft.Network/networkSecurityGroups): hozzon létre egy hálózati biztonsági csoportot.
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/Microsoft.Network/virtualNetworks): hozzon létre egy virtuális hálózatot.
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces): hozzon létre egy hálózati adaptert.
+- [**Microsoft. Network/nyilvános IP**](/azure/templates/Microsoft.Network/publicIPAddresses): hozzon létre egy nyilvános IP-címet.
 - [**Microsoft. számítási/virtualMachines**](/azure/templates/Microsoft.Compute/virtualMachines): hozzon létre egy virtuális gépet.
 
-
-
-## <a name="deploy-the-template"></a>A sablon üzembe helyezése
+### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy kulcstartót és egy titkos kulcsot.
 
-    [![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
+    [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
 
 1. Válassza ki vagy adja meg a következő értékeket. Használja az alapértelmezett értékeket, ha vannak ilyenek.
 
@@ -76,7 +79,7 @@ Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül haszná
 A Azure Portal segítségével megkeresheti a virtuális gépet és a létrehozott más erőforrásokat. Az üzembe helyezés befejezése után válassza az **Ugrás az erőforráscsoporthoz** lehetőséget a virtuális gép és egyéb erőforrások megtekintéséhez.
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli a virtuális gépet és az erőforráscsoport összes erőforrását. 
 

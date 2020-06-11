@@ -3,12 +3,12 @@ title: Sablon functions – logikai
 description: A Azure Resource Manager-sablonban a logikai értékek meghatározásához használandó függvények leírása.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0072593e7d7830e75e2386bcfdd2907a873c7a87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192314"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677389"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Az ARM-sablonok logikai funkciói
 
@@ -28,13 +28,13 @@ Ellenőrzi, hogy az összes paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |logikai |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Igen |logikai |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |Nem |logikai |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Yes |logikai |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Yes |logikai |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |No |logikai |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az összes érték igaz; Ellenkező esetben **hamis**.
 
@@ -44,7 +44,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -66,7 +66,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | andExampleOutput | Logikai | False (Hamis) |
 | orExampleOutput | Logikai | True (Igaz) |
@@ -80,11 +80,11 @@ A paramétert logikai értékre alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
+| arg1 |Yes |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 Az átalakított érték logikai értéke.
 
 ### <a name="examples"></a>Példák
@@ -93,7 +93,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -119,7 +119,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | trueString | Logikai | True (Igaz) |
 | falseString | Logikai | False (Hamis) |
@@ -134,13 +134,13 @@ Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| feltétel |Igen |logikai |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
-| trueValue |Igen | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
-| falseValue |Igen | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
+| feltétel |Yes |logikai |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
+| trueValue |Yes | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
+| falseValue |Yes | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A második paramétert adja vissza, ha az első paraméter **igaz**. Ellenkező esetben a harmadik paramétert adja vissza.
 
@@ -150,11 +150,11 @@ Ha a feltétel **igaz**, csak a True érték lesz kiértékelve. Ha a feltétel 
 
 ### <a name="examples"></a>Példák
 
-A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) a `if` függvény használatát mutatja be.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) a függvény használatát mutatja be `if` .
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -177,7 +177,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | yesOutput | Sztring | igen |
 | nincs kimenet | Sztring | nem |
@@ -187,7 +187,7 @@ A következő [példa](https://github.com/krnese/AzureDeploy/blob/master/ARM/dep
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -239,11 +239,11 @@ Logikai érték konvertálása az ellenkező értékre.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |logikai |Az átalakítandó érték. |
+| arg1 |Yes |logikai |Az átalakítandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad eredményül, ha a paraméter **hamis**. **Hamis** értéket ad vissza, ha a paraméter **igaz**.
 
@@ -253,7 +253,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -275,7 +275,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | andExampleOutput | Logikai | False (Hamis) |
 | orExampleOutput | Logikai | True (Igaz) |
@@ -285,7 +285,7 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -300,7 +300,7 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | checkNotEquals | Logikai | True (Igaz) |
 
@@ -312,13 +312,13 @@ Ellenőrzi, hogy a paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |logikai |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Igen |logikai |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |Nem |logikai |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Yes |logikai |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Yes |logikai |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |No |logikai |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha bármelyik érték igaz; Ellenkező esetben **hamis**.
 
@@ -328,7 +328,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -350,13 +350,13 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | andExampleOutput | Logikai | False (Hamis) |
 | orExampleOutput | Logikai | True (Igaz) |
 | notExampleOutput | Logikai | False (Hamis) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
 

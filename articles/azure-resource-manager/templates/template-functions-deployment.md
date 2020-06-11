@@ -3,12 +3,12 @@ title: Sablon functions – üzembe helyezés
 description: Ismerteti a Azure Resource Manager-sablonban a telepítési információk lekéréséhez használandó függvényeket.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203794"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677814"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Az ARM-sablonok üzembe helyezési funkciói
 
@@ -27,7 +27,7 @@ Erőforrások, erőforráscsoportok vagy előfizetések értékeinek lekérésé
 
 A jelenlegi telepítési műveletre vonatkozó adatokat adja vissza.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Ez a függvény az üzembe helyezés során átadott objektumot adja vissza. A visszaadott objektum tulajdonságai eltérnek attól függően, hogy:
 
@@ -82,7 +82,7 @@ Távoli sablon erőforráscsoporthoz való telepítésekor: a függvény a köve
 }
 ```
 
-Ha Azure-előfizetésre, felügyeleti csoportra vagy bérlőre végez üzembe helyezést, a `location` Return objektum tartalmaz egy tulajdonságot. Helyi sablon vagy külső sablon telepítésekor a Location tulajdonság is szerepel. A formátum:
+Ha Azure-előfizetésre, felügyeleti csoportra vagy bérlőre végez üzembe helyezést, a Return objektum tartalmaz egy `location` tulajdonságot. Helyi sablon vagy külső sablon telepítésekor a Location tulajdonság is szerepel. A formátum:
 
 ```json
 {
@@ -108,10 +108,10 @@ Ha Azure-előfizetésre, felügyeleti csoportra vagy bérlőre végez üzembe he
 A központi telepítés () használatával egy másik sablonra lehet hivatkozni a fölérendelt sablon URI-ja alapján.
 
 ```json
-"variables": {  
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
+"variables": {
+    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
-```  
+```
 
 Ha a portálon lévő központi telepítési előzményekből telepít újra egy sablont, a sablon helyi fájlként lesz telepítve. A `templateLink` tulajdonságot a rendszer nem adja vissza a telepítési függvényben. Ha a sablon `templateLink` egy másik sablonra mutató hivatkozást hoz létre, ne használja a portált az újbóli üzembe helyezéshez. Ehelyett használja a sablon eredeti üzembe helyezéséhez használt parancsokat.
 
@@ -121,7 +121,7 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -140,7 +140,7 @@ Az előző példa a következő objektumot adja vissza:
   "name": "deployment",
   "properties": {
     "template": {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
@@ -164,7 +164,7 @@ Az előző példa a következő objektumot adja vissza:
 
 Információt ad vissza az üzembe helyezéshez használt Azure-környezetről.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Ez a függvény az aktuális Azure-környezet tulajdonságait adja vissza. Az alábbi példa a globális Azure tulajdonságait mutatja be. A szuverén felhők némileg eltérő tulajdonságokat adhatnak vissza.
 
@@ -264,11 +264,11 @@ Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adn
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
+| parameterName |Yes |sztring |A visszaadni kívánt paraméter neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A megadott paraméter értéke.
 
@@ -277,7 +277,7 @@ A megadott paraméter értéke.
 Általában paraméterekkel állíthatja be az erőforrás-értékeket. A következő példa beállítja a webhely nevét az üzembe helyezés során átadott paraméterérték értékére.
 
 ```json
-"parameters": { 
+"parameters": {
   "siteName": {
       "type": "string"
   }
@@ -298,7 +298,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringParameter": {
@@ -351,7 +351,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | stringOutput | Sztring | 1. lehetőség |
 | intOutput | Int | 1 |
@@ -369,11 +369,11 @@ A változó értékét adja vissza. A megadott változó nevét meg kell adni a 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
+| variableName |Yes |Sztring |A visszaadni kívánt változó neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A megadott változó értéke.
 
@@ -407,7 +407,7 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {
@@ -443,7 +443,7 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | exampleOutput1 | Sztring | myVariable |
 | exampleOutput2 | Tömb | [1, 2, 3, 4] |
@@ -452,6 +452,6 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 További információ a változók használatáról: [változók Azure Resource Manager sablonban](template-variables.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.

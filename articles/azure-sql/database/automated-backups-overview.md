@@ -6,19 +6,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
 ms.custom: sqldbrb=2
-ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-manager: craigg
 ms.date: 06/04/2020
-ms.openlocfilehash: fc2c8ea232004488664bc7f15b1d1bb3b83f2e7b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 41df5190f2a7435ad91de94cb6f407037e1783a2
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609607"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667828"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -76,18 +74,6 @@ Más szóval, a megőrzési időszak során bármely időpontra vonatkozóan oly
 > [!NOTE]
 > A PITR engedélyezéséhez a további biztonsági mentéseket a beállított megőrzési időtartamnál hosszabb ideig tárolja a rendszer. A biztonsági mentési tár díját az összes biztonsági mentés esetében azonos díjszabással számoljuk el. 
 
-Az önálló adatbázisok esetében ez az egyenlet a biztonsági mentési tárterület teljes használatának kiszámítására szolgál:
-
-`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
-
-A készletezett adatbázisok esetében a teljes biztonsági mentési tárterület összesített mérete a készlet szintjén történik, és a következőképpen számítjuk ki:
-
-`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
-
-Felügyelt példányok esetén a teljes biztonsági mentési tár mérete a példány szintjén összesítve történik, és a következőképpen számítható ki:
-
-`Total backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
-
 A PITR funkcióinak megadásához már nem szükséges biztonsági másolatok automatikusan törlődnek. Mivel a differenciált biztonsági másolatok és a naplók biztonsági mentései egy korábbi teljes biztonsági mentést igényelnek, a rendszer mindhárom biztonsági mentési típust hetente kiüríti.
 
 Az összes adatbázishoz, beleértve a [TDE titkosított](transparent-data-encryption-tde-overview.md) adatbázisokat is, a biztonsági másolatok tömörítve vannak, és csökkentik a biztonsági mentési tárolók tömörítését Az átlagos biztonsági mentési tömörítési arány 3-4 alkalommal, azonban az adattermészettől függően jelentősen alacsonyabb vagy magasabb lehet, valamint az, hogy a rendszer az adatbázisban használja-e az adattömörítést.
@@ -144,9 +130,21 @@ A DTU-modellben az adatbázisok és a rugalmas készletek biztonsági mentési t
 
 SQL Database önálló adatbázisai esetén a biztonsági mentési tár összege az adatbázis maximális adattárolási méretének 100%-a, külön díj nélkül biztosítjuk. Rugalmas készletek és felügyelt példányok esetén a biztonsági mentési tár összege a készlet maximális adattárolásának 100 százalékával vagy a példányok maximális tárolási méretével egyenlő, külön díj nélkül biztosítva. 
 
-A biztonsági mentési tár további felhasználásának díja GB/hó. Ez a további felhasználás az egyes adatbázisok, rugalmas készletek és felügyelt példányok munkaterhelésével és méretétől függ. A nagy mértékben módosított adatbázisok nagyobb különbözeti és naplózott biztonsági mentéssel rendelkeznek, mivel a biztonsági másolatok mérete az adatváltozások mennyiségével arányos. Ezért az ilyen adatbázisok esetében a biztonsági mentési költségek is magasabbak lesznek.
+Az önálló adatbázisok esetében ez az egyenlet a teljes számlázható biztonsági mentési tár használatának kiszámítására szolgál:
 
-A SQL Database és az SQL felügyelt példánya a teljes biztonsági mentési tárterületet összesített értékként számítja ki az összes biztonságimásolat-fájlon. Az Azure számlázási folyamat minden órában ezt az értéket jelenti, amely összesíti ezt az óránkénti használatot, hogy minden hónap végén lekérje a biztonsági mentési tárterület felhasználását. Ha töröl egy adatbázist, a biztonsági mentési tár fogyasztása fokozatosan csökken, mert a régebbi biztonsági mentések le lesznek törölve. Mivel a differenciált biztonsági másolatok és a naplók biztonsági mentései egy korábbi teljes biztonsági mentést igényelnek, a rendszer mindhárom biztonsági mentési típust hetente kiüríti. Az összes biztonsági másolat törlése után a számlázás leáll. 
+`Total billable backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
+
+A készletezett adatbázisok esetében a teljes számlázható biztonsági mentési tárterület összesített mérete a készlet szintjén történik, és a következőképpen számítjuk ki:
+
+`Total billable backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
+
+Felügyelt példányok esetén a teljes számlázható biztonsági mentési tár mérete a példány szintjén összesítve történik, és a következőképpen számítható ki:
+
+`Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
+
+A teljes számlázható biztonsági mentési tár (ha van ilyen) GB/hó-ban lesz felszámítva. Ez a biztonsági mentési tárterület az egyes adatbázisok, rugalmas készletek és felügyelt példányok munkaterhelésével és méretétől függ. A nagy mértékben módosított adatbázisok nagyobb különbözeti és naplózott biztonsági mentéssel rendelkeznek, mivel a biztonsági másolatok mérete az adatváltozások mennyiségével arányos. Ezért az ilyen adatbázisok esetében a biztonsági mentési költségek is magasabbak lesznek.
+
+A SQL Database és az SQL felügyelt példánya a teljes számlázható biztonsági mentési tárterületet összesített értékként számítja ki az összes biztonsági mentési fájlban. Az Azure számlázási folyamat minden órában ezt az értéket jelenti, amely összesíti ezt az óránkénti használatot, hogy minden hónap végén lekérje a biztonsági mentési tárterület felhasználását. Ha töröl egy adatbázist, a biztonsági mentési tár fogyasztása fokozatosan csökken, mert a régebbi biztonsági mentések le lesznek törölve. Mivel a differenciált biztonsági másolatok és a naplók biztonsági mentései egy korábbi teljes biztonsági mentést igényelnek, a rendszer mindhárom biztonsági mentési típust hetente kiüríti. Az összes biztonsági másolat törlése után a számlázás leáll. 
 
 Egyszerűsített Példaként tegyük fel, hogy egy adatbázis 744 GB-nyi biztonsági mentési tárterülettel rendelkezik, és hogy ez az összeg állandó marad az egész hónapban, mert az adatbázis teljesen inaktív. Ha át szeretné alakítani ezt az összesített tárterület-használatot óránkénti használatra, ossza fel 744,0-ra (havonta 31 nap * 24 óra/nap). SQL Database jelentést küld az Azure számlázási folyamatnak, amelyet az adatbázis 1 GB PITR biztonsági mentést használt óránként, állandó sebességgel. Az Azure-számlázás összesíti ezt a felhasználást, és az egész hónapra vonatkozóan 744 GB-ot fog megjeleníteni. A költségeket a régiójában lévő összeg/GB/hó arány alapján számítjuk fel.
 

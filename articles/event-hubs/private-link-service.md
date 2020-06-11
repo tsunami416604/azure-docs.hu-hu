@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1f07e6eb1a219db4f8eb94c54acaa3181e186da6
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649898"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84670021"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Az Azure Event Hubs integrálása az Azure Private-hivatkozással
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
@@ -22,7 +22,7 @@ A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcso
 További információ: [Mi az az Azure Private link?](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> Ez a funkció csak a **dedikált** szinten támogatott. További információ a dedikált platformról: [dedikált Event Hubs áttekintése](event-hubs-dedicated-overview.md). 
+> Ez a funkció mind a **standard** , mind a **dedikált** szint esetében támogatott. 
 
 >[!WARNING]
 > A privát végpontok engedélyezése megakadályozhatja, hogy más Azure-szolgáltatások a Event Hubs használatával kommunikálnak.
@@ -62,7 +62,7 @@ Ha már rendelkezik Event Hubs névtérrel, a következő lépések végrehajtá
 2. A keresősáv mezőbe írja be az **Event hubok**kifejezést.
 3. Válassza ki a listából azt a **névteret** , amelyhez privát végpontot szeretne hozzáadni.
 4. Válassza a **hálózatkezelés** fület a **Beállítások**területen.
-5. Válassza ki a **privát Endpoint Connections** fület az oldal tetején. Ha nem a Event Hubs dedikált szintjét használja, egy üzenet jelenik meg: **a Event Hubson a magánhálózati végponti kapcsolatok csak a dedikált fürtben létrehozott névterek által támogatottak**.
+5. Válassza ki a **privát Endpoint Connections** fület az oldal tetején. 
 6. A lap tetején kattintson a **+ privát végpont** gombra.
 
     ![Kép](./media/private-link-service/private-link-service-3.png)
@@ -274,7 +274,7 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Private linkről](../private-link/private-link-service-overview.md)
 - További információ az [Azure Event Hubs](event-hubs-about.md)

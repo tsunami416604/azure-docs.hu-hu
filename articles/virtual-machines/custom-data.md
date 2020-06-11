@@ -7,18 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259116"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678358"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Egyéni és Cloud-init az Azure Virtual Machines
 
-## <a name="what-is-custom-data"></a>Mi az egyéni adathalmaz?
-
-Az ügyfelek gyakran kérdezik le, hogyan adhatnak hozzá parancsfájlt vagy egyéb metaadatokat egy Microsoft Azure virtuális géphez a kiépítési idő alatt.  Más felhőkben ezt a koncepciót gyakran felhasználói adatként is nevezik.  Microsoft Azure az egyéni adatszolgáltatáshoz hasonló funkciót tartalmaz. 
+Előfordulhat, hogy egy parancsfájlt vagy más metaadatokat kell beszúrnia egy Microsoft Azure virtuális gépre a kiépítési időpontban.  Más felhőkben ezt a koncepciót gyakran felhasználói adatként is nevezik.  Microsoft Azure az egyéni adatszolgáltatáshoz hasonló funkciót tartalmaz. 
 
 A rendszer csak az első rendszerindítás/kezdeti beállítás során bocsátja elérhetővé a virtuális gép számára, ezt "kiépítés" hívjuk. A kiépítés az a folyamat, amelyben a virtuális gép paramétereket hoz létre (például állomásnév, Felhasználónév, jelszó, tanúsítványok, egyéni adatok, kulcsok stb.) elérhetővé válnak a virtuális gép számára, és a kiépítési ügynök feldolgozza azokat, például a [Linux-ügynököt](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) és a [Cloud-init-](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)t. 
 
@@ -65,12 +63,12 @@ A virtuális gépekre telepített kiépítési ügynökök a platformmal és a f
 Az egyéni adatfájlok bináris fájlként kerülnek a *%SYSTEMDRIVE%\AzureData\CustomData.bin* , de a rendszer nem dolgozza fel őket. Ha szeretné feldolgozni ezt a fájlt, létre kell hoznia egy egyéni rendszerképet, és kódot kell írnia a CustomData. bin feldolgozásához.
 
 ### <a name="linux"></a>Linux  
-A Linux operációs rendszereken a OVF-env. xml fájl segítségével átadja a virtuális gép egyéni adatfájljait, amelyet a rendszer a */var/lib/waagent* könyvtárba másol a kiépítés során.  A Microsoft Azure Linux-ügynök újabb verziói a Base64 kódolású */var/lib/waagent/CustomData* is átmásolják a kényelem érdekében.
+A Linux operációs rendszereken a ovf-env.xml fájl segítségével átadja a virtuális gép egyéni adatfájljait, amelyet a rendszer a */var/lib/waagent* könyvtárba másol a kiépítés során.  A Microsoft Azure Linux-ügynök újabb verziói a Base64 kódolású */var/lib/waagent/CustomData* is átmásolják a kényelem érdekében.
 
 Az Azure jelenleg két kiépítési ügynököt támogat:
 * Linux-ügynök – alapértelmezés szerint az ügynök nem dolgozza fel az egyéni adatok feldolgozását, ezért az általa engedélyezett egyéni rendszerképet kell létrehoznia. A megfelelő beállítások a [dokumentációban](https://github.com/Azure/WALinuxAgent#configuration) a következők:
     * Kiépítés. DecodeCustomData
-    * Kiépítés. ExecuteCustomData
+    * Provisioning.ExecuteCustomData
 
 Ha engedélyezi az egyéni adatértékeket, és végrehajt egy parancsfájlt, akkor a rendszer késlelteti a virtuális gép jelentéskészítését, amely kész, vagy a kiépítés sikeres volt, amíg a parancsfájl be nem fejeződik. Ha a parancsfájl mérete meghaladja a virtuális gépek teljes kiépítési idejét 40 percnél, a virtuális gép létrehozása sikertelen lesz. Vegye figyelembe, hogy ha a parancsfájl végrehajtása nem sikerül, vagy a végrehajtása során hiba lép fel, a rendszer nem végzetes kiépítési hibát jelez, ezért létre kell hoznia egy értesítési útvonalat, amely riasztást küld a parancsfájl befejezési állapotáról.
 

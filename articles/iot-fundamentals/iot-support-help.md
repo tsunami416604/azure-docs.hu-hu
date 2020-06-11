@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 74d8d05ba3c7a061bc78dc4c24a24d6a6275525d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827235"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659614"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT – Támogatási és súgólehetőségek
 
@@ -29,35 +29,43 @@ Fedezze fel az [Azure-támogatási lehetőségek körét, és válassza ki a](ht
 * [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [A Egyesült Államok Government Azure Portal](https://portal.azure.us)
 
+## <a name="post-a-question-on-microsoft-qa"></a>Kérdés közzététele a Microsoft Q&A
+
+A Microsoft mérnököktől, az Azure legértékesebb szakemberektől (MVP), illetve a szakértői Közösségtől érkező technikai kérdésekkel kapcsolatos gyors és megbízható válaszokért forduljon hozzánk a [Microsoft Q&a](https://aka.ms/azureqa), az Azure előnyben részesített céljaként a közösségi támogatáshoz. 
+
+Ha nem talál választ a problémára a kereséssel, küldjön új kérdést a Microsoft Q&A alkalmazásnak. A következő címkék egyikének használata a kérdés feltevése esetén:
+
+- [Azure IoT](https://docs.microsoft.com/answers/topics/azure-iot.html)
+- [Azure IoT Central](https://docs.microsoft.com/answers/topics/azure-iot-central.html)
+- [Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [Azure IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [Az Azure IoT Hub Device Provisioning Service (DPS)](https://docs.microsoft.com/answers/topics/azure-iot-dps.html)
+- [Azure IoT SDK-k](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)
+- [Azure Digital Twins](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [Azure RTOS](https://docs.microsoft.com/answers/topics/azure-rtos.html)
+- [Azure Sphere](https://docs.microsoft.com/answers/topics/azure-sphere.html)
+- [Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+- [Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
+
 ## <a name="post-a-question-on-stack-overflow"></a>Kérdés közzététele Stack Overflow
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-A Közösségtől érkező azonnali válaszokhoz tekintse meg a Stack Overflow. Stack Overflow a **fejlesztéssel kapcsolatos kérdések**előnyben részesített csatornája. A Közösség tagjai és a Microsoft csapattagok közvetlenül részt vesznek a problémák megoldásában.
+A legnagyobb közösségi fejlesztői ökoszisztéma fejlesztői kérdéseire adott válaszokért Kérdezzen rá Stack Overflow.
 
-Ha nem talál választ a problémára a keresésen keresztül, küldjön új kérdést Stack Overflow. A kérdés megfogalmazásakor használja a következő címkék egyikét:
+Ha új kérdést küld Stack Overflownek, a kérdés létrehozásakor használja az alábbi címkék valamelyikét:
 
- - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
  - [Azure IoT Central](https://stackoverflow.com/questions/tagged/azure-iot-central)
  - [Azure IoT Edge](https://stackoverflow.com/questions/tagged/azure-iot-edge)
  - [Azure IoT Hub](https://stackoverflow.com/questions/tagged/azure-iot-hub)
- - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
  - [Azure IoT SDK-k](https://stackoverflow.com/questions/tagged/azure-iot-sdk)
+ - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
+ - [Azure RTOS](https://stackoverflow.com/questions/tagged/azure-rtos)
+ - [Azure Sphere](https://stackoverflow.com/questions/tagged/azuresphere)
  - [Azure Time Series Insights](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
-
-## <a name="start-a-conversation-on-the-msdn-forums"></a>Beszélgetés indítása az MSDN-fórumokon
-
-A IoT-megoldások létrehozásához szükséges Azure-technológiák és-szolgáltatások megvitatása. Az MSDN a **megoldásokkal kapcsolatos kérdések**előnyben részesített csatornája. A Közösség és a Microsoft csapattag tagjai közvetlenül részt vesznek a projekt megfelelő megoldásának kiválasztásában.
-
-Ha nem talál választ a problémájára a keresésen keresztül, küldjön új kérdést az MSDN-nek a szolgáltatással kapcsolatos fórumban:
-
-- [A Microsoft Q&az Azure Digital Twins kérdéseit](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
-- [A Microsoft Q&az Azure-beli kérdéses oldalt IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
-- [A Microsoft Q&egy kérdés oldalt Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
-- [A Microsoft Q&egy kérdés oldalt Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
-- [A Microsoft Q&egy kérdés oldalt Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+ - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>Visszajelzés küldése az Azure-visszajelzésekről
 
@@ -77,6 +85,7 @@ Ha nem talál választ a problémájára a keresésen keresztül, küldjön új 
 | Azure Maps                 | https://feedback.azure.com/forums/909172-azure-maps |
 | Azure Time Series Insights | https://feedback.azure.com/forums/906859-azure-time-series-insights |
 | Azure Digital Twins | https://feedback.azure.com/forums/916621-azure-digital-twins |
+| Azure Sphere | https://feedback.azure.com/forums/915433-azure-sphere |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>A frissítések és az új kiadások naprakészen tartása
 
@@ -90,7 +99,7 @@ Az Azure IoT kapcsolatos hírek és információk az [Azure blogban](https://azu
 
 Ossza meg tapasztalatait, ismerkedjen meg a [eszközök internetes hálózata technikai Közösség](https://techcommunity.microsoft.com/t5/Internet-of-Things-IoT/ct-p/IoT)szakértőitől.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Mi az az Azure IoT?](iot-introduction.md)

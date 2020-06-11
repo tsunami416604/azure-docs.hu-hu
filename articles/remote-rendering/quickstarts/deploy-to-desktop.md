@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758996"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659929"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Gyors útmutató: Unity-minta üzembe helyezése az asztalra
 
@@ -46,7 +46,7 @@ Jelenleg csak a lapos asztali alkalmazások támogatottak az asztalon, így a VR
 ## <a name="build-the-sample-project"></a>A minta projekt összeállítása
 
 1. Nyissa meg a *fájl > a létrehozási beállítások menüpontot*.
-1. A *Platform* **univerzális Windows-platformre** való módosítása (a**PC standalone** is támogatott, de itt nem használható).
+1. A *platform* **univerzális Windows-platformre** való módosítása (a**PC standalone** is támogatott, de itt nincs használatban, lásd a [platformra vonatkozó korlátozásokat](../reference/limits.md#platform-limitations)).
 1. A *célszámítógép* beállítása a **számítógépnek**.
 1. *Architektúra* beállítása **x86**-ra.
 1. A *Build típusának* beállítása a **D3D-projekthez**.
@@ -60,7 +60,7 @@ Jelenleg csak a lapos asztali alkalmazások támogatottak az asztalon, így a VR
 1. Hozza létre a megoldást (F7).
 
 > [!WARNING]
-> Győződjön meg arról, hogy az **x86**lehetőséget választotta. az **x64** jelenleg nem támogatott, lásd a [platform korlátozásait](../reference/limits.md#platform-limitations).
+> Győződjön meg arról, hogy az **x86**lehetőséget választotta. A **UWP/x64** jelenleg nem támogatott, lásd a [platform korlátozásait](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>A minta projekt elindítása
 
@@ -69,7 +69,7 @@ Indítsa el a hibakeresőt a Visual Studióban (F5). A rendszer automatikusan te
 A minta alkalmazásnak el kell indítania, majd el kell indítania egy új munkamenetet. Egy idő után a munkamenet készen áll, és a távolról renderelt modell fog megjelenni az Ön előtt.
 Ha később szeretné elindítani a mintát, azt a Start menüből is megtalálhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő rövid útmutatóban egy egyéni modell átalakítását fogjuk megtekinteni.
 

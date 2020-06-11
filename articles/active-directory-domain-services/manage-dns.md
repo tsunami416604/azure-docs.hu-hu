@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: iainfou
-ms.openlocfilehash: f4bd3f75c3246cb11e88dbaae817eba8ac76b394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c0ae6a96a303c1c9d2887e6ed4dfb0d1fed4453
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603473"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672578"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-ad-domain-services-managed-domain"></a>DNS felügyelete és feltételes továbbítók létrehozása Azure AD Domain Services felügyelt tartományban
 
@@ -58,7 +58,7 @@ Az Azure AD DS DNS-rekordjainak létrehozásához és módosításához telepít
 
     ![Válassza a DNS-kiszolgáló eszközeinek telepítését az elérhető szerepkör-felügyeleti eszközök listájáról](./media/manage-dns/install-dns-tools.png)
 
-1. A **jóváhagyás** lapon válassza a **telepítés**lehetőséget. A Csoportházirend felügyeleti eszközök telepítése egy-két percet is igénybe vehet.
+1. A **jóváhagyás** lapon válassza a **telepítés**lehetőséget. A dnsGroup házirend-kezelési eszközeinek telepítése akár egy-két percet is igénybe vehet.
 1. A szolgáltatás telepítésének befejezése után a **Bezárás** gombra kattintva lépjen ki a **szerepkörök és szolgáltatások hozzáadása** varázslóból.
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>A DNS-kezelő konzol megnyitása a DNS felügyeletéhez
@@ -96,7 +96,7 @@ Ha feltételes továbbítót szeretne létrehozni az Azure AD DS felügyelt tart
 
 1. Jelölje be a **feltételes továbbító tárolása Active Directoryban**jelölőnégyzetet, majd a következőképpen replikálja azt, majd válassza ki a *tartomány összes DNS-kiszolgálójára*vonatkozó beállítást, az alábbi példában látható módon:
 
-    ![DNS-konzol – tartomány felügyelete](./media/manage-dns/store-in-domain.png)
+    ![DNS-konzol – a tartomány összes DNS-kiszolgálójának kijelölése](./media/manage-dns/store-in-domain.png)
 
     > [!IMPORTANT]
     > Ha a feltételes továbbítót az *erdőben* tárolja a *tartomány*helyett, a feltételes továbbító meghibásodik.
@@ -105,7 +105,7 @@ Ha feltételes továbbítót szeretne létrehozni az Azure AD DS felügyelt tart
 
 Az Azure AD DS felügyelt tartományhoz csatlakoztatott virtuális gépekről származó más névterekben lévő erőforrások névfeloldását mostantól megfelelően fel kell oldani. A feltételes továbbítóban konfigurált DNS-tartomány lekérdezéseit a rendszer a megfelelő DNS-kiszolgálókhoz továbbítja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A DNS kezelésével kapcsolatos további információkért tekintse meg a következő témakört: [DNS-eszközök cikk a TechNeten](https://technet.microsoft.com/library/cc753579.aspx).
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e34b63017eae61a886bcff8faffa2910783f3e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f0cb402741163c657b3e7961eb5a4f9c8e18dafd
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559133"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673020"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -40,6 +40,7 @@ A folyamatos hozzáférés kiértékelését a szolgáltatások (erőforrás-szo
 
 - A felhasználói fiók törölve vagy Letiltva
 - A felhasználó jelszavának módosítása vagy alaphelyzetbe állítása
+- Az MFA engedélyezve van a felhasználó számára
 - A rendszergazda explicit módon visszavonja a felhasználó összes frissítési jogkivonatát.
 - Emelt szintű felhasználói kockázat észlelhető Azure AD Identity Protection
 

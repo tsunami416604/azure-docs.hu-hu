@@ -3,12 +3,12 @@ title: Sablon functions – összehasonlítás
 description: A Azure Resource Manager-sablonban az értékek összehasonlításához használandó függvényeket ismerteti.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203777"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677831"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM-sablonok összehasonlító függvények
 
@@ -29,12 +29,12 @@ A paraméterekből származó első nem null értéket adja vissza. Az üres kar
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
-| További argumentumok |Nem |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
+| arg1 |Yes |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
+| További argumentumok |No |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az első nem null paraméterek értéke, amely lehet karakterlánc, int, tömb vagy objektum. NULL, ha az összes paraméter null értékű.
 
@@ -44,7 +44,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "objectToTest": {
@@ -88,7 +88,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | stringOutput | Sztring | alapértelmezett |
 | intOutput | Int | 1 |
@@ -104,12 +104,12 @@ Ellenőrzi, hogy két érték egyenlő-e egymással.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int, string, Array vagy Object |Az egyenlőség keresésének első értéke. |
-| arg2 |Igen |int, string, Array vagy Object |A második érték az egyenlőség kereséséhez. |
+| arg1 |Yes |int, string, Array vagy Object |Az egyenlőség keresésének első értéke. |
+| arg2 |Yes |int, string, Array vagy Object |A második érték az egyenlőség kereséséhez. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az értékek egyenlőek; Ellenkező esetben **hamis**.
 
@@ -138,7 +138,7 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -199,7 +199,7 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | Logikai | True (Igaz) |
 | checkStrings | Logikai | True (Igaz) |
@@ -210,7 +210,7 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -225,7 +225,7 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példa kimenete a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | checkNotEquals | Logikai | True (Igaz) |
 
@@ -237,12 +237,12 @@ Ellenőrzi, hogy az első érték nagyobb-e, mint a második érték.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int vagy sztring |A nagyobb összehasonlítás első értéke. |
-| arg2 |Igen |int vagy sztring |A nagyobb összehasonlítás második értéke. |
+| arg1 |Yes |int vagy sztring |A nagyobb összehasonlítás első értéke. |
+| arg2 |Yes |int vagy sztring |A nagyobb összehasonlítás második értéke. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az első érték nagyobb, mint a második érték; Ellenkező esetben **hamis**.
 
@@ -252,7 +252,7 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -289,7 +289,7 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | Logikai | False (Hamis) |
 | checkStrings | Logikai | True (Igaz) |
@@ -302,12 +302,12 @@ Ellenőrzi, hogy az első érték nagyobb-e vagy egyenlő-e a második értékke
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
-| arg2 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
+| arg1 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az első érték nagyobb vagy egyenlő, mint a második érték; Ellenkező esetben **hamis**.
 
@@ -317,7 +317,7 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -354,7 +354,7 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | Logikai | False (Hamis) |
 | checkStrings | Logikai | True (Igaz) |
@@ -367,12 +367,12 @@ Ellenőrzi, hogy az első érték kisebb-e a második értéknél.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
-| arg2 |Igen |int vagy sztring |A kisebb összehasonlítás második értéke. |
+| arg1 |Yes |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
+| arg2 |Yes |int vagy sztring |A kisebb összehasonlítás második értéke. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az első érték kisebb, mint a második érték; Ellenkező esetben **hamis**.
 
@@ -382,7 +382,7 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -419,7 +419,7 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | Logikai | True (Igaz) |
 | checkStrings | Logikai | False (Hamis) |
@@ -432,12 +432,12 @@ Ellenőrzi, hogy az első érték kisebb-e vagy egyenlő-e a második értékkel
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
-| arg2 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
+| arg1 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az első érték kisebb vagy egyenlő, mint a második érték; Ellenkező esetben **hamis**.
 
@@ -447,7 +447,7 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -484,11 +484,11 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | checkInts | Logikai | True (Igaz) |
 | checkStrings | Logikai | False (Hamis) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.

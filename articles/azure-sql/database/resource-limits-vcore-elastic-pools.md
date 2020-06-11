@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 05/29/2020
-ms.openlocfilehash: 03884a7d1b834ef8c176434ad4127e1638aabcb1
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 06/10/2020
+ms.openlocfilehash: 4ffd92c0641b74682a74ffd2898e226999ac2dd4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235752"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668457"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ A DTU megvásárlására vonatkozó korlátokat lásd: [SQL Database DTU erőfor
 > [!IMPORTANT]
 > Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
 
-A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure Portal](elastic-pool-manage.md#azure-portal), a [PowerShell](elastic-pool-manage.md#powershell), az [Azure CLI](elastic-pool-manage.md#azure-cli)vagy a [REST API](elastic-pool-manage.md#rest-api)használatával állíthatja be.
+A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) és a tárterületet a [Azure Portal](elastic-pool-manage.md#azure-portal), a [PowerShell](elastic-pool-manage.md#powershell), az [Azure CLI](elastic-pool-manage.md#azure-cli)vagy a [REST API](elastic-pool-manage.md#rest-api)használatával állíthatja be.
 
 > [!IMPORTANT]
 > Az útmutatás és a megfontolások méretezésével kapcsolatban lásd: [rugalmas készlet](elastic-pool-scale.md)skálázása.
@@ -40,14 +40,14 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Általános célú szolgáltatási szintek: 4. generációs számítási platform (1. rész)
 
-|Számítási méret|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|Számítási méret (szolgáltatási cél)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|1|2|3|4|5|6|
 |Memória (GB)|7|14|21|28|35|42|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|200|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
+|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|512|756|1536|1536|1536|2048|
 |Napló maximális mérete|154|227|461|461|461|614|
 |TempDB maximális adatméret (GB)|32|64|96|128|160|192|
@@ -60,8 +60,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
-|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
+|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -72,14 +72,14 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Általános célú szolgáltatási szintek: 4. generációs számítási platform (2. rész)
 
-|Számítási méret|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
+|Számítási méret (szolgáltatási cél)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|7|8|9|10|16|24|
 |Memória (GB)|49|56|63|70|112|159,5|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
+|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|2048|2048|2048|2048|3584|4096|
 |Napló maximális mérete (GB)|614|614|614|614|1075|1229|
 |TempDB maximális adatméret (GB)|224|256|288|320|512|768|
@@ -92,8 +92,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
-|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
+|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -106,14 +106,14 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Általános célú szolgáltatási szintek: 5. generációs számítási platform (1. rész)
 
-|Számítási méret|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|Számítási méret (szolgáltatási cél)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|2|4|6|8|10|12|14|
 |Memória (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|200|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|512|756|1536|1536|1536|2048|2048|
 |Napló maximális mérete (GB)|154|227|461|461|461|614|614|
 |TempDB maximális adatméret (GB)|64|128|192|256|320|384|448|
@@ -126,8 +126,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -138,14 +138,14 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Általános célú szolgáltatási szintek: 5. generációs számítási platform (2. rész)
 
-|Számítási méret|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Számítási méret (szolgáltatási cél)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|16|18|20|24|32|40|80|
 |Memória (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|2048|3072|3072|3072|4096|4096|4096|
 |Napló maximális mérete (GB)|614|922|922|922|1229|1229|1229|
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
@@ -158,8 +158,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -172,14 +172,14 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Fsv2 sorozatú számítási generáció (előzetes verzió)
 
-|Számítási méret|GP_Fsv2_72|
+|Számítási méret (szolgáltatási cél)|GP_Fsv2_72|
 |:--- | --: |
 |Számítási generáció|Fsv2 sorozat|
 |Virtuális mag|72|
 |Memória (GB)|136,2|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|
-|Oszlopcentrikus-támogatás|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N/A|
+|Oszlopcentrikus-támogatás|Yes|
+|Memóriában tárolt OLTP-tároló (GB)|N.A.|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|1024|
 |TempDB maximális adatméret (GB)|333|
@@ -192,8 +192,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-72|
 |Replikák száma|1|
-|Több – AZ|N/A|
-|Olvasási felskálázás|N/A|
+|Több – AZ|N.A.|
+|Olvasási felskálázás|N.A.|
 |Mellékelt biztonsági mentési tár|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -209,7 +209,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Üzleti szempontból kritikus szolgáltatási szintek: 4. generációs számítási platform (1. rész)
 
-|Számítási méret|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Számítási méret (szolgáltatási cél)|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|2|3|4|5|6|
@@ -241,13 +241,13 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Üzleti szempontból kritikus szolgáltatási szintek: 4. generációs számítási platform (2. rész)
 
-|Számítási méret|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|Számítási méret (szolgáltatási cél)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Számítási generáció|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |Virtuális mag|7|8|9|10|16|24|
 |Memória (GB)|49|56|63|70|112|159,5|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|100|
-|Oszlopcentrikus-támogatás|N/A|N/A|N/A|N/A|N/A|N/A|
+|Oszlopcentrikus-támogatás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Memóriában tárolt OLTP-tároló (GB)|7|8|9,5|11|20|36|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Maximális adatméret (GB)|1024|1024|1024|1024|1024|1024|
@@ -275,7 +275,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Üzleti szempontból kritikus szolgáltatási szintek: 5. generációs számítási platform (1. rész)
 
-|Számítási méret|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Számítási méret (szolgáltatási cél)|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|4|6|8|10|12|14|
@@ -307,7 +307,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Üzleti szempontból kritikus szolgáltatási szintek: 5. generációs számítási platform (2. rész)
 
-|Számítási méret|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Számítási méret (szolgáltatási cél)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Számítási generáció|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuális mag|16|18|20|24|32|40|80|
@@ -341,13 +341,13 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 
 ### <a name="m-series-compute-generation-preview"></a>Az M-sorozat számítási generációja (előzetes verzió)
 
-|Számítási méret|BC_M_128|
+|Számítási méret (szolgáltatási cél)|BC_M_128|
 |:--- | --: |
 |Számítási generáció|M sorozat|
 |Virtuális mag|128|
 |Memória (GB)|3767,1|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|
-|Oszlopcentrikus-támogatás|Igen|
+|Oszlopcentrikus-támogatás|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|1768|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|2048|
@@ -361,8 +361,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-128|
 |Replikák száma|4|
-|Több – AZ|Igen|
-|Olvasási felskálázás|Igen|
+|Több – AZ|Yes|
+|Olvasási felskálázás|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -378,7 +378,7 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 A következő táblázat a készletezett adatbázisok tulajdonságait ismerteti.
 
 > [!NOTE]
-> A rugalmas készletekben található különálló adatbázisok erőforrás-korlátai általában ugyanazok, mint a készleteken kívüli önálló adatbázisok esetében, amelyek ugyanazzal a számítási mérettel rendelkeznek. Például az GP_Gen4_1-adatbázisok maximális egyidejű feldolgozói 200 feldolgozók. Így a GP_Gen4_1-készletben lévő adatbázisok maximálisan egyidejű feldolgozói is 200 feldolgozók. Vegye figyelembe, hogy GP_Gen4_1 készletben lévő egyidejű feldolgozók száma összesen 210.
+> A rugalmas készletekben található különálló adatbázisok erőforrás-korlátai általában ugyanazok, mint a készleteken kívüli önálló adatbázisok esetében, amelyek ugyanazzal a számítási mérettel rendelkeznek (szolgáltatási cél). Például az GP_Gen4_1-adatbázisok maximális egyidejű feldolgozói 200 feldolgozók. Így a GP_Gen4_1-készletben lévő adatbázisok maximálisan egyidejű feldolgozói is 200 feldolgozók. Vegye figyelembe, hogy GP_Gen4_1 készletben lévő egyidejű feldolgozók száma összesen 210.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
@@ -387,7 +387,7 @@ A következő táblázat a készletezett adatbázisok tulajdonságait ismerteti.
 | Tárterület maximális száma adatbázison |A felhasználó által a készletben lévő adatbázis számára beállított maximális adatbázis-méret. A készletezett adatbázisok megosztják a lefoglalt készlet tárterületét, így az adatbázis mérete elérheti a fennmaradó készlet tárterületét és az adatbázis méretét. Az adatbázisok maximális mérete az adatfájlok maximális méretére vonatkozik, de nem tartalmazza a naplófájlok által használt területet. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egyetlen adatbázis virtuális mag erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-single-databases.md)
 - Egyetlen adatbázis DTU erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával](resource-limits-dtu-single-databases.md)

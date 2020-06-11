@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fa6c5e1d7e770468a14c66af9b99b32a7827eb1
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1d482eeb8b3da94e8af0a597ade1a1d834ccf6a0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871358"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677781"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -171,13 +171,17 @@ A felhasználó által megadott útvonalak (UDR-EK) esetében ellenőrizze, hogy
 
 ### <a name="honoring-dns"></a>A DNS tiszteletben tartása
 
-Győződjön meg arról, hogy a rendszerek a Batch-fiók szolgáltatás URL-címéhez tartozó DNS-élettartam (TTL) tiszteletben tartásával rendelkeznek. Továbbá győződjön meg arról, hogy a Batch szolgáltatás ügyfelei és a Batch szolgáltatás egyéb csatlakozási mechanizmusai nem az IP-címekre támaszkodnak.
+Győződjön meg arról, hogy a rendszerek a Batch-fiók szolgáltatás URL-címéhez tartozó DNS-élettartam (TTL) tiszteletben tartásával rendelkeznek. Továbbá győződjön meg arról, hogy a Batch szolgáltatás ügyfelei és a Batch szolgáltatás egyéb csatlakozási mechanizmusai nem az IP-címekre támaszkodnak (vagy az alább leírtak szerint [hozzon létre egy statikus nyilvános IP-címmel rendelkező készletet](create-pool-public-ip.md) ).
 
 Ha a kérések 5xx HTTP-válaszokat kapnak, és a válaszban szerepel a "kapcsolódás: Bezárás" fejléc, a Batch szolgáltatás ügyfelének be kell tartania az ajánlást a meglévő kapcsolatok lezárásával, a DNS újbóli feloldásával a Batch-fiók szolgáltatás URL-címéhez, és egy új kapcsolatban próbálja meg a következő kérelmeket.
 
-### <a name="retrying-requests-automatically"></a>Újrapróbálkozási kérelmek automatikusan
+### <a name="retry-requests-automatically"></a>Újrapróbálkozási kérelmek automatikusan
 
 Győződjön meg arról, hogy a Batch szolgáltatás ügyfelei megfelelő újrapróbálkozási szabályzatokkal rendelkeznek a kérések automatikus újrapróbálkozásához, még a normál működés során, és nem kizárólag a szolgáltatás karbantartási időszakai alatt. Az újrapróbálkozási szabályzatoknak legalább 5 perces intervallumot kell kiterjedniük. Az automatikus újrapróbálkozási képességek különböző batch SDK-k, például a [.net RetryPolicyProvider osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet)számára érhetők el.
+
+### <a name="static-public-ip-addresses"></a>Statikus nyilvános IP-címek
+
+A Batch-készletekben lévő virtuális gépek jellemzően nyilvános IP-címeken keresztül érhetők el, amelyek megváltoztathatják a készlet élettartamát. Ez megnehezítheti az adatbázisok vagy más, bizonyos IP-címekhez való hozzáférést korlátozó külső szolgáltatás kezelését. Annak biztosítása érdekében, hogy a készletben lévő nyilvános IP-címek ne változzon meg váratlanul, létrehozhat egy készletet, amely az Ön által vezérelt statikus nyilvános IP-címek készletét használja. További információ: Azure Batch- [készlet létrehozása a megadott nyilvános IP-címekkel](create-pool-public-ip.md).
 
 ## <a name="batch-node-underlying-dependencies"></a>A Batch-csomópont mögöttes függőségei
 

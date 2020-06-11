@@ -1,26 +1,20 @@
 ---
 title: Azure-beli VM-méretek – HPC | Microsoft Docs
 description: Felsorolja a nagy teljesítményű számítástechnikai virtuális gépek számára elérhető különböző méreteket az Azure-ban. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
-ms.reviewer: jonbeck
-ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.reviewer: jushiman
+ms.openlocfilehash: 961e5a0febc0212b8a747b052b3fd6f696689351
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839062"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678630"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Nagy teljesítményű számítástechnikai VM-méretek
 
@@ -92,7 +86,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 
 - **Virtual Machines** – a RDMA-kompatibilis HPC-alapú virtuális gépeket ugyanabban a méretezési csoporton vagy rendelkezésre állási csoporton helyezheti üzembe (ha a Azure Resource Manager üzembe helyezési modellt használja). Ha a klasszikus üzemi modellt használja, telepítse a virtuális gépeket ugyanabban a felhőalapú szolgáltatásban.
 
-- **Virtuálisgép-méretezési** csoportok – egy virtuálisgép-méretezési csoportban (VMSS) ellenőrizze, hogy a központi telepítést egyetlen elhelyezési csoportra korlátozza-e a VMSS belüli InfiniBand-kommunikációra. Például egy Resource Manager-sablonban állítsa be a `singlePlacementGroup` tulajdonságot a `true`következőre:. Vegye figyelembe, hogy a `singlePlacementGroup` tulajdonsággal megadható maximális VMSS- `true` méret alapértelmezés szerint 100 virtuális gépenként van korlátozva. Ha a HPC-feladatok skálázása egy VMSS-bérlőnél több mint 100 virtuális gépre van szüksége, akkor a növeléshez igénybe vehet egy [online ügyfélszolgálati kérést](../azure-supportability/how-to-create-azure-support-request.md) ingyenesen. Az egyetlen VMSS lévő virtuális gépek számának korlátja 300-ra növelhető. Vegye figyelembe, hogy a virtuális gépek a rendelkezésre állási csoportokkal való telepítésekor a maximális korlát a rendelkezésre állási csoporton 200 virtuális gépenként érhető el.
+- **Virtuálisgép-méretezési** csoportok – egy virtuálisgép-méretezési csoportban (VMSS) ellenőrizze, hogy a központi telepítést egyetlen elhelyezési csoportra korlátozza-e a VMSS belüli InfiniBand-kommunikációra. Például egy Resource Manager-sablonban állítsa be a tulajdonságot a következőre: `singlePlacementGroup` `true` . Vegye figyelembe, hogy a tulajdonsággal megadható maximális VMSS `singlePlacementGroup` -méret `true` alapértelmezés szerint 100 virtuális gépenként van korlátozva. Ha a HPC-feladatok skálázása egy VMSS-bérlőnél több mint 100 virtuális gépre van szüksége, akkor a növeléshez igénybe vehet egy [online ügyfélszolgálati kérést](../azure-supportability/how-to-create-azure-support-request.md) ingyenesen. Az egyetlen VMSS lévő virtuális gépek számának korlátja 300-ra növelhető. Vegye figyelembe, hogy a virtuális gépek a rendelkezésre állási csoportokkal való telepítésekor a maximális korlát a rendelkezésre állási csoporton 200 virtuális gépenként érhető el.
 
 - **MPI a virtuális gépek között** – ha RDMA (például MPI-kommunikációt használ) a virtuális gépek (VM-EK) között kell lennie, ügyeljen arra, hogy a virtuális gépek ugyanabban a virtuálisgép-méretezési csoporton vagy rendelkezésre állási csoporton belül legyenek.
 
@@ -100,7 +94,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 
 - **Azure batch** – hozzon létre egy [Azure batch](/azure/batch/) -készletet az MPI-munkaterhelések futtatásához. Ha Azure Batch használatával MPI-alkalmazások futtatásához nagy számítási igényű példányokat szeretne használni, tekintse meg a [többpéldányos feladatok használata a Message Passing Interface (MPI) alkalmazások Azure batch-ben való futtatásához](../batch/batch-mpi.md)című témakört.
 
-- **A Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) olyan futásidejű környezetet tartalmaz az MS-MPI-hez, amely az Azure RDMA-hálózatot használja RDMA-kompatibilis Linux rendszerű virtuális gépeken való üzembe helyezéskor. Központi telepítések például: [Linux RDMA-fürt beállítása HPC-csomaggal MPI-alkalmazások futtatásához](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+- **Microsoft HPC Pack**  -  A [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) tartalmaz egy futásidejű környezetet az MS-MPI számára, amely az Azure RDMA hálózatot használja RDMA-kompatibilis Linux virtuális gépeken való üzembe helyezéskor. Központi telepítések például: [Linux RDMA-fürt beállítása HPC-csomaggal MPI-alkalmazások futtatásához](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
@@ -127,7 +121,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 - [GPU-optimalizált](sizes-gpu.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure-hoz készült HPC-alkalmazás optimalizálásáról és néhány példa a [HPC-Munkaterhelésekre](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
 

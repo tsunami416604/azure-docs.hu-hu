@@ -2,18 +2,17 @@
 title: Klasszikus Azure CLI-parancsok
 description: Az Azure parancssori felület (CLI) parancsai az erőforrások kezeléséhez.
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3e5fd1a6934d246463e3fd5ad24db7079ca088d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250880"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678426"
 ---
 # <a name="azure-classic-cli-commands"></a>Klasszikus Azure CLI-parancsok 
 
@@ -25,9 +24,9 @@ Ez a cikk a klasszikus Azure parancssori felület (CLI) azon parancsainak szinta
 
 Első lépésként [telepítse a klasszikus Azure CLI](../cli-install-nodejs.md) -t, és [kapcsolódjon az Azure-előfizetéséhez](/cli/azure/authenticate-azure-cli).
 
-Az aktuális parancs szintaxisa és a parancssorban a Resource Manager módban írja be `azure help` a (z) vagy parancsot, ha egy adott parancs `azure help [command]`súgóját szeretné megjeleníteni. Az adott Azure-szolgáltatások létrehozásához és kezeléséhez használt dokumentációban is található CLI-példák.
+Az aktuális parancs szintaxisa és a parancssorban a Resource Manager módban írja be a (z) vagy parancsot, `azure help` Ha egy adott parancs súgóját szeretné megjeleníteni `azure help [command]` . Az adott Azure-szolgáltatások létrehozásához és kezeléséhez használt dokumentációban is található CLI-példák.
 
-A választható paraméterek szögletes zárójelben jelennek meg (például: `[parameter]`). Minden egyéb paraméter megadása kötelező.
+A választható paraméterek szögletes zárójelben jelennek meg (például: `[parameter]` ). Minden egyéb paraméter megadása kötelező.
 
 Az itt dokumentált parancs-specifikus paraméterek mellett három opcionális paraméter is használható a részletes kimenet, például a kérelmek és az állapotkódok megjelenítéséhez. A `-v` paraméter részletes kimenetet biztosít, és a `-vv` paraméter még részletesebb részletes kimenetet biztosít. A `--json` kapcsoló nyers JSON formátumban jeleníti meg az eredményt.
 
@@ -1520,7 +1519,7 @@ Paraméter beállításai:
 
     provider unregister [options] <namespace>
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 **Erőforrás-csoport létrehozása**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1696,7 +1695,7 @@ Paraméter beállításai:
 
     tag show [options] [name]
 
-## <a name="virtual-machines"></a>Virtuális gépek
+## <a name="virtual-machines"></a>Virtual Machines
 **Virtuális gép létrehozása**
 
     vm create [options] <resource-group> <name> <location> <os-type>
@@ -1706,7 +1705,7 @@ Paraméter beállításai:
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> A CLI 0,10-es verziójától kezdve egy rövid aliast is megadhat, például a "UbuntuLTS" vagy a `image-urn` "Win2012R2Datacenter" nevet, amely néhány népszerű Piactéri rendszerképet tartalmaz. Futtatás `azure help vm quick-create` a beállításokhoz. Emellett a 0,10- `azure vm quick-create` es verziótól kezdődően a Premium Storage alapértelmezés szerint a kiválasztott régióban érhető el.
+> A CLI 0,10-es verziójától kezdve egy rövid aliast is megadhat, például a "UbuntuLTS" vagy a "Win2012R2Datacenter" nevet, `image-urn` amely néhány népszerű Piactéri rendszerképet tartalmaz. Futtatás `azure help vm quick-create` a beállításokhoz. Emellett a 0,10-es verziótól kezdődően `azure vm quick-create` a Premium Storage alapértelmezés szerint a kiválasztott régióban érhető el.
 > 
 > 
 

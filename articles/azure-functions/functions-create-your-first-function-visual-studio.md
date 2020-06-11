@@ -5,12 +5,12 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: aa1999df83c3a3926f3410ea7ee48af75b2dd515
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: ceab81f4dd9089acc2d902f80e7acc95e9f9cb11
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231524"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676454"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rövid útmutató: az első függvény létrehozása az Azure-ban a Visual Studióval
 
@@ -40,7 +40,7 @@ A `FunctionName` Method attribútum a függvény nevét állítja be, amely alap
 
 1. A kódban nevezze át a Function1 osztályt a következőre: "HttpExample".
 
-1. A `HttpTrigger` nevű metódusban `run` nevezze át a `FunctionName` Method attribútumot a következőre: `HttpExample` .
+1. A `HttpTrigger` nevű metódusban `Run` nevezze át a `FunctionName` Method attribútumot a következőre: `HttpExample` .
 
 Most, hogy átnevezte a függvényt, tesztelheti a helyi számítógépen.
 
@@ -76,7 +76,7 @@ A projekt közzététele előtt rendelkeznie kell egy Function alkalmazással az
 
     :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="A függvény által visszaadott válasz a böngészőben":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatók, oktatóanyagok vagy az ebben a rövid útmutatóban létrehozott bármelyik szolgáltatással dolgozik, ne törölje az erőforrásokat.
 
@@ -96,7 +96,7 @@ E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának
 
    A törlés eltarthat néhány percig. Amint a művelet befejeződött, néhány másodpercre egy értesítés jelenik meg. Az értesítést úgy is megtekintheti, ha kiválasztja a harang ikont az oldal tetején.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a Visual studiót használta egy C#-függvény alkalmazás létrehozásához és közzétételéhez az Azure-ban egy egyszerű HTTP trigger függvénnyel. 
 

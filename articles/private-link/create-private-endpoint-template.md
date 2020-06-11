@@ -4,17 +4,18 @@ description: További információ az Azure Private linkről
 services: private-link
 author: mblanco77
 ms.service: private-link
-ms.topic: article
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a91415e7e3d91c2950cc4df2235c3d58df284cc0
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: af00119f1da3368b8592e020eee1ebb2a39a8501
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235985"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669953"
 ---
-# <a name="create-a-private-endpoint---resource-manager-template"></a>Privát végpont – Resource Manager-sablon létrehozása
+# <a name="quickstart-create-a-private-endpoint---resource-manager-template"></a>Rövid útmutató: privát végpont létrehozása – Resource Manager-sablon
 
 Ebben a rövid útmutatóban egy Resource Manager-sablonnal hozhat létre privát végpontot.
 
@@ -32,22 +33,22 @@ Ez a sablon létrehoz egy magánhálózati végpontot az Azure SQL Serverhez.
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/101-private-endpoint-sql/azuredeploy.json) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
+- [**Microsoft. SQL/Servers**](/azure/templates/microsoft.sql/servers) : az Azure SQL Server és a mintaadatbázis
+- [**Microsoft. SQL/kiszolgálók/adatbázisok**](/azure/templates/microsoft.sql/servers/databases) : mintaadatbázis
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : Virtual Network, ahol a magánhálózati végpont üzembe lett helyezve
 - [**Microsoft. Network/privateEndpoints**](/azure/templates/microsoft.network/privateendpoints) : magánhálózati végpont az Azure SQL Serverhez való hozzáféréshez
 - [**Microsoft. Network/privateDnsZones**](/azure/templates/microsoft.network/privatednszones) : a magánhálózati végpont IP-címének feloldásához használatos
 - [**Microsoft. Network/privateDnsZones/virtualNetworkLinks**](/azure/templates/microsoft.network/privatednszones/virtualnetworklinks)
 - [**Microsoft. Network/privateEndpoints/privateDnsZoneGroups**](/azure/templates/microsoft.network/privateendpoints/privateDnsZoneGroups) : privát végpont hozzárendelése magánhálózati DNS-zónához
-- [**Microsoft. SQL/Servers**](/azure/templates/microsoft.sql/servers) : az Azure SQL Server és a mintaadatbázis
-- [**Microsoft. SQL/kiszolgálók/adatbázisok**](/azure/templates/microsoft.sql/servers/databases) : mintaadatbázis
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : Virtual Network, ahol a magánhálózati végpont üzembe lett helyezve
 - [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicIpAddresses) : nyilvános IP-cím a virtuális gép eléréséhez
-- [**Microsoft. számítás/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : virtuális gép, amely a privát végponttal rendelkező magánhálózati kapcsolatokat az Azure SQL Serverrel teszteli
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : a virtuális gép hálózati adaptere
+- [**Microsoft. számítás/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : virtuális gép, amely a privát végponttal rendelkező magánhálózati kapcsolatokat az Azure SQL Serverrel teszteli
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -86,7 +87,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myVm az internetről a követke
       > [!NOTE]
       > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 6. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 
@@ -119,7 +120,7 @@ Ebben a szakaszban a virtuális gépről a magánhálózati végpont használat�
 7.  Opcionálisan Adatok létrehozása vagy lekérdezése a _Sample-db-_ ből
 8.  A _(myVm) {UniqueID}_ távoli asztali kapcsolatának lezárása.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége a privát végponttal létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a magánhálózati végpontot és az összes kapcsolódó erőforrást.
 
@@ -129,6 +130,6 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Private linkről](private-link-overview.md)

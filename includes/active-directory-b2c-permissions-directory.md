@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
-ms.openlocfilehash: 587a4bfed00415499bcca6d6054d4ab25cddf0b8
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dfe35eecfec5a12395ac3d9973a651e033aeea73
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298921"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672525"
 ---
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/) 
 
 1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
 1. A **konfigurált engedélyek**területen válassza **az engedély hozzáadása**elemet.
@@ -28,7 +28,7 @@ ms.locfileid: "84298921"
 1. Válassza ki az **Elfogadás** lehetőséget.
 1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." az **állapot**területen jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
+#### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
 1. A **regisztrált alkalmazás** áttekintése lapon válassza a **Beállítások**lehetőséget.
 1. Az **API-hozzáférés**területen válassza a **szükséges engedélyek**lehetőséget.

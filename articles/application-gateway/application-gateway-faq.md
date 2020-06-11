@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: e61ce629e723f56524ee22d8b127243f9568a835
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7b90748ae29a98038d96e5e3a827413637a98d47
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196493"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668236"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -21,7 +21,7 @@ ms.locfileid: "84196493"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -338,11 +338,31 @@ Nem, csak alfanumerikus karaktereket használjon a. pfx-fájl jelszavában.
 A Kubernetes lehetővé teszi a létrehozást `deployment` és az `service` erőforrást, hogy a fürtön belül belső hüvelyek csoportját tegye elérhetővé. Ahhoz, hogy a szolgáltatás külsőleg is elérhető legyen, egy [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) erőforrás van meghatározva, amely terheléselosztást, TLS-megszakítást és név-alapú virtuális üzemeltetést biztosít.
 Ahhoz, hogy kielégítse ezt az `Ingress` erőforrást, be kell állítani egy bejövő vezérlőt, amely figyeli az erőforrások változásait, `Ingress` és konfigurálja a terheléselosztó-házirendeket.
 
-Az Application Gateway beáramlási vezérlő lehetővé teszi az [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) számára, hogy az Azure Kubernetes szolgáltatás beáramlási [szolgáltatásaként](https://azure.microsoft.com/services/kubernetes-service/) más néven AK-fürtöt használjanak.
+A Application Gateway beáramlási vezérlő (AGIC) lehetővé teszi az [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) számára, hogy az [Azure Kubernetes szolgáltatás](https://azure.microsoft.com/services/kubernetes-service/) bemenő példányként is használható legyen, más néven AK-fürtként.
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Több Application Gateway-példányt is kezelhet?
 
 Jelenleg a bejövő adatkezelő egyik példánya csak egy Application Gatewayhoz társítható.
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Miért nem működik együtt a AGIC a kubenet-sel?
+
+A AGIC megpróbálja automatikusan hozzárendelni az útválasztási tábla erőforrását az Application Gateway alhálózathoz, de ezt a művelet nem teszi lehetővé, mert a AGIC nem rendelkezik a megfelelő engedélyekkel. Ha a AGIC nem tudja hozzárendelni az útválasztási táblázatot a Application Gateway alhálózathoz, akkor a AGIC-naplók hibát jeleznek, ami azt jelzi, hogy az AK-fürt által létrehozott útválasztási táblázatot manuálisan kell hozzárendelni a Application Gateway alhálózatához. További információ: [itt](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)talál útmutatást.
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>Csatlakozhatok a saját AK-fürthöz, és Application Gateway külön virtuális hálózatban? 
+
+Igen, ha a virtuális hálózatok egyenrangúak, és nincs átfedésben a címtartomány. Ha a kubenet-t futtatja, akkor ügyeljen arra, hogy az AK által generált útválasztási táblázatot társítsa a Application Gateway alhálózathoz. 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>Milyen funkciók nem támogatottak a AGIC-bővítményben? 
+
+Tekintse meg a Helm használatával központilag telepített AGIC és az [itt](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) található AK-bővítmények közötti különbségeket
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>Mikor érdemes használni a bővítményt és a Helm-telepítést? 
+
+Tekintse meg a Helm által központilag üzembe helyezett AGIC közötti különbségeket itt is: [ide](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)tartoznak, különösen azokat a táblákat, amelyeknek a AGIC a Helm-on keresztül üzembe helyezett, az AK-bővítmények által támogatott forgatókönyv (ek) et. Általánosságban elmondható, hogy a Helm használatával történő üzembe helyezés lehetővé teszi a bétaverziós funkciók tesztelését és a pályázók kiadását a hivatalos kiadás előtt. 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>Szabályozható, hogy a AGIC melyik verzióját fogja telepíteni a bővítmény?
+
+Nem, a AGIC bővítmény felügyelt szolgáltatás, ami azt jelenti, hogy a Microsoft automatikusan frissíti a bővítményt a legújabb stabil verzióra. 
 
 ## <a name="diagnostics-and-logging"></a>Diagnosztika és naplózás
 
@@ -413,6 +433,6 @@ Ha azonban csak privát IP-címmel szeretné használni a Application Gateway v2
 NSG-konfiguráció a magánhálózati IP-címekhez csak hozzáférés: ![ Application Gateway v2 NSG konfiguráció csak magánhálózati IP-hozzáféréshez](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

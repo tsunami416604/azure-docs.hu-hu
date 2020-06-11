@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b62f30f428a0aaf5a564e2f2d2ad8d753dff7767
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: fd4ed98383d38be8528bafd6ec7d149381386fac
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298923"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672526"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
 
@@ -46,7 +46,15 @@ Bár a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatát jelenl
 
 Mielőtt a parancsfájlok és az alkalmazások kommunikálhatnak a [Microsoft Graph API][ms-graph-api] -val Azure ad B2C erőforrások kezeléséhez, létre kell hoznia egy alkalmazás-regisztrációt a Azure ad B2C-bérlőben, amely megadja a szükséges API-engedélyeket.
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+1. Adja meg az alkalmazás **nevét** . Például: *managementapp1*.
+1. **Csak a szervezeti címtárban**válassza a fiókok elemet.
+1. Az **engedélyek**területen törölje a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzet jelölését.
+1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Jegyezze fel az alkalmazás – áttekintés oldalon megjelenő **alkalmazást (ügyfél-azonosítót)** . Ezt az értéket egy későbbi lépésben kell használni.
 
 ### <a name="grant-api-access"></a>API-hozzáférés biztosítása
 
@@ -72,9 +80,9 @@ Ha az alkalmazásnak vagy a parancsfájlnak törölnie kell a felhasználókat, 
 1. Válassza ki a **felhasználói rendszergazda** szerepkört.
 1. Válassza a **hozzárendelések hozzáadása**lehetőséget.
 1. A **kijelölés** szövegmezőbe írja be a korábban regisztrált alkalmazás nevét, például *managementapp1*. Válassza ki az alkalmazást, amikor megjelenik a keresési eredmények között.
-1. Válassza a **Hozzáadás** lehetőséget. Az engedélyek teljes propagálása eltarthat néhány percig.
+1. Válassza a **Hozzáadás** elemet. Az engedélyek teljes propagálása eltarthat néhány percig.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy regisztrálta a felügyeleti alkalmazást, és megadta a szükséges engedélyeket, az alkalmazásai és szolgáltatásai (például az Azure-folyamatok) használhatják a hitelesítő adatait és a Microsoft Graph API-val való interakcióra vonatkozó engedélyeket. 
 
 * [Hozzáférési token lekérése a Microsoft Azure Active Directory-ból](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)

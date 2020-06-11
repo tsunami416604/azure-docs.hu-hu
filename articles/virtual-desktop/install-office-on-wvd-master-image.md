@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d53c21af77204a5e83687d3ce893f3f6f45101f2
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 2c62fdb41cdd19e34062124564ace9645df1dde6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628990"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672697"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Az Office telepítése egy fő virtuálisgép-rendszerképre
 
@@ -55,13 +55,13 @@ A minta konfigurációs XML-fájl nem fog megjelenni:
 >[!NOTE]
 >A megosztott számítógép aktiválása Csoportházirend objektumok (GPO-k) vagy beállításjegyzék-beállítások használatával állítható be. A csoportházirend-objektum a **számítógép \\ -konfigurációs szabályzatok \\ Felügyeleti sablonok \\ Microsoft Office 2016 (gép) \\ licencelési beállításai** között található.
 
-Az Office-telepítő eszköz tartalmazza a Setup. exe fájlt. Az Office telepítéséhez futtassa a következő parancsot egy parancssorban:
+Az Office-telepítési eszköz setup.exe tartalmaz. Az Office telepítéséhez futtassa a következő parancsot egy parancssorban:
 
 ```batch
 Setup.exe /configure configuration.xml
 ```
 
-#### <a name="sample-configurationxml"></a>Példa a Configuration. XML fájlra
+#### <a name="sample-configurationxml"></a>Példa configuration.xml
 
 A következő XML-minta a havi nagyvállalati csatorna kiadását fogja telepíteni.
 
@@ -118,7 +118,7 @@ A következőképpen telepítheti a OneDrive-t gépi módban:
 
 1. Először hozzon létre egy helyet a OneDrive-telepítő előkészítéséhez. A helyi lemez mappája vagy \\ \\ az [UNC] (file://UNC) hely rendben van.
 
-2. Töltse le a OneDriveSetup. exe fájlt a szakaszos helyre a következő hivatkozással:<https://aka.ms/OneDriveWVD-Installer>
+2. A következő hivatkozással töltse le OneDriveSetup.exe a szakaszos helyre:<https://aka.ms/OneDriveWVD-Installer>
 
 3. Ha az Office-t a OneDrive-mel telepítette **\<ExcludeApp ID="OneDrive" /\>** , a következő parancs futtatásával távolítsa el a meglévő OneDrive felhasználónkénti telepítéseit egy emelt szintű parancssorból:
     
@@ -156,9 +156,11 @@ A következőképpen telepítheti a OneDrive-t gépi módban:
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 
-## <a name="teams-and-skype"></a>Csapatok és Skype
+## <a name="microsoft-teams-and-skype-for-business"></a>Microsoft Teams és Skype vállalati verzió
 
-A Windows rendszerű virtuális asztal nem támogatja a Skype vállalati és munkacsoportok használatát.
+A Windows virtuális asztal nem támogatja a Skype vállalati verzió használatát.
+
+A Microsoft Teams telepítésével kapcsolatos segítségért lásd: [a Microsoft Teams használata a Windows rendszerű virtuális asztalon](teams-on-wvd.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

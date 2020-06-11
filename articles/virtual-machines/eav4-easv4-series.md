@@ -1,18 +1,18 @@
 ---
-title: Eav4 és Easv4 sorozat – Azure Virtual Machines
+title: Eav4 és Easv4 sorozat
 description: A Eav4 és a Easv4 sorozatú virtuális gépek specifikációi.
-services: virtual-machines
 author: migerdes
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: ab45298dbcb8988da7d0211fcbde3087d0099038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 230809f4fe42ce0fc8b8c85024b42926a27e699f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437083"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678239"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 és Easv4 sorozat
 
@@ -34,15 +34,15 @@ A Eav4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron al
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (MBps) |
 | -----|-----|-----|-----|-----|-----|-----|
-| Standard\_E2a\_v4|2|16|50|4|3000 / 46 / 23|2 / 1000 |
-| Standard\_E4a\_v4|4|32|100|8|6000 / 93 / 46|2 / 2000 |
-| Standard\_E8a\_v4|8|64|200|16|12000 / 187 / 93|4 / 4000 |
-| Standard\_E16a\_v4|16|128|400|32|24000 / 375 / 187|8 / 8000 |
-| Standard\_E20a\_v4|20|160|500|32|30000/468/234|8 / 10000 |
-| Standard\_E32a\_v4|32|256|800|32|48000 / 750 / 375|8 / 16000 |
-| Standard\_E48a\_v4|48|384|1200|32|96000/1000 (500)|8 / 24000 |
-| Standard\_E64a\_v4|64|512|1600|32|96000/1000 (500)|8 / 30000 |
-| Standard\_E96a\_v4|96|672|2400|32|96000/1000 (500)|8 / 30000 |
+| Standard \_ E2a \_ v4|2|16|50|4|3000 / 46 / 23|2 / 1000 |
+| Standard \_ E4a \_ v4|4|32|100|8|6000 / 93 / 46|2 / 2000 |
+| Standard \_ E8a \_ v4|8|64|200|16|12000 / 187 / 93|4 / 4000 |
+| Standard \_ E16a \_ v4|16|128|400|32|24000 / 375 / 187|8 / 8000 |
+| Standard \_ E20a \_ v4|20|160|500|32|30000/468/234|8 / 10000 |
+| Standard \_ E32a \_ v4|32|256|800|32|48000 / 750 / 375|8 / 16000 |
+| Standard \_ E48a \_ v4|48|384|1200|32|96000/1000 (500)|8 / 24000 |
+| Standard \_ E64a \_ v4|64|512|1600|32|96000/1000 (500)|8 / 30000 |
+| Standard \_ E96a \_ v4|96|672|2400|32|96000/1000 (500)|8 / 30000 |
 
 ## <a name="easv4-series"></a>Easv4 sorozat
 
@@ -81,6 +81,6 @@ A Easv4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron a
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

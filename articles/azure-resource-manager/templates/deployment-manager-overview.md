@@ -4,12 +4,12 @@ description: Ismerteti, hogyan helyezhet üzembe egy szolgáltatást több régi
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a91623d22a921b6285723af2b4ca1411b9cf0bab
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76152527"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677882"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások engedélyezése az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -268,9 +268,9 @@ Két paraméter fájlját hozza létre. A szolgáltatás topológiájának telep
 
 ## <a name="containerroot-variable"></a>containerRoot változó
 
-A verzióval ellátott központi telepítések esetén az összetevők elérési útja minden új verziónál megváltozik. A központi telepítés első indításakor az elérési út lehet `https://<base-uri-blob-container>/binaries/1.0.0.0`. A második alkalommal, amikor lehetséges `https://<base-uri-blob-container>/binaries/1.0.0.1`. A telepítéskezelő leegyszerűsíti az aktuális üzemelő példány helyes elérési útjának `$containerRoot` beolvasását a változó használatával. Ez az érték minden verzióra módosul, és nem ismert az üzembe helyezés előtt.
+A verzióval ellátott központi telepítések esetén az összetevők elérési útja minden új verziónál megváltozik. A központi telepítés első indításakor az elérési út lehet `https://<base-uri-blob-container>/binaries/1.0.0.0` . A második alkalommal, amikor lehetséges `https://<base-uri-blob-container>/binaries/1.0.0.1` . A telepítéskezelő leegyszerűsíti az aktuális üzemelő példány helyes elérési útjának beolvasását a `$containerRoot` változó használatával. Ez az érték minden verzióra módosul, és nem ismert az üzembe helyezés előtt.
 
-Az Azure `$containerRoot` -erőforrások üzembe helyezéséhez használja a (z) paraméter fájljában található változót a sablonhoz. A központi telepítés időpontjában ez a változó a bevezetésből származó tényleges értékekkel lesz lecserélve.
+Az `$containerRoot` Azure-erőforrások üzembe helyezéséhez használja a (z) paraméter fájljában található változót a sablonhoz. A központi telepítés időpontjában ez a változó a bevezetésből származó tényleges értékekkel lesz lecserélve.
 
 A bevezetés során például létre kell hoznia egy összetevő-forrást a bináris összetevőkhöz.
 
@@ -294,13 +294,13 @@ A bevezetés során például létre kell hoznia egy összetevő-forrást a bin�
 },
 ```
 
-Figyelje meg `artifactRoot` a `sasUri` és a tulajdonságokat. Lehetséges, hogy az összetevő gyökeréhez hasonló `binaries/1.0.0.0`érték van beállítva. A SAS URI a Storage-tároló URI-ja, amely a hozzáféréshez SAS-tokent biztosít. Telepítéskezelő automatikusan létrehozza a `$containerRoot` változó értékét. Ezeket az értékeket a formátumban `<container>/<artifactRoot>`kombinálja.
+Figyelje meg a `artifactRoot` és a `sasUri` tulajdonságokat. Lehetséges, hogy az összetevő gyökeréhez hasonló érték van beállítva `binaries/1.0.0.0` . A SAS URI a Storage-tároló URI-ja, amely a hozzáféréshez SAS-tokent biztosít. Telepítéskezelő automatikusan létrehozza a `$containerRoot` változó értékét. Ezeket az értékeket a formátumban kombinálja `<container>/<artifactRoot>` .
 
-A sablon és a paraméter fájljának ismernie kell a verziószámú bináris fájlok beolvasásának helyes elérési útját. Ha például egy webalkalmazás fájljait szeretné központilag telepíteni, hozza létre a következő paramétert a $containerRoot változóval. Az elérési úthoz két fordított`\\`perjelet () kell használnia, mert az első egy escape-karakter.
+A sablon és a paraméter fájljának ismernie kell a verziószámú bináris fájlok beolvasásának helyes elérési útját. Ha például egy webalkalmazás fájljait szeretné központilag telepíteni, hozza létre a következő paramétert a $containerRoot változóval. Az elérési úthoz két fordított perjelet () kell használnia, `\\` mert az első egy escape-karakter.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deployPackageUri": {
@@ -332,7 +332,7 @@ Ezután használja a (z) paramétert a sablonban:
 
 A verzióval ellátott központi telepítéseket új mappák létrehozásával és a gyökérbe való átadással kezelheti a bevezetés során. Az elérési út az erőforrásokat központilag telepítő sablonra áramlik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta a telepítéskezelő. A következő cikkből megtudhatja, hogyan helyezheti üzembe a telepítéskezelő használatával.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 70f124a498ff4aa45b5d90f6221fe3d0121e804a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c9cf77971038a3d7d160180b93594736d3ca6200
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221046"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674227"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-hitelesítési szabályzatok
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -48,16 +48,16 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name|Description|Kötelező|
 |----------|-----------------|--------------|
-|hitelesítés – alapszintű|Gyökérelem.|Igen|
+|hitelesítés – alapszintű|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Name|Description|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|felhasználónév|Megadja az alapszintű hitelesítő adat felhasználónevét.|Igen|N/A|
-|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Igen|N/A|
+|felhasználónév|Megadja az alapszintű hitelesítő adat felhasználónevét.|Yes|N.A.|
+|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Yes|N.A.|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
@@ -77,27 +77,38 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 ### <a name="examples"></a>Példák
 
-Ebben a példában az ügyféltanúsítvány azonosítja az ujjlenyomatát.
+Ebben a példában az ügyféltanúsítványt az ujjlenyomata azonosítja:
+
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonosítható.
+
+Ebben a példában az erőforrás neve azonosítja az ügyféltanúsítványt:
+
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
-```  
+``` 
+
+Ebben a példában az ügyféltanúsítvány a szabályzatban van beállítva, és nem a beépített tanúsítványtárolóból lett beolvasva:
+
+```xml
+<authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
+```
 
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Kötelező|  
+|Name|Description|Kötelező|  
 |----------|-----------------|--------------|  
-|hitelesítés – tanúsítvány|Gyökérelem.|Igen|  
+|hitelesítés – tanúsítvány|Gyökérelem.|Yes|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
+|Name|Description|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|ujjlenyomat|Az ügyféltanúsítvány ujjlenyomata.|`thumbprint`Vagy `certificate-id` kell lennie.|N/A|  
-|tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|`thumbprint`Vagy `certificate-id` kell lennie.|N/A|  
+|ujjlenyomat|Az ügyféltanúsítvány ujjlenyomata.|`thumbprint`Vagy `certificate-id` kell lennie.|N.A.|
+|tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|`thumbprint`Vagy `certificate-id` kell lennie.|N.A.|
+|body (Törzs)|Ügyfél-tanúsítvány bájt tömbként.|No|N.A.|
+|jelszó|Az ügyféltanúsítvány jelszava.|Akkor használatos, ha a ben megadott tanúsítvány `body` jelszavas védelemmel van ellátva.|N.A.|
   
 ### <a name="usage"></a>Használat  
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
@@ -161,17 +172,17 @@ Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonos
 
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Kötelező|  
+|Name|Description|Kötelező|  
 |----------|-----------------|--------------|  
-|hitelesítés – felügyelt – identitás |Gyökérelem.|Igen|  
+|hitelesítés – felügyelt – identitás |Gyökérelem.|Yes|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
+|Name|Description|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|erőforrás|Sztring. A célként megadott webes API (biztonságos erőforrás) alkalmazás-azonosítója Azure Active Directoryban.|Igen|N/A|  
-|output-token-változó-neve|Sztring. Annak a környezeti változónak a neve, amely a jogkivonat értékét objektum típusúként fogja fogadni `string` . |Nem|N/A|  
-|Mellőzés – hiba|Logikai. Ha a értékre `true` van állítva, akkor a házirend-folyamat akkor is végre fog hajtani, ha nem kapott hozzáférési jogkivonatot.|Nem|hamis|  
+|erőforrás|Sztring. A célként megadott webes API (biztonságos erőforrás) alkalmazás-azonosítója Azure Active Directoryban.|Yes|N.A.|  
+|output-token-változó-neve|Sztring. Annak a környezeti változónak a neve, amely a jogkivonat értékét objektum típusúként fogja fogadni `string` . |No|N.A.|  
+|Mellőzés – hiba|Logikai. Ha a értékre `true` van állítva, akkor a házirend-folyamat akkor is végre fog hajtani, ha nem kapott hozzáférési jogkivonatot.|No|hamis|  
   
 ### <a name="usage"></a>Használat  
  Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
@@ -180,7 +191,7 @@ Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonos
   
 -   **Házirend-hatókörök:** az összes hatókör
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a házirendek használatáról:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)

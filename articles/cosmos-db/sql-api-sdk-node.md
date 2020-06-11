@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL Node. js API, SDK &-erőforrások'
-description: Ismerkedjen meg az SQL Node. js API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a Azure Cosmos DB Node. js SDK egyes verzióiban végrehajtott módosításokat.
+title: 'Azure Cosmos DB: SQL Node.js API, SDK &-erőforrások'
+description: Ismerkedjen meg az SQL Node.js API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a Azure Cosmos DB Node.js SDK egyes verziói között végrehajtott módosításokat.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,18 +8,19 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 66597f0807e27e421d5f7001550533090d5936c0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: b0d9b0bd520b3bfca57f2bf7f306ebddd15cc3e5
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171599"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677661"
 ---
-# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node. js SDK az SQL API-hoz: kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
@@ -28,7 +29,7 @@ ms.locfileid: "84171599"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 |Erőforrás  |Hivatkozás  |
@@ -37,20 +38,20 @@ ms.locfileid: "84171599"
 |API-dokumentáció  |  [A JavaScript SDK dokumentációja](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |SDK telepítési utasítások  |  [Telepítési utasítások](https://github.com/Azure/azure-cosmos-js#installation)
 |Közreműködés az SDK-val | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
-| Példák | [Node. js-kód minták](sql-api-nodejs-samples.md)
+| Példák | [Node.js kód mintái](sql-api-nodejs-samples.md)
 | Útmutató az első lépésekhez | [Ismerkedés a JavaScript SDK-val](sql-api-nodejs-get-started.md)
-| Webalkalmazás-oktatóanyag | [Node. js-alapú Webalkalmazás létrehozása Azure Cosmos DB használatával](sql-api-nodejs-application.md)
-| Jelenleg támogatott platform | [Node. js v12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK 3. x. x verzió<br/>[Node. js v10. x](https://nodejs.org/en/blog/release/v10.6.0/) – SDK 3-as verzió. x. x<br/>[Node. js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK 3. x. x verzió<br/>[Node. js v6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK 2. x. x verzió<br/>[Node. js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)– SDK 1-es verzió. x. x<br/> [Node. js v 0,12](https://nodejs.org/en/blog/release/v0.12.0/)– SDK 1-es verzió. x. x<br/> [Node. js v 0,10](https://nodejs.org/en/blog/release/v0.10.0/)– SDK 1-es verziójú. x. x
+| Webalkalmazás-oktatóanyag | [Node.js Webalkalmazás létrehozása Azure Cosmos DB használatával](sql-api-nodejs-application.md)
+| Jelenleg támogatott platform | [Node.js v12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK Version 3. x. x<br/>[Node.js v10. x](https://nodejs.org/en/blog/release/v10.6.0/) -SDK Version 3. x. x<br/>[Node.js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK Version 3. x. x<br/>[Node.js v6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK 2. x. x verzió<br/>[Node.js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)-SDK 1-es verziójú. x. x<br/> [Node.js v 0,12](https://nodejs.org/en/blog/release/v0.12.0/)– SDK 1-es verziójú. x. x<br/> [Node.js v 0,10](https://nodejs.org/en/blog/release/v0.10.0/)– SDK 1-es verziójú. x. x
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="310"></a><a name="3.1.0"></a>3.1.0
-* Állítsa be az alapértelmezett ResponseContinuationTokenLimitInKB a 1kb értékre. Alapértelmezés szerint ez a 1kb a hosszú fejlécek elkerülésére van korlátozva (a Node. js globális fejlécének korlátja). A felhasználók megadhatják ezt a mezőt a hosszú fejlécek engedélyezéséhez, ami segíthet a háttérben a lekérdezés-végrehajtás optimalizálásában.
+* Állítsa be az alapértelmezett ResponseContinuationTokenLimitInKB a 1kb értékre. Alapértelmezés szerint a 1kb a hosszú fejlécek elkerülésére (Node.js globális fejléc-korláttal rendelkezik). A felhasználók megadhatják ezt a mezőt a hosszú fejlécek engedélyezéséhez, ami segíthet a háttérben a lekérdezés-végrehajtás optimalizálásában.
 * Távolítsa el a disableSSLVerification. Ez a beállítás új alternatívákat tartalmaz [#388](https://github.com/Azure/azure-cosmos-js/pull/388)
 
 ### <a name="304"></a><a name="3.0.4"></a>3.0.4
 * A partíciós kulcs fejlécének explicit módon történő beállításának engedélyezése a initialHeaders számára
-* A Package. JSON # fájlok használatával megakadályozhatja a külső fájlok közzétételét
+* package.jshasználata # fájlokon a külső fájlok közzétételének megakadályozása érdekében
 * Az útválasztási Térkép rendezési hibájának javítása a Node + V8 régebbi verziójában
 * Kijavítja a hibát, ha a felhasználó részleges újrapróbálkozási lehetőségeket biztosít
 
@@ -101,7 +102,7 @@ A v2-ben számos különböző módon lehet megismételni vagy beolvasni az ered
 
 * Távolítsa el a következőt: iteráció. Next () és iteráció. Current (). A fetchNext () segítségével lekérdezheti a találati lapokat.
 * Távolítsa el az iterációt. forEach (). Használjon aszinkron iterációkat.
-* az iteráció. executeNext () átnevezve a következőre: iteráció. fetchNext ()
+* iterator.executeNext () átnevezve a következőre: iteráció. fetchNext ()
 * az iteráció. toArray () átnevezve a következőre: iteráció. fetchAll ()
 * Az oldalak mostantól megfelelő válasz-objektumok, egyszerű JS-objektumok helyett
 * CONST-tároló = Client. Database (dbId). Container (containerId)
@@ -150,7 +151,7 @@ A sikertelen kérelmek mostantól megfelelő hibát vagy alosztályt dobjanak. K
 
 #### <a name="new-features"></a>Új funkciók
 ##### <a name="user-cancelable-requests"></a>Felhasználó által visszavonható kérelmek
-A belső beolvasásra való áttérés lehetővé teszi, hogy a böngésző AbortController API használatával támogassa a felhasználó által megszakítható műveleteket. Olyan műveletek esetén, ahol több kérelem is folyamatban van (például a több partíciós lekérdezéseknél), a művelethez tartozó összes kérelem meg lesz szakítva. A modern böngésző felhasználói már rendelkeznek AbortController. A Node. js-felhasználóknak egy kitöltési függvénytárat kell használniuk
+A belső beolvasásra való áttérés lehetővé teszi, hogy a böngésző AbortController API használatával támogassa a felhasználó által megszakítható műveleteket. Olyan műveletek esetén, ahol több kérelem is folyamatban van (például a több partíciós lekérdezéseknél), a művelethez tartozó összes kérelem meg lesz szakítva. A modern böngésző felhasználói már rendelkeznek AbortController. Node.js felhasználóknak egy kitöltési függvénytárat kell használniuk
 
 ``` js
  const controller = new AbortController()
@@ -181,7 +182,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>Továbbfejlesztett böngésző-élmény
-Habár a v2 SDK-t a böngészőben lehetett használni, nem volt ideális megoldás. Több Node. js beépített kódtárat kell kitöltenie, és a webpacket vagy a csomagot egy kötegként kell használnia. A v3 SDK sokkal hatékonyabban teszi elérhetővé a böngésző felhasználói számára.
+Habár a v2 SDK-t a böngészőben lehetett használni, nem volt ideális megoldás. Több node.js beépített kódtárat kell kitöltenie, és olyan köteget kell használnia, mint a webpack vagy a parcella. A v3 SDK sokkal hatékonyabban teszi elérhetővé a böngésző felhasználói számára.
 
 * A kérések belső elemeinek cseréje a lekéréssel (#245)
 * Puffer használatának eltávolítása (#330)
@@ -218,7 +219,7 @@ Nem mindig a leglátványosabb változások, de segítünk a csapatnak jobb kód
 * Regionális feladatátvétel javítása az újrapróbálkozási szabályzaton belül
 * A ChangeFeed hasMoreResults tulajdonságának javítása
 * Fejlesztői függőségek frissítései
-* PolicheckExclusions. txt hozzáadása
+* PolicheckExclusions.txt hozzáadása
 
 ### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * Váltás _ts típus karakterláncról számra

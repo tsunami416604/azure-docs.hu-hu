@@ -3,12 +3,12 @@ title: Titok Key Vault sablonnal
 description: Bemutatja, hogyan lehet átadni egy titkos kulcsot a Key vaultból paraméterként az üzembe helyezés során.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458266"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677865"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>A Azure Key Vault használata a biztonságos paraméterek értékének átadására az üzembe helyezés során
 
@@ -18,7 +18,7 @@ Ez a cikk a bizalmas érték sablon-paraméterként való átadásának forgató
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Kulcstartók és titkos kulcsok üzembe helyezése
 
-Egy kulcstartó eléréséhez a sablon üzembe helyezése során `enabledForTemplateDeployment` állítsa be a Key vaultot a következőre: `true`.
+Egy kulcstartó eléréséhez a sablon üzembe helyezése során állítsa be a Key vaultot a következőre: `enabledForTemplateDeployment` `true` .
 
 Ha már rendelkezik Key Vault, győződjön meg róla, hogy lehetővé teszi a sablonok központi telepítését.
 
@@ -95,11 +95,11 @@ A kulcstartók létrehozásával és a titkok hozzáadásával kapcsolatos tová
 - [Titkos kód beállítása és beolvasása a PowerShell használatával](../../key-vault/secrets/quick-create-powershell.md)
 - [Titkos kód beállítása és lekérése a portál használatával](../../key-vault/secrets/quick-create-portal.md)
 - [Titkos kód beállítása és lekérése a .NET használatával](../../key-vault/secrets/quick-create-net.md)
-- [Titkos kód beállítása és lekérése a Node. js használatával](../../key-vault/secrets/quick-create-node.md)
+- [Titkos kód beállítása és lekérése Node.jshasználatával](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>Hozzáférés biztosítása a titkokhoz
 
-A sablont telepítő felhasználónak `Microsoft.KeyVault/vaults/deploy/action` engedéllyel kell rendelkeznie az erőforráscsoport és a kulcstartó hatóköréhez. A [tulajdonos](../../role-based-access-control/built-in-roles.md#owner) és a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt megadja ezt a hozzáférést. Ha létrehozta a kulcstartót, akkor Ön a tulajdonosa, hogy Ön rendelkezik az engedélyekkel.
+A sablont telepítő felhasználónak engedéllyel kell rendelkeznie az `Microsoft.KeyVault/vaults/deploy/action` erőforráscsoport és a kulcstartó hatóköréhez. A [tulajdonos](../../role-based-access-control/built-in-roles.md#owner) és a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt megadja ezt a hozzáférést. Ha létrehozta a kulcstartót, akkor Ön a tulajdonosa, hogy Ön rendelkezik az engedélyekkel.
 
 A következő eljárás azt mutatja be, hogyan hozható létre egy szerepkör a minimális engedélyekkel, és hogyan rendelhető hozzá a felhasználó
 
@@ -163,7 +163,7 @@ A következő sablon olyan SQL Servert telepít, amely rendszergazdai jelszót t
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminLogin": {
@@ -201,7 +201,7 @@ A következő paraméter fájljában a Key Vault-titoknak már léteznie kell, �
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "adminLogin": {
@@ -267,7 +267,7 @@ A következő sablon dinamikusan létrehozza a Key Vault-azonosítót, és param
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "location": {
@@ -314,7 +314,7 @@ A következő sablon dinamikusan létrehozza a Key Vault-azonosítót, és param
           "scope": "inner"
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {
@@ -373,7 +373,7 @@ A következő sablon dinamikusan létrehozza a Key Vault-azonosítót, és param
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Key vaultokkal kapcsolatos általános információkért lásd: [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 - A legfontosabb titkokra hivatkozó példákat itt talál: [Key Vault példák](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

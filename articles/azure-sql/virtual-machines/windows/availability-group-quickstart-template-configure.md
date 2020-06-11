@@ -4,7 +4,6 @@ description: Az Azure Gyorsindítás sablonjaival hozza létre a Windows feladat
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -15,19 +14,19 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8476029fb189db846eca3eba31fe8cc62d3726f8
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1359acfb768f7ac2fa3527afd041595d313249d0
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219456"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669239"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure Gyorsindítás sablonok használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ez a cikk azt ismerteti, hogyan használható az Azure gyorsindítási sablonok az Azure-ban SQL Server virtuális gépek (VM-EK) always on rendelkezésre állási csoportjának konfigurációjának részleges automatizálására. Ebben a folyamatban két Azure rövid útmutató-sablont használunk: 
 
-   | Sablon | Leírás |
+   | Sablon | Description |
    | --- | --- |
    | [101-SQL-VM-AG-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Létrehozza a Windows feladatátvevő fürtöt, és csatlakoztatja a SQL Server virtuális gépekhez. |
    | [101 – SQL-VM-aglistener – telepítés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Létrehozza a rendelkezésre állási csoport figyelőjét, és konfigurálja a belső Load balancert. Ez a sablon csak akkor használható, ha a Windows feladatátvevő fürt a **101-SQL-VM-AG-Setup** sablonnal lett létrehozva. |
@@ -206,7 +205,7 @@ Miután elvégezte ezeket a módosításokat, próbálja meg még egyszer üzemb
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket: 
 

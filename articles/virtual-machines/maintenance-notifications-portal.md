@@ -4,15 +4,15 @@ description: Megtekintheti az Azure-ban futó virtuális gépek karbantartási �
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77d5731738fbade97be08841428c3bc6b712a7a8
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77115738"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678732"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Tervezett karbantartási értesítések feldolgozása a portál használatával
 
@@ -32,7 +32,7 @@ Használhatja a Azure Portalt, és megkeresheti a karbantartásra ütemezett vir
 
    **Karbantartási állapot**: a virtuális gép karbantartási állapotát jeleníti meg. A lehetséges értékek a következők:
       
-      | Érték | Leírás |
+      | Érték | Description |
       |-------|-------------|
       | Indítás most | A virtuális gép önkiszolgáló karbantartási ablakban van, amely lehetővé teszi a karbantartás elindítását. A virtuális gép karbantartásának megkezdéséről alább tájékozódhat. | 
       | Ütemezett | A virtuális gép karbantartásra van ütemezve, tehát Ön nem kezdeményezheti a karbantartást. A karbantartási időszak megismeréséhez kattintson a karbantartás – ütemezett ablakra ebben a nézetben, vagy a virtuális gépre kattintva. | 
@@ -67,6 +67,6 @@ A karbantartás megkezdése után a rendszer karbantartja a virtuális gépet, �
 Ha kihagyta az önkiszolgáló ablakot, akkor továbbra is megtekintheti az ablakot, amikor a virtuális gépet az Azure fogja karbantartani. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tervezett karbantartást az [Azure CLI](maintenance-notifications-cli.md) vagy a [PowerShell](maintenance-notifications-powershell.md)használatával is kezelheti.

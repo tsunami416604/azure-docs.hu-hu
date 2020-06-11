@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: 316f5dcb3a5fe0cbf8fb6a2f65c0ab11fc45c146
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: abd357808cd0213e92eaba478fb861110bcf9f39
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607278"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84666723"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntu rendszerű virtuális gép előkészítése az Azure-beli használatra
 
@@ -50,8 +50,8 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
     Ubuntu 16,04 és Ubuntu 18,04:
    
-        # sudo sed -i 's/archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
-        # sed -i 's/[a-z][a-z]\.archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
+        # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+        # sudo sed -i 's/http:\/\/[a-z][a-z]\.archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
         # sudo apt-get update
 
 
@@ -67,7 +67,9 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
 5. Módosítsa a grub kernel-rendszerindítási sorát, hogy további kernel-paramétereket tartalmazzon az Azure-hoz. Ehhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, keresse meg a nevű változót `GRUB_CMDLINE_LINUX_DEFAULT` (vagy adja hozzá, ha szükséges), és szerkessze úgy, hogy tartalmazza a következő paramétereket:
    
-        GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
+    ```
+    GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"
+    ```
 
     Mentse és zárda be ezt a fájlt, majd futtassa a parancsot `sudo update-grub` . Ezzel biztosítható, hogy az összes konzol üzenetei az első soros porton legyenek elküldve, amely segítséget nyújt az Azure technikai támogatásához hibakeresési problémák esetén.
 
@@ -76,46 +78,49 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 7. Telepítse a Cloud-init (a kiépítési ügynököt) és az Azure Linux-ügynököt (a vendég bővítmények kezelőjét). A Cloud-init a netplan használatával konfigurálja a rendszerhálózati konfigurációt a kiépítés és az egyes későbbi rendszerindítások során.
 
         # sudo apt update
-        # sudo apt install -y cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
+        # sudo apt install cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
 
    > [!Note]
    >  `walinuxagent`Előfordulhat, hogy a csomag eltávolítja a `NetworkManager` és a `NetworkManager-gnome` csomagokat, ha azok telepítve vannak.
 
-8. Távolítsa el a Cloud-init alapértelmezett konfigurációit és a maradék összetevőket, amelyek ütközhetnek a Cloud-init üzembe helyezésével az Azure-ban:
+8. Távolítsa el a Cloud-init alapértelmezett konfigurációit és a maradék netplan-összetevőket, amelyek ütközhetnek a Cloud-init kiépítés az Azure-ban:
 
         # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
         # rm -f /etc/cloud/ds-identify.cfg
+        # rm -f /etc/netplan/*.yaml
 
 9. A Cloud-init konfigurálásával a rendszer kiépíthető az Azure-adatforrással:
 
-        # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
-        datasource_list: [ Azure ]
-        EOF
+    ```
+    # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
+    datasource_list: [ Azure ]
+    EOF
 
-        # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
-        system_info:
-        package_mirrors:
-            - arches: [i386, amd64]
-            failsafe:
-                primary: http://archive.ubuntu.com/ubuntu
-                security: http://security.ubuntu.com/ubuntu
-            search:
-                primary:
-                - http://azure.archive.ubuntu.com/ubuntu/
-                security: []
-            - arches: [armhf, armel, default]
-            failsafe:
-                primary: http://ports.ubuntu.com/ubuntu-ports
-                security: http://ports.ubuntu.com/ubuntu-ports
-        EOF
+    # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
+    system_info:
+       package_mirrors:
+         - arches: [i386, amd64]
+           failsafe:
+             primary: http://archive.ubuntu.com/ubuntu
+             security: http://security.ubuntu.com/ubuntu
+           search:
+             primary:
+               - http://azure.archive.ubuntu.com/ubuntu/
+             security: []
+         - arches: [armhf, armel, default]
+           failsafe:
+             primary: http://ports.ubuntu.com/ubuntu-ports
+             security: http://ports.ubuntu.com/ubuntu-ports
+    EOF
 
-        # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
-        reporting:
-        logging:
-            type: log
-        telemetry:
-            type: hyperv
-        EOF
+    # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+    reporting:
+      logging:
+        type: log
+      telemetry:
+        type: hyperv
+    EOF
+    ```
 
 10. Konfigurálja az Azure Linux-ügynököt úgy, hogy a kiépítés elvégzéséhez a Cloud-init-t használja. A beállításokkal kapcsolatos további információkért tekintse meg a [WALinuxAgent projektet](https://github.com/Azure/WALinuxAgent) .
 
@@ -142,6 +147,12 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
         # sudo rm -f /var/log/waagent.log
 
 12. Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
+
+    > [!NOTE]
+    > A `sudo waagent -force -deprovision+user` parancs megkísérli a rendszer tisztítását, és lehetővé teszi az újbóli kiépítés megfelelővé tételét. A `+user` kapcsoló törli az utolsó kiosztott felhasználói fiókot és a hozzájuk tartozó összes adatmennyiséget.
+
+    > [!WARNING]
+    > A fenti parancs használatával történő megszüntetés nem garantálja, hogy a rendszerkép törlődik az összes bizalmas adatról, és alkalmas az újraterjesztésre.
 
         # sudo waagent -force -deprovision+user
         # rm -f ~/.bash_history

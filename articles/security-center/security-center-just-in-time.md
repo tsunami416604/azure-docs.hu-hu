@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b24e0487aef73ed7852cb4a64766a1f8d92aff94
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887333"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677431"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>A felügyeleti portok védelme az igény szerinti hozzáféréssel
 
@@ -198,7 +198,7 @@ Az igény szerinti virtuálisgép-hozzáférési szolgáltatás a Azure Security
 
 ### <a name="jit-vm-access-via-powershell"></a>JIT VM-hozzáférés a PowerShell használatával
 
-Az igény szerinti virtuálisgép-hozzáférési megoldás PowerShell használatával történő használatához használja a hivatalos Azure Security Center PowerShell-parancsmagokat, és különösen `Set-AzJitNetworkAccessPolicy`a következőt:.
+Az igény szerinti virtuálisgép-hozzáférési megoldás PowerShell használatával történő használatához használja a hivatalos Azure Security Center PowerShell-parancsmagokat, és különösen a következőt: `Set-AzJitNetworkAccessPolicy` .
 
 Az alábbi példa egy igény szerinti virtuálisgép-hozzáférési szabályzatot állít be egy adott virtuális gépen, és beállítja a következőket:
 
@@ -211,7 +211,7 @@ Futtassa az alábbi parancsot a PowerShellben a következő végrehajtásához:
 
 1.    Rendeljen hozzá egy olyan változót, amely a virtuális gép igény szerinti virtuálisgép-hozzáférési szabályzatát tárolja:
 
-        $JitPolicy = (@ {id = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" portok = (@ {szám = 22;        protokoll = "\*";        allowedSourceAddressPrefix = @ ("\*");        maxRequestAccessDuration = "PT3H"}, @ {number = 3389;        protokoll = "\*";        allowedSourceAddressPrefix = @ ("\*");        maxRequestAccessDuration = "PT3H"})})
+        $JitPolicy = (@ {id = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";   portok = (@ {Number = 22;        protokoll = " \* ";        allowedSourceAddressPrefix = @ (" \* ");        maxRequestAccessDuration = "PT3H"}, @ {number = 3389;        protokoll = " \* ";        allowedSourceAddressPrefix = @ (" \* ");        maxRequestAccessDuration = "PT3H"})})
 
 2.    Helyezze be a virtuális gép igény szerinti hozzáférési szabályzatát egy tömbbe:
     
@@ -228,7 +228,7 @@ A következő példában egy igény szerinti virtuálisgép-hozzáférési kér�
 Futtassa a következőt a PowerShellben:
 1.    A virtuálisgép-kérelem hozzáférési tulajdonságainak konfigurálása
 
-        $JitPolicyVm 1 = (@ {id = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports = (@ {Number = 22;      endTimeUtc = "2018-09-17T17:00:00.3658798 Z";      allowedSourceAddressPrefix = @ ("IPV4ADDRESS")})})
+        $JitPolicyVm 1 = (@ {id = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";   portok = (@ {Number = 22;      endTimeUtc = "2018-09-17T17:00:00.3658798 Z";      allowedSourceAddressPrefix = @ ("IPV4ADDRESS")})})
 2.    Helyezze be a virtuális gép hozzáférési kérelmének paramétereit egy tömbbe:
 
         $JitPolicyArr = @ ($JitPolicyVm 1)
@@ -249,7 +249,7 @@ Példák olyan esetekre, amikor a tisztább eltávolít egy beépített szabály
 - Ha a szabály leírása magában foglalja egy olyan virtuális gép nevét, amely nem egyezik a szabályban szereplő célként megadott IP-címmel 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan férhet hozzá az Azure-beli virtuális gépekhez való hozzáféréshez, Security Center az igény szerinti virtuálisgép-hozzáférés szabályozását.
 

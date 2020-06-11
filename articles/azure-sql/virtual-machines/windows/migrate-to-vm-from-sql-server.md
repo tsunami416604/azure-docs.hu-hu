@@ -4,7 +4,6 @@ description: Ismerje meg, hogyan telepíthet át egy helyszíni felhasználói a
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: 00fd08c6-98fa-4d62-a3b8-ca20aa5246b1
@@ -15,12 +14,12 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 50f9ef0f088fd48b9319f183494389d92278e0dd
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 7da9b83001d50c8e9a03188ed8dbf1245189bc30
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659943"
+ms.locfileid: "84668849"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>SQL Server adatbázis migrálása egy Azure-beli virtuális gépen SQL Server
 
@@ -62,7 +61,7 @@ Ha a fenti metódusok használata nem lehetséges, akkor manuálisan telepítse 
 
 A következő táblázat felsorolja az egyes elsődleges áttelepítési módszereket, és bemutatja, hogy az egyes módszerek használata a legmegfelelőbb-e.
 
-| Módszer | Forrás adatbázis verziója | Céladatbázis verziója | Forrás-adatbázis biztonsági másolatának mérete korlátozás | Megjegyzések |
+| Metódus | Forrás adatbázis verziója | Céladatbázis verziója | Forrás-adatbázis biztonsági másolatának mérete korlátozás | Megjegyzések |
 | --- | --- | --- | --- | --- |
 | [Helyszíni biztonsági mentés tömörítéssel és a biztonságimásolat-fájl manuális másolása az Azure-beli virtuális gépre](#back-up-and-restore) |SQL Server 2005 vagy újabb |SQL Server 2005 vagy újabb |[Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Ez a technika egyszerű és jól tesztelt az adatbázisok számítógépek közötti áthelyezéséhez. |
 | [Készítsen biztonsági másolatot az URL-címre, és állítsa vissza az Azure-beli virtuális gépre az URL-címről](#backup-to-url-and-restore-from-url) |SQL Server 2012 SP1 CU2 vagy újabb | SQL Server 2012 SP1 CU2 vagy újabb | < 12,8 TB SQL Server 2016, ellenkező esetben < 1 TB | Ez a módszer csak egy másik módszer a biztonságimásolat-fájl áthelyezésére a virtuális gépre az Azure Storage használatával. |

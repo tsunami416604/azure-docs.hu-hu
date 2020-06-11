@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e60d44278bb568b1aaaf416fddf35d02596a5ee2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476976"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674652"
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok – áttekintés
 
@@ -87,20 +87,17 @@ Ha a forgatókönyve megköveteli, hogy egynél több portot kell konfigurálnia
 
 ### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Belső terheléselosztó a HA-portokkal és egy nyilvános terheléselosztó ugyanazon a háttér-példányon
 
-Beállíthat *egy* nyilvános standard Load Balancer erőforrást a háttér-erőforrásokhoz, valamint egyetlen belső standard Load BALANCER, ha portokkal rendelkezik.
-
->[!NOTE]
->Ez a funkció jelenleg Azure Resource Manager-sablonokon keresztül érhető el, de a Azure Portalon keresztül nem érhető el.
+*Egy nyilvános standard Load Balancer* erőforrást konfigurálhat a háttérbeli erőforrásokhoz, valamint egyetlen belső standard Load BALANCER, ha portokkal rendelkezik.
 
 ## <a name="limitations"></a>Korlátozások
 
 - HA a portok terheléselosztási szabályai csak belső standard Load Balancer esetén érhetők el.
-- HA egy HA-port terheléselosztási szabályt és egy nem HEKTÁRos portok terheléselosztási szabályt mutat, amely ugyanarra a háttérbeli ipconfigurations mutat, nem támogatott.
+- Egy HA-port terheléselosztási szabályának és a nem HEKTÁRos portok terheléselosztási szabályának egyesítése azonos háttér-ipconfiguration (ok) ra mutat, kivéve, ha mindkettőn engedélyezve van a lebegő IP-cím.
 - A meglévő IP-töredékeket a HEKTÁRos portok terheléselosztási szabályai továbbítják az első csomaggal megegyező célra.  Az UDP-vagy TCP-csomagok IP-darabolása nem támogatott.
 - A flow-szimmetria (elsősorban a NVA-forgatókönyvek esetében) a háttér-példány és egyetlen hálózati adapter (és egy IP-konfiguráció) esetében csak akkor támogatott, ha a fenti ábrán látható módon használja, és a HA portok terheléselosztási szabályait használja. Semmilyen más esetben nincs megadva. Ez azt jelenti, hogy két vagy több Load Balancer erőforrás és a hozzájuk tartozó szabályok független döntéseket hoznak, és soha nem koordinálják őket. Tekintse meg a [hálózati virtuális berendezések](#nva)leírását és ábráját. Ha több hálózati adaptert használ, vagy a NVA egy nyilvános és belső Load Balancer között használja, a flow-szimmetria nem érhető el.  Ezt megteheti, ha a forrás NAT'ing a bejövő forgalmat a készülék IP-címére, hogy a válaszok ugyanarra a NVA érkezzenek.  Javasoljuk azonban, hogy egyetlen hálózati adaptert használjon, és használja a fenti ábrán látható hivatkozási architektúrát.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [HA portok konfigurálása belső standard Load Balancer](load-balancer-configure-ha-ports.md)
 - [Tudnivalók a standard Load Balancer](load-balancer-standard-overview.md)

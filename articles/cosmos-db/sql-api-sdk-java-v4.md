@@ -8,18 +8,19 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: c2e625a1e6f640e8c554e793abea553d75934f62
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 35d83d11d631d94cad4781c69d985a73c70dde99
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418228"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677967"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
@@ -28,7 +29,7 @@ ms.locfileid: "84418228"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Tömeges végrehajtó – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
 Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync" API-t egyesít egy Maven-összetevőbe. A v4 SDK továbbfejlesztett teljesítményt, új API-szolgáltatásokat és aszinkron támogatást biztosít a projekt-reaktor és a [nettó könyvtár](https://netty.io/)alapján. A felhasználók a Azure Cosmos DB Java SDK v4 és a [Azure Cosmos db aszinkron Java SDK v2](sql-api-sdk-async-java.md) és a [Azure Cosmos db Sync Java SDK v2](sql-api-sdk-java.md)használatával is jobb teljesítményt számíthatnak.
@@ -47,9 +48,9 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 | |  |
 |---|---|
 | **SDK letöltése** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API-dokumentáció** | [Java API-referenciák dokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1-beta.3/index.html) |
+|**API-dokumentáció** | [Java API-referenciák dokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html) |
 |**Közreműködés az SDK-val** | [Azure SDK a Java központi tárházhoz a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
-|**Bevezetés** | Gyors útmutató [: Java-alkalmazás létrehozása Azure Cosmos db SQL API-beli adatkezelési szolgáltatásokhoz](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [GitHub](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) -tárház a gyors üzembe helyezési kóddal | 
+|**Első lépések** | Gyors útmutató [: Java-alkalmazás létrehozása Azure Cosmos db SQL API-beli adatkezelési szolgáltatásokhoz](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [GitHub](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) -tárház a gyors üzembe helyezési kóddal | 
 |**Alapszintű kódok** | [Azure Cosmos db: Java-példák az SQL API](sql-api-java-sdk-samples.md) -ra · [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Konzolos alkalmazás változási hírcsatornával**| [Change feed-Java SDK v4 minta](create-sql-api-java-changefeed.md) · [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Webalkalmazás mintája**| [Webalkalmazás létrehozása Java SDK v4](sql-api-java-application.md) használatával [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
@@ -127,5 +128,5 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.

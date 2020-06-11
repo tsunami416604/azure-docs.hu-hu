@@ -1,35 +1,43 @@
 ---
-title: Azure Cosmos DB teljesítményre vonatkozó tippek a .NET-hez
-description: Az ügyfél-konfigurációs beállítások megismerése Azure Cosmos DB teljesítményének javítása érdekében.
+title: A .NET SDK v2 Azure Cosmos DB teljesítményével kapcsolatos tippek
+description: Az ügyfél konfigurációs beállításainak megismerése Azure Cosmos DB .NET v2 SDK teljesítményének javításához.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: sngun
-ms.openlocfilehash: b8d55e5096f3af8d91027eec090cf1f9240a82cb
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 07ca4674c1b8dafc9c02ff8fdf82de330862de73
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432115"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674023"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
+# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek a Azure Cosmos DB és a .NET SDK v2-hez
 
 > [!div class="op_single_selector"]
-> * [Async Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
-> * [.NET](performance-tips.md)
-> 
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](performance-tips-async-java.md)
+> * [Sync Java SDK v2](performance-tips-java.md)
 
 A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőmentesen méretezhető a garantált késés és az átviteli sebesség tekintetében. Nem kell megváltoztatnia a jelentős architektúrát, vagy összetett kódot kell írnia az adatbázis méretezéséhez Azure Cosmos DB. A fel-és leskálázás olyan egyszerű, mint egyetlen API-hívás. További információkért lásd: [a tárolók teljesítményének kiépítése](how-to-provision-container-throughput.md) vagy [az adatbázis átviteli sebességének kiépítése](how-to-provision-database-throughput.md). Mivel azonban a Azure Cosmos DB hálózati hívásokon keresztül érhetők el, ügyféloldali optimalizálások érhetők el, amelyekkel elérheti a maximális teljesítményt az [SQL .net SDK](sql-api-sdk-dotnet-standard.md)használatakor.
 
 Tehát ha javítani kívánja az adatbázis teljesítményét, vegye figyelembe a következő lehetőségeket:
 
+## <a name="upgrade-to-the-net-v3-sdk"></a>Frissítés a .NET v3 SDK-ra
+Megjelent a [.net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) . Ha a .NET v3 SDK-t használja, tekintse meg a következő információkat a [.net v3 teljesítmény-útmutatójában](performance-tips-dotnet-sdk-v3-sql.md) :
+- Alapértelmezett értéke a közvetlen TCP-üzemmód
+- Stream API-támogatás
+- Egyéni szerializáló támogatása a System.Text.JShasználatának engedélyezéséhez
+- Integrált batch-és tömeges támogatás
+
 ## <a name="hosting-recommendations"></a>Üzemeltetési javaslatok
 
 **A lekérdezés-igényes számítási feladatokhoz a Linux vagy a Windows 32 bites gazdagép-feldolgozás helyett a Windows 64 bites használata**
 
-A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop. dll fájlt a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop. dll csak a Windows x64 platformon támogatott. A Linux és egyéb nem támogatott platformok esetében, ahol a ServiceInterop. dll nem érhető el, az átjárón további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez. A következő típusú alkalmazások alapértelmezés szerint 32 bites gazdagép-feldolgozást használnak. Ha módosítani szeretné a gazdagép feldolgozását 64 bites feldolgozásra, kövesse az alábbi lépéseket az alkalmazás típusa alapján:
+A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop.dll a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop.dll csak a Windows x64 platformon támogatott. Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez. A következő típusú alkalmazások alapértelmezés szerint 32 bites gazdagép-feldolgozást használnak. Ha módosítani szeretné a gazdagép feldolgozását 64 bites feldolgozásra, kövesse az alábbi lépéseket az alkalmazás típusa alapján:
 
 - A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64** értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
 
@@ -41,7 +49,7 @@ A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feld
 
 > [!NOTE] 
 > Alapértelmezés szerint az új Visual Studio-projektek **bármely CPU**-ra vannak beállítva. Javasoljuk, hogy állítsa a projektet **x64** -re, hogy ne váltson **x86**-ra. **Bármely CPU** -ra beállított projekt könnyen válthat **x86** -ra, ha csak x86-os függőség van hozzáadva.<br/>
-> A ServiceInterop. dll fájlnak abban a mappában kell lennie, amelyben az SDK DLL-fájlja végre lett hajtva. Ez csak akkor fontos, ha manuálisan másol DLL-eket, vagy egyéni Build-vagy üzembe helyezési rendszert használ.
+> ServiceInterop.dllnak abban a mappában kell lennie, amelyre az SDK DLL-t végrehajtja. Ez csak akkor fontos, ha manuálisan másol DLL-eket, vagy egyéni Build-vagy üzembe helyezési rendszert használ.
     
 **Kiszolgálóoldali Garbage-gyűjtemény bekapcsolása (GC)**
 
@@ -54,22 +62,22 @@ Ha magas átviteli sebességű (több mint 50 000 RU/s) tesztelést végez, az �
 > [!NOTE] 
 > A magas CPU-használat nagyobb késést és kérelem időtúllépési kivételt okozhat.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 <a id="direct-connection"></a>
 
 **Csatlakoztatási házirend: közvetlen kapcsolási mód használata**
 
 Az ügyfél Azure Cosmos DBhoz való kapcsolódásának módja fontos teljesítménybeli következményekkel jár, különösen a megfigyelt ügyféloldali késés miatt. Az ügyfélkapcsolati házirend konfigurálásához két fő konfigurációs beállítás érhető el: a kapcsolati *mód* és a kapcsolati *protokoll*.  A két elérhető mód a következők:
 
-   * Átjáró üzemmód
+   * Átjáró üzemmód (alapértelmezett)
       
-     Az átjáró üzemmód minden SDK-platformon támogatott, és a [Microsoft. Azure. DOCUMENTDB SDK](sql-api-sdk-dotnet.md)számára beállított alapértelmezett érték. Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró üzemmód egy további hálózati ugrást is magában foglal minden alkalommal, amikor az adatok beolvasása vagy írása Azure Cosmos DB. Így a közvetlen mód jobb teljesítményt nyújt, mivel kevesebb hálózati ugrás van. Azt is javasoljuk, hogy az átjáró kapcsolati üzemmódja csak korlátozott számú szoftvercsatorna-kapcsolattal rendelkező környezetekben futtatott alkalmazásokat futtasson.
+     Az átjáró üzemmód minden SDK platformon támogatott, és a [Microsoft.Azure.DocUMENTDB SDK](sql-api-sdk-dotnet.md)-hoz konfigurált alapértelmezett érték. Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró üzemmód egy további hálózati ugrást is magában foglal minden alkalommal, amikor az adatok beolvasása vagy írása Azure Cosmos DB. Így a közvetlen mód jobb teljesítményt nyújt, mivel kevesebb hálózati ugrás van. Azt is javasoljuk, hogy az átjáró kapcsolati üzemmódja csak korlátozott számú szoftvercsatorna-kapcsolattal rendelkező környezetekben futtatott alkalmazásokat futtasson.
 
      Ha az SDK-t Azure Functionsban használja, különösen a használati [tervben](../azure-functions/functions-scale.md#consumption-plan), vegye figyelembe a [kapcsolatok jelenlegi korlátait](../azure-functions/manage-connections.md). Ebben az esetben előfordulhat, hogy az átjáró mód jobb, ha más HTTP-alapú ügyfelekkel is dolgozik a Azure Functions alkalmazáson belül.
 
    * Közvetlen mód
 
-     A közvetlen mód a TCP protokollon keresztüli csatlakozást támogatja, és az alapértelmezett csatlakozási mód, ha a [Microsoft. Azure. Cosmos/. net v3 SDK-](sql-api-sdk-dotnet-standard.md)t használja.
+     A Direct mód a TCP protokollon keresztül támogatja a kapcsolódást.
 
 Az átjáró módban a Azure Cosmos DB a 443-es portot és a 10250-es, 10255-as és 10256-es portokat használja a MongoDB-hez készült Azure Cosmos DB API használatakor. A 10250-es port a Geo-replikáció nélküli alapértelmezett MongoDB-példányra mutat. A 10255-es és a 10256-es portok a Geo-replikációval rendelkező MongoDB-példányhoz képezhetők le.
      
@@ -82,19 +90,7 @@ Ha a TCP-t közvetlen módban használja, az átjáró portjain kívül meg kell
 
 Azure Cosmos DB egy egyszerű, nyitott, REST-alapú programozási modellt biztosít a HTTPS-en keresztül. Emellett hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is elérhető, és a .NET Client SDK-n keresztül érhető el. A TCP protokoll TLS protokollt használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében a TCP protokollt használja, ha lehetséges.
 
-Az SDK V3 esetében a példány létrehozásakor konfigurálja a kapcsolódási módot a `CosmosClient` alkalmazásban `CosmosClientOptions` . Ne feledje, hogy a közvetlen mód az alapértelmezett.
-
-```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
-CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
-new CosmosClientOptions
-{
-    ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
-});
-```
-
-A Microsoft. Azure. DocumentDB SDK esetében a (z) paraméter használatával konfigurálja a csatlakozás módját a `DocumentClient` példány építése során `ConnectionPolicy` . Közvetlen mód használata esetén a paraméterrel is megadhatja a értékét `Protocol` `ConnectionPolicy` .
+A Microsoft.Azure.DocumentDB SDK esetében a paraméter használatával konfigurálja a csatlakozás módját a példány építése során `DocumentClient` `ConnectionPolicy` . Közvetlen mód használata esetén a paraméterrel is megadhatja a értékét `Protocol` `ConnectionPolicy` .
 
 ```csharp
 var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -140,15 +136,9 @@ Mivel a hálózatra irányuló Azure Cosmos DB hívások a hálózaton keresztü
 
 A Azure Cosmos DB SDK-kat folyamatosan fejlesztjük a legjobb teljesítmény érdekében. Tekintse meg a [Azure Cosmos db SDK](sql-api-sdk-dotnet-standard.md) -lapokat a legújabb SDK-val, és tekintse át a módosításokat.
 
-**Stream API-k használata**
-
-A [.net SDK v3](sql-api-sdk-dotnet-standard.md) olyan stream API-kat tartalmaz, amelyek szerializálás nélkül fogadhatnak és adhatnak vissza adatforrást. 
-
-A közepes szintű alkalmazások, amelyek nem használnak közvetlenül az SDK-ból származó válaszokat, de más alkalmazási rétegekbe továbbítják a stream API-k előnyeit. Tekintse át a stream-kezelés példáit az [elemek kezelése](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) című témakörben.
-
 **Egyedi Azure Cosmos DB-ügyfél használata az alkalmazás élettartama során**
 
-`DocumentClient`Az egyes és a `CosmosClient` példányok egy szálban biztonságosak, és a hatékony kapcsolatok kezelése és a címek gyorsítótárazása közvetlen módban való működés esetén történik. A hatékony és az SDK-ügyfél teljesítményének növelése érdekében ajánlott egyetlen példányt használni az `AppDomain` alkalmazás élettartamára.
+`DocumentClient`Az egyes példányok a Thread-Safe és a hatékony kapcsolatok kezelése és a címek gyorsítótárazása közvetlen üzemmódban való működés esetén. A hatékony és az SDK-ügyfél teljesítményének növelése érdekében ajánlott egyetlen példányt használni az `AppDomain` alkalmazás élettartamára.
 
    <a id="max-connection"></a>
 
@@ -164,7 +154,7 @@ Az SQL .NET SDK 1.9.0 és újabb verziói támogatják a párhuzamos lekérdezé
 
 ***A párhuzamossági fok finomhangolása***
 
-A párhuzamos lekérdezés több partíció párhuzamos lekérdezésével működik. Az egyes partíciók adatait azonban a lekérdezésre vonatkozó sorosan kell beolvasni. `MaxDegreeOfParallelism`Ha az [SDK v2](sql-api-sdk-dotnet.md) -ben vagy az `MaxConcurrency` [SDK v3](sql-api-sdk-dotnet-standard.md) -ban a partíciók száma értékre van állítva, akkor a legtöbb teljesítményű lekérdezés a legjobb eséllyel érhető el, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, megadhatja a párhuzamosság mértékét magas számra. A rendszer kijelöli a minimális (partíciók számát, a felhasználó által megadott bemenetet) a párhuzamosság foka alapján.
+A párhuzamos lekérdezés több partíció párhuzamos lekérdezésével működik. Az egyes partíciók adatait azonban a lekérdezésre vonatkozó sorosan kell beolvasni. Az `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) és a partíciók számának beállítása a legjobb lehetőség a legtöbb teljesítményű lekérdezés megvalósítására, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, megadhatja a párhuzamosság mértékét magas számra. A rendszer kijelöli a minimális (partíciók számát, a felhasználó által megadott bemenetet) a párhuzamosság foka alapján.
 
 Vegye figyelembe, hogy a párhuzamos lekérdezések a legnagyobb előnyt adják meg, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezésre vonatkozóan. Ha a particionált gyűjtemény particionálva van, és a lekérdezés által visszaadott összes adat egy része néhány partícióra koncentrál (az egyik partíció a legrosszabb ESET), akkor ezek a partíciók a lekérdezés teljesítményét szűk keresztmetszetbe helyezik.
 
@@ -180,7 +170,7 @@ A teljesítmény tesztelése során növelje a terhelést, amíg a rendszer kis 
 
 Az újrapróbálkozási szabályzat támogatása a következő SDK-k részét képezi:
 - Az [SQL-hez készült .net SDK](sql-api-sdk-dotnet.md) és az [SQL Java SDK](sql-api-sdk-java.md) -hoz tartozó 1.8.0 és újabb verzió
-- A [Node. js SDK](sql-api-sdk-node.md) 1.9.0 és újabb verziója az SQL-hez és az [SQL-hez készült Python SDK](sql-api-sdk-python.md) -hoz
+- A [Node.js SDK for SQL](sql-api-sdk-node.md) és a [PYTHON SDK for SQL](sql-api-sdk-python.md) 1.9.0 verziója
 - A [.net Core](sql-api-sdk-dotnet-core.md) SDK-k összes támogatott verziója 
 
 További információ: [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).

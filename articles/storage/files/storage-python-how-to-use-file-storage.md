@@ -8,12 +8,12 @@ ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: tracking-python
-ms.openlocfilehash: b8d460f35f67d4e7f48611fdc2a770d4a0bed002
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d04b158761d501d4a79d91fe551670b57f9847f3
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552081"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678715"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Fejlesztés az Azure Files szolgáltatáshoz Pythonnal
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -48,7 +48,7 @@ pip install azure-storage-file
 Alternatív telepítési módszerekért keresse fel a [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python/)-t a githubon.
 
 ## <a name="view-the-sample-application"></a>A minta alkalmazás megtekintése
-f a Python és a Azure Files használatának módját bemutató minta alkalmazás megtekintése és futtatása [: az Azure Storage szolgáltatásban első lépések a python Azure Files](https://github.com/Azure-Samples/storage-file-python-getting-started). 
+A Python és a Azure Files használatának módját bemutató minta alkalmazás megtekintéséhez és futtatásához tekintse meg az [Azure Storage: Első lépések Azure Files a Pythonban](https://github.com/Azure-Samples/storage-file-python-getting-started)című témakört. 
 
 A minta alkalmazás futtatásához győződjön meg arról, hogy a és a csomagokat is telepítette `azure-storage-file` `azure-storage-common` .
 
@@ -96,7 +96,7 @@ Fájl létrehozásához és az adatok feltöltéséhez használja a `create_file
 
 `create_file_from_path`feltölti a fájl tartalmát a megadott elérési útról, és `create_file_from_stream` feltölti a tartalmat egy már megnyitott fájlból/streamből. `create_file_from_bytes`feltölt egy bájtos tömböt, és `create_file_from_text` feltölti a megadott szöveges értéket a megadott kódolással (alapértelmezett érték: UTF-8).
 
-A következő példa feltölti a **Sunset. png** fájl tartalmát a **sajat** -fájlba.
+A következő példa feltölti a **sunset.png** fájl tartalmát a **sajat** -fájlba.
 
 ```python
 from azure.storage.file import ContentSettings
@@ -111,7 +111,7 @@ file_service.create_file_from_path(
 ## <a name="download-a-file"></a>Fájl letöltése
 Adatok fájlból való letöltéséhez használja a következőt:,, `get_file_to_path` `get_file_to_stream` `get_file_to_bytes` vagy `get_file_to_text` . Ezek magas szintű módszerek, amelyek elvégzik a szükséges adatdarabolást, ha az adatok mérete meghaladja az 64 MB-ot.
 
-Az alábbi példa bemutatja, hogyan `get_file_to_path` töltheti le a **sajat** -fájl tartalmát, és hogyan tárolhatja azt a **out-Sunset. png** fájlba.
+Az alábbi példa bemutatja, hogyan `get_file_to_path` töltheti le a **sajat** -fájl tartalmát, és hogyan tárolhatja azt a **out-sunset.png** fájlba.
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')

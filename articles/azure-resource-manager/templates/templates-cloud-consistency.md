@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 459a34d104e01dca2cdf997c6aedd6f54f3adbaa
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156106"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677678"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sablonok fejlesztése a felhő konzisztenciájához
 
@@ -51,7 +51,7 @@ A Azure Resource Manager bevezetett új sablon-függvények nem érhetők el azo
 
 A Azure Resource Manager képességek mindig a globális Azure-ba lesznek bevezetve. A következő PowerShell-szkripttel ellenőrizheti, hogy az újonnan bevezetett sablon-függvények is elérhetők-e Azure Stackban:
 
-1. Készítse el a GitHub-tárház klónozását: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions).
+1. Készítse el a GitHub-tárház klónozását: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions) .
 
 1. Ha már rendelkezik a tárház helyi klónozásával, kapcsolódjon a cél Azure Resource Manager a PowerShell-lel.
 
@@ -106,7 +106,7 @@ A Felhőbeli üzembe helyezések jobb gyakorlata, hogy a csatolt sablonokat a c�
 
 Mivel az egyes felhőkban a blob Storage egy másik végpont teljes tartománynevét (FQDN) használ, konfigurálja a sablont a csatolt sablonok helyére két paraméterrel. A paraméterek elfogadhatják a felhasználói adatbevitelt a központi telepítés ideje alatt. A sablonokat általában több személy készíti el és osztja meg, ezért az ajánlott eljárás a paraméterek szabványos nevének használata. Az elnevezési konvenciók segítségével a sablonok a régiók, a felhők és a szerzők több felhasználhatóságát teszik lehetővé.
 
-A következő kódban `_artifactsLocation` egyetlen helyre mutat, amely az összes üzembe helyezéssel kapcsolatos összetevőt tartalmazza. Figyelje meg, hogy az alapértelmezett érték van megadva. Ha nincs megadva bemeneti érték, a rendszer `_artifactsLocation`az alapértelmezett értéket használja a telepítéskor. A `_artifactsLocationSasToken` a ( `sasToken`) bemenetként van használatban. Az alapértelmezett értéknek üres sztringnek kell lennie olyan helyzetekben `_artifactsLocation` , ahol a nem védett – például egy nyilvános GitHub-tárház.
+A következő kódban `_artifactsLocation` egyetlen helyre mutat, amely az összes üzembe helyezéssel kapcsolatos összetevőt tartalmazza. Figyelje meg, hogy az alapértelmezett érték van megadva. Ha nincs megadva bemeneti érték `_artifactsLocation` , a rendszer az alapértelmezett értéket használja a telepítéskor. A a `_artifactsLocationSasToken` () bemenetként van használatban `sasToken` . Az alapértelmezett értéknek üres sztringnek kell lennie olyan helyzetekben `_artifactsLocation` , ahol a nem védett – például egy nyilvános GitHub-tárház.
 
 ```json
 "parameters": {
@@ -127,13 +127,13 @@ A következő kódban `_artifactsLocation` egyetlen helyre mutat, amely az össz
 }
 ```
 
-A sablonban a hivatkozások úgy jönnek létre, hogy az alap URI-t `_artifactsLocation` (a paraméterből) kombinálva egy relatív elérési úttal és a `_artifactsLocationSasToken`. A következő kód bemutatja, hogyan adhatja meg a beágyazott sablonra mutató hivatkozást az URI-sablon függvény használatával:
+A sablonban a hivatkozások úgy jönnek létre, hogy az alap URI-t (a `_artifactsLocation` paraméterből) kombinálva egy relatív elérési úttal és a `_artifactsLocationSasToken` . A következő kód bemutatja, hogyan adhatja meg a beágyazott sablonra mutató hivatkozást az URI-sablon függvény használatával:
 
 ```json
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
+    "apiVersion": "2019-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -146,11 +146,11 @@ A sablonban a hivatkozások úgy jönnek létre, hogy az alap URI-t `_artifactsL
 ]
 ```
 
-Ennek a módszernek a használatával a `_artifactsLocation` paraméter alapértelmezett értékét használja a rendszer. Ha a csatolt sablonokat le kell kérni egy másik helyről, a bemeneti paraméter a telepítés során használható az alapértelmezett érték felülbírálására – a sablon módosítására nincs szükség.
+Ennek a módszernek a használatával a paraméter alapértelmezett értékét `_artifactsLocation` használja a rendszer. Ha a csatolt sablonokat le kell kérni egy másik helyről, a bemeneti paraméter a telepítés során használható az alapértelmezett érték felülbírálására – a sablon módosítására nincs szükség.
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Rögzítjük-hivatkozások helyett _artifactsLocation használata
 
-A beágyazott sablonok használata mellett a `_artifactsLocation` paraméterben szereplő URL-cím a központi telepítési sablon összes kapcsolódó összetevője alapjaként szolgál. Néhány virtuálisgép-bővítmény tartalmaz egy hivatkozást a sablonon kívül tárolt parancsfájlra. Ezen bővítmények esetében ne parancsmagba a hivatkozásokat. Előfordulhat például, hogy az egyéni parancsfájl és a PowerShell DSC-bővítmények a GitHubon lévő külső parancsfájlra mutatnak, ahogy az a következő képen látható:
+A beágyazott sablonok használata mellett a paraméterben szereplő URL-cím a `_artifactsLocation` központi telepítési sablon összes kapcsolódó összetevője alapjaként szolgál. Néhány virtuálisgép-bővítmény tartalmaz egy hivatkozást a sablonon kívül tárolt parancsfájlra. Ezen bővítmények esetében ne parancsmagba a hivatkozásokat. Előfordulhat például, hogy az egyéni parancsfájl és a PowerShell DSC-bővítmények a GitHubon lévő külső parancsfájlra mutatnak, ahogy az a következő képen látható:
 
 ```json
 "properties": {
@@ -231,7 +231,7 @@ Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, Re
 
 ### <a name="verify-the-version-of-all-resource-types"></a>Az összes erőforrástípus verziójának ellenőrzése
 
-A tulajdonságok halmaza minden erőforrástípus esetében gyakori, de mindegyik erőforráshoz saját tulajdonságok is tartozik. Az új API-verziókban a funkciók és a kapcsolódó tulajdonságok a meglévő erőforrástípusokba kerülnek. A sablonban lévő erőforrás saját API Version tulajdonsága van – `apiVersion`. Ez a verziószámozás biztosítja, hogy egy sablon meglévő erőforrás-konfigurációját a platform változásai nem érintik.
+A tulajdonságok halmaza minden erőforrástípus esetében gyakori, de mindegyik erőforráshoz saját tulajdonságok is tartozik. Az új API-verziókban a funkciók és a kapcsolódó tulajdonságok a meglévő erőforrástípusokba kerülnek. A sablonban lévő erőforrás saját API Version tulajdonsága van – `apiVersion` . Ez a verziószámozás biztosítja, hogy egy sablon meglévő erőforrás-konfigurációját a platform változásai nem érintik.
 
 Előfordulhat, hogy a globális Azure-beli meglévő erőforrástípusok számára bevezetett új API-verziók nem érhetők el azonnal minden régióban, szuverén felhőkben vagy Azure Stackban. Ha meg szeretné tekinteni az elérhető erőforrás-szolgáltatók, erőforrástípusok és API-verziók listáját a felhőhöz, használhatja a Azure Portal erőforrás-kezelő. Erőforrás-kezelő keresése a minden szolgáltatás menüben. Bontsa ki a erőforrás-kezelő szolgáltatók csomópontját, hogy az összes elérhető erőforrás-szolgáltatót, azok erőforrás-típusait és API-verzióit visszaállítsa a felhőbe.
 
@@ -295,13 +295,13 @@ Ezzel a sablon funkcióval bármilyen felhőbe üzembe helyezheti a sablont ané
 
 ### <a name="track-versions-using-api-profiles"></a>Verziók nyomon követése API-profilok használatával
 
-Nagyon nehéz lehet nyomon követni az összes rendelkezésre álló erőforrás-szolgáltatót és a Azure Stackban található kapcsolódó API-verziókat. Például az írás időpontjában a **Microsoft. számítási/availabilitySets** legújabb API-verziója érhető `2018-04-01`el az Azure-ban, míg az azure-hoz és Azure stack-hoz közösen elérhető `2016-03-30`API-verzió. A **Microsoft. Storage/storageAccounts** közös API-verziója az összes Azure-és Azure stack-hely `2016-01-01`között meg van osztva, míg az Azure legújabb `2018-02-01`API-verziója.
+Nagyon nehéz lehet nyomon követni az összes rendelkezésre álló erőforrás-szolgáltatót és a Azure Stackban található kapcsolódó API-verziókat. Például az írás időpontjában a **Microsoft. számítási/availabilitySets** legújabb API-verziója érhető el az Azure-ban `2018-04-01` , míg az Azure-hoz és Azure stack-hoz KÖZÖSen elérhető API-verzió `2016-03-30` . A **Microsoft. Storage/storageAccounts** közös API-verziója az összes Azure-és Azure stack-hely között meg van osztva `2016-01-01` , míg az Azure legújabb API-verziója `2018-02-01` .
 
-Ebből kifolyólag az erőforrás-kezelő bevezette a sablonok API-profiljainak koncepcióját. Az API-profilok nélkül a sablonban lévő összes erőforrás egy olyan `apiVersion` elemmel van konfigurálva, amely leírja az adott erőforrás API-verzióját.
+Ebből kifolyólag az erőforrás-kezelő bevezette a sablonok API-profiljainak koncepcióját. Az API-profilok nélkül a sablonban lévő összes erőforrás egy olyan elemmel van konfigurálva, `apiVersion` amely leírja az adott erőforrás API-verzióját.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -338,11 +338,11 @@ Ebből kifolyólag az erőforrás-kezelő bevezette a sablonok API-profiljainak 
 }
 ```
 
-Az API-profilok verziója aliasként működik az Azure-ban és az Azure Stack-ban közös erőforrás-típushoz tartozó egyetlen API-verzióhoz. Ahelyett, hogy egy API-verziót kellene megadnia a sablonban szereplő összes erőforráshoz, csak az API-profil verzióját kell megadnia egy új gyökérelem, `apiProfile` és el kell hagyni az `apiVersion` egyes erőforrások elemét.
+Az API-profilok verziója aliasként működik az Azure-ban és az Azure Stack-ban közös erőforrás-típushoz tartozó egyetlen API-verzióhoz. Ahelyett, hogy egy API-verziót kellene megadnia a sablonban szereplő összes erőforráshoz, csak az API-profil verzióját kell megadnia egy új gyökérelem, és el kell `apiProfile` hagyni az `apiVersion` egyes erőforrások elemét.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -380,11 +380,11 @@ Az API-profilok verziója aliasként működik az Azure-ban és az Azure Stack-b
 
 Az API-profil biztosítja, hogy az API-verziók elérhetők legyenek a helyek között, így nem kell manuálisan ellenőriznie az adott helyen elérhető apiVersions. Annak biztosítása érdekében, hogy az API-profil által hivatkozott API-verziók elérhetők legyenek egy Azure Stack környezetben, a Azure Stack operátoroknak a támogatási szabályzat alapján naprakészen kell tartaniuk a megoldást. Ha a rendszer több mint hat hónapja elavult, nem felel meg az előírásoknak, és a környezetet frissíteni kell.
 
-Az API-profil nem a sablonban szükséges elem. Még ha hozzáadja is az elemet, csak olyan erőforrásokhoz lesz használatban, amelyekhez `apiVersion` nincs megadva. Ez az elem lehetővé teszi a fokozatos módosításokat, de nem igényel módosításokat a meglévő sablonokban.
+Az API-profil nem a sablonban szükséges elem. Még ha hozzáadja is az elemet, csak olyan erőforrásokhoz lesz használatban, amelyekhez nincs `apiVersion` megadva. Ez az elem lehetővé teszi a fokozatos módosításokat, de nem igényel módosításokat a meglévő sablonokban.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -452,7 +452,7 @@ A következő hivatkozási sablon függvény lekéri a végponti névteret a tá
 "diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
-A Storage-fiók végpontjának hardcoded értékének a `reference` sablon függvénnyel való lecserélésekor ugyanazt a sablont használhatja a különböző környezetekben való üzembe helyezéshez anélkül, hogy módosítani kellene a végpont-referenciát.
+A Storage-fiók végpontjának hardcoded értékének a sablon függvénnyel való lecserélésekor `reference` ugyanazt a sablont használhatja a különböző környezetekben való üzembe helyezéshez anélkül, hogy módosítani kellene a végpont-referenciát.
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>Tekintse meg a meglévő erőforrásokat egyedi azonosító alapján
 
@@ -467,7 +467,7 @@ Megtekintheti egy meglévő erőforrást is ugyanabból vagy egy másik erőforr
 }
 ```
 
-Ezután használhatja a `resourceId` függvényt a `reference` sablon függvényen belül egy adatbázis tulajdonságainak lekéréséhez. A Return objektum tartalmazza azt `fullyQualifiedDomainName` a tulajdonságot, amely a teljes végpont értékét tárolja. Ez az érték lekérése futásidőben történik, és a felhőalapú környezethez kapcsolódó végponti névteret biztosítja. Ha a rögzítjük nélkül szeretné megadni a kapcsolódási karakterláncot, a visszatérési objektum tulajdonságát közvetlenül a kapcsolódási karakterláncban tekintheti meg a következő képen látható módon:
+Ezután használhatja a `resourceId` függvényt a `reference` sablon függvényen belül egy adatbázis tulajdonságainak lekéréséhez. A Return objektum tartalmazza `fullyQualifiedDomainName` azt a tulajdonságot, amely a teljes végpont értékét tárolja. Ez az érték lekérése futásidőben történik, és a felhőalapú környezethez kapcsolódó végponti névteret biztosítja. Ha a rögzítjük nélkül szeretné megadni a kapcsolódási karakterláncot, a visszatérési objektum tulajdonságát közvetlenül a kapcsolódási karakterláncban tekintheti meg a következő képen látható módon:
 
 ```json
 "[concat('Server=tcp:', reference(resourceId('sql', 'Microsoft.Sql/servers', parameters('test')), '2015-05-01-preview').fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('database'),';User ID=', parameters('username'), ';Password=', parameters('pass'), ';Encrypt=True;')]"
@@ -487,7 +487,7 @@ Egy helyen elérhető virtuálisgép-rendszerképek listájának lekéréséhez 
 az vm image list -all
 ```
 
-Ugyanezt a listát a [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell parancsmaggal kérheti le, és a `-Location` paraméterrel adhatja meg a kívánt helyet. Például:
+Ugyanezt a listát a [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell parancsmaggal kérheti le, és a paraméterrel adhatja meg a kívánt helyet `-Location` . Például:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -532,7 +532,7 @@ Az elérhető szolgáltatások teljes listájáért tekintse meg a [régiók ál
 
 A felügyelt lemezek kezelik az Azure-bérlők tárolóját. Ahelyett, hogy explicit módon létrehozza a Storage-fiókot, és megadja a virtuális merevlemez (VHD) URI-JÁT, a felügyelt lemezekkel implicit módon hajthatja végre ezeket a műveleteket a virtuális gépek telepítésekor. A felügyelt lemezek javítják a rendelkezésre állást azáltal, hogy az ugyanazon rendelkezésre állási csoportba tartozó virtuális gépek összes lemezét különböző tárolási egységekre helyezi. Emellett a meglévő VHD-k a standard és a prémium szintű tárterületre is átalakíthatók, jelentősen kevesebb állásidővel.
 
-Bár a felügyelt lemezek a Azure Stack ütemtervén találhatók, jelenleg nem támogatottak. Amíg ezek a felhasználók, a virtuális merevlemezek explicit módon történő megadásával kifejlesztheti a Azure Stack felhőalapú `vhd` sablonjait a virtuálisgép-erőforráshoz a sablon eleme alapján, ahogy az a következő ábrán látható:
+Bár a felügyelt lemezek a Azure Stack ütemtervén találhatók, jelenleg nem támogatottak. Amíg ezek a felhasználók, a virtuális merevlemezek explicit módon történő megadásával kifejlesztheti a Azure Stack felhőalapú sablonjait a virtuálisgép `vhd` -erőforráshoz a sablon eleme alapján, ahogy az a következő ábrán látható:
 
 ```json
 "storageProfile": {
@@ -553,7 +553,7 @@ Bár a felügyelt lemezek a Azure Stack ütemtervén találhatók, jelenleg nem 
 }
 ```
 
-Ezzel szemben, ha a felügyelt lemez konfigurációját egy sablonban szeretné megadni `vhd` , távolítsa el az elemet a lemez konfigurációjától.
+Ezzel szemben, ha a felügyelt lemez konfigurációját egy sablonban szeretné megadni, távolítsa el az `vhd` elemet a lemez konfigurációjától.
 
 ```json
 "storageProfile": {
@@ -584,13 +584,13 @@ A sablon deklaratív megközelítése lehetővé teszi az erőforrások és a ho
 
 A virtuálisgép-bővítmények számos típusa létezik. A Felhőbeli konzisztencia sablonjának fejlesztésekor ügyeljen arra, hogy csak azokat a bővítményeket használja, amelyek elérhetők a sablon által célként megadott összes régióban.
 
-Az adott régióhoz elérhető virtuálisgép-bővítmények (ebben a példában `myLocation`) listájának lekéréséhez futtassa az alábbi Azure CLI-parancsot:
+Az adott régióhoz elérhető virtuálisgép-bővítmények (ebben a példában) listájának lekéréséhez `myLocation` futtassa az alábbi Azure CLI-parancsot:
 
 ```azurecli-interactive
 az vm extension image list --location myLocation
 ```
 
-Végrehajthatja a Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) parancsmagot is, és `-Location` a használatával megadhatja a virtuális gép rendszerképének helyét. Például:
+Végrehajthatja a Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) parancsmagot is, és a használatával `-Location` megadhatja a virtuális gép rendszerképének helyét. Például:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
@@ -623,7 +623,7 @@ Virtuálisgép-méretezési csoportokban is használhatja a virtuálisgép-bőv�
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
 ```
 
-Az egyes bővítmények verziószáma is megtörténik. Ez a verzió a virtuálisgép- `typeHandlerVersion` bővítmény tulajdonságában látható. Győződjön meg arról, hogy a sablon virtuálisgép `typeHandlerVersion` -bővítményei elemében megadott verzió elérhető azon a helyen, ahol a sablon üzembe helyezését tervezi. A következő kód például az 1,7-es verziót adja meg:
+Az egyes bővítmények verziószáma is megtörténik. Ez a verzió a virtuálisgép- `typeHandlerVersion` bővítmény tulajdonságában látható. Győződjön meg arról, hogy a sablon virtuálisgép- `typeHandlerVersion` bővítményei elemében megadott verzió elérhető azon a helyen, ahol a sablon üzembe helyezését tervezi. A következő kód például az 1,7-es verziót adja meg:
 
 ```json
 {
@@ -665,7 +665,7 @@ A teszteléshez és automatizáláshoz vegye figyelembe a következő tippeket:
 * Vegye figyelembe, hogy egyes tesztek a Azure Resource Manager csatlakoztatása nélkül is elvégezhetők. Mások, például a sablonok tesztelésének megkövetelése, hogy a Resource Manager olyan műveleteket végezzen, amelyeken nem végezhető el a kapcsolat nélküli üzemmód.
 * Egy központi telepítési sablon az érvényesítési API-val való tesztelése nem egyenlő a tényleges telepítéssel. Emellett akkor is, ha egy helyi fájlból telepít egy sablont, a sablonban lévő beágyazott sablonokra mutató hivatkozásokat közvetlenül a Resource Manager kéri le, és a virtuálisgép-bővítmények által hivatkozott összetevők lekérése a telepített virtuális gépen futó virtuálisgép-ügynök által történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Resource Manager a sablonra vonatkozó megfontolások](/azure-stack/user/azure-stack-develop-templates)
 * [Ajánlott eljárások ARM-sablonokhoz](template-syntax.md)

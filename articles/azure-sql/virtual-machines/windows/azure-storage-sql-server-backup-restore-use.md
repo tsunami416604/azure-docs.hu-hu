@@ -4,7 +4,6 @@ description: Ismerje meg, hogyan készíthet biztonsági mentést SQL Server az 
 services: virtual-machines-windows
 documentationcenter: ''
 author: MikeRayMSFT
-manager: craigg
 tags: azure-service-management
 ms.assetid: 0db7667d-ef63-4e2b-bd4d-574802090f8b
 ms.service: virtual-machines-sql
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.openlocfilehash: e4235a2d0be141d8cb1af30f2c573e3bdfcdd817
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d697f9edf8d5e57f051c23eaa2807704b2f7771e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342901"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669194"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Az Azure Storage használata SQL Server biztonsági mentéshez és visszaállításhoz
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,7 +47,7 @@ Az alábbi két rész az Azure Blob Storage-t mutatja be, beleértve a szükség
 ## <a name="azure-blob-storage-components"></a>Azure Blob Storage-összetevők
 A következő Azure-összetevők az Azure Blob Storage-ba történő biztonsági mentéskor használatosak.
 
-| Összetevő | Leírás |
+| Összetevő | Description |
 | --- | --- |
 | **Storage-fiók** |A Storage-fiók az összes tárolási szolgáltatás kiindulási pontja. Az Azure Blob Storage eléréséhez először hozzon létre egy Azure Storage-fiókot. Az Azure Blob Storage szolgáltatással kapcsolatos további információkért lásd: [Az Azure Blob Storage használata](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/). |
 | **Tároló** |A tároló Blobok egy csoportját biztosítja, és korlátlan számú blob tárolására képes. SQL Server biztonsági másolat Azure Blob Storage-tárolóba való írásához legalább a létrehozott gyökér-tárolóval kell rendelkeznie. |
@@ -57,7 +56,7 @@ A következő Azure-összetevők az Azure Blob Storage-ba történő biztonsági
 ## <a name="sql-server-components"></a>Összetevők SQL Server
 Az alábbi SQL Server összetevőket használja az Azure Blob Storage-ba történő biztonsági mentéshez.
 
-| Összetevő | Leírás |
+| Összetevő | Description |
 | --- | --- |
 | **URL-cím** |Az URL-cím egy Uniform Resource Identifier (URI) értéket ad meg egy egyedi biztonságimásolat-fájlhoz. Az URL-cím a SQL Server biztonságimásolat-fájl helyének és nevének megadására szolgál. Az URL-címnek tényleges blobra kell mutatnia, nem csak egy tárolóra. Ha a blob nem létezik, a rendszer létrehozza. Ha meg van adva egy meglévő blob, a biztonsági mentés sikertelen lesz, kivéve, ha meg van adva a > formátum beállítással. A következő példa a biztonsági mentési parancsban megadott URL-címre mutat be: **http [s]://[storageaccount]. blob. Core. Windows. net/[Container]/[filename. bak]**. A HTTPS használata ajánlott, de nem kötelező. |
 | **Hitelesítőadat** |Az Azure Blob Storage-hoz való kapcsolódáshoz és hitelesítéshez szükséges információk tárolása hitelesítő adatként történik. Ahhoz, hogy a SQL Server a biztonsági mentéseket egy Azure-Blobba vagy annak visszaállítására lehessen írni, létre kell hoznia egy SQL Server hitelesítő adatot. További információ: [SQL Server hitelesítő adat](https://msdn.microsoft.com/library/ms189522.aspx). |

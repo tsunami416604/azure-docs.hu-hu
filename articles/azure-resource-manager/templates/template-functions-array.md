@@ -3,12 +3,12 @@ title: Sablon functions – tömbök
 description: Ismerteti a Azure Resource Manager-sablonban a tömbök használatakor használandó függvényeket.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f34ba74847ac394e37e6ef33f859304128daacde
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203811"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677848"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM-sablonok tömb függvények
 
@@ -40,11 +40,11 @@ Az értéket egy tömbre konvertálja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Igen |int, string, Array vagy Object |Egy tömbre konvertálandó érték. |
+| convertToArray |Yes |int, string, Array vagy Object |Egy tömbre konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Tömb.
 
@@ -54,7 +54,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "intToConvert": {
@@ -91,7 +91,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | intOutput | Tömb | 1 |
 | stringOutput | Tömb | ["efgh"] |
@@ -105,14 +105,14 @@ Több tömböt egyesít, és visszaadja az összefűzött tömböt, vagy kombin�
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az Összefűzés első tömbje vagy karakterlánca. |
-| További argumentumok |Nem |tömb vagy karakterlánc |További tömbök vagy karakterláncok egymást követő sorrendben az összefűzéshez. |
+| arg1 |Yes |tömb vagy karakterlánc |Az Összefűzés első tömbje vagy karakterlánca. |
+| További argumentumok |No |tömb vagy karakterlánc |További tömbök vagy karakterláncok egymást követő sorrendben az összefűzéshez. |
 
 Ez a függvény tetszőleges számú argumentumot igénybe vehet, és a paraméterekhez karakterláncokat vagy tömböket is elfogadhat. A paraméterekhez azonban nem lehet tömböt és karakterláncot megadni. A tömbök csak más tömbökkel vannak összefűzve.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az összefűzött értékek karakterlánca vagy tömbje.
 
@@ -122,7 +122,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstArray": {
@@ -155,7 +155,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | visszatérési | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -163,7 +163,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "prefix": {
@@ -183,7 +183,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | concatOutput | Sztring | előtag – 5yj4yjf5mbg72 |
 
@@ -195,12 +195,12 @@ Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcs
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| tároló |Igen |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
-| itemToFind |Igen |karakterlánc vagy int |A keresendő érték. |
+| tároló |Yes |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
+| itemToFind |Yes |karakterlánc vagy int |A keresendő érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** , ha az adott tétel megtalálható; Ellenkező esetben **hamis**.
 
@@ -210,7 +210,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -259,7 +259,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | stringTrue | Logikai | True (Igaz) |
 | stringFalse | Logikai | False (Hamis) |
@@ -276,12 +276,12 @@ Létrehoz egy tömböt a paraméterekből.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |Karakterlánc, egész szám, tömb vagy objektum |A tömb első értéke. |
-| További argumentumok |Nem |Karakterlánc, egész szám, tömb vagy objektum |További értékek a tömbben. |
+| arg1 |Yes |Karakterlánc, egész szám, tömb vagy objektum |A tömb első értéke. |
+| További argumentumok |No |Karakterlánc, egész szám, tömb vagy objektum |További értékek a tömbben. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Tömb.
 
@@ -291,7 +291,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "objectToTest": {
@@ -328,7 +328,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | stringArray | Tömb | ["a", "b", "c"] |
 | intArray | Tömb | [1, 2, 3] |
@@ -343,11 +343,11 @@ Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Igen |tömb, objektum vagy karakterlánc |Az az érték, amely alapján ellenőrizhető, hogy üres-e. |
+| itemToTest |Yes |tömb, objektum vagy karakterlánc |Az az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az érték üres. Ellenkező esetben **hamis**.
 
@@ -357,7 +357,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -394,7 +394,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayEmpty | Logikai | True (Igaz) |
 | objectEmpty | Logikai | True (Igaz) |
@@ -408,11 +408,11 @@ A tömb első elemét vagy a karakterlánc első karakterét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az első elem vagy karakter beolvasására szolgáló érték. |
+| arg1 |Yes |tömb vagy karakterlánc |Az első elem vagy karakter beolvasására szolgáló érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy tömb első elemének típusa (karakterlánc, int, tömb vagy objektum) vagy egy karakterlánc első karaktere.
 
@@ -422,7 +422,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -447,7 +447,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Sztring | egy |
 | stringOutput | Sztring | O |
@@ -460,13 +460,13 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek közös elemei
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
-| arg2 |Igen |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
-| További argumentumok |Nem |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
+| arg1 |Yes |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
+| arg2 |Yes |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
+| További argumentumok |No |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy tömb vagy objektum a közös elemekkel.
 
@@ -476,7 +476,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -513,7 +513,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | objectOutput | Objektum | {"One": "a", "három": "c"} |
 | arrayOutput | Tömb | ["kettő", "három"] |
@@ -526,11 +526,11 @@ A tömb utolsó elemét vagy a karakterlánc utolsó karakterét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasására szolgáló érték. |
+| arg1 |Yes |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasására szolgáló érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy tömb utolsó elemének típusa (karakterlánc, int, tömb vagy objektum) vagy egy karakterlánc utolsó karaktere.
 
@@ -540,7 +540,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -565,7 +565,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Sztring | három |
 | stringOutput | Sztring | e |
@@ -578,11 +578,11 @@ Egy tömbben lévő elemek számát, egy karakterláncban szereplő karaktereket
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
+| arg1 |Yes |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy int.
 
@@ -592,7 +592,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -640,7 +640,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -665,11 +665,11 @@ A maximális értéket adja vissza egész számok tömbje vagy az egész számok
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
+| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A maximális értéket jelölő int.
 
@@ -679,7 +679,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -703,7 +703,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -716,11 +716,11 @@ A minimális értéket adja vissza egész számok tömbje vagy az egész számok
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
+| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A minimális értéket jelölő int.
 
@@ -730,7 +730,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -754,7 +754,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -767,12 +767,12 @@ Egész számok tömbjét hozza létre egy kezdő egész számból, és több ele
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| startIndex |Igen |int |A tömb első egésze. A startIndex és a darabszám összege nem lehet nagyobb, mint 2147483647. |
-| count |Igen |int |A tömbben lévő egész számok száma. Legfeljebb 10000-ig nem negatív egész számnak kell lennie. |
+| startIndex |Yes |int |A tömb első egésze. A startIndex és a darabszám összege nem lehet nagyobb, mint 2147483647. |
+| count |Yes |int |A tömbben lévő egész számok száma. Legfeljebb 10000-ig nem negatív egész számnak kell lennie. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egész számok tömbje.
 
@@ -782,7 +782,7 @@ A következő [példában látható sablon](https://github.com/Azure/azure-docs-
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "startingInt": {
@@ -806,7 +806,7 @@ A következő [példában látható sablon](https://github.com/Azure/azure-docs-
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | rangeOutput | Tömb | [5, 6, 7] |
 
@@ -818,12 +818,12 @@ Egy tömböt ad vissza az összes elemmel a tömbben megadott szám után, vagy 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| originalValue |Igen |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
-| numberToSkip |Igen |int |A kihagyni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az értékben szereplő összes elemet vagy karaktert adja vissza a rendszer. Ha a tömb vagy a karakterlánc hossza nagyobb, akkor a rendszer üres tömböt vagy karakterláncot ad vissza. |
+| originalValue |Yes |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
+| numberToSkip |Yes |int |A kihagyni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az értékben szereplő összes elemet vagy karaktert adja vissza a rendszer. Ha a tömb vagy a karakterlánc hossza nagyobb, akkor a rendszer üres tömböt vagy karakterláncot ad vissza. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Tömb vagy karakterlánc.
 
@@ -833,7 +833,7 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -873,7 +873,7 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Tömb | ["három"] |
 | stringOutput | Sztring | 2 3 |
@@ -886,12 +886,12 @@ Egy tömböt ad vissza a megadott számú elemmel a tömb elejétől, vagy egy o
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| originalValue |Igen |tömb vagy karakterlánc |Az elemeket tartalmazó tömb vagy karakterlánc. |
-| numberToTake |Igen |int |A felvenni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, üres tömböt vagy karakterláncot ad vissza. Ha az érték nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét adja vissza. |
+| originalValue |Yes |tömb vagy karakterlánc |Az elemeket tartalmazó tömb vagy karakterlánc. |
+| numberToTake |Yes |int |A felvenni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, üres tömböt vagy karakterláncot ad vissza. Ha az érték nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét adja vissza. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Tömb vagy karakterlánc.
 
@@ -901,7 +901,7 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -941,7 +941,7 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Tömb | ["egy", "Two"] |
 | stringOutput | Sztring | itt: |
@@ -954,13 +954,13 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek összes elemé
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
-| arg2 |Igen |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
-| További argumentumok |Nem |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
+| arg1 |Yes |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
+| arg2 |Yes |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
+| További argumentumok |No |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Tömb vagy objektum.
 
@@ -970,7 +970,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -1007,11 +1007,11 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Típus | Érték |
+| Name | Típus | Érték |
 | ---- | ---- | ----- |
 | objectOutput | Objektum | {"One": "a", "kettő": "b", "három": "C2", "Four": "d", "öt": "e"} |
 | arrayOutput | Tömb | ["egy", "kettő", "három", "négy"] |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.

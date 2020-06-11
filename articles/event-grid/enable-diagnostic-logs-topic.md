@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/27/2020
+ms.date: 06/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 13a2168c854475b841b0ebc52bb678c7ca22a1bb
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 253d1fb933c32735f68cf6a2d471a7687caf5301
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626462"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84670159"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Diagnosztikai naplók engedélyezése az Azure Event Grid-témakörökhöz vagy-tartományokhoz
 A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók számára a **közzétételi és kézbesítési hibák** naplóinak rögzítését vagy megtekintését egy Storage-fiókban, egy Event hub-ban vagy egy log Analytics-munkaterületen. Ez a cikk részletes útmutatást nyújt ezen beállítások Event Grid témakörben való engedélyezéséhez.
@@ -25,15 +25,19 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
     - Eseményközpont
     - Log Analytics-munkaterület
 
-## <a name="steps-for-enabling-diagnostic-logs-for-a-topic"></a>A diagnosztikai naplók engedélyezésének lépései a témakörben
+## <a name="enable-diagnostic-logs-for-a-custom-topic"></a>Diagnosztikai naplók engedélyezése egyéni témakörhöz
 
 > [!NOTE]
 > A következő eljárás részletes útmutatást nyújt a diagnosztikai naplók engedélyezéséhez a témakörben. A tartomány diagnosztikai naplói engedélyezésének lépései nagyon hasonlóak. A 2. lépésben lépjen a Azure Portal Event Grid- **tartományára** .  
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Lépjen arra az Event Grid-témakörre, amelyre vonatkozóan engedélyezni kívánja a diagnosztikai napló beállításait. 
-3. A bal oldali menüben válassza a **diagnosztikai beállítások** lehetőséget a **figyelés** elemnél.
-4. A **diagnosztikai beállítások** lapon válassza az **új diagnosztikai beállítás hozzáadása**elemet. 
+    1. A felső keresési sávban keresse meg **Event Grid témaköröket**. 
+    
+        ![Egyéni témakörök keresése](./media/enable-diagnostic-logs-topic/search-custom-topics.png)
+    1. Válassza ki a listából azokat a **témákat** , amelyekhez diagnosztikai beállításokat szeretne konfigurálni. 
+1. A bal oldali menüben válassza a **diagnosztikai beállítások** lehetőséget a **figyelés** elemnél.
+1. A **diagnosztikai beállítások** lapon válassza az **új diagnosztikai beállítás hozzáadása**elemet. 
     
     ![Diagnosztikai beállítások hozzáadása gomb](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. Adja meg a diagnosztikai beállítás **nevét** . 
@@ -53,6 +57,38 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
 
      A témakör összes mérőszámának gyűjteményét is engedélyezheti. 
 
+## <a name="enable-diagnostic-logs-for-a-system-topic"></a>Diagnosztikai naplók engedélyezése rendszertémakörhöz
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Lépjen arra az Event Grid-témakörre, amelyre vonatkozóan engedélyezni kívánja a diagnosztikai napló beállításait. 
+    1. A felső keresési sávban keresse meg **Event Grid Rendszertémaköröket**. 
+    
+        ![Rendszertémakörök keresése](./media/enable-diagnostic-logs-topic/search-system-topics.png)
+    1. Válassza ki azt a **rendszertémakört** , amelyre vonatkozóan be szeretné állítani a diagnosztikai beállításokat. 
+    
+        ![Rendszertémakör kiválasztása](./media/enable-diagnostic-logs-topic/select-system-topic.png)
+3. **A bal** oldali menüben válassza a **diagnosztika** lehetőséget, majd válassza a **diagnosztikai beállítás hozzáadása**lehetőséget. 
+
+    ![Diagnosztikai beállítások hozzáadása – gomb](./media/enable-diagnostic-logs-topic/system-topic-add-diagnostic-settings-button.png)
+4. Adja meg a diagnosztikai beállítás **nevét** . 
+7. Válassza ki a **DeliveryFailures** a **napló** szakaszban. 
+    ![Kézbesítési hibák kiválasztása](./media/enable-diagnostic-logs-topic/system-topic-select-delivery-failures.png)
+6. Engedélyezzen egy vagy több rögzítési célhelyet a naplókhoz, majd konfigurálja őket úgy, hogy kiválasztja az előző létrehozott rögzítési erőforrást. 
+    - Ha a **küldés log Analytics**lehetőséget választja, válassza ki a log Analytics munkaterületet.
+        ![Küldés a Log Analyticsnek](./media/enable-diagnostic-logs-topic/system-topic-select-log-workspace.png) 
+    - Ha kijelöli az **archiválás egy Storage-fiókba**lehetőséget, válassza a **Storage-fiók konfigurálása**lehetőséget, majd válassza ki a Storage-fiókot az Azure-előfizetésében. 
+
+        ![Archiválás Azure Storage-fiókba](./media/enable-diagnostic-logs-topic/system-topic-select-storage-account.png)
+    - Ha **az adatfolyam lehetőséget választja egy Event hub**-ra, válassza az **Event hub-configure**lehetőséget, majd válassza ki a Event Hubs névteret, az Event hub és a hozzáférési házirendet. 
+        ![Stream az Event hub-ba](./media/enable-diagnostic-logs-topic/system-topic-select-event-hub.png)
+8. Kattintson a **Mentés** gombra. Ezután a jobb oldali sarokban található **X** gombra kattintva zárhatja be a lapot. 
+9. Most vissza a **diagnosztikai beállítások** lapon ellenőrizze, hogy megjelenik-e új bejegyzés a **diagnosztikai beállítások** táblázatban. 
+    ![Diagnosztikai beállítás a listában](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
+
+     Emellett engedélyezheti a rendszertémakör összes **mérőszámának** gyűjteményét is.
+
+    ![Rendszertémakör – az összes metrika engedélyezése](./media/enable-diagnostic-logs-topic/system-topics-metrics.png)
+
 ## <a name="view-diagnostic-logs-in-azure-storage"></a>Diagnosztikai naplók megtekintése az Azure Storage-ban 
 
 1. Miután engedélyezte a Storage-fiók rögzítési célhelyét, és Event Grid elindítja a diagnosztikai naplók kibocsátását, meg kell jelennie az elemzések nevű új tárolóknak **– naplók – deliveryfailures** és elemzések – **naplók – publishfailures** a Storage-fiókban. 
@@ -60,7 +96,7 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
     ![Storage – tárolók a diagnosztikai naplókhoz](./media/enable-diagnostic-logs-topic/storage-containers.png)
 2. Ahogy az egyik tárolóban navigál, a rendszer a blobot JSON formátumban fogja végrehajtani. A fájl kézbesítési hiba vagy közzétételi hiba esetén bejegyzéseket tartalmaz. A navigációs útvonal az Event Grid-témakör **ResourceId** és az időbélyeg (perc szint), amely a naplóbejegyzések kibocsátásának időpontját jelöli. A letölthető blob-vagy JSON-fájl a végén betartja a következő szakaszban ismertetett sémát. 
 
-    [![A tárolóban](./media/enable-diagnostic-logs-topic/select-json.png) található JSON-fájl](./media/enable-diagnostic-logs-topic/select-json.png)
+    [![A tárolóban ](./media/enable-diagnostic-logs-topic/select-json.png) található JSON-fájl](./media/enable-diagnostic-logs-topic/select-json.png)
 3. A JSON-fájlban a következő példához hasonló tartalomnak kell megjelennie: 
 
     ```json
@@ -74,5 +110,5 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A naplózási sémával és a témakörök vagy tartományok diagnosztikai naplóival kapcsolatos egyéb fogalmi információkkal kapcsolatban lásd: [diagnosztikai naplók](diagnostic-logs.md).
