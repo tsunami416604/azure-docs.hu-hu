@@ -378,8 +378,6 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: SaaS-ajánlat létrehozása
               href: ./partner-center-portal/create-new-saas-offer.md
-            - name: SaaS forgalmi díjas számlázás
-              href: ./partner-center-portal/saas-metered-billing.md
             - name: SaaS Fulfillment API-k
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -391,6 +389,8 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS Fulfillment API-k – GYIK
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+            - name: SaaS forgalmi díjas számlázás
+              href: ./partner-center-portal/saas-metered-billing.md
         - name: Érdeklődők kezelése – áttekintés
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
