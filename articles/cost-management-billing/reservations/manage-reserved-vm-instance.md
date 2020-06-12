@@ -5,14 +5,14 @@ ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 06/04/2020
 ms.author: banders
-ms.openlocfilehash: 1084e8687cc709b5e31a9ef2c903638dd3d8f62c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019996"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434178"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Foglalások kezelése az Azure-erőforrásoknál
 
@@ -20,6 +20,7 @@ Egy Azure-foglalás megvásárlása után előfordulhat, hogy a foglalást egy m
 
 Ha Azure Reserved Virtual Machine Instances-példányokat vásárolt, módosíthatja a foglalás optimalizálási beállítását. A foglalási kedvezmény vonatkozhat az ugyanahhoz a sorozathoz tartozó virtuális gépekre, vagy fenntartható az adatközpont kapacitása egy adott virtuálisgép-mérethez. Emellett érdemes úgy optimalizálni a foglalásokat, hogy teljesen ki legyenek használva.
 
+*A foglalás kezeléséhez szükséges engedély eltér az előfizetés engedélyeitől.*
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -55,10 +56,9 @@ A hatókör csak a használatalapú fizetéses díjszabású különálló előf
 
 Delegálhatja a foglalás kezelését, ha személyeket ad hozzá szerepkörökhöz a foglalási rendelésben vagy a foglalásban. Alapértelmezés szerint a foglalási rendelést leadó személy és a fiókadminisztrátor rendelkezik a tulajdonosi szerepkörrel a foglalás rendelés és a foglalás tekintetében.
 
-A foglalási rendelések és foglalások hozzáférései a foglalási kedvezményben részesülő előfizetésektől függetlenül kezelhetők. Ha valakinek engedélyt ad egy foglalási rendelés vagy a foglalás kezelésére, az a személy ettől még nem lesz jogosult az előfizetés kezelésére. Hasonlóképpen, ha engedélyt ad valakinek egy, a foglalás hatókörébe tartozó előfizetés kezelésére, az még nem lesz jogosult a foglalási rendelés vagy a foglalás kezelésére.
+A foglalási rendelések és foglalások hozzáférései a foglalási kedvezményben részesülő *előfizetésektől függetlenül* kezelhetők. Ha valakinek engedélyt ad egy foglalási rendelés vagy a foglalás kezelésére, az a személy ettől még nem lesz jogosult az előfizetés kezelésére. Hasonlóképpen, ha engedélyt ad valakinek egy, a foglalás hatókörébe tartozó előfizetés kezelésére, az még nem lesz jogosult a foglalási rendelés vagy a foglalás kezelésére.
 
 A csere vagy a visszatérítés végrehajtásához a felhasználónak hozzáféréssel kell rendelkeznie a foglalás megrendeléséhez. Az engedélyek megadásakor érdemes a foglalási rendeléséhez engedélyt biztosítani, nem pedig a foglaláshoz.
-
 
 Egy foglalás hozzáférés-kezelésének delegálása:
 

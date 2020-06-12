@@ -58,6 +58,8 @@
       href: how-to-create-azure-function.md
     - name: Telemetria betöltése az IoT Hubról
       href: how-to-ingest-iot-hub-data.md
+    - name: Integrálás az Azure Mapsszel
+      href: how-to-integrate-maps.md
 - name: Referencia
   items:
     - name: Digital Twins REST API

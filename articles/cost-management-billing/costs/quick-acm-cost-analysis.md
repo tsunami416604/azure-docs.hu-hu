@@ -3,17 +3,17 @@ title: Rövid útmutató – Az Azure-költségek feltérképezése költségele
 description: Ez a rövid útmutató bemutatja, hogyan vizsgálhatja meg és elemezheti vállalata Azure-költségeit a Költségelemzés szolgáltatás használatával.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 06/08/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874500"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560586"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -107,8 +107,7 @@ Ha kikapcsolja a kiadások előrejelzését, a jövőbeli dátumok esetében nem
 
 Általánosságban elmondható, hogy a felhasznált erőforrásokra vonatkozó adatok vagy értesítések 8–12 órán belül jelennek meg.
 
-
-**Csoportosítást** végezhet általános tulajdonságok alapján a költségek lebontásához és a legfontosabb közreműködők azonosításához. Az erőforráscímkék szerinti csoportosításhoz például válassza ki azt a címkekulcsot, amely alapján csoportosítani szeretne. A költségek az egyes címkeértékek szerint vannak lebontva egy külön szegmenssel az olyan erőforrások számára, amelyeken nincs alkalmazva az adott címke.
+**Csoportosítást** végezhet általános tulajdonságok alapján a költségek lebontásához és a legfontosabb közreműködők azonosításához. Az erőforráscímkék szerinti csoportosításhoz például válassza ki azt a címkekulcsot, amely alapján csoportosítani szeretne. A költségek az egyes címkeértékek szerint vannak lebontva egy külön szegmenssel az olyan erőforrások számára, amelyeken nincs alkalmazva az adott címke.  A csoportosítási és szűrési lehetőségekkel kapcsolatban a [csoportosítási és szűrési lehetőségeket](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter) ismertető szakaszban talál további információt.
 
 A legtöbb [Azure-erőforrás támogatja a címkézést](../../azure-resource-manager/management/tag-support.md). Ugyanakkor néhány címke nem érhető el a Költségkezelés és számlázás területen. Továbbá az erőforráscsoport-címkék sem támogatottak. A címkék támogatása a címke erőforráson való alkalmazása *utáni* jelentett használatra vonatkozik. A címkék nem jelennek meg visszamenőlegesen a költségösszesítések esetében.
 
@@ -142,42 +141,6 @@ Bármelyik nézet esetében megtekintheti a teljes adathalmazt. Az alkalmazott b
 
 ![A jelenlegi nézet adatai táblázatos nézetben](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
-
-## <a name="understanding-grouping-and-filtering-options"></a>Csoportosítási és szűrési lehetőségek ismertetése
-
-A költségelemzés számos csoportosítási és szűrési lehetőséget kínál. A csoportosítási és szűrési beállításokkal kapcsolatos videó megtekintéséhez tekintse meg a [Cost Management dimenziók és címkék szerinti jelentéskészítésével](https://www.youtube.com/watch?v=2Vx7V17zbmk) foglalkozó videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
-
->[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
-
-Az alábbi táblázat felsorolja a leggyakoribb csoportosítási és szűrési lehetőségek némelyikét, valamint ismerteti, hogy mikor érdemes alkalmazni őket.
-
-| Tulajdonság | A következő esetekben használja | Megjegyzések |
-| --- | --- | --- |
-| **Rendelkezésre állási zónák** | Az AWS-költségek lebontása rendelkezésreállási zóna szerint. | Csak AWS-hatókörök és felügyeleti csoportok esetén alkalmazható. Az Azure-beli adatok nem tartalmazzák a rendelkezésreállási zónát, így ezeknél a **Nem alkalmazható** érték jelenik meg. |
-| **Számlázási időszak** | A PAYG-költségek lebontása a számlázási hónap szerint. | A **Számlázási időszak** segítségével pontos képet kaphat a számlázott PAYG-díjakról. Foglaljon bele további 2 napot a számlázási időszak előtt és után, ha egy egyéni dátumtartományra szűr. A pontos számlázási időszakra való korlátozás nem fog egyezni a számlával. A számlázási időszak összes számlájára vonatkozó költségek fognak megjelenni. Egy adott számlára a **Számlaazonosító** segítségével szűrhet. Csak PAYG-előfizetésekre alkalmazható, mivel az EA és az MCA számlázása a naptári hónapok szerint történik. Az EA-/MCA-fiókok esetében ugyanebből a célból naptári hónapok vagy havi részletesség is használható a dátumválasztóban. |
-| **Díj típusa** | A használat, a vásárlás, a visszatérítés és a nem használt foglalási költségek lebontása. | A foglalásvásárlások és a visszatérítések csak a tényleges költségek használatakor érhetők el, amortizált költségek esetén nem. A fel nem használt foglalási költségek csak akkor érhetők el, ha az amortizált költségeket jeleníti meg. |
-| **Részleg** | Költségek lebontása EA-részlegek szerint. | Csak az EA és a felügyeleti csoportok számára érhető el. A PAYG-előfizetéseknek nincs részlege, így **Nem alkalmazható** vagy **nem hozzárendelt** értéket fognak megjeleníteni. |
-| **Regisztrációs fiók** | Költségek lebontása EA-fióktulajdonos szerint. | Csak az EA-számlázási fiókok, -részlegek és felügyeleti csoportok számára érhető el. A PAYG-előfizetések nem rendelkeznek EA regisztrációs fiókokkal, így **Nem alkalmazható** vagy **nem hozzárendelt** értéket fognak megjeleníteni. |
-| **Gyakoriság** | A használaton alapuló, az egyszeri és az ismétlődő költségek lebontása. | |
-| **Számlaazonosító** | Költségek lebontása kiállított számla alapján. | A ki nem számlázott díjak még nem rendelkeznek számlaazonosítóval, így az EA-költségek nem tartalmazzák a számla részleteit, valamint **Nem alkalmazható** értéket fognak megjeleníteni.  |
-| **Fogyasztásmérő** | Költségek lebontása használatmérés alapján. | A vásárlások és a Marketplace-használat **Nem alkalmazható** értékként jelennek meg. A vásárlások azonosításához tekintse meg a **Díj típusa** értéket, a Marketplace-díjak azonosításához pedig a **Kiadó típusa** értéket. |
-| **Művelet** | Az AWS-költségek lebontása műveletek szerint. | Csak AWS-hatókörök és felügyeleti csoportok esetén alkalmazható. Az Azure-beli adatok nem tartalmaznak műveletet, így ezeknél a **Nem alkalmazható** érték jelenik meg – használja helyette a **Fogyasztásmérő** lehetőséget. |
-| **Díjszabási modell** | A költségek igény, foglalás vagy spot-használat szerinti lebontása. | A vásárlások **OnDemand** értékként jelennek meg. Ha **Nem alkalmazható** értéket lát, a **Foglalás** szerinti csoportosítással megállapíthatja, hogy foglalásról vagy igény szerinti használatról van-e szó, a **Díj típusa** szerintivel pedig azonosíthatja a vásárlásokat.
-| **Szolgáltató** | Költségek lebontása AWS és Azure szerint. | Csak felügyeleti csoportok számára érhető el. |
-| **Kiadó típusa** | Az AWS, az Azure és a Marketplace költségeinek lebontása. |  |
-| **Foglalás** | Költségek lebontása foglalás szerint. | A foglaláshoz nem társított használat vagy vásárlások **Nem alkalmazható** értékként jelennek meg. A **Kiadó típusa** szerinti csoportosítással azonosíthatja az egyéb Azure-, AWS- vagy Marketplace-vásárlásokat. |
-| **Erőforrás** | Költségek lebontása erőforrás szerint. | A vásárlások **Nem alkalmazható** értékként jelennek meg, mert egy EA-/PAYG-számlázási fiók vagy egy MCA-számlázási profil szintjén vannak alkalmazva, és nem egy adott erőforráshoz vannak társítva. A **Kiadó típusa** szerinti csoportosítással azonosíthatja az egyéb Azure-, AWS- vagy Marketplace-vásárlásokat. |
-| **Erőforráscsoport** | Költségek lebontása erőforráscsoport szerint. | A vásárlások, az előfizetéshez nem társított bérlői erőforrások, az erőforráscsoporthoz nem üzembe helyezett előfizetési erőforrások, illetve a klasszikus erőforrások nem rendelkeznek erőforráscsoporttal, így **egyebek**, **klasszikus szolgáltatások**, **$system** vagy **nem alkalmazható** értéket mutatnak. |
-| **Erőforrás típusa** | Költségek lebontása erőforrástípus szerint. | A vásárlások és a klasszikus szolgáltatások nem rendelkeznek Azure Resource Manager-erőforrástípussal, így **egyebek**, **klasszikus szolgáltatások** vagy **nem alkalmazható** értéket mutatnak. |
-| **Erőforrás helye** | Költségek lebontása hely vagy régió szerint. | A vásárlások és a Marketplace-használat **nem hozzárendelt**, **ismeretlen**, **nem leképezett** vagy **nem alkalmazható** értékként jelenhetnek meg. |
-| **Szolgáltatásnév** vagy **Fogyasztásmérő kategóriája** | Költségek lebontása az Azure-szolgáltatás szerint. | A vásárlások és a Marketplace-használat **nem alkalmazható** vagy **nem hozzárendelt** értékként jelennek meg. |
-| **Szolgáltatásszint** vagy **Fogyasztásmérő alkategóriája** | A költségek lebontása az Azure fogyasztásmérőjének osztályozási alkategóriái alapján. | A vásárlások és a Marketplace-használat **nem alkalmazható** vagy **nem hozzárendelt** értékként jelennek meg. |
-| **Előfizetés** | Költségek lebontása az Azure-előfizetés és az AWS csatolt fiókja alapján. | A vásárlások és a bérlői erőforrások **nem alkalmazható** értékként jelenhetnek meg. |
-| **Tag** | Költségek lebontása egy adott címkekulcs címkeértékei alapján. | A címkék nem érhetők el a vásárlásokhoz, az előfizetésekhez nem társított bérlői erőforrásokhoz, az erőforráscsoporthoz nem üzembe helyezett előfizetési erőforrásokhoz vagy a klasszikus erőforrásokhoz. Vegye figyelembe, hogy egyes szolgáltatások nem tartalmaznak címkéket a használati adatokban. További információ [a címkék támogatásáról az egyes erőforrástípusokra vonatkozóan](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
-
-A kifejezésekkel kapcsolatos további információ: [Az Azure használati adatait és díjait tartalmazó fájl kifejezéseinek ismertetése](../understand/understand-usage.md).
-
-
 ## <a name="saving-and-sharing-customized-views"></a>Személyre szabott nézetek mentése és megosztása
 
 A személyre szabott nézeteket a költségelemzés az Azure Portal irányítópultján való rögzítésével vagy a költségelemzésre mutató hivatkozás másolásával mentheti és oszthatja meg másokkal.
@@ -192,54 +155,12 @@ A költségelemzésre mutató hivatkozás megosztásához válassza a panel tete
 
 Az egyes támogatott hatókörök költségeihez való hozzáférés megadásával kapcsolatban tekintse meg [A hatókörök ismertetése és használata](understand-work-scopes.md) címe részt.
 
-
-
-## <a name="automation-and-offline-analysis"></a>Automatizálás és offline elemzés
+## <a name="download-usage-data"></a>Használati adatok letöltése
 
 Előfordulhat, hogy további elemzés céljából le kell töltenie az adatait, egyesíteni kell őket a saját adataival, vagy integrálnia kell őket a saját rendszereibe. A Cost Management több különböző lehetőséget kínál. Ha egy olyan alkalmi jellegű, részletes összegzésre van szüksége, mint amilyen a költségelemzésben is elérhető, hozza létre a szükséges nézetet. Ezt követően töltse le az **Exportálás**, majd az **Adatok letöltése CSV-fájlba** vagy az  **Adatok letöltése Excel-fájlba** lehetőség kiválasztásával. Az Excel-fájlba történő letöltés további információt nyújt a letöltés létrehozására használt nézetről, például a hatókörről, a lekérdezéskonfigurációról, a teljes összegről és a létrehozás dátumáról.
 
 Ha a teljes, nem összesített adatkészletre van szüksége, töltse le a számlázási fiókból. Ezután a portál bal oldali navigációs paneljén található szolgáltatáslistából válassza ki a **Költségkezelés + Számlázás** lehetőséget. Válassza ki a számlázási fiókját, ha van. Lépjen a **Felhasználás + díjak** oldalra, majd kattintson a kívánt számlázási időszak **Letöltés** ikonjára.
 
-Hasonló módon automatizálhatja a költségadatok lekérését is. A [Query API](/rest/api/cost-management/query) dinamikus szűrést, csoportosítást és összesítést alkalmazó gazdagabb elemzésekhez használható, a [UsageDetails API](/rest/api/consumption/usageDetails) pedig a teljes, nem aggregált adatkészlethez. Az API-k általánosan elérhető (GA) verziója a 2019-01-01-es. Az API-kon belüli foglalás- és a Marketplace-vásárlások előzetes verziójának eléréséhez használja a **2019-04-01-preview** előzetes verziót.
-
-A következő példa amortizált költségek összesített nézetét mutatja be díjtípusok (használat, vásárlás vagy visszatérítés), a kiadó típusa (Azure vagy Marketplace), az erőforráscsoport (a vásárlások esetében üres) és a foglalás (üres, ha nem alkalmazható) szerinti lebontásban.
-
-```
-POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
-Content-Type: application/json
-
-{
-  "type": "AmortizedCost",
-  "timeframe": "Custom",
-  "timePeriod": { "from": "2019-04-01", "to": "2019-04-30" },
-  "dataset": {
-    "granularity": "None",
-    "aggregation": {
-      "totalCost": { "name": "PreTaxCost", "function": "Sum" }
-    },
-    "grouping": [
-      { "type": "dimension", "name": "ChargeType" },
-      { "type": "dimension", "name": "PublisherType" },
-      { "type": "dimension", "name": "Frequency" },
-      { "type": "dimension", "name": "ResourceGroup" },
-      { "type": "dimension", "name": "SubscriptionName" },
-      { "type": "dimension", "name": "SubscriptionId" },
-      { "type": "dimension", "name": "ReservationName" },
-      { "type": "dimension", "name": "ReservationId" },
-    ]
-  },
-}
-```
-
-Ha nincs szüksége összesítésre, és a teljes, nyers adathalmazt részesíti előnyben:
-
-```
-GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
-```
-
-Ha azt szeretné, hogy a tényleges költségekben a vásárlások keletkezésük szerinti jelenjenek meg, módosítsa a **típus**/**metrikát** **ActualCost** értékre. Az ezekkel az API-kkal kapcsolatos további információért tekintse meg a [Query](/rest/api/cost-management/query) és a [UsageDetails](/rest/api/consumption/usageDetails) API-dokumentációt. Vegye figyelembe, hogy a közzétett dokumentumok az általánosan elérhető verzióra vonatkoznak. Ugyanakkor mindkettő alkalmazható a *2019-04-01-preview* API-verzióra az új típus/metrika attribútum és a módosított tulajdonságnevek kivételével. (A tulajdonságnevekkel kapcsolatos részleteket alább találja.)
-
-A Cost Management API-k az erőforrások feletti összes hatókörben működnek: erőforráscsoport, előfizetés és felügyeleti csoport az Azure RBAC-hozzáférésen keresztül, EA számlázási fiókok (regisztrációk), részlegek és regisztrációs fiókok az EA-portálhozzáférésen keresztül. További információ a hatókörökről, beleértve a hatókör azonosítójának meghatározását és a hozzáférés-kezelést: [A hatókörök ismertetése és használata](understand-work-scopes.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/29/2020
 ms.author: banders
-ms.openlocfilehash: 4dab11afb2ddd910a4d6619d088031279ebf3172
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6f571d323a06b64f79c3f97ae8717be7eb8968d3
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238006"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434490"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Számlázási fiókok és hatókörök az Azure Portalon
 
@@ -22,9 +22,9 @@ Az Azure Portal a következő típusú számlázási fiókokat támogatja:
 
 - **Microsoft Online Services Program**: A Microsoft Online Services Program számlázási fiókjai akkor jönnek létre, amikor az Azure-webhelyen keresztül regisztrál az Azure-ba. Erre példa az [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/), a [használatalapú fizetést használó fiók](https://azure.microsoft.com/offers/ms-azr-0003p/) és a [Visual Studio-előfizetés](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
 
-- **Nagyvállalati Szerződés**: Nagyvállalati Szerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet [Nagyvállalati Szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) köt az Azure használatára.
+- **Nagyvállalati Szerződés**: Nagyvállalati Szerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet [Nagyvállalati Szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) köt az Azure használatára. Nagyvállalati Szerződés keretében legfeljebb 500 előfizetés adható meg.
 
-- **Microsoft-ügyfélszerződés**: A Microsoft-ügyfélszerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy [használatalapú fizetést használó fiókot](https://azure.microsoft.com/offers/ms-azr-0003p/) vagy egy [ingyenes Azure-fiókot](https://azure.microsoft.com/offers/ms-azr-0044p/), külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez is. További információkért tekintse meg [a Microsoft-ügyfélszerződés számlázási fiókjával kapcsolatos első lépéseket](../understand/mca-overview.md).
+- **Microsoft-ügyfélszerződés**: A Microsoft-ügyfélszerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy [használatalapú fizetést használó fiókot](https://azure.microsoft.com/offers/ms-azr-0003p/) vagy egy [ingyenes Azure-fiókot](https://azure.microsoft.com/offers/ms-azr-0044p/), külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez is. Microsoft Ügyfélszerződés keretében legfeljebb 20 előfizetés adható meg. További információkért tekintse meg [a Microsoft-ügyfélszerződés számlázási fiókjával kapcsolatos első lépéseket](../understand/mca-overview.md).
 
 - **Microsoft-partnerszerződés**: A Microsoft-partnerszerződés számlázási fiókjai a felhőszolgáltatói partnerek (CSP-k) számára készülnek az új kereskedelmi felületen történő ügyfélkezeléshez. A partnereknek legalább egy [Azure-csomaggal](https://docs.microsoft.com/partner-center/purchase-azure-plan) rendelkező ügyfélre van szükségük ahhoz, hogy számlázási fiókjukat az Azure Portalon kezelhessék. További információért tekintse meg [a Microsoft-partnerszerződés számlázási fiókjával kapcsolatos első lépéseket](../understand/mpa-overview.md).
 
@@ -35,7 +35,7 @@ A hatókör egy csomópont a számlázási fiókon belül. Ennek használatával
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
 
- ![Az MOSP hierarchiáit megjelenítő képernyőkép](./media/view-all-accounts/mosp-hierarchy.png)
+![Az MOSP hierarchiáit megjelenítő képernyőkép](./media/view-all-accounts/mosp-hierarchy.png)
 
 |Hatókör  |Meghatározás  |
 |---------|---------|
