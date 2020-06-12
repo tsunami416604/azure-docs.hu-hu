@@ -3,7 +3,7 @@ title: A Personalizer dokumentációja
 summary: Megismerheti, hogyan használhatja a Personalizert arra, hogy az alkalmazás a valós idejű viselkedésükből tanulva kiválassza a felhasználók számára megjelenítendő legjobb élményt.
 metadata:
   ms.topic: landing-page
-  ms.date: 05/01/2020
+  ms.date: 06/11/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: A Personalizer dokumentációja
   titleSuffix: Azure Cognitive Services
   description: Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.
-  ms.openlocfilehash: ef18921e9211bb1a3659fffc84bde922d500d0b0
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 0c8e99ab2817cd9aaa2de60b9996b3d47b10a1ff
+  ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83586320"
+  ms.lasthandoff: 06/11/2020
+  ms.locfileid: "84717917"
 landingContent:
 - title: Információk a Personalizerről
   linkLists:
@@ -45,6 +45,12 @@ landingContent:
       url: concepts-features.md
     - text: Jutalmak kiszámítása
       url: concept-rewards.md
+  - linkListType: tutorial
+    links:
+    - text: A Personalizer használata .NET-es webalkalmazásokban
+      url: tutorial-use-personalizer-web-app.md
+    - text: A Personalizer használata Azure-jegyzetfüzetekkel
+      url: tutorial-use-azure-notebook-generate-loop-data.md
   - linkListType: how-to-guide
     links:
     - text: A Personalizer létrehozása és konfigurálása
