@@ -8,20 +8,24 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 04/23/2020
+ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 55153cc7fc125c97a5b73084f83dd320240ca256
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 973a8b7eb8dad66568a5beb45adea9740dd0402a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342109"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700634"
 ---
 # <a name="whats-new-in-personalizer"></a>A személyre szabás újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek tartalmazhatnak kibocsátási megjegyzéseket, videókat, blogbejegyzéseket és más típusú információkat. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="june-2020"></a>2020. június
+
+* Új oktatóanyag – [személyre szabott webes alkalmazás használata](tutorial-use-personalizer-web-app.md)
 
 ### <a name="may-2020---build-conference"></a>Május 2020 – Build konferencia
 

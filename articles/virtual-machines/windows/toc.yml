@@ -624,7 +624,7 @@
           href: ../extensions/agent-windows.md
         - name: Spekulatív végrehajtás kockázatának csökkentése
           href: mitigate-se.md
-        - name: Metaadatok monitorozása
+        - name: Azure Instance Metadata szolgáltatás
           href: instance-metadata-service.md
         - name: Beágyazott virtualizálás engedélyezése
           href: nested-virtualization.md

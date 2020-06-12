@@ -36,6 +36,12 @@
       href: manage-dhcp.md
     - name: Vészhelyreállítás
       href: disaster-recovery.md
+    - name: Azure Backup Server AVS-hez
+      items:
+        - name: Azure Backup Server beállítása az AVS-hez
+          href: set-up-mabs-for-avs.md
+        - name: AVS-virtuálisgépek biztonsági mentése az Azure Backup Serverrel
+          href: backup-avs-vms-with-mabs.md
 - name: Referencia
   items: null
 - name: További források

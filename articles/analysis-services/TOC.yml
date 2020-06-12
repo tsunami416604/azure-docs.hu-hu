@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: Szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz
           href: analysis-services-addservprinc-admins.md
+        - name: Áthelyezés régiók között
+          href: move-between-regions.md
     - name: Modell
       items:
         - name: Táblázatos modellezés

@@ -30,6 +30,10 @@
       href: tutorial-url-redirect-cli.md
     - name: Automatikus skálázás és zónaredundancia
       href: tutorial-autoscale-ps.md
+    - name: Bejövőforgalom-vezérlő bővítmény az AKS-hez (zöldmezős)
+      href: tutorial-ingress-controller-add-on-new.md
+    - name: Bejövőforgalom-vezérlő bővítmény az AKS-hez (barnamezős)
+      href: tutorial-ingress-controller-add-on-existing.md
 - name: Példák
   items:
     - name: Azure PowerShell
@@ -136,10 +140,12 @@
               href: application-gateway-configure-ssl-policy-powershell.md
     - name: AKS bejövő forgalma
       items:
-        - name: Beállítás meglévő Application Gatewayjel
+        - name: AKS bejövő forgalma Helmen keresztül (barnamezős)
           href: ingress-controller-install-existing.md
-        - name: Beállítás új Application Gatewayjel
+        - name: AKS bejövő forgalma Helmen keresztül (zöldmezős)
           href: ingress-controller-install-new.md
+        - name: Az AKS bejövőforgalom-vezérlő bővítmény letiltása és újbóli engedélyezése
+          href: ingress-controller-disable-addon.md
         - name: Cookie-affinitás engedélyezése
           href: ingress-controller-cookie-affinity.md
         - name: Több névtér támogatásának engedélyezése

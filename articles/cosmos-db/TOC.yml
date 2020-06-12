@@ -977,41 +977,40 @@
           href: how-to-manage-indexing-policy.md
         - name: Egyedi kulcsok meghatározása
           href: how-to-define-unique-keys.md
-    - name: Ajánlott eljárások
+    - name: Teljesítmény és hibaelhárítás
       items:
-        - name: Teljesítménnyel kapcsolatos tippek
+        - name: Lekérdezés
           items:
             - name: Lekérdezés-végrehajtási mérőszámok lekérése
-              displayName: 'query profile, profile'
               href: profile-sql-api-query.md
             - name: Lekérdezési teljesítmény hangolása
               href: sql-api-query-metrics.md
-            - name: Teljesítménnyel kapcsolatos tippek .NET SDK-hoz
+            - name: Lekérdezési teljesítmény hibaelhárítása
+              href: troubleshoot-query-performance.md
+        - name: .NET
+          items:
+            - name: Teljesítménnyel kapcsolatos tippek .NET SDK v3-hoz
+              href: performance-tips-dotnet-sdk-v3-sql.md
+            - name: Teljesítménnyel kapcsolatos tippek .NET SDK v2-höz
               href: performance-tips.md
+            - name: .NET SDK-hibák elhárítása
+              href: troubleshoot-dot-net-sdk.md
+        - name: Java
+          items:
             - name: Teljesítménnyel kapcsolatos tippek Java SDK v4-hez
               href: performance-tips-java-sdk-v4-sql.md
-            - name: Teljesítménnyel kapcsolatos tippek régebbi Java SDK-khoz
-              items:
-                - name: Async Java SDK v2
-                  href: performance-tips-async-java.md
-                - name: Sync Java SDK v2
-                  href: performance-tips-java.md
-            - name: Teljesítményteszt – mintaalkalmazás
-              href: performance-testing.md
-        - name: Költséghatékony írások és olvasások
-          href: key-value-store-cost.md
-    - name: Hibaelhárítás
-      items:
-        - name: Lekérdezési teljesítmény hibaelhárítása
-          href: troubleshoot-query-performance.md
-        - name: Java SDK v4-hibák elhárítása
-          href: troubleshoot-java-sdk-v4-sql.md
-        - name: Régebbi Java SDK-k hibáinak elhárítása
-          items:
+            - name: Java SDK v4-hibák elhárítása
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: Async Java SDK v2
+              href: performance-tips-async-java.md
+            - name: Sync Java SDK v2
+              href: performance-tips-java.md
             - name: Async Java SDK v2
               href: troubleshoot-java-async-sdk.md
-        - name: .NET SDK-hibák elhárítása
-          href: troubleshoot-dot-net-sdk.md
+        - name: Teljesítményteszt – mintaalkalmazás
+          href: performance-testing.md
+        - name: Költséghatékony írások és olvasások
+          href: key-value-store-cost.md
     - name: Migrálás újabb SDK-kba
       items:
         - name: Migrálás Java V4 SDK-ba
@@ -1194,28 +1193,30 @@
           href: how-to-migrate-from-bulk-executor-library.md
         - name: Tömeges végrehajtó – Java-kódtár
           href: bulk-executor-java.md
-- name: Referencia
+- name: SQL API SDK-k referenciái
   items:
-    - name: .NET
-      href: sql-api-sdk-dotnet.md
-    - name: .NET Core
-      href: sql-api-sdk-dotnet-core.md
-    - name: .NET Standard
-      href: sql-api-sdk-dotnet-standard.md
-    - name: .NET változáscsatorna-kódtár
-      href: sql-api-sdk-dotnet-changefeed.md
-    - name: .NET tömeges végrehajtói kódtár
-      href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java tömeges végrehajtói kódtár
-      href: sql-api-sdk-bulk-executor-java.md
-    - name: Java SDK v4 a Core-hoz
-      href: sql-api-sdk-java-v4.md
-    - name: Régebbi Java SDK-k a Core-hoz
+    - name: .NET SDK-k
       items:
+        - name: .NET SDK v3
+          href: sql-api-sdk-dotnet-standard.md
+        - name: .NET SDK v2
+          href: sql-api-sdk-dotnet.md
+        - name: .NET Core SDK v2
+          href: sql-api-sdk-dotnet-core.md
+        - name: .NET változáscsatorna-kódtár v2
+          href: sql-api-sdk-dotnet-changefeed.md
+        - name: .NET tömeges végrehajtói kódtár v2
+          href: sql-api-sdk-bulk-executor-dot-net.md
+    - name: Java SDK-k
+      items:
+        - name: Java SDK v4
+          href: sql-api-sdk-java-v4.md
         - name: Async Java SDK v2
           href: sql-api-sdk-async-java.md
         - name: Sync Java SDK v2
           href: sql-api-sdk-java.md
+        - name: Java tömeges végrehajtói kódtár v2
+          href: sql-api-sdk-bulk-executor-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python

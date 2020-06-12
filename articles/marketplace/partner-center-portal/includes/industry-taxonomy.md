@@ -1,5 +1,5 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 description: fájl belefoglalása az iparági besorolásba
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
@@ -28,7 +28,7 @@ Lehetőség van akár két iparágra is kiválaszthat, és két vertikálisat az
 | Disztribúció    | * Nagykereskedelmi <br> * Parcella & csomag szállítása |
 | Education     | * Felsőoktatás <br> * Elsődleges & középfokú oktatás/K-12 <br> * Könyvtárak & múzeumok |
 | Pénzügyi szolgáltatások     | * Banki & tőkepiacok <br> * Biztosítás |
-| Government    | * Defense & Intelligence (az ún. nemzeti és nyilvános biztonság) <br> * Közbiztonság & igazságszolgáltatás <br> * Polgári kormányzat |
+| Államigazgatás    | * Defense & Intelligence (az ún. nemzeti és nyilvános biztonság) <br> * Közbiztonság & igazságszolgáltatás <br> * Polgári kormányzat |
 | Egészségügyi ellátás (ún. állapot)   | * Állapot költségviselő <br> * Állapot szolgáltatója <br> * Gyógyszeripar |
 | Gyártási & erőforrások (a gyártás meghívásához használatos)   | * Kémiai & Agrokémiai <br> * Diszkrét gyártás <br> * Energia |
 | Lakossági & fogyasztási cikkek (a kereskedelmi elnevezéshez használatos)  | * Fogyasztási cikkek <br> * Kiskereskedők |

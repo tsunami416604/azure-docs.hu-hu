@@ -657,7 +657,7 @@
               href: update-agent.md
         - name: Spekulatív végrehajtás kockázatának csökkentése
           href: mitigate-se.md
-        - name: Metaadatok monitorozása
+        - name: Azure Instance Metadata szolgáltatás
           href: instance-metadata-service.md
         - name: Használati metrikák lekérése a REST használatával
           href: metrics-vm-usage-rest.md

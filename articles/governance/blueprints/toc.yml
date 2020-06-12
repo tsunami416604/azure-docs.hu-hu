@@ -4,16 +4,19 @@
   items:
     - name: Mi az az Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: Rövid útmutatók
   expanded: true
   items:
     - name: Terv létrehozása – Portal
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: Terv létrehozása – PowerShell
+      href: ./create-blueprint-portal.md
+    - name: Terv létrehozása – Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: Terv létrehozása – Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: Terv létrehozása – REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
@@ -268,6 +271,8 @@
   href: ./troubleshoot/general.md
 - name: Referencia
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'
     - name: Azure SDK for .NET
@@ -285,7 +290,7 @@
     - name: GitHub – Azure Blueprints-minták
       href: 'https://github.com/Azure/azure-blueprints'
     - name: Microsoft Q&A – Azure Blueprints
-      href: /answers/topics/azure-blueprints.html.html
+      href: /answers/topics/azure-blueprints.html
     - name: A Governance YouTube-csatornája
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure Friday – Az Azure Blueprints áttekintése

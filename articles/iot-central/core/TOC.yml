@@ -111,6 +111,8 @@
           href: howto-create-custom-rules.md
         - name: Egyéni elemzések létrehozása a Databricksszel
           href: howto-create-custom-analytics.md
+        - name: Adatok vizualizációja a Power BI-ban
+          href: howto-connect-powerbi.md
     - name: Felügyelet
       items:
         - name: Az alkalmazás felügyelete

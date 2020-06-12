@@ -1072,6 +1072,8 @@
               maintainContext: true
         - name: Ajánlott eljárások a GDPR-ral kapcsolatban
           href: /azure/databricks/security/privacy/gdpr-delta
+        - name: IP-hozzáférési lista
+          href: /azure/databricks/security/network/ip-access-list
         - name: A fürt feldolgozó csomópontjai közötti forgalom titkosítása
           href: /azure/databricks/security/encryption/encrypt-otw
         - name: Felhasználó által kezelt kulcsok engedélyezése notebookokhoz
@@ -1160,10 +1162,13 @@
             - name: Notebook-funkciók hozzáférésének kezelése
               href: /azure/databricks/administration-guide/workspace/notebooks
               maintainContext: true
-        - name: Fürtkonfigurációk engedélyezése
+        - name: Fürtök kezelése
           items:
-            - name: Fürtkonfiguráció áttekintése
+            - name: Fürtkonfigurációs beállítások kezelése
               href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: Fürtszabályzatok kezelése
+              href: /azure/databricks/administration-guide/clusters/policies
               maintainContext: true
             - name: Tárolószolgáltatások engedélyezése
               href: /azure/databricks/administration-guide/clusters/container-services
@@ -1191,8 +1196,6 @@
             - name: Felhasználó által megadott útvonal beállításai
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
-            - name: MySQL IP-címek
-              href: mysql-ip-address.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori kérdések
@@ -1256,6 +1259,18 @@
               maintainContext: true
             - name: Az Apache Spark felhasználói felülete nem jeleníti meg a teljes csomópont-memóriát
               href: /azure/databricks/kb/clusters/spark-shows-less-memory
+              maintainContext: true
+            - name: A CPU-magkorlát megakadályozza a fürtlétrehozást
+              href: /azure/databricks/kb/clusters/azure-core-limit
+              maintainContext: true
+            - name: Az IP-címkorlát megakadályozza a fürtlétrehozást
+              href: /azure/databricks/kb/clusters/azure-ip-limit
+              maintainContext: true
+            - name: Lassú fürtindítás és hiányzó csomópontok
+              href: /azure/databricks/kb/clusters/azure-nodes-not-acquired
+              maintainContext: true
+            - name: Egyéni NTP-kiszolgáló használatához konfiguráljon egy fürtöt
+              href: /azure/databricks/kb/clusters/use-internal-ntp
               maintainContext: true
         - name: Adatkezelés
           items:
@@ -1332,6 +1347,9 @@
               maintainContext: true
             - name: A JDBC-adatforrások olvasási teljesítményének optimalizálása
               href: /azure/databricks/kb/data-sources/jdbc-optimize-read
+              maintainContext: true
+            - name: ADLS és WASB-írások szabályozva vannak
+              href: /azure/databricks/kb/data-sources/azure-storage-throttling
               maintainContext: true
         - name: DBFS
           items:
@@ -1500,6 +1518,9 @@
             - name: A Mégse parancs hibaelhárítása
               href: /azure/databricks/kb/notebooks/troubleshoot-cancel-command
               maintainContext: true
+            - name: A jegyzetfüzetben használt jelenlegi felhasználónév beszerzése
+              href: /azure/databricks/kb/notebooks/get-notebook-username
+              maintainContext: true
         - name: Biztonság és engedélyek
           items:
             - name: Táblalétrehozási hiba biztonsági kivétellel
@@ -1642,28 +1663,31 @@
                     - name: Az Azure AD hozzáférési jogkivonatainak hibaelhárítása
                       href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
                       maintainContext: true
-            - name: Fürtök
+            - name: Fürtök API
               href: /azure/databricks/dev-tools/api/latest/clusters
               maintainContext: true
-            - name: DBFS
+            - name: Fürtszabályzatok API-k
+              href: /azure/databricks/dev-tools/api/latest/policies
+              maintainContext: true
+            - name: DBFS API
               href: /azure/databricks/dev-tools/api/latest/dbfs
               maintainContext: true
-            - name: Csoportok
+            - name: Csoportok API
               href: /azure/databricks/dev-tools/api/latest/groups
               maintainContext: true
             - name: Példánykészletek API-ja
               href: /azure/databricks/dev-tools/api/latest/instance-pools
               maintainContext: true
-            - name: Feladatok
+            - name: Feladatok API
               href: /azure/databricks/dev-tools/api/latest/jobs
               maintainContext: true
-            - name: Kódtárak
+            - name: Kódtárak API
               href: /azure/databricks/dev-tools/api/latest/libraries
               maintainContext: true
-            - name: MLflow
+            - name: MLflow API
               href: /azure/databricks/dev-tools/api/latest/mlflow
               maintainContext: true
-            - name: SCIM
+            - name: SCIM API-k
               items:
                 - name: Az SCIM API áttekintése
                   href: /azure/databricks/dev-tools/api/latest/scim/index
@@ -1674,17 +1698,14 @@
                 - name: SCIM API (Csoportok)
                   href: /azure/databricks/dev-tools/api/latest/scim/scim-group
               maintainContext: true
-            - name: Titkos kulcsok
+            - name: Titkos kulcsok API
               href: /azure/databricks/dev-tools/api/latest/secrets
               maintainContext: true
-            - name: Tokenek
+            - name: Tokenek API
               href: /azure/databricks/dev-tools/api/latest/tokens
               maintainContext: true
-            - name: Munkaterület
+            - name: Munkaterület API
               href: /azure/databricks/dev-tools/api/latest/workspace
-              maintainContext: true
-            - name: Futásidejű verzió sztringje REST API-hívásokhoz
-              href: /azure/databricks/dev-tools/api/latest/runtime-version-string
               maintainContext: true
         - name: REST API 1.2
           href: /azure/databricks/dev-tools/api/1.2/index
@@ -1767,6 +1788,9 @@
           items:
             - name: A platform kibocsátási megjegyzései
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2020. június
+              href: /azure/databricks/release-notes/product/2020/june
               maintainContext: true
             - name: 2020. május
               href: /azure/databricks/release-notes/product/2020/may
