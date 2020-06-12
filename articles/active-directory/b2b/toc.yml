@@ -52,6 +52,8 @@
           href: identity-providers.md
         - name: Önkiszolgáló regisztráció felhasználói folyamatai (előzetes verzió)
           href: self-service-sign-up-overview.md
+        - name: Önkiszolgáló regisztrációs API-összekötők (előzetes)
+          href: api-connectors-overview.md
         - name: Azure AD-jogosultságkezelés
           href: self-service-portal.md
         - name: Aktuális korlátozások
@@ -95,6 +97,10 @@
               href: user-flow-add-custom-attributes.md
             - name: A felhasználói folyamat nyelvének testreszabása
               href: user-flow-customize-language.md
+            - name: API-összekötő hozzáadása
+              href: self-service-sign-up-add-api-connector.md
+            - name: Egyéni jóváhagyási rendszer hozzáadása
+              href: self-service-sign-up-add-approvals.md
         - name: Vendégfelhasználói fiókok kezelése
           items:
             - name: B2B felhasználó hozzáadása szerepkörhöz

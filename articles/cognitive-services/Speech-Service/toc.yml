@@ -462,6 +462,8 @@
       items:
         - name: Mi a Speaker Recognition?
           href: speaker-recognition-overview.md
+        - name: A Speaker Recognition alapjai
+          href: speaker-recognition-basics.md
     - name: Referencia
       items:
         - name: REST API-k

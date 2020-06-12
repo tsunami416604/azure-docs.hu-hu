@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
 ms.service: marketplace

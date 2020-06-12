@@ -42,6 +42,8 @@
               href: class-type-ethical-hacking.md
             - name: Adatbázis-kezelés
               href: class-type-database-management.md
+            - name: Azure SQL Database kezelése és fejlesztése
+              href: class-type-sql-server.md
             - name: Python- és Jupyter-notebook
               href: class-type-jupyter-notebook.md
             - name: Mobilalkalmazások fejlesztése az Android Studio használatával
@@ -74,6 +76,8 @@
           href: allow-lab-creator-pick-lab-location.md
         - name: Csatlakozás virtuális társhálózathoz
           href: how-to-connect-peer-virtual-network.md
+        - name: Megosztott erőforrással rendelkező tesztkörnyezet létrehozása
+          href: how-to-create-a-lab-with-shared-resource.md
         - name: Megosztott rendszerkép-katalógus csatolása vagy leválasztása
           href: how-to-attach-detach-shared-image-gallery.md
         - name: További tulajdonosok hozzáadása egy osztálytermi tesztkörnyezethez
