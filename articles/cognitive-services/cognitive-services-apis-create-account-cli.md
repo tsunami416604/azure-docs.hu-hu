@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
 ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219609"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704709"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Cognitive Services-erőforrás létrehozása az Azure parancssori felületének (CLI) használatával
 
@@ -60,7 +60,7 @@ az account list-locations \
 
 Az Azure-beli hely létrehozása után hozzon létre egy új erőforráscsoportot az Azure CLI-ben az az [Group Create](/cli/azure/group#az-group-create) paranccsal.
 
-Az alábbi példában cserélje le az Azure-helyet `westus2` az előfizetéséhez elérhető Azure-helyek egyikére.
+Az alábbi példában cserélje le az Azure-helyet az `westus2` előfizetéséhez elérhető Azure-helyek egyikére.
 
 ```azurecli-interactive
 az group create \
@@ -82,16 +82,16 @@ az group create \
 
 
 > [!NOTE]
-> Az alábbi Cognitive Services számos olyan ingyenes szintet használhat, amellyel kipróbálhatja a szolgáltatást. Az ingyenes szintet az erőforráshoz tartozó `F0` SKU-ként használhatja.
+> Az alábbi Cognitive Services számos olyan ingyenes szintet használhat, amellyel kipróbálhatja a szolgáltatást. Az ingyenes szintet az `F0` erőforráshoz tartozó SKU-ként használhatja.
 
 ### <a name="vision"></a>Látás
 
 | Szolgáltatás                    | Altípus                      |
 |----------------------------|---------------------------|
-| Számítógépes látástechnológia            | `ComputerVision`          |
+| Computer Vision            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
 | Custom Vision – képzés   | `CustomVision.Training`   |
-| Arcfelismerés                       | `Face`                    |
+| Face                       | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
@@ -99,17 +99,17 @@ az group create \
 
 | Szolgáltatás            | Altípus                  |
 |--------------------|-----------------------|
-| Bing – Automatikus kiegészítés   | `Bing.Autosuggest.v7` |
-| Bing – Egyéni keresés | `Bing.CustomSearch`   |
-| Bing – Entitáskeresés | `Bing.EntitySearch`   |
+| Bing Autosuggest   | `Bing.Autosuggest.v7` |
+| Bing Custom Search | `Bing.CustomSearch`   |
+| Bing Entity Search | `Bing.EntitySearch`   |
 | Bing kereső        | `Bing.Search.v7`      |
-| Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
+| Bing Spell Check   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Beszéd
+### <a name="speech"></a>Speech
 
 | Szolgáltatás            | Altípus                 |
 |--------------------|----------------------|
-| Beszédszolgáltatások    | `SpeechServices`     |
+| Beszédfelismerési szolgáltatások    | `SpeechServices`     |
 | Beszédfelismerés | `SpeakerRecognition` |
 
 ### <a name="language"></a>Nyelv
@@ -126,7 +126,7 @@ az group create \
 
 | Szolgáltatás           | Altípus               |
 |-------------------|--------------------|
-| Anomaly Detector  | `AnomalyDetector`  |
+| Anomáliadetektor  | `AnomalyDetector`  |
 | Tartalommoderátor | `ContentModerator` |
 | Personalizer      | `Personalizer`     |
 
@@ -140,7 +140,7 @@ az cognitiveservices account list-kinds
 
 Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja az az [cognitiveservices Account Create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) parancsot. Ezzel a paranccsal új számlázandó erőforrást adhat hozzá a korábban létrehozott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet:
 
-Az alábbi paranccsal létrehozhat egy F0 (ingyenes) erőforrást az anomália `anomaly-detector-resource` -detektorhoz.
+Az alábbi paranccsal létrehozhat egy F0 (ingyenes) erőforrást az anomália-detektorhoz `anomaly-detector-resource` .
 
 ```azurecli-interactive
 az cognitiveservices account create \
@@ -188,7 +188,7 @@ az cognitiveservices account list-usage \
     --subscription subscription-name
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha törölni szeretné egy Cognitive Services erőforrást, törölheti azt vagy az erőforráscsoportot. Az erőforráscsoport törlése a csoportban található egyéb erőforrásokat is törli.
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220126"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689843"
 ---
 # <a name="configure-the-review-tool"></a>A felülvizsgálati eszköz konfigurálása
 
@@ -25,7 +25,7 @@ A [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) 
 
 ## <a name="manage-team-and-subteams"></a>Csapat és alcsoportok kezelése
 
-A **Team (csapat** ) lapon kezelheti azon felhasználók csoportjait&mdash;és alcsoportjait, akik értesítést kaphatnak bizonyos [emberi értékelések](../review-api.md#reviews) elindításáról. Csak egy csapattal rendelkezhet (amelyet a felülvizsgálati eszköz regisztrálásakor hoz létre), de több alcsapatot is létrehozhat. A csoport rendszergazdája meghívhatja a tagokat, megadhatja az engedélyeiket, és hozzárendelheti őket különböző alcsoportokhoz.
+A **Team (csapat** ) lapon kezelheti azon felhasználók csoportjait és alcsoportjait &mdash; , akik értesítést kaphatnak bizonyos [emberi értékelések](../review-api.md#reviews) elindításáról. Csak egy csapattal rendelkezhet (amelyet a felülvizsgálati eszköz regisztrálásakor hoz létre), de több alcsapatot is létrehozhat. A csoport rendszergazdája meghívhatja a tagokat, megadhatja az engedélyeiket, és hozzárendelheti őket különböző alcsoportokhoz.
 
 ![Az eszköz-csoport beállításainak áttekintése](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ Ha egynél több alcsapat tagja, válthat az alcsoportok között, hogy megvált
 
 ## <a name="tags"></a>Címkék
 
-A **címkék** lapon egyéni moderálási címkéket határozhat meg a két alapértelmezett moderálási címke&mdash;**isadult** (**a**) és a **isracy** (**r**) mellett. Ha egyéni címkét hoz létre, az az alapértelmezett címkékkel együtt elérhetővé válik az értékelésekben. A láthatósági beállítások átváltásával megváltoztathatja, hogy mely címkék jelenjenek meg az értékelésekben.
+A **címkék** lapon egyéni moderálási címkéket határozhat meg a két alapértelmezett moderálási címke &mdash; **isadult** (**a**) és a **isracy** (**r**) mellett. Ha egyéni címkét hoz létre, az az alapértelmezett címkékkel együtt elérhetővé válik az értékelésekben. A láthatósági beállítások átváltásával megváltoztathatja, hogy mely címkék jelenjenek meg az értékelésekben.
 
 ![Címkék nézet, beleértve a "látható" jelölőnégyzeteket](images/tags-4-disable.png)
 
@@ -95,9 +95,9 @@ A munkafolyamat létrehozásakor az alapértelmezett összekötő az Content Mod
 A [felülvizsgálati eszköz](./human-in-the-loop.md) a következő összekötőket tartalmazza:
 
 - Érzelemfelismerés
-- Arcfelismerés
+- Face
 - PhotoDNA Cloud Service
-- Szövegelemzés
+- Text Analytics
 
 ### <a name="add-a-connector"></a>Összekötő hozzáadása
 

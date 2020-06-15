@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 43476f3e3f125bc338ba25e8cce0e96baa76262b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636104"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730322"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -27,8 +27,6 @@ A nyelvi támogatás a beszédfelismerési szolgáltatás működésének függv
 A Microsoft Speech SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). 
 
 A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a **hang-és emberi címkével ellátott átiratok** vagy a **kapcsolódó szövegek feltöltésével: mondatok**. A testreszabással kapcsolatos további tudnivalókért tekintse meg [a Custom Speech első lépéseivel foglalkozó](how-to-custom-speech.md)témakört.
-
-A kiejtés javításával kapcsolatos további információkért lásd: [modell javítása Custom Speechhoz](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation).
 
 <!--
 To get the AM and ML bits:
@@ -103,23 +101,23 @@ További információ a regionális elérhetőségről: [régiók](regions.md#st
 
 |Területi beállítás  | Nyelv            | Nem | Hang neve | Stílus támogatása |
 |--|--|--|--|--|
-| `de-DE` | Német (Németország)                | Nő | "de-DE-KatjaNeural"      | Általános |
-| `en-AU` | Angol (Ausztrália)             | Nő | "en-AU-NatashaNeural"    | Általános |
-| `en-CA` | Angol (Kanada)                | Nő | "en-CA-ClaraNeural"      | Általános |
-| `en-GB` | Angol (Egyesült Királyság)                    | Nő | "en-GB-LibbyNeural"      | Általános |
-|         |                                 | Nő | "en-GB-MiaNeural"        | Általános |
+| `de-DE` | Német (Németország)                | Nő | "de-DE-KatjaNeural"      | Általános kérdések |
+| `en-AU` | Angol (Ausztrália)             | Nő | "en-AU-NatashaNeural"    | Általános kérdések |
+| `en-CA` | Angol (Kanada)                | Nő | "en-CA-ClaraNeural"      | Általános kérdések |
+| `en-GB` | Angol (Egyesült Királyság)                    | Nő | "en-GB-LibbyNeural"      | Általános kérdések |
+|         |                                 | Nő | "en-GB-MiaNeural"        | Általános kérdések |
 | `en-US` | Angol (US)                    | Nő | "en-US-AriaNeural"       | Általános, több hangstílus érhető el |
-|         |                                 | Férfi   | "en-US-GuyNeural"        | Általános |
-| `es-ES` | Spanyol (Spanyolország)                 | Nő | "es-ES-ElviraNeural"     | Általános |
-| `es-MX` | Spanyol (Mexikó)                | Nő | "es-MX-DaliaNeural"      | Általános |
-| `fr-CA` | Francia (Kanada)                 | Nő | "fr-CA-SylvieNeural"     | Általános |
-| `fr-FR` | Francia (Franciaország)                 | Nő | "fr-FR-DeniseNeural"     | Általános |
-| `it-IT` | Olasz (Olaszország)                 | Nő | "IT-IT-ElsaNeural"       | Általános |
-| `ja-JP` | Japán                        | Nő | "ja-JP-NanamiNeural"     | Általános |
-| `ko-KR` | Koreai                          | Nő | "ko-KR-SunHiNeural"      | Általános |
-| `nb-NO` | Norvég                       | Nő | "NB-NO-IselinNeural"     | Általános |
-| `pt-BR` | Portugál (Brazília)             | Nő | "PT-BR-FranciscaNeural"  | Általános |
-| `tr-TR` | Török                         | Nő | "TR-TR-EmelNeural"       | Általános |
+|         |                                 | Férfi   | "en-US-GuyNeural"        | Általános kérdések |
+| `es-ES` | Spanyol (Spanyolország)                 | Nő | "es-ES-ElviraNeural"     | Általános kérdések |
+| `es-MX` | Spanyol (Mexikó)                | Nő | "es-MX-DaliaNeural"      | Általános kérdések |
+| `fr-CA` | Francia (Kanada)                 | Nő | "fr-CA-SylvieNeural"     | Általános kérdések |
+| `fr-FR` | Francia (Franciaország)                 | Nő | "fr-FR-DeniseNeural"     | Általános kérdések |
+| `it-IT` | Olasz (Olaszország)                 | Nő | "IT-IT-ElsaNeural"       | Általános kérdések |
+| `ja-JP` | Japán                        | Nő | "ja-JP-NanamiNeural"     | Általános kérdések |
+| `ko-KR` | Koreai                          | Nő | "ko-KR-SunHiNeural"      | Általános kérdések |
+| `nb-NO` | Norvég                       | Nő | "NB-NO-IselinNeural"     | Általános kérdések |
+| `pt-BR` | Portugál (Brazília)             | Nő | "PT-BR-FranciscaNeural"  | Általános kérdések |
+| `tr-TR` | Török                         | Nő | "TR-TR-EmelNeural"       | Általános kérdések |
 | `zh-CN` | Kínai (mandarin, egyszerűsített)  | Nő | "zh-CN-XiaoxiaoNeural"   | Általános, több hangstílus érhető el |
 |         |                                 | Nő | "zh-CN-XiaoyouNeural"    | A szövegegység elbeszéléséhez optimalizált, gyerek hang |
 |         |                                 | Férfi   | "zh-CN-YunyangNeural"    | A hírek olvasására optimalizált, több hangstílus érhető el |
@@ -315,7 +313,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Beszédfelismerési szolgáltatás próbaverziós előfizetésének beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 * [Lásd: beszéd felismerése a C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

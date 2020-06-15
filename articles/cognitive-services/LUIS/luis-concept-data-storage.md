@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220016"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691713"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Adattárolás és eltávolítás Language Understanding (LUIS) Cognitive Services
 A LUIS a kulcs által meghatározott régiónak megfelelő Azure-adattárban tárolja a titkosított adatmennyiséget. Ezeket az adatkészleteket 30 napig tároljuk. 
@@ -28,7 +28,7 @@ A felhasználók teljes körű hozzáféréssel rendelkeznek az alkalmazás [exp
 
 A hosszúságú kimondott szöveg két különböző helyen is tárolhatók. 
 
-* **A szerzői folyamat**során a rendszer létrehozza és tárolja a hosszúságú kimondott szöveg a szándékban. A sikeres LUIS-alkalmazáshoz hosszúságú kimondott szöveg szükséges. Miután közzétette az alkalmazást, és fogadja a lekérdezéseket a végponton, a végponti kérelem querystring `log=false`határozza meg, hogy a végpontok kivonása van-e tárolva. Ha a rendszer tárolja a végpontot, az a portál **összeállítás** szakaszában található aktív tanulási hosszúságú kimondott szöveg részévé válik az **Endpoint hosszúságú kimondott szöveg áttekintése** szakaszban. 
+* **A szerzői folyamat**során a rendszer létrehozza és tárolja a hosszúságú kimondott szöveg a szándékban. A sikeres LUIS-alkalmazáshoz hosszúságú kimondott szöveg szükséges. Miután közzétette az alkalmazást, és fogadja a lekérdezéseket a végponton, a végponti kérelem querystring határozza meg, `log=false` hogy a végpontok kivonása van-e tárolva. Ha a rendszer tárolja a végpontot, az a portál **összeállítás** szakaszában található aktív tanulási hosszúságú kimondott szöveg részévé válik az **Endpoint hosszúságú kimondott szöveg áttekintése** szakaszban. 
 * Ha **áttekinti a végpont hosszúságú kimondott szöveg**, és felvesz egy leképezést, a rendszer már nem tárolja a megjelölést az áttekinthető végponti hosszúságú kimondott szöveg részeként. A rendszer hozzáadja az alkalmazás szándékához. 
 
 <a name="utterances-in-an-intent"></a>

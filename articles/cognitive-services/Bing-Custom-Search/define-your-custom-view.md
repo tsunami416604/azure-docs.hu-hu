@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220214"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710167"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing Custom Search-élmény konfigurálása
 
@@ -27,7 +27,7 @@ A webes szeletek definiálásához használja az alábbiakat:
 
 | Szelet neve | Leírás                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | A tartományi szeletek az internetes tartományon belül található összes tartalmat tartalmazzák. Például: `www.microsoft.com`. A kihagyás azt `www.` eredményezi, hogy a Bing a tartomány altartományait is keresi. Ha például a értéket adja meg `microsoft.com`, a Bing a vagy `support.microsoft.com` `technet.microsoft.com`a eredményeit is visszaadja. |
+| Domain     | A tartományi szeletek az internetes tartományon belül található összes tartalmat tartalmazzák. Például: `www.microsoft.com`. A kihagyás `www.` azt eredményezi, hogy a Bing a tartomány altartományait is keresi. Ha például a értéket adja meg `microsoft.com` , a Bing a vagy a eredményeit is visszaadja `support.microsoft.com` `technet.microsoft.com` . |
 | Aloldalt    | Az aloldali szeletek a aloldalon és az alatta lévő elérési utakon található összes tartalmat tartalmazzák. Az elérési úton legfeljebb két aloldal adható meg. Például: `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Weblap    | A weblap szeletek csak az adott weboldalt tartalmazhatják egyéni keresésekben. Opcionálisan megadhatja, hogy megjelenjenek-e az allapok.                                                                                                                                                                                  |
 
@@ -76,7 +76,7 @@ Miután hozzáadta a webes szeleteket az **aktív** listához, a Bing Custom Sea
 
 A webes tartalomhoz hasonló képeket és videókat kereshet a [Bing custom Image Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) vagy a [BING Custom Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)használatával. Ezeket az eredményeket az [üzemeltetett felhasználói felület](hosted-ui.md)vagy az API-k segítségével jelenítheti meg. 
 
-Ezek az API-k a nem egyéni [Bing Image Search](../Bing-Image-Search/overview.md) és [Bing Video Search](../Bing-Video-Search/search-the-web.md) API-kra hasonlítanak, de a teljes weben kereshetnek, és `customConfig` nem igénylik a lekérdezési paramétert. A képek és videók kezelésével kapcsolatos további információkért tekintse meg ezeket a dokumentációs készleteket. 
+Ezek az API-k a nem egyéni [Bing Image Search](../Bing-Image-Search/overview.md) és [Bing Video Search](../Bing-Video-Search/search-the-web.md) API-kra hasonlítanak, de a teljes weben kereshetnek, és nem igénylik a `customConfig` lekérdezési paramétert. A képek és videók kezelésével kapcsolatos további információkért tekintse meg ezeket a dokumentációs készleteket. 
 
 ## <a name="test-your-search-instance-with-the-preview-pane"></a>A keresési példány tesztelése a betekintő ablaktáblával
 
