@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: Lefedettség
       items:
+        - name: Lefedettség
+          href: geographic-coverage.md
         - name: Geokódolás lefedettsége
           href: geocoding-coverage.md
         - name: Forgalmi lefedettség

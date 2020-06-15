@@ -2,19 +2,19 @@
 title: 'Gyors útmutató: az SDK használata a Tudásbázis létrehozásához és kezeléséhez – QnA Maker'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet tudásbázist az ügyfél-SDK használatával.
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 06/11/2020
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 97d0ddd571f089cea2c656f6277e45d0d5eddb3d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: f80e791435d4bf9093b07842430e678b93843311
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608621"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765138"
 ---
-# <a name="quickstart-create-and-manage-knowledge-base"></a>Rövid útmutató: Tudásbázis létrehozása és kezelése
+# <a name="quickstart-qna-maker-client-library-for-net"></a>Rövid útmutató: a .NET-hez készült ügyféloldali kódtár QnA Maker
 
-Ismerkedjen meg az QnA Maker ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
+Ismerkedjen meg a .NET-hez készült QnA Maker ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
@@ -28,6 +28,13 @@ Ismerkedjen meg az QnA Maker ügyféloldali kódtár használatába. Az alábbi 
 [!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
 ::: zone-end
 
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+
+Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
+
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
@@ -36,3 +43,4 @@ Ismerkedjen meg az QnA Maker ügyféloldali kódtár használatába. Az alábbi 
 * [Mi a QnA Maker API?](../Overview/overview.md)
 * [Tudásbázis szerkesztése](../how-to/edit-knowledge-base.md)
 * [Használati elemzések beolvasása](../how-to/get-analytics-knowledge-base.md)
+

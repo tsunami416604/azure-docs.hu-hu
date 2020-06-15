@@ -22,6 +22,9 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: Parancssor
           href: functions-create-first-azure-function-azure-cli.md
+        - name: ARM-sablon
+          displayName: Resource Manager
+          href: functions-create-first-function-resource-manager.md
     - name: Csatlakozás a tárolóhoz
       items:
         - name: Visual Studio Code

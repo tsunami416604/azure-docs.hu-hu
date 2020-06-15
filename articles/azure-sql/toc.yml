@@ -35,6 +35,8 @@
           href: temporal-tables.md
         - name: Vertikális felskálázás/leskálázás
           href: database/scale-resources.md
+        - name: Felskálázás olvasása
+          href: database/read-scale-out.md
         - name: Biztonság
           items:
             - name: Áttekintés
@@ -282,8 +284,6 @@
           href: database/connectivity-architecture.md
         - name: Kapcsolati beállítások
           href: database/connectivity-settings.md
-        - name: Felskálázás olvasása
-          href: database/read-scale-out.md
         - name: A T-SQL eltérései
           href: database/transact-sql-tsql-differences-sql-server.md
         - name: Azure Automation

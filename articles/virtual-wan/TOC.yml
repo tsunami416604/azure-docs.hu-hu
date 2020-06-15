@@ -36,8 +36,12 @@
           href: virtual-wan-locations-partners.md
         - name: Automation-irányelvek partnerek számára
           href: virtual-wan-configure-automation-providers.md
-    - name: IPsec-szabályzatok
-      href: virtual-wan-ipsec.md
+    - name: Helyek közötti kapcsolat
+      items:
+        - name: Információk az IPsec-házirendekről
+          href: virtual-wan-ipsec.md
+        - name: Több ISP-hivatkozás – Azure-beli elérési út kiválasztása
+          href: path-selection-multiple-links.md
 - name: Útmutatók
   items:
     - name: Virtuális hálózati átjáró csatlakoztatása virtuális WAN-ra
@@ -58,8 +62,6 @@
       items:
         - name: Helyek közötti kapcsolat létrehozása
           href: virtual-wan-site-to-site-portal.md
-        - name: Több ISP-hivatkozás – Azure-beli elérési út kiválasztása
-          href: path-selection-multiple-links.md
     - name: Felhasználói VPN-kapcsolatok (pont–hely)
       items:
         - name: Felhasználói VPN-kapcsolat létrehozása

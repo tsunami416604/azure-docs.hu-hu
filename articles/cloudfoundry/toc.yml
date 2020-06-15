@@ -1,18 +1,18 @@
 - name: Cloud Foundry – dokumentáció
   href: index.yml
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Marketplace-sablon
       href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: CF létrehozása az Azure-on
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: CF-alkalmazás üzembe helyezése az Azure-ban
-      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
     - name: Cloud Foundry az Azure-on
-      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+      href: /azure/cloudfoundry/cloudfoundry-get-started
     - name: A CF OMS Nozzle üzembe helyezése
       href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
     - name: A Cloud Foundry Azure-ral való integrálása
