@@ -4,6 +4,8 @@
   items:
     - name: Mit takar a Windows Virtual Desktop?
       href: overview.md
+    - name: Újdonságok
+      href: whats-new.md
     - name: 2019. őszi kibocsátási megjegyzések
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Oktatóanyagok
@@ -82,6 +84,8 @@
       href: teams-on-wvd.md
     - name: Az Azure Multi-Factor Authentication beállítása
       href: set-up-mfa.md
+    - name: Automatikus frissítések konfigurálása
+      href: configure-automatic-updates.md
     - name: Nyelvi csomagok telepítése
       href: language-packs.md
 - name: Alapelvek

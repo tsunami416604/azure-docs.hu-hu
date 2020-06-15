@@ -256,12 +256,10 @@
           href: limit-egress-traffic.md
         - name: Azure Active Directory-integráció engedélyezése
           items:
-            - name: Az Azure AD integrálása (előzetes verzió)
+            - name: AKS által kezelt AAD (előzetes verzió)
               href: managed-aad.md
             - name: Az Azure parancssori felületének használata
               href: azure-ad-integration-cli.md
-            - name: Az Azure Portal használata
-              href: azure-ad-integration.md
         - name: Kubernetes RBAC használata Azure AD-integrációval
           href: azure-ad-rbac.md
           maintainContext: true

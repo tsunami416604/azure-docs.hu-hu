@@ -166,8 +166,12 @@
       href: evaluate-recommender.md
     - name: SVD-ajánló pontozása
       href: score-svd-recommender.md
+    - name: Wide and Deep ajánló pontozása
+      href: score-wide-and-deep-recommender.md
     - name: SVD-ajánló betanítása
       href: train-svd-recommender.md
+    - name: Wide and Deep ajánló betanítása
+      href: train-wide-and-deep-recommender.md
 - name: Rendellenességek észlelése
   items:
     - name: PCA-alapú rendellenesség-észlelés

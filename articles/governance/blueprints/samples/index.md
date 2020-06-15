@@ -1,14 +1,14 @@
 ---
 title: Tervminták indexe
 description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek alapjainak Azure Blueprintsszel történő üzembe helyezésére szolgáló megfelelőségi és standard minták indexe.
-ms.date: 02/26/2020
+ms.date: 06/02/2020
 ms.topic: sample
-ms.openlocfilehash: 582a4bbc1ec21e231d2a9f1feb1cfef34b3cce37
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 0ed5af98644f116622aa44a2503161ce2fd6225b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594270"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729999"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -19,8 +19,9 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 |  |  |
 |---------|---------|
 | [Australian Government ISM PROTECTED](./ism-protected/control-mapping.md) | Védőkorlátokat biztosít az Australian Government ISM PROTECTED szabványnak való megfelelőséghez. |
+| [Azure-biztonsági teljesítményteszt](./azure-security-benchmark.md) | Védőkorlátokat biztosít az [Azure biztonsági-teljesítménytesztnek](../../../security/benchmarks/overview.md) való megfelelőséghez. |
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Védőkorlátokat biztosít a Canada Federal Protected B, Medium Integrity, Medium Availability (PBMM) szabványnak való megfeleléshez. |
-| [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| Szabályzatkészletet biztosít a CIS Microsoft Azure Foundations Benchmark ajánlásainak való megfelelőséghez. |
+| [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| Szabályzatkészletet biztosít a CIS Microsoft Azure Foundations Benchmark ajánlásainak való megfelelőséghez. |
 | [DoD Impact Level 4](./dod-impact-level-4/index.md) | Szabályzatkészletet biztosít, amely segít megfelelni a DoD Impact Level 4 előírásainak. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Szabályzatkészletet biztosít a FedRAMP Moderate előírásainak való megfeleléshez. |
 | [FedRAMP High](./fedramp-h/index.md) | Szabályzatkészletet biztosít a FedRAMP High előírásainak való megfeleléshez. |
@@ -30,7 +31,7 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 | [ISO 27001 – Megosztott szolgáltatások](./iso27001-shared/index.md) | Szabványoknak megfelelő infrastruktúra-minták és szabályzati védőkorlátok együttesét biztosítja, amelyek segítséget nyújtanak az ISO 27001-tanúsítvány megszerzéséhez. |
 | [ISO 27001 App Service Environment/SQL Database-számításifeladat](./iso27001-ase-sql-workload/index.md) | Kiegészítő infrastruktúrát biztosít az [ISO 27001 Megosztott szolgáltatások](./iso27001-shared/index.md) tervmintához. |
 | [Média](./media/index.md) | Szabályzatkészletet biztosít a Média MPAA előírásainak való megfeleléshez. |
-| [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | Védőkorlátokat biztosít az NIST SP 800-53 R4 keretrendszernek való megfelelőséghez. |
+| [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | Védőkorlátokat biztosít az NIST SP 800-53 R4 keretrendszernek való megfelelőséghez. |
 | [PCI-DSS 3.2.1](./pci-dss-3.2.1/index.md) | Szabályzatkészletet biztosít PCI-DSS 3.2.1 szabványnak való megfelelőséghez. |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | Segítség a SWIFT CSP-CSCF v2020-megfelelőséghez. |
 | [UK OFFICIAL és az Egyesült Királyság Nemzeti Egészségügyi Szolgálata – Szabályozás](./ukofficial/index.md) | Szabványoknak megfelelő infrastruktúra-minták és szabályzati védőkorlátok együttesét biztosítja, amelyek segítséget nyújtanak a UK OFFICIAL- és az Egyesült Királyság Nemzeti Egészségügyi Szolgálata által kiadott tanúsítvány megszerzéséhez. |

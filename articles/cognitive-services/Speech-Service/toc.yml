@@ -12,6 +12,8 @@
       href: language-support.md
     - name: Régiós támogatás
       href: regions.md
+    - name: A docs újdonságai
+      href: whats-new.md
 - name: Diktálás
   items:
     - name: A Beszédfelismerés dokumentációja
