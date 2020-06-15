@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 548d324a67b1bbee4741724faf2cf27ec6c3c3c1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671706"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84754662"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
-1. A **megoldáskezelő**megnyitásához `MainPage.xaml`nyissa meg a t.
+1. A **megoldáskezelő**megnyitásához nyissa meg a t `MainPage.xaml` .
 
 1. A tervező XAML nézetében cserélje le a teljes tartalmat a következő kódrészletre, amely egy kezdetleges felhasználói felületet definiál:
 
@@ -83,9 +83,9 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 A Tervező nézet frissül az alkalmazás felhasználói felületének megjelenítéséhez.
 
-1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs`. (Ez a következő alá `MainPage.xaml`van csoportosítva:.) Cserélje le a fájl tartalmát az alábbira, amely a következőket tartalmazza:
+1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` . (Ez a következő alá van csoportosítva: `MainPage.xaml` .) Cserélje le a fájl tartalmát az alábbira, amely a következőket tartalmazza:
 
-- `using`a és `Speech.Dialog` a `Speech` névterek utasításai
+- `using`a és a `Speech` `Speech.Dialog` névterek utasításai
 - Egyszerű implementáció a mikrofon elérésének biztosításához, amely a gomb kezelőjéhez van kötve
 - Alapvető felhasználói felületi segítők az alkalmazásban lévő üzenetek és hibák megjelenítéséhez
 - Az inicializálási kód elérési útjának kiinduló pontja, amelyet később fel kell tölteni
@@ -259,16 +259,16 @@ A Tervező nézet frissül az alkalmazás felhasználói felületének megjelen�
         }
     }
     ```
-1. Adja hozzá a következő kódrészletet a metódus törzséhez `InitializeDialogServiceConnector`. Ez a kód hozza `DialogServiceConnector` létre az előfizetési adatokat.
+1. Adja hozzá a következő kódrészletet a metódus törzséhez `InitializeDialogServiceConnector` . Ez a kód hozza létre az `DialogServiceConnector` előfizetési adatokat.
 
     ```csharp
     // Create a BotFrameworkConfig by providing a Speech service subscription key
-    // the RecoLanguage property is optional (default en-US)
+    // the botConfig.Language property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
 
     var botConfig = BotFrameworkConfig.FromSubscription(speechSubscriptionKey, region);
-    botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
+    botConfig.Language = "en-US";
     connector = new DialogServiceConnector(botConfig);
     ```
 
@@ -278,9 +278,9 @@ A Tervező nézet frissül az alkalmazás felhasználói felületének megjelen�
    > [!NOTE]
    > A robot konfigurálásával kapcsolatos információkért tekintse meg a [közvetlen vonalas beszéd csatorna](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)robot Framework dokumentációját.
 
-1. Cserélje le a `YourSpeechSubscriptionKey` karakterláncokat és `YourServiceRegion` a saját értékeit a beszédfelismerési előfizetéshez és a [régióhoz](~/articles/cognitive-services/speech-service/regions.md).
+1. Cserélje le a karakterláncokat `YourSpeechSubscriptionKey` és a `YourServiceRegion` saját értékeit a beszédfelismerési előfizetéshez és a [régióhoz](~/articles/cognitive-services/speech-service/regions.md).
 
-1. Fűzze hozzá a következő kódrészletet a metódus törzsének végéhez `InitializeDialogServiceConnector`. Ez a kód a által `DialogServiceConnector` hivatkozott események kezelőit állítja be a robot tevékenységei, a beszédfelismerés eredményei és egyéb információk közlésére.
+1. Fűzze hozzá a következő kódrészletet a metódus törzsének végéhez `InitializeDialogServiceConnector` . Ez a kód a által hivatkozott események kezelőit állítja be a `DialogServiceConnector` robot tevékenységei, a beszédfelismerés eredményei és egyéb információk közlésére.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -335,7 +335,7 @@ A Tervező nézet frissül az alkalmazás felhasználói felületének megjelen�
     };
     ```
 
-1. Adja hozzá a következő kódrészletet a `ListenButton_ButtonClicked` metódus törzséhez a `MainPage` osztályban. Ez a kód a `DialogServiceConnector` figyelést állítja be, mert már megalakította a konfigurációt, és regisztrálta az eseménykezelőket.
+1. Adja hozzá a következő kódrészletet a metódus törzséhez a `ListenButton_ButtonClicked` `MainPage` osztályban. Ez a kód a `DialogServiceConnector` figyelést állítja be, mert már megalakította a konfigurációt, és regisztrálta az eseménykezelőket.
 
     ```csharp
     if (connector == null)
@@ -368,9 +368,9 @@ A Tervező nézet frissül az alkalmazás felhasználói felületének megjelen�
 
 Most már készen áll az alkalmazás létrehozására és az egyéni hangsegéd tesztelésére a Speech Service használatával.
 
-1. Az alkalmazás létrehozásához a menüsávon válassza a **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a **Build**  >  **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. Az alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az F5 billentyűt). **F5** >  Megjelenik a **HelloWorld** ablak.
+1. **Debug**  >  Az alkalmazás indításához válassza a hibakeresés**indítása hibakeresést** (vagy nyomja le az **F5**billentyűt). Megjelenik a **HelloWorld** ablak.
 
    ![Minta UWP hangsegéd alkalmazás a C#-ben – gyors útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/25/2020
+ms.date: 06/11/2020
 ms.author: aahi
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: be9b82b411d8ba76f0b592cb25e7ff70917b934f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c475c17e5d196c0eedf38df83f782309143ad979
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605476"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735554"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
@@ -33,7 +33,7 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * Az Text Analytics ügyféloldali függvénytár legújabb stabil verziója `3.0` .
+> * A Text Analytics API legújabb stabil verziója: `3.0` .
 >    * Ügyeljen arra, hogy csak az Ön által használt verzió utasításait kövesse.
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt.
 
@@ -44,7 +44,7 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * Az Text Analytics ügyféloldali függvénytár legújabb stabil verziója `3.0` .
+> * A Text Analytics API legújabb stabil verziója: `3.0` .
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -54,7 +54,7 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * Az Text Analytics ügyféloldali függvénytár legújabb stabil verziója `3.0` .
+> * A Text Analytics API legújabb stabil verziója: `3.0` .
 >    * Ügyeljen arra, hogy csak az Ön által használt verzió utasításait kövesse.
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt.
 > * A [böngészőben](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)a Text Analytics ügyféloldali kódtár ezen verzióját is futtathatja.
@@ -66,7 +66,7 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * Az Text Analytics ügyféloldali függvénytár legújabb stabil verziója `3.0` .
+> * A Text Analytics API legújabb stabil verziója: `3.0` .
 >    * Ügyeljen arra, hogy csak az Ön által használt verzió utasításait kövesse.
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt. 
 
@@ -94,7 +94,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Megoldás megismerése](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
