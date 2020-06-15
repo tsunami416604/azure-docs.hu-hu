@@ -122,11 +122,9 @@
     - name: Példák
       href: analysis-services-samples.md
     - name: Az Analysis Services csapatának blogja
-      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
-    - name: Microsoft Q&A kérdések oldala az Azure Analysis Serviceshez
-      href: 'https://docs.microsoft.com/answers/topics/azure-analysis-services.html'
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+      href: 'https://powerbi.microsoft.com/blog/category/analysis-services/'
+    - name: Azure-frissítések
+      href: 'https://azure.microsoft.com/updates/?query=Analysis%20Services'
     - name: Az Azure állapota
       href: 'https://azure.microsoft.com/status/'
     - name: Visszajelzés

@@ -97,6 +97,8 @@
           href: budget.md
         - name: Privát végpontok használata Batch-fiókokkal
           href: private-connectivity.md
+        - name: Ügyfél által felügyelt kulcsok konfigurálása
+          href: batch-customer-managed-key.md
     - name: Hitelesítés az Azure AD-vel
       items:
         - name: Azure AD a Batch szolgáltatással
