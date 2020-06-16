@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220467"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782534"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédfelismerési szolgáltatás által támogatott régiók
 
@@ -28,7 +28,7 @@ A beszédfelismerési szolgáltatás hívása esetén győződjön meg arról, h
 
 ## <a name="speech-sdk"></a>Beszéd SDK
 
-A [SPEECH SDK](speech-sdk.md)-ban a régiók karakterláncként vannak megadva (például paraméterként a C# Speech SDK `SpeechConfig.FromSubscription` -ban).
+A [SPEECH SDK](speech-sdk.md)-ban a régiók karakterláncként vannak megadva (például paraméterként `SpeechConfig.FromSubscription` a C# Speech SDK-ban).
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Beszéd – szöveg, szöveg – beszéd és fordítás
 
@@ -38,7 +38,7 @@ A beszédfelismerési szolgáltatás a következő régiókban érhető el a bes
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-Ha a [SPEECH SDK](speech-sdk.md)-t `SpeechConfig.FromSubscription`használja, a régiókat a **régió azonosítója** adja meg (például paraméterként). Győződjön meg arról, hogy a régió megfelel az előfizetés régiójának.
+Ha a [SPEECH SDK](speech-sdk.md)-t használja, a régiókat a **régió azonosítója** adja meg (például paraméterként `SpeechConfig.FromSubscription` ). Győződjön meg arról, hogy a régió megfelel az előfizetés régiójának.
 
 ### <a name="intent-recognition"></a>Szándékfelismerés
 
@@ -75,6 +75,10 @@ A [SPEECH SDK](speech-sdk.md) a következő régiókban támogatja a **hangsegé
 | Észak-Európa   | `northeurope`        |
 | Délkelet-Ázsia | `southeastasia`      |
 
+### <a name="speaker-recognition"></a>Beszélőfelismerés
+
+Speaker Recognition jelenleg csak a régióban érhető el `westus` .
+
 ## <a name="rest-apis"></a>REST API-k
 
 A beszédfelismerési szolgáltatás a REST-végpontokat is elérhetővé teszi a beszéd – szöveg és a szöveg – beszéd kérésekhez.
@@ -89,12 +93,12 @@ A REST API végpontjának formátuma a következő:
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-Cserélje `<REGION_IDENTIFIER>` le az elemet az előfizetés régiójának megfelelő azonosítóra ebből a táblából:
+Cserélje le az `<REGION_IDENTIFIER>` elemet az előfizetés régiójának megfelelő azonosítóra ebből a táblából:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> A nyelvi paramétert az URL-címhez kell hozzáfűzni, hogy ne kapjon 4xx HTTP-hibát. Az USA nyugati végpontját használó angol nyelv például a következő: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
+> A nyelvi paramétert az URL-címhez kell hozzáfűzni, hogy ne kapjon 4xx HTTP-hibát. Az USA nyugati végpontját használó angol nyelv például a következő: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
 ### <a name="text-to-speech"></a>Szövegfelolvasás
 

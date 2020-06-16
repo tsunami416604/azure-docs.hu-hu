@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3e32c7d7da918eb58de47d8fc9b7688a189cb022
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730322"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783095"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -39,8 +39,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Területi beállítás  | Nyelv                          | Támogatott | Testreszabások                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | Arab (UAE)                      | Igen       | Nem                                                |
-| `ar-BH` | Arab (Bahrein), modern standard | Yes       | Nyelvi modell                                    |
-| `ar-EG` | Arab (Egyiptom)                    | Yes       | Nyelvi modell                                    |
+| `ar-BH` | Arab (Bahrein), modern standard | Igen       | Nyelvi modell                                    |
+| `ar-EG` | Arab (Egyiptom)                    | Igen       | Nyelvi modell                                    |
 | `ar-IL` | Arab (Izrael)                   | Igen       | Nem                                                |
 | `ar-JO` | Arab (Jordánia)                   | Igen       | Nem                                                |
 | `ar-KW` | Arab (Kuvait)                   | Igen       | Nem                                                |
@@ -48,41 +48,41 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-PS` | Arab (Palesztina)                | Igen       | Nem                                                |
 | `ar-QA` | Arab (Katar)                    | Igen       | Nem                                                |
 | `ar-SA` | Arab (Szaúd-Arábia)             | Igen       | Nem                                                |
-| `ar-SY` | Arab (Szíria)                    | Yes       | Nyelvi modell                                    |
-| `ca-ES` | Katalán                           | Yes       | Nyelvi modell                                    |
-| `da-DK` | Dán (Dánia)                  | Yes       | Nyelvi modell                                    |
-| `de-DE` | Német (Németország)                  | Yes       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
-| `en-AU` | Angol (Ausztrália)               | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `en-CA` | Angol (Kanada)                  | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `en-GB` | angol (Egyesült Királyság)          | Yes       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
-| `en-IN` | Angol (India)                   | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `en-NZ` | Angol (Új-Zéland)             | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `en-US` | angol (Egyesült Államok)           | Yes       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
-| `es-ES` | Spanyol (Spanyolország)                   | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `es-MX` | Spanyol (Mexikó)                  | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `fi-FI` | Finn (Finnország)                 | Yes       | Nyelvi modell                                    |
-| `fr-CA` | Francia (Kanada)                   | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `fr-FR` | Francia (Franciaország)                   | Yes       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
-| `gu-IN` | Gudzsaráti (indiai)                 | Yes       | Nyelvi modell                                    |
-| `hi-IN` | Hindi (India)                     | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `it-IT` | Olasz (Olaszország)                   | Yes       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
-| `ja-JP` | Japán (Japán)                  | Yes       | Nyelvi modell                                    |
-| `ko-KR` | Koreai (Dél-Korea)                    | Yes       | Nyelvi modell                                    |
-| `mr-IN` | Marathi (India)                   | Yes       | Nyelvi modell                                    |
-| `nb-NO` | Norvég (nyelven) (Norvégia)       | Yes       | Nyelvi modell                                    |
-| `nl-NL` | Holland (Hollandia)               | Yes       | Nyelvi modell                                    |
-| `pl-PL` | Lengyel (Lengyelország)                   | Yes       | Nyelvi modell                                    |
-| `pt-BR` | Portugál (Brazília)               | Yes       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
-| `pt-PT` | Portugál (Portugália)             | Yes       | Nyelvi modell                                    |
-| `ru-RU` | Orosz (Oroszország)                  | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `sv-SE` | Svéd (Svédország)                  | Yes       | Nyelvi modell                                    |
-| `ta-IN` | Tamil (India)                     | Yes       | Nyelvi modell                                    |
-| `te-IN` | Telugu (India)                    | Yes       | Nyelvi modell                                    |
+| `ar-SY` | Arab (Szíria)                    | Igen       | Nyelvi modell                                    |
+| `ca-ES` | Katalán                           | Igen       | Nyelvi modell                                    |
+| `da-DK` | Dán (Dánia)                  | Igen       | Nyelvi modell                                    |
+| `de-DE` | Német (Németország)                  | Igen       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
+| `en-AU` | Angol (Ausztrália)               | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `en-CA` | Angol (Kanada)                  | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `en-GB` | angol (Egyesült Királyság)          | Igen       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
+| `en-IN` | Angol (India)                   | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `en-NZ` | Angol (Új-Zéland)             | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `en-US` | angol (Egyesült Államok)           | Igen       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
+| `es-ES` | Spanyol (Spanyolország)                   | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `es-MX` | Spanyol (Mexikó)                  | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `fi-FI` | Finn (Finnország)                 | Igen       | Nyelvi modell                                    |
+| `fr-CA` | Francia (Kanada)                   | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `fr-FR` | Francia (Franciaország)                   | Igen       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
+| `gu-IN` | Gudzsaráti (indiai)                 | Igen       | Nyelvi modell                                    |
+| `hi-IN` | Hindi (India)                     | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `it-IT` | Olasz (Olaszország)                   | Igen       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
+| `ja-JP` | Japán (Japán)                  | Igen       | Nyelvi modell                                    |
+| `ko-KR` | Koreai (Dél-Korea)                    | Igen       | Nyelvi modell                                    |
+| `mr-IN` | Marathi (India)                   | Igen       | Nyelvi modell                                    |
+| `nb-NO` | Norvég (nyelven) (Norvégia)       | Igen       | Nyelvi modell                                    |
+| `nl-NL` | Holland (Hollandia)               | Igen       | Nyelvi modell                                    |
+| `pl-PL` | Lengyel (Lengyelország)                   | Igen       | Nyelvi modell                                    |
+| `pt-BR` | Portugál (Brazília)               | Igen       | Akusztikai modell<br>Nyelvi modell<br>Kiejtése |
+| `pt-PT` | Portugál (Portugália)             | Igen       | Nyelvi modell                                    |
+| `ru-RU` | Orosz (Oroszország)                  | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `sv-SE` | Svéd (Svédország)                  | Igen       | Nyelvi modell                                    |
+| `ta-IN` | Tamil (India)                     | Igen       | Nyelvi modell                                    |
+| `te-IN` | Telugu (India)                    | Igen       | Nyelvi modell                                    |
 | `th-TH` | Thai (Thaiföld)                   | Igen       | Nem                                                |
-| `tr-TR` | Török (Törökország)                  | Yes       | Nyelvi modell                                    |
-| `zh-CN` | Kínai (mandarin, egyszerűsített)    | Yes       | Akusztikai modell<br>Nyelvi modell                  |
-| `zh-HK` | Kínai (kantoni, hagyományos)  | Yes       | Nyelvi modell                                    |
-| `zh-TW` | Kínai (tajvani mandarin)      | Yes       | Nyelvi modell                                    |
+| `tr-TR` | Török (Törökország)                  | Igen       | Nyelvi modell                                    |
+| `zh-CN` | Kínai (mandarin, egyszerűsített)    | Igen       | Akusztikai modell<br>Nyelvi modell                  |
+| `zh-HK` | Kínai (kantoni, hagyományos)  | Igen       | Nyelvi modell                                    |
+| `zh-TW` | Kínai (tajvani mandarin)      | Igen       | Nyelvi modell                                    |
 
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 
@@ -313,7 +313,28 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="next-steps"></a>További lépések
+## <a name="speaker-recognition"></a>Beszélőfelismerés
+
+A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
+
+| Területi beállítás | Nyelv | Szövegtől függő ellenőrzés | Szövegtől független ellenőrzés | Szöveg – független azonosítás |
+|----|----|----|----|----|
+| en-US | Angol (US) | igen | igen | igen |
+|zh-CN  |Kínai (mandarin, egyszerűsített)|    n.a.|    igen|    igen|
+|de-DE  |Német (Németország)   |n.a.    |igen    |igen|
+|en-GB  |Angol (Egyesült Királyság)   |n.a.    |igen    |igen|
+|fr-FR  |Francia (Franciaország)    |n.a.    |igen    |igen|
+|EN-AU  |Angol (Ausztrália)    |n.a.    |igen    |igen|
+|en-CA  |Angol (Kanada)   |n.a.|   igen|    igen|
+|fr – CA  |Francia (Kanada)    |n.a.    |igen|   igen|
+|it-IT  |Olasz|   n.a. |igen|   igen|
+|es-ES| Spanyol (Spanyolország) |n.a.    |igen|   igen|
+|es-MX  |Spanyol (Mexikó)   |n.a.|   igen|    igen|
+|ja-JP| Japán    |n.a.    |igen    |igen|
+|pt-BR| Portugál (Brazília)|    n.a.|    igen|    igen|
+|ko-KR| Koreai  |n.a.    |igen|   igen|
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Beszédfelismerési szolgáltatás próbaverziós előfizetésének beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 * [Lásd: beszéd felismerése a C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

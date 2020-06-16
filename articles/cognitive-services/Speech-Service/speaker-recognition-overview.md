@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635169"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780885"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Mi az Azure Speaker Recognition szolgáltatás?
 
@@ -56,7 +56,21 @@ Szabályozhatja, hogy mennyi ideig kell megőrizni az adatmegőrzési időtartam
 
 Akárcsak az összes Cognitive Services erőforrás esetében, a Speaker Recognition szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. Győződjön meg arról, hogy megkapta a megfelelő engedélyeket a felhasználóktól Speaker Recognition számára. További információkért tekintse meg a [Cognitive Services page](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)   Microsoft adatvédelmi központjának Cognitive Services lapját. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="common-questions-and-solutions"></a>Gyakori kérdések és megoldások
+
+| Kérdés | Megoldás |
+|---------|----------|
+| Milyen forgatókönyveket lehet Speaker Recognition használni? | Call Center vásárlói adatok ellenőrzése, hangalapú beteg beadása, találkozó átirata, többfelhasználós eszköz személyre szabása|
+| Mi a különbség az azonosítás és az ellenőrzés között? | Az azonosítás az a folyamat, amelynek során a beszélők egy csoportjának tagjait észleli. Az ellenőrzés az a művelet, amely megerősíti, hogy egy beszélő ismert vagy **regisztrált** hanggal egyezik.|
+| Mi a különbség a szövegtől függő és a szövegtől független ellenőrzés között? | A szövegtől függő ellenőrzéshez egy konkrét, a regisztrációhoz és az elismeréshez megadott pass-mondatra van szükség. A szövegtől független ellenőrzéshez a beléptetéshez már több hangminta szükséges, de minden elbeszélhető, beleértve az elismerést is.|
+| Milyen nyelveket támogat a rendszer? | Angol, francia, spanyol, kínai, német, olasz, Japán és portugál |
+| Milyen Azure-régiók támogatottak? | Speaker Recognition egy előzetes verziójú szolgáltatás, amely jelenleg csak az USA nyugati régiójában érhető el.|
+| Milyen hangformátumok támogatottak? | 16 bites monó, 16kHz PCM-kódolású WAV |
+| A válaszok **elfogadása** és **elutasítása** nem pontos, hogyan hangolhatja be a küszöbértéket? | Mivel az optimális küszöbérték nagy mértékben eltér az alkalmazási helyzettől, az API eldönti, hogy az "elfogadás" vagy az "elutasítás" egyszerűen a 0,5 alapértelmezett küszöbértékén alapul-e. A speciális felhasználóknak javasoljuk, hogy bírálják felül az alapértelmezett döntést, és a saját forgatókönyv alapján végezze el az eredmény finomhangolását. |
+| Többször is regisztrálhat egy beszélőt? | Igen, a szövegtől függő ellenőrzéshez akár 50 alkalommal is regisztrálhat egy beszélőt. Szövegtől független ellenőrzés vagy beszélő azonosítása esetén akár 300 másodpercig is regisztrálhat. |
+| Milyen adattárolók tárolódnak az Azure-ban? | A beléptetési hang a szolgáltatásban tárolódik, amíg a hangprofil nem [törlődik](speaker-recognition-basics.md#deleting-voice-profile-enrollments). Az felismerő hangmintákat nem őrzi meg vagy tárolja a rendszer. |
+
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > * Az alkalmazásokban használható általános tervezési minták futtatásához hajtsa végre a Speaker Recognition [alapjaival](speaker-recognition-basics.md) foglalkozó cikket.
