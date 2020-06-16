@@ -70,7 +70,7 @@
 - name: Referencia
   items:
     - name: Az Azure Red Hat OpenShift parancssori felülete
-      href: /cli/azure/openshift
+      href: /cli/azure/aro
     - name: Azure Red Hat OpenShift REST API-k
       href: /rest/api/openshift
 - name: További források

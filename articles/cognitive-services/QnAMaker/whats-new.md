@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 05/19/2020
+ms.date: 06/15/2020
 ms.author: diberry
-ms.openlocfilehash: e1ac608d064e3ad60fb98f35abab61e453d20edd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654802"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791214"
 ---
 # <a name="whats-new-in-qna-maker"></a>A QnA Maker újdonságai
 
@@ -24,6 +24,10 @@ Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videó
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 Ismerje meg a QnA Maker újdonságait.
+
+### <a name="june-2020"></a>2020. június
+
+* Frissített [Power Virtual Agent](tutorials/integrate-with-power-virtual-assistant-fallback-topic.md) -oktatóanyag a gyorsabb és egyszerűbb lépések érdekében
 
 ### <a name="may-2020"></a>2020. május
 

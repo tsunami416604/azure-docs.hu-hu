@@ -198,8 +198,6 @@
       href: security-center-features-retirement-july2019.md
     - name: Végpontvédelmi értékelés és javaslatok
       href: security-center-endpoint-protection.md
-    - name: Biztonsági pontszám (örökölt)
-      href: security-center-secure-score.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel
