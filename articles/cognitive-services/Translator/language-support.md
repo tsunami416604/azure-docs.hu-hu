@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 7ddf556be584603ce3e7cb4a97eb4cc9ff63ec68
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718444"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888304"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -186,7 +186,7 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 | Nyelv    | Nyelvkód | Parancsfájl | Hová/honnan | Parancsfájl|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arab | `ar` | arab`Arab` | <--> | Latin betűs`Latn` |
-|Bangla  | `bn` | bengáli`Beng` | <--> | Latin betűs`Latn` |
+| Bangla  | `bn` | bengáli`Beng` | <--> | Latin betűs`Latn` |
 | Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | Latin betűs`Latn` |
 | Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | kínai (hagyományos)`Hant`|
 | Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos)`Hant`| <--> | Latin betűs`Latn` |
@@ -198,7 +198,7 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 | kannada | `kn` | kannada`Knda` | --> | Latin betűs`Latn` |
 | malajálam | `ml` | malajálam`Mlym` | --> | Latin betűs`Latn` |
 | marathi | `mr` | Devanagari`Deva` | --> | Latin betűs`Latn` |
-| Oriya | `or` | Oriya`Orya` | <--> | Latin betűs`Latn` |
+| Odia | `or` | Oriya`Orya` | <--> | Latin betűs`Latn` |
 | pandzsábi | `pa` | Gurmukhi`Guru`  | <--> | Latin betűs`Latn`  |
 | Szerb (cirill betűs) | `sr-Cyrl` | Cirill betűs`Cyrl`  | --> | Latin betűs`Latn` |
 | Szerb (latin betűs) | `sr-Latn` | Latin betűs`Latn` | --> | Cirill betűs`Cyrl`|
@@ -325,7 +325,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Vietnami      | `vi`          |
 | walesi | `cy` |
 
-## <a name="speech-translation"></a>Speech Translation
+## <a name="speech-translation"></a>Beszédfordítás
 A fordítás a fordító és a Cognitive Services Speech Service használatával érhető el. A [beszédfelismerési szolgáltatás dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/speech-service/) tájékozódhat a beszédfelismerés használatáról és az összes [elérhető nyelvi lehetőségről](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 ### <a name="speech-to-text"></a>Diktálás

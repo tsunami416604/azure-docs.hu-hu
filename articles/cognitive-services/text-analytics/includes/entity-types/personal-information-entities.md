@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637482"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902504"
 ---
 > [!NOTE]
 > Az észleléshez `PHI` használja a `domain=phi` paramétert és a modell verzióját, `2020-04-01` vagy később.
@@ -24,24 +24,24 @@ A rendszer a következő entitás-kategóriákat adja vissza a végpontra irány
 
 | Kategória   | Subcategory | Leírás                          | Modell verziójának indítása | Megjegyzések |
 |------------|-------------|--------------------------------------|------------------------|---|
-| Személy     | N/A         | Személyek nevei.  | `2019-10-01`  | Szintén visszaadott `domain=phi` . |
-| PersonType | N/A         | Egy személy által birtokolt feladattípusok vagy szerepkörök. | `2020-02-01` | |
-| PhoneNumber | N/A | Telefonszámok (csak az USA-beli és az EU-telefonszámok). | `2019-10-01` | Visszaadott érték`domain=phi` |
-|Szervezet  | N/A | Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek.  | `2019-10-01` | A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban.  |
+| Személy     | N.A.         | Személyek nevei.  | `2019-10-01`  | Szintén visszaadott `domain=phi` . |
+| PersonType | N.A.         | Egy személy által birtokolt feladattípusok vagy szerepkörök. | `2020-02-01` | |
+| PhoneNumber | N.A. | Telefonszámok (csak az USA-beli és az EU-telefonszámok). | `2019-10-01` | Visszaadott érték`domain=phi` |
+|Szervezet  | N.A. | Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek.  | `2019-10-01` | A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban.  |
 |Szervezet | Orvosi | Orvosi vállalatok és csoportok. | `2020-04-01` | Szintén visszaadott `domain=phi` . |
 |Szervezet | Értéktőzsde | Tőzsdei csoportok. | `2020-04-01` | Szintén visszaadott `domain=phi` . |
 | Szervezet | Sport | Sporttal kapcsolatos szervezetek. | `2020-04-01` | Szintén visszaadott `domain=phi` . |
-| Cím | N/A | Teljes levelezési címek.  | `2020-04-01` | Szintén visszaadott `domain=phi` . |
-| EU GPS-koordináták | N/A | GPS-koordináták az Európai Unión belüli helyszínekhez.  | `2019-10-01` |  |
-| E-mail | N/A | E-mail-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` .   |
-| URL-cím | N/A | Webhelyek URL-címei. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
-| IP | N/A | Hálózati IP-címek. | `2019-10-01` | |
-| DateTime | N/A | Dátum és napszakok. | `2019-10-01` |  | 
+| Cím | N.A. | Teljes levelezési címek.  | `2020-04-01` | Szintén visszaadott `domain=phi` . |
+| EU GPS-koordináták | N.A. | GPS-koordináták az Európai Unión belüli helyszínekhez.  | `2019-10-01` |  |
+| E-mail | N.A. | E-mail-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` .   |
+| URL-cím | N.A. | Webhelyek URL-címei. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
+| IP | N.A. | Hálózati IP-címek. | `2019-10-01` | |
+| DateTime | N.A. | Dátum és napszakok. | `2019-10-01` |  | 
 | DateTime | Dátum | Naptári dátumok. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
-| Mennyiség | N/A | Számok és numerikus mennyiségek. | `2019-10-01` |  |
+| Mennyiség | N.A. | Számok és numerikus mennyiségek. | `2019-10-01` |  |
 | Mennyiség | Kor | Alábbi korhatárt szabja. | `2019-10-01` | | |
-| Betegségek nemzetközi osztályozása (ICD-10-CM) | N/A | A betegségek nemzetközi besorolásával, a kilencedik változattal kapcsolatos entitások.   | `2020-04-01` | |
-| Betegségek nemzetközi osztályozása (ICD-10-CM) | N/A | A betegségek nemzetközi besorolásával, tizedik változatával kapcsolatos entitások.    | `2020-04-01` | |
+| Betegségek nemzetközi osztályozása (ICD-9-CM) | N.A. | A betegségek nemzetközi besorolásával, a kilencedik változattal kapcsolatos entitások.   | `2020-04-01` | |
+| Betegségek nemzetközi osztályozása (ICD-10-CM) | N.A. | A betegségek nemzetközi besorolásával, tizedik változatával kapcsolatos entitások.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure-információk
 

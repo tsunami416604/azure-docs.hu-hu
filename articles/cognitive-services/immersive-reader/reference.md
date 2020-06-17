@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267239"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907380"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>A részletes olvasó SDK útmutatója
 
@@ -111,7 +111,7 @@ Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-A hívásának válaszát tartalmazza `ImmersiveReader.launchAsync` .
+A hívásának válaszát tartalmazza `ImmersiveReader.launchAsync` . Vegye figyelembe, hogy a `iframe` magával ragadó olvasót tartalmazó hivatkozás a használatával érhető el `container.firstChild` .
 
 ```typescript
 {
@@ -134,8 +134,8 @@ enum CookiePolicy { Disable, Enable }
 | --------- | ----------- |
 | szöveg/egyszerű | Egyszerű szöveg. |
 | szöveg/html | HTML-tartalom. [További információ](#html-support)|
-| Application/MathML + XML | Matematikai Markup Language (MathML). [További információk](./how-to/display-math.md).
-| Application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx formátumú dokumentum.
+| Application/MathML + XML | Matematikai Markup Language (MathML). [További információ](./how-to/display-math.md).
+| alkalmazás/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word. docx formátumú dokumentum.
 
 ### <a name="html-support"></a>HTML-támogatás
 
