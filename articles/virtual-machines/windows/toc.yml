@@ -493,6 +493,8 @@
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Az Azure parancssori felület használatával
               href: image-builder.md
+            - name: Azure PowerShell használatával
+              href: image-builder-powershell.md
             - name: Buildelés rendszerkép-katalógusokhoz
               href: image-builder-gallery.md
             - name: Meglévő rendszerkép frissítése

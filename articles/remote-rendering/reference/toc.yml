@@ -1,3 +1,5 @@
+- name: A virtuális gépek mérete
+  href: vm-sizes.md
 - name: Anyagleképzés a modellformátumokhoz
   href: material-mapping.md
 - name: Régiók

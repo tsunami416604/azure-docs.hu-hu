@@ -946,14 +946,14 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: Engedélyezés meglévő AKS-fürtön
               href: insights/container-insights-enable-existing-clusters.md
+            - name: Engedélyezés Arc-kompatibilis fürtön
+              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: Engedélyezés hibrid fürtön
               href: insights/container-insights-hybrid-setup.md
             - name: Engedélyezés Azure Red Hat OpenShift v3-on
               href: insights/container-insights-azure-redhat-setup.md
             - name: Engedélyezés Azure Red Hat OpenShift v4-en
               href: insights/container-insights-azure-redhat4-setup.md
-            - name: Engedélyezés Arc-kompatibilis fürtön
-              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: Régióleképezések
               href: insights/container-insights-region-mapping.md
         - name: Teljesítmény figyelése
