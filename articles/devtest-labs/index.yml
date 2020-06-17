@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: Az Azure DevTest Labs dokumentációja
+summary: Ismerje meg, hogyan helyezhet üzembe az Azure DevTest Labs használatával gyorsan egy fejlesztési, tesztelési, hackathon vagy osztályterem-tesztkörnyezetet a felhőben a csoportja vagy diákjai számára.
+metadata:
+  title: Az Azure DevTest Labs dokumentációja
+  description: Ismerje meg, hogyan helyezhet üzembe az Azure DevTest Labs használatával gyorsan egy fejlesztési, tesztelési, hackathon vagy osztályterem-tesztkörnyezetet a felhőben a csoportja vagy diákjai számára.
+  services: lab-services
+  ms.service: lab-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 1cfb86a37068d4cd928081446e6bf9ad381bbd86
+  ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84889014"
+landingContent:
+- title: Bevezetés
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A DevTest Labs ismertetése
+      url: devtest-lab-overview.md
+    - text: A DevTest Labs és a Lab Services bemutatása
+      url: lab-services-overview.md
+  - linkListType: concept
+    links:
+    - text: DevTest Labs-fogalmak
+      url: devtest-lab-concepts.md
+    - text: Népszerű forgatókönyvek
+      url: devtest-lab-guidance-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: Tesztkörnyezet beállítása
+      url: tutorial-create-custom-lab.md
+    - text: Tesztkörnyezet elérése
+      url: tutorial-use-custom-lab.md
+- title: Összetevők
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Műtermék hozzáadása virtuális géphez
+      url: add-artifact-vm.md
+    - text: Egyéni összetevők létrehozása
+      url: devtest-lab-artifact-author.md
+    - text: Kötelező műtermékek megadása
+      url: devtest-lab-mandatory-artifacts.md
+    - text: Összetevőkkel kapcsolatos hibák elhárítása
+      url: devtest-lab-troubleshoot-artifact-failure.md
+- title: Környezetek
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nyilvános környezetek konfigurálása és használata
+      url: devtest-lab-configure-use-public-environments.md
+    - text: Környezet létrehozása
+      url: devtest-lab-create-environment-from-arm.md
+    - text: Szolgáltatásként nyújtott platform típusú szolgáltatások használata
+      url: use-paas-services.md
+    - text: Csatlakozás a tesztkörnyezet virtuális hálózatához
+      url: connect-environment-lab-virtual-network.md
+    - text: A környezettel kapcsolatos problémák megoldása
+      url: troubleshoot-vm-environment-creation-failures.md
+- title: A referenciatartalom áttekintése
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/lab
+    - text: PowerShell
+      url: /powershell/module/az.devtestlabs/#devtest_labs
+    - text: REST
+      url: /rest/api/dtl
+- title: Sablonok
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Egyéni rendszerkép vs. Képlet
+      url: devtest-lab-comparing-vm-base-image-types.md
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni rendszerkép létrehozása virtuális gépből
+      url: devtest-lab-create-custom-image-from-vm-using-portal.md
+    - text: Képletek kezelése
+      url: devtest-lab-manage-formulas.md

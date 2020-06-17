@@ -24,7 +24,7 @@
       href: secured-virtual-hub.md
     - name: Az üzembe helyezés általános folyamata
       href: deployment-overview.md
-    - name: Megbízható biztonsági partnerek
+    - name: Biztonságipartner-szolgáltatók
       href: trusted-security-partners.md
     - name: Szabályfeldolgozási logika
       href: rule-processing.md
@@ -32,7 +32,7 @@
       href: vhubs-and-vnets.md
 - name: Útmutatók
   items:
-    - name: Megbízható biztonsági partnerek hozzáadása
+    - name: Biztonságipartner-szolgáltatók üzembe helyezése
       href: deploy-trusted-security-partner.md
     - name: Migrálás tűzfalszabályzatba – PowerShell
       href: migrate-to-policy.md

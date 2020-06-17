@@ -10,6 +10,10 @@
       href: overview-iot-central-developer.md
     - name: Legutóbbi frissítések
       items:
+        - name: 2020. májusi frissítések
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-updates/'
+        - name: 2020. májusi irányítópult-frissítések
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: 2020. április – új funkciók
           href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
         - name: 2020. április – frissítések
@@ -182,9 +186,9 @@
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: IoT Central API – Referencia
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Ügyfelek adatkérései

@@ -222,6 +222,9 @@
               href: http-application-routing.md
             - name: Belső hálózat használata
               href: ingress-internal-ip.md
+            - name: Az AGIC-bővítmény engedélyezés meglévő AKS-fürtön
+              href: ../application-gateway/tutorial-ingress-controller-add-on-existing.md
+              maintainContext: true
             - name: TLS használata saját tanúsítványokkal
               href: ingress-own-tls.md
             - name: TLS használata Let's Encrypt szolgáltatással
@@ -416,7 +419,7 @@
     - name: REST
       href: /rest/api/aks
     - name: PowerShell
-      href: '/powershell/module/az.aks#aks'
+      href: /powershell/module/az.aks#aks
     - name: .NET
       href: /dotnet/api/overview/azure/containerservice
     - name: Python
