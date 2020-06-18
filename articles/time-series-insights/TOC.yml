@@ -41,9 +41,9 @@
           items:
             - name: Hitelesítés és engedélyezés
               href: time-series-insights-authentication-and-authorization.md
-            - name: 'Adatok lekérdezése a C# használatával'
+            - name: Adatok lekérdezése a C# használatával
               href: time-series-insights-query-data-csharp.md
-            - name: 'Referenciaadatok kezelése a C#-ban'
+            - name: Referenciaadatok kezelése a C#-ban
               href: time-series-insights-manage-reference-data-csharp.md
             - name: Egyéni nézet megosztása
               href: time-series-insights-parameterized-urls.md
@@ -65,7 +65,7 @@
           items:
             - name: Hitelesítés és engedélyezés
               href: time-series-insights-authentication-and-authorization.md
-            - name: 'Adatok lekérdezése a C# használatával'
+            - name: Adatok lekérdezése a C# használatával
               href: time-series-insights-update-query-data-csharp.md
             - name: Power BI-integráció
               href: concepts-power-bi.md
@@ -111,6 +111,12 @@
           href: time-series-insights-update-how-to-shape-events.md
         - name: Csatlakozás a Power BI-hoz
           href: how-to-connect-power-bi.md
+- name: Kompatibilitástörő változások
+  items:
+    - name: Az Azure Time Series Insights előzetes verziója
+      items:
+        - name: Támogatás hozzáadása long adattípushoz
+          href: time-series-insights-long-data-type.md
 - name: Referencia
   items:
     - name: Time Series Insights

@@ -10,19 +10,22 @@
   items:
     - name: Az első lekérdezés futtatása – Azure Portal
       displayName: 'portal, resource, graph, explorer'
-      href: first-query-portal.md
+      href: ./first-query-portal.md
     - name: Az első lekérdezés futtatása – Azure CLI
       displayName: 'extension, docker'
-      href: first-query-azurecli.md
-    - name: Az első lekérdezés futtatása – PowerShell
+      href: ./first-query-azurecli.md
+    - name: Az első lekérdezés futtatása – Azure PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
-      href: first-query-powershell.md
+      href: ./first-query-powershell.md
+    - name: Az első lekérdezés futtatása – Go
+      displayName: 'package, sdk, golang'
+      href: ./first-query-go.md
     - name: Az első lekérdezés futtatása – Python
       displayName: 'library, azure-mgmt, cli'
-      href: first-query-python.md
+      href: ./first-query-python.md
     - name: Megosztott lekérdezés üzembe helyezése – ARM-sablon
       displayName: 'resource manager, queries'
-      href: shared-query-template.md
+      href: ./shared-query-template.md
 - name: Oktatóanyagok
   items:
     - name: Lekérdezés létrehozása és megosztása az Azure Portalon

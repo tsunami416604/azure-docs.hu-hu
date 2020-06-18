@@ -357,6 +357,20 @@
               href: relyingparty.md
             - name: Igénylésfeloldók
               href: claim-resolver-overview.md
+    - name: Partnerintegráció
+      items:
+        - name: Azure AD B2C – partnerkatalógus
+          href: partner-gallery.md
+        - name: Arkose Labs
+          href: partner-arkose-labs.md
+        - name: IDology
+          href: partner-idology.md
+        - name: itsme
+          href: partner-itsme.md
+        - name: Trusona
+          href: partner-trusona.md
+        - name: Twilio
+          href: partner-twilio.md
     - name: A b2clogin.com használata
       items:
         - name: b2clogin.com – áttekintés

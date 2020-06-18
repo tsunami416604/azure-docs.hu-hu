@@ -23,6 +23,8 @@
           href: b2b-tutorial-require-mfa.md
     - name: Példák
       items:
+        - name: Minták önkiszolgáló regisztrációhoz
+          href: code-samples-self-service-sign-up.md
         - name: Kód- és Azure PowerShell-minták
           href: code-samples.md
     - name: Alapelvek

@@ -207,6 +207,8 @@
               href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Ddv4 és Ddsv4 sorozat
               href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv4 és Dsv4 sorozat
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Számításra optimalizált
           items:
             - name: Áttekintés
@@ -226,6 +228,8 @@
               href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Edv4 és Edsv4 sorozat
               href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev4 és Esv4 sorozat
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: M sorozat
               href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Mv2 sorozat
@@ -288,6 +292,8 @@
         - name: Spot virtuális gépek
           href: spot-vms.md
           displayName: 'pre-empt, preempt'
+        - name: Azure-beli virtuális gépek ideiglenes lemez nélkül
+          href: ../azure-vms-no-temp-disk.md
         - name: Előző generációk
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Izolált méretek
@@ -657,7 +663,7 @@
               href: update-agent.md
         - name: Spekulatív végrehajtás kockázatának csökkentése
           href: mitigate-se.md
-        - name: Azure Instance Metadata szolgáltatás
+        - name: Metaadatok monitorozása
           href: instance-metadata-service.md
         - name: Használati metrikák lekérése a REST használatával
           href: metrics-vm-usage-rest.md
@@ -693,7 +699,7 @@
             - name: Ügynökök áttekintése
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: GYIK
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure Diagnostics bővítmény
               items:
                 - name: Áttekintés
@@ -750,7 +756,7 @@
             - name: Általános rendelkezésre állás – gyakori kérdések
               href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: GYIK
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#azure-monitor-for-vms'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#azure-monitor-for-vms
             - name: Monitorozás engedélyezése
               items:
                 - name: Monitorozás engedélyezésének áttekintése

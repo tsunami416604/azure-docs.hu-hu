@@ -6,7 +6,7 @@
     - name: Mi az Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure Machine Learning és Studio
+    - name: Azure Machine Learning és Studio (klasszikus)
       displayName: 'AML, Studio, designer'
       href: compare-azure-ml-to-studio-classic.md
     - name: Architektúra és kifejezések

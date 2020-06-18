@@ -305,7 +305,7 @@
         - name: iOS és macOS
           items:
             - name: Integrálás az Azure AD B2C szolgáltatással
-              href: 'config-authority.md#b2c'
+              href: config-authority.md#b2c
             - name: Migrálás MSAL.iOS vagy macOS rendszerre
               href: migrate-objc-adal-msal.md
             - name: Megosztott eszköz mód iOS-eszközökhöz
@@ -376,6 +376,11 @@
               displayName: 'shared device mode, firstline worker, frontline worker, flw'
             - name: SameSite-cookie-k változásainak kezelése a Chrome böngészőben
               href: howto-handle-samesite-cookie-changes-chrome-browser.md
+            - name: Az 1.0-s verziójú jogkivonatokat elfogadó webes API hatókörei
+              href: msal-v1-app-scopes.md
+            - name: Alkalmazások migrálása ADAL-ból az MSAL-be
+              href: msal-migration.md
+              displayName: migration
     - name: Hitelesítési protokollok
       displayName: Auth protocol
       items:

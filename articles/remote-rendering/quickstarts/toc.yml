@@ -1,8 +1,14 @@
-- name: Modell renderelése a Unityvel
-  href: render-model.md
-- name: Unity-minta üzembe helyezése a HoloLensben
-  href: deploy-to-hololens.md
-- name: Unity-minta üzembe helyezése az asztalon
-  href: deploy-to-desktop.md
+- name: Unity
+  items:
+    - name: Modell renderelése a Unityvel
+      href: render-model.md
+    - name: Unity-minta üzembe helyezése a HoloLensben
+      href: deploy-to-hololens.md
+    - name: Unity-minta üzembe helyezése az asztalon
+      href: deploy-to-desktop.md
+- name: Natív C++
+  items:
+    - name: Natív C++-minta üzembe helyezése a HoloLensben
+      href: native-cpp/hololens/deploy-native-cpp-tutorial.md
 - name: Modell konvertálása a renderelés előtt
   href: convert-model.md

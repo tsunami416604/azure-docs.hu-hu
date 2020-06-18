@@ -41,10 +41,10 @@
           href: mca-section-invoice.md
         - name: Számlázási fiók beállítása a Microsoft-ügyfélszerződéshez
           href: mca-setup-account.md
-        - name: Regisztráció Office 365-fiókkal
-          href: office-365-account-for-azure-subscription.md
-        - name: Regisztrálás az Office 365-be Azure-fiókkal
-          href: azure-account-for-office-365-subscription.md
+        - name: Regisztráció Microsoft 365-fiókkal
+          href: microsoft-365-account-for-azure-subscription.md
+        - name: Regisztrálás a Microsoft 365-be Azure-fiókkal
+          href: azure-account-for-microsoft-365-subscription.md
         - name: Fizetés erős ügyfél-hitelesítéssel
           href: open-banking-strong-customer-authentication.md
     - name: Előfizetések adminisztrálása
