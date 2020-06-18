@@ -4,6 +4,10 @@
   items:
     - name: Az Azure Arc-kompatibilis Kubernetes ismertetése
       href: overview.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      href: ./policy-samples.md
 - name: Útmutatók
   items:
     - name: Fürtműveletek

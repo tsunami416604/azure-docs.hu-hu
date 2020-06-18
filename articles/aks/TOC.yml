@@ -24,27 +24,6 @@
       items:
         - name: Fejlesztés Helm használatával
           href: quickstart-helm.md
-        - name: Azure Dev Spaces
-          expanded: true
-          items:
-            - name: Az Azure Dev Spaces használata csoportos fejlesztéshez
-              href: ../dev-spaces/quickstart-team-development.md
-              maintainContext: true
-            - name: A Visual Studio Code használata
-              href: ../dev-spaces/quickstart-netcore.md
-              maintainContext: true
-            - name: A Visual Studio használata
-              href: ../dev-spaces/quickstart-netcore-visualstudio.md
-              maintainContext: true
-            - name: A parancssori felület (CLI) használata
-              href: ../dev-spaces/quickstart-cli.md
-              maintainContext: true
-            - name: Az Azure Dev Spaces használata – Java
-              href: ../dev-spaces/quickstart-java.md
-              maintainContext: true
-            - name: Az Azure Dev Spaces használata – Node.js
-              href: ../dev-spaces/quickstart-nodejs.md
-              maintainContext: true
 - name: Oktatóanyagok
   items:
     - name: 1 – Alkalmazás előkészítése az AKS-hez
@@ -302,54 +281,10 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: Alkalmazások fejlesztése és futtatása
       items:
-        - name: Fejlesztés a Dev Spaces használatával
-          href: ../dev-spaces/azure-dev-spaces.md
-          maintainContext: true
-          items:
-            - name: Java (VS Code és CLI)
-              items:
-                - name: 1 – Első lépések
-                  href: ../dev-spaces/get-started-java.md
-                  maintainContext: true
-                - name: 2 – Többszolgáltatású fejlesztés
-                  href: ../dev-spaces/multi-service-java.md
-                  maintainContext: true
-                - name: 3 – Csoportos fejlesztés
-                  href: ../dev-spaces/team-development-java.md
-                  maintainContext: true
-            - name: .NET Core (VS Code és parancssori felület)
-              items:
-                - name: 1 – Első lépések
-                  href: ../dev-spaces/get-started-netcore.md
-                  maintainContext: true
-                - name: 2 – Többszolgáltatású fejlesztés
-                  href: ../dev-spaces/multi-service-netcore.md
-                  maintainContext: true
-                - name: 3 – Csoportos fejlesztés
-                  href: ../dev-spaces/team-development-netcore.md
-                  maintainContext: true
-            - name: .NET Core (Visual Studio 2017)
-              items:
-                - name: 1 – Első lépések
-                  href: ../dev-spaces/get-started-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 2 – Többszolgáltatású fejlesztés
-                  href: ../dev-spaces/multi-service-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 3 – Csoportos fejlesztés
-                  href: ../dev-spaces/team-development-netcore-visualstudio.md
-                  maintainContext: true
-            - name: Node.js (VS Code és parancssori felület)
-              items:
-                - name: 1 – Első lépések
-                  href: ../dev-spaces/get-started-nodejs.md
-                  maintainContext: true
-                - name: 2 – Többszolgáltatású fejlesztés
-                  href: ../dev-spaces/multi-service-nodejs.md
-                  maintainContext: true
-                - name: 3 – Csoportos fejlesztés
-                  href: ../dev-spaces/team-development-nodejs.md
-                  maintainContext: true
+        - name: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
+          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+        - name: Helyi folyamat és Kubernetes használata a Visual Studióval (előzetes verzió)
+          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: Meglévő alkalmazások telepítése Helm használatával
           href: kubernetes-helm.md
         - name: Az OpenFaaS használata
