@@ -9,8 +9,6 @@
       href: cognitive-services-and-machine-learning.md
     - name: Egyéni altartományok a Cognitive Serviceshez
       href: cognitive-services-custom-subdomains.md
-    - name: A Cognitive Services korlátozási folyamata
-      href: cognitive-services-gating-process.md
     - name: Nyelvi támogatás
       href: language-support.md
 - name: Rövid útmutatók
@@ -21,6 +19,13 @@
       href: cognitive-services-apis-create-account-cli.md
     - name: Diagnosztikai naplózás
       href: diagnostic-logging.md
+    - name: ARM-sablon
+      displayName: Resource Manager
+      href: resource-manager-template.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      href: ./policy-samples.md
 - name: Biztonság
   items:
     - name: Cognitive Services – biztonság

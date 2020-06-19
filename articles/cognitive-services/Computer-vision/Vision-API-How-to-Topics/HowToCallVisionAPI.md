@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72177061"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983469"
 ---
 # <a name="call-the-computer-vision-api"></a>A Computer Vision API meghívása
 
@@ -25,14 +25,6 @@ Ez a cikk bemutatja, hogyan hívhatja meg a Computer Vision APIt a REST API hasz
 - Címkék, leírások és kategóriák beolvasása
 - Domain-specifikus információk vagy "hírességek" beszerzése
 
-## <a name="prerequisites"></a>Előfeltételek
-
-- A rendszerkép URL-címe vagy egy helyileg tárolt rendszerkép elérési útja
-- Támogatott bemeneti metódusok: egy nyers bináris képfájl egy alkalmazás/oktett-stream vagy egy képurl-cím formájában
-- Támogatott képfájlformátumok: JPEG, PNG, GIF és BMP
-- Képfájl mérete: 4 MB vagy kevesebb
-- Képdimenziók: &times; 50 50 képpont vagy nagyobb
-  
 A cikkben szereplő példák a következő funkciókat mutatják be:
 
 * Egy olyan rendszerkép elemzése, amely címkék és leírások tömbjét állítja vissza
@@ -42,14 +34,22 @@ A funkciók a következő lehetőségeket kínálnak:
 
 - **1. lehetőség**: hatókörön belüli elemzés – csak a megadott modell elemzése
 - **2. lehetőség**: bővített elemzés – további részletek biztosítása a [86-kategóriájú taxonómia](../Category-Taxonomy.md) használatával
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* A rendszerkép URL-címe vagy egy helyileg tárolt rendszerkép elérési útja
+* Támogatott bemeneti metódusok: egy nyers bináris képfájl egy alkalmazás/oktett-stream vagy egy képurl-cím formájában
+* Támogatott képfájlformátumok: JPEG, PNG, GIF és BMP
+* Képfájl mérete: 4 MB vagy kevesebb
+* Képdimenziók: 50 &times; 50 képpont vagy nagyobb
   
 ## <a name="authorize-the-api-call"></a>Az API-hívás engedélyezése
 
 A Computer Vision API minden meghívásához előfizetési kulcs szükséges. Ezt a kulcsot egy lekérdezési karakterlánc paraméterének kell átadnia, vagy meg kell adni a kérelem fejlécében.
-
-Az ingyenes próbaverziós kulcs beszerzéséhez tegye a következők egyikét:
-* Lépjen a [Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) lapra. 
-* A Computer Visionra való előfizetéshez lépjen a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) lapra.
 
 Az előfizetési kulcsot az alábbi módokon adhatja át:
 
@@ -148,7 +148,7 @@ Ebben az esetben az összes v1 lekérdezési paraméter ugyanúgy viselkedik. Ha
 
 ## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Az elemzéshez használt JSON-kimenet beolvasása és megismerése
 
-Például:
+Íme egy példa:
 
 ```json
 {  
@@ -180,12 +180,12 @@ Például:
 Mező | Típus | Tartalom
 ------|------|------|
 Címkék  | `object` | A címkék egy tömb legfelső szintű objektuma.
-tags[].Name | `string`  | A címkét a címkék besorolása alapján.
-tags[].Score    | `number`  | A megbízhatósági pontszám 0 és 1 között van.
-leírás  | `object` | A Leírás legfelső szintű objektuma.
+tags[].Name | `string`    | A címkét a címkék besorolása alapján.
+tags[].Score    | `number`    | A megbízhatósági pontszám 0 és 1 között van.
+leírás     | `object`    | A Leírás legfelső szintű objektuma.
 description.tags[] |    `string`    | A címkék listája.  Ha nem áll rendelkezésre elegendő megbízhatóság a képaláírás létrehozásához, akkor előfordulhat, hogy a címkék az egyetlen elérhető információ a hívó számára.
-description.captions[].text | `string`  | A képet leíró kifejezés.
-description.captions[].confidence   | `number`  | A kifejezés megbízhatósági pontszáma.
+description.captions[].text    | `string`    | A képet leíró kifejezés.
+description.captions[].confidence    | `number`    | A kifejezés megbízhatósági pontszáma.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>A tartományi specifikus modellek JSON-kimenetének beolvasása és megértése
 
@@ -239,12 +239,12 @@ A 2. lehetőséget (bővített elemzés) használó, tartományhoz tartozó mode
 
 A Categories (kategóriák) mező az eredeti besorolásban szereplő [86-kategóriák](../Category-Taxonomy.md) közül egy vagy több listáját tartalmazza. Azok a kategóriák, amelyek aláhúzással egyeznek meg a kategóriával és a gyermekeivel (például "people_" vagy "people_group", a hírességek modelljéhez).
 
-Mező   | Típus  | Tartalom
+Mező    | Típus    | Tartalom
 ------|------|------|
-kategóriák | `object`   | A legfelső szintű objektum.
-categories[].name    | `string` | A név a 86 kategóriás besorolási listáról.
-categories[].score  | `number`  | A megbízhatósági pontszám 0 és 1 között van.
-categories[].detail  | `object?`      | Választható A részletező objektum.
+kategóriák | `object`    | A legfelső szintű objektum.
+categories[].name     | `string`    | A név a 86 kategóriás besorolási listáról.
+categories[].score    | `number`    | A megbízhatósági pontszám 0 és 1 között van.
+categories[].detail     | `object?`      | Választható A részletező objektum.
 
 Ha több kategória is egyezik (például az 86 kategóriás osztályozó egy pontszámot ad vissza a "people_" és a "people_young" kifejezéshez, ha a Model = hírességek), akkor a részletek a legáltalánosabb szintű egyezéshez ("people_", ebben a példában) vannak csatolva.
 
