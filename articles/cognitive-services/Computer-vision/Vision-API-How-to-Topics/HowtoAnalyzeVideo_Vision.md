@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 18b158b7a4881619b93ab404de67f7bb25f92b6a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 700c53c8fee61ce6e3c9a65bc3815fabfc5b2baa
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166826"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983504"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Videók elemzése közel valós időben
 
@@ -230,12 +230,12 @@ Ennek a módszernek a használatával azonnal megjelenítheti az észlelt arcot.
 
 A minta megkezdéséhez tegye a következőket:
 
-1. A Vision API-k API-kulcsainak beszerzése az [előfizetésekből](https://azure.microsoft.com/try/cognitive-services/). A video frame-elemzéshez a megfelelő szolgáltatások a következők:
-    - [Számítógépes látástechnológia](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Arcfelismerés](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-2. A [kognitív-Samples-VideoFrameAnalysis GitHub-](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) tárház klónozása.
-
-3. Nyissa meg a mintát a Visual Studio 2015-es vagy újabb verziójával, majd hozza létre és futtassa a minta alkalmazásokat:
+1. Hozzon létre egy [Azure-fiókot](https://azure.microsoft.com/free/cognitive-services/). Ha már rendelkezik ilyennel, ugorjon a következő lépésre.
+2. A kulcs és a végpont beszerzéséhez hozzon létre erőforrásokat a Computer Vision és az arc a Azure Portalban. Győződjön meg arról, hogy a telepítés során az ingyenes szintet (F0) választja.
+   - [Computer Vision](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [Arc](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Az erőforrások üzembe helyezése után kattintson az **erőforrás keresése** elemre az egyes erőforrásokhoz tartozó kulcs és végpont összegyűjtéséhez. 
+3. A [kognitív-Samples-VideoFrameAnalysis GitHub-](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) tárház klónozása.
+4. Nyissa meg a mintát a Visual Studio 2015-es vagy újabb verziójával, majd hozza létre és futtassa a minta alkalmazásokat:
     - A BasicConsoleSample esetében a Face kulcs nem kódolható közvetlenül a [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)-ban.
     - A LiveCameraSample mezőben adja meg a kulcsokat az alkalmazás **Beállítások** ablaktábláján. A kulcsok a felhasználói adatként megmaradnak a munkamenetek között.
 
@@ -245,7 +245,7 @@ A VideoFrameAnalyzer-, hang-, videó-és szöveg-megértési képességei az Azu
 
 ## <a name="summary"></a>Összefoglalás
 
-Ebből a cikkből megtudhatta, hogyan futtathatja a közel valós idejű elemzést élő videós streameken az arc-és Computer Vision szolgáltatások használatával. Azt is megtanulta, hogyan használhatja a minta kódját a kezdéshez. Az alkalmazás ingyenes API-kulcsokkal való létrehozásának megkezdéséhez nyissa meg az [Azure Cognitive Services regisztrációs lapját](https://azure.microsoft.com/try/cognitive-services/).
+Ebből a cikkből megtudhatta, hogyan futtathatja a közel valós idejű elemzést élő videós streameken az arc-és Computer Vision szolgáltatások használatával. Azt is megtanulta, hogyan használhatja a minta kódját a kezdéshez.
 
 Nyugodtan visszajelzést és javaslatokat adhat a GitHub- [tárházban](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/). Az API-k szélesebb körű visszajelzésének megadásához keresse fel a [UserVoice webhelyét](https://cognitive.uservoice.com/).
 

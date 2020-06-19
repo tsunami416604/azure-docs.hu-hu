@@ -323,6 +323,9 @@
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: Adatfelosztás és keresztvalidálás (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-cross-validation-data-splits.md
         - name: A jellemzősítés az automatizált gépi tanulásban (Python)
           displayName: 'automl, feature engineering, feature importance'
           href: how-to-configure-auto-features.md
