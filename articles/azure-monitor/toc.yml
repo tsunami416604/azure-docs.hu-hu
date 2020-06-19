@@ -114,6 +114,8 @@
         - name: Naplóadatok feldolgozási ideje
           displayname: latency
           href: platform/data-ingestion-time.md
+        - name: Adatok streamelése az Event Hubsra
+          href: platform/stream-monitoring-data-event-hubs.md
     - name: Insights
       href: insights/insights-overview.md
     - name: Adatbiztonság
@@ -299,36 +301,12 @@
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/platform-logs-overview.md
         - name: Tevékenységnapló
-          items:
-            - name: Megtekintés az Azure Portalon
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-view.md
-            - name: Összegyűjtés és elemzés
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-collect.md
-            - name: Exportálás (örökölt)
-              displayname: Activity log
-              href: platform/activity-log-export.md
-        - name: Küldés a Log Analytics-munkaterületre
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-workspace.md
-        - name: Küldés az Azure Storage-ba
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-storage.md
-        - name: Küldés az Event Hubsba
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-stream-event-hubs.md
-        - name: Diagnosztikai beállítások létrehozása
+          href: platform/activity-log.md
+        - name: Erőforrásnaplók
+          href: platform/resource-logs.md
+        - name: Diagnosztikai beállítások
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-        - name: Diagnosztikai beállítások létrehozása Resource Managerrel
-          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings-template.md
-        - name: Exportálás Blob Storage formátumba
-          displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
-        - name: Adatok streamelése az Event Hubsra
-          href: platform/stream-monitoring-data-event-hubs.md
     - name: Log Analytics
       items:
         - name: Naplólekérdezések áttekintése
@@ -1015,6 +993,8 @@
           href: insights/storage-insights-overview.md
         - name: Erőforráscsoportok
           href: insights/resource-group-insights.md
+        - name: Megállapítások hibaelhárítása
+          href: insights/troubleshoot-workbooks.md
     - name: Megoldások
       items:
         - name: Áttekintés
@@ -1185,12 +1165,12 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Platformnaplók
       items:
-        - name: Támogatott erőforrásnaplók típusai és kategóriái
-          href: platform/resource-logs-categories.md
-        - name: Erőforrásnaplók sémái
-          href: platform/resource-logs-schema.md
         - name: Tevékenységnapló sémája
           href: platform/activity-log-schema.md
+        - name: Erőforrásnaplók sémái
+          href: platform/resource-logs-schema.md
+        - name: Támogatott erőforrásnapló-kategóriák
+          href: platform/resource-logs-categories.md
     - name: Diagnosztikai bővítmények sémái
       items:
         - name: Diagnosztikai bővítmény Windows rendszeren
@@ -1277,6 +1257,9 @@
           href: platform/oms-portal-transition.md
         - name: Lemezmetrikák elavulása
           href: platform/portal-disk-metrics-deprecation.md
+        - name: Exportálás Blob Storage formátumba
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
 - name: További források
   items:
     - name: Azure-ütemterv

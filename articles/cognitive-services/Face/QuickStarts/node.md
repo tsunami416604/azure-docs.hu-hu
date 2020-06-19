@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: az Azure REST API és Node. js-vel rendelkező Rendszerképbeli arcok észlelése'
+title: 'Gyors útmutató: rendszerképek észlelése az Azure REST API és Node.js'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban az Azure Face REST API a Node. js használatával fogja felderíteni az arcokat egy képben.
+description: Ebben a rövid útmutatóban az Azure Face REST APIt fogja használni Node.js a képekben lévő arcok észlelésére.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,35 +10,38 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b88959d1dd936df0315d7365513ab0c0c5b7df17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: acb198cb727c8a6871bb329be9178f100c0bf6ed
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81402944"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986542"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Gyors útmutató: az arcok észlelése egy képen a Face REST API és a Node. js használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Rövid útmutató: az arcok észlelése egy képpel a Face REST API és Node.js használatával
 
-Ebben a rövid útmutatóban az Azure Face REST API a Node. js használatával azonosíthatja az emberi arcokat a képen.
+Ebben a rövid útmutatóban az Azure Face REST API és az Node.js használatával azonosíthatja az emberi arcokat egy képen.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 - Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="set-up-the-node-environment"></a>A csomópont-környezet beállítása
 
-Lépjen arra a mappára, ahol létre szeretné hozni a projektet, és hozzon létre egy új fájlt, a *facedetection. js*fájlt. Ezután telepítse a `requests` modult a projektbe. Ez lehetővé teszi a parancsfájlok számára a HTTP-kérések elvégzését.
+Nyissa meg azt a mappát, amelyben létre szeretné hozni a projektet, és hozzon létre egy új fájlt, *facedetection.js*. Ezután telepítse a `requests` modult a projektbe. Ez lehetővé teszi a parancsfájlok számára a HTTP-kérések elvégzését.
 
 ```shell
 npm install request --save
 ```
 
-## <a name="write-the-nodejs-script"></a>A Node. js-szkript írása
+## <a name="write-the-nodejs-script"></a>A Node.js parancsfájl írása
 
-Illessze be a következő kódot a *facedetection. js*fájlba. Ezek a mezők határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. Előfordulhat, hogy módosítani szeretné a `imageUrl` mezőt úgy, hogy a saját bemeneti képére mutasson.
+Illessze be a következő kódot a *facedetection.jsba *. Ezek a mezők határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. Frissítenie kell a mezőt az `subscriptionKey` előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. Előfordulhat, hogy módosítani szeretné a `imageUrl` mezőt úgy, hogy a saját bemeneti képére mutasson.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -283,7 +286,7 @@ A konzol ablakában a JSON-adatokként megjelenő arc információit kell látni
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy Node. js-szkriptet írt, amely meghívja az Azure Face Service-t, hogy felderítse az arcokat a képen, és visszaadja az attribútumokat. További információért olvassa el a Face API dokumentációját.
+Ebben a rövid útmutatóban egy Node.js parancsfájlt írt, amely meghívja az Azure Face Service-t, hogy felderítse az arcokat egy képben, és visszaadja az attribútumokat. További információért olvassa el a Face API dokumentációját.
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

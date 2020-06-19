@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169904"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986725"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Példa: Videók valós idejű elemzése
 
@@ -26,7 +26,7 @@ Ez az útmutató azt ismerteti, hogyan végezhet közel valós idejű elemzést 
 - A képkockák elküldése az API-ra
 - Az API-hívás által visszaadott elemzési eredmények feldolgozása
 
-Ezek a minták a C# nyelven íródtak, a kód pedig a GitHubon érhető el [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/):.
+Ezek a minták a C# nyelven íródtak, a kód pedig a GitHubon érhető el: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) .
 
 ## <a name="the-approach"></a>A módszer
 
@@ -138,7 +138,7 @@ while (true)
 
 ### <a name="getting-started"></a>Első lépések
 
-Ahhoz, hogy az alkalmazás a lehető leggyorsabban elérhető legyen, a fent ismertetett rendszer rugalmas megvalósítását fogja használni. A kód eléréséhez nyissa meg [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis)a következőt:.
+Ahhoz, hogy az alkalmazás a lehető leggyorsabban elérhető legyen, a fent ismertetett rendszer rugalmas megvalósítását fogja használni. A kód eléréséhez nyissa meg a következőt: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis) .
 
 A kódtár tartalmazza a FrameGrabber osztályt, amellyel megvalósítható a fent leírt létrehozó-feldolgozó rendszer egy webkamera által szolgáltatott videoképkockák feldolgozására. A felhasználó megadhatja az API-hívás pontos formáját, és az osztály az eseményeket használva lehetővé teszi, hogy a hívó kód megismerje az új keret beszerzését vagy egy új elemzési eredmény elérhetővé tételét.
 
@@ -201,13 +201,12 @@ A legtöbb módban látható késés mutatkozik a bal oldali élő videókép é
 
 A minta használatához hajtsa végre az alábbi lépéseket:
 
-1. A Vision API-k API-kulcsainak beszerzése az [előfizetésekből](https://azure.microsoft.com/try/cognitive-services/). A videoképkockák elemzéséhez megfelelő API-k:
-    - [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-
-2. Klónozza a [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub-adattárat
-
-3. Nyissa meg a mintát a Visual Studio 2015-ben, és hozza létre és futtassa a minta alkalmazásokat:
+1. Hozzon létre egy [Azure-fiókot](https://azure.microsoft.com/free/cognitive-services/). Ha már rendelkezik ilyennel, ugorjon a következő lépésre.
+2. A kulcs és a végpont beszerzéséhez hozzon létre erőforrásokat a Computer Vision és az arc a Azure Portalban. Győződjön meg arról, hogy a telepítés során az ingyenes szintet (F0) választja.
+   - [Computer Vision](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [Arc](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Az erőforrások üzembe helyezése után kattintson az **erőforrás keresése** elemre az egyes erőforrásokhoz tartozó kulcs és végpont összegyűjtéséhez. 
+3. A [kognitív-Samples-VideoFrameAnalysis GitHub-](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) tárház klónozása.
+4. Nyissa meg a mintát a Visual Studióban, és hozza létre és futtassa a minta alkalmazásokat:
     - A BasicConsoleSample esetében a Face kulcs nem kódolható közvetlenül a [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)-ban.
     - A LiveCameraSample esetében a kulcsokat az alkalmazás Settings (Beállítások) panelén kell megadni. A kulcsokat a rendszer felhasználói adatként a munkamenetek közt is megőrzi.
         
@@ -216,7 +215,7 @@ Ha készen áll az integrálásra, **a saját projektjeiből hivatkozhat a Video
 
 ## <a name="summary"></a>Összefoglalás
 
-Ebben az útmutatóban megtanulta, hogyan futtathat közel valós idejű elemzést az élő videó streameken az arc, a Computer Vision és az Emotion API-k használatával, és hogyan használhatja a minta kódját a kezdéshez. Az [Azure Cognitive Services regisztrációs oldalán](https://azure.microsoft.com/try/cognitive-services/)megkezdheti az alkalmazás felépítése ingyenes API-kulcsokkal. 
+Ebben az útmutatóban megtanulta, hogyan futtathat közel valós idejű elemzést az élő videó streameken az arc, a Computer Vision és az Emotion API-k használatával, és hogyan használhatja a minta kódját a kezdéshez.
 
 Nyugodtan visszajelzést és javaslatokat küldhet a GitHub- [tárházban](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) , vagy szélesebb körű API-visszajelzéseket a [UserVoice webhelyén](https://cognitive.uservoice.com/).
 

@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120810"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986666"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Az Arcfelismerés átmigrálása egy másik Face-előfizetésbe
 
-Ez az útmutató bemutatja, hogyan helyezheti át az Arcfelismerés (például egy mentett PersonGroup-objektum arcokkal) egy másik Azure Cognitive Services Face-előfizetésre. Az adatok áthelyezéséhez használja a pillanatkép funkciót. Így elkerülhető, hogy a műveletek áthelyezésekor vagy kibontásakor ne kelljen ismétlődően létrehozni és betanítani egy PersonGroup vagy FaceList objektumot. Tegyük fel például, hogy létrehozott egy PersonGroup objektumot egy ingyenes próbaverziós előfizetéssel, és most át szeretné telepíteni a fizetős előfizetésre. Vagy előfordulhat, hogy a nagyméretű vállalati műveletekhez különböző régiókban lévő előfizetések között kell szinkronizálnia a Face-adatait.
+Ez az útmutató bemutatja, hogyan helyezheti át az Arcfelismerés (például egy mentett PersonGroup-objektum arcokkal) egy másik Azure Cognitive Services Face-előfizetésre. Az adatok áthelyezéséhez használja a pillanatkép funkciót. Így elkerülhető, hogy a műveletek áthelyezésekor vagy kibontásakor ne kelljen ismétlődően létrehozni és betanítani egy PersonGroup vagy FaceList objektumot. Tegyük fel például, hogy létrehozott egy PersonGroup objektumot egy ingyenes előfizetéssel, és most át szeretné telepíteni a fizetős előfizetésre. Vagy előfordulhat, hogy a nagyméretű vállalati műveletekhez különböző régiókban lévő előfizetések között kell szinkronizálnia a Face-adatait.
 
 Ugyanez az áttelepítési stratégia a LargePersonGroup és a LargeFaceList objektumra is érvényes. Ha nem ismeri az útmutatóban szereplő fogalmakat, tekintse meg a definíciókat a [Face Recognition fogalmakat](../concepts/face-recognition.md) ismertető útmutatóban. Ez az útmutató a Face .NET ügyféloldali kódtárat használja a C# használatával.
 
@@ -220,7 +220,7 @@ Most már használhatja az új PersonGroup a cél előfizetésben.
 
 Ha a jövőben újra szeretné frissíteni a cél PersonGroup, hozzon létre egy új PersonGroup a pillanatkép fogadásához. Ehhez kövesse az útmutató lépéseit. Egyetlen PersonGroup objektumhoz csak egyszer lehet alkalmazni egy pillanatképet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Miután befejezte az adatok áttelepítését, manuálisan törölje a pillanatkép-objektumot.
 

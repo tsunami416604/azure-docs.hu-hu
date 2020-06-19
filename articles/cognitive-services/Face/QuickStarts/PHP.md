@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: f2584892bb349d126b73c3f8df211f745a362bd8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f4d848eae23023d55ad41b7893610f246eddefd9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403348"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987815"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a PHP használatával
 
@@ -23,14 +23,17 @@ Ebben a rövid útmutatóban az Azure Face REST API a PHP használatával ismeri
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
-- Egy Kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
-- A PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) csomag.
-- Egy PHP-kompatibilis webböngésző. Ha nem állította be ezt a beállítást, a [XAMPP](https://www.apachefriends.org/) telepítésével és beállításával telepítheti a számítógépét.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Egy Kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
+* A PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) csomag.
+* Egy PHP-kompatibilis webböngésző. Ha nem állította be ezt a beállítást, a [XAMPP](https://www.apachefriends.org/) telepítésével és beállításával telepítheti a számítógépét.
 
 ## <a name="initialize-the-html-file"></a>A HTML-fájl inicializálása
 
-Hozzon létre egy új HTML-fájlt, a *detectFaces. html*fájlt, és adja hozzá a következő kódot.
+Hozzon létre egy új, *detectFaces.html*formátumú HTML-fájlt, és adja hozzá a következő kódot.
 
 ```html
 <html>
@@ -99,7 +102,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. A `returnFaceAttributes` mező adja meg a beolvasandó arc-attribútumokat; Előfordulhat, hogy módosítani kívánja ezt a karakterláncot a kívánt felhasználási módtól függően.
+Frissítenie kell a mezőt az `subscriptionKey` előfizetési kulcs értékével, és módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza a megfelelő végponti karakterláncot. A `returnFaceAttributes` mező adja meg a beolvasandó arc-attribútumokat; előfordulhat, hogy módosítani kívánja ezt a karakterláncot a kívánt felhasználási módtól függően.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

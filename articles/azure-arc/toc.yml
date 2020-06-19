@@ -18,6 +18,8 @@
           href: ./servers/onboard-dsc.md
     - name: Kezelés
       items:
+        - name: Azure-beli virtuálisgép-bővítmények kezelése és használata
+          href: ./servers/manage-vm-extensions.md
         - name: Ügynök kezelése
           href: ./servers/manage-agent.md
 - name: Példák

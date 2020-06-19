@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a25a34db99a4c1550ed78b5f084501fb8badfacf
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995649"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791282"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -122,6 +122,7 @@ Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a követ
 - A címke több mint 24 órával ezelőtt lett alkalmazva? Lásd: [Költség- és használati adatok frissítése és megőrzése](#cost-and-usage-data-updates-and-retention)
 - Támogatja az erőforrás típusa a címkéket? Az alábbi erőforrástípusok 2019. december 1-től nem támogatják a címkéket a használati adatokban. A támogatott címkék teljes listája: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/tag-support.md).
     - Azure Active Directory B2C-címtárak
+    - Azure Bastion
     - Azure-tűzfalak
     - Azure NetApp Files
     - Data Factory

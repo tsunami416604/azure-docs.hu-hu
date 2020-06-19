@@ -10,23 +10,26 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 69d3f1a7f0c455275a212401110459abb1b8d8d0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ed64ae799dab570b168a91b236b1c4be8be8bee1
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403413"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986645"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rövid útmutató: az arcok észlelése egy képen a Face REST API és C használatával #
 
 Ebben a rövid útmutatóban az Azure Face REST API a C# használatával ismeri fel az emberi arcokat a képen.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
-- A [Visual Studio 2015-es vagy 2017-](https://www.visualstudio.com/downloads/)es verziójának bármely kiadása.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+- A [Visual Studio](https://www.visualstudio.com/downloads/)bármely kiadása.
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
@@ -52,7 +55,7 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>Alapvető mezők hozzáadása
 
-Adja hozzá a **program** osztályt, amely tartalmazza a következő mezőket. Ezek az adatok határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. Frissítenie kell a `subscriptionKey` mezőt az előfizetési kulcs értékével, és előfordulhat, hogy módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza az erőforrás-végponti karakterláncot.
+Adja hozzá a **program** osztályt, amely tartalmazza a következő mezőket. Ezek az adatok határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. Frissítenie kell a mezőt az `subscriptionKey` előfizetési kulcs értékével, és előfordulhat, hogy módosítania kell a `uriBase` karakterláncot úgy, hogy az tartalmazza az erőforrás-végponti karakterláncot.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -105,7 +108,7 @@ Adja hozzá a következő kódot a **program** osztály **Main** metódusához. 
 
 ### <a name="call-the-face-detection-rest-api"></a>Arcfelismerés REST API hívása
 
-Adja hozzá a következő metódust a **program** osztályhoz. Egy REST-hívást hoz létre a Face API a távoli rendszerképben lévő arc-információk észleléséhez ( `requestParameters` ez a karakterlánc határozza meg a lekérdezni kívánt Arcfelismerés-attribútumokat). Ezután a kimeneti adatokat egy JSON-karakterláncba írja.
+Adja hozzá a következő metódust a **program** osztályhoz. Egy REST-hívást hoz létre a Face API a távoli rendszerképben lévő arc-információk észleléséhez (ez a `requestParameters` karakterlánc határozza meg a lekérdezni kívánt Arcfelismerés-attribútumokat). Ezután a kimeneti adatokat egy JSON-karakterláncba írja.
 
 A segítő metódusokat a következő lépésekben fogja meghatározni.
 
