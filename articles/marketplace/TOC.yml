@@ -330,6 +330,8 @@
               href: ./partner-center-portal/azure-vm-create-offer.md
             - name: Azure-beli virtuális gép technikai eszközének létrehozása
               items:
+                - name: A virtuális gép hitelesítése – problémák és megoldások
+                  href: ./partner-center-portal/vm-certification-issues-solutions.md
                 - name: Azure-beli virtuális gép technikai eszközének létrehozása
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure-beli virtuális gép technikai eszközei – gyakori kérdések

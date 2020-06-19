@@ -34,10 +34,14 @@
       href: create-certificate-scenarios.md
     - name: Tanúsítvány-létrehozási módszerek
       href: create-certificate.md
+- name: Útmutatók
+  items:
+    - name: A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
+      href: how-to-integrate-certificate-authority.md
 - name: Referencia
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET

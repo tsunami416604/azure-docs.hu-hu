@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310597"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080654"
 ---
 # <a name="long-audio-api-preview"></a>Long audio API (előzetes verzió)
 
@@ -66,7 +66,7 @@ A **http-állapotkódok** gyakori hibákat jeleznek.
 |        | 400 | A hangszintézis csak az UTF-8 kódolású szövegfájlt támogatja az byte-Order jelölővel. | Győződjön meg arról, hogy a bemeneti fájlok UTF-8 kódolással vannak ellátva a byte-Order jelölővel. |
 |        | 400 | A hangszintézisi kérelemben csak érvényes SSML-bemenetek engedélyezettek. | Győződjön meg arról, hogy a bemeneti SSML-kifejezések helyesek. |
 |        | 400 | A (z) {voiceName} nevű hang nem található a bemeneti fájlban. | A bemeneti SSML hangjának neve nincs igazítva a modell azonosítójával. |
-|        | 400 | A bemeneti fájlban lévő bekezdések mennyiségének 10 000-nál kisebbnek kell lennie. | Győződjön meg arról, hogy a fájl bekezdése kevesebb, mint 10 000. |
+|        | 400 | A bemeneti fájlban lévő bekezdések számának 10 000-nál kisebbnek kell lennie. | Győződjön meg arról, hogy a fájlban lévő bekezdések száma kisebb, mint 10 000. |
 |        | 400 | A bemeneti fájlnak 400 karakternél nagyobbnak kell lennie. | Győződjön meg arról, hogy a bemeneti fájl mérete meghaladja a 400 karaktert. |
 |        | 404 | A hangszintézis definíciójában deklarált modell nem található: {modelID}. | Győződjön meg arról, hogy a ({modelID}) helyes. |
 |        | 429 | Túllépi az aktív hangszintézis korlátot. Várjon, amíg néhány kérelem befejeződik. | A kiszolgáló az egyes Azure-fiókokhoz legfeljebb 120 kérelem futtatására és várólistára helyezésére jogosult. Várjon, és ne küldje el az új kéréseket, amíg néhány kérelem be nem fejeződik. |

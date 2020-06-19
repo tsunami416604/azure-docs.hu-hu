@@ -11,23 +11,25 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ed003e83d8343d2da0f1b11c6d82581b76d3168d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ece80ce5337304d1b0d51e5e334cd64cc133619
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679878"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984417"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Rövid útmutató: helyi rendszerkép elemzése a Computer Vision REST API és C használatával #
 
 Ebben a rövid útmutatóban egy helyileg tárolt rendszerképet elemez, hogy kinyerje a vizualizációs funkciókat a Computer Vision REST API használatával. A [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) módszer használatával kinyerheti a vizualizációs funkciók adatait a képtartalomból.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) vagy újabb verzióval kell rendelkeznie.
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti karakterláncához, a nevet és a-t `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* A [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) -es vagy újabb verziójával kell rendelkeznie
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
@@ -36,8 +38,8 @@ A minta a Visual Studióban való létrehozásához végezze el az alábbi lép�
 1. Hozzon létre egy új Visual Studio-megoldást/-projektet a Visual Studióban a Visual C# Console app (.NET Core Framework) sablonnal.
 1. Telepítse a Newtonsoft.Json NuGet-csomagot.
     1. A menüben kattintson a **Tools** (Eszközök) elemre, és válassza a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) lehetőséget.
-    1. Kattintson a **Tallózás** lapra, és a **keresőmezőbe** írja be a "Newtonsoft. JSON" kifejezést (ha még nem jelenik meg).
-    1. Válassza ki a **Newtonsoft. JSON**fájlt, majd kattintson a projekt neve melletti jelölőnégyzetre, és **telepítse**a (z) elemet.
+    1. Kattintson a **Browse (Tallózás** ) fülre, majd a keresőmezőbe írja be a "Newtonsoft.Json" (ha még nem látható) **kifejezést** .
+    1. Válassza a **Newtonsoft.Js**lehetőséget, majd kattintson a projekt neve melletti jelölőnégyzetre, és **telepítse**a (z) elemet.
 1. Másolja és illessze be az alábbi mintakód-kódrészletet a Program.cs-fájlba. Módosítsa a névtér nevét, ha az nem azonos a létrehozott névvel.
 1. Adjon hozzá egy képet a bin/debug/netcoreappX. X mappához, majd adja hozzá a rendszerkép nevét (a kiterjesztéssel) a "imageFilePath" változóhoz.
 1. Futtassa a programot.
@@ -231,7 +233,7 @@ A rendszer sikeres választ ad vissza a JSON-ban (a használt saját rendszerké
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerjen meg egy alapszintű Windows-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le.
 

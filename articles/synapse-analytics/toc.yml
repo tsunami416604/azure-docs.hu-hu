@@ -140,20 +140,6 @@
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: TDE saját kulcs használatával
               href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Advanced Data Security
-          items:
-            - name: SQL-készlet
-              items:
-                - name: Áttekintés
-                  href: ../sql-database/sql-database-advanced-data-security.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Adatfelderítés és besorolás
-                  href: ../sql-database/sql-database-data-discovery-and-classification.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Sebezhetőségi felmérés
-                  href: ../sql-database/sql-vulnerability-assessment.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Fejlett fenyegetésvédelem
-                  href: ../sql-database/sql-database-threat-detection-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Naplózás
-                  href: ../sql-database/sql-database-auditing.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Integráció és vezénylés
       items:
         - name: Folyamat és tevékenység
@@ -426,6 +412,8 @@
               href: data-integration/data-integration-data-lake.md
     - name: Az adatok átalakítása és elemzése
       items:
+        - name: Tömbök és beágyazott struktúrák elemzése
+          href: how-to-analyze-complex-schema.md
         - name: Synapse Link
           items:
             - name: A Synapse Link konfigurálása

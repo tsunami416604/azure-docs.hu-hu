@@ -44,14 +44,10 @@
           href: path-selection-multiple-links.md
 - name: Útmutatók
   items:
-    - name: Virtuális hálózati átjáró csatlakoztatása virtuális WAN-ra
-      href: connect-virtual-network-gateway-vwan.md
     - name: Virtuális hálózatok közötti globális társviszony konfigurálása
       href: global-peering-vnet.md
     - name: Virtuális WAN SKU-jának frissítése
       href: upgrade-virtual-wan.md
-    - name: Egyéni IPsec-szabályzat konfigurálása
-      href: virtual-wan-custom-ipsec-portal.md
     - name: ExpressRoute
       items:
         - name: ExpressRoute-kapcsolat létrehozása
@@ -62,6 +58,10 @@
       items:
         - name: Helyek közötti kapcsolat létrehozása
           href: virtual-wan-site-to-site-portal.md
+        - name: Virtuális hálózati átjáró csatlakoztatása virtuális WAN-ra
+          href: connect-virtual-network-gateway-vwan.md
+        - name: Egyéni IPsec-szabályzat konfigurálása
+          href: virtual-wan-custom-ipsec-portal.md
     - name: Felhasználói VPN-kapcsolatok (pont–hely)
       items:
         - name: Felhasználói VPN-kapcsolat létrehozása
@@ -109,7 +109,7 @@
 - name: Referencia
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#networking'
+      href: /powershell/module/az.network#networking
     - name: REST
       href: /rest/api/azure
     - name: Azure CLI

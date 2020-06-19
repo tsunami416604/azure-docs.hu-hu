@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: e3bf279142383ccdb3e82ffee49bd593640bb937
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8b6cad548c9fdc5b5157c842d6302c8635e21a15
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996822"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099327"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -22,6 +22,17 @@ Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből meg
 
 > [!NOTE]
 > Az űrlap-felismerő rövid útmutatók és útmutatói mindig az API legújabb verzióját használják, kivéve, ha meg van adva.
+
+## <a name="june-2020"></a>2020. június
+
+### <a name="new-features"></a>Új funkciók
+* **COPYMODEL API hozzáadva az ügyféloldali SDK-k számára** Mostantól az ügyfél SDK-k használatával is másolhat modelleket az egyik előfizetésből a másikba. A szolgáltatással kapcsolatos általános információkért tekintse meg a [modellek biztonsági mentése és helyreállítása](./disaster-recovery.md) című témakört.
+* **Azure Active Directory integráció** Mostantól a HRE hitelesítő adataival hitelesítheti az űrlap-felismerő ügyféloldali objektumait az SDK-k használatával.
+* **SDK-specifikus változások** Ez magában foglalja a másodlagos funkciók hozzáadását és a változtatások megszakítását is. További információért tekintse meg az SDK-naplókat.
+  * [C# SDK előnézet 3 changelog](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
+  * [Python SDK előzetes verzió 3 – changelog](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [Java SDK előzetes verzió 3 – changelog](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [JavaScript SDK előzetes verzió 3 – changelog](https://github.com/Azure/azure-sdk-for-js/blob/%40azure/ai-form-recognizer_1.0.0-preview.3/sdk/formrecognizer/ai-form-recognizer/CHANGELOG.md)
 
 ## <a name="april-2020"></a>2020. április
 

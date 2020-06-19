@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 367ae27a6afec803d2e3f98f54bdcf852330ddc6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 95bd83575809f6ecda716ff751b47b7bb499cae3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70274687"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073259"
 ---
 ## <a name="configure-an-environment-variable-for-authentication"></a>Környezeti változó konfigurálása hitelesítéshez
 
 Az alkalmazásoknak hitelesíteniük kell az általuk használt Cognitive Services hozzáférését. A hitelesítéshez javasoljuk, hogy hozzon létre egy környezeti változót az Azure-erőforrások kulcsainak tárolásához. 
 
-Miután elvégezte a kulcsot, írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje `your-key` le az értékét az erőforrás egyik kulcsára.
+Miután elvégezte a kulcsot, írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le az értékét az `your-key` erőforrás egyik kulcsára.
 
 #### <a name="windows"></a>[Windows](#tab/windows)
 
@@ -41,6 +41,6 @@ Módosítsa a .bash_profile fájlt, és adja hozzá a környezeti változót:
 export COGNITIVE_SERVICE_KEY=your-key
 ```
 
-A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
+A környezeti változó hozzáadását követően futtassa a `source ~/.bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
 
 ***

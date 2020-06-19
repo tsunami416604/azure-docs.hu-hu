@@ -219,10 +219,6 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: Spark- és Hive-eszközök a VSCode-hoz
               href: ./hdinsight-for-vscode.md
-            - name: HDInsight Tools for IntelliJ a Hortonworks Sandboxszal
-              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
-            - name: Data Lake Tools with Hortonworks – tesztkörnyezet
-              href: ./hdinsight-hadoop-emulator-visual-studio.md
         - name: Figyelés
           items:
             - name: Az Azure Monitor-naplók használata
@@ -501,7 +497,7 @@
                   href: ./hadoop/apache-hadoop-run-samples-linux.md
                 - name: Egyéni Apache Hadoop MapReduce-programok futtatása
                   href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'Streamelő MapReduce programok fejlesztése C# nyelven'
+                - name: Streamelő MapReduce programok fejlesztése C# nyelven
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: Java MapReduce programok fejlesztése
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -758,7 +754,7 @@
           items:
             - name: JSON-dokumentumok feldolgozása és elemzése
               href: ./hadoop/using-json-in-hive.md
-            - name: 'Felhasználó által definiált C#-függvények használata'
+            - name: Felhasználó által definiált C#-függvények használata
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: A Python használata az Apache Hive-val és az Apache Piggel
               href: ./hadoop/python-udf-hdinsight.md
@@ -893,7 +889,7 @@
                   href: ./storm/apache-storm-develop-java-topology.md
                 - name: Topológiák fejlesztése a Pythonnal
                   href: ./storm/apache-storm-develop-python-topology.md
-                - name: 'Topológiák fejlesztése a C# használatával'
+                - name: Topológiák fejlesztése a C# használatával
                   href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
                 - name: SCP.NET – programozási útmutató
                   href: ./storm/apache-storm-scp-programming-guide.md
@@ -901,7 +897,7 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: Streamelési folyamatok
               items:
-                - name: 'Event Hub és Apache Storm (C# és Java)'
+                - name: Event Hub és Apache Storm (C# és Java)
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: Kezelés
           items:

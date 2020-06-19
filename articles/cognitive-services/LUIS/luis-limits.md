@@ -3,12 +3,12 @@ title: Korlátok – LUIS
 description: Ez a cikk az Azure Cognitive Services Language Understanding (LUIS) ismert korlátait tartalmazza. LUIS több korlátozási területtel rendelkezik. A modell korlátozza a LUIS-ben lévő leképezéseket, entitásokat és szolgáltatásokat. Kvóta korlátai a kulcs típusa alapján. A billentyűzet kombinációja a LUIS webhelyet vezérli.
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: aa4362fba09834758d47f3ef063068c1854b9280
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: fce4aab0221cf050ce175c582f21de58b6e27eac
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449498"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976982"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok korlátai
 LUIS több korlátozási területtel rendelkezik. Az első a [modell korlátja](#model-limits), amely a Luis szándékait, entitásait és szolgáltatásait vezérli. A második régió a kulcs típusa alapján [korlátozza a kvótákat](#key-limits) . A határértékek harmadik területe a LUIS webhely vezérlésére szolgáló [billentyűkombináció](#keyboard-controls) . A negyedik terület az a [régió](luis-reference-regions.md) , amely a Luis authoring webhelye és a Luis [Endpoint](luis-glossary.md#endpoint) API-k között van.
@@ -27,7 +27,7 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait, érdemes lehet [Luis kü
 | Explicit lista | 50/alkalmazás|
 | Külső entitások | Nincs korlát |
 | [Leképezések][intents]|500/alkalmazás: 499 egyéni szándék, és a szükséges _none_ szándék.<br>A [küldő-alapú](https://aka.ms/dispatch-tool) alkalmazás megfelelő 500 elküldési forrással rendelkezik.|
-| [Listaentitások](./luis-concept-entity-types.md) | Szülő: 50, gyermek: 20 000 elem. A Canonical neve * alapértelmezett karakter max. A szinonimák értékeinek hossza nem korlátozza a korlátot. |
+| [Entitások listázása](./luis-concept-entity-types.md) | Szülő: 50, gyermek: 20 000 elem. A Canonical neve * alapértelmezett karakter max. A szinonimák értékeinek hossza nem korlátozza a korlátot. |
 | [gépi tanulási entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a korlát szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alentitások akár 5 szintre is ágyazhatók.|
 |Modell szolgáltatásként| Egy adott modell funkcióként használható modelljeinek maximális száma 10 modell. Egy adott modellhez funkcióként használt kifejezések listájának maximális száma 10 kifejezéses felsorolás.|
 | [Előnézet – dinamikus lista entitásai](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 a ~ 1k/Query előrejelzési végpontra vonatkozó kérelem listája|
@@ -37,7 +37,7 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait, érdemes lehet [Luis kü
 | [Előre összeállított entitások](./luis-prebuilt-entities.md) | korlátlan|
 | [Reguláriskifejezés-entitások](./luis-concept-entity-types.md)|20 entitás<br>500 karakter max. /reguláris kifejezési entitás mintája|
 | [Szerepkörök](luis-concept-roles.md)|300 szerepkör egy alkalmazásban. 10 szerepkör/entitás|
-| [Kimondott szöveg][utterances] | 500 karakter<br><br>Ha a karakternél hosszabb szöveg van, akkor a megjelenő értéket a LUIS-be való bevitel előtt kell szegmentálni, és ennek megfelelően egyesíteni kell a válaszokat. Nyilvánvaló megszakítások is használhatók, például írásjelek és a beszéd hosszú szüneteltetése.|
+| [Kimondott szöveg][utterances] | 500 karakter<br><br>Ha ezen a karakternél hosszabb szöveg van, a kiírást a LUIS-be való bevitel előtt kell megadnia, és minden szegmensre külön szándékot kell kapnia. Nyilvánvaló megszakítások is használhatók, például írásjelek és a beszéd hosszú szüneteltetése.|
 | [Példák a teljes kifejezésekre][utterances] | 15 000/alkalmazás – a hosszúságú kimondott szöveg száma nem korlátozható a szándék alapján<br><br>Ha több példával kell betanítania az alkalmazást, használja a [küldő](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) modell megközelítését. Az egyes LUIS-alkalmazásokat (más néven alárendelt alkalmazásokat a fölérendelt küldő alkalmazásba) egy vagy több szándékkal kell elképeznie, majd betanítani egy olyan küldő alkalmazást, amely az egyes gyermek LUIS-alkalmazások hosszúságú kimondott szöveg mintákat küld, hogy az előrejelzési kérést a megfelelő alárendelt alkalmazásra irányítsa. |
 | [Verziók](luis-concept-version.md)| 100 verzió/alkalmazás |
 | [Verzió neve][luis-how-to-manage-versions] | 128 karakter |
@@ -54,7 +54,7 @@ Az objektumok nevének egyedinek kell lennie, ha az azonos szint más objektumai
 |--|--|
 |Szándék, entitás|Az összes leképezésnek és az entitás nevének egyedinek kell lennie az alkalmazás egy verziójában.|
 |ML entitás-összetevők|Az adott entitáson belül minden gépi tanulási entitás-összetevőnek (gyermek entitásnak) egyedinek kell lennie az azonos szinten lévő összetevőkhöz.|
-|Szolgáltatások | Az összes megnevezett funkciónak, például a kifejezések listájának egyedinek kell lennie az alkalmazás egy verzióján belül.|
+|Funkciók | Az összes megnevezett funkciónak, például a kifejezések listájának egyedinek kell lennie az alkalmazás egy verzióján belül.|
 |Entitásszerepkörök|Az entitás vagy entitás összetevő összes szerepkörének egyedinek kell lennie, ha ugyanazon az entitás szintjén (szülő, gyermek, unoka stb.) vannak.|
 
 ## <a name="object-naming"></a>Objektum elnevezése
