@@ -94,12 +94,6 @@
           href: logic-apps-handle-large-messages.md
         - name: Szabályozási problémák vagy 429-es hibák kezelése
           href: handle-throttling-problems-429-errors.md
-        - name: Biztonságos
-          items:
-            - name: A biztonság javítása logikai alkalmazások esetében
-              href: logic-apps-securing-a-logic-app.md
-            - name: Hitelesítés felügyelt identitásokkal
-              href: create-managed-service-identity.md
         - name: Egyéni összekötők fejlesztése
           href: custom-connector-overview.md
         - name: Egyéni API-k fejlesztése
@@ -316,6 +310,14 @@
           href: logic-apps-enterprise-integration-xml-validation.md
         - name: Yammer
           href: ../connectors/connectors-create-api-yammer.md
+    - name: Biztonságos
+      items:
+        - name: A biztonság fokozása a Logic Apps esetében
+          href: logic-apps-securing-a-logic-app.md
+        - name: Hitelesítés felügyelt identitásokkal
+          href: create-managed-service-identity.md
+        - name: Kapcsolatok blokkolása a Logic Appsben
+          href: block-connections-connectors.md
     - name: Kezelés
       items:
         - name: Logikai alkalmazások kezelése – Azure Portal
