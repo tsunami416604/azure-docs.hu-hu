@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3ec6eb60a7325eb87ca637541c5f4222eab98053
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e355ccdaf89d7f0ff63e3137def50792b171a4cc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403181"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985605"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Ruby használatával
 
@@ -23,8 +23,11 @@ Ebben a rövid útmutatóban az Azure Face REST API a Ruby használatával ismer
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
-- Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+    * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+* Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>A parancsfájl írása
 
@@ -60,11 +63,11 @@ end
 puts response.body
 ```
 
-Frissítenie kell az `request['Ocp-Apim-Subscription-Key']` értéket az előfizetési kulccsal, és módosítania kell `uri` a karakterláncot úgy, hogy az tartalmazza a megfelelő végpontot.
+Frissítenie kell az értéket az `request['Ocp-Apim-Subscription-Key']` előfizetési kulccsal, és módosítania kell a `uri` karakterláncot úgy, hogy az tartalmazza a megfelelő végpontot.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Azt is megteheti, hogy `imageUri` módosítani szeretné a mezőt úgy, hogy a saját bemeneti képére mutasson. Érdemes lehet módosítani a mezőt is, `returnFaceAttributes` amely megadja a lekérdezni kívánt Arcfelismerés-attribútumokat.
+Azt is megteheti, hogy módosítani szeretné a `imageUri` mezőt úgy, hogy a saját bemeneti képére mutasson. Érdemes lehet módosítani a `returnFaceAttributes` mezőt is, amely megadja a lekérdezni kívánt Arcfelismerés-attribútumokat.
 
 ## <a name="run-the-script"></a>A szkript futtatása
 

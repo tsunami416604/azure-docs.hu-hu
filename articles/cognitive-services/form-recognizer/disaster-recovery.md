@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2e5b32421a04e09bd32d2bba21ff4faf920d84dd
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9fb2f3374d635d8086bac5fe02ecf3b7f819ea65
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221844"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100880"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Az űrlap-felismerő modelljeinek biztonsági mentése és helyreállítása
 
@@ -45,7 +45,7 @@ Az egyéni modellek másolásának folyamata a következő lépésekből áll:
 A következő HTTP-kérelem átmásolja az engedélyt a cél erőforrásból. A célként megadott erőforrás végpontját és kulcsát fejlécként kell megadnia.
 
 ```
-POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization HTTP/1.1
+POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -53,7 +53,7 @@ Választ kaphat a `201\Created` `modelId` törzsben található értékekre. Ez 
 
 ```
 HTTP/1.1 201 Created
-Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
+Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
 {"modelId":"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d","accessToken":"1855fe23-5ffc-427b-aab2-e5196641502f","expirationDateTimeTicks":637233481531659440}
 ```
 
@@ -62,7 +62,7 @@ Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0
 A következő HTTP-kérelem elindítja a másolási műveletet a forrás erőforráson. A forrás erőforrás végpontját és kulcsát fejlécként kell megadnia. Figyelje meg, hogy a kérelem URL-címe tartalmazza a másolni kívánt forrásoldali modell AZONOSÍTÓját.
 
 ```
-POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
+POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -76,19 +76,29 @@ A kérelem törzsének a következő formátumúnak kell lennie. Meg kell adnia 
 }
 ```
 
+> [!NOTE]
+> A copy API transzparens módon támogatja a [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) funkciót. Ez nem igényel különleges kezelést, azonban ha egy titkosítatlan erőforrás között másol egy titkosított erőforrásra, a kérelem fejlécét is meg kell adnia `x-ms-forms-copy-degrade: true` . Ha nem tartalmazza ezt a fejlécet, a másolási művelet sikertelen lesz, és az a értéket adja vissza `DataProtectionTransformServiceError` .
+
 Választ kap egy `202\Accepted` műveleti hely fejlécére. Ez az érték az az URL-cím, amelyet a művelet előrehaladásának nyomon követéséhez fog használni. Másolja a következő lépéshez egy ideiglenes helyre.
 
 ```
 HTTP/1.1 202 Accepted
-Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
+Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
 ```
+
+### <a name="common-errors"></a>Gyakori hibák
+
+|Hiba|Megoldás:|
+|:--|:--|
+| 400/hibás kérelem a`"code:" "1002"` | Ellenőrzési hibát vagy helytelen formátumú másolási kérelmet jelez. Gyakori problémák a következők: a) érvénytelen vagy módosított `copyAuthorization` adattartalom. b) a token lejárt értéke `expirationDateTimeTicks` (a `copyAuhtorization` hasznos adatok 24 órára érvényesek). c) érvénytelen vagy nem támogatott `targetResourceRegion` . d) érvénytelen vagy helytelenül formázott `targetResourceId` karakterlánc.
+|
 
 ## <a name="track-copy-progress"></a>A másolási folyamat nyomon követése
 
 Nyomon követheti a folyamat előrehaladását a forrás-erőforrás végpontján a **másolási modell eredményének lekérése** API lekérdezésével.
 
 ```
-GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
+GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -100,12 +110,22 @@ Content-Type: application/json; charset=utf-8
 {"status":"succeeded","createdDateTime":"2020-04-23T18:18:01.0275043Z","lastUpdatedDateTime":"2020-04-23T18:18:01.0275048Z","copyResult":{}}
 ```
 
+### <a name="common-errors"></a>Gyakori hibák
+
+|Hiba|Megoldás:|
+|:--|:--|
+|"hibák": [{"code": "AuthorizationError",<br>"üzenet": "engedélyezési hiba oka <br>hiányzó vagy érvénytelen engedélyezési jogcímek. "}]   | Akkor következik be, amikor az `copyAuthorization` API által visszaadott adattartalmat vagy tartalmat módosítják `copyAuthorization` . Győződjön meg arról, hogy a hasznos tartalom ugyanaz, mint amit a korábbi `copyAuthorization` hívásban adott vissza.|
+|"hibák": [{"code": "AuthorizationError",<br>"üzenet": "nem sikerült beolvasni az engedélyt <br>metaadatok. Ha a probléma továbbra is fennáll, használjon másikat <br>a másolandó cél modell. "}] | Azt jelzi, hogy a `copyAuthorization` rendszer újrahasználja a hasznos adatokat egy másolási kérelemmel. A sikeres másolási kérelem nem teszi lehetővé az azonos adattartalmat használó további kérelmeket `copyAuthorization` . Ha külön hibát hoz létre (például az alább láthatókat), és később próbálja megismételni a másolást ugyanazzal az engedélyezési adattartalommal, ez a hiba felmerült. A megoldás egy új hasznos adat létrehozása `copyAuthorization` , majd a másolási kérelem újbóli kiadása.|
+|"hibák": [{"code": "DataProtectionTransformServiceError",<br>"üzenet": "az adatátviteli kérelem nem engedélyezett <br>mivel visszakerül egy kevésbé biztonságos adatvédelmi sémára. Tekintse át a dokumentációt, vagy forduljon a szolgáltatás rendszergazdájához <br>részletek. "}]    | Egy `AEK` engedélyezett erőforrás és egy nem engedélyezett erőforrás közötti másoláskor következik be `AEK` . Ha engedélyezni szeretné, hogy a titkosított modell nem titkosított, a `x-ms-forms-copy-degrade: true` másolási kérelemmel ellátott fejléc legyen.|
+|"hibák": [{"code": "ResourceResolverError",<br>"Message": "nem lehetett beolvasni a (z)"... "azonosítójú kognitív erőforrás információit. Győződjön meg arról, hogy az erőforrás érvényes, és létezik a megadott "westus2" régióban. | Azt jelzi, hogy a által jelzett Azure `targetResourceId` -erőforrás nem érvényes kognitív erőforrás, vagy nem létezik. A probléma megoldásához ellenőrizze és adja ki újra a másolási kérelmet.|
+
+
 ### <a name="optional-track-the-target-model-id"></a>Választható A cél modell AZONOSÍTÓjának nyomon követése 
 
 A cél modell lekérdezésével a művelet állapotának nyomon követéséhez használhatja az **Egyéni modell beolvasása** API-t is. Hívja meg ezt az API-t az első lépésben lemásolt cél modell-azonosító használatával.
 
 ```
-GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
+GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -124,19 +144,19 @@ A következő kódrészletek a cURL használatával teszik elérhetővé az API-
 ### <a name="generate-copy-authorization-request"></a>Másolási engedélyezési kérelem előállítása
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
 ```
 
 ### <a name="start-copy-operation"></a>Másolási művelet indítása
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
 ```
 
 ### <a name="track-copy-progress"></a>A másolási folyamat nyomon követése
 
 ```bash
-curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0-preview/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
+curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
 ```
 
 ## <a name="next-steps"></a>További lépések

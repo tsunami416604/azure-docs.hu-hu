@@ -56,12 +56,8 @@
       href: tutorial-azure-devops-blue-green-strategy.md
     - name: 15d – CI/CD az Azure Pipelines használatával (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
-    - name: 16a – LAMP-verem létrehozása
+    - name: 16 – LAMP-verem létrehozása
       href: tutorial-lamp-stack.md
-    - name: 16b – LEMP-verem létrehozása
-      href: tutorial-lemp-stack.md
-    - name: 16c – MEAN-verem létrehozása
-      href: tutorial-mean-stack.md
     - name: 17 – Biztonságos webkiszolgáló SSL-lel
       href: tutorial-secure-web-server.md
 - name: Példák

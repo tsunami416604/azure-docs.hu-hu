@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 59e066974f690bda2384504cc27af5aa94b7b75b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372336"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052690"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Inaktív adatok Language Understanding szolgáltatás titkosítása
 
@@ -38,13 +38,11 @@ Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell haszn
 
 Az ügyfél által felügyelt kulcsok használatának kérelmezéséhez töltse ki és küldje el a [Luis szolgáltatás ügyfél által felügyelt kulcs kérése űrlapot](https://aka.ms/cogsvc-cmk). Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a CMK-val a LUIS-t, létre kell hoznia egy új Language Understanding-erőforrást a Azure Portal, és a E0 kell választania. Az új SKU ugyanúgy fog működni, mint a F0 SKU, amely a CMK kivételével már elérhető. A felhasználók nem fognak tudni frissíteni a F0 az új E0 SKU-ra.
 
-A E0-erőforrások csak authoring Service-ben érhetők el, és a E0-szintet kezdetben csak az USA nyugati régiójában lehet támogatni.
-
 ![LUIS-előfizetési rendszerkép](../media/cognitive-services-encryption/luis-subscription.png)
 
 ### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az ügyfél által felügyelt kulcsok jelenleg az **USA nyugati** régiójában érhetők el.
+Az ügyfél által felügyelt kulcsok minden [szerzői régióban](luis-reference-regions.md)elérhetők. 
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -89,7 +87,7 @@ A kulcs elforgatása nem aktiválja újra az erőforrásban lévő adattitkosít
 
 Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a PowerShellt vagy az Azure CLI-t. További információ: [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) vagy [Azure Key Vault parancssori](https://docs.microsoft.com/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja a Cognitive Services erőforrásban lévő összes adattal való hozzáférést, mivel a titkosítási kulcs Cognitive Services nem érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [LUIS szolgáltatás ügyfél által felügyelt kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
 * [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
