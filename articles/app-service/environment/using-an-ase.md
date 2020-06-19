@@ -62,7 +62,7 @@ Alkalmazás létrehozása a kiegészítőben:
 
     f. Válasszon futtatókörnyezetet.
 
-    g. Válassza a **Linux** vagy a **Windows**lehetőséget. 
+    : Válassza a **Linux** vagy a **Windows**lehetőséget. 
 
     h. Válassza ki a központot a **régió** legördülő listából. 
 
@@ -161,7 +161,7 @@ További változtatások nélkül az internetalapú CI-rendszerek (például a G
 
 Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés**  >  **alapjai** és a **Tulajdonságok**területen is).
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban App Service csomag 250 GB-os korláttal rendelkezik. Egy előállítók esetében 250 GB tárterület kerül App Service csomagba az 1 TB-os korlátig. Több App Service terv is lehet, mint négy, de az 1 TB-os korláton túl nincs több tárterület.
 
@@ -250,7 +250,7 @@ A bemutató rendszer törlése:
 
     ![Bemutatás törlése][3]
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png
