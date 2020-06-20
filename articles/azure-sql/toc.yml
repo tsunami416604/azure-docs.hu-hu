@@ -953,6 +953,9 @@
                 - name: Kiadás
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Verzió
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: Az Azure Storage használata biztonsági mentéshez és visszaállításhoz
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
             - name: Migrate (Áttelepítés)

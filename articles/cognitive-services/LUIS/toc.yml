@@ -30,9 +30,9 @@
     - name: REST API-k használata
       items:
         - name: Szándék lekérése
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: Modell módosítása
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: Oktatóanyagok
   items:
     - name: Felbontható alkalmazás létrehozása
@@ -226,6 +226,12 @@
           href: luis-migration-api-v3.md
         - name: Áttérés az API 2-es verziójára
           href: luis-migration-api-v1-to-v2.md
+    - name: REST API-k használata
+      items:
+        - name: Szándék lekérése
+          href: luis-get-started-get-intent-from-rest.md
+        - name: Modell módosítása
+          href: get-started-get-model-rest-apis.md
     - name: Tárolók használata
       items:
         - name: Tárolók telepítése és futtatása
