@@ -240,6 +240,8 @@
       items:
         - name: Rajzolási csomag követelményei
           href: drawing-requirements.md
+        - name: 'Dinamikus térképek, StylesObject'
+          href: schema-stateset-stylesobject.md
         - name: Járműhasználati modell
           href: consumption-model.md
         - name: GeoJSON formátum kiterjesztése

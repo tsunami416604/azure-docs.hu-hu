@@ -25,10 +25,6 @@
   items:
     - name: 'Kiszolgáló nélküli, hitelesítéssel rendelkező valós idejű alkalmazás összeállítása'
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: Figyelés
-      items:
-        - name: Diagnosztikai naplók használata a SignalR Service szolgáltatás monitorozásához
-          href: signalr-tutorial-diagnostic-logs.md
 - name: Példák
   items:
     - name: Kódminták
@@ -91,6 +87,12 @@
           href: signalr-concept-azure-functions.md
         - name: Event Grid-integráció
           href: signalr-howto-event-grid-integration.md
+    - name: Figyelés
+      items:
+        - name: Diagnosztikai naplók használata a SignalR Service szolgáltatás monitorozásához
+          href: signalr-howto-diagnostic-logs.md
+        - name: Megfelelőség naplózása az Azure Policyval
+          href: signalr-howto-azure-policy.md
 - name: Referencia
   items:
     - name: Azure CLI
