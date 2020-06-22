@@ -18,6 +18,11 @@
     - name: Élő esemény portál és OBS használatával
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: 'A portál használata tartalom feltöltéséhez, kódolásához és streameléséhez'
+      href: manage-assets-quickstart.md
+    - name: A portál használata tartalom titkosításához
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: Oktatóanyagok
   items:
     - name: Távoli fájl kódolása és videó streamelése
@@ -378,6 +383,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: Standard Encoder-sémák
       items:
+        - name: Bemeneti metaadatok
+          href: input-metadata-schema.md
         - name: Kimeneti metaadatok
           href: output-metadata-schema.md
 - name: További források

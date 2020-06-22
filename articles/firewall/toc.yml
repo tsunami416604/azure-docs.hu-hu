@@ -34,6 +34,8 @@
       href: log-analytics-samples.md
 - name: Alapelvek
   items:
+    - name: Az Azure Firewall funkciói
+      href: features.md
     - name: FQDN-címkék
       href: fqdn-tags.md
     - name: Infrastruktúra FQDN-jei

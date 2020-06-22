@@ -60,7 +60,7 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: A Container Instances használata
           href: deploy-form-recognizer-on-container-instances.md
-    - name: Modellek másolása vészhelyreállítás céljából
+    - name: Modellek biztonsági mentése és helyreállítása
       href: disaster-recovery.md
 - name: Referencia
   items:

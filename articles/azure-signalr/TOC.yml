@@ -51,6 +51,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: SignalR-szolgáltatáskötések az Azure Functionshöz – referencia
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: Felsőbb rétegbeli beállítások
+          href: concept-upstream.md
     - name: Magas rendelkezésre állás
       items:
         - name: Rugalmasság és vészhelyreállítás
@@ -81,6 +83,8 @@
           href: howto-private-endpoints.md
         - name: Hálózati hozzáférés-vezérlés kezelése
           href: howto-network-access-control.md
+        - name: Felügyelt identitás használata
+          href: howto-use-managed-identity.md
     - name: Integrálás
       items:
         - name: Azure Functions-kötések

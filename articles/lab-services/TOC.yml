@@ -26,8 +26,10 @@
       href: capacity-limits.md
     - name: Forgatókönyvek
       items:
-        - name: Tesztkörnyezetek használata tanórák lebonyolításához
+        - name: Lab Services használata tanórák lebonyolításához
           href: classroom-labs-scenarios.md
+        - name: Lab Services használata hackathonokhoz
+          href: hackathon-labs.md
         - name: Osztályterem-tesztkörnyezetek – osztálytípusok
           items:
             - name: Osztálytípusok áttekintése
@@ -56,9 +58,9 @@
   items:
     - name: Rendszergazdai útmutató
       href: administrator-guide.md
-    - name: Felgyorsított tesztkörnyezetfiók beállításának útmutatója
+    - name: Tesztkörnyezetfiók beállításának gyorsútmutatója
       href: account-setup-guide.md
-    - name: Felgyorsított tesztkörnyezet beállításának útmutatója
+    - name: Tesztkörnyezet beállításának gyorsútmutatója
       href: setup-guide.md
     - name: Tesztkörnyezeti fiókok létrehozása és konfigurálása (tesztkörnyezeti fiók tulajdonosa)
       items:

@@ -21,17 +21,17 @@
           href: tutorial-develop-for-windows.md
     - name: 2. Egyéni kódmodulok fejlesztése
       items:
-        - name: 'C#'
+        - name: C#
           items:
             - name: C-modulok Linux-eszközökhöz
               href: tutorial-c-module.md
             - name: C-modulok Windows-eszközökhöz
               href: tutorial-c-module-windows.md
-        - name: 'C#'
+        - name: C#
           items:
-            - name: 'C#-modulok Linux-eszközökhöz'
+            - name: C#-modulok Linux-eszközökhöz
               href: tutorial-csharp-module.md
-            - name: 'C#-modulok Windows-eszközökhöz'
+            - name: C#-modulok Windows-eszközökhöz
               href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
@@ -199,6 +199,12 @@
           href: how-to-store-data-blob.md
         - name: Blob Storage-modulok üzembe helyezése
           href: how-to-deploy-blob.md
+    - name: Azure SQL Edge az IoT Edge-en
+      items:
+        - name: A peremhálózati Azure SQL ismertetése
+          href: ../azure-sql-edge/overview.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+        - name: Azure SQL Edge-modulok üzembe helyezése
+          href: ../azure-sql-edge/deploy-portal.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Kezelés DevOps-eszközökkel
       items:
         - name: Azure DevOps Projects
@@ -238,12 +244,12 @@
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure IoT-minták
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'

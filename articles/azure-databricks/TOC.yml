@@ -860,14 +860,14 @@
             - name: A modellkövetkeztetés példái
               href: /azure/databricks/applications/deep-learning/inference/model-inference-examples
               maintainContext: true
-            - name: Modellkövetkeztetés a Keras használatával
+            - name: Modellkövetkeztetés a TensorFlow Keras használatával
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-keras
               maintainContext: true
             - name: Modellkövetkeztetés a PyTorch használatával
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-pytorch
               maintainContext: true
-            - name: Modellkövetkeztetés a TensorFlow használatával
-              href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
+            - name: Modellkövetkeztetés a TensorFlow és a TensorRT használatával
+              href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorrt
               maintainContext: true
             - name: Modellkövetkeztetés teljesítményének finomhangolása
               href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
@@ -1072,14 +1072,22 @@
               maintainContext: true
         - name: Ajánlott eljárások a GDPR-ral kapcsolatban
           href: /azure/databricks/security/privacy/gdpr-delta
+          maintainContext: true
+        - name: Ajánlott adatszabályozási eljárások
+          href: /azure/databricks/security/data-governance
+          maintainContext: true
         - name: IP-hozzáférési lista
           href: /azure/databricks/security/network/ip-access-list
+          maintainContext: true
         - name: A fürt feldolgozó csomópontjai közötti forgalom titkosítása
           href: /azure/databricks/security/encryption/encrypt-otw
+          maintainContext: true
         - name: Felhasználó által kezelt kulcsok engedélyezése notebookokhoz
           href: /azure/databricks/security/keys/customer-managed-key-notebook
+          maintainContext: true
         - name: Felhasználó által kezelt kulcsok engedélyezése DBFS-hez
           href: /azure/databricks/security/keys/customer-managed-keys-dbfs
+          maintainContext: true
     - name: Felügyelet
       items:
         - name: Az adminisztráció áttekintése
@@ -1196,6 +1204,8 @@
             - name: Felhasználó által megadott útvonal beállításai
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
+            - name: MySQL IP-címek
+              href: mysql-ip-address.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori kérdések
@@ -1886,13 +1896,13 @@
                 - name: A Runtime kiadásai
                   href: /azure/databricks/release-notes/runtime/releases
                   maintainContext: true
-                - name: Databricks Runtime 7.0 (bétaverzió)
+                - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
                 - name: Databricks Runtime 7.0 ML (bétaverzió)
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
-                - name: Databricks Runtime 7.0 Genomics (bétaverzió)
+                - name: Databricks Runtime 7.0 Genomics
                   href: /azure/databricks/release-notes/runtime/7.0genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.6

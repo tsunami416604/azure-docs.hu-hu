@@ -423,6 +423,8 @@
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET (Szolgáltatás)
       href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (Felügyelet)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management'
     - name: Java (Eszköz)
       href: /java/api/com.microsoft.azure.sdk.iot.device
     - name: Java (Szolgáltatás)
@@ -431,6 +433,14 @@
       href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
     - name: Node.js (Szolgáltatás)
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+    - name: Node.js (Felügyelet)
+      href: 'https://docs.microsoft.com/javascript/api/overview/azure/iothub/management'
+    - name: Python (Eszköz)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-device'
+    - name: Python (Szolgáltatás)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-hub'
+    - name: Python (Felügyelet)
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-iothub'
     - name: C eszköz SDK
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
     - name: REST (eszköz)

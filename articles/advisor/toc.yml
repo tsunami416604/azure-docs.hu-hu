@@ -10,7 +10,7 @@
       href: advisor-get-started.md
 - name: Útmutatók
   items:
-    - name: Azure-alkalmazások rendelkezésre állásának javítása
+    - name: Azure-alkalmazások megbízhatóságának javítása
       href: advisor-high-availability-recommendations.md
     - name: Az erőforrások biztonságosabbá tétele
       href: advisor-security-recommendations.md

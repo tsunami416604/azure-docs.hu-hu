@@ -34,6 +34,8 @@
       href: create-certificate-scenarios.md
     - name: Tanúsítvány-létrehozási módszerek
       href: create-certificate.md
+    - name: Tanúsítvány-aláírási kérelem létrehozása
+      href: create-certificate-signing-request.md
 - name: Útmutatók
   items:
     - name: A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
