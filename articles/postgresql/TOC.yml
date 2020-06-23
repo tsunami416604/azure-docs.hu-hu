@@ -193,6 +193,8 @@
           items:
             - name: Beállítási lehetőségek
               href: concepts-hyperscale-configuration-options.md
+            - name: Előre fizetés fenntartott kapacitásért
+              href: concepts-hyperscale-reserved-pricing.md
 - name: Útmutatók
   items:
     - name: Egyetlen kiszolgáló

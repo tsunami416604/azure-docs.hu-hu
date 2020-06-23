@@ -48,10 +48,14 @@
           href: push-notification-updates-ios-13.md
         - name: Leküldéses értesítések küldése iOS-alkalmazásokba
           items:
-            - name: Objective-C
-              href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+            - name: Előfeltételek iOS-oktatóanyagokhoz
+              href: ios-sdk-get-started.md
+            - name: Objective-C (3.0.0-preview1 verzió)
+              href: ios-sdk-300.md
+            - name: Objective-C (2.0.4-es verzió)
+              href: ios-sdk-204.md
             - name: Swift
-              href: notification-hubs-ios-push-notifications-swift-apps-get-started.md
+              href: ios-sdk-swift-rest.md
         - name: Leküldéses értesítések küldése adott eszközökre
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: Leküldéses értesítések küldése adott felhasználóknak
