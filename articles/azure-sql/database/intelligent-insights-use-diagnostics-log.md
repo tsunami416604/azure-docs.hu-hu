@@ -10,18 +10,21 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 42edccf0530e0b8041bfb0a182126bc7cd1a9d65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/12/2020
+ms.openlocfilehash: 2088f007be1542defed6f8c1a3aa42233b3ef9ee
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043330"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743422"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítményével kapcsolatos problémák Intelligent Insights teljesítmény diagnosztikai naplójának használata
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Ez az oldal a Azure SQL Database és az Azure SQL felügyelt példányok teljesítménnyel kapcsolatos problémáinak, formátumának és az egyéni fejlesztési igényeknek megfelelő adatoknak a [Intelligent Insights](intelligent-insights-overview.md) által generált teljesítmény-diagnosztikai naplójának használatáról nyújt tájékoztatást. Ezt a diagnosztikai naplót elküldheti [Azure monitor naplókba](../../azure-monitor/insights/azure-sql.md), az [Azure Event Hubsba](../../azure-monitor/platform/resource-logs-stream-event-hubs.md), az [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)-ba vagy egy harmadik féltől származó megoldásra az egyéni DevOps-riasztási és jelentéskészítési funkciókhoz.
+
+> [!NOTE]
+> Az intelligens betekintő funkció az alábbi régiókban nem érhető el: Nyugat-Európa, Észak-Európa, USA 2. nyugati régiója és USA 1. keleti régiója.
 
 ## <a name="log-header"></a>Napló fejléce
 
@@ -114,7 +117,7 @@ A következő példában a rendszer a kivonat 0x9102EXZ4 rendelkező lekérdezé
 }]
 ```
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 Az egyes jelentett mérőszámok mértékegysége a metrika (metrikus) tulajdonság alatt van megadva, a másodperc, a szám és a százalék lehetséges értékeivel. A mért metrika értékét a Value (Value) tulajdonságban kell jelenteni.
 

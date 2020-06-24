@@ -4,12 +4,12 @@ description: Az Azure Blockchain Service áttekintése
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 8a73ed45279ce224441ea9c021b565e63bc4fc63
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: d7aedbc837a58a65fe4c29dbdeed8662d94fc534
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432226"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214077"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az az Azure Blockchain Service?
 
@@ -59,7 +59,7 @@ A konzorciumok felügyeleti műveletei, például a tagok hozzáadása és eltá
 
 ## <a name="develop-using-familiar-development-tools"></a>Fejlesztés ismert fejlesztési eszközökkel
 
-A nyílt forráskódú kvórum Ethereum főkönyve alapján ugyanúgy fejlesztheti az Azure Blockchain-szolgáltatáshoz tartozó alkalmazásokat, mint a meglévő Ethereum-alkalmazásokhoz. A vezető iparági partnerekkel együttműködve a Visual Studio Code bővítmény lehetővé teszi, hogy a fejlesztők olyan ismerős eszközöket használjanak, mint például a szarvasgomba Suite intelligens szerződések létrehozásához. Az Azure Blockchain Development Kit bővítmény használatával a fejlesztők létrehozhatnak vagy csatlakozhatnak egy meglévő konzorciumhoz, így az összes IDE-ből létrehozhatók és üzembe helyezhetők intelligens szerződések. Az Azure Blockchain Visual Studio Code bővítmény használatával létrehozhat vagy csatlakozhat egy meglévő konzorciumhoz, így az összes IDE-ből létrehozhatja és üzembe helyezheti az intelligens szerződéseit. További információkért lásd: az [Azure Blockchain Development Kit a vs Code piactéren](https://aka.ms/vscodebcextension) és az [Azure Blockchain Development Kit felhasználói útmutatójában](https://aka.ms/vscodebcextensionwiki).
+A nyílt forráskódú kvórum Ethereum főkönyve alapján ugyanúgy fejlesztheti az Azure Blockchain-szolgáltatáshoz tartozó alkalmazásokat, mint a meglévő Ethereum-alkalmazásokhoz. A vezető iparági partnerekkel együttműködve a Visual Studio Code bővítmény lehetővé teszi, hogy a fejlesztők olyan ismerős eszközöket használjanak, mint például a szarvasgomba Suite intelligens szerződések létrehozásához. Az Azure Blockchain Visual Studio Code bővítmény használatával létrehozhat vagy csatlakozhat egy meglévő konzorciumhoz, így az összes IDE-ből létrehozhatja és üzembe helyezheti az intelligens szerződéseit. További információkért lásd: az [Azure Blockchain Development Kit a vs Code piactéren](https://aka.ms/vscodebcextension) és az [Azure Blockchain Development Kit felhasználói útmutatójában](https://aka.ms/vscodebcextensionwiki).
 
 ## <a name="publish-blockchain-data"></a>Blockchain-adatbázis közzététele
 
@@ -79,7 +79,7 @@ Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szaké
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépésként próbálkozzon egy rövid útmutatóval, vagy további részletekért tekintse meg ezeket az erőforrásokat.
 * [Blockchain-tag létrehozása a Azure Portal használatával](create-member.md) vagy [blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)

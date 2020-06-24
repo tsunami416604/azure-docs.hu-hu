@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: 4802e9e6fa2fdd918266d3ddc58b783bdb6bb83e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0193e7f7001fb8f63794a379c4d2b8e28abd5c0f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258464"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297868"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Azure SQL Database migrálása a DTU-alapú modellből a virtuális mag-alapú modellbe
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ A virtuális mag (logikai processzorok) és a hardveres létrehozás mellett sz�
 - Ugyanahhoz a hardveres létrehozáshoz, valamint a virtuális mag-adatbázisok esetében a IOPS és a tranzakciónaplók átviteli sebességére vonatkozó virtuális mag gyakran magasabbak, mint a DTU-adatbázisok esetében. Az IO-kötésű munkaterhelések esetében előfordulhat, hogy a virtuális mag-modellben lévő virtuális mag számát csökkenteni lehet a teljesítmény azonos szintjének elérése érdekében. Az abszolút értékekben lévő DTU-és virtuális mag-adatbázisok erőforrás-korlátai a [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) nézetben érhetők el. Ha összehasonlítja ezeket az értékeket az áttelepíteni kívánt DTU-adatbázis és egy virtuális mag-adatbázis között, amely egy körülbelül egyező szolgáltatási célkitűzést használ, a virtuális mag-szolgáltatás céljának pontosabb kiválasztását is segíti.
 - A leképezési lekérdezés a DTU-adatbázis vagy a rugalmas készlet áttelepítéséhez használt memória mennyiségét, valamint a virtuális mag modell minden egyes hardveres generálását is visszaadja. A hasonló vagy magasabb teljes memória biztosítása a virtuális mag való áttelepítés után fontos a nagy mennyiségű adatgyorsítótárat igénylő munkaterhelések számára a megfelelő teljesítmény eléréséhez, vagy nagy mennyiségű memóriát igénylő munkaterhelések megkövetelése a lekérdezések feldolgozásához. Az ilyen számítási feladatokhoz a tényleges teljesítménytől függően szükség lehet a virtuális mag számának növelésére, hogy elegendő mennyiségű memóriát kapjon.
 - A DTU-adatbázis [korábbi erőforrás-kihasználtságát](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) figyelembe kell venni a virtuális mag szolgáltatás céljának kiválasztásakor. A konzisztensen használt CPU-erőforrásokkal rendelkező DTU-adatbázisok esetében kevesebb virtuális mag van szükség a leképezési lekérdezés által visszaadott számnál. Ezzel szemben a DTU-adatbázisok esetében, ahol a következetesen magas CPU-kihasználtság miatt a nem megfelelő munkaterhelés-teljesítmény a lekérdezés által visszaadottnál nagyobb virtuális mag igényel.
-- Ha időszakos vagy kiszámíthatatlan használati mintákkal rendelkező adatbázisokat telepít át, vegye figyelembe a [kiszolgáló](serverless-tier-overview.md) nélküli számítási szintek használatát.
+- Ha időszakos vagy kiszámíthatatlan használati mintákkal rendelkező adatbázisokat telepít át, vegye figyelembe a [kiszolgáló](serverless-tier-overview.md) nélküli számítási szintek használatát.  Vegye figyelembe, hogy a kiszolgáló nélküli egyidejű feldolgozók (kérelmek) maximális száma 75% a kiépített számítási korlát a beállított maximális virtuális mag-értéknél.  Továbbá a kiszolgáló nélküli kiszolgálón elérhető maximális memória 3 GB-szor a beállított virtuális mag maximális száma; például a maximális memória 120 GB, ha 40 Max virtuális mag van konfigurálva.   
 - A virtuális mag-modellben a támogatott maximális adatbázis-méret eltérő lehet a hardver-létrehozástól függően. Nagyméretű adatbázisok esetében a virtuális mag-modellben található támogatott maximális méretek közül a [különálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)esetében a következőt kell megnéznie:.
 - A rugalmas készletek esetében a [DTU](resource-limits-dtu-elastic-pools.md) és a [virtuális mag](resource-limits-vcore-elastic-pools.md) modellek eltérést mutatnak a maximálisan támogatott adatbázisok száma alapján. Ezt figyelembe kell venni, amikor rugalmas készleteket telepít át sok adatbázissal.
 - Előfordulhat, hogy egyes hardver-generációk nem érhetők el minden régióban. A rendelkezésre állást a [hardver generációi](service-tiers-vcore.md#hardware-generations)között tekintheti meg.

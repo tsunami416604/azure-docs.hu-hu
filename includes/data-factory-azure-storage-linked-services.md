@@ -16,8 +16,8 @@ Az **Azure Storage társított szolgáltatása** lehetővé teszi, hogy egy Azur
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Igen |
-| connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Yes |
+| connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Yes |
 
 További információ a Storage-fiók hozzáférési kulcsainak beolvasásáról: a [Storage-fiók hozzáférési kulcsainak kezelése](../articles/storage/common/storage-account-keys-manage.md).
 
@@ -49,8 +49,8 @@ Az Azure Storage SAS társított szolgáltatása lehetővé teszi egy Azure Stor
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Igen |
-| sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT.  |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Yes |
+| sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT.  |Yes |
 
 **Például**
 

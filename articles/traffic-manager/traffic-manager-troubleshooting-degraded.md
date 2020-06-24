@@ -7,17 +7,17 @@ author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: 6d720067b619b0d871899f2ac9025a9d8ab24d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0585c755e8dd9a6625a8259dc71ca521f156afb
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82130767"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704063"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Az Azure Traffic Manager csökkentett teljesítményének hibaelhárítása
 
@@ -35,7 +35,7 @@ Ha a Traffic Manager állapota **inaktív** állapotot jelez, akkor előfordulha
 * A 30x átirányítási válasza meghiúsul, hacsak nem adta meg ezt érvényes válaszként a Traffic Manager profiljának [várt állapotkód-tartományában](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) . Traffic Manager nem ellenőrzi az átirányítás célját.
 * HTTPs-próbák esetén a rendszer figyelmen kívül hagyja a tanúsítvány hibáit.
 * A mintavételi útvonal tényleges tartalma nem számít, feltéve, hogy a 200-as értéket adja vissza. Egy olyan statikus tartalom URL-címe, mint például a "/favicon.ico", egy gyakori módszer. Előfordulhat, hogy a dinamikus tartalom, például az ASP-lapok nem mindig adnak vissza 200-et, még akkor is, ha az alkalmazás kifogástalan állapotban van.
-* Ajánlott eljárás a mintavételi útvonal beállítása olyan értékre, amely elegendő logikával rendelkezik annak megállapításához, hogy a hely fel vagy le van-e állítva. Az előző példában a "/favicon.ico" elérési út beállításával csak azt teszteli, hogy a W3wp. exe válaszol-e. Ez a mintavétel nem utalhat arra, hogy a webalkalmazás kifogástalan állapotú. A jobb lehetőség egy olyan elérési út beállítása, mint például a "/Probe.aspx", amely a hely állapotának meghatározására szolgáló logikát tartalmaz. Használhat például teljesítményszámlálók használatával a CPU-kihasználtságot, vagy mérhetővé teheti a sikertelen kérések számát. Vagy megkísérelheti elérni az adatbázis-erőforrásokat vagy a munkamenet-állapotot, hogy meggyőződjön arról, hogy a webalkalmazás működik.
+* Ajánlott eljárás a mintavételi útvonal beállítása olyan értékre, amely elegendő logikával rendelkezik annak megállapításához, hogy a hely fel vagy le van-e állítva. Az előző példában a "/favicon.ico" elérési út beállításával csak azt teszteli, hogy w3wp.exe válaszol-e. Ez a mintavétel nem utalhat arra, hogy a webalkalmazás kifogástalan állapotú. A jobb lehetőség egy olyan elérési út beállítása, mint például a "/Probe.aspx", amely a hely állapotának meghatározására szolgáló logikát tartalmaz. Használhat például teljesítményszámlálók használatával a CPU-kihasználtságot, vagy mérhetővé teheti a sikertelen kérések számát. Vagy megkísérelheti elérni az adatbázis-erőforrásokat vagy a munkamenet-állapotot, hogy meggyőződjön arról, hogy a webalkalmazás működik.
 * Ha a profilban lévő összes végpontot csökkenti, akkor Traffic Manager az összes végpontot Kifogástalan állapotba kezeli, és az összes végpontra irányítja a forgalmat. Ez a viselkedés biztosítja, hogy a szondázás mechanizmussal kapcsolatos problémák ne eredményezik a szolgáltatás teljes kimaradását.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
@@ -48,7 +48,7 @@ A mintavételi hibák hibaelhárításához olyan eszközre van szükség, amely
 
 Emellett a HTTP-válaszok megtekintéséhez használhatja az F12 hibakereső eszközök hálózat lapját az Internet Explorerben.
 
-Ebben a példában a mintavételi URL-címről érkező választ szeretnénk látni: http:\//watestsdp2008r2.cloudapp.net:80/Probe. A következő PowerShell-példa szemlélteti a problémát.
+Ebben a példában a mintavételi URL-címről érkező választ szeretnénk látni: http: \/ /watestsdp2008r2.cloudapp.net:80/Probe. A következő PowerShell-példa szemlélteti a problémát.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

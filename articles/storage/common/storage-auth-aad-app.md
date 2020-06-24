@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201072"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212623"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Jogkivonat beszerzése az Azure AD-ből az ügyfélalkalmazástól érkező kérések engedélyezéséhez
 
@@ -58,7 +58,7 @@ Ezután adja meg az alkalmazás engedélyeit az Azure Storage API-k meghívásá
 
     ![A tárterületre vonatkozó engedélyeket megjelenítő képernyőkép](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-Az **API-engedélyek** ablaktábla mostantól azt mutatja, hogy a regisztrált Azure ad-alkalmazás Microsoft Graph és az Azure Storage szolgáltatáshoz is hozzáférhet. Az Azure AD-vel való első regisztráláskor az engedélyek Microsoft Graph automatikusan megadhatók.
+Az **API-engedélyek** panel most azt mutatja, hogy a regisztrált Azure ad-alkalmazás rendelkezik hozzáféréssel a Microsoft Graph és az Azure Storage API-khoz. Az Azure AD-vel való első regisztráláskor az engedélyek Microsoft Graph automatikusan megadhatók.
 
 ![Az alkalmazásra vonatkozó engedélyek regisztrálását bemutató képernyőkép](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
@@ -213,7 +213,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
     properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
                                                  scopes.Union(additionalBuildInScopes).ToList());
@@ -245,7 +245,7 @@ A minta alkalmazás futtatásához először klónozott vagy töltse le a [githu
 
 ### <a name="provide-values-in-the-settings-file"></a>Értékek megadása a beállítási fájlban
 
-Ezután frissítse a *appSettings. JSON* fájlt a saját értékeivel, a következőképpen:
+Ezután frissítse a fájl *appsettings.jsa* saját értékeivel, a következőképpen:
 
 ```json
 {
@@ -284,8 +284,8 @@ CloudBlockBlob blob = new CloudBlockBlob(
 Előfordulhat, hogy a minta futtatásához konfigurálnia kell a implicit engedélyezési folyamatot az alkalmazás regisztrálásához. Kövesse az alábbi lépéseket:
 
 1. Navigáljon az alkalmazás regisztrálásához a Azure Portal.
-1. A kezelés szakaszban válassza ki a **hitelesítési** beállítást.
-1. A **Speciális beállítások**területen az **implicit támogatás** szakaszban jelölje be a hozzáférési jogkivonatok és azonosító tokenek engedélyezéséhez szükséges jelölőnégyzeteket az alábbi ábrán látható módon:
+1. A **kezelés** szakaszban válassza ki a **hitelesítési** beállítást.
+1. Az **implicit támogatás** szakaszban jelölje be a jelölőnégyzetet az azonosító tokenek engedélyezéséhez, ahogy az az alábbi képen is látható:
 
     ![Az implicit engedélyezési folyamat beállításainak engedélyezését bemutató képernyőkép](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
 
@@ -294,13 +294,13 @@ Előfordulhat, hogy a minta futtatásához konfigurálnia kell a implicit enged�
 A minta futtatásakor előfordulhat, hogy frissítenie kell az alkalmazás regisztrációjában megadott átirányítási URI-t, hogy használhassa a futtatókörnyezethez hozzárendelt *localhost* portot. Az átirányítási URI-nak a hozzárendelt port használatára való frissítéséhez kövesse az alábbi lépéseket:
 
 1. Navigáljon az alkalmazás regisztrálásához a Azure Portal.
-1. A kezelés szakaszban válassza ki a **hitelesítési** beállítást.
+1. A **kezelés** szakaszban válassza ki a **hitelesítési** beállítást.
 1. Az **átirányítási URI**-k területen szerkessze a minta alkalmazás által használt portot úgy, ahogy az a következő képen látható:
 
     ![Az alkalmazás regisztrálására szolgáló átirányítási URI-ket bemutató képernyőkép](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a Microsoft Identity platformról: [Microsoft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/).
-- Ha többet szeretne megtudni az Azure Storage RBAC szerepköreiről, tekintse meg a [hozzáférési jogosultságok kezelése a RBAC](storage-auth-aad-rbac.md)szolgáltatással című témakört.
-- További információ az Azure-erőforrások felügyelt identitások használatáról az Azure Storage-ban: a [blobok és várólisták hozzáférésének hitelesítése az Azure-erőforrások Azure Active Directory és felügyelt identitásával](storage-auth-aad-msi.md).
+- [Microsoft-identitásplatform](https://docs.microsoft.com/azure/active-directory/develop/)
+- [A tárolási és a RBAC közötti hozzáférési jogosultságok kezelése](storage-auth-aad-rbac.md)
+- [Blobok és várólisták hozzáférésének hitelesítése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz](storage-auth-aad-msi.md)

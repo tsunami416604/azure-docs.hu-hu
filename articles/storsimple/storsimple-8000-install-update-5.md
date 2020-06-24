@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267884"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704372"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Telepítse az 5. frissítést a StorSimple-eszközön
 
@@ -78,7 +78,7 @@ A következő gyorsjavításokat le kell töltenie és telepítenie kell az elő
 
 | Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Szoftverfrissítés<br> Töltse le a _HcsSoftwareUpdate. exe_ és a _CisMSDAgent. exe fájlt_ is |Hagyományos <br></br>Nem zavaró |~ 25 perc |FirstOrderUpdate|
+| 1. |KB4037264 |Szoftverfrissítés<br> _HcsSoftwareUpdate.exe_ és _CisMSDAgent.exe_ letöltése |Hagyományos <br></br>Nem zavaró |~ 25 perc |FirstOrderUpdate|
 
 Ha a 4. frissítést futtató eszközről frissít, csak az operációs rendszer összegző frissítéseit kell második sorrendi frissítésként telepíteni.
 
@@ -95,7 +95,7 @@ Ha a telepítést a 3-as vagy korábbi frissítést futtató eszközről végzi,
 | 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Operációs rendszer frissítési csomagja <br> A Windows Server 2012 R2 verziójának letöltése |Hagyományos <br></br>Nem zavaró |- |SecondOrderUpdate|
 
 
-Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A `Get-HcsFirmwareVersion` parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire. Ha a következő belső vezérlőprogram-verziókat `XMGJ`futtatja `KZ50`: `F6C2` `VR08` `N003` `0107` `XGEG`,,,,,, akkor nem kell telepítenie ezeket a frissítéseket.
+Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire `Get-HcsFirmwareVersion` . Ha a következő belső vezérlőprogram-verziókat futtatja:,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N003` `0107` akkor nem kell telepítenie ezeket a frissítéseket.
 
 | Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |

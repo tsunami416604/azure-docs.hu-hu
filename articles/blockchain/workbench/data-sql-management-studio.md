@@ -2,15 +2,15 @@
 title: Azure Blockchain Workbench-adatbázis lekérdezése SQL Server Management Studio használatával
 description: Megtudhatja, hogy hogyan csatlakozhat az Azure Blockchain Workbench SQL Database-adatbázisához az SQL Server Management Studióból.
 ms.date: 11/20/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
-ms.openlocfilehash: f87d1880c90202fa26b0477e3b4dfbed5965bb82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b316d2579e1dde98b04a2dc7652a9721c7f8de77
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74326040"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214213"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Azure Blockchain Workbench-adatok használata az SQL Server Management Studióval
 

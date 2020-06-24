@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116556"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249415"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database figyelése Azure SQL Analytics használatával (előzetes verzió)
 
@@ -34,10 +34,10 @@ A Azure SQL Analytics egy Felhőbeli figyelési megoldás, amely támogatja az �
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
 | [Diagnosztikai beállítások](../platform/diagnostic-settings.md) | **Igen** | Az Azure metrika és a naplózási adatok közvetlenül az Azure-ban érkeznek Azure Monitor naplókra. |
-| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | Nem | Azure Monitor nem olvassa be a Storage-fiók adatait. |
-| [Windows-ügynökök](../platform/agent-windows.md) | Nem | Azure SQL Analytics nem használja a közvetlen Windows-ügynököket. |
-| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | Azure SQL Analytics nem használja a közvetlen Linux-ügynököket. |
-| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | Nem | A Azure SQL Analytics nem használja közvetlen kapcsolódást a Operations Manager ügynöktől a Azure Monitor. |
+| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | No | Azure Monitor nem olvassa be a Storage-fiók adatait. |
+| [Windows-ügynökök](../platform/agent-windows.md) | No | Azure SQL Analytics nem használja a közvetlen Windows-ügynököket. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | No | Azure SQL Analytics nem használja a közvetlen Linux-ügynököket. |
+| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | No | A Azure SQL Analytics nem használja közvetlen kapcsolódást a Operations Manager ügynöktől a Azure Monitor. |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics beállítások
 
@@ -48,9 +48,9 @@ Az alábbi táblázat a Azure SQL Analytics irányítópult két verziójának t
 | Erőforrás típus szerint | Az összes figyelt erőforrást megszámoló perspektíva. | Igen | Igen |
 | Insights | Hierarchikus részletezést biztosít a Intelligent Insightsba a teljesítményig. | Igen | Igen |
 | Hibák | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-hibákhoz. | Igen | Igen |
-| Időtúllépések | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-időtúllépésekhez. | Igen | Nem |
-| Tiltások | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-blokkokhoz. | Igen | Nem |
-| Adatbázis-várakozások | Hierarchikus részletezést biztosít az SQL WAIT statisztikái számára az adatbázis szintjén. A várakozási idő összegzését és a várakozási idő várakozási idejét foglalja magában. |Igen | Nem |
+| Időtúllépések | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-időtúllépésekhez. | Yes | Nem |
+| Tiltások | Hierarchikus részletezést biztosít az adatbázisokon történt SQL-blokkokhoz. | Yes | Nem |
+| Adatbázis-várakozások | Hierarchikus részletezést biztosít az SQL WAIT statisztikái számára az adatbázis szintjén. A várakozási idő összegzését és a várakozási idő várakozási idejét foglalja magában. |Yes | Nem |
 | Lekérdezés időtartama | Hierarchikus részletezést biztosít a lekérdezés végrehajtási statisztikái, például a lekérdezési időtartam, a CPU-használat, az adatio-használat, a log IO használata során. | Igen | Igen |
 | Lekérdezési várakozások | Hierarchikus részletezést biztosít a lekérdezési várakozási statisztikákra a várakozási kategóriánként. | Igen | Igen |
 
@@ -58,11 +58,11 @@ Az alábbi táblázat a Azure SQL Analytics irányítópult két verziójának t
 
 Használja a [Solutions Gallery Azure monitor-megoldások hozzáadása az](../../azure-monitor/insights/solutions.md) Azure SQL Analytics (előzetes verzió) a log Analytics munkaterülethez való hozzáadásához használt eljárást.
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>Azure SQL Database-adatbázisok konfigurálása a stream Diagnostics telemetria
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>Azure SQL Database konfigurálása a stream Diagnostics telemetria
 
 Miután létrehozta Azure SQL Analytics megoldást a munkaterületen, **konfigurálnia** kell az összes figyelni kívánt erőforrást, hogy a diagnosztikai telemetria továbbítsa a Azure SQL Analytics. Kövesse az oldalon található részletes utasításokat:
 
-- Engedélyezze Azure Diagnostics az Azure SQL Database-hez, hogy a [stream diagnosztikai telemetria Azure SQL Analytics](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
+- Engedélyezze Azure Diagnostics az adatbázis számára, hogy a [diagnosztikai telemetria Azure SQL Analytics](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 A fenti oldalon megtudhatja, hogyan engedélyezheti a több Azure-előfizetés figyelését egyetlen Azure SQL Analytics munkaterületről egyetlen üvegtáblaként.
 

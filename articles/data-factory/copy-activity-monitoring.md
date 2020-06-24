@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 3ed1a952cb640fcd64808ba49e1a0937d71d769f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655641"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249703"
 ---
 # <a name="monitor-copy-activity"></a>Másolási tevékenység figyelése
 
@@ -58,8 +58,8 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 | filesWritten | A fájl alapú fogadóba írt/véglegesített fájlok száma. | Int64 érték (egység nélkül) |
 | sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int64 érték (egység nélkül) |
 | sinkPeakConnections | A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma. | Int64 érték (egység nélkül) |
-| rowsRead | A forrásból beolvasott sorok száma (bináris másolás esetén nem alkalmazható). | Int64 érték (egység nélkül) |
-| rowsCopied | A fogadóba másolt sorok száma (bináris másolás esetén nem alkalmazható). | Int64 érték (egység nélkül) |
+| rowsRead | A forrásból beolvasott sorok száma. Ez a metrika nem vonatkozik arra az esetre, ha a fájlok a-ként való másolása nem történik meg, például ha a forrás-és fogadó adatkészletek bináris formátumúak, vagy más formátumúak azonos beállításokkal. | Int64 érték (egység nélkül) |
+| rowsCopied | A fogadóba másolt sorok száma. Ez a metrika nem vonatkozik arra az esetre, ha a fájlok a-ként való másolása nem történik meg, például ha a forrás-és fogadó adatkészletek bináris formátumúak, vagy más formátumúak azonos beállításokkal.  | Int64 érték (egység nélkül) |
 | rowsSkipped | A kihagyott inkompatibilis sorok száma. A nem kompatibilis sorok kihagyása az igaz értékre állításával engedélyezhető `enableSkipIncompatibleRow` . | Int64 érték (egység nélkül) |
 | copyDuration | A másolás futtatásának időtartama. | Int32 érték másodpercben |
 | korlátozások | Adatátviteli sebesség. | Lebegőpontos szám (Kbit/s) |
@@ -150,7 +150,7 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
 \-[Másolási tevékenység – áttekintés](copy-activity-overview.md)

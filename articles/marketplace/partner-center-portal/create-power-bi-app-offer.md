@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 6ddf3db422a192b82b8d67e8e532a9ae0030d6f7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849093"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212520"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Power BI-alkalmazás létrehozása Microsoft AppSourcehoz
 
@@ -26,7 +26,7 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
 3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Power bi Service app**elemet.
 
-   ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-pbi-app.png)
+   ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
 > Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
@@ -145,6 +145,24 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 > [!NOTE]
 > Az ajánlat részleteit nem kötelező angol nyelven megadni, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, amely az ajánlati listán használt nyelvtől eltérő nyelven kínál tartalmat.
 
+Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
+
+:::image type="content" source="media/example-power-bi-app.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Embléma
+2. Termékek
+3. Kategóriák
+4. Ágazatok
+5. Támogatási címe (hivatkozás)
+6. Használati feltételek
+7. Adatvédelmi irányelvek
+8. Ajánlat neve
+9. Összefoglalás
+10. Leírás
+11. Képernyőképek/videók
+
 ### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
@@ -199,14 +217,14 @@ Adjon meg legalább egy három kapcsolódó marketing dokumentumot PDF formátum
 
 ### <a name="marketplace-images"></a>Marketplace-rendszerképek
 
-Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek. png formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
+Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
 >[!NOTE]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a `https://upload.xboxlive.com` partner központ által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlat emblémájának. png fájlját két képpontos méretben:
+Adja meg az ajánlat emblémájának PNG-fájlját két képpontos méretben:
 - **Kicsi** (48 x 48)
 - **Nagyméretű** (216 x 216)
 
@@ -214,11 +232,11 @@ Mindkét emblémát meg kell adni, és a piactér-lista különböző helyein ha
 
 #### <a name="screenshots"></a>Képernyőképek
 
-Vegyen fel legalább egy legfeljebb öt képernyőképet, amely bemutatja, hogyan működik az ajánlata. Mindegyiknek 1280 x 720 képpont méretűnek és. png formátumúnak kell lennie.
+Vegyen fel legalább egy legfeljebb öt képernyőképet, amely bemutatja, hogyan működik az ajánlata. Mindegyiknek 1280 x 720 képpont méretűnek és PNG formátumúnak kell lennie.
 
 #### <a name="videos-optional"></a>Videók (nem kötelező)
 
-Akár öt videót is hozzáadhat, amelyek bemutatják az ajánlatát. Adja meg a videó nevét, a webcímet és a miniatűr. png-képet, amely 1280 x 720 képpont méretű.
+Akár öt videót is hozzáadhat, amelyek bemutatják az ajánlatát. Adja meg a videó nevét, a webcímet és a videó miniatűr PNG-képét, amely 1280 x 720 képpont méretű.
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 

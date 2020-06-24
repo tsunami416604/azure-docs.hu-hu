@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7815b8180c29b66b12eddbff88e4728b6784be66
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 51df588b1ccd41bf05d8851f00399b61292b0736
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672765"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214101"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
 
@@ -26,7 +26,7 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
 3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Dynamics 365 lehetőséget a Customer engagement & PowerApps**.
 
-    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-dynamics-365-cepa.png)
+    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-dynamics-365-customer-engagement-powerapps.png)
 
 > [!NOTE]
 > Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
@@ -60,7 +60,7 @@ Az ajánlatát ingyenesen listázhatja, ha érvényes URL-címet ad meg (a *http
 
 #### <a name="free-trial-listing"></a>Ingyenes próbaverzió (Listázás)
 
-Az ajánlat az ingyenes próbaverzióra mutató hivatkozással listázhatja az ügyfeleket, ha egy érvényes URL-címet (a *http* -t vagy a *https*-t) biztosít, ahol próbaverziót kaphat.  Például: `https://contoso.com/trial/my-app`. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
+Az ajánlatot az ingyenes próbaverzióra mutató hivatkozással listázhatja, ha egy érvényes URL-címet biztosít (a vagy a verziótól kezdve `http` `https` ), ahol próbaverziót kaphat.  Például: `https://contoso.com/trial/my-app`. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
 
 > [!NOTE]
 > Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak Azure Active Directory (Azure AD) használatával szerezhetik be a felhasználói adatokat, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok nem támogatottak a jogkivonat használatával történő hitelesítéshez.
@@ -139,6 +139,21 @@ Itt adhatja meg az egyes nyelvekhez/piacokhoz tartozó piactér részleteit, pé
 > [!NOTE]
 > Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek és a használati feltételek) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
 
+Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
+
+:::image type="content" source="media/example-azure-marketplace-d365-customer-engagement.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Embléma
+2. Termékek
+3. Kategóriák
+4. Támogatási címe (hivatkozás)
+5. Használati feltételek címe (hivatkozás)
+6. Ajánlat neve
+7. Leírás
+8. Képernyőképek/videók
+
 ### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
@@ -147,7 +162,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

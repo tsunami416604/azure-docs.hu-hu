@@ -4,18 +4,18 @@ description: Megtudhatja, hogyan tölthet fel forrás térképeket a saját Stor
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
-ms.date: 03/04/2020
-ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d5f01bb3034ab060227230071a21284177840e83
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474883"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249737"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>A JavaScript-alkalmazások forrás-hozzárendelési támogatása
 
 A Application Insights támogatja a forrás-hozzárendelések saját Storage-fiók blob-tárolóra való feltöltését.
-A forrás-és a végpontok a végpontok közötti tranzakció részletei lapon találhatók. A [JavaScript SDK][ApplicationInsights-JS] vagy a [Node. js SDK][ApplicationInsights-Node.js] által eljuttatott kivételek nem használhatók fel a forrás-térképek használatával.
+A forrás-és a végpontok a végpontok közötti tranzakció részletei lapon találhatók. A [JavaScript SDK][ApplicationInsights-JS] vagy a [Node.js SDK][ApplicationInsights-Node.js] által eljuttatott kivételek nem használhatók fel a forrás térképek használatával.
 
 ![A hívási verem kiépítésének megjelölése a Storage-fiókkal való összekapcsolással](./media/source-map-support/details-unminify.gif)
 
@@ -24,14 +24,16 @@ A forrás-és a végpontok a végpontok közötti tranzakció részletei lapon t
 Ha már rendelkezik egy meglévő Storage-fiókkal vagy blob-tárolóval, kihagyhatja ezt a lépést.
 
 1. [Új tárfiók létrehozása][create storage account]
-2. [Hozzon létre egy BLOB-tárolót][create blob container] a Storage-fiókon belül. Győződjön meg arról `Private`, hogy a "nyilvános hozzáférési szint" értékre van állítva, hogy a forrás-térképek ne legyenek nyilvánosan elérhetők.
+2. [Hozzon létre egy BLOB-tárolót][create blob container] a Storage-fiókon belül. Győződjön meg arról, hogy a "nyilvános hozzáférési szint" értékre `Private` van állítva, hogy a forrás-térképek ne legyenek nyilvánosan elérhetők.
 
 > [!div class="mx-imgBorder"]
 >![A tároló hozzáférési szintjét privát értékre kell beállítani](./media/source-map-support/container-access-level.png)
 
 ## <a name="push-your-source-maps-to-your-blob-container"></a>A forrás leküldése a blob-tárolóba
 
-Állítsa be a folyamatos üzembe helyezési folyamatot a Storage-fiókjába úgy, hogy úgy konfigurálja, hogy automatikusan feltöltse a forrás térképeket a beállított blob-tárolóba. Ne töltse fel a forrás térképeket a blob-tároló egyik almappájába; a forrás-hozzárendelés jelenleg csak a gyökérmappa alapján lesz beolvasva.
+Állítsa be a folyamatos üzembe helyezési folyamatot a Storage-fiókjába úgy, hogy úgy konfigurálja, hogy automatikusan feltöltse a forrás térképeket a beállított blob-tárolóba.
+
+A forrás-leképezések feltölthetők a Blob Storage tárolóba ugyanazzal a mappastruktúrát, amelyet & üzembe helyezésével készítettek le. Gyakori használati eset a telepítési mappa előtagja a verziószámával, például: `1.2.3/static/js/main.js` . Amikor egy nevű Azure Blob-tárolón keresztül `sourcemaps` felveszi az egyiket, a rendszer megkísérli beolvasni a (z) helyen található forrás-hozzárendelést `sourcemaps/1.2.3/static/js/main.js.map` .
 
 ### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Forrás térképek feltöltése az Azure-folyamatok használatával (ajánlott)
 
@@ -74,7 +76,7 @@ A portálon található bármely felhasználónak, amely ezt a funkciót haszná
 ### <a name="source-map-not-found"></a>A forrás-hozzárendelés nem található
 
 1. Ellenőrizze, hogy a megfelelő forrás-hozzárendelés fel van-e töltve a megfelelő blob-tárolóba
-2. Győződjön meg arról, hogy a forrás-hozzárendelési fájl neve a (z `.map`) nevű JavaScript-fájl után van elnevezve, utótag:.
+2. Győződjön meg arról, hogy a forrás-hozzárendelési fájl neve a (z) nevű JavaScript-fájl után van elnevezve, utótag: `.map` .
     - Például `/static/js/main.4e2ca5fa.chunk.js` megkeresi a nevű blobot.`main.4e2ca5fa.chunk.js.map`
 3. Ellenőrizze, hogy a böngésző konzolján látható-e a hibák naplózása. Adja meg ezt minden támogatási jegyben.
 

@@ -1,23 +1,23 @@
 ---
-title: Azure bejárati ajtó | Microsoft Docs
-description: Ez a cikk az Azure Front Doorról nyújt áttekintést. Megtudhatja, hogy a megfelelő választás-e a felhasználói forgalom terheléselosztásához az alkalmazáshoz.
+title: A szabályok motor konfigurálása – Azure bejárati ajtó
+description: Ez a cikk bemutatja, hogyan konfigurálhatja a szabályok motorját az Azure-beli bejárati ajtóhoz
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4574597c0b93f2985953bfbc815cca220ecc4f28
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ed54f26f37617d420fae1aaf3f51853b0439a349
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515600"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743558"
 ---
 # <a name="configure-your-rules-engine"></a>A szabályok motor konfigurálása 
 
@@ -34,7 +34,7 @@ ms.locfileid: "82515600"
 
 3. Az első szabály létrehozásához kattintson a **szabály hozzáadása** elemre. Ezután a **feltétel hozzáadása** vagy a **művelet hozzáadása** lehetőségre kattintva megadhatja a szabályt. 
     
-    *Megjegyzi*
+    *Megjegyzések:*
     - Ha törölni szeretne egy feltételt vagy műveletet a szabályból, használja a szemetet az adott feltétel vagy művelet jobb oldalán.
     - Egy olyan szabály létrehozásához, amely az összes bejövő forgalomra vonatkozik, ne határozzon meg feltételeket. 
     - Ha az első egyeztetési feltétel teljesülése után le szeretné állítani a szabályok kiértékelését, akkor a **szabály kiértékelésének leállítása**gombra kell bejelentkeznie. 
@@ -45,7 +45,7 @@ ms.locfileid: "82515600"
 
 5. Miután létrehozott egy vagy több szabályt, nyomja meg a **Mentés**gombot. Ez a művelet létrehozza a szabályok motorjának konfigurációját. 
 
-6. Miután létrehozott egy vagy több konfigurációt, társítsa a szabályok motorjának konfigurációját egy útválasztási szabállyal. Habár egy konfiguráció számos útválasztási szabályra alkalmazható, az útválasztási szabályok csak egy szabály-végrehajtó konfigurációt tartalmazhatnak. A társítás létrehozásához nyissa meg a bevezető **ajtó tervezői** > **útvonalának szabályait**. Válassza ki azt az útválasztási szabályt, amelyhez hozzá szeretné adni a szabályok motorjának konfigurációját, lépjen a **Route details** > **Rules Engine Configuration**elemre, és válassza ki a hozzárendelni kívánt konfigurációt. 
+6. Miután létrehozott egy vagy több konfigurációt, társítsa a szabályok motorjának konfigurációját egy útválasztási szabállyal. Habár egy konfiguráció számos útválasztási szabályra alkalmazható, az útválasztási szabályok csak egy szabály-végrehajtó konfigurációt tartalmazhatnak. A társítás létrehozásához nyissa meg a bevezető **ajtó tervezői**  >  **útvonalának szabályait**. Válassza ki azt az útválasztási szabályt, amelyhez hozzá szeretné adni a szabályok motorjának konfigurációját, lépjen a **Route details**  >  **Rules Engine Configuration**elemre, és válassza ki a hozzárendelni kívánt konfigurációt. 
 
 ![szabályok keresése motor](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 

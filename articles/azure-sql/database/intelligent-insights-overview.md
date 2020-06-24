@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 133ca6503a2e0fa9ff19fa55cf126b9556b741e0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/12/2020
+ms.openlocfilehash: 937eee69c17d207dc348a25fe2a5e6611480db0f
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344050"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743456"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyelésére és hibakeresésére (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -77,6 +77,9 @@ Az elérhető Intelligent Insights lehetőségek a következők:
 | **A Azure SQL Analytics adatfolyam** -bepillantást nyerhet a Azure SQL Analytics. | Igen | Igen |
 | Az **Azure Event Hubs** adatfolyam-bepillantást nyerhet a további egyéni integrációk Event Hubs. | Igen | Igen |
 | Az **Azure Storage bepillantást nyerhet** az Azure Storage-ba, ahol további elemzést és hosszú távú archiválást végezhet. | Igen | Igen |
+
+> [!NOTE]
+> Az intelligens betekintő funkció az alábbi régiókban nem érhető el: Nyugat-Európa, Észak-Európa, USA 2. nyugati régiója és USA 1. keleti régiója.
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>Az Intelligent Insights napló exportálásának konfigurálása
 
@@ -182,7 +185,7 @@ A Intelligent Insights napló a hibás kérelmek számát adja eredményül. Ez 
 
 Ha a figyelt kritikus kivételek bármelyike átlépi a rendszer által kezelt abszolút küszöbértékeket, akkor a kritikus kivétel részleteivel intelligens elemzés jön létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [figyelheti meg az adatbázisokat az SQL Analytics használatával](../../azure-monitor/insights/azure-sql.md).
 - Ismerje meg, hogy miként lehet [elhárítani a Intelligent Insights teljesítményével kapcsolatos problémákat](intelligent-insights-troubleshoot-performance.md).

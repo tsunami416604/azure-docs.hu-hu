@@ -4,16 +4,16 @@ description: A Windows rendszerű virtuális asztal felügyeleti eszközének ü
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d9aea1f56b742d87df769a3206f15024afdf87b3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5a500ef44170f23c8acdf752393389a4af06a798
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983091"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214179"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Felügyeleti eszköz üzembe helyezése a PowerShell-lel
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan helyezheti üzembe a felügyeleti eszközt a PowerSh
 
 ## <a name="important-considerations"></a>Fontos szempontok
 
-Minden Azure Active Directory-(Azure AD-) bérlő előfizetéséhez a felügyeleti eszköz saját külön üzembe helyezésére van szükség. Ez az eszköz nem támogatja az Azure AD vállalatközi (B2B) forgatókönyveit. 
+Minden Azure Active Directory-(Azure AD-) bérlő előfizetéséhez a felügyeleti eszköz saját külön üzembe helyezésére van szükség. Ez az eszköz nem támogatja az Azure AD vállalatközi (B2B) forgatókönyveit.
 
 Ez a felügyeleti eszköz egy minta. A Microsoft fontos biztonsági és minőségi frissítéseket biztosít. [A forráskód a githubon érhető el](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Akár ügyfél, akár partner, javasoljuk, hogy szabja testre az eszközt az üzleti igények kielégítése érdekében.
 
@@ -93,7 +93,7 @@ Most, hogy végrehajtotta az Azure AD-alkalmazás regisztrációját, üzembe he
 ## <a name="deploy-the-management-tool"></a>A felügyeleti eszköz üzembe helyezése
 
 Futtassa a következő PowerShell-parancsokat a felügyeleti eszköz üzembe helyezéséhez és az imént létrehozott egyszerű szolgáltatáshoz való hozzárendeléséhez:
-     
+
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
@@ -120,7 +120,7 @@ Futtassa a következő PowerShell-parancsokat a webalkalmazás URL-címének lek
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
 $redirectUri = "https://" + $webApp.DefaultHostName + "/"
-Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
+Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri
 ```
 
 Most, hogy hozzáadta az átirányítási URI-t, az API URL-címét frissítenie kell, hogy a felügyeleti eszköz kommunikálni tudjon az API-backend szolgáltatással.
@@ -143,12 +143,12 @@ Az Azure AD-alkalmazás konfigurációjának ellenőrzése és a beleegyező eng
 2. A Azure Portal tetején található keresősáv alatt keresse meg **Alkalmazásregisztrációk** , és válassza ki az elemet a **szolgáltatások**területen.
 3. Válassza a **minden alkalmazás** lehetőséget, és keresse meg a PowerShell-parancsfájlhoz megadott egyedi alkalmazás-nevet a [Azure Active Directory alkalmazás regisztrációjának létrehozása](#create-an-azure-active-directory-app-registration)lapon.
 4. A böngésző bal oldali paneljén válassza a **hitelesítés** lehetőséget, és győződjön meg arról, hogy az átirányítási URI megegyezik a felügyeleti eszköz webalkalmazás URL-címével, ahogy az alábbi képen is látható.
-   
-   [![A hitelesítés lap a megadott ÁTirányítási URI](../media/management-ui-redirect-uri-inline.png) -val](../media/management-ui-redirect-uri-expanded.png#lightbox)
+
+   [![A hitelesítés lap a megadott átirányítási URI ](../media/management-ui-redirect-uri-inline.png) -val](../media/management-ui-redirect-uri-expanded.png#lightbox)
 
 5. A bal oldali panelen válassza az **API-engedélyek** lehetőséget az engedélyek hozzáadásának megerősítéséhez. Ha Ön globális rendszergazda, jelölje be a **rendszergazdai jóváhagyás `tenantname` megadása** gombra, és kövesse a párbeszédpanel utasításait, hogy rendszergazdai jogosultságot adjon a szervezet számára.
-    
-    [![Az API-engedélyek](../media/management-ui-permissions-inline.png) lap](../media/management-ui-permissions-expanded.png#lightbox)
+
+    [![Az API-engedélyek lap ](../media/management-ui-permissions-inline.png)](../media/management-ui-permissions-expanded.png#lightbox)
 
 Most már megkezdheti a felügyeleti eszköz használatát.
 
@@ -158,13 +158,13 @@ Most, hogy bármikor beállította a felügyeleti eszközt, bármikor elindítha
 
 1. Nyissa meg a webalkalmazás URL-címét egy böngészőben. Ha nem emlékszik az URL-címre, bejelentkezhet az Azure-ba, megkeresheti a felügyeleti eszközre telepített app Service-t, majd kiválaszthatja az URL-címet.
 2. Jelentkezzen be a Windows rendszerű virtuális asztali hitelesítő adataival.
-   
+
    > [!NOTE]
    > Ha a felügyeleti eszköz konfigurálása során nem adta meg a rendszergazdai jóváhagyást, akkor a bejelentkező összes felhasználónak meg kell adnia a saját felhasználói hozzájárulásukat az eszköz használatához.
 
 3. Amikor a rendszer kéri, hogy válasszon ki egy bérlői csoportot, válassza ki az **alapértelmezett bérlői csoportot** a legördülő listából.
 4. Amikor kiválasztja az **alapértelmezett bérlői csoportot**, egy menü jelenik meg az ablak bal oldalán. Ebben a menüben keresse meg a bérlői csoport nevét, és jelölje ki.
-   
+
    > [!NOTE]
    > Ha egyéni bérlői csoporttal rendelkezik, a legördülő listából válassza a nevet manuálisan.
 

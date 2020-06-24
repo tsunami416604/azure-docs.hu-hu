@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: ee15c3c41ec2ddaa564011e8fb7d2c90472cc40f
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: aeb3273622b863f04c73561520efe3be6cc6fec2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466085"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804921"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -83,13 +83,13 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
 
-A fájlrendszer tárolóként működik a fájlok számára. A parancsmag használatával létrehozhat egyet `New-AzDatalakeGen2FileSystem` . 
+A fájlrendszer tárolóként működik a fájlok számára. A parancsmag használatával létrehozhat egyet `New-AzStorageContainer` . 
 
 Ez a példa egy nevű fájlrendszert hoz létre `my-file-system` .
 
 ```powershell
 $filesystemName = "my-file-system"
-New-AzDatalakeGen2FileSystem -Context $ctx -Name $filesystemName
+New-AzStorageContainer -Context $ctx -Name $filesystemName
 ```
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
@@ -363,7 +363,7 @@ $Token = $Null
 do
 {
      $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
-     if($items.Length -le 0) { Break;}
+     if($items.Count -le 0) { Break;}
      $items | Update-AzDataLakeGen2Item -Acl $acl
      $Token = $items[$items.Count -1].ContinuationToken;
 }
@@ -411,7 +411,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 A következő táblázat azt mutatja be, hogy a parancsmagok hogyan használhatók a Data Lake Storage Gen1 leképezéshez a Data Lake Storage Gen2 parancsmagokhoz.
 
-|Data Lake Storage Gen1 parancsmag| Data Lake Storage Gen2 parancsmag| Megjegyzések |
+|Data Lake Storage Gen1 parancsmag| Data Lake Storage Gen2 parancsmag| Jegyzetek |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|Alapértelmezés szerint a Get-AzDataLakeGen2ChildItem parancsmag csak az első szintű alárendelt elemeket sorolja fel. A-recurse paraméter rekurzív módon sorolja fel a alárendelt elemeket. |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|A Get-AzDataLakeGen2Item parancsmag kimeneti elemei a következő tulajdonságokkal rendelkeznek: ACL, tulajdonos, csoport, engedély.|

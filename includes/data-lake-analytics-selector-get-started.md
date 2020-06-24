@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell

@@ -2,14 +2,14 @@
 title: Az Azure Blockchain Service (ABS) figyelése
 description: Az Azure Blockchain szolgáltatás monitorozása Azure Monitor
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76293249"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214043"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Az Azure Blockchain szolgáltatás monitorozása Azure Monitor  
 
@@ -89,8 +89,8 @@ A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonsá
 | NodeLocation  | Az az Azure-régió, ahol a blockchain-tag telepítve van.  |
 | BlockchainNodeName  | Az Azure Blockchain-szolgáltatás azon csomópontjának neve, amelyen a műveletet végzi.   |
 | EthMethod  | A metódust, amelyet az alapul szolgáló blockchain protokoll hív meg kvórumként, eth_sendTransactions, eth_getBlockByNumber stb.  |
-| Ügynök  | A felhasználó nevében eljáró felhasználói ügynök, például böngésző Mozilla, Edge stb. Az értékek például a következők: "Mozilla/5.0 (Linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
-| Kód   | HTTP-hibakódok. A 4XX és a 5XX általában a hibákra vonatkoznak.  |
+| Ügynök  | A felhasználó nevében eljáró felhasználói ügynök, például böngésző Mozilla, Edge stb. Az értékek például a következők: "Mozilla/5.0 (Linux x64) node.js/8.16.0 V8/6.2.414.77"  |
+| Code   | HTTP-hibakódok. A 4XX és a 5XX általában a hibákra vonatkoznak.  |
 | NodeHost  | A csomópont DNS-neve.   |
 | RequestMethodName | A HTTP-metódus neve, a lehetséges értékek itt a létrehozási tag, a meglévő tag részleteinek beolvasása, törlés a tag törlésére, a frissítés a tagok frissítése érdekében.   |
 | BlockchainMemberName  | A felhasználó által megadott Azure Blockchain-szolgáltatási tag neve.  |
@@ -115,7 +115,7 @@ Az alábbi táblázat az Azure Blockchain-alkalmazások naplóihoz tartozó tula
 | NodeLocation  | Az az Azure-régió, ahol a blockchain-tag telepítve van.  |
 | BlockchainNodeName  | Az Azure Blockchain-szolgáltatás azon csomópontjának neve, amelyen a műveletet végzi.   |
 | BlockchainMessage    | Ez a mező tartalmazza a Blockchain, amely az adategyszerű naplók. Az ABS-kvórum esetében ez kvórum naplókat tartalmaz. Információkkal szolgál arról, hogy milyen típusú naplóbejegyzés van a tájékoztatás, a hiba, a figyelmeztetés és egy olyan karakterlánc, amely további információkat nyújt a végrehajtott műveletről.   |
-| TenantID    | Az Azure Blockchain szolgáltatás régió-specifikus bérlője. A mező formátuma: https://westlake-rp-prod. <region>. cloudapp.Azure.com, ahol a régió a központilag telepített tag Azure-régióját adja meg.       |
+| TenantID    | Az Azure Blockchain szolgáltatás régió-specifikus bérlője. A mező formátuma: https://westlake-rp-prod . <region> . cloudapp.azure.com, ahol a régió a központilag telepített tag Azure-régióját adja meg.       |
 | SourceSystem   | A rendszer feltölti a naplókat, ebben az esetben ez az **Azure**.    |
 
 

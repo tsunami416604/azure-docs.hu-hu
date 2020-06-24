@@ -13,9 +13,9 @@ ms.locfileid: "73832056"
 ---
 ### <a name="record-names"></a>Rekordnevek
 
-Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A *teljes* tartománynév (FQDN) tartalmazza a zóna nevét, míg a *relatív* név nem. A zóna `www` `contoso.com` relatív rekordjának neve például a teljes rekord nevét `www.contoso.com`adja meg.
+Az Azure DNS-ben a rekordok relatív nevek használatával vannak meghatározva. A *teljes* tartománynév (FQDN) tartalmazza a zóna nevét, míg a *relatív* név nem. A zóna relatív rekordjának neve például a `www` `contoso.com` teljes rekord nevét adja meg `www.contoso.com` .
 
-Egy *csúcs*rekord a gyökérnél egy DNS-rekord vagy egy DNS-zóna *csúcsa*. A DNS-zónában `contoso.com`például a csúcspont-rekord teljes névvel `contoso.com` is rendelkezik (ezt néha egy *meztelen* tartománynak is nevezik).  Az egyezmény szerint a relatív "\@" név az APEX-rekordok ábrázolására szolgál.
+Egy *csúcs*rekord a gyökérnél egy DNS-rekord vagy egy DNS-zóna *csúcsa*. A DNS-zónában például a `contoso.com` csúcspont-rekord teljes névvel is rendelkezik `contoso.com` (ezt néha egy *meztelen* tartománynak is nevezik).  Az egyezmény szerint a relatív "" név az \@ APEX-rekordok ábrázolására szolgál.
 
 ### <a name="record-types"></a>Rekordtípusok
 

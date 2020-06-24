@@ -28,7 +28,7 @@ ms.locfileid: "67671205"
    OS.UpdateRdmaDriver=y
    ```
 
-3. Adja hozzá vagy módosítsa a következő memória-beállításokat a KB-ban a/etc/Security/Limits.conf fájlban. A fájl szerkesztéséhez rendszergazdai jogosultság szükséges. Tesztelési célból beállíthatja, hogy a memlock korlátlan legyen. Például: `<User or group name>   hard    memlock   unlimited`.
+3. Adja hozzá vagy módosítsa a következő memória-beállításokat a KB-ban a/etc/Security/Limits.conf fájlban. A fájl szerkesztéséhez rendszergazdai jogosultság szükséges. Tesztelési célból beállíthatja, hogy a memlock korlátlan legyen. Példa: `<User or group name>   hard    memlock   unlimited`.
 
    ```
    <User or group name> hard    memlock <memory required for your application in KB>

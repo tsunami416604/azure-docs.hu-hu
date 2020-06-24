@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: ede385670dec6629cc3e75a9d09c0ceb14362bdc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/11/2020
+ms.openlocfilehash: 7d631698f7c00a838f28d55b6b26055e686d27db
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119390"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976999"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -106,7 +106,7 @@ A Logic Apps beépített műveleteket biztosít a saját kód futtatásához a l
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API-ikon ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Hívja meg az Azure functions szolgáltatást, amely egyéni kódrészleteket (C# vagy Node. js) futtat a logikai alkalmazásokból. | [![API-ikon ][inline-code-icon]<br> **beágyazott kódja**][inline-code-doc] | JavaScript-kódrészletek hozzáadása és futtatása a logikai alkalmazásokból. |
+| [![API-ikon ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Hívja meg az Azure functions szolgáltatást, amely egyéni kódrészleteket (C# vagy Node.js) futtat a logikai alkalmazásokból. | [![API-ikon ][inline-code-icon]<br> **beágyazott kódja**][inline-code-doc] | JavaScript-kódrészletek hozzáadása és futtatása a logikai alkalmazásokból. |
 |||||
 
 ### <a name="control-workflow"></a>Vezérlési munkafolyamat
@@ -243,6 +243,12 @@ Az egyéni kódot futtató vagy összekötőként nem elérhető API-k meghívá
 > Az ISE-n belül létrehozott egyéni összekötők nem működnek a helyszíni adatátjáróval. Ezek az összekötők azonban közvetlenül hozzáférhetnek a helyszíni adatforrásokhoz, amelyek az ISE-t üzemeltető Azure-beli virtuális hálózathoz csatlakoznak. Ezért az ISE-ben a Logic apps valószínűleg nincs szüksége az adatátjáróra az ilyen erőforrásokkal való kommunikáció során.
 >
 > A ISEs létrehozásával kapcsolatos további információkért lásd: [Kapcsolódás Azure-beli virtuális hálózatokhoz a Azure Logic Appsból](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
+<a name="block-connections"></a>
+
+## <a name="block-creating-connections"></a>Kapcsolatok létrehozásának tiltása
+
+Ha a szervezete nem engedélyezi a kapcsolódást bizonyos erőforrásokhoz a Azure Logic Apps összekötői segítségével, [letilthatja, hogy a](../logic-apps/block-connections-connectors.md) logikai alkalmazások munkafolyamataiban lévő összekötők a [Azure Policy](../governance/policy/overview.md)használatával képesek legyenek a kapcsolatok létrehozására. További információ: [adott összekötők által létrehozott kapcsolatok blokkolása a Azure Logic Appsban](../logic-apps/block-connections-connectors.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -476,4 +482,3 @@ Az egyéni kódot futtató vagy összekötőként nem elérhető API-k meghívá
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 protokollt használó üzenetek kódolása"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML-üzenetek átalakítása"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML-üzenetek ellenőrzése"
-

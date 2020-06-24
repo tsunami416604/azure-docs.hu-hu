@@ -11,12 +11,12 @@ ms.author: larryfr
 author: blackmist
 ms.date: 06/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 30b6412ed5a8462b1ce0d8351e9e86a16b2082da
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670038"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743507"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ A végpont kimeneti adatok és válaszok összegyűjtése mellett a következők
 ## <a name="web-service-metadata-and-response-data"></a>Webszolgáltatás metaadatainak és válaszideje
 
 > [!IMPORTANT]
-> Az Azure Application Insights csak a legfeljebb 64 kb adattartalmakat naplózza. Ha eléri ezt a korlátot, a rendszer csak a modell legújabb kimeneteit naplózza. 
+> Az Azure Application Insights csak a legfeljebb 64 kb adattartalmakat naplózza. Ha eléri ezt a korlátot, akkor előfordulhat, hogy olyan hibákat lát, mint a memória, vagy nem lehet információt naplózni.
 
 A webszolgáltatásra irányuló kérések adatainak naplózásához adjon hozzá `print` utasításokat a score.py-fájlhoz. Minden `print` utasítás egy bejegyzést eredményez az Application Insights nyomkövetési táblájában, az üzenet alatt `STDOUT` . Az utasítás tartalma a `print` `customDimensions` és `Contents` a nyomkövetési táblában is szerepelni fog. Ha JSON-karakterláncot nyomtat ki, akkor az a nyomkövetési kimenetben hierarchikus adatstruktúrát hoz létre `Contents` .
 
@@ -76,7 +76,7 @@ Ha egyéni nyomkövetést szeretne naplózni, kövesse a normál üzembe helyez�
 1. Ha a következtetés során Application Insights adatokat szeretne küldeni, frissítse a pontozási fájlt a Print utasítások hozzáadásával. Összetettebb információk naplózása, például a kérelem adatai és a válasz, US a JSON-struktúra. A következő példa score.py a modell inicializálásának időpontját, a bemenetet és a kimenetet a következtetés során, valamint az esetleges hibák időpontját:
 
     > [!IMPORTANT]
-    > Az Azure Application Insights csak a legfeljebb 64 kb adattartalmakat naplózza. Ha eléri ezt a korlátot, a rendszer csak a modell legújabb kimeneteit naplózza. Ha a naplózni kívánt adatok nagyobb 64 kb, akkor ehelyett a blob Storage-tárolóban kell tárolnia az [adatok gyűjtése az éles modellekben](how-to-enable-data-collection.md)című témakörben leírtak alapján.
+    > Az Azure Application Insights csak a legfeljebb 64 kb adattartalmakat naplózza. Ha eléri ezt a korlátot, megjelenhetnek a hibák, például a memóriából, vagy nem lehet információt naplózni. Ha a naplózni kívánt adatok nagyobb 64 kb, akkor ehelyett a blob Storage-tárolóban kell tárolnia az [adatok gyűjtése az éles modellekben](how-to-enable-data-collection.md)című témakörben leírtak alapján.
     
     ```python
     import pickle
@@ -195,7 +195,7 @@ Az [enable-app-Insight-in-producting-Service. ipynb](https://github.com/Azure/Ma
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Lásd: [modell üzembe helyezése Azure Kubernetes Service-fürtön](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service) vagy [modell üzembe](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance) helyezése Azure Container instances a modellek webszolgáltatás-végpontokra való üzembe helyezéséhez, valamint az Azure-Application Insights engedélyezése az adatgyűjtés és a végpontok figyeléséhez
 * Tekintse meg a [MLOps: modellek kezelése, üzembe helyezése és monitorozása a Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) segítségével további információ az éles modellekben gyűjtött adatok kihasználásáról. Ezek az adatkezelési lehetőségek segíthetnek a gépi tanulási folyamat folyamatos fejlesztésében

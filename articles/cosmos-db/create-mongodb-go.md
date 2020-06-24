@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: ad7baea087cd6073659929cc41f626b597bbae63
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0c03c4f163ef36335dacdc3c28340164dcd23fba
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650347"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299194"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: go-alkalmazás összekötése Azure Cosmos DB API-MongoDB
 
@@ -252,7 +252,7 @@ Telepített Azure-os parancssori felület használata esetén az `az` parancs fu
 
 Ha a `cosmosdb` nincs az alapparancsok listáján, telepítse újra az [Azure CLI-t](/cli/azure/install-azure-cli).
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/management/overview.md) az az [Group Create](/cli/azure/group#az-group-create)paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például webappokat, adatbázisokat és tárfiókokat). 
 
@@ -422,7 +422,7 @@ Az előző lépésben létrehozott felhasználói adatok megtekintéséhez, lek�
 
 A felső keresőmezőbe írja be a **Azure Cosmos db**kifejezést. Amikor megnyílik a Cosmos-fiók panel, válassza ki a Cosmos-fiókját. A bal oldali navigációs sávon válassza a **adatkezelő**lehetőséget. A Gyűjtemények panelen bontsa ki gyűjteményét. Ezt követően megtekintheti a gyűjteményhez tartozó dokumentumokat, lekérdezhet adatokat, valamint létrehozhat és futtathat tárolt eljárásokat, eseményindítókat és felhasználói függvényeket. 
 
-![Az újonnan létrehozott dokumentum megjelenítve az Adatkezelőben](./media/create-mongodb-go/go-cosmos-db-data-explorer.jpg)
+:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="Az újonnan létrehozott dokumentum megjelenítve az Adatkezelőben":::
 
 
 A `todo` felhasználó azonosítójának törlése
@@ -452,7 +452,7 @@ Az `todo` imént törölt érték nem lehet jelen
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB MongoDB API-fiókot a Azure Cloud Shell használatával, és hogyan hozhat létre és futtathat egy go parancssori alkalmazást az s-k kezeléséhez `todo` . Így már további adatokat importálhat az Azure Cosmos DB-fiókba.
 

@@ -13,4 +13,4 @@ ms.locfileid: "67178887"
 ---
 > [!TIP]
 >
-> Ha azt tervezi, hogy a HTTP-vagy webhook-kötéseket használja, tervezze meg a portok kimerülésének elkerülését, amelyet `HttpClient`a nem megfelelő példányai okozhatnak. További információ: a [kapcsolatok kezelése a Azure Functionsban](../articles/azure-functions/manage-connections.md).
+> Ha azt tervezi, hogy a HTTP-vagy webhook-kötéseket használja, tervezze meg a portok kimerülésének elkerülését, amelyet a nem megfelelő példányai okozhatnak `HttpClient` . További információ: a [kapcsolatok kezelése a Azure Functionsban](../articles/azure-functions/manage-connections.md).

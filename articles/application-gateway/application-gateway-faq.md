@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 7b90748ae29a98038d96e5e3a827413637a98d47
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668236"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981999"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -21,7 +21,7 @@ ms.locfileid: "84668236"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -73,7 +73,13 @@ A v2 SKU esetében nyissa meg a nyilvános IP-erőforrást, és válassza a **ko
 
 Az *életben tartási időkorlát* azt szabályozza, hogy a Application Gateway mennyi ideig várjon, amíg az ügyfél egy másik HTTP-kérést küld egy állandó kapcsolaton, mielőtt újra felhasználja vagy bezárja. A *TCP üresjárati időkorlátja* azt szabályozza, hogy a TCP-kapcsolatok mennyi ideig legyenek nyitva, ha nincs tevékenység. 
 
-A *Keep-Alive időtúllépés* a Application Gateway v1 SKU-ban 120 másodperc, a v2 sku pedig 75 másodperc. A *TCP Üresjárati időkorlát* 4 perces alapértelmezett érték a (z) v1-es és v2-es Application Gateway-alapú virtuális IP-cím (VIP) esetében. Ezek az értékek nem módosíthatók.
+A *Keep-Alive időtúllépés* a Application Gateway v1 SKU-ban 120 másodperc, a v2 sku pedig 75 másodperc. A *TCP Üresjárati időkorlát* 4 perces alapértelmezett érték a (z) v1-es és v2-es Application Gateway-alapú virtuális IP-cím (VIP) esetében. A TCP Üresjárati időkorlát értékét a v1-es és v2-es Application Gateway-ben beállíthatja 4 perc és 30 perc között. A v1 és v2 Application Gateway esetén a Application Gateway nyilvános IP-címére kell navigálnia, és módosítania kell a TCP üresjárati időkorlátot a nyilvános IP-cím "konfiguráció" paneljén a portálon. A nyilvános IP-cím TCP üresjárati időtúllépési értékét a PowerShellen keresztül állíthatja be a következő parancsok futtatásával: 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Az IP-cím vagy a DNS-név módosul az Application Gateway élettartama során?
 
@@ -433,6 +439,6 @@ Ha azonban csak privát IP-címmel szeretné használni a Application Gateway v2
 NSG-konfiguráció a magánhálózati IP-címekhez csak hozzáférés: ![ Application Gateway v2 NSG konfiguráció csak magánhálózati IP-hozzáféréshez](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

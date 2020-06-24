@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: e56b526dff9e18f19275cb248fd6955dd680324f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: ebd55151a4b1656ec1187117b7c4b6da9d37e161
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605098"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298464"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése SQL Database, SQL felügyelt példányhoz és az Azure szinapszis Analytics szolgáltatáshoz
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -91,7 +91,7 @@ Ezen a ponton a kiszolgáló vagy a felügyelt példány csak egyetlen SQL-bejel
 
   - Hozzon létre egy további SQL-bejelentkezést a Master adatbázisban.
   - Hozzon létre egy felhasználói fiókot az új bejelentkezéshez társított Master adatbázisban.
-  - Adja hozzá a felhasználói fiókot a `dbmanager` , a `loginmanager` szerepkörhöz vagy mindkettőhöz az `master` adatbázisban az [Alter Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) utasítás használatával (az Azure szinapszis esetében használja a [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) utasítást).
+  - Adja hozzá a felhasználói fiókot a `dbmanager` , a `loginmanager` szerepkörhöz vagy mindkettőhöz az `master` adatbázisban az [Alter role](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) utasítás használatával (az Azure szinapszis esetében használja a [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) utasítást).
 
   > [!NOTE]
   > `dbmanager``loginmanager`a és a szerepkörök **nem** vonatkoznak az SQL felügyelt példányainak központi telepítésére.
@@ -155,7 +155,7 @@ Miután létrehozott egy felhasználói fiókot egy adatbázisban, vagy egy beje
 
 A hatékony hozzáférés-vezérlés Active Directory biztonsági csoportokhoz, illetve rögzített vagy egyéni szerepkörökhöz hozzárendelt engedélyeket használ az egyes felhasználók helyett.
 
-- Azure Active Directory hitelesítés használatakor Azure Active Directory felhasználókat Azure Active Directory biztonsági csoportba helyezheti. Hozzon létre a csoportban egy adatbázis-felhasználót. Helyezzen egy vagy több adatbázis-felhasználót egy egyéni adatbázis-szerepkörbe az adott felhasználói csoportnak megfelelő engedélyekkel.
+- Azure Active Directory hitelesítés használatakor Azure Active Directory felhasználókat Azure Active Directory biztonsági csoportba helyezheti. Hozzon létre a csoportban egy adatbázis-felhasználót. Adjon hozzá egy vagy több adatbázis-felhasználót tagként az egyéni vagy beépített adatbázis-szerepkörökhöz az adott felhasználói csoportnak megfelelő engedélyekkel.
 
 - SQL-hitelesítés használatakor hozzon létre tárolt adatbázis-felhasználókat az adatbázisban. Helyezzen egy vagy több adatbázis-felhasználót egy egyéni adatbázis-szerepkörbe az adott felhasználói csoportnak megfelelő engedélyekkel.
 
@@ -169,6 +169,6 @@ A hatékony hozzáférés-vezérlés Active Directory biztonsági csoportokhoz, 
 - Az [adatmaszkolás](dynamic-data-masking-overview.md) használatával korlátozhatja a bizalmas adatok megjelenítését.
 - A [tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az összes Azure SQL Database és SQL felügyelt példány biztonsági funkciójának áttekintését lásd: [biztonsági áttekintés](security-overview.md).

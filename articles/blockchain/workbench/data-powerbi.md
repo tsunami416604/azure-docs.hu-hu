@@ -2,18 +2,18 @@
 title: Azure Blockchain Workbench-adatok használata a Microsoft Power BI-ban
 description: Megtudhatja, hogy hogyan töltheti be és tekintheti meg az Azure Blockchain Workbench SQL-adatbázisának adatait a Microsoft Power BI-ban.
 ms.date: 04/22/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: sunri
-ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a5e67a8416c57c1a0cb039733a93608a8919be6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082526"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214230"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Azure Blockchain Workbench-adatok használata a Microsoft Power BI-ban
 
-A Microsoft Power BI lehetővé teszi, hogy az SQL DB-adatbázisokból könnyedén hozzon elő hatékony jelentéseket a Power BI Desktop [https://www.powerbi.com](https://www.powerbi.com), majd tegye közzé azokat a alkalmazásban.
+A Microsoft Power BI lehetővé teszi, hogy az SQL DB-adatbázisokból könnyedén hozzon elő hatékony jelentéseket a Power BI Desktop, majd tegye közzé azokat a alkalmazásban [https://www.powerbi.com](https://www.powerbi.com) .
 
 Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure Blockchain Workbench SQL Database-adatbázisához a PowerBI Desktop alkalmazásból, illetve hogyan hozhat létre és tehet közzé jelentéseket a powerbi.com-on.
 
@@ -29,7 +29,7 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
     ![Adatok lekérése](./media/data-powerbi/get-data.png)
 3.  Válassza az **SQL Server** lehetőséget az adatforrástípusok listájából.
 
-4.  Adja meg a kiszolgáló és az adatbázis nevét a megjelenő párbeszédpanelen. Adja meg, hogy importálni akarja-e az adatokat, vagy **DirectQuery**-lekérdezést szeretne végrehajtani. Kattintson az **OK** gombra.
+4.  Adja meg a kiszolgáló és az adatbázis nevét a megjelenő párbeszédpanelen. Adja meg, hogy importálni akarja-e az adatokat, vagy **DirectQuery**-lekérdezést szeretne végrehajtani. Válassza az **OK** lehetőséget.
 
     ![Select SQL Server](./media/data-powerbi/select-sql.png)
 

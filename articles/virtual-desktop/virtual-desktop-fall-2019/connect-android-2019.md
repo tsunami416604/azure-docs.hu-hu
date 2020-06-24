@@ -4,16 +4,16 @@ description: Kapcsolódás a Windows rendszerű virtuális asztalhoz az Android-
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 636a31cdb657ca95ea9ea0da6bb85caa61425e5a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 802e957c9473276dfa73a3ffd93fdd7c526dbf26
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614992"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213244"
 ---
 # <a name="connect-with-the-android-client"></a>Kapcsolódás az Android-ügyféllel
 
@@ -37,9 +37,9 @@ Fizessen elő a rendszergazda által biztosított hírcsatornára, hogy lekérje
 
 Előfizetés a hírcsatornára:
 
-1. A csatlakoztatási központban koppintson **+** a elemre, majd koppintson a **távoli erőforrás-hírcsatorna**lehetőségre.
+1. A csatlakoztatási központban koppintson a **+** elemre, majd koppintson a **távoli erőforrás-hírcsatorna**lehetőségre.
 2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címe** mezőbe. A hírcsatorna URL-címe lehet URL vagy e-mail-cím.
-   - Ha URL-címet használ, használja a rendszergazdát, aki a szokásos módon <https://rdweb.wvd.microsoft.com>adta meg.
+   - Ha URL-címet használ, használja a rendszergazdát, aki a szokásos módon adta meg <https://rdweb.wvd.microsoft.com> .
    - E-mail-cím használatához adja meg az e-mail-címét. Az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda úgy konfigurálta a kiszolgálót.
 3. Koppintson a **tovább**gombra.
 4. Ha a rendszer kéri, adja meg a hitelesítő adatait.

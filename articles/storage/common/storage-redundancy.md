@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5bc433615b19b36681796056ff4baf95d080d457
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629420"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213992"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -120,13 +120,15 @@ A díjszabással kapcsolatos információkért tekintse meg a [Blobok](https://a
 
 ## <a name="read-access-to-data-in-the-secondary-region"></a>Olvasási hozzáférés a másodlagos régióban lévő adatelérési ponthoz
 
-A Geo-redundáns tárolás (GRS vagy GZRS) replikálja az adatait a másodlagos régió egy másik fizikai helyére a regionális kimaradások elleni védelem érdekében. Ezek az adatok azonban csak olvashatók, ha az ügyfél vagy a Microsoft feladatátvételt kezdeményez az elsődlegesről a másodlagos régióba. Ha engedélyezi az olvasási hozzáférést a másodlagos régióhoz, az adatai olvashatók lesznek, ha az elsődleges régió elérhetetlenné válik. Ha olvasási hozzáférést szeretne a másodlagos régióhoz, engedélyezze az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna-redundáns tárolást (RA-GZRS).
+A Geo-redundáns tárolás (GRS vagy GZRS) replikálja az adatait a másodlagos régió egy másik fizikai helyére a regionális kimaradások elleni védelem érdekében. Ezek az adatok azonban csak olvashatók, ha az ügyfél vagy a Microsoft feladatátvételt kezdeményez az elsődlegesről a másodlagos régióba. Ha engedélyezi az olvasási hozzáférést a másodlagos régióhoz, az adatai mindig olvashatók lesznek, például olyan helyzetekben, amikor az elsődleges régió elérhetetlenné válik. Ha olvasási hozzáférést szeretne a másodlagos régióhoz, engedélyezze az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna-redundáns tárolást (RA-GZRS).
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Alkalmazások tervezése a másodlagoshoz való olvasási hozzáféréshez
 
-Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagos régióhoz, akkor megtervezheti, hogy az alkalmazások zökkenőmentesen átálljanak a másodlagos régió adatainak olvasására, ha az elsődleges régió bármilyen okból elérhetetlenné válik. A másodlagos régió mindig olvasási hozzáféréshez érhető el, így tesztelheti az alkalmazást, és ellenőrizheti, hogy a másodlagos esemény leáll-e leállás esetén. További információ az alkalmazások magas rendelkezésre állásra való tervezéséről: a [geo-redundancia használata a magas rendelkezésre állású alkalmazások tervezéséhez](geo-redundant-design.md).
+Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagos régióhoz, akkor megtervezheti, hogy az alkalmazások zökkenőmentesen átálljanak a másodlagos régió adatainak olvasására, ha az elsődleges régió bármilyen okból elérhetetlenné válik. 
 
-Ha a másodlagos olvasási hozzáférés engedélyezve van, az adatok a másodlagos végpontból és a Storage-fiók elsődleges végpontján is olvashatók. A másodlagos végpont hozzáfűzi az utótagot *– a másodlagos* nevet a fiók nevéhez. Ha például a blob Storage elsődleges végpontja `myaccount.blob.core.windows.net` , akkor a másodlagos végpont `myaccount-secondary.blob.core.windows.net` . A Storage-fiókhoz tartozó fiók-hozzáférési kulcsok mind az elsődleges, mind a másodlagos végpont esetében azonosak.
+Az RA-GRS vagy RA-GZRS engedélyezése után a másodlagos régió olvasási hozzáférésre is használható, így előre ellenőrizheti, hogy az alkalmazás megfelelően van-e beolvasva a másodlagosról leállás esetén. További információ az alkalmazások magas rendelkezésre állásra való tervezéséről: a [geo-redundancia használata a magas rendelkezésre állású alkalmazások tervezéséhez](geo-redundant-design.md).
+
+Ha engedélyezve van az olvasási hozzáférés a másodlagoshoz, az alkalmazás beolvasható a másodlagos végpontból, illetve az elsődleges végpontból is. A másodlagos végpont hozzáfűzi az utótagot *– a másodlagos* nevet a fiók nevéhez. Ha például a blob Storage elsődleges végpontja `myaccount.blob.core.windows.net` , akkor a másodlagos végpont `myaccount-secondary.blob.core.windows.net` . A Storage-fiókhoz tartozó fiók-hozzáférési kulcsok mind az elsődleges, mind a másodlagos végpont esetében azonosak.
 
 ### <a name="check-the-last-sync-time-property"></a>Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
 

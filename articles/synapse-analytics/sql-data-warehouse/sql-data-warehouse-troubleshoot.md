@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6f697cf205af9bdfaadfe20e123bcf0b4935c90f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b2ae3aa77383888c320ed58e03e73b2e306feeba
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829987"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213771"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>A szinapszis SQL hibaelhárítása Az Azure szinapszis Analyticsben
 

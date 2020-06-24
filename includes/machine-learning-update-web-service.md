@@ -63,6 +63,6 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 > [!TIP]
 > Ebben a példában egy JSON-dokumentum segítségével továbbítja a modell adatait a regisztrációs parancsból az Update parancsba.
 >
-> Ha a szolgáltatást új bejegyzési parancsfájl vagy környezet használatára szeretné frissíteni, hozzon létre egy [következtetési konfigurációs fájlt](/azure/machine-learning/reference-azure-machine-learning-cli#inference-configuration-schema) , és adja meg `ic` a paramétert.
+> Ha a szolgáltatást új bejegyzési parancsfájl vagy környezet használatára szeretné frissíteni, hozzon létre egy [következtetési konfigurációs fájlt](/azure/machine-learning/reference-azure-machine-learning-cli#inference-configuration-schema) , és adja meg a `ic` paramétert.
 
 További információt az az [ml Service Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) dokumentációjában talál.

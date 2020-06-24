@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329508"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742266"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök naplózási előzményeinek megtekintése Privileged Identity Management
 
@@ -90,7 +90,7 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörök naplózási előzmény
 
     | Oszlop | Leírás |
     | --- | --- |
-    | Time | Ha a művelet bekövetkezett. |
+    | Idő | Ha a művelet bekövetkezett. |
     | Requestor (Kérelmező) | A szerepkör aktiválását vagy módosítását kérő felhasználó. Ha az érték az **Azure System**, további információért tekintse meg az Azure naplózási előzményeit. |
     | Műveletek | A kérelmező által végrehajtott műveletek. A műveletek lehetnek például a hozzárendelés, a hozzárendelés megszüntetése, az aktiválás, az inaktiválás vagy a AddedOutsidePIM. |
     | Tag | Az a felhasználó, aki aktivál vagy hozzárendel egy szerepkörhöz. |
@@ -117,7 +117,7 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörök naplózási előzmény
 ## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>Az OK, a jóváhagyó és a jegy számának beolvasása jóváhagyási eseményekhez
 
 1. Jelentkezzen be a [Azure Portalra](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda szerepkör engedélyeivel, és nyissa meg az Azure ad-t.
-1. Válassza a **naplók**lehetőséget.
+1. Válassza a **Naplók** lehetőséget.
 1. A **szolgáltatás** szűrő használatával csak a Privileged Identity Management szolgáltatáshoz tartozó naplózási eseményeket jelenítheti meg. A **naplózási naplók** lapon a következőket teheti:
 
     - Tekintse meg a naplózási esemény okát az **Állapot oka** oszlopban.

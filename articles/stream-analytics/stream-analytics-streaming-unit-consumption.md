@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/27/2020
 ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267351"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704182"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>A streamelési egységek ismertetése és módosítása
 
@@ -78,7 +78,7 @@ Az alábbi tényezők befolyásolják a felhasznált memóriát (a folyamatos á
 Egy ablakos összesítéshez felhasznált memória (állapot mérete) nem mindig az ablak méretével arányos. Ehelyett a felhasznált memória az adatmennyiség, vagy a csoportok száma az egyes időablakokban is arányos.
 
 
-Például a következő lekérdezésben a társított `clusterid` szám a lekérdezés kardinálisa. 
+Például a következő lekérdezésben a társított szám a `clusterid` lekérdezés kardinálisa. 
 
    ```sql
    SELECT count(*)
@@ -86,7 +86,7 @@ Például a következő lekérdezésben a társított `clusterid` szám a lekér
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Az előző lekérdezésben felmerülő problémák enyhítése érdekében az Event hub által `clusterid`particionált, és a lekérdezés vertikális felskálázásával kapcsolatos problémákat is elküldheti, ha a rendszeren az alábbi példában látható módon feldolgozza az egyes bemeneti partíciókat a **Partition by** paranccsal.
+Az előző lekérdezésben felmerülő problémák enyhítése érdekében az Event hub által particionált, és a lekérdezés vertikális felskálázásával kapcsolatos problémákat is elküldheti, ha `clusterid` a rendszeren az alábbi példában látható módon feldolgozza az egyes bemeneti partíciókat a **Partition by** paranccsal.
 
    ```sql
    SELECT count(*) 
@@ -94,7 +94,7 @@ Az előző lekérdezésben felmerülő problémák enyhítése érdekében az Ev
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 
-A rendszer több csoport között osztja el a lekérdezést a particionálása után. Ennek eredményeképpen az egyes csomópontokra érkező `clusterid` értékek száma csökken, így csökkentve a csoportosítási operátor által felszámított számos értéket. 
+A rendszer több csoport között osztja el a lekérdezést a particionálása után. Ennek eredményeképpen az `clusterid` egyes csomópontokra érkező értékek száma csökken, így csökkentve a csoportosítási operátor által felszámított számos értéket. 
 
 Az Event hub-partíciókat a csoportosítási kulcsnak kell particionálnia, hogy elkerülje a csökkentési lépés szükségességét. További információ: [Event Hubs Overview (áttekintés](../event-hubs/event-hubs-what-is-event-hubs.md)). 
 

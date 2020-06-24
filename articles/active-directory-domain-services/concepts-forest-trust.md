@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5c0878a5999f1d7d716d8caaf9f3fffa5e401dc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476439"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982354"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hogyan működik a megbízhatósági kapcsolatok a Azure Active Directory Domain Services erőforrás-erdőkön
 
@@ -70,7 +70,7 @@ Erdőszintű megbízhatósági kapcsolat csak az egyik erdőben lévő erdő gy�
 
 A következő ábra két különálló erdőszintű megbízhatósági kapcsolatot mutat be egyetlen szervezet három AD DS erdője között.
 
-![Az erdőszintű megbízhatósági kapcsolatok diagramja egyetlen szervezeten belül](./media/concepts-forest-trust/forest-trusts.png)
+![Az erdőszintű megbízhatósági kapcsolatok diagramja egyetlen szervezeten belül](./media/concepts-forest-trust/forest-trusts-diagram.png)
 
 A példában szereplő konfiguráció a következő hozzáférést biztosítja:
 
@@ -162,7 +162,7 @@ Ha az egyik erdőben lévő munkaállomás egy másik erdőben lévő erőforrá
 
 A következő ábra és lépések részletes leírást nyújtanak a Kerberos hitelesítési folyamatról, amelyet akkor használ a rendszer, ha a Windows rendszert futtató számítógépek erőforrásokat próbálnak elérni egy másik erdőben található számítógépről.
 
-![A Kerberos-folyamat diagramja erdőszintű megbízhatósági kapcsolaton keresztül](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![A Kerberos-folyamat diagramja erdőszintű megbízhatósági kapcsolaton keresztül](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
 1. A *Felhasználó1* bejelentkezik a *Munkaallomas1 nevű munkaállomásnak* a *Europe.tailspintoys.com* tartomány hitelesítő adatainak használatával. A felhasználó ezután megpróbál hozzáférni egy megosztott erőforráshoz a *USA.wingtiptoys.com* erdőben található *Fajlkiszolgalo1 nevű kiszolgálónak* .
 
@@ -276,7 +276,7 @@ A rendszergazdák *Active Directory tartományokat és megbízhatóságokat*, *N
 
 További információ az erőforrás-erdőkről: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 
-Az Azure AD DS felügyelt tartomány erőforrás-erdővel való létrehozásának megkezdéséhez tekintse meg [az azure AD DS felügyelt tartomány létrehozása és konfigurálása][tutorial-create-advanced]című témakört. Ezután [létrehozhat egy kimenő erdőszintű megbízhatósági kapcsolatot a helyszíni tartományba (előzetes verzió)][create-forest-trust].
+A felügyelt tartomány erőforrás-erdővel való létrehozásának első lépéseiért tekintse meg [Az Azure AD DS felügyelt tartomány létrehozása és konfigurálása][tutorial-create-advanced]című témakört. Ezután [létrehozhat egy kimenő erdőszintű megbízhatósági kapcsolatot a helyszíni tartományba (előzetes verzió)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

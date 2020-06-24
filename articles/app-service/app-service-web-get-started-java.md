@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b07ffe92a5dd0c105188fab55bc679c04f660ed2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d8f03d714ab44dc01d9e138a63a89892ead60fe9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300943"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249465"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Windows rendszeren
 
@@ -38,7 +38,7 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 A következő Maven-parancs végrehajtásával hozzon létre egy nevű új alkalmazást a Cloud Shell promptban `helloworld` :
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp -Dversion=1.0-SNAPSHOT
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" "-Dversion=1.0-SNAPSHOT"
 ```
 
 Ezután módosítsa a munkakönyvtárat a projekt mappájába:
@@ -49,6 +49,8 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>A Maven beépülő moduljának konfigurálása
 
+Az üzembe helyezés folyamata Azure App Service az Azure CLI-vel automatikusan felveheti az Azure-beli hitelesítő adatait. Ha nem telepítette az Azure CLI-t, a Maven beépülő modul bejelentkezik a OAuth vagy az eszköz bejelentkezésével. Ha szükséges, tekintse meg a [Maven beépülő modulokkal történő hitelesítés](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) részleteit.
+
 Futtassa a következő Maven-parancsot a parancssorban a központi telepítés konfigurálásához, válassza a **"2"** lehetőséget az első lépésben a **Windows** operációs rendszerhez, majd fogadja el az alapértelmezett beállításokat az **ENTER** billentyű lenyomásával, amíg meg nem jelenik a **Confirm (y/N)** üzenet, majd nyomja le az **"y"** gombot, és a konfiguráció elkészült. 
 
 ```bash
@@ -57,7 +59,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 
 Egy mintavételi folyamat A következőképpen néz ki:
 
-```cmd
+```console
 ~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 [INFO] Scanning for projects...
 [INFO]
@@ -177,7 +179,7 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Kapcsolódás az Azure SQL Database-hez a Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Kapcsolódás Azure SQL Database Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás a MySQL-hez készült Azure DB-hez a Javával](/azure/mysql/connect-java)

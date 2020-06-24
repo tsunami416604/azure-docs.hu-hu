@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: derekolo
 ms.service: internet-peering

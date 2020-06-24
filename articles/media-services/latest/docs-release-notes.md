@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8619366580dd77ae12c4c101c183532fec4da04a
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 40a2510fcb6fd5fe51cebc702604e2d09df7b061
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430835"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982169"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>A Azure Media Services v3 dokumentációjának frissítései
 
@@ -24,9 +24,13 @@ ms.locfileid: "84430835"
 
 Ez a cikk a legfrissebb Media Services v3 dokumentációs frissítéseit tárgyalja.
 
-## <a name="june-2020"></a>Június 2020
+## <a name="june-2020"></a>2020. június
 
-A IoT Edge élő videós elemzésének előnézete nyilvános volt. A IoT Edge dokumentációjában tekintse [meg az élő videó elemzésének](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/) részleteit.
+* A IoT Edge élő videós elemzésének előnézete nyilvános volt. A IoT Edge dokumentációjában tekintse [meg az élő videó elemzésének](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/) részleteit.
+* Új gyors útmutató:
+
+    * [A portál használata tartalom feltöltéséhez, kódolásához és streameléséhez](manage-assets-quickstart.md)
+    * [A portál használata tartalom titkosításához](encrypt-content-quickstart.md)
 
 ## <a name="april-2020"></a>2020. április
 
@@ -37,7 +41,7 @@ A IoT Edge élő videós elemzésének előnézete nyilvános volt. A IoT Edge d
 
 A [stream Wirecast](live-events-wirecast-quickstart.md) rövid útmutatóval bővült az élő közvetítés. Bemutatja, hogyan hozhat létre Azure Media Services élő streamet a Azure Portal és a Wirecast használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v3 kibocsátási megjegyzései](release-notes.md)

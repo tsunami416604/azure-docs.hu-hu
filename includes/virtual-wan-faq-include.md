@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006456"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977932"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -32,7 +32,7 @@ Minden átjáró két példánnyal rendelkezik, a felosztás úgy történik, ho
 A P2S-ügyfelekhez két lehetőség van a DNS-kiszolgálók hozzáadására.
 
 1. Nyisson meg egy támogatási jegyet a Microsofttal, és adja hozzá a DNS-kiszolgálókat a hubhoz.
-2. Ha a Windows 10 rendszerhez készült Azure VPN-ügyfelet használja, akkor módosíthatja a letöltött profil XML-fájlját, és hozzáadhatja a ** \< \<dnsservers \<>DNS \<>/dnsserver>/dnsservers>** címkéket az importálás előtt.
+2. Ha a Windows 10 rendszerhez készült Azure VPN-ügyfelet használja, akkor a letöltött profil XML-fájlját is módosíthatja, ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** és az importálás előtt hozzáadhatja a címkéket.
 
 ```
 <azvpnprofile>
@@ -135,7 +135,7 @@ Igen. Lásd a [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hogyan készülhetnek elő a szolgáltatásra a meglévő partnerek listáján még nem szereplő új partnerek?
 
-Minden virtuális WAN API nyitott API. A technikai megvalósíthatóság értékeléséhez áttekintheti a dokumentációt. Ha bármilyen kérdése van, küldjön egy e-mailt azurevirtualwan@microsoft.coma címre. Ideális esetben a partner olyan eszközzel rendelkezik, amely támogatja az IKEv1 vagy az IKEv2 IPsec-kapcsolatot.
+Minden virtuális WAN API nyitott API. A technikai megvalósíthatóság értékeléséhez áttekintheti a dokumentációt. Ha bármilyen kérdése van, küldjön egy e-mailt a címre azurevirtualwan@microsoft.com . Ideális esetben a partner olyan eszközzel rendelkezik, amely támogatja az IKEv1 vagy az IKEv2 IPsec-kapcsolatot.
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Mi a teendő, ha a virtuális WAN-partnerek listáján nem szerepel a használni kívánt eszköz? Használhatom továbbra is az Azure Virtual WAN VPN-hez való csatlakozáshoz?
 
@@ -212,9 +212,14 @@ Egy virtuális központ propagálhatja a megtanult alapértelmezett útvonalat e
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hogyan jelöli ki a virtuális hálózat virtuális központja a különböző hubok útvonalának legjobb elérési útját.
 
 Ha egy virtuális központ több távoli hubhoz is megtudhatja ugyanazt az útvonalat, a következőképpen határozható meg a sorrend.
-1) Útvonal forrása) hálózati útvonalak – a virtuális hub-átjárók által közvetlenül megismert VNET-előtagokat a (statikusan konfigurált útvonalakon) c) InterHub útvonalak
-2)  Útvonal metrikája: a virtuális WAN inkább a VPN-en keresztül ExpressRoute. A ExpressRoute-társ magasabb súlyozással rendelkezik, mint a VPN-társ
-3)  Elérési út hossza
+1. Leghosszabb előtag-egyezés
+2. Helyi útvonalak interhub-en keresztül
+3. A BGP-en keresztüli statikus útvonalak
+4. ExpressRoute (ER) VPN-en keresztül
+5. Elérési út hossza
+
+Az ER és az ER közötti átvitel mindig globális elérhetőségen keresztül történik, mert ha a kérelem az egyik központon keresztül érhető el, és a VPN és a távoli elosztóban található, a VPN előnyt élvez a távoli elosztón keresztül, hogy elérje a VPN-en keresztül csatlakoztatott végpontot, vagy a távoli központban
+
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Támogatja az IPv6-ot a virtuális WAN-ban?
 

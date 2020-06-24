@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3684b9b87dce24ba7ac1a9b672f7fd6dd446ab46
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985864"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213907"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Táblázat statisztikái a szinapszis SQL-készletben
 
@@ -156,7 +156,7 @@ A statisztikák frissítéséhez a következő irányadó elveket kell megadnia:
 - A JOIN, a GROUP BY, a ORDER BY és a DISTINCT záradékban részt vevő oszlopokra koncentrálhat.
 - Érdemes lehet frissíteni a "növekvő kulcs" oszlopokat, például a tranzakció dátumát gyakrabban, mert ezek az értékek nem szerepelnek a statisztikai hisztogramon.
 - Érdemes lehet ritkábban frissíteni a statikus terjesztési oszlopokat.
-- Ne feledje, hogy minden egyes statisztikai objektum sorba van frissítve. A megvalósítás `UPDATE STATISTICS <TABLE_NAME>` egyszerűen nem mindig ideális, különösen a sok statisztikai objektummal rendelkező széles táblák esetében.
+- Ne feledje, hogy minden egyes statisztikai objektum sorba van frissítve. A megvalósítás egyszerűen `UPDATE STATISTICS <TABLE_NAME>` nem mindig ideális, különösen a sok statisztikai objektummal rendelkező széles táblák esetében.
 
 További információ: a [kardinális becslése](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
@@ -236,13 +236,13 @@ Több oszlopból álló statisztikai objektum létrehozásához használja az el
 > [!NOTE]
 > A lekérdezési eredményben szereplő sorok számának becsléséhez használt hisztogram csak a statisztikai objektum definíciójában felsorolt első oszlop esetében érhető el.
 
-Ebben a példában a hisztogram a *\_termék kategóriájában*van. Az oszlopokra vonatkozó statisztikákat a *termék\_kategóriája* és a *\_termék sub_category*alapján számítjuk ki:
+Ebben a példában a hisztogram a *termék \_ kategóriájában*van. Az oszlopokra vonatkozó statisztikákat a *termék \_ kategóriája* és a *termék \_ sub_category*alapján számítjuk ki:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Mivel a *termék\_kategóriája* és a *termék\_\_alkategóriája*közötti korreláció áll fenn, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egyszerre érhetők el.
+Mivel a *termék \_ kategóriája* és a *termék \_ \_ alkategóriája*közötti korreláció áll fenn, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egyszerre érhetők el.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Statisztikák létrehozása egy tábla összes oszlopához
 
@@ -418,7 +418,7 @@ A frissítés STATISZTIKÁi utasítás egyszerűen használható. Ne feledje, ho
 > [!NOTE]
 > Egy tábla összes statisztikájának frissítésekor az SQL-készlet ellenőrzi, hogy az egyes statisztikai objektumok táblázatát kell-e felvenni. Ha a tábla nagyméretű, és sok oszlopot és számos statisztikát tartalmaz, akkor lehet, hogy hatékonyabban kell frissíteni az egyes statisztikákat igény szerint.
 
-Egy `UPDATE STATISTICS` eljárás végrehajtásához tekintse meg az [ideiglenes táblákat](sql-data-warehouse-tables-temporary.md). A megvalósítási módszer némileg eltér az előző `CREATE STATISTICS` eljárástól, de az eredmény ugyanaz.
+Egy eljárás végrehajtásához `UPDATE STATISTICS` tekintse meg az [ideiglenes táblákat](sql-data-warehouse-tables-temporary.md). A megvalósítási módszer némileg eltér az előző `CREATE STATISTICS` eljárástól, de az eredmény ugyanaz.
 
 A teljes szintaxist a [statisztika frissítése](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című részben tekintheti meg.
 

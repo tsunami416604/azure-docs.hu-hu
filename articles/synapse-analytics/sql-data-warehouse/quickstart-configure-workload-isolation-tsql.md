@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7f0aabf4bd18f82c247a43931e02e4b6890b2ef4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9132c9609961053e7f60344dc387b2a8d01bd6b9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650683"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212989"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása T-SQL használatával
 
@@ -108,7 +108,7 @@ Az adattárház-egységek és az adattárházban tárolt adatforgalomért kell f
 - Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást, ha nem használja az SQL-készletet. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Ha készen áll az adatok feldolgozására, folytassa a számítást.
 - Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Most létrehozott egy munkaterhelés-csoportot. Futtasson néhány lekérdezést a ELTLogin, hogy láthassa, hogyan végzik el. A lekérdezéseket és a hozzárendelt munkaterhelési csoportot a [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) témakörben tekintheti meg.
 - További információ az SQL-alapú számítási feladatok kezeléséről: [munkaterhelés-kezelés](sql-data-warehouse-workload-management.md) és munkaterhelés- [elkülönítés](sql-data-warehouse-workload-isolation.md).

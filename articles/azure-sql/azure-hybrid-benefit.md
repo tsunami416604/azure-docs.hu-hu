@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: fcb1e5f45bc4f8d234952e338052a18d4b03ee0f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 9d8a973e04618e4223f90ffb9a3004d0fe40bbf7
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344679"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743490"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid Benefit – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,11 @@ A virtuális mag-alapú vásárlási modell kiépített számítási szintjein a
 
 A Azure Hybrid Benefit segítségével csak az alapul szolgáló Azure-infrastruktúráért kell fizetnie, ha a meglévő SQL Server licencét a SQL Server adatbázis-működtető motorhoz (az alapszintű számítási díjszabáshoz) használja, vagy a mögöttes infrastruktúrára és a SQL Server licencre (licenccel együtt) is fizethet.
 
-A licencelési modellt a Azure Portal használatával vagy a következő API-k egyikével választhatja ki vagy módosíthatja:
+A licencelési modellt kiválaszthatja vagy módosíthatja a Azure Portalban: 
+- Új adatbázisok esetén a létrehozás során válassza az **adatbázis konfigurálása** lehetőséget az **alapok** lapon, és válassza a pénz megtakarítása lehetőséget.
+- A meglévő adatbázisok esetében válassza a **Konfigurálás** lehetőséget a **Beállítások** menüben, és válassza a pénz megtakarításának lehetőségét.
+
+A következő API-k egyikével is konfigurálhat új vagy meglévő adatbázist:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -90,7 +94,7 @@ SQL Database az ügyfelek a következő jogokkal rendelkeznek a SQL Server Azure
 |||
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha segítségre van szükség az Azure SQL-alapú üzembe helyezési lehetőség kiválasztásához, tekintse meg [a megfelelő üzembe helyezési lehetőséget az Azure SQL-ben](azure-sql-iaas-vs-paas-what-is-overview.md).
 - A SQL Database és az SQL felügyelt példány funkcióinak összehasonlítását lásd: [SQL Database & SQL felügyelt példányának funkciói](database/features-comparison.md).

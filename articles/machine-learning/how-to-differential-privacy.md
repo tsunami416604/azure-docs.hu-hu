@@ -10,12 +10,12 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 65f395197256132b6b92b234932fd17ec5ba552c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433202"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981846"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>Különbözeti adatvédelem használata Azure Machine Learning
 
@@ -25,9 +25,12 @@ Ismerje meg, hogyan alkalmazhatja a modelleket a WhiteNoise Python-csomagok hasz
 
 A különbözeti adatvédelem az adatvédelem arany szabvány szerinti definíciója. Az adatvédelem ezen definícióját betartó rendszerek erős garanciát biztosítanak az adatújjáépítési és-azonosítási támadások széles körére, beleértve a kiegészítő információkat tartalmazó ellenfelek támadásait is. További információ a [differenciált adatvédelem működéséről](./concept-differential-privacy.md).
 
+> [!NOTE]
+> Vegye figyelembe, hogy átnevezjük az eszközkészletet, és az új nevet az elkövetkező hetekben fogjuk bevezetni. 
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-whitenoise-packages"></a>WhiteNoise-csomagok telepítése

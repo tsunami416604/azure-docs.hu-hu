@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 17c0e02aa091d1271967b5a238f71123cc7aeede
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322669"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249278"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -65,7 +65,7 @@ Nem kell biztonsági másolatokat létrehoznia Azure SQL Databaseon, és ez azé
 
 |Szolgáltatásszint|Megőrzési időszak (nap)|
 |---|:---:|
-|Basic|7|
+|Alapszintű|7|
 |Standard|35|
 |Prémium|35|
 |||
@@ -133,7 +133,7 @@ A tűzfalszabályok a kiszolgáló szintjén vagy az adatbázis szintjén hozhat
 
 #### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
-Alapértelmezés szerint az SQL-adatbázis úgy van konfigurálva, hogy "engedélyezze az Azure-szolgáltatások számára a kiszolgáló elérését" – ami azt jelenti, hogy az Azure-beli virtuális gépek megpróbálnak csatlakozni az adatbázishoz. Ezeknek a kísérleteknek még mindig meg kell kapniuk a hitelesítést. Ha azonban nem szeretné, hogy az adatbázis bármely Azure-beli IP-címen elérhető legyen, akkor letilthatja az "Azure-szolgáltatások elérésének engedélyezése a kiszolgálón" lehetőséget. Emellett a [VNet szolgáltatás-végpontokat](vnet-service-endpoint-rule-overview.md)is konfigurálhatja.
+Alapértelmezés szerint az adatbázis az "Azure-szolgáltatások elérésének engedélyezése kiszolgáló számára" beállításra van konfigurálva – ami azt jelenti, hogy az Azure-beli virtuális gépek megpróbálnak csatlakozni az adatbázishoz. Ezeknek a kísérleteknek még mindig meg kell kapniuk a hitelesítést. Ha azonban nem szeretné, hogy az adatbázis bármely Azure-beli IP-címen elérhető legyen, akkor letilthatja az "Azure-szolgáltatások elérésének engedélyezése a kiszolgálón" lehetőséget. Emellett a [VNet szolgáltatás-végpontokat](vnet-service-endpoint-rule-overview.md)is konfigurálhatja.
 
 A szolgáltatási végpontok (SE) lehetővé teszik, hogy a kritikus Azure-erőforrásokat csak az Azure saját privát virtuális hálózatára tegye elérhetővé. Ezzel lényegében megszünteti az erőforrásaihoz való nyilvános hozzáférést. Az Azure-beli virtuális hálózat közötti forgalom az Azure gerinc hálózatán marad. Az SE használata nélkül kényszerített bújtatású csomagok útválasztása. A virtuális hálózata kényszeríti az internetes forgalmat a szervezet és az Azure-szolgáltatás forgalmára, hogy ugyanarra az útvonalra lépjen át. A szolgáltatási végpontokkal optimalizálhatja ezt, mivel a csomagok közvetlenül a virtuális hálózatról az Azure gerinces hálózaton lévő szolgáltatásba áramlanak.
 
@@ -170,7 +170,7 @@ A bizalmas adatok repülés közbeni és nyugalmi állapotban való védelme ér
 |**Jellemzők**|**Always Encrypted**|**transzparens adattitkosítás**|
 |---|---|---|
 |**Titkosítási tartomány**|Végpontok közötti|Rest-adatok|
-|**A kiszolgáló bizalmas adatokat tud elérni**|Nem|Igen, mivel az inaktív adatok titkosítása|
+|**A kiszolgáló bizalmas adatokat tud elérni**|No|Igen, mivel az inaktív adatok titkosítása|
 |**Engedélyezett T-SQL-műveletek**|Egyenlőség összehasonlítása|Az összes T-SQL Surface terület elérhető|
 |**A funkció használatához szükséges módosítások**|Minimális|Nagyon minimális|
 |**Titkosítási részletesség**|Oszlop szintje|az adatbázis-szintű megadás helyett|
@@ -285,7 +285,7 @@ Lekérdezheti a [sys. dm_db_resource_stats](/sql/relational-databases/system-dyn
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Észrevettem a teljesítménnyel kapcsolatos problémákat: hogyan különböznek a SQL Database hibaelhárítási módszerei a SQL Server
 
-A lekérdezési és adatbázis-teljesítménnyel kapcsolatos problémák diagnosztizálásához használni kívánt hibaelhárítási technikák jelentős része változatlan marad. Miután az összes azonos SQL-adatbázismotor felhatalmazott a felhőre. A platform-Azure SQL Database azonban a "Intelligence"-ben készült. Megkönnyíti a teljesítménnyel kapcsolatos problémák megoldását és diagnosztizálását. Emellett elvégezheti ezeket a javítási műveleteket az Ön nevében, és bizonyos esetekben proaktív módon kijavítani azokat – automatikusan.
+A lekérdezési és adatbázis-teljesítménnyel kapcsolatos problémák diagnosztizálásához használni kívánt hibaelhárítási technikák jelentős része változatlan marad. Azt követően, hogy az összes adatbázis-motor felhatalmazott a felhőre. A platform-Azure SQL Database azonban a "Intelligence"-ben készült. Megkönnyíti a teljesítménnyel kapcsolatos problémák megoldását és diagnosztizálását. Emellett elvégezheti ezeket a javítási műveleteket az Ön nevében, és bizonyos esetekben proaktív módon kijavítani azokat – automatikusan.
 
 A teljesítménnyel kapcsolatos problémák megoldásának megközelítése jelentősen kihasználhatja az olyan intelligens funkciók használatát, mint például a [lekérdezési terheléselemző (QPI)](query-performance-insight-use.md) és a [Database Advisor](database-advisor-implement-performance-recommendations.md) , és így a módszertanban bekövetkező különbség különbözik ebben a tekintetben. a továbbiakban nem kell elvégezni a manuális munkát, amely segíthet a probléma megoldásában. A platform a nehezen használható. Egy példa erre a QPI. A QPI segítségével egészen a lekérdezés szintjéig lehatolhat, és megtekintheti a korábbi trendeket, és kiderítheti, hogy pontosan a lekérdezés romlott. A Database Advisor javaslatokat tesz olyan dolgokra, amelyek segíthetnek az általános teljesítmény növelésében, például a hiányzó indexek, az indexek eldobása, a lekérdezések parameterizing stb.
 
@@ -301,7 +301,7 @@ A SQL Database különböző szolgáltatási szinteket kínál alapszintű, stan
 
 |**Szolgáltatási szintek**|**Gyakori használati esetek**|
 |---|---|
-|**Basic**|Egy maroknyi felhasználóval és egy olyan adatbázissal, amely nem rendelkezik magas párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel. |
+|**Alapszintű**|Egy maroknyi felhasználóval és egy olyan adatbázissal, amely nem rendelkezik magas párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel. |
 |**Standard**|A jelentős párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel rendelkező alkalmazások alacsony – közepes i/o-igényekkel párosulnak. |
 |**Prémium**|Számos egyidejű felhasználóval, magas CPU/memóriával és magas i/o-igényű alkalmazásokkal. A magas Egyidejűség, a nagy átviteli sebesség és a késésre érzékeny alkalmazások kihasználhatják a prémium szintet. |
 |||
@@ -333,6 +333,6 @@ Ezt többféleképpen is elérheti:
 - **[Adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)** – ez a funkció segítséget nyújt a kétirányú adatszinkronizáláshoz több SQL Server adatbázis és SQL Database között. SQL Server adatbázisokkal való szinkronizáláshoz telepítenie és konfigurálnia kell a szinkronizálási ügynököt egy helyi számítógépen vagy virtuális gépen, és meg kell nyitnia a 1433-es kimenő TCP-portot.
 - **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja az adatokat egy SQL Server adatbázisból, hogy Azure SQL Database a közzétevő és az előfizető Azure SQL Database SQL Server példányával. Egyelőre csak ez a beállítás támogatott. Az adatok SQL Server adatbázisból az Azure SQL-be minimális állásidővel való áttelepítésével kapcsolatos további információkért lásd: a [tranzakciós replikáció használata](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [SQL Database](sql-database-paas-overview.md)megismerése.

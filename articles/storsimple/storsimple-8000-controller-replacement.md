@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267923"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704335"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Vezérlő modul cseréje a StorSimple-eszközön
 ## <a name="overview"></a>Áttekintés
@@ -31,7 +31,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet egy vagy mindkét vezérlő modul
 > Ha meg szeretné akadályozni, hogy a StorSimple-eszköz kárt okozzon, ne távolítsa el a vezérlőt addig, amíg a LED-ek a következők egyike nem látható:
 > 
 > * Az összes jelzőfény ki van kapcsolva.
-> * A LED 3 ![, zöld pipa](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png)ikon és ![piros kereszt ikon](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) villog, és a LED 0 és a LED 7 is **be van kapcsolva**.
+> * A LED 3, ![ zöld pipa ikon ](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png) és ![ piros kereszt ikon ](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) villog, és a LED 0 és a LED 7 is **be van kapcsolva**.
 
 
 A következő táblázat a támogatott vezérlő-helyettesítési forgatókönyveket mutatja be.
@@ -105,7 +105,7 @@ Ha a Microsoft Azure StorSimple-eszköz egyik vezérlője meghibásodik, hajtsa 
 > [!NOTE]
 > Ha az eszközt a soros konzolon keresztül figyeli, több újraindítást is láthat, amíg a vezérlőt helyreállítják a csere eljárásból. Ha megjelenik a soros konzol menüje, akkor tudja, hogy a csere befejeződött. Ha a menü nem jelenik meg két órán belül a vezérlő cseréjének megkezdése után, vegye [fel a kapcsolatot Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md).
 >
-> A 4-es frissítés megkezdése után az eszköz Windows `Get-HCSControllerReplacementStatus` PowerShell-felületén található parancsmagot is használhatja a vezérlő lecserélési folyamatának állapotának figyelésére.
+> A 4-es frissítés megkezdése után az `Get-HCSControllerReplacementStatus` eszköz Windows PowerShell-felületén található parancsmagot is használhatja a vezérlő lecserélési folyamatának állapotának figyelésére.
 > 
 
 ## <a name="replace-both-controllers"></a>Mindkét vezérlő cseréje
@@ -195,7 +195,7 @@ Az alábbi eljárással telepítheti a gyári vezérlő modult, miután eltávol
    > [!NOTE]
    > Akár 5 percet is igénybe vehet a vezérlő és a LED aktiválása.
   
-5. Annak ellenőrzéséhez, hogy a csere sikeres-e, a Azure Portal lépjen az eszközre, majd keresse meg a**hardver állapotának** **figyelése** > lehetőséget, és győződjön meg arról, hogy a vezérlő 0 és a vezérlő 1 állapota Kifogástalan (az állapot zöld).
+5. Annak ellenőrzéséhez, hogy a csere sikeres-e, a Azure Portal lépjen az eszközre, majd keresse **Monitor**meg a  >  **hardver állapotának**figyelése lehetőséget, és győződjön meg arról, hogy a vezérlő 0 és a vezérlő 1 állapota Kifogástalan (az állapot zöld).
 
 ## <a name="identify-the-active-controller-on-your-device"></a>Az aktív vezérlő azonosítása az eszközön
 Számos szituáció létezik, például az eszköz első vagy a vezérlő cseréje, amely megköveteli, hogy megkeresse az aktív vezérlőt egy StorSimple-eszközön. Az aktív vezérlő feldolgozza az összes lemez belső vezérlőprogram és hálózati műveletét. Az aktív vezérlő azonosításához a következő módszerek bármelyikét használhatja:
@@ -207,7 +207,7 @@ Számos szituáció létezik, például az eszköz első vagy a vezérlő cseré
 A következő eljárások mindegyikét ismertetjük.
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>A Azure Portal használata az aktív vezérlő azonosításához
-A Azure Portal navigáljon az eszközhöz, majd a**hardver állapotának** **figyeléséhez** > , és görgessen a **vezérlők** szakaszhoz. Itt ellenőrizheti, hogy melyik vezérlő aktív.
+A Azure Portal navigáljon az eszközhöz, majd a **Monitor**  >  **hardver állapotának**figyeléséhez, és görgessen a **vezérlők** szakaszhoz. Itt ellenőrizheti, hogy melyik vezérlő aktív.
 
 ![Az aktív vezérlő azonosítása Azure Portal](./media/storsimple-controller-replacement/IC752072.png)
 

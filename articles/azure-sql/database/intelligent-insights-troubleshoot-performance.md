@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 9b92454abcb985a21952389f9f618c1f58d45182
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/12/2020
+ms.openlocfilehash: da29b5427b2258a32e87977289689949a47f3d8e
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344781"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743439"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítménnyel kapcsolatos problémáinak elhárítása Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,6 +25,8 @@ Ez a lap a [Intelligent Insights](intelligent-insights-overview.md) erőforrás-
 
 > [!NOTE]
 > Az Intelligent Insights használatával történő gyors teljesítmény-hibaelhárítási útmutatóért tekintse meg a jelen dokumentum [javasolt hibaelhárítási folyamat](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) folyamatábráját.
+>
+> Az intelligens betekintő funkció az alábbi régiókban nem érhető el: Nyugat-Európa, Észak-Európa, USA 2. nyugati régiója és USA 1. keleti régiója.
 
 ## <a name="detectable-database-performance-patterns"></a>Észlelhető adatbázis-teljesítménnyel kapcsolatos minták
 
@@ -326,7 +328,7 @@ Intelligent Insights a Azure Portal keresztül érheti el a Azure SQL Analytics.
 
 Intelligent Insights általában egy órányi időt kell igénybe vennie a teljesítménnyel kapcsolatos probléma kiváltó okának elemzéséhez. Ha nem találja a problémát Intelligent Insights és kritikus fontosságú az Ön számára, a lekérdezési tároló használatával manuálisan azonosíthatja a teljesítménnyel kapcsolatos probléma okát. (Általában ezek a problémák kevesebb, mint egy órával régebbiek.) További információ: [a teljesítmény figyelése a lekérdezési tároló használatával](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg [Intelligent Insights](intelligent-insights-overview.md) fogalmakkal.
 - Használja a [Intelligent Insights Performance Diagnostics-naplót](intelligent-insights-use-diagnostics-log.md).
