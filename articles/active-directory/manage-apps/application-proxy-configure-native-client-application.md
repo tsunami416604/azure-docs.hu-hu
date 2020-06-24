@@ -3,25 +3,25 @@ title: Natív ügyfélalkalmazások közzététele – Azure AD | Microsoft Docs
 description: Ismerteti, hogyan engedélyezhető a natív ügyfélalkalmazások az Azure AD Application Proxy-összekötővel való kommunikációhoz a helyszíni alkalmazások biztonságos távoli elérésének biztosításához.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 442e1515159afc1df79bb6f5f1f747ce0800fef7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647230"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764808"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz
 
@@ -113,10 +113,10 @@ A mintakód szükséges adatai az Azure AD portálon találhatók, a következő
 
 | Szükséges információk | Az Azure AD-portálon való keresés |
 | --- | --- |
-| \<Bérlői azonosító> | **Azure Active Directory**  >  **Tulajdonságok**  >  **Könyvtár azonosítója** |
-| \<A natív alkalmazás alkalmazás-azonosítója> | **Alkalmazás regisztrálása**  >  *natív alkalmazása*  >  **Áttekintés**  >  **Alkalmazás azonosítója** |
-| \<Hatókör> | **Alkalmazás regisztrálása**  >  *natív alkalmazása*  >  **API-engedélyek** > kattintson az engedély API-ra (user_impersonation) > egy panel, amely a felirat **user_impersonation** jelenik meg a jobb oldalon. > a hatókör a szerkesztési mezőben lévő URL-cím.
-| \<Alkalmazásproxy-alkalmazás URL-címe> | az API külső URL-címe és elérési útja
+| \<Tenant ID> | **Azure Active Directory**  >  **Tulajdonságok**  >  **Könyvtár azonosítója** |
+| \<App ID of the Native app> | **Alkalmazás regisztrálása**  >  *natív alkalmazása*  >  **Áttekintés**  >  **Alkalmazás azonosítója** |
+| \<Scope> | **Alkalmazás regisztrálása**  >  *natív alkalmazása*  >  **API-engedélyek** > kattintson az engedély API-ra (user_impersonation) > egy panel, amely a felirat **user_impersonation** jelenik meg a jobb oldalon. > a hatókör a szerkesztési mezőben lévő URL-cím.
+| \<Proxy App Url> | az API külső URL-címe és elérési útja
 
 Miután módosította a MSAL kódot ezekkel a paraméterekkel, a felhasználók akkor is hitelesíthetők a natív ügyfélalkalmazások számára, ha a vállalati hálózaton kívül esnek.
 

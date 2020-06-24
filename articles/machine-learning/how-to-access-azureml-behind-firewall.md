@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ab2bb3d94a740ca25be15b64895c52d5c038add3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552446"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080230"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Firewall mögötti munkaterület használata Azure Machine Learning
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Firewallt Azure Machine Learning-munkaterülettel való használatra.
 
-A Azure Firewall a Azure Machine Learning-munkaterülethez és a nyilvános internethez való hozzáférés szabályozására használható. Ha nincs megfelelően konfigurálva, a tűzfal problémákat okozhat a munkaterület használatával.
+A Azure Firewall a Azure Machine Learning-munkaterülethez és a nyilvános internethez való hozzáférés szabályozására használható. Ha nincs megfelelően konfigurálva, a tűzfal problémákat okozhat a munkaterület használatával. A Azure Machine Learning munkaterület számos különböző állomásnevet használ, amelyek a jelen cikkben olvashatók.
 
 ## <a name="network-rules"></a>Hálózatszabályok
 
@@ -37,26 +37,28 @@ A tűzfalon hozzon létre egy hálózati szabályt, amely engedélyezi a cikkben
 
 Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, és biztosítják a munkaterület megfelelő működéséhez szükséges szolgáltatásokat.
 
-| **Állomásnév** | **Szerep** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Csoportok betanítása |
 | **ml.azure.com** | Azure Machine Learning Studio |
+| **default.exp-tas.com** | A Azure Machine Learning Studio használja |
 | **\*. azureml.ms** | Azure Machine Learning API-k használják |
-| **\*. experiments.azureml.net** | A Azure Machine Learningban futó kísérletek használják|
+| **\*. experiments.azureml.net** | A Azure Machine Learningban futó kísérletek használják |
 | **\*. modelmanagement.azureml.net** | Modellek regisztrálásához és üzembe helyezéséhez használatos|
 | **mlworkspace.azure.ai** | A munkaterületek megtekintésekor használt Azure Portal |
 | **\*. aether.ms** | Azure Machine Learning folyamatok futtatásakor használatos |
 | **\*. instances.azureml.net** | Számítási példányok Azure Machine Learning |
+| **\*. instances.azureml.ms** | Azure Machine Learning számítási példányok, ha a munkaterület saját hivatkozás engedélyezve van |
 | **windows.net** | Azure Blob Storage |
 | **vault.azure.net** | Azure Key Vault |
-| **microsoft.com** | Alapszintű Docker-rendszerképek |
 | **azurecr.io** | Azure Container Registry |
+| **mcr.microsoft.com** | Microsoft Container Registry az alapszintű Docker-rendszerképekhez |
 
 ## <a name="python-hosts"></a>Python-gazdagépek
 
 Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek. 
 
-| **Állomásnév** | **Szerep** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **anaconda.com** | Conda-csomagok telepítésekor használatos |
 | **pypi.org** | Pip-csomagok telepítésekor használatos |
@@ -68,11 +70,11 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 > [!IMPORTANT]
 > Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
 
-| **Állomásnév** | **Szerep** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 
-Következő lépések
+További lépések
 
 * [[Azure Firewall üzembe helyezése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md)]
 * [Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit](how-to-enable-virtual-network.md)

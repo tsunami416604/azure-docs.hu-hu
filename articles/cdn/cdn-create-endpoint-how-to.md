@@ -10,16 +10,16 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254015"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887726"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN végpont létrehozása
 Ez a cikk az [Azure Content Delivery Network-(CDN-)](cdn-overview.md) VÉGPONT meglévő CDN-profilban való létrehozásának összes beállítását ismerteti. Miután létrehozott egy profilt és egy végpontot, megkezdheti a tartalom továbbítását az ügyfeleknek. A profil és a végpont létrehozásával kapcsolatos rövid útmutató: gyors üzembe helyezés [Azure CDN profil és végpont létrehozása](cdn-create-new-endpoint.md).
@@ -44,7 +44,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
    
     ![Végpont hozzáadása lap](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. A **Név** mezőben adjon meg egy egyedi nevet a CDN-végpont számára. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a (z)>. azureedge.net tartomány _ \<végpontneve _.
+3. A **Név** mezőben adjon meg egy egyedi nevet a CDN-végpont számára. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a tartományban _\<endpointname>_ . azureedge.net.
 
 4. A **forrás típusa mezőben**válasszon a következő eredetű típusok közül: 
    - **Tároló** az Azure Storage-hoz
@@ -62,7 +62,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
    > Bizonyos típusú források – például az Azure Storage és a Web Apps – esetén az állomásfejlécnek egyeznie kell a forrás tartományával. Hacsak a forrás a tartománytól eltérő állomásfejléc használatát nem igényli, hagyja meg az alapértelmezett értéket.
    > 
     
-8. A **protokoll** és a **Forrás port**esetében adja meg az erőforrások eléréséhez használandó protokollokat és portokat a forrás-kiszolgálón. Legalább egy protokollt (a HTTP vagy a HTTPS protokollt) ki kell választani. A https-tartalmak eléréséhez használja a CDN által biztosított tartományt (_\<végpontneve>_. azureedge.net). 
+8. A **protokoll** és a **Forrás port**esetében adja meg az erőforrások eléréséhez használandó protokollokat és portokat a forrás-kiszolgálón. Legalább egy protokollt (a HTTP vagy a HTTPS protokollt) ki kell választani. A HTTPS-tartalmak eléréséhez használja a CDN által biztosított tartományt ( _\<endpointname>_ . azureedge.net). 
    
    > [!NOTE]
    > A **forrásport** értéke csak azt a portot határozza meg, amelyet a végpont az információk forrás-kiszolgálóról való lekéréséhez használ. Magát a végpontot a végfelhasználók – a **Forrásport** értékétől függetlenül – csak az alapértelmezett HTTP- és HTTPS-porton (azaz a 80-as és a 443-as porton) érik el.  
@@ -79,14 +79,14 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
 
     - **Azure CDN a** Verizon és a **prémium szintű Azure CDN a Verizon** -profiloktól:
        - [**Általános webes kézbesítés**](cdn-optimization-overview.md#general-web-delivery)
-       - [**Dinamikus hely gyorsulása**](cdn-optimization-overview.md#dynamic-site-acceleration)
+       - [**Dinamikus helygyorsítás**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
     - **Azure CDN standard a Akamai-** profilokból:
        - [**Általános webes kézbesítés**](cdn-optimization-overview.md#general-web-delivery)
        - [**Általános médiaadatfolyam-továbbítás**](cdn-optimization-overview.md#general-media-streaming)
        - [**Videó igény szerinti médiaadatfolyam-továbbításhoz**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**Nagyméretű fájlok letöltése**](cdn-optimization-overview.md#large-file-download)
-       - [**Dinamikus hely gyorsulása**](cdn-optimization-overview.md#dynamic-site-acceleration)
+       - [**Dinamikus helygyorsítás**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
 10. Új végpont létrehozásához kattintson a **Hozzáadás** gombra.
    
@@ -101,7 +101,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
    
     Ha a CDN-tartománynevet úgy kísérli meg használni, hogy a végpont konfigurációja propagálva legyen a jelenléti pontra (POP) szolgáló kiszolgálókra, előfordulhat, hogy HTTP 404-válasz állapotot kap. Ha a végpont létrehozása óta több óra van, és továbbra is 404 választ kap, tekintse meg [a 404 állapotkódot visszaadó Azure CDN-végpontok hibaelhárítása](cdn-troubleshoot-endpoint.md)című témakört.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha már nem szükséges végpontot törölni, válassza ki, majd válassza a **Törlés**lehetőséget. 
 
 ## <a name="next-steps"></a>További lépések

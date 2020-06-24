@@ -3,24 +3,24 @@ title: Bejelentkezés automatikus gyorsításának beállítása a Kezdőlap tar
 description: Ismerje meg, hogyan konfigurálhatja a Kezdőlap tartomány-felderítési házirendet az összevont felhasználók Azure Active Directory hitelesítéséhez, beleértve az automatikus gyorsítást és a tartományi tippeket.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690506"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763584"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Az alkalmazások Azure Active Directory bejelentkezési viselkedésének konfigurálása egy otthoni tartomány felderítési házirendjének használatával
 
@@ -81,8 +81,8 @@ Az Azure Active Directory által támogatott tartományi útmutatók használat�
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Kezdőlap tartomány-felderítési szabályzata automatikus gyorsításhoz
 Egyes alkalmazások nem biztosítják az általuk kibocsátott hitelesítési kérelem konfigurálásának módját. Ezekben az esetekben nem lehetséges a tartományi útmutatók használata az automatikus gyorsítás szabályozására. Az automatikus gyorsítás a szabályzaton keresztül konfigurálható az azonos viselkedés érdekében.  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>Közvetlen hitelesítés engedélyezése örökölt alkalmazásokhoz
-Az ajánlott eljárás az, ha az alkalmazások HRE-kódtárakat és interaktív bejelentkezést használnak a felhasználók hitelesítéséhez. A kódtárak gondoskodnak az összevont felhasználói folyamatokról.  Előfordulhat, hogy az örökölt alkalmazások nem az összevonás megismerésére vannak írva. Nem végeznek otthoni tartományi felderítést, és nem működnek együtt a megfelelő összevont végponttal a felhasználók hitelesítéséhez. Ha úgy dönt, hogy a-t használja, a HRD házirend segítségével engedélyezheti a felhasználóneveket és jelszavakat hitelesítő adatokat elküldő örökölt alkalmazásokat, hogy közvetlenül a Azure Active Directory használatával hitelesítsék magukat. A jelszó-kivonatolási szinkronizálást engedélyezni kell. 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Az összevont felhasználók közvetlen ROPC-hitelesítésének engedélyezése örökölt alkalmazásokhoz
+Az ajánlott eljárás az, ha az alkalmazások HRE-kódtárakat és interaktív bejelentkezést használnak a felhasználók hitelesítéséhez. A kódtárak gondoskodnak az összevont felhasználói folyamatokról.  Néha örökölt alkalmazások, különösen azok, amelyek ROPC-támogatást használnak, közvetlenül az Azure AD-be küldenek felhasználónevet és jelszót, és nem írták az összevonás megismerésére. Nem végeznek otthoni tartományi felderítést, és nem működnek együtt a megfelelő összevont végponttal a felhasználók hitelesítéséhez. Ha úgy dönt, hogy lehetővé teszi, hogy a HRD szabályzattal engedélyezze a Felhasználónév/jelszó hitelesítő adatait a ROPC használatával, hogy a hitelesítés közvetlenül a Azure Active Directory. A jelszó-kivonatolási szinkronizálást engedélyezni kell. 
 
 > [!IMPORTANT]
 > Csak akkor engedélyezze a közvetlen hitelesítést, ha a jelszó-kivonat szinkronizálása be van kapcsolva, és tudja, hogy a helyszíni identitásszolgáltató által megvalósított szabályzatok nélkül hitelesíti az alkalmazást. Ha kikapcsolja a jelszó-kivonatolási szinkronizálást, vagy kikapcsolja a címtár-szinkronizálást az AD-csatlakozással bármilyen okból, távolítsa el ezt a házirendet, hogy megakadályozza a közvetlen hitelesítés használatát elavult jelszó-kivonattal.
@@ -110,7 +110,7 @@ A következő példa egy HRD házirend-definíciót mutat be:
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```

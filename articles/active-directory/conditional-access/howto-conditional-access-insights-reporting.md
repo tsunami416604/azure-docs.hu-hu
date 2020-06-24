@@ -4,19 +4,19 @@ description: Az Azure AD feltételes hozzáférési információinak és jelent�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2b4864232892f1940de5c8fe46fa23879c92f3
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112771"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253273"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Feltételes hozzáférési ismeretek és jelentéskészítés
 
@@ -132,6 +132,6 @@ A paraméterek kijelölését a munkafüzet tetején is mentheti, ha a **Azure A
 
 A munkafüzetet szerkesztheti és testreszabhatja úgy, hogy **Azure Active Directory**  >  **munkafüzetek**  >  **feltételes hozzáférési információit és jelentéseit**. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések**területen. A lekérdezések szerkesztésének megkezdéséhez kattintson a **Szerkesztés** gombra a munkafüzet tetején.  
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Csak feltételes hozzáférésű jelentés üzemmódja](concept-conditional-access-report-only.md)

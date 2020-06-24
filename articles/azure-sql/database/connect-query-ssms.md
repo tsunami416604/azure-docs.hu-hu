@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267307"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253613"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódás és lekérdezés a SSMS használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ A rövid útmutató elvégzéséhez a következő elemek szükségesek:
   > [!IMPORTANT]
   > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. Felügyelt példány esetén importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World Importálós adatbázis használatára.
 
-Ha csak néhány alkalmi lekérdezést szeretne futtatni a SSMS telepítése nélkül, tekintse meg a gyors útmutató [: az SQL-adatbázisok lekérdezéséhez használja a Azure Portal lekérdezési szerkesztőjét](connect-query-portal.md).
+Ha csak néhány alkalmi lekérdezést szeretne futtatni a SSMS telepítése nélkül, tekintse meg a rövid útmutató [: a Azure Portal lekérdezési szerkesztőjének használata Azure SQL Database-adatbázis lekérdezéséhez](connect-query-portal.md).
 
 ## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
 

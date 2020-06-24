@@ -9,11 +9,11 @@ ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280182"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695827"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-támogatás a Linuxon futó Azure App Service számára
 
@@ -41,7 +41,7 @@ A TCP-bújtatás használatával hálózati kapcsolatot hozhat létre a fejleszt
 
 Első lépésként telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t. Ha szeretné megtekinteni, hogyan működik az Azure CLI telepítése nélkül, nyissa meg [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Nyisson meg egy távoli kapcsolódást az alkalmazáshoz az az [WebApp Remote-Network-kapcsolatkezelő Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) paranccsal. \_ \<Adja meg _ \<az alkalmazáshoz tartozó előfizetés-azonosító>_, _ \<csoport neve>_ és az alkalmazás neve>_.
+Nyisson meg egy távoli kapcsolódást az alkalmazáshoz az az [WebApp Remote-Network-kapcsolatkezelő Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) paranccsal. Adja _\<subscription-id>_ meg _\<group-name>_ és \_ \<app-name> _ az alkalmazáshoz.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
@@ -64,7 +64,7 @@ Nyisson meg egy SSH-munkamenetet az Ön által választott ügyféllel a helyi p
 ssh root@127.0.0.1 -p <port>
 ```
 
-Ha a rendszer kéri, `yes` írja be a következőt: a csatlakozás folytatásához. Ezt követően a rendszer kéri a jelszót. Használja `Docker!`, amely korábban volt látható.
+Ha a rendszer kéri, írja be a következőt: `yes` a csatlakozás folytatásához. Ezt követően a rendszer kéri a jelszót. Használja `Docker!` , amely korábban volt látható.
 
 ```output
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
@@ -87,7 +87,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 Ezzel csatlakozott az összekötőhöz.  
 
-Próbálja meg futtatni a [felső](https://ss64.com/bash/top.html) parancsot. Az alkalmazás folyamatát meg kell tudnia tekinteni a folyamat listában. Az alábbi példában szereplő kimenetben ez a következő: `PID 263`.
+Próbálja meg futtatni a [felső](https://ss64.com/bash/top.html) parancsot. Az alkalmazás folyamatát meg kell tudnia tekinteni a folyamat listában. Az alábbi példában szereplő kimenetben ez a következő: `PID 263` .
 
 ```output
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
@@ -117,7 +117,7 @@ Kérdéseket és problémákat tehet közzé az [Azure fórumán](https://docs.m
 
 További információ a Web App for Containersről:
 
-* [A Node. js-alkalmazások távoli hibakeresésének bemutatása Azure App Service a VS Code-ból](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
+* [Node.js-alkalmazások távoli hibakeresése Azure App Service a VS Code-ból](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
 * [Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban](quickstart-docker-go.md)
 * [A .NET Core használata a Linuxon futó Azure App Service-ben](quickstart-dotnetcore.md)
 * [A Ruby használata a Linuxon futó Azure App Service-ben](quickstart-ruby.md)

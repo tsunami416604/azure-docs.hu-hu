@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7fc0b2822195d952c2a4f9c02bf3758c0e2b809a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf731b09115558fc4280fe322d7e952ccb420c03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260500"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254871"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Adatok másolása Azure SQL Databaseba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -51,8 +51,8 @@ A következő eszközöket is használhatja a folyamat létrehozásához: **Visu
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
 1. Hozzon létre egy **adatelőállítót**. Egy adatelőállító egy vagy több folyamatot is tartalmazhat.
-2. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához. Ha például egy Azure Blob Storage-ból másol egy Azure SQL Database-adatbázisba, két társított szolgáltatást hoz létre, hogy az Azure Storage-fiókját és az Azure SQL Database-t az adatokkal rendelkező gyárhoz kapcsolja. A Azure SQL Databasera jellemző társított szolgáltatás tulajdonságairól a [társított szolgáltatás tulajdonságai](#linked-service-properties) című részben olvashat.
-3. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához. Az utolsó lépésben említett példában létrehoz egy adatkészletet, amely megadja a bemeneti adatokat tartalmazó BLOB-tárolót és mappát. Továbbá létrehoz egy másik adatkészletet az SQL-táblázat megadásához az Azure SQL Database-ben, amely a blob Storage-ból másolt adatokat tárolja. A Azure Data Lake Storera jellemző adatkészlet-tulajdonságokért lásd: [adatkészlet tulajdonságai](#dataset-properties) szakasz.
+2. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához. Ha például egy Azure Blob Storage-ból másolja az adatait Azure SQL Databaseba, két társított szolgáltatást hoz létre az Azure Storage-fiók összekapcsolásához és az adatok Azure SQL Databaseához. A Azure SQL Databasera jellemző társított szolgáltatás tulajdonságairól a [társított szolgáltatás tulajdonságai](#linked-service-properties) című részben olvashat.
+3. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához. Az utolsó lépésben említett példában létrehoz egy adatkészletet, amely megadja a bemeneti adatokat tartalmazó BLOB-tárolót és mappát. Emellett létrehozhat egy másik adatkészletet is, amely meghatározza a blob Storage-ból másolt adatokat tároló Azure SQL Databaseban található SQL-táblázatot. A Azure Data Lake Storera jellemző adatkészlet-tulajdonságokért lásd: [adatkészlet tulajdonságai](#dataset-properties) szakasz.
 4. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges. A korábban említett példában a BlobSource forrásként és SqlSinkként használja a másolási tevékenységhez. Hasonlóképpen, ha Azure SQL Databaseról az Azure Blob Storagera másol, a másolási tevékenységben a SqlSource és a BlobSink is használja. A Azure SQL Databasera jellemző másolási tevékenység tulajdonságairól a [másolási tevékenység tulajdonságai](#copy-activity-properties) című szakaszban olvashat. Az adattár forrásként vagy fogadóként való használatával kapcsolatos részletekért kattintson az adattár előző szakaszában található hivatkozásra.
 
 A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia. Az adatok egy Azure SQL Databaseba való másolásához használt Data Factory JSON-definíciókkal rendelkező minták esetében tekintse meg a jelen cikk [JSON-példák](#json-examples-for-copying-data-to-and-from-sql-database) című szakaszát.
@@ -60,18 +60,18 @@ A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory 
 A következő szakaszokban részletesen ismertetjük azokat a JSON-tulajdonságokat, amelyek a Azure SQL Database specifikus entitások definiálásához használhatók Data Factory:
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
-Az Azure SQL társított szolgáltatás egy Azure SQL Database-adatbázist kapcsol össze az adatai-gyárával. A következő táblázat az Azure SQL társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
+Az Azure SQL társított szolgáltatás összekapcsolja Azure SQL Database adatait a saját adatgyárával. A következő táblázat az Azure SQL társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDatabase** |Igen |
-| connectionString |A connectionString tulajdonsághoz Azure SQL Database-példányhoz való kapcsolódáshoz szükséges adatok megadása. Csak az alapszintű hitelesítés támogatott. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDatabase** |Yes |
+| connectionString |A connectionString tulajdonsághoz Azure SQL Database-példányhoz való kapcsolódáshoz szükséges adatok megadása. Csak az alapszintű hitelesítés támogatott. |Yes |
 
 > [!IMPORTANT]
 > Konfigurálja [Azure SQL Database tűzfalat](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) úgy, hogy az adatbázis-kiszolgáló [engedélyezze az Azure-szolgáltatások számára a kiszolgáló elérését](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Emellett, ha az Azure-on kívülről Azure SQL Databasera másol adatokat, beleértve a helyszíni adatforrások és a (z) adatokat a Factory Gateway használatával, konfigurálja a megfelelő IP-címtartományt azon számítógép számára, amely adatokat küld a Azure SQL Databasenak.
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Az Azure SQL Database-ben bemeneti vagy kimeneti adatokat jelölő adatkészlet megadásához az adatkészlet Type (típus) tulajdonságát állítsa a következőre: **tulajdonsága azuresqltable**. Állítsa az adatkészlet **linkedServiceName** tulajdonságát az Azure SQL társított szolgáltatás nevére.
+A Azure SQL Database bemeneti vagy kimeneti adatokat jelölő adatkészlet megadásához az adatkészlet Type (típus) tulajdonságát állítsa a következőre: **tulajdonsága azuresqltable**. Állítsa az adatkészlet **linkedServiceName** tulajdonságát az Azure SQL társított szolgáltatás nevére.
 
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
@@ -79,7 +79,7 @@ A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| tableName |Azon Azure SQL Database-példányban található tábla vagy nézet neve, amelyre a társított szolgáltatás hivatkozik. |Igen |
+| tableName |Azon Azure SQL Database-példányban található tábla vagy nézet neve, amelyre a társított szolgáltatás hivatkozik. |Yes |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
@@ -89,20 +89,20 @@ A tevékenységek definiálásához elérhető & tulajdonságok teljes listájá
 
 Míg a tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
 
-Ha egy Azure SQL Database-adatbázisból helyez át adatátvitelt, a másolási tevékenységben adja meg a forrás típusát a **SqlSource**értékre. Hasonlóképpen, ha az adatáthelyezést egy Azure SQL Database-adatbázisba helyezi át, a másolási tevékenységben állítsa be a fogadó típusát a **SqlSink**értékre. Ez a szakasz a SqlSource és a SqlSink által támogatott tulajdonságok listáját tartalmazza.
+Ha Azure SQL Databaseból helyez át adatáthelyezést, a másolási tevékenységben állítsa be a **SqlSource**. Hasonlóképpen, ha áthelyezi az adatátvitelt a Azure SQL Databaseba, a másolási tevékenységben a **SqlSink**értékre állíthatja a fogadó típusát. Ez a szakasz a SqlSource és a SqlSink által támogatott tulajdonságok listáját tartalmazza.
 
 ### <a name="sqlsource"></a>SqlSource
 A másolási tevékenységben, ha a forrás **SqlSource**típusú, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Példa: `select * from MyTable`. |Nem |
-| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |Nem |
-| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
+| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Példa: `select * from MyTable`. |No |
+| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |No |
+| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |No |
 
 Ha a **sqlReaderQuery** meg van adva a SqlSource, a másolási tevékenység lefuttatja ezt a lekérdezést a Azure SQL Database forráson az adatkéréshez. Azt is megteheti, hogy megadhat egy tárolt eljárást a **sqlReaderStoredProcedureName** és a **storedProcedureParameters** megadásával (ha a tárolt eljárás paraméterekkel rendelkezik).
 
-Ha nem ad meg sqlReaderQuery vagy sqlReaderStoredProcedureName, akkor a JSON-adatkészlet szerkezet szakaszában definiált oszlopok a Azure SQL Databaseon futtatandó lekérdezés (`select column1, column2 from mytable`) létrehozásához használatosak. Ha az adatkészlet definíciója nem rendelkezik a struktúrával, az összes oszlop ki lesz választva a táblából.
+Ha nem ad meg sqlReaderQuery vagy sqlReaderStoredProcedureName, akkor a JSON-adatkészlet szerkezet szakaszában definiált oszlopok a Azure SQL Databaseon futtatandó lekérdezés () létrehozásához használatosak `select column1, column2 from mytable` . Ha az adatkészlet definíciója nem rendelkezik a struktúrával, az összes oszlop ki lesz választva a táblából.
 
 > [!NOTE]
 > A **sqlReaderStoredProcedureName**használatakor továbbra is meg kell adnia a **Táblanév** tulajdonság értékét az adatkészlet JSON-fájljában. Erre a táblára vonatkozóan nem történt érvényesítés.
@@ -146,13 +146,13 @@ A **SqlSink** a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |Nem |
+| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |No |
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
-| sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. További információ: [ismételhető másolás](#repeatable-copy). |Egy lekérdezési utasítás. |Nem |
-| sliceIdentifierColumnName |Adja meg a másolási tevékenység oszlopának nevét, amely automatikusan generált szelet-azonosítóval kitöltésre kerül, amely egy adott szelet adatának az újrafuttatáskor való kitakarítására szolgál. További információ: [ismételhető másolás](#repeatable-copy). |A bináris adattípusú oszlop neve (32). |Nem |
-| sqlWriterStoredProcedureName |A tárolt eljárás neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába, például a saját üzleti logikával történő upsert vagy átalakításra. <br/><br/>Figyelje meg, hogy ez a tárolt eljárás batch-ként lesz **meghívva**. Ha olyan műveletet szeretne végrehajtani, amely csak egyszer fut, és nem rendelkezik a forrásadatok végrehajtásával, például törlés/csonkítása, használja `sqlWriterCleanupScript` a tulajdonságot. |A tárolt eljárás neve. |Nem |
-| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
-| sqlWriterTableType |Adja meg a tárolt eljárásban használni kívánt táblanév nevét. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a meglévő adattal másolható adatmásolási műveleteket. |Egy tábla típusának neve. |Nem |
+| sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. További információ: [ismételhető másolás](#repeatable-copy). |Egy lekérdezési utasítás. |No |
+| sliceIdentifierColumnName |Adja meg a másolási tevékenység oszlopának nevét, amely automatikusan generált szelet-azonosítóval kitöltésre kerül, amely egy adott szelet adatának az újrafuttatáskor való kitakarítására szolgál. További információ: [ismételhető másolás](#repeatable-copy). |A bináris adattípusú oszlop neve (32). |No |
+| sqlWriterStoredProcedureName |A tárolt eljárás neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába, például a saját üzleti logikával történő upsert vagy átalakításra. <br/><br/>Figyelje meg, hogy ez a tárolt eljárás batch-ként lesz **meghívva**. Ha olyan műveletet szeretne végrehajtani, amely csak egyszer fut, és nem rendelkezik a forrásadatok végrehajtásával, például törlés/csonkítása, használja a `sqlWriterCleanupScript` tulajdonságot. |A tárolt eljárás neve. |No |
+| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |No |
+| sqlWriterTableType |Adja meg a tárolt eljárásban használni kívánt táblanév nevét. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a meglévő adattal másolható adatmásolási műveleteket. |Egy tábla típusának neve. |No |
 
 #### <a name="sqlsink-example"></a>SqlSink példa
 
@@ -183,7 +183,7 @@ Ugyanez a következő Data Factory entitásokat határozza meg:
 4. [Azure-Blob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
 5. [SqlSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A minta idősorozat-adatok (óránként, naponta stb.) másolását végzi egy Azure SQL Database-adatbázisban lévő táblából minden órában. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
+A minta idősoros adatsorozat-adatok (óránként, naponta stb.) másolásával egy Azure SQL Database lévő táblából óránként egyszer másolja a blobokat. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
 **Azure SQL Database társított szolgáltatás:**
 
@@ -362,7 +362,7 @@ A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kime
 ```
 A példában a **sqlReaderQuery** meg van adva a SqlSource. A másolási tevékenység ezt a lekérdezést a Azure SQL Database forráson futtatja az adatlekérdezéshez. Azt is megteheti, hogy megadhat egy tárolt eljárást a **sqlReaderStoredProcedureName** és a **storedProcedureParameters** megadásával (ha a tárolt eljárás paraméterekkel rendelkezik).
 
-Ha nem ad meg sqlReaderQuery vagy sqlReaderStoredProcedureName, a JSON-adatkészlet szerkezet szakaszában definiált oszlopok a Azure SQL Databaseon futtatandó lekérdezés létrehozásához használatosak. Például: `select column1, column2 from mytable`. Ha az adatkészlet definíciója nem rendelkezik a struktúrával, az összes oszlop ki lesz választva a táblából.
+Ha nem ad meg sqlReaderQuery vagy sqlReaderStoredProcedureName, a JSON-adatkészlet szerkezet szakaszában definiált oszlopok a Azure SQL Databaseon futtatandó lekérdezés létrehozásához használatosak. Példa: `select column1, column2 from mytable`. Ha az adatkészlet definíciója nem rendelkezik a struktúrával, az összes oszlop ki lesz választva a táblából.
 
 A SqlSource és a BlobSink által támogatott tulajdonságok listájának megtekintéséhez tekintse meg az [SQL-forrás](#sqlsource) szakaszt és a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) .
 
@@ -375,7 +375,7 @@ A minta a következő Data Factory entitásokat határozza meg:
 4. [Tulajdonsága azuresqltable](#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
 5. [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) és [SqlSink](#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A minta idősoros adatok (óránként, naponta stb.) másolása az Azure blobból az Azure SQL Database egyik táblájába óránként történik. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
+A minta idősorozat-adatok (óránként, naponta stb.) másolása az Azure blobból egy, Azure SQL Database óránkénti táblába. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
 **Azure SQL társított szolgáltatás:**
 
@@ -654,7 +654,7 @@ Az adatok Azure SQL Databaseba való áthelyezésekor a rendszer a következő l
 | ntext |Karakterlánc, char [] |
 | numerikus |Decimal |
 | nvarchar |Karakterlánc, char [] |
-| valós szám |Egyirányú |
+| valós szám |Egyszeres |
 | ROWVERSION |Bájt [] |
 | idő adattípusúra |DateTime |
 | smallint |Int16 |

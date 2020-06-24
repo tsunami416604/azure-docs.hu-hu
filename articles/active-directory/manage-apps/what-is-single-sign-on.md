@@ -2,22 +2,22 @@
 title: Egyszeri bejelentkezés az alkalmazásokba – Azure Active Directory | Microsoft Docs
 description: Megtudhatja, hogyan választhat egyszeri bejelentkezési módszert az alkalmazások Azure Active Directory (Azure AD-ben) való konfigurálásakor. Egyszeri bejelentkezés használata, hogy a felhasználóknak ne kelljen megemlékezniük minden alkalmazás jelszavait, és egyszerűbbé kell tenni a fiókok felügyeletének kezelését.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f46bcf412403d8f911e484e12a9d1f421b1666f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2796df048e00d4b9d0bb8e51e1e1875e553862c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366070"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762964"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba
 
@@ -73,7 +73,7 @@ Az SAML-alapú egyszeri bejelentkezés a következő protokollok bármelyikét h
 
 Az SAML-alapú egyszeri bejelentkezéshez használható SaaS-alkalmazás konfigurálásával kapcsolatban lásd: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md). Emellett számos szoftveres (SaaS) alkalmazás rendelkezik egy [alkalmazásspecifikus oktatóanyaggal](../saas-apps/tutorial-list.md) , amely VÉGIGVEZETI az SAML-alapú egyszeri bejelentkezés konfigurációjának lépésein.
 
-A WS-Federation alkalmazás konfigurálásához kövesse ugyanezt az útmutatást az alkalmazás SAML-alapú egyszeri bejelentkezéshez való konfigurálásához: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md). Az alkalmazás Azure AD használatára való konfigurálásának lépéséhez le kell cserélnie a WS-Federation végpont Azure AD bejelentkezési URL-címét `https://login.microsoftonline.com/<tenant-ID>/wsfed`.
+A WS-Federation alkalmazás konfigurálásához kövesse ugyanezt az útmutatást az alkalmazás SAML-alapú egyszeri bejelentkezéshez való konfigurálásához: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-single-sign-on-non-gallery-applications.md). Az alkalmazás Azure AD használatára való konfigurálásának lépéséhez le kell cserélnie a WS-Federation végpont Azure AD bejelentkezési URL-címét `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
 
 A helyszíni alkalmazások SAML-alapú egyszeri bejelentkezéshez való konfigurálásáról lásd: [SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy](application-proxy-configure-single-sign-on-on-premises-apps.md)használatával.
 

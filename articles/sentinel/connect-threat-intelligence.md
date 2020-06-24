@@ -5,19 +5,20 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: security-center
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529100"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769873"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Adatok összekötése a veszélyforrások felderítését biztosító szolgáltatóktól
 
@@ -70,7 +71,7 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
 
 2. [API-engedélyek konfigurálása](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) a regisztrált alkalmazáshoz: adja hozzá a Microsoft Graph alkalmazás engedély **ThreatIndicators. ReadWrite. OwnedBy** a regisztrált alkalmazáshoz.
 
-3. Kérje meg a Azure Active Directory bérlői rendszergazdát, hogy rendszergazdai jóváhagyást adjon a szervezete regisztrált alkalmazásának. A Azure Portal: **Azure Active Directory** > **Alkalmazásregisztrációk** > **\<_alkalmazás nevének_>****View API Permissions** > ** \<> _tenant name_** megtekintésére szolgáló API-engedélyek a bérlő nevének rendszergazdai jóváhagyását adják meg. > 
+3. Kérje meg a Azure Active Directory bérlői rendszergazdát, hogy rendszergazdai jóváhagyást adjon a szervezete regisztrált alkalmazásának. A Azure Portal: **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **\<_app name_>**  >  **View API-engedélyekhez**  >  **rendszergazdai jóváhagyást \<_tenant name_> kell adni **.
 
 4. Konfigurálja a tipp termékét vagy alkalmazását, amely közvetlen integrációt használ Microsoft Graph Security tiIndicators API-val a mutatók Azure Sentinelbe való küldéséhez az alábbiak megadásával:
     
@@ -80,11 +81,11 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
     
     c. A művelethez válassza a riasztást.
 
-5. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők** elemre, majd válassza ki a **Threat Intelligence Platforms (előzetes verzió)** összekötőt.
+5. A Azure Portal navigáljon az **Azure Sentinel**-  >  **adatösszekötők** elemre, majd válassza ki a **Threat Intelligence Platforms (előzetes verzió)** összekötőt.
 
 6. Válassza az **összekötő megnyitása lapot**, majd a **Csatlakozás**lehetőséget.
 
-7. Az Azure sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-logs** > **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator**csomópontot.
+7. Az Azure sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-logs**  >  **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator**csomópontot.
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Az Azure Sentinel és a TAXII-kiszolgálók összekötése
 
@@ -96,7 +97,7 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
 
 ## <a name="instructions"></a>Utasítások
 
-1. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők** elemre, majd válassza ki a **Threat Intelligence-TAXII (előzetes verzió)** összekötőt.
+1. A Azure Portal navigáljon az **Azure Sentinel**  >  -**adatösszekötők** elemre, majd válassza ki a **Threat Intelligence-TAXII (előzetes verzió)** összekötőt.
 
 2. Válassza az **összekötő megnyitása lapot**.
 
@@ -106,7 +107,7 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
 
 5. Ha további TAXII 2,0-kiszolgálóval rendelkezik: ismételje meg a 3. és a 4. lépést.
 
-6. Az Azure sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-logs** > **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator**csomópontot.
+6. Az Azure sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-logs**  >  **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator**csomópontot.
 
 ## <a name="next-steps"></a>További lépések
 

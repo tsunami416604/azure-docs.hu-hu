@@ -3,8 +3,7 @@ title: 'Gyors útmutató: események küldése a C-Azure Event Hubs használatá
 description: 'Gyors útmutató: Ez a cikk bemutatja, hogyan hozhat létre olyan C-alkalmazást, amely eseményeket küld az Azure Event Hubsnak.'
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -13,18 +12,19 @@ ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 6bb4e6d754c091b57399a6154d491e93becad57e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720672"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299313"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Gyors útmutató: események küldése az Azure Event Hubs C használatával
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ez az oktatóanyag azt ismerteti, hogyan küldhet eseményeket egy Event hubhoz a C-ben lévő Console-alkalmazás használatával. 

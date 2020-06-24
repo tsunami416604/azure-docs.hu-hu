@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 4033437db5c14abcd0376fbfeca22cca915908d2
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677185"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298956"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
 
@@ -74,7 +74,12 @@ Támogatott disztribúciók és verziók:
 
 ### <a name="sample-installation"></a>Minta telepítése
 
-A futtatása előtt adja meg az első szakaszban szereplő változók helyes értékeit:
+> [!NOTE]
+> Bármelyik minta esetében a Futtatás előtt adja meg az első szakaszban szereplő változók helyes értékeit. 
+
+A példákban letöltött minta-konfiguráció szabványos adatokat gyűjt, és a táblázatos tárolóba küldi őket. A minta konfigurációjának és tartalmának URL-címe változhat. A legtöbb esetben le kell töltenie a portál beállítások JSON-fájljának másolatát, és testre kell szabnia az igényeinek megfelelően, majd minden olyan sablonnal vagy automatizálással rendelkezik, amely a konfigurációs fájl saját verzióját használja, és nem tölti le az adott URL-címet.
+
+#### <a name="azure-cli-sample"></a>Azure CLI-minta
 
 ```azurecli
 # Set your Azure VM diagnostic variables correctly below
@@ -103,8 +108,6 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 # Finallly tell Azure to install and enable the extension
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-
-A példákban letöltött minta-konfiguráció szabványos adatokat gyűjt, és a táblázatos tárolóba küldi őket. A minta konfigurációjának és tartalmának URL-címe változhat. A legtöbb esetben le kell töltenie a portál beállítások JSON-fájljának másolatát, és testre kell szabnia az igényeinek megfelelően, majd minden olyan sablonnal vagy automatizálással rendelkezik, amely a konfigurációs fájl saját verzióját használja, és nem tölti le az adott URL-címet.
 
 #### <a name="powershell-sample"></a>PowerShell-minta
 
@@ -439,6 +442,9 @@ Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.
 
 A naplófájlok rögzítését vezérli. A LAD rögzíti az új szövegsorok írását a fájlba, és a táblázat soraiba és/vagy bármely megadott mosogatóba (JsonBlob vagy EventHub) írja azokat.
 
+> [!NOTE]
+> a fileLogs a LAD nevű alösszetevő rögzíti `omsagent` . A fileLogs összegyűjtéséhez győződjön meg arról, hogy a `omsagent` felhasználó rendelkezik olvasási engedéllyel a megadott fájlokhoz, valamint a fájl elérési útjának összes könyvtárára vonatkozó engedélyek végrehajtásához. Ezt úgy is megtekintheti, hogy a `sudo su omsagent -c 'cat /path/to/file'` Lad telepítése után fut.
+
 ```json
 "fileLogs": [
     {
@@ -564,23 +570,36 @@ BytesPerSecond | Olvasott vagy írt bájtok másodpercenkénti száma
 
 Az összes lemez összesített értékei a beállítás alapján szerezhetők be `"condition": "IsAggregate=True"` . Egy adott eszközre vonatkozó információk (például/dev/sdf1) lekéréséhez állítsa be a következőt: `"condition": "Name=\\"/dev/sdf1\\""` .
 
-## <a name="installing-and-configuring-lad-30-via-cli"></a>LAD 3.0 telepítése és konfigurálása CLI-n keresztül
+## <a name="installing-and-configuring-lad-30"></a>A LAD 3,0 telepítése és konfigurálása
 
-Ha azt feltételezi, hogy a védett beállítások szerepelnek a PrivateConfig.jsfájlban, és a nyilvános konfigurációs adatok PublicConfig.jsbe van kapcsolva, futtassa ezt a parancsot:
+### <a name="azure-cli"></a>Azure CLI
+
+Ha azt feltételezi, hogy a védett beállítások szerepelnek a ProtectedSettings.jsfájlban, és a nyilvános konfigurációs adatok PublicSettings.jsbe van kapcsolva, futtassa ezt a parancsot:
 
 ```azurecli
-az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
 A parancs feltételezi, hogy az Azure CLI Azure Resource Management (ARM) üzemmódját használja. A klasszikus üzembe helyezési modell (ASM) virtuális gépei konfigurálásához váltson az "ASM" módra ( `azure config mode asm` ), és hagyja ki az erőforráscsoport nevét a parancsban. További információkért lásd a [többplatformos CLI dokumentációját](https://docs.microsoft.com/azure/xplat-cli-connect).
+
+### <a name="powershell"></a>PowerShell
+
+Feltételezve, hogy a védett beállítások szerepelnek a `$protectedSettings` változóban, és a nyilvános konfigurációs adatok szerepelnek a `$publicSettings` változóban, futtassa a következő parancsot:
+
+```powershell
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+```
 
 ## <a name="an-example-lad-30-configuration"></a>Példa LAD 3,0-konfigurációra
 
 Az előző definíciók alapján Íme egy példa a 3,0-es, néhány magyarázattal ellátott bővítmény-konfigurációra. Ha alkalmazni szeretné a mintát az esetére, használja a saját Storage-fiók nevét, a fiók SAS-tokenjét és a EventHubs SAS-tokeneket.
 
-### <a name="privateconfigjson"></a>PrivateConfig.jsbekapcsolva
+> [!NOTE]
+> Attól függően, hogy az Azure CLI vagy a PowerShell használatával telepíti a LAD-t, a nyilvános és védett beállítások biztosításának módszere eltérő lesz. Ha az Azure CLI-t használja, mentse a következő beállításokat ProtectedSettings.jsbe és PublicSettings.jsbe a parancsot a fenti minta paranccsal való használatra. Ha a PowerShellt használja, mentse a beállításokat a és a parancs `$protectedSettings` `$publicSettings` futtatásával `$protectedSettings = '{ ... }'` .
 
-Ezek a magánhálózati beállítások a következőket konfigurálják:
+### <a name="protected-settings"></a>Védett beállítások
+
+A következő védett beállítások konfigurálása:
 
 * egy Storage-fiók
 * egy megfelelő fiók SAS-jogkivonata
@@ -628,7 +647,7 @@ Ezek a magánhálózati beállítások a következőket konfigurálják:
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig.jsbekapcsolva
+### <a name="public-settings"></a>Nyilvános beállítások
 
 Ezek a nyilvános beállítások a következőt okozzák:
 
@@ -746,7 +765,7 @@ A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azu
 
 A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhez tekintse meg a vonatkozó [EventHubs dokumentációját](../../event-hubs/event-hubs-what-is-event-hubs.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Metrikai riasztások létrehozása [Azure monitorban](../../monitoring-and-diagnostics/insights-alerts-portal.md) a begyűjtött mérőszámokhoz.
 * [Figyelési diagramok](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) létrehozása a mérőszámokhoz.

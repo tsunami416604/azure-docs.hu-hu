@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre Recovery Servic
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: f1f1a66bd6e0fbd28be59b0211a1ac17f030022e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 410ef023898cc57847b8e2f7a5153d50731e2d4c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298618"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764400"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -92,6 +92,7 @@ Ehhez a folyamathoz díjszabási szempontok vonatkoznak, mivel azok tárolási s
 >- A CRR bármely GRS-tárolóhoz engedélyezhető a tár szintjén (alapértelmezés szerint kikapcsolva).
 >- A választás után akár 48 órát is igénybe vehet, hogy a biztonsági mentési elemek elérhetők legyenek a másodlagos régiókban.
 >- Jelenleg a CRR csak a Backup Management Type-ARM Azure-beli virtuális gépen támogatott (a klasszikus Azure-beli virtuális gép nem lesz támogatott).  Ha a további felügyeleti típusok támogatják a CRR-t, a **rendszer automatikusan** regisztrálja őket.
+>- A régiók közötti visszaállítás jelenleg nem állítható vissza GRS vagy LRS, ha az első alkalommal kezdeményezték a védelmet. 
 
 ### <a name="configure-cross-region-restore"></a>Régiók közötti visszaállítás konfigurálása
 

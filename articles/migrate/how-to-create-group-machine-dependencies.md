@@ -2,25 +2,31 @@
 title: Ügynök-alapú függőségi elemzés beállítása Azure Migrate Server Assessment-ben
 description: Ez a cikk azt ismerteti, hogyan állítható be az ügynök-alapú függőségek elemzése Azure Migrate Server Assessment-ben.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: 47fd7e7c864e82400288bb67da952a18b648849e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 6/09/2020
+ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996880"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770577"
 ---
 # <a name="set-up-dependency-visualization"></a>Függőségi vizualizáció beállítása
 
-Ez a cikk azt ismerteti, hogyan állítható be az ügynök-alapú függőségi elemzés a Azure Migrate: Server Assessment. A függőségek [elemzése](concepts-dependency-visualization.md) segít az Azure-ba felmérni és migrálni kívánt gépek függőségeinek azonosításában és megismerésében.
+Ez a cikk az ügynök nélküli függőségek elemzésének beállítását ismerteti Azure Migrateban: kiszolgáló értékelése. A függőségek [elemzése](concepts-dependency-visualization.md) segít az Azure-ba felmérni és migrálni kívánt gépek függőségeinek azonosításában és megismerésében.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- [További információ az](concepts-dependency-visualization.md#agent-based-analysis) ügynök-alapú függőségek elemzéséről.
-- Tekintse át a [VMWare virtuális gépek](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements), [fizikai kiszolgálók](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)és [Hyper-V virtuális gépek](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)ügynök-alapú függőségi vizualizációjának beállításához szükséges előfeltételeket és támogatási követelményeket.
-- Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
-- Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
-- Győződjön meg arról, hogy beállított egy [Azure Migrate berendezést](migrate-appliance.md) a helyszíni gépek felderítéséhez. Ismerje meg, hogyan állíthat be egy készüléket [VMware](how-to-set-up-appliance-vmware.md)-, [Hyper-V](how-to-set-up-appliance-hyper-v.md)-vagy [fizikai kiszolgálókhoz](how-to-set-up-appliance-physical.md). A készülék felfedi a helyszíni gépeket, és metaadatokat, teljesítményadatokat Azure Migrate küld: a kiszolgáló értékelését.
+- Tekintse át az ügynök-alapú függőségek elemzésének támogatási és telepítési követelményeit a következőhöz:
+    - [VMware virtuális gépek](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
+    - [Fizikai kiszolgálók](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
+    - [Hyper-V virtuális gépek](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+- Győződjön meg róla, hogy:
+    - Azure Migrate projekttel rendelkezik. Ha nem, [hozzon létre](how-to-add-tool-first-time.md) egyet most.
+    - Győződjön meg arról, hogy [hozzáadta](how-to-assess.md) a Azure Migrate: Server Assessment eszközt a projekthez.
+    - [Azure Migrate berendezés](migrate-appliance.md) beállítása a helyszíni gépek felderítéséhez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. Készülék beállítása a következőhöz:
+        - [VMware](how-to-set-up-appliance-vmware.md) Virtuális gépek.
+        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) Virtuális gépek.
+        - [Fizikai kiszolgálók](how-to-set-up-appliance-physical.md).
 - A függőségi vizualizáció használatához egy [log Analytics munkaterületet](../azure-monitor/platform/manage-access.md) társít egy Azure Migrate projekthez:
     - Munkaterületet csak a Azure Migrate berendezés beállítása után csatolhat, és felkeresheti a Azure Migrate projektben található gépeket.
     - Győződjön meg arról, hogy rendelkezik az előfizetésben a Azure Migrate projektet tartalmazó munkaterülettel.
@@ -32,7 +38,7 @@ Ez a cikk azt ismerteti, hogyan állítható be az ügynök-alapú függőségi 
 
 ## <a name="associate-a-workspace"></a>Munkaterület hozzárendelése
 
-1. Miután felderítte a gépeket az értékeléshez, a **kiszolgálók** > **Azure Migrate: kiszolgáló értékelése**területen kattintson az **Áttekintés**elemre.  
+1. Miután felderítte a gépeket az értékeléshez, a **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése**területen kattintson az **Áttekintés**elemre.  
 2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **Essentials**elemre.
 3. A **OMS munkaterületen**kattintson a **Konfigurálás szükséges**elemre.
 
@@ -72,7 +78,7 @@ Az ügynök telepítése Windows rendszerű gépre:
 1. Kattintson duplán a letöltött ügynökre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. **A licencfeltételek oldalon kattintson** **az Elfogadom gombra a** licenc elfogadásához.
 3. A **célmappában**tartsa meg vagy módosítsa az alapértelmezett telepítési mappát > a **Tovább gombra**.
-4. Az **ügynök telepítési beállításai**területen válassza az **Azure log Analytics** > **tovább**lehetőséget.
+4. Az **ügynök telepítési beállításai**területen válassza az **Azure log Analytics**  >  **tovább**lehetőséget.
 5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább** gombra.
 
 Az ügynököt a parancssorból vagy egy automatizált módszerrel, például Configuration Manager vagy [Intigua](https://www.intigua.com/intigua-for-azure-migration)is telepítheti.

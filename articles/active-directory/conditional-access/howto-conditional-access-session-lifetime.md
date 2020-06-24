@@ -4,19 +4,19 @@ description: Az Azure AD-alapú hitelesítési munkamenet konfigurációjának t
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b551fcace5289b9ffd9fb131b5ba1120b3fdd2
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 72cc876e2fd695e40b3b9cf7d9a52d34dea2387c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483687"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253256"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel
 
@@ -134,7 +134,7 @@ A What-if eszköz használatával szimulálhatja a felhasználót a célalkalmaz
 
 Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlott eljárás az, hogy tesztelje azt az éles üzemben való működés előtt. Ideális esetben egy tesztelési bérlő használatával ellenőrizheti, hogy az új szabályzat a kívánt módon működik-e. További információkért tekintse meg a [Azure Active Directory a feltételes hozzáférésre vonatkozó ajánlott eljárásokat](best-practices.md)ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című cikket.
 * Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

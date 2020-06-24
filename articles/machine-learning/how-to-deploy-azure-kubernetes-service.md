@@ -1,5 +1,5 @@
 ---
-title: Modellek üzembe helyezése az Azure Kubernetes Service-ben
+title: ML modellek üzembe helyezése a Kubernetes szolgáltatásban
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning modelleket webszolgáltatásként az Azure Kubernetes Service használatával.
 services: machine-learning
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 01/16/2020
-ms.openlocfilehash: 69bb5409b6463140bba77f0e78567e6ae98003d6
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/23/2020
+ms.openlocfilehash: bc99b18c4ab4f98945a1b1f85a6eb87772af852f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433924"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298939"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -137,6 +137,7 @@ A következő cikkekből megtudhatja, hogyan hozhat létre egy AK-fürtöt az Az
 
 * [AKS-fürt létrehozása (parancssori felület)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [AK-fürt létrehozása (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [AK-fürt létrehozása (ARM-sablon az Azure Gyorsindítás sablonjain)](https://github.com/cloudmelon/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 Az alábbi példák bemutatják, hogyan csatolhat egy meglévő AK-fürtöt a munkaterülethez:
 
@@ -366,12 +367,14 @@ print(token)
 > A jogkivonat időpontját követően új jogkivonatot kell kérnie `refresh_by` .
 >
 > A Microsoft nyomatékosan javasolja, hogy a Azure Machine Learning munkaterületet ugyanabban a régióban hozza létre, mint az Azure Kubernetes Service-fürtöt. A webszolgáltatások tokenekkel történő hitelesítéséhez a webszolgáltatás meghívja a Azure Machine Learning munkaterület létrehozásához használt régiót. Ha a munkaterület régiója nem érhető el, akkor sem fogja tudni lehívni a webszolgáltatáshoz tartozó jogkivonatot, ha a fürt a munkaterülettől eltérő régióban található. Ez gyakorlatilag a jogkivonat-alapú hitelesítés nem érhető el, amíg a munkaterület régiója újra elérhetővé nem válik. Emellett minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
+>
+> Jogkivonat lekéréséhez az Azure Machine Learning SDK-t vagy az az [ml Service Get-Access-Token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) parancsot kell használnia.
 
 ## <a name="update-the-web-service"></a>Webszolgáltatás frissítése
 
 [!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Biztonságos kísérletezés és következtetés egy virtuális hálózaton](how-to-enable-virtual-network.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)

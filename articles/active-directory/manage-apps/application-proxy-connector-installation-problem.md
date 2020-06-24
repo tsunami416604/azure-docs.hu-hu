@@ -3,25 +3,25 @@ title: Probléma az alkalmazásproxy-ügynök összekötő telepítésekor | Mic
 description: Az alkalmazásproxy-ügynök összekötő telepítésekor esetlegesen felmerülő problémák elhárítása
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f73d46b612c1dcf94554e10b4820c3f2442248f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82172406"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764689"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor
 
@@ -48,7 +48,7 @@ Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az al�
 
 2.  Ha a portok bármelyike nem sikeres, ellenőrizze, hogy a tűzfal vagy a háttér-proxy hozzáfér-e a szükséges tartományokhoz és portokhoz. lásd: a helyszíni [környezet előkészítése](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-3.  Nyisson meg egy böngészőt (külön lapon), és lépjen a következő weblapra: `https://login.microsoftonline.com`, és ellenőrizze, hogy be tud-e jelentkezni az adott oldalra.
+3.  Nyisson meg egy böngészőt (külön lapon), és lépjen a következő weblapra:, és ellenőrizze, hogy be `https://login.microsoftonline.com` tud-e jelentkezni az adott oldalra.
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-certificate"></a>Ellenőrizze, hogy a számítógép-és háttér-összetevők támogatják-e az alkalmazásproxy megbízhatósági tanúsítványát
 
@@ -67,7 +67,7 @@ Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az al�
 
 **Az ügyféltanúsítvány ellenőrzése:**
 
-Ellenőrizze az aktuális ügyféltanúsítvány ujjlenyomatát. A tanúsítványtároló a%ProgramData%\microsoft\Microsoft HRE alkalmazásproxy Connector\Config\TrustSettings.xml található.
+Ellenőrizze az aktuális ügyféltanúsítvány ujjlenyomatát. A tanúsítványtároló a%ProgramData%\microsoft\Microsoft HRE-alkalmazásproxyban található Connector\Config\TrustSettings.xml
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -93,8 +93,8 @@ A tanúsítvány ellenőrzéséhez kövesse az alábbi lépéseket:
 
 A tanúsítvány ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1. [PsTools. zip](https://docs.microsoft.com/sysinternals/downloads/pstools) letöltése
-2. Bontsa ki a [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) a csomagból, és futtassa a **PsExec-i-u "NT AUTHORITY \ hálózati szolgáltatás" cmd. exe** parancsot egy rendszergazda jogú parancssorból.
+1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) letöltése
+2. Bontsa ki a [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) a csomagból, és futtassa a **PsExec-i-u "NT AUTHORITY \ szolgáltatás" cmd.exe** egy rendszergazda jogú parancssorból.
 3. Futtassa a **certmgr. msc fájlt** az újonnan megjelenő parancssorban
 2. A felügyeleti konzolon bontsa ki a személyes tárolót, és kattintson a tanúsítványok elemre.
 3. A **connectorregistrationca.msappproxy.net** által kiállított tanúsítvány megkeresése

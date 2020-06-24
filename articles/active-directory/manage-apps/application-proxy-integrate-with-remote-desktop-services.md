@@ -3,25 +3,25 @@ title: Távoli asztal közzététele Azure AD alkalmazás proxyval | Microsoft D
 description: Az Azure AD Application Proxy-összekötők alapjaira terjed ki.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67108461"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764519"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Távoli asztal közzététele az Azure-ban AD Application Proxy
 
@@ -67,7 +67,7 @@ Miután beállította az RDS-t és az Azure-AD Application Proxy a környezetéh
 ### <a name="publish-the-rd-host-endpoint"></a>A távoli asztali munkamenetgazda végpontjának közzététele
 
 1. [Egy új alkalmazásproxy-alkalmazás közzététele](application-proxy-add-on-premises-application.md) a következő értékekkel:
-   - Belső URL- `https://\<rdhost\>.com/`cím: `\<rdhost\>` , ahol a a távoli asztali webes és RD-átjáró megosztás általános gyökere.
+   - Belső URL-cím: `https://\<rdhost\>.com/` , ahol `\<rdhost\>` a a távoli asztali webes és RD-átjáró megosztás általános gyökere.
    - Külső URL-cím: a program automatikusan kitölti ezt a mezőt az alkalmazás neve alapján, de módosíthatja is. A felhasználók az RDS-hez való hozzáféréskor ezt az URL-címet fogják megnyitni.
    - Előhitelesítési módszer: Azure Active Directory
    - URL-fejlécek fordítása: nem
@@ -75,7 +75,7 @@ Miután beállította az RDS-t és az Azure-AD Application Proxy a környezetéh
 3. Hagyja letiltva az alkalmazás egyszeri bejelentkezési módszerét az **Azure ad egyszeri bejelentkezéssel**. A felhasználóknak egyszer kell hitelesíteniük magukat az Azure AD-ben és egyszer a RD Web-ben, de egyszeri bejelentkezéssel kell RD-átjáró.
 4. Válassza a **Azure Active Directory**lehetőséget, majd az **alkalmazások regisztrációját**. Válassza ki az alkalmazást a listából.
 5. A **kezelés**területen válassza a **branding (védjegyezés**) lehetőséget.
-6. Frissítse a **Kezdőlap URL-címe** mezőt, hogy az a távoli asztali webes végpontra mutasson (például `https://\<rdhost\>.com/RDWeb`).
+6. Frissítse a **Kezdőlap URL-címe** mezőt, hogy az a távoli asztali webes végpontra mutasson (például `https://\<rdhost\>.com/RDWeb` ).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS-forgalom közvetlen átvitele az Application proxyba
 
@@ -91,7 +91,7 @@ Kapcsolódjon az RDS üzembe helyezéséhez rendszergazdaként, és módosítsa 
 
    ![Központi telepítés tulajdonságai képernyő az RDS-ben](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. Futtassa ezt a parancsot az egyes gyűjteményekhez. Cserélje * \<le\> a yourcollectionname* és * \<a proxyfrontendurl\> * a saját adataira. Ez a parancs lehetővé teszi az egyszeri bejelentkezést a távoli asztali webes és RD-átjáró között, és optimalizálja a teljesítményt:
+8. Futtassa ezt a parancsot az egyes gyűjteményekhez. Cserélje le *\<yourcollectionname\>* a és a értékét *\<proxyfrontendurl\>* a saját adataira. Ez a parancs lehetővé teszi az egyszeri bejelentkezést a távoli asztali webes és RD-átjáró között, és optimalizálja a teljesítményt:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

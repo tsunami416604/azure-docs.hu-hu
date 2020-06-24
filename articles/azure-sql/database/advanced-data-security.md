@@ -12,12 +12,12 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 7efcc4a9ec7da2bdd4005c124d5d0e8dd03c4363
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 5a732683b52885173a60563f436b6ab01ea00710
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669698"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254106"
 ---
 # <a name="advanced-data-security"></a>Advanced Data Security
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ A hirdetések beállításainak megtekintéséhez és kezeléséhez navigáljon 
 
 ![Kiszolgáló beállításai](./media/advanced-data-security/server_settings.png)
 
-## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. az SQL-adatbázisok HIRDETÉSEI beállításainak kezelése
+## <a name="4-manage-ads-settings-for-a-database"></a>4. az adatbázisok HIRDETÉSEI beállításainak kezelése
 
 Egy adott adatbázis HIRDETÉSEI beállításainak felülbírálásához jelölje be a **speciális adatbiztonság engedélyezése az adatbázis szintjén** jelölőnégyzetet. Ezt a lehetőséget csak akkor használja, ha külön követelmény, hogy különálló, komplex veszélyforrások elleni védelmi riasztásokat vagy Sebezhetőségi felmérési eredményeket kapjon az egyes adatbázisokra vonatkozóan, a kiszolgálón vagy a felügyelt példányon lévő összes adatbázisra vonatkozóan kapott riasztások és eredmények helyett.
 
@@ -74,7 +74,7 @@ A kiszolgáló vagy a felügyelt példány speciális biztonsági beállításai
 
 ![Adatbázis-beállítások](./media/advanced-data-security/database_settings.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalók az [Adatfelderítési & besorolásáról](data-discovery-and-classification-overview.md)
 - További információ a [sebezhetőségi felmérésről](sql-vulnerability-assessment.md)

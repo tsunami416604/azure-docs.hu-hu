@@ -2,13 +2,13 @@
 title: A tárolók Azure Monitor áttekintése | Microsoft Docs
 description: Ez a cikk azokat a tárolókat ismerteti Azure Monitor, amelyek az AK-tárolók bevezetési megoldását figyelik, valamint a általa nyújtott értéket az AK-fürtök és az Azure-Container Instances állapotának figyelésével.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/21/2020
+ms.openlocfilehash: 709759d1a2b2eb5d8f919ed90e6525c664129f16
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118078"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770815"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>A tárolókhoz készült Azure Monitor áttekintése
 
@@ -19,6 +19,7 @@ A tárolók Azure Monitor a-ben üzembe helyezett tároló-munkaterhelések telj
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
 - [Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) vagy helyszíni környezetben üzemeltetett, önállóan felügyelt Kubernetes-fürtök
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
+- [Azure arc-kompatibilis Kubernetes](../../azure-arc/kubernetes/overview.md) (előzetes verzió) 
 
 A tárolók Azure Monitor támogatja a Linux és a Windows Server 2019 operációs rendszert futtató fürtöket. 
 
@@ -46,9 +47,11 @@ A tárolók Azure Monitor a Azure Monitor különböző funkcióit használó á
     >Az Azure Red Hat OpenShift támogatása jelenleg nyilvános előzetes verzióban érhető el.
     >
 
+* [Az Azure arc-kompatibilis Kubernetes (előzetes verzió) üzembe helyezett](../../azure-arc/kubernetes/overview.md)tároló munkaterhelések figyelése.
+
 A Windows Server-fürtök Linux-fürthöz képest történő figyelésének fő eltérései a következők:
 
-- A Windows nem rendelkezik memóriabeli RSS-metrikával, ezért a Windows-csomópontok és-tárolók esetében nem érhető el. A munkakészlet elérhető. További információ a [Windowsos memória-kezelésről](https://docs.microsoft.com/windows/win32/memory/working-set).
+- A Windows nem rendelkezik memóriabeli RSS-metrikával, ezért a Windows-csomópontok és-tárolók esetében nem érhető el. A [munkakészlet](https://docs.microsoft.com/windows/win32/memory/working-set) metrikája elérhető.
 - A lemezes tárolás kapacitására vonatkozó információk nem érhetők el Windows-csomópontok esetén.
 - A tároló-naplók nem érhetők el Windows-csomópontokon futó tárolók esetén.
 - Az élő adatszolgáltatások (előzetes verzió) funkcióinak támogatása a Windows-tároló naplói kivételével érhető el.

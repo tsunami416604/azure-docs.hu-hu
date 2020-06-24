@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 32dad942cf79933b2c44d3bc2d23581ead1238d6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582955"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732752"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Érzékenységi címkék társítása az Office 365-csoportokhoz Azure Active Directory (előzetes verzió)
 
@@ -104,7 +104,7 @@ A rendszer létrehozza a csoportot, és a kiválasztott címkéhez társított h
 
 ## <a name="using-classic-azure-ad-classifications"></a>Klasszikus Azure AD-besorolások használata
 
-A funkció engedélyezése után a csoportok "klasszikus" besorolása csak a meglévő csoportokat és helyeket fogja megjelenni, és csak akkor használja őket az új csoportokhoz, ha olyan alkalmazásokban hoz létre csoportokat, amelyek nem támogatják az érzékenységi címkéket. A rendszergazda szükség esetén később is átalakíthatja az érzékenységi címkéket. A klasszikus besorolások a régi besorolások, amelyet az Azure AD PowerShell `ClassificationList` beállítás értékeinek meghatározásával állíthat be. Ha ez a szolgáltatás engedélyezve van, a rendszer nem alkalmazza ezeket a besorolásokat a csoportokra.
+A funkció engedélyezése után a csoportok "klasszikus" besorolása csak a meglévő csoportokat és helyeket fogja megjelenni, és csak akkor használja őket az új csoportokhoz, ha olyan alkalmazásokban hoz létre csoportokat, amelyek nem támogatják az érzékenységi címkéket. A rendszergazda szükség esetén később is átalakíthatja az érzékenységi címkéket. A klasszikus besorolások a régi besorolások, amelyet az `ClassificationList` Azure ad PowerShell beállítás értékeinek meghatározásával állíthat be. Ha ez a szolgáltatás engedélyezve van, a rendszer nem alkalmazza ezeket a besorolásokat a csoportokra.
 
 ## <a name="troubleshooting-issues"></a>Problémák hibaelhárítása
 

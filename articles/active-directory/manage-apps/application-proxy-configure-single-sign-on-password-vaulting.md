@@ -3,23 +3,23 @@ title: Egyszeri bejelentkezés az alkalmazásokba az Azure AD Application Proxy 
 description: Kapcsolja be az egyszeri bejelentkezést a közzétett helyszíni alkalmazásokhoz az Azure AD Application Proxy a Azure Portalban.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/12/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77025741"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764774"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Jelszó-tároló egyszeri bejelentkezéshez alkalmazásproxy
 
@@ -32,7 +32,7 @@ Az alkalmazást már közzétette és tesztelte az Application proxyval. Ha nem,
 ## <a name="set-up-password-vaulting-for-your-application"></a>Jelszó-tároló beállítása az alkalmazáshoz
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-1. Válassza **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 1. A listából válassza ki az SSO-val beállítani kívánt alkalmazást.  
 1. **Alkalmazásproxy**kiválasztása 
 1. Módosítsa az **előhitelesítés típusát** **áteresztő** értékre, majd válassza a **Mentés**lehetőséget. Később visszaválthat **Azure Active Directory** típusra. 
@@ -51,7 +51,7 @@ Az alkalmazást már közzétette és tesztelte az Application proxyval. Ha nem,
 1. Válassza **a felhasználók és csoportok**lehetőséget.
 1. Rendeljen felhasználókat az alkalmazáshoz a **felhasználó hozzáadása**lehetőség kiválasztásával. 
 1. Ha előre definiálni szeretné a felhasználó hitelesítő adatait, jelölje be a Felhasználónév előtt található jelölőnégyzetet, majd válassza a **hitelesítő adatok frissítése**lehetőséget.
-1. Válassza ki **Azure Active Directory** > **Alkalmazásregisztrációk** > **minden alkalmazás**lehetőséget.
+1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **minden alkalmazás**lehetőséget.
 1. A listából válassza ki azt az alkalmazást, amelyet a jelszó egyszeri bejelentkezésével konfigurált.
 1. Válassza a **branding**elemet. 
 1. Frissítse a **Kezdőlap URL-címét** a **Bejelentkezés URL-címére** a jelszó-SSO lapon, majd válassza a **Mentés**lehetőséget.  

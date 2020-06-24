@@ -3,24 +3,24 @@ title: Problémák a nem katalógusbeli alkalmazások jelszavas BEJELENTKEZÉSé
 description: Az Azure AD-alkalmazás-katalógusban nem szereplő egyéni alkalmazások jelszavas egyszeri bejelentkezés (SSO) beállításakor előforduló gyakori problémák.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274132"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763448"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problémák a nem katalógusbeli alkalmazások jelszavas egyszeri bejelentkezésének konfigurálásakor
 
@@ -96,7 +96,7 @@ Ha a jelszó-alapú egyszeri bejelentkezést szeretné beállítani egy alkalmaz
 
 9. Adja meg a **bejelentkezési URL-címet**, amely a felhasználók felhasználónevének és jelszavának megadására szolgáló lap. Győződjön *meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-címen a lapon*.
 
-10. Válassza **a * &lt;AppName&gt; * jelszavának egyszeri bejelentkezési beállításainak konfigurálása**lehetőséget.
+10. Válassza **a * &lt; AppName &gt; * jelszavának egyszeri bejelentkezési beállításainak konfigurálása**lehetőséget.
 
 11. Jelölje be **a bejelentkezési mezők manuális észlelése**jelölőnégyzetet.
 
@@ -140,7 +140,7 @@ Ha ezeket a problémákat tapasztalja, tegye a következőket:
 
 - Próbálkozzon újra a manuális rögzítési folyamattal. Győződjön meg arról, hogy a piros jelölők a megfelelő mezőkön vannak.
 
-- Ha a manuális rögzítési folyamat úgy tűnik, hogy nem válaszol, vagy a bejelentkezési oldal nem válaszol, próbálkozzon újra a manuális rögzítési folyamattal. Ezúttal azonban a folyamat befejezése után nyomja le az F12 billentyűt a böngésző fejlesztői konzoljának megnyitásához. Válassza a **konzol** fület. írja be az **ablakot. location = "*&lt;az alkalmazás&gt;konfigurálásakor megadott bejelentkezési URL-címet***, majd nyomja le az ENTER billentyűt. Ez kényszeríti az átirányítást, amely befejezi a rögzítési folyamatot, és a rögzített mezőket tárolja.
+- Ha a manuális rögzítési folyamat úgy tűnik, hogy nem válaszol, vagy a bejelentkezési oldal nem válaszol, próbálkozzon újra a manuális rögzítési folyamattal. Ezúttal azonban a folyamat befejezése után nyomja le az F12 billentyűt a böngésző fejlesztői konzoljának megnyitásához. Válassza a **konzol** fület. írja be az **ablakot. location = "* &lt; az alkalmazás &gt; konfigurálásakor megadott bejelentkezési URL-címet***, majd nyomja le az ENTER billentyűt. Ez kényszeríti az átirányítást, amely befejezi a rögzítési folyamatot, és a rögzített mezőket tárolja.
 
 ### <a name="contact-support"></a>Kapcsolatfelvétel a támogatási szolgáltatással
 
@@ -219,7 +219,7 @@ Az alábbi információk ismertetik, hogy az egyes értesítési elemek mit jele
 
 - **UPN**: az a felhasználó, aki futtatta a műveletet.
 
-    Példa: *tperkins\@f128.info*
+    Példa: *tperkins \@ f128.info*
 
 - **Bérlő azonosítója**: annak a bérlőnek az egyedi azonosítója, amely a műveletet futtató felhasználó tagja.
 
@@ -245,7 +245,7 @@ Az alábbi információk ismertetik, hogy az egyes értesítési elemek mit jele
 
 - **Részletek**: a művelet eredményének részletes leírása.
 
-    Példa: a *belső URL<https://bing.com/>-cím érvénytelen, mert már használatban van.*
+    Példa: a *belső URL-cím <https://bing.com/> érvénytelen, mert már használatban van.*
 
 - **Másolási hiba**: lehetővé teszi, hogy a másolási **hiba** szövegmező jobb oldalán válassza ki a **Másolás ikont** az értesítési adatok másolásához, hogy segítsen a támogatásban.
 

@@ -9,36 +9,23 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/11/2020
+ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: be78681ba01cf98f087331a5a9a6c7974f3b1122
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5415237a502116b597c1514f75f35203108237ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560254"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299075"
 ---
-# <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>A gépi tanulási életciklusok biztonságossá tétele privát virtuális hálózatokkal
+# <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan különítheti el a kísérletezési/betanítási feladatokat és a következtetési/pontozási feladatokat Azure Machine Learning egy Azure-Virtual Network (vnet) belül. Emellett néhány *speciális biztonsági beállításról*is tájékozódhat, amelyek nem szükségesek az alapszintű és a kísérleti használati esetekben.
-
-> [!WARNING]
-> Ha a mögöttes tárterület virtuális hálózaton van, a felhasználók nem használhatják a Azure Machine Learning Studio webes felületét, beleértve a következőket:
-> - drag-n-drop Designer
-> - Automatikus gépi tanulás felhasználói felülete
-> - Az Adatfeliratok felhasználói felülete
-> - Adathalmazok felhasználói felülete
-> - Notebooks
-> 
-> Ha megpróbál, a következőhöz hasonló hibaüzenet jelenik meg:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
-
-## <a name="what-is-a-vnet"></a>Mi az a VNET?
+Ebből a cikkből megtudhatja, hogyan védheti meg a gépi tanulási életciklusait Azure Machine Learning képzések és a feladatok Azure-Virtual Network (vnet) belüli elkülönítésével. A Azure Machine Learning más Azure-szolgáltatásokra támaszkodik a számítási erőforrások, más néven [számítási célok](concept-compute-target.md), a modellek betanítása és üzembe helyezése érdekében. A célok létrehozhatók egy virtuális hálózaton belül. Használhatja például Azure Machine Learning számítást a modell betanításához, majd a modell üzembe helyezéséhez az Azure Kubernetes szolgáltatásban (ak). 
 
 A **virtuális hálózat** biztonsági határként működik, és az Azure-erőforrásokat a nyilvános internetről különíti el. Egy Azure-beli virtuális hálózatot is csatlakoztathat a helyszíni hálózathoz. A hálózatok összekapcsolásával biztonságosan betaníthatja a modelleket, és elérheti az üzembe helyezett modelleket a következtetésekhez.
 
-A Azure Machine Learning más Azure-szolgáltatásokra támaszkodik a számítási erőforrások, más néven [számítási célok](concept-compute-target.md), a modellek betanítása és üzembe helyezése érdekében. A célok létrehozhatók egy virtuális hálózaton belül. Használhatja például Azure Machine Learning számítást a modell betanításához, majd a modell üzembe helyezéséhez az Azure Kubernetes szolgáltatásban (ak). 
-
+Ha a **mögöttes tárterület virtuális hálózatban található, a felhasználók nem használhatják Azure Machine learning Studio webes**felületét, beleértve a drag-n-drop designert vagy az automatikus gépi tanulás, az adatfeliratok és az adatkészletek, valamint az integrált JEGYZETFÜZETEK felhasználói felületét.  Ha megpróbál, a következőhöz hasonló hibaüzenet jelenik meg:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -77,7 +64,7 @@ Az [Azure privát hivatkozását is engedélyezheti](how-to-configure-private-li
 
 <a id="amlcompute"></a>
 
-## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Számítási fürtök & példányok
+## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Számítási fürtök & példányok 
 
 Ha [felügyelt Azure Machine learning **számítási célt** ](concept-compute-target.md#azure-machine-learning-compute-managed) vagy [Azure Machine learning számítási **példányt** ](concept-compute-instance.md) szeretne használni egy virtuális hálózaton, a következő hálózati követelményeknek kell teljesülniük:
 
@@ -102,7 +89,9 @@ Ha [felügyelt Azure Machine learning **számítási célt** ](concept-compute-t
 
 ### <a name="required-ports"></a><a id="mlcports"></a>Szükséges portok
 
-Machine Learning Compute jelenleg a Azure Batch szolgáltatás használatával helyezi üzembe a virtuális gépeket a megadott virtuális hálózaton. Az alhálózatnak engedélyeznie kell a bejövő kommunikációt a Batch szolgáltatástól. Ezzel a kommunikációval ütemezhet a Machine Learning Compute-csomópontokon futó futtatásokat, és kommunikálhat az Azure Storage szolgáltatással és más erőforrásokkal. A Batch szolgáltatás hálózati biztonsági csoportokat (NSG) helyez üzembe a virtuális gépekhez csatolt hálózati adapterek (NIC-EK) szintjén. Ezek az NSG-k automatikusan konfigurálnak bejövő és kimenő szabályokat a következő forgalom engedélyezéséhez:
+Ha a virtuális hálózat védelmét úgy tervezi, hogy korlátozza a nyilvános internetre irányuló hálózati forgalmat, engedélyeznie kell a bejövő kommunikációt a Azure Batch szolgáltatástól.
+
+A Batch szolgáltatás hálózati biztonsági csoportokat (NSG) helyez üzembe a virtuális gépekhez csatolt hálózati adapterek (NIC-EK) szintjén. Ezek az NSG-k automatikusan konfigurálnak bejövő és kimenő szabályokat a következő forgalom engedélyezéséhez:
 
 - Bejövő TCP-forgalom a 29876-es és a 29877-es portokon a __BatchNodeManagement__ __szolgáltatási címkéjén__ .
 
@@ -116,9 +105,10 @@ Machine Learning Compute jelenleg a Azure Batch szolgáltatás használatával h
 
 - A számítási példány bejövő TCP-forgalma a 44224-as porton a __AzureMachineLearning__ __szolgáltatási címkéjén__ .
 
-Körültekintően járjon el a bejövő vagy kimenő szabályok módosításakor és hozzáadásakor a Batch által konfigurált NSG-kben. Ha egy NSG blokkolja a számítási csomópontok felé irányuló kommunikációt, a számítási szolgáltatás nem használhatóra állítja a számítási csomópontok állapotát.
-
-Nem kell megadnia a NSG az alhálózat szintjén, mert a Azure Batch szolgáltatás konfigurálja a saját NSG. Ha azonban a megadott alhálózat társított NSG vagy tűzfallal rendelkezik, a korábban említettek szerint konfigurálja a bejövő és kimenő biztonsági szabályokat.
+> [!IMPORTANT]
+> Körültekintően járjon el a bejövő vagy kimenő szabályok módosításakor és hozzáadásakor a Batch által konfigurált NSG-kben. Ha egy NSG blokkolja a számítási csomópontok felé irányuló kommunikációt, a számítási szolgáltatás nem használhatóra állítja a számítási csomópontok állapotát.
+>
+> Nem kell megadnia a NSG az alhálózat szintjén, mert a Azure Batch szolgáltatás konfigurálja a saját NSG. Ha azonban a Azure Machine Learning számítási feltételt tartalmazó alhálózat NSG vagy tűzfallal rendelkezik, akkor a korábban felsorolt forgalmat is engedélyeznie kell.
 
 A Azure Portal NSG-szabályának konfigurációja az alábbi képeken látható:
 
@@ -436,6 +426,9 @@ A belső terheléselosztó az AK-val való használatáról további informáci�
 
 A Azure Container Instances a modell telepítésekor dinamikusan jönnek létre. Annak engedélyezéséhez, hogy a Azure Machine Learning az ACI-t a virtuális hálózaton belül hozza létre, engedélyeznie kell az alhálózati __delegálást__ az üzemelő példány által használt alhálózathoz.
 
+> [!WARNING]
+> A virtuális hálózaton belüli Azure Container Instances használatához a munkaterülethez tartozó Azure Container Registry (ACR) nem lehet a virtuális hálózatban is.
+
 Ha egy virtuális hálózatban szeretné használni az ACI-t a munkaterületére, kövesse az alábbi lépéseket:
 
 1. Ha engedélyezni szeretné az alhálózati delegálást a virtuális hálózaton, használja az [alhálózati delegálás hozzáadása vagy eltávolítása](../virtual-network/manage-subnet-delegation.md) című cikk információit. A delegálást engedélyezheti virtuális hálózat létrehozásakor, vagy hozzáadhatja egy meglévő hálózathoz.
@@ -639,7 +632,7 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 1. Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Betanítási környezetek beállítása](how-to-set-up-training-targets.md)
 * [Privát végpontok beállítása](how-to-configure-private-link.md)

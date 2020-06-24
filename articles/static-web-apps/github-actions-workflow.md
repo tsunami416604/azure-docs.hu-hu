@@ -2,17 +2,17 @@
 title: GitHub-műveletek munkafolyamatai az Azure statikus Web Apps
 description: Ismerje meg, hogyan állíthat be folyamatos üzembe helyezést az Azure statikus Web Apps a GitHub-Tárházak használatával.
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.author: chnwamba
-ms.openlocfilehash: e2cc1e20c20c17742f2bea56f4e87e8678e4cc03
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.author: cshoe
+ms.openlocfilehash: 4d69bb69081643e0223c23a9029aabb35c8d22ef
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434012"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254718"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -136,9 +136,9 @@ with:
 
 | Tulajdonság | Leírás | Kötelező |
 |---|---|---|
-| `app_location` | Az alkalmazás kódjának helye.<br><br>Adja meg például, `/` hogy az alkalmazás forráskódja a tárház gyökerében található-e, vagy `/app` Ha az alkalmazás kódja egy nevű könyvtárban található `app` . | Igen |
-| `api_location` | A Azure Functions kódjának helye.<br><br>Adja meg például a következőt:, `/api` Ha az alkalmazás kódja egy nevű mappában található `api` . Ha nem észleli Azure Functions alkalmazást a mappában, a Build nem sikerül, a munkafolyamat feltételezi, hogy nem szeretne API-t használni. | Nem |
-| `app_artifact_location` | A Build kimeneti könyvtárának helye a következőhöz képest: `app_location` .<br><br>Ha például az alkalmazás forráskódja a (z) helyen található `/app` , és a Build szkript a mappába helyezi a fájlt, `/app/build` akkor a értékeként állítsa be a `build` `app_artifact_location` értéket. | Nem |
+| `app_location` | Az alkalmazás kódjának helye.<br><br>Adja meg például, `/` hogy az alkalmazás forráskódja a tárház gyökerében található-e, vagy `/app` Ha az alkalmazás kódja egy nevű könyvtárban található `app` . | Yes |
+| `api_location` | A Azure Functions kódjának helye.<br><br>Adja meg például a következőt:, `/api` Ha az alkalmazás kódja egy nevű mappában található `api` . Ha nem észleli Azure Functions alkalmazást a mappában, a Build nem sikerül, a munkafolyamat feltételezi, hogy nem szeretne API-t használni. | No |
+| `app_artifact_location` | A Build kimeneti könyvtárának helye a következőhöz képest: `app_location` .<br><br>Ha például az alkalmazás forráskódja a (z) helyen található `/app` , és a Build szkript a mappába helyezi a fájlt, `/app/build` akkor a értékeként állítsa be a `build` `app_artifact_location` értéket. | No |
 
 A `repo_token` , a `action` és az értékeket az `azure_static_web_apps_api_token` Azure statikus Web Apps állítja be, ezért nem szabad manuálisan módosítani.
 
@@ -155,15 +155,15 @@ Az üzembe helyezés mindig `npm install` minden egyéni parancs előtt meghívj
 
 ## <a name="route-file-location"></a>Útvonal fájljának helye
 
-Testreszabhatja a munkafolyamatot, hogy megkeresse a [Routes. JSON](routes.md) fájlt a tárház bármely mappájából. A következő tulajdonság definiálható a feladatok `with` szakasza alatt.
+Testreszabhatja a munkafolyamatot, hogy megkeresse a [routes.jsa](routes.md) tárház bármely mappájába. A következő tulajdonság definiálható a feladatok `with` szakasza alatt.
 
 | Tulajdonság            | Leírás |
 |---------------------|-------------|
-| `routes_location` | Meghatározza azt a könyvtárat, ahol a _Routes. JSON_ fájl található. Ez a hely a tárház gyökeréhez képest relatív. |
+| `routes_location` | Meghatározza azt a könyvtárat, ahol a _routes.js_ fájl található. Ez a hely a tárház gyökeréhez képest relatív. |
 
- A _Routes. JSON_ fájl helyével kapcsolatos explicit módon különösen fontos, ha az előtér-keretrendszer létrehozási lépése nem helyezi át ezt a fájlt a `app_artifact_location` alapértelmezésbe.
+ Ha az előtér-keretrendszer létrehozási lépése nem helyezi át ezt a fájlt a (z) rendszerre, akkor különösen fontos, hogy a _routes.js_ fájljának helye legyen explicit `app_artifact_location` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Lekéréses kérelmek áttekintése éles üzem előtti környezetekben](review-publish-pull-requests.md)

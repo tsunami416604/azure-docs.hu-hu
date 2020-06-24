@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45a313318bc8005b433536d1b109f6153bc79e01
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d611be27d8d576748019dee46022ca4cb70e966a
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170613"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253443"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A [Azure app Service](overview.md) biztonsági mentési és visszaállítási funkciója lehetővé teszi, hogy egyszerűen hozza létre az alkalmazások biztonsági másolatait manuálisan vagy ütemezés szerint. Beállíthatja, hogy a biztonsági másolatok határozatlan ideig maradjanak. Az alkalmazást visszaállíthatja egy korábbi állapot pillanatképére a meglévő alkalmazás felülírásával vagy egy másik alkalmazásra való visszaállítással.
@@ -74,7 +74,7 @@ A biztonsági mentési funkció a következő adatbázis-megoldásokat támogatj
 
 4. Válassza ki a biztonsági mentési célhelyet a **Storage-fiók** és a **tároló**kiválasztásával. A Storage-fióknak ugyanahhoz az előfizetéshez kell tartoznia, mint annak az alkalmazásnak, amelyről biztonsági másolatot szeretne készíteni. Ha szeretné, létrehozhat egy új Storage-fiókot vagy egy új tárolót a megfelelő lapokon. Ha elkészült, kattintson a **kiválasztás**gombra.
 
-5. A **biztonsági mentési konfiguráció** lapon, amely továbbra is nyitva marad, konfigurálhatja a **biztonsági mentési adatbázist**, majd kiválaszthatja a biztonsági másolatokban szerepeltetni kívánt adatbázisokat (az SQL Database vagy a MySQL-t), majd kattintson **az OK**gombra.
+5. A **biztonsági mentési konfiguráció** lapon, amely továbbra is nyitva marad, konfigurálhatja a **biztonsági mentési adatbázist**, majd kiválaszthatja a biztonsági másolatokban szerepeltetni kívánt adatbázisokat (SQL Database vagy MySQL), majd kattintson **az OK**gombra.
 
     ![Storage-fiók kiválasztása](./media/manage-backup/configure-database.png)
 
@@ -150,7 +150,7 @@ A biztonsági mentések ugyanúgy működnek, mint a szokásos módon, [manuáli
 ## <a name="how-backups-are-stored"></a>A biztonsági másolatok tárolása
 Miután elvégezte az alkalmazás egy vagy több biztonsági mentését, a biztonsági másolatok a Storage-fiók **tárolók** lapján és az alkalmazásban láthatók. A Storage-fiókban minden biztonsági másolat egy olyan `.zip` fájlból áll, amely tartalmazza a biztonsági mentési és a fájl `.xml` tartalmának jegyzékfájlját tartalmazó fájlt `.zip` . Ezeket a fájlokat kibonthatja és böngészheti, ha a biztonsági mentéseket nem az alkalmazás-visszaállítás tényleges végrehajtása nélkül szeretné elérni.
 
-Az alkalmazás adatbázisának biztonsági másolatát a. zip fájl gyökerében tárolja a rendszer. SQL Database esetén ez egy BACPAC-fájl (fájlkiterjesztés nélkül), és importálható. Ha a BACPAC-exportálás alapján szeretne SQL-adatbázist létrehozni, tekintse meg a [BACPAC-fájl importálása új felhasználói adatbázis létrehozásához](https://technet.microsoft.com/library/hh710052.aspx)című témakört.
+Az alkalmazás adatbázisának biztonsági másolatát a. zip fájl gyökerében tárolja a rendszer. SQL Database esetén ez egy BACPAC-fájl (fájlkiterjesztés nélkül), és importálható. Ha Azure SQL Database adatbázist szeretne létrehozni a BACPAC-exportálás alapján, tekintse meg a [BACPAC-fájl importálása egy adatbázis létrehozásához Azure SQL Database-ban](../azure-sql/database/database-import.md)című témakört.
 
 > [!WARNING]
 > A **websitebackups** -tárolóban található fájlok bármelyikének módosítása miatt a biztonsági mentés érvénytelenné válik, ezért nem állítható be.
@@ -164,7 +164,7 @@ A parancsfájlok segítségével automatizálhatja a biztonsági mentési felüg
 Példákat a következő témakörben talál:
 
 - [Azure CLI-minták](samples-cli.md)
-- [Azure PowerShell minták](samples-powershell.md)
+- [Azure PowerShell-minták](samples-powershell.md)
 
 <a name="nextsteps"></a>
 

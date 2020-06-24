@@ -16,11 +16,11 @@ ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75971dbd35a6b29306bc87988423ab662a343705
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266662"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693736"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Felügyelt identitások konfigurálása egy virtuális gépen lévő Azure-erőforrásokhoz a Azure Portal használatával
 
@@ -97,7 +97,7 @@ A Azure Portal jelenleg nem támogatja a felhasználó által hozzárendelt fel�
 Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitás-kezelő](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) egy olyan fiókkal, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
-2. Navigáljon a kívánt virtuális géphez, és kattintson az **identitás**, a ** \+** **felhasználó hozzárendelve** , majd a Hozzáadás elemre.
+2. Navigáljon a kívánt virtuális géphez, és kattintson az **identitás**, a **felhasználó hozzárendelve** , majd a ** \+ Hozzáadás**elemre.
 
    ![Felhasználóhoz rendelt felügyelt identitás hozzáadása a virtuális géphez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
 

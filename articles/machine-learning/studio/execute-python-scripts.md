@@ -5,17 +5,17 @@ description: Ismerje meg, hogyan használhatja a Python-szkriptek végrehajtása
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 1d164a5ab3d1ea9c1b07f11ee074670d3e5124c5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558915"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696303"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python Machine learning-parancsfájlok végrehajtása Azure Machine Learning Studio (klasszikus)
 
@@ -75,13 +75,13 @@ Tegyük fel például, hogy a fájl Hello.py egy egyszerű "Helló, világ" füg
 
 ![Felhasználó által definiált függvény a Hello.py fájlban](./media/execute-python-scripts/figure4.png)
 
-Ezután létrehozunk egy Hello. zip fájlt, amely tartalmazza a Hello.py:
+Ezután létrehozunk egy Hello.py tartalmazó Hello.zip fájlt:
 
 ![Felhasználó által definiált Python-kódot tartalmazó Zip-fájl](./media/execute-python-scripts/figure5.png)
 
-Töltse fel a zip-fájlt adatkészletként a studióba (klasszikus). Ezután hozzon létre és futtasson egy kísérletet, amely a Python-kódot használja a Hello. zip fájlban úgy, hogy a következő képen látható módon csatolja a **Python-szkript végrehajtása** modul harmadik bemeneti portjához.
+Töltse fel a zip-fájlt adatkészletként a studióba (klasszikus). Ezután hozzon létre és futtasson egy olyan kísérletet, amely a Python-kódot használja a Hello.zip fájlban úgy, hogy a következő képen látható módon csatolja a **Python-parancsfájl végrehajtása** modul harmadik bemeneti portjához.
 
-![Példa a Hello. zip-alapú kísérletre egy végrehajtási Python parancsfájl-modulba való bemenetként](./media/execute-python-scripts/figure6a.png)
+![Példa a kísérletre Hello.zip bemenetként egy Python parancsfájl-modul végrehajtásához](./media/execute-python-scripts/figure6a.png)
 
 ![Felhasználó által definiált Python-kód zip-fájlként feltöltve](./media/execute-python-scripts/figure6b.png)
 
@@ -179,7 +179,7 @@ A Python belépési pontja csak egy adatkeret kimenetként való visszaküldés�
 
 Jelenleg az egyéni Python-modulok hozzáadásának egyetlen módja a korábban ismertetett zip-fájl mechanizmuson keresztül. Habár ez a kis modulok esetében is lehetséges, nehézkes a nagyméretű modulok (különösen a natív DLL-eket tartalmazó modulok) vagy nagy számú modul használata esetén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/).
 

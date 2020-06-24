@@ -5,17 +5,17 @@ description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egyéni R-m
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 90e654255691686225ddab3c294dcd62877d4622
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208431"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696405"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Egyéni R-modulok definiálása a Azure Machine Learning Studiohoz (klasszikus)
 
@@ -34,7 +34,7 @@ Egy egyéni R modult egy. zip fájl definiál, amely legalább két fájlt tarta
 További kiegészítő fájlok is szerepelhetnek a. zip fájlban, amely az egyéni modulból elérhető funkciókat biztosít. Ezt a beállítást az **XML-definíciós fájl** hivatkozási szakaszának **argumentumok** részében találja, a gyors üzembe helyezési példát követve.
 
 ## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Gyors üzembe helyezési példa: egyéni R-modul definiálása, becsomagolása és regisztrálása
-Ez a példa azt szemlélteti, hogyan lehet létrehozni egy egyéni R modul által igényelt fájlokat, csomagolja őket egy zip-fájlba, majd regisztrálja a modult a Machine Learning munkaterületen. A zip-csomag és a minta fájljai letölthetők a [CustomAddRows. zip fájl letöltésével](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
+Ez a példa azt szemlélteti, hogyan lehet létrehozni egy egyéni R modul által igényelt fájlokat, csomagolja őket egy zip-fájlba, majd regisztrálja a modult a Machine Learning munkaterületen. A zip-csomag és a minta fájljai letölthetők a [letöltés CustomAddRows.zip fájlból](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
 
 ## <a name="the-source-file"></a>A forrásfájl
 Vegyünk például egy olyan **egyéni sorok hozzáadása** modult, amely módosítja a sorok **hozzáadása** modul standard implementációját, amely két adatkészletből (adatkeretből) való összefűzéshez használatos. A standard **Add sorok** modul hozzáfűzi a második bemeneti adatkészlet sorait az első bemeneti adatkészlet végéhez az `rbind` algoritmus használatával. A testreszabott `CustomAddRows` függvény Hasonlóképpen két adatkészletet fogad el, de egy logikai swap paramétert is elfogad további bemenetként. Ha a swap paraméter **hamis**értékre van beállítva, akkor ugyanazt az adatkészletet adja vissza, mint a normál implementáció. Ha azonban a swap paraméter értéke **true (igaz**), a függvény hozzáfűzi az első bemeneti adatkészlet sorait a második adatkészlet végéhez. Az `CustomAddRows` **egyéni sorok hozzáadása** modul által elérhető r-függvény megvalósítását tartalmazó CustomAddRows. R fájl a következő R-kóddal rendelkezik.
@@ -52,7 +52,7 @@ Vegyünk például egy olyan **egyéni sorok hozzáadása** modult, amely módos
     } 
 
 ### <a name="the-xml-definition-file"></a>Az XML-definíciós fájl
-Ahhoz, hogy `CustomAddRows` ez a függvény elérhető legyen a Azure Machine learning Studio (klasszikus) modulként, létre kell hoznia egy XML-definíciós fájlt, amely meghatározza, hogy az **egyéni sorok hozzáadása** modul hogyan nézzen és viselkedjen. 
+Ahhoz, hogy ez `CustomAddRows` a függvény elérhető legyen a Azure Machine learning Studio (klasszikus) modulként, létre kell hoznia egy XML-definíciós fájlt, amely meghatározza, hogy az **egyéni sorok hozzáadása** modul hogyan nézzen és viselkedjen. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -92,7 +92,7 @@ Fontos megjegyezni, hogy az XML-fájlban szereplő **bemeneti** és **ARG** elem
 Ezzel szemben a **kimeneti** elem **ID** attribútuma nem felel meg az R-szkriptben szereplő változóknak. Ha egynél több kimenetre van szükség, egyszerűen visszaállíthat egy listát az R-függvényből, amelynek *a sorrendje megegyezik* a **kimeneti** elemek XML-fájlban való deklarált eredményeivel.
 
 ### <a name="package-and-register-the-module"></a>A modul becsomagolása és regisztrálása
-Mentse ezt a két fájlt a *CustomAddRows. R* és a *CustomAddRows. XML* fájlként, majd a két fájlt egy *CustomAddRows. zip* fájlba.
+Mentse a két fájlt *CustomAddRows. R* néven, majd *CustomAddRows.xml* , majd a két fájlt egy *CustomAddRows.zip* fájlba.
 
 Ha regisztrálni szeretné őket a Machine Learning munkaterületen, lépjen a munkaterületre Azure Machine Learning Studio (klasszikus) területen, kattintson az **+ új** gombra az alján, és válassza a **modul-> a zip-csomagból** lehetőséget az új **egyéni sorok hozzáadása** modul feltöltéséhez.
 
@@ -176,7 +176,7 @@ Az egyéni R-modulok esetében a zip-portok AZONOSÍTÓjának nem kell egyeznie 
 
 Az egyéni R-modulok kimenetei esetében az **ID** attribútum értékének nem kell megfelelnie az R-parancsfájlban található semmit, de egyedinek kell lennie. Egyetlen modul kimenete esetén az R függvény visszatérési értékének egy *adat. frame típusúnak*kell lennie. A támogatott adattípusok egynél több objektumának exportálásához meg kell adni a megfelelő kimeneti portokat az XML-definíciós fájlban, és az objektumokat listaként kell megadni. A kimeneti objektumok a bal és jobb oldali kimeneti portokhoz vannak rendelve, ami azt jelzi, hogy az objektumok milyen sorrendben kerülnek a visszaadott listára.
 
-Ha például módosítani kívánja az **egyéni sorok hozzáadása** modult, hogy az eredeti két adatkészletet, a *DataSet1 elemet* és a *dataset2*az új csatlakoztatott adatkészlet, az *adatkészlet*(egy rendelésben, balról jobbra, mint: *adatkészlet*, *DataSet1 elemet*, *dataset2*) alapján adja meg, akkor a következő módon határozza meg a kimeneti portokat a CustomAddRows. xml fájlban:
+Ha például módosítani kívánja az **egyéni sorok hozzáadása** modult, hogy az az eredeti két adatkészletet, a *DataSet1 elemet* és a *dataset2*az új csatlakoztatott adatkészlet, az *adatkészlet*(egy rendelésben, balról jobbra, a következőt adja meg: *adatkészlet*, *DataSet1 elemet*, *dataset2*), akkor a következőképpen határozza meg a kimeneti portokat a CustomAddRows.xml fájlban:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -281,16 +281,16 @@ A modul paramétereit az XML-definíciós fájl **argumentumok** szakaszának **
   * **allowedTypes** – a kiválasztható oszlopok típusát szűri. Az érvényes értékek a következők: 
     
     * Numerikus
-    * Logikai
+    * Logikai érték
     * Kategorikus
     * Sztring
     * Címke
     * Szolgáltatás
     * Pontszám
-    * Összes
+    * Mind
   * **alapértelmezett** – az oszlop választójának alapértelmezett értékei a következők: 
     
-    * None
+    * Nincs
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -310,7 +310,7 @@ A modul paramétereit az XML-definíciós fájl **argumentumok** szakaszának **
     * AllLabel
     * AllFeature
     * AllScore
-    * Összes
+    * Mind
 
 **Legördülő menü**: felhasználó által megadott enumerálás (legördülő lista). A legördülő elemek a **Tulajdonságok** elemen belül, egy **Item** elem használatával vannak megadva. Az egyes **elemek** **azonosítójának** egyedinek és érvényes R-változónak kell lennie. Az **elemek** **nevének** értéke a megjelenő szövegként és az R-függvénynek átadott értékként szolgál.
 
@@ -356,7 +356,7 @@ A RemoveDupNARows. R kiegészítő fájlt a CustomAddRows függvényben is elvé
         return (dataset)
     }
 
-Ezután töltsön fel egy "CustomAddRows. R", "CustomAddRows. xml" és "RemoveDupNARows. R" nevű zip-fájlt egyéni R-modulként.
+Ezután töltsön fel egy "CustomAddRows. R", "CustomAddRows.xml" és "RemoveDupNARows. R" nevű zip-fájlt egyéni R-modulként.
 
 ## <a name="execution-environment"></a>Végrehajtási környezet
 Az R-szkript végrehajtási környezete ugyanazt az R-verziót használja, mint az r **szkript végrehajtása** modul, és ugyanazokat az alapértelmezett csomagokat használhatja. Az egyéni modulhoz további R-csomagokat is hozzáadhat, ha azokat az egyéni modul ZIP-csomagjába helyezi. Csak töltse be őket az R-szkriptbe úgy, hogy a saját R-környezetében lenne. 

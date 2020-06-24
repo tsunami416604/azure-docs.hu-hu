@@ -8,17 +8,17 @@ manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: e6eda3b522a5b46cd82ef29ae493891a624d3272
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459287"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764009"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Irányítópultok létrehozása és megosztása az Azure Portalon
 
@@ -58,7 +58,7 @@ Most szerkesszük az irányítópultot az Azure-erőforrásokat jelölő csempé
 
 A csempék irányítópulthoz való hozzáadásához kövesse az alábbi lépéseket:
 
-1. Válassza ![](./media/azure-portal-dashboards/dashboard-edit-icon.png) **az ikon szerkesztése elemet az oldal** fejlécében.
+1. Válassza ![ az ikon ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **szerkesztése** elemet az oldal fejlécében.
 
     ![Képernyőkép az irányítópult kijelölésének szerkesztéséről](./media/azure-portal-dashboards/dashboard-edit.png)
 
@@ -79,7 +79,7 @@ A csempék az irányítópulton való hozzáadására is lehetőség van. Számo
 
 A csempe méretének módosításához vagy az irányítópult csempéi átrendezéséhez kövesse az alábbi lépéseket:
 
-1. Válassza ![](./media/azure-portal-dashboards/dashboard-edit-icon.png) **az ikon szerkesztése elemet az oldal** fejlécében.
+1. Válassza ![ az ikon ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **szerkesztése** elemet az oldal fejlécében.
 
 1. Válassza a helyi menüt a csempe jobb felső sarkában. Ezután válassza ki a csempe méretét. A méretet támogató csempék a jobb alsó sarokban lévő "Handle" kifejezést is tartalmazzák, amely lehetővé teszi, hogy a csempét a kívánt méretre húzza.
 
@@ -106,7 +106,7 @@ Minden olyan csempe, amelyet be kell állítani, egy **csempe** -szalagcímet je
 
 Az irányítópulton lévő adatműveletek automatikusan megjelenítik az elmúlt 24 órában végzett tevékenységet. Ha egy másik időtartományt szeretne megjeleníteni ehhez a csempéhez, kövesse az alábbi lépéseket:
 
-1. Válassza a csempe **adatainak testreszabása** a helyi menüben vagy a ![szűrő ikon](./media/azure-portal-dashboards/dashboard-filter.png) szűrő elemet a csempe bal felső sarkában.
+1. Válassza a csempe **adatainak testreszabása** a helyi menüben vagy a ![ szűrő ikon ](./media/azure-portal-dashboards/dashboard-filter.png) szűrő elemet a csempe bal felső sarkában.
 
     ![Képernyőfelvétel a csempe helyi menüjéről](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -126,7 +126,7 @@ Ha el szeretne távolítani egy csempét az irányítópultról, kövesse az al�
 
 * Válassza a helyi menüt a csempe jobb felső sarkában, majd válassza az **Eltávolítás az irányítópultról**lehetőséget. Vagy
 
-* Válassza ![ki a](./media/azure-portal-dashboards/dashboard-edit-icon.png) szerkesztési ikon **szerkesztése** lehetőséget a testreszabási mód megadásához. Vigye a kurzort a csempe jobb felső sarkában, majd válassza ![a törlés](./media/azure-portal-dashboards/dashboard-delete-icon.png) ikon törlés ikont a csempe az irányítópultról való eltávolításához.
+* Válassza ki ![ a szerkesztési ikon ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **szerkesztése** lehetőséget a testreszabási mód megadásához. Vigye a kurzort a csempe jobb felső sarkában, majd válassza a törlés ![ ikon ](./media/azure-portal-dashboards/dashboard-delete-icon.png) Törlés ikont a csempe az irányítópultról való eltávolításához.
 
    ![Képernyőfelvétel: csempe eltávolítása az irányítópultról](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
@@ -136,7 +136,7 @@ Ha egy meglévő irányítópultot sablonként szeretne használni egy új irán
 
 1. Győződjön meg arról, hogy az irányítópult nézet a másolni kívánt irányítópultot jeleníti meg.
 
-1. Az oldal fejlécében válassza a ![klónozás ikon](./media/azure-portal-dashboards/dashboard-clone.png) **klónozás**elemet.
+1. Az oldal fejlécében válassza a ![ klónozás ikon ](./media/azure-portal-dashboards/dashboard-clone.png) **klónozás**elemet.
 
 1. A rendszer szerkesztési módban nyitja meg az irányítópult nevét, az *irányítópult neve* **klón** néven. A cikk előző lépéseivel átnevezheti és testreszabhatja az irányítópultot.
 
@@ -170,7 +170,7 @@ Egy privát vagy megosztott irányítópult végleges törléséhez kövesse az 
 
 1. Válassza ki a törölni kívánt irányítópultot az irányítópult neve melletti listából.
 
-1. Válassza ![a törlés](./media/azure-portal-dashboards/dashboard-delete-icon.png) ikon **Törlés** lehetőséget az oldal fejlécében.
+1. Válassza ![ a törlés ikon ](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Törlés** lehetőséget az oldal fejlécében.
 
 1. Privát irányítópult esetén a megerősítő párbeszédpanelen kattintson az **OK gombra** az irányítópult eltávolításához. Megosztott irányítópult esetén a megerősítő párbeszédpanelen jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy a közzétett irányítópultot mások nem fogják megtekinteni. Ezután kattintson **az OK gombra**.
 
@@ -179,4 +179,4 @@ Egy privát vagy megosztott irányítópult végleges törléséhez kövesse az 
 ## <a name="next-steps"></a>További lépések
 
 * [Azure-irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával](azure-portal-dashboard-share-access.md)
-* [Azure-irányítópultok programozott létrehozása](azure-portal-dashboards-create-programmatically.md)
+* [Azure-irányítópultok létrehozása programozott módon](azure-portal-dashboards-create-programmatically.md)

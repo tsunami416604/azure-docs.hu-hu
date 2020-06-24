@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 68143c4ac3851604996e1f7ba2adce48934e59c5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b40d9c95cec3e83ff02aa04ca39eb942635ee90d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295388"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202935"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -119,7 +119,7 @@ Keresse meg a `<ClaimsProviders>` szakaszt, és adja hozzá a következő XML-k�
 
 Módosíthatja a `IssuerUri` metaadatok értékét. Ez az a kiállítói URI, amelyet a rendszer az SAML-válaszban ad vissza Azure AD B2Cból. A függő entitás alkalmazását úgy kell konfigurálni, hogy a kiállítói URI-t fogadja az SAML-érvényesítés ellenőrzése során.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Token Issuer</DisplayName>
   <TechnicalProfiles>
@@ -159,13 +159,13 @@ Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia 
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 regisztrációs vagy bejelentkezési szabályzat létrehozása
 
-1. Hozzon létre egy másolatot a *SignUpOrSignin. XML* fájlról a Starter Pack munkakönyvtárában, és mentse azt egy új névvel. Például: *SignUpOrSigninSAML. XML*. Ez a függő entitás házirend-fájlja.
+1. Hozzon létre egy másolatot a *SignUpOrSignin.xml* fájlról a Starter Pack munkakönyvtárában, és mentse azt egy új néven. Például *SignUpOrSigninSAML.xml*. Ez a függő entitás házirend-fájlja.
 
-1. Nyissa meg a *SignUpOrSigninSAML. XML* fájlt az előnyben részesített szerkesztőben.
+1. Nyissa meg a *SignUpOrSigninSAML.xml* fájlt az előnyben részesített szerkesztőben.
 
 1. Módosítsa az `PolicyId` és a `PublicPolicyUri` házirendet úgy, hogy _B2C_1A_signup_signin_saml_ és az `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` alább látható módon.
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -178,7 +178,7 @@ Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia 
 
 1. Közvetlenül az elem előtt adja hozzá a következő XML-kódrészletet `<RelyingParty>` . Ez az XML felülírja a _SignUpOrSignIn_ felhasználói út 7-es számú lépését. Ha az alapszintű csomag egy másik mappájából indult, vagy az előkészítési lépések hozzáadásával vagy eltávolításával testreszabta a felhasználói utat, akkor győződjön meg arról, hogy a `order` token kiállítói lépésnél megadott szám (az elemben) a felhasználó által megadott értékre van-e igazítva (például a másik alapszintű csomag mappáiban `LocalAccounts` , a 6 `SocialAccounts` . és a 9-es értéknél `SocialAndLocalAccountsWithMfa` ).
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="SignUpOrSignIn">
         <OrchestrationSteps>
@@ -190,7 +190,7 @@ Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia 
 
 1. Cserélje le az `<TechnicalProfile>` elem teljes elemét a `<RelyingParty>` következő technikai profil XML-kódjára.
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="SAML2"/>
@@ -210,7 +210,7 @@ Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia 
 
 A végleges függő entitás házirend-fájljának a következőhöz hasonlóan kell kinéznie:
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -297,7 +297,7 @@ Ha az SAML-metaadatok URL-címében és az alkalmazás regisztrációs jegyzékf
 
 Ebben az oktatóanyagban, amely az SAML-teszt alkalmazást használja, a következő értéket használja `samlMetadataUrl` :
 
-```JSON
+```json
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
@@ -309,7 +309,7 @@ Ha a válasz URL-címét és a kijelentkezési URL-címet a szolgáltatói metaa
 
 Ebben az oktatóanyagban, amelyben az SAML-teszt alkalmazást használja, állítsa a `url` tulajdonságot a `replyUrlsWithType` következő JSON-kódrészletben látható értékre.
 
-```JSON
+```json
 "replyUrlsWithType":[
   {
     "url":"https://samltestapp2.azurewebsites.net/SP/AssertionConsumer",
@@ -324,7 +324,7 @@ Ez a választható tulajdonság az `Logout` URL-címet ( `SingleLogoutService` a
 
 Ebben az oktatóanyagban, amely az SAML-teszt alkalmazást használja, hagyja a következőt `logoutUrl` `https://samltestapp2.azurewebsites.net/logout` :
 
-```JSON
+```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 

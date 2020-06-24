@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 6a7c04bec8a794a234f2f0c6fad75dc94c12d291
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668338"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770953"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
 
@@ -53,11 +53,11 @@ A teljesítmény-hangolási tippek jelenleg a következő esetekben nyújtanak j
 
 A másolási tevékenység figyelése nézet alján a végrehajtás részletei és időtartama a másolási tevékenység lépéseit ismerteti (lásd a cikk elején található példát), amely különösen hasznos a másolási teljesítmény hibaelhárításához. A másolási Futtatás szűk keresztmetszete a leghosszabb időtartamú. Tekintse meg az alábbi táblázatot az egyes fázisok definíciójában, és Ismerje meg, hogyan lehet [elhárítani a másolási tevékenységet a Azure IR](#troubleshoot-copy-activity-on-azure-ir) és a [másolási tevékenységet a saját](#troubleshoot-copy-activity-on-self-hosted-ir) üzemeltetésű integrációs modulban az ilyen adatokkal.
 
-| Fázis           | Description                                                  |
+| Fázis           | Leírás                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Várólista           | Az az eltelt idő, amíg a másolási tevékenység ténylegesen nem indul el az integrációs modulban. |
 | Másolás előtti parancsfájl | A másolási tevékenység és a másolási tevékenység közötti eltelt idő a fogadó adattárban lévő előmásolási parancsfájl végrehajtásának befejezése után. Az adatbázis-nyelők előmásolási parancsfájljának konfigurálásakor alkalmazza, például amikor az adatírást Azure SQL Database az új Adatmásolás előtt törli az adatbevitelt. |
-| Átvitel        | Az előző lépés vége és a forrás és a fogadó közötti összes adatok átvitele között eltelt idő. <br/>Figyelje meg, hogy az átvitel alatt álló allépések párhuzamosan futnak, és egyes műveletek nem jelennek meg, pl. a fájlformátum elemzése/létrehozása.<br><br/>- **Első bájtig eltelt idő:** Az előző lépés vége és az az idő, amikor az IR megkapja az első bájtot a forrás adattárból. A nem fájl alapú forrásokra vonatkozik.<br>- **Listaelem forrása:** A forrásfájlok vagy az adatpartíciók számbavételére fordított idő mennyisége. Az utóbbi akkor érvényes, ha az adatbázis-források partíciós beállításait konfigurálja, például az adatok olyan adatbázisokból való másolásakor, mint például az Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Olvasás a forrástól:** Az adatok forrás adattárból való beolvasásához felhasznált idő mennyisége.<br/>- **Írás a** fogadóba: Az adattárolási adattárba való adatírás során eltöltött idő mennyisége. |
+| Átvitel        | Az előző lépés vége és a forrás és a fogadó közötti összes adatok átvitele között eltelt idő. <br/>Figyelje meg, hogy az átvitel alatt álló allépések párhuzamosan futnak, és egyes műveletek nem jelennek meg, pl. a fájlformátum elemzése/létrehozása.<br><br/>- **Első bájtig eltelt idő:** Az előző lépés vége és az az idő, amikor az IR megkapja az első bájtot a forrás adattárból. A nem fájl alapú forrásokra vonatkozik.<br>- **Listaelem forrása:** A forrásfájlok vagy az adatpartíciók számbavételére fordított idő mennyisége. Az utóbbi akkor érvényes, ha az adatbázis-források partíciós beállításait konfigurálja, például az adatok olyan adatbázisokból való másolásakor, mint például az Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Olvasás a forrástól:** Az adatok forrás adattárból való beolvasásához felhasznált idő mennyisége.<br/>- **Írás a** fogadóba: Az adattárolási adattárba való adatírás során eltöltött idő mennyisége. Megjegyzés: egyes összekötők jelenleg nem rendelkeznek ezzel a metrikával, beleértve az Azure Cognitive Search, az Azure Adatkezelő, az Azure Table Storage, az Oracle, a SQL Server, a Common Data Service, a Dynamics 365, a Dynamics CRM, a Salesforce/Salesforce Service Cloud szolgáltatást. |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Azure IR másolási tevékenységének hibáinak megoldása
 
@@ -184,7 +184,7 @@ Az alábbiakban a támogatott adattárak némelyikének teljesítmény-figyelés
 * SQL Server: [a teljesítmény figyelése és finomhangolása](https://msdn.microsoft.com/library/ms189081.aspx).
 * Helyszíni fájlkiszolgáló: a [fájlkiszolgálók teljesítményének finomhangolása](https://msdn.microsoft.com/library/dn567661.aspx).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)

@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6f7ae5bbf49c0d66e43ddac9532b55d02b87fdb2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6c51f91559eec3a4bb1b63b5a42ca0242347602d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195705"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254582"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure SSIS integrációs modul létrehozása Azure Data Factory
 
@@ -55,7 +55,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe egy Azure-SSIS IR a Azure Portal, 
   
     Ha olyan Azure SQL Database-kiszolgálót használ, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy egy privát végponttal rendelkező felügyelt példánnyal rendelkezik a SSISDB üzemeltetéséhez, vagy ha a helyi adatcsatorna konfigurálása nélkül szeretné elérni a helyszíni adatait, csatlakoztatnia kell a Azure-SSIS IRt egy virtuális hálózathoz. További információ: [Azure-SSIS IR csatlakoztatása egy virtuális hálózathoz](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
-  - Győződjön meg arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás engedélyezve van az adatbázis-kiszolgálón. Ez a beállítás nem alkalmazható, ha olyan Azure SQL Database-kiszolgálót használ, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy egy privát végponttal rendelkező felügyelt példánnyal rendelkezik a SSISDB üzemeltetéséhez. További információkért lásd: [Az Azure SQL-adatbázis védelme](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Ha ezt a beállítást a PowerShell használatával szeretné engedélyezni, tekintse meg a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)című témakört.
+  - Győződjön meg arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás engedélyezve van az adatbázis-kiszolgálón. Ez a beállítás nem alkalmazható, ha olyan Azure SQL Database-kiszolgálót használ, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy egy privát végponttal rendelkező felügyelt példánnyal rendelkezik a SSISDB üzemeltetéséhez. További információ: [Secure Azure SQL Database](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Ha ezt a beállítást a PowerShell használatával szeretné engedélyezni, tekintse meg a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)című témakört.
 
   - Adja hozzá az ügyfélszámítógép IP-címét, vagy egy olyan IP-címtartományt, amely tartalmazza az ügyfélszámítógép IP-címét az adatbázis-kiszolgáló tűzfal beállításai között az ügyfél IP-címei listára. További információkért lásd: [Kiszolgáló- és adatbázisszintű Azure SQL Database-tűzfalszabályok](../sql-database/sql-database-firewall-configure.md).
 
@@ -124,7 +124,7 @@ Az **Integration Runtime telepítési** paneljének **általános beállítások
 
    1. A **pénz megtakarítása**lehetőségnél válassza a Azure Hybrid Benefit lehetőséget az integrációs futtatókörnyezethez: **Igen** vagy **nem**. Válassza az **Igen** lehetőséget, ha a frissítési garanciával rendelkező saját SQL Server licencét szeretné kihasználni a hibrid használattal járó költségmegtakarítással.
 
-   1. Kattintson a **Tovább** gombra.
+   1. Válassza a **Tovább** lehetőséget.
 
 #### <a name="deployment-settings-page"></a>Központi telepítési beállítások lap
 

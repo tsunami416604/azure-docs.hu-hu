@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 0ae06a1c3d486b5d5998b4c6d050d86f50910a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598037"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193362"
 ---
 # <a name="what-is-routing-preference-preview"></a>Mi az útválasztási preferencia (előzetes verzió)?
 
@@ -65,8 +65,8 @@ A "Microsoft Global Network" nevű útválasztási beállításokat tartalmazó 
 A tároláshoz az elsődleges végpontok mindig a **Microsoft globális hálózatot**használják. A másodlagos végpontokat az **internettel** engedélyezheti, ha a forgalom útválasztását választja. A támogatott tárolási szolgáltatások a következők:
 
 * Blobok
-* Fájlok
-* Web
+* Files
+* Webes
 * Azure DataLake
 
 ## <a name="pricing"></a>Díjszabás
@@ -88,7 +88,7 @@ A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom 
 
 Az útválasztási beállítások támogatása a következő régiókban érhető el olyan szolgáltatások esetében, mint például a virtuális gép és az internetre irányuló terheléselosztó, amely nyilvános IP-címet használ az internetes forgalomhoz – Észak-Európa, Nyugat-Európa, Dél-Franciaország, Egyesült Királyság déli régiója, Nyugat-Svájc Középnyugat-Németország USA keleti régiója
 
-A Storage-fiók útválasztási preferencia-támogatása a következő Azure-régiókban érhető el: Dél-Franciaország, USA északi középső régiója és az USA nyugati középső régiója.
+A Storage-fiók útválasztási preferencia-támogatása a következő Azure-régiókban érhető el: Dél-Franciaország, USA északi középső régiója, az USA nyugati középső régiója, Kelet-Japán, Nyugat-Japán, Középnyugat-Németország és Nyugat-Svájc.
 ## <a name="limitations"></a>Korlátozások
 
 * Az útválasztási beállítás csak a nyilvános IP-cím szabványos SKU-jának megfelelően kompatibilis. A nyilvános IP-cím alapszintű SKU-jának használata nem támogatott.

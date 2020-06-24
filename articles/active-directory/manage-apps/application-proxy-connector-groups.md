@@ -2,8 +2,8 @@
 title: Alkalmazások közzététele különálló hálózatokon összekötő csoportok használatával – Azure AD
 description: Bemutatja, hogyan hozhatók létre és kezelhetők összekötők csoportjai az Azure AD Application Proxyban.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275566"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764723"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával
 
@@ -41,7 +41,7 @@ Az összekötők csoportosításához meg kell győződnie arról, hogy [több �
 Az alábbi lépések segítségével tetszőleges számú összekötő-csoportot hozhat létre.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza **Azure Active Directory** > **vállalati alkalmazások** > **alkalmazásproxy lehetőséget.**
+1. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **alkalmazásproxy lehetőséget**.
 1. Válassza az **új összekötő csoport**lehetőséget. Megjelenik az új összekötő-csoport panel.
 
    ![Megjeleníti az új összekötő csoport kiválasztására szolgáló képernyőt](./media/application-proxy-connector-groups/new-group.png)
@@ -53,7 +53,7 @@ Az alábbi lépések segítségével tetszőleges számú összekötő-csoportot
 
 Ezeket a lépéseket minden alkalmazásproxy használatával közzétett alkalmazáshoz használhatja. Amikor először tesz közzé egy alkalmazást egy összekötő-csoporthoz, vagy az alábbi lépésekkel módosíthatja a hozzárendelést, amikor csak szeretné.
 
-1. A címtár felügyeleti irányítópultján válassza a **vállalati alkalmazások** > **minden alkalmazás** lehetőséget, > az alkalmazáshoz hozzárendelni kívánt alkalmazást > **alkalmazásproxy**.
+1. A címtár felügyeleti irányítópultján válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget, > az alkalmazáshoz hozzárendelni kívánt alkalmazást > **alkalmazásproxy**.
 1. Az **összekötő csoport** legördülő menüjéből válassza ki azt a csoportot, amelyet használni szeretne az alkalmazáshoz.
 1. A módosítás alkalmazásához válassza a **Mentés** lehetőséget.
 

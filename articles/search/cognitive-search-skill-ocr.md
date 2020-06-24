@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 73cd8083dc6853e36b05854ab2fd7c0226f99bd6
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72791930"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080087"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR – kognitív képesség
 
-Az **optikai karakterfelismerési (OCR)** képesség felismeri a nyomtatott és a kézírásos szövegeket a képfájlokban. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) által biztosított gépi tanulási modelleket használja. Az **OCR** -képesség a következő funkciókra mutat:
+Az **optikai karakterfelismerési (OCR)** képesség felismeri a nyomtatott és a kézírásos szövegeket a képfájlokban. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) által biztosított gépi tanulási modelleket használja. Az **OCR** -képesség a következő funkciókra mutat:
 
-+ Az ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API az angoltól eltérő nyelveken használatos. 
-+ Angol nyelven az új ["READ"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API használatos.
++ Angol, spanyol, német, francia, olasz, portugál és holland nyelven az új ["READ"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API használatos.
++ Az összes többi nyelv esetében az ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API használatos.
 
 Az **OCR** -képesség kigyűjti a szöveget a képfájlokból. A támogatott formátumok a következők:
 
@@ -34,7 +34,7 @@ Az **OCR** -képesség kigyűjti a szöveget a képfájlokból. A támogatott fo
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://azure.microsoft.com/pricing/details/search/)találja.
 
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
@@ -43,9 +43,9 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| detectOrientation | Engedélyezi a képek tájolásának automatikus észlelését. <br/> Érvényes értékek: TRUE/FALSE.|
-|defaultLanguageCode | <p>  A bemeneti szöveg nyelvi kódja A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>nl (holland) <br/>en (angol) <br/>Fi (finn)  <br/>fr (francia) <br/>  Németország (német) <br/>el (görög) <br/> hu (Magyar) <br/> It (olasz) <br/>  ja (Japán) <br/> Ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> PT (portugál) <br/>  ru (orosz) <br/>  es (spanyol) <br/>  SV (svéd) <br/>  TR (török) <br/> ar (arab) <br/> ro (román) <br/> SR-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (szlovák). <br/>  unk (ismeretlen) <br/><br/> Ha a Nyelvkód nincs meghatározva vagy NULL értékű, a nyelv angolra lesz állítva. Ha a nyelv explicit módon "unk" értékre van állítva, a rendszer automatikusan észleli a nyelvet. </p> |
-|lineEnding | Az egyes észlelt sorok között használandó érték. Lehetséges értékek: "space", "CarriageReturn", "soremelés".  Az alapértelmezett érték a "space" |
+| `detectOrientation`   | Engedélyezi a képek tájolásának automatikus észlelését. <br/> Érvényes értékek: TRUE/FALSE.|
+| `defaultLanguageCode` | <p>   A bemeneti szöveg nyelvi kódja A támogatott nyelvek közé tartoznak a következők: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>cs (Cseh) <br/>da (dán) <br/>nl (holland) <br/>en (angol) <br/>Fi (finn)  <br/>fr (francia) <br/>  Németország (német) <br/>el (görög) <br/> hu (Magyar) <br/> It (olasz) <br/>  ja (Japán) <br/> Ko (koreai) <br/> NB (norvég) <br/>   pl (lengyel) <br/> PT (portugál) <br/>  ru (orosz) <br/>  es (spanyol) <br/>  SV (svéd) <br/>  TR (török) <br/> ar (arab) <br/> ro (román) <br/> SR-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  SK (szlovák) <br/>  unk (ismeretlen) <br/><br/> Ha a Nyelvkód nincs meghatározva vagy NULL értékű, a nyelv angolra lesz állítva. Ha a nyelv explicit módon "unk" értékre van állítva, a rendszer automatikusan észleli a nyelvet. </p> |
+| `lineEnding` | Az egyes észlelt sorok között használandó érték. Lehetséges értékek: "space", "CarriageReturn", "soremelés".  Az alapértelmezett érték a "space". |
 
 Korábban egy "textExtractionAlgorithm" nevű paraméter szerepel annak megadásához, hogy a képességnek ki kell-e bontania a "nyomtatott" vagy "kézzel írott" szöveget.  Ez a paraméter elavult, és már nem szükséges, mivel a legújabb olvasási API-algoritmus képes mindkét típusú szöveg kinyerésére egyszerre.  Ha a szaktudás definíciója már tartalmazza ezt a paramétert, akkor nem kell eltávolítania, de a továbbiakban nem lesz használatban, és mindkét típusú szöveg kibontásra kerül, függetlenül attól, hogy mire van beállítva.
 
@@ -53,14 +53,14 @@ Korábban egy "textExtractionAlgorithm" nevű paraméter szerepel annak megadás
 
 | Bemeneti név      | Leírás                                          |
 |---------------|------------------------------------------------------|
-| image         | Összetett típus. A jelenleg csak az Azure Blob indexelő által létrehozott "/Document/normalized_images" mezővel működik, ```imageAction``` ha a értéke nem ```none```a (z) értékre van állítva. További információért tekintse meg a [mintát](#sample-output) .|
+| `image`         | Összetett típus. A jelenleg csak az Azure Blob indexelő által létrehozott "/Document/normalized_images" mezővel működik, ha a értéke nem a (z ```imageAction``` ) értékre van állítva ```none``` . További információért tekintse meg a [mintát](#sample-output) .|
 
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 | Kimenet neve     | Leírás                   |
 |---------------|-------------------------------|
-| szöveg          | A képből kinyert egyszerű szöveg.   |
-| layoutText    | Összetett típus, amely leírja a kinyert szöveget, valamint azt a helyet, ahol a szöveg található.|
+| `text`            | A képből kinyert egyszerű szöveg.   |
+| `layoutText`    | Összetett típus, amely leírja a kinyert szöveget, valamint azt a helyet, ahol a szöveg található.|
 
 
 ## <a name="sample-definition"></a>Minta definíciója
@@ -172,18 +172,22 @@ A következő példában a készségkészlet létrehoz egy *merged_text* mezőt.
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text",
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset"
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset"
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }

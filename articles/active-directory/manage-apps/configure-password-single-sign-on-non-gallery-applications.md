@@ -2,21 +2,21 @@
 title: Az Azure AD-alkalmazások jelszavas egyszeri bejelentkezésének konfigurálása | Microsoft Docs
 description: Jelszavas egyszeri bejelentkezés (SSO) konfigurálása Azure AD vállalati alkalmazásokhoz a Microsoft Identity platformon (Azure AD)
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 043adc309c3480865eb9aa7a7bff8d35e85bc78a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063526"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763499"
 ---
 # <a name="configure-password-single-sign-on"></a>Jelszó egyszeri bejelentkezésének konfigurálása
 
@@ -44,7 +44,7 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a G
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) Felhőbeli alkalmazás-rendszergazdaként vagy az Azure ad-bérlőhöz tartozó alkalmazás-rendszergazdaként.
 
-2. Navigáljon **Azure Active Directory** > **vállalati alkalmazásokhoz**. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
+2. Navigáljon **Azure Active Directory**  >  **vállalati alkalmazásokhoz**. Megjelenik az Azure AD-bérlőben található alkalmazások véletlenszerű mintája. 
 
 3. Az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra.
 
@@ -68,7 +68,7 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a G
 
 Ha az Azure AD elemzési kísérlete sikertelen, manuálisan is konfigurálhatja a bejelentkezést.
 
-1. Az ** \<alkalmazás neve> konfiguráció**területen válassza **az \<alkalmazás nevének konfigurálása> jelszó egyszeri bejelentkezés beállításai** lehetőséget a **Bejelentkezés konfigurálása** lap megjelenítéséhez. 
+1. A ** \<application name> konfiguráció**területen válassza **a \<application name> jelszó egyszeri bejelentkezés beállításainak megadása** lehetőséget a **bejelentkezési** lap megjelenítéséhez. 
 
 2. Jelölje be **a bejelentkezési mezők manuális észlelése**jelölőnégyzetet. A bejelentkezési mezők manuális észlelését ismertető további utasítások jelennek meg.
 
@@ -81,11 +81,11 @@ Ha az Azure AD elemzési kísérlete sikertelen, manuálisan is konfigurálhatja
 5. A megadott URL-címmel rendelkező lapon ugorjon végig a bejelentkezési folyamaton. Adja meg a Felhasználónév és a jelszó mezőket, majd próbáljon meg bejelentkezni. (Nem kell megadnia a megfelelő jelszót.)
 
    A rendszer felszólítja a rögzített bejelentkezési mezők mentésére.
-6. Kattintson az **OK** gombra. A böngésző bővítménye frissíti a rögzítés állapota lapot, és az üzenet **metaadatai frissültek az alkalmazáshoz**. A böngésző lap bezárul.
+6. Válassza az **OK** lehetőséget. A böngésző bővítménye frissíti a rögzítés állapota lapot, és az üzenet **metaadatai frissültek az alkalmazáshoz**. A böngésző lap bezárul.
 
 7. Az Azure AD **configure bejelentkezési** oldalán kattintson az **OK gombra, és sikerült bejelentkezni az alkalmazásba**.
 
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 A bejelentkezési oldal rögzítése után felhasználókat és csoportokat rendelhet hozzá, és a hitelesítő adatokat ugyanúgy állíthatja be, mint a normál jelszó-SSO- [alkalmazások](what-is-single-sign-on.md)esetében.
 

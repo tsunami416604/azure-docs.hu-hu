@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 12845f09ac2eb2342cdb1ab82b703ebd3a67c706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ddd0b2406a7f6feac18a2b80b4dab212f350f541
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229731"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202237"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Az ADFS-t SAML-identitás-szolgáltatóként adja hozzá Azure Active Directory B2C
 
@@ -39,10 +39,10 @@ A tanúsítványt a Azure AD B2C bérlőben kell tárolnia.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-6. A **Beállítások**területen válassza `Upload`a lehetőséget.
-7. Adja meg a szabályzat kulcsának **nevét** . Például: `SamlCert`. A rendszer `B2C_1A_` automatikusan hozzáadja az előtagot a kulcs nevéhez.
+6. A **Beállítások**területen válassza a lehetőséget `Upload` .
+7. Adja meg a szabályzat kulcsának **nevét** . Például: `SamlCert`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 8. Tallózással keresse meg és válassza ki a tanúsítvány. pfx fájlját a titkos kulccsal.
-9. Kattintson a **Létrehozás**gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
@@ -50,7 +50,7 @@ Ha azt szeretné, hogy a felhasználók ADFS-fiókkal jelentkezzenek be, meg kel
 
 Az ADFS-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat bővítmény fájljában. További információ: SAML- [identitás-szolgáltató technikai profiljának megadása](saml-identity-provider-technical-profile.md).
 
-1. Nyissa meg a *TrustFrameworkExtensions. xml fájlt*.
+1. Nyissa meg a *TrustFrameworkExtensions.xml*.
 1. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
 1. Vegyen fel egy új **ClaimsProvider** a következőképpen:
 
@@ -93,11 +93,11 @@ Az ADFS-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja az
     </ClaimsProvider>
     ```
 
-1. Cserélje `your-ADFS-domain` le az értéket az ADFS-tartomány nevére, és cserélje le a **identityProvider** kimeneti jogcím értékét a DNS-re (tetszőleges érték, amely a tartományt jelzi).
+1. Cserélje le az `your-ADFS-domain` értéket az ADFS-tartomány nevére, és cserélje le a **identityProvider** kimeneti jogcím értékét a DNS-re (tetszőleges érték, amely a tartományt jelzi).
 
-1. Keresse meg `<ClaimsProviders>` a szakaszt, és adja hozzá a következő XML-kódrészletet. Ha a házirend már tartalmazza a `SM-Saml-idp` technikai profilt, ugorjon a következő lépésre. További információ: [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md).
+1. Keresse meg a `<ClaimsProviders>` szakaszt, és adja hozzá a következő XML-kódrészletet. Ha a házirend már tartalmazza a `SM-Saml-idp` technikai profilt, ugorjon a következő lépésre. További információ: [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md).
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Session Management</DisplayName>
       <TechnicalProfiles>
@@ -120,7 +120,7 @@ Az ADFS-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja az
 Mostantól úgy konfigurálta a házirendet, hogy a Azure AD B2C tudja, hogyan kell kommunikálni az ADFS-fiókkal. Próbálja megismételni a szabályzat kiterjesztési fájljának feltöltését, hogy megbizonyosodjon róla, hogy eddig nincs probléma.
 
 1. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése**lehetőséget.
-2. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions. XML* fájlt.
+2. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
 3. Kattintson a **Feltöltés** gombra.
 
 > [!NOTE]
@@ -131,9 +131,9 @@ Mostantól úgy konfigurálta a házirendet, hogy a Azure AD B2C tudja, hogyan k
 
 Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regisztrációs vagy bejelentkezési képernyőkön nem érhető el. Az elérhetővé tételéhez hozzon létre egy másolatot egy meglévő sablon felhasználói útvonalról, majd módosítsa úgy, hogy az ADFS-identitás szolgáltatója is legyen.
 
-1. Nyissa meg a *TrustFrameworkBase. XML* fájlt az alapszintű csomagból.
-2. A **UserJourney** elem teljes tartalmának megkeresése és másolása `Id="SignUpOrSignIn"`.
-3. Nyissa meg a *TrustFrameworkExtensions. xml fájlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
+1. Nyissa meg a *TrustFrameworkBase.xml* fájlt az alapszintű csomagból.
+2. A **UserJourney** elem teljes tartalmának megkeresése és másolása `Id="SignUpOrSignIn"` .
+3. Nyissa meg a *TrustFrameworkExtensions.xmlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
 4. Illessze be a **UserJourney** elem teljes tartalmát, amelyet a **UserJourneys** elem gyermekeiként másolt.
 5. Nevezze át a felhasználói út AZONOSÍTÓját. Például: `SignUpSignInADFS`.
 
@@ -141,10 +141,10 @@ Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regis
 
 A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezési képernyőn lévő Identity Provider gombhoz. Ha ad hozzá egy **ClaimsProviderSelection** elemet egy ADFS-fiókhoz, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
 
-1. Keresse meg **OrchestrationStep** az Ön által létrehozott `Order="1"` felhasználói útra kiterjedő OrchestrationStep elemet.
-2. A **ClaimsProviderSelections**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `ContosoExchange`:
+1. Keresse meg **OrchestrationStep** az `Order="1"` Ön által létrehozott felhasználói útra kiterjedő OrchestrationStep elemet.
+2. A **ClaimsProviderSelections**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `ContosoExchange` :
 
-    ```XML
+    ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
@@ -152,16 +152,16 @@ A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezé
 
 Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A művelet, ebben az esetben a Azure AD B2C, hogy egy ADFS-fiókkal kommunikáljon a tokenek fogadásához.
 
-1. Keresse meg **OrchestrationStep** a felhasználói útra `Order="2"` kiterjedő OrchestrationStep.
+1. Keresse meg a felhasználói útra kiterjedő **OrchestrationStep** `Order="2"` .
 2. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId**használt azonosítóhoz:
 
-    ```XML
+    ```xml
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
 
     Frissítse a **TechnicalProfileReferenceId** értékét a korábban létrehozott műszaki profil azonosítójával. Például: `Contoso-SAML2`.
 
-3. Mentse a *TrustFrameworkExtensions. XML* fájlt, és töltse fel újra az ellenőrzéshez.
+3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
 
 
 ## <a name="configure-an-adfs-relying-party-trust"></a>ADFS-függő entitás megbízhatóságának konfigurálása
@@ -198,11 +198,11 @@ Nyisson meg egy böngészőt, és navigáljon az URL-címre. Győződjön meg ar
     | vezetéknév; | family_name |
     | Megadott név | given_name |
     | E-mail-cím | e-mail |
-    | Megjelenítendő név | név |
+    | Megjelenítendő név | name |
 
     Vegye figyelembe, hogy ezek a nevek nem fognak megjelenni a kimenő jogcím típusa legördülő listában. Manuálisan kell beírnia azokat a alkalmazásban. (A legördülő lista valójában szerkeszthető).
 
-12.  A tanúsítvány típusa alapján előfordulhat, hogy a KIVONATOLÓ algoritmust kell beállítania. A függő entitás megbízhatósága (B2C-bemutató) tulajdonságai ablakban válassza a **speciális** fület `SHA-256`, és módosítsa a **biztonságos kivonatoló algoritmust** a verzióra, majd kattintson **az OK**gombra.
+12.  A tanúsítvány típusa alapján előfordulhat, hogy a KIVONATOLÓ algoritmust kell beállítania. A függő entitás megbízhatósága (B2C-bemutató) tulajdonságai ablakban válassza a **speciális** fület, és módosítsa a **biztonságos kivonatoló algoritmust** a verzióra `SHA-256` , majd kattintson **az OK**gombra.
 13. A Kiszolgálókezelőben válassza az **eszközök**, majd az ADFS- **kezelés**lehetőséget.
 14. Válassza ki a létrehozott függő entitás megbízhatóságát, válassza a **frissítés az összevonási metaadatokból**elemet, majd kattintson a **frissítés**elemre.
 
@@ -216,7 +216,7 @@ A Azure AD B2Ckel folytatott kommunikáció egy, a B2C-bérlőben regisztrált a
 
 Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott felhasználói utat.
 
-1. Készítsen másolatot a *SignUpOrSignIn. XML fájlról* a munkakönyvtárában, és nevezze át. Nevezze át például a *SignUpSignInADFS. XML fájlba*.
+1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárában, és nevezze át. Nevezze át például *SignUpSignInADFS.xmlra *.
 2. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInADFS`.
 3. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például:`http://contoso.com/B2C_1A_signup_signin_adfs`
 4. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy az megfeleljen a létrehozott új felhasználói út azonosítójának (SignUpSignInADFS).

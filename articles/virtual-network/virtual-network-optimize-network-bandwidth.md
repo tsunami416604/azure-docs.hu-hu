@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86785ada1d5b55a1eaa7c81243dd0b6c39087e1c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75690882"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695963"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Az Azure-beli virtuális gépek hálózati teljesítményének optimalizálása
 
@@ -29,7 +29,7 @@ Az Azure Virtual Machines (VM) olyan alapértelmezett hálózati beállításoka
 
 Ha a Windows rendszerű virtuális gép támogatja a [gyorsított hálózatkezelést](create-vm-accelerated-networking-powershell.md), a funkció engedélyezése az átviteli sebesség optimális beállítása lenne. A fogadó oldali skálázás (RSS) használatával minden más Windows rendszerű virtuális gép esetében magasabb maximális átviteli sebességet érhet el, mint az RSS nélküli virtuális gépek. Előfordulhat, hogy az RSS alapértelmezés szerint le van tiltva egy Windows rendszerű virtuális gépen. Az alábbi lépéseket követve megállapíthatja, hogy engedélyezve van-e az RSS, és engedélyezheti, ha jelenleg le van tiltva.
 
-1. Ellenőrizze, hogy engedélyezve van-e az RSS egy hálózati `Get-NetAdapterRss` adapterhez a PowerShell-paranccsal. A következő példában szereplő kimenetben `Get-NetAdapterRss`az RSS nincs engedélyezve.
+1. Ellenőrizze, hogy engedélyezve van-e az RSS egy hálózati adapterhez a `Get-NetAdapterRss` PowerShell-paranccsal. A következő példában szereplő kimenetben az `Get-NetAdapterRss` RSS nincs engedélyezve.
 
     ```powershell
     Name                    : Ethernet
@@ -42,7 +42,7 @@ Ha a Windows rendszerű virtuális gép támogatja a [gyorsított hálózatkezel
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
     Az előző parancsnak nincs kimenete. A parancs módosította a hálózati adapter beállításait, ami egy percen keresztül ideiglenes kapcsolat elvesztését okozta. A kapcsolat elvesztésekor megjelenik egy újracsatlakozás párbeszédpanel. A kapcsolódást általában a harmadik kísérlet után állítják vissza.
-3. Ellenőrizze, hogy az RSS engedélyezve van-e a virtuális `Get-NetAdapterRss` gépen a parancs ismételt beírásával. Ha a művelet sikeres, a következő példa kimenetet adja vissza:
+3. Ellenőrizze, hogy az RSS engedélyezve van-e a virtuális gépen a parancs ismételt beírásával `Get-NetAdapterRss` . Ha a művelet sikeres, a következő példa kimenetet adja vissza:
 
     ```powershell
     Name                    : Ethernet

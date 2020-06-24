@@ -5,12 +5,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) a fürt biztonság
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72808f315f28a996a88e6cc56ae232a136726451
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208091"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298021"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtök biztonságához és frissítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -48,7 +48,7 @@ Az Azure AD-integrációval és a RBAC kapcsolatos további információkért l�
 
 **Ajánlott eljárási útmutató** – korlátozza a tárolók által végrehajtható műveletekhez való hozzáférést. Adja meg a legkevesebb engedélyt, és kerülje a gyökér/privilegizált eszkaláció használatának elkerülését.
 
-Ugyanúgy, ahogy a lehető legkevesebb jogosultsággal rendelkező felhasználókat vagy csoportokat kell megadnia, a tárolókat csak a szükséges műveletekre és folyamatokra kell korlátozni. A támadás kockázatának csökkentése érdekében ne konfigurálja az olyan alkalmazásokat és tárolókat, amelyek nem igényelnek kiterjesztésű jogosultságokat vagy rendszergazdai hozzáférést. Adja meg `allowPrivilegeEscalation: false` például a következőt: Pod manifest. Ezek a *Pod biztonsági környezetek* a Kubernetes-be vannak építve, és lehetővé teszik további engedélyek megadását, például a felhasználó vagy csoport számára a futtatását, illetve a Linux-képességek elérhetővé tétele érdekében. További ajánlott eljárások: [biztonságos Pod-hozzáférés az erőforrásokhoz][pod-security-contexts].
+Ugyanúgy, ahogy a lehető legkevesebb jogosultsággal rendelkező felhasználókat vagy csoportokat kell megadnia, a tárolókat csak a szükséges műveletekre és folyamatokra kell korlátozni. A támadás kockázatának csökkentése érdekében ne konfigurálja az olyan alkalmazásokat és tárolókat, amelyek nem igényelnek kiterjesztésű jogosultságokat vagy rendszergazdai hozzáférést. Adja meg például a következőt `allowPrivilegeEscalation: false` : Pod manifest. Ezek a *Pod biztonsági környezetek* a Kubernetes-be vannak építve, és lehetővé teszik további engedélyek megadását, például a felhasználó vagy csoport számára a futtatását, illetve a Linux-képességek elérhetővé tétele érdekében. További ajánlott eljárások: [biztonságos Pod-hozzáférés az erőforrásokhoz][pod-security-contexts].
 
 A tárolók műveleteinek részletesebb szabályozása érdekében a beépített linuxos biztonsági funkciókat, például a *AppArmor* és a *seccompot*is használhatja. Ezek a funkciók a csomópont szintjén vannak meghatározva, majd egy Pod manifest használatával valósíthatók meg. A beépített linuxos biztonsági funkciók csak Linux-csomópontokon és hüvelyeken érhetők el.
 
@@ -82,7 +82,7 @@ sudo apparmor_parser deny-write.profile
 
 Ha a profilt helyesen elemezték, és a AppArmor alkalmazza, a rendszer nem adja vissza a kimenetet. Visszatér a parancssorba.
 
-A helyi gépről hozzon létre egy *AppArmor. YAML* nevű Pod manifest-et, és illessze be az alábbi tartalmat. Ez a jegyzékfájl a hozzáadáshoz szükséges `container.apparmor.security.beta.kubernetes` megjegyzéseket definiálja az előző lépésekben létrehozott *Megtagadás-írási* profilhoz:
+A helyi gépről hozzon létre egy *AppArmor. YAML* nevű Pod manifest-et, és illessze be az alábbi tartalmat. Ez a jegyzékfájl a hozzáadáshoz szükséges megjegyzéseket definiálja `container.apparmor.security.beta.kubernetes` az előző lépésekben létrehozott *Megtagadás-írási* profilhoz:
 
 ```yaml
 apiVersion: v1
@@ -133,7 +133,7 @@ A seccompot működés közbeni megtekintéséhez hozzon létre egy szűrőt, am
 }
 ```
 
-A helyi gépről hozzon létre egy *seccompot. YAML* nevű Pod manifest-et, és illessze be az alábbi tartalmat. Ez a jegyzékfájl az előző lépésben létrehozott `seccomp.security.alpha.kubernetes.io` , a *megakadályozó chmod* szűrőre mutató megjegyzéseket definiálja és hivatkozik rá:
+A helyi gépről hozzon létre egy *seccompot. YAML* nevű Pod manifest-et, és illessze be az alábbi tartalmat. Ez a jegyzékfájl az `seccomp.security.alpha.kubernetes.io` előző lépésben létrehozott, a *megakadályozó chmod* szűrőre mutató megjegyzéseket definiálja és hivatkozik rá:
 
 ```yaml
 apiVersion: v1
@@ -173,7 +173,7 @@ További információ az elérhető szűrőkkel kapcsolatban: [seccompot biztons
 
 ## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>Rendszeres frissítés a Kubernetes legújabb verziójára
 
-**Ajánlott eljárási útmutató** – ha naprakészen szeretne maradni az új funkciók és hibajavítások terén, rendszeresen frissítsen az Kubernetes-verzióra az AK-fürtben.
+**Ajánlott eljárási útmutató** – ha naprakészen tart az új funkciók és hibajavítások terén, rendszeresen frissítse a Kubernetes-verziót az AK-fürtben.
 
 A Kubernetes a hagyományos infrastruktúra-platformoknál gyorsabb ütemben bocsátja ki az új funkciókat. A Kubernetes-frissítések közé tartoznak az új funkciók, valamint a hibák vagy biztonsági javítások. Az új funkciók általában az *alfa* , majd a *Beta* állapotba kerülnek, mielőtt azok *stabilak* lesznek, és általánosan elérhetők és éles használatra ajánlottak. Ennek a kiadási ciklusnak lehetővé kell tennie a Kubernetes frissítését anélkül, hogy rendszeresen megtapasztalja a módosításokat, vagy módosítania kell az üzembe helyezéseket és a sablonokat.
 
@@ -199,11 +199,11 @@ További információ az AK-beli Frissítésekről: az [AK-ban támogatott Kuber
 
 Minden este az AK-ban található Linux-csomópontok a disztribúció frissítési csatornáján keresztül elérhető biztonsági javításokat kapnak. Ez a viselkedés automatikusan konfigurálva van, mivel a csomópontok egy AK-fürtön vannak telepítve. A munkaterhelések megszakadásának és lehetséges hatásának csökkentése érdekében a csomópontok nem indulnak el automatikusan, ha biztonsági javítást vagy kernel-frissítést igényel.
 
-A nyílt forráskódú [kured (KUbernetes reboot Daemon)][kured] Project by Weaveworks figyeli a függőben lévő csomópontok újraindítását. Ha egy Linux-csomópont újraindítást igénylő frissítéseket alkalmaz, a csomópont biztonságos kiosztása és kivonása a fürt más csomópontjain lévő hüvelyek áthelyezésére és bevezetésére történik. A csomópont újraindítása után visszakerül a fürtbe, és a Kubernetes folytatja az ütemezési hüvelyek futtatását. A fennakadások csökkentése érdekében a segítségével `kured`egyszerre csak egy csomópontot lehet újraindítani.
+A nyílt forráskódú [kured (KUbernetes reboot Daemon)][kured] Project by Weaveworks figyeli a függőben lévő csomópontok újraindítását. Ha egy Linux-csomópont újraindítást igénylő frissítéseket alkalmaz, a csomópont biztonságos kiosztása és kivonása a fürt más csomópontjain lévő hüvelyek áthelyezésére és bevezetésére történik. A csomópont újraindítása után visszakerül a fürtbe, és a Kubernetes folytatja az ütemezési hüvelyek futtatását. A fennakadások csökkentése érdekében a segítségével egyszerre csak egy csomópontot lehet újraindítani `kured` .
 
 ![Az AK-csomópont újraindítási folyamata a kured használatával](media/operator-best-practices-cluster-security/node-reboot-process.png)
 
-Ha az újraindítások során finomabb gabona-szabályozásra van szükség `kured` , a a Prometheus-nal integrálható, hogy megakadályozza az újraindítást, ha vannak más karbantartási események vagy fürtökkel kapcsolatos problémák. Ez az integráció a csomópontok újraindításával csökkentheti a további bonyodalmakat, amikor aktívan elhárít más problémákat.
+Ha az újraindítások során finomabb gabona-szabályozásra van szükség, `kured` a a Prometheus-nal integrálható, hogy megakadályozza az újraindítást, ha vannak más karbantartási események vagy fürtökkel kapcsolatos problémák. Ez az integráció a csomópontok újraindításával csökkentheti a további bonyodalmakat, amikor aktívan elhárít más problémákat.
 
 A csomópont-újraindítások kezelésével kapcsolatos további információkért lásd: [biztonsági és kernel-frissítések alkalmazása a csomópontokra az AK-ban][aks-kured].
 

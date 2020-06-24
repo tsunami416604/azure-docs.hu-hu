@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: a55aebf13b341d1a722ddcb9525c4539b2f000e6
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/18/2020
+ms.openlocfilehash: 3643092cf867fb49a24d5c1961d1a10834d5d3a3
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656768"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298854"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
@@ -44,25 +44,31 @@ Létrehozhat egy ISE-t is a [minta Azure Resource Manager](https://github.com/Az
   > [!IMPORTANT]
   > A Logic apps, a beépített triggerek, a beépített műveletek és az ISE-ben futó összekötők a fogyasztáson alapuló díjszabási csomagtól eltérő díjszabási csomagot használnak. A ISEs díjszabásának és számlázásának megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#fixed-pricing). A díjszabással kapcsolatban lásd: [Logic apps díjszabása](../logic-apps/logic-apps-pricing.md).
 
-* Egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ha nem rendelkezik virtuális hálózattal, Ismerje meg, hogyan [hozhat létre Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md).
+* Egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). A virtuális hálózatnak négy olyan *üres* alhálózattal kell rendelkeznie, amely nem delegál semmilyen szolgáltatásnak, hogy erőforrásokat hozzon létre és helyezzen üzembe az ISE-ben. Az egyes alhálózatok egy másik Logic Apps-összetevőt támogatnak, amelyet az ISE használ. Az alhálózatokat előre is létrehozhatja, vagy megvárhatja, amíg létre nem hozza az ISE-t, ahol egyszerre létrehozhat alhálózatokat. További információ az [alhálózatokra vonatkozó követelményekről](#create-subnet).
 
-  * A virtuális hálózatnak négy *üres* alhálózattal kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre és helyezzen üzembe az ISE-ben. Az egyes alhálózatok egy másik Logic Apps-összetevőt támogatnak, amelyet az ISE használ. Ezeket az alhálózatokat előre is létrehozhatja, vagy megvárhatja, amíg létre nem hozza az ISE-t, ahol egyszerre létrehozhat alhálózatokat. További információ az [alhálózatokra vonatkozó követelményekről](#create-subnet).
-
-  * Az alhálózatok nevének alfabetikus karakterrel vagy aláhúzással kell kezdődnie, és nem használhatja a következő karaktereket:,,,,,, `<` `>` `%` `&` `\\` `?` `/` . 
-  
-  * Ha az ISE-t egy Azure Resource Manager sablonon keresztül szeretné telepíteni, először győződjön meg arról, hogy egy üres alhálózatot delegált a Microsoft. Logic/integrationServiceEnvironment. Ezt a delegálást nem kell végrehajtania, amikor a Azure Portalon keresztül telepíti.
+  > [!IMPORTANT]
+  >
+  > Ne használja a következő IP-címeket a virtuális hálózathoz vagy alhálózatokhoz, mert Azure Logic Apps nem oldhatók fel:<p>
+  > 
+  > * 0.0.0.0/8
+  > * 100.64.0.0/10
+  > * 127.0.0.0/8
+  > * 168.63.129.16/32
+  > * 169.254.169.254/32
+  > 
+  > Az alhálózatok nevének alfabetikus karakterrel vagy aláhúzással kell kezdődnie, és nem használhatja a következő karaktereket:,,,,,, `<` `>` `%` `&` `\\` `?` `/` . Az ISE Azure Resource Manager sablonon keresztüli üzembe helyezéséhez először győződjön meg arról, hogy egy üres alhálózatot delegált a következőre: `Microsoft.Logic/integrationServiceEnvironment` . Ezt a delegálást nem kell végrehajtania, amikor a Azure Portalon keresztül telepíti.
 
   * Győződjön meg arról, hogy a virtuális hálózat [lehetővé teszi az ISE hozzáférését](#enable-access) , hogy az ISE megfelelően működjön, és elérhető maradjon.
 
-  * A [ExpressRoute](../expressroute/expressroute-introduction.md) segítségével kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe, és kapcsolódhat a Microsoft Cloud Serviceshez egy olyan privát kapcsolaton keresztül, amelyet a kapcsolat szolgáltatója biztosít. A ExpressRoute olyan virtuális magánhálózat, amely nem a nyilvános interneten keresztül irányítja át a forgalmat egy privát hálózaton keresztül. A logikai alkalmazások olyan helyszíni erőforrásokhoz kapcsolódhatnak, amelyek ugyanabban a virtuális hálózatban találhatók, amikor ExpressRoute vagy virtuális magánhálózaton keresztül csatlakoznak.
-     
-    Ha ExpressRoute használ, győződjön meg arról, hogy nem [kényszerített bújtatást](../firewall/forced-tunneling.md)használ. Ha kényszerített bújtatást használ, létre kell [hoznia egy útválasztási táblázatot](../virtual-network/manage-route-table.md) , amely a következő útvonalat adja meg:
-  
+  * Ha a használatával vagy a [kényszerített bújtatással](../firewall/forced-tunneling.md)együtt kívánja használni a [ExpressRoute](../expressroute/expressroute-introduction.md) -t, akkor [létre kell hoznia egy útválasztási táblázatot](../virtual-network/manage-route-table.md) a következő adott útvonalon, és össze kell kapcsolnia az útválasztási táblázatot az ISE által használt összes alhálózathoz:
+
     **Név**: <*útvonal neve*><br>
     **Címzési előtag**: 0.0.0.0/0<br>
     **Következő ugrás**: Internet
     
-    Ezt az útválasztási táblázatot össze kell kapcsolni minden olyan alhálózathoz, amelyet az ISE használ. Az útválasztási táblázat szükséges ahhoz, hogy Logic Apps-összetevők kommunikáljanak más függő Azure-szolgáltatásokkal, például az Azure Storage és az Azure SQL DB használatával. További információ erről az útvonalról: [0.0.0.0/0 címek előtagja](../virtual-network/virtual-networks-udr-overview.md#default-route).
+    Erre az útválasztási táblázatra azért van szükség, hogy Logic Apps-összetevők kommunikáljanak más függő Azure-szolgáltatásokkal, például az Azure Storage és az Azure SQL DB használatával. További információ erről az útvonalról: [0.0.0.0/0 címek előtagja](../virtual-network/virtual-networks-udr-overview.md#default-route). Ha nem kényszerített bújtatást használ a ExpressRoute, nincs szüksége erre az útválasztási táblázatra.
+    
+    A ExpressRoute segítségével kiterjesztheti a helyszíni hálózatait a Microsoft-felhőbe, és csatlakozhat a Microsoft Cloud Serviceshez egy olyan privát kapcsolaton keresztül, amelyet a kapcsolódási szolgáltató megkönnyít. A ExpressRoute olyan virtuális magánhálózat, amely nem a nyilvános interneten keresztül irányítja át a forgalmat egy privát hálózaton keresztül. A logikai alkalmazások olyan helyszíni erőforrásokhoz kapcsolódhatnak, amelyek ugyanabban a virtuális hálózatban találhatók, amikor ExpressRoute vagy virtuális magánhálózaton keresztül csatlakoznak.
    
   * Ha [hálózati virtuális berendezést (NVA)](../virtual-network/virtual-networks-udr-overview.md#user-defined)használ, győződjön meg arról, hogy nem engedélyezi a TLS/SSL-megszakítást, vagy módosítsa a kimenő TLS/SSL-forgalmat. Ügyeljen arra is, hogy ne engedélyezze az ISE alhálózatáról származó forgalom vizsgálatát. További információ: [virtuális hálózati forgalom útválasztása](../virtual-network/virtual-networks-udr-overview.md).
 
@@ -101,7 +107,7 @@ Ez a táblázat azokat a portokat ismerteti, amelyeknek az ISE számára elérhe
 
 #### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
-| Szerep | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Megjegyzések |
+| Cél | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Jegyzetek |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Alhálózati kommunikáció a virtuális hálózaton belül | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos**: az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
 | Mind <p>Kommunikáció a logikai alkalmazással <p><p>A logikai alkalmazás előzményeinek futtatása| Belső ISE: <br>**VirtualNetwork** <p><p>Külső ISE: **Internet** vagy lásd a **megjegyzéseket** | * | **VirtualNetwork** | 443 | Az **Internet** Service címke használata helyett megadhatja az alábbi elemek forrás IP-címét: <p><p>– Az a számítógép vagy szolgáltatás, amely meghívja a logikai alkalmazásban megjelenő kérelem-eseményindítókat vagy webhookokat <p>– Az a számítógép vagy szolgáltatás, ahonnan el szeretné érni a logikai alkalmazás futtatási előzményeit <p><p>**Fontos**: a port bezárása vagy blokkolása megakadályozza a meghívást az eseményindítókkal vagy webhookokkal rendelkező logikai alkalmazásoknak. Azt is megakadályozhatja, hogy a futtatási előzményekben szereplő egyes lépéseknél hozzáférjenek a bemenetekhez és a kimenetekhez. Azonban nem akadályozza meg a logikai alkalmazás futtatási előzményeinek elérését.|
@@ -116,7 +122,7 @@ Ez a táblázat azokat a portokat ismerteti, amelyeknek az ISE számára elérhe
 
 #### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 
-| Szerep | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Megjegyzések |
+| Cél | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Jegyzetek |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Alhálózati kommunikáció a virtuális hálózaton belül | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos**: az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
 | Kommunikáció a logikai alkalmazásból | **VirtualNetwork** | * | A célhelytől függően változik | 80, 443 | A cél a külső szolgáltatáshoz tartozó végpontok alapján változik, amelyekkel a logikai alkalmazásnak kommunikálnia kell. |
@@ -129,6 +135,12 @@ Ez a táblázat azokat a portokat ismerteti, amelyeknek az ISE számára elérhe
 | Függőség a naplótól az Event hub-házirendbe és a figyelési ügynökbe | **VirtualNetwork** | * | **EventHub** | 5672 ||
 | Azure cache elérése Redis-példányok között szerepkör-példányok között | **VirtualNetwork** | * | **VirtualNetwork** | 6379 – 6383, plusz lásd: **Megjegyzések**| Ahhoz, hogy az ISE működjön az Azure cache-sel az Redis-hez, meg kell nyitnia ezeket [a kimenő és bejövő portokat, amelyeket az Azure cache ismertet a REDIS GYIK](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)-ban. |
 |||||||
+
+Emellett hozzá kell adnia a [app Service Environment (](../app-service/environment/intro.md)beadási) kimenő szabályait is:
+
+* Ha Azure Firewall használ, be kell állítania a tűzfalat a App Service Environment ( [teljes tartománynév) címkével](../firewall/fqdn-tags.md#current-fqdn-tags), amely lehetővé teszi a kimenő hozzáférést a szolgáltatói platform forgalmához.
+
+* Ha nem Azure Firewall tűzfalat használ, be kell állítania a tűzfalat a App Service Environmenthoz szükséges tűzfal *all* - [integrációs függőségekben](../app-service/environment/firewall-integration.md#dependencies) felsorolt szabályokkal.
 
 <a name="create-environment"></a>
 
@@ -169,7 +181,7 @@ Ez a táblázat azokat a portokat ismerteti, amelyeknek az ISE számára elérhe
 
    * Az [osztály nélküli Inter-domain Routing (CIDR) formátumot](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) és egy B osztályú címtartományt használ.
 
-   * A `/27` címtartomány használata, mert minden egyes alhálózathoz 32 cím szükséges. Például 32- `10.0.0.0/27` címmel rendelkezik, mert 2<sup>(32-27)</sup> 2<sup>5</sup> vagy 32. További címek nem biztosítanak további előnyöket.  A címek kiszámításával kapcsolatos további tudnivalókért lásd: [IPv4-CIDR blokkok](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
+   * A `/27` címtartomány használata, mert minden egyes alhálózathoz 32 cím szükséges. Például 32- `10.0.0.0/27` címmel rendelkezik, mert 2<sup>(32-27)</sup> 2<sup>5</sup> vagy 32. További címek nem biztosítanak további előnyöket. A címek kiszámításával kapcsolatos további tudnivalókért lásd: [IPv4-CIDR blokkok](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
    * Ha a [ExpressRoute](../expressroute/expressroute-introduction.md)-t használja, [létre kell hoznia egy útválasztási táblázatot](../virtual-network/manage-route-table.md) , amely a következő útvonalat tartalmazza, és csatolja a táblát az ISE által használt összes alhálózathoz:
 
@@ -216,7 +228,7 @@ Ez a táblázat azokat a portokat ismerteti, amelyeknek az ISE számára elérhe
    Ellenkező esetben kövesse az üzembe helyezés hibaelhárításához Azure Portal utasításokat.
 
    > [!NOTE]
-   > Ha az üzembe helyezés sikertelen, vagy törli az ISE-t, az Azure akár egy órát is igénybe vehet az alhálózatok felszabadítása előtt. Ez azt jelenti, hogy előfordulhat, hogy várnia kell, mielőtt újra felhasználja ezeket az alhálózatokat egy másik ISE-ben.
+   > Ha az üzembe helyezés sikertelen, vagy törli az ISE-t, az Azure akár egy órát is igénybe vehet, vagy ritkán fordulhat elő az alhálózatok kiadása előtt. Ezért előfordulhat, hogy várnia kell, amíg újra fel nem használja ezeket az alhálózatokat egy másik ISE-ben.
    >
    > Ha törli a virtuális hálózatot, az Azure általában akár két órával az alhálózatok felszabadítása előtt is eltarthat, de ez a művelet hosszabb időt is igénybe vehet. 
    > A virtuális hálózatok törlésekor győződjön meg arról, hogy egyetlen erőforrás sincs még csatlakoztatva. 
@@ -231,7 +243,7 @@ Ez a táblázat azokat a portokat ismerteti, amelyeknek az ISE számára elérhe
    > [!IMPORTANT]
    > Az ISE létrehozása után elérhető felügyelt ISE-összekötők nem jelennek meg automatikusan a Logic app Designer összekötő-választójában. Az ISE-összekötők használata előtt manuálisan kell [hozzáadnia ezeket az összekötőket az ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment) -hez, hogy azok megjelenjenek a Logic app Designerben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Erőforrás hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)

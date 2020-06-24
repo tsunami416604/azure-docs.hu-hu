@@ -5,9 +5,7 @@ services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
 manager: femila
-editor: jwargo
 keywords: leküldéses értesítés, leküldéses értesítések, iOS leküldéses értesítések, Android leküldéses értesítések, iOS leküldés, Android leküldése
-ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -17,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 29ef1ec551169bb84680f343e38949f73724f5ae
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307384"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255126"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
 
@@ -65,11 +63,11 @@ Nyissa meg a **[Azure Portal]**  >  **Notification Hubs névterek** vagy **Notif
 
 ### <a name="which-server-side-platforms-do-you-support"></a>Mely kiszolgálóoldali platformokat támogatja?
 
-A kiszolgálói SDK-k .NET, Java, Node. js, PHP és Python rendszerekhez érhetők el. Notification Hubs API-k REST-felületeken alapulnak, így közvetlenül a REST API-kkal dolgozhat, ha különböző platformokat használ, vagy nem szeretne további függőséget használni. További információért látogasson el a [Notification HUBS REST API] -k oldalára.
+A kiszolgálói SDK-k .NET-, Java-, Node.js-, PHP-és Python-kiszolgálókon érhetők el. Notification Hubs API-k REST-felületeken alapulnak, így közvetlenül a REST API-kkal dolgozhat, ha különböző platformokat használ, vagy nem szeretne további függőséget használni. További információért látogasson el a [Notification HUBS REST API] -k oldalára.
 
 ### <a name="which-client-platforms-do-you-support"></a>Mely ügyfélszoftvereket támogatja?
 
-A leküldéses értesítések [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone-telefon](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) és Android, valamint [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)) esetén támogatottak. További információért látogasson el a [Notification Hubs első lépések oktatóanyagok] oldalára.
+A leküldéses értesítések [iOS](ios-sdk-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone-telefon](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) és [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)rendszerű eszközökön, illetve [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)rendszeren támogatottak. További információkért tekintse meg a [Notification Hubs első lépések oktatóanyagok](ios-sdk-get-started.md) lapot.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Támogatja a szöveges üzenetet, az e-maileket vagy a webes értesítéseket?
 
@@ -153,7 +151,7 @@ Minden kapcsolat, a küldőtől az Azure Notification Hubs a PNS, használja a H
 
 Bizalmas adattartalom küldéséhez biztonságos leküldéses mintát ajánlott használni. A küldő a bizalmas adattartalom nélkül kézbesít egy, az eszközhöz tartozó üzenet-azonosítóval rendelkező ping-értesítést. Amikor az eszközön az alkalmazás megkapja a hasznos adatokat, az alkalmazás közvetlenül a biztonságos API-t hívja meg az üzenet részleteinek beolvasásához. A minta megvalósításának útmutatóját a [Notification Hubs biztonságos leküldéses oktatóanyag] oldalán találja.
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Milyen támogatást biztosít a vész-helyreállítás?
 
@@ -206,7 +204,6 @@ Programozott módon is elérheti a metrikákat. További információért tekint
 [Díjszabás Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Notification Hubs REST API-k]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Notification Hubs Első lépések oktatóanyagok]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Háttérbeli regisztrációs útmutató]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Háttérbeli regisztrációs útmutató 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx

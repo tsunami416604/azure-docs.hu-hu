@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59983678c1b14d6aa87a7b500605e3abeb6a9b85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00fdd94e8a8cd4b8769260cd595dfee5ff898039
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533538"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732618"
 ---
 # <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>Csoportok listájának tömeges letöltése Azure Active Directory
 
@@ -27,7 +27,7 @@ A Azure Active Directory (Azure AD) portál használatával tömegesen letölthe
 ## <a name="to-download-a-list-of-groups"></a>A csoportok listájának letöltése
 
 1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) egy rendszergazdai fiókkal a szervezeten belül.
-1. Az Azure ad-ben válassza a **csoportok** > **letöltési csoportok**lehetőséget.
+1. Az Azure ad-ben válassza a **csoportok**  >  **letöltési csoportok**lehetőséget.
 1. A **csoportok letöltése** lapon kattintson a **Start** gombra a csoportok listáját tartalmazó CSV-fájl fogadásához.
 
    ![A csoportok letöltése parancs a minden csoport oldalon található.](./media/groups-bulk-download/bulk-download.png)

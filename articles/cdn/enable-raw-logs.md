@@ -7,15 +7,15 @@ manager: danielgi
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a2522eba17574246ab99a0d47a42f128d5f61ace
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747305"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888635"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>HTTP nyers naplók Azure CDN
 A nyers naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A nyers naplók eltérnek a tevékenység naplóitól. A Tevékenységnaplók biztosítják az Azure-erőforrásokon végzett műveletek láthatóságát. A nyers naplók az erőforrás műveleteinek rekordját adják meg.
@@ -33,7 +33,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Nyers naplók konfigurálása a Azure CDNhoz a Microsoft profilból: 
 
-1. A Azure Portal menüben válassza a **minden erőforrás**  >>  ** \< a-CDN-profil>** lehetőséget.
+1. A Azure Portal menüben válassza a **minden erőforrás**elemet  >>  **\<your-CDN-profile>** .
 
 2. A **figyelés**területen válassza a **diagnosztikai beállítások**elemet.
 

@@ -3,24 +3,24 @@ title: Problémák az összevont SSO konfigurálásával az Azure AD Gallery-alk
 description: Az összevont egyszeri bejelentkezés az SAML használatával való konfigurálásakor előforduló gyakori problémák némelyike az Azure AD Application Galleryben felsorolt alkalmazások esetében
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 858e61c6371aac28d709a9016e4b9cbed6befe3f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274658"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763601"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Probléma van az összevont egyszeri bejelentkezés konfigurálásával egy Azure AD Gallery-alkalmazáshoz
 
@@ -64,7 +64,7 @@ Az alkalmazáshoz előre konfigurált mintázatok ismerete:
 
 10. Az alkalmazás által támogatott minták háromféle módon ismertek:
 
-    * A szövegmezőben a támogatott mintázat (ok) helyőrző *példaként* <https://contoso.com>jelenik meg:.
+    * A szövegmezőben a támogatott mintázat (ok) helyőrző *példaként jelenik meg:* <https://contoso.com> .
 
     * Ha a minta nem támogatott, piros felkiáltójel jelenik meg, amikor megpróbálja beírni az értéket a szövegmezőbe. Ha az egérmutatót a piros felkiáltójel fölé viszi, a támogatott minták láthatók.
 
@@ -74,7 +74,7 @@ Ha az értékek nem egyeznek az Azure AD-ben előre konfigurált mintákkal. A k
 
 -   Az alkalmazás gyártójának használata az Azure AD-ben előre konfigurált mintának megfelelő értékek beolvasásához
 
--   Vagy megadhatja az Azure AD-csapatot az oktatóanyagban, <aadapprequest@microsoft.com> vagy elhagyhat egy megjegyzést az alkalmazás által támogatott minták frissítésének igényléséhez
+-   Vagy megadhatja az Azure AD-csapatot <aadapprequest@microsoft.com> az oktatóanyagban, vagy elhagyhat egy megjegyzést az alkalmazás által támogatott minták frissítésének igényléséhez
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Hol állítható be a EntityID (felhasználói azonosító) formátuma
 

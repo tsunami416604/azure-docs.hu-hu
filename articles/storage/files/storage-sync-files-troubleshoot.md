@@ -4,15 +4,15 @@ description: Azure File Syncával kapcsolatos gyakori problémák elhárítása.
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 1/22/2019
+ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a7d1fac4ff76b39cb2107a8839e8f8e63ff90fd5
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: ff429aba970c996ce97dcdf03387dfd888235430
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635101"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765182"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -50,9 +50,9 @@ A paraméter helytelen.
 A megoldáshoz telepítse a Windows Server 2012 R2 legújabb frissítéseit, és indítsa újra a kiszolgálót.
 
 <a id="server-registration-missing-subscriptions"></a>**A kiszolgáló regisztrálása nem tartalmazza az összes Azure-előfizetést**  
-Ha a ServerRegistration. exe használatával regisztrál egy kiszolgálót, az előfizetések hiányoznak, amikor rákattint az Azure-előfizetés legördülő menüjére.
+Ha ServerRegistration.exe használatával regisztrál egy kiszolgálót, az előfizetések hiányoznak, amikor rákattint az Azure-előfizetés legördülő menüjére.
 
-Ez a probléma azért fordul elő, mert a ServerRegistration. exe jelenleg nem támogatja a több-bérlős környezeteket. Ezt a problémát egy későbbi Azure File Sync ügynök frissítése fogja megállapítani.
+Ez a probléma azért fordul elő, mert ServerRegistration.exe jelenleg nem támogatja a több-bérlős környezeteket. Ezt a problémát egy későbbi Azure File Sync ügynök frissítése fogja megállapítani.
 
 A probléma megoldásához használja a következő PowerShell-parancsokat a kiszolgáló regisztrálásához:
 
@@ -66,7 +66,7 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<
 Ez az üzenet akkor jelenik meg, ha az az vagy az AzureRM PowerShell-modul nincs telepítve a PowerShell 5,1-ben. 
 
 > [!Note]  
-> A ServerRegistration. exe nem támogatja a PowerShell 6. x verzióját. A-kiszolgáló regisztrálásához a PowerShell 6. x verziójában használhatja a Register-AzStorageSyncServer parancsmagot.
+> A ServerRegistration.exe nem támogatja a PowerShell 6. x verzióját. A-kiszolgáló regisztrálásához a PowerShell 6. x verziójában használhatja a Register-AzStorageSyncServer parancsmagot.
 
 Az az vagy a AzureRM modul a PowerShell 5,1-ben történő telepítéséhez hajtsa végre a következő lépéseket:
 
@@ -74,7 +74,7 @@ Az az vagy a AzureRM modul a PowerShell 5,1-ben történő telepítéséhez hajt
 2. Telepítse a legújabb az vagy AzureRM modult a dokumentációt követve:
     - [Az Module (.NET 4.7.2 szükséges)](https://go.microsoft.com/fwlink/?linkid=2062890)
     - [AzureRM modul]( https://go.microsoft.com/fwlink/?linkid=856959)
-3. Futtassa a ServerRegistration. exe fájlt, és fejezze be a varázslót, hogy regisztrálja a kiszolgálót egy Storage Sync szolgáltatással.
+3. Futtassa a ServerRegistration.exe alkalmazást, és fejezze be a varázslót, hogy regisztrálja a kiszolgálót a Storage Sync szolgáltatással.
 
 <a id="server-already-registered"></a>**A kiszolgáló regisztrálása a következő üzenetet jeleníti meg: "Ez a kiszolgáló már regisztrálva van"** 
 
@@ -99,7 +99,7 @@ Ez a probléma akkor fordul elő, ha a **bővített Internet Explorer biztonság
 Ha egy kiszolgáló nem szerepel a Storage Sync szolgáltatáshoz tartozó **regisztrált kiszolgálók** területen:
 1. Jelentkezzen be a regisztrálni kívánt kiszolgálóra.
 2. Nyissa meg a fájlkezelőt, és lépjen a Storage Sync Agent telepítési könyvtárához (az alapértelmezett hely a C:\Program Files\Azure\StorageSyncAgent). 
-3. Futtassa a ServerRegistration. exe fájlt, és fejezze be a varázslót, hogy regisztrálja a kiszolgálót egy Storage Sync szolgáltatással.
+3. Futtassa a ServerRegistration.exe alkalmazást, és fejezze be a varázslót, hogy regisztrálja a kiszolgálót a Storage Sync szolgáltatással.
 
 ## <a name="sync-group-management"></a>Szinkronizálási csoport kezelése
 <a id="cloud-endpoint-using-share"></a>**A Felhőbeli végpont létrehozása sikertelen, ezzel a hibával: "a megadott Azure-fájlmegosztás már használatban van egy másik CloudEndpoint"**  
@@ -149,7 +149,7 @@ Ez a hiba akkor fordul elő, ha a megadott kiszolgálói végpont elérési útj
 Ez a hiba azért fordult elő, mert az Azure File Sync nem támogatja a kiszolgálóvégpontokat olyan köteteken, amelyeken tömörítve van a rendszerkötet információit tartalmazó mappa. A probléma elhárításához bontsa ki a rendszerkötet információit tartalmazó mappát. Ha a rendszerkötet információit tartalmazó mappa az egyetlen tömörített mappa a köteten, hajtsa végre az alábbi lépéseket:
 
 1. Töltse le a [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) eszközt.
-2. Futtassa az alábbi parancsot egy rendszergazda jogú parancssorból a következő rendszerfiókban futtatott parancssor indításához: **PsExec. exe-i-s-d cmd**
+2. Futtassa az alábbi parancsot egy rendszergazda jogú parancssorból a következő rendszerfiókban futó parancssor indításához: **PsExec.exe-i-s-d cmd**
 3. A rendszerfiók alatt futó parancssorban írja be a következő parancsot, és nyomja le az Enter billentyűt:   
     **CD/d "meghajtóbetűjel: \ rendszerkötet adatai"**  
     **Compact/u/s**
@@ -185,7 +185,7 @@ Set-AzStorageSyncServerEndpoint `
 ```
 <a id="server-endpoint-noactivity"></a>**A kiszolgálói végpont "nincs tevékenység" vagy "függő" állapotú, míg a regisztrált kiszolgálókon a kiszolgáló állapota "offline" jelenik meg.**  
 
-Ez a probléma akkor fordulhat elő, ha a tárolási szinkronizálási figyelő folyamata (AzureStorageSyncMonitor. exe) nem fut, vagy a kiszolgáló nem fér hozzá a Azure File Sync szolgáltatáshoz.
+Ez a probléma akkor fordulhat elő, ha a tárolási szinkronizálási figyelő folyamata (AzureStorageSyncMonitor.exe) nem fut, vagy a kiszolgáló nem fér hozzá a Azure File Sync szolgáltatáshoz.
 
 Azon a kiszolgálón, amely a "kapcsolat nélküli állapotban" üzenet jelenik meg a portálon, tekintse meg a 9301-as AZONOSÍTÓJÚ eseményt a telemetria eseménynaplóban (az Eseménynapló alkalmazások és Services\Microsoft\FileSync\Agent területen) annak meghatározásához, hogy a kiszolgáló miért nem fér hozzá a Azure File Sync szolgáltatáshoz. 
 
@@ -297,10 +297,10 @@ Vegye figyelembe, hogy ha közvetlenül az Azure-fájlmegosztás módosításait
 ### <a name="how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing"></a>Hogyan állapíthatom meg, hogy vannak-e olyan fájlok vagy mappák, amelyek szinkronizálása nem történik meg?
 Ha a kiszolgálón lévő PerItemErrorCount vagy a portálon nem szinkronizált fájlok száma meghaladja a 0 értéket az adott szinkronizálási munkamenet esetében, az azt jelenti, hogy egyes elemek szinkronizálása sikertelen. A fájlok és mappák tartalmazhatnak olyan jellemzőket, amelyek megakadályozzák a szinkronizálást. Ezek a jellemzők tartósak lehetnek, és a szinkronizálás folytatásához explicit műveletre van szükség, például a nem támogatott karakterek eltávolítása a fájl vagy a mappa nevéből. Átmenetiek is lehetnek, ami azt jelenti, hogy a fájl vagy mappa automatikusan folytatja a szinkronizálást. a megnyitott leíróval rendelkező fájlok például automatikusan folytatják a szinkronizálást a fájl bezárásakor. Ha a Azure File Sync motor észleli ezt a problémát, a rendszer egy olyan naplófájlt állít elő, amely elemezhető a jelenleg nem szinkronizált elemek listázásához.
 
-Ezeknek a hibáknak a megtekintéséhez futtassa a **FileSyncErrorsReport. ps1** PowerShell-szkriptet (a Azure file Sync-ügynök ügynök-telepítési könyvtárában), hogy azonosítsa azokat a fájlokat, amelyeket nem sikerült szinkronizálni a megnyitott kezelők, a nem támogatott karakterek vagy más problémák miatt. A Elemelérési út mező megadja a fájl helyét a gyökérszintű szinkronizálási könyvtárhoz viszonyítva. Az alábbi gyakori szinkronizálási hibák listáját itt találja: szervizelési lépések.
+Ha szeretné megtekinteni ezeket a hibákat, futtassa a **FileSyncErrorsReport.ps1** PowerShell-parancsfájlt (a Azure file Sync ügynök ügynök-telepítési könyvtárában) azon fájlok azonosításához, amelyeket nem sikerült szinkronizálni a megnyitott leírók, a nem támogatott karakterek vagy más problémák miatt. A Elemelérési út mező megadja a fájl helyét a gyökérszintű szinkronizálási könyvtárhoz viszonyítva. Az alábbi gyakori szinkronizálási hibák listáját itt találja: szervizelési lépések.
 
 > [!Note]  
-> Ha a FileSyncErrorsReport. ps1 parancsfájl "nem talált hibákat", vagy nem sorolja fel a szinkronizálási csoporton belüli hibákat, az ok a következő lehet:
+> Ha a FileSyncErrorsReport.ps1 parancsfájl "nem talált hibákat", vagy a szinkronizálási csoportra vonatkozóan nem jeleníti meg a hibák számát, az ok a következő lehet:
 >
 >- 1. ok: az utolsó befejezett szinkronizálási munkamenet nem rendelkezett az egyes elemek hibáival. A portált hamarosan frissíteni kell a 0 fájl nem szinkronizált állapotának megjelenítéséhez. 
 >    - Ellenőrizze az telemetria Eseménynapló 9102-es [azonosítójú eseményét](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) , és erősítse meg, hogy a PerItemErrorCount 0. 
@@ -314,8 +314,8 @@ Ezeknek a hibáknak a megtekintéséhez futtassa a **FileSyncErrorsReport. ps1**
 | HRESULT | HRESULT (decimális) | Hibasztring | Probléma | Kockázatcsökkentés |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | – 2147942467 | ERROR_BAD_NET_NAME | A (z) kiszolgálón található, rétegű fájl nem érhető el. Ez a probléma akkor merül fel, amikor a rétegzett fájl visszahívása nem történik meg a kiszolgálóvégpont törlése előtt. | A probléma megoldásához tekintse [meg a kiszolgálói végpont törlése után a kiszolgálón nem érhető el a lépcsőzetes fájlok](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
-| 0x80c80207 | – 2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | A fájl vagy a könyvtár módosítása még nem szinkronizálható, mert egy függő mappa még nincs szinkronizálva. Ez az érték szinkronizálva lesz a függő módosítások szinkronizálása után. | Nincs szükség beavatkozásra. Ha a hiba több napig is fennáll, használja a FileSyncErrorsReport. ps1 PowerShell-parancsfájlt annak meghatározásához, hogy a függő mappa miért még nincs szinkronizálva. |
-| 0x80C8028A | – 2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | A fájl vagy a könyvtár módosítása még nem szinkronizálható, mert egy függő mappa még nincs szinkronizálva. Ez az érték szinkronizálva lesz a függő módosítások szinkronizálása után. | Nincs szükség beavatkozásra. Ha a hiba több napig is fennáll, használja a FileSyncErrorsReport. ps1 PowerShell-parancsfájlt annak meghatározásához, hogy a függő mappa miért még nincs szinkronizálva. |
+| 0x80c80207 | – 2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | A fájl vagy a könyvtár módosítása még nem szinkronizálható, mert egy függő mappa még nincs szinkronizálva. Ez az érték szinkronizálva lesz a függő módosítások szinkronizálása után. | Nincs szükség beavatkozásra. Ha a hiba több napig is fennáll, használja a FileSyncErrorsReport.ps1 PowerShell-parancsfájlt annak meghatározásához, hogy a függő mappa miért még nincs szinkronizálva. |
+| 0x80C8028A | – 2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | A fájl vagy a könyvtár módosítása még nem szinkronizálható, mert egy függő mappa még nincs szinkronizálva. Ez az érték szinkronizálva lesz a függő módosítások szinkronizálása után. | Nincs szükség beavatkozásra. Ha a hiba több napig is fennáll, használja a FileSyncErrorsReport.ps1 PowerShell-parancsfájlt annak meghatározásához, hogy a függő mappa miért még nincs szinkronizálva. |
 | 0x80c80284 | – 2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | A fájl vagy a könyvtár módosítása még nem szinkronizálható, mert egy függő mappa még nincs szinkronizálva, és a szinkronizálási munkamenet sikertelen volt. Ez az érték szinkronizálva lesz a függő módosítások szinkronizálása után. | Nincs szükség beavatkozásra. Ha a hiba továbbra is fennáll, vizsgálja meg a szinkronizálási munkamenet hibáját. |
 | 0x8007007b | – 2147024773 | ERROR_INVALID_NAME | A fájl vagy a könyvtár neve érvénytelen. | Nevezze át a szóban forgó fájlt vagy könyvtárat. További információt a nem [támogatott karakterek kezelésével](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) foglalkozó témakörben talál. |
 | 0x80c80255 | – 2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | A fájl vagy a könyvtár neve érvénytelen. | Nevezze át a szóban forgó fájlt vagy könyvtárat. További információt a nem [támogatott karakterek kezelésével](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) foglalkozó témakörben talál. |
@@ -338,7 +338,7 @@ Ezeknek a hibáknak a megtekintéséhez futtassa a **FileSyncErrorsReport. ps1**
 | 0x80c80200 | – 2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | A fájl nem szinkronizálható, mert elérte az ütköző fájlok maximális számát. A Azure File Sync fájlon keresztül támogatja az 100-es ütközési fájlokat. További információ a fájlokkal kapcsolatos ütközésekről: Azure File Sync [GYIK](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | A probléma megoldásához csökkentse az ütköző fájlok számát. A fájl szinkronizálva lesz, amint az ütköző fájlok száma kevesebb, mint 100. |
 
 #### <a name="handling-unsupported-characters"></a>Nem támogatott karakterek feldolgozása
-Ha a **FileSyncErrorsReport. ps1** PowerShell-parancsfájl a nem támogatott karakterek (hibakód: 0x8007007b vagy 0x80c80255) miatt hibát jelez, távolítsa el vagy nevezze át a hibákat a megfelelő fájlnevek alapján. A PowerShell valószínűleg kérdőjelként vagy üres téglalapként fogja kinyomtatni ezeket a karaktereket, mivel a legtöbb ilyen karakternek nincs szabványos vizualizációs kódolása. A [kiértékelési eszköz](storage-sync-files-planning.md#evaluation-cmdlet) használható a nem támogatott karakterek azonosítására.
+Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl nem támogatott karakterek miatt hibát jelez (hibakód: 0x8007007b vagy 0x80c80255), távolítsa el vagy nevezze át a hibákat a megfelelő fájlnevek alapján. A PowerShell valószínűleg kérdőjelként vagy üres téglalapként fogja kinyomtatni ezeket a karaktereket, mivel a legtöbb ilyen karakternek nincs szabványos vizualizációs kódolása. A [kiértékelési eszköz](storage-sync-files-planning.md#evaluation-cmdlet) használható a nem támogatott karakterek azonosítására.
 
 Az alábbi táblázat tartalmazza az összes Unicode-karaktert, Azure File Sync még nem támogatott.
 
@@ -837,7 +837,7 @@ Ez a hiba akkor következhet be, ha az NT AUTHORITY\SYSTEM fiók nem rendelkezik
 A probléma megoldásához végezze el az alábbi lépéseket:
 
 1. Töltse le a [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) eszközt.
-2. Futtassa a következő parancsot egy rendszergazda jogú parancssorból a parancssor elindításához a rendszerfiók használatával: **PsExec. exe-i-s-d cmd** 
+2. Futtassa a következő parancsot egy rendszergazda jogú parancssorból a parancssor elindításához a rendszerfiók használatával: **PsExec.exe-i-s-d cmd** 
 3. A rendszerfiók alatt futó parancssorból futtassa a következő parancsot annak megerősítéséhez, hogy az NT AUTHORITY\SYSTEM fióknak nincs hozzáférése a **cacls "meghajtóbetűjel:\system volume information" /T /C** rendszerkötet-információkat tartalmazó mappához.
 4. Ha az NT AUTHORITY\SYSTEM fiók nem rendelkezik hozzáféréssel a rendszerkötet-információkat tartalmazó mappához, futtassa a következő parancsot: **cacls "meghajtóbetűjel:\system volume information" /T /E /G "NT AUTHORITY\SYSTEM:F"**
     - Ha a 4. lépés a hozzáférés megtagadása miatt meghiúsul, futtassa a következő parancsot a rendszerkötet-információkat tartalmazó mappa tulajdonjogának átvételéhez, majd ismételje meg a 4. lépést: **takeown /A /R /F "meghajtóbetűjel:\System Volume Information"**
@@ -1034,7 +1034,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 A Felhőbeli rétegek meghibásodásának két útvonala van:
 
 - A fájlok sikertelenek lehetnek, ami azt jelenti, hogy a Azure File Sync sikertelen kísérletet tesz a fájl Azure Filesre való kiterjesztésére.
-- A fájlok sikertelenek lehetnek, ami azt jelenti, hogy a Azure File Sync fájlrendszer-szűrő (StorageSync. sys) nem tudja letölteni az adatfájlokat, amikor egy felhasználó megpróbál hozzáférni egy többszintű fájlhoz.
+- A fájlok sikertelenek lehetnek, ami azt jelenti, hogy a Azure File Sync fájlrendszer-szűrő (StorageSync.sys) nem tudja letölteni az adatletöltést, amikor egy felhasználó megpróbál hozzáférni egy olyan fájlhoz, amelyet már többszintű.
 
 A meghibásodások elérési útjának két fő osztálya fordulhat elő:
 
@@ -1043,9 +1043,9 @@ A meghibásodások elérési útjának két fő osztálya fordulhat elő:
     - Az *Azure-fájlmegosztás nem érhető*el. Ez a hiba általában akkor fordul elő, ha törli az Azure-fájlmegosztást, ha a szinkronizálási csoportban továbbra is Felhőbeli végpont van.
     - Nem *elérhető Storage-fiók*. Ez a hiba általában akkor fordul elő, ha törli a Storage-fiókot, miközben az Azure-fájlmegosztás továbbra is egy szinkronizálási csoportban lévő felhőalapú végpont. 
 - Kiszolgálói hibák 
-  - *Azure file Sync fájlrendszer-szűrő (StorageSync. sys) nincs betöltve*. A többszintű/visszahívási kérelmekre való válaszadáshoz be kell tölteni a Azure File Sync fájlrendszer szűrőjét. A szűrő betöltése több okból is előfordulhat, de a leggyakoribb ok az, hogy a rendszergazda manuálisan távolítja el. A Azure File Sync megfelelő működéséhez mindig be kell tölteni a Azure File Sync fájlrendszer szűrőjét.
+  - *Azure file Sync fájlrendszer-szűrő (StorageSync.sys) nincs betöltve*. A többszintű/visszahívási kérelmekre való válaszadáshoz be kell tölteni a Azure File Sync fájlrendszer szűrőjét. A szűrő betöltése több okból is előfordulhat, de a leggyakoribb ok az, hogy a rendszergazda manuálisan távolítja el. A Azure File Sync megfelelő működéséhez mindig be kell tölteni a Azure File Sync fájlrendszer szűrőjét.
   - *Hiányzó, sérült vagy egyéb módon megszakított újraelemzési pont*. Az újraelemzési pont egy speciális adatstruktúra egy olyan fájlon, amely két részből áll:
-    1. Egy újraelemzési címke, amely azt jelzi, hogy a Azure File Sync fájlrendszer-szűrőnek (StorageSync. sys) az operációs rendszernek kell valamilyen műveletet végrehajtania az IO-on a fájlra. 
+    1. Egy újraelemzési címke, amely azt jelzi, hogy az operációs rendszernek, amelyre a Azure File Sync fájlrendszer-szűrőnek (StorageSync.sys) szüksége lehet valamilyen műveletre az IO-on a fájlra. 
     2. Újraelemzési információ, amely azt jelzi, hogy a fájlrendszer szűri a fájl URI-JÁT a társított Felhőbeli végponton (az Azure-fájlmegosztás). 
         
        Az újraelemzési pontok megsérülnek a leggyakoribb módon, ha a rendszergazda megpróbálja módosítani a címkét vagy az adatforrást. 
@@ -1078,8 +1078,8 @@ Ha a fájlok nem tudják felvenni a Azure Files:
       > Egy fájlnak a lépcsőzetes megkezdése előtt szinkronizálva kell lennie egy Azure-fájlmegosztás használatával.
 
    2. Ellenőrizze, hogy a kiszolgáló rendelkezik-e internetkapcsolattal. 
-   3. Ellenőrizze, hogy fut-e a Azure File Sync szűrő-illesztőprogramok (StorageSync. sys és StorageSyncGuard. sys):
-       - Futtassa a parancsot egy rendszergazda jogú parancssorban `fltmc` . Győződjön meg arról, hogy a StorageSync. sys és a StorageSyncGuard. sys fájlrendszer-szűrő illesztőprogramjai vannak felsorolva.
+   3. Ellenőrizze, hogy futnak-e a Azure File Sync szűrő-illesztőprogramok (StorageSync.sys és StorageSyncGuard.sys):
+       - Futtassa a parancsot egy rendszergazda jogú parancssorban `fltmc` . Győződjön meg arról, hogy a StorageSync.sys és StorageSyncGuard.sys fájlrendszer-szűrő illesztőprogramjai vannak felsorolva.
 
 > [!NOTE]
 > Az 9003-as AZONOSÍTÓJÚ esemény óránként egyszer van naplózva a telemetria-eseménynaplóban, ha egy fájl nem rétegbeli (egy esemény naplózása hibakód). Tekintse át a [rétegek hibáit és a szervizelés](#tiering-errors-and-remediation) szakaszt, és ellenőrizze, hogy szerepelnek-e a hibakódhoz tartozó szervizelési lépések.
@@ -1088,6 +1088,7 @@ Ha a fájlok nem tudják felvenni a Azure Files:
 
 | HRESULT | HRESULT (decimális) | Hibasztring | Probléma | Kockázatcsökkentés |
 |---------|-------------------|--------------|-------|-------------|
+| 0x80c86045 | – 2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | A fájl nem sikerült, mert a kezdeti feltöltés folyamatban van. | Nincs szükség beavatkozásra. A fájl a kezdeti feltöltés befejeződése után lesz lépcsőzetesen kibővítve. |
 | 0x80c86043 | – 2134351805 | ECS_E_GHOSTING_FILE_IN_USE | A fájl nem sikerült, mert használatban van. | Nincs szükség beavatkozásra. Ha már nincs használatban, a fájl lépcsőzetesen fog megjelenni. |
 | 0x80c80241 | – 2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | A fájl nem sikerült, mert a szinkronizálás ki van zárva. | Nincs szükség beavatkozásra. A szinkronizálási kizárási listán szereplő fájlok nem lehetnek lépcsőzetesen kidolgozva. |
 | 0x80c86042 | – 2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | A fájl nem sikerült, mert nem található a kiszolgálón. | Nincs szükség beavatkozásra. Ha a hiba továbbra is fennáll, ellenőrizze, hogy a fájl létezik-e a kiszolgálón. |
@@ -1100,7 +1101,7 @@ Ha a fájlok nem tudják felvenni a Azure Files:
 | 0x80c83007 | – 2134364153 | ECS_E_STORAGE_ERROR | A fájl egy Azure Storage-probléma miatt nem sikerült. | Ha a hiba továbbra is fennáll, nyisson meg egy támogatási kérést. |
 | 0x800703e3 | – 2147023901 | ERROR_OPERATION_ABORTED | A fájl nem sikerült, mert egy időben lett meghívva. | Nincs szükség beavatkozásra. A fájl a visszahívás befejezésekor lesz kibővítve, és a fájl már nem használatban van. |
 | 0x80c80264 | – 2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | A fájl nem sikerült, mert nem lett szinkronizálva az Azure-fájlmegosztás használatával. | Nincs szükség beavatkozásra. A fájl akkor fog megjelenni, ha szinkronizálva lett az Azure-fájlmegosztást. |
-| 0x80070001 | – 2147942401 | ERROR_INVALID_FUNCTION | A fájlt nem sikerült felvenni, mert a Cloud rétegű szűrő illesztőprogramja (storagesync. sys) nem fut. | A probléma megoldásához nyisson meg egy rendszergazda jogú parancssort, és futtassa a következő parancsot:`fltmc load storagesync`<br>Ha a storagesync szűrő illesztőprogramja nem töltődik be a fltmc parancs futtatásakor, távolítsa el a Azure File Sync ügynököt, indítsa újra a kiszolgálót, és telepítse újra a Azure File Sync ügynököt. |
+| 0x80070001 | – 2147942401 | ERROR_INVALID_FUNCTION | A fájlt nem sikerült felvenni, mert a Cloud rétegű szűrő illesztőprogramja (storagesync.sys) nem fut. | A probléma megoldásához nyisson meg egy rendszergazda jogú parancssort, és futtassa a következő parancsot:`fltmc load storagesync`<br>Ha a storagesync szűrő illesztőprogramja nem töltődik be a fltmc parancs futtatásakor, távolítsa el a Azure File Sync ügynököt, indítsa újra a kiszolgálót, és telepítse újra a Azure File Sync ügynököt. |
 | 0x80070070 | – 2147024784 | ERROR_DISK_FULL | A fájl nem sikerült, mert nincs elég szabad lemezterület azon a köteten, ahol a kiszolgálói végpont található. | A probléma megoldásához szabadítson fel legalább 100 MB lemezterületet azon a köteten, ahol a kiszolgálói végpont található. |
 | 0x80070490 | – 2147023728 | ERROR_NOT_FOUND | A fájl nem sikerült, mert nem lett szinkronizálva az Azure-fájlmegosztás használatával. | Nincs szükség beavatkozásra. A fájl akkor fog megjelenni, ha szinkronizálva lett az Azure-fájlmegosztást. |
 | 0x80c80262 | – 2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | A fájl nem sikerült, mert nem támogatott újraelemzési pont. | Ha a fájl egy deduplikáló újraelemzési pont, kövesse a [tervezési útmutató](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) lépéseit az deduplikálás támogatásának engedélyezéséhez. Az újraelemzési pontokkal nem rendelkező fájlok nem támogatottak, és nem lesznek feldolgozva.  |
@@ -1109,6 +1110,8 @@ Ha a fájlok nem tudják felvenni a Azure Files:
 | 0x80072ee2 | – 2147012894 | WININET_E_TIMEOUT | A fájl hálózati hiba miatt nem sikerült. | Nincs szükség beavatkozásra. Ha a hiba továbbra is fennáll, ellenőrizze az Azure-fájlmegosztás hálózati kapcsolatát. |
 | 0x80c80017 | – 2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | A fájl nem sikerült, mert módosult. | Nincs szükség beavatkozásra. Ha a módosított fájl szinkronizálva lett az Azure-fájlmegosztást, a fájl a következő szinten fog megjelenni:. |
 | 0x800705aa | – 2147023446 | ERROR_NO_SYSTEM_RESOURCES | A fájl nem sikerült, mert nincs elég rendszererőforrás. | Ha a hiba továbbra is fennáll, vizsgálja meg, hogy melyik alkalmazás-vagy kernel módú illesztőprogram a rendszererőforrások kimerítése. |
+| 0x8e5e03fe | – 1906441218 | JET_errDiskIO | A fájl nem sikerült, mert I/O-hiba történt a Felhőbeli rétegű adatbázisba való írás során. | Ha a hiba továbbra is fennáll, futtassa a Chkdsk parancsot a köteten, és ellenőrizze a tároló hardverét. |
+| 0x8e5e0442 | – 1906441150 | JET_errInstanceUnavailable | A fájl nem sikerült, mert a felhőalapú rétegek adatbázisa nem fut. | A probléma megoldásához indítsa újra a FileSyncSvc szolgáltatást vagy kiszolgálót. Ha a hiba továbbra is fennáll, futtassa a Chkdsk parancsot a köteten, és ellenőrizze a tároló hardverét. |
 
 
 
@@ -1118,8 +1121,8 @@ Ha a fájlokat nem lehet visszahívni:
     1. Ellenőrizze, hogy a fájlok léteznek-e az Azure-fájlmegosztás alatt.
     2. Ellenőrizze, hogy a kiszolgáló rendelkezik-e internetkapcsolattal. 
     3. Nyissa meg a szolgáltatások MMC beépülő modult, és ellenőrizze, hogy fut-e a Storage Sync Agent (FileSyncSvc) szolgáltatás.
-    4. Ellenőrizze, hogy fut-e a Azure File Sync szűrő-illesztőprogramok (StorageSync. sys és StorageSyncGuard. sys):
-        - Futtassa a parancsot egy rendszergazda jogú parancssorban `fltmc` . Győződjön meg arról, hogy a StorageSync. sys és a StorageSyncGuard. sys fájlrendszer-szűrő illesztőprogramjai vannak felsorolva.
+    4. Ellenőrizze, hogy futnak-e a Azure File Sync szűrő-illesztőprogramok (StorageSync.sys és StorageSyncGuard.sys):
+        - Futtassa a parancsot egy rendszergazda jogú parancssorban `fltmc` . Győződjön meg arról, hogy a StorageSync.sys és StorageSyncGuard.sys fájlrendszer-szűrő illesztőprogramjai vannak felsorolva.
 
 > [!NOTE]
 > A rendszer óránként egyszer naplózza az 9006-es AZONOSÍTÓJÚ eseményt a telemetria-eseménynaplóban, ha egy fájl nem hívható vissza (a rendszer hibakódként egy eseményt naplóz). Tekintse át a [visszahívási hibákat és a Szervizelési](#recall-errors-and-remediation) szakaszt, és ellenőrizze, hogy szerepelnek-e a hibakódhoz tartozó szervizelési lépések.
@@ -1169,7 +1172,7 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-3. Mentse a OrphanTieredFiles. txt kimeneti fájlt abban az esetben, ha a fájlokat a törlés után vissza kell állítani a biztonsági másolatból.
+3. Mentse a OrphanTieredFiles.txt kimeneti fájlt abban az esetben, ha a fájlok törlése után vissza kell állítani a biztonsági mentésből.
 
 <a id="remove-orphaned"></a>**Árva rétegű fájlok eltávolítása** 
 
@@ -1191,7 +1194,7 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-5. Mentse a OrphanTieredFiles. txt kimeneti fájlt abban az esetben, ha a fájlokat a törlés után vissza kell állítani a biztonsági másolatból.
+5. Mentse a OrphanTieredFiles.txt kimeneti fájlt abban az esetben, ha a fájlok törlése után vissza kell állítani a biztonsági mentésből.
 6. A következő PowerShell-parancsok futtatásával törölheti az árva rétegű fájlokat:
 
 ```powershell
@@ -1217,7 +1220,7 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-3. A OrphanTieredFiles. txt kimeneti fájl segítségével azonosíthatja a kiszolgálón lévő árva rétegű fájlokat.
+3. A OrphanTieredFiles.txt kimeneti fájl segítségével azonosíthatja a kiszolgálón található árva rétegű fájlokat.
 4. Írja felül az árva rétegekből származó fájlokat úgy, hogy az Azure-fájlmegosztás teljes fájlját a Windows Serverre másolja.
 
 ### <a name="how-to-troubleshoot-files-unexpectedly-recalled-on-a-server"></a>A fájlok váratlanul felhívhatók a kiszolgálókon  
@@ -1243,8 +1246,8 @@ Ha a kiszolgáló Azure File Syncával kapcsolatos problémákat tapasztal, kezd
     - A kiszolgálók kezelésével kapcsolatos problémákat (például a konfigurációs beállításokat) az alkalmazás-és Services\Microsoft\FileSync\Management. az operatív és a diagnosztikai eseménynaplóban naplózzák.
 2. Ellenőrizze, hogy fut-e a Azure File Sync szolgáltatás a kiszolgálón:
     - Nyissa meg a szolgáltatások MMC beépülő modult, és ellenőrizze, hogy fut-e a Storage Sync Agent szolgáltatás (FileSyncSvc).
-3. Ellenőrizze, hogy fut-e a Azure File Sync szűrő-illesztőprogramok (StorageSync. sys és StorageSyncGuard. sys):
-    - Futtassa a parancsot egy rendszergazda jogú parancssorban `fltmc` . Győződjön meg arról, hogy a StorageSync. sys és a StorageSyncGuard. sys fájlrendszer-szűrő illesztőprogramjai vannak felsorolva.
+3. Ellenőrizze, hogy futnak-e a Azure File Sync szűrő-illesztőprogramok (StorageSync.sys és StorageSyncGuard.sys):
+    - Futtassa a parancsot egy rendszergazda jogú parancssorban `fltmc` . Győződjön meg arról, hogy a StorageSync.sys és StorageSyncGuard.sys fájlrendszer-szűrő illesztőprogramjai vannak felsorolva.
 
 Ha a probléma nem oldódik meg, futtassa a AFSDiag eszközt, és küldje el a. zip-fájl kimenetét a további diagnosztizáláshoz rendelt támogatási szakembernek.
 

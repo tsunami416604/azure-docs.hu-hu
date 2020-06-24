@@ -2,22 +2,22 @@
 title: Alkalmazások végfelhasználói élményei – Azure Active Directory
 description: Azure Active Directory (Azure AD) számos testreszabható módszert kínál az alkalmazások végfelhasználók számára történő központi telepítéséhez a szervezetben.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c2ec85af2c954c2189f0df1b407a2c40967f096
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266623"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763397"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>A Azure Active Directory alkalmazások végfelhasználói élményei
 
@@ -44,7 +44,7 @@ Az Azure AD hozzáférési paneljével kapcsolatos további információkért te
 
 ## <a name="office-365-application-launcher"></a>Office 365 Application Launcher
 
-Az Office 365-et üzembe helyező szervezetek esetében az Azure AD-n keresztül a felhasználókhoz rendelt alkalmazások is megjelennek az Office [https://portal.office.com/myapps](https://portal.office.com/myapps)365-portálon. Így egyszerűen és kényelmesen elindíthatja az alkalmazásait anélkül, hogy második portált kellene használnia, és az Office 365-et használó szervezetek számára ajánlott alkalmazás-indítási megoldás.
+Az Office 365-et üzembe helyező szervezetek esetében az Azure AD-n keresztül a felhasználókhoz rendelt alkalmazások is megjelennek az Office 365-portálon [https://portal.office.com/myapps](https://portal.office.com/myapps) . Így egyszerűen és kényelmesen elindíthatja az alkalmazásait anélkül, hogy második portált kellene használnia, és az Office 365-et használó szervezetek számára ajánlott alkalmazás-indítási megoldás.
 
 ![A képernyőképen az Office 365 portál látható](./media/end-user-experiences/microsoft-365-portal-office-com.png)
 
@@ -60,7 +60,7 @@ Az SAML 2,0, a WS-Federation vagy az OpenID Connect szolgáltatást támogató l
 
 Az Azure AD Emellett támogatja a közvetlen egyszeri bejelentkezést a jelszó-alapú egyszeri bejelentkezést, a csatolt egyszeri bejelentkezést és az összevont egyszeri bejelentkezést támogató egyes alkalmazásokra.
 
-Ezek a hivatkozások kifejezetten olyan URL-címek, amelyek az Azure AD bejelentkezési folyamatán keresztül küldenek felhasználót egy adott alkalmazáshoz anélkül, hogy a felhasználónak el kellene indítania azokat az Azure AD hozzáférési paneljéről vagy az Office 365-ből. Ezek a **felhasználói hozzáférési URL-címek** az elérhető vállalati alkalmazások tulajdonságai alatt találhatók. A Azure Portal válassza a **Azure Active Directory** > **vállalati alkalmazások**lehetőséget. Válassza ki az alkalmazást, majd válassza a **Tulajdonságok**lehetőséget.
+Ezek a hivatkozások kifejezetten olyan URL-címek, amelyek az Azure AD bejelentkezési folyamatán keresztül küldenek felhasználót egy adott alkalmazáshoz anélkül, hogy a felhasználónak el kellene indítania azokat az Azure AD hozzáférési paneljéről vagy az Office 365-ből. Ezek a **felhasználói hozzáférési URL-címek** az elérhető vállalati alkalmazások tulajdonságai alatt találhatók. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki az alkalmazást, majd válassza a **Tulajdonságok**lehetőséget.
 
 ![Felhasználói hozzáférési URL-cím – példa a Twitter tulajdonságaiban](media/end-user-experiences/direct-sign-on-link.png)
 

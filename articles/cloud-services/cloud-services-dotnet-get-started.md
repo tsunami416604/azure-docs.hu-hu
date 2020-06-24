@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: dcaa87b8bf37cc0410c052b82014209327d5fe99
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310648"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255228"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -104,9 +104,9 @@ A következő szakaszban konfigurálhatja a megoldást az Azure felhőbeli erőf
 Az alkalmazás felhőben való futtatásához az alábbi lépéseket kell végrehajtania:
 
 * Hozzon létre egy Azure-felhőszolgáltatást.
-* Hozzon létre egy Azure SQL-adatbázist.
+* Hozzon létre egy adatbázist a Azure SQL Databaseban.
 * Hozzon létre egy Azure-tárfiókot.
-* Konfigurálja a megoldást arra, hogy az Azure-ban való futáskor az Azure SQL-adatbázist használja.
+* Konfigurálja a megoldást az adatbázis használatára az Azure-ban való futtatáskor.
 * Konfigurálja a megoldást arra, hogy az Azure-ban való futáskor az Azure-tárfiókot használja.
 * Telepítse a projektet az Azure-felhőszolgáltatásában.
 
@@ -124,13 +124,13 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 5. Válassza ki a régiót, ahol telepíteni szeretné az alkalmazást.
 
     Ez a mező határozza meg, hogy a felhőszolgáltatása melyik adatközpontban fog üzemelni. Termelési alkalmazások esetében az ügyfeleihez legközelebb eső régiót kellene kiválasztania. A jelen oktatóanyag esetében válassza az Önhöz legközelebbi régiót.
-5. Kattintson a **Létrehozás**gombra.
+5. Kattintson a **Létrehozás** lehetőségre.
 
     Az alábbi képen egy CSvccontosoads.cloudapp.net URL-címmel ellátott felhőszolgáltatás létrehozása történik.
 
     ![Új felhőszolgáltatás](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>Azure SQL-adatbázis létrehozása
+### <a name="create-a-database-in-azure-sql-database"></a>Adatbázis létrehozása Azure SQL Database
 Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 
 1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforrás létrehozása > Adatbázisok > SQL Database** elemre.
@@ -153,7 +153,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
     ![Új kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kattintson a **Létrehozás**gombra.
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 Az Azure-tárfiók erőforrásokat biztosít az üzenetsor és a blob adatainak felhőbeli tárolásához.
@@ -176,14 +176,15 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
     Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Kattintson a **Létrehozás**gombra.
+7. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
 
     Az alábbi képen egy `csvccontosoads.core.windows.net` URL-címmel ellátott tárfiók lesz létrehozva.
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>A megoldás konfigurálása arra, hogy az Azure-ban való futáskor az Azure SQL-adatbázist használja
-A webes projekt és a feldolgozói szerepkör is saját adatbázis-kapcsolati sztringgel rendelkezik, és mindkettőnek az Azure SQL-adatbázisra kell mutatnia az alkalmazás Azure-ban való futásakor.
+### <a name="configure-the-solution-to-use-your-database-in-azure-sql-database-when-it-runs-in-azure"></a>A megoldás konfigurálása az adatbázis használatára Azure SQL Database az Azure-ban való futtatáskor
+
+A webes projekt és a feldolgozói szerepkör-projekt mindegyike saját adatbázis-kapcsolati karakterlánccal rendelkezik, és mindegyiknek a Azure SQL Database adatbázisára kell mutatnia, amikor az alkalmazás az Azure-ban fut.
 
 A webes szerepkör esetében [Web.config transzformálása](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations), a feldolgozói szerepkör esetében pedig felhőszolgáltatás környezeti beállítást kell alkalmaznia.
 

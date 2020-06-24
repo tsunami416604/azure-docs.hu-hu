@@ -3,25 +3,25 @@ title: Hivatkozások és URL-címek lefordítása Azure AD alkalmazás proxyn | 
 description: Az Azure AD Application Proxy-összekötők alapjaira terjed ki.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69533703"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764842"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Hardcoded-hivatkozások átirányítása az Azure AD Application Proxy-ban közzétett alkalmazásokra
 
@@ -75,7 +75,7 @@ Ha a hivatkozás fordítása engedélyezve van, az Application proxy szolgáltat
 
 A hitelesítés után, amikor a proxykiszolgáló átadja az alkalmazásadatok a felhasználónak, az alkalmazásproxy megkeresi az alkalmazást az hardcoded-hivatkozásokra, és lecseréli azokat a megfelelő, közzétett külső URL-címekre.
 
-Az alkalmazásproxy feltételezi, hogy az alkalmazások UTF-8-ban vannak kódolva. Ha ez nem így van, adja meg a kódolás típusát egy http-válasz fejlécében, `Content-Type:text/html;charset=utf-8`például:.
+Az alkalmazásproxy feltételezi, hogy az alkalmazások UTF-8-ban vannak kódolva. Ha ez nem így van, adja meg a kódolás típusát egy http-válasz fejlécében, például: `Content-Type:text/html;charset=utf-8` .
 
 ### <a name="which-links-are-affected"></a>Mely hivatkozások érintik?
 
@@ -83,8 +83,8 @@ A hivatkozás fordítási funkciója csak az alkalmazás törzsében lévő kód
 
 A helyszíni alkalmazásokban két általános típusú belső kapcsolat létezik:
 
-- **Relatív belső hivatkozások** , amelyek egy megosztott erőforrásra mutatnak egy helyi fájlmegosztás, `/claims/claims.html`például:. Ezek a hivatkozások automatikusan működnek az Application proxyn keresztül közzétett alkalmazásokban, és a kapcsolat fordításával vagy anélkül is dolgozhatnak. 
-- A **hardcoded belső hivatkozásokat** más helyszíni alkalmazásokra, `http://expenses` például a (z `http://expenses/logo.jpg`) vagy a közzétett fájlokra. A hivatkozás fordítási funkciója hardcoded belső hivatkozásokon működik, és úgy módosítja őket, hogy azok a külső URL-címekre mutassanak, amelyeket a távoli felhasználóknak el kell végezniük.
+- **Relatív belső hivatkozások** , amelyek egy megosztott erőforrásra mutatnak egy helyi fájlmegosztás, például: `/claims/claims.html` . Ezek a hivatkozások automatikusan működnek az Application proxyn keresztül közzétett alkalmazásokban, és a kapcsolat fordításával vagy anélkül is dolgozhatnak. 
+- A **hardcoded belső hivatkozásokat** más helyszíni alkalmazásokra, például a (z `http://expenses` ) vagy a közzétett fájlokra `http://expenses/logo.jpg` . A hivatkozás fordítási funkciója hardcoded belső hivatkozásokon működik, és úgy módosítja őket, hogy azok a külső URL-címekre mutassanak, amelyeket a távoli felhasználóknak el kell végezniük.
 
 Az Application proxy által támogatott HTML-kódelemek teljes listája a következőkhöz:
 * a
@@ -107,7 +107,7 @@ Az Application proxy által támogatott HTML-kódelemek teljes listája a követ
 * szkriptet.
 * source
 * követés
-* Videó
+* videó
 
 Emellett a CSS-en belül az URL-attribútum is le van fordítva.
 
@@ -137,7 +137,7 @@ Ha a két forgatókönyv egyikét kell támogatnia, használja a kapcsolat ford�
 A hivatkozás fordításának első lépései olyan egyszerűek, mint a gombra kattintva:
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-2. Lépjen **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** lehetőségre > válassza ki azt az alkalmazást, amelyet > **alkalmazásproxy**kezelésére szeretne használni.
+2. Lépjen **Azure Active Directory**  >  **vállalati alkalmazások**  >  **minden alkalmazás** lehetőségre > válassza ki azt az alkalmazást, amelyet > **alkalmazásproxy**kezelésére szeretne használni.
 3. Az **alkalmazás törzsében lévő URL-címek fordítása** **Igen**.
 
    ![Válassza az Igen lehetőséget az URL-címek lefordításához az alkalmazás törzsében](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)

@@ -6,14 +6,14 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d29fef42fb875c6ed55ac1d879b9c398490e1700
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676359"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298820"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Hozzáférés hitelesítése Event Hubs erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával
 A közös hozzáférésű aláírás (SAS) részletesen szabályozza az Ön által a közös hozzáférési aláírással rendelkező ügyfelek számára biztosított hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
@@ -63,13 +63,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 A jogkivonat a nem kivonatos értékeket tartalmazza, így a címzett újra kiszámíthatja a kivonatot ugyanazzal a paraméterekkel, és ellenőrizheti, hogy a kiállító rendelkezik-e érvényes aláíró kulccsal.
 
-Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. <namespace>Például: http://.<entityPath> servicebus.Windows.net/vagy `sb://<namespace>.servicebus.windows.net/<entityPath>;` ,. `http://contoso.servicebus.windows.net/eventhubs/eh1`
+Az erőforrás URI-ja annak a Service Bus-erőforrásnak a teljes URI azonosítója, amelyhez hozzáférést igényelnek. Például: http:// <namespace> . servicebus.Windows.net/ <entityPath> vagy `sb://<namespace>.servicebus.windows.net/<entityPath>;` , `http://contoso.servicebus.windows.net/eventhubs/eh1` .
 
 Az URI-nak százalékos kódolással kell rendelkeznie.
 
-Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. Például `http://contoso.servicebus.windows.net/eventhubs/eh1` vagy `http://contoso.servicebus.windows.net` az előző példában.
+Az aláíráshoz használt megosztott hozzáférés-engedélyezési szabályt az URI által megadott entitáson vagy annak egyik hierarchikus szülője szerint kell konfigurálni. Például vagy az `http://contoso.servicebus.windows.net/eventhubs/eh1` `http://contoso.servicebus.windows.net` előző példában.
 
-A SAS-token az aláírás-karakterláncban <resourceURI> használt összes erőforráshoz előtaggal érvényes.
+A SAS-token az <resourceURI> aláírás-karakterláncban használt összes erőforráshoz előtaggal érvényes.
 
 > [!NOTE]
 > A Event Hubs hozzáférési jogkivonatot hoz majd a megosztott hozzáférési házirend használatával. További információ: [megosztott hozzáférés engedélyezési házirendje](authorize-access-shared-access-signature.md#shared-access-authorization-policies).

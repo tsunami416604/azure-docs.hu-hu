@@ -4,12 +4,12 @@ description: Az Azure Blockchain Workbench előzetes verziójú architektúráj�
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
-ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324901"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253426"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Az Azure Blockchain Workbench-architektúra
 
@@ -43,12 +43,12 @@ További információkért tekintse meg az [Azure Blockchain Workbench minta üg
 
 ## <a name="gateway-service-api"></a>Az átjáró szolgáltatás API-ját
 
-A Blockchain Workbench egy REST-alapú átjárószolgáltatás API-t tartalmaz. Egy blockchain írásakor az API létrehoz és kézbesít üzeneteket egy esemény-közvetítőnek. Ha az API kéri az adatkérést, a rendszer a lekérdezéseket a távoli láncú SQL-adatbázisba küldi. Az SQL Database tartalmaz egy replikát a láncban lévő adatokról és metaadatokról, amelyek környezeti és konfigurációs adatokat biztosítanak a támogatott intelligens szerződések számára. A lekérdezések a nem Láncos replikából származó szükséges adatokat a szerződés metaadatainak által tájékozott formátumban adják vissza.
+A Blockchain Workbench egy REST-alapú átjárószolgáltatás API-t tartalmaz. Egy blockchain írásakor az API létrehoz és kézbesít üzeneteket egy esemény-közvetítőnek. Ha az API kéri az adatkérést, a rendszer a lekérdezéseket a láncon kívüli adatbázisba küldi. Az adatbázis tartalmaz egy replikát a láncban lévő adatokról és metaadatokról, amelyek környezeti és konfigurációs adatokat biztosítanak a támogatott intelligens szerződések számára. A lekérdezések a nem Láncos replikából származó szükséges adatokat a szerződés metaadatainak által tájékozott formátumban adják vissza.
 
 A fejlesztők hozzáférhetnek az átjáró szolgáltatás API-hoz a blockchain-megoldások létrehozásához és integrálásához anélkül, hogy a Blockchain Workbench ügyfélalkalmazások támaszkodnak.
 
 > [!NOTE]
-> Az API hitelesített hozzáférésének engedélyezéséhez két ügyfélalkalmazás van regisztrálva Azure Active Directoryban. Azure Active Directory külön alkalmazás-regisztrációt igényel minden egyes alkalmazás-típushoz (natív és webes). 
+> Az API hitelesített hozzáférésének engedélyezéséhez két ügyfélalkalmazás van regisztrálva Azure Active Directoryban. Azure Active Directory külön alkalmazás-regisztrációt igényel minden egyes alkalmazás-típushoz (natív és webes).
 
 ## <a name="message-broker-for-incoming-messages"></a>Üzenetküldés a bejövő üzenetekhez
 
@@ -70,7 +70,7 @@ Az elosztott Főkönyv technológiájának (DLT) üzenetei tartalmazzák a block
 
 ### <a name="database-consumer"></a>Adatbázis-fogyasztó
 
-Az adatbázis felhasználója Service Bus üzeneteket fogad, és leküldi az adatok egy csatolt adatbázisba, például az SQL Database-be.
+Az adatbázis felhasználója Service Bus üzeneteket fogad, és leküldi az adatok egy csatolt adatbázisba, például egy Azure SQL Database-adatbázisba.
 
 ### <a name="storage-consumer"></a>Storage-fogyasztó
 
@@ -91,11 +91,11 @@ A tranzakciós útválasztók és a főkönyvek aláírt tranzakciókat készít
 Az elosztott Főkönyv technológiája (DLT) figyelő figyeli a Blockchain Workbenchhez csatolt blokk-láncokban előforduló eseményeket.
 Az események az egyéni felhasználókra és rendszerekre vonatkozó információkat tükrözik. Például az új szerződési példányok létrehozása, a tranzakciók végrehajtása és az állapot változásai. Az eseményeket a rendszer rögzíti és elküldi a kimenő üzenet-közvetítőnek, így azokat a továbbfelhasználó is felhasználhatja.
 
-Az SQL-felhasználó például figyeli az eseményeket, felhasználja őket, és feltölti az SQL-adatbázist a belefoglalt értékekkel. A másolás lehetővé teszi, hogy az adatláncban lévő adattárak replikáját egy láncon kívüli tárolóban tárolja.
+Az SQL-felhasználó például figyeli az eseményeket, felhasználja őket, és feltölti az adatbázist a belefoglalt értékekkel. A másolás lehetővé teszi, hogy az adatláncban lévő adattárak replikáját egy láncon kívüli tárolóban tárolja.
 
-## <a name="azure-sql-database"></a>Azure SQL-adatbázis
+## <a name="azure-sql-database"></a>Azure SQL Database
 
-A Blockchain Workbenchhez csatolt Azure SQL Database a Blockchain tárolt adatokhoz tartozó szerződés-definíciókat, konfigurációs metaadatokat és SQL-alapú replikát tárolja. Ezeket az adatok könnyen lekérdezhető, megjeleníthető vagy elemezhető az adatbázishoz való közvetlen hozzáféréssel. A fejlesztők és más felhasználók az adatbázist jelentéskészítési, elemzési vagy egyéb adatközpontos integrációhoz használhatják. Például a felhasználók megjeleníthetik a tranzakciós adataikat Power BI használatával.
+A Blockchain Workbenchhez csatolt adatbázis tárolja a Blockchain tárolt adatokhoz tartozó szerződés-definíciókat, konfigurációs metaadatokat és az SQL-hez elérhető replikát. Ezeket az adatok könnyen lekérdezhető, megjeleníthető vagy elemezhető az adatbázishoz való közvetlen hozzáféréssel. A fejlesztők és más felhasználók az adatbázist jelentéskészítési, elemzési vagy egyéb adatközpontos integrációhoz használhatják. Például a felhasználók megjeleníthetik a tranzakciós adataikat Power BI használatával.
 
 Ez a távoli láncú tárterület lehetővé teszi, hogy a nagyvállalati szervezetek SQL-alapú lekérdezéseket blockchain-főkönyvben ne kelljen lekérdezni. Emellett azáltal, hogy a standard sémán alapuló, a blockchain-alapú technológiákat is támogatja, a láncon kívüli tárolók lehetővé teszik a jelentések és egyéb összetevők újrafelhasználását a projektek, forgatókönyvek és szervezetek között.
 

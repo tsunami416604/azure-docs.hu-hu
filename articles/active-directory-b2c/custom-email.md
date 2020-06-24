@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6cc0508a63f26b955ac5e0ebf3ef58a184a35997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63a2b462fe08cb37ca655aa91474601decce8000
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671636"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202840"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Egyéni e-mail-ellenőrzés Azure Active Directory B2C
 
@@ -41,10 +41,10 @@ Ezután tárolja a SendGrid API-kulcsot egy Azure AD B2C házirend-kulcsban a sz
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. A **Beállítások**területen válassza `Manual`a lehetőséget.
-1. Adja meg a szabályzat kulcsának **nevét** . Például: `SendGridSecret`. A rendszer `B2C_1A_` automatikusan hozzáadja az előtagot a kulcs nevéhez.
+1. A **Beállítások**területen válassza a lehetőséget `Manual` .
+1. Adja meg a szabályzat kulcsának **nevét** . Például: `SendGridSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
-1. A **kulcshasználat**beállításnál válassza `Signature`a elemet.
+1. A **kulcshasználat**beállításnál válassza a elemet `Signature` .
 1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-sendgrid-template"></a>SendGrid-sablon létrehozása
@@ -52,10 +52,10 @@ Ezután tárolja a SendGrid API-kulcsot egy Azure AD B2C házirend-kulcsban a sz
 Egy Azure AD B2C SendGrid-fiókkal létrehozott és SendGrid API-kulcs használatával hozzon létre egy SendGrid [dinamikus tranzakciós sablont](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/).
 
 1. A SendGrid webhelyen nyissa meg a [tranzakciós sablonok](https://sendgrid.com/dynamic_templates) lapot, és válassza a **sablon létrehozása**lehetőséget.
-1. Adjon meg egy egyedi nevet a `Verification email` sablonhoz, majd válassza a **Mentés**lehetőséget.
+1. Adjon meg egy egyedi nevet a sablonhoz `Verification email` , majd válassza a **Mentés**lehetőséget.
 1. Az új sablon szerkesztésének megkezdéséhez válassza a **verzió hozzáadása**lehetőséget.
 1. Válassza ki a **Kódszerkesztő** elemet, majd **folytassa a művelettel**.
-1. A HTML-szerkesztőben illessze be a következő HTML-sablont, vagy használja a sajátját. A `{{otp}}` és `{{email}}` a paraméterek dinamikusan lesznek lecserélve az egyszeri jelszóval és a felhasználói e-mail-címmel.
+1. A HTML-szerkesztőben illessze be a következő HTML-sablont, vagy használja a sajátját. A `{{otp}}` és a `{{email}}` Paraméterek dinamikusan lesznek lecserélve az egyszeri jelszóval és a felhasználói e-mail-címmel.
 
     ```HTML
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -151,18 +151,18 @@ Egy Azure AD B2C SendGrid-fiókkal létrehozott és SendGrid API-kulcs használa
     </html>
     ```
 
-1. Bontsa ki a bal oldalon a **Beállítások** elemet, és az `{{subject}}` **e-mail tárgya**mezőbe írja be a következőt:.
+1. Bontsa ki a bal oldalon a **Beállítások** elemet, és az **e-mail tárgya**mezőbe írja be a következőt: `{{subject}}` .
 1. Válassza a **sablon mentése**lehetőséget.
 1. A vissza nyílra kattintva térjen vissza a **tranzakciós sablonok** oldalára.
 1. Jegyezze fel a létrehozott sablon **azonosítóját** egy későbbi lépésben való használatra. Például: `d-989077fbba9746e89f3f6411f596fb96`. Ezt az azonosítót kell megadnia [a jogcím-átalakítás hozzáadásakor](#add-the-claims-transformation).
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C jogcím-típusok hozzáadása
 
-A szabályzatban adja hozzá a következő típusú jogcímeket `<ClaimsSchema>` a elemhez: `<BuildingBlocks>`.
+A szabályzatban adja hozzá a következő típusú jogcímeket a `<ClaimsSchema>` elemhez: `<BuildingBlocks>` .
 
 Ezek a jogcím-típusok szükségesek az e-mail-cím egyszeri jelszavas (OTP) kóddal történő létrehozásához és ellenőrzéséhez.
 
-```XML
+```xml
 <ClaimType Id="Otp">
   <DisplayName>Secondary One-time password</DisplayName>
   <DataType>string</DataType>
@@ -185,13 +185,13 @@ Ezután szükség van egy jogcím-átalakításra, amely egy JSON-karakterlánc-
 
 A JSON-objektum struktúráját az azonosítók a InputParameters és a Szabályzattípushoz TransformationClaimTypes határozza meg. A pont jelölésében szereplő számok tömböket jelentenek. Az értékek a Szabályzattípushoz "Values" és a InputParameters "" érték "tulajdonságaiból származnak. A JSON-jogcímek átalakításával kapcsolatos további információkért lásd a [JSON-jogcímek átalakítását](json-transformations.md)ismertető témakört.
 
-Adja hozzá a következő jogcím-átalakítást `<ClaimsTransformations>` a `<BuildingBlocks>`elemen belül. Hajtsa végre a következő frissítéseket a jogcím-átalakítási XML-ben:
+Adja hozzá a következő jogcím-átalakítást a `<ClaimsTransformations>` elemen belül `<BuildingBlocks>` . Hajtsa végre a következő frissítéseket a jogcím-átalakítási XML-ben:
 
-* Frissítse a `template_id` InputParameter értéket a [SendGrid létrehozása sablonban](#create-sendgrid-template)korábban létrehozott SENDGRID tranzakciós sablon azonosítójával.
+* Frissítse a `template_id` InputParameter értéket a [SendGrid létrehozása sablonban](#create-sendgrid-template)korábban létrehozott SendGrid tranzakciós sablon azonosítójával.
 * Módosítsa a `from.email` címtartomány értékét. Érvényes e-mail-cím használatával megakadályozhatja, hogy az ellenőrző e-mailek levélszemétként legyenek megjelölve.
 * Frissítse a `personalizations.0.dynamic_template_data.subject` Tárgy sor bemeneti paraméter értékét a szervezete számára megfelelő tárgyi vonallal.
 
-```XML
+```xml
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
@@ -213,9 +213,9 @@ Adja hozzá a következő jogcím-átalakítást `<ClaimsTransformations>` a `<B
 
 ## <a name="add-datauri-content-definition"></a>DataUri-definíció hozzáadása
 
-A jogcímek átalakításai `<BuildingBlocks>`alatt adja hozzá a következő [ContentDefinition](contentdefinitions.md) az 2.0.0-adaturi verzióra való hivatkozáshoz:
+A jogcímek átalakításai alatt `<BuildingBlocks>` adja hozzá a következő [ContentDefinition](contentdefinitions.md) az 2.0.0-adaturi verzióra való hivatkozáshoz:
 
-```XML
+```xml
 <ContentDefinitions>
  <ContentDefinition Id="api.localaccountsignup">
     <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
@@ -229,16 +229,16 @@ A rendszer ellenőrzi, hogy az e-mail-cím a felhasználónak küldött ellenőr
 
 Ez a példa megjelenítési vezérlő a következőre van konfigurálva:
 
-1. Gyűjtse össze `email` a jogcím típusát a felhasználótól.
-1. Várjon, amíg a felhasználó meg nem `verificationCode` adja a jogcím típusát a felhasználónak továbbított kóddal.
-1. Térjen `email` vissza a visszaadott technikai profilhoz, amely erre a megjelenítési vezérlőelemre hivatkozik.
+1. Gyűjtse össze a `email` jogcím típusát a felhasználótól.
+1. Várjon, amíg a felhasználó meg nem adja a `verificationCode` jogcím típusát a felhasználónak továbbított kóddal.
+1. Térjen vissza a visszaadott `email` technikai profilhoz, amely erre a megjelenítési vezérlőelemre hivatkozik.
 1. A `SendCode` művelettel egy egyszeri jelszavas kódot kell előállítania, és e-mailt kell küldenie az OTP-kóddal a felhasználónak.
 
 ![Ellenőrző kód e-mail-műveletének küldése](media/custom-email/display-control-verification-email-action-01.png)
 
-A tartalmi definíciók területen még `<BuildingBlocks>`a-ban is adja hozzá a következő [DisplayControl](display-controls.md) típusú [VerificationControl](display-control-verification.md) a szabályzathoz.
+A tartalmi definíciók területen még `<BuildingBlocks>` a-ban is adja hozzá a következő [DisplayControl](display-controls.md) típusú [VerificationControl](display-control-verification.md) a szabályzathoz.
 
-```XML
+```xml
 <DisplayControls>
   <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
     <DisplayClaims>
@@ -269,9 +269,9 @@ A tartalmi definíciók területen még `<BuildingBlocks>`a-ban is adja hozzá a
 
 A `GenerateOtp` technikai profil létrehoz egy kódot az e-mail-cím számára. A `VerifyOtp` technikai profil ellenőrzi az e-mail-címmel társított kódot. Módosíthatja a formátum konfigurációját és az egyszeri jelszó lejárati idejét. Az OTP technikai profiljaival kapcsolatos további információkért lásd: [egyszeri jelszóval kapcsolatos technikai profil meghatározása](one-time-password-technical-profile.md).
 
-Adja hozzá a következő technikai profilokat `<ClaimsProviders>` a elemhez.
+Adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>One time password technical profiles</DisplayName>
   <TechnicalProfiles>
@@ -315,7 +315,7 @@ Ez a REST API technikai profil az e-mail-tartalmat hozza létre (a SendGrid form
 
 Az OTP technikai profiljaihoz hasonlóan adja hozzá a következő technikai profilokat a `<ClaimsProviders>` elemhez.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>RestfulProvider</DisplayName>
   <TechnicalProfiles>
@@ -344,11 +344,11 @@ Az OTP technikai profiljaihoz hasonlóan adja hozzá a következő technikai pro
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Hivatkozás készítése a DisplayControl
 
-Az utolsó lépésben adjon hozzá egy hivatkozást a létrehozott DisplayControl. Cserélje le a `LocalAccountSignUpWithLogonEmail` meglévő önjelölt technikai profilt a következőre, ha a Azure ad B2C szabályzat korábbi verzióját használta. Ez a technikai profil `DisplayClaims` a DisplayControl mutató hivatkozást használja.
+Az utolsó lépésben adjon hozzá egy hivatkozást a létrehozott DisplayControl. Cserélje le a meglévő `LocalAccountSignUpWithLogonEmail` önjelölt technikai profilt a következőre, ha a Azure ad B2C szabályzat korábbi verzióját használta. Ez a technikai profil a `DisplayClaims` DisplayControl mutató hivatkozást használja.
 
 További információ: [önérvényesített technikai profil](restful-technical-profile.md) és [DisplayControl](display-controls.md).
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -395,14 +395,14 @@ További információ: [önérvényesített technikai profil](restful-technical-
 
 ## <a name="optional-localize-your-email"></a>Választható E-mail honosítása
 
-Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie a SendGrid vagy az e-mail-szolgáltatónak. Például az e-mail-tárgy, a törzs, a kód üzenet vagy az e-mail aláírásának honosítása. Ehhez használhatja a [GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítást a honosított karakterláncok jogcím-típusokra való másolásához. A JSON `GenerateSendGridRequestBody` -adattartalmat generáló jogcím-átalakítás a honosított karakterláncokat tartalmazó bemeneti jogcímeket használja.
+Az e-mail honosítása érdekében honosított karakterláncokat kell küldenie a SendGrid vagy az e-mail-szolgáltatónak. Például az e-mail-tárgy, a törzs, a kód üzenet vagy az e-mail aláírásának honosítása. Ehhez használhatja a [GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítást a honosított karakterláncok jogcím-típusokra való másolásához. A `GenerateSendGridRequestBody` JSON-adattartalmat generáló jogcím-átalakítás a honosított karakterláncokat tartalmazó bemeneti jogcímeket használja.
 
 1. A szabályzatban adja meg a következő karakterlánc-jogcímeket: tulajdonos, üzenet, codeIntro és aláírás.
 1. Definiáljon egy [GetLocalizedStringsTransformation](string-transformations.md) jogcím-átalakítást a honosított karakterlánc-értékek helyettesítéséhez az 1. lépésben szereplő jogcímekbe.
 1. Módosítsa a `GenerateSendGridRequestBody` jogcím-átalakítást a bemeneti jogcímek használatára a következő XML-kódrészlettel.
-1. Frissítse a SendGrind-sablont a dinamikus paraméterek használatára a Azure AD B2C által honosított karakterláncok helyett.
+1. Frissítse a SendGrind-sablont a dinamikus paraméterek használatára a Azure AD B2C által honosított összes karakterlánc helyett.
 
-```XML
+```xml
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />

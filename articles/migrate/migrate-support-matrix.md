@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Migrate szolgáltatás támogatási beállí
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: c1ed127834b826488d02b39304dd943866171441
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 51f797ad80886669a8734af6898164737d16971a
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193575"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770186"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -32,7 +32,7 @@ A táblázat összefoglalja a támogatott felderítési, felmérési és áttele
 
 Az eszközök adott támogatását a táblázat foglalja össze.
 
-**Eszköz** | **Felmérése** | **Áttelepítése** 
+**Eszköz** | **Felmérése** | **Migrate (Áttelepítés)** 
 --- | --- | ---
 Azure Migrate kiszolgáló értékelése | A [VMWare virtuális gépek](tutorial-prepare-vmware.md), a [Hyper-V virtuális gépek](tutorial-prepare-hyper-v.md)és a [fizikai kiszolgálók](tutorial-prepare-physical.md)értékelése. |  Nem érhető el (NA)
 Azure Migrate Server Migration | NA | Telepítse át a [VMWare virtuális gépeket](tutorial-migrate-vmware.md), a [Hyper-V virtuális gépeket](tutorial-migrate-hyper-v.md)és a [fizikai kiszolgálókat](tutorial-migrate-physical-virtual-machines.md).
@@ -68,7 +68,7 @@ Ahhoz, hogy a Azure Migrate az Azure-ban működjön, a gépek felmérése és �
 **Tevékenység** | **Engedélyek** | **Részletek**
 --- | --- | ---
 Azure Migrate projekt létrehozása | Az Azure-fióknak rendelkeznie kell a projekt létrehozásához szükséges engedélyekkel. | A [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project), a [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)vagy a [fizikai kiszolgálók](tutorial-prepare-physical.md#assign-permissions-to-create-project)beállítása.
-A Azure Migrate berendezés regisztrálása| A Azure Migrate egy könnyű [Azure Migrate berendezés](migrate-appliance.md) használatával értékeli a gépeket Azure Migrate kiszolgáló értékelésével, valamint a VMWare virtuális gépek [ügynök nélküli áttelepítését](server-migrate-overview.md) Azure Migrate kiszolgáló áttelepítésével. Ez a készülék felfedi a gépeket, és metaadatokat és teljesítményadatokat küld Azure Migrate.<br/><br/> A regisztráció során a regisztrálók (Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó) regisztrálva vannak a berendezésben kiválasztott előfizetésben, hogy az előfizetés működjön az erőforrás-szolgáltatóval. A regisztráláshoz közreműködői vagy tulajdonosi hozzáférésre van szükség az előfizetésben.<br/><br/> **VMware**– a bevezetéskor Azure Migrate két Azure Active Directory (Azure ad) alkalmazást hoz létre. Az első alkalmazás kommunikál a berendezés-ügynökök és a Azure Migrate szolgáltatás között. Az alkalmazás nem rendelkezik engedéllyel az Azure Resource Management-hívások létrehozásához, vagy RBAC hozzáférés az erőforrásokhoz. A második alkalmazás csak az ügynök nélküli VMware Migrálás felhasználói előfizetésében létrehozott Azure Key Vault fér hozzá. Ügynök nélküli Migrálás esetén Azure Migrate létrehoz egy Key Vault, amely a hozzáférési kulcsokat az előfizetésében lévő replikációs Storage-fiókhoz kezeli. A RBAC hozzáférése a Azure Key Vault (az ügyfél bérlője), ha a készülékről indított felderítést.<br/><br/> **Hyper-V**– az előkészítés során. Azure Migrate létrehoz egy Azure AD-alkalmazást. Az alkalmazás kommunikál a berendezés-ügynökök és a Azure Migrate szolgáltatás között. Az alkalmazás nem rendelkezik engedéllyel az Azure Resource Management-hívások létrehozásához, vagy RBAC hozzáférés az erőforrásokhoz. | A [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance), a [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)vagy a [fizikai kiszolgálók](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)beállítása.
+A Azure Migrate berendezés regisztrálása| A Azure Migrate egy könnyű [Azure Migrate berendezés](migrate-appliance.md) használatával értékeli a gépeket Azure Migrate kiszolgáló értékelésével, valamint a VMWare virtuális gépek [ügynök nélküli áttelepítését](server-migrate-overview.md) Azure Migrate kiszolgáló áttelepítésével. Ez a készülék felfedi a gépeket, és metaadatokat és teljesítményadatokat küld Azure Migrate.<br/><br/> A regisztráció során a regisztrálók (Microsoft. OffAzure, Microsoft. Migrál és Microsoft. kulcstartó) regisztrálva vannak a berendezésben kiválasztott előfizetésben, hogy az előfizetés működjön az erőforrás-szolgáltatóval. A regisztráláshoz közreműködői vagy tulajdonosi hozzáférésre van szükség az előfizetésben.<br/><br/> **VMware**– a bevezetéskor Azure Migrate két Azure Active Directory (Azure ad) alkalmazást hoz létre. Az első alkalmazás kommunikál a berendezés-ügynökök és a Azure Migrate szolgáltatás között. Az alkalmazás nem rendelkezik engedéllyel az Azure Resource Management-hívások létrehozásához, vagy RBAC hozzáférés az erőforrásokhoz. A második alkalmazás csak az ügynök nélküli VMware Migrálás felhasználói előfizetésében létrehozott Azure Key Vault fér hozzá. Ügynök nélküli Migrálás esetén Azure Migrate létrehoz egy Key Vault, amely a hozzáférési kulcsokat az előfizetésében lévő replikációs Storage-fiókhoz kezeli. A RBAC hozzáférése a Azure Key Vault (az ügyfél bérlője), ha a készülékről indított felderítést.<br/><br/> **Hyper-V**– az előkészítés során. Azure Migrate létrehoz egy Azure AD-alkalmazást. Az alkalmazás kommunikál a berendezés-ügynökök és a Azure Migrate szolgáltatás között. Az alkalmazás nem rendelkezik engedéllyel az Azure Resource Management-hívások létrehozásához, vagy RBAC hozzáférés az erőforrásokhoz. | A [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps), a [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-azure-ad-apps)vagy a [fizikai kiszolgálók](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)beállítása.
 Key Vault létrehozása a VMware ügynök nélküli Migrálás számára | Ha a VMware virtuális gépeket ügynök nélküli Azure Migrate kiszolgáló áttelepítésével szeretné áttelepíteni, Azure Migrate létrehoz egy Key Vault, amely a hozzáférési kulcsokat az előfizetésében lévő replikációs Storage-fiókhoz kezeli. A tároló létrehozásához meg kell határoznia az engedélyeket (tulajdonos, közreműködő és felhasználói hozzáférés rendszergazdája) azon az erőforráson, amelyben a Azure Migrate projekt található. | Engedélyek [beállítása](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) .
 
 ## <a name="supported-geographies-public-cloud"></a>Támogatott földrajzi területek (nyilvános felhő)
@@ -113,7 +113,7 @@ Cél replikációja | Egyesült Államok | Célcsoportok: US DoD – középső 
 
 A Azure Migrate szolgáltatásnak két verziója van:
 
-- **Aktuális verzió**: ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információk](whats-new.md).
+- **Aktuális verzió**: ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információ](whats-new.md).
 - **Előző verzió**: a Azure Migrate korábbi verzióját használó ügyfelek esetében (csak a helyszíni VMWare virtuális gépek felmérése támogatott), most az aktuális verziót kell használnia. Az előző verzióban nem hozhat létre új Azure Migrate projekteket, és nem végezhet új felfedezéseket.
 
 ## <a name="next-steps"></a>További lépések

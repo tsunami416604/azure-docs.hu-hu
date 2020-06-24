@@ -2,24 +2,24 @@
 title: Felhasználó vagy csoport társítása egy vállalati alkalmazáshoz az Azure AD-ben
 description: Vállalati alkalmazás kiválasztása a felhasználók vagy csoportok hozzárendeléséhez Azure Active Directory
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/21/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b52bc45287e0e3a8f4908630cb6e57130c1725df
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772420"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763737"
 ---
-# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Felhasználó vagy csoport társítása vállalati alkalmazáshoz Azure Active Directory
+# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Felhasználók vagy csoportok hozzárendelése vállalati alkalmazáshoz az Azure Active Directoryban
 
 Ez a cikk bemutatja, hogyan rendelhet hozzá felhasználókat vagy csoportokat Azure Active Directory (Azure AD) vállalati alkalmazásaihoz a Azure Portal vagy a PowerShell használatával. Amikor felhasználót rendel hozzá egy alkalmazáshoz, az alkalmazás a felhasználók [saját alkalmazások hozzáférési paneljén](https://myapps.microsoft.com/) jelenik meg a könnyű hozzáférés érdekében. Ha az alkalmazás szerepköröket tesz elérhetővé, akkor egy adott szerepkört is hozzárendelhet a felhasználóhoz.
 

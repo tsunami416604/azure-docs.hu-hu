@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cf9c333af48e1c148dcd20ccf5ce91b284bd728b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189871"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201225"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -24,7 +24,7 @@ ms.locfileid: "78189871"
 
 A **BuildingBlocks** elem hozzá van adva a [TrustFrameworkPolicy](trustframeworkpolicy.md) elemhez.
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"

@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: a5c55149b9cfbe1c82208347f96383a60b6b1817
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 7ed23f192fc173c1c9802593ed7a043fabd765c2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331525"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254599"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ A magas rendelkezésre állású architektúra zóna redundáns verzióját a k�
 
 ## <a name="accelerated-database-recovery-adr"></a>Gyorsított adatbázis-helyreállítás (ADR)
 
-A [gyorsított adatbázis-helyreállítás (ADR)](../accelerated-database-recovery.md) egy új SQL Database motor-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében. Az ADR jelenleg Azure SQL Database, Azure SQL felügyelt példányhoz és Azure SQL Data Warehousehoz érhető el.
+A [gyorsított adatbázis-helyreállítás (ADR)](../accelerated-database-recovery.md) egy új adatbázismotor-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében. Az ADR jelenleg Azure SQL Database, Azure SQL felügyelt példányhoz és Azure SQL Data Warehousehoz érhető el.
 
 ## <a name="testing-application-fault-resiliency"></a>Az alkalmazás hibatűrési rugalmasságának tesztelése
 
@@ -106,7 +106,7 @@ A feladatátvételt REST API vagy PowerShell használatával lehet kezdeményezn
 
 A Azure SQL Database és az Azure SQL felügyelt példánya beépített, magas rendelkezésre állású megoldást kínál, amely szorosan integrálva van az Azure platformmal. A probléma a hibák észlelése és helyreállítása Service Fabric függ, az Azure Blob Storage az adatvédelem érdekében, valamint a Availability Zones a nagyobb hibatűrés érdekében. Emellett a SQL Database és az SQL felügyelt példánya is kihasználja az Always On rendelkezésre állási csoport technológiáját a SQL Server példányból a replikáláshoz és a feladatátvételhez. Ezeknek a technológiáknak a kombinációja lehetővé teszi, hogy az alkalmazások teljes mértékben felismerje a vegyes tárolási modell előnyeit, és támogassa a legigényesebb SLA-kat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a [Azure Availability Zones](../../availability-zones/az-overview.md)
 - Tudnivalók a [Service Fabric](../../service-fabric/service-fabric-overview.md)

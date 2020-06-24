@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271641"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695334"
 ---
 # <a name="azure-iot-central-architecture"></a>Az Azure IoT Central architektúrája
 
@@ -108,7 +108,7 @@ További információ a IoT Hubről: [Azure IoT hub](https://docs.microsoft.com/
 
 Ha többet szeretne megtudni az Azure IoT Central eszközével való kapcsolatról, tekintse meg az [eszköz kapcsolatát](concepts-get-connected.md)ismertető témakört.
 
-## <a name="data-stores"></a>Adattárak
+## <a name="data-stores"></a>Adattárolók
 
 Az Azure IoT Central az alkalmazásadatok felhőben való tárolását. Az alkalmazásadatok tárolt alkalmazásai a következők:
 

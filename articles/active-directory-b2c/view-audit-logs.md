@@ -12,12 +12,12 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33fa1b063a2c45af41c0da6450bac3f86683653b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264218"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202976"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
@@ -53,7 +53,7 @@ A tevékenység részletei panel a következő releváns információkat tartalm
 
 |Section|Mező|Leírás|
 |-------|-----|-----------|
-| Tevékenység | Name (Név) | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
+| Tevékenység | Name | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
 | Kezdeményező (színész) | ObjectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
 | Kezdeményező (színész) | SPN | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
 | Cél(ok) | ObjectId | A bejelentkezett felhasználó **objektumazonosító** . |
@@ -102,11 +102,11 @@ Miután regisztrált egy alkalmazást a megfelelő engedélyekkel, tekintse meg 
 
 Ha Azure AD B2C naplózási eseményeket az API-n keresztül szeretné letölteni, szűrje a `B2C` kategóriába tartozó naplókat. A kategória szerinti szűréshez használja a `filter` lekérdezési karakterlánc paramétert az Azure ad Reporting API-végpont meghívásakor.
 
-```HTTP
+```http
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
 ```
 
-### <a name="powershell-script"></a>PowerShell-szkript
+### <a name="powershell-script"></a>PowerShell-parancsprogram
 
 Az alábbi PowerShell-szkript bemutatja, hogyan lehet lekérdezni az Azure AD Reporting API-t. Az API lekérdezése után kinyomtatja a naplózott eseményeket a standard kimenetre, majd a JSON-kimenetet fájlba írja.
 
@@ -158,7 +158,7 @@ if ($oauth.access_token -ne $null) {
 
 Itt látható a cikkben korábban bemutatott példa tevékenység esemény JSON-ábrázolása:
 
-```JSON
+```json
 {
     "id": "B2C_DQO3J_4984536",
     "category": "Authentication",

@@ -1,5 +1,5 @@
 ---
-title: Az események értelmezése
+title: Eseményadatok értelmezése
 titleSuffix: Azure Digital Twins
 description: 'Lásd: a különböző eseménytípus értelmezése és a különböző értesítési üzenetek.'
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4c95e686de23654688d0d7c3182c6565a907b750
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e194c046cde623e0fcdd4c73ac24f2bf0755945c
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612962"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299432"
 ---
 # <a name="understand-event-data"></a>Az események értelmezése
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure Digital Twins különböző eseményeinek **értesítéseket**hoznak létre, amelyek lehetővé teszik a megoldási háttér használatát, ha különböző műveletek történnek. Ezeket a rendszer az Azure digitális Ikreken belüli és azon kívüli különböző helyszínekre [irányítja](concepts-route-events.md) át, amelyek felhasználhatják ezeket az információkat a művelet elvégzésére.
 
@@ -233,46 +236,6 @@ A esetében `Relationship.Delete` a törzs megegyezik a `GET` kérelemmel, és a
 }
 ```
 
-### <a name="digital-twin-model-change-notifications"></a>Digitális kettős modell változási értesítései
-
-A **modell módosítására vonatkozó értesítések** akkor aktiválódnak, ha a digitális Twins Definition Language (DTDL) [modellt](concepts-models.md) feltöltik, újratöltve, megjavították, leszerelték vagy törölték.
-
-#### <a name="properties"></a>Tulajdonságok
-
-Itt láthatók a modell-változási értesítések törzsének mezői.
-
-| Name    | Érték |
-| --- | --- |
-| `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id`egyedi a különböző eseményekhez |
-| `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Model.Upload`<br>`Microsoft.DigitalTwins.Model.Reload`(Hub-specifikus)<br>`Microsoft.DigitalTwins.Model.Patch`(Hub-specifikus)<br>`Microsoft.DigitalTwins.Model.Decom`<br>`Microsoft.DigitalTwins.Model.Delete` |
-| `datacontenttype` | application/json |
-| `subject` | A modell azonosítója az űrlapon`dtmi:<domain>:<unique model identifier>;<model version number>` |
-| `time` | Időbélyeg a modellen végzett művelet bekövetkeztekor |
-| `sequence` | Érték, amely az esemény pozícióját a nagyobb rendezett események sorrendjében fejezi ki. A szolgáltatásoknak sorozatszámot kell hozzáadniuk az összes értesítéshez, hogy megadják a sorrendjét, vagy más módon megtartsák a saját rendelését. A sorozatszám minden üzenettel nő. A rendszer visszaállítja az 1 értékre, ha az objektumot törli, és ugyanazzal az AZONOSÍTÓval hozza létre újra. |
-| `sequencetype` | További részletek a Sequence mező használatáról. Ez a tulajdonság például azt is megadhatja, hogy az értéknek egy aláírt 32 bites egész számnak kell lennie, amely az 1. időpontban kezdődik, és eggyel növekszik. |
-| `modelstatus` | A modell feloldási állapota. Lehetséges értékek: sikeres/NotFound/sikertelen (csak IoT Hub) | 
-| `updatereason` | Frissítési modell oka a sémában. Lehetséges értékek: létrehozás/alaphelyzetbe állítás/felülbírálás (csak IoT Hub) | 
-
-#### <a name="body-details"></a>Törzs részletei
-
-Nem áll rendelkezésre üzenet a modellek feltöltésére, újratöltésére és javítására szolgáló műveletekhez. A felhasználónak `GET` hívást kell kérnie a modell tartalmának beszerzéséhez. 
-
-A és a esetében a `Model.Decom` javítás a JSON-javító formátumban fog megjelenni, például az Azure digitális Twins API felületének minden más javítási API-jának. A modellek leszereléséhez a következőt kell használnia:
-
-```json
-[
-  {
-    "op": "replace",
-    "path": "/decommissionedState",
-    "value": true
-  }
-]
-```
-
-Esetében `Model.Delete` a kérelem törzse megegyezik a `GET` kérelemmel, és a törlés előtt a legutolsó állapotot kapja.
-
 ### <a name="digital-twin-change-notifications"></a>Digitális kettős változások értesítései
 
 A digitális **kettős változásokról szóló értesítéseket** a rendszer akkor indítja el, ha a digitális iker frissítése folyamatban van, például:
@@ -327,7 +290,7 @@ A megfelelő értesítés (ha a szolgáltatás szinkron módon hajtja végre, mi
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan hozhatók létre végpontok és útvonalak az események kézbesítéséhez:
 * [Útmutató: végpontok és útvonalak kezelése](how-to-manage-routes.md)

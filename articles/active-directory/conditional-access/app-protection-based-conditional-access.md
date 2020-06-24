@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan igényelhet alkalmazás-védelmi szabályzatot 
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccb5543fbeae4d4fe9c0104d873cd9776ea45a5a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672952"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253358"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Útmutató: az alkalmazás védelmi szabályzatának és a felhőalapú alkalmazások hozzáférésének megkövetelése feltételes hozzáféréssel
 
@@ -170,7 +170,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 
 Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzárendelését](/intune/apps/app-protection-policies)ismertető cikket, amely az Android és az iOS rendszerhez készült alkalmazás-védelmi szabályzatok létrehozásának lépéseit ismerteti. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Mi az a feltételes hozzáférés?](overview.md)
 

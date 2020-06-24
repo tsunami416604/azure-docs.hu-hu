@@ -3,13 +3,13 @@ title: Privát Azure Kubernetes Service-fürt létrehozása
 description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Service-(ak-) fürtöt
 services: container-service
 ms.topic: article
-ms.date: 2/21/2020
-ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 6/18/2020
+ms.openlocfilehash: d2705570f6993ecda0c88241d2dc517fac60695c
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849688"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194042"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -23,7 +23,7 @@ A vezérlő síkja vagy az API-kiszolgáló egy Azure Kubernetes szolgáltatásb
 
 ## <a name="create-a-private-aks-cluster"></a>Privát AK-fürt létrehozása
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot, vagy használjon egy meglévő erőforráscsoportot az AK-fürthöz.
 
@@ -71,11 +71,11 @@ A legegyszerűbb lehetőség a virtuális gép létrehozása ugyanabban a VNET, 
 
 Ahogy említettük, a VNet-társítás az egyik módja a privát fürt elérésének. A VNet-társítás használatához létre kell hoznia egy kapcsolatot a virtuális hálózat és a magánhálózati DNS-zóna között.
     
-1. Lépjen a Azure Portal MC_ * erőforráscsoporthoz.  
+1. Nyissa meg a Azure Portal csomópont-erőforráscsoportot.  
 2. Válassza ki a magánhálózati DNS-zónát.   
 3. A bal oldali ablaktáblán válassza ki a **virtuális hálózati** kapcsolatot.  
 4. Hozzon létre egy új hivatkozást, amely hozzáadja a virtuális gép virtuális hálózatát a magánhálózati DNS-zónához. Néhány percet vesz igénybe, amíg a DNS-zóna hivatkozása elérhetővé válik.  
-5. Térjen vissza a Azure Portal MC_ * erőforráscsoporthoz.  
+5. A Azure Portal navigáljon a fürt VNet tartalmazó erőforráscsoporthoz.  
 6. A jobb oldali ablaktáblában válassza ki a virtuális hálózatot. A virtuális hálózat neve: *AK-vnet- \* *.  
 7. A bal oldali ablaktáblán válassza **a**társítások lehetőséget.  
 8. Válassza a **Hozzáadás**lehetőséget, adja hozzá a virtuális gép virtuális hálózatát, majd hozza létre a társítást.  
@@ -91,7 +91,7 @@ A központilag [és küllős architektúrákat](https://docs.microsoft.com/azure
 
 2. A magánhálózati DNS-zóna csak azon VNet van csatolva, amelyhez a fürtcsomópontok csatlakoznak (3). Ez azt jelenti, hogy a magánhálózati végpontot csak az adott csatolt VNet lévő gazdagépek oldják fel. Olyan esetekben, amikor nincs egyéni DNS konfigurálva a VNet (alapértelmezett), ez nem jelent problémát, mert a 168.63.129.16 for DNS-ben a gazdagépek is feloldják a rekordokat a magánhálózati DNS-zónában, a hivatkozás miatt.
 
-3. Olyan esetekben, amikor a fürtöt tartalmazó VNet egyéni DNS-beállításokkal rendelkezik (4), a fürt üzembe helyezése meghiúsul, ha a magánhálózati DNS-zóna az egyéni DNS-feloldókat (5) tartalmazó VNet van társítva. Ez a hivatkozás manuálisan hozható létre, miután a privát zóna létrejött a fürt kiépítése során vagy az automatizáláson keresztül, ha Azure Policy vagy más eseményvezérelt központi telepítési mechanizmus (például Azure Event Grid és Azure Functions) használatával észleli a zóna létrehozását.
+3. Olyan esetekben, amikor a fürtöt tartalmazó VNet egyéni DNS-beállításokkal rendelkezik (4), a fürt üzembe helyezése meghiúsul, ha a magánhálózati DNS-zóna az egyéni DNS-feloldókat (5) tartalmazó VNet van társítva. Ez a hivatkozás manuálisan hozható létre, miután a privát zóna létrejött a fürt kiépítése során vagy az automatizáláson keresztül, amikor az eseményvezérelt központi telepítési mechanizmusok használatával észleli a zóna létrehozását (például Azure Event Grid és Azure Functions).
 
 ## <a name="dependencies"></a>Függőségek  
 
@@ -102,7 +102,6 @@ A központilag [és küllős architektúrákat](https://docs.microsoft.com/azure
 * Az IP-címekre jogosult tartományok nem alkalmazhatók a privát API-kiszolgálói végpontra, csak a nyilvános API-kiszolgálóra érvényesek.
 * A Availability Zones jelenleg bizonyos régiókban támogatott, tekintse meg a dokumentum elejét 
 * Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre vonatkoznak.
-* A privát fürtben lévő virtuális csomópontok nem támogatják a privát Azure-beli virtuális hálózatokon lévő Azure Container Instances (ACI) használatát
 * Az Azure DevOps nem támogatja a Microsoft által üzemeltetett ügynököket privát fürtökkel. Érdemes lehet saját üzemeltetésű [ügynököket][devops-agents]használni. 
 * Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
 * Nincs aktuális támogatás az Azure dev Spaces szolgáltatáshoz

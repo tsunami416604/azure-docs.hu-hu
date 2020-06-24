@@ -4,12 +4,12 @@ description: Ismerje meg a Kubernetes alapszintű fürt-és munkaterhelés-össz
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 13169628aff2fe4bff64fed36db54d18d4f830b8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ddf6543ff0e4313b28c183718b6ac3b2395e0dbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208159"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729971"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai
 
@@ -42,12 +42,12 @@ Ha AK-fürtöt hoz létre, a rendszer automatikusan létrehozza és konfigurálj
 
 A vezérlő síkja a következő alapvető Kubernetes összetevőket tartalmazza:
 
-- *Kube-apiserver* – az API-kiszolgáló az alapul szolgáló Kubernetes API-k által elérhetővé vált. Ez az összetevő a felügyeleti eszközök, például a `kubectl` vagy a Kubernetes irányítópultjának interakcióját biztosítja.
+- *Kube-apiserver* – az API-kiszolgáló az alapul szolgáló Kubernetes API-k által elérhetővé vált. Ez az összetevő a felügyeleti eszközök, például `kubectl` a vagy a Kubernetes irányítópultjának interakcióját biztosítja.
 - *etcd* – a Kubernetes-fürt és a konfiguráció állapotának fenntartása érdekében a magasan elérhető *etcd* a Kubernetes belüli Key Value Store.
 - *Kube-Scheduler* – alkalmazások létrehozásakor vagy méretezéskor az ütemező meghatározza, hogy mely csomópontok futtathatják a munkaterhelést, és elindítják azokat.
 - *Kube-Controller-Manager* – a vezérlő kezelője több kisebb vezérlőt is lát, amelyek olyan műveleteket hajtanak végre, mint például a hüvelyek replikálása és a csomópontok kezelése.
 
-Az AK egy egybérlős vezérlési gépet biztosít dedikált API-kiszolgálóval, ütemező szolgáltatással stb. Megadhatja a csomópontok számát és méretét, és az Azure platform konfigurálja a vezérlési sík és a csomópontok közötti biztonságos kommunikációt. A vezérlési síkon való interakció Kubernetes API-kon keresztül történik `kubectl` , például a Kubernetes-irányítópulton.
+Az AK egy egybérlős vezérlési gépet biztosít dedikált API-kiszolgálóval, ütemező szolgáltatással stb. Megadhatja a csomópontok számát és méretét, és az Azure platform konfigurálja a vezérlési sík és a csomópontok közötti biztonságos kommunikációt. A vezérlési síkon való interakció Kubernetes API-kon keresztül történik, például `kubectl` a Kubernetes-irányítópulton.
 
 Ez a felügyelt vezérlési sík azt jelenti, hogy nem kell olyan összetevőket konfigurálnia, mint például egy magasan elérhető *etcd* -tároló, de ez azt is jelenti, hogy közvetlenül nem férhet hozzá a vezérlési síkon. A Kubernetes-re való frissítés az Azure CLI-n vagy Azure Portalon keresztül történik, amely frissíti a vezérlő síkot, majd a csomópontokat. A lehetséges problémák elhárításához tekintse át a vezérlési sík naplóit Azure Monitor naplókon keresztül.
 
@@ -59,7 +59,7 @@ A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a fürt b
 
 Az alkalmazások és a támogató szolgáltatások futtatásához szükség van egy Kubernetes- *csomópontra*. Egy AK-fürt legalább egy csomóponttal rendelkezik, amely egy Azure-beli virtuális gép (VM), amely a Kubernetes csomópont-összetevőket és a tároló-futtatókörnyezetet futtatja:
 
-- A `kubelet` az a Kubernetes-ügynök, amely feldolgozza a hangvezérelt kérelmeket a vezérlési síkon, és ütemezi a kért tárolók futtatását.
+- A az a `kubelet` Kubernetes-ügynök, amely feldolgozza a hangvezérelt kérelmeket a vezérlési síkon, és ütemezi a kért tárolók futtatását.
 - A virtuális hálózatkezelést a *Kube-proxy* kezeli az egyes csomópontokon. A proxy átirányítja a hálózati forgalmat, és kezeli a szolgáltatások és a hüvelyek IP-címzését.
 - A *Container Runtime* az az összetevő, amely lehetővé teszi, hogy a tároló alkalmazások futtassák és használják a további erőforrásokat, például a virtuális hálózatot és a tárolót. Az AK-ban a Moby a tároló futtatókörnyezetként van használatban.
 
@@ -165,7 +165,7 @@ Az AK-ban a legtöbb állapot nélküli alkalmazásnak az egyes hüvelyek üteme
 
 Ha egy alkalmazáshoz a példányok kvóruma szükséges, hogy mindig elérhetők legyenek a felügyeleti döntésekhez, nem szeretné, hogy a frissítési folyamat megszakítsa ezt a képességet. A *Pod-megszakadási költségkeretekkel* határozható meg, hogy egy központi telepítés hány replikáját lehet leállítani a frissítés vagy a csomópont frissítése során. Ha például *5* replika van az üzemelő példányban, megadhatja a *4* . Pod megszakadást, hogy egyszerre csak egy replikát töröljen vagy ütemezzen. A pod-erőforrások korlátaihoz hasonlóan a legjobb megoldás az, ha a pod-megszakadási költségvetést olyan alkalmazásokhoz határozza meg, amelyekhez legalább egy replika szükséges.
 
-A központi telepítések általában a vagy `kubectl create` `kubectl apply`a alkalmazással hozhatók létre és kezelhetők. Központi telepítés létrehozásához meg kell adnia egy jegyzékfájlt a YAML (YAML nem Markup Language) formátumban. Az alábbi példa az NGINX webkiszolgáló alapszintű telepítését hozza létre. Az üzemelő példány *3* másodpéldányt határoz meg, és az *80* -es port nyitva van a tárolón. Az erőforrás-kérelmek és-korlátok a PROCESSZORhoz és a memóriához is meg vannak határozva.
+A központi telepítések általában a vagy a alkalmazással hozhatók létre és kezelhetők `kubectl create` `kubectl apply` . Központi telepítés létrehozásához meg kell adnia egy jegyzékfájlt a YAML (YAML nem Markup Language) formátumban. Az alábbi példa az NGINX webkiszolgáló alapszintű telepítését hozza létre. Az üzemelő példány *3* másodpéldányt határoz meg, és az *80* -es port nyitva van a tárolón. Az erőforrás-kérelmek és-korlátok a PROCESSZORhoz és a memóriához is meg vannak határozva.
 
 ```yaml
 apiVersion: apps/v1
@@ -204,11 +204,7 @@ További információ: Kubernetes- [telepítések][kubernetes-deployments].
 
 A Kubernetes-alkalmazások kezelésének közös megközelítése a [Helm][helm]. Létrehozhat és használhat meglévő nyilvános Helm- *diagramokat* , amelyek az alkalmazás kódjának csomagolt verzióját és Kubernetes YAML-jegyzékeket tartalmaznak az erőforrások üzembe helyezéséhez. Ezek a Helm-diagramok helyileg, vagy gyakran egy távoli adattárban, például egy [Azure Container Registry Helm chart][acr-helm]-tárházban is tárolhatók.
 
-A Helm használatához a *kormányrúd* nevű kiszolgáló-összetevő van telepítve a Kubernetes-fürtön. A kormányrúd kezeli a diagramok telepítését a fürtön belül. Maga a Helm-ügyfél helyileg van telepítve a számítógépen, vagy a [Azure Cloud Shellon][azure-cloud-shell]belül is használható. A-ügyféllel kereshet vagy létrehozhat Helm-diagramokat, majd telepítheti őket a Kubernetes-fürtbe.
-
-![A Helm tartalmaz egy ügyfél-összetevőt és egy kiszolgálóoldali kormányrúd-összetevőt, amely erőforrásokat hoz létre a Kubernetes-fürtön belül](media/concepts-clusters-workloads/use-helm.png)
-
-További információkért lásd: [alkalmazások telepítése az Azure Kubernetes szolgáltatásban (ak)][aks-helm].
+A Helm használatához telepítse a Helm-ügyfelet a számítógépre, vagy használja a [Azure Cloud Shell][azure-cloud-shell]a Helm-ügyfelet. A-ügyféllel kereshet vagy létrehozhat Helm-diagramokat, majd telepítheti őket a Kubernetes-fürtbe. További információ: [meglévő alkalmazások telepítése a Helm-ben az AK-ban][aks-helm].
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSets és DaemonSets
 
@@ -223,7 +219,7 @@ Az ilyen típusú alkalmazások kezeléséhez két Kubernetes-erőforrás szüks
 
 A modern alkalmazásfejlesztés gyakran az állapot nélküli alkalmazások megvalósítását célozza, de a *StatefulSets* állapot-nyilvántartó alkalmazásokhoz, például adatbázis-összetevőket tartalmazó alkalmazásokhoz is használható. Egy StatefulSet hasonló a központi telepítéshez, amely egy vagy több azonos hüvelyt hoz létre és felügyel. A StatefulSet lévő replikák az üzembe helyezés, a méretezés, a frissítések és a megszakítások kecses, szekvenciális megközelítését követik. A StatefulSet (mint replikák átütemezett) az elnevezési konvenció, a hálózati nevek és a tárterület megmaradnak.
 
-Az alkalmazást YAML formátumban kell megadni `kind: StatefulSet`, és a StatefulSet vezérlő kezeli a szükséges replikák telepítését és felügyeletét. A rendszer az Azure Managed Disks vagy Azure Files által biztosított állandó tárolóba írja az adattárolást. A StatefulSets esetében a mögöttes állandó tárterület még a StatefulSet törlésekor is marad.
+Az alkalmazást YAML formátumban kell megadni `kind: StatefulSet` , és a StatefulSet vezérlő kezeli a szükséges replikák telepítését és felügyeletét. A rendszer az Azure Managed Disks vagy Azure Files által biztosított állandó tárolóba írja az adattárolást. A StatefulSets esetében a mögöttes állandó tárterület még a StatefulSet törlésekor is marad.
 
 További információ: [Kubernetes StatefulSets][kubernetes-statefulsets].
 
@@ -235,7 +231,7 @@ Bizonyos naplók vagy figyelési igények esetében előfordulhat, hogy egy adot
 
 A Daemonset elemet-vezérlő a fürt rendszerindítási folyamata elején ütemezheti a hüvelyeket a csomópontokon, még az alapértelmezett Kubernetes-ütemező elindítása előtt. Ez a funkció biztosítja, hogy a Daemonset elemet lévő hüvelyek elindulnak, mielőtt a hagyományos hüvelyek egy központi telepítésben vagy StatefulSet vannak ütemezve.
 
-A StatefulSets hasonlóan a Daemonset elemet a YAML definíciójának részeként van definiálva `kind: DaemonSet`a használatával.
+A StatefulSets hasonlóan a Daemonset elemet a YAML definíciójának részeként van definiálva a használatával `kind: DaemonSet` .
 
 További információ: [Kubernetes DaemonSets][kubernetes-daemonset].
 
@@ -250,7 +246,7 @@ A Kubernetes-erőforrások, például a hüvelyek és a központi telepítések 
 
 Ha AK-fürtöt hoz létre, a következő névterek érhetők el:
 
-- *alapértelmezett* – ez a névtér, ahol a hüvelyek és a központi telepítések alapértelmezés szerint jönnek létre, ha nincs megadva. Kisebb környezetekben az alkalmazások közvetlenül az alapértelmezett névtérbe helyezhetők, további logikai elkülönítések létrehozása nélkül. Ha együttműködik a Kubernetes API-val, például a- `kubectl get pods`val, akkor az alapértelmezett névtér lesz használatban, ha nincs megadva.
+- *alapértelmezett* – ez a névtér, ahol a hüvelyek és a központi telepítések alapértelmezés szerint jönnek létre, ha nincs megadva. Kisebb környezetekben az alkalmazások közvetlenül az alapértelmezett névtérbe helyezhetők, további logikai elkülönítések létrehozása nélkül. Ha együttműködik a Kubernetes API-val, például a `kubectl get pods` -val, akkor az alapértelmezett névtér lesz használatban, ha nincs megadva.
 - *Kube-System* – ez a névtér az alapvető erőforrások, például a DNS és a proxy, illetve a Kubernetes irányítópultja. Általában nem telepítheti saját alkalmazásait ebbe a névtérbe.
 - *Kube – nyilvános* – ez a névtér általában nincs használatban, de a teljes fürtön látható erőforrások számára is használható, és bármely felhasználó megtekinthető.
 
