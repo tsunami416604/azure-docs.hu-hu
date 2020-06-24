@@ -4,11 +4,11 @@ description: Áttekintést nyújt a Azure Backup szolgáltatás által használt
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273617"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707923"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -61,7 +61,7 @@ A Azure Backup különböző biztonsági mentési ügynököket biztosít, attó
 
 A következő táblázat ismerteti a különböző típusú biztonsági mentéseket és azok használatát:
 
-**Biztonsági mentés típusa** | **Részletek** | **Használati**
+**Biztonsági mentés típusa** | **Részletek** | **Használat**
 --- | --- | ---
 **Összes** | A teljes biztonsági mentés a teljes adatforrást tartalmazza. Nagyobb hálózati sávszélességet vesz igénybe, mint a különbözeti vagy növekményes biztonsági másolatok. | A kezdeti biztonsági mentéshez használatos.
 **Differenciál** |  A különbözeti biztonsági mentés a kezdeti teljes biztonsági mentés óta módosult blokkokat tárolja. Kisebb hálózati és tárolási kapacitást használ, és nem tartja meg a változatlanul módosított adatmennyiségek redundáns másolatait.<br/><br/> Nem hatékony, mert a későbbi biztonsági másolatok között változatlanul megjelenő adatblokkok átvitele és tárolása történik. | Azure Backup nem használja.
@@ -71,7 +71,7 @@ A következő táblázat ismerteti a különböző típusú biztonsági mentése
 
 A következő táblázat ismerteti a SQL Server-adatbázisokhoz használt biztonsági másolatok különböző típusait, valamint azt, hogy milyen gyakran használják őket:
 
-**Biztonsági mentés típusa** | **Részletek** | **Használati**
+**Biztonsági mentés típusa** | **Részletek** | **Használat**
 --- | --- | ---
 **Teljes biztonsági mentés** | A teljes adatbázis biztonsági mentése a teljes adatbázisról készít biztonsági másolatot. Egy adott adatbázisban vagy fájlcsoportok vagy-fájlokban lévő összes adathalmazt tartalmazza. A teljes biztonsági mentés elegendő naplót is tartalmaz az adatok helyreállításához. | A legtöbb esetben naponta egy teljes biztonsági mentést indíthat.<br/><br/> A teljes biztonsági mentést napi vagy heti időközönként is elvégezheti.
 **Különbségi biztonsági mentés** | A különbözeti biztonsági mentés a legutóbbi, korábbi teljes adatbiztonsági mentésen alapul.<br/><br/> Csak a teljes biztonsági mentés óta megváltoztatott adatmennyiséget rögzíti. |  A legtöbb esetben naponta egy különbözeti biztonsági mentést indíthat.<br/><br/> A teljes biztonsági mentés és a különbözeti biztonsági másolat nem konfigurálható ugyanazon a napon.
@@ -95,8 +95,8 @@ A következő táblázat összefoglalja a különböző típusú biztonsági má
 **Szolgáltatás** | **Fájlok és mappák közvetlen biztonsági mentése (a MARS-ügynök használatával)** | **Azure-beli virtuális gép biztonsági mentése** | **Gépek vagy alkalmazások DPM/MABS**
 --- | --- | --- | ---
 Biztonsági mentés a tárba | ![Igen][green] | ![Igen][green] | ![Igen][green]
-Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Igen][green]
-A biztonsági mentéshez továbbított adatok tömörítése | ![Igen][green] | Az adatátvitelkor nem használ tömörítést. A tárterület kis mértékben van kiemelve, de a helyreállítás gyorsabb.  | ![Igen][green]
+Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Yes][green]
+A biztonsági mentéshez továbbított adatok tömörítése | ![Yes][green] | Az adatátvitelkor nem használ tömörítést. A tárterület kis mértékben van kiemelve, de a helyreállítás gyorsabb.  | ![Yes][green]
 Növekményes biztonsági mentés futtatása |![Igen][green] |![Igen][green] |![Igen][green]
 Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/> Csak a helyszínen üzembe helyezett DPM-/MABS-kiszolgálók esetében.
 

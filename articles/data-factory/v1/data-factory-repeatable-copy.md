@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281144"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707293"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Ismételhető másolás Azure Data Factory
 
@@ -151,5 +151,5 @@ Az 1. mechanizmushoz hasonlóan a másolási tevékenység automatikusan törli 
 Tekintse át a következő összekötő-cikkeket a teljes JSON-példákhoz: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
-- [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+- [Az Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

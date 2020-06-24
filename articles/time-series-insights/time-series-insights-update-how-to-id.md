@@ -1,21 +1,21 @@
 ---
 title: Ajánlott eljárások idősorozat-AZONOSÍTÓk kiválasztásához – Azure Time Series Insights | Microsoft Docs
 description: Ismerje meg az idősorozat-azonosító Azure Time Series Insights előzetes verzióban való kiválasztásakor ajánlott eljárásokat.
-author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+author: shipramishra
+ms.author: shmishr
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 48d8c9a0f32c94f64601d27b9785213b776439af
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838722"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706776"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Ajánlott eljárások idősorozat-AZONOSÍTÓk kiválasztásához
 
@@ -75,9 +75,7 @@ Példa nyers eseményre:
 
 A Azure Portal az alábbi módon adhatja meg az összetett kulcsot:
 
-```JSON
-[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
-```
+[![Állítsa be a környezet idősorozat-AZONOSÍTÓját.](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -45,7 +45,7 @@ ms.locfileid: "67179172"
          1. Adja meg az ACR **nevét**.
          2. Az **iSCSI-kezdeményező neve** alatt adja meg a Windows-gazdagép iSCSI minősített nevét (IQN). Ha nem tudja az IQN-t, lépjen a [Windows Server-gazdagép IQN nevének lekérése](#get-the-iqn-of-a-windows-server-host) szakaszhoz.
 
-      1. Kattintson a **Létrehozás**gombra. Létrejön egy kötet a megadott beállításokkal.
+      1. Kattintson a **Létrehozás** lehetőségre. Létrejön egy kötet a megadott beállításokkal.
 
          ![Kattintson a Létrehozás gombra](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 

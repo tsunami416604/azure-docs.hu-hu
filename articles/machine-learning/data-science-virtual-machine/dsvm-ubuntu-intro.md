@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: f7629b4724e85f93a8dfe3e37ac2b2155288d235
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241639"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254701"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)
 
@@ -22,13 +22,15 @@ Az Ubuntu 18,04 Data Science Virtual Machine használatba veheti a szolgáltatá
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ubuntu 18,04 Data Science Virtual Machine létrehozásához Azure-előfizetéssel kell rendelkeznie. [Próbálja ki ingyenesen az Azure](https://azure.com/free)-t.
-Vegye figyelembe, hogy az ingyenes Azure-fiókok nem támogatják a GPU-t használó virtuális gépekhez tartozó SKU-ket.
+
+>[!NOTE]
+>Az ingyenes Azure-fiókok nem támogatják a GPU-t használó virtuális gépekhez tartozó SKU-ket.
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>A Linux-Data Science Virtual Machine létrehozása
 
 Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine Ubuntu 18,04-példányát:
 
-1. Ha még nem jelentkezett be, lépjen a [Azure Portalba](https://portal.azure.com) , ahol a rendszer kérni fogja, hogy jelentkezzen be az Azure-fiókjába.
+1. Lépjen a [Azure Portal](https://portal.azure.com). Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, ha még nincs bejelentkezve.
 1. Keresse meg a virtuális gép listáját az "adatelemzési virtuális gép" beírásával, és válassza a "Data Science Virtual Machine-Ubuntu 18,04" lehetőséget.
 
 1. A következő ablakban válassza a **Létrehozás**lehetőséget.
@@ -41,18 +43,18 @@ Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine U
     
        * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
        * **Erőforráscsoport**: hozzon létre egy új csoportot, vagy használjon egy meglévőt.
-       * **Virtuális gép neve**: adja meg a virtuális gép nevét. Így fog megjelenni a Azure Portalban.
+       * **Virtuális gép neve**: adja meg a virtuális gép nevét. Ezt a nevet fogja használni a Azure Portal.
        * **Régió**: válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
        * **Rendszerkép**: hagyja meg az alapértelmezett értéket.
-       * **Méret**: az általános számítási feladatokhoz megfelelő méretű automatikus feltöltést kell megadni. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/linux/sizes.md).
+       * **Méret**: Ez a beállítás az általános számítási feladatokhoz megfelelő mérettel automatikusan feltölthető. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/linux/sizes.md).
        * **Hitelesítés típusa**: a gyorsabb telepítéshez válassza a "jelszó" lehetőséget. 
          
          > [!NOTE]
          > Ha a JupyterHub-t szeretné használni, ügyeljen arra, hogy válassza a "jelszó" lehetőséget, mivel a JupyterHub *nem* az SSH nyilvános kulcsok használatára van konfigurálva.
 
-       * **Felhasználónév**: adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez, és nem kell megegyeznie az Azure-felhasználónévvel. Ne *használjon* nagybetűs betűket.
+       * **Felhasználónév**: adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez. A felhasználónévnek nem kell megegyeznie az Azure-felhasználónévvel. Ne *használjon* nagybetűs betűket.
          
-         > [!NOTE]
+         > [!IMPORTANT]
          > Ha nagybetűs betűket használ a felhasználónévben, a JupyterHub nem fog működni, és 500 belső kiszolgálóhiba lép fel.
 
        * **Password (jelszó**): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
@@ -76,7 +78,7 @@ Data Science Virtual Machine is csatolhat, hogy Azure Notebooks Jupyter jegyzetf
 
 ### <a name="ssh"></a>SSH
 
-Ha a virtuális gép létrehozása után SSH-hozzáféréssel lett konfigurálva, akkor az SSH használatával bejelentkezhet. Használja a szöveges rendszerhéj felületének 3. lépésének **alapok** szakaszában létrehozott fiók hitelesítő adatait. Windows rendszeren egy SSH-ügyfél eszközt (például a [Putty](https://www.putty.org)-t) tölthet le. Ha a grafikus asztali számítógép (X rendszer) használatát részesíti előnyben, használhat X11-továbbítást a PuTTY-on.
+Ha a virtuális gépet SSH-hitelesítéssel konfigurálta, a 3. lépés **alapjai** című részében létrehozott fiók hitelesítő adataival jelentkezhet be a szöveges rendszerhéj felületéhez. Windows rendszeren egy SSH-ügyfél eszközt (például a [Putty](https://www.putty.org)-t) tölthet le. Ha a grafikus asztali számítógép (X rendszer) használatát részesíti előnyben, használhat X11-továbbítást a PuTTY-on.
 
 > [!NOTE]
 > A X2Go-ügyfél jobban teljesített, mint az X11 továbbítása a tesztelés során. Azt javasoljuk, hogy a X2Go-ügyfelet egy grafikus asztali felületen használja.
@@ -86,7 +88,7 @@ Ha a virtuális gép létrehozása után SSH-hozzáféréssel lett konfigurálva
 A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, és készen áll az ügyfélkapcsolatok fogadására. A Linux rendszerű virtuális gép grafikus asztalához való kapcsolódáshoz végezze el az alábbi eljárást az ügyfélen:
 
 1. Töltse le és telepítse a X2Go-ügyfelet az [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)-ből származó ügyféloldali platformra.
-1. Jegyezze fel a virtuális gép nyilvános IP-címét, amelyet az imént létrehozott virtuális gép megnyitásával talál a Azure Portal.
+1. Jegyezze fel a virtuális gép nyilvános IP-címét, amelyet a Azure Portal a létrehozott virtuális gép megnyitásával talál.
 
    ![Ubuntu gép IP-címe](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
@@ -99,13 +101,13 @@ A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, 
      * **SSH-port**: hagyja meg az alapértelmezett értéket 22-én.
      * **Munkamenet típusa**: módosítsa az értéket az **Xfce**értékre. A Linux rendszerű virtuális gép jelenleg csak az XFCE Desktopot támogatja.
    * **Média lap**: kikapcsolhatja a hangtámogatást és az ügyfél-nyomtatást, ha nincs szükség rájuk.
-   * **Megosztott mappák**: Ha a Linux rendszerű virtuális gépen csatlakoztatni kívánja az ügyfélgépekről származó címtárakat, adja hozzá a lapon a virtuális géppel megosztani kívánt ügyfélszámítógép-címtárakat.
+   * **Megosztott mappák**: ezen a lapon adhatja hozzá a virtuális gépen csatlakoztatni kívánt ügyfélszámítógép-könyvtárat. 
 
    ![X2go-konfiguráció](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
-1. Kattintson az **OK** gombra.
-1. A X2Go ablak jobb oldali paneljén kattintson a mezőre a virtuális gép bejelentkezési képernyőjének megjelenítéséhez.
+1. Válassza az **OK** lehetőséget.
+1. A X2Go ablak jobb oldali paneljén kattintson a jelölőnégyzetre a virtuális gép bejelentkezési képernyőjének megjelenítéséhez.
 1. Adja meg a virtuális gép jelszavát.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 1. Előfordulhat, hogy meg kell adnia a X2Go engedélyt a tűzfal megkerüléséhez a csatlakozás befejezéséhez.
 1. Ekkor megjelenik az Ubuntu-DSVM grafikus felülete. 
 
@@ -117,17 +119,20 @@ Az Ubuntu DSVM egy többfelhasználós Jupyter-kiszolgálót futtat [JupyterHub]
    1. Jegyezze fel a virtuális gép nyilvános IP-címét úgy, hogy megkeresi és kijelöli a virtuális gépet a Azure Portalban.
       ![Ubuntu gép IP-címe](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
-   1. A helyi gépen nyisson meg egy webböngészőt, és navigáljon a\/https:/Your-VM-IP: 8000 fájlhoz, és cserélje le a "Your-VM-IP" kifejezést a korábban JEGYZETt IP-címre.
-   1. A böngésző valószínűleg nem fogja tudni megnyitni a lapot közvetlenül, jelezve, hogy hiba történt a tanúsítványban. A DSVM egy önaláírt tanúsítványon keresztül biztosítja a biztonságot. A legtöbb böngésző lehetővé teszi, hogy a figyelmeztetést követően kattintson ide. Számos böngésző továbbra is biztosít valamilyen vizuális figyelmeztetést a tanúsítványról a webes munkamenet során.
+   1. A helyi gépen nyisson meg egy webböngészőt, és navigáljon a https: \/ /Your-VM-IP: 8000 fájlhoz, és cserélje le a "Your-VM-IP" kifejezést a korábban jegyzett IP-címre.
+   1. A böngésző valószínűleg nem fogja tudni megnyitni a lapot közvetlenül, és közli, hogy hiba történt a tanúsítványban. A DSVM egy önaláírt tanúsítványon keresztül biztosítja a biztonságot. A legtöbb böngésző lehetővé teszi, hogy a figyelmeztetést követően kattintson ide. Számos böngésző továbbra is biztosít valamilyen vizuális figyelmeztetést a tanúsítványról a webes munkamenet során.
    1. Adja meg a virtuális gép létrehozásához használt felhasználónevet és jelszót, majd jelentkezzen be. 
 
       ![Adja meg a Jupyter-bejelentkezést](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
+>[!NOTE]
+> Ha ebben a fázisban 500 hibát kap, akkor valószínű, hogy a felhasználónévben tőkésített leveleket használt. Ez az Jupyter hub és az általa használt PAMAuthenticator közötti ismert interakció. 
+
    1. Böngésszen a rendelkezésre álló számos jegyzetfüzetben.
 
-JupyterLab, a Jupyter-jegyzetfüzetek és-JupyterHub következő generációja is elérhető. A hozzáféréshez jelentkezzen be a JupyterHub, majd keresse meg a https:\//Your-VM-IP: 8000/User/your-username/Lab URL-címet, és cserélje le a "your-username" kifejezést a virtuális gép konfigurálásakor kiválasztott felhasználónévre. Előfordulhat, hogy a rendszer eredetileg nem fér hozzá a helyhez a tanúsítvány hibája miatt.
+JupyterLab, a Jupyter-jegyzetfüzetek és-JupyterHub következő generációja is elérhető. A hozzáféréshez jelentkezzen be a JupyterHub, majd keresse meg a https: \/ /Your-VM-IP: 8000/User/your-username/Lab URL-címet, és cserélje le a "your-username" kifejezést a virtuális gép konfigurálásakor kiválasztott felhasználónévre. Előfordulhat, hogy a rendszer eredetileg nem fér hozzá a helyhez a tanúsítvány hibája miatt.
 
-A JupyterLab az alapértelmezett jegyzetfüzet- `/etc/jupyterhub/jupyterhub_config.py`kiszolgálóként is beállíthatja, ha hozzáadja ezt a sort a következőhöz:
+A JupyterLab az alapértelmezett jegyzetfüzet-kiszolgálóként is beállíthatja, ha hozzáadja ezt a sort a következőhöz `/etc/jupyterhub/jupyterhub_config.py` :
 
 ```python
 c.Spawner.default_url = '/lab'
@@ -138,7 +143,7 @@ c.Spawner.default_url = '/lab'
 Így folytathatja a tanulást és a kutatást:
 
 * A [Linux rendszerhez készült Data Science Virtual Machine adatelemzés](linux-dsvm-walkthrough.md) azt mutatja be, hogyan végezhető el számos általános adatelemzési feladat az itt kiépített Linux-DSVM. 
-* A jelen cikkben ismertetett eszközök kipróbálásával megismerheti a DSVM különböző adatelemzési eszközeit. A virtuális gépen található `dsvm-more-info` rendszerhéjon is futtathatja az alapszintű bevezetést és a mutatókat, hogy további információkhoz lehessen jutni a virtuális gépre telepített eszközökről.  
-* Ismerje meg, hogyan hozhat létre rendszeresen teljes körű analitikai megoldásokat a [csoportos adatelemzési folyamat](https://aka.ms/tdsp)használatával.
+* A jelen cikkben ismertetett eszközök kipróbálásával megismerheti a DSVM különböző adatelemzési eszközeit. A `dsvm-more-info` virtuális gépen található rendszerhéjon is futtathatja az alapszintű bevezetést és a mutatókat, hogy további információkhoz lehessen jutni a virtuális gépre telepített eszközökről.  
+* Ismerje meg, hogyan hozhat létre szisztematikusan analitikai megoldásokat a [csoportos adatelemzési folyamat](https://aka.ms/tdsp)használatával.
 * Látogasson el az Azure AI-szolgáltatásokat használó gépi tanulási és adatelemzési minták [Azure AI Gallery](https://gallery.azure.ai/) .
 * Olvassa el a virtuális gép megfelelő [dokumentációját](./reference-ubuntu-vm.md) .

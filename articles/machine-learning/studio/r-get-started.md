@@ -4,17 +4,17 @@ description: Ezzel az R programozási oktatóanyaggal megkezdheti a Azure Machin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 2c481fc2f435695b4b99b86411a2fcca27e97ab4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b2bd75750670a83409b0f5b8839144e55ef2c4d0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117857"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706281"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Első lépések az Azure Machine Learning Studio (klasszikus) az R-ben
 
@@ -141,7 +141,7 @@ A szakasz teljes kódja a [MachineLearningSamples-notebook/Studio-Samples](https
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>Az adatkészlet betöltése
 
-Először töltse be a **csdairydata. csv** fájlt Azure Machine learning Studioba (klasszikus).
+Első lépésként töltse be a **csdairydata.csv** -fájlt a Azure Machine learning Studioba (klasszikus).
 
 1. Indítsa el a Azure Machine Learning Studio (klasszikus) környezetet.
 1. Válassza a képernyő bal alsó sarkában található **+ új** lehetőséget, majd válassza az **adatkészlet**lehetőséget.
@@ -156,11 +156,11 @@ Most, hogy Machine Learning Studio (klasszikus) adataink vannak, létre kell hoz
 
 1. Válassza az **+ új** lehetőséget a bal alsó sarokban, majd válassza a **kísérlet**, majd az **üres kísérlet**lehetőséget.
 1. A kísérletet a lap tetején, a **... címmel létrehozott kísérlet** kiválasztásával és módosításával nevezheti el. Például módosítsa a **hitelesítésszolgáltatói tejtermékek elemzését**.
-1. A kísérlet lap bal oldalán bontsa ki a **mentett adatkészletek**, majd **az adatkészletek**elemet. Ekkor meg kell jelennie a korábban feltöltött **cadairydata. csv** fájlnak.
-1. Húzza át a **csdairydata. csv adatkészletet** a kísérletbe.
+1. A kísérlet lap bal oldalán bontsa ki a **mentett adatkészletek**, majd **az adatkészletek**elemet. Ekkor meg kell jelennie a korábban feltöltött **cadairydata.csvnak** .
+1. Húzza a **csdairydata.csv adatkészletet** a kísérletbe.
 1. A bal oldali ablaktábla felső részén található **kísérletezési elemek keresése** mezőben írja be az [R-parancsfájl végrehajtása][execute-r-script]parancsot. Ekkor megjelenik a modul a keresési listán.
 1. Húzza az [R szkript végrehajtása][execute-r-script] modult a raklapra.  
-1. A **csdairydata. csv adatkészlet** kimenetének összekötése az [R szkript][execute-r-script]bal szélső bemenetével (**DataSet1 elemet**).
+1. A **csdairydata.csv adatkészlet** kimenetének csatlakoztatása a [végrehajtás R-szkript][execute-r-script]bal szélső bemenetéhez (**DataSet1 elemet**).
 1. **Ne felejtse el kiválasztani a mentést!**  
 
 Ekkor a kísérletnek a 3. ábrához hasonlóan kell kinéznie.
@@ -171,11 +171,11 @@ Ekkor a kísérletnek a 3. ábrához hasonlóan kell kinéznie.
 
 #### <a name="check-on-the-data"></a>Az adatkeresés
 
-Tekintsük át a kísérletbe betöltött adatgyűjtést. A kísérletben válassza ki a **cadairydata. csv adatkészlet** kimenetét, és válassza a **Megjelenítés**lehetőséget. A 4. ábrához hasonlóan kell megjelennie.  
+Tekintsük át a kísérletbe betöltött adatgyűjtést. A kísérletben válassza ki a **cadairydata.csv adatkészlet** kimenetét, és válassza a **Megjelenítés**lehetőséget. A 4. ábrához hasonlóan kell megjelennie.  
 
-![A cadairydata. csv adatkészlet összefoglalása](./media/r-quickstart/fig4.png)
+![Az cadairydata.csv adatkészlet összefoglalása](./media/r-quickstart/fig4.png)
 
-*4. ábra. A cadairydata. csv adatkészlet összefoglalása.*
+*4. ábra. A cadairydata.csv adatkészlet összefoglalása.*
 
 Ebben a nézetben sok hasznos információ látható. Az adatkészlet első néhány sorát láthatjuk. Ha kiválasztunk egy oszlopot, a statisztikai szakasz további információkat jelenít meg az oszlopról. A szolgáltatás típusa sor például megmutatja, hogy milyen adattípusok vannak hozzárendelve az oszlophoz Azure Machine Learning Studio (klasszikus). Egy gyors kinézete, hogy ez egy jó józanság, mielőtt elkezdjük a komoly munkát.
 
@@ -1300,7 +1300,7 @@ A RStudio elég jól dokumentálva. Íme néhány hivatkozás a RStudio dokument
 * Az **r Code-RStudio szerkesztése és végrehajtása** integrált környezetet biztosít az r-kód szerkesztéséhez és végrehajtásához. Részletekért lásd: [kód szerkesztése és végrehajtása](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) .
 * **Hibakeresés** – a RStudio hatékony hibakeresési képességeket tartalmaz. A funkciókkal kapcsolatos további információkért tekintse meg a [RStudio hibakeresését](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) ismertető témakört. A Töréspont hibaelhárítási funkcióiról a [töréspont hibaelhárítása](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)című témakörben talál további információt.
 
-## <a name="further-reading"></a><a id="appendixb"></a>További információ
+## <a name="further-reading"></a><a id="appendixb"></a>További olvasnivalók
 
 Ez az R-programozási oktatóanyag ismerteti az alapismereteket, amelyekkel a Azure Machine Learning Studio (klasszikus) R nyelvét kell használnia. Ha nem ismeri az R-t, két bevezetést kell elérhetővé tennie a CRANban:
 

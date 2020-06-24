@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254988"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706970"
 ---
 # <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
@@ -57,7 +57,7 @@ A [támogatási csomagtól](https://azure.microsoft.com/support/plans/)függően
 
    1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
    2. A kapcsolattartási adatok területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Jelölje be a **kapcsolattartási változások mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
-   3. Kattintson a **Létrehozás**gombra.
+   3. Kattintson a **Létrehozás** lehetőségre.
    
        ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
@@ -103,7 +103,7 @@ A támogatási munkamenet elindításához hajtsa végre a következő lépések
 7. Mentse ezt a karakterláncot, és küldje el egy e-mail-üzenetben, hogy Microsoft ügyfélszolgálata.
 
 > [!IMPORTANT]
-> A támogatás hozzáférését letilthatja `Disable-HcsSupportAccess`a futtatásával. A StorSimple-eszköz a munkamenet elindítása után 8 órával is megkísérli letiltani a támogatás elérését. Az ajánlott eljárás a StorSimple-eszköz hitelesítő adatainak módosítása a támogatási munkamenet elindítása után.
+> A támogatás hozzáférését letilthatja a futtatásával `Disable-HcsSupportAccess` . A StorSimple-eszköz a munkamenet elindítása után 8 órával is megkísérli letiltani a támogatás elérését. Az ajánlott eljárás a StorSimple-eszköz hitelesítő adatainak módosítása a támogatási munkamenet elindítása után.
 
 
 ## <a name="next-steps"></a>További lépések

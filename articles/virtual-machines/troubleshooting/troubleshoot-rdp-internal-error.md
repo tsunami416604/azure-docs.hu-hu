@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266922"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703791"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Belső hiba jelentkezik, ha távoli asztalon keresztül próbál csatlakozni az Azure-beli virtuális géphez
 
@@ -59,7 +59,7 @@ Kapcsolódjon a [soros konzolhoz, és nyissa meg a PowerShell-példányt](./seri
 ) használatával győződjön meg arról, hogy a 8080-es portot más alkalmazások használják-e:
 
         Netstat -anob |more
-2. Ha a TermService. exe 8080 portot használ, folytassa a 2. lépéssel. Ha a TermService. exe fájltól eltérő más szolgáltatás vagy alkalmazás 8080 portot használ, kövesse az alábbi lépéseket:
+2. Ha a Termservice.exe 8080 portot használ, folytassa a 2. lépéssel. Ha a Termservice.exeon kívül más szolgáltatás vagy alkalmazás 8080 portot használ, kövesse az alábbi lépéseket:
 
     1. Állítsa le a szolgáltatást az 3389 szolgáltatást használó alkalmazáshoz:
 

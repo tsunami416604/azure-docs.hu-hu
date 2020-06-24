@@ -4,12 +4,12 @@ description: A Azure Functions használatával ütemezhet egy olyan feladatot, a
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 18e310559cb0b88aac53b1020172847968616f97
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020336"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254276"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz
 
@@ -21,13 +21,13 @@ Ha első alkalommal használja a C# függvények használatát, olvassa el a [Az
 
 + Hajtsa végre az [első függvény létrehozása a Visual Studióval](functions-create-your-first-function-visual-studio.md) című cikkben ismertetett lépéseket a helyi function alkalmazás létrehozásához, amely a 2. x vagy a futtatókörnyezet újabb verzióját célozza meg. Emellett közzé kell tennie a projektet egy Azure-beli Function alkalmazásban.
 
-+ Ez a cikk egy Transact-SQL-parancsot mutat be, amely egy tömeges karbantartási műveletet hajt végre a AdventureWorksLT-mintaadatbázis **SalesOrderHeader** táblájában. A AdventureWorksLT-mintaadatbázis létrehozásához hajtsa végre a [Azure Portal Azure SQL Database-adatbázis létrehozása](../azure-sql/database/single-database-create-quickstart.md)című cikkben ismertetett lépéseket.
++ Ez a cikk egy Transact-SQL-parancsot mutat be, amely egy tömeges karbantartási műveletet hajt végre a AdventureWorksLT-mintaadatbázis **SalesOrderHeader** táblájában. A AdventureWorksLT-mintaadatbázis létrehozásához hajtsa végre a következő cikkben ismertetett lépéseket: [Azure SQL Database adatbázis létrehozása a Azure Portal használatával](../azure-sql/database/single-database-create-quickstart.md).
 
-+ A rövid útmutatóhoz használt számítógép nyilvános IP-címéhez hozzá kell adnia egy [kiszolgálói szintű tűzfalszabály-szabályt](../sql-database/sql-database-get-started-portal-firewall.md) . Ez a szabály szükséges ahhoz, hogy hozzáférhessen az SQL Database-példányhoz a helyi számítógépről.  
++ A rövid útmutatóhoz használt számítógép nyilvános IP-címéhez hozzá kell adnia egy [kiszolgálói szintű tűzfalszabály-szabályt](../sql-database/sql-database-get-started-portal-firewall.md) . Ez a szabály szükséges ahhoz, hogy hozzáférhessen a SQL Database-példányhoz a helyi számítógépről.  
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-Az [Azure SQL Database-adatbázis létrehozásakor](../azure-sql/database/single-database-create-quickstart.md)létrehozott adatbázishoz tartozó kapcsolódási karakterláncot le kell kérni a Azure Portal.
+Meg kell adnia a létrehozott adatbázishoz tartozó kapcsolódási karakterláncot, amikor befejezte az [adatbázis létrehozása Azure SQL Database a Azure Portal használatával](../azure-sql/database/single-database-create-quickstart.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -51,11 +51,11 @@ Előzőleg közzé kell tennie az alkalmazást az Azure-ban. Ha még nem tette m
 
     ![Adja meg az SQL-kapcsolatok karakterláncának beállítását.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
-    A rendszer az Azure-ban (**távoli**) tárolja a kapcsolatok karakterláncait. A titkok kiszivárgásának megelőzése érdekében a local. Settings. JSON projektfájlt (**Local**) ki kell zárni a forrás-vezérlőelemből, például egy. gitignore-fájl használatával.
+    A rendszer az Azure-ban (**távoli**) tárolja a kapcsolatok karakterláncait. A titkok kiszivárgásának megakadályozása érdekében a Project-fájlon (**helyi**) lévő local.settings.jski kell zárni a forrás-vezérlőelemből, például egy. gitignore-fájl használatával.
 
 ## <a name="add-the-sqlclient-package-to-the-project"></a>A SqlClient-csomag hozzáadása a projekthez
 
-Hozzá kell adnia a SqlClient könyvtárat tartalmazó NuGet-csomagot. Ez az adatelérési függvénytár egy SQL Database-adatbázishoz való kapcsolódáshoz szükséges.
+Hozzá kell adnia a SqlClient könyvtárat tartalmazó NuGet-csomagot. Ez az adatelérési függvénytár szükséges a SQL Databasehoz való kapcsolódáshoz.
 
 1. Nyissa meg a helyi function alkalmazás projektjét a Visual Studio 2019-ben.
 

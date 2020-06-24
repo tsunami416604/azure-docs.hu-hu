@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 21f074be2cefcf5df261b354f169e8c210c9256f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 8ca3d7475472c6980be85299046624bdcf8cae11
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604846"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254457"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tagolt szöveg formátuma Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 | rowDelimiter     | Az egyetlen karakter vagy "\r\n" egy fájl sorainak elkülönítésére szolgál. <br>Az alapértelmezett érték a következő értékek egyike **: ["\r\n", "\r", "\n"]** és **"\n" vagy "\r\n", íráshoz** az adatforgalom és a másolási tevékenység hozzárendelésével <br>Ha a sor elválasztó értéke nem határolójel (üres karakterlánc), akkor az oszlop elválasztóját nem kötelező megadni (üres karakterlánc) is, ami azt jelenti, hogy a teljes tartalmat egyetlen értékként kell kezelni.<br>Jelenleg a sorok elválasztója üres sztringként csak a leképezési folyamat esetében támogatott, a másolási tevékenység azonban nem. | No       |
 | quoteChar        | Az oszlop értékeit idézőjelek közé tartalmazó karakter. <br>Az alapértelmezett **érték idézőjelek** `"` . <br>Az adatforgalom leképezése `quoteChar` nem lehet üres karakterlánc. <br>A másolási tevékenység esetén ha `quoteChar` az üres sztringként van definiálva, az azt jelenti, hogy nincs idézőjel karakter, és az oszlop értéke nincs megadva, és a `escapeChar` rendszer az oszlop elválasztóját és saját magát is elkerüli. | No       |
 | escapeChar       | Az idézőjelek között egy idézett értéken belüli egyetlen karakter.<br>Az alapértelmezett érték **fordított perjel `\` **. <br>Az adatforgalom leképezése `escapeChar` nem lehet üres karakterlánc. <br/>A másolási tevékenység esetén, ha `escapeChar` üres karakterláncként van definiálva, a `quoteChar` értéket üres karakterláncként kell megadni, amely esetben ügyeljen arra, hogy az összes oszlop értéke ne tartalmazzon elhatárolókat. | No       |
-| firstRowAsHeader | Meghatározza, hogy az első sort fejlécként kell-e kezelni/kijelölni az oszlopok neveivel.<br>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | No       |
+| firstRowAsHeader | Meghatározza, hogy az első sort fejlécként kell-e kezelni/kijelölni az oszlopok neveivel.<br>Az engedélyezett értékek: **true** és **false** (alapértelmezett).<br>Ha az első sor hamis fejlécként van megjelölve, jegyezze Column_ fel a felhasználói felületi adatok előnézetét és a keresési tevékenység kimenetének automatikus előállítását Prop_ {n} (0-tól kezdődően), a másolási tevékenységhez [explicit leképezést](copy-activity-schema-and-type-mapping.md#explicit-mapping) kell készíteni a forrásról a fogadóra, és meg kell keresnie az oszlopokat sorszám alapján (1-től kezdődően), és az adatfolyam-  | No       |
 | nullValue        | Megadja a null értékű karakterlánc-ábrázolást. <br>Az alapértelmezett érték **üres karakterlánc**. | No       |
 | encodingName     | A tesztelési fájlok olvasására/írására szolgáló kódolási típus. <br>Az engedélyezett értékek a következők: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13" "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Megjegyzés: a leképezési folyamat nem támogatja az UTF-7 kódolást. | No       |
 | compressionCodec | A szövegfájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2**, a **gzip**, a **deflate**, a **ZipDeflate**, a **Snappy**vagy a **lz4**. Az alapértelmezett érték nincs tömörítve. <br>**Megjegyzés:** a másolási tevékenység nem támogatja a "snappy" & "lz4", és a leképezési adatfolyam nem támogatja a "ZipDeflate". <br>**Megjegyzés** : Ha a másolási tevékenységgel kibontja a **ZipDeflate** -fájl (oka) t, és a fájl alapú fogadó adattárolóba ír fájlokat, az alapértelmezett fájlok a mappába kerülnek, a `<path specified in dataset>/<folder named as source zip file>/` `preserveZipFileNameAsFolder` [másolási tevékenység forrásaként](#delimited-text-as-source) pedig megadhatja, hogy a rendszer a zip-fájl nevét a mappa szerkezeteként őrizze meg. | No       |
@@ -197,7 +197,7 @@ CSVSource sink(allowSchemaDrift: true,
     skipDuplicateMapOutputs: true) ~> CSVSink
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)

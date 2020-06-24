@@ -13,11 +13,11 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281391"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707378"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Adatok áthelyezése az ODBC-adattárakból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -66,13 +66,13 @@ Az alábbi táblázat az ODBC-hez társított szolgáltatáshoz tartozó JSON-el
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesOdbc** |Igen |
-| connectionString |A kapcsolati karakterlánc és egy opcionálisan titkosított hitelesítő adat nem hozzáférési hitelesítő része. Tekintse meg a példákat a következő részekben. <br/><br/>Megadhatja a kapcsolati karakterláncot, `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`mint például a minta, vagy használhatja a rendszeradatforrás nevét (adatforrás neve) az átjárón a `"DSN=<name of the DSN>;"` (z) rendszerhez (a társított szolgáltatásban még mindig meg kell adnia a hitelesítő adatok részét). |Igen |
-| hitelesítő adat |Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. Példa: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nem |
-| authenticationType |Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen és alapszintű. |Igen |
-| userName (Felhasználónév) |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Nem |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell az ODBC-adattárhoz való kapcsolódáshoz. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesOdbc** |Yes |
+| connectionString |A kapcsolati karakterlánc és egy opcionálisan titkosított hitelesítő adat nem hozzáférési hitelesítő része. Tekintse meg a példákat a következő részekben. <br/><br/>Megadhatja a kapcsolati karakterláncot, mint például a minta `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` , vagy használhatja a rendszeradatforrás nevét (adatforrás neve) az átjárón a (z) rendszerhez (a társított `"DSN=<name of the DSN>;"` szolgáltatásban még mindig meg kell adnia a hitelesítő adatok részét). |Yes |
+| hitelesítő adat |Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. Példa: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |No |
+| authenticationType |Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen és alapszintű. |Yes |
+| userName (Felhasználónév) |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |No |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |No |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell az ODBC-adattárhoz való kapcsolódáshoz. |Yes |
 
 ### <a name="using-basic-authentication"></a>Alapszintű hitelesítés használata
 
@@ -138,7 +138,7 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| tableName |Az ODBC-adattárban található tábla neve. |Igen |
+| tableName |Az ODBC-adattárban található tábla neve. |Yes |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a házirendek minden típusú tevékenységhez elérhetők.
@@ -149,7 +149,7 @@ A másolási tevékenységben ha a forrás **RelationalSource** típusú (amely 
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Igen |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Yes |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON-példa: adatok másolása az ODBC-adattárból az Azure-Blobba
@@ -354,7 +354,7 @@ A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz val
 ## <a name="repeatable-read-from-relational-sources"></a>Megismételhető olvasás a rokon forrásokból
 Az adatok a kapcsolódó adattárakból való másolása során érdemes megismételni a nem kívánt eredmények elkerülését. Azure Data Factory a szeleteket manuálisan is újra futtathatja. Az újrapróbálkozási szabályzatot is konfigurálhatja egy adatkészlethez, hogy a rendszer hiba esetén újrafuttassa a szeleteket. Ha egy szeletet mindkét módon újrafuttat, meg kell győződnie arról, hogy a szeletek hányszor futnak. Lásd: [megismételhető olvasás a rokon forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="troubleshoot-connectivity-issues"></a>Kapcsolódási problémák elhárítása
+## <a name="troubleshoot-connectivity-issues"></a>Kapcsolati problémák hibaelhárítása
 A kapcsolódási problémák elhárításához használja **adatkezelés átjáró Configuration Manager** **diagnosztika** lapját.
 
 1. **Adatkezelés átjáró Configuration Manager**elindítása. A "C:\Program Files\Microsoft adatkezelés Gateway\1.0\Shared\ConfigManager.exe" parancsot futtathatja közvetlenül (vagy) az **átjáróra** való kereséssel, hogy megtalálja a **Microsoft adatkezelés Gateway** alkalmazásra mutató hivatkozást, ahogy az alábbi képen is látható.

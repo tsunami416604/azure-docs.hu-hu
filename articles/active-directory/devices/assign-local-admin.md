@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan rendelhet Azure-szerepköröket egy Windows-esz
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4285c7d8cd6c9feee84eaae3c49ffd1f21d5df27
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128883"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253086"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan működik a tagsági frissítés, és hogyan sza
 
 ## <a name="how-it-works"></a>Működés
 
-Ha Azure ad-csatlakozással csatlakoztat egy Windows-eszközt az Azure AD-hez, az Azure AD a következő biztonsági alapelveket adja hozzá a helyi Rendszergazdák csoporthoz az eszközön:
+Ha Azure ad-csatlakozással csatlakoztat egy Windows-eszközt az Azure AD-hez, az Azure AD hozzáadja a következő rendszerbiztonsági tageket a helyi Rendszergazdák csoporthoz az eszközön:
 
 - Az Azure AD globális rendszergazdai szerepköre
 - Az Azure AD-eszköz rendszergazdai szerepköre 
@@ -79,7 +79,7 @@ A **Windows 10 1709** kiadástól kezdve ezt a feladatot elvégezheti a **Beáll
  
 Emellett a parancssor használatával is hozzáadhat felhasználókat:
 
-- Ha a bérlő felhasználóit szinkronizálják a helyszíni Active Directory, használja `net localgroup administrators /add "Contoso\username"`a következőt:.
+- Ha a bérlő felhasználóit szinkronizálják a helyszíni Active Directory, használja a következőt: `net localgroup administrators /add "Contoso\username"` .
 - Ha a bérlői felhasználók az Azure AD-ban jönnek létre, használja a`net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Megfontolandó szempontok 

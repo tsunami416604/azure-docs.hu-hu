@@ -4,16 +4,16 @@ description: A Microsoft Teams használata a Windows rendszerű virtuális aszta
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b065a79abe4a4f5c23e28be111b09e51e5e6484
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 0b2ef8a944af9f80dd65ce75869bcf4e3156c63f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667046"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254905"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -42,7 +42,7 @@ Ebből a szakaszból megtudhatja, hogyan telepítheti a Teams Desktop alkalmazá
 
 ### <a name="prepare-your-image-for-teams"></a>A rendszerkép előkészítése a csapatok számára
 
-A csapatok számítógépenkénti telepítésének engedélyezéséhez állítsa be a következő beállításkulcsot a gazdagépen:
+A csapatok számára a média optimalizálásának engedélyezéséhez állítsa be a következő beállításkulcsot a gazdagépen:
 
 1. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon **HKEY_LOCAL_MACHINE \software\microsoft\teams**.
 2. Hozza létre a következő értéket a csapatok kulcsához:
@@ -57,29 +57,39 @@ Telepítse a [WebSocket szolgáltatást](https://query.prod.cms.rt.microsoft.com
 
 ### <a name="install-microsoft-teams"></a>A Microsoft Teams telepítése
 
-A Teams Desktop alkalmazást üzembe helyezheti gépi telepítéssel. A Microsoft Teams telepítése a Windows rendszerű virtuális asztali környezetben:
+A Teams Desktop alkalmazást számítógépenként vagy felhasználónkénti telepítéssel is telepítheti. A Microsoft Teams telepítése a Windows rendszerű virtuális asztali környezetben:
 
 1. Töltse le a környezetének megfelelő [Teams msi-csomagot](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) . Javasoljuk, hogy a 64 bites telepítőt egy 64 bites operációs rendszeren használja.
 
       > [!NOTE]
       > A Microsoft Teams-hez készült média-optimalizáláshoz a Teams Desktop-alkalmazás 1.3.00.4461 vagy újabb verziója szükséges.
 
-2. A parancs futtatásával telepítse az MSI-t a gazda virtuális gépre.
+2. A következő parancsok egyikének futtatásával telepítse az MSI-t a gazdagép virtuális gépre:
 
-      ```console
-      msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
-      ```
+    - Felhasználónkénti telepítés
 
-      Ezzel a csapatokat a programfájlok (x86) mappába telepíti egy 64 bites operációs rendszeren, valamint egy 32 bites operációs rendszer Program Files mappájába. Ezen a ponton az arany-rendszerkép beállítása befejeződött. A nem állandó telepítésekhez a csapatok számítógépenkénti telepítése szükséges.
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        ```
 
-      Amikor legközelebb megnyitja a csapatokat egy munkamenetben, a rendszer kérni fogja a hitelesítő adatait.
+        Ez a folyamat az alapértelmezett telepítés, amely a csapatokat a **% AppData%** felhasználói mappába telepíti. A csapatok nem működnek megfelelően a felhasználónkénti telepítéssel a nem állandó beállításokon.
 
-      > [!NOTE]
-      > A felhasználók és a rendszergazdák jelenleg nem tudják letiltani a csapatok automatikus indítását a bejelentkezés során.
+    - Számítógépenkénti telepítés
 
-      A következő parancs futtatásával távolíthatja el az MSI-t a gazdagép virtuális gépről:
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        ```
 
-      ```console
+        Ezzel a csapatokat a programfájlok (x86) mappába telepíti egy 64 bites operációs rendszeren, valamint egy 32 bites operációs rendszer Program Files mappájába. Ezen a ponton az arany-rendszerkép beállítása befejeződött. A nem állandó telepítésekhez a csapatok számítógépenkénti telepítése szükséges.
+
+        Amikor legközelebb megnyitja a csapatokat egy munkamenetben, a rendszer kérni fogja a hitelesítő adatait.
+
+        > [!NOTE]
+        > A felhasználók és a rendszergazdák jelenleg nem tudják letiltani a csapatok automatikus indítását a bejelentkezés során.
+
+3. A következő parancs futtatásával távolíthatja el az MSI-t a gazdagép virtuális gépről:
+
+      ```powershell
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
@@ -137,7 +147,7 @@ Ha a hívásokkal és értekezletekkel kapcsolatos problémákba ütközik, Gyű
 
 ## <a name="contact-microsoft-teams-support"></a>Kapcsolatfelvétel a Microsoft Teams ügyfélszolgálatával
 
-Ha kapcsolatba szeretne lépni a Microsoft Teams ügyfélszolgálatával, lépjen a [Microsoft 365 felügyeleti központba](https://docs.microsoft.com/microsoft-365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=online).
+Ha kapcsolatba szeretne lépni a Microsoft Teams ügyfélszolgálatával, lépjen a [Microsoft 365 felügyeleti központba](/microsoft-365/admin/contact-support-for-business-products).
 
 ## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Gazdagépek RDP protokoll tulajdonságainak testreszabása
 
@@ -145,7 +155,7 @@ A gazdagépek RDP protokoll (RDP) tulajdonságainak, például a többmonitoros 
 
 Az eszközök átirányításának engedélyezése nem szükséges a média-optimalizálással rendelkező csapatok használata esetén. Ha Media Optimization nélküli csapatokat használ, állítsa be a következő RDP-tulajdonságokat a mikrofon és a kamera átirányításának engedélyezéséhez:
 
-- `audiocapturemode:i:1`engedélyezi a hangrögzítést a helyi eszközről, és redirets a távoli munkamenetben lévő hangalkalmazásokat.
+- `audiocapturemode:i:1`engedélyezi a hangrögzítést a helyi eszközről, és átirányítja a hangalkalmazásokat a távoli munkamenetbe.
 - `audiomode:i:0`hang lejátszása a helyi számítógépen.
 - `camerastoredirect:s:*`átirányítja az összes kamerát.
 

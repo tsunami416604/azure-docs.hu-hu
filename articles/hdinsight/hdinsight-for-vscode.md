@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 5c429da761c39ae6828eb5d79809b687e8a76bd3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a20cbf14ea2aa2475f25236615b85d6697ce252b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609097"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704862"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -140,7 +140,7 @@ Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználóné
 
 4. [Kapcsolódjon](#connect-to-an-azure-account) az Azure-fiókjához, vagy kapcsolja össze a fürtöt, ha még nem tette meg.
 
-5. Válasszon ki egy fürtöt az aktuális parancsfájl alapértelmezett fürtjéként. Az eszközök automatikusan frissítik a t **. VSCode\settings.json** -konfigurációs fájl:
+5. Válasszon ki egy fürtöt az aktuális parancsfájl alapértelmezett fürtjéként. Az eszközök automatikusan frissítik a **.VSCode\settings.jsa** konfigurációs fájlban:
 
    ![A fürtkonfiguráció alapértelmezett konfigurációjának beállítása](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
@@ -249,6 +249,10 @@ Az eszköz a **Spark SQL** -lekérdezést is támogatja:
    ![ipynb-eredmények futtatása](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
 
 
+> [!NOTE]
+>
+>Az MS-Python >= 2020.5.78807 verziója nem támogatott ezen a mértéknél [ismert probléma](#known-issues).
+
 ## <a name="submit-pyspark-batch-job"></a>PySpark-kötegelt feladatok elküldése
 
 1. Nyissa meg újra a [korábban](#open-a-work-folder)tárgyalt **HDexample** mappát, ha le van zárva.  
@@ -290,16 +294,16 @@ Miután elküldte a Python-feladatot, a küldési naplók a Visual Studio Code *
 
 ## <a name="apache-livy-configuration"></a>Apache Livy-konfiguráció
 
-Az [Apache Livy](https://livy.incubator.apache.org/) -konfiguráció támogatott. Konfigurálhatja azt a alkalmazásban **. VSCode\settings.json** -fájl a munkaterület mappában. A Livy-konfiguráció jelenleg csak a Python-szkripteket támogatja. További információ: [LIVY readme](https://github.com/cloudera/livy/blob/master/README.rst ).
+Az [Apache Livy](https://livy.incubator.apache.org/) -konfiguráció támogatott. A munkaterület mappában található fájl **.VSCode\settings.js** is konfigurálhatja. A Livy-konfiguráció jelenleg csak a Python-szkripteket támogatja. További információ: [LIVY readme](https://github.com/cloudera/livy/blob/master/README.rst ).
 
 <a id="triggerlivyconf"></a>**A Livy-konfiguráció elindítása**
 
 1. módszer  
 1. A menüsorban navigáljon a **fájl**  >  **beállításai**  >  **Beállítások**elemre.
 2. A **keresési beállítások** mezőbe írja be a **HDInsight Job beküldése: Livy conf**kifejezést.  
-3. A megfelelő keresési eredményhez válassza a **Szerkesztés a Settings. JSON** fájlban lehetőséget.
+3. A megfelelő keresési eredményhez válassza a szerkesztés lehetőséget a **settings.js** .
 
-A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a `.vscode` rendszer automatikusan hozzáadja a mappát a munkahelyi mappához. A Livy konfigurációját a **. vscode\settings.JSON**lehetőség kiválasztásával tekintheti meg.
+A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a `.vscode` rendszer automatikusan hozzáadja a mappát a munkahelyi mappához. A Livy konfigurációját a.vscode\settings.jsbejelölésével tekintheti **meg**.
 
 + A projekt beállításai:
 
@@ -448,12 +452,12 @@ A HDInsight-fürthöz Data Lake Storage Gen2 használatával küldhet el feladat
 A menüsávban válassza a parancs- **View**  >  **paletta**megtekintése elemet, majd írja be az **Azure: kijelentkezés**lehetőséget.
 
 ## <a name="known-issues"></a>Ismert problémák
-### <a name="python-on-2020580290-version-is-not-supported-on-this-extention"></a>A Python on 2020.5.80290 verziója nem támogatott ezen a kiterjedésen 
+### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>az MS-Python >= 2020.5.78807 verziója nem támogatott ezen a mértékben 
 
-"Nem sikerült csatlakozni a Jupyter notebookhoz." a Python-verzió 2020.5.80290 ismert hibája. A probléma elkerülése érdekében javasoljuk, hogy a felhasználók az MS-Python **2020.4.76186** -verzióját használják.
+"Nem sikerült csatlakozni a Jupyter notebookhoz." ismert probléma a Python-verzió >= 2020.5.78807. A probléma elkerülése érdekében javasoljuk, hogy a felhasználók az MS-Python **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** -verzióját használják.
 
 ![ismert problémák](./media/hdinsight-for-vscode/known-issue.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Spark & kaptár Visual Studio Code-hoz való használatát bemutató videó: [spark &-struktúra a Visual Studio Code](https://go.microsoft.com/fwlink/?linkid=858706)-hoz.

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 80414ccd6d5797614dd15bd61af8f37b3d2be05c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60cbb269693b23b658b8e28f90383814d6657661
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870361"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194331"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Könyvtárak hozzáadása és kezelése Apache Sparkhoz az Azure szinapszis Analyticsben
 
@@ -26,7 +26,7 @@ Python-csomagok a Spark-készlet (előzetes verzió) szintjén adhatók hozzá, 
 
 Apache Spark az Azure szinapszis Analyticsben a teljes anacondas telepítése és további könyvtárak is elérhetők. A teljes kódtárak listája a következő címen érhető el: [Apache Spark Version support](apache-spark-version-support.md).
 
-A Spark-példány indításakor új virtuális környezet jön létre, amely a telepítést használja alapként. Emellett a *követelmények. txt* fájl (a `pip freeze` parancs kimenete) a virtuális környezet frissítésére is használható. A telepítéshez vagy frissítéshez a fájlban felsorolt csomagok letöltése a PyPi a fürt indításakor történik. Ezt a követelményt a rendszer minden alkalommal felhasználja, amikor egy Spark-példányt létrehoznak a Spark-készletből.
+A Spark-példány indításakor új virtuális környezet jön létre, amely a telepítést használja alapként. Emellett egy *requirements.txt* -fájl (a parancs kimenete) használható a `pip freeze` virtuális környezet frissítésére. A telepítéshez vagy frissítéshez a fájlban felsorolt csomagok letöltése a PyPi a fürt indításakor történik. Ezt a követelményt a rendszer minden alkalommal felhasználja, amikor egy Spark-példányt létrehoznak a Spark-készletből.
 
 > [!IMPORTANT]
 >

@@ -3,7 +3,7 @@ title: Kapcsolati architektúra
 titleSuffix: Azure SQL Managed Instance
 description: Ismerje meg az Azure SQL felügyelt példányának kommunikációs és kapcsolati architektúráját, valamint azt, hogy az összetevők hogyan irányítják át a felügyelt példányok forgalmát.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: fasttrack-edit
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: d8c98f647736ac2a6cb6e72b754c7b308ad0c3b0
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655585"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706205"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának kapcsolati architektúrája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -523,7 +523,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 |Mi-204-79-180-24-nexthop-Internet|204.79.180.0/24|Internet|
 ||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Ismerje meg, hogyan [állíthat be egy új Azure-beli virtuális hálózatot](virtual-network-subnet-create-arm-template.md) vagy egy [meglévő Azure-beli virtuális hálózatot](vnet-existing-add-subnet.md) , ahol telepítheti az SQL felügyelt példányát.

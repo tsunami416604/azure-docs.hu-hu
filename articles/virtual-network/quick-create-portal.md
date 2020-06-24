@@ -12,11 +12,11 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240071"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707412"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rövid útmutató: Virtuális hálózat létrehozása az Azure Portallal
 
@@ -32,15 +32,15 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet. Az Azure Marketplace-en válassza a **hálózatkezelés** > **virtuális hálózat**lehetőséget.
+1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet. Az Azure Marketplace-en válassza a **hálózatkezelés**  >  **virtuális hálózat**lehetőséget.
 
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Előfizetés | Válassza ki előfizetését.|
+    | Előfizetés | Válassza ki az előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Name (Név) | Adja meg a *myVirtualNetwork*. |
+    | Name | Adja meg a *myVirtualNetwork*. |
     | Hely | Válassza az **USA keleti régiója** lehetőséget.|
 
 1. Válassza a **tovább lehetőséget: IP-címek**és **IPv4-címterület**esetében adja meg a *10.1.0.0/16*értéket.
@@ -59,14 +59,14 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
 
 1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet.
 
-1. Az Azure Marketplace-en válassza a **számítás** > **Windows Server 2019 Datacenter**lehetőséget. Kattintson a **Létrehozás** gombra.
+1. Az Azure Marketplace-en válassza a **számítás**  >  **Windows Server 2019 Datacenter**lehetőséget. Kattintson a **Létrehozás** gombra.
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **Projekt részletei** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az erőforráscsoportot az előző szakaszban hozta létre. |
     | **Példány részletei** |  |
     | Virtuális gép neve | Adja meg a *myVm1*. |
@@ -144,9 +144,9 @@ A *myVm1*létrehozása után kapcsolódjon az internethez.
 1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
     > [!NOTE]
-    > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** > kell választania**egy másik fiók használatával**.
+    > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. A bejelentkezéskor a tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 
@@ -206,7 +206,7 @@ A *myVm1*létrehozása után kapcsolódjon az internethez.
 
 1. Zárja be a *myVm2* virtuális géppel létesített távoli asztali kapcsolatot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a két virtuális gép között.
 

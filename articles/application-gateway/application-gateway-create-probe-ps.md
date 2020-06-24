@@ -5,15 +5,15 @@ description: Ismerje meg, hogyan hozhat létre egyéni mintavételt a Applicatio
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a244cd17ecf1f6165936d86791f9b2e320666c2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312589"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807174"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Egyéni mintavétel létrehozása az Azure Application Gatewayhoz a PowerShell használatával Azure Resource Manager
 
@@ -32,7 +32,7 @@ Ebben a cikkben egy egyéni mintavételt ad hozzá egy meglévő Application gat
 
 ### <a name="sign-in-and-create-resource-group"></a>Jelentkezzen be, és hozzon létre egy erőforráscsoportot
 
-1. A `Connect-AzAccount` hitelesítéshez használja a következőt:.
+1. `Connect-AzAccount`A hitelesítéshez használja a következőt:.
 
    ```powershell
    Connect-AzAccount
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Nyilvános IP-cím létrehozása az előtérbeli konfigurációhoz
 
-Hozzon létre egy **publicIP01** nevű, nyilvános IP-címhez tartozó erőforrást az **appgw-rg** nevű erőforráscsoportban, az USA nyugati régiójában. Ez a példa egy nyilvános IP-címet használ az Application Gateway előtér-IP-címéhez.  Az Application Gateway használatához a nyilvános IP-címnek dinamikusan létrehozott DNS-névnek kell lennie, ezért a `-DomainNameLabel` nem adható meg a nyilvános IP-cím létrehozásakor.
+Hozzon létre egy **publicIP01** nevű, nyilvános IP-címhez tartozó erőforrást az **appgw-rg** nevű erőforráscsoportban, az USA nyugati régiójában. Ez a példa egy nyilvános IP-címet használ az Application Gateway előtér-IP-címéhez.  Az Application Gateway használatához a nyilvános IP-címnek dinamikusan létrehozott DNS-névnek kell lennie, ezért a nem adható meg a `-DomainNameLabel` nyilvános IP-cím létrehozásakor.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic

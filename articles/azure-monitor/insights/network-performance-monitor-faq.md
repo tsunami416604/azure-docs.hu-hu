@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c672caaedd3e5cc591659f24c73f54f399c73de
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096228"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194003"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -54,11 +54,11 @@ Az egyes protokollok relatív előnyeiről [itt](../../azure-monitor/insights/ne
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hogyan állíthatok be egy csomópontot a figyelés támogatásához a TCP protokoll használatával?
 Ahhoz, hogy a csomópont támogassa a figyelést a TCP protokoll használatával: 
 * Győződjön meg arról, hogy a csomópont platformja Windows Server (2008 SP1 vagy újabb).
-* Futtassa a [EnableRules. ps1](https://aka.ms/npmpowershellscript) PowerShell-szkriptet a csomóponton. További részletekért tekintse meg az [utasításokat](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
+* Futtassa [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell-parancsfájlt a csomóponton. További részletekért tekintse meg az [utasításokat](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) .
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hogyan változtathatom meg a NPM által használt TCP-portot a figyeléshez?
-A NPM által a figyeléshez használt TCP-portot a [EnableRules. ps1](https://aka.ms/npmpowershellscript) parancsfájl futtatásával módosíthatja. Meg kell adnia a paraméterként használni kívánt portszámot. Ha például engedélyezni szeretné a TCP-t a 8060- `EnableRules.ps1 8060`as porton, futtassa a parancsot. Győződjön meg arról, hogy ugyanazt a TCP-portot használja a figyeléshez használt összes csomóponton.
+A NPM által a figyeléshez használt TCP-portot a [EnableRules.ps1](https://aka.ms/npmpowershellscript) parancsfájl futtatásával módosíthatja. Meg kell adnia a paraméterként használni kívánt portszámot. Ha például engedélyezni szeretné a TCP-t a 8060-as porton, futtassa a parancsot `EnableRules.ps1 8060` . Győződjön meg arról, hogy ugyanazt a TCP-portot használja a figyeléshez használt összes csomóponton.
 
 A parancsfájl csak a Windows tűzfalat konfigurálja helyileg. Ha a hálózati tűzfal vagy a hálózati biztonsági csoport (NSG) szabályai vannak, győződjön meg arról, hogy engedélyezik a NPM által használt TCP-portra irányuló forgalmat.
 
@@ -149,19 +149,19 @@ MS-társi szintű információk esetében használja az alábbi lekérdezést a 
 
     NetworkMonitoring 
      | where SubType == "ERMSPeeringUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
     
 A privát peering szintű információkhoz használja az alábbi lekérdezést a naplóbeli keresésben
 
     NetworkMonitoring 
      | where SubType == "ERVNetConnectionUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
   
 Az áramköri szintű információk esetében használja az alábbi lekérdezést a naplóbeli keresésben
 
     NetworkMonitoring 
         | where SubType == "ERCircuitTotalUtilization"
-        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | project CircuitName, BitsInPerSecond, BitsOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Mely régiók támogatottak a NPM teljesítményének monitorozásához?
 A NPM a világ bármely részén lévő hálózatok közötti kapcsolat figyelésére a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről
@@ -213,7 +213,7 @@ Ez akkor fordulhat elő, ha a gazdagép tűzfala vagy a köztes tűzfal (hálóz
 * Annak ellenőrzéséhez, hogy a közbenső hálózati tűzfal vagy az Azure NSG nem blokkolja-e a szükséges porton keresztüli kommunikációt, használja a külső gyártótól származó PsPing segédprogramot az alábbi utasítások használatával:
   * a psping segédprogram letölthető [innen](https://technet.microsoft.com/sysinternals/psping.aspx) 
   * Futtassa a következő parancsot a forrás csomópontról.
-    * psping-n 15 \<cél csomópontjának\>IP-címe:P ortnumber alapértelmezett NPM a 8084 portot használja. Ha ezt explicit módon módosította a EnableRules. ps1 parancsfájllal, adja meg az Ön által használt egyéni portszámot. Ez a ping az Azure-gépről a helyi környezetbe
+    * psping-n 15 \<destination node IPAddress\> :P ortnumber alapértelmezett NPM 8084 portot használ. Ha explicit módon módosította ezt a EnableRules.ps1 parancsfájl használatával, adja meg az Ön által használt egyéni portszámot). Ez a ping az Azure-gépről a helyi környezetbe
 * Ellenőrizze, hogy a pingek sikeresek-e. Ha nem, akkor azt jelzi, hogy egy közbenső hálózati tűzfal vagy az Azure NSG blokkolja a port forgalmát.
 * Most futtassa a parancsot a cél csomópontról a forrás csomópont IP-címére.
 
@@ -222,7 +222,7 @@ Ez akkor fordulhat elő, ha a gazdagép tűzfala vagy a köztes tűzfal (hálóz
 Mivel az A és B közötti hálózati elérési utak a B és A közötti hálózati útvonalaktól eltérőek lehetnek, a veszteségek és késések különböző értékei figyelhetők meg.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Miért nem észlelhetők a ExpressRoute-áramkörök és a társ-összekapcsolási kapcsolatok?
-A NPM most felfedi a ExpressRoute-áramköröket és az összes olyan előfizetésben lévő kapcsolatot, amelyhez a felhasználónak hozzáférése van. Válassza ki az összes olyan előfizetést, ahol az expressz útvonal-erőforrások össze vannak kapcsolva, és engedélyezze a figyelést minden felderített erőforráshoz A NPM megkeresi a kapcsolatok objektumait, amikor felvesz egy privát társítást, ezért ellenőrizze, hogy van-e társítva VNET a társával.
+A NPM most felfedi a ExpressRoute-áramköröket és az összes olyan előfizetésben lévő kapcsolatot, amelyhez a felhasználónak hozzáférése van. Válassza ki az összes olyan előfizetést, ahol az expressz útvonal-erőforrások össze vannak kapcsolva, és engedélyezze a figyelést minden felderített erőforráshoz A NPM megkeresi a kapcsolatok objektumait, amikor felvesz egy privát társítást, ezért ellenőrizze, hogy van-e társítva VNET a társával. A NPM nem ismeri fel az olyan áramköröket és társításokat, amelyek egy másik bérlőn találhatók a Log Analytics munkaterületen.
 
 ### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Az ER-figyelő funkció diagnosztikai üzenettel rendelkezik, "a forgalom nem halad át semmilyen áramkörön". Ez mit jelent?
 
@@ -233,6 +233,12 @@ Ez a következő esetekben fordulhat elő:
 * Az ER áramkör nem érhető el.
 * Az útválasztási szűrők úgy vannak konfigurálva, hogy elsőbbséget biztosítanak más útvonalaknak (például egy VPN-kapcsolatnak vagy egy másik ExpressRoute áramkörnek) a kívánt ExpressRoute áramkörön. 
 * A ExpressRoute áramkör figyelési konfigurációban való figyelésére kiválasztott helyszíni és Azure-csomópontok nem rendelkeznek kapcsolattal egymással a kívánt ExpressRoute áramkörön keresztül. Győződjön meg arról, hogy a figyelni kívánt ExpressRoute-áramkörön a megfelelő csomópontok vannak kiválasztva.
+
+### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>Miért jelent a ExpressRoute-figyelő a saját áramkörét/társát a nem kifogástalan állapotú, amikor az elérhető, és továbbítja az adattovábbítást.
+A ExpressRoute-figyelő összehasonlítja az ügynökök/szolgáltatás által jelentett hálózati teljesítménnyel kapcsolatos értékeket (veszteségek, késések és sávszélesség-kihasználtság) a konfiguráció során beállított küszöbértékekkel. Ha egy áramkör esetében a jelentett sávszélesség nagyobb, mint a konfigurációban beállított küszöbérték, az áramkör nem kifogástalan állapotú van megjelölve. A társítások esetében, ha a jelentett veszteség, késés vagy sávszélesség-felhasználás nagyobb, mint a konfigurációban beállított küszöbérték, a társítás sérültként van megjelölve. A NPM nem használ mérőszámokat vagy más típusú adatokat az deicde állapotának megváltozására.
+
+### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>Miért jelent a ExpressRoute Monitor'bandwidth-kihasználtsága egy értéket a metrikák differrent a/kimenetben
+A ExpressRoute-figyelő esetében a sávszélesség-utiliation az elmúlt 20 percben a bejövő és kimenő sávszélesség átlaga (bit/mp) kifejezve. Az expressz útvonal metrikái esetében a bit be/ki érték percenkénti adatpontok. A mindkettőhöz használt adatkészlet belsőleg azonos, de a NPM és az ER mérőszámok közötti összesítések között. A szemcsés, a percenkénti figyelés és a gyors riasztások esetében javasoljuk, hogy a riasztásokat közvetlenül az ER mérőszámokon állítsa be.
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>A ExpressRoute-áramkör figyelésének konfigurálása közben az Azure-csomópontok nem észlelhetők.
 Ez akkor fordulhat elő, ha az Azure-csomópontok Operations Manageron keresztül csatlakoznak. A ExpressRoute-figyelő funkció csak azokat az Azure-csomópontokat támogatja, amelyek közvetlen ügynökként vannak csatlakoztatva.
@@ -263,7 +269,7 @@ Ez akkor fordulhat elő, ha a célként megadott szolgáltatás nem webalkalmaz�
 A NPM folyamat úgy van beállítva, hogy leálljon, ha a gazdagép CPU-erőforrásainak több mint 5%-át használja. Ezzel biztosíthatja, hogy a csomópontokat a szokásos számítási feladatokhoz a teljesítmény befolyásolása nélkül tudja használni.
 
 ### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>A NPM szerkesztheti a figyelési szabályokat?
-A NPM csak helyi Windows tűzfal-szabályt hoz létre azon csomópontokon, amelyeken a EnableRules. ps1 PowerShell-parancsfájl fut, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással a megadott porton. A megoldás nem módosítja a hálózati tűzfal vagy a hálózati biztonsági csoport (NSG) szabályait.
+A NPM csak helyi Windows tűzfal-szabályt hoz létre azon csomópontokon, amelyeken a EnableRules.ps1 PowerShell-parancsfájl fut, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással a megadott porton. A megoldás nem módosítja a hálózati tűzfal vagy a hálózati biztonsági csoport (NSG) szabályait.
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Hogyan ellenőrizhetem a figyeléshez használt csomópontok állapotát?
 A figyeléshez használt csomópontok állapotát a következő nézetből tekintheti meg: Network Performance Monitor-> Configuration-> csomópontok. Ha egy csomópont nem kifogástalan állapotú, megtekintheti a hiba részleteit, és elvégezheti a javasolt műveletet.

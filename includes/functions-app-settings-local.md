@@ -11,4 +11,4 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/26/2020
 ms.locfileid: "67178906"
 ---
-Helyi fejlesztés esetén az Alkalmazásbeállítások a [Local. Settings. JSON fájlba](../articles/azure-functions/functions-run-local.md#local-settings-file)kerülnek.
+Helyi fejlesztés esetén az Alkalmazásbeállítások bekerülnek a [fájllocal.settings.jsba](../articles/azure-functions/functions-run-local.md#local-settings-file).

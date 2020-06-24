@@ -4,19 +4,19 @@ description: Ismerje meg, hogy a feltételes hozzáférési szabályzatok milyen
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 02/25/2020
+ms.topic: conceptual
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620687"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253137"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibakeresés a What If eszköz használatával a feltételes hozzáférésben
 
@@ -40,7 +40,7 @@ A **feltételes hozzáférés What if eszközben**először konfigurálnia kell 
      
 A következő lépésként elindíthat egy szimulációs futtatást, amely kiértékeli a beállításokat. Csak az engedélyezett szabályzatok tartoznak egy próbaverziós futtatásba.
 
-Ha a kiértékelés befejeződött, az eszköz létrehoz egy jelentést az érintett házirendekről.
+Ha a kiértékelés befejeződött, az eszköz létrehoz egy jelentést az érintett házirendekről. A feltételes hozzáférési szabályzattal kapcsolatos további információk összegyűjtéséhez a [feltételes hozzáférések és a jelentéskészítési munkafüzetek](howto-conditional-access-insights-reporting.md) további részleteket biztosítanak a csak jelentési módban lévő házirendekről és a jelenleg engedélyezett házirendekről.
 
 ## <a name="running-the-tool"></a>Az eszköz futtatása
 
@@ -104,6 +104,5 @@ Azon házirendek listáján, amelyek nem érvényesek a felhasználóra, megtal�
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
-- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md). 
-- Ha klasszikus szabályzatokat kíván áttelepíteni, tekintse [meg a klasszikus szabályzatok áttelepítését a Azure Portal](policy-migration.md)  
+- A feltételes hozzáférési szabályzat alkalmazásával kapcsolatos további információkért a [feltételes hozzáférési információk és jelentéskészítés](howto-conditional-access-insights-reporting.md)funkció használatával a házirend csak jelentés mód használatával érhető el.
+- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg a [feltételes hozzáférés általános házirendjeit](concept-conditional-access-policy-common.md). 

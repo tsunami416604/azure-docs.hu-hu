@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: d3a2dfba98f83d34c3e83ec865e3b692f7dbacd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3240151937a8ad758e4afe765341261069fd60e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254223"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254565"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Az Azure CDN számlázásának ismertetése
 
@@ -114,7 +114,8 @@ Ha a következő Azure-szolgáltatások egyikét használja CDN-forrásként, ne
 - Azure Cosmos DB
 - Azure Data Lake Store
 - Azure Machine Learning 
-- Azure SQL-adatbázis
+- Azure SQL Database
+- Felügyelt Azure SQL-példány
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Hogyan a költségek leghatékonyabban kezelhetők?

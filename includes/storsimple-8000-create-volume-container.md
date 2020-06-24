@@ -31,7 +31,7 @@ ms.locfileid: "67179164"
       Ha hozzáfér a sávszélesség-használati adatokhoz, lehetősége van a sávszélesség ütemezett lefoglalására a **Sávszélességsablon kiválasztása** beállítás megadásával. Az eljárás pontos lépéseit a [Sávszélességsablon hozzáadása](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template) szakaszban találja.
 
       ![Kötettároló panel](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
-   7. Kattintson a **Létrehozás**gombra.
+   7. Kattintson a **Létrehozás** lehetőségre.
 
         ![Kötettároló panel](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    

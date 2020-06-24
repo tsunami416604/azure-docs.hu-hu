@@ -4,20 +4,19 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálható Traffic Manager, h
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: rohink
-ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938784"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706817"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Többértékű útválasztási módszer konfigurálása Traffic Manager
 
@@ -38,14 +37,14 @@ Hozzon létre egy erőforráscsoportot a Traffic Manager profilhoz.
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 Hozzon létre egy Traffic Manager-profilt, amely a legalacsonyabb késleltetésű végpontra küldi a felhasználói forgalmat.
 
-1. A képernyő bal felső részén válassza az **erőforrás** > **létrehozása hálózatkezelés** > **Traffic Manager profil** > **létrehozása**lehetőséget.
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Traffic Manager profil**  >  **létrehozása**lehetőséget.
 2. A **Traffic Manager profil létrehozása**lapon adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **Létrehozás**lehetőséget:
     
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Name (Név)                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
     | Útválasztási metódus          | Válassza ki **a** többértékű útválasztási módszert.                                       |
-    | Előfizetés            | Válassza ki előfizetését.                          |
+    | Előfizetés            | Válassza ki az előfizetését.                          |
     | Erőforráscsoport          | Válassza a *myResourceGroupTM1*lehetőséget. |
     | Hely                | Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.                              |
    |        |           | 
@@ -63,7 +62,7 @@ Vegyen fel két IP-címet külső végpontként az előző lépésben létrehozo
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Típus                    | Külső végpont                                   |
-    | Name (Név)           | myEndpoint1                                        |
+    | Name           | myEndpoint1                                        |
     | Teljes tartománynév (FQDN) vagy IP-cím           | Írja be annak a végpontnak a nyilvános IP-címét, amelyet hozzá szeretne adni a Traffic Manager profilhoz                         |
     |        |           |
 

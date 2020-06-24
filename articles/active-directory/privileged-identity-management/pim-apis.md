@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
-ms.topic: overview
+ms.topic: how-to
 ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35d5bb13cf9c3735c61173177a3b94f4594c9272
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ea3e307df95fe4cb18986ed8e68a7f3381c5fbe7
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714134"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742896"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management API-k Microsoft Graph (előzetes verzió)
 
@@ -59,6 +59,6 @@ Ha a Graph Explorer segítségével teszteli a hívásokat, megadhatja az enged�
 
 1. Kattintson az **engedélyek módosítása** elemre az engedély módosításának alkalmazásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD Privileged Identity Management API-hivatkozás](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)

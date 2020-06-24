@@ -12,7 +12,7 @@ ms.lasthandoff: 04/27/2020
 ms.locfileid: "67179169"
 ---
 #### <a name="to-get-the-iqn-of-a-windows-host"></a>Windows Server-gazdagép IQN nevének lekérése
-1. Indítsa el a Microsoft iSCSI-kezdeményezőt a Windows-gazdagépen. Kattintson a **Start** > **felügyeleti eszközök** > **iSCSI-kezdeményező**elemre.
+1. Indítsa el a Microsoft iSCSI-kezdeményezőt a Windows-gazdagépen. Kattintson a **Start**  >  **felügyeleti eszközök**  >  **iSCSI-kezdeményező**elemre.
 2. Az **iSCSI-kezdeményező tulajdonságai** ablakban a **Konfiguráció** lapon jelölje ki, majd másolja a **Kezdeményező neve** mezőben lévő sztringet.
    
     ![iSCSI-kezdeményező tulajdonságai](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)

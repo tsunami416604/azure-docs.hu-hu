@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan lehet lekérdezni Microsoft Graph kockázati é
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: reference
+ms.topic: how-to
 ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54b78526ea1409f22b000aed8b20db90dfc9d143
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671622"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253562"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>A Azure Active Directory Identity Protection és a Microsoft Graph első lépései
 
@@ -72,9 +72,9 @@ A Kezdés előtt a következőkre lesz szüksége:
 
    1. **Írja be**a következőt: **webalkalmazás és/vagy webes API**.
 
-   1. A **bejelentkezési URL** szövegmezőbe írja be a következőt `http://localhost`:.
+   1. A **bejelentkezési URL** szövegmezőbe írja be a következőt: `http://localhost` .
 
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 1. A **Beállítások** oldal megnyitásához az alkalmazások listában kattintson az újonnan létrehozott alkalmazás-regisztráció elemre. 
 1. Másolja ki az **alkalmazás azonosítóját**.
 
@@ -139,12 +139,12 @@ Ezen a ponton a következőket kell tennie:
 - Az ügyfél azonosítója 
 - A kulcs 
 
-A hitelesítéshez küldjön post-kérést `https://login.microsoft.com` a következő paraméterekkel a törzsben:
+A hitelesítéshez küldjön post-kérést a `https://login.microsoft.com` következő paraméterekkel a törzsben:
 
 - grant_type: "**client_credentials**"
 - erőforrás`https://graph.microsoft.com`
-- client_id: \<az ügyfél azonosítója\>
-- client_secret: \<a kulcs\>
+- client_id:\<your client ID\>
+- client_secret:\<your key\>
 
 Ha ez sikeres, a rendszer egy hitelesítési jogkivonatot ad vissza.  
 Az API meghívásához hozzon létre egy fejlécet a következő paraméterrel:

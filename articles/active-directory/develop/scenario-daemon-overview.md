@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df06c4c55941f4424d6b90d2846af17bf055b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885463"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253120"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Forgatókönyv: a webes API-kat meghívó alkalmazás
 
@@ -38,7 +38,7 @@ Az alkalmazás képes jogkivonatot beszerezni egy webes API saját nevében tör
 - Asztali alkalmazások (például Windows-szolgáltatások Windows-vagy Daemon-folyamatokhoz Linux rendszeren), amely batch-feladatokat hajt végre, vagy a háttérben futó operációsrendszer-szolgáltatás.
 - Webes API-k, amelyeknek a címtárakat kell kezelniük, nem meghatározott felhasználóknak
 
-Van egy másik gyakori eset, amikor a nem Daemon-alkalmazások az ügyfél hitelesítő adatait használják: még akkor is, ha a felhasználók nevében cselekszenek, a webes API-t vagy az erőforrást a saját identitásuk alapján, technikai okokból kell elérniük. Ilyen lehet például a titok Azure Key Vault vagy egy Azure SQL Database-adatbázis gyorsítótárhoz való hozzáférése.
+Van egy másik gyakori eset, amikor a nem Daemon-alkalmazások az ügyfél hitelesítő adatait használják: még akkor is, ha a felhasználók nevében cselekszenek, a webes API-t vagy az erőforrást a saját identitásuk alapján, technikai okokból kell elérniük. Ilyen például a Azure Key Vault titkos kulcsaihoz való hozzáférés, vagy a gyorsítótár Azure SQL Database.
 
 Olyan alkalmazások, amelyek jogkivonatot szerzik be a saját identitásuk számára:
 

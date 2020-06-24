@@ -3,19 +3,19 @@ title: Kapcsolattípusok
 titleSuffix: Azure SQL Managed Instance
 description: Tudnivalók az Azure SQL felügyelt példányok kapcsolatainak típusairól
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 347f9522bacc768265027f1a2070ac4605ade158
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 153f338a49a24d1cb9eb71c068effcfd20bd2ffe
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655683"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706273"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL felügyelt példányok kapcsolatainak típusai
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Adatbázis visszaállítása SQL felügyelt példányra](restore-sample-database-quickstart.md)
 - Megtudhatja, hogyan [konfigurálhat nyilvános végpontot az SQL felügyelt példányain](public-endpoint-configure.md)

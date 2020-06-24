@@ -3,15 +3,15 @@ title: Exportálás az Azure-ból az SQL-be Application Insights | Microsoft Doc
 description: Application Insights-SQL-adatbázis folyamatos exportálása a Stream Analytics használatával.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 811d86c0a9b8e55f548046402885e2ec5967c477
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536913"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254684"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutató: exportálás az SQL rendszerbe Application Insights használatával Stream Analytics
-Ez a cikk bemutatja, hogyan helyezheti át a telemetria-adatait az [azure Application Insightsból][start] egy Azure SQL Database-be [folyamatos exportálás][export] és [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával. 
+Ez a cikk bemutatja, hogyan helyezheti át a telemetria-adatait az [Azure Application Insightsból][start] a [folyamatos exportálás][export] és a [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával Azure SQL Databaseba. 
 
 A folyamatos exportálás JSON formátumban helyezi át a telemetria adatait az Azure Storage-ba. A JSON-objektumokat a Azure Stream Analytics használatával elemezzük, és sorokat hozunk létre az adatbázis-táblában.
 
@@ -70,7 +70,7 @@ A folyamatos exportálás mindig az adatokat egy Azure Storage-fiókba exportál
    
     Jegyezze fel az elérési út nevének közös részét, amely az alkalmazás neve és a kialakítási kulcsból származik. 
 
-Az események JSON formátumú blob-fájlokba íródnak. Az egyes fájlok egy vagy több eseményt is tartalmazhatnak. Ezért szeretnénk beolvasni az események adatait, és kiszűrni a kívánt mezőket. Az adatkezeléshez sokféle dolog van, de a tervünk szerint a Stream Analytics használatával helyezheti át az SQL Database-be. Ez megkönnyíti a sok érdekes lekérdezés futtatását.
+Az események JSON formátumú blob-fájlokba íródnak. Az egyes fájlok egy vagy több eseményt is tartalmazhatnak. Ezért szeretnénk beolvasni az események adatait, és kiszűrni a kívánt mezőket. Az adatkezeléshez sokféle dolog van, de a tervünk szerint a Stream Analytics használatával helyezheti át az adatSQL Databaseba. Ez megkönnyíti a sok érdekes lekérdezés futtatását.
 
 ## <a name="create-an-azure-sql-database"></a>Azure SQL Database-adatbázis létrehozása
 A [Azure Portal][portal]-előfizetésből való indítás után hozza létre az adatbázist (és egy új kiszolgálót, ha már van ilyen), amelybe az adatok írhatók.
@@ -220,7 +220,7 @@ Kimenetként válassza az SQL lehetőséget.
 
 ![A stream Analyticsben válassza a kimenetek lehetőséget.](./media/code-sample-export-sql-stream-analytics/SA006.png)
 
-Határozza meg az SQL-adatbázist.
+Határozza meg az adatbázist.
 
 ![Adja meg az adatbázis adatait](./media/code-sample-export-sql-stream-analytics/SA007.png)
 

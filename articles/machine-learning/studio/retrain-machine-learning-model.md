@@ -5,21 +5,19 @@ description: Ismerje meg, hogyan frissíthet egy webszolgáltatást egy újonnan
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 601717ce487f8564ed2d431db9b31a3b43fcee75
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217937"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706086"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Gépi tanulási modell újratanítása és üzembe helyezése
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Az átképzés az egyik módszer, amellyel biztosítható, hogy a gépi tanulási modellek pontosak maradjanak, és a rendelkezésre álló legfontosabb információk alapján. Ez a cikk bemutatja, hogyan lehet újratanítani és üzembe helyezni a Machine learning-modelleket új webszolgáltatásként a Studio (klasszikus) szolgáltatásban. Ha egy klasszikus webszolgáltatást szeretné áttanítani, [tekintse meg ezt a útmutató cikket.](retrain-classic-web-service.md)
 
@@ -61,14 +59,14 @@ Ebben a példában a C# nyelvet használjuk az átképzési alkalmazás létreho
 
 A következő lépések végrehajtásával hívhatja meg az átképzési API-kat:
 
-1. C# Console-alkalmazás létrehozása a Visual Studióban: **új** > **Project** > **Visual C#** > **Windows klasszikus asztali** > **konzol alkalmazás (.NET-keretrendszer)**.
+1. C# Console-alkalmazás létrehozása a Visual Studióban: **új**  >  **Project**  >  **Visual C#**  >  **Windows klasszikus asztali**  >  **konzol alkalmazás (.NET-keretrendszer)**.
 1. Jelentkezzen be a Machine Learning Web Services portálra.
 1. Kattintson arra a webszolgáltatásra, amelyen dolgozik.
 1. Kattintson **a**felhasználás gombra.
 1. **A felhasználás lap** alján, a **mintakód** szakaszban kattintson a **Batch**elemre.
 1. Másolja a minta C#-kódot a Batch-végrehajtáshoz, és illessze be a Program.cs fájlba. Győződjön meg arról, hogy a névtér érintetlen marad.
 
-Adja hozzá a Microsoft. AspNet. WebApi. Client NuGet-csomagot a megjegyzésekben megadott módon. A Microsoft. WindowsAzure. Storage. dll fájlra mutató hivatkozás hozzáadásához előfordulhat, hogy telepítenie kell az [Azure Storage szolgáltatáshoz készült ügyféloldali kódtárat](https://www.nuget.org/packages/WindowsAzure.Storage).
+Adja hozzá a Microsoft. AspNet. WebApi. Client NuGet-csomagot a megjegyzésekben megadott módon. A Microsoft.WindowsAzure.Storage.dllre mutató hivatkozás hozzáadásához előfordulhat, hogy telepítenie kell az [Azure Storage-szolgáltatáshoz tartozó ügyféloldali kódtárat](https://www.nuget.org/packages/WindowsAzure.Storage).
 
 Az alábbi képernyőfelvételen a Azure Machine Learning webszolgáltatások portál **felhasználás lapja látható** .
 
@@ -104,7 +102,7 @@ Azt is biztosítania kell, hogy a bemeneti fájl elérhető legyen a kódban meg
 
 ### <a name="specify-the-output-location"></a>Adja meg a kimeneti helyet
 
-Amikor megadja a kimeneti helyet a kérelem adattartalmában, a *RelativeLocation* megadott fájl kiterjesztését meg kell adni `ilearner`.
+Amikor megadja a kimeneti helyet a kérelem adattartalmában, a *RelativeLocation* megadott fájl kiterjesztését meg kell adni `ilearner` .
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {

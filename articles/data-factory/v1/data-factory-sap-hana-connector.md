@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265817"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707140"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Adatok áthelyezése SAP HANAról Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -59,12 +59,12 @@ A következő táblázat a SAP HANA társított szolgáltatáshoz tartozó JSON-
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP HANA-példány található. Ha a kiszolgáló testreszabott portot használ, adja meg `server:port`a t. | sztring | Igen
-authenticationType | A hitelesítés típusa. | karakterlánc. "Alapszintű" vagy "Windows" | Igen 
-felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Igen
-jelszó | A felhasználó jelszava. | sztring | Igen
-Átjáró neve | Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni SAP HANA-példányhoz való kapcsolódáshoz. | sztring | Igen
-encryptedCredential | A titkosított hitelesítő adat karakterlánca. | sztring | Nem
+kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP HANA-példány található. Ha a kiszolgáló testreszabott portot használ, adja meg a t `server:port` . | sztring | Yes
+authenticationType | A hitelesítés típusa. | karakterlánc. "Alapszintű" vagy "Windows" | Yes 
+felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Yes
+jelszó | A felhasználó jelszava. | sztring | Yes
+Átjáró neve | Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni SAP HANA-példányhoz való kapcsolódáshoz. | sztring | Yes
+encryptedCredential | A titkosított hitelesítő adat karakterlánca. | sztring | No
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
@@ -81,7 +81,7 @@ Ha a másolási tevékenységben szereplő forrás **RelationalSource** típusú
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés | Azt az SQL-lekérdezést adja meg, amely az SAP HANA-példányból olvassa be az adatok beolvasását. | SQL-lekérdezés. | Igen |
+| lekérdezés | Azt az SQL-lekérdezést adja meg, amely az SAP HANA-példányból olvassa be az adatok beolvasását. | SQL-lekérdezés. | Yes |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON-példa: adatok másolása SAP HANAból az Azure-Blobba
 Az alábbi minta JSON-definíciókat tartalmaz, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. Ez a minta bemutatja, hogyan másolhat adatok egy helyszíni SAP HANAból egy Azure-Blob Storageba. Az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) felsorolt mosogatók adatai azonban **közvetlenül** átmásolhatók a Azure Data Factoryban található másolási tevékenység használatával.  
@@ -287,8 +287,8 @@ TINYINT | Bájt
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-VALÓS SZÁM | Egyirányú
-DUPLÁN | Egyirányú
+VALÓS SZÁM | Egyszeres
+DUPLÁN | Egyszeres
 DECIMÁLIS | Decimal
 LOGIKAI | Bájt
 VARCHAR | Sztring

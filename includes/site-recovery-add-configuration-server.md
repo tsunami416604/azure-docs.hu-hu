@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -52,4 +52,4 @@ ms.locfileid: "67178833"
 
     ![Összefoglalás](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
-A regisztráció befejeződése után a kiszolgáló megjelenik a tároló **Beállítások** > **kiszolgálók** paneljén.
+A regisztráció befejeződése után a kiszolgáló megjelenik a tároló **Beállítások**  >  **kiszolgálók** paneljén.

@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/10/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf65ad595fb1ab70eb6613b6d54ac2a4f69141e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329604"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743150"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Az Azure Resource szerepköreinek tevékenység-és naplózási előzményeinek megtekintése Privileged Identity Management
 
@@ -88,7 +88,7 @@ Az erőforrás-naplózás az erőforrás összes szerepkör-tevékenységének n
 
 1. A **naplózás típusa**beállításnál válassza az **aktiválás (hozzárendelt + aktivált)** lehetőséget.
 
-    [![Erőforrás-naplózási lista: aktiválja](media/azure-pim-resource-rbac/rbac-audit-activity.png "Az erőforrás-naplózási lista aktiválása alapján szűrve")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![a naplózási típust az erőforrás-naplózási lista aktiválása](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    [![Erőforrás-naplózási lista a naplózási típus](media/azure-pim-resource-rbac/rbac-audit-activity.png "Az erőforrás-naplózási lista aktiválása alapján szűrve")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![ aktiválása alapján szűrve A naplózási típus aktiválásával szűrt erőforrás-naplózási lista](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. A **művelet**területen kattintson az **(tevékenység)** elemre a felhasználó számára, hogy megtekintse a felhasználó tevékenységének részleteit az Azure-erőforrásokban.
 
@@ -116,7 +116,7 @@ A saját audit lehetővé teszi a személyes szerepkör-tevékenységek megtekin
 ## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>Az OK, a jóváhagyó és a jegy számának beolvasása jóváhagyási eseményekhez
 
 1. Jelentkezzen be a [Azure Portalra](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda szerepkör engedélyeivel, és nyissa meg az Azure ad-t.
-1. Válassza a **naplók**lehetőséget.
+1. Válassza a **Naplók** lehetőséget.
 1. A **szolgáltatás** szűrő használatával csak a Privileged Identity Management szolgáltatáshoz tartozó naplózási eseményeket jelenítheti meg. A **naplózási naplók** lapon a következőket teheti:
 
     - Tekintse meg a naplózási esemény okát az **Állapot oka** oszlopban.

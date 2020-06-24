@@ -4,16 +4,16 @@ description: FSLogix-profil tároló létrehozása a Windows rendszerű virtuál
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9210787c674e825c8728e3b79e261b184fbc42fa
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 968e753cb8bf4376d2082d5238004c291b8f0938
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484637"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211941"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Profil tároló létrehozása Azure NetApp Files és AD DS
 
@@ -87,7 +87,7 @@ Első lépésként be kell állítania egy Azure NetApp Files fiókot.
 
 ## <a name="create-a-capacity-pool"></a>Kapacitási készlet létrehozása
 
-Következő lépésként hozzon létre egy új kapacitási készletet: 
+Következő lépésként hozzon létre egy új kapacitási készletet:
 
 1. Lépjen a Azure NetApp Files menüre, és válassza ki az új fiókot.
 2. A fiók menüben válassza a **Kapacitási készletek** lehetőséget a Storage szolgáltatás területen.
@@ -158,7 +158,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 2. Bontsa ki a letöltött fájlt.
 
-3. A fájlban keresse meg az **x64**-  >  es**kiadásokat** , és futtassa a **FSLogixAppsSetup. exe**fájlt. Ekkor megnyílik a telepítési menü.
+3. A fájlban lépjen az x64- **x64**  >  **kiadások** és a **FSLogixAppsSetup.exe**futtatása elemre. Ekkor megnyílik a telepítési menü.
 
 4.  Ha van termékkulcs, írja be a termékkulcsot szövegmezőbe.
 
@@ -228,7 +228,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
    ![Képernyőkép a mappa tartalmáról a csatlakoztatási útvonalon. A belül egy "Profile_ssbb" nevű VHD-fájl.](media/mount-path-folder.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználói profilok megosztásának beállításához használhatja a FSLogix-profilok tárolóit. Ha meg szeretné tudni, hogyan hozhat létre felhasználói profilokat az új tárolókkal, tekintse meg a következőt: [fájlmegosztás használatával létrehozott profil tárolója](create-host-pools-user-profile.md).
 

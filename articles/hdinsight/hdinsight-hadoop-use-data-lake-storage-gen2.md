@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a9a3aaecc854ddb710f19bcb3d455c63b3a8bef
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195349"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706171"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel
 
@@ -39,9 +39,9 @@ Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, ha 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **felhasználó által hozzárendelt** értéket, és kattintson a **felhasználóhoz rendelt felügyelt identitás**elemre.
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. Adja meg a felügyelt identitás nevét, válassza ki a megfelelő előfizetést, erőforráscsoportot és helyet.
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 További információ arról, hogyan működnek a felügyelt identitások az Azure HDInsight-ben: [felügyelt identitások az Azure HDInsight](hdinsight-managed-identities.md).
 
@@ -54,7 +54,7 @@ Hozzon létre egy Azure Data Lake Storage Gen2 Storage-fiókot.
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **Storage** kifejezést, majd kattintson a **Storage-fiók**elemre.
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. A **Storage-fiók létrehozása** képernyőn:
     1. Válassza ki a megfelelő előfizetést és erőforráscsoportot.
     1. Adja meg a Data Lake Storage Gen2-fiók nevét.
@@ -116,7 +116,7 @@ Az alábbi kódrészlet a következő kezdeti lépéseket hajtja végre:
 1. Létrehoz egy új erőforráscsoportot az új központi telepítési tevékenységekhez.
 1. Felhasználó által hozzárendelt felügyelt identitást hoz létre.
 1. Bővítmény hozzáadását az Azure CLI-hez a Data Lake Storage Gen2 szolgáltatásainak használatához.
-1. Létrehoz egy új Data Lake Storage Gen2 fiókot a `--hierarchical-namespace true` jelző használatával.
+1. Létrehoz egy új Data Lake Storage Gen2 fiókot a jelző használatával `--hierarchical-namespace true` .
 
 ```azurecli
 az login
@@ -167,9 +167,9 @@ Az ACL-ekkel rendelkező fájlengedélyek részletes ismertetését lásd: [hozz
 
 A HDInsight-fürtnek a Data Lake Storage Gen2 lévő fájlokhoz való hozzáférését felügyelt identitások vezérlik. A felügyelt identitás a Azure Active Directory (Azure AD) szolgáltatásban regisztrált identitás, amelynek hitelesítő adatait az Azure felügyeli. A felügyelt identitásokkal nem kell regisztrálnia az egyszerű szolgáltatásokat az Azure AD-ben. Vagy őrizze meg a hitelesítő adatokat, például a tanúsítványokat.
 
-Az Azure-szolgáltatások két típusú felügyelt identitással rendelkeznek: rendszerhez rendelt és felhasználó által hozzárendelt. A HDInsight felhasználó által hozzárendelt felügyelt identitásokat használ a Data Lake Storage Gen2 eléréséhez. Az `user-assigned managed identity` a létrehozása önálló Azure-erőforrásként történik. Egy létrehozási folyamaton keresztül az Azure létrehoz egy identitást a használt előfizetés által megbízhatónak tekintett Azure AD-bérlőn. Az identitás a létrehozását követően hozzárendelhető egy vagy több Azure-beli szolgáltatáspéldányhoz.
+Az Azure-szolgáltatások két típusú felügyelt identitással rendelkeznek: rendszerhez rendelt és felhasználó által hozzárendelt. A HDInsight felhasználó által hozzárendelt felügyelt identitásokat használ a Data Lake Storage Gen2 eléréséhez. Az a létrehozása `user-assigned managed identity` önálló Azure-erőforrásként történik. Egy létrehozási folyamaton keresztül az Azure létrehoz egy identitást a használt előfizetés által megbízhatónak tekintett Azure AD-bérlőn. Az identitás a létrehozását követően hozzárendelhető egy vagy több Azure-beli szolgáltatáspéldányhoz.
 
-A felhasználó által hozzárendelt identitások életciklusa külön van kezelve azon Azure-beli szolgáltatáspéldányokétól, amelyekhez hozzá lettek rendelve. További információ a felügyelt identitásokról: [hogyan működnek az Azure-erőforrások felügyelt identitásai?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
+A felhasználó által hozzárendelt identitások életciklusa külön van kezelve azon Azure-beli szolgáltatáspéldányokétól, amelyekhez hozzá lettek rendelve. A felügyelt identitásokkal kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitása?](../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Hogyan az Azure AD-felhasználók számára a kaptár vagy más szolgáltatások használatával történő adatlekérdezésre vonatkozó engedélyeket Data Lake Storage Gen2.
 
@@ -235,7 +235,7 @@ A példák a fürt fő csomópontjának [SSH-kapcsolatain](./hdinsight-hadoop-li
 
 #### <a name="creating-a-hive-table"></a>Struktúra-tábla létrehozása
 
-A szemléltető célokra három fájl helye látható. A tényleges végrehajtáshoz csak az `LOCATION` egyik bejegyzést használja.
+A szemléltető célokra három fájl helye látható. A tényleges végrehajtáshoz csak az egyik bejegyzést használja `LOCATION` .
 
 ```hql
 DROP TABLE myTable;

@@ -5,18 +5,18 @@ services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: bb5560164af2b573e6aaffd4e4c62bbe0dc24a51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80350425"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211884"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>A Gen2 cache figyelése
 
@@ -44,8 +44,8 @@ Az alábbi mátrix a gyorsítótár metrikáinak értékein alapuló forgatókö
 
 |                                | **Nagy gyorsítótárbeli találatok százalékos aránya** | **Alacsony gyorsítótárbeli találatok százalékos aránya** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **Nagy gyorsítótár használt százaléka** |          1. példa           |          2. példa          |
-| **Alacsony gyorsítótár-használat százalékos aránya**  |          3. példa           |          4. példa          |
+| **Nagy gyorsítótár használt százaléka** |          1\. példa           |          2\. példa          |
+| **Alacsony gyorsítótár-használat százalékos aránya**  |          3\. példa           |          4\. példa          |
 
 **1. forgatókönyv:** Ön optimálisan használja a gyorsítótárat. A lekérdezéseket esetlegesen lelassító egyéb területek [hibáinak megoldása](sql-data-warehouse-manage-monitor.md) .
 

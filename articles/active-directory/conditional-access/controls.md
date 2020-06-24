@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan működnek az egyéni vezérlők a Azure Active
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8c149279a755eb186a3fdc7891e9b511d18c7f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050549"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253307"
 ---
 # <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
@@ -33,11 +33,11 @@ Másolja a JSON-adatforrást, majd illessze be a kapcsolódó szövegmezőbe. Ne
 
 Az egyéni vezérlő létrehozásának lehetősége a **feltételes hozzáférés** lap **kezelés** szakaszában található.
 
-![Vezérlés](./media/controls/82.png)
+![Szabályozás](./media/controls/82.png)
 
 Az **új egyéni vezérlő**elemre kattintva megnyílik egy panel, amely a vezérlőelem JSON-adataihoz tartozó szövegmezővel rendelkezik.  
 
-![Vezérlés](./media/controls/81.png)
+![Szabályozás](./media/controls/81.png)
 
 ## <a name="deleting-custom-controls"></a>Egyéni vezérlők törlése
 

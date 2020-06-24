@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -22,7 +22,7 @@ A hub tartalmazza az átjárót. A központ létrehozását követően a szolgá
 3. A **virtuális központ létrehozása** lapon végezze el a következő mezőket:
 
    * Hely
-   * Name (Név)
+   * Name
    * Központ titkos címtartománya
 
 Kattintson a **Megerősítés** gombra a központ létrehozásához. Kattintson a **frissítés** gombra a központ a **hubok** lapon való megtekintéséhez.

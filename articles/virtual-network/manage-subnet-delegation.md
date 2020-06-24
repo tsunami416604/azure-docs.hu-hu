@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201866"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703893"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Alhálózati delegálás hozzáadása vagy eltávolítása
 
@@ -33,14 +33,14 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Ebben a szakaszban létrehoz egy virtuális hálózatot és azt az alhálózatot, amelyet később egy Azure-szolgáltatáshoz delegál.
 
-1. A képernyő bal felső részén válassza az **erőforrás** > létrehozása**hálózatkezelés** > **virtuális hálózat**lehetőséget.
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat**lehetőséget.
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | Name (Név) | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.0.0.0/16*értéket. |
-    | Előfizetés | Válassza ki előfizetését.|
+    | Előfizetés | Válassza ki az előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
     | Hely | Válassza a **EastUS**lehetőséget.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
@@ -50,7 +50,7 @@ Ebben a szakaszban létrehoz egy virtuális hálózatot és azt az alhálózatot
 
 ### <a name="permissions"></a>Engedélyek
 
-Ha nem hozta létre azt az alhálózatot, amelyet delegálni szeretne egy Azure-szolgáltatáshoz, a következő engedélyre van szüksége: `Microsoft.Network/virtualNetworks/subnets/write`.
+Ha nem hozta létre azt az alhálózatot, amelyet delegálni szeretne egy Azure-szolgáltatáshoz, a következő engedélyre van szüksége: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 A beépített [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör a szükséges engedélyeket is tartalmazza.
 
@@ -74,7 +74,7 @@ Ebben a szakaszban az előző szakaszban létrehozott alhálózatot delegálja e
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verziójának megkereséséhez `az --version`futtassa a parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verziójának megkereséséhez futtassa a parancsot `az --version` . További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
@@ -103,7 +103,7 @@ Az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) p
 ```
 ### <a name="permissions"></a>Engedélyek
 
-Ha nem hozta létre azt az alhálózatot, amelyet delegálni szeretne egy Azure-szolgáltatáshoz, a következő engedélyre van szüksége: `Microsoft.Network/virtualNetworks/subnets/write`.
+Ha nem hozta létre azt az alhálózatot, amelyet delegálni szeretne egy Azure-szolgáltatáshoz, a következő engedélyre van szüksége: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 A beépített [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör a szükséges engedélyeket is tartalmazza.
 
@@ -202,7 +202,7 @@ Hozzon létre egy **myVnet** nevű virtuális hálózatot egy **mySubnet** nevű
 ```
 ### <a name="permissions"></a>Engedélyek
 
-Ha nem hozta létre azt az alhálózatot, amelyet delegálni szeretne egy Azure-szolgáltatáshoz, a következő engedélyre van szüksége: `Microsoft.Network/virtualNetworks/subnets/write`.
+Ha nem hozta létre azt az alhálózatot, amelyet delegálni szeretne egy Azure-szolgáltatáshoz, a következő engedélyre van szüksége: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 A beépített [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör a szükséges engedélyeket is tartalmazza.
 

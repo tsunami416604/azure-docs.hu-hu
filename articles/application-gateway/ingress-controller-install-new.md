@@ -4,15 +4,15 @@ description: Ez a cikk tájékoztatást nyújt arról, hogyan helyezhet üzembe 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 42443cac199c4ba9a5df25e13393bb2103cb340e
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205075"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807142"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése új Application Gateway használatával
 

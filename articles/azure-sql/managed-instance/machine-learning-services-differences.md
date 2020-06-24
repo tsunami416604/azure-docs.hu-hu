@@ -2,7 +2,7 @@
 title: Machine Learning Services főbb eltérései (előzetes verzió)
 description: Ez a témakör a Machine Learning Services az Azure SQL felügyelt példányban és a SQL Server Machine Learning Servicesban való főbb különbségeit ismerteti.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
-ms.openlocfilehash: 02211a09df2d2744119ea8fbe6f0ecaa63dba020
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045108"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254748"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Az Azure SQL felügyelt példányai és SQL Server Machine Learning Services közötti fő különbségek
 
@@ -48,7 +48,7 @@ Machine Learning Services a felügyelt SQL-példányon, és SQL Server támogatj
   | SQL Managed Instance | 3.7.1  | 3.5.2 |
   | SQL Server           | 3.5.2  | 3.3.3 |
 
-- Nincs szükség a-on keresztül történő konfigurálásra `external scripts enabled` `sp_configure` . Miután [regisztrált](machine-learning-services-overview.md#signup) az előzetes verzióra, a Machine learning engedélyezve van az SQL-adatbázishoz.
+- Nincs szükség a-on keresztül történő konfigurálásra `external scripts enabled` `sp_configure` . Miután [regisztrált](machine-learning-services-overview.md#signup) az előzetes verzióra, a Machine learning engedélyezve van az Azure SQL felügyelt példányain.
 
 ## <a name="packages"></a>Csomagok
 
@@ -59,8 +59,8 @@ A Python és az R csomagkezelő a felügyelt SQL-példány és a SQL Server köz
 
 A Python és az R csomagok kezelésével kapcsolatos további információkért lásd:
 
-- [Python-csomag adatainak beolvasása](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
-- [R-csomag adatainak beolvasása](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [Python-csomagadatok lekérése](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [R-csomagadatok lekérése](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
 
 ## <a name="resource-governance"></a>Erőforrások szabályozása
 

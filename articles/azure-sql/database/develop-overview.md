@@ -10,21 +10,22 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: 1d384bf4919589675dd6947fcb083585ebaf7e18
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344594"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254038"
 ---
-# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Alkalmazásfejlesztés áttekintése – SQL Database & SQL felügyelt példánya 
+# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Alkalmazásfejlesztés áttekintése – SQL Database & SQL felügyelt példánya
+
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Ez a cikk végigvezeti a fejlesztőnek az Azure-adatbázishoz való csatlakozáshoz szükséges kód írásakor. Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányára vonatkozik.
 
 ## <a name="language-and-platform"></a>Nyelv és platform
 
-A Azure SQL Database összekapcsolásához és lekérdezéséhez különböző [programozási nyelveket és platformokat](connect-query-content-reference-guide.md) használhat. Megtalálhatja az Azure SQL Database-adatbázishoz való kapcsolódáshoz használható [minta alkalmazásokat](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) .
+A Azure SQL Database összekapcsolásához és lekérdezéséhez különböző [programozási nyelveket és platformokat](connect-query-content-reference-guide.md) használhat. Megtalálhatja az adatbázishoz való kapcsolódáshoz használható [minta alkalmazásokat](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) .
 
 Használhatja a nyílt forráskódú eszközöket, például a [gepárd](https://github.com/wunderlist/cheetah), az [SQL-CLI](https://www.npmjs.com/package/sql-cli)és a [vs Code](https://code.visualstudio.com/)-ot. Ezen kívül az Azure SQL Database olyan Microsoft-eszközöket is támogat, mint például a [Visual Studio](https://www.visualstudio.com/downloads/) és az [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). A Azure Portal, a PowerShell és a REST API-k segítségével további hatékonyságot érhet el.
 
@@ -44,7 +45,7 @@ Kerülje a hosszan futó tranzakciók elkerülését, mert az infrastruktúra va
 
 ## <a name="resiliency"></a>Rugalmasság
 
-Azure SQL Database egy felhőalapú szolgáltatás, amely az alapul szolgáló infrastruktúrában vagy a felhőalapú entitások közötti kommunikációban felmerülő átmeneti hibákat várhat. Bár a Azure SQL Database rugalmas a tranzitív infrastruktúra meghibásodása esetén, ezek a hibák hatással lehetnek a kapcsolatra. Ha átmeneti hiba történik a SQL Databasehoz való csatlakozáskor, a kódnak [újra kell próbálkoznia a hívással](troubleshoot-common-connectivity-issues.md). Azt javasoljuk, hogy az újrapróbálkozási logika leállítási logikát használjon, hogy ne legyenek túlterhelve az SQL-adatbázison, és egyszerre több ügyfél próbálkozzon újra. Az újrapróbálkozási logika a [SQL Database-ügyfélprogramok hibaüzenetei](troubleshoot-common-errors-issues.md)függ.
+Azure SQL Database egy felhőalapú szolgáltatás, amely az alapul szolgáló infrastruktúrában vagy a felhőalapú entitások közötti kommunikációban felmerülő átmeneti hibákat várhat. Bár a Azure SQL Database rugalmas a tranzitív infrastruktúra meghibásodása esetén, ezek a hibák hatással lehetnek a kapcsolatra. Ha átmeneti hiba történik a SQL Databasehoz való csatlakozáskor, a kódnak [újra kell próbálkoznia a hívással](troubleshoot-common-connectivity-issues.md). Azt javasoljuk, hogy az újrapróbálkozási logika leállítási logikát használjon, hogy ne haladja meg a szolgáltatást egyszerre több ügyfél újrapróbálkozásával. Az újrapróbálkozási logika a [SQL Database-ügyfélprogramok hibaüzenetei](troubleshoot-common-errors-issues.md)függ.
 
 További információ a Azure SQL Database tervezett karbantartási eseményeinek előkészítéséről: az [Azure karbantartási eseményeinek tervezése Azure SQL Databaseban](planned-maintenance.md).
 
@@ -55,7 +56,7 @@ További információ a Azure SQL Database tervezett karbantartási eseményeine
 - A Azure SQL Databasehoz való ügyfélkapcsolatok időnként megkerülik a proxyt, és közvetlenül az adatbázissal működnek. Ekkor válnak fontossá az 1433-astól különböző portok. További információért [Azure SQL Database kapcsolati architektúrát](connectivity-architecture.md) és [portokat a 1433 ADO.NET 4,5 és SQL Database](adonet-v12-develop-direct-route-ports.md).
 - A felügyelt SQL-példányok példányának hálózati konfigurációja: [SQL felügyelt példány hálózati konfigurációja](../managed-instance/how-to-content-reference-guide.md#network-configuration).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg [SQL Database](sql-database-paas-overview.md) és az [SQL felügyelt példányának](../managed-instance/sql-managed-instance-paas-overview.md)összes funkcióját.
 

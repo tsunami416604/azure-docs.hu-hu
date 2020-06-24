@@ -4,23 +4,23 @@ description: Hogyan hozhat létre egy gazdagépet a Windows rendszerű virtuáli
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8c9c9a7d1845875fd80471ad2380a1ec7933cfb3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 6b064c6e4107da5695e2a9945240e4276ac795b8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607669"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211850"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
 >[!IMPORTANT]
 >Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md).
 >
-> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Windows rendszerű virtuális asztali bérlői környezetekben. Mindegyik címkészlet több RemoteApp-csoporthoz, egy asztali alkalmazás csoporthoz és több munkamenet-gazdagéphez is társítható.
@@ -34,10 +34,10 @@ Ez a cikk azt feltételezi, hogy már követte a [PowerShell-modul beállítása
 Futtassa a következő parancsmagot a Windows rendszerű virtuális asztali környezetbe való bejelentkezéshez:
 
 ```powershell
-New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname> 
+New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname>
 ```
 
-Ez a parancsmag létrehozza a gazdagépet, a munkaterületet és az asztali alkalmazást. Emellett regisztrálja az asztali alkalmazás csoportját a munkaterületen. Létrehozhat egy munkaterületet ezzel a parancsmaggal, vagy használhat egy meglévő munkaterületet is. 
+Ez a parancsmag létrehozza a gazdagépet, a munkaterületet és az asztali alkalmazást. Emellett regisztrálja az asztali alkalmazás csoportját a munkaterületen. Létrehozhat egy munkaterületet ezzel a parancsmaggal, vagy használhat egy meglévő munkaterületet is.
 
 A következő parancsmag futtatásával hozzon létre egy regisztrációs jogkivonatot, amely engedélyezi, hogy a munkamenet-állomás csatlakozzon a gazdagéphez, és mentse a helyi számítógép egy új fájljába. Megadhatja, hogy a regisztrációs jogkivonat mennyi ideig érvényes a-ExpirationHours paraméter használatával.
 
@@ -48,16 +48,16 @@ A következő parancsmag futtatásával hozzon létre egy regisztrációs jogkiv
 New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
 ```
 
-Ha például olyan tokent szeretne létrehozni, amely két órán belül lejár, futtassa a következő parancsmagot: 
+Ha például olyan tokent szeretne létrehozni, amely két órán belül lejár, futtassa a következő parancsmagot:
 
 ```powershell
-New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddHours(2).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) 
+New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddHours(2).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
 ```
 
 Ezután futtassa ezt a parancsmagot, hogy Azure Active Directory felhasználókat adjon hozzá az alapértelmezett asztali alkalmazás csoporthoz a gazdagéphez.
 
 ```powershell
-New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 A következő parancsmag futtatásával Azure Active Directory felhasználói csoportokat adhat hozzá az alapértelmezett asztali alkalmazás csoporthoz a gazdagépen:
@@ -69,7 +69,7 @@ New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop 
 Futtassa a következő parancsmagot a regisztrációs jogkivonat egy változóba való exportálásához, amelyet később a [virtuális gépek a Windows rendszerű virtuális asztali készletbe való regisztrálásához](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)fog használni.
 
 ```powershell
-$token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> 
+$token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname>
 ```
 
 ## <a name="create-virtual-machines-for-the-host-pool"></a>Virtuális gépek létrehozása a gazdagéphez
@@ -85,7 +85,7 @@ Több módon is létrehozhat egy virtuális gépet:
 >[!NOTE]
 >Ha a Windows 7 operációs rendszert futtató virtuális gépet a gazdagép operációs rendszereként telepíti, a létrehozási és a telepítési folyamat némileg eltérő lesz. További részletek: Windows 7 rendszerű virtuális [gépek üzembe helyezése Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md).
 
-A munkamenet-gazdagép virtuális gépei létrehozása után Windows- [licencet alkalmazhat egy munkamenet-gazda](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) virtuális gépre, hogy a Windows vagy a Windows Server rendszerű virtuális gépeket egy másik licenc kifizetése nélkül futtassa. 
+A munkamenet-gazdagép virtuális gépei létrehozása után Windows- [licencet alkalmazhat egy munkamenet-gazda](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) virtuális gépre, hogy a Windows vagy a Windows Server rendszerű virtuális gépeket egy másik licenc kifizetése nélkül futtassa.
 
 ## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>A virtuális gépek előkészítése a Windows rendszerű virtuális asztali ügynök telepítéséhez
 
@@ -122,7 +122,7 @@ A Windows rendszerű virtuális asztali ügynökök regisztrálásához tegye a 
 >[!IMPORTANT]
 >A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](../security-center/security-center-just-in-time.md). Javasoljuk továbbá, hogy a virtuális gépeket ne rendeljen nyilvános IP-címekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy létrehozott egy gazdagépet, feltöltheti azt a RemoteApps szolgáltatással. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg az alkalmazáscsoport kezelése oktatóanyagot.
 

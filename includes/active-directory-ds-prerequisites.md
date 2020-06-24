@@ -1,5 +1,5 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 description: az előfeltételeket tartalmazó fájl belefoglalása
 services: active-directory-ds
 documentationcenter: ''

@@ -9,19 +9,19 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 501efaf2e9e97f37521daa770e6c760cc794fa36
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245979"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742861"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Az Azure AD-szerepkörök felügyeleti képességei Privileged Identity Management
 
@@ -56,9 +56,9 @@ A felhasználó által kezdeményezett műveletekhez a globális rendszergazda v
 
 ## <a name="api-changes"></a>API-változások
 
-Ha az ügyfelek a frissített verziót az Azure AD-szervezetbe építették, a meglévő Graph API működése leáll. Át kell térnie az [Azure-erőforrás szerepköreinek Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)használatára. Az adott API `/azureResources` használatával felügyelheti az Azure ad-szerepköröket az aláírással, és a CÍMTÁR `/aadroles` -azonosítóját használhatja. `resourceId`
+Ha az ügyfelek a frissített verziót az Azure AD-szervezetbe építették, a meglévő Graph API működése leáll. Át kell térnie az [Azure-erőforrás szerepköreinek Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)használatára. Az adott API használatával felügyelheti az Azure AD-szerepköröket `/azureResources` `/aadroles` az aláírással, és a CÍMTÁR-azonosítóját használhatja `resourceId` .
 
-Mindent megtettünk, hogy megismerjük a korábbi API-t használó ügyfeleket, hogy tájékoztassák őket erről a változásról az idő előtt. Ha az Azure AD-szervezet át lett helyezve az új verzióra, és továbbra is függ a régi API-tól, forduljon a pim_preview@microsoft.comcsapathoz.
+Mindent megtettünk, hogy megismerjük a korábbi API-t használó ügyfeleket, hogy tájékoztassák őket erről a változásról az idő előtt. Ha az Azure AD-szervezet át lett helyezve az új verzióra, és továbbra is függ a régi API-tól, forduljon a csapathoz pim_preview@microsoft.com .
 
 ## <a name="powershell-change"></a>PowerShell-változás
 

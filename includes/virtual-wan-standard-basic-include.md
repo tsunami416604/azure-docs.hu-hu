@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -17,7 +17,7 @@ ms.locfileid: "73491692"
 ---
 | **Virtuális WAN-típus** | **Hub típusa** | **Elérhető konfigurációk** |
 |---|---|---|
-|Basic | Basic | Csak helyek közötti VPN |
+|Alapszintű | Alapszintű | Csak helyek közötti VPN |
 | Standard | Standard | ExpressRoute<br>Felhasználói VPN (P2S)<br>VPN (helyek közötti)<br> A virtuális központon keresztüli VNet és VNet közötti átvitel |
 
 >[!NOTE]

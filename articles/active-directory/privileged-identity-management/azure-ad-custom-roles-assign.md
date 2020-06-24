@@ -9,19 +9,19 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0303d37ef5bbbf266feb5456b0bc224ce272ee13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80a75664b977c7f37808de7ca68b332363886a4e
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499249"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742981"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkör kiosztása Privileged Identity Management
 
@@ -74,7 +74,7 @@ A Privileged Identity Management a Azure Active Directory (Azure AD) alkalmazás
 1. Ha az **állandó** jelölőnégyzet be van kapcsolva és elérhető (a szerepkör beállításaitól függően), megadhatja, hogy a hozzárendelés állandó-e. Jelölje be a jelölőnégyzetet, hogy a hozzárendelés tartósan jogosult vagy véglegesen hozzá legyen rendelve. Törölje a jelölőnégyzet jelölését a hozzárendelés időtartamának megadásához.
 1. Az új szerepkör-hozzárendelés létrehozásához kattintson a **Mentés** , majd a **Hozzáadás**elemre. Megjelenik egy értesítés a hozzárendelési folyamat állapotáról.
 
-A szerepkör-hozzárendelés ellenőrzéséhez nyisson meg egy nyitott szerepkört, válassza a **hozzárendelések** > **hozzárendelés lehetőséget, és ellenőrizze** , hogy a szerepkör-hozzárendelés megfelelően van-e azonosítva a jogosult vagy az aktív módon.
+A szerepkör-hozzárendelés ellenőrzéséhez nyisson meg egy nyitott szerepkört, válassza a **hozzárendelések**hozzárendelés lehetőséget,  >  **Assign** és ellenőrizze, hogy a szerepkör-hozzárendelés megfelelően van-e azonosítva a jogosult vagy az aktív módon.
 
  ![Ellenőrizze, hogy a szerepkör-hozzárendelés jogosultként vagy aktívként jelenik-e meg](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
