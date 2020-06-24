@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254507"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712275"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Az 1,0-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -66,7 +66,7 @@ Ha a virtuális tömb a 0,6-es frissítést futtatja, hajtsa végre a következ�
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás letöltése
 
-1. Indítsa el az Internet Explorert, [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)és navigáljon a gombra.
+1. Indítsa el az Internet Explorert, és navigáljon a gombra [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Ha első alkalommal használja a Microsoft Update-katalógust ezen a számítógépen, kattintson a **telepítés** gombra, amikor a rendszer felszólítja az Microsoft Update Catalog bővítmény telepítésére.
 
@@ -85,8 +85,8 @@ Ha a virtuális tömb a 0,6-es frissítést futtatja, hajtsa végre a következ�
     ![A csomagban található fájlok](./media/storsimple-virtual-array-install-update-1/update01folder.png)
 
     Két fájl jelenik meg:
-    -  Egy önálló csomagfájl Microsoft Update `WindowsTH-KB3011067-x64`. Ez a fájl az eszköz szoftverének frissítésére szolgál.
-    - Az augusztusi `windows8.1-kb4034681-x64`összesítő frissítéseket tartalmazó fájl. További információ a jelen összesítésben található adatokról: [augusztus havi biztonsági összesítés](https://support.microsoft.com/help/4034681/windows-8-1-windows-server-2012-r2-update-kb40346810).
+    -  Egy önálló csomagfájl Microsoft Update `WindowsTH-KB3011067-x64` . Ez a fájl az eszköz szoftverének frissítésére szolgál.
+    - Az augusztusi összesítő frissítéseket tartalmazó fájl `windows8.1-kb4034681-x64` . További információ a jelen összesítésben található adatokról: [augusztus havi biztonsági összesítés](https://support.microsoft.com/help/4034681/windows-8-1-windows-server-2012-r2-update-kb40346810).
 
 ### <a name="install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
@@ -99,7 +99,7 @@ Az eljárás végrehajtása körülbelül 4 percet vesz igénybe. A frissítés 
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
-1. A helyi webes kezelőfelületen lépjen a **karbantartási** > **szoftverfrissítés**elemre. Jegyezze fel a futtatott szoftver verzióját. **Csak akkor folytassa ezt a frissítést, ha az 0,6-es (10.0.10293.0) frissítést futtatja. Ha egy korábbi verziót futtat, először [telepítse a 0,6](storsimple-virtual-array-install-update-06.md) -es frissítést az eszközön, majd alkalmazza az 1. frissítést.**
+1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés**elemre. Jegyezze fel a futtatott szoftver verzióját. **Csak akkor folytassa ezt a frissítést, ha az 0,6-es (10.0.10293.0) frissítést futtatja. Ha egy korábbi verziót futtat, először [telepítse a 0,6](storsimple-virtual-array-install-update-06.md) -es frissítést az eszközön, majd alkalmazza az 1. frissítést.**
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
@@ -115,14 +115,14 @@ Az eljárás végrehajtása körülbelül 4 percet vesz igénybe. A frissítés 
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
-5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási** > **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10296** kell lennie az 1,0-es frissítéshez.
+5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10296** kell lennie az 1,0-es frissítéshez.
    
    > [!NOTE]
    > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10296** és a Azure Portal jelentések **10.0.10296.0** ugyanazt a verziót jelenti.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-1/update6m.png)
 
-6. Ismételje meg a 2-4 lépést a Windows biztonsági javítás fájl `windows8.1-kb4012213-x64`használatával történő telepítéséhez. A virtuális tömb a telepítés után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
+6. Ismételje meg a 2-4 lépést a Windows biztonsági javítás fájl használatával történő telepítéséhez `windows8.1-kb4012213-x64` . A virtuális tömb a telepítés után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
 
 > [!NOTE]
 > Ha közvetlenül az 1. frissítést alkalmazza egy olyan eszközre, amely a 0,6-es frissítés előtt fut, akkor hiányoznak néhány frissítés. A következő lépésekhez forduljon Microsoft ügyfélszolgálatahoz.

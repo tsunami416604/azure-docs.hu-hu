@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 066a6489e6244369453ec5d9f21d5e1e83fcd6c8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187678"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201750"
 ---
 # <a name="integer-claims-transformations"></a>Egész szám típusú jogcímek átalakítása
 
@@ -28,14 +28,14 @@ Ez a cikk példákat tartalmaz a Azure Active Directory B2C (Azure AD B2C) Ident
 
 Hosszú adattípust alakít át karakterlánc adattípusra.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | hosszú | A ClaimType karakterlánccá alakítja át. |
 | OutputClaim | outputClaim | sztring | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
-Ebben a példában a `numericUserId` Long értékkel rendelkező jogcím egy karakterlánc típusú értékű `UserId` jogcímre lett konvertálva.
+Ebben a példában a `numericUserId` Long értékkel rendelkező jogcím egy `UserId` karakterlánc típusú értékű jogcímre lett konvertálva.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="numericUserId" TransformationClaimType="inputClaim" />

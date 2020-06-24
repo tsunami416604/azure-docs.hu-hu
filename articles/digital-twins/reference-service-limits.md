@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 4497e1222904b1dad5fbeccd942854443e756ed5
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 7847964d77e5dc09d2e09f207c47f9504c48e1db
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612844"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729200"
 ---
 # <a name="service-limits-in-public-preview"></a>Nyilvános előzetes verzióban elérhető a szolgáltatás korlátai
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ezek a nyilvános előzetes verzióban elérhető Azure Digital Twins szolgáltatásokra vonatkozó korlátozások.
 
@@ -60,7 +63,7 @@ Az Azure digitális Twins-modellekhez tartozó DTDL-dokumentumokban lévő adatt
  
 A lekérdezés késésének részletei és az előzetes verzióra vonatkozó egyéb irányelvek a következő [útmutatóban találhatók: a kettős gráf lekérdezése](how-to-query-graph.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Digital Twins aktuális előzetes kiadásáról a szolgáltatás áttekintésében:
 * [Áttekintés: Mi az Azure Digital Twins?](overview.md)

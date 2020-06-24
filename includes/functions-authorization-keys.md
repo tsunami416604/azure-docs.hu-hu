@@ -4,14 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 926434d7110877e234888682cb6c946afe3ae685
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 046bd8fcbb8fab50269c8d35da0956bdc63f2304
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648943"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298599"
 ---
 A függvények lehetővé teszik a kulcsok használatát, hogy a fejlesztés során megnehezíti a HTTP-függvény végpontjának elérését. Ha a http-hozzáférési szint nem a HTTP-triggert használó függvényre van beállítva `anonymous` , a kérelmeknek tartalmaznia kell egy API-hozzáférési kulcsot a kérelemben. 
+
+Míg a kulcsok alapértelmezett biztonsági mechanizmust biztosítanak, érdemes lehet további lehetőségeket használni a HTTP-végpontok biztonságossá tételéhez az éles környezetben. Például általában nem jó megoldás a közös titkos kulcs nyilvános alkalmazásokban való terjesztésére. Ha a függvényt nyilvános ügyfél hívja meg, érdemes fontolóra venni egy másik secrity mechanizmus megvalósítását. További információ: [http-végpont biztonságossá tétele éles](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)környezetben.
+
+Amikor megújítja a funkcióbillentyűk értékeit, manuálisan újra kell terjesztenie a frissített kulcs értékeit a függvényt meghívó összes ügyfélre.  
 
 #### <a name="authorization-scopes-function-level"></a>Engedélyezési hatókörök (Function-Level)
 

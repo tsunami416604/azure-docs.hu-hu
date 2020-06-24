@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b50118dcd4bf0fafa3e25399cf7d82558b7c776c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b91eb361d4bcae304734817ee7f57141d6f06415
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582787"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727857"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 
@@ -28,7 +28,7 @@ Ez a cikk a csoportok létrehozásához és frissítéséhez szükséges Azure A
 > [!IMPORTANT]
 > Egyes beállításokhoz prémium szintű Azure Active Directory P1 licenc szükséges. További információt a [sablon beállításai](#template-settings) táblázatban talál.
 
-A nem rendszergazda felhasználók biztonsági csoportok létrehozásáról a set `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` [-msolcompanysettings parancsmagjával](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben leírtak szerint tájékozódhat bővebben.
+A nem rendszergazda felhasználók biztonsági csoportok létrehozásáról a set  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` [-msolcompanysettings parancsmagjával](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben leírtak szerint tájékozódhat bővebben.
 
 Az Office 365-csoportok beállításait egy Setting objektummal és egy SettingsTemplate objektummal kell konfigurálni. Kezdetben a címtárban nem jelennek meg beállítások objektumok, mert a címtár az alapértelmezett beállításokkal van konfigurálva. Az alapértelmezett beállítások módosításához egy új beállítási objektumot kell létrehoznia egy beállítási sablonnal. A beállítások sablonjait a Microsoft határozza meg. Több különböző beállítási sablon is létezik. A címtárhoz tartozó Office 365-csoport beállításainak konfigurálásához használja a "Group. Unified" nevű sablont. Az Office 365-csoport beállításainak egyetlen csoportra való konfigurálásához használja a "Group. Unified. Guest" nevű sablont. Ez a sablon egy Office 365-csoport vendég-hozzáférésének kezelésére szolgál. 
 

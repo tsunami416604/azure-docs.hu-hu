@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254650"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712071"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Kötetek megtekintése és kezelése StorSimple Snapshot Manager használatával
 ## <a name="overview"></a>Áttekintés
@@ -93,7 +93,7 @@ Az alábbi eljárással tekintheti meg a helyi és az Azure-beli StorSimple-köt
    
    | Eredmények oszlop | Leírás |
    |:--- |:--- |
-   |  Name (Név) |A **Name (név** ) oszlop tartalmazza az egyes felderített kötetekhez rendelt meghajtóbetűjelet. |
+   |  Name |A **Name (név** ) oszlop tartalmazza az egyes felderített kötetekhez rendelt meghajtóbetűjelet. |
    |  Eszköz |Az **eszköz** oszlop tartalmazza a gazdaszámítógéphez csatlakoztatott eszköz IP-címét. |
    |  Eszköz kötetének neve |Az **eszköz kötet neve** oszlop tartalmazza annak az eszköznek a nevét, amelyhez a kiválasztott kötet tartozik. Ez az adott kötethez tartozó Azure Portalban definiált kötet neve. |
    |  Elérési utak |A **hozzáférési útvonalak** oszlop a kötet elérési útját jeleníti meg. Ez az a meghajtóbetűjel vagy csatlakoztatási pont, amelyen a kötet elérhető a gazdaszámítógépen. |

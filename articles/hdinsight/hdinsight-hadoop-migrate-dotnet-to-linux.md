@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272369"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709266"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>.NET-megoldások migrálása Windows-alapú HDInsight Linux-alapú HDInsight
 
-A Linux-alapú HDInsight-fürtök a MONO-t használják [(https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. A Mono lehetővé teszi a .NET-összetevők, például a MapReduce-alkalmazások Linux-alapú HDInsight való használatát. Ebből a dokumentumból megtudhatja, hogyan telepíthet át Windows-alapú HDInsight-fürtökhöz létrehozott .NET-megoldásokat a Mono használatával a Linux-alapú HDInsight.
+A Linux-alapú HDInsight-fürtök a MONO-t használják [( https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. A Mono lehetővé teszi a .NET-összetevők, például a MapReduce-alkalmazások Linux-alapú HDInsight való használatát. Ebből a dokumentumból megtudhatja, hogyan telepíthet át Windows-alapú HDInsight-fürtökhöz létrehozott .NET-megoldásokat a Mono használatával a Linux-alapú HDInsight.
 
 ## <a name="mono-compatibility-with-net"></a>Mono-kompatibilitás a .NET-tel
 
 A HDInsight 3,6-es verziója tartalmazza a Mono 4.2.1-es verzióját. További információ a HDInsight által tartalmazott mono-verzióról: HDInsight- [összetevő verziója](hdinsight-component-versioning.md).
 
-A mono és a .net közötti kompatibilitásról további információt a [mono kompatibilitási (https://www.mono-project.com/docs/about-mono/compatibility/) ](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentum) című témakörben talál.
+A mono és a .NET közötti kompatibilitásról további információt a [mono kompatibilitási ( https://www.mono-project.com/docs/about-mono/compatibility/) ](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentum) című témakörben talál.
 
 > [!IMPORTANT]  
 > A SCP.NET keretrendszer kompatibilis a Mono-val. A SCP.NET és a Mono használatával kapcsolatos további információkért lásd: [a Visual Studio használata C#-topológiák fejlesztéséhez a HDInsight Apache Storm](storm/apache-storm-develop-csharp-visual-studio-topology.md).
@@ -34,24 +34,24 @@ A [.net-hordozhatósági elemző](https://marketplace.visualstudio.com/items?ite
 
 1. Telepítse a [.net-hordozhatósági elemzőt](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer). A telepítés során válassza ki a használni kívánt Visual Studio-verziót.
 
-2. A Visual Studio 2015-ból válassza a__hordozhatósági elemző beállításainak__ __elemzése__ > lehetőséget, és győződjön meg arról, hogy a __4,5__ be van jelölve a __mono__ szakaszban.
+2. A Visual Studio 2015-ból __Analyze__válassza  >  a__hordozhatósági elemző beállításainak__elemzése lehetőséget, és győződjön meg arról, hogy a __4,5__ be van jelölve a __mono__ szakaszban.
 
     ![4,5 az analizátor beállításainál a Mono szakaszban be van jelölve](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
     A konfiguráció mentéséhez kattintson __az OK gombra__ .
 
-3. Válassza az elemzés a__szerelvények hordozhatóságának__ __elemzése__ > lehetőséget. Válassza ki a megoldást tartalmazó szerelvényt, majd válassza a __Megnyitás__ lehetőséget az elemzés megkezdéséhez.
+3. Válassza __Analyze__az elemzés a  >  __szerelvények hordozhatóságának__elemzése lehetőséget. Válassza ki a megoldást tartalmazó szerelvényt, majd válassza a __Megnyitás__ lehetőséget az elemzés megkezdéséhez.
 
-4. Az elemzések befejezése után válassza az__elemzés megtekintése jelentések__ __elemzése__ > lehetőséget. A __hordozhatósági elemzés eredményei__között válassza a __jelentés megnyitása__ lehetőséget a jelentés megnyitásához.
+4. Az elemzések befejezése után válassza __Analyze__az  >  __elemzés megtekintése jelentések__elemzése lehetőséget. A __hordozhatósági elemzés eredményei__között válassza a __jelentés megnyitása__ lehetőséget a jelentés megnyitásához.
 
     ![A hordozhatósági elemző eredményei párbeszédpanel](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
 > [!IMPORTANT]  
-> Az analizátor nem tud minden problémát megfogni a megoldásával. A fájl elérési útja `c:\temp\file.txt` például az OK, ha a Mono a Windows rendszeren fut. Ugyanez az elérési út nem érvényes Linux platformon.
+> Az analizátor nem tud minden problémát megfogni a megoldásával. A fájl elérési útja például az `c:\temp\file.txt` OK, ha a Mono a Windows rendszeren fut. Ugyanez az elérési út nem érvényes Linux platformon.
 
 ## <a name="manual-portability-analysis"></a>Manuális hordozhatóság elemzése
 
-Végezze el a kód manuális vizsgálatát az [alkalmazás-hordozhatóságbanhttps://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) található információk használatával (dokumentum.
+Végezze el a kód manuális vizsgálatát az [alkalmazás-hordozhatóságban https://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) található információk használatával (dokumentum.
 
 ## <a name="modify-and-build"></a>Módosítás és létrehozás
 

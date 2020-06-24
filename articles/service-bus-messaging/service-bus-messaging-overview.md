@@ -12,11 +12,11 @@ ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
 ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240631"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707890"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 

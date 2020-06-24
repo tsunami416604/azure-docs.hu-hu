@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffa6f2fbdcde41d81e268779c3a0586bd8310792
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 253d0dc945e0351b5c017739d081c567a139f5d1
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437558"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078431"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében
 
@@ -53,7 +53,7 @@ A katalógus erőforrások és hozzáférési csomagok tárolója. Létre kell h
 
 ### <a name="creating-a-catalog-programmatically"></a>Katalógus létrehozása programozott módon
 
-Microsoft Graph használatával katalógust is létrehozhat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageCatalog létrehozására](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+Microsoft Graph használatával katalógust is létrehozhat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageCatalog létrehozására](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
 
 ## <a name="add-resources-to-a-catalog"></a>Erőforrások hozzáadása egy katalógushoz
 
@@ -155,7 +155,7 @@ A katalógust törölheti, de csak akkor, ha nincs hozzáférési csomagja.
 
 ### <a name="deleting-a-catalog-programmatically"></a>Katalógus programozott törlése
 
-A katalógust Microsoft Graph használatával is törölheti.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t [egy accessPackageCatalog törlésére](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
+A katalógust Microsoft Graph használatával is törölheti.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageCatalog törlésére](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>További lépések
 

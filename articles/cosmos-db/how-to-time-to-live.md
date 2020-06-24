@@ -3,15 +3,15 @@ title: Az idő konfigurálása és kezelése Azure Cosmos DB
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti az időt egy tárolón és egy elemen a Azure Cosmos DB
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbddcb8627c78544d603e1ea3ca33bc410419da1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124125"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263622"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
 
@@ -34,7 +34,7 @@ A következő lépésekkel engedélyezheti, hogy a lejárati idő nélkül egy t
    * Válassza **a be (nincs alapértelmezett)** lehetőséget, vagy válassza **a** be lehetőséget, és állítsa be a TTL értéket
    * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-   ![Állítsa be az élettartamot Azure Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+   :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Állítsa be az élettartamot Azure Portal":::
 
 * Ha a DefaultTimeToLive értéke null, akkor az élettartama ki van kapcsolva
 * Ha a DefaultTimeToLive értéke-1, akkor az élettartam beállítás értéke (nincs alapértelmezett)
@@ -53,7 +53,7 @@ TTL létrehozása vagy engedélyezése tárolóban lásd:
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -119,7 +119,7 @@ Ha meg szeretné adni az időt egy tárolón való működéshez, meg kell adnia
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -353,7 +353,7 @@ Az elemre vonatkozó írási vagy frissítési művelet végrehajtásával vissz
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -427,7 +427,7 @@ Ha az élettartam értéke be van állítva egy elemre, és már nem szeretné, 
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -502,7 +502,7 @@ Ha le szeretné tiltani az időt egy tárolóban, és leállítja a háttérben 
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (Microsoft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null

@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270328"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691758"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Integrációs fiókok létrehozása és kezelése a B2B vállalati integrációk Azure Logic Apps
 
@@ -57,12 +57,12 @@ Ehhez a feladathoz a Azure Portal az ebben a szakaszban, [Azure PowerShell](/pow
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Név** | Igen | <*integráció – fióknév*> | Az integrációs fiók neve, amely csak betűket, számokat`-`, kötőjeleket (), aláhúzásokat (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "Fabrikam-Integration" szolgáltatást használja. |
-   | **Előfizetés** | Igen | <*Azure-előfizetés – név*> | Az Azure-előfizetés neve |
-   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport-név*> | A kapcsolódó erőforrások rendszerezéséhez használni kívánt [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) neve. Ebben a példában hozzon létre egy "FabrikamIntegration-RG" nevű új erőforráscsoportot. |
-   | **Díjszabási csomag** | Igen | <*díjszabás – szint*> | Az integrációs fiók díjszabási szintje, amelyet később módosíthat. Ebben a példában válassza az **ingyenes**lehetőséget. További információt az alábbi témakörökben talál: <p>- [Logic Apps díjszabási modell](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Díjszabás Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Hely** | Igen | <*Azure-régió*> | Az integrációs fiók metaadatait tároló régió. Vagy válassza ki ugyanazt a helyet, mint a logikai alkalmazás, vagy hozza létre a logikai alkalmazásokat az integrációs fiókkal megegyező helyen. Ehhez a példához használja az "USA nyugati régiója" kifejezést. <p>**Megjegyzés**: egy integrációs [szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)belüli integrációs fiók létrehozásához válassza ki az ISE helyet. További információ: [integrációs fiókok létrehozása ISE-ben](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
-   | **Log Analytics** | Nem | Kikapcsolva | Tartsa meg a **kikapcsolt** beállítást ebben a példában. |
+   | **Name (Név)** | Yes | <*integráció – fióknév*> | Az integrációs fiók neve, amely csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `(` , `)` ) és pontokat ( `.` ) tartalmazhat. Ez a példa a "Fabrikam-Integration" szolgáltatást használja. |
+   | **Előfizetés** | Yes | <*Azure-előfizetés – név*> | Az Azure-előfizetés neve |
+   | **Erőforráscsoport** | Yes | <*Azure-Erőforrás-csoport-név*> | A kapcsolódó erőforrások rendszerezéséhez használni kívánt [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) neve. Ebben a példában hozzon létre egy "FabrikamIntegration-RG" nevű új erőforráscsoportot. |
+   | **Díjszabási csomag** | Yes | <*díjszabás – szint*> | Az integrációs fiók díjszabási szintje, amelyet később módosíthat. Ebben a példában válassza az **ingyenes**lehetőséget. További információt az alábbi témakörökben talál: <p>- [Logic Apps díjszabási modell](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Díjszabás Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Hely** | Yes | <*Azure-régió*> | Az integrációs fiók metaadatait tároló régió. Vagy válassza ki ugyanazt a helyet, mint a logikai alkalmazás, vagy hozza létre a logikai alkalmazásokat az integrációs fiókkal megegyező helyen. Ehhez a példához használja az "USA nyugati régiója" kifejezést. <p>**Megjegyzés**: egy integrációs [szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)belüli integrációs fiók létrehozásához válassza ki az ISE helyet. További információ: [integrációs fiókok létrehozása ISE-ben](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
+   | **Log Analytics** | No | Kikapcsolva | Tartsa meg a **kikapcsolt** beállítást ebben a példában. |
    |||||
 
 1. Ha elkészült, válassza a **Létrehozás**lehetőséget.
@@ -138,13 +138,13 @@ A módosítás végrehajtásához a Azure Portal az ebben a részben vagy az [Az
 
    ![Az Azure Cloud Shell megnyitása](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. A parancssorba írja be az az [ **Resource** parancsot](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update), és állítsa `skuName` be a kívánt magasabb szintet.
+1. A parancssorba írja be az az [ **Resource** parancsot](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update), és állítsa be `skuName` a kívánt magasabb szintet.
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
    ```
   
-   Ha például rendelkezik az alapszintű csomaggal, a következőt `skuName` állíthatja `Standard`be:
+   Ha például rendelkezik az alapszintű csomaggal, a következőt állíthatja be `skuName` `Standard` :
 
    ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Standard
@@ -162,13 +162,13 @@ A módosítás elvégzéséhez használja az [Azure CLI](https://docs.microsoft.
 
    ![Az Azure Cloud Shell megnyitása](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. A parancssorba írja be az az [ **Resource** parancsot](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update) , és állítsa `skuName` be a kívánt alsó szintet.
+1. A parancssorba írja be az az [ **Resource** parancsot](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update) , és állítsa be `skuName` a kívánt alsó szintet.
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
    ```
   
-   Ha például a standard szintű csomaggal rendelkezik, a következőt állíthatja `skuName` be `Basic`:
+   Ha például a standard szintű csomaggal rendelkezik, a következőt állíthatja `skuName` be `Basic` :
 
    ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Basic
@@ -178,7 +178,7 @@ A módosítás elvégzéséhez használja az [Azure CLI](https://docs.microsoft.
 
 Ha a logikai alkalmazást egy másik integrációs fiókhoz szeretné kapcsolni, vagy már nem használ integrációs fiókot a logikai alkalmazással, törölje a hivatkozást Azure Erőforrás-kezelő használatával.
 
-1. Nyissa meg a böngészőablakot, és lépjen a [Azure erőforrás-kezelő (https://resources.azure.com)](https://resources.azure.com). Jelentkezzen be ugyanazzal az Azure-fiók hitelesítő adataival.
+1. Nyissa meg a böngészőablakot, és lépjen a [Azure erőforrás-kezelő ( https://resources.azure.com) ](https://resources.azure.com). Jelentkezzen be ugyanazzal az Azure-fiók hitelesítő adataival.
 
    ![Azure Resource Explorer](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer.png)
 

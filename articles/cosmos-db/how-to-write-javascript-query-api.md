@@ -3,15 +3,15 @@ title: Tárolt eljárások és triggerek írása a JavaScript lekérdezési API 
 description: Megtudhatja, hogyan írhat tárolt eljárásokat és triggereket a JavaScript lekérdezési API használatával Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
-ms.openlocfilehash: bc92a1276232506d291e367f74a9dcf8d58d7e07
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 620b05b306622a0102a4fd932c013bdb9574c35c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982326"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262854"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Tárolt eljárások és triggerek írása a Azure Cosmos DBban a JavaScript lekérdezési API használatával
 
@@ -22,7 +22,7 @@ A Azure Cosmos DB lehetővé teszi, hogy az optimalizált lekérdezéseket egy F
 A következő mintakód azt szemlélteti, hogyan használható a JavaScript lekérdezési API egy tárolt eljárás kontextusában. A tárolt eljárás beszúr egy bemeneti paraméter által megadott Azure Cosmos-elemeket, és frissíti a metaadat-dokumentumot a `__.filter()` metódussal, a minSize, a maxSize és a totalSize használatával a bemeneti elem méret tulajdonsága alapján.
 
 > [!NOTE]
-> `__`(dupla aláhúzás) a JavaScript lekérdezési API `getContext().getCollection()` használatakor használt alias.
+> `__`(dupla aláhúzás) `getContext().getCollection()` a JavaScript lekérdezési API használatakor használt alias.
 
 ```javascript
 /**

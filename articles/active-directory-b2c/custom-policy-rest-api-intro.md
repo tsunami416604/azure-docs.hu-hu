@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b308e5d74f1a87ea1cebed26f602780307c77d35
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 41db591b8abdaaa58461b2782d93f7aa745cfdc6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447917"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202534"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API jogcímek cseréjének integrálása a Azure AD B2C egyéni szabályzatba
 
@@ -145,7 +145,7 @@ A REST API bármilyen platformon alapulhat, és bármilyen programozási nyelven
 ## <a name="localize-the-rest-api"></a>A REST API honosítása
 A REST technikai profilban érdemes lehet elküldeni az aktuális munkamenet nyelvét/területi beállítását, és ha szükséges, egy honosított hibaüzenetet kell felvennie. A [jogcímek feloldójának](claim-resolver-overview.md)használatával a kontextusbeli jogcímek, például a felhasználó nyelve is elküldhető. Az alábbi példa egy REST-alapú műszaki profilt mutat be, amely bemutatja ezt a forgatókönyvet.
 
-```XML
+```xml
 <TechnicalProfile Id="REST-ValidateUserData">
   <DisplayName>Validate user input data</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -165,7 +165,7 @@ A REST technikai profilban érdemes lehet elküldeni az aktuális munkamenet nye
 
 ## <a name="handling-error-messages"></a>Hibaüzenetek kezelési üzenetei
 
-Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például: "a felhasználó nem található a CRM rendszerben." Hiba esetén a REST API HTTP 409 hibaüzenetet ad vissza (ütközési válasz állapotkód). További információkért tekintse meg a [Rest műszaki profilt](restful-technical-profile.md#returning-error-message).
+Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például: "a felhasználó nem található a CRM rendszerben." Hiba esetén a REST API HTTP 409 hibaüzenetet ad vissza (ütközési válasz állapotkód). További információkért tekintse meg a [Rest műszaki profilt](restful-technical-profile.md#returning-validation-error-message).
 
 Ez csak akkor érhető el, ha egy REST API technikai profilt hív meg egy érvényesítési technikai profilból. Ez lehetővé teszi a felhasználó számára, hogy kijavítsa az adatokat az oldalon, és a lap beküldése után ismét futtassa az ellenőrzést.
 
@@ -179,7 +179,7 @@ A REST API szolgáltatásra irányuló kérés Azure AD B2C kiszolgálóról sz�
 
 Tervezze meg REST API szolgáltatását és a mögöttes összetevőit (például az adatbázist és a fájlrendszert) a rendelkezésre álláshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket a REST-technikai profil használatának példáit illetően:
 

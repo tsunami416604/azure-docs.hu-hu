@@ -2,18 +2,18 @@
 title: Fiók létrehozása a Azure Portalban
 description: Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Portalon nagyméretű párhuzamos számítási feladatok futtatásához a felhőben
 ms.topic: how-to
-ms.date: 02/26/2019
+ms.date: 06/10/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cccef176e3e5ba0f4774a5897f082c4847a4005
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 1205de2b800588b735aeb20d388ba4b64bc6b078
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800253"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711340"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
-Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az [Azure Portalon][azure_portal], és miként választhatja ki a számítási forgatókönyvének legmegfelelőbb fióktulajdonságokat. Megtudhatja, hol találja a fontos fióktulajdonságokat, például a hozzáférési kulcsokat és a fiókok URL-címeit.
+Ez a témakör bemutatja, hogyan hozhat létre Azure Batch fiókot a [Azure Portalban](https://portal.azure.com), és válassza ki a számítási forgatókönyvnek megfelelő fiók tulajdonságait. Emellett megtudhatja, hol találhatók a fontos fiók tulajdonságai, például a hozzáférési kulcsok és a fiók URL-címei.
 
 A Batch-fiókokkal és-forgatókönyvekkel kapcsolatos háttérért lásd: [Batch szolgáltatás munkafolyamata és erőforrásai](batch-service-workflow-features.md).
 
@@ -21,11 +21,9 @@ A Batch-fiókokkal és-forgatókönyvekkel kapcsolatos háttérért lásd: [Batc
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. Jelentkezzen be az [Azure Portalra][azure_portal].
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza **az erőforrás létrehozása**  >  **számítási**  >  **Batch szolgáltatás**elemet.
-
-    ![Batch a Piactéren][marketplace_portal]
+1. Válassza **az erőforrás létrehozása**, majd a **számítás** és a **Batch szolgáltatás**elemet.
 
 1. Adja meg az **Új Batch-fiók** beállításait. Lásd az alábbi részleteket.
 
@@ -74,9 +72,9 @@ Ha felhasználói előfizetési módban szeretne létrehozni Batch-fiókot, vég
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Az előfizetés elérésének engedélyezése az Azure Batch számára (egyszeri művelet)
 
-Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, regisztrálja az előfizetését a Batch szolgáltatásban. (Ha korábban már regisztrált, ugorjon a következő szakaszra.)
+Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, regisztrálja az előfizetését a Batch szolgáltatásban. (Ha ezt már elvégezte, ugorjon a következő szakaszra.)
 
-1. Jelentkezzen be az [Azure Portalra][azure_portal].
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza a **minden szolgáltatás**  >  **előfizetések**lehetőséget, majd válassza ki a Batch-fiókhoz használni kívánt előfizetést.
 
@@ -88,7 +86,7 @@ Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, r
 
     ![Az előfizetéshez való hozzáférés vezérlése][subscription_access]
 
-1. A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a **közreműködő** szerepkört, és keressen rá a Batch API kifejezésre. Keressen rá az egyes sztringekre, addig amíg meg nem találja az API-t:
+1. A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a **közreműködő** vagy **tulajdonos** szerepkört, majd keressen rá a Batch API kifejezésre. Keressen rá az egyes sztringekre, addig amíg meg nem találja az API-t:
     1. **MicrosoftAzureBatch**.
     1. **Microsoft Azure Batch**. Újabb Azure AD-bérlők ezt a nevet használhatják.
     1. A **ddbf3205-c6bd-46ae-8127-60eb93363864** a Batch API azonosítója.
@@ -99,35 +97,31 @@ Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, r
 
 ### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-Felhasználói előfizetés módban olyan Azure Key Vault szükséges, amely ugyanahhoz az erőforráscsoporthoz tartozik, mint a létrehozandó Batch-fiók. Győződjön meg arról, hogy az erőforráscsoport olyan régióban található, amelyben [elérhető](https://azure.microsoft.com/regions/services/) a Batch szolgáltatás, és amelyet támogat az előfizetése.
+Felhasználói előfizetési módban szükség van egy [Azure Key Vaultra](../key-vault/general/overview.md) . A Key Vaultnak ugyanabban az előfizetésben és régióban kell lennie, mint a létrehozandó batch-fióknak. 
 
-1. Az [Azure Portalon][azure_portal] válassza az **Új** > **Biztonság** > **Key Vault** lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Új** > **Biztonság** > **Key Vault** lehetőséget.
 
-1. A **Kulcstartó létrehozása** lapon adja meg a kulcstartó nevét, és hozzon létre a régióban egy erőforráscsoportot a Batch-fiókhoz. A többi beállításnál hagyja meg az alapértelmezett értékeket, majd válassza a **Létrehozás** elemre.
+1. A **Key Vault létrehozása** lapon adja meg a Key Vault nevét, és hozzon létre egy erőforráscsoportot a Batch-fiókhoz használni kívánt régióban. A többi beállításnál hagyja meg az alapértelmezett értékeket, majd válassza a **Létrehozás** elemre.
 
-A Batch-fiók felhasználói előfizetési módban való létrehozásakor használja a kulcstartóhoz tartozó erőforráscsoportot. Adja meg a **felhasználói előfizetést** készlet-kiosztási módban, jelölje ki a kulcstárolót, és jelölje be a jelölőnégyzetet, hogy Azure batch hozzáférést biztosítson a kulcstartóhoz. 
+Ha felhasználói előfizetési módban hozza létre a Batch-fiókot, adja meg a **felhasználói előfizetést** a készlet kiosztási módjaként, jelölje ki a Key Vault, és jelölje be a jelölőnégyzetet, és adja meg Azure batch hozzáférést a Key Vaulthoz.
 
-Ha szeretné manuálisan megadni a kulcstartóhoz való hozzáférést, nyissa meg a Key Vault **hozzáférési szabályzatok** szakaszát, és válassza a **hozzáférési házirend hozzáadása** és a **Microsoft Azure batch**keresése lehetőséget. A kiválasztást követően a legördülő menüből kell konfigurálnia a **titkos engedélyeket** . Azure Batch legalább a **Get**, a **List**, a **set**és a **delete** engedélyeket kell megadni.
+Ha inkább a Key Vault elérését szeretné manuálisan megadni, lépjen a Key Vault **hozzáférési házirendek** szakaszára, válassza a **hozzáférési házirend hozzáadása** és a **Microsoft Azure batch**keresése lehetőséget. A kiválasztást követően konfigurálnia kell a **titkos engedélyeket** a legördülő menüből. Azure Batch legalább a **Get**, a **List**, a **set**és a **delete** engedélyeket kell megadni.
 
 ![A Azure Batchhoz tartozó titkos engedélyek](./media/batch-account-create-portal/secret-permissions.png)
 
-
 > [!NOTE]
 > Győződjön meg arról, hogy az **Azure Virtual Machines a központi telepítéshez** és a **Azure Resource Manager a sablon központi telepítéséhez** jelölőnégyzetek a társított **Key Vault** erőforráshoz tartozó **hozzáférési szabályzatok** területen vannak kiválasztva.
-> 
-> ![Kötelező Key Vault hozzáférési szabályzat ](./media/batch-account-create-portal/key-vault-access-policy.png) Ez nem kötelező, ha batch-fiókot hoz létre a Azure Portalban. Alapértelmezés szerint a beállítás van kiválasztva.
-
-
+>
+> ![Kötelező Key Vault hozzáférési szabályzat](./media/batch-account-create-portal/key-vault-access-policy.png)
 
 ### <a name="configure-subscription-quotas"></a>Előfizetési kvóták konfigurálása
 
-Alapértelmezés szerint a felhasználói előfizetés batch-fiókjaiban nincsenek alapszintű kvóták beállítva. Az alapszintű kvótákat manuálisan kell beállítani, mert a standard batch alapkvótái nem érvényesek felhasználói előfizetési módban lévő fiókokra.
+A felhasználói előfizetés batch-fiókjaihoz manuálisan kell beállítani az alapszintű kvótákat. Standard szintű Batch fő kvóták nem vonatkoznak felhasználói előfizetési módban lévő fiókokra.
 
-1. A [Azure Portal][azure_portal]válassza ki a felhasználói előfizetés mód batch-fiókját a beállítások és tulajdonságok megjelenítéséhez.
-
+1. A [Azure Portal](https://portal.azure.com)válassza ki a felhasználói előfizetés mód batch-fiókját a beállítások és tulajdonságok megjelenítéséhez.
 1. A bal oldali menüben válassza a **kvóták** lehetőséget a Batch-fiókhoz társított alapvető kvóták megtekintéséhez és konfigurálásához.
 
-Tekintse át a [Batch szolgáltatás kvótáit és korlátozásait](batch-quota-limit.md) a felhasználói előfizetés üzemmódjának alapkvótái alapján kapcsolatos további információkért.
+További információ a felhasználói előfizetési mód alapkvótákkal kapcsolatban: [Batch szolgáltatás kvótái és korlátai](batch-quota-limit.md).
 
 ## <a name="other-batch-account-management-options"></a>Egyéb Batch-fiókkezelési lehetőségek
 
@@ -137,15 +131,11 @@ Az Azure Portal használata mellett a többek között a következő eszközökk
 * [Azure CLI](batch-cli-get-started.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.
 
-[azure_portal]: https://portal.azure.com
-[batch_pricing]: https://azure.microsoft.com/pricing/details/batch/
-
-[marketplace_portal]: ./media/batch-account-create-portal/marketplace-batch.png
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
 [pool_allocation]: ./media/batch-account-create-portal/batch-pool-allocation.png

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186386"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203095"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -23,7 +23,7 @@ ms.locfileid: "78186386"
 
 Az egyéni szabályzatok egy vagy több XML-formátumú fájlként jelennek meg, amelyek egy hierarchikus láncban egymásra hivatkoznak. Az XML-elemek határozzák meg a szabályzat elemeit, például a jogcímek sémáját, a jogcímek átalakítását, a tartalmi definíciókat, a jogcím-szolgáltatókat, a technikai profilokat, a felhasználói útvonalakat, valamint a Minden házirendfájl a házirendfájl legfelső szintű **TrustFrameworkPolicy** elemében van definiálva.
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
@@ -40,13 +40,13 @@ A **TrustFrameworkPolicy** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Igen | A szabályzat végrehajtásához használandó séma verziója. Az értéknek meg kell felelnie`0.3.0.0` |
-| TenantObjectId | Nem | A Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosító. |
-| TenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
-| PolicyId | Igen | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
-| PublicPolicyUri | Igen | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
-| Deploymentmode beállítása | Nem | Lehetséges értékek: `Production`, vagy `Development`. A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
-| UserJourneyRecorderEndpoint | Nem | A végpont, amelyet a **deploymentmode beállítása** beállításakor használ a `Development`rendszer. Az értéknek a `urn:journeyrecorder:applicationinsights`számnak kell lennie. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
+| PolicySchemaVersion | Yes | A szabályzat végrehajtásához használandó séma verziója. Az értéknek meg kell felelnie`0.3.0.0` |
+| TenantObjectId | No | A Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosító. |
+| TenantId | Yes | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
+| PolicyId | Yes | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
+| PublicPolicyUri | Yes | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
+| Deploymentmode beállítása | No | Lehetséges értékek: `Production` , vagy `Development` . A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | No | A végpont, amelyet a **deploymentmode beállítása** beállításakor használ a rendszer `Development` . Az értéknek a számnak kell lennie `urn:journeyrecorder:applicationinsights` . További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
 
 
 Az alábbi példa bemutatja, hogyan adhatja meg a **TrustFrameworkPolicy** elemet:
@@ -122,7 +122,7 @@ Az RP-szabályzat fájljában meg kell adnia a **DefaultUserJourney** elemet, am
 
 B2C_1A_signup_signin házirend:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn">
   ...
@@ -130,7 +130,7 @@ B2C_1A_signup_signin házirend:
 
 B2C_1A_TrustFrameWorkBase vagy B2C_1A_TrustFrameworkExtensionPolicy:
 
-```XML
+```xml
 <UserJourneys>
   <UserJourney Id="SignUpOrSignIn">
   ...

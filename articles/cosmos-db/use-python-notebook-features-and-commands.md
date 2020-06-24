@@ -3,15 +3,15 @@ title: Beépített notebook-parancsok és-szolgáltatások használata Azure Cos
 description: Ismerje meg, hogyan használhatók a beépített parancsok és szolgáltatások a Azure Cosmos DB beépített Python-jegyzetfüzeteit használó gyakori műveletek végrehajtásához.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: d455490f6eed0f928dc69c8f51f8d335a1dfe145
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c35c34d5ffe3f3349430f17e71ad8192f4d8256e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321325"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263364"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB Python-jegyzetfüzetekben (előzetes verzió)
 
@@ -140,7 +140,7 @@ pd.options.display.max_rows = None
 
 df_cosmos.groupby("Item").size()
 ```
-![nteract adatkezelő](media/use-notebook-features-and-commands/nteract-built-in-chart.png)
+:::image type="content" source="media/use-notebook-features-and-commands/nteract-built-in-chart.png" alt-text="nteract adatkezelő":::
 
 ## <a name="use-the-built-in-python-sdk"></a>A beépített Python SDK használata
 A [Azure Cosmos db PYTHON SDK for SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) 4-es verziója telepítve van, és tartalmazza az Azure Cosmos-fiók notebook-környezetében.
@@ -200,9 +200,9 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>Jegyzetfüzetek alaphelyzetbe állítása munkaterület
 Ha a jegyzetfüzetek munkaterületet az alapértelmezett beállításokra szeretné visszaállítani, válassza a parancssáv **munkaterület alaphelyzetbe** állítása lehetőséget. Ezzel eltávolítja az összes egyéni telepített csomagot, majd újraindítja a Jupyter-kiszolgálót. A jegyzetfüzeteket, a fájlokat és az Azure Cosmos-erőforrásokat nem érinti a rendszer.  
 
-![Jegyzetfüzetek alaphelyzetbe állítása munkaterület](media/use-notebook-features-and-commands/reset-workspace.png)
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Jegyzetfüzetek alaphelyzetbe állítása munkaterület":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit
 - Tudnivalók a [Azure Cosmos db PYTHON SDK for SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) -ról

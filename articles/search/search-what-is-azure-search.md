@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/06/2020
-ms.openlocfilehash: 87295278f39f7e7097b1f4d1ce1c729a71599c9f
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/23/2020
+ms.openlocfilehash: 7075753049e6ba6f4804d23aa31796cbd5bc9141
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466221"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263228"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -127,7 +127,7 @@ A legfőbb előnyök közé tartoznak az alábbiak:
 
 A portálon számos feladat elvégezhető, az Azure Cognitive Search olyan fejlesztők számára készült, akik a keresési funkciókat a meglévő alkalmazásokba szeretnék integrálni. Ehhez az alábbi programozási felületek vehetők igénybe.
 
-|Platform |Description |
+|Platform |Leírás |
 |-----|------------|
 |[REST](/rest/api/searchservice/) | HTTP-parancsok, melyek használhatók bármilyen programozási platformról vagy nyelven, ideértve például a Xamarin, a Java és a JavaScript platformot|
 |[.NET SDK](search-howto-dotnet-sdk.md) | .NET-burkoló a REST API-hoz, mely hatékony fejlesztői munkát tesz lehetővé C# és más felügyelt kódú nyelveken, .NET-keretrendszerre épülő megoldások létrehozásához |

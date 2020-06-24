@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 074a0a39090e22a29f778fc1c99060848c6bfd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051496"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202857"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -30,7 +30,7 @@ A **ContentDefinitions** elem a HTML5-sablonok URL-címeit tartalmazza, amelyeke
 
 Az alábbi példa a Content definition azonosítóját és a honosított erőforrások definícióját mutatja be:
 
-```XML
+```xml
 <ContentDefinition Id="api.localaccountsignup">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -46,7 +46,7 @@ Az alábbi példa a Content definition azonosítóját és a honosított erőfor
 
 A **LocalAccountSignUpWithLogonEmail** önérvényesített technikai profil metaadatai a **ContentDefinitionReferenceId** beállított tartalom-definíciós azonosítót tartalmazzák`api.localaccountsignup`
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -63,21 +63,21 @@ A **ContentDefinition** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
+| Azonosító | Yes | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
 
 A **ContentDefinition** elem a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Tartalomdefinícióban | 1:1 | Egy karakterlánc, amely tartalmazza a tartalom definíciójának HTML5-oldalának URL-címét. |
-| RecoveryUri | 1:1 | Egy karakterlánc, amely tartalmazza a tartalom-definícióval kapcsolatos hibát megjelenítő HTML-oldal URL-címét. Jelenleg nincs használatban, az értéknek `~/common/default_page_error.html`kell lennie. |
+| RecoveryUri | 1:1 | Egy karakterlánc, amely tartalmazza a tartalom-definícióval kapcsolatos hibát megjelenítő HTML-oldal URL-címét. Jelenleg nincs használatban, az értéknek kell lennie `~/common/default_page_error.html` . |
 | DataUri | 1:1 | Egy olyan karakterlánc, amely a lépéshez szükséges felhasználói élményt biztosító HTML-fájl relatív URL-címét tartalmazza. |
 | Metaadatok | 0:1 | Kulcs/érték párok gyűjteménye, amely a tartalom definíciójában használt metaadatokat tartalmazza. |
 | LocalizedResourcesReferences | 0:1 | Honosított erőforrások gyűjteménye. Ezzel az elemmel testreszabható a felhasználói felület és a jogcím attribútum honosítása. |
 
 ### <a name="datauri"></a>DataUri
 
-A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2C az oldal azonosítóját használja a felhasználói felületi elemek és az ügyféloldali JavaScript betöltéséhez és elindításához. Az érték formátuma: `urn:com:microsoft:aad:b2c:elements:page-name:version`. A következő táblázat felsorolja a használható oldal-azonosítókat.
+A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2C az oldal azonosítóját használja a felhasználói felületi elemek és az ügyféloldali JavaScript betöltéséhez és elindításához. Az érték formátuma: `urn:com:microsoft:aad:b2c:elements:page-name:version` . A következő táblázat felsorolja a használható oldal-azonosítókat.
 
 | Oldal azonosítója | Leírás |
 | ----- | ----------- |
@@ -90,13 +90,13 @@ A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2
 
 ### <a name="select-a-page-layout"></a>Lapelrendezés kiválasztása
 
-A [JavaScript-ügyféloldali kód](javascript-samples.md) engedélyezéséhez szúrja `contract` be a `elements` és az oldal típusát. Például: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+A [JavaScript-ügyféloldali kód](javascript-samples.md) engedélyezéséhez szúrja `contract` `elements` be a és az oldal típusát. Például: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-A [verzió](page-layout.md) részét képező `DataUri` része a szabályzatban szereplő felhasználói felület elemeinek HTML, CSS és JavaScript tartalmú csomagja. Ha engedélyezni kívánja a JavaScript ügyféloldali kódját, a JavaScript-alapú elemek nem változtathatók meg. Ha nem változtathatók meg, a módosítások váratlan viselkedést okozhatnak a felhasználói oldalakon. A problémák megelőzése érdekében kényszerítse ki a lapelrendezés használatát, és adja meg a lapelrendezés verzióját. Így biztosíthatja, hogy a JavaScripten alapuló összes tartalmi definíció nem változtatható. Ha nem kívánja engedélyezni a JavaScriptet, akkor is meg kell adnia a lapok elrendezésének verzióját.
+A [verzió](page-layout.md) részét képező része a `DataUri` szabályzatban szereplő felhasználói felület elemeinek HTML, CSS és JavaScript tartalmú csomagja. Ha engedélyezni kívánja a JavaScript ügyféloldali kódját, a JavaScript-alapú elemek nem változtathatók meg. Ha nem változtathatók meg, a módosítások váratlan viselkedést okozhatnak a felhasználói oldalakon. A problémák megelőzése érdekében kényszerítse ki a lapelrendezés használatát, és adja meg a lapelrendezés verzióját. Így biztosíthatja, hogy a JavaScripten alapuló összes tartalmi definíció nem változtatható. Ha nem kívánja engedélyezni a JavaScriptet, akkor is meg kell adnia a lapok elrendezésének verzióját.
 
-A következő példa a **DataUri** `selfasserted` mutatja be `1.2.0`:
+A következő példa a **DataUri** mutatja be `selfasserted` `1.2.0` :
 
 ```xml
 <ContentDefinition Id="api.localaccountpasswordreset">
@@ -111,7 +111,7 @@ A következő példa a **DataUri** `selfasserted` mutatja be `1.2.0`:
 
 #### <a name="migrating-to-page-layout"></a>Áttelepítés az oldal elrendezésére
 
-Az érték formátumának tartalmaznia kell a szót `contract`: _urn: com: Microsoft: HRE: B2C: Elements:**Szerződés**:p Age-Name: Version_. Ha a régi **DataUri** értéket használó egyéni házirendekben szeretne megadni egy lapelrendezést, a következő táblázat segítségével váltson át az új formátumra.
+Az érték formátumának tartalmaznia kell a szót `contract` : _urn: com: Microsoft: HRE: B2C: Elements:**Szerződés**:p Age-Name: Version_. Ha a régi **DataUri** értéket használó egyéni házirendekben szeretne megadni egy lapelrendezést, a következő táblázat segítségével váltson át az új formátumra.
 
 | Régi DataUri érték | Új DataUri érték |
 | ----------------- | ----------------- |
@@ -133,13 +133,13 @@ A **metaadat** -elemek a következő elemeket tartalmazzák:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Elem | 0: n | A tartalom-definícióhoz kapcsolódó metaadatok |
+| Item | 0: n | A tartalom-definícióhoz kapcsolódó metaadatok |
 
 A **metaadatok** elem **elem eleme a** következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Kulcs | Igen | A metaadat-kulcs.  |
+| Kulcs | Yes | A metaadat-kulcs.  |
 
 #### <a name="metadata-keys"></a>Metaadat-kulcsok
 
@@ -147,7 +147,7 @@ A Content Definition a következő metaadat-elemeket támogatja:
 
 | Kulcs | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| DisplayName | Nem | Egy karakterlánc, amely tartalmazza a tartalom definíciójának nevét. |
+| DisplayName | No | Egy karakterlánc, amely tartalmazza a tartalom definíciójának nevét. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -161,12 +161,12 @@ A **LocalizedResourcesReference** elem a következő attribútumokat tartalmazza
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Nyelv | Igen | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
-| LocalizedResourcesReferenceId | Igen | A **LocalizedResources** elem azonosítója. |
+| Nyelv | Yes | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
+| LocalizedResourcesReferenceId | Yes | A **LocalizedResources** elem azonosítója. |
 
 Az alábbi példa egy regisztrációs vagy bejelentkezési tartalom definícióját mutatja be az angol, francia és spanyol nyelv honosítására való hivatkozással:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -188,7 +188,7 @@ Ha szeretné megtudni, hogyan adhat honosított támogatást a tartalmi definíc
 
 A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definícióhoz kapcsolódó oldal típusát. Az elem határozza meg azt a környezetet, amelyet az egyéni HTML5/CSS-sablon alkalmazni fog. A következő táblázat ismerteti az identitási élmény keretrendszere által felismert tartalmi definíciós azonosítókat, valamint az azokhoz kapcsolódó lapokat. Saját tartalmi definíciókat tetszőleges AZONOSÍTÓval hozhat létre.
 
-| ID (Azonosító) | Alapértelmezett sablon | Leírás |
+| ID | Alapértelmezett sablon | Leírás |
 | -- | ---------------- | ----------- |
 | **API. error** | [kivétel. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap** – hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
 | **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitás-szolgáltató kiválasztása lap** – felsorolja azokat az azonosítókat, amelyeket a felhasználók a bejelentkezés során választhatnak. A lehetőségek általában a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |

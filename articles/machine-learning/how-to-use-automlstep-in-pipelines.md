@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 04/28/2020
+ms.date: 06/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: b9b4f505e7d3bdfec4bb689dcb8e08c82111ba1e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f162aca8c30d890ecf662a88fb5f2182edb14c9e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558458"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298242"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-A kód először a **config. JSON fájlban** megadott Azure Machine learning munkaterületre jelentkezik be (magyarázatért lásd [: OKTATÓANYAG: első ml-kísérlet létrehozása a Python SDK-val](tutorial-1st-experiment-sdk-setup.md)). Ha még nincs regisztrálva nevű adatkészlet `'titanic_ds'` , akkor létrejön egy. A kód letölti a CSV-adatokat a webről, felhasználja őket az a létrehozásához, `TabularDataset` majd regisztrálja az adatkészletet a munkaterületen. Végül a függvény `Dataset.get_by_name()` hozzárendeli a `Dataset` -t `titanic_ds` . 
+A kód először bejelentkezik a **config.json** Azure Machine learning munkaterületre (magyarázatért lásd [: OKTATÓANYAG: első ml-kísérlet létrehozása a Python SDK-val](tutorial-1st-experiment-sdk-setup.md)). Ha még nincs regisztrálva nevű adatkészlet `'titanic_ds'` , akkor létrejön egy. A kód letölti a CSV-adatokat a webről, felhasználja őket az a létrehozásához, `TabularDataset` majd regisztrálja az adatkészletet a munkaterületen. Végül a függvény `Dataset.get_by_name()` hozzárendeli a `Dataset` -t `titanic_ds` . 
 
 ### <a name="configure-your-storage-and-compute-target"></a>Tárolási és számítási cél konfigurálása
 
@@ -111,18 +111,27 @@ A következő lépés arról gondoskodik, hogy a távoli tanítás futtatása a 
 ```python
 from azureml.core.runconfig import RunConfiguration
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core import Environment 
 
 aml_run_config = RunConfiguration()
 # Use just-specified compute target ("cpu-cluster")
 aml_run_config.target = compute_target
-aml_run_config.environment.python.user_managed_dependencies = False
 
-# Add some packages relied on by data prep step
-aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
-    conda_packages=['pandas','scikit-learn'], 
-    pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
-    pin_sdk_version=False)
+USE_CURATED_ENV = True
+if USE_CURATED_ENV :
+    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
+    aml_run_config.environment = curated_environment
+else:
+    aml_run_config.environment.python.user_managed_dependencies = False
+    
+    # Add some packages relied on by data prep step
+    aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
+        conda_packages=['pandas','scikit-learn'], 
+        pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
+        pin_sdk_version=False)
 ```
+
+A fenti kód két lehetőséget mutat a függőségek kezelésére. Ahogy az a `USE_CURATED_ENV = True` esetében is látható, a konfiguráció egy kurátori környezetben alapul. A "előre ellátott" környezetek közös, egymástól függő kódtárakkal rendelkeznek, és jelentősen gyorsabban online állapotba helyezhetők. A kurátori környezetek előre összeállított Docker-rendszerképekkel rendelkeznek a [Microsoft Container Registryban](https://hub.docker.com/publishers/microsoftowner). Az elérési út, ha úgy módosítja `USE_CURATED_ENV` , hogy `False` a függőségek explicit beállítására szolgáló mintázatot jeleníti meg. Ebben az esetben egy új egyéni Docker-rendszerkép jön létre és lesz regisztrálva az erőforráscsoport egy Azure Container Registryjában (lásd: [Bevezetés az Azure-beli privát Docker-jegyzékbe](https://docs.microsoft.com/azure/container-registry/container-registry-intro)). A rendszerkép kiépítése és regisztrálása néhány percet is igénybe vehet. 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>Az automatizált gépi tanulásra vonatkozó adatelőkészítés
 

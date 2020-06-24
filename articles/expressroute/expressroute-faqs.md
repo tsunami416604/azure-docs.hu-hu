@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 882a94034831b1c710031031918e70bf3581a4a6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266644"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987301"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -95,7 +95,7 @@ Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcso
 
 * Tartalomkézbesítési hálózat (CDN)
 * Azure Front Door
-* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
+* [Windows virtuális asztal](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-Factor Authentication kiszolgáló (örökölt)
 * Traffic Manager
 
@@ -152,7 +152,7 @@ Ha az egyik kapcsolat meghiúsul, nem fogja elveszíteni a kapcsolatot. Redundá
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Hogyan a redundancia megvalósítását a privát partnereken?
 
-A különböző társi helyekről több ExpressRoute-áramkör csatlakoztatható ugyanahhoz a virtuális hálózathoz, hogy magas rendelkezésre állást biztosítson abban az esetben, ha egyetlen áramkör elérhetetlenné válik. Ezután a helyi kapcsolathoz [nagyobb súlyt rendelhet](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) hozzá, és előnyben részesített egy adott áramkört. Erősen ajánlott, hogy az ügyfelek legalább két ExpressRoute-áramkört állítsanak be az egyes meghibásodási pontok elkerülése érdekében. 
+Több ExpressRoute-áramkör különböző, egymástól eltérő helyekről vagy akár négy kapcsolatból is csatlakozhat ugyanahhoz a virtuális hálózathoz, hogy magas rendelkezésre állást biztosítson abban az esetben, ha egyetlen áramkör elérhetetlenné válik. Ezután az egyik helyi kapcsolathoz is [hozzárendelhet nagyobb súlyokat](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) egy adott áramkör előnyben részesítése érdekében. Erősen ajánlott, hogy az ügyfelek legalább két ExpressRoute-áramkört állítsanak be az egyes meghibásodási pontok elkerülése érdekében. 
 
 [Itt](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) megtekintheti a magas rendelkezésre állást és [itt](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) megtervezheti a vész-helyreállítást.  
 
@@ -164,7 +164,7 @@ A magas rendelkezésre állás kialakításához [itt](https://docs.microsoft.co
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan magas rendelkezésre állást biztosít a ExpressRoute-hez csatlakoztatott virtuális hálózatokon?
 
-Magas rendelkezésre állást érhet el, ha összekapcsolja a ExpressRoute-áramköröket a különböző (például szingapúri, Szingapúr2) helyek között a virtuális hálózatra. Ha egy ExpressRoute-áramkör leáll, a kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-áramkörön. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalom irányítása egyenlő a több útvonalos útválasztás (ECMP) alapján. A kapcsolat súlyozásával az egyik áramkört használhatja egy másikhoz. További információ: az [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md).
+Magas rendelkezésre állást érhet el, ha akár négy ExpressRoute-áramkört csatlakoztat a virtuális hálózathoz, vagy ha a ExpressRoute-áramköröket különböző, egymással összekapcsoló (például Szingapúr, Szingapúr2) virtuális hálózathoz csatlakoztatja. Ha egy ExpressRoute-áramkör leáll, a kapcsolat feladatátvételt hajt végre egy másik ExpressRoute-áramkörön. Alapértelmezés szerint a virtuális hálózatot elhagyó forgalom irányítása egyenlő a több útvonalos útválasztás (ECMP) alapján. A kapcsolat súlyozásával az egyik áramkört használhatja egy másikhoz. További információ: az [ExpressRoute-útválasztás optimalizálása](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Hogyan, hogy az Azure-beli nyilvános szolgáltatásokhoz, például az Azure Storage-hoz és az Azure SQL-hez a Microsoft társközi vagy nyilvános társ-kezeléshez szánt forgalma előnyben részesített a ExpressRoute útvonalon?
 
@@ -195,7 +195,7 @@ Ha a szolgáltató mindkét helyen ExpressRoute kínál, akkor használhatja a s
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Használhatok több ExpressRoute-áramkört ugyanazon a metrón? Hivatkozhatok ugyanahhoz a virtuális hálózathoz?
 
-Igen. Több ExpressRoute-áramkört is megadhat ugyanahhoz vagy más szolgáltatóhoz. Ha a metrón több ExpressRoute-társítási hely található, és az áramkör különböző helyen jön létre, akkor ugyanahhoz a virtuális hálózathoz kapcsolhatja őket. Ha az áramkör ugyanazon a helyen jön létre, akkor akár 4 áramkört is összekapcsolhat ugyanahhoz a virtuális hálózathoz.
+Igen. Több ExpressRoute-áramkört is megadhat ugyanahhoz vagy más szolgáltatóhoz. Ha a metrón több ExpressRoute-társítási hely található, és az áramkör különböző helyen jön létre, akkor ugyanahhoz a virtuális hálózathoz kapcsolhatja őket. Ha az áramkör ugyanazon a helyen jön létre, akkor akár négy áramkört is csatolhat ugyanahhoz a virtuális hálózathoz.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>A virtuális hálózatok összekapcsolása egy ExpressRoute-áramkörrel Hogyan
 

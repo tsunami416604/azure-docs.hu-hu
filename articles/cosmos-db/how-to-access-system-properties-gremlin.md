@@ -3,20 +3,20 @@ title: Rendszerdokumentum-tulajdonságok elérése Azure Cosmos DB gráfon keres
 description: Útmutató Cosmos DB rendszerdokumentum tulajdonságainak olvasásához és írásához a Gremlin API-n keresztül
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/10/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 4ed7e67ae0ef027b260d0e0f0407e4e05ed5a8f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b3c95f5727c3839974f79e8d147f99d49c4b1d6
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898307"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261749"
 ---
 # <a name="system-document-properties"></a>Rendszerdokumentum tulajdonságai
 
-Azure Cosmos db olyan [rendszertulajdonságokkal](https://docs.microsoft.com/rest/api/cosmos-db/databases) ```_ts``` ```_self``` ```_attachments``` ```_rid```rendelkezik, mint a,, ```_etag``` , és minden dokumentumon. Ezenkívül a Gremlin-motor az élekhez az ```inVPartition``` és az ```outVPartition``` tulajdonságokat is hozzárendeli. Alapértelmezés szerint ezek a tulajdonságok a bejáráshoz érhetők el. Azonban a Gremlin bejárásakor lehetséges, hogy a megadott tulajdonságokat vagy azok mindegyikét is tartalmazza.
+Azure Cosmos db olyan [rendszertulajdonságokkal](https://docs.microsoft.com/rest/api/cosmos-db/databases) rendelkezik, mint a,,, ```_ts``` ```_self``` ```_attachments``` ```_rid``` és ```_etag``` minden dokumentumon. Ezenkívül a Gremlin-motor az élekhez az ```inVPartition``` és az ```outVPartition``` tulajdonságokat is hozzárendeli. Alapértelmezés szerint ezek a tulajdonságok a bejáráshoz érhetők el. Azonban a Gremlin bejárásakor lehetséges, hogy a megadott tulajdonságokat vagy azok mindegyikét is tartalmazza.
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())
@@ -32,7 +32,7 @@ g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_etag').cre
 
 ## <a name="time-to-live-ttl"></a>Élettartam (TTL)
 
-Ha a gyűjteményben engedélyezve van a dokumentum lejárata, és a dokumentumok tulajdonsága be van ```ttl``` állítva, akkor ez a tulajdonság a Gremlin bejárásakor lesz elérhető a normál csúcspont vagy Edge tulajdonságként. ```ProjectionStrategy```nincs szükség az élettartam-tulajdonság expozíciójának engedélyezésére.
+Ha a gyűjteményben engedélyezve van a dokumentum lejárata ```ttl``` , és a dokumentumok tulajdonsága be van állítva, akkor ez a tulajdonság a Gremlin bejárásakor lesz elérhető a normál csúcspont vagy Edge tulajdonságként. ```ProjectionStrategy```nincs szükség az élettartam-tulajdonság expozíciójának engedélyezésére.
 
 Az alábbi bejárással létrehozott csúcs **123 másodperc** múlva automatikusan törölve lesz.
 

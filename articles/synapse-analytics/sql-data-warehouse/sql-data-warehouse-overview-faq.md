@@ -6,20 +6,20 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b9a1caa750c7c27b2a6c845843b8bb6b779086d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a0d98a2c58e7629f988d0d3e8015355ba414c07a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561331"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201141"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 K. Mi az az Azure Synapse?
 
@@ -57,9 +57,9 @@ K. Miért van a méretezési/szüneteltetési vagy folytatási művelet?
 
 A. Több tényező is befolyásolhatja a számítási felügyeleti műveletek idejét. A hosszú ideig futó műveletek esetében gyakori eset a tranzakciós visszaállítás. Ha egy méretezési vagy szüneteltetési műveletet kezdeményeznek, az összes bejövő munkamenet le lesz tiltva, és a rendszer leállítja a lekérdezéseket. Ahhoz, hogy a rendszer stabil állapotban maradjon, a tranzakciókat vissza kell állítani a művelet megkezdése előtt. Minél nagyobb a szám, és nagyobb a tranzakciók naplózási mérete, annál hosszabb a művelet, mert a rendszer stabil állapotba állítja vissza a műveletet.
 
-K: Hogyan átnevezni egy közzétett összetevőt (adatkészlet, jegyzetfüzet, SQL-parancsfájl stb.) a Szinapszisban?
+K: Hogyan átnevezni egy közzétett összetevőt (adatkészlet, jegyzetfüzet, SQL-parancsfájl stb.) az Azure Szinapszisban?
 
-A: Ha átnevez egy közzétett összetevőt tartalmazó fájlt, először a fájlt, és átnevezi a kívánt új fájlnevet. Manuálisan kell frissítenie az összetevő összes hivatkozását az új fájlba, és törölnie kell a régit.
+A: egy közzétett összetevő-fájl átnevezéséhez először a fájlt kell megadnia, és átnevezni az új fájlt a kívánt névre. Manuálisan kell frissítenie az összetevő összes hivatkozását az új fájlnévre, és törölnie kell a régit.
 
 ## <a name="user-support"></a>Felhasználói támogatás
 
@@ -113,6 +113,6 @@ K: csatlakozhatok a HDI szolgáltatáshoz?
 
 A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS réteggel rendelkezik, az adatait egy szinapszis SQL-készletbe is betöltheti. Azonban nem hozhatja pushdown számítást a HDI-példányra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure szinapszis egészére vonatkozó további információkért tekintse meg az [Áttekintés](sql-data-warehouse-overview-faq.md) oldalt.

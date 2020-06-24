@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
-ms.openlocfilehash: dfe35eecfec5a12395ac3d9973a651e033aeea73
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672525"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85200183"
 ---
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/) 
 
@@ -24,8 +24,7 @@ ms.locfileid: "84672525"
     * **Házirend**  >  **Policy. ReadWrite. TrustFramework**: folyamatos integrációs/folyamatos kézbesítési (CI/CD) forgatókönyvek esetén. Például az egyéni házirend üzembe helyezése az Azure-folyamatokkal.
 1. Válassza az **engedélyek hozzáadása**lehetőséget. Az utasítás szerint várjon néhány percet, mielőtt továbblép a következő lépésre.
 1. Válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget.
-1. Válassza ki a jelenleg bejelentkezett rendszergazdai fiókot, vagy jelentkezzen be egy olyan fiókkal a Azure AD B2C-bérlőben, amely legalább a *Cloud Application Administrator* szerepkörhöz van rendelve.
-1. Válassza ki az **Elfogadás** lehetőséget.
+1. Ha jelenleg nincs bejelentkezve globális rendszergazdai fiókkal, jelentkezzen be egy olyan fiókkal a Azure AD B2C-bérlőben, amely legalább a *Cloud Application Administrator* szerepkörhöz van rendelve, majd válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget.
 1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." az **állapot**területen jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)

@@ -3,8 +3,8 @@ title: Felügyeleti végpont IP-címének felderítése
 titleSuffix: Azure SQL Managed Instance
 description: Ismerje meg, hogyan kérheti le az Azure SQL felügyelt példányok felügyeleti végpontjának nyilvános IP-címét, és ellenőrizze a beépített tűzfal védelmét
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: f63167824a06a877456db4a18622710922e026ff
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 40a44fe46cf38c633380c4c353960cc4e11f2f3d
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659261"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708722"
 ---
 # <a name="determine-the-management-endpoint-ip-address---azure-sql-managed-instance"></a>A felügyeleti végpont IP-címének meghatározása – az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

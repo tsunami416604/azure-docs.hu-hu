@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526790"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752476"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webalkalmazási tűzfal kérelmek méretének korlátai és kizárási listája
 
@@ -31,7 +31,6 @@ A következő attribútumok adhatók hozzá a kizárási listához név szerint.
 * A kérelem attribútumának neve (ARG) kizárási elemként vehető fel, például:
 
    * Űrlapmező neve
-   * XML-entitás
    * JSON-entitás
    * URL-lekérdezési karakterlánc argumentumai
 
@@ -56,7 +55,7 @@ Minden esetben a nem megkülönbözteti a kis-és nagybetűket, és a reguláris
 
 Az alábbi példák a kizárások használatát mutatják be.
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 
 Ebben a példában a felhasználói ügynök fejlécét szeretné kizárni. A felhasználói ügynök kérelmének fejléce egy jellemző karakterláncot tartalmaz, amely lehetővé teszi a hálózati protokoll társai számára, hogy azonosítsák a kérelmező szoftver felhasználói ügynökének alkalmazás típusát, operációs rendszerét, szoftveres gyártóját vagy szoftveres verzióját. További információ: [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
 
@@ -70,7 +69,7 @@ $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "Equals" `
    -Selector "User-Agent"
 ```
-#### <a name="example-2"></a>2. példa
+#### <a name="example-2"></a>2\. példa
 
 Ez a példa az URL-cím használatával kizárja a kérelemben átadott *felhasználói* paraméter értékét. Tegyük fel például, hogy az Ön környezetében gyakran előfordul, hogy a felhasználói mező olyan karakterláncot tartalmaz, amelyet a WAF kártékony tartalomként tekint meg, ezért blokkolja azt.  Ebben az esetben kizárhatja a felhasználói paramétereket, így a WAF nem értékel semmit a mezőben.
 
@@ -82,7 +81,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Így ha az URL `http://www.contoso.com/?user%281%29=fdafdasfda` -címet átadja a WAF, nem értékeli ki a **fdafdasfda**karakterláncot, de továbbra is kiértékeli a **(z) %281 %29**nevű paramétert. 
+Így ha az URL-címet átadja `http://www.contoso.com/?user%281%29=fdafdasfda` a WAF, nem értékeli ki a **fdafdasfda**karakterláncot, de továbbra is kiértékeli a **(z) %281 %29**nevű paramétert. 
 
 ## <a name="waf-request-size-limits"></a>WAF kérelmek méretének korlátai
 

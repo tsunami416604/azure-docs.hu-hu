@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc12e571ca955a0ddc47e1c1dd73c2717161df4b
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739313"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727823"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory 2-es verziójú parancsmagok a csoport kezeléséhez
 
@@ -274,7 +274,7 @@ A csoportok létrehozásának letiltása a nem rendszergazda felhasználók szá
    PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
    ```
   
-2. Ha visszatér `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda felhasználók létrehozhatnak csoportokat. A funkció letiltása:
+2. Ha visszatér `UsersPermissionToCreateGroupsEnabled : True` , akkor a nem rendszergazda felhasználók létrehozhatnak csoportokat. A funkció letiltása:
   
    ```powershell 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False

@@ -1,94 +1,100 @@
 ---
 title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
-description: Ez a rövid útmutató bemutatja, hogyan kezdheti el az élő videók elemzését IoT Edgeon, és hogyan észlelhető a mozgás egy élő videó streamben.
+description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 307a81938be3e25b8a6a07bb3696ca3b7647c0aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84262013"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816909"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
-Ez a rövid útmutató végigvezeti azon lépéseken, amelyekkel megkezdheti az élő videók elemzését IoT Edgeon. Egy Azure-beli virtuális gépet használ IoT Edge eszközként és szimulált élő videó streamként. A telepítés lépéseinek elvégzése után egy szimulált élő videó streamet futtathat egy olyan adathordozó-gráfon keresztül, amely az adott stream bármely mozgását észleli és jelenti. Az alábbi ábra az adott adathordozó-gráf grafikus ábrázolását mutatja be.
+Ez a rövid útmutató végigvezeti azon lépéseken, amelyekkel megkezdheti az élő videók elemzését IoT Edgeon. Egy Azure-beli virtuális gépet használ IoT Edge eszközként. Egy szimulált élő videó streamet is használ. 
+
+A telepítés lépéseinek elvégzése után egy szimulált élő videó streamet futtathat egy olyan adathordozó-gráfon keresztül, amely az adott stream bármely mozgását észleli és jelenti. Az alábbi ábrán látható ábra az adott adathordozó-gráfot ábrázolja.
 
 ![Élő videó-elemzés a mozgásészlelés alapján](./media/analyze-live-video/motion-detection.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Visual Studio Code](https://code.visualstudio.com/) a fejlesztői gépen az [Azure IoT Tools bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* A hálózat, amelyhez a fejlesztői számítógép csatlakozik, engedélyezni kell a AMQP protokollt az 5671-as porton keresztül (így az Azure IoT-eszközök kommunikálhatnak az Azure IoT Hub).
+* Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , ha még nem rendelkezik ilyennel.
+* A [Visual Studio Code](https://code.visualstudio.com/) a fejlesztői gépen. Győződjön meg arról, hogy rendelkezik az [Azure IoT Tools bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+* Győződjön meg arról, hogy a fejlesztői számítógép hálózata csatlakozik a speciális üzenetsor-kezelési protokoll (AMQP) engedélyezéséhez a 5671-es porton keresztül. Ez a telepítő lehetővé teszi az Azure IoT-eszközök számára az Azure IoT Hub való kommunikációt.
 
 > [!TIP]
-> Előfordulhat, hogy a rendszer a Docker telepítésére kéri az Azure IoT Tools bővítmény telepítésekor. Nyugodtan hagyja figyelmen kívül.
+> Előfordulhat, hogy a rendszer a Docker telepítésére kéri az Azure IoT-eszközök bővítményének telepítésekor. Nyugodtan hagyja figyelmen kívül a kérdést.
 
 ## <a name="set-up-azure-resources"></a>Az Azure-erőforrások beállítása
 
-Ehhez az oktatóanyaghoz a következő Azure-erőforrások szükségesek.
+Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
 * IoT Hub
 * Tárfiók
 * Azure Media Services fiók
-* Linux virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) telepítve
+* Egy Linux rendszerű virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) telepítve
 
-Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében fent említett Azure-erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
+Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a következő címet: https://shell.azure.com.
-1. Ha első alkalommal használja a Cloud Shellt, a rendszer megkéri, hogy válasszon egy előfizetést a Storage-fiók létrehozásához és a fájlok megosztásához Microsoft Azure. Válassza a "tároló létrehozása" lehetőséget, és hozzon létre egy Storage-fiókot az Cloud Shell-munkamenet adatainak tárolásához. Ez a Storage-fiók a Azure Media Services-fiókkal való használatra létrehozott parancsfájltól elkülönítve jelenik meg.
-1. A rendszerhéj ablakának bal oldali legördülő menüjében válassza a "bash" lehetőséget a környezetében.
+1. Lépjen [Azure Cloud Shell](https://shell.azure.com).
+1. Ha első alkalommal használja a Cloud Shell, a rendszer kérni fogja, hogy válasszon egy előfizetést egy Storage-fiók és egy Microsoft Azure-fájlmegosztás létrehozásához. Válassza a **tároló létrehozása** lehetőséget a Cloud Shell munkamenet-információhoz tartozó Storage-fiók létrehozásához. Ez a Storage-fiók elkülönül a parancsfájl által a Azure Media Services-fiókkal való használatra létrehozott fióktól.
+1. A Cloud Shell ablak bal oldalán lévő legördülő menüben válassza a **bash** lehetőséget a környezetében.
 
     ![Környezeti választó](./media/quickstarts/env-selector.png)
 
-1. Futtassa a következő parancsot:
+1. Futtassa a következő parancsot.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Ha a parancsfájl sikeresen befejeződik, az előfizetésben említett összes erőforrást látnia kell. A szkript kimenetének részeként létrejön egy erőforrások táblázata, amely kilistázza az IoT hub nevét. Keresse meg a **"Microsoft. Devices/IotHubs"** típusú erőforrástípust, és jegyezze fel a nevet. Erre a következő lépésben lesz szükség. A szkript a ~/clouddrive/LVA-Sample/könyvtárban is létrehoz néhány konfigurációs fájlt – ezekre később szüksége lesz a rövid útmutatóban.
+Ha a parancsfájl sikeresen befejeződik, az előfizetésben szereplő összes szükséges erőforrást látnia kell. A szkript kimenetében az erőforrások táblázata felsorolja az IoT hub nevét. Keresse meg az erőforrás típusát `Microsoft.Devices/IotHubs` , és jegyezze fel a nevet. Ezt a nevet a következő lépésben kell megadnia. 
+
+A szkript a *~/clouddrive/LVA-Sample/* könyvtárban is létrehoz néhány konfigurációs fájlt. Ezekre a fájlokra később szükség lesz a rövid útmutatóban.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Modulok üzembe helyezése a peremhálózati eszközön
 
-Futtassa a következő parancsot Cloud Shell
+Futtassa a következő parancsot a Cloud Shellról.
 
 ```
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content ~/clouddrive/lva-sample/edge-deployment/deployment.amd64.json
 ```
 
-A fenti parancs a következő modulokat telepíti a peremhálózati eszközre (a Linux rendszerű virtuális gépre):
+Ez a parancs a következő modulokat telepíti a peremhálózati eszközre, amely ebben az esetben a Linux rendszerű virtuális gép.
 
-* Élő videó-elemzés a IoT Edgeon (modul neve: "lvaEdge")
-* RTSP-szimulátor (modul neve: "rtspsim")
+* Élő videó-elemzés a IoT Edgeon (modul neve `lvaEdge` )
+* Valós idejű Streaming Protocol (RTSP) szimulátor (modul neve `rtspsim` )
 
-Az RTSP szimulátor modul szimulál egy élő videó streamet egy olyan tárolt videofájl használatával, amelyet a rendszer a peremhálózati eszközre másolt, amikor futtatta az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). Ebben a szakaszban már telepítve vannak a modulok, de nincsenek aktív adathordozó-diagramok.
+Az RTSP-szimulátor modul egy élő videó streamet szimulál egy olyan videofájl használatával, amelyet a peremhálózati eszközre másoltak, amikor futtatta az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). 
 
-## <a name="configure-azure-iot-tools-extension-in-visual-studio-code"></a>Az Azure IoT Tools bővítmény konfigurálása a Visual Studio Code-ban
+A modulok üzembe helyezése mostantól megtörtént, de az adathordozó-diagramok nem aktívak.
 
-Indítsa el a Visual Studio Code-ot, és kövesse az alábbi utasításokat az Azure-IoT Hub az Azure IoT Tools bővítmény használatával való kapcsolódáshoz.
+## <a name="configure-the-azure-iot-tools-extension"></a>Az Azure IoT-eszközök bővítményének konfigurálása
 
-1. Navigáljon az Explorer lapra a Visual Studio Code-ban a **View**  >  **Explorerben** vagy egyszerűen nyomja meg a (CTRL + SHIFT + E) billentyűkombinációt.
-1. Az Explorer lapon kattintson a bal alsó sarokban található "Azure IoT Hub" elemre.
-1. Kattintson a további beállítások ikonra a helyi menü megjelenítéséhez, majd válassza a "IoT Hub a kapcsolódási karakterlánc beállítása" lehetőséget.
-1. Megjelenik egy beviteli mező, majd adja meg IoT Hub kapcsolódási karakterláncát. A IoT Hubhoz tartozó kapcsolatok karakterláncát lekérheti a Cloud Shell ~/clouddrive/LVA-Sample/appSettings.JSON.
-1. Ha a sikeres kapcsolatok megjelennek, megjelenik a peremhálózati eszközök listája. Legalább egy, "LVA-Sample-Device" nevű eszköznek kell lennie.
-1. Mostantól kezelheti IoT Edge eszközeit, és használhatja az Azure IoT Hubt a helyi menüben.
-1. A peremhálózati eszközön üzembe helyezett modulokat a "LVA-Sample-Device" alatt található modulok csomópont kibontásával tekintheti meg.
+Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure IoT Tools bővítmény használatával.
 
-    ![LVA – minta – eszköz csomópont](./media/quickstarts/lva-sample-device-node.png)
+1. A Visual Studio Code-ban **View**válassza az  >  **Explorer**megtekintése lehetőséget. Vagy válassza a CTRL + SHIFT + E billentyűkombinációt.
+1. Az **Explorer** lap bal alsó sarkában válassza az **Azure IoT hub**elemet.
+1. A helyi menü megjelenítéséhez kattintson a **További beállítások** ikonra. Ezután válassza a **IoT hub a kapcsolatok karakterláncának beállítása**lehetőséget.
+1. Amikor megjelenik egy beviteli mező, adja meg IoT Hub kapcsolódási karakterláncát. Cloud Shell a (z) *~/clouddrive/lva-sample/appsettings.js*.
+
+Ha a kapcsolatok sikeresek, megjelenik az Edge-eszközök listája. Legalább egy **LVA-Sample-Device**nevű eszközt kell látnia. Mostantól kezelheti IoT Edge eszközeit, és a helyi menüben használhatja az Azure IoT Hubt. A peremhálózati eszközön üzembe helyezett modulok megtekintéséhez a **LVA – minta-eszköz**területen bontsa ki a **modulok** csomópontot.
+
+![LVA – minta – eszköz csomópont](./media/quickstarts/lva-sample-device-node.png)
 
 ## <a name="use-direct-methods"></a>Közvetlen metódusok használata
 
-A modul segítségével közvetlen metódusok meghívásával elemezheti az élő videó streameket. A [IoT Edge élő videó-elemzések közvetlen módszereinek](direct-methods.md) olvasása a modul által biztosított közvetlen módszerek megismeréséhez. 
+A modul segítségével közvetlen metódusok meghívásával elemezheti az élő videó streameket. További információ: [közvetlen módszerek az élő videók elemzéséhez IoT Edgeon](direct-methods.md). 
 
 ### <a name="invoke-graphtopologylist"></a>GraphTopologyList meghívása
-Ez az összes gráf- [topológiát](media-graph-concept.md#media-graph-topologies-and-instances) enumerálja a modulban.
 
-1. Kattintson a jobb gombbal a "lvaEdge" modulra, és válassza a helyi menü "a modul közvetlen metódusának meghívása" elemét.
-1. Ekkor megjelenik a Visual Studio Code ablakának felső sarkában látható pop-beviteli mező. Írja be a "GraphTopologyList" kifejezést a Szerkesztés mezőbe, majd nyomja le az ENTER billentyűt.
-1. Ezután másolja és illessze be az alábbi JSON-adattartalmat a Szerkesztés mezőbe, majd nyomja le az ENTER billentyűt.
+A modul összes [gráf topológiájának](media-graph-concept.md#media-graph-topologies-and-instances) enumerálása:
+
+1. A Visual Studio Code-ban kattintson a jobb gombbal a **lvaEdge** modulra, és válassza a **modul közvetlen metódusának meghívása**lehetőséget.
+1. A megjelenő mezőben adja meg a *GraphTopologyList*.
+1. Másolja a következő JSON-adattartalmat, majd illessze be a mezőbe. Ezután válassza ki az ENTER billentyűt.
 
     ```
     {
@@ -96,7 +102,7 @@ Ez az összes gráf- [topológiát](media-graph-concept.md#media-graph-topologie
     }
     ```
 
-    Néhány másodpercen belül megjelenik a kimeneti ablak a Visual Studio Code felugró ablakban a következő választal
+    Néhány másodpercen belül a **kimeneti** ablak a következő választ jeleníti meg.
 
     ```
     [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
@@ -109,12 +115,12 @@ Ez az összes gráf- [topológiát](media-graph-concept.md#media-graph-topologie
     }
     ```
     
-    A fenti válasz várható, mivel nem jött létre gráf-topológia.
+    Ez a válasz várható, mert nem jött létre gráf-topológia.
     
 
 ### <a name="invoke-graphtopologyset"></a>GraphTopologySet meghívása
 
-A GraphTopologyList meghívásakor megjelenő lépések használatával meghívhatja a GraphTopologySet-t, hogy a következő JSON- [t használja a](media-graph-concept.md#media-graph-topologies-and-instances) hasznos adattartalomként.
+A meghívásához szükséges lépéseket követve `GraphTopologyList` meghívhatja a `GraphTopologySet` Graph- [topológia](media-graph-concept.md#media-graph-topologies-and-instances)beállítását. A következő JSON-t használja hasznos adattartalomként.
 
 ```
 {
@@ -185,10 +191,9 @@ A GraphTopologyList meghívásakor megjelenő lépések használatával meghívh
 
 ```
 
+Ez a JSON-adattartalom létrehoz egy gráf-topológiát, amely három paramétert határoz meg. Ezen paraméterek közül kettőnek van alapértelmezett értéke. A topológia egyetlen forrás (RTSP-forrás) csomóponttal, egy processzorral (mozgásérzékelő processzor) és egy fogadó (IoT Hub fogadó) csomóponttal rendelkezik.
 
-A fenti JSON-tartalom egy olyan gráf-topológia létrehozását eredményezi, amely három paramétert határoz meg (amelyek közül kettő alapértelmezett értékkel rendelkezik). A topológia egyetlen forrás (RTSP-forrás) csomóponttal, egy processzorral (mozgásérzékelő processzor) és egy fogadó (IoT Hub fogadó) csomóponttal rendelkezik.
-
-Néhány másodpercen belül a következő válasz jelenik meg a kimeneti ablakban:
+Néhány másodpercen belül a **kimenet** ablakban a következő válasz jelenik meg.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...
@@ -268,25 +273,26 @@ Néhány másodpercen belül a következő válasz jelenik meg a kimeneti ablakb
 }
 ```
 
-A visszaadott állapot 201, ami azt jelzi, hogy egy új topológia lett létrehozva. Próbálkozzon a következő lépésekkel:
+A visszaadott állapot 201. Ez az állapot azt jelzi, hogy új topológia lett létrehozva. 
 
-* Indítsa újra a GraphTopologySet, és figyelje meg, hogy a visszaadott állapotkód 200. Az 200-as állapotkód azt jelzi, hogy egy meglévő topológiát sikerült frissíteni.
-* Indítsa újra a GraphTopologySet, de módosítsa a leíró karakterláncot. Figyelje meg, hogy a válaszban szereplő állapotkód 200, és a Leírás frissítve lett az új értékre.
-* Hívja meg a GraphTopologyList az előző szakaszban leírtak szerint, és figyelje meg, hogy most már megtekintheti a "MotionDetection" topológiát a visszaadott adattartalomban.
+Próbálkozzon a következő lépésekkel:
+
+1. Újbóli meghívása `GraphTopologySet` . A visszaadott állapotkód 200. Ez a kód azt jelzi, hogy egy meglévő topológia frissítése sikeresen megtörtént.
+1. `GraphTopologySet`Ismételje meg a műveletet, de módosítsa a leíró karakterláncot. A visszaadott állapotkód 200, a leírás pedig az új értékre frissül.
+1. `GraphTopologyList`Az előző szakaszban ismertetett módon hívható meg. Most láthatja a `MotionDetection` topológiát a visszaadott adattartalomban.
 
 ### <a name="invoke-graphtopologyget"></a>GraphTopologyGet meghívása
 
-Most hívja meg a GraphTopologyGet-t a következő hasznos adattartalommal
+`GraphTopologyGet`A következő hasznos adatok használatával hívhat meg.
 
 ```
-
 {
     "@apiVersion" : "1.0",
     "name" : "MotionDetection"
 }
 ```
 
-Néhány másodpercen belül a következő választ kell látnia a kimeneti ablakban:
+Néhány másodpercen belül a következő válasz jelenik meg a **kimeneti** ablakban:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyGet] to [lva-sample-device/lvaEdge] ...
@@ -366,16 +372,16 @@ Néhány másodpercen belül a következő választ kell látnia a kimeneti abla
 }
 ```
 
-Jegyezze fel a következőt a válasz adattartalomban:
+A válasz hasznos adataiban figyelje meg a következő adatokat:
 
 * Az állapotkód 200, ami sikeresnek jelez.
-* A hasznos adatok "létrehozva" és "lastModified" időbélyegzővel rendelkeznek.
+* A hasznos adatok között szerepel az `created` időbélyegző és az időbélyegző is `lastModified` .
 
 ### <a name="invoke-graphinstanceset"></a>GraphInstanceSet meghívása
 
-Ezután hozzon létre egy gráf-példányt, amely a fenti gráf-topológiára hivatkozik. Ahogy az [itt](media-graph-concept.md#media-graph-topologies-and-instances)is látható, a Graph instances lehetővé teszi, hogy több kameráról származó élő videó streameket elemezzen ugyanazzal a gráf-topológiával.
+Hozzon létre egy gráf-példányt, amely az előző gráf-topológiára hivatkozik. A Graph-példányok lehetővé teszik, hogy a különböző kamerákból származó élő videó streameket ugyanazzal a gráf-topológiával elemezze. További információ: [Media Graph-topológiák és-példányok](media-graph-concept.md#media-graph-topologies-and-instances).
 
-Hívja meg a Direct metódus GraphInstanceSet a következő adattartalommal.
+Hívja meg a Direct metódust a `GraphInstanceSet` következő hasznos adatok használatával.
 
 ```
 {
@@ -391,12 +397,12 @@ Hívja meg a Direct metódus GraphInstanceSet a következő adattartalommal.
 }
 ```
 
-Vegye figyelembe a következőket:
+Figyelje meg, hogy ez a hasznos adat:
 
-* A fenti hasznos adat meghatározza azt a topológiai nevet (MotionDetection), amelyhez a példányt létre kell hozni.
-* A hasznos adatok a "rtspUrl" paraméter értékét tartalmazzák, amely nem rendelkezett alapértelmezett értékkel a gráf-topológia hasznos adataiban.
+* Meghatározza a topológia nevét ( `MotionDetection` ), amelyhez a példányt létre kell hozni.
+* A (z) paraméter értékét tartalmazza `rtspUrl` , amely nem rendelkezett alapértelmezett értékkel a gráf-topológia hasznos adataiban.
 
-Néhány másodpercen belül a következő válasz jelenik meg a kimeneti ablakban:
+Néhány másodpercen belül a következő válasz jelenik meg a **kimeneti** ablakban:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceSet] to [lva-sample-device/lvaEdge] ...
@@ -422,20 +428,20 @@ Néhány másodpercen belül a következő válasz jelenik meg a kimeneti ablakb
 }
 ```
 
-Jegyezze fel a következőt a válasz adattartalomban:
+A válasz hasznos adataiban figyelje meg, hogy:
 
-* Az állapotkód 201, amely azt jelzi, hogy egy új példány lett létrehozva.
-* Az állapot "inaktív", ami azt jelzi, hogy a Graph-példány létrejött, de nincs aktiválva. További információ: [Media Graph-állapotok](media-graph-concept.md).
+* Az állapotkód 201, amely jelzi, hogy egy új példány lett létrehozva.
+* Az állapot az `Inactive` , ami azt jelzi, hogy a Graph-példány létrejött, de nincs aktiválva. További információ: [Media Graph-állapotok](media-graph-concept.md).
 
 Próbálkozzon a következő lépésekkel:
 
-* GraphInstanceSet meghívása ugyanazzal a hasznos adattartalommal, és vegye figyelembe, hogy a visszaadott állapotkód mostantól 200.
-* Ismételje meg a GraphInstanceSet, de egy másik leírással, és figyelje meg, hogy a válasz adattartalmát a frissített leírás tartalmazza, ami azt jelzi, hogy a Graph-példány frissítése sikeresen megtörtént.
-* Hívja meg a GraphInstanceSet, de módosítsa a nevet a "Sample-Graph-2" névre, és figyelje meg a válasz adattartalmát. Vegye figyelembe, hogy létrejön egy új gráf-példány (azaz az állapotkód 201).
+1. `GraphInstanceSet`Ismételje meg a műveletet ugyanazzal a hasznos adattartalommal. Figyelje meg, hogy a visszaadott állapotkód 200.
+1. `GraphInstanceSet`Ismételje meg a műveletet, de használjon másik leírást. Figyelje meg a válaszban szereplő frissített leírást, amely azt jelzi, hogy a Graph-példány frissítése sikeresen megtörtént.
+1. Meghívása `GraphInstanceSet` , de a név módosítása a következőre: `Sample-Graph-2` . Figyelje meg az újonnan létrehozott Graph-példányt (azaz 201-as állapotkódot) a válasz hasznos adatai között.
 
 ### <a name="invoke-graphinstanceactivate"></a>GraphInstanceActivate meghívása
 
-Most aktiválja a Graph-példányt – amely elindítja az élő videó áramlását a modulon keresztül. Hívja meg a Direct metódus GraphInstanceActivate a következő adattartalommal.
+Most aktiválja a Graph-példányt, hogy elindítsa az élő videó áramlását a modulon keresztül. Hívja meg a Direct metódust a `GraphInstanceActivate` következő hasznos adatok használatával.
 
 ```
 {
@@ -444,7 +450,7 @@ Most aktiválja a Graph-példányt – amely elindítja az élő videó áramlá
 }
 ```
 
-Néhány másodpercen belül a következő választ kell látnia a kimeneti ablakban:
+Néhány másodpercen belül a **kimenet** ablakban a következő válasz jelenik meg.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceActivate] to [lva-sample-device/lvaEdge] ...
@@ -455,11 +461,11 @@ Néhány másodpercen belül a következő választ kell látnia a kimeneti abla
 }
 ```
 
-A válasz adattartalomban szereplő 200-as állapotkód azt jelzi, hogy a Graph-példány sikeresen aktiválva lett.
+Az 200-es állapotkód azt jelzi, hogy a Graph-példány sikeresen aktiválva lett.
 
 ### <a name="invoke-graphinstanceget"></a>GraphInstanceGet meghívása
 
-Most hívja meg a Direct metódus GraphInstanceGet a következő adattartalommal:
+Most hívja meg a közvetlen metódust `GraphInstanceGet` a következő hasznos adatok használatával.
 
 ```
  {
@@ -468,7 +474,7 @@ Most hívja meg a Direct metódus GraphInstanceGet a következő adattartalommal
  }
  ```
 
-Néhány másodpercen belül a következő választ kell látnia a kimeneti ablakban:
+Néhány másodpercen belül a **kimenet** ablakban a következő válasz jelenik meg.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceGet] to [lva-sample-device/lvaEdge] ...
@@ -494,22 +500,24 @@ Néhány másodpercen belül a következő választ kell látnia a kimeneti abla
 }
 ```
 
-Jegyezze fel a következőt a válasz adattartalomban:
+A válasz hasznos adataiban figyelje meg a következő adatokat:
 
 * Az állapotkód 200, ami sikeresnek jelez.
-* Az állapot "aktív", ami azt jelzi, hogy a Graph-példány már "aktív" állapotban van.
+* Az állapot azt `Active` jelzi, hogy a Graph-példány már aktív.
 
 ## <a name="observe-results"></a>Eredmények megfigyelése
 
-A fenti példában létrehozott és aktivált Graph-példány a mozgásészlelési processzor csomóponttal észleli a mozgást a beérkező élő videó streamben, és eseményeket küld a IoT Hub fogadó csomópontnak. Ezek az események ezután továbbítva lesznek a IoT Edge hubhoz, amely már megfigyelhető. Ehhez kövesse az alábbi lépéseket.
+A létrehozott és aktivált Graph-példány a mozgásészlelési processzor csomópont használatával észleli a mozgást a beérkező élő videó streamben. Eseményeket küld a IoT Hub fogadó csomópontnak. Az események továbbítása IoT Edge hubhoz történik. 
 
-1. Nyissa meg az Explorer panelt a Visual Studio Code-ban, és keresse meg az Azure IoT Hub a bal alsó sarokban.
-2. Bontsa ki az eszközök csomópontot.
-3. A jobb gombbal a LVA-minta-eszközre kattint, és a "beépített figyelési esemény figyelése" lehetőséget választotta.
+Az eredmények megfigyeléséhez kövesse az alábbi lépéseket.
 
-![IOT hub-események figyelésének megkezdése](./media/quickstarts/start-monitoring-iothub-events.png)
+1. A Visual Studio Code-ban nyissa meg az **Explorer** ablaktáblát. A bal alsó sarokban keresse meg az **Azure IoT hub**.
+2. Bontsa ki az **eszközök** csomópontot.
+3. Kattintson a jobb gombbal a **LVA-Sample-Device** elemre, majd válassza a **figyelés beépített események figyelése**lehetőséget.
 
-A kimeneti ablakban a következő üzenetek jelennek meg:
+    ![IOT hub-események figyelésének megkezdése](./media/quickstarts/start-monitoring-iothub-events.png)
+    
+A **kimeneti** ablak a következő üzenetet jeleníti meg:
 
 ```
 [IoTHubMonitor] [7:44:33 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -551,16 +559,16 @@ A kimeneti ablakban a következő üzenetek jelennek meg:
 }
 ```
 
-Vegye figyelembe a következőket a fenti üzenetben
+Figyelje meg ezeket a részleteket:
 
-* Az üzenet "Body" szakaszt és egy "applicationProperties" szakaszt tartalmaz. Ha szeretné megismerni, hogy mit jelentenek ezek a csoportok, olvassa el [IoT hub üzenet létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)című cikket.
-* a applicationProperties "subject" a MediaGraph azon csomópontjára hivatkozik, amelyről az üzenet létrejött. Ebben az esetben az üzenet a mozgásészlelési processzorból származik.
-* a applicationProperties "eventType" értéke azt jelzi, hogy ez egy elemzési esemény.
-* a "eventTime" érték azt az időpontot jelzi, amikor az esemény bekövetkezett.
-* a "Body" az elemzési eseményre vonatkozó információkat tartalmaz. Ebben az esetben az esemény egy következtetési esemény, ezért a törzs "Timestamp" és "következtetéseket" tartalmaz.
-* a "következtetések" szakasz azt jelzi, hogy a "type" a "Motion", és további információkat tartalmaz a "Motion" eseményről.
+* Az üzenet tartalmaz egy `body` szakaszt és egy `applicationProperties` szakaszt. További információ: [IoT hub üzenetek létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+* A alkalmazásban `applicationProperties` hivatkozik arra a csomópontra, amelyben az `subject` üzenet létrejött `MediaGraph` . Ebben az esetben az üzenet a mozgásészlelési processzorról származik.
+* A `applicationProperties` ben `eventType` azt jelzi, hogy ez az esemény egy elemzési esemény.
+* Az `eventTime` érték az az idő, amikor az esemény bekövetkezett.
+* A `body` szakasz az elemzési eseményre vonatkozó információkat tartalmaz. Ebben az esetben az esemény egy következtetési esemény, így a törzs tartalmaz és az adattartalmakat `timestamp` `inferences` .
+* A `inferences` szakasz azt jelzi, hogy az a `type` `motion` . További információkat biztosít az `motion` eseményről.
 
-Ha a MediaGraph-t egy kis ideig futtatja, a következő üzenet jelenik meg a kimeneti ablakban is:
+Ha lehetővé teszi, hogy a Media Graph egy ideig fusson, a **kimenet** ablakban a következő üzenet jelenik meg.
 
 ```
 [IoTHubMonitor] [7:47:45 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -578,19 +586,19 @@ Ha a MediaGraph-t egy kis ideig futtatja, a következő üzenet jelenik meg a ki
 }
 ```
 
-Vegye figyelembe a következőket a fenti üzenetben
+Ebben az üzenetben a következő adatokat láthatja:
 
-* a "tárgy" a applicationProperties azt jelzi, hogy az üzenet a Media Graph RTSP-forrás csomópontjában lett létrehozva.
-* a applicationProperties "eventType" értéke azt jelzi, hogy ez egy diagnosztikai esemény.
-* a "Body" a diagnosztikai eseménnyel kapcsolatos információkat tartalmaz. Ebben az esetben az esemény MediaSessionEstablished, és így a törzs.
+* A `applicationProperties` ben `subject` azt jelzi, hogy az üzenet a Media Graph RTSP-forrás csomópontjában lett létrehozva.
+* A-ben a `applicationProperties` `eventType` azt jelzi, hogy ez az esemény a diagnosztika.
+* A a `body` diagnosztikai eseménnyel kapcsolatos információkat tartalmaz. Ebben az esetben az üzenet tartalmazza a törzset, mert az esemény a következő: `MediaSessionEstablished` .
 
 ## <a name="invoke-additional-direct-methods-to-clean-up"></a>További közvetlen metódusok meghívása a tisztításhoz
 
-A közvetlen metódusok meghívásával inaktiválhatja és törölheti a Graph-példányt (ebben a sorrendben).
+Közvetlen metódusok meghívásával először inaktiválja a Graph-példányt, majd törölheti azt.
 
 ### <a name="invoke-graphinstancedeactivate"></a>GraphInstanceDeactivate meghívása
 
-Hívja meg a Direct metódus GraphInstanceDeactivate a következő adattartalommal.
+Hívja meg a Direct metódust a `GraphInstanceDeactivate` következő hasznos adatok használatával.
 
 ```
 {
@@ -599,7 +607,7 @@ Hívja meg a Direct metódus GraphInstanceDeactivate a következő adattartalomm
 }
 ```
 
-Néhány másodpercen belül a következő választ kell látnia a kimeneti ablakban:
+Néhány másodpercen belül a következő válasz jelenik meg a **kimeneti** ablakban:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDeactivate] to [lva-sample-device/lvaEdge] ...
@@ -612,13 +620,11 @@ Néhány másodpercen belül a következő választ kell látnia a kimeneti abla
 
 Az 200-es állapotkód azt jelzi, hogy a Graph-példány inaktiválása sikeres volt.
 
-Próbálkozzon a következő lépésekkel.
-
-* Hívja meg a GraphInstanceGet a korábbi szakaszokban jelzett módon, és figyelje meg az "állapot" értéket.
+Ezután próbálja meg meghívni a `GraphInstanceGet` jelen cikk korábbi részében jelzett módon. Figyelje meg az `state` értéket.
 
 ### <a name="invoke-graphinstancedelete"></a>GraphInstanceDelete meghívása
 
-A közvetlen metódus GraphInstanceDelete meghívása a következő adattartalommal
+Hívja meg a Direct metódust a `GraphInstanceDelete` következő hasznos adatok használatával.
 
 ```
 {
@@ -627,7 +633,7 @@ A közvetlen metódus GraphInstanceDelete meghívása a következő adattartalom
 }
 ```
 
-Néhány másodpercen belül a következő választ kell látnia a kimeneti ablakban:
+Néhány másodpercen belül a következő válasz jelenik meg a **kimeneti** ablakban:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDelete] to [lva-sample-device/lvaEdge] ...
@@ -638,11 +644,11 @@ Néhány másodpercen belül a következő választ kell látnia a kimeneti abla
 }
 ```
 
-A válaszban szereplő 200-as állapotkód azt jelzi, hogy a gráf példányának törlése sikerült.
+Az 200-es állapotkód azt jelzi, hogy a Graph-példány sikeresen törölve lett.
 
 ### <a name="invoke-graphtopologydelete"></a>GraphTopologyDelete meghívása
 
-Hívja meg a Direct metódus GraphTopologyDelete a következő adattartalommal:
+Hívja meg a Direct metódust a `GraphTopologyDelete` következő hasznos adatok használatával.
 
 ```
 {
@@ -651,7 +657,7 @@ Hívja meg a Direct metódus GraphTopologyDelete a következő adattartalommal:
 }
 ```
 
-Néhány másodpercen belül a következő választ kell látnia a kimeneti ablakban:
+Néhány másodpercen belül a **kimenet** ablakban a következő válasz jelenik meg.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyDelete] to [lva-sample-device/lvaEdge] ...
@@ -664,16 +670,16 @@ Néhány másodpercen belül a következő választ kell látnia a kimeneti abla
 
 Az 200-es állapotkód azt jelzi, hogy a gráf topológiáját sikerült törölni.
 
-Próbálkozzon a következő lépésekkel.
+Próbálkozzon a következő lépésekkel:
 
-* Hívja meg a GraphTopologyList, és figyelje meg, hogy nincsenek gráf-topológiák a modulban.
-* Hívja meg a GraphInstanceList ugyanazzal a hasznos adattartalommal, mint a GraphTopologyList, és figyelje meg, hogy a rendszer nem sorolja fel a diagramokat.
+1. Meghívja `GraphTopologyList` és megfigyelheti, hogy a modul nem tartalmaz gráf-topológiákat.
+1. `GraphInstanceList`Ugyanazzal a hasznos adattartalommal hivatkozhat `GraphTopologyList` . Figyelje meg, hogy a Graph-példányok felsorolása nem történik meg.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan rögzíthet videót a Live Video Analytics használatával IoT Edge
-* További információ a diagnosztikai üzenetekről.
+* Megtudhatja, hogyan [rögzíthet videót a IoT Edge élő video Analytics használatával](continuous-video-recording-tutorial.md).
+* További információ a [diagnosztikai üzenetekről](monitoring-logging.md).

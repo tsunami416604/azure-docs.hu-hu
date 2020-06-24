@@ -1,5 +1,5 @@
 ---
-title: Kapcsolódás SQL Server vagy Azure SQL Database
+title: Kapcsolódás SQL Serverhoz, Azure SQL Databasehoz vagy az Azure SQL felügyelt példányához
 description: A helyszínen vagy a felhőben található SQL-adatbázisok feladatainak automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
@@ -7,14 +7,14 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: 4a10cd279961944bf46f4e6b433226eddafd1c53
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449093"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255500"
 ---
-# <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server vagy Azure SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
+# <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Az SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
 Ez a cikk bemutatja, hogyan érheti el az SQL Database-ben tárolt adatok egy logikai alkalmazásban az SQL Server-összekötő használatával. Így automatizálhatja az SQL-adatok és-erőforrások kezelésére szolgáló feladatokat, folyamatokat és munkafolyamatokat logikai alkalmazások létrehozásával. Az SQL Server-összekötő a [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) , valamint a [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) és az [Azure SQL felügyelt példányai](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)esetében működik.
 
@@ -26,9 +26,9 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure L
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy [SQL Server adatbázis](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) vagy [Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)
+* [SQL Server adatbázis](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database), [Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)vagy [Azure SQL felügyelt példány](../azure-sql/managed-instance/instance-create-quickstart.md).
 
-  A tábláknak adatokkal kell rendelkezniük, hogy a logikai alkalmazás a műveletek meghívásakor eredményeket lehessen visszaadni. Ha Azure SQL Database hoz létre, használhat példákat tartalmazó adatbázisokat is.
+  A tábláknak adatokkal kell rendelkezniük, hogy a logikai alkalmazás a műveletek meghívásakor eredményeket lehessen visszaadni. Ha Azure SQL Database használ, használhat példákat tartalmazó adatbázisokat is.
 
 * Az SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevét és a jelszavát. Ezekre a hitelesítő adatokra akkor van szükség, ha engedélyezni szeretné a logikáját az SQL Serverhez való hozzáféréshez.
 
@@ -65,16 +65,16 @@ Most folytassa a következő lépésekkel:
 
 <a name="connect-azure-sql-db"></a>
 
-### <a name="connect-to-cloud-based-azure-sql-database-or-managed-instance"></a>Kapcsolódás felhőalapú Azure SQL Databasehoz vagy felügyelt példányhoz
+### <a name="connect-to-azure-sql-database-or-managed-instance"></a>Kapcsolódás Azure SQL Database vagy felügyelt példányhoz
 
 Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-műveletet](#add-sql-action), és korábban még nem hozott létre kapcsolatokat az adatbázishoz, a rendszer a következő lépések elvégzését kéri:
 
-1. A **Hitelesítés típusa**mezőben válassza ki a Azure SQL Database vagy felügyelt példányon a szükséges és engedélyezett hitelesítést:
+1. A **Hitelesítés típusa**mezőben válassza ki Azure SQL Database vagy az Azure SQL felügyelt példányán az adatbázishoz szükséges és engedélyezett hitelesítést:
 
-   | Hitelesítés | Description |
+   | Hitelesítés | Leírás |
    |----------------|-------------|
-   | [**Azure AD-integráció**](../azure-sql/database/authentication-aad-overview.md) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az Azure SQL Database-hez hozzáféréssel rendelkező Azure Active Directory (Azure AD) érvényes identitást igényel. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – Azure AD – integrált hitelesítés](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az Azure SQL Database-ben létrehozott és tárolt érvényes felhasználónevet és erős jelszót igényel. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**Azure AD-integráció**](../azure-sql/database/authentication-aad-overview.md) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázishoz hozzáféréssel rendelkező Azure Active Directory (Azure AD) érvényes identitást igényel. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – Azure AD – integrált hitelesítés](../azure-sql/database/authentication-aad-overview.md) |
+   | [**SQL Server-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázisban létrehozott és tárolt érvényes felhasználónevet és erős jelszót kell megadnia. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    Ez a példa az **Azure ad**-vel való integrációt folytatja:
@@ -83,7 +83,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
 1. Miután kiválasztotta az **Azure ad-integrációt**, válassza **a bejelentkezés**lehetőséget. Attól függően, hogy Azure SQL Database vagy Azure SQL felügyelt példányt használ-e, válassza ki a hitelesítéshez használandó felhasználói hitelesítő adatokat.
 
-1. Válassza ki ezeket az értékeket az Azure SQL Database-adatbázishoz:
+1. Válassza ki ezeket az értékeket az adatbázishoz:
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
@@ -99,7 +99,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
    Ez a példa az alábbi értékek megjelenését szemlélteti:
 
-   ![Az Azure SQL Database-hez való kapcsolódás létrehozása](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+   ![SQL Database-hez való kapcsolódás létrehozása](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
 1. Most folytassa azokat a lépéseket, amelyek még nem fejeződött be [egy SQL-trigger hozzáadásával](#add-sql-trigger) vagy [egy SQL-művelet hozzáadásával](#add-sql-action).
 
@@ -115,7 +115,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 
 1. A **Hitelesítés típusa**mezőben válassza ki a SQL Server szükséges és engedélyezett hitelesítést:
 
-   | Hitelesítés | Description |
+   | Hitelesítés | Leírás |
    |----------------|-------------|
    | [**Windows-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Csak a nem ISE SQL Server összekötőt támogatja, amelyhez a kapcsolathoz korábban az Azure-ban létrehozott adatátjáró-erőforrás szükséges, függetlenül attól, hogy több-bérlős Azure-t vagy ISE-t használ. <p><p>– Érvényes Windows-felhasználónevet és-jelszót kell megadnia az identitás Windows-fiókon keresztüli megerősítéséhez. <p>További információ: Windows- [hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
    | [**SQL Server-hitelesítés**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– A SQL Server létrehozott és tárolt érvényes felhasználónevet és erős jelszót igényel. <p>További információ: [SQL Server hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
@@ -252,6 +252,6 @@ Ha tárolt eljárást hív meg az SQL Server-összekötő használatával, a vis
 
 Az összekötő eseményindítókkal, műveletekkel és korlátozásokkal kapcsolatos technikai információkért tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/), amely a hencegés leírásában jön létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók [a Azure Logic apps-összekötők](../connectors/apis-list.md) használatáról

@@ -5,17 +5,17 @@ services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: b7ab7abb74701abeeac126b34efdf784beff2d03
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6eb6403ad6d1f181d1f51dde6db266070bf32a56
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561823"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194756"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása
 
@@ -119,7 +119,7 @@ Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szi
 |PySpark (Python)|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Spark (Scala)|Igen|Igen|Igen|Igen|-|-|-|Igen|
 |SparkSQL|Igen|Igen|-|-|-|-|-|-|
-|.NET for Spark (C#)|Igen|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Szöveg cellájának formázása eszköztár gombjaival
 
@@ -389,7 +389,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 |Kihúzás|CTRL + [|
 |Váltás parancs módba| Esc |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával](../quickstart-apache-spark-notebook.md)
 - [Az Azure szinapszis Analytics Apache Spark](apache-spark-overview.md)

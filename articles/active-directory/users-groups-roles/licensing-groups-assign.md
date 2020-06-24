@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 04/29/2020
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0524e8756e86771ab555eaa853e3955fe69c8549
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582705"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727653"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek kiosztása a felhasználóknak csoporttagság szerint Azure Active Directory
 
@@ -59,7 +59,7 @@ Ha licenceket rendel egy csoporthoz, az Azure AD feldolgozza a csoport összes m
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2. lépés: annak ellenőrzése, hogy befejeződött-e a kezdeti hozzárendelés
 
-1. Válassza a **Azure Active Directory** > **csoportok**lehetőséget. Válassza ki azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
+1. Válassza a **Azure Active Directory**  >  **csoportok**lehetőséget. Válassza ki azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
 
 1. A csoport lapon válassza a **licencek**lehetőséget. Ezzel gyorsan megerősítheti, hogy a licencek teljes körűen vannak-e hozzárendelve a felhasználókhoz, és hogy vannak-e hibák, amelyekre szüksége van. A következő információk érhetők el:
 
@@ -71,17 +71,17 @@ Ha licenceket rendel egy csoporthoz, az Azure AD feldolgozza a csoport összes m
 
    ![licencelési hibák és a licenc állapota](./media/licensing-groups-assign/assignment-errors.png)
 
-1. A licencek feldolgozásával kapcsolatos részletesebb információkat a **Azure Active Directory** > **felhasználók és csoportok** > *csoport neve* > **naplóban talál.** Győződjön meg a következő tevékenységekről:
+1. A licencek feldolgozásával kapcsolatos részletesebb információkat a **Azure Active Directory**  >  **felhasználók és csoportok**  >  *csoport neve*  >  **naplóban**talál. Győződjön meg a következő tevékenységekről:
 
-   - Tevékenység: `Start applying group based license to users`. Ez akkor kerül naplózásra, amikor a rendszer felveszi a licenc-hozzárendelés változását a csoportba, és elindítja az összes felhasználói tagra való alkalmazását. Az elvégzett módosítással kapcsolatos információkat tartalmaz.
+   - Tevékenység: `Start applying group based license to users` . Ez akkor kerül naplózásra, amikor a rendszer felveszi a licenc-hozzárendelés változását a csoportba, és elindítja az összes felhasználói tagra való alkalmazását. Az elvégzett módosítással kapcsolatos információkat tartalmaz.
 
-   - Tevékenység: `Finish applying group based license to users`. Ez akkor kerül naplózásra, amikor a rendszer befejezi a csoport összes felhasználójának feldolgozását. Összefoglalja, hogy hány felhasználót sikerült feldolgozni, és hány felhasználót nem sikerült hozzárendelni a csoportos licencekhez.
+   - Tevékenység: `Finish applying group based license to users` . Ez akkor kerül naplózásra, amikor a rendszer befejezi a csoport összes felhasználójának feldolgozását. Összefoglalja, hogy hány felhasználót sikerült feldolgozni, és hány felhasználót nem sikerült hozzárendelni a csoportos licencekhez.
 
    [Ebből a szakaszból](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) megtudhatja, hogyan használhatók a naplók a csoport alapú licencelés által végzett módosítások elemzéséhez.
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>3. lépés: a licencelési problémák keresése és a megoldás feloldása
 
-1. Lépjen a **Azure Active Directory** > **csoportok**elemre, és keresse meg azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
+1. Lépjen a **Azure Active Directory**  >  **csoportok**elemre, és keresse meg azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
 1. A csoport lapon válassza a **licencek**lehetőséget. A lap tetején látható értesítés azt mutatja, hogy a licencek 10 felhasználóhoz nem rendelhetők hozzá. Nyissa meg a csoportot a licencelési hiba állapotában lévő összes felhasználó listájának megtekintéséhez.
 1. A **sikertelen hozzárendelések** oszlop azt jelzi, hogy mindkét licencet nem sikerült hozzárendelni a felhasználókhoz. A **hiba okának fő oka** a hiba okát tartalmazza. Ebben az esetben ez **ütköző szolgáltatási csomagok**.
 

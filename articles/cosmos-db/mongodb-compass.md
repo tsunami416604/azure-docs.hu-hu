@@ -3,16 +3,16 @@ title: Kapcsolódás Azure Cosmos DB az iránytű használatával
 description: Megtudhatja, hogyan tárolhatja és kezelheti Azure Cosmos DBban az MongoDB Compass használatával.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 author: LuisBosquez
 ms.author: lbosq
-ms.openlocfilehash: 74822211ae834bc4705552bd3291299cf14b54d0
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 2f461ebbd84a66470eba012660db3aefebc8c5e7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465728"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260780"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>A MongoDB Compass használata a Azure Cosmos DB API-MongoDB való kapcsolódáshoz
 
@@ -36,25 +36,25 @@ Ha Cosmos DB-fiókját az iránytűhöz szeretné kapcsolni, kövesse az alábbi
 
 1. A Azure Cosmos DB API-MongoDB konfigurált Cosmos-fiókhoz tartozó kapcsolatok adatainak beolvasása az [itt](connect-mongodb-account.md)leírt utasítások alapján.
 
-    ![Képernyőfelvétel a kapcsolatok sztring panelről](./media/mongodb-compass/mongodb-compass-connection.png)
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-connection.png" alt-text="Képernyőfelvétel a kapcsolatok sztring panelről":::
 
 2. Kattintson a gombra, amely a **vágólapra másolja a vágólapra** az **elsődleges/másodlagos kapcsolódási karakterlánc** mellett Cosmos db. A gombra kattintva a rendszer a teljes kapcsolódási karakterláncot a vágólapra másolja.
 
-    ![Képernyőkép a másolás a vágólapra gombra](./media/mongodb-compass/mongodb-connection-copy.png)
+    :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="Képernyőkép a másolás a vágólapra gombra":::
 
 3. Nyissa meg az iránytűt az asztalon/gépen, és kattintson a **Kapcsolódás** , majd a **Kapcsolódás..**. elemre.
 
 4. Az iránytű automatikusan felderíti a kapcsolati karakterláncot a vágólapon, és rákérdez, hogy szeretné-e használni a kapcsolódást. Kattintson az **Igen** gombra, ahogy az alábbi képernyőképen is látható.
 
-    ![A kapcsolódáshoz szükséges iránytű-üzenet képernyőképe](./media/mongodb-compass/mongodb-compass-detect.png)
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="A kapcsolódáshoz szükséges iránytű-üzenet képernyőképe":::
 
 5. Ha a fenti lépésben az **Igen** gombra kattint, a kapcsolati karakterlánc adatai automatikusan fel lesznek töltve. Távolítsa el az automatikusan kitöltött értéket a **replikakészlet neve** mezőben, így biztosítva, hogy a mező üres maradjon.
 
-    ![A kapcsolódáshoz szükséges iránytű-üzenet képernyőképe](./media/mongodb-compass/mongodb-compass-replica.png)
+    :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="A kapcsolódáshoz szükséges iránytű-üzenet képernyőképe":::
 
 6. Kattintson a lap alján található **kapcsolat** elemre. A Cosmos DB fiókjának és adatbázisainak most már láthatónak kell lenniük a MongoDB-iránytűn belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 25e62e7c6865f91daa242a33a0f491f8015be41a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 688bf4526ad287955231358ab0b64036e5480713
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80672522"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201429"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>A felhasználó viselkedésének nyomon követése Azure Active Directory B2C a Application Insights használatával
 
@@ -46,11 +46,11 @@ Ha a Azure AD B2C használatával Application Insightst használ, mindössze ann
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy az Azure-előfizetését tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az előfizetést tartalmazó könyvtárat. Ez a bérlő nem az Ön Azure AD B2C bérlője.
 3. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában, majd keresse meg és válassza a **Application Insights**lehetőséget.
-4. Kattintson a **Létrehozás**gombra.
+4. Kattintson a **Létrehozás** lehetőségre.
 5. Adja meg az erőforrás **nevét** .
 6. Az **alkalmazás típusa**mezőben válassza a **ASP.net webalkalmazás**lehetőséget.
 7. Az **erőforráscsoport**területen válasszon egy meglévő csoportot, vagy adjon meg egy új csoport nevét.
-8. Kattintson a **Létrehozás**gombra.
+8. Kattintson a **Létrehozás** lehetőségre.
 4. A Application Insights erőforrás létrehozása után nyissa meg, bontsa ki az **Essentials**csomópontot, és másolja a kialakítási kulcsot.
 
 ![Application Insights áttekintése és kialakítási kulcsa](./media/analytics-with-application-insights/app-insights.png)
@@ -59,7 +59,7 @@ Ha a Azure AD B2C használatával Application Insightst használ, mindössze ann
 
 A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárolást biztosít. A [jogcím-séma](claimsschema.md) az a hely, ahol deklarálja a jogcímeket.
 
-1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
+1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Adja hozzá a következő jogcímeket a **ClaimsSchema** elemhez. 
@@ -107,11 +107,11 @@ A technikai profilok a Azure AD B2C identitási élményének keretrendszerében
 | Technikai profil | Tevékenység |
 | ----------------- | -----|
 | AppInsights – gyakori | Az Azure-beli összes technikai profilban szerepeltetni kívánt paraméterek közös készlete. |
-| AppInsights – SignInRequest | Egy `SignInRequest` olyan eseményt rögzít, amely jogcímeket tartalmaz, ha bejelentkezési kérés érkezett. |
+| AppInsights – SignInRequest | Egy olyan eseményt rögzít, amely `SignInRequest` jogcímeket tartalmaz, ha bejelentkezési kérés érkezett. |
 | AppInsights – UserSignUp | Egy `UserSignUp` eseményt jegyez be, amikor a felhasználó elindítja a bejelentkezési lehetőséget egy bejelentkezési vagy bejelentkezési úton. |
 | AppInsights – SignInComplete | Egy `SignInComplete` hitelesítés sikeres befejezésére vonatkozó eseményt rögzít, ha a rendszer elküldje egy jogkivonatot a függő entitás alkalmazásnak. |
 
-Adja hozzá a profilokat a *TrustFrameworkExtensions. XML* fájlhoz az alapszintű csomagból. Adja hozzá ezeket az elemeket a **ClaimsProviders** elemhez:
+Adja hozzá a profilokat a *TrustFrameworkExtensions.xml* fájlhoz az alapszintű csomagból. Adja hozzá ezeket az elemeket a **ClaimsProviders** elemhez:
 
 ```xml
 <ClaimsProvider>
@@ -167,18 +167,18 @@ Adja hozzá a profilokat a *TrustFrameworkExtensions. XML* fájlhoz az alapszint
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>Technikai profilok hozzáadása előkészítési lépésként
 
-Hívja `AppInsights-SignInRequest` meg a 2. lépést a beléptetési/regisztrációs kérések nyomon követéséhez:
+Hívja meg a `AppInsights-SignInRequest` 2. lépést a beléptetési/regisztrációs kérések nyomon követéséhez:
 
 ```xml
 <!-- Track that we have received a sign in request -->
-<OrchestrationStep Order="1" Type="ClaimsExchange">
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   <ClaimsExchanges>
     <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
 
-Közvetlenül *before* a `SendClaims` előkészítési lépés előtt adjon hozzá egy új lépést, amely `AppInsights-UserSignup`meghívja a-t. Akkor aktiválódik, ha a felhasználó kiválasztja a regisztrációs vagy bejelentkezési útvonalon a regisztráció gombot.
+Közvetlenül a előkészítési lépés *előtt* `SendClaims` adjon hozzá egy új lépést, amely meghívja a-t `AppInsights-UserSignup` . Akkor aktiválódik, ha a felhasználó kiválasztja a regisztrációs vagy bejelentkezési útvonalon a regisztráció gombot.
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -200,7 +200,7 @@ Közvetlenül *before* a `SendClaims` előkészítési lépés előtt adjon hozz
 </OrchestrationStep>
 ```
 
-Közvetlenül a előkészítési lépés után hívja `SendClaims` `AppInsights-SignInComplete`meg a következőt:. Ez a lépés egy sikeres befejezett utazást mutat be.
+Közvetlenül a előkészítési lépés után hívja meg a következőt: `SendClaims` `AppInsights-SignInComplete` . Ez a lépés egy sikeres befejezett utazást mutat be.
 
 ```xml
 <!-- Track that we have successfully sent a token -->
@@ -217,10 +217,10 @@ Közvetlenül a előkészítési lépés után hívja `SendClaims` `AppInsights-
 
 ## <a name="upload-your-file-run-the-policy-and-view-events"></a>Töltse fel a fájlt, futtassa a szabályzatot, és tekintse meg az eseményeket
 
-Mentse és töltse fel a *TrustFrameworkExtensions. XML* fájlt. Ezután hívja meg a függő entitásra vonatkozó házirendet az alkalmazásból, vagy használja a **Futtatás most parancsot** a Azure Portal. Másodpercek alatt az események Application Insightsban érhetők el.
+Mentse és töltse fel a *TrustFrameworkExtensions.xml* fájlt. Ezután hívja meg a függő entitásra vonatkozó házirendet az alkalmazásból, vagy használja a **Futtatás most parancsot** a Azure Portal. Másodpercek alatt az események Application Insightsban érhetők el.
 
 1. Nyissa meg a **Application Insights** erőforrást a Azure Active Directory-bérlőben.
-2. Válassza ki a **használati** > **eseményeket**.
+2. Válassza ki a **használati**  >  **eseményeket**.
 3. Állítsa **be** az **elmúlt órában** és **By** **3 percen belül**.  Előfordulhat, hogy a **frissítés** elemre kell kattintania az eredmények megtekintéséhez.
 
 ![HASZNÁLAT Application Insights-események Blase](./media/analytics-with-application-insights/app-ins-graphic.png)
@@ -230,10 +230,10 @@ Mentse és töltse fel a *TrustFrameworkExtensions. XML* fájlt. Ezután hívja 
 Az igényeinek megfelelően adja hozzá a jogcím-típusokat és az eseményeket a felhasználói útra. Használhatja a [jogcím-feloldókat](claim-resolver-overview.md) vagy bármely karakterlánc-jogcím típusát, hozzáadhatja a jogcímeket egy **bemeneti jogcím** elem hozzáadásával a Application Insights eseményhez vagy a AppInsights-közös technikai profilhoz.
 
 - A **ClaimTypeReferenceId** a jogcím típusára mutató hivatkozás.
-- A **PartnerClaimType** az Azure-adatfelismerésekben megjelenő tulajdonság neve. Használja a szintaxisát `{property:NAME}`, ahol `NAME` a tulajdonságot az eseményhez adja a rendszer.
+- A **PartnerClaimType** az Azure-adatfelismerésekben megjelenő tulajdonság neve. Használja a szintaxisát `{property:NAME}` , ahol a `NAME` tulajdonságot az eseményhez adja a rendszer.
 - A **DefaultValue** bármilyen karakterlánc-értéket vagy a jogcím feloldóját használja.
 
-```XML
+```xml
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
 <InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 <InputClaim ClaimTypeReferenceId="language" PartnerClaimType="{property:language}" DefaultValue="{Culture:RFC5646}" />

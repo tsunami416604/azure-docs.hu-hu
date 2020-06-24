@@ -11,18 +11,18 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b593630d6702f66b1b877c15688b9aea0e227fca
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235080"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688296"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Hálózati forgalom szűrése hálózati biztonsági csoporttal az Azure CLI használatával
 
@@ -33,7 +33,7 @@ A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forga
 * Virtuális gépek üzembe helyezése egy alhálózaton
 * Forgalomszűrők tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -145,7 +145,7 @@ Hozzon létre két virtuális gépet a virtuális hálózatban, hogy érvényes�
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. Az alábbi példa egy virtuális gépet hoz létre, amely webkiszolgálóként fog szolgálni. A `--asgs myAsgWebServers` beállítás hatására az Azure hálózati adaptert hoz létre a virtuális géphez a *myAsgWebServers* alkalmazás biztonsági csoportjának tagjaként.
 
-A `--nsg ""` beállítás megadásával megakadályozható, hogy az Azure hozzon létre egy alapértelmezett hálózati biztonsági csoportot az Azure-hoz létrehozott hálózati adapterhez, amikor létrehozza a virtuális gépet. A cikk egyszerűsítése érdekében a rendszer jelszót használ. A kulcsokat jellemzően éles környezetben használják. Ha kulcsokat használ, az SSH-ügynök továbbítását is konfigurálnia kell a hátralévő lépésekhez. További információkért tekintse meg az SSH-ügyfél dokumentációját. Cserélje `<replace-with-your-password>` le a parancsot a következő parancsra a választott jelszóval.
+A `--nsg ""` beállítás megadásával megakadályozható, hogy az Azure hozzon létre egy alapértelmezett hálózati biztonsági csoportot az Azure-hoz létrehozott hálózati adapterhez, amikor létrehozza a virtuális gépet. A cikk egyszerűsítése érdekében a rendszer jelszót használ. A kulcsokat jellemzően éles környezetben használják. Ha kulcsokat használ, az SSH-ügynök továbbítását is konfigurálnia kell a hátralévő lépésekhez. További információkért tekintse meg az SSH-ügyfél dokumentációját. Cserélje le a `<replace-with-your-password>` parancsot a következő parancsra a választott jelszóval.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -196,7 +196,7 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális
 
 ## <a name="test-traffic-filters"></a>Forgalomszűrők tesztelése
 
-Az alábbi parancs használatával hozzon létre egy SSH-munkamenetet a *myVmMgmt* virtuális géppel. Cserélje le * \<a publicIpAddress>t* a virtuális gép nyilvános IP-címére. A fenti példában az IP-cím *13.90.242.231*.
+Az alábbi parancs használatával hozzon létre egy SSH-munkamenetet a *myVmMgmt* virtuális géppel. Cserélje le a *\<publicIpAddress>* t a virtuális gép nyilvános IP-címére. A fenti példában az IP-cím *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -224,15 +224,15 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-Az *myVmWeb* virtuális gép engedélyezve van az internetre, hogy beolvassa az Nginx-t, mert egy alapértelmezett biztonsági szabály engedélyezi az összes kimenő forgalmat az internetre. Lépjen ki a *myVmWeb* SSH-munkamenetből, amely elhagyja `username@myVmMgmt:~$` a *myVmMgmt* virtuális gép kérdését. Az Nginx üdvözlőképernyő *myVmWeb* virtuális gépről való beolvasásához írja be a következő parancsot:
+Az *myVmWeb* virtuális gép engedélyezve van az internetre, hogy beolvassa az Nginx-t, mert egy alapértelmezett biztonsági szabály engedélyezi az összes kimenő forgalmat az internetre. Lépjen ki a *myVmWeb* SSH-munkamenetből, amely elhagyja a `username@myVmMgmt:~$` *myVmMgmt* virtuális gép kérdését. Az Nginx üdvözlőképernyő *myVmWeb* virtuális gépről való beolvasásához írja be a következő parancsot:
 
 ```bash
 curl myVmWeb
 ```
 
-A *myVmMgmt* virtuális gép kijelentkezése. Annak ellenőrzéséhez, hogy a *myVmWeb* webkiszolgálót az Azure-on kívülről `curl <publicIpAddress>` is elérheti, adja meg a saját számítógépét. A kapcsolódás sikeres, mert az 80-es port engedélyezve van az internetről a *myAsgWebServers* alkalmazás biztonsági csoportjába, amelyhez az *myVmWeb* virtuális géphez csatolt hálózati adapter tartozik.
+A *myVmMgmt* virtuális gép kijelentkezése. Annak ellenőrzéséhez, hogy a *myVmWeb* webkiszolgálót az Azure-on kívülről is elérheti, adja meg a `curl <publicIpAddress>` saját számítógépét. A kapcsolódás sikeres, mert az 80-es port engedélyezve van az internetről a *myAsgWebServers* alkalmazás biztonsági csoportjába, amelyhez az *myVmWeb* virtuális géphez csatolt hálózati adapter tartozik.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az [az Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot és a benne található összes erőforrást.
 

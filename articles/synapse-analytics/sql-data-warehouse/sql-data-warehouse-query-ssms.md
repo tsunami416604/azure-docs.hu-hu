@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0d65ea9b684439cab384bbaa09fcdef1302b6bcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 772e4253244f5e13a60f155549d5f5513695e5fa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743858"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200749"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Kapcsolódás az Azure szinapszis Analyticshez SQL Server Management Studio (SSMS) használatával
 
@@ -41,7 +41,7 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 ## <a name="1-connect-to-your-sql-pool"></a>1. kapcsolódás az SQL-készlethez
 
 1. Nyissa meg az SSMS-t.
-2. A **fájl** > -**csatlakozási Object Explorer**kiválasztásával nyissa meg Object Explorer.
+2. A **fájl**-  >  **csatlakozási Object Explorer**kiválasztásával nyissa meg Object Explorer.
 
     ![SQL Server Object Explorer](./media/sql-data-warehouse-query-ssms/connect-object-explorer.png)
 3. Töltse ki az összes mezőt a Connect to Server (Csatlakozás a kiszolgálóhoz) ablakban.
@@ -70,7 +70,7 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
    SELECT COUNT(*) FROM dbo.FactInternetSales;
    ```
 
-4. Futtassa a lekérdezést a következő `Execute` parancsikonra kattintva vagy annak használatával `F5`:.
+4. Futtassa a lekérdezést a `Execute` következő parancsikonra kattintva vagy annak használatával: `F5` .
 
    ![A lekérdezés futtatása](./media/sql-data-warehouse-query-ssms/execute-query.png)
 5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.

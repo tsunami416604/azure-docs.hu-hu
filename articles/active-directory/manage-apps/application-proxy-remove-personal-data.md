@@ -2,25 +2,25 @@
 title: Személyes adattárolás eltávolítása – Azure Active Directory Application Proxy
 description: A személyes adatok eltávolítása a Azure Active Directory Application Proxy eszközökön telepített összekötők közül.
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74275410"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759963"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory Application Proxy személyes adatfájljainak eltávolítása
 
@@ -52,7 +52,7 @@ A következő részben az összekötő-eseménynaplók személyes adatait távol
 
 ### <a name="view-or-export-specific-data"></a>Megadott adatértékek megtekintése vagy exportálása
 
-Adott adatok megtekintéséhez vagy exportálásához keresse meg a kapcsolódó bejegyzéseket az egyes összekötő-eseménynaplókban. A naplók a következő helyen `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace`találhatók:.
+Adott adatok megtekintéséhez vagy exportálásához keresse meg a kapcsolódó bejegyzéseket az egyes összekötő-eseménynaplókban. A naplók a következő helyen találhatók: `C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace` .
 
 Mivel a naplók szövegfájlok, a [findstr](https://docs.microsoft.com/windows-server/administration/windows-commands/findstr) használatával keresheti meg a felhasználóhoz kapcsolódó szöveges bejegyzéseket.  
 
@@ -75,7 +75,7 @@ Megadott adatértékek törlése:
 
 ### <a name="turn-off-connector-logs"></a>Összekötő naplófájljainak kikapcsolása
 
-Az egyik lehetőség annak biztosítására, hogy az összekötő naplófájljai ne tartalmazzanak személyes adattartalmakat a napló létrehozásának kikapcsolásához. Az összekötő-naplók létrehozásának leállításához távolítsa el az `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config`alábbi kiemelt sort a következőből:.
+Az egyik lehetőség annak biztosítására, hogy az összekötő naplófájljai ne tartalmazzanak személyes adattartalmakat a napló létrehozásának kikapcsolásához. Az összekötő-naplók létrehozásának leállításához távolítsa el az alábbi kiemelt sort a következőből: `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config` .
 
 ![Megjelenít egy kódrészletet az eltávolítandó Kiemelt kóddal](./media/application-proxy-remove-personal-data/01.png)
 

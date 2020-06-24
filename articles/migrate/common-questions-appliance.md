@@ -3,12 +3,12 @@ title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 14ce04e992cdbf121bcb1518b6a95c09ec421872
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: afdede99fa4485ba7e5494e844d795c2d5d3deee
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324419"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078975"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -107,7 +107,7 @@ Igen. Felveheti mind a Azure Migrate készüléket (az értékeléshez és az ü
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hány virtuális gépet vagy kiszolgálót tud felderíteni egy berendezéssel?
 
-Akár 10 000 VMware virtuális gép, akár 5 000 Hyper-V virtuális gép, valamint akár 250 fizikai kiszolgáló is felderíthető egyetlen berendezéssel. Ha több géppel rendelkezik a helyszíni környezetben, olvassa el a [Hyper-V felmérésének](scale-hyper-v-assessment.md)méretezését, [a VMware-értékelés méretezését](scale-vmware-assessment.md)és [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető részt.
+Akár 10 000 VMware virtuális gép, akár 5 000 Hyper-V virtuális gép, valamint akár 1000 fizikai kiszolgáló is felderíthető egyetlen berendezéssel. Ha több géppel rendelkezik a helyszíni környezetben, olvassa el a [Hyper-V felmérésének](scale-hyper-v-assessment.md)méretezését, [a VMware-értékelés méretezését](scale-vmware-assessment.md)és [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető részt.
 
 ## <a name="can-i-delete-an-appliance"></a>Törölhetek-e készüléket?
 
@@ -139,6 +139,6 @@ Ezek az automatikus frissítések csak a készülék és a berendezés ügynöke
 
 Igen. A portálon nyissa meg az Azure Migrate: Server Assessment vagy Azure Migrate: Server áttelepítési eszköz **ügynök állapota** lapját. Itt megtekintheti a kapcsolat állapotát az Azure és a készüléken található felderítési és értékelési ügynökök között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

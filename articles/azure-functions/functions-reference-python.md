@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 1d9289b6304a9c9e93afeddd98b3a229dae91797
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660584"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730747"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -251,7 +251,7 @@ def main(req):
 
 További naplózási módszerek érhetők el, amelyek lehetővé teszik a konzolra való írást különböző nyomkövetési szinteken:
 
-| Módszer                 | Leírás                                |
+| Metódus                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | KRITIKUS szintű üzenetet ír a gyökérszintű naplózó számára.  |
 | **`error(_message_)`**   | A legfelső szintű naplózó üzenetbe írja a Level hibát.    |
@@ -263,7 +263,7 @@ További információ a naplózásról: [Azure functions figyelése](functions-m
 
 ## <a name="http-trigger-and-bindings"></a>HTTP-trigger és-kötések
 
-A HTTP-trigger a function. Jon fájlban van definiálva. A `name` kötésnek meg kell egyeznie a függvény elnevezett paraméterével.
+A HTTP-trigger a fájl function.jsban van definiálva. A `name` kötésnek meg kell egyeznie a függvény elnevezett paraméterével.
 Az előző példákban egy kötési nevet `req` használunk. Ez a paraméter egy [HttpRequest] objektum, és a rendszer egy [HttpResponse] objektumot ad vissza.
 
 A [HttpRequest] objektumból lekérheti a kérések fejléceit, a lekérdezési paramétereket, az útvonal paramétereit és az üzenet törzsét.
@@ -650,11 +650,11 @@ A Python-feldolgozó függvények a kódtárak egy adott készletét igénylik. 
 
 ### <a name="azure-functions-python-library"></a>Azure Functions Python-könyvtár
 
-Minden Python Worker-frissítés tartalmazza a [Azure functions Python Library (Azure. functions)](https://github.com/Azure/azure-functions-python-library)új verzióját. A futásidejű függvénytár verzióját az Azure rögzíti, és requirements.txt nem bírálható felül. A `azure-functions` requirements.txt bejegyzése csak a kihelyezésre és a felhasználói tájékoztatásra szolgál.
+Minden Python Worker-frissítés tartalmazza a [Azure functions Python Library (Azure. functions)](https://github.com/Azure/azure-functions-python-library)új verzióját. Ez a megközelítés megkönnyíti a Python-függvény alkalmazásai folyamatos frissítését, mivel minden frissítés visszafelé kompatibilis. A könyvtár kiadásait tartalmazó lista az [Azure functions PyPi](https://pypi.org/project/azure-functions/#history)található.
 
-Ennek a döntésnek az az oka, hogy a Azure Functions Python-alkalmazások egyszerű, folyamatos frissítését. A Python-függvénytár frissítése nem lehet az ügyfél számára, mivel minden frissítés visszamenőlegesen kompatibilis. A könyvtár kiadásának listája megtalálható az [Azure-functions PyPi](https://pypi.org/project/azure-functions/#history).
+A futásidejű függvénytár verzióját az Azure rögzíti, és requirements.txt nem bírálható felül. A `azure-functions` requirements.txt bejegyzése csak a kihelyezésre és a felhasználói tájékoztatásra szolgál. 
 
-A következő sorral követheti nyomon a Python functions Library tényleges verzióját a futtatókörnyezetben:
+A következő kód használatával követheti nyomon a Python functions könyvtárának aktuális verzióját a futtatókörnyezetben:
 
 ```python
 getattr(azure.functions, '__version__', '< 1.2.1')
@@ -663,6 +663,7 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 ### <a name="runtime-system-libraries"></a>Futásidejű rendszerkönyvtárak
 
 Az előre telepített rendszerkönyvtárak listáját a Python Worker Docker-lemezképekben kövesse az alábbi hivatkozásokon:
+
 |  Függvények futtatókörnyezete  | Debian-verzió | Python-verziók |
 |------------|------------|------------|
 | 2-es verzió. x | Stretch  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
@@ -682,7 +683,7 @@ A következő lista a gyakori problémákkal kapcsolatos hibaelhárítási útmu
 
 Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követheti nyomon. Ha probléma lép fel, és a GitHubon nem találja a problémát, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következőket:
 

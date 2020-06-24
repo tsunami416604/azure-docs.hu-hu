@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: c8c33797fa35a64a2572026d5cb52d42c57b9b83
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 6e3ce99211da35105fd9e118a850110dfd48ece1
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466255"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986284"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure Blob Storage-ban lévő blob-indexek (előzetes verzió) használatával kezelheti és keresheti meg az adatkeresést
 
@@ -22,7 +22,7 @@ A blob index címkék kategorizálják az adatait a Storage-fiókban a kulcs-ér
 További információ a blob indexről: az [Azure Blob Storage adatainak kezelése és keresése a blob indexével (előzetes verzió)](storage-manage-find-blobs.md).
 
 > [!NOTE]
-> A blob index nyilvános előzetes verzióban érhető el, és a **franciaországi Közép** -és **dél-franciaországi** régiókban is elérhető. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
+> A blob index nyilvános előzetes verzióban érhető el, és a **Közép**-Kanada, **Kelet-Kanada**, **Közép** -Franciaország és **Dél-Franciaország déli** régiójában érhető el. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 # <a name="portal"></a>[Portál](#tab/azure-portal)
@@ -296,7 +296,7 @@ Az [életciklus-kezelési](storage-lifecycle-management-concepts.md) szabályzat
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a blob-indexről. Lásd: az [Azure Blob Storage-beli adatkezelés és-keresés a blob-indextel (előzetes verzió)](storage-manage-find-blobs.md )
 

@@ -3,16 +3,16 @@ title: Indexelési szabályzatok kezelése az Azure Cosmos DB-ben
 description: Ismerje meg, hogyan kezelheti az indexelési szabályzatokat, hogyan vehet fel vagy zárhat ki egy tulajdonságot az indexelésből, hogyan definiálhat indexelést különböző Azure Cosmos DB SDK
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/28/2020
 ms.author: tisande
 ms.custom: tracking-python
-ms.openlocfilehash: 341c315bfdcb99a2cacb32d8aed892c684c44601
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8b41a92f16fe7d71c17b6460289db76bf02c62ce
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558888"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261511"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexelési szabályzatok kezelése az Azure Cosmos DB-ben
 
@@ -362,7 +362,7 @@ Az Azure Cosmos-tárolók az indexelési szabályzatot JSON-dokumentumként tár
 
 1. Amikor elkészült, kattintson a **Mentés** elemre.
 
-![Indexelés kezelése Azure Portal használatával](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+:::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Indexelés kezelése Azure Portal használatával":::
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
@@ -544,9 +544,9 @@ containerResponse.subscribe(result -> {
 });
 ```
 
-## <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
+## <a name="use-the-nodejs-sdk"></a>Az Node.js SDK használata
 
-A `ContainerDefinition` [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) felülete (lásd [a](create-sql-api-nodejs.md) használattal kapcsolatos rövid útmutatót) egy olyan `indexingPolicy` tulajdonságot tesz elérhetővé, amely lehetővé teszi a módosítását, illetve a `indexingMode` és a hozzáadását, illetve eltávolítását `includedPaths` `excludedPaths` .
+Az `ContainerDefinition` [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) felülete (lásd [a](create-sql-api-nodejs.md) használatáról szóló rövid útmutatót) egy olyan `indexingPolicy` tulajdonságot tesz elérhetővé, amely lehetővé teszi a módosítását, illetve a `indexingMode` és a hozzáadását, illetve eltávolítását `includedPaths` `excludedPaths` .
 
 A tároló részleteinek beolvasása
 
@@ -747,7 +747,7 @@ response = database_client.replace_container(container_client, container['partit
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 

@@ -7,13 +7,13 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
-ms.reviewer: cbrooks
-ms.openlocfilehash: 90a7f37fb82cfea2f3ee44c31f6d3ef0a61c64c0
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.reviewer: dineshm
+ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465405"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808833"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 
@@ -74,7 +74,7 @@ A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseke
 1. Kattintson a jobb gombbal a projektre **megoldáskezelő**, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 1. **Tallózás** kiválasztása
 1. Keressen rá az interneten az "Azure. Storage. Queues" kifejezésre, és válassza a **telepítés** lehetőséget a Storage ügyféloldali kódtár és függőségeinek telepítéséhez. Ez az Azure. Storage. Common és az Azure. Core kódtárakat is telepíti, amelyek a várólista-függvénytár függőségei.
-1. Keressen rá az interneten a "System. Configuration. ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget a Configuration Manager telepítéséhez.
+1. Keressen rá az interneten a "System.Configuration.ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget a Configuration Manager telepítéséhez.
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
@@ -89,7 +89,7 @@ A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseke
 1. Kattintson a jobb gombbal a projektre **megoldáskezelő**, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 1. **Tallózás** kiválasztása
 1. Keressen rá az interneten a "Microsoft. Azure. Storage. üzenetsor" kifejezésre, és válassza a **telepítés** lehetőséget a Storage ügyféloldali kódtár és függőségeinek telepítéséhez. Ez a Microsoft. Azure. Storage. Common könyvtárat is telepíti, amely a várólista-függvénytár függősége.
-1. Keressen rá az interneten a "Microsoft. Azure. ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget az Azure Configuration Manager telepítéséhez.
+1. Keressen rá az interneten a "Microsoft.Azure.ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget az Azure-Configuration Manager telepítéséhez.
 
 ---
 
@@ -128,7 +128,7 @@ A kapcsolati sztringekkel kapcsolatos további információkért lásd: [Az Azur
 > [!NOTE]
 > A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a tárfiók kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a kulcs biztonsága sérült, az Azure portál segítségével generálja újra.
 
-A tárolási kapcsolati sztring egy konfigurációs fájlban tartható fenn a legjobban. A kapcsolódási karakterlánc konfigurálásához nyissa meg az *app. config* fájlt megoldáskezelő a Visual Studióban. Adja hozzá az alábbi `\<appSettings\>` elem tartalmát. Cserélje le a *-karakterláncot* a Storage-fiókból másolt értékre a portálon:
+A tárolási kapcsolati sztring egy konfigurációs fájlban tartható fenn a legjobban. A kapcsolódási karakterlánc konfigurálásához nyissa meg a *app.config* fájlt megoldáskezelő a Visual Studióban. Adja hozzá az alábbi `\<appSettings\>` elem tartalmát. Cserélje le a *-karakterláncot* a Storage-fiókból másolt értékre a portálon:
 
 ```xml
 <configuration>
@@ -489,13 +489,13 @@ queue.Delete();
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről is.
 
 - A Queue szolgáltatás elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
   - [A Storage ügyféloldali kódtára a .NET-hez – referencia](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [REST API-referencia](https://msdn.microsoft.com/library/azure/dd179355)
+  - [REST API referenciája](https://msdn.microsoft.com/library/azure/dd179355)
 - Megtudhatja, hogyan egyszerűsítheti az Azure Storage-ban az [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)használatával írt kódot.
 - Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
   - [Get started with Azure Table Storage using .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel) a strukturált adatok tárolásához.

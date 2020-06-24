@@ -5,15 +5,15 @@ description: Ez a cikk bemutatja, hogyan konfigurálhatja a terheléselosztást 
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 5fd68f4559420ca688b3f4d6f6d66ee52db5191e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd429ee5fc5564c55e6a9c758e1c53e821060f0e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74225443"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809530"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-azure-powershell"></a>Terheléselosztás és kimenő szabályok konfigurálása a standard Load Balancerban Azure PowerShell használatával
 
@@ -152,7 +152,7 @@ New-AzLoadBalancer -Name lb -Sku Standard -ResourceGroupName myresourcegroupoutb
 
 Ezen a ponton továbbra is hozzáadhatja a virtuális gépeket a *bepoolinbound* és a *bepooloutbound* háttérbeli készletekhez, ha frissíti a megfelelő hálózati adapterek erőforrásainak IP-konfigurációját. Frissítse az erőforrás-konfigurációt a [Add-AzNetworkInterfaceIpConfig](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)használatával.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az erőforráscsoport, a terheléselosztó és a kapcsolódó erőforrások használatára, eltávolíthatja őket a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.7.0)használatával.
 

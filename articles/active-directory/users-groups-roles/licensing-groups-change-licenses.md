@@ -8,7 +8,7 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47546ae5ae964d1ed915ee42b1a2cafec58a805a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025909"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727636"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Felhasználóra vagy csoportra vonatkozó licenc-hozzárendelések módosítása Azure Active Directory
 
@@ -46,7 +46,7 @@ A licenc-hozzárendelések frissítése előtt fontos ellenőrizni, hogy egyes f
 Ha úgy látja, hogy egyes jelölőnégyzetek nem érhetők el, a **licenc-hozzárendelések frissítése** oldalon láthatja azokat a szolgáltatásokat, amelyek nem módosíthatók, mert örökölnek egy csoporttól származó licenccel.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure ad-szervezetben található licenc-rendszergazdai fiók használatával.
-1. Válassza ki **Azure Active Directory** > **felhasználók**elemet, majd nyissa meg egy felhasználó **profil** lapját.
+1. Válassza ki **Azure Active Directory**  >  **felhasználók**elemet, majd nyissa meg egy felhasználó **profil** lapját.
 1. Válassza a **licencek**lehetőséget.
 1. Válassza a **hozzárendelések** lehetőséget a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez. A **hozzárendelések** lap a licenc-hozzárendelési ütközések feloldására szolgál.
 1. Jelölje be az Office 366 E3 jelölőnégyzetét, és győződjön meg arról, hogy legalább a felhasználóhoz rendelt összes E1 szolgáltatás ki van választva.
@@ -61,7 +61,7 @@ Az Azure AD az új licenceket alkalmazza, és egyszerre eltávolítja a régi li
 ## <a name="change-group-license-assignments"></a>Csoport licenc-hozzárendeléseinek módosítása
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure ad-szervezetben található licenc-rendszergazdai fiók használatával.
-1. Válassza ki **Azure Active Directory** > **csoportokat**, majd nyissa meg egy csoport **Áttekintés** lapját.
+1. Válassza ki **Azure Active Directory**  >  **csoportokat**, majd nyissa meg egy csoport **Áttekintés** lapját.
 1. Válassza a **licencek**lehetőséget.
 1. Kattintson a **hozzárendelések** parancsra a felhasználó vagy csoport licenc-hozzárendelésének szerkesztéséhez.
 1. Jelölje be az Office 366 E3 jelölőnégyzetét. A szolgáltatás folytonosságának fenntartása érdekében válassza ki az összes olyan E1-szolgáltatást, amely már hozzá van rendelve a felhasználóhoz.

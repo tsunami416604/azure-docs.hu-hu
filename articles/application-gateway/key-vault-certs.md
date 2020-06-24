@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan integrálhatja az Azure Application Gatewayt a 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: a214dae7c80cbc520fc6aff5a492466a77261167
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743693"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255364"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-lezárás Key Vault tanúsítványokkal
 
@@ -52,7 +52,7 @@ Application Gateway integrációja Key Vault megköveteli a három lépésből �
    > [!NOTE]
    > Ha az Application Gateway-t az Azure CLI vagy a PowerShell használatával, vagy a Azure Portal központilag telepített Azure-alkalmazáson keresztül telepíti, akkor az SSL-tanúsítványt Base64 kódolású PFX-fájlként tárolja a Key vaultban. Az üzembe helyezés során végre kell hajtania a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/templates/key-vault-parameter.md)megadásához című témakör lépéseit. 
    >
-   > Különösen fontos, hogy a `enabledForTemplateDeployment` `true`következőre legyen beállítva:. Lehet, hogy a tanúsítvány jelszavas vagy jelszóval van elvégezve. Jelszóval rendelkező tanúsítvány esetén a következő példa egy alkalmazás-átjáróhoz tartozó ARM- `sslCertificates` `properties` sablon konfigurációjának lehetséges konfigurációját jeleníti meg. A `appGatewaySSLCertificateData` és `appGatewaySSLCertificatePassword` a értékeit a Key vaultban tekintjük át a következő szakaszban leírtak szerint: [Reference Secrets with Dynamic ID](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id). Kövesse a visszafelé lévő `parameters('secretName')` hivatkozásokat, hogy megtudja, hogyan történik a keresés. Ha a tanúsítvány jelszavas, hagyja ki a `password` bejegyzést.
+   > Különösen fontos, hogy a következőre legyen beállítva: `enabledForTemplateDeployment` `true` . Lehet, hogy a tanúsítvány jelszavas vagy jelszóval van elvégezve. Jelszóval rendelkező tanúsítvány esetén a következő példa egy `sslCertificates` `properties` alkalmazás-átjáróhoz tartozó ARM-sablon konfigurációjának lehetséges konfigurációját jeleníti meg. A és a értékeit a `appGatewaySSLCertificateData` `appGatewaySSLCertificatePassword` Key vaultban tekintjük át a következő szakaszban leírtak szerint: [Reference Secrets with Dynamic ID](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id). Kövesse a visszafelé lévő hivatkozásokat `parameters('secretName')` , hogy megtudja, hogyan történik a keresés. Ha a tanúsítvány jelszavas, hagyja ki a `password` bejegyzést.
    >   
    > ```
    > "sslCertificates": [

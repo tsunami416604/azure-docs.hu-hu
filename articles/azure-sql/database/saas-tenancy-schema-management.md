@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 02b7b7b78e2a5933d9e9cc5931ca2cd2a46a6e9e
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 60c2330578ef4b8e3e40dc3e37a0c8b1eb291e2f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449294"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255551"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>A sémák kezelése SaaS-alkalmazásokban az adatbázis-bérlői minta használatával Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,10 +62,10 @@ Az alkalmazás forráskódja és a felügyeleti szkriptek a [WingtipTicketsSaaS-
 
 Ehhez az oktatóanyaghoz a PowerShell használatával kell létrehoznia a feladatokhoz tartozó ügynököt és a hozzá tartozó feladatkártya-adatbázist. A feladatok ügynökének adatbázisában a feladatütemezés, a feladatok állapota és az előzmények szerepelnek. A feladat-ügynök és az adatbázis létrehozása után azonnal létrehozhatja és figyelheti a feladatokat.
 
-1. **A POWERSHELL ISE-ben**nyissa meg a... \\ Learning-modulok \\ séma-felügyeleti \\ *demo-SchemaManagement. ps1*.
+1. **A POWERSHELL ISE-ben**nyissa meg a... \\ Tanulási modulok – \\ séma-felügyeleti \\ *Demo-SchemaManagement.ps1*.
 1. A szkript futtatásához nyomja le az **F5** billentyűt.
 
-A *demo-SchemaManagement. ps1* parancsfájl meghívja a *Deploy-SchemaManagement. ps1* parancsfájlt egy *osagent* nevű SQL-adatbázis létrehozásához a Catalog kiszolgálón. Ezután létrehozza a feladatot, amely az adatbázis paraméterként való használatával jön létre.
+A *Demo-SchemaManagement.ps1* parancsfájl meghívja a *Deploy-SchemaManagement.ps1* parancsfájlt, hogy létrehozzon egy *osagent* nevű adatbázist a katalógus-kiszolgálón. Ezután létrehozza a feladatot, amely az adatbázis paraméterként való használatával jön létre.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Feladat létrehozása új referenciaadatok bevezetéséhez az összes bérlőn
 
@@ -113,7 +113,7 @@ Figyelje meg a következő elemeket a _Sémakezelés. SQL_ parancsfájlban:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

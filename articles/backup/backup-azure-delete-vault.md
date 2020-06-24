@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Azure Backup Recovery Services-tárolót.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 07e6a0297d131f4a0b7dc93817d9abcf2ae109d2
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 946b199119ee9e03ec9348c4e180f8e4c9b9a776
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447747"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751860"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -361,7 +361,7 @@ További információ a ARMClient parancsról: [ARMCLIENT readme](https://github
 
 3. Győződjön meg arról, hogy a Azure Portal törli a tárolót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További tudnivalók a Recovery Services](backup-azure-recovery-services-vault-overview.md) 
  -tárolók Tudnivalók [a Recovery Services-tárolók monitorozásáról és kezeléséről](backup-azure-manage-windows-server.md)

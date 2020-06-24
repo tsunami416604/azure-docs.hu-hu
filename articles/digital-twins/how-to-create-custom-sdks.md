@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261b288154dddacf91f3cb3ba6dec99e3a3534cc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 3d6fa1660f5204137dbebeae36f6d06852d88412
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613158"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725800"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-with-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest szolgáltatással
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Jelenleg csak az Azure Digital Twins API-kkal való interakcióhoz közzétett adatközpont-SDK van a .NET (C#) rendszerhez. A .NET SDK-val és az API-kkal kapcsolatban általában a [útmutató: az Azure digitális Twins API-k és SDK](how-to-use-apis-sdks.md)-k használata című témakörben olvashat. Ha más nyelven dolgozik, ez a cikk bemutatja, hogyan hozhatja ki saját SDK-t az Ön által választott nyelven az autorest használatával.
 
@@ -22,10 +25,10 @@ Jelenleg csak az Azure Digital Twins API-kkal való interakcióhoz közzétett a
 
 Az SDK létrehozásához a következőkre lesz szüksége:
 * Az [autorest](https://github.com/Azure/autorest), a Version 2.0.4413 (3-as verzió jelenleg nem támogatott)
-* A [Node. js](https://nodejs.org) az autorest előfeltétele
+* [Node.js](https://nodejs.org) az autorest előfeltétele
 * Az [Azure digitális Twins OpenAPI (hencegés) fájlja](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview/digitaltwins.json)
 
-Ha a Node. js telepítve van, futtathatja ezt a parancsot, hogy ellenőrizze, van-e telepítve az autorest megfelelő verziója:
+Ha Node.js van telepítve, futtathatja ezt a parancsot, hogy ellenőrizze, van-e telepítve az autorest megfelelő verziója:
 ```cmd/sh
 npm install -g autorest@2.0.4413
 ```
@@ -179,7 +182,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Végigvezeti egy ügyfélalkalmazás létrehozásának lépésein, ahol az SDK-t használhatja:
 * [Oktatóanyag: ügyfélalkalmazás kódolása](tutorial-code.md)

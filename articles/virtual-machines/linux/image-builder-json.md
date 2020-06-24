@@ -1,19 +1,19 @@
 ---
 title: Azure rendszerkép-készítő sablon létrehozása (előzetes verzió)
 description: Megtudhatja, hogyan hozhat létre sablont az Azure rendszerkép-készítővel való használatra.
-author: danis
+author: danielsollondon
 ms.author: danis
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779346"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263313"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -29,7 +29,7 @@ Ez az alapszintű sablon formátuma:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -88,7 +88,7 @@ Alapértelmezés szerint a rendszerkép-készítő egy "Standard_D1_v2" Build vi
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-Alapértelmezés szerint a képszerkesztő nem változtatja meg a rendszerkép méretét, a méretet a forrás rendszerképből fogja használni. Megnövelheti az operációsrendszer-lemez méretét (Win és Linux), ez nem kötelező, és a 0 érték azt jelenti, hogy a forrás képével megegyező méret marad. 
+Alapértelmezés szerint a képszerkesztő nem változtatja meg a rendszerkép méretét, a méretet a forrás rendszerképből fogja használni. **Csak** az operációsrendszer-lemez (Win és Linux) méretének növelésére van lehetőség, ez nem kötelező, és a 0 érték azt jelenti, hogy a forrás képével megegyező méret marad. Az operációsrendszer-lemez mérete nem csökkenthető a forrás rendszerképének méreténél kisebb méretre.
 
 ```json
  {
@@ -521,7 +521,7 @@ A rendszerkép kimenete felügyelt rendszerkép-erőforrás lesz.
  
 Elosztás tulajdonságai:
 - **típus** – managedImage 
-- **imageId** – a célként megadott rendszerkép erőforrás-azonosítója, a várt formátum:/subscriptions/ \< subscriptionId>/Resourcegroups/ \< destinationResourceGroupName>/Providers/Microsoft.Compute/images/ \< imageName>
+- **imageId** – a célként megadott rendszerkép erőforrás-azonosítója, a várt formátum:/Subscriptions/ \<subscriptionId> /resourceGroups/ \<destinationResourceGroupName> /providers/Microsoft.Compute/images/\<imageName>
 - **hely** – a felügyelt rendszerkép helye.  
 - **runOutputName** – a terjesztés azonosítására szolgáló egyedi név.  
 - **artifactTags** – opcionális felhasználó által megadott kulcs érték párok címkéi.
@@ -561,7 +561,7 @@ A lemezkép-katalógusba való terjesztés előtt létre kell hoznia egy gyűjte
 Megosztott képtárak tulajdonságainak terjesztése:
 
 - **típus** – sharedImage  
-- **galleryImageId** – a megosztott rendszerkép-Gyűjtemény azonosítója. A formátum:/Subscriptions/ \< subscriptionId>/Resourcegroups/ \< resourceGroupName>/providers/microsoft.compute/galleries/ \< sharedImageGalleryName>/images/ \< imageGalleryName>.
+- **galleryImageId** – a megosztott rendszerkép-Gyűjtemény azonosítója. A formátum:/Subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.Compute/Galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> .
 - **runOutputName** – a terjesztés azonosítására szolgáló egyedi név.  
 - **artifactTags** – opcionális felhasználó által megadott kulcs érték párok címkéi.
 - **replicationRegions** – a replikálási régiók tömbje. Az egyik régió az a régió, amelyben a katalógus üzembe van helyezve.

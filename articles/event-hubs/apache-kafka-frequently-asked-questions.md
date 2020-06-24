@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2020
+ms.date: 06/23/2020
 ms.author: shvija
-ms.openlocfilehash: 0186b90e1d75c5dba6e1ca26e4ba079a3456cea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd4306fd4a3b6dd308b0d62945ae264dfb6ce8ff
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606742"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298327"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Gyakori kérdések – Event Hubs Apache Kafka 
 Ez a cikk a Apache Kafka Event Hubs való áttelepítésével kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz.
@@ -39,7 +39,7 @@ Mi a különbség az Event hub fogyasztói csoport és a Kafka fogyasztói csopo
 
 - Ezek önmagukban jönnek létre.  A Kafka-csoportok a Kafka fogyasztói csoport API-jai segítségével kezelhetők.
 - Az eltolásokat a Event Hubs szolgáltatásban tárolhatják.
-- Ezek kulcsként használatosak a mi valójában egy Eltolásos kulcs-érték tároló. A `group.id` és `topic-partition`a rendszer egyedi párjaként egy eltolást tárolunk az Azure Storage-ban (3x-os replikálás). Event Hubs a felhasználók nem számítanak fel további tárolási költséget a Kafka-eltolások tárolásához. Az eltolások a Kafka fogyasztói csoport API-manipulálható keresztül érhetők el, de az Eltolásos tárolási *fiókok* nem közvetlenül láthatók vagy manipulálható az Event hub felhasználói számára.  
+- Ezek kulcsként használatosak a mi valójában egy Eltolásos kulcs-érték tároló. A és a rendszer egyedi párjaként `group.id` `topic-partition` egy eltolást tárolunk az Azure Storage-ban (3x-os replikálás). Event Hubs a felhasználók nem számítanak fel további tárolási költséget a Kafka-eltolások tárolásához. Az eltolások a Kafka fogyasztói csoport API-manipulálható keresztül érhetők el, de az Eltolásos tárolási *fiókok* nem közvetlenül láthatók vagy manipulálható az Event hub felhasználói számára.  
 - Egy névteret ölelnek fel. Ha ugyanazt a Kafka-csoportnevet használja több alkalmazáshoz több témakörben, az azt jelenti, hogy minden alkalmazás és a Kafka-ügyfél újra lesz egyenlítve, amikor csak egyetlen alkalmazásnak kell kiegyensúlyoznia.  Adja meg a csoportok nevét okosan.
 - Teljesen eltérnek Event Hubs fogyasztói csoportoktól. **Nincs** szükség a (z) "$default" használatára, és nem kell aggódnia, hogy a Kafka-ügyfelek AMQP-munkaterhelésekkel ütköznek.
 - Nem láthatók a Azure Portalban. A fogyasztói csoport adatai a Kafka API-kon keresztül érhetők el.

@@ -3,15 +3,15 @@ title: Tároló átviteli sebességének kiosztása Azure Cosmos DB-ben
 description: Megtudhatja, hogyan helyezhet üzembe átviteli sebességet a Azure Cosmos DB tároló szintjén a Azure Portal, a CLI, a PowerShell és a különböző egyéb SDK-k használatával.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6ade9baaf7dc125bac6738b44134ee496b8a2be4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: e6b4126d3d1c2a7413a43779e0da0cd3f5347a5a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265930"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263703"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Standard (manuális) átviteli sebesség kiépítése egy Azure Cosmos-tárolón
 
@@ -29,9 +29,9 @@ Ez a cikk azt ismerteti, hogyan lehet szabványos (manuális) átviteli sebessé
    * Adja meg a tároló (vagy a tábla vagy a gráf) AZONOSÍTÓját.
    * Adja meg a partíciós kulcs értékét (például: `/userid` ).
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
-   * Kattintson az **OK** gombra.
+   * Válassza az **OK** lehetőséget.
 
-    ![Képernyőkép a Adatkezelőről, új gyűjtemény kiemelve](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png" alt-text="Képernyőkép a Adatkezelőről, új gyűjtemény kiemelve":::
 
 ## <a name="azure-cli-or-powershell"></a>Azure CLI vagy PowerShell
 

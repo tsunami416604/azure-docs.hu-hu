@@ -4,15 +4,15 @@ description: Ez a cikk egy minta konfigurációt biztosít a Cisco ASA-eszközö
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75778082"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986090"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Példa konfiguráció: Cisco ASA-eszköz (IKEv2/nincs BGP)
 Ez a cikk példákat tartalmaz a Cisco adaptív biztonsági berendezés (ASA) eszközeinek Azure VPN Gateway-hez való csatlakoztatására. Ez a példa a IKEv2 rendszert futtató Cisco ASA-eszközökre vonatkozik a Border Gateway Protocol (BGP) nélkül. 
@@ -27,7 +27,7 @@ Ez a cikk példákat tartalmaz a Cisco adaptív biztonsági berendezés (ASA) es
 | Tesztelt modell           | ASA 5505                          |
 | Tesztelt verzió         | 9,2                               |
 | IKE-verzió            | IKEv2                             |
-| BGP                    | Nem                                |
+| BGP                    | No                                |
 | Azure VPN Gateway típusa | Route-alapú VPN-átjáró           |
 |                        |                                   |
 
@@ -293,7 +293,7 @@ Hibakeresési célokra használja az alábbi ASA-parancsokat:
     ```
     show run
     ```
-    Alparancsok használata `show` az eszköz konfigurációjának bizonyos részeinek listázásához, például:
+    `show`Alparancsok használata az eszköz konfigurációjának bizonyos részeinek listázásához, például:
     ```
     show run crypto
     show run access-list

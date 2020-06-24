@@ -11,18 +11,18 @@ ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9a575462d09b64bd7a5d32c9cd5cc0a603e84694
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: ced76b73a8a08e6886cf0cef04c74a82d05c75dd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417769"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708127"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Statikus magánhálózati IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
 
@@ -99,7 +99,7 @@ A következő lépéseket a helyi számítógépről vagy a Azure Cloud Shell ha
 > [!IMPORTANT]
 > A virtuális gép internetről való eléréséhez nyilvános IP-címet kell hozzárendelni a virtuális géphez. A dinamikus magánhálózati IP-címek hozzárendelését is módosíthatja statikus hozzárendelésre. További információ: [IP-címek hozzáadása vagy módosítása](virtual-network-network-interface-addresses.md). Emellett azt javasoljuk, hogy korlátozza a virtuális gép hálózati forgalmát úgy, hogy hálózati biztonsági csoportot társít a hálózati adapterhez, az alhálózatot, amelyet a hálózati adaptert vagy mindkettőt létrehozott. Részletekért lásd: [hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 
@@ -107,7 +107,7 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információk a [magánhálózati IP-címekről](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) és a [statikus magánhálózati IP-](virtual-network-network-interface-addresses.md#add-ip-addresses) címek egy Azure-beli virtuális géphez való hozzárendeléséről.
 - További információ a [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a [Windows rendszerű](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek létrehozásáról.
