@@ -4,18 +4,18 @@ description: Ismerje meg, hogy milyen hatással van a Google biztonsági és ada
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
-ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.topic: conceptual
+ms.date: 06/05/2020
+ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628708"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194972"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára Azure Logic Apps
 
-**2020. május 1-től**a Google [adatbiztonsági és adatvédelmi szabályzatai](https://www.blog.google/technology/safety-security/project-strobe/) miatti változások befolyásolhatják a [Gmail-összekötőt](https://docs.microsoft.com/connectors/gmail/)használó logikai alkalmazás-munkafolyamatokat. Ha a Logic apps a Gmail-összekötőt egy Gmail-beli felhasználói fiókkal (a vagy @gmail.com @googlemail.coma-val végződő e-mail-címmel) használja, a Logic apps csak meghatározott [Google által jóváhagyott eseményindítókat, műveleteket és összekötőket](#approved-connectors)használhat. 
+**2020. május 1-től**a Google [adatbiztonsági és adatvédelmi szabályzatai](https://www.blog.google/technology/safety-security/project-strobe/) miatti változások befolyásolhatják a [Gmail-összekötőt](https://docs.microsoft.com/connectors/gmail/)használó logikai alkalmazás-munkafolyamatokat. Ha a Logic apps a Gmail-összekötőt egy Gmail-beli felhasználói fiókkal (a vagy a-val végződő e-mail-címmel @gmail.com @googlemail.com ) használja, a Logic apps csak meghatározott [Google által jóváhagyott eseményindítókat, műveleteket és összekötőket](#approved-connectors)használhat.
 
 > [!NOTE]
 > Ha a Logic apps a Gmail-összekötőt a G-Suite üzleti fiókkal (az egyéni tartománnyal rendelkező e-mail-címmel) használja, akkor a logikai alkalmazások nem érintik, és nem korlátozzák a Gmail-összekötő használatát.
@@ -36,11 +36,31 @@ Ebben a szabályzatban, ha egy Gmail fogyasztói fiókot használ, akkor a Gmail
 
 * Beépített eseményindítók és műveletek Logic Apps: batch, Control, adatműveletek, dátum idő, lapos fájl, folyadék, kérelem, ütemterv, változók és XML
 
+  A Google által nem jóváhagyott beépített eseményindítók és műveletek (például HTTP, Azure Functions, Azure Logic Apps és mások) nem felelnek meg a logikai alkalmazásnak a Gmail-összekötővel, mert az alkalmazás bárhonnan küldhet vagy fogadhat adatokból.
+
 * Google Services: gmail, Google Naptár, Google Contacts, Google Drive, Google Sheets és Google feladatok
 
 * Jóváhagyott Microsoft-szolgáltatások: Dynamics 365, Excel online, Microsoft Teams, Office 365, OneDrive és SharePoint Online
 
 * Ügyfelek által felügyelt adatforrásokhoz kapcsolódó összekötők: FTP, RSS, SFTP, SMTP és SQL Server
+
+## <a name="non-compliant-examples"></a>Nem megfelelő példák
+
+Íme néhány példa, amely a Gmail-összekötőt a Google által nem jóváhagyott beépített eseményindítókkal és műveletekkel vagy felügyelt összekötővel használja:
+
+* Ez a logikai alkalmazás a Gmail-összekötőt használja a HTTP beépített triggerrel:
+
+  ![Nem megfelelő logikai alkalmazás – 1. példa](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-1.png)
+  
+  A logikai alkalmazás a Google Calendar Connectort is használja, amely jóvá van hagyva.
+
+* Ez a logikai alkalmazás a Gmail-összekötőt használja az Azure Blob Storage-összekötővel:
+
+  ![Nem megfelelő logikai alkalmazás – 2. példa](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-2.png)
+
+* Ez a logikai alkalmazás a Gmail-összekötőt használja a Twitter-összekötővel:
+
+  ![Nem megfelelő logikai alkalmazás – 3. példa](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
 A legfrissebb információkért tekintse [meg a Gmail-összekötő műszaki útmutatójának dokumentációját](https://docs.microsoft.com/connectors/gmail/).
 
@@ -70,7 +90,7 @@ Az ügyfél-azonosító és az ügyfél titkos kódjának a Gmail-triggerben vag
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Ha új Gmail-triggert vagy-műveletet ad hozzá, és egy teljesen új kapcsolattal hoz létre, folytassa a következő lépéssel. Ellenkező esetben a Gmail-triggerben vagy a műveletben válassza a **kapcsolat** > **hozzáadása új**, például a következőt:
+1. Ha új Gmail-triggert vagy-műveletet ad hozzá, és egy teljesen új kapcsolattal hoz létre, folytassa a következő lépéssel. Ellenkező esetben a Gmail-triggerben vagy a műveletben válassza a **kapcsolat**  >  **hozzáadása új**, például a következőt:
 
    ![Válassza a "kapcsolatok módosítása" > "új hozzáadása" lehetőséget.](./media/connectors-google-data-security-privacy-policy/change-gmail-connection.png)
 

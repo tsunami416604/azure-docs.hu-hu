@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 359837ef5d202cd0e98a6c7cf429a34a38fb7d70
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580600"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052169"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Idősorozat-modell Azure Time Series Insights előzetes verzióban
 
@@ -100,9 +100,9 @@ A példányokat a **timeSeriesId**, a **typeId**, a **Name**, a **description**,
 
 | Tulajdonság | Leírás |
 | --- | ---|
-| timeSeriesId | Az idősorozathoz tartozó UUID, amelyhez a példány társítva van. |
-| typeId | Az idősorozat-modell UUID-azonosítója, amelyhez a példány társítva van. Alapértelmezés szerint az összes felderített új példány egy alapértelmezett típushoz van társítva.
-| név | A **Name** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a **név** nem érhető el, az alapértelmezett érték a **timeSeriesId**. Ha megadja a nevet, a **timeSeriesId** továbbra [is elérhető.](time-series-insights-update-explorer.md#4-time-series-well) |
+| timeSeriesId | Azon idősorozat egyedi azonosítója, amelyhez a példány társítva van. A legtöbb esetben a példányokat egyedileg azonosítják egy olyan tulajdonság, mint például az deviceId vagy a assetId. Bizonyos esetekben egy összetettebb összetett azonosító is használható, amely legfeljebb 3 tulajdonságot egyesít. |
+| typeId | Az idősorozat-modell típusának kis-és nagybetűket megkülönböztető egyedi karakterlánc-azonosítója, amelyhez a példány társítva van. Alapértelmezés szerint az összes felderített új példány egy alapértelmezett típushoz van társítva.
+| name | A **Name** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a **név** nem érhető el, az alapértelmezett érték a **timeSeriesId**. Ha megadja a nevet, a **timeSeriesId** továbbra [is elérhető.](time-series-insights-update-explorer.md#4-time-series-well) |
 | leírás | A példány szöveges leírása. |
 | hierarchyIds | Meghatározza, hogy mely hierarchiák tartoznak a példányhoz. |
 | instanceFields | Egy példány tulajdonságai és a példányt definiáló statikus adatmennyiség. A hierarchia vagy a hierarchián kívüli tulajdonságok értékeit határozzák meg, miközben a keresési műveletek végrehajtásához is támogatják az indexelést. |
@@ -149,7 +149,7 @@ A hierarchiákat a hierarchia **azonosítója**, **neve**és **forrása**határo
 | Tulajdonság | Leírás |
 | ---| ---|
 | id | A hierarchia egyedi azonosítója, amely például egy példány definiálásakor használatos. |
-| név | A hierarchia nevének megadására szolgáló sztring. |
+| name | A hierarchia nevének megadására szolgáló sztring. |
 | source | Meghatározza a szervezeti hierarchiát vagy elérési utat, amely a felhasználók által létrehozandó hierarchia legfelső szintű szülő-gyermek sorrendje. A szülő-gyermek tulajdonságok hozzárendelésének mezői. |
 
 A hierarchia a következőképpen jelenik meg a JSON-ben:
@@ -183,15 +183,15 @@ A hierarchia a következőképpen jelenik meg a JSON-ben:
 
 Az előző JSON-példában:
 
-* `Location`szülővel `states` és gyermekgel `cities`rendelkező hierarchia definiálása. Mindegyiknek `location` több `states`is lehet, ami viszont több `cities`is lehet.
-* `ManufactureDate`szülővel `year` és gyermekgel `month`rendelkező hierarchia definiálása. Mindegyiknek `ManufactureDate` több `years`is lehet, ami viszont több `months`is lehet.
+* `Location`szülővel és gyermekgel rendelkező hierarchia definiálása `states` `cities` . Mindegyiknek `location` több is lehet `states` , ami viszont több is lehet `cities` .
+* `ManufactureDate`szülővel és gyermekgel rendelkező hierarchia definiálása `year` `month` . Mindegyiknek `ManufactureDate` több is lehet `years` , ami viszont több is lehet `months` .
 
 > [!TIP]
 > Time Series Insights instance API és a szifilisz támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Példa hierarchia
 
-Vegyünk például egy olyan **H1** példát `building`, ahol `floor`a H1 `room` hierarchia, a és a **instanceFieldNames** definíciójának részeként:
+Vegyünk például egy olyan példát, ahol a **H1** hierarchia `building` , a és a `floor` `room` **instanceFieldNames** definíciójának részeként:
 
 ```JSON
 {
@@ -240,8 +240,8 @@ Az idősorozat-modell típusait **azonosító**, **név**, **Leírás**és **vá
 
 | Tulajdonság | Leírás |
 | ---| ---|
-| id | A típus UUID azonosítója. |
-| név | A típus nevének megadására szolgáló sztring. |
+| id | A kis-és nagybetűket megkülönböztető egyedi karakterlánc-azonosító a típushoz. |
+| name | A típus nevének megadására szolgáló sztring. |
 | leírás | A típushoz tartozó karakterlánc leírása. |
 | változók | Adja meg a típushoz társított változókat. |
 

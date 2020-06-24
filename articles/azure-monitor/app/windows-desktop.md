@@ -2,22 +2,22 @@
 title: Windowsos asztali alkalmazások használatának és teljesítményének figyelése
 description: A windowsos asztali alkalmazások használatát és teljesítményét az Application Insights segítségével elemezheti.
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537389"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718784"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
 A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is kihasználhatják az Application Insights előnyeit. Az egyetlen korlát, hogy [engedélyezni kell a kommunikációt](../../azure-monitor/app/ip-addresses.md) az Application Insights szolgáltatással. Az univerzális Windows-platformra (UWP) épülő alkalmazásokhoz a [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md) használatát javasoljuk.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Klasszikus Windows-alkalmazásból származó telemetriai adatok küldése az Application Insightsba
-1. [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ) az [Azure Portalon](https://portal.azure.com). Az alkalmazás típusánál válassza az ASP.NET-alkalmazás lehetőséget.
-2. Végezze el a kialakítási kulcs másolását. A kulcs az imént létrehozott új erőforrás Alapvető szolgáltatások legördülő menüjében található. 
-3. A Visual Studióban szerkessze az alkalmazási projekt NuGet-csomagjait, és vegye fel a Microsoft.ApplicationInsights.WindowsServer csomagot. (Vagy válassza a Microsoft.ApplicationInsights csomagot, ha csak az API-ra van szüksége a normál telemetriai adatgyűjtő modulok nélkül.)
+1. [Hozzon létre egy Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ) az [Azure Portalon](https://portal.azure.com). 
+2. Végezze el a kialakítási kulcs másolását.
+3. A Visual Studióban szerkessze az alkalmazási projekt NuGet-csomagjait, és vegye fel a Microsoft.ApplicationInsights.WindowsServer csomagot. (Vagy válassza a Microsoft. ApplicationInsights lehetőséget, ha csak az alap API-t szeretné használni, a standard szintű telemetria-gyűjtési modulok nélkül.)
 4. Állítsa be a kialakítási kulcsot a kódban:
    
     `TelemetryConfiguration.Active.InstrumentationKey = "` *az Ön kulcsa* `";`
@@ -31,6 +31,7 @@ A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is ki
 6. Futtassa az alkalmazást, és tekintse meg a telemetria a Azure Portalban létrehozott erőforrásban.
 
 ## <a name="example-code"></a><a name="telemetry"></a>Mintakód
+
 ```csharp
 using Microsoft.ApplicationInsights;
 
@@ -70,7 +71,11 @@ using Microsoft.ApplicationInsights;
 
 ## <a name="override-storage-of-computer-name"></a>Számítógépnév tárolójának felülbírálása
 
-Alapértelmezés szerint ez az SDK összegyűjti és tárolja a rendszer-előállítók telemetria számítógép nevét. A gyűjtemény felülbírálásához telemetria inicializáló használata szükséges:
+Alapértelmezés szerint ez az SDK összegyűjti és tárolja a rendszer-előállítók telemetria számítógép nevét.
+
+A számítógép nevét a Application Insights [örökölt vállalati (csomóponton belüli) árképzési szinten](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) használják a belső számlázási célokra. Alapértelmezés szerint, ha telemetria inicializáló használ a felülbíráláshoz `telemetry.Context.Cloud.RoleInstance` , a rendszer külön tulajdonságot `ai.internal.nodeName` küld, amely továbbra is a számítógépnév értéket fogja tartalmazni. Ez az érték nem lesz tárolva a Application Insights telemetria, de belsőleg használatos a betöltéskor, hogy lehetővé váljon a visszamenőleges kompatibilitás az örökölt node-alapú számlázási modellel.
+
+Ha az [örökölt Enterprise (node) árképzési szinten](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) van, és egyszerűen csak a számítógépnév tárterületét szeretné felülbírálni, használjon egy telemetria inicializáló:
 
 **Az alábbi módon írhat egyéni TelemetryInitializer.**
 
@@ -84,16 +89,18 @@ namespace CustomInitializer.Telemetry
     {
         public void Initialize(ITelemetry telemetry)
         {
-            if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
+            if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleInstance))
             {
-                //set custom role name here, you can pass an empty string if needed.
+                // Set custom role name here. Providing an empty string will result
+                // in the computer name still be sent via this property.
                   telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance";
             }
         }
     }
 }
 ```
-Hozza létre az inicializálást `Program.cs` `Main()` az alábbi metódusban a kialakítási kulcs beállításával:
+
+Hozza létre az inicializálást az `Program.cs` `Main()` alábbi metódusban a kialakítási kulcs beállításával:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -103,8 +110,69 @@ Hozza létre az inicializálást `Program.cs` `Main()` az alábbi metódusban a 
         {
             TelemetryConfiguration.Active.InstrumentationKey = "{Instrumentation-key-here}";
             TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+            //...
         }
 ```
+
+## <a name="override-transmission-of-computer-name"></a>Számítógépnév átvitelének felülbírálása
+
+Ha nem az [örökölt Enterprise (node) árképzési](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) szinten található, és teljes mértékben meg szeretné akadályozni, hogy a számítógép nevét tartalmazó összes telemetria el lehessen juttatni, telemetria processzort kell használnia.
+
+### <a name="telemetry-processor"></a>Telemetria processzor
+
+```csharp
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
+
+
+namespace WindowsFormsApp2
+{
+    public class CustomTelemetryProcessor : ITelemetryProcessor
+    {
+        private readonly ITelemetryProcessor _next;
+
+        public CustomTelemetryProcessor(ITelemetryProcessor next)
+        {
+            _next = next;
+        }
+
+        public void Process(ITelemetry item)
+        {
+            if (item != null)
+            {
+                item.Context.Cloud.RoleInstance = string.Empty;
+            }
+
+            _next.Process(item);
+        }
+    }
+}
+```
+
+Hozza létre a telemetria processzort az `Program.cs` `Main()` alábbi metódusban a kialakítási kulcs beállításával:
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+
+namespace WindowsFormsApp2
+{
+    static class Program
+    {
+        static void Main()
+        {
+            TelemetryConfiguration.Active.InstrumentationKey = "{Instrumentation-key-here}";
+            var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+            builder.Use((next) => new CustomTelemetryProcessor(next));
+            builder.Build();
+            //...
+        }
+    }
+}
+
+```
+
+> [!NOTE]
+> Bár a fentiekben leírtak szerint technikailag használhatja a telemetria-processzort, még akkor is, ha az [örökölt Enterprise (node) díjszabási](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)szinten van, ez a túlszámlázás lehetséges lehetőségét eredményezi, mert a csomópontok díjszabása nem képes megfelelően megkülönböztetni a csomópontokat.
 
 ## <a name="next-steps"></a>További lépések
 * [Irányítópult létrehozása](../../azure-monitor/app/overview-dashboard.md)

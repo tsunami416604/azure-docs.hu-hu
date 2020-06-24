@@ -9,17 +9,17 @@ manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: cb101095aa95f9d41f7891bc3c18f7e5bfeb59db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29871f53e0f5accd0a6ec9487c43df902b67c980
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148102"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711068"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Több IP-cím társítása virtuális gépekhez az Azure CLI használatával
 
@@ -35,7 +35,7 @@ Az alábbi lépések elmagyarázzák, hogyan hozhat létre egy példaként több
 
 1. Ha még nincs telepítve, telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t.
 2. Hozzon létre egy nyilvános és titkos SSH-kulcspárt Linux rendszerű virtuális gépekhez az [SSH nyilvános és titkos kulcspár létrehozása Linux rendszerű virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakör lépéseinek végrehajtásával.
-3. A parancssorból jelentkezzen be a paranccsal `az login` , és válassza ki az Ön által használt előfizetést.
+3. A parancssorból jelentkezzen be a paranccsal, `az login` és válassza ki az Ön által használt előfizetést.
 4. Hozza létre a virtuális gépet egy Linux vagy Mac rendszerű számítógépen a következő parancsfájl végrehajtásával. A szkript létrehoz egy erőforráscsoportot, egy virtuális hálózatot (VNet), egy hálózati adaptert három IP-konfigurációval és egy virtuális GÉPET, amelyhez a két hálózati adapter csatlakozik. A hálózati adapternek, a nyilvános IP-címnek, a virtuális hálózatnak és a virtuálisgép-erőforrásoknak ugyanabban a helyen és előfizetésben kell lenniük. Bár az erőforrások nem mindegyikének ugyanabban az erőforráscsoporthoz kell lennie, a következő parancsfájlban.
 
 ```bash
@@ -157,7 +157,7 @@ az vm create \
 A virtuális gép 3 IP-konfigurációval rendelkező hálózati adapterrel való létrehozása mellett a szkript a következőt hozza létre:
 
 - Alapértelmezés szerint egy prémium szintű felügyelt lemez, de a létrehozandó lemez típusának más beállításai is vannak. A részletekért olvassa el a [Linux rendszerű virtuális gép létrehozása az Azure CLI használatával](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című cikket.
-- Egy virtuális hálózat, amely egy alhálózattal és két nyilvános IP-címmel rendelkezik. Azt is megteheti, hogy *meglévő* virtuális hálózatot, alhálózatot, hálózati adaptert vagy nyilvános IP-cím erőforrásokat használ. Ha szeretné megtudni, hogyan használhatja a meglévő hálózati erőforrásokat további erőforrások létrehozása helyett, `az vm create -h`írja be a következőt:.
+- Egy virtuális hálózat, amely egy alhálózattal és két nyilvános IP-címmel rendelkezik. Azt is megteheti, hogy *meglévő* virtuális hálózatot, alhálózatot, hálózati adaptert vagy nyilvános IP-cím erőforrásokat használ. Ha szeretné megtudni, hogyan használhatja a meglévő hálózati erőforrásokat további erőforrások létrehozása helyett, írja be a következőt: `az vm create -h` .
 
 A nyilvános IP-címekhez névleges díj vonatkozik. Ha többet szeretne megtudni az IP-címek díjszabásáról, olvassa el az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt. Az előfizetésben használható nyilvános IP-címek száma korlátozva van. A korlátozásokkal kapcsolatos további információkért olvassa el az [Azure korlátairól](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) szóló cikket.
 
@@ -169,7 +169,7 @@ Adja hozzá a magánhálózati IP-címeket a virtuális gép operációs rendsze
 
 A következő lépések végrehajtásával további magán-és nyilvános IP-címeket adhat hozzá egy meglévő Azure hálózati adapterhez. A példák a jelen cikkben ismertetett [forgatókönyvre](#scenario) épülnek.
 
-1. Nyisson meg egy parancssort, és hajtsa végre a szakasz további lépéseit egyetlen munkameneten belül. Ha még nincs telepítve és konfigurálva az Azure CLI, hajtsa végre az [Azure CLI telepítésének](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) lépéseit, és jelentkezzen be az Azure- `az-login` fiókjába a paranccsal.
+1. Nyisson meg egy parancssort, és hajtsa végre a szakasz további lépéseit egyetlen munkameneten belül. Ha még nincs telepítve és konfigurálva az Azure CLI, hajtsa végre az [Azure CLI telepítésének](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) lépéseit, és jelentkezzen be az Azure-fiókjába a `az-login` paranccsal.
 
 2. A követelmények alapján végezze el a következő részekben ismertetett lépéseket:
 

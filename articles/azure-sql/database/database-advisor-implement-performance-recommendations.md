@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 14f304e3846cab25691da347732de50924356540
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048874"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254939"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>A Azure SQL Database teljesítményére vonatkozó javaslatok Database Advisor
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ A Azure SQL Databaseban elérhető teljesítmény-javaslati lehetőségek a köv
 | **Tárgymutató-javaslatok létrehozása** – olyan indexek létrehozását javasolja, amelyek javíthatják a számítási feladatok teljesítményét. | Igen | Nem |
 | A **drop index ajánlásai** – a redundáns és ismétlődő indexek napi eltávolítását javasolja, kivéve azokat az egyedi indexeket és indexeket, amelyeket hosszú ideje nem használtak (>90 nap). Vegye figyelembe, hogy ez a beállítás nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken. | Igen | Nem |
 | **Parametrizálja-lekérdezések ajánlásai (előzetes verzió)** – a kényszerített paraméterezés ajánlja olyan esetekben, amikor egy vagy több olyan lekérdezéssel rendelkezik, amely állandóan újrafordításra kerül, de ugyanazzal a lekérdezés-végrehajtási tervvel fejeződik be. | Igen | Nem |
-| **Séma problémáinak javítása javaslatok (előzetes verzió)** – a séma javítására vonatkozó javaslatok akkor jelennek meg, ha Azure SQL Database ÉSZLELI az SQL-adatbázison futó séma-alapú SQL-hibák számát. A Microsoft jelenleg "a séma hibájának javítása" javaslatok elavult. | Igen | Nem |
+| A **séma problémáinak javítása javaslatok (előzetes verzió)** – a séma javítására vonatkozó javaslatok akkor jelennek meg, ha Azure SQL Database észleli az adatbázison előforduló séma-alapú SQL-hibák számát. A Microsoft jelenleg "a séma hibájának javítása" javaslatok elavult. | Igen | Nem |
 
 ![Teljesítménnyel kapcsolatos javaslatok a Azure SQL Database](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 
@@ -97,11 +97,11 @@ A javaslat alkalmazása után a kényszerített paraméterezés perceken belül 
 > [!IMPORTANT]
 > A Microsoft jelenleg "a séma hibájának javítása" javaslatok elavult. Javasoljuk, hogy az adatbázis teljesítményével kapcsolatos problémák figyeléséhez [Intelligent Insights](intelligent-insights-overview.md) használjon, beleértve a sémával kapcsolatos problémákat is, amelyek a korábban lefedett "séma-probléma" megoldásra vonatkoznak.
 
-Ha Azure SQL Database észleli az SQL-adatbázisban előforduló, sémával kapcsolatos SQL-hibák számát, akkor a **séma-problémák javítása** javaslatok jelennek meg. Ez az ajánlás általában akkor jelenik meg, ha az adatbázis több sémával kapcsolatos hibát észlel (érvénytelen oszlopnév, érvénytelen objektumnév stb.) egy órán belül.
+Ha Azure SQL Database észleli az adatbázisban előforduló séma-alapú SQL-hibák számát, akkor a **sémával kapcsolatos problémák megoldására** vonatkozó javaslatok jelennek meg. Ez az ajánlás általában akkor jelenik meg, ha az adatbázis több sémával kapcsolatos hibát észlel (érvénytelen oszlopnév, érvénytelen objektumnév stb.) egy órán belül.
 
 A "séma problémái" a szintaktikai hibák osztálya. Akkor fordulnak elő, ha az SQL-lekérdezés definíciója és az adatbázis-séma definíciója nincs igazítva. Előfordulhat például, hogy a lekérdezés által várt oszlopok egyike hiányzik a célként megadott táblából, vagy fordítva.
 
-A "séma javítása" javaslat akkor jelenik meg, ha Azure SQL Database észleli az SQL-adatbázisban előforduló, sémával kapcsolatos SQL-hibák számát. A következő táblázat a séma problémáira vonatkozó hibákat mutatja be:
+A "séma javítása" javaslat akkor jelenik meg, ha Azure SQL Database észleli az adatbázison futó, a sémával kapcsolatos SQL-hibák számát. A következő táblázat a séma problémáira vonatkozó hibákat mutatja be:
 
 | SQL-hibakód | Üzenet |
 | --- | --- |

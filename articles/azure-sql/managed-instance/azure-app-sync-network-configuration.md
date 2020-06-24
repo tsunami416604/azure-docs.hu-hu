@@ -3,8 +3,8 @@ title: Azure App Service hálózati konfigurációjának szinkronizálása
 titleSuffix: Azure SQL Managed Instance
 description: Ez a cikk azt ismerteti, hogyan szinkronizálhatja Azure App Service üzemeltetési terv hálózati konfigurációját az Azure SQL felügyelt példányával.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
-ms.openlocfilehash: 8aca5a4f76504f1e9c33f55101f697ea6b3b6856
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: a0192f204fdb0797d98947a174bf6d669034b666
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309900"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695453"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>Azure App Service üzemeltetési csomag hálózati konfigurációjának szinkronizálása az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

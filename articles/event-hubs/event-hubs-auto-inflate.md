@@ -3,24 +3,22 @@ title: Átviteli egységek automatikus méretezése – Azure Event Hubs | Micro
 description: Engedélyezze az automatikus kiosztást a névtéren az átviteli egységek automatikus skálázásához.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: afd28fa878651b08443f7863c16cd22c1bc96e3d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72264477"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297324"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Az Azure Event Hubs átviteli egységek automatikus méretezése
 Az Azure Event Hubs egy rugalmasan méretezhető adatfolyam-platform. Ennek megfelelően a Event Hubs használat a szolgáltatás használatának megkezdése után gyakran növekszik. Az ilyen használathoz az előre meghatározott [átviteli egységek](event-hubs-scalability.md#throughput-units) növelésére van szükség a Event Hubs méretezéséhez és a nagyobb átviteli sebességek kezeléséhez. A Event Hubs **automatikus** feltöltési funkciója automatikusan méretezi az átviteli egységek számának növelésével, hogy megfeleljen a használati igényeknek. Az átviteli egységek növelése megakadályozza a szabályozást, amelyben:
@@ -76,7 +74,7 @@ Engedélyezheti az automatikus feltöltés funkciót is, és módosíthatja a be
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Automatikus kiemelés engedélyezése Azure Resource Manager sablon használatával
 
-Engedélyezheti az automatikus kiépítést Azure Resource Manager sablon központi telepítése során. Állítsa be például a `isAutoInflateEnabled` tulajdonságot **igaz** értékre, `maximumThroughputUnits` és állítsa 10 értékre. Például:
+Engedélyezheti az automatikus kiépítést Azure Resource Manager sablon központi telepítése során. Állítsa be például a `isAutoInflateEnabled` tulajdonságot **igaz** értékre, és állítsa 10 értékre `maximumThroughputUnits` . Például:
 
 ```json
 "resources": [

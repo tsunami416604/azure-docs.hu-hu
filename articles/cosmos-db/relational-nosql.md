@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1cd80fee51565f2a2c1afa38ed883c10f51a5ee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6be74e5748d364fd9f56f4af96bb3229ddb61c3
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75896622"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113688"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>A NoSQL és a kapcsolati adatbázisok közötti különbségek megértése
 
@@ -29,9 +29,9 @@ Ezekben az esetekben az [elosztott adatbázisok](https://en.wikipedia.org/wiki/D
 
 Ha a tranzakciós kötetek extrém szintekhez kapcsolódnak, például több ezer tranzakció másodpercenként, érdemes fontolóra venni egy elosztott NoSQL-adatbázist. Vegye figyelembe Azure Cosmos DB a maximális hatékonyságot, a könnyű karbantartást és a korlátozott teljes tulajdonlási költségeket.
 
-![Háttérrendszer](./media/relational-or-nosql/backend-scaled.png)
+:::image type="content" source="./media/relational-or-nosql/backend-scaled.png" alt-text="Háttérrendszer" border="false":::
 
-## <a name="hierarchical-data"></a>Hierarchikus adatértékek
+## <a name="hierarchical-data"></a>Hierarchikus adatok
 
 Jelentős számú felhasználási eset van, ahol az adatbázisban lévő tranzakciók sok szülő-gyermek kapcsolatot tartalmazhatnak. Ezek a kapcsolatok jelentősen növekednek az idő múlásával, és nehezen kezelhetők. A [hierarchikus adatbázisok](https://en.wikipedia.org/wiki/Hierarchical_database_model) formája az 1980-as időszakban jelent meg, de a tárolás hatékonysága miatt nem volt népszerű. A [Ted Codd kapcsolati modellje](https://en.wikipedia.org/wiki/Relational_model) is elvesztette a vontatást, mivel a gyakorlatilag az összes mainstream adatbázis-kezelő rendszer által használt de facto szabványt használta.
 
@@ -39,7 +39,7 @@ Napjainkban azonban a dokumentum-stílusú adatbázisok népszerűsége jelentő
 
 Az [objektum-orientált kialakítás](https://en.wikipedia.org/wiki/Object-oriented_design)megjelenése, valamint az olyan [impedancia-eltérések](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch) , amelyek a viszonyítási modellekkel való összevonásakor felmerülnek, a kapcsolódó adatbázisokban bizonyos felhasználási esetekben is kiemelnek egy anti-mintát. Rejtett, de gyakran jelentős karbantartási költségek is származhatnak. Bár az [ORM-megközelítések](https://en.wikipedia.org/wiki/Object-relational_mapping) részben csökkentik ezt a megoldást, a dokumentum-orientált adatbázisok mégis sokkal jobban összefonódnak az objektumorientált megközelítésekkel. Ezzel a megközelítéssel a fejlesztők nem kénytelenek elkötelezettek lenni az ORM-illesztőprogramok vagy az adott nyelvre szabott [OO adatbázis-hajtóművek](https://en.wikipedia.org/wiki/Object_database)számára. Ha az adatai sok szülő-gyermek kapcsolatot és mély hierarchiát tartalmaznak, érdemes fontolóra venni egy NoSQL-dokumentum-adatbázis használatát, például a [Azure Cosmos db SQL API](https://docs.microsoft.com/azure/cosmos-db/introduction)-t.
 
-![OrderDetails](./media/relational-or-nosql/order-orderdetails.jpg)
+:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="OrderDetails":::
 
 ## <a name="complex-networks-and-relationships"></a>Összetett hálózatok és kapcsolatok
 
@@ -49,7 +49,7 @@ A "hálózati" adatbázisok különböző formái a viszonyítási adatbázisok 
 
 Ha egy összetett hálózati kapcsolatot tart fenn az adatbázisban, érdemes lehet egy gráf-adatbázist, például az [Azure Cosmos db GREMLIN API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) -t használni az adatkezeléshez.
 
-![Graph](./media/relational-or-nosql/graph.png)
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Gráf":::
 
 Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely API-kivetítést biztosít az összes főbb NoSQL-modellhez; Oszlop – család, dokumentum, gráf és kulcs-érték. A [Gremlin (gráf)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) és az SQL (Core) Document API-rétegek teljes mértékben interoperábilisak. Ez előnyökkel jár a különböző modellek közötti váltáshoz a programozhatóság szintjén. A Graph-áruházak a komplex hálózati bejárásokat, valamint az ugyanazon tárolóban található dokumentum-rekordként modellezhető tranzakciók esetében is lekérdezhető.
 
@@ -76,7 +76,7 @@ Bár a NoSQL-adatbázisok megvalósítása során egyértelmű előnyökkel jár
 
 Az első kihívás az, hogy a NoSQL-adatbázisok szabálya általában a denormalizálás, amely a korábban megfogalmazott módon hatékonyabb beolvasást eredményez egy elosztott rendszeren. Vannak azonban olyan tervezési kihívások is, amelyek a jelen megközelítéssel együtt játszanak. Vegyük például egy olyan terméket, amely egy kategóriához és több címkéhez kapcsolódik:
 
-![Illesztések](./media/relational-or-nosql/many-joins.png)
+:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="Illesztések":::
 
 A NoSQL-dokumentumok adatbázisának ajánlott módszere, ha a kategória neve és a címke neveit közvetlenül egy "termék dokumentumában" szeretné denormalizálni. Ahhoz azonban, hogy a kategóriák, címkék és termékek szinkronban maradjanak, a tervezési beállítások lehetővé teszik a karbantartási bonyolultság hozzáadását, mivel az adatok duplikálva vannak a termék több rekordjához, nem pedig egy "egy a többhöz" kapcsolathoz, és egy JOIN az adatok lekéréséhez. 
 

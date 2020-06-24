@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Table API Node. js-Azure Cosmos DB'
+title: 'Gyors útmutató: Table API Node.js-Azure Cosmos DB'
 description: Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Table API profilalkalmazások létrehozására az Azure Portal és a Node.js használatával
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: 83ba361541949b1be8205361d968ec6614b97cc9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: bbb6ac60c28635371760987b7a55ae7344dd73fb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217946"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115037"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás felépítése a Node.js és az Azure Cosmos DB használatával
 
@@ -24,12 +24,12 @@ ms.locfileid: "84217946"
 > * [Python](create-table-python.md)
 > 
 
-Ebben a rövid útmutatóban létre fog hozni egy Azure Cosmos DB Table API fiókot, és a GitHubról a Adatkezelő és egy Node. js-alkalmazást kell használnia, amely táblákat és entitásokat hoz létre. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban egy Azure Cosmos DB Table API-fiókot hoz létre, és a GitHubról származó Adatkezelő és Node.js alkalmazás használatával táblákat és entitásokat hozhat létre. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a `https://localhost:8081` és a kulcs URI-ja használatával `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
-- [Node. js 0.10.29 +](https://nodejs.org/) .
+- [Node.js 0.10.29 +](https://nodejs.org/) .
 - [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
@@ -138,17 +138,17 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kapcsolatok karakterlánc**lehetőséget. 
 
-    ![Tekintse meg a kapcsolati sztring szükséges adatait a Kapcsolati sztring ablaktáblán, és másolja őket](./media/create-table-nodejs/connection-string.png)
+    :::image type="content" source="./media/create-table-nodejs/connection-string.png" alt-text="Tekintse meg a kapcsolati sztring szükséges adatait a Kapcsolati sztring ablaktáblán, és másolja őket":::
 
 2. Másolja az elsődleges kapcsolatok KARAKTERLÁNCát a jobb oldalon található másolás gombbal.
 
-3. Nyissa meg az *app. config* fájlt, és illessze be a ConnectionString értéket a három sorba. 
+3. Nyissa meg a *app.config* fájlt, és illessze be az értéket a ConnectionString sorba a harmadik sorban. 
 
     > [!IMPORTANT]
     > Ha a végpont a documents.azure.com címet használja, akkor előzetes fiókkal rendelkezik, és létre kell hoznia egy [új Table API-fiókot](#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
     >
 
-3. Mentse az *app. config* fájlt.
+3. Mentse a *app.config* fájlt.
 
 Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
@@ -160,13 +160,13 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
     cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. Futtassa a következő parancsot az [Azure], [NODE-UUID], [NConf] és [aszinkron] modulok helyi telepítéséhez, valamint egy bejegyzés a *Package. JSON* fájlba való mentéséhez.
+2. Futtassa a következő parancsot az [Azure], [NODE-UUID], [NConf] és [aszinkron] modulok helyi telepítéséhez, valamint egy bejegyzés mentéséhez a fájl *package.js* .
 
    ```
    npm install azure-storage node-uuid async nconf --save
    ```
 
-2. A git-terminál ablakban futtassa a következő parancsokat a Node. js-alkalmazás futtatásához.
+2. A git-terminál ablakban futtassa a következő parancsokat a Node.js alkalmazás futtatásához.
 
     ```
     node ./tableSample.js 
@@ -180,13 +180,13 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre táblát a Adatkezelő használatával, és hogyan futtathat egy Node. js-alkalmazást a tábla adatai hozzáadásához.  Most már le tudja kérdezni adatait a Table API segítségével.  
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy táblázatot a Adatkezelő használatával, és hogyan futtathat Node.js alkalmazást a tábla adatai hozzáadásához.  Most már le tudja kérdezni adatait a Table API segítségével.  
 
 > [!div class="nextstepaction"]
 > [Táblaadatok importálása a Table API-ba](table-import.md)

@@ -3,12 +3,12 @@ title: Erőforrások biztonságosabbá tétele a Azure Advisor
 description: A Azure Advisor segítségével javíthatja az Azure-beli üzembe helyezések biztonságát.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443036"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113857"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Erőforrások biztonságosabbá tétele a Azure Advisor
 
@@ -29,9 +29,9 @@ A biztonsági javaslatokkal kapcsolatos további információkért lásd: [bizto
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
+* [Az Advisor költségekkel kapcsolatos javaslatai](advisor-cost-recommendations.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
-* [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
+* [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md)
 * [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)
-
+* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
  

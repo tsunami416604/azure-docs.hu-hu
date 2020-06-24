@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: bbf1aa2fe8410f6d624fb9d50b1edb6ac2c64093
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429513"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080490"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Az Azure Cognitive Search eredményeinek Active Directory identitások használatával történő kivágására szolgáló biztonsági szűrők
 
@@ -28,7 +28,7 @@ Ez a cikk a következő feladatokat mutatja be:
 > - Keresési kérelem kibocsátása csoportazonosító szűrővel
 > 
 > [!NOTE]
-> A cikkben szereplő kódrészletek a C# nyelven íródnak. A teljes forráskódot a [GitHub](https://aka.ms/search-dotnet-howto) webhelyén találja. 
+> A cikkben szereplő kódrészletek a C# nyelven íródnak. A teljes forráskódot a [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started) webhelyén találja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -186,7 +186,7 @@ A válasz magában foglalja a dokumentumok szűrt listáját, amely azokat a fel
 
 Ebben az útmutatóban megtanulta a HRE-bejelentkezések használatának folyamatait a dokumentumok Azure-beli Cognitive Search eredményekben való szűréséhez, a kérelemben megadott szűrőnek nem megfelelő dokumentumok eredményeinek a kivágásával.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Identitás-alapú hozzáférés-vezérlés az Azure Cognitive Search szűrők használatával](search-security-trimming-for-azure-search.md)
 + [Szűrők az Azure Cognitive Search](search-filters.md)

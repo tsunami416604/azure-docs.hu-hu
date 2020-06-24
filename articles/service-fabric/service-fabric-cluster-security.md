@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Service Fabric-fürtök biztonsági forgatók�
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 71a5891bf26cbd79ba5cfeff8324e225b3febd73
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324011"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080690"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric fürt biztonsági forgatókönyvei
 
@@ -41,6 +41,11 @@ Ha szeretné megtudni, hogyan állíthatja be a tanúsítványalapú biztonságo
 
 ### <a name="node-to-node-windows-security"></a>Csomópontok közötti Windows-Biztonság
 
+> [!NOTE]
+> A Windows-hitelesítés a Kerberoson alapul. Az NTLM hitelesítés típusa nem támogatott.
+>
+> Ha lehetséges, használjon X. 509 tanúsítványalapú hitelesítést Service Fabric-fürtökhöz.
+
 Ha szeretné megtudni, hogyan állíthatja be a Windows-biztonságot egy önálló Windows Server-fürthöz, tekintse meg az [önálló fürt biztonságossá tétele Windows rendszeren a Windows biztonsági szolgáltatással](service-fabric-windows-cluster-windows-security.md)című témakört.
 
 ## <a name="client-to-node-security"></a>Az ügyfél és a csomópont közötti biztonság
@@ -49,7 +54,7 @@ Az ügyfél és a csomópont közötti biztonság hitelesíti az ügyfeleket, é
 
 ![Az ügyfél és a csomópont közötti kommunikáció diagramja][Client-to-Node]
 
-Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök egyaránt használhatják a [tanúsítványok biztonsági](https://msdn.microsoft.com/library/ff649801.aspx) vagy a [Windows-biztonságot](https://msdn.microsoft.com/library/ff649396.aspx).
+Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök egyaránt használhatják a [tanúsítvány](https://msdn.microsoft.com/library/ff649801.aspx) -vagy a [Windows-biztonságot](https://msdn.microsoft.com/library/ff649396.aspx), bár a javaslat az X. 509 tanúsítványalapú hitelesítés használata, ha lehetséges.
 
 ### <a name="client-to-node-certificate-security"></a>Az ügyfél és a csomópont közötti tanúsítvány biztonsága
 
@@ -95,7 +100,7 @@ Az X. 509 digitális tanúsítványok általában az ügyfelek és a kiszolgál�
 Néhány fontos szempont:
 
 * Ha éles számítási feladatokat futtató fürtökhöz szeretne tanúsítványokat létrehozni, használjon megfelelően konfigurált Windows Server Certificate Service-t, vagy egyet egy jóváhagyott hitelesítésszolgáltatótól [(CA)](https://en.wikipedia.org/wiki/Certificate_authority).
-* Soha ne használjon olyan ideiglenes vagy tesztelési tanúsítványt, amelyet a MakeCert. exe eszközzel, például éles környezetben hozott létre.
+* Soha ne használjon olyan ideiglenes vagy tesztelési tanúsítványokat, amelyeket az éles környezetben lévő MakeCert.exe eszközökkel hoz létre.
 * Önaláírt tanúsítványt is használhat, de csak tesztelési fürtben. Ne használjon önaláírt tanúsítványt az éles környezetben.
 * A tanúsítvány ujjlenyomatának létrehozásakor győződjön meg róla, hogy létrehoz egy SHA1 ujjlenyomatot. A rendszer az ügyfél és a fürt tanúsítvány-ujjlenyomatai megfelelnek konfigurálásakor az SHA1-t használja.
 
@@ -136,7 +141,7 @@ Alapértelmezés szerint a fürt tanúsítványa rendszergazdai jogosultságokka
 > [!NOTE]
 > Egy Service Fabric-fürtön lévő összes felügyeleti művelethez kiszolgálói tanúsítványok szükségesek. Az ügyféltanúsítványok nem használhatók felügyelethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fürt létrehozása az Azure-ban Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md)
 * [Fürt létrehozása az Azure Portalon](service-fabric-cluster-creation-via-portal.md)

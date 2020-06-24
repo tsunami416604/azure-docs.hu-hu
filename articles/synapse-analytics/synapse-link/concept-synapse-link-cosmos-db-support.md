@@ -5,20 +5,20 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c90bc9527bffff55d7478150cc1f31827bacc46
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: c9f6a61dfa688980fa6400a2fa93ab8862798750
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235287"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194773"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure szinapszis-hivatkozás (előzetes verzió) Azure Cosmos DB támogatott funkciókhoz
 
-Ez a cikk azokat a funkciókat ismerteti, amelyeket jelenleg a Azure Cosmos DB Azure szinapszis-hivatkozása támogat.
+Ez a cikk az Azure Cosmos DB-hez készült Azure Synapse Link jelenleg támogatott funkcióit ismerteti.
 
 ## <a name="azure-synapse-support"></a>Azure szinapszis-támogatás
 

@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan kezelheti az összetett adatáttelepítést egy
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 467e9627a2623779bd808ca5aebdf76d8a5eda42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f79ad56d8083e7ef75279eb2a07e1d35a50c45b5
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75896635"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261103"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Egy-a-többhöz kapcsolódó adat migrálása Azure Cosmos DB SQL API-fiókba
 
@@ -25,7 +25,7 @@ Az egyik gyakori átalakítás az adatok denormalizálása egy JSON-dokumentumba
 Tegyük fel, hogy a következő két táblázat szerepel az SQL Database-ben, a megrendelések és a OrderDetails.
 
 
-![Rendelés részletei](./media/migrate-relational-to-cosmos-sql-api/orders.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="Rendelés részletei" border="false" :::
 
 Ezt az egy-a-többhöz kapcsolatot szeretnénk egyesíteni egy JSON-dokumentumba az áttelepítés során. Ehhez hozzon létre egy T-SQL-lekérdezést a "FOR JSON" használatával az alábbiak szerint:
 
@@ -91,31 +91,31 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-![ADF-másolat](./media/migrate-relational-to-cosmos-sql-api/adf1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="ADF-másolat":::
 
 
-A SqlJsonToBlobText másolási tevékenység fogadója esetében a "tagolt szöveg" lehetőséget választjuk, és az Azure Blob Storage egy adott mappájára mutatunk, amely egy dinamikusan generált egyedi fájlnevet (például@concat"(folyamat ()). RunId, ". JSON").
+A SqlJsonToBlobText másolási tevékenység fogadója esetében a "tagolt szöveg" lehetőséget választjuk, és az Azure Blob Storage egy adott mappájára mutatunk, amely egy dinamikusan generált egyedi fájlnevet (például " @concat (folyamat ()). RunId, ". JSON").
 Mivel a szövegfájl nem igazán "tagolt", és nem akarjuk, hogy a vesszővel elválasztott oszlopok alapján elemezzük őket, és meg szeretné őrizni a kettős idézőjeleket ("), az oszlop elválasztóját" egy lapra ("\t"), vagy egy másik, az "idézőjel" karakterrel nem rendelkező karakterre.
 
-![ADF-másolat](./media/migrate-relational-to-cosmos-sql-api/adf2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="ADF-másolat":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>Másolási tevékenység #2: BlobJsonToCosmos
 
 Ezután módosítjuk az ADF-folyamatot úgy, hogy hozzáadja az Azure Blob Storageban megjelenő második másolási tevékenységet az első tevékenység által létrehozott szövegfájlhoz. Ezt "JSON"-ként dolgozza fel, hogy beillessze Cosmos DB fogadóba a szövegfájlban található JSON-sor egy dokumentumként.
 
-![ADF-másolat](./media/migrate-relational-to-cosmos-sql-api/adf3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="ADF-másolat":::
 
 Szükség esetén a "Törlés" tevékenységet is hozzáadhatja a folyamathoz, így az egyes futtatások előtt törli a/Orders/mappában maradó összes korábbi fájlt. Az ADF-folyamat most a következőhöz hasonlóan néz ki:
 
-![ADF-másolat](./media/migrate-relational-to-cosmos-sql-api/adf4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="ADF-másolat":::
 
 Miután elindította a folyamatot a fenti folyamaton, megjelenik egy, a köztes Azure Blob Storageban létrehozott fájl, amely egy JSON-objektumot tartalmaz soronként:
 
-![ADF-másolat](./media/migrate-relational-to-cosmos-sql-api/adf5.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="ADF-másolat":::
 
 Azt is látjuk, hogy az Orders dokumentumok megfelelően beágyazott OrderDetails vannak beillesztve a Cosmos DB gyűjteménybe:
 
-![ADF-másolat](./media/migrate-relational-to-cosmos-sql-api/adf6.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="ADF-másolat":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -128,7 +128,7 @@ A Spark in [Azure Databricksban](https://azure.microsoft.com/services/databricks
 
 Először létrehozjuk és csatoljuk a szükséges [SQL-összekötőt](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) és [Azure Cosmos db összekötő](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) kódtárakat a Azure Databricks-fürthöz. Indítsa újra a fürtöt, és győződjön meg arról, hogy a könyvtárak betöltődik.
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Databricks":::
 
 Ezután két mintát mutatjuk be a Scala és a Python számára. 
 
@@ -151,7 +151,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Databricks":::
 
 Ezután kapcsolódunk Cosmos DB adatbázishoz és gyűjteményhez:
 
@@ -208,7 +208,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Databricks":::
 
 
 ### <a name="python"></a>Python
@@ -338,7 +338,7 @@ pool.map(writeOrder, orderids)
 ```
 A végén mindkét megközelítés esetében megfelelően mentett beágyazott OrderDetails kell beolvasni a Cosmos DB gyűjtemény minden rendelési dokumentumán belül:
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
 
 ## <a name="next-steps"></a>További lépések
 * Tudnivalók az [adatmodellezésről Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/modeling-data)

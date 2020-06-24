@@ -6,14 +6,15 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: bdb1896f8a40c6de21ae76b536bfccec316341cd
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.reviewer: shvija
+ms.openlocfilehash: 0c572723c493847ed15f80948511d1cc993fa7e1
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69992795"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298752"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>A Event Hubs-erőforrásokhoz való hozzáférés engedélyezése közös hozzáférési aláírások használatával
 A közös hozzáférésű aláírás (SAS) lehetővé teszi, hogy korlátozott hozzáférést biztosítson a Event Hubs-névtér erőforrásaihoz. Az SAS az engedélyezési szabályok alapján Event Hubs erőforrásokhoz való hozzáférést. Ezek a szabályok névtérben vagy entitáson (Event hub vagy témakör) vannak konfigurálva. Ez a cikk áttekintést nyújt az SAS-modellről, és a SAS ajánlott eljárásait ismerteti.
@@ -33,7 +34,7 @@ Az SAS egy egyszerű tokeneket használó jogcím-alapú engedélyezési mechani
 
 ## <a name="shared-access-authorization-policies"></a>Megosztott hozzáférés engedélyezési házirendjei
 Minden Event Hubs névtérnek és minden Event Hubs entitásnak (egy Event hub-példánynak vagy egy Kafka-témakörnek) közös hozzáférési engedélyezési szabályzata van. A névtér szintjén lévő szabályzat a névtéren belüli összes entitásra vonatkozik, függetlenül az egyes házirend-konfigurációtól.
-Minden egyes engedélyezési házirend-szabályhoz három információt kell eldöntenie: név, hatókör és jogosultságok. A név a hatókörben található egyedi név. A hatókör a kérdéses erőforrás URI-ja. Event Hubs névtér esetében a hatókör a teljes tartománynév (FQDN), például: `https://<yournamespace>.servicebus.windows.net/`.
+Minden egyes engedélyezési házirend-szabályhoz három információt kell eldöntenie: név, hatókör és jogosultságok. A név a hatókörben található egyedi név. A hatókör a kérdéses erőforrás URI-ja. Event Hubs névtér esetében a hatókör a teljes tartománynév (FQDN), például: `https://<yournamespace>.servicebus.windows.net/` .
 
 A házirend-szabály által biztosított jogok a következőket foglalhatják magukban:
 - **Küldés** – megadja a jogot, hogy üzeneteket küldjön az entitásnak

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 9544d0298a7aa62d5fd935e8670d02e470ac15e5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418048"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987565"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Adatok másolása az SAP Cloud for Customer (C4C) szolgáltatásból Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,10 +50,10 @@ Az SAP Cloud for Customer társított szolgáltatáshoz a következő tulajdons�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomer**. | Igen |
-| url | Az SAP-C4C OData szolgáltatásának URL-címe. | Igen |
-| felhasználónév | Adja meg az SAP-C4C való kapcsolódáshoz használandó felhasználónevet. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomer**. | Yes |
+| url | Az SAP-C4C OData szolgáltatásának URL-címe. | Yes |
+| felhasználónév | Adja meg az SAP-C4C való kapcsolódáshoz használandó felhasználónevet. | Yes |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem, forrás, igen, fogadó |
 
 >[!IMPORTANT]
@@ -90,8 +90,8 @@ Ha az SAP-felhőből szeretne adatokat másolni az ügyfél számára, állítsa
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapCloudForCustomerResource** |Igen |
-| path | Az SAP C4C OData entitás elérési útjának megadása. |Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapCloudForCustomerResource** |Yes |
+| path | Az SAP C4C OData entitás elérési útjának megadása. |Yes |
 
 **Például**
 
@@ -122,8 +122,9 @@ Az SAP felhőből az ügyfélnek történő adatmásoláshoz állítsa a forrás
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSource**  | Igen |
-| lekérdezés | Az adatolvasáshoz válassza az egyéni OData-lekérdezést. | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSource**  | Yes |
+| lekérdezés | Az adatolvasáshoz válassza az egyéni OData-lekérdezést. | No |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | No |
 
 Példa lekérdezésre egy adott napra vonatkozó adat lekéréséhez:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -165,7 +166,7 @@ Ha az ügyfél számára szeretne Adatmásolást készíteni az SAP-felhőbe, a 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSink**  | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSink**  | Yes |
 | writeBehavior | A művelet írási viselkedése. Lehet "Insert", "Update". | Nem. Alapértelmezett "Beszúrás". |
 | writeBatchSize | Az írási művelet kötegének mérete. A legjobb teljesítmény eléréséhez használt köteg mérete eltérő lehet a különböző táblák vagy kiszolgálók esetében. | Nem. Alapértelmezett 10. |
 
@@ -220,7 +221,7 @@ Az SAP-felhőből az ügyfélnek történő adatmásoláskor a következő leké
 | EDM. DateTime | DateTime |
 | EDM. decimális | Decimal |
 | Edm.Double | Double |
-| EDM. Single | Egyirányú |
+| EDM. Single | Egyszeres |
 | EDM. GUID | Guid |
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |

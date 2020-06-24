@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/07/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 4855db7678a8cdea9bdad19ac0a8ec33503ff983
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582911"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728416"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Dinamikus csoport létrehozása vagy frissítése Azure Active Directory
 
@@ -67,7 +67,7 @@ Ha a beírt szabály nem érvényes, a portálon egy Azure-értesítésben láth
 ## <a name="to-update-an-existing-rule"></a>Meglévő szabály frissítése
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazda, a csoport rendszergazdája, az Intune-rendszergazda vagy a felhasználói rendszergazdai szerepkör tagja az Azure ad-szervezetben.
-1. Válassza a **csoportok** > **minden csoport**elemet.
+1. Válassza **Groups**  >  **a csoportok minden csoport**elemet.
 1. Válasszon ki egy csoportot a profiljának megnyitásához.
 1. A csoport profil lapján válassza a **dinamikus tagsági szabályok**lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
 
@@ -98,7 +98,7 @@ A következő állapotüzenetek láthatók a **tagság feldolgozási** állapot�
 
 A következő állapotüzenetek jeleníthetők meg a **tagság utolsó frissítésének** állapotához:
 
-- &lt;**Dátum és idő**&gt;: a tagság utolsó frissítésekor.
+- &lt;**Dátum és idő** &gt; : a tagság utolsó frissítésekor.
 - **Folyamatban**: a frissítések jelenleg folyamatban vannak.
 - **Ismeretlen**: az utolsó frissítés időpontja nem olvasható be. Lehet, hogy a csoport új.
 

@@ -4,15 +4,15 @@ description: Egy virtuálisgép-sorozat vCPU-kvótájának növelése a Azure Po
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: de06375dad5999a29691435317e62585a2ea7f64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843729"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117165"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>Standard kvóta: korlátok megemelése virtuálisgép-sorozat szerint
 
@@ -26,7 +26,7 @@ Az utólagos elszámolású és a fenntartott virtuálisgép-példányok esetéb
 * Az első szint a *teljes regionális vCPU korlát*, az összes virtuálisgép-sorozaton belül.
 * A második réteg a virtuálisgép *-sorozat vCPU korlátja*, például a Dv3 sorozat vCPU.
 
-Amikor új helyszíni virtuális gépet telepít, az adott virtuálisgép-sorozat összes új és meglévő vCPU-használata nem lépheti túl az adott virtuálisgép-sorozat jóváhagyott vCPU-kvótáját. Emellett az összes virtuálisgép-sorozatban üzembe helyezett új és meglévő vCPU teljes száma nem haladhatja meg az előfizetés teljes jóváhagyott regionális vCPU vonatkozó kvótáját. Ha túllépi a kvóták valamelyikét, a virtuális gép üzembe helyezése nem engedélyezett.
+Amikor új helyszíni virtuális gépet telepít, az összes új és meglévő vCPU-használat az összes helyszíni virtuálisgép-példány esetében nem haladhatja meg a jóváhagyott helyszíni vCPU-kvóta korlátját. Ha a helyszíni kvóta túllépve, a helyszíni virtuális gép üzembe helyezése nem engedélyezett.
 
 A virtuálisgép-sorozat vCPU-kvótájának növekedését a Azure Portal használatával kérheti le. A virtuálisgép-sorozat kvótájának növekedése automatikusan megnöveli a teljes regionális vCPU-korlátot ugyanazzal az összeggel.
 

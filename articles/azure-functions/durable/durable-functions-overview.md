@@ -3,15 +3,15 @@ title: Durable Functions áttekintése – Azure
 description: A Azure Functions Durable Functions bővítményének bemutatása.
 author: cgillum
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfbab26e47befbd84ed7b060992d6c0b239ae4db
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241345"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193430"
 ---
 # <a name="what-are-durable-functions"></a>Mik azok a tartós függvények?
 
@@ -23,6 +23,7 @@ A Durable Functions jelenleg a következő nyelveket támogatja:
 
 * **C#**: mindkét előre [lefordított osztály kódtára](../functions-dotnet-class-library.md) és [C# parancsfájl](../functions-reference-csharp.md).
 * **JavaScript**: csak az Azure functions futtatókörnyezet 2. x verziójára támogatott. A Durable Functions-bővítmény vagy újabb verzió 1.7.0 szükséges. 
+* **Python**: az Durable functions-bővítmény vagy egy újabb verzió 1.8.5 szükséges. 
 * **F #**: előre lefordított osztály kódtárak és F # szkript. Az F # parancsfájl csak az Azure Functions futtatókörnyezet 1. x verziójában támogatott.
 
 Durable Functions célja az összes [Azure functions nyelv](../supported-languages.md)támogatása. További nyelvek támogatásához tekintse meg a [Durable functions problémák listáját](https://github.com/Azure/azure-functions-durable-extension/issues) a legújabb munkaállapotról.
@@ -48,9 +49,9 @@ A függvény láncolása mintában a függvények sorrendje egy adott sorrendben
 
 Az alábbi példában látható módon az Durable Functions használatával végezheti el a függvény láncolási mintájának tömör megvalósítását.
 
-Ebben a példában az `F1`értékek, `F2` `F3`a, és `F4` a más függvények neve ugyanabban a Function alkalmazásban. A vezérlési folyamat normál, kötelező kódolási szerkezetek használatával valósítható meg. A kód felülről lefelé fut. A kód a meglévő nyelvi vezérlési folyamatokat, például a feltételes és a hurkokat is magában foglalja. A blokkokban a `try` / `catch` / `finally` hibák kezelésére szolgáló logika is felvehető.
+Ebben a példában az értékek, a, `F1` `F2` és a `F3` `F4` más függvények neve ugyanabban a Function alkalmazásban. A vezérlési folyamat normál, kötelező kódolási szerkezetek használatával valósítható meg. A kód felülről lefelé fut. A kód a meglévő nyelvi vezérlési folyamatokat, például a feltételes és a hurkokat is magában foglalja. A `try` / `catch` / `finally` blokkokban a hibák kezelésére szolgáló logika is felvehető.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -71,7 +72,7 @@ public static async Task<object> Run(
 }
 ```
 
-A `context` paraméterrel más függvények is meghívhatók név, pass paraméterek és visszatérési függvény kimenete alapján. A kód minden egyes meghívásakor `await`a Durable functions Framework az aktuális függvény példányának előrehaladását ellenőrzőpontra helyezi. Ha a folyamat vagy a virtuális gép a végrehajtás közben újraindul, a függvény példánya az előző `await` hívásból folytatódik. További információkért tekintse meg a következő, minta #2: fan out/Fan in című szakaszt.
+A `context` paraméterrel más függvények is meghívhatók név, pass paraméterek és visszatérési függvény kimenete alapján. A kód minden egyes meghívásakor `await` a Durable functions Framework az aktuális függvény példányának előrehaladását ellenőrzőpontra helyezi. Ha a folyamat vagy a virtuális gép a végrehajtás közben újraindul, a függvény példánya az előző `await` hívásból folytatódik. További információkért tekintse meg a következő, minta #2: fan out/Fan in című szakaszt.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -90,10 +91,33 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Az `context.df` objektum használatával más függvények is meghívhatók név, pass paraméterek és visszatérési függvény kimenete alapján. A kód minden egyes meghívásakor `yield`a Durable functions Framework az aktuális függvény példányának előrehaladását ellenőrzőpontra helyezi. Ha a folyamat vagy a virtuális gép a végrehajtás közben újraindul, a függvény példánya az előző `yield` hívásból folytatódik. További információkért tekintse meg a következő, minta #2: fan out/Fan in című szakaszt.
+Az `context.df` objektum használatával más függvények is meghívhatók név, pass paraméterek és visszatérési függvény kimenete alapján. A kód minden egyes meghívásakor `yield` a Durable functions Framework az aktuális függvény példányának előrehaladását ellenőrzőpontra helyezi. Ha a folyamat vagy a virtuális gép a végrehajtás közben újraindul, a függvény példánya az előző `yield` hívásból folytatódik. További információkért tekintse meg a következő, minta #2: fan out/Fan in című szakaszt.
 
 > [!NOTE]
-> A `context` JavaScriptben lévő objektum a teljes [függvény kontextusát](../functions-reference-node.md#context-object)jelenti. A Durable Functions környezet elérése a fő `df` környezet tulajdonságával.
+> A `context` JavaScriptben lévő objektum a teljes [függvény kontextusát](../functions-reference-node.md#context-object)jelenti. A Durable Functions környezet elérése a `df` fő környezet tulajdonságával.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    x = yield context.call_activity("F1", None)
+    y = yield context.call_activity("F2", x)
+    z = yield context.call_activity("F3", y)
+    result = yield context.call_activity("F4", z)
+    return result
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+Az `context` objektum használatával más függvények is meghívhatók név, pass paraméterek és visszatérési függvény kimenete alapján. A kód minden egyes meghívásakor `yield` a Durable functions Framework az aktuális függvény példányának előrehaladását ellenőrzőpontra helyezi. Ha a folyamat vagy a virtuális gép a végrehajtás közben újraindul, a függvény példánya az előző `yield` hívásból folytatódik. További információkért tekintse meg a következő, minta #2: fan out/Fan in című szakaszt.
+
+> [!NOTE]
+> A `context` Pythonban található objektum a koordináló környezetet jelöli. A fő Azure Functions környezet eléréséhez használja a következőt: a (z `function_context` ).
 
 ---
 
@@ -107,7 +131,7 @@ A normál függvények segítségével kipróbálhatja, hogy a függvény több 
 
 A Durable Functions bővítmény ezt a mintát viszonylag egyszerű kóddal kezeli:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -132,9 +156,9 @@ public static async Task Run(
 }
 ```
 
-A rendszer a `F2` függvény több példányára terjeszti a kivezetési munkát. A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `Task.WhenAll`a rendszer úgy hívja, hogy várjon, amíg az összes hívott függvény befejeződik. Ezután a rendszer `F2` összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
+A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `Task.WhenAll`a rendszer úgy hívja, hogy várjon, amíg az összes hívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
 
-A `await` híváskor megjelenő automatikus ellenőrzőpontok `Task.WhenAll` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás esetén nem szükséges a már befejezett feladatok újraindítása.
+A híváskor megjelenő automatikus ellenőrzőpontok `await` `Task.WhenAll` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás esetén nem szükséges a már befejezett feladatok újraindítása.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -158,9 +182,39 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-A rendszer a `F2` függvény több példányára terjeszti a kivezetési munkát. A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `context.df.Task.all`Az API-t úgy kell meghívni, hogy várjon, amíg az összes meghívott függvény befejeződik. Ezután a rendszer `F2` összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
+A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `context.df.Task.all`Az API-t úgy kell meghívni, hogy várjon, amíg az összes meghívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
 
-A `yield` híváskor megjelenő automatikus ellenőrzőpontok `context.df.Task.all` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás esetén nem szükséges a már befejezett feladatok újraindítása.
+A híváskor megjelenő automatikus ellenőrzőpontok `yield` `context.df.Task.all` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás esetén nem szükséges a már befejezett feladatok újraindítása.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    parallel_tasks = []
+
+    # Get a list of N work items to process in parallel.
+    work_batch = yield context.call_activity("F1", None)
+
+    for i in range(0, len(work_batch)):
+        parallel_tasks.append(context.call_activity("F2", work_batch[i]))
+    
+    outputs = yield context.task_all(parallel_tasks)
+
+    # Aggregate all N outputs and send the result to F3.
+    total = sum(outputs)
+    yield context.call_activity("F3", total)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+A rendszer a függvény több példányára terjeszti a kivezetési munkát `F2` . A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. `context.task_all`Az API-t úgy kell meghívni, hogy várjon, amíg az összes meghívott függvény befejeződik. Ezután a `F2` rendszer összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
+
+A híváskor megjelenő automatikus ellenőrzőpontok `yield` `context.task_all` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás esetén nem szükséges a már befejezett feladatok újraindítása.
 
 ---
 
@@ -214,11 +268,11 @@ A figyelő minta példája a korábbi aszinkron HTTP API-forgatókönyv fordíto
 
 ![A figyelő mintájának ábrája](./media/durable-functions-concepts/monitor.png)
 
-Néhány sornyi kódban a Durable Functions használatával több, tetszőleges végpontokat figyelő figyelőt hozhat létre. A figyelők egy feltétel teljesülése esetén is letölthetik a végrehajtást, vagy egy másik függvény használhatja a tartós előkészítési ügyfelet a figyelők megszakítására. Egy adott feltétel alapján módosíthatja a `wait` figyelő intervallumát (például exponenciális leállítási.) 
+Néhány sornyi kódban a Durable Functions használatával több, tetszőleges végpontokat figyelő figyelőt hozhat létre. A figyelők egy feltétel teljesülése esetén is letölthetik a végrehajtást, vagy egy másik függvény használhatja a tartós előkészítési ügyfelet a figyelők megszakítására. Egy `wait` adott feltétel alapján módosíthatja a figyelő intervallumát (például exponenciális leállítási.) 
 
 A következő kód egy alapszintű figyelőt valósít meg:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -276,9 +330,41 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    job = json.loads(context.get_input())
+    job_id = job["jobId"]
+    polling_interval = job["pollingInterval"]
+    expiry_time = job["expiryTime"]
+
+    while context.current_utc_datetime < expiry_time:
+        job_status = yield context.call_activity("GetJobStatus", job_id)
+        if job_status == "Completed":
+            # Perform an action when a condition is met.
+            yield context.call_activity("SendAlert", job_id)
+            break
+
+        # Orchestration sleeps until this time.
+        next_check = context.current_utc_datetime + timedelta(seconds=polling_interval)
+        yield context.create_timer(next_check)
+
+    # Perform more work here, or let the orchestration end.
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
-A kérés fogadásakor a rendszer létrehoz egy új előkészítési példányt az adott AZONOSÍTÓJÚ feladatokhoz. A példány lekérdezi az állapotot, amíg a feltétel teljesül, és a hurok ki van zárva. A tartós időzítő vezérli a lekérdezési időközt. Ezt követően több munka is elvégezhető, vagy az előkészítés véget ért. Ha `nextCheck` meghaladja `expiryTime`a t, a figyelő véget ér.
+A kérés fogadásakor a rendszer létrehoz egy új előkészítési példányt az adott AZONOSÍTÓJÚ feladatokhoz. A példány lekérdezi az állapotot, amíg a feltétel teljesül, és a hurok ki van zárva. A tartós időzítő vezérli a lekérdezési időközt. Ezt követően több munka is elvégezhető, vagy az előkészítés véget ért. Ha `nextCheck` meghaladja `expiryTime` a t, a figyelő véget ér.
 
 ### <a name="pattern-5-human-interaction"></a><a name="human"></a>Minta #5: emberi interakció
 
@@ -292,7 +378,7 @@ Ebben a példában egy Orchestrator függvény használatával valósítható me
 
 Ezek a példák jóváhagyási folyamatot hoznak létre az emberi interakciós minta bemutatásához:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -319,7 +405,7 @@ public static async Task Run(
 }
 ```
 
-A tartós időzítő létrehozásához hívja `context.CreateTimer`a következőt:. Az értesítés fogadása: `context.WaitForExternalEvent`. Ezt követően `Task.WhenAny` el kell döntenie, hogy a rendszer meghívja-e a kiterjesztést (időtúllépés történik) vagy feldolgozza a jóváhagyást (a jóváhagyás az időkorlát előtt érkezik).
+A tartós időzítő létrehozásához hívja a következőt: `context.CreateTimer` . Az értesítés fogadása: `context.WaitForExternalEvent` . Ezt követően el kell döntenie, hogy a `Task.WhenAny` rendszer meghívja-e a kiterjesztést (időtúllépés történik) vagy feldolgozza a jóváhagyást (a jóváhagyás az időkorlát előtt érkezik).
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -343,7 +429,37 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-A tartós időzítő létrehozásához hívja `context.df.createTimer`a következőt:. Az értesítés fogadása: `context.df.waitForExternalEvent`. Ezt követően `context.df.Task.any` el kell döntenie, hogy a rendszer meghívja-e a kiterjesztést (időtúllépés történik) vagy feldolgozza a jóváhagyást (a jóváhagyás az időkorlát előtt érkezik).
+A tartós időzítő létrehozásához hívja a következőt: `context.df.createTimer` . Az értesítés fogadása: `context.df.waitForExternalEvent` . Ezt követően el kell döntenie, hogy a `context.df.Task.any` rendszer meghívja-e a kiterjesztést (időtúllépés történik) vagy feldolgozza a jóváhagyást (a jóváhagyás az időkorlát előtt érkezik).
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("RequestApproval", None)
+
+    due_time = context.current_utc_datetime + timedelta(hours=72)
+    durable_timeout_task = context.create_timer(due_time)
+    approval_event_task = context.wait_for_external_event("ApprovalEvent")
+
+    winning_task = yield context.task_any([approval_event_task, durable_timeout_task])
+
+    if approval_event_task == winning_task:
+        durable_timeout_task.cancel()
+        yield context.call_activity("ProcessApproval", approval_event_task.result)
+    else:
+        yield context.call_activity("Escalate", None)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+A tartós időzítő létrehozásához hívja a következőt: `context.create_timer` . Az értesítés fogadása: `context.wait_for_external_event` . Ezt követően el kell döntenie, hogy a `context.task_any` rendszer meghívja-e a kiterjesztést (időtúllépés történik) vagy feldolgozza a jóváhagyást (a jóváhagyás az időkorlát előtt érkezik).
 
 ---
 
@@ -355,7 +471,7 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 Egy esemény is kiemelhető a tartós összehangoló ügyféllel egy másik függvényből ugyanabban a Function alkalmazásban:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -380,6 +496,18 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.durable_functions as df
+
+
+async def main(client: str):
+    durable_client = df.DurableOrchestrationClient(client)
+    is_approved = True
+    await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
+```
+
 ---
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>Minta #6: aggregátor (állapot-nyilvántartó entitások)
@@ -392,7 +520,7 @@ A minta a normál, állapot nélküli függvények használatával történő me
 
 [Tartós entitások](durable-functions-entities.md) használatával egyszerűen implementálhatja ezt a mintát egyetlen függvényként.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -415,7 +543,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-A tartós entitások osztályként is modellezése a .NET-ben. Ez a modell akkor lehet hasznos, ha a műveletek listája rögzített, és nagy lesz. A következő példa az `Counter` entitás egyenértékű implementációját használja .net-osztályok és-metódusok használatával.
+A tartós entitások osztályként is modellezése a .NET-ben. Ez a modell akkor lehet hasznos, ha a műveletek listája rögzített, és nagy lesz. A következő példa az entitás egyenértékű implementációját `Counter` használja .net-osztályok és-metódusok használatával.
 
 ```csharp
 public class Counter
@@ -457,11 +585,15 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+A tartós entitások jelenleg nem támogatottak a Pythonban.
+
 ---
 
 Az ügyfelek az entitás- [ügyfél kötésének](durable-functions-bindings.md#entity-client)használatával sorba helyezni *műveleteket* (más néven "jelzés").
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -493,9 +625,13 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+A tartós entitások jelenleg nem támogatottak a Pythonban.
+
 ---
 
-Az Entity functions [Durable Functions 2,0](durable-functions-versions.md) -es és újabb verziókban érhető el.
+Az Entity functions a C# és a JavaScript [Durable Functions 2,0](durable-functions-versions.md) -es és újabb verziókban érhető el.
 
 ## <a name="the-technology"></a>A technológia
 
@@ -515,6 +651,7 @@ A következő, a nyelvfüggő gyors útmutatók egyikének elvégzésével megke
 
 * [C# a Visual Studio 2019 használatával](durable-functions-create-first-csharp.md)
 * [JavaScript a Visual Studio Code használatával](quickstart-js-vscode.md)
+* [Python a Visual Studio Code használatával](quickstart-python-vscode.md)
 
 Mindkét rövid útmutatóban helyileg létrehozhatja és tesztelheti a "Hello World" tartós funkciót. Ezután közzéteheti a függvénykódot az Azure-ban. Az Ön által létrehozott függvény összehangolja és láncokba rendezi a más függvények hívásait.
 

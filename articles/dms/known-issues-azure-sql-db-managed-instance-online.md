@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 65bbc9f66ceb732a8f773f0b49cd46f99750a7d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 871ea665d23a5fba644448ddb6c596179d47bb3f
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196313"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106407"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Ismert problémák/áttelepítési korlátozások az Azure SQL felügyelt példányaihoz való online áttelepítéssel
 
@@ -62,6 +62,6 @@ Az SQL Serverról az Azure SQL felügyelt példányra való online áttelepíté
 
 - **Központi telepítés**
 
-    Az SQL felügyelt példánya egy olyan Pásti szolgáltatás, amely automatikus javítással és verzióval frissül. Az SQL felügyelt példányának áttelepítése során a nem kritikus frissítések akár 36 óráig is segítenek. Ezt követően (és a kritikus frissítések esetében), ha az áttelepítés megszakad, a folyamat visszaállítja a teljes visszaállítási állapotot.
+    Az SQL felügyelt példánya egy olyan Pásti szolgáltatás, amely automatikus javítással és verzióval frissül. Az SQL felügyelt példányának áttelepítése során a nem kritikus frissítések akár 36 óráig is tarthatók. Ezt követően (és a kritikus frissítések esetében), ha az áttelepítés megszakad, a folyamat visszaállítja a teljes visszaállítási állapotot.
 
     Az áttelepítési átváltás csak a teljes biztonsági mentés visszaállítása után hívhatók meg, és a rendszer az összes naplózott biztonsági mentést felhasználja. Ha az éles környezetbe történő áttelepítés átállásos érintett, forduljon az [Azure DMS visszajelzési aliasához](mailto:dmsfeedback@microsoft.com).

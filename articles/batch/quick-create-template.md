@@ -4,12 +4,12 @@ description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladato
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: a4d2e791d810a55b765669c8e909cf448a68fc99
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 1e3becaa8a71fbb0f3c7baea97b57a03722a99cc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266899"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262684"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Gyors útmutató: batch-fiók létrehozása Azure Resource Manager sablon használatával
 
@@ -23,7 +23,7 @@ Aktív Azure-előfizetéssel kell rendelkeznie.
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-batch-account-with-storage"></a>Batch-fiók létrehozása a Storage szolgáltatással
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
@@ -34,7 +34,7 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
 Két Azure-erőforrás van definiálva a sablonban:
 
 - [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): létrehoz egy Storage-fiókot.
-- [Microsoft. batch/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts): létrehoz egy batch-fiókot.
+- [Microsoft.BatCH/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts): létrehoz egy batch-fiókot.
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -64,7 +64,7 @@ Ebben a példában a sablon telepítéséhez a Azure Portal használjuk. A Azure
 
 A központi telepítést a létrehozott erőforráscsoporthoz való navigálással ellenőrizheti Azure Portal. Az **Áttekintés** képernyőn ellenőrizze, hogy a Batch-fiók és a Storage-fiók található-e.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy az ezt követő [oktatóanyagokkal](./tutorial-parallel-dotnet.md)dolgozik tovább, akkor előfordulhat, hogy ezeket az erőforrásokat helyben szeretné hagyni. Ha már nincs szüksége rájuk, [törölheti az erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group)is, amely törli a Batch-fiókot és a létrehozott Storage-fiókot is.
 

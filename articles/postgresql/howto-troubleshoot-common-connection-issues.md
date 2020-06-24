@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: c0011889e59470d94e650a19c6713074155c63fa
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562219"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106548"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló kapcsolódási problémáinak elhárítása
 
@@ -48,8 +48,9 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for PostgreSQLh
 
 * Kiszolgáló tűzfal-konfigurációja: Ellenőrizze, hogy a Azure Database for PostgreSQL kiszolgáló tűzfala úgy van-e konfigurálva, hogy engedélyezze a kapcsolódást az ügyfélről, beleértve a proxykiszolgálót és az átjárókat is.
 * Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. A kiszolgáló azon IP-címeit és portjait, amelyeket nem lehet engedélyezni, valamint az alkalmazások nevét, például a PostgreSQL-t egyes tűzfalakon.
-* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva * \@* , például a kiszolgáló neve a (z) vagy a felhasználónévben lévő kiszolgálónév-utótagnál.
+* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) vagy a felhasználónévben lévő * \@ kiszolgálónév* -utótagnál.
 * Ha úgy látja, hogy a hiba _-kiszolgáló nincs konfigurálva az IPv6-kapcsolatok engedélyezésére_, vegye figyelembe, hogy az alapszintű csomag nem támogatja az VNet-szolgáltatási végpontokat. El kell távolítania a Microsoft. SQL-végpontot abból az alhálózatból, amely az alapszintű kiszolgálóhoz próbál csatlakozni.
+* Ha a _"* * *" kapcsolati hiba sslmode értéke érvénytelen, ha az SSL-támogatás nincs lefordítva a_ hibánál, az azt jelenti, hogy a PostgreSQL-ügyfél nem támogatja az SSL-t. Az ügyféloldali libpq valószínűleg nem a "--with-OpenSSL" jelzővel lett lefordítva. Próbáljon meg csatlakozni egy olyan PostgreSQL-ügyféllel, amely SSL-támogatással rendelkezik. 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 

@@ -3,12 +3,12 @@ title: Gyakori kérdések – SAP HANA-adatbázisok biztonsági mentése Azure-b
 description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: ddc4af9a164de3a822e8aebd6c0a4db769ec62a0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248804"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262582"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -18,11 +18,11 @@ Ez a cikk az SAP HANA adatbázisok Azure Backup szolgáltatással történő biz
 
 ### <a name="how-many-full-backups-are-supported-per-day"></a>Hány teljes biztonsági mentést támogat naponta?
 
-Naponta csak egy teljes biztonsági mentést támogatunk. A különbözeti biztonsági másolat és a teljes biztonsági mentés ugyanazon a napon aktiválódik.
+Naponta csak egy teljes biztonsági mentést támogatunk. Ugyanazon a napon nem rendelkezhet különbözeti biztonsági mentéssel és teljes biztonsági mentéssel.
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>A sikeres biztonsági mentési feladatok létrehoznak riasztásokat?
 
-Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A rendszer csak a sikertelen biztonsági mentési feladatokhoz küld riasztásokat. A portálon megjelenő riasztások részletes viselkedését [itt](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)dokumentáljuk. Ha azonban érdekli, hogy a sikeres feladatok esetében is vannak riasztások, használhatja a [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A rendszer csak a sikertelen biztonsági mentési feladatokhoz küld riasztásokat. A portálon megjelenő riasztások részletes viselkedését [itt](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)dokumentáljuk. Ha azonban még a sikeres feladatok esetében is érdekli a riasztás, [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)is használhatja.
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Láthatom az ütemezett biztonsági mentési feladatokat a biztonsági mentési feladatok menüben?
 
@@ -45,7 +45,7 @@ Az átnevezett adatbázist új adatbázisként kezeli a rendszer. Ezért a szolg
 
 Tekintse át az [előfeltételeket](tutorial-backup-sap-hana-db.md#prerequisites) , valamint azt, hogy [az előzetes regisztrációs parancsfájl milyen szakaszt tartalmaz](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) .
 
-### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Milyen engedélyeket kell beállítani az Azure-hoz a SAP HANA adatbázisok biztonsági mentéséhez?
+### <a name="what-permissions-should-be-set-so-azure-can-back-up-sap-hana-databases"></a>Milyen engedélyeket kell beállítani, hogy az Azure biztonsági másolatot készítsen SAP HANA adatbázisokról?
 
 Az előzetes regisztrációs parancsfájl futtatásakor a szükséges engedélyek megadásával engedélyezheti az Azure számára a SAP HANA adatbázisok biztonsági mentését. [Itt](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)megtalálhatja az előzetes regisztrációs szkriptet.
 
@@ -55,11 +55,7 @@ Tekintse át a hibaelhárítási útmutató [ezen szakaszát](https://docs.micro
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Be lehet állítani az Azure HANA Backup szolgáltatást egy virtuális IP-cím (terheléselosztó) és nem virtuális gép között?
 
-Jelenleg nem áll rendelkezésre a megoldás beállítása a virtuális IP-címekre. A megoldás végrehajtásához virtuális gépre van szükség.
-
-### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>Van SAP HANA rendszer-replikáció (HSR), hogyan konfigurálható a biztonsági mentés ehhez a telepítőhöz?
-
-A HSR elsődleges és másodlagos csomópontjai két önálló, nem kapcsolódó virtuális gépre lesznek kezelve. Konfigurálnia kell a biztonsági mentést az elsődleges csomóponton, és a feladatátvétel megkezdése után konfigurálnia kell a biztonsági mentést a másodlagos csomóponton (amely most az elsődleges csomópont lesz). Nincs automatikus feladatátvétel a másik csomópontra történő biztonsági mentés során.
+Jelenleg nincs lehetőség arra, hogy a megoldást a virtuális IP-címekre állítsa be. A megoldás végrehajtásához virtuális gépre van szükség.
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Hogyan helyezhetek át egy igény szerinti biztonsági mentést a helyi fájlrendszerbe az Azure-tároló helyett?
 
@@ -72,6 +68,40 @@ A HSR elsődleges és másodlagos csomópontjai két önálló, nem kapcsolódó
 1. Térjen vissza az előző beállításokra, hogy a biztonsági mentések az Azure-tárolóba haladjanak:
     1. Enable_auto_log_backup beállítása **Igen** értékre
     1. Log_backup_using_backint beállítása **true (igaz** ) értékre
+
+### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>Hogyan használhatom a SAP HANA biztonsági mentést a HANA-replikálási beállítással?
+
+A Azure Backup jelenleg nem képes megérteni egy HSR beállítását. Ez azt jelenti, hogy a HSR elsődleges és másodlagos csomópontjai két önálló, nem kapcsolódó virtuális gépre lesznek kezelve. Először konfigurálnia kell a biztonsági mentést az elsődleges csomóponton. Ha feladatátvétel történik, a biztonsági mentést a másodlagos csomóponton kell konfigurálni (amely most az elsődleges csomópont lesz). Nincs automatikus feladatátvétel a másik csomópontra történő biztonsági mentésből.
+
+Ha az aktív (elsődleges) csomópontról szeretne biztonsági másolatot készíteni egy adott időpontra vonatkozóan, **átválthatja a védelmet** a másodlagos csomópontra, amely most már az elsődleges feladatátvétel után válik elérhetővé.
+
+Az alábbi lépéseket követve hajthatja végre a **kapcsoló védelmét**:
+
+- A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) (az adatmegőrzéssel) az elsődlegesen
+- Az [előzetes regisztrációs parancsfájl](https://aka.ms/scriptforpermsonhana) futtatása a másodlagos csomóponton
+- A másodlagos csomóponton [található adatbázisok felderítése](tutorial-backup-sap-hana-db.md#discover-the-databases) és a [biztonsági mentések konfigurálása](tutorial-backup-sap-hana-db.md#configure-backup)
+
+Ezeket a lépéseket manuálisan kell végrehajtani minden feladatátvétel után. Ezeket a lépéseket a Azure Portalon kívül parancssori/HTTP-REST-en keresztül is végrehajthatja. A lépések automatizálásához használhatja az Azure-runbook.
+
+Itt látható egy részletes példa arra, hogyan kell elvégezni a **váltást** :
+
+Ebben a példában két csomóponttal rendelkezik – az 1. csomópont (elsődleges) és a 2. csomópont (másodlagos) a HSR-készletben.  A biztonsági mentések konfigurálása az 1. csomóponton történik. Ahogy fent említettük, ne próbálkozzon még a biztonsági másolatok konfigurálásával a 2. csomóponton.
+
+Ha az első feladatátvétel történik, a 2. csomópont lesz az elsődleges. Majd
+
+1. Állítsa le az 1. csomópont (korábbi elsődleges) védelmét az adat megőrzése beállítással.
+1. Futtassa az előzetes regisztrációs parancsfájlt a 2. csomóponton (amely most az elsődleges).
+1. Fedezze fel az adatbázisokat a 2. csomóponton, rendeljen biztonsági mentési házirendet, és konfigurálja a biztonsági mentéseket
+
+Ezt követően az első teljes biztonsági mentés a 2. csomóponton, a befejezést követően pedig a naplók biztonsági mentései kezdődnek.
+
+Ha a következő feladatátvétel történik, az 1. csomópont ismét elsődleges lesz, a 2. csomópont pedig másodlagos lesz. Most ismételje meg a folyamatot:
+
+1. Állítsa le a 2. csomópont védelmét az adat megőrzése beállítással.
+1. Futtassa az előzetes regisztrációs parancsfájlt az 1. csomóponton (amely még az elsődleges lesz)
+1. Ezután [folytassa a biztonsági mentést](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) az 1. csomóponton a szükséges házirenddel (mivel a biztonsági mentéseket korábban leállították az 1. csomóponton).
+
+Ezután a teljes biztonsági mentés újra aktiválódik az 1. csomóponton, majd a befejezés után a naplók biztonsági mentései megkezdődnek.
 
 ## <a name="restore"></a>Visszaállítás
 
@@ -87,9 +117,9 @@ Győződjön meg arról, hogy a helyreállítás **kényszerítése** beállít�
 
 A jelenleg támogatott visszaállítási típusok megtekintéséhez tekintse meg a [1642148](https://launchpad.support.sap.com/#/notes/1642148) -es SAP HANA megjegyzését.
 
-### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>Használhatok a SLES-on futó adatbázis biztonsági másolatát egy RHEL HANA rendszerre való visszaállításra, vagy fordítva?
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-an-rhel-hana-system-or-vice-versa"></a>Használhatok a SLES-on futó adatbázis biztonsági másolatát egy RHEL HANA rendszerre való visszaállításra, vagy fordítva?
 
-Igen, a SLES-on futó HANA-adatbázison aktiválható streaming Backups használatával visszaállíthatja egy RHEL HANA rendszerre, és fordítva. Ez azt jelenti, hogy a rendszer a folyamatos átviteli biztonsági mentést is lehetővé teszi. Azonban győződjön meg arról, hogy a HANA rendszer, amelyet vissza szeretne állítani, és a visszaállításhoz használt HANA rendszer is kompatibilis a visszaállítással az SAP alapján. Tekintse meg SAP HANA Megjegyzés [1642148](https://launchpad.support.sap.com/#/notes/1642148) , hogy mely típusú visszaállítási típusok kompatibilisek.
+Igen, a SLES-on futó HANA-adatbázison aktiválható streaming Backups használatával visszaállíthatja egy RHEL HANA rendszerre, és fordítva. Ez azt jelenti, hogy a rendszer a folyamatos átviteli biztonsági mentést is lehetővé teszi. Azonban győződjön meg arról, hogy a HANA rendszer, amelyet vissza szeretne állítani, és a visszaállításhoz használt HANA-rendszer egyaránt kompatibilis az SAP alapján történő visszaállítással. Tekintse meg SAP HANA Megjegyzés [1642148](https://launchpad.support.sap.com/#/notes/1642148) , hogy mely típusú visszaállítási típusok kompatibilisek.
 
 ## <a name="next-steps"></a>További lépések
 

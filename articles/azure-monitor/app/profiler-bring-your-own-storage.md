@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: a185ec4938670519029abaf6fa4d23b7bf5c5399
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 2f928ac2f8772942eb748d68a65662938b1405ed
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466530"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84882518"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>A saját tároló (BYOS) beállítása a Application Insights Profiler és a Snapshot Debugger
 
@@ -32,7 +32,7 @@ Ha saját tárhelyet használ, a rendszer feltölti ezeket az összetevőket egy
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Győződjön meg arról, hogy a Storage-fiókját a Application Insights erőforrással megegyező helyen hozza létre. Pl. Ha a Application Insights-erőforrás az USA 2. nyugati régiójában található, a Storage-fióknak az USA 2. nyugati régiójában is szerepelnie kell. 
-* Adja meg a "Storage blob közreműködő" szerepkört a HRE alkalmazás "diagnosztikai szolgáltatások megbízható tároló-hozzáférése" számára a Storage-fiókban a Access Control (IAM) felhasználói felületen keresztül.
+* Adja meg a "Storage blob-adatközreműködői" szerepkört a HRE alkalmazás "diagnosztikai szolgáltatások megbízható tároló-hozzáférése" számára a Storage-fiókban a Access Control (IAM) felhasználói felületén keresztül.
 * Ha engedélyezve van a privát hivatkozás, konfigurálja a további beállítást, hogy engedélyezze a kapcsolatot a megbízható Microsoft-szolgáltatással a Virtual Network. 
 
 ## <a name="how-to-enable-byos"></a>A BYOS engedélyezése
@@ -156,7 +156,7 @@ A BYOS-diagnosztika (Profiler/Debugger) konfigurálásához két lehetőség kö
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Konfigurálás Azure Resource Manager sablon használatával
 
-1. Hozzon létre egy Azure Resource Manager sablonfájlt a következő tartalommal (BYOS. template. JSON).
+1. Hozzon létre egy Azure Resource Manager sablonfájlt a következő tartalommal (byos.template.js).
     ```json
     {
       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",

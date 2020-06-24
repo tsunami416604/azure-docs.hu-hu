@@ -11,17 +11,17 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 3dd62d63216d7694f91c9024e4ee57272070a69c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321648"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711000"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure hálózati adapter IP-címének hozzáadása, módosítása vagy eltávolítása
 
@@ -54,10 +54,10 @@ A hálózati adapterekhez szükség szerint annyi [magán](#private) -és [nyilv
 
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
-   |Name|Igen|Egyedinek kell lennie a hálózati adapterhez|
-   |Típus|Igen|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
-   |Magánhálózati IP-cím hozzárendelési módszere|Igen|[**Dinamikus**](#dynamic): az Azure a következő elérhető címeket rendeli hozzá a hálózati adapterhez tartozó alhálózat-címtartomány számára. [**Statikus**](#static): Ha a hálózati adaptert a (z) rendszerhez tartozó alhálózat-címtartomány számára nem használt címeket rendel hozzá.|
-   |Nyilvános IP-cím|Nem|**Letiltva:** A nyilvános IP-cím erőforrás jelenleg nincs társítva az IP-konfigurációhoz. **Engedélyezve:** Válasszon egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. Ha meg szeretné tudni, hogyan hozható létre nyilvános IP-cím, olvassa el a [nyilvános IP-címekkel](virtual-network-public-ip-address.md#create-a-public-ip-address) foglalkozó cikket.|
+   |Name|Yes|Egyedinek kell lennie a hálózati adapterhez|
+   |Típus|Yes|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
+   |Magánhálózati IP-cím hozzárendelési módszere|Yes|[**Dinamikus**](#dynamic): az Azure a következő elérhető címeket rendeli hozzá a hálózati adapterhez tartozó alhálózat-címtartomány számára. [**Statikus**](#static): Ha a hálózati adaptert a (z) rendszerhez tartozó alhálózat-címtartomány számára nem használt címeket rendel hozzá.|
+   |Nyilvános IP-cím|No|**Letiltva:** A nyilvános IP-cím erőforrás jelenleg nincs társítva az IP-konfigurációhoz. **Engedélyezve:** Válasszon egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. Ha meg szeretné tudni, hogyan hozható létre nyilvános IP-cím, olvassa el a [nyilvános IP-címekkel](virtual-network-public-ip-address.md#create-a-public-ip-address) foglalkozó cikket.|
 6. Manuálisan adja hozzá a másodlagos magánhálózati IP-címeket a virtuális gép operációs rendszeréhez a [több IP-cím társítása a virtuális gép operációs](virtual-network-multiple-ip-addresses-portal.md#os-config) rendszeréhez című cikk utasításait követve. Az IP-címek virtuális gépi operációs rendszerhez való manuális hozzáadása előtt tekintse meg a [magánhálózati](#private) IP-címek című témakört. Ne adjon meg nyilvános IP-címeket a virtuális gép operációs rendszeréhez.
 
 **Parancsok**
@@ -202,7 +202,7 @@ A rendszer létrehoz egy nyilvános IP-címet az alapszintű vagy a standard SKU
 > [!NOTE]
 > Ha egy standard termékváltozatú nyilvános IP-címet hozzárendel egy virtuális gép hálózati adapteréhez, kifejezetten engedélyeznie kell a kívánt forgalmat egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups). Az erőforrással történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy hálózati biztonsági csoportot, és kifejezetten nem engedélyezi a kívánt forgalmat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha eltérő IP-konfigurációval rendelkező virtuális gépet szeretne létrehozni, olvassa el a következő cikkeket:
 
 |Tevékenység|Eszköz|

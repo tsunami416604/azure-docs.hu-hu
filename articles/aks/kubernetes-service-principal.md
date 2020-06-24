@@ -3,13 +3,13 @@ title: Az Azure Kubernetes Services (AKS) szolgáltatásnevei
 description: Az Azure Kubernetes Service-ben található fürthöz tartozó Azure Active Directory szolgáltatásnév létrehozása és felügyelete
 services: container-service
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/16/2020
+ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392724"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298548"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Azure AD szolgáltatásnév létrehozásához rendelkeznie kell alkalmazásregis
 
 Ha egy másik Azure AD-bérlőből származó szolgáltatásnevet használ, további szempontokat is figyelembe kell vennie a fürt telepítésekor elérhető engedélyek köré. Előfordulhat, hogy nem rendelkezik a megfelelő engedélyekkel a címtáradatok olvasásához és írásához. További információ: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory-ben?][azure-ad-permissions]
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Szolgáltatásnév automatikus létrehozása és használata
 
@@ -81,13 +81,16 @@ Ha az Azure Portal használatával helyez üzembe egy AKS-fürtöt, akkor a **Ku
 
 Az AK-fürthöz tartozó egyszerű szolgáltatás használható más erőforrások elérésére. Ha például az AK-fürtöt egy meglévő Azure-beli virtuális hálózati alhálózatba kívánja telepíteni, vagy a Azure Container Registryhoz (ACR-hez) szeretne csatlakozni, akkor az erőforrásokhoz való hozzáférést delegálnia kell az egyszerű szolgáltatáshoz.
 
-Az engedélyek delegálásához hozzon létre egy szerepkör-hozzárendelést az az [role hozzárendelés Create][az-role-assignment-create] paranccsal. `appId` Rendeljen hozzá egy adott hatókörhöz, például egy erőforráscsoport vagy egy virtuális hálózati erőforráshoz. A szerepkör ezután meghatározza, hogy az egyszerű szolgáltatásnév milyen engedélyekkel rendelkezik az erőforráson, ahogy az az alábbi példában is látható:
+Az engedélyek delegálásához hozzon létre egy szerepkör-hozzárendelést az az [role hozzárendelés Create][az-role-assignment-create] paranccsal. Rendeljen hozzá `appId` egy adott hatókörhöz, például egy erőforráscsoport vagy egy virtuális hálózati erőforráshoz. A szerepkör ezután meghatározza, hogy az egyszerű szolgáltatásnév milyen engedélyekkel rendelkezik az erőforráson, ahogy az az alábbi példában is látható:
 
 ```azurecli
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
 ```
 
-Az `--scope` erőforrásnak teljes erőforrás-azonosítónak kell lennie, például *\</Subscriptions/GUID\>/resourceGroups/myResourceGroup* vagy */Subscriptions/\<GUID/resourceGroups/myResourceGroupVnet/Providers/Microsoft.Network/virtualNetworks/myVnet\>*
+Az `--scope` erőforrásnak teljes erőforrás-azonosítónak kell lennie, például */Subscriptions/ \<guid\> /ResourceGroups/myResourceGroup* vagy */Subscriptions/ \<guid\> /resourceGroups/myResourceGroupVnet/Providers/Microsoft.Network/virtualNetworks/myVnet*
+
+> [!NOTE]
+> Ha eltávolította a közreműködő szerepkör-hozzárendelést a csomópont-erőforráscsoporthoz, az alábbi műveletek sikertelenek lehetnek.  
 
 A következő részek részletesen ismertetik a közös delegálásokat, amelyeket érdemes lehet megtennie.
 
@@ -106,9 +109,12 @@ Használhat olyan speciális hálózatkezelést, ahol a virtuális hálózat és
   - *Microsoft. Network/nyilvános IP/csatlakozás/művelet*
   - *Microsoft. Network/nyilvános IP/READ*
   - *Microsoft. Network/nyilvános IP/Write*
+  - Ha [Egyéni útválasztási táblákat használ a Kubenet-fürtökhöz](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) , adja hozzá ezeket a további engedélyeket:
+    - *Microsoft. Network/routeTables/Write*
+    - *Microsoft. Network/routeTables/READ*
 - Vagy rendelje hozzá a [hálózati közreműködő][rbac-network-contributor] beépített szerepkört a virtuális hálózaton belüli alhálózathoz.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 Előfordulhat, hogy egy másik erőforráscsoport meglévő lemez-erőforrásaihoz is hozzá kell férnie. Rendelje hozzá a következő szerepkör-engedélyek egyikét:
 
@@ -127,12 +133,12 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 
 - A Kubernetes egyszerű szolgáltatása része a fürtkonfigurációnak. Azonban nem ajánlott az identitást használni a fürt üzembe helyezésére.
 - Alapértelmezés szerint az egyszerű szolgáltatás hitelesítő adatai egy évig érvényesek. Bármikor [frissítheti vagy elforgathatja a szolgáltatás egyszerű hitelesítő adatait][update-credentials] .
-- Minden egyszerű szolgáltatás társítva van egy Azure AD-alkalmazáshoz. A Kubernetes-fürthöz tartozó egyszerű szolgáltatás társítható bármely érvényes Azure AD-alkalmazás nevével (például: *https://www.contoso.org/example*). Az alkalmazás URL-címének nem szükséges valódi végpontnak lennie.
+- Minden egyszerű szolgáltatás társítva van egy Azure AD-alkalmazáshoz. A Kubernetes-fürthöz tartozó egyszerű szolgáltatás társítható bármely érvényes Azure AD-alkalmazás nevével (például: *https://www.contoso.org/example* ). Az alkalmazás URL-címének nem szükséges valódi végpontnak lennie.
 - Amikor megadja a szolgáltatásnév **Client ID-ját** (Ügyfél-azonosítóját), használja az `appId` értékét.
 - A Kubernetes-fürt ügynök csomópontjának virtuális gépei esetében az egyszerű szolgáltatás hitelesítő adatai a fájlban tárolódnak.`/etc/kubernetes/azure.json`
 - Ha az [az aks create][az-aks-create] parancsot használja a szolgáltatásnév automatikus létrehozásához, a szolgáltatásnév hitelesítő adatai a `~/.azure/aksServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
-- Ha nem adott meg konkrét szolgáltatásnevet a további AK CLI-parancsokban, a `~/.azure/aksServicePrincipal.json` rendszer az alapértelmezett egyszerű szolgáltatást használja.  
-- Szükség esetén eltávolíthatja a aksServicePrincipal. JSON fájlt is, és az AK létrehoz egy új szolgáltatásnevet.
+- Ha nem adott meg konkrét szolgáltatásnevet a további AK CLI-parancsokban, a rendszer az alapértelmezett egyszerű szolgáltatást `~/.azure/aksServicePrincipal.json` használja.  
+- Szükség esetén eltávolíthatja a fájl aksServicePrincipal.jsis, és az AK létrehoz egy új szolgáltatásnevet.
 - Az [az aks create][az-aks-create] használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott szolgáltatásnév nem törlődik.
     - Az egyszerű szolgáltatásnév törléséhez kérdezze le a *servicePrincipalProfile. clientId* , majd törölje az az [AD App delete][az-ad-app-delete]paranccsal. Cserélje le a következő erőforráscsoportot és a fürtök nevét a saját értékeire:
 
@@ -156,7 +162,7 @@ A következő parancs használatával keresse meg a hitelesítő adatok fájljá
 ls -la $HOME/.azure/aksServicePrincipal.json
 ```
 
-Az egyszerű szolgáltatás hitelesítő adatainak alapértelmezett lejárati ideje egy év. Ha a *aksServicePrincipal. JSON* fájl egy évnél régebbi, törölje a fájlt, és próbálkozzon újra egy AK-fürt üzembe helyezésével.
+Az egyszerű szolgáltatás hitelesítő adatainak alapértelmezett lejárati ideje egy év. Ha a *aksServicePrincipal.js* fájl egy évnél régebbi, törölje a fájlt, és próbálja meg újból TELEPÍTENI az AK-fürtöt.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 6276d198e547efec3d2e3cb88816da5e2b593aae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa1b4287899aaff9ede4832e999603773d79d28c
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644688"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194127"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark az Azure szinapszis Analytics alapvető fogalmakkal
 
@@ -40,27 +40,27 @@ Amikor beküld egy második feladatot, majd ha van kapacitás a készletben, akk
 
 ## <a name="examples"></a>Példák
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 
 - Létrehoz egy SP1 nevű Spark-készletet; a fürt rögzített mérete 20 csomópont.
 - Elküld egy jegyzetfüzet-feladatot, a J1, amely 10 csomópontot használ, egy Spark-példányt, a SI1 a feladatok feldolgozásához.
 - Most elküld egy másik feladatot, a J2, amely 10 csomópontot használ, mivel a készletben és a példányban is van kapacitás, a J2 a SI1 dolgozza fel.
 - Ha a J2 11 csomópontra kérték, a SP1 vagy a SI1 nem volt kapacitása. Ebben az esetben, ha a J2 egy jegyzetfüzetből származik, a rendszer elutasítja a feladatot. Ha a J2 egy batch-feladatokból származik, az várólistára kerül.
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 - Létrehoz egy Spark Pool-hívást SP2; engedélyezve van a 10 – 20 csomópontos autoskálázás
 - Elküld egy jegyzetfüzet-feladatot, a J1, amely 10 csomópontot használ, egy Spark-példányt, a SI1-t, amely a feladatok feldolgozásához jön létre.
 - Most elküld egy másik, 10 csomópontot használó feladatot, a J2, mert a készletben továbbra is kapacitás áll rendelkezésre, így a példányok automatikusan 20 csomópontra növekednek, és J2 a folyamatokat.
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 
 - Létrehoz egy SP1 nevű Spark-készletet; a fürt rögzített mérete 20 csomópont.
 - Elküld egy jegyzetfüzet-feladatot, a J1, amely 10 csomópontot használ, egy Spark-példányt, a SI1 a feladatok feldolgozásához.
 - Egy másik felhasználó, a U2, a J3, amely 10 csomópontot használ, egy új Spark-példányt hoz létre a SI2, amely feldolgozza a feladatot.
 - Most elküld egy másik feladatot, a J2, amely 10 csomópontot használ, mivel a készletben továbbra is rendelkezésre áll a kapacitás, és a J2 a SI1 dolgozza fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 - [Apache Spark dokumentáció](https://spark.apache.org/docs/2.4.4/)

@@ -5,22 +5,22 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 515fd9bfedc5bc5d3cefda2a357c351f515fb5f5
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020863"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194671"
 ---
-# <a name="introduction"></a>Introduction (Bevezetés)
+# <a name="introduction"></a>Bevezetés
 
 Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz az Azure szinapszisban az adatoknak a Spark-készletek (előzetes verzió) és az SQL-készletek közötti hatékony átvitelét szolgálja. Az Azure szinapszis Apache Spark a szinapszis SQL-összekötő csak az SQL-készleteken működik, az SQL igény szerint nem működik.
 
-## <a name="design"></a>Tervezés
+## <a name="design"></a>Kialakítás
 
 A Spark-készletek és az SQL-készletek közötti adatátvitel a JDBC használatával végezhető el. Azonban a két elosztott rendszer, például a Spark és az SQL-készletek miatt a JDBC általában szűk keresztmetszetet jelent a soros adatátvitel során.
 
@@ -170,11 +170,11 @@ Hasonlóképpen, az olvasási forgatókönyvben olvassa el az adataikat a Scala 
 
 A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a blob-adattulajdonost, hogy mások ne tudják módosítani a hiányzó engedélyeket. Ellenőrizze, hogy a felhasználó rendelkezik-e hozzáféréssel a munkaterülethez és a jegyzetfüzetek futtatásához szükséges engedélyekhez.
 
-### <a name="option-1"></a>1. lehetőség
+### <a name="option-1"></a>1\. lehetőség
 
 - A felhasználó tárolási blob-adatközreműködőinek/tulajdonosának tétele
 
-### <a name="option-2"></a>2. lehetőség
+### <a name="option-2"></a>2\. lehetőség
 
 - A következő ACL-eket kell megadnia a mappa struktúrájához:
 

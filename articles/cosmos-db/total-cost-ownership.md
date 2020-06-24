@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac9e3fd4fec8ab2fe9f0c93d46489e67feebe88d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72754795"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116264"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Teljes tulajdonlási költség (TCO) Azure Cosmos DB
 
@@ -30,7 +30,7 @@ A Azure Cosmos DB kiszolgáló nélküli kiépítési modellje kiküszöböli az
 
 * **Nincs szükség NoSQL DevOps-felügyeletre:** Azure Cosmos DB az egyiknek nem kell DevOps használnia a központi telepítések kezeléséhez, karbantartás, méretezés vagy javítás végrehajtásához. Végrehajthatja az összes olyan munkaterhelést, amelyet a helyszíni vagy a felhőalapú infrastruktúrán üzemeltetett OSS NoSQL-fürtökkel tenne.
 
-![Azure Cosmos DB tulajdonlási díja](./media/total-cost-ownership/tco.png)
+:::image type="content" source="./media/total-cost-ownership/tco.png" alt-text="Azure Cosmos DB tulajdonlási díja" border="false":::
 
 * **Rugalmas méretezési képesség:** A Azure Cosmos DB átviteli sebesség fel-és leskálázással növelhető, így csökkentheti a tulajdonosi költségeket a nem maximális időpontokban. A felhőalapú infrastruktúrán üzembe helyezett OSS NoSQL-fürtök korlátozott rugalmasságot biztosítanak, és a helyszíni üzemelő példányok nem rugalmasak a definíciók alapján. Ha Azure Cosmos DB több átviteli sebességet is kiépít, az átviteli sebesség garantált a lineáris skálázás érdekében. Ezt a garanciát a pénzügyi SLA-kat és a esetek 99% percentilis-t bármilyen méretben biztonsági mentéssel készítjük.
 

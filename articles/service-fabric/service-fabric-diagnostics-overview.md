@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282483"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712224"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorozás és diagnosztika az Azure Service Fabric
 
@@ -35,13 +35,13 @@ A felhasználók szabályozzák, hogy milyen telemetria származnak az alkalmaz�
 
 Service Fabric az események széles körét biztosítja a dobozból. Ezek a [Service Fabric események](service-fabric-diagnostics-events.md) a EventStore vagy az operatív csatornán keresztül érhetők el (a platform által elérhető Event Channel). 
 
-* Service Fabric Event channels – a Windowsban Service Fabric az események egyetlen ETW-szolgáltatóból `logLevelKeywordFilters` érhetők el, amelyek az operatív és az adat& üzenetkezelési csatornák közötti választáshoz szükségesek, így a kimenő Service Fabric események igény szerint szűrhetők. Linux rendszeren a Service Fabric események a Lttng érhető el-on keresztül érkeznek, és egy Storage-táblába kerülnek, ahonnan szükség szerint szűrhetők. Ezek a csatornák olyan kurátori és strukturált eseményeket tartalmaznak, amelyek segítségével jobban megismerheti a fürt állapotát. A diagnosztika alapértelmezés szerint engedélyezve van a fürt létrehozási idején, amely létrehoz egy Azure Storage-táblázatot, ahol a csatornákon keresztül érkező eseményeket a rendszer a jövőben lekérdezi. 
+* Service Fabric Event channels – a Windowsban Service Fabric az események egyetlen ETW-szolgáltatóból érhetők el, amelyek az `logLevelKeywordFilters` operatív és az adat& üzenetkezelési csatornák közötti választáshoz szükségesek, így a kimenő Service Fabric események igény szerint szűrhetők. Linux rendszeren a Service Fabric események a Lttng érhető el-on keresztül érkeznek, és egy Storage-táblába kerülnek, ahonnan szükség szerint szűrhetők. Ezek a csatornák olyan kurátori és strukturált eseményeket tartalmaznak, amelyek segítségével jobban megismerheti a fürt állapotát. A diagnosztika alapértelmezés szerint engedélyezve van a fürt létrehozási idején, amely létrehoz egy Azure Storage-táblázatot, ahol a csatornákon keresztül érkező eseményeket a rendszer a jövőben lekérdezi. 
 
 * EventStore – a EventStore a platform által kínált olyan szolgáltatás, amely Service Fabric platformon elérhető eseményeket biztosít a Service Fabric Explorer és a REST APIon keresztül. Láthatja, hogy mi történik a fürtben az egyes entitások esetében, például a csomópont, a szolgáltatás, az alkalmazás és a lekérdezés az esemény időpontja alapján. További információt a EventStore a [EventStore áttekintése című](service-fabric-diagnostics-eventstore.md)témakörben talál.    
 
 ![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
-A megadott diagnosztika a mezőből álló átfogó események formájában érhető el. Ezek a [Service Fabric események](service-fabric-diagnostics-events.md) illusztrálják a platform különböző entitások, például csomópontok, alkalmazások, szolgáltatások, partíciók stb. által végzett műveleteit. A fenti legutóbbi forgatókönyvben, ha egy csomópontot le kellett lépni, a platform kibocsát egy `NodeDown` eseményt, és azonnal értesítést kaphat a figyelési eszköztől. Más gyakori példák a `ApplicationUpgradeRollbackStarted` feladatátvételre vagy `PartitionReconfigured` azokra. **Ugyanezek az események Windows-és Linux-fürtökön is elérhetők.**
+A megadott diagnosztika a mezőből álló átfogó események formájában érhető el. Ezek a [Service Fabric események](service-fabric-diagnostics-events.md) illusztrálják a platform különböző entitások, például csomópontok, alkalmazások, szolgáltatások, partíciók stb. által végzett műveleteit. A fenti legutóbbi forgatókönyvben, ha egy csomópontot le kellett lépni, a platform kibocsát egy `NodeDown` eseményt, és azonnal értesítést kaphat a figyelési eszköztől. Más gyakori példák `ApplicationUpgradeRollbackStarted` `PartitionReconfigured` a feladatátvételre vagy azokra. **Ugyanezek az események Windows-és Linux-fürtökön is elérhetők.**
 
 Az eseményeket a Windows és a Linux standard csatornákon keresztül küldik el, és az ezeket támogató figyelési eszközök által is olvashatók. A Azure Monitor megoldás Azure Monitor naplók. Nyugodtan tájékozódhat [Azure monitor naplók integrálásáról](service-fabric-diagnostics-event-analysis-oms.md) , amely tartalmaz egy egyéni operatív irányítópultot a fürthöz, valamint néhány olyan mintát, amelyekről riasztásokat hozhat létre. Több fürt figyelési koncepciója a [platform szintű esemény és a napló létrehozásakor](service-fabric-diagnostics-event-generation-infra.md)érhető el.
 

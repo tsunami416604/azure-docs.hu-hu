@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240431"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112922"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online biztonsági mentési és igény szerinti adatvisszaállítás Azure Cosmos DB
 
@@ -34,7 +34,7 @@ A Azure Cosmos DB, nem csupán az adatai, hanem az adatbiztonsági másolatok is
 
 Az alábbi képen látható, hogy az USA nyugati régiójában lévő három elsődleges fizikai partícióval rendelkező Azure Cosmos-tároló hogyan készül biztonsági mentésben egy távoli Azure Blob Storage-fiókban az USA nyugati régiójában, majd replikálva az USA keleti régiójába:
 
-![Az Azure Storage GRS összes Cosmos DB entitásának rendszeres teljes biztonsági mentése](./media/online-backup-and-restore/automatic-backup.png)
+:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="Az Azure Storage GRS összes Cosmos DB entitásának rendszeres teljes biztonsági mentése" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>A saját biztonsági mentések kezelésére szolgáló beállítások
 
@@ -62,7 +62,7 @@ A véletlen törlés vagy az adatok módosítása a következő esetekben fordul
 
 * Egy megosztott ajánlat-adatbázis vagy-tároló egy megosztott ajánlati adatbázisban törölve vagy sérült
 
-A Azure Cosmos DB az összes fenti helyzetben képes visszaállítani az adatok visszaállítását. A visszaállítási folyamat mindig új Azure Cosmos-fiókot hoz létre a visszaállított adatok tárolásához. Ha nincs megadva az új fiók neve, a formátuma `<Azure_Cosmos_account_original_name>-restored1`lesz. Az utolsó számjegy megnő, ha több visszaállítást próbálnak meg. Egy előre létrehozott Azure Cosmos-fiókba nem állíthatók vissza az adathalmazok.
+A Azure Cosmos DB az összes fenti helyzetben képes visszaállítani az adatok visszaállítását. A visszaállítási folyamat mindig új Azure Cosmos-fiókot hoz létre a visszaállított adatok tárolásához. Ha nincs megadva az új fiók neve, a formátuma lesz `<Azure_Cosmos_account_original_name>-restored1` . Az utolsó számjegy megnő, ha több visszaállítást próbálnak meg. Egy előre létrehozott Azure Cosmos-fiókba nem állíthatók vissza az adathalmazok.
 
 Ha töröl egy Azure Cosmos-fiókot, visszaállíthatja az adathalmazt egy azonos nevű fiókba, ha a fiók neve nincs használatban. Ilyen esetekben azt javasoljuk, hogy a törlés után ne hozza újra létre a fiókot, mert a visszaállított adatok nem csupán ugyanazt a nevet használják, hanem a megfelelő fiók felfedését is lehetővé teszi a nehezebb helyreállításhoz. 
 

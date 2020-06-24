@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: fb79c3546037aabf5ce60905044901f0d5793990
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: cc02890cb5293e48a8065b63f4f9c799c5dda7f7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465626"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081041"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
 
@@ -107,7 +107,7 @@ Az index és az egyéb objektumok elérésének módja a kérelemben szereplő A
 
 Ha részletes, felhasználónkénti vezérlést igényel a keresési eredmények között, biztonsági szűrőket készíthet a lekérdezésekhez, és visszaküldheti az adott biztonsági identitáshoz társított dokumentumokat. Az előre definiált szerepkörök és szerepkör-hozzárendelések helyett az identitás-alapú hozzáférés-vezérlés olyan *szűrőként* van megvalósítva, amely identitások alapján metszi a dokumentumok és tartalmak keresési eredményeit. Az alábbi táblázat két módszert ismertet a jogosulatlan tartalom keresési eredményeinek kivágására.
 
-| Módszer | Description |
+| Módszer | Leírás |
 |----------|-------------|
 |[Biztonsági körülvágás identitás-szűrők alapján](search-security-trimming-for-azure-search.md)  | Dokumentálja a felhasználói identitás hozzáférés-vezérlésének megvalósításához szükséges alapszintű munkafolyamatot. Ismerteti a biztonsági azonosítók indexbe való hozzáadását, majd a tiltott tartalom eredményének kivágására szolgáló mező szűrését ismerteti. |
 |[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (HRE) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |
@@ -123,7 +123,7 @@ Ezzel szemben a szolgáltatásban üzemeltetett tartalommal kapcsolatos rendszer
 
 ## <a name="certifications-and-compliance"></a>Minősítések és megfelelőség
 
-Az Azure Cognitive Search a nyilvános felhő és a Azure Government esetében több globális, regionális és iparági szabványnak megfelelő előírásoknak is megfelelt. A teljes listához töltse le a [ **Microsoft Azure megfelelőségi ajánlatokat** ](https://aka.ms/azurecompliance) a hivatalos naplózási jelentések oldaláról.
+Az Azure Cognitive Search a nyilvános felhő és a Azure Government esetében több globális, regionális és iparági szabványnak megfelelő előírásoknak is megfelelt. A teljes listához töltse le a [ **Microsoft Azure megfelelőségi ajánlatokat** ](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) a hivatalos naplózási jelentések oldaláról.
 
 ## <a name="see-also"></a>Lásd még
 

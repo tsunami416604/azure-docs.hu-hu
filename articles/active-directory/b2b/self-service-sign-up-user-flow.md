@@ -4,20 +4,19 @@ description: A összevonása a Facebook használatával lehetővé teheti a kül
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aadbe07c5bb22c23ac32e46fdf7f102cdd33989a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 9eabee8e287d29f3a3a01b63b0d79da651be9082
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673103"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886476"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)
 |     |
@@ -105,9 +104,9 @@ Most már hozzárendelheti az alkalmazásokat a felhasználói folyamathoz.
 8. Válassza ki az alkalmazást a listából. Vagy használja a keresőmezőt az alkalmazás megkereséséhez, majd jelölje ki.
 9. Kattintson a **Kiválasztás** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Google hozzáadása a közösségi identitású szolgáltatók listájához](google-federation.md)
 - [Facebook hozzáadása a közösségi identitású szolgáltatók listájához](facebook-federation.md)
-<!-- - [Use API connectors to customize and extend your user flows via web APIs](api-connectors-overview.md) -->
-<!-- - [Add custom approval to your user flow](self-service-sign-up-add-approvals.md) -->
+- [API-összekötők használata a felhasználói folyamatok webes API-kon keresztüli testreszabásához és bővítéséhez](api-connectors-overview.md)
+- [Egyéni jóváhagyási munkafolyamat hozzáadása a felhasználói folyamathoz](self-service-sign-up-add-approvals.md)

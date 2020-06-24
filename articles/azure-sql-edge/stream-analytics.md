@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233141"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254072"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>Azure Stream Analytics feladatok használata az SQL Edge használatával
 
@@ -52,8 +52,8 @@ Az Azure SQL Edge a stream Analytics futtatókörnyezet natív implementációj�
     |Mező      | Leírás |
     |---------------|-------------|
     |Kimeneti alias | A kimeneti alias neve.|
-    |Adatbázis | Az SQL-adatbázis neve. Érvényes nevet kell adni az SQL Edge-példányon található adatbázisnak.|
-    |Kiszolgálónév | Az SQL-példány neve (vagy IP-címe) és portszáma. SQL Edge-telepítés esetén a kiszolgálónévhez használhatja a **TCP:., 1433** nevet.|
+    |Adatbázis | Az adatbázis neve. Érvényes nevet kell adni az SQL Edge-példányon található adatbázisnak.|
+    |Kiszolgáló neve | Az SQL-példány neve (vagy IP-címe) és portszáma. SQL Edge-telepítés esetén a kiszolgálónévhez használhatja a **TCP:., 1433** nevet.|
     |Felhasználónév | Olyan SQL-bejelentkezési fiók, amely adatolvasóval és adatírókkal fér hozzá a korábban megadott adatbázishoz.|
     |Jelszó | A korábban megadott SQL-bejelentkezési fiók jelszava.|
     |Tábla | A folyamatos átviteli feladatokhoz használandó tábla neve.|

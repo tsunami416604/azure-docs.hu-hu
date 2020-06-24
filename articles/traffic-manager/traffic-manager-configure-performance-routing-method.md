@@ -7,17 +7,17 @@ documentationcenter: ''
 author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: f5e9b7690c28793a35c692a6125a6b11c7a140a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5299c72d96fd7453d7df352ca842b4ede35f41fd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938760"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707667"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>A teljesítmény forgalmának útválasztási módszerének konfigurálása
 
@@ -32,7 +32,7 @@ A teljesítmény-forgalom útválasztási módszere lehetővé teszi, hogy a vé
     1. A **forgalom-útválasztási módszer beállításainál**az **útválasztási módszernél** válassza a **teljesítmény**lehetőséget.
     2. A következő módon állítsa be a profil összes végpontján megegyező **Endpoint monitor beállításait** :
         1. Válassza ki a megfelelő **protokollt**, és adja meg a **portszámot** . 
-        2. Az **elérési út** mezőbe írja */* be a perjelet. A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A "/" perjel a relatív elérési útra érvényes bejegyzés, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezés).
+        2. Az **elérési út** mezőbe írja be a perjelet */* . A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A "/" perjel a relatív elérési útra érvényes bejegyzés, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezés).
         3. Kattintson a lap tetején található **Mentés**gombra.
 5.  Tesztelje a konfiguráció módosításait a következőképpen:
     1.  A portál keresési sávjában keressen rá a Traffic Manager profilnév nevére, és kattintson a Traffic Manager profilra a megjelenített eredmények között.

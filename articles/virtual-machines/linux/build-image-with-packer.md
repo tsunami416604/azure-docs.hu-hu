@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: fa899764e4e80e7eba849e02d617c8c1ca2ae410
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 587e339f2c2d91792ef1c342f7a1f8363da63626
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792700"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106013"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Linuxos virtuálisgép-lemezképek létrehozása az Azure-ban a csomagoló használatával
 Az Azure-ban minden virtuális gép (VM) egy olyan rendszerképből jön létre, amely meghatározza a Linux-disztribúciót és az operációs rendszer verzióját. A képek tartalmazhatnak előre telepített alkalmazásokat és konfigurációkat is. Az Azure piactér számos első és harmadik féltől származó rendszerképet biztosít a leggyakoribb disztribúciók és alkalmazási környezetek számára, vagy létrehozhat saját igényeire szabott egyéni rendszerképeket is. Ez a cikk részletesen ismerteti, hogyan lehet egyéni lemezképeket definiálni és létrehozni az Azure-ban a nyílt forráskódú eszköz- [csomagoló](https://www.packer.io/) használatával.
@@ -63,13 +63,13 @@ A következő lépésben a két parancs kimenetét kell használnia.
 ## <a name="define-packer-template"></a>Csomagoló sablon definiálása
 Lemezképek létrehozásához JSON-fájlként hozzon létre egy sablont. A sablonban meg kell határoznia a tényleges felépítési folyamatot végző építőket és kiépítési folyamatokat. A csomagoló rendelkezik [Az Azure](https://www.packer.io/docs/builders/azure.html) -hoz, amely lehetővé teszi az Azure-erőforrások, például az előző lépésben létrehozott szolgáltatásnév hitelesítő adatok definiálását.
 
-Hozzon létre egy *Ubuntu. JSON* nevű fájlt, és illessze be az alábbi tartalmat. Adja meg a saját értékeit a következőkhöz:
+Hozzon létre egy *ubuntu.js* nevű fájlt, és illessze be a következő tartalmat. Adja meg a saját értékeit a következőkhöz:
 
 | Paraméter                           | A beszerzés helye |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | A `az ad sp` Create Command- *AppID* első kimenetének sora |
-| *client_secret*                     | Kimenet második sora a `az ad sp` Create Command- *Password* |
-| *tenant_id*                         | Harmadik kimeneti vonal a `az ad sp` Create parancsból – *bérlő* |
+| *client_id*                         | A `az ad sp` create Command- *AppID* első kimenetének sora |
+| *client_secret*                     | Kimenet második sora a `az ad sp` create Command- *Password* |
+| *tenant_id*                         | Harmadik kimeneti vonal a `az ad sp` create parancsból – *bérlő* |
 | *subscription_id*                   | Kimenet a `az account show` parancsból |
 | *managed_image_resource_group_name* | Az első lépésben létrehozott erőforráscsoport neve |
 | *managed_image_name*                | A létrehozott felügyelt lemezkép neve |
@@ -119,12 +119,12 @@ Hozzon létre egy *Ubuntu. JSON* nevű fájlt, és illessze be az alábbi tartal
 Ez a sablon egy Ubuntu 16,04 LTS-rendszerképet hoz létre, telepíti az NGINX-et, majd kiosztja a virtuális gépet.
 
 > [!NOTE]
-> Ha kibontja ezt a sablont a felhasználói hitelesítő adatok kiépítéséhez, állítsa be úgy a kiépítési parancsot, hogy az `-deprovision` Azure- `deprovision+user`ügynököt ne a helyett olvassa el.
+> Ha kibontja ezt a sablont a felhasználói hitelesítő adatok kiépítéséhez, állítsa be úgy a kiépítési parancsot, hogy az Azure-ügynököt ne a helyett olvassa el `-deprovision` `deprovision+user` .
 > A `+user` jelző eltávolítja az összes felhasználói fiókot a forrás virtuális gépről.
 
 
 ## <a name="build-packer-image"></a>Csomagoló rendszerkép létrehozása
-Ha még nincs telepítve a csomagoló a helyi gépen, [kövesse a csomagoló telepítési utasításait](https://www.packer.io/docs/install/index.html).
+Ha még nincs telepítve a csomagoló a helyi gépen, [kövesse a csomagoló telepítési utasításait](https://www.packer.io/docs/install).
 
 Hozza létre a képet a csomagoló sablon fájljának megadásával a következőképpen:
 
@@ -197,7 +197,7 @@ Eltarthat néhány percig, amíg a csomagoló létrehozza a virtuális gépet, f
 
 
 ## <a name="create-vm-from-azure-image"></a>Virtuális gép létrehozása az Azure-rendszerképből
-Mostantól létrehozhat egy virtuális gépet a rendszerképből az [az VM Create](/cli/azure/vm)paranccsal. Határozza meg a `--image` paraméterrel létrehozott rendszerképet. Az alábbi példa egy *myVM* nevű virtuális gépet hoz létre a *myPackerImage* -ből, és SSH-kulcsokat hoz létre, ha azok még nem léteznek:
+Mostantól létrehozhat egy virtuális gépet a rendszerképből az [az VM Create](/cli/azure/vm)paranccsal. Határozza meg a paraméterrel létrehozott rendszerképet `--image` . Az alábbi példa egy *myVM* nevű virtuális gépet hoz létre a *myPackerImage* -ből, és SSH-kulcsokat hoz létre, ha azok még nem léteznek:
 
 ```azurecli
 az vm create \
@@ -210,7 +210,7 @@ az vm create \
 
 Ha virtuális gépeket szeretne létrehozni egy másik erőforráscsoporthoz vagy régióban, mint a csomagoló-rendszerkép, a rendszerkép neve helyett adja meg a rendszerkép AZONOSÍTÓját. A rendszerkép-azonosítót az [az rendszerkép show](/cli/azure/image#az-image-show)paranccsal szerezheti be.
 
-A virtuális gép létrehozása néhány percet vesz igénybe. Miután létrejött a virtuális gép, jegyezze fel az Azure CLI `publicIpAddress` által megjelenített adatmennyiséget. Ez a címe az NGINX-webhely webböngészőből való elérésére szolgál.
+A virtuális gép létrehozása néhány percet vesz igénybe. Miután létrejött a virtuális gép, jegyezze fel az `publicIpAddress` Azure CLI által megjelenített adatmennyiséget. Ez a címe az NGINX-webhely webböngészőből való elérésére szolgál.
 
 Ahhoz, hogy a webes adatforgalom elérje a virtuális gépét, nyissa meg az internetről a 80-as portot az [az vm open-port](/cli/azure/vm) paranccsal:
 

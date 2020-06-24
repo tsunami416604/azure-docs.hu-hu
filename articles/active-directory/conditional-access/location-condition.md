@@ -4,21 +4,20 @@ description: Megtudhatja, hogyan használhatja a hely feltételét a felhőalap�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.workload: identity
-ms.date: 05/28/2020
+ms.topic: conceptual
+ms.date: 06/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: f9f80cf0c42bdc6e45d62cac930c0bce4b20ee60
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605459"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253222"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>A hely feltételének használata feltételes hozzáférési házirendben 
 
@@ -142,6 +141,30 @@ Ez a beállítás a következőkre vonatkozik:
 
 Ezzel a beállítással egy vagy több elnevezett helyet választhat ki. Ahhoz, hogy egy házirend alkalmazza ezt a beállítást, a felhasználónak csatlakoznia kell a kiválasztott helyekről. Ha a megnevezett hálózati kijelölési vezérlő **kijelölése** elemre kattint, megjelenik a megnevezett hálózatok listája. A lista azt is megjeleníti, hogy a hálózati hely megbízhatóként van-e megjelölve. Az **MFA megbízható IP** -címek nevű hely a multi-Factor Authentication szolgáltatás beállítási oldalán konfigurálható IP-beállításokat tartalmazza.
 
+## <a name="ipv6-traffic"></a>IPv6-forgalom
+
+Alapértelmezés szerint a feltételes hozzáférési házirendek minden IPv6-forgalomra érvényesek lesznek. A [megnevezett hely előzetes](#preview-features)verziójával kizárhat bizonyos IPv6-címtartományt egy feltételes hozzáférési szabályzatból. Ez a beállítás olyan esetekben hasznos, amikor nem szeretné kényszeríteni a szabályzatot az adott IPv6-tartományokra vonatkozóan. Ha például nem kívánja kikényszeríteni a vállalati hálózat használatára vonatkozó szabályzatot, és a vállalati hálózat nyilvános IPv6-tartományokon fut.  
+
+### <a name="when-will-my-tenant-have-ipv6-traffic"></a>Mikor lesz a bérlőnek IPv6-forgalma?
+
+Azure Active Directory (Azure AD) jelenleg nem támogatja az IPv6 protokollt használó közvetlen hálózati kapcsolatokat. Vannak azonban olyan esetek, amikor a hitelesítési forgalom egy másik szolgáltatáson keresztül történik. Ezekben az esetekben a szabályzat kiértékelése során az IPv6-cím lesz használatban.
+
+Az Azure AD-ben a proxyn áthaladó IPv6-forgalom nagy része a Microsoft Exchange Online szolgáltatásból származik. Ha elérhető, az Exchange előnyben részesíti az IPv6-kapcsolatokat. **Tehát ha bármilyen feltételes hozzáférési szabályzattal rendelkezik, amelyet adott IPv4-tartományokhoz konfiguráltak, érdemes meggyőződnie arról, hogy a szervezet IPv6-tartományait is felvette.** Az IPv6-tartományokat nem, például a következő két eset esetében nem várt viselkedést eredményez:
+
+- Ha egy levelezési ügyfélprogram örökölt hitelesítéssel csatlakozik az Exchange Online-hoz, az Azure AD IPv6-címeket is kaphat. A kezdeti hitelesítési kérelem az Exchange-be kerül, majd az Azure AD-be való proxyn keresztül történik.
+- Ha a böngészőben az Outlook Web Access (OWA) használatban van, a rendszer rendszeres időközönként ellenőrzi, hogy a feltételes hozzáférési szabályzatok továbbra is teljesülnek-e. Ez az ellenőrzési szolgáltatás arra szolgál, hogy olyan eseteket kapjon, amikor egy felhasználó egy engedélyezett IP-címről egy új helyre költözött, például a kávézóban az utcán. Ebben az esetben, ha egy IPv6-cím van használatban, és ha az IPv6-cím nem egy konfigurált tartományban van, akkor a felhasználó munkamenete megszakadhat, és visszairányítható az Azure AD-be az ismételt hitelesítéshez. 
+
+Ezek a leggyakoribb okok, amiért előfordulhat, hogy az IPv6-tartományokat az elnevezett helyekre kell konfigurálnia. Emellett, ha az Azure virtuális hálózatok-t használja, az IPv6-címről érkező forgalmat is elérheti. Ha a VNet-forgalmat egy feltételes hozzáférési szabályzat tiltja le, ellenőrizze az Azure AD bejelentkezési naplóját. Miután azonosította a forgalmat, lekérheti a használt IPv6-címeket, és kizárja azt a szabályzatból. 
+
+> [!NOTE]
+> Ha egyetlen címhez IP-CIDR szeretne megadni, alkalmazza a/32 bit maszkot. Ha az IPv6-2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A, és azt szeretné, hogy a rendszer kizárja ezt az egyetlen címtartományt tartományként, akkor a 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A/32.
+
+### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>IPv6-forgalom azonosítása az Azure AD bejelentkezési tevékenység jelentéseiben
+
+A bérlőben található IPv6-forgalmat az [Azure ad bejelentkezési tevékenységek jelentéseiben](../reports-monitoring/concept-sign-ins.md)derítheti fel. Miután megnyitotta a tevékenység jelentését, adja hozzá az "IP-cím" oszlopot. Ez az oszlop az IPv6-forgalom azonosítását teszi lehetővé.
+
+Az ügyfél IP-címét a jelentés egyik sorára kattintva is megkeresheti, majd a bejelentkezési tevékenység részletei között a "location" (hely) lapra kerül. 
+
 ## <a name="what-you-should-know"></a>Alapismeretek
 
 ### <a name="when-is-a-location-evaluated"></a>Mikor kerül kiértékelésre a hely?
@@ -173,7 +196,7 @@ Ha egy felhőalapú proxy van érvényben, a tartományhoz csatlakoztatott eszk�
 
 Az API és a PowerShell még nem támogatott a nevesített helyein.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a [feltételes hozzáférési szabályzat létrehozásával](concept-conditional-access-policies.md)foglalkozó cikket.
 - A hely feltételét használó példát keres? Tekintse meg a következő cikket [: feltételes hozzáférés letiltása hely szerint](howto-conditional-access-policy-location.md)
