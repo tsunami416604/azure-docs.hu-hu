@@ -28,6 +28,6 @@ Kövesse az alábbi irányelveket, amikor testreszabja az alkalmazás felületé
     - Azure AD B2C a jQuery egy adott verzióját használja. Ne adja meg a jQuery egy másik verzióját. Ha egynél több verziót használ ugyanazon a lapon, problémákat okoz.
     - A RequireJS használata nem támogatott.
     - Azure AD B2C nem támogatja a legtöbb JavaScript-keretrendszert.
-- Azure ad B2C beállítások a következő módon olvashatók `window.SETTINGS`: `window.CONTENT` hívás, objektumok, például az aktuális felhasználói felület nyelve. Ne módosítsa az objektumok értékét.
+- Azure AD B2C beállítások a következő módon olvashatók: hívás `window.SETTINGS` , `window.CONTENT` objektumok, például az aktuális felhasználói felület nyelve. Ne módosítsa az objektumok értékét.
 - A Azure AD B2C-hibaüzenet testreszabásához használjon honosítást egy házirendben.
 - Ha bármilyen adat egy szabályzat használatával érhető el, általában az ajánlott módszer.

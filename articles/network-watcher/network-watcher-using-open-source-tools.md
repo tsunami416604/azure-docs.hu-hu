@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 32d978ee766f6dbe95bd7158b8060a0302ef8206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189062"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738634"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>A hálózati forgalom mintáinak megjelenítése a virtuális gépekről és a nyílt forráskódú eszközök használatával
 
@@ -35,7 +35,7 @@ Az Azure-beli virtuális gépen üzembe helyezett egyszerű webalkalmazások ny�
 
 ### <a name="install-capanalysis"></a>A CapAnalysis telepítése
 
-A CapAnalysis virtuális gépen való telepítéséhez a hivatalos utasításokat itt https://www.capanalysis.net/ca/how-to-install-capanalysistekintheti meg.
+A CapAnalysis virtuális gépen való telepítéséhez a hivatalos utasításokat itt tekintheti meg https://www.capanalysis.net/ca/how-to-install-capanalysis .
 Ha távolról szeretné elérni a CapAnalysis, nyissa meg a 9877-es portot a virtuális gépen egy új bejövő biztonsági szabály hozzáadásával. A hálózati biztonsági csoportokban található szabályok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [szabályok létrehozása meglévő NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule)című témakört. A szabály sikeres hozzáadása után hozzáférhet a CapAnalysis-hez`http://<PublicIP>:9877`
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>A csomagok rögzítési munkamenetének elindítása az Azure Network Watcher használatával
@@ -84,7 +84,7 @@ A CapAnalysis számos lehetőséget kínál a csomagok rögzítésének megjelen
 
     ![szűrők][11]
 
-    [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) További információ az összes CapAnalysis képességről.
+    További információ az [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) összes CapAnalysis képességről.
 
 ## <a name="conclusion"></a>Összegzés
 

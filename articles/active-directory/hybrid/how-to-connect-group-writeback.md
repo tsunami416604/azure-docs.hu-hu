@@ -1,0 +1,71 @@
+---
+title: 'Azure AD Connect: csoport visszaírási'
+description: Ez a cikk a Azure AD Connect csoport visszaírási ismerteti.
+services: active-directory
+author: billmath
+manager: daveba
+ms.service: active-directory
+ms.topic: reference
+ms.workload: identity
+ms.date: 06/11/2020
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7823ee7f7d4d5c9bb34d5c57ab0eea7d77c257d3
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84947062"
+---
+# <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect csoport visszaírási
+
+A csoportok visszaírási lehetővé teszi, hogy az ügyfelek a hibrid igényeknek megfelelően használják a Felhőbeli csoportokat. Amennyiben használja az Office 365 Csoportok szolgáltatást, ezeket a csoportokat szerepeltetheti a helyszíni Active Directory szolgáltatásban is. Ez a lehetőség **csak** akkor érhető el, ha a helyszíni Active Directoryban Exchange van jelen.
+
+## <a name="pre-requisites"></a>Előfeltételek
+A csoport visszaírási engedélyezéséhez a következő előfeltételeknek kell teljesülniük.
+- Prémium szintű Azure Active Directory a bérlőhöz tartozó licenceket.
+- Egy konfigurált hibrid üzembe helyezés a helyszíni Exchange-szervezet és az Office 365 között, és ellenőrizte, hogy megfelelően működik-e.
+- Telepítette a helyszíni Exchange támogatott verzióját
+- Konfigurált egyszeri bejelentkezés Azure Active Directory Connect használatával 
+
+## <a name="enable-group-writeback"></a>Csoportvisszaírás engedélyezése
+A csoport visszaírási engedélyezéséhez kövesse az alábbi lépéseket:
+
+1. Nyissa meg a Azure AD Connect varázslót, válassza a **Konfigurálás** lehetőséget, majd kattintson a **tovább**gombra.
+2. Válassza a **szinkronizálási beállítások testreszabása lehetőséget** , majd kattintson a **tovább**gombra.
+3. A **Kapcsolódás az Azure ad-hoz** lapon adja meg a hitelesítő adatait. Kattintson a **Tovább** gombra.
+4. A **választható szolgáltatások** lapon ellenőrizze, hogy a korábban konfigurált beállítások továbbra is ki vannak-e jelölve.
+5. Válassza a **csoport visszaírási** elemet, majd kattintson a **tovább**gombra.
+6. A **visszaírási lapon**válasszon ki egy Active Directory szervezeti egységet (OU-t) az Office 365-ből a helyszíni szervezetbe szinkronizált objektumok tárolásához, majd kattintson a **tovább**gombra.
+7. A konfigurálásra **kész** lapon kattintson a **Konfigurálás**elemre.
+8. A varázsló befejezése után kattintson a **Kilépés** elemre a konfiguráció befejezése lapon.
+9. Nyissa meg a Windows PowerShellt a Azure Active Directory Connect-kiszolgálón, és futtassa a következő parancsokat.
+
+```Powershell
+$AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>
+Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1"
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
+```
+
+Az Office 365-csoportok konfigurálásával kapcsolatos további információkért lásd: [Microsoft 365 csoportok konfigurálása helyszíni Exchange hibrid](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-office-365-groups#enable-group-writeback-in-azure-ad-connect)környezettel.
+
+## <a name="disabling-group-writeback"></a>Csoport visszaírási letiltása
+A csoport visszaírási letiltásához kövesse az alábbi lépéseket: 
+
+
+1. Indítsa el a Azure Active Directory Connect varázslót, és navigáljon a további feladatok lapra. Jelölje be a **szinkronizálási beállítások testreszabása** feladatot, és kattintson a **tovább**gombra.
+2. A **választható szolgáltatások** lapon szüntesse meg a csoport visszaírási.  Figyelmeztetést kap, amely tájékoztatja, hogy a csoportok törlődnek.  Kattintson az **Igen**gombra.
+   >[!IMPORTANT]
+   > A csoport visszaírási letiltásával bármely, a szolgáltatás által korábban létrehozott csoport törölhető a helyi Active Directory a következő szinkronizálási ciklusban. 
+
+   ![Jelölőnégyzet bejelölése](media/how-to-connect-group-writeback/group2.png)
+  
+3. Kattintson a **Tovább** gombra.
+4. Kattintson a **Configure** (Konfigurálás) elemre.
+
+ >[!NOTE]
+ > A csoport visszaírási letiltásával a teljes importálási és teljes szinkronizációs jelzőket "true" értékre állítja be az Azure Active Directory-összekötőn, így a szabály a következő szinkronizálási cikluson keresztül propagálja a szabályt, és törli azokat a csoportokat, amelyek korábban visszaírásra kerültek a Active Directory.
+
+## <a name="next-steps"></a>További lépések
+További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

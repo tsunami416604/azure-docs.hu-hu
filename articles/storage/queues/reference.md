@@ -1,5 +1,5 @@
 ---
-title: Azure üzenetsor-tárolás – dokumentáció
+title: Azure Queue Storage-referencia
 description: Az Azure Storage API-referenciák, a readme-fájlok és az ügyféloldali kódtár csomagjainak megkeresése.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: d01fb4d467b34f4093cbeb1346786ad793eede7d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: fbf20b92edf5d8dce8438731c2812a78e457a402
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346009"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976659"
 ---
-# <a name="azure-queue-storage-reference"></a>Azure üzenetsor-tárolás – dokumentáció
+# <a name="azure-queue-storage-reference"></a>Azure Queue Storage-referencia
 
 Az Azure üzenetsor-tárolási API-referenciák, a függvénytár-csomagok, a readme-fájlok és az első lépések cikkeinek megkeresése.
 
@@ -67,8 +67,8 @@ Az alábbi táblázat az Azure üzenetsor-tároló Python API-jai dokumentáció
 
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Az Azure Storage Queues ügyféloldali kódtára a Pythonhoz](/python/api/overview/azure/storage-queue-readme) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Pythonhoz](/azure/storage/queues/storage-quickstart-queues-python) |
-| 2. x | [Azure-Storage – üzenetsor](/python/api/azure-storage-queue/?view=azure-python-previous) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Az Azure üzenetsor-tároló v 2.1 használata a Pythonból](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
+| 12. x | [Az Azure Storage ügyféloldali kódtárai a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Pythonhoz](/azure/storage/queues/storage-quickstart-queues-python) |
+| 2. x | [Azure Storage ügyféloldali kódtárak v2 a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Az Azure üzenetsor-tároló v 2.1 használata a Pythonból](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript-ügyféloldali kódtárak
 
@@ -77,7 +77,7 @@ Az alábbi táblázat az Azure üzenetsor-tárolási JavaScript API-k hivatkozá
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Azure Storage-üzenetsor ügyféloldali kódtára a JavaScripthez](/javascript/api/overview/azure/storage-queue-readme) | [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-queue) | [Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtár a JavaScripthez](/azure/storage/queues/storage-quickstart-queues-nodejs) |
-| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Várólisták létrehozása és törlése az Azure Queue Service-ben a Node. js használatával](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
+| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Várólisták létrehozása és törlése az Azure Queue Service használatával Node.js](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
 
 ## <a name="rest-apis"></a>REST API-k
 

@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2020
 ms.author: kumud
-ms.openlocfilehash: d6b61e27324220fc78ace3e964aed98f9ba114d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a13a2a081815f2a3b668caf9b4e78c2208601cb2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420933"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702992"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>IPv6 Dual stack-alkalmazás üzembe helyezése az Azure-ban – PowerShell
 
@@ -307,7 +307,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>Az IPv4-és IPv6-végpontok IP-címeinek meghatározása
-Az erőforráscsoport összes hálózati adapter-objektumának lekérésével összesítheti az üzemelő példányban használt IP `get-AzNetworkInterface`-címet. Emellett szerezze be a Load Balancer az IPv4-és IPv6-végpontok a-vel `get-AzpublicIpAddress`való használatát.
+Az erőforráscsoport összes hálózati adapter-objektumának lekérésével összesítheti az üzemelő példányban használt IP-címet `get-AzNetworkInterface` . Emellett szerezze be a Load Balancer az IPv4-és IPv6-végpontok a-vel való használatát `get-AzpublicIpAddress` .
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"
@@ -353,7 +353,7 @@ Az IPv6 kettős verem virtuális hálózatát a következőképpen tekintheti me
   ![IPv6-alapú kettős verem virtuális hálózata az Azure-ban](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
 

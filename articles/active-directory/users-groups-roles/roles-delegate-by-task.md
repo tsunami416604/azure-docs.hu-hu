@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: reference
 ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4837b654e5b538dda6f55eae9b15ddf0c5604693
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299468"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117879"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök felügyeleti feladat szerint Azure Active Directory
 
@@ -38,7 +38,7 @@ Alkalmazásproxy letiltása | Alkalmazás-rendszergazda |
 Összekötő szolgáltatás letöltése | Alkalmazás-rendszergazda | 
 Az összes konfiguráció olvasása | Alkalmazás-rendszergazda | 
 
-## <a name="b2c"></a>B2C
+## <a name="external-identitiesb2c"></a>Külső identitások/B2C
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
@@ -47,11 +47,11 @@ B2C-alkalmazások létrehozása | Globális rendszergazda |
 Vállalati alkalmazások létrehozása | Felhőalkalmazás-rendszergazda | alkalmazás-rendszergazda
 B2C-szabályzatok létrehozása, olvasása, frissítése és törlése | B2C IEF házirend rendszergazdája | 
 Identitás-szolgáltatók létrehozása, olvasása, frissítése és törlése | Külső identitás-szolgáltató rendszergazdája | 
-Jelszó-visszaállítási felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | B2C felhasználói folyamat rendszergazdája | 
-Profil-szerkesztési felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | B2C felhasználói folyamat rendszergazdája | 
-Bejelentkezési felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | B2C felhasználói folyamat rendszergazdája | 
-Regisztrációs felhasználói folyamat létrehozása, olvasása, frissítése és törlése |B2C felhasználói folyamat rendszergazdája | 
-Felhasználói attribútumok létrehozása, olvasása, frissítése és törlése | B2C felhasználói folyamat attribútumának rendszergazdája | 
+Jelszó-visszaállítási felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | Külső azonosító – felhasználói folyamat rendszergazdája | 
+Profil-szerkesztési felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | Külső azonosító – felhasználói folyamat rendszergazdája | 
+Bejelentkezési felhasználói folyamatok létrehozása, olvasása, frissítése és törlése | Külső azonosító – felhasználói folyamat rendszergazdája | 
+Regisztrációs felhasználói folyamat létrehozása, olvasása, frissítése és törlése |Külső azonosító – felhasználói folyamat rendszergazdája | 
+Felhasználói attribútumok létrehozása, olvasása, frissítése és törlése | Külső azonosító felhasználói flow-attribútumának rendszergazdája | 
 Felhasználók létrehozása, olvasása, frissítése és törlése | Felhasználói rendszergazda
 Az összes konfiguráció olvasása | Globális olvasó | 
 B2C-naplók olvasása | Globális olvasó ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
@@ -73,6 +73,14 @@ Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 Vállalati tulajdonságok konfigurálása | Globális rendszergazda | 
 
 ## <a name="connect"></a>Kapcsolódás
+
+Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
+---- | --------------------- | ----------------
+Továbbító hitelesítés | Globális rendszergazda  | 
+Az összes konfiguráció olvasása | Globális olvasó | Globális rendszergazda  |
+Zökkenőmentes egyszeri bejelentkezés | Globális rendszergazda  | 
+
+## <a name="cloud-provisioning"></a>Felhőbeli kiépítés
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
@@ -109,7 +117,7 @@ Az összes konfiguráció olvasása | Directory-olvasók | Alapértelmezett felh
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Azure AD Domain Services példány létrehozása | Globális rendszergazda | 
-Az összes Azure AD Domain Services feladat végrehajtása | Azure AD DC-rendszergazdák csoport ([lásd a dokumentációt](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
+Az összes Azure AD Domain Services feladat végrehajtása | Azure AD DC-rendszergazdák csoport ([lásd a dokumentációt](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Az összes konfiguráció olvasása | AD DS szolgáltatást tartalmazó Azure-előfizetés olvasója | 
 
 ## <a name="devices"></a>Eszközök

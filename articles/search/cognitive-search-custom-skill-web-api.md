@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74484116"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982118"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni webes API-képesség egy Azure Cognitive Search alkoholtartalom-növelési folyamatban
 
@@ -36,12 +36,12 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| URI | Annak a webes API-nak az URI-ja, amelybe a _JSON_ -tartalom el lesz küldve. Csak **https** URI-séma engedélyezett |
-| httpMethod | A hasznos adatok küldésekor használandó metódus. Engedélyezett módszerek `PUT` vagy`POST` |
-| httpHeaders | Olyan kulcs-érték párok gyűjteménye, amelyekben a kulcsok fejléc-és értéknek felelnek meg, a webes API-ra és a hasznos adattartalommal együtt küldendő fejléc-értékeket. A következő fejlécek nem engedélyezettek ebben a gyűjteményben: `Accept`, `Accept-Charset` `Accept-Encoding` `Content-Length` `Content-Type` `Cookie` `Host` `TE`,,,,,,, `Upgrade`,`Via` |
-| timeout | Választható Ha meg van adva, az API-hívást készítő http-ügyfél időtúllépését jelzi. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). Például `PT60S` 60 másodpercig. Ha nincs beállítva, a rendszer egy alapértelmezett 30 másodperces értéket választ. Az időtúllépés legfeljebb 230 másodpercig és legalább 1 másodpercig állítható be. |
-| batchSize | Választható Azt jelzi, hogy hány "adatrekord" (lásd az alábbi _JSON_ -adattartalom-szerkezetet) egy API-hívás alapján lesz elküldve. Ha nincs beállítva, a rendszer alapértelmezett 1000-as értéket választ. Javasoljuk, hogy használja ezt a paramétert, hogy megfelelő kompromisszumot érjen el az indexelési teljesítmény és az API terhelése között |
-| Analyticsunits | Választható Ha meg van adva, az indexelő által az Ön által megadott végponttal párhuzamosan kezdeményezett hívások számát jelzi. Csökkentheti ezt az értéket, ha a végpont nem a kérelem terhelése alatt túl magas, vagy ha a végpont több kérést is képes fogadni, és az indexelő teljesítményének növelését szeretné.  Ha nincs beállítva, a rendszer az alapértelmezett 5 értéket használja. A Analyticsunits legfeljebb 10 és legalább 1 értékre állítható be. |
+| `uri` | Annak a webes API-nak az URI-ja, amelybe a _JSON_ -tartalom el lesz küldve. Csak **https** URI-séma engedélyezett |
+| `httpMethod` | A hasznos adatok küldésekor használandó metódus. Engedélyezett módszerek `PUT` vagy`POST` |
+| `httpHeaders` | Olyan kulcs-érték párok gyűjteménye, amelyekben a kulcsok fejléc-és értéknek felelnek meg, a webes API-ra és a hasznos adattartalommal együtt küldendő fejléc-értékeket. A következő fejlécek nem engedélyezettek ebben a gyűjteményben:,,,,,,,, `Accept` `Accept-Charset` `Accept-Encoding` `Content-Length` `Content-Type` `Cookie` `Host` `TE` `Upgrade` ,`Via` |
+| `timeout` | Választható Ha meg van adva, az API-hívást készítő http-ügyfél időtúllépését jelzi. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). Például `PT60S` 60 másodpercig. Ha nincs beállítva, a rendszer egy alapértelmezett 30 másodperces értéket választ. Az időtúllépés legfeljebb 230 másodpercig és legalább 1 másodpercig állítható be. |
+| `batchSize` | Választható Azt jelzi, hogy hány "adatrekord" (lásd az alábbi _JSON_ -adattartalom-szerkezetet) egy API-hívás alapján lesz elküldve. Ha nincs beállítva, a rendszer alapértelmezett 1000-as értéket választ. Javasoljuk, hogy használja ezt a paramétert, hogy megfelelő kompromisszumot érjen el az indexelési teljesítmény és az API terhelése között |
+| `degreeOfParallelism` | Választható Ha meg van adva, az indexelő által az Ön által megadott végponttal párhuzamosan kezdeményezett hívások számát jelzi. Csökkentheti ezt az értéket, ha a végpont nem a kérelem terhelése alatt túl magas, vagy ha a végpont több kérést is képes fogadni, és az indexelő teljesítményének növelését szeretné.  Ha nincs beállítva, a rendszer az alapértelmezett 5 értéket használja. A `degreeOfParallelism` legfeljebb 10 és legalább 1 értékre állítható be. |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
@@ -88,9 +88,9 @@ Ez a _JSON_ -struktúra a webes API-nak küldendő adattartalmat jelöli.
 Mindig a következő korlátozásokat fogja követni:
 
 * A legfelső szintű entitás neve `values` , és az objektumok tömbje lesz. Az ilyen objektumok száma a következő lesz:`batchSize`
-* A tömb minden objektuma tartalmazni fogja a `values`
+* A tömb minden objektuma `values` tartalmazni fogja a
     * Olyan `recordId` tulajdonság, amely **egyedi** karakterlánc, amely a rekord azonosítására szolgál.
-    * Egy `data` olyan tulajdonság, amely egy _JSON_ -objektum. A `data` tulajdonság mezői a szaktudás definíciójának `inputs` szakaszában megadott "nevek" értékkel fognak egyezni. Ezeknek a mezőknek az értéke az adott mezőkből származik `source` (amelyek a dokumentum egy mezőjéből származnak, vagy esetleg egy másik képességből)
+    * Egy olyan `data` tulajdonság, amely egy _JSON_ -objektum. A tulajdonság mezői a `data` szaktudás definíciójának szakaszában megadott "nevek" értékkel fognak egyezni `inputs` . Ezeknek a mezőknek az értéke az `source` adott mezőkből származik (amelyek a dokumentum egy mezőjéből származnak, vagy esetleg egy másik képességből)
 
 ```json
 {
@@ -137,16 +137,16 @@ Mindig a következő korlátozásokat fogja követni:
 
 ## <a name="sample-output-json-structure"></a>Minta kimenet JSON-szerkezete
 
-A "kimenet" a webes API által visszaadott válasznak felel meg. A webes API-nak csak _JSON_ -adattartalomot kell visszaadnia `Content-Type` (a válasz fejlécének ellenőrzésével ellenőrizve), és meg kell felelnie a következő megkötéseknek:
+A "kimenet" a webes API által visszaadott válasznak felel meg. A webes API-nak csak _JSON_ -adattartalomot kell visszaadnia (a válasz fejlécének ellenőrzésével ellenőrizve `Content-Type` ), és meg kell felelnie a következő megkötéseknek:
 
-* Egy olyan legfelső szintű entitásnak kell lennie, `values` amely az objektumok tömbje lehet.
+* Egy olyan legfelső szintű entitásnak kell lennie `values` , amely az objektumok tömbje lehet.
 * A tömbben lévő objektumok számának meg kell egyeznie a webes API-nak eljuttatott objektumok számával.
 * Minden objektumnak a következőket kell tartalmaznia:
    * Egy `recordId` tulajdonság
-   * Egy `data` tulajdonság, amely egy olyan objektum, amelyben a mezők olyan dúsítások, amelyek megfelelnek a "nevek `output` " elemnek, és amelynek értéke a dúsításnak minősül.
-   * Egy `errors` tulajdonság, egy tömb, amely felsorolja az indexelő végrehajtási előzményeihez hozzáadott hibákat. Ez a tulajdonság kötelező, de `null` értéke is lehet.
-   * Egy `warnings` tulajdonság, amely felsorolja az összes olyan figyelmeztetést, amely az indexelő végrehajtási előzményeihez lesz hozzáadva. Ez a tulajdonság kötelező, de `null` értéke is lehet.
-* A `values` tömb objektumainak nem kell ugyanabban a sorrendben lennie, mint a webes API- `values` nak kérésként elküldett tömb objektumainak. Azonban a a `recordId` korrelációt veszi fel, így a válaszban szereplő olyan rekordokat, `recordId` amelyek nem részei a webes API-nak, a rendszer elveti.
+   * Egy `data` tulajdonság, amely egy olyan objektum, amelyben a mezők olyan dúsítások, amelyek megfelelnek a "nevek" elemnek, `output` és amelynek értéke a dúsításnak minősül.
+   * Egy `errors` tulajdonság, egy tömb, amely felsorolja az indexelő végrehajtási előzményeihez hozzáadott hibákat. Ez a tulajdonság kötelező, de értéke is lehet `null` .
+   * Egy `warnings` tulajdonság, amely felsorolja az összes olyan figyelmeztetést, amely az indexelő végrehajtási előzményeihez lesz hozzáadva. Ez a tulajdonság kötelező, de értéke is lehet `null` .
+* A tömb objektumainak `values` nem kell ugyanabban a sorrendben lennie, mint a `values` webes API-nak kérésként elküldett tömb objektumainak. Azonban a a `recordId` korrelációt veszi fel, így a válaszban szereplő olyan rekordokat, `recordId` amelyek nem részei a webes API-nak, a rendszer elveti.
 
 ```json
 {

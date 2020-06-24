@@ -1,23 +1,23 @@
 ---
-title: Gyakran ismételt kérdések az Azure szinapszis hivatkozásáról Azure Cosmos DB
+title: Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 description: Válaszok a szinapszis-hivatkozással kapcsolatos gyakori kérdésekre a Azure Cosmos DB olyan területeken, mint például a számlázás, az analitikus tárolás, a biztonság, az elemzési tár élettartama.
 author: srchi
 ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 36be05f72597ae9864eff812862589cafb1f5b0d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a78b956dad618d827a5f8bef676a7b074bdead9a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598681"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119511"
 ---
-# <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakran ismételt kérdések az Azure szinapszis hivatkozásáról Azure Cosmos DB
+# <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 
 A Azure Cosmos DB Azure szinapszis-hivatkozása szoros integrációt hoz létre a Azure Cosmos DB és az Azure szinapszis Analytics között. Lehetővé teszi az ügyfelek számára a közel valós idejű elemzések futtatását a működési adataik teljes teljesítményének elkülönítésével a tranzakciós munkaterhelések és az ETL-folyamat nélkül. Ez a cikk a Azure Cosmos DB-ra vonatkozó szinapszis-hivatkozással kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general-faq"></a>Általános GYIK
+## <a name="general-faq"></a>Gyakori kérdések – általános
 
 ### <a name="is-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Támogatott-e a szinapszis-hivatkozás az összes Azure Cosmos DB API-hoz?
 A nyilvános előzetes kiadásban a szinapszis hivatkozás csak a Azure Cosmos DB SQL (Core) API-hoz támogatott. A Mongo DB & Cassandra API jelenleg a Cosmos DB API-ját támogatja.  Ha hozzáférést szeretne kérni a megtekintett előzetes verzióhoz, nyissa meg a [Azure Cosmos db csapatot](mailto:cosmosdbsynapselink@microsoft.com).
@@ -31,7 +31,7 @@ Ha többrégiós Azure Cosmos-fiókot szeretne konfigurálni az analitikai tár 
 Az előzetes kiadásban, ha a szinapszis-kapcsolat engedélyezve van egy többrégiós fiók esetében, az analitikai tároló minden régióban létrejön. Az alapul szolgáló adatok a tranzakciós tárolóban a teljesítményre és a tranzakciós konzisztenciare vannak optimalizálva.
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Le tudom tiltani az Azure Cosmos-fiókhoz tartozó szinapszis-hivatkozás funkciót?
-Jelenleg a szinapszis kapcsolati képességének engedélyezése után a fiók szintjén nem tiltható le.  Ha ki szeretné kapcsolni a képességet, törölnie kell, majd újra létre kell hoznia egy új Azure Cosmos-fiókot.
+Jelenleg nem tilthatja le a Synapse Link képességet, miután fiókszinten engedélyezte azt.  Ha ki szeretné kapcsolni a képességet, törölnie kell, majd újra létre kell hoznia egy új Azure Cosmos-fiókot.
 
 Tudomásul veszi, hogy **nem** lesz számlázási vonzata, ha a szinapszis kapcsolati funkciója engedélyezve van a fiók szintjén, de nincs analitikus tárolóval rendelkező tároló.
 
@@ -53,10 +53,10 @@ Azure Cosmos DB garantálja a tranzakciós és az analitikai számítási felada
 Igen, a tranzakciós tárolóban lévő adattörlési és-frissítési műveletek megjelennek az analitikus tárolóban. Beállíthatja, hogy az élettartam (TTL) a tárolón, hogy tartalmazza a korábbi adatokat, hogy az analitikai tár megőrizze az összes olyan verziót, amely megfelel az analitikai élettartam feltételeinek. További részletekért tekintse meg az [analitikai TTL áttekintését](analytical-store-introduction.md#analytical-ttl) .
 
 ### <a name="can-i-connect-to-analytical-store-from-analytics-engines-other-than-azure-synapse-analytics"></a>Csatlakozhatok az analitikus tárolóhoz az Azure szinapszis Analytics szolgáltatástól eltérő elemzési motoroktól?
-Csak az Azure szinapszis Analytics által biztosított különböző futtatási idők használatával férhet hozzá és futtathat lekérdezéseket az analitikai tárolón. Az analitikai tároló a használatával kérdezhető le és elemezhető:
+Csak az Azure Synapse Analytics által biztosított különböző futtatókörnyezetekkel érhet el és futtathat lekérdezéseket az elemzési táron. Az elemzési tár a következők használatával kérdezhető le és elemezhető:
 
-* A szinapszis Spark teljes körű támogatást nyújt a Scala, a Python, a SparkSQL és a C# nyelvhez. A szinapszis Spark központi szerepet játszik az adatmérnöki és tudományos forgatókönyvekben
-* SQL Server nélküli, T-SQL nyelvvel és az ismerős BI-eszközök támogatásával (például Power BI Premium stb.)
+* A szinapszis Spark teljes körű támogatást nyújt a Scala, a Python, a SparkSQL és a C# nyelvhez. A Synapse Spark az adatfeldolgozási és -elemzési forgatókönyvek központi eleme
+* Kiszolgáló nélküli SQL T-SQL nyelvvel és az ismert BI-eszközök támogatásával (például Power BI Premium stb.)
 
 ### <a name="can-i-connect-to-analytical-store-from-synapse-sql-provisioned"></a>Csatlakozhatok az analitikus tárolóhoz a szinapszis SQL kiépített használatával?
 Jelenleg az analitikai tároló nem érhető el a szinapszis SQL kiépített állapotáról.
@@ -71,7 +71,7 @@ A replikálás aszinkron, és jelenleg a várt késés körülbelül 2 perc.
 Ha a tárolóban meghatározott elemek megsértik a [jól meghatározott sémát az elemzéshez](analytical-store-introduction.md#analytical-schema), azok nem kerülnek bele az analitikai tárolóba. Ha az elemzéshez jól definiált séma által blokkolt forgatókönyvek vannak, küldje el a [Azure Cosmos db csapatának](mailto:cosmosdbsynapselink@microsoft.com) segítségét.
 
 ### <a name="can-i-partition-the-data-in-analytical-store-differently-from-transactional-store"></a>Az analitikus tárolóban lévő adatok a tranzakciós tárolótól eltérően is particionálva vannak?
-Az analitikus tárolóban tárolt adatmennyiség a tranzakciós tárolóban lévő szegmensek horizontális particionálásán alapul. Jelenleg nem választhat másik particionálási stratégiát az analitikai tárolóhoz.
+Az elemzési tárban lévő adatok particionálása a tranzakciós tárolóban lévő szegmensek horizontális particionálásán alapul. Jelenleg nem választhat más particionálási stratégiát az elemzési tárhoz.
 
 ### <a name="can-i-customize-or-override-the-way-transactional-data-is-transformed-into-columnar-format-in-the-analytical-store"></a>Testreszabható vagy felülbírálható a tranzakciós adatértékek oszlopos formátumba való átalakítása az analitikai tárolóban?
 Az adatelemek jelenleg nem alakíthatók át, ha automatikusan propagálják őket a tranzakciós tárolóból az analitikai tárolóba. Ha ezt a korlátozást a forgatókönyvek blokkolják, küldje el a [Azure Cosmos db csapatnak](mailto:cosmosdbsynapselink@microsoft.com).
@@ -118,11 +118,11 @@ Az Azure Cosmos DB jelenleg Spark strukturált adatfolyam-támogatást nyújt a 
 ### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>A szinapszis Studióban hogyan ismerhető fel, ha az Analytics-tárolót engedélyező Azure Cosmos DB-tárolóhoz csatlakozik?
 Az analitikai tárolóval engedélyezett Azure Cosmos DB tárolóban a következő ikon látható:
 
-![Azure Cosmos DB tároló engedélyezve az analitikai tárolóval – ikon](./media/synapse-link-frequently-asked-questions/analytical-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="Azure Cosmos DB tároló engedélyezve az analitikai tárolóval – ikon":::
 
 A rendszer a következő ikonnal fogja megjeleníteni a tranzakciós tároló tárolóját:
 
-![Azure Cosmos DB tároló engedélyezve a tranzakciós tárolóval – ikon](./media/synapse-link-frequently-asked-questions/transactional-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB tároló engedélyezve a tranzakciós tárolóval – ikon":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Hogyan továbbíthatja Azure Cosmos DB hitelesítő adatait a szinapszis studióból?
 Jelenleg Azure Cosmos DB hitelesítő adatokat a rendszer a társított szolgáltatásnak a Azure Cosmos DB adatbázisokhoz hozzáféréssel rendelkező felhasználó általi létrehozásakor adja át. A tárolóhoz való hozzáférés a munkaterülethez hozzáférő más felhasználók számára is elérhető.

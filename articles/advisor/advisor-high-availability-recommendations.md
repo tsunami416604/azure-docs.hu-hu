@@ -1,121 +1,126 @@
 ---
-title: Az alkalmazás rendelkezésre állásának javítása Azure Advisor
-description: Az Azure-beli üzemelő példányok magas rendelkezésre állásának javításához használja a Azure Advisor.
+title: Az Advisor-alkalmazás megbízhatóságának javítása
+description: A Azure Advisor használatával biztosíthatja és javíthatja a megbízhatóságot az üzleti szempontból kritikus fontosságú Azure-környezetekben.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bed092a51b5a4aba1dfa64c17f5ed3d6f72212da
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658465"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124622"
 ---
-# <a name="improve-availability-of-your-application-with-azure-advisor"></a>Az alkalmazás rendelkezésre állásának javítása Azure Advisor
+# <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Az alkalmazás megbízhatóságának javítása Azure Advisor használatával
 
-Azure Advisor segít az üzleti szempontból kritikus fontosságú alkalmazások folytonosságának biztosításában és tökéletesítésében. A magas rendelkezésre állású javaslatokat az Advisor irányítópultjának **magas rendelkezésre állás** lapján érheti el.
+Azure Advisor segít az üzleti szempontból kritikus fontosságú alkalmazások folytonosságának biztosításában és tökéletesítésében. Az Advisor megbízhatósági javaslatai az Advisor irányítópultjának **megbízhatóság** lapján olvashatók.
 
 ## <a name="ensure-virtual-machine-fault-tolerance"></a>A virtuális gép hibatűrésének biztosítása
 
-Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor azonosítja azokat a virtuális gépeket, amelyek nem részei egy rendelkezésre állási csoportnak, és azt javasolja, hogy egy rendelkezésre állási csoportba helyezze őket. Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gép SLA-nak. Dönthet úgy is, hogy létrehoz egy rendelkezésre állási készletet a virtuális géphez, vagy hozzáadja a virtuális gépet egy meglévő rendelkezésre állási csoporthoz.
+Ha redundanciát szeretne biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportba csoportosítson. Az Advisor azonosítja azokat a virtuális gépeket, amelyek nem részei egy rendelkezésre állási csoportnak, és azt ajánlja, hogy helyezze át őket egy Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartás során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gépek SLA-nak. Dönthet úgy is, hogy létrehoz egy rendelkezésre állási készletet a virtuális géphez, vagy hozzáadja a virtuális gépet egy meglévő rendelkezésre állási csoporthoz.
 
 > [!NOTE]
 > Ha úgy dönt, hogy létrehoz egy rendelkezésre állási készletet, legalább egy virtuális gépet hozzá kell adnia. Javasoljuk, hogy egy rendelkezésre állási csoportban két vagy több virtuális gépet csoportosítson, hogy legalább egy gép elérhető legyen a leállás során.
 
 ## <a name="ensure-availability-set-fault-tolerance"></a>Rendelkezésre állási csoport hibatűrésének biztosítása
 
-Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a virtuális gépeket legalább kettesével foglalja rendelkezésre állási csoportokba. Az Advisor egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportokat azonosít, és egy vagy több virtuális gép hozzáadását javasolja.Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gép SLA-nak.Dönthet úgy, hogy létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet ad hozzá a rendelkezésre állási csoporthoz.  
+Ha redundanciát szeretne biztosítani az alkalmazás számára, javasoljuk, hogy legalább két virtuális gépet egy rendelkezésre állási csoportba csoportosítson. Az Advisor egyetlen virtuális gépet tartalmazó rendelkezésre állási csoportokat azonosít, és egy vagy több virtuális gép hozzáadását javasolja.Ez a konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartás során legalább egy virtuális gép elérhető legyen, és megfelel az Azure-beli virtuális gépek SLA-nak.Dönthet úgy, hogy létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet ad hozzá a rendelkezésre állási csoporthoz.  
 
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Felügyelt lemezek használata az adatok megbízhatóságának javítása érdekében
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Felügyelt lemezek használata az adatmegbízhatóság javítása érdekében
 
-Azok a virtuális gépek, amelyek olyan rendelkezésre állási csoportban találhatók, amelyekben a Storage-fiókokat vagy a tárolási méretezési egységeket osztják meg, nem rugalmasak egyetlen tárolási skálázási egység meghibásodása esetén a leállás során. Az Advisor azonosítja ezeket a rendelkezésre állási csoportokat, és javaslatot tesz az Azure Managed Disks-ra való áttérésre. Ezzel biztosíthatja, hogy a rendelkezésre állási csoport különböző virtuális gépei lemezei elég elszigeteltek legyenek, hogy elkerülje az adott meghibásodási pontot. 
+Azok a virtuális gépek, amelyek olyan rendelkezésre állási csoportban találhatók, amelyekben a Storage-fiókok vagy a tárolási méretezési egységek osztoznak, nem állnak rugalmasan az egyazon tárolási skálázási egységekkel kapcsolatos hibákig. Az Advisor azonosítja ezeket a rendelkezésre állási csoportokat, és javasolja az Azure Managed Disks szolgáltatásba való áttelepítést. Ez a Migrálás biztosítja, hogy a rendelkezésre állási csoportba tartozó virtuális gépek lemezei elég elszigeteltek legyenek, hogy elkerülje az egyetlen meghibásodási pontot. 
 
-## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>A Check Point hálózati virtuális berendezés rendszerkép-verziójával kapcsolatos ismert hiba
+## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>A hálózati virtuális berendezés rendszerképének verziószámának keresése
 
-Az Advisor képes azonosítani, hogy a virtuális gép futtathatja-e a következő, a platform karbantartási művelete esetén elveszített, hálózati kapcsolattal rendelkező ellenőrzési pont lemezképét. Az Advisor javaslata segítséget nyújt a probléma megoldására szolgáló rendszerkép újabb verziójára való frissítéshez. Ez biztosítja az üzletmenet folytonosságát a jobb hálózati kapcsolaton keresztül.
+Az Advisor képes megállapítani, hogy a virtuális gép fut-e a "a" hálózati kapcsolat elvesztése a platform karbantartási műveletei során. Az Advisor javaslata segítséget nyújt a probléma megoldására szolgáló rendszerkép újabb verziójára való frissítéshez. Ez az ellenőrzés biztosítja az üzletmenet folytonosságát a jobb hálózati kapcsolaton keresztül.
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Az Application Gateway hibatűrésének biztosítása
 
-Ez a javaslat biztosítja az alkalmazás-átjárók által működtetett, kritikus fontosságú alkalmazások üzletmenet-folytonosságát. Az Advisor olyan Application Gateway-példányokat azonosít, amelyek nincsenek beállítva a hibatűréshez, és az elvégezhető szervizelési műveleteket javasolják. Az Advisor egy közepes vagy nagyméretű egypéldányos Application Gateway-átjárót azonosít, és legalább egy példány hozzáadását javasolja. Emellett az egy-vagy többpéldányos kisméretű Application Gateway-átjárókat is azonosít, és a közepes vagy nagy méretű SKU-ra való áttérést javasolja. Az Advisor javasolja ezeket a műveleteket annak biztosításához, hogy az Application Gateway-példányok megfeleljenek az adott erőforrásokra vonatkozó SLA-követelményeknek.
+Ez a javaslat biztosítja az alkalmazás-átjárók által működtetett, kritikus fontosságú alkalmazások üzletmenet-folytonosságát. Az Advisor a hibatűréshez nem konfigurált Application Gateway-példányokat azonosítja. Ezután az elvégezhető szervizelési műveleteket javasolja. Az Advisor egy közepes vagy nagyméretű egypéldányos Application Gateway-átjárót azonosít, és legalább egy példány hozzáadását javasolja. Emellett azonosítja az Egypéldányos és a többpéldányos kisméretű Application Gateway átjárókat is, és azt ajánlja, hogy közepes vagy nagy SKU-ba migrálja őket. Az Advisor javasolja ezeket a műveleteket, hogy az Application Gateway-példányok úgy legyenek konfigurálva, hogy megfeleljenek az adott erőforrásokra vonatkozó SLA-követelményeknek.
 
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Virtuális gépek adatainak védelme véletlen törléssel
 
-A virtuális gép biztonsági mentésének beállítása biztosítja az üzleti szempontból kritikus fontosságú adatmennyiség rendelkezésre állását, és védelmet nyújt a véletlen törlés vagy sérülés ellen. Az Advisor azonosítja azokat a virtuális gépeket, amelyeken a biztonsági mentés nincs engedélyezve, és a biztonsági mentés engedélyezését javasolja. 
+A virtuális gép biztonsági mentésének beállítása biztosítja az üzleti szempontból kritikus fontosságú adatmennyiség rendelkezésre állását, és védelmet nyújt a véletlen törlés vagy sérülés ellen. Az Advisor azonosítja azokat a virtuális gépeket, amelyeken nincs engedélyezve a biztonsági mentés, és a biztonsági mentést javasolja 
 
-## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ellenőrizze, hogy van-e hozzáférése az Azure Cloud experthez, amikor szüksége van rá
+## <a name="ensure-you-have-access-to-azure-experts-when-you-need-it"></a>Szükség esetén ellenőrizze, hogy van-e hozzáférése az Azure-szakértőkhöz
 
-Üzleti szempontból kritikus fontosságú számítási feladatok futtatásakor fontos, hogy szükség esetén hozzáférhessen a technikai támogatáshoz. Az Advisor olyan potenciális üzleti szempontból kritikus előfizetéseket azonosít, amelyek nem rendelkeznek technikai támogatással a támogatási csomagban, és javaslatot tesz arra, hogy a technikai támogatást tartalmazó lehetőségre frissítsen.
+Ha üzleti szempontból kritikus fontosságú számítási feladatokat futtat, fontos, hogy a szükséges technikai támogatáshoz hozzáférjen. Az Advisor olyan potenciális üzleti szempontból kritikus előfizetéseket azonosít, amelyek nem rendelkeznek technikai támogatással a támogatási csomagokban. Javasoljuk, hogy frissítsen egy olyan lehetőségre, amely technikai támogatást is tartalmaz.
 
-## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-issues-affect-you"></a>Azure Service Health riasztások létrehozása, amelyekről értesítést kap, ha az Azure-problémák érintik Önt
+## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-problems-affect-you"></a>Azure Service Health riasztások létrehozása, amelyekről értesítést kap, ha az Azure-problémák érintik Önt
 
-Javasoljuk, hogy Azure Service Health riasztások beállításával értesítést kapjon, ha az Azure-szolgáltatással kapcsolatos problémák érintik Önt. A [Azure Service Health](https://azure.microsoft.com/features/service-health/) egy ingyenes szolgáltatás, amely személyre szabott útmutatást és támogatást nyújt, ha egy Azure-szolgáltatással kapcsolatos probléma jelentkezik. Az Advisor olyan előfizetéseket azonosít, amelyek nincsenek konfigurálva riasztások, és azt javasolja, hogy hozzon létre egyet.
+Javasoljuk, hogy Azure Service Health riasztásokat állítson be, hogy értesítést kapjon, ha az Azure-szolgáltatással kapcsolatos problémák érintik Önt. A [Azure Service Health](https://azure.microsoft.com/features/service-health/) egy ingyenes szolgáltatás, amely személyre szabott útmutatást és támogatást nyújt, ha az Azure-szolgáltatással kapcsolatos problémát érint. Az Advisor olyan előfizetéseket azonosít, amelyek nem rendelkeznek konfigurált riasztásokkal, és azt javasolja, hogy konfigurálja azokat.
 
 ## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>Traffic Manager végpontok konfigurálása a rugalmasság érdekében
 
-Ha egy adott végpont meghibásodik, Traffic Manager több végponttal rendelkező profilok magasabb rendelkezésre állással rendelkeznek. A végpontok különböző régiókban való elhelyezése tovább javítja a szolgáltatás megbízhatóságát. Az Advisor olyan Traffic Manger-profilokat azonosít, ahol csak egy végpont található, és legalább egy végpont hozzáadását javasolja egy másik régióban.
+Az Azure Traffic Manager-profilok több végponttal is rendelkeznek magasabb rendelkezésre állással, ha bármelyik végpont meghibásodik. A végpontok különböző régiókban való elhelyezése tovább javítja a szolgáltatás megbízhatóságát. Az Advisor olyan Traffic Manger-profilokat azonosít, ahol csak egy végpont található, és legalább egy végpont hozzáadását javasolja egy másik régióban.
 
-Ha egy Traffic Manager profilban található összes végpont ugyanazon a régióban található, a más régiókban lévő felhasználók kapcsolati késéseket tapasztalhatnak. A végpontok egy másik régióba való felvétele vagy áthelyezése javítja a teljes teljesítményt, és jobb rendelkezésre állást biztosít, ha az egyik régióban lévő összes végpont meghibásodik. Az Advisor azonosítja Traffic Manager a közelségi útválasztáshoz konfigurált profilokat, ahol az összes végpont ugyanabban a régióban található. Azt javasolja, hogy egy végpontot egy másik Azure-régióhoz adjon hozzá vagy helyezzen át.
+Ha egy Traffic Manager-profilban lévő összes végpont ugyanazon a régióban található, a más régiókban lévő felhasználók kapcsolati késéseket tapasztalhatnak. A végpontok egy másik régióba való felvétele vagy áthelyezése javítja a teljes teljesítményt, és jobb rendelkezésre állást biztosít, ha az egyik régióban lévő összes végpont meghibásodik. Az Advisor azonosítja Traffic Manager a közelségi útválasztáshoz konfigurált profilokat, ahol az összes végpont ugyanabban a régióban található. Azt javasolja, hogy egy végpontot egy másik Azure-régióhoz adjon hozzá vagy helyezzen át.
 
-Ha egy Traffic Manager-profil a földrajzi útválasztáshoz van konfigurálva, akkor a rendszer a forgalmat a meghatározott régiók alapján irányítja a végpontokhoz. Ha egy régió meghibásodik, nincs előre definiált feladatátvétel. Ha olyan végponttal rendelkezik, amelyben a regionális csoportosítás az "All (világ)" értékre van konfigurálva, a rendszer elkerüli a forgalmat, és javítja a szolgáltatás rendelkezésre állását. Az Advisor azonosítja a földrajzi útválasztáshoz konfigurált Traffic Manager-profilokat, ahol nincs olyan végpont konfigurálva, amelynek a regionális csoportosítása "All (világ)". Azt javasolja, hogy módosítsa a konfigurációt úgy, hogy az "All (világ)" végpontot hozzon.
+Ha egy Traffic Manager-profil földrajzi útválasztásra van konfigurálva, a rendszer a forgalmat a meghatározott régiók alapján irányítja a végpontokhoz. Ha egy régió meghibásodik, nincs előre definiált feladatátvétel. Ha van olyan végpontja, ahol a regionális csoportosítás az **összes (világ)** értékre van konfigurálva, akkor elkerülhető a forgalom eldobása és a szolgáltatás rendelkezésre állásának javítása. Az Advisor azonosítja a földrajzi útválasztáshoz konfigurált Traffic Manager-profilokat, ahol nincs olyan végpont konfigurálva, amelynek a regionális csoportosítása az **összes (világ)**. Javasolja a konfiguráció módosítását, hogy az **összes végpont (világ)** legyen.
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Az adatok mentése és helyreállítása a véletlen felülírás vagy törlés után a Soft delete használatával az Azure Storage-fiókban
 
-Engedélyezze a helyreállítható [törlést](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) a Storage-fiókban, hogy a törölt Blobok a véglegesen törölt állapotba kerüljenek a végleges törlés helyett. Az adatok felülírásakor a rendszer létrehoz egy helyreállítható módon törölt pillanatképet a felülírt adatok állapotának mentéséhez. A Soft delete használata lehetővé teszi a helyreállítást, ha véletlen törlés vagy felülírás történik. Az Advisor olyan Azure Storage-fiókokat azonosít, amelyeken nincs engedélyezve a helyreállított törlés, és azt javasolja, hogy engedélyezze azt.
+Engedélyezze a helyreállítható [törlést](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) a Storage-fiókban, hogy a törölt Blobok a véglegesen törölt állapotba kerüljenek a végleges törlés helyett. Az adatok felülírásakor a rendszer létrehoz egy helyreállítható módon törölt pillanatképet a felülírt adatok állapotának mentéséhez. A Soft delete lehetővé teszi a helyreállítást véletlen törlések vagy felülírások esetén. Az Advisor olyan Azure Storage-fiókokat azonosít, amelyeken nincs engedélyezve a helyreállított törlés, és azt javasolja, hogy engedélyezze azt.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>VPN-átjáró konfigurálása aktív-aktív kapcsolati rugalmasságra
 
-Az aktív-aktív konfigurációban a VPN-átjáró mindkét példánya S2S VPN-alagutakat hoz létre a helyszíni VPN-eszközhöz. Ha egy tervezett karbantartási esemény vagy nem tervezett esemény egy átjáró-példányra történik, a rendszer automatikusan átváltja a forgalmat a másik aktív IPsec-alagútra. Azure Advisor azonosítja azokat a VPN-átjárókat, amelyek nincsenek aktív-aktívként konfigurálva, és javasoljuk, hogy a magas rendelkezésre állás érdekében konfigurálja azokat.
+Az aktív-aktív konfigurációban a VPN-átjárók mindkét példánya S2S VPN-alagutat hoz létre a helyszíni VPN-eszközhöz. Ha egy tervezett karbantartási esemény vagy nem tervezett esemény egy átjáró-példányra esik, a rendszer automatikusan átvált a másik aktív IPsec-alagútra. Azure Advisor azonosítja azokat a VPN-átjárókat, amelyek nincsenek aktív-aktívként konfigurálva, és azt javasolja, hogy magas rendelkezésre álláshoz konfigurálja azokat.
 
 ## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Éles környezetben működő VPN-átjárók használata az éles számítási feladatok futtatásához
 
-Azure Advisor a rendszer minden olyan VPN-átjárót keres, amely alapszintű SKU, és azt javasolja, hogy ehelyett éles SKU-t használjon. Az alapszintű SKU fejlesztési és tesztelési célokra lett tervezve. Az üzemi SKU-kal nagyobb számú alagút, BGP-támogatás, aktív-aktív konfigurációs beállítások, egyéni IPSec/IKE-házirend, valamint nagyobb stabilitás és rendelkezésre állás van.
+Azure Advisor ellenőrzi az alapszintű SKU-t használó VPN-átjárókat, és azt javasolja, hogy használjon éles SKU-t. Az alapszintű SKU fejlesztéshez és teszteléshez lett tervezve. Termelési SKU-ajánlat:
+- További alagutak. 
+- BGP-támogatás. 
+- Aktív-aktív konfigurációs beállítások. 
+- Egyéni IPSec/IKE-házirend. 
+- Nagyobb stabilitás és rendelkezésre állás.
 
 ## <a name="repair-invalid-log-alert-rules"></a>Érvénytelen naplózási riasztási szabályok javítása
 
-Azure Advisor felismeri azokat a riasztási szabályokat, amelyek érvénytelen lekérdezésekkel rendelkeznek a feltételek szakaszban. A naplóriasztási szabályok az Azure Monitorban hozhatók létre, és elemzési lekérdezések adott időközönkénti futtatására szolgálnak. A lekérdezés eredményei határozzák meg, hogy egy riasztást aktiválni kell-e. Az elemzési lekérdezések idővel érvénytelenné válhatnak a hivatkozott erőforrásokban, táblákban vagy parancsokban bekövetkező változások miatt. Az Advisor azt ajánlja, hogy javítsa ki a lekérdezést a riasztási szabályban, hogy megakadályozza az automatikus letiltását, és biztosítsa az Azure-ban lévő erőforrások lefedettségének figyelését. [További információ a riasztási szabályok hibaelhárításáról](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor észleli azokat a riasztási szabályokat, amelyekben a feltételek szakaszban megadott lekérdezések érvénytelenek. A naplózási riasztási szabályokat a Azure Monitorban hozhatja létre, és a segítségével meghatározott időközönként futtathatja az elemzési lekérdezéseket. A lekérdezés eredményei határozzák meg, hogy ki kell-e indítani a riasztást. Az elemzési lekérdezések a hivatkozott erőforrások, táblák vagy parancsok változásai miatt változhatnak az idő múlásával. Az Advisor azt javasolja, hogy javítsa ki a lekérdezést a riasztási szabályban, hogy megakadályozza, hogy a rendszer automatikusan letiltsa, és biztosítsa az Azure-beli erőforrások lefedettségét. [További információ a riasztási szabályok hibaelhárításáról.](https://aka.ms/aa_logalerts_queryrepair)
 
-## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Konzisztens indexelési mód konfigurálása a Cosmos DB-gyűjteményen
+## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konzisztens indexelési mód konfigurálása a Azure Cosmos DB-gyűjteményen
 
-Azure Cosmos DB lusta indexelési móddal konfigurált tárolók befolyásolhatják a lekérdezési eredmények frissességét. Az Advisor felismeri az így konfigurált tárolókat, és azt javasolja, hogy konzisztens módba váltson. [További információ a szabályzatok indexeléséről Cosmos DB](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+Azure Cosmos DB tárolók lusta indexelési móddal való konfigurálása hatással lehet a lekérdezési eredmények frissességére. Az Advisor észleli az így konfigurált tárolókat, és azt javasolja, hogy konzisztens módba váltson. [További információ a szabályzatok indexeléséről a Azure Cosmos DB.](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Azure Cosmos DB-tárolók konfigurálása partíciókulccsal
 
-Azure Advisor azonosíthatja Azure Cosmos DB nem particionált gyűjteményeket, amelyek megközelítik a kiépített tárolási kvótát. Javasoljuk, hogy ezeket a gyűjteményeket a partíciós kulcs definíciójának megfelelően áttelepíti új gyűjteményekre, hogy a szolgáltatás automatikusan kibővítse őket. [További információ a partíciós kulcs kiválasztásáról](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor azonosítja Azure Cosmos DB nem particionált gyűjteményeket, amelyek megközelítik a kiépített tárolási kvótát. Azt javasolja, hogy ezeket a gyűjteményeket új gyűjteményekbe telepítse át egy partíciós kulcs-definícióval, hogy a szolgáltatás automatikusan bővítse őket. [További információ a partíciós kulcs kiválasztásáról.](https://aka.ms/cosmosdb/choose-partitionkey)
 
-## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Az Azure Cosmos DB .NET SDK frissítése a legújabb verzióra a Nugetről
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>A Azure Cosmos DB .NET SDK frissítése a NuGet legújabb verziójára
 
-A Azure Advisor Azure Cosmos DB azonosítja a .NET SDK régi verzióit használó fiókokat, és javasolja, hogy a legújabb javításokra, teljesítmény-fejlesztésekre és új funkciókra vonatkozó Nuget a legújabb verzióra frissítsen. [További információ a Cosmos DB .NET SDK-ról](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor azonosítja Azure Cosmos DB a .NET SDK régi verzióit használó fiókokat. Azt javasolja, hogy a legújabb verzióra, a teljesítménnyel kapcsolatos fejlesztésekre és a funkciókra vonatkozó funkciókra frissítsen a NuGet legújabb verziójára. [További információ a Azure Cosmos DB .NET SDK-ról.](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Java SDK frissítése a legújabb verzióra a Mavenről
 
-A Azure Advisor Azure Cosmos DB azonosítja a Java SDK régi verzióit használó fiókokat, és javasolja, hogy a legújabb verzióra frissítsen a Maven legújabb verziójára, a teljesítmény fejlesztésére és az új funkciókra. [További információ a Cosmos DB Java SDK-ról](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
+Azure Advisor azonosítja Azure Cosmos DB a Java SDK régi verzióit használó fiókokat. Azt javasolja, hogy a Maven legújabb verziójára frissítsen a legújabb javítások, a teljesítménnyel kapcsolatos fejlesztések és a funkciók funkcióival. [További információ a Azure Cosmos DB Java SDK-ról.](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
 
-## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Spark-összekötő frissítése a legújabb verzióra a Mavenről
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>A Azure Cosmos DB Spark-összekötő frissítése a Maven legújabb verziójára
 
-A Azure Advisor azonosítja a Cosmos DB Spark-összekötő régi verzióit használó Azure Cosmos DB-fiókokat, és javasolja a Maven legújabb verzióra való frissítését a legújabb javításokkal, a teljesítménnyel kapcsolatos fejlesztésekkel és az új funkciókkal. [További információ a Cosmos DB Spark-összekötőről](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor azonosítja Azure Cosmos DB a Azure Cosmos DB Spark-összekötő régi verzióit használó fiókokat. Azt javasolja, hogy a Maven legújabb verziójára frissítsen a legújabb javítások, a teljesítménnyel kapcsolatos fejlesztések és a funkciók funkcióival. [További információ a Azure Cosmos DB Spark-összekötőről.](https://aka.ms/cosmosdb/spark-connector)
 
-## <a name="upgrade-recommendation-for-deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Frissítési javaslat a Kafka 1,1-es verziójának elavulttá tételéhez a HDInsight 4,0 Kafka-fürtben
+## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>Érdemes áthelyezni a Kafka 2,1-et a HDInsight 4,0
 
-2020. július 1-től kezdve az ügyfelek nem hozhatnak létre új Kafka-fürtöket a Kafka 1.1 használatával a HDInsight 4.0-ban. A meglévő fürtök a jelenlegi állapotukban futnak tovább, Microsoft-támogatás nélkül. Fontolja meg, hogy a HDInsight 4.0-ban átvált a Kafka 2.1-re 2020. június 30-ig, a rendszerhasználat/támogatás esetleges megszakításának elkerülése érdekében.
+2020. július 1-től nem fog tudni új Kafka-fürtöket létrehozni a Kafka 1,1 használatával az Azure HDInsight 4,0-on. A meglévő fürtök a jelenlegi állapotukban futnak tovább, Microsoft-támogatás nélkül. A potenciális rendszer/támogatás megszakításának elkerülése érdekében érdemes lehet a HDInsight 2020 4,0-re való áttérést a Kafka 2,1-re.
 
-## <a name="upgrade-recommendation-for-deprecation-of-older-spark-versions-in-hdinsight-spark-cluster"></a>Frissítési javaslat a régebbi Spark-verziók elavult HDInsight Spark-fürtben való elavulttá tételéhez
+## <a name="consider-upgrading-older-spark-versions-in-hdinsight-spark-clusters"></a>Érdemes lehet frissíteni a régebbi Spark-verziókat a HDInsight Spark-fürtökben
 
-2020. július 1-től kezdve az ügyfelek nem hozhatnak létre új Spark-fürtöket a Spark 2.1 és 2.2 használatával a HDInsight 3.6-ban, illetve a Spark 2.3 használatával a HDInsight 4.0-ban. A meglévő fürtök a jelenlegi állapotukban futnak tovább, Microsoft-támogatás nélkül. ",
+2020. július 1-től nem hozhatók létre új Spark-fürtök a Spark 2,1 vagy 2,2 használatával a HDInsight 3,6-ben. Nem fog tudni új Spark-fürtöket létrehozni a Spark 2,3 a HDInsight 4,0 használatával. A meglévő fürtök a jelenlegi állapotukban futnak tovább, Microsoft-támogatás nélkül. 
 
 ## <a name="enable-virtual-machine-replication"></a>Virtuális gépek replikálásának engedélyezése
-Azok a virtuális gépek, amelyek nem rendelkeznek egy másik régióba való replikálással, nem rugalmasak a regionális kimaradások esetén. A virtuális gépek replikálása csökkenti az Azure-régió meghibásodása során fellépő hátrányos üzleti hatásokat. Az Advisor felismeri azokat a virtuális gépeket, amelyeken nincs engedélyezve a replikáció, és a replikáció engedélyezését javasolja, hogy a leállás esetén gyorsan üzembe lehessen hozni a virtuális gépeket egy távoli Azure-régióban. [További információ a virtuális gépek replikálásáról](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Azok a virtuális gépek, amelyeken nincs engedélyezve a replikáció egy másik régióban, nem rugalmasak a regionális kimaradások terén. A virtuális gépek replikálása csökkenti az Azure-régiók leállása során fellépő hátrányos üzleti hatásokat. Az Advisor észleli azokat a virtuális gépeket, amelyeken nincs engedélyezve a replikáció, és azt javasolja, hogy engedélyezze. Ha engedélyezi a replikációt, a virtuális gépek gyorsan üzembe helyezhetők egy távoli Azure-régióban. [További információ a virtuális gépek replikálásáról.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állási javaslatok elérése az Advisorban
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
 
-2.  Az Advisor Irányítópultján kattintson a **magas rendelkezésre állás** fülre.
+2.  Az Advisor irányítópultján válassza a **magas rendelkezésre állás** lapot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Advisor ajánlásaival kapcsolatos további információkért lásd:
 * [Az Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
+* [Az Advisor költségekkel kapcsolatos javaslatai](advisor-cost-recommendations.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 * [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)

@@ -2,21 +2,21 @@
 title: Alkalmazásproxy-alkalmazások hibakeresése – Azure Active Directory | Microsoft Docs
 description: Azure Active Directory-(Azure AD-) alkalmazásproxy-alkalmazásokkal kapcsolatos hibák elhárítása.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: e944c25f39903f8a78a949206bc8037f34508698
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74382077"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764638"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Alkalmazásproxy alkalmazáshibáinak hibakeresése 
 
@@ -31,7 +31,7 @@ További információ az alkalmazásproxy használatáról:
 - [Távoli hozzáférés a helyszíni alkalmazásokhoz alkalmazásproxy használatával](application-proxy.md)
 - [Alkalmazásproxy-összekötők](application-proxy-connectors.md)
 - [Összekötő telepítése és regisztrálása](application-proxy-add-on-premises-application.md)
-- [Alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása](application-proxy-troubleshoot.md)
+- [Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása](application-proxy-troubleshoot.md)
 
 ## <a name="flowchart-for-application-issues"></a>Az alkalmazással kapcsolatos problémák folyamatábrája
 

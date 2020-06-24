@@ -25,9 +25,9 @@ Ez a projekt a következő sablonokat tartalmazza:
 
 A minta használata:
 
-1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát `/ocean_blue` vagy `/slate_gray`.
-1. Töltse fel a sablon mappájában és a `/assets` mappában található összes fájlt a blob Storage-ba az előző szakaszokban leírtak szerint.
-1. Ezután nyissa meg `\*.html` a `/ocean_blue` vagy `/slate_gray`a gyökérkönyvtárában található összes fájlt, cserélje le a relatív URL-címek összes példányát a 2. lépésben feltöltött CSS-, kép-és betűkészlet-fájlok URL-címeire. Például:
+1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát `/ocean_blue` vagy `/slate_gray` .
+1. Töltse fel a sablon mappájában és a mappában található összes fájlt a `/assets` blob Storage-ba az előző szakaszokban leírtak szerint.
+1. Ezután nyissa meg a `\*.html` vagy a gyökérkönyvtárában található `/ocean_blue` `/slate_gray` összes fájlt, cserélje le a relatív URL-címek összes példányát a 2. lépésben feltöltött CSS-, kép-és betűkészlet-fájlok URL-címeire. Például:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
@@ -38,4 +38,4 @@ A minta használata:
     ```
 1. Mentse a `\*.html` fájlokat, és töltse fel őket a blob Storage-ba.
 1. Most módosítsa a szabályzatot, amely a korábban említett HTML-fájlra mutat.
-1. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a \*kiterjesztések és a. HTML fájlok között.
+1. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a kiterjesztések és a \* . HTML fájlok között.

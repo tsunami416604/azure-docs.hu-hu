@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan telepítheti át az Azure Application G
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 57a49f9e1473f33eceba14591815415338aeecf4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198802"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804398"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Az Azure Application Gateway és a webalkalmazási tűzfal migrálása v1-ről v2-re
 
@@ -131,7 +131,7 @@ A szkript futtatása:
 
 1. Futtassa a szkriptet a megfelelő paraméterek használatával. A befejezéshez öt – hét percet is igénybe vehet.
 
-    **Például**
+    **Példa**
 
    ```azurepowershell
    AzureAppGWMigration.ps1 `

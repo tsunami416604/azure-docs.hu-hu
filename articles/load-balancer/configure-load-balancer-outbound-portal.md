@@ -5,15 +5,15 @@ description: Ez a cikk bemutatja, hogyan konfigurálhatja a terheléselosztást 
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: b75f49155991bfc71f788ad88f166c0bec281841
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d71333bb29720afd82c7dbbde7126b30a7f6d6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77590012"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803686"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Terheléselosztás és kimenő szabályok konfigurálása standard Load Balancerban a Azure Portal használatával
 
@@ -25,7 +25,7 @@ Mindegyik előtér egy nyilvános IP-címet hivatkozik. Ebben az esetben a bejö
 
 A forgatókönyv két háttér-készletet használ: egyet a bejövő forgalomhoz, egy pedig a kimenő forgalomhoz. Ezek a készletek szemléltetik a képességet, és rugalmasságot biztosítanak a forgatókönyvhöz.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -35,17 +35,17 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást végez a virtuális gépeken. Létrehozhat egy nyilvános terheléselosztó vagy egy belső terheléselosztó is. Nyilvános terheléselosztó létrehozásakor létre kell hoznia egy új nyilvános IP-címet, amely a terheléselosztó előtér-felületének megfelelően van konfigurálva. A frontend alapértelmezett neve **LoadBalancerFrontEnd** lesz.
 
-1. A képernyő bal felső részén válassza az **erőforrás** > létrehozása**hálózatkezelés** > **Load Balancer**elemet.
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer**elemet.
 2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg a következő információkat, vagy válassza ki az alábbi adatokat:
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Előfizetés               | Válassza ki az előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a **myresourcegroupslb erőforráscsoportban** szöveget a szövegmezőbe.|
-    | Name (Név)                   | **myLoadBalancer**                                   |
+    | Name                   | **myLoadBalancer**                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | SKU           | Válassza a **standard** vagy az **alapszintű**lehetőséget. A Microsoft a standard szintű üzemi számítási feladatokhoz ajánlja. |
+    | Termékváltozat           | Válassza a **standard** vagy az **alapszintű**lehetőséget. A Microsoft a standard szintű üzemi számítási feladatokhoz ajánlja. |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. Ha meglévő nyilvános IP-címmel szeretne használni, válassza a **meglévő használata**lehetőséget.  A meglévő nyilvános IP-nek **standard** SKU-nak kell lennie.  Az alapszintű nyilvános IP-címek nem kompatibilisek a **standard** SKU Load balancerrel.  |
     | Nyilvános IP-cím              | Írja be a **myPublicIP** szöveget a szövegmezőbe.|
     | Rendelkezésreállási zóna | Rugalmas Load Balancer létrehozásához válassza a **felesleges zóna** lehetőséget. A zóna Load Balancer létrehozásához válasszon ki egy 1, 2 vagy 3 zónát egy adott zónából |
@@ -82,12 +82,12 @@ A rendszer az alkalmazás állapotának figyelésére használja az állapotot. 
     | Beállítás | Érték |
     | ------- | ----- |
     | Name (Név) | Adja meg a **myHealthProbe**. |
-    | Protocol (Protokoll) | Válassza a **http**lehetőséget. |
+    | Protokoll | Válassza a **http**lehetőséget. |
     | Port | Adja meg a **80**értéket.|
     | Intervallum | A mintavételi kísérletek közötti időtartam másodpercben megadott számú **intervallumában** adja meg a **15** értéket. |
     | Nem kifogástalan állapot küszöbértéke | Válassza a **2** értéket a nem megfelelő **állapotú küszöbértékek** vagy egymást követő mintavételi hibák számának megadásához, amelyeknek a virtuális gép nem megfelelő állapotba kell kerülnie.|
     | | |
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
 
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. 
@@ -109,7 +109,7 @@ A következő szakaszban létrehoz egy:
     | Beállítás | Érték |
     | ------- | ----- |
     | Name (Név) | Adja meg a **: myhttprule**. |
-    | Protocol (Protokoll) | Válassza a **TCP**lehetőséget. |
+    | Protokoll | Válassza a **TCP**lehetőséget. |
     | Port | Adja meg a **80**értéket.|
     | Háttér-port | Adja meg a **80**értéket. |
     | A háttérkészlet | Válassza a **myBackendPool**lehetőséget.|
@@ -133,9 +133,9 @@ A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális 
     | Name (Név) | Adja meg a **LoadBalancerFrontEndOutbound**. |
     | IP-cím verziója | Válassza az **IPv4** lehetőséget. |
     | IP-cím típusa | Válassza ki az **IP-címet**.|
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. A **nyilvános IP-cím hozzáadása**mezőben adja meg a **myPublicIPOutbound**.  Kattintson az **OK** gombra. |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. A **nyilvános IP-cím hozzáadása**mezőben adja meg a **myPublicIPOutbound**.  Válassza az **OK** lehetőséget. |
 
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza a **Hozzáadás** elemet.
 
 ### <a name="create-an-outbound-backend-pool"></a>Kimenő háttérrendszer-készlet létrehozása
 
@@ -164,9 +164,9 @@ A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális 
     | Kimenő portok – > választhat | Válassza ki a **portok száma példányt** |
     | Kimenő portok – > portok/példányok száma | Adja meg a **10 000**értéket. |
 
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza a **Hozzáadás** elemet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó **myresourcegroupslb erőforráscsoportban** , majd válassza a **Törlés**lehetőséget.
 

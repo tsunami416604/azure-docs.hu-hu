@@ -3,16 +3,16 @@ title: Bevezetés
 description: Ismerje meg az Azure VMware-megoldás (AVS) funkcióit és előnyeit a VMware-alapú számítási feladatok Azure-beli üzembe helyezéséhez és kezeléséhez.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: e227b6c7c2f25fbf62f11c17dc62293e4fbd5267
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 9e3ab0abfdaa613a08675356bc5b01949e0381ae
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740331"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749680"
 ---
 # <a name="what-is-azure-vmware-solution-avs-preview"></a>Mi az az Azure VMware Solution (AVS) előzetes verzió?
 
-Az Azure VMware-megoldás (AVS) saját felhőket biztosít az Azure-ban. A privát felhők olyan vSphere-fürtöket tartalmaznak, amelyek dedikált operációs rendszer nélküli Azure-infrastruktúrából épülnek fel. A privát felhőalapú fürtöket 3 – 16 gazdagépre méretezheti, így több fürt is rendelkezhet egyetlen privát felhőben. Az összes privát felhők vCenter Server, VSAN, vSphere és NSX-T-vel vannak kiépítve. Áttelepítheti a munkaterheléseket a helyszíni környezetekről, új virtuális gépeket hozhat létre vagy helyezhet üzembe, és az Azure-szolgáltatásokat a privát felhőkből is felhasználhatja.
+Az Azure VMware Solution (AVS) magánfelhőket biztosít az Azure-ban. A magánfelhők olyan vSphere-fürtöket tartalmaznak, amelyek dedikált, operációs rendszer nélküli Azure-infrastruktúrából épülnek fel. A magánfelhőbeli fürtöket 3–16 gazdagépre skálázhatja, és több fürttel is rendelkezhet egyetlen magánfelhőben. Az összes privát felhők vCenter Server, vSAN, vSphere és NSX-T-vel vannak kiépítve. A számítási feladatokat migrálhatja a helyszíni környezetekről, új virtuális gépeket hozhat létre vagy helyezhet üzembe, és az Azure-szolgáltatásokat a magánfelhőkből is felhasználhatja.
 
 Az AVS egy VMware-alapú ellenőrzött megoldás, amely a fejlesztés és a frissítés folyamatos ellenőrzésével és tesztelésével foglalkozik. A privát felhőalapú infrastruktúrát és szoftvereket a Microsoft felügyeli és tartja karban, így a saját Felhőbeli számítási feladatok fejlesztésére és futtatására koncentrálhat.
 

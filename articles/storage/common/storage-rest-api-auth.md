@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee37745b35071893ff504c56a4a6883b589f1d0e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77916064"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804641"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API műveletek meghívása megosztott kulcsos hitelesítéssel
 
@@ -27,7 +27,7 @@ A minta alkalmazás a Storage-fiók blob-tárolóit sorolja fel. A cikkben szere
 
 - Telepítse a [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) -et az **Azure-fejlesztési** számítási feladattal.
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Általános célú Storage-fiók. Ha még nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](storage-account-create.md)című témakört.
 
@@ -65,7 +65,7 @@ Tekintse át a [ListContainers](/rest/api/storageservices/List-Containers2) műv
 
 **Kérelem metódusa**: Get. Ez a művelet a kérési objektum tulajdonságként megadott HTTP-metódus. A művelethez tartozó egyéb értékek a meghívott API-tól függően a HEAD, a PUT és a DELETE függvényt is tartalmazzák.
 
-**Kérelem URI**- `https://myaccount.blob.core.windows.net/?comp=list`ja:.A kérelem URI-ja a blob Storage-fiók végpontján `http://myaccount.blob.core.windows.net` és az erőforrás `/?comp=list`-karakterláncon jön létre.
+**Kérelem URI-ja**: `https://myaccount.blob.core.windows.net/?comp=list` .A kérelem URI-ja a blob Storage-fiók végpontján `http://myaccount.blob.core.windows.net` és az erőforrás-karakterláncon jön létre `/?comp=list` .
 
 [URI-paraméterek](/rest/api/storageservices/List-Containers2#uri-parameters): további lekérdezési paraméterek is használhatók a ListContainers meghívásakor. Ezen paraméterek közül néhány *időtúllépést* okoz a híváshoz (másodpercben) és az *előtaghoz*, amely a szűréshez használatos.
 
@@ -102,14 +102,14 @@ A kérelem kiépítéséhez, amely egy HttpRequestMessage objektum, nyissa meg a
 
 Néhány alapvető információra van szüksége:
 
-- A ListContainers esetében a **metódus** a `GET`következő:. Ez az érték a kérelem példányának létrehozásakor van beállítva.
-- Az **erőforrás** az URI lekérdezési része, amely jelzi, hogy melyik API-t hívják, így az érték `/?comp=list`. Ahogy korábban már említettük, az erőforrás a hivatkozási dokumentáció oldalán található, amely a [LISTCONTAINERS API](/rest/api/storageservices/List-Containers2)információit jeleníti meg.
-- Az URI-t úgy hozza létre, hogy létrehoz egy Blob service végpontot az adott Storage-fiókhoz, és összefűzi az erőforrást. A **kérelem URI-azonosítójának** értéke véget ér `http://contosorest.blob.core.windows.net/?comp=list`.
+- A ListContainers esetében a **metódus** a következő: `GET` . Ez az érték a kérelem példányának létrehozásakor van beállítva.
+- Az **erőforrás** az URI lekérdezési része, amely jelzi, hogy melyik API-t hívják, így az érték `/?comp=list` . Ahogy korábban már említettük, az erőforrás a hivatkozási dokumentáció oldalán található, amely a [LISTCONTAINERS API](/rest/api/storageservices/List-Containers2)információit jeleníti meg.
+- Az URI-t úgy hozza létre, hogy létrehoz egy Blob service végpontot az adott Storage-fiókhoz, és összefűzi az erőforrást. A **kérelem URI-azonosítójának** értéke véget ér `http://contosorest.blob.core.windows.net/?comp=list` .
 - A ListContainers esetében a **requestBody** értéke null, és nincsenek további **fejlécek**.
 
 A különböző API-k más paraméterekkel is rendelkezhetnek, például *ifMatch*. A PutBlob meghívásakor például a ifMatch használatára lehet szükség. Ebben az esetben a ifMatch egy eTag állítja be, és csak akkor frissíti a blobot, ha az Ön által megadott eTag megegyezik a blob aktuális eTag. Ha valaki más frissíti a blobot a eTag beolvasása óta, a módosítások nem lesznek felülbírálva.
 
-Először állítsa be a `uri` és a `payload`.
+Először állítsa be a `uri` és a `payload` .
 
 ```csharp
 // Construct the URI. It will look like this:
@@ -121,7 +121,7 @@ String uri = string.Format("http://{0}.blob.core.windows.net?comp=list", storage
 Byte[] requestPayload = null;
 ```
 
-Ezután hozza létre a kérést, állítsa be a metódust és adja meg az URI-t `GET` .
+Ezután hozza létre a kérést, állítsa be a metódust és adja meg `GET` az URI-t.
 
 ```csharp
 // Instantiate the request message with a null payload.
@@ -130,7 +130,7 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 {
 ```
 
-Adja hozzá a `x-ms-date` és `x-ms-version`a kérelmek fejléceit. Ezen a helyen a kódban további, a híváshoz szükséges további fejlécek is megadhatók. Ebben a példában nincsenek további fejlécek. Egy olyan API-példa, amely további fejléceket továbbít, a tároló ACL-műveletének beállítása. Ez az API-hívás egy "x-MS-blob-Public-Access" nevű fejlécet és a hozzáférési szint értékét adja hozzá.
+Adja hozzá a és a kérelmek fejléceit `x-ms-date` `x-ms-version` . Ezen a helyen a kódban további, a híváshoz szükséges további fejlécek is megadhatók. Ebben a példában nincsenek további fejlécek. Egy olyan API-példa, amely további fejléceket továbbít, a tároló ACL-műveletének beállítása. Ez az API-hívás egy "x-MS-blob-Public-Access" nevű fejlécet és a hozzáférési szint értékét adja hozzá.
 
 ```csharp
 // Add the request headers for x-ms-date and x-ms-version.
@@ -149,7 +149,7 @@ httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetA
     storageAccountName, storageAccountKey, now, httpRequestMessage);
 ```
 
-Ezen a ponton a `httpRequestMessage` Rest-kérelem az engedélyezési fejlécekkel fejeződött be.
+Ezen a ponton `httpRequestMessage` a REST-kérelem az engedélyezési fejlécekkel fejeződött be.
 
 ## <a name="send-the-request"></a>A kérelem elküldése
 
@@ -300,7 +300,7 @@ StringToSign = VERB + "\n" +
                CanonicalizedResource;  
 ```
 
-A mezők többsége ritkán használatos. BLOB Storage esetén a művelet, az MD5, a tartalom hossza, a kanonikus fejlécek és a kanonikus erőforrások megadása szükséges. A többi mezőt üresen hagyhatja (de `\n` azt is megteheti, hogy üresek).
+A mezők többsége ritkán használatos. BLOB Storage esetén a művelet, az MD5, a tartalom hossza, a kanonikus fejlécek és a kanonikus erőforrások megadása szükséges. A többi mezőt üresen hagyhatja (de azt is megteheti, hogy `\n` üresek).
 
 Mi a CanonicalizedHeaders és a CanonicalizedResource? Remek kérdés. Valójában mit jelent a kanonikus? A Microsoft Word még nem ismeri fel szót. Itt látható a [wikipedia a szabványosításról](https://en.wikipedia.org/wiki/Canonicalization): *a számítástechnika, a szabványosítás (esetenként a szabványosítás vagy a normalizálás) egy olyan folyamat, amely egynél több lehetséges ábrázolással rendelkezik a "standard", a "normál" vagy a kanonikus formában.* Normális – beszéd esetén ez azt jelenti, hogy az elemek listáját (például a fejléceket a kanonikus fejlécek esetén) kell megtenni, és szabványosítani kell őket egy szükséges formátumba. A Microsoft alapvetően úgy döntött, hogy formátumot használ, és meg kell egyeznie.
 
@@ -308,7 +308,7 @@ Kezdjük a két kanonikus mezővel, mert az engedélyezési fejléc létrehozás
 
 ### <a name="canonicalized-headers"></a>Kanonikus fejlécek
 
-Az érték létrehozásához kérje le azokat a fejléceket, amelyek az "x-MS-" karakterlánccal `[key:value\n]` kezdődnek, rendezze őket, majd formázza őket egy sztringbe, és összefűzi őket egy karakterlánccá. Ebben a példában a kanonikus fejlécek így néznek ki:
+Az érték létrehozásához kérje le azokat a fejléceket, amelyek az "x-MS-" karakterlánccal kezdődnek, rendezze őket, majd formázza őket egy sztringbe `[key:value\n]` , és összefűzi őket egy karakterlánccá. Ebben a példában a kanonikus fejlécek így néznek ki:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -353,7 +353,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 
 ### <a name="canonicalized-resource"></a>Kanonikus erőforrás
 
-Az aláírási karakterlánc ezen része a kérelem által megadott tárolási fiókot jelöli. Ne feledje `<http://contosorest.blob.core.windows.net/?comp=list>`, hogy a kérelem URI-ja a tényleges fióknév (`contosorest` ebben az esetben). Ebben a példában a rendszer a következőt adja vissza:
+Az aláírási karakterlánc ezen része a kérelem által megadott tárolási fiókot jelöli. Ne feledje, hogy a kérelem URI `<http://contosorest.blob.core.windows.net/?comp=list>` -ja a tényleges fióknév ( `contosorest` ebben az esetben). Ebben a példában a rendszer a következőt adja vissza:
 
 ```
 /contosorest/\ncomp:list

@@ -1,20 +1,26 @@
 ---
 title: Azure-beli virtuális gépek méretei – memória | Microsoft Docs
-description: Felsorolja az Azure-beli virtuális gépekhez elérhető különböző memória-optimalizált méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
+description: Felsorolja az Azure-beli virtuális gépekhez elérhető különböző memória-optimalizált méreteket. A vCPU, az adatlemezek és a hálózati adapterek számával, valamint a tárolási teljesítményével és a hálózat sávszélességével kapcsolatos információkat sorolja fel ebben a sorozatban.
+services: virtual-machines
+documentationcenter: ''
 author: mimckitt
+manager: gwallace
+editor: ''
+tags: azure-resource-manager,azure-service-management
 keywords: VM-elkülönítés, elkülönített virtuális gép, elkülönítés, elkülönített
+ms.assetid: ''
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 6e2486dfeae221e7e3ddadcdcac0d9779d49542c
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 5e920f165232ec79dcced1de632d90f463ff58d9
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678664"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791469"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Memória-optimalizált virtuális gépek méretei
 
@@ -28,7 +34,9 @@ A memóriára optimalizált virtuálisgép-méretek magas memória-CPU arányt k
 
 - A [Ev3 és a Esv3 sorozatú](ev3-esv3-series.md) Intel &reg; Xeon &reg; 8171M 2,1 GHz (Skylake) vagy Intel &reg; Xeon &reg; E5-2673 v4 2,3 GHz (Broadwell) processzor egy Hyper-threaded konfigurációban, jobb értékű kiépítés a legtöbb általános célú számítási feladathoz, és a Ev3 integrálása a legtöbb más felhőben található általános célú virtuális gépekkel. A memória kibontása megtörtént (7 GiB/vCPU – 8 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer a Hyper-Threading szolgáltatáshoz való áttéréssel összehangolva kiigazította. A Ev3 a D/Dv2 családok nagy memóriabeli virtuálisgép-méretének követése.
 
-- A [Edv4 és a Edsv4 sorozat](edv4-edsv4-series.md) a 2. generációs Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut, ideális a rendkívül nagy méretű adatbázisokhoz vagy más alkalmazásokhoz, amelyek nagy vCPU számítanak és nagy mennyiségű memóriát foglalnak magukban. A szolgáltatás egy tartós, 3,4 GHz-es, az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)által fenntartott, az összes alapvető Turbo órajelét tartalmazza. 
+- A [Ev4 és a Esv4 sorozat](ev4-esv4-series.md) a 2. generációs Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokat futtatja egy Hyper-threaded konfigurációban, ideális választás a különböző, nagy mennyiségű, nagyvállalati alkalmazások számára, és akár 504 GIB RAM-ot is tartalmaz. Az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)funkciókkal rendelkezik.
+
+- A [Edv4 és a Edsv4 sorozat](edv4-edsv4-series.md) a 2. generációs Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut, ideális a rendkívül nagy méretű adatbázisokhoz vagy más alkalmazásokhoz, amelyek nagy vCPU számítanak és nagy mennyiségű memóriát foglalnak magukban. A szolgáltatás egy tartós, 3,4 GHz-es, az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)által fenntartott, az összes alapvető Turbo órajelét tartalmazza.
 
 - Az [M sorozat](m-series.md) magas vCPU (akár 128 vCPU) és nagy mennyiségű memóriát (legfeljebb 3,8 TiB) kínál. Emellett ideális a rendkívül nagy méretű adatbázisok vagy más alkalmazások számára, amelyek nagy vCPU és nagy mennyiségű memóriát foglalnak magukban.
 
@@ -45,6 +53,6 @@ Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amely
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

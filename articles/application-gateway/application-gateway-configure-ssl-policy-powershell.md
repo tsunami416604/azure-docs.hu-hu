@@ -5,15 +5,15 @@ description: Ez a cikk útmutatást nyújt a TLS-szabályzat Azure-beli konfigur
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 3804059fdd818f10663d14bde72da2c6773fa53f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312674"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808241"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>A TLS-házirend verziói és a titkosítási csomagok konfigurálása Application Gateway
 
@@ -75,7 +75,7 @@ AvailableProtocols:
 
 Az Application Gateway három előre definiált szabályzatot tartalmaz, amelyek felhasználhatók. A `Get-AzApplicationGatewaySslPredefinedPolicy` parancsmag lekéri ezeket a szabályzatokat. Minden házirendben engedélyezve vannak a protokollok és a titkosítási csomagok. Ezek az előre definiált szabályzatok használatával gyorsan konfigurálható a TLS-házirend az Application Gateway-ben. Alapértelmezés szerint a **AppGwSslPolicy20150501** van kiválasztva, ha nincs megadva adott TLS-házirend.
 
-A következő kimenet egy példa a futtatásra `Get-AzApplicationGatewaySslPredefinedPolicy`.
+A következő kimenet egy példa a futtatásra `Get-AzApplicationGatewaySslPredefinedPolicy` .
 
 ```
 Name: AppGwSslPolicy20150501

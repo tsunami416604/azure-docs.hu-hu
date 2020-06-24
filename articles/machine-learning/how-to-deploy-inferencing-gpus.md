@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 03/05/2020
+ms.date: 06/17/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 766b7720d9a126276f4e86ff549b3047bf127691
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c115b641ca5c22ebe227af5349d7ef133e198b44
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557207"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976744"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -214,9 +214,6 @@ aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
-> [!NOTE]
-> Ha az `InferenceConfig` objektumnak van `enable_gpu=True` , akkor a `deployment_target` paraméternek egy GPU-t biztosító fürtre kell hivatkoznia. Ellenkező esetben a telepítés sikertelen lesz.
-
 További információ: a [modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)dokumentációja.
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Lekérdezés kiadása a szolgáltatásnak
@@ -288,7 +285,7 @@ aks_service.delete()
 aks_target.delete()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell üzembe helyezése a FPGA](how-to-deploy-fpga-web-service.md)
 * [Modell üzembe helyezése a ONNX](concept-onnx.md#deploy-onnx-models-in-azure)

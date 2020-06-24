@@ -5,14 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 06/17/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 61dd98028b7342290984615ea19b561b48aaeadb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d9712026daab63a002793adf2e17b9db943f94
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74792234"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976897"
 ---
 # <a name="supported-postgresql-major-versions"></a>Támogatott PostgreSQL főverziók
 A Microsoft célja, hogy támogassa a PostgreSQL-motor n-2 verzióját Azure Database for PostgreSQL – egyetlen kiszolgálón. A verziók a jelenlegi főverzió az Azure-ban (n) és a két korábbi főverzió (-2).
@@ -20,16 +20,16 @@ A Microsoft célja, hogy támogassa a PostgreSQL-motor n-2 verzióját Azure Dat
 A Azure Database for PostgreSQL jelenleg a következő főbb verziókat támogatja:
 
 ## <a name="postgresql-version-11"></a>PostgreSQL 11-es verzió
-Az aktuális alverzió 11,5. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/11/static/release-11-5.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
+Az aktuális alverzió 11,6. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/11/static/release-11-6.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
 
 ## <a name="postgresql-version-10"></a>PostgreSQL 10-es verzió
-Az aktuális alverzió 10,10. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/10/static/release-10-10.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
+Az aktuális alverzió 10,11. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/10/static/release-10-11.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
 
 ## <a name="postgresql-version-96"></a>PostgreSQL 9,6-es verzió
-Az aktuális másodlagos kiadás a 9.6.15. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/9.6/static/release-9-6-15.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
+Az aktuális másodlagos kiadás a 9.6.16. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
 
 ## <a name="postgresql-version-95"></a>PostgreSQL 9,5-es verzió
-Az aktuális másodlagos kiadás a 9.5.19. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/9.5/static/release-9-5-19.html) , amely az ebben a másodlagos kiadásban található javításokat és javításokat ismerteti.
+Az aktuális másodlagos kiadás a 9.5.20. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) , amely az ebben a másodlagos kiadásban található javításokat és javításokat ismerteti.
 
 ## <a name="managing-upgrades"></a>Frissítések kezelése
 A PostgreSQL-projekt rendszeresen kiad kisebb kiadásokat a jelentett hibák kijavítása érdekében. Azure Database for PostgreSQL a szolgáltatás havi üzembe helyezése során a rendszer a kisebb kiadású kiszolgálók automatikus javítását végzi. 

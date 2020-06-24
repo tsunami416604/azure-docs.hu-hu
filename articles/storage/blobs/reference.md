@@ -1,5 +1,5 @@
 ---
-title: Azure Blob Storage – dokumentáció
+title: Azure Blob Storage-referencia
 description: Keresse meg az Azure Blob Storage API-referenciáját, a readme-fájlokat és az ügyféloldali függvénytár-csomagokat.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: d470864dd12f5ded511f9a6e02b3e4cab0ee66d7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 477170cf3c2bab54efc5ef74495f39fb89f62c77
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346079"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976693"
 ---
-# <a name="azure-blob-storage-reference"></a>Azure Blob Storage – dokumentáció
+# <a name="azure-blob-storage-reference"></a>Azure Blob Storage-referencia
 
 Az Azure Blob Storage API-referenciák, a függvénytár-csomagok, a readme-fájlok és az első lépések cikkeinek megkeresése.
 
@@ -67,8 +67,8 @@ Az alábbi táblázat az Azure Blob Storage Python API-k hivatkozásait és mint
 
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Storage-Blobok ügyféloldali kódtára a Pythonhoz](/python/api/overview/azure/storage-blob-readme) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-blob/) | [Gyors útmutató: Blobok kezelése a Python V12 SDK-val](/azure/storage/blobs/storage-quickstart-blobs-python) |
-| 2. x | [Azure-Storage – blob](/python/api/azure-storage-blob/?view=azure-python-previous) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Gyors útmutató: Blobok kezelése a Python v 2.1 SDK-val](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
+| 12. x | [Az Azure Storage ügyféloldali kódtárai a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-blob/) | [Gyors útmutató: Blobok kezelése a Python V12 SDK-val](/azure/storage/blobs/storage-quickstart-blobs-python) |
+| 2. x | [Azure Storage ügyféloldali kódtárak v2 a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Gyors útmutató: Blobok kezelése a Python v 2.1 SDK-val](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript-ügyféloldali kódtárak
 
@@ -76,8 +76,8 @@ Az alábbi táblázat az Azure Blob Storage JavaScript API-jai dokumentációjá
 
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Az ügyféloldali kódtár Azure Storage Blob a JavaScripthez](/javascript/api/overview/azure/storage-blob-readme) | [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-blob) | [Rövid útmutató: Blobok kezelése a JavaScript V12 SDK-val a Node. js-ben](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [Gyors útmutató: Blobok kezelése a JavaScript V12 SDK-val egy böngészőben](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
-| 10. x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy) | [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Rövid útmutató: Blobok kezelése a JavaScript v10 SDK-val a Node. js-ben](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val a böngészőben](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
+| 12. x | [Az ügyféloldali kódtár Azure Storage Blob a JavaScripthez](/javascript/api/overview/azure/storage-blob-readme) | [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-blob) | [Gyors útmutató: Blobok kezelése a JavaScript V12 SDK-val Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [Gyors útmutató: Blobok kezelése a JavaScript V12 SDK-val egy böngészőben](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
+| 10. x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy) | [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val a böngészőben](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
 
 ## <a name="rest-apis"></a>REST API-k
 

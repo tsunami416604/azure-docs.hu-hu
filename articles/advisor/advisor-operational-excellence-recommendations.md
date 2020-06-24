@@ -58,7 +58,7 @@ Azure Policy egy Azure-szolgáltatás, amely szabályzatok létrehozására, hoz
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)
-* [Bevezetés](advisor-get-started.md)
+* [Első lépések](advisor-get-started.md)
 * [Az Advisor költségekkel kapcsolatos javaslatai](advisor-cost-recommendations.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md)

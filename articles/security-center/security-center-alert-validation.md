@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79139997"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791180"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Riasztások érvényesítése (EICAR-tesztfájl) az Azure Security Centerben
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
@@ -37,9 +37,9 @@ További információ: [biztonsági riasztások a Security Centerban](security-c
 
 Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
 
-1. Másoljon egy végrehajtható fájlt (például a **Calc. exe**fájlt) a számítógép asztalára vagy az Ön kényelmének más könyvtárába, és nevezze át **ASC_AlertTest_662jfi039N. exe**néven.
+1. Másoljon egy végrehajtható fájlt (például **calc.exe**) a számítógép asztalára vagy más kényelmi címtárba, és nevezze át **ASC_AlertTest_662jfi039N.exeként **.
 1. Nyissa meg a parancssort, és hajtsa végre a fájlt argumentummal (csak egy hamis argumentum neve), például:```ASC_AlertTest_662jfi039N.exe -foo```
-1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Az alábbi [példához](#alert-validate) hasonló riasztást kell megjeleníteni:
+1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Riasztásnak kell megjelennie.
 
 > [!NOTE]
 > A Windows rendszerhez készült teszt-riasztások megtekintésekor ellenőrizze, hogy az **argumentumok naplózása engedélyezve** van-e **igaz**. Ha **hamis**, akkor engedélyeznie kell a parancssori argumentumok naplózását. Az engedélyezéshez használja a következő parancsot:
@@ -57,11 +57,7 @@ Miután telepítette Security Center ügynököt a számítógépre, hajtsa vég
 
     ```./asc_alerttest_662jfi039n testing eicar pipe```
 
-1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Az alábbi [példához](#alert-validate) hasonló riasztást kell megjeleníteni:
-
-### <a name="alert-example"></a>Riasztási példa<a name="alert-validate"></a>
-
-![Példa riasztás érvényesítésére](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
+1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Riasztásnak kell megjelennie.
 
 
 ## <a name="validate-alerts-on-kubernetes"></a>Riasztások ellenőrzése a Kubernetes<a name="validate-kubernetes"></a>

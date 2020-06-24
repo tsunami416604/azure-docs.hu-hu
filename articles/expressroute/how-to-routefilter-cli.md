@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálható a Microsoft társk
 services: expressroute
 author: anzaman
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 269cabae276712a1f5b51c09705b7cd3eee5fb9d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74033416"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738345"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Útválasztási szűrők konfigurálása a Microsoft-partnerek számára: Azure CLI
 

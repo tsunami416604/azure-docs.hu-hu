@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d55c6b514f6401e60891f0713cb1b4135bb62ab6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 747acc27a5eaf8551e44a3bf52f55b5a380b73ce
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675996"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752629"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Időponthoz való visszaállítás engedélyezése és kezelése a blokk Blobok számára (előzetes verzió)
 
@@ -83,7 +83,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Visszaállítási művelet végrehajtása
 
-A visszaállítási művelet elindításához hívja meg a **Restore-AzStorageBlobRange** parancsot, és adja meg a visszaállítási pontot UTC **datetime** értékként. Megadhatja az lexicographical-tartományokat, amelyekkel visszaállíthatja a blobokat, vagy kihagyhat egy tartományt a Storage-fiók összes tárolójában lévő összes blob visszaállításához. Egy visszaállítási műveletben legfeljebb 10 lexicographical-tartomány támogatott. A visszaállítási művelet végrehajtása több percet is igénybe vehet.
+A visszaállítási művelet elindításához hívja meg a **Restore-AzStorageBlobRange** parancsot, és adja meg a visszaállítási pontot UTC **datetime** értékként. Megadhatja az lexicographical-tartományokat, amelyekkel visszaállíthatja a blobokat, vagy kihagyhat egy tartományt a Storage-fiók összes tárolójában lévő összes blob visszaállításához. Egy visszaállítási műveletben legfeljebb 10 lexicographical-tartomány támogatott. Az oldal blobok és a hozzáfűzési Blobok nem szerepelnek a visszaállításban. A visszaállítási művelet végrehajtása több percet is igénybe vehet.
 
 A visszaállítandó Blobok tartományának megadásakor vegye figyelembe a következő szabályokat:
 
@@ -166,7 +166,16 @@ $job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 $job.State
 ```
 
-## <a name="next-steps"></a>Következő lépések
+Ha a Futtatás után szeretné megvárni a visszaállítási művelet befejezését, hívja meg a [WAIT-Job](/powershell/module/microsoft.powershell.core/wait-job) parancsot az alábbi példában látható módon:
+
+```powershell
+$job | Wait-Job
+```
+
+## <a name="known-issues"></a>Ismert problémák
+- A restores egy részhalmaza, ahol a hozzáfűző Blobok jelennek meg, a visszaállítás sikertelen lesz. Egyelőre ne végezzen visszaállítást, ha a fiókban található hozzáfűzési Blobok szerepelnek.
+
+## <a name="next-steps"></a>További lépések
 
 - [Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)](point-in-time-restore-overview.md)
 - [Helyreállítható törlés](soft-delete-overview.md)

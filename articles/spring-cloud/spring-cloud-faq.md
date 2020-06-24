@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 95260d9a15fdc32c9fddccbcf63ae9fa564fd36a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3c38a67b13a6b5c12767d38ecf2297d2417ebdb
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176770"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808411"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
@@ -24,21 +24,6 @@ Ez a cikk az Azure Spring Cloud szolgáltatással kapcsolatos gyakori kérdések
 Az Azure Spring Cloud a tavaszi felhőalapú fejlesztők számára biztosít egy szolgáltatásként elérhető platformot (Péter). Az Azure Spring Cloud felügyeli az alkalmazás-infrastruktúráját, így az alkalmazás kódjára és az üzleti logikára koncentrálhat. Az Azure Spring Cloud beépített alapfunkciói közé tartozik az Eureka, a konfigurációs kiszolgáló, a szolgáltatás beállításjegyzék-kiszolgálója, a Pivotal Build szolgáltatás, a kék zöld környezetek és egyebek. Ez a szolgáltatás azt is lehetővé teszi, hogy a fejlesztők az alkalmazásaikat más Azure-szolgáltatásokkal, például a Azure Cosmos DB, a Azure Database for MySQL és az Azure cache Redis-hez kössenek.
 
 Az Azure Spring Cloud a fejlesztők és a kezelők számára a Azure Monitor, Application Insights és Log Analytics integrálásával fokozza az Application Diagnostics-élményt.
-
-### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Milyen szolgáltatási csomagokkal rendelkezik az Azure Spring Cloud ajánlat?
-
-Az Azure Spring Cloud egy szolgáltatási csomagot kínál az előzetes verzió ideje alatt.  A Spring Cloud üzemelő példány 16 vCPU magot és 32 GB memóriát tartalmaz.  Egy üzemelő példányon belül az egyes Service-példányok felső határa 4 vCPU mag, 8 GB memóriával.
-
-Erőforrás | Mennyiség
-------- | -------
-Alkalmazás-példányok rugós alkalmazásként | 20
-Alkalmazás-példányok teljes száma Azure Spring Cloud Service-példányon | 500
-Azure Spring Cloud Service instances régiónként/előfizetés | 10
-Tartós kötetek | 10 x 50 GByte
-
-\*_A korlát növeléséhez nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/faq/)._
-
-További információ: Azure- [támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Mennyire biztonságos az Azure Spring Cloud?
 
@@ -59,7 +44,10 @@ Az előzetes verzióban az Azure Spring Cloud a következő ismert korlátozáso
 * `spring.application.name`a rendszer felülbírálja az egyes alkalmazások létrehozásához használt alkalmazás nevét.
 * `server.port`nem engedélyezett a git-tárház konfigurációs fájljában. Ha hozzáadja azt a konfigurációs fájlhoz, az alkalmazás valószínűleg nem lesz elérhető más alkalmazásokból vagy az internetről.
 * A Azure Portal és Azure Resource Manager sablonok nem támogatják az alkalmazáscsomag feltöltését. Az alkalmazás csomagjait csak az Azure CLI-n keresztüli üzembe helyezésével töltheti fel.
-* A kvóta korlátaival kapcsolatos további információkért tekintse meg az [Azure Spring Cloud ajánlatának bemutatása](#what-service-plans-does-azure-spring-cloud-offer)című témakört.
+
+### <a name="what-pricing-tiers-are-available"></a>Milyen díjszabási szintek érhetők el? 
+Melyiket érdemes használni, és mi a határértékek az egyes rétegeken belül?
+* Az Azure Spring Cloud két díjszabási szintet kínál: alapszintű és standard. Az alapszintű csomag fejlesztési és tesztelési célokra, valamint az Azure Spring Cloud kipróbálására szolgál. A standard szint az általános célú éles adatforgalom futtatására van optimalizálva. Tekintse meg az [Azure Spring Cloud díjszabását](https://azure.microsoft.com/pricing/details/spring-cloud/) a korlátozások és a funkciók szintjének összehasonlításával kapcsolatban.
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Hogyan adhatok visszajelzést és jelenthetem a jelentéssel kapcsolatos problémákat?
 
@@ -95,7 +83,7 @@ Igen.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Ha törölek vagy Áthelyezek egy Azure Spring Cloud Service-példányt, akkor a bővítmény erőforrásai is törlődnek vagy áthelyezhetők?
 
-A bővítmény erőforrásaihoz tartozó erőforrás-szolgáltatók logikától függ. Egy `Microsoft.AppPlatform` példány bővítmény-erőforrásai nem ugyanahhoz a névtérhez tartoznak, így a viselkedés a különböző erőforrás-szolgáltatóktól függően eltérő lehet. A DELETE/Move művelet például nem fog lépcsőzetesen a **diagnosztikai beállítások** erőforrásaihoz csatlakozni. Ha egy új Azure Spring Cloud-példány ugyanazzal az erőforrás-AZONOSÍTÓval lett kiépítve, mint a törölt, vagy ha az előző Azure Spring Cloud-példányt visszahelyezik, a korábbi **diagnosztikai beállítások** erőforrásai tovább bővítik azt.
+A bővítmény erőforrásaihoz tartozó erőforrás-szolgáltatók logikától függ. Egy példány bővítmény-erőforrásai `Microsoft.AppPlatform` nem ugyanahhoz a névtérhez tartoznak, így a viselkedés a különböző erőforrás-szolgáltatóktól függően eltérő lehet. A DELETE/Move művelet például nem fog lépcsőzetesen a **diagnosztikai beállítások** erőforrásaihoz csatlakozni. Ha egy új Azure Spring Cloud-példány ugyanazzal az erőforrás-AZONOSÍTÓval lett kiépítve, mint a törölt, vagy ha az előző Azure Spring Cloud-példányt visszahelyezik, a korábbi **diagnosztikai beállítások** erőforrásai tovább bővítik azt.
 
 ## <a name="deployment"></a>Üzembe helyezés
 

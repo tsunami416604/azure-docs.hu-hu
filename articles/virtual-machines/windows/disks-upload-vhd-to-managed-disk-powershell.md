@@ -3,17 +3,17 @@ title: VHD feltöltése az Azure-ba vagy lemez másolása régiók között – 
 description: Megtudhatja, hogyan tölthet fel egy virtuális merevlemezt egy Azure Managed Disk-lemezre, és hogyan másolhat a felügyelt lemezeket régiók között a közvetlen feltöltéssel Azure PowerShell használatával.
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
+ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 153bbc39ceba52548d667fa4c83d0edc867fcb93
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660602"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944627"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD feltöltése az Azure-ba vagy egy felügyelt lemez másolása egy másik régióba – Azure PowerShell
 
@@ -47,6 +47,9 @@ Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, szüksége l
 Most a helyi rendszerhéjon hozzon létre egy üres szabványos HDD-t a feltöltéshez, és adja meg a **feltöltési** beállítást a **-CreateOption** paraméterben, valamint a **-UploadSizeInBytes** paramétert a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) parancsmagban. Ezután hívja a [New-AzDisk-](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) t a lemez létrehozásához.
 
 Cserélje le `<yourdiskname>` , `<yourresourcegroupname>` , majd `<yourregion>` futtassa a következő parancsokat:
+
+> [!TIP]
+> Ha operációsrendszer-lemezt hoz létre, a következőt adja hozzá a-HyperVGeneration: <yourGeneration> `New-AzDiskConfig` .
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -99,6 +102,9 @@ A következő szkript ezt elvégzi Önnek, a folyamat hasonló a korábban ismer
 
 Cserélje le a,,, `<sourceResourceGroupHere>` `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` , `<yourOSTypeHere>` és `<yourTargetLocationHere>` (például a uswest2) értéket az értékekkel, majd futtassa a következő parancsfájlt a felügyelt lemez másolásához.
 
+> [!TIP]
+> Ha operációsrendszer-lemezt hoz létre, a következőt adja hozzá a-HyperVGeneration: <yourGeneration> `New-AzDiskConfig` .
+
 ```powershell
 
 $sourceRG = <sourceResourceGroupHere>
@@ -127,7 +133,7 @@ Revoke-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName
 Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy sikeresen feltöltött egy virtuális merevlemezt egy felügyelt lemezre, csatlakoztathatja a lemezt egy virtuális géphez, és megkezdheti a használatát.
 

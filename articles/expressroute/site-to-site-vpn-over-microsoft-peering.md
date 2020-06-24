@@ -4,16 +4,16 @@ description: Az IPsec/IKE-kapcsolat konfigurálása az Azure-hoz egy ExpressRout
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 571ed0201fea11f6770ec3aa7e72db10d49e7b01
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436814"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738158"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Helyek közötti VPN konfigurálása ExpressRoute Microsoft-partneri kapcsolaton keresztül
 
@@ -91,7 +91,7 @@ Ez a példa egy Cisco IOS-XE parancsot használ. A példában a rendszer egy vir
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-A következő részleges kimenet azt mutatja, hogy 68 előtag érkezett a szomszédból \*. 243.229.34 az ASN 12076 (MSEE):
+A következő részleges kimenet azt mutatja, hogy 68 előtag érkezett a szomszédból \* . 243.229.34 az ASN 12076 (MSEE):
 
 ```
 ...

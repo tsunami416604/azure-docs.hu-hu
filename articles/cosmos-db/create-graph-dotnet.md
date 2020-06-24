@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
-ms.openlocfilehash: bf453587b354b5db3f3ef1a80f974bcb8f8f4e14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a85df3e437f2c1ec93996cdaacfccadeaa47cc99
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81730023"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118253"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Azure Cosmos DB Gremlin API-fiók használatával
 
@@ -91,11 +91,11 @@ Az alábbi kódrészletek mind a Program.cs fájlból származnak.
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
-* Hozzon létre `GremlinServer` egy `GremlinClient` új és egy kapcsolatok objektumokat a fent megadott paraméterek használatával:
+* Hozzon létre egy új `GremlinServer` és egy `GremlinClient` kapcsolatok objektumokat a fent megadott paraméterek használatával:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-* Hajtsa végre az egyes Gremlin `GremlinClient` -lekérdezéseket az objektum használatával egy aszinkron feladattal. A Gremlin-lekérdezéseket az előző lépésben meghatározott szótárból olvashatja, majd végrehajthatja azokat. Később lekérdezheti az eredményt, és beolvashatja a szótárként formázott értékeket a `JsonSerializer` Newtonsoft. JSON csomag osztályának használatával:
+* Hajtsa végre az egyes Gremlin-lekérdezéseket az `GremlinClient` objektum használatával egy aszinkron feladattal. A Gremlin-lekérdezéseket az előző lépésben meghatározott szótárból olvashatja, majd végrehajthatja azokat. Később lekérdezheti az eredményt, és beolvashatja a szótárként formázott értékeket a `JsonSerializer` Newtonsoft.Jscsomagból a következő osztály használatával:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
@@ -109,9 +109,9 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
    **Gremlin-végpont** – Ezt az értéket akkor használja, ha Gremlin.Net-kódtárral kapcsolódik a gráffiókhoz.
 
-    ![A végpont másolása](./media/create-graph-dotnet/endpoint.png)
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="A végpont másolása":::
 
-   A minta futtatásához másolja a **Gremlin-végpont** értékét, törölje a végén található portszámot, amely az URI lesz `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. A végpont értékének a következőhöz hasonlóan kell kinéznie:`testgraphacct.gremlin.cosmosdb.azure.com`
+   A minta futtatásához másolja a **Gremlin-végpont** értékét, törölje a végén található portszámot, amely az URI lesz `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . A végpont értékének a következőhöz hasonlóan kell kinéznie:`testgraphacct.gremlin.cosmosdb.azure.com`
 
 1. Ezután navigáljon a **kulcsok** lapra, és másolja az **elsődleges kulcs** értékét a Azure Portalból. 
 
@@ -146,13 +146,13 @@ Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és 
 
     Szabadon nagyíthatja és kicsinyítheti a gráfot, kibonthatja a gráf megjelenítési területét, további csúcspontokat vehet fel, illetve áthelyezheti a csúcspontokat a megjelenítési felületen.
 
-    ![A gráf megtekintése az Azure Portal Adatkezelőjében](./media/create-graph-dotnet/graph-explorer.png)
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="A gráf megtekintése az Azure Portal Adatkezelőjében":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
