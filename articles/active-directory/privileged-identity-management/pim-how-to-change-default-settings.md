@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 334f239ea8382a67add9655d4a25f98d254567d3
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78205024"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743949"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management
 
@@ -131,7 +131,7 @@ Kövesse az alábbi lépéseket egy Azure AD-szerepkör beállításainak megnyi
 
 1. Válassza az **Azure ad-szerepkörök**elemet.
 
-1. Válassza a **Beállítások**lehetőséget.
+1. Válassza a **Beállítások** lehetőséget.
 
     ![Azure AD-szerepkörök – beállítások](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -167,11 +167,11 @@ Az **incidens/kérelem jegy** kapcsolójának használatával megkövetelheti, h
 
 Használja a **multi-Factor Authentication** kapcsolót annak megadásához, hogy a felhasználóknak meg kell-e adniuk identitását az MFA-ban, mielőtt aktiválni tudják a szerepköreiket. Csak egyszer kell meggyőződniük a saját identitásukat, nem minden alkalommal, amikor aktiválnak egy szerepkört. Az MFA engedélyezésekor két tippet kell szem előtt tartani:
 
-- Azok a felhasználók, akik rendelkeznek Microsoft-fiókkal az @outlook.come-mail-címeiknek (általában, de nem mindig), nem regisztrálhatnak az Azure multi-Factor Authentication. Ha a Microsoft-fiókkal rendelkező felhasználók számára szeretné hozzárendelni a szerepköröket, a rendszergazdáknak állandó rendszergazdai jogosultságokkal kell rendelkezniük, vagy le kell tiltaniuk a többtényezős hitelesítést a szerepkörhöz.
+- Azok a felhasználók, akik rendelkeznek Microsoft-fiókkal az e-mail-címeiknek (általában @outlook.com , de nem mindig), nem regisztrálhatnak az Azure multi-Factor Authentication. Ha a Microsoft-fiókkal rendelkező felhasználók számára szeretné hozzárendelni a szerepköröket, a rendszergazdáknak állandó rendszergazdai jogosultságokkal kell rendelkezniük, vagy le kell tiltaniuk a többtényezős hitelesítést a szerepkörhöz.
 - Az Azure Multi-Factor Authentication nem tiltható le magas jogosultsági szintű szerepkörökhöz az Azure AD-ben és az Office 365-ben. Ez a biztonsági funkció a következő szerepkörök védelme érdekében nyújt segítséget:  
   
   - Azure Information Protection rendszergazda
-  - Számlázási rendszergazda
+  - Számlázási adminisztrátor
   - Cloud Application Administrator
   - Megfelelőségi rendszergazda
   - Feltételes hozzáférésű rendszergazda

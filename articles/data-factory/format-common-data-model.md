@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/16/2020
 ms.author: daperlov
-ms.openlocfilehash: 1764036413d6e4f634ed156f7cfb441b4a2bb1e6
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5e75f2203552a69e50ed16176525429c6c9d8810
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604957"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807818"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Közös adatmodell-formátum a Azure Data Factoryban
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepe
 | Name | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formátum | A formátumot kötelező megadni`cdm` | igen | `cdm` | formátumban |
-| Metaadatok formátuma | Ahol az entitás az adatelemre hivatkozik. Ha a CDM 1,0-es verzióját használja, válassza a jegyzékfájlt. Ha 1,0 előtti CDM-verziót használ, válassza a Model. JSON elemet. | Yes | `'manifest'` vagy `'model'` | manifestType |
+| Metaadatok formátuma | Ahol az entitás az adatelemre hivatkozik. Ha a CDM 1,0-es verzióját használja, válassza a jegyzékfájlt. Ha 1,0 előtti CDM-verziót használ, válassza a model.jslehetőséget. | Yes | `'manifest'` vagy `'model'` | manifestType |
 | Gyökér helye: tároló | A CDM-mappa tárolójának neve | igen | Sztring | Fájlrendszer |
 | Gyökér helye: mappa elérési útja | A CDM-mappa gyökérmappa helye | igen | Sztring | folderPath |
 | Manifest-fájl: entitás elérési útja | Az entitás mappájának elérési útja a gyökérkönyvtáron belül | nem | Sztring | entityPath |
@@ -53,35 +53,28 @@ Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepe
 
 A CDM csak beágyazott adatkészletként érhető el, és alapértelmezés szerint nem rendelkezik társított sémával. Az oszlop metaadatainak beszerzéséhez kattintson a **vetítés** lapon található **séma importálása** gombra. Ez lehetővé teszi a corpus által megadott oszlopnevek és adattípusok hivatkozását. A séma importálásához egy [adatfolyam-hibakeresési munkamenetnek](concepts-data-flow-debug-mode.md) aktívnak kell lennie.
 
-![Séma importálása](media/format-common-data-model/import-schema-source.png)
 
-### <a name="cdm-source-example"></a>A CDM forrásának példája
-
-Az alábbi képen egy példa látható egy CDM-forrás konfigurációra az adatfolyamatok leképezése során.
-
-![CDM-forrás](media/format-common-data-model/data-flow-source.png)
-
-A társított adatfolyam-parancsfájl:
+### <a name="cdm-source-data-flow-script-example"></a>A CDM-forrás adatáramlási parancsfájljának példája
 
 ```
 source(output(
-        ServingSizeId as integer,
-        ServingSize as integer,
-        ServingSizeUomId as string,
-        ServingSizeNote as string,
+        ProductSizeId as integer,
+        ProductColor as integer,
+        CustomerId as string,
+        Note as string,
         LastModifiedDate as timestamp
     ),
     allowSchemaDrift: true,
     validateSchema: false,
-    entity: 'ServingSize.cdm.json/ServingSize',
+    entity: 'Product.cdm.json/Product',
     format: 'cdm',
     manifestType: 'manifest',
-    manifestName: 'ServingSizeManifest',
-    entityPath: 'ServingSize',
-    corpusPath: 'ProductAhold_Updated',
+    manifestName: 'ProductManifest',
+    entityPath: 'Product',
+    corpusPath: 'Products',
     corpusStore: 'adlsgen2',
     adlsgen2_fileSystem: 'models',
-    folderPath: 'ServingSizeData',
+    folderPath: 'ProductData',
     fileSystem: 'data') ~> CDMSource
 ```
 
@@ -108,24 +101,20 @@ Az alábbi táblázatban a CDM-fogadó által támogatott tulajdonságok szerepe
 | Oszlop elválasztója | Ha DelimitedText ír, az oszlopok lehatároló módja | igen, ha írás a DelimitedText | Sztring | columnDelimiter |
 | Első sor fejlécként | DelimitedText használata esetén, hogy az oszlopnevek fejlécként vannak-e hozzáadva | nem | `true` vagy `false` | columnNamesAsHeader |
 
-### <a name="cdm-sink-example"></a>CDM-gyűjtő – példa
-
-Az alábbi ábrán egy példa látható egy CDM-fogadó konfigurációra az adatfolyamatok leképezése során.
-
-![CDM-forrás](media/format-common-data-model/data-flow-sink.png)
+### <a name="cdm-sink-data-flow-script-example"></a>A CDM-gyűjtő adatfolyam-parancsfájljának példája
 
 A társított adatfolyam-parancsfájl:
 
 ```
 CDMSource sink(allowSchemaDrift: true,
     validateSchema: false,
-    entity: 'ServingSize.cdm.json/ServingSize',
+    entity: 'Product.cdm.json/Product',
     format: 'cdm',
-    entityPath: 'ServingSize',
-    manifestName: 'ServingSizeManifest',
-    corpusPath: 'ProductAhold_Updated',
+    entityPath: 'ProductSize',
+    manifestName: 'ProductSizeManifest',
+    corpusPath: 'Products',
     partitionPath: 'adf',
-    folderPath: 'ServingSizeData',
+    folderPath: 'ProductSizeData',
     fileSystem: 'cdm',
     subformat: 'parquet',
     corpusStore: 'adlsgen2',
@@ -136,6 +125,6 @@ CDMSource sink(allowSchemaDrift: true,
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Forrás- [átalakítás](data-flow-source.md) létrehozása a leképezési adatfolyamban.

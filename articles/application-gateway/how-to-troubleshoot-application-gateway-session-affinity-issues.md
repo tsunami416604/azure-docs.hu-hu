@@ -5,15 +5,15 @@ description: Ez a cikk az Azure-beli munkamenet-affinitási problémák elhárí
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5acf4ac1ec75d5cec057e4b66e3c6cbd8a463271
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202536"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808014"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Az Azure Application Gateway munkamenet-affinitással kapcsolatos problémák elhárítása
 
@@ -97,7 +97,7 @@ Ez a probléma azért fordul elő, mert az Internet Explorer és más böngész�
 
 #### <a name="resolution"></a>Megoldás:
 
-A probléma kijavításához az Application Gatewayhez FQDN-nel férjen hozzá. Használja [http://website.com](https://website.com/) például a vagy [http://appgw.website.com](http://website.com/) a.
+A probléma kijavításához az Application Gatewayhez FQDN-nel férjen hozzá. Használja például a [http://website.com](https://website.com/) vagy a [http://appgw.website.com](http://website.com/) .
 
 ## <a name="additional-logs-to-troubleshoot"></a>További hibakeresési naplók
 
@@ -161,7 +161,7 @@ A webes hibakeresési eszközök, például a Hegedűs, a webalkalmazások hibak
 
 Használja az Ön által választott webes hibakeresőt. Ebben a példában a hegedűst fogjuk használni a http-vagy https-forgalom rögzítéséhez és elemzéséhez, kövesse az alábbi utasításokat:
 
-1. A Hegedűs eszköz letöltése a <https://www.telerik.com/download/fiddler>következő címen:.
+1. A Hegedűs eszköz letöltése a következő címen: <https://www.telerik.com/download/fiddler> .
 
     > [!NOTE]
     > Válassza a Fiddler4 lehetőséget, ha a rögzítési számítógép .NET 4-es szervizcsomaggal rendelkezik. Ellenkező esetben válassza a Fiddler2 lehetőséget.
@@ -174,7 +174,7 @@ Használja az Ön által választott webes hibakeresőt. Ebben a példában a he
 
     ![Hibaelhárítás – munkamenet-affinitás – problémák – 13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. Legvalószínűbb, hogy a rendszer visszafejti a https-forgalmat, és engedélyezheti a https-titkosítást a **Tools** > **Hegedűs beállításainak**kiválasztásával, és a " **https-forgalom visszafejtése**" jelölőnégyzet bejelölésével.
+4. Legvalószínűbb, hogy a rendszer visszafejti a https-forgalmat, és engedélyezheti a https-titkosítást a **Tools**  >  **Hegedűs beállításainak**kiválasztásával, és a " **https-forgalom visszafejtése**" jelölőnégyzet bejelölésével.
 
     ![Hibaelhárítás – munkamenet-affinitás – problémák – 14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
@@ -182,7 +182,7 @@ Használja az Ön által választott webes hibakeresőt. Ebben a példában a he
 
     ![Hibaelhárítás – munkamenet-affinitás – problémák – 15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. A probléma reprodukálása után mentse a fájlt véleményezésre, **és válassza a** > **Save** > **minden munkamenet mentése..**. lehetőséget. 
+6. A probléma reprodukálása után mentse a fájlt véleményezésre, **és válassza a**  >  **Save**  >  **minden munkamenet mentése..**. lehetőséget. 
 
     ![Hibaelhárítás – munkamenet-affinitás – problémák – 16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 

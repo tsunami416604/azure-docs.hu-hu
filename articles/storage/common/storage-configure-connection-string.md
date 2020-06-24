@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 681723ee9370f889ef86e6eae0878b148c17606b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 250fcdeb2f1e69f8d15ada3a6767e885672c3a53
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176362"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807576"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Configure Azure Storage connection strings (Az Azure Storage kapcsolati sztringek konfigurálása)
 
@@ -34,7 +34,7 @@ A fiók hozzáférési kulcsainak megtekintésével és a kapcsolati karakterlá
 Az alkalmazásnak a futásidejű kapcsolati sztringhez kell hozzáférnie, hogy engedélyezze az Azure Storage-ba irányuló kéréseket. A következő több lehetőség áll rendelkezésre a kapcsolatok karakterláncának tárolásához:
 
 * A kapcsolatok karakterláncát egy környezeti változóban tárolhatja.
-* Az asztalon vagy eszközön futó alkalmazások tárolhatják a kapcsolati karakterláncot egy **app. config** vagy **web. config** fájlban. Adja hozzá a kapcsolódási karakterláncot a **appSettings** szakaszhoz ezekben a fájlokban.
+* Az asztalon vagy eszközön futó alkalmazás a kapcsolati karakterláncot egy **app.config** vagy **web.config** fájlban tárolja. Adja hozzá a kapcsolódási karakterláncot a **appSettings** szakaszhoz ezekben a fájlokban.
 * Az Azure Cloud Service-ben futó alkalmazások tárolhatják a kapcsolatok karakterláncát az [Azure szolgáltatás konfigurációs sémájának (. cscfg) fájljában](https://msdn.microsoft.com/library/ee758710.aspx). Adja hozzá a kapcsolódási karakterláncot a szolgáltatás konfigurációs fájljának **ConfigurationSettings** szakaszához.
 
 A kapcsolati karakterlánc egy konfigurációs fájlban való tárolása megkönnyíti a kapcsolati sztring frissítését a Storage-emulátor és a felhőben található Azure Storage-fiók közötti váltáshoz. Csak úgy kell szerkesztenie a kapcsolódási karakterláncot, hogy az a célként megadott környezetre mutasson.
@@ -49,7 +49,7 @@ További információ a Storage emulatorról: [a fejlesztéshez és teszteléshe
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Egy Azure Storage-fiókhoz tartozó kapcsolatok karakterláncának konfigurálása
 
-Az Azure Storage-fiókhoz tartozó kapcsolódási karakterlánc létrehozásához használja a következő formátumot. Jelezze, hogy HTTPS-kapcsolaton (ajánlott) vagy HTTP-n keresztül szeretne-e csatlakozni `myAccountName` a Storage-fiókhoz, cserélje le a nevet `myAccountKey` a Storage-fiók nevére, és cserélje le a fiók hozzáférési kulcsára:
+Az Azure Storage-fiókhoz tartozó kapcsolódási karakterlánc létrehozásához használja a következő formátumot. Jelezze, hogy HTTPS-kapcsolaton (ajánlott) vagy HTTP-n keresztül szeretne-e csatlakozni a Storage-fiókhoz, cserélje le a `myAccountName` nevet a Storage-fiók nevére, és cserélje le a `myAccountKey` fiók hozzáférési kulcsára:
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
 
@@ -60,7 +60,7 @@ A kapcsolódási karakterlánc például a következőhöz hasonló lehet:
 Bár az Azure Storage a HTTP-t és a HTTPS-t is támogatja egy kapcsolati sztringben, a *https használata kifejezetten ajánlott*.
 
 > [!TIP]
-> A Storage-fiókhoz tartozó kapcsolatok karakterláncait a [Azure Portal](https://portal.azure.com)találja. Az elsődleges és másodlagos hozzáférési kulcsokhoz tartozó kapcsolati karakterláncok megjelenítéséhez nyissa meg a **Beállítások** > **hozzáférési kulcsait** a Storage-fiók menüjének paneljén.
+> A Storage-fiókhoz tartozó kapcsolatok karakterláncait a [Azure Portal](https://portal.azure.com)találja. Az **SETTINGS**  >  elsődleges és másodlagos hozzáférési kulcsokhoz tartozó kapcsolati karakterláncok megjelenítéséhez nyissa meg a beállítások**hozzáférési kulcsait** a Storage-fiók menüjének paneljén.
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Kapcsolati karakterlánc létrehozása közös hozzáférési aláírás használatával
@@ -111,12 +111,12 @@ A kapcsolódási karakterláncban található végponti értékek a kérés URI-
 Ha hozzárendelt egy tárolási végpontot egy egyéni tartományhoz, és kihagyja a végpontot egy kapcsolati karakterláncból, akkor nem fogja tudni használni a kapcsolati sztringet, hogy az adott szolgáltatásban lévő adatokhoz hozzáférjen a kódból.
 
 > [!IMPORTANT]
-> A kapcsolatok karakterláncában a szolgáltatás végpontjának értékeinek megfelelően formázott URI-azonosítóknak kell lenniük `https://` , `http://`beleértve a (javasolt) vagy a értéket. Mivel az Azure Storage még nem támogatja a HTTPS-t az egyéni *must* tartományokhoz `http://` , meg kell adnia minden végponti URI-t, amely egy egyéni tartományra mutat.
+> A kapcsolatok karakterláncában a szolgáltatás végpontjának értékeinek megfelelően formázott URI-azonosítóknak kell lenniük, beleértve a `https://` (javasolt) vagy a értéket `http://` . Mivel az Azure Storage még nem támogatja a HTTPS-t az egyéni tartományokhoz, meg *kell* adnia `http://` minden végponti URI-t, amely egy egyéni tartományra mutat.
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Végponti utótaggal rendelkező kapcsolatok karakterlánc létrehozása
 
-Ha különböző végponti utótaggal rendelkező régiókban vagy példányokban szeretné létrehozni a tárolási szolgáltatáshoz tartozó kapcsolódási karakterláncot, például az Azure China 21Vianet vagy a Azure Governmenthoz, használja a következő kapcsolódási karakterlánc-formátumot. Jelezze, hogy HTTPS-kapcsolaton (ajánlott) vagy HTTP-n keresztül szeretne-e csatlakozni `myAccountName` a Storage-fiókhoz, cserélje le a `myAccountKey` nevet a Storage-fiók nevére, cserélje `mySuffix` le a elemet a fiók hozzáférési kulcsára, és cserélje le az URI utótagra:
+Ha különböző végponti utótaggal rendelkező régiókban vagy példányokban szeretné létrehozni a tárolási szolgáltatáshoz tartozó kapcsolódási karakterláncot, például az Azure China 21Vianet vagy a Azure Governmenthoz, használja a következő kapcsolódási karakterlánc-formátumot. Jelezze, hogy HTTPS-kapcsolaton (ajánlott) vagy HTTP-n keresztül szeretne-e csatlakozni a Storage-fiókhoz, cserélje le a `myAccountName` nevet a Storage-fiók nevére, cserélje le a `myAccountKey` elemet a fiók hozzáférési kulcsára, és cserélje le `mySuffix` az URI utótagra:
 
 ```
 DefaultEndpointsProtocol=[http|https];

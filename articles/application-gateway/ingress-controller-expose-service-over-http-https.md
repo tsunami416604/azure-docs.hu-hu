@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan tehet elérhetővé egy AK-szolgál
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: c664141a8c89ccbdf37bd3f9a19cfa659982a47d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 2f3f871ccd29456b086d939277d94b5e4eac23c6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795568"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807928"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>AK-szolgáltatás közzététele HTTP-n vagy HTTPS-en keresztül Application Gateway 
 
@@ -25,20 +25,20 @@ Ezek az oktatóanyagok segítenek megmutatni a Kubernetes beáramlási [erőforr
   - [**Rozsdaövezetek rehabilitálása üzembe helyezése**](ingress-controller-install-existing.md): Ha rendelkezik meglévő AK-fürttel és Application Gatewaytel, tekintse meg ezeket az utasításokat az Application Gateway beáramlási vezérlőjének az AK-fürtön való telepítéséhez.
 - Ha az alkalmazásban HTTPS-t szeretne használni, szüksége lesz egy x509 tanúsítványra és annak titkos kulcsára.
 
-## <a name="deploy-guestbook-application"></a>Alkalmazás `guestbook` üzembe helyezése
+## <a name="deploy-guestbook-application"></a>Alkalmazás üzembe helyezése `guestbook`
 
-A Vendégkönyv alkalmazás egy webes felhasználói felület, egy háttérrendszer és egy Redis-adatbázis összeállítására szolgáló kanonikus Kubernetes-alkalmazás. Alapértelmezés szerint a `guestbook` porton `frontend` `80`a névvel ellátott szolgáltatáson keresztül teszi elérhetővé az alkalmazást. A Kubernetes bejövő erőforrás nélkül a szolgáltatás nem érhető el az AK-fürtön kívülről. Az alkalmazást és a telepítőt a bejövő erőforrásokkal fogjuk használni az alkalmazás HTTP és HTTPS protokollon keresztüli eléréséhez.
+A Vendégkönyv alkalmazás egy webes felhasználói felület, egy háttérrendszer és egy Redis-adatbázis összeállítására szolgáló kanonikus Kubernetes-alkalmazás. Alapértelmezés szerint a `guestbook` porton a névvel ellátott szolgáltatáson keresztül teszi elérhetővé az alkalmazást `frontend` `80` . A Kubernetes bejövő erőforrás nélkül a szolgáltatás nem érhető el az AK-fürtön kívülről. Az alkalmazást és a telepítőt a bejövő erőforrásokkal fogjuk használni az alkalmazás HTTP és HTTPS protokollon keresztüli eléréséhez.
 
 A Vendégkönyv alkalmazás üzembe helyezéséhez kövesse az alábbi utasításokat.
 
 1. Letöltés `guestbook-all-in-one.yaml` innen [here](https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml)
-1. Üzembe `guestbook-all-in-one.yaml` helyezés az AK-fürtön a futtatásával
+1. Üzembe helyezés `guestbook-all-in-one.yaml` az AK-fürtön a futtatásával
 
   ```bash
   kubectl apply -f guestbook-all-in-one.yaml
   ```
 
-Az `guestbook` alkalmazás már telepítve van.
+Az alkalmazás már `guestbook` telepítve van.
 
 ## <a name="expose-services-over-http"></a>Szolgáltatások közzététele HTTP-n keresztül
 
@@ -60,11 +60,11 @@ spec:
           servicePort: 80
 ```
 
-Ez a bejövő `frontend` forgalom a Application Gateway alapértelmezett háttereként `guestbook-all-in-one` teszi elérhetővé az üzemelő példány szolgáltatását.
+Ez a bejövő `frontend` forgalom a `guestbook-all-in-one` Application Gateway alapértelmezett háttereként teszi elérhetővé az üzemelő példány szolgáltatását.
 
-Mentse a fenti bejövő erőforrást a `ing-guestbook.yaml`-ként.
+Mentse a fenti bejövő erőforrást a-ként `ing-guestbook.yaml` .
 
-1. Üzembe `ing-guestbook.yaml` helyezés a futtatásával:
+1. Üzembe helyezés `ing-guestbook.yaml` a futtatásával:
 
     ```bash
     kubectl apply -f ing-guestbook.yaml
@@ -86,7 +86,7 @@ Az állomásnév meghatározása nélkül a Vendégkönyv szolgáltatás az Appl
     kubectl create secret tls <guestbook-secret-name> --key <path-to-key> --cert <path-to-cert>
     ```
 
-1. Adja meg a következő bejövő forgalmat. A bejövő forgalom mezőben adja meg a titok nevét a `secretName` (z) szakaszban.
+1. Adja meg a következő bejövő forgalmat. A bejövő forgalom mezőben adja meg a titok nevét a (z `secretName` ) szakaszban.
 
     ```yaml
     apiVersion: extensions/v1beta1
@@ -107,7 +107,7 @@ Az állomásnév meghatározása nélkül a Vendégkönyv szolgáltatás az Appl
     ```
 
     > [!NOTE] 
-    > Cserélje `<guestbook-secret-name>` le a fenti bejövő erőforrást a titkos kulcs nevére. A fenti bejövő erőforrások tárolása a fájlnévben `ing-guestbook-tls.yaml`.
+    > Cserélje le a `<guestbook-secret-name>` fenti bejövő erőforrást a titkos kulcs nevére. A fenti bejövő erőforrások tárolása a fájlnévben `ing-guestbook-tls.yaml` .
 
 1. Üzembe helyezés – Vendégkönyv-TLS. YAML futtatásával
 
@@ -117,7 +117,7 @@ Az állomásnév meghatározása nélkül a Vendégkönyv szolgáltatás az Appl
 
 1. Keresse meg a bejövő adatkezelő vezérlő naplóját a telepítési állapothoz.
 
-Az `guestbook` alkalmazás mostantól a http és a HTTPS protokollon is elérhető lesz.
+Az alkalmazás mostantól a `guestbook` http és a HTTPS protokollon is elérhető lesz.
 
 ### <a name="with-specified-hostname"></a>Megadott állomásnévvel
 
@@ -148,7 +148,7 @@ Az állomásnév megadásával a Vendégkönyv szolgáltatás csak a megadott ga
               servicePort: 80
     ```
 
-1. Üzembe `ing-guestbook-tls-sni.yaml` helyezés futtatásával
+1. Üzembe helyezés `ing-guestbook-tls-sni.yaml` futtatásával
 
     ```bash
     kubectl apply -f ing-guestbook-tls-sni.yaml
@@ -156,7 +156,7 @@ Az állomásnév megadásával a Vendégkönyv szolgáltatás csak a megadott ga
 
 1. Keresse meg a bejövő adatkezelő vezérlő naplóját a telepítési állapothoz.
 
-Mostantól `guestbook` az alkalmazás csak a megadott gazdagépen, a HTTP-n és a https`<guestbook.contoso.com>` -en lesz elérhető (ebben a példában).
+Mostantól az `guestbook` alkalmazás csak a megadott gazdagépen, a HTTP-n és a HTTPS-en lesz elérhető ( `<guestbook.contoso.com>` ebben a példában).
 
 ## <a name="integrate-with-other-services"></a>Integráció más szolgáltatásokkal
 

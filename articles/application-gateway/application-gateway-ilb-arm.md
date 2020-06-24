@@ -4,15 +4,15 @@ description: Ez az oldal utasításokat tartalmaz egy belső terheléselosztóva
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 406dcdb419dba2e8044a173f4c05028abbaba3da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312424"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808139"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Application Gateway létrehozása belső terheléselosztó (ILB) használatával
 
@@ -52,7 +52,7 @@ A következő lépések szükségesek egy Application Gateway létrehozásához:
 
 Az Azure Resource Manager parancsmagjainak használatához váltson át PowerShell módba. További információ: [A Windows PowerShell használata a Resource Managerrel](../powershell-azure-resource-manager.md).
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 ```powershell
 Connect-AzAccount
@@ -92,7 +92,7 @@ Az előző példában létrehoztunk egy "appgw-RG" nevű erőforráscsoportot é
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy virtuális hálózatot a Resource Manager használatával:
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 ```powershell
 $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -118,7 +118,7 @@ Ez a lépés az alhálózati objektumot a következő lépésekhez rendeli $subn
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Hozzon létre egy Application Gateway konfigurációs objektumot
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -203,7 +203,7 @@ Egy Application Gateway törléséhez a következő lépéseket kell elvégeznie
 2. Távolítsa el az átjárót a `Remove-AzApplicationGateway` parancsmaggal.
 3. A `Get-AzureApplicationGateway` parancsmaggal győződjön meg arról, hogy az átjáró el lett távolítva.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Társítsa az Application Gateway objektumot a „$getgw” változóhoz.
 
@@ -263,5 +263,5 @@ Ha SSL-alapú kiszervezést szeretne konfigurálni: [Application Gateway konfigu
 Ha további általános információra van szüksége a terheléselosztás beállításaival kapcsolatban:
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
-* [Azure-Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
+* [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 

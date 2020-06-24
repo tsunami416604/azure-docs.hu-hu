@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan csatlakozhat Linux rendszerű
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98f1f3d02d8433dd88fed844a587a961ea9f8c82
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596827"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744289"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Kapcsolódás az SSH-val egy Linux rendszerű virtuális géphez az Azure Bastion használatával
 
@@ -23,7 +23,7 @@ Az Azure Bastion használatával Linux rendszerű virtuális gépekhez csatlakoz
 * Egy manuálisan megadott titkos kulcs
 * A titkos kulcs adatait tartalmazó fájl
 
-Az SSH titkos kulcsának olyan formátumúnak kell lennie, `"-----BEGIN RSA PRIVATE KEY-----"` amely a- `"-----END RSA PRIVATE KEY-----"`val kezdődik és végződik.
+Az SSH titkos kulcsának olyan formátumúnak kell lennie, amely a-val kezdődik `"-----BEGIN RSA PRIVATE KEY-----"` és végződik `"-----END RSA PRIVATE KEY-----"` .
 
 ## <a name="before-you-begin"></a>Előkészületek
 

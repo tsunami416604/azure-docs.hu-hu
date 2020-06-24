@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b46e8efb252224f83603000777b2e342f7e7ab9d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684438"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250349"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat frissítési infrastruktúra az igény szerinti Red Hat Enterprise Linux virtuális gépek számára az Azure-ban
  A [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi, hogy a felhőalapú szolgáltatók, például az Azure, a Red Hat-ban üzemeltetett tárház tartalmait tükrözze, egyéni tárházat hozzon létre az Azure-specifikus tartalommal, és elérhetővé tegye a végfelhasználói virtuális gépek számára.
@@ -83,7 +83,7 @@ Az Extended Update support (EUS) adattárházak olyan ügyfelek számára érhet
 >[!NOTE]
 > A EUS nem támogatott a RHEL-extrák esetében. Ez azt jelenti, hogy ha olyan csomagot telepít, amely általában az RHEL extrák csatornából érhető el, akkor a EUS-on nem fogja tudni elvégezni. [Itt](https://access.redhat.com/support/policy/updates/extras/)részletesen ismertetjük a Red Hat extrák termék életciklusát.
 
-Az írás időpontjában a EUS-támogatás befejeződött a RHEL <= 7,4 esetében. További részletekért tekintse meg a [Red Hat dokumentációjának](https://access.redhat.com/support/policy/updates/errata/) "Red Hat Enterprise Linux a hosszabb támogatási bővítmények" című szakaszát.
+Az írás időpontjában a EUS-támogatás befejeződött a RHEL <= 7,4 esetében. További részletekért tekintse meg a [Red Hat dokumentációjának](https://access.redhat.com/support/policy/updates/errata/#Long_Support) "Red Hat Enterprise Linux kiterjesztett karbantartás" című szakaszát.
 * RHEL 7,4 EUS-támogatás vége augusztus 31., 2019
 * RHEL 7,5 EUS támogatás vége április 30., 2020
 * RHEL 7,6 EUS-támogatás vége 2020. október 31.
@@ -164,13 +164,18 @@ Ha hálózati konfigurációt használ a RHEL TB virtuális gépekről való hoz
 51.5.243.77
 51.4.228.145
 ```
+>[!NOTE]
+>Az új Azure US government-rendszerképek a 2020-as számú Azure-beli nyilvános IP-címen lesznek használva.
+
+>[!NOTE]
+>Azt is vegye figyelembe, hogy az Azure Germany a németországi régiók mellett elavult. Az Azure Germany-ügyfelekre vonatkozó javaslat az [alábbi lépésekkel](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers)indul el a nyilvános RHUI.
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI-infrastruktúra
 
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Lejárt RHUI-ügyféltanúsítvány frissítése egy virtuális gépen
 
-Ha egy régebbi RHEL virtuálisgép-rendszerképet használ, például a RHEL 7,4 (rendszerkép URN: `RedHat:RHEL:7.4:7.4.2018010506` ), akkor kapcsolati problémák merülhetnek fel a RHUI, mert már lejárt a TLS/SSL-ügyféltanúsítvány. A megjelenített hiba a következőhöz hasonló lehet: _"az SSL-társ a tanúsítvány lejártként való elutasítása"_ vagy _"hiba: nem lehet lekérni a tárház metaadatait (repomd. xml) az adattár számára... Ellenőrizze az elérési útját, és próbálkozzon újra "_. A probléma megoldásához frissítse a RHUI-ügyfélszoftvert a virtuális gépen a következő parancs használatával:
+Ha egy régebbi RHEL virtuálisgép-rendszerképet használ, például a RHEL 7,4 (rendszerkép URN: `RedHat:RHEL:7.4:7.4.2018010506` ), akkor kapcsolati problémák merülhetnek fel a RHUI, mert már lejárt a TLS/SSL-ügyféltanúsítvány. A megjelenített hiba a következőhöz hasonló lehet: _"az SSL-társ a tanúsítvány lejártként való elutasítása"_ vagy _"hiba: nem lehet lekérni a tárház metaadatait (repomd.xml) az adattár számára... Ellenőrizze az elérési útját, és próbálkozzon újra "_. A probléma megoldásához frissítse a RHUI-ügyfélszoftvert a virtuális gépen a következő parancs használatával:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'

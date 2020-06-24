@@ -3,7 +3,7 @@ title: Mi az Azure SQL felügyelt példányok készlete?
 titleSuffix: Azure SQL Managed Instance
 description: Ismerje meg az Azure SQL felügyelt példány-készletek (előzetes verzió) szolgáltatását, amely kényelmes és költséghatékony megoldást kínál a kisebb SQL Server adatbázisok felhőbe való átméretezésére és több felügyelt példány kezelésére.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: b5d992d9067e1a232a0a78cf499bdebc34ee8563
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219177"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708841"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Mi az Azure SQL felügyelt példányok készlete (előzetes verzió)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

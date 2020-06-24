@@ -5,15 +5,15 @@ description: Ez a cikk tájékoztatást nyújt arról, hogyan konfigurálható a
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535587"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808113"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Application Gateway konfigurálása belső terheléselosztó (ILB) végponttal
 
@@ -59,7 +59,7 @@ Ahhoz, hogy az Azure kommunikáljon a létrehozott erőforrások között, szük
 10. Válassza **a háttérbeli készlet hozzáadása**lehetőséget.
 11. A **név**mezőbe írja be a következőt: *appGatewayBackendPool*.
 12. Ha a **háttér-készletet célok nélkül**kívánja hozzáadni, válassza az **Igen**lehetőséget. Később hozzáadja a célokat.
-13. Válassza a **Hozzáadás** lehetőséget.
+13. Válassza a **Hozzáadás** elemet.
 14. Válassza a **Tovább: konfigurálás**lehetőséget.
 15. Az **útválasztási szabályok**területen válassza **a szabály hozzáadása**elemet.
 16. A **szabály neve**mezőbe írja be a következőt: *Rrule-01*.

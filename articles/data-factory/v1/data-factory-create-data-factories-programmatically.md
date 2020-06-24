@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e8a70955b36f11727019fe430f62e84d4f0c93c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931332"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248305"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-beli adatüzemek létrehozása, figyelése és kezelése Azure Data Factory .NET SDK használatával
 > [!NOTE]
@@ -50,7 +50,7 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
     ```powershell
     Get-AzSubscription
     ```
-4. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje ** &lt;** le az NameOfAzureSubscription&gt; -t az Azure-előfizetés nevére.
+4. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az ** &lt; NameOfAzureSubscription** - &gt; t az Azure-előfizetés nevére.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -120,7 +120,7 @@ A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban
 3. A **Csomagkezelő konzolban** hajtsa végre a következő lépéseket:
    1. A Data Factory-csomag telepítéséhez futtassa az alábbi parancsot: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Futtassa a következő parancsot az Azure Active Directory-csomag telepítéséhez (használja az Active Directory API-t a kódban): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Cserélje le az **app. config** fájl tartalmát a projektbe a következő tartalommal: 
+4. Cserélje le **App.config** fájl tartalmát a projektbe a következő tartalommal: 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -137,7 +137,7 @@ A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban
         </appSettings>
     </configuration>
     ```
-5. Az app. config fájlban frissítse az ** &lt;alkalmazás-&gt;azonosító**, ** &lt;a jelszó&gt;**, ** &lt;az előfizetés-&gt;azonosító**és ** &lt;a bérlő&gt; azonosítójának** értékét a saját értékeivel.
+5. A App.Config fájlban frissítse az ** &lt; &gt; alkalmazás-azonosító**, a ** &lt; jelszó &gt; **, az ** &lt; előfizetés- &gt; azonosító**és a ** &lt; bérlői azonosító &gt; ** értékeit a saját értékeivel.
 6. Adja hozzá a következő **using** utasításokat a projekt **program.cs** fájljához.
 
     ```csharp
@@ -445,7 +445,7 @@ A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban
     }
     ```
 
-15. A Megoldáskezelő bontsa ki a projektet: **DataFactoryAPITestApp**, kattintson a jobb gombbal a **hivatkozások**elemre, majd kattintson a **hivatkozás hozzáadása**elemre. Jelölje be a `System.Configuration` szerelvény jelölőnégyzetét, majd kattintson **az OK**gombra.
+15. A Megoldáskezelő bontsa ki a projektet: **DataFactoryAPITestApp**, kattintson a jobb gombbal a **hivatkozások**elemre, majd kattintson a **hivatkozás hozzáadása**elemre. Jelölje be a szerelvény jelölőnégyzetét `System.Configuration` , majd kattintson **az OK**gombra.
 15. Hozza létre a konzolalkalmazást. Kattintson a menü **Fordítás** elemére, majd a **Megoldás fordítása** lehetőségre.
 16. Ellenőrizze, hogy az Azure Blob-fiókban található adftutorial nevű tárolóban van-e legalább egy fájl. Ha nincs, a Jegyzettömbben hozzon létre egy, az alábbi sorokat tartalmazó Emp.txt nevű fájlt, majd töltse fel azt az adftutorial nevű tárolóba.
 
@@ -453,7 +453,7 @@ A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban
     John, Doe
     Jane, Doe
     ```
-17. Futtassa a mintát úgy, hogy a menüben a hibakeresés**megkezdése** parancsra **kattint.** ->  Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
+17. Futtassa a mintát úgy, **Debug**hogy  ->  a menüben a hibakeresés**megkezdése** parancsra kattint. Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
 18. Az Azure Portalon ellenőrizze, hogy az **APITutorialFactory** nevű adat-előállító létrejött-e az alábbi összetevőkkel:
     * Társított szolgáltatás: **AzureStorageLinkedService**
     * Adatkészlet: **DatasetBlobSource** és **DatasetBlobDestination**.
@@ -500,6 +500,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő példát egy olyan folyamat létrehozásához, amely egy Azure Blob Storage-ból egy Azure SQL Database-adatbázisba másolt .NET SDK-t használ: 
+Az alábbi példát követve hozhat létre egy folyamatot a .NET SDK-val, amely az Azure Blob Storage-ból másolja az Azure SQL Database: 
 
 - [Folyamat létrehozása az adatok Blob Storageról SQL Databaseba másolásához](data-factory-copy-activity-tutorial-using-dotnet-api.md)

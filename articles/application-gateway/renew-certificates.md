@@ -4,15 +4,15 @@ description: Útmutató az Application Gateway-figyelőhöz társított tanúsí
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: 4c0c0ab84e60335f58ac075459b95cfabb9135ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de57a58f7c891009d2e0cc43b351c2cad42a2766
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311960"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807875"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway tanúsítványok megújítása
 

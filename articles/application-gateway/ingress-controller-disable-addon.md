@@ -4,15 +4,15 @@ description: Ez a cikk tájékoztatást nyújt arról, hogyan lehet letiltani é
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 45c30a874b161301e3e9c1dafc33e495bbafb2de
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: fe4da0435731c536a723cb2cb43428166456360b
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670956"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807954"
 ---
 # <a name="disable-and-re-enable-agic-add-on-for-your-aks-cluster"></a>Az AGIC-bővítmény letiltása és újbóli engedélyezése az AK-fürthöz
 Az AK-bővítményként telepített Application Gateway beléptetési vezérlő (AGIC) lehetővé teszi a bővítmény engedélyezését és letiltását egyetlen sorral az Azure CLI-ben. A Application Gateway életciklusa eltérő lesz a AGIC-bővítmény letiltásakor attól függően, hogy a Application Gateway a AGIC-bővítmény hozta-e létre, vagy ha az a AGIC-bővítménytől függetlenül lett telepítve. Ugyanezt a parancsot futtatva újra engedélyezheti a AGIC bővítményt, ha letiltotta, vagy ha a AGIC-bővítményt egy meglévő AK-fürtön és Application Gatewayon szeretné engedélyezni.
@@ -40,5 +40,5 @@ appgwId=$(az network application-gateway show -n <application-gateway-name> -g <
 az aks enable-addons -n <AKS-cluster-name> -g <AKS-cluster-resource-group> -a ingress-appgw --appgw-id $appgwId
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A AGIC-bővítmény meglévő Application Gateway és AK-fürttel való engedélyezésével kapcsolatos további információkért lásd: a [AGIC bővítmény rozsdaövezetek rehabilitálása telepítése](tutorial-ingress-controller-add-on-existing.md).

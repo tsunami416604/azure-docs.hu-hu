@@ -7,7 +7,7 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2efcf77d65fa2f9e203ed805cd7d78b9802ee3aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74021944"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743779"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Vendég felhasználók meghívása és Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
 
@@ -55,7 +55,7 @@ Győződjön meg arról, hogy meg tudja hívni a vendégeket a szervezetbe, elle
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-1. Válassza a **Azure Active Directory** > **felhasználói beállítások**lehetőséget.
+1. Válassza a **Azure Active Directory**  >  **felhasználói beállítások**lehetőséget.
 
 1. Válassza a **külső együttműködési beállítások kezelése**lehetőséget.
 
@@ -157,7 +157,7 @@ A naplókat megtekintve nyomon követheti, hogy a vendégek mit csinálnak.
 
     ![Azure-erőforrások – erőforrás-naplózási oldal, amely az idő, a kérelmező és a művelet listáját tartalmazza](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. A vendég tevékenységének megtekintéséhez válassza **Azure Active Directory** > **felhasználó** > *vendégének nevét*.
+1. A vendég tevékenységének megtekintéséhez válassza **Azure Active Directory**  >  **felhasználó**  >  *vendégének nevét*.
 
 1. Válassza a **naplók** lehetőséget a szervezet naplófájljainak megtekintéséhez. Szükség esetén szűrők megadására is lehetőség van.
 

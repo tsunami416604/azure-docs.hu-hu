@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan konfigurálhat egyéni végpo
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 0b5647dd2e43c8a73bb999af559a579c14bb86a1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 6ca71bce726f16eeacc96e10eb654bb3e21c5924
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683976"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744085"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>Az Internet Analyzer-tesztek alapján kiértékelt egyéni végpontok mérése 
 
@@ -33,7 +33,7 @@ Győződjön meg arról, hogy létrehoz egy Internet Analyzer-erőforrást, és 
 2. Az egyéni webalkalmazásban telepítse a teszt lemezképet egy nyilvánosan elérhető elérési úton. Az elérési útnak HTTPS-kapcsolaton keresztül kell működnie. 
 3. Másolja a teljes egyéni végpont URL-címét (pl. `https://contoso.com/test/trans.gif` ) az egyéni végpont mezőbe a tesztelés létrehozásakor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [Internet Analyzer gyakori kérdéseinek](internet-analyzer-faq.md) beolvasása
 

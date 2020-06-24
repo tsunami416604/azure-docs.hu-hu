@@ -4,18 +4,18 @@ description: 'Ismerje meg, hogyan lehet elhárítani a Application Gateway kiszo
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: a48ed39af243296bcb76cb61f1fe64e4e95ab7e7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801739"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808160"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Hibás átjárókkal kapcsolatos hibák elhárítása az Application Gatewayben
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'>Start</a></span><span class="has-padding-small">A virtuális ügynök használatával gyorsan megoldhatja a problémát, ha <b>automatizált diagnosztikát futtat.</b> </span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Adatvédelmi <div align="right">nyilatkozat</div></a></span></p>
+
 Megtudhatja, hogyan lehet elhárítani az Azure Application Gateway használatakor kapott hibás átjáró (502) hibáit.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -93,7 +93,7 @@ A következő táblázat felsorolja az alapértelmezett állapot-mintavételhez 
 
 * Győződjön meg arról, hogy az alapértelmezett hely konfigurálva van, és figyeli a 127.0.0.1-t.
 * Ha a Backendhttpsetting értékre a 80-től eltérő portot ad meg, az alapértelmezett helyet úgy kell konfigurálni, hogy figyelje a portot.
-* A hívásnak `http://127.0.0.1:port` az 200-es http-eredmény kódját kell visszaadnia. Ezt vissza kell adni a 30 másodperces időkorlát alatt.
+* A hívásnak az 200-es `http://127.0.0.1:port` http-eredmény kódját kell visszaadnia. Ezt vissza kell adni a 30 másodperces időkorlát alatt.
 * Győződjön meg arról, hogy a konfigurált port meg van nyitva, és nincsenek tűzfalszabályok vagy Azure hálózati biztonsági csoportok, amelyek letiltják a bejövő vagy kimenő forgalmat a konfigurált porton.
 * Ha a klasszikus Azure-beli virtuális gépeket vagy a felhőalapú szolgáltatást teljes tartománynévvel vagy nyilvános IP-címmel használja, győződjön meg arról, hogy a megfelelő [végpont](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) meg van nyitva.
 * Ha a virtuális gép Azure Resource Manageron keresztül van konfigurálva, és azon a VNet kívül esik, amelyen az Application Gateway telepítve van, úgy kell konfigurálni egy [hálózati biztonsági csoportot](../virtual-network/security-overview.md) , hogy engedélyezze a hozzáférést a kívánt porton.
@@ -109,9 +109,9 @@ A következő további tulajdonságokat adja hozzá a rendszer:
 | Mintavételi tulajdonság | Leírás |
 | --- | --- |
 | Name |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
-| Protocol (Protokoll) |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |
+| Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |
 | Gazdagép |A mintavétel elküldésére szolgáló állomásnév. Csak akkor alkalmazható, ha több hely van konfigurálva az Application gatewayben. Ez különbözik a virtuális gép gazdagépének nevétől. |
-| Útvonal |A mintavétel relatív elérési útja. Az érvényes elérési út "/" karakterrel kezdődik. A rendszer \<elküldi a mintavételt a\>(z\<)\>:/\</\>\<Host: Port elérési útjának\> |
+| Elérési út |A mintavétel relatív elérési útja. Az érvényes elérési út "/" karakterrel kezdődik. A mintavétel a \<protocol\> :// \<host\> :\<port\>\<path\> |
 | Intervallum |Mintavételi időköz másodpercben. Ez az időtartam két egymást követő mintavétel között. |
 | Időtúllépés |Mintavétel időtúllépése másodpercben. Ha nem érkezik érvényes válasz ezen az időkorláton belül, a mintavétel sikertelenként van megjelölve. |
 | Nem kifogástalan állapot küszöbértéke |Újrapróbálkozások száma. A háttér-kiszolgáló az egymást követő mintavételi hibák számának elérésekor a nem megfelelő állapotú küszöbértéket éri el. |
@@ -121,8 +121,8 @@ A következő további tulajdonságokat adja hozzá a rendszer:
 Ellenőrizze, hogy az egyéni állapot mintavétele megfelelően van-e konfigurálva az előző táblázatban. Az előző hibaelhárítási lépések mellett a következőket is ellenőrizze:
 
 * Győződjön meg arról, hogy a mintavétel megfelelően van megadva az [útmutató](application-gateway-create-probe-ps.md)alapján.
-* Ha az Application Gateway egyetlen helyhez van konfigurálva, alapértelmezés szerint az állomásnevet kell megadni `127.0.0.1`, kivéve, ha az egyéni mintavétel másként van konfigurálva.
-* Győződjön meg arról, hogy a\<http://\>gazdagépre irányuló\<hívás: a port\>\<elérési útja\> a 200-es http-eredmény kódját adja vissza.
+* Ha az Application Gateway egyetlen helyhez van konfigurálva, alapértelmezés szerint az állomásnevet kell megadni `127.0.0.1` , kivéve, ha az egyéni mintavétel másként van konfigurálva.
+* Győződjön meg arról, hogy a http://hívása \<host\> : \<port\> \<path\> egy 200-es http-eredmény kódját adja vissza.
 * Győződjön meg arról, hogy az intervallum, az időkorlát és a UnhealtyThreshold az elfogadható tartományokon belül vannak.
 * HTTPS-mintavétel használata esetén győződjön meg arról, hogy a háttér-kiszolgáló nem igényel SNI egy tartalék tanúsítványnak a háttér-kiszolgálón való konfigurálásával.
 

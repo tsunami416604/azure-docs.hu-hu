@@ -8,14 +8,14 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c8a5555c5c33255fdc5902a115e7e9103a4e936f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79410063"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805316"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>Titkosítási kulcs megadása blob Storage-kérelemre (előzetes verzió)
 
@@ -25,7 +25,7 @@ Az Azure Blob Storage-ra irányuló kérelmeket használó ügyfelek igény szer
 
 Ha egy ügyfélalkalmazás titkosítási kulcsot biztosít a kérelemhez, az Azure Storage a blob-adatok olvasása és írása során transzparens módon végzi a titkosítást és a visszafejtést. Az Azure Storage a blob tartalma mellett a titkosítási kulcs SHA-256 kivonatát írja. A kivonattal ellenőrizheti, hogy a blobon végzett összes további művelet ugyanazt a titkosítási kulcsot használja-e.
 
-Az Azure Storage nem tárolja és nem kezeli azt a titkosítási kulcsot, amelyet az ügyfél a kérelemmel küld. A kulcs biztonságos eldobása, amint a titkosítási vagy a visszafejtési folyamat befejeződött.
+Az Azure Storage nem tárolja és nem kezeli azt a titkosítási kulcsot, amelyet az ügyfél a kérelemmel küld. A kulcs biztonságosan el lesz távolítva, amint a titkosítási vagy a visszafejtési folyamat befejeződött.
 
 Amikor egy ügyfél egy ügyfél által megadott kulcs használatával hoz létre vagy frissít egy blobot a kérelemben, az adott blobra vonatkozó további olvasási és írási kérelmeknek is meg kell adniuk a kulcsot. Ha a kulcs nincs megadva egy olyan blobra vonatkozó kérelemben, amely már egy ügyfél által megadott kulccsal lett titkosítva, akkor a kérelem meghiúsul a 409-as hibakódtal (ütközés).
 
@@ -77,4 +77,4 @@ A Blobok titkosításához használt titkosítási kulcs elforgatásához tölts
 ## <a name="next-steps"></a>További lépések
 
 - [Ügyfél által megadott kulcs meghatározása a blob Storage-hoz a .NET-tel](../blobs/storage-blob-customer-provided-key.md)
-- [Azure Storage-titkosítás a REST-adatokhoz](storage-service-encryption.md)
+- [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)

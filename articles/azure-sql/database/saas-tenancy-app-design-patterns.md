@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: efb25a16b5a3ae7de831436d255358aca19b828f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042189"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250710"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázisok bérletének mintái
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Minden bérlői adatbázis egyetlen adatbázisként van telepítve.  Ez a modell
 
 #### <a name="vendor-management"></a>Szállítói felügyelet
 
-A szállító az összes önálló alkalmazás-példányban elérheti az összes adatbázist, még akkor is, ha az alkalmazás példányai különböző bérlői előfizetésekben vannak telepítve.  A hozzáférés SQL-kapcsolatokon keresztül érhető el.  Ez a több példányra kiterjedő hozzáférés lehetővé teszi, hogy a gyártó központosítsa a séma-kezelést és az adatbázison belüli lekérdezéseket jelentéskészítési vagy elemzési célokra.  Ha ilyen központosított felügyeletre van szükség, olyan katalógust kell központilag telepíteni, amely a bérlő azonosítóit a Database URI-k számára képezi le.  Azure SQL Database egy olyan horizontálisan használt könyvtárat biztosít, amelyet egy SQL-adatbázissal együtt használ a katalógus megadásához.  A horizontális Felskálázási függvénytár [Elastic Database ügyféloldali kódtár][docu-elastic-db-client-library-536r].
+A szállító az összes önálló alkalmazás-példányban elérheti az összes adatbázist, még akkor is, ha az alkalmazás példányai különböző bérlői előfizetésekben vannak telepítve.  A hozzáférés SQL-kapcsolatokon keresztül érhető el.  Ez a több példányra kiterjedő hozzáférés lehetővé teszi, hogy a gyártó központosítsa a séma-kezelést és az adatbázison belüli lekérdezéseket jelentéskészítési vagy elemzési célokra.  Ha ilyen központosított felügyeletre van szükség, olyan katalógust kell központilag telepíteni, amely a bérlő azonosítóit a Database URI-k számára képezi le.  Azure SQL Database egy olyan horizontálisan használt könyvtárat biztosít, amely együtt használható a katalógus megadásához.  A horizontális Felskálázási függvénytár [Elastic Database ügyféloldali kódtár][docu-elastic-db-client-library-536r].
 
 ## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. Több-bérlős alkalmazás adatbázis-Bérlővel
 

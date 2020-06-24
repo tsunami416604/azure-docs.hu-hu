@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan használhatja a REST APIt az Azure-fájlmegoszt
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252505"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710575"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Azure-fájlmegosztás visszaállítása REST API használatával
 
@@ -378,7 +378,7 @@ A kérelem törzsének és egyéb részleteinek teljes listájáért tekintse me
 
 ### <a name="restore-to-original-location"></a>Visszaállítás az eredeti helyre
 
-A következő kérelem törzse a *Afsaccount* *Restoretest. txt* fájljának visszaállítása a *azurefiles* fájlmegosztás használatával.
+A következő kérelem törzse a *azurefiles* -fájlmegosztás *Restoretest.txt* fájljának visszaállítása a *afsaccount* Storage-fiókban.
 
 Kérelem törzsének létrehozása
 
@@ -404,7 +404,7 @@ Kérelem törzsének létrehozása
 
 ### <a name="restore-to-alternate-location"></a>Visszaállítás másik helyre
 
-A következő kérelem törzse a *Restoretest. txt* fájl visszaállítása a *afsaccount* *Storage-* fiókban található *azurefiles* -fájlmegosztás és *a azurefiles1-fájlmegosztás* *restoredata* mappájába.
+A következő kérelem törzse a *afsaccount* Storage-fiókban található *azurefiles* -fájlmegosztás *Restoretest.txt* fájljának visszaállítása a *afaccount1* Storage-fiókban található *azurefiles1* -fájlmegosztás *restoredata* mappájába.
 
 Kérelem törzsének létrehozása
 

@@ -6,18 +6,27 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
+ms.date: 06/17/2020
 tags: connectors
-ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927445"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807748"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése SSH és Azure Logic Apps használatával
 
-A [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokoll használatával a biztonságos [File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) kiszolgálón lévő fájlok figyelésére, létrehozására, küldésére és fogadására szolgáló feladatok automatizálásához Azure Logic apps és az SFTP-SSH összekötő használatával hozhat létre és automatizálhat integrációs munkafolyamatokat. Az SFTP olyan hálózati protokoll, amely fájlhozzáférést, fájlátvitelt és fájlfelügyeletet biztosít valamilyen megbízható adatstreamen keresztül. Íme néhány példa a feladatok automatizálására:
+A [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokoll használatával a biztonságos [File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) kiszolgálón lévő fájlok figyelésére, létrehozására, küldésére és fogadására szolgáló feladatok automatizálásához Azure Logic apps és az SFTP-SSH összekötő használatával hozhat létre és automatizálhat integrációs munkafolyamatokat. Az SFTP olyan hálózati protokoll, amely fájlhozzáférést, fájlátvitelt és fájlfelügyeletet biztosít valamilyen megbízható adatstreamen keresztül.
+
+> [!NOTE]
+> Az SFTP-SSH-összekötő jelenleg nem támogatja ezeket az SFTP-kiszolgálókat:
+> 
+> * IBM DataPower
+> * OpenText Secure MFT
+> * OpenText GXS
+
+Íme néhány példa a feladatok automatizálására:
 
 * A fájlok hozzáadásának vagy módosításának figyelése.
 * Fájlok lekérése, létrehozása, másolása, átnevezése, frissítése, listázása és törlése.
@@ -42,18 +51,18 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
   | Műveletek | Adatdarabolás támogatása | Adatméret-méretezési támogatás felülbírálása |
   |--------|------------------|-----------------------------|
-  | **Fájl másolása** | Nem | Nem alkalmazható |
+  | **Fájl másolása** | No | Nem értelmezhető |
   | **Fájl létrehozása** | Igen | Igen |
-  | **Mappa létrehozása** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl törlése** | Nem alkalmazható | Nem alkalmazható |
-  | **Archív fájl kibontása a mappába** | Nem alkalmazható | Nem alkalmazható |
+  | **Mappa létrehozása** | Nem értelmezhető | Nem értelmezhető |
+  | **Fájl törlése** | Nem értelmezhető | Nem értelmezhető |
+  | **Archív fájl kibontása a mappába** | Nem értelmezhető | Nem értelmezhető |
   | **Fájl tartalmának beolvasása** | Igen | Igen |
   | **Fájl tartalmának beolvasása elérési út alapján** | Igen | Igen |
-  | **Fájl metaadatainak beolvasása** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl metaadatainak beolvasása elérési út használatával** | Nem alkalmazható | Nem alkalmazható |
-  | **Mappában található fájlok listázása** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl átnevezése** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl frissítése** | Nem | Nem alkalmazható |
+  | **Fájl metaadatainak beolvasása** | Nem értelmezhető | Nem értelmezhető |
+  | **Fájl metaadatainak beolvasása elérési út használatával** | Nem értelmezhető | Nem értelmezhető |
+  | **Mappában található fájlok listázása** | Nem értelmezhető | Nem értelmezhető |
+  | **Fájl átnevezése** | Nem értelmezhető | Nem értelmezhető |
+  | **Fájl frissítése** | No | Nem értelmezhető |
   ||||
 
 * SFTP – az SSH-eseményindítók nem támogatják az üzenetek darabolását. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
@@ -105,8 +114,8 @@ Az SFTP-SSH elindítja az SFTP fájlrendszer lekérdezésével és a legutóbbi 
 
 | SFTP-ügyfél | Műveletek |
 |-------------|--------|
-| WinSCP | Ugrás a **Beállítások** > **Beállítások** > **átvitel** > **Edit**szerkesztési > **megőrzési időbélyegének** > **letiltása** |
-| Filezillát | Ugrás az **Transfer** >  > **átvitt fájlok adatmegőrzési időbélyegére –****Letiltás** |
+| WinSCP | Ugrás a **Beállítások**  >  **Beállítások**  >  **átvitel**  >  **szerkesztési**  >  **megőrzési időbélyegének**  >  **letiltása** |
+| Filezillát | Ugrás az **Transfer**  >  **átvitt fájlok adatmegőrzési időbélyegére –**  >  **Letiltás** |
 |||
 
 Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elkészült-e, és nem részlegesen van-e írva. Előfordulhat például, hogy egy fájl változása folyamatban van, amikor az trigger ellenőrzi a fájlkiszolgálón. Egy részlegesen megírt fájl visszaadásának elkerüléséhez az trigger megállapítja a legutóbbi módosításokat tartalmazó fájl időbélyegét, de nem adja vissza azonnal a fájlt. Az trigger csak akkor adja vissza a fájlt, ha újra kérdezi le a kiszolgálót. Előfordulhat, hogy ez a viselkedés egy késleltetést okoz, amely akár kétszer is meghaladhatja az aktiválás lekérdezési időközét.
@@ -133,7 +142,7 @@ Ha a titkos kulcs Putty formátumú, amely a. PPK (Putty titkos kulcs) fájlnév
 
 ### <a name="windows-os"></a>Windows operációs rendszer
 
-1. Ha még nem tette meg, [töltse le a legújabb Putty Generator (PuTTYgen. exe) eszközt](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), majd indítsa el az eszközt.
+1. Ha még nem tette meg, [töltse le a legújabb Putty Generator (puttygen.exe) eszközt](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), majd indítsa el az eszközt.
 
 1. Ezen a képernyőn válassza a **Betöltés**lehetőséget.
 
@@ -145,7 +154,7 @@ Ha a titkos kulcs Putty formátumú, amely a. PPK (Putty titkos kulcs) fájlnév
 
    ![Válassza az "OpenSSH-kulcs exportálása" lehetőséget](./media/connectors-sftp-ssh/export-openssh-key.png)
 
-1. Mentse a titkos kulcs fájlját a `.pem` fájlnévkiterjesztés megnyomásával.
+1. Mentse a titkos kulcs fájlját a fájlnévkiterjesztés megnyomásával `.pem` .
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -155,7 +164,7 @@ Ez a szakasz az összekötő eseményindítóinak és műveleteinek áttekintés
 
 ### <a name="create-file"></a>Fájl létrehozása
 
-Az SFTP-kiszolgálón található fájl létrehozásához használhatja az SFTP-SSH **create file** műveletet. Amikor ez a művelet létrehozza a fájlt, a Logic Apps szolgáltatás automatikusan meghívja az SFTP-kiszolgálót a fájl metaadatainak beolvasására. Ha azonban áthelyezi az újonnan létrehozott fájlt, mielőtt a Logic Apps szolgáltatás megkéri a metaadatok lekérését, `404` hibaüzenetet kap. `'A reference was made to a file or folder which does not exist'` Ha szeretné kihagyni a fájl metaadatait a fájl létrehozása után, kövesse a következő lépéseket: [az **összes fájl metaadatainak beolvasása** tulajdonság hozzáadásának és beállításának **No**](#file-does-not-exist)lépései.
+Az SFTP-kiszolgálón található fájl létrehozásához használhatja az SFTP-SSH **create file** műveletet. Amikor ez a művelet létrehozza a fájlt, a Logic Apps szolgáltatás automatikusan meghívja az SFTP-kiszolgálót a fájl metaadatainak beolvasására. Ha azonban áthelyezi az újonnan létrehozott fájlt, mielőtt a Logic Apps szolgáltatás megkéri a metaadatok lekérését, `404` hibaüzenetet kap `'A reference was made to a file or folder which does not exist'` . Ha szeretné kihagyni a fájl metaadatait a fájl létrehozása után, kövesse a következő lépéseket: [az **összes fájl metaadatainak beolvasása** tulajdonság hozzáadásának és beállításának **No**](#file-does-not-exist)lépései.
 
 <a name="connect"></a>
 
@@ -165,13 +174,13 @@ Az SFTP-kiszolgálón található fájl létrehozásához használhatja az SFTP-
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Üres logikai alkalmazások esetén a keresőmezőbe írja be `sftp ssh` a szűrőt. Válassza ki a kívánt eseményindítót az eseményindítók listából.
+1. Üres logikai alkalmazások esetén a keresőmezőbe írja be a `sftp ssh` szűrőt. Válassza ki a kívánt eseményindítót az eseményindítók listából.
 
-   – vagy –
+   -vagy-
 
    Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be `sftp ssh` szűrőként a kifejezést. A műveletek listában válassza ki a kívánt műveletet.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. Adja meg a kapcsolathoz szükséges adatokat.
 
@@ -179,13 +188,13 @@ Az SFTP-kiszolgálón található fájl létrehozásához használhatja az SFTP-
    >
    > Ha megadja az SSH titkos kulcsát az **SSH titkos kulcs** tulajdonságában, kövesse ezeket a további lépéseket, amelyekkel biztosíthatja, hogy a tulajdonság teljes és megfelelő értékét adja meg. Érvénytelen kulcs miatt a kapcsolódás sikertelen lesz.
 
-   Habár használhat bármely szövegszerkesztőt, itt láthatók azok a lépések, amelyek bemutatják, hogyan lehet helyesen másolni és beilleszteni a kulcsot a Notepad. exe használatával példaként.
+   Habár bármilyen szövegszerkesztőt használhat, az alábbi példákban bemutatjuk, hogyan lehet helyesen másolni és beilleszteni a kulcsot Notepad.exe példaként.
 
    1. Nyissa meg az SSH titkos kulcs fájlját egy szövegszerkesztőben. Ezek a lépések példaként használják a jegyzettömböt.
 
    1. A Jegyzettömb **Szerkesztés** menüjében válassza az **összes kijelölése**lehetőséget.
 
-   1. Válassza a**Másolás** **szerkesztése** > lehetőséget.
+   1. Válassza **Edit**a  >  **Másolás**szerkesztése lehetőséget.
 
    1. Az SFTP-SSH-trigger vagy a hozzáadott művelet esetében illessze be a *teljes* kulcsot, amelyet a **titkos SSH-kulcs** tulajdonságba másolt, amely több sort is támogat.  ***Ügyeljen rá, hogy illessze be*** a kulcsot. ***Ne adja meg manuálisan a kulcsot, vagy szerkessze***azt.
 
@@ -203,7 +212,7 @@ A darabolást használó alapértelmezett adaptív működés felülbírálásá
 
    ![Az SFTP-SSH beállítások megnyitása](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. A **tartalom átvitele**elemnél, a **darab mérete** tulajdonságban adjon meg egy `5` egész `50`számot a következőből:, például: 
+1. A **tartalom átvitele**elemnél, a **darab mérete** tulajdonságban adjon meg egy egész számot a `5` `50` következőből:, például: 
 
    ![Válassza ki a használni kívánt adatméretet](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 

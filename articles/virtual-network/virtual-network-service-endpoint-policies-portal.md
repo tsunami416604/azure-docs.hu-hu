@@ -7,23 +7,23 @@ documentationcenter: virtual-network
 author: RDhillon
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: d26fd2fec5f9d5ab8e9d82ff2c6bd83b11c72e99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77651189"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708178"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Szolgáltatás-végponti házirend létrehozása, módosítása vagy törlése a Azure Portal használatával
 
 A szolgáltatás-végponti házirendek lehetővé teszik a virtuális hálózati forgalom szűrését bizonyos Azure-erőforrásokra, a szolgáltatási végpontokon keresztül. Ha még nem ismeri a szolgáltatás-végponti házirendeket, tekintse meg a [szolgáltatás-végponti házirendek áttekintését](virtual-network-service-endpoint-policies-overview.md) .
 
- Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+ Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Szolgáltatás-végponti szabályzat létrehozása
@@ -31,7 +31,7 @@ A szolgáltatás-végponti házirendek lehetővé teszik a virtuális hálózati
 > * Virtuális hálózat létrehozása alhálózattal
 > * Szolgáltatás-végponti házirend hozzárendelése egy alhálózathoz
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 

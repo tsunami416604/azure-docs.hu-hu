@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/11/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 905554d1763bdd3c5990a43c5c8d98f336e1c442
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: cbdeb1c55af157a0bf5160d2420974fd014ea3b3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171208"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807592"
 ---
 # <a name="initiate-a-storage-account-failover"></a>A Storage-fiók feladatátvételének kezdeményezése
 
@@ -44,16 +44,16 @@ Az Azure Storage redundanciával kapcsolatos további információkért lásd: [
 A fiók feladatátvételének elindításához a Azure Portal hajtsa végre az alábbi lépéseket:
 
 1. Nyissa meg a tárfiókot.
-2. A **Beállítások**területen válassza a **geo-replikáció**lehetőséget. Az alábbi képen egy Storage-fiók geo-replikálási és feladatátvételi állapota látható.
+1. A **Beállítások**területen válassza a **geo-replikáció**lehetőséget. Az alábbi képen egy Storage-fiók geo-replikálási és feladatátvételi állapota látható.
 
-    ![A földrajzi replikálást és a feladatátvételi állapotot ábrázoló képernyőkép](media/storage-initiate-account-failover/portal-failover-prepare.png)
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="A földrajzi replikálást és a feladatátvételi állapotot ábrázoló képernyőkép":::
 
-3. Ellenőrizze, hogy a Storage-fiókja a Geo-redundáns tároláshoz (GRS) van-e konfigurálva, vagy hogy van-e olvasási hozzáférésű geo-redundáns tárolás (RA-GRS). Ha nem, akkor a **Beállítások** területen válassza a **Konfigurálás** lehetőséget, hogy a fiókját a Geo-redundáns értékre frissítse.
-4. A **Legutóbbi szinkronizálási idő** tulajdonság azt jelzi, hogy a másodlagos állapot meddig marad az elsődlegesnél. A **legutóbbi szinkronizálás ideje** azt az adatvesztés mértékét adja meg, amelyet a feladatátvétel befejezése után fog tapasztalni. A **legutóbbi szinkronizálás időpontjának** ellenőrzésével kapcsolatos további információkért tekintse [meg a Storage-fiók utolsó szinkronizálási idejének tulajdonságát](last-sync-time-get.md).
-5. Válassza **a feladatátvétel előkészítése**lehetőséget.
-6. Tekintse át a megerősítő párbeszédpanelt. Ha elkészült, az **Igen** gombra kattintva erősítse meg és kezdeményezheti a feladatátvételt.
+1. Ellenőrizze, hogy a Storage-fiókja a Geo-redundáns tároláshoz (GRS) van-e konfigurálva, vagy hogy van-e olvasási hozzáférésű geo-redundáns tárolás (RA-GRS). Ha nem, akkor a **Beállítások** területen válassza a **Konfigurálás** lehetőséget, hogy a fiókját a Geo-redundáns értékre frissítse.
+1. A **Legutóbbi szinkronizálási idő** tulajdonság azt jelzi, hogy a másodlagos állapot meddig marad az elsődlegesnél. A **legutóbbi szinkronizálás ideje** azt az adatvesztés mértékét adja meg, amelyet a feladatátvétel befejezése után fog tapasztalni. A **legutóbbi szinkronizálás időpontjának** ellenőrzésével kapcsolatos további információkért tekintse [meg a Storage-fiók utolsó szinkronizálási idejének tulajdonságát](last-sync-time-get.md).
+1. Válassza **a feladatátvétel előkészítése**lehetőséget.
+1. Tekintse át a megerősítő párbeszédpanelt. Ha elkészült, az **Igen** gombra kattintva erősítse meg és kezdeményezheti a feladatátvételt.
 
-    ![A fiók feladatátvételének megerősítési párbeszédpanelét bemutató képernyőkép](media/storage-initiate-account-failover/portal-failover-confirm.png)
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="A fiók feladatátvételének megerősítési párbeszédpanelét bemutató képernyőkép":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -94,7 +94,7 @@ Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <
 
 Ha az Azure CLI-t szeretné használni a fiók feladatátvételének elindításához, hajtsa végre a következő parancsokat:
 
-```azurecli
+```azurecli-interactive
 az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```
@@ -111,7 +111,7 @@ A feladatátvételt követően a rendszer automatikusan átalakítja a Storage-f
 
 Miután újraengedélyezte a GRS a Storage-fiókjához, a Microsoft elkezdi replikálni a fiókjában lévő adatait az új másodlagos régióba. A replikálási idő a replikált adatmennyiségtől függ.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Vész-helyreállítási és Storage-fiók feladatátvétele](storage-disaster-recovery-guidance.md)
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)

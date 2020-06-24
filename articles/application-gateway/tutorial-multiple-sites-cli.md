@@ -5,20 +5,20 @@ description: Megismerheti, hogyan hozható létre több webhelyet üzemeltető a
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a92d0f7d17f6bb83efbe94434c25072975dbe57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74047361"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806266"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Több webhelyet üzemeltető Application Gateway létrehozása az Azure CLI használatával
 
-Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ebben a cikkben a háttérbeli címkészletet a Virtual Machines Scale sets használatával határozhatja meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk azt feltételezi, hogy több tartománya van, és példákat használ a *www\.-contoso.com* és a *www\.-fabrikam.com*.
+Az Azure CLI használatával [konfigurálhatja több webhely üzemeltetését](multiple-site-overview.md), amikor [alkalmazásátjárót](overview.md) hoz létre. Ebben a cikkben a háttérbeli címkészletet a Virtual Machines Scale sets használatával határozhatja meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk azt feltételezi, hogy több tartománya van, és példákat használ a *www- \. contoso.com* és a *www- \. fabrikam.com*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -34,7 +34,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, az eljárást [Azure PowerShell](tutorial-multiple-sites-powershell.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -236,7 +236,7 @@ A-Records használata nem ajánlott, mert a VIP az Application Gateway újraind�
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Adja meg a tartománya nevét a böngésző címsorában. Például:, http:\//www.contoso.com.
+Adja meg a tartománya nevét a böngésző címsorában. Például:, http: \/ /www.contoso.com.
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest1.png)
 
@@ -244,7 +244,7 @@ Változtassa meg a címet a másik tartományára. Ekkor az eredmény a követke
 
 ![Fabrikam webhely tesztelése az alkalmazásátjáróban](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest2.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmazásátjárót és az összes kapcsolódó erőforrást.
 

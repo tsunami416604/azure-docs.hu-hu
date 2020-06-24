@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 850ace7af15ab37ab9a4a124d20ed4588771f4d4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594443"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242159"
 ---
 ## <a name="common-scenarios"></a>Gyakori helyzetek
 A következő forgatókönyvek nagy mértékben kihasználhatják a betörést:
@@ -24,9 +24,11 @@ A következő forgatókönyvek nagy mértékben kihasználhatják a betörést:
 ## <a name="bursting-flow"></a>Feltört folyamat
 A feltört kreditrendszer a virtuális gép szintjén és a lemez szintjén is azonos módon alkalmazható. Az erőforrás, amely egy virtuális gép vagy egy lemez, teljes értékű Kredittel fog kezdődni. Ezek a kreditek lehetővé teszik, hogy 30 percen belül a maximális burst sebességgel feltörten. A feltört kreditek akkor halmozódnak fel, ha az erőforrás a teljesítményük lemezes tárterületének korlátai szerint fut. Az összes olyan IOPS és MB/s esetében, amelyet az erőforrás a teljesítmény korlátozása alatt használ, elkezdi a kreditek összegyűjtését. Ha az erőforrás felhalmozott kreditekkel rendelkezik, és a számítási feladathoz szükség van az extra teljesítményre, akkor az erőforrás ezeket a krediteket a teljesítmény korlátja fölé helyezheti, hogy a lemez i/o-teljesítménye megfeleljen az igényeknek.
 
+
+
 ![Feltört gyűjtő diagramja](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Az egyik dolog, ami azt jelzi, hogy a burst felhalmozódása különbözik az egyes erőforrásoktól, mert a használaton kívüli IOPS, valamint a teljesítményük alatti MB/s értéken alapul. Ez azt jelenti, hogy a magasabb alapszintű teljesítményű termékek az alacsonyabb alapkonfigurációt használó termékeknél gyorsabban felmerülhetnek a feltört mennyiségű terméknél. Egy tevékenység nélküli P1 lemez üresjárati ideje például 120 IOPS, míg a P20-lemezek másodpercenként 2 300 IOPS-t kapnak, és tevékenység nélkül üresjáratban vannak.
+Akár egészen addig, ahogy szeretné, hogy a 30 perces kitörést kívánja használni. Akár 30 percet is igénybe vehet a nap folyamán, vagy szórványosan. A termék üzembe helyezése után a rendszer készen áll a teljes kreditek kiszámítására és a kreditek elvégzésére, amely egy napnál kevesebb időt vesz igénybe. Saját belátása szerint felhalmozhatja és elköltheti a feltört krediteket, és a 30 perces gyűjtőnek nem kell megismételni a feltört időt. Az egyik dolog, ami azt jelzi, hogy a burst felhalmozódása különbözik az egyes erőforrásoktól, mert a használaton kívüli IOPS, valamint a teljesítményük alatti MB/s értéken alapul. Ez azt jelenti, hogy a magasabb alapszintű teljesítményű termékek az alacsonyabb alapkonfigurációt használó termékeknél gyorsabban felmerülhetnek a feltört mennyiségű terméknél. Egy tevékenység nélküli P1 lemez üresjárati ideje például 120 IOPS, míg a P20-lemezek másodpercenként 2 300 IOPS-t kapnak, és tevékenység nélkül üresjáratban vannak.
 
 ## <a name="bursting-states"></a>Feltört állapotok
 Három állapottal rendelkezhet, ha az erőforrás a kitört állapotban van:
@@ -70,7 +72,7 @@ Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 192 MB/s
 - 2 P10 adatlemez 
     - Kiépített MB/s: 250
 
- A kezdeti rendszerindítás után egy alkalmazás fut a virtuális gépen, és nem kritikus fontosságú számítási feladattal rendelkezik. Ez a munkaterhelés 30 MB/s memóriát igényel, amely egyenletesen oszlik el az összes ![lemezen: a virtuális gép nem feltört lemezének üresjárata](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ A kezdeti rendszerindítás után egy alkalmazás fut a virtuális gépen, és nem kritikus fontosságú számítási feladattal rendelkezik. Ez a munkaterhelés 30 MB/s memóriát igényel, amely egyenletesen oszlik el az összes lemezen: a ![ virtuális gép nem feltört lemezének üresjárata](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
 Ezután az alkalmazásnak fel kell dolgoznia egy batch-feladatot, amely 600 MB/s memóriát igényel. A Standard_L8s_v2 az igények kielégítése érdekében, majd a lemezekre irányuló kérések egyenletesen oszlanak meg a P50-lemezeken:
 

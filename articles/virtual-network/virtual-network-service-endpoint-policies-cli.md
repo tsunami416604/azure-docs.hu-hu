@@ -11,18 +11,18 @@ Customer intent: I want only specific Azure Storage account to be allowed access
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78271185"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708212"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Az Azure Storage-fiókok kiszűrése az Azure CLI-vel való kezelése virtuális hálózati szolgáltatás végponti házirendjeivel
 
@@ -37,7 +37,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Erősítse meg az engedélyezett Storage-fiókhoz való hozzáférést az alhálózaton.
 * Győződjön meg arról, hogy a hozzáférés meg van tagadva a nem engedélyezett Storage-fiókhoz az alhálózaton.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -263,7 +263,7 @@ az network service-endpoint policy create \
   --location eastus
 ```
 
-Mentse az erőforrás-URI-t az engedélyezett Storage-fiókhoz egy változóban. Az alábbi parancs végrehajtása előtt cserélje le * \<az-előfizetés-azonosító>* az előfizetés-azonosítójának tényleges értékére.
+Mentse az erőforrás-URI-t az engedélyezett Storage-fiókhoz egy változóban. Az alábbi parancs végrehajtása előtt cserélje le az *\<your-subscription-id>* értéket az előfizetés-azonosító aktuális értékére.
 
 ```azurecli-interactive
 $serviceResourceId="/subscriptions/<your-subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/allowedstorageacc"
@@ -313,7 +313,7 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. A létrehoz�
 
 ### <a name="confirm-access-to-storage-account"></a>Tárfiókhoz való hozzáférés ellenőrzése
 
-SSH-t a *myVmPrivate* virtuális gépre. Cserélje le * \<a publicIpAddress>t* a *myVmPrivate* virtuális gép nyilvános IP-címére.
+SSH-t a *myVmPrivate* virtuális gépre. Cserélje le a helyére *\<publicIpAddress>* a *myVmPrivate* virtuális gép nyilvános IP-címét.
 
 ```bash 
 ssh <publicIpAddress>
@@ -325,7 +325,7 @@ Mappa létrehozása csatlakoztatási ponthoz:
 sudo mkdir /mnt/MyAzureFileShare1
 ```
 
-Csatlakoztassa az Azure-fájlmegosztást a létrehozott címtárhoz. Az alábbi parancs végrehajtása előtt cserélje le * \<a Storage-Account-Key>* értéket a *AccountKey* értékre **$saConnectionString 1**értékről.
+Csatlakoztassa az Azure-fájlmegosztást a létrehozott címtárhoz. Az alábbi parancs végrehajtása előtt cserélje le a *\<storage-account-key>* értéket a *AccountKey* értékre a következőtől: **$saConnectionString 1**.
 
 ```bash
 sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare1 --options vers=3.0,username=allowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -343,17 +343,17 @@ sudo mkdir /mnt/MyAzureFileShare2
 
 Próbálja meg csatlakoztatni az Azure-fájlmegosztást a Storage-fiók *notallowedstorageacc* a létrehozott könyvtárba. Ez a cikk azt feltételezi, hogy telepítette az Ubuntu legújabb verzióját. Ha az Ubuntu korábbi verzióit használja, tekintse [meg a Linux csatlakoztatása](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című témakört, amely további utasításokat tartalmaz a fájlmegosztás csatlakoztatásával kapcsolatban. 
 
-Az alábbi parancs végrehajtása előtt cserélje le * \<a Storage-Account-Key>* értéket a *AccountKey* értékre a **$saConnectionString 2**típusból.
+Az alábbi parancs végrehajtása előtt cserélje le a *\<storage-account-key>* értéket a *AccountKey* értékre a következőtől: **$saConnectionString 2**.
 
 ```bash
 sudo mount --types cifs //notallowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare2 --options vers=3.0,username=notallowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-A hozzáférés megtagadva, és `mount error(13): Permission denied` hibaüzenet jelenik meg, mivel ez a Storage-fiók nem szerepel az alhálózatra alkalmazott szolgáltatási végponti házirend engedélyezési listáján. 
+A hozzáférés megtagadva, és hibaüzenet jelenik meg `mount error(13): Permission denied` , mivel ez a Storage-fiók nem szerepel az alhálózatra alkalmazott szolgáltatási végponti házirend engedélyezési listáján. 
 
 Lépjen ki az SSH-munkamenetből a *myVmPublic* virtuális gépre.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az [az Group delete](/cli/azure) paranccsal távolítsa el az erőforráscsoportot és a benne található összes erőforrást.
 

@@ -6,13 +6,13 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.topic: conceptual
-ms.openlocfilehash: fba213be2de3b747d3ba962674a03c0bc7df3ed5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 68856a4c5218232943ac657bbd67759d5ab4b804
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863665"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983155"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Virtuális hálózati átjáró törlése a portál használatával
 

@@ -4,15 +4,15 @@ description: Ebből a cikkből megtudhatja, hogyan ágyazhat be az Internet Anal
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: f9ecb8d731945847160b49c68c554fafdd7285d9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d4b27b85ac7bc61e14a79f29e4e26ec4973ced1
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74896382"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744051"
 ---
 # <a name="embed-the-internet-analyzer-client"></a>Az Internet Analyzer-ügyfél beágyazása
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan ágyazhatja be a JavaScript-ügyfelet az alkalmazás
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az Internet Analyzer megfelelő működéséhez hozzáférést igényel az Azure-hoz és más Microsoft-szolgáltatásokhoz. Az ügyfél beágyazásához engedélyezze `fpc.msedge.net` a hálózati hozzáférést és az előre konfigurált végponti URL-címeket (a [CLI](internet-analyzer-cli.md)-n keresztül látható).
+Az Internet Analyzer megfelelő működéséhez hozzáférést igényel az Azure-hoz és más Microsoft-szolgáltatásokhoz. `fpc.msedge.net`Az ügyfél beágyazásához engedélyezze a hálózati hozzáférést és az előre konfigurált végponti URL-címeket (a [CLI](internet-analyzer-cli.md)-n keresztül látható).
 
 ## <a name="find-the-client-script-url"></a>Az ügyfél-parancsfájl URL-címének megkeresése
 
@@ -44,7 +44,7 @@ A szkriptet kifejezetten a profiljához és a tesztekhez hozza létre a rendszer
 
 ## <a name="client-examples"></a>Ügyfél-példák
 
-Ezek a példák néhány alapszintű módszert mutatnak be a JavaScript-ügyfél weboldalára vagy alkalmazásba való beágyazásához. A szkript `0bfcb32638b44927935b9df86dcfe397` URL-címéhez példaként használjuk a profil azonosítóját.
+Ezek a példák néhány alapszintű módszert mutatnak be a JavaScript-ügyfél weboldalára vagy alkalmazásba való beágyazásához. `0bfcb32638b44927935b9df86dcfe397`A szkript URL-címéhez példaként használjuk a profil azonosítóját.
 
 ### <a name="run-on-page-load"></a>Futtatás oldalon betöltés
 A legegyszerűbb módszer a script címke használata a meta tag blokkon belül. Ez a címke egy oldal betöltése után hajtja végre a parancsfájlt.

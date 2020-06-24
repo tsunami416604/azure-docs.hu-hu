@@ -4,19 +4,19 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a magánhálózati I
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 570f28ce559ff1c1180ffaacb781b9120b1890a2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795489"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806798"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Magánhálózati IP használata belső útválasztáshoz egy bejövő végpont esetében 
 
-Ez a funkció lehetővé teszi, hogy a bejövő végpontot `Virtual Network` a privát IP-cím használatával tegye elérhetővé.
+Ez a funkció lehetővé teszi, hogy a bejövő végpontot a `Virtual Network` privát IP-cím használatával tegye elérhetővé.
 
 ## <a name="pre-requisites"></a>Előfeltételek  
 Application Gateway [magánhálózati IP-konfigurációval](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)
@@ -24,7 +24,7 @@ Application Gateway [magánhálózati IP-konfigurációval](https://docs.microso
 A vezérlőt kétféleképpen lehet úgy konfigurálni, hogy magánhálózati IP-címet használjon a bejövő forgalom számára.
 
 ## <a name="assign-to-a-particular-ingress"></a>Hozzárendelés egy adott bejövő forgalomhoz
-Ha a magánhálózati IP-címekről szeretne beérkező adatokat közzétenni, [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) használja a jegyzeteket a bejövő forgalomban.
+Ha a magánhálózati IP-címekről szeretne beérkező adatokat közzétenni, használja a jegyzeteket [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) a bejövő forgalomban.
 
 ### <a name="usage"></a>Használat
 ```yaml
@@ -51,7 +51,7 @@ A magánhálózati IP-címek nélküli Application Gateway-Ingresses `appgw.ingr
 
 
 ## <a name="assign-globally"></a>Globális hozzárendelés
-Abban az esetben, ha a szükséges, hogy az összes Ingresses legyen elérhető a privát IP `appgw.usePrivateIP: true` - `helm` címeken, használja a parancsot a konfigurációban.
+Abban az esetben, ha a szükséges, hogy az összes Ingresses legyen elérhető a privát IP-címeken, használja `appgw.usePrivateIP: true` a parancsot a `helm` konfigurációban.
 
 ### <a name="usage"></a>Használat
 ```yaml
@@ -63,7 +63,7 @@ appgw:
 ```
 
 Így a bejövő vezérlő szűri az IP-címek konfigurációit egy magánhálózati IP-címen, amikor a Application Gatewayon konfigurálja a előtér-figyelőket.
-A AGIC pánikba kerül és `usePrivateIP: true` összeomlik, ha nincs hozzárendelve magánhálózati IP-cím.
+A AGIC pánikba kerül és összeomlik, ha `usePrivateIP: true` nincs hozzárendelve magánhálózati IP-cím.
 
 > [!NOTE]
 > Application Gateway v2 SKU-nak nyilvános IP-címet kell megadnia. Ha a Application Gateway magánjellegűnek kell lennie, csatolja a [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) -t a Application Gateway alhálózatához a forgalom korlátozása érdekében.

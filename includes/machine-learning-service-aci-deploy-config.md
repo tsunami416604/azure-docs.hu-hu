@@ -11,11 +11,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "79486105"
 ---
-A `deploymentconfig.json` dokumentumtérkép bejegyzései a [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik le. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
+A dokumentumtérkép bejegyzései a `deploymentconfig.json` [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik le. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
 
 | JSON-entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
-| `computeType` | NA | A számítási cél. ACI esetén az értéknek a következőnek kell lennie `ACI`:. |
+| `computeType` | NA | A számítási cél. ACI esetén az értéknek a következőnek kell lennie: `ACI` . |
 | `containerResourceRequirements` | NA | A processzor-és memória-entitások tárolója. |
 | &emsp;&emsp;`cpu` | `cpu_cores` | A lefoglalni kívánt CPU-magok száma. Alapértelmezett`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | A webszolgáltatás számára lefoglalható memória mennyisége (GB-ban). Alapértelmezett`0.5` |

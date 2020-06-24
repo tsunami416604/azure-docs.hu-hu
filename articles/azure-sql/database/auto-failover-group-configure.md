@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 13ca1ed4abef1eb367239a60ee7fe3d40ffee8d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 32543dffa492770d7217fb07652e41baf603ebcc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195548"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250910"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -295,7 +295,7 @@ A feladatátvételi csoport feladatátvétele a másodlagos kiszolgálóra tört
 1. Válassza a **feladatátvétel** lehetőséget a feladat ablaktáblán a rugalmas készletet tartalmazó feladatátvételi csoport feladatátvételéhez.
 1. Válassza az **Igen** lehetőséget arra a figyelmeztetésre, amely értesíti, hogy a TDS-munkamenetek le lesznek választva.
 
-   ![Az SQL-adatbázist tartalmazó feladatátvételi csoport feladatátvétele](./media/auto-failover-group-configure/failover-sql-db.png)
+   ![Az adatbázist tartalmazó feladatátvételi csoport feladatátvétele](./media/auto-failover-group-configure/failover-sql-db.png)
 
 1. Tekintse át, hogy melyik kiszolgáló elsődleges, melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie.
 1. Válassza újra a **feladatátvételt** , hogy a feladatátvételi csoportot vissza lehessen térni az eredeti beállításokhoz.
@@ -342,7 +342,7 @@ Feladatátvétel a másodlagos kiszolgálóra:
 > [!IMPORTANT]
 > Ha törölnie kell a másodlagos adatbázist, a törlése előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat.
 
-## <a name="sql-managed-instance"></a>Felügyelt SQL-példány
+## <a name="sql-managed-instance"></a>SQL Managed Instance
 
 A Azure Portal vagy a PowerShell használatával hozzon létre egy feladatátvételi csoportot a felügyelt Azure SQL-példány két felügyelt példánya között.
 

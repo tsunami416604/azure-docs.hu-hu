@@ -4,15 +4,15 @@ description: Ezzel az Oktatóanyaggal engedélyezheti a bejövő adatkezelő be�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 8595b7fc37a46dbb27dec4d1388e4b0251606411
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: bb7ba071b1c0b49a818857e417ef6bf676a9a0df
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670935"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806468"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-a-new-aks-cluster-with-a-new-application-gateway-through-azure-cli-preview"></a>Oktatóanyag: az Azure CLI-vel (előzetes verzió) új Application Gateway az új AK-fürthöz való belépés Application Gateway a bejövő vezérlő bővítményének engedélyezése
 
@@ -115,7 +115,7 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)
 * [További információ a AGIC által támogatott jegyzetekről](./ingress-controller-annotations.md)
 * [AGIC kapcsolatos hibák elhárítása](./ingress-controller-troubleshoot.md)
