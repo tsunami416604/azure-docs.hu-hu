@@ -1,18 +1,18 @@
 ---
-title: A helyi folyamat és a Kubernetes működése
+title: Helyi folyamatok működése Kubernetes használata esetén
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a helyi folyamatok Kubernetes használatával csatlakoztathatók a fejlesztői számítógép a Kubernetes-fürthöz
 keywords: Helyi folyamat a Kubernetes, az Azure dev Spaces, a dev Spaces, a Docker, a Kubernetes, az Azure, az AK, az Azure Kubernetes Service, a containers
-ms.openlocfilehash: 443783eb7f5359318cf8efbec8b6466a80fa1e85
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: dd126fc55a86b1de115239a31e5adb7b1d264846
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316599"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974398"
 ---
-# <a name="how-local-process-with-kubernetes-works"></a>A helyi folyamat és a Kubernetes működése
+# <a name="how-local-process-with-kubernetes-works"></a>Helyi folyamatok működése Kubernetes használata esetén
 
 A Kubernetes helyi folyamata lehetővé teszi a kód futtatását és hibakeresését a fejlesztői számítógépen, miközben továbbra is csatlakozik a Kubernetes-fürthöz a többi alkalmazással vagy szolgáltatással. Ha például nagyméretű, több függő szolgáltatásokkal és adatbázisokkal rendelkező, nagy üzemi architektúrával rendelkezik, a függőségek replikálása a fejlesztői számítógépen nehéz lehet. Emellett a belső hurkok fejlesztése során a kód a Kubernetes-fürthöz való létrehozása és üzembe helyezése is lassú, időigényes és nehéz a hibakeresővel való használatra.
 
@@ -42,6 +42,15 @@ Miután létrehozta a kapcsolatot a fürttel, a tárolókra bontás nélkül fut
 ## <a name="diagnostics-and-logging"></a>Diagnosztika és naplózás
 
 Ha helyi folyamatot használ a Kubernetes a fürthöz való csatlakozáshoz, a fürtből származó diagnosztikai naplókat a rendszer naplózza a fejlesztői számítógép [ideiglenes könyvtárába][azds-tmp-dir]. A Visual Studio Code használatával a *diagnosztikai adatok megjelenítése* paranccsal is kinyomtathatja a fürt aktuális környezeti változóit és DNS-bejegyzéseit.
+
+## <a name="limitations"></a>Korlátozások
+
+A Kubernetes helyi folyamata a következő korlátozásokkal rendelkezik:
+
+* A Kubernetes helyi folyamata átirányítja a forgalmat egyetlen szolgáltatásra a fejlesztői számítógépén. A Kubernetes nem használhatja a helyi folyamatot több szolgáltatás egyszerre történő átirányításához.
+* A szolgáltatáshoz való kapcsolódáshoz a szolgáltatást egyetlen hüvelyrel kell támogatnia. Nem csatlakozhat több hüvelyrel rendelkező szolgáltatáshoz, például egy replikával rendelkező szolgáltatáshoz.
+* A pod csak egyetlen tárolóval rendelkezhet, amely az adott Pod-ban helyi folyamathoz, a sikeres kapcsolódáshoz pedig a Kubernetes használatával működik. A Kubernetes helyi folyamata nem tud olyan szolgáltatásokhoz csatlakozni, amelyeken további tárolók vannak, például az oldalkocsis tárolók, amelyeket a szolgáltatások rácsvonalai fecskendeznek be.
+* A Kubernetes helyi folyamatának emelt szintű engedélyekkel kell rendelkeznie a fejlesztői számítógépen való futtatáshoz a gazdagépek fájljának szerkesztéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

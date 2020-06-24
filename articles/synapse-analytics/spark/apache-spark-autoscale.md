@@ -47,7 +47,7 @@ A vertikális felskálázáshoz az Azure szinapszis automatikusan kiszámítja, 
 
 A leskálázás, a végrehajtók száma, az alkalmazás főkiszolgálói és a jelenlegi CPU-és memória-követelmények alapján, az autoskálázás egy adott számú csomópont eltávolítására irányuló kérést bocsát ki. A szolgáltatás azt is észleli, hogy mely csomópontok vannak kiválasztva az eltávolításra a jelenlegi feladatok végrehajtása alapján. A leskálázási művelet először leszereli a csomópontokat, majd eltávolítja őket a fürtből.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 ### <a name="create-a-spark-pool-with-autoscaling"></a>Spark-készlet létrehozása automatikus skálázással
 

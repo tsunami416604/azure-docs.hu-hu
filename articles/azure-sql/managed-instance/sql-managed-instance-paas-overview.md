@@ -2,8 +2,8 @@
 title: Mi az az Azure SQL felügyelt példánya?
 description: Ismerje meg, hogy az Azure SQL felügyelt példányai közel 100%-os kompatibilitást biztosítanak a legújabb SQL Server (Enterprise Edition) adatbázis-motorral
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 2f7422d01b2058cafed33c9d10118f78d35727df
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: db476d32d3b087e86329f8ed40446caf122c0a00
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337784"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944797"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -50,18 +50,18 @@ Az SQL felügyelt példánya a Azure SQL Database és az SQL Server adatbázismo
 
 Az SQL felügyelt példány legfontosabb funkciói az alábbi táblázatban láthatók:
 
-|Funkció | Leírás|
+|Szolgáltatás | Leírás|
 |---|---|
 | SQL Server verzió/Build | SQL Server adatbázismotor (legújabb stabil) |
-| Felügyelt automatizált biztonsági másolatok | Igen |
-| Beépített példány-és adatbázis-figyelés és-metrikák | Igen |
-| Szoftver automatikus javítása | Igen |
-| Az adatbázismotor legújabb funkciói | Igen |
+| Felügyelt automatizált biztonsági másolatok | Yes |
+| Beépített példány-és adatbázis-figyelés és-metrikák | Yes |
+| Szoftver automatikus javítása | Yes |
+| Az adatbázismotor legújabb funkciói | Yes |
 | Adatfájlok (sorok) száma az adatbázisban | Többszörös |
 | Naplófájlok (napló) száma adatbázisban | 1 |
-| VNet – Azure Resource Manager üzemelő példány | Igen |
-| VNet – klasszikus üzembe helyezési modell | Nem |
-| Portál támogatása | Igen|
+| VNet – Azure Resource Manager üzemelő példány | Yes |
+| VNet – klasszikus üzembe helyezési modell | No |
+| Portál támogatása | Yes|
 | Beépített integrációs szolgáltatás (SSIS) | Nem – a SSIS a [Azure Data Factory Péter](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) részét képezi |
 | Beépített Analysis Service (SSAS) | Nem – a SSAS külön [Péter](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Beépített jelentéskészítési szolgáltatás (SSRS) | Nem – használjon [Power bi](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) többoldalas jelentéseket, vagy az SSRS-t egy Azure-beli virtuális gépen üzemelteti. A felügyelt SQL-példányok nem futtathatják az SSRS szolgáltatást, hanem az SSRS 2019 Catalog-adatbázisokat a külső jelentéskészítő kiszolgálók számára SQL Server hitelesítés használatával. |
@@ -165,12 +165,12 @@ A következő táblázat összefoglalja a műveleteket és a jellemző általán
 
 ### <a name="instance-availability-during-management-operations"></a>Példány rendelkezésre állása a felügyeleti műveletek során
 
-Az SQL felügyelt példánya nem érhető el az ügyfélalkalmazások számára az üzembe helyezési és törlési műveletek során.
-
-Az SQL felügyelt példánya a frissítési műveletek során elérhető, kivéve a frissítés végén előforduló feladatátvétel által okozott rövid állásidőt. A [gyorsított adatbázis-helyreállításnak](../accelerated-database-recovery.md)köszönhetően általában akár 10 másodpercig is eltarthat.
+Az SQL felügyelt példánya a frissítési **műveletek során elérhető**, kivéve a frissítés végén előforduló feladatátvétel által okozott rövid állásidőt. A [gyorsított adatbázis-helyreállításnak](../accelerated-database-recovery.md)köszönhetően általában akár 10 másodpercig is eltarthat.
 
 > [!IMPORTANT]
 > A felügyelt Azure SQL-példányok számításának vagy tárolásának méretezése nem ajánlott, vagy a szolgáltatási réteg nem módosítható egyszerre a hosszan futó tranzakciók (adatimportálás, adatfeldolgozási feladatok, indexek újraépítése stb.) alapján. A művelet végén elvégezhető adatbázis-feladatátvétel megszakítja az összes folyamatban lévő tranzakciót.
+
+Az SQL felügyelt példánya nem érhető el az ügyfélalkalmazások számára az üzembe helyezési és törlési műveletek során.
 
 ### <a name="management-operations-cross-impact"></a>A kezelési műveletek hatásainak következményei
 
@@ -191,14 +191,14 @@ Az alábbi táblázat összefoglalja, hogyan lehet visszavonni bizonyos felügye
 
 Kategória  |Művelet  |Kampány  |Becsült megszakítási időtartam  |
 |---------|---------|---------|---------|
-|Üzembe helyezés |Példány létrehozása |Nem |  |
-|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú) |Nem |  |
-|Frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus) |Igen |a műveletek 90%-a 5 percen belül befejeződik. |
-|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú) |Igen |a műveletek 90%-a 5 percen belül befejeződik. |
-|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus) |Igen |a műveletek 90%-a 5 percen belül befejeződik. |
-|Frissítés |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva) |Igen |a műveletek 90%-a 5 percen belül befejeződik. |
-|Törlés |Példány törlése |Nem |  |
-|Törlés |Virtuális fürt törlése (felhasználó által kezdeményezett művelet) |Nem |  |
+|Üzembe helyezés |Példány létrehozása |No |  |
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú) |No |  |
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus) |Yes |a műveletek 90%-a 5 percen belül befejeződik. |
+|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú) |Yes |a műveletek 90%-a 5 percen belül befejeződik. |
+|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus) |Yes |a műveletek 90%-a 5 percen belül befejeződik. |
+|Frissítés |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva) |Yes |a műveletek 90%-a 5 percen belül befejeződik. |
+|Törlés |Példány törlése |No |  |
+|Törlés |Virtuális fürt törlése (felhasználó által kezdeményezett művelet) |No |  |
 
 A kezelési művelet megszakításához lépjen az Áttekintés panelre, és kattintson a folyamatban lévő művelet értesítési mezőjére. A jobb oldalon megjelenik egy képernyő, amelyen a folyamatban lévő művelet megjelenik, és a művelet megszakítására szolgáló gomb jelenik meg. Az első kattintás után a rendszer kérni fogja, hogy kattintson újra, és erősítse meg, hogy meg kívánja szüntetni a műveletet.
 
@@ -332,7 +332,7 @@ A következő táblázat több, a Transact-SQL szolgáltatáson keresztül elér
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban: `<instanceName>` . `<dnsPrefix>` . a database.windows.net, ahol az az `<instanceName>` ügyfél által megadott név, míg a `<dnsPrefix>` neve automatikusan létrejön a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98"), például:.|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](instance-create-quickstart.md).
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).

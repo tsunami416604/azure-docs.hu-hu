@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 9e35ba5a3f3705a52e80262da9bbfbfda489bf83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a4f98b3c569147699432aa4bdcdd44b0b16b3af
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050379"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297443"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library konfigurációs fájl
 
@@ -30,14 +30,14 @@ Ez a cikk segítséget nyújt a konfigurációs fájl különböző beállítás
 
 ### <a name="general-settings"></a>Általános beállítások
 
-| Tulajdonság | Adattípus | Kötelező | Megjegyzések |
+| Tulajdonság | Adattípus | Kötelező | Jegyzetek |
 |-----------|------------|-------------|-------|
-| `client_id` | Sztring | Igen | Az alkalmazás ügyfél-azonosítója az [alkalmazás regisztrációs oldaláról](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `redirect_uri`   | Sztring | Igen | Az [alkalmazás-regisztrációs oldalának](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) átirányítási URI-ja |
-| `authorities` | >\<listázása | Nem | Az alkalmazás által igényelt hatóságok listája |
-| `authorization_user_agent` | AuthorizationAgent (enumerálás) | Nem | Lehetséges értékek: `DEFAULT`, `BROWSER`,`WEBVIEW` |
-| `http` | HttpConfiguration | Nem | Konfigurálás `HttpUrlConnection` `connect_timeout` és`read_timeout` |
-| `logging` | LoggingConfiguration | Nem | Meghatározza a naplózás részletességi szintjét. A választható konfigurációk a `pii_enabled`következők:, amely egy logikai értéket vesz `log_level`igénybe, `ERROR`és `WARNING`amely `INFO`a ( `VERBOSE`z),, vagy. |
+| `client_id` | Sztring | Yes | Az alkalmazás ügyfél-azonosítója az [alkalmazás regisztrációs oldaláról](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
+| `redirect_uri`   | Sztring | Yes | Az [alkalmazás-regisztrációs oldalának](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) átirányítási URI-ja |
+| `authorities` | Lista\<Authority> | No | Az alkalmazás által igényelt hatóságok listája |
+| `authorization_user_agent` | AuthorizationAgent (enumerálás) | No | Lehetséges értékek: `DEFAULT` , `BROWSER` ,`WEBVIEW` |
+| `http` | HttpConfiguration | No | Konfigurálás `HttpUrlConnection` `connect_timeout` és`read_timeout` |
+| `logging` | LoggingConfiguration | No | Meghatározza a naplózás részletességi szintjét. A választható konfigurációk a következők: `pii_enabled` , amely egy logikai értéket vesz igénybe, és amely a (z),, `log_level` `ERROR` `WARNING` `INFO` vagy `VERBOSE` . |
 
 ### <a name="client_id"></a>client_id
 
@@ -49,7 +49,7 @@ Az alkalmazás regisztrálásakor regisztrált átirányítási URI. Ha az átir
 
 ### <a name="authorities"></a>hatóságok
 
-Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az itt felsorolt hatóságok mellett a MSAL is lekérdezi a Microsoftot, hogy lekérje a Microsoft számára ismert felhők és hatóságok listáját. A hatóságok ezen listájában adja meg a szolgáltató típusát és a további választható paramétereket, például az alkalmazást `"audience"`, amely az alkalmazás regisztrációja alapján igazodik az alkalmazás közönségéhez. A következő példa a hatóságok listáját tartalmazza:
+Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az itt felsorolt hatóságok mellett a MSAL is lekérdezi a Microsoftot, hogy lekérje a Microsoft számára ismert felhők és hatóságok listáját. A hatóságok ezen listájában adja meg a szolgáltató típusát és a további választható paramétereket, például az alkalmazást `"audience"` , amely az alkalmazás regisztrációja alapján igazodik az alkalmazás közönségéhez. A következő példa a hatóságok listáját tartalmazza:
 
 ```javascript
 // Example AzureAD and Personal Microsoft Account
@@ -86,7 +86,7 @@ Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az i
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>A HRE-szolgáltató & célközönségének leképezése a Microsoft Identity platform-végpontokra
 
-| Típus | Célközönség | Bérlőazonosító | Authority_Url | Eredményül kapott végpont | Megjegyzések |
+| Típus | Célközönség | Bérlőazonosító | Authority_Url | Eredményül kapott végpont | Jegyzetek |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common`egy bérlői alias a fiókhoz. Például egy adott Azure Active Directory bérlő vagy a Microsoft-fiók rendszer. |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | Csak a contoso.com lévő fiókok kaphatnak jogkivonatot. A bérlői AZONOSÍTÓként bármely ellenőrzött tartomány vagy bérlői GUID is használható. |
@@ -97,23 +97,23 @@ Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az i
 > [!NOTE]
 > A MSAL nem engedélyezhető és nem tiltható le a hitelesítésszolgáltató ellenőrzése.
 > A hatóságok vagy ismertek a konfiguráción vagy a Microsoft által a metaadatokon keresztül ismert fejlesztőként.
-> Ha a MSAL egy jogkivonatra vonatkozó kérelmet kap egy ismeretlen szolgáltatónak `MsalClientException` , az `UnknownAuthority` egy típusú eredményt eredményez.
+> Ha a MSAL egy jogkivonatra vonatkozó kérelmet kap egy ismeretlen szolgáltatónak, az egy `MsalClientException` típusú `UnknownAuthority` eredményt eredményez.
 
 #### <a name="authority-properties"></a>Szolgáltató tulajdonságai
 
-| Tulajdonság | Adattípus  | Kötelező | Megjegyzések |
+| Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 |-----------|-------------|-----------|--------|
-| `type` | Sztring | Igen | A célközönség vagy fiók típusának tükrözése az alkalmazás céljaira. Lehetséges értékek: `AAD`,`B2C` |
-| `audience` | Objektum | Nem | Csak akkor érvényes, ha`AAD`a Type = értéket adja meg. Megadja az alkalmazás céljainak identitását. Az alkalmazás regisztrációs értékének használata |
-| `authority_url` | Sztring | Igen | Csak akkor szükséges, ha`B2C`Type =. Megadja az alkalmazás által használandó szolgáltatói URL-címet vagy szabályzatot  |
-| `default` | logikai | Igen | Egy vagy `"default":true` több hatóság megadása esetén egyetlen szükséges. |
+| `type` | Sztring | Yes | A célközönség vagy fiók típusának tükrözése az alkalmazás céljaira. Lehetséges értékek: `AAD` ,`B2C` |
+| `audience` | Objektum | No | Csak akkor érvényes, ha a Type = értéket adja meg `AAD` . Megadja az alkalmazás céljainak identitását. Az alkalmazás regisztrációs értékének használata |
+| `authority_url` | Sztring | Yes | Csak akkor szükséges, ha Type = `B2C` . Megadja az alkalmazás által használandó szolgáltatói URL-címet vagy szabályzatot  |
+| `default` | logikai | Yes | Egy `"default":true` vagy több hatóság megadása esetén egyetlen szükséges. |
 
 #### <a name="audience-properties"></a>Célközönség tulajdonságai
 
-| Tulajdonság | Adattípus  | Kötelező | Megjegyzések |
+| Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 |-----------|-------------|------------|-------|
-| `type` | Sztring | Igen | Meghatározza azt a célközönséget, amelyet az alkalmazás szeretne megcélozni. Lehetséges értékek: `AzureADandPersonalMicrosoftAccount`, `PersonalMicrosoftAccount`, `AzureADMultipleOrgs`,`AzureADMyOrg` |
-| `tenant_id` | Sztring | Igen | Csak akkor szükséges `"type":"AzureADMyOrg"`, ha. Egyéb `type` értékekhez nem kötelező megadni. Ez lehet egy bérlői tartomány `contoso.com`, például, vagy egy bérlői azonosító, `72f988bf-86f1-41af-91ab-2d7cd011db46`például a () |
+| `type` | Sztring | Yes | Meghatározza azt a célközönséget, amelyet az alkalmazás szeretne megcélozni. Lehetséges értékek: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` ,`AzureADMyOrg` |
+| `tenant_id` | Sztring | Yes | Csak akkor szükséges, ha `"type":"AzureADMyOrg"` . Egyéb értékekhez nem kötelező megadni `type` . Ez lehet egy bérlői tartomány, például `contoso.com` , vagy egy bérlői azonosító, például a ( `72f988bf-86f1-41af-91ab-2d7cd011db46` ) |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -126,32 +126,32 @@ Lehetséges értékek:
 
 ### <a name="multiple_clouds_supported"></a>multiple_clouds_supported
 
-Több nemzeti felhőt támogató ügyfelek esetén a következőt kell megadnia `true`:. A Microsoft Identity platform ezután automatikusan átirányítja a megfelelő nemzeti felhőbe az engedélyezés és a token beváltásakor. A bejelentkezett fiók nemzeti felhőjét a-hez társított hatóság vizsgálatával határozhatja meg `AuthenticationResult`. Vegye figyelembe, `AuthenticationResult` hogy a nem adja meg azon erőforrás országos Felhőbeli végpontjának a számát, amelyhez jogkivonatot kér.
+Több nemzeti felhőt támogató ügyfelek esetén a következőt kell megadnia: `true` . A Microsoft Identity platform ezután automatikusan átirányítja a megfelelő nemzeti felhőbe az engedélyezés és a token beváltásakor. A bejelentkezett fiók nemzeti felhőjét a-hez társított hatóság vizsgálatával határozhatja meg `AuthenticationResult` . Vegye figyelembe, hogy a `AuthenticationResult` nem adja meg azon erőforrás országos Felhőbeli végpontjának a számát, amelyhez jogkivonatot kér.
 
 ### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
 
-Logikai érték, amely azt jelzi, hogy a Microsoft Identity Broker kompatibilis-e a Broker átirányítási URI-ja. Állítsa be `false` , ha nem szeretné használni a közvetítőt az alkalmazáson belül.
+Logikai érték, amely azt jelzi, hogy a Microsoft Identity Broker kompatibilis-e a Broker átirányítási URI-ja. Állítsa be, `false` Ha nem szeretné használni a közvetítőt az alkalmazáson belül.
 
-Ha a HRE `"MicrosoftPersonalAccount"`-szolgáltatót a célközönség beállítással használja, a közvetítő nem lesz használatban.
+Ha a HRE-szolgáltatót a célközönség beállítással használja `"MicrosoftPersonalAccount"` , a közvetítő nem lesz használatban.
 
 ### <a name="http"></a>http
 
 Konfigurálja a HTTP-időtúllépések globális beállításait, például:
 
-| Tulajdonság | Adattípus | Kötelező | Megjegyzések |
+| Tulajdonság | Adattípus | Kötelező | Jegyzetek |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | Nem | Idő ezredmásodpercben |
-| `read_timeout` | int | Nem | Idő ezredmásodpercben |
+| `connect_timeout` | int | No | Idő ezredmásodpercben |
+| `read_timeout` | int | No | Idő ezredmásodpercben |
 
 ### <a name="logging"></a>naplózás
 
 A következő globális beállítások állnak a naplózásra:
 
-| Tulajdonság | Adattípus  | Kötelező | Megjegyzések |
+| Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | logikai | Nem | Személyes adatkibocsátás |
-| `log_level`   | logikai | Nem | A kimenetre küldött naplófájlok |
-| `logcat_enabled` | logikai | Nem | Azt jelzi, hogy a log Cat kimenete a naplózási felületen kívül |
+| `pii_enabled`  | logikai | No | Személyes adatkibocsátás |
+| `log_level`   | sztring | No | A kimenő üzenetek naplózása. A támogatott naplózási szintek a következők:,, `ERROR` `WARNING` `INFO` és `VERBOSE` . |
+| `logcat_enabled` | logikai | No | Azt jelzi, hogy a log Cat kimenete a naplózási felületen kívül |
 
 ### <a name="account_mode"></a>account_mode
 
@@ -160,7 +160,7 @@ Meghatározza, hogy egyszerre hány fiókot lehet használni az alkalmazáson be
 - `MULTIPLE`Alapértelmezett
 - `SINGLE`
 
-`PublicClientApplication` Ha olyan fiókot használ, amely nem felel meg ennek a beállításnak, kivételt fog eredményezni.
+`PublicClientApplication`Ha olyan fiókot használ, amely nem felel meg ennek a beállításnak, kivételt fog eredményezni.
 
 További információ az egy-és több fiók közötti különbségekről: [egyetlen és több fiókból származó alkalmazás](single-multi-account.md).
 
@@ -340,8 +340,8 @@ Az alábbi példa egy alapszintű konfigurációt mutat be, amely meghatározza 
 
 ## <a name="how-to-use-a-configuration-file"></a>Konfigurációs fájl használata
 
-1. Hozzon létre egy konfigurációs fájlt. Javasoljuk, hogy hozza létre az egyéni konfigurációs fájlt a `res/raw/auth_config.json`alkalmazásban. De tetszőleges helyre helyezheti.
-2. Adja meg a MSAL, hogy hol kell megkeresnie a `PublicClientApplication`konfigurációt a létrehozásakor. Például:
+1. Hozzon létre egy konfigurációs fájlt. Javasoljuk, hogy hozza létre az egyéni konfigurációs fájlt a alkalmazásban `res/raw/auth_config.json` . De tetszőleges helyre helyezheti.
+2. Adja meg a MSAL, hogy hol kell megkeresnie a konfigurációt a létrehozásakor `PublicClientApplication` . Például:
 
    ```java
    //On Worker Thread

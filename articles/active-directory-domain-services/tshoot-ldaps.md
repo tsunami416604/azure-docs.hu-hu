@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d2cd98a9af75b5f3a6ca084dbfd4c144e06643d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77132168"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733789"
 ---
 # <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>A Azure Active Directory Domain Services felügyelt tartományhoz való biztonságos LDAP-kapcsolati problémák elhárítása
 
@@ -24,20 +24,20 @@ A Lightweight Directory Access Protocol (LDAP) protokollt használó alkalmazás
 
 Ez a cikk segítséget nyújt a biztonságos LDAP-hozzáférésekkel kapcsolatos hibák elhárításához az Azure AD DSban.
 
-## <a name="common-connection-issues"></a>Gyakori kapcsolatok problémái
+## <a name="common-connection-issues"></a>Gyakori csatlakozási hibák
 
-Ha nem sikerül az Azure AD DS felügyelt tartományhoz való kapcsolódás biztonságos LDAP használatával, tekintse át a következő hibaelhárítási lépéseket. Az egyes hibaelhárítási lépések után próbálkozzon újra az Azure AD DS felügyelt tartományhoz való kapcsolódással:
+Ha nem sikerül az Azure AD DS felügyelt tartományhoz való kapcsolódás biztonságos LDAP használatával, tekintse át a következő hibaelhárítási lépéseket. Az egyes hibaelhárítási lépések után próbálkozzon újra a felügyelt tartományhoz való kapcsolódással:
 
 * A biztonságos LDAP-tanúsítvány kiállítói láncának megbízhatónak kell lennie az ügyfélen. A megbízhatóság létrehozásához hozzáadhatja a legfelső szintű hitelesítésszolgáltatót (CA) a megbízható főtanúsítvány-tárolóhoz az ügyfélen.
     * Győződjön meg róla, hogy [exportálja és alkalmazza a tanúsítványt az ügyfélszámítógépekre][client-cert].
 * Ellenőrizze, hogy a felügyelt tartományhoz tartozó biztonságos LDAP-tanúsítvány rendelkezik-e a DNS-névvel a *tulajdonos* vagy a *tulajdonos alternatív nevek* attribútumában.
     * Tekintse át a [biztonságos LDAP-tanúsítványokra vonatkozó követelményeket][certs-prereqs] , és szükség esetén hozzon létre egy helyettesítő tanúsítványt.
-* Győződjön meg arról, hogy az LDAP-ügyfél, például az *Ldp. exe* csatlakozik a biztonságos LDAP-végponthoz egy DNS-név használatával, nem az IP-címmel.
-    * Az Azure AD DS felügyelt tartományra alkalmazott tanúsítvány nem tartalmazza a szolgáltatás IP-címeit, csak a DNS-neveket.
-* Keresse meg azt a DNS-nevet, amelyhez az LDAP-ügyfél csatlakozik. Az Azure AD DS felügyelt tartomány biztonságos LDAP-szolgáltatásának nyilvános IP-címére kell feloldania.
+* Győződjön meg arról, hogy az LDAP-ügyfél, például a *ldp.exe* a DNS-név használatával csatlakozik a biztonságos LDAP-végponthoz, nem pedig az IP-címhez.
+    * A felügyelt tartományra alkalmazott tanúsítvány nem tartalmazza a szolgáltatás IP-címeit, csak a DNS-neveket.
+* Keresse meg azt a DNS-nevet, amelyhez az LDAP-ügyfél csatlakozik. A felügyelt tartományon a biztonságos LDAP-t a nyilvános IP-címen kell feloldani.
     * Ha a DNS-név a belső IP-címhez lett feloldva, frissítse a DNS-rekordot a külső IP-cím feloldásához.
 * A külső kapcsolatok esetében a hálózati biztonsági csoportnak tartalmaznia kell egy olyan szabályt, amely engedélyezi az internetről a 636-as TCP-portra irányuló forgalmat.
-    * Ha az Azure AD DS felügyelt tartományhoz közvetlenül a virtuális hálózathoz csatlakoztatott erőforrások biztonságos LDAP szolgáltatásával tud csatlakozni, de külső kapcsolatok nélkül, akkor győződjön meg arról, hogy [létrehoz egy hálózati biztonsági csoportra vonatkozó szabályt a biztonságos LDAP-forgalom engedélyezéséhez][ldaps-nsg].
+    * Ha a biztonságos LDAP használatával tud csatlakozni a felügyelt tartományhoz közvetlenül a virtuális hálózathoz csatlakoztatott erőforrásokról, de külső kapcsolatok nélkül, akkor győződjön meg arról, hogy [létrehoz egy hálózati biztonsági csoport szabályt a biztonságos LDAP-forgalom engedélyezéséhez][ldaps-nsg].
 
 ## <a name="next-steps"></a>További lépések
 

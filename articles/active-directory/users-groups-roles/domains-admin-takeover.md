@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36c7bb426a329a54f333b76e028b884204543014
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582977"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732650"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként Azure Active Directory
 
@@ -28,9 +28,9 @@ Ez a cikk két módszert ismertet a DNS-tartománynév átvételére egy nem fel
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Döntse el, hogyan szeretné átvenni a nem felügyelt címtárat
 A rendszergazdai átvétel során az [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](../fundamentals/add-custom-domain.md) című cikkben leírt módon bizonyíthatja tulajdonjogát. A következő szakaszok részletesen ismertetik a rendszergazdai feladatokat, amelyek összegzése itt olvasható:
 
-* Ha [„belső” rendszergazdai átvételt](#internal-admin-takeover) végez egy nem felügyelt Azure-címtáron, a rendszer hozzáadja Önt a nem felügyelt címtár globális rendszergazdájaként. Semmilyen felhasználó, tartomány vagy szolgáltatáscsomag nem lesz migrálva az Ön által felügyelt más címtárakba.
+* Ha ["belső" rendszergazdai átvételt](#internal-admin-takeover) végez egy nem felügyelt Azure-címtárból, a rendszer hozzáadja a nem felügyelt könyvtár globális rendszergazdájaként. Felhasználók, tartományok és szolgáltatáscsomagok nem kerülnek át Ön által felügyelt további címtárakba.
 
-* Ha [„külső” rendszergazdai átvételt](#external-admin-takeover) végez egy nem felügyelt Azure-címtáron, hozzáadja a nem felügyelt címtár DNS-tartománynevét az Ön által felügyelt Azure-címtárhoz. A tartománynév hozzáadásakor az Ön által felügyelt Azure-címtárban létrejön a felhasználók és erőforrások közötti kapcsolatok leképezése, így a felhasználók továbbra is megszakítás nélkül érhetik el a szolgáltatásokat. 
+* Ha ["külső" rendszergazdai átvételt](#external-admin-takeover) végez egy nem felügyelt Azure-címtárból, adja hozzá a nem felügyelt CÍMTÁR DNS-tartománynevét a felügyelt Azure-címtárhoz. A tartománynév hozzáadásakor az Ön által felügyelt Azure-címtárban létrejön a felhasználók és erőforrások közötti kapcsolatok leképezése, így a felhasználók továbbra is megszakítás nélkül érhetik el a szolgáltatásokat. 
 
 ## <a name="internal-admin-takeover"></a>Belső rendszergazdai átvétel
 
@@ -38,7 +38,7 @@ A SharePoint-és OneDrive, például az Office 365-et tartalmazó termékek nem 
 
 1. Hozzon létre egy felhasználói környezetet a nem felügyelt szervezetben a Power BI regisztrálásával. Például a következő lépések elvégzésével feltételezhető, hogy az elérési út.
 
-2. Nyissa meg az [Power bi webhelyet](https://powerbi.com) , és válassza az **ingyenes indítás**lehetőséget. Adjon meg egy olyan felhasználói fiókot, amely a szervezet tartománynevét használja; például: `admin@fourthcoffee.xyz`. Az ellenőrző kód megadása után tekintse meg az e-mailt a megerősítő kódhoz.
+2. Nyissa meg az [Power bi webhelyet](https://powerbi.com) , és válassza az **ingyenes indítás**lehetőséget. Adjon meg egy olyan felhasználói fiókot, amely a szervezet tartománynevét használja; például: `admin@fourthcoffee.xyz` . Az ellenőrző kód megadása után tekintse meg az e-mailt a megerősítő kódhoz.
 
 3. A Power BI megerősítő e-mailben válassza az **Igen, ez nekem**lehetőséget.
 
@@ -57,13 +57,13 @@ Az előző lépések elvégzése után Ön már az Office 365 negyedik kávézó
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Tartománynév hozzáadása felügyelt szervezethez az Azure AD-ben
 
 1. Nyissa meg a [Microsoft 365 felügyeleti központot](https://admin.microsoft.com).
-2. Válassza a **felhasználók** fület, és hozzon létre egy olyan nevű új felhasználói fiókot, amely nem használja az egyéni tartománynevet (például *felhasználói\@fourthcoffeexyz.onmicrosoft.com* ). 
+2. Válassza a **felhasználók** fület, és hozzon létre egy olyan nevű új felhasználói fiókot, amely nem használja az egyéni tartománynevet (például *felhasználói \@ fourthcoffeexyz.onmicrosoft.com* ). 
 3. Győződjön meg arról, hogy az új felhasználói fiók globális rendszergazdai jogosultságokkal rendelkezik az Azure AD-szervezethez.
 4. Nyissa meg a **tartományok** fület a Microsoft 365 felügyeleti központban, válassza ki a tartománynevet, és válassza az **Eltávolítás**lehetőséget. 
   
    ![a tartománynév eltávolítása az Office 365-ből](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Ha az Office 365-ben olyan felhasználók vagy csoportok találhatók, amelyek az eltávolított tartománynévre hivatkoznak, akkor azokat a. onmicrosoft.com tartományba kell átnevezni. Ha kényszeríti a tartománynév törlését, az összes felhasználó automatikusan átnevezve lesz, ebben a példában a *felhasználói\@fourthcoffeexyz.onmicrosoft.com*.
+5. Ha az Office 365-ben olyan felhasználók vagy csoportok találhatók, amelyek az eltávolított tartománynévre hivatkoznak, akkor azokat a. onmicrosoft.com tartományba kell átnevezni. Ha kényszeríti a tartománynév törlését, az összes felhasználó automatikusan átnevezve lesz, ebben a példában a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com*.
   
 6. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely az Azure ad-szervezet globális rendszergazdája.
   
@@ -72,7 +72,7 @@ Az előző lépések elvégzése után Ön már az Office 365 negyedik kávézó
    ![Az Azure AD-hez hozzáadott tartomány ellenőrizve](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> A Power BI vagy az Azure Rights Management szolgáltatás azon felhasználóinak, akik az Office 365-szervezetben vannak hozzárendelve licencek, menteniük kell az irányítópultokat, ha a tartománynév el lett távolítva. A felhasználóknak olyan felhasználónévvel kell bejelentkezniük, mint a *\@felhasználói fourthcoffeexyz.onmicrosoft.com* , nem pedig a *User\@fourthcoffee. xyz*néven.
+> A Power BI vagy az Azure Rights Management szolgáltatás azon felhasználóinak, akik az Office 365-szervezetben vannak hozzárendelve licencek, menteniük kell az irányítópultokat, ha a tartománynév el lett távolítva. A felhasználóknak olyan felhasználónévvel kell bejelentkezniük, mint a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com* , nem pedig a *User \@ fourthcoffee. xyz*néven.
 
 ## <a name="external-admin-takeover"></a>Külső rendszergazdai átvétel
 
