@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79126572"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704743"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az Azure Kubernetes szolgáltatás alapszintű ütemező funkcióinak használatához (ak)
 
@@ -20,7 +20,7 @@ Ez az ajánlott eljárási cikk a fürtcsomópontok alapszintű Kubernetes-ütem
 > [!div class="checklist"]
 > * Erőforrás-kvóták használata a csapatok vagy munkaterhelések számára meghatározott mennyiségű erőforrás biztosításához
 > * Az ütemezett karbantartás hatásának korlátozása a pod-megszakadási költségvetések használatával
-> * Hiányzó Pod-erőforrásokra vonatkozó kérelmek és korlátozások keresése `kube-advisor` az eszköz használatával
+> * Hiányzó Pod-erőforrásokra vonatkozó kérelmek és korlátozások keresése az `kube-advisor` eszköz használatával
 
 ## <a name="enforce-resource-quotas"></a>Erőforrás-kvóták betartatása
 
@@ -77,7 +77,7 @@ A kényszer nélküli fennakadások enyhítése a hüvelyek több replikájának
 
 Ha egy fürtöt frissíteni kell, vagy a központi telepítési sablon frissült, a Kubernetes ütemező gondoskodik arról, hogy a további hüvelyek más csomópontokon is ütemezhetők legyenek, mielőtt az önkéntes megszakítási események folytatódnak. Az ütemező várakozik a csomópont újraindítása előtt, amíg a megadott számú hüvely sikeresen ütemezve lett a fürt más csomópontjain.
 
-Lássunk egy példát egy olyan másodpéldányra, amelyben öt, NGINX-t futtató hüvely található. A rendszer a replika hüvelyét rendeli hozzá a `app: nginx-frontend`címkéhez. Egy önkéntes megszakítási esemény, például egy fürt frissítése során győződjön meg arról, hogy legalább három hüvely továbbra is fut. A *PodDisruptionBudget* objektum következő YAML-jegyzékfájlja határozza meg ezeket a követelményeket:
+Lássunk egy példát egy olyan másodpéldányra, amelyben öt, NGINX-t futtató hüvely található. A rendszer a replika hüvelyét rendeli hozzá a címkéhez `app: nginx-frontend` . Egy önkéntes megszakítási esemény, például egy fürt frissítése során győződjön meg arról, hogy legalább három hüvely továbbra is fut. A *PodDisruptionBudget* objektum következő YAML-jegyzékfájlja határozza meg ezeket a követelményeket:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -119,7 +119,7 @@ További információ a pod-megszakadási költségvetések használatáról: [m
 
 ## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>A fürtökkel kapcsolatos problémák rendszeres keresése a Kube-Advisor szolgáltatással
 
-**Ajánlott eljárások – útmutató** – rendszeresen futtassa a `kube-advisor` nyílt forráskódú eszköz legújabb verzióját a fürtben felmerülő problémák észlelése érdekében. Ha egy meglévő AK-fürthöz erőforrás-kvótát alkalmaz `kube-advisor` , először futtassa a parancsot az erőforrás-kérelmeket és korlátozásokat nem tartalmazó hüvelyek kereséséhez.
+**Ajánlott eljárások – útmutató** – rendszeresen futtassa a `kube-advisor` nyílt forráskódú eszköz legújabb verzióját a fürtben felmerülő problémák észlelése érdekében. Ha egy meglévő AK-fürthöz erőforrás-kvótát alkalmaz, `kube-advisor` először futtassa a parancsot az erőforrás-kérelmeket és korlátozásokat nem tartalmazó hüvelyek kereséséhez.
 
 A [Kube-Advisor][kube-advisor] eszköz egy kapcsolódó, AK-beli nyílt forráskódú projekt, amely egy Kubernetes-fürtöt és a megtalált problémákkal kapcsolatos jelentéseket keres. Az egyik hasznos lehetőség az, hogy azonosítsa azokat a hüvelyeket, amelyek nem rendelkeznek erőforrás-kérelmekkel és korlátokkal.
 

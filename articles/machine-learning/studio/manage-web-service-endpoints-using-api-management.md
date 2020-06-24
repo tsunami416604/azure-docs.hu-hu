@@ -5,17 +5,17 @@ description: Egy útmutató, amely bemutatja, hogyan kezelhetők a AzureML websz
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: a5814113906aadad01821f78863f5053b8082892
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d9b83c065865bf8e3e5906aa3ad7107f1ca8da75
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84114826"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705542"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások kezelése API Management használatával
 
@@ -39,12 +39,12 @@ A Azure Machine Learning webszolgáltatását API Management példánnyal kezelh
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 3. A keresőmezőbe írja be az "API Management" kifejezést, majd válassza az "API Management" erőforrást.
-4. Kattintson a **Létrehozás**gombra.
+4. Kattintson a **Létrehozás** lehetőségre.
 5. A **Name** érték egy egyedi URL-cím létrehozására szolgál (ez a példa a "demoazureml" kifejezést használja).
 6. Válasszon egy **előfizetést**, **erőforráscsoportot**és **helyet** a szolgáltatási példány számára.
 7. Adja meg a **szervezet nevét** (ez a példa a "demoazureml" értéket használja).
 8. Adja meg a **rendszergazda e-mail** -címét – ezt az e-mailt fogja használni a API Management rendszer értesítéseihez.
-9. Kattintson a **Létrehozás**gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 
 Egy új szolgáltatás létrehozása akár 30 percet is igénybe vehet.
 

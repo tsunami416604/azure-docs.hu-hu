@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257380"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704437"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -38,12 +38,12 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
 
 1. Alkalmazás létrehozásához a felhasználónak alkalmazás-fejlesztői szerepkörrel kell rendelkeznie.
     - Az ellenőrzéshez jelentkezzen be a Azure Portalba.</br>
-    - Lépjen **Azure Active Directory** > **szerepkörök és rendszergazdák**lehetőségre.</br>
+    - Lépjen **Azure Active Directory**  >  **szerepkörök és rendszergazdák**lehetőségre.</br>
     - Ellenőrizze, hogy az alkalmazás fejlesztői szerepköre hozzá van-e rendelve a felhasználóhoz. Ha nem, használja ezt az engedélyt használó felhasználót, vagy forduljon [a rendszergazdához, és engedélyezze az engedélyt](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
     
 2. Ha az alkalmazás fejlesztői szerepköre nem rendelhető hozzá, győződjön meg arról, hogy a **felhasználók regisztrálhatják az alkalmazások** jelölőjét **true (igaz** ) értékre állítva, ha a felhasználó identitást hoz létre. Az engedélyek engedélyezése:
     - Jelentkezzen be az Azure portálra.
-    - Lépjen **Azure Active Directory** > **felhasználói beállítások menüpontra**.
+    - Lépjen **Azure Active Directory**  >  **felhasználói beállítások menüpontra**.
     - A **Alkalmazásregisztrációk**alatt a **felhasználók regisztrálhatják az alkalmazásokat**. Válassza az **Igen**lehetőséget.
 
       ![Azure-AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
@@ -53,7 +53,7 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
 
 ## <a name="download-the-template"></a>A sablon letöltése
 
-1. A tárolóban váltson az **infrastruktúra** > előkészítése**forrásra**.
+1. A tárolóban váltson az **infrastruktúra előkészítése**  >  **forrásra**.
 2. A **Forrás előkészítése** ablakban válassza a **+Konfigurációs kiszolgáló** elemet.
 3. A **Kiszolgáló hozzáadása** panelen ellenőrizze, hogy a **Kiszolgálótípus** mezőben a **Konfigurációs kiszolgáló VMware-hez** érték jelenik meg.
 4. Töltse le a konfigurációs kiszolgáló PETESEJTJEI-sablonját.
@@ -78,7 +78,7 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
 7. A varázsló többi lapján fogadja el az alapértelmezett beállításokat.
 8. A **Ready to complete** (Befejezésre kész) területen:
 
-    * Ha az alapértelmezett beállításokkal szeretné beállítani a virtuális gépet, válassza a **bekapcsolás lehetőséget az üzembe helyezés** > **befejezése**után.
+    * Ha az alapértelmezett beállításokkal szeretné beállítani a virtuális gépet, válassza a **bekapcsolás lehetőséget az üzembe helyezés**  >  **befejezése**után.
     * További hálózati adapter hozzáadásához törölje **a bekapcsolást a telepítés után**, majd kattintson a **Befejezés gombra**. Alapértelmezés szerint a konfigurációs kiszolgáló sablonját a rendszer egyetlen hálózati adapterre telepíti. Az üzembe helyezés után további hálózati adaptereket is hozzáadhat.
 
 > [!IMPORTANT]
@@ -94,7 +94,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 1. A vSphere Client-leltárban kattintson a jobb gombbal a virtuális gépre, és válassza az **Edit Settings** (Beállítások szerkesztése) elemet.
 2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután válassza a **tovább**lehetőséget.
 3. Válassza ki a hálózati adapter típusát és a hálózatot.
-4. Ha a virtuális hálózati adaptert a virtuális gép bekapcsolása után szeretné összekapcsolni, válassza a **Csatlakozás a Power-on**lehetőséget. Ezután válassza a **következő** > **Befejezés** > **OK**elemet.
+4. Ha a virtuális hálózati adaptert a virtuális gép bekapcsolása után szeretné összekapcsolni, válassza a **Csatlakozás a Power-on**lehetőséget. Ezután válassza a **következő**  >  **Befejezés**  >  **OK**elemet.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>A konfigurációs kiszolgáló regisztrálása Azure Site Recovery szolgáltatásokkal
 
@@ -129,10 +129,10 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 5. A **berendezés konfigurációjának ellenőrzésekor**a folytatás előtt ellenőrizze az előfeltételek ellenőrzését.
 6. A **vCenter Server/vSphere ESXi-kiszolgáló konfigurálása**területen adja meg annak a vCenter-kiszolgálónak vagy vSphere-állomásnak a teljes tartománynevét vagy IP-címét, ahol a replikálni kívánt virtuális gépek találhatók. Adja meg a portot, amelyen a kiszolgáló figyel. Adja meg a VMware-kiszolgáló rövid nevét, amelyet a tárolóban használni fog.
-7. Adja meg a konfigurációs kiszolgáló által a VMware-kiszolgálóhoz való csatlakozáshoz használt hitelesítő adatokat. A Site Recovery ezeknek a hitelesítő adatoknak a használatával automatikusan deríti fel a replikáláshoz elérhető VMware virtuális gépeket. Válassza a **Hozzáadás** > **Folytatás**lehetőséget. Az itt megadott hitelesítő adatok helyileg mentve.
+7. Adja meg a konfigurációs kiszolgáló által a VMware-kiszolgálóhoz való csatlakozáshoz használt hitelesítő adatokat. A Site Recovery ezeknek a hitelesítő adatoknak a használatával automatikusan deríti fel a replikáláshoz elérhető VMware virtuális gépeket. Válassza a **Hozzáadás**  >  **Folytatás**lehetőséget. Az itt megadott hitelesítő adatok helyileg mentve.
 8. A **virtuális gép hitelesítő adatainak konfigurálása**területen adja meg a virtuális gépek felhasználónevét és jelszavát, hogy a replikáció során automatikusan telepítse a mobilitási szolgáltatást. **Windows rendszerű** gépek esetén a fióknak helyi rendszergazdai jogosultságokkal kell rendelkeznie a replikálni kívánt gépeken. **Linux**esetén adja meg a legfelső szintű fiók részleteit.
 9. Válassza a **Konfiguráció véglegesítése** elemet a regisztráció befejezéséhez.
-10. A regisztráció befejeződése után nyissa meg a Azure Portal, és ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel-e a **Recovery Services** > -tárolóban**site Recovery infrastruktúra** > -**konfigurációs kiszolgálók****kezelése** > .
+10. A regisztráció befejeződése után nyissa meg a Azure Portal, és ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel-e a **Recovery Services**-tárolóban  >  **Manage**  >  **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók**kezelése.
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
@@ -175,7 +175,7 @@ Az üzembe helyezési & kapcsolódási problémák megoldásához tekintse meg a
     Nem. Ne módosítsa a konfigurációs kiszolgáló jelszavát. A jelszó módosítása megszakítja a védett gépek replikálását, és kritikus állapotba vezet.
 * Honnan tölthetők le a tároló regisztrációs kulcsai?
 
-    **Recovery Services**-tárolóban válassza a**site Recovery infrastruktúra** > -**konfigurációs kiszolgálók** **kezelése** > lehetőséget. A **kiszolgálók**területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
+    **Recovery Services**-tárolóban válassza **Manage**a  >  **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók**kezelése lehetőséget. A **kiszolgálók**területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
 * Megtehetem a meglévő konfigurációs kiszolgáló klónozását és a replikálási folyamathoz való használatát?
 
     Nem. A klónozott konfigurációs kiszolgáló összetevő használata nem támogatott. Egy kibővíthető folyamat kiszolgálójának klónozása nem támogatott forgatókönyv is. A klónozás Site Recovery összetevők hatással vannak a folyamatos replikációra.

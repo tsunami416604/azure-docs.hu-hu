@@ -5,20 +5,20 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681518"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805011"
 ---
 # <a name="get-information-about-a-converted-model"></a>A konvertált modell adatainak lekérése
 
-Az átalakítási szolgáltatás által létrehozott arrAsset-fájl kizárólag a renderelési szolgáltatás általi felhasználásra szolgál. Előfordulhat azonban, hogy a modellre vonatkozó információkat a renderelési munkamenet elindítása nélkül szeretné elérni. Ezért az átalakítási szolgáltatás egy JSON-fájlt helyez el a kimeneti tároló arrAsset fájlja mellett. Ha például egy fájl `buggy.gltf` konvertálása történik, a kimeneti tároló tartalmazni fog egy nevű `buggy.info.json` fájlt a konvertált eszköz `buggy.arrAsset`mellett. A forrás modellről, a konvertált modellről, valamint magáról a konverzióról tartalmaz információkat.
+Az átalakítási szolgáltatás által létrehozott arrAsset-fájl kizárólag a renderelési szolgáltatás általi felhasználásra szolgál. Előfordulhat azonban, hogy a modellre vonatkozó információkat a renderelési munkamenet elindítása nélkül szeretné elérni. Ezért az átalakítási szolgáltatás egy JSON-fájlt helyez el a kimeneti tároló arrAsset fájlja mellett. Ha például egy fájl `buggy.gltf` konvertálása történik, a kimeneti tároló tartalmazni fog egy nevű fájlt `buggy.info.json` a konvertált eszköz mellett `buggy.arrAsset` . A forrás modellről, a konvertált modellről, valamint magáról a konverzióról tartalmaz információkat.
 
 ## <a name="example-info-file"></a>Példa *információs* fájlra
 
-Íme egy példa a fájl konvertálásával létrehozott *információs* fájlra `buggy.gltf`:
+Íme egy példa a fájl konvertálásával létrehozott *információs* fájlra `buggy.gltf` :
 
 ```JSON
 {
@@ -100,7 +100,7 @@ Ez a szakasz a forrásfájl formátumával kapcsolatos adatokat rögzíti.
 Ez a szakasz a forrás jelenetről tartalmaz információkat. Az ebben a szakaszban szereplő értékek és a forrás modellt létrehozó eszköz egyenértékű értékei között gyakran előfordulnak eltérések. Ilyen eltérések várhatók, mert a modell az exportálási és átalakítási lépések során módosul.
 
 * `numMeshes`: A rácsvonalak száma, amelyben az egyes részek hivatkozhatnak egyetlen anyagra.
-* `numFaces`: A _háromszögek_ teljes száma a teljes modellben. Vegye figyelembe, hogy a háló a konverzió során háromszögárfolyam-számítást végez.
+* `numFaces`: A _háromszögek_ teljes száma a teljes modellben. Vegye figyelembe, hogy a háló a konverzió során háromszögárfolyam-számítást végez. Ez a szám a [szabványos renderelési virtuálisgép-mérethez](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)járul hozzá a sokszög korlátozásához.
 * `numVertices`: A teljes modellben lévő csúcspontok teljes száma.
 * `numMaterial`: Az anyagok teljes száma a teljes modellben.
 * `numFacesSmallestMesh`: A modell legkisebb rácsvonalában található háromszögek száma.
@@ -120,9 +120,9 @@ Ez a szakasz a generált kimenet általános információit rögzíti.
 
 Ez a szakasz a konvertált eszközről kiszámított adatokat rögzíti.
 
-* `numMeshPartsCreated`: A arrAsset lévő rácsvonalak száma. Ez a `inputStatistics` szakasztól `numMeshes` eltérő lehet, mert a egypéldányos az átalakítási folyamat érinti.
+* `numMeshPartsCreated`: A arrAsset lévő rácsvonalak száma. Ez a `numMeshes` szakasztól eltérő lehet `inputStatistics` , mert a egypéldányos az átalakítási folyamat érinti.
 * `numMeshPartsInstanced`: A arrAsset újrafelhasznált rácsvonalak száma.
-* `recenteringOffset`: Ha `recenterToOrigin` a [ConversionSettings](configure-model-conversion.md) engedélyezve van, ez az érték a fordítás, amely áthelyezi a konvertált modellt az eredeti helyére.
+* `recenteringOffset`: Ha a `recenterToOrigin` [ConversionSettings](configure-model-conversion.md) engedélyezve van, ez az érték a fordítás, amely áthelyezi a konvertált modellt az eredeti helyére.
 * `boundingBox`: A modell határai.
 
 ## <a name="next-steps"></a>További lépések

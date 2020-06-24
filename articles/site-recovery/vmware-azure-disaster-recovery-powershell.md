@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257198"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704386"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>A VMware virtuális gépek vész-helyreállításának beállítása az Azure-ba a PowerShell használatával
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Állítsa be a tár környezetét a set-ASRVaultContext parancsmag használatával. A beállítás után a rendszer a PowerShell-munkamenet következő Azure Site Recovery műveleteit a kijelölt tároló környezetében hajtja végre.
 
 > [!TIP]
-> A Azure Site Recovery PowerShell-modul (az. Recoveryservices szolgáltatónál modul) a legtöbb parancsmaghoz egyszerűen használható aliasokat tartalmaz. A modulban lévő parancsmagok a Form * \<Operation>-**AzRecoveryServicesAsr**\<objektumot>* , és egyenértékű aliasokkal rendelkeznek, amelyek az űrlap * \<-művelet>-**ASR**\<objektum>*. A egyszerű használat érdekében lecserélheti a parancsmagok aliasait.
+> A Azure Site Recovery PowerShell-modul (az. Recoveryservices szolgáltatónál modul) a legtöbb parancsmaghoz egyszerűen használható aliasokat tartalmaz. A modulban lévő parancsmagok az űrlapot * \<Operation> - **AzRecoveryServicesAsr** \<Object> * , és egyenértékű aliasokkal rendelkeznek, amelyek az * \<Operation> - **ASR** \<Object> *-űrlapot fogadják. A egyszerű használat érdekében lecserélheti a parancsmagok aliasait.
 
 Az alábbi példában a $vault változóból származó tár adatait a rendszer a PowerShell-munkamenethez tartozó tár környezetének megadására használja.
 

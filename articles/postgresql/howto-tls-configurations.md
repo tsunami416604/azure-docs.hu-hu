@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.openlocfilehash: ed5d46bbb5a520ee28013210ba44045ad59c2cc2
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418728"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705692"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-postgresql-single---server-using-azure-portal"></a>A TLS-beállítások konfigurálása Azure Database for PostgreSQL egykiszolgálós Azure Portal használatával
 
@@ -43,6 +43,6 @@ A PostgreSQL minimális TLS-verziójának beállításához kövesse az alábbi 
 
     ![Azure Database for PostgreSQL – egy kiszolgáló TLS-konfigurációja sikeres](./media/howto-tls-configurations/setting-tls-value-success.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md)

@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74186212"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705202"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>A jegyzékfájlok szűrése dinamikus csomagoló használatával
 
@@ -36,13 +36,13 @@ A stream különböző szűrőinek megadásának lehetősége hatékony **dinami
 
 ## <a name="overview-of-manifests"></a>A jegyzékfájlok áttekintése
 
-Azure Media Services támogatja a HLS, az MPEG DASH és a Smooth Streaming protokollokat. A [dinamikus csomagolás](dynamic-packaging-overview.md)részeként a folyamatos átviteli ügyfél-jegyzékfájlok (HLS Master Playlist, Dash Media Presentation description [mpd] és Smooth streaming) dinamikusan jönnek létre az URL-cím kiválasztó alapján. További információ: a kézbesítési protokollok az [általános igény szerinti munkafolyamatban](dynamic-packaging-overview.md#delivery-protocols).
+Azure Media Services támogatja a HLS, az MPEG DASH és a Smooth Streaming protokollokat. A [dinamikus csomagolás](dynamic-packaging-overview.md)részeként a folyamatos átviteli ügyfél-jegyzékfájlok (HLS Master Playlist, Dash Media Presentation description [mpd] és Smooth streaming) dinamikusan jönnek létre az URL-cím kiválasztó alapján. További információ: a kézbesítési protokollok az [általános igény szerinti munkafolyamatban](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery).
 
 ### <a name="get-and-examine-manifest-files"></a>Manifest-fájlok beolvasása és vizsgálata
 
 A szűrő nyomon követése tulajdonság feltételeinek listáját kell megadnia, amely alapján a stream (élő vagy video on-demand [VOD]) nyomon követését egy dinamikusan létrehozott jegyzékfájlba kell foglalni. A zeneszámok tulajdonságainak megszerzéséhez és vizsgálatához először be kell töltenie a Smooth Streaming jegyzékfájlt.
 
-A [fájlok feltöltése, kódolása és továbbítása a .net](stream-files-tutorial-with-api.md#get-streaming-urls) -oktatóanyagmal bemutatja, hogyan hozhatja létre a streaming URL-címeket a .net-tel. Ha futtatja az alkalmazást, az egyik URL-cím a Smooth Streaming jegyzékfájlra mutat `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`:.<br/> Másolja és illessze be az URL-címet egy böngésző címsorába. A rendszer letölti a fájlt. Bármely szövegszerkesztőben megnyithatja.
+A [fájlok feltöltése, kódolása és továbbítása a .net](stream-files-tutorial-with-api.md#get-streaming-urls) -oktatóanyagmal bemutatja, hogyan hozhatja létre a streaming URL-címeket a .net-tel. Ha futtatja az alkalmazást, az egyik URL-cím a Smooth Streaming jegyzékfájlra mutat: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest` .<br/> Másolja és illessze be az URL-címet egy böngésző címsorába. A rendszer letölti a fájlt. Bármely szövegszerkesztőben megnyithatja.
 
 A REST-példákat lásd: [fájlok feltöltése, kódolása és továbbítása a REST](stream-files-tutorial-with-rest.md#list-paths-and-build-streaming-urls)-tel.
 
@@ -56,7 +56,7 @@ A videó streamek bitrátájának figyeléséhez használhatja a [Azure Media Pl
 
 Szűrőket alkalmazhat az ABR streaming protokollokra: HLS, MPEG-DASH és Smooth Streaming. Az alábbi táblázat néhány példát mutat be a szűrőket tartalmazó URL-címekre:
 
-|Protocol (Protokoll)|Példa|
+|Protokoll|Példa|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -137,7 +137,7 @@ A szűrők összekapcsolásához állítsa a szűrő nevét a jegyzékfájl/list
 
 További információt [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)talál.
 
-## <a name="considerations-and-limitations"></a>Szempontok és korlátozások
+## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
 - A **forceEndTimestamp**, a **PresentationWindowDuration**és a **liveBackoffDuration** értékeit nem szabad a VOD-szűrőhöz beállítani. Csak élő szűrési helyzetekben használatosak.
 - A dinamikus jegyzékfájl a GOP-határokon (kulcstárolókban) működik, ezért a nyírási pontossággal rendelkezik.
@@ -146,7 +146,7 @@ További információt [ebben a blogbejegyzésben](https://azure.microsoft.com/b
 - Az ügyfeleknek manuálisan kell letölteniük a jegyzékfájlt, és elemezni kell a pontos kezdési időbélyeget és az időskálát.
 
     - Egy adott eszközön lévő zeneszámok tulajdonságainak meghatározásához [szerezze be és vizsgálja meg a jegyzékfájlt](#get-and-examine-manifest-files).
-    - Az objektum-szűrő időbélyegének tulajdonságainak beállítására szolgáló képlet a következő: <br/>startTimestamp = &lt;&gt; +  &lt;kezdési idő a jegyzékfájlban várt szűrési kezdési&gt; idő másodpercben * időskála
+    - Az objektum-szűrő időbélyegének tulajdonságainak beállítására szolgáló képlet a következő: <br/>startTimestamp = &lt; Kezdési idő a jegyzékfájlban &gt;  +   &lt; várt szűrési kezdési idő másodpercben &gt; * időskála
 
 ## <a name="next-steps"></a>További lépések
 
