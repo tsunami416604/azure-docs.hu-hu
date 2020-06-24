@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
 ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272304"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709249"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -87,11 +87,11 @@ A Ambari felhasználói felületének használatával letöltheti a fürt egy ad
 
 ### <a name="view-the-script-action-logs"></a>A parancsfájl műveleti naplóinak megtekintése
 
-A HDInsight [parancsfájlokat](hdinsight-hadoop-customize-cluster-linux.md) futtatnak a fürtön, manuálisan, vagy ha meg van adva. A parancsfájl-műveletek segítségével például további szoftvereket telepíthet a fürtre, vagy megváltoztathatja a konfigurációs beállításokat az alapértelmezett értékek alapján. A parancsfájl-műveleti naplók betekintést nyújthatnak a fürt telepítése során felmerülő hibákba, valamint a konfigurációs beállítások olyan módosításaira is, amelyek befolyásolhatják a fürt teljesítményét és rendelkezésre állását.  Egy parancsfájl-művelet állapotának megtekintéséhez válassza a Ambari felhasználói felületén az **Ops** gombot, vagy az alapértelmezett Storage-fiókban nyissa meg az eseménynaplókat. A tárolási naplók a következő címen `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`érhetők el:.
+A HDInsight [parancsfájlokat](hdinsight-hadoop-customize-cluster-linux.md) futtatnak a fürtön, manuálisan, vagy ha meg van adva. A parancsfájl-műveletek segítségével például további szoftvereket telepíthet a fürtre, vagy megváltoztathatja a konfigurációs beállításokat az alapértelmezett értékek alapján. A parancsfájl-műveleti naplók betekintést nyújthatnak a fürt telepítése során felmerülő hibákba, valamint a konfigurációs beállítások olyan módosításaira is, amelyek befolyásolhatják a fürt teljesítményét és rendelkezésre állását.  Egy parancsfájl-művelet állapotának megtekintéséhez válassza a Ambari felhasználói felületén az **Ops** gombot, vagy az alapértelmezett Storage-fiókban nyissa meg az eseménynaplókat. A tárolási naplók a következő címen érhetők el: `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE` .
 
 ### <a name="view-ambari-alerts-status-logs"></a>Ambari riasztások állapotának naplófájljainak megtekintése
 
-Az Apache Ambari a riasztási állapot `ambari-alerts.log`módosításait írja be. A teljes elérési `/var/log/ambari-server/ambari-alerts.log`út:. A napló hibakeresésének engedélyezéséhez módosítsa a tulajdonságot a `/etc/ambari-server/conf/log4j.properties.` Change (módosítás) `# Log alert state changes` elemre a következőből:
+Az Apache Ambari a riasztási állapot módosításait írja be `ambari-alerts.log` . A teljes elérési út: `/var/log/ambari-server/ambari-alerts.log` . A napló hibakeresésének engedélyezéséhez módosítsa a tulajdonságot a Change (módosítás) elemre a `/etc/ambari-server/conf/log4j.properties.` `# Log alert state changes` következőből:
 
 ```
 log4j.logger.alerts=INFO,alerts
@@ -131,7 +131,7 @@ Az összesített naplók nem olvashatók közvetlenül, mivel a tároló által 
 
 #### <a name="yarn-cli-tools"></a>FONAL CLI-eszközök
 
-A fonal CLI-eszközeinek használatához először az SSH használatával kell csatlakoznia a HDInsight-fürthöz. A parancsok `<applicationId>`futtatásakor `<containerId>`a, `<worker-node-address>` `<user-who-started-the-application>`, és adatokat kell megadni. A naplókat egyszerű szövegként tekintheti meg az alábbi parancsok egyikével:
+A fonal CLI-eszközeinek használatához először az SSH használatával kell csatlakoznia a HDInsight-fürthöz. A `<applicationId>` `<user-who-started-the-application>` `<containerId>` parancsok futtatásakor a,, és `<worker-node-address>` adatokat kell megadni. A naplókat egyszerű szövegként tekintheti meg az alábbi parancsok egyikével:
 
 ```bash
 yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
@@ -171,7 +171,7 @@ A .NET SDK for Hadoop használatával megvizsgálhatja az Azure Storage-hoz gene
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>A régi naplófájlok biztonsági mentési indexek méretének és számának szabályozása
 
-A megőrzött naplófájlok méretének és számának szabályozásához állítsa be a következő tulajdonságokat `RollingFileAppender`:
+A megőrzött naplófájlok méretének és számának szabályozásához állítsa be a következő tulajdonságokat `RollingFileAppender` :
 
 * `maxFileSize`annak a fájlnak a kritikus mérete, amely felett a fájl hengerelt. Az alapértelmezett érték 10 MB.
 * `maxBackupIndex`a létrehozandó biztonságimásolat-fájlok számát adja meg, alapértelmezés szerint 1.

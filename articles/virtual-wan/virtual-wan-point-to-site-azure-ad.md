@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan konfigurálhat Azure Active Directory hitelesí
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 703b832d58f2374eac131cfd380ba27f2c890618
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd80724d62c71fdec81965fb4aa6a07a6233a288
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059487"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753964"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Azure Active Directory hitelesítés konfigurálása a felhasználói VPN-hez
 
@@ -54,7 +54,7 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
 2. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás** elemre a WAN létrehozása lap megnyitásához.
 3. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
 
-   ![Virtuális WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
+   ![Virtual WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
    * **Előfizetés** – Válassza ki a használni kívánt előfizetést.
    * **Erőforráscsoport** – új létrehozása vagy meglévő használata.
@@ -125,7 +125,7 @@ A VPN-profillal konfigurálhatja az ügyfeleket.
 A csatlakozáshoz le kell töltenie az Azure VPN-ügyfelet, és importálnia kell az előző lépésekben letöltött VPN-ügyféloldali profilt minden olyan számítógépen, amely csatlakozni szeretne a VNet.
 
 > [!NOTE]
-> Az Azure AD-hitelesítés csak az OpenVPN&reg; protokoll kapcsolatai esetén támogatott.
+> Az Azure AD-hitelesítés csak az OpenVPN &reg; protokoll kapcsolatai esetén támogatott.
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>Az Azure VPN-ügyfél letöltése
@@ -189,7 +189,7 @@ Ezzel a [hivatkozással](https://www.microsoft.com/p/azure-vpn-client-preview/9n
 3. Az elosztók és kapcsolatok szakaszában láthatja az elosztók állapotát, helyét, régióját, VPN-kapcsolati állapotát, valamint a bájtban kifejezett be- és kimenő forgalmát.
 
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Erőforrások felszabadítása
 
 Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 

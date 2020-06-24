@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257965"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710677"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
 
@@ -119,7 +119,7 @@ Készítse elő a DNS-kiszolgálót a feladatátvételi teszthez a következők�
 
 Ez az eljárás azt ismerteti, hogyan futtathat feladatátvételi tesztet helyreállítási tervhez. Azt is megteheti, hogy a feladatátvételt egyetlen virtuális géphez futtatja a **Virtual Machines** lapon.
 
-1. Válassza a **helyreállítási tervek** > *recoveryplan_name*elemet. Kattintson a **feladatátvételi** > **teszt feladatátvétele**lehetőségre.
+1. Válassza a **helyreállítási tervek**  >  *recoveryplan_name*elemet. Kattintson a **feladatátvételi**  >  **teszt feladatátvétele**lehetőségre.
 2. A **feladatátvételi teszt** panelen határozza meg, hogy a replika virtuális gépek hogyan kapcsolódjanak a hálózatokhoz a feladatátvételi teszt után.
 3. A **feladatok** lapon nyomon követheti a feladatátvétel folyamatát.
 4. A feladatátvétel befejeződése után ellenőrizze, hogy a virtuális gépek sikeresen elindulnak-e.

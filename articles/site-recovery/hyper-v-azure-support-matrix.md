@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 62c7a3ecec3f941971cad552af2e36f63ab67c60
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 1fee761c8377824773fa56ba25edd2a779c33547
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485112"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710218"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 
@@ -32,14 +32,13 @@ Hyper-V Virtual Machine Manager nélkül | A nem a Virtual Machine Manager álta
 
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager nélkül fut) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 a legújabb frissítésekkel (beleértve az operációs rendszerek Server Core telepítését) | Ha már konfigurálta a Windows Server 2012 R2-t a/vagy a SCVMM 2012 R2-vel Azure Site Recovery és tervezi az operációs rendszer frissítését, kövesse az útmutató [dokumentációját.](upgrade-2012R2-to-2016.md)
-Hyper-V (fut Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (beleértve az operációs rendszerek Server Core telepítését) | Ha Virtual Machine Manager van használatban, a Windows Server 2019-gazdagépeket Virtual Machine Manager 2019-ben kell felügyelni. Hasonlóképpen, a Windows Server 2016-gazdagépeket Virtual Machine Manager 2016-ben kell felügyelni.
+Hyper-V (Virtual Machine Manager nélkül fut) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 a legújabb frissítésekkel (beleértve az operációs rendszerek Server Core telepítését, a Windows Server 2019 kivételével) | Ha már konfigurálta a Windows Server 2012 R2-t a/vagy a SCVMM 2012 R2-vel Azure Site Recovery és tervezi az operációs rendszer frissítését, kövesse az útmutató [dokumentációját.](upgrade-2012R2-to-2016.md)
+Hyper-V (fut Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (beleértve az ezen operációs rendszerek Server Core telepítését, kivéve Virtual Machine Manager 2019) | Ha Virtual Machine Manager van használatban, a Windows Server 2019-gazdagépeket Virtual Machine Manager 2019-ben kell felügyelni. Hasonlóképpen, a Windows Server 2016-gazdagépeket Virtual Machine Manager 2016-ben kell felügyelni.
 
 > [!NOTE]
 >
 > - Győződjön meg arról, hogy a .NET-keretrendszer 4.6.2 vagy újabb verziója megtalálható a helyszíni kiszolgálón.
-> - A feladat-visszavétel nem támogatott a Windows Server 2019 Server Core verzióban.
-> - A Windows Server 2019 gazdagépek nem támogatják a feladat-visszavételt a másik helyre.
+> - A feladatátvétel és a feladat-visszavétel a Windows Server 2019 Server Core verziója esetében nem támogatott a másik helyre vagy az eredeti helyre, amely Virtual Machine Manager vagy anélkül fut.
 
 ## <a name="replicated-vms"></a>Replikált virtuális gépek
 
@@ -169,7 +168,7 @@ FC-lemez | Nem támogatott | Az Előfeltételek ellenőrzése sikertelen, ha nem
 Merevlemez formátuma | VHD <br/><br/> VHDX | A Site Recovery automatikusan átalakítja a VHDX a VHD-re, amikor feladatátvételt hajt végre az Azure-ba. Ha a feladatátvételt a helyszíni rendszerre végzi, a virtuális gépek továbbra is a VHDX formátumot használják.
 BitLocker | Nem támogatott | A virtuális gép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságainál Site Recoveryban.
-Virtuális gép típusa | 1. generációs<br/><br/> 2. generációs – Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Virtuális gép típusa | 1. generációs<br/><br/> 2. generációs – Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információ](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services tároló műveletei
 
@@ -196,5 +195,5 @@ Microsoft Azure Recovery Services-ügynök | A Hyper-V virtuális gépek és az 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerje meg, hogyan [készítheti elő az Azure](tutorial-prepare-azure.md) -t a helyszíni Hyper-V virtuális gépek vész-helyreállításához.

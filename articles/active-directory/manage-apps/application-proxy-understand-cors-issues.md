@@ -2,25 +2,25 @@
 title: Az Azure AD Application Proxy CORS kapcsolatos problémák megismerése és megoldása
 description: Az Azure AD Application Proxy CORS megismerése, valamint a CORS kapcsolatos problémák azonosítása és megoldása.
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/23/2019
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c49535ad11139ac5145d4f283374bf9cc6d71f52
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72025791"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759929"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory Application Proxy CORS kapcsolatos problémák megismerése és megoldása
 
-[A több eredetű erőforrás-megosztás (CORS)](https://www.w3.org/TR/cors/) időnként kihívást jelenthet a Azure Active Directory Application Proxyon közzétett alkalmazások és API-k számára. Ez a cikk az Azure AD Application Proxy CORS kapcsolatos problémákat és megoldásokat ismerteti.
+[Több eredetű erőforrás-megosztás (CORS)](https://www.w3.org/TR/cors/)   időnként a Azure Active Directory Application Proxyon közzétett alkalmazások és API-k számára is kihívást jelenthet. Ez a cikk az Azure AD Application Proxy CORS kapcsolatos problémákat és megoldásokat ismerteti.
 
 A böngésző biztonsága általában megakadályozza, hogy a weblapok AJAX-kérelmeket hozzanak egy másik tartományba. Ezt a korlátozást *azonos eredetű házirendnek*nevezzük, és megakadályozza, hogy egy rosszindulatú hely bizalmas adatokat olvasson be egy másik helyről. Előfordulhat azonban, hogy más helyekre is meg szeretné hívni a webes API-t. A CORS egy W3C-szabvány, amely lehetővé teszi, hogy a kiszolgálók megpihenjenek az azonos eredetű házirendben, és egyes eltérő eredetű kérelmeket is engedélyezzenek, míg mások elutasítását.
 
@@ -28,15 +28,15 @@ A böngésző biztonsága általában megakadályozza, hogy a weblapok AJAX-kér
 
 Két URL-cím azonos eredetű, ha azonos sémákkal, gazdagépekkel és portokkal rendelkeznek ([RFC 6454](https://tools.ietf.org/html/rfc6454)), például:
 
--   http:\//contoso.com/foo.html
--   http:\//contoso.com/Bar.html
+-   http: \/ /contoso.com/foo.html
+-   http: \/ /contoso.com/bar.html
 
 A következő URL-címek eltérő eredetűek, mint az előző kettő:
 
--   http:\//contoso.net – különböző tartomány
--   http:\//contoso.com:9000/foo.html – különböző port
--   https:\//contoso.com/foo.html – eltérő séma
--   http:\//www.contoso.com/foo.html – eltérő altartomány
+-   http: \/ /contoso.net – különböző tartomány
+-   http: \/ /contoso.com:9000/foo.html – különböző port
+-   https: \/ /contoso.com/foo.html – különböző séma
+-   http: \/ /www.contoso.com/foo.html – eltérő altartomány
 
 Az azonos eredetű házirend megakadályozza, hogy az alkalmazások más eredetű forrásokból férhessenek hozzá az erőforrásokhoz, kivéve, ha a megfelelő hozzáférés-vezérlési fejléceket használják. Ha a CORS fejlécei hiányoznak vagy helytelenek, az adatforrások közötti kérelmek meghiúsulnak. 
 
@@ -46,7 +46,7 @@ A CORS problémák a böngésző hibakeresési eszközeivel azonosíthatók:
 1. Nyomja meg az **F12** billentyűt a hibakeresési konzol létrehozásához.
 1. Próbálja megismételni a tranzakciót, és tekintse át a konzol üzenetét. A CORS megsértése konzolos hibát eredményez a forrásról.
 
-A következő képernyőképen a **kipróbálás** gomb kiválasztásával egy CORS hibaüzenetet okozott, amely szerint\/a https:/Corswebclient-contoso.msappproxy.net nem található a hozzáférés-vezérlés – engedélyezés-eredet fejlécben.
+A következő képernyőképen a **kipróbálás** gomb kiválasztásával egy CORS hibaüzenetet okozott, amely szerint a https: \/ /corswebclient-contoso.msappproxy.net nem található a hozzáférés-vezérlés – engedélyezés-eredet fejlécben.
 
 ![CORS probléma](./media/application-proxy-understand-cors-issues/image3.png)
 
@@ -82,8 +82,8 @@ Ehelyett állítsa be a **belső URL-címet** a szülő könyvtár közzététel
 
 Az eredményül kapott alkalmazás URL-címei hatékonyan oldják meg a CORS problémát:
 
-- https:\//corswebclient-contoso.msappproxy.net/CORSWebService
-- https:\//corswebclient-contoso.msappproxy.net/CORSWebClient
+- https: \/ /corswebclient-contoso.msappproxy.net/CORSWebService
+- https: \/ /corswebclient-contoso.msappproxy.net/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>3. lehetőség: a HTTP-fejlécek frissítése
 
@@ -101,7 +101,7 @@ Content-Type: text/plain; charset = UTF-8 \
 Lejárat:-1 \
 Eltérő: elfogadás – Encoding \
 Kiszolgáló: Microsoft-IIS/8.5 Microsoft-HTTPAPI/2.0 \
-**Hozzáférés-vezérlés engedélyezése – forrás: https\://corswebclient-contoso.msappproxy.net**\
+**Hozzáférés-vezérlés engedélyezése – forrás: https \: //corswebclient-contoso.msappproxy.net**\
 X-AspNet-Version: 4.0.30319 elemet \
 X-powered-by: ASP.NET \
 Content-Length: 17

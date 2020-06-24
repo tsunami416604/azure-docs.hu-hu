@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233533"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886107"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -52,7 +52,8 @@ Privileged Identity Management használatához a címtárnak a következő fizet
 
 - Prémium szintű Azure AD P2
 - Enterprise Mobility + Security (EMS) E5
-- M5 Microsoft 365
+- Microsoft 365 oktatási célokra A5
+- Microsoft 365 Nagyvállalati verzió E5
 
 További információ: [a Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md).
 
@@ -99,7 +100,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Érintett felek: Privileged Identity Management Azure AD-szerepkörökhöz
 
-| Name (Név) | Szerepkör | Műveletek |
+| Name | Szerepkör | Műveletek |
 | --- | --- | --- |
 | Név és e-mail | **Identity Architect vagy Azure globális rendszergazda**<br/>Az Identity Management csapatának képviselője, amely meghatározza, hogy a változás hogyan igazodik a szervezet alapvető Identity Management-infrastruktúrához. | SO/R/I |
 | Név és e-mail | **Szolgáltatás tulajdonosa/soros kezelő**<br/>Egy szolgáltatás vagy szolgáltatási csoport informatikai tulajdonosai. Ezek kulcsfontosságúak a döntések meghozatalában és a munkatársaik Privileged Identity Managementának elősegítésében. | SO/R/I |
@@ -109,7 +110,7 @@ A következő szakasz segítségével azonosíthatja a projektben érintett öss
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Érintett felek: Privileged Identity Management az Azure-erőforrás szerepköreihez
 
-| Name (Név) | Szerepkör | Műveletek |
+| Name | Szerepkör | Műveletek |
 | --- | --- | --- |
 | Név és e-mail | **Előfizetés/erőforrás tulajdonosa**<br/>Az egyes előfizetések vagy erőforrások tulajdonosának a Privileged Identity Management központilag telepíteni kívánó képviselője | SO/R/I |
 | Név és e-mail | **Biztonsági tulajdonos**<br/>A biztonsági csapat képviselője, amely kijelentkezhet, hogy a terv megfelel a szervezete biztonsági követelményeinek. | SO/R |
@@ -185,7 +186,7 @@ Fontos, hogy rangsorolja a legtöbb engedélyekkel rendelkező Azure AD-szerepk�
 1. Intune-rendszergazda
 1. Biztonsági olvasó
 1. Szolgáltatás-rendszergazda
-1. Számlázási rendszergazda
+1. Számlázási adminisztrátor
 1. Skype Vállalati verzió-rendszergazda
 
 > [!TIP]
@@ -243,16 +244,16 @@ A Privileged Identity Management-megoldás implementálása előtt érdemes a sz
 | Szerepkör | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás megkövetelése | Approver | Aktiválás időtartama | Állandó rendszergazda |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globális rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Egyéb globális rendszergazdák | 1 óra | Vészhelyzeti hozzáférési fiókok |
-| Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | x | x | None | 2 óra | None |
-| Segélyszolgálat rendszergazdája | x | x | :heavy_check_mark: | x | None | 8 óra | None |
+| Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | x | x | Nincs | 2 óra | Nincs |
+| Segélyszolgálat rendszergazdája | x | x | :heavy_check_mark: | x | Nincs | 8 óra | Nincs |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Az Azure-erőforrás szerepköreinek Privileged Identity Management beállításai
 
 | Szerepkör | MFA megkövetelése | Értesítés | Jóváhagyás megkövetelése | Approver | Aktiválás időtartama | Aktív rendszergazda | Aktív lejárat | Jogosult lejárat |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | None | n/a | 3 hónap |
-| Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | None | 1 óra | None | n/a | 3 hónap |
-| Virtuális gépek közreműködője | x | :heavy_check_mark: | x | None | 3 óra | None | n/a | 6 hónap |
+| Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | Nincs | n.a. | 3 hónap |
+| Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | Nincs | 1 óra | Nincs | n.a. | 3 hónap |
+| Virtuális gépek közreműködője | x | :heavy_check_mark: | x | Nincs | 3 óra | Nincs | n.a. | 6 hónap |
 
 Az alábbi táblázat az egyes beállításokat ismerteti.
 

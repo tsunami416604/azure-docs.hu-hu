@@ -3,8 +3,8 @@ title: Virtuális hálózat létrehozása
 titleSuffix: Azure SQL Managed Instance
 description: Ez a cikk azt ismerteti, hogyan hozható létre olyan virtuális hálózat, amely támogatja az Azure SQL felügyelt példányának telepítését.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 4cbcad991da6a7517ca2914cfd99b8517853c0e4
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: d6458794b8d3c5ba68109dbc90a075d6a2a577b9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657925"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711323"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Virtuális hálózat létrehozása az Azure SQL felügyelt példányaihoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -60,7 +60,7 @@ A virtuális hálózat létrehozásának és konfigurálásának legegyszerűbb 
 
    Módosíthatja a virtuális hálózat és az alhálózatok nevét, és módosíthatja a hálózati erőforrásokhoz társított IP-tartományokat. Miután kiválasztotta a **vásárlás** gombot, az űrlap létrehozza és konfigurálja a környezetet. Ha nincs szüksége két alhálózatra, törölheti az alapértelmezettet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az áttekintést lásd: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md).
 - Ismerje meg a [kapcsolati architektúrát az SQL felügyelt példányában](connectivity-architecture-overview.md).

@@ -1,9 +1,9 @@
 ---
-title: 'Oktatóanyag: felügyelt SQL-példány felügyelt példányának hozzáadása feladatátvételi csoporthoz'
+title: 'Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz'
 titleSuffix: Azure SQL Managed Instance
-description: Ebben az oktatóanyagban két felügyelt példányt fog létrehozni elsődleges és másodlagosként, majd hozzáadja őket egy automatikus feladatátvételi csoporthoz.
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy feladatátvételi csoportot egy elsődleges és egy másodlagos Azure SQL felügyelt példány között.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 3b132fb5c718346462e43d161e4d85f07223df09
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: f1bf8eff4a6f518fc24c87c5fbd24984ef8f8b29
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667743"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718886"
 ---
-# <a name="tutorial-add-a-managed-instance-of-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: felügyelt SQL-példány felügyelt példányának hozzáadása feladatátvételi csoporthoz
+# <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Az Azure SQL felügyelt példány felügyelt példányainak hozzáadása egy feladatátvételi csoporthoz. Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
@@ -384,7 +384,7 @@ Hozza létre az erőforráscsoportot és az elsődleges felügyelt példányt a 
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot.  |
 | [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Virtuális hálózatot hoz létre.  |
@@ -714,7 +714,7 @@ Hozza létre a másodlagos felügyelt példányt a PowerShell használatával.
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot.  |
 | [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Virtuális hálózatot hoz létre.  |
@@ -817,7 +817,7 @@ Hozza létre az elsődleges felügyelt példány virtuális hálózatának átj�
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Lekér egy virtuális hálózatot egy erőforráscsoportban. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Alhálózati konfigurációt rendel egy virtuális hálózathoz. | 
@@ -898,7 +898,7 @@ Hozza létre a másodlagos felügyelt példány virtuális hálózatának átjá
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Lekér egy virtuális hálózatot egy erőforráscsoportban. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Alhálózati konfigurációt rendel egy virtuális hálózathoz. | 
@@ -963,7 +963,7 @@ A két átjáró összekapcsolásához használja a PowerShellt.
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Kapcsolatot hoz létre a két virtuális hálózati átjáró között.   |
 
@@ -1005,7 +1005,7 @@ Hozza létre a feladatátvételi csoportot a PowerShell használatával.
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Új – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Létrehoz egy új Azure SQL felügyelt példány feladatátvételi csoportot.  |
 
@@ -1071,7 +1071,7 @@ Feladatátvételi teszt a PowerShell használatával.
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Lekérdezi vagy listázza az SQL felügyelt példányának feladatátvételi csoportjait.| 
 | [Kapcsoló – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Végrehajtja az SQL felügyelt példányok feladatátvételi csoportjának feladatátvételét. | 
@@ -1103,7 +1103,7 @@ Write-host "Removing residual resources and resource group..."
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot. |
 
@@ -1116,7 +1116,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagot használja:
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy Azure-erőforráscsoportot.  |
 | [Új – AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Virtuális hálózatot hoz létre.  |
@@ -1149,7 +1149,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy feladatátvételi csoportot konfigurált két felügyelt példány között. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

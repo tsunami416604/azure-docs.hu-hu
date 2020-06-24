@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77911726"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817718"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai
 
@@ -45,7 +45,6 @@ A Data Box biztonságos megoldást kínál az adatok védelmére, mivel garantá
 A Data Box-eszköz védelmét az alábbi funkciók biztosítják:
 
 - Az eszköz strapabíró tokkal rendelkezik, amely ellenáll az ütéseknek, valamint a kedvezőtlen szállítási és időjárási körülményeknek. 
-- Eredetiséget jelző pecsétek, amelyek jelzik, ha az eszközhöz a szállítás során illetéktelenek fértek hozzá.
 - A hardverhez vagy a szoftverekhez való illetéktelen hozzáférés észlelése esetén az eszköz nem működtethető.
 - Csak Data Box-kompatibilis szoftvert futtat.
 - A rendszerindítás zárolt állapotban történik.
@@ -57,7 +56,7 @@ A Data Box-eszköz védelmét az alábbi funkciók biztosítják:
 A Data Box szolgáltatás bejövő és kimenő adatainak biztonságát az alábbi szolgáltatások biztosítják:
 
 - Az inaktív adatok 256 bites AES-titkosítással védettek.
-- A titkosított protokollok átvitel közben is biztosítják az adatok védelmét.
+- A titkosított protokollok átvitel közben is biztosítják az adatok védelmét. Javasoljuk, hogy az SMB 3,0 titkosítással használja az adatok védelme érdekében az adatkiszolgálókról történő másoláskor.
 - Az adatokat biztonságosan törölheti az eszközről, miután az Azure-ba való feltöltés befejeződött. Az adattörlés összhangban van a " [a" függelékben szereplő, a NIST 800-88r1 szabványokban található ATA merevlemez-meghajtókra](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)vonatkozó útmutatásokkal. Az adattörlési eseményt a rendszer rögzíti a [megrendelési előzményekben](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>A Data Box szolgáltatás védelme

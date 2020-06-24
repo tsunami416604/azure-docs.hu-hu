@@ -2,22 +2,22 @@
 title: Nem Gallery-alkalmazás hozzáadása – Microsoft Identity platform | Microsoft Docs
 description: Adjon hozzá egy nem katalógusbeli alkalmazást az Azure AD-bérlőhöz.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9691ecb8d742952ba4364dcda2b62c3829f79d60
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063611"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760320"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Lista nélküli (nem katalógusos) alkalmazás hozzáadása az Azure AD-szervezethez
 
@@ -34,7 +34,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá egy nem katalógusos alkalmazást a
 
 1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/) a Microsoft Identity platform rendszergazdai fiókjának használatával.
 
-2. Válassza a **vállalati alkalmazások** > **új alkalmazás**lehetőséget.
+2. Válassza a **vállalati alkalmazások**  >  **új alkalmazás**lehetőséget.
 
 3. (Nem kötelező, de ajánlott) Az **Azure ad** -katalógus tallózása mezőben adja meg az alkalmazás megjelenítendő nevét. 
 

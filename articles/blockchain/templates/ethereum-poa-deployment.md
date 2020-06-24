@@ -2,14 +2,14 @@
 title: Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 description: Az Azure-beli többtagú konzorcium Ethereum üzembe helyezéséhez és konfigurálásához használja a Ethereum-szolgáltatói konzorciumi megoldást.
 ms.date: 06/04/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 2be87dec252aa927c6b1acfc6cb1aa23bf7d2620
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 127aa860fe0c80f4d12a373c00ad2f53447c3497
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434358"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210116"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 
@@ -558,7 +558,7 @@ Az alábbi példában egy egyszerű intelligens szerződést hozunk létre. A sz
 #### <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse a [Python-2.7.15](https://www.python.org/downloads/release/python-2715/). A Python szükséges a szarvasgomba és a Web3 számára. Válassza a telepítés lehetőséget, hogy tartalmazza a Pythont az elérési útban.
-* Telepítse a szarvasgomba v 5.0.5 `npm install -g truffle@v5.0.5` . A szarvasgombához több eszközt kell telepíteni, beleértve a [Node. js](https://nodejs.org)-t, a [git](https://git-scm.com/)-t. További információ: [szarvasgomba-dokumentáció](https://github.com/trufflesuite/truffle).
+* Telepítse a szarvasgomba v 5.0.5 `npm install -g truffle@v5.0.5` . A szarvasgombához több eszközt kell telepíteni, beleértve a [Node.jst ](https://nodejs.org), a [git](https://git-scm.com/)-t. További információ: [szarvasgomba-dokumentáció](https://github.com/trufflesuite/truffle).
 
 ### <a name="create-truffle-project"></a>Szarvasgomba-projekt létrehozása
 
@@ -648,7 +648,7 @@ A szarvasgomba áttelepítési parancsfájlok használatával telepíti az intel
 Most, hogy üzembe helyezte az intelligens szerződést, tranzakciót küldhet egy függvény hívásához.
 
 1. A szarvasgomba-projekt könyvtárában hozzon létre egy nevű új fájlt `sendtransaction.js` .
-1. Adja hozzá a következő tartalmakat a **sendtransaction. js**fájlhoz.
+1. Adja hozzá a következő tartalmakat **sendtransaction.jshoz **.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -733,6 +733,6 @@ Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szaké
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További Azure Blockchain-megoldásokért tekintse meg az [Azure Blockchain dokumentációját](https://docs.microsoft.com/azure/blockchain/).

@@ -4,11 +4,11 @@ description: Azure Notebooks az előzetes verziójú projektek jegyzetfüzetek �
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280572"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710388"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projektek létrehozása és klónozása Azure Notebooks előzetes verzióban
 
@@ -20,7 +20,7 @@ A projektek metaadatokat és egyéb konfigurációs beállításokat is fenntart
 
 ## <a name="use-the-my-projects-dashboard"></a>A saját projektek irányítópult használata
 
-A **saját projektek** irányítópultja `https://notebooks.azure.com/<userID>/projects` a következő címen érhető el, ahol megtekintheti, kezelheti és hozhat létre projekteket:
+A **saját projektek** irányítópultja a következő címen `https://notebooks.azure.com/<userID>/projects` érhető el, ahol megtekintheti, kezelheti és hozhat létre projekteket:
 
 [![Saját projektek irányítópultja Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
@@ -28,7 +28,7 @@ Az irányítópulton elvégezhető műveletek attól függnek, hogy a felhaszná
 
 | Parancs | Elérhető a következőhöz | Leírás |
 | --- | --- | --- |
-| **Futtassa a következőt:** | Tulajdonos | Elindítja a Project kiszolgálót, és megnyitja a projekt mappáját a Jupyter. (Gyakrabban navigáljon először a projekt mappájába, majd indítson el egy jegyzetfüzetet innen.) |
+| **Futtatás** | Tulajdonos | Elindítja a Project kiszolgálót, és megnyitja a projekt mappáját a Jupyter. (Gyakrabban navigáljon először a projekt mappájába, majd indítson el egy jegyzetfüzetet innen.) |
 | **Letöltés** | Bárki | A kiválasztott projekt másolatának letöltése ZIP-fájlként. |
 | **Megosztás** | Bárki | Megjeleníti a megosztás felugró ablakát, amelyen keresztül beszerezhet egy URL-címet egy kiválasztott projekthez, megoszthatja a közösségi médiát, e-mailt küldhet az URL-címmel, valamint HTML-vagy Markdown-kódot is beszerezhet a "notebook elindítása" jelvényre (lásd: [indítási jelvény beszerzése](#obtain-a-launch-badge)) az URL-címmel. |
 | **Szabályzat** | Tulajdonos | Törli a kiválasztott projektet. Ez a művelet nem vonható vissza. |
@@ -60,7 +60,7 @@ Ha az **+ új projekt** parancsot használja, Azure Notebooks megjeleníti az **
 | Mező | Leírás |
 | --- | --- |
 | Projektnév | A projekt felhasználóbarát neve, amelyet a Azure Notebooks a megjelenítési célokra használ. Például: "My notebook Project". |
-| Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik (az űrlap `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
+| Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik (az űrlap `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
 | Nyilvános | Ha be van állítva, lehetővé teszi, hogy bárki hozzáférjen a projekthez. Privát projekt létrehozásakor törölje ezt a beállítást. |
 | A projekt inicializálása README-val | Ha be van állítva, a létrehoz egy alapértelmezett *readme.MD* -fájlt a projektben. A *readme.MD* -fájl a projekt dokumentációját adja meg, ha szükséges. |
 
@@ -71,7 +71,7 @@ A következő fenntartott szavak önmagukban nem használhatók projekt-azonosí
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
 | névjegy | account | adminisztráció | api-t | blog | osztályterem |
-| content | irányítópult | Ismerkedés | – gyakori kérdések | segítség | html |
+| tartalom | irányítópult | Ismerkedés | – gyakori kérdések | segítség | html |
 | Kezdőlap | importálása | erőforrástár | felügyelet | Új | notebook |
 | notebookok | PDF | preview | árképzési | profil | keresés |
 | status | támogatás | test | | | |
@@ -86,10 +86,10 @@ A teljes nyilvános GitHub-tárházat könnyedén importálhatja projektként, b
 
 | Mező | Leírás |
 | --- | --- |
-| GitHub-adattár | A github.com lévő forrás adattár neve. Ha például az Azure-beli Cognitive Services Jupyter-jegyzetfüzeteit szeretné klónozott [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks), írja be a következőt: "Microsoft/kognitív-Services-Notebooks".  |
+| GitHub-adattár | A github.com lévő forrás adattár neve. Ha például az Azure-beli Cognitive Services Jupyter-jegyzetfüzeteit szeretné klónozott [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) , írja be a következőt: "Microsoft/kognitív-Services-Notebooks".  |
 | Rekurzív klónozás | A GitHub-adattárak több gyermek tárházat is tartalmazhatnak. Akkor adja meg ezt a beállítást, ha a szülő tárházat és annak összes gyermekét szeretné klónozott módon megtekinteni. Mivel lehetséges, hogy egy tárház sok gyermeket tartalmaz, hagyja üresen ezt a lehetőséget, ha nem tudja, hogy szüksége van rá. |
 | Projektnév | A projekt felhasználóbarát neve, amelyet a Azure Notebooks a megjelenítési célokra használ. |
-| Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik (az űrlap `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
+| Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik (az űrlap `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
 | Nyilvános | Ha be van állítva, lehetővé teszi, hogy bárki hozzáférjen a projekthez. Privát projekt létrehozásakor törölje ezt a beállítást. |
 
 A tárháznak a GitHubról való importálása is importálja az előzményeket. A terminál szabványos git-parancsaival új módosításokat alkalmazhat, lekérheti a módosításokat a GitHubról, és így tovább.

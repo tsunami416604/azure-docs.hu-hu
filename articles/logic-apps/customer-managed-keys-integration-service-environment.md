@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd288cfb78bb97bd5c05c1cc59af3c082ab549a2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458437"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687004"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
@@ -27,7 +27,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
 * Az ügyfél által felügyelt kulcs csak akkor adható meg, *Ha létrehozza az ISE*-t, nem pedig később. Az ISE létrehozása után ezt a kulcsot nem lehet letiltani. Jelenleg nem létezik támogatás egy ügyfél által felügyelt kulcs elforgatásához egy ISE esetében.
 
-* Az ügyfél által felügyelt kulcsok támogatásához az ISE megköveteli, hogy a [rendszer által hozzárendelt felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) engedélyezve legyen. Ez az identitás lehetővé teszi, hogy az ISE hitelesítse a más Azure Active Directory (Azure AD) bérlők erőforrásaihoz való hozzáférést, így nem kell bejelentkeznie a hitelesítő adataival.
+* Az ügyfél által felügyelt kulcsok támogatásához az ISE megköveteli, hogy a [rendszer által hozzárendelt felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) engedélyezve legyen. Ez az identitás lehetővé teszi, hogy az ISE hitelesítse a más Azure Active Directory (Azure AD) bérlők erőforrásaihoz való hozzáférést, így nem kell bejelentkeznie a hitelesítő adataival.
 
 * Jelenleg olyan ISE létrehozásához, amely támogatja az ügyfél által felügyelt kulcsokat, és engedélyezve van a rendszer által hozzárendelt identitása, a Logic Apps REST API HTTPS PUT-kérelem használatával kell meghívnia.
 
@@ -47,7 +47,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
   |----------|-------|
   | **Kulcs típusa** | RSA |
   | **RSA-kulcs mérete** | 2048 |
-  | **Engedélyezve** | Igen |
+  | **Engedélyezve** | Yes |
   |||
 
   ![Az ügyfél által felügyelt titkosítási kulcs létrehozása](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -80,7 +80,7 @@ Az üzembe helyezés általában két órán belül befejeződik. Alkalmanként 
 
 A kérelem fejlécében adja meg a következő tulajdonságokat:
 
-* `Content-type`: Állítsa ezt a tulajdonságot `application/json`értékre.
+* `Content-type`: Állítsa ezt a tulajdonságot értékre `application/json` .
 
 * `Authorization`: Állítsa ezt a tulajdonságot annak az ügyfélnek a tulajdonosi jogkivonatára, aki hozzáfér a használni kívánt Azure-előfizetéshez vagy erőforráscsoporthoz.
 
@@ -203,7 +203,7 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az Azure Key vaultot.
 
-1. A Key Vault menüjében válassza a **hozzáférési szabályzatok** > **hozzáférési házirend hozzáadása**lehetőséget, például:
+1. A Key Vault menüjében válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása**lehetőséget, például:
 
    ![Hozzáférési szabályzat hozzáadása a rendszerhez rendelt felügyelt identitáshoz](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
@@ -219,7 +219,7 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
       ![Válassza a "kulcskezelő" > "kulcs engedélyei" elemet.](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. Válassza a **tag kiválasztása**lehetőséget, majd a **nincs kiválasztva**lehetőséget. A **résztvevő** ablaktábla megnyitása után keresse meg és válassza ki az ISE elemet a keresőmezőbe. Ha elkészült, válassza a Hozzáadás **lehetőséget** > **Add**.
+   1. Válassza a **tag kiválasztása**lehetőséget, majd a **nincs kiválasztva**lehetőséget. A **résztvevő** ablaktábla megnyitása után keresse meg és válassza ki az ISE elemet a keresőmezőbe. Ha elkészült, válassza a Hozzáadás **lehetőséget**  >  **Add**.
 
       ![Válassza ki a rendszerbiztonsági tagként használni kívánt ISE-t](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 

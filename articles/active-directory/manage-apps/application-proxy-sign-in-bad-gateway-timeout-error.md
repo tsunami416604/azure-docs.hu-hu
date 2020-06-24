@@ -3,25 +3,25 @@ title: Nem érhető el ez a vállalati alkalmazáshiba az App proxy alkalmazáss
 description: Az Azure AD Application Proxy-alkalmazások gyakori hozzáférési problémáinak elhárítása.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb3743251f2818ab1e4255b3dc6e7f4f9cbbcba
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: a6a8d156cc2eea881b84dc0ef58f7b6538e0225f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846732"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759861"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nem lehet hozzáférni a vállalati alkalmazáshoz" hibaüzenet alkalmazásproxy-alkalmazás használatakor
 
@@ -103,6 +103,6 @@ Ha a hiba továbbra is fennáll, lépjen arra a gépre, amelyen az összekötő 
 
 Ha az adott gépről elérheti az alkalmazást, akkor az összekötővel kapcsolatos problémákat és hibákat kereshet. A [hibaelhárítási dokumentumban](application-proxy-troubleshoot.md#connector-errors)néhány gyakori hibát láthat. A hibák azonosításához közvetlenül az összekötő naplófájljaiban is kereshet. A hibaüzenetek nagy része a javításokra vonatkozó konkrétabb javaslatok megosztását is lehetővé teheti. A naplók megtekintésének megismeréséhez tekintse meg az [Összekötők dokumentációját](application-proxy-connectors.md#under-the-hood).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)

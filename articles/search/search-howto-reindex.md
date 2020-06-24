@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77498380"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051729"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Index újraépítése az Azure Cognitive Searchban
 
@@ -21,7 +21,17 @@ Ez a cikk azt ismerteti, hogyan lehet újraépíteni az Azure Cognitive Search i
 
 Az *Újraépítés* az indexhez társított fizikai adatstruktúrák eldobására és újbóli létrehozására utal, beleértve az összes mező alapú fordított indexet. Az Azure Cognitive Searchban nem lehet eldobni és újból létrehozni az egyes mezőket. Az indexek újraépítéséhez az összes mezőt törölni kell, újból létre kell hozni egy meglévő vagy módosított index-séma alapján, majd újra fel kell tölteni az indexbe küldött adatokkal, vagy külső forrásokból kell kihúzni őket. 
 
-Gyakori, hogy a fejlesztés során újraépíti az indexeket, de előfordulhat, hogy újra kell építenie egy éles szintű indexet a szerkezeti módosítások elvégzéséhez, például összetett típusok hozzáadásához vagy mezők hozzáadásához a javaslatokhoz.
+Az indexek újraépítése gyakori a fejlesztés során, amikor az index kialakítását megismétlik, de előfordulhat, hogy újra kell építenie egy éles szintű indexet a szerkezeti módosítások elvégzéséhez, például összetett típusok hozzáadását vagy mezők hozzáadását a javaslatokhoz.
+
+## <a name="rebuild-versus-refresh"></a>"Újraépítés", illetve "frissítés"
+
+Az Újraépítés nem tévesztendő össze az indexek tartalmának új, módosított vagy törölt dokumentumokkal való frissítésével. A Search Corpus frissítése szinte minden keresési alkalmazásban megtörténik, és bizonyos helyzetekben, amelyeknek a frissítésére van szükség (például akkor, ha a keresési Corpus tükröznie kell egy online értékesítési alkalmazás leltározási változásait).
+
+Ha nem módosítja az index szerkezetét, az indexet az első betöltéséhez használt módszerek használatával frissítheti.
+
+* A leküldéses módú indexeléshez hívja a [Hozzáadás, frissítés vagy törlés dokumentumok](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) lehetőséget a módosítások egy indexbe való leküldéséhez.
+
+* Az indexelő esetében az [Indexelő végrehajtását ütemezhet](search-howto-schedule-indexers.md) , és a Change-Tracking vagy timestamps használatával azonosíthatja a különbözetet. Ha a frissítéseket gyorsabban kell megtekinteni, mint amit a Scheduler kezelhet, használhatja a leküldéses módú indexelést.
 
 ## <a name="rebuild-conditions"></a>Újraépítés feltételei
 

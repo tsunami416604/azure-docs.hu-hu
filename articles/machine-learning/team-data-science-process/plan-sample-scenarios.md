@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251621"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687446"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Speciális elemzési forgatókönyvek az Azure Machine Learning rendszerben
 Ez a cikk a különböző típusú adatforrások és a [csoportos adatelemzési folyamat (TDSP)](overview.md)által kezelhető célzott forgatókönyvek körét ismerteti. A TDSP egy szisztematikus módszert biztosít a csapatok számára, hogy működjenek együtt az intelligens alkalmazások létrehozásán. Az itt bemutatott forgatókönyvek az adatfeldolgozási munkafolyamatban elérhető lehetőségeket illusztrálják, amelyek az Azure-ban az adatok jellemzőitől, a forrás helyeitől és a cél adattáraktól függenek.
@@ -35,7 +35,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 > 
 > 
 
-## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>1 \#. forgatókönyv: kis és közepes méretű táblázatos adatkészlet helyi fájlokban
+## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>\#1. forgatókönyv: kis és közepes méretű táblázatos adatkészlet helyi fájlokban
 ![Kis-és közepes helyi fájlok][1]
 
 #### <a name="additional-azure-resources-none"></a>További Azure-erőforrások: nincs
@@ -43,7 +43,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. Adatkészlet feltöltése.
 1. A feltöltött adatkészlet (ek) től kezdődően hozzon létre egy Azure Machine Learning kísérlet folyamatát.
 
-## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>2 \#. forgatókönyv: a feldolgozást igénylő helyi fájlok kis és közepes méretű adatkészlete
+## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>\#2. forgatókönyv: a feldolgozást igénylő helyi fájlok kis és közepes méretű adatkészlete
 ![Kis-és közepes méretű helyi fájlok feldolgozással][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>További Azure-erőforrások: Azure-beli virtuális gép (IPython notebook Server)
@@ -56,7 +56,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. Az Azure-blobokból származó adatok beolvasása az [adatok importálása][import-data] modul használatával.
 1. Egy Azure Machine Learning kísérlet folyamatának létrehozása a betöltött adatkészlet (ek) től kezdve.
 
-## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>3 \#. forgatókönyv: a helyi fájlok nagyméretű adatkészlete, az Azure-Blobok célzása
+## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>\#3. forgatókönyv: a helyi fájlok nagyméretű adatkészlete, az Azure-Blobok célzása
 ![Nagyméretű helyi fájlok][3]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>További Azure-erőforrások: Azure-beli virtuális gép (IPython notebook Server)
@@ -71,7 +71,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. Az Azure-blobokból származó adatok beolvasása az [adatok importálása][import-data] modul használatával.
 1. A betöltött adatkészlet (ek) től kezdve Azure Machine Learning kísérlet folyamatának kiépítése.
 
-## <a name="scenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>4 \#. forgatókönyv: a helyi fájlok kis-és közepes méretű adatkészlete, SQL Server megcélzása egy Azure-beli virtuális gépen
+## <a name="scenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>\#4. forgatókönyv: a helyi fájlok kis-és közepes méretű adatkészlete, SQL Server megcélzása egy Azure-beli virtuális gépen
 ![Kis-és közepes méretű helyi fájlok az Azure-beli SQL-ADATBÁZISba][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure-beli virtuális gép (SQL Server/IPython notebook Server)
@@ -82,14 +82,14 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. Az adatmentést a virtuális gép helyi fájljaiba (a IPython notebook virtuális gépen fut, a helyi meghajtók a virtuálisgép-meghajtókra vonatkoznak).
 1. Az Azure-beli virtuális gépen futó SQL Server adatbázis betöltése.
    
-   1 \#. lehetőség: a SQL Server Management Studio használata.
+   \#1. lehetőség: a SQL Server Management Studio használata.
    
    * Bejelentkezés SQL Server VM
    * SQL Server Management Studio futtatása.
    * Adatbázis és céltábla létrehozása
    * A tömeges importálási módszerek egyikével betöltheti az adatok virtuális helyi fájlokból való betöltését.
    
-   2 \#. lehetőség: a IPython notebook használata – nem ajánlott közepes és nagyobb adatkészletekhez
+   \#2. lehetőség: a IPython notebook használata – nem ajánlott közepes és nagyobb adatkészletekhez
    
    <!-- -->    
    * Az ODBC-kapcsolati karakterlánc használatával férhet hozzá SQL Server a virtuális gépen.
@@ -101,7 +101,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. Olvassa el közvetlenül a SQL Server az adatok [importálása][import-data] modul használatával. Illessze be a szükséges lekérdezést, amely kibontja a mezőket, létrehozza a szolgáltatásokat és mintákat, ha szükséges, közvetlenül az [adatimportálási][import-data] lekérdezésben.
 1. A betöltött adatkészlet (ek) től kezdve Azure Machine Learning kísérlet folyamatának kiépítése.
 
-## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>5 \#. forgatókönyv: nagyméretű adatkészletek helyi fájlokban, célként SQL Server az Azure-beli virtuális gépen
+## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>\#5. forgatókönyv: nagyméretű adatkészletek helyi fájlokban, célként SQL Server az Azure-beli virtuális gépen
 ![Nagyméretű helyi fájlok az Azure-beli SQL-ADATBÁZIShoz][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure-beli virtuális gép (SQL Server/IPython notebook Server)
@@ -138,7 +138,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. Olvassa el közvetlenül a SQL Server az adatok [importálása][import-data] modul használatával. Illessze be a szükséges lekérdezést, amely kibontja a mezőket, létrehozza a szolgáltatásokat és mintákat, ha szükséges, közvetlenül az [adatimportálási][import-data] lekérdezésben.
 1. Az egyszerű Azure Machine Learning kísérlet folyamata a feltöltött adatkészlet kezdetével
 
-## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>6 \#. forgatókönyv: nagyméretű adatkészlet egy SQL Server adatbázisban a helyszínen, az Azure-beli virtuális gépeken SQL Server megcélzása
+## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>\#6. forgatókönyv: nagyméretű adatkészlet egy SQL Server adatbázisban a helyszínen, az Azure-beli virtuális gépeken SQL Server megcélzása
 ![Nagy méretű SQL-adatbázis az Azure-beli SQL-ADATBÁZIShoz][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure-beli virtuális gép (SQL Server/IPython notebook Server)
@@ -186,7 +186,7 @@ Ha a teljes SQL Server adatbázist szeretné replikálni a SQL Server VMban, akk
 
 [Adatbázis áthelyezése a leválasztás és a csatolás (Transact-SQL) használatával](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>7 \#. forgatókönyv: nagy mennyiségű érték helyi fájlokban, az Azure HDInsight Hadoop-fürtökben található kaptár-adatbázis
+## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>\#7. forgatókönyv: nagy mennyiségű érték helyi fájlokban, az Azure HDInsight Hadoop-fürtökben található kaptár-adatbázis
 ![Big-adatmennyiség a helyi cél struktúrában][9]
 
 #### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>További Azure-erőforrások: Azure HDInsight Hadoop-fürt és az Azure virtuális gép (IPython notebook Server)
@@ -208,12 +208,12 @@ Ha a teljes SQL Server adatbázist szeretné replikálni a SQL Server VMban, akk
    
    b.  Nyissa meg a Hadoop parancssort.
    
-   c.  Adja meg a kaptár gyökérkönyvtárát `cd %hive_home%\bin` a Hadoop parancssorban.
+   c.  Adja meg a kaptár gyökérkönyvtárát a `cd %hive_home%\bin` Hadoop parancssorban.
    
    d.  A kaptár-lekérdezések futtatásával adatbázisokat és táblákat hozhat létre, és betöltheti az adatait a blob Storage-ból a kaptár tábláiba.
    
    > [!NOTE]
-   > Ha az adatmennyiség nagy, a felhasználók létrehozhatják a kaptár táblát partíciókkal. Ezt követően a felhasználók használhatnak `for` egy hurkot a Hadoop parancssorában a fő csomóponton, hogy az adatkészletet particionálja partíció alapján particionált struktúrás táblába.
+   > Ha az adatmennyiség nagy, a felhasználók létrehozhatják a kaptár táblát partíciókkal. Ezt követően a felhasználók használhatnak egy `for` hurkot a Hadoop parancssorában a fő csomóponton, hogy az adatkészletet particionálja partíció alapján particionált struktúrás táblába.
    > 
    > 
 1. Ismerje meg az adatelemzést, és szükség szerint hozzon létre szolgáltatásokat a Hadoop parancssorban. A funkciók nem szükségesek az adatbázis tábláiban. Csak jegyezze fel a szükséges lekérdezést a létrehozásához.
@@ -222,7 +222,7 @@ Ha a teljes SQL Server adatbázist szeretné replikálni a SQL Server VMban, akk
    
    b.  Nyissa meg a Hadoop parancssort.
    
-   c.  Adja meg a kaptár gyökérkönyvtárát `cd %hive_home%\bin` a Hadoop parancssorban.
+   c.  Adja meg a kaptár gyökérkönyvtárát a `cd %hive_home%\bin` Hadoop parancssorban.
    
    d.  Futtassa a kaptár lekérdezéseit a Hadoop parancssorában a Hadoop-fürt fő csomópontján az adatelemzéshez és a szolgáltatások igény szerinti létrehozásához.
 1. Ha szükséges és/vagy szükség van rá, a Azure Machine Learning Studionek megfelelőnek kell lennie.

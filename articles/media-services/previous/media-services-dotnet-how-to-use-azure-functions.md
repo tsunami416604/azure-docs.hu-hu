@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251166"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712496"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Azure Functions fejlesztése Media Services
 
@@ -54,7 +54,7 @@ A jelen cikkben definiált függvény a következő környezeti változókat fel
 
 **AMSClientSecret**: Azure ad-alkalmazás-ügyfél titka.
 
-**StorageConnection**: a Media Services fiókhoz társított fiók tárolási kapcsolatai. Ezt az értéket a **function. JSON** fájlban kell használni, és a **. CSX fájlt kell futtatnia** (lásd alább).
+**StorageConnection**: a Media Services fiókhoz társított fiók tárolási kapcsolatai. Ezt az értéket használja a fájl **function.jsjában** , és **futtassa a. CSX** fájlt (lásd alább).
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
@@ -70,22 +70,22 @@ Miután telepítette a Function alkalmazást, a **App Services** Azure functions
 
     ![fájlokat](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Kattintson a **Létrehozás**gombra. 
+4. Kattintson a **Létrehozás** lehetőségre. 
 
-## <a name="files"></a>Fájlok
+## <a name="files"></a>Files
 
-Az Azure-függvény az ebben a szakaszban ismertetett kódrészletekhez és egyéb fájlokhoz van társítva. Ha a Azure Portal használatával hoz létre egy függvényt, a **function. JSON** fájlt, és a **Run. CSX** fájlt hozza létre. Hozzá kell adnia vagy fel kell töltenie egy **Project. JSON** fájlt. A szakasz további része röviden ismerteti az egyes fájlokat, és megjeleníti a definíciókat.
+Az Azure-függvény az ebben a szakaszban ismertetett kódrészletekhez és egyéb fájlokhoz van társítva. Ha a Azure Portal használatával hoz létre egy függvényt, **function.jsbe** és **futtatni. CSX** jönnek létre. Fel kell vennie vagy fel kell töltenie egy **project.js** fájlt. A szakasz további része röviden ismerteti az egyes fájlokat, és megjeleníti a definíciókat.
 
 ![fájlokat](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-A function. JSON fájl határozza meg a függvények kötéseit és az egyéb konfigurációs beállításokat. A futtatókörnyezet ezt a fájlt használja a figyelni kívánt események meghatározásához és az adatoknak a függvény végrehajtásból való visszaküldéséhez és az adatok visszaadásához. További információ: [Azure functions http-és webhook-kötések](../../azure-functions/functions-reference.md#function-code).
+A fájl function.jsa függvények kötéseit és az egyéb konfigurációs beállításokat határozza meg. A futtatókörnyezet ezt a fájlt használja a figyelni kívánt események meghatározásához és az adatoknak a függvény végrehajtásból való visszaküldéséhez és az adatok visszaadásához. További információ: [Azure functions http-és webhook-kötések](../../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
 >Állítsa a **letiltott** tulajdonságot **true (igaz** ) értékre a függvény végrehajtásának megakadályozása érdekében. 
 
-Cserélje le a meglévő function. JSON fájl tartalmát a következő kódra:
+Cserélje le a fájl meglévő function.jstartalmát a következő kódra:
 
 ```json
 {
@@ -102,11 +102,11 @@ Cserélje le a meglévő function. JSON fájl tartalmát a következő kódra:
 }
 ```
 
-### <a name="projectjson"></a>Project. JSON
+### <a name="projectjson"></a>project.jsbekapcsolva
 
-A Project. JSON fájl függőségeket tartalmaz. Íme egy példa a **Project. JSON** fájlra, amely tartalmazza a szükséges .net Azure Media Services csomagokat a Nuget. Vegye figyelembe, hogy a verziószámok a csomagok legújabb frissítéseire változnak, ezért a legújabb verziókat kell megerősíteni. 
+A fájl project.jsfüggőségeket tartalmaz. Íme egy példa arra a **project.js** fájlra, amely tartalmazza a szükséges .net Azure Media Services csomagokat a Nuget-ből. Vegye figyelembe, hogy a verziószámok a csomagok legújabb frissítéseire változnak, ezért a legújabb verziókat kell megerősíteni. 
 
-Adja hozzá a következő definíciót a Project. JSON fájlhoz. 
+Adja hozzá a következő definíciót a project.jshoz. 
 
 ```json
 {

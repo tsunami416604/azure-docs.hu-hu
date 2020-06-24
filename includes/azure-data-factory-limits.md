@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 217e48ab21439f03e0b52c894c9aace5b51b1502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 995339f91be37b71d73b409f3eaeafb3dd1777ab
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086140"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84754663"
 ---
 Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapértelmezett korlátokkal rendelkezik, hogy az ügyfél-előfizetések védve legyenek egymás munkaterhelésével szemben. Ha a korlátot az előfizetése maximumán szeretné növelni, forduljon az ügyfélszolgálathoz.
 
@@ -32,7 +32,7 @@ Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapé
 | Tevékenységek maximális száma folyamaton keresztül, amely belső tevékenységeket tartalmaz a tárolók számára | 40 | 40 |
 | Egy saját üzemeltetésű integrációs modulon keresztül létrehozható összekapcsolt integrációs modulok maximális száma | 100 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximális paraméterek/folyamat | 50 | 50 |
-| ForEach-elemek | 100 000 | 100 000 |
+| ForEach-elemek | 100.000 | 100.000 |
 | ForEach-párhuzamosság | 20 | 50 |
 | Várólistán várakozó futtatások maximális száma folyamatban | 100 | 100 |
 | Karakter/kifejezés | 8,192 | 8,192 |
@@ -46,7 +46,7 @@ Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapé
 | Lekérdezések figyelése percenként | 1,000 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Entitás-SZIFILISZi műveletek percenként | 50 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Az adatfolyam hibakeresési munkamenetének maximális ideje | 8 óra | 8 óra |
-| Adatfolyamatok egyidejű száma egy gyárban | 50 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Adatfolyamatok egyidejű száma integrációs futtatókörnyezetben | 50 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Adatfolyam-hibakeresési munkamenetek egyidejű száma felhasználónként | 3 | 3 |
 | Adatfolyam Azure IR ÉLETTARTAMának korlátja | 4 óra | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 

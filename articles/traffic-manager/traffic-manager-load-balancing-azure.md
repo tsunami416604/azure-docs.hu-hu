@@ -7,21 +7,21 @@ author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: 786b4141ed83121dce069b45ce7ddcd91bb3b00e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c5667a03d127441a9a911ff4b8daba0b3b138e3a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020795"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711748"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztási szolgáltatások használata az Azure-ban
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Microsoft Azure több szolgáltatást biztosít a hálózati forgalom elosztásának és terheléselosztásának kezeléséhez. Ezeket a szolgáltatásokat egyenként is használhatja, vagy igény szerint kombinálhatja a módszereit az optimális megoldás kiépítéséhez.
 
@@ -41,7 +41,7 @@ Koncepcionális szinten a szolgáltatások mindegyike külön szerepet játszik 
 * A **Application Gateway** az Application Delivery Controller (ADC) szolgáltatást nyújtja, amely különböző, 7. rétegbeli terheléselosztási funkciókat kínál az alkalmazáshoz. Lehetővé teszi az ügyfelek számára a webfarmok hatékonyságának optimalizálását azáltal, hogy kiszervezik a CPU-igényes TLS-lezárást az Application Gateway felé. Az egyéb 7. rétegbeli útválasztási képességek közé tartozik a bejövő forgalom ciklikus lekéréses eloszlása, a cookie-alapú munkamenet-affinitás, az URL-alapú útválasztás, valamint az egyetlen Application Gateway mögött több webhely üzemeltetése. Application Gateway konfigurálható internetre irányuló átjáróként, csak belső átjáróként, vagy mindkettő kombinációja. A Application Gateway teljes mértékben az Azure által felügyelt, méretezhető és magasan elérhető. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében.
 * **Load Balancer** az Azure Sdn stack szerves része, amely nagy teljesítményű, kis késleltetésű 4. rétegbeli terheléselosztási szolgáltatásokat biztosít minden UDP-és TCP-protokollhoz. Felügyeli a bejövő és kimenő kapcsolatokat. Segítségével nyilvános és belső elosztott terhelésű végpontok konfigurálhatók, valamint szabályok definiálhatók, amelyek a bejövő kapcsolatokat a háttérbeli készletben található célokra irányítják TCP- és HTTP-állapotellenőrzési lehetőségek használatával, a szolgáltatás rendelkezésre állásának felügyeletéhez.
 
-## <a name="scenario"></a>Eset
+## <a name="scenario"></a>Forgatókönyv
 
 Ebben a példában egy egyszerű webhelyet használunk, amely két típusú tartalmat kínál: a képeket és a dinamikusan megjelenített weblapokat. A webhelynek földrajzilag redundánsnak kell lennie, és a felhasználókat a legközelebbi (legalacsonyabb késésű) helyről kell kiszolgálni. Az alkalmazás fejlesztői úgy döntöttek, hogy a/images/* mintának megfelelő URL-címek a webfarm többi részétől eltérő, dedikált virtuális gépekből származnak.
 

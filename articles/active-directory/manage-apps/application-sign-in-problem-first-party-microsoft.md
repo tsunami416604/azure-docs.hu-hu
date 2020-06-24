@@ -3,25 +3,25 @@ title: Problémák a Microsoft-alkalmazásba való bejelentkezéskor | Microsoft
 description: Az első féltől származó Microsoft-alkalmazásokba az Azure AD-vel való bejelentkezéskor felmerülő gyakori problémák elhárítása (például az Office 365)
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67108303"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759283"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problémák a Microsoft-alkalmazásba való bejelentkezéskor
 
@@ -512,19 +512,19 @@ Az alkalmazás hozzáférése blokkolható, mert nem történt meg a megfelelő 
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Rendszergazdai szintű beleegyező művelet végrehajtása bármely alkalmazáshoz
 
--   **Csak a v1-es alkalmazási modellel fejlesztett alkalmazások**esetében kényszerítheti ezt a rendszergazdai szintű hozzájárulást, ha az alkalmazás bejelentkezési URL-címének végéhez hozzáadja a "**? prompt = rendszergazdai\_jóváhagyás" kifejezést**.
+-   **Csak a v1-es alkalmazási modellel fejlesztett alkalmazások**esetében kényszerítheti ezt a rendszergazdai szintű hozzájárulást, ha az alkalmazás bejelentkezési URL-címének végéhez hozzáadja a "**? prompt = rendszergazdai \_ jóváhagyás" kifejezést**.
 
 -   A **v2-alkalmazási modellel fejlesztett bármely alkalmazás**esetében kényszerítheti ezt a rendszergazdai szintű beleegyező jogosultságot, ha az **engedélyek kérése a címtár-rendszergazda** számára című részben található utasításokat követve a [rendszergazdai engedélyezési végpontot használja](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Rendszergazdai szintű engedély végrehajtása egyetlen bérlős alkalmazáshoz
 
--   Az olyan **egybérlős alkalmazások** esetében, amelyek engedélyeket kérnek (például a szervezeten belül fejlesztenek vagy azok tulajdonosai), az összes felhasználó nevében elvégezheti a **rendszergazdai szintű jóváhagyást** , ha globális rendszergazdaként jelentkezik be, majd az **engedélyek megadása** gombra kattint az **alkalmazás beállításjegyzékének tetején –&gt; minden alkalmazás –&gt; válassza ki&gt; ** az alkalmazáshoz szükséges engedélyek ablaktáblát.
+-   Az olyan **egybérlős alkalmazások** esetében, amelyek engedélyeket kérnek (például a szervezeten belül fejlesztenek vagy azok tulajdonosai), az összes felhasználó nevében elvégezheti a **rendszergazdai szintű jóváhagyást** , ha globális rendszergazdaként jelentkezik be, majd az **engedélyek megadása** gombra kattint az **alkalmazás beállításjegyzékének tetején – &gt; minden alkalmazás – &gt; válassza ki az alkalmazáshoz &gt; szükséges engedélyek** ablaktáblát.
 
 -   A **v1 vagy v2 alkalmazás modelljével fejlesztett alkalmazások**esetében kényszerítheti ezt a rendszergazdai szintű beleegyező jogosultságot, ha az **engedélyek kérése a címtár-rendszergazda** számára című részben található utasításokat követve a [rendszergazdai engedélyezési végpontot használja](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Rendszergazdai szintű engedély végrehajtása több-bérlős alkalmazáshoz
 
--   Olyan **több-bérlős alkalmazások** esetében, amelyek engedélyeket kérnek (például egy harmadik féltől származó alkalmazás, vagy a Microsoft, fejleszt), **rendszergazdai szintű beleegyező** műveletet hajthat végre. Jelentkezzen be globális rendszergazdaként, és kattintson az **engedélyek megadása** gombra a **vállalati alkalmazások&gt; – minden alkalmazás területen,&gt; és válassza ki az&gt; alkalmazás-engedélyek** panelt (hamarosan elérhető).
+-   Olyan **több-bérlős alkalmazások** esetében, amelyek engedélyeket kérnek (például egy harmadik féltől származó alkalmazás, vagy a Microsoft, fejleszt), **rendszergazdai szintű beleegyező** műveletet hajthat végre. Jelentkezzen be globális rendszergazdaként, és kattintson az **engedélyek megadása** gombra a **vállalati alkalmazások – minden alkalmazás területen, és &gt; &gt; válassza ki az alkalmazás- &gt; engedélyek** panelt (hamarosan elérhető).
 
 -   Ezt a rendszergazdai szintű beleegyező jogosultságot arra is kényszerítheti, hogy a rendszergazdai [engedélyezési végpont használatával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)adja meg az **engedélyek kérése egy címtár-rendszergazda** szakasz utasításait.
 

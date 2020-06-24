@@ -3,8 +3,8 @@ title: A szükséges alhálózati méret meghatározása & tartományban
 titleSuffix: Azure SQL Managed Instance
 description: Ez a témakör azt ismerteti, hogyan számítható ki az az alhálózat, amelyben az Azure SQL felügyelt példánya telepítve lesz.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 2ad140e7f0040552cbdc2490d25a07f3d1184720
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8d1073dbcced9532390776a23dd17c1f572cce40
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657861"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686681"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>A szükséges alhálózati méret meghatározása & az Azure SQL felügyelt példányának tartománya
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,7 +46,7 @@ Ha több felügyelt példányt kíván üzembe helyezni az alhálózaton belül,
 > [!IMPORTANT]
 > A fent megjelenő számítás a további fejlesztésekkel elavulttá válik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - További információ az [SQL felügyelt példányának kapcsolati architektúráról](connectivity-architecture-overview.md).

@@ -5,23 +5,23 @@ description: Megtudhatja, hogyan használhatja a Azure Monitor Azure DDoS Protec
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: f208119ce80d6b728030ea96f13d6c3d0375e74a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed311e9c8031f8586762d2adc4c104545e323bc0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182939"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711510"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure DDoS Protection standard kezelése a Azure Portal használatával
 
@@ -29,7 +29,7 @@ Megtudhatja, hogyan engedélyezheti és tilthatja le az elosztott szolgáltatás
 
 Az oktatóanyag lépéseinek elvégzése előtt jelentkezzen be a Azure Portalba https://portal.azure.com egy olyan fiókkal, amely a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz van rendelve, vagy egy olyan [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az [engedélyek](#permissions)területen felsorolt megfelelő műveletekhez van rendelve.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-ddos-protection-plan"></a>DDoS elleni védelmi terv létrehozása
 
@@ -45,7 +45,7 @@ A legtöbb szervezet esetében nem szükséges több csomag létrehozása. A cso
     |Beállítás        |Érték                                              |
     |---------      |---------                                          |
     |Name (Név)           | myDdosProtectionPlan                              |
-    |Előfizetés   | Válassza ki előfizetését.                         |
+    |Előfizetés   | Válassza ki az előfizetését.                         |
     |Erőforráscsoport | Válassza az **új létrehozása** elemet, és adja meg a *myResourceGroup* |
     |Hely       | USA keleti régiója                                           |
 
@@ -58,7 +58,7 @@ A legtöbb szervezet esetében nem szükséges több csomag létrehozása. A cso
     | Beállítás         | Érték                                                        |
     | ---------       | ---------                                                    |
     | Name (Név)            | myVirtualNetwork                                             |
-    | Előfizetés    | Válassza ki előfizetését.                                    |
+    | Előfizetés    | Válassza ki az előfizetését.                                    |
     | Erőforráscsoport  | Válassza a **meglévő használata**lehetőséget, majd a **myResourceGroup** lehetőséget. |
     | Hely        | USA keleti régiója                                                      |
     | DDos-védelem | Válassza a **standard** lehetőséget, majd a **DDoS Protection**területen válassza a **myDdosProtectionPlan**lehetőséget. A kiválasztott csomag a virtuális hálózattal megegyező vagy eltérő előfizetésben is lehet, de mindkét előfizetéshez ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.|
@@ -230,7 +230,7 @@ A riasztások a támadás, a Geo és a veszélyforrások felderítésére vonatk
 
 A DDoS elleni védelmi tervekkel való együttműködéshez a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                            | Name (Név)                                     |
+| Műveletek                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/READ        | DDoS Protection-csomag beolvasása              |
 | Microsoft. Network/ddosProtectionPlans/Write       | DDoS elleni védelmi terv létrehozása vagy frissítése  |

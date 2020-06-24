@@ -4,11 +4,11 @@ description: Ez a cikk bevezetést nyújt egy Service Fabric alkalmazás frissí
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259044"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710320"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric alkalmazás frissítése
 Az Azure Service Fabric-alkalmazás szolgáltatások gyűjteménye. A frissítés során Service Fabric összehasonlítja az új [alkalmazás-jegyzékfájlt](service-fabric-application-and-service-manifests.md) az előző verzióval, és meghatározza, hogy az alkalmazás mely szolgáltatásai igényelnek frissítéseket. Service Fabric összehasonlítja a szolgáltatási jegyzékfájlok verziószámait az előző verzió verziószámával. Ha egy szolgáltatás nem módosult, akkor a szolgáltatás nem frissül.
@@ -49,7 +49,7 @@ Az alkalmazások frissítésének visszavonása után a rendszer az alapértelme
 > A [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) -fürt konfigurációs beállításának *igaznak* kell lennie a 2. és a 3. szabály engedélyezéséhez (az alapértelmezett szolgáltatás frissítése és törlése). Ez a funkció Service Fabric 5,5-es verziótól kezdődően támogatott.
 
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Több alkalmazás frissítése HTTPS-végpontokkal
-Ügyeljen arra, hogy ne **ugyanazt a portot** használja ugyanazon alkalmazás különböző példányaihoz, ha http-**t**használ. Ennek az az oka, hogy Service Fabric nem fogja tudni frissíteni az egyik alkalmazás példányának tanúsítványát. Ha például az 1. vagy a 2. alkalmazás egyaránt szeretné frissíteni az 1. tanúsítványát a 2. tanúsítványra. Ha a frissítés történik, előfordulhat, hogy Service Fabric a http. sys használatával megtisztította a tanúsítvány 1 regisztrációját, annak ellenére, hogy a másik alkalmazás továbbra is használja. Ennek megelőzése érdekében Service Fabric észleli, hogy már van egy másik alkalmazás-példány regisztrálva a porton a tanúsítvánnyal (a http. sys miatt), és a művelet sikertelen lesz.
+Ügyeljen arra, hogy ne **ugyanazt a portot** használja ugyanazon alkalmazás különböző példányaihoz, ha http-**t**használ. Ennek az az oka, hogy Service Fabric nem fogja tudni frissíteni az egyik alkalmazás példányának tanúsítványát. Ha például az 1. vagy a 2. alkalmazás egyaránt szeretné frissíteni az 1. tanúsítványát a 2. tanúsítványra. Ha a frissítés történik, előfordulhat, hogy Service Fabric megtisztította a tanúsítvány 1 regisztrációját http.sys annak ellenére, hogy a másik alkalmazás továbbra is használja azt. Ennek megelőzése érdekében Service Fabric észleli, hogy már van egy másik alkalmazás-példány regisztrálva a porton a tanúsítvánnyal (http.sys miatt), és a művelet sikertelen lesz.
 
 Ezért Service Fabric nem támogatja két különböző szolgáltatás frissítését **ugyanazon a porton** keresztül különböző alkalmazás-példányokban. Más szóval nem használhatja ugyanazt a tanúsítványt ugyanazon a porton lévő különböző szolgáltatásokhoz. Ha megosztott tanúsítvánnyal kell rendelkeznie ugyanazon a porton, gondoskodnia kell arról, hogy a szolgáltatások elhelyezése a különböző gépeken történjen, elhelyezési korlátozásokkal. Ha lehetséges, érdemes Service Fabric dinamikus portokat használni, ha az egyes szolgáltatásokhoz az egyes alkalmazás-példányokban. 
 

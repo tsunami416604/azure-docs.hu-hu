@@ -1,5 +1,5 @@
 ---
-title: A Word konvertálása vektorra
+title: 'A Word konvertálása vektorba: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
 description: Ebből a témakörből megtudhatja, hogyan hozhatja ki a három megadott Word2Vec-modellt a szókincs és a hozzá tartozó Word-beágyazások szövegből való kinyeréséhez.
 services: machine-learning
@@ -9,72 +9,79 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: e0e796b75690bcacc6be8ef29b8b490c7faa40af
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853770"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753888"
 ---
-# <a name="convert-word-to-vector"></a>A Word konvertálása vektorra
+# <a name="convert-word-to-vector-module"></a>A Word átalakítása vektoros modulba
 
-Ez a cikk azt ismerteti, hogyan használható a **Word konvertálása vektoros** modul Azure Machine learning Designerben (előzetes verzió), hogy különböző különböző Word2Vec-modelleket (Word2Vec, FastText, kesztyűt előre betanított modellt) alkalmazzon a bemenetként megadott szövegre, és létrehozza a szavakat beágyazásokat tartalmazó szókincset.
+Ez a cikk azt ismerteti, hogyan használható a Word átalakítása vektoros modul Azure Machine Learning Designerben (előzetes verzió) a következő feladatok végrehajtásához:
 
-Ez a modul a Gensim könyvtárat használja. A Gensim kapcsolatos további információkért tekintse meg az oktatóanyagokat és az algoritmusok magyarázatát tartalmazó [hivatalos webhelyét](https://radimrehurek.com/gensim/apiref.html) .
+- Alkalmazzon különböző Word2Vec-modelleket (Word2Vec, FastText, kesztyűs előképzéses modellt) a beírt szövegre, amelyet bemenetként adott meg.
+- Word-beágyazásokkal rendelkező szókincs létrehozása.
 
-### <a name="more-about-convert-word-to-vector"></a>További információ a Word konvertálása vektorra
+Ez a modul a Gensim könyvtárat használja. A Gensim kapcsolatos további információkért tekintse meg a [hivatalos webhelyét](https://radimrehurek.com/gensim/apiref.html), amely oktatóanyagokat és az algoritmusok magyarázatát tartalmazza.
 
-Általánosságban elmondható, hogy a Word a vektorra vagy a Word vektorizációt-re való konvertálása természetes nyelvi feldolgozási folyamat, amely nyelvi modelleket vagy technikákat használ a szavak vektoros területre való leképezésére, azaz az egyes szavak valós számok vektorával való ábrázolására, és eközben lehetővé teszi, hogy a hasonló jelentésekkel rendelkező szavak hasonló ábrázolással rendelkezzenek.
+### <a name="more-about-converting-words-to-vectors"></a>További információ a szavak vektorokra konvertálásáról
 
-A Word-beágyazások kezdeti bemenetként használhatók az NLP alsóbb rétegbeli feladataihoz, mint például a szöveg besorolása, a hangulat elemzése stb.
+Általánosságban elmondható, hogy a szavakat vektorokra vagy Word vektorizációt alakítják át, a természetes nyelvi feldolgozási (NLP) folyamat. A folyamat nyelvi modelleket vagy technikákat használ a szavak vektoros területre való leképezéséhez, azaz az egyes szavakat valós számok vektora szerint ábrázolni. Eközben lehetővé teszi a hasonló jelentésekkel rendelkező szavak hasonló ábrázolását.
 
-Ebben a modulban három széles körben használt módszert ismertetünk, többek között két online képzési modellt, Word2Vec és FastText, valamint egy előre betanított modellt, amely a kesztyű-wiki-gigaword-100. Az online képzési modelleket betanítjuk a bemeneti adataira, míg az előre betanított modellek egy nagyobb szöveges Corpus (például a Wikipedia, a Google Hírek) esetében általában körülbelül 100 000 000 000 szót tartalmaznak, a Word-beágyazás során pedig állandó marad a Word vektorizációt. Az előre betanított Word-modellek olyan előnyöket biztosítanak, mint például a csökkentett képzési idő, a jobb Word-vektorok kódolása és a teljes teljesítmény.
+A Word-beágyazások kezdeti bemenetként használhatók az NLP alsóbb rétegbeli feladataihoz, például a szöveges besoroláshoz és a hangulat elemzéséhez.
 
-+ A Word2Vec az egyik legnépszerűbb módszer a sekély neurális hálózatot használó Word-beágyazások megismerésére, az elméletet a PDF-letöltésként elérhetővé teszi a következő dokumentumban: a [vektoros térben, a Mikolov, a Tomas és az et al](https://arxiv.org/pdf/1301.3781.pdf). A modul implementációja a [Word2Vec gensim könyvtárán](https://radimrehurek.com/gensim/models/word2vec.html)alapul.
+Ebben a modulban három széles körben használt módszert hoztunk létre a különböző Word-beágyazási technológiák között. A két, a Word2Vec és a FastText online képzési modell. A másik egy előre betanított modell, kesztyű-wiki-gigaword-100. 
 
-+ A FastText elméletét a PDF-letöltésként elérhető dokumentum ismerteti: a [Word-vektorok gazdagítása a Word Information, a Bojanowski, a Piotr és az mtsai](https://arxiv.org/pdf/1607.04606.pdf). A modul implementációja a [FastText gensim könyvtárán](https://radimrehurek.com/gensim/models/fasttext.html)alapul.
+Online – a betanítási modellek a bemeneti adatokra vannak betanítva. Az előképzett modelleket a rendszer offline állapotba helyezi egy nagyobb szöveges Corpus (például wikipedia, Google Hírek) esetében, amely általában körülbelül 100 000 000 000 szót tartalmaz. A Word beágyazása után a Word vektorizációt állandó marad. Az előképzésen átadott Word-modellek olyan előnyöket biztosítanak, mint például a kevesebb tanítási idő, a jobb Word-vektorok kódolása és a jobb általános teljesítmény.
 
-+ Kesztyűt előre betanított modell: a kesztyű-wiki-gigaword-100, az előre betanított vektorok gyűjteménye, amely a wikipedia Text corpuson alapul, amely 5.6 B jogkivonatokat és 400K nem megfelelő szókincset tartalmaz, a PDF elérhető: [kesztyű: globális vektorok a Word ábrázolásához](https://nlp.stanford.edu/pubs/glove.pdf).
+Íme néhány információ a módszerekről:
+
++ A Word2Vec az egyik legnépszerűbb módszer a Word-beágyazások egy sekély neurális hálózat használatával történő megismerésére. Az elméletet a PDF-letöltésként elérhető dokumentumban tárgyaljuk: a [Mikolov, Tomas és et al által biztosított Word-ábrázolások hatékony becslése](https://arxiv.org/pdf/1301.3781.pdf). A modul implementációja a [Word2Vec Gensim könyvtárán](https://radimrehurek.com/gensim/models/word2vec.html)alapul.
+
++ A FastText elméletet a PDF-letöltésként elérhető dokumentum ismerteti: a [Word-vektorok gazdagítása alword-információkkal, Bojanowski, Piotr, és Al](https://arxiv.org/pdf/1607.04606.pdf). A modul implementációja a [FastText Gensim könyvtárán](https://radimrehurek.com/gensim/models/fasttext.html)alapul.
+
++ A kesztyű előre betanított modellje a kesztyű-wiki-gigaword-100. Egy olyan, előképzésen alapuló vektorok gyűjteménye, amelyek egy, a 5 600 000 000-es tokeneket és 400 000 nem megfelelő szókincset tartalmaznak PDF-Letöltés érhető el: [kesztyű: globális vektorok a Word ábrázolásához](https://nlp.stanford.edu/pubs/glove.pdf).
 
 ## <a name="how-to-configure-convert-word-to-vector"></a>A Word átalakítása vektorra történő konfigurálásának módja
 
-Ehhez a modulhoz olyan adatkészlet szükséges, amely egy szöveges oszlopot tartalmaz, az előfeldolgozott szöveg jobb.
+Ehhez a modulhoz olyan adatkészlet szükséges, amely egy szöveges oszlopot tartalmaz. Az előfeldolgozott szöveg jobb.
 
 1. Adja hozzá a **Word konvertálása vektoros** modult a folyamathoz.
 
-2. A modul bemenete adjon meg egy vagy több szöveges oszlopot tartalmazó adatkészletet.
+2. A modul bemenete adjon meg egy adatkészletet, amely egy vagy több szöveges oszlopot tartalmaz.
 
-3. A **cél oszlop**esetében csak egy olyan oszlopot válasszon, amely a feldolgozandó szöveget tartalmazza.
+3. A **cél oszlop**esetében csak egy olyan oszlopot válasszon, amely feldolgozni kívánt szöveget tartalmaz.
 
-    Általánosságban elmondható, hogy ez a modul szövegből származó szókincset hoz létre, a különböző oszlopok tartalma eltér egymástól, így a modul csak egyetlen cél oszlopot fogad el.
+    Mivel ez a modul szövegből hoz létre egy szókincset, az oszlopok tartalma eltér, ami különböző szókincs-tartalmakhoz vezet. Ezért a modul csak egy cél oszlopot fogad el.
 
-4. A **Word2Vec stratégia**esetében válassza a következőt:, `GloVe pretrained English Model` `Gensim Word2Vec` és `Gensim FastText` .
+4. A **Word2Vec stratégia**esetében válasszon a következő, az **előképzésen átadott angol modellből**, a **Gensim Word2Vec**és a **Gensim FastText**.
 
-5. Ha a **Word2Vec stratégia** `Gensim Word2Vec` vagy `Gensim FastText` :
+5. Ha a **Word2Vec stratégia** a **Gensim Word2Vec** vagy a **Gensim FastText**:
 
-    + **Word2Vec-betanítási algoritmus**. Válassza a `Skip_gram` és a lehetőséget `CBOW` . A különbség az eredeti [dokumentumban](https://arxiv.org/pdf/1301.3781.pdf)van bevezetve.
+    + **Word2Vec betanítási algoritmus**esetén válasszon a **Skip_gram** és a **CBOW**közül. A különbség az [eredeti dokumentumban (PDF)](https://arxiv.org/pdf/1301.3781.pdf)van bevezetve.
 
-        Az alapértelmezett metódus: `Skip_gram` .
+        Az alapértelmezett módszer a **Skip_gram**.
 
-    + **A Word beágyazásának hossza**. A Word-vektorok dimenzióját meghatározása. Megfelel a `size` paraméternek a gensim.
+    + A **Word beágyazásának hosszához**a Word-vektorok dimenzióját kell megadni. Ez a beállítás megfelel a `size` Gensim paraméterének.
 
-        Az alapértelmezett embedding_size a 100.
+        Az alapértelmezett beágyazási méret 100.
 
-    + **Környezet ablakának mérete** Az előre jelzett szó és az aktuális szó közötti maximális távolságot határozza meg. Megfelel a `window` paraméternek a gensim.
+    + A **környezeti ablak méretéhez**határozza meg az előre jelzett szó és az aktuális szó közötti maximális távolságot. Ez a beállítás megfelel a `window` Gensim paraméterének.
 
-        Az ablak alapértelmezett mérete 5.
+        Az alapértelmezett ablakméret 5.
 
-    + **A korszakok száma**. Adja meg az időpontok számát (iteráció) a corpuson. Megfelel a `iter` paraméternek a gensim.
+    + Az **időpontok számának**megadásához adja meg az időpontok számát (iteráció) a corpuson. Ez a beállítás megfelel a `iter` Gensim paraméterének.
 
-        Az alapértelmezett időkorszakok száma 5.
+        Az alapértelmezett alapérték 5.
 
 6. A **szókincs maximális méretéhez**a generált szókincsben szereplő szavak maximális számát határozza meg.
 
-    Ha a fentieknél több egyedi szó van, akkor a nem gyakoriak.
+    Ha a fentieknél több egyedi szó van, a rendszer a ritka fájlokat is aszalt szilva.
 
-    Az alapértelmezett szókincs mérete 10000.
+    Az alapértelmezett szókincs mérete 10 000.
 
-7. A szavak **minimális száma**beállításnál adjon meg egy minimális számú szót, ami lehetővé teszi, hogy a modul figyelmen kívül hagyja az összes szót, amelynek a gyakorisága ennél az értéknél kisebb.
+7. A **szavak minimális száma**mezőben adja meg a minimális számú szót. A modul figyelmen kívül hagyja az összes olyan szót, amelynek a gyakorisága ennél az értéknél kisebb.
 
     Az alapértelmezett érték 5.
 
@@ -84,17 +91,15 @@ Ehhez a modulhoz olyan adatkészlet szükséges, amely egy szöveges oszlopot ta
 
 A modul egy kimenettel rendelkezik:
 
-+ **Beágyazást tartalmazó szókincs**: tartalmazza a generált szókincset, valamint az egyes szavak beágyazását, az egyik dimenzió egy oszlopot foglal el.
++ **Beágyazást tartalmazó szókincs**: tartalmazza a generált szókincset, valamint az egyes szavak beágyazását. Az egyik dimenzió egy oszlopot foglal le.
 
-### <a name="result-examples"></a>Példák az eredményekre
+Az alábbi példa azt szemlélteti, hogyan működik a Word konvertálása vektoros modulra. Ez a modul a Azure Machine Learning (előzetes verzió) szolgáltatásban megadott, előfeldolgozott wikipedia SP 500 adatkészlet alapértelmezett beállításaival lesz alkalmazva.
 
-Az alábbi példa azt szemlélteti, hogyan működik a **Word konvertálása vektoros** modulba, a következő példa a modult alkalmazza alapértelmezett beállításokkal a Azure Machine learning (előzetes verzió) szolgáltatásban megadott előfeldolgozott Wikipedia SP 500-adatkészletre.
+### <a name="source-dataset"></a>Forrásadatkészlet
 
-#### <a name="source-dataset"></a>Forrásadatkészlet
+Az adatkészlet tartalmaz egy category oszlopot, valamint a wikipedia-ból beolvasott teljes szöveget. Ez a táblázat csak néhány reprezentatív példát mutat be.
 
-Az adatkészlet tartalmaz egy category oszlopot, valamint a wikipedia-ból beolvasott teljes szöveget is. Ez a táblázat csak néhány reprezentatív példát mutat be.
-
-|szöveg|
+|Szöveg|
 |----------|
 |NASDAQ 100 Component s p 500 Component Foundation alapító Location City Apple Campus 1 végtelen Loop Street infinite loop Cupertino California Cupertino Kalifornia helyszín ország Egyesült Államok...|
 |br NASDAQ 100 NASDAQ 100 összetevő br s p 500 s p 500 Component Industry számítógép Software Foundation br alapítója, Charles geschke br John Warnock hely Adobe Systems...|
@@ -102,9 +107,9 @@ Az adatkészlet tartalmaz egy category oszlopot, valamint a wikipedia-ból beolv
 |s p 500 s p 500 összetevő iparági konglomerátum társasági konglomerátum Foundation alapító Location City Fairfield Connecticut Fairfield Connecticut Location Country USA területén...|
 |br s p 500 s p 500 Component Foundation 1903 alapító William s Harley br Arthur Davidson Harley Davidson alapító Arthur Davidson br Walter Davidson br William a Davidson hely...|
 
-#### <a name="output-vocabulary-with-embeddings"></a>Kimeneti Szószedet beágyazásokkal
+### <a name="output-vocabulary-with-embeddings"></a>Kimeneti Szószedet beágyazásokkal
 
-A következő táblázat tartalmazza a modul kimenetét a wikipedia SP 500 adatkészlet bemenetként való elkészítésekor. A bal szélső oszlop jelzi a szókincset, a beágyazási vektort az ugyanabban a sorban található fennmaradó oszlopok értékei jelölik.
+A következő táblázat tartalmazza a modul kimenetét, amely a wikipedia SP 500 adatkészletét bemenetként veszi figyelembe. A bal szélső oszlop a szókincset jelöli. A beágyazási vektort az ugyanabban a sorban található fennmaradó oszlopok értékei jelölik.
 
 |Szókincs|A Dim 0 beágyazása|A Dim 1 beágyazása|A Dim 2 beágyazása|A Dim 3 beágyazása|A 4. Dim beágyazás|A Dim 5 beágyazása|...|A Dim 99 beágyazása|
 |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
@@ -121,23 +126,23 @@ Campus|– 0,281835|0,29312|0,106966|– 0,031385|0,100777|– 0,061452|...|0,05
 végtelen|– 0,263074|0,245753|0,07058|– 0,164666|0,162857|– 0,027345|...|– 0,0525
 hurok|– 0,391421|0,52366|0,141503|– 0,105423|0,084503|– 0,018424|...|– 0,0521
 
-Ebben a példában az alapértelmezett értéket használtuk `Gensim Word2Vec` a Word2Vec- **stratégia**, a **betanítási algoritmus** , a `Skip-gram` **word beágyazásának hossza** 100, ezért 100 beágyazási oszlopokkal rendelkezünk.
+Ebben a példában a **Word2Vec-stratégia**alapértelmezett **Gensim-Word2Vec** használtuk, és a **betanítási algoritmus** **kihagyása – gramm**. **A Word beágyazás hossza** 100, ezért 100 beágyazási oszlopokat tartalmaz.
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
 
 Ez a szakasz tippeket és válaszokat tartalmaz a gyakori kérdésekre.
 
-+ Az online és az előre betanított modell közötti különbség
++ Az online képzés és az előre betanított modell közötti különbség:
 
-    A **Word konvertálása vektoros modulba**három különböző stratégiát, két online képzési modellt és egy előre betanított modellt biztosítunk. Az online képzési modell a bemeneti adatkészletet használja a betanítási adatokhoz, szókincset és Word-vektorokat hoz létre a betanítás során, míg az előre betanított modellt már a sokkal nagyobb szöveg-Corpus, például a wikipedia vagy a Twitter szövege is betanítja, így az előre betanított modell tulajdonképpen egy gyűjtemény (Word, beágyazási) pár  
+    A Word konvertálása vektoros modulba három különböző stratégiát nyújtottunk be: két online képzési modell és egy előre betanított modell. Az online képzési modellek a bemeneti adatkészletet betanítási adatként használják, és a tanítás során szókincset és Word-vektorokat hozhatnak. Az előre betanított modellt már egy sokkal nagyobb szöveg-Corpus, például a wikipedia vagy a Twitter szövege képezi. Az előképzésen alapuló modell tulajdonképpen a Word-vagy beágyazási párok gyűjteménye.  
 
-    Ha a kesztyű előre betanított modelljét Word vektorizációt-stratégiaként választják meg, akkor az összefoglalja a bemeneti adatkészletből származó szókincset, és az előre betanított modell minden szavához létrehoz egy beágyazási vektort, online képzés nélkül, az előre betanított modell használata időt takaríthat meg, és jobb teljesítményt nyújt, különösen akkor, ha a bemeneti adatkészlet mérete viszonylag kicsi
+    Ha a kesztyű előre betanított modellje a Word vektorizációt-stratégia, akkor az összefoglalja a bemeneti adatkészletből származó szókincset, és létrehoz egy beágyazási vektort az előképzett modell minden szavához. Online képzés nélkül az előképző modell használata időt takaríthat meg. Jobb teljesítményt nyújt, különösen akkor, ha a bemeneti adatkészlet mérete viszonylag kicsi.
 
-+ Beágyazási méret
++ Beágyazási méret:
 
-    Általánosságban elmondható, hogy a Word beágyazásának hossza néhány száz (például 100, 200, 300), hogy jó teljesítményt érjen el, mivel a kis beágyazási méret kis vektoros területet jelent, ami a Word beágyazási ütközéseket okozhat.  
+    Általánosságban elmondható, hogy a Word beágyazásának hossza néhány száz (például 100, 200, 300) van beállítva a jó teljesítmény eléréséhez. Ennek az az oka, hogy egy kis beágyazási méret kis vektoros területet jelent, ami az ütközések beágyazását okozhatja.  
 
-    Az előre ellátott modellek esetében a Word-beágyazások hossza javítva lett, ebben a megvalósításban a kesztyűk beágyazásának mérete – wiki-gigaword-100, 100.
+    Az előre betanított modellek esetében a Word-beágyazások hossza rögzített. Ebben a megvalósításban a kesztyű beágyazásának mérete – wiki-gigaword-100, 100.
 
 
 ## <a name="next-steps"></a>További lépések

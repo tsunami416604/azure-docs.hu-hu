@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259005"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712462"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Rendszeres biztonsági mentés és visszaállítás egy Azure Service Fabric-fürtben
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ A Service Fabric API-kat biztosít a következő, rendszeres biztonsági mentés
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* Győződjön meg arról, hogy a fürt a `Connect-SFCluster` paranccsal van csatlakoztatva, mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
+* Győződjön meg arról, hogy a fürt a paranccsal van csatlakoztatva, `Connect-SFCluster` mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
 
 ```powershell
 
@@ -68,7 +68,7 @@ A Service Fabric API-kat biztosít a következő, rendszeres biztonsági mentés
 
 ### <a name="using-azure-portal"></a>Az Azure Portal használata
 
-`Include backup restore service` Jelölje be `+ Show optional settings` a jelölőnégyzetet `Cluster Configuration` a lapon.
+`Include backup restore service`Jelölje be a jelölőnégyzetet `+ Show optional settings` a `Cluster Configuration` lapon.
 
 ![Biztonsági mentési visszaállítási szolgáltatás engedélyezése a portálon][1]
 
@@ -76,7 +76,7 @@ A Service Fabric API-kat biztosít a következő, rendszeres biztonsági mentés
 ### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 Először engedélyeznie kell a _biztonsági mentési és visszaállítási szolgáltatást_ a fürtben. Szerezze be a telepíteni kívánt fürt sablonját. Használhatja a [minta sablonokat](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) , vagy létrehozhat egy Resource Manager-sablont. Engedélyezze a _biztonsági mentési és visszaállítási szolgáltatást_ a következő lépésekkel:
 
-1. Győződjön meg arról `apiversion` , hogy az **`2018-02-01`** az `Microsoft.ServiceFabric/clusters` erőforráshoz van beállítva, és ha nem, frissítse az alábbi kódrészletben látható módon:
+1. Győződjön meg arról, hogy az az `apiversion` **`2018-02-01`** `Microsoft.ServiceFabric/clusters` erőforráshoz van beállítva, és ha nem, frissítse az alábbi kódrészletben látható módon:
 
     ```json
     {
@@ -88,7 +88,7 @@ Először engedélyeznie kell a _biztonsági mentési és visszaállítási szol
     }
     ```
 
-2. Most engedélyezze a _biztonsági mentési és visszaállítási szolgáltatást_ úgy, `addonFeatures` hogy hozzáadja `properties` a következő szakaszt a szakaszban, ahogy az a következő kódrészletben látható: 
+2. Most engedélyezze a _biztonsági mentési és visszaállítási szolgáltatást_ úgy, hogy hozzáadja a következő `addonFeatures` szakaszt a `properties` szakaszban, ahogy az a következő kódrészletben látható: 
 
     ```json
         "properties": {
@@ -99,7 +99,7 @@ Először engedélyeznie kell a _biztonsági mentési és visszaállítási szol
         }
 
     ```
-3. Konfigurálja az X. 509 tanúsítványt a hitelesítő adatok titkosításához. Ez fontos annak biztosítása érdekében, hogy a tárolóhoz való kapcsolódáshoz megadott hitelesítő adatok titkosítva maradjanak, mielőtt megmaradnak. A titkosítási tanúsítvány konfigurálásához adja hozzá `BackupRestoreService` a következő `fabricSettings` szakaszt a szakaszhoz, ahogy az a következő kódrészletben látható: 
+3. Konfigurálja az X. 509 tanúsítványt a hitelesítő adatok titkosításához. Ez fontos annak biztosítása érdekében, hogy a tárolóhoz való kapcsolódáshoz megadott hitelesítő adatok titkosítva maradjanak, mielőtt megmaradnak. A titkosítási tanúsítvány konfigurálásához adja hozzá a következő `BackupRestoreService` szakaszt a `fabricSettings` szakaszhoz, ahogy az a következő kódrészletben látható: 
 
     ```json
     "properties": {
@@ -121,18 +121,18 @@ Először engedélyeznie kell a _biztonsági mentési és visszaállítási szol
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Rendszeres biztonsági mentés engedélyezése megbízható állapot-nyilvántartó szolgáltatáshoz és Reliable Actors
 A megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezéséhez hajtsa végre a lépéseket. Az alábbi lépések feltételezik
 - A fürt az X. 509 biztonsági _mentési és visszaállítási szolgáltatással_történő beállítás.
-- Megbízható állapot-nyilvántartó szolgáltatás van telepítve a fürtön. Ebben a rövid útmutatóban az alkalmazás URI `fabric:/SampleApp` -ja, az alkalmazáshoz tartozó megbízható állapot-nyilvántartó szolgáltatás URI azonosítója pedig. `fabric:/SampleApp/MyStatefulService` A szolgáltatás egyetlen partícióval van üzembe helyezve, a partíció azonosítója pedig `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
-- Az ügyféltanúsítvány és a rendszergazdai szerepkör telepítve van a _saját_ (_személyes_) tárolójában a _CurrentUser_ tanúsítványtárolójának a gépen, ahonnan az alábbi parancsfájlok meghívására kerül sor. Ez a példa `1b7ebe2174649c45474a4819dafae956712c31d3` a tanúsítvány ujjlenyomatát használja. További információ az Ügyféltanúsítványok használatáról: [Service Fabric ügyfelek szerepköralapú hozzáférés-vezérlése](service-fabric-cluster-security-roles.md).
+- Megbízható állapot-nyilvántartó szolgáltatás van telepítve a fürtön. Ebben a rövid útmutatóban az alkalmazás URI-ja, `fabric:/SampleApp` az alkalmazáshoz tartozó megbízható állapot-nyilvántartó szolgáltatás URI azonosítója pedig `fabric:/SampleApp/MyStatefulService` . A szolgáltatás egyetlen partícióval van üzembe helyezve, a partíció azonosítója pedig `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
+- Az ügyféltanúsítvány és a rendszergazdai szerepkör telepítve van a _saját_ (_személyes_) tárolójában a _CurrentUser_ tanúsítványtárolójának a gépen, ahonnan az alábbi parancsfájlok meghívására kerül sor. Ez a példa a `1b7ebe2174649c45474a4819dafae956712c31d3` tanúsítvány ujjlenyomatát használja. További információ az Ügyféltanúsítványok használatáról: [Service Fabric ügyfelek szerepköralapú hozzáférés-vezérlése](service-fabric-cluster-security-roles.md).
 
 ### <a name="create-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
 
 Első lépésként létre kell hoznia egy biztonsági mentési szabályzatot, amely leírja a biztonsági mentés ütemezését, a biztonsági mentési adatok céljának tárolását, a szabályzat nevét, a teljes biztonsági mentési és adatmegőrzési szabályzatot a biztonsági mentési tár számára. 
 
-A biztonsági mentési tár esetében használja a fent létrehozott Azure Storage-fiókot. A `backup-container` tároló a biztonsági másolatok tárolására van konfigurálva. A rendszer létrehoz egy ilyen nevű tárolót, ha az még nem létezik, a biztonsági mentés feltöltése során. Töltse `ConnectionString` fel az Azure Storage-fiókhoz tartozó érvényes, `account-name` a Storage-fiók nevét és a Storage- `account-key` fiók kulcsát tartalmazó karakterláncot.
+A biztonsági mentési tár esetében használja a fent létrehozott Azure Storage-fiókot. A tároló a `backup-container` biztonsági másolatok tárolására van konfigurálva. A rendszer létrehoz egy ilyen nevű tárolót, ha az még nem létezik, a biztonsági mentés feltöltése során. Töltse `ConnectionString` fel az Azure Storage-fiókhoz tartozó érvényes, a Storage-fiók `account-name` nevét és a `account-key` Storage-fiók kulcsát tartalmazó karakterláncot.
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell a Microsoft. ServiceFabric. PowerShell. http modul használatával
 
-Futtassa az alábbi PowerShell-parancsmagokat az új biztonsági mentési szabályzat létrehozásához. Cserélje `account-name` le a nevet a Storage-fiók `account-key` nevére és a Storage-fiókja kulcsára.
+Futtassa az alábbi PowerShell-parancsmagokat az új biztonsági mentési szabályzat létrehozásához. Cserélje le a `account-name` nevet a Storage-fiók nevére és a `account-key` Storage-fiókja kulcsára.
 
 ```powershell
 
@@ -142,7 +142,7 @@ New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrem
 
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-Hajtsa végre a következő PowerShell-szkriptet a szükséges REST API új szabályzat létrehozásához való meghívásához. Cserélje `account-name` le a nevet a Storage-fiók `account-key` nevére és a Storage-fiókja kulcsára.
+Hajtsa végre a következő PowerShell-szkriptet a szükséges REST API új szabályzat létrehozásához való meghívásához. Cserélje le a `account-name` nevet a Storage-fiók nevére és a `account-key` Storage-fiókja kulcsára.
 
 ```powershell
 $StorageInfo = @{
@@ -198,7 +198,7 @@ Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupP
 ```
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-Hajtsa végre a következő PowerShell-szkriptet a szükséges REST API meghívásához `BackupPolicy1` a biztonsági mentési szabályzatnak a `SampleApp`fenti lépésben létrehozott névvel való hozzárendeléséhez az alkalmazással.
+Hajtsa végre a következő PowerShell-szkriptet a szükséges REST API meghívásához a biztonsági mentési szabályzatnak a fenti lépésben létrehozott névvel való hozzárendeléséhez az `BackupPolicy1` alkalmazással `SampleApp` .
 
 ```powershell
 $BackupPolicyReference = @{
@@ -241,7 +241,7 @@ Get-SFApplicationBackupList -ApplicationId WordCount
 
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-Futtassa a következő PowerShell-szkriptet a HTTP API meghívásához, hogy enumerálja az alkalmazásban `SampleApp` található összes partícióhoz létrehozott biztonsági másolatokat.
+Futtassa a következő PowerShell-szkriptet a HTTP API meghívásához, hogy enumerálja az alkalmazásban található összes partícióhoz létrehozott biztonsági másolatokat `SampleApp` .
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"

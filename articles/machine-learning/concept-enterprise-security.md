@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e030bd1124a93c667070a2b58f2f0e1c10c7d3a6
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683055"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718556"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -42,7 +42,7 @@ További információ: [Azure Machine learning erőforrások és munkafolyamatok
 
 Azure Machine Learning a következő két hitelesítési módszert támogatja a webszolgáltatások esetében: kulcs és jogkivonat. Az egyes webszolgáltatások egyszerre csak egy hitelesítési űrlapot tudnak engedélyezni.
 
-|Hitelesítési módszer|Description|Azure Container Instances|AKS|
+|Hitelesítési módszer|Leírás|Azure Container Instances|AKS|
 |---|---|---|---|
 |Kulcs|A kulcsok statikusak, és nem kell frissíteni. A kulcsok újragenerálása manuálisan végezhető el.|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett|
 |Jogkivonat|A tokenek a megadott időszak után lejárnak, és frissíteni kell őket.| Nem érhető el| Alapértelmezés szerint letiltva |
@@ -146,7 +146,7 @@ Ha saját (ügyfél által felügyelt) kulcsokat kíván használni a Azure Cosm
 
 Az ügyfél által felügyelt kulcsokkal rendelkező Cosmos DB példány kiépítés engedélyezéséhez hajtsa végre a következő műveleteket:
 
-* Regisztrálja a Azure Machine Learning és Azure Cosmos DB erőforrás-szolgáltatót az előfizetésében, ha még nem tette meg.
+* Regisztrálja a Microsoft. MachineLearning és a Microsoft.DocumentDB erőforrás-szolgáltatót az előfizetésében, ha még nem tette meg.
 
 * Engedélyezze az előfizetéshez tartozó közreműködői engedélyekkel rendelkező Machine Learning alkalmazást (az identitás-és hozzáférés-kezelésben).
 
@@ -317,7 +317,7 @@ Az Azure Machine Learning munkaterülethez tartozó könyvtárak (kísérletek) 
 
 [![Kód pillanatkép-munkafolyamata](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
 
-### <a name="training"></a>Oktatás
+### <a name="training"></a>Képzés
 
 Az alábbi ábra a betanítási munkafolyamatot mutatja be.
 

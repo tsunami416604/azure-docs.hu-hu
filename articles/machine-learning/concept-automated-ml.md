@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: dc40668ec7008042b5f1600214184cbf8bba4701
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cec4213cc9b4d40707607b00ef96761e69438ee2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119082"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210252"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -37,7 +37,7 @@ Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automa
 
 A besorolás egy gyakori gépi tanulási feladat. A besorolás olyan felügyelt tanulás típusa, amelyben a modellek bemutatják a betanítási információkat, és ezeket a tanulmányokat az új adatra alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-configure-auto-features.md#featurization). 
 
-A besorolási modellek fő célja, hogy megjósolja, hogy az új adatok milyen kategóriákba esnek a betanítási adatokból származó tanulások alapján. Gyakori besorolási példák például a csalások észlelése, a kézírás-felismerés és az objektumok észlelése.  További információk: az [automatikus gépi tanulásra vonatkozó besorolási](tutorial-train-models-with-aml.md)példa.
+A besorolási modellek fő célja, hogy megjósolja, hogy az új adatok milyen kategóriákba esnek a betanítási adatokból származó tanulások alapján. Gyakori besorolási példák például a csalások észlelése, a kézírás-felismerés és az objektumok észlelése. További információ: [besorolási modell létrehozása AUTOMATIZÁLT ml-vel](tutorial-first-experiment-automated-ml.md).
 
 Példák a besorolásra és az automatizált gépi tanulásra ezekben a Python-jegyzetfüzetekben: [csalások észlelése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [marketing-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)és [hírcsoport-adatbesorolás](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
@@ -97,6 +97,10 @@ A következő ábra ezt a folyamatot szemlélteti.
 Megvizsgálhatja a naplózott futtatási adatokat is, amelyek a Futtatás során összegyűjtött [mérőszámokat tartalmazzák](how-to-understand-automated-ml.md) . A betanítási kísérlet egy Python szerializált objektumot ( `.pkl` fájlt) hoz létre, amely tartalmazza a modellt és az adatfeldolgozást.
 
 A modell létrehozása automatizálható, és azt is [megtudhatja, milyen fontos vagy releváns funkciók vannak](how-to-configure-auto-train.md#explain) a generált modellekhez.
+
+Ismerje meg, hogyan használhatja a [távoli számítási célt](how-to-auto-train-remote.md).
+
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
@@ -170,7 +174,7 @@ Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli hasz
 
  További funkciók érhetők el a távoli számítás használatakor, az alábbi táblázatban látható módon. Ezen funkciók némelyike csak vállalati munkaterületeken érhető el.
 
-| Funkció                                                    | Remote | Helyi | Igényel <br>Vállalati munkaterület |
+| Szolgáltatás                                                    | Remote | Helyi | Igényel <br>Vállalati munkaterület |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Adatfolyam (nagy adatátviteli támogatás, akár 100 GB-ig)          | ✓      |       | ✓                             |
 | DNN – BERT-alapú szöveges featurization és-képzés             | ✓      |       | ✓                             |
@@ -267,17 +271,30 @@ A ONNX Runtime támogatja a C#-t is, így a C#-alkalmazásokban automatikusan l�
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulás használatával:
+Több erőforrás áll rendelkezésre a AutoML való használathoz. 
 
-+ Konfigurálja az automatikus betanítási kísérlet beállításait:
-  + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-use-automated-ml-for-ml-models.md).
-  + A Python SDK használatával hajtsa [végre az alábbi lépéseket](how-to-configure-auto-train.md).
+### <a name="tutorials-how-tos"></a>Oktatóanyagok/how-TOS
+Az oktatóanyagok a AutoML forgatókönyvek teljes körű bevezető példái.
++ A **Code első felületén**kövesse az [oktatóanyagot: regressziós modell automatikus betanítása Azure Machine learning Python SDK-val](tutorial-auto-train-models.md).
 
-+ Útmutató [távoli számítási cél](how-to-auto-train-remote.md) használatához
+ + Az **alacsony vagy a kód nélküli felhasználói élmény érdekében**tekintse meg a következő [oktatóanyagot: automatizált ml besorolási modellek létrehozása Azure Machine learning Studióval](tutorial-first-experiment-automated-ml.md).
 
-+ Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása Azure Machine learning](tutorial-auto-train-models.md) 
+A cikkek további részletekbe menően ismertetik a funkciók AutoML-ajánlatait. Példa: 
 
-+ Ismerje meg, hogyan [végezheti](how-to-auto-train-forecast.md)el az automatikus betanítást az idősorozat-adatkészletek használatával.
++ Az automatikus tanítási kísérletek beállításainak konfigurálása
+    + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-use-automated-ml-for-ml-models.md). 
+    + A Python SDK használatával hajtsa [végre az alábbi lépéseket](how-to-configure-auto-train.md).
 
-+ Próbálja ki [Jupyter notebook mintákat az automatizált gépi tanuláshoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
-* Az automatikus ML más Microsoft-megoldásokban is elérhető, például:, [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) és [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
++  [Ebből a lépésből](how-to-auto-train-forecast.md)megtudhatja, hogyan végezheti el az automatikus betanítást az idősorozat-információkkal.
+
+### <a name="jupyter-notebook-samples"></a>Jupyter notebook-minták 
+
+Tekintse át a részletes példákat és a használati eseteket a [GitHub notebook-tárházban az automatizált gépi tanulási mintákhoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/).
+
+### <a name="python-sdk-reference"></a>Python SDK-referencia 
+
+Az SDK tervezési mintáinak és az [AutoML osztály dokumentációjának](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)elmélyítésére szaktudását. 
+
+> [!Note]
+> Az automatizált gépi tanulási képességek más Microsoft-megoldásokban is elérhetők, mint például a, a [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), a [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), a [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) és a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
+

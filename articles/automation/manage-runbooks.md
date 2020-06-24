@@ -3,14 +3,14 @@ title: Runbookok kezelése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan kezelheti a runbookok a Azure Automationban.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/14/2019
+ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 93b34af0baed89fd312948aeffe8ea4ac8ef806c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9202eae49175615c4fffcd0b006ddda6e8281292
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834696"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718308"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
@@ -46,7 +46,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Runbook importálása
 
-Létrehozhat egy PowerShell-vagy PowerShell-(**. ps1**) parancsfájlt, egy grafikus runbook (**. graphrunbook**) vagy egy Python 2-szkriptet (**.** a) a saját runbook.  Meg kell adnia az importálás során létrehozott [runbook típusát](automation-runbook-types.md) , figyelembe véve az alábbi szempontokat.
+Létrehozhat egy PowerShell-vagy PowerShell-(**. ps1**) parancsfájlt, egy grafikus runbook (**. graphrunbook**) vagy egy Python 2-szkriptet (**.** a) a saját runbook. Meg kell adnia az importálás során létrehozott [runbook típusát](automation-runbook-types.md) , figyelembe véve az alábbi szempontokat.
 
 * Olyan **. ps1** fájlt is importálhat, amely nem tartalmaz munkafolyamatot egy [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) vagy egy [PowerShell-munkafolyamat runbook](automation-runbook-types.md#powershell-workflow-runbooks). Ha egy PowerShell munkafolyamat-runbook importálja, azt egy munkafolyamatba konvertálja a rendszer. Ebben az esetben a megjegyzéseket a runbook tartalmazza az elvégzett módosítások leírásához.
 
@@ -54,7 +54,7 @@ Létrehozhat egy PowerShell-vagy PowerShell-(**. ps1**) parancsfájlt, egy grafi
 
 * Ne importáljon PowerShell-munkafolyamatokat tartalmazó **. ps1** fájlt egy [PowerShell-runbook](automation-runbook-types.md#powershell-runbooks), mivel a PowerShell-parancsfájl motorja nem ismeri fel.
 
-* Csak egy **. graphrunbook** fájlt importáljon egy új [grafikus runbook](automation-runbook-types.md#graphical-runbooks). 
+* Csak egy **. graphrunbook** fájlt importáljon egy új [grafikus runbook](automation-runbook-types.md#graphical-runbooks).
 
 ### <a name="import-a-runbook-from-the-azure-portal"></a>Runbook importálása a Azure Portalból
 
@@ -69,7 +69,7 @@ A parancsfájlokat a következő eljárással importálhatja Azure Automationba.
 4. Kattintson a **Runbook fájl** elemre, és válassza ki az importálni kívánt fájlt.
 5. Ha a **név** mező engedélyezve van, lehetősége van módosítani a runbook nevét. A névnek betűvel kell kezdődnie, és csak betűket, számokat, aláhúzásokat és kötőjeleket tartalmazhat.
 6. A [runbook típusa](automation-runbook-types.md) automatikusan ki van választva, de a megfelelő korlátozások figyelembe vétele után módosíthatja a típust.
-7. Kattintson a **Létrehozás**gombra. Az új runbook megjelenik az Automation-fiók runbookok listájában.
+7. Kattintson a **Létrehozás** lehetőségre. Az új runbook megjelenik az Automation-fiók runbookok listájában.
 8. A Futtatás előtt közzé kell tennie [a runbook](#publish-a-runbook) .
 
 > [!NOTE]
@@ -161,7 +161,7 @@ $connection = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
 
-$AzContext = Select-AzSubscription -SubscriptionId $connection.SubscriptionID
+$AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
 
 # Check for already running or new runbooks
 $runbookName = "<RunbookName>"
@@ -192,7 +192,7 @@ Ha a runbook általában egy adott időkorláton belül fut, a parancsfájl impl
 
 ## <a name="work-with-multiple-subscriptions"></a>Több előfizetés használata
 
-A runbook képesnek kell lennie az [előfizetésekkel](automation-runbook-execution.md#subscriptions)való együttműködésre. Több előfizetés kezeléséhez például a runbook a [disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) parancsmagot használja. Ez a parancsmag biztosítja, hogy a hitelesítési környezet ne legyen lekérve egy másik, ugyanazon a homokozóban futó runbook. A runbook az az `AzContext` Module parancsmagok paraméterét is használja, és a megfelelő környezetet adja át.
+A runbook képesnek kell lennie az [előfizetésekkel](automation-runbook-execution.md#subscriptions)való együttműködésre. Több előfizetés kezeléséhez például a runbook a [disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) parancsmagot használja. Ez a parancsmag biztosítja, hogy a hitelesítési környezet ne legyen lekérve egy másik, ugyanazon a homokozóban futó runbook. A runbook a `Get-AzContext` parancsmaggal is lekéri az aktuális munkamenet környezetét, és hozzárendeli azt a változóhoz `$AzureContext` .
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -204,7 +204,7 @@ Connect-AzAccount -ServicePrincipal `
 -ApplicationId $Conn.ApplicationID `
 -CertificateThumbprint $Conn.CertificateThumbprint
 
-$context = Get-AzContext
+$AzureContext = Get-AzContext
 
 $ChildRunbookName = 'ChildRunbookDemo'
 $AutomationAccountName = 'myAutomationAccount'
@@ -214,7 +214,7 @@ Start-AzAutomationRunbook `
     -ResourceGroupName $ResourceGroupName `
     -AutomationAccountName $AutomationAccountName `
     -Name $ChildRunbookName `
-    -DefaultProfile $context
+    -DefaultProfile $AzureContext
 ```
 
 ## <a name="work-with-a-custom-script"></a>Egyéni parancsfájl használata

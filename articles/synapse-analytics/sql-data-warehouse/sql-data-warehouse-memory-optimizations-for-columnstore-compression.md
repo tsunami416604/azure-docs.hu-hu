@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d2cbe9b94c4698a93b93c032ee4dcb421a78e59b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743076"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211659"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>A oszlopcentrikus sorcsoport-minőségének maximalizálása
 
@@ -90,9 +90,9 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 Egy sorcsoport tömörítéséhez szükséges maximális memória körülbelül
 
 - 72 MB +
-- \#sorok \* \#oszlopai \* 8 bájt +
-- \#sorok \* \#rövid-karakterlánc-oszlopok \* 32 bájt +
-- \#hosszú karakterlánc – 16 MB \* méretű oszlop a tömörítési szótárhoz
+- \#sorok \* \# oszlopai \* 8 bájt +
+- \#sorok \* \# rövid-karakterlánc-oszlopok \* 32 bájt +
+- \#hosszú karakterlánc – \* 16 MB méretű oszlop a tömörítési szótárhoz
 
 > [!NOTE]
 > Rövid karakterlánc – az oszlopok karakterlánc adattípusokat használnak <= 32 bájt és hosszú karakterlánc-oszlopokban a > 32 bájtos karakterlánc-adattípusok használatával.

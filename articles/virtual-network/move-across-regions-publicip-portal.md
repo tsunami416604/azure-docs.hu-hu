@@ -4,15 +4,15 @@ description: Egy sablon használatával áthelyezheti az Azure nyilvános IP-kon
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: a4fd5da3c910b10c81caccde307df0fd36e2fa78
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235400"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711476"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Azure nyilvános IP-konfiguráció áthelyezése másik régióba a Azure Portal használatával
 
@@ -45,7 +45,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
 2. Keresse meg a forrás nyilvános IP-címet tartalmazó erőforráscsoportot, és kattintson rá.
 3. Válassza > **Beállítások**  >  **Exportálás sablon**lehetőséget.
 4. A **sablon exportálása** panelen válassza a **telepítés** lehetőséget.
-5. Kattintson a **sablon**  >  **szerkesztése paraméterek** lehetőségre a **Parameters. JSON** fájl megnyitásához az online szerkesztőben.
+5. Kattintson a **sablon**  >  **szerkesztése paraméterek** lehetőségre, hogy megnyissa a **parameters.js** fájlt az online szerkesztőben.
 8. A nyilvános IP-cím paraméterének szerkesztéséhez módosítsa a forrás nyilvános IP-címe **paraméter**értéke alatt található tulajdonságot a  >  **value** cél nyilvános IP-címére, és győződjön meg arról, hogy a név idézőjelek közé esik:
 
     ```json
@@ -62,7 +62,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
     ```
 8.  Kattintson a **Mentés** gombra a szerkesztőben.
 
-9.  Kattintson **a sablon**  >  **szerkesztése** elemre, hogy megnyissa a **template. JSON** fájlt az online szerkesztőben.
+9.  Kattintson **a sablon**  >  **szerkesztése** gombra a **template.js** fájl megnyitásához az online szerkesztőben.
 
 10. A nyilvános IP-címet áthelyező cél régió szerkesztéséhez módosítsa a **Location (hely** ) tulajdonságot az **erőforrások**területen.
 
@@ -94,7 +94,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
 
 12. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
 
-    * **SKU** – a konfigurációban a nyilvános IP-cím SKU-jának a standard és az alap közötti értékről a standard típusra módosítható a **sku**  >  **sablon. JSON** fájljának SKU**Name** tulajdonságának megváltoztatásával:
+    * **SKU** – a konfigurációban a nyilvános IP-cím SKU-jának a standard és az alap közötti értékről a standard típusra módosítható úgy, hogy az **SKU**  >  **Name** tulajdonságát a fájl **template.js** módosítja:
 
         ```json
           "resources": [

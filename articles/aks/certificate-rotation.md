@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan forgathatja el a tanúsítványokat egy Azure K
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: ae85b544409cbf4532c221a2a7ca27940ae6f369
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 715771c7a1704e0d39f790d018980c4b39ba351b
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465609"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817449"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -39,8 +39,7 @@ Az AK a következő tanúsítványokat, hitelesítésszolgáltatókat és szolg�
 > 
 > Emellett a fürt tanúsítványának lejárati dátumát is megtekintheti. A következő parancs például megjeleníti a *myAKSCluster* -fürthöz tartozó tanúsítvány részleteit.
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
-> openssl x509 -in my-cert.crt -text
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
 
 ## <a name="rotate-your-cluster-certificates"></a>A fürt tanúsítványainak elforgatása
@@ -85,7 +84,7 @@ kubectl get no
 > [!NOTE]
 > Ha olyan szolgáltatásokkal rendelkezik, amelyek az AK-on felül futnak, például az [Azure dev Spaces][dev-spaces]szolgáltatást, előfordulhat, hogy [frissítenie kell a szolgáltatásokhoz kapcsolódó tanúsítványokat][dev-spaces-rotate] is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk azt mutatja be, hogyan lehet automatikusan elforgatni a fürt tanúsítványait, hitelesítésszolgáltatóit és SAs-adatait. A biztonsági [és az Azure Kubernetes szolgáltatásban (ak) elérhető ajánlott eljárások][aks-best-practices-security-upgrades] további információkat találnak az AK biztonsággal kapcsolatos ajánlott eljárásairól.
 

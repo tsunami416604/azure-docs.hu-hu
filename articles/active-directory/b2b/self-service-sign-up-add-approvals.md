@@ -1,22 +1,22 @@
 ---
-title: API-összekötők az egyéni jóváhagyási munkafolyamatokhoz külső identitások önkiszolgáló regisztrációja – Azure AD
+title: Egyéni jóváhagyások hozzáadása önkiszolgáló bejelentkezési folyamatokhoz – Azure AD
 description: API-összekötők hozzáadása egyéni jóváhagyási munkafolyamatokhoz külső identitások önkiszolgáló bejelentkezési Azure Active Directory (Azure AD)
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e172f2041e7339a69648bfb84c0955eec15a0bc6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 45a08ff8d1f796cec2d4562ae64392253a539416
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680062"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886489"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz
 
@@ -34,7 +34,7 @@ Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-b�
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként.
 2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
 3. A bal oldali menüben válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
-4. Adja meg az alkalmazás **nevét** (például: *regisztráció jóváhagyása*).
+4. Adja meg az alkalmazás **nevét** (például: _regisztráció jóváhagyása_).
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
@@ -46,11 +46,11 @@ Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-b�
 7. Az **API-engedélyek kérése** lapon válassza a **Microsoft Graph**lehetőséget, majd válassza az **alkalmazás engedélyei**lehetőséget.
 8. Az **engedélyek kiválasztása**alatt bontsa ki a **felhasználó**elemet, majd válassza a **User. ReadWrite. All** jelölőnégyzetet. Ez az engedély lehetővé teszi a jóváhagyási rendszer számára, hogy jóváhagyás után létrehozza a felhasználót. Ezután válassza az **engedélyek hozzáadása**lehetőséget.
 
-    ![Alkalmazás-oldal regisztrálása](media/self-service-sign-up-add-approvals/request-api-permissions.png)
+   ![Alkalmazás-oldal regisztrálása](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
 9. Az **API-engedélyek** lapon válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget, majd válassza az **Igen**lehetőséget.
 10. A bal oldali menü **kezelés** területén válassza a **tanúsítványok & titkok**lehetőséget, majd válassza az **új ügyfél titka**lehetőséget.
-11. Adja meg a titok **leírását** , például a *jóváhagyások ügyfél titkát*, és válassza ki azt az időtartamot, ameddig az ügyfél titkos kulcsa **lejár**. Ezután válassza a **Hozzáadás**lehetőséget.
+11. Adja meg a titok **leírását** , például a _jóváhagyások ügyfél titkát_, és válassza ki azt az időtartamot, ameddig az ügyfél titkos kulcsa **lejár**. Ezután válassza a **Hozzáadás**lehetőséget.
 12. Másolja ki az ügyfél titkos kulcsának értékét.
 
     ![Az ügyfél titkos kulcsának másolása a jóváhagyási rendszerbe való használatra](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -63,11 +63,11 @@ Ezután [létrehozza az API-összekötőket](self-service-sign-up-add-api-connec
 
 - **Jóváhagyás állapotának bejelölése**. Közvetlenül az identitás-szolgáltatóval való bejelentkezés után küldje el a jóváhagyási rendszer hívását, és ellenőrizze, hogy a felhasználó rendelkezik-e meglévő jóváhagyási kéréssel, vagy már meg lett tagadva. Ha a jóváhagyási rendszere csak automatikus jóváhagyási döntéseket tartalmaz, előfordulhat, hogy ez az API-összekötő nem szükséges. A következő példa egy "jóváhagyás állapotának engedélyezése" API-összekötőt mutat be.
 
-   ![A jóváhagyási állapot API-összekötő konfigurációjának engedélyezése](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
+  ![A jóváhagyási állapot API-összekötő konfigurációjának engedélyezése](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
 - **Kérelem jóváhagyása** – ha a felhasználó befejezte az attribútum-gyűjtemény lapot, de a felhasználói fiók létrehozása előtt meghívja a jóváhagyást, küldjön egy hívást a jóváhagyási rendszernek. A jóváhagyási kérést automatikusan megadhatja vagy manuálisan is áttekintheti. A következő példa egy "kérelem-jóváhagyási" API-összekötőt mutat be. Válassza ki azokat a **jogcímeket, amelyeket el szeretne küldeni** , hogy a jóváhagyási rendszernek jóváhagyási döntést kell hoznia.
 
-   ![Kérelem-jóváhagyási API-összekötő konfigurálása](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
+  ![Kérelem-jóváhagyási API-összekötő konfigurálása](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
 Az összekötők létrehozásához kövesse az API- [összekötő létrehozása](self-service-sign-up-add-api-connector.md#create-an-api-connector)című témakör lépéseit.
 
@@ -80,8 +80,9 @@ Most adja hozzá az API-összekötőket önkiszolgáló bejelentkezési felhaszn
 3. A bal oldali menüben válassza a **külső identitások**lehetőséget.
 4. Válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget, majd válassza ki azt a felhasználói folyamatot, amely számára engedélyezni kívánja az API-összekötőt.
 5. Válassza az **API-összekötők**lehetőséget, majd válassza ki azokat az API-végpontokat, amelyeket a felhasználói folyamat következő lépéseiben szeretne meghívni:
-   - Az **identitás-szolgáltatóval való bejelentkezés után**: válassza ki a jóváhagyási állapot API-összekötőt, például a *jóváhagyási állapot ellenőrzését*.
-   - **A felhasználó létrehozása előtt**: válassza ki a jóváhagyási kérelem API-összekötőjét, például a *kérelem jóváhagyását*.
+
+   - Az **identitás-szolgáltatóval való bejelentkezés után**: válassza ki a jóváhagyási állapot API-összekötőt, például a _jóváhagyási állapot ellenőrzését_.
+   - **A felhasználó létrehozása előtt**: válassza ki a jóváhagyási kérelem API-összekötőjét, például a _kérelem jóváhagyását_.
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
@@ -182,7 +183,7 @@ Content-type: application/json
  ],
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
@@ -191,7 +192,7 @@ Content-type: application/json
 
 A **kérelem-jóváhagyási** API-végpontnak a következőket kell visszaadnia, ha:
 
-- A felhasználó ***automatikusan jóváhagyható***.
+- A felhasználó **_automatikusan jóváhagyható_**.
 
 Az alábbi példa a folytatási választ szemlélteti:
 
@@ -273,7 +274,7 @@ Content-type: application/json
  ],
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
@@ -298,19 +299,19 @@ Content-type: application/json
  ],
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value"
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value"
 }
 ```
 
-| Paraméter  | Kötelező | Leírás |
-|---|---|---|
-| userPrincipalName | Yes | A az `email_address` API-nak eljuttatott jogcím alapján hozható létre, és a karaktert lecseréli a `@` `_` értékre, és előre függőben kell lennie `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled  | Yes  | Értékre kell állítani `true` .  |
-| Levelezés  | Yes | Az `email_address` API-nak eljuttatott jogcímet. |
-| userType | Yes | Kell lennie `Guest` . A felhasználó kijelölése vendég felhasználóként. |
-| identitások  | Yes  | Az összevont identitás adatai. |
-| \<otherBuiltInAttribute>  | No  | Egyéb beépített attribútumok `displayName` , például,, `city` és mások. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.|
-| \<extension_\<aad-extensions-app-id>\_CustomAttribute> | No | A felhasználó egyéni attribútumai. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek. |
+| Paraméter                                           | Kötelező | Leírás                                                                                                                                                            |
+| --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| userPrincipalName                                   | Yes      | A az `email_address` API-nak eljuttatott jogcím alapján hozható létre, és a karaktert lecseréli a `@` `_` értékre, és előre függőben kell lennie `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Értékre kell állítani `true` .                                                                                                                                                 |
+| Levelezés                                                | Yes      | Az `email_address` API-nak eljuttatott jogcímet.                                                                                                               |
+| userType                                            | Yes      | Kell lennie `Guest` . A felhasználó kijelölése vendég felhasználóként.                                                                                                                 |
+| identitások                                          | Yes      | Az összevont identitás adatai.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | No       | Egyéb beépített attribútumok `displayName` , például,, `city` és mások. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | A felhasználó egyéni attribútumai. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Összevont Azure Active Directory-felhasználó esetén
 
@@ -326,7 +327,7 @@ Content-type: application/json
  "email_address": "johnsmith@fabrikam.onmicrosoft.com",
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
@@ -334,11 +335,11 @@ Content-type: application/json
 2. A jóváhagyási rendszerek létrehozzák a meghívást az `email_address` API-összekötő által biztosított használatával.
 
 ```http
-POST https://graph.microsoft.com/v1.0/invitations 
+POST https://graph.microsoft.com/v1.0/invitations
 Content-type: application/json
 
 {
-    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com", 
+    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com",
     "inviteRedirectUrl" : "https://myapp.com"
 }
 ```
@@ -366,11 +367,11 @@ Content-type: application/json
 {
     "displayName": "John Smith",
     "city": "Redmond",
-    "extension_<aad-extensions-app-id>_AttributeName": "custom attribute value"
+    "extension_<extensions-app-id>_AttributeName": "custom attribute value"
 }
 ```
 
-<!-- ## Next steps -->
-<!-- - See an example approval system with the [Woodgrove self-service sign-up for guest users sample](code-samples-self-service-sign-up.md#custom-approval-system).  -->
-<!--TODO: link to sample-->
+## <a name="next-steps"></a>További lépések
 
+- Ismerkedjen meg az [Azure Function](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)gyors üzembe helyezési mintákkal.
+- Az [önkiszolgáló regisztrációt a vendég felhasználók manuális jóváhagyási mintával regisztrálhatják](code-samples-self-service-sign-up.md#custom-approval-workflows). 

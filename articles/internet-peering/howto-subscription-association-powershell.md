@@ -5,15 +5,15 @@ description: Társközi ASN társítása az Azure-előfizetéshez a PowerShell h
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0ad9ae885a458da5df8975d5d13018fd92bbdaf
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75908992"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710779"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Társközi ASN társítása az Azure-előfizetéshez a PowerShell használatával
 
@@ -107,6 +107,6 @@ A PeerASN törlése jelenleg nem támogatott. Ha törölnie kell a PeerASN, ford
 * [Exchange-társ létrehozása vagy módosítása](howto-exchange-powershell.md)
 * [Örökölt Exchange-társviszony konvertálása Azure-erőforrássá](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 További információért látogasson el az internetes kereséssel kapcsolatos [Gyakori kérdések](faqs.md) oldalra.

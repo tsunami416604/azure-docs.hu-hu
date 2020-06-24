@@ -3,25 +3,25 @@ title: Kerberos által korlátozott delegálás – alkalmazásproxy
 description: A Kerberos által korlátozott delegálási konfigurációk hibaelhárítása alkalmazásproxy esetében
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275681"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760439"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos által korlátozott delegálási konfigurációk hibaelhárítása alkalmazásproxy esetében
 
@@ -66,7 +66,7 @@ Mindkét rendszerkép ugyanezt a tünetet mutatja: SSO-hiba. Az alkalmazáshoz v
 
 A hibakeresés módja a probléma és a megfigyelt tünetektől függ. Mielőtt további lépéseket hozna, vizsgálja meg a következő cikkeket. Hasznos hibaelhárítási információkat biztosítanak:
 
-- [Alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása](application-proxy-troubleshoot.md)
+- [Alkalmazásproxyval kapcsolatos problémák és hibaüzenetek elhárítása](application-proxy-troubleshoot.md)
 - [Kerberos-hibák és-tünetek](application-proxy-troubleshoot.md#kerberos-errors)
 - [Az egyszeri bejelentkezés használata, ha a helyszíni és a Felhőbeli identitások nem egyeznek](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
@@ -86,7 +86,7 @@ Ahogy azt korábban említettük, a böngésző hibaüzenetei néhány jó dolgo
 
 ![Példa: helytelen KCD-konfigurációs hiba](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-Az eseménynaplóban megjelenő bejegyzések a 13019 vagy a 12027 eseményként jelennek meg. Az összekötő eseménynaplóinak megkeresése az **alkalmazások és szolgáltatások naplóiban naplózza** &gt; a **Microsoft** &gt; **AadApplicationProxy** &gt; - **összekötő** &gt; **rendszergazdáját**.
+Az eseménynaplóban megjelenő bejegyzések a 13019 vagy a 12027 eseményként jelennek meg. Az összekötő eseménynaplóinak megkeresése az **alkalmazások és szolgáltatások naplóiban naplózza** a &gt; **Microsoft** &gt; **AadApplicationProxy** - &gt; **összekötő** &gt; **rendszergazdáját**.
 
 ![13019-es esemény az alkalmazásproxy eseménynaplójában](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
@@ -94,7 +94,7 @@ Az eseménynaplóban megjelenő bejegyzések a 13019 vagy a 12027 eseményként 
 
 1. Használjon **egy** rekordot a belső DNS-ben az alkalmazás címeként, nem **CNAME**-ként.
 1. Erősítse meg, hogy az összekötő gazdagép jogosult a kijelölt fiók SPN-re való delegálásra. Erősítse meg, hogy a **bármely hitelesítési protokoll használata** beállítás ki van választva. További információ: [SSO konfigurációs cikk](application-proxy-configure-single-sign-on-with-kcd.md).
-1. Ellenőrizze, hogy létezik-e az egyszerű szolgáltatásnév egyetlen példánya az Azure AD-ben. Probléma `setspn -x` a parancssorban bármely tartományi tag gazdagépen.
+1. Ellenőrizze, hogy létezik-e az egyszerű szolgáltatásnév egyetlen példánya az Azure AD-ben. Probléma a `setspn -x` parancssorban bármely tartományi tag gazdagépen.
 1. Győződjön meg arról, hogy a tartományi házirend kényszerítve van, amely korlátozza a [kiállított Kerberos-tokenek maximális méretét](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/). Ez a szabályzat leállítja az összekötőt abban az esetben, ha túlzottnak találják a tokent.
 
 Egy hálózati nyomkövetés, amely rögzíti az összekötő-gazdagép és a tartományi KDC közötti adatcserét, a következő legjobb lépés a problémával kapcsolatos alacsonyabb szintű részletek beszerzése. További információ: [Deep Dive – problémamegoldás](https://aka.ms/proxytshootpaper).

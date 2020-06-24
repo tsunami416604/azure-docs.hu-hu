@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281001"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710864"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Oktatóanyag: közzététel, előfizetés helyi eseményekre
 
@@ -118,7 +118,7 @@ Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra
 
 Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. Azure Event Grid a témakör egy olyan végpontra hivatkozik, ahol a közzétevők eseményeket küldhetnek a alkalmazásba.
 
-1. Hozzon létre egy topic. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md).
+1. Hozzon létre topic.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md).
 
     ```json
         {
@@ -129,7 +129,7 @@ Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. Azure E
         }
     ```
 
-1. A következő parancs futtatásával hozzon létre egy Event Grid-témakört. Ellenőrizze, hogy megjelenik-e a HTTP- `200 OK`állapotkód.
+1. A következő parancs futtatásával hozzon létre egy Event Grid-témakört. Ellenőrizze, hogy megjelenik-e a HTTP-állapotkód `200 OK` .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -163,7 +163,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Hozzon létre egy előfizetés. JSON fájlt az alábbi tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md)
+1. Hozzon létre subscription.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md)
 
     ```json
         {
@@ -180,7 +180,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 
     >[!NOTE]
     > A **endpointType** tulajdonság azt adja meg, hogy az előfizető egy **webhook**.  A **endpointUrl** meghatározza azt az URL-címet, amelyen az előfizető eseményeket figyel. Ez az URL-cím megfelel a korábban üzembe helyezett Azure-előfizetői mintának.
-2. A következő parancs futtatásával hozzon létre egy előfizetést a témakörhöz. Ellenőrizze, hogy megjelenik-e a HTTP- `200 OK`állapotkód.
+2. A következő parancs futtatásával hozzon létre egy előfizetést a témakörhöz. Ellenőrizze, hogy megjelenik-e a HTTP-állapotkód `200 OK` .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -212,7 +212,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 
 ## <a name="publish-an-event"></a>Esemény közzététele
 
-1. Hozzon létre Event. JSON fájlt az alábbi tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md).
+1. Hozzon létre event.jsa következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md).
 
     ```json
         [

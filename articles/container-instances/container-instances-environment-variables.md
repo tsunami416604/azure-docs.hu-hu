@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan állíthatja be a környezeti változókat a Az
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247227"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686732"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Környezeti változók beállítása a Container instances szolgáltatásban
 
-A tárolópéldányok környezeti változóinak beállítása lehetővé teszi a tárolóban futó alkalmazás vagy szkript dinamikus konfigurálását. Ez hasonló a `--env` parancssori argumentumhoz `docker run`. 
+A tárolópéldányok környezeti változóinak beállítása lehetővé teszi a tárolóban futó alkalmazás vagy szkript dinamikus konfigurálását. Ez hasonló a `--env` parancssori argumentumhoz `docker run` . 
 
 A tárolók környezeti változóinak megadásához adja meg őket a tároló-példány létrehozásakor. Ez a cikk példákat mutat be környezeti változók beállítására, amikor elindít egy tárolót az [Azure CLI](#azure-cli-example)-vel, [Azure PowerShell](#azure-powershell-example)és a [Azure Portal](#azure-portal-example). 
 
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-A kimenet módosításához indítson el egy második tárolót a `--environment-variables` hozzáadott argumentummal, adja meg a *NumWords* és a *MinLength* változók értékeit. (Ez a példa feltételezi, hogy a parancssori felületet egy bash-rendszerhéjban vagy Azure Cloud Shellban futtatja. Ha a Windows-parancssort használja, a változókat idézőjelek között `--environment-variables "NumWords"="5" "MinLength"="8"`kell megadni, például:.)
+A kimenet módosításához indítson el egy második tárolót a `--environment-variables` hozzáadott argumentummal, adja meg a *NumWords* és a *MinLength* változók értékeit. (Ez a példa feltételezi, hogy a parancssori felületet egy bash-rendszerhéjban vagy Azure Cloud Shellban futtatja. Ha a Windows-parancssort használja, a változókat idézőjelek között kell megadni, például: `--environment-variables "NumWords"="5" "MinLength"="8"` .)
 
 ```azurecli-interactive
 az container create \
@@ -83,7 +83,7 @@ A tárolók kimenete azt mutatja be, hogyan módosította a második tároló pa
 
 ## <a name="azure-powershell-example"></a>Azure PowerShell példa
 
-A környezeti változók a PowerShellben való beállítása hasonló a CLI-hez, `-EnvironmentVariable` de a parancssori argumentumot használja.
+A környezeti változók a PowerShellben való beállítása hasonló a CLI-hez, de a `-EnvironmentVariable` parancssori argumentumot használja.
 
 Először indítsa el az [ACI-WordCount][aci-wordcount] tárolót az alapértelmezett konfigurációban ezzel a [New-AzContainerGroup][new-Azcontainergroup] paranccsal:
 
@@ -94,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-Most futtassa a következő [New-AzContainerGroup][new-Azcontainergroup] parancsot. Ez határozza meg a *NumWords* és a *MinLength* környezeti változókat a tömb változóinak feltöltése `envVars`után:
+Most futtassa a következő [New-AzContainerGroup][new-Azcontainergroup] parancsot. Ez határozza meg a *NumWords* és a *MinLength* környezeti változókat a tömb változóinak feltöltése után `envVars` :
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -144,7 +144,7 @@ Azure:\
 Ha környezeti változókat szeretne beállítani a Azure Portal tárolójának indításakor, a tároló létrehozásakor adja meg azokat a **speciális** lapon.
 
 1. A **speciális** lapon állítsa be a *sikertelen* **Újraindítási szabályzatot** .
-2. A **környezeti változók**területen adja `NumWords` meg az értéket `5` az első változóhoz, és adja meg `MinLength` a értékét a második `8` változó értékeként. 
+2. A **környezeti változók**területen adja meg az `NumWords` értéket az `5` első változóhoz, és adja meg a `MinLength` értékét `8` a második változó értékeként. 
 1. A tároló ellenőrzéséhez és üzembe helyezéséhez válassza a **felülvizsgálat + létrehozás** elemet.
 
 ![A portál lap környezeti változó engedélyezése gomb és szövegmezők][portal-env-vars-01]
@@ -159,11 +159,11 @@ A biztonságos értékekkel rendelkező objektumok bizalmas adatok, például je
 
 A biztonságos értékekkel rendelkező környezeti változók nem láthatók a tároló tulajdonságaiban – az értékük csak a tárolón belülről érhető el. A Azure Portal vagy az Azure CLI-ben megtekintett tároló tulajdonságai például csak a biztonságos változó nevét jelenítik meg, nem az értékét.
 
-Állítsa be a biztonságos környezeti változót úgy, `secureValue` hogy megadja a tulajdonságot `value` a változó típusának normál helyett. A következő YAML meghatározott két változó mutatja be a két változó típusát.
+Állítsa be a biztonságos környezeti változót úgy, hogy megadja a `secureValue` tulajdonságot a `value` változó típusának normál helyett. A következő YAML meghatározott két változó mutatja be a két változó típusát.
 
 ### <a name="yaml-deployment"></a>YAML üzembe helyezése
 
-Hozzon `secure-env.yaml` létre egy fájlt a következő kódrészlettel.
+Hozzon létre egy `secure-env.yaml` fájlt a következő kódrészlettel.
 
 ```yaml
 apiVersion: 2018-10-01

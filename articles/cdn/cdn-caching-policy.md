@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: dc0482fbcbb1c9d1618ec18e1f48b03f686a6573
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6beaee98e78e79c48270801f5696e4e487b0a2c3
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74892579"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84883710"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure CDN gyorsítótárazási házirend kezelése Azure Media Services
 A Azure Media Services HTTP-alapú adaptív streaming és progresszív letöltést biztosít. A HTTP-alapú folyamatos átvitel a proxy-és CDN-rétegek gyorsítótárazásának előnyei, valamint az ügyféloldali gyorsítótárazás előnyeit kínálja. A folyamatos átviteli végpontok általános átviteli képességeket biztosítanak, valamint a HTTP-gyorsítótár fejléceit is konfigurálják. A folyamatos átviteli végpontok beállítja a HTTP Cache-Control: Max-Age és a fejlécek elévülését. További információt a HTTP-gyorsítótár fejlécek a [w3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)-ből című témakörben kaphat.

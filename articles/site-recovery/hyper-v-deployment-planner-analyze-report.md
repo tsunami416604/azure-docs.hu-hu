@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257900"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710269"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>A Azure Site Recovery Deployment Planner jelentés elemzése
 Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó Excel-jelentés táblázatait ismerteti.
@@ -179,7 +179,7 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben minden
 
 **VM Name** (Virtuális gép neve): Jelentés létrehozásakor, a VMListFile-ban használt virtuálisgép-név. Ez az oszlop a virtuális gépekhez csatolt lemezek (VHD-k) listáját is megjeleníti. A nevek tartalmazzák a Hyper-V kiszolgálóneveket, amelyeken az eszköz felfedezte a virtuális gépeket a profilkészítési időszakban.
 
-**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. **Igen** \* olyan példányok esetén, amelyekben a virtuális gép a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára alkalmas. A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
+**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. **Igen** \* olyan példányok esetén, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. A profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a lemezhez leképezett méretet meghaladó prémium lemezméretnek. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt: 
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15.
 * 256 GB és 512 GB között P20.
@@ -187,7 +187,7 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben minden
 * 1025 GB és 2048 GB között P40.
 * 2049 GB és 4095 GB között P50.
 
-Ha például egy lemez számítási feladatait a P20 vagy a P30 kategóriába helyezi, de a méret leképezi egy alacsonyabb Premium Storage-lemez típusra, akkor az eszköz **Igen értéket**\*jelöl a virtuális gép számára. Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
+Ha például egy lemez számítási feladatait a P20 vagy a P30 kategóriába helyezi, de a méret leképezi egy alacsonyabb Premium Storage-lemez típusra, akkor az eszköz **Igen értéket**jelöl a virtuális gép számára \* . Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
 
 **Storage Type** (Tároló típusa): Standard vagy Premium.
 

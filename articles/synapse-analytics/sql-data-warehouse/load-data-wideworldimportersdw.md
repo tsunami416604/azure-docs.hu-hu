@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 14868b2642b2b77ce6bc7315e58a7ae2dc0f115d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: bb05a817ae553872fa1a6c364da4c075ae454e1f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019928"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211176"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Oktatóanyag: az Azure szinapszis Analytics SQL-készletbe való betöltés
 
@@ -132,7 +132,7 @@ Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-manage
     | Beállítás      | Ajánlott érték | Leírás |
     | ------------ | --------------- | ----------- |
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-    | Kiszolgálónév | A teljes kiszolgálónév | Például a **sqlpoolservername.database.Windows.net** egy teljesen minősített kiszolgálónév. |
+    | Kiszolgáló neve | A teljes kiszolgálónév | Például a **sqlpoolservername.database.Windows.net** egy teljesen minősített kiszolgálónév. |
     | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés | A kiszolgálói rendszergazdafiók | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |
     | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
