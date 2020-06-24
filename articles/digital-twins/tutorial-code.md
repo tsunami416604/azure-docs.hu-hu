@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 7e057d6d973eedd3ac53fd7b2ea228470e9123d7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613367"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298395"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Kódolás az Azure Digital Twins API-kkal
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital Twins szolgáltatás példányaival együttműködve írhatnak be egy ügyfélalkalmazás-alkalmazást. Ez a fejlesztői témájú oktatóanyag bevezetést nyújt az Azure Digital Twins szolgáltatással való programozáshoz, amely az [Azure IoT Digital Twin ügyféloldali kódtárat használja a .net-hez (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Részletesen ismerteti a C#-konzol ügyfélalkalmazás lépésről lépésre történő írását.
 
@@ -99,8 +102,8 @@ Az alkalmazás első lépéseként hitelesítenie kell magát az Azure Digital T
 
 A hitelesítéshez három információra van szüksége:
 * Az előfizetéshez tartozó *címtár (bérlő) azonosítója*
-* A szolgáltatási példány beállításakor létrehozott *alkalmazás-(ügyfél-) azonosító*
-* A szolgáltatási példány *állomásneve*
+* Az Azure Digital Twins-példány beállításakor létrehozott *alkalmazás-(ügyfél-) azonosító*
+* Az Azure Digital Twins-példány *állomásneve*
 
 >[!TIP]
 > Ha nem ismeri a *címtár-(bérlői) azonosítóját*, a következő parancs futtatásával kérheti le [Azure Cloud Shell](https://shell.azure.com):
@@ -148,7 +151,7 @@ Az Azure Digital Twins nem rendelkezik belső tartománybeli szókincstel. A kö
 
 Az Azure digitális Twins-megoldások létrehozásának első lépéseként legalább egy modellt DTDL-fájlban kell meghatározni.
 
-Hozzon létre egy *SampleModel. JSON*nevű új *. JSON* fájlt a címtárban, amelyben létrehozta a projektet. Illessze be a következő fájlt a szövegtörzsbe: 
+Hozzon létre egy *SampleModel.js*nevű új *. JSON* fájlt a címtárban, ahol létrehozta a projektet. Illessze be a következő fájlt a szövegtörzsbe: 
 
 ```json
 {
@@ -174,7 +177,7 @@ Hozzon létre egy *SampleModel. JSON*nevű új *. JSON* fájlt a címtárban, am
 > Ha a Visual studiót használja ehhez az oktatóanyaghoz, érdemes kijelölni az újonnan létrehozott JSON-fájlt, és a tulajdonság-ellenőrben a *Másolás a kimeneti könyvtárba* tulajdonságot úgy kell beállítani, hogy az *újabb* vagy a *Másolás Always*. Ez lehetővé teszi a Visual Studio számára, hogy megkeresse a JSON-fájlt az alapértelmezett elérési úttal, amikor az oktatóanyag többi részében futtatja a programot az **F5 billentyűvel** .
 
 > [!TIP] 
-> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](https://github.com/Azure-Samples/DTDL-Validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [és ellenőrzése](how-to-use-parser.md)című témakörben olvashat.
+> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [és ellenőrzése](how-to-use-parser.md)című témakörben olvashat.
 
 Ezután adjon hozzá még egy kódot a *program.cs* az imént létrehozott modell feltöltéséhez az Azure Digital Twins-példányba.
 
@@ -216,8 +219,7 @@ A parancsablakban futtassa a programot a következő paranccsal:
 ```cmd/sh
 dotnet run
 ```
-
-Láthatja, hogy most már nem sikerült kimenetet jelezni, ami azt jelzi, hogy a hívás sikeres volt. 
+A "modell feltöltése" a kimenetben lesz kinyomtatva, de még nincs kimenet, amely azt jelzi, hogy a modellek feltöltése sikeres volt-e.
 
 Ha olyan Print utasítást szeretne felvenni, amely azt jelzi, hogy a modellek feltöltése ténylegesen megtörtént-e, adja hozzá a következő kódot közvetlenül az előző szakasz után:
 
@@ -291,24 +293,19 @@ using System.Text.Json;
 Ezután adja hozzá a következő kódot a metódus végéhez a `Main` modell alapján három digitális ikrek létrehozásához és inicializálásához.
 
 ```csharp
-// Initialize twin metadata
-var meta = new Dictionary<string, object>
-{
-    { "$model", "dtmi:com:contoso:SampleModel;1" },
-};
-// Initialize the twin properties
-var initData = new Dictionary<string, object>
-{
-    { "$metadata", meta },
-    { "data", "Hello World!" }
-};
+// Initialize twin data
+BasicDigitalTwin twinData = new BasicDigitalTwin();
+twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+twinData.CustomProperties.Add("data", $"Hello World!");
+
 string prefix="sampleTwin-";
 for(int i=0; i<3; i++) {
     try {
-        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(initData));
+        twinData.Id = $"{prefix}{i}";
+        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
         Console.WriteLine($"Created twin: {prefix}{i}");
     } catch(RequestFailedException rex) {
-        Console.WriteLine($"Create twin: {rex.Status}:{rex.Message}");  
+        Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
     }
 }
 ```
@@ -449,6 +446,7 @@ namespace minimal
             var typeList = new List<string>();
             string dtdl = File.ReadAllText("SampleModel.json");
             typeList.Add(dtdl);
+
             // Upload the model to the service
             try {
                 await client.CreateModelsAsync(typeList);
@@ -462,21 +460,16 @@ namespace minimal
                 Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
             }
 
-            // Initialize twin metadata
-            var meta = new Dictionary<string, object>
-            {
-                { "$model", "dtmi:com:contoso:SampleModel;1" },
-            };
-            // Initialize the twin properties
-            var initData = new Dictionary<string, object>
-            {
-                { "$metadata", meta },
-                { "data", "Hello World!" }
-            };
+            // Initialize twin data
+            BasicDigitalTwin twinData = new BasicDigitalTwin();
+            twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+            twinData.CustomProperties.Add("data", $"Hello World!");
+    
             string prefix="sampleTwin-";
             for(int i=0; i<3; i++) {
                 try {
-                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(initData));
+                    twinData.Id = $"{prefix}{i}";
+                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
                     Console.WriteLine($"Created twin: {prefix}{i}");
                 } catch(RequestFailedException rex) {
                     Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
@@ -563,7 +556,7 @@ az ad app delete --id <your-application-ID>
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

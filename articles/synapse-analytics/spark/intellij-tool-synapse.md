@@ -2,18 +2,19 @@
 title: Oktatóanyag – Azure Toolkit for IntelliJ (Spark-alkalmazás)
 description: Oktatóanyag – a Azure Toolkit for IntelliJ használatával fejlesztheti a Scala-ben írt Spark-alkalmazásokat, és beküldheti azokat egy Apache Spark-készletbe (előzetes verzió).
 services: synapse-analytics
-author: v-jiche
-ms.author: v-jiche
+author: hrasheed-msft
+ms.author: jejiang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
+ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 3971d49befd228c111b1a8da5fce44e25abfaa65
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657834"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194942"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazások létrehozása a IntelliJ a szinapszis-munkaterület használatával
 
@@ -146,7 +147,7 @@ A Scala-alkalmazás létrehozása után távolról futtathatja azt.
     |Parancssori argumentumok|Szükség esetén megadhat argumentumokat szóközzel elválasztva a Main osztály számára.|
     |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Az Azure-beli virtuális fájlrendszerben is böngészheti a fájlokat, amelyek jelenleg csak ADLS Gen2 fürtöt támogatják. További információ: [Apache Spark konfiguráció](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) és [erőforrások feltöltése a fürtbe](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
     |Feladatok feltöltési tárolója|Kibontás a további beállítások megjelenítéséhez.|
-    |Tárhelytípusa|Válassza az **Azure Blob használata a feltöltéshez** lehetőséget a legördülő listából.|
+    |Tárhelytípusa|Válassza az **Azure Blob használata** lehetőséget a **fürt alapértelmezett Storage-fiókjának** feltöltéséhez és a legördülő listából való feltöltéséhez.|
     |Tárfiók|Adja meg a Storage-fiókját.|
     |Storage-kulcs|Adja meg a tárolási kulcsot.|
     |Storage-tároló|A Storage- **fiók** és a **Storage-kulcs** megadása után válassza ki a tárolót a legördülő listából.|
@@ -250,6 +251,7 @@ Ez csak a 2018,2-es és a 2018,3-es IntelliJ támogatott.
 
     |Tulajdonság |Érték |
     |----|----|
+    |Fő osztály neve| Válassza ki a fő osztály nevét.| 
     |Spark-készletek|Válassza ki azokat a Spark-készleteket, amelyeken futtatni szeretné az alkalmazást.|
     ||
 
@@ -268,7 +270,7 @@ A szkript eredményét úgy teheti meg, hogy elküld egy kódot a helyi konzolon
 
    ![Kijelölés küldése a Spark-konzolra](./media/intellij-tool-synapse/send-selection-to-console.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Synapse Analytics](../overview-what-is.md)
 - [Új Apache Spark-készlet létrehozása az Azure szinapszis Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

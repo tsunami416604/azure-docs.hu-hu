@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: c4b1c6348e834f83e20c612678075405a14f1a9d
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: 4fae88de9ad6c48e8079fc7d9ff2d7527d9e7208
+  ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82106202"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85299381"
 landingContent:
 - title: A hangsegédek ismertetése
   linkLists:
@@ -42,24 +42,20 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Custom Commands-alkalmazás létrehozása
-      url: quickstart-custom-speech-commands-create-new.md
-    - text: Egyéni parancs létrehozása paraméterekkel
-      url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Egyéni parancsok használata Custom Voice szolgáltatással
-      url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Egyéni parancsok használata a Speech SDK-val
-      url: quickstart-custom-speech-commands-speech-sdk.md
+    - text: Hangvezérelt asszisztens létrehozása egyéni parancsokkal
+      url: quickstart-custom-commands-application.md
   - linkListType: how-to-guide
     links:
-    - text: Ügyféltől származó parancsok végrehajtása
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Paraméter-ellenőrzés hozzáadása
-      url: how-to-custom-speech-commands-validations.md
-    - text: Megerősítés hozzáadása
-      url: how-to-custom-speech-commands-confirmations.md
-    - text: Egylépéses javítás hozzáadása
-      url: how-to-custom-speech-commands-one-step-correction.md
+    - text: Alkalmazás létrehozása egyszerű parancsokkal
+      url: how-to-custom-commands-create-application-with-simple-commands.md
+    - text: Paraméterek hozzáadása a parancsokhoz
+      url: how-to-custom-commands-add-parameters-to-commands.md
+    - text: Érvényesítések hozzáadása paraméterekhez és kérések a javításhoz
+      url: how-to-custom-commands-add-parameter-configuration.md
+    - text: Integrálás a Speech SDK használatával
+      url: how-to-custom-commands-setup-speech-sdk.md
+    - text: Az egyéni parancsok alkalmazás folyamatos üzembe helyezésének beállítása az Azure DevOps használatával
+      url: how-to-custom-commands-deploy-cicd.md
 - title: Fejlesztés közvetlen vonalas Beszédtel
   linkLists:
   - linkListType: quickstart

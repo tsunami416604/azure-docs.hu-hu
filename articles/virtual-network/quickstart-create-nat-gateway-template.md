@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: NAT-átjáró létrehozása – Resource Manager-sablon'
+title: 'Oktatóanyag: NAT-átjáró létrehozása – Resource Manager-sablon'
 titleSuffix: Azure Virtual Network NAT
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre NAT-átjárót a Azure Resource Manager sablon használatával.
 services: load-balancer
@@ -10,26 +10,26 @@ Customer intent: I want to create a NAT gateway by using an Azure Resource Manag
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: quickstart
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 5e0d62885598aea6f1656d0cdcef5f0c3406e7dd
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: fbc8b48f4ff6a6df687d45a53008a159c5322084
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341031"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703570"
 ---
-# <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Gyors útmutató: NAT-átjáró létrehozása – Resource Manager-sablon
+# <a name="tutorial-create-a-nat-gateway---resource-manager-template"></a>Oktatóanyag: NAT-átjáró létrehozása – Resource Manager-sablon
 
 Virtual Network NAT Azure Resource Manager sablon használatával történő használatának első lépései.  Ez a sablon egy virtuális hálózatot, egy NAT-átjáró erőforrást és egy Ubuntu virtuális gépet helyez üzembe. Az Ubuntu virtuális gép a NAT-átjáró erőforrásához társított alhálózatra van telepítve.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-nat-gateway-and-supporting-resources"></a>NAT-átjáró és támogató erőforrások létrehozása
 
@@ -117,7 +117,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
     ![NAT-erőforráscsoport Virtual Network](./media/quick-create-template/nat-gateway-template-rg.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 **Azure CLI**
 
@@ -140,7 +140,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 1d771d1e13d1ffd92a18658d08bb948d97e55999
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3efa8da87ac15495900dd264a9c37143f5e08181
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209009"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699719"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure-beli virtuális gépek áthelyezése rendelkezésre állási zónákba
 Availability Zones az Azure-ban segíti az alkalmazások és az adatok adatközpont-meghibásodások elleni védelmében. Az egyes rendelkezésre állási zónák egy vagy több, önálló áramellátással, hűtéssel, és hálózattal rendelkező adatközpontból állnak. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. A régión belüli Availability Zones fizikai elkülönítése segít az adatközpont-hibák elleni védelemben az alkalmazások és az adatok védelme terén. A Availability Zones az Azure a virtuális gépek (VM-EK) rendelkezésre állására vonatkozó, 99,99%-os szolgáltatói szerződést (SLA) biztosít. A Availability Zones a kiválasztott régiókban támogatottak, ahogyan az a [Availability Zones támogató régiókban](https://docs.microsoft.com/azure/availability-zones/az-region)szerepel.
@@ -23,7 +23,7 @@ Olyan helyzetekben, ahol a virtuális gépek *egyetlen példányban* vannak üze
 - Virtuális gépek áthelyezése egy rendelkezésre állási csoportba egy adott régióban lévő Availability Zonesba
 
 > [!IMPORTANT]
-> Jelenleg Azure Site Recovery támogatja a virtuális gépek áthelyezését az egyik régióból a másikba, de nem támogatja az áthelyezést a régión belül.
+> Jelenleg Azure Site Recovery támogatja a virtuális gépek áthelyezését az egyik régióból a másikba. Csak néhány régión belül támogatja a zónák közötti áthelyezést. [További információ](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery).
 
 ## <a name="check-prerequisites"></a>Előfeltételek ellenőrzése
 
@@ -85,7 +85,7 @@ A következő lépések végigvezetik a Azure Site Recovery az adatreplikálás 
 
 1. A Azure Portal válassza a **virtuális gépek**lehetőséget, majd válassza ki azt a virtuális gépet, amelyet át szeretne helyezni Availability Zonesba.
 2. A **Műveletek** részen válassza a **Vészhelyreállítás** elemet.
-3. A vész- **helyreállítási** > **célcsoport**konfigurálása területen válassza ki azt a régiót, amelyre a replikálást végzi. Győződjön meg arról, hogy a régió [támogatja](https://docs.microsoft.com/azure/availability-zones/az-region) a Availability Zones.
+3. A vész- **helyreállítási**  >  **célcsoport**konfigurálása területen válassza ki azt a régiót, amelyre a replikálást végzi. Győződjön meg arról, hogy a régió [támogatja](https://docs.microsoft.com/azure/availability-zones/az-region) a Availability Zones.
 
     ![A célként kijelölt régió kiválasztása](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -97,7 +97,7 @@ A következő lépések végigvezetik a Azure Site Recovery az adatreplikálás 
   
     ![Rendelkezésre állási zóna kiválasztásának kiválasztása](media/azure-vms-to-zones/enable-rep-2.PNG)
 
-7. Válassza ki a **Replikáció engedélyezése** elemet. Ez a művelet elindít egy feladatot a virtuális gép replikálásának engedélyezéséhez.
+7. Válassza a **replikáció engedélyezése**lehetőséget. Ez a művelet elindít egy feladatot a virtuális gép replikálásának engedélyezéséhez.
 
 ## <a name="check-settings"></a>Beállítások keresése
 
@@ -123,7 +123,7 @@ A replikálási feladat befejeződése után ellenőrizheti a replikálás álla
     > [!IMPORTANT]
     > Javasoljuk, hogy használjon külön Azure-beli virtuálisgép-hálózatot a tesztelési hibákhoz, nem pedig azt a célként megadott régióban lévő éles hálózatot, amelyben át szeretné helyezni a virtuális gépeket.
 
-4. Az áthelyezés tesztelésének megkezdéséhez kattintson **az OK gombra**. A folyamat nyomon követéséhez válassza ki a virtuális gépet, és nyissa meg a tulajdonságait. Vagy kiválaszthatja a **feladatátvételi teszt** feladatot a tároló neve > **Beállítások** > **feladatok** > **site Recovery feladatok**lehetőségre.
+4. Az áthelyezés tesztelésének megkezdéséhez kattintson **az OK gombra**. A folyamat nyomon követéséhez válassza ki a virtuális gépet, és nyissa meg a tulajdonságait. Vagy kiválaszthatja a **feladatátvételi teszt** feladatot a tároló neve > **Beállítások**  >  **feladatok**  >  **site Recovery feladatok**lehetőségre.
 5. A feladatátvétel befejezését követően az Azure-beli virtuális gép replikája megjelenik az Azure Portal > **Virtuális gépek** területen. Győződjön meg arról, hogy a virtuális gép fut, megfelelő a méretezése és a megfelelő hálózathoz csatlakozik.
 6. Ha törölni szeretné az áthelyezés tesztelésének részeként létrehozott virtuális gépet, válassza a **feladatátvételi teszt** törlése elemet a replikált elemnél. A **jegyzetek**területen jegyezze fel és mentse a teszttel kapcsolatos megfigyeléseket.
 

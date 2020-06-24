@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/23/2020
+ms.openlocfilehash: cf0c2c75b795fcca347439714e163d4022b79fa4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780759"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261018"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Oktatóanyag: az Azure SQL-adatainak indexelése a .NET SDK használatával
 
 Konfiguráljon egy [Indexelő](search-indexer-overview.md) a kereshető adatok kinyeréséhez az Azure SQL Database-ből, majd küldje el az Azure Cognitive Searchban található keresési indexbe. 
 
-Ez az oktatóanyag a C# és a [.net SDK](https://aka.ms/search-sdk) használatával hajtja végre a következő feladatokat:
+Ez az oktatóanyag a C# és a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Azure SQL Databasehoz csatlakozó adatforrás létrehozása
@@ -27,7 +27,7 @@ Ez az oktatóanyag a C# és a [.net SDK](https://aka.ms/search-sdk) használatá
 > * Indexelő futtatása az adatgyűjtés indexbe való betöltéséhez
 > * Index lekérdezése ellenőrzési lépésként
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -78,7 +78,7 @@ Ha meglévő Azure SQL Database erőforrással rendelkezik, a 4. lépéstől kez
     SELECT * FROM Hotels
     ```
 
-1. Másolja az adatbázishoz tartozó ADO.NET-kapcsolatok karakterláncát. A **Beállítások** > **kapcsolódási karakterláncok**alatt másolja a ADO.net-kapcsolódási karakterláncot az alábbi példához hasonló módon.
+1. Másolja az adatbázishoz tartozó ADO.NET-kapcsolatok karakterláncát. A **Beállítások**  >  **kapcsolódási karakterláncok**alatt másolja a ADO.net-kapcsolódási karakterláncot az alábbi példához hasonló módon.
 
     ```sql
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -96,7 +96,7 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
@@ -104,11 +104,11 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 1. Indítsa el a Visual studiót, és nyissa meg a **dotnethowtoindexers elemre. SLN**.
 
-1. A Megoldáskezelőban nyissa meg a **appSettings. JSON** fájlt a kapcsolódási adatok biztosításához.
+1. Megoldáskezelő a kapcsolódási adatok megadásához nyissa meg a **appsettings.js** .
 
-1. Ha `searchServiceName`a teljes URL-cím "https://my-demo-service.search.windows.net", a szolgáltatás neve a következő: "My-demo-Service".
+1. `searchServiceName`Ha a teljes URL-cím " https://my-demo-service.search.windows.net ", a szolgáltatás neve a következő: "My-demo-Service".
 
-1. A `AzureSqlConnectionString`esetében a karakterlánc formátuma a következőhöz hasonló:`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
+1. A esetében `AzureSqlConnectionString` a karakterlánc formátuma a következőhöz hasonló:`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
@@ -242,7 +242,7 @@ Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő objektumokat, és t
 
 A portál segítségével indexeket, indexelő fájlokat és adatforrásokat is törölhet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

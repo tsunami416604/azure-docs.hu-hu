@@ -2,7 +2,7 @@
 title: SQL Server Windows-felhasználók és-csoportok migrálása SQL felügyelt példányra T-SQL használatával
 description: Ismerje meg, hogyan telepítheti át a Windows-felhasználókat és-csoportokat egy SQL Server-példányban az Azure SQL felügyelt példányaira
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: a050e38f037ee0ed2741cfa2e509e21fa9e1151d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310223"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708665"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Oktatóanyag: Windows-felhasználók és-csoportok áttelepíthetők egy SQL Server példányban az Azure SQL felügyelt példányára T-SQL DDL-szintaxis használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "84310223"
 
 Ez a cikk végigvezeti a helyszíni Windows-felhasználók és-csoportok áttelepítésének folyamatán a SQL Server az Azure SQL felügyelt példányain a T-SQL szintaxis használatával.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >

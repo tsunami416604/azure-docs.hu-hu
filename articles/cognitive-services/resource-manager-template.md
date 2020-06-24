@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 9b2091c7acd42d4c967ec5baef82d970344f9231
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081579"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299483"
 ---
-# <a name="create-a-cognitive-services-resource-using-an-azure-resource-manager-template"></a>Cognitive Services-erőforrás létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása ARM-sablonnal
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Cognitive Services-erőforrást egy Azure Resource Manager-(ARM-) sablon használatával. A több szolgáltatásból álló erőforrás a következőket teszi lehetővé:
 * Több Azure-Cognitive Services elérése egyetlen kulccsal és végponttal.
@@ -24,23 +24,24 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Co
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
 
-## <a name="prerequisites"></a>Előfeltételek 
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
+* Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services).
 
-### <a name="review-the-template"></a>A sablon áttekintése
+## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure GYORSINDÍTÁS ARM sablonjaiból](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/)származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json" highlight="27-41":::
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
 * [Microsoft. CognitiveServices/fiókok](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): Cognitive Services erőforrást hoz létre.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -63,7 +64,6 @@ A sablonban egyetlen Azure-erőforrás van definiálva:
 
 3. Válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget. Miután az erőforrás sikeresen befejezte az üzembe helyezést, ki lesz emelve a **Ugrás erőforrásra** gomb.
 
-    
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
@@ -97,7 +97,7 @@ Az üzembe helyezés befejeződése után az új erőforrás megjelenítéséhez
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/CLI)
 
-Az Azure CLI használatával futtassa a következő parancsfájlt, és adja meg a korábban létrehozott erőforráscsoport nevét. 
+Az Azure CLI használatával futtassa a következő parancsfájlt, és adja meg a korábban létrehozott erőforráscsoport nevét.
 
 ```azurecli-interactive
 echo "Enter the resource group where the Cognitive Services resource exists:" &&

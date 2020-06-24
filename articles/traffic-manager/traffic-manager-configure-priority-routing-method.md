@@ -4,7 +4,6 @@ description: Ez az oktatóanyag ismerteti, hogyan konfigurálhatja a prioritási
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: ca223a19ff7ddeae95878f941f3cf295664e62b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c541f8318bd7e75de7526e6b7a9e3a32462782d
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76938726"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706749"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Oktatóanyag: a prioritási forgalom útválasztási módszerének konfigurálása Traffic Manager
 
@@ -34,7 +33,7 @@ A szolgáltatás feladatátvételének általános mintája egy elsődleges szol
     1. A **forgalom-útválasztási módszer beállításainál**ellenőrizze, hogy a forgalom-útválasztási módszer **prioritás**-e. Ha nem, kattintson a **prioritás** lehetőségre a legördülő listából.
     2. A következő módon állítsa be a profil összes végpontján megegyező **Endpoint monitor beállításait** :
         1. Válassza ki a megfelelő **protokollt**, és adja meg a **portszámot** . 
-        2. Az **elérési út** mezőbe írja */* be a perjelet. A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A "/" perjel a relatív elérési útra érvényes bejegyzés, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezés).
+        2. Az **elérési út** mezőbe írja be a perjelet */* . A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A "/" perjel a relatív elérési útra érvényes bejegyzés, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezés).
         3. Kattintson a lap tetején található **Mentés**gombra.
 5. A **Beállítások** szakaszban kattintson a **végpontok**elemre.
 6. A **végpontok** panelen tekintse át a végpontok prioritási sorrendjét. Ha a **prioritási** forgalom útválasztási módszerét választja, a kiválasztott végpontok sorrendje számít. Ellenőrizze a végpontok prioritási sorrendjét.  Az elsődleges végpont felül van. Ellenőrizze a megjelenő sorrendet. az összes kérelem át lesz irányítva az első végpontra, és ha Traffic Manager észleli, hogy sérült, akkor a forgalom automatikusan átadja a következő végpontot. 

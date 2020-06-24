@@ -2,7 +2,7 @@
 title: SQL felügyelt példányok biztonsága az Azure AD-kiszolgáló rendszerbiztonsági azonosítójával (bejelentkezések)
 description: Ismerje meg az Azure SQL felügyelt példányának védelmét szolgáló technikákat és szolgáltatásokat, valamint az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) használatát
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 5152f78b428008d3f9a76264f2253167e6c5a138
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219812"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706436"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Oktatóanyag: az Azure SQL felügyelt példányának biztonsága Azure AD Server-rendszerbiztonsági tag használatával (bejelentkezések)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Az Azure SQL felügyelt példánya szinte minden olyan biztonsági funkciót biz
 - Hitelesítés használata szerepköralapú tagságokkal és engedélyekkel
 - Biztonsági funkciók engedélyezése
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -104,7 +104,7 @@ Az SQL felügyelt példányhoz való kapcsolódásra vonatkozó példákat a kö
     GO
     ```
 
-    ![Native-login. png](./media/aad-security-configure-tutorial/native-login.png)
+    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
 
 További információ: [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)).
 
@@ -153,13 +153,13 @@ Ha az Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
    - Active Directory – jelszó
    - Active Directory – integrált </br>
 
-     ![SSMS-login-prompt. png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
      További információ: [univerzális hitelesítés (SSMS-támogatás multi-Factor Authentication)](../database/authentication-mfa-ssms-overview.md).
 
 1. Válassza **a Active Directory-Universal lehetőséget MFA-támogatással**. Ez egy Multi-Factor Authentication bejelentkezési ablakot hoz létre. Jelentkezzen be az Azure AD-jelszavával.
 
-    ![MFA-login-prompt. png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
 1. A SSMS **Object Explorer**kattintson a jobb gombbal a kiszolgálóra, és válassza az **Új lekérdezés**elemet.
 1. A lekérdezési ablakban a következő szintaxis használatával hozzon létre egy másik Azure AD-fiókhoz tartozó bejelentkezési azonosítót:
@@ -222,7 +222,7 @@ Az egyes adatbázisokhoz való engedélyezés ugyanúgy működik, mint az SQL f
 
 Most, hogy létrehoztunk egy **MyMITestDB**nevű adatbázist, és egy olyan bejelentkezési azonosítót, amely csak az alapértelmezett engedélyekkel rendelkezik, a következő lépés egy felhasználó létrehozása a bejelentkezésből. Jelenleg a bejelentkezés kapcsolódhat a felügyelt példányhoz, és megtekintheti az összes adatbázist, de nem tud kommunikálni az adatbázisokkal. Ha az alapértelmezett engedélyekkel rendelkező Azure AD-fiókkal jelentkezik be, és megpróbálja kibontani az újonnan létrehozott adatbázist, a következő hibaüzenet jelenik meg:
 
-![SSMS-db-not-accessible. png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 További információ az adatbázis-engedélyek megadásáról: [első lépések az adatbázismotor engedélyeivel](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
@@ -326,7 +326,7 @@ Ahhoz, hogy a felhasználó megjelenjen az adatbázisban lévő adat, [adatbázi
 1. Hozzon létre egy új kapcsolódást a felügyelt példányhoz azzal a felhasználóval, aki hozzá lett adva a `db_datareader` szerepkörhöz.
 1. A tábla megjelenítéséhez bontsa ki **Object Explorer** az adatbázist.
 
-    ![SSMS-test-table. png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. Nyisson meg egy új lekérdezési ablakot, és hajtsa végre a következő SELECT utasítást:
 
@@ -337,7 +337,7 @@ Ahhoz, hogy a felhasználó megjelenjen az adatbázisban lévő adat, [adatbázi
 
     Meg tudja-e tekinteni a tábla adatait? Ekkor a visszaadott oszlopok láthatók.
 
-    ![SSMS-test-Table-Query. png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>Azure AD-kiszolgáló szintű rendszerbiztonsági tag (bejelentkezések) megszemélyesítése
 

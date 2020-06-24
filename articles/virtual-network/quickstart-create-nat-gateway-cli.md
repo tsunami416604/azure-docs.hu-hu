@@ -1,11 +1,11 @@
 ---
-title: 'Gyors útmutató: NAT-átjáró létrehozása – Azure CLI'
+title: 'Oktatóanyag: NAT-átjáró létrehozása – Azure CLI'
 titlesuffix: Azure Virtual Network NAT
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre NAT-átjárót az Azure CLI használatával
 services: virtual-network
 documentationcenter: na
 author: asudbring
-manager: KumundD
+manager: KumudD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
 ms.subservice: nat
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: dcc3eda4c19e8d15040feb31d2a45922035c6cb0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 016e187c2ae41958b9527b88b06517b5f5544c7b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341541"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707906"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Rövid útmutató: NAT-átjáró létrehozása az Azure CLI használatával
+# <a name="tutorial-create-a-nat-gateway-using-azure-cli"></a>Oktatóanyag: NAT-átjáró létrehozása az Azure CLI használatával
 
-Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Virtual Network NAT szolgáltatást. Létre kell hoznia egy NAT-átjárót, amely kimenő kapcsolatot biztosít az Azure-beli virtuális gépek számára. 
+Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Virtual Network NAT szolgáltatást. Létre kell hoznia egy NAT-átjárót, amely kimenő kapcsolatot biztosít az Azure-beli virtuális gépek számára. 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -213,7 +213,7 @@ ssh <ip-address-destination>
 
 Most már készen áll a NAT szolgáltatás használatára.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást.
 
@@ -222,7 +222,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
     --name myResourceGroupNAT
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatára. 
 

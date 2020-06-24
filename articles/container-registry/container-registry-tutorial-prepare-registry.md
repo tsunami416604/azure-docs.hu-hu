@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238523"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693228"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
@@ -39,7 +39,7 @@ Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzé
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-Válassza **az erőforrás** > **létrehozása tárolók** > **Azure Container Registry**elemet.
+Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Azure Container Registry**elemet.
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][tut-portal-01]
 
@@ -55,7 +55,7 @@ Kattintson a **Létrehozás** elemre az ACR-példány üzembe helyezéséhez.
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][tut-portal-02]
 
-Az oktatóanyag további részében helyőrzőként használjuk `<acrName>` a kiválasztott tároló beállításjegyzék- **nevét** .
+Az oktatóanyag további részében `<acrName>` helyőrzőként használjuk a kiválasztott tároló **beállításjegyzék-nevét** .
 
 > [!TIP]
 > Mivel az Azure tárolójegyzékek általában több tárológazdagép által használt hosszútávú erőforrások, ajánlott a saját erőforráscsoportjában létrehozni a tárolójegyzéket. A georeplikált tárolójegyzékek és webhookok konfigurálásakor a további erőforrások ugyanabba az erőforráscsoportba kerülnek.

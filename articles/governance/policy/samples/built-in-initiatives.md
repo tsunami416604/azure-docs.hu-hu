@@ -1,21 +1,25 @@
 ---
 title: Beépített házirend-kezdeményezések listája
 description: A Azure Policy beépített házirend-kezdeményezéseit sorolja fel. A kategóriák közé tartoznak a jogszabályi megfelelőség, a vendég konfigurációja és még sok más.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b3b0826e2121e7d609bd4091a162fa1820c1be53
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 41e19426daeaee799f9ad008c820a689fe552ec4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234008"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709142"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy beépített kezdeményezési definíciók
 
 Ez az oldal Azure Policy beépített kezdeményezési definíciók indexe.
 
 Az egyes beépített hivatkozások neve a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárház kezdeményezési definíciós forrására mutat. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára**való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a <kbd>CTRL</kbd> - <kbd>F</kbd> billentyűkombinációval használhatja a böngésző keresési funkcióját.
+
+## <a name="cosmos-db"></a>Cosmos DB
+
+[!INCLUDE [azure-policy-samples-policysets-cosmos-db](../../../../includes/policy/samples/bycat/policysets-cosmos-db.md)]
 
 ## <a name="guest-configuration"></a>Vendégkonfiguráció
 
@@ -25,7 +29,7 @@ Az egyes beépített hivatkozások neve a [Azure Policy GitHub](https://github.c
 
 [!INCLUDE [azure-policy-samples-policysets-monitoring](../../../../includes/policy/samples/bycat/policysets-monitoring.md)]
 
-## <a name="regulatory-compliance"></a>Szabályozási megfelelőség
+## <a name="regulatory-compliance"></a>Előírásoknak való megfelelőség
 
 [!INCLUDE [azure-policy-samples-policysets-regulatory-compliance](../../../../includes/policy/samples/bycat/policysets-regulatory-compliance.md)]
 
