@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8a101235f8e7aaeff455732b5c048cbc81c20079
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309668"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079045"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
@@ -201,16 +201,37 @@ Ha AK-fürtöt hoz létre, a rendszer automatikusan létrehoz egy hálózati biz
 
 A kubenet esetében az útválasztási táblázatnak léteznie kell a fürt alhálózatán (k). Az AK támogatja a saját meglévő alhálózat és útválasztási táblázat bevezetését.
 
-Ha az egyéni alhálózat nem tartalmaz útválasztási táblázatot, az AK létrehozza az egyiket az Ön számára, és szabályokat hoz létre hozzá. Ha az egyéni alhálózat útválasztási táblázatot tartalmaz a fürt létrehozásakor, az AK felismeri a meglévő útválasztási táblázatot a fürt műveletei során, és ennek megfelelően frissíti a felhőalapú szolgáltatói műveletekre vonatkozó szabályokat.
+Ha az egyéni alhálózat nem tartalmaz útválasztási táblázatot, az AK létrehozza az egyiket az Ön számára, és a fürt életciklusa során a szabályok hozzáadására is lehetőséget nyújt. Ha az egyéni alhálózat útválasztási táblázatot tartalmaz a fürt létrehozásakor, az AK felismeri a meglévő útválasztási táblázatot a fürt műveletei során, és ennek megfelelően hozzáadja/frissíti a szabályokat a felhőalapú szolgáltató műveleteihez.
+
+> [!WARNING]
+> Az egyéni szabályok hozzáadhatók az egyéni útválasztási táblázathoz és frissíthetők. A szabályokat azonban a Kubernetes Cloud Provider adja hozzá, amely nem frissíthető és nem távolítható el. A 0.0.0.0/0 szabályoknak mindig léteznie kell egy adott útválasztási táblában, és le kell képeznie az internetes átjáró céljára, például egy NVA vagy más kimenő átjáróra. Körültekintően járjon el, amikor csak az egyéni szabályok módosítására kerülő szabályokat frissíti.
+
+További információ az [Egyéni útválasztási táblázat][custom-route-table]beállításáról.
+
+A Kubenet hálózatkezeléséhez a kérések sikeres továbbításához meg kell adni a szervezett útválasztási táblázat szabályait. Ennek a kialakításnak köszönhetően az útválasztási táblákat gondosan karban kell tartani minden olyan fürt esetében, amely arra támaszkodik. Több fürt nem oszthat meg útválasztási táblázatot, mert a különböző fürtökből származó Pod CIDRs átfedésbe kerülhet, ami váratlan és hibás útválasztást okoz. Ha több fürtöt állít be ugyanazon a virtuális hálózaton, vagy egy virtuális hálózatot az egyes fürtökhöz kíván hozzárendelni, ügyeljen rá, hogy a következő korlátozások legyenek figyelembe véve.
 
 Korlátozások:
 
 * Az engedélyeket hozzá kell rendelni a fürt létrehozása előtt, ügyeljen arra, hogy az egyéni alhálózathoz és az egyéni útválasztási táblázathoz írási engedéllyel rendelkező egyszerű szolgáltatást használjon.
 * A felügyelt identitások jelenleg nem támogatottak a kubenet egyéni útválasztási tábláival.
-* Az AK-fürt létrehozása előtt egyéni útválasztási táblázatot kell társítani az alhálózathoz. Ez az útválasztási tábla nem frissíthető, és az összes útválasztási szabályt hozzá kell adni vagy el kell távolítani a kezdeti útválasztási táblázatból az AK-fürt létrehozása előtt.
-* Az AK-beli virtuális hálózatokon belüli összes alhálózatot ugyanazzal az útválasztási táblázattal kell társítani.
-* Minden AK-fürtnek egyedi útválasztási táblázatot kell használnia. Több fürttel rendelkező útválasztási táblázat nem használható fel újra.
+* Az AK-fürt létrehozása előtt egyéni útválasztási táblázatot kell társítani az alhálózathoz.
+* A társított útválasztási tábla erőforrása nem frissíthető a fürt létrehozása után. Amíg az útválasztási tábla erőforrása nem frissíthető, egyéni szabályok módosíthatók az útválasztási táblázatban.
+* Mindegyik AK-fürtnek egyetlen, egyedi útválasztási táblázatot kell használnia a fürthöz társított összes alhálózathoz. Nem lehet felhasználni több fürtből álló útválasztási táblázatot, mert lehetséges az átfedésben lévő Pod CIDRs és az ütköző útválasztási szabályok.
 
+Miután létrehozta az egyéni útválasztási táblázatot, és hozzárendeli azt a virtuális hálózatban lévő alhálózathoz, létrehozhat egy új, az útválasztási táblázatot használó munkaállomás-fürtöt.
+Az alhálózati azonosítót kell használnia az AK-fürt üzembe helyezéséhez. Ezt az alhálózatot is társítani kell az egyéni útválasztási táblázathoz.
+
+```azurecli-interactive
+# Find your subnet ID
+az network vnet subnet list --resource-group
+                            --vnet-name
+                            [--subscription]
+```
+
+```azurecli-interactive
+# Create a kubernetes cluster with with a custom subnet preconfigured with a route table
+az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
+```
 
 ## <a name="next-steps"></a>További lépések
 
@@ -238,3 +259,4 @@ A meglévő virtuális hálózati alhálózatba üzembe helyezett AK-fürttel mo
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
+[custom-route-table]: ../virtual-network/manage-route-table.md

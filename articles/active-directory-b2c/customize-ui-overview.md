@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebbf789d804ab903489c809fc96f1514d6c4f577
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8e0a4a3cac51f54d0bb4e5b23d0b44052d1e89a1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658086"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202483"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -219,13 +219,13 @@ A tartalmat a használt területi beállítás alapján különböző helyekről
 
 Az egyéni oldal URI-ja például az alábbihoz hasonló lehet:
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
 A lapot francia nyelven is betöltheti, ha tartalmat húz a következő helyről:
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 
@@ -235,7 +235,7 @@ A [B2C-AzureBlobStorage-Client](https://github.com/azureadquickstarts/b2c-azureb
 
 A sablonok HTML-és CSS-fájljai a [/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) könyvtárban találhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha **felhasználói folyamatokat**használ, megkezdheti a felhasználói felület testreszabását az oktatóanyag segítségével:
 

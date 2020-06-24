@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 596967a918dc3a94061ce907848e7e502660b97c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c587af529831c4fb8cdb15b50b2a0b16a868efe3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324368"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255381"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Mi a logikai SQL Server Azure SQL Database és az Azure szinapszis?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ Létrehozhat egy adott kiszolgálóhoz tartozó erőforráscsoportot, vagy a kis
 
 Ha a [Azure Portal](https://portal.azure.com)használatával szeretne létrehozni egy kiszolgálót (adatbázis, rugalmas készlet vagy adatraktár-adatbázis nélkül), akkor navigáljon egy üres SQL Server-(logikai SQL Server-) űrlapra.
 
-### <a name="create-a-blank-or-sample-sql-database-in-azure-sql-database"></a>Hozzon létre egy üres vagy egy minta SQL-adatbázist Azure SQL Database
+### <a name="create-a-blank-or-sample-database-in-azure-sql-database"></a>Hozzon létre egy üres vagy egy mintaadatbázis-adatbázist Azure SQL Database
 
 Ha SQL Database-adatbázist szeretne létrehozni a [Azure Portal](https://portal.azure.com)használatával, nyisson meg egy üres SQL Database űrlapot, és adja meg a kért információkat. Az erőforráscsoportot és a kiszolgálót az idő előtt vagy maga az adatbázis létrehozásakor is létrehozhatja. Létrehozhat egy üres adatbázist, vagy létrehozhat egy minta-adatbázist az Adventure Works LT alapján.
 
@@ -190,7 +190,7 @@ Kiszolgálók, adatbázisok és tűzfalak létrehozásához és kezeléséhez ha
 |[Tűzfalszabályok – Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Tűzfalszabály beolvasása.|
 |[Tűzfalszabályok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|A tűzfalszabályok listáját adja vissza.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A SQL Server-adatbázisok Azure SQL Databaseba való áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](migrate-to-database-from-sql-server.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](features-comparison.md).

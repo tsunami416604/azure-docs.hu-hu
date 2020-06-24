@@ -3,24 +3,24 @@ title: Probléma az Azure AD Gallery-alkalmazás hozzáadásakor | Microsoft Doc
 description: Ismerje meg az Azure AD Gallery-alkalmazások hozzáadásakor felmerülő gyakori problémákat, valamint azt, hogy mit tehet a megoldásban?
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/11/2018
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4387a3ca02297311cd9ab025c315ca3324cbbbe
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65784428"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760405"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Probléma az Azure AD Gallery-alkalmazás hozzáadásakor
 
@@ -99,7 +99,7 @@ Az értesítésekkel kapcsolatos további információkért tekintse meg az alá
 
 - **UPN** – a műveletet végrehajtó felhasználó
 
-  -   Példa – **tperkins\@f128.info**
+  -   Példa – **tperkins \@ f128.info**
 
 - **Bérlő azonosítója** – annak a bérlőnek az egyedi azonosítója, aki a műveletet végrehajtó felhasználó tagja volt
 
@@ -125,7 +125,7 @@ Az értesítésekkel kapcsolatos további információkért tekintse meg az alá
 
 -   **Részletek** – a művelet eredményének részletes leírása
 
-    -   Példa – a **belső `https://bing.com/` URL-cím érvénytelen, mert már használatban van**
+    -   Példa – a **belső URL-cím `https://bing.com/` érvénytelen, mert már használatban van**
 
 -   **Másolási hiba** – a **másolási hiba** szövegmezőtől jobbra lévő **másolási ikonra** kattintva másolhatja az összes értesítési részletet, hogy a megosztás egy támogatási vagy termékcsoport használatával történjen 
 -   mérnök

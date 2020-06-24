@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc227081af4f306a27b77eb727ea96467f94fa2e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186267"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203112"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
@@ -42,28 +42,28 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
 
 ## <a name="configure-the-custom-policy"></a>Egyéni házirend konfigurálása
 
-1. Nyissa meg a függő entitás (RP) fájlját, például: *SignUpOrSignin. XML*.
-1. Adja hozzá a következő attribútumokat `<TrustFrameworkPolicy>` a elemhez:
+1. Nyissa meg a függő entitás (RP) fájlját, például *SignUpOrSignin.xml*.
+1. Adja hozzá a következő attribútumokat a `<TrustFrameworkPolicy>` elemhez:
 
-   ```XML
+   ```xml
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Ha még nem létezik, adjon hozzá egy `<UserJourneyBehaviors>` alárendelt csomópontot a `<RelyingParty>` csomóponthoz. Ezt közvetlenül a után `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`kell elhelyezni.
-1. Adja hozzá a következő csomópontot az `<UserJourneyBehaviors>` elem gyermekének. Ügyeljen arra, hogy `{Your Application Insights Key}` a korábban feljegyzett Application Insights rendszerállapot- **kulcsot** cserélje le.
+1. Ha még nem létezik, adjon hozzá egy `<UserJourneyBehaviors>` alárendelt csomópontot a `<RelyingParty>` csomóponthoz. Ezt közvetlenül a után kell elhelyezni `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
+1. Adja hozzá a következő csomópontot az elem gyermekének `<UserJourneyBehaviors>` . Ügyeljen arra, hogy `{Your Application Insights Key}` a korábban feljegyzett Application Insights rendszerállapot- **kulcsot** cserélje le.
 
-    ```XML
+    ```xml
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
     * `DeveloperMode="true"`azt jelzi, hogy a ApplicationInsights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Kiválóan használható a fejlesztéshez, de nagy mennyiségekben korlátozott.
-    * `ClientEnabled="true"`a ApplicationInsights ügyféloldali parancsfájlt küld a követési oldal nézetre és az ügyféloldali hibákra. Ezeket a **browserTimings** táblában tekintheti meg a Application Insights-portálon. A beállítással `ClientEnabled= "true"`Application Insightsokat adhat hozzá az oldal parancsfájljaihoz, és megtekintheti az oldal betöltésének és az Ajax-hívások, a számok, a böngészőbeli kivételek és az Ajax-hibák részleteit, valamint a felhasználók és a munkamenetek számát. Ez a mező nem **kötelező**, és alapértelmezés `false` szerint be van állítva.
+    * `ClientEnabled="true"`a ApplicationInsights ügyféloldali parancsfájlt küld a követési oldal nézetre és az ügyféloldali hibákra. Ezeket a **browserTimings** táblában tekintheti meg a Application Insights-portálon. A beállítással `ClientEnabled= "true"` Application Insightsokat adhat hozzá az oldal parancsfájljaihoz, és megtekintheti az oldal betöltésének és az Ajax-hívások, a számok, a böngészőbeli kivételek és az Ajax-hibák részleteit, valamint a felhasználók és a munkamenetek számát. Ez a mező nem **kötelező**, és alapértelmezés szerint be van állítva `false` .
     * `ServerEnabled="true"`a meglévő UserJourneyRecorder JSON-t egy egyéni eseményként küldi a Application Insights.
 
     Például:
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
       ...
       TenantId="fabrikamb2c.onmicrosoft.com"

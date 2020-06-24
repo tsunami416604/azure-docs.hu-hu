@@ -21,7 +21,7 @@ ms.locfileid: "80878245"
 }
 ```
 
-A következő tulajdonságok érhetők el a `extensionBundle`ben:
+A következő tulajdonságok érhetők el a ben `extensionBundle` :
 
 | Tulajdonság | Leírás |
 | -------- | ----------- |
@@ -30,4 +30,4 @@ A következő tulajdonságok érhetők el a `extensionBundle`ben:
 
 A csomag verziójának növekménye csomagokként a köteg változása. A főverzió módosításai akkor fordulnak elő, ha a csomagban lévő csomagok nagyobb verziójúak. A köteg főverziójának változásai általában egybeesnek a functions futtatókörnyezet főverziójának változásával.  
 
-Az alapértelmezett csomag által telepített bővítmények jelenleg a [Extensions. JSON fájlban](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)vannak felsorolva.
+Az alapértelmezett csomag által telepített bővítmények jelenleg a [extensions.jsfájlban](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)vannak felsorolva.

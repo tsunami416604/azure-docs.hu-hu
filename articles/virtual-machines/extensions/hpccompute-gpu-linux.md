@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 55ca9232252895dd46ad3da3912f808ebd9b9533
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 68dddde965900b966efa96fbd7da7141f1ed8a94
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559676"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753546"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogram-bővítmény Linux rendszerhez
 
@@ -146,8 +146,7 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.3 \
-  }'
+  --version 1.3 
 ```
 
 Az alábbi példa két opcionális egyéni beállítást is feltesz példaként a nem alapértelmezett illesztőprogram-telepítéshez. Pontosabban frissíti az operációs rendszer kernelét a legújabb verzióra, és telepíti az adott CUDA Toolkit-illesztőprogramját. Ismét figyelje meg, hogy a "--Settings" nem kötelező és az alapértelmezett. Vegye figyelembe, hogy a kernel frissítése növelheti a bővítmény telepítési időpontját. Ha egy adott (régebbi) CUDA tolkit-verziót is választ, előfordulhat, hogy nem minden esetben kompatibilis az újabb kernelekkel.
@@ -202,7 +201,7 @@ A bővítmény végrehajtásának kimenete a következő fájlba lesz naplózva.
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/community/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).
 
 Az N sorozatú virtuális gépekkel kapcsolatos további információkért lásd: GPU-ra [optimalizált virtuálisgép-méretek](../linux/sizes-gpu.md).

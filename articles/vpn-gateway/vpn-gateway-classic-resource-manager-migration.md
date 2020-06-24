@@ -9,17 +9,17 @@ editor: amsriva
 ms.assetid: caa8eb19-825a-4031-8b49-18fbf3ebc04e
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: c1a75630c6419816b048495ee87d24c81979af16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064767"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84988037"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Klasszikusról VPN Gateway a Resource Manager-áttelepítésre
 A VPN-átjárók mostantól áttelepíthetők a Klasszikusból a Resource Manager-alapú üzemi modellbe. További információ: Azure Resource Manager [funkciók és előnyök](../azure-resource-manager/management/overview.md). Ebben a cikkben részletesen ismertetjük, hogyan lehet migrálni a klasszikus üzemelő példányokról az újabb Resource Manager-alapú modellre. 

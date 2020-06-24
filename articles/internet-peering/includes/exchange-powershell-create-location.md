@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "82587869"
 ---
-A **Get-AzPeeringLocation PowerShell-** parancsmag a kötelező paraméterrel `Kind`adja vissza a társítási helyszínek listáját, amelyet a későbbi lépésekben fog használni.
+A **Get-AzPeeringLocation PowerShell-** parancsmag a kötelező paraméterrel adja vissza a társítási helyszínek listáját `Kind` , amelyet a későbbi lépésekben fog használni.
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"

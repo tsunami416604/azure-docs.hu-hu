@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: c4069774249795073b4390de839ae9f563c8b1cb
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 2dc65c2e1b87c50ad2400b8ffb5d4c548e860c91
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424013"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201293"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
@@ -84,12 +84,12 @@ Az Azure AD-bérlő (az **ügyfél**) beléptetéséhez hozzon létre egy [Azure
 
 Töltse le a Azure Resource Manager sablon és paraméter fájljait:
 
-- [rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement.jsbekapcsolva](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement.parameters.jsbekapcsolva](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Ezután frissítse a paramétereket tartalmazó fájlt a korábban feljegyzett értékekkel. A következő JSON-kódrészlet példát mutat be Azure Resource Manager sablon paramétereinek fájljára. A esetében `authorizations.value.roleDefinitionId` használja a *közreműködő szerepkör* [beépített szerepkör](../role-based-access-control/built-in-roles.md) értékét `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 
-```JSON
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
@@ -243,7 +243,7 @@ Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálá
 1. Válassza a **AuditLogs** és a **SignInLogs**lehetőséget.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Monitor diagnosztikai beállításainak hozzáadásával és konfigurálásával kapcsolatos további információkért lásd [: oktatóanyag: erőforrás-naplók összegyűjtése és elemzése az Azure-erőforrásokból](../azure-monitor/insights/monitor-azure-resource.md).
 

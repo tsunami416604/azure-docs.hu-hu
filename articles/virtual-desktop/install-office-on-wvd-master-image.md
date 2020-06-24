@@ -4,20 +4,20 @@ description: Az Office telepítése és testreszabása egy Windows rendszerű vi
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2c62fdb41cdd19e34062124564ace9645df1dde6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 3e213ac7a4d0436cf904a8104cea7e76eabaece4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672697"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200528"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Az Office telepítése egy fő virtuálisgép-rendszerképre
 
-Ebből a cikkből megtudhatja, hogyan telepítheti az Office 365 ProPlus, OneDrive és más gyakori alkalmazásokat egy fő virtuális merevlemezre (VHD) szolgáló lemezképre az Azure-ba való feltöltéshez. Ha a felhasználóknak bizonyos üzletági (LOB) alkalmazásokat kell elérniük, azt javasoljuk, hogy a jelen cikkben szereplő utasítások elvégzése után telepítse őket.
+Ebből a cikkből megtudhatja, hogyan telepíthet Microsoft 365 alkalmazásokat nagyvállalati, OneDrive és egyéb gyakori alkalmazásokra az Azure-ba való feltöltéshez a fő virtuális merevlemez (VHD) lemezképén. Ha a felhasználóknak bizonyos üzletági (LOB) alkalmazásokat kell elérniük, azt javasoljuk, hogy a jelen cikkben szereplő utasítások elvégzése után telepítse őket.
 
 Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet (VM). Ha nem, tekintse meg [a fő VHD-lemezkép előkészítése és testreszabása](set-up-customize-master-image.md#create-a-vm) című témakört.
 
@@ -28,29 +28,30 @@ A cikk azt is feltételezi, hogy emelt szintű hozzáféréssel rendelkezik a vi
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Az Office telepítése megosztott számítógép-aktiválási módban
 
-A megosztott számítógép aktiválása lehetővé teszi az Office 365 ProPlus üzembe helyezését a szervezet egyik számítógépén, amelyet több felhasználó is elérhet. A megosztott számítógép aktiválásával kapcsolatos további információkért lásd: [az Office 365 ProPlus megosztott számítógép-aktiválásának áttekintése](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/).
+A megosztott számítógép aktiválása lehetővé teszi, hogy a vállalatnál Microsoft 365 alkalmazásokat helyezzen üzembe olyan számítógépre, amelyet több felhasználó is elérhet. A megosztott számítógép aktiválásával kapcsolatos további információkért lásd: [Microsoft 365 alkalmazások megosztott számítógép-aktiválásának áttekintése](/deployoffice/overview-shared-computer-activation).
 
 Az Office telepítéséhez használja az [Office üzembehelyezési eszközét](https://www.microsoft.com/download/details.aspx?id=49117) . A Windows 10 Enterprise multi-session csak az Office következő verzióit támogatja:
-- Office 365 ProPlus
-- Microsoft 365 Vállalati verzió-előfizetéssel rendelkező Office 365 Business
+
+   - Vállalati alkalmazások Microsoft 365
+   - A Microsoft 365 Vállalati verzió Premium előfizetéssel rendelkező üzleti alkalmazások Microsoft 365
 
 Az Office-telepítő eszköznek konfigurációs XML-fájlt kell megadnia. Az alábbi minta testreszabásához tekintse meg az [Office-telepítési eszköz konfigurációs beállításait](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/).
 
 A példaként megadott konfigurációs XML-fájl a következő műveleteket végzi el:
 
-- • Telepítse az Office-t a havi nagyvállalati csatornáról, és frissítse a havi nagyvállalati csatorna frissítéseit.
-- Használja az x64 architektúrát.
-- Az automatikus frissítések letiltása.
-- Távolítsa el az Office meglévő példányait, és telepítse át a beállításait.
-- A megosztott számítógép aktiválásának engedélyezése.
+   - Telepítse az Office-t a havi nagyvállalati csatornáról, és nyújtson frissítéseket a havi nagyvállalati csatornáról.
+   - Használja az x64 architektúrát.
+   - Az automatikus frissítések letiltása.
+   - Távolítsa el az Office meglévő példányait, és telepítse át a beállításait.
+   - A megosztott számítógép aktiválásának engedélyezése.
 
 >[!NOTE]
 >Előfordulhat, hogy a Visio rajzsablon-keresési funkciója nem a várt módon működik a Windows Virtual Desktopban.
 
 A minta konfigurációs XML-fájl nem fog megjelenni:
 
-- A Skype vállalati verzió telepítése
-- Telepítse a OneDrive-t felhasználónkénti módban. További információ: [a OneDrive telepítése számítógépenkénti módban](#install-onedrive-in-per-machine-mode).
+   - A Skype vállalati verzió telepítése
+   - Telepítse a OneDrive-t felhasználónkénti módban. További információ: [a OneDrive telepítése számítógépenkénti módban](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
 >A megosztott számítógép aktiválása Csoportházirend objektumok (GPO-k) vagy beállításjegyzék-beállítások használatával állítható be. A csoportházirend-objektum a **számítógép \\ -konfigurációs szabályzatok \\ Felügyeleti sablonok \\ Microsoft Office 2016 (gép) \\ licencelési beállításai** között található.
@@ -121,7 +122,7 @@ A következőképpen telepítheti a OneDrive-t gépi módban:
 2. A következő hivatkozással töltse le OneDriveSetup.exe a szakaszos helyre:<https://aka.ms/OneDriveWVD-Installer>
 
 3. Ha az Office-t a OneDrive-mel telepítette **\<ExcludeApp ID="OneDrive" /\>** , a következő parancs futtatásával távolítsa el a meglévő OneDrive felhasználónkénti telepítéseit egy emelt szintű parancssorból:
-    
+
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
@@ -160,8 +161,8 @@ A következőképpen telepítheti a OneDrive-t gépi módban:
 
 A Windows virtuális asztal nem támogatja a Skype vállalati verzió használatát.
 
-A Microsoft Teams telepítésével kapcsolatos segítségért lásd: [a Microsoft Teams használata a Windows rendszerű virtuális asztalon](teams-on-wvd.md).
+A Microsoft Teams telepítésével kapcsolatos segítségért lásd: [a Microsoft Teams használata a Windows rendszerű virtuális asztalon](teams-on-wvd.md). Az előzetes verzióban elérhető a Microsoft Teams szolgáltatáshoz készült Media-optimalizálás a Windows rendszerű virtuális asztalon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy hozzáadta az Office-t a lemezképhez, továbbra is testreszabhatja a fő VHD-lemezképet. Lásd: [a fő VHD-lemezkép előkészítése és testreszabása](set-up-customize-master-image.md).

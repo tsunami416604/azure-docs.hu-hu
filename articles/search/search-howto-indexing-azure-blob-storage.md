@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5df1198e6681431738f886eb7c3ad549936eab1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 413f8d02420b5442b5ffa1491f4312292e8b3a0e
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067646"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077507"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Dokumentumok indexelése az Azure Blob Storage az Azure-ban Cognitive Search
 
@@ -33,7 +33,7 @@ Beállíthat egy Azure Blob Storage indexelő a használatával:
 
 * [Azure Portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure Cognitive Search [.net SDK](https://aka.ms/search-sdk)
+* Azure Cognitive Search [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
 > [!NOTE]
 > Néhány funkció (például a mezők leképezése) még nem érhető el a portálon, és programozott módon kell használni őket.
@@ -47,8 +47,8 @@ Az adatforrás meghatározza az adatokhoz való hozzáféréshez szükséges hit
 A blob-indexeléshez az adatforrásnak a következő szükséges tulajdonságokkal kell rendelkeznie:
 
 * a **Name** a keresési szolgáltatásban található adatforrás egyedi neve.
-* a **típusnak a következőnek** kell lennie `azureblob`:
-* a **hitelesítő adatok** a Storage-fiókhoz tartozó `credentials.connectionString` kapcsolatok karakterláncát adja meg paraméterként. A részletekért lásd: az alábbi [hitelesítő adatok megadása](#Credentials) .
+* a **típusnak a következőnek** kell lennie: `azureblob`
+* a **hitelesítő adatok** a Storage-fiókhoz tartozó kapcsolatok karakterláncát adja meg `credentials.connectionString` paraméterként. A részletekért lásd: az alábbi [hitelesítő adatok megadása](#Credentials) .
 * a **Container** egy tárolót határoz meg a Storage-fiókban. Alapértelmezés szerint a tárolóban lévő összes blob beolvasható. Ha a blobokat csak egy adott virtuális könyvtárban szeretné indexelni, megadhatja a könyvtárat a választható **lekérdezési** paraméter használatával.
 
 Adatforrás létrehozása:
@@ -71,19 +71,19 @@ További információ a Create DataSource API-ról: [adatforrás létrehozása](
 
 A blob-tároló hitelesítő adatait az alábbi módszerek egyikével adhatja meg:
 
-- **Teljes hozzáférésű Storage-fiók kapcsolati karakterlánca**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` a kapcsolati karakterláncot lekérheti a Azure Portal a Storage-fiók panel > beállítások > kulcsok (klasszikus Storage-fiókok esetében) vagy a beállítások > hozzáférési kulcsok (Azure Resource Manager Storage-fiókok esetében) eléréséhez.
-- **Storage-fiók közös hozzáférésű aláírási** (SAS) `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` kapcsolati karakterlánca: az SAS-nek szerepelnie kell a listán, és olvasási engedéllyel kell rendelkeznie a tárolók és objektumok (ebben az esetben Blobok).
+- **Teljes hozzáférésű Storage-fiók kapcsolati karakterlánca**: a `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` kapcsolati karakterláncot lekérheti a Azure Portal a Storage-fiók panel > beállítások > kulcsok (klasszikus Storage-fiókok esetében) vagy a beállítások > hozzáférési kulcsok (Azure Resource Manager Storage-fiókok esetében) eléréséhez.
+- **Storage-fiók közös hozzáférésű aláírási** (SAS) kapcsolati karakterlánca: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` az SAS-nek szerepelnie kell a listán, és olvasási engedéllyel kell rendelkeznie a tárolók és objektumok (ebben az esetben Blobok).
 -  **Tároló megosztott hozzáférésének aláírása**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` az SAS-nek a tárolóban szerepelnie kell a listához és az olvasási engedéllyel.
 
 További információ a Storage közös hozzáférésű aláírásáról: a [közös hozzáférésű aláírások használata](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
-> Ha SAS hitelesítő adatokat használ, az adatforráshoz tartozó hitelesítő adatokat rendszeresen frissítenie kell megújított aláírásokkal a lejárat megakadályozása érdekében. Ha az SAS hitelesítő adatai lejárnak, az indexelő a következőhöz hasonló hibaüzenettel `Credentials provided in the connection string are invalid or have expired.`fog meghiúsulni:.  
+> Ha SAS hitelesítő adatokat használ, az adatforráshoz tartozó hitelesítő adatokat rendszeresen frissítenie kell megújított aláírásokkal a lejárat megakadályozása érdekében. Ha az SAS hitelesítő adatai lejárnak, az indexelő a következőhöz hasonló hibaüzenettel fog meghiúsulni: `Credentials provided in the connection string are invalid or have expired.` .  
 
 ### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
 Az index meghatározza a dokumentumok, attribútumok és más, a keresési élményt formáló szerkezetek mezőit.
 
-Ebből a témakörből megtudhatja, hogyan hozhat létre `content` egy kereshető mezőt tartalmazó indexet a blobokból kinyert szöveg tárolásához:   
+Ebből a témakörből megtudhatja, hogyan hozhat létre egy kereshető mezőt tartalmazó indexet `content` a blobokból kinyert szöveg tárolásához:   
 
     POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
@@ -130,23 +130,23 @@ Az [Indexelő konfigurációjától](#PartsOfBlobToIndex)függően a blob indexe
 > [!NOTE]
 > Alapértelmezés szerint a strukturált tartalmat, például a JSON-t vagy a CSV-t tartalmazó Blobok egyetlen darab szövegként vannak indexelve. Ha a JSON-és CSV-blobokat strukturált módon szeretné indexelni, további információért lásd: [JSON-Blobok indexelése](search-howto-index-json-blobs.md) és [CSV-Blobok indexelése](search-howto-index-csv-blobs.md) .
 >
-> Az összetett vagy beágyazott dokumentumok (például a ZIP-archívumok vagy a mellékleteket tartalmazó beágyazott Outlook-e-mailes Word-dokumentumok) is egyetlen dokumentumként vannak indexelve.
+> Összetett vagy beágyazott dokumentum (például ZIP-archívum, beágyazott Outlook-e-mail-mellékleteket tartalmazó Word-dokumentum vagy a). A mellékleteket tartalmazó MSG-fájl is egyetlen dokumentumként van indexelve. Például az összes kép a mellékletekből kinyerve. A rendszer a normalized_images mezőben adja vissza az MSG-fájlt.
 
-* A dokumentum szöveges tartalma kinyerve egy nevű `content`karakterlánc-mezőbe.
+* A dokumentum szöveges tartalma kinyerve egy nevű karakterlánc-mezőbe `content` .
 
 > [!NOTE]
 > Az Azure Cognitive Search az árképzési szinttől függően Kinyeri a szöveg mennyiségét: 32 000 karakter az ingyenes szinthez, 64 000 az alapszintű, 4 000 000 a standard, a 8 000 000 a standard S2 és az 16 000 000 standard S3-hoz. A rendszer figyelmeztetést tartalmaz az indexelő állapotának a csonkolt dokumentumokra adott válaszában.  
 
-* A blobon (ha van ilyen) a felhasználó által megadott metaadat-tulajdonságok szó szerint vannak kibontva. Vegye figyelembe, hogy ehhez az indexben meg kell adni egy olyan mezőt, amelynek a neve megegyezik a blob metaadat-kulcsával. Ha például `Sensitivity` a blob egy értékkel `High`rendelkező metaadat-kulccsal rendelkezik, akkor meg kell adnia egy nevű `Sensitivity` mezőt a keresési indexben, és az értékkel `High`lesz feltöltve.
+* A blobon (ha van ilyen) a felhasználó által megadott metaadat-tulajdonságok szó szerint vannak kibontva. Vegye figyelembe, hogy ehhez az indexben meg kell adni egy olyan mezőt, amelynek a neve megegyezik a blob metaadat-kulcsával. Ha például a blob egy értékkel rendelkező metaadat-kulccsal rendelkezik `Sensitivity` `High` , akkor meg kell adnia egy nevű mezőt a `Sensitivity` keresési indexben, és az értékkel lesz feltöltve `High` .
 * A Blobok szabványos metaadat-tulajdonságainak kibontása a következő mezőkbe történik:
 
-  * **metaadat\_-\_tároló neve** (EDM. String) – a blob fájlneve. Ha például egy blob-/My-Container/My-Folder/subfolder/Resume.pdf rendelkezik, a mező értéke a következő: `resume.pdf`.
-  * **metaadat\_-\_tároló elérési útja** (EDM. String) – a blob teljes URI-ja, beleértve a Storage-fiókot is. Például: `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
-  * **metaadatok\_tárolási\_tartalmának\_típusa** (EDM. String) – tartalomtípus, amelyet a blob feltöltéséhez használt kód határoz meg. Például: `application/octet-stream`.
-  * **metaadat\_-\_tároló\_utolsó módosítása** (EDM. DateTimeOffset) – a blob utolsó módosításának időbélyege. Az Azure Cognitive Search ezt az időbélyeget használja a módosított Blobok azonosításához, hogy ne legyenek újraindexelve a kezdeti indexelés után.
-  * **metaadatok\_tárolási\_mérete** (EDM. Int64) – blob mérete bájtban.
-  * **metaadat\_-\_tároló\_tartalma MD5** (EDM. String) – a blob tartalmának MD5 kivonata, ha van ilyen.
-  * **metaadat\_-\_tároló\_sas-tokenje** (EDM. String) – ideiglenes sas-token, amelyet az [egyéni képességek](cognitive-search-custom-skill-interface.md) használhatnak a blobhoz való hozzáféréshez. Ezt a jogkivonatot nem szabad a későbbi használat céljából tárolni, mivel az lejáró lehet.
+  * **metaadat- \_ tároló \_ neve** (EDM. String) – a blob fájlneve. Ha például egy blob/My-Container/My-Folder/subfolder/resume.pdf, a mező értéke `resume.pdf` .
+  * **metaadat- \_ tároló \_ elérési útja** (EDM. String) – a blob teljes URI-ja, beleértve a Storage-fiókot is. Például: `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+  * **metaadatok \_ tárolási \_ tartalmának \_ típusa** (EDM. String) – tartalomtípus, amelyet a blob feltöltéséhez használt kód határoz meg. Például: `application/octet-stream`.
+  * **metaadat- \_ tároló \_ utolsó \_ módosítása** (EDM. DateTimeOffset) – a blob utolsó módosításának időbélyege. Az Azure Cognitive Search ezt az időbélyeget használja a módosított Blobok azonosításához, hogy ne legyenek újraindexelve a kezdeti indexelés után.
+  * **metaadatok \_ tárolási \_ mérete** (EDM. Int64) – blob mérete bájtban.
+  * **metaadat- \_ tároló \_ tartalma \_ Md5** (EDM. String) – a blob tartalmának MD5 kivonata, ha van ilyen.
+  * **metaadat- \_ tároló \_ sas- \_ tokenje** (EDM. String) – ideiglenes sas-token, amelyet az [egyéni képességek](cognitive-search-custom-skill-interface.md) használhatnak a blobhoz való hozzáféréshez. Ezt a jogkivonatot nem szabad a későbbi használat céljából tárolni, mivel az lejáró lehet.
 
 * Az egyes dokumentum-formátumokra jellemző metaadat-tulajdonságokat a rendszer kinyeri az [itt](#ContentSpecificMetadata)felsorolt mezőkbe.
 
@@ -163,16 +163,16 @@ Az Azure Cognitive Search a dokumentum kulcsa egyedileg azonosít egy dokumentum
 
 Alaposan gondolja át, hogy melyik kibontott mező legyen leképezve az index Key mezőjére. A jelöltek a következők:
 
-* **metaadat\_-\_tároló neve** – ez lehet egy kényelmes jelölt, de vegye figyelembe, hogy 1) a nevek nem egyediek, mivel előfordulhat, hogy az azonos nevű Blobok eltérő mappákban találhatók, és 2) a név olyan karaktereket tartalmazhat, amelyek érvénytelenek a dokumentum kulcsaiban, például kötőjelek. Az érvénytelen karaktereket a `base64Encode` [mező-hozzárendelési függvény](search-indexer-field-mappings.md#base64EncodeFunction) használatával kezelheti – ha ezt teszi, ne felejtse el kódolni a dokumentum kulcsait, amikor azok API-hívásokban, például a kereséskor kerülnek továbbításra. (Például a .NET-ben a [UrlTokenEncode metódust](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) használhatja erre a célra).
-* **metaadat\_-\_tárolási útvonal** – a teljes elérési út használata biztosítja az egyediséget, de `/` az elérési út határozottan olyan karaktereket tartalmaz, amelyek [érvénytelenek a dokumentum kulcsában](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  A fentieknek megfelelően lehetősége van a kulcsok kódolására a `base64Encode` [függvény](search-indexer-field-mappings.md#base64EncodeFunction)használatával.
+* **metaadat- \_ tároló \_ neve** – ez lehet egy kényelmes jelölt, de vegye figyelembe, hogy 1) a nevek nem egyediek, mivel előfordulhat, hogy az azonos nevű Blobok eltérő mappákban találhatók, és 2) a név olyan karaktereket tartalmazhat, amelyek érvénytelenek a dokumentum kulcsaiban, például kötőjelek. Az érvénytelen karaktereket a `base64Encode` [mező-hozzárendelési függvény](search-indexer-field-mappings.md#base64EncodeFunction) használatával kezelheti – ha ezt teszi, ne felejtse el kódolni a dokumentum kulcsait, amikor azok API-hívásokban, például a kereséskor kerülnek továbbításra. (Például a .NET-ben a [UrlTokenEncode metódust](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) használhatja erre a célra).
+* **metaadat- \_ tárolási \_ útvonal** – a teljes elérési út használata biztosítja az egyediséget, de az elérési út határozottan olyan karaktereket tartalmaz, `/` amelyek [érvénytelenek a dokumentum kulcsában](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  A fentieknek megfelelően lehetősége van a kulcsok kódolására a `base64Encode` [függvény](search-indexer-field-mappings.md#base64EncodeFunction)használatával.
 * Ha a fenti lehetőségek egyike sem működik, hozzáadhat egy egyéni metaadat-tulajdonságot a blobokhoz. Ez a beállítás azonban megköveteli a blob feltöltési folyamatát, hogy hozzáadja a metaadat-tulajdonságot az összes blobhoz. Mivel a kulcs egy kötelező tulajdonság, a tulajdonságot nem tartalmazó Blobok nem lesznek indexelve.
 
 > [!IMPORTANT]
-> Ha nincs explicit leképezés a kulcs mezőhöz az indexben, az Azure Cognitive Search automatikusan `metadata_storage_path` a kulcsként és az alap-64 kódolással kódolja a kulcs értékeit (a fenti második lehetőség).
+> Ha nincs explicit leképezés a kulcs mezőhöz az indexben, az Azure Cognitive Search automatikusan a kulcsként `metadata_storage_path` és az alap-64 kódolással kódolja a kulcs értékeit (a fenti második lehetőség).
 >
 >
 
-Ebben a példában válassza ki a `metadata_storage_name` mezőt a dokumentum kulcsaként. Tegyük fel, hogy az indexnek van egy nevű `key` kulcs mezője `fileSize` és egy mező a dokumentum méretének tárolásához. A lehető leggyorsabban, a következő mezők-hozzárendeléseket adja meg az indexelő létrehozásakor vagy frissítésekor:
+Ebben a példában válassza ki a `metadata_storage_name` mezőt a dokumentum kulcsaként. Tegyük fel, hogy az indexnek van egy nevű kulcs mezője `key` és egy mező a `fileSize` dokumentum méretének tárolásához. A lehető leggyorsabban, a következő mezők-hozzárendeléseket adja meg az indexelő létrehozásakor vagy frissítésekor:
 
     "fieldMappings" : [
       { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
@@ -205,7 +205,7 @@ A következő lépésekkel egyesítheti a mezőket, és engedélyezheti a kulcso
 Megadhatja, hogy mely Blobok indexelve legyenek, és melyeket a rendszer kihagyja.
 
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Csak a Blobok indexelése adott fájlkiterjesztések esetén
-Az `indexedFileNameExtensions` indexelő konfigurációs paraméterrel csak azokat a blobokat lehet indexelni, amelyeket az Ön által megadott fájlnévkiterjesztéssel használ. Az érték egy olyan karakterlánc, amely a fájlkiterjesztés vesszővel tagolt listáját tartalmazza (vezető ponttal). Például csak a érték indexeléséhez. PDF és. DOCX Blobok:
+Az indexelő konfigurációs paraméterrel csak azokat a blobokat lehet indexelni, amelyeket az Ön által megadott fájlnévkiterjesztéssel használ `indexedFileNameExtensions` . Az érték egy olyan karakterlánc, amely a fájlkiterjesztés vesszővel tagolt listáját tartalmazza (vezető ponttal). Például csak a érték indexeléséhez. PDF és. DOCX Blobok:
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
@@ -217,7 +217,7 @@ Az `indexedFileNameExtensions` indexelő konfigurációs paraméterrel csak azok
     }
 
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>Blobok kizárása adott fájlkiterjesztések esetén
-A `excludedFileNameExtensions` konfigurációs paraméter használatával kizárhat olyan blobokat, amelyek adott fájlnévkiterjesztéssel rendelkeznek az indexelésből. Az érték egy olyan karakterlánc, amely a fájlkiterjesztés vesszővel tagolt listáját tartalmazza (vezető ponttal). Például az összes blob indexeléséhez, kivéve a következővel:. PNG és. JPEG-bővítmények:
+A konfigurációs paraméter használatával kizárhat olyan blobokat, amelyek adott fájlnévkiterjesztéssel rendelkeznek az indexelésből `excludedFileNameExtensions` . Az érték egy olyan karakterlánc, amely a fájlkiterjesztés vesszővel tagolt listáját tartalmazza (vezető ponttal). Például az összes blob indexeléséhez, kivéve a következővel:. PNG és. JPEG-bővítmények:
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
@@ -228,12 +228,12 @@ A `excludedFileNameExtensions` konfigurációs paraméter használatával kizár
       "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
     }
 
-Ha mindkettő `indexedFileNameExtensions` és `excludedFileNameExtensions` paraméter szerepel, az Azure Cognitive Search először a következőt `indexedFileNameExtensions`tekinti `excludedFileNameExtensions`meg:. Ez azt jelenti, hogy ha ugyanaz a fájlkiterjesztés szerepel mindkét listán, az indexelésből ki lesz zárva.
+Ha mindkettő `indexedFileNameExtensions` és `excludedFileNameExtensions` paraméter szerepel, az Azure Cognitive Search először a következőt tekinti meg: `indexedFileNameExtensions` `excludedFileNameExtensions` . Ez azt jelenti, hogy ha ugyanaz a fájlkiterjesztés szerepel mindkét listán, az indexelésből ki lesz zárva.
 
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>Annak szabályozása, hogy a blob mely részei legyenek indexelve
 
-Megadhatja, hogy a Blobok mely részei legyenek `dataToExtract` indexelve a konfigurációs paraméter használatával. A következő értékeket veheti fel:
+Megadhatja, hogy a Blobok mely részei legyenek indexelve a `dataToExtract` konfigurációs paraméter használatával. A következő értékeket veheti fel:
 
 * `storageMetadata`-azt adja meg, hogy csak a [szabványos blob-tulajdonságok és a felhasználó által megadott metaadatok](../storage/blobs/storage-properties-metadata.md) legyenek indexelve.
 * `allMetadata`-Megadja, hogy a rendszer indexeli a tárolási metaadatokat és a blob tartalmából kinyert [tartalom típusú specifikus metaadatokat](#ContentSpecificMetadata) .
@@ -262,7 +262,7 @@ A fent ismertetett konfigurációs paraméterek az összes blobra érvényesek. 
 <a name="DealingWithErrors"></a>
 ## <a name="dealing-with-errors"></a>Hibák kezelése
 
-Alapértelmezés szerint a blob-indexelő azonnal leáll, ha nem támogatott tartalomtípusú blobot (például egy képet) észlel. Természetesen használhatja a `excludedFileNameExtensions` paramétert bizonyos tartalomtípusok kihagyása érdekében. Előfordulhat azonban, hogy a blobokat a lehetséges tartalomtípusok előzetes ismerete nélkül kell indexelni. Ha nem támogatott tartalomtípust észlel, az indexelés folytatásához állítsa a `failOnUnsupportedContentType` konfigurációs paramétert a következőre: `false`
+Alapértelmezés szerint a blob-indexelő azonnal leáll, ha nem támogatott tartalomtípusú blobot (például egy képet) észlel. Természetesen használhatja a `excludedFileNameExtensions` paramétert bizonyos tartalomtípusok kihagyása érdekében. Előfordulhat azonban, hogy a blobokat a lehetséges tartalomtípusok előzetes ismerete nélkül kell indexelni. Ha nem támogatott tartalomtípust észlel, az indexelés folytatásához állítsa a `failOnUnsupportedContentType` konfigurációs paramétert a következőre `false` :
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
@@ -273,15 +273,15 @@ Alapértelmezés szerint a blob-indexelő azonnal leáll, ha nem támogatott tar
       "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
     }
 
-Egyes Blobok esetében az Azure Cognitive Search nem tudja meghatározni a tartalomtípust, vagy nem tud feldolgozni egy egyébként támogatott tartalomtípusú dokumentumot. A hiba módjának figyelmen kívül hagyásához állítsa `failOnUnprocessableDocument` hamis értékre a konfigurációs paramétert:
+Egyes Blobok esetében az Azure Cognitive Search nem tudja meghatározni a tartalomtípust, vagy nem tud feldolgozni egy egyébként támogatott tartalomtípusú dokumentumot. A hiba módjának figyelmen kívül hagyásához állítsa hamis értékre a `failOnUnprocessableDocument` konfigurációs paramétert:
 
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 
-Az Azure Cognitive Search korlátozza az indexelt Blobok méretét. Ezek a korlátok az [Azure Cognitive Search szolgáltatási korlátaiban](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)vannak dokumentálva. A túlméretezett Blobok alapértelmezés szerint hibákként vannak kezelve. Azonban továbbra is indexelheti a túl nagy méretű Blobok tárolási metaadatait, `indexStorageMetadataOnlyForOversizedDocuments` ha a konfigurációs paraméter igaz értékre van állítva: 
+Az Azure Cognitive Search korlátozza az indexelt Blobok méretét. Ezek a korlátok az [Azure Cognitive Search szolgáltatási korlátaiban](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)vannak dokumentálva. A túlméretezett Blobok alapértelmezés szerint hibákként vannak kezelve. Azonban továbbra is indexelheti a túl nagy méretű Blobok tárolási metaadatait, ha `indexStorageMetadataOnlyForOversizedDocuments` a konfigurációs paraméter igaz értékre van állítva: 
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
-Folytathatja az indexelést is, ha a hibák bármilyen feldolgozási ponton történnek, vagy a Blobok elemzése vagy a dokumentumok indexbe való felvétele során. Ha egy adott számú hibát szeretne figyelmen kívül hagyni `maxFailedItems` , `maxFailedItemsPerBatch` állítsa a és a konfigurációs paramétereket a kívánt értékekre. Például:
+Folytathatja az indexelést is, ha a hibák bármilyen feldolgozási ponton történnek, vagy a Blobok elemzése vagy a dokumentumok indexbe való felvétele során. Ha egy adott számú hibát szeretne figyelmen kívül hagyni, állítsa a `maxFailedItems` és a `maxFailedItemsPerBatch` konfigurációs paramétereket a kívánt értékekre. Például:
 
     {
       ... other parts of indexer definition
@@ -290,7 +290,7 @@ Folytathatja az indexelést is, ha a hibák bármilyen feldolgozási ponton tör
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Növekményes indexelés és törlés észlelése
 
-Ha úgy állítja be a blob-indexelő, hogy az ütemterv szerint fusson, akkor csak a blob `LastModified` időbélyegzője által meghatározott módosított blobokat indexeli.
+Ha úgy állítja be a blob-indexelő, hogy az ütemterv szerint fusson, akkor csak a blob időbélyegzője által meghatározott módosított blobokat indexeli `LastModified` .
 
 > [!NOTE]
 > Nem kell megadnia a változás-észlelési házirendet – a növekményes indexelés automatikusan engedélyezve van.
@@ -331,7 +331,7 @@ Ehhez a következő lépések szükségesek:
 
 #### <a name="reindexing-undeleted-blobs"></a>Nem törölt Blobok újraindexelése
 
-Ha töröl egy blobot az Azure Blob Storage-ból, és a natív törlés engedélyezve van a Storage-fiókban, a blob egy helyreállítható törölt állapotba kerül, amely lehetővé teszi a blob törlését a megőrzési időn belül. Ha egy Azure Cognitive Search adatforráshoz natív blob-törlési házirend tartozik, és az indexelő feldolgozza a törölt blobokat, azzal eltávolítja az adott dokumentumot az indexből. Ha a blob később törölve lett, az indexelő nem mindig fogja újraindexelni a blobot. Ennek az az oka, hogy az indexelő meghatározza, hogy mely Blobok legyenek indexelve a blob `LastModified` időbélyege alapján. Ha a rendszer `LastModified` nem frissíti a nem törölt blobokat, ezért ha az indexelő már feldolgozta a blobokat a nem törölt `LastModified` blobnál frissebb időbélyegekkel, akkor nem fogja újraindexelni a nem törölt blobot. A nem törölt Blobok újraindexelésének biztosításához frissítenie kell a blob `LastModified` időbélyegét. Ezt úgy teheti meg, ha átmenti a blob metaadatait. Nem kell módosítania a metaadatokat, de a metaadatok újramentése a blob `LastModified` időbélyegét fogja frissíteni, hogy az indexelő tudja, hogy újra kell indexelni ezt a blobot.
+Ha töröl egy blobot az Azure Blob Storage-ból, és a natív törlés engedélyezve van a Storage-fiókban, a blob egy helyreállítható törölt állapotba kerül, amely lehetővé teszi a blob törlését a megőrzési időn belül. Ha egy Azure Cognitive Search adatforráshoz natív blob-törlési házirend tartozik, és az indexelő feldolgozza a törölt blobokat, azzal eltávolítja az adott dokumentumot az indexből. Ha a blob később törölve lett, az indexelő nem mindig fogja újraindexelni a blobot. Ennek az az oka, hogy az indexelő meghatározza, hogy mely Blobok legyenek indexelve a blob `LastModified` időbélyege alapján. Ha a rendszer nem frissíti a nem törölt blobokat `LastModified` , ezért ha az indexelő már feldolgozta a blobokat a nem `LastModified` törölt blobnál frissebb időbélyegekkel, akkor nem fogja újraindexelni a nem törölt blobot. A nem törölt Blobok újraindexelésének biztosításához frissítenie kell a blob `LastModified` időbélyegét. Ezt úgy teheti meg, ha átmenti a blob metaadatait. Nem kell módosítania a metaadatokat, de a metaadatok újramentése a blob `LastModified` időbélyegét fogja frissíteni, hogy az indexelő tudja, hogy újra kell indexelni ezt a blobot.
 
 ### <a name="soft-delete-using-custom-metadata"></a>Soft delete egyéni metaadatok használatával
 
@@ -343,7 +343,7 @@ Ehhez a következő lépések szükségesek:
 1. Állítsa be az adatforrásra vonatkozó, a törlési oszlop észlelésére szolgáló házirendet. Erre mutat példát az alábbi ábra.
 1. Miután az indexelő feldolgozta a blobot, és törölte a dokumentumot az indexből, törölheti az Azure Blob Storage-hoz tartozó blobot.
 
-Az alábbi szabályzat például egy olyan blobot tekint, amelyet törölni kell, ha a metaadatok tulajdonsága `IsDeleted` a következő `true`értékkel rendelkezik:
+Az alábbi szabályzat például egy olyan blobot tekint, amelyet törölni kell, ha a metaadatok tulajdonsága a következő `IsDeleted` értékkel rendelkezik `true` :
 
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06
     Content-Type: application/json
@@ -370,7 +370,7 @@ Ha az adatforráshoz állít be egy helyreállítható törlési házirendet, ma
 Az indexelési Blobok időigényes folyamat lehet. Abban az esetben, ha több millió blobot tartalmaz az indexeléshez, felgyorsíthatja az indexelést, ha particionálja az adatait, és több indexelő használatával dolgozza fel az adatait párhuzamosan. Ezt a következőképpen állíthatja be:
 
 - Az adatai particionálása több blob-tárolóba vagy virtuális mappába
-- Állítson be több Azure Cognitive Search adatforrást, egy tárolót vagy egy mappát. Ha egy blob mappára szeretne mutatni, használja a `query` következő paramétert:
+- Állítson be több Azure Cognitive Search adatforrást, egy tárolót vagy egy mappát. Ha egy blob mappára szeretne mutatni, használja a következő `query` paramétert:
 
     ```
     {
@@ -394,7 +394,7 @@ Ahhoz, hogy működjön, minden indexelő és más összetevőnek meg kell egyez
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Egyszerű szöveg indexelése 
 
-Ha az összes blob egyszerű szöveget tartalmaz ugyanabban a kódolásban, akkor a **szöveges elemzési mód**használatával jelentősen javíthatja az indexelési teljesítményt. A szöveges elemzési mód használatához a következőt állítsa `parsingMode` be a konfigurációs `text`tulajdonságra:
+Ha az összes blob egyszerű szöveget tartalmaz ugyanabban a kódolásban, akkor a **szöveges elemzési mód**használatával jelentősen javíthatja az indexelési teljesítményt. A szöveges elemzési mód használatához a következőt állítsa be a `parsingMode` konfigurációs tulajdonságra `text` :
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
@@ -405,7 +405,7 @@ Ha az összes blob egyszerű szöveget tartalmaz ugyanabban a kódolásban, akko
       "parameters" : { "configuration" : { "parsingMode" : "text" } }
     }
 
-Alapértelmezés szerint a rendszer `UTF-8` a kódolást feltételezi. Másik kódolás megadásához használja a `encoding` következő konfigurációs tulajdonságot: 
+Alapértelmezés szerint a `UTF-8` rendszer a kódolást feltételezi. Másik kódolás megadásához használja a következő `encoding` konfigurációs tulajdonságot: 
 
     {
       ... other parts of indexer definition
@@ -421,9 +421,9 @@ Az alábbi táblázat összefoglalja az egyes dokumentumok formátumának feldol
 | --- | --- | --- |
 | HTML (text/html) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |HTML-jelölés és szöveg kinyerése |
 | PDF (alkalmazás/PDF) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is (képek nélkül) |
-| DOCX (Application/vnd. openxmlformats-officedocument. WordprocessingML. Document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
+| DOCX (Application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | DOC (alkalmazás/msword) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
-| DOCM (Application/vnd. MS-Word. Document. macroenabled. 12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
+| DOCM (Application/vnd.ms-word.document. macroenabled. 12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | WORD XML (Application/vnd. MS-word2006ml) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szalag XML-kódjának és kinyerésének szövege |
 | WORD 2003 XML (Application/vnd. MS-WordML) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date` |Szalag XML-kódjának és kinyerésének szövege |
 | XLSX (Application/vnd. openxmlformats-officedocument. SpreadsheetXML. Sheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
@@ -432,7 +432,7 @@ Az alábbi táblázat összefoglalja az egyes dokumentumok formátumának feldol
 | PPTX (Application/vnd. openxmlformats-officedocument. presentationml. Presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | PPT (Application/vnd. MS-PowerPoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | PPTM (Application/vnd. MS-PowerPoint. Presentation. macroenabled. 12) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
-| MSG (Application/vnd. MS-Outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Szöveg kinyerése, beleértve a mellékleteket is. `metadata_message_to_email``metadata_message_cc_email` és `metadata_message_bcc_email` karakterlánc-gyűjtemények, a többi mező sztring.|
+| MSG (Application/vnd. MS-Outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Szöveg kinyerése, beleértve a mellékletekből kinyert szöveget is. `metadata_message_to_email``metadata_message_cc_email`és `metadata_message_bcc_email` karakterlánc-gyűjtemények, a többi mező sztring.|
 | ODT (Application/vnd. Oasis. OpenDocument. Text) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | ODS (Application/vnd. Oasis. OpenDocument. számolótábla) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |
 | ODP (Application/vnd. Oasis. OpenDocument. Presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is |

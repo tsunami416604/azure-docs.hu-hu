@@ -1,5 +1,5 @@
 ---
-title: Azure-Instance Metadata Service
+title: Azure Instance Metadata szolgáltatás
 description: REST-felület a virtuális gépek számítási, hálózati és közelgő karbantartási eseményeivel kapcsolatos információk lekéréséhez.
 services: virtual-machines
 author: KumariSupriya
@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: aa7a076d10bfa28b4ce8dea9776435677c6909d8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: f638b332eae5cd85e1cb6aae9c6bd8eb4ad44848
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634319"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886199"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
 
@@ -710,7 +710,7 @@ openssl pkcs7 -in decodedsignature -inform DER -out sign.pk7
 # Get Public key out of pkc7
 openssl pkcs7 -in decodedsignature -inform DER  -print_certs -out signer.pem
 # Get the intermediate certificate
-wget -q -O intermediate.cer "$(openssl x509 -in signer.pem -text -noout | grep " CA Issuers -" | awk -FURI: '{print $2}')"
+curl -s -o intermediate.cer "$(openssl x509 -in signer.pem -text -noout | grep " CA Issuers -" | awk -FURI: '{print $2}')"
 openssl x509 -inform der -in intermediate.cer -out intermediate.pem
 # Verify the contents
 openssl smime -verify -in sign.pk7 -inform pem -noverify
@@ -841,6 +841,50 @@ HTTP-állapotkód | Ok
    * A méretezési csoportok jelenleg csak a virtuális gépre mutatnak be egy újraindítás, rendszerkép vagy lemez módosítása a példányra.
 1. Időtúllépést kapok a kérésem a szolgáltatáshoz való meghívásakor?
    * A metaadat-hívásokat a virtuális gép elsődleges hálózati kártyához rendelt elsődleges IP-címről kell elvégezni. Továbbá abban az esetben, ha módosította az útvonalakat, a virtuális gép helyi útválasztási táblázatában található 169.254.169.254/32-címnek útvonalnak kell lennie.
+   * <details>
+        <summary>Az útválasztási táblázat ellenőrzése</summary>
+
+        1. Írja le a helyi útválasztási táblázatot egy paranccsal, `netstat -r` és keresse meg a IMDS bejegyzést (például):
+            ```console
+            ~$ netstat -r
+            Kernel IP routing table
+            Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+            default         _gateway        0.0.0.0         UG        0 0          0 eth0
+            168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+            169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+            172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+            ```
+        1. Ellenőrizze, hogy létezik-e útvonal a következőhöz `169.254.169.254` , és jegyezze fel a megfelelő hálózati adaptert (például `eth0` ).
+        1. Az útválasztási táblázatban található megfelelő csatoló felületi konfigurációjának kiírása (Megjegyzés: a konfigurációs fájl pontos neve eltérő lehet)
+            ```console
+            ~$ cat /etc/netplan/50-cloud-init.yaml
+            network:
+            ethernets:
+                eth0:
+                    dhcp4: true
+                    dhcp4-overrides:
+                        route-metric: 100
+                    dhcp6: false
+                    match:
+                        macaddress: 00:0d:3a:e4:c7:2e
+                    set-name: eth0
+            version: 2
+            ```
+        1. Dinamikus IP-cím használata esetén jegyezze fel a MAC-címet. Ha statikus IP-címet használ, akkor a felsorolt IP-címek és/vagy a MAC-cím is megjegyezhető.
+        1. Győződjön meg arról, hogy a csatoló megfelel a virtuális gép elsődleges hálózati adapterének és elsődleges IP-címének. Az elsődleges NIC/IP-t az Azure Portal hálózati konfigurációjának megtekintésével vagy [Az Azure CLI-vel](https://docs.microsoft.com/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)keresheti meg. Jegyezze fel a nyilvános és a privát IP-címeket (és a MAC-címet, ha a CLI-t használja). PowerShell CLI-példa:
+            ```powershell
+            $ResourceGroup = '<Resource_Group>'
+            $VmName = '<VM_Name>'
+            $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+            foreach($NicName in $NicNames)
+            {
+                $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+                Write-Host $NicName, $Nic.primary, $Nic.macAddress
+            }
+            # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+            ```
+        1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges NIC/IP-címet célozza meg.
+    </details>
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 
@@ -856,3 +900,4 @@ Használja a probléma típusát, `Management` és válassza ki `Instance Metada
 További információk:
 1. [Szerezze be a virtuális gép hozzáférési jogkivonatát](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 1. [Scheduled Events](scheduled-events.md)
+

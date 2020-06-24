@@ -4,12 +4,12 @@ description: Saját kulcsok (BYOK-EK) használatával titkosíthatja az AK-OS op
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: c16bdb613c60a8eef3efd1be8d7ab1a78e002f98
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 9fd04b44be969e03eec2ed18f618068316572066
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325099"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84882531"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
@@ -105,7 +105,7 @@ diskEncryptionSetId=$(az resource show -n mydiskEncryptionSetName -g myResourceG
 az group create -n myResourceGroup -l myAzureRegionName
 
 # Create the AKS cluster
-az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0 --generate-ssh-keys
+az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version KUBERNETES_VERSION --generate-ssh-keys
 ```
 
 Ha új csomópont-készleteket ad hozzá a fent létrehozott fürthöz, a létrehozás során megadott ügyfél által felügyelt kulcs az operációsrendszer-lemez titkosítására szolgál.
@@ -169,7 +169,7 @@ kubectl apply -f byok-azure-disk.yaml
 * Csak azokon a régiókban érhető el, ahol a BYOK támogatott
 * Az ügyfél által felügyelt kulcsokkal való titkosítás jelenleg csak az új AK-fürtök esetében lehetséges, a meglévő fürtök nem frissíthetők.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az AK-fürtök biztonságával kapcsolatos ajánlott eljárások][best-practices-security] áttekintése
 

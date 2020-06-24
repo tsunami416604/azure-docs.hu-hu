@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: fe4dec0d1223468126723a19d5218d6e93707f50
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 72168c54bd7968ce9c0315d3f3e47bae09e45004
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558809"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052219"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása
 
@@ -29,7 +29,7 @@ A webalkalmazások (és webes API-k) elleni védelemhez használt kódtárak a k
 
 | Platform | Kódtár | Leírás |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_net.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Model Extensions for .NET azt javasolja, hogy a .net-keretrendszerben és a .NET Core-ban is fusson a DLL-fájlok összessége. Egy ASP.NET vagy ASP.NET Core webalkalmazásból a jogkivonat-érvényesítést a **TokenValidationParameters** osztály használatával (különösen bizonyos partneri forgatókönyvekben) lehet szabályozni. |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Model Extensions for .NET azt javasolja, hogy a .net-keretrendszerben és a .NET Core-ban is fusson a DLL-fájlok összessége. Egy ASP.NET vagy ASP.NET Core webalkalmazásból a jogkivonat-érvényesítést a **TokenValidationParameters** osztály használatával (különösen bizonyos partneri forgatókönyvekben) lehet szabályozni. |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-webalkalmazások támogatása |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python-webalkalmazások támogatása |
 
@@ -73,7 +73,7 @@ Előfordulhat, hogy az alkalmazások a parametrized `Authority` , amely a és a 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core ezek a beállítások a [appSettings. JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) fájlban találhatók, a "AzureAd" szakaszban.
+ASP.NET Core ezek a beállítások a fájl [appsettings.js](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) a "AzureAd" szakaszban találhatók.
 
 ```Json
 {
@@ -95,12 +95,12 @@ ASP.NET Core ezek a beállítások a [appSettings. JSON](https://github.com/Azur
     // Client ID (application ID) obtained from the Azure portal
     "ClientId": "[Enter the Client Id]",
     "CallbackPath": "/signin-oidc",
-    "SignedOutCallbackPath ": "/signout-callback-oidc"
+    "SignedOutCallbackPath ": "/signout-oidc"
   }
 }
 ```
 
-ASP.NET Core egy másik fájl ([properties\launchSettings.JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) tartalmazza az alkalmazáshoz tartozó URL-címet ( `applicationUrl` ) és a TLS/SSL-portot ( `sslPort` ) és a különböző profilokat.
+ASP.NET Core egy másik fájl ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) tartalmazza az `applicationUrl` `sslPort` alkalmazáshoz és a különböző profilokhoz tartozó URL-címet () és a TLS/SSL-portot ().
 
 ```Json
 {
@@ -134,11 +134,11 @@ ASP.NET Core egy másik fájl ([properties\launchSettings.JSON](https://github.c
 
 A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük ezekkel az URL-címekkel. A két előző konfigurációs fájl esetében a következő lesz: `https://localhost:44321/signin-oidc` . Ennek az az oka `applicationUrl` , hogy az `http://localhost:3110` , de meg `sslPort` van adva (44321). `CallbackPath`a ( `/signin-oidc` ) a ben definiált `appsettings.json` .
 
-Ugyanígy a kijelentkezési URI is a következőre lesz beállítva: `https://localhost:44321/signout-callback-oidc` .
+Ugyanígy a kijelentkezési URI is a következőre lesz beállítva: `https://localhost:44321/signout-oidc` .
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.NET-ben az alkalmazás a [web. config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) fájlban van konfigurálva, a 12 – 15. sorokban.
+A ASP.NET-ben az alkalmazás a [Web.config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) fájlon keresztül, a 12 – 15. sorban van konfigurálva.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -325,7 +325,7 @@ Session(app)
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkben megtudhatja, hogyan aktiválhatja a bejelentkezést és a kijelentkezést.
 

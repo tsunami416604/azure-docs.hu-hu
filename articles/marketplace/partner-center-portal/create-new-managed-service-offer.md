@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1d3804a019add8f97dcbad0f9d707d50c35830bb
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847719"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753909"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
@@ -79,6 +79,17 @@ Ezen a lapon megadhatja az ajánlathoz tartozó piactér adatait (például az a
 
 > [!NOTE]
 > Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek és a használati feltételek) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
+
+Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
+
+:::image type="content" source="media/example-managed-services.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Cím
+2. Leírás
+3. Hasznos hivatkozások
+4. Képernyőképek
 
 ### <a name="name"></a>Name
 

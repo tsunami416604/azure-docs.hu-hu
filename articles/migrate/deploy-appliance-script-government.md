@@ -3,12 +3,12 @@ title: Azure Migrate berendezés beállítása Azure Government
 description: Megtudhatja, hogyan állíthat be Azure Migrate készüléket a Azure Government
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: a7a2e90b718c50cb86fdca9911e7535d434e7afa
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84332001"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052477"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Berendezés beállítása Azure Government 
 
@@ -45,7 +45,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
 2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip MD5```
+    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
 3. Ellenőrizze a készülék legújabb verziójának és kivonatának értékét:
 
@@ -71,7 +71,7 @@ A szkript futtatása:
 1. Bontsa ki a tömörített fájlt egy olyan mappába a gépen, amely a készüléket fogja üzemeltetni. Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate berendezésen lévő gépen.
 2. Indítsa el a PowerShellt a gépen, rendszergazdai (emelt szintű) jogosultságokkal.
 3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kinyert tartalmat tartalmazza.
-4. Futtassa a **AzureMigrateInstaller. ps1**parancsfájlt a következő módon:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
+4. Futtassa **AzureMigrateInstaller.ps1**szkriptet a következő módon:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
 5. A szkript sikeres futtatása után elindítja a berendezés webalkalmazását, hogy beállítsa a készüléket. Ha bármilyen problémába ütközik, tekintse át a szkriptek naplóit a következő helyen: C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 
 ### <a name="verify-access"></a>Hozzáférés ellenőrzése
@@ -97,7 +97,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
 2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
 3. Ellenőrizze a készülék legújabb verziójának és kivonatának értékét:
 
@@ -124,7 +124,7 @@ A szkript futtatása:
 1. Bontsa ki a tömörített fájlt egy olyan mappába a gépen, amely a készüléket fogja üzemeltetni. Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate berendezésen lévő gépen.
 2. Indítsa el a PowerShellt a gépen, rendszergazdai (emelt szintű) jogosultságokkal.
 3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kinyert tartalmat tartalmazza.
-4. Futtassa a **AzureMigrateInstaller. ps1**parancsfájlt a következő módon:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
+4. Futtassa **AzureMigrateInstaller.ps1**szkriptet a következő módon:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
 5. A szkript sikeres futtatása után elindítja a berendezés webalkalmazását, hogy beállítsa a készüléket. Ha bármilyen problémába ütközik, tekintse át a szkriptek naplóit a következő helyen: C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 
 ### <a name="verify-access"></a>Hozzáférés ellenőrzése
@@ -150,7 +150,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
 2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5```
+    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
 3. Ellenőrizze a készülék legújabb verziójának és kivonatának értékét:
 
@@ -176,14 +176,14 @@ A szkript futtatása:
 1. Bontsa ki a tömörített fájlt egy olyan mappába a gépen, amely a készüléket fogja üzemeltetni. Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate berendezésen lévő gépen.
 2. Indítsa el a PowerShellt a gépen, rendszergazdai (emelt szintű) jogosultságokkal.
 3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kinyert tartalmat tartalmazza.
-4. Futtassa a **AzureMigrateInstaller. ps1**parancsfájlt a következő módon:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+4. Futtassa **AzureMigrateInstaller.ps1**szkriptet a következő módon:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 5. A szkript sikeres futtatása után elindítja a berendezés webalkalmazását, hogy beállítsa a készüléket. Ha bármilyen problémába ütközik, tekintse át a szkriptek naplóit a következő helyen: C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log.
 
 ### <a name="verify-access"></a>Hozzáférés ellenőrzése
 
 Győződjön meg arról, hogy a készülék tud csatlakozni az Azure URL-címeihez a [kormányzati felhőkhöz](migrate-appliance.md#government-cloud-urls).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A készülék üzembe helyezése után először be kell állítania, majd regisztrálnia kell a Azure Migrate projektben.
 

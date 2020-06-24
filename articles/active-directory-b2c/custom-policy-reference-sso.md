@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4aa9f4839c8bfc04cee4bb03ea0eac98cb8b25c0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926119"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202568"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
 
@@ -57,7 +57,7 @@ A a `<OutputClaims>` jogcímek munkamenetből való beolvasására szolgál.
 
 Ahogy a név diktálja, a szolgáltató nem tesz semmit. Ez a szolgáltató használható egy adott technikai profil SSO-viselkedésének letiltására. A következő `SM-Noop` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack).
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Noop">
   <DisplayName>Noop Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -68,7 +68,7 @@ Ahogy a név diktálja, a szolgáltató nem tesz semmit. Ez a szolgáltató hasz
 
 Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet használni. Ez a szolgáltató általában a helyi és összevont fiókok kezeléséhez használt technikai profilban hivatkozik. A következő `SM-AAD` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack).
 
-```XML
+```xml
 <TechnicalProfile Id="SM-AAD">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -89,7 +89,7 @@ Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet has
 
 A következő `SM-MFA` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa` . Ez a technikai profil a multi-Factor Authentication munkamenetet kezeli.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-MFA">
   <DisplayName>Session Mananagement Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -106,7 +106,7 @@ A következő `SM-MFA` technikai profil szerepel az [egyéni házirend-indító 
 
 Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő letiltására és egy összevont identitás-szolgáltatótól való kijelentkezésre szolgál. Ez általában egy összevont identitás-szolgáltatóhoz konfigurált technikai profilban hivatkozik, például Facebook vagy Azure Active Directory. A következő `SM-SocialLogin` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack).
 
-```XML
+```xml
 <TechnicalProfile Id="SM-SocialLogin">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -123,7 +123,7 @@ Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő
 
 | Attribútum | Kötelező | Leírás|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
+| AlwaysFetchClaimsFromProvider | No | Jelenleg nincs használatban, figyelmen kívül hagyható. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -140,7 +140,7 @@ Ez a szolgáltató a OAuth2 vagy OpenId Connect függő entitás és Azure AD B2
 
 Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-identitás szolgáltatói munkamenetének tárolására, akkor a értékének a következőnek kell `RegisterServiceProviders` lennie: `false` . A `SM-Saml-idp` [SAML-identitás szolgáltatójának műszaki profilja](saml-identity-provider-technical-profile.md)a következő technikai profilt használja.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -154,7 +154,7 @@ A B2C SAML-munkamenet tárolására szolgáló szolgáltató használata esetén
 
 Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-issuer-technical-profile.md) a következő műszaki profilt használja
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
@@ -165,8 +165,8 @@ Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-issuer-technical-pr
 
 | Attribútum | Kötelező | Leírás|
 | --- | --- | --- |
-| IncludeSessionIndex | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható.|
-| RegisterServiceProviders | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
+| IncludeSessionIndex | No | Jelenleg nincs használatban, figyelmen kívül hagyható.|
+| RegisterServiceProviders | No | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
 
 
 ## <a name="next-steps"></a>További lépések

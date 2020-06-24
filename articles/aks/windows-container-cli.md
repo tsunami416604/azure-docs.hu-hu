@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogy
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 70dbe927c3d106e6a853f215f93c51bd7e547150
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 29ee22cb4b28726b25ead6ff78d90de99847666b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658514"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886958"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
 
@@ -86,7 +86,6 @@ az aks create \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.16.9 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -95,8 +94,6 @@ az aks create \
 ```
 
 > [!NOTE]
-> Ha nem tudja létrehozni az AK-fürtöt, mert a verzió nem támogatott ebben a régióban, akkor az [az AK Get-Versions--Location eastus] paranccsal megkeresheti a régió támogatott verzióinak listáját.
->  
 > Ha jelszó-érvényesítési hibát kap, próbálja meg létrehozni az erőforráscsoportot egy másik régióban.
 > Ezután próbálja meg létrehozni a fürtöt az új erőforrás-csoporttal.
 
@@ -112,8 +109,7 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --os-type Windows \
     --name npwin \
-    --node-count 1 \
-    --kubernetes-version 1.16.9
+    --node-count 1
 ```
 
 A fenti parancs létrehoz egy *npwin* nevű új csomópont-készletet, és hozzáadja azt a *myAKSCluster*. Ha Windows Server-tárolókat futtató csomópont-készletet hoz létre, akkor a *Node-VM méret* alapértelmezett értéke *Standard_D2s_v3*. Ha úgy dönt, hogy beállítja a *Node-VM-size* paramétert, ellenőrizze a korlátozott virtuálisgép- [méretek][restricted-vm-sizes]listáját. A minimális ajánlott méret *Standard_D2s_v3*. A fenti parancs a futtatáskor létrehozott alapértelmezett vnet található alapértelmezett alhálózatot is használja `az aks create` .
@@ -254,7 +250,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben üzembe helyezett egy Kubernetes-fürtöt, és telepített egy ASP.NET-minta alkalmazást egy Windows Server-tárolóban. Nyissa meg az imént létrehozott fürthöz tartozó [Kubernetes webes irányítópultot][kubernetes-dashboard] .
 

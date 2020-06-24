@@ -3,24 +3,24 @@ title: Hiba történt a helyszíni alkalmazásba való bejelentkezéskor az Azur
 description: Gyakori hibák elhárítása, amikor nem tud bejelentkezni az Azure AD-vel integrált helyszíni alkalmazásba az Azure AD Application Proxy használatával
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c444e54d29482f69d924df3796cc5da4afb4188
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74232327"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759096"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problémák a helyszíni alkalmazásba való bejelentkezéskor az Azure AD alkalmazásproxy használatával
 

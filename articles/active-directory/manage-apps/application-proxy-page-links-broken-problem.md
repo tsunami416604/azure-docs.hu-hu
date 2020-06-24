@@ -2,21 +2,22 @@
 title: Az oldalon található hivatkozások nem működnek alkalmazásproxy-alkalmazásokban
 description: Az Azure AD-vel integrált alkalmazásproxy-hivatkozásokkal kapcsolatos hibák elhárítása
 services: active-directory
-author: msmimart
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca782b5a190704911472d70c414d12afa7e558f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 050874b301628348b513b8b5b0c2b878a1dcecaa
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430245"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760201"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Az oldalon található hivatkozások nem működnek alkalmazásproxy-alkalmazásokban
 
@@ -33,7 +34,7 @@ A probléma három módon oldható meg. Az alábbi lehetőségek a növekvő kom
 
 1.  Győződjön meg arról, hogy a belső URL-cím olyan gyökér, amely az alkalmazáshoz kapcsolódó összes hivatkozást tartalmazza. Ez lehetővé teszi, hogy az összes hivatkozás feloldható legyen egy alkalmazáson belül közzétett tartalomként.
 
-    Ha módosítja a belső URL-címet, de nem szeretné módosítani a felhasználók kezdőlapját, módosítsa a Kezdőlap URL-címét a korábban közzétett belső URL-címre. Ezt a "Azure Active Directory" –&gt; alkalmazás-regisztrációk lehetőséggel teheti meg&gt; – válassza ki az&gt; Application-branding elemet. A branding (védjegyezés) szakaszban megjelenik a "Kezdőlap URL-címe" mező, amelyet a kívánt kezdőlapra lehet beállítani. Ha továbbra is használja az örökölt Alkalmazásregisztrációk élményt, a Tulajdonságok lap a "Kezdőlap URL-címe" részleteit jeleníti meg. 
+    Ha módosítja a belső URL-címet, de nem szeretné módosítani a felhasználók kezdőlapját, módosítsa a Kezdőlap URL-címét a korábban közzétett belső URL-címre. Ezt a "Azure Active Directory" – alkalmazás-regisztrációk lehetőséggel teheti meg – &gt; &gt; válassza ki az Application- &gt; branding elemet. A branding (védjegyezés) szakaszban megjelenik a "Kezdőlap URL-címe" mező, amelyet a kívánt kezdőlapra lehet beállítani. Ha továbbra is használja az örökölt Alkalmazásregisztrációk élményt, a Tulajdonságok lap a "Kezdőlap URL-címe" részleteit jeleníti meg. 
     
     > [!IMPORTANT]
     > A fenti módosítások elvégzéséhez az alkalmazás-objektumok az Azure AD-ben való módosításához jogosultság szükséges. A felhasználónak hozzá kell rendelnie egy [alkalmazás-rendszergazdai](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) szerepkört, amely az Azure ad-ben engedélyezi az alkalmazás modificaion jogosultságait a felhasználónak.

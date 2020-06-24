@@ -2,14 +2,14 @@
 title: Blockchain-Data Manager konfigurálása az Azure CLI-vel – Azure Blockchain Service
 description: Azure Blockchain Service-hez készült Blockchain-Data Manager létrehozása és kezelése az Azure CLI-vel
 ms.date: 03/30/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254410"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200460"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>A Blockchain Data Manager konfigurálása az Azure CLI-vel
 
@@ -25,7 +25,7 @@ A Blockchain Data Manager példányának konfigurálásához a következőket ke
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t, és `az login`jelentkezzen be a használatával.
+* Telepítse a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t, és jelentkezzen be a használatával `az login` .
 * Teljes rövid útmutató [: a Visual Studio Code használatával csatlakozhat egy Azure Blockchain Service Consortium-hálózathoz](connect-vscode.md). Az Azure Blockchain Service *standard* szintű Blockchain Data Manager használata esetén ajánlott.
 * [Event Grid témakör](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) létrehozása
 * További információ a [Azure Event Grid-beli eseménykezelőről](../../event-grid/event-handlers.md)
@@ -34,7 +34,7 @@ A Blockchain Data Manager példányának konfigurálásához a következőket ke
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.51 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
@@ -62,7 +62,7 @@ az resource create \
 | Paraméter | Leírás |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol a Blockchain Data Manager példányt hozza létre. |
-| név | A Blockchain Data Manager példányának neve. |
+| name | A Blockchain Data Manager példányának neve. |
 | Erőforrás típusa | A Blockchain Data Manager példányának erőforrástípus a **Microsoft. Blockchain/figyelők**. |
 | teljes objektum | Azt jelzi, hogy a tulajdonságok tartalmazzák-e a figyelők erőforrásának beállításait. |
 | properties | A figyelő erőforráshoz tartozó tulajdonságokat tartalmazó JSON-formázott karakterlánc. Karakterláncként vagy fájlként adható át.  |
@@ -124,7 +124,7 @@ az resource create \
 | Paraméter | Leírás |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol a bemeneti erőforrást létre kell hozni. |
-| név | A bemenet neve. |
+| name | A bemenet neve. |
 | névtér | Használja a **Microsoft. Blockchain** szolgáltatói névteret. |
 | Erőforrás típusa | A bemenetek Blockchain Data Manager input **típusú.** |
 | szülő | Azon figyelő elérési útja, amelyhez a bemenet hozzá van rendelve. Például: **figyelők/mywatcher**. |
@@ -133,7 +133,7 @@ az resource create \
 
 ### <a name="input-examples"></a>Bemeneti példák
 
-Konfiguráció JSON-példa egy bemeneti erőforrás létrehozásához az *USA keleti* régiójában, amely a \<Blockchain-\>taghoz csatlakozik.
+Konfiguráció JSON-példa egy bemeneti erőforrás létrehozásához az *USA keleti* régiójában, amely kapcsolódik a-hoz \<Blockchain member\> .
 
 ``` json
 {
@@ -151,7 +151,7 @@ Konfiguráció JSON-példa egy bemeneti erőforrás létrehozásához az *USA ke
 |---------|-------------|
 | location | Az a régió, ahol a bemeneti erőforrást létre kell hozni. |
 | inputType | Az Azure Blockchain-szolgáltatás tagjának főkönyvi típusa. Jelenleg a **Ethereum** támogatott. |
-| resourceId | A tranzakciós csomópont, amelyhez a bemenet csatlakozik. Cserélje \<le az\>előfizetés \<-azonosítót\>, az \<erőforráscsoportot és\> a Blockchain tagot a tranzakciós csomópont erőforrásának értékeire. A bemenet az Azure Blockchain Service-tag alapértelmezett tranzakciós csomópontjára csatlakozik. |
+| resourceId | A tranzakciós csomópont, amelyhez a bemenet csatlakozik. Cserélje le a \<Subscription ID\> \<Resource group\> és a \<Blockchain member\> értéket a tranzakciós csomópont-erőforrás értékeire. A bemenet az Azure Blockchain Service-tag alapértelmezett tranzakciós csomópontjára csatlakozik. |
 
 Hozzon létre egy *myInput* for *mywatcher* nevű bemenetet egy JSON-karakterlánc használatával a konfiguráláshoz.
 
@@ -196,7 +196,7 @@ az resource create \
 | Paraméter | Leírás |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol a kimeneti erőforrást létre kell hozni. |
-| név | A kimenet neve. |
+| name | A kimenet neve. |
 | névtér | Használja a **Microsoft. Blockchain** szolgáltatói névteret. |
 | Erőforrás típusa | Egy Blockchain erőforrás-típusa Data Manager **kimenet.** |
 | szülő | Azon figyelő elérési útja, amelyhez a kimenet társítva van. Például: **figyelők/mywatcher**. |
@@ -205,7 +205,7 @@ az resource create \
 
 ### <a name="output-examples"></a>Kimeneti példák
 
-A konfigurációs JSON-példa egy olyan kimeneti erőforrás létrehozásához az *USA keleti* régiójában, amely az Event Grid témakör \<\>nevű Event Grid-témakörhöz csatlakozik.
+Konfigurációs JSON-példa: hozzon létre egy kimeneti erőforrást az *USA keleti* régiójában, amely egy nevű Event Grid-témakörhöz csatlakozik \<event grid topic\> .
 
 ``` json
 {
@@ -223,7 +223,7 @@ A konfigurációs JSON-példa egy olyan kimeneti erőforrás létrehozásához a
 |---------|-------------|
 | location | Az a régió, ahol a kimeneti erőforrást létre kívánja hozni. |
 | outputType | A kimenet típusa. Jelenleg a **EventGrid** támogatott. |
-| resourceId | Az erőforrás, amelyhez a kimenet csatlakozik. Cserélje \<le az\>előfizetés \<-azonosítót\>, az \<erőforráscsoportot és\> a Blockchain tagot az Event Grid-erőforrás értékeire. |
+| resourceId | Az erőforrás, amelyhez a kimenet csatlakozik. Cserélje le a \<Subscription ID\> , \<Resource group\> és \<Blockchain member\> értéket az Event Grid-erőforrás értékeire. |
 
 Hozzon létre egy *myoutput* nevű kimenetet a *mywatcher* , amely egy JSON-konfigurációs karakterlánc használatával csatlakozik egy Event Grid-témakörhöz.
 
@@ -273,7 +273,7 @@ az resource create \
 | Paraméter | Leírás |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol létre kell hozni az alkalmazás erőforrását. |
-| név | Az alkalmazás neve. |
+| name | Az alkalmazás neve. |
 | névtér | Használja a **Microsoft. Blockchain** szolgáltatói névteret. |
 | Erőforrás típusa | Egy Blockchain Data Manager alkalmazás erőforrás-típusa **összetevők.** |
 | szülő | Azon figyelő elérési útja, amelyhez az alkalmazás társítva van. Például: **figyelők/mywatcher**. |
@@ -348,7 +348,7 @@ az resource invoke-action \
 | Paraméter | Leírás |
 |-----------|-------------|
 | action | A figyelő futtatásához használja a **Start** parancsot. |
-| azonosítók | Figyelő erőforrás-azonosítója. Cserélje \<le az\>előfizetés \<-azonosítót\>, az \<erőforráscsoportot és\> a figyelő nevét a figyelők erőforrásának értékeire.|
+| azonosítók | Figyelő erőforrás-azonosítója. Cserélje le a \<Subscription ID\> , a \<Resource group\> és a \<Watcher name\> értéket a figyelők erőforrásának értékeire.|
 
 ### <a name="start-instance-example"></a>Példány indítása példa
 
@@ -373,7 +373,7 @@ az resource invoke-action \
 | Paraméter | Leírás |
 |-----------|-------------|
 | action | A figyelő leállításához használja a **Leállítás** lehetőséget. |
-| azonosítók | A figyelő neve. Cserélje \<le az\>előfizetés \<-azonosítót\>, az \<erőforráscsoportot és\> a figyelő nevét a figyelők erőforrásának értékeire. |
+| azonosítók | A figyelő neve. Cserélje le a \<Subscription ID\> , a \<Resource group\> és a \<Watcher name\> értéket a figyelők erőforrásának értékeire. |
 
 ### <a name="stop-watcher-example"></a>Figyelő leállítása – példa
 
@@ -399,7 +399,7 @@ az resource delete \
 | Paraméter | Leírás |
 |-----------|-------------|
 | resource-group | A törlendő figyelő erőforráscsoport-neve. |
-| név | A törlendő figyelő neve. |
+| name | A törlendő figyelő neve. |
 | Erőforrás típusa | Egy Blockchain Data Manager figyelő erőforrás **-típusa Microsoft. Blockchain/figyelők**. |
 
 ### <a name="delete-instance-example"></a>Példány törlése példa

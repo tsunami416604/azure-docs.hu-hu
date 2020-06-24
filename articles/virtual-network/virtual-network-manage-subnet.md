@@ -5,20 +5,20 @@ description: Megtudhatja, hogyan adhat hozzá, módosíthat vagy törölhet egy 
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: b9ef084e530faa3bcea2cfcf1554a84f543bbf59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186084"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711017"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Virtuális hálózat alhálózatának hozzáadása, módosítása vagy törlése
 
@@ -32,9 +32,9 @@ Ha még nem rendelkezik ilyennel, állítson be egy aktív előfizetéssel rende
 
 - **PowerShell-felhasználók**: futtassa a [Azure Cloud Shell](https://shell.azure.com/powershell)parancsait, vagy futtassa a PowerShellt a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. A Azure Cloud Shell böngésző lapon keresse meg a **környezet kiválasztása** legördülő listát, majd válassza a **PowerShell** lehetőséget, ha még nincs kiválasztva.
 
-    Ha helyileg futtatja a PowerShellt, használja a Azure PowerShell modul 1.0.0 vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az.Network`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az Azure `Connect-AzAccount` -beli kapcsolatok létrehozásához is futtassa a parancsot.
+    Ha helyileg futtatja a PowerShellt, használja a Azure PowerShell modul 1.0.0 vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az.Network`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Az `Connect-AzAccount` Azure-beli kapcsolatok létrehozásához is futtassa a parancsot.
 
-- **Azure parancssori felület (CLI) felhasználói**: futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy futtassa a CLI-t a számítógépről. Ha helyileg futtatja az Azure CLI-t, használja az Azure CLI-2.0.31 vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Az Azure `az login` -beli kapcsolatok létrehozásához is futtassa a parancsot.
+- **Azure parancssori felület (CLI) felhasználói**: futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy futtassa a CLI-t a számítógépről. Ha helyileg futtatja az Azure CLI-t, használja az Azure CLI-2.0.31 vagy újabb verzióját. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Az `az login` Azure-beli kapcsolatok létrehozásához is futtassa a parancsot.
 
 A fiókkal, amelybe bejelentkezik, vagy csatlakozik az Azure-hoz, hozzá kell rendelni a [hálózati közreműködő szerepkör](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz, vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az [engedélyek](#permissions)között felsorolt megfelelő műveletekhez van rendelve.
 
@@ -44,13 +44,13 @@ A fiókkal, amelybe bejelentkezik, vagy csatlakozik az Azure-hoz, hozzá kell re
 
 2. Válassza ki annak a virtuális hálózatnak a nevét, amelyhez hozzá kíván adni egy alhálózatot.
 
-3. A **Beállítások**területen válassza az **alhálózatok** > **alhálózat**elemet.
+3. A **Beállítások**területen válassza az **alhálózatok**  >  **alhálózat**elemet.
 
 4. Az **alhálózat hozzáadása** párbeszédpanelen adja meg a következő beállítások értékeit:
 
     | Beállítás | Leírás |
     | --- | --- |
-    | **Név** | A névnek egyedinek kell lennie a virtuális hálózaton belül. A többi Azure-szolgáltatással való kompatibilitás érdekében javasoljuk, hogy használjon egy betűt a név első karaktere. Az Azure Application Gateway például nem fog olyan alhálózatba telepíteni, amelynek a neve egy számmal kezdődik. |
+    | **Name (Név)** | A névnek egyedinek kell lennie a virtuális hálózaton belül. A többi Azure-szolgáltatással való kompatibilitás érdekében javasoljuk, hogy használjon egy betűt a név első karaktere. Az Azure Application Gateway például nem fog olyan alhálózatba telepíteni, amelynek a neve egy számmal kezdődik. |
     | **Címtartomány** | <p>A tartománynak egyedinek kell lennie a virtuális hálózat címterület területén. A tartomány nem fedi át a virtuális hálózaton belüli többi alhálózati címtartományt. A címtartományt az osztály nélküli Inter-domain Routing (CIDR) jelöléssel kell megadni.</p><p>Ha például egy virtuális hálózatban a *10.0.0.0/16*címtartomány van megadva, akkor megadhatja a *10.0.0.0/22*alhálózati címtartományt. A legkisebb megadható tartomány a */29*, amely nyolc IP-címet biztosít az alhálózathoz. Az Azure fenntartja az egyes alhálózatok első és utolsó címeit a protokollok megfelelőségének megadásához. Három további cím van fenntartva az Azure-szolgáltatások használatára. Ennek eredményeképpen a */29* címtartományt tartalmazó alhálózat definiálása három használható IP-címet eredményez az alhálózatban.</p><p>Ha virtuális hálózatot szeretne csatlakozni egy VPN-átjáróhoz, létre kell hoznia egy átjáró-alhálózatot. További információ [az átjáró-alhálózatokkal kapcsolatos adott címtartomány-megfontolásokról](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub). Az alhálózat hozzáadása után a megadott feltételek szerint módosíthatja a címtartományt. Az alhálózati címtartomány módosításával kapcsolatos további információkért lásd: [alhálózat beállításainak módosítása](#change-subnet-settings).</p> |
     | **Hálózati biztonsági csoport** | Az alhálózat bejövő és kimenő hálózati forgalmának szűréséhez egy meglévő hálózati biztonsági csoportot is hozzárendelhet egy alhálózathoz. A hálózati biztonsági csoportnak ugyanabban az előfizetésben és helyen kell lennie, mint a virtuális hálózatnak. További információ a [hálózati biztonsági](security-overview.md) csoportokról és [a hálózati biztonsági csoportok létrehozásáról](tutorial-filter-network-traffic.md). |
     | **Útválasztási táblázat** | A hálózati forgalom útválasztásának más hálózatokra való vezérléséhez szükség lehet egy meglévő útválasztási táblázat egy alhálózathoz való hozzárendelésére. Az útválasztási táblázatnak ugyanabban az előfizetésben és helyen kell lennie, mint a virtuális hálózatnak. További információ az [Azure útválasztásáról](virtual-networks-udr-overview.md) és az útválasztási [táblázat létrehozásáról](tutorial-create-route-table-portal.md). |
@@ -120,7 +120,7 @@ Csak akkor törölhet egy alhálózatot, ha nincsenek erőforrások az alhálóz
 
 Az alhálózatokon lévő feladatok elvégzéséhez a fiókját hozzá kell rendelni a [hálózati közreműködő szerepkörhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázatban szereplő megfelelő műveletekhez van rendelve:
 
-|Műveletek                                                                   |   Name (Név)                                       |
+|Műveletek                                                                   |   Name                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft. Network/virtualNetworks/alhálózatok/olvasás                           |   Virtuális hálózat alhálózatának beolvasása              |
 |Microsoft. Network/virtualNetworks/alhálózatok/írás                          |   Virtuális hálózati alhálózat létrehozása vagy frissítése  |

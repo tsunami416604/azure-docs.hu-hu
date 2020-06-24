@@ -3,12 +3,12 @@ title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 225a7f7725762c6887858366b134a7ad9a7b8eb6
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402381"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052680"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -61,6 +61,10 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 - A [Backup Explorer](../../backup/monitor-azure-backup-with-backup-explorer.md) segítségével megtekintheti a biztonsági másolati elemek működési információit (beleértve a biztonsági mentéshez még nem konfigurált Azure-erőforrásokat), valamint a delegált előfizetések figyelési információit (feladatok és riasztások). A Backup Explorer jelenleg csak az Azure-beli virtuálisgép-szolgáltatásokhoz érhető el.
 - [Készítsen biztonsági mentési jelentéseket](../../backup/configure-reports.md) a delegált előfizetések között a korábbi trendek nyomon követéséhez, a biztonsági mentési tárolók felhasználásának elemzéséhez, valamint a biztonsági másolatok és visszaállítások ellenőrzéséhez
 
+[Azure Cost Management + számlázás](../../cost-management-billing/index.yml):
+
+- A bérlők felügyeletével a CSP-partnerek megtekinthetik, kezelhetik és elemezhetik az előfizetéssel kapcsolatos költségeket (nem tartalmazza a vásárlásokat) az Azure-csomag alatti ügyfelek számára. A költségek a kiskereskedelmi díjszabáson és az Azure RBAC-hozzáférésen alapulnak, amelyet a partner az ügyfél előfizetéséhez biztosít.
+
 [Azure Kubernetes szolgáltatás (ak)](../../aks/index.yml):
 
 - Üzemeltetett Kubernetes-környezetek kezelése, tárolón belüli alkalmazások üzembe helyezése és kezelése az ügyfelek bérlői között
@@ -99,7 +103,7 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
   - Folyamatos szabályozási megfelelőség monitorozása több ügyfél között egyetlen nézetben
   - Gyakorlati biztonsági javaslatok monitorozása, osztályozása és rangsorolása biztonságos pontszámok számításával
 - Több-bérlős biztonsági testhelyzet kezelése
-  - Biztonsági házirendek kezelése
+  - Biztonsági szabályzatok kezelése
   - Tegyen lépéseket olyan erőforrásokra, amelyek nem felelnek meg a végrehajtható biztonsági javaslatoknak
   - Biztonsággal kapcsolatos adatok gyűjtése és tárolása
 - Több-bérlős fenyegetések észlelése és védelme
@@ -143,7 +147,6 @@ Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásoka
 - A szerepkör-hozzárendeléseknek a szerepköralapú hozzáférés-vezérlés (RBAC) [beépített szerepköreit](../../role-based-access-control/built-in-roles.md)kell használniuk. Az Azure-beli delegált erőforrás-kezelés jelenleg minden beépített szerepkört támogat, kivéve a tulajdonost vagy a [DataActions](../../role-based-access-control/role-definitions.md#dataactions) engedéllyel rendelkező beépített szerepköröket. A felhasználói hozzáférés rendszergazdai szerepköre csak korlátozott használat esetén támogatott a [szerepkörök hozzárendeléséhez a felügyelt identitásokhoz](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
 - A Azure Databrickst használó előfizetések előállítása közben a bérlők kezelése szolgáltatásban lévő felhasználók jelenleg nem indíthatnak Azure Databricks-munkaterületeket a delegált előfizetéseken.
 - Míg az Azure-beli delegált erőforrás-kezeléshez az erőforrás-zárolással rendelkező előfizetések és erőforráscsoportok is bejelentkezhetnek, ezek a zárolások nem akadályozzák meg a felhasználók által végzett műveleteket a bérlők felügyeletében. A rendszer által felügyelt erőforrások, például az Azure által felügyelt alkalmazások vagy az Azure-tervrajzok (rendszer által hozzárendelt megtagadási hozzárendelések) által létrehozott [hozzárendelések megtagadása](../../role-based-access-control/deny-assignments.md) , hogy a bérlők ne tudják eljárni az adott erőforráson. Ugyanakkor az ügyfél bérlője jelenleg nem hozhat létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).
-- A kezelő bérlő felhasználói nem férhetnek hozzá a delegált ügyfél-előfizetés számlázási adataihoz, még akkor is, ha olyan beépített szerepkörrel rendelkeznek, amely általában lehetővé teszi a hozzáférést. Ennek az az oka, hogy a számlázási adatokhoz való hozzáféréshez olyan további lépések szükségesek, amelyek jelenleg csak ugyanazon bérlőn belüli felhasználók számára támogatottak.
 
 ## <a name="next-steps"></a>További lépések
 

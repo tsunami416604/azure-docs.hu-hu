@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730560"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052017"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webalkalmazási tűzfal CRS-szabályok csoportjai és szabályai
 
@@ -39,6 +39,9 @@ A WAF a következő webes biztonsági rések ellen véd:
 ### <a name="owasp-crs-31"></a>OWASP CRS 3,1
 
 A CRS 3,1 13 szabályt tartalmaz, ahogy az alábbi táblázatban is látható. Minden csoport több szabályt tartalmaz, amelyek letilthatók.
+
+> [!NOTE]
+> A CRS 3,1 csak a WAF_v2 SKU-ban érhető el.
 
 |Szabálycsoport|Leírás|
 |---|---|

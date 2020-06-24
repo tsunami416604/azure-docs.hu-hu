@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d54c4e5980383c721629143910eafbd5ae6a527
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262008"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078953"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -133,7 +133,7 @@ A **felülvizsgálat + létrehozás** lapon áttekintheti a beállításait, és
 
 ## <a name="creating-an-access-package-programmatically"></a>Hozzáférési csomag programozott módon történő létrehozása
 
-Microsoft Graph használatával is létrehozhat hozzáférési csomagokat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált `EntitlementManagement.ReadWrite.All` engedéllyel rendelkezik, meghívhatja az API-t a következőre:
+Microsoft Graph használatával is létrehozhat hozzáférési csomagokat.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a következőre:
 
 1. [Sorolja fel a katalógusban szereplő accessPackageResources](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) , és [hozzon létre egy accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) minden olyan erőforráshoz, amely még nem szerepel a katalógusban.
 1. Egy accessPackageCatalog egyes accessPackageResource [AccessPackageResourceRoles listázása](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) . A szerepkörök listáját ezután egy szerepkör kiválasztására fogjuk használni, amikor a későbbiekben létrehoz egy accessPackageResourceRoleScope.

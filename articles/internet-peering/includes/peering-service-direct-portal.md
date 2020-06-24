@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687048"
 ---
-1. Válassza ki az Azure-partneri szolgáltatás számára engedélyezni kívánt társítási kapcsolatot. Ezután válassza a **... lehetőséget.**  > A **Kapcsolatok szerkesztése**.
+1. Válassza ki az Azure-partneri szolgáltatás számára engedélyezni kívánt társítási kapcsolatot. Ezután válassza a **...**  >  lehetőséget. A **Kapcsolatok szerkesztése**.
     > [!div class="mx-imgBorder"]
     > ![Társ-létrehozási kapcsolatok szerkesztése](../media/setup-direct-modify-editconnection.png)
 1. A **társítási** **szolgáltatás használata**területen válassza az engedélyezve lehetőséget, majd kattintson a **Mentés**gombra.

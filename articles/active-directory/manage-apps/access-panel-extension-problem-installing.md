@@ -3,25 +3,25 @@ title: Az alkalmazás-hozzáférési panel böngésző bővítményének telepí
 description: A hozzáférési panel böngésző bővítményének telepítésekor előforduló gyakori hibák elhárítása.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 05/04/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2046c24220079a604792d07f3ebc3f6ef11e9c8a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275860"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761085"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>A hozzáférési panel böngésző bővítményének telepítése
 
@@ -52,7 +52,7 @@ A hozzáférési panel böngésző bővítményének telepítéséhez tegye a k�
 3.  Ha a rendszer kéri, válassza a **Telepítés most**lehetőséget.  
     A kiválasztott böngésző letöltési hivatkozására van átirányítva. 
     
-4.  Válassza a **Hozzáadás** lehetőséget.
+4.  Válassza a **Hozzáadás** elemet.
 
 5.  Ha a rendszer kéri, **engedélyezze** **vagy engedélyezze** a bővítményt.
 
@@ -67,7 +67,7 @@ A Chrome és a Microsoft Edge bővítményét közvetlenül a következő helyek
 - [Firefox-bővítmény](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>A saját alkalmazások biztonságos bejelentkezési bővítményének használata
-* Ha nem `https://myapps.microsoft.com`a saját alkalmazások URL-címét használja, konfigurálja az alapértelmezett URL-címet a következő módon:
+* Ha nem a saját alkalmazások URL-címét használja `https://myapps.microsoft.com` , konfigurálja az alapértelmezett URL-címet a következő módon:
    1. Ha *nincs* bejelentkezve a bővítménybe, kattintson a jobb gombbal a bővítmény ikonra.
    2. A menüben válassza a **saját alkalmazások URL-cím**elemet.
    3. Válassza ki az alapértelmezett URL-címet.

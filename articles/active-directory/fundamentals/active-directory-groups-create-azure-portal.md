@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85e00c360fb8fa279ec836deaf4e9b3b7e2efdb4
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 13a3a65b615501d4485c3a8ddf6b9f297be06eab
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484439"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817376"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat Azure Active Directory használatával
 Az Azure Active Directory (Azure AD) portálon létrehozhat alapszintű csoportot. A cikk céljaira az erőforrás tulajdonosa (rendszergazda) egy alapszintű csoportot ad az erőforráshoz, amely azokat a tagokat tartalmazza (alkalmazottak), akiknek az adott erőforrást el kell érniük. Az összetettebb eseteknél, beleértve a dinamikus csoporttagságot és szabályok létrehozását is, lásd az [Azure Active Directory felhasználókezelés dokumentációt](../users-groups-roles/index.yml).
@@ -27,8 +27,8 @@ Az Azure Active Directory (Azure AD) portálon létrehozhat alapszintű csoporto
 Több csoport-és tagsági típus van. Az alábbi információk ismertetik az egyes csoportok és tagságok típusát, valamint a használatuk okát, hogy segítsen eldönteni, hogy mely beállításokat kell használni a csoportok létrehozásakor.
 
 ### <a name="group-types"></a>Csoportok típusai:
-- **Biztonság**. Segítségével kezelheti a tag és a számítógép hozzáféréseket a megosztott erőforrásokhoz a felhasználók egy csoportjára. Például létrehozhat egy biztonsági csoportot egy meghatározott biztonsági házirendhez. Ha így tesz, az összes tagnak egyszerre oszthatja ki az engedélyeket, nem kell az engedélyeket minden tagnak külön kiadni. További információ az erőforrásokhoz való hozzáférés kezeléséről: az erőforrásokhoz [való hozzáférés kezelése Azure Active Directory groupsManage-hozzáférés az erőforrásokhoz Azure Active Directory csoportokkal](active-directory-manage-groups.md).
-- **Office 365**. Együttműködési lehetőségeket biztosít a tagok számára rendelkezésre bocsátott megosztott postaládába, naptár, fájlok, SharePoint-webhelyre és sok egyéb révén. Ez a beállítás lehetővé teszi a szervezetnél kívüli személyek hozzáadását is a csoporthoz. Az Office 365-csoportokról bővebben lásd: [A Office 365-csoportok ismertetése](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+- **Biztonság**. Segítségével kezelheti a tag és a számítógép hozzáféréseket a megosztott erőforrásokhoz a felhasználók egy csoportjára. Például létrehozhat egy biztonsági csoportot egy meghatározott biztonsági házirendhez. Ha így tesz, az összes tagnak egyszerre oszthatja ki az engedélyeket, nem kell az engedélyeket minden tagnak külön kiadni. Egy biztonsági csoport tagjainak, eszközeinek, csoportjainak és egyszerű szolgáltatásainak tulajdonosaként a felhasználók, a felhasználók és a szolgáltatások lehetnek. Erőforrásokhoz való hozzáférés kezelésével kapcsolatos további információkért lásd: [Erőforrásokhoz való hozzáférés kezelése Azure Active Directory-csoportokkal](active-directory-manage-groups.md).
+- **Office 365**. Együttműködési lehetőségeket biztosít a tagok számára rendelkezésre bocsátott megosztott postaládába, naptár, fájlok, SharePoint-webhelyre és sok egyéb révén. Ez a beállítás lehetővé teszi a szervezetnél kívüli személyek hozzáadását is a csoporthoz. Az Office 365-csoportok tagjai csak felhasználók lehetnek. A felhasználók és az egyszerű szolgáltatások is lehetnek Office 365-csoportok tulajdonosainak. Az Office 365-csoportokról bővebben lásd: [A Office 365-csoportok ismertetése](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
 ### <a name="membership-types"></a>Tagsági típusok:
 - **Kiosztva.** Lehetővé teszi, hogy konkrét felhasználók a csoport tagjai lehessenek és egyedi engedélyekkel rendelkezzenek. A cikk céljaira ezt a lehetőséget használjuk.
@@ -79,7 +79,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 Ha új Office 365-csoportot hoz létre, akár dinamikus, akár statikus tagsággal rendelkezik, a rendszer a csoporthoz hozzáadott összes felhasználóhoz üdvözlő értesítést küld. Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendszer a szervezet összes dinamikus csoportjának szabályait feldolgozza a lehetséges tagsági változások miatt. A hozzáadott felhasználók megkapják az üdvözlő értesítést is. Ezt a viselkedést kikapcsolhatja az [Exchange PowerShellben](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az SaaS-alkalmazásokhoz való hozzáférés kezelése csoportokkal](../users-groups-roles/groups-saasapps.md)
 - [Csoportok kezelése PowerShell-parancsokkal](../users-groups-roles/groups-settings-v2-cmdlets.md)

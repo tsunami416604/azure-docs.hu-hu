@@ -3,22 +3,22 @@ title: Integráció a AD Application Proxy NDES-kiszolgálón
 titleSuffix: Azure Active Directory
 description: Útmutatás a Azure Active Directory Application Proxy telepítéséhez a NDES-kiszolgáló elleni védelemhez.
 services: active-directory
-author: CelesteDG
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/17/2020
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 4ccd8834671725ace72497391090f81eb197ad6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77032256"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760796"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integráció az Azure AD Application Proxy hálózati eszközök tanúsítványigénylési szolgáltatásának (NDES) kiszolgálóján
 
@@ -34,7 +34,7 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
 
 ## <a name="install-and-register-the-connector-on-the-ndes-server"></a>Az összekötő telepítése és regisztrálása a NDES-kiszolgálón
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az alkalmazásproxy-t használó címtár alkalmazás-rendszergazdájaként. Ha például a bérlő tartománya contoso.com, akkor a rendszergazdának vagy más admin@contoso.com rendszergazdai aliasnak kell lennie az adott tartományban.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az alkalmazásproxy-t használó címtár alkalmazás-rendszergazdájaként. Ha például a bérlő tartománya contoso.com, akkor a rendszergazdának admin@contoso.com vagy más rendszergazdai aliasnak kell lennie az adott tartományban.
 1. Válassza ki a felhasználónevét a jobb felső sarokban. Ellenőrizze, hogy be van-e jelentkezve az alkalmazásproxy-t használó könyvtárba. Ha módosítania kell a címtárakat, válassza a **váltás könyvtárat** , és válasszon egy, az alkalmazásproxy-t használó könyvtárat.
 1. A bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 1. A **kezelés**területen válassza a **alkalmazásproxy**elemet.
@@ -45,18 +45,18 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
 1. Olvassa el a szolgáltatási feltételeket. Ha elkészült, válassza a **feltételek elfogadása & Letöltés**lehetőséget.
 1. Másolja az Azure AD Application Proxy Connector telepítési fájlt a NDES-kiszolgálóra. 
    > Az összekötőt a vállalati hálózaton belüli bármely kiszolgálóra is telepítheti a NDES elérésével. Nem kell telepítenie a NDES-kiszolgálóra.
-1. Futtassa a telepítőfájlt, például a *AADApplicationProxyConnectorInstaller. exe*fájlt. A szoftverlicenc-szerződés elfogadása.
+1. Futtassa a telepítőfájlt, például *AADApplicationProxyConnectorInstaller.exe*. A szoftverlicenc-szerződés elfogadása.
 1. A telepítés során a rendszer felszólítja, hogy regisztrálja az összekötőt az alkalmazás-proxyval az Azure AD-címtárban.
    * Adja meg az Azure AD-címtárban a globális vagy az alkalmazás-rendszergazda hitelesítő adatait. Az Azure AD globális vagy alkalmazás-rendszergazdai hitelesítő adatai eltérhetnek a portál Azure-beli hitelesítő adataitól.
 
         > [!NOTE]
         > Az összekötő regisztrálásához használt globális vagy alkalmazás-rendszergazdai fióknak ugyanahhoz a címtárhoz kell tartoznia, ahol engedélyezte az alkalmazásproxy szolgáltatást.
         >
-        > Ha például az Azure AD-tartomány *contoso.com*, a globális/alkalmazás-rendszergazdának vagy egy `admin@contoso.com` másik érvényes aliasnak kell lennie az adott tartományban.
+        > Ha például az Azure AD-tartomány *contoso.com*, a globális/alkalmazás-rendszergazdának `admin@contoso.com` vagy egy másik érvényes aliasnak kell lennie az adott tartományban.
 
    * Ha az Internet Explorer fokozott biztonsági beállításai be vannak kapcsolva azon a kiszolgálón, amelyen az összekötőt telepíti, előfordulhat, hogy a regisztrációs képernyő blokkolva van. A hozzáférés engedélyezéséhez kövesse a hibaüzenet utasításait, vagy kapcsolja ki az Internet Explorer fokozott biztonságát a telepítési folyamat során.
    * Ha az összekötő regisztrálása meghiúsul, tekintse meg az [alkalmazásproxy hibaelhárítása](application-proxy-troubleshoot.md)című témakört.
-1. A beállítás végén megjelenik egy Megjegyzés a kimenő proxyval rendelkező környezetekhez. Ha úgy szeretné konfigurálni az Azure AD Application Proxy-összekötőt, hogy a kimenő proxyn keresztül működjön, futtassa `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`a megadott parancsfájlt, például:.
+1. A beállítás végén megjelenik egy Megjegyzés a kimenő proxyval rendelkező környezetekhez. Ha úgy szeretné konfigurálni az Azure AD Application Proxy-összekötőt, hogy a kimenő proxyn keresztül működjön, futtassa a megadott parancsfájlt, például: `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` .
 1. Az Azure Portal alkalmazásproxy lapján az új összekötő *aktív*állapotú, az alábbi példában látható módon jelenik meg:
 
     ![Az új Azure AD Application Proxy-összekötő, amely aktívként jelenik meg a Azure Portal](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
@@ -83,7 +83,7 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
 
 1. Tesztelje, hogy az Azure AD-alkalmazásproxy segítségével hozzáférhet-e a NDES-kiszolgálóhoz a 10. lépésben a böngészőben másolt hivatkozás beillesztésével. Ekkor meg kell jelennie az alapértelmezett IIS-kezdőlapnak.
 
-1. Végső tesztként adja hozzá a *MSCEP. dll* elérési utat az előző lépésben beillesztett meglévő URL-címhez:
+1. Végső tesztként adja hozzá a *mscep.dll* elérési utat az előző lépésben beillesztett meglévő URL-címhez:
 
    https://scep-test93635307549127448334.msappproxy.net/certsrv/mscep/mscep.dll
 

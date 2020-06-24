@@ -12,21 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: a741fb76827327c1231890d71ee1da79e052ed50
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99c9a9ac742981734daf107d73c9cec8777dc642
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232410"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85257533"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>A Microsoft Defender komplex veszélyforrások elleni védelem Azure Security Center
 
-A Azure Security Center a [Microsoft Defender komplex veszélyforrások elleni védelem](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) (ATP) integrálásával kiterjeszti a felhőalapú számítási feladatok védelmi platformokra vonatkozó ajánlatait.
-Ez a változás átfogó végpontészlelési és -válaszolási (EDR) képességeket tesz lehetővé. A Microsoft Defender ATP-integrációval szokatlanokat lehet kimutatni. A Azure Security Center által figyelt kiszolgálói végpontokon a speciális támadások észlelésére és reagálására is lehetőség van.
+A Azure Security Center a [Microsoft Defender komplex veszélyforrások elleni védelem (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) szolgáltatással integrálható az átfogó végpont-észlelési és reagálási (EDR) képességek biztosításához.
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>A Microsoft Defender ATP funkciói Security Center
 
-A Microsoft Defender ATP használatakor a következőket kapja:
+A Microsoft Defender ATP a következőket biztosítja:
 
 - **Speciális post-megsértés észlelési érzékelők**: a Microsoft Defender ATP-érzékelők a Windows-kiszolgálókon a viselkedési jelek nagy tömbjét gyűjtik össze.
 
@@ -34,19 +33,18 @@ A Microsoft Defender ATP használatakor a következőket kapja:
 
 - **Fenyegetési intelligencia**: a Microsoft Defender ATP riasztásokat állít elő, amikor a támadó eszközöket, technikákat és eljárásokat azonosítja. A Microsoft Threat Hunters és a biztonsági csapatok által létrehozott, a partnerek által biztosított intelligenciával kiegészített adatok használatával működik.
 
-A következő képességek érhetők el a Azure Security Centerban:
 
-- **Automatikus**bevezetéssel: a Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Azure Security Centerba beépített Windows-kiszolgálókon (a windows Server 2019-at futtatók kivételével).
+A Defender ATP és a Azure Security Center integrálásával a következő további funkciók is hasznosak lehetnek:
 
-- **Önálló**üvegtábla: a Azure Security Center-konzol megjeleníti a Microsoft Defender ATP-riasztásokat.
+- **Automatizált**előkészítés: az integráció automatikusan engedélyezi a Microsoft Defender ATP-érzékelőt a Azure Security Center által figyelt Windows Server-kiszolgálókon (kivéve, ha Windows Server 2019 rendszert futtatnak).
 
-További vizsgálathoz használja a Microsoft Defender ATP-t. A Microsoft Defender ATP további információkat tartalmaz, például a riasztási folyamat fáját és az incidens gráfot. Megtekintheti a részletes gépi idővonalat is, amely egy 6 hónapos időszakra visszamenőlegesen mutatja be az összes viselkedést.
+- **Önálló**üvegtábla: a Azure Security Center-konzol megjeleníti a Microsoft Defender ATP-riasztásokat. További vizsgálathoz használja a Microsoft Defender ATP-t. A Microsoft Defender ATP további információkat tartalmaz, például a riasztási folyamat fáját és az incidens gráfot. Megtekintheti a részletes gépi idővonalat is, amely egy 6 hónapos időszakra visszamenőlegesen mutatja be az összes viselkedést.
 
-![Microsoft Defender ATP-oldal részletes információkkal a riasztásról](media/security-center-wdatp/image3.png)
+    ![Microsoft Defender ATP-oldal részletes információkkal a riasztásról](media/security-center-wdatp/image3.png)
 
 ## <a name="platform-support"></a>Platformtámogatás
 
-A Microsoft Defender ATP Security Center támogatja az észlelést a Windows Server 2016, 2012 R2 és 2008 R2 SP1 rendszerben az Azure virtuális gépekhez standard szintű előfizetésre és nem Azure-beli virtuális gépekre is szüksége van, csak a munkaterület szintjén szükséges standard szintre.
+A Microsoft Defender ATP Security Center támogatja a Windows Server 2016, 2012 R2 és 2008 R2 SP1 észlelését. Az Azure-beli virtuális gépekhez standard szintű előfizetésre és nem Azure-beli virtuális gépekre van szükség, csak a munkaterület szintjén lévő standard csomagra van szükség.
 
 > [!NOTE]
 > Ha Azure Security Centert használ a kiszolgálók figyelésére, a rendszer automatikusan létrehoz egy Microsoft Defender ATP-bérlőt, és a Microsoft Defender ATP-adatvédelmet alapértelmezés szerint Európában tárolja. Ha át kell helyeznie az adatait egy másik helyre, kapcsolatba kell lépnie Microsoft ügyfélszolgálata a bérlő alaphelyzetbe állításához. Az integrációt használó kiszolgálói végpont figyelése le van tiltva az Office 365 GCC-ügyfelek számára.
@@ -66,7 +64,7 @@ A kiszolgálók Security Centerbe való bevezetéséhez kattintson az **Azure Se
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>A Microsoft Defender ATP-integráció engedélyezése
 
-Ha meg szeretné tekinteni, hogy engedélyezve van-e a Microsoft Defender ATP-integrációja, válassza a **Security Center** > **díjszabása & beállításokat** > kattintson az előfizetésre.
+Ha meg szeretné tekinteni, hogy engedélyezve van-e a Microsoft Defender ATP-integrációja, válassza a **Security Center**  >  **díjszabása & beállításokat** > kattintson az előfizetésre.
 Itt láthatja az aktuálisan engedélyezett integrációkat.
 
   ![Azure Security Center veszélyforrások észlelésére vonatkozó beállítások lap, amelyen engedélyezve van a Microsoft Defender ATP-integráció](media/security-center-wdatp/enable-integrations.png)
@@ -81,11 +79,9 @@ Itt láthatja az aktuálisan engedélyezett integrációkat.
 
 ## <a name="access-to-the-microsoft-defender-atp-portal"></a>Hozzáférés a Microsoft Defender ATP-portálhoz
 
-Kövesse a [felhasználói hozzáférés kiosztása a portálhoz](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)című témakör utasításait.
+1. Kövesse a [felhasználói hozzáférés kiosztása a portálhoz](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)című témakör utasításait.
 
-## <a name="set-the-firewall-configuration"></a>A tűzfal konfigurációjának beállítása
-
-Ha olyan proxyval vagy tűzfallal rendelkezik, amely blokkolja a névtelen forgalmat, mivel a Microsoft Defender ATP-érzékelő a rendszerkörnyezetből csatlakozik, győződjön meg arról, hogy a névtelen forgalom engedélyezett. Kövesse a következő témakör utasításait: a [Microsoft DEFENDER ATP-szolgáltatáshoz való hozzáférés engedélyezése a proxykiszolgálón](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
+1. Győződjön meg arról, hogy rendelkezik-e olyan proxyval vagy tűzfallal, amely blokkolja a névtelen forgalmat. A Defender ATP-érzékelő a rendszerkörnyezetből csatlakozik, így a névtelen forgalomnak engedélyezettnek kell lennie. A Microsoft Defender ATP-portálhoz való akadálymentes hozzáférés biztosításához kövesse a következő témakör utasításait: a [Microsoft DEFENDER ATP szolgáltatáshoz való hozzáférés engedélyezése a proxykiszolgálón](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
 ## <a name="test-the-feature"></a>A szolgáltatás tesztelése
 
@@ -105,7 +101,7 @@ Jóindulatú Microsoft Defender ATP-teszt riasztás létrehozása:
 
 1. Ha a parancs sikeres, egy új riasztás jelenik meg a Azure Security Center-irányítópulton és a Microsoft Defender ATP-portálon. Ez a riasztás néhány percet is igénybe vehet.
 
-1. A Security Center riasztásának áttekintéséhez lépjen a **biztonsági riasztások** > **gyanús PowerShell parancssori**elemre.
+1. A Security Center riasztásának áttekintéséhez lépjen a **biztonsági riasztások**  >  **gyanús PowerShell parancssori**elemre.
 
 1. A vizsgálat ablakban válassza ki a Microsoft Defender ATP-portálra mutató hivatkozást.
 

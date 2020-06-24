@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128423"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078127"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Jelentések és naplók megtekintése az Azure AD-jogosultságok kezelésében
 
@@ -79,17 +79,17 @@ Ez a jelentés lehetővé teszi, hogy a jogosultságok kezelésében jelenleg a 
 
 ## <a name="determine-the-status-of-a-users-request"></a>Felhasználói kérés állapotának meghatározása
 
-Ha további részleteket szeretne megtudni arról, hogy a felhasználó hogyan kért és kapott hozzáférést egy hozzáférési csomaghoz, használhatja az Azure AD naplót. A `EntitlementManagement` és `UserManagement` a kategóriákban található naplóbejegyzések használatával további részleteket tudhat meg az egyes kérelmek feldolgozási lépéseiről.  
+Ha további részleteket szeretne megtudni arról, hogy a felhasználó hogyan kért és kapott hozzáférést egy hozzáférési csomaghoz, használhatja az Azure AD naplót. A és a kategóriákban található naplóbejegyzések használatával `EntitlementManagement` `UserManagement` További részleteket tudhat meg az egyes kérelmek feldolgozási lépéseiről.  
 
 1. Kattintson a **Azure Active Directory** , majd a **naplók**elemre.
 
-1. A felső részen módosítsa a **kategóriát** a `EntitlementManagement` vagy `UserManagement`a értékre a keresett naplózási rekordtól függően.  
+1. A felső részen módosítsa a **kategóriát** a vagy a értékre `EntitlementManagement` `UserManagement` a keresett naplózási rekordtól függően.  
 
 1. Kattintson az **Alkalmaz** gombra.
 
 1. A naplók letöltéséhez kattintson a **Download (Letöltés**) gombra.
 
-Amikor az Azure AD új kérést kap, egy naplózási rekordot ír, amelyben a **Kategória** szerepel `EntitlementManagement` , és a **tevékenység** általában `User requests access package assignment`.  A Azure Portalban létrehozott közvetlen hozzárendelés esetén a naplózási rekord `Administrator directly assigns user to access package` **tevékenység** mezőjében a **ActorUserPrincipalName**azonosítja a hozzárendelést végrehajtó felhasználót.
+Amikor az Azure AD új kérést kap, egy naplózási rekordot ír, amelyben a **Kategória** szerepel, `EntitlementManagement` és a **tevékenység** általában `User requests access package assignment` .  A Azure Portalban létrehozott közvetlen hozzárendelés esetén a naplózási rekord **tevékenység** mezőjében a `Administrator directly assigns user to access package` **ActorUserPrincipalName**azonosítja a hozzárendelést végrehajtó felhasználót.
 
 Az Azure AD további naplózási rekordokat fog írni, amíg a kérelem folyamatban van, beleértve a következőket:
 
@@ -101,11 +101,11 @@ Az Azure AD további naplózási rekordokat fog írni, amíg a kérelem folyamat
 | `EntitlementManagement` | `Approve access package assignment request` | Kérelem jóváhagyva |
 | `EntitlementManagement` | `Ready to fulfill access package assignment request` |A kérelem jóváhagyva vagy nem igényel jóváhagyást |
 
-Amikor egy felhasználóhoz hozzáférési hozzáférés van rendelve, az Azure AD egy naplózási `EntitlementManagement` rekordot ír a kategóriába a **tevékenységgel** `Fulfill access package assignment`.  Az **ActorUserPrincipalName** mező azonosítja a hozzáférést fogadó felhasználót.
+Amikor egy felhasználóhoz hozzáférési hozzáférés van rendelve, az Azure AD egy naplózási rekordot ír a `EntitlementManagement` kategóriába a **tevékenységgel** `Fulfill access package assignment` .  Az **ActorUserPrincipalName** mező azonosítja a hozzáférést fogadó felhasználót.
 
-Ha a hozzáférés nem lett hozzárendelve, akkor az Azure AD egy naplózási `EntitlementManagement` rekordot ír **Activity** a tevékenység `Deny access package assignment request`kategóriába, ha a kérést egy jóváhagyó megtagadta `Access package assignment request timed out (no approver action taken)`, vagy ha a kérelem túllépte az időkorlátot a jóváhagyó jóváhagyása előtt.
+Ha a hozzáférés nem lett hozzárendelve, akkor az Azure AD egy naplózási rekordot ír a `EntitlementManagement` **tevékenység** kategóriába, `Deny access package assignment request` Ha a kérést egy jóváhagyó megtagadta, vagy `Access package assignment request timed out (no approver action taken)` Ha a kérelem túllépte az időkorlátot a jóváhagyó jóváhagyása előtt.
 
-Ha a felhasználó hozzáférési csomagjának hozzárendelése lejár, a felhasználó megszakította vagy eltávolítja a rendszergazdát, akkor az Azure AD naplózási rekordot ír a `EntitlementManagement` **tevékenységgel** rendelkező kategóriához `Remove access package assignment`.
+Ha a felhasználó hozzáférési csomagjának hozzárendelése lejár, a felhasználó megszakította vagy eltávolítja a rendszergazdát, akkor az Azure AD naplózási rekordot ír a `EntitlementManagement` **tevékenységgel** rendelkező kategóriához `Remove access package assignment` .
 
 ## <a name="next-steps"></a>További lépések
 

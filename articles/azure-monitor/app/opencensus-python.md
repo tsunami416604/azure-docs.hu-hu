@@ -7,12 +7,12 @@ ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 3a47296d755c2a933e7e136a4b17ae87561213ad
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 04581826ab6b05333e910a162c7a0ca9566ec334
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553859"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079122"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
 
@@ -342,36 +342,10 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
     > [!NOTE]
     > `traces`Ebben a kontextusban nem ugyanaz, mint a `Tracing` . `traces`arra a telemetria-típusra hivatkozik, amelyet a Azure Monitor fog látni, amikor a-t használja `AzureLogHandler` . `Tracing`egy OpenCensus-koncepcióra hivatkozik, és az [elosztott nyomkövetésre](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)vonatkozik.
 
-5. A naplóüzenetek formázásához használhatja `formatters` a beépített Python- [naplózási API](https://docs.python.org/3/library/logging.html#formatter-objects)-t.
+    > [!NOTE]
+    > A gyökérszintű naplózó a szint FIGYELMEZTETÉSével van konfigurálva. Ez azt jelenti, hogy minden olyan naplót figyelmen kívül hagy a rendszer, amelyet a súlyosságnál kisebb értékkel küld, és a rendszer nem küldi el a Azure Monitor. További részletekért tekintse meg ezt a [dokumentációt](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel) .
 
-    ```python
-    import logging
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    
-    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
-    date_format = '%Y-%m-%d %H:%M:%S'
-    formatter = logging.Formatter(format_str, date_format)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    handler = AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-    
-    def valuePrompt():
-        line = input("Enter a value: ")
-        logger.warning(line)
-    
-    def main():
-        while True:
-            valuePrompt()
-    
-    if __name__ == "__main__":
-        main()
-    ```
-
-6. Az *extra* kulcsszó argumentumban egyéni tulajdonságokat is hozzáadhat a naplóüzenetek számára a custom_dimensions mező használatával. Ezek kulcs-érték párokként fognak megjelenni a `customDimensions` Azure monitorban.
+5. Az *extra* kulcsszó argumentumban egyéni tulajdonságokat is hozzáadhat a naplóüzenetek számára a custom_dimensions mező használatával. Ezek kulcs-érték párokként fognak megjelenni a `customDimensions` Azure monitorban.
     > [!NOTE]
     > Ahhoz, hogy ez a funkció működjön, át kell adnia egy szótárt a custom_dimensions mezőbe. Ha más típusú argumentumokat ad át, a naplózó figyelmen kívül hagyja őket.
 
@@ -390,6 +364,39 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
 
     # Use properties in logging statements
     logger.warning('action', extra=properties)
+    ```
+
+#### <a name="configure-logging-for-django-applications"></a>Django-alkalmazások naplózásának konfigurálása
+
+Az alkalmazás kódjában explicit módon konfigurálhatja a naplózást a Django-alkalmazásokhoz, vagy megadhatja azt a Django naplózási konfigurációjában. Ez a kód bármely, a Django-beállítások konfigurálásához használt fájlt beléphet. A naplózás konfigurálásával kapcsolatos további információkért lásd: [Django](https://docs.djangoproject.com/en/3.0/topics/settings/) -beállítások a Django beállításainak és a [Django naplózásának](https://docs.djangoproject.com/en/3.0/topics/logging/) konfigurálásához.
+
+    ```python
+    LOGGING = {
+        "handlers": {
+            "azure": {
+                "level": "DEBUG",
+                "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
+                "instrumentation_key": "<your-ikey-here>",
+            },
+            "console": {
+                "level": "DEBUG",
+                "class": "logging.StreamHandler",
+                "stream": sys.stdout,
+            },
+        },
+        "loggers": {
+            "logger_name": {"handlers": ["azure", "console"]},
+        },
+    }
+    ```
+
+Ügyeljen arra, hogy a naplózó a konfigurációban megadott névvel megegyező néven legyen használatban.
+
+    ```python
+    import logging
+        
+    logger = logging.getLogger("logger_name")
+    logger.warning("this will be tracked")
     ```
 
 #### <a name="sending-exceptions"></a>Küldési kivételek
@@ -429,6 +436,21 @@ A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos
 
 A nyomon követett telemetria Azure Monitorba való elküldése előtt történő módosításával kapcsolatos részletekért lásd: OpenCensus Python [telemetria processzorok](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
 
+## <a name="configure-azure-monitor-exporters"></a>Azure Monitor-exportőrök konfigurálása
+
+Ahogy az a fentiekben is látható, három különböző Azure Monitor-exportőr támogatja a OpenCensus-t, és mindegyik különböző típusú telemetria küld Azure Monitor. Ha szeretné megtekinteni, hogy az egyes exportőrök milyen típusú telemetria küldenek, tekintse meg az alábbi szakaszt.
+
+Mindegyik exportőr elfogadja a konfigurációhoz tartozó argumentumokat, amelyeket a konstruktorok továbbítanak. Az alábbi részleteket láthatja.
+
+1. `connection_string`– A Azure Monitor erőforráshoz való kapcsolódáshoz használt kapcsolati karakterlánc. Elsőbbséget élvez `instrumentation_key` .
+2. `enable_standard_metrics`-Használatban van `AzureMetricsExporter` . Azt jelzi, hogy az exportőr automatikusan elküldi a [teljesítményszámláló](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters) -metrikákat a Azure monitor. Alapértelmezett értéke `True` .
+3. `export_interval`-Az Exportálás másodpercben megadott gyakoriságának meghatározására szolgál.
+4. `instrumentation_key`– A Azure Monitor erőforráshoz való csatlakozáshoz használt rendszerállapot-kulcs.
+5. `logging_sampling_rate`-Használatban van `AzureLogHandler` . Mintavételezési sebességet biztosít [1,0] a naplók exportálásához. Az alapértelmezett érték a 1,0.
+6. `max_batch_size`-Az egyszerre exportált telemetria maximális méretét adja meg.
+7. `proxies`-Az adatok Azure Monitorba küldéséhez használandó proxyk sorozatát adja meg. További részletekért tekintse meg a [proxykat](https://requests.readthedocs.io/en/master/user/advanced/#proxies) .
+8. `storage_path`– A helyi tárolási mappa helyének elérési útja (telemetria elküldve). A `opencensus-ext-azure` v 1.0.3-től kezdve az alapértelmezett elérési út az operációs rendszer TEMP Directory + `opencensus-python`  +  `your-ikey` . Az előre v 1.0.3 esetében az alapértelmezett elérési út $USER + `.opencensus`  +  `.azure`  +  `python-file-name` .
+
 ## <a name="view-your-data-with-queries"></a>Az adataikat a lekérdezésekkel tekintheti meg
 
 A **naplók (Analytics)** lapon megtekintheti az alkalmazásból elküldett telemetria-adatait.
@@ -451,7 +473,7 @@ További információ a lekérdezések és naplók használatáról: [naplók a 
 * [OpenCensus-integrációk](https://github.com/census-instrumentation/opencensus-python#extensions)
 * [Azure Monitor minta alkalmazások](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bejövő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-dependency.md)
 * [Folyamatban lévő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-request.md)

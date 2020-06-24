@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
-ms.openlocfilehash: 94949a31db5321929a3440281cebd01712c79bb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a799309b6e5d00db3b6c206187eec7097c9dc11a
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260139"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887260"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Azure CDN gyorsítótárazási viselkedés szabályozása lekérdezési karakterláncokkal – prémium szint
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "81260139"
 > 
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Content Delivery Network (CDN) segítségével szabályozhatja, hogy a rendszer hogyan gyorsítótárazza a fájlokat egy olyan webes kérelem esetében, amely egy lekérdezési karakterláncot tartalmaz. Lekérdezési karakterláncot tartalmazó webes kérelem esetén a lekérdezési karakterlánc a kérelemnek a kérdőjel (?) utáni részét jelöli. A lekérdezési karakterláncok tartalmazhatnak egy vagy több kulcs-érték párokat, amelyekben a mező nevét és értékét egy egyenlőségjel (=) választja el egymástól. A kulcs-érték párokat egy jel (&) választja el egymástól. Például: http:\//www.contoso.com/content.mov?field1=Value1&mező = érték2. Ha egy kérelem lekérdezési karakterláncában egynél több kulcs-érték pár szerepel, a rendelésük nem számít. 
+Az Azure Content Delivery Network (CDN) segítségével szabályozhatja, hogy a rendszer hogyan gyorsítótárazza a fájlokat egy olyan webes kérelem esetében, amely egy lekérdezési karakterláncot tartalmaz. Lekérdezési karakterláncot tartalmazó webes kérelem esetén a lekérdezési karakterlánc a kérelemnek a kérdőjel (?) utáni részét jelöli. A lekérdezési karakterláncok tartalmazhatnak egy vagy több kulcs-érték párokat, amelyekben a mező nevét és értékét egy egyenlőségjel (=) választja el egymástól. A kulcs-érték párokat egy jel (&) választja el egymástól. Például: http: \/ /www.contoso.com/content.mov?field1=value1&mező = érték2. Ha egy kérelem lekérdezési karakterláncában egynél több kulcs-érték pár szerepel, a rendelésük nem számít. 
 
 > [!IMPORTANT]
 > A standard és a prémium CDN-termékek ugyanazt a lekérdezési karakterlánc-gyorsítótárazási funkciót biztosítják, a felhasználói felület azonban eltérő. Ez a cikk a **Verizon Azure CDN Premium**csomag felületét ismerteti. A Azure CDN standard termékekkel történő lekérdezési karakterláncok gyorsítótárazásával kapcsolatban lásd: [Azure CDN gyorsítótárazási viselkedés szabályozása a lekérdezési karakterláncokkal – standard szint](cdn-query-string.md).

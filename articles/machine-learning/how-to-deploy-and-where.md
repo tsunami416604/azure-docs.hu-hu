@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/28/2020
+ms.date: 06/12/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: c0cf361cc00466a8ddf098b52bfaacc2fa63dad4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559445"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817986"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -255,9 +255,34 @@ file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'skl
 ```
 
 **Több modell – példa**
+
+Ebben a forgatókönyvben két modell van regisztrálva a munkaterületen:
+
+* `my_first_model`: Egy fájlt ( `my_first_model.pkl` ) tartalmaz, és csak egy verzió ( `1` ) található.
+* `my_second_model`: Egy fájlt ( `my_second_model.pkl` ) tartalmaz, és két verzió; `1` és `2` .
+
+A szolgáltatás üzembe helyezése után mindkét modell a telepítés műveletben van megadva:
+
+```python
+first_model = Model(ws, name="my_first_model", version=1)
+second_model = Model(ws, name="my_second_model", version=2)
+service = Model.deploy(ws, "myservice", [first_model, second_model], inference_config, deployment_config)
+```
+
+A szolgáltatást futtató Docker-rendszerképben a `AZUREML_MODEL_DIR` környezeti változó tartalmazza azt a könyvtárat, ahol a modellek találhatók.
+Ebben a könyvtárban mindegyik modell egy könyvtár elérési útjában található `MODEL_NAME/VERSION` . Ahol a a `MODEL_NAME` regisztrált modell neve, és `VERSION` a modell verziója. A regisztrált modellt alkotó fájlokat a rendszer ezekben a címtárakban tárolja.
+
+Ebben a példában az elérési utak a következőek: `$AZUREML_MODEL_DIR/my_first_model/1/my_first_model.pkl` és `$AZUREML_MODEL_DIR/my_second_model/2/my_second_model.pkl` .
+
+
 ```python
 # Example when the model is a file, and the deployment contains multiple models
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
+first_model_name = 'my_first_model'
+first_model_version = '1'
+first_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), first_model_name, first_model_version, 'my_first_model.pkl')
+second_model_name = 'my_second_model'
+second_model_version = '2'
+second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_name, second_model_version, 'my_second_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -322,6 +347,8 @@ def run(data):
         return error
 ```
 
+##### <a name="power-bi-compatible-endpoint"></a>Power BI kompatibilis végpont 
+
 Az alábbi példa bemutatja, hogyan határozhatja meg a bemeneti adatokat `<key: value>` szótárként egy DataFrame használatával. Ez a módszer a központilag telepített webszolgáltatás Power BI való felhasználására használható. ([További információ a webszolgáltatás Power BIból való](https://docs.microsoft.com/power-bi/service-machine-learning-integration)használatáról.)
 
 ```python
@@ -358,8 +385,9 @@ input_sample = pd.DataFrame(data=[{
 # This is an integer type sample. Use the data type that reflects the expected result.
 output_sample = np.array([0])
 
-
-@input_schema('data', PandasParameterType(input_sample))
+# To indicate that we support a variable length of data input,
+# set enforce_shape=False
+@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
@@ -578,11 +606,11 @@ Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
 | Webszolgáltatás állapota | Leírás | Végső állapot?
 | ----- | ----- | ----- |
-| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
-| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
-| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | Nem |
-| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Igen |
-| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |
+| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | No |
+| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | No |
+| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | No |
+| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Yes |
+| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Yes |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>Számítási példány webszolgáltatás (dev/test)
 
@@ -925,13 +953,18 @@ output = service.run(input_payload)
 print(output)
 ```
 
-Megjegyzés: ezek a függőségek az előre elkészített sklearn következtetési tárolóban szerepelnek:
+Megjegyzés: ezeket a függőségeket az előre elkészített scikit-Learn következtetési tároló tartalmazza:
 
 ```yaml
+    - dill
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
     - numpy
+    - joblib
+    - pandas
+    - scipy
+    - sklearn_pandas
 ```
 
 ## <a name="package-models"></a>Csomagok modelljei
@@ -1129,7 +1162,7 @@ import requests
 # Load image data
 data = open('example.jpg', 'rb').read()
 # Post raw data to scoring URI
-res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
 ```
 
 <a id="cors"></a>
@@ -1185,7 +1218,7 @@ def run(request):
 > Azure Machine Learning csak a POST és a GET kérelmeket irányítja a pontozási szolgáltatást futtató tárolók számára. Ez hibákhoz vezethet, mert a böngészők a CORS-kérelmekre vonatkozó beállításokat használnak.
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)

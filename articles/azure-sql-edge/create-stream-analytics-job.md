@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 931511a44e19bfe094791a3ee9b9ca30e03648cb
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669658"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255415"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió) 
 
@@ -33,16 +33,16 @@ A T-SQL streaming a SQL Server külső adatforrásának funkcióját használja 
 
 - [KÜLSŐ STREAM létrehozása (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-Emellett, ha az Azure SQL Edge, SQL Server vagy Azure SQL Database kimeneti adatfolyamként van használatban, szüksége lesz az [adatbázis-hatókörön belüli hitelesítő adatok létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). Ez a T-SQL-parancs határozza meg az SQL-adatbázis eléréséhez szükséges hitelesítő adatokat.
+Emellett, ha az Azure SQL Edge, SQL Server vagy Azure SQL Database kimeneti adatfolyamként van használatban, szüksége lesz az [adatbázis-hatókörön belüli hitelesítő adatok létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). Ez a T-SQL-parancs határozza meg az adatbázis eléréséhez szükséges hitelesítő adatokat.
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>Támogatott bemeneti és kimeneti adatfolyam-adatforrások
 
 Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-bemenetként és-kimenetként.
 
-| Adatforrás típusa | Input (Bemenet) | Kimenet | Description |
+| Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | I | I | Az adatforrást az adatfolyamok Azure IoT Edge központba való olvasására és írására. További információ: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az SQL Database lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
+| SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
 | Azure Blob Storage | N | I | Adatforrás, amely az Azure Storage-fiókban lévő blobba írja az adatforrást. |
 | Kafka | I | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. Ez az adapter jelenleg csak az Azure SQL Edge Intel vagy AMD verzióihoz érhető el. Az Azure SQL Edge ARM64 verziója nem érhető el.|
 
@@ -201,13 +201,13 @@ A folyamatos átviteli feladatokhoz a következő állapotok tartozhatnak:
 |--------| ------------|
 | Létrehozva | A folyamatos átviteli feladatot létrehozták, de még nem indult el. |
 | Indítás | A folyamatos átviteli feladatok a kezdeti fázisban vannak. |
-| Üresjárati | A folyamatos átviteli feladatok futtatása folyamatban van, de nincs feldolgozható bemenet. |
+| Tétlen | A folyamatos átviteli feladatok futtatása folyamatban van, de nincs feldolgozható bemenet. |
 | Feldolgozás | A folyamatos átviteli feladatot futtatja, és feldolgozza a bemeneteket. Ez az állapot a folyamatos átviteli feladatokhoz tartozó kifogástalan állapotot jelzi. |
 | Csökkentett teljesítményű | A folyamatos átviteli feladatok futnak, de a bemeneti feldolgozás során néhány nem végzetes hiba történt. A bemeneti feladatot a rendszer továbbra is futtatja, de a hibákkal kapcsolatos bemenetek eldobása is megtörténik. |
 | Leállítva | A folyamatos átviteli feladatot leállították. |
 | Sikertelen | A folyamatos átviteli feladatot nem sikerült végrehajtani. Ez általában egy végzetes hibát jelez a feldolgozás során. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A folyamatos átviteli feladatokhoz tartozó metaadatok megtekintése az Azure SQL Edge-ben (előzetes verzió)](streaming-catalog-views.md) 
 - [Külső stream létrehozása](create-external-stream-transact-sql.md)

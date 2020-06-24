@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: bc312964b9afe5c025b6e13657ccf2725aff3bd8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0d8f6069193607d19e10c013f3d9cb1cf00a7de6
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552399"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816724"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ A Azure Machine Learning [számítási példány (előzetes verzió)](concept-co
 
 A számítási példányok telepítése és konfigurálása nem szükséges.  Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuális gép típusát. Próbálja ki most ezt az [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
 
-További információ a [számítási példányokról](concept-compute-instance.md).
+További információ a számítási példányokról, beleértve a csomagok telepítésének módját: [számítási példányok](concept-compute-instance.md).
 
 A számítási költségek kiszámításához [állítsa le a számítási példányt](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
@@ -345,7 +345,7 @@ Próbálja ki:
 
 ## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>Munkaterület-konfigurációs fájl létrehozása
 
-A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning munkaterülettel. A fájl neve *config. JSON*, és a formátuma a következő:
+A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning munkaterülettel. A fájl neve *config.json*, és a formátuma a következő:
 
 ```json
 {
@@ -361,9 +361,9 @@ Ha ezt a fájlt a kódból szeretné használni, használja a következőt: `ws=
 
 A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
-* **A [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: paranccsal írjon be egy *config. JSON* fájlt. A fájl a munkaterület konfigurációs adatait tartalmazza. A *config. JSON* fájlt letöltheti vagy másolhatja más fejlesztői környezetbe.
+* **A [ws. Write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py): használatával**config.jsírhat *a* fájlra. A fájl a munkaterület konfigurációs adatait tartalmazza. A *config.jst* letöltheti vagy átmásolhatja más fejlesztői környezetbe.
 
-* **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)a munkaterület **Áttekintés** szakaszában válassza a **config. JSON letöltése** lehetőséget.
+* **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)válassza a **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
 
      ![Azure Portal](./media/how-to-configure-environment/configure.png)
 
@@ -384,9 +384,9 @@ A konfigurációs fájlt háromféleképpen is létrehozhatja:
         print('Workspace not found')
     ```
 
-    Ez a kód a konfigurációs fájlt a *. azureml/config. JSON* fájlba írja.
+    Ez a kód a konfigurációs fájlt a *. azureml/config.js* fájlba írja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Modell Betanítása](tutorial-train-models-with-aml.md) Azure Machine learningre a MNIST adatkészlettel
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -dokumentáció megtekintése

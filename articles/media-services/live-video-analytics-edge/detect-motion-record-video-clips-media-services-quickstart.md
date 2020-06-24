@@ -3,12 +3,12 @@ title: Mozgás észlelése, videó rögzítése Azure Media Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket, hogy felderítse az élő videó streamben való mozgást, és videoklipeket rögzítsen a Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: f0045f7fddfe6c544f10d280450cdafe8dca9e2d
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84262043"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817318"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Gyors útmutató: mozgás észlelése, videó rögzítése Media Services
 
@@ -21,9 +21,9 @@ Ez a cikk a [első lépések](get-started-detect-motion-emit-events-quickstart.m
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Visual Studio Code](https://code.visualstudio.com/) a gépen az [Azure IoT Tools bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Ha korábban nem végezte el a [első lépések](get-started-detect-motion-emit-events-quickstart.md) rövid útmutatót, folytassa a következő lépésekkel:
-    * [Azure-erőforrások beállításának](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources) befejezése
+    * [Az Azure-erőforrások beállítása](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Modulok üzembe helyezése](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
-    * [A Visual Studio Code konfigurálása](get-started-detect-motion-emit-events-quickstart.md#configure-azure-iot-tools-extension-in-visual-studio-code)
+    * [A Visual Studio Code konfigurálása](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
 
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
 
@@ -845,7 +845,7 @@ Ezután használhatja a Azure Portal a rögzített videó lejátszásához.
 > [!NOTE]
 > Mivel a szimulált élő videó elindul a gráf aktiválása után, a napi értékek nem relevánsak, és nem jelennek meg a lejátszó parancsikonján keresztül. A folyamatos videofelvételek és lejátszási útmutató bemutatja, hogyan jelenítheti meg az időbélyegeket.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 36662a0089fef34a539788cfac667b5086a10c78
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194272"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255534"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>A Azure-SSIS Integration Runtime konfigurálása nagy teljesítményhez
 
@@ -150,7 +150,7 @@ A **AzureSSISMaxParallelExecutionsPerNode** tulajdonság helyes értékének be�
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-A **SSISDBPricingTier** egy Azure SQL Database-adatbázis SSIS-katalógus-adatbázisának (SSISDB) díjszabási szintje. Ez a beállítás befolyásolja az IR-példányon dolgozó munkavégzők maximális számát, a csomagok végrehajtásának sebességét, valamint a végrehajtási napló betöltésének sebességét.
+A **SSISDBPricingTier** a SSIS-katalógus adatbázisának (SSISDB) díjszabási szintje Azure SQL Databaseban. Ez a beállítás befolyásolja az IR-példányon dolgozó munkavégzők maximális számát, a csomagok végrehajtásának sebességét, valamint a végrehajtási napló betöltésének sebességét.
 
 -   Ha nem érdekli a csomagok végrehajtásának és a végrehajtási napló betöltésének gyorsasága, akkor kiválaszthatja a legalacsonyabb adatbázis-díjszabási szintet. Az alapszintű díjszabású Azure SQL Database 8 feldolgozót támogat egy Integration Runtime-példányban.
 

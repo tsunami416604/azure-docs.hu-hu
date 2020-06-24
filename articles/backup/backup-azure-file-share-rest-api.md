@@ -4,11 +4,11 @@ description: Ismerje meg, hogyan használhatja a REST API az Azure-fájlmegoszt�
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248098"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710609"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Azure-fájlmegosztás biztonsági mentése a Azure Backup használatával REST API-n keresztül
 
@@ -38,7 +38,7 @@ A tárolónak fel kell derítenie az előfizetés összes olyan Azure Storage-fi
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-A post URI a `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}`és `{fabricName}` paraméterekkel rendelkezik. A példánkban a különböző paraméterek értéke a következő lesz:
+A post URI a,, `{subscriptionId}` `{vaultName}` `{vaultresourceGroupName}` és `{fabricName}` paraméterekkel rendelkezik. A példánkban a különböző paraméterek értéke a következő lesz:
 
 - `{fabricName}`az *Azure*
 
@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
-| Name (Név)       | Típus                       | Leírás                       |
+| Name       | Típus                       | Leírás                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Tulajdonságok | AzurefilesharebackupReques | BackupRequestResource tulajdonságai |
 

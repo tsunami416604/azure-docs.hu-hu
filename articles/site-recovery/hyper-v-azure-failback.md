@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
 ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281781"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710252"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Feladat-visszavétel futtatása Hyper-V rendszerű virtuális gépekhez
 
@@ -36,7 +36,7 @@ Ez a cikk a Hyper-V virtuális gépek helyszíni helyről az Azure-ba történő
 
 Ha az Azure-ban lévő Hyper-V virtuális gépeket az eredeti helyszíni virtuális gépre szeretné felvenni, futtassa az Azure-ból a helyszíni helyre tervezett feladatátvételt az alábbiak szerint:
 
-1. A tárolóban > **replikált elemek**területen válassza ki a virtuális gépet. Kattintson a jobb gombbal a **tervezett feladatátvételt**> virtuális gépre. Ha nem végez helyreállítási tervet, válassza ki a csomag nevét, és kattintson a **feladatátvétel** > **tervezett feladatátvétel**elemre.
+1. A tárolóban > **replikált elemek**területen válassza ki a virtuális gépet. Kattintson a jobb gombbal a **tervezett feladatátvételt**> virtuális gépre. Ha nem végez helyreállítási tervet, válassza ki a csomag nevét, és kattintson a **feladatátvétel**  >  **tervezett feladatátvétel**elemre.
 2. A **tervezett feladatátvétel megerősítése lapon**válassza ki a forrás-és célhelyeket. Jegyezze fel a feladatátvétel irányát. Ha az elsődleges feladatátvétel az elvárt módon működik, és az összes virtuális gép a másodlagos helyen található, akkor ez csak tájékoztató.
 3. Az **adatszinkronizálás**területen válasszon egy beállítást:
     - **Adatszinkronizálás a feladatátvétel előtt (csak a különbözeti változások szinkronizálása)**– ezzel a beállítással csökkenthető a virtuális gépek leállása anélkül, hogy le kellene állítani őket.
@@ -64,7 +64,7 @@ A következő lépésekkel térhet vissza egy másik helyre:
 
 1. Ha új hardvert állít be, telepítse a [Windows támogatott verzióját](hyper-v-azure-support-matrix.md#replicated-vms)és a Hyper-V szerepkört a gépen.
 2. Hozzon létre egy azonos nevű virtuális hálózati kapcsolót az eredeti kiszolgálón.
-3. A **védett elemek** > **védelmi csoport** > \<ProtectionGroupName>-> \<VirtualMachineName> válassza ki azt a virtuális gépet, amelyet vissza szeretne állítani, majd válassza a **tervezett feladatátvétel**lehetőséget.
+3. A **védett elemek**  >  **védelme csoportban**  >  \<ProtectionGroupName>  ->  \<VirtualMachineName> válassza ki azt a virtuális gépet, amelyet vissza szeretne állítani, majd válassza a **tervezett feladatátvétel**lehetőséget.
 4. A **tervezett feladatátvétel megerősítése lapon**válassza **a helyszíni virtuális gép létrehozása, ha nem létezik**.
 5. Az **állomásnév**mezőben válassza ki azt az új Hyper-V-gazdagépet, amelyen el szeretné helyezni a virtuális gépet.
 6. Az **adatszinkronizálás**során javasoljuk, hogy a feladatátvétel előtt szinkronizálja az adatokat. Ez lecsökkenti a virtuális gépek leállását, mivel az szinkronizálás nélkül leáll. A következő műveleteket végzi el:
@@ -72,7 +72,7 @@ A következő lépésekkel térhet vissza egy másik helyre:
     - **2. fázis**: leállítja az Azure-beli virtuális gépet, hogy ne történjen új változás. A változtatások végső készlete a helyszíni kiszolgálóra kerül, és a helyszíni virtuális gép elindult.
     
 7. Kattintson a pipa jelre a feladatátvétel (feladat-visszavétel) elindításához.
-8. Miután a kezdeti szinkronizálás befejeződik, és készen áll az Azure-beli virtuális gép leállítására, kattintson a **feladatok** > \<tervezett feladatátvételi feladat> > a **feladatátvétel befejezése**lehetőségre. Ezzel leállítja az Azure-gépet, átviszi a legújabb módosításokat a helyszíni virtuális gépre, és elindítja azt.
+8. Miután a kezdeti szinkronizálás befejeződik, és készen áll az Azure-beli virtuális gép leállítására, kattintson a **feladatok**  >  \<planned failover job>  >  **teljes feladatátvétel**lehetőségre. Ezzel leállítja az Azure-gépet, átviszi a legújabb módosításokat a helyszíni virtuális gépre, és elindítja azt.
 9. Bejelentkezhet a helyszíni virtuális gépre annak ellenőrzéséhez, hogy minden a várt módon működik-e.
 10. A feladatátvétel befejezéséhez kattintson a **véglegesítés** gombra. A commit művelettel törli az Azure-beli virtuális gépet és annak lemezeit, és előkészíti a helyszíni virtuális gépet, hogy ismét védelmet biztosítson.
 10. A helyi virtuális gép Azure-ba történő replikálásának megkezdéséhez kattintson a **visszirányú replikálás** elemre. A rendszer a virtuális gép Azure-ban való kikapcsolását követően csak a különbözeti változásokat replikálja.

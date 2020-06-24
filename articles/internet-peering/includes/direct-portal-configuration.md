@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -33,7 +33,7 @@ ms.locfileid: "81681063"
         > [!div class="mx-imgBorder"]
         > ![Szerkesztés gomb](../media/setup-direct-conf-tab-edit.png)
     
-    * Egy sor törléséhez válassza a **...** lehetőséget.  >  **Törlés**.
+    * Egy sor törléséhez válassza a **...**  >  lehetőséget. **Törlés**.
 
         > [!div class="mx-imgBorder"]
         > ![Törlés gomb](../media/setup-direct-conf-tab-delete.png)

@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -31,7 +31,7 @@ Ez a szakasz azt ismerteti, hogyan hajthatja végre a következő módosítási 
 A Azure Portal jelenleg nem támogatja a kapcsolatok eltávolítását. További információért forduljon a [Microsoft-partnerekhez](mailto:peeringexperience@microsoft.com).
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>A sávszélesség frissítése vagy visszalépése aktív kapcsolatokon
-1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **... lehetőséget.**  > A **Kapcsolatok szerkesztése**.
+1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **...**  >  lehetőséget. A **Kapcsolatok szerkesztése**.
     > [!div class="mx-imgBorder"]
     > ![Kapcsolatok szerkesztése](../media/setup-direct-modify-editconnection.png)
 
@@ -40,7 +40,7 @@ A Azure Portal jelenleg nem támogatja a kapcsolatok eltávolítását. További
     > ![Sávszélesség módosítása](../media/setup-direct-modify-editconnectionsettings.png)
 
 ### <a name="add-ipv4-or-ipv6-session-information-on-active-connections"></a>IPv4-vagy IPv6-munkamenet adatainak hozzáadása az aktív kapcsolatokhoz
-1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **... lehetőséget.**  > A **Kapcsolatok szerkesztése** az 1. lépésben látható módon.
+1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **...**  >  lehetőséget. A **Kapcsolatok szerkesztése** az 1. lépésben látható módon.
 1. Adja meg a **munkamenet IPv4-előtagját** vagy a **munkamenet IPv6-előtagjának** adatait, majd kattintson a **Mentés**gombra.
 
 ### <a name="remove-ipv4-or-ipv6-session-information-on-active-connections"></a>IPv4-vagy IPv6-munkamenet adatainak eltávolítása az aktív kapcsolatokon

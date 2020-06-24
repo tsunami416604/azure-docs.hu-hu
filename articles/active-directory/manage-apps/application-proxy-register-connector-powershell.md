@@ -3,25 +3,25 @@ title: Csendes telepítés Azure AD alkalmazás proxy-összekötővel | Microsof
 description: Az Azure AD Application Proxy-összekötő felügyelet nélküli telepítését ismerteti a helyszíni alkalmazások biztonságos távoli elérésének biztosításához.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/24/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae3cd491db03fd036869a8d86aeb646e3175b59
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0b959649074e68d50a266f05841ce4c87e2b3e20
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609969"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760014"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Felügyelet nélküli telepítési parancsfájl létrehozása az Azure AD Application Proxy-összekötőhöz
 
@@ -53,13 +53,13 @@ Az összekötő regisztrálására két módszer használható:
 * Az összekötő regisztrálása offline kapcsolattal létrehozott jogkivonat használatával
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Az összekötő regisztrálása Windows PowerShell hitelesítőadat-objektum használatával
-1. Hozzon létre egy Windows PowerShell hitelesítő adatokat tartalmazó objektumot `$cred` , amely tartalmazza a címtárhoz tartozó rendszergazdai felhasználónevet és jelszót. Futtassa a következő parancsot, és * \<cserélje\> le a felhasználónevet* és a * \<jelszót\>*:
+1. Hozzon létre egy Windows PowerShell hitelesítő adatokat `$cred` tartalmazó objektumot, amely tartalmazza a címtárhoz tartozó rendszergazdai felhasználónevet és jelszót. Futtassa a következő parancsot, és cserélje le *\<username\>* *\<password\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Nyissa meg a **C:\Program FILES\MICROSOFT HRE app proxy-összekötőt** , és futtassa `$cred` a következő szkriptet a létrehozott objektum használatával:
+2. Nyissa meg a **C:\Program FILES\MICROSOFT HRE app proxy-összekötőt** , és futtassa a következő szkriptet a `$cred` létrehozott objektum használatával:
 
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
@@ -175,7 +175,7 @@ Az összekötő regisztrálására két módszer használható:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Futtassa a következő Windows PowerShell-parancsot, \<és cserélje\> le a bérlő GUID azonosítóját a címtár-azonosítójával:
+3. Futtassa a következő Windows PowerShell-parancsot, \<tenant GUID\> és cserélje le a KÖNYVTÁRAT azonosítóra:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
