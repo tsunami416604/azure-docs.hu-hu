@@ -3,7 +3,7 @@ title: Tranzakciós replikáció
 titleSuffix: Azure SQL Managed Instance
 description: Tudnivalók a SQL Server tranzakciós replikációjának használatáról az Azure SQL felügyelt példányaival.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: e23b772c6f57a2649d626e879d404e76ab2ab380
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 2163a6e47767f6ce990526c7ececb7b4b554bf4e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219347"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708498"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Tranzakciós replikáció az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,9 +43,9 @@ A tranzakciós replikáció legfontosabb összetevői a **közzétevő**, a **te
 
 | Szerepkör | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| **Publisher** | Nem | Igen |
-| **Terjesztő** | Nem | Igen|
-| **Lekéréses előfizető** | Nem | Igen|
+| **Publisher** | No | Yes |
+| **Terjesztő** | No | Yes|
+| **Lekéréses előfizető** | No | Yes|
 | **Leküldéses előfizető**| Igen | Igen|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -72,11 +72,11 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 
 | Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen |
-| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
+| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes |
+| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|
 | [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
 | [**Társ-társ**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
-| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
+| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
 | [**Frissíthető előfizetések**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
 | &nbsp; | &nbsp; | &nbsp; |
 

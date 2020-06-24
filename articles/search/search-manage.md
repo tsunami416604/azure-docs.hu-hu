@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f91df2e4b76e2a85705100fa5626877b9a86312d
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282925"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752578"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Szolgáltatás-felügyelet az Azure Cognitive Search a Azure Portal
 > [!div class="op_single_selector"]
@@ -98,9 +98,9 @@ A több replikát tartalmazó keresési szolgáltatás a lekérdezési kérelmek
 Bár a lekérdezési átviteli sebesség a replikák hozzáadásakor leáll, a replikák szolgáltatáshoz való hozzáadásakor nem lehet pontosan dupla vagy tripla. Az összes keresési alkalmazásra olyan külső tényezők vonatkoznak, amelyek hatással lehetnek a lekérdezési teljesítményre. Az összetett lekérdezések és a hálózati késés két tényező, amelyek hozzájárulnak a lekérdezési válaszidő változásaihoz.
 
 ### <a name="add-partitions"></a>Partíciók hozzáadása
-A legtöbb szolgáltatásalkalmazás több replikát igényel a partíciók helyett. Azokban az esetekben, amikor a megnövelt dokumentumok száma kötelező, partíciókat adhat hozzá, ha regisztrált a standard szolgáltatásra. Az alapszintű csomag nem biztosít további partíciókat.
+Sokkal gyakoribb a replikák hozzáadása, de ha korlátozott a tárterület, hozzáadhat partíciókat, amelyekkel nagyobb kapacitást érhet el. A szolgáltatás kiépített szintje határozza meg, hogy a partíciók hozzáadhatók-e. Az alapszintű csomag egyetlen partíción van zárolva. A standard szintű csomagok és a fenti csomagok további partíciókat is támogatnak.
 
-A standard szinten a partíciók a 12 (pontosabb, 1, 2, 3, 4, 6 vagy 12) többszörösében lesznek hozzáadva. Ez egy horizontális skálázási összetevő. Az indexek 12 szegmensben jönnek létre, amelyek mindegyike 1 partíción tárolható, vagy egyenlően 2, 3, 4, 6 vagy 12 partícióra osztható (egy-egy szegmens/partíció).
+A partíciók a 12 (pontosabb, 1, 2, 3, 4, 6 vagy 12) többszörösében lesznek hozzáadva. Ez egy horizontális skálázási összetevő. Az indexek 12 szegmensben jönnek létre, amelyek mindegyike 1 partíción tárolható, vagy egyenlően 2, 3, 4, 6 vagy 12 partícióra osztható (egy-egy szegmens/partíció).
 
 ### <a name="remove-replicas"></a>Replikák eltávolítása
 A nagy mennyiségű lekérdezési kötetek után a csúszka segítségével csökkentheti a replikákat a keresési lekérdezés terhelésének normalizálása után (például az üdülési értékesítések felett). Az Ön részéről nincs szükség további lépésekre. A replikák számának csökkentése lemond az adatközpontban található virtuális gépekről. A lekérdezési és az adatfeldolgozási műveletek mostantól kevesebb virtuális gépen futnak, mint korábban. A minimális követelmény egy replika.

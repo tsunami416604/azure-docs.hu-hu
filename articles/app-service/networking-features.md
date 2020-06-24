@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87a8291387d50fae7027d007eedf49fa55b39b74
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474904"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052774"
 ---
 # <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
@@ -85,7 +85,7 @@ Megtudhatja, hogyan állíthatja be az alkalmazáshoz tartozó címeket a [TLS/S
 
 ### <a name="access-restrictions"></a>Hozzáférési korlátozások 
 
-A hozzáférési korlátozások funkció lehetővé teszi a **bejövő** kérések szűrését a forrás IP-címe alapján. A szűrési művelet azon előtér-szerepkörökön történik, amelyek az alkalmazások futtatását végző feldolgozói szerepkörökből származnak. Mivel az előtér-szerepkörök a feldolgozóktól származnak, a hozzáférési korlátozások funkció az alkalmazások hálózati szintű védelmének tekinthető. A funkció lehetővé teszi a prioritási sorrendben kiértékelt engedélyezési és megtagadási címek listájának összeállítását. Ehhez hasonló az Azure Networking hálózati biztonsági csoport (NSG) szolgáltatásához.  Ezt a funkciót a több-bérlős szolgáltatásban is használhatja. A ILB-beadási szolgáltatással való használat esetén korlátozhatja a hozzáférést a privát címekről.
+A hozzáférési korlátozások funkció lehetővé teszi a **bejövő** kérések szűrését a kezdeményező IP-cím alapján. A szűrési művelet azon előtér-szerepkörökön történik, amelyek az alkalmazások futtatását végző feldolgozói szerepkörökből származnak. Mivel az előtér-szerepkörök a feldolgozóktól származnak, a hozzáférési korlátozások funkció az alkalmazások hálózati szintű védelmének tekinthető. A funkció lehetővé teszi a prioritási sorrendben kiértékelt engedélyezési és megtagadási címek listájának összeállítását. Ehhez hasonló az Azure Networking hálózati biztonsági csoport (NSG) szolgáltatásához.  Ezt a funkciót a több-bérlős szolgáltatásban is használhatja. A ILB-beadási szolgáltatással való használat esetén korlátozhatja a hozzáférést a privát címekről.
 
 ![Hozzáférési korlátozások](media/networking-features/access-restrictions.png)
 

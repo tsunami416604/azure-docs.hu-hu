@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 8c9257c50320497a11a6cd1dbfdd1c709e2d9800
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658431"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207889"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -169,7 +169,7 @@ Az örökölt portáloknak a `Microsoft.ApiManagement/service/getssotoken/action
 
 A következő PowerShell-parancsfájl használatával létrehozhat egy szerepkört a szükséges engedélyekkel. Ne felejtse el módosítani a `<subscription-id>` paramétert. 
 
-```PowerShell
+```powershell
 #New Portals Admin Role 
 Import-Module Az 
 Connect-AzAccount 
@@ -187,7 +187,7 @@ New-AzRoleDefinition -Role $customRole
  
 A szerepkör létrehozása után bármely felhasználó számára megadható a Azure Portal **Access Control (iam)** szakasza. Ha ezt a szerepkört hozzárendeli a felhasználóhoz, az engedélyt a szolgáltatás hatókörében kell kiosztania. A felhasználó a szolgáltatás *bármely* felhasználója nevében képes sas-jogkivonatokat előállítani. Legalább ezt a szerepkört a szolgáltatás rendszergazdájához kell rendelni. A következő PowerShell-parancs bemutatja, hogyan rendelhető hozzá a szerepkör a `user1` legalacsonyabb hatókörű felhasználóhoz, hogy ne kelljen felesleges engedélyeket biztosítani a felhasználónak: 
 
-```PowerShell
+```powershell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
 ```
 
@@ -213,7 +213,7 @@ A hívási hibát a TLS/SSL-tanúsítvány is okozhatja, amely egy egyéni tarto
 
  <small><sup>1</sup> támogatott a két legújabb üzemi verzióban.</small>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az új fejlesztői portálról:
 

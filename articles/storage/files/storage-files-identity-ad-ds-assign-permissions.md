@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: eda083265d94888a4ccfd466f084982614770c41
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 09fc8e506cd2f0e9ee95eed64d3f61b58f3602de
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268498"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207906"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Második rész: megosztási szintű engedélyek kiosztása identitáshoz
 
@@ -77,5 +77,7 @@ az role assignment create --role "<role-name>" --assignee <user-principal-name> 
 ```
 
 ## <a name="next-steps"></a>További lépések
+
+Most, hogy megosztott szintű engedélyeket rendelt hozzá, konfigurálnia kell a címtár-és a fájl szintű engedélyeket. Folytassa a következő cikkel.
 
 [Harmadik rész: a könyvtár-és a fájl szintű engedélyek konfigurálása SMB protokollon keresztül](storage-files-identity-ad-ds-configure-permissions.md)

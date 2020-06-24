@@ -1,5 +1,5 @@
 ---
-title: Kivetítések a Knowledge Store-ban (előzetes verzió)
+title: Vetületi fogalmak (előzetes verzió)
 titleSuffix: Azure Cognitive Search
 description: A teljes szöveges kereséstől eltérő helyzetekben mentse és alakítsa ki a dúsított adatait a mesterséges intelligencia-bővítési folyamatból. A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 894fc6efc99eb7fcc17f2199270c08bc3cee8e8e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942974"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750326"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Kivetítések az Azure-beli Tudásbázisban Cognitive Search
+# <a name="knowledge-store-projections-in-azure-cognitive-search"></a>"Kivetítések" ismerete az Azure Cognitive Search
 
 > [!IMPORTANT] 
 > A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
@@ -69,7 +69,7 @@ Az indexben egyetlen dokumentumot is létrehozhat több táblázatba, és megőr
 
 ### <a name="defining-a-table-projection"></a>Tábla kivetítésének meghatározása
 
-A készségkészlet `knowledgeStore` elemében a táblázat kivetítésének meghatározásakor először egy csomópontot kell hozzárendelni a dúsítási fában a tábla forrásához. Ez a csomópont általában egy olyan **formáló** képesség kimenete, amelyet a szaktudás listájához adott hozzá, hogy egy adott alakzatot hozzon létre a táblázatokban való projekthez. A projekthez kiválasztott csomópont több táblázatba is feldarabolható a projektbe. A táblák definíciója a projekthez használni kívánt táblák listáját tartalmazza.
+A készségkészlet elemében a táblázat kivetítésének meghatározásakor `knowledgeStore` először egy csomópontot kell hozzárendelni a dúsítási fában a tábla forrásához. Ez a csomópont általában egy olyan **formáló** képesség kimenete, amelyet a szaktudás listájához adott hozzá, hogy egy adott alakzatot hozzon létre a táblázatokban való projekthez. A projekthez kiválasztott csomópont több táblázatba is feldarabolható a projektbe. A táblák definíciója a projekthez használni kívánt táblák listáját tartalmazza.
 
 Minden táblázathoz három tulajdonság szükséges:
 
@@ -157,7 +157,7 @@ Az objektumok leképezésének létrehozásához néhány objektum-specifikus at
 
 ## <a name="file-projection"></a>Fájl kivetítése
 
-A fájl-kivetítések hasonlóak az objektum-kivetítésekhez `normalized_images` , és csak a gyűjteményen működnek. Az objektumok kivetítéséhez hasonlóan a fájl-kivetítések a blob tárolóban lesznek mentve a dokumentum-azonosító Base64 kódolású értékének mappa előtaggal. A fájl-kivetítések nem oszthatják meg ugyanazt a tárolót, mint az objektum-kivetítéseket, és egy másik tárolóba kell őket betervezni.
+A fájl-kivetítések hasonlóak az objektum-kivetítésekhez, és csak a `normalized_images` gyűjteményen működnek. Az objektumok kivetítéséhez hasonlóan a fájl-kivetítések a blob tárolóban lesznek mentve a dokumentum-azonosító Base64 kódolású értékének mappa előtaggal. A fájl-kivetítések nem oszthatják meg ugyanazt a tárolót, mint az objektum-kivetítéseket, és egy másik tárolóba kell őket betervezni.
 
 ```json
 {

@@ -6,17 +6,17 @@ services: virtual-network
 documentationcenter: na
 author: KumudD
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: cac67e85383f36aee0a1535d69fa075f92bd6dbf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267715"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708280"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása, módosítása vagy törlése
 
@@ -174,7 +174,7 @@ Az egyes Azure-helyekhez és-előfizetésekhez legfeljebb egy hálózati biztons
     | **Célporttartományok** | Az egyik:<ul><li>Egyetlen port, például`80`</li><li>Számos port, például`1024-65535`</li><li>Az egyes portok és/vagy porttartomány-tartományok vesszővel tagolt listája, például:`80, 1024-65535`</li><li>Egy csillag ( `*` ), amely bármely porton engedélyezi a forgalmat</li></ul> | A **forrásport-tartományokhoz**hasonlóan egyetlen vagy több portot és tartományt is megadhat. A megadható szám korlátozott. További részletek: Azure- [korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
     | **Protokoll** | **Bármely**, **TCP**, **UDP**vagy **ICMP** | A szabályt a Transmission Control Protocol (TCP), a User Datagram Protocol (UDP) vagy a Internet Control Message Protocol (ICMP) számára korlátozhatja. Az alapértelmezett érték az, hogy a szabály az összes protokollra vonatkozzon. |
     | **Művelet** | **Engedélyezés** vagy **Megtagadás** | Ez a beállítás határozza meg, hogy ez a szabály engedélyezi vagy megtagadja a hozzáférést a megadott forrás-és célhely-konfigurációhoz. |
-    | **Prioritású** | 100 és 4096 közötti érték, amely a hálózati biztonsági csoporton belüli összes biztonsági szabály esetében egyedi. | Az Azure prioritási sorrendben dolgozza fel a biztonsági szabályokat. Minél kisebb a szám, annál magasabb a prioritás. Azt javasoljuk, hogy a prioritási számok között hagyjon különbséget a szabályok létrehozásakor, például 100, 200 és 300. A hézagok kihagyása megkönnyíti a szabályok hozzáadását a jövőben, így a meglévő szabályoknál magasabb vagy alacsonyabb prioritást biztosíthat. |
+    | **Prioritás** | 100 és 4096 közötti érték, amely a hálózati biztonsági csoporton belüli összes biztonsági szabály esetében egyedi. | Az Azure prioritási sorrendben dolgozza fel a biztonsági szabályokat. Minél kisebb a szám, annál magasabb a prioritás. Azt javasoljuk, hogy a prioritási számok között hagyjon különbséget a szabályok létrehozásakor, például 100, 200 és 300. A hézagok kihagyása megkönnyíti a szabályok hozzáadását a jövőben, így a meglévő szabályoknál magasabb vagy alacsonyabb prioritást biztosíthat. |
     | **Name (Név)** | A szabály egyedi neve a hálózati biztonsági csoporton belül | A név legfeljebb 80 karakter hosszú lehet. Betűvel vagy számmal kell kezdődnie, és betűvel, számmal vagy aláhúzással kell végződnie. A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. |
     | **Leírás** | Egy szöveg leírása | Opcionálisan megadhatja a biztonsági szabály szövegének leírását is. |
 

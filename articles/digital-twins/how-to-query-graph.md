@@ -1,5 +1,5 @@
 ---
-title: A Twin gráf lekérdezése
+title: Az ikergráf lekérdezése
 titleSuffix: Azure Digital Twins
 description: 'További információ: az Azure Digital Twins Twin Graph lekérdezése.'
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 93043874db6076b26d0fefe447db7acd83547442
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 8788dcc1ec09580aa0da7c68665433dfe4a1d563
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612879"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725584"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ez a cikk részletesen bemutatja, hogyan használhatja az [Azure Digital Twins Query Store nyelvet](concepts-query-language.md) , hogy lekérdezze a [Twin Graphot](concepts-twins-graph.md) az információkhoz. A Graph-lekérdezéseket az Azure Digital Twins [**lekérdezési API**](how-to-use-apis-sdks.md)-k használatával futtathatja.
 
@@ -165,6 +168,6 @@ Az alábbiakban néhány tippet talál az Azure digitális Twins lekérdezéséh
 * A tulajdonságok nevei és értékei megkülönböztetik a kis-és nagybetűket, ezért ügyeljen a modellekben definiált pontos nevek használatára. Ha a tulajdonságok neve hibásan van megadva vagy helytelenül van megadva, az eredményhalmaz üres, és nem ad vissza hibát.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet az [Azure Digital Twins API-król és SDK](how-to-use-apis-sdks.md)-król, beleértve a LEKÉRDEZÉSi API-t, amely a jelen cikkben található lekérdezések futtatására szolgál.

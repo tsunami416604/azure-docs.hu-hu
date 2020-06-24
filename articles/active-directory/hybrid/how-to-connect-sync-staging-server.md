@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261020"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690625"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: átmeneti kiszolgáló és vész-helyreállítás
 Ha egy kiszolgáló átmeneti módban van, módosíthatja a konfigurációt, és előkészítheti a módosításokat a kiszolgáló aktív állapotba helyezése előtt. Azt is lehetővé teszi, hogy teljes importálást és teljes szinkronizálást futtasson annak ellenőrzéséhez, hogy az összes módosítás várható-e, mielőtt a módosításokat elvégezte az éles környezetben.
@@ -50,7 +50,7 @@ A régebbi szinkronizálási technológiák ismeretével az átmeneti üzemmód 
 A metódus alkalmazásához kövesse az alábbi lépéseket:
 
 1. [Előkészítés](#prepare)
-2. [Configuration](#configuration)
+2. [Konfigurálás](#configuration)
 3. [Importálás és szinkronizálás](#import-and-synchronize)
 4. [Ellenőrzés](#verify)
 5. [Aktív kiszolgáló váltása](#switch-active-server)
@@ -60,7 +60,7 @@ A metódus alkalmazásához kövesse az alábbi lépéseket:
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. Jelentkezzen ki/jelentkezzen be, és a Start menüben válassza a **szinkronizálási szolgáltatás**elemet.
 
-#### <a name="configuration"></a>Configuration
+#### <a name="configuration"></a>Konfiguráció
 Ha egyéni módosításokat hajtott végre az elsődleges kiszolgálón, és össze szeretné hasonlítani a konfigurációt az átmeneti kiszolgálóval, akkor a [Azure ad Connect Configuration documenter](https://github.com/Microsoft/AADConnectConfigDocumenter)használatával kell összehasonlítania.
 
 #### <a name="import-and-synchronize"></a>Importálás és szinkronizálás
@@ -73,19 +73,19 @@ Ezzel elvégezte az Azure AD és a helyszíni Active Directory módosításainak
 
 #### <a name="verify"></a>Ellenőrzés
 1. Indítsa el a parancssort, és nyissa meg a következő parancsot`%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Run: `csexport "Name of Connector" %temp%\export.xml /f:x` az összekötő neve megtalálható a szinkronizációs szolgáltatásban. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
-3. Futtatás: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` van egy fájl a (z)% Temp% nevű export. csv fájlban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
+2. Run: az `csexport "Name of Connector" %temp%\export.xml /f:x` összekötő neve megtalálható a szinkronizációs szolgáltatásban. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
+3. Futtatás: a `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` (z)% Temp% nevű fájlban található export.csv, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
 4. Végezze el a szükséges módosításokat az adatokat vagy a konfigurációban, majd futtassa újra ezeket a lépéseket (Importálás és szinkronizálás és ellenőrzés), amíg az exportálandó módosítások várhatóak lesznek.
 
-**Az export. csv fájl ismertetése** A fájl nagy része magától értetődő. Néhány rövidítés a tartalom megértéséhez:
+**A export.csv fájl ismertetése** A fájl nagy része magától értetődő. Néhány rövidítés a tartalom megértéséhez:
 * OMODT – objektum módosításának típusa. Azt jelzi, hogy egy objektum szintjén a művelet egy Hozzáadás, frissítés vagy törlés.
 * AMODT – attribútum módosításának típusa. Azt jelzi, hogy egy attribútum szintjén a művelet egy Hozzáadás, frissítés vagy törlés.
 
-**Közös azonosítók beolvasása** Az export. csv fájl tartalmazza az exportálandó összes módosítást. Minden sor az összekötő terület egy objektumának változásának felel meg, és az objektumot a DN attribútum azonosítja. A DN attribútum egyedi azonosító, amely az összekötő terület egy objektumához van rendelve. Ha az export. csv fájlban sok sort vagy változást elemez, akkor nehéz lehet megállapítani, hogy mely objektumok esetében a módosítások csak a DN attribútumon alapulnak. A módosítások elemzésének egyszerűbbé tételéhez használja a csanalyzer. ps1 PowerShell-szkriptet. A parancsfájl az objektumok közös azonosítóit (például displayName, userPrincipalName) kérdezi le. A szkript használata:
-1. Másolja a PowerShell-szkriptet a szakasz [CSAnalyzer](#appendix-csanalyzer) egy nevű `csanalyzer.ps1`fájlba.
+**Közös azonosítók beolvasása** A export.csv fájl tartalmazza az exportálandó összes módosítást. Minden sor az összekötő terület egy objektumának változásának felel meg, és az objektumot a DN attribútum azonosítja. A DN attribútum egyedi azonosító, amely az összekötő terület egy objektumához van rendelve. Ha a export.csv sok sorát vagy változását elemezni kívánja, nehéz lehet megállapítani, hogy mely objektumok esetében a módosítások csak a DN attribútumon alapulnak. A módosítások elemzésének folyamata egyszerűbbé válik a csanalyzer.ps1 PowerShell-parancsfájl használatával. A parancsfájl az objektumok közös azonosítóit (például displayName, userPrincipalName) kérdezi le. A szkript használata:
+1. Másolja a PowerShell-szkriptet a szakasz [CSAnalyzer](#appendix-csanalyzer) egy nevű fájlba `csanalyzer.ps1` .
 2. Nyisson meg egy PowerShell-ablakot, és keresse meg azt a mappát, ahová a PowerShell-parancsfájlt létrehozta.
 3. Adja ki a következő parancsot: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
-4. Most már rendelkezik egy **processedusers1. csv** nevű fájllal, amely megvizsgálható a Microsoft Excelben. Vegye figyelembe, hogy a fájl leképezést biztosít a DN attribútumból a közös azonosítók (például a displayName és a userPrincipalName) számára. Jelenleg nem tartalmazza a ténylegesen exportálandó attribútumok változásait.
+4. Most már rendelkezik egy **processedusers1.csv** nevű fájllal, amely megvizsgálható a Microsoft Excelben. Vegye figyelembe, hogy a fájl leképezést biztosít a DN attribútumból a közös azonosítók (például a displayName és a userPrincipalName) számára. Jelenleg nem tartalmazza a ténylegesen exportálandó attribútumok változásait.
 
 #### <a name="switch-active-server"></a>Aktív kiszolgáló váltása
 1. A jelenleg aktív kiszolgálón kapcsolja ki a kiszolgálót (az rSync/FIM/Azure AD-szinkronizáló), hogy ne exportálja az Azure AD-ba, vagy állítsa be átmeneti módban (Azure AD Connect).

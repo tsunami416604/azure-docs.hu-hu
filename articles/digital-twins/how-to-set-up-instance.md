@@ -1,5 +1,5 @@
 ---
-title: Azure digitális Twins-példány létrehozása
+title: Azure Digital Twins-példány létrehozása
 titleSuffix: Azure Digital Twins
 description: 'Lásd: az Azure Digital Twins szolgáltatás példányának beállítása.'
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f097861f97e7ec62019fa631e2ac608d2e0c5024
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: bbd7c74fc87b3f7af799637e2288dcd074266843
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612872"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725596"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Azure digitális Twins-példány beállítása
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ez a cikk végigvezeti az új Azure Digital Twins-példány beállításának alapvető lépésein. Ez magában foglalja a példány létrehozását, valamint [Azure Active Directory (HRE)](../active-directory/fundamentals/active-directory-whatis.md) engedélyeknek a példányhoz való hozzárendelését.
 
@@ -72,7 +75,7 @@ Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel ka
 
 Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a használatra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan állíthatja be és hitelesítheti az ügyfélalkalmazás működését a példánnyal való együttműködéshez:
 * [Útmutató: ügyfélalkalmazás hitelesítése](how-to-authenticate-client.md)

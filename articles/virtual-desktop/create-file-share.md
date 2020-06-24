@@ -4,16 +4,16 @@ description: Hozzon létre egy FSLogix-profilt tárolót egy Azure-fájlmegoszt�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4723c2a8fa66e4ed2c4b40975179d7d4d2b281d6
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7fca57bd517296711ada2f714d523bfa0709337c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484662"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208382"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Profil tároló létrehozása Azure Files és AD DS
 
@@ -43,7 +43,7 @@ Storage-fiók beállítása:
     - Adja meg a tárfiók egyedi nevét.
     - A **helyhez**azt javasoljuk, hogy ugyanazt a helyet adja meg, mint a Windows rendszerű virtuális asztali alkalmazáskészlet.
     - A **Teljesítmény** mezőben válassza a **Standard** lehetőséget. (A IOPS követelményeitől függően. További információ: [Storage Options for FSLogix Profile containers in Windows Virtual Desktop](store-fslogix-profile.md).)
-    - A **fióktípus**mezőben válassza a **StorageV2** vagy a **FileStorage**lehetőséget.
+    - A **fióktípus**területen válassza a **StorageV2** vagy a **FileStorage** lehetőséget (csak akkor érhető el, ha a teljesítményszint prémium szintű).
     - A **replikáláshoz**válassza a **helyileg REDUNDÁNS tárolás (LRS)** lehetőséget.
 
 5. Ha elkészült, válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás**lehetőséget.
@@ -78,7 +78,7 @@ Ezután engedélyeznie kell Active Directory (AD-) hitelesítést. Ennek a szab�
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Azure RBAC engedélyek kiosztása a Windows rendszerű virtuális asztali felhasználók számára
 
-A Storage-fiókban tárolt FSLogix-profilokkal rendelkező összes felhasználónak hozzá kell rendelnie a Storage file-adat SMB-megosztás közreműködői szerepkört. 
+A Storage-fiókban tárolt FSLogix-profilokkal rendelkező összes felhasználónak hozzá kell rendelnie a Storage file-adat SMB-megosztás közreműködői szerepkört.
 
 A Windows rendszerű virtuális asztali munkamenet-gazdagépekre bejelentkező felhasználóknak hozzáférési engedélyekkel kell rendelkezniük a fájlmegosztás eléréséhez. Az Azure-fájlmegosztás hozzáférésének biztosítása magában foglalja a megosztási szinten, valamint az NTFS-szinten a hagyományos Windows-megosztáshoz hasonlóan az engedélyek konfigurálását.
 
@@ -98,7 +98,7 @@ Szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek kiosztása:
 4. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
 
 5. A **szerepkör-hozzárendelés hozzáadása** lapon válassza a **tárolási fájl adat SMB-megosztás emelt szintű közreműködő** elemet a rendszergazdai fiókhoz.
-   
+
      A FSLogix-profilokhoz tartozó felhasználói engedélyek hozzárendeléséhez kövesse az alábbi utasításokat. Ha azonban az 5. lépésre lép, válassza ki a **Storage file-adatsmb-megosztás közreműködője** helyet.
 
 6. Kattintson a **Mentés** gombra.
@@ -126,7 +126,7 @@ A következőképpen kérheti le az UNC elérési utat:
 
 5. Az URI másolása után végezze el a következő műveleteket az UNC-re való váltáshoz:
 
-    - `https://` eltávolítása
+    - Eltávolítás `https://` és csere a`\\`
     - Cserélje le a Forward perjelet a `/` vissza perjelre `\` .
     - Adja hozzá az [Azure-fájlmegosztás létrehozása](#create-an-azure-file-share) az UNC végéhez létrehozott fájlmegosztás nevét.
 
@@ -157,7 +157,7 @@ Az NTFS-engedélyek konfigurálása:
      ```
 
 3. A következő parancsmag futtatásával tekintse át az Azure-fájlmegosztás hozzáférési engedélyeit:
-    
+
     ```powershell
     icacls <mounted-drive-letter>:
     ```
@@ -167,7 +167,7 @@ Az NTFS-engedélyek konfigurálása:
     Alapértelmezés szerint az *NT Authority\Authenticated-felhasználók* és a *BUILTIN\Users* is rendelkeznek bizonyos engedélyekkel. Ezek az alapértelmezett engedélyek lehetővé teszik, hogy ezek a felhasználók beolvassák a többi felhasználó profiljának tárolóit. A [tárolási engedélyek konfigurálása a profil tárolókkal és az Office-tárolókkal való használatra](/fslogix/fslogix-storage-config-ht) című témakörben ismertetett engedélyek azonban nem teszik lehetővé a felhasználók számára, hogy olvassák a többi profil tárolóját.
 
 4. A következő parancsmagok futtatásával engedélyezheti, hogy a Windows rendszerű virtuális asztali felhasználók saját profil tárolókat hozzanak létre, miközben blokkolja a más felhasználók profiljához való hozzáférést.
-     
+
      ```powershell
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
@@ -233,6 +233,6 @@ A munkamenet engedélyeinek ellenőrzését:
 
 További teszteléshez kövesse a következő témakör utasításait: Ellenőrizze, [hogy a profil működik](create-profile-container-adds.md#make-sure-your-profile-works)-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A FSLogix hibaelhárításához tekintse meg [ezt a hibaelhárítási útmutatót](/fslogix/fslogix-trouble-shooting-ht).

@@ -8,18 +8,18 @@ author: asudbring
 manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a96e22ee8d2f9565ae676574e263beae96b5c1f2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477023"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809407"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
@@ -118,7 +118,7 @@ Az alábbi ábrán látható, hogyan fejezheti ki az ilyen típusú mintavételi
       },
 ```
 
-### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a> HTTP/HTTPS-mintavétel
+### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a>HTTP/HTTPS-mintavétel
 
 >[!NOTE]
 >A HTTPS-mintavétel csak [standard Load Balancer](load-balancer-standard-overview.md)esetében érhető el.
@@ -130,7 +130,7 @@ A HTTP-/HTTPS-mintavételek is hasznosak lehetnek a saját logikájának megval�
 > [!NOTE] 
 > A HTTPS-mintavétel olyan tanúsítványok használatát igényli, amelyeken alapul a teljes láncban a SHA256 minimális aláírási kivonata.
 
-Ha Cloud Services használ, és a W3wp. exe fájlt használó webes szerepkörökkel rendelkezik, akkor a webhely automatikus figyelése is elérhető. A webhely kódjában fellépő hibák nem 200 állapotot adnak vissza a terheléselosztó-próbára.
+Ha Cloud Services használ, és w3wp.exe használó webes szerepkörökkel rendelkezik, akkor a webhely automatikus figyelése is elérhető. A webhely kódjában fellépő hibák nem 200 állapotot adnak vissza a terheléselosztó-próbára.
 
 A HTTP/HTTPS-mintavétel sikertelen, ha:
 * A mintavételi végpont a 200-tól eltérő HTTP-választ ad vissza (például 403, 404 vagy 500). Ekkor a rendszer azonnal megjelöli az állapot-mintavételt. 
@@ -175,7 +175,7 @@ Ha a vendég ügynök nem tud válaszolni a http 200 OK értékre, a terhelésel
 
 Ha a vendég ügynök HTTP 200-re válaszol, a terheléselosztó újra elküldi az új folyamatokat erre a példányra.
 
-Webes szerepkör használata esetén a webhely kódja általában a W3wp. exe fájlon fut, amelyet az Azure-háló vagy a vendég ügynök nem figyel. A W3wp. exe hibái (például HTTP 500-válaszok) nem jelentik a vendég ügynöknek. Ennek következtében a terheléselosztó nem veszi át a példányt a rotációs állapotból.
+Webes szerepkör használata esetén a webhely kódja általában w3wp.exeban fut, amelyet az Azure-háló vagy a vendég ügynök nem figyel. A w3wp.exe hibái (például HTTP 500-válaszok) nem jelentik a vendég ügynöknek. Ennek következtében a terheléselosztó nem veszi át a példányt a rotációs állapotból.
 
 <a name="health"></a>
 ## <a name="probe-up-behavior"></a><a name="probehealth"></a>Mintavételezési viselkedés

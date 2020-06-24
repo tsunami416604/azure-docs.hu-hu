@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: f2a5ad78ecf4bf02e84b9bf2e37fea13c708e072
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143099"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987606"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Kapcsolódó üzenetek küldése sorrendben a Azure Logic Appsban szekvenciális konvoj használatával Azure Service Bus
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy olyan logikai alkalmazást, amely 
 
 * A várólistán lévő összes üzenet olvasása és feldolgozása az aktuális munkafolyamat-futtatás során.
 
-A sablon JSON-fájljának áttekintéséhez tekintse meg a [GitHub: Service-Bus-Sessions. JSON](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json)fájlt.
+A sablon JSON-fájljának áttekintéséhez tekintse [meg a GitHub: service-bus-sessions.json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json)című témakört.
 
 További információ: [szekvenciális konvojos minta – Azure Architecture Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy).
 
@@ -117,7 +117,7 @@ A részletek összecsukása esetén a Service Bus-munkamenetek sablonjának legf
 
 ![Sablon legfelső szintű munkafolyamata](./media/send-related-messages-sequential-convoy/template-top-level-flow.png)
 
-| Name | Description |
+| Name | Leírás |
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | A megadott ismétlődés alapján ez a Service Bus eseményindító minden üzenet esetében ellenőrzi a megadott Service Bus várólistát. Ha egy üzenet létezik a várólistában, az eseményindító elindít egy munkafolyamat-példányt, amely létrehoz és futtat egy munkafolyamatot. <p><p>A *betekintés – zárolás* kifejezés azt jelenti, hogy az trigger egy kérést küld egy üzenetnek a várólistából való beolvasásához. Ha egy üzenet létezik, az trigger lekéri és zárolja az üzenetet, hogy ne történjen más feldolgozás az üzeneten, amíg a zárolási időszak le nem jár. Részletekért [inicializálja a munkamenetet](#initialize-session). |
 | **`Init isDone`** | Ez az [ **inicializálási változó** művelet](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable) egy olyan logikai változót hoz létre, amely a `false` következő feltételek teljesülése esetén van beállítva és jelzi: <p><p>– A munkamenetben nem érhetők el több üzenet az olvasáshoz. <br>– A munkamenet-zárolást már nem kell megújítani, hogy az aktuális munkafolyamat-példány befejeződik. <p><p>Részletekért lásd: [a munkamenet inicializálása](#initialize-session). |
@@ -133,7 +133,7 @@ A `Try` részletek összecsukása esetén itt látható a [hatókör művelet](.
 
 !["Try" hatóköri művelet munkafolyamata](./media/send-related-messages-sequential-convoy/try-scope-action.png)
 
-| Name | Description |
+| Name | Leírás |
 |------|-------------|
 | **`Send initial message to topic`** | Ezt a műveletet bármely olyan művelettel lecserélheti, amelyet az első üzenetnek a várólistán lévő munkamenetből való kezeléséhez szeretne kezelni. A munkamenet-azonosító megadja a munkamenetet. <p><p>Ehhez a sablonhoz egy Service Bus művelet küldi el az első üzenetet egy Service Bus témakörnek. Részletekért lásd: [a kezdeti üzenet kezelése](#handle-initial-message). |
 | (párhuzamos ág) | Ez a [párhuzamos ág művelet](../logic-apps/logic-apps-control-flow-branches.md) két elérési utat hoz létre: <p><p>-Ág #1: az üzenet feldolgozásának folytatása. További információkért lásd [: ág #1: a kezdeti üzenet befejezése a várólistában](#complete-initial-message). <p><p>-Ág #2: az üzenet elhagyása, ha valami hiba lép fel, és a felvételt egy másik trigger futtatja. További információkért lásd [: ág #2: az első üzenet elhagyása a sorból](#abandon-initial-message). <p><p>Mindkét útvonal később csatlakozik a **várólista bezárási munkamenetéhez, és sikeres** műveletet végez a következő sorban leírtak szerint. |
@@ -144,7 +144,7 @@ A `Try` részletek összecsukása esetén itt látható a [hatókör művelet](.
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>Ág #1: a kezdeti üzenet befejezése a várólistában
 
-| Name | Description |
+| Name | Leírás |
 |------|-------------|
 | `Complete initial message in queue` | Ez a Service Bus művelet egy sikeresen lekért üzenetet jelöl meg befejezettként, és eltávolítja az üzenetet a várólistából az újrafeldolgozás megakadályozása érdekében. Részletekért lásd: [a kezdeti üzenet kezelése](#handle-initial-message). |
 | `While there are more messages for the session in the queue` | Ez [ **egészen addig, amíg** a hurok](../logic-apps/logic-apps-control-flow-loops.md#until-loop) továbbra is üzeneteket kap, vagy amíg egy óra el nem telik. Az ebben a hurokban található műveletekkel kapcsolatos további információkért lásd: a [várólistán található munkamenetek további üzenetei](#while-more-messages-for-session). |
@@ -168,7 +168,7 @@ A részletek összecsukása esetén itt látható a hatókör művelet legfelső
 
 !["Catch" hatóköri művelet munkafolyamata](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| Name | Description |
+| Name | Leírás |
 |------|-------------|
 | **`Close a session in a queue and fail`** | Ez a Service Bus művelet lezárja a munkamenetet a várólistán, így a munkamenet-zár nem marad nyitva. Részletekért lásd: [munkamenet lezárása egy várólistában és sikertelen](#close-session-fail)művelet. |
 | **`Find failure msg from 'Try' block`** | Ez a [ **szűrő tömb** művelet](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) egy tömböt hoz létre a bemeneti adatokból és kimenetből a hatókörön belüli összes műveletből a `Try` megadott feltételek alapján. Ebben az esetben ez a művelet az állapotot eredményező műveletek kimeneteit adja vissza `Failed` . Részletekért lásd: [a "Try" blokkban található sikertelen msg keresése](#find-failure-message). |
@@ -193,7 +193,7 @@ Az alábbi lépéseket követve megadhatja az triggert és a műveleteket a **ko
   > [!NOTE]
   > Kezdetben a lekérdezési időköz három percre van beállítva, így a logikai alkalmazás nem fut gyakrabban a vártnál, és nem várt számlázási díjakat eredményez. Ideális esetben az intervallumot és a gyakoriságot állítsa 30 másodpercre, hogy a logikai alkalmazás azonnal elindítson egy üzenetet.
 
-  | Tulajdonság | Ehhez a forgatókönyvhöz szükséges | Érték | Description |
+  | Tulajdonság | Ehhez a forgatókönyvhöz szükséges | Érték | Leírás |
   |----------|----------------------------|-------|-------------|
   | **Üzenetsor neve** | Yes | <*üzenetsor – név*> | A korábban létrehozott Service Bus üzenetsor neve. Ez a példa a "Fabrikam-Service-Bus-üzenetsor" protokollt használja. |
   | **Várólista típusa** | Yes | **Fő** | Az elsődleges Service Bus üzenetsor |
@@ -249,7 +249,7 @@ Ez [ **egészen addig, amíg** a ciklus nem](../logic-apps/logic-apps-control-fl
 1. A Service Bus műveletben **további üzeneteket kaphat a munkamenetből**, adja meg a Service Bus üzenetsor nevét. Ellenkező esetben tartsa meg az összes többi alapértelmezett tulajdonság értékét a műveletben.
 
    > [!NOTE]
-   > Alapértelmezés szerint az üzenetek maximális száma értékre van állítva `175` , de ezt a korlátot a Service Bus üzenet mérete és az üzenet mérete tulajdonság is befolyásolja. Jelenleg ez a korlát a prémium szintű standard és 1 MB 256K.
+   > Alapértelmezés szerint az üzenetek maximális száma értékre van állítva `175` , de ezt a korlátot a Service Bus üzenet mérete és az üzenet mérete tulajdonság is befolyásolja. További információ: [üzenetsor üzenetének mérete](../service-bus-messaging/service-bus-quotas.md).
 
    ![Service Bus művelet – "további üzenetek beolvasása a munkamenetből"](./media/send-related-messages-sequential-convoy/get-additional-messages-from-session.png)
 
@@ -420,6 +420,6 @@ A sablon befejezése után már mentheti a logikai alkalmazást. A tervező eszk
 
 A logikai alkalmazás teszteléséhez küldje el az üzeneteket a Service Bus-várólistába. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [Service Bus-összekötő eseményindítóinak és műveleteiről](https://docs.microsoft.com/connectors/servicebus/)

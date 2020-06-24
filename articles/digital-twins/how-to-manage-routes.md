@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a6549f4436fe1bd6a7ab27d942621ccaaf93cff7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cf18d8ef391115da5e1c8fcab235c30e96287f5b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612941"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725681"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Végpontok és útvonalak kezelése az Azure digitális Ikrekben
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz, vagy kapcsolódhat a számítási erőforrásokhoz. Ezt úgy teheti meg, hogy először olyan **végpontokat** állít be, amelyek megkapják az eseményeket, majd azokat az [**esemény-útvonalakat**](concepts-route-events.md) , amelyek meghatározzák, hogy az Azure Digital Twins mely eseményeit kapja meg a végpontok.
 
@@ -178,7 +181,7 @@ A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adj
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [Útmutató: az események értelmezése](how-to-interpret-event-data.md)

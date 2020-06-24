@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: f39d5ca5e153da3d1644aabeb7e48b41d07fe253
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 3014a66c633a4293de8cd6eb325e962366c103b9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485148"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208263"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rövid útmutató: Azure Notification hub létrehozása az Azure CLI használatával
 
@@ -26,7 +26,7 @@ Az Azure Notification Hubs egy egyszerűen használható és kibővített lekül
 
 Ebben a rövid útmutatóban egy értesítési központot hoz létre az Azure CLI használatával. Az első szakasz az értesítési központ névterének létrehozásának lépéseit ismerteti.  A második szakasz egy értesítési központ meglévő névtérben való létrehozásának lépéseit ismerteti.  Azt is megtudhatja, hogyan hozhat létre egyéni hozzáférési szabályzatot.  
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -79,7 +79,7 @@ Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa
    ```output
    {
    "id": "/subscriptions/yourSubscriptionID/providers/Microsoft.NotificationHubs/checkNamespaceAvailability",
-   "isAvailiable": true,
+   "isAvailable": true,
    "location": null,
    "name": "spnhubns",
    "properties": false,
@@ -182,7 +182,7 @@ Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa
    > [!NOTE]
    > Az [értesítési központ névtere](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys) és az [értesítési központ](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) külön hozzáférési házirendekkel rendelkezik.  Győződjön meg arról, hogy a megfelelő Azure CLI-hivatkozást használja a kulcsok és a kapcsolódási karakterláncok lekérdezéséhez.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást.
 
@@ -190,7 +190,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal t
 az group delete --name spnhubrg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ebben a rövid útmutatóban létrehozott egy értesítési központot. Ha szeretné megtudni, hogyan konfigurálhatja az elosztót a platform Notification System (PNS) beállításokkal, olvassa el a [leküldéses értesítések beállítása értesítési központban](configure-notification-hub-portal-pns-settings.md) című témakört.
 

@@ -5,16 +5,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: b4f666415a96307b89022c6caf6af90581f294f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 596374d4f3f188e08a10bd25b36b178cc79a6e57
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115363"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808952"
 ---
-# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure webalkalmazási tűzfal figyelése és naplózása 
+# <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure webalkalmazási tűzfal figyelése és naplózása
 
 Az Azure webalkalmazási tűzfal (WAF) figyelése és naplózása a Azure Monitor-és Azure Monitor-naplókkal való naplózással és integrációval történik.
 
@@ -22,9 +22,9 @@ Az Azure webalkalmazási tűzfal (WAF) figyelése és naplózása a Azure Monito
 
 A FrontDoor naplóval rendelkező WAF integrálva van a [Azure monitor](../../azure-monitor/overview.md). Azure Monitor lehetővé teszi a diagnosztikai információk nyomon követését, beleértve a WAF-riasztásokat és-naplókat. A WAF-figyelést a portálon belül, a **diagnosztika** lapon vagy közvetlenül a Azure monitor szolgáltatáson keresztül konfigurálhatja.
 
-Azure Portal válassza a bejárati erőforrás típusa lehetőséget. A bal oldali **figyelési**/**metrikák** lapról hozzáadhat **WebApplicationFirewallRequestCount** a WAF-szabályoknak megfelelő kérelmek számának nyomon követéséhez. Az egyéni szűrők a műveleti típusok és a szabályok nevei alapján hozhatók létre.
+Azure Portal válassza a bejárati erőforrás típusa lehetőséget. A bal oldali **figyelési** / **metrikák** lapról hozzáadhat **WebApplicationFirewallRequestCount** a WAF-szabályoknak megfelelő kérelmek számának nyomon követéséhez. Az egyéni szűrők a műveleti típusok és a szabályok nevei alapján hozhatók létre.
 
-![WAFMetrics](../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png)
+:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="WAFMetrics":::
 
 ## <a name="logs-and-diagnostics"></a>Naplók és diagnosztika
 
@@ -32,9 +32,25 @@ A WAF az észlelt fenyegetésekkel kapcsolatos részletes jelentéseket biztosí
 
 ![WAFDiag](../media/waf-frontdoor-monitor/waf-frontdoor-diagnostics.png)
 
-A FrontdoorAccessLog az ügyfélnek visszaküldött összes kérelmet naplózza. A FrontdoorWebApplicationFirewallLog minden olyan kérést naplóz, amely megfelel egy WAF-szabálynak.
+A [FrontdoorAccessLog](../../frontdoor/front-door-diagnostics.md) az összes kérelmet naplózza. A FrontdoorWebApplicationFirewallLog minden olyan kérést naplóz, amely megfelel egy, az alábbi sémával rendelkező WAF-szabálynak:
 
-A következő példában szereplő lekérdezés a WAF-naplókat szerzi be a blokkolt kérelmeknél:
+| Tulajdonság  | Leírás |
+| ------------- | ------------- |
+|Műveletek|A kérelemben végrehajtott művelet|
+| ClientIp (Ügyfél IP-címe) | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. Ha a kérelemben a fejléchez X-továbbítás történt, akkor az ügyfél IP-címe a fejléc mezőből lesz kiválasztva. |
+| ClientPort | Az ügyfél IP-portja, amely a kérést elvégezte. |
+| Részletek|További részletek a megfeleltetett kérelemről |
+|| matchVariableName: a kérelemben szereplő http-paraméter neve egyezik, például a fejléc neve|
+|| matchVariableValue: a megfeleltetést kiváltó értékek|
+| Gazdagép | Az egyeztetett kérelem állomásneve |
+| Szabályzat | Annak a WAF-házirendnek a neve, amelyhez a kérelem illeszkedik. |
+| PolicyMode | A WAF házirend működési módja. A lehetséges értékek a következők: "megelőzés" és "észlelés" |
+| RequestUri | Az egyeztetett kérelem teljes URI-ja. |
+| RuleName | Annak a WAF-szabálynak a neve, amelyhez a kérelem illeszkedik. |
+| SocketIp | A WAF által látott forrás IP-cím. Ez az IP-cím a kérések fejlécének független TCP-munkameneten alapul.|
+| TrackingReference | A bejárati ajtó által kiszolgált kérést azonosító egyedi hivatkozási sztring, amely az ügyfélnek X-Azure-ref fejlécként is elküldve. Egy adott kérelem hozzáférési naplóiban található adatok kereséséhez szükséges. |
+
+A következő lekérdezési példa visszaadja a WAF-naplókat a blokkolt kérelmeknél:
 
 ``` WAFlogQuery
 AzureDiagnostics
@@ -47,26 +63,34 @@ AzureDiagnostics
 
 ``` WAFlogQuerySample
 {
-    "PreciseTimeStamp": "2020-01-25T00:11:19.3866091Z",
-    "time": "2020-01-25T00:11:19.3866091Z",
+    "time":  "2020-06-09T22:32:17.8376810Z",
     "category": "FrontdoorWebApplicationFirewallLog",
-    "operationName": "Microsoft.Network/FrontDoor/WebApplicationFirewallLog/Write",
-    "properties": {
-        "clientIP": "xx.xx.xxx.xxx",
-        "socketIP": "xx.xx.xxx.xxx",
-        "requestUri": "https://wafdemofrontdoorwebapp.azurefd.net:443/?q=../../x",
-        "ruleName": "Microsoft_DefaultRuleSet-1.1-LFI-930100",
-        "policy": "WafDemoCustomPolicy",
-        "action": "Block",
-        "host": "wafdemofrontdoorwebapp.azurefd.net",
-        "refString": "0p4crXgAAAABgMq5aIpu0T6AUfCYOroltV1NURURHRTA2MTMANjMxNTAwZDAtOTRiNS00YzIwLTljY2YtNjFhNzMyOWQyYTgy",
-        "policyMode": "prevention"
-    }
+    "operationName": "Microsoft.Network/FrontDoorWebApplicationFirewallLog/Write",
+    "properties":
+    {
+        "clientIP":"xxx.xxx.xxx.xxx",
+        "clientPort":"52097",
+        "socketIP":"xxx.xxx.xxx.xxx",
+        "requestUri":"https://wafdemofrontdoorwebapp.azurefd.net:443/?q=%27%20or%201=1",
+        "ruleName":"Microsoft_DefaultRuleSet-1.1-SQLI-942100",
+        "policy":"WafDemoCustomPolicy",
+        "action":"Block",
+        "host":"wafdemofrontdoorwebapp.azurefd.net",
+        "trackingReference":"08Q3gXgAAAAAe0s71BET/QYwmqtpHO7uAU0pDRURHRTA1MDgANjMxNTAwZDAtOTRiNS00YzIwLTljY2YtNjFhNzMyOWQyYTgy",
+        "policyMode":"prevention",
+        "details":
+            {
+            "matches":
+                [{
+                "matchVariableName":"QueryParamValue:q",
+                "matchVariableValue":"' or 1=1"
+                }]
+            }
+     }
 }
+```
 
-``` 
-
-A következő példában szereplő lekérdezés beolvassa a AccessLogs-bejegyzéseket:
+A következő példában szereplő lekérdezés a AccessLogs-bejegyzéseket adja vissza:
 
 ``` AccessLogQuery
 AzureDiagnostics
@@ -78,26 +102,31 @@ AzureDiagnostics
 
 ``` AccessLogSample
 {
-    "PreciseTimeStamp": "2020-01-25T00:11:12.0160150Z",
-    "time": "2020-01-25T00:11:12.0160150Z",
-    "category": "FrontdoorAccessLog",
-    "operationName": "Microsoft.Network/FrontDoor/AccessLog/Write",
-    "properties": {
-        "trackingReference": "0n4crXgAAAACnRKbdALbyToAqNfSHssDvV1NURURHRTA2MTMANjMxNTAwZDAtOTRiNS00YzIwLTljY2YtNjFhNzMyOWQyYTgy",
-        "httpMethod": "GET",
-        "httpVersion": "2.0",
-        "requestUri": "https://wafdemofrontdoorwebapp.azurefd.net:443/",
-        "requestBytes": "710",
-        "responseBytes": "3116",
-        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4017.0 Safari/537.36 Edg/81.0.389.2",
-        "clientIp": "xx.xx.xxx.xxx",
-        "timeTaken": "0.598",
-        "securityProtocol": "TLS 1.2",
-        "routingRuleName": "WAFdemoWebAppRouting",
-        "backendHostname": "wafdemouksouth.azurewebsites.net:443",
-        "sentToOriginShield": false,
-        "httpStatusCode": "200",
-        "httpStatusDetails": "200"
+"time": "2020-06-09T22:32:17.8383427Z",
+"category": "FrontdoorAccessLog",
+"operationName": "Microsoft.Network/FrontDoor/AccessLog/Write",
+ "properties":
+    {
+    "trackingReference":"08Q3gXgAAAAAe0s71BET/QYwmqtpHO7uAU0pDRURHRTA1MDgANjMxNTAwZDAtOTRiNS00YzIwLTljY2YtNjFhNzMyOWQyYTgy",
+    "httpMethod":"GET",
+    "httpVersion":"2.0",
+    "requestUri":"https://wafdemofrontdoorwebapp.azurefd.net:443/?q=%27%20or%201=1",
+    "requestBytes":"715",
+    "responseBytes":"380",
+    "userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4157.0 Safari/537.36 Edg/85.0.531.1",
+    "clientIp":"xxx.xxx.xxx.xxx",
+    "socketIp":"xxx.xxx.xxx.xxx",
+    "clientPort":"52097",
+    "timeTaken":"0.003",
+    "securityProtocol":"TLS 1.2",
+    "routingRuleName":"WAFdemoWebAppRouting",
+    "rulesEngineMatchNames":[],
+    "backendHostname":"wafdemowebappuscentral.azurewebsites.net:443",
+    "sentToOriginShield":false,
+    "httpStatusCode":"403",
+    "httpStatusDetails":"403",
+    "pop":"SJC",
+    "cacheStatus":"CONFIG_NOCACHE"
     }
 }
 

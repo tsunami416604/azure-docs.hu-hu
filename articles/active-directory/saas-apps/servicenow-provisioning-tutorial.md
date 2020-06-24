@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: da62efff5db5c71b087657b0eec93f8dd4702665
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780514"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751503"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés ServiceNow konfigurálása
 
@@ -54,12 +54,19 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 1. Azonosítsa a ServiceNow-példány nevét. A ServiceNow eléréséhez használt URL-címen megkeresheti a példány nevét. Az alábbi példában a példány neve dev35214.
 
-![ServiceNow-példány](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow-példány](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-    
 2. Hitelesítő adatok beszerzése egy rendszergazda számára a ServiceNow-ben. Navigáljon a felhasználói profilhoz a ServiceNow-ben, és ellenőrizze, hogy a felhasználó rendelkezik-e rendszergazdai szerepkörrel. 
 
-![ServiceNow-rendszergazdai szerepkör](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+   ![ServiceNow-rendszergazdai szerepkör](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+3. Győződjön meg arról, hogy a következő beállítások **le vannak tiltva** a ServiceNow:
+
+   1. Válassza a **rendszerbiztonsági**  >  **magas biztonsági beállítások**  >  **alapszintű hitelesítés szükséges a bejövő séma-kérelmekhez**beállítást.
+   2. Válassza a **Rendszertulajdonságok**  >  **webszolgáltatások**  >  **alapszintű hitelesítés szükséges a bejövő SOAP-kérelmekhez**lehetőséget.
+     
+   > [!IMPORTANT]
+   > Ha a beállítás *engedélyezve*van, a kiépítési motor nem fog kommunikálni a ServiceNow.
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>3. lépés ServiceNow hozzáadása az Azure AD Application Galleryből
 
@@ -142,6 +149,14 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * **EntryJoiningPropertyValueIsMissing:** A megfelelő attribútum azonosításához tekintse át az [attribútumok leképezéseit](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) . Ennek az értéknek jelen kell lennie a kiépíteni próbált felhasználón vagy csoportban. 
 * Tekintse át a [SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) -t, hogy megértse az összes követelményt és korlátozást (például a felhasználó országkód megadásának formátuma)
 * A rendszer alapértelmezés szerint a kiépítési kérelmeket a https://{saját példányának neve}. Service-Now. com/{Table-Name} értékre továbbítja. Ha egyéni bérlői URL-címet igényel, a teljes URL-címet megadhatja a példány neve mezőben.
+* **ServiceNowInstanceInvalid** 
+  
+  `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
+
+   Ez a hiba azt jelzi, hogy a ServiceNow-példánnyal kommunikáló probléma történt. Győződjön meg arról, hogy a következő beállítások *le vannak tiltva* a ServiceNow:
+   
+   1. Válassza a **rendszerbiztonsági**  >  **magas biztonsági beállítások**  >  **alapszintű hitelesítés szükséges a bejövő séma-kérelmekhez**beállítást.
+   2. Válassza a **Rendszertulajdonságok**  >  **webszolgáltatások**  >  **alapszintű hitelesítés szükséges a bejövő SOAP-kérelmekhez**lehetőséget.
 
 ## <a name="additional-resources"></a>További források
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253545"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690744"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat szinkronizálásának hibaelhárítása Azure AD Connect-szinkronizálással
 
@@ -60,7 +60,7 @@ A jelszavak szinkronizálása nélküli hibák elhárítása:
 
 1. Nyisson meg egy új Windows PowerShell-munkamenetet a Azure AD Connect-kiszolgálón a **Futtatás rendszergazdaként** beállítással.
 
-2. Futtassa `Set-ExecutionPolicy RemoteSigned` a `Set-ExecutionPolicy Unrestricted`vagy a parancsot.
+2. Futtassa a vagy a parancsot `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted` .
 
 3. Indítsa el a Azure AD Connect varázslót.
 
@@ -143,7 +143,7 @@ Egy adott felhasználói objektum problémáinak elhárítása:
 
 1. Nyisson meg egy új Windows PowerShell-munkamenetet a Azure AD Connect-kiszolgálón a **Futtatás rendszergazdaként** beállítással.
 
-2. Futtassa `Set-ExecutionPolicy RemoteSigned` a `Set-ExecutionPolicy Unrestricted`vagy a parancsot.
+2. Futtassa a vagy a parancsot `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted` .
 
 3. Indítsa el a Azure AD Connect varázslót.
 
@@ -193,7 +193,7 @@ Alapértelmezés szerint a Azure AD Connect hét napig tárolja a jelszó-kivona
 
 ## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>A rendszer nem szinkronizálja a jelszavakat: hibakeresés a diagnosztikai parancsmag használatával
 
-A parancsmag segítségével kiderítheti, hogy a `Invoke-ADSyncDiagnostics` rendszer miért nem szinkronizálja a jelszavakat.
+A `Invoke-ADSyncDiagnostics` parancsmag segítségével kiderítheti, hogy a rendszer miért nem szinkronizálja a jelszavakat.
 
 > [!NOTE]
 > A `Invoke-ADSyncDiagnostics` parancsmag csak Azure ad Connect vagy újabb verziójú 1.1.524.0 érhető el.
@@ -204,7 +204,7 @@ A jelszavak szinkronizálása nélküli hibák elhárítása:
 
 1. Nyisson meg egy új Windows PowerShell-munkamenetet a Azure AD Connect-kiszolgálón a **Futtatás rendszergazdaként** beállítással.
 
-2. Futtassa `Set-ExecutionPolicy RemoteSigned` a `Set-ExecutionPolicy Unrestricted`vagy a parancsot.
+2. Futtassa a vagy a parancsot `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted` .
 
 3. Futtassa az `Import-Module ADSyncDiagnostics` parancsot.
 
@@ -214,7 +214,7 @@ A jelszavak szinkronizálása nélküli hibák elhárítása:
 
 ## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Az egyik objektum nem szinkronizálja a jelszavakat: hibakeresés a diagnosztikai parancsmag használatával
 
-A parancsmag segítségével meghatározhatja, hogy az egyik objektum miért nem szinkronizálja a `Invoke-ADSyncDiagnostics` jelszavakat.
+A `Invoke-ADSyncDiagnostics` parancsmag segítségével meghatározhatja, hogy az egyik objektum miért nem szinkronizálja a jelszavakat.
 
 > [!NOTE]
 > A `Invoke-ADSyncDiagnostics` parancsmag csak Azure ad Connect vagy újabb verziójú 1.1.524.0 érhető el.
@@ -225,7 +225,7 @@ A felhasználók számára nem szinkronizált jelszavakkal kapcsolatos hibák el
 
 1. Nyisson meg egy új Windows PowerShell-munkamenetet a Azure AD Connect-kiszolgálón a **Futtatás rendszergazdaként** beállítással.
 
-2. Futtassa `Set-ExecutionPolicy RemoteSigned` a `Set-ExecutionPolicy Unrestricted`vagy a parancsot.
+2. Futtassa a vagy a parancsot `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted` .
 
 3. Futtassa az `Import-Module ADSyncDiagnostics` parancsot.
 
@@ -323,7 +323,7 @@ Az objektumok állapotának áttekintésével könnyedén elháríthatja a jelsz
 
     f. Keresse meg a keresett felhasználót, majd kattintson a **Tulajdonságok** elemre az összes attribútum megjelenítéséhez. Ha a felhasználó nem szerepel a keresési eredmények között, ellenőrizze a [szűrési szabályokat](how-to-connect-sync-configure-filtering.md) , és győződjön meg arról, hogy az alkalmazás fut, [és ellenőrizze](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) , hogy a felhasználó a kapcsolódás területen megjelenjen-e.
 
-    g. Ha meg szeretné tekinteni az elmúlt hét objektumának jelszó-szinkronizálási részleteit, kattintson a **napló**gombra.  
+    : Ha meg szeretné tekinteni az elmúlt hét objektumának jelszó-szinkronizálási részleteit, kattintson a **napló**gombra.  
 
     ![Objektum naplójának részletei](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
@@ -351,7 +351,7 @@ Az objektumok állapotának áttekintésével könnyedén elháríthatja a jelsz
 
 Az Állapot oszlopban a következő értékek szerepelhetnek:
 
-| status | Leírás |
+| Állapot | Leírás |
 | --- | --- |
 | Sikeres |A jelszó szinkronizálása sikeresen megtörtént. |
 | FilteredByTarget |A jelszó beállítása a **következő bejelentkezéskor a felhasználónak kell megváltoztatnia a jelszót**. A jelszó nincs szinkronizálva. |

@@ -3,24 +3,24 @@ title: Probléma nem katalógusbeli alkalmazás hozzáadásakor | Microsoft Docs
 description: Az egyéni, nem katalógusbeli alkalmazások hozzáadásakor felmerülő gyakori problémák ismertetése
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/11/2018
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38a9ef04389318d3588649117c930ff6efa3fe4e
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: ce103ca6c958b0524d753da25c2a79aadfb7c8b3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65784478"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760286"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Probléma nem katalógusbeli alkalmazás hozzáadásakor
 
@@ -96,7 +96,7 @@ Az értesítésekkel kapcsolatos további információkért tekintse meg az alá
 
 - **UPN** – a műveletet végrehajtó felhasználó
 
-  *  Példa – **tperkins\@f128.info**
+  *  Példa – **tperkins \@ f128.info**
 
 - **Bérlő azonosítója** – annak a bérlőnek az egyedi azonosítója, aki a műveletet végrehajtó felhasználó tagja volt
 
@@ -122,7 +122,7 @@ Az értesítésekkel kapcsolatos további információkért tekintse meg az alá
 
 - **Részletek** – a művelet eredményének részletes leírása
 
-  *  Példa – a **belső `https://bing.com/` URL-cím érvénytelen, mert már használatban van**
+  *  Példa – a **belső URL-cím `https://bing.com/` érvénytelen, mert már használatban van**
 
 - **Másolási hiba** – a **másolási hiba** szövegmezőtől jobbra lévő **másolási ikonra** kattintva másolhatja az összes értesítési részletet, hogy a megosztás egy támogatási vagy termékcsoport használatával történjen 
 - mérnök

@@ -1,0 +1,141 @@
+---
+title: Hibakeresés a Cloud-init használatával
+description: Azure-beli virtuális gép üzembe helyezése a Cloud-init használatával – problémamegoldás.
+author: danielsollondon
+ms.service: virtual-machines-linux
+ms.subservice: imaging
+ms.topic: troubleshooting
+ms.date: 06/22/2020
+ms.author: danis
+ms.reviewer: cynthn
+ms.openlocfilehash: 92c878497f16162f46f4da34501885b73ff85dfc
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85306905"
+---
+# <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>A virtuális gépek üzembe helyezésének hibaelhárítása a Cloud-init használatával
+
+Ha általánosított egyéni rendszerképeket hozott létre, a Cloud-init használatával végezze el az üzembe helyezést, de úgy találta, hogy a virtuális gép nem megfelelően lett létrehozva, az egyéni lemezképek hibakeresése szükséges.
+
+Néhány példa a kiépítési problémákra:
+- A virtuális gép 40 percig elakad a létrehozáskor, és a virtuális gép létrehozása sikertelenként van megjelölve
+- A CustomData nem kerül feldolgozásra
+- Az ideiglenes lemez csatlakoztatása sikertelen
+- A felhasználók nem jönnek létre, vagy felhasználói hozzáférési problémák léptek fel
+- A hálózatkezelés nincs megfelelően beállítva
+- Fájl-vagy particionálási hibák cseréje
+
+Ez a cikk végigvezeti a Cloud-init hibaelhárításának lépésein. Részletesebb részleteket a [Cloud-init működésével](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive)foglalkozó témakörben talál.
+
+## <a name="step-1-test-the-deployment-without-customdata"></a>1. lépés: az üzemelő példány tesztelése customData nélkül
+
+A Cloud-init a virtuális gép létrehozásakor fogadja el az átadott customData. Először is győződjön meg arról, hogy ez nem okoz problémát az üzemelő példányokkal kapcsolatban. Próbálja meg kiépíteni a virtuális gépet bármilyen konfiguráció nélkül. Ha úgy találja, hogy a virtuális gép nem tud kiépíteni, folytassa az alábbi lépésekkel, ha úgy találja, hogy az átadott konfiguráció nem lesz alkalmazva, ugorjon a [4. lépésre](). 
+
+## <a name="step-2-review-image-requirements-are-satisfied"></a>2. lépés: a rendszerkép-követelmények áttekintése teljesül
+A virtuális gép kiépítési hibájának elsődleges oka az, hogy az operációs rendszer rendszerképe nem felel meg az Azure-ban való futtatás előfeltételeinek. Győződjön meg arról, hogy a lemezképek megfelelően vannak előkészítve, mielőtt üzembe helyezi őket az Azure-ban. 
+
+
+A következő cikkek bemutatják az Azure-ban támogatott különböző Linux-disztribúciók előkészítésének lépéseit:
+
+- [CentOS-alapú disztribúciók](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SLES és openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Egyebek: nem támogatott disztribúciók](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+A [támogatott Azure Cloud-init rendszerképek](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)esetében a Linux-disztribúciók már rendelkeznek az összes szükséges csomaggal és konfigurációval, hogy megfelelően kiépítse a lemezképet az Azure-ban. Ha úgy találja, hogy a virtuális gép nem jön létre a saját betanított rendszerképből, próbáljon ki egy olyan támogatott Azure Marketplace-rendszerképet, amely már be van állítva a Cloud-init számára, a választható customData. Ha a customData megfelelően működik egy Azure Marketplace-lemezképpel, akkor valószínűleg probléma van a kurátori képpel.
+
+## <a name="step-3-collect--review-vm-logs"></a>3. lépés: a virtuális gépek naplófájljainak összegyűjtése & áttekintése
+
+Ha a virtuális gép nem tud kiépíteni, az Azure a "létrehozás" állapotot jeleníti meg 20 percen belül, majd újraindítja a virtuális gépet, és még egy 20 percet várnia kell, mielőtt véglegesen megjelöli a virtuális gép telepítését `OSProvisioningTimedOut` .
+
+Amíg a virtuális gép fut, szüksége lesz a virtuális gép naplóira, hogy megtudja, miért nem sikerült a kiépítés.  Ha meg szeretné tudni, miért nem sikerült a virtuális gép üzembe helyezése, ne állítsa le a virtuális gépet. Tartsa meg a virtuális gépet. A naplók gyűjtéséhez a meghibásodott virtuális gép futási állapotban kell maradnia. A naplók gyűjtéséhez használja az alábbi módszerek egyikét:
+
+- [Soros konzol](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+
+- A virtuális gép létrehozása előtt [engedélyezze a rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) , majd [tekintse meg](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) őket a rendszerindítás során.
+
+- [Az operációsrendszer-lemez manuális csatlakoztatása és csatlakoztatása](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux) egy futó virtuális géphez a naplók kinyeréséhez – Azure-beli virtuális gép javítása
+
+Gyűjtse össze ezeket a naplókat:
+```bash
+/var/log/waagent*
+/var/log/syslog*
+/var/log/rsyslog*
+/var/log/messages*
+/var/log/kern*
+/var/log/dmesg*
+/var/log/dpkg*
+/var/log/yum*
+/var/log/cloud-init*
+/var/log/boot*
+/var/log/auth*
+/var/log/secure*
+```
+A kezdeti hibaelhárítás megkezdéséhez Kezdje a Cloud-init naplókkal, és Ismerje meg, hogy hol történt a hiba, majd használja a többi naplót a mélyebb merüléshez, és adjon meg további elemzéseket. 
+* /var/log/cloud-init.log
+* /var/log/cloud-init-output.log
+* Soros/rendszerindítási naplók
+
+Az összes naplóban indítsa el a "sikertelen", a "figyelmeztetés", a "WARN", a "err", a "hiba", a "hiba" kifejezést. A konfiguráció beállításával figyelmen kívül hagyhatja a kis-és nagybetűket megkülönböztető kereséseket. 
+
+> [!TIP]
+> Ha egyéni rendszerképet használ, érdemes lehet felhasználókat hozzáadni a rendszerképhez. Ha a kiépítés nem tudja beállítani a rendszergazda felhasználót, továbbra is bejelentkezhet az operációs rendszerbe.
+
+## <a name="analyzing-the-logs"></a>A naplók elemzése
+
+Itt talál további információt arról, hogy mit kell keresni az egyes Cloud-init-naplókban.
+
+### <a name="varlogcloud-initlog"></a>/var/log/cloud-init.log
+
+Alapértelmezés szerint az összes olyan felhő-inicializálási esemény, amelynek prioritása hibakeresés vagy magasabb, a következőre íródik: `/var/log/cloud-init.log` . Ez részletes naplókat biztosít a Cloud-init inicializálásakor előforduló összes eseményről. 
+
+Például:
+
+```console
+2019-10-10 04:51:25,321 - util.py[DEBUG]: Failed mount of '/dev/sr0' as 'auto': Unexpected error while running command.
+Command: ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpLIrklc']
+Exit code: 32
+Reason: -
+Stdout:
+Stderr: mount: unknown filesystem type 'udf'
+2020-01-31 00:21:53,352 - DataSourceAzure.py[WARNING]: /dev/sr0 was not mountable
+```
+
+
+Ha hibát vagy figyelmeztetést talált, olvassa el a visszafelé a Cloud-init naplóban, hogy megtudja, mi történt a Cloud-init futtatása előtt a hiba vagy a figyelmeztetés megtalálása előtt. Sok esetben a Cloud-init futtatja az operációs rendszer parancsait, vagy a hiba előtt elvégezte a kiépítési műveleteket, így elemzéseket készíthet arról, hogy a hibák miért jelentek meg a naplókban. Az alábbi példa azt mutatja, hogy a Cloud-init megkísérelt egy eszköz csatlakoztatását közvetlenül a hiba előtt.
+
+```output
+2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
+```
+
+Ha rendelkezik hozzáféréssel a [soros konzolhoz](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode), próbálja meg újra futtatni a Cloud-init futtatására irányuló parancsot.
+
+A naplózása a `/var/log/cloud-init.log` /etc/cloud/cloud.cfg.d/05_logging. cfg-n belül is újrakonfigurálható. A Cloud-init naplózással kapcsolatos további részletekért tekintse meg a [Cloud-init dokumentációját](https://cloudinit.readthedocs.io/en/latest/topics/logging.html). 
+
+### <a name="varlogcloud-init-outputlog"></a>/var/log/cloud-init-output.log
+
+Az információkat a `stdout` és a `stderr` [Cloud-init szakaszaiban](cloud-init-deep-dive.md)szerezheti be. Ez általában magában foglalja az útválasztási táblázat adatait, a hálózati információkat, az SSH-gazdagép kulcs-ellenőrzési információit, `stdout` valamint a `stderr` Cloud-init minden szakaszát, valamint az egyes szakaszok időbélyegét. Ha szükséges, `stderr` és `stdout` a naplózás újrakonfigurálható a alkalmazásból `/etc/cloud/cloud.cfg.d/05_logging.cfg` .
+
+### <a name="serialboot-logs"></a>Soros/rendszerindítási naplók 
+
+A Cloud-init több függőséggel rendelkezik, ezek az Azure-beli rendszerképek szükséges előfeltételei, például a hálózatkezelés, a tárolás, az ISO csatlakoztatása és az ideiglenes lemez csatlakoztatása és formázása. Ezek bármelyike hibákat okozhat, és a Cloud-init művelet sikertelen lesz. Ha például a virtuális gép nem tud DHCP-bérletet beszerezni, a Cloud-init művelet sikertelen lesz.
+
+Ha továbbra sem tudja elkülöníteni, hogy miért nem sikerült kiépíteni a Cloud-init eszközt, meg kell ismernie a felhő-init fázisokat és a modulok futtatását. További részletekért lásd: a [Cloud-init mélyebb betekintése](cloud-init-deep-dive.md) .
+
+
+## <a name="step-4-investigate-why-the-configuration-isnt-being-applied"></a>4. lépés: annak vizsgálata, hogy a konfiguráció miért nincs alkalmazva
+A Cloud-init nem minden hibája végzetes kiépítési hibát eredményez. Ha például a `runcmd` modult egy Cloud-init konfigurációban használja, akkor a futtatott parancsból nem nulla kilépési kód jelenik meg, mert a virtuális gép üzembe helyezése sikertelen lesz. Ennek az az oka, hogy az alapszintű üzembe helyezési funkció után fut, amely a Cloud-init első 3 fázisában történik. A konfiguráció által nem alkalmazott hibák megoldásához tekintse át a 3. lépésben és a Cloud-init modulok naplóit manuálisan. Például:
+
+- `runcmd`– a parancsfájlok hibák nélkül futnak? Futtassa manuálisan a konfigurációt a terminálról, hogy biztosan a várt módon fussanak.
+- Csomagok telepítése – a virtuális gép hozzáférhet a csomagok tárházához?
+- Ellenőriznie kell a `customData` virtuális gép számára biztosított adatkonfigurációt is, amely a következő helyen található: `/var/lib/cloud/instances/<unique-instance-identifier>/user-data.txt` .
+
+
+## <a name="next-steps"></a>További lépések
+
+Ha továbbra sem tudja elkülöníteni, hogy a Cloud-init miért nem futtatta a konfigurációt, jobban meg kell vizsgálnia, hogy mi történik az egyes felhő-init fázisokban, és mikor futnak a modulok. További információkért lásd: a [Cloud-init-konfiguráció mélyebbre váltása](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive) . 

@@ -3,15 +3,15 @@ title: Az Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik Az
 description: Azure Resource Manager sablonnal áthelyezheti az Azure hálózati biztonsági csoportot az egyik Azure-régióból a másikba a Azure Portal használatával.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a22dc6dc0c4fc199d3f262b18aeeae5090a06dce
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647186"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689316"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Az Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik régióba a Azure Portal használatával
 
@@ -41,11 +41,11 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>A sablon exportálása és üzembe helyezése a portálról
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **erőforráscsoporthoz**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com)  >  **erőforráscsoporthoz**.
 2. Keresse meg a forrás NSG tartalmazó erőforráscsoportot, és kattintson rá.
-3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
+3. Válassza > **Beállítások**  >  **Exportálás sablon**lehetőséget.
 4. A **sablon exportálása** panelen válassza a **telepítés** lehetőséget.
-5. Kattintson a **sablon** > **szerkesztése paraméterek** lehetőségre a **Parameters. JSON** fájl megnyitásához az online szerkesztőben.
+5. Kattintson a **sablon**  >  **szerkesztése paraméterek** lehetőségre, hogy megnyissa a **parameters.js** fájlt az online szerkesztőben.
 6. A NSG-név paraméterének szerkesztéséhez módosítsa a **Value** tulajdonságot a **Paraméterek**alatt:
 
     ```json
@@ -64,7 +64,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
 8.  Kattintson a **Mentés** gombra a szerkesztőben.
 
-9.   > Kattintson **a sablon****szerkesztése** elemre, hogy megnyissa a **template. JSON** fájlt az online szerkesztőben.
+9.  Kattintson **a sablon**  >  **szerkesztése** gombra a **template.js** fájl megnyitásához az online szerkesztőben.
 
 10. Ha módosítani szeretné a NSG-konfigurációt és a biztonsági szabályokat áthelyező célhelyet, módosítsa a **Location (hely** ) tulajdonságot az online szerkesztőben található **erőforrások** területen:
 
@@ -84,11 +84,11 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
     ```
 
-11. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA** = **CentralUS**.
+11. A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA**  =  **CentralUS**.
 
 12. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
 
-    * **Biztonsági szabályok** – a **sablon. JSON** fájljának **securityRules** szakaszának szabályainak hozzáadásával vagy eltávolításával szerkesztheti, hogy mely szabályok legyenek telepítve a cél NSG:
+    * **Biztonsági szabályok** – a **securityRules** **template.js** szakasz szabályok hozzáadásával vagy eltávolításával szerkesztheti, hogy mely szabályok legyenek telepítve a cél NSG:
 
         ```json
            "resources": [
@@ -124,7 +124,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             }
         ```
 
-      A cél NSG lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez a **template. JSON** fájl végén található egyéni szabálytípuseket is szerkesztenie kell az alábbi példa formátumában:
+      A cél NSG lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez az alábbi példa formátuma szerint az egyéni szabályok típusait is szerkesztenie kell a fájl **template.js** végén:
 
       ```json
            {
@@ -153,11 +153,11 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
 13. Kattintson a **Save (Mentés** ) gombra az online szerkesztőben.
 
-14. Az alapértékek**előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, amelyben a cél NSG telepíteni fogja. **BASICS** > 
+14. Az **BASICS**  >  alapértékek**előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, amelyben a cél NSG telepíteni fogja.
 
-15. Az alapszintű erőforráscsoport **elemre kattintva válassza ki**azt az erőforráscsoportot, amelyben a cél NSG telepíteni fogja.**Resource group**  >   Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél NSG.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő NSG forrásoldali erőforráscsoport.
+15. Az alapszintű erőforráscsoport **elemre**kattintva  >  **Resource group** válassza ki azt az erőforráscsoportot, amelyben a cél NSG telepíteni fogja.  Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél NSG.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő NSG forrásoldali erőforráscsoport.
 
-16. Győződjön meg arról, hogy az alapértékek**helye** arra a célhelyre van beállítva, ahol a NSG telepíteni kívánja. **BASICS** > 
+16. Győződjön **BASICS**  >  meg arról, hogy az alapértékek**helye** arra a célhelyre van beállítva, ahol a NSG telepíteni kívánja.
 
 17. Ellenőrizze a **Beállítások** területen, hogy a név megegyezik-e a fenti Parameters Editorban megadott névvel.
 

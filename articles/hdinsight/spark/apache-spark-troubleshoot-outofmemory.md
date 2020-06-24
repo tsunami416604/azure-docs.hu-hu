@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271966"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709045"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Működése OutOfMemoryError-kivételek az Azure HDInsight Apache Spark
 
@@ -116,13 +116,13 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ### <a name="resolution"></a>Megoldás:
 
-A Spark-előzmények kiszolgálójának memóriáját a Spark- `SPARK_DAEMON_MEMORY` konfigurációban található tulajdonság szerkesztésével és az összes szolgáltatás újraindításával növelheti.
+A Spark-előzmények kiszolgálójának memóriáját a `SPARK_DAEMON_MEMORY` Spark-konfigurációban található tulajdonság szerkesztésével és az összes szolgáltatás újraindításával növelheti.
 
 Ezt a Ambari böngésző felhasználói felületén végezheti el a Spark2/config/Advanced Spark2-env szakasz kiválasztásával.
 
 ![Speciális spark2 – env szakasz](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
-Adja hozzá a következő tulajdonságot a Spark History-kiszolgáló memóriájának a 1g- `SPARK_DAEMON_MEMORY=4g`ről 4G-re való módosításához:.
+Adja hozzá a következő tulajdonságot a Spark History-kiszolgáló memóriájának a 1g-ről 4G-re való módosításához: `SPARK_DAEMON_MEMORY=4g` .
 
 ![Spark-tulajdonság](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 

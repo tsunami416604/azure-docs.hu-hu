@@ -3,7 +3,7 @@ title: Pont – hely kapcsolat konfigurálása a SSMS használatával
 titleSuffix: Azure SQL Managed Instance
 description: Kapcsolódjon az Azure SQL felügyelt példányához SQL Server Management Studio (SSMS) használatával pont – hely kapcsolattal egy helyszíni ügyfélszámítógépről.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: debe32bc39840573620bba5280b6e05b94f3edb6
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220916"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708634"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Gyors útmutató: pont – hely kapcsolat konfigurálása az Azure SQL felügyelt példányához a helyszíni környezetből
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -71,7 +71,7 @@ Ez a rövid útmutató:
 
     ![VPN-ügyfél letöltése](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. A helyszíni ügyfélszámítógépen bontsa ki a fájlokat a zip-fájlból, majd nyissa meg a mappát a kibontott fájlokkal.
-5. Nyissa meg a **WindowsAmd64** mappát, és nyissa meg a **VpnClientSetupAmd64. exe** fájlt.
+5. Nyissa meg a **WindowsAmd64** mappát, és nyissa meg a **VpnClientSetupAmd64.exe** fájlt.
 6. Ha a Windows által **védett számítógép** -üzenet jelenik meg, kattintson a **További információ** , majd a **Futtatás amúgy**elemre.
 
     ![VPN-ügyfél telepítése](./media/point-to-site-p2s-configure/vpn-client-defender.png)

@@ -1,18 +1,18 @@
 ---
 title: NDv2 sorozat
 description: A NDv2 sorozatú virtuális gépek specifikációi.
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 739e8763cf0c42fac68cce6603d087aaa4e0d9f9
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: a5b7dea30cff70d5c45460eb8ded2fa370afa2c2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672187"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726590"
 ---
 # <a name="updated-ndv2-series"></a>Frissített NDv2 sorozat
 
@@ -65,6 +65,6 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse [meg a kö
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

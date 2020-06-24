@@ -3,12 +3,12 @@ title: A virtuális gépek vész-helyreállításának befejezése
 description: Ez a cikk bemutatja, hogyan végezheti el a virtuális gépek vész-helyreállítását az AVS használatával
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148157"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749954"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>A virtuális gépek vész-helyreállításának befejezése az Azure VMware-megoldás használatával
 
@@ -56,7 +56,7 @@ Ha szükséges, válassza ki az alapértelmezett replikációs beállításokat:
 
 - **Quiescence engedélyezése:** Szünetelteti a virtuális gépet annak biztosítására, hogy a konzisztens másolat szinkronizálva legyen a távoli hellyel.
 
-- **Cél tárterülete:** Válassza ki a védett virtuális gép (ek) távoli adattárát. Az AVS privát felhőben ez a választás a VSAN adattár lehet.
+- **Cél tárterülete:** Válassza ki a védett virtuális gép (ek) távoli adattárát. Az AVS privát felhőben ez a választás a vSAN adattár lehet.
 
 - **Számítási tároló:** A távoli vSphere-fürt vagy-erőforráskészlet.
 

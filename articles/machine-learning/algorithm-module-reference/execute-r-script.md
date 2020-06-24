@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/27/2020
-ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 71e1a43728cf923207d209848b26627aeb7bd680
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983567"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751747"
 ---
-# <a name="execute-r-script"></a>R-szkript végrehajtása
+# <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
-Ez a cikk azt ismerteti, hogyan használható az r- **parancsfájl végrehajtása** az r-kód futtatásához a Azure Machine learning Designer (előzetes verzió) folyamatában.
+Ez a cikk azt ismerteti, hogyan használható az r-parancsfájl végrehajtása az R-kód futtatásához a Azure Machine Learning Designer (előzetes verzió) folyamatában.
 
-Az R használatával olyan feladatokat hajthat végre, amelyeket jelenleg nem támogat a meglévő modulok, például a következők: 
+Az R használatával olyan feladatokat hajthat végre, amelyeket a meglévő modulok jelenleg nem támogatnak, például a következőket: 
 - Egyéni adatátalakítások létrehozása
 - Saját mérőszámok használata az előrejelzések kiértékeléséhez
 - Modellek létrehozása a tervezőben nem önálló modulként megvalósított algoritmusok használatával
@@ -31,9 +31,9 @@ A Azure Machine Learning Designer a CRAN (átfogó R Archive Network) R-eloszlá
 
 ## <a name="supported-r-packages"></a>Támogatott R-csomagok
 
-Az R-környezet előre telepítve van több mint 100 csomaggal. A teljes listát az [előre telepített R-csomagok](#pre-installed-r-packages)című szakaszban találja.
+Az R-környezet több mint 100 csomaggal van előtelepítve. A teljes listát lásd: [előre telepített R-csomagok](#preinstalled-r-packages)szakasza.
 
-A következő kódot is hozzáadhatja bármelyik **Execute R script** modulhoz, és megtekintheti a telepített csomagokat.
+A telepített csomagok megtekintéséhez a következő kódot is hozzáadhatja bármelyik Execute R script modulhoz.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -43,23 +43,23 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 > [!NOTE]
-> Ha a folyamat több végrehajtási R-parancsfájl-modult tartalmaz, és ugyanazokat a csomagokat kell megadnia, amelyek nem szerepelnek az előre telepített listában, akkor telepítse a csomagokat az egyes modulokban. 
+> Ha a folyamat több olyan végrehajtási R parancsfájl-modult tartalmaz, amelyek olyan csomagokat igényelnek, amelyek nem szerepelnek az előre telepített listában, telepítse a csomagokat az egyes modulokban. 
 
 ## <a name="installing-r-packages"></a>R-csomagok telepítése
-További R-csomagok telepítéséhez használja a `install.packages()` metódust. A csomagok minden **végrehajtási r script** modulhoz telepítve vannak, és nem oszthatók meg más **végrehajtási r-parancsfájl** -modulok között.
+További R-csomagok telepítéséhez használja a `install.packages()` metódust. A csomagok minden végrehajtási R script modulhoz telepítve vannak. Nem osztják meg egymás között az R-szkriptek többi modulját.
 
 > [!NOTE]
-> Adja meg a CRAN-tárházat olyan csomagok telepítésekor, mint például a`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+> A csomagok telepítésekor a CRAN-tárházat kell megadni, például: `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
 
 Ez a példa bemutatja az állatkert telepítését:
 ```R
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -76,21 +76,21 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > Győződjön meg arról, hogy a csomag már létezik a telepítés előtt, hogy elkerülje az ismételt telepítést. Például `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` a fenti mintakód esetében. Előfordulhat, hogy a telepítés megismétlése webszolgáltatási kérés időtúllépését okozhatja.     
+ > A csomag telepítése előtt ellenőrizze, hogy már létezik-e, így nem kell megismételni a telepítést. Az ismételt telepítések miatt a webszolgáltatás-kérelmek időtúllépést okozhatnak.     
 
-## <a name="upload-files"></a>Fájlok feltöltése
-Az **r-szkript végrehajtása** támogatja a fájlok feltöltését Azure Machine learning R SDK használatával.
+## <a name="uploading-files"></a>Fájlok feltöltése
+Az R-szkript végrehajtása modul támogatja a fájlok feltöltését a Azure Machine Learning R SDK használatával.
 
-Az alábbi példa bemutatja, hogyan tölthet fel egy képfájlt az **R-szkript végrehajtása**során:
+Az alábbi példa bemutatja, hogyan tölthet fel egy képfájlt az R-szkript végrehajtása során:
 ```R
 
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -114,49 +114,44 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-A folyamat futásának befejezése után a rendszerképet a modul jobb oldali paneljén tekintheti meg
+A folyamat futásának befejezése után a rendszerképet a modul jobb oldali paneljén tekintheti meg.
 
 > [!div class="mx-imgBorder"]
-> ![Feltöltött – rendszerkép](media/module/upload-image-in-r-script.png)
+> ![Feltöltött rendszerkép előnézete](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>Az R-szkript végrehajtásának konfigurálása
 
-Az **R-szkript végrehajtása** modul olyan mintakód-kódot tartalmaz, amelyet kiindulási pontként használhat. Az R- **parancsfájl végrehajtása** modul konfigurálásához adja meg a végrehajtandó bemeneteket és kódokat.
+Az R-szkript végrehajtása modul olyan mintakód-kódot tartalmaz, amelyet kiindulási pontként használhat. Az R-parancsfájl végrehajtása modul konfigurálásához adja meg a futtatandó bemeneteket és kódokat.
 
-![R-modul](media/module/execute-r-script.png)
+![R-modul bemenetei diagramja](media/module/execute-r-script.png)
 
 A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek konvertálva, ha ezzel a modullal vannak feltöltve.
 
-1.  Adja hozzá az **R-szkript végrehajtása** modult a folyamathoz.
+1.  Adja hozzá az **R-szkript végrehajtása** modult a folyamathoz.  
 
-  
+1. Csatlakoztasson minden olyan bemenetet, amelyhez a szkriptnek szüksége van. A bemenetek nem kötelezőek, és tartalmazhatnak adatokat és további R-kódokat is.
 
-1. Csatlakoztasson a parancsfájlhoz szükséges összes bemenetet. A bemenetek nem kötelezőek, és tartalmazhatnak adatokat és további R-kódokat is.
+    * **DataSet1 elemet**: az első bemenetre hivatkozik `dataframe1` . A bemeneti adatkészletet CSV-, TSV-vagy ARFF-fájlként kell formázni. Vagy összekapcsolhat egy Azure Machine Learning adatkészletet.
 
-    * **DataSet1 elemet**: az első bemenetre hivatkozik `dataframe1`. A bemeneti adatkészletet CSV-ként, TSV-ként, ARFF-ként, vagy egy Azure Machine Learning adatkészlet összekapcsolásával kell formázni.
+    * **Dataset2**: a második bemenetre hivatkozik `dataframe2` . Ezt az adatkészletet CSV-, TSV-vagy ARFF-fájlként, vagy Azure Machine Learning adatkészletként kell formázni.
 
-    * **Dataset2**: a második bemenetre hivatkozik `dataframe2`. Ezt az adatkészletet CSV-ként, TSV-ként, ARFF-fájlként vagy Azure Machine Learning-adatkészletként kell formázni.
-
-    * **Parancsfájl-csomag**: a harmadik bemenet a ZIP-fájlokat is elfogadja. A tömörített fájl több fájlt és több fájltípust is tartalmazhat.
+    * **Parancsfájl-csomag**: a harmadik bemenet elfogadja a. zip fájlokat. A tömörített fájlok több fájlt és több fájltípust is tartalmazhatnak.
 
 1. Az **r-szkript** szövegmezőbe írja be vagy illessze be az érvényes R-szkriptet.
 
     > [!NOTE]
-    > Kérjük, legyen nagyon körültekintő a parancsfájl írásakor, és ellenőrizze, hogy nincs-e szintaktikai hiba, például nem deklarált változók vagy nem importált modulok vagy függvények használatával. A dokumentum végén külön figyelmet kell fordítani az előre telepített csomagok listájára is. A nem felsorolt csomagok használatához telepítse azokat a parancsfájlba, például:`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    > A szkript írásakor körültekintően járjon el. Győződjön meg arról, hogy nincsenek szintaktikai hibák, például nem deklarált változók vagy nem importált modulok vagy függvények használata. A cikk végén külön figyelmet kell fordítani az előre telepített csomagok listájára. A nem felsorolt csomagok használatához telepítse őket a parancsfájlba. Például: `install.packages("zoo",repos = "http://cran.us.r-project.org")`.
     
-    > [!NOTE]
-    > A függvények az X11 könyvtártól függenek, például a "View" nem támogatott, mert az X11-tár nincs előre telepítve.
-    
-    Az első lépésekhez az R- **szkript** szövegmező előre ki van töltve a mintakód segítségével, amelyet szerkeszthet vagy lecserélheti.
+    Az első lépésekhez az R- **szkript** szövegmezője előre fel van töltve a mintakód használatával, amely szerkeszthető vagy lecserélhető.
     
     ```R
     # R version: 3.5.1
-    # The script MUST contain a function named azureml_main
+    # The script MUST contain a function named azureml_main,
     # which is the entry point for this module.
 
-    # Please note that functions dependant on X11 library
-    # such as "View" are not supported because X11 library
-    # is not pre-installed.
+    # Note that functions dependent on the X11 library,
+    # such as "View," are not supported because the X11 library
+    # is not preinstalled.
     
     # The entry point function MUST have two input arguments.
     # If the input port is not connected, the corresponding
@@ -166,7 +161,7 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
     azureml_main <- function(dataframe1, dataframe2){
     print("R script run.")
 
-    # If a zip file is connected to the third input port, it is
+    # If a .zip file is connected to the third input port, it's
     # unzipped under "./Script Bundle". This directory is added
     # to sys.path.
 
@@ -175,46 +170,44 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
     }
     ```
 
- * A szkriptnek tartalmaznia kell egy nevű `azureml_main`függvényt, amely a modul belépési pontja.
+    A belépési pont függvénynek rendelkeznie kell a bemeneti argumentumokkal `Param<dataframe1>` `Param<dataframe2>` , és akkor is, ha ezek az argumentumok nem használatosak a függvényben.
 
- * A belépési pont függvénynek két bemeneti argumentummal `Param<dataframe1>` kell `Param<dataframe2>`rendelkeznie: és, még akkor is, ha a függvény nem használja ezt a két argumentumot.
-
-   > [!NOTE]
-    > A `dataframe1` `dataframe2` **végrehajtási R-parancsfájlnak** átadott adatok a következőre hivatkoznak: és, amely eltér a Azure Machine learning designertől (a `dataset1`tervezői hivatkozástól `dataset2`). Győződjön meg arról, hogy a bemeneti adatok megfelelően vannak referneced a szkriptben.  
+    > [!NOTE]
+    > A végrehajtási R-parancsfájlnak átadott adatok a következőre hivatkoznak: `dataframe1` és `dataframe2` , amely eltér a Azure Machine learning designertől (a tervezői hivatkozástól `dataset1` `dataset2` ). Győződjön meg arról, hogy a bemeneti adatok a parancsfájlban megfelelően vannak-e hivatkozva.  
  
     > [!NOTE]
-    >  Előfordulhat, hogy a meglévő R-kódnak kisebb módosításokra van szüksége a tervezői folyamatokban való futtatáshoz. Például a CSV formátumban megadott bemeneti adatokat explicit módon át kell alakítani egy adatkészletbe, mielőtt használni lehetne a kódban. Az R nyelvben használt adatok és oszlopok különböző módokon különböznek a tervezőben használt adatok és oszlopok típusaitól.
+    > Előfordulhat, hogy a meglévő R-kódnak kisebb módosításokat kell futtatnia a tervezői folyamatokban. Például a CSV formátumban megadott bemeneti adatokat explicit módon át kell alakítani egy adatkészletbe, mielőtt használni lehetne a kódban. Az R nyelvben használt adatok és oszlopok különböző módokon különböznek a tervezőben használt adatok és oszlopok típusaitól.
 
-1.  **Véletlenszerű mag**: adjon meg egy értéket, amelyet az R-környezetben kell használni véletlenszerű mag értékként. Ez a paraméter egyenértékű az R `set.seed(value)` -kódban való meghívással.  
+1.  **Véletlenszerű vetőmag**esetén adjon meg egy értéket, amelyet az R-környezetben a véletlenszerű mag értékeként kíván használni. Ez a paraméter egyenértékű az R-kódban való meghívással `set.seed(value)` .  
 
 1. A folyamat elküldése.  
 
 ## <a name="results"></a>Results (Eredmények)
 
-Az **r-szkriptek végrehajtása** modulok több kimenetet is visszaadhatnak, de r-adatkeretként kell megadni őket. Az adatkereteket a rendszer automatikusan átalakítja a tervezőben lévő adatkészletekbe a más modulokkal való kompatibilitás érdekében.
+Az R-parancsfájl-modulok végrehajtása több kimenetet is képes visszaadni, de R-adatkeretként kell megadni őket. Az adatkereteket a rendszer automatikusan átalakítja a tervezőben lévő adatkészletekbe a más modulokkal való kompatibilitás érdekében.
 
 Az R standard üzeneteit és hibáit a rendszer visszaadja a modul naplójába.
 
-Ha az eredményeket az R-szkriptben kell kinyomtatnia, a kinyomtatott eredményeket a modul jobb oldali paneljének **kimenet + naplók** lapján található **70_driver_log** alatt találja.
+Ha az eredményeket az R-szkriptben kell kinyomtatnia, a kinyomtatott eredményeket a modul jobb oldali paneljének **kimenet + naplók** lapján találja **70_driver_log** .
 
 ## <a name="sample-scripts"></a>Mintaparancsfájlok
 
-A folyamatokat többféleképpen is kiterjesztheti egyéni R-szkriptek használatával.  Ez a szakasz a gyakori feladatokhoz tartalmaz mintakód-kódot.
+A folyamatokat többféleképpen is kiterjesztheti egyéni R-parancsfájlok használatával. Ez a szakasz a gyakori feladatokhoz tartalmaz mintakód-kódot.
 
 
-### <a name="add-r-script-as-an-input"></a>R-szkript hozzáadása bemenetként
+### <a name="add-an-r-script-as-an-input"></a>R-szkript hozzáadása bemenetként
 
-Az **r-szkript végrehajtása** modul bemenetként támogatja a tetszőleges r-parancsfájlokat. Ehhez a ZIP-fájl részeként fel kell tölteni őket a munkaterületre.
+Az R-szkript végrehajtása modul bemenetként támogatja a tetszőleges R-parancsfájlokat. A használatához a. zip fájl részeként fel kell töltenie őket a munkaterületre.
 
-1. Ha R-kódot tartalmazó ZIP-fájlt szeretne feltölteni a munkaterületre, nyissa meg az **adatkészletek** eszközcsoport lapot, kattintson az **adatkészlet létrehozása**elemre, majd válassza a **helyi fájl** és a **fájl** adatkészlet típusa lehetőséget.  
+1. Ha R-kódot tartalmazó. zip-fájlt szeretne feltölteni a munkaterületre, ugorjon az **adatkészletek** eszköz oldalára. Válassza az **adatkészlet létrehozása**elemet, majd válassza a **helyi fájlból** és a **fájl** adatkészletének típusa lehetőséget.  
 
-1. Ellenőrizze, hogy a zip-fájl elérhető- **e a bal** oldali modul faszerkezetek **kategóriájának adatkészletek** listájában.
+1. Ellenőrizze, hogy a zip-fájl elérhető-e az **adatkészletek** listájában a bal oldali modul fájának **adatkészletek** kategóriája alatt.
 
 1.  Kapcsolja össze az adatkészletet a **parancsfájl-csomag** bemeneti portjával.
 
-1. A ZIP-fájlban található összes fájl elérhető a folyamat futási ideje alatt. 
+1. A. zip fájlban lévő összes fájl elérhető a folyamat futási ideje alatt. 
 
-    Ha a parancsfájl-köteg fájlja tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát. Azonban módosítania kell a kódot, hogy a könyvtár **./script csomagot** adja meg az elérési útra.
+    Ha a parancsfájl-köteg fájlja tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát. Azonban módosítania kell a kódot, hogy a könyvtár **./script csomagot** adja meg az elérési útnak.
 
 ### <a name="process-data"></a>Adatok feldolgozása
 
@@ -222,12 +215,12 @@ Az alábbi példa bemutatja, hogyan méretezhető és normalizálható a bemenet
 
 ```R
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -236,17 +229,17 @@ Az alábbi példa bemutatja, hogyan méretezhető és normalizálható a bemenet
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
-  # If a zip file is connected to the third input port, it is
+  # If a .zip file is connected to the third input port, it's
   # unzipped under "./Script Bundle". This directory is added
   # to sys.path.
   series <- dataframe1$width
-  # find the maximum and minimum values of width column in dataframe1
+  # Find the maximum and minimum values of the width column in dataframe1
   max_v <- max(series)
   min_v <- min(series)
-  # calculate the scale and bias
+  # Calculate the scale and bias
   scale <- max_v - min_v
   bias <- min_v / dis
-  # apply min-max normalizing
+  # Apply min-max normalizing
   dataframe1$width <- dataframe1$width / scale - bias
   dataframe2$width <- dataframe2$width / scale - bias
   # Return datasets as a Named List
@@ -254,15 +247,15 @@ azureml_main <- function(dataframe1, dataframe2){
 }
  ```
 
-### <a name="read-a-zip-file-as-input"></a>ZIP-fájl beolvasása bemenetként
+### <a name="read-a-zip-file-as-input"></a>Zip-fájl olvasása bemenetként
 
-Ez a minta bemutatja, hogyan használható a ZIP-fájlban található adatkészlet bemenetként az **R-szkript végrehajtása** modulba.
+Ez a minta azt mutatja be, hogyan használhatók az adatkészletek egy. zip-fájlban bemenetként az R-parancsfájl végrehajtása modulba.
 
-1. Hozzon létre egy CSV formátumú adatfájlt, és nevezze el "mydatafile. csv" néven.
-1. Hozzon létre egy ZIP-fájlt, és adja hozzá a CSV-fájlt az archívumhoz.
+1. Hozzon létre egy CSV formátumú adatfájlt, és nevezze el **mydatafile.csv**.
+1. Hozzon létre egy. zip-fájlt, és adja hozzá a CSV-fájlt az archívumhoz.
 1. Töltse fel a tömörített fájlt a Azure Machine Learning munkaterületre. 
 1. Az eredményül kapott adatkészlet csatlakoztatása az R- **szkript végrehajtásához** tartozó modul **ScriptBundle** -bemenetéhez.
-1. A következő kód használatával olvassa be a CSV-adatait a tömörített fájlból.
+1. Használja a következő kódot a CSV-adatoknak a tömörített fájlból való olvasásához.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -292,9 +285,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ### <a name="pass-r-objects-between-execute-r-script-modules"></a>R-objektumok átadása az R-parancsfájl-modulok végrehajtása között
 
-Az r-objektumokat a belső szerializálási mechanizmus használatával lehet átadni az **r szkript végrehajtása** modul példányai között. Ez a példa feltételezi, hogy át kívánja helyezni az R `A` -objektumot két **végrehajtási r parancsfájl** -modul között.
+Az r-objektumokat a belső szerializálási mechanizmus használatával lehet átadni az R szkript végrehajtása modul példányai között. Ez a példa feltételezi, hogy át kívánja helyezni az R-objektumot `A` két végrehajtási r parancsfájl-modul között.
 
-1. Adja hozzá az első **végrehajtási R-parancsfájlt** a folyamathoz, és írja be a következő kódot az **r-szkript** szövegmezőbe egy szerializált `A` objektum létrehozásához a modul kimeneti adattáblájában:  
+1. Adja hozzá az első **végrehajtási R szkript** modult a folyamathoz. Ezután írja be a következő kódot az **R-szkript** szövegmezőbe, és hozzon létre egy szerializált objektumot `A` oszlopként a modul kimeneti adattáblájában:  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -308,7 +301,7 @@ Az r-objektumokat a belső szerializálási mechanizmus használatával lehet á
     }
     ```
 
-    Az egész típusra történő explicit konverzió történik, mivel a szerializálási függvény az R `Raw` formátumban jeleníti meg az adatokat, amelyet a tervező nem támogat.
+    Az egész típusra történő explicit konverzió történik, mivel a szerializálási függvény az R formátumban jeleníti meg az adatokat `Raw` , amelyet a tervező nem támogat.
 
 1. Vegyen fel egy második példányt az **R szkript végrehajtása** modulhoz, és kapcsolja az előző modul kimeneti portjához.
 
@@ -323,9 +316,9 @@ Az r-objektumokat a belső szerializálási mechanizmus használatával lehet á
     }
     ```
 
-## <a name="pre-installed-r-packages"></a>Előre telepített R-csomagok
+## <a name="preinstalled-r-packages"></a>Előre telepített R-csomagok
 
-A használható előre telepített R-csomagok aktuális listája:
+Jelenleg a következő előre telepített R-csomagok érhetők el:
 
 |              |            | 
 |--------------|------------| 
@@ -339,10 +332,10 @@ A használható előre telepített R-csomagok aktuális listája:
 | bindr        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
 | bitops       | 1.0-6      | 
-| indítás         | 1.3 – 22     | 
+| boot         | 1.3 – 22     | 
 | broom        | 0.5.2      | 
 | callr        | 3.2.0      | 
-| caret        | 6.0 – 84     | 
+| kalap jel        | 6.0 – 84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
 | osztály        | 7.3 – 15     | 
@@ -361,7 +354,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | digest       | 0.6.19     | 
 | dplyr        | 0.7.6      | 
 | e1071        | 1.7-2      | 
-| értékelés     | 0.14       | 
+| evaluate     | 0.14       | 
 | fansi        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
@@ -380,7 +373,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | haven        | 2.1.0      | 
-| highr        | 0.8        | 
+| highr        | 0,8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
@@ -397,7 +390,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | magrittr     | 1.5        | 
 | markdown     | 1          | 
 | MASS         | 7.3 – 51.4   | 
-| Matrix       | 1.2 – 17     | 
+| Mátrix       | 1.2 – 17     | 
 | methods      | 3.5.1      | 
 | mgcv         | 1.8 – 28     | 
 | mime         | 0.7        | 
@@ -408,7 +401,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | nnet         | 7.3-12     | 
 | numDeriv     | 2016.8 – 1.1 | 
 | openssl      | 1.4        | 
-| párhuzamos     | 3.5.1      | 
+| parallel     | 3.5.1      | 
 | pillar       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
@@ -437,7 +430,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | rmarkdown    | 1.13       | 
 | ROCR         | 1.0-7      | 
 | rpart        | 4.1 – 15     | 
-| rstudioapi   | 0,1        | 
+| rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
 | scales       | 1.0.0      | 
 | selectr      | 0.4-1      | 
@@ -449,7 +442,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | stringi      | 1.4.3      | 
 | stringr      | 1.3.1      | 
 | survival     | 2.44 – 1.1   | 
-| sys          | 3,2        | 
+| sys          | 3.2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 
@@ -457,7 +450,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | tidyverse    | 1.2.1      | 
 | timeDate     | 3043.102   | 
 | tinytex      | 0.13       | 
-| eszközök        | 3.5.1      | 
+| tools        | 3.5.1      | 
 | tseries      | 0,10 – 47    | 
 | TTR          | 0.23 – 4     | 
 | utf8         | 1.1.4      | 
@@ -466,7 +459,7 @@ A használható előre telepített R-csomagok aktuális listája:
 | viridisLite  | 0.3.0      | 
 | whisker      | 0.3-2      | 
 | withr        | 2.1.2      | 
-| xfun         | 0.8        | 
+| xfun         | 0,8        | 
 | xml2         | 1.2.0      | 
 | xts          | 0,11 – 2     | 
 | yaml         | 2.2.0      | 

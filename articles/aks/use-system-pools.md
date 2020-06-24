@@ -3,17 +3,18 @@ title: Rendszercsomópont-készletek használata az Azure Kubernetes szolgáltat
 description: Ismerje meg, hogyan hozhat létre és kezelhet rendszercsomópont-készleteket az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 04/28/2020
-ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/18/2020
+ms.author: mlearned
+ms.openlocfilehash: 9b6270f81e7af8bd508d29510698e6cf9a5a2010
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125247"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052647"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes szolgáltatásban (ak)
 
-Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. A csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A rendszercsomópont-készletek és a felhasználói csomópontok készletei két különböző Node Pool-mód az AK-fürtökhöz. A rendszercsomópont-készletek a kritikus rendszerhüvelyek, például a CoreDNS és a tunnelfront üzemeltetésének elsődleges célját szolgálják ki. A felhasználói csomópontok készletei az alkalmazás-hüvelyek üzemeltetésének elsődleges céljaként szolgálnak. Az Application hüvelyek azonban a rendszercsomópont-készletekbe ütemezhetők, ha csak egy készletet szeretne használni az AK-fürtben. Minden AK-fürtnek legalább egy csomóponttal rendelkező rendszercsomópont-készletet kell tartalmaznia. 
+Az Azure Kubernetes szolgáltatásban (ak) az azonos konfiguráció csomópontjai a *csomópont-készletekbe*vannak csoportosítva. A csomópont-készletek az alkalmazásokat futtató mögöttes virtuális gépeket tartalmazzák. A rendszercsomópont-készletek és a felhasználói csomópontok készletei két különböző Node Pool-mód az AK-fürtökhöz. A rendszercsomópont-készletek a kritikus rendszerhüvelyek, például a CoreDNS és a tunnelfront üzemeltetésének elsődleges célját szolgálják ki. A felhasználói csomópontok készletei az alkalmazás-hüvelyek üzemeltetésének elsődleges céljaként szolgálnak. Az Application hüvelyek azonban a rendszercsomópont-készletekbe ütemezhetők, ha csak egy készletet szeretne használni az AK-fürtben. Minden AK-fürtnek legalább egy csomóponttal rendelkező rendszercsomópont-készletet kell tartalmaznia.
 
 > [!Important]
 > Ha az AK-fürthöz egyetlen rendszercsomópont-készletet futtat éles környezetben, javasoljuk, hogy legalább három csomópontot használjon a csomópont-készlethez.
@@ -29,7 +30,7 @@ A rendszercsomópont-készleteket támogató AK-fürtök létrehozásakor és ke
 * Tekintse [meg a kvótákat, a virtuális gépek méretére vonatkozó korlátozásokat és a régió elérhetőségét az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions].
 * Az AK-fürtöt virtuálisgép-méretezési csoportokkal kell felépíteni.
 * A csomópontok készletének neve csak kisbetűket és kisbetűs karaktereket tartalmazhat. A Linux-csomópontok készletei esetében a hossznak 1 és 12 karakter közöttinek kell lennie. Windows-csomópontos készletek esetén a hossznak 1 és 6 karakter közöttinek kell lennie.
-* A csomópont-készlet üzemmódjának beállításához a 2020-03-01-es vagy újabb API-verziót kell használni.
+* A csomópont-készlet üzemmódjának beállításához a 2020-03-01-es vagy újabb API-verziót kell használni. Az 2020-03-01-nál régebbi API-verziókban létrehozott fürtök csak a felhasználói csomópontok készleteit tartalmazzák, de áttelepíthetők a rendszercsomópont-készletek tárolására a következő [frissítési készlet üzemmódjának lépéseit](#update-existing-cluster-system-and-user-node-pools)követve.
 * A csomópont-készlet módja kötelező tulajdonság, és az ARM-sablonok vagy a közvetlen API-hívások használata esetén explicit módon kell megadni.
 
 ## <a name="system-and-user-node-pools"></a>Rendszer-és felhasználói csomópontok készletei
@@ -115,7 +116,10 @@ A System Node-készletekhez egy **rendszer** típusú mód van definiálva, és 
 }
 ```
 
-## <a name="update-system-and-user-node-pools"></a>Rendszer-és felhasználói csomópont-készletek frissítése
+## <a name="update-existing-cluster-system-and-user-node-pools"></a>Meglévő fürtrendszer-és felhasználói csomópont-készletek frissítése
+
+> [!NOTE]
+> A rendszercsomópont-készlet üzemmódjának beállításához a 2020-03-01-es vagy újabb API-verziót kell használni. A 2020-03-01-nál régebbi API-verziókban létrehozott fürtök csak a felhasználói csomópontok készleteit tartalmazzák. Ha a rendszercsomópont-készlet funkcióit és előnyeit a régebbi fürtökön szeretné fogadni, frissítse a meglévő Node-készletek üzemmódját az alábbi parancsokkal az Azure CLI legújabb verzióján.
 
 A rendszer-és a felhasználói csomópont-készletek üzemmódját is megváltoztathatja. A rendszercsomópont-készleteket csak akkor módosíthatja felhasználói készletre, ha már létezik egy másik rendszercsomópont-készlet az AK-fürtön.
 

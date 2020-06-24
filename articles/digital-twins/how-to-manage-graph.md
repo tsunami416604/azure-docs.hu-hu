@@ -1,5 +1,5 @@
 ---
-title: Kettős gráf kezelése kapcsolatokkal
+title: Ikergráf kezelése kapcsolatokkal
 titleSuffix: Azure Digital Twins
 description: Megtudhatja, hogyan kezelheti a digitális ikrek gráfját úgy, hogy összekapcsolja őket a kapcsolatokkal.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 362b5d0f1fee1ca1763cc44f106567c543546eac
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e332936543cc36e20b88da4ce5cc9115d0890967
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612955"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725698"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure digitális ikrek szíve a teljes környezetet jelképező [kettős gráf](concepts-twins-graph.md) . A Twin gráf a **kapcsolatokon**keresztül összekapcsolt digitális ikrekből tevődik össze.
 
@@ -301,7 +304,7 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 
 Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [Fogalmak: lekérdezési nyelv](concepts-query-language.md)

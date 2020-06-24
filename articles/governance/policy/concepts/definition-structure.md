@@ -1,21 +1,21 @@
 ---
 title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
-ms.date: 05/11/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: de9b3c5242f361c9f0cf7128a5ec32c0e7dce428
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: a70534f91584f72ad81b71913c48062e51a324d3
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205024"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052729"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
 Azure Policy az erőforrásokra vonatkozó konvenciókat hoz létre. A szabályzat-definíciók írják le az erőforrás-megfelelőségi [feltételeket](#conditions) , valamint azt, hogy egy adott feltétel teljesül-e. A feltétel egy erőforrás-tulajdonság [mezőjét](#fields) hasonlítja össze egy szükséges értékkel. Az erőforrás-tulajdonságok mezői [aliasok](#aliases)használatával érhetők el. Az erőforrás-tulajdonság mező egy egyértékű mező vagy több értékből álló [tömb](#understanding-the--alias) . A feltétel kiértékelése eltér a tömböknél.
 További információ a [feltételekről](#conditions).
 
-Az egyezmények meghatározásával szabályozhatja a költségeket, és könnyebben kezelheti az erőforrásokat. Megadhatja például, hogy csak bizonyos típusú virtuális gépek engedélyezettek legyenek. Azt is megkövetelheti, hogy minden erőforrásnak legyen egy adott címkéje. A házirendeket az összes alárendelt erőforrás örökli. Ha a szabályzatot egy erőforráscsoporthoz alkalmazza, az az adott erőforráscsoport összes erőforrására érvényes lesz.
+Az egyezmények meghatározásával szabályozhatja a költségeket, és könnyebben kezelheti az erőforrásokat. Megadhatja például, hogy csak bizonyos típusú virtuális gépek engedélyezettek legyenek. Azt is megkövetelheti, hogy az erőforrások egy adott címkével rendelkezzenek. A házirend-hozzárendeléseket a gyermek erőforrások öröklik. Ha a szabályzat-hozzárendelést egy erőforráscsoporthoz alkalmazza, az az adott erőforráscsoport összes erőforrására érvényes lesz.
 
 A szabályzat-definíciós séma itt található:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
@@ -37,7 +37,7 @@ A következő JSON például egy olyan szabályzatot mutat be, amely korlátozza
     "properties": {
         "displayName": "Allowed locations",
         "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
-        "mode": "all",
+        "mode": "Indexed",
         "metadata": {
             "version": "1.0.0",
             "category": "Locations"
@@ -83,7 +83,7 @@ Amíg a **Type (típus** ) tulajdonság nem állítható be, az SDK által vissz
 
 - `Builtin`: Ezeket a szabályzat-definíciókat a Microsoft biztosította és tartja karban.
 - `Custom`: Az ügyfelek által létrehozott összes házirend-definíció rendelkezik ezzel az értékkel.
-- `Static`: A Microsoft **tulajdonában**lévő [szabályozási megfelelőségi](./regulatory-compliance.md) szabályzat definícióját jelzi. A szabályzat-definíciók megfelelőségi eredményei a Microsoft-infrastruktúra harmadik féltől származó auditálásának eredményei. A Azure Portalban ez az érték időnként **Microsoft által felügyelt**jelenik meg. További információ: [megosztott felelősség a felhőben](../../../security/fundamentals/shared-responsibility.md).
+- `Static`: A Microsoft **tulajdonában**lévő [szabályozási megfelelőségi](./regulatory-compliance.md) szabályzat definícióját jelzi. Ezeknek a szabályzat-definícióknak a megfelelőségi eredményei a Microsoft-infrastruktúrával kapcsolatos harmadik féltől származó ellenőrzések eredményei. A Azure Portalban ez az érték időnként **Microsoft által felügyelt**jelenik meg. További információ: [megosztott felelősség a felhőben](../../../security/fundamentals/shared-responsibility.md).
 
 ## <a name="mode"></a>Mód
 
@@ -91,7 +91,7 @@ A **mód** attól függően van konfigurálva, hogy a házirend Azure Resource M
 
 ### <a name="resource-manager-modes"></a>Resource Manager-módok
 
-A **mód** határozza meg, hogy mely erőforrástípusok lesznek kiértékelve egy házirendhez. A támogatott módok a következők:
+A **mód** határozza meg, hogy mely erőforrástípusok legyenek kiértékelve egy házirend-definícióhoz. A támogatott módok a következők:
 
 - `all`: erőforráscsoportok, előfizetések és minden erőforrástípus kiértékelése
 - `indexed`: csak a címkéket és helyet támogató erőforrástípusok kiértékelése
@@ -106,8 +106,8 @@ Javasoljuk, hogy a legtöbb esetben állítsa be a **módot** `all` . A portálo
 
 Az előzetes verzióban jelenleg a következő erőforrás-szolgáltatói módok támogatottak:
 
-- `Microsoft.ContainerService.Data`a belépésvezérlés szabályainak kezeléséhez az [Azure Kubernetes szolgáltatásban](../../../aks/intro-kubernetes.md). Az ezt az erőforrás-szolgáltatói módot használó házirendeknek a [EnforceRegoPolicy](./effects.md#enforceregopolicy) hatást **kell** használniuk. Ez a mód _elavult_.
-- `Microsoft.Kubernetes.Data`Az Azure-beli Kubernetes-fürtök kezeléséhez. Az ezt az erőforrás-szolgáltatói módot használó házirendeknek a [EnforceOPAConstraint](./effects.md#enforceopaconstraint) hatást **kell** használniuk.
+- `Microsoft.ContainerService.Data`a belépésvezérlés szabályainak kezeléséhez az [Azure Kubernetes szolgáltatásban](../../../aks/intro-kubernetes.md). Az ezt az erőforrás-szolgáltatói módot használó definícióknak a [EnforceRegoPolicy](./effects.md#enforceregopolicy) effektust **kell** használniuk. Ez a mód _elavult_.
+- `Microsoft.Kubernetes.Data`Az Azure-beli Kubernetes-fürtök kezeléséhez. Az erőforrás-szolgáltatói üzemmódot használó definíciók a következő hatásokat használják: _naplózás_, _Megtagadás_és _Letiltva_. A [EnforceOPAConstraint](./effects.md#enforceopaconstraint) hatás használatának _elavultnak_kell lennie.
 - `Microsoft.KeyVault.Data`a [Azure Key Vault](../../../key-vault/general/overview.md)tárolók és tanúsítványok kezeléséhez.
 
 > [!NOTE]
@@ -207,7 +207,7 @@ Kezdeményezés vagy szabályzat létrehozásakor meg kell adnia a definíció h
 Ha a definíció helye:
 
 - Az előfizetésen belül csak **az előfizetés** erőforrásait lehet hozzárendelni.
-- **Felügyeleti csoport** – csak a gyermek-felügyeleti csoportokon belüli erőforrások és a gyermek előfizetések rendelhetők hozzá a szabályzathoz. Ha azt tervezi, hogy a házirend-definíciót több előfizetésre is alkalmazza, akkor a helynek az ezeket az előfizetéseket tartalmazó felügyeleti csoportnak kell lennie.
+- **Felügyeleti csoport** – csak a gyermek-felügyeleti csoportokon belüli erőforrások és a gyermek előfizetések rendelhetők hozzá a szabályzathoz. Ha azt tervezi, hogy a házirend-definíciót több előfizetésre is alkalmazza, akkor a helynek az előfizetést tartalmazó felügyeleti csoportnak kell lennie.
 
 ## <a name="policy-rule"></a>Házirend-szabály
 
@@ -283,7 +283,7 @@ A feltétel azt értékeli, hogy egy **mező** vagy az **érték** -hozzáféré
 A **hasonló** és **notLike** feltételek használatakor helyettesítő karaktert kell megadni `*` az értékben.
 Az érték legfeljebb egy helyettesítő karakterből állhat `*` .
 
-A **egyezési** és **notMatch** feltételek használatakor az adott `#` számjegyre, `?` betűre, `.` bármilyen karakterre és bármely más karakterre illeszkedik, amely megfelel a tényleges karakternek. Míg a **Match** és a **notMatch** megkülönbözteti a kis-és nagybetűket, a _stringValue_ kiértékelésére szolgáló összes egyéb feltétel kis-és nagybetűket nem jelent. Kis-és nagybetűket megkülönböztető alternatívák a **matchInsensitively** és a **notMatchInsensitively**szolgáltatásban érhetők el.
+A **egyezési** és **notMatch** feltételek használatakor az adott `#` számjegyre, `?` betűre, `.` bármilyen karakterre és bármely más karakterre illeszkedik, amely megfelel a tényleges karakternek. Ha a **egyezés** és a **notMatch** is megkülönbözteti a kis-és nagybetűket, a _stringValue_ kiértékelésére szolgáló összes egyéb feltétel nem tesz különbséget Kis-és nagybetűket megkülönböztető alternatívák a **matchInsensitively** és a **notMatchInsensitively**szolgáltatásban érhetők el.
 
 Az ** \[ \* \] alias** tömb mezőjének értékeként a tömb minden elemét külön kell kiértékelni a logikai **és** az elemek között. További információ: [az \[ \* \] alias kiértékelése](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
@@ -432,7 +432,7 @@ A módosított szabályzattal rendelkező szabály a `if()` **név** hosszát el
 
 ### <a name="count"></a>Darabszám
 
-Azok a feltételek, amelyek megszámolják, hogy az erőforrás-adattartalomban lévő tömb tagjai közül hányan felelnek meg egy feltétel kifejezésének a **Count** kifejezés használatával. A gyakori forgatókönyvek azt ellenőrzik, hogy a tömb tagjai megfelelnek-e a feltételnek: "legalább az egyike", "a" minden "vagy" nincs ". a **Count** minden [ \[ \* \] alias](#understanding-the--alias) -tömböt kiértékel egy feltétel kifejezéséhez, és összegzi a _valódi_ eredményeket, amelyeket aztán a kifejezés operátorhoz hasonlít. A **Count** kifejezések 3 alkalommal is hozzáadhatók egyetlen **' policyrule osztály** -definícióhoz.
+Azok a feltételek, amelyek megszámolják, hogy az erőforrás-adattartalomban lévő tömb tagjai közül hányan felelnek meg egy feltétel kifejezésének a **Count** kifejezés használatával. A gyakori forgatókönyvek azt ellenőrzik, hogy a tömb tagjai megfelelnek-e a feltételnek: "legalább az egyike", "a" minden "vagy" nincs ". a **Count** minden [ \[ \* \] alias](#understanding-the--alias) -tömböt kiértékel egy feltétel kifejezéséhez, és összegzi a _valódi_ eredményeket, amelyeket aztán a kifejezés operátorhoz hasonlít. A **Count** kifejezések három alkalommal is hozzáadhatók egyetlen **' policyrule osztály** -definícióhoz.
 
 A **Count** kifejezés szerkezete:
 
@@ -605,7 +605,7 @@ Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/te
 
 A következő függvény használható egy házirend-szabályban, de eltér a használattól egy Azure Resource Manager sablonban:
 
-- `utcNow()`– A Resource Manager-sablonoktól eltérően ez a defaultValue-n kívül is használható.
+- `utcNow()`– A Resource Manager-sablonoktól eltérően ez a tulajdonság a _defaultValue_-n kívül is használható.
   - Egy olyan karakterláncot ad vissza, amely az univerzális ISO 8601 DateTime formátumban van beállítva az aktuális dátumra és időpontra vonatkozóan (éééé-hh-NNTóó: PP: SS. fffffffZ).
 
 A következő függvények csak a házirend-szabályokban érhetők el:
@@ -619,7 +619,7 @@ A következő függvények csak a házirend-szabályokban érhetők el:
   - `field`elsődlegesen a **AuditIfNotExists** és a **DeployIfNotExists** használja a kiértékelt erőforráson található hivatkozási mezőkre. Erre a használatra példa látható az [DeployIfNotExists példában](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
   - A szabályzat kiértékelését kiváltó kérelem API-verzióját adja vissza (például: `2019-09-01` ).
-    Ez lesz az az API-verzió, amelyet a PUT/PATCH kérelemben használt az erőforrás-létrehozási/frissítési kérelmekre vonatkozó értékelésekhez. A meglévő erőforrásokon a megfelelőségi értékelés során mindig a legújabb API-verziót használja a rendszer.
+    Ez az érték az a API-verzió, amelyet a PUT/PATCH kérelemben használt az erőforrás-létrehozási/frissítési kérelmekre vonatkozó értékelésekhez. A meglévő erőforrásokon a megfelelőségi értékelés során mindig a legújabb API-verziót használja a rendszer.
   
 #### <a name="policy-function-example"></a>Példa a házirend-függvényre
 

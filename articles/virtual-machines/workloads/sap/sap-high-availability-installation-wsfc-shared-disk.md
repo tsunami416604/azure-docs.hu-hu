@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279831"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688891"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver HA telepítése Windows feladatátvevő fürtön és megosztott lemezen az Azure-beli SAP ASCS/SCS-példányhoz
 
@@ -185,7 +185,7 @@ A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepít�
 1. A Windows DNS-kezelőben hozzon létre egy DNS-bejegyzést a ASCS/SCS-példány virtuális állomásnevét.
 
    > [!IMPORTANT]
-   > A ASCS/SCS-példány virtuális állomásnevét hozzárendelt IP-címnek meg kell egyeznie a Azure Load Balancerhoz rendelt IP-címmel (\<SID\>-LB-ASCS).  
+   > A ASCS/SCS-példány virtuális állomásnevét hozzárendelt IP-címnek meg kell egyeznie a Azure Load Balancerhoz rendelt IP-címmel ( \<SID\> -LB-ASCS).  
    >
    >
 
@@ -195,7 +195,7 @@ A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepít�
 
    _**1. ábra:** Adja meg a DNS-bejegyzést az SAP ASCS/SCS-fürt virtuális neve és TCP/IP-címe számára._
 
-2. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő** > **tartomány**lehetőséget.
+2. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő**  >  **tartomány**lehetőséget.
 
    ![2. ábra: új virtuális név és TCP/IP-cím az SAP ASCS/SCS-fürt konfigurációjához][sap-ha-guide-figure-3047]
 
@@ -221,7 +221,7 @@ A következő néhány feladat nem szerepel a szabványos SAP-telepítési dokum
 
 ### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>Az ASCS/SCS-példány SAP-profiljának módosítása
 
-Először adjon hozzá egy új profil paramétert. A profil paraméter megakadályozza a kapcsolódást az SAP-munkafolyamatok és a sorba helyezni-kiszolgáló között, ha túl sokáig tétlenek. Megemlítjük a problémát a [beállításjegyzékbeli bejegyzések hozzáadása az SAP ASCS/SCS-példányhoz tartozó fürtcsomópontok esetében][sap-ha-guide-8.11]című témakörben. Ebben a szakaszban két módosítást is bevezetünk néhány Alapszintű TCP/IP-kapcsolódási paraméterre. Egy második lépésben be kell állítania a sorba helyezni-kiszolgálót egy `keep_alive` jel küldéséhez, hogy a kapcsolatok ne elérjenek az Azure belső terheléselosztó üresjárati küszöbértékét.
+Először adjon hozzá egy új profil paramétert. A profil paraméter megakadályozza a kapcsolódást az SAP-munkafolyamatok és a sorba helyezni-kiszolgáló között, ha túl sokáig tétlenek. Megemlítjük a problémát a [beállításjegyzékbeli bejegyzések hozzáadása az SAP ASCS/SCS-példányhoz tartozó fürtcsomópontok esetében][sap-ha-guide-8.11]című témakörben. Ebben a szakaszban két módosítást is bevezetünk néhány Alapszintű TCP/IP-kapcsolódási paraméterre. Egy második lépésben be kell állítania a sorba helyezni-kiszolgálót egy jel küldéséhez, `keep_alive` hogy a kapcsolatok ne elérjenek az Azure belső terheléselosztó üresjárati küszöbértékét.
 
 Az ASCS/SCS-példány SAP-profiljának módosítása:
 
@@ -267,7 +267,7 @@ Mintavételi Port hozzáadása:
 
    A portszám az SAP Azure Resource Manager-sablonokban van meghatározva. A portszám a PowerShellben is hozzárendelhető.
 
-   Ha új ProbePort értéket szeretne beállítani az SAP \<SID\> IP-fürterőforrás-erőforráshoz, futtassa a következő PowerShell-parancsfájlt a környezet PowerShell-változóinak frissítéséhez:
+   Az SAP IP-fürterőforrás új ProbePort értékének beállításához \<SID\> futtassa a következő PowerShell-parancsfájlt a környezet PowerShell-változóinak frissítéséhez:
 
    ```powershell
    $SAPSID = "PR1"      # SAP <SID>
@@ -325,7 +325,7 @@ Mintavételi Port hozzáadása:
    }
    ```
 
-   Az SAP \<SID\> -fürt szerepkör online állapotba hozása után ellenőrizze, hogy az **ProbePort** az új értékre van-e állítva.
+   Az SAP \<SID\> -fürt szerepkör online állapotba állítása után ellenőrizze, hogy az **ProbePort** az új értékre van-e állítva.
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -350,7 +350,7 @@ Nyisson meg egy Windows tűzfal mintavételi portot mindkét fürtcsomópontokon
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-A **ProbePort** értéke **62000**. Most elérheti a fájlmegosztás \\\ascsha-clsap\sapmnt más gazdagépekről, például a ascsha-adattervezők címről.
+A **ProbePort** értéke **62000**. Most elérheti a fájlmegosztás \\ \ascsha-clsap\sapmnt más gazdagépekről, például a ascsha-adattervezők címről.
 
 ## <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Az adatbázis-példány telepítése
 
@@ -370,11 +370,11 @@ _**5. ábra:** Az SAP ERS-példány szolgáltatás típusának megváltoztatása
 
 ## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>Az SAP Primary Application Server telepítése
 
-Telepítse az elsődleges Application Server-(PAS- \<)\>példány SID-di-0 értéket azon a virtuális GÉPEN, amelyet a Pas számára jelölt ki. Nincsenek függőségek az Azure-ban. Nincs DataKeeper-specifikus beállítás.
+Telepítse az elsődleges Application Server-(PAS-) példányt a \<SID\> -di-0-ra azon a virtuális gépen, amelyet a Pas számára jelölt ki. Nincsenek függőségek az Azure-ban. Nincs DataKeeper-specifikus beállítás.
 
 ## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>Az SAP további alkalmazáskiszolgáló telepítése
 
-Telepítsen egy SAP további alkalmazáskiszolgáló (AAS) szolgáltatást minden olyan virtuális gépre, amelyet az SAP Application Server-példány üzemeltetésére jelölt ki. Például \<: SID\>-di-1 – \<SID\>-di-&lt;n.&gt;
+Telepítsen egy SAP további alkalmazáskiszolgáló (AAS) szolgáltatást minden olyan virtuális gépre, amelyet az SAP Application Server-példány üzemeltetésére jelölt ki. Például on \<SID\> -di-1 – \<SID\> -di- &lt; n &gt; .
 
 > [!NOTE]
 > Ez befejezi a magas rendelkezésre állású SAP NetWeaver rendszer telepítését. Ezután folytassa a feladatátvételi teszttel.
@@ -388,9 +388,9 @@ A Feladatátvevőfürt-kezelő és a SIOS DataKeeper-kezelő és konfigurációs
 
 Az SAP PR1-fürt az A fürtcsomóponton fut. Például: PR1-ASCs-0. Rendelje hozzá a (z) "a" csomóponthoz az SAP PR1 részét képező megosztott lemezmeghajtókat. A ASCS/SCS-példány a következő lemezmeghajtókat is használja. 
 
-![6. ábra: Feladatátvevőfürt-kezelő: az \<SAP\> SID-fürt csoport a "a" fürtcsomóponton fut][sap-ha-guide-figure-5000]
+![6. ábra: Feladatátvevőfürt-kezelő: az SAP \< SID-fürt csoport a "a" \> fürtcsomóponton fut][sap-ha-guide-figure-5000]
 
-_**6. ábra:** Feladatátvevőfürt-kezelő: az SAP \<SID\> -fürt csoport a "a" fürtcsomóponton fut_
+_**6. ábra:** Feladatátvevőfürt-kezelő: az SAP-fürt a " \<SID\> a" fürtcsomóponton fut_
 
 A SIOS DataKeeper-kezelés és-konfigurálás eszközben láthatja, hogy a megosztott lemez adatainak szinkron módon replikálódnak a (z) "A" fürt " Például a rendszer replikálja a PR1-ASCs-0 [10.0.0.40] típusról a PR1-ASCs-1 [10.0.0.41] értékre.
 
@@ -400,7 +400,7 @@ _**7. ábra:** A SIOS DataKeeper-ben replikálja a helyi kötetet a fürt csomó
 
 ### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>Feladatátvétel az A csomópontról a B csomópontra
 
-1. Válasszon egyet az alábbi lehetőségek közül, ha feladatátvételt szeretne kezdeményezni \<az\> SAP SID-fürtjének a (z) fürt csomópontból a B csomópontba való elindításához:
+1. Válasszon egyet az alábbi lehetőségek közül, ha feladatátvételt szeretne kezdeményezni az SAP-fürtről a (z) " \<SID\> a" fürtről a B csomópontra:
    - Feladatátvevőfürt-kezelő  
    - Feladatátvevő fürt PowerShell
 
@@ -411,15 +411,15 @@ _**7. ábra:** A SIOS DataKeeper-ben replikálja a helyi kötetet a fürt csomó
    Move-ClusterGroup -Name $SAPClusterGroup
 
    ```
-2. Indítsa újra az A fürtcsomópont-csomópontot a Windows vendég operációs rendszeren. Ezzel elindítja az SAP \<SID\> -fürt csoportjának automatikus feladatátvételét az a csomópontról a B csomópontra.  
-3. Indítsa újra az A fürtcsomópont-csomópontot a Azure Portal. Ezzel elindítja az SAP \<SID\> -fürt csoportjának automatikus feladatátvételét az a csomópontról a B csomópontra.  
-4. Indítsa újra az A fürtcsomópont Azure PowerShell használatával. Ezzel elindítja az SAP \<SID\> -fürt csoportjának automatikus feladatátvételét az a csomópontról a B csomópontra.
+2. Indítsa újra az A fürtcsomópont-csomópontot a Windows vendég operációs rendszeren. Ez automatikusan feladatátvételt kezdeményez az SAP \<SID\> -fürtből az a csomópontról a B csomópontra.  
+3. Indítsa újra az A fürtcsomópont-csomópontot a Azure Portal. Ez automatikusan feladatátvételt kezdeményez az SAP \<SID\> -fürtből az a csomópontról a B csomópontra.  
+4. Indítsa újra az A fürtcsomópont Azure PowerShell használatával. Ez automatikusan feladatátvételt kezdeményez az SAP \<SID\> -fürtből az a csomópontról a B csomópontra.
 
-   A feladatátvételt követően az \<SAP\> SID-fürterőforrás a B fürtcsomóponton fut. Például a PR1-ASCs-1 számítógépen fut.
+   A feladatátvételt követően az SAP- \<SID\> fürt a B fürtcsomóponton fut. Például a PR1-ASCs-1 számítógépen fut.
 
-   ![8. ábra: a Feladatátvevőfürt-kezelő az SAP \<SID\> -fürt csoport a B csomóponton fut.][sap-ha-guide-figure-5002]
+   ![8. ábra: a Feladatátvevőfürt-kezelő az SAP \< SID- \> fürt csoport a B csomóponton fut.][sap-ha-guide-figure-5002]
 
-   _**8. ábra**: a FELADATÁTVEVŐFÜRT-kezelő az SAP \<SID\> -fürt csoport a B csomóponton fut._
+   _**8. ábra**: a (z) Feladatátvevőfürt-kezelőban az SAP- \<SID\> fürt a B fürtcsomóponton fut._
 
    A megosztott lemez most már csatolva van a B csomóponthoz. a SIOS DataKeeper a B csomóponton lévő forrás kötet-meghajtóról származó adatok replikálását célozza meg a (z) "A" fürt "A" csomópontjára. A replikálás például a PR1-ASCs-1 [10.0.0.41] verzióról a PR1-ASCs-0 [10.0.0.40] verzióra.
 

@@ -2,13 +2,13 @@
 title: Sablon szerkezete és szintaxisa
 description: Ismerteti Azure Resource Manager sablonok felépítését és tulajdonságait a deklaratív JSON-szintaxis használatával.
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: 1014cb34cd82ed36fec0ab9f9ea3fd71b528178b
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/22/2020
+ms.openlocfilehash: 4fdf386aa3b17f46589183706b2a91637acacdb7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465813"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208824"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Az ARM-sablonok struktúrájának és szintaxisának megismerése
 
@@ -130,7 +130,7 @@ További információ a `copy` változó értékének a használatával történ
 
 Példák a változók használatára: [változók Azure Resource Manager sablonban](template-variables.md).
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 A sablonon belül létrehozhat saját függvényeket is. Ezek a függvények a sablonban használhatók. Jellemzően olyan bonyolult kifejezéseket határozhat meg, amelyeket nem szeretne megismételni a sablon során. A felhasználó által definiált függvényeket a sablonok által támogatott kifejezésekből és [függvényekből](template-functions.md) hozza létre.
 
@@ -277,7 +277,7 @@ A következő példa egy kimeneti definíció szerkezetét mutatja be:
 | kimenet – név |Yes |A kimeneti érték neve. Érvényes JavaScript-azonosítónak kell lennie. |
 | feltétel |No | Logikai érték, amely jelzi, hogy a rendszer visszaadja-e ezt a kimeneti értéket. Ha a `true` érték szerepel a központi telepítés kimenetében. Ekkor `false` a rendszer kihagyja a kimeneti értéket a központi telepítéshez. Ha nincs megadva, az alapértelmezett érték: `true` . |
 | típus |Yes |A kimeneti érték típusa A kimeneti értékek ugyanazokat a típusokat támogatják, mint a sablon bemeneti paraméterei. Ha a kimeneti típushoz **SecureString** ad meg, az érték nem jelenik meg a telepítési előzményekben, és nem kérhető le másik sablonból. Ha egy titkos értéket több sablonban szeretne használni, tárolja a titkot egy Key Vaultban, és hivatkozzon a titkos kulcsra a paraméter fájljában. További információ: [a Azure Key Vault használata a biztonságos paraméterek értékének](key-vault-parameter.md)átadására az üzembe helyezés során. |
-| érték |No |A sablon nyelvi kifejezése, amelyet a rendszer kiértékel, és kimeneti értékként ad vissza. Adjon meg **értéket** vagy **másolatot**. |
+| value |No |A sablon nyelvi kifejezése, amelyet a rendszer kiértékel, és kimeneti értékként ad vissza. Adjon meg **értéket** vagy **másolatot**. |
 | másolás |No | Egy kimenet egynél több értékének visszaküldésére szolgál. **Érték** vagy **Másolás**megadása. További információ: [a kimenet iterációja Azure Resource Manager-sablonokban](copy-outputs.md). |
 
 Példák a kimenetek használatára: [Azure Resource Manager sablon kimenetei](template-outputs.md).
@@ -290,7 +290,7 @@ Van néhány lehetőség, amelyekkel megjegyzéseket és metaadatokat adhat hozz
 
 ### <a name="comments"></a>Megjegyzések
 
-A beágyazott megjegyzésekhez használhatja a vagy a parancsot `//` , `/* ... */` de ez a szintaxis nem működik az összes eszközzel. A portál sablon-szerkesztője nem használható beágyazott megjegyzésekkel rendelkező sablonokon való működéshez. Ha ezt a megjegyzést adja hozzá, győződjön meg arról, hogy az eszköz támogatja a beágyazott JSON-megjegyzéseket.
+A beágyazott megjegyzésekhez használhatja a vagy a parancsot `//` , `/* ... */` de ez a szintaxis nem működik az összes eszközzel. Ha ezt a megjegyzést adja hozzá, győződjön meg arról, hogy az eszköz támogatja a beágyazott JSON-megjegyzéseket.
 
 > [!NOTE]
 > A sablonok megjegyzésekkel történő üzembe helyezéséhez az Azure CLI és a 2.3.0 verziójának használatával a kapcsolót kell használnia `--handle-extended-json-format` .
@@ -406,10 +406,10 @@ A sztringeket több sorba is lehet bontani. Például tekintse meg a Location (h
 
 Ha többsoros karakterláncokkal szeretné telepíteni a sablonokat az Azure CLI és a 2.3.0 verziójának használatával, akkor a kapcsolót kell használnia `--handle-extended-json-format` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
 * A sablonon belül használható függvények részleteiért lásd: [Azure Resource Manager template functions](template-functions.md).
 * Ha több sablont szeretne egyesíteni az üzembe helyezés során, olvassa el a [csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
 * A sablonok létrehozásával kapcsolatos javaslatokért lásd: [Azure Resource Manager sablon ajánlott eljárásai](template-best-practices.md).
-* Az összes Azure-környezetben és Azure Stackban használható Resource Manager-sablonok létrehozásával kapcsolatos javaslatokért lásd: [Azure Resource Manager-sablonok fejlesztése a felhő konzisztenciája érdekében](templates-cloud-consistency.md).
+* A gyakori kérdésekre adott válaszokért tekintse meg az [ARM-sablonokkal kapcsolatos gyakori kérdések](frequently-asked-questions.md)című témakört.

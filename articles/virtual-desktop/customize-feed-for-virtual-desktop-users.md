@@ -4,23 +4,23 @@ description: A Windows rendszerű virtuális asztali felhasználók hírcsatorn�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 961fadfff0147d8c5258fa5acf31d8b0649ea12a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 99c63fd04a40b1a4e591f5ad42d8f776e8e5b67c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612894"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208501"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
 
 >[!IMPORTANT]
 >Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md).
 >
-> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Testreszabhatja a hírcsatornát, hogy a RemoteApp-és távoli asztali erőforrások felismerhető módon jelenjenek meg a felhasználók számára.
@@ -54,30 +54,30 @@ Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | f
 A kimenet így néz ki:
 
 ```powershell
-CommandLineArgument : 
-CommandLineSetting  : DoNotAllow 
-Description         : 
-FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
-FriendlyName        : Microsoft Word 
-IconContent         : {0, 0, 1, 0…} 
-IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64 
-IconIndex           : 0 
-IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
-Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word 
-Name                : 0301RAG/Microsoft Word 
-ShowInPortal        : False 
-Type                : Microsoft.DesktopVirtualization/applicationgroups/applications 
+CommandLineArgument :
+CommandLineSetting  : DoNotAllow
+Description         :
+FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe
+FriendlyName        : Microsoft Word
+IconContent         : {0, 0, 1, 0…}
+IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64
+IconIndex           : 0
+IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe
+Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word
+Name                : 0301RAG/Microsoft Word
+ShowInPortal        : False
+Type                : Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 A rövid név frissítéséhez futtassa a következő parancsmagot:
 
 ```powershell
-Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe" 
+Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe"
 ```
 
 A rövid név sikeres frissítésének megerősítéséhez futtassa a következő parancsmagot:
 
 ```powershell
-Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName 
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName
 ```
 
 A parancsmagnak a következő kimenetet kell adnia:
@@ -104,28 +104,28 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 ## <a name="customize-a-display-name-in-azure-portal"></a>Megjelenítendő név testreszabása Azure Portal
 
-A közzétett távoli asztal megjelenítendő nevét úgy módosíthatja, hogy egy rövid nevet állít be a Azure Portal használatával. 
+A közzétett távoli asztal megjelenítendő nevét úgy módosíthatja, hogy egy rövid nevet állít be a Azure Portal használatával.
 
-1. Jelentkezzen be az Azure Portalra a <https://portal.azure.com> webhelyen. 
+1. Jelentkezzen be az Azure Portalra a <https://portal.azure.com> webhelyen.
 
 2. Keresse meg a **Windows rendszerű virtuális asztalt**.
 
-3. A szolgáltatások területen válassza a **Windows virtuális asztal**elemet. 
+3. A szolgáltatások területen válassza a **Windows virtuális asztal**elemet.
 
-4. A Windows rendszerű virtuális asztal lapon válassza ki az **alkalmazáscsoport** elemet a képernyő bal oldalán, majd válassza ki a szerkeszteni kívánt alkalmazáscsoport nevét. 
+4. A Windows rendszerű virtuális asztal lapon válassza ki az **alkalmazáscsoport** elemet a képernyő bal oldalán, majd válassza ki a szerkeszteni kívánt alkalmazáscsoport nevét.
 
 5. A képernyő bal oldalán található menüben válassza az **alkalmazások** lehetőséget.
 
-6. Válassza ki a frissíteni kívánt alkalmazást, majd adjon meg egy új **megjelenítendő nevet**. 
+6. Válassza ki a frissíteni kívánt alkalmazást, majd adjon meg egy új **megjelenítendő nevet**.
 
 7. Kattintson a **Mentés** gombra. A szerkesztett alkalmazásnak ekkor meg kell jelennie a frissített névnek.
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy testre szabta a hírcsatornát a felhasználók számára, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe a teszteléshez. Ehhez folytassa a Kapcsolódás a Windows rendszerű virtuális asztali környezetekhez:
-    
+
  * [Windows 10 vagy Windows 7 rendszerű kapcsolat](connect-windows-7-and-10.md)
- * [Kapcsolódás a webügyféllel](connect-web.md) 
+ * [Kapcsolódás a webügyféllel](connect-web.md)
  * [Kapcsolódás az Android-ügyféllel](connect-android.md)
  * [Kapcsolódás az iOS-ügyfélhez](connect-ios.md)
  * [Kapcsolódás a macOS-ügyfélhez](connect-macos.md)

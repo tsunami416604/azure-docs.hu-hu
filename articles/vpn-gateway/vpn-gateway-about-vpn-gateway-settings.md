@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244861"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708144"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Tudnivalók a VPN Gateway konfigurációs beállításairól
 
@@ -39,7 +39,7 @@ A-GatewayType elérhető értékei a következők:
 * Vpn
 * ExpressRoute
 
-A VPN-átjáróhoz `-GatewayType` a *VPN*szükséges.
+A VPN-átjáróhoz a `-GatewayType` *VPN*szükséges.
 
 Példa:
 

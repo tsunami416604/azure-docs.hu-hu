@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 11/26/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d0392cd8e94ba8a9026f557b90e740fbed7f50c
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74707596"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809096"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>BLOB titkosítási állapotának keresése
 
@@ -98,4 +98,4 @@ A AzCopy a blob-adatok másolásával kapcsolatos további információkért lá
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure Storage-titkosítás a REST-adatokhoz](../common/storage-service-encryption.md)
+[Inaktív adatok Azure Storage-titkosítása](../common/storage-service-encryption.md)

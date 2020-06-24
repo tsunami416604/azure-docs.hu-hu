@@ -5,15 +5,15 @@ description: A Azure Firewall konfigurálásának lépései egy virtuális WAN-k
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 01e703b0e1062e38095358565260addbd07351f1
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f20ed76a72eecce59a7b8795a42b033230a2f7e0
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801561"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753685"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Azure Firewall konfigurálása virtuális WAN-központban
 
@@ -70,6 +70,6 @@ Ha vissza szeretne térni a hub **– Áttekintés** lapra, a következő ábrá
 
 [![Visszatérés az áttekintéshez](./media/howto-firewall/arrow.png)](./media/howto-firewall/arrow.png#lightbox)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.

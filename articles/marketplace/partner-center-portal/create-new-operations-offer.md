@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 13e05a8771be162ebe37cc79fc93cfa404183d1d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: badad6da0c0e244cbdb30e4b89955dd073782f04
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846835"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752542"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations-ajánlat létrehozása
 
@@ -29,7 +29,7 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
 3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Dynamics 365 for Operations**lehetőséget.
 
-    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-dynamics-365-ops.png)
+    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-dynamics-365-operations.png)
 
 > [!NOTE]
 > Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
@@ -60,7 +60,7 @@ Az ajánlatát ingyenesen listázhatja, ha érvényes URL-címet ad meg (a *http
 
 #### <a name="free-trial-listing"></a>Ingyenes próbaverzió (Listázás)
 
-Az ajánlat az ingyenes próbaverzióra mutató hivatkozással listázhatja az ügyfeleket, ha egy érvényes URL-címet (a *http* -t vagy a *https*-t) biztosít, ahol próbaverziót kaphat. Például: `https://contoso.com/trial/my-app`. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
+Az ajánlatot az ingyenes próbaverzióra mutató hivatkozással listázhatja, ha egy érvényes URL-címet biztosít (a vagy a verziótól kezdve `http` `https` ), ahol próbaverziót kaphat. Például: `https://contoso.com/trial/my-app`. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
 
 > [!NOTE]
 > Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak Azure Active Directory (Azure AD) használatával szerezhetik be a felhasználói adatokat, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok nem támogatottak a jogkivonat használatával történő hitelesítéshez.
@@ -132,6 +132,23 @@ Meg kell határoznia a piactér részleteit (az ajánlat nevét, leírását, k�
 
 > [!NOTE]
 > Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek, a használati feltételek stb.) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
+
+Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban:
+
+:::image type="content" source="media/example-azure-marketplace-d365-operations.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Embléma
+2. Termékek
+3. Kategóriák
+4. Ágazatok
+5. Támogatási címe (hivatkozás)
+6. Használati feltételek
+7. Adatvédelmi irányelvek
+8. Ajánlat neve
+9. Képernyőképek/videók
+10. Leírás
 
 ### <a name="name"></a>Name
 
@@ -293,7 +310,7 @@ A Microsoft el tudja távolítani a tesztelési meghajtó beállításának öss
 
 - **Példány URL-címe** (kötelező) – az az URL-cím, amelyben az ügyfél elkezdi a tesztelési meghajtót. Általában a Dynamics 365-példány URL-címe, amely az alkalmazást az alkalmazással együtt futtatja (például: `https://testdrive.crm.dynamics.com` ).
 
-- **Példány webes API URL-címe** (kötelező) – a Dynamics 365-példány webes API URL-címének beolvasása a Microsoft 365 fiókba való bejelentkezéssel és a **Beállítások** \& gt; **Testreszabás** \& gt **Fejlesztői erőforrások** \& gt A **példány webes API-ját (a szolgáltatás gyökerének URL-címe)** másolja az itt található URL-címet (például: `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
+- **Példány webes API URL-címe** (kötelező) – a Dynamics 365-példány webes API URL-címének lekéréséhez jelentkezzen be a Microsoft 365-fiókjába, és navigáljon a **Beállítások**  >  **testreszabása**  >  **fejlesztői erőforrások**  >  **példány webes API (szolgáltatás gyökerének URL-címe)** mezőbe, és másolja az itt található URL-címet (például: `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Szerepkör neve** (kötelező) – adja meg az egyéni Dynamics 365-tesztelési meghajtóban definiált biztonsági szerepkör nevét. Ezt a rendszer a tesztelési meghajtó (például a test-Drive-role) során rendeli hozzá a felhasználóhoz.
 
@@ -321,7 +338,7 @@ Azok a termékek, amelyek interaktív Power BI vizualizációt szeretnének bemu
 
 Ha a tesztelési meghajtót az Ön nevében szeretné üzembe helyezni, hozzon létre és adjon meg egy különálló, egyedi Azure-előfizetést. (Power BI tesztelési meghajtók esetében nem szükséges).
 
-- **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges) – adja meg az előfizetés azonosítóját, hogy hozzáférést biztosítson az Azure-fiók szolgáltatásaihoz az erőforrás-használat jelentéskészítéséhez és számlázásához. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](https://docs.microsoft.com/azure/billing/billing-create-subscription) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztásával megjelenítheti az előfizetés-AZONOSÍTÓját (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
+- **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges) – adja meg az előfizetés azonosítóját, hogy hozzáférést biztosítson az Azure-fiók szolgáltatásaihoz az erőforrás-használat jelentéskészítéséhez és számlázásához. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](https://docs.microsoft.com/azure/billing/billing-create-subscription) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztása esetén megjelenik az előfizetési azonosító (például "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
 - **Azure ad-bérlő azonosítója** (kötelező) – adja meg a Azure Active Directory (ad) [bérlői azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok**elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév címe alapján is megkeresheti a következő helyen: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 

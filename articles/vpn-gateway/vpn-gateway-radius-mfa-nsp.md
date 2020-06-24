@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 941b6ac86941824351f83592998e8735e3eb8ee5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c439113907c2eb28c41aed3c21c1d27398d5207
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780368"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987078"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Az Azure VPN Gateway RADIUS-hitelesítésének integrálása az NPS-kiszolgálóval Multi-Factor Authentication 
 
@@ -65,13 +65,13 @@ Az MFA engedélyezéséhez a felhasználóknak Azure Active Directory (Azure AD)
 
     ![A RADIUS-ügyfél speciális beállításaival kapcsolatos rendszerkép](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
-4. Nyissa meg a **házirendek** > **hálózati házirendek**csomópontot, kattintson duplán **a Microsoft Útválasztás és távelérési kiszolgáló** házirendje kapcsolatok elemre, válassza a **hozzáférés engedélyezése**lehetőséget, majd kattintson **az OK**gombra.
+4. Nyissa meg a **házirendek**  >  **hálózati házirendek**csomópontot, kattintson duplán **a Microsoft Útválasztás és távelérési kiszolgáló** házirendje kapcsolatok elemre, válassza a **hozzáférés engedélyezése**lehetőséget, majd kattintson **az OK**gombra.
 
 ### <a name="step-3-configure-the-virtual-network-gateway"></a>3. lépés a virtuális hálózati átjáró konfigurálása
 
 1. Jelentkezzen be [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg a létrehozott virtuális hálózati átjárót. Győződjön meg arról, hogy az átjáró típusa **VPN** , és hogy a VPN-típus **Route-alapú**.
-3. Kattintson a **pont – hely konfiguráció** > **konfigurálása most**lehetőségre, majd adja meg a következő beállításokat:
+3. Kattintson a **pont – hely konfiguráció**  >  **konfigurálása most**lehetőségre, majd adja meg a következő beállításokat:
 
     - **Címkészlet**: írja be az 1. lépésben létrehozott átjáró-alhálózatot.
     - **Hitelesítés típusa**: válassza a **RADIUS-hitelesítés**lehetőséget.

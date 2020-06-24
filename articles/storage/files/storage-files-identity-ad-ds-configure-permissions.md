@@ -5,18 +5,18 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 06/07/2020
+ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: b8ff58e830d9ca992db4461ee5c75659120c89c1
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 34535cda82ba039ace98b6055e8f7096c5454fda
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629584"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207872"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Harmadik rész: a könyvtár-és a fájl szintű engedélyek konfigurálása SMB protokollon keresztül 
 
-A cikk elkezdése előtt győződjön meg arról, hogy végrehajtotta az előző cikket, [rendeljen hozzá megosztási szintű engedélyeket egy identitáshoz](storage-files-identity-ad-ds-assign-permissions.md). Győződjön meg arról, hogy a megosztási szintű engedélyek vannak érvényben.
+A cikk elkezdése előtt győződjön meg arról, hogy végrehajtotta az előző cikket, [rendeljen hozzá megosztási szintű engedélyeket egy identitáshoz](storage-files-identity-ad-ds-assign-permissions.md) , hogy megbizonyosodjon arról, hogy a megosztási szintű engedélyek érvényben vannak.
 
 Miután megosztási szintű engedélyeket rendelt a RBAC-hez, a megfelelő Windows ACL-eket kell konfigurálnia a gyökér, a könyvtár vagy a fájl szintjén, hogy kihasználhassa a részletes hozzáférés-vezérlés előnyeit. Gondoljon arra, hogy a RBAC engedélyek magas szintű forgalomirányító, amely meghatározza, hogy a felhasználó hozzáférhet-e a megosztáshoz. Míg a Windows ACL-ek részletesebben működnek, hogy megtudja, milyen műveleteket végezhet a felhasználó a címtár vagy a fájl szintjén. A megosztási szint és a fájl/könyvtár szintű engedélyek akkor is érvénybe lépnek, ha egy felhasználó egy fájlhoz vagy könyvtárhoz próbál hozzáférni, tehát ha a kettő között különbség van, akkor csak a legszigorúbb korlátozás lesz érvényben. Ha például egy felhasználó rendelkezik írási/olvasási hozzáféréssel a fájl szintjén, de csak egy megosztási szinten olvas, akkor csak a fájlt tudja olvasni. Ugyanez igaz lehet, ha fordították, és a felhasználó olvasási/írási hozzáféréssel rendelkezik a megosztás szintjén, de csak a fájl szintjén olvashatja el.
 
@@ -85,7 +85,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 A Windows ACL-ek és a különböző típusú támogatott engedélyek beállításával kapcsolatos további információkért tekintse meg [az icacls parancssori útmutatója](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy a funkció engedélyezve és konfigurálva van, folytassa a következő cikkel, amelyben csatlakoztathatja az Azure-fájlmegosztást egy tartományhoz csatlakoztatott virtuális gépről.
 

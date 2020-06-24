@@ -3,7 +3,7 @@ title: 'Gyors útmutató: biztonsági másolat visszaállítása (SSMS)'
 titleSuffix: Azure SQL Managed Instance
 description: Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja vissza az adatbázisok biztonsági mentését az Azure SQL felügyelt példányaira SQL Server Management Studio (SSMS) használatával.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 23deba1dd2bbb706d1c76cb71cf1c08330049036
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 0d10105648f434eb1d02a821e972e789bd39d66f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659309"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708443"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Gyors útmutató: adatbázis visszaállítása az Azure SQL felügyelt példányára a SSMS használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ A SQL Server Management Studio az alábbi lépéseket követve állítsa vissza 
 > Az adatbázis-visszaállítási művelet aszinkron és újrapróbálható. Előfordulhat, hogy a rendszer hibát jelez SQL Server Management Studio, ha a kapcsolatok megszakadnak, vagy lejár az időtúllépés. Azure SQL Database továbbra is megkísérli visszaállítani az adatbázist a háttérben, és nyomon követheti a visszaállítás előrehaladását a [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek használatával.
 > A visszaállítási folyamat egyes fázisaiban egyedi azonosítót fog látni a rendszernézetek tényleges neve helyett. Ismerje meg az `RESTORE` utasítások viselkedésével kapcsolatos [here](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)eltéréseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha az 5. lépésben az adatbázis-visszaállítás a 22003-es AZONOSÍTÓJÚ üzenettel megszűnik, hozzon létre egy új biztonságimásolat-fájlt, amely biztonsági mentési ellenőrzőösszegeket tartalmaz, és végezze el a visszaállítást. A biztonsági mentés vagy a visszaállítás során olvassa el a [biztonsági másolatok ellenőrzőösszegének engedélyezése vagy letiltása](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)című témakört.
 - Az URL-címekre történő biztonsági mentés hibaelhárítását lásd: [SQL Server biztonsági mentés az URL-címekhez – ajánlott eljárások és hibaelhárítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).

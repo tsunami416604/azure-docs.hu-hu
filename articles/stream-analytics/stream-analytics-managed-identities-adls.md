@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254377"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712377"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Stream Analytics hitelesítése Azure Data Lake Storage Gen1 felügyelt identitások használatával
 
@@ -66,7 +66,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
 
 ## <a name="stream-analytics-tools-for-visual-studio"></a>A Visual studióhoz készült Stream Analytics eszközök
 
-1. A JobConfig. JSON fájlban állítsa a **rendszer által hozzárendelt identitás használata** **igaz**értékre.
+1. JobConfig.jsbekapcsolva beállításnál állítsa a **rendszer által hozzárendelt identitás használata** **igaz**értékre.
 
    ![Stream Analytics feladatok konfigurációjának felügyelt identitások](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
@@ -166,7 +166,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
 
    A **PrincipalId** az egyszerű szolgáltatásnév azonosítója, és a portál képernyőjén jelenik meg a szolgáltatásnév létrehozása után. Ha a feladatot egy Resource Manager-sablon használatával hozta létre, az objektumazonosító a feladattípus Identity (identitás) tulajdonságában szerepel.
 
-   **Például**
+   **Példa**
 
    ```powershell
    PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType

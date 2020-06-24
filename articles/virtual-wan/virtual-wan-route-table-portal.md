@@ -4,16 +4,16 @@ description: Virtuális WAN virtuális központ útválasztási táblázata, ame
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 740a2174933e37e2737de0daa56e4b1670ecf55f
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b22b751880cda91734ce0c322b19702e0ac9840d
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773168"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752967"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Hozzon létre egy virtuális WAN hub útválasztási táblázatot a NVA: Azure Portal
 
@@ -34,7 +34,7 @@ Ellenőrizze, hogy teljesültek-e az alábbi feltételek:
     *  Előfordulhat, hogy a NVA virtuális hálózat egy vagy több virtuális hálózattal van csatlakoztatva. Ebben a cikkben a NVA virtuális hálózatot "közvetett küllős VNet"-ként tekintjük át. Ezek a virtuális hálózatok a VNet-társítás használatával csatlakoztathatók a NVA VNet. A VNet-társítási hivatkozásokat fekete nyilak ábrázolják a fenti ábrán a VNet 1, VNet 2 és NVA VNet között.
 *  Két virtuális hálózatot hozott létre. A rendszer küllős virtuális hálózatok fogja használni őket.
 
-    * A VNet küllős címei a következők: VNet1:10.0.2.0/24 és VNet2:10.0.3.0/24. Ha a virtuális hálózat létrehozásával kapcsolatos információkra van szüksége, tekintse meg [a virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)című témakört.
+    * A VNet küllős címei a következők: VNet1:10.0.2.0/24 és VNet2:10.0.3.0/24. Ha a virtuális hálózat létrehozásával kapcsolatos információkra van szüksége, tekintse meg [a virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)című témakört. Győződjön meg arról, hogy a VNET1 és a 2 UDR a NVA mutat.
 
     * Győződjön meg arról, hogy nincsenek virtuális hálózati átjárók a virtuális hálózatok egyikében sem.
 

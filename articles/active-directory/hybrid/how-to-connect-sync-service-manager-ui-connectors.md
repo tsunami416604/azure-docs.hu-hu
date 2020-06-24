@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261046"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690727"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata a Azure AD Connect Sync Service Manager
 
@@ -37,7 +37,7 @@ Az összekötők lapon minden olyan rendszer felügyelhető, amelyhez a Szinkron
 | Tulajdonságok |Tartomány-és OU-szűréshez használatos. |
 | [Szabályzat](#delete) |Az összekötő területének vagy az erdőhöz való csatlakozás törlésére szolgál. |
 | [Futtatási profilok konfigurálása](#configure-run-profiles) |A tartományi szűrés kivételével itt nem kell konfigurálnia. Ezt a műveletet használhatja a már konfigurált futtatási profilok megjelenítéséhez. |
-| Futtassa a következőt: |Egy profil egyszeri futtatásának elindítására szolgál. |
+| Futtatás |Egy profil egyszeri futtatásának elindítására szolgál. |
 | Leállítás |Egy profilt jelenleg futtató összekötő leállítása. |
 | Összekötő exportálása |Ne használja. |
 | Összekötő importálása |Ne használja. |
@@ -88,7 +88,7 @@ A probléma megoldásához frissítse a AD DS felhasználói fiókot a következ
 5. Az előugró párbeszédpanelen válassza a kapcsolódás Active Directory erdőhöz lehetőséget:
 6. Az erdő neve jelzi a megfelelő helyszíni AD-t.
 7. A Felhasználónév jelzi a szinkronizáláshoz használt AD DS fiókot.
-8. Adja meg a AD DS fiók új jelszavát a jelszó szövegmezőben ![Azure ad Connect Sync encryption Key segédprogram](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
+8. Adja meg a AD DS fiók új jelszavát a jelszó szövegmezőben ![ Azure ad Connect Sync encryption Key segédprogram](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
 9. Az új jelszó mentéséhez és a szinkronizálási szolgáltatás újraindításához kattintson az OK gombra, hogy eltávolítsa a régi jelszót a memória-gyorsítótárból.
 
 

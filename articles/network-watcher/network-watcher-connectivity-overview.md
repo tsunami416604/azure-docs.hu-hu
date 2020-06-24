@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283276"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708943"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Az Azure-Network Watcher kapcsolódási hibáinak bemutatása
 
 A Network Watcher kapcsolódási hibáinak elhárítása lehetővé teszi a közvetlen TCP-kapcsolatok ellenőrzését egy virtuális gépről egy virtuális gépre (VM), a teljes tartománynévre (FQDN), az URI-ra vagy az IPv4-címekre. A hálózati forgatókönyvek összetettek, a hálózati biztonsági csoportokkal, tűzfalakkal, felhasználó által megadott útvonalakkal és az Azure által biztosított erőforrásokkal valósíthatók meg. Az összetett konfigurációk hibaelhárítást tesznek a kapcsolódási problémákkal kapcsolatban. Network Watcher segít csökkenteni a kapcsolódási problémák megtalálásának és észlelésének időtartamát. A visszaadott eredmények révén betekintést nyerhet, hogy a kapcsolódási problémát egy platform vagy egy felhasználói konfigurációs probléma okozza-e. A kapcsolat ellenőrizhető a [PowerShell](network-watcher-connectivity-powershell.md), az [Azure CLI](network-watcher-connectivity-cli.md)és a [REST API](network-watcher-connectivity-rest.md)használatával.
 
 > [!IMPORTANT]
-> A kapcsolati hibákhoz az szükséges, hogy a rendszer `AzureNetworkWatcherExtension` a virtuálisgép-bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
+> A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
 ## <a name="response"></a>Válasz
 
@@ -72,7 +72,7 @@ Az alábbi példa egy hop-beli problémát mutat be.
 
 A kapcsolatok hibaelhárítása a kapcsolatban fellépő hibák típusait adja vissza. A következő táblázat felsorolja az aktuálisan visszaadott típusú hibakódokat.
 
-|Típus  |Leírás  |
+|Típus  |Description  |
 |---------|---------|
 |CPU     | Magas CPU-kihasználtság.       |
 |Memory (Memória)     | Nagy memória kihasználtsága.       |

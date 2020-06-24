@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276503"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687650"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Triggerek és kötések Azure Functions fogalmak
 
@@ -44,13 +44,13 @@ Az eseményindítók és kötések a fejlesztési módszertől függően eltér�
 | Platform | Az eseményindítók és kötések konfigurálása... |
 |-------------|--------------------------------------------|
 | C# osztály könyvtára | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;díszítő módszerek és paraméterek C#-attribútumokkal |
-| Minden más (beleértve a Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function. JSON](./functions-reference.md) frissítése ([séma](http://json.schemastore.org/function)) |
+| Minden más (beleértve a Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function.js](./functions-reference.md) frissítése ([séma](http://json.schemastore.org/function)) |
 
 A portál egy felhasználói felületet biztosít ehhez a konfigurációhoz, de a fájl szerkesztéséhez közvetlenül is megnyithatja a függvény **integrálás** lapján elérhető **speciális szerkesztőt** .
 
-A .NET-ben a paraméter típusa határozza meg a bemeneti adatok adattípusát. Például a paranccsal kötést hozhat `string` létre egy üzenetsor-trigger szövegéhez, egy byte-tömböt, amely binárisként és egyéni típusként egy objektumra deszerializálható.
+A .NET-ben a paraméter típusa határozza meg a bemeneti adatok adattípusát. Például a paranccsal `string` kötést hozhat létre egy üzenetsor-trigger szövegéhez, egy byte-tömböt, amely binárisként és egyéni típusként egy objektumra deszerializálható.
 
-A dinamikusan beírt nyelvek (például a JavaScript) a `dataType` *function. JSON* fájlban található tulajdonságot használják. Ha például bináris formátumban szeretné beolvasni egy HTTP-kérelem tartalmát, állítsa `dataType` a következőre `binary`:
+A dinamikusan beírt nyelvek (például JavaScript) esetében használja a `dataType` *function.js* fájljában található tulajdonságot. Ha például bináris formátumban szeretné beolvasni egy HTTP-kérelem tartalmát, állítsa a következőre `dataType` `binary` :
 
 ```json
 {
@@ -61,15 +61,15 @@ A dinamikusan beírt nyelvek (például a JavaScript) a `dataType` *function. JS
 }
 ```
 
-A `stream` és `string`a `dataType` további beállításai.
+A és a további beállításai `dataType` `stream` `string` .
 
 ## <a name="binding-direction"></a>Kötési irány
 
-Minden eseményindító és kötés rendelkezik egy `direction` tulajdonsággal a [function. JSON](./functions-reference.md) fájlban:
+Minden eseményindító és kötés rendelkezik egy `direction` tulajdonsággal a (z) [function.js](./functions-reference.md) fájlban:
 
 - Az eseményindítók esetében az irány mindig`in`
-- A bemeneti és kimeneti kötések `in` használata és`out`
-- Egyes kötések speciális irányt `inout`támogatnak. A használata `inout`esetén csak a **speciális szerkesztő** érhető el a portál **integrálás** lapján.
+- A bemeneti és kimeneti kötések használata `in` és`out`
+- Egyes kötések speciális irányt támogatnak `inout` . A használata esetén `inout` csak a **speciális szerkesztő** érhető el a portál **integrálás** lapján.
 
 Ha az [attribútumokat egy osztály-függvénytárban](functions-dotnet-class-library.md) konfigurálja az eseményindítók és kötések konfigurálásához, az irány egy attribútum konstruktorában van megadva, vagy a paraméter típusa alapján következtethető ki.
 

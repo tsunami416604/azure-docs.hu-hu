@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: 81061f9f20e325d6f392c76c5e2801527abc9e2b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8b3dba7996b098ec398c9fe94705c18190b30ba6
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345002"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753566"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban 
 
@@ -58,8 +58,8 @@ Az alábbi diagram bemutatja, hogyan használhatók a különböző integráció
 Az Azure Integration Runtime a következőket teheti:
 
 - Adatfolyamatok futtatása az Azure-ban 
-- Másolási tevékenység futtatása felhőalapú adattárak között
-- A következő átalakítási tevékenységek elküldése a nyilvános hálózatban: Databricks notebook/jar/Python tevékenység, HDInsight struktúra tevékenység, HDInsight Pig tevékenység, HDInsight MapReduce tevékenység, HDInsight Spark-tevékenység, HDInsight streaming Activity, Machine Learning kötegelt végrehajtási tevékenység, Machine Learning frissítési erőforrás tevékenység, tárolt eljárás tevékenység, Data Lake Analytics U-SQL tevékenység, .NET egyéni tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
+- Másolási tevékenység futtatása a felhőalapú adattárak között
+- A következő átalakítási tevékenységek elküldése a nyilvános hálózatban: Databricks notebook/jar/Python tevékenység, HDInsight-struktúra tevékenység, HDInsight Pig tevékenység, HDInsight MapReduce tevékenység, HDInsight Spark-tevékenység, HDInsight streaming Activity, Machine Learning kötegelt végrehajtási tevékenység, Machine Learning frissítési erőforrás tevékenység, tárolt eljárás tevékenység, Data Lake Analytics U-SQL tevékenység, .NET egyéni tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
 
 ### <a name="azure-ir-network-environment"></a>Azure-beli integrációs modul hálózati környezete
 
@@ -193,7 +193,7 @@ A külső számítási motort használó minden külső átalakítási tevékeny
 
 Az adatfolyam-tevékenységek végrehajtása a hozzá társított Azure Integration Runtime-on történik. Az adatfolyamatok által használt Spark-számításokat a Azure Integration Runtime adatáramlási tulajdonságai határozzák meg, és teljes mértékben az ADF kezelik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd az alábbi cikkeket:
 

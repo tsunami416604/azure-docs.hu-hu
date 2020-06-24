@@ -9,25 +9,25 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74896360"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687803"
 ---
 # <a name="test-vm-network-latency"></a>Virtuális gép hálózati késleltetésének tesztelése
 
-A legpontosabb eredmények eléréséhez mérje fel az Azure virtuális gép (VM) hálózati késését a feladathoz tervezett eszközzel. A nyilvánosan elérhető eszközök, például a SockPerf (Linux) és a latte. exe (Windows rendszeren) képes elkülöníteni és mérni a hálózati késést más típusú késések, például az alkalmazások késésének kizárásával. Ezek az eszközök olyan hálózati forgalomra összpontosítanak, amelyek hatással vannak az alkalmazások teljesítményére (azaz Transmission Control Protocol [TCP] és a User Datagram Protocol [UDP] forgalomra). 
+A legpontosabb eredmények eléréséhez mérje fel az Azure virtuális gép (VM) hálózati késését a feladathoz tervezett eszközzel. A nyilvánosan elérhető eszközök, például a SockPerf (Linux esetében) és a latte.exe (Windows rendszeren) képes elkülöníteni és mérni a hálózati késést más típusú késések, például az alkalmazások késésének kizárásával. Ezek az eszközök olyan hálózati forgalomra összpontosítanak, amelyek hatással vannak az alkalmazások teljesítményére (azaz Transmission Control Protocol [TCP] és a User Datagram Protocol [UDP] forgalomra). 
 
 Más gyakori kapcsolódási eszközök, például a pingelés, a késést okozhatják, de előfordulhat, hogy az eredmények nem a valós munkaterhelésekben használt hálózati forgalmat jelölik. Ennek oka, hogy a legtöbb ilyen eszköz a Internet Control Message Protocol (ICMP) alkalmazást alkalmazza, amely az alkalmazások forgalmával eltérően kezelhető, és amelynek eredményei nem vonatkoznak a TCP és UDP protokollt használó munkaterhelésekre. 
 
-A legtöbb alkalmazás által használt protokollok pontos hálózati késésének teszteléséhez a SockPerf (Linux esetében) és a latte. exe (Windows rendszeren) a legfontosabb eredményeket hozza létre. Ez a cikk mindkét eszközt magában foglalja.
+A legtöbb alkalmazás által használt protokollok pontos hálózati késésének teszteléséhez a SockPerf (Linux esetében) és a latte.exe (Windows rendszeren) a legrelevánsabb eredményeket hozza létre. Ez a cikk mindkét eszközt magában foglalja.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -45,7 +45,7 @@ Ezzel a módszerrel mérhető a hálózati késés két virtuális gép között
 ### <a name="tools-for-testing"></a>Tesztelési eszközök
 A késés méréséhez két különböző eszköz-lehetőség közül választhat:
 
-* Windows-alapú rendszerekhez: [latte. exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Windows-alapú rendszerek esetén: [latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
 * Linux-alapú rendszerek esetén: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
 Ezeknek az eszközöknek a használatával biztosíthatja, hogy csak a TCP-vagy UDP-adatátviteli időt mérjük, ne ICMP (ping) vagy más, az alkalmazások által nem használt csomagok, és ne befolyásolják a teljesítményüket.
@@ -69,29 +69,29 @@ A tesztek eredményeinek elemzésekor vegye figyelembe az alábbi javaslatokat:
 
 ## <a name="test-vms-that-are-running-windows"></a>Windows rendszerű virtuális gépek tesztelése
 
-### <a name="get-latteexe-onto-the-vms"></a>A latte. exe beolvasása a virtuális gépekre
+### <a name="get-latteexe-onto-the-vms"></a>latte.exe beolvasása a virtuális gépekre
 
-Töltse le a [latte. exe legújabb verzióját](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b).
+Töltse le a [latte.exelegújabb verzióját ](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b).
 
-Fontolja meg a latte. exe külön mappába helyezését, például *c:\Tools*.
+Fontolja meg latte.exe külön mappába helyezését, például *c:\Tools*.
 
-### <a name="allow-latteexe-through-windows-defender-firewall"></a>A latte. exe engedélyezése a Windows Defender-tűzfalon keresztül
+### <a name="allow-latteexe-through-windows-defender-firewall"></a>latte.exe engedélyezése a Windows Defender-tűzfalon keresztül
 
-A *fogadón*hozzon létre egy engedélyezési szabályt a Windows Defender-tűzfalon, hogy engedélyezze a latte. exe-forgalom érkezését. A legkönnyebben lehetővé teszi a teljes latte. exe program nevét, és nem az adott TCP-portok bejövő engedélyezését.
+A *fogadón*hozzon létre egy engedélyezési szabályt a Windows Defender-tűzfalon, hogy a latte.exe forgalom megérkezik. A legegyszerűbben úgy engedélyezheti a teljes latte.exe program nevét, hogy nem engedélyezi a megadott TCP-portok bejövő elérését.
 
-Engedélyezze a latte. exe fájlt a Windows Defender-tűzfalon a következő parancs futtatásával:
+A következő parancs futtatásával engedélyezze latte.exe a Windows Defender-tűzfalon keresztül:
 
 ```cmd
 netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
 ```
 
-Ha például a latte. exe fájlt a *c:\Tools* mappába másolta, a parancs a következő lesz:
+Ha például átmásolta latte.exet a *c:\Tools* mappába, a parancs a következő lesz:
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
 ### <a name="run-latency-tests"></a>Késési tesztek futtatása
 
-* A *fogadón*indítsa el a latte. exe fájlt (futtassa a parancsot a cmd ablakból, ne a powershellből):
+* A *fogadón*indítsa el latte.exe (futtassa a parancsot a cmd ablakból, ne a powershellből):
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,13 +105,13 @@ Ha például a latte. exe fájlt a *c:\Tools* mappába másolta, a parancs a kö
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* A *küldőben*indítsa el a latte. exe fájlt (futtassa a parancsot a cmd ablakból, ne a powershellből):
+* A *feladón*indítsa el latte.exe (futtassa a parancsot a cmd ablakból, ne a powershellből):
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Az eredményül kapott parancs megegyezik a fogadóval, kivéve a&nbsp;*-c* hozzáadásával, amely azt jelzi, hogy ez az *ügyfél*vagy a *Feladó*:
+    Az eredményül kapott parancs megegyezik a fogadóval, kivéve a &nbsp; *-c* hozzáadásával, amely azt jelzi, hogy ez az *ügyfél*vagy a *Feladó*:
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 

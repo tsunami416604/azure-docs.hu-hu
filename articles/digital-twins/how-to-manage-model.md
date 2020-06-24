@@ -1,5 +1,5 @@
 ---
-title: Kettős modell kezelése
+title: Ikermodell kezelése
 titleSuffix: Azure Digital Twins
 description: Megtudhatja, hogyan hozhat létre, szerkeszthet és törölhet modelleket az Azure digitális Twins-n belül.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 195f5f8d820ff43aed73fc0a46dcccccef43ae66
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 6c023ff8419a41353e0c8aff70d04c5b9fcb27a4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612927"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725647"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 A [**DigitalTwinsModels API**](how-to-use-apis-sdks.md)-k, a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)vagy az [Azure Digital Twins CLI](how-to-use-cli.md)használatával felügyelheti a [modelleket](concepts-models.md) , amelyeket az Azure digitális Twins-példánya tud. 
 
@@ -249,7 +252,7 @@ Az Azure digitális Twins nem akadályozza ezt az állapotot, ezért ügyeljen a
 
 A modellek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet digitális ikreket a modelljei alapján:
 * [Útmutató: digitális kettős kezelés](how-to-manage-twin.md)

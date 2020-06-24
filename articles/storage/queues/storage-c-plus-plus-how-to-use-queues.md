@@ -7,13 +7,13 @@ ms.date: 05/11/2017
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
-ms.reviewer: cbrooks
-ms.openlocfilehash: 58449b1302bbec25772a029a046221025cf75e6a
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.reviewer: dineshm
+ms.openlocfilehash: 0ae099e74db3137be49d59d01c83807108bf370f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465445"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809262"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>A Queue Storage használata C++-szal
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -260,7 +260,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 queue.delete_queue_if_exists();  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a várólista-tárolás alapjait, kövesse az alábbi hivatkozásokat, és ismerkedjen meg az Azure Storage szolgáltatással.
 
 * [A Blob Storage használata a C++-ból](../blobs/storage-c-plus-plus-how-to-use-blobs.md)

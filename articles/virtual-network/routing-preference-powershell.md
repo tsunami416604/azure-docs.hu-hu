@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 2a0a876b885d2fe59262cad660a3ebc5b5210fbb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e856e3fc253800b71176dad3db40e7a13a7e6140
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598345"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707871"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-powershell"></a>A nyilvános IP-cím útválasztási beállításának konfigurálása Azure PowerShell használatával
 
@@ -48,7 +48,7 @@ Az útválasztási preferencia szolgáltatás jelenleg előzetes verzióban érh
 Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 

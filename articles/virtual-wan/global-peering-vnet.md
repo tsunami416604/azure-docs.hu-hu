@@ -4,15 +4,15 @@ description: Csatlakoztasson egy VNet egy másik régióban a virtuális WAN-hub
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 340472f84d2dd2c4f46d180992745a57e8ad1884
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c06ec1d93dcda5d171099943c287a9e4f43bc1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73588225"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750565"
 ---
 # <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Globális VNet-társítás konfigurálása (régiók közötti VNet) virtuális WAN-hoz
 
@@ -27,7 +27,7 @@ Ellenőrizze, hogy teljesültek-e az alábbi feltételek:
 
 ## <a name="register-this-feature"></a><a name="register"></a>A funkció regisztrálása
 
-Ezt a funkciót a PowerShell használatával lehet regisztrálni. Ha az alábbi példában a "kipróbálás" lehetőséget választja, megnyílik az Azure Cloud-shell, és nem kell helyileg telepítenie a PowerShell-parancsmagokat a számítógépre. Ha szükséges, módosíthatja az előfizetéseket a "Select-AzSubscription-SubscriptionId <subid>" parancsmag használatával.
+Ezt a funkciót a PowerShell használatával lehet regisztrálni. Ha az alábbi példában a "kipróbálás" lehetőséget választja, megnyílik az Azure Cloud-shell, és nem kell helyileg telepítenie a PowerShell-parancsmagokat a számítógépre. Ha szükséges, módosíthatja az előfizetéseket a "Select-AzSubscription-SubscriptionId <subid> " parancsmag használatával.
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network

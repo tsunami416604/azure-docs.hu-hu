@@ -1,5 +1,5 @@
 ---
-title: A Knowledge Store bemutatása (előzetes verzió)
+title: Knowledge Store-fogalmak (előzetes verzió)
 titleSuffix: Azure Cognitive Search
 description: Gazdagított dokumentumokat küldhet az Azure Storage-ba, ahol megtekintheti, átalakíthatja és felhasználhatja a dúsított dokumentumokat az Azure Cognitive Search és más alkalmazásokban. Ez a funkció nyilvános előzetes verzióban érhető el.
 author: HeidiSteen
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: a8f7aa18598dba41b33ea4964bd2967a8c2670ac
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858797"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752993"
 ---
-# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Az Azure Cognitive Search tudásbázisának bemutatása
+# <a name="knowledge-store-in-azure-cognitive-search"></a>A Knowledge Store az Azure Cognitive Search
 
 > [!IMPORTANT] 
 > A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
@@ -55,7 +55,7 @@ Enumerált, a Knowledge Store előnyei a következők:
 > [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=455&end=542]
 
 
-A Tudásbázis fizikai kifejezése egy Készségkészlet `projections` `knowledgeStore` definíciójának elemein keresztül van megfogalmazva. A leképezés a kimenet szerkezetét határozza meg, hogy az megfeleljen a kívánt felhasználásnak.
+A Tudásbázis fizikai kifejezése egy `projections` készségkészlet definíciójának elemein keresztül van megfogalmazva `knowledgeStore` . A leképezés a kimenet szerkezetét határozza meg, hogy az megfeleljen a kívánt felhasználásnak.
 
 A vetítések táblázatként, objektumként vagy fájlként is megadhatók.
 
@@ -77,13 +77,13 @@ A vetítések táblázatként, objektumként vagy fájlként is megadhatók.
 
 Az ebben a struktúrában megadott leképezés típusa határozza meg, hogy milyen típusú tárterületet használ a rendszer a Knowledge Store-ban.
 
-+ A tábla tárterületét a rendszer a `tables`definiálásakor használja. Definiáljon egy táblázatos leképezést, ha táblázatos jelentéskészítési struktúrákra van szüksége az analitikai eszközökbe való bemenetekhez vagy az adatkeretek más adattárakba való exportálásához. Több `tables` lehetőséget is megadhat a dúsított dokumentumok részhalmazának vagy keresztmetszetének lekéréséhez. Ugyanabban a kivetítési csoportban a tábla kapcsolatai megmaradnak, így dolgozhat együtt.
++ A tábla tárterületét a rendszer a definiálásakor használja `tables` . Definiáljon egy táblázatos leképezést, ha táblázatos jelentéskészítési struktúrákra van szüksége az analitikai eszközökbe való bemenetekhez vagy az adatkeretek más adattárakba való exportálásához. Több lehetőséget is megadhat a `tables` dúsított dokumentumok részhalmazának vagy keresztmetszetének lekéréséhez. Ugyanabban a kivetítési csoportban a tábla kapcsolatai megmaradnak, így dolgozhat együtt.
 
-+ A blob Storage a vagy `objects` `files`a definiálásakor használatos. Az an `object` fizikai ábrázolása egy hierarchikus JSON-struktúra, amely egy dúsított dokumentumot jelöl. A `file` egy dokumentumból kinyert, érintetlenül továbbított rendszerkép a blob Storage-ba.
++ A blob Storage a vagy a definiálásakor használatos `objects` `files` . Az an fizikai ábrázolása `object` egy HIERARCHIKUS JSON-struktúra, amely egy dúsított dokumentumot jelöl. A egy `file` dokumentumból kinyert, érintetlenül továbbított rendszerkép a blob Storage-ba.
 
-Egyetlen kivetítési objektum a,, `tables`, `objects`és `files`számos forgatókönyvhöz tartalmaz egy leképezést, ami elég lehet. 
+Egyetlen kivetítési objektum a,, `tables` , `objects` `files` és számos forgatókönyvhöz tartalmaz egy leképezést, ami elég lehet. 
 
-`table` - `object` - Azonban több `file` kivetítési készlet is létrehozható, és ha más adatkapcsolatokra van szüksége, akkor lehetséges. Egy készleten belül az adat kapcsolódik, feltéve, hogy ezek a kapcsolatok léteznek és észlelhetők. Ha további készleteket hoz létre, az egyes csoportokban lévő dokumentumok soha nem kapcsolódnak egymáshoz. Több vetületi csoport használatára például akkor lehet szükség, ha ugyanazt az adatmennyiséget szeretné használni az online rendszerhez, és egy adott módszert kell megjelenítenie, és ugyanazokat az adatelemzési folyamatokat kívánja használni, amelyeket más néven is tartalmaz.
+Azonban több kivetítési készlet is létrehozható `table` - `object` - `file` , és ha más adatkapcsolatokra van szüksége, akkor lehetséges. Egy készleten belül az adat kapcsolódik, feltéve, hogy ezek a kapcsolatok léteznek és észlelhetők. Ha további készleteket hoz létre, az egyes csoportokban lévő dokumentumok soha nem kapcsolódnak egymáshoz. Több vetületi csoport használatára például akkor lehet szükség, ha ugyanazt az adatmennyiséget szeretné használni az online rendszerhez, és egy adott módszert kell megjelenítenie, és ugyanazokat az adatelemzési folyamatokat kívánja használni, amelyeket más néven is tartalmaz.
 
 ## <a name="requirements"></a>Követelmények 
 
@@ -103,7 +103,7 @@ Az [Indexelő](search-indexer-overview.md) megadása kötelező. A készségkés
 
 ## <a name="how-to-create-a-knowledge-store"></a>Tudásbázis létrehozása
 
-A Knowledge Store létrehozásához használja a portált vagy az előzetes verziójú`api-version=2019-05-06-Preview`REST API ().
+A Knowledge Store létrehozásához használja a portált vagy az előzetes verziójú REST API ( `api-version=2019-05-06-Preview` ).
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -119,7 +119,7 @@ Az **adat importálása** varázsló a Tudásbázis létrehozási lehetőségeit
 
 ### <a name="use-create-skillset-and-the-preview-rest-api"></a>Használja a Create Készségkészlet és az előnézet REST API
 
-`knowledgeStore` A definiálva van egy [készségkészlet](cognitive-search-working-with-skillsets.md)belül, amelyet egy [Indexelő](search-indexer-overview.md)hív meg. A dúsítás során az Azure Cognitive Search létrehoz egy helyet az Azure Storage-fiókban, és a dúsított dokumentumokat a konfigurációtól függően blobként vagy táblázatként adja meg.
+A `knowledgeStore` definiálva van egy [készségkészlet](cognitive-search-working-with-skillsets.md)belül, amelyet egy [Indexelő](search-indexer-overview.md)hív meg. A dúsítás során az Azure Cognitive Search létrehoz egy helyet az Azure Storage-fiókban, és a dúsított dokumentumokat a konfigurációtól függően blobként vagy táblázatként adja meg.
 
 Jelenleg az előzetes verzió REST API az egyetlen olyan mechanizmus, amellyel programozott módon hozhat létre egy Knowledge Store-t. A könnyebben felderíthető megoldás az [első Knowledge áruház létrehozása a Poster és a REST API használatával](knowledge-store-create-rest.md).
 
@@ -141,7 +141,7 @@ Ha a dúsítások már léteznek a tárolóban, az Azure Blobhoz vagy a Table St
 
 ## <a name="api-reference"></a>API-referencia
 
-A REST API `2019-05-06-Preview` verziója a szakértelmével további definíciói alapján biztosítja a Knowledge Store-t. A hivatkozáson kívül tekintse meg a [Knowledge Store létrehozása a Poster használatával](knowledge-store-create-rest.md) című részt az API-k meghívásával kapcsolatos részletekért.
+A REST API verziója `2019-05-06-Preview` a szakértelmével további definíciói alapján biztosítja a Knowledge Store-t. A hivatkozáson kívül tekintse meg a [Knowledge Store létrehozása a Poster használatával](knowledge-store-create-rest.md) című részt az API-k meghívásával kapcsolatos részletekért.
 
 + [Készségkészlet létrehozása (API-Version = 2019-05 -06-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
 + [Készségkészlet frissítése (API-Version = 2019-05 -06-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 

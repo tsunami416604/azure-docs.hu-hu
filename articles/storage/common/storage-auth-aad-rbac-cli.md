@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: abe35f3193e2d7ff9a949ca7cd330cb58da2b78c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25a38fc6f9607ef878ad3c5bf7074f5b63d5c121
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74891968"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808862"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Az Azure CLI használata RBAC-szerepkör hozzárendeléséhez a blob-és üzenetsor-adathoz való hozzáféréshez
 
@@ -59,7 +59,7 @@ Ha RBAC szerepkört szeretne hozzárendelni egy rendszerbiztonsági tag számár
 
 ### <a name="container-scope"></a>Tároló hatóköre
 
-Egy tárolóhoz hatókörrel rendelkező szerepkör hozzárendeléséhez adjon meg egy karakterláncot, amely a `--scope` paraméterhez tartozó tároló hatókörét tartalmazza. A tároló hatóköre a következő formában van:
+Egy tárolóhoz hatókörrel rendelkező szerepkör hozzárendeléséhez adjon meg egy karakterláncot, amely a paraméterhez tartozó tároló hatókörét tartalmazza `--scope` . A tároló hatóköre a következő formában van:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container>
@@ -76,7 +76,7 @@ az role assignment create \
 
 ### <a name="queue-scope"></a>Várólista hatóköre
 
-Ha egy szerepkör hatókörét szeretné hozzárendelni egy várólistához, adjon meg egy karakterláncot, amely a `--scope` paraméterhez tartozó várólista hatókörét tartalmazza. Az üzenetsor hatóköre a következő formában van:
+Ha egy szerepkör hatókörét szeretné hozzárendelni egy várólistához, adjon meg egy karakterláncot, amely a paraméterhez tartozó várólista hatókörét tartalmazza `--scope` . Az üzenetsor hatóköre a következő formában van:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue>
@@ -121,7 +121,7 @@ az role assignment create \
 
 ### <a name="subscription-scope"></a>Előfizetés hatóköre
 
-Ahhoz, hogy az előfizetéshez hatókört rendeljen, adja meg az előfizetés hatókörét `--scope` a paraméterhez. Az előfizetés hatóköre a következő formában van:
+Ahhoz, hogy az előfizetéshez hatókört rendeljen, adja meg az előfizetés hatókörét a `--scope` paraméterhez. Az előfizetés hatóköre a következő formában van:
 
 ```
 /subscriptions/<subscription>

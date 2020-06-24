@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: 716d40a0b86ec3385f236a3d81f651d24a36845a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342110"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809484"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -98,7 +98,7 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtó
     > [!WARNING]
     > Előfordulhat, hogy a bejárati ajtó háttérbeli IP-címe később is változhat, ezért a megjelenő esetekben biztosítani fogjuk, hogy az [Azure IP-címtartományok és a szolgáltatási címkék](https://www.microsoft.com/download/details.aspx?id=56519)integrálva lennének. Javasoljuk, hogy az [Azure IP-címtartományok és a szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) esetében minden módosítást és frissítést előfizessen.
 
--    Hajtson végre egy GET műveletet az előtérben az API `2020-01-01` -vagy újabb verzióval. Az API-hívásban keresse meg a `frontdoorID` mezőt. Szűrje a "**X-Azure-FDID**" bejövő fejlécet, amelyet a rendszer bekapcsol a háttérbe az adott mező értékével `frontdoorID` . 
+-    Hajtson végre egy GET műveletet az előtérben az API `2020-01-01` -vagy újabb verzióval. Az API-hívásban keresse meg a `frontdoorID` mezőt. Szűrje a "**X-Azure-FDID**" bejövő fejlécet, amelyet a rendszer bekapcsol a háttérbe az adott mező értékével `frontdoorID` . `Front Door ID`Az értéket az áttekintő szakaszban is megtalálhatja az első ajtós portál oldalon. 
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>A kiválasztó IP-cím változhat a bejárati ajtó élettartama során?
 
@@ -235,7 +235,7 @@ A naplók elérhetők az Azure-előtérben. A portálon kattintson a **tevékeny
 
 Igen, az Azure bejárati ajtó támogatja a riasztásokat. A riasztások a metrikák használatára vannak konfigurálva. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

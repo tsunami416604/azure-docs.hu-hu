@@ -2,7 +2,7 @@
 title: Áttelepítés SQL Serverról Azure SQL felügyelt példányra
 description: Ismerje meg, hogyan telepíthet át egy adatbázist a SQL Serverról az Azure SQL felügyelt példányára.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: migration
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 14ad9d1b878881a85e80f72666da54f54263cee3
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 47f766e8e5c1ea43d0c9bde8138c0ab17533f539
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660848"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708666"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server példány áttelepítése az Azure SQL felügyelt példányára
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -202,7 +202,7 @@ A biztonság megerősítése érdekében érdemes lehet [Azure Active Directory 
 
 A speciális felügyeleti és biztonsági funkciók mellett a felügyelt példányok olyan speciális eszközöket biztosítanak, amelyek segítségével [figyelheti és beállíthatja a számítási feladatokat](../database/monitor-tune-overview.md). [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) lehetővé teszi a felügyelt példányok nagy készletének figyelését és a nagy számú példány és adatbázis figyelését. A felügyelt példányok [automatikus finomhangolása](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) folyamatosan FIGYELI az SQL-terv végrehajtási statisztikáinak teljesítményét, és automatikusan kijavítja az azonosított teljesítménnyel kapcsolatos problémákat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az Azure SQL felügyelt példányáról: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - A biztonsági másolatból történő visszaállítást tartalmazó oktatóanyagért tekintse meg [a felügyelt példány létrehozása](instance-create-quickstart.md)című témakört.

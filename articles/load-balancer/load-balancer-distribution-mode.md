@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5dfcc84530597fc41c547a78478dcee4a4ad803
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023531"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808494"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer elosztási módjának konfigurálása
 
@@ -90,7 +90,7 @@ A klasszikus virtuális gépek esetében a Azure PowerShell használatával mód
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-Állítsa be az `LoadBalancerDistribution` elem értékét a terheléselosztáshoz szükséges mennyiségre. SourceIP megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. Adja meg a sourceIPProtocol a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. Az öt rekordos terheléselosztás alapértelmezett működéséhez válassza a nincs értéket.
+Állítsa be az elem értékét `LoadBalancerDistribution` a terheléselosztáshoz szükséges mennyiségre. SourceIP megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. Adja meg a sourceIPProtocol a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. Az öt rekordos terheléselosztás alapértelmezett működéséhez válassza a nincs értéket.
 
 A Endpoint Load Balancer terjesztési mód konfigurációjának lekérése a következő beállítások használatával:
 
@@ -154,7 +154,7 @@ Az alábbi példa azt szemlélteti, hogyan lehet újrakonfigurálni a terhelése
 
 ### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Terjesztési mód módosítása üzembe helyezett elosztott terhelésű készlethez
 
-Meglévő központi telepítési konfiguráció módosításához használja a klasszikus Azure-alapú üzemi modellt. Adja hozzá `x-ms-version` a fejlécet, és állítsa be az értéket a 2014-09-01-es vagy újabb verzióra.
+Meglévő központi telepítési konfiguráció módosításához használja a klasszikus Azure-alapú üzemi modellt. Adja hozzá a `x-ms-version` fejlécet, és állítsa be az értéket a 2014-09-01-es vagy újabb verzióra.
 
 #### <a name="request"></a>Kérés
 
@@ -179,7 +179,7 @@ Meglévő központi telepítési konfiguráció módosításához használja a k
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-Az előzőekben leírtak `LoadBalancerDistribution` szerint állítsa be a sourceIP a kétrekordos affinitásra, a sourceIPProtocol a három rekordos affinitásra, vagy egyiket sem, ha nincs affinitás (öt rekordos affinitás).
+Az előzőekben leírtak szerint állítsa be a `LoadBalancerDistribution` sourceIP a kétrekordos affinitásra, a sourceIPProtocol a három rekordos affinitásra, vagy egyiket sem, ha nincs affinitás (öt rekordos affinitás).
 
 #### <a name="response"></a>Válasz
 

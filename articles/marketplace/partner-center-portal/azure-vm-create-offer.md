@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 7d32e4100d00a4ecff9f8bd5017d8bc5ab74105e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847922"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752406"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Azure-beli virtuáli
 
 Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Győződjön meg arról, hogy a fiók regisztrálva van a kereskedelmi piactér programban.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>Az Azure Marketplace-en való közzététel előnyei
 
@@ -63,7 +63,7 @@ A mérnöki csapatának alapvető ismeretekkel kell rendelkeznie a következő M
 2. A bal oldali panelen válassza a **kereskedelmi piactér**  >  **áttekintése**elemet.
 3. Az **Áttekintés** lapon válassza az **új ajánlat**Azure-beli  >  **virtuális gép**lehetőséget.
 
-    ![Képernyőkép a bal oldali ablaktábla menüpontok és az "új ajánlat" gomb megjelenítéséhez.](./media/new-offer-azure-vm.png)
+    ![Képernyőkép a bal oldali ablaktábla menüpontok és az "új ajánlat" gomb megjelenítéséhez.](./media/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > Az ajánlat közzétételét követően a partner Centerben végrehajtott módosítások csak az ajánlat ismételt közzététele után jelennek meg az Azure piactéren. A módosítások végrehajtása után ügyeljen arra, hogy mindig újra tegye közzé az ajánlatokat.
@@ -171,7 +171,7 @@ Ajánlati feltételeket és kikötéseket kell megadnia ügyfeleinek. Erre két 
 Az **ajánlati lista** lapon megadhatja az ajánlat részleteit, például az ajánlat nevét, a leírását, a hivatkozásokat és a névjegyeket.
 
 > [!NOTE]
-> Az ajánlat tartalmait, például a leírást, a dokumentumokat, a képernyőképeket és a használati feltételeket nem kell angol nyelven megadni, feltéve, hogy az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a \< nem angol nyelvű>ban érhető el." Megadhat egy URL-címet is, amely egy olyan webhelyre mutató hivatkozást tartalmaz, amely nem az ajánlatban szereplő tartalomban használt tartalommal rendelkezik.
+> Az ajánlat tartalmait, például a leírást, a dokumentumokat, a képernyőképeket és a használati feltételeket nem kell angolul megadnia, feltéve, hogy az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a (z) verzióban érhető el \<non-English language> ." Megadhat egy URL-címet is, amely egy olyan webhelyre mutató hivatkozást tartalmaz, amely nem az ajánlatban szereplő tartalomban használt tartalommal rendelkezik.
 
 ### <a name="marketplace-details"></a>Piactér – részletek
 
@@ -237,8 +237,8 @@ Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén ha
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A homályos képek miatt a rendszer elutasítja a kérelmet.
 
->[!Note]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a *https://upload.xboxlive.com* partner központ által használt szolgáltatást.
+>[!NOTE]
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="azure-marketplace-logos"></a>Azure Marketplace-logók
 
@@ -514,32 +514,73 @@ Ez az oldal olyan hivatkozásokat is tartalmaz, amelyek segítenek az ajánlatta
 
 ## <a name="marketplace-examples"></a>Marketplace-példák
 
-Az alábbi példák bemutatják, hogyan jelenik meg az ajánlat az Azure Marketplace-en.
+Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az Azure Marketplace piactéren:
 
-### <a name="azure-marketplace-offer-details"></a>Az Azure Marketplace ajánlatának részletei
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-offer.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
-![Példa az Azure Marketplace ajánlat részletek oldalára](media/avm-create1.png)
+#### <a name="call-out-descriptions"></a>Lehívási leírások
 
-### <a name="azure-marketplace-search-results"></a>Az Azure Marketplace keresési eredményei
+1. Nagyméretű embléma
+2. Price
+3. Kategóriák
+4. használati feltételei
+5. Adatvédelmi szabályzat címe (hivatkozás)
+6. Ajánlat neve
+7. Leírás
+8. Hasznos hivatkozások
+9. Képernyőképek/videók
 
-![Példa az Azure Marketplace keresési részletek oldalára](media/avm-create2.png)
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az Azure Marketplace keresési eredményei között:
 
-### <a name="azure-marketplace-plan-details"></a>Az Azure Marketplace-csomag részletei
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactér keresési eredményei között.":::
 
-![Példa az Azure Marketplace-csomag részletek oldalára](media/avm-create3.png)
+#### <a name="call-out-descriptions"></a>Lehívási leírások
 
-### <a name="azure-portal-offer-details"></a>Azure Portal ajánlat részletei
+1. Kis embléma
+2. Ajánlat neve
+3. Keresési eredmények összegzése
+4. Próbaverzió
 
-![Azure Portal ajánlat részletek oldalának példája](media/avm-create4.png)
+<br>Íme egy példa az Azure Marketplace-csomag részleteire:
 
-### <a name="azure-portal-search-results"></a>Azure Portal keresési eredmények
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Bemutatja az Azure Marketplace-csomag részleteit.":::
 
-![Azure Portal keresési eredmények oldalának példája](media/avm-create5.png)
+#### <a name="call-out-descriptions"></a>Lehívási leírások
 
-### <a name="azure-portal-plan-details"></a>Azure Portal csomag részletei
+1. Csomag neve és összegzése
+2. VIRTUÁLIS gépek méretének ajánlása
+3. Díjszabás megtervezése
 
-![Azure Portal terv részletei lap példa](media/avm-create6.png)
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
 
-## <a name="next-steps"></a>További lépések
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Name
+2. Leírás
+3. Hasznos hivatkozások
+4. Képernyőképek/videók
+
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portal keresési eredmények között:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Azure Portal keresési eredmények között.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Kis embléma
+2. Ajánlat neve
+3. Keresési eredmények összegzése
+
+<br>Íme egy példa a Azure Portal terv részleteire:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="A Azure Portal terv részleteit mutatja be.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Csomag neve
+2. Csomag leírása
+
+## <a name="next-step"></a>Következő lépés
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
