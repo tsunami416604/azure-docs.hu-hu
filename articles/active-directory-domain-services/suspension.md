@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 42b26911c12b1e7c62444a6fb2ee68720b02a56b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9770e46e8e52d8644143c9912c98e0f7913db9b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654603"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734282"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Az állapot megismerése és a felfüggesztett tartományok feloldása Azure Active Directory Domain Services
 
@@ -26,11 +26,11 @@ Ez a cikk a felügyelt tartományok felfüggesztését és a felfüggesztett tar
 
 ## <a name="overview-of-managed-domain-states"></a>A felügyelt tartományi állapotok áttekintése
 
-Egy Azure AD DS felügyelt tartomány életciklusán keresztül különböző állapotok jelennek meg, amelyek jelzik az állapotukat. Ha a felügyelt tartomány hibát jelez, gyorsan oldja meg az alapul szolgáló okot, hogy leállítsa az állapotot, hogy továbbra is csökkenhet.
+A felügyelt tartomány életciklusán keresztül különböző állapotok jelennek meg, amelyek jelzik az állapotukat. Ha a felügyelt tartomány hibát jelez, gyorsan oldja meg az alapul szolgáló okot, hogy leállítsa az állapotot, hogy továbbra is csökkenhet.
 
-![Az Azure AD DS felügyelt tartománya által a felfüggesztés felé irányuló állapotok előrehaladása](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
+![A felügyelt tartomány által a felfüggesztés felé irányuló állapotok állapota](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
-Az Azure AD DS felügyelt tartománya a következő állapotok egyikében lehet:
+A felügyelt tartomány a következő állapotok egyikében lehet:
 
 * [Fut](#running-state)
 * [Figyelmet igényel](#needs-attention-state)
@@ -39,7 +39,7 @@ Az Azure AD DS felügyelt tartománya a következő állapotok egyikében lehet:
 
 ## <a name="running-state"></a>Futó állapot
 
-Egy olyan Azure AD DS felügyelt tartomány, amely megfelelően van konfigurálva, és problémák nélkül fut, a *futó* állapotban van. Ez a felügyelt tartomány kívánt állapota.
+Egy megfelelően konfigurált felügyelt tartomány, amely problémák nélkül fut, *futó* állapotban van. Ez a felügyelt tartomány kívánt állapota.
 
 ### <a name="what-to-expect"></a>Mire számíthat
 
@@ -50,15 +50,15 @@ Egy olyan Azure AD DS felügyelt tartomány, amely megfelelően van konfigurálv
 
 ## <a name="needs-attention-state"></a>Beavatkozási állapotot igényel
 
-Az Azure AD DS felügyelt tartomány egy vagy több olyan problémával, amelyet meg kell oldania, *figyelmet igényel* . A felügyelt tartomány állapot lapja felsorolja a riasztásokat, és jelzi, hogy van-e probléma. Egyes riasztások átmenetiek, és az Azure platform automatikusan feloldja őket. Más riasztások esetén a probléma megoldásához kövesse a megadott megoldási lépéseket. Kritikus riasztásra van lehetőség, és további hibaelhárítási segítségért [Nyisson meg egy Azure-támogatási kérést][azure-support] .
+Egy vagy több kijavítani kívánt problémával rendelkező felügyelt tartomány *beavatkozási* állapotba szorul. A felügyelt tartomány állapot lapja felsorolja a riasztásokat, és jelzi, hogy van-e probléma. Egyes riasztások átmenetiek, és az Azure platform automatikusan feloldja őket. Más riasztások esetén a probléma megoldásához kövesse a megadott megoldási lépéseket. Kritikus riasztásra van lehetőség, és további hibaelhárítási segítségért [Nyisson meg egy Azure-támogatási kérést][azure-support] .
 
 A riasztások egyik példája, ha van egy korlátozó hálózati biztonsági csoport. Ebben a konfigurációban előfordulhat, hogy az Azure platform nem tudja frissíteni és figyelni a felügyelt tartományt. A rendszer riasztást hoz létre, és az állapotnak *figyelmet kell*fordítania.
 
-További információ: [a riasztások hibakeresése Azure AD DS felügyelt tartományhoz][resolve-alerts].
+További információ: Hogyan lehet [elhárítani a riasztásokat egy felügyelt tartományon][resolve-alerts].
 
 ### <a name="what-to-expect"></a>Mire számíthat
 
-Ha az Azure AD DS felügyelt tartománya *figyelmet igényel* , az Azure platform nem képes rendszeresen figyelni, javítani, frissíteni vagy biztonsági másolatot készíteni az adatkezelésről. Bizonyos esetekben, például érvénytelen hálózati konfiguráció esetén előfordulhat, hogy a felügyelt tartományhoz tartozó tartományvezérlők nem érhetők el.
+Ha egy felügyelt tartomány az *igényeknek megfelelő* , akkor előfordulhat, hogy az Azure-platform nem képes rendszeresen figyelni, javítani, frissíteni vagy biztonsági másolatot készíteni az adatbázisokról. Bizonyos esetekben, például érvénytelen hálózati konfiguráció esetén előfordulhat, hogy a felügyelt tartományhoz tartozó tartományvezérlők nem érhetők el.
 
 * A felügyelt tartomány sérült állapotban van, és a folyamatos állapot figyelése leállhat a riasztás feloldása előtt.
 * A felügyelt tartományhoz tartozó tartományvezérlőket nem lehet kijavítani vagy frissíteni.
@@ -69,7 +69,7 @@ Ha az Azure AD DS felügyelt tartománya *figyelmet igényel* , az Azure platfor
 
 ## <a name="suspended-state"></a>Felfüggesztett állapot
 
-Egy Azure AD DS felügyelt tartomány a következő okok egyike miatt **felfüggesztett** állapotba kerül:
+A felügyelt tartomány a következő okok egyike miatt **felfüggesztett** állapotba kerül:
 
 * Egy vagy több kritikus riasztás 15 nap múlva nem lett feloldva.
     * A kritikus riasztásokat olyan helytelen konfiguráció okozhatja, amely blokkolja az Azure AD DS által igényelt erőforrásokhoz való hozzáférést. Például a riasztás [AADDS104: hálózati hiba][alert-nsg] megoldatlanul több, mint 15 napja a felügyelt tartományban.
@@ -79,7 +79,7 @@ A felügyelt tartományok felfüggesztése akkor történik meg, ha az Azure pla
 
 ### <a name="what-to-expect"></a>Mire számíthat
 
-A következő viselkedés tapasztalható, ha egy Azure AD DS felügyelt tartomány *felfüggesztett* állapotban van:
+Ha egy felügyelt tartomány *felfüggesztett* állapotban van, a következő viselkedés tapasztalható:
 
 * A felügyelt tartomány tartományvezérlőinek kiépítve, és nem érhetők el a virtuális hálózaton belül.
 * Secure LDAP a felügyelt tartományhoz való hozzáférés az interneten keresztül, ha engedélyezve van, a működése leáll.
@@ -93,10 +93,10 @@ A rendszer felfüggeszti a tartományt felfüggesztett Azure Portal Azure AD DS 
 
 ### <a name="restore-a-suspended-domain"></a>Felfüggesztett tartomány visszaállítása
 
-A *felfüggesztett* állapotú Azure AD DS felügyelt tartomány állapotának visszaállításához hajtsa végre a következő lépéseket:
+A *felfüggesztett* állapotú felügyelt tartomány állapotának visszaállításához hajtsa végre a következő lépéseket:
 
 1. A Azure Portal keresse meg és válassza ki a **tartományi szolgáltatások**elemet.
-1. Válassza ki az Azure AD DS felügyelt tartományt a listából, például *aaddscontoso.com*, majd válassza az **állapot**lehetőséget.
+1. Válassza ki a felügyelt tartományt a listából, például *aaddscontoso.com*, majd válassza az **állapot**lehetőséget.
 1. Válassza ki a riasztást, például *AADDS503* vagy *AADDS504*, a felfüggesztés okának megfelelően.
 1. Válassza ki a riasztásban megadott feloldási hivatkozást, és kövesse a lépéseket a megoldásához.
 
@@ -106,11 +106,11 @@ Miután megoldotta a riasztásokat, amikor a felügyelt tartomány *felfüggeszt
 
 ## <a name="deleted-state"></a>Törölt állapot
 
-Ha az Azure AD DS felügyelt tartománya 15 napig *felfüggesztve marad a felfüggesztett* állapotban, akkor törlődik. Ez a folyamat nem állítható helyre.
+Ha egy felügyelt tartomány a *felfüggesztett* állapotban marad 15 napig, azt törli a rendszer. Ez a folyamat nem állítható helyre.
 
 ### <a name="what-to-expect"></a>Mire számíthat
 
-Amikor egy Azure AD DS felügyelt tartomány belép a *törölt* állapotba, a következő viselkedés látható:
+Ha egy felügyelt tartomány belép a *törölt* állapotba, a következő viselkedés látható:
 
 * A rendszer törli a felügyelt tartomány összes erőforrását és biztonsági mentését.
 * A felügyelt tartomány nem állítható vissza, és létre kell hoznia egy helyettesítő felügyelt tartományt az Azure AD DS újrafelhasználásához.
@@ -118,7 +118,7 @@ Amikor egy Azure AD DS felügyelt tartomány belép a *törölt* állapotba, a k
 
 ## <a name="next-steps"></a>További lépések
 
-Annak érdekében, hogy az Azure AD DS felügyelt tartománya kifogástalan állapotú legyen, és csökkentse a felfüggesztésének kockázatát, Ismerje meg a [felügyelt tartományhoz tartozó riasztások feloldását][resolve-alerts].
+A felügyelt tartomány Kifogástalan állapotba állításához és a felfüggesztése kockázatának csökkentéséhez Ismerje meg a [felügyelt tartományhoz tartozó riasztások feloldását][resolve-alerts].
 
 <!-- INTERNAL LINKS -->
 [alert-nsg]: alert-nsg.md

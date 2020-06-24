@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277946"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698193"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Az Azure Cache for Redis ügyféloldali hibáinak elhárítása
 
@@ -39,19 +39,19 @@ A nagy mennyiségű memória terhelése az ügyfélen több módon is enyhíthet
 
 ## <a name="traffic-burst"></a>Forgalom burst
 
-A gyenge `ThreadPool` beállításokkal összevont adatforgalom miatt a Redis-kiszolgáló által már elküldett adatok feldolgozása késéseket eredményezhet, de az ügyfél oldalán még nem használták fel azokat.
+A gyenge beállításokkal összevont adatforgalom `ThreadPool` miatt a Redis-kiszolgáló által már elküldett adatok feldolgozása késéseket eredményezhet, de az ügyfél oldalán még nem használták fel azokat.
 
-Figyelje meg, `ThreadPool` Hogyan változnak a statisztikák az idő múlásával [egy példa `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)használatával. A StackExchange. `TimeoutException` Redis-ből származó üzeneteket a következőhöz hasonlóan használhatja a további vizsgálathoz:
+Figyelje meg, hogyan `ThreadPool` változnak a statisztikák az idő múlásával [egy példa `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)használatával. A `TimeoutException` StackExchange. Redis-ből származó üzeneteket a következőhöz hasonlóan használhatja a további vizsgálathoz:
 
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
 
 Az előző kivételben számos érdekes probléma van:
 
-- Figyelje meg `Busy` , hogy `IOCP` a szakasz és `WORKER` a szakasz értéke nagyobb, mint az `Min` érték. Ez a különbség azt `ThreadPool` jelenti, hogy a beállításokat módosítani kell.
-- A következőt is `in: 64221`megtekintheti:. Ez az érték azt jelzi, hogy az ügyfél kernel szoftvercsatorna rétegében 64 211 bájt érkezett, de az alkalmazás nem olvasta el. Ez a különbség általában azt jelenti, hogy az alkalmazás (például a StackExchange. Redis) nem olvas be adatokat a hálózatról olyan gyorsan, ahogy a kiszolgáló elküldi Önnek.
+- Figyelje meg, hogy a `IOCP` szakasz és a `WORKER` szakasz értéke nagyobb, `Busy` mint az `Min` érték. Ez a különbség azt jelenti, hogy a `ThreadPool` beállításokat módosítani kell.
+- A következőt is megtekintheti: `in: 64221` . Ez az érték azt jelzi, hogy az ügyfél kernel szoftvercsatorna rétegében 64 211 bájt érkezett, de az alkalmazás nem olvasta el. Ez a különbség általában azt jelenti, hogy az alkalmazás (például a StackExchange. Redis) nem olvas be adatokat a hálózatról olyan gyorsan, ahogy a kiszolgáló elküldi Önnek.
 
-[A `ThreadPool` beállítások konfigurálásával](cache-faq.md#important-details-about-threadpool-growth) megadhatja, hogy a szál készlete gyors legyen a burst forgatókönyvek alatt.
+[A `ThreadPool` Beállítások konfigurálásával](cache-faq.md#important-details-about-threadpool-growth) megadhatja, hogy a szál készlete gyors legyen a burst forgatókönyvek alatt.
 
 ## <a name="high-client-cpu-usage"></a>Magas ügyféloldali CPU-használat
 
@@ -60,7 +60,7 @@ A magas ügyféloldali CPU-használat azt jelzi, hogy a rendszer nem tud lépés
 Az ügyfél rendszerszintű CPU-használatának figyelése a Azure Portal vagy a számítógépen található teljesítményszámlálók használatával. Ügyeljen arra, hogy ne figyelje a *folyamat* processzorát, mert egy folyamat alacsony CPU-használattal rendelkezhet, de a rendszerszintű CPU magas lehet. Figyelje meg a CPU-használathoz tartozó, időtúllépésekkel egyező tüskéket. A magas CPU is okozhat magas `in: XXX` értéket a `TimeoutException` hibaüzenetekben a [forgalom burst](#traffic-burst) szakasza szerint.
 
 > [!NOTE]
-> A StackExchange. Redis 1.1.603 és a későbbi `local-cpu` verzió tartalmazza `TimeoutException` a metrikát a hibaüzenetekben. Győződjön meg arról, hogy a [StackExchange. Redis NuGet-csomag](https://www.nuget.org/packages/StackExchange.Redis/)legújabb verzióját használja. A kódban folyamatosan rögzített hibák teszik hatékonyabbá az időtúllépéseket, így a legújabb verzió fontos.
+> A StackExchange. Redis 1.1.603 és a későbbi verzió tartalmazza a `local-cpu` metrikát a `TimeoutException` hibaüzenetekben. Győződjön meg arról, hogy a [StackExchange. Redis NuGet-csomag](https://www.nuget.org/packages/StackExchange.Redis/)legújabb verzióját használja. A kódban folyamatosan rögzített hibák teszik hatékonyabbá az időtúllépéseket, így a legújabb verzió fontos.
 >
 
 Az ügyfél magas CPU-használatának csökkentése:

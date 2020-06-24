@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 40d1efd5d5e8dc5fed07bf5b9ab1cfa70927b5cf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995822"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732582"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Felhasználók kezelése a munkatársaival (előzetes verzió)
 
@@ -54,7 +54,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 Miután konfigurálta az AUs-t, alkalmazza ezt a hatókört a munkatársaihoz hozzáférő felhasználókra. Csak a rendszergazdai szerepkörhöz rendelt felhasználók férhetnek hozzá a munkatársaihoz. A munkatársak engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a Azure Portal felhasználói rendszergazdaként.
-2. Tallózással keresse meg **Azure Active Directory** > **Beállítások** > **felhasználói szolgáltatás** > **előzetesek kezelése felhasználói szolgáltatás előnézetének beállításait**.
+2. Tallózással keresse meg **Azure Active Directory**felhasználói  >  **Beállítások**  >  **felhasználói szolgáltatás**  >  **előzetesek kezelése felhasználói szolgáltatás előnézetének beállításait**.
 3. A **rendszergazdák hozzáférhetnek a munkatársaihoz**lehetőséggel engedélyezheti az összes felhasználó, a kiválasztott felhasználó vagy a felhasználói hozzáférés beállítást.
 
 > [!Note]
@@ -80,7 +80,7 @@ Határozottan javasoljuk, hogy az [Azure ad feltételes hozzáférési szabályz
 
 ## <a name="using-my-staff"></a>Saját munkatársak használata
 
-Amikor egy felhasználó a saját munkatársaihoz jut, megjelennek azoknak a [felügyeleti egységeknek](directory-administrative-units.md) a neve, amelyeken rendszergazdai jogosultságokkal rendelkeznek. A [saját munkatársak felhasználói dokumentációjában](../user-help/my-staff-team-manager.md)a "location" kifejezést használjuk a felügyeleti egységekre való hivatkozáshoz. Ha egy rendszergazda engedélyei nem rendelkeznek AU-hatókörrel, az engedélyek a szervezeten belül érvényesek. A munkatársaim engedélyezése után az engedélyezett és a hozzájuk rendelt felhasználók hozzáférhetnek a szolgáltatáshoz [https://mystaff.microsoft.com](https://mystaff.microsoft.com). Kiválaszthatnak egy AU-t az adott AU-ban lévő felhasználók megtekintéséhez, és kiválaszthatnak egy felhasználót a profil megnyitásához.
+Amikor egy felhasználó a saját munkatársaihoz jut, megjelennek azoknak a [felügyeleti egységeknek](directory-administrative-units.md) a neve, amelyeken rendszergazdai jogosultságokkal rendelkeznek. A [saját munkatársak felhasználói dokumentációjában](../user-help/my-staff-team-manager.md)a "location" kifejezést használjuk a felügyeleti egységekre való hivatkozáshoz. Ha egy rendszergazda engedélyei nem rendelkeznek AU-hatókörrel, az engedélyek a szervezeten belül érvényesek. A munkatársaim engedélyezése után az engedélyezett és a hozzájuk rendelt felhasználók hozzáférhetnek a szolgáltatáshoz [https://mystaff.microsoft.com](https://mystaff.microsoft.com) . Kiválaszthatnak egy AU-t az adott AU-ban lévő felhasználók megtekintéséhez, és kiválaszthatnak egy felhasználót a profil megnyitásához.
 
 ## <a name="reset-a-users-password"></a>Új felhasználói jelszó létrehozása
 
@@ -130,5 +130,5 @@ A naplókat megtekintheti a munkatársaim által a Azure Active Directory portá
 
 ## <a name="next-steps"></a>További lépések
 
-[A munkatársak felhasználói dokumentációjának](../user-help/my-staff-team-manager.md)
-[felügyeleti egységeinek dokumentációja](directory-administrative-units.md)
+[Munkatársak felhasználói dokumentációja](../user-help/my-staff-team-manager.md) 
+ [Felügyeleti egységek dokumentációja](directory-administrative-units.md)

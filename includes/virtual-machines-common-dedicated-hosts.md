@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79129171"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902713"
 ---
 ## <a name="limitations"></a>Korlátozások
 
@@ -71,8 +71,7 @@ A virtuális gépeket támogató infrastruktúra esetenként frissíthető a meg
 
 A **karbantartási ellenőrzés** lehetővé teszi az ügyfeleknek, hogy kihagyhatják a dedikált gazdagépeken ütemezett rendszeres szoftverfrissítéseket, majd egy 35 napos időszakon belül alkalmazza azt a választásuk időpontjában.
 
-> [!NOTE]
->  A karbantartási vezérlő jelenleg nyilvános előzetes verzióban érhető el. További információ: **frissítések kezelése a karbantartási vezérléssel a [CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) vagy a [PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)használatával**.
+További információ: [a platform frissítéseinek kezelése a karbantartási ellenőrzéssel](https://docs.microsoft.com/azure/virtual-machines/maintenance-control).
 
 ## <a name="capacity-considerations"></a>Kapacitással kapcsolatos szempontok
 

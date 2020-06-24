@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: ace818adb4c5157675ac3b1d88f5df2ef61d69ee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042203"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249164"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős elemzés a kinyert adatszolgáltatások használatával – több-bérlős alkalmazás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,8 +90,8 @@ Az összes bérlői adattal együtt gyakran több tranzakciós szegmensben lév�
 A következő lépésekben telepíti a **tenantanalytics**nevű Analytics-tárolót. Az oktatóanyagban később feltöltött előre definiált táblákat is üzembe helyezhet:
 1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
 2. Állítsa be az $DemoScenario változót a parancsfájlban, hogy az megfeleljen a választott elemzési tárolónak. A oszlopcentrikus nélküli adatbázis használata javasolt a tanulási célokra.
-    - Ha az SQL Database-t oszlopcentrikus nélkül szeretné használni, állítsa be a **$DemoScenario**  =  **2**
-    - Ha az SQL Database-t az oszlopcentrikus-mel szeretné használni, állítsa be a **$DemoScenario**  =  **3**  
+    - Ha oszlopcentrikus nélkül szeretné használni a SQL Databaset, állítsa be a **$DemoScenario**  =  **2**
+    - Ha SQL Databaset szeretne használni a oszlopcentrikus **$DemoScenario**, állítsa be a  =  **3** . $DemoScenario  
 3. Nyomja le az **F5** billentyűt a bemutató parancsfájl futtatásához (amely meghívja az *Deploy-TenantAnalytics \<XX> . ps1* parancsfájlt), amely létrehozza a bérlői elemzési tárolót. 
 
 Most, hogy telepítette az alkalmazást, és kitöltötte érdekes bérlői adatokkal, használja a [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a **tenants1- \<User\> MT-** és a **Catalog \<User\> -MT-** kiszolgálók összekapcsolásához a login = *fejlesztői*, jelszó = *P \@ ssword1*használatával.

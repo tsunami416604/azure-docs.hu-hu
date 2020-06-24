@@ -1,5 +1,5 @@
 ---
-title: Az Azure file shares tárolási referenciája
+title: Azure-fájlmegosztások – Storage-referencia
 description: Az Azure Storage API-referenciák, a readme-fájlok és az ügyféloldali kódtár csomagjainak megkeresése.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,14 +7,14 @@ ms.date: 06/02/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: d995e66c2bf3bc1cb1bd0cd93dfc2a0739ab692b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ffe3777882cd857ffb776bbadb41da0fb88d994e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346023"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976523"
 ---
-# <a name="azure-file-shares-storage-reference"></a>Az Azure file shares tárolási referenciája
+# <a name="azure-file-shares-storage-reference"></a>Azure-fájlmegosztások – Storage-referencia
 
 Az Azure file shares Storage API-referenciák, a függvénytár-csomagok, a readme-fájlok és az első lépések cikkeinek megkeresése.
 
@@ -66,8 +66,8 @@ Az alábbi táblázat az Azure file shares Python API-k referenciáit és mintá
 
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Az Azure file shares ügyféloldali kódtára a Pythonhoz](/python/api/overview/azure/storage-file-share-readme) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Példák](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2. x | [Azure-Storage-file](/python/api/azure-storage-file/?view=azure-python-previous) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Fejlesztés az Azure Files szolgáltatáshoz Pythonnal](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 12. x | [Az Azure Storage ügyféloldali kódtárai a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Példák](/python/api/overview/azure/storage-file-share-readme#examples) |
+| 2. x | [Azure Storage ügyféloldali kódtárak v2 a Pythonhoz](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Csomag (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Fejlesztés az Azure Files szolgáltatáshoz Pythonnal](/azure/storage/files/storage-python-how-to-use-file-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript-ügyféloldali kódtárak
 

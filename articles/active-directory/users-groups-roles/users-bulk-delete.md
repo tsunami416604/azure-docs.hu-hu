@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca30d5b050a34000fa7c6465356aba206aeaa8e4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3fc393279aaa6b293c2eb29099be45385ad08d9a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203349"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731499"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Felhasználók tömeges törlése Azure Active Directory
 
@@ -35,7 +35,7 @@ Töltse le és töltse ki a CSV-sablont, hogy segítsen az Azure AD-felhasznál�
 A letöltött CSV-sablon sorai a következők:
 
 - **Verziószám**: a verziószámot tartalmazó első sornak szerepelnie kell a CSV-fájl feltöltésekor.
-- **Oszlopfejlécek**: az oszlopfejlécek &lt; *Item name* &gt; formátuma a (z) [PropertyName] &lt;elemnév *kötelező vagy üres*&gt;. Például: `User name [userPrincipalName] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz.
+- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt; *Item name* &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `User name [userPrincipalName] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz.
 - **Példák sora**: a sablonban szerepel egy sor, amely tartalmazza az egyes oszlopok elfogadható értékeit. El kell távolítania a példákat tartalmazó sort, és le kell cserélnie a saját bejegyzéseire.
 
 ### <a name="additional-guidance"></a>További útmutatás
@@ -48,7 +48,7 @@ A letöltött CSV-sablon sorai a következők:
 ## <a name="to-bulk-delete-users"></a>Felhasználók tömeges törlése
 
 1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-1. Az Azure ad-ben válassza a **felhasználók** > **tömeges törlés**lehetőséget.
+1. Az Azure ad-ben válassza a **felhasználók**  >  **tömeges törlés**lehetőséget.
 1. A **felhasználó tömeges törlése** lapon válassza a **Letöltés** lehetőséget a felhasználói tulajdonságok érvényes CSV-fájljának fogadásához.
 
    ![Válassza ki azt a helyi CSV-fájlt, amelyben meg szeretné jeleníteni a törölni kívánt felhasználókat](./media/users-bulk-delete/bulk-delete.png)
@@ -76,7 +76,7 @@ Ezután ellenőrizze, hogy a törölt felhasználók szerepelnek-e az Azure AD-s
 
 1. Jelentkezzen be a Azure Portalba egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
 1. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-1. A **Kezelés** alatt válassza a **Felhasználókat**.
+1. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 1. A **Megjelenítés**területen jelölje ki a csak az **összes felhasználó** elemet, és ellenőrizze, hogy a törölt felhasználók már nem szerepelnek-e a listáján.
 
 ### <a name="verify-deleted-users-with-powershell"></a>Törölt felhasználók ellenőrzése a PowerShell-lel

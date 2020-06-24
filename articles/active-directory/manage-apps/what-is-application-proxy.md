@@ -2,23 +2,22 @@
 title: Helyszíni alkalmazások közzététele az Azure AD Application Proxy
 description: Ismerje meg, hogy miért érdemes az alkalmazásproxy használatával a helyszíni webalkalmazásokat külsőleg közzétenni a távoli felhasználók számára. Ismerje meg az alkalmazásproxy architektúráját, az összekötőket, a hitelesítési módszereket és a biztonsági előnyöket.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 05/31/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: d38cf25bb3b7622a0d444e4a71a4d62aafc053b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196454"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976506"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Helyszíni alkalmazások közzététele az Azure AD Application Proxy használatával távoli felhasználók számára
 
@@ -89,7 +88,7 @@ Több módon is konfigurálhat egy alkalmazást az egyszeri bejelentkezéshez, �
 * Webalkalmazások
 * Webes API-k, amelyeket a különböző eszközökön lévő gazdag alkalmazások számára kíván tenni
 * Egy Távoli asztali átjáró mögött futó alkalmazások
-* A Active Directory-hitelesítési tár (ADAL) integrált, gazdag ügyfélalkalmazások
+* A [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) szolgáltatással integrált, gazdag alkalmazások
 
 Az App proxy a következő natív hitelesítési protokollt használó alkalmazásokkal működik:
 
@@ -204,7 +203,7 @@ A szervezeteknek a következő előnyök kihasználásával kell megkezdeniük a
 * Automatikus frissítések a legújabb biztonsági javítások biztosításához
 * Új funkciók, mint azok kiadása; a legutóbbi támogatás az SAML egyszeri bejelentkezéshez és az alkalmazás-cookie-k részletesebb kezeléséhez
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure AD Application Proxy tervezésével, működésével és kezelésével kapcsolatos információkért lásd: Azure-beli [ad Application proxy üzembe helyezésének tervezése](application-proxy-deployment-plan.md).
 * Egy élő bemutató beléptetéséhez vagy az ingyenes 90 napos próbaverzió kiértékeléséhez tekintse meg a [Enterprise Mobility + Security első lépéseivel foglalkozó](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)témakört.

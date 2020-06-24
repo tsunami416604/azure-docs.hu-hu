@@ -6,20 +6,21 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 06/17/2020
 ms.author: asrastog
-ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83d2fa59654e038586a7f23eedbe7c656873f35c
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370576"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976574"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsokkal IoT Hub
 
-IoT Hub támogatja az inaktív adatok titkosítását az ügyfél által felügyelt kulcsokkal (CMK), más néven saját kulcs használata (BYOK), az Azure IoT Hub támogatása. Az Azure IoT Hub inaktív és átvitel alatt álló adatok titkosítását teszi lehetővé. Alapértelmezés szerint a IoT Hub a Microsoft által felügyelt kulcsokat használja az adattitkosításhoz. A CMK-támogatással az ügyfelek mostantól a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)használatával titkosítják az inaktív adatok titkosítását az ügyfelek által felügyelt kulcs titkosítási kulccsal.
+IoT Hub támogatja az inaktív adatok titkosítását az ügyfél által felügyelt kulcsokkal (CMK), más néven saját kulcs használata (BYOK). Az Azure IoT Hub inaktív és átvitel alatt álló adatok titkosítását teszi lehetővé az adatközpontokban, és a szolgáltatáshoz való hozzáférés során visszafejti azokat. Alapértelmezés szerint a IoT Hub a Microsoft által felügyelt kulcsokat használja az adatok titkosításához a nyugalmi állapotban. A CMK-mel egy másik titkosítási réteget is megadhat az alapértelmezett titkosításhoz, és a [Azure Key Vaulton](https://azure.microsoft.com/services/key-vault/)keresztül felügyelhető kulcs titkosítási kulccsal titkosíthatja az inaktív adatok mennyiségét. Ez rugalmasságot biztosít a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Ha a BYOK konfigurálva van a IoT Hubhoz, kettős titkosítást is biztosítunk, amely egy második védelmi réteget biztosít, miközben lehetővé teszi a titkosítási kulcs vezérlését a Azure Key Vaulton keresztül.
 
-Ehhez a funkcióhoz új IoT Hub (alapszintű vagy standard szintű csomag) létrehozására van szükség az alábbi régiók egyikében: USA keleti régiója, USA 2. nyugati régiója, USA déli középső régiója vagy US Gov. Ha szeretné kipróbálni ezt a funkciót, lépjen kapcsolatba velünk a [Microsoft támogatási szolgálatán](https://azure.microsoft.com/support/create-ticket/)keresztül. Ossza meg vállalata nevét és előfizetési AZONOSÍTÓját, amikor kapcsolatba lép a Microsoft ügyfélszolgálatával.
+Ehhez a funkcióhoz új IoT Hub létrehozása szükséges (alapszintű vagy standard csomag). Ha szeretné kipróbálni ezt a funkciót, lépjen kapcsolatba velünk a [Microsoft támogatási szolgálatán](https://azure.microsoft.com/support/create-ticket/)keresztül. Ossza meg vállalata nevét és előfizetési AZONOSÍTÓját, amikor kapcsolatba lép a Microsoft ügyfélszolgálatával.
+
 
 ## <a name="next-steps"></a>További lépések
 

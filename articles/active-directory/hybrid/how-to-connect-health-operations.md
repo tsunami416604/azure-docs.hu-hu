@@ -16,11 +16,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261514"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698628"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health műveletek
 Ez a témakör az Azure Active Directory (Azure AD) kapcsolati állapotának használatával végrehajtható különböző műveleteket ismerteti.
@@ -133,12 +133,12 @@ Ha engedélyezni szeretné, hogy a felhasználói hozzáférés a Azure AD Conne
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. lépés: felhasználók és csoportok hozzáadása és szerepkörök társítása
 1. A **Konfigurálás** szakaszban kattintson a **felhasználók**elemre.<br>
    ![Képernyőkép a Azure AD Connect Health Resource Sidebarról](./media/how-to-connect-health-operations/startRBAC.png)
-2. Válassza a **Hozzáadás** lehetőséget.
+2. Válassza a **Hozzáadás** elemet.
 3. A **szerepkör kiválasztása** panelen válasszon ki egy szerepkört (például **tulajdonos**).<br>
    ![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Írja be a célként megadott felhasználó vagy csoport nevét vagy azonosítóját. Egyszerre csak egy vagy több felhasználót vagy csoportot választhat ki. Kattintson a **Kiválasztás** gombra.
    ![Képernyőkép a Azure AD Connect Health RBAC-felhasználók ablakról](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. Kattintson az **OK** gombra.<br>
+5. Válassza az **OK** lehetőséget.<br>
 6. A szerepkör-hozzárendelés befejezése után a felhasználók és csoportok megjelennek a listában.<br>
    ![Képernyőkép Azure AD Connect Health RBAC-felhasználók ablakról, új felhasználók kiemelésével](./media/how-to-connect-health-operations/RBAC_user_list.png)
 

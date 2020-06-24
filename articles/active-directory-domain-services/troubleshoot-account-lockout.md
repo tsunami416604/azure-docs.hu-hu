@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22743a1e202ac26d95cf4a48cb58b2a2418e9f0c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743450"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734181"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartománnyal kapcsolatos fiókzárolási problémák elhárítása
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartománnyal kapcsolatos fiókzárolási problémák elhárítása
 
-A rosszindulatúan ismétlődő bejelentkezési kísérletek megelőzése érdekében az Azure AD DS egy meghatározott küszöbérték után zárolja a fiókokat. Ez a fiókzárolás a bejelentkezési támadás incidense nélkül is történhet véletlenül. Ha például a felhasználó többször is helytelen jelszót ad meg, vagy a szolgáltatás egy régi jelszót próbál használni, a rendszer kizárja a fiókot.
+Ha meg szeretné akadályozni, hogy a rendszer megismételje a rosszindulatú bejelentkezési kísérleteket, Azure Active Directory Domain Services (Azure AD DS) egy meghatározott küszöbérték után zárolja a fiókokat. Ez a fiókzárolás a bejelentkezési támadás incidense nélkül is történhet véletlenül. Ha például a felhasználó többször is helytelen jelszót ad meg, vagy a szolgáltatás egy régi jelszót próbál használni, a rendszer kizárja a fiókot.
 
 Ez a hibaelhárítási cikk azt ismerteti, hogy miért történik a fiókok zárolása, és hogyan konfigurálhatja a viselkedést, és hogyan tekintheti át a biztonsági naplózást a zárolási események hibaelhárítása érdekében.
 
@@ -33,9 +33,9 @@ Az alapértelmezett fiókzárolási küszöbértékek a részletes jelszóházir
 
 ### <a name="fine-grained-password-policy"></a>Részletes jelszóházirendek
 
-A részletes jelszóházirendek (Fgpp-EK) segítségével meghatározott korlátozásokat alkalmazhat a jelszó-és fiókzárolási házirendek számára a tartomány különböző felhasználói számára. A FGPP csak az Azure AD DS felügyelt tartományon belüli felhasználókat érinti. A Felhőbeli felhasználókat és a tartományi felhasználókat az Azure AD-ből szinkronizálták az Azure AD DS felügyelt tartományba, az Azure AD DSon belül csak a jelszóházirend érinti. Az Azure AD-ben vagy egy helyszíni címtárban nem érinti a fiókjaikat.
+A részletes jelszóházirendek (Fgpp-EK) segítségével meghatározott korlátozásokat alkalmazhat a jelszó-és fiókzárolási házirendek számára a tartomány különböző felhasználói számára. A FGPP csak felügyelt tartományon belüli felhasználókat érint. A Felhőbeli felhasználókat és a tartományi felhasználókat az Azure AD-ből szinkronizálták az Azure AD DS felügyelt tartományba, az Azure AD DSon belül csak a jelszóházirend érinti. Az Azure AD-ben vagy egy helyszíni címtárban nem érinti a fiókjaikat.
 
-A szabályzatokat az Azure AD DS felügyelt tartományán keresztül osztják el, és az elvégzett módosítások a következő felhasználói bejelentkezéskor lesznek alkalmazva. A házirend módosítása nem oldja fel a már kizárt felhasználói fiók zárolását.
+A házirendeket a rendszer a felügyelt tartományon keresztül terjeszti a csoportba, és a következő felhasználói bejelentkezéskor alkalmazza a módosításokat. A házirend módosítása nem oldja fel a már kizárt felhasználói fiók zárolását.
 
 A részletes jelszóházirendek, valamint a közvetlenül az Azure AD DSban létrehozott felhasználók közötti különbségekről, valamint az Azure AD-ből való szinkronizálásról további információt a [jelszó-és fiókzárolási házirendek konfigurálása][configure-fgpp]című témakörben talál.
 
@@ -88,7 +88,7 @@ AADDomainServicesAccountManagement
 
 A fiókzárolási küszöbértékek beállítására szolgáló részletes jelszóházirendek részletes ismertetését lásd: [jelszó-és fiókzárolási házirendek konfigurálása][configure-fgpp].
 
-Ha továbbra sem sikerül csatlakoztatni a virtuális gépet az Azure AD DS felügyelt tartományhoz, [keressen segítséget a Azure Active Directory támogatási jegyének megnyitásához][azure-ad-support].
+Ha továbbra sem sikerül a virtuális gép csatlakoztatása a felügyelt tartományhoz, [keressen segítséget a Azure Active Directory támogatási jegyének megnyitásához][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -22,7 +22,7 @@ Az Event Processor Host egy intelligens ügynök, amely leegyszerűsíti az esem
 
     ![Erőforrás menüelem létrehozása Microsoft Azure Portal](./media/event-hubs-create-storage/create-resource.png)
 
-2. Válassza a **Storage** > **Storage-fiók**lehetőséget.
+2. Válassza a **Storage**  >  **Storage-fiók**lehetőséget.
    
     ![Válassza ki a Storage-fiókot, Microsoft Azure Portal](./media/event-hubs-create-storage/select-storage-account.png)
 

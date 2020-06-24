@@ -5,15 +5,15 @@ description: Ez a cikk példákat mutat be a TLS/SSL-tanúsítványok átalakít
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/09/2020
+ms.topic: how-to
+ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 010ecc234afd745844b5b7868030d3c4e823872f
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 125da04c9fafe33c7f3de3a5849e4238b3b45d6d
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628917"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976540"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Tanúsítványok létrehozása a háttér Azure Application Gateway való engedélyezéséhez
 
@@ -78,7 +78,7 @@ A megbízható főtanúsítvány szükséges az Application Gateway v2 SKU-ban t
 
 Az alábbi lépések segítségével exportálhatja a tanúsítványhoz tartozó. cer fájlt:
 
-1. Használja a fentiekben említett 1-9 lépéseket a **hitelesítési tanúsítvány exportálása a háttér-tanúsítványból (a v1 SKU-hoz)** című részben a nyilvános kulcs háttérbeli tanúsítványból való exportálásához.
+1. Használja az előző szakaszban említett, a [(v1 SKU-hoz készült) hitelesítési tanúsítvány exportálása (](#export-authentication-certificate-for-v1-sku) 1-8-es verzió) című részben leírt lépéseket a nyilvános kulcs a háttér-tanúsítványból való exportálásához.
 
 2. A nyilvános kulcs exportálását követően nyissa meg a fájlt.
 
@@ -104,7 +104,7 @@ Az alábbi lépések segítségével exportálhatja a tanúsítványhoz tartozó
 
 6. Ekkor kibontotta a főtanúsítvány részleteit a háttér-tanúsítványból. Ekkor megjelenik a **Tanúsítvány exportálása varázsló**. Ezután használja a fentiekben említett 2-9 lépéseket a **hitelesítési tanúsítvány exportálása a háttér-tanúsítványból (a v1 SKU** -hoz) című szakaszban, hogy exportálja a megbízható főtanúsítványt az alap-64 kódolású X. 509 (. CER) formátum.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már rendelkezik a hitelesítési tanúsítvánnyal/megbízható főtanúsítvánnyal a Base-64 kódolású X. 509 (. CER) formátum. Ezt hozzáadhatja az Application gatewayhez, így a háttér-kiszolgálók végpontok közötti TLS-titkosítást biztosíthatnak. Lásd: a [végpontok közötti TLS konfigurálása a Application Gateway és a PowerShell használatával](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 

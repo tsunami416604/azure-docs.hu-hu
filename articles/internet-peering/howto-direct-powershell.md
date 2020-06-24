@@ -5,15 +5,15 @@ description: Közvetlen társrendszer létrehozása vagy módosítása a PowerSh
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 7639499aaef8d479c2552849b2124e709c46fd36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 076332ac61359bc793615c2f7c9ea0e22c667bcd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680787"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700297"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>Közvetlen társrendszer létrehozása vagy módosítása a PowerShell használatával
 
@@ -53,7 +53,7 @@ Ha szeretné, ezt az útmutatót az Azure [Portalon](howto-direct-portal.md)vég
 * [Exchange-társ létrehozása vagy módosítása a PowerShell használatával](howto-exchange-powershell.md)
 * [Örökölt Exchange-társ konvertálása Azure-erőforrásra a PowerShell használatával](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
 
 ```powershell

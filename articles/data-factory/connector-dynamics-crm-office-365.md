@@ -1,6 +1,6 @@
 ---
 title: Az Adatmásolás a Dynamicsban (Common Data Service)
-description: Megtudhatja, hogyan másolhat adatokat a Microsoft Dynamics CRM vagy a Microsoft Dynamics 365 (Common Data Service) rendszerből a fogadó adattárakba vagy a támogatott forrás-adattárakból a Dynamics CRM-be vagy a Dynamics 365-be a másolási tevékenység használatával egy adatfeldolgozó-folyamaton belül.
+description: Megtudhatja, hogyan másolhat adatokat a Microsoft Dynamics CRM vagy a Microsoft Dynamics 365 (Common Data Service) rendszerből a fogadó adattárakba vagy a támogatott forrásból származó adattárakból a Dynamics CRM-be vagy a Dynamics 365-be egy másolási tevékenységgel egy adatfeldolgozó-folyamaton keresztül.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,39 +12,39 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 6aef73381b9294f6bbd83ff99c3fa99eafb4fb1f
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: a7a8af505394b5bf860778b9872434cdacf54210
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678305"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887007"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be a Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban adatok másolása a Microsoft Dynamics 365 vagy a Microsoft Dynamics CRM rendszerbe. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk azt ismerteti, hogyan lehet másolási tevékenységet használni a Azure Data Factoryban az adatok Microsoft Dynamics 365 és Microsoft Dynamics CRM rendszerbe való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében a másolási tevékenység általános áttekintését jeleníti meg.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Ez az összekötő a következő tevékenységek esetében támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-és fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-A Dynamics 365 (Common Data Service) vagy a Dynamics CRM adatait átmásolhatja bármely támogatott fogadó adattárba. Az adatok bármely támogatott forrásból származó adattárból is átmásolhatók a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be. A másolási tevékenység által forrásként vagy nyelőként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+A Dynamics 365 (Common Data Service) vagy a Dynamics CRM adatait átmásolhatja bármely támogatott fogadó adattárba. Az adatok bármely támogatott forrásból származó adattárból is átmásolhatók a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be. A másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-Ez a Dynamics-összekötő a 7. x és 9. x verziójú Dynamics-verziót egyaránt támogatja online vagy helyszíni verzióban. Pontosabban,
+Ez a Dynamics-összekötő a 7 – 9 verziójú Dynamics-verziót is támogatja online és helyszíni rendszereken egyaránt. Pontosabban:
 
-- 7-es verzió. x a Dynamics CRM 2015-hez
-- A 8. x verzió a Dynamics CRM 2016-re és a Dynamics 365 korábbi verziójára mutat
-- A 9. x verzió a Dynamics 365 újabb verziójára mutat
+- 7-es verzió a Dynamics CRM 2015-hez.
+- A 8-as verzió a Dynamics CRM 2016-re és a Dynamics 365 korábbi verziójára mutat.
+- A 9-es verzió leképezi a Dynamics 365 újabb verzióját.
 
-Tekintse át a következő táblázatot a megfelelő Dynamics-verziókra/-termékekre vonatkozó támogatott hitelesítési típusokról és konfigurációkról. (Az internetre irányuló központi telepítés nem rövid.)
+Tekintse át a következő táblázatot a Dynamics-verziók és-termékek támogatott hitelesítési típusairól és konfigurációjáról.
 
 | Dynamics-verziók | Hitelesítési típusok | Társított szolgáltatási minták |
 |:--- |:--- |:--- |
-| Common Data Service <br> Dynamics 365 online <br> Dynamics CRM Online | HRE egyszerű szolgáltatásnév <br> Office 365 | [Dynamics online + HRE egyszerű szolgáltatásnév vagy Office 365-hitelesítés](#dynamics-365-and-dynamics-crm-online) |
-| Dynamics 365 helyszíni központi TELEPÍTÉSsel <br> Dynamics CRM 2016 helyszíni központi TELEPÍTÉSsel <br> Dynamics CRM 2015 helyszíni központi TELEPÍTÉSsel | IFD | [Helyszíni Dynamics és központi telepítés – hitelesítés](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+| Common Data Service <br/><br/> Dynamics 365 online <br/><br/> Dynamics CRM Online | Azure Active Directory (Azure AD) egyszerű szolgáltatásnév <br/><br/> Office 365 | [Dynamics online és Azure AD Service – elsődleges vagy Office 365-hitelesítés](#dynamics-365-and-dynamics-crm-online) |
+| Dynamics 365 helyszíni, internetre irányuló üzembe helyezéssel (internetes telepítéssel) <br/><br/> Dynamics CRM 2016 helyszíni központi TELEPÍTÉSsel <br/><br/> Dynamics CRM 2015 helyszíni központi TELEPÍTÉSsel | IFD | [Helyszíni Dynamics, központi TELEPÍTÉSsel és központi TELEPÍTÉSsel történő hitelesítéssel](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 A Dynamics 365 esetében a következő típusú alkalmazások támogatottak:
 
@@ -54,16 +54,16 @@ A Dynamics 365 esetében a következő típusú alkalmazások támogatottak:
 - Dynamics 365 for Project Service Automation
 - Dynamics 365 for Marketing
 
-Az összekötő nem támogatja más típusú alkalmazások, például a Pénzügy és a műveletek, a tehetségek stb. használatát.
+Ez az összekötő nem támogatja más típusú alkalmazások, például a pénzügy, a műveletek és a tehetség használatát.
 
 Ez a Dynamics-összekötő a [Dynamics xrm-eszközökre](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)épül.
 
 >[!TIP]
->A **dynamics 365-as pénzügyi és-műveletek**adatainak másolásához használhatja a [Dynamics AX-összekötőt](connector-dynamics-ax.md).
+>A Dynamics 365-as pénzügyi és-műveletek adatainak másolásához használhatja a [Dynamics AX-összekötőt](connector-dynamics-ax.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha ezt az összekötőt a HRE egyszerű hitelesítéssel szeretné használni, Common Data Service vagy Dynamics kiszolgáló-kiszolgáló (S2S) hitelesítést kell beállítania. A részletes lépésekért tekintse meg [ezt a cikket](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) .
+Ha az összekötőt az Azure AD szolgáltatással szeretné használni – az egyszerű hitelesítéshez be kell állítania a kiszolgálók közötti (S2S) hitelesítést Common Data Service vagy Dynamics rendszerbe. A részletes lépésekért tekintse meg [ezt a cikket](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) .
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -79,21 +79,21 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot **Dynamics**, **DynamicsCrm**vagy **CommonDataServiceForApps**értékre kell beállítani. | Yes |
-| Megadva | A Dynamics-példány központi telepítési típusa. A Dynamics online számára **"online"** állapotúnak kell lennie. | Yes |
-| serviceUri | A Dynamics-példány szolgáltatásának URL-címe, például: `https://adfdynamics.crm.dynamics.com` . | Yes |
-| authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. Az engedélyezett értékek a következők: **AADServicePrincipal** vagy **"Office 365"**. | Yes |
-| servicePrincipalId | Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓjának megadásához. | Igen, ha `AADServicePrincipal` hitelesítést használ |
-| servicePrincipalCredentialType | Adja meg az egyszerű szolgáltatás hitelesítéséhez használandó hitelesítő adatokat. Az engedélyezett értékek a következők: **ServicePrincipalKey** vagy **ServicePrincipalCert**. | Igen, ha `AADServicePrincipal` hitelesítést használ |
-| servicePrincipalCredential | Az egyszerű szolgáltatásnév hitelesítő adatainak megadása. <br>Ha a `ServicePrincipalKey` as hitelesítőadat-típust használja, `servicePrincipalCredential` karakterlánc lehet (az ADF titkosítja a társított szolgáltatás telepítésekor) vagy a AKV található titkos kulcsra mutató hivatkozást. <br>A `ServicePrincipalCert` as hitelesítő adat használata esetén a `servicePrincipalCredential` AKV-ben lévő tanúsítványra mutató hivatkozásnak kell lennie. | Igen, ha `AADServicePrincipal` hitelesítést használ |
-| felhasználónév | Adja meg a Dynamicshoz való kapcsolódáshoz használandó felhasználónevet. | Igen, ha `Office365` hitelesítést használ |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen, ha `Office365` hitelesítést használ |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem, forrás, igen, ha a forráshoz társított szolgáltatás nem rendelkezik integrációs futtatókörnyezettel |
+| típus | A Type tulajdonságot "Dynamics", "DynamicsCrm" vagy "CommonDataServiceForApps" értékre kell beállítani. | Yes |
+| Megadva | A Dynamics-példány központi telepítési típusa. Az értéknek "online" értékűnek kell lennie a Dynamics online-hoz. | Yes |
+| serviceUri | A Dynamics-példány szolgáltatásának URL-címe. Például: https://adfdynamics.crm.dynamics.com. | Yes |
+| authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. Az érvényes értékek: "AADServicePrincipal" és "Office 365". | Yes |
+| servicePrincipalId | Az Azure AD-alkalmazás ügyfél-azonosítója. | Igen, ha a hitelesítés "AADServicePrincipal" |
+| servicePrincipalCredentialType | A szolgáltatás egyszerű hitelesítéséhez használandó hitelesítőadat-típus. Az érvényes értékek: "ServicePrincipalKey" és "ServicePrincipalCert". | Igen, ha a hitelesítés "AADServicePrincipal" |
+| servicePrincipalCredential | A szolgáltatás egyszerű hitelesítő adatai. <br/><br/>Ha a "ServicePrincipalKey" hitelesítő adatként használja, `servicePrincipalCredential` akkor egy karakterlánc, amely Azure Data Factory titkosítja a társított szolgáltatás központi telepítését. Vagy a Azure Key Vault titkos kódjára is hivatkozhat. <br/><br/>Ha hitelesítő adatként használja a "ServicePrincipalCert" kifejezést, `servicePrincipalCredential` Azure Key Vault-ben lévő tanúsítványra kell hivatkoznia. | Igen, ha a hitelesítés "AADServicePrincipal" |
+| felhasználónév | A Dynamicshoz való kapcsolódáshoz használt Felhasználónév. | Igen, ha a hitelesítés "Office 365" |
+| jelszó | A felhasználónévként megadott felhasználói fiók jelszava. A mező megjelölése a "SecureString" értékkel a biztonságos tárolás Data Factoryban, vagy [a Azure Key Vault tárolt titkos kód hivatkozása](store-credentials-in-key-vault.md). | Igen, ha a hitelesítés "Office 365" |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva érték, a tulajdonság az alapértelmezett Azure Integration Runtime-t használja. | Nem a forráshoz, és igen, ha a forráshoz társított szolgáltatás nem rendelkezik integrációs futtatókörnyezettel |
 
 >[!NOTE]
->Az opcionális "szervezetnév" tulajdonság használatára használt Dynamics Connector a Dynamics CRM/365 online-példány azonosításához. Miközben folyamatosan működik, az új "serviceUri" tulajdonságot kell megadnia ahelyett, hogy jobb teljesítményt szeretne a példányok felderítésében.
+>A Dynamics Connector korábban a nem kötelező **Szervezetnév** tulajdonságot használta a Dynamics CRM-vagy Dynamics 365 online-példány azonosítására. Habár ez a tulajdonság továbbra is működik, javasoljuk, hogy az új **serviceUri** tulajdonságot a példányok felderítése jobb teljesítményének növelése helyett.
 
-**Példa: Dynamics online a HRE egyszerű és kulcsos hitelesítéssel**
+#### <a name="example-dynamics-online-using-azure-ad-service-principal-and-key-authentication"></a>Példa: Dynamics online az Azure AD szolgáltatással – elsődleges és kulcsos hitelesítés
 
 ```json
 {  
@@ -115,7 +115,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
     }  
 }  
 ```
-**Példa: Dynamics online a HRE szolgáltatás egyszerű és tanúsítványalapú hitelesítésének használatával**
+#### <a name="example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication"></a>Példa: Dynamics online az Azure AD szolgáltatással – elsődleges és tanúsítványalapú hitelesítés
 
 ```json
 { 
@@ -145,7 +145,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 } 
 ```
 
-**Példa: Dynamics online Office 365-hitelesítés használatával**
+#### <a name="example-dynamics-online-using-office-365-authentication"></a>Példa: Dynamics online az Office 365-hitelesítéssel
 
 ```json
 {
@@ -172,21 +172,21 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>A Dynamics 365 és a Dynamics CRM helyszíni központi TELEPÍTÉSsel
 
-*A Dynamics online-hoz képest további tulajdonságok a következők: "állomásnév" és "Port".*
+A Dynamics online-hoz képest további tulajdonságok az **állomásnév** és a **port**.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot **Dynamics**, **DynamicsCrm**vagy **CommonDataServiceForApps**értékre kell beállítani. | Yes |
-| Megadva | A Dynamics-példány központi telepítési típusa. A helyszíni Dynamics számára a következőnek kell lennie: **"OnPremisesWithIfd"** .| Yes |
-| hostName | A helyszíni Dynamics-kiszolgáló állomásneve. | Yes |
-| port | A helyszíni Dynamics-kiszolgáló portja. | Nem, az alapértelmezett érték 443 |
-| Szervezetnév | A Dynamics-példány szervezetének neve. | Yes |
-| authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. A központi TELEPÍTÉSsel rendelkező Dynamics helyszíni környezetének **"központi telepítés"** megadása. | Yes |
-| felhasználónév | Adja meg a Dynamicshoz való kapcsolódáshoz használandó felhasználónevet. | Yes |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Dönthet úgy, hogy ezt a mezőt SecureString jelöli, hogy az ADF-ben biztonságosan tárolja, vagy a jelszót tárolja Azure Key Vaultban, és hagyja, hogy a másolási tevékenység az Adatmásolás során lekérjen – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Yes |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem, forrás, igen, fogadó |
+| típus | A Type tulajdonságot "Dynamics", "DynamicsCrm" vagy "CommonDataServiceForApps" értékre kell beállítani. | Igen. |
+| Megadva | A Dynamics-példány központi telepítési típusa. Az értéknek "OnPremisesWithIfd" értékűnek kell lennie a helyszíni Dynamics számára az internetes eléréssel.| Igen. |
+| hostName | A helyszíni Dynamics-kiszolgáló állomásneve. | Igen. |
+| port | A helyszíni Dynamics-kiszolgáló portja. | Nem. Az alapértelmezett érték a 443. |
+| Szervezetnév | A Dynamics-példány szervezetének neve. | Igen. |
+| authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. A központi TELEPÍTÉSsel rendelkező Dynamics helyszíni környezetének "központi telepítés" megadása. | Igen. |
+| felhasználónév | A Dynamicshoz való kapcsolódáshoz használt Felhasználónév. | Igen. |
+| jelszó | A felhasználónévhez megadott felhasználói fiók jelszava. Ezt a mezőt "SecureString" értékkel jelölheti meg, hogy biztonságosan tárolja Data Factoryban. Vagy tárolhat egy jelszót Key Vaultban, és engedélyezheti a másolási tevékenységet, amikor az Adatmásolás során lekéri. További információ a [Key Vault tárolt hitelesítő adatokról](store-credentials-in-key-vault.md). | Igen. |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva érték, a tulajdonság az alapértelmezett Azure Integration Runtime-t használja. | Nem a forrás és az Igen érték a fogadó számára. |
 
-**Példa: helyszíni Dynamics helyszíni és központi telepítéssel történő hitelesítéssel**
+#### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>Példa: helyszíni Dynamics helyszíni és központi telepítéssel történő hitelesítéssel
 
 ```json
 {
@@ -218,14 +218,14 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Dynamics-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok a és a Dynamics rendszerbe való másolásához a következő tulajdonságok támogatottak.
+Az adatok a és a Dynamics rendszerbe való másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát **DynamicsEntity**, **DynamicsCrmEntity**vagy **CommonDataServiceForAppsEntity**értékre kell beállítani. |Yes |
-| entityName | A lekérdezni kívánt entitás logikai neve. | Nem forrás (ha a tevékenység forrásában a "Query" érték van megadva), igen a fogadó számára |
+| típus | Az adatkészlet Type tulajdonságát "DynamicsEntity", "DynamicsCrmEntity" vagy "CommonDataServiceForAppsEntity" értékre kell beállítani. |Yes |
+| entityName | A lekérdezni kívánt entitás logikai neve. | Nem a forrásnál, ha a tevékenység forrása "Query" (lekérdezés), igen, fogadóként van megadva |
 
-**Például**
+#### <a name="example"></a>Példa
 
 ```json
 {
@@ -250,21 +250,21 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="dynamics-as-a-source-type"></a>A Dynamics forrás típusa
 
-Az adatok Dynamicsból való másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak.
+A Dynamicsből származó adatok másolásához a másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát **DynamicsSource**, **DynamicsCrmSource**vagy **CommonDataServiceForAppsSource**értékre kell beállítani. | Yes |
-| lekérdezés | A FetchXML egy saját lekérdezési nyelv, amelyet a Dynamics (online és a helyszíni) használ. Tekintse meg a következő példát. További információ: [lekérdezések készítése a FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nem (ha meg van adva a "entityName" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát "DynamicsSource", "DynamicsCrmSource" vagy "CommonDataServiceForAppsSource" értékre kell beállítani. | Yes |
+| lekérdezés | A FetchXML egy saját lekérdezési nyelv, amelyet a Dynamics online-ban és a helyszínen is használhat. Tekintse meg a következő példát. További információ: [lekérdezések készítése a FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nem, ha az `entityName` adatkészletben meg van adva |
 
 >[!NOTE]
 >A PK oszlop mindig akkor is másolódik, ha a FetchXML-lekérdezésben konfigurált oszlop nem tartalmazza azt.
 
 > [!IMPORTANT]
->- A Dynamicsből származó adatok másolása esetén a dinamika és a fogadó közötti explicit oszlop-hozzárendelés nem kötelező, de a determinisztikus másolási eredményének biztosítása érdekében a rendszer kifejezetten újrakövetelte a szolgáltatást.
->- Amikor sémát importál az authoring UI-ben, az ADF kikövetkezteti a sémát a Dynamics lekérdezési eredményből származó legfelső sorok mintavételezésével a forrás oszlopok listájának inicializálásához. ebben az esetben a legfelső sorokban található értékeket nem tartalmazó oszlopok maradnak meg. Ugyanez a viselkedés a másolási végrehajtások esetében is érvényes, ha nincs explicit leképezés. Áttekintheti és hozzáadhat további oszlopokat a leképezéshez, amely a másolási futtatókörnyezet során tiszteletben marad.
+>- A Dynamicsből származó adatok másolása esetén a Dynamicsből a fogadóba történő explicit oszlop-hozzárendelés nem kötelező. A leképezést azonban kifejezetten ajánljuk a determinisztikus másolási eredményének biztosításához.
+>- Amikor Data Factory importál egy sémát a szerzői műveletek felhasználói felületén, a rendszer kikövetkezteti a sémát. Ezt úgy végezheti el, hogy a legfelső sorokat a Dynamics lekérdezési eredményből a forrás oszlopok listájának inicializálásához. Ebben az esetben a felső sorokban nem szereplő oszlopokat a rendszer kihagyja. Ugyanez a viselkedés a másolási végrehajtások esetében is érvényes, ha nincs explicit leképezés. Áttekintheti és hozzáadhat további oszlopokat a leképezéshez, amelyeket a rendszer a másolási futtatókörnyezet során tiszteletben tart.
 
-**Például**
+#### <a name="example"></a>Példa
 
 ```json
 "activities":[
@@ -318,24 +318,24 @@ Az adatok Dynamicsból való másolásához a másolási tevékenység **forrás
 
 ### <a name="dynamics-as-a-sink-type"></a>A Dynamics fogadó típusa
 
-Az adatmásoláshoz a másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja **sink** :
+Az adatmásoláshoz a másolási **tevékenység** elfogadója szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának Type tulajdonságát **DynamicsSink**, **DynamicsCrmSink**vagy **CommonDataServiceForAppsSink**értékre kell beállítani. | Yes |
-| writeBehavior | A művelet írási viselkedése.<br/>Az engedélyezett érték: **"Upsert"**. | Yes |
-| alternateKeyName | A "Upsert" művelet végrehajtásához adja meg az entitásban definiált másodlagos kulcs nevét. | No |
-| writeBatchSize | Az egyes kötegekben a Dynamicsba írt adatsorok száma. | Nem (az alapértelmezett érték 10) |
-| ignoreNullValues | Azt jelzi, hogy a rendszer figyelmen kívül hagyja-e az írási művelet során a bemeneti adatokból származó null értékeket (kivéve a legfontosabb mezőket).<br/>Az engedélyezett értékek értéke **igaz** és **hamis**.<br>- **True (igaz**): az upsert/Update művelet végrehajtásakor a célobjektum nem módosul. Definiált alapértelmezett érték beszúrása egy beszúrási művelet végrehajtásakor.<br/>- **Hamis**: a upsert vagy-frissítési művelet végrehajtásakor a célként megadott objektumban lévő ADATFRISSÍTÉS NULL értékűre. Szúrjon be egy NULL értéket a beszúrási művelet végrehajtásakor. | Nem (az alapértelmezett érték hamis) |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát "DynamicsSink", "DynamicsCrmSink" vagy "CommonDataServiceForAppsSink" értékre kell beállítani. | Igen. |
+| writeBehavior | A művelet írási viselkedése. Az értéknek "Upsert" értékűnek kell lennie. | Yes |
+| alternateKeyName | Az entitáson definiált másodlagos kulcs neve upsert. | Nem. |
+| writeBatchSize | Az egyes kötegekben a Dynamicsba írt adatsorok száma. | Nem. Az alapértelmezett érték 10. |
+| ignoreNullValues | Azt határozza meg, hogy a rendszer figyelmen kívül hagyja-e a null értékeket a Key mezőktől eltérő bemeneti adatokból az írási művelet során.<br/><br/>Az érvényes értékek **igazak** és **hamisak**:<ul><li>**True (igaz**): a célobjektum nem módosult, ha upsert vagy frissítési műveletet végez. Definiált alapértelmezett érték beszúrása egy beszúrási művelet végrehajtásakor.</li><li>**Hamis**: a upsert vagy frissítési művelet végrehajtásakor a célként megadott objektumban lévő Adatfrissítés NULL értékre. Szúrjon be egy null értéket a beszúrási művelet végrehajtásakor.</li></ul> | Nem. Az alapértelmezett érték **false (hamis**). |
 
 >[!NOTE]
->A "**writeBatchSize**" fogadó alapértelmezett értéke és a "**[parallelCopies](copy-activity-performance-features.md#parallel-copy)**" másolási tevékenység a Dynamics fogadó esetében egyaránt 10. Ezért az 100-es rekordokat a Dynamics párhuzamosan küldi el.
+>A fogadó **writeBatchSize** és a **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** másolási tevékenységének alapértelmezett értéke 10. Ezért a 100-es rekordokat a rendszer alapértelmezés szerint egyszerre küldi el a Dynamics számára.
 
-A Dynamics 365 online esetében legfeljebb [2 egyidejű batch-hívás adható meg a szervezeten belül](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Ha túllépi a korlátot, a rendszer a "kiszolgáló foglalt" hibát az első kérelem végrehajtása előtt kidobja. Ha a "writeBatchSize" értéke kisebb vagy egyenlő, mint 10, akkor elkerülhető az egyidejű hívások szabályozása.
+A Dynamics 365 online esetében a [szervezeten belül két egyidejű batch-hívás](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)van korlátozva. Ha túllépi a korlátot, a rendszer a "kiszolgáló foglalt" kivételt az első kérelem futtatása előtt kidobja. Az egyidejű hívások szabályozásának elkerüléséhez tartsa a **writeBatchSize** 10 vagy kevesebb értékkel.
 
-A "**writeBatchSize**" és a "**parallelCopies**" optimális kombinációja az entitás sémájától függ, például az oszlopok számával, a sorok méretével, a beépülő modulok/munkafolyamatok/munkafolyamat-tevékenységek számával, valamint a hívásokkal. A 10 writeBatchSize * 10 parallelCopies alapértelmezett beállítása a Dynamics Service-nek megfelelő javaslat, amely a legtöbb Dynamics-entitás esetében működni fog, bár nem lehet a legjobb teljesítmény. A teljesítmény finomhangolásához módosítsa a kombinációt a másolási tevékenység beállításaiban.
+A **writeBatchSize** és a **parallelCopies** optimális kombinációja az entitás sémájától függ. A séma elemei közé tartozik az oszlopok száma, a sor mérete, valamint a beépülő modulok, a munkafolyamatok és a munkafolyamat-tevékenységek száma. A **writeBatchSize** (10) &times; **parallelCopies** (10) alapértelmezett beállítása a Dynamics szolgáltatásnak megfelelő javaslat. Ez az érték a legtöbb Dynamics-entitás esetében működik, bár lehetséges, hogy nem adja meg a legjobb teljesítményt. A teljesítmény finomhangolásához módosítsa a kombinációt a másolási tevékenység beállításaiban.
 
-**Például**
+#### <a name="example"></a>Példa
 
 ```json
 "activities":[
@@ -371,25 +371,25 @@ A "**writeBatchSize**" és a "**parallelCopies**" optimális kombinációja az e
 
 ## <a name="data-type-mapping-for-dynamics"></a>Adattípusok leképezése a Dynamics számára
 
-A Dynamicsből másolt adatok másolásakor a rendszer a következő leképezéseket használja a Dynamics-adattípusokból Data Factory átmeneti adattípusokra. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadóra, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md)
+Az adatok Dynamicsból való másolása során a következő táblázat a Dynamics-adattípusok és a Data Factory köztes adattípusok közötti leképezéseket mutatja be. Annak megismeréséhez, hogy egy másolási tevékenység hogyan képezi le a forrás-sémát és az adattípust egy fogadóra, tekintse meg a [séma és adattípus-leképezések](copy-activity-schema-and-type-mapping.md)című témakört.
 
-Konfigurálja a megfelelő Data Factory adattípust egy adatkészlet-struktúrában a forrás Dynamics-adattípus alapján a következő leképezési táblázat használatával.
+Konfigurálja a megfelelő Data Factory adattípust a forrás-Dynamics adattípuson alapuló adatkészlet-struktúrában a következő leképezési táblázat használatával:
 
 | Dynamics-adattípus | Data Factory időközi adattípus | Forrásként támogatott | Fogadóként támogatott |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode. BigInt | Hosszú | ✓ | ✓ |
 | AttributeTypeCode. Boolean | Logikai | ✓ | ✓ |
-| AttributeType. Customer | GUID | ✓ | ✓ (lásd: [útmutató](#writing-data-to-lookup-field)) |
+| AttributeType. Customer | GUID | ✓ | ✓ (Lásd: [útmutató](#writing-data-to-a-lookup-field)) |
 | AttributeType. DateTime | Datetime | ✓ | ✓ |
 | AttributeType. decimális | Decimal | ✓ | ✓ |
 | AttributeType. Double | Double | ✓ | ✓ |
 | AttributeType. EntityName | Sztring | ✓ | ✓ |
 | AttributeType. Integer | Int32 | ✓ | ✓ |
-| AttributeType. lookup | GUID | ✓ | ✓ (lásd: [útmutató](#writing-data-to-lookup-field)) |
+| AttributeType. lookup | GUID | ✓ | ✓ (Lásd: [útmutató](#writing-data-to-a-lookup-field)) |
 | AttributeType. ManagedProperty | Logikai | ✓ | |
 | AttributeType. Memo | Sztring | ✓ | ✓ |
 | AttributeType. Money | Decimal | ✓ | ✓ |
-| AttributeType. Owner | GUID | ✓ | ✓ (lásd: [útmutató](#writing-data-to-lookup-field)) |
+| AttributeType. Owner | GUID | ✓ | ✓ (Lásd: [útmutató](#writing-data-to-a-lookup-field)) |
 | AttributeType. lista | Int32 | ✓ | ✓ |
 | AttributeType. uniqueidentifier | GUID | ✓ | ✓ |
 | AttributeType. String | Sztring | ✓ | ✓ |
@@ -397,39 +397,41 @@ Konfigurálja a megfelelő Data Factory adattípust egy adatkészlet-struktúrá
 | AttributeType. status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> A Dynamics-adattípusok AttributeType. CalendarRules, AttributeType. MultiSelectPicklist és AttributeType. PartyList nem támogatottak.
+> A Dynamics-adattípusok **AttributeType. CalendarRules**, **AttributeType. MultiSelectPicklist**és **AttributeType. PartyList** nem támogatottak.
 
-## <a name="writing-data-to-lookup-field"></a>Adatírás a keresési mezőbe
+## <a name="writing-data-to-a-lookup-field"></a>Adatírás keresési mezőbe
 
-Ha több cél, például az *ügyfél* és a *tulajdonos*között szeretne információt írni a keresési mezőbe, kövesse az alábbi útmutatást és példát:
+Ha olyan keresőmezőt szeretne írni, amelynek több célja van, például az ügyfél és a tulajdonos, kövesse az alábbi útmutatást és példát:
 
-1. A mező értékét és a hozzá tartozó megcélzott entitás nevét is tartalmazó forrás legyen.
-   - Ha az összes rekord ugyanahhoz a célként megadott entitáshoz tartozik, akkor győződjön meg arról, hogy a forrásadatok egy olyan oszloppal rendelkeznek, amely a célként megadott entitás nevét tárolja, vagy egy további oszlop hozzáadásához a másolási tevékenység forrásában a cél entitás definiálásához.
-   - Ha különböző rekordok képezhetők le különböző célcsoportokra, győződjön meg arról, hogy a forrásadatok tartalmaz egy oszlopot, amely a megfelelő cél entitás nevét tárolja.
+1. Győződjön meg arról, hogy a forrás a mező értékét és a hozzá tartozó megcélzott entitás nevét is tartalmazza.
+   - Ha az összes rekord ugyanahhoz a megcélzott entitáshoz van rendelve, a következő feltételek egyikét kell biztosítania:
+      - A forrásadatok egy olyan oszloppal rendelkeznek, amely a cél entitás nevét tárolja.
+      - Hozzáadott egy további oszlopot a másolási tevékenység forrásában a célként megadott entitás definiálásához.
+   - Ha különböző rekordok képezhetők le a különböző célcsoportokra, győződjön meg arról, hogy a forrásadatok tartalmaz egy oszlopot, amely a megfelelő cél entitás nevét tárolja.
 
-2. Az érték és az entitás hivatkozási oszlopának leképezése a forrásról a fogadóra. Az entitás hivatkozási oszlopát egy speciális elnevezési mintával rendelkező virtuális oszlophoz kell hozzárendelni `{lookup_field_name}@EntityReference` . Valójában nem létezik a Dynamics alkalmazásban, de ez az adott többhelyes keresési mező metaadat-oszlopa.
+1. Rendelje hozzá az érték és az entitás – hivatkozás oszlopot a forrásról a fogadóra. Az entitás-hivatkozás oszlopot egy olyan virtuális oszlophoz kell hozzárendelni, amely a speciális elnevezési mintát tartalmaz `{lookup_field_name}@EntityReference` . Az oszlop valójában nem létezik a Dynamicsban. Ez azt jelzi, hogy ez az oszlop a megadott többhelyes keresési mező metaadat oszlopa.
 
- A forrásnak például két oszlopa van:
+Tegyük fel például, hogy a forrásnak a következő két oszlopa van:
 
-- `CustomerField`*GUID*típusú oszlop, amely a Dynamics cél entitásának elsődleges kulcs értéke.
-- `Target`*karakterlánc*típusú oszlop, amely a célként megadott entitás logikai neve. 
+- **GUID**típusú **CustomerField** -oszlop, amely a cél entitás elsődleges kulcsának értéke a dynamicsben.
+- **Karakterlánc**típusú **cél** oszlop, amely a célként megadott entitás logikai neve.
 
-És az ilyen jellegű Adatmásolást az ügyfél típusú Dynamics-entitás mezőjébe szeretné másolni `CustomerField` . *Customer* 
+Azt is tegyük fel, hogy az ilyen típusú Adatmásolás a fogadó Dynamics entitás **Customer**mezőjébe **CustomerField** .
 
 A másolási tevékenység oszlop leképezése részen a következő módon képezze le a két oszlopot:
 
-- `CustomerField` -> `CustomerField`: Ez a normál mezők leképezése.
-- `Target` -> `CustomerField@EntityReference`: a fogadó oszlop egy virtuális oszlop, amely az entitásra mutató hivatkozást jelképezi. Adja meg a mező nevét a leképezésben, mivel a sémák importálásával nem fog megjelenni.
+- **CustomerField** a **CustomerField**. Ez a leképezés a normál mezők leképezése.
+- **Cél** a **CustomerField \@ EntityReference**. A fogadó oszlop az entitások hivatkozását jelképező virtuális oszlop. Adja meg az ilyen mezőneveket a leképezésben, mivel azok nem jelennek meg a sémák importálásával.
 
 ![Dynamics keresési mező oszlopának leképezése](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 
-Ha az összes forrásoldali rekord ugyanahhoz a célként megadott entitáshoz kapcsolódik, és a forrásadatok nem tartalmazzák a célként megadott entitás nevét, akkor itt a parancsikon: a másolási tevékenység forrása területen adjon hozzá egy további oszlopot. A minta és az érték alapján megadhatja a nevet a `{lookup_field_name}@EntityReference` célként megadott entitás neveként, amely esetben az explicit oszlop leképezése opcionális lesz, mert a másolási tevékenység alapértelmezés szerint az oszlopok neve alapján van leképezve.
+Ha az összes forrásoldali rekord ugyanahhoz a célként megadott entitáshoz kapcsolódik, és a forrásadatok nem tartalmazzák a célként megadott entitás nevét, az itt látható parancsikon: a másolási tevékenység forrása mezőben adjon hozzá egy további oszlopot. Nevezze el az új oszlopot a minta használatával `{lookup_field_name}@EntityReference` , állítsa be az értéket a célként megadott entitás nevére, majd a szokásos módon folytassa az oszlop-hozzárendelést. Ha a forrás-és a fogadó oszlopainak nevei azonosak, kihagyhatja az explicit oszlop-hozzárendelést, mert a másolási tevékenység alapértelmezés szerint az oszlopok neve szerint van leképezve.
 
-![Dynamics keresési mező entitás-hivatkozás hozzáadása](./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png)
+![Dynamics lookup-mező hozzáadása egy entitáshoz – hivatkozási oszlop](./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png)
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságok részleteinek megismeréséhez lásd: [keresési tevékenység](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>Következő lépések
-A Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A Data Factory a másolási tevékenységet a forrásként és a fogadóként támogatja, a [támogatott adattárakat](copy-activity-overview.md#supported-data-stores-and-formats)ismertető cikk tartalmazza.
