@@ -1,39 +1,37 @@
 ---
 author: ggailey777
-ms.service: cost-management-billing
+ms.service: azure-functions
 ms.topic: include
-ms.date: 05/09/2019
+ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 4643bb7f95e4fd1249d3ab6699c1f835c77f18fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40d171101c5d99cd33c90ee8751092a3ceebf12e
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77198343"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906714"
 ---
-| Erőforrás | [Felhasználási terv](../articles/azure-functions/functions-scale.md#consumption-plan) | [Prémium szintű csomag](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> . csomag |
-| --- | --- | --- | --- |
-| Horizontális felskálázás | Eseményvezérelt | Eseményvezérelt | [Manuális/automatikus méretezés](../articles/app-service/manage-scale-up.md) | 
-| Példányok maximális száma | 200 | 100 | 10-20 |
-|Alapértelmezett [időkorlát időtartama](../articles/azure-functions/functions-scale.md#timeout) (perc) |5 | 30 |30<sup>2</sup> |
-|[Időtúllépés maximális időtartama](../articles/azure-functions/functions-scale.md#timeout) (perc) |10 | nem kötött<sup>8</sup> | nem kötött<sup>3</sup> |
-| Kimenő kapcsolatok maximális száma (/példány) | 600 aktív (1200 összesen) | unbounded | unbounded |
-| Kérelem maximális mérete (MB)<sup>4</sup> | 100 | 100 | 100 |
-| Lekérdezési karakterlánc maximális hossza<sup>4</sup> | 4096 | 4096 | 4096 |
-| Kérelem URL-címének maximális hossza<sup>4</sup> | 8192 | 8192 | 8192 |
-| [ACU](../articles/virtual-machines/windows/acu.md) -példányok száma | 100 | 210-840 | 100-840 |
-| Maximális memória (GB/példány) | 1.5 | 3,5 – 14 | 1,75 – 14 |
-| Function Apps/csomag |100 |100 |nem kötött<sup>5</sup> |
-| [App Service-csomagok](../articles/app-service/overview-hosting-plans.md) | 100 [régiónként](https://azure.microsoft.com/global-infrastructure/regions/) |100/erőforráscsoport |100/erőforráscsoport |
-| <sup>6</sup> . tárterület |1 GB |250 GB |50-1000 GB |
-| Egyéni tartományok/alkalmazás</a> |500<sup>7</sup> |500 |500 |
-| Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-bindings.md) |nem kötött SNI SSL-kapcsolatok belefoglalva | nem kötött SNI SSL és 1 IP SSL kapcsolat is |nem kötött SNI SSL és 1 IP SSL kapcsolat is | 
+| Erőforrás |[Felhasználási terv](../articles/azure-functions/functions-scale.md#consumption-plan)|[Prémium szintű csomag](../articles/azure-functions/functions-scale.md#premium-plan)|[Dedikált csomag](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
+| --- | --- | --- | --- | --- | --- |
+|Alapértelmezett [időkorlát időtartama](../articles/azure-functions/functions-scale.md#timeout) (perc) |5 | 30 |30<sup>1</sup> | 30 | 30 |
+|[Időtúllépés maximális időtartama](../articles/azure-functions/functions-scale.md#timeout) (perc) |10 | nem kötött<sup>7</sup> | nem kötött<sup>2</sup> | unbounded | unbounded |
+| Kimenő kapcsolatok maximális száma (/példány) | 600 aktív (1200 összesen) | unbounded | unbounded | unbounded | unbounded |
+| Kérelem maximális mérete (MB)<sup>3</sup> | 100 | 100 | 100 | 100 | A fürttől függ |
+| Lekérdezési karakterlánc maximális hossza<sup>3</sup> | 4096 | 4096 | 4096 | 4096 | A fürttől függ |
+| Kérelem maximális URL-címének maximális hossza<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | A fürttől függ |
+|[ACU](../articles/virtual-machines/windows/acu.md) -példányok száma | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [AK-díjszabás](https://azure.microsoft.com/pricing/details/container-service/) |
+| Maximális memória (GB/példány) | 1.5 | 3,5 – 14 | 1,75 – 14 | 3,5 – 14 | Bármely csomópont támogatott |
+| Function Apps/csomag |100 |100 |nem kötött<sup>4</sup> | unbounded | unbounded |
+| [App Service-csomagok](../articles/app-service/overview-hosting-plans.md) | 100 [régiónként](https://azure.microsoft.com/global-infrastructure/regions/) |100/erőforráscsoport |100/erőforráscsoport | - | - |
+| <sup>5</sup> . tárterület |1 GB |250 GB |50-1000 GB | 1 TB | n.a. |
+| Egyéni tartományok/alkalmazás</a> |500<sup>6</sup> |500 |500 | 500 | n.a. |
+| Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-bindings.md) |nem kötött SNI SSL-kapcsolatok belefoglalva | nem kötött SNI SSL és 1 IP SSL kapcsolat is |nem kötött SNI SSL és 1 IP SSL kapcsolat is | nem kötött SNI SSL és 1 IP SSL kapcsolat is | n.a. |
 
-<sup>1</sup> a különböző app Service-csomagokra vonatkozó beállításokra vonatkozó meghatározott korlátokat a [app Service csomag korlátai](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)című részben tekintheti meg.  
-<sup>2</sup> alapértelmezés szerint a app Service csomag 1. x futtatókörnyezetének időtúllépése nem kötött.  
-<sup>3</sup> a app Service tervnek [mindig](../articles/azure-functions/functions-scale.md#always-on)be kell állítani. A standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/)szerint kell fizetni.  
-<sup>4</sup> ezek a korlátok [a gazdagépen vannak beállítva](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
-<sup>5</sup> a gazdagépek tényleges száma az alkalmazások tevékenységéből, a gépi példányok méretétől és a megfelelő erőforrás-felhasználástól függ.  
-<sup>6</sup> a tárolási korlát a teljes tartalom mérete az ideiglenes tárolóban, az összes alkalmazás között, ugyanabban a app Service csomagban. A felhasználási terv az ideiglenes tároláshoz Azure Files használ.  
-<sup>7</sup> ha a Function alkalmazás egy [felhasználási](../articles/azure-functions/functions-scale.md#consumption-plan)csomagban található, csak a CNAME beállítás támogatott. A [prémium](../articles/azure-functions/functions-scale.md#premium-plan) szintű csomagban vagy [app Service](../articles/azure-functions/functions-scale.md#app-service-plan)csomagban található Function apps esetében egy egyéni tartományt egy CNAME vagy egy rekord használatával képezhető le.  
-<sup>8</sup> 60 percig garantált.
+<sup>1</sup> alapértelmezés szerint a app Service csomag 1. x futtatókörnyezetének időtúllépése nem kötött.  
+<sup>2</sup> az App Service-csomagot [mindig](../articles/azure-functions/functions-scale.md#always-on)be kell állítani. A standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/)szerint kell fizetni.  
+<sup>3</sup> ezek a korlátok [a gazdagépen vannak beállítva](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
+<sup>4</sup> a gazdagépek tényleges száma az alkalmazások tevékenységéből, a gépi példányok méretétől és a megfelelő erőforrás-felhasználástól függ.  
+<sup>5</sup> a tárolási korlát a teljes tartalom mérete az ideiglenes tárolóban, az összes alkalmazás között, ugyanabban a app Service csomagban. A felhasználási terv az ideiglenes tároláshoz Azure Files használ.  
+<sup>6</sup> ha a Function alkalmazás egy [felhasználási](../articles/azure-functions/functions-scale.md#consumption-plan)csomagban található, csak a CNAME beállítás támogatott. A [prémium](../articles/azure-functions/functions-scale.md#premium-plan) szintű csomagban vagy [app Service](../articles/azure-functions/functions-scale.md#app-service-plan)csomagban található Function apps esetében egy egyéni tartományt egy CNAME vagy egy rekord használatával képezhető le.  
+<sup>7</sup> 60 percig garantált.  
+<sup>8</sup> a feldolgozók az ügyfelek által üzemeltetett szerepkörök. A feldolgozók három rögzített méretben érhetők el: egy vCPU/3,5 GB RAM; Két vCPU/7 GB RAM; Négy vCPU/14 GB RAM.

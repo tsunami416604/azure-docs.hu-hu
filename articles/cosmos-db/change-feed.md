@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cb3f7f3d641f33e4b4deb1775600595cc382f68e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873980"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119375"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Változáscsatorna az Azure Cosmos DB-ben
 
@@ -67,7 +67,7 @@ A Change feed a következő beállításokkal használható:
 
 A módosítási hírcsatorna a tárolóban lévő minden logikai partíciós kulcshoz elérhető, és az alábbi képen látható módon osztható fel egy vagy több felhasználó között párhuzamos feldolgozásra.
 
-![Azure Cosmos DB változási csatorna elosztott feldolgozása](./media/change-feed/changefeedvisual.png)
+:::image type="content" source="./media/change-feed/changefeedvisual.png" alt-text="Azure Cosmos DB változási csatorna elosztott feldolgozása" border="false":::
 
 ## <a name="features-of-change-feed"></a>A változási hírcsatorna funkciói
 
@@ -95,7 +95,7 @@ A MongoDB API-ban és a Cassandra API-ben predikátummal végzett lekérdezések
 
 A natív Apache Cassandra lehetővé teszi az adatváltozások rögzítését (CDC), egy olyan mechanizmust, amely az archiváláshoz adott táblákat jelöl, valamint elutasítja az írásokat az adott táblákba, amint a CDC-naplóhoz konfigurálható méretű lemez van elérve. A Cassandra Azure Cosmos DB API-ban az adatcsatorna módosítása funkció javítja a CQL-on keresztüli predikátumok lekérdezésének lehetőségét. További információ a megvalósítás részleteiről: [a Azure Cosmos db API használata a Cassandra-ben](cassandra-change-feed.md)című témakörben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben további tudnivalókat talál a hírcsatornák változásáról:
 

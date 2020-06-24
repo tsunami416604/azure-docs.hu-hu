@@ -9,17 +9,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 1e597a81967a8fb6be2959d53e65ad01135e5e25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 406b02ee2e9c2f4e78ce50fc7160b382b9662303
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842903"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737427"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Hálózati biztonsági csoport folyamatábráinak kezelése és elemzése az Azure-ban Network Watcher és Graylog használatával
 
@@ -186,7 +186,7 @@ Most, hogy létrehozott egy kapcsolódást a folyamat naplóihoz a Logstash hasz
 
    Győződjön meg arról, hogy a bemenetet a Graylog-kiszolgálót konfigurált IP-címhez köti. Az IP-címnek egyeznie kell a Logstash konfigurációs fájljának UDP-kimenetének **gazdagép** mezőjével. Az alapértelmezett port a *12201*. Győződjön meg arról, hogy a port megfelel a Logstash konfigurációs fájlban kijelölt UDP-kimenet **port** mezőjének.
 
-   ![Bemenetek](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![Bevitelek](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    Miután elindította a bemenetet, megjelenik a **helyi bemenetek** szakaszban, az alábbi képen látható módon:
 
@@ -194,7 +194,7 @@ Most, hogy létrehozott egy kapcsolódást a folyamat naplóihoz a Logstash hasz
 
    Az Graylog kapcsolatos további tudnivalókért tekintse meg a [dokumentációt](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
 
-4. A konfigurációk megkezdése után elindíthatja a Logstash a flow-naplók olvasásának megkezdéséhez a következő `sudo systemctl start logstash.service`paranccsal:.
+4. A konfigurációk megkezdése után elindíthatja a Logstash a flow-naplók olvasásának megkezdéséhez a következő paranccsal: `sudo systemctl start logstash.service` .
 
 ### <a name="search-through-graylog-messages"></a>Keresés Graylog-üzenetekben
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: e7276dcfca6ba033942d62f347ac3a799524cac4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8cdb75c821f45fe7fcf0f455145beb2b9be2a55
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519088"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734860"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure Active Directory Domain Services üzembe helyezés és felügyelet az Azure Cloud Solution Providers szolgáltatásban
 
@@ -78,11 +78,11 @@ Ez a telepítési modell olyan forgatókönyvekhez használható, ahol az ISV a 
 
 A következő fontos szempontokat kell figyelembe venni egy felügyelt tartomány Azure CSP-előfizetésben való felügyeletekor:
 
-* **A CSP felügyeleti ügynökök a hitelesítő adataik használatával létrehozhatnak egy felügyelt tartományt:** Az Azure AD DS támogatja az Azure CSP-előfizetéseket. A CSP-partner felügyeleti ügynökök csoportjához tartozó felhasználók létrehozhatnak egy új Azure AD DS felügyelt tartományt.
+* **A CSP felügyeleti ügynökök a hitelesítő adataik használatával létrehozhatnak egy felügyelt tartományt:** Az Azure AD DS támogatja az Azure CSP-előfizetéseket. A CSP-partner felügyeleti ügynökök csoportjához tartozó felhasználók létrehozhatnak egy új felügyelt tartományt.
 
 * A **kriptográfiai szolgáltatók létrehozhatnak új felügyelt tartományokat az ügyfelek számára a PowerShell használatával:** A részletekért lásd: [Az Azure AD DS engedélyezése a PowerShell használatával](powershell-create-instance.md) .
 
-* **A CSP rendszergazdai ügynökei nem végezhetnek folyamatos felügyeleti feladatokat a felügyelt tartományon a hitelesítő adataik használatával:** A CSP rendszergazdai felhasználói a felügyelt tartományon belül nem hajthatnak végre rutin felügyeleti feladatokat a hitelesítő adataik használatával. Ezek a felhasználók kívül esik az ügyfél Azure AD-bérlőn, és a hitelesítő adataik nem érhetők el az ügyfél Azure AD-bérlőn belül. Az Azure AD DS nem fér hozzá ezekhez a felhasználókhoz tartozó Kerberos-és NTLM-jelszó-kivonatokhoz, így a felhasználók nem hitelesíthetők az Azure AD DS felügyelt tartományokban.
+* **A CSP rendszergazdai ügynökei nem végezhetnek folyamatos felügyeleti feladatokat a felügyelt tartományon a hitelesítő adataik használatával:** A CSP rendszergazdai felhasználói a felügyelt tartományon belül nem hajthatnak végre rutin felügyeleti feladatokat a hitelesítő adataik használatával. Ezek a felhasználók kívül esik az ügyfél Azure AD-bérlőn, és a hitelesítő adataik nem érhetők el az ügyfél Azure AD-bérlőn belül. Az Azure AD DS nem fér hozzá ezekhez a felhasználókhoz a Kerberos és az NTLM jelszó-kivonatokhoz, így a felhasználók nem hitelesíthetők a felügyelt tartományokban.
 
   > [!WARNING]
   > A felügyelt tartományon folyamatban lévő felügyeleti feladatok végrehajtásához létre kell hoznia egy felhasználói fiókot az ügyfél címtárában.

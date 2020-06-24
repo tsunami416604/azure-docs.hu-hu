@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87da588806908566bd1980da4c3120c0d4537b4a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 89e1868d8e9a346d5a791c9fa8ae7682ca2b6807
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673139"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905136"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -99,11 +99,13 @@ Az Azure AD olyan külső identitás-szolgáltatókat támogat, mint például a
 ## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat létrehozása (előzetes verzió)
 
 Az önkiszolgáló regisztrációs felhasználói folyamattal létrehozhat egy regisztrációs élményt azon külső felhasználók számára, akik szeretnének hozzáférni az alkalmazásokhoz. A regisztrálási folyamat részeként különböző közösségi vagy vállalati identitás-szolgáltatók beállításait is megadhatja, és adatokat gyűjthet a felhasználóról. Ismerje meg az [önkiszolgáló regisztrációt és a beállítását](self-service-sign-up-overview.md).
-<!-- You can also use [API connectors](api-connectors-overview.md) to integrate your user flows with external systems, for example user approval systems, user input validation systems, or custom business logic. -->
+
+Az [API-összekötők](api-connectors-overview.md) használatával integrálhatja önkiszolgáló bejelentkezési felhasználói folyamatait külső felhőalapú rendszerekkel. Az egyéni jóváhagyási munkafolyamatokkal, a személyazonosság-ellenőrzés elvégzésével, a felhasználó által megadott adatok érvényesítésével és egyebekkel is kapcsolódhat.
 
 ![A felhasználói folyamatok lapját ábrázoló képernyőfelvétel](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
+<!--TODO: Add screenshot with API connectors -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD B2B-együttműködés licencelési útmutató](licensing-guidance.md)
 - [B2B közreműködő vendégfelhasználók hozzáadása a portálon](add-users-administrator.md)

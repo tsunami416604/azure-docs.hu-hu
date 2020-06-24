@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -17,7 +17,7 @@ ms.locfileid: "67179598"
 ---
 Ahhoz, hogy egy közvetlen SSH-munkamenetet nyisson meg a tárolóval, az alkalmazásnak futnia kell.
 
-Illessze be a következő URL-címet a böngészőjébe, és cserélje le \<az App-Name> az alkalmazás nevére:
+Illessze be a következő URL-címet a böngészőjébe, és cserélje le az \< app-name> az alkalmazás nevére:
 
 ```
 https://<app-name>.scm.azurewebsites.net/webssh/host

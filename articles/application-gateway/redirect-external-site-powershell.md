@@ -5,15 +5,15 @@ description: Megtudhatja, hogyan hozhat létre olyan Application Gatewayt, amely
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 6596cdb2df0a916c49086f80466db60b02a81467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6480bdd5139d5bc7a5a1887b80f43c3903bf579
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74047760"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804603"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Application Gateway létrehozása külső átirányítással Azure PowerShell használatával
 
@@ -26,7 +26,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Figyelő és átirányítási szabály létrehozása
 > * Application Gateway létrehozása
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

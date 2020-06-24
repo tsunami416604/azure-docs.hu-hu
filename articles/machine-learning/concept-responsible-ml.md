@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: acf329092d082b9e9cece451e90e96fc0e24fa5c
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 17cbf4f7b0ae31b0523a0fbea0c1cae8f83b234b
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447815"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982594"
 ---
 # <a name="responsible-machine-learning-ml"></a>Felelős Machine Learning (ML)
 
@@ -60,6 +60,9 @@ Az adatok elemzésre való használatakor fontos, hogy az adatok a használat so
 A hagyományos helyzetekben a nyers adatok tárolása a fájlokban és az adatbázisokban történik. Amikor a felhasználók elemeznek az adatelemzést, általában a nyers adattípust használják. Ez aggodalomra ad okot, mert sértheti az egyén adatvédelmét. A differenciált adatvédelem a "zaj" vagy az adatok véletlenszerű törlésével próbálkozik a probléma megoldásával, így a felhasználók nem azonosíthatják az egyes adatpontokat.
 
 A differentially privát rendszereinek megvalósítása nehéz feladat. A [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) egy nyílt forráskódú projekt, amely különböző összetevőket tartalmaz a globális differentially-alapú privát rendszerek létrehozásához. Ha többet szeretne megtudni a differenciált adatvédelemről és a WhiteNoise projektről, tekintse meg az adatvédelem [megőrzése a különbözeti adatvédelem és a WhiteNoise című cikkben leírtakat](./concept-differential-privacy.md) .
+
+> [!NOTE]
+> Vegye figyelembe, hogy átnevezjük az eszközkészletet, és az új nevet az elkövetkező hetekben fogjuk bevezetni. 
 
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>A gépi tanulási életciklus dokumentálása az adatlapokkal
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: femila
-ms.openlocfilehash: a3d67f3b1217aa7ab4c8122ae958685490a2ad34
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 7caa5a99f2d4ebdbe858c78c6e36be17aeb003ba
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559033"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126076"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Események közzététele Azure Active Directory védett végpontok számára
 
@@ -29,7 +29,7 @@ Először hozzon létre egy Azure AD-alkalmazást a védett végpont számára. 
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Az Azure AD-alkalmazás használatának engedélyezése Event Grid
 
-Az alábbi PowerShell-szkripttel hozzon létre egy szerepkört és egy szolgáltatási elvet az Azure AD-alkalmazásban. Az Azure AD-alkalmazásban szüksége lesz a bérlői AZONOSÍTÓra és az objektum-AZONOSÍTÓra:
+Az alábbi PowerShell-szkripttel hozzon létre egy szerepkört és egy szolgáltatásnevet az Azure AD-alkalmazásban. Az Azure AD-alkalmazásban szüksége lesz a bérlői AZONOSÍTÓra és az objektum-AZONOSÍTÓra:
 
    > [!NOTE]
    > A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) tagjának kell lennie.
@@ -123,7 +123,7 @@ A további szolgáltatások lapon jelölje be a "HRE-hitelesítés használata" 
 
     ![Biztonságos webhook művelet](./media/secure-webhook-delivery/aad-configuration.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).

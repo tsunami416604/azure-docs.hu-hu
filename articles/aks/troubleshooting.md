@@ -3,13 +3,13 @@ title: Az Azure Kubernetes szolgáltatással kapcsolatos gyakori problémák elh
 description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata során felmerülő gyakori problémák elhárításához és megoldásához
 services: container-service
 ms.topic: troubleshooting
-ms.date: 05/16/2020
-ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 06/20/2020
+ms.openlocfilehash: 36b3f20b866e7bad1d27f9fa92c02601ec21602c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724994"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125429"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -46,6 +46,19 @@ Előfordulhat, hogy a pod nem ragadja meg ezt a módot. A következőket tekinth
 
 A pod-problémák hibaelhárításával kapcsolatos további információkért lásd: [alkalmazások hibakeresése](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`TCP timeouts` `kubectl` Az API-kiszolgálóhoz való csatlakozáskor vagy más, harmadik féltől származó eszközök használatakor Fogadok
+Az AK-ban a slo és a szolgáltatói szerződéseket (SLA-kat) biztosító magok száma alapján vertikálisan méretezhető vezérlési síkok vannak. Ha a kapcsolatok időtúllépését tapasztalja, ellenőrizze az alábbi lépéseket:
+
+- **Az API-parancsok konzisztensek, vagy csak néhányat?** Ha csak néhány, a `tunnelfront` Pod vagy a `aks-link` Pod, amely a csomópont-> vezérlési sík kommunikációjának felel meg, előfordulhat, hogy nem fut állapotban van. Győződjön meg arról, hogy a pod helyet adó csomópontok nem túlzott mértékben vannak kihasználva vagy stressz alatt. Érdemes áthelyezni a saját [ `system` Node-készletbe](use-system-pools.md).
+- **Megnyitotta az összes szükséges portot, teljes tartománynevet és IP-címet, amelyek a [kimenő forgalomra vonatkozó dokumentumokat korlátozzák](limit-egress-traffic.md)?** Ellenkező esetben több parancs hívása sikertelen lehet.
+- **Az aktuális IP-címe a [jóváhagyott API IP-címtartományok](api-server-authorized-ip-ranges.md)szerint van-e kiértékelve?** Ha ezt a funkciót használja, és az IP-címe nem szerepel a tartományokban, a hívások le lesznek tiltva. 
+- **Van ügyfél-vagy alkalmazás-visszaszivárgási hívása az API-kiszolgálónak?** Ügyeljen arra, hogy a gyakori Get hívások helyett az órákat használja, és hogy a harmadik féltől származó alkalmazások ne szivárognak ki ilyen hívásokat. A Istio keverőben például egy hiba okozza, hogy egy új API-kiszolgáló figyeli a kapcsolódást minden alkalommal, amikor a titkos kulcs beolvasása történik. Mivel ez a viselkedés rendszeres időközönként történik, figyelje a kapcsolatok gyors összegyűjtését, és végül az API-kiszolgáló túlterhelését eredményezheti a skálázási minta alapján. https://github.com/istio/istio/issues/19481
+- **Sok kiadása van a Helm üzemelő példányában?** Ez a forgatókönyv azt eredményezheti, hogy a kormányrúd túl sok memóriát használ a csomópontokon, és nagy mennyiségű `configmaps` , ami szükségtelen tüskéket okozhat az API-kiszolgálón. Érdemes lehet `--history-max` `helm init` az új Helm 3 konfigurálását és kihasználni. További részletek a következő problémákról: 
+    - https://github.com/helm/helm/issues/4821
+    - https://github.com/helm/helm/issues/3500
+    - https://github.com/helm/helm/issues/4543
+
+
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>A szerepköralapú Access Control (RBAC) szolgáltatást próbálom engedélyezni egy meglévő fürtön. Hogyan tehetem meg?
 
 A szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön való engedélyezése jelenleg nem támogatott, ezért az új fürtök létrehozásakor be kell állítani. A RBAC alapértelmezés szerint engedélyezve van, ha a parancssori felület, a portál vagy egy API-verziónál újabb verziót használ `2020-03-01` .
@@ -53,12 +66,6 @@ A szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön való
 ## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Létrehoztam egy olyan fürtöt, amelyen engedélyezve van a RBAC, és most már sok figyelmeztetés jelenik meg a Kubernetes-irányítópulton. A figyelmeztetés nélküli működéshez használt irányítópult. Mit tegyek?
 
 A figyelmeztetések oka, hogy a fürtön engedélyezve van a RBAC, és az irányítópulthoz való hozzáférés alapértelmezés szerint korlátozva van. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)leírt lépéseket.
-
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem lehet csatlakozni az irányítópulthoz. Mit tegyek?
-
-A szolgáltatásnak a fürtön kívülre való hozzáférésének legegyszerűbb módja a Futtatás, amelyet a rendszer a `kubectl proxy` localhost 8001-as portra küldött a KUBERNETES API-kiszolgálónak. Innen az API-kiszolgáló proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/` .
-
-Ha nem látja a Kubernetes irányítópultot, ellenőrizze, hogy a `kube-proxy` Pod fut-e `kube-system` a névtérben. Ha nem fut állapotban van, törölje a pod-t, majd indítsa újra.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nem tudok naplókat beolvasni a kubectl-naplók használatával, vagy nem tudok csatlakozni az API-kiszolgálóhoz. "Hiba a kiszolgálóról: hiba a háttérrendszer tárcsázásakor: telefonos TCP...". Mit tegyek?
 

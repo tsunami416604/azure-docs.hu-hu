@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b8f5d6aaa96c24eb37eb78d237a489f1d25293c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c84d4f1ca01db07ea432bbf8f9929863a8134cfb
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653985"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976286"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
 
@@ -36,7 +36,7 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 | Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | A WebAuthN a Windows 10 1809-es vagy újabb verzióját igényli | X | X |
 | Az [Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join.md) a Windows 10 1903-es vagy újabb verziója szükséges | X |   |
-| A [hibrid Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join-hybrid.md) Windows 10 bennfentes Build 18945 vagy újabb verzió szükséges |   | X |
+| A [hibrid Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join-hybrid.md) a Windows 10 2004-es vagy újabb verziója szükséges |   | X |
 | Teljes mértékben kijavítottuk a Windows Server 2016/2019 rendszerű tartományvezérlőket. |   | X |
 | [Azure ad Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 1.4.32.0 vagy újabb verzió |   | X |
 | [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (nem kötelező) | X | X |
@@ -60,7 +60,7 @@ A következő forgatókönyvek nem támogatottak:
 
 Az Azure AD-hez csatlakoztatott eszközök, amelyeket a szolgáltatás előzetes verziójában végez, a Windows 10 1809-es vagy újabb verzióját kell futtatnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
 
-A hibrid Azure AD-hez csatlakoztatott eszközökön a Windows 10 bennfentes Build 18945 vagy újabb verziójának kell futnia.
+A hibrid Azure AD-hez csatlakoztatott eszközöknek a Windows 10 2004-es vagy újabb verzióját kell futtatniuk.
 
 ## <a name="enable-security-keys-for-windows-sign-in"></a>Biztonsági kulcsok engedélyezése a Windows-bejelentkezéshez
 
@@ -81,7 +81,7 @@ A szervezetek dönthetnek úgy, hogy az alábbi módszerek közül egy vagy töb
 A biztonsági kulcsok Intune használatával történő használatának engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Tallózással **Microsoft Intune** > **eszköz beléptetése** > Windows-**regisztráció** > **Windows Hello for Business** > -**Tulajdonságok**.
+1. Tallózással **Microsoft Intune**  >  **eszköz beléptetése**Windows-  >  **regisztráció**Windows  >  **Hello for Business**-  >  **Tulajdonságok**.
 1. A **Beállítások**területen állítsa be a **biztonsági kulcsok használata a bejelentkezéshez** **beállítást.**
 
 A bejelentkezéshez szükséges biztonsági kulcsok konfigurálása nem függ a vállalati Windows Hello konfigurálásának.
@@ -91,7 +91,7 @@ A bejelentkezéshez szükséges biztonsági kulcsok konfigurálása nem függ a 
 A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egyéni beállításokat használhatja az Intune-on keresztül:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Tallózással keresse meg **Microsoft Intune** > **eszköz konfigurációs** > **profiljainak** > **profil létrehozása**lehetőséget.
+1. Tallózással keresse meg **Microsoft Intune**  >  **eszköz konfigurációs**  >  **profiljainak**  >  **profil létrehozása**lehetőséget.
 1. Konfigurálja az új profilt a következő beállításokkal:
    - Név: biztonsági kulcsok a Windows-bejelentkezéshez
    - Leírás: lehetővé teszi, hogy a rendszer a Windows bejelentkezéskor használni kívánt biztonsági kulcsokat használja.
@@ -111,14 +111,14 @@ A hitelesítő adatok szolgáltatójának engedélyezéséhez a következő egy�
 Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telepíthető a funkció engedélyezéséhez. A Windows Configuration Designer alkalmazást a [Microsoft Store](https://www.microsoft.com/p/windows-configuration-designer/9nblggh4tx22)lehet telepíteni. A kiépítési csomag létrehozásához hajtsa végre a következő lépéseket:
 
 1. Indítsa el a Windows Configuration Designer alkalmazást.
-1. Válassza a **fájl** > **új projekt**lehetőséget.
+1. Válassza a **fájl**  >  **új projekt**lehetőséget.
 1. Adjon nevet a projektnek, és jegyezze fel a projekt létrehozási útját, majd kattintson a **tovább**gombra.
 1. Hagyja kiválasztva a *kiépítési csomagot* a **kiválasztott projekt-munkafolyamatként** , és válassza a **tovább**lehetőséget.
 1. Válassza ki az *összes Windows asztali kiadás* elemet a **válassza ki a megtekinteni és konfigurálni kívánt beállításokat**, majd kattintson a **tovább**gombra.
-1. Válassza a **Finish** (Befejezés) elemet.
-1. Az újonnan létrehozott projektben keresse meg a **Futásidejű beállítások** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
+1. Válassza a **Befejezés** gombot.
+1. Az újonnan létrehozott projektben keresse meg a **Futásidejű beállítások**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**.
 1. Állítsa be a **UseSecurityKeyForSignIn** beállítást *engedélyezve*értékre.
-1. Válassza ki a**kiépítési csomag** **exportálása** > lehetőséget
+1. Válassza **Export**ki a  >  **kiépítési csomag** exportálása lehetőséget
 1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a **kiépítési csomag leírása**területen, majd kattintson a **tovább**gombra.
 1. Hagyja meg az alapértelmezett értékeket a **létrehozási** ablakban a kiépítési **csomag biztonsági adatainak kiválasztása** területen, majd válassza a **tovább**lehetőséget.
 1. Jegyezze fel, vagy módosítsa a **Build** -ablakok elérési útját a **válassza ki, hová szeretné menteni a kiépítési csomagot** , és válassza a **tovább**lehetőséget.
@@ -131,12 +131,12 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 
 ### <a name="enable-with-group-policy"></a>Engedélyezés Csoportházirend
 
-A **hibrid Azure ad-hez csatlakoztatott eszközökhöz**a szervezetek a következő csoportházirend-beállítást konfigurálhatják, hogy lehetővé tegyék a. biztonsági kulcsos bejelentkezést. A beállítás a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **System** > a**rendszerbejelentkezés** > **bekapcsolása a biztonsági kulcs bekapcsolásakor**szakaszban található:
+A **hibrid Azure ad-hez csatlakoztatott eszközökhöz**a szervezetek a következő csoportházirend-beállítást konfigurálhatják, hogy lehetővé tegyék a. biztonsági kulcsos bejelentkezést. A beállítás a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**a  >  **System**  >  **rendszerbejelentkezés**  >  **bekapcsolása a biztonsági kulcs bekapcsolásakor**szakaszban található:
 
 - A házirend **engedélyezésének engedélyezése** lehetővé teszi a felhasználók számára a biztonsági kulcsokkal való bejelentkezést.
 - Ha a házirendet **Letiltva** vagy **nincs konfigurálva** , a felhasználók nem jelentkezhetnek be a biztonsági kulcsokkal.
 
-Ennek a Csoportházirend beállításnak a `credentialprovider.admx` Csoportházirend sablon frissített verzióját kell megadnia. Ez az új sablon a Windows Server következő verziójával és a Windows 10 20H1 érhető el. Ezt a beállítást olyan eszközzel lehet felügyelni, amely a Windows újabb verzióinak egyikét futtatja, vagy központilag a támogatási témakör útmutatását követve a [windows Csoportházirend felügyeleti sablonok központi tárolójának létrehozása és kezelése](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
+Ennek a Csoportházirend beállításnak a Csoportházirend sablon frissített verzióját kell megadnia `credentialprovider.admx` . Ez az új sablon a Windows Server következő verziójával és a Windows 10 20H1 érhető el. Ezt a beállítást olyan eszközzel lehet felügyelni, amely a Windows újabb verzióinak egyikét futtatja, vagy központilag a támogatási témakör útmutatását követve a [windows Csoportházirend felügyeleti sablonok központi tárolójának létrehozása és kezelése](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="sign-in-with-fido2-security-key"></a>Bejelentkezés FIDO2 biztonsági kulccsal
 
@@ -147,7 +147,7 @@ Az alábbi példában egy Bala FIDO2 nevű felhasználó már kiépítte a bizto
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Biztonsági kulcs biometrikus kezelése, PIN-kód vagy alaphelyzetbe állítása
 
 * Windows 10 1903-es vagy újabb verzió
-   * A felhasználók megnyitják a **Windows beállításait** az eszközön > **fiókok** > **biztonsági kulcsával**
+   * A felhasználók megnyitják a **Windows beállításait** az eszközön > **fiókok**  >  **biztonsági kulcsával**
    * A felhasználók módosíthatják a PIN-kódját, frissíthetik a biometriat, vagy alaphelyzetbe állíthatják a biztonsági kulcsot
 
 ## <a name="troubleshooting-and-feedback"></a>Hibaelhárítás és visszajelzés

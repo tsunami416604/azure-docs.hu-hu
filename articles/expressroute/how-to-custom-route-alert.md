@@ -4,17 +4,17 @@ description: Ez a cikk bemutatja, hogyan használható a Azure Automation és a 
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: b8f0c4df2f8e04649bc094f4cc0a64c6eb7bd5b2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237198"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738481"
 ---
-# <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Egyéni riasztások konfigurálása a meghirdetett útvonalak figyeléséhez
+# <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
 
 Ebből a cikkből megtudhatja, Azure Automation és Logic Apps használatával folyamatosan figyelheti a ExpressRoute-átjáróról a helyszíni hálózatokra hirdetett útvonalak számát. A figyelés segíthet megakadályozni az [200 útvonalak korlátját](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering).
 
@@ -314,7 +314,7 @@ A logikai alkalmazások más alkalmazásokhoz, szolgáltatásokhoz és platformo
 
    :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="Bejelentkezés":::
 
-4. Adja meg a **kapcsolatok nevét**, adja meg az **ügyfél-azonosítót** (alkalmazás-azonosító), az **ügyfél titkos kulcsát**és a **bérlői azonosítóját**. Ezután kattintson a **Létrehozás** elemre.
+4. Adja meg a **kapcsolatok nevét**, adja meg az **ügyfél-azonosítót** (alkalmazás-azonosító), az **ügyfél titkos kulcsát**és a **bérlői azonosítóját**. Ezután válassza a **Létrehozás**lehetőséget.
 
    :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="Az egyszerű szolgáltatással való kapcsolat":::
 
@@ -379,7 +379,7 @@ A JSON elemzését követően a JSON- **adatok** elemzése művelet a *törzs* k
 
 1. A **változó inicializálása**területen válassza **a művelet hozzáadása**lehetőséget. A keresőmezőbe írja be a "for each" kifejezést a szűrőként.
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Vezérlés":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="Szabályozás":::
 
 2. A **műveletek** listából válassza ki az **egyes vezérlők**műveleteit.
 
@@ -391,7 +391,7 @@ A JSON elemzését követően a JSON- **adatok** elemzése művelet a *törzs* k
 
 4. A JSON-törzs minden eleméhez meg kell határozni egy feltételt. A műveleti csoportban válassza a **vezérlés**lehetőséget.
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="Vezérlés":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="Szabályozás":::
 
 5. A **műveletek** listában válassza a **feltétel – vezérlés**elemet. A Condition-Control egy vezérlő struktúra, amely összehasonlítja a munkafolyamatban lévő, meghatározott értékekkel vagy mezőkkel kapcsolatos adatait. Ezt követően különböző műveleteket is megadhat, amelyek attól függően futnak, hogy az adott állapot megfelel-e a feltételnek.
 

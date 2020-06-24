@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 3284db031214dfaa631efa6f9f40e6a069998843
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 6ebd13317940d131facfb36987fb37358260ec05
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677066"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119222"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 
@@ -169,7 +169,7 @@ Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű p�
 
 ### <a name="d-series"></a>D-sorozat  
 
-**Újabb méretre vonatkozó javaslat**: [Dv3 sorozat](dv3-dsv3-series.md)
+**Újabb méretre vonatkozó javaslat**: [Dav4 sorozat](dav4-dasv4-series.md), [DV4](dv4-dsv4-series.md) és [Ddv4](ddv4-ddsv4-series.md) sorozat
 
 ACU: 160-250 <sup>1</sup>
 
@@ -190,7 +190,7 @@ Premium Storage gyorsítótárazás: nem támogatott
 
 ### <a name="d-series---memory-optimized"></a>D sorozat – optimalizált memória  
 
-**Újabb méretre vonatkozó javaslat**: [Dv3 sorozat](dv3-dsv3-series.md)
+**Újabb méretre vonatkozó javaslat**: [Dav4 sorozat](dav4-dasv4-series.md), [DV4](dv4-dsv4-series.md) és [Ddv4](ddv4-ddsv4-series.md) sorozat
 
 ACU: 160-250 <sup>1</sup>
 
@@ -231,7 +231,7 @@ A DC sorozat a SGX ENKLÁVÉHOZ technológiával rendelkező 3,7 GHz-es Intel XE
 
 ### <a name="ds-series"></a>DS-sorozat  
 
-**Újabb méretre vonatkozó javaslat**: [Dsv3 sorozat](dv3-dsv3-series.md)
+**Újabb méretre vonatkozó javaslat**: [Dasv4 sorozat](dav4-dasv4-series.md), [Dsv4](dv4-dsv4-series.md) és [Ddsv4](ddv4-ddsv4-series.md) sorozat
 
 ACU: 160-250 <sup>1</sup>
 
@@ -252,7 +252,7 @@ Premium Storage gyorsítótárazás: támogatott
 
 ### <a name="ds-series---memory-optimized"></a>DS-sorozat – optimalizált memória  
 
-**Újabb méretre vonatkozó javaslat**: [Dsv3 sorozat](dv3-dsv3-series.md)
+**Újabb méretre vonatkozó javaslat**: [Dasv4 sorozat](dav4-dasv4-series.md), [Dsv4](dv4-dsv4-series.md) és [Ddsv4](ddv4-ddsv4-series.md) sorozat
 
 ACU: 160-250 <sup>1, 2</sup>
 
@@ -273,6 +273,8 @@ Premium Storage gyorsítótárazás: támogatott
 <br>
 
 ### <a name="ls-series"></a>Ls-sorozat
+
+**Újabb méretre vonatkozó javaslat**: [Lsv2 sorozat](lsv2-series.md)
 
 Az Ls-sorozat akár 32 virtuális processzort (vCPU) is biztosíthat az [Intel® Xeon® E5 v3 processzorcsalád](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html) használatával. Az Ls-sorozat ugyanakkora teljesítményt kínál, mint a G/GS-sorozat esetében, és vCPU-nként 8 GiB memóriát biztosít.
 
@@ -297,6 +299,8 @@ Az ls-sorozatú virtuális gépek maximális átviteli sebessége az összes csa
 
 ### <a name="gs-series"></a>GS sorozat
 
+**Újabb méretre vonatkozó javaslat**: [Easv4 sorozat](eav4-easv4-series.md), [Esv4 sorozat](ev4-esv4-series.md), [Edsv4-sorozat](edv4-edsv4-series.md) és [M-sorozat](m-series.md)
+
 ACU: 180 – 240 <sup>1</sup>
 
 Premium Storage: támogatott
@@ -320,6 +324,8 @@ Premium Storage gyorsítótárazás: támogatott
 <br>
 
 ### <a name="g-series"></a>G-sorozat
+
+**Újabb méretre vonatkozó javaslat**: [Eav4 sorozat](eav4-easv4-series.md), [Ev4](ev4-esv4-series.md) és [Edv4](edv4-edsv4-series.md) sorozat, valamint [M sorozat](m-series.md)
 
 ACU: 180–240
 
@@ -371,6 +377,6 @@ Memória-megőrzési frissítések: nem támogatott
 * [GPU](sizes-gpu.md)
 * [Nagy teljesítményű számítás](sizes-hpc.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

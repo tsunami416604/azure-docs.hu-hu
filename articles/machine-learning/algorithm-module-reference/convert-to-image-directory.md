@@ -1,5 +1,5 @@
 ---
-title: Konvertálás rendszerkép-könyvtárba
+title: Átalakítás képkönyvtárrá
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan alakíthatja át az adatkészletet a Képkönyvtár formátumára a rendszerkép konvertálása a képkönyvtárba modul használatával.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: dc40e0a644f692b397b1f2107b27b1d940d2b284
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450632"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904592"
 ---
-# <a name="convert-to-image-directory"></a>Konvertálás rendszerkép-könyvtárba
+# <a name="convert-to-image-directory"></a>Átalakítás képkönyvtárrá
 
 Ez a cikk bemutatja, hogyan alakítható át a képadatkészlet a kép könyvtára adattípusra a képfájl konvertálása a rendszerkép-címtárba, amely szabványosított adatformátumot tartalmaz a képekhez kapcsolódó feladatokban, például a Azure Machine Learning Designerben (előzetes verzió) képbesorolásban.
 
@@ -28,11 +28,21 @@ Ez a cikk bemutatja, hogyan alakítható át a képadatkészlet a kép könyvtá
     A következő adatkészlet-formátumok támogatottak:
 
     - Tömörített fájl a következő kiterjesztésekben: ". zip", ". tar", ". gz", ". bz2".
-    - 1 tömörített fájlt tartalmazó mappa a fenti érvényes kiterjesztésekben. 
-    - Képeket tartalmazó mappa.
+    - Képeket tartalmazó mappa. **Javasoljuk, hogy először tömörítse a mappát, majd használja a tömörített fájlt adatkészletként**.
 
     > [!NOTE]
-    > A rendszerkép kategóriája rögzíthető a modul kimenetében, ha a képkészletet torchvision ImageFolder formátumban rendezik, további információért tekintse meg a [torchvision-adatkészleteket](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) . Ellenkező esetben csak a lemezképek lesznek mentve.
+    > Ha a képkészletet felügyelt tanulásban használja, a címkét kötelező megadni.
+    > Képbesorolási feladat esetén a címke a modul kimenetében a "Category" képként hozható létre, ha a képkészletet torchvision ImageFolder formátumban rendezi. Ellenkező esetben a rendszer csak a képeket címke nélkül menti. Íme egy példa arra, hogyan rendezheti a képkészletet a címke lekéréséhez, a képkategória nevet adja meg az almappa neveként. További információért tekintse meg a [torchvision adatkészleteket](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) .
+    >
+    > ```
+    > root/dog/xxx.png
+    > root/dog/xxy.png
+    > root/dog/xxz.png
+    >
+    > root/cat/123.png
+    > root/cat/nsdf3.png
+    > root/cat/asd932_.png
+    > ```
 
 3.  A folyamat elküldése.
 
@@ -44,16 +54,16 @@ A Képkönyvtár-modulba **való átalakítás** kimenete Képkönyvtár formát
 
 ###  <a name="expected-inputs"></a>Várt bemenetek  
 
-| Name          | Típus                  | Description   |
+| Name          | Típus                  | Leírás   |
 | ------------- | --------------------- | ------------- |
 | Bemeneti adatkészlet | AnyDirectory, ZipFile | Bemeneti adatkészlet |
 
 ###  <a name="output"></a>Kimenet  
 
-| Name                   | Típus           | Description            |
+| Name                   | Típus           | Leírás            |
 | ---------------------- | -------------- | ---------------------- |
 | Kimeneti rendszerkép könyvtára | ImageDirectory | Kimeneti rendszerkép könyvtára |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

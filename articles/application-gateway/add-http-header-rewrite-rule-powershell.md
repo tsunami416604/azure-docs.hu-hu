@@ -4,25 +4,25 @@ description: Ez a cikk a HTTP-fejlécek átírását mutatja be az Azure Applica
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f205b3a604aa38854969f6f62cbce44f46fa7d25
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64947191"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808257"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>HTTP-kérelem és válasz-fejlécek újraírása az Azure Application Gateway-Azure PowerShell
 
 Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell egy [Application Gateway v2 SKU](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) -példány konfigurálásához a HTTP-fejlécek újraírásához a kérelmekben és a válaszokban.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-- A cikk lépéseinek elvégzéséhez a Azure PowerShell helyileg kell futtatnia. Emellett az az modul Version 1.0.0 vagy újabb verziójára van szükség. Futtassa `Import-Module Az` a parancsot `Get-Module Az` , majd határozza meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
+- A cikk lépéseinek elvégzéséhez a Azure PowerShell helyileg kell futtatnia. Emellett az az modul Version 1.0.0 vagy újabb verziójára van szükség. Futtassa `Import-Module Az` a parancsot, majd `Get-Module Az` határozza meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 - Rendelkeznie kell egy Application Gateway v2 SKU-példánnyal. Az Újraírási fejlécek nem támogatottak a v1 SKU-ban. Ha nem rendelkezik a v2 SKU-val, hozzon létre egy [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) -példányt a Kezdés előtt.
 
 ## <a name="create-required-objects"></a>Szükséges objektumok létrehozása
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>A HTTP-fejléc Újraírási szabály konfigurációjának meghatározása
 
-Ebben a példában egy átirányítási URL-címet módosítunk a HTTP-válasz Location (hely) fejlécének újraírásával, amikor a hely fejléce a azurewebsites.net mutató hivatkozást tartalmaz. Ehhez hozzáadunk egy feltételt, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Ezt a mintát `(https?):\/\/.*azurewebsites\.net(.*)$`fogjuk használni. És a fejléc értékeként fogjuk használni `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` . Ez az érték a *azurewebsites.net* és a *contoso.com* értéket fogja lecserélni a Location fejlécben.
+Ebben a példában egy átirányítási URL-címet módosítunk a HTTP-válasz Location (hely) fejlécének újraírásával, amikor a hely fejléce a azurewebsites.net mutató hivatkozást tartalmaz. Ehhez hozzáadunk egy feltételt, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Ezt a mintát fogjuk használni `(https?):\/\/.*azurewebsites\.net(.*)$` . És `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` a fejléc értékeként fogjuk használni. Ez az érték a *azurewebsites.net* és a *contoso.com* értéket fogja lecserélni a Location fejlécben.
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"

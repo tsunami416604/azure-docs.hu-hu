@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c93c1f525713a90abd71c30a21401b9d1cfcb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460902"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782772"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
@@ -25,10 +25,10 @@ Az időszinkronizálás fontos a biztonság és az események korrelációs hasz
 
 Az Azure-t a Windows Server 2016-et futtató infrastruktúra támogatja. A Windows Server 2016 továbbfejlesztett algoritmusokkal rendelkezik, amelyek az időpontot és a feltételt használják a helyi óra és az UTC közötti szinkronizáláshoz.  A Windows Server 2016 pontos idő funkciója jelentősen javította, hogy a VMICTimeSync szolgáltatás hogyan szabályozza a virtuális gépeket a gazdagépen a pontos idő tekintetében. A javításokban pontosabb kezdeti idő van a virtuális gépek indításakor, illetve a virtuális gépek visszaállítása és a késések késleltetésének javítása. 
 
->[!NOTE]
->A Windows időszolgáltatásának gyors áttekintéséhez tekintse meg ezt a [magas szintű áttekintő videót](https://aka.ms/WS2016TimeVideo).
+> [!NOTE]
+> A Windows időszolgáltatásának gyors áttekintéséhez tekintse meg ezt a [magas szintű áttekintő videót](https://aka.ms/WS2016TimeVideo).
 >
-> További információ: [a Windows Server 2016 pontos ideje](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> További információ: [a Windows Server 2016 pontos ideje](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Áttekintés
 
@@ -140,9 +140,9 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 Az Ubuntu és az NTP szolgáltatással kapcsolatos további információkért lásd: [időszinkronizálás](https://help.ubuntu.com/lts/serverguide/NTP.html).
 
-A Red Hat és az NTP szolgáltatással kapcsolatos további információkért lásd: az [NTP konfigurálása](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
+A Red Hat és az NTP szolgáltatással kapcsolatos további információkért lásd: az [NTP konfigurálása](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP). 
 
-További információ a chrony: a [Chrony használata](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
+További információ a chrony: a [Chrony használata](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony).
 
 Ha a chrony-és a TimeSync-források egyszerre is engedélyezve vannak, megjelölheti az egyiket **előnyben részesítettként**, amely a másik forrást biztonsági másolatként állítja be. Mivel az NTP-szolgáltatások nem frissítik a nagy terhelések óráját a hosszú időtartam után, a VMICTimeSync sokkal gyorsabban fogja helyreállítani a szüneteltetett virtuális gépek eseményeinek óráját, mint az NTP-alapú eszközökön.
 
@@ -164,6 +164,6 @@ A SUSE és az Ubuntu kiadása 19,10 előtt, a Time Sync a [rendszerszintű](http
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: [a Windows Server 2016 pontos ideje](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
+További információ: [a Windows Server 2016 pontos ideje](/windows-server/networking/windows-time-service/accurate-time).
 
 

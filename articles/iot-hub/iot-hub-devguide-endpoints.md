@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b7139c458d2cc2a59f4202e9cbc7d48433514f34
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996955"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792088"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Hivatkozás – IoT Hub végpontok
 
@@ -24,7 +24,7 @@ ms.locfileid: "82996955"
 
 ## <a name="iot-hub-names"></a>IoT Hub nevek
 
-Megkeresheti a végpontokat üzemeltető IoT hub állomásnevét a központ **Áttekintés** oldalán található portálon. Alapértelmezés szerint az IoT hub DNS-neve a következőképpen néz ki: `{your iot hub name}.azure-devices.net`.
+Megkeresheti a végpontokat üzemeltető IoT hub állomásnevét a központ **Áttekintés** oldalán található portálon. Alapértelmezés szerint az IoT hub DNS-neve a következőképpen néz ki: `{your iot hub name}.azure-devices.net` .
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Beépített IoT Hub végpontok listája
 
@@ -85,14 +85,9 @@ IoT Hub jelenleg a következő Azure-szolgáltatásokat támogatja további vég
 
 A felvehető végpontok számának korlátozásait lásd: [kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md).
 
-A végpontok állapotának beolvasásához használja a REST API a [végpont állapota](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. Azt javasoljuk, hogy az útválasztási üzenet késéséhez kapcsolódó [IoT hub metrikák](iot-hub-metrics.md) használatával azonosítsa és hibakeresési hibákat, amikor a végpont állapota halott vagy sérült, mivel a késés nagyobb lesz, amikor a végpont az egyik államban van.
+## <a name="endpoint-health"></a>Végpont állapota
 
-|Állapotadatok|Leírás|
-|---|---|
-|kifogástalan|A végpont fogadja az üzeneteket a várt módon.|
-|sérült|A végpont nem fogadja el az elvárt üzeneteket, és IoT Hub megpróbálja elküldeni az adatküldés erre a végpontra. A nem kifogástalan állapotú végpont állapota akkor frissül, ha a IoT Hub végül konzisztens állapotba került.|
-|ismeretlen|IoT Hub nem létesített kapcsolatokat a végponttal. Nem érkezett üzenet a végponttól, illetve nem utasította el azokat.|
-|kézbesítetlen|A végpont nem fogad üzeneteket, miután IoT Hub újrapróbálták elküldeni a próbaidőszakra az üzeneteket.|
+[!INCLUDE [iot-hub-endpoint-health](../../includes/iot-hub-include-endpoint-health.md)]
 
 ## <a name="field-gateways"></a>Mező-átjárók
 

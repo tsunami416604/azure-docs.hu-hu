@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80367550"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252440"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
 
@@ -62,7 +62,7 @@ Alapértelmezés szerint a NodeJS-kapcsolatok nem maradnak életben. Az alábbia
 HTTP Keep-Alive
 
 * [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
-* [Node. js v 13.9.0 dokumentációja](https://nodejs.org/api/http.html)
+* [Node.js v 13.9.0 dokumentációja](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
@@ -111,12 +111,12 @@ Más környezetek esetén tekintse át a szolgáltatót vagy az illesztőprogram
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>A kimenő Üresjárati időkorlát alaphelyzetbe állítása a Keepalives használatával
 
-* A Node. js-alkalmazások Keepalives megvalósításához tekintse meg a [saját Node-alkalmazást, amely túlzott kimenő hívásokat tesz szükségessé](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls).
+* A Node.js alkalmazások Keepalives megvalósításához tekintse át a [saját Node-alkalmazást, amely túlzott kimenő hívásokat tesz szükségessé](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls).
 
 ### <a name="additional-guidance-specific-to-app-service"></a>A App Service vonatkozó további útmutatás:
 
 * A [terhelési tesztnek](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) valós adatátviteli sebességgel kell szimulálnia a valós globális adatértékeket. Az alkalmazások és függvények tesztelése a valós terhelések alatt az idő előtt azonosíthatja és megoldhatja a SNAT-portok kimerülésével kapcsolatos problémákat.
-* Győződjön meg arról, hogy a háttér-szolgáltatások gyorsan adnak vissza válaszokat. Az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárításához tekintse át a [Intelligent Insightskel kapcsolatos teljesítményproblémák elhárítása Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow).
+* Győződjön meg arról, hogy a háttér-szolgáltatások gyorsan adnak vissza válaszokat. A Azure SQL Database kapcsolatos teljesítménnyel kapcsolatos problémák elhárításához tekintse át az [Intelligent Insights-Azure SQL Database teljesítményproblémák elhárítása](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)című témakört.
 * Bővítse a App Service tervet több példányra. További információ a skálázásról: [alkalmazások méretezése Azure app Serviceban](https://docs.microsoft.com/azure/app-service/manage-scale-up). Az App Service-csomagokban minden feldolgozói példány több SNAT-portot foglal le. Ha több példányon terjeszti a használatot, a SNAT-portok használata a 100-as kimenő kapcsolatok ajánlott korlátja alá kerül, egyedi távoli végponton.
 * Érdemes lehet áthelyezni [app Service Environment (](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)beadási), ahol egyetlen kimenő IP-címet adott meg, és a kapcsolatok és SNAT portok korlátai jóval magasabbak.
 
@@ -160,7 +160,7 @@ A TCP-kapcsolatok és a SNAT portok nem közvetlenül kapcsolódnak egymáshoz. 
 
 ### <a name="webjobs-and-database-connections"></a>Webjobs-és adatbázis-kapcsolatok
  
-Ha SNAT-portok vannak kimerítve, ahol a webjobs nem tud csatlakozni az Azure SQL Database-hez, nincs olyan mérőszám, amely azt mutatja, hogy hány kapcsolat van megnyitva az egyes webalkalmazási folyamatokban. A problémás Webjobs megkereséséhez helyezzen át több webfeladatot egy másik App Service tervbe, és ellenőrizze, hogy a helyzet javul-e, vagy ha a probléma továbbra is a csomagok egyikében marad. Ismételje meg a folyamatot, amíg meg nem találja a problémás Webjobs.
+Ha SNAT-portok vannak kimerítve, ahol a webjobs nem tud csatlakozni a SQL Databasehoz, nincs olyan metrika, amely azt mutatja, hogy hány kapcsolat van megnyitva az egyes webalkalmazási folyamatokban. A problémás Webjobs megkereséséhez helyezzen át több webfeladatot egy másik App Service tervbe, és ellenőrizze, hogy a helyzet javul-e, vagy ha a probléma továbbra is a csomagok egyikében marad. Ismételje meg a folyamatot, amíg meg nem találja a problémás Webjobs.
 
 ### <a name="using-snat-ports-sooner"></a>SNAT-portok használata hamarabb
 

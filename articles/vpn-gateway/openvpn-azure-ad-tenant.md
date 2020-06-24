@@ -4,17 +4,17 @@ description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hiteles�
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2020
 ms.author: alzam
-ms.openlocfilehash: 00db2ed05285a1637414aa1e3adbe3b047ff0568
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8658556c152c815b2846f93235e4049c66a7e354
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641349"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987182"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory bérlő létrehozása a P2S OpenVPN protokoll kapcsolataihoz
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-bérlő létrehozása P2S OpenVPN-protokollkapcsolatokhoz
 
 A VNet való csatlakozáskor tanúsítványalapú hitelesítést vagy RADIUS-hitelesítést használhat. Ha azonban a nyílt VPN protokollt használja, akkor Azure Active Directory hitelesítést is használhat. Ebből a cikkből megtudhatja, hogyan állíthat be egy Azure AD-bérlőt a P2S Open VPN-hitelesítéshez.
 
@@ -105,7 +105,7 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
     ```
 
    > [!NOTE]
-   > Győződjön meg róla, hogy az `AadIssuerUri` érték végén szerepelnie kell egy záró perjelnek. Ellenkező esetben a parancs sikertelen lesz.
+   > Győződjön meg róla, hogy az érték végén szerepelnie kell egy záró perjelnek `AadIssuerUri` . Ellenkező esetben a parancs sikertelen lesz.
 
 10. Hozza létre és töltse le a profilt a következő parancsok futtatásával. Módosítsa a-ResourceGroupName és a-name értékeket a saját igényeinek megfelelően.
 
@@ -122,7 +122,7 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
 
 13. Tallózással keresse meg a kibontott "AzureVPN" mappát.
 
-14. Jegyezze fel a "azurevpnconfig. xml" fájl helyét. A azurevpnconfig. XML a VPN-kapcsolat beállítását tartalmazza, és közvetlenül importálható az Azure VPN-ügyfélalkalmazás alkalmazásba. Ezt a fájlt az összes olyan felhasználó számára is terjesztheti, akiknek e-mailben vagy más módon kell csatlakozniuk. A felhasználónak érvényes Azure AD-beli hitelesítő adatokra lesz szüksége a sikeres kapcsolódáshoz.
+14. Jegyezze fel a "azurevpnconfig.xml" fájl helyét. A azurevpnconfig.xml a VPN-kapcsolat beállítását tartalmazza, és közvetlenül importálható az Azure VPN-ügyfélalkalmazás alkalmazásba. Ezt a fájlt az összes olyan felhasználó számára is terjesztheti, akiknek e-mailben vagy más módon kell csatlakozniuk. A felhasználónak érvényes Azure AD-beli hitelesítő adatokra lesz szüksége a sikeres kapcsolódáshoz.
 
 ## <a name="next-steps"></a>További lépések
 

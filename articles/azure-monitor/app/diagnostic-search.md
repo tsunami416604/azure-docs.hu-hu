@@ -4,11 +4,11 @@ description: A webalkalmazás által eljuttatott nyers telemetria keresése és 
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275983"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695657"
 ---
 # <a name="using-search-in-application-insights"></a>Keresés használata a Application Insightsban
 
@@ -56,12 +56,12 @@ Nyissa meg az Event types (eseménytípus) legördülő menüt, és válassza ki
 
 Az események típusai a következők:
 
-* **Nyomkövetési** - [diagnosztikai naplók](../../azure-monitor/app/asp-net-trace-logs.md) , beleértve a TrackTrace, a log4Net, a NLog és a System. Diagnostics. Trace hívásokat.
+* **Nyomkövetés**  -  [Diagnosztikai naplók](../../azure-monitor/app/asp-net-trace-logs.md) , beleértve a TrackTrace, a log4Net, a NLog és a System. Diagnostics. Trace hívásokat.
 * **Kérelem** – a kiszolgálói alkalmazás által fogadott HTTP-kérelmek, beleértve a lapokat, a parancsfájlokat, a képeket, a stíluslapokat és az adatfájlokat. Ezek az események a kérések és válaszok áttekintő diagramjainak létrehozására használhatók.
-* **Page View**A webes[ügyfél által elküldett telemetria](../../azure-monitor/app/javascript.md), amely az oldal nézet jelentéseinek létrehozására szolgál. - 
+* **Oldal nézet**  -  [A webes ügyfél által elküldett telemetria](../../azure-monitor/app/javascript.md), amelyet az oldal nézet jelentéseinek létrehozásához használtak.
 * **Egyéni esemény** – ha a TrackEvent () hívásait beszúrta a [használat figyeléséhez](../../azure-monitor/app/api-custom-events-metrics.md), itt kereshet.
 * **Kivétel** – nem kezelt [Kivételek a kiszolgálón](../../azure-monitor/app/asp-net-exceptions.md), és a TrackException () használatával bejelentkezett.
-* **Függőségi** - [hívások a kiszolgálói alkalmazástól](../../azure-monitor/app/asp-net-dependencies.md) más szolgáltatásokra, például REST API-kra vagy adatbázisokra, valamint az [ügyfél kódjából](../../azure-monitor/app/javascript.md)származó Ajax-hívásokra.
+* **Függőség**  -  A [kiszolgálói alkalmazástól érkező hívásokat](../../azure-monitor/app/asp-net-dependencies.md) más szolgáltatásokra, például REST API-kra vagy adatbázisokra, valamint az [ügyfél KÓDJÁból](../../azure-monitor/app/javascript.md)származó Ajax-hívásokra hívja.
 * **Rendelkezésre állás** – a [rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md)eredményei.
 
 ## <a name="filter-on-property-values"></a>Tulajdonság értékeinek szűrése

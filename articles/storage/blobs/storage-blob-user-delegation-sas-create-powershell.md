@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 5250a27e6c5fcf012207f1edb95ad46c0aabfe63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b4eef6a992915e934e69a93d440bc6fa60aa690
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536173"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803522"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz a PowerShell használatával
 
@@ -32,7 +32,7 @@ Felhasználói delegálási SAS PowerShell-lel történő létrehozásához tele
 1. Távolítsa el a Azure PowerShell összes korábbi telepítését:
 
     - Távolítsa el a Azure PowerShell korábbi telepítését a Windows rendszerből a **Beállítások**területen található **alkalmazások & szolgáltatások** beállítással.
-    - Távolítsa **Azure** el az összes `%Program Files%\WindowsPowerShell\Modules`Azure-modult.
+    - Távolítsa el az összes **Azure** -modult `%Program Files%\WindowsPowerShell\Modules` .
 
 1. Győződjön meg arról, hogy a PowerShellGet legújabb verziója van telepítve. Nyisson meg egy Windows PowerShell-ablakot, és futtassa a következő parancsot a legújabb verzió telepítéséhez:
 
@@ -98,7 +98,7 @@ Ha Azure PowerShell használatával hoz létre felhasználói delegálási SAS-t
 
 Mivel a felhasználói delegálási kulcs érvényességi időtartama a kezdő dátumtól számított 7 nap, a kezdési időponttól számított 7 napon belül meg kell adnia a lejárati időt. Az SAS érvénytelen a felhasználói delegálási kulcs lejárata után, így a 7 napnál hosszabb lejárati idővel rendelkező SAS-t a rendszer továbbra is csak 7 napig érvényes.
 
-Ha Azure PowerShell használatával szeretne létrehozni egy felhasználói delegálási SAS-t egy tárolóhoz vagy blobhoz, először hozzon létre egy új Azure `-UseConnectedAccount` Storage környezeti objektumot, és határozza meg a paramétert. A `-UseConnectedAccount` paraméter azt adja meg, hogy a parancs létrehozza a környezeti objektumot abban az Azure ad-fiókban, amellyel bejelentkezett.
+Ha Azure PowerShell használatával szeretne létrehozni egy felhasználói delegálási SAS-t egy tárolóhoz vagy blobhoz, először hozzon létre egy új Azure Storage környezeti objektumot, és határozza meg a `-UseConnectedAccount` paramétert. A `-UseConnectedAccount` paraméter azt adja meg, hogy a parancs létrehozza a környezeti objektumot abban az Azure ad-fiókban, amellyel bejelentkezett.
 
 Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
@@ -130,7 +130,7 @@ A felhasználói delegálási SAS-jogkivonat a következőhöz hasonló lesz:
 
 Ha egy blobhoz felhasználói delegálási SAS-tokent szeretne visszaadni, hívja meg a [New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) parancsot, amely a korábban létrehozott Azure Storage környezeti objektumba kerül.
 
-A következő szintaxis a blobhoz tartozó felhasználói delegálási SAS-t adja vissza. A példa a `-FullUri` paramétert adja meg, amely visszaadja a blob URI azonosítót a hozzáfűzött sas-jogkivonattal. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+A következő szintaxis a blobhoz tartozó felhasználói delegálási SAS-t adja vissza. A példa a `-FullUri` paramétert adja meg, amely visszaadja a blob URI azonosítót a HOZZÁFŰZÖTT sas-jogkivonattal. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `

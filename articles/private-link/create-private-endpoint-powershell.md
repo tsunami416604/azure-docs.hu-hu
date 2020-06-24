@@ -4,15 +4,15 @@ description: További információ az Azure Private linkről
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 83207c70b147e4f0d416f47a6b12f9826f49f2db
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267766"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737376"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
@@ -184,7 +184,7 @@ mstsc /v:<publicIpAddress>
   > [!NOTE]
   > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell kiválasztania > eltérő fiókot használjon. 
   
-3. Kattintson az **OK** gombra. 
+3. Válassza az **OK** lehetőséget. 
 4. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget. 
 
 ## <a name="access-sql-database-privately-from-the-vm"></a>Hozzáférési SQL Database a virtuális gépről
@@ -209,17 +209,17 @@ mstsc /v:<publicIpAddress>
     | Beállítás | Érték |
     | --- | --- |
     | Kiszolgáló típusa | Adatbázismotor |
-    | Kiszolgálónév | myserver.database.windows.net |
+    | Kiszolgáló neve | myserver.database.windows.net |
     | Felhasználónév | Adja meg a létrehozás során megadott felhasználónevet |
     | Jelszó | Adja meg a létrehozás során megadott jelszót |
-    | Jelszó megjegyzése | Igen |
+    | Jelszó megjegyzése | Yes |
     
 5. Kattintson a **Csatlakozás** gombra.
 6. Az **adatbázisok** tallózása a bal oldali menüben. 
 7. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
 8. A távoli asztali kapcsolat bezárásával *myVM*. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása 
 Ha végzett a privát végponttal, SQL Database és a virtuális géppel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és az összes erőforrást:
 
 ```azurepowershell-interactive

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f58afa41a27427f8deabb945261d96763edb4bc
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436179"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126178"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Az Azure Kubernetes Services és a Security Center integrációja
 
@@ -61,4 +61,4 @@ Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkci
 
 * [Integráció az Azure Container Registryvel](azure-container-registry-integration.md)
 
-* [Adatkezelés a Microsoftnál](https://www.microsoft.com/trust-center/privacy/data-management) – ismerteti a Microsoft-szolgáltatások (például az Azure, az Intune és az Office 365) adatszabályzatait, a Microsoft adatkezelésének részleteit és az adatokat érintő adatmegőrzési házirendeket.
+* [Adatkezelés a Microsoftnál](https://www.microsoft.com/trust-center/privacy/data-management) – ismerteti a Microsoft-szolgáltatások (beleértve az Azure-t, az Intune-t és a Microsoft 365) adatszabályzatait, a Microsoft adatkezelésének részleteit és az adatokat érintő adatmegőrzési szabályzatokat
