@@ -9,14 +9,14 @@ ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: f77aacbddc5b3dcb5da62e5e87405477d47e7001
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ac9bf7edf6e3973dd2f1f917d26ac280be4648e3
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672323"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945647"
 ---
 # <a name="secure-access-to-application-data"></a>Az alkalmazásadatok biztonságos elérése
 
@@ -135,11 +135,13 @@ Az előző feladatban használt osztályok, tulajdonságok és metódusok a köv
 |[UriBuilder](/dotnet/api/system.uribuilder) | [Lekérdezés](/dotnet/api/system.uribuilder.query) |  |
 |[Lista](/dotnet/api/system.collections.generic.list-1) | | [Hozzáadás](/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>Kiszolgálóoldali titkosítás
+## <a name="azure-storage-encryption"></a>Azure Storage-titkosítás
 
-Az [Azure Storage Service Encryption (SSE)](../common/storage-service-encryption.md) segít az adatok biztonságos megőrzésében. Az SSE titkosítja az inaktív adatokat, valamint titkosítási, visszafejtési és kulcskezelési feladatokat lát el. Minden adat titkosítása 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) történik, amely a jelenleg elérhető egyik legerősebb blokktitkosító.
+Az [Azure Storage-titkosítás](../common/storage-service-encryption.md) az adatok védelméhez és védelméhez nyújt segítséget azáltal, hogy titkosítja az adatait, és kezeli a titkosítást és a visszafejtést. Minden adat titkosítása 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) történik, amely a jelenleg elérhető egyik legerősebb blokktitkosító.
 
-Az SSE automatikusan titkosítja minden teljesítményszint (Standard és Prémium), minden üzembehelyezési modell (Azure Resource Manager és klasszikus) és minden Azure Storage-szolgáltatás (Blob, Queue, Table és File) adatait. 
+Megadhatja, hogy a Microsoft kezelje a titkosítási kulcsokat, vagy a Azure Key Vault segítségével saját kulcsokat is használhat az ügyfelek által felügyelt kulcsokkal. További információkért lásd: [ügyfél által felügyelt kulcsok használata az Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../common/encryption-customer-managed-keys.md).
+
+Az Azure Storage-titkosítás automatikusan titkosítja az összes teljesítményszint (standard és prémium), az összes üzembe helyezési modell (Azure Resource Manager és klasszikus), valamint az összes Azure Storage-szolgáltatás (blob, üzenetsor, tábla és fájl) mennyiségét.
 
 ## <a name="enable-https-only"></a>Csak HTTPS engedélyezése
 
@@ -161,7 +163,7 @@ Most, hogy biztonságos átvitel szükséges, az alábbi üzenetet kapja:
 HTTP/1.1 400 The account being accessed does not support http.
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat harmadik részében megtanulta, hogy miként teheti biztonságossá a tárfiókhoz való hozzáférést, többek között:
 

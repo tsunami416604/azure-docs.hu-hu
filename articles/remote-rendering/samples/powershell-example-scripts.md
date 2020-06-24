@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80891492"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052287"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-példaszkriptek
 
@@ -46,7 +46,7 @@ A minta szkriptek végrehajtásához a [Azure PowerShell](https://docs.microsoft
 
 ## <a name="configuration-file"></a>Konfigurációs fájl
 
-A fájlok `arrconfig.json` mellett `.ps1` ki kell töltenie a következőt:
+A fájlok mellett ki `.ps1` `arrconfig.json` kell töltenie a következőt:
 
 ```json
 {
@@ -74,36 +74,39 @@ A fájlok `arrconfig.json` mellett `.ps1` ki kell töltenie a következőt:
 ```
 
 > [!CAUTION]
-> Ügyeljen arra, hogy a LocalAssetDirectoryPath útvonalon a két fordított\\\\perjelet ("") használja, és minden más elérési úton, például a inputFolderPath és a inputAssetPath használjon perjelet.
+> Ügyeljen arra, hogy a LocalAssetDirectoryPath útvonalon a két fordított perjelet \\ \\ ("") használja, és minden más elérési úton, például a inputFolderPath és a inputAssetPath használjon perjelet.
+
+> [!CAUTION]
+> A választható értékeket ki kell tölteni, vagy el kell távolítani a kulcsot és az értéket. Ha például nem használja a `"outputAssetFileName"` paramétert, törölnie kell a teljes sort a következőn belül: `arrconfig.json` .
 
 ### <a name="accountsettings"></a>accountSettings
 
-`arrAccountId` És `arrAccountKey`esetében lásd: [Azure távoli renderelési fiók létrehozása](../how-tos/create-an-account.md).
+`arrAccountId`És esetében `arrAccountKey` lásd: [Azure távoli renderelési fiók létrehozása](../how-tos/create-an-account.md).
 Az `region` [elérhető régiók listájának](../reference/regions.md)megtekintéséhez.
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Ezt a struktúrát ki kell tölteni, ha a **RenderingSession. ps1**parancsot szeretné futtatni.
+Ha **RenderingSession.ps1**szeretne futtatni, ezt a struktúrát ki kell tölteni.
 
 - **vmSize:** Kiválasztja a virtuális gép méretét. Válassza a *standard* vagy a *prémium*lehetőséget. Ha már nincs szüksége rájuk, állítsa le a renderelési munkameneteket.
 - **maxLeaseTime:** Az az időtartam, ameddig a virtuális gépet bérbe szeretné venni. Ha a bérlet lejár, a rendszer leállítja. A bérleti idő később bővíthető (lásd alább).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
 
-Ezt a struktúrát ki kell tölteni, ha a **Conversion. ps1**parancsot szeretné futtatni.
+Ha **Conversion.ps1**szeretne futtatni, ezt a struktúrát ki kell tölteni.
 
 Részletekért lásd: [Azure Storage-fiók előkészítése](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts).
 
-## <a name="script-renderingsessionps1"></a>Parancsfájl: RenderingSession. ps1
+## <a name="script-renderingsessionps1"></a>Parancsfájl: RenderingSession.ps1
 
 Ez a szkript a renderelési munkamenetek létrehozására, lekérdezésére és leállítására szolgál.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy kitöltötte a *accountSettings* és a *renderingSessionSettings* szakaszt a arrconfig. JSON fájlban.
+> Győződjön meg róla, hogy kitöltötte a *accountSettings* és a *renderingSessionSettings* szakaszt a arrconfig.json.
 
 ### <a name="create-a-rendering-session"></a>Renderelési munkamenet létrehozása
 
-Normál használat teljes kitöltött arrconfig. JSON használatával:
+Normál használat teljes kitöltött arrconfig.jsa következőn:
 
 ```PowerShell
 .\RenderingSession.ps1
@@ -139,7 +142,7 @@ A munkamenet tulajdonságainak beszerzéséhez futtassa a következő parancsot:
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-A `-Poll` használatával megvárhatja, amíg a munkamenet *kész* vagy hiba történt.
+`-Poll`A használatával megvárhatja, amíg a munkamenet *kész* vagy hiba történt.
 
 ### <a name="list-active-sessions"></a>Aktív munkamenetek listázása
 
@@ -164,12 +167,12 @@ Jelenleg csak a munkamenet maxLeaseTime módosítását támogatjuk.
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
 ```
 
-## <a name="script-conversionps1"></a>Parancsfájl: Conversion. ps1
+## <a name="script-conversionps1"></a>Parancsfájl: Conversion.ps1
 
 Ez a szkript a bemeneti modellek az Azure Remote rendering-specifikus futtatókörnyezet-formátumba való átalakítására szolgál.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy kitöltötte a *accountSettings* és a *assetConversionSettings* szakaszt a arrconfig. JSON fájlban.
+> Győződjön meg róla, hogy kitöltötte a *accountSettings* és a *assetConversionSettings* szakaszt a arrconfig.json.
 
 A parancsfájl a következő két lehetőséget mutatja be a Storage-fiókok használatára a szolgáltatásban:
 
@@ -178,7 +181,7 @@ A parancsfájl a következő két lehetőséget mutatja be a Storage-fiókok has
 
 ### <a name="linked-storage-account"></a>Társított Storage-fiók
 
-Miután teljes mértékben kitöltötte a arrconfig. JSON fájlt, és csatolt egy Storage-fiókot, a következő parancsot használhatja. A Storage-fiók összekapcsolása a [fiók létrehozása](../how-tos/create-an-account.md#link-storage-accounts)című témakörben található.
+Miután teljes mértékben kitöltötte arrconfig.jsés csatolt egy Storage-fiókot, a következő parancsot használhatja. A Storage-fiók összekapcsolása a [fiók létrehozása](../how-tos/create-an-account.md#link-storage-accounts)című témakörben található.
 
 A társított Storage-fiók használata az előnyben részesített módszer a konverziós szolgáltatás használatára, mivel nem kell közös hozzáférési aláírásokat létrehoznia.
 
@@ -186,7 +189,7 @@ A társított Storage-fiók használata az előnyben részesített módszer a ko
 .\Conversion.ps1
 ```
 
-1. Töltse fel a fájlban található összes `assetConversionSettings.modelLocation` fájlt a bemeneti blob-tárolóba az adott`inputFolderPath`
+1. Töltse fel a fájlban található összes fájlt a `assetConversionSettings.modelLocation` bemeneti blob-tárolóba az adott`inputFolderPath`
 1. A modell átalakításának meghívása [REST API](../how-tos/conversion/conversion-rest-api.md) a [modell átalakításának](../how-tos/conversion/model-conversion.md) elindításához
 1. A konverzió állapotának lekérdezése, amíg az átalakítás sikeres vagy sikertelen volt
 1. A konvertált fájl helyének kimeneti adatai (Storage-fiók, kimeneti tároló, a tárolóban lévő fájl elérési útja)
@@ -199,7 +202,7 @@ A társított Storage-fiók használata az előnyben részesített módszer a ko
 
 Ez a következő lesz:
 
-1. Töltse fel a helyi fájlt a `assetConversionSettings.localAssetDirectoryPath` fájlból a bemeneti blob-tárolóba.
+1. Töltse fel a helyi fájlt a fájlból a `assetConversionSettings.localAssetDirectoryPath` bemeneti blob-tárolóba.
 1. SAS URI létrehozása a bemeneti tárolóhoz
 1. SAS URI létrehozása a kimeneti tárolóhoz
 1. A modell átalakításának meghívása [REST API](../how-tos/conversion/conversion-rest-api.md) a [modell átalakításának](../how-tos/conversion/model-conversion.md) elindításához
@@ -264,7 +267,7 @@ A konverzió állapotát a következő paranccsal kérheti le:
 .\Conversion.ps1 -GetConversionStatus -Id <conversionId> [-Poll]
 ```
 
-A `-Poll` paranccsal megvárhatja, amíg a konverzió megtörténik, vagy hiba történt.
+`-Poll`A paranccsal megvárhatja, amíg a konverzió megtörténik, vagy hiba történt.
 
 ## <a name="next-steps"></a>További lépések
 

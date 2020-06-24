@@ -46,8 +46,12 @@
                   href: data-box-system-requirements-rest.md
             - name: A korlátozások ismertetése
               href: data-box-limits.md
-            - name: Biztonság áttekintése
-              href: data-box-security.md
+            - name: Biztonság
+              items:
+                - name: Biztonsági alapkonfiguráció
+                  href: security-baseline.md
+                - name: Biztonság áttekintése
+                  href: data-box-security.md
             - name: GYIK
               href: data-box-faq.md
         - name: Útmutató

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6ac2fd0ef3414f5b9d7f6551628264b4724b037
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234329"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100864"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
@@ -41,7 +41,7 @@ Emellett a következő dolgokat is ismernie kell:
 - A használni kívánt rendszerkép forrása. Ez az Azure-katalógusból vagy egy egyéni rendszerkép?
 - A tartományhoz való csatlakozáshoz szükséges hitelesítő adatok.
 
-Győződjön meg arról is, hogy regisztrálta a Microsoft. DesktopVirtualization erőforrás-szolgáltatót. Ha még nem tette meg, lépjen az **előfizetések** elemre, válassza ki a Yoru-előfizetés nevét, majd válassza az **Azure Resource Providers**elemet.
+Győződjön meg arról is, hogy regisztrálta a Microsoft. DesktopVirtualization erőforrás-szolgáltatót. Ha még nem tette meg, nyissa meg az **előfizetések**elemet, válassza ki az előfizetés nevét, majd válassza az **Azure Resource Providers**elemet.
 
 Amikor létrehoz egy Windows rendszerű virtuális asztali címkészletet a Azure Resource Manager sablonnal, létrehozhat egy virtuális gépet az Azure-katalógusból, egy felügyelt képből vagy egy nem felügyelt rendszerképből. A virtuálisgép-lemezképek létrehozásával kapcsolatos további információkért lásd: [Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez](../virtual-machines/windows/prepare-for-upload-vhd-image.md) , valamint [egy általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../virtual-machines/windows/capture-image-resource.md).
 
@@ -111,7 +111,7 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
 
     - Ha a katalógus lehetőséget **választja, válassza ki a**javasolt rendszerképek egyikét a legördülő menüből:
 
-      - Windows 10 Enterprise multi-session, Version 1909 + Office 365 ProPlus – Gen 1
+      - Windows 10 Enterprise multi-session, Version 1909 + Microsoft 365 Enterprise – 1. generációs alkalmazások
       - Windows 10 Enterprise multi-session, Version 1909 – Gen 1
       - Windows Server 2019 Datacenter – Gen1
 
@@ -169,7 +169,7 @@ Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
      >[!NOTE]
      >A felülvizsgálat + ellenőrzési folyamat nem ellenőrzi, hogy a Jelszó megfelel-e a biztonsági szabványoknak, vagy ha az architektúra helyes, ezért az ilyen dolgok bármelyikével kapcsolatos problémákat meg kell vizsgálnia. 
 
-5. Tekintse át az üzemelő példány adatait, és győződjön meg róla, hogy minden helyesnek tűnik. Amikor elkészült, válassza a **Létrehozás** lehetőséget. Ez elindítja a telepítési folyamatot, amely a következő objektumokat hozza létre:
+5. Tekintse át az üzemelő példány adatait, és győződjön meg róla, hogy minden helyesnek tűnik. Ha elkészült, válassza a **Létrehozás** lehetőséget. Ez elindítja a telepítési folyamatot, amely a következő objektumokat hozza létre:
 
      - Az új gazdagép-készletet.
      - Egy asztali alkalmazás csoportja.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5555c176adfb5be78ea73f17bfa01ba87766acc1
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607210"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100400"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central-alkalmazással (Python)
 
@@ -304,9 +304,9 @@ Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra
 
 ![Az ügyfélalkalmazás megfigyelése](media/tutorial-connect-device-python/run-application-2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan hozhat létre egy eszközt a Node. js használatával, néhány javasolt lépés a következő lépésekből áll:
+Most, hogy már megismerte, hogyan hozhat létre egy eszközt a Python használatával, néhány javasolt következő lépés:
 
 * Ismerje meg, hogyan csatlakoztatható valódi eszköz a IoT Centralhoz a [MXChip IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](./howto-connect-devkit.md) útmutató című cikkben.
 * Olvassa el a [Mi az eszközök sablonjai?](./concepts-device-templates.md) további információ az eszközök sablonjainak szerepéről az eszköz kódjának megvalósításakor.

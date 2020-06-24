@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: cc81784d4ad3613cf46176912625cf980c44f064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235048"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255432"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből az Azure Blob Storage-ba a Azure Data Factory használatával
 
@@ -25,10 +25,10 @@ Ebben az oktatóanyagban az Azure Blob Storage-példányban lévő adatok növek
 Ha még nem hozott létre adatbázist vagy táblát az Azure SQL Edge-telepítésben, akkor az alábbi módszerek egyikével hozhat létre egyet:
 
 * Az SQL Edge-hez való kapcsolódáshoz használjon [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) vagy [Azure Data Studio](/sql/azure-data-studio/download/) . Futtasson egy SQL-szkriptet az adatbázis és a tábla létrehozásához.
-* Hozzon létre egy SQL-adatbázist és-táblázatot a [Sqlcmd](/sql/tools/sqlcmd-utility/) használatával az SQL Edge-modulhoz való közvetlen csatlakozással. További információ: [Kapcsolódás az adatbázismotor számára a Sqlcmd használatával](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
-* A SQLPackage. exe használatával helyezzen üzembe egy DAC-csomagfájl az SQL Edge-tárolón. Ezt a folyamatot automatizálhatja a SqlPackage fájl URI azonosítójának megadásával a modul kívánt tulajdonságainak konfigurációjának részeként. A SqlPackage. exe-ügyfél eszközt közvetlenül is használhatja a DAC-csomagok SQL Edge-ben történő üzembe helyezéséhez.
+* Hozzon létre egy adatbázist és egy táblázatot a [Sqlcmd](/sql/tools/sqlcmd-utility/) használatával az SQL Edge-modulhoz való közvetlen csatlakozással. További információ: [Kapcsolódás az adatbázismotor számára a Sqlcmd használatával](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
+* A SQLPackage.exe használatával helyezzen üzembe egy DAC-csomagfájl az SQL Edge-tárolón. Ezt a folyamatot automatizálhatja a SqlPackage fájl URI azonosítójának megadásával a modul kívánt tulajdonságainak konfigurációjának részeként. Közvetlenül a SqlPackage.exe-ügyfél eszközzel is üzembe helyezhet egy DAC-csomagot az SQL Edge-ben.
 
-    További információ a SqlPackage. exe fájl letöltéséről: [SqlPackage letöltése és telepítése](/sql/tools/sqlpackage-download/). A következő néhány példa a SqlPackage. exe parancsra. További információt a SqlPackage. exe dokumentációjában talál.
+    További információ a SqlPackage.exe letöltéséről: [Sqlpackage letöltése és telepítése](/sql/tools/sqlpackage-download/). A következőkben néhány példa a SqlPackage.exera. További információ: SqlPackage.exe dokumentáció.
 
     **DAC-csomag létrehozása**
 
@@ -107,7 +107,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     ![Társított szolgáltatás létrehozása](media/tutorial-sync-data-factory/create-linked-service.png)
 
-    7. Kattintson az **OK** gombra.
+    7. Válassza az **OK** lehetőséget.
 
 8. A **Beállítások** lapon válassza a **Szerkesztés**lehetőséget.
 
@@ -125,7 +125,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     2. A **táblázat**alatt válassza ki a szinkronizálni kívánt táblát. Ehhez az adatkészlethez is megadhat egy lekérdezést az oktatóanyag későbbi részében leírtak szerint. A lekérdezés elsőbbséget élvez az ebben a lépésben megadott táblázatban.
 
-    3. Kattintson az **OK** gombra.
+    3. Válassza az **OK** lehetőséget.
 
 14. Váltson a folyamat-szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával. A keresési tevékenység tulajdonságok ablakában ellenőrizze, hogy a **SourceDataset** van-e kiválasztva a **forrás adatkészlet** listájában.
 
@@ -195,7 +195,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     2. A tárolt eljárás paraméterei értékének megadásához válassza a **paraméter importálása** lehetőséget, majd adja meg az alábbi értékeket a paraméterekhez:
 
-    |Name (Név)|Típus|Érték|
+    |Name|Típus|Érték|
     |-----|----|-----|
     |LastModifiedtime|DateTime|@ {Activity ("NewWaterMark"). output. firstRow. NewWatermarkvalue}|
     |TableName|Sztring|@ {Activity ("OldWaterMark"). output. firstRow. Táblanév}|
@@ -210,7 +210,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
 2. Nevezze el az trigger **HourlySync**. A **típus**területen válassza az **ütemterv**lehetőséget. Állítsa be az **ismétlődést** 1 óránként.
 
-3. Kattintson az **OK** gombra.
+3. Válassza az **OK** lehetőséget.
 
 4. Kattintson **Az összes közzététele** gombra.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az első ML-kísérlet létrehozása'
-titleSuffix: Azure Machine Learning
+title: 'Oktatóanyag: kísérletezés a Jupyter-jegyzetfüzetekben (Python)'
+titleSuffix: Machine Learning - Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Jupyter-jegyzetfüzetekben futó Azure Machine Learning Python SDK-t.  Az 1. részben létrehoz egy munkaterületet, amelyben a kísérleteket és a ML-modelleket fogja kezelni.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 564358bf7d689abf93f6a9549fab0c2932e99f5b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c0df2459b09eca472c833be2865232c0247210dd
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558389"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106606"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -106,7 +106,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
 Ha egyéni widgetekkel rendelkezik, vagy inkább a Jupyter/JupyterLab-t használja, válassza a jobb szélen a **Jupyter** legördülő listát, majd válassza a **Jupyter** vagy a **JupyterLab**lehetőséget. Megnyílik az új böngészőablak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 

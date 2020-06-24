@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fbcbf1be29031596201774ae5ebb40cb1a3b89a2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80985558"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113449"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Oktatóanyag: Mobile-alkalmazások létrehozása a Xamarin és a Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Ez a cikk egy oktatóanyagot tartalmaz mobilalkalmazások létrehozásához a Xa
 ## <a name="azure-cosmos-db-capabilities-for-mobile-apps"></a>Az Azure Cosmos DB képességei mobilalkalmazásokhoz
 Az Azure Cosmos DB az alábbi fő lehetőségeket nyújtja a mobilalkalmazás-fejlesztőknek:
 
-![Az Azure Cosmos DB képességei mobilalkalmazásokhoz](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-for-mobile.png" alt-text="Az Azure Cosmos DB képességei mobilalkalmazásokhoz":::
 
 * Séma nélküli adatok részletes lekérdezése. Az Azure Cosmos DB az adatokat séma nélküli JSON-dokumentumok formájában tárolja, heterogén gyűjteményekben. [Részletes és gyors lekérdezéseket](how-to-sql-query.md) nyújt, amelyekhez nem kell sémákkal vagy indexekkel foglalkoznia.
 * Gyors adatátvitel. Az Azure Cosmos DB mindössze néhány ezredmásodperc alatt végzi a dokumentumok írását és olvasását. A fejlesztők megadhatják a kívánt adatátviteli sebességet, amelyre vonatkozóan az Azure Cosmos DB 99,99%-os rendelkezésre állású SLA-t biztosít minden enyhén korlátozott konzisztenciájú egyrégiós és többrégiós fiókhoz, valamint 99,999%-os olvasási rendelkezésre állást minden többrégiós adatbázisfiókhoz.
@@ -47,7 +47,7 @@ A következő oktatóanyag ismerteti, hogyan lehet létrehozni egy mobilalkalmaz
 ### <a name="get-started"></a>Bevezetés
 Az Azure Cosmos DB használatát könnyű elsajátítani. Lépjen az Azure Portalra, és hozzon létre egy új Azure Cosmos DB-fiókot. Kattintson a **gyors üzembe helyezés** lapra. Töltse le a Xamarin űrlapok feladatlistáját, amely már csatlakoztatva van a Azure Cosmos db fiókjához. 
 
-![Rövid útmutató: Az Azure Cosmos DB és mobilalkalmazások](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="Rövid útmutató: Az Azure Cosmos DB és mobilalkalmazások":::
 
 Vagy ha már rendelkezik Xamarin-alkalmazással, hozzáadhatja az [Azure Cosmos DB NuGet-csomagot](sql-api-sdk-dotnet-core.md). Az Azure Cosmos DB támogatja a Xamarin.iOS, a Xamarin.Android és a Xamarin Forms közös kódtárakat.
 
@@ -85,19 +85,19 @@ Az alábbi lépésekkel módosítható a teendőlista alkalmazás egy többfelha
 
 A minta teljes mintakódját megtalálja az [Erőforrásjogkivonat-közvetítő a GitHubon](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) oldalon. Az alábbi ábra illusztrálja a megoldást:
 
-![Az Azure Cosmos DB felhasználó- és engedélyközvetítője](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png" alt-text="Az Azure Cosmos DB felhasználó- és engedélyközvetítője" border="false":::
 
 Ha azt szeretné, hogy a két felhasználó hozzáférjen ugyanahhoz a teendőlistához, hozzáadhat további engedélyeket a hozzáférési jogkivonathoz az erőforrásjogkivonat-közvetítőben.
 
 ### <a name="scale-on-demand"></a>Igény szerinti méretezés
 Az Azure Cosmos DB egy felügyelt, szolgáltatásként nyújtott adatbázis. Ahogy a felhasználóbázis növekszik, nem kell aggódnia a virtuális gépek üzembe helyezése vagy a magok számának növelése miatt. Mindössze meg kell adnia az Azure Cosmos DB-nek, hogy az alkalmazásának másodpercenként hány műveletre (mekkora átviteli sebességre) van szüksége. Az átviteli sebességet a **Skálázás** lapon adhatja meg, az alapján, hogy másodpercenként hány úgynevezett kérelemegységre van szüksége. Például egy 1 KB méretű dokumentum olvasási művelete igényel 1 kérelemegységet. Emellett hozzáadhat riasztásokat az **átviteli** metrikához az adatforgalom növekedésének monitorozására, és a riasztások életbe lépésekor programozott módon módosíthatja az átviteli sebességet.
 
-![Az Azure Cosmos DB átviteli sebességének igény szerinti skálázása](media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png" alt-text="Az Azure Cosmos DB átviteli sebességének igény szerinti skálázása":::
 
 ### <a name="go-planet-scale"></a>Váltson világszintre
 Ahogy alkalmazása népszerűbbé válik, a világ minden tájáról szerezhet új felhasználókat. Vagy az is lehet, hogy csak fel szeretne készülni a váratlan eseményekre. Lépjen az Azure Portalra, és nyissa meg az Azure Cosmos DB-fiókját. Kattintson a térképre, ha szeretné, hogy adatai folyamatosan replikálva legyenek a világ bármely régiójában. Ez a funkció elérhetővé teszi az adatokat, függetlenül attól, hogy a felhasználók hol tartózkodnak. A váratlan helyzetekre való felkészültség érdekében hozzáadhat feladatátvételi szabályzatokat is.
 
-![Az Azure Cosmos DB skálázása több földrajzi régióra](media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png" alt-text="Az Azure Cosmos DB skálázása több földrajzi régióra" border="false":::
 
 Gratulálunk! Elkészítette a megoldást és a mobilalkalmazást a Xamarin és az Azure Cosmos DB segítségével. Hasonló lépésekkel hozhat létre Cordova-alkalmazásokat az Azure Cosmos DB JavaScript SDK-val, illetve natív iOS-/Android-alkalmazásokat az Azure Cosmos DB REST API-kkal.
 

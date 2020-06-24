@@ -6,24 +6,22 @@ documentationcenter: android
 keywords: leküldéses értesítések,leküldéses értesítés,android leküldéses értesítés,fcm,firebase cloud messaging
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 02298560-da61-4bbb-b07c-e79bd520e420
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/11/2019
+ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 7dbe9faabcb7a46ae3862ac7da6504b6b0407d86
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 244e9d9136705eeef27680d2fa590d283abb6467
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170443"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255466"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre a Firebase SDK 0,6-es verziójának használatával
 
@@ -102,7 +100,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     ![Android SDK-kezelő – kiválasztott Google Play-szolgáltatások](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. Ha megjelenik a **módosítás megerősítése** párbeszédpanel, kattintson az **OK gombra**. Az összetevő-telepítő telepíti a kért összetevőket. Az összetevők telepítése után válassza a **Befejezés** lehetőséget.
 4. Az **új projektek beállításainak** bezárásához kattintson **az OK gombra** .  
-1. Nyissa meg a AndroidManifest. xml fájlt, majd adja hozzá a következő címkét az *alkalmazás* címkéjéhez.
+1. Nyissa meg a AndroidManifest.xml fájlt, majd adja hozzá a következő címkét az *alkalmazás* címkéjéhez.
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"
@@ -144,7 +142,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     ```
 3. Kattintson a **szinkronizálás most** elemre az eszköztáron.
 
-### <a name="update-the-androidmanifestxml-file"></a>A AndroidManifest. xml fájl frissítése
+### <a name="update-the-androidmanifestxml-file"></a>A AndroidManifest.xml fájl frissítése
 
 1. Az FCM regisztrációs jogkivonat kézhezvétele után az Azure Notification Hubs-ban való [regisztrálásra](notification-hubs-push-notification-registration-management.md)használható. Ezt a regisztrációt a háttérben egy elnevezett paranccsal támogathatja `IntentService` `RegistrationIntentService` . Ez a szolgáltatás az FCM regisztrációs tokent is frissíti. Létrehoz egy nevű osztályt is a `FirebaseService` alosztályként, `FirebaseMessagingService` és felülbírálja az `onMessageReceived` értesítések fogadásához és kezeléséhez szükséges metódust. 
 
@@ -407,7 +405,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     }
     ```
 
-9. A `ToastNotify` metódus a *„Hello World”* `TextView` vezérlőt használja az állapot és az értesítések folyamatos jelentéséhez az alkalmazásban. A **res**  >  **layout**  >  **activity_main. XML** elrendezésben adja hozzá a következő azonosítót a vezérlőhöz.
+9. A `ToastNotify` metódus a *„Hello World”* `TextView` vezérlőt használja az állapot és az értesítések folyamatos jelentéséhez az alkalmazásban. A **res**  >  **elrendezés**  >  **activity_main.xml** elrendezésében adja hozzá a következő azonosítót a vezérlőhöz.
 
     ```java
     android:id="@+id/text_hello"
@@ -415,7 +413,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
 
     ![Azure Notification Hubs – küldés tesztelése](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
-10. Ezután adjon hozzá egy alosztályt a AndroidManifest. xml fájlban meghatározott fogadóhoz. Adjon hozzá a projekthez egy másik új, `FirebaseService` nevű osztályt.
+10. Ezután felvesz egy alosztályt a AndroidManifest.xmlban definiált fogadóhoz. Adjon hozzá a projekthez egy másik új, `FirebaseService` nevű osztályt.
 
 11. Vegye fel a következő importálási utasításokat a `FirebaseService.java` felső részén:
 
@@ -522,7 +520,7 @@ A központ most már úgy van konfigurálva, hogy működjön a Firebase Cloud M
     }
     ```
 
-13. Android Studio a menüsávon válassza a **Létrehozás**  >  **Újraépítés projekt** lehetőséget, hogy a kódban ne legyen hiba. Ha hibaüzenet jelenik meg az `ic_launcher` ikonról, távolítsa el a következő utasítást a AndroidManifest. XML fájlból: 
+13. Android Studio a menüsávon válassza a **Létrehozás**  >  **Újraépítés projekt** lehetőséget, hogy a kódban ne legyen hiba. Ha hibaüzenet jelenik meg az `ic_launcher` ikonról, távolítsa el a következő utasítást a AndroidManifest.xml fájlból: 
 
     ```
         android:icon="@mipmap/ic_launcher"
@@ -556,11 +554,13 @@ Leküldéses értesítéseket a [Azure Portal] küldhet a következő lépések 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ### <a name="run-the-mobile-app-on-emulator"></a>A Mobile App futtatása az emulátoron
+
 Mielőtt a leküldéses értesítéseket egy emulátoron belül teszteli, győződjön meg arról, hogy az Emulator-rendszerkép támogatja az alkalmazáshoz választott Google API-szintet. Ha a rendszerkép nem támogatja a natív Google API-kat, akkor előfordulhat, hogy a **szolgáltatás \_ nem \_ érhető el** kivételt.
 
 Győződjön meg arról is, hogy hozzáadta Google-fiókját a futó emulátorhoz a **Beállítások**  >  **fiókok**területen. Ellenkező esetben az FCM-sel való regisztrációra tett kísérletek a ** \_ sikertelen hitelesítésre** vonatkozó kivételt okozhatnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
 Ebben az oktatóanyagban a Firebase Cloud Messaging szolgáltatást használta az értesítések küldéséhez a szolgáltatásban regisztrált összes Android-eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 
 > [!div class="nextstepaction"]

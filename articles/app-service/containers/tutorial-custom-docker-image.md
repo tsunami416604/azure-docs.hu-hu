@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561101"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906836"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Oktatóanyag: egyéni rendszerkép létrehozása és App Service futtatása privát beállításjegyzékből
 
-A [app Service](app-service-linux-intro.md) beépített Docker-rendszerképeket biztosít a Linuxon, és bizonyos verziókat, például a PHP 7,3-t és a Node. js 10,14-t támogatja. A App Service a Docker-tároló technológiáját használja a beépített rendszerképek és az Egyéni rendszerképek szolgáltatásként való üzemeltetéséhez. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni rendszerképet, és hogyan futtathatja App Serviceban. Ez a minta akkor hasznos, ha a beépített rendszerképek nem tartalmazzák a választott nyelvet, vagy ha az alkalmazás egy meghatározott konfigurációt igényel, amelyet a beépített rendszerképek nem tartalmaznak.
+A [app Service](app-service-linux-intro.md) beépített Docker-rendszerképeket biztosít Linux rendszeren, bizonyos verziók, például a PHP 7,3 és a Node.js 10,14 támogatásával. A App Service a Docker-tároló technológiáját használja a beépített rendszerképek és az Egyéni rendszerképek szolgáltatásként való üzemeltetéséhez. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni rendszerképet, és hogyan futtathatja App Serviceban. Ez a minta akkor hasznos, ha a beépített rendszerképek nem tartalmazzák a választott nyelvet, vagy ha az alkalmazás egy meghatározott konfigurációt igényel, amelyet a beépített rendszerképek nem tartalmaznak.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -236,23 +236,33 @@ Tallózással győződjön meg arról, hogy a webalkalmazás működik (`http://
 
 ## <a name="change-web-app-and-redeploy"></a>Webalkalmazás módosítása és ismételt üzembe helyezése
 
-A helyi Git-adattárban nyissa meg az app/templates/app/index.html fájlt. Keresse meg az első HTML-elemet, és módosítsa a következőre:
+A helyi git-tárházban nyissa meg az *app/templates/app/index.html*. Módosítsa az első HTML-elemet úgy, hogy az megfeleljen a következő kódnak.
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-Miután módosította a Python-fájlt, és mentette azt, hozza létre újra, majd küldje le az új Docker-rendszerképet. Ezt követően indítsa újra a webalkalmazást a módosítások életbe léptetéséhez. Használja ugyanazokat a parancsokat, amelyeket ebben az oktatóanyagban korábban használt. A [rendszerképet a Docker-fájlból is felépítheti](#build-the-image-from-the-docker-file) , és [leküldheti a rendszerképet Azure Container Registry](#push-image-to-azure-container-registry). Tesztelje a webalkalmazást a [webalkalmazás tesztelését](#test-the-web-app) ismertető témakör utasításai szerint.
+Miután mentette a módosításokat, építse újra, majd küldje le az új Docker-rendszerképet az oktatóanyag korábbi részében használt parancsok használatával. A [rendszerképet a Docker-fájlból is felépítheti](#build-the-image-from-the-docker-file) , és [leküldheti a rendszerképet Azure Container Registry](#push-image-to-azure-container-registry).
+
+Az új rendszerkép kiküldése után indítsa újra a webalkalmazást, hogy a módosítások érvénybe lépnek a következő parancs használatával:
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+Cserélje le `<app_name>` a nevet a korábban használt konkrét névre.
+
+Az alkalmazás újraindítása után tesztelje a [webalkalmazás tesztelése](#test-the-web-app)című témakör útmutatását követve.
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>SSH-kapcsolatok engedélyezése
 
@@ -326,7 +336,7 @@ Gratulálunk! Egyéni Linux-tárolót konfigurált a App Serviceban.
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak elvégzését ismerte meg:
 

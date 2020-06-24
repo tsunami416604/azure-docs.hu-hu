@@ -6,8 +6,6 @@ documentationcenter: android
 keywords: leküldéses értesítések,leküldéses értesítés,android leküldéses értesítés
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -18,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7e442d85303485ca8800d4bcb31a9afde06d0e69
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 3f2ad007ff0e1012f957c718d125b2e5b2e40964
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595018"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249235"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: leküldéses értesítések Android-eszközökre az Azure Notification Hubs és Google Cloud Messaging használatával (elavult)
 
@@ -83,7 +81,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
 1. Az Android Studióban indítson el egy új Android Studio-projektet.
 
    ![Android Studio – új projekt][13]
-2. Válassza ki a **Phone and Tablet** (Telefon és táblagép) helyigényt és a támogatni kívánt **Minimum SDK** csomagot. Kattintson a **Tovább** gombra.
+2. Válassza ki a **Phone and Tablet** (Telefon és táblagép) helyigényt és a támogatni kívánt **Minimum SDK** csomagot. Ezután kattintson a **Tovább** gombra.
 
    ![Android Studio – projektlétrehozási munkafolyamat][14]
 3. Fő tevékenységként válassza az **Empty Activity** (Üres tevékenység) lehetőséget, és kattintson a **Next** (Tovább), majd a **Finish** (Befejezés) gombokra.
@@ -110,7 +108,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
     }
     ```
 
-### <a name="updating-the-projects-androidmanifestxml"></a>A projekt AndroidManifest. XML fájljának frissítése
+### <a name="updating-the-projects-androidmanifestxml"></a>A projekt AndroidManifest.xml frissítése
 
 1. A GCM támogatásának biztosításához hozzon létre egy Példányazonosító-figyelő szolgáltatást a kódban, amely a [regisztrációs jogkivonatok lekérésére](https://developers.google.com/cloud-messaging/) szolgál a [Google példányazonosító API-jával](https://developers.google.com/instance-id/). Ebben az oktatóanyagban az osztály neve `MyInstanceIDService`.
 
@@ -160,7 +158,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
 
 ### <a name="adding-code"></a>Kód felvétele
 
-1. A Project nézetben bontsa ki az **app** > **src** > **Main** > **Java**elemet. Kattintson a jobb gombbal a **java** területen látható csomagmappára, kattintson a **New** (Új), majd a **Java Class** (Java-osztály) elemre. Adjon hozzá egy új, `NotificationSettings` nevű osztályt.
+1. A Project nézetben bontsa ki az **app**  >  **src**  >  **Main**  >  **Java**elemet. Kattintson a jobb gombbal a **java** területen látható csomagmappára, kattintson a **New** (Új), majd a **Java Class** (Java-osztály) elemre. Adjon hozzá egy új, `NotificationSettings` nevű osztályt.
 
     ![Android Studio – új Java-osztály][6]
 
@@ -449,7 +447,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
         }
     }
     ```
-14. A menüsávon Android Studio kattintson a **Build** > újjáépített**projekt** elemre, és győződjön meg arról, hogy a kódban nincsenek hibák.
+14. A menüsávon Android Studio kattintson a **Build**újjáépített projekt elemre,  >  **Rebuild Project** és győződjön meg arról, hogy a kódban nincsenek hibák.
 
 ## <a name="testing-your-app"></a>Az alkalmazás tesztelése
 
@@ -483,13 +481,13 @@ A leküldéses értesítések fogadásának az alkalmazásban való tesztelésé
 
 A leküldéses értesítések emulátorban végzett teszteléséhez győződjön meg arról, hogy az emulátor rendszerképe támogatja az alkalmazáshoz kiválasztott Google API-szintet. Ha a rendszerkép nem támogatja a natív Google API-kat, a **SERVICE\_NOT\_AVAILABLE** (a szolgáltatás nem érhető el) kivételt adja vissza a rendszer.
 
-Továbbá győződjön meg arról, hogy Google-fiókját hozzáadta a futó emulátorhoz a **Beállítások** > **fiókok**területen. Ellenkező esetben a GCM-regisztrációs kísérletek **AUTHENTICATION\_FAILED** (sikertelen hitelesítés) kivételt eredményezhetnek.
+Továbbá győződjön meg arról, hogy Google-fiókját hozzáadta a futó emulátorhoz a **Beállítások**  >  **fiókok**területen. Ellenkező esetben a GCM-regisztrációs kísérletek **AUTHENTICATION\_FAILED** (sikertelen hitelesítés) kivételt eredményezhetnek.
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(Nem kötelező) Leküldéses értesítések küldése közvetlenül az alkalmazásból
 
 Az értesítések elküldése általában háttérkiszolgáló használatával történik. Bizonyos esetekben előfordulhat, hogy közvetlenül az ügyfélalkalmazásból kíván leküldéses értesítéseket küldeni. Ez a szakasz az ügyfélből, az [Azure Notification Hub REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) használatával történő értesítésküldést mutatja be.
 
-1. Android Studio Project nézetben bontsa ki az **app** > **src** > **fő** > **res** > **elrendezése**elemet. Nyissa meg az `activity_main.xml` elrendezésfájlt, majd kattintson a **Text** (Szöveg) fülre a fájl szöveges tartalmának frissítéséhez. Frissítse az alábbi kóddal, amely új `Button` és `EditText` vezérlőket vesz fel, amelyekkel a leküldéses értesítési üzenetek elküldhetők az értesítési központba. A kódot az alsó részen, közvetlenül a `</RelativeLayout>` rész elé adja hozzá.
+1. Android Studio Project nézetben bontsa ki az **app**  >  **src**  >  **fő**  >  **res**  >  **elrendezése**elemet. Nyissa meg az `activity_main.xml` elrendezésfájlt, majd kattintson a **Text** (Szöveg) fülre a fájl szöveges tartalmának frissítéséhez. Frissítse az alábbi kóddal, amely új `Button` és `EditText` vezérlőket vesz fel, amelyekkel a leküldéses értesítési üzenetek elküldhetők az értesítési központba. A kódot az alsó részen, közvetlenül a `</RelativeLayout>` rész elé adja hozzá.
 
     ```xml
     <Button
@@ -510,7 +508,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
-2. Android Studio Project nézetben bontsa ki az **app** > **src** > **fő** > **res** > **értékeit**. Nyissa meg a `strings.xml` fájlt, és adja hozzá a `Button` és az `EditText` vezérlő által hivatkozott sztringértékeket. A fájl alján, közvetlenül a `</resources>` rész előtt adja hozzá az alábbi sorokat.
+2. Android Studio Project nézetben bontsa ki az **app**  >  **src**  >  **fő**  >  **res**  >  **értékeit**. Nyissa meg a `strings.xml` fájlt, és adja hozzá a `Button` és az `EditText` vezérlő által hivatkozott sztringértékeket. A fájl alján, közvetlenül a `</resources>` rész előtt adja hozzá az alábbi sorokat.
 
     ```xml
     <string name="send_button">Send Notification</string>

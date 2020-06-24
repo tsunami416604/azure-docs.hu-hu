@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Helix Core-Helix Authentication szolgáltatással | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Helix Core-Helix hitelesítési szolgáltatás között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Perforce Helix Core – Helix Authentication Service szolgáltatással | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Perforce Helix Core-Helix hitelesítési szolgáltatás között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/03/2020
+ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afe752dbaffc96186d37bfae319367e2c6e13385
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 0ea6531d85670301691e4aa88503d7eee4fb16d9
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466153"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905510"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helix-core---helix-authentication-service"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Helix Core-Helix Authentication szolgáltatással
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core--helix-authentication-service"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Perforce Helix Core-Helix hitelesítési szolgáltatással
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Helix Core-Helix hitelesítési szolgáltatást Azure Active Directory (Azure AD) használatával. Ha a Helix Core-Helix Authentication szolgáltatást az Azure AD-vel integrálja, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Perforce Helix Core-Helix hitelesítési szolgáltatást Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a Perforce Helix Core-Helix Authentication szolgáltatást, a következőket teheti:
 
-* A Helix Core-Helix hitelesítési szolgáltatáshoz hozzáféréssel rendelkező Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Helix Core-Helix hitelesítési szolgáltatásba az Azure AD-fiókjával.
+* Vezérlés az Azure AD-ben, aki hozzáfér a Perforce Helix Core-Helix hitelesítési szolgáltatáshoz.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Perforce Helix Core-Helix hitelesítési szolgáltatásba az Azure AD-fiókokkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
@@ -37,44 +37,44 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Helix Core – Helix hitelesítési szolgáltatás egyszeri bejelentkezésre (SSO) engedélyezett előfizetés.
+* Perforce Helix mag – Helix hitelesítési szolgáltatás egyszeri bejelentkezésre (SSO) engedélyezett előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Helix Core – Helix hitelesítési szolgáltatás támogatja az **SP** által kezdeményezett SSO-t
-* A Helix Core-Helix hitelesítési szolgáltatás konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Perforce Helix Core-Helix hitelesítési szolgáltatás támogatja az **SP** által kezdeményezett SSO-t
+* Miután konfigurálta a Perforce Helix Core-Helix hitelesítési szolgáltatást, kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-helix-core---helix-authentication-service-from-the-gallery"></a>A Helix Core-Helix Authentication szolgáltatás hozzáadása a katalógusból
+## <a name="adding-perforce-helix-core--helix-authentication-service-from-the-gallery"></a>Perforce Helix Core-Helix Authentication szolgáltatás hozzáadása a katalógusból
 
-A Helix Core-Helix hitelesítési szolgáltatás Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Helix Core-Helix Authentication szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Perforce Helix Core-Helix hitelesítési szolgáltatás Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Perforce Helix Core-Helix hitelesítési szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Helix Core-Helix Authentication Service** kifejezést a keresőmezőbe.
-1. Válassza ki a **Helix Core-Helix Authentication szolgáltatást** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Perforce Helix Core-Helix Authentication Service** kifejezést a keresőmezőbe.
+1. Válassza ki a **Perforce Helix Core-Helix Authentication szolgáltatást** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-helix-core---helix-authentication-service"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Helix Core-Helix hitelesítési szolgáltatáshoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-perforce-helix-core--helix-authentication-service"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Perforce Helix Core-Helix hitelesítési szolgáltatáshoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Helix Core-Helix hitelesítési szolgáltatással egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Helix Core-Helix hitelesítési szolgáltatásban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Perforce Helix Core-Helix hitelesítési szolgáltatással egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Perforce Helix Core-Helix hitelesítési szolgáltatásban.
 
-Az Azure AD SSO és a Helix Core-Helix hitelesítési szolgáltatás konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO Perforce Helix Core-Helix Authentication szolgáltatással történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[Helix Core-Helix Authentication Service SSO konfigurálása](#configure-helix-core-helix-authentication-service-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. A **[Helix Core-Helix hitelesítési szolgáltatás tesztelési felhasználójának létrehozása](#create-helix-core-helix-authentication-service-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-beli, a Helix Core-Helix hitelesítési szolgáltatásban található.
+1. **[Perforce Helix Core – Helix Authentication Service SSO konfigurálása](#configure-perforce-helix-core--helix-authentication-service-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Perforce Helix Core-Helix Authentication Service-teszt felhasználó létrehozása](#create-perforce-helix-core--helix-authentication-service-test-user)** – ha a Perforce Helix Core-ba, amely a felhasználó Azure ad-képviseletéhez van társítva, B. Simon partnere.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Helix Core-Helix Authentication Service** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Perforce Helix Core-Helix Authentication Service** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
@@ -86,8 +86,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<helix-auth-service>.<customer-hostname>.com/saml`
 
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<HELIX-AUTH-SERVICE>.<CUSTOMER-HOSTNAME>.com/saml/sso`
+
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Vegye fel a kapcsolatot az alábbi értékek beszerzéséhez a [Helix Core-Helix Authentication szolgáltatás ügyfél-támogatási csapatával](mailto:support@perforce.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot az [Perforce Helix Core-Helix hitelesítési szolgáltatás ügyfél-támogatási csapatával](mailto:support@perforce.com) , és szerezze be ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -103,14 +105,14 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Helix Core-Helix hitelesítési szolgáltatáshoz.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Perforce Helix Core-Helix hitelesítési szolgáltatáshoz.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Helix Core-Helix Authentication szolgáltatás**elemet.
+1. Az alkalmazások listában válassza ki a **Perforce Helix Core-Helix Authentication szolgáltatást**.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
@@ -123,19 +125,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-helix-core-helix-authentication-service-sso"></a>A Helix Core – Helix Authentication Service SSO konfigurálása
+## <a name="configure-perforce-helix-core--helix-authentication-service-sso"></a>Perforce Helix Core – Helix Authentication Service SSO konfigurálása
 
-Ha be szeretné állítani az egyszeri bejelentkezést a **Helix Core-Helix hitelesítési szolgáltatás** oldalán, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Helix Core-Helix Authentication Service támogatási csapatának](mailto:support@perforce.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést a **Perforce Helix Core-Helix hitelesítési szolgáltatási** oldalon szeretné beállítani, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Perforce Helix Core-Helix Authentication Service támogatási csapatának](mailto:support@perforce.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-helix-core-helix-authentication-service-test-user"></a>Helix mag létrehozása – Helix Authentication Service test User
+### <a name="create-perforce-helix-core--helix-authentication-service-test-user"></a>Perforce Helix Core – Helix Authentication Service test felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Helix Core-Helix Authentication Service-ben. A [Helix Core-Helix Authentication Service támogatási csapatával](mailto:support@perforce.com) felveheti a felhasználókat a Helix Core-Helix Authentication Service platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Perforce Helix Core-Helix hitelesítési szolgáltatásban. A [Perforce Helix Core – Helix Authentication Service támogatási csapatával](mailto:support@perforce.com) felveheti a felhasználókat a Perforce Helix Core-Helix Authentication Service platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a hozzáférési panelen a Helix Core-Helix hitelesítési szolgáltatás csempére kattint, automatikusan be kell jelentkeznie a Helix Core-Helix hitelesítési szolgáltatásba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Perforce Helix Core-Helix Authentication Service csempére kattint, automatikusan be kell jelentkeznie a Perforce Helix Core-Helix hitelesítési szolgáltatásba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -145,9 +147,8 @@ Amikor a hozzáférési panelen a Helix Core-Helix hitelesítési szolgáltatás
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [A Helix Core-Helix hitelesítési szolgáltatás kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a Perforce Helix Core-Helix Authentication szolgáltatást az Azure AD-vel](https://aad.portal.azure.com/)
 
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [A Helix Core-Helix Authentication szolgáltatás védetté tétele fejlett láthatósággal és ellenőrzésekkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [A Perforce Helix Core-Helix Authentication szolgáltatás védetté tétele speciális láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

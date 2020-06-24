@@ -1,25 +1,21 @@
 ---
 title: Az Azure Kubernetes Service beépített szabályzat-definíciói
 description: Az Azure Kubernetes szolgáltatás beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: d3a0dfa115f622e4ab1160587fa8bbd7ee7d3e2c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: f52050ebe587e2fd5281a3441811f8b4f9a54c69
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236295"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945528"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service beépített szabályzat-definícióinak Azure Policy
+# <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service beépített definíciói Azure Policy
 
 Ez az oldal az Azure Kubernetes szolgáltatás beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
-
-## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
-
-[!INCLUDE [azure-policy-samples-rp-aks-kubernetes](../../includes/policy/samples/byrp/microsoft.kubernetes.md)]
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
 

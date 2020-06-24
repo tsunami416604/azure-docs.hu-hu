@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3bd9489adaf46e604393fc7059d37443bdd5ec3e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 105ab0c71d9e7e935842550ecdc4c8d2ff2a2d8c
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73488968"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977899"
 ---
 1. Keresse meg a létrehozott virtuális WAN-t. A virtuális WAN lapon a **kapcsolat** szakaszban válassza a **hubok**lehetőséget.
 2. A hubok lapon válassza az **+ új hub** lehetőséget a **virtuális központ létrehozása** lap megnyitásához.
@@ -24,8 +24,8 @@ ms.locfileid: "73488968"
     **Projekt részletei**
 
    * Régió (korábbi nevén hely)
-   * Name (Név)
-   * Hub magánhálózati címtartomány. A minimális címtartomány/24 a hub létrehozásához, ami azt jelenti, hogy a/25-től/32-ig terjedő minden tartomány hibát eredményez a létrehozás során.
+   * Name
+   * Hub magánhálózati címtartomány. A minimális címtartomány/24 a hub létrehozásához, ami azt jelenti, hogy a/25-től/32-ig terjedő minden tartomány hibát eredményez a létrehozás során. Az Azure Virtual WAN a Microsoft által felügyelt szolgáltatás, amely a különböző átjárók/szolgáltatások (például VPN-átjárók, ExpressRoute-átjárók, felhasználói VPN/pont – hely átjárók, tűzfal, útválasztás stb.) esetében létrehozza a megfelelő alhálózatokat a virtuális központban. Nincs szükség arra, hogy a felhasználó explicit módon tervezze meg a virtuális központ szolgáltatásainak alhálózati címterület-területét, mivel a Microsoft ezt a szolgáltatást részeként kezeli.
 4. Válassza **a Next (tovább) lehetőséget: helyek közötti**kapcsolat.
 
     ![Helyek közötti kapcsolat](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Helyek közötti kapcsolat")

@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: egyéni szabályzat-definíció létrehozása'
 description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure Policy az Azure-erőforrásokra vonatkozó egyéni üzleti szabályok érvénybe léptetéséhez.
-ms.date: 05/20/2020
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683257"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888154"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
 
@@ -171,6 +171,9 @@ Az Azure-erőforrások aliasait többféleképpen is meghatározhatja. Ebben az 
 ### <a name="get-aliases-in-vs-code-extension"></a>Aliasok beolvasása a VS Code bővítménnyel
 
 A VS Code bővítmény Azure Policy bővítménye megkönnyíti az erőforrások tallózását és az [aliasok felderítését](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
+
+> [!NOTE]
+> A VS Code bővítmény csak a Resource Manager-üzemmód tulajdonságait mutatja be, és nem jeleníti meg az [erőforrás-szolgáltatói mód](../concepts/definition-structure.md#mode) tulajdonságait.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -474,7 +477,7 @@ Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 > - A használandó effektus meghatározása
 > - A szabályzat definíciójának tagjai
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután az egyéni házirend-definíció használatával hozzon létre és rendeljen hozzá egy házirendet:
 
