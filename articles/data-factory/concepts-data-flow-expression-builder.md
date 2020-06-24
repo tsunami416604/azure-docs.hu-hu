@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 23355abdced3a4073cf90ccf60c14af088a4e564
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 06/20/2020
+ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324164"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126161"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Kifejezések létrehozása a leképezési adatfolyamban
 
@@ -130,6 +130,10 @@ Az ezredmásodpercek időpontról dátumra vagy időbélyegre való konvertálá
 
 Az előző kifejezés végén lévő "l" záró érték hosszú típusra, beágyazott szintaxisként való átalakítást jelent.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="find-time-from-epoch-or-unix-time"></a>Idő megkeresése az EPOCH vagy a Unix idő alapján
+
+toLong (currentTimestamp ()-toTimestamp (' 1970-01-01 00:00:00.000 ', ' éééé-hh-nn óó: PP: mm. ÉER) *) * 1000
+
+## <a name="next-steps"></a>További lépések
 
 [Az Adatátalakítási kifejezések létrehozásának megkezdése](data-flow-expression-functions.md)

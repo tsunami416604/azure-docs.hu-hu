@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 0cf4663e8c1b0d1c859cd62c63ab40ae4dceae22
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: b8c649a232baeafeaf1f53753af6653bf9edd9c1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484945"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736186"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Azure Database for MariaDB privát hivatkozás létrehozása és kezelése a portál használatával
 
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.  Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális gépet egy Azure-Virtual Networkban és egy Azure-beli privát végponttal rendelkező Azure Database for MariaDB-kiszolgálón a Azure Portal használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for MariaDB támogatja a általános célú és a memória optimalizált díjszabási szintjeit.
@@ -109,7 +109,7 @@ Ebben a szakaszban egy Azure Database for MariaDB-kiszolgálót fog létrehozni 
     | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Kiszolgáló adatai** |  |
-    |Kiszolgálónév  | Adja meg a *MyServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
+    |Kiszolgáló neve  | Adja meg a *MyServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
     | Rendszergazdai Felhasználónév| Adja meg a választott rendszergazda nevét. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
     | Hely | Válassza ki azt az Azure-régiót, ahol a MariaDB-kiszolgálót szeretné tárolni. |
@@ -171,7 +171,7 @@ Ebben a szakaszban létre fog hozni egy privát végpontot a MariaDB-kiszolgál�
     |||
 
     > [!Note] 
-    > Tekintse meg az [Azure-szolgáltatások DNS-zóna konfigurációját](../private-link/private-endpoint-dns.md).
+    > Használja az előre definiált saját DNS-zónát a szolgáltatáshoz, vagy adja meg a kívánt DNS-zóna nevét. A részletekért tekintse meg az [Azure-szolgáltatások DNS-zóna konfigurációját](../private-link/private-endpoint-dns.md) .
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
 2. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
@@ -230,7 +230,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
     | Beállítás | Érték |
     | ------- | ----- |
     | Kiszolgáló típusa| Válassza a **MariaDB**lehetőséget.|
-    | Kiszolgálónév| *Mydemoserver.privatelink.MariaDB.database.Azure.com* kiválasztása |
+    | Kiszolgáló neve| *Mydemoserver.privatelink.MariaDB.database.Azure.com* kiválasztása |
     | Felhasználónév | Adja meg username@servername a MariaDB-kiszolgáló létrehozásakor megadott felhasználónevet. |
     |Jelszó |Adja meg a MariaDB-kiszolgáló létrehozásakor megadott jelszót. |
     |SSL|Válassza a **kötelező**lehetőséget.|
@@ -242,14 +242,14 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
 
 7. A távoli asztali kapcsolat bezárásával myVm.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha elkészült a privát végponttal, a MariaDB-kiszolgálóval és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 
 1. Adja meg a *myResourceGroup*a   portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup*lehetőséget   a keresési eredmények közül.
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for MariaDBt és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a MariaDB-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
 

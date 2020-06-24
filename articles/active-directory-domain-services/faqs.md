@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4a9081b3d3c1c925efb4cc80201e6154752dc628
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926969"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734775"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
@@ -58,6 +58,8 @@ Igen. További információ: [Azure ad Domain Services engedélyezése az Azure 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Engedélyezhető Azure AD Domain Services egy összevont Azure AD-címtárban? Nem szinkronizálom a jelszó-kivonatokat az Azure AD-vel. Engedélyezhető Azure AD Domain Services ehhez a címtárhoz?
 Nem. Ha NTLM-vagy Kerberos-kapcsolaton keresztül kívánja hitelesíteni a felhasználókat, Azure AD Domain Servicesnak hozzá kell férnie a felhasználói fiókok jelszavas kivonatához. Összevont címtárban a jelszó-kivonatok nem az Azure AD-címtárban tárolódnak. Ezért Azure AD Domain Services nem működik ilyen Azure AD-címtárakkal.
 
+Ha azonban Azure AD Connect használ a jelszó-kivonatolási szinkronizáláshoz, használhatja a Azure AD Domain Services, mert a jelszó-kivonatoló értékeket az Azure AD tárolja.
+
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Elérhetővé tehetek Azure AD Domain Services az előfizetésen belüli több virtuális hálózatban?
 Maga a szolgáltatás nem támogatja közvetlenül ezt a forgatókönyvet. A felügyelt tartomány egyszerre csak egy virtuális hálózatban érhető el. A több virtuális hálózat közötti kapcsolat azonban beállítható úgy, hogy a Azure AD Domain Servicest más virtuális hálózatokhoz tegye elérhetővé. További információ: [Hogyan csatlakoztathatók a virtuális hálózatok az Azure-ban VPN-átjárók](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) vagy [virtuális hálózati](../virtual-network/virtual-network-peering-overview.md)kapcsolatok használatával.
 
@@ -74,7 +76,7 @@ Nem. A Azure AD Domain Services által megadott tartomány felügyelt tartomány
 Nem. Az Azure ad [B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) Meghívási folyamatát használó vendég felhasználók a Azure ad Domain Services felügyelt tartományba vannak szinkronizálva. A felhasználók jelszava azonban nem az Azure AD-címtárban van tárolva. Ezért a Azure AD Domain Services nem lehet szinkronizálni az NTLM-és Kerberos-kivonatokat a felhasználók számára a felügyelt tartományba. Ilyen felhasználók nem jelentkezhetnek be, illetve nem csatlakozhatnak számítógépekhez a felügyelt tartományhoz.
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Áthelyezhetek egy meglévő Azure AD Domain Services felügyelt tartományt egy másik előfizetésbe, erőforráscsoporthoz, régióba vagy virtuális hálózatra?
-Nem. Azure AD Domain Services felügyelt tartomány létrehozása után nem helyezheti át a példányt másik erőforráscsoporthoz, virtuális hálózatba, előfizetésbe stb. Ügyeljen arra, hogy a legmegfelelőbb előfizetést, erőforráscsoportot, régiót és virtuális hálózatot válassza ki az Azure AD DS-példány telepítésekor.
+Nem. Azure AD Domain Services felügyelt tartomány létrehozása után nem helyezheti át a felügyelt tartományt más erőforráscsoporthoz, virtuális hálózatra, előfizetésre stb. Ügyeljen arra, hogy a felügyelt tartomány központi telepítésekor a legmegfelelőbb előfizetést, erőforráscsoportot, régiót és virtuális hálózatot válassza ki.
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>A Azure AD Domain Services magas rendelkezésre állási lehetőségeket is tartalmaz?
 
@@ -97,7 +99,7 @@ Igen. Minden Azure AD Domain Services felügyelt tartomány két tartományvezé
 Nem. Nem rendelkezik engedéllyel a felügyelt tartományhoz való kapcsolódáshoz a Távoli asztal használatával. A *HRE DC rendszergazdák* csoport tagjai felügyelhetik a felügyelt TARTOMÁNYT az ad felügyeleti eszközök, például a Active Directory felügyeleti központ (ADAC) vagy az ad PowerShell használatával. Ezek az eszközök a felügyelt tartományhoz csatlakoztatott Windows Server *Távoli kiszolgálófelügyelet eszközei* funkciójával vannak telepítve. További információ: [felügyeleti virtuális gép létrehozása Azure ad Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez](tutorial-create-management-vm.md).
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Engedélyeztem Azure AD Domain Services. Milyen felhasználói fiókot használok a tartományhoz való csatlakozáshoz ehhez a tartományhoz?
-Az Azure AD DS felügyelt tartomány részét képező felhasználói fiókok csatlakozhatnak egy virtuális géphez. A *HRE DC rendszergazdák* csoport tagjai távoli asztali hozzáférést kapnak a felügyelt tartományhoz csatlakoztatott gépekhez.
+A felügyelt tartomány részét képező felhasználói fiókok csatlakozhatnak egy virtuális géphez. A *HRE DC rendszergazdák* csoport tagjai távoli asztali hozzáférést kapnak a felügyelt tartományhoz csatlakoztatott gépekhez.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Vannak tartományi rendszergazdai jogosultságok a Azure AD Domain Services által biztosított felügyelt tartományhoz?
 Nem. Nem kap rendszergazdai jogosultságokat a felügyelt tartományon. A tartományi *rendszergazda* és a *vállalati rendszergazdai* jogosultságok nem használhatók a tartományon belül. A helyszíni Active Directory tartományi rendszergazda vagy vállalati rendszergazdai csoportok tagjai nem kapnak tartományi/vállalati rendszergazdai jogosultságokat a felügyelt tartományhoz.
@@ -158,4 +160,4 @@ A Azure AD Domain Services konfigurálásával és felügyeletével kapcsolatos 
 
 Ha többet szeretne megtudni a Azure AD Domain Servicesről, tekintse meg a [Mi az a Azure Active Directory Domain Services?](overview.md)című témakört.
 
-Első lépésként tekintse meg [az Azure Active Directory Domain Services-példány létrehozását és konfigurálását](tutorial-create-instance.md)ismertető témakört.
+Első lépésként tekintse meg [Azure Active Directory Domain Services felügyelt tartomány létrehozása és konfigurálása](tutorial-create-instance.md)című témakört.

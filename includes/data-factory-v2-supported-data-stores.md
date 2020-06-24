@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 33977b40869a8d20a59d4e3a282eea28059d5d58
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 99d24ae2261e47b913861ec996c68abcd539d860
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84436133"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85128184"
 ---
 | Kategória | Adattár | Forrásként támogatott | Fogadóként támogatott | Az [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) által támogatott | [Helyi integrációs modul](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) által támogatott |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -83,7 +83,7 @@ ms.locfileid: "84436133"
 | &nbsp; |[Jira](../articles/data-factory/connector-jira.md) |✓ | |✓ |✓  |
 | &nbsp; |[Magento (előzetes verzió)](../articles/data-factory/connector-magento.md) |✓ | |✓ |✓  |
 | &nbsp; |[Marketo (előzetes verzió)](../articles/data-factory/connector-marketo.md) |✓ | |✓ |✓  |
-| &nbsp; |[Office 365](../articles/data-factory/connector-office-365.md) |✓ | |✓ |✓  |
+| &nbsp; |[Microsoft 365](../articles/data-factory/connector-office-365.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Eloqua (előzetes verzió)](../articles/data-factory/connector-oracle-eloqua.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Responsys (előzetes verzió)](../articles/data-factory/connector-oracle-responsys.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Service Cloud (előzetes verzió)](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  |

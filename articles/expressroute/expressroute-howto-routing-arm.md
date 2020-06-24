@@ -4,15 +4,15 @@ description: A cikk az ExpressRoute-kapcsolatcsoportok privát, nyilvános és M
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab20ae00fd9f275d21bc818e07bdc868944ee689
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264842"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735268"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>ExpressRoute-áramkör társításának létrehozása és módosítása a PowerShell használatával
 
@@ -183,7 +183,7 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát t
    Install-Module Az
    ```
 
-   Importálja az az összes.\* modult az ismert szemantikai verziószámozási tartományon belül.
+   Importálja az az összes. \* az ismert szemantikai verziószámozási tartományon belüli modulok.
 
    ```azurepowershell-interactive
    Import-Module Az

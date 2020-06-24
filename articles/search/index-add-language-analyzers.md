@@ -1,19 +1,19 @@
 ---
 title: Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz
 titleSuffix: Azure Cognitive Search
-description: Többnyelvű lexikális szöveg elemzése nem angol nyelvű lekérdezésekhez és indexekhez az Azure Cognitive Searchban.
+description: Többnyelvű lexikális analízis a nem angol nyelvű lekérdezésekhez és indexekhez az Azure Cognitive Searchban.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 3bb8de76fbf425abc1643633393e5f296b50b386
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8f0909ee1cdce1e6180b91a30b2e9b281098c826
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555194"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130551"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
@@ -129,7 +129,7 @@ További információ az index tulajdonságairól: [index létrehozása &#40;Azu
 
  Az [Apache Lucene nyelvi elemzői](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )a **Lucene** -mel ellátott nevekkel rendelkező elemzőket használják.
 
-## <a name="see-also"></a>További információ  
+## <a name="see-also"></a>Lásd még  
 
 + [Index létrehozása &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

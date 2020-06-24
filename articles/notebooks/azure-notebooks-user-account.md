@@ -3,12 +3,12 @@ title: Bejelentkezés Azure Notebooks előzetes verzióra
 description: A Azure Notebooks felhasználói fiókjának konfigurálása Microsoft-fiók vagy munkahelyi/iskolai fiók használatával.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a19803ec0a621b981fa9198766c58376ba50534
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646296"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125838"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks előzetes verziójának felhasználói fiókja
 
@@ -53,7 +53,7 @@ A hozzáférés engedélyezéséhez a szülőnek a következő lépéseket kell 
 
 ## <a name="work-or-school-accounts"></a>Munkahelyi vagy iskolai fiókok
 
-A szervezet rendszergazdája létrehoz egy munkahelyi vagy iskolai fiókot, amely lehetővé teszi, hogy a szervezet egy tagja hozzáférhessen a Microsoft Cloud Services, például az Office 365, valamint egy olyan fiókhoz, amellyel a Windowsba bejelentkezhetnek a tartományhoz csatlakoztatott számítógépeken. A munkahelyi vagy iskolai fiók jellemzően szervezeti e-mail-címet használ, any-user@contoso.compéldául:.
+A szervezet rendszergazdája létrehoz egy munkahelyi vagy iskolai fiókot, amely lehetővé teszi, hogy a szervezet egy tagja hozzáférhessen a Microsoft Cloud Services, például a Microsoft 365hoz, valamint egy olyan fiókhoz, amely egy tartományhoz csatlakoztatott számítógépre jelentkezik be a Windowsba. A munkahelyi vagy iskolai fiók jellemzően szervezeti e-mail-címet használ, például: any-user@contoso.com .
 
 A munkahelyi vagy iskolai fiókkal való Azure Notebooks bejelentkezéshez rendszergazdai jogosultságra lehet szükség, mert a Azure Notebooks gyűjti vagy használja (de nem fedi le) az adatokat, például a fiók e-mail-címét és a felhasználó böngésző-információit. (A böngésző adatait a funkciók népszerű használat szerint történő optimalizálására használják.)
 

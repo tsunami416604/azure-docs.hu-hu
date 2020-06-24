@@ -2,21 +2,21 @@
 title: A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 description: Ez a cikk a Felhőbeli HR-rendszerek (például a munkanapok és a SuccessFactors) integrálásának telepítési folyamatát ismerteti Azure Active Directoryokkal. Az Azure AD és a Felhőbeli HR rendszer integrálásával egy teljes identitás-életciklus-kezelési rendszer is elérhető.
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 66a5bceb5b59c0e1b14577176cfed933e4503f31
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014434"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781599"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -52,7 +52,7 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 - A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
 - Az Office 365 e-mail-cím használata.
 
-## <a name="learn"></a>Tanulás
+## <a name="learn"></a>Learn
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -90,7 +90,7 @@ Emellett érvényes prémium szintű Azure AD P1 vagy magasabb szintű előfizet
 
 ### <a name="training-resources"></a>Erőforrások betanítása
 
-| **Erőforrások** | **Hivatkozás és leírás** |
+| **Forrásanyagok** | **Hivatkozás és leírás** |
 |:-|:-|
 | Videók | [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) |
 | | [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) |

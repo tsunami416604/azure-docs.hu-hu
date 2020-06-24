@@ -4,22 +4,22 @@ description: ExpressRoute-áramkör létrehozása, kiépítése, ellenőrzése, 
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: ab44d5358154c17622eef68205ac2326e81377a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3a0166a5ffb05cff6a38984549db45dbe71d8d7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75770968"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736356"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>ExpressRoute-kapcsolatcsoport létrehozása és módosítása a PowerShell-lel
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager sablon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 >
@@ -52,7 +52,7 @@ Get-AzExpressRouteServiceProvider
 
 Ellenőrizze, hogy szerepel-e a kapcsolat szolgáltatója. Jegyezze fel a következő információkat, amelyekre később szüksége lesz az áramkör létrehozásakor:
 
-* Name (Név)
+* Name
 * PeeringLocations
 * BandwidthsOffered
 

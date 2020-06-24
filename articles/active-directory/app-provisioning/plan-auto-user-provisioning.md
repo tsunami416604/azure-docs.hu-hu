@@ -2,21 +2,21 @@
 title: A felhasználók automatikus üzembe helyezésének megtervezése a Azure Active Directory
 description: Útmutató az automatikus felhasználó-kiépítés tervezéséhez és végrehajtásához
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593539"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781633"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -42,7 +42,7 @@ Az automatikus felhasználó-kiépítés engedélyezésének fő előnyei a köv
 
 * **Csökkentse a költségeket**. Az automatikus felhasználó-kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonyságot és az emberi hibát a manuális kiépítés során. Ez csökkenti az egyéni fejlesztésű felhasználói megoldások, parancsfájlok és naplók igényét.
 
-### <a name="licensing"></a>Licencek
+### <a name="licensing"></a>Licencelés
 
 Az Azure AD bármely alkalmazás önkiszolgáló integrálását teszi lehetővé az alkalmazás-katalógus menüjében található sablonok használatával. A licencekre vonatkozó követelmények teljes listáját az [Azure ad licencelési lapján](https://azure.microsoft.com/pricing/details/active-directory/)tekintheti meg.
 
@@ -217,7 +217,7 @@ Az üzembe helyezés utáni problémák csökkentése érdekében vegye figyelem
 
 * Előfordulhat, hogy az alkalmazásoknak olyan konkrét korlátozásokkal és/vagy követelményekkel kell rendelkezniük, amelyeknek teljesülniük kell a felhasználók megfelelő működéséhez. A Slack például bizonyos attribútumok értékeit csonkolja. Az egyes alkalmazásokra vonatkozó [automatikus felhasználói üzembe helyezési oktatóanyagokat](../saas-apps/tutorial-list.md) itt találja.
 
-* Erősítse meg a séma konzisztenciáját a forrás-és a célszámítógépeken. Gyakori problémák például az egyszerű felhasználónév vagy a levelezés nem megfelelő attribútumokat tartalmaznak. Például az Azure AD-beli UPN-t *john_smith@contoso.com* az alkalmazásban és az alkalmazásban *jsmith@contoso.com*is megadhatja. További információ: a [felhasználói és a csoport sémájának referenciája](../app-provisioning/use-scim-to-provision-users-and-groups.md).
+* Erősítse meg a séma konzisztenciáját a forrás-és a célszámítógépeken. Gyakori problémák például az egyszerű felhasználónév vagy a levelezés nem megfelelő attribútumokat tartalmaznak. Például az Azure AD-beli UPN-t *john_smith@contoso.com* az alkalmazásban és az alkalmazásban is megadhatja *jsmith@contoso.com* . További információ: a [felhasználói és a csoport sémájának referenciája](../app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ## <a name="plan-testing-and-security"></a>A tesztelés és a biztonság tervezése
 

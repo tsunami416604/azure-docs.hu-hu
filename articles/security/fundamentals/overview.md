@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 401317f6b47c97a76ef2ded603063821a420933a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192535"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125668"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -29,7 +29,7 @@ Tudjuk, hogy a biztonság az egyik a felhőben, és mennyire fontos, hogy pontos
 Ez a cikk átfogó képet nyújt az Azure-ban elérhető biztonságról.
 
 ### <a name="azure-platform"></a>Azure-platform
-Az Azure egy nyilvános felhőalapú szolgáltatási platform, amely az operációs rendszerek, a programozási nyelvek, a keretrendszerek, az eszközök, az adatbázisok és az eszközök széles választékát támogatja. Linux-tárolókat is futtathat a Docker-integrációval; alkalmazások készítése JavaScript, Python, .NET, PHP, Java és Node. js használatával az iOS-, Android-és Windows-eszközökön is létrehozhatók háttérrendszer.
+Az Azure egy nyilvános felhőalapú szolgáltatási platform, amely az operációs rendszerek, a programozási nyelvek, a keretrendszerek, az eszközök, az adatbázisok és az eszközök széles választékát támogatja. Linux-tárolókat is futtathat a Docker-integrációval; JavaScript-, Python-, .NET-, PHP-, Java-és Node.js-alkalmazásokat hozhat létre. az iOS-, Android-és Windows-eszközökön is létrehozhatók háttérrendszer.
 
 Az Azure nyilvános felhőalapú szolgáltatásai ugyanazokat a technológiákat támogatják, mint a fejlesztők és az informatikai szakemberek, akik már használják és bíznak. Ha a-ra épít, vagy áttelepíti az IT-eszközöket, egy nyilvános felhőalapú szolgáltatóra támaszkodik, amely a szervezet képességei alapján gondoskodik az alkalmazások és adatok védelméről a szolgáltatásokkal és az általuk biztosított vezérlőkkel a felhőalapú eszközök biztonságának kezeléséhez.
 
@@ -60,7 +60,7 @@ A Cloud Service-modelltől függően az alkalmazás vagy szolgáltatás biztons�
 
 A beépített funkciók hat funkcionális területen vannak rendszerezve: műveletek, alkalmazások, tárolás, hálózatkezelés, számítás és identitás. Az Azure platformon elérhető funkciókkal és képességekkel kapcsolatos további részleteket az alábbi hat területen tekintheti meg összefoglaló információk alapján.
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 Ez a szakasz további információkat tartalmaz a biztonsági műveletek főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összefoglaló információkkal kapcsolatban.
 
 ### <a name="security-and-audit-dashboard"></a>Security and Audit irányítópult
@@ -138,7 +138,7 @@ Az Application Diagnostics felületén a következő módokon csoportosíthatók
 -   Alkalmazáshibák (a kivételesemények megjelenítése)
 -   Teljesítmény (a teljesítménnyel kapcsolatos események megjelenítése)
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 A szakasz további információkat tartalmaz az Azure Storage biztonságának főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
 ### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
@@ -223,7 +223,7 @@ A Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md
 
 ![Express Route](./media/overview/azure-security-fig1.png)
 
-Az ExpressRoute használatával kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral, az Office 365-tel és a CRM Online-nal. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben.
+A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services, például a Microsoft Azure, a Microsoft 365 és a CRM Online számára. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben.
 
 A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, így a VPN-alapú megoldásoknál biztonságosabbnak tekinthetik. Így az ExpressRoute-kapcsolatok a tipikus internetes kapcsolatoknál megbízhatóbbak, gyorsabbak, gyorsabb a válaszidejük, és biztonságosabbak.
 
@@ -239,10 +239,10 @@ Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kér
 
 Az alkalmazás számos Application Delivery Controller (ADC) funkciót kínál, többek között a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a [TLS-kiszervezést](../../application-gateway/tutorial-restrict-web-traffic-powershell.md), az egyéni állapotú mintavételeket, a többhelyes és sok más támogatást.
 
-### <a name="web-application-firewall"></a>Web Application Firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 A webalkalmazási tűzfal az [Azure Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely védelmet nyújt az Application Gatewayt használó webalkalmazásoknak a standard Application Delivery Control (ADC) függvényekhez. A webalkalmazási tűzfal ezt úgy éri el, hogy védelmet nyújt az alkalmazásoknak az OWASP 10 leggyakoribb webes biztonsági résének többségével szemben.
 
-![Web Application Firewall (Webalkalmazási tűzfal)](./media/overview/azure-security-fig1.png)
+![Webalkalmazási tűzfal](./media/overview/azure-security-fig1.png)
 
 -   SQL-injektálás elleni védelem
 

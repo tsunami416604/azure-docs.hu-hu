@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ce11e806c514aa4a2074d120cb64ecdce222528
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81453727"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735608"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
 
@@ -28,14 +28,14 @@ A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és enge
    > [!NOTE] 
    > Key Vault referenciák jelenleg csak a rendszer által hozzárendelt felügyelt identitásokat támogatják. Felhasználó által hozzárendelt identitások nem használhatók.
 
-1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazást" vagy `applicationId` a beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
+1. Hozzon létre egy [hozzáférési szabályzatot a Key Vaultban](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) a korábban létrehozott alkalmazás-identitáshoz. A "Get" Secret engedély engedélyezése a szabályzathoz. Ne konfigurálja a "meghatalmazott alkalmazást" vagy a `applicationId` beállításokat, mivel ez nem kompatibilis a felügyelt identitással.
 
     > [!NOTE]
     > Key Vault hivatkozások nem képesek a Key vaultban tárolt titkos kódok feloldására [hálózati korlátozásokkal](../key-vault/general/overview-vnet-service-endpoints.md).
 
 ## <a name="reference-syntax"></a>Hivatkozás szintaxisa
 
-A Key Vault hivatkozás az űrlapra `@Microsoft.KeyVault({referenceString})`mutat, ahol `{referenceString}` a a következő lehetőségek egyikével helyettesíti:
+A Key Vault hivatkozás az űrlapra mutat `@Microsoft.KeyVault({referenceString})` , ahol a `{referenceString}` a következő lehetőségek egyikével helyettesíti:
 
 > [!div class="mx-tdBreakAll"]
 > | Hivatkozási sztring                                                            | Leírás                                                                                                                                                                                 |
@@ -43,11 +43,15 @@ A Key Vault hivatkozás az űrlapra `@Microsoft.KeyVault({referenceString})`muta
 > | SecretUri =_SecretUri_                                                       | A **SecretUri** az Key Vault titkos kulcsa teljes adatsík URI-ja, beleértve a verziószámot is, például:https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName =_VaultName_; SecretName =_SecretName_; Titkoskulcsverziója =_titkoskulcsverziója_ | A **VaultName** meg kell egyeznie a Key Vault erőforrás nevével. A **SecretName** a célként megadott titkos kód nevének kell lennie. A **titkoskulcsverziója** a használni kívánt titkos kulcs verziószámának kell lennie. |
 
-A verzióra vonatkozó teljes hivatkozás például a következőképpen fog kinézni:
+> [!NOTE] 
+> A verziókra jelenleg szükség van. A titkok elforgatásakor frissítenie kell a verziót az alkalmazás konfigurációjában.
+
+A teljes hivatkozás például a következőhöz hasonló lesz:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
+
 Alternatív megoldás:
 
 ```
@@ -66,7 +70,7 @@ Ha Key Vault hivatkozást szeretne használni egy alkalmazás-beállításhoz, �
 
 ### <a name="azure-resource-manager-deployment"></a>Az Azure Resource Manager üzembe helyezése
 
-Az erőforrás-telepítések Azure Resource Manager sablonokon keresztüli automatizálásakor előfordulhat, hogy a funkció működéséhez egy adott sorrendben kell sorba rendeznie a függőségeket. Fontos megjegyezni, hogy az alkalmazás beállításait saját erőforrásként kell meghatároznia ahelyett, hogy egy `siteConfig` tulajdonságot kellene használnia a hely definíciójában. Ennek az az oka, hogy a helyet először meg kell határozni, hogy a rendszer által hozzárendelt identitás létre legyen hozva, és a hozzáférési házirendben is használható legyen.
+Az erőforrás-telepítések Azure Resource Manager sablonokon keresztüli automatizálásakor előfordulhat, hogy a funkció működéséhez egy adott sorrendben kell sorba rendeznie a függőségeket. Fontos megjegyezni, hogy az alkalmazás beállításait saját erőforrásként kell meghatároznia ahelyett, hogy egy tulajdonságot kellene használnia `siteConfig` a hely definíciójában. Ennek az az oka, hogy a helyet először meg kell határozni, hogy a rendszer által hozzárendelt identitás létre legyen hozva, és a hozzáférési házirendben is használható legyen.
 
 A psuedo-sablon például a következőhöz hasonló lehet:
 
@@ -172,11 +176,11 @@ A psuedo-sablon például a következőhöz hasonló lehet:
 ```
 
 > [!NOTE] 
-> Ebben a példában a verziókövetés központi telepítése az alkalmazásbeállításoktől függ. Ez általában nem biztonságos viselkedés, mivel az Alkalmazásbeállítások frissítése aszinkron módon történik. Mivel azonban az `WEBSITE_ENABLE_SYNC_UPDATE_SITE` alkalmazás beállítása is megtörtént, a frissítés szinkronban van. Ez azt jelenti, hogy a verziókövetés központi telepítése csak akkor kezdődik el, ha az Alkalmazásbeállítások teljes mértékben frissültek.
+> Ebben a példában a verziókövetés központi telepítése az alkalmazásbeállításoktől függ. Ez általában nem biztonságos viselkedés, mivel az Alkalmazásbeállítások frissítése aszinkron módon történik. Mivel azonban az alkalmazás beállítása is megtörtént `WEBSITE_ENABLE_SYNC_UPDATE_SITE` , a frissítés szinkronban van. Ez azt jelenti, hogy a verziókövetés központi telepítése csak akkor kezdődik el, ha az Alkalmazásbeállítások teljes mértékben frissültek.
 
 ## <a name="troubleshooting-key-vault-references"></a>Hibaelhárítási Key Vault referenciái
 
-Ha egy hivatkozás nem oldható fel megfelelően, a rendszer a hivatkozási értéket fogja használni. Ez azt jelenti, hogy az Alkalmazásbeállítások esetében létrejön egy környezeti változó, amelynek az `@Microsoft.KeyVault(...)` értéke szintaxissal rendelkezik. Ez azt eredményezheti, hogy az alkalmazás hibát jelez, mivel egy adott struktúra titkát várta.
+Ha egy hivatkozás nem oldható fel megfelelően, a rendszer a hivatkozási értéket fogja használni. Ez azt jelenti, hogy az Alkalmazásbeállítások esetében létrejön egy környezeti változó, amelynek az értéke `@Microsoft.KeyVault(...)` szintaxissal rendelkezik. Ez azt eredményezheti, hogy az alkalmazás hibát jelez, mivel egy adott struktúra titkát várta.
 
 Ez általában a [Key Vault hozzáférési házirend](#granting-your-app-access-to-key-vault)helytelen konfigurációja miatt fordul elő. Az is előfordulhat azonban, hogy egy titkos kulcs már nem létezik, vagy szintaktikai hiba történt a hivatkozásban.
 
