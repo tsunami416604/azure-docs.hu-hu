@@ -3,25 +3,25 @@ title: Vállalati alkalmazás nevének vagy emblémájának módosítása az Azu
 description: Egyéni vállalati alkalmazás nevének vagy emblémájának módosítása Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d23849df75d1ab239eb269b462abb21df196e7e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f8902f306f50659725bc4b12fbbb6fee7563c4b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138501"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763669"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Vállalati alkalmazás nevének vagy emblémájának módosítása Azure Active Directory
 

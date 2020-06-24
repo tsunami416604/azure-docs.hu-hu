@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: bac2f86f4134cc8d22e9f388b46bc76ab2d0e5ff
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045016"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080804"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Nyelvfelismerés – kognitív képességek
 
@@ -21,35 +21,35 @@ A **nyelvfelismerési** képesség észleli a bemeneti szöveg nyelvét, és egy
 
 Ez a képesség különösen akkor hasznos, ha meg kell adnia a szöveg nyelvét más képességeknek (például a [Hangulatelemzés skill](cognitive-search-skill-sentiment.md) vagy a [text Split skill](cognitive-search-skill-textsplit.md)).
 
-A nyelvfelismerés a Bing természetes nyelvi feldolgozó kódtárait használja, ami meghaladja a [támogatott nyelvek és régiók](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) számát Text Analytics. A nyelvek pontos listája nincs közzétéve, de az összes széles körben beszélt nyelvet, valamint a változatokat, a dialektusokat és néhány regionális és kulturális nyelvet tartalmaz. Ha a tartalom ritkábban használt nyelven van kifejezve, [kipróbálhatja a NYELVFELISMERÉS API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) -t, és megnézheti, hogy visszaadja-e a kódot. A nem észlelhető nyelvek válasza a következő: `unknown`.
+A nyelvfelismerés a Bing természetes nyelvi feldolgozó kódtárait használja, ami meghaladja a [támogatott nyelvek és régiók](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support) számát Text Analytics. A nyelvek pontos listája nincs közzétéve, de az összes széles körben beszélt nyelvet, valamint a változatokat, a dialektusokat és néhány regionális és kulturális nyelvet tartalmaz. Ha a tartalom ritkábban használt nyelven van kifejezve, [kipróbálhatja a NYELVFELISMERÉS API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) -t, és megnézheti, hogy visszaadja-e a kódot. A nem észlelhető nyelvek válasza a következő: `unknown` .
 
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://azure.microsoft.com/pricing/details/search/)találja.
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. Skills. Text. LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szakítania az adatokat, mielőtt elküldené azt a nyelvfelismerés szaktudásának, használhatja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md)is.
+A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Ha meg kell szakítania az adatokat, mielőtt elküldené azt a nyelvfelismerés szaktudásának, használhatja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md)is.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bemenetek     | Leírás |
+| Bevitelek     | Leírás |
 |--------------------|-------------|
-| szöveg | Az elemezni kívánt szöveg.|
+| `text` | Az elemezni kívánt szöveg.|
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
 | Kimenet neve    | Leírás |
 |--------------------|-------------|
-| languageCode | Az ISO 6391 nyelvi kódja az azonosított nyelvhez. Például: "en". |
-| languageName | A nyelv neve. Például: "English". |
-| pontszám | 0 és 1 közötti érték. A nyelv helyes azonosításának valószínűsége. A pontszám értéke 1-nél kisebb lehet, ha a mondat vegyes nyelvekkel rendelkezik.  |
+| `languageCode` | Az ISO 6391 nyelvi kódja az azonosított nyelvhez. Például: "en". |
+| `languageName` | A nyelv neve. Például: "English". |
+| `score` | 0 és 1 közötti érték. A nyelv helyes azonosításának valószínűsége. A pontszám értéke 1-nél kisebb lehet, ha a mondat vegyes nyelvekkel rendelkezik.  |
 
 ##  <a name="sample-definition"></a>Minta definíciója
 

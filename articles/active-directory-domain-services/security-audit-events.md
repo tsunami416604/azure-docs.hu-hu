@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: ce910b553e14d09eefa35efc5f2973337dfa1309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e79156e6e9f1283dfc7b8801820e3335f31afa9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654665"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734299"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
 
@@ -25,7 +25,7 @@ A Azure Active Directory Domain Services (Azure AD DS) biztonsági naplózás le
 Az eseményeket az Azure Storage-ba és a streambe való beküldéssel is archiválhatja az Azure Event Hubs használatával, vagy saját elemzéssel és az Azure Log Analytics-munkaterületek használatával az Azure Portal.
 
 > [!IMPORTANT]
-> Az Azure AD DS biztonsági naplózás csak Azure Resource Manager-alapú példányok esetén érhető el. Az áttelepítéssel kapcsolatos információkért lásd: [Az Azure AD DS áttelepítése a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-azure-adds].
+> Az Azure AD DS biztonsági naplózás csak Azure Resource Manager-alapú felügyelt tartományok esetében érhető el. Az áttelepítéssel kapcsolatos információkért lásd: [Az Azure AD DS áttelepítése a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-azure-adds].
 
 ## <a name="security-audit-destinations"></a>Biztonsági naplózási célhelyek
 
@@ -62,7 +62,7 @@ Az Azure AD DS biztonsági naplózási események az Azure Portal használatáva
 
     ![A szükséges cél és naplózási események típusának engedélyezése a rögzítéshez](./media/security-audit-events/diagnostic-settings-page.png)
 
-    * **Azure Storage tárterület**
+    * **Azure Storage**
         * Válassza az **archiválás egy Storage-fiókba**lehetőséget, majd válassza a **Konfigurálás**lehetőséget.
         * Válassza ki az **előfizetést** és azt a **Storage-fiókot** , amelyet a biztonsági naplózási események archiválásához használni kíván.
         * Ha elkészült, kattintson **az OK gombra**.
@@ -94,13 +94,13 @@ Az Azure AD DS biztonsági naplózási események Azure PowerShell használatáv
 
 1. Hozza létre a cél erőforrást a biztonsági naplózási eseményekhez.
 
-    * **Azure Storage** - -beli Storage-[fiók létrehozása Azure PowerShell használatával](../storage/common/storage-account-create.md?tabs=azure-powershell)
-    * **Az Azure Event** - hub[Azure PowerShell használatával hoz létre egy Event hub](../event-hubs/event-hubs-quickstart-powershell.md)-t. Előfordulhat, hogy a [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) parancsmagot kell használnia olyan engedélyezési szabály létrehozásához, amely Azure AD DS engedélyeket biztosít az Event hub- *névtérhez*. Az engedélyezési szabálynak tartalmaznia kell a **kezelés**, a **figyelés**és a **Küldés** jogosultságokat.
+    * **Azure Storage**  -  [Storage-fiók létrehozása Azure PowerShell használatával](../storage/common/storage-account-create.md?tabs=azure-powershell)
+    * **Azure Event hubok**  -  [Hozzon létre egy Event hubot a Azure PowerShell használatával](../event-hubs/event-hubs-quickstart-powershell.md). Előfordulhat, hogy a [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) parancsmagot kell használnia olyan engedélyezési szabály létrehozásához, amely Azure AD DS engedélyeket biztosít az Event hub- *névtérhez*. Az engedélyezési szabálynak tartalmaznia kell a **kezelés**, a **figyelés**és a **Küldés** jogosultságokat.
 
         > [!IMPORTANT]
         > Győződjön meg arról, hogy az Event hub-névtérben az engedélyezési szabályt állítja be, nem pedig magára az Event hub-ra.
 
-    * **Az Azure log Analytics-munkaterületek** - [log Analytics munkaterületet hoznak létre Azure PowerShellsal](../azure-monitor/learn/quick-create-workspace-posh.md).
+    * **Azure log analitikai munkaterületek**  -  [Hozzon létre egy log Analytics munkaterületet Azure PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
 
 1. Szerezze be az Azure AD DS felügyelt tartomány erőforrás-AZONOSÍTÓját a [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) parancsmag használatával. Hozzon létre egy $aadds nevű változót *. ResourceId* az érték megtartásához:
 
@@ -237,10 +237,10 @@ A következő naplózási események kategóriák érhetők el:
 |:---|:---|
 |Fiók bejelentkezési biztonsága|4767, 4774, 4775, 4776, 4777|
 |Fiókkezelés biztonsága|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781 és 4782|
-|Részletek követése biztonság|None|
+|Részletek követése biztonság|Nincs|
 |DS-hozzáférés biztonsága|5136, 5137, 5138, 5139, 5141|
 |Bejelentkezés – biztonság|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Objektum-hozzáférés biztonsága|None|
+|Objektum-hozzáférés biztonsága|Nincs|
 |Házirend-módosítási biztonság|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Biztonsági jogosultságok használata|4985|
 |Rendszerbiztonság|4612, 4621|

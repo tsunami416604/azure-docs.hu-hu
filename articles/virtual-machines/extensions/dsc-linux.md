@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250620"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698512"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-bővítmény Linuxra (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -85,14 +85,14 @@ A támogatott védett konfigurációs paraméterek a következők:
 ## <a name="scenarios"></a>Forgatókönyvek
 
 ### <a name="register-an-azure-automation-account"></a>Azure Automation fiók regisztrálása
-védett. JSON
+protected.jsbekapcsolva
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
   "RegistrationKey": "<azure-automation-account-key>"
 }
 ```
-nyilvános. JSON
+public.jsbekapcsolva
 ```json
 {
   "ExtensionAction" : "Register",
@@ -121,7 +121,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>MOF konfigurációs fájl (Azure Storage-fiókban) alkalmazása a virtuális gépre
 
-védett. JSON
+protected.jsbekapcsolva
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -129,7 +129,7 @@ védett. JSON
 }
 ```
 
-nyilvános. JSON
+public.jsbekapcsolva
 ```json
 {
   "FileUri": "<mof-file-uri>",
@@ -153,7 +153,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>MOF konfigurációs fájl (nyilvános tárolóban) alkalmazása a virtuális gépre
 
-nyilvános. JSON
+public.jsbekapcsolva
 ```json
 {
   "FileUri": "<mof-file-uri>"
@@ -169,7 +169,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Meta MOF konfigurációs fájl alkalmazása (Azure Storage-fiókban) a virtuális géphez
 
-védett. JSON
+protected.jsbekapcsolva
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -177,7 +177,7 @@ védett. JSON
 }
 ```
 
-nyilvános. JSON
+public.jsbekapcsolva
 ```json
 {
   "ExtensionAction": "Pull",
@@ -199,7 +199,7 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Meta MOF konfigurációs fájl (nyilvános tárolóban) alkalmazása a virtuális gépre
-nyilvános. JSON
+public.jsbekapcsolva
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
@@ -215,14 +215,14 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Egyéni erőforrás-modul (egy Azure Storage-fiókban lévő zip-fájl) telepítése a virtuális gépre
-védett. JSON
+protected.jsbekapcsolva
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
-nyilvános. JSON
+public.jsbekapcsolva
 ```json
 {
   "ExtensionAction": "Install",
@@ -244,7 +244,7 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Egyéni erőforrás-modul (egy nyilvános tárolóban lévő zip-fájl) telepítése a virtuális gépre
-nyilvános. JSON
+public.jsbekapcsolva
 ```json
 {
   "ExtensionAction": "Install",
@@ -260,7 +260,7 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Egyéni erőforrás-modul eltávolítása a virtuális gépről
-nyilvános. JSON
+public.jsbekapcsolva
 ```json
 {
   "ResourceName": "<resource-name>",
@@ -287,7 +287,7 @@ További információ a Azure Resource Manager sablonnal kapcsolatban: [Azure Re
 ## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
 
 ### <a name="use-azure-cliazure-cli"></a>Az [Azure CLI] [Azure-CLI] használata
-A DSCForLinux-bővítmény üzembe helyezése előtt konfigurálja `public.json` a `protected.json` és a 3. szakasz különböző forgatókönyvei alapján.
+A DSCForLinux-bővítmény üzembe helyezése előtt konfigurálja a `public.json` és `protected.json` a 3. szakasz különböző forgatókönyvei alapján.
 
 #### <a name="classic"></a>Klasszikus
 
@@ -322,7 +322,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> Azure Resource Manager módban jelenleg `azure vm extension list` nem érhető el.
+> Azure Resource Manager módban `azure vm extension list` jelenleg nem érhető el.
 >
 
 ### <a name="use-azure-powershellazure-powershell"></a>A [Azure PowerShell] [Azure-PowerShell] használata

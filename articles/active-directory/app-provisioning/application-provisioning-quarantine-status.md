@@ -2,21 +2,21 @@
 title: Karanténba helyezés alkalmazás-létesítési állapota | Microsoft Docs
 description: Amikor konfigurált egy alkalmazást a felhasználók automatikus kiépítési felállításához, megtudhatja, mi a karanténba helyezési állapot, és hogyan törölheti azt.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/28/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c1e0039133b7f9a7ae827e348640f6379b7f10ac
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: d8b50bfdd894d36b96fb3a53eab7c43c5b1fe11a
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593930"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782109"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Alkalmazás üzembe helyezése a karantén állapotában
 
@@ -28,11 +28,11 @@ A karanténba helyezve a növekményes ciklusok gyakorisága naponta egyszer cs�
 
 Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
   
-- A Azure Portal **Azure Active Directory** > navigáljon a**vállalati alkalmazások** > &lt;*alkalmazás neve*&gt; > **kiépítés** elemre, és tekintse át a karanténba helyezett üzenet folyamatjelző sávját.   
+- A Azure Portal Azure Active Directory navigáljon a **Azure Active Directory**  >  **vállalati alkalmazások**  >  &lt; *alkalmazás neve* &gt;  >  **kiépítés** elemre, és tekintse át a karanténba helyezett üzenet folyamatjelző sávját.   
 
   ![Üzembe helyezési állapotsor, amely a karantén állapotát mutatja](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
-- A Azure Portal navigáljon **Azure Active Directory** > **naplók** > szűrés **tevékenység: karanténba helyezés** , és tekintse át a karanténba helyezési előzményeket. Bár a fentiekben ismertetett folyamatjelzőn látható nézet azt mutatja, hogy a kiépítés jelenleg karanténban van-e, a naplók lehetővé teszik az alkalmazások karanténba helyezési előzményeinek megtekintését. 
+- A Azure Portal navigáljon **Azure Active Directory**  >  **naplók** > szűrés **tevékenység: karanténba helyezés** , és tekintse át a karanténba helyezési előzményeket. Bár a fentiekben ismertetett folyamatjelzőn látható nézet azt mutatja, hogy a kiépítés jelenleg karanténban van-e, a naplók lehetővé teszik az alkalmazások karanténba helyezési előzményeinek megtekintését. 
 
 - Használja a Microsoft Graph kérelmet a [synchronizationJob beszerzéséhez](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) a kiépítési feladatok állapotának programozott beszerzéséhez:
 
@@ -66,7 +66,7 @@ Először javítsa ki azt a problémát, amely az alkalmazás karanténba helyez
 
 - Ellenőrizze az alkalmazás kiépítési beállításait, és győződjön meg arról, hogy [érvényes rendszergazdai hitelesítő adatokat](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)adott meg. Az Azure AD-nek képesnek kell lennie megbízhatóság létrehozására a célalkalmazás használatával. Győződjön meg arról, hogy érvényes hitelesítő adatokat adott meg, és a fiókja rendelkezik a szükséges engedélyekkel.
 
-- Tekintse át a [kiépítési naplókat](../reports-monitoring/concept-provisioning-logs.md) , és vizsgálja meg, hogy milyen hibák okozzák a karanténba helyezést, és oldja meg a hibát. Nyissa meg a Azure Portal kiépítési naplóit a **tevékenység** szakaszban **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplóiban (előzetes verzió)** .
+- Tekintse át a [kiépítési naplókat](../reports-monitoring/concept-provisioning-logs.md) , és vizsgálja meg, hogy milyen hibák okozzák a karanténba helyezést, és oldja meg a hibát. Nyissa meg a Azure Portal kiépítési naplóit a **Azure Active Directory** &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplóiban (előzetes verzió)** . **Activity**
 
 A probléma megoldása után indítsa újra a kiépítési feladatot. Az alkalmazás üzembe helyezési beállításainak (például az attribútum-hozzárendelések vagy a hatóköri szűrők) bizonyos módosításai automatikusan újraindulnak a kiépítés során. Az alkalmazás **üzembe** helyezési lapjának folyamatjelző sávján a kiépítés utolsó indításakor látható. Ha manuálisan kell újraindítani a kiépítési feladatot, használja az alábbi módszerek egyikét:  
 

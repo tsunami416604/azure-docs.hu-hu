@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd81031f27d772912383fa050e0f946bf9964c0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417043"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204659"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-finomhangolás rendezett fürtözött oszlopcentrikus index használatával  
 
@@ -109,7 +109,7 @@ Az átfedésben lévő szegmensek száma a rendezni kívánt adatok méretétől
 
 - A xlargerc-erőforrás osztályának használata magasabb DWU, így több memória is engedélyezhető az adatok rendezéséhez, mielőtt az index-szerkesztő tömöríti az adatszegmenseket.  Az index szegmensben az adatfizikai hely nem módosítható.  Egy szegmensen vagy szegmensen belül nincs Adatrendezés.  
 
-- Rendezett CCI létrehozása a MAXDOP = 1 paranccsal.  A rendezett CCI-létrehozáshoz használt minden szál az adathalmazon működik, és helyileg rendezi.  Nincs globális rendezés a különböző szálak között rendezve.  A párhuzamos szálak használatával csökkentheti a rendezett CCI létrehozásának idejét, de több átfedésben lévő szegmenst fog létrehozni, mint egyetlen szál használata esetén.  Jelenleg a MAXDOP beállítás csak olyan rendezett CCI-táblázat létrehozásakor támogatott, CREATE TABLE AS SELECT parancs használatával.  A rendezett CCI LÉTREHOZÁSi INDEXen vagy CREATE TABLE parancsok használatával történő létrehozása nem támogatja a MAXDOP beállítást. Például:
+- Rendezett CCI létrehozása a MAXDOP = 1 paranccsal.  A rendezett CCI-létrehozáshoz használt minden szál az adathalmazon működik, és helyileg rendezi.  Nincs globális rendezés a különböző szálak között rendezve.  A párhuzamos szálak használatával csökkentheti a rendezett CCI létrehozásának idejét, de több átfedésben lévő szegmenst fog létrehozni, mint egyetlen szál használata esetén.  Jelenleg a MAXDOP beállítás csak olyan rendezett CCI-táblázat létrehozásakor támogatott, CREATE TABLE AS SELECT parancs használatával.  A rendezett CCI LÉTREHOZÁSi INDEXen vagy CREATE TABLE parancsok használatával történő létrehozása nem támogatja a MAXDOP beállítást. Példa:
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )

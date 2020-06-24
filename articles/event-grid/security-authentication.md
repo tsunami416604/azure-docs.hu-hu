@@ -2,18 +2,17 @@
 title: Biztonság és hitelesítés Azure Event Grid
 description: Ez a cikk a Event Grid-erőforrásokhoz való hozzáférés hitelesítésének különböző módszereit ismerteti (webhook, előfizetések, egyéni témakörök)
 services: event-grid
-author: femila
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.author: femila
-ms.openlocfilehash: 8335d5a41dc2f322623c163e08f8a4a2c1be8360
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.author: spelluru
+ms.openlocfilehash: d028367b82e8529d5260c086f2e4afa609582b00
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558998"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100230"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid erőforrásokhoz való hozzáférés hitelesítése
 Ez a cikk a következő forgatókönyvekkel kapcsolatos információkat tartalmazza:  
@@ -85,8 +84,21 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 A Event Grid szolgáltatás által a lemezre írt összes eseményt vagy adatfájlt egy Microsoft által felügyelt kulcs titkosítja, amely biztosítja, hogy az inaktív állapotban legyen titkosítva. Emellett az események vagy az adatmegőrzési időszak maximális időtartama 24 óra az [Event Grid újrapróbálkozási házirend](delivery-and-retry.md)betartásával. A Event Grid 24 óra elteltével automatikusan törli az összes eseményt vagy az adatmennyiséget, vagy az esemény élettartama, attól függően, hogy melyik a kisebb.
 
+## <a name="use-system-assigned-identities-for-event-delivery"></a>Rendszerhez rendelt identitások használata az események kézbesítéséhez
+Engedélyezheti a rendszerhez rendelt felügyelt identitást egy témakörhöz vagy tartományhoz, és az identitás használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint például a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok.
+
+A lépések a következők: 
+
+1. Hozzon létre egy témakört vagy tartományt egy rendszer által hozzárendelt identitással, vagy frissítsen egy meglévő témakört vagy tartományt az identitás engedélyezéséhez. 
+1. Adja hozzá az identitást egy megfelelő szerepkörhöz (például Service Bus adatfeladóhoz) a célhelyen (például egy Service Bus üzenetsor).
+1. Esemény-előfizetések létrehozásakor engedélyezze az identitás használatát, hogy az eseményeket a célhelyre kézbesítse. 
+
+Részletes útmutatásért lásd: [esemény kézbesítése felügyelt identitással](managed-service-identity.md).
+
+
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>Az események kézbesítésének hitelesítése webhook-végpontokra
 Az alábbi szakaszok azt ismertetik, hogyan hitelesíthető az események kézbesítése a webhook-végpontokra. A használt módszertől függetlenül egy érvényesítési kézfogási mechanizmust kell használnia. Részletekért lásd: [webhook-esemény kézbesítése](webhook-event-delivery.md) . 
+
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) használata
 Az Azure AD segítségével biztonságossá teheti a webhook-végpontot, amely a Event Grid eseményeinek fogadására szolgál. Létre kell hoznia egy Azure AD-alkalmazást, létre kell hoznia egy szerepkört és egy egyszerű szolgáltatásnevet az alkalmazásban Event Grid engedélyezéséhez, és az esemény-előfizetést az Azure AD-alkalmazás használatára kell beállítania. Megtudhatja, hogyan [konfigurálhatja a Azure Active Directoryt Event Grid](secure-webhook-delivery.md)használatával.
@@ -101,6 +113,6 @@ További információ az események webhookok általi kézbesítéséről: [webh
 > [!IMPORTANT]
 A Azure Event Grid csak a **https** webhook-végpontokat támogatja. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Event Grid bevezetését lásd: [About Event Grid](overview.md)

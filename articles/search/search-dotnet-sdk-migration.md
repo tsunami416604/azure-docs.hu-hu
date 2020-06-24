@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 548cd488bc811ad16cd84950ce3819f2e1f3ddbb
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72792986"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080708"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Frissítés a Azure Search .NET SDK 3-as verziójára
 
@@ -25,7 +25,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-Ha a [Azure Search .net SDK](https://aka.ms/search-sdk)-hoz készült 2,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás 3. verzióra való frissítéséhez.
+Ha a [Azure Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)-hoz készült 2,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás 3. verzióra való frissítéséhez.
 
 Az SDK-val kapcsolatos általános áttekintést a példákat lásd: [Azure Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
@@ -41,17 +41,17 @@ A Azure Search .NET SDK 3. verziója a korábbi verziók néhány módosításá
 ## <a name="whats-new-in-version-3"></a>A 3. verzió újdonságai
 A Azure Search .NET SDK 3. verziója a Azure Search REST API legújabb általánosan elérhető verzióját célozza meg, pontosabban 2016-09-01. Ez lehetővé teszi a Azure Search számos új funkciójának használatát egy .NET-alkalmazásból, beleértve a következőket:
 
-* [Egyéni elemzők](https://aka.ms/customanalyzers)
+* [Egyéni elemzők](index-add-custom-analyzers.md)
 * [Azure blob Storage](search-howto-indexing-azure-blob-storage.md) és [Azure Table Storage](search-howto-indexing-azure-tables.md) indexelő támogatása
 * Indexelő testreszabása [mező-hozzárendelések](search-indexer-field-mappings.md) használatával
 * Etagek-támogatás az index-definíciók, az indexelő és az adatforrások biztonságos párhuzamos frissítésének engedélyezéséhez
-* Az index mező-definíciók deklaratív kialakításának támogatása a modell osztályának díszítésével és `FieldBuilder` az új osztály használatával.
+* Az index mező-definíciók deklaratív kialakításának támogatása a modell osztályának díszítésével és az új `FieldBuilder` osztály használatával.
 * A .NET Core és a .NET hordozható profil 111 támogatása
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>A frissítés lépései
-Először frissítse a NuGet-referenciát `Microsoft.Azure.Search` a NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
+Először frissítse a NuGet-referenciát a `Microsoft.Azure.Search` NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
 
 Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. A kód szerkezetének módjától függően előfordulhat, hogy az Újraépítés sikeresen megtörtént. Ha igen, készen állsz!
 
@@ -71,7 +71,7 @@ A felépítési hibák kijavítása után módosíthatja az alkalmazást, és ig
 A 3. verzióban kevés a feltörési változás, amely az alkalmazás újraépítése mellett kód módosítását is szükségessé teheti.
 
 ### <a name="indexesgetclient-return-type"></a>Indexek. GetClient visszatérési típusa
-A `Indexes.GetClient` metódus új visszatérési típussal rendelkezik. Korábban visszatért `SearchIndexClient`, de ez a 2,0- `ISearchIndexClient` es verzióra módosult, és ez a változás a 3. verziót veszi át. Ez az olyan ügyfelek támogatása, akik az `GetClient` egységbeli tesztek módszerét szeretnék kipróbálni, ha `ISearchIndexClient`a modelljét a következő módon implementálják:.
+A `Indexes.GetClient` metódus új visszatérési típussal rendelkezik. Korábban visszatért `SearchIndexClient` , de ez a `ISearchIndexClient` 2,0-es verzióra módosult, és ez a változás a 3. verziót veszi át. Ez az olyan ügyfelek támogatása, akik az egységbeli tesztek módszerét szeretnék kipróbálni, ha a `GetClient` modelljét a következő módon implementálják: `ISearchIndexClient` .
 
 #### <a name="example"></a>Példa
 Ha a kód így néz ki:
@@ -87,7 +87,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
 ### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>A AnalyzerName, az adattípus és mások már nincsenek implicit módon konvertálva karakterlánccá
-A-ból `ExtensibleEnum`származó Azure Search .net SDK számos típussal rendelkezik. Korábban ezek a típusok implicit módon lettek konvertálva `string`a típusra. Azonban a rendszer hibát észlelt ezen osztályok `Object.Equals` megvalósításában, és az implicit konverzió letiltásához szükséges hibát rögzíti. A `string` explicit átalakítás továbbra is engedélyezett.
+A-ból származó Azure Search .NET SDK számos típussal rendelkezik `ExtensibleEnum` . Korábban ezek a típusok implicit módon lettek konvertálva a típusra `string` . Azonban a rendszer hibát észlelt `Object.Equals` ezen osztályok megvalósításában, és az implicit konverzió letiltásához szükséges hibát rögzíti. A explicit átalakítás `string` továbbra is engedélyezett.
 
 #### <a name="example"></a>Példa
 Ha a kód így néz ki:
@@ -130,13 +130,13 @@ index.Analyzers = new Analyzer[]
 
 Előfordulhat, hogy az 2,0-es verzióban elavultként megjelölt metódusokkal vagy tulajdonságokkal kapcsolatos fordítási hibák jelennek meg, amelyek a 3. verzióban már el lettek távolítva. Ha ilyen hibák merülnek fel, az alábbi módon oldható meg:
 
-- Ha ezt a konstruktort használta: `ScoringParameter(string name, string value)`, használja ezt helyette:`ScoringParameter(string name, IEnumerable<string> values)`
-- Ha a `ScoringParameter.Value` tulajdonságot használta, használja helyette `ScoringParameter.Values` a tulajdonságot `ToString` vagy a metódust.
-- Ha a `SearchRequestOptions.RequestId` tulajdonságot használta, használja helyette `ClientRequestId` a tulajdonságot.
+- Ha ezt a konstruktort használta: `ScoringParameter(string name, string value)` , használja ezt helyette:`ScoringParameter(string name, IEnumerable<string> values)`
+- Ha a `ScoringParameter.Value` tulajdonságot használta, használja `ScoringParameter.Values` helyette a tulajdonságot vagy a `ToString` metódust.
+- Ha a `SearchRequestOptions.RequestId` tulajdonságot használta, használja `ClientRequestId` helyette a tulajdonságot.
 
 ### <a name="removed-preview-features"></a>Előzetes verziójú funkciók eltávolítva
 
-Ha a 2,0-es verzióról frissít a 3. verzióra, vegye figyelembe, hogy a JSON-és CSV-elemzési támogatás a blob indexekhez szolgáltatás el lett távolítva, mivel ezek a funkciók még előzetes verziójúak. Az `IndexingParametersExtensions` osztály következő módszerei el lettek távolítva:
+Ha a 2,0-es verzióról frissít a 3. verzióra, vegye figyelembe, hogy a JSON-és CSV-elemzési támogatás a blob indexekhez szolgáltatás el lett távolítva, mivel ezek a funkciók még előzetes verziójúak. Az osztály következő módszerei `IndexingParametersExtensions` el lettek távolítva:
 
 - `ParseJson`
 - `ParseJsonArrays`

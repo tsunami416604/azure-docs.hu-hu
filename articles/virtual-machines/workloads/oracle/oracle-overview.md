@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: borisb
-ms.openlocfilehash: b738d0a04ded3e592f69075d1b113a22905efa11
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462719"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85098929"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése
 
@@ -89,11 +89,11 @@ Az Azure-ban olyan egyéni alkalmazásokat is üzembe helyezhet, amelyek a OCI �
 Az Azure-ban futó Oracle-szoftverekkel együtt Oracle Database Cloud Services (autonóm adatbázis, RAC, Exadata, DBaaS, Single node) használható. További információ a [OCI adatbázis-beállításairól](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 
 Az Oracle-alkalmazások Azure-beli üzembe helyezése a "saját licenc használata" modellen alapul. Feltételezi, hogy Ön megfelelő licenccel rendelkezik az Oracle-szoftverek használatához, valamint arról, hogy az Oracle-vel meglévő támogatási szerződése van érvényben. Az Oracle garantálta a helyszíni Azure-ba történő licenc-mobilitást. Tekintse meg az Oracle-Azure [GYIK](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)-et.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudjon meg többet a [Weblogic Server Azure-alkalmazásokról](oracle-weblogic.md) és az általuk támogatott Azure-szolgáltatás-integrációról.
 

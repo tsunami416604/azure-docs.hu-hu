@@ -8,12 +8,12 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7540c5a82220eef61b8f1cf470697315496cd6bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81db9c7e729aa0be67a807d9d77a3cccb8f41604
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127605"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194790"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>IoT Edge automatikus központi telepítések ismertetése egyetlen eszközön vagy nagy méretekben
 
@@ -61,7 +61,7 @@ A cél feltételét a rendszer folyamatosan kiértékeli az üzemelő példány 
 
 Tegyük fel, hogy van egy központi telepítés, amelynek a célja feltétele. környezet = "Prod". Az üzembe helyezés elindítását követően 10 éles eszköz található. A modulok sikeresen telepítve vannak a 10 eszközön. A IoT Edge ügynök állapota 10 összes eszközt, 10 sikeres választ, 0 sikertelen választ és 0 függőben lévő választ jelenít meg. Most öt további eszközt ad hozzá címkékkel. environment = "Prod". A szolgáltatás észleli a változást, és a IoT Edge ügynök állapota 15 teljes eszköz, 10 sikeres válasz, 0 sikertelen válasz és 5 függőben lévő válasz lesz, miközben az öt új eszközre települ.
 
-A cél eszközök kiválasztásához használjon bármilyen logikai feltételt az eszköz Twin-címkék, az eszköz Twin jelentett tulajdonságai vagy a deviceId használatával. Ha címkével szeretné feltételt használni, hozzá kell adnia a "címkék":{} szakaszt az eszköz twin (a Tulajdonságok) csomópontjának azonos szintjén. [További információ a címkékről az eszköz Twin-ben](../iot-hub/iot-hub-devguide-device-twins.md)
+A cél eszközök kiválasztásához használjon bármilyen logikai feltételt az eszköz Twin-címkék, az eszköz Twin jelentett tulajdonságai vagy a deviceId használatával. Ha címkével szeretné feltételt használni, hozzá kell adnia a "címkék": {} szakaszt az eszköz twin (a Tulajdonságok) csomópontjának azonos szintjén. [További információ a címkékről az eszköz Twin-ben](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Példák a megcélzott feltételekre:
 
@@ -69,15 +69,15 @@ Példák a megcélzott feltételekre:
 * Címkék. környezet = "Prod"
 * Tags. environment = ' Prod ' és Tags. location = ' westus '
 * Tags. environment = ' Prod ' vagy Tags. location = ' westus '
-* Tags. operator = ' John ' és Tags. environment = "Prod" nem deviceId = "linuxprod1"
+* Tags. operator = ' John ' és Tags. environment = ' Prod ' és NOT deviceId = ' linuxprod1 '
 * tulajdonságok. jelentett. devicemodel = ' 4000x '
 
 A cél feltételének létrehozásakor vegye figyelembe ezeket a korlátozásokat:
 
 * A Device Twin eszközben csak címkék, jelentett tulajdonságok vagy deviceId használatával hozhat létre célként feltételt.
 * Idézőjelek nem engedélyezettek a megcélzott feltétel bármely részén. Használjon aposztrófokat.
-* Az aposztrófok a célként megadott feltétel értékeit jelölik. Ezért el kell kerülnie az egyetlen idézőjelet egy másik aposztróftal, ha az eszköz neve része. Ha például egy nevű `operator'sDevice`eszközt szeretne megcélozni, `deviceId='operator''sDevice'`írja a következőt:.
-* A megcélzott feltételi értékekben a számok, betűk és a következő `-:.+%_#*?!(),=@;$`karakterek engedélyezettek:.
+* Az aposztrófok a célként megadott feltétel értékeit jelölik. Ezért el kell kerülnie az egyetlen idézőjelet egy másik aposztróftal, ha az eszköz neve része. Ha például egy nevű eszközt szeretne megcélozni, írja a következőt: `operator'sDevice` `deviceId='operator''sDevice'` .
+* A megcélzott feltételi értékekben a számok, betűk és a következő karakterek engedélyezettek: `-:.+%_#*?!(),=@;$` .
 
 ### <a name="priority"></a>Prioritás
 
@@ -142,7 +142,7 @@ Normál telepítés esetén például hozzáadhatja a szimulált hőmérséklet-
 }
 ```
 
-Egy rétegzett központi telepítésben, amely egy vagy több azonos eszközt céloz meg, hozzáadhat egy olyan tulajdonságot, amely közli a szimulált érzékelővel, hogy 1000 üzenetet küldjön, majd leállíthatja. Nem kívánja felülírni a meglévő tulajdonságokat, ezért új szakaszt kell létrehoznia a kívánt tulajdonságok között `layeredProperties`, amely az új tulajdonságot tartalmazza:
+Egy rétegzett központi telepítésben, amely egy vagy több azonos eszközt céloz meg, hozzáadhat egy olyan tulajdonságot, amely közli a szimulált érzékelővel, hogy 1000 üzenetet küldjön, majd leállíthatja. Nem kívánja felülírni a meglévő tulajdonságokat, ezért új szakaszt kell létrehoznia a kívánt tulajdonságok között `layeredProperties` , amely az új tulajdonságot tartalmazza:
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -166,7 +166,7 @@ Az olyan eszközök, amelyeken mindkét üzemelő példány van alkalmazva, a sz
 }
 ```
 
-Ha a modul `properties.desired` mezőjét egy többrétegű központi telepítésben állítja be, a modul minden alacsonyabb prioritású üzemelő példányban felül fogja írni a kívánt tulajdonságokat.
+Ha a `properties.desired` modul mezőjét egy többrétegű központi telepítésben állítja be, a modul minden alacsonyabb prioritású üzemelő példányban felül fogja írni a kívánt tulajdonságokat.
 
 ## <a name="phased-rollout"></a>Szakaszos bevezetés
 
@@ -174,7 +174,7 @@ A többfázisú bevezetés egy átfogó folyamat, amellyel a kezelők a IoT Edge
 
 A szakaszos bevezetést a következő fázisokban és lépésekben hajtja végre:
 
-1. Hozzon létre egy tesztkörnyezet IoT Edge eszközök kiépítésével, és állítsa be az eszköz kettős címkéjét `tag.environment='test'`, például:.A tesztkörnyezetben tükröznie kell azt a éles környezetet, amelyet a központi telepítés végül megcéloz.
+1. Hozzon létre egy tesztkörnyezet IoT Edge eszközök kiépítésével, és állítsa be az eszköz kettős címkéjét, például: `tag.environment='test'` .A tesztkörnyezetben tükröznie kell azt a éles környezetet, amelyet a központi telepítés végül megcéloz.
 2. Hozzon létre egy központi telepítést, beleértve a kívánt modulokat és konfigurációkat. A célzási feltételnek meg kell céloznia a teszt IoT Edge eszköz környezetét.
 3. Az új modul konfigurációjának ellenőrzése a tesztkörnyezetben.
 4. Frissítse a központi telepítést, hogy az éles IoT Edge-eszközök egy részhalmazát adja hozzá egy új címke hozzáadásával a célzási feltételhez. Ügyeljen arra is, hogy a központi telepítés prioritása nagyobb legyen, mint a jelenleg az eszközökre irányuló egyéb központi telepítések

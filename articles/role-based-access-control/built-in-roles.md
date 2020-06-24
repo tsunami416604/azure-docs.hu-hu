@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 05/04/2020
-ms.openlocfilehash: 909485ea3c4e143ce93579d1bfea5e13cf94c575
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/18/2020
+ms.openlocfilehash: 6e570c100a30f18a843f50cb8dc93572bb62d0f7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660048"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080739"
 ---
 # <a name="azure-built-in-roles"></a>Azure beépített szerepkörök
 
@@ -107,7 +107,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [HDInsight tartományi szolgáltatások közreműködője](#hdinsight-domain-services-contributor) | Elolvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight kapcsolatos tartományi szolgáltatásokat Enterprise Security Package | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics közreműködő](#log-analytics-contributor) | Log Analytics közreműködő képes olvasni az összes figyelési és szerkesztési beállítást. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását. a Storage-fiók kulcsainak beolvasása az Azure Storage-ból származó naplók gyűjtésének konfigurálásához; Automation-fiókok létrehozása és konfigurálása; megoldások hozzáadása; és az Azure Diagnostics konfigurálása az összes Azure-erőforráshoz. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | **Blokklánc** |  |  |
+> | **Blockchain** |  |  |
 > | [Blockchain-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI és gépi tanulás** |  |  |
 > | [Cognitive Services közreműködő](#cognitive-services-contributor) | Lehetővé teszi Cognitive Services kulcsainak létrehozását, olvasását, frissítését, törlését és kezelését. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -195,7 +195,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Ütemező – feladattípusok közreműködői](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 
 ### <a name="contributor"></a>Közreműködő
@@ -1154,7 +1154,7 @@ Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé
 }
 ```
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 
 ### <a name="avere-contributor"></a>Avere közreműködője
@@ -1168,6 +1168,7 @@ Létrehozhat és kezelhet egy avere vFXT-fürtöt. [További információ](../av
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
 > | [Microsoft. számítás](resource-provider-operations.md#microsoftcompute)/*/READ |  |
 > | [Microsoft. számítási](resource-provider-operations.md#microsoftcompute)/availabilitySets/* |  |
+> | [Microsoft. számítási](resource-provider-operations.md#microsoftcompute)/proximityPlacementGroups/* |  |
 > | [Microsoft. számítási](resource-provider-operations.md#microsoftcompute)/virtualMachines/* |  |
 > | [Microsoft. számítási](resource-provider-operations.md#microsoftcompute)/Disks/* |  |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/*/READ |  |
@@ -1207,6 +1208,7 @@ Létrehozhat és kezelhet egy avere vFXT-fürtöt. [További információ](../av
         "Microsoft.Authorization/*/read",
         "Microsoft.Compute/*/read",
         "Microsoft.Compute/availabilitySets/*",
+        "Microsoft.Compute/proximityPlacementGroups/*",
         "Microsoft.Compute/virtualMachines/*",
         "Microsoft.Compute/disks/*",
         "Microsoft.Network/*/read",
@@ -2601,7 +2603,7 @@ Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. 
 }
 ```
 
-## <a name="web"></a>Web
+## <a name="web"></a>Webes
 
 
 ### <a name="azure-maps-data-reader"></a>Adatolvasó Azure Maps
@@ -2767,7 +2769,7 @@ Lehetővé teszi a webhelyek (nem webes csomagok) kezelését, de nem fér hozz�
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Certificates/* | Webhely-tanúsítványok létrehozása és kezelése |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/listSitesAssignedToHostName/READ | Az állomásnévhez rendelt helyek nevének beolvasása. |
-> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action | Egy App Service csomag csatlakoztatása |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/READ | App Service csomag tulajdonságainak beolvasása |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Sites/* | Webhelyek létrehozása és kezelése (a hely létrehozásához írási engedély szükséges a társított App Service csomaghoz) |
 > | **NotActions** |  |
@@ -4263,7 +4265,7 @@ Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adata
 }
 ```
 
-## <a name="blockchain"></a>Blokklánc
+## <a name="blockchain"></a>Blockchain
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blockchain-hozzáférés (előzetes verzió)
@@ -5623,7 +5625,7 @@ Lehetővé teszi a logikai alkalmazások kezelését, de nem változtatja meg a 
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/connectionGateways/* | Hozzon létre és kezelje a kapcsolatok átjáróját. |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connections/* | Hozzon létre és kezelje a kapcsolatokat. |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/customApis/* | Egyéni API létrehozása és kezelése. |
-> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action | Egy App Service csomag csatlakoztatása |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/READ | App Service csomag tulajdonságainak beolvasása |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Sites/functions/listSecrets/Action | A függvények titkainak listázása. |
 > | **NotActions** |  |
@@ -6342,7 +6344,7 @@ Security Center engedélyeinek megtekintése. Megtekintheti a javaslatokat, a ri
 
 ### <a name="devtest-labs-user"></a>DevTest Labs-felhasználó
 
-Lehetővé teszi a virtuális gépek a Azure DevTest Labs való összekapcsolását, indítását, újraindítását és leállítását. [További információ](../lab-services/devtest-lab-add-devtest-user.md)
+Lehetővé teszi a virtuális gépek a Azure DevTest Labs való összekapcsolását, indítását, újraindítását és leállítását. [További információ](../devtest-labs/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6446,7 +6448,7 @@ Lehetővé teszi a virtuális gépek a Azure DevTest Labs való összekapcsolás
 
 ### <a name="lab-creator"></a>Tesztkörnyezet létrehozója
 
-Lehetővé teszi a felügyelt Labs Azure Lab-fiókokban való létrehozását, kezelését és törlését. [További információ](../lab-services/classroom-labs/add-lab-creator.md)
+Lehetővé teszi a felügyelt Labs Azure Lab-fiókokban való létrehozását, kezelését és törlését. [További információ](../lab-services/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -8487,7 +8489,7 @@ Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)

@@ -3,12 +3,12 @@ title: Szabályzat tervezése kódmunkafolyamatokként
 description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-definíciók kódként való üzembe helyezéséhez és az erőforrások automatikus ellenőrzéséhez.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 04ec27216a3e9d59da21ef80948ef8620234e575
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684273"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194416"
 ---
 # <a name="design-policy-as-code-workflows"></a>Szabályzat tervezése kódmunkafolyamatokként
 
@@ -19,7 +19,7 @@ Ahogy halad a felhő irányításával, érdemes áttérnie az egyes szabályzat
 
 A szabályzat mint kód az ötletek kombinációja. Lényegében tartsa meg a házirend-definíciókat a forrás vezérlőelemben, és valahányszor változás történik, tesztelje és ellenőrizze a változást. Ez azonban nem lehet olyan mértékben, hogy a szabályzatok a kód-vagy DevOps is betartsák az infrastruktúrát.
 
-Az érvényesítési lépésnek más folyamatos integrációs vagy folyamatos üzembe helyezési munkafolyamatok összetevőjének is kell lennie. Ilyenek például az alkalmazás-környezet vagy a virtuális infrastruktúra üzembe helyezése. A létrehozási és a telepítési folyamat korai összetevőjének Azure Policy érvényesítésével az alkalmazás-és műveleti csapatok felderítik, hogy a módosítások nem jelentenek-e panaszt, jóval azelőtt, hogy túl későn történnek, és éles környezetben próbálnak üzembe helyezni.
+Az érvényesítési lépésnek más folyamatos integrációs vagy folyamatos üzembe helyezési munkafolyamatok összetevőjének is kell lennie. Ilyenek például az alkalmazás-környezet vagy a virtuális infrastruktúra üzembe helyezése. Azáltal, hogy Azure Policy érvényesítéssel a létrehozási és üzembe helyezési folyamat korai összetevőjét, az alkalmazás-és műveleti csapatok észlelik, ha a módosítások nem megfelelőek, jóval azelőtt, hogy túl későn történnek, és éles környezetben próbálnak üzembe helyezni.
 
 ## <a name="workflow-overview"></a>A munkafolyamat áttekintése
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: e8d5abd81feb86ba48fc442ee95615cb52230a24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: 9b577b12250f1a600c91776e64ecaf65be5d8476
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063816"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100896"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Naplók naplózása Azure Database for MariaDB
 
@@ -22,15 +22,19 @@ A Azure Database for MariaDB a napló a felhasználók számára érhető el. A 
 
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
 
-Alapértelmezés szerint a napló le van tiltva. Az engedélyezéséhez állítsa `audit_log_enabled` be ÉRTÉKre a következőre:.
+>[!NOTE]
+> Azt javasoljuk, hogy csak azokat az eseményeket és felhasználókat naplózza, amelyek szükségesek a naplózáshoz, hogy a kiszolgáló teljesítménye ne legyen nagy hatással.
+
+Alapértelmezés szerint a napló le van tiltva. Az engedélyezéséhez állítsa be értékre a következőre: `audit_log_enabled` .
 
 Az egyéb paraméterek a következők:
 
 - `audit_log_events`: a naplózandó események szabályozása. Tekintse meg az alábbi táblázatot az egyes naplózási eseményekhez.
-- `audit_log_include_users`: A naplózáshoz MariaDB felhasználókat. A paraméter alapértelmezett értéke üres, amely tartalmazza a naplózáshoz szükséges összes felhasználót. Ennek magasabb prioritása van `audit_log_exclude_users`. A paraméter maximális hossza 512 karakter.
-> [!Note]
-> `audit_log_include_users`magasabb prioritással rendelkezik `audit_log_exclude_users`. `audit_log_include_users`  =  Ha `demouser` `audit_log_exclude_users`  = például a és `demouser`a, a felhasználó belekerül a naplóba, mert `audit_log_include_users` magasabb prioritással rendelkezik.
+- `audit_log_include_users`: A naplózáshoz MariaDB felhasználókat. A paraméter alapértelmezett értéke üres, amely tartalmazza a naplózáshoz szükséges összes felhasználót. Ennek magasabb prioritása van `audit_log_exclude_users` . A paraméter maximális hossza 512 karakter.
 - `audit_log_exclude_users`: A MariaDB a naplózásból kizárandó felhasználókat. Legfeljebb négy felhasználó számára teszi lehetővé. A paraméter maximális hossza 256 karakter.
+
+> [!Note]
+> `audit_log_include_users`magasabb prioritással rendelkezik `audit_log_exclude_users` . Ha például `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` a és a, a felhasználó belekerül a naplóba, mert `audit_log_include_users` magasabb prioritással rendelkezik.
 
 | **Esemény** | **Leírás** |
 |---|---|
@@ -79,6 +83,9 @@ A következő szakaszok azt írják le, hogy milyen kimenetet MariaDB a naplók 
 ### <a name="general"></a>Általános kérdések
 
 Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a rendszergazdai események típusára vonatkozik.
+
+> [!NOTE]
+> A esetében a rendszer `sql_text` csonkolja a naplót, ha az meghaladja a 2048 karaktert.
 
 | **Tulajdonság** | **Leírás** |
 |---|---|

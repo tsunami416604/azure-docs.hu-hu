@@ -4,21 +4,18 @@ description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti
 services: event-hubs
 documentationcenter: na
 author: spelluru
-editor: ''
 ms.assetid: ''
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/11/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2a3b14acad4990059a27201b7e1e6b9e93123194
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: shvija
+ms.openlocfilehash: abe6a5d2cd4432b5b9dc387940a4d48f4be2aa92
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025169"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296576"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Események küldése vagy fogadása az Azure Event Hubs a .NET Core használatával (Microsoft. Azure. EventHubs)
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről a **Microsoft. Azure. EventHubs** .net Core Library használatával.
@@ -51,7 +48,7 @@ Indítsa el a Visual Studiót. A **fájl** menüben kattintson az **új**, majd 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 
-Adja hozzá [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) a .net Core Library NuGet-csomagot a projekthez a következő lépések végrehajtásával: 
+Adja hozzá a [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .net Core Library NuGet-csomagot a projekthez a következő lépések végrehajtásával: 
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
 2. Kattintson a **Tallózás** fülre, keressen rá a „Microsoft.Azure.EventHubs” kifejezésre, majd válassza ki a **Microsoft.Azure.EventHubs** csomagot. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
@@ -201,7 +198,7 @@ Adja hozzá [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microso
 ## <a name="receive-events"></a>Események fogadása
 Ez a szakasz bemutatja, hogyan írhat olyan .NET Core Console-alkalmazást, amely az Event hub-ból származó üzeneteket fogad az [Event Processor Host](event-hubs-event-processor-host.md)használatával. Az [Event Processor Host](event-hubs-event-processor-host.md) egy .net-osztály, amely leegyszerűsíti az események fogadását az Event hubokból az állandó ellenőrzőpontok és a párhuzamos fogadások kezelésével az adott esemény hubokból. Az Event Processor Host használatával több fogadó között oszthatja el az eseményeket, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz.
 > [!NOTE]
-> Ez a rövid útmutató a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), `EventHubConnectionString` `EventHubName` `StorageAccountName` `StorageAccountKey`a, a, a és `StorageContainerName` a karakterláncok az Event hub-értékekkel való kiírásával, valamint a futtatásával tölthető le. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
+> Ez a rövid útmutató a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), a, a, a `EventHubConnectionString` és a `EventHubName` `StorageAccountName` `StorageAccountKey` `StorageContainerName` karakterláncok az Event hub-értékekkel való kiírásával, valamint a futtatásával tölthető le. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
 
 [!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 

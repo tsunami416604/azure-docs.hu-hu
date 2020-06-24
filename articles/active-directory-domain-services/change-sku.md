@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 32f8f157abaf5076911c3908a83be4a644e09656
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8109b7b1f6cd8477d49bafd114be24b91530d123
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655580"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734962"
 ---
-# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Meglévő Azure AD Domain Services felügyelt tartomány SKU-jának módosítása
+# <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Meglévő Azure Active Directory Domain Services felügyelt tartomány SKU-jának módosítása
 
 Azure Active Directory Domain Services (Azure AD DS) esetében a rendelkezésre álló teljesítmény és szolgáltatások az SKU típusán alapulnak. A szolgáltatásbeli különbségek közé tartozik a biztonsági mentés gyakorisága vagy az egyirányú kimenő erdő megbízhatósági kapcsolatainak maximális száma (jelenleg előzetes verzióban érhető el). A felügyelt tartomány létrehozásakor ki kell választania egy SKU-t, és az üzleti igényeknek megfelelően át lehet váltani a SKU-ra a felügyelt tartomány telepítése után. Az üzleti követelmények változásai több gyakori biztonsági mentésre vagy további erdőszintű megbízhatósági kapcsolatok létrehozására is igénybe vehetnek. A különböző SKU-i korlátokkal és díjszabással kapcsolatos további információkért lásd az [azure AD DS SKU-fogalmakat][concepts-sku] és az [Azure AD DS díjszabási][pricing] oldalát.
 
@@ -32,11 +32,11 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+    * Ha szükséges, végezze el az oktatóanyagot [egy felügyelt tartomány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
 
 ## <a name="sku-change-limitations"></a>SKU-változások korlátai
 
-Az SKU-t az Azure AD DS felügyelt tartomány üzembe helyezése után felfelé vagy lefelé módosíthatja. Ha azonban egy erőforrás-erdőt (jelenleg előzetes verzióban) használ, és egyirányú kimenő erdőszintű megbízhatósági kapcsolatot hozott létre az Azure AD DS egy helyszíni AD DS-környezetbe, bizonyos korlátozások vonatkoznak az SKU-módosítási műveletre. A *prémium* és a *vállalati* SKU korlátozza a létrehozható megbízhatósági kapcsolatok számát. Nem válthat olyan SKU-ra, amelynek a maximális korlátja alacsonyabb, mint a jelenleg konfigurálva.
+A felügyelt tartomány üzembe helyezése után akár feljebb, akár lejjebb is módosíthatja a SKU-t. Ha azonban egy erőforrás-erdőt (jelenleg előzetes verzióban) használ, és egyirányú kimenő erdőszintű megbízhatósági kapcsolatot hozott létre az Azure AD DS egy helyszíni AD DS-környezetbe, bizonyos korlátozások vonatkoznak az SKU-módosítási műveletre. A *prémium* és a *vállalati* SKU korlátozza a létrehozható megbízhatósági kapcsolatok számát. Nem válthat olyan SKU-ra, amelynek a maximális korlátja alacsonyabb, mint a jelenleg konfigurálva.
 
 Például:
 
@@ -47,14 +47,14 @@ További információ ezekről a korlátokról: [Azure AD DS SKU-funkciók és k
 
 ## <a name="select-a-new-sku"></a>Új SKU kiválasztása
 
-Ha egy Azure AD DS felügyelt tartomány SKU-át szeretné módosítani a Azure Portal használatával, hajtsa végre a következő lépéseket:
+Felügyelt tartomány SKU-jának a Azure Portal használatával történő módosításához hajtsa végre a következő lépéseket:
 
 1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt a listából, például *aaddscontoso.com*.
 1. Az Azure AD DS lap bal oldali menüjében válassza a **beállítások > SKU**lehetőséget.
 
     ![Válassza ki az SKU menüpontot az Azure AD DS felügyelt tartományhoz a Azure Portal](media/change-sku/overview-change-sku.png)
 
-1. A legördülő menüben válassza ki az Azure AD DS felügyelt tartományhoz használni kívánt SKU-t. Ha rendelkezik erőforrás-erdővel, a *szabványos* SKU-t nem választhatja erdőszintű megbízhatóságként, csak a *vállalati* SKU-ban vagy annál újabb verzióban.
+1. A legördülő menüben válassza ki a felügyelt tartományhoz használni kívánt SKU-t. Ha rendelkezik erőforrás-erdővel, a *szabványos* SKU-t nem választhatja erdőszintű megbízhatóságként, csak a *vállalati* SKU-ban vagy annál újabb verzióban.
 
     Válassza ki a kívánt SKU-t a legördülő menüből, majd válassza a **Mentés**lehetőséget.
 

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 446ebf563a09131b715b2e08033a7a0278a1fd95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 040ac3069500d0e52441df6f07d92645a7ae69df
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652091"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764434"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Fájlok visszaállítása Windows Serverre a MARS-ügynök használatával
 
@@ -51,7 +51,7 @@ Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a
    > Az egyes fájlok és mappák visszaállításának lehetősége a .NET-keretrendszer 4.5.2-es vagy újabb verziójára van szükség. Ha nem látja az **egyes fájlok és mappák** beállítást, a .NET-keretrendszert a 4.5.2-es vagy újabb verzióra kell frissíteni, majd próbálkozzon újra.
 
    > [!TIP]
-   > Az **egyes fájlok és mappák** lehetőséggel gyorsan hozzáférhet a helyreállítási ponthoz tartozó adatfájlokhoz. Alkalmas az egyes fájlok helyreállítására, a mérete nem haladhatja meg a 80 GB-ot, és az átviteli vagy a másolási sebesség akár 6 MBps is lehet. A **Volume (kötet** ) beállítással egy adott köteten található összes biztonsági másolati elem helyreállítható. Ez a beállítás gyorsabb átviteli sebességet biztosít (akár 60 MBps), ami ideális a nagyméretű adatok vagy a teljes kötetek helyreállításához.
+   > Az **egyes fájlok és mappák** lehetőséggel gyorsan hozzáférhet a helyreállítási ponthoz tartozó adatfájlokhoz. Alkalmas az egyes fájlok helyreállítására, a mérete nem haladhatja meg a 80 GB-ot, és az átviteli vagy a másolási sebesség akár 6 MBps is lehet. A **Volume (kötet** ) beállítással egy adott köteten található összes biztonsági másolati elem helyreállítható. Ez a beállítás gyorsabb átviteli sebességet biztosít (akár 40 MBps), ami ideális a nagyméretű adatok vagy a teljes kötetek helyreállításához.
 
 5. A **kötet és dátum kiválasztása** lapon válassza ki azt a kötetet, amely tartalmazza a visszaállítani kívánt fájlokat és mappákat.
 

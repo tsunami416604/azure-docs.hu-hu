@@ -1,14 +1,14 @@
 ---
 title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1d482eeb8b3da94e8af0a597ade1a1d834ccf6a0
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d91804b91b50ee1ba4015456438c9f153ed12ada
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677781"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201718"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -121,6 +121,9 @@ Gyakori példa a fájlok számítási csomópontba másolására szolgáló fela
 
 Azok a feladatok, amelyek csak egy-két másodpercre futnak, nem ideálisak. Érdemes nagy mennyiségű munkát végrehajtani egy adott feladatban (10 másodperc minimum, akár óra vagy nap is). Ha az egyes feladatok egy percen (vagy több) vannak végrehajtva, akkor az ütemezési terhelés a teljes számítási idő töredékének kis hányada.
 
+### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>Készlet hatókörének használata a Windows-csomópontok rövid feladataihoz
+
+A feladatok batch-csomópontokon történő ütemezésekor kiválaszthatja, hogy a feladat hatókörével vagy a készlet hatókörével kívánja-e futtatni. Ha a feladat csak rövid ideig fut, akkor a feladat hatóköre nem lehet hatékony, mert az adott feladat automatikus felhasználói fiókjának létrehozásához szükséges erőforrások. A nagyobb hatékonyság érdekében érdemes lehet ezeket a feladatokat a készlet hatókörére beállítani. További információ: [feladat futtatása automatikus felhasználóként készlet hatókörrel](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope).
 
 ## <a name="nodes"></a>Csomópontok
 

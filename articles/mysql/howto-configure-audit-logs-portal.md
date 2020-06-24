@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: fcd436f87b24d8cdc246d2f1d33a49311e72d46b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: d6d037f3d45216b81d2c5fdcb67ea48b4252a889
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380299"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100992"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>A Azure Portal Azure Database for MySQL naplózási naplóinak konfigurálása és elérése
 
@@ -27,6 +27,9 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - [Azure Database for MySQL kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
+
+>[!NOTE]
+> Azt javasoljuk, hogy csak azokat az eseményeket és felhasználókat naplózza, amelyek szükségesek a naplózáshoz, hogy a kiszolgáló teljesítménye ne legyen nagy hatással.
 
 A naplózás engedélyezése és konfigurálása.
 
@@ -53,7 +56,7 @@ A naplózás engedélyezése és konfigurálása.
 
 1. Az oldalsáv **figyelés** területén válassza a **diagnosztikai beállítások**elemet.
 
-1. Kattintson a "+ diagnosztikai beállítás hozzáadása" ![diagnosztikai beállítás hozzáadása elemre.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. Kattintson a "+ diagnosztikai beállítás hozzáadása" ![ diagnosztikai beállítás hozzáadása elemre.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
 1. Adja meg a diagnosztikai beállítások nevét.
 

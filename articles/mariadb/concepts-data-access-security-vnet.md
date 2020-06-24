@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: f998cc238b997f2dfb8e8043693379e4c5a53546
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 777febb86e6a1fa719b6a7d74c32defebcf3b58c
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170409"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099825"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtuális hálózati szolgáltatásvégpontok és szabályok használata az Azure Database for MariaDB-hez
 
@@ -101,7 +101,7 @@ Használhat [szerepköralapú hozzáférés-vezérlést (RBAC)][rbac-what-is-813
 > Bizonyos esetekben a Azure Database for MariaDB és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
 > - Mindkét előfizetésnek ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.
 > - A felhasználó rendelkezik a szükséges engedélyekkel a műveletek elindításához, például a szolgáltatási végpontok engedélyezéséhez és egy VNet-alhálózat hozzáadásához az adott kiszolgálóhoz.
-> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. SQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+> - Győződjön meg arról, hogy az előfizetés mind a **Microsoft. SQL** , mind a **Microsoft. DBforMariaDB** erőforrás-szolgáltató regisztrálva van. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -139,7 +139,7 @@ A **IgnoreMissingServiceEndpoint** jelzőt az Azure CLI vagy a portál használa
 - [Azure-beli virtuális hálózatok][vm-virtual-network-overview]
 - [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A VNet-szabályok létrehozásával kapcsolatos cikkekért lásd:
 - [Azure Database for MariaDB VNet-szabályok létrehozása és kezelése a Azure Portal használatával](howto-manage-vnet-portal.md)
  

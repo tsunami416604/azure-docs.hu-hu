@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: a684a669c491e35b5c6b62dd318b4fe61edeb52b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655381"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734792"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services konfigurálása a SharePoint Server felhasználói profilok szinkronizálásának támogatásához
 
@@ -33,7 +33,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
+    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services felügyelt tartomány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
 * Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
     * Ha szükséges, fejezze be az oktatóanyagot [egy felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm].
 * Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
@@ -42,10 +42,10 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 
 ## <a name="service-accounts-overview"></a>Szolgáltatásfiókok áttekintése
 
-Az Azure AD DS felügyelt tartományokban az **HRE DC szolgáltatásfiókok** nevű biztonsági csoport a *felhasználók* szervezeti egység (OU) részeként létezik. A biztonsági csoport tagjai a következő jogosultságokat delegálják:
+Felügyelt tartományokban az **HRE DC szolgáltatásfiókok** nevű biztonsági csoport a *felhasználók* szervezeti egység (OU) részeként létezik. A biztonsági csoport tagjai a következő jogosultságokat delegálják:
 
 - **Replikálja a címtár-módosítási** jogosultságot a gyökérszintű dse.
-- A címtár-módosítások jogosultságának **replikálása** a *konfiguráció* névhasználati környezetében (`cn=configuration` tároló).
+- A címtár-módosítások jogosultságának **replikálása** a *konfiguráció* névhasználati környezetében ( `cn=configuration` tároló).
 
 A **HRE DC Service accounts** biztonsági csoport tagja a beépített **Windows 2000-kompatibilis hozzáférésnek**is.
 
@@ -58,11 +58,11 @@ A SharePoint Server szolgáltatási fiókjának megfelelő jogosultságokkal kel
 Az Azure AD DS felügyeleti virtuális gépről hajtsa végre a következő lépéseket:
 
 > [!NOTE]
-> Egy Azure AD DS felügyelt tartományban lévő csoporttagság szerkesztéséhez be kell jelentkeznie egy olyan felhasználói fiókba, amely az *HRE DC-rendszergazdák* csoport tagja.
+> Egy felügyelt tartományban lévő csoporttagság szerkesztéséhez be kell jelentkeznie egy olyan felhasználói fiókba, amely tagja az *HRE DC-rendszergazdák* csoportjának.
 
 1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
 1. A csoporttagság kezeléséhez válassza a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
-1. A bal oldali ablaktáblán válassza ki az Azure AD DS felügyelt tartományát, például *aaddscontoso.com*. Megjelenik a meglévő szervezeti egységek és erőforrások listája.
+1. A bal oldali ablaktáblán válassza ki a felügyelt tartományt, például *aaddscontoso.com*. Megjelenik a meglévő szervezeti egységek és erőforrások listája.
 1. Válassza ki a **felhasználók** szervezeti egységet, majd válassza a *HRE DC szolgáltatásfiók* biztonsági csoportot.
 1. Válassza a **tagok**lehetőséget, majd válassza a **Hozzáadás...** lehetőséget.
 1. Adja meg a SharePoint-szolgáltatásfiók nevét, majd kattintson az **OK gombra**. A következő példában a SharePoint-szolgáltatásfiók neve *SPAdmin*:

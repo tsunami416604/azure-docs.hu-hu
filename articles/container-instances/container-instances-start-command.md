@@ -4,15 +4,15 @@ description: Parancssor beállítása a BelépésiPont felülbírálására egy 
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247123"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693056"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>A parancssor beállítása tároló-példányban az alapértelmezett parancssori művelet felülbírálásához
 
-Tároló-példány létrehozásakor opcionálisan megadhat egy parancsot, amely felülbírálja az alapértelmezett parancssori utasításokat a tároló képére. Ez a viselkedés hasonló a `--entrypoint` parancssori argumentumhoz. `docker run`
+Tároló-példány létrehozásakor opcionálisan megadhat egy parancsot, amely felülbírálja az alapértelmezett parancssori utasításokat a tároló képére. Ez a viselkedés hasonló a `--entrypoint` parancssori argumentumhoz `docker run` .
 
 Például a [környezeti változók](container-instances-environment-variables.md) beállítása a Container instances esetében, a kezdő parancssor megadása olyan batch-feladatok esetében hasznos, ahol az egyes tárolókat a feladat-specifikus konfigurációval dinamikusan kell előkészíteni.
 
@@ -20,7 +20,7 @@ Például a [környezeti változók](container-instances-environment-variables.m
 
 * Alapértelmezés szerint a parancssor egyetlen folyamatot határoz meg, amely a tárolóban lévő *rendszerhéj nélkül indul* el. Előfordulhat például, hogy a parancssor egy Python-parancsfájlt vagy egy végrehajtható fájlt futtat. A folyamat további paramétereket vagy argumentumokat adhat meg.
 
-* Több parancs végrehajtásához indítsa el a parancssort a tároló operációs rendszer által támogatott rendszerhéj-környezet beállításával. Példák:
+* Több parancs végrehajtásához indítsa el a parancssort a tároló operációs rendszer által támogatott rendszerhéj-környezet beállításával. Angol nyelvű Példák:
 
   |Operációs rendszer  |Alapértelmezett rendszerhéj  |
   |---------|---------|
@@ -32,7 +32,7 @@ Például a [környezeti változók](container-instances-environment-variables.m
 
 * Előfordulhat, hogy a tároló konfigurációjától függően meg kell adnia a parancssori végrehajtható fájl vagy argumentumok teljes elérési útját.
 
-* Állítson be egy megfelelő [Újraindítási szabályzatot](container-instances-restart-policy.md) a tároló-példányhoz attól függően, hogy a parancssor egy hosszan futó feladatot vagy egyszeri futtatású feladatot határoz meg. Például a `Never` vagy `OnFailure` a rendszer újraindítási szabályzata javasolt egy egyszeri futtatású feladathoz. 
+* Állítson be egy megfelelő [Újraindítási szabályzatot](container-instances-restart-policy.md) a tároló-példányhoz attól függően, hogy a parancssor egy hosszan futó feladatot vagy egyszeri futtatású feladatot határoz meg. Például a vagy a rendszer újraindítási szabályzata `Never` `OnFailure` javasolt egy egyszeri futtatású feladathoz. 
 
 * Ha információra van szüksége a tároló-rendszerképben beállított alapértelmezett BelépésiPont, használja a [Docker-rendszerkép vizsgálata](https://docs.docker.com/engine/reference/commandline/image_inspect/) parancsot.
 
@@ -40,13 +40,13 @@ Például a [környezeti változók](container-instances-environment-variables.m
 
 A parancssori szintaxis a példányok létrehozásához használt Azure API vagy eszköztől függően változhat. Ha a rendszerhéj-környezetet is megadja, figyelje meg a rendszerhéj parancs szintaxisát is.
 
-* az [az Container Create][az-container-create] parancs: adjon meg egy karakterláncot a `--command-line` paraméterrel. Példa: `--command-line "python myscript.py arg1 arg2"`).
+* az [az Container Create][az-container-create] parancs: adjon meg egy karakterláncot a `--command-line` paraméterrel. Példa: `--command-line "python myscript.py arg1 arg2"` ).
 
-* [Új – AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell parancsmag: adjon meg egy karakterláncot `-Command` a paraméterrel. Példa: `-Command "echo hello"`.
+* [Új – AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell parancsmag: adjon meg egy karakterláncot a `-Command` paraméterrel. Példa: `-Command "echo hello"`.
 
-* Azure Portal: a tároló konfigurációjának **parancs felülbírálása** tulajdonságában adja meg a karakterláncok vesszővel tagolt listáját, idézőjelek nélkül. Példa: `python, myscript.py, arg1, arg2`). 
+* Azure Portal: a tároló konfigurációjának **parancs felülbírálása** tulajdonságában adja meg a karakterláncok vesszővel tagolt listáját, idézőjelek nélkül. Példa: `python, myscript.py, arg1, arg2` ). 
 
-* Resource Manager-sablon vagy YAML-fájl, vagy egy Azure SDK-k: a parancssori tulajdonságot karakterláncok tömbje kell megadni. Példa: a JSON- `["python", "myscript.py", "arg1", "arg2"]` tömb egy Resource Manager-sablonban. 
+* Resource Manager-sablon vagy YAML-fájl, vagy egy Azure SDK-k: a parancssori tulajdonságot karakterláncok tömbje kell megadni. Példa: a JSON `["python", "myscript.py", "arg1", "arg2"]` -tömb egy Resource Manager-sablonban. 
 
   Ha már ismeri a [Docker](https://docs.docker.com/engine/reference/builder/) szintaxist, ez a formátum a cmd utasítás *exec* formájához hasonlóan fog megjelenni.
 

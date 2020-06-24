@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 3784eda2db5f375f04cdde84108a78ae277baf60
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 0fad77f4704b9cbd8c2a37e39c09a334b08766ef
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860664"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193544"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és helyreállítása
 
@@ -64,21 +64,11 @@ Előfordulhat, hogy a Soft-Delete metódus nem fér el bizonyos helyzetekben, p�
 > [!IMPORTANT]
 > Az állandó munkaterület törlési műveletét körültekintően, a visszafordíthatatlan óta használhatja, és nem fogja tudni helyreállítani a munkaterületet és annak adatait.
 
-A munkaterület végleges törléséhez használja a [munkaterületeket – törölje](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) a REST-kérést egy kényszerítő címkével:
+Adja hozzá a "-Force" címkét a munkaterület végleges törléséhez:
 
-```rst
-DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
-Authorization: Bearer <token>
+```powershell
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -Force
 ```
-
-Azt is megteheti, hogy végrehajtja a műveletet az Azure REST dokumentációs webhelyén:
-1.  Navigáljon a [munkaterületek – törölje](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) REST API és kattintson a **kipróbálás**gombra. 
-2.  Adja meg a véglegesen törölni kívánt munkaterület részleteit
-3.  A *true* értékkel rendelkező új paraméter- *kényszerítés*
-4.  Kattintson a "+" ikonra a jobb oldalon az értékre. Ekkor a rendszer hozzáadja a *Force = True* értéket a kérelemben szereplő URI azonosítóhoz.
-5.  Kattintson a *Futtatás* gombra
-
-A válasznak 200 OK kell lennie
 
 ## <a name="recover-workspace"></a>Munkaterület helyreállítása
 Ha véletlenül vagy szándékosan töröl egy Log Analytics munkaterületet, a szolgáltatás a munkaterületet egy olyan törlési állapotba helyezi, amely elérhetetlenné teszi a műveletet. A törölt munkaterület neve a törlési időszakban megmarad, és nem használható új munkaterület létrehozásához. A törlést követően a munkaterület nem állítható vissza, ezért a rendszer végleges törlésre és a hozzá tartozó névre ütemezi, és felhasználható egy új munkaterület létrehozásához.
@@ -114,7 +104,7 @@ A rendszer a helyreállítási művelet után visszaküldi a munkaterületet és
 > [!NOTE]
 > * Egy munkaterület újbóli létrehozása a Soft-delete időszakban azt jelzi, hogy a munkaterület neve már használatban van. 
  
-### <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibaelhárítás
 A munkaterület törléséhez legalább *log Analytics közreműködői* engedélyekkel kell rendelkeznie.<br>
 Ha hibaüzenet jelenik meg, akkor *a munkaterület neve már használatban van* , vagy *ütközést* okoz a munkaterület létrehozásakor, az a következő lehet:
 * A munkaterület neve nem érhető el, és a szervezete vagy más ügyfél által használt személy használja.

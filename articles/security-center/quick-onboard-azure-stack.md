@@ -3,8 +3,8 @@ title: Azure Stack virtuális gépek előkészítése Azure Security Center
 description: Ez a rövid útmutató bemutatja, hogyan építheti ki a Azure Monitor, a frissítés és a konfiguráció kezelése virtuálisgép-bővítményt egy Azure Stack virtuális gépen.
 services: security-center
 documentationcenter: na
-author: pipposera
-manager: dsavage
+author: memildin
+manager: rkarlin
 ms.assetid: 8982348a-0624-40c7-8a1e-642a523c7f6b
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
-ms.author: fiseraci
-ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: memildin
+ms.openlocfilehash: 1f0a11616fe996f02d6464d23724156906176041
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73686522"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771155"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Gyors útmutató: a Azure Stack virtuális gépek előkészítése Security Center
 Az Azure-előfizetés bevezetését követően engedélyezheti Security Center a Azure Stack-on futó virtuális gépeknek a Azure Stack piactéren való hozzáadásával a **Azure monitor, a frissítés és a konfiguráció kezelése** virtuálisgép-bővítményt.
@@ -33,7 +33,7 @@ A rövid útmutató elkezdése előtt rendelkeznie kell egy Azure-előfizetésse
 
 ## <a name="select-your-workspace-in-azure-security-center"></a>Válassza ki a munkaterületét Azure Security Center
 
-1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
+1. Jelentkezzen be az [Azure Portalon](https://azure.microsoft.com/features/azure-portal/).
 2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő. 
 
    ![Security Center – Áttekintés][2]
@@ -41,7 +41,7 @@ A rövid útmutató elkezdése előtt rendelkeznie kell egy Azure-előfizetésse
 3. A Security Center főmenüjében válassza az **Első lépések** elemet.
 4. Válassza a **Bevezetés** lapot.
 
-   ![Első lépések][3]
+   ![Bevezetés][3]
 
 5. Kattintson az **Új nem Azure-beli számítógépek hozzáadása** pont alatt található **Konfigurálás** elemre. Megjelenik a Log Analytics-munkaterületek listája. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik munkaterületet, amelyhez a Azure Stack virtuális gép biztonsági adatként jelentést szeretne készíteni.
 
@@ -86,7 +86,7 @@ A **Számítás** panelen kétféle ikon található:
 
 ![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure-beli virtuális gép (Azure Stack virtuális gépek ebben a csoportban jelennek meg)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha már nincs rá szükség, eltávolíthatja a bővítményt a virtuális gépről a Azure Stack-portálon keresztül.
 
 A bővítmény eltávolítása:

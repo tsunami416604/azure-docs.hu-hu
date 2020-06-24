@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 11/9/2017
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c2490d8dc1d828992d309f07de1f75fa61ecb3be
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 14b248988ef2f43a3164636ff0290dd736651e8f
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200959"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106586"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
 Mostantól akár 1000 virtuális gép kapacitású Azure [virtuálisgép-méretezési csoportokat](/azure/virtual-machine-scale-sets/) is létrehozhat. Ebben a dokumentumban a _nagyméretű virtuálisgép-méretezési csoport_ egy 100 virtuális gépnél nagyobb skálázásra képes méretezési csoportként van meghatározva. Ezt a képességet a méretezési csoport egyik tulajdonsága adja meg (_singlePlacementGroup=False_). 
@@ -76,7 +76,7 @@ Ha egy Azure Resource Manager-sablon összeállításával hoz létre nagyméret
     }
 ```
 
-A nagyméretű méretezési csoport sablonjának teljes példáját a következő témakörben találja: [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json) .
+A nagyméretű méretezési csoport sablonjának teljes példáját a következő témakörben találja: [https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json) .
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Meglévő méretezési csoportok konvertálása, hogy több elhelyezési csoportra terjedjenek ki
 Ahhoz, hogy egy már meglévő virtuálisgép-méretezési csoport több mint 100 virtuális géphez skálázódhasson, a _singlePlacementGroup_ tulajdonságot _false_ értékre kell állítania a méretezésicsoport-modellben. Az [Azure Resource Explorerrel](https://resources.azure.com/) tesztelheti ennek a tulajdonságnak a módosítását. Keressen egy már létező méretezési csoportot, válassza a _Szerkesztés_ lehetőséget, majd módosítsa a _singlePlacementGroup_ tulajdonságot. Ha nem látja ezt a tulajdonságot, előfordulhat, hogy a Microsoft.Compute API egy régebbi változatával tekinti meg a méretezési csoportot.

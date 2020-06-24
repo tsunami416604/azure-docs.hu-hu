@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277777"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697690"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Az Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
@@ -24,7 +24,7 @@ Az alábbiakban az ajánlott eljárások azt ismertetik, hogyan hozhat létre é
 
 A nagyméretű, hosszan futó függvények váratlan időtúllépési problémákhoz vezethetnek. Ha többet szeretne megtudni egy adott üzemeltetési csomag időtúllépéséről, tekintse meg a [Function app timeout időtartamát](functions-scale.md#timeout). 
 
-A függvények nagy méretűek lehetnek a Node. js-függőségek miatt. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti. 
+A függvények sok Node.js függőség miatt nagy méretűek lehetnek. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti. 
 
 Amikor csak lehetséges, a nagyméretű függvények újrabontása kisebb functions-készletekbe, amelyek együtt működnek, és a válaszokat gyorsan adják vissza. Előfordulhat például, hogy egy webhook vagy egy HTTP trigger függvény egy bizonyos időkorláton belül visszaigazolási választ kér. gyakori, hogy a webhookok azonnali választ igényelnek. A HTTP-trigger hasznos adatait átadhatja egy, a várólista-trigger függvény által feldolgozandó várólistába. Ezzel a megközelítéssel késleltetheti a tényleges munkát, és azonnali választ adhat vissza.
 
@@ -44,7 +44,7 @@ Az Event hubok hasznosak a nagy mennyiségű kommunikáció támogatásához.
 
 ### <a name="write-functions-to-be-stateless"></a>Az írási függvények állapot nélküliek lesznek 
 
-A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációkat az adataihoz. Például egy feldolgozandó megrendelés valószínűleg egy társított `state` taggal fog rendelkezni. Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
+A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációkat az adataihoz. Például egy feldolgozandó megrendelés valószínűleg egy társított taggal fog rendelkezni `state` . Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
 
 A idempotens functions használata különösen ajánlott időzítő eseményindítókkal. Ha például olyan dolog van, amely naponta egyszer kell futnia, írja meg, hogy a nap folyamán bármikor fusson ugyanazzal az eredménnyel. A függvény akkor léphet ki, ha egy adott nap nem működik. Ha egy korábbi Futtatás nem fejeződött be, a következő futtatásnak kell megadnia, ahol abbahagyta.
 
@@ -92,7 +92,7 @@ Ne használja a részletes naplózást az éles kódban, amely negatív hatássa
 
 Az aszinkron programozás ajánlott eljárás, különösen az I/O-műveletek blokkolása esetén.
 
-A C# nyelvben mindig Kerülje a `Result` tulajdonság vagy a hívás `Wait` metódusának hivatkozását `Task` egy példányon. Ez a módszer a szál kimerülését eredményezheti.
+A C# nyelvben mindig Kerülje a `Result` tulajdonság vagy a hívás `Wait` metódusának hivatkozását egy `Task` példányon. Ez a módszer a szál kimerülését eredményezheti.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -104,17 +104,17 @@ A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a 
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Üzenetek fogadása kötegben, amikor csak lehetséges
 
-Egyes eseményindítók, például az Event hub lehetővé teszik egy köteg üzenet fogadását egyetlen meghíváskor.  A kötegelt üzenetek sokkal jobb teljesítményt biztosítanak.  A maximális batch-méret a `host.json` fájlban a [Host. JSON dokumentációjában](functions-host-json.md) részletesen is konfigurálható.
+Egyes eseményindítók, például az Event hub lehetővé teszik egy köteg üzenet fogadását egyetlen meghíváskor.  A kötegelt üzenetek sokkal jobb teljesítményt biztosítanak.  A (z) `host.json` [host.jsa dokumentációban](functions-host-json.md) részletesen beállíthatja a Batch maximális méretét.
 
-A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például `EventData sensorEvent` a metódus aláírása helyett lehet `EventData[] sensorEvent`.  Más nyelvek esetében explicit módon be kell állítania a kardinális tulajdonságot `function.json` a- `many` ben, hogy az [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)engedélyezze a kötegelt feldolgozást.
+A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például `EventData sensorEvent` a metódus aláírása helyett lehet `EventData[] sensorEvent` .  Más nyelvek esetében explicit módon be kell állítania a kardinális tulajdonságot a-ben, hogy `function.json` az `many` [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)engedélyezze a kötegelt feldolgozást.
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>A gazdagép viselkedésének konfigurálása a Egyidejűség jobb kezelésére
 
 A `host.json` Function alkalmazásban található fájl lehetővé teszi a gazdagép-futtatókörnyezet és az aktiválási viselkedés konfigurációját.  A Batch-viselkedésen kívül számos eseményindító esetében is kezelheti a párhuzamosságot. Az ilyen beállításokban szereplő értékek gyakran módosítják az egyes példányok megfelelő méretezését a meghívott függvények igényei szerint.
 
-A Host. JSON fájlban lévő beállítások a függvény *egyetlen példányán* belül az alkalmazáson belüli összes függvényre érvényesek. Ha például két HTTP-függvényt és [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) kérést tartalmazó Function alkalmazást használ, a http-triggerre irányuló kérelem a közös 25 egyidejű kérelemre is beleszámít.  Ha a függvény alkalmazása 10 példányra van méretezve, a két függvény hatékonyan engedélyezi az 250 egyidejű kérelmeket (10 példány * 25 egyidejű kérelem/példány). 
+A host.jsfájljának beállításai az alkalmazáson belüli összes függvényre érvényesek a függvény *egyetlen példányán* belül. Ha például két HTTP-függvényt és kérést tartalmazó Function alkalmazást használ [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) , a http-triggerre irányuló kérelem a közös 25 egyidejű kérelemre is beleszámít.  Ha a függvény alkalmazása 10 példányra van méretezve, a két függvény hatékonyan engedélyezi az 250 egyidejű kérelmeket (10 példány * 25 egyidejű kérelem/példány). 
 
-Más gazdagép-konfigurációs beállítások a [Host. JSON konfigurációs cikkben](functions-host-json.md)találhatók.
+További gazdagép-konfigurációs beállítások találhatók a [host.json Configuration cikkben](functions-host-json.md).
 
 ## <a name="next-steps"></a>További lépések
 

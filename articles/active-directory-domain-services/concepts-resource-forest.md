@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: e0e5dde246dbcd5e5cb2e4ae923872a59a539d87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f34ba9b9ebdc395338ef65b696fa9748417e20e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476400"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734911"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Az erőforrás-erdőhöz kapcsolódó fogalmak és szolgáltatások Azure Active Directory Domain Services
 
-A Azure Active Directory Domain Services (AD DS) bejelentkezési élményt nyújt az örökölt, helyszíni és üzletági alkalmazásokhoz. A helyszíni és a Felhőbeli felhasználók felhasználóinak, csoportjainak és jelszavainak kivonatai szinkronizálva lesznek az Azure AD DS felügyelt tartományával. Ezek a szinkronizált jelszó-kivonatok lehetővé teszi a felhasználók számára, hogy a helyszíni AD DS, az Office 365 és a Azure Active Directory számára egyetlen hitelesítő adatot használjanak.
+A Azure Active Directory Domain Services (Azure AD DS) bejelentkezési élményt nyújt az örökölt, helyszíni és üzletági alkalmazásokhoz. A helyszíni és a Felhőbeli felhasználók felhasználóinak, csoportjainak és jelszavainak kivonatai szinkronizálva lesznek az Azure AD DS felügyelt tartományával. Ezek a szinkronizált jelszó-kivonatok lehetővé teszi a felhasználók számára, hogy a helyszíni AD DS, az Office 365 és a Azure Active Directory számára egyetlen hitelesítő adatot használjanak.
 
 Bár a biztonságos és további biztonsági előnyöket biztosít, egyes szervezetek nem tudják szinkronizálni ezeket a felhasználói jelszavakat az Azure AD-be vagy az Azure AD DSba. Előfordulhat, hogy a szervezetben lévő felhasználók nem ismerik a jelszavukat, mert csak az intelligens kártyás hitelesítést használják. Ezek a korlátozások megakadályozzák, hogy egyes szervezetek az Azure AD DS használatával felemelik és áthelyezhetik a helyi klasszikus alkalmazásokat az Azure-ba.
 
-Ezeknek az igényeknek és korlátozásoknak a megoldásához létrehozhat egy erőforrás-erdőt használó Azure AD DS felügyelt tartományt. Ez a fogalmi cikk a biztonságos hitelesítési módszer biztosításához szükséges erdőket ismerteti, valamint azt, hogy miként bíznak más erőforrásokban. Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
+Ezen igények és korlátozások kezelése érdekében létrehozhat egy erőforrás-erdőt használó felügyelt tartományt. Ez a fogalmi cikk a biztonságos hitelesítési módszer biztosításához szükséges erdőket ismerteti, valamint azt, hogy miként bíznak más erőforrásokban. Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
 
 > [!IMPORTANT]
 > Az Azure AD DS erőforrás-erdők jelenleg nem támogatják az Azure HDInsight vagy a Azure Files. Az alapértelmezett Azure AD DS felhasználói erdők mindkét további szolgáltatást támogatják.
@@ -34,7 +34,7 @@ Az *erdők* Active Directory tartományi szolgáltatások (AD DS) által haszná
 
 Az Azure AD DSban az erdő csak egy tartományt tartalmaz. A helyszíni AD DS erdők gyakran sok tartományt tartalmaznak. A nagyméretű szervezeteknél – különösen az összevonások és a beszerzések után – előfordulhat, hogy több helyszíni erdővel is rendelkezik, amelyek mindegyike több tartományt tartalmaz.
 
-Alapértelmezés szerint az Azure AD DS felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. A felhasználói fiókok közvetlenül hitelesíthetők az Azure AD DS felügyelt tartományon, például egy tartományhoz csatlakoztatott virtuális gépre való bejelentkezéshez. A felhasználói erdő akkor működik, ha a jelszó-kivonatok szinkronizálhatók, és a felhasználók nem használnak exkluzív bejelentkezési módszereket, például az intelligens kártyás hitelesítést.
+Alapértelmezés szerint a felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. A felhasználói fiókok közvetlenül hitelesíthetők a felügyelt tartományon, például bejelentkezhetnek egy tartományhoz csatlakoztatott virtuális gépre. A felhasználói erdő akkor működik, ha a jelszó-kivonatok szinkronizálhatók, és a felhasználók nem használnak exkluzív bejelentkezési módszereket, például az intelligens kártyás hitelesítést.
 
 Egy Azure-AD DS *erőforrás* -erdőben a felhasználók egy egyirányú erdőszintű *megbízhatósági kapcsolaton* keresztül hitelesíthetők a helyszíni AD DS. Ezzel a módszerrel a felhasználói objektumok és jelszavak kivonatai nem szinkronizálhatók az Azure AD DS. A felhasználói objektumok és a hitelesítő adatok csak a helyszíni AD DSban találhatók. Ez a megközelítés lehetővé teszi, hogy a vállalatok az Azure-ban olyan erőforrásokat és alkalmazás-platformokat működtessenek, amelyek a klasszikus hitelesítéstől (például LDAPs, Kerberos vagy NTLM) függenek, de a hitelesítési problémák és a problémák el Az Azure AD DS erőforrás-erdők jelenleg előzetes verzióban érhetők el.
 

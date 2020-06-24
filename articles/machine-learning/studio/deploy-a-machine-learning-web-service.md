@@ -5,17 +5,17 @@ description: Betanítási kísérlet előkészítése prediktív kísérletre, e
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: e1efa4fa3a222a11c35f642f68310109c4f32712
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118522"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696388"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás üzembe helyezése
 
@@ -210,7 +210,7 @@ A díjszabás régió-specifikus, ezért meg kell határoznia egy számlázási 
 6. Az **erőforráscsoport** legördülő listából válassza ki a csomaghoz tartozó erőforráscsoportot. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/management/overview.md)).
 7. A **csomag neve** mezőbe írja be a csomag nevét.
 8. A **terv beállításai**területen kattintson az új csomag számlázási szintjére.
-9. Kattintson a **Létrehozás**gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Webszolgáltatás üzembe helyezése egy másik régióban
 

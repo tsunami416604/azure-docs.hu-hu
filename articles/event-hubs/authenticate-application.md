@@ -6,17 +6,17 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4cef49f138b96848b8e59cb5b2d0b185d4568aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64cd07fc75b91ad7f6a4e01b1c5e0ba06739c50f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521001"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296729"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Alkalmazás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
-A Microsoft Azure Azure Active Directory (Azure AD) alapján integrált hozzáférés-vezérlési felügyeletet biztosít az erőforrásokhoz és alkalmazásokhoz. Az Azure AD és az Azure Event Hubs használatának egyik legfőbb előnye, hogy a hitelesítő adatait többé nem kell a kódban tárolnia. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformon. A jogkivonatot kérő erőforrás neve `https://eventhubs.azure.net/` (a Kafka-ügyfelek esetében a jogkivonat igénylésére szolgáló erőforrás `https://<namespace>.servicebus.windows.net`). Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti az Azure Event Hubs-erőforrásokra vonatkozó kéréseket.
+A Microsoft Azure Azure Active Directory (Azure AD) alapján integrált hozzáférés-vezérlési felügyeletet biztosít az erőforrásokhoz és alkalmazásokhoz. Az Azure AD és az Azure Event Hubs használatának egyik legfőbb előnye, hogy a hitelesítő adatait többé nem kell a kódban tárolnia. Ehelyett OAuth 2,0 hozzáférési tokent igényelhet a Microsoft Identity platformon. A jogkivonatot kérő erőforrás neve `https://eventhubs.azure.net/` (a Kafka-ügyfelek esetében a jogkivonat igénylésére szolgáló erőforrás `https://<namespace>.servicebus.windows.net` ). Az Azure AD az alkalmazást futtató rendszerbiztonsági tag (felhasználó, csoport vagy egyszerű szolgáltatás) hitelesítését végzi. Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás a hozzáférési token használatával engedélyezheti az Azure Event Hubs-erőforrásokra vonatkozó kéréseket.
 
 Ha egy szerepkört egy Azure AD-rendszerbiztonsági tag rendel hozzá, az Azure hozzáférést biztosít ezen erőforrásokhoz az adott rendszerbiztonsági tag számára. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Event Hubs névtér vagy az alatta lévő erőforrás szintjére is kiterjed. Az Azure AD-biztonság szerepköröket rendelhet egy felhasználóhoz, egy csoporthoz, egy egyszerű alkalmazáshoz vagy egy [felügyelt identitáshoz az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md). 
 

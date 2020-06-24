@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: VisualStudio
-ms.openlocfilehash: 134f0202b4b18e96b9f089460f4235c6b5c0fe4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ecec05da3904782199e68cfdca917a8c451edec6
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652673"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105985"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-lemezképek az Azure-ban
 A Visual Studio egy előre konfigurált Azure-beli virtuális gépen (VM) gyorsan és egyszerűen elvégezhető, hogy ne legyenek elérhetők a felhasználható fejlesztési környezetek. A különböző Visual Studio-konfigurációkkal rendelkező rendszerképek az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)érhetők el.
@@ -104,7 +104,7 @@ További információ: [általánosított virtuális gép felügyelt rendszerké
 > [!NOTE]
 > A lemezképek tárolásának költségei továbbra is fennállnak, de a növekményes költségek nem jelentősek, mint a virtuális gép teljesen új, az egyes csapattagok számára történő újraépítéséhez szükséges költségek. Például a teljes csapat által felhasználható havi 127 GB-os rendszerképek létrehozása és tárolása több dollárt is igénybe vehet. Ezek a költségek azonban jelentéktelenek, mint az egyes alkalmazottak által a megfelelő módon konfigurált dev Box kiépítésének és érvényesítésének ideje.
 
-Emellett előfordulhat, hogy a fejlesztési feladatokhoz vagy technológiákhoz több méretezésre van szükség, például a fejlesztési konfigurációk és a több gép konfigurációjának változatosságára. A Azure DevTest Labs használatával olyan _recepteket_ hozhat létre, amelyek automatizálják az "arany rendszerkép" kialakítását. A DevTest Labs szolgáltatással is kezelheti a csoportok futó virtuális gépek szabályzatait. A DevTest Labs szolgáltatással kapcsolatos további információkért a [Azure DevTest Labs for Developers használata](/azure/devtest-lab/devtest-lab-developer-lab) a legjobb forrás.
+Emellett előfordulhat, hogy a fejlesztési feladatokhoz vagy technológiákhoz több méretezésre van szükség, például a fejlesztési konfigurációk és a több gép konfigurációjának változatosságára. A Azure DevTest Labs használatával olyan _recepteket_ hozhat létre, amelyek automatizálják az "arany rendszerkép" kialakítását. A DevTest Labs szolgáltatással is kezelheti a csoportok futó virtuális gépek szabályzatait. A DevTest Labs szolgáltatással kapcsolatos további információkért a [Azure DevTest Labs for Developers használata](../../devtest-labs/devtest-lab-developer-lab.md) a legjobb forrás.
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy már ismeri az előre konfigurált Visual Studio-rendszerképeket, a következő lépés egy új virtuális gép létrehozása:

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f4a90859831e6134530b94dfa80c11eb740301a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72754979"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113313"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 
@@ -24,7 +24,7 @@ Azure Cosmos DB a Common NoSQL-adatbázisok, például a Cassandra, a MongoDB, a
 
 Alapértelmezés szerint a Azure Cosmos DB API-MongoDB használatával létrehozott új fiókok kompatibilisek az MongoDB Wire protokoll 3,6-es verziójával. Minden olyan MongoDB-ügyfél-illesztőprogram, amely megérti ezt a protokoll-verziót, natív módon csatlakozhat Cosmos DBhoz.
 
-![MongoDB-hez készült Azure Cosmos DB API](./media/mongodb-introduction/cosmosdb-mongodb.png)
+:::image type="content" source="./media/mongodb-introduction/cosmosdb-mongodb.png" alt-text="MongoDB-hez készült Azure Cosmos DB API" border="false":::
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
@@ -40,7 +40,7 @@ Az Cosmos DB fő előnye, hogy teljes körűen felügyelt, globálisan elosztott
 
 Kövesse a gyors útmutatókat, és hozzon létre egy Azure Cosmos-fiókot, és telepítse át a meglévő MongoDB alkalmazást Azure Cosmos DB használatára, vagy hozzon létre egy újat:
 
-* [Egy meglévő MongoDB Node. js-webalkalmazás migrálása](create-mongodb-nodejs.md).
+* [Meglévő MongoDB migrálása Node.js webalkalmazásra](create-mongodb-nodejs.md).
 * [Webalkalmazás létrehozása a MongoDB és a .NET SDK-hoz készült Azure Cosmos DB API-val](create-mongodb-dotnet.md)
 * [A MongoDB és a Java SDK Azure Cosmos DB API-ját használó konzolos alkalmazás létrehozása](create-mongodb-java.md)
 

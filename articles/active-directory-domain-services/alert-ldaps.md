@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71258047"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735030"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: Secure LDAP riasztások a Azure Active Directory Domain Services
 
@@ -32,7 +32,7 @@ Ez a cikk segítséget nyújt az Azure AD DS biztonságos LDAP-hozzáféréssel 
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha engedélyezi a biztonságos LDAP használatát, ajánlott olyan további szabályokat létrehozni, amelyek korlátozzák a bejövő LDAP-hozzáférést adott IP-címekhez. Ezek a szabályok védik az Azure AD DS felügyelt tartományt a találgatásos támadásokkal szemben. A hálózati biztonsági csoport frissítéséhez a 636-as TCP-port biztonságos LDAP-hozzáférésének korlátozásához hajtsa végre a következő lépéseket:
+Ha engedélyezi a biztonságos LDAP használatát, ajánlott olyan további szabályokat létrehozni, amelyek korlátozzák a bejövő LDAP-hozzáférést adott IP-címekhez. Ezek a szabályok a találgatásos támadásokkal védik a felügyelt tartományt. A hálózati biztonsági csoport frissítéséhez a 636-as TCP-port biztonságos LDAP-hozzáférésének korlátozásához hajtsa végre a következő lépéseket:
 
 1. A Azure Portal keresse meg és válassza ki a **hálózati biztonsági csoportok**elemet.
 1. Válassza ki a felügyelt tartományhoz társított hálózati biztonsági csoportot, például: *AADDS-contoso.com-NSG*, majd válassza a **bejövő biztonsági szabályok** elemet.
@@ -43,7 +43,7 @@ Ha engedélyezi a biztonságos LDAP használatát, ajánlott olyan további szab
 1. Adja meg a szabály prioritását, majd adjon meg egy nevet, például *RestrictLDAPS*.
 1. Ha elkészült, válassza a **Hozzáadás** elemet a szabály létrehozásához.
 
-Az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
+A felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
 > [!TIP]
 > A 636-es TCP-port nem az egyetlen olyan szabály, amely az Azure AD DS zökkenőmentes működéséhez szükséges. További információ: [Azure AD DS hálózati biztonsági csoportok és szükséges portok](network-considerations.md#network-security-groups-and-required-ports).

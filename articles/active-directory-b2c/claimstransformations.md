@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529128"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202959"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -37,8 +37,8 @@ A **ClaimsTransformation** elem a következő attribútumokat tartalmazza:
 
 | Attribútum |Kötelező | Leírás |
 | --------- |-------- | ----------- |
-| Azonosító |Igen | Egy azonosító, amely a jogcím-átalakítás egyedi azonosítására szolgál. Az azonosító a házirendben szereplő egyéb XML-elemektől hivatkozik. |
-| TransformationMethod | Igen | A jogcím-átalakításban használandó átalakítási módszer. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
+| Azonosító |Yes | Egy azonosító, amely a jogcím-átalakítás egyedi azonosítására szolgál. Az azonosító a házirendben szereplő egyéb XML-elemektől hivatkozik. |
+| TransformationMethod | Yes | A jogcím-átalakításban használandó átalakítási módszer. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
@@ -79,8 +79,8 @@ A **InputClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum |Kötelező | Leírás |
 | --------- | ----------- | ----------- |
-| ClaimTypeReferenceId |Igen | A szabályzat ClaimsSchema szakaszában már definiált ClaimType mutató hivatkozás. |
-| TransformationClaimType |Igen | Egy átalakítási jogcím típusára hivatkozó azonosító. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
+| ClaimTypeReferenceId |Yes | A szabályzat ClaimsSchema szakaszában már definiált ClaimType mutató hivatkozás. |
+| TransformationClaimType |Yes | Egy átalakítási jogcím típusára hivatkozó azonosító. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
 
 ### <a name="inputparameters"></a>InputParameters
 
@@ -94,9 +94,9 @@ A **InputParameters** elem a következő elemet tartalmazza:
 
 | Attribútum | Kötelező |Leírás |
 | --------- | ----------- |----------- |
-| Azonosító | Igen | Egy azonosító, amely a jogcím-átalakítási módszer egyik paraméterére hivatkozik. Minden jogcím-átalakítási módszer saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a jogcím-átalakítási táblázatot. |
-| DataType | Igen | A paraméter adattípusa (például string, Boolean, int vagy DateTime) az egyéni házirend XML-sémájában az adattípus enumerálása alapján. Ez a típus a aritmetikai műveletek megfelelő végrehajtásához használatos. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
-| Érték | Igen | Egy olyan érték, amely szó szerint az átalakításhoz lett átadva. Egyes értékek tetszőlegesek, néhányat a jogcím-átalakítási módszer közül választhat ki. |
+| Azonosító | Yes | Egy azonosító, amely a jogcím-átalakítási módszer egyik paraméterére hivatkozik. Minden jogcím-átalakítási módszer saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a jogcím-átalakítási táblázatot. |
+| DataType | Yes | A paraméter adattípusa (például string, Boolean, int vagy DateTime) az egyéni házirend XML-sémájában az adattípus enumerálása alapján. Ez a típus a aritmetikai műveletek megfelelő végrehajtásához használatos. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
+| Érték | Yes | Egy olyan érték, amely szó szerint az átalakításhoz lett átadva. Egyes értékek tetszőlegesek, néhányat a jogcím-átalakítási módszer közül választhat ki. |
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -112,8 +112,8 @@ A **OutputClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum |Kötelező | Leírás |
 | --------- | ----------- |----------- |
-| ClaimTypeReferenceId | Igen | A szabályzat ClaimsSchema szakaszában már definiált ClaimType mutató hivatkozás.
-| TransformationClaimType | Igen | Egy átalakítási jogcím típusára hivatkozó azonosító. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
+| ClaimTypeReferenceId | Yes | A szabályzat ClaimsSchema szakaszában már definiált ClaimType mutató hivatkozás.
+| TransformationClaimType | Yes | Egy átalakítási jogcím típusára hivatkozó azonosító. Minden jogcím-átalakítás saját értékekkel rendelkezik. A rendelkezésre álló értékek teljes listájáért tekintse meg a [jogcím-átalakítási referenciát](#claims-transformations-reference) . |
 
 Ha a bemeneti jogcím és a kimeneti jogcím azonos típusú (karakterlánc vagy logikai), akkor ugyanazt a bemeneti jogcímet használhatja, mint a kimeneti jogcím. Ebben az esetben a jogcím-átalakítás megváltoztatja a bemeneti jogcímet a kimeneti értékkel.
 
@@ -121,7 +121,7 @@ Ha a bemeneti jogcím és a kimeneti jogcím azonos típusú (karakterlánc vagy
 
 Előfordulhat például, hogy a felhasználó által elfogadott szolgáltatási feltételek utolsó verzióját tárolja. A szolgáltatások használati feltételeinek frissítésekor megkérheti a felhasználót, hogy fogadja el az új verziót. A következő példában a **HasTOSVersionChanged** jogcím-átalakítás összehasonlítja a **TOSVersion** -jogcím értékét az **LastTOSAcceptedVersion** jogcím értékével, majd visszaadja a logikai **TOSVersionChanged** jogcímet.
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="TOSVersionChanged">
@@ -160,7 +160,7 @@ Előfordulhat például, hogy a felhasználó által elfogadott szolgáltatási 
 A jogcímek átalakítására vonatkozó példákért tekintse meg a következő hivatkozási lapokat:
 
 - [Logikai](boolean-transformations.md)
-- [Dátum](date-transformations.md)
+- [Date](date-transformations.md)
 - [Egész szám](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Telefonszám](phone-number-claims-transformations.md)

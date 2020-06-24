@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 065365ec2dc429013732725ccb22f73c519b6c0e
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768734"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85200165"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Legfontosabb tranzakciók (a maximálisan engedélyezett tranzakciók 10 másodpercen belül, tároló régiónként<sup>1</sup>):
 
@@ -46,7 +46,10 @@ További információ a korlátozásoknak a határértékek túllépése esetén
 
 ### <a name="azure-private-link-integration"></a>Azure Private link-integráció
 
+> [!NOTE]
+> Az előfizetések által engedélyezett privát végpontokkal rendelkező kulcstartók száma állítható korlát. Az alább látható korlát az alapértelmezett korlát. Ha korlátozni szeretné a szolgáltatás korlátozását, küldjön e-mailt a címre akv-privatelink@microsoft.com . Ezeket a kéréseket eseti alapon kell jóváhagyni.
+
 | Erőforrás | Korlát |
 | -------- | ----- |
 | Privát végpontok a Key vaultban | 64 |
-| Privát végpontok által előfizetett kulcstartók | 64 |
+| Privát végpontok által előfizetett kulcstartók | 400 |

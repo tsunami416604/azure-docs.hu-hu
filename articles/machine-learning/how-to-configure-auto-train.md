@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 06889f3df0200535e9b011fd87378e6f7803e668
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6759f7769d106e9adca5fcd01a454195a758634f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552305"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204456"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -58,12 +58,10 @@ Osztályozás | Regresszió | Idősoros előrejelzés
 [Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN lineáris osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineáris Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Lineáris Regressor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Gyors lineáris Regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Automatikus ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Sztochasztikus gradiens leereszkedés (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Online színátmenet-leereszkedés Regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Próféta](https://facebook.github.io/prophet/docs/quick_start.html)
-|[Átlagos Perceptron osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
-|[Lineáris SVM osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
+[Átlagos Perceptron osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)|[Online színátmenet-leereszkedés Regressor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest) |[Automatikus ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* ||[Próféta](https://facebook.github.io/prophet/docs/quick_start.html)
+[Sztochasztikus gradiens leereszkedés (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
+|[Lineáris SVM osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)*||
 
 A `task` `AutoMLConfig` kísérlet típusának megadásához használja a konstruktor paraméterét.
 
@@ -117,13 +115,14 @@ A következő témakörben talál példát arra, [Hogyan](how-to-train-with-data
 
 ## <a name="train-and-validation-data"></a>Betanítási és érvényesítési adatkészletek
 
-A konstruktorban külön betanítási és érvényesítési készletek is megadhatók `AutoMLConfig` .
+Az alábbi beállításokkal adhat meg külön betanítási és ellenőrzési készleteket közvetlenül a `AutoMLConfig` konstruktorban. További információ az [adatfelosztások és a AutoML-kísérletek határokon való ellenőrzésének konfigurálásáról](how-to-configure-cross-validation-data-splits.md) . 
 
 ### <a name="k-folds-cross-validation"></a>K-összecsukható kereszt-ellenőrzés
 
 `n_cross_validations`A beállítással adhatja meg a több érvényesítést. A betanítási adatkészletet véletlenszerűen felosztja a rendszer az `n_cross_validations` egyenlő mérettel. Az egyes átellenőrzési körökben a rendszer az egyik hajtogatást használja a fennmaradó hajtogatási modell érvényesítéséhez. Ez a folyamat `n_cross_validations` csak akkor ismétlődik a körökhöz, ha az egyes összekapcsolások érvényesítési készletként egyszer szerepelnek. A rendszer az összes kör átlagos pontszámát `n_cross_validations` fogja jelenteni, és a hozzá tartozó modell a teljes betanítási adatkészletre lesz átképezve.
 
 További információ arról, hogy a autoML hogyan alkalmazza a határokon átnyúló ellenőrzéseket a [túlzottan illeszkedő modellek megelőzése](concept-manage-ml-pitfalls.md#prevent-over-fitting)érdekében.
+
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo Cross Validation (ismétlődő véletlenszerű almintavételezés)
 
 Ezzel a `validation_size` beállítással megadhatja az érvényesítéshez használandó betanítási adatkészlet százalékos arányát, és `n_cross_validations` a használatával megadhatja a kereszthivatkozások számát. Az egyes átellenőrzési körökben a méret egy részhalmaza `validation_size` véletlenszerűen lesz kiválasztva a fennmaradó adattípusra képzett modell érvényesítéséhez. Végül az összes kör átlagos pontszáma is `n_cross_validations` jelenteni fog, és a rendszer a megfelelő modellt a teljes betanítási adatkészleten át fogja képezni. A Monte Carlo nem támogatott az idősorozat-előrejelzéshez.
@@ -512,7 +511,10 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
 
 Általános információk arról, hogy a modell magyarázatait és funkcióinak fontosságát az SDK más területein is engedélyezheti az automatikus gépi tanuláson kívül: a [koncepcióról](how-to-machine-learning-interpretability.md) szóló cikk értelmezése.
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> A magyarázat-ügyfél jelenleg nem támogatja a ForecastTCN modellt. Ez a modell nem ad vissza magyarázat-irányítópultot, ha az a legjobb modellként lett visszaadva, és nem támogatja az igény szerinti magyarázatok futtatását.
+
+## <a name="next-steps"></a>További lépések
 
 + További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/23/2020
+ms.date: 06/23/2020
 ms.author: spelluru
 ms.reviewer: shvija
-ms.openlocfilehash: 0fc1a29aa34be8e692a92c7c1cfb73b5c22b037d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 985e85e0958984be6ebecb9f0898e2723de9e85d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665186"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297290"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Partíciók dinamikus hozzáadása egy Event hub-hoz (Apache Kafka témakörhöz) az Azure-ban Event Hubs
 Az Event Hubs üzenetstreamelést biztosít egy particionált felhasználói mintán keresztül, amelyben mindegyik felhasználó az üzenetstream csak egy adott részét, vagyis partícióját olvassa. Ez a minta biztosítja a horizontális skálázhatóságot az eseményfeldolgozáshoz, és egyéb, streamközpontú szolgáltatásokat is nyújt, amelyek az üzenetsorokban vagy témakörökben nem érhetők el. A partíció események egy rendezett sorozata az eseményközpontban. Ahogy újabb események érkeznek, a rendszer hozzáadja a sorozatot a végéhez. A partíciókkal kapcsolatos további információkért lásd: [partíciók](event-hubs-scalability.md#partitions)

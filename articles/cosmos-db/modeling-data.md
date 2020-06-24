@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 523049ea3286445117f41147f3dd12a2c911d1ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4125d7ea17c6ebab28ef8e5fde5af5475d07002d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72755017"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113381"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Adatmodellezés Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Amikor megkezdi az adatok modellezését Azure Cosmos DB próbálja meg kezelni 
 
 Az összehasonlításhoz először lássuk, hogyan lehet egy relációs adatbázisban modellezni az adatmodellt. Az alábbi példa azt szemlélteti, hogy egy személy hogyan tárolható egy kapcsolódó adatbázisban.
 
-![Rokon adatbázis-modell](./media/sql-api-modeling-data/relational-data-model.png)
+:::image type="content" source="./media/sql-api-modeling-data/relational-data-model.png" alt-text="Rokon adatbázis-modell" border="false":::
 
 A kapcsolati adatbázisok használatakor a stratégia az összes adathalmaz normalizálása. Az adatnormalizálás általában magában foglalja egy entitás, például egy személy bevonását és a különálló összetevőkbe való lebontását. A fenti példában egy személy több kapcsolattartási adattal és több rekorddal is rendelkezhet. A kapcsolattartási adatok tovább bonthatók a gyakori mezők (például egy típus) további kibontásával. Ugyanez vonatkozik a címekre, az egyes rekordok lehetnek *otthoni* vagy *üzleti*típusúak.
 
@@ -282,7 +282,8 @@ A fenti példában eldobta a nem kötött gyűjteményt a közzétevői dokument
 
 Egy relációs adatbázisban *: sok* kapcsolat gyakran az illesztési táblázatokkal van modellezve, ami csak a többi táblázat rekordjait egyesíti.
 
-![Táblák csatlakoztatása](./media/sql-api-modeling-data/join-table.png)
+
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Táblák csatlakoztatása" border="false":::
 
 Lehet, hogy megkísértette ugyanazt a dolgot a dokumentumok használatával, és olyan adatmodellt hoz létre, amely a következőhöz hasonlóan néz ki.
 
@@ -373,7 +374,7 @@ Vegye figyelembe a következő JSON-t.
 
 Itt (főleg) követte a beágyazott modellt, ahol a más entitásokból származó adatok a legfelső szintű dokumentumba vannak beágyazva, de más adatok is hivatkoznak rá.
 
-Ha megtekinti a könyv dokumentumát, néhány érdekes mezőt láthatunk, amikor megtekintjük a szerzők tömbjét. Létezik egy olyan `id` mező, amely az a mező, amellyel visszahivatkozhatunk egy szerzői dokumentumra, egy normalizált modell standard gyakorlatára, de a és `name` `thumbnailUrl`a is. Megakadt az alkalmazásba, `id` és kihagytam az alkalmazást, hogy a megfelelő szerzői dokumentumhoz szükséges további információkat szerezzen a "link" használatával, de mivel az alkalmazás megjeleníti a szerző nevét és egy miniatűr képet minden egyes könyvnél, a szerzőn belüli **egyes** adatok denormalizálása révén a listában elmenthető egy oda-vissza.
+Ha megtekinti a könyv dokumentumát, néhány érdekes mezőt láthatunk, amikor megtekintjük a szerzők tömbjét. Létezik egy olyan mező, `id` amely az a mező, amellyel visszahivatkozhatunk egy szerzői dokumentumra, egy normalizált modell standard gyakorlatára, de a és a is `name` `thumbnailUrl` . Megakadt az `id` alkalmazásba, és kihagytam az alkalmazást, hogy a megfelelő szerzői dokumentumhoz szükséges további információkat szerezzen a "link" használatával, de mivel az alkalmazás megjeleníti a szerző nevét és egy miniatűr képet minden egyes könyvnél, a szerzőn belüli **egyes** adatok denormalizálása révén a listában elmenthető egy oda-vissza.
 
 Győződjön meg arról, hogy ha a szerző neve megváltozott, vagy frissíteni szeretné a fényképét, akkor azt a feltételezés alapján, hogy a szerzők gyakran nem változtatják meg a nevüket, ez egy elfogadható tervezési döntés.  
 
@@ -383,7 +384,7 @@ Az előre kiszámított mezőket tartalmazó modell lehetővé teszi, hogy Azure
 
 ## <a name="distinguishing-between-different-document-types"></a>Különböző dokumentumtípusok megkülönböztetése
 
-Bizonyos esetekben előfordulhat, hogy különböző dokumentumtípust szeretne összekeverni ugyanabban a gyűjteményben; Ez általában akkor történik, ha több, kapcsolódó dokumentumot is szeretne ugyanazon a [partíción](partitioning-overview.md)ülni. Tegyük fel például, hogy a könyvek és a könyv-felülvizsgálatok ugyanabban a gyűjteményben vannak `bookId`, és particionálja a következővel:. Ilyen esetben általában fel kell vennie a dokumentumaiba egy olyan mezővel, amely azonosítja a típusát, hogy megkülönböztesse őket.
+Bizonyos esetekben előfordulhat, hogy különböző dokumentumtípust szeretne összekeverni ugyanabban a gyűjteményben; Ez általában akkor történik, ha több, kapcsolódó dokumentumot is szeretne ugyanazon a [partíción](partitioning-overview.md)ülni. Tegyük fel például, hogy a könyvek és a könyv-felülvizsgálatok ugyanabban a gyűjteményben vannak, és particionálja a következővel: `bookId` . Ilyen esetben általában fel kell vennie a dokumentumaiba egy olyan mezővel, amely azonosítja a típusát, hogy megkülönböztesse őket.
 
     Book documents:
     {

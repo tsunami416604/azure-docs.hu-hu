@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 06/07/2020
+ms.subservice: sql-dw
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 2f04e5525610e86f460ab799bedf492381404c9e
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488647"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201633"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Ajánlott eljárások az betöltéshez a szinapszis SQL-készlet használatával
 
@@ -173,7 +173,7 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kinyerési, betöltési és átalakítási (ELT) folyamat tervezése során a MÁSOLÁSi utasítással vagy a ELT kapcsolatos további információkért lásd: [a SQL Data Warehouse tervezési](design-elt-data-loading.md).
 - A betöltési oktatóanyaghoz [használja a copy utasítást az adatok Azure Blob Storage-ból a SZINAPSZIS SQL-be való betöltéséhez](load-data-from-azure-blob-storage-using-polybase.md).

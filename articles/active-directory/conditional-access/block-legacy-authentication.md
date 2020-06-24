@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan javíthatja biztonsági állapotát azáltal, h
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e657114f4e51775fb73267322a48e362f57b1c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bd66bc742d0832cba5d6f302bfe30c85e2d82716
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641702"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253341"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel   
 
@@ -65,6 +65,7 @@ A következő beállítások tekinthetők örökölt hitelesítési protokollokn
 
 - Hitelesített SMTP – a POP és az IMAP-ügyfél által használt e-mail üzenetek küldésére használható.
 - Automatikus észlelés – az Outlook és az EAS-ügyfelek által használt postaládák keresése és kapcsolódás az Exchange Online-ban.
+- Exchange ActiveSync (EAS) – a postaládákhoz való kapcsolódásra szolgál az Exchange Online-ban.
 - Exchange Online PowerShell – az Exchange Online-hoz való kapcsolódáshoz használt távoli PowerShell-lel. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
 - Exchange Web Services (EWS) – az Outlook, az Outlook for Mac és a harmadik féltől származó alkalmazások által használt programozási felület.
 - IMAP4 – az IMAP e-mail ügyfélprogramok által használt.

@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b85859e6294fa24731bc13e9edd5fe2610e8fb6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77612745"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733959"
 ---
-# <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartományhoz tartozó bejelentkezési problémák elhárítása
+# <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartományhoz tartozó bejelentkezési problémák elhárítása
 
-Egy olyan felhasználói fiók leggyakoribb oka, amely nem tud bejelentkezni egy Azure AD DS felügyelt tartományba, például a következő helyzetekben:
+Egy olyan felhasználói fiók leggyakoribb oka, amely nem tud bejelentkezni egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományba, például a következő helyzetekben:
 
 * [A fiók még nincs szinkronizálva az Azure AD DSba.](#account-isnt-synchronized-into-azure-ad-ds-yet)
 * [Az Azure AD DS nem rendelkezik jelszó-kivonatokkal, hogy a fiók bejelentkezzen.](#azure-ad-ds-doesnt-have-the-password-hashes)
@@ -47,19 +47,19 @@ Az Azure AD az NTLM-vagy Kerberos-hitelesítéshez szükséges formátumban nem 
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>Hibrid környezetek helyszíni szinkronizálással
 
-A helyszíni AD DS-környezetből Azure AD Connectt használó hibrid környezetek esetén helyileg létrehozhatja és szinkronizálhatja a szükséges NTLM-vagy Kerberos-jelszó kivonatait az Azure AD-ben. Miután létrehozta az Azure AD DS felügyelt tartományt, [engedélyezze a jelszó-kivonatolási szinkronizálást Azure Active Directory Domain Services][azure-ad-connect-phs]. A jelszó-kivonat szinkronizációs lépése nélkül nem tud bejelentkezni egy fiókba az Azure AD DS használatával. Ha letiltja az Azure AD DS, majd újra engedélyezi, ezeket a lépéseket újra végre kell hajtania.
+A helyszíni AD DS-környezetből Azure AD Connectt használó hibrid környezetek esetén helyileg létrehozhatja és szinkronizálhatja a szükséges NTLM-vagy Kerberos-jelszó kivonatait az Azure AD-ben. A felügyelt tartomány létrehozása után [engedélyezze a jelszó-kivonatok szinkronizálását Azure Active Directory Domain Services][azure-ad-connect-phs]. A jelszó-kivonat szinkronizációs lépése nélkül nem tud bejelentkezni egy fiókba az Azure AD DS használatával. Ha letiltja az Azure AD DS, majd újra engedélyezi, ezeket a lépéseket újra végre kell hajtania.
 
 További információkért lásd: [a jelszó-kivonatolási szinkronizálás működése az Azure ad DSban][phs-process].
 
 ### <a name="cloud-only-environments-with-no-on-premises-synchronization"></a>Csak felhőalapú környezetek helyszíni szinkronizálás nélkül
 
-Az Azure AD DS felügyelt tartományokat nem helyszíni szinkronizálás nélkül, hanem csak az Azure AD-ben lévő fiókokat kell létrehoznia a szükséges NTLM-vagy Kerberos-jelszó kivonatok létrehozásához. Ha a csak felhőalapú fiók nem tud bejelentkezni, a fiók sikeresen befejeződött a jelszó módosítási folyamata az Azure AD DS engedélyezése után?
+A helyszíni szinkronizálás nélküli felügyelt tartományoknak, csak az Azure AD-fiókoknak kell létrehozniuk a szükséges NTLM-vagy Kerberos-jelszó kivonatokat. Ha a csak felhőalapú fiók nem tud bejelentkezni, a fiók sikeresen befejeződött a jelszó módosítási folyamata az Azure AD DS engedélyezése után?
 
 * **Nem, a jelszó nem módosult.**
     * [Módosítsa a fiók jelszavát][enable-user-accounts] a szükséges jelszó-kivonatok létrehozásához, majd várjon 15 percet, mielőtt újra bejelentkezik.
     * Ha letiltja az Azure AD DS, majd újra engedélyezi, minden fióknak újra kell követnie a lépéseket a jelszavuk módosításához és a szükséges jelszó-kivonatok létrehozásához.
 * **Igen, a jelszó megváltozott.**
-    * Próbáljon meg az *egyszerű felhasználónév* ( `AADDSCONTOSO\deeriley`UPN) formátum használatával `driley@aaddscontoso.com`bejelentkezni, például a *sAMAccountName* formátum helyett.
+    * Próbáljon meg az *egyszerű felhasználónév (UPN* ) formátum használatával bejelentkezni, például `driley@aaddscontoso.com` a *sAMAccountName* formátum helyett `AADDSCONTOSO\deeriley` .
     * Előfordulhat, hogy a *sAMAccountName* automatikusan jön létre azon felhasználók számára, akiknek UPN-előtagja túl hosszú, vagy a felügyelt tartomány egy másik felhasználója. Az *UPN* formátuma garantáltan egyedi az Azure ad-bérlőn belül.
 
 ## <a name="the-account-is-locked-out"></a>A fiók ki van zárva
@@ -72,7 +72,7 @@ További információ és a fiókzárolási problémák megoldása: fiókzárol�
 
 ## <a name="next-steps"></a>További lépések
 
-Ha továbbra sem sikerül csatlakoztatni a virtuális gépet az Azure AD DS felügyelt tartományhoz, [keressen segítséget a Azure Active Directory támogatási jegyének megnyitásához][azure-ad-support].
+Ha továbbra sem sikerül a virtuális gép csatlakoztatása a felügyelt tartományhoz, [keressen segítséget a Azure Active Directory támogatási jegyének megnyitásához][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md

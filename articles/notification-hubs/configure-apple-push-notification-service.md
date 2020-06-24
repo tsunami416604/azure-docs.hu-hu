@@ -4,27 +4,27 @@ description: Megtudhatja, hogyan konfigurálhat egy Azure Notification hub-t App
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 06/22/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: eb1122ba3de0002507589d3e607d1e39d905c308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63c7e0c9569428b55420911f253deee52ce440cb
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127519"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255398"
 ---
 # <a name="configure-apple-push-notification-service-settings-for-a-notification-hub-in-the-azure-portal"></a>Egy értesítési központ Apple Push Notification Service beállításainak konfigurálása a Azure Portal
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Notification hub Apple Push Notification Service (APNS) beállításait a Azure Portal használatával. 
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Notification hub Apple Push Notification Service (APNS) beállításait a Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha még nem hozott létre egy értesítési központot, hozzon létre egyet most. További információ: [Azure Notification hub létrehozása a Azure Portalban](create-notification-hub-portal.md). 
+
+Ha még nem hozott létre egy értesítési központot, hozzon létre egyet most. További információ: [Azure Notification hub létrehozása a Azure Portalban](create-notification-hub-portal.md).
 
 ## <a name="configure-apple-push-notification-service"></a>Apple Push Notification Service konfigurálása
 
@@ -34,19 +34,19 @@ Az alábbi eljárás az értesítési központ Apple Push Notification Service (
 
 1. A **hitelesítési mód**beállításnál válassza a **tanúsítvány** vagy a **token**lehetőséget.
 
-   a. Ha a **tanúsítvány**lehetőséget választja:
-   * Válassza ki a fájl ikont, majd válassza ki a feltölteni kívánt *. P12* -fájlt.
-   * Adjon meg egy jelszót.
-   * Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak, válassza a **termelési** mód lehetőséget.
+   - Ha a **tanúsítvány**lehetőséget választja:
+      - Válassza ki a fájl ikont, majd válassza ki a feltölteni kívánt *. P12* -fájlt.
+      - Adjon meg egy jelszót.
+      - Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak, válassza a **termelési** mód lehetőséget.
 
      ![Képernyőkép a APNS-tanúsítvány konfigurációjának Azure Portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-cert.png)
 
-   b. Ha a **jogkivonat**lehetőséget választja:
-
-   * Adja meg a **kulcs azonosítójának**, **a köteg azonosítójának**, a **csoport azonosítójának**és a **tokennek**az értékeit.
-   * Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak, válassza a **termelési** mód lehetőséget.
+   - Ha a **jogkivonat**lehetőséget választja:
+      - Adja meg a **kulcs azonosítójának**, **a köteg azonosítójának**, a **csoport azonosítójának**és a **tokennek**az értékeit.
+      - Válassza a **Védőfal** módot. Ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak, válassza a **termelési** mód lehetőséget.
 
      ![Képernyőkép a APNS-jogkivonat konfigurációjának Azure Portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)
 
 ## <a name="next-steps"></a>További lépések
-Az értesítések iOS-eszközökre történő leküldésével kapcsolatos részletes utasításokért tekintse meg a következő cikket: [leküldéses értesítések iOS-eszközökre Notification Hubs és APNS használatával](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+
+Az értesítések iOS-eszközökre való küldésével kapcsolatos részletes útmutatót az alábbi cikkben találja: [leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával](ios-sdk-get-started.md).

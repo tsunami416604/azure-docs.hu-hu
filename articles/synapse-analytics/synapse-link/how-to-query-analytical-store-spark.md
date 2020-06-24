@@ -5,20 +5,20 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: synapse-link
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c19a3f808b85ba9e34d3304251fe8acb21204ce
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 399aa00be3d585b1d37bab95d8108ee8a09a8791
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700200"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85195011"
 ---
 # <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Azure Cosmos DB analitikus áruház (előzetes verzió) lekérdezése az Azure szinapszis Analytics Apache Sparkával
 
-Ebből a cikkből megtudhatja, hogyan használhatja az analitikai tárolót a szinapszis-kézmozdulatokkal. A kézmozdulatok akkor láthatók, ha a jobb gombbal egy tárolóra kattint. A kézmozdulatokkal gyorsan létrehozhat programkódot, és testreszabhatja az igényeinek megfelelően. A kézmozdulatok is tökéletesek az adatelemzéshez egyetlen kattintással.
+Ez a cikk példákat mutat be arra, hogyan használhatja az analitikai tárolót a szinapszis-kézmozdulatokkal. A kézmozdulatok akkor láthatók, ha a jobb egérgombbal egy tárolóra kattint. A kézmozdulatokkal gyorsan hozhat létre kódot, és testre szabhatja azt az igényei szerint. A kézmozdulatok az adatok egy kattintással való felderítéséhez is ideálisan használhatók.
 
 ## <a name="load-to-dataframe"></a>Betöltés a DataFrame
 
@@ -163,7 +163,7 @@ val query = dfStream.
 
 query.awaitTermination()
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedjen meg a szinapszis és a Azure Cosmos DB között támogatottak között](./concept-synapse-link-cosmos-db-support.md)
 * [Csatlakozás a szinapszis hivatkozásához Azure Cosmos DB](../quickstart-connect-synapse-link-cosmos-db.md)

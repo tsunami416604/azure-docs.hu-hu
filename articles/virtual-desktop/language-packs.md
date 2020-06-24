@@ -4,16 +4,16 @@ description: Windows 10 rendszerű, többmunkamenetes virtuális gépek nyelvi c
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c40df9d821e069e2cd5ff0c42d5841f6b9041c96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d05c1222ff43537ab8dad34588b80fe537fd0a1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80634034"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200409"
 ---
 # <a name="install-language-packs"></a>Nyelvi csomagok telepítése
 
@@ -32,7 +32,7 @@ Nyelvi csomagok telepítése:
 
 1. Jelentkezzen be rendszergazdaként.
 2. Győződjön meg arról, hogy telepítette a Windows és a Windows áruház legújabb frissítéseit.
-3. Lépjen a **Beállítások** > **ideje & nyelvi** > **régió**menüpontra.
+3. Lépjen a **Beállítások**  >  **ideje & nyelvi**  >  **régió**menüpontra.
 4. Az **ország vagy régió**területen válassza ki az előnyben részesített országot vagy régiót a legördülő menüből.
     Ebben a példában a **franciaországi**lehetőséget fogjuk kiválasztani, ahogy az alábbi képernyőképen is látható:
 
@@ -57,17 +57,17 @@ Nyelvi csomagok telepítése:
 
 9. Ha megjelenik egy ablak, amely arra kéri, hogy jelentkezzen ki a munkamenetből. Jelentkezzen ki, majd jelentkezzen be újra. A megjelenítési nyelvnek most a kiválasztott nyelvnek kell lennie.
 
-10.  Nyissa meg a **Vezérlőpult** > **óra és régió** > **régióját**.
+10.  Nyissa meg a **Vezérlőpult**  >  **óra és régió**  >  **régióját**.
 
 11.  Amikor megnyílik a **régió** ablak, válassza az **Adminisztráció** fület, majd válassza a **Beállítások másolása**lehetőséget.
 
 12.  Jelölje be az **üdvözlő képernyő és a rendszerfiókok** és az **új felhasználói fiókok**jelölőnégyzetet.
 
-13.  Kattintson az **OK** gombra.
+13.  Válassza az **OK** lehetőséget.
 
 14.  Ekkor megnyílik egy ablak, és megtudhatja, hogy újraindítsa a munkamenetet. Válassza az **Újraindítás most**lehetőséget.
 
-15.  Miután bejelentkezett, lépjen vissza a **Vezérlőpult** > **óra és régió** > **területére**.
+15.  Miután bejelentkezett, lépjen vissza a **Vezérlőpult**  >  **óra és régió**  >  **területére**.
 
 16.  Válassza az **Adminisztráció** lapot.
 
@@ -89,13 +89,13 @@ A gép Sysprep:
 
 1. Nyissa meg a PowerShellt rendszergazdaként.
 2. Futtassa a következő parancsmagot, hogy a megfelelő könyvtárba lépjen:
-   
+
     ```powershell
     cd Windows\System32\Sysprep
     ```
 
 3. Ezután futtassa a következő parancsmagot:
-    
+
     ```powershell
     .\sysprep.exe
     ```
@@ -109,7 +109,7 @@ A gép Sysprep:
 
 Ha a Sysprep folyamat során hibaüzenet jelenik meg, a következőket kell tennie:
 
-1. Nyissa meg a **C meghajtót** , és lépjen a **Windows** > **System32 Sysprep** > **Panther**elemre, majd nyissa meg a **Setuperr** fájlt.
+1. Nyissa meg a **C meghajtót** , és lépjen a **Windows**  >  **System32 Sysprep**  >  **Panther**elemre, majd nyissa meg a **Setuperr** fájlt.
 
    A hibaüzenet szövege azt jelzi, hogy el kell távolítania egy adott nyelvi csomagot, ahogy az az alábbi képen is látható. Másolja a nyelvi csomag nevét a következő lépéshez.
 
@@ -123,7 +123,7 @@ Ha a Sysprep folyamat során hibaüzenet jelenik meg, a következőket kell tenn
 
 3. Győződjön meg arról, hogy eltávolította a csomagot a `Remove-AppxPackage` parancsmag ismételt futtatásával. Ha sikeresen eltávolította a csomagot, megjelenik egy üzenet, amely szerint az eltávolítani kívánt csomag nem létezik.
 
-4. Futtassa újra `sysprep.exe` a parancsmagot.
+4. Futtassa `sysprep.exe` újra a parancsmagot.
 
 ## <a name="capture-the-image"></a>A rendszerkép rögzítése
 

@@ -3,12 +3,12 @@ title: A fizikai kiszolgáló értékelésének támogatása Azure Migrate
 description: Tudnivalók a fizikai kiszolgálók értékelésének támogatásáról Azure Migrate Server Assessment szolgáltatással
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 058a438d722454368f3275216c92d0a2692b359c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: e60dc12b1f710fe771b90352872eb7113951a65d
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324317"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080505"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
@@ -24,7 +24,7 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy Azure Migrate p
 --- | ---
 **Értékelési korlátok** | Akár 35 000 fizikai kiszolgálót is felfedezheti és felderítheti egyetlen [Azure Migrate projektben](migrate-support-matrix.md#azure-migrate-projects).
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat. A fizikai kiszolgálókon kívül egy projekt is tartalmazhatja a VMware virtuális gépeket és a Hyper-V virtuális gépeket, az egyes alkalmazásokra vonatkozó értékelési korlátokig.
-**Felfedezés** | A Azure Migrate berendezés akár 250 fizikai kiszolgálót is képes észlelni.
+**Felfedezés** | A Azure Migrate berendezés akár 1000 fizikai kiszolgálót is képes észlelni.
 **Assessment** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékeléssel akár 35 000 gépet is megvizsgálhat.
 
 [További](concepts-assessment-calculation.md) információ az értékelésekről.
@@ -54,7 +54,7 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 **Eszköz** | **Kapcsolat**
 --- | ---
 **Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Kimenő kapcsolatok a 443-as porton (HTTPS), a felderítési és a teljesítménybeli metaadatok küldéséhez Azure Migrate.
-**Fizikai kiszolgálók** | **Windows:** A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a konfiguráció és a teljesítmény metaadatainak lekéréséhez a Windows-kiszolgálókról. <br/><br/> **Linux:**  Bejövő kapcsolatok a 22-es porton (TCP) a konfiguráció és a teljesítmény metaadatainak lekéréséhez Linux-kiszolgálókról. |
+**Fizikai kiszolgálók** | **Windows:** Bejövő csatlakozás a WinRM port 5985 (HTTP) szolgáltatásban a konfiguráció és a teljesítmény metaadatainak lekéréséhez Windows-kiszolgálókról. <br/><br/> **Linux:**  Bejövő kapcsolatok a 22-es porton (TCP) a konfiguráció és a teljesítmény metaadatainak lekéréséhez Linux-kiszolgálókról. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Ügynök-alapú függőségek elemzésének követelményei
 
@@ -72,6 +72,6 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Internetkapcsolat** | Ha a gépek nem kapcsolódnak az internethez, akkor telepítenie kell a Log Analytics átjárót.
 **Azure Government** | Az ügynök-alapú függőség elemzése nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felkészülés a fizikai kiszolgáló értékelésére](tutorial-prepare-physical.md).

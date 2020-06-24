@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b6b5e43ed0baed8cd84078809c5eb0fe146b0ecb
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 2fcf3b4c91e87453e2cf605eb717b75ed7d64d95
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636291"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105928"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>A naplózási és munkaterületekhez való hozzáférés kezelése Azure Monitor
 
@@ -20,8 +20,10 @@ A Azure Monitor Log Analytics munkaterületen tárolja a [naplózási](data-plat
 Ez a cikk a naplókhoz való hozzáférés kezelését és az azokat tartalmazó munkaterületek felügyeletét ismerteti, beleértve a következőkhöz való hozzáférés biztosítását: 
 
 * Munkaterület-engedélyek használatával.
-* Azok a felhasználók, akiknek hozzáférésre van szükségük az adott erőforrásokból származó adatok naplózásához az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+* Azok a felhasználók, akiknek hozzáférésre van szükségük az adott erőforrásokból származó adatok naplózásához az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával – más néven [erőforrás-környezet](design-logs-deployment.md#access-mode)
 * Azok a felhasználók, akiknek hozzáférésre van szükségük a munkaterületen lévő adott tábla adataihoz az Azure RBAC használatával.
+
+A RBAC és a hozzáférési stratégiák körébe tartozó naplók megismeréséhez olvassa el a [Azure monitor naplók üzembe helyezésének tervezése](design-logs-deployment.md) című témakört.
 
 ## <a name="configure-access-control-mode"></a>Hozzáférés-vezérlési mód konfigurálása
 
@@ -104,7 +106,7 @@ Minden munkaterülethez több fiók is társítható, és mindegyik fiók több 
 
 Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
-|Műveletek |Azure-engedélyek szükségesek |Megjegyzések |
+|Műveletek |Azure-engedélyek szükségesek |Jegyzetek |
 |-------|-------------------------|------|
 | Figyelési megoldások hozzáadása és eltávolítása | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Az engedélyeknek az erőforráscsoport vagy előfizetés szinteken kell megadva lenniük. |
 | Tarifacsomag módosítása | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -306,7 +308,7 @@ Előfordulhat, hogy az egyéni naplók olyan forrásokból származnak, amelyek 
 * A munkaterület tulajdonosai úgy vannak kezelve, mint bármely más felhasználó a táblán belüli hozzáférés-vezérléshez.
 * Azt javasoljuk, hogy egyéni felhasználók helyett szerepköröket rendeljen a biztonsági csoportokhoz a hozzárendelések számának csökkentése érdekében. Ez segítséget nyújt a meglévő csoport-felügyeleti eszközök használatához a hozzáférés konfigurálásához és ellenőrzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az adatközpontban vagy más felhőalapú környezetben található számítógépek adatainak összegyűjtéséhez tekintse meg [log Analytics ügynök áttekintését](../../azure-monitor/platform/log-analytics-agent.md) .
 

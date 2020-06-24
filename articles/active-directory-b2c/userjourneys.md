@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 189343888d2856a6945723c030485e58394c912f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: d705c7fbdb744082b402f4dd598551107563ed2e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559603"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203163"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -37,7 +37,7 @@ A **UserJourney** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | Egy felhasználói utazás azonosítója, amely a szabályzat más elemeinek hivatkozására használható. A [függő entitás házirendjének](relyingparty.md) **DefaultUserJourney** eleme erre az attribútumra mutat. |
+| Azonosító | Yes | Egy felhasználói utazás azonosítója, amely a szabályzat más elemeinek hivatkozására használható. A [függő entitás házirendjének](relyingparty.md) **DefaultUserJourney** eleme erre az attribútumra mutat. |
 
 A **UserJourney** elem a következő elemeket tartalmazza:
 
@@ -63,10 +63,10 @@ A **OrchestrationStep** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| `Order` | Igen | A folyamat lépéseinek sorrendje. |
-| `Type` | Igen | A előkészítési lépés típusa. Lehetséges értékek: <ul><li>**ClaimsProviderSelection** – azt jelzi, hogy a előkészítési lépés különböző jogcím-szolgáltatókat mutat be a felhasználónak az egyik kiválasztásához.</li><li>**CombinedSignInAndSignUp** – azt jelzi, hogy a koordináló lépés a Kombinált közösségi szolgáltató bejelentkezési és helyi fiókjának regisztrációs lapját mutatja be.</li><li>**ClaimsExchange** – azt jelzi, hogy a koordináló lépés jogcímeket cserél a jogcím-szolgáltatóval.</li><li>**GetClaims** – azt határozza meg, hogy a előkészítési lépésnek a függő entitás által a `InputClaims` konfiguráción keresztül Azure ad B2C elküldett jogcímet kell feldolgoznia.</li><li>**SendClaims** – azt jelzi, hogy a koordináló lépés elküldi a jogcímeket a függő entitásnak a jogcímek kiállítói által kiállított jogkivonattal.</li></ul> |
-| ContentDefinitionReferenceId | No | Az ehhez a előkészítési lépéshez társított [tartalom-definíció](contentdefinitions.md) azonosítója. Általában a Content definition Reference azonosító az önérvényesített technikai profilban van definiálva. Vannak azonban olyan esetek, amikor Azure AD B2Cnek technikai profil nélküli valamit kell megjelenítenie. Kétféle példa van – ha a előkészítési lépés típusa a következők egyike: `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp`Azure ad B2C az identitás-szolgáltató kijelölését a technikai profil megadása nélkül kell megjelenítenie. |
-| CpimIssuerTechnicalProfileReferenceId | No | Az előkészítési lépés típusa: `SendClaims`. Ez a tulajdonság határozza meg a függő entitáshoz tartozó jogkivonatot kibocsátó jogcím-szolgáltató technikai profiljának azonosítóját.  Ha hiányzik, a rendszer nem hoz létre függő entitás tokenjét. |
+| `Order` | Yes | A folyamat lépéseinek sorrendje. |
+| `Type` | Yes | A előkészítési lépés típusa. Lehetséges értékek: <ul><li>**ClaimsProviderSelection** – azt jelzi, hogy a előkészítési lépés különböző jogcím-szolgáltatókat mutat be a felhasználónak az egyik kiválasztásához.</li><li>**CombinedSignInAndSignUp** – azt jelzi, hogy a koordináló lépés a Kombinált közösségi szolgáltató bejelentkezési és helyi fiókjának regisztrációs lapját mutatja be.</li><li>**ClaimsExchange** – azt jelzi, hogy a koordináló lépés jogcímeket cserél a jogcím-szolgáltatóval.</li><li>**GetClaims** – azt határozza meg, hogy a előkészítési lépésnek a függő entitás által a konfiguráción keresztül Azure ad B2C elküldett jogcímet kell feldolgoznia `InputClaims` .</li><li>**SendClaims** – azt jelzi, hogy a koordináló lépés elküldi a jogcímeket a függő entitásnak a jogcímek kiállítói által kiállított jogkivonattal.</li></ul> |
+| ContentDefinitionReferenceId | No | Az ehhez a előkészítési lépéshez társított [tartalom-definíció](contentdefinitions.md) azonosítója. Általában a Content definition Reference azonosító az önérvényesített technikai profilban van definiálva. Vannak azonban olyan esetek, amikor Azure AD B2Cnek technikai profil nélküli valamit kell megjelenítenie. Kétféle példa van – ha a előkészítési lépés típusa a következők egyike: `ClaimsProviderSelection` vagy Azure ad B2C az `CombinedSignInAndSignUp` identitás-szolgáltató kijelölését a technikai profil megadása nélkül kell megjelenítenie. |
+| CpimIssuerTechnicalProfileReferenceId | No | Az előkészítési lépés típusa: `SendClaims` . Ez a tulajdonság határozza meg a függő entitáshoz tartozó jogkivonatot kibocsátó jogcím-szolgáltató technikai profiljának azonosítóját.  Ha hiányzik, a rendszer nem hoz létre függő entitás tokenjét. |
 
 
 A **OrchestrationStep** elem a következő elemeket tartalmazza:
@@ -92,21 +92,21 @@ Az **előfeltétel** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| `Type` | Igen | Az előfeltételként végrehajtandó ellenőrzés vagy lekérdezés típusa. Az érték lehet **ClaimsExist**, amely megadja, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcímek a felhasználó aktuális jogcímek készletében vannak, vagy **ClaimEquals**, amely meghatározza, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcím létezik, és annak értéke megegyezik a megadott értékkel. |
-| `ExecuteActionsIf` | Igen | Használjon igaz vagy hamis tesztet annak eldöntéséhez, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani. |
+| `Type` | Yes | Az előfeltételként végrehajtandó ellenőrzés vagy lekérdezés típusa. Az érték lehet **ClaimsExist**, amely megadja, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcímek a felhasználó aktuális jogcímek készletében vannak, vagy **ClaimEquals**, amely meghatározza, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcím létezik, és annak értéke megegyezik a megadott értékkel. |
+| `ExecuteActionsIf` | Yes | Használjon igaz vagy hamis tesztet annak eldöntéséhez, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani. |
 
 Az **előfeltétel** elemek a következő elemeket tartalmazzák:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Érték | 1: n | Egy ClaimTypeReferenceId, amelyről le kell kérdezni. Egy másik érték elem tartalmazza az ellenőrizendő értéket.</li></ul>|
-| Műveletek | 1:1 | Az a művelet, amelyet akkor kell végrehajtani, ha az előfeltétel-ellenőrzés egy előkészítési lépésen belül igaz. Ha a értéke `Action` a `SkipThisOrchestrationStep`, a társított `OrchestrationStep` nem hajtható végre. |
+| Műveletek | 1:1 | Az a művelet, amelyet akkor kell végrehajtani, ha az előfeltétel-ellenőrzés egy előkészítési lépésen belül igaz. Ha a értéke a `Action` `SkipThisOrchestrationStep` , a társított `OrchestrationStep` nem hajtható végre. |
 
 #### <a name="preconditions-examples"></a>Példák az előfeltételekre
 
 A következő előfeltételek ellenőrzik, hogy a felhasználó objectId létezik-e. A felhasználói úton a felhasználó helyi fiókkal jelentkezhet be. Ha a objectId létezik, ugorja át ezt a hangszerelési lépést.
 
-```XML
+```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -123,7 +123,7 @@ A következő előfeltételek ellenőrzik, hogy a felhasználó objectId létezi
 
 A következő előfeltételek ellenőrzik, hogy a felhasználó bejelentkezett-e egy közösségi fiókkal. Kísérlet történt a felhasználói fiók megkeresésére a címtárban. Ha a felhasználó bejelentkezik, vagy helyi fiókkal jelentkezik be, ugorja át ezt a hangelőkészítési lépést.
 
-```XML
+```xml
 <OrchestrationStep Order="3" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
@@ -140,7 +140,7 @@ A következő előfeltételek ellenőrzik, hogy a felhasználó bejelentkezett-e
 
 Az előfeltételek több előfeltétel ellenőrzését is megadhatják. A következő példa ellenőrzi, hogy létezik-e "objectId" vagy "e-mail". Ha az első feltétel igaz, a rendszer kihagyja a következő előkészítési lépést.
 
-```XML
+```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
   <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -160,7 +160,7 @@ Az előfeltételek több előfeltétel ellenőrzését is megadhatják. A követ
 
 ## <a name="claimsproviderselection"></a>ClaimsProviderSelection
 
-Egy vagy több típusú `ClaimsProviderSelection` előkészítési lépés `CombinedSignInAndSignUp` , vagy tartalmazhat olyan jogcím-szolgáltatókat, amelyekkel a felhasználó bejelentkezhet. Az elemek elemeinek sorrendje `ClaimsProviderSelections` vezérli a felhasználónak megjelenő identitás-szolgáltatók sorrendjét.
+Egy vagy több típusú előkészítési lépés, `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp` tartalmazhat olyan jogcím-szolgáltatókat, amelyekkel a felhasználó bejelentkezhet. Az elemek elemeinek sorrendje `ClaimsProviderSelections` vezérli a felhasználónak megjelenő identitás-szolgáltatók sorrendjét.
 
 A **ClaimsProviderSelections** elem a következő elemet tartalmazza:
 
@@ -172,7 +172,7 @@ A **ClaimsProviderSelections** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| DisplayOption| No | Egy olyan eset viselkedését szabályozza, amelyben egyetlen jogcím-szolgáltató választható ki. Lehetséges értékek: `DoNotShowSingleProvider` (alapértelmezett) a rendszer azonnal átirányítja a felhasználót az összevont identitás-szolgáltatóhoz. Vagy `ShowSingleProvider` Azure ad B2C megadja a bejelentkezési oldalt az egyetlen identitás-szolgáltató kijelölésével. Ennek az attribútumnak a használatához a [Content definition verziójának](page-layout.md) és annál újabbnak kell lennie `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` .|
+| DisplayOption| No | Egy olyan eset viselkedését szabályozza, amelyben egyetlen jogcím-szolgáltató választható ki. Lehetséges értékek:  `DoNotShowSingleProvider`   (alapértelmezett) a rendszer azonnal átirányítja a felhasználót az összevont identitás-szolgáltatóhoz. Vagy Azure AD B2C megadja a  `ShowSingleProvider`   bejelentkezési oldalt az egyetlen identitás-szolgáltató kijelölésével. Ennek az attribútumnak a használatához a [Content definition verziójának](page-layout.md)  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` és annál újabbnak kell lennie.|
 
 A **ClaimsProviderSelection** elem a következő attribútumokat tartalmazza:
 
@@ -183,9 +183,9 @@ A **ClaimsProviderSelection** elem a következő attribútumokat tartalmazza:
 
 ### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection példa
 
-A következő előkészítési lépésben a felhasználó dönthet úgy, hogy bejelentkezik a Facebook, a LinkedIn, a Twitter, a Google vagy egy helyi fiók használatával. Ha a felhasználó kiválasztja az egyik közösségi identitás-szolgáltatót, a második előkészítési lépés az `TargetClaimsExchangeId` attribútumban megadott kiválasztott jogcím-Exchange-re van végrehajtva. A második előkészítési lépés átirányítja a felhasználót a közösségi identitás-szolgáltatóhoz a bejelentkezési folyamat befejezéséhez. Ha a felhasználó úgy dönt, hogy bejelentkezik a helyi fiókkal, Azure AD B2C marad ugyanazon a előkészítési lépésben (ugyanazon a regisztrációs oldalon vagy bejelentkezési oldalon), és kihagyja a második előkészítési lépést.
+A következő előkészítési lépésben a felhasználó dönthet úgy, hogy bejelentkezik a Facebook, a LinkedIn, a Twitter, a Google vagy egy helyi fiók használatával. Ha a felhasználó kiválasztja az egyik közösségi identitás-szolgáltatót, a második előkészítési lépés az attribútumban megadott kiválasztott jogcím-Exchange-re van végrehajtva `TargetClaimsExchangeId` . A második előkészítési lépés átirányítja a felhasználót a közösségi identitás-szolgáltatóhoz a bejelentkezési folyamat befejezéséhez. Ha a felhasználó úgy dönt, hogy bejelentkezik a helyi fiókkal, Azure AD B2C marad ugyanazon a előkészítési lépésben (ugyanazon a regisztrációs oldalon vagy bejelentkezési oldalon), és kihagyja a második előkészítési lépést.
 
-```XML
+```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
     <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
@@ -230,5 +230,5 @@ A **ClaimsExchange** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Igen | A jogcím Exchange-lépés azonosítója. Az azonosító a jogcím-szolgáltató jogcímek kiválasztási lépésében való hivatkozására szolgál a szabályzatban. |
-| TechnicalProfileReferenceId | Igen | A végrehajtandó műszaki profil azonosítója. |
+| Azonosító | Yes | A jogcím Exchange-lépés azonosítója. Az azonosító a jogcím-szolgáltató jogcímek kiválasztási lépésében való hivatkozására szolgál a szabályzatban. |
+| TechnicalProfileReferenceId | Yes | A végrehajtandó műszaki profil azonosítója. |

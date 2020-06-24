@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 07aa9ade25d1d986833b6da2f3907d07b752b662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71a1a97c3cb6df4c1498940738fe070819fba1b5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655426"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734809"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ A cikk végrehajtásához a következő erőforrásokra van szükség:
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
+    * Ha szükséges, [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services felügyelt tartományt][create-azure-ad-ds-instance].
 * Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
     * Ha szükséges, fejezze be az oktatóanyagot [egy Windows Server rendszerű virtuális gép létrehozásához és egy felügyelt tartományhoz való csatlakoztatásához][create-join-windows-vm] , majd [telepítse a AD DS felügyeleti eszközöket][tutorial-create-management-vm].
 * Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
@@ -46,7 +46,7 @@ A Kerberos által korlátozott delegálás (KCD) korlátozza azokat a szolgálta
 
 A hagyományos KCD néhány problémával is rendelkezik. A korábbi operációs rendszerekben például a szolgáltatás rendszergazdája nem tudta megismerni, hogy mely előtér-szolgáltatások lettek delegálva az általuk birtokolt erőforrás-szolgáltatásokhoz. Bármely, az erőforrás-szolgáltatásnak delegált előtér-szolgáltatás lehetséges támadási pont volt. Ha egy olyan kiszolgáló, amely az erőforrás-szolgáltatásokra való delegálásra konfigurált előtér-szolgáltatást futtatott, akkor az erőforrás-szolgáltatások biztonsága is sérülhet.
 
-Az Azure AD DS felügyelt tartományokban nem rendelkezik tartományi rendszergazdai jogosultságokkal. Ennek eredményeképpen a hagyományos, fiókon alapuló KCD nem konfigurálhatók Azure-AD DS felügyelt tartományokban. Ehelyett erőforrás-alapú KCD is használható, ami még biztonságosabb.
+Felügyelt tartományokban nem rendelkezik tartományi rendszergazdai jogosultságokkal. Ennek eredményeképpen a hagyományos, fiókon alapuló KCD nem konfigurálhatók felügyelt tartományokban. Ehelyett erőforrás-alapú KCD is használható, ami még biztonságosabb.
 
 ### <a name="resource-based-kcd"></a>Erőforrás-alapú KCD
 
@@ -58,8 +58,8 @@ Az erőforrás-alapú KCD a PowerShell használatával van konfigurálva. A [set
 
 Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely a *contoso-WebApp.aaddscontoso.com*nevű számítógépen fut. A webalkalmazásnak hozzá kell férnie egy webes API-hoz, amely a *contoso-API.aaddscontoso.com* nevű számítógépen fut a tartományi felhasználók környezetében. A forgatókönyv konfigurálásához hajtsa végre a következő lépéseket:
 
-1. [Hozzon létre egy egyéni szervezeti egységet](create-ou.md). Az Azure AD DS felügyelt tartományában lévő felhasználók számára engedélyeket delegálhat az egyéni szervezeti egység kezeléséhez.
-1. [Tartomány – csatlakozzon a virtuális gépekhez][create-join-windows-vm], amelyek a webalkalmazást futtatják, valamint a webes API-t futtató számítógépeket az Azure AD DS felügyelt tartományhoz. Hozza létre ezeket a számítógépfiókokat az egyéni szervezeti egységben az előző lépésből.
+1. [Hozzon létre egy egyéni szervezeti egységet](create-ou.md). Az egyéni szervezeti egység felügyelt tartományba tartozó felhasználók számára történő felügyeletéhez engedélyeket delegálhat.
+1. [Tartomány – csatlakozzon a virtuális gépekhez][create-join-windows-vm], amelyek a webalkalmazást futtatják, valamint a webes API-t futtató kiszolgálókat a felügyelt tartományhoz. Hozza létre ezeket a számítógépfiókokat az egyéni szervezeti egységben az előző lépésből.
 
     > [!NOTE]
     > A webalkalmazás és a webes API számítógépfiókja olyan egyéni szervezeti egységben kell, hogy rendelkezzen az erőforrás-alapú KCD konfigurálásához szükséges engedélyekkel. A beépített *HRE DC Computers* tárolóban nem lehet beállítani erőforrás-alapú KCD a számítógépfiók számára.
@@ -75,8 +75,8 @@ Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely a *contoso-Web
 
 Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely egy *appsvc*nevű szolgáltatásfiókot futtat. A webalkalmazásnak hozzá kell férnie egy webes API-hoz, amely a *backendsvc* nevű szolgáltatási fiókként fut a tartományi felhasználók környezetében. A forgatókönyv konfigurálásához hajtsa végre a következő lépéseket:
 
-1. [Hozzon létre egy egyéni szervezeti egységet](create-ou.md). Az Azure AD DS felügyelt tartományában lévő felhasználók számára engedélyeket delegálhat az egyéni szervezeti egység kezeléséhez.
-1. [Tartomány – csatlakoztassa a][create-join-windows-vm] háttérbeli webes API-t/erőforrást futtató virtuális gépeket az Azure AD DS felügyelt tartományhoz. Hozza létre a számítógép-fiókját az egyéni szervezeti egységen belül.
+1. [Hozzon létre egy egyéni szervezeti egységet](create-ou.md). Az egyéni szervezeti egység felügyelt tartományba tartozó felhasználók számára történő felügyeletéhez engedélyeket delegálhat.
+1. [Tartomány – csatlakoztassa a][create-join-windows-vm] háttérbeli webes API-t/erőforrást futtató virtuális gépeket a felügyelt tartományhoz. Hozza létre a számítógép-fiókját az egyéni szervezeti egységen belül.
 1. Hozza létre a webalkalmazás egyéni szervezeti egységen belüli futtatásához használt szolgáltatásfiókot (például "appsvc").
 
     > [!NOTE]

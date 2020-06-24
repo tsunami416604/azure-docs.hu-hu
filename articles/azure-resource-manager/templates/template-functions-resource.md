@@ -2,13 +2,13 @@
 title: Sablon functions – erőforrások
 description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: b04861e0d3c1b96b77e3865652a4300213b49a09
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.date: 06/18/2020
+ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676726"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099256"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Resource functions
 
@@ -34,7 +34,7 @@ A [bővítmény erőforrásának](../management/extension-resource-types.md)erő
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | resourceId |Yes |sztring |Annak az erőforrásnak az erőforrás-azonosítója, amelyre a bővítmény erőforrása vonatkozik. |
 | resourceType |Yes |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
@@ -108,11 +108,11 @@ A következő példa egy erőforráscsoport-zárolás erőforrás-AZONOSÍTÓjá
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-A függvény szintaxisa a lista műveleteinek nevével változik. Minden implementáció a lista műveletét támogató erőforrástípus értékeit adja vissza. A művelet nevének a (z) értékkel kell kezdődnie `list` . Néhány gyakori használat: `listKeys` `listKeyValue` és `listSecrets` .
+A függvény szintaxisa a lista műveleteinek nevével változik. Minden implementáció a lista műveletét támogató erőforrástípus értékeit adja vissza. A művelet nevének a (z) értékkel kell kezdődnie `list` . Néhány gyakori használat:, `listKeys` `listKeyValue` és `listSecrets` .
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | resourceName vagy resourceIdentifier |Yes |sztring |Az erőforrás egyedi azonosítója. |
 | apiVersion |Yes |sztring |Az erőforrás-futtatókörnyezet állapotának API-verziója. Általában az **éééé-hh-nn**formátumban kell megadni. |
@@ -120,7 +120,9 @@ A függvény szintaxisa a lista műveleteinek nevével változik. Minden impleme
 
 ### <a name="valid-uses"></a>Érvényes használati módok
 
-A List függvények csak az erőforrás-definíció tulajdonságaiban és a sablon vagy központi telepítés kimenetek szakaszában használhatók. Ha tulajdonság- [iterációt](copy-properties.md)használ, használhatja a List függvényeket, `input` mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Ezeket nem használhatja, `count` mert a Count függvényt a lista funkció feloldása előtt kell meghatározni.
+A List függvények az erőforrás-definíciók tulajdonságaiban is használhatók. Ne használjon olyan lista függvényt, amely bizalmas adatokat tesz elérhetővé a sablon outputs (kimenet) szakaszában. A kimeneti értékek tárolása a központi telepítési előzményekben történik, és egy rosszindulatú felhasználó lekérhető.
+
+Ha tulajdonság- [iterációt](copy-properties.md)használ, használhatja a List függvényeket, `input` mert a kifejezés hozzá van rendelve az erőforrás tulajdonsághoz. Ezeket nem használhatja, `count` mert a Count függvényt a lista funkció feloldása előtt kell meghatározni.
 
 ### <a name="implementations"></a>Megvalósítások
 
@@ -284,71 +286,31 @@ Ha feltételesen telepített erőforrásban használ egy **List** függvényt, a
 
 ### <a name="list-example"></a>Példa a listára
 
-Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) azt szemlélteti, hogyan lehet visszaadni az elsődleges és másodlagos kulcsokat egy Storage-fiókból a kimenetek szakaszban. Emellett egy SAS-tokent ad vissza a Storage-fiókhoz.
-
-Az SAS-jogkivonat lekéréséhez továbbítson egy objektumot a lejárati időpontra. A lejárati időnek a jövőben kell lennie. Ez a példa a List függvények használatát mutatja be. A SAS-tokent általában egy erőforrás-értékben kell használni, nem pedig kimeneti értékként. A kimeneti értékek tárolása a telepítési előzmények között történik, és nem biztonságosak.
+Az alábbi példa Listkeys műveletének beolvasása használ a [telepítési parancsfájlok](deployment-script-template.md)értékének beállításakor.
 
 ```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagename": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "southcentralus"
-        },
-        "accountSasProperties": {
-            "type": "object",
-            "defaultValue": {
-                "signedServices": "b",
-                "signedPermission": "r",
-                "signedExpiry": "2018-08-20T11:00:00Z",
-                "signedResourceTypes": "s"
-            }
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2018-02-01",
-            "name": "[parameters('storagename')]",
-            "location": "[parameters('location')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "StorageV2",
-            "properties": {
-                "supportsHttpsTrafficOnly": false,
-                "accessTier": "Hot",
-                "encryption": {
-                    "services": {
-                        "blob": {
-                            "enabled": true
-                        },
-                        "file": {
-                            "enabled": true
-                        }
-                    },
-                    "keySource": "Microsoft.Storage"
-                }
-            },
-            "dependsOn": []
-        }
-    ],
-    "outputs": {
-        "keys": {
-            "type": "object",
-            "value": "[listKeys(parameters('storagename'), '2018-02-01')]"
-        },
-        "accountSAS": {
-            "type": "object",
-            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties'))]"
+"storageAccountSettings": {
+    "storageAccountName": "[variables('storageAccountName')]",
+    "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+}
+```
+
+A következő példa egy list függvényt mutat be, amely egy paramétert vesz igénybe. Ebben az esetben a függvény **listAccountSas**. Egy objektum továbbítása a lejárati időhöz. A lejárati időnek a jövőben kell lennie.
+
+```json
+"parameters": {
+    "accountSasProperties": {
+        "type": "object",
+        "defaultValue": {
+            "signedServices": "b",
+            "signedPermission": "r",
+            "signedExpiry": "2020-08-20T11:00:00Z",
+            "signedResourceTypes": "s"
         }
     }
-}
+},
+...
+"sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
 
 Egy listKeyValue példa: gyors útmutató [: automatikus VM-telepítés az alkalmazás-konfigurációval és Resource Manager-sablonnal](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
@@ -361,7 +323,7 @@ Egy erőforrás-szolgáltatóval és annak támogatott erőforrásaival kapcsola
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Yes |sztring |A szolgáltató névtere |
 | resourceType |No |sztring |Az erőforrás típusa a megadott névtéren belül. |
@@ -436,7 +398,7 @@ Egy erőforrás futásidejű állapotát jelképező objektumot ad vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | resourceName vagy resourceIdentifier |Yes |sztring |Egy erőforrás neve vagy egyedi azonosítója. Ha az aktuális sablonban lévő erőforrásra hivatkozik, csak az erőforrás nevét adja meg paraméterként. Ha egy korábban központilag telepített erőforrásra hivatkozik, vagy ha az erőforrás neve nem egyértelmű, adja meg az erőforrás-azonosítót. |
 | apiVersion |No |sztring |A megadott erőforrás API-verziója. **Ezt a paramétert akkor kell megadni, ha az erőforrás nincs kiépítve ugyanazon a sablonon belül.** Általában az **éééé-hh-nn**formátumban kell megadni. Az erőforrás érvényes API-verzióihoz lásd: [sablon-hivatkozás](/azure/templates/). |
@@ -759,7 +721,7 @@ Egy erőforrás egyedi azonosítóját adja vissza. Ezt a függvényt akkor hasz
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Akkor adja meg ezt az értéket, ha egy másik előfizetésben le kell kérnie egy erőforrást. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport vagy előfizetés hatókörére telepíti. |
 | resourceGroupName |No |sztring |Az alapértelmezett érték az aktuális erőforráscsoport. Akkor adja meg ezt az értéket, ha egy másik erőforráscsoport erőforrását le kell kérnie. Csak akkor adja meg ezt az értéket, ha egy erőforráscsoport hatókörére telepíti. |
@@ -955,7 +917,7 @@ Az előfizetési szinten üzembe helyezett erőforrás egyedi azonosítóját ad
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |karakterlánc (GUID formátumban) |Az alapértelmezett érték az aktuális előfizetés. Akkor adja meg ezt az értéket, ha egy másik előfizetésben le kell kérnie egy erőforrást. |
 | resourceType |Yes |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
@@ -1037,7 +999,7 @@ A bérlői szinten üzembe helyezett erőforrás egyedi azonosítóját adja vis
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | resourceType |Yes |sztring |Az erőforrás típusa, beleértve az erőforrás-szolgáltatói névteret. |
 | resourceName1 |Yes |sztring |Az erőforrás neve. |
@@ -1057,7 +1019,7 @@ Az azonosító a következő formátumban lesz visszaadva:
 
 Ezzel a függvénnyel lekérheti a bérlőhöz központilag telepített erőforrások erőforrás-AZONOSÍTÓját. A visszaadott azonosító eltér a más erőforrás-azonosító függvények által visszaadott értékektől, ha nem tartalmazza az erőforráscsoport vagy az előfizetés értékét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
