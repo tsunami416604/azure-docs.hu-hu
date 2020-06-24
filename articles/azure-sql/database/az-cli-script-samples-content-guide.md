@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: ecd78cdc534b68d913b6b5114a04ad2720796665
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658179"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251517"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-minták Azure SQL Database és SQL felügyelt példányhoz 
  
@@ -39,15 +39,15 @@ Az alábbi táblázat az Azure CLI parancsfájlokra mutató hivatkozásokat tart
 |---|---|
 |**Adatbázisok létrehozása a Azure SQL Databaseban**||
 | [Önálló adatbázis létrehozása és egy tűzfalszabály konfigurálása](scripts/create-and-configure-database-cli.md) | Létrehoz egy SQL Database, és konfigurál egy kiszolgálói szintű tűzfalszabály-szabályt. |
-| [Rugalmas készletek létrehozása és rugalmas készletbe helyezett adatbázisok áthelyezése](scripts/move-database-between-elastic-pools-cli.md) | Rugalmas készleteket hoz létre, áthelyezi a készletezett SQL-adatbázisokat, és megváltoztatja a számítási méreteket. |
+| [Rugalmas készletek létrehozása és rugalmas készletbe helyezett adatbázisok áthelyezése](scripts/move-database-between-elastic-pools-cli.md) | Rugalmas készleteket hoz létre, áthelyezi a készletezett adatbázisokat, és megváltoztatja a számítási méreteket. |
 |**Adatbázisok méretezése Azure SQL Database**||
 | [Önálló adatbázis méretezése](scripts/monitor-and-scale-database-cli.md) | Az adatbázis méretére vonatkozó információk lekérdezése után a SQL Database egy másik számítási méretre méretezi az adatbázist. |
 | [Rugalmas készlet méretezése](scripts/scale-pool-cli.md) | Egy rugalmas SQL-készlet méretezése más számítási méretre. |
 |**Georeplikáció és feladatátvétel konfigurálása**||
 | [Egyetlen adatbázis hozzáadása egy feladatátvételi csoporthoz](scripts/add-database-to-failover-group-cli.md)| Létrehoz egy adatbázist és egy feladatátvételi csoportot, hozzáadja az adatbázist a feladatátvételi csoporthoz, majd teszteli a feladatátvételt a másodlagos kiszolgálóra. |
 | [Feladatátvevő csoport konfigurálása rugalmas készlethez](../../sql-database/scripts/sql-database-add-elastic-pool-to-failover-group-cli.md) | Létrehoz egy adatbázist, hozzáadja azt egy rugalmas készlethez, hozzáadja a rugalmas készletet a feladatátvételi csoporthoz, majd teszteli a feladatátvételt a másodlagos kiszolgálóra. |
-| [Önálló adatbázis konfigurálása és feladatátvétele az aktív geo-replikáció használatával](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Az aktív geo-replikálást konfigurálja egy Azure SQL Database-adatbázishoz, és feladatátvételt hajt végre a másodlagos replikára. |
-| [Készletezett adatbázis konfigurálása és feladatátvétele az aktív geo-replikáció használatával](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| Egy rugalmas SQL-készletben konfigurálja az aktív geo-replikálást egy Azure SQL-adatbázishoz, majd a feladatátvételt a másodlagos replikára. |
+| [Önálló adatbázis konfigurálása és feladatátvétele az aktív geo-replikáció használatával](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Az aktív geo-replikálást konfigurálja Azure SQL Database adatbázisához, és feladatátvételt hajt végre a másodlagos replikára. |
+| [Készletezett adatbázis konfigurálása és feladatátvétele az aktív geo-replikáció használatával](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| Egy rugalmas készletben lévő adatbázis aktív földrajzi replikálását konfigurálja, majd a feladatátvételt a másodlagos replikára. |
 | **Naplózás és fenyegetésészlelés** |
 | [Naplózás és fenyegetésészlelés konfigurálása](../../sql-database/scripts/sql-database-auditing-and-threat-detection-cli.md)| A naplózási és veszélyforrás-észlelési házirendeket konfigurálja Azure SQL Database-adatbázishoz. |
 | **Adatbázis biztonsági mentése, visszaállítása, másolása és importálása**||

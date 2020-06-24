@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: e6733bdc91ba26d52366de09ed6bc255dcd4ff98
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610826"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212207"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: stream big data adattárházba
 Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztási szolgáltatás, amely lehetővé teszi, hogy az alkalmazásokból és szolgáltatásokból érkező értesítésekre (eseményekre) reagáljon. Például elindíthat egy Azure-függvényt az Azure Blob Storage-ba vagy Azure Data Lake Storageba rögzített Event Hubs-adat feldolgozásához, és áttelepítheti azokat más adattárakba. Ez a [Event Hubs és Event Grid integrációs minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) azt mutatja be, hogyan használhatók a Event Hubs a Event Grid a blob Storage-ból rögzített Event Hubs adatok SQL Data Warehouseba való zökkenőmentes áttelepítéséhez.
@@ -45,7 +45,7 @@ Ebben a cikkben a következő lépéseket hajtja végre:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* [Visual studio 2019](https://www.visualstudio.com/vs/) a következő számítási feladatokkal: .net Desktop-fejlesztés, Azure-fejlesztés, ASP.net és webfejlesztés, Node. js-fejlesztés és Python-fejlesztés.
+* A [Visual studio 2019](https://www.visualstudio.com/vs/) a következő számítási feladatokkal rendelkezik: .net Desktop-fejlesztés, Azure-fejlesztés, ASP.net és webfejlesztés, Node.js fejlesztés és Python-fejlesztés.
 * Töltse le a [EventHubsCaptureEventGridDemo minta projektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a számítógépre.
 
 ## <a name="deploy-the-infrastructure"></a>Az infrastruktúra üzembe helyezése
@@ -173,7 +173,7 @@ Hozzon létre egy táblázatot az adattárházban a [CreateDataWarehouseTable. S
 2. Az SQL-adattárház lapon a bal oldali menüben válassza a **Lekérdezés-szerkesztő (előzetes verzió)** lehetőséget. 
 
     ![SQL-adattárház lapja](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. Adja meg az SQL Server **felhasználójának** és **jelszavának** nevét, majd kattintson **az OK gombra**. Számos szükséges az ügyfél IP-címéhez a tűzfalhoz, hogy sikeresen bejelentkezzen az SQL Serverre. 
+2. Adja meg az SQL Server **felhasználójának** és **jelszavának** nevét, majd kattintson **az OK gombra**. Előfordulhat, hogy az ügyfél IP-címét hozzá kell adnia a tűzfalhoz, hogy sikeresen bejelentkezzen az SQL Server rendszerbe. 
 
     ![SQL Server-hitelesítés](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. A lekérdezési ablakban másolja és futtassa a következő SQL-parancsfájlt: 
@@ -280,7 +280,7 @@ Végeztünk az eseményközpont, az SQL-adattárház, az Azure-függvényalkalma
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. Hozza létre a megoldást. Futtassa a **WindTurbineGenerator. exe** alkalmazást. 
+6. Hozza létre a megoldást. Futtassa a **WindTurbineGenerator.exe** alkalmazást. 
 7. Néhány perc elteltével kérdezze le a migrált adatokat az adattárház táblájából.
 
     ![Lekérdezés eredményei](media/event-grid-event-hubs-integration/query-results.png)
@@ -312,7 +312,7 @@ Az Event Grid elküldi az eseményadatokat az előfizetőknek. Az alábbi példa
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure üzenetkezelési szolgáltatások különbségeiről [az üzenetkézbesítő Azure-szolgáltatás kiválasztásának ismertetésében](compare-messaging-services.md) olvashat.
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

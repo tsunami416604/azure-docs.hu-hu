@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7d0bc787f1ae4444849a1483d6323f8a098ae1e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 115688eeccab3a48bf4234f00124bcd6bc950853
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053410"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251437"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: fürtszolgáltatási modell létrehozása az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A háromrészes oktatóanyag-sorozat második részében egy K-Mean modellt fog létrehozni az R-ben a fürtözés végrehajtásához. A sorozat következő részében ezt a modellt egy Azure SQL Database Machine Learning Servicest (előzetes verzió) tartalmazó SQL-adatbázisban fogja telepíteni.
+A háromrészes oktatóanyag-sorozat második részében egy K-Mean modellt fog létrehozni az R-ben a fürtözés végrehajtásához. A sorozat következő részében ezt a modellt a Azure SQL Database Azure SQL Database Machine Learning Services (előzetes verzió) című adatbázisban fogja telepíteni.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -36,9 +36,9 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 > * Fürtözés végrehajtása
 > * Az eredmények elemzése
 
-Az első [részben](clustering-model-prepare-data-tutorial.md)megtanulta, hogyan készítse elő az adatok előkészítését egy Azure SQL Database-adatbázisból a fürtözés végrehajtásához.
+Az első [részben](clustering-model-prepare-data-tutorial.md)megtanulta, hogyan készítheti elő az adatok egy adatbázisból a fürtözés végrehajtásához.
 
-A [harmadik részből](clustering-model-deploy-tutorial.md)megtudhatja, hogyan hozhat létre egy tárolt eljárást egy olyan Azure SQL Database-adatbázisban, amely új adatok alapján képes a fürtözésre az R-ben.
+A [harmadik részből](clustering-model-deploy-tutorial.md)megtudhatja, hogyan hozhat létre olyan tárolt eljárást, amely új adatok alapján képes a fürtözésre az R-ben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

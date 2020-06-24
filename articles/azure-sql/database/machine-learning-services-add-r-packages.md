@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 764d0131b0b8074a210bd9eb7f806f5d1a32fa1f
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: b42dba59e061eee0472d39f324b7474d7d829310
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324232"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250720"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>R-csomag hozzáadása Azure SQL Database Machine Learning Services (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá R-csomagokat Azure SQL Database Mac
 
 ## <a name="list-r-packages"></a>R-csomagok listázása
 
-A Microsoft számos, előre telepített R-csomagot biztosít az Azure SQL Database Machine Learning Services.
+A Microsoft számos, a Machine Learning Services Azure SQL Database előre telepített R-csomagot biztosít.
 A telepített R-csomagok listáját a következő parancs futtatásával Azure Data Studio vagy SSMS is megtekintheti.
 
 1. Nyissa meg Azure Data Studio vagy SSMS, és kapcsolódjon a Azure SQL Databasehoz.
@@ -60,7 +60,7 @@ A telepített R-csomagok listáját a következő parancs futtatásával Azure D
 
 A kimenetnek az alábbihoz hasonlóan kell kinéznie.
 
-**Eredmények**
+**Results (Eredmények)**
 
 ![Telepített csomagok az R-ben](./media/machine-learning-services-add-r-packages/r-installed-packages.png)
 
@@ -90,7 +90,7 @@ A következő példában a karakterláncok formázására és interpolációra k
     ```
 
     > [!TIP]
-    > Ha a következő hibaüzenet jelenik meg: "R" nem ismerhető fel belső vagy külső parancsként, futtatható programként vagy batch-fájlként ", akkor valószínű, hogy az R. exe elérési útja nem szerepel a Windows rendszerben a **path** környezeti változóban. Adja hozzá az elérési utat a környezeti változóhoz, vagy keresse meg a parancssorban a mappát (például `cd C:\Program Files\R\R-3.5.3\bin` ), majd próbálja megismételni a parancsot.
+    > Ha a következő hibaüzenet jelenik meg: "R" nem ismerhető fel belső vagy külső parancsként, futtatható programként vagy batch-fájlként ", akkor valószínű, hogy a Windowson a **path** környezeti változó nem tartalmazza a R.exe elérési útját. Adja hozzá az elérési utat a környezeti változóhoz, vagy keresse meg a parancssorban a mappát (például `cd C:\Program Files\R\R-3.5.3\bin` ), majd próbálja megismételni a parancsot.
 
 ### <a name="add-the-package"></a>A csomag hozzáadása
 
@@ -121,7 +121,7 @@ r<-sql_installed.packages(connectionString = connection, fields=c("Package", "Ve
 View(r)
 ```
 
-**Eredmények**
+**Results (Eredmények)**
 
 ![Az RTestData tábla tartalma](./media/machine-learning-services-add-r-packages/r-verify-package-install.png)
 
@@ -151,7 +151,7 @@ A csomag telepítése után a **sp_execute_external_script**használatával R-sz
 
     A következő eredmény jelenik meg az **üzenetek** lapon.
 
-    **Eredmények**
+    **Results (Eredmények)**
 
     ```text
     My name is Fred, my age next year is 51, my anniversary is Sunday, June 14, 2020.
@@ -166,9 +166,9 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 ```
 
 > [!TIP]
-> Az R-csomagok az Azure SQL Database-be való telepítésének egy másik módja, ha az R-csomagot egy byte streamből tölti fel a **külső függvénytár létrehozása** T-SQL-utasítás használatával. Lásd: [könyvtár létrehozása bájtos adatfolyamból](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) a [külső könyvtár létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) dokumentációjában.
+> Egy másik lehetőség az R-csomag Azure SQL Databasere való telepítésére, ha az R-csomagot egy byte streamből tölti fel a **külső függvénytár létrehozása** T-SQL-utasítás használatával. Lásd: [könyvtár létrehozása bájtos adatfolyamból](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) a [külső könyvtár létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) dokumentációjában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az R (előzetes verzió) Azure SQL Database Machine Learning Servicesról a következő cikkekben talál további információt.
 

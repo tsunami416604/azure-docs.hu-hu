@@ -1,6 +1,6 @@
 ---
 title: Adatfeldolgozó folyamat létrehozása a Azure Portal használatával
-description: Az oktatóanyag részletes útmutatását követve létrehozhat egy adat-előállítót egy folyamat és az Azure Portal használatával. A folyamat a másolási tevékenységet használja az adatok Azure Blob Storage-ból egy Azure SQL Database-be való másolásához.
+description: Az oktatóanyag részletes útmutatását követve létrehozhat egy adat-előállítót egy folyamat és az Azure Portal használatával. A folyamat a másolási tevékenységet használja az adatok Azure Blob Storage-ból Azure SQL Databaseba való másolásához.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 8372683c1463fe3443730bd004c013666deb4100
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248617"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253964"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Azure Data Factory segítségével
+# <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy Azure SQL Database-adatbázisba Azure Data Factory használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adatfeldolgozó folyamata az adatok Azure Blob Storage-ból egy Azure SQL Database-be való másolását végzi. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
+Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adatfeldolgozó folyamata az Azure Blob Storage-ból származó adatok másolását Azure SQL Database-adatbázisba másolja. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
 
 > [!NOTE]
 > - Ha még csak ismerkedik a Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.
@@ -41,7 +41,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * **Azure Storage-fiók**. A Blob Storage lesz használatban *forrás*adattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg az [Azure Storage-fiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket.
-* **Azure SQL Database**. Ezt az adatbázist használjuk *fogadó*adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg az [SQL-adatbázis létrehozása](../azure-sql/database/single-database-create-quickstart.md) című témakört.
+* **Azure SQL Database**. Ezt az adatbázist használjuk *fogadó*adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg az [adatbázis létrehozása a Azure SQL Databaseban](../azure-sql/database/single-database-create-quickstart.md) című témakört a létrehozásához szükséges lépésekért.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
 
@@ -61,7 +61,7 @@ Készítse elő a Blob Storage-et és az SQL Database-t az oktatóanyaghoz a kö
 
 #### <a name="create-a-sink-sql-table"></a>Fogadó SQL-tábla létrehozása
 
-1. A következő SQL-szkripttel hozza létre a **dbo.emp** táblát az SQL Database-ben.
+1. A következő SQL-szkripttel hozza létre a **dbo. EMP** táblát az adatbázisban:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -139,9 +139,9 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
 1. A társított szolgáltatás létrehozása után a rendszer a **tulajdonságok beállítása** lapra navigál. A **Fájl elérési útja** mellett válassza a **Tallózás** lehetőséget.
 
-1. Keresse meg a **adftutorial/input** mappát, válassza ki az **EMP. txt** fájlt, majd kattintson az **OK gombra**.
+1. Keresse meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
 
-1. Kattintson az **OK** gombra. Automatikusan megnyitja a folyamat lapot. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
+1. Válassza az **OK** lehetőséget. Automatikusan megnyitja a folyamat lapot. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
 
     ![Forrásadatkészlet](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
@@ -154,7 +154,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
 1. Az **új adatkészlet** párbeszédpanelen írja be az "SQL" kifejezést a keresőmezőbe az összekötők szűréséhez, válassza a **Azure SQL Database**lehetőséget, majd kattintson a **Folytatás**gombra. Ebben az oktatóanyagban adatokat másol egy SQL Database-be.
 
-1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **outputsqldataset érték** nevet. A **társított szolgáltatás** legördülő listából válassza az **+ új**lehetőséget. Az adatkészleteket mindig társítani kell egy társított szolgáltatáshoz. A társított szolgáltatás rendelkezik azzal a kapcsolati sztringgel, amely használatával a Data Factory a futtatás során kapcsolódik az SQL Database-hez. Az adatkészlet meghatározza azt a tárolót, mappát és fájlt (az utóbbi nem kötelező), ahova a rendszer az adatokat másolja.
+1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **outputsqldataset érték** nevet. A **társított szolgáltatás** legördülő listából válassza az **+ új**lehetőséget. Az adatkészleteket mindig társítani kell egy társított szolgáltatáshoz. A társított szolgáltatás rendelkezik azzal a kapcsolati karakterlánccal, amelyet Data Factory használ a SQL Databasehoz való kapcsolódáshoz futásidőben. Az adatkészlet meghatározza azt a tárolót, mappát és fájlt (az utóbbi nem kötelező), ahova a rendszer az adatokat másolja.
 
 1. Az **új társított szolgáltatás (Azure SQL Database)** párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -162,7 +162,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
     b. A **Kiszolgáló neve** mezőben válassza ki az SQL Server-példányát.
 
-    c. Az **Adatbázis neve** mezőben válassza ki az SQL Database-adatbázisát.
+    c. Az **adatbázis neve**területen válassza ki az adatbázist.
 
     d. A **Felhasználónév** mezőben adja meg a felhasználó nevét.
 
@@ -170,7 +170,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
     f. A kapcsolat teszteléséhez válassza a **Kapcsolat tesztelése** elemet.
 
-    g. Válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
+    : Válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
 
     ![Új társított szolgáltatás mentése](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
@@ -209,7 +209,7 @@ Ebben a lépésben manuálisan fogja aktiválni az előző lépésben közzétet
 
     [![Tevékenységfuttatások monitorozása](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
-1. Ellenőrizze, hogy hozzá lett-e adva két további sor az SQL Database **emp** táblájához.
+1. Ellenőrizze, hogy az adatbázis **EMP** táblájában két további sor van-e hozzáadva.
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>A folyamat aktiválása ütemezés szerint
 Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folyamathoz. Az eseményindító a meghatározott ütemezés (például óránként vagy naponta) szerint futtatja a folyamatot. Itt úgy állíthatja be a triggert, hogy percenként fusson a megadott záró dátumig.
@@ -232,11 +232,11 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
     e. Frissítse a **befejezési időt** , hogy az aktuális dátum és idő pár perccel korábbi legyen. Az eseményindító csak a módosítások közzététele után lesz aktív. Ha úgy állítja be, hogy csak néhány percre van beállítva, és nem teszi közzé azt, akkor nem jelenik meg a trigger futtatása.
 
-    f. Kattintson az **OK** gombra.
+    f. Válassza az **OK** lehetőséget.
 
-    g. Az **aktivált** beállításnál válassza az **Igen**lehetőséget.
+    : Az **aktivált** beállításnál válassza az **Igen**lehetőséget.
 
-    h. Kattintson az **OK** gombra.
+    h. Válassza az **OK** lehetőséget.
 
     > [!IMPORTANT]
     > Minden egyes folyamatfuttatásnak van bizonyos költségvonzata, ezért a befejezés időpontját ezt figyelembe véve adja meg.

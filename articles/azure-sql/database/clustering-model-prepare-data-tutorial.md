@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: adatok előkészítése a fürtözés végrehajtásához az R-ben'
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: A jelen háromrészes oktatóanyag-sorozat első részében előkészíti az Azure SQL Database-ből származó adatokból a fürtözést az R-ben Azure SQL Database Machine Learning Services (előzetes verzió) használatával.
+description: A jelen háromrészes oktatóanyag-sorozat első részében az adatok előkészíthető egy Azure SQL Database-adatbázisból az R-ben Azure SQL Database Machine Learning Services (előzetes verzió) használatával történő fürtözés végrehajtásához.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c06e1b13f87972cbcd50e888edf55158b77881d8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a23dbd150dbe8ab05e0d4cf1f3decd67a856cbf4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053392"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251250"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: adatok előkészítése az R-ben történő fürtözés végrehajtásához Azure SQL Database Machine Learning Services (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A háromrészes oktatóanyag-sorozat első részében az R használatával importálhatja és készítheti elő az Azure SQL Database-adatbázisok adatait. A sorozat későbbi részében ezeket az adatfeldolgozási modelleket fogja használni az R-ben, Azure SQL Database Machine Learning Services (előzetes verzió).
+A jelen háromrészes oktatóanyag-sorozat első részében az R használatával importálhatja és előkészítheti Azure SQL Database adatbázisának adatait. A sorozat későbbi részében ezeket az adatfeldolgozási modelleket fogja használni az R-ben, Azure SQL Database Machine Learning Services (előzetes verzió).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -32,7 +32,7 @@ A *fürtözéssel* olyan csoportokba rendezheti az adatrendezést, ahol a csopor
 A **K-means** algoritmus használatával végezheti el az ügyfelek fürtözését a termékek beszerzése és visszaadása során. Az ügyfelek fürtözésével hatékonyabban összpontosíthat a marketingre, ha meghatározott csoportokat céloz meg.
 K – azt jelenti, hogy a fürtözés egy nem *felügyelt tanulási* algoritmus, amely hasonlóságok alapján keresi az adatmintákat.
 
-A sorozat első és két részén egy R-szkriptet fejleszt ki a RStudio-ben az adatai előkészítéséhez és a gépi tanulási modellek betanításához. Ezt követően a harmadik részen az R-szkripteket az SQL Database-ben tárolt eljárásokkal futtathatja.
+A sorozat első és két részén egy R-szkriptet fejleszt ki a RStudio-ben az adatai előkészítéséhez és a gépi tanulási modellek betanításához. Ezután a harmadik részben ezeket az R-parancsfájlokat a tárolt eljárások használatával fogja futtatni az adatbázisban.
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
@@ -40,11 +40,11 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 >
 > * Mintaadatbázis importálása Azure SQL Databaseba
 > * Ügyfelek elkülönítése különböző dimenziókban az R használatával
-> * Az adatok betöltése az Azure SQL Database-ből egy R-adatkeretbe
+> * Adatok betöltése az adatbázisból egy R-adatkeretbe
 
 A [második részből](clustering-model-build-tutorial.md)megtudhatja, hogyan hozhat létre és taníthat egy k-alapú fürtözési modellt az R-ben.
 
-A [harmadik részből](clustering-model-deploy-tutorial.md)megtudhatja, hogyan hozhat létre egy tárolt eljárást egy olyan Azure SQL Database-adatbázisban, amely új adatok alapján képes a fürtözésre az R-ben.
+A [harmadik részből](clustering-model-deploy-tutorial.md)megtudhatja, hogyan hozhat létre olyan tárolt eljárást, amely új adatok alapján képes a fürtözésre az R-ben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -68,7 +68,7 @@ Az oktatóanyagban használt minta adatkészletet egy **. bacpac** -adatbázis b
 
 1. Töltse le a [tpcxbb_1gb. bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac)fájlt.
 
-1. Kövesse az BACPAC- [fájl importálása egy Azure SQL Database-adatbázis létrehozásához](https://docs.microsoft.com/azure/sql-database/sql-database-import)című témakör utasításait a következő információk használatával:
+1. Kövesse az BACPAC- [fájl importálása egy Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázisba](../../azure-sql/database/database-import.md)című témakör utasításait, a következő részletek használatával:
 
    * Importálás a letöltött **tpcxbb_1gb. bacpac** fájlból
    * A nyilvános előzetes verzióban válassza ki az új adatbázis **Gen5/virtuális mag-** konfigurációját
@@ -211,9 +211,9 @@ A Azure Portal hajtsa végre az alábbi lépéseket:
 
 Az oktatóanyag-sorozat első részében a következő lépéseket végezte el:
 
-* Mintaadatbázis importálása egy Azure SQL Database-adatbázisba
+* Mintaadatbázis importálása Azure SQL Database-adatbázisba
 * Ügyfelek elkülönítése különböző dimenziókban az R használatával
-* Az adatok betöltése az Azure SQL Database-ből egy R-adatkeretbe
+* Adatok betöltése az adatbázisból egy R-adatkeretbe
 
 Az ügyféladatokat használó Machine learning-modell létrehozásához kövesse az oktatóanyag-sorozat második részét:
 

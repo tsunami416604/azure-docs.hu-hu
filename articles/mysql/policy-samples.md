@@ -1,24 +1,24 @@
 ---
 title: A Azure Database for MySQL beépített szabályzat-definíciói
 description: A Azure Database for MySQL Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: e3d89c2324c120d03a9497afa070ead369faea3b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: cf88bc39c09d53506ca777d0c7cd3c8fc359752b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234734"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887798"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-database-for-mysql"></a>Azure Policy beépített szabályzat-definíciók a Azure Database for MySQL
+# <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>A Azure Database for MySQL beépített definíciói Azure Policy
 
 Ez az oldal a Azure Database for MySQL [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 

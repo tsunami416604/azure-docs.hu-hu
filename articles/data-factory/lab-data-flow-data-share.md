@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dac018db1737b0395f78955d16dd753c6ac2f359
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415930"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252661"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
 
@@ -22,9 +22,9 @@ Mivel az ügyfelek a modern adattárház-és elemzési projektekhez csatlakoznak
 
 Ha a Code-Free ETL/ELT lehetővé teszi, hogy átfogó képet hozzon létre az adatokon, a Azure Data Factory fejlesztése lehetővé teszi, hogy az adatmérnökök magabiztosan és így nagyobb értéket kapjanak a vállalat számára. Az Azure-beli adatmegosztás lehetővé teszi, hogy az üzleti vállalkozások megosztójának irányítását irányított módon végezze el.
 
-Ebben a workshopban Azure Data Factory (ADF) használatával végezheti el az adatok betöltését egy Azure SQL Database-adatbázisból (SQL DB) a Azure Data Lake Storage Gen2 (ADLS Gen2). Miután megtörtént az adatgyűjtés a tóban, át kell alakítania a leképezési adatfolyamatok, a gyári natív transzformációs szolgáltatás és az Azure szinapszis Analytics (korábbi nevén SQL DW) használatával. Ezt követően az Azure-adatmegosztás használatával megoszthatja a táblázatot az átalakított adataival és néhány további adattal. 
+Ebben a workshopban Azure Data Factory (ADF) használatával végezheti el az adatok Azure SQL Databaseból való betöltését Azure Data Lake Storage Gen2 (ADLS Gen2). Miután megtörtént az adatgyűjtés a tóban, át kell alakítania a leképezési adatfolyamatok, a gyári natív transzformációs szolgáltatás és az Azure szinapszis Analytics (korábbi nevén SQL DW) használatával. Ezt követően az Azure-adatmegosztás használatával megoszthatja a táblázatot az átalakított adataival és néhány további adattal. 
 
-A laborban használt adatkészletek New York-i taxik. Az Azure SQL Database-be való importáláshoz töltse le a [taxi-bacpac fájlt](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
+A laborban használt adatkészletek New York-i taxik. A SQL Database-adatbázisba való importáláshoz töltse le a [taxi-bacpac fájlt](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -146,7 +146,7 @@ Sikeresen létrehozta a forrás adatkészletet. Győződjön meg arról, hogy a 
 1. A formátum kiválasztása ablaktáblán válassza a **DelimitedText** lehetőséget a CSV-fájl írásakor. Kattintson a Folytatás gombra.
 
     ![Portál](media/lab-data-flow-data-share/copy9.png)
-1. Nevezze el a fogadó adatkészletet "TripDataCSV". A társított szolgáltatásként válassza a "ADLSGen2" lehetőséget. Adja meg, hová szeretné írni a CSV-fájlt. Például megírhatja az adatait a tárolóba `trip-data.csv` `staging-container`a fájlba. Állítsa az **első sort fejlécként** igaz értékre, ha azt szeretné, hogy a kimeneti adatokat fejlécek legyenek. Mivel még nem található fájl a célhelyen, állítsa a **séma importálása** **nincs**értékre. Ha elkészült, kattintson az OK gombra.
+1. Nevezze el a fogadó adatkészletet "TripDataCSV". A társított szolgáltatásként válassza a "ADLSGen2" lehetőséget. Adja meg, hová szeretné írni a CSV-fájlt. Például megírhatja az adatait a `trip-data.csv` tárolóba a fájlba `staging-container` . Állítsa az **első sort fejlécként** igaz értékre, ha azt szeretné, hogy a kimeneti adatokat fejlécek legyenek. Mivel még nem található fájl a célhelyen, állítsa a **séma importálása** **nincs**értékre. Ha elkészült, kattintson az OK gombra.
 
     ![Portál](media/lab-data-flow-data-share/copy10.png)
 
@@ -169,7 +169,7 @@ Sikeresen létrehozta a forrás adatkészletet. Győződjön meg arról, hogy a 
 
 Most, hogy sikeresen átmásolta az adatokat a Azure Data Lake Storageba, itt az ideje, hogy csatlakozzon, és összesítse az adatokat egy adattárházba. A leképezési adatfolyamot fogjuk használni, Azure Data Factory a vizuálisan tervezett átalakítási szolgáltatást. Az adatfolyamatok leképezése lehetővé teszi a felhasználók számára az átalakítási logikai kódok kifejlesztését, és az ADF szolgáltatás által kezelt Spark-fürtökön történő végrehajtását.
 
-Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakaszban létrehozott "TripDataCSV" adatkészletet egy "dbo" táblával. A "SQLDB" tárolt TripFares négy fő oszlop alapján. Ezután az oszlop `payment_type` alapján összesíti az adatokat, hogy kiszámítsa bizonyos mezők átlagát, és az Azure szinapszis Analytics-táblázatba írja őket.
+Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakaszban létrehozott "TripDataCSV" adatkészletet egy "dbo" táblával. A "SQLDB" tárolt TripFares négy fő oszlop alapján. Ezután az oszlop alapján összesíti az adatokat `payment_type` , hogy kiszámítsa bizonyos mezők átlagát, és az Azure szinapszis Analytics-táblázatba írja őket.
 
 ### <a name="add-a-data-flow-activity-to-your-pipeline"></a>Adatfolyam-tevékenység hozzáadása a folyamathoz
 
@@ -226,7 +226,7 @@ Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakasz
     ![Portál](media/lab-data-flow-data-share/join1.png)
 1. Nevezze el az "InnerJoinWithTripFares" illesztési átalakítót. Válassza a jobb oldali stream legördülő menüből a "TripFaresSQL" elemet. Válassza a **belső** lehetőséget az összekapcsolás típusaként. Ha többet szeretne megtudni a különböző illesztési típusokról a leképezési adatfolyamban, tekintse meg a [Csatlakozás típusai](https://docs.microsoft.com/azure/data-factory/data-flow-join#join-types)című részt.
 
-    Válassza ki, hogy mely oszlopokat kívánja egyeztetni az egyes adatfolyamok **között az illesztési feltételek** legördülő listából. További illesztési feltétel hozzáadásához kattintson a egy meglévő feltétel melletti plusz ikonra. Alapértelmezés szerint az összes csatlakoztatási feltétel össze van foglalva egy és operátorral, ami azt jelenti, hogy az összes feltételnek teljesülnie kell az egyeztetéshez. Ebben a laborban szeretnénk egyeztetni a következő `medallion`oszlopokat `hack_license` `vendor_id`:,, és`pickup_datetime`
+    Válassza ki, hogy mely oszlopokat kívánja egyeztetni az egyes adatfolyamok **között az illesztési feltételek** legördülő listából. További illesztési feltétel hozzáadásához kattintson a egy meglévő feltétel melletti plusz ikonra. Alapértelmezés szerint az összes csatlakoztatási feltétel össze van foglalva egy és operátorral, ami azt jelenti, hogy az összes feltételnek teljesülnie kell az egyeztetéshez. Ebben a laborban szeretnénk egyeztetni a következő oszlopokat:,, `medallion` `hack_license` `vendor_id` és`pickup_datetime`
 
     ![Portál](media/lab-data-flow-data-share/join2.png)
 1. Ellenőrizze, hogy sikeresen csatlakozott-e 25 oszlophoz egy adatelőnézetsel együtt.
@@ -250,15 +250,15 @@ Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakasz
     ![Portál](media/lab-data-flow-data-share/agg3.png)
 1. Az összesítési kifejezés megadásához kattintson a **kifejezés megadása**feliratú kék mezőre. Ekkor megnyílik az adatáramlási kifejezés-szerkesztő, amely a bemeneti séma, a beépített függvények és műveletek, valamint a felhasználó által definiált paraméterek használatával vizuálisan hozza létre az adatfolyam-kifejezéseket. A Kifejezésszerkesztő funkcióival kapcsolatos további információkért tekintse meg a Kifejezésszerkesztő [dokumentációját](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder).
 
-    Az átlagos viteldíj beszerzéséhez használja az `avg()` összesítési függvényt, hogy `total_amount` összesítse az oszlopot egy egész `toInteger()`számra. Az adatáramlás kifejezésének nyelvében ez a következőként `avg(toInteger(total_amount))`van definiálva:. Ha elkészült, kattintson **a Mentés és Befejezés** gombra.
+    Az átlagos viteldíj beszerzéséhez használja az `avg()` összesítési függvényt, hogy összesítse az `total_amount` oszlopot egy egész számra `toInteger()` . Az adatáramlás kifejezésének nyelvében ez a következőként van definiálva: `avg(toInteger(total_amount))` . Ha elkészült, kattintson **a Mentés és Befejezés** gombra.
 
     ![Portál](media/lab-data-flow-data-share/agg4.png)
-1. További aggregációs kifejezés hozzáadásához kattintson a mellette található plusz ikonra `average_fare`. Válassza az **oszlop hozzáadása**lehetőséget.
+1. További aggregációs kifejezés hozzáadásához kattintson a mellette található plusz ikonra `average_fare` . Válassza az **oszlop hozzáadása**lehetőséget.
 
     ![Portál](media/lab-data-flow-data-share/agg5.png)
 1. Az **oszlop hozzáadása vagy kiválasztása**feliratú szövegmezőbe írja be a következőt: "total_trip_distance". Ahogy az utolsó lépésben, nyissa meg a kifejezés-szerkesztőt a kifejezésbe való belépéshez.
 
-    A teljes utazási távolság beszerzéséhez használja az `sum()` összesítési függvényt, hogy `trip_distance` összesítse az oszlopot egy egész `toInteger()`számmal. Az adatáramlás kifejezésének nyelvében ez a következőként `sum(toInteger(trip_distance))`van definiálva:. Ha elkészült, kattintson **a Mentés és Befejezés** gombra.
+    A teljes utazási távolság beszerzéséhez használja az `sum()` összesítési függvényt, hogy összesítse az `trip_distance` oszlopot egy egész számmal `toInteger()` . Az adatáramlás kifejezésének nyelvében ez a következőként van definiálva: `sum(toInteger(trip_distance))` . Ha elkészült, kattintson **a Mentés és Befejezés** gombra.
 
     ![Portál](media/lab-data-flow-data-share/agg6.png)
 1. Tesztelje az átalakítási logikát az **adatelőnézet** lapon. Amint láthatja, a korábbinál jóval kevesebb sor és oszlop szerepel. Csak az ebben az átalakításban definiált három csoportosítási és összesítési oszlop folytatja a műveletet. Mivel a mintában csak öt fizetéstípus-csoport van, csak öt sor van leképezve.
@@ -390,7 +390,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
         ![Címzettek hozzáadása](media/lab-data-flow-data-share/add-recipients.png)
 
-    1. Adja hozzá a nevet *janedoe@fabrikam.com*a kitalált adatfogyasztónak.
+    1. Adja hozzá a nevet a kitalált adatfogyasztónak *janedoe@fabrikam.com* .
 
 1. Ezen a képernyőn beállíthat egy pillanatkép-beállítást az adatfogyasztó számára. Ez lehetővé teszi, hogy az Ön által meghatározott időközönként rendszeres frissítéseket kapjon az adatairól. 
 
@@ -412,7 +412,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
     ![Függőben lévő meghívások](media/lab-data-flow-data-share/pending-invites.png)
 
-1. Válassza ki a meghívót *janedoe@fabrikam.com*. Válassza a Törlés elemet. Ha a címzett még nem fogadta el a meghívót, többé nem fogja tudni megtenni. 
+1. Válassza ki a meghívót *janedoe@fabrikam.com* . Válassza a Törlés elemet. Ha a címzett még nem fogadta el a meghívót, többé nem fogja tudni megtenni. 
 
 1. Válassza az **Előzmények** fület. Semmi sem jelenik meg, mert az adatfogyasztó még nem fogadta el a meghívót, és nem váltott ki pillanatképet. 
 

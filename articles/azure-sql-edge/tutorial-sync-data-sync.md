@@ -9,15 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7aa7c33a94980081efa3bc54422389aef7defa61
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235018"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254050"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből a Azure SQL Databasere SQL-adatszinkronizálás használatával
-
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhat Azure SQL-adatszinkronizálás *szinkronizálási csoportot* az adatok Azure SQL Edge-ből Azure SQL Databaseba való növekményes szinkronizálásához. A SQL-adatszinkronizálás Azure SQL Database-on alapuló szolgáltatás, amely lehetővé teszi, hogy a Azure SQL Database és SQL Server példányokban több adatbázison is szinkronizálja az Ön által választott adatokat. További információ a SQL-adatszinkronizálásről: [Azure SQL-adatszinkronizálás](../azure-sql/database/sql-data-sync-data-sql-server-sql-database.md).
 
@@ -29,7 +28,7 @@ Az oktatóanyaghoz az [Azure SQL-adatszinkronizálás adatszinkronizálási ügy
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Hozzon létre egy Azure SQL-adatbázist. Az Azure SQL Database Azure Portal használatával történő létrehozásával kapcsolatos információkért lásd: [önálló adatbázis létrehozása Azure SQL Databaseban](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal).
+* Hozzon létre egy adatbázist a Azure SQL Databaseban. További információ az adatbázisok létrehozásáról a Azure Portal használatával: [önálló adatbázis létrehozása Azure SQL Databaseban](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal).
 
 * Hozza létre a táblákat és az egyéb szükséges objektumokat a Azure SQL Database üzemelő példányában.
 
@@ -37,9 +36,9 @@ Az oktatóanyaghoz az [Azure SQL-adatszinkronizálás adatszinkronizálási ügy
 
 * Regisztrálja az Azure SQL Edge-példányt az Azure SQL-adatszinkronizálás adatszinkronizálási ügynökével. További információ: [SQL Server adatbázis hozzáadása](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-on-prem).
 
-## <a name="sync-data-between-an-azure-sql-database-and-sql-edge"></a>Az Azure SQL Database és az SQL Edge közötti adatszinkronizálás
+## <a name="sync-data-between-a-database-in-azure-sql-database-and-sql-edge"></a>Az Azure SQL Database és az SQL Edge-adatbázis közötti adatszinkronizálás
 
-Az Azure SQL Database-adatbázisok és az SQL Edge-példányok SQL-adatszinkronizálás használatával történő szinkronizálásának beállítása három fő lépésből áll:  
+A Azure SQL Database és az SQL Edge-példányok közötti szinkronizálás beállítása a SQL-adatszinkronizálás használatával három fő lépést foglal magában:  
 
 
 1. Szinkronizálási csoport létrehozásához használja a Azure Portal. További információ: [szinkronizálási csoport létrehozása](../azure-sql/database/sql-data-sync-sql-server-configure.md#create-sync-group). Egyetlen *központi* adatbázis használatával több szinkronizálási csoportot is létrehozhat, hogy a különböző SQL Edge-példányokból származó adatokat a Azure SQL Database egy vagy több adatbázisába szinkronizálja. 
@@ -48,7 +47,7 @@ Az Azure SQL Database-adatbázisok és az SQL Edge-példányok SQL-adatszinkroni
 
 3. Állítsa be úgy a szinkronizálási csoportot, hogy kiválassza a szinkronizálás részét képező táblákat. További információ: [szinkronizálási csoport konfigurálása](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-sync-members).
 
-Az előző lépések elvégzése után egy szinkronizálási csoporttal rendelkezik, amely tartalmaz egy Azure SQL Database-adatbázist és egy SQL Edge-példányt.
+Az előző lépések elvégzése után egy szinkronizálási csoporttal rendelkezik, amely tartalmaz egy adatbázist Azure SQL Database és egy SQL Edge-példányt.
 
 A SQL-adatszinkronizálásról további információt a következő cikkekben talál:
 

@@ -4,15 +4,15 @@ description: Ez a cikk tájékoztatást nyújt arról, hogyan frissíthet egy Ap
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 3903ccd1c15765d06cd1794a40567e2c70062538
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795907"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806783"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Az Application Gateway bejövőforgalom-vezérlőjének frissítése a Helm használatával 
 
@@ -42,7 +42,7 @@ A frissítési folyamat megkezdése előtt győződjön meg arról, hogy a szük
     helm repo update
     ```
 
-1. A `application-gateway-kubernetes-ingress` diagram elérhető verzióinak megtekintése:
+1. A diagram elérhető verzióinak megtekintése `application-gateway-kubernetes-ingress` :
 
     ``` bash
     helm search -l application-gateway-kubernetes-ingress
@@ -71,7 +71,7 @@ A frissítési folyamat megkezdése előtt győződjön meg arról, hogy a szük
     odd-billygoat   22              Fri Jun 21 15:56:06 2019        FAILED  ingress-azure-0.7.0-rc1 0.7.0-rc1       default
     ```
 
-    A fenti minta válaszból származó Helm diagram a neve `odd-billygoat`. Ezt a nevet fogjuk használni a többi parancshoz. A tényleges központi telepítési név valószínűleg eltérő lesz.
+    A fenti minta válaszból származó Helm diagram a neve `odd-billygoat` . Ezt a nevet fogjuk használni a többi parancshoz. A tényleges központi telepítési név valószínűleg eltérő lesz.
 
 1. A Helm üzembe helyezésének frissítése egy új verzióra:
 
@@ -100,7 +100,7 @@ Ha a Helm üzembe helyezése meghiúsul, visszaállíthatja az előző kiadást.
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    A `helm history` parancs mintájának kimenetében úgy tűnik, hogy a verzió utolsó sikeres üzembe helyezése `odd-billygoat``1`
+    A parancs mintájának kimenetében `helm history` úgy tűnik, hogy a verzió utolsó sikeres üzembe helyezése `odd-billygoat``1`
 
 1. Visszaállítás az utolsó sikeres változatra:
 

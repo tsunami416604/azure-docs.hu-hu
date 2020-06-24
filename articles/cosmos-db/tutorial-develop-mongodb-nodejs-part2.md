@@ -1,5 +1,5 @@
 ---
-title: Node. js Express-alkalmazás létrehozása Azure Cosmos DB API-MongoDB (part2)
+title: Node.js Express-alkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val (part2)
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 2. része.
 author: johnpapa
 ms.service: cosmos-db
@@ -10,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f9ce90a64ca038c99fe4ba63e66f7e5abbd196f6
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75441129"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119171"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – Node. js Express-alkalmazás létrehozása
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – Node.js Express-alkalmazás létrehozása
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node. js-ben írt új alkalmazást az Express és a szögletes beállítással, majd hogyan csatlakoztatható a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md).
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy olyan új alkalmazást, amelyet expressz és szögletes Node.js írt be, majd a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md)csatlakozik.
 
 Az oktatóanyag 2. része a [bevezető részre](tutorial-develop-mongodb-nodejs.md) épül, és az alábbi feladatokat ismerteti:
 
@@ -163,7 +163,7 @@ Az oktatóanyaghoz a következőkre is szükség lesz:
 
     A válaszból kiderül, hogy az alkalmazás működik és helyileg fut. 
 
-    ![Postman képe a kéréssel és a válasszal](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png" alt-text="Postman képe a kéréssel és a válasszal":::
 
 
 ## <a name="next-steps"></a>További lépések

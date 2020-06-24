@@ -14,21 +14,22 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 86c73944753126aa3fb5c14c8d6626a449365c64
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84c0f6564fc9ab8abc43205b58d9445cda82a2da
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053326"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253817"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: prediktív modell üzembe helyezése az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A három részből álló oktatóanyag harmadik részében egy, az R-ben kifejlesztett prediktív modellt helyez üzembe egy Azure SQL Database Machine Learning Services (előzetes verzió) használatával egy SQL-adatbázisba.
+A három részből álló oktatóanyag harmadik részében egy, az R-ben kifejlesztett prediktív modellt helyez üzembe egy Azure SQL Database-adatbázisban Azure SQL Database Machine Learning Services (előzetes verzió) használatával.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-Létrehoz egy tárolt eljárást egy olyan beágyazott R-parancsfájllal, amely az előrejelzéseket a modell használatával teszi elérhetővé. Mivel a modell végrehajtása az Azure SQL Database-ben történik, könnyen kitanítható az adatbázisban tárolt adataival.
+Létrehoz egy tárolt eljárást egy olyan beágyazott R-parancsfájllal, amely az előrejelzéseket a modell használatával teszi elérhetővé. Mivel a modell végrehajtása az adatbázisban történik, könnyen betanítható az adatbázisban tárolt adataival.
 
 Ebben a cikkben az 1. és a 2. részekben kifejlesztett R-szkripteket használva megismerheti a következőket:
 
@@ -200,7 +201,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-Sikeresen létrehozott, betanított és üzembe helyezett egy modellt egy Azure SQL Database-adatbázisban. Ezt a modellt egy tárolt eljárásban használta fel az értékek előrejelzésére az új adatok alapján.
+Sikeresen létrehozott, betanított és üzembe helyezett egy modellt a Azure SQL Database adatbázisban. Ezt a modellt egy tárolt eljárásban használta fel az értékek előrejelzésére az új adatok alapján.
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 

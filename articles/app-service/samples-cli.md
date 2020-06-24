@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535621"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254497"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-minták a Azure App Servicehoz
 
@@ -35,7 +35,7 @@ A következő táblázat az Azure CLI használatával létrehozott bash parancsf
 |**Alkalmazás elleni védelem**||
 | [Integrálás az Azure Application Gateway](./scripts/cli-integrate-app-service-with-application-gateway.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy App Service alkalmazást, és integrálja azt Application Gateway szolgáltatás-végpont és hozzáférési korlátozások használatával. |
 |**Az alkalmazás összekötése az erőforrásokkal**||
-| [Alkalmazás összekötése egy SQL Database](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service alkalmazást és egy SQL-adatbázist, majd hozzáadja az adatbázis-kapcsolódási karakterláncot az alkalmazás beállításaihoz. |
+| [Alkalmazás összekötése egy SQL Database](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service alkalmazást és egy adatbázist a Azure SQL Database, majd hozzáadja az adatbázis-kapcsolódási karakterláncot az alkalmazás beállításaihoz. |
 | [Alkalmazás összekötése egy Storage-fiókkal](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service alkalmazást és egy Storage-fiókot, majd hozzáadja a Storage-kapcsolódási karakterláncot az alkalmazás beállításaihoz. |
 | [Alkalmazás összekötése egy Azure cache-Redis](./scripts/cli-connect-to-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy App Service alkalmazást és egy Azure-gyorsítótárat a Redis, majd hozzáadja az Redis kapcsolati adatait az alkalmazás beállításaihoz.) |
 | [Alkalmazás összekötése Cosmos DB](./scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy App Service alkalmazást és egy Cosmos DB, majd hozzáadja a Cosmos DB kapcsolat részleteit az alkalmazás beállításaihoz. |
