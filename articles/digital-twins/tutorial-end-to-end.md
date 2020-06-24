@@ -1,5 +1,5 @@
 ---
-title: Végpontok közötti megoldás összekötése
+title: Teljes körű megoldás csatlakoztatása
 titleSuffix: Azure Digital Twins
 description: Oktatóanyag egy teljes körű Azure digitális Twins-megoldás kiépítéséhez, amelyet az eszközön tárolt adatszolgáltatások vezéreltek.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e824641f261fc920dd234ba8d4787fbd8ddffe48
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613385"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296984"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Hozzon létre egy végpontok közötti megoldást
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 A környezetből származó élő adatok teljes körű megoldásának beállításához az Azure Digital Twins-példányát más Azure-szolgáltatásokhoz is összeállíthatja az eszközök és adatok kezeléséhez.
 
@@ -133,6 +136,8 @@ A Visual Studio fő ablakában megnyíló *Közzététel* ablaktáblán győződ
 > [!NOTE]
 > A következőhöz hasonló előugró ablak jelenhet meg: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Az Azure-függvény közzététele a Visual Studióban: hitelesítő adatok közzététele" border="false":::
 > Ha igen, válassza **a kísérlet a hitelesítő adatok lekérése az Azure-ból és a** **Mentés**lehetőséget.
+>
+> Ha egy figyelmeztetés jelenik meg, hogy a *functions Runtime verziója nem egyezik az Azure-ban futó verzióval*, kövesse az utasításokat a legújabb Azure functions Runtime verzióra való frissítéshez. Ez a probléma akkor fordulhat elő, ha a Visual Studio egy régebbi verzióját használja, mint az oktatóanyag elején az *Előfeltételek* szakaszban ajánlott.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Engedélyek kiosztása a Function alkalmazáshoz
 
@@ -427,7 +432,7 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépről letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 

@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 2e9c027a927d4aba9c174db8dfc5a72f0cc4f214
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 43816c815c206da7e3fec197e54e9e7889c6de47
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195179"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735353"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure PowerShell használatával
 
@@ -27,7 +27,7 @@ A virtuálisgép-méretezési csoportok segítségével azonos, automatikus ská
 > * Méretezési csoport manuális méretezése
 > * Méretezési csoportra vonatkozó gyakori felügyeleti feladatok végrehajtása
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -191,6 +191,8 @@ New-AzVmss `
   -Credential $cred
 ```
 
+> [!IMPORTANT]
+> Javasoljuk, hogy a *legújabb* rendszerkép-verziót használja. A "legfrissebb" érték megadásával a lemezkép legújabb verziója használható a telepítés ideje alatt. Vegye figyelembe, hogy még ha a legújabbat is használja, a virtuálisgép-lemezkép nem frissül automatikusan az üzembe helyezési idő után, még akkor is, ha az új verzió elérhetővé válik.
 
 ## <a name="understand-vm-instance-sizes"></a>A virtuálisgép-példányok méreteinek ismertetése
 A virtuálisgép-példány mérete, más néven *SKU*, a virtuálisgép-példány által elérhető számítási erőforrások, azaz a processzor, a grafikus processzor és a memória mennyiségét határozza meg. A méretezési csoportban lévő virtuálisgép-példányokat a várható számítási igényeknek megfelelően kell méretezni.
@@ -306,7 +308,7 @@ Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Az erőforráscsoportok törlésével az összes bennük foglalt erőforrás, azaz a virtuálisgép-példányok, a virtuális hálózat és a lemezek is törölve lesznek. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive

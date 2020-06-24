@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: ce3b3839319de38020b968ff8db1ee6713b29c47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 64cb864b50f44f70bb9ceccc9983641970116cc7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78269983"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261443"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Oktatóanyag: JSON-Blobok indexelése az Azure Storage-ból REST használatával
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag a Poster és a [Search REST API](https://docs.microsoft.com/r
 > * Indexelő konfigurálása és futtatása a tároló olvasásához és a kereshető tartalom kinyeréséhez az Azure Blob Storage-ból
 > * Keresés az újonnan létrehozott indexben
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="download-files"></a>Fájlok letöltése
 
-A [Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) tartalmazza az oktatóanyagban használt adatkészleteket. Töltse le és csomagolja ki a fájlt a saját mappájába. Az adatok a [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)-ből származnak, és a JSON formátumba konvertálódnak erre az oktatóanyagra.
+[Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) az oktatóanyagban használt adatkészleteket tartalmazza. Töltse le és csomagolja ki a fájlt a saját mappájába. Az adatok a [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)-ből származnak, és a JSON formátumba konvertálódnak erre az oktatóanyagra.
 
 ## <a name="1---create-services"></a>1 – szolgáltatások létrehozása
 
@@ -96,7 +96,7 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
 ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
@@ -108,17 +108,17 @@ Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt 
 
 Az oktatóanyag minden hívására vonatkozó kérési metódusok **post** és **Get**. A keresési szolgáltatás három API-hívást hajt végre egy adatforrás, egy index és egy indexelő létrehozásához. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
 
-A fejlécekben a "Content-Type" értéket `application/json` állítsa be `api-key` , és állítsa az Azure Cognitive Search szolgáltatás felügyeleti API-kulcsára. Miután beállította a fejléceket, használhatja azokat minden kérelemhez ebben a gyakorlatban.
+A fejlécekben a "Content-Type" értéket állítsa be, `application/json` és állítsa `api-key` az Azure Cognitive Search szolgáltatás felügyeleti API-kulcsára. Miután beállította a fejléceket, használhatja azokat minden kérelemhez ebben a gyakorlatban.
 
   ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
 
-Az URI-k API-verziót kell megadni, és minden hívásnak egy **201**-as értéket kell visszaadnia. A JSON-tömbök használatának általánosan elérhető API-verziója a következő `2019-05-06`:.
+Az URI-k API-verziót kell megadni, és minden hívásnak egy **201**-as értéket kell visszaadnia. A JSON-tömbök használatának általánosan elérhető API-verziója a következő: `2019-05-06` .
 
 ## <a name="3---create-a-data-source"></a>3 – adatforrás létrehozása
 
 Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) létrehoz egy Azure Cognitive Search objektumot, amely meghatározza, hogy milyen adatindexet szeretne.
 
-1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
+1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/datasources?api-version=2019-05-06` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
 
 1. Másolja a következő JSON-t a kérelem törzsébe.
 
@@ -161,7 +161,7 @@ Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchser
     
 A második hívás [index API-t hoz létre](https://docs.microsoft.com/rest/api/searchservice/create-index), amely egy Azure Cognitive Search indexet hoz létre, amely az összes kereshető adattal tárolja. Az index határozza meg az összes paramétert és ezek attribútumait.
 
-1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/indexes?api-version=2019-05-06` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 1. Másolja a következő JSON-t a kérelem törzsébe.
 
@@ -236,7 +236,7 @@ A második hívás [index API-t hoz létre](https://docs.microsoft.com/rest/api/
 
 Az indexelő csatlakozik az adatforráshoz, importálja az adatmennyiséget a cél keresési indexbe, és opcionálisan biztosít egy ütemtervet az Adatfrissítés automatizálásához. A REST API [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-1. Állítsa be a hívás URI- `https://[service name].search.windows.net/indexers?api-version=2019-05-06`ját a következőre:. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+1. Állítsa be a hívás URI-JÁT a következőre: `https://[service name].search.windows.net/indexers?api-version=2019-05-06` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 1. Másolja a következő JSON-t a kérelem törzsébe.
 
@@ -281,7 +281,7 @@ Az első dokumentum betöltését követően megkezdheti a keresést.
 
 1. Módosítsa a **lekérdezni**kívánt műveletet.
 
-1. Állítsa be a hívás URI- `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true`ját a következőre:. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+1. Állítsa be a hívás URI-JÁT a következőre: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 1. Küldje el a kérést. Ez egy nem megadott teljes szöveges keresési lekérdezés, amely visszaadja az indexben beolvasható összes mezőt, valamint a dokumentumok számát. A válasznak így kell kinéznie:
 
@@ -313,11 +313,11 @@ Az első dokumentum betöltését követően megkezdheti a keresést.
             . . . 
     ```
 
-1. Adja hozzá `$select` a lekérdezési paramétert az eredmények kevesebb mezőre `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true`való korlátozásához:.  Ehhez a lekérdezéshez a 100-es dokumentumok egyeznek, de alapértelmezés szerint az Azure Cognitive Search csak a 50 értéket adja vissza az eredményekben.
+1. Adja hozzá a `$select` lekérdezési paramétert az eredmények kevesebb mezőre való korlátozásához: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true` .  Ehhez a lekérdezéshez a 100-es dokumentumok egyeznek, de alapértelmezés szerint az Azure Cognitive Search csak a 50 értéket adja vissza az eredményekben.
 
    ![Paraméteres lekérdezés](media/search-semi-structured-data/lastquery.png "Paramterized-lekérdezés")
 
-1. Példa összetettebb lekérdezésre `$filter=MinimumAge ge 30 and MaximumAge lt 75`, amely csak azokat az eredményeket adja vissza, amelyekben a paraméterek minimális értéke nagyobb vagy egyenlő, mint 30, a maximális érték pedig 75. Cserélje le `$select` a kifejezést a `$filter` kifejezésre.
+1. Példa összetettebb lekérdezésre `$filter=MinimumAge ge 30 and MaximumAge lt 75` , amely csak azokat az eredményeket adja vissza, amelyekben a paraméterek minimális értéke nagyobb vagy egyenlő, mint 30, a maximális érték pedig 75. Cserélje le a `$select` kifejezést a `$filter` kifejezésre.
 
    ![Részben strukturált keresés](media/search-semi-structured-data/metadatashort.png)
 
@@ -338,7 +338,7 @@ DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-j
 
 Sikeres törlés esetén a rendszer a 204-es állapotkódot adja vissza.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

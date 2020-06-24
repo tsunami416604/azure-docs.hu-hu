@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: b44547998b7ed7159e43bcbbfb4b4456d2a232e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654552"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734215"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Active Directory Domain Services felügyelt tartomány létrehozása Azure Resource Manager sablon használatával
 
@@ -38,7 +38,7 @@ A cikk végrehajtásához a következő erőforrásokra van szükség:
 
 ## <a name="dns-naming-requirements"></a>DNS-elnevezési követelmények
 
-Azure AD DS-példány létrehozásakor meg kell adnia egy DNS-nevet. A DNS-név kiválasztásakor a következő szempontokat kell figyelembe venni:
+Azure AD DS felügyelt tartomány létrehozásakor meg kell adnia egy DNS-nevet. A DNS-név kiválasztásakor a következő szempontokat kell figyelembe venni:
 
 * **Beépített tartomány neve:** Alapértelmezés szerint a rendszer a könyvtár beépített tartománynevét használja (a *. onmicrosoft.com* utótagot). Ha engedélyezni szeretné a biztonságos LDAP-hozzáférést a felügyelt tartományhoz az interneten keresztül, nem hozhat létre digitális tanúsítványt a kapcsolat védelméhez ezzel az alapértelmezett tartománnyal. A Microsoft tulajdonosa a *. onmicrosoft.com* tartomány, így a hitelesítésszolgáltató (CA) nem bocsát ki tanúsítványt.
 * **Egyéni tartománynevek:** A leggyakoribb módszer egy egyéni tartománynév megadása, amely általában az egyik, amelyet már birtokol, és irányítható. Ha irányítható, egyéni tartományt használ, a forgalom az alkalmazások támogatásához szükséges módon képes megfelelően átáramlani.
@@ -47,7 +47,7 @@ Azure AD DS-példány létrehozásakor meg kell adnia egy DNS-nevet. A DNS-név 
 > [!TIP]
 > Ha egyéni tartománynevet hoz létre, gondoskodjon a meglévő DNS-névterekről. Azt javasoljuk, hogy a tartománynevet a meglévő Azure-beli vagy helyszíni DNS-névtértől elkülönítve használja.
 >
-> Ha például meglévő DNS- *contoso.com*rendelkezik, hozzon létre egy Azure AD DS felügyelt tartományt a *aaddscontoso.com*egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
+> Ha például meglévő DNS- *contoso.com*rendelkezik, hozzon létre egy felügyelt tartományt a *aaddscontoso.com*egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
 >
 > Előfordulhat, hogy létre kell hoznia néhány további DNS-rekordot a környezetében lévő más szolgáltatásokhoz, vagy feltételes DNS-továbbítókat a környezet meglévő DNS-neve között. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
 >
@@ -63,7 +63,7 @@ A DNS-név következő korlátozásai is érvényesek:
 
 ## <a name="create-required-azure-ad-resources"></a>Szükséges Azure AD-erőforrások létrehozása
 
-Az Azure AD DS használatához egy egyszerű szolgáltatásnév és egy Azure AD-csoport szükséges. Ezek az erőforrások lehetővé teszik, hogy az Azure AD DS felügyelt tartomány szinkronizálja az adatokat, és meghatározhatja, hogy mely felhasználók rendelkeznek rendszergazdai jogosultságokkal a felügyelt tartományban.
+Az Azure AD DS használatához egy egyszerű szolgáltatásnév és egy Azure AD-csoport szükséges. Ezek az erőforrások lehetővé teszik, hogy a felügyelt tartomány szinkronizálja az adatokat, és meghatározza, hogy mely felhasználók rendelkeznek rendszergazdai jogosultságokkal a felügyelt tartományban.
 
 Először regisztrálja a Azure AD Domain Services erőforrás-szolgáltatót a [Register-AzResourceProvider][Register-AzResourceProvider] parancsmag használatával:
 
@@ -77,7 +77,7 @@ Hozzon létre egy Azure AD-szolgáltatásnevet az Azure AD DS [új-azureadservic
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-Most hozzon létre egy *HRE DC-rendszergazdák* nevű Azure ad [-csoportot a New-AzureADGroup][New-AzureADGroup] parancsmag használatával. A csoportba felvett felhasználók engedélyt kapnak az adminisztrációs feladatok végrehajtására az Azure AD DS felügyelt tartományon.
+Most hozzon létre egy *HRE DC-rendszergazdák* nevű Azure ad [-csoportot a New-AzureADGroup][New-AzureADGroup] parancsmag használatával. A csoportba felvett felhasználók engedélyeket kapnak az adminisztrációs feladatok végrehajtásához a felügyelt tartományon.
 
 ```powershell
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Ha létrehozta a *HRE DC-rendszergazdák* csoportot, adjon hozzá egy felhasználót a csoporthoz az [Add-AzureADGroupMember][Add-AzureADGroupMember] parancsmag használatával. Először a Get [-AzureADGroup][Get-AzureADGroup] parancsmaggal szerezheti be a *HRE DC rendszergazdák* csoportjának azonosítóját, majd a kívánt felhasználó objektumazonosítót a [Get-AzureADUser][Get-AzureADUser] parancsmag használatával.
 
-A következő példában a fiók felhasználói objektumának azonosítója egy egyszerű felhasználónévvel `admin@aaddscontoso.onmicrosoft.com`. Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
+A következő példában a fiók felhasználói objektumának azonosítója egy egyszerű felhasználónévvel `admin@aaddscontoso.onmicrosoft.com` . Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -125,10 +125,10 @@ A Resource Manager erőforrás-definíciójának részeként a következő konfi
 |-------------------------|---------|
 | domainName              | A felügyelt tartomány DNS-tartományneve, amely figyelembe veszi az előtagok és az ütközések elnevezésére vonatkozó korábbi pontokat. |
 | filteredSync            | Az Azure AD DS lehetővé teszi az Azure AD-ben elérhető *összes* felhasználó és csoport szinkronizálását, vagy csak bizonyos csoportok *hatókörön* belüli szinkronizálását. Ha úgy dönt, hogy az összes felhasználót és csoportot szinkronizálja, később nem dönthet úgy, hogy csak hatókörön belüli szinkronizálást hajt végre.<br /> A hatókörön belüli szinkronizálással kapcsolatos további információkért lásd: [Azure ad Domain Services hatókörön belüli szinkronizálás][scoped-sync].|
-| notificationSettings    | Ha az Azure AD DS felügyelt tartományában bármilyen riasztás jön létre, a rendszer e-mail-értesítéseket küldhet. <br />Az Azure-bérlő *globális rendszergazdái* és a *HRE DC-rendszergazdák* csoport tagjai is *engedélyezhetők* ezekhez az értesítésekhez.<br /> Ha kívánja, további címzetteket is hozzáadhat az értesítésekhez, ha olyan riasztásokra van szükség, amelyeknek figyelmet igényelnek.|
-| domainConfigurationType | Alapértelmezés szerint az Azure AD DS felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. Felhasználói erdő létrehozásához nem kell *tartománykonfigurációt* értéket megadnia.<br /> Az *erőforrás* -erdő csak a közvetlenül az Azure ad-ben létrehozott felhasználókat és csoportokat szinkronizálja. Az erőforrás-erdők jelenleg előzetes verzióban érhetők el. Állítsa a *ResourceTrusting* értéket az erőforrás-erdő létrehozásához.<br />Az *erőforrás* -erdőkkel kapcsolatos további információkért, beleértve az egyiket, és hogyan hozhat létre erdőszintű megbízhatósági kapcsolatot a helyszíni AD DS-tartományokkal, tekintse meg az [Azure AD DS Resource Forests – áttekintés][resource-forests]című témakört.|
+| notificationSettings    | Ha a felügyelt tartományban bármilyen riasztás keletkezik, a rendszer e-mailes értesítéseket küldhet. <br />Az Azure-bérlő *globális rendszergazdái* és a *HRE DC-rendszergazdák* csoport tagjai is *engedélyezhetők* ezekhez az értesítésekhez.<br /> Ha kívánja, további címzetteket is hozzáadhat az értesítésekhez, ha olyan riasztásokra van szükség, amelyeknek figyelmet igényelnek.|
+| domainConfigurationType | Alapértelmezés szerint a felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. Felhasználói erdő létrehozásához nem kell *tartománykonfigurációt* értéket megadnia.<br /> Az *erőforrás* -erdő csak a közvetlenül az Azure ad-ben létrehozott felhasználókat és csoportokat szinkronizálja. Az erőforrás-erdők jelenleg előzetes verzióban érhetők el. Állítsa a *ResourceTrusting* értéket az erőforrás-erdő létrehozásához.<br />Az *erőforrás* -erdőkkel kapcsolatos további információkért, beleértve az egyiket, és hogyan hozhat létre erdőszintű megbízhatósági kapcsolatot a helyszíni AD DS-tartományokkal, tekintse meg az [Azure AD DS Resource Forests – áttekintés][resource-forests]című témakört.|
 
-A következő tömörített paraméterek definíciója az értékek deklarált módját mutatja be. Létrejön egy *aaddscontoso.com* nevű felhasználói erdő az Azure ad-vel az Azure AD DS felügyelt tartományhoz szinkronizált összes felhasználóval:
+A következő tömörített paraméterek definíciója az értékek deklarált módját mutatja be. Létrejön egy *aaddscontoso.com* nevű felhasználói erdő az Azure ad-vel a felügyelt tartományba szinkronizált összes felhasználóval:
 
 ```json
 "parameters": {
@@ -149,7 +149,7 @@ A következő tömörített paraméterek definíciója az értékek deklarált m
 }
 ```
 
-A következő összefoglalt Resource Manager-sablon erőforrástípus az Azure AD DS felügyelt tartomány definiálására és létrehozására szolgál. Egy Azure-beli virtuális hálózatnak és alhálózatnak már léteznie kell, vagy a Resource Manager-sablon részeként kell létrehoznia. Az Azure AD DS felügyelt tartomány ehhez az alhálózathoz van csatlakoztatva.
+A következő összefoglalt Resource Manager-sablon erőforrástípus a felügyelt tartomány definiálásához és létrehozásához használatos. Egy Azure-beli virtuális hálózatnak és alhálózatnak már léteznie kell, vagy a Resource Manager-sablon részeként kell létrehoznia. A felügyelt tartomány ehhez az alhálózathoz van csatlakoztatva.
 
 ```json
 "resources": [
@@ -176,7 +176,7 @@ Ezek a paraméterek és erőforrástípus egy szélesebb körű Resource Manager
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>Felügyelt tartomány létrehozása sablon használatával
 
-A következő teljes Resource Manager-sablon létrehoz egy Azure AD DS felügyelt tartományt és a támogató virtuális hálózat, alhálózat és hálózati biztonsági csoport szabályait. A hálózati biztonsági csoport szabályai a felügyelt tartomány biztonságossá tételéhez szükségesek, és gondoskodni kell a forgalom megfelelő áramlását. Létrejön egy *aaddscontoso.com* DNS-névvel rendelkező felhasználói erdő, amely az Azure ad-ből szinkronizált összes felhasználóval rendelkezik:
+A következő teljes Resource Manager-sablon létrehoz egy felügyelt tartományt és a támogató virtuális hálózat, az alhálózat és a hálózati biztonsági csoport szabályait. A hálózati biztonsági csoport szabályai a felügyelt tartomány biztonságossá tételéhez szükségesek, és gondoskodni kell a forgalom megfelelő áramlását. Létrejön egy *aaddscontoso.com* DNS-névvel rendelkező felhasználói erdő, amely az Azure ad-ből szinkronizált összes felhasználóval rendelkezik:
 
 ```json
 {
@@ -325,17 +325,17 @@ Ez a sablon az előnyben részesített telepítési módszer, például a [Azure
 New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile <path-to-template>
 ```
 
-Az erőforrás létrehozása és a vezérlés visszaküldése a PowerShell-parancssorba néhány percet vesz igénybe. Az Azure AD DS felügyelt tartomány továbbra is a háttérben lesz kiépítve, és akár egy óráig is eltarthat a telepítés befejezéséhez. Az Azure Portal az Azure AD DS felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
+Az erőforrás létrehozása és a vezérlés visszaküldése a PowerShell-parancssorba néhány percet vesz igénybe. A felügyelt tartomány továbbra is a háttérben lesz kiépítve, és akár egy óráig is eltarthat a telepítés befejezéséhez. A Azure Portal a felügyelt tartomány **Áttekintés** lapja a telepítési fázis aktuális állapotát jeleníti meg.
 
-Ha a Azure Portal azt mutatja, hogy az Azure AD DS felügyelt tartománya befejeződött, a következő feladatokat kell elvégezni:
+Ha a Azure Portal azt mutatja, hogy a felügyelt tartomány befejezte az üzembe helyezést, a következő feladatokat kell elvégezni:
 
 * A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez.
-    * A DNS konfigurálásához válassza ki az Azure AD DS felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
+    * A DNS konfigurálásához válassza ki a felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
 * [Engedélyezze a jelszó-szinkronizálást Azure ad Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy a végfelhasználók a vállalati hitelesítő adataik használatával bejelentkezhetnek a felügyelt tartományba.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure AD DS felügyelt tartomány működés közbeni megtekintéséhez [tartományhoz csatlakozhat egy Windows rendszerű virtuális géphez][windows-join], [konfigurálhatja a biztonságos LDAP][tutorial-ldaps]-t, és [konfigurálhatja a jelszó-kivonatolási szinkronizálást][tutorial-phs].
+A felügyelt tartomány működés közbeni megtekintéséhez [tartományhoz csatlakoztathat egy Windows rendszerű virtuális gépet][windows-join], [konfigurálhatja a biztonságos LDAP][tutorial-ldaps]-t, és [konfigurálhatja a jelszó-kivonatok szinkronizálását][tutorial-phs].
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

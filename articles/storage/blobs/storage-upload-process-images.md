@@ -5,31 +5,34 @@ author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/11/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 3c475787eafde4ba847b292df57e4b0d18cfe5d0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 37e751d78bddd76847a4859b6f24e37bec5c9acb
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196056"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730492"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: képadatok feltöltése a felhőbe az Azure Storage szolgáltatással
 
 Ez az oktatóanyag egy sorozat első része. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy olyan webalkalmazást, amely az Azure Blob Storage ügyféloldali kódtárat használja a lemezképek Storage-fiókba való feltöltéséhez. Ha elkészült, egy olyan webalkalmazás fog rendelkezni, amely az Azure Storage-ban tárolja és megjeleníti a lemezképeket.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
 ![Rendszerkép-alkalmazás a .NET-ben](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
-![Képresizer alkalmazás Node. js v10-ben](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+
+![Node.js V10-es rendszerkép-alkalmazás](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
 A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
+
 > * Tárfiók létrehozása
 > * Tároló létrehozása és az engedélyek beállítása
 > * Hozzáférési kulcs lekérése
@@ -51,7 +54,11 @@ Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) pa
 
 A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot.
 
-```azurecli-interactive
+```bash
+az group create --name myResourceGroup --location southeastasia
+```
+
+```powershell
 az group create --name myResourceGroup --location southeastasia
 ```
 
@@ -64,10 +71,17 @@ A minta feltölti a képeket egy Azure Storage-fiókban található blob-tárol�
 
 A következő parancsban cserélje le a saját globálisan egyedi nevét arra a blob Storage-fiókra, amelyben a `<blob_storage_account>` helyőrző látható.
 
-```azurecli-interactive
+```bash
 blobStorageAccount="<blob_storage_account>"
 
 az storage account create --name $blobStorageAccount --location southeastasia \
+  --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
+```
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+az storage account create --name $blobStorageAccount --location southeastasia `
   --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
 ```
 
@@ -79,14 +93,28 @@ Szerezze be a tárfiókkulcsot az [az storage account keys list](/cli/azure/stor
 
 A *rendszerkép* -tároló nyilvános hozzáférése a következőre van beállítva: `off` . A *miniatűrök* tároló nyilvános hozzáférése a következőre van beállítva: `container` . A `container` nyilvános hozzáférés beállítás lehetővé teszi a felhasználóknak, hogy meglátogassák a weblapot a miniatűrök megtekintéséhez.
 
-```azurecli-interactive
+```bash
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
 az storage container create -n images --account-name $blobStorageAccount \
-  --account-key $blobStorageAccountKey --public-access off
+  --account-key $blobStorageAccountKey
 
 az storage container create -n thumbnails --account-name $blobStorageAccount \
+  --account-key $blobStorageAccountKey --public-access container
+
+echo "Make a note of your Blob storage account key..."
+echo $blobStorageAccountKey
+```
+
+```powershell
+$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
+  -n $blobStorageAccount --query "[0].value" --output tsv)
+
+az storage container create -n images --account-name $blobStorageAccount `
+  --account-key $blobStorageAccountKey
+
+az storage container create -n thumbnails --account-name $blobStorageAccount `
   --account-key $blobStorageAccountKey --public-access container
 
 echo "Make a note of your Blob storage account key..."
@@ -103,7 +131,11 @@ Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure
 
 Az alábbi példa egy `myAppServicePlan` nevű App Service-csomag létrehozását mutatja be az **INGYENES** tarifacsomagban:
 
-```azurecli-interactive
+```bash
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
+```
+
+```powershell
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
@@ -113,8 +145,14 @@ A webalkalmazás üzemeltetési területet biztosít a GitHub-minta tárházban 
 
 A következő parancsban cserélje le a parancsot `<web_app>` egyedi névre. Érvényes karakterek: `a-z`, `0-9` és `-`. Ha az `<web_app>` nem egyedi, a következő hibaüzenet jelenik meg: *A megadott `<web_app>` névvel már létezik webhely.* A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
 
-```azurecli-interactive
+```bash
 webapp="<web_app>"
+
+az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
+```
+
+```powershell
+$webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
 ```
@@ -127,18 +165,31 @@ Az App Service több módszert is támogat tartalmak webalkalmazásba való üze
 
 A minta projekt egy [ASP.net MVC](https://www.asp.net/mvc) -alkalmazást tartalmaz. Az alkalmazás elfogadja a lemezképet, menti azt egy Storage-fiókba, és megjeleníti a képeket egy miniatűr tárolóból. A webalkalmazás az [Azure. Storage](/dotnet/api/azure.storage), az [Azure. Storage. Blobs](/dotnet/api/azure.storage.blobs)és az [Azure. Storage. Blobs. models](/dotnet/api/azure.storage.blobs.models) névtereket használja az Azure Storage szolgáltatással való kommunikációhoz.
 
-```azurecli-interactive
+```bash
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
+```powershell
+az webapp deployment source config --name $webapp --resource-group myResourceGroup `
+  --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+```
+
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+
 Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.
 
-```azurecli-interactive
+```bash
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
+  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+```
+
+```powershell
+az webapp deployment source config --name $webapp --resource-group myResourceGroup `
+  --branch master --manual-integration `
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
 ```
 
@@ -150,7 +201,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 A minta webalkalmazás a [.net-hez készült Azure Storage API-kat](/dotnet/api/overview/azure/storage) használja a Képek feltöltéséhez. A Storage-fiók hitelesítő adatai a webalkalmazás alkalmazás-beállításainál vannak megadva. Adja hozzá az alkalmazás beállításait az üzembe helyezett alkalmazáshoz az az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings) paranccsal.
 
-```azurecli-interactive
+```bash
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AzureStorageConfig__AccountName=$blobStorageAccount \
     AzureStorageConfig__ImageContainer=images \
@@ -158,14 +209,28 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
+```powershell
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup `
+  --settings AzureStorageConfig__AccountName=$blobStorageAccount `
+    AzureStorageConfig__ImageContainer=images `
+    AzureStorageConfig__ThumbnailContainer=thumbnails `
+    AzureStorageConfig__AccountKey=$blobStorageAccountKey
+```
+
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 
 A minta-webalkalmazás az [Azure Storage ügyféloldali kódtár](https://github.com/Azure/azure-storage-js) segítségével kér a képfeltöltéshez használt hozzáférési jogkivonatokat. A Storage SDK által használt Storage-fiók hitelesítő adatai a webalkalmazás alkalmazás-beállításaiban vannak beállítva. Adja hozzá az alkalmazás beállításait az üzembe helyezett alkalmazáshoz az az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings) paranccsal.
 
-```azurecli-interactive
+```bash
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
     AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
+```
+
+```powershell
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup `
+  --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
+  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
 ```
 
 ---
@@ -212,17 +277,17 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 Az előző feladatban használt osztályok és módszerek a következők:
 
-| Osztály    | Módszer   |
-|----------|----------|
+| Osztály | Metódus |
+|-------|--------|
 | [URI](/dotnet/api/system.uri) | [URI-konstruktor](/dotnet/api/system.uri.-ctor) |
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential (karakterlánc, karakterlánc) konstruktor](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 
 Válassza a **fájl** kiválasztása lehetőséget egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. A **létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi szakaszában nem teszteljük. 
 
-![Fényképek feltöltése a Node. js v10-ben](media/storage-upload-process-images/upload-app-nodejs.png)
+![Fényképek feltöltése Node.js v10-ben](media/storage-upload-process-images/upload-app-nodejs.png)
 
 A mintakódban a `post` útvonal felelős a képek blobtárolóba való feltöltéséért. Az útvonal modulok használatával segíti a feltöltés feldolgozását:
 
@@ -283,7 +348,7 @@ router.post('/', uploadStrategy, async (req, res) => {
     const blockBlobURL = BlockBlobURL.fromBlobURL(blobURL);
 
     try {
-      
+
       await uploadStreamToBlockBlob(aborter, stream,
         blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers);
 
@@ -296,6 +361,7 @@ router.post('/', uploadStrategy, async (req, res) => {
     }
 });
 ```
+
 ---
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Ellenőrizze, hogy a kép megjelenik-e a tárfiókban
@@ -317,10 +383,12 @@ Válasszon ki egy fájlt a fájl választóval, és válassza a **feltöltés**l
 Lépjen vissza az alkalmazásba és ellenőrizze, hogy a **thumbnails** tárolóba feltöltött kép látható-e.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
 ![.NET-rendszerkép Resizer-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
-![Node. js v10 rendszerkép-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+
+![Node.js V10-es rendszerkép-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: NAT-átjáró létrehozása – Azure Portal'
+title: 'Oktatóanyag: NAT-átjáró létrehozása – Azure Portal'
 titlesuffix: Azure Virtual Network NAT
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre NAT-átjárót a Azure Portal használatával
 services: virtual-network
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 38cd4e9e7abdfe2d1548a8388a3f160cf3da1f1a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341235"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711408"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Gyors útmutató: NAT-átjáró létrehozása a Azure Portal használatával
+# <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Oktatóanyag: NAT-átjáró létrehozása a Azure Portal használatával
 
-Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Virtual Network NAT szolgáltatást. Létre kell hoznia egy NAT-átjárót, amely kimenő kapcsolatot biztosít az Azure-beli virtuális gépek számára. 
+Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Virtual Network NAT szolgáltatást. Létre kell hoznia egy NAT-átjárót, amely kimenő kapcsolatot biztosít az Azure-beli virtuális gépek számára. 
 
 Ha szeretné, hajtsa végre ezeket a lépéseket az [Azure CLI](quickstart-create-nat-gateway-cli.md)-vel, [Azure PowerShellával](quickstart-create-nat-gateway-powershell.md)vagy [ARM-sablon](quickstart-create-nat-gateway-powershell.md) üzembe helyezésével a portál helyett.
 
@@ -163,11 +163,11 @@ ssh <username>@<ip-address-destination>
 
 Most már készen áll a NAT szolgáltatás használatára.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatára. 
 

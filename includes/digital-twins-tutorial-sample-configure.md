@@ -5,24 +5,24 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f7b3bf347b15ebad2403f3aa64c0f3fd6c4be052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 3a7c9f61af0124c656f98b64ba9295bc659c572a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613535"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262343"
 ---
 ## <a name="configure-the-sample-project"></a>A minta projekt konfigurálása
 
-Ezután állítson be egy példa ügyfélalkalmazás-alkalmazást, amely az Azure Digital Twins-példánnyal fog működni. Ha még nem töltötte le a minta projektet, töltse le most [Az Azure Digital ikrek Samples REPOSITORY zip-fájlként való letöltésével](https://github.com/Azure-Samples/digital-twins-samples/archive/master.zip). 
+Ezután állítson be egy példa ügyfélalkalmazás-alkalmazást, amely az Azure Digital Twins-példánnyal fog működni. Ha még nem töltötte le a minta projektet, szerezze be most az [Azure Digital ikrek Samples](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) kezdőlapján, ehhez válassza a cím alatt található *zip letöltése* gombot.
 
 Navigáljon a letöltött fájlhoz a gépen, és csomagolja ki.
 
-A kibontott mappán belül navigáljon a _Digital-Twins-Samples-Master/AdtSampleApp/_. Nyissa meg a _**AdtE2ESample. SLN**_ alkalmazást a Visual Studio 2019-ben. 
+A kibontott mappán belül navigáljon a _AdtSampleApp/_. Nyissa meg a _**AdtE2ESample. SLN**_ alkalmazást a Visual Studio 2019-ben. 
 
-A Visual Studióban a *megoldáskezelő* ablaktáblán hozza létre a _SampleClientApp-> **SERVICECONFIG. JSON. template** _ fájl másolatát (a másoláshoz és beillesztéshez a jobb gombbal válassza a menüket). Nevezze át a copy *serviceConfig. JSON*fájlt. Ez egy előre beállított JSON-fájlként fog szolgálni a projekt futtatásához szükséges konfigurációs változók használatával.
+A Visual Studióban a *megoldáskezelő* ablaktáblán hozza létre a _SampleClientApp >serviceConfig.jsmásolatát **. SABLONFÁJL** _ (a másoláshoz és a beillesztéshez használhatja a jobb gombbal kiválasztható menüket). Nevezze át a *serviceConfig.js*másolását. Ez egy előre beállított JSON-fájlként fog szolgálni a projekt futtatásához szükséges konfigurációs változók használatával.
 
-Válassza ki az új fájlt, és nyissa meg a szerkesztési ablakban. Módosítsa az `tenantId` azonosítót a *címtár-azonosítóra*, az `clientId` alkalmazás- *azonosítóra*, valamint az `instanceUrl` Azure Digital Twins instance *hostName* URL-címére (a *https://* az alább látható módon).
+Válassza ki a fájl *serviceConfig.jsét* , és nyissa meg a szerkesztési ablakban. Módosítsa az `tenantId` azonosítót a *címtár-azonosítóra*, az `clientId` alkalmazás- *azonosítóra*, valamint az `instanceUrl` Azure Digital Twins instance *hostName* URL-címére (a *https://* az alább látható módon).
 
 ```json
 {
@@ -34,9 +34,9 @@ Válassza ki az új fájlt, és nyissa meg a szerkesztési ablakban. Módosítsa
 
 Mentse és zárja be a fájlt. 
 
-Ezután konfigurálja a *serviceConfig. JSON* fájlt, amelyet a kimeneti könyvtárba kell másolni a *SampleClientApp*létrehozásakor. Ehhez kattintson a jobb gombbal a *serviceConfig. JSON* fájlra, és válassza a *Tulajdonságok lehetőséget.* A *Tulajdonságok* ellenőrben módosítsa a *Másolás a kimeneti könyvtárba* tulajdonság értékét, *Ha újabb*.
+Ezután konfigurálja a fájl *serviceConfig.jsa* kimeneti könyvtárba a *SampleClientApp*létrehozásakor. Ehhez kattintson a jobb gombbal a *serviceConfig.js* fájlra, majd válassza a *Tulajdonságok elemet.* A *Tulajdonságok* ellenőrben módosítsa a *Másolás a kimeneti könyvtárba* tulajdonság értékét, *Ha újabb*.
 
-:::image type="content" source="../articles/digital-twins/media/include-tutorial/copy-config.png" alt-text="A Visual Studio ablakának kivonata, amely a serviceConfig. JSON kiterjesztésű Megoldáskezelő ablaktáblát jeleníti meg, a Tulajdonságok ablaktáblában pedig a "másolás a kimeneti könyvtárba" tulajdonságot a "Copy if újabb" értékre." border="false":::
+:::image type="content" source="../articles/digital-twins/media/include-tutorial/copy-config.png" alt-text="Részletek a Visual Studio ablakból: a Megoldáskezelő panel, amelyen a Kiemelt serviceConfig.jslátható, a Tulajdonságok ablaktábla pedig a "másolás a kimeneti könyvtárba" tulajdonsága a "másolás, ha újabb" értékre van állítva." border="false":::
 
 Tartsa meg a _**AdtE2ESample**_ projektet a Visual Studióban, és folytassa a használatát az oktatóanyagban.
 

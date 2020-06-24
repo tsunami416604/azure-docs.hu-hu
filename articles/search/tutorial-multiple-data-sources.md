@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: eb1824e41fe9fc5185ae4e914b4828cddb2c42db
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780521"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262208"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Oktatóanyag: több adatforrásból származó index a .NET SDK használatával
 
@@ -21,7 +21,7 @@ Az Azure Cognitive Search több adatforrás adatait is importálhatja, elemezhet
 
 Ez az oktatóanyag azt ismerteti, hogyan indexelheti a szállodai adatokat egy Azure Cosmos DB adatforrásból, és hogyan egyesítheti az Azure Blob Storage-dokumentumokból kirajzolt szállodai helyiségek adatait. Az eredmény egy összetett szállodai keresési index, amely komplex adattípusokat tartalmaz.
 
-Ez az oktatóanyag a C# nyelvet és a [.net SDK](https://aka.ms/search-sdk)-t használja. Ebben az oktatóanyagban a következő feladatokat hajtja végre:
+Ez az oktatóanyag a C# nyelvet és a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)-t használja. Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 
 > [!div class="checklist"]
 > * Mintaadatok feltöltése és adatforrások létrehozása
@@ -30,7 +30,7 @@ Ez az oktatóanyag a C# nyelvet és a [.net SDK](https://aka.ms/search-sdk)-t ha
 > * Szállodai adatok indexelése Azure Cosmos DBból
 > * Szállodai helyiség adatainak egyesítése a blob Storage-ból
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,7 +70,7 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
    ![Tároló hozzáadása](media/tutorial-multiple-data-sources/cosmos-add-container.png "Tároló hozzáadása")
 
-1. Válassza a **hotelek**területen található **elemek** elemet, majd kattintson az **elem feltöltése** gombra a parancssorban. Keresse meg, majd válassza ki a **cosmosdb/HotelsDataSubset_CosmosDb. JSON** fájlt a Project mappában.
+1. Válassza a **hotelek**területen található **elemek** elemet, majd kattintson az **elem feltöltése** gombra a parancssorban. Keresse meg, majd válassza ki a **cosmosdb/HotelsDataSubset_CosmosDb.js** fájlt a Project mappában.
 
    ![Feltöltés Azure Cosmos DB gyűjteménybe](media/tutorial-multiple-data-sources/cosmos-upload.png "Feltöltés Cosmos DB gyűjteménybe")
 
@@ -100,7 +100,7 @@ Az Azure Cognitive Search szolgáltatással való kommunikációhoz szüksége l
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
@@ -116,11 +116,11 @@ Az Azure Cognitive Search szolgáltatással való kommunikációhoz szüksége l
 
     ![Azure-kódtárak hozzáadása a NuGet használatával](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
-1. Keresse meg a **Microsoft. Extensions. Configuration. JSON** NuGet csomagot, és telepítse azt is.
+1. Keresse meg a **Microsoft.Extensions.Configuration.Jsa** NuGet-csomagban, és telepítse azt is.
 
 1. Nyissa meg a **AzureSearchMultipleDataSources. SLN**megoldást.
 
-1. A Megoldáskezelőban szerkessze a **appSettings. JSON** fájlt a kapcsolódási adatok hozzáadásához.  
+1. A Megoldáskezelőban szerkessze a fájl **appsettings.jsját** a kapcsolódási adatok hozzáadásához.  
 
     ```json
     {
@@ -133,7 +133,7 @@ Az Azure Cognitive Search szolgáltatással való kommunikációhoz szüksége l
     }
     ```
 
-Az első két bejegyzés az Azure Cognitive Search szolgáltatás URL-címét és rendszergazdai kulcsait használja. A végpontja `https://mydemo.search.windows.net`, például a megadni kívánt szolgáltatás neve `mydemo`.
+Az első két bejegyzés az Azure Cognitive Search szolgáltatás URL-címét és rendszergazdai kulcsait használja. A végpontja `https://mydemo.search.windows.net` , például a megadni kívánt szolgáltatás neve `mydemo` .
 
 A következő bejegyzések megadják az Azure Blob Storage és Azure Cosmos DB adatforrások fiókjának nevét és a kapcsolatok karakterláncának adatait.
 
@@ -141,13 +141,13 @@ A következő bejegyzések megadják az Azure Blob Storage és Azure Cosmos DB a
 
 A tartalom egyesítéséhez az szükséges, hogy mindkét adatfolyam ugyanazt a dokumentumot célozza meg a keresési indexben. 
 
-Az Azure Cognitive Searchban a Key mező egyedileg azonosítja az egyes dokumentumokat. Minden keresési indexnek pontosan egy típusú `Edm.String`Key mezővel kell rendelkeznie. A kulcs mezőnek jelen kell lennie az indexhez hozzáadott adatforrásban lévő minden dokumentumhoz. (Valójában ez az egyetlen kötelező mező.)
+Az Azure Cognitive Searchban a Key mező egyedileg azonosítja az egyes dokumentumokat. Minden keresési indexnek pontosan egy típusú Key mezővel kell rendelkeznie `Edm.String` . A kulcs mezőnek jelen kell lennie az indexhez hozzáadott adatforrásban lévő minden dokumentumhoz. (Valójában ez az egyetlen kötelező mező.)
 
 Ha több adatforrásból indexeli az adatait, győződjön meg arról, hogy az egyes bejövő sorok vagy dokumentumok közös dokumentum-kulcsot tartalmaznak, hogy a két fizikailag különböző forrásból származó adatok egyesítése egy új keresési dokumentumba történjen a kombinált indexben. 
 
 Gyakran igényel némi kezdeti megtervezést az index értelmes dokumentum-kulcsainak azonosításához, és győződjön meg arról, hogy mindkét adatforrásban létezik. Ebben a bemutatóban a `HotelId` Cosmos db minden egyes szállodájának kulcsa a blob Storage-ban található szobák JSON-blobjában is megtalálható.
 
-Az Azure Cognitive Search indexelő mezőivel átnevezheti és akár újraformázhatja az adatmezőket az indexelési folyamat során, így a forrásadatok a megfelelő index mezőre irányíthatók. Cosmos DB például a rendszer a Hotel azonosítóját hívja **`HotelId`** meg. A szállodai szobákhoz tartozó JSON blob-fájlokban azonban a szállodai azonosító neve **`Id`**. A program ezt a **`Id`** mezőt a blobok és az index **`HotelId`** Key mezőjének hozzárendelésével kezeli.
+Az Azure Cognitive Search indexelő mezőivel átnevezheti és akár újraformázhatja az adatmezőket az indexelési folyamat során, így a forrásadatok a megfelelő index mezőre irányíthatók. Cosmos DB például a rendszer a Hotel azonosítóját hívja meg **`HotelId`** . A szállodai szobákhoz tartozó JSON blob-fájlokban azonban a szállodai azonosító neve **`Id`** . A program ezt a **`Id`** mezőt a blobok és az **`HotelId`** index Key mezőjének hozzárendelésével kezeli.
 
 > [!NOTE]
 > A legtöbb esetben az automatikusan generált dokumentum-kulcsok, például az egyes indexelő által alapértelmezés szerint létrehozott, nem végeznek jó dokumentum-kulcsokat a kombinált indexekhez. Általánosságban olyan értelmes, egyedi kulcsot szeretne használni, amely már létezik a-ben, vagy egyszerűen hozzáadható az adatforrásokhoz.
@@ -186,7 +186,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-Az **program.cs** -fájlban az index egy névvel és egy, a `FieldBuilder.BuildForType<Hotel>()` metódus által generált mező-gyűjteménysel van definiálva, majd a következőképpen jön létre:
+Az **program.cs** -fájlban az index egy névvel és egy, a metódus által generált mező-gyűjteménysel van definiálva, `FieldBuilder.BuildForType<Hotel>()` majd a következőképpen jön létre:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -315,7 +315,7 @@ Az adatforrás létrehozása után a program beállítja a " **Hotel-Rooms-blob-
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-A JSON-Blobok egy nevű **`Id`** kulcs mezőt tartalmaznak **`HotelId`** a helyett. A kód a `FieldMapping` osztály használatával közli az indexelő, hogy a **`Id`** mező értékét az indexben lévő **`HotelId`** dokumentum kulcsára irányítsa.
+A JSON-Blobok egy nevű kulcs mezőt tartalmaznak a **`Id`** helyett **`HotelId`** . A kód a osztály használatával közli `FieldMapping` az indexelő, hogy a **`Id`** mező értékét az **`HotelId`** indexben lévő dokumentum kulcsára irányítsa.
 
 A blob Storage-indexelő a használni kívánt elemzési mód azonosítására szolgáló paramétereket használhatnak. Az elemzési mód eltér az olyan Blobok esetében, amelyek egyetlen dokumentumot jelölnek, vagy több, ugyanazon a blobon belüli dokumentumot. Ebben a példában minden blob egyetlen index-dokumentumot képvisel, ezért a kód a `IndexingParameters.ParseJson()` paramétert használja.
 
@@ -363,7 +363,7 @@ Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő objektumokat, és t
 
 A portál segítségével indexeket, indexelő fájlokat és adatforrásokat is törölhet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

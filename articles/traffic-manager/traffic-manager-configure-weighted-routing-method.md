@@ -4,7 +4,6 @@ description: Ez az oktatóanyag azt ismerteti, hogyan lehet terheléselosztást 
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: 8bdc710b36cae70d29d32333f431b8a9dda154cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b06df3814661b64f7fa46cd5e3b8f4dea9d51710
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76938712"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711666"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Oktatóanyag: a súlyozott forgalom útválasztási módszerének konfigurálása Traffic Manager
 
@@ -35,7 +34,7 @@ A közös forgalom-útválasztási módszer minta az azonos végpontok készlet�
     1. A **forgalom-útválasztási módszer beállításainál**ellenőrizze, hogy a forgalmi útválasztási módszer **súlyozott**-e. Ha nem, kattintson a legördülő lista **súlyozása** elemre.
     2. A következő módon állítsa be a profil összes végpontján megegyező **Endpoint monitor beállításait** :
         1. Válassza ki a megfelelő **protokollt**, és adja meg a **portszámot** . 
-        2. Az **elérési út** mezőbe írja */* be a perjelet. A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A "/" perjel a relatív elérési útra érvényes bejegyzés, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezés).
+        2. Az **elérési út** mezőbe írja be a perjelet */* . A végpontok figyeléséhez meg kell adnia egy elérési utat és egy fájlnevet. A "/" perjel a relatív elérési útra érvényes bejegyzés, amely azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezés).
         3. Kattintson a lap tetején található **Mentés**gombra.
 5. Tesztelje a konfiguráció módosításait a következőképpen:
     1.  A portál keresési sávjában keressen rá a Traffic Manager profilnév nevére, és kattintson a Traffic Manager profilra a megjelenített eredmények között.

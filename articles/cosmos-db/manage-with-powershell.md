@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB létrehozása és kezelése a PowerShell használatával
-description: Az Azure PowerShell használatával kezelheti Azure Cosmos-fiókjait, adatbázisait, tárolóit és átviteli sebességét.
+description: Azure PowerShell kezelheti Azure Cosmos-fiókjait, adatbázisait, tárolóit és átviteli sebességét.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 0ae3ff54e1060255913d8155b297c5d412ce345f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 494c5f0c3d7d0a4c8a388ce06143795fe5f12f20
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656291"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262259"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
@@ -44,6 +44,7 @@ Az alábbi szakaszban bemutatjuk, hogyan kezelheti az Azure Cosmos-fiókot, bele
 * [Azure Cosmos-fiókhoz tartozó kapcsolatok karakterláncok listázása](#list-connection-strings)
 * [Azure Cosmos-fiók feladatátvételi prioritásának módosítása](#modify-failover-priority)
 * [Manuális feladatátvétel indítása Azure Cosmos-fiókhoz](#trigger-manual-failover)
+* [Erőforrás-zárolások listázása egy Azure Cosmos DB fiókban](#list-account-locks)
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Azure Cosmos-fiók létrehozása
 
@@ -327,6 +328,21 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
+### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a>Erőforrás-zárolások listázása egy Azure Cosmos DB fiókban
+
+Az erőforrás-zárolások Azure Cosmos DB erőforrásokra, például adatbázisokra és gyűjteményekre is helyezhetők. Az alábbi példa bemutatja, hogyan listázhatja az összes Azure-erőforrás zárolását egy Azure Cosmos DB fiókban.
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceTypeAccount = "Microsoft.DocumentDB/databaseAccounts"
+$accountName = "mycosmosaccount"
+
+Get-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceTypeAccount `
+    -ResourceName $accountName
+```
+
 ## <a name="azure-cosmos-db-database"></a>Adatbázis Azure Cosmos DB
 
 A következő szakaszban bemutatjuk, hogyan kezelheti a Azure Cosmos DB-adatbázist, beleértve a következőket:
@@ -337,6 +353,8 @@ A következő szakaszban bemutatjuk, hogyan kezelheti a Azure Cosmos DB-adatbáz
 * [Egy fiók összes Azure Cosmos DB adatbázisának listázása](#list-db)
 * [Egyetlen Azure Cosmos DB adatbázis beolvasása](#get-db)
 * [Azure Cosmos DB-adatbázis törlése](#delete-db)
+* [Erőforrás-zárolás létrehozása Azure Cosmos DB adatbázison a törlés megakadályozása érdekében](#create-db-lock)
+* [Erőforrás-zárolás eltávolítása egy Azure Cosmos DB adatbázison](#remove-db-lock)
 
 ### <a name="create-an-azure-cosmos-db-database"></a><a id="create-db"></a>Azure Cosmos DB-adatbázis létrehozása
 
@@ -416,6 +434,42 @@ Remove-AzCosmosDBSqlDatabase `
     -Name $databaseName
 ```
 
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-database-to-prevent-delete"></a><a id="create-db-lock"></a>Erőforrás-zárolás létrehozása Azure Cosmos DB adatbázison a törlés megakadályozása érdekében
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-database"></a><a id="remove-db-lock"></a>Erőforrás-zárolás eltávolítása egy Azure Cosmos DB adatbázison
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
+```
+
 ## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB tároló
 
 Az alábbi részben bemutatjuk, hogyan kezelheti a Azure Cosmos DB tárolót, beleértve a következőket:
@@ -430,6 +484,8 @@ Az alábbi részben bemutatjuk, hogyan kezelheti a Azure Cosmos DB tárolót, be
 * [Az összes Azure Cosmos DB-tároló listázása egy adatbázisban](#list-containers)
 * [Egyetlen Azure Cosmos DB tároló beszerzése egy adatbázisban](#get-container)
 * [Azure Cosmos DB tároló törlése](#delete-container)
+* [Erőforrás-zárolás létrehozása Azure Cosmos DB-tárolón a törlés megakadályozása érdekében](#create-container-lock)
+* [Erőforrás-zárolás eltávolítása Azure Cosmos DB tárolón](#remove-container-lock)
 
 ### <a name="create-an-azure-cosmos-db-container"></a><a id="create-container"></a>Azure Cosmos DB tároló létrehozása
 
@@ -668,8 +724,45 @@ Remove-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName
 ```
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-container-to-prevent-delete"></a><a id="create-container-lock"></a>Erőforrás-zárolás létrehozása Azure Cosmos DB-tárolón a törlés megakadályozása érdekében
 
-## <a name="next-steps"></a>Következő lépések
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-container"></a><a id="remove-container-lock"></a>Erőforrás-zárolás eltávolítása Azure Cosmos DB tárolón
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
+```
+
+## <a name="next-steps"></a>További lépések
 
 * [Minden PowerShell-minta](powershell-samples.md)
 * [Azure Cosmos-fiók kezelése](how-to-manage-database-account.md)

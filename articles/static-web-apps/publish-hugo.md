@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 697fe423d6f112dcd3a03ec739f7e11db3043c53
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669902"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207821"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
-Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Hugo](https://gohugo.io/) -webalkalmazást az [azure Azure statikus Web Apps](overview.md). Az utolsó eredmény egy új Azure-beli statikus Web Apps a kapcsolódó GitHub-műveletekkel, amelyek segítségével szabályozhatja az alkalmazás felépítésének és közzétételének módját.
+Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Hugo](https://gohugo.io/) -webalkalmazást az [Azure statikus Web Apps](overview.md). Az utolsó eredmény egy új, a kapcsolódó GitHub-műveletekkel rendelkező Azure-beli statikus webalkalmazás, amely lehetővé teszi az alkalmazás felépítésének és közzétételének vezérlését.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -191,7 +191,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

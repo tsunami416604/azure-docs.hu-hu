@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 552f974b99b9430d82596a5a25265bb916cb4e25
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780606"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262191"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Oktatóanyag: keresési eredmények sorrendbe helyezése a .NET SDK használatával
 
@@ -21,7 +21,7 @@ Egészen addig, amíg ez a pont nem szerepel az oktatóanyagokban, a rendszer vi
 
 Ha a visszaadott eredményeket egyszerűen össze szeretné hasonlítani, a projekt a C# oktatóanyagban létrehozott végtelen görgetési projektre épül [: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyag.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Eredmények megrendelése egy tulajdonság alapján
 > * Eredmények megrendelése több tulajdonság alapján
@@ -128,7 +128,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Nyissa meg a nézetet (index. cshtml), és cserélje le a renderelési ciklust (**&lt;!--jelenítse meg a szállodai adatkészletet.--&gt;**) a következő kóddal.
+5. Nyissa meg a nézetet (index. cshtml), és cserélje le a renderelési ciklust (** &lt; !--jelenítse meg a szállodai adatkészletet.-- &gt; **) a következő kóddal.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -544,7 +544,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 ### <a name="add-code-to-the-view-to-compare-profiles"></a>Kód hozzáadása a nézethez a profilok összehasonlításához
 
-1. Nyissa meg az index. cshtml fájlt, és &lt;cserélje&gt; le a Body (törzs) szakaszt a következő kódra.
+1. Nyissa meg az index. cshtml fájlt, és cserélje le a &lt; Body (törzs) &gt; szakaszt a következő kódra.
 
     ```cs
     <body>

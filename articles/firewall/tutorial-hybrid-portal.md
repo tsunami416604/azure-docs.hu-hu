@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298958"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750702"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban három virtuális hálózatot fog létrehozni:
 
 ![Tűzfal a hibrid hálózatban](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Változók deklarálása
@@ -54,7 +54,7 @@ A hibrid hálózatok a sugaras architektúrát használják az Azure-virtuális 
    Emellett az átjáróhoz csatlakoztatott virtuális hálózatokhoz vagy a helyszíni hálózatokhoz tartozó útvonalak automatikusan a virtuális hálózatok útválasztási tábláiba lesznek propagálva az átjáró átirányítása használatával. További információ: [VPN Gateway-átvitel konfigurálása virtuális hálózatokhoz](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
 
 - Állítsa be a **UseRemoteGateways** -t, amikor a társ VNet – VNet-hub. Ha a **UseRemoteGateways** be van állítva, és a távoli **AllowGatewayTransit** is be van állítva, a küllős virtuális hálózat a távoli virtuális hálózat átjáróit használja az átvitelhez.
-- Ahhoz, hogy a küllős alhálózat forgalmát a központi tűzfalon keresztül irányítsa, szüksége van egy felhasználó által megadott útvonalra (UDR), amely a **virtuális hálózati átjáró útvonal-propagálási** beállításának letiltásával a tűzfalra mutat. A **virtuális hálózati átjáró útvonal-propagálási** letiltott beállítása megakadályozza a küllős alhálózatok útvonal-terjesztését. Ezzel megelőzhető, hogy a megszerzett útvonalak ütköznek legyenek a UDR.
+- Ahhoz, hogy a küllős alhálózat forgalmát a központi tűzfalon keresztül irányítsa, használhat egy felhasználó által megadott útvonalat (UDR), amely arra a tűzfalra mutat, amelyen a **virtuális hálózati átjáró útvonal-propagálási** lehetősége le van tiltva. A **virtuális hálózati átjáró útvonal-propagálási** letiltott beállítása megakadályozza a küllős alhálózatok útvonal-terjesztését. Ezzel megelőzhető, hogy a megszerzett útvonalak ütköznek legyenek a UDR. Ha meg szeretné őrizni a **virtuális hálózati átjáró útvonalának propagálását** , akkor ügyeljen arra, hogy meghatározott útvonalakat határozzon meg a tűzfalon, hogy felülírja azokat, amelyek a helyszínen, a BGP-on közzétettek.
 - Konfiguráljon egy UDR a központi átjáró alhálózatán, amely a tűzfal IP-címére mutat a küllő hálózatok következő ugrásakor. Nem szükséges UDR a Azure Firewall alhálózaton, mivel a BGP-ből tanulja meg az útvonalakat.
 
 Az útvonalak létrehozásával kapcsolatos információkért lásd az oktatóanyag [Útvonalak létrehozása](#create-the-routes) című szakaszát.
@@ -67,7 +67,7 @@ Az útvonalak létrehozásával kapcsolatos információkért lásd az oktatóan
 >[!NOTE]
 >A közvetlenül összekapcsolt virtuális hálózatok közötti forgalom közvetlenül akkor is átirányítva van, ha egy UDR az alapértelmezett átjáróként való Azure Firewallre mutat. Ha ebben a forgatókönyvben az alhálózatot alhálózati forgalomra szeretné küldeni a tűzfalra, a UDR mindkét alhálózaton explicit módon tartalmaznia kell a célként megadott alhálózat hálózati előtagot.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>A tűzfal hub virtuális hálózatának létrehozása
 
@@ -129,7 +129,7 @@ Most hozzon létre egy második alhálózatot az átjáróhoz.
 2. Válassza a **+ alhálózat**lehetőséget.
 3. A **név**mezőbe írja be a következőt: **GatewaySubnet**.
 4. A **címtartomány (CIDR blokk)** **192.168.2.0/24**típusában.
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 ## <a name="configure-and-deploy-the-firewall"></a>A tűzfal konfigurálása és üzembe helyezése
 
@@ -182,7 +182,7 @@ A második szabály sorába írja be a következő adatokat:
 4. A **forrás**mezőbe írja be a következőt: **192.168.1.0/24**.
 5. A **cél címe**mezőbe írja be a következőt: **10.6.0.0/16**
 6. A **célport**mezőbe írja be a következőt: **3389**.
-7. Válassza a **Hozzáadás** lehetőséget.
+7. Válassza a **Hozzáadás** elemet.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>A VPN-átjárók létrehozása és csatlakoztatása
 
@@ -230,23 +230,23 @@ Ebben a lépésben létrehozza a kapcsolódást a hub virtuális hálózatról a
 
 1. Nyissa meg az **FW-Hybrid-test** erőforráscsoportot, és válassza ki a **GW-hub** átjárót.
 2. A bal oldali oszlopban válassza a **kapcsolatok** lehetőséget.
-3. Válassza a **Hozzáadás** lehetőséget.
+3. Válassza a **Hozzáadás** elemet.
 4. A kapcsolódás neve, írja be a következőt: **hub-to-helyszíni**.
 5. Válassza a **VNet – VNet** **lehetőséget.**
 6. A **második virtuális hálózati átjáró**esetében válassza a **GW-helyszíni**lehetőséget.
 7. A **megosztott kulcs (PSK)** mezőbe írja be a következőt: **AzureA1b2C3**.
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 Hozza létre a helyszíni és a hub közötti virtuális hálózati kapcsolatokat. Ez a lépés hasonló az előzőhöz, kivéve, ha a VNet-helyszíni és a VNet-hub közötti kapcsolatokat hozza létre. Ügyeljen arra, hogy a megosztott kulcsok megegyezzenek. A kapcsolat néhány perc alatt létrejön.
 
 1. Nyissa meg az **FW-Hybrid-test** erőforráscsoportot, és válassza ki a **GW-helyszíni** átjárót.
 2. A bal oldali oszlopban válassza a **kapcsolatok** lehetőséget.
-3. Válassza a **Hozzáadás** lehetőséget.
+3. Válassza a **Hozzáadás** elemet.
 4. A kapcsolódási név mezőbe írja be a következőt: **helyszíni-to-hub**.
 5. Válassza a **VNet – VNet** **lehetőséget.**
 6. A **második virtuális hálózati átjáró**esetében válassza a **GW-hub**elemet.
 7. A **megosztott kulcs (PSK)** mezőbe írja be a következőt: **AzureA1b2C3**.
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 
 #### <a name="verify-the-connection"></a>A kapcsolat ellenőrzése
@@ -261,12 +261,12 @@ A hub és a küllős virtuális hálózatok most már egyenrangúak.
 
 1. Nyissa meg az **FW-Hybrid-test** erőforráscsoportot, és válassza ki a **VNet-hub** virtuális hálózatot.
 2. A bal oldali **oszlopban válassza a**társítások lehetőséget.
-3. Válassza a **Hozzáadás** lehetőséget.
+3. Válassza a **Hozzáadás** elemet.
 4. A **név**mezőbe írja be a következőt: **HubtoSpoke**.
 5. A **virtuális hálózat**esetében válassza a **VNet – küllő** elemet.
 6. A VNetSpoke-ről VNet-hubhoz való társítás neve mezőbe írja be a következőt: **SpoketoHub**.
 7. Jelölje be az **átjárók átvitelének engedélyezése**jelölőnégyzetet.
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 ### <a name="configure-additional-settings-for-the-spoketohub-peering"></a>További beállítások konfigurálása a SpoketoHub-társításhoz
 
@@ -295,12 +295,12 @@ Ezután hozzon létre néhány útvonalat:
 9. Kattintson a **Létrehozás** gombra.
 10. Az útválasztási táblázat létrehozása után válassza ki azt az útválasztási táblázat lap megnyitásához.
 11. Válassza az **útvonalak** lehetőséget a bal oldali oszlopban.
-12. Válassza a **Hozzáadás** lehetőséget.
+12. Válassza a **Hozzáadás** elemet.
 13. Az útvonal neve mezőbe írja be a következőt: **ToSpoke**.
 14. A **10.6.0.0/16**mezőbe írja be a következőt:.
 15. A következő ugrás típusa beállításnál válassza a **virtuális berendezés**lehetőséget.
 16. A következő ugrási cím mezőbe írja be a tűzfal a korábban feljegyzett magánhálózati IP-címét.
-17. Kattintson az **OK** gombra.
+17. Válassza az **OK** lehetőséget.
 
 Most rendelje hozzá az útvonalat az alhálózathoz.
 
@@ -309,7 +309,7 @@ Most rendelje hozzá az útvonalat az alhálózathoz.
 3. Válassza **a virtuális hálózat kiválasztása**lehetőséget.
 4. Válassza az **VNet-hub**elemet.
 5. Válassza a **GatewaySubnet**lehetőséget.
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 Most hozza létre az alapértelmezett útvonalat a küllő alhálózatból.
 
@@ -324,12 +324,12 @@ Most hozza létre az alapértelmezett útvonalat a küllő alhálózatból.
 1. Kattintson a **Létrehozás** gombra.
 2. Az útválasztási táblázat létrehozása után válassza ki azt az útválasztási táblázat lap megnyitásához.
 3. Válassza az **útvonalak** lehetőséget a bal oldali oszlopban.
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza a **Hozzáadás** elemet.
 5. Az útvonal neve mezőbe írja be a következőt: **ToHub**.
 6. A címzési előtag mezőbe írja be a következőt: **0.0.0.0/0**.
 7. A következő ugrás típusa beállításnál válassza a **virtuális berendezés**lehetőséget.
 8. A következő ugrási cím mezőbe írja be a tűzfal a korábban feljegyzett magánhálózati IP-címét.
-9. Kattintson az **OK** gombra.
+9. Válassza az **OK** lehetőséget.
 
 Most rendelje hozzá az útvonalat az alhálózathoz.
 
@@ -338,7 +338,7 @@ Most rendelje hozzá az útvonalat az alhálózathoz.
 3. Válassza **a virtuális hálózat kiválasztása**lehetőséget.
 4. Válassza a **VNet – küllő**elemet.
 5. Válassza az **SN-munkaterhelés**elemet.
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
@@ -434,7 +434,7 @@ Ezután módosítsa a tűzfal hálózati szabálygyűjteményének műveletét *
 
 A módosított szabályok ellenőrzése előtt zárja be a meglévő távoli asztalokat. Most futtassa újra az ellenőrzéseket. Ezúttal mindegyiknek sikertelennek kell lennie.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rájuk szükség, törölje az **FW-Hybrid-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 

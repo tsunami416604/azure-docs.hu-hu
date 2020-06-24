@@ -54,8 +54,12 @@
       href: expressroute-global-reach.md
     - name: Az ExpressRoute-titkosítás ismertetése
       href: expressroute-about-encryption.md
-    - name: Biztonsági vezérlők
-      href: expressroute-security-controls.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
+        - name: Biztonsági attribútumok
+          href: expressroute-security-controls.md
     - name: A virtuális hálózati átjárók ismertetése
       href: expressroute-about-virtual-network-gateways.md
     - name: Kapcsolódás nyilvános felhőkhöz az Azure-ból
@@ -210,7 +214,7 @@
 - name: Referencia
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#expressroute'
+      href: /powershell/module/az.network#expressroute
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST

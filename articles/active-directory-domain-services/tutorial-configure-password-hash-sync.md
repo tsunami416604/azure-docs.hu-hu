@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ee0c6e67dcf0cf5f85734be3ac53a0417e398654
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80676612"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733704"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Oktatóanyag: a jelszó-szinkronizálás engedélyezése Azure Active Directory Domain Services hibrid környezetekben
 
@@ -42,7 +42,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra lesz szüksége:
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
     * Ha szükséges, [engedélyezze a jelszó-kivonatok szinkronizálását Azure ad Connect][enable-azure-ad-connect].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Szükség esetén [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services példányt][create-azure-ad-ds-instance].
+    * Ha szükséges, [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services felügyelt tartományt][create-azure-ad-ds-instance].
 
 ## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Jelszó-kivonatolási szinkronizálás Azure AD Connect használatával
 
@@ -71,7 +71,7 @@ A Azure AD Connect az Azure AD-vel való szinkronizálásra van telepítve és k
     * Az Azure AD-összekötő neve *contoso.onmicrosoft.com-HRE*
     * A helyszíni AD DS-összekötő neve *onprem.contoso.com*
 
-1. Másolja és illessze be a következő PowerShell-parancsfájlt a számítógépre, amelyen Azure AD Connect telepítve van. A parancsfájl egy teljes jelszó-szinkronizálást indít el, amely örökölt jelszó-kivonatokat tartalmaz. Frissítse a `$azureadConnector` és `$adConnector` a változókat az előző lépésből származó összekötők neveivel.
+1. Másolja és illessze be a következő PowerShell-parancsfájlt a számítógépre, amelyen Azure AD Connect telepítve van. A parancsfájl egy teljes jelszó-szinkronizálást indít el, amely örökölt jelszó-kivonatokat tartalmaz. Frissítse a `$azureadConnector` és a `$adConnector` változókat az előző lépésből származó összekötők neveivel.
 
     Futtassa ezt a szkriptet minden egyes AD-erdőben, hogy szinkronizálja a helyszíni fiók NTLM-és Kerberos-jelszavas kivonatait az Azure AD-be.
 
@@ -97,7 +97,7 @@ A Azure AD Connect az Azure AD-vel való szinkronizálásra van telepítve és k
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    A címtár méretétől függően a fiókok és csoportok száma alapján a régi jelszó-kivonatok Azure AD-ba való szinkronizálása hosszabb időt is igénybe vehet. A rendszer ezután szinkronizálja a jelszavakat az Azure AD DS felügyelt tartományba az Azure AD-vel való szinkronizálás után.
+    A címtár méretétől függően a fiókok és csoportok száma alapján a régi jelszó-kivonatok Azure AD-ba való szinkronizálása hosszabb időt is igénybe vehet. A rendszer ezután szinkronizálja a jelszavakat a felügyelt tartományba az Azure AD-vel való szinkronizálás után.
 
 ## <a name="next-steps"></a>További lépések
 

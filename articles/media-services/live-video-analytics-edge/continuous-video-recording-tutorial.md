@@ -1,30 +1,32 @@
 ---
-title: Folyamatos videofelvétel a felhőbe és a felhőben való lejátszásról – Azure
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az élő videók elemzését IoT Edgeon a videók felhőbe való folyamatos rögzítéséhez és a videó bármely részének továbbításához Azure Media Services használatával.
+title: Folyamatos videofelvétel a felhőbe és a lejátszás a Felhőbeli oktatóanyagból – Azure
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást Azure IoT Edgeon, hogy folyamatosan rögzítsen videókat a felhőbe, és a videó bármely részét továbbítsa a Azure Media Services használatával.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: a69d3f5db9dd8cbe25bbf79f44921f26258005cc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 95182478b75d506526cce28c0d5e446d71140eac
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261857"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765063"
 ---
-# <a name="tutorial-continuous-video-recording-to-cloud-and-playback-from-cloud"></a>Oktatóanyag: folyamatos videofelvétel a felhőbe és a felhőből való lejátszás  
+# <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: folyamatos videofelvétel a felhőbe és a felhőből való lejátszás
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket a [folyamatos videofelvételek](continuous-video-recording-concept.md) (CVR) a felhőbe való elvégzéséhez, illetve a videó bármely részének a Media Services használatával történő továbbításához. Ez olyan helyzetekben hasznos, mint például a biztonság, a megfelelőség és mások, ahol a felvételek archiválását több napra (vagy hetekre) kell fenntartani a kamerából.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást Azure IoT Edge a [folyamatos videofelvételek](continuous-video-recording-concept.md) (CVR) elvégzéséhez a felhőben, és a videó bármely részének továbbítását a Azure Media Services használatával. Ez a képesség olyan forgatókönyvek esetén hasznos, mint például a biztonság és a megfelelőség, ahol a felvételek archívumát kell fenntartani egy kamerából napok vagy hetek számára. 
+
+Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
-> * A kapcsolódó erőforrások beállítása
-> * A CVR-t végrehajtó kód vizsgálata
-> * A mintakód futtatása
-> * Vizsgálja meg az eredményeket, és tekintse meg a videót
+> * Állítsa be a megfelelő erőforrásokat.
+> * Vizsgálja meg a CVR végrehajtó kódot.
+> * Futtassa a kódot.
+> * Vizsgálja meg az eredményeket, és tekintse meg a videót.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="suggested-pre-reading"></a>Javasolt előzetes olvasás  
 
-Javasoljuk, hogy olvassa el a következő dokumentációs oldalakat
+A Kezdés előtt olvassa el a következő cikkeket:
 
 * [Élő videó-elemzések IoT Edge áttekintése](overview.md)
 * [Élő videó-elemzések IoT Edge terminológiában](terminology.md)
@@ -35,45 +37,51 @@ Javasoljuk, hogy olvassa el a következő dokumentációs oldalakat
 
 Az oktatóanyag előfeltételei a következők:
 
-* [Visual Studio Code](https://code.visualstudio.com/) a fejlesztői gépen az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) bővítménnyel és a [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) bővítménnyel.
+* A [Visual Studio Code](https://code.visualstudio.com/) a fejlesztői gépen az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) és a [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) -bővítménnyel.
 
     > [!TIP]
-    > Előfordulhat, hogy a rendszer a Docker telepítését kéri. Ezt a kérdést figyelmen kívül hagyhatja.
+    > Előfordulhat, hogy a rendszer a Docker telepítését kéri. Hagyja figyelmen kívül ezt a kérést.
 * [.Net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer) a fejlesztői gépen.
-* Töltse ki az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)
+* Fejezze be az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup).
 
-A fenti lépések végén az Azure-előfizetésben üzembe helyezett Azure-erőforrásokkal fog rendelkezni, beleértve a következőket:
+Ezen lépések végén az Azure-előfizetésében üzembe helyezett Azure-erőforrásokkal fog rendelkezni:
 
-* IoT Hub
-* Tárfiók
+* Azure IoT Hub
+* Azure Storage-fiók
 * Azure Media Services fiók
-* Linux virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) telepítve
+* Linux rendszerű virtuális gép az Azure-ban, telepített [IoT Edge futtatókörnyezettel](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 
 ## <a name="concepts"></a>Alapelvek
 
-Az [itt](media-graph-concept.md)leírtaknak megfelelően a Media Graph segítségével meghatározhatja, hogy az adathordozót hogyan kell rögzíteni, hogyan kell feldolgozni, és hol kell elküldeni az eredményeket. A CVR elvégzéséhez egy RTSP-kompatibilis kameráról kell rögzítenie a videót, és folyamatosan rögzítenie kell egy [Azure Media Services eszközön](terminology.md#asset). Az alábbi ábra az adott adathordozó-gráf grafikus ábrázolását mutatja be.
+Ahogy az a [Media Graph koncepciójában](media-graph-concept.md) is látható, a Media Graph segítségével meghatározhatja a következőket:
 
-![Adathordozó-gráf](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
+- Az adathordozót a alkalmazásból kell rögzíteni.
+- Hogyan kell feldolgozni.
+- Az eredmények kézbesítésének helye. 
+ 
+ A CVR elvégzéséhez egy RTSP-kompatibilis kameráról kell rögzítenie a videót, és folyamatosan rögzítenie kell egy [Azure Media Services eszközön](terminology.md#asset). Ez az ábra az adott adathordozó-gráf grafikus ábrázolását mutatja be.
 
-Ebben az oktatóanyagban egy, a [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) használatával létrehozott Edge-modult fog használni az RTSP-kamera szimulálása érdekében. A Media Graph-ban egy [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontot fog használni az élő csatorna beszerzéséhez, majd elküldeni a videót az [eszköz fogadó csomópontjára](media-graph-concept.md#asset-sink) , amely rögzíti a videót egy eszközre.
+![Médiagrafikon](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
+
+Ebben az oktatóanyagban egy, a [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) használatával létrehozott Edge-modult fog használni az RTSP-kamera szimulálásához. A Media Graph-ban egy [RTSP-forrás](media-graph-concept.md#rtsp-source) csomóponttal érheti el az élő hírcsatornát, és elküldheti a videót az [eszköz fogadó csomópontjára](media-graph-concept.md#asset-sink), amely rögzíti a videót az adott eszközre.
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 
-Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta a harmadik felsorolásjelet az [Előfeltételekben](#prerequisites). Miután az erőforrás-telepítési parancsfájl befejeződik, kattintson a kapcsos zárójelre, hogy elérhetővé tegye a mappastruktúrát. A ~/clouddrive/LVA-Sample könyvtár alatt létrehozott néhány fájl jelenik meg.
+Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta a harmadik felsorolásjelet az [Előfeltételekben](#prerequisites). Az erőforrás-telepítési parancsfájl befejeződése után válassza ki a kapcsos zárójeleket, hogy elérhetővé tegye a mappastruktúrát. A ~/clouddrive/LVA-Sample könyvtár alatt létrehozott néhány fájl megjelenik.
 
 ![Alkalmazásbeállítások](./media/quickstarts/clouddrive.png)
 
-Ebben az oktatóanyagban a következők érdeklik:
+Ebben az oktatóanyagban a következő fájlok szerepelnek:
 
-     * ~/clouddrive/lva-sample/edge-deployment/.env  - contains properties that Visual Studio Code uses to deploy modules to an edge device
-     * ~/clouddrive/lva-sample/appsettings.json - used by Visual Studio Code for running the sample code
+* **~/clouddrive/LVA-Sample/Edge-Deployment/.env**: olyan tulajdonságokat tartalmaz, amelyeket a Visual Studio Code használ a modulok peremhálózati eszközre való telepítéséhez.
+* **~/clouddrive/lva-sample/appsettings.json**: a mintakód futtatásához a Visual Studio Code használatos.
 
-Ezekre a fájlokra szüksége lesz az alábbi lépésekhez.
+Ehhez a következő lépésekhez szüksége lesz a fájlokra:
 
-1. A tárház klónozása innen https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
+1. A tárház klónozása a GitHub-hivatkozásról https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
 1. Indítsa el a Visual Studio Code-ot, és nyissa meg azt a mappát, ahová a tárházat letöltötte.
-1. A Visual Studio Code-ban keresse meg az "src/Cloud-to-Device-Console-app" mappát, és hozzon létre egy "appSettings. JSON" nevű fájlt. Ez a fájl a program futtatásához szükséges beállításokat fogja tartalmazni.
-1. Másolja a tartalmat a ~/clouddrive/LVA-Sample/appSettings.JSON fájlból. A szövegnek a következőhöz hasonlóan kell kinéznie:
+1. A Visual Studio Code-ban keresse meg a src/Cloud-to-Device-Console-app mappát, és hozzon létre egy **appsettings.js**nevű fájlt. Ez a fájl tartalmazza a program futtatásához szükséges beállításokat.
+1. Másolja a tartalmat a ~/clouddrive/LVA-Sample/appsettings.jsfájlból. A szövegnek a következőhöz hasonlóan kell kinéznie:
     ```
     {  
         "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
@@ -83,7 +91,7 @@ Ezekre a fájlokra szüksége lesz az alábbi lépésekhez.
     ```
     A IoT Hub kapcsolódási karakterlánc lehetővé teszi, hogy a Visual Studio Code használatával parancsokat küldjön az Edge-moduloknak az Azure IoT Hub segítségével.
     
-1. Ezután tallózással keresse meg az "src/Edge" mappát, és hozzon létre egy ". env" nevű fájlt.
+1. Ezután keresse meg a src/Edge mappát, és hozzon létre egy **. env**nevű fájlt.
 1. Másolja a tartalmat a ~/clouddrive/LVA-sample/.env fájlból. A szövegnek a következőhöz hasonlóan kell kinéznie:
 
     ```
@@ -103,66 +111,66 @@ Ezekre a fájlokra szüksége lesz az alábbi lépésekhez.
 
 ## <a name="examine-the-sample-files"></a>A mintaadatok vizsgálata
 
-A Visual Studio Code-ban nyissa meg a "src/Edge/Deployment. template. JSON" fájlt. Ez a sablon határozza meg, hogy mely peremhálózati modulok lesznek üzembe helyezhetők a peremhálózati eszközön (az Azure-beli linuxos virtuális gépen). Vegye figyelembe, hogy a "modulok" szakaszban két bejegyzés szerepel a következő nevekkel:
+A Visual Studio Code-ban nyissa meg a következőt: src/Edge/deployment.template.js. Ez a sablon határozza meg, hogy mely peremhálózati modulok lesznek üzembe helyezhetők a peremhálózati eszközön (az Azure Linux virtuális gépen). A **modulok** szakasz két bejegyzést tartalmaz a következő nevekkel:
 
-* lvaEdge – ez az élő videó Analytics IoT Edge modulon
-* rtspsim – ez az RTSP-szimulátor
+* **lvaEdge**: az élő videó Analytics IoT Edge modulon.
+* **rtspsim**: ez az RTSP-szimulátor.
 
-Ezután tallózással keresse meg a "src/Cloud-to-Device-Console-app" mappát. Itt láthatja a létrehozott appSettings. JSON fájlt, valamint néhány további fájlt is:
+Ezután keresse meg a src/Cloud-to-Device-Console-app mappát. Itt láthatja a appsettings.jsa létrehozott fájlon, néhány további fájllal együtt:
 
-* C2D-Console-app. csproj – a Project fájl a Visual Studio Code-hoz.
-* Operations. JSON – ez a fájl felsorolja a futtatott különböző műveleteket
-* Program.cs – a minta programkódja, amely a következő műveleteket végzi el:
-    * Az alkalmazás beállításainak betöltése
-    * Az élő videó Analytics IoT Edge modulban elérhető közvetlen metódusokat hívja meg. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](direct-methods.md) meghívásával
-    * Szünetelteti a program kimenetének vizsgálatát a terminál ablakban, valamint a kimenet ablakban a modul által generált eseményeket.
-    * Közvetlen metódusokat hív meg az erőforrások törléséhez
+* **C2D-Console-app. csproj**: a Project fájl a Visual Studio Code-hoz.
+* **operations.jsbekapcsolva**: Ez a fájl felsorolja a futtatott különböző műveleteket.
+* **Program.cs**: a minta program kódja, amely:
+    * Betölti az alkalmazás beállításait.
+    * Az élő videó Analytics IoT Edge modulban elérhető közvetlen metódusokat hívja meg. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](direct-methods.md)meghívásával.
+    * Szünetelteti, hogy megvizsgálja a program kimenetét a **terminál** ablakban, valamint a **kimenet** ablakban a modul által generált eseményeket.
+    * Közvetlen metódusokat hív meg az erőforrások törléséhez.
 
 ## <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Az IoT Edge telepítési jegyzék előállítása és üzembe helyezése 
 
-Az üzembe helyezési jegyzék meghatározza, hogy mely modulok legyenek üzembe helyezve egy peremhálózati eszközön, valamint a modulok konfigurációs beállításai. Kövesse az alábbi lépéseket egy ilyen jegyzékfájl létrehozásához a sablon fájlból, majd telepítse azt a peremhálózati eszközre.
+Az üzembe helyezési jegyzék meghatározza, hogy milyen modulok vannak üzembe helyezve egy peremhálózati eszközön és a modulok konfigurációs beállításaiban. Kövesse az alábbi lépéseket egy jegyzékfájl létrehozásához a sablonból, majd telepítse azt a peremhálózati eszközre.
 
-1. Indítsa el a Visual Studio Code-ot
-1. Állítsa be a IoTHub-kapcsolódási karakterláncot úgy, hogy az AZURE IOT HUB panel melletti "További műveletek" ikonra kattint a bal alsó sarokban. A karakterláncot a src/Cloud-to-Device-Console-app/appSettings. JSON fájlból másolhatja. 
+1. Indítsa el a Visual Studio Code-ot.
+1. Állítsa be a IoT Hub a kapcsolódási karakterláncot a bal alsó sarokban található **Azure IOT hub** panel melletti **További műveletek** ikonra kattintva. Másolja a karakterláncot a src/Cloud-to-Device-Console-app/appsettings.jsfájlból. 
 
-    ![IOT-kapcsolatok karakterláncának beállítása](./media/quickstarts/set-iotconnection-string.png)
-1. Ezután kattintson a jobb gombbal az "src/Edge/Deployment. template. JSON" fájlra, és kattintson a "IoT Edge üzembe helyezési jegyzék előállítása" elemre. A Visual Studio Code a. env fájl értékeit használja a központi telepítési sablonban található változók cseréjéhez. Ehhez létre kell hoznia egy jegyzékfájlt az src/Edge/config mappában, a "Deployment. amd64. JSON" nevű fájlban.
+    ![IoT Hub-kapcsolatok karakterláncának beállítása](./media/quickstarts/set-iotconnection-string.png)
+1. Kattintson a jobb gombbal a fájlhoz tartozó src/Edge/deployment.template.jselemre, és válassza a **IoT Edge üzembe helyezési jegyzék előállítása**lehetőséget. A Visual Studio Code a. env fájl értékeit használja a központi telepítési sablonban található változók cseréjéhez. Ez a művelet egy jegyzékfájlt hoz létre az **deployment.amd64.js**nevű src/Edge/config mappában.
 
    ![IoT Edge üzembe helyezési jegyzék előállítása](./media/quickstarts/generate-iot-edge-deployment-manifest.png)
-1. Kattintson a jobb gombbal az "src/Edge/config/Deployment. amd64. JSON" elemre, és kattintson a "központi telepítés létrehozása egyetlen eszközhöz" elemre.
+1. Kattintson a jobb gombbal az src/Edge/config/deployment.amd64.jsfájlra, és válassza a **központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
 
-   ![Üzemelő példány létrehozása egyetlen eszközhöz](./media/quickstarts/create-deployment-single-device.png)
-1. Ekkor a rendszer megkéri, hogy "válasszon ki egy IoT Hub eszközt". Válassza ki a LVA-Sample-Device elemet a legördülő listából.
-1. Körülbelül 30 másodperc alatt frissítse az Azure IoT Hub a bal alsó szakaszban, és látnia kell, hogy a peremhálózati eszközön telepítve vannak a következő modulok:
-    * Élő videó-elemzés a IoT Edgeon (modul neve: "lvaEdge")
-    * RTSP-szimulátor (modul neve: "rtspsim")
+   ![Központi telepítés létrehozása egyetlen eszközhöz](./media/quickstarts/create-deployment-single-device.png)
+1. Ezután **egy IoT hub eszköz kiválasztását**kéri. Válassza ki a LVA-Sample-Device elemet a legördülő listából.
+1. Körülbelül 30 másodperc alatt frissítse az Azure IoT Hubt a bal alsó szakaszban. Látnia kell, hogy a peremhálózati eszközön telepítve vannak a következő modulok:
+    * Élő video Analytics IoT Edge (modul neve **lvaEdge**)
+    * RTSP-szimulátor (modul neve **rtspsim**)
  
-    ![IoT hub](./media/continuous-video-recording-tutorial/iot-hub.png)
+    ![IoT Hub](./media/continuous-video-recording-tutorial/iot-hub.png)
 
 ## <a name="prepare-to-monitor-the-modules"></a>Felkészülés a modulok figyelésére 
 
-Ha élő videó-elemzést használ IoT Edge modulban az élő videó stream rögzítéséhez, akkor az eseményeket a IoT Hub küldi. Az események megtekintéséhez kövesse az alábbi lépéseket:
+Ha a Live Video Analytics szolgáltatást használja IoT Edge modulban az élő videó stream rögzítéséhez, akkor az eseményeket a IoT Hub küldi. Az események megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az Explorer panelt a Visual Studio Code-ban, és keresse meg az Azure IoT Hub a bal alsó sarokban.
-1. Bontsa ki az eszközök csomópontot.
-1. Kattintson a jobb gombbal a LVA-Sample-Device elemre, és válassza a "beépített figyelési események figyelése" lehetőséget.
+1. Nyissa meg az Explorer panelt a Visual Studio Code-ban, és keresse meg az **Azure IoT hub** a bal alsó sarokban.
+1. Bontsa ki az **eszközök** csomópontot.
+1. Kattintson a jobb gombbal a LVA-Sample-Device fájlra, és válassza a **figyelés beépített esemény végpontja**lehetőséget.
 
     ![A beépített esemény-végpont figyelésének megkezdése](./media/quickstarts/start-monitoring-iothub-events.png)
 
 ## <a name="run-the-program"></a>A program futtatása 
 
-1. Visual Studio Code, navigáljon a "src/Cloud-to-Device-Console-app/Operations. JSON" elemre.
-1. A csomópont GraphTopologySet alatt szerkessze a következőket:
+1. A Visual Studio Code-ban lépjen a src/Cloud-to-Device-Console-app/operations.jselemre.
+1. A **GraphTopologySet** csomópont alatt szerkessze a következőket:
 
     `"topologyUrl" : "https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset/topology.json" `
-1. Ezután a csomópontok GraphInstanceSet és GraphTopologyDelete területen győződjön meg arról, hogy a topologyName értéke megegyezik a fenti Graph-topológia "Name" tulajdonságának értékével:
+1. Ezután a **GraphInstanceSet** és az **GraphTopologyDelete** csomópont alatt ellenőrizze, hogy a **topologyName** értéke megegyezik-e az előző Graph-topológia **Name (név** ) tulajdonságának értékével:
 
     `"topologyName" : "CVRToAMSAsset"`  
-1. Nyissa meg a [topológiát](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) egy böngészőben, és tekintse meg a következőt: assetNamePattern. Annak érdekében, hogy rendelkezzen egy egyedi névvel rendelkező eszközzel, érdemes lehet módosítani a Graph-példány nevét a Operations. JSON fájlban (az alapértelmezett "Sample-Graph-1" értékről).
+1. Nyissa meg a [topológiát](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) egy böngészőben, és tekintse meg a következőt: assetNamePattern. Annak érdekében, hogy rendelkezzen egy egyedi névvel rendelkező eszközzel, érdemes lehet módosítani a Graph-példány nevét a fájl operations.jsjában (a minta-Graph-1 alapértelmezett értékről).
 
     `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
-1. Indítsa el a hibakeresési munkamenetet (nyomja meg az F5 billentyűt). Ekkor néhány üzenet jelenik meg a terminál ablakban.
-1. A Operations. JSON elindul a GraphTopologyList és a GraphInstanceList hívásával. Ha az előző rövid útmutatók vagy oktatóanyagok után törölte az erőforrásokat, az üres listát ad vissza, majd szünetelteti az ENTER billentyű lenyomását, például az alábbiakat:
+1. Indítsa el a hibakeresési munkamenetet az F5 billentyű kiválasztásával. Néhány üzenet jelenik meg a **terminál** ablakban.
+1. A fájl operations.jselindul a GraphTopologyList és a GraphInstanceList hívásával. Ha az előző rövid útmutatók vagy oktatóanyagok után törölte az erőforrásokat, ez a művelet üres listát ad vissza, majd szünetelteti az **ENTER billentyűt**, amint az alábbi ábrán látható:
 
     ```
     --------------------------------------------------------------------------
@@ -179,9 +187,10 @@ Ha élő videó-elemzést használ IoT Edge modulban az élő videó stream rög
     Executing operation WaitForInput
     Press Enter to continue
     ```
-1. Amikor lenyomja a "Enter" billentyűt a terminál ablakban, a rendszer a közvetlen metódusok következő készletét kéri
-     * A fenti topologyUrl használó GraphTopologySet hívása.
-     * A GraphInstanceSet hívása a következő törzs használatával.
+
+1. Miután kiválasztotta az **ENTER billentyűt** a **terminál** ablakban, a következő közvetlen metódus-hívások is létrejönnek:
+   * A GraphTopologySet hívása az előző topologyUrl használatával
+   * A GraphInstanceSet hívása a következő törzs használatával
      
      ```
      {
@@ -207,30 +216,30 @@ Ha élő videó-elemzést használ IoT Edge modulban az élő videó stream rög
        }
      }
      ```
-     * A Graph-példány elindítására irányuló GraphInstanceActivate-hívás, valamint a videó folyamatának elindítása
-     * Egy második hívás a GraphInstanceList, amely azt mutatja, hogy a Graph-példány valóban fut állapotban van  
-1. A terminál ablakban lévő kimenet szünetelteti a folytatást a "nyomja meg az ENTER billentyűt" üzenettel. Ne nyomja meg az "Enter" értéket. A felkeresett közvetlen metódusokhoz tartozó JSON-válaszokkal kapcsolatos hasznos adatok megtekintéséhez lapozzunk felfelé
-1. Ha most átvált a kimeneti ablakra a Visual Studio Code-ban, akkor a IoT Hub küldött üzeneteket a IoT Edge modul Live Video Analytics szolgáltatásával küldi el a rendszer.
+   * A Graph-példány elindítására és a videó folyamatának elindítására irányuló GraphInstanceActivate-hívás
+   * Egy második hívás a GraphInstanceList, amely azt mutatja, hogy a Graph-példány fut állapotban van 
+1. A **terminál** -ablak kimenete most szünetelteti az ENTER billentyűt a **folytatáshoz** . Most ne válassza az **ENTER billentyűt** . Görgessen felfelé, és tekintse meg a meghívott közvetlen metódusok JSON-válaszának hasznos adatait.
+1. Ha most átvált a **kimeneti** ablakra a Visual Studio Code-ban, akkor a IoT Edge modul Live Video Analytics IoT hub által küldött üzeneteket fogja látni.
 
-     * Ezeket az üzeneteket az alábbi szakaszban tárgyaljuk
-1. A Graph-példány továbbra is futni fog, és rögzíti a videót – az RTSP-szimulátor megtartja a forrás videóját. A rögzítés leállításához lépjen vissza a TERMINÁLABLAK ablakába, és nyomja le az ENTER billentyűt. A következő meghívások sorozata az erőforrások tisztítására készül:
+   Ezeket az üzeneteket a következő szakaszban tárgyaljuk.
+1. A Graph-példány továbbra is fut, és rögzíti a videót. Az RTSP-szimulátor megtartja a forrás videóját. A rögzítés leállításához lépjen vissza a **Terminálablak** ablakába, és válassza az **ENTER billentyűt**. A következő hívási sorozat az erőforrások törlését végzi a használatával:
 
-     * GraphInstanceDeactivate hívása a Graph-példány inaktiválására
-     * A példány törlésére irányuló GraphInstanceDelete-hívás
-     * A topológia törlésére irányuló GraphTopologyDelete-hívás
-     * A GraphTopologyList utolsó hívása, amely azt mutatja, hogy a lista már üres
+   * A Graph-példány inaktiválására irányuló GraphInstanceDeactivate hívása.
+   * A példány törlésére irányuló GraphInstanceDelete-hívás.
+   * A topológia törlésére irányuló GraphTopologyDelete-hívás.
+   * A GraphTopologyList végső hívása annak bemutatására, hogy a lista már üres.
 
 ## <a name="interpret-the-results"></a>Az eredmények értelmezése 
 
-A Media Graph futtatásakor az élő videó Analytics IoT Edge modulban bizonyos diagnosztikai és műveleti eseményeket küld az IoT Edge hubhoz. Ezek az események a Visual Studio Code kimeneti ablakában látható üzenetek, amelyek "Body" szakaszt és egy "applicationProperties" szakaszt tartalmaznak. Ennek a résznek a megismeréséhez olvassa el [ezt a](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) cikket.
+A Media Graph futtatásakor az élő videó Analytics IoT Edge modulban bizonyos diagnosztikai és műveleti eseményeket küld az IoT Edge hubhoz. Ezek az események a Visual Studio Code **kimeneti** ablakában látható üzenetek. A törzs szakaszt és egy applicationProperties szakaszt tartalmaznak. A következő fejezeteinek megismeréséhez lásd: [IoT hub üzenetek létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
 
-Az alábbi üzenetekben az alkalmazás tulajdonságait és a törzs tartalmát az élő videó elemzési modulja határozza meg.
+A következő üzenetekben az alkalmazás tulajdonságait és a törzs tartalmát az élő videó elemzési modulja határozza meg.
 
-## <a name="diagnostic-events"></a>Diagnosztikai események 
+## <a name="diagnostics-events"></a>Diagnosztikai események 
 
 ### <a name="mediasession-established-event"></a>MediaSession-létrehozási esemény
 
-Ha a Graph-példány aktiválva van, az RTSP-forrás csomópont megpróbál csatlakozni a rtspsim modulban futó RTSP-kiszolgálóhoz. Ha a művelet sikeres, az a következő eseményt fogja kinyomtatni:
+Ha a Graph-példány aktiválva van, az RTSP-forrás csomópont megpróbál csatlakozni a rtspsim modulban futó RTSP-kiszolgálóhoz. Ha a művelet sikeres, a következő eseményt nyomtatja ki:
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:
@@ -248,17 +257,17 @@ Ha a Graph-példány aktiválva van, az RTSP-forrás csomópont megpróbál csat
 }
 ```
 
-* Az üzenet egy diagnosztikai esemény, a MediaSessionEstablished azt jelzi, hogy az RTSP-forrás csomópont (a tárgy) képes volt kapcsolatot létesíteni az RTSP-szimulátorral, és elkezdi fogadni a (szimulált) élő hírcsatornát.
-* A "tárgy" a applicationProperties hivatkozik a Graph-topológia azon csomópontjára, amelyről az üzenet létrejött. Ebben az esetben az üzenet az RTSP forrás csomópontból származik.
-* a applicationProperties "eventType" értéke azt jelzi, hogy ez egy diagnosztikai esemény.
-* a "eventTime" érték azt az időpontot jelzi, amikor az esemény bekövetkezett.
-* a "Body" a diagnosztikai eseménnyel kapcsolatos adatokat tartalmaz, amelyek ebben az esetben a [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) adatai.
+* Az üzenet egy diagnosztikai esemény (MediaSessionEstablished). Azt jelzi, hogy az RTSP-forrás csomópontja (a tárgy) létrehozta a kapcsolódást az RTSP-szimulátorral, és megkezdte a (szimulált) élő adatcsatorna fogadását.
+* A applicationProperties tárgy szakasza a Graph-topológia azon csomópontjára hivatkozik, amelyről az üzenet létrejött. Ebben az esetben az üzenet az RTSP forrás csomópontból származik.
+* A applicationProperties eventType szakasza azt jelzi, hogy ez egy diagnosztikai esemény.
+* A eventTime szakasz azt az időpontot jelzi, amikor az esemény bekövetkezett.
+* A Body (törzs) szakasz a diagnosztikai eseménnyel kapcsolatos adatokat tartalmaz, amelyek ebben az esetben a [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) adatai.
 
 ## <a name="operational-events"></a>Működési események 
 
 ### <a name="recordingstarted-event"></a>RecordingStarted esemény
 
-Amikor az eszköz elfogadó csomópontja elkezdi a videó rögzítését, a Microsoft. Media. Graph. Operational. RecordingStarted típusú eseményt bocsát ki.
+Amikor az eszköz elfogadó csomópontja elkezdi a videó rögzítését, a Microsoft. Media. Graph. Operational. RecordingStarted típusú eseményt bocsát ki:
 
 ```
 [IoTHubMonitor] [9:42:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -277,13 +286,13 @@ Amikor az eszköz elfogadó csomópontja elkezdi a videó rögzítését, a Micr
 }
 ```
 
-A "tárgy" a applicationProperties hivatkozik a diagramban található, az üzenetet létrehozó objektum fogadó csomópontjára.
+A applicationProperties tárgy szakasza a gráfban található, az üzenetet generáló objektum fogadó csomópontjára hivatkozik.
 
-A törzs információt tartalmaz a kimeneti helyről, amely ebben az esetben annak az Azure Media Service-eszköznek a neve, amelybe a videó rögzítve van. Jegyezze fel ezt az értéket.
+A Body (törzs) szakasz a kimeneti helyről tartalmaz információkat. Ebben az esetben annak a Azure Media Services-objektumnak a neve, amelybe a videó rögzítve lesz. Jegyezze fel ezt az értéket.
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable esemény
 
-Ahogy a neve is sugallja, a rendszer a RecordingStarted eseményt küldi el a rögzítés megkezdése után, de előfordulhat, hogy a videós adatrekordokat még nem töltötték fel az eszközre. Amikor az eszköz fogadó csomópontja feltöltötte a videós adatmennyiséget az eszközre, a Microsoft. Media. Graph. Operational. RecordingAvailable típusú eseményt bocsát ki.
+Ahogy a neve is sugallja, a rendszer a RecordingStarted eseményt küldi el a rögzítés megkezdése után, de előfordulhat, hogy a videó nem lett feltöltve az eszközre. Amikor az eszköz fogadó csomópontja feltöltötte a videós adatmennyiséget az eszközre, a Microsoft. Media. Graph. Operational. RecordingAvailable típusú eseményt bocsát ki:
 
 ```
 [IoTHubMonitor] [[9:43:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -302,15 +311,15 @@ Ahogy a neve is sugallja, a rendszer a RecordingStarted eseményt küldi el a r�
 }
 ```
 
-Ez az esemény azt jelzi, hogy az eszköznek elegendő adattal kell megírnia, hogy a játékosok/ügyfelek a videó lejátszását kezdeményezzenek.
+Ez az esemény azt jelzi, hogy a játékosok vagy ügyfelek számára elegendő mennyiségű adattal rendelkező eszköz lett írva a videó lejátszásának megkezdéséhez.
 
-A "tárgy" a applicationProperties hivatkozik a gráf AssetSink csomópontjára, amely létrehozta ezt az üzenetet.
+A applicationProperties tárgy szakasza a gráf AssetSink csomópontjára hivatkozik, amely létrehozta ezt az üzenetet.
 
-A törzs információt tartalmaz a kimeneti helyről, amely ebben az esetben annak az Azure Media Service-eszköznek a neve, amelybe a videó rögzítve van.
+A Body (törzs) szakasz a kimeneti helyről tartalmaz információkat. Ebben az esetben annak a Azure Media Services-objektumnak a neve, amelybe a videó rögzítve lesz.
 
 ### <a name="recordingstopped-event"></a>RecordingStopped esemény
 
-Ha inaktiválja a Graph-példányt, az eszköz fogadó csomópontja leállítja a videó rögzítését az eszközre, a Microsoft. Media. Graph. Operational. RecordingStopped típusú eseményt bocsát ki.
+Ha inaktiválja a Graph-példányt, az eszköz fogadó csomópontja leállítja a videó rögzítését az eszközre. Ezt a Microsoft. Media. Graph. Operational. RecordingStopped típusú eseményt bocsátja ki:
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -331,39 +340,39 @@ Ha inaktiválja a Graph-példányt, az eszköz fogadó csomópontja leállítja 
 
 Ez az esemény azt jelzi, hogy a rögzítés leállt.
 
-A "tárgy" a applicationProperties hivatkozik a gráf AssetSink csomópontjára, amely létrehozta ezt az üzenetet.
+A applicationProperties tárgy szakasza a gráf AssetSink csomópontjára hivatkozik, amely létrehozta ezt az üzenetet.
 
-A törzs információt tartalmaz a kimeneti helyről, amely ebben az esetben annak az Azure Media Service-eszköznek a neve, amelybe a videó rögzítve van.
+A Body (törzs) szakasz a kimeneti helyről tartalmaz információkat, amely ebben az esetben annak a Azure Media Services-eszköznek a neve, amelybe a videó rögzítve van.
 
 ## <a name="media-services-asset"></a>Media Services eszköz  
 
 Megvizsgálhatja a Media Graph által létrehozott Media Services adategységet, ha bejelentkezik a Azure Portalba, és megtekinti a videót.
 
 1. Nyissa meg a webböngészőt, és lépjen a [Azure Portal](https://portal.azure.com/). Adja meg a hitelesítő adatait a Portalra való bejelentkezéshez. Az alapértelmezett nézet a szolgáltatási irányítópult.
-1. Keresse meg Media Services-fiókját az előfizetésében található erőforrások között, és nyissa meg a fiók panelt
-1. Kattintson az eszközök elemre a Media Services listájában
+1. Keresse meg Media Services-fiókját az előfizetésében található erőforrások között, és nyissa meg a fiók ablaktáblát.
+1. Válassza az **eszközök** lehetőséget a **Media Services** listában.
 
-    ![Eszközök](./media/continuous-video-recording-tutorial/assets.png)
-1. Itt található egy sampleAsset-CVRToAMSAsset-Sample-Graph-1 nevű objektum, amely a Graph-topológiai fájlban kiválasztott elnevezési minta.
-1. Kattintson az eszközre.
-1. Az eszköz adatai lapon kattintson az **új létrehozása** a streaming URL-címe szövegmezőbe.
+    ![Objektumok](./media/continuous-video-recording-tutorial/assets.png)
+1. Itt található egy sampleAsset-CVRToAMSAsset-Sample-Graph-1 nevű eszköz. Ez a Graph-topológiai fájlban kiválasztott elnevezési minta.
+1. Válassza ki az objektumot.
+1. Az eszköz adatai lapon válassza az **új létrehozása** lehetőséget a **streaming URL-cím** szövegmezőben.
 
     ![Új eszköz](./media/continuous-video-recording-tutorial/new-asset.png)
 
-1. A megnyíló varázslóban fogadja el az alapértelmezett beállításokat, és nyomja le az "add" (Hozzáadás) lehetőséget. További információ: [Videolejátszás](video-playback-concept.md).
+1. A megnyíló varázslóban fogadja el az alapértelmezett beállításokat, majd válassza a **Hozzáadás**lehetőséget. [További információ: videolejátszás](video-playback-concept.md).
 
     > [!TIP]
     > Ellenőrizze, hogy [fut-e a folyamatos átviteli végpont](../latest/streaming-endpoint-concept.md).
-1. A lejátszónak be kell töltenie a videót, és el kell tudnia érni a **Play**> * * lehetőséget a megtekintéshez.
+1. A lejátszónak be kell töltenie a videót. Kattintson a **Lejátszás** gombra a megtekintéshez.
 
 > [!NOTE]
-> Mivel a videó forrása egy kamera-hírcsatornát szimuláló tároló volt, a videó időbélyegei a Graph-példány aktiválásakor és az inaktiválásakor kapcsolódnak. [Ebből](playback-multi-day-recordings-tutorial.md) az oktatóanyagból megtudhatja, hogyan böngészhet a többnapos felvételen, és hogyan tekintheti meg az Archívum egyes részeit. Ebben az oktatóanyagban a képernyőn megjelenő videó időbélyegeit is látni fogja.
+> Mivel a videó forrása egy kamera-hírcsatornát szimuláló tároló volt, a videóban szereplő időbélyegek a Graph-példány aktiválásakor és az inaktiválásakor kapcsolódnak. Ha szeretné megtudni, hogyan böngészhet a multiday, és hogyan tekintheti meg az Archívum egyes részeit, tekintse meg a [Többnapos felvételek lejátszását](playback-multi-day-recordings-tutorial.md) ismertető oktatóanyagot. Ebben az oktatóanyagban a képernyőn megjelenő videó időbélyegeit is láthatja.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Ha szeretné kipróbálni a többi oktatóanyagot, tartsa be a következőt: a létrehozott erőforrásokhoz. Ellenkező esetben lépjen a Azure Portal, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az erőforráscsoportot.
+Ha szeretné kipróbálni a többi oktatóanyagot, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portal, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az erőforráscsoportot.
 
 ## <a name="next-steps"></a>További lépések
 
 * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az ONVIF-kompatibilis [termékek lapon](https://www.onvif.org/conformant-products/) megkeresheti az RTSP-támogatással rendelkező IP-kamerákat a G, S vagy T profiloknak megfelelő eszközök keresésével.
-* AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse az [Azure IoT Edge Runtime Linux rendszeren való telepítésének](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) utasításait, majd kövesse az [első IoT Edge modul üzembe helyezése a virtuális Linux-eszközökhöz című](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) rövid útmutatót az eszköz Azure-IoT hub való regisztrálásához.
+* AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). Ezután kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre című](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) rövid útmutatót az eszköz Azure IoT hub való regisztrálásához.

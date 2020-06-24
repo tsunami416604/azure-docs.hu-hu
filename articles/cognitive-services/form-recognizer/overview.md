@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 241d91a8c8670c32461684ed964b6fc0fd7c1672
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529892"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206410"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -47,7 +47,7 @@ Az űrlap-felismerő az [elrendezési API](#layout-api) segítségével tanulja 
 
 ## <a name="prebuilt-receipt-model"></a>Előre elkészített bevételezési modell
 
-Az űrlap-felismerő olyan modellt is tartalmaz, amely a Egyesült Államok&mdash;az éttermek, a benzinkutak, a kiskereskedelmi és így tovább ([minta](./media/contoso-receipt-small.png)) által használt típusokból olvassa be az angol nyelvű értékesítési nyugtákat. Ez a modell kigyűjti a legfontosabb adatokat, például a tranzakció dátumát és időpontját, a kereskedelmi adatokat, az adókat és az összegeket, valamint egyebeket. Emellett az előre elkészített beérkezési modell a nyugtán lévő összes szöveg felismerésére és visszaadására van betanítva.
+Az űrlap-felismerő olyan modellt is tartalmaz, amely a Egyesült Államok &mdash; az éttermek, a benzinkutak, a kiskereskedelmi és így tovább ([minta](./media/contoso-receipt-small.png)) által használt típusokból olvassa be az angol nyelvű értékesítési nyugtákat. Ez a modell kigyűjti a legfontosabb adatokat, például a tranzakció dátumát és időpontját, a kereskedelmi adatokat, az adókat és az összegeket, valamint egyebeket. Emellett az előre elkészített beérkezési modell a nyugtán lévő összes szöveg felismerésére és visszaadására van betanítva.
 
 ## <a name="layout-api"></a>Elrendezési API
 
@@ -74,14 +74,14 @@ Egy rövid útmutató segítségével megkezdheti az űrlapok adatainak kinyeré
 
 A következő API-kat fogja használni a modellek betanításához és a strukturált adatok űrlapokból való kinyeréséhez.
 
-|Name (Név) |Leírás |
+|Name |Leírás |
 |---|---|
-| **Egyéni modell betanítása**| Egy új modell betanításával elemezheti az űrlapokat öt azonos típusú űrlap használatával. A _useLabelFile_ paramétert `true` beállíthatja úgy, hogy a manuálisan címkézett adatként legyen betanítva. |
+| **Egyéni modell betanítása**| Egy új modell betanításával elemezheti az űrlapokat öt azonos típusú űrlap használatával. A _useLabelFile_ paramétert beállíthatja úgy, hogy a `true` manuálisan címkézett adatként legyen betanítva. |
 | **Űrlap elemzése** |Egyetlen dokumentum elemzése, amely streamként lett átadva szöveg-, kulcs/érték párok és táblák kinyeréséhez az űrlapról az egyéni modellel.  |
 | **Visszaigazolás elemzése** |Egyetlen bevételezési dokumentum elemzése a legfontosabb információk és a többi bevételezési szöveg kinyeréséhez.|
 | **Elrendezés elemzése** |Egy űrlap elrendezésének elemzése szöveg és tábla szerkezetének kinyeréséhez.|
 
-További információért olvassa el a [REST API dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
+További információért olvassa el a [REST API dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm) . Ha már ismeri az API korábbi verzióját, tekintse [meg](./whats-new.md) a újdonságokról szóló cikket a legutóbbi változások megismeréséhez.
 
 ## <a name="input-requirements"></a>Bemeneti követelmények
 ### <a name="custom-model"></a>Egyéni modell
@@ -100,8 +100,8 @@ A beérkezési modellhez tartozó bemeneti követelmények némileg eltérőek.
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
 
-Ezt a szolgáltatást az [online szolgáltatási feltételekben](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)elérhető Azure-szolgáltatás [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verziója kínálja. Akárcsak az összes kognitív szolgáltatás esetében, az űrlap-felismerő szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
+Akárcsak az összes kognitív szolgáltatás esetében, az űrlap-felismerő szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
 ## <a name="next-steps"></a>További lépések
 
-Fejezze be [a gyors](quickstarts/curl-train-extract.md) üzembe helyezési útmutatót az [űrlap-felismerő API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)-k használatának megkezdéséhez.
+Fejezze be [a gyors](quickstarts/curl-train-extract.md) üzembe helyezési útmutatót az [űrlap-felismerő API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)-k használatának megkezdéséhez.

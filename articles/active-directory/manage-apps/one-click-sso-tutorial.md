@@ -3,25 +3,25 @@ title: Azure Marketplace-alkalmazás egykattintásos, egyszeri bejelentkezéses 
 description: Az Azure piactéren az alkalmazás egyszeri bejelentkezéses konfigurációjának lépései.
 services: active-directory
 documentationCenter: na
-author: jeevansd
-manager: mtillman
-ms.reviewer: celested
+author: kenwith
+manager: celestedg
+ms.reviewer: kenwith
 ms.assetid: e0416991-4b5d-4b18-89bb-91b6070ed3ba
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 06/11/2019
-ms.author: jeedes
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c7e72718e13106b9d895921a2335f1525a7b88c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67872425"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763125"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>Egyszeri bejelentkezéses alkalmazás egykattintásos konfigurálása
 
@@ -59,7 +59,7 @@ Az egykattintásos egyszeri bejelentkezés funkció az SAML protokollt támogat�
 
    ![Saját alkalmazások telepítése biztonságos bejelentkezési böngésző bővítmény](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Miután hozzáadta a bővítményt a böngészőhöz, válassza az ** \<alkalmazásnév\>beállítása**lehetőséget. Az alkalmazás-felügyeleti portálra való átirányítást követően jelentkezzen be rendszergazdaként.
+6. Miután hozzáadta a bővítményt a böngészőhöz, válassza a **telepítés \<Application Name\> **lehetőséget. Az alkalmazás-felügyeleti portálra való átirányítást követően jelentkezzen be rendszergazdaként.
 
    ![Alkalmazás nevének beállítása](./media/one-click-sso-tutorial/setup-sso.png)
 
@@ -82,7 +82,7 @@ Az egykattintásos egyszeri bejelentkezés funkció az SAML protokollt támogat�
 
 11. Kiválaszthatja **az egyszeri bejelentkezés tesztelését** .
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 * [Mi a My apps biztonságos bejelentkezési böngésző bővítmény?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)

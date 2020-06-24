@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 252b3b3ecf2de24410d046473ee2cfd2215254a9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198224"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736441"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure CLI használatával
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -167,6 +167,9 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 
 Egy megadott rendszerképet használó méretezési csoport telepítéséhez használja az *Urn* oszlopban lévő értékeket. A rendszerkép megadásakor a rendszerkép verziószáma kicserélhető a *latest* (legújabb) kifejezésre, amely a disztribúció legújabb verzióját választja ki. Az alábbi a példában az `--image` argumentum használatával egy CentOS 7.3-rendszerkép legújabb verzióját adjuk meg.
 
+> [!IMPORTANT]
+> Javasoljuk, hogy a *legújabb* rendszerkép-verziót használja. A "legfrissebb" érték megadásával a lemezkép legújabb verziója használható a telepítés ideje alatt. Vegye figyelembe, hogy még ha a legújabbat is használja, a virtuálisgép-lemezkép nem frissül automatikusan az üzembe helyezési idő után, még akkor is, ha az új verzió elérhetővé válik.
+
 Mivel a méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe, nem kell üzembe helyeznie az alábbi méretezési csoportot:
 
 ```azurecli-interactive
@@ -287,7 +290,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 ```
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Az erőforráscsoportok törlésével az összes bennük foglalt erőforrás, azaz a virtuálisgép-példányok, a virtuális hálózat és a lemezek is törölve lesznek. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive

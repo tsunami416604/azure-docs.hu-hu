@@ -4,12 +4,12 @@ description: Ismerteti, hogyan értékelheti a helyszíni VMware virtuális gép
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331882"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771308"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>VMware virtuális gépek értékelése a Server Assessmenttel
 
@@ -27,14 +27,14 @@ Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet fe
 > [!NOTE]
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a útmutató cikkeket.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Fejezze be az első oktatóanyagot](tutorial-prepare-vmware.md) ebben a sorozatban. Ha nem, az oktatóanyagban szereplő utasítások nem fognak működni.
 - Az első oktatóanyagban az alábbiakat kell elvégeznie:
     - [Készítse elő az Azure](tutorial-prepare-vmware.md#prepare-azure) -t a Azure Migrate való együttműködéshez.
-    - A [VMware előkészítése](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) az értékeléshez. Ide tartozik a VMware-beállítások ellenőrzése, egy olyan fiók beállítása, amelyet Azure Migrate használhat a vCenter Server eléréséhez.
+    - A [VMware előkészítése](tutorial-prepare-vmware.md#prepare-for-assessment) az értékeléshez. Ide tartozik a VMware-beállítások ellenőrzése, egy olyan fiók beállítása, amelyet Azure Migrate használhat a vCenter Server eléréséhez.
     - [Ellenőrizze](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment) , hogy mire van szüksége a Azure Migrate készülék VMware-értékeléshez való telepítéséhez.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate projekt beállítása
@@ -53,7 +53,7 @@ Hozzon létre egy új Azure Migrate projektet a következőképpen:
 
    ![A projekt neve és a régió mezői](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 1. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment Next (kiszolgáló értékelése**  >  **Next**) elemet.
 
    ![A kiszolgáló-Assessment eszköz kiválasztása](./media/tutorial-assess-vmware/assessment-tool.png)
@@ -99,7 +99,7 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
         --- | --- | ---
         VMware (10,9 GB) | [Legújabb verzió](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 
-    - Azure kormányzati esetén:
+    - Azure Government esetén:
     
         **Algoritmus** | **Letöltés** | **SHA256**
         --- | --- | ---
@@ -170,7 +170,7 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfi
 1. A **vCenter Server részletek megadása lapon**adja meg a vCenter Server példány nevét (FQDN) vagy IP-címét. Meghagyhatja az alapértelmezett portot, vagy megadhat egy egyéni portot, amelyen vCenter Server figyeli.
 2. A **Felhasználónév** és a **jelszó**mezőben adja meg azokat a vCenter Server fiók hitelesítő adatait, amelyeket a berendezés a vCenter Server példányon lévő virtuális gépek felderítéséhez használni fog. 
 
-    - Be kell állítania egy fiókot a szükséges engedélyekkel az [előző oktatóanyagban](tutorial-prepare-vmware.md#set-up-an-account-for-assessment).
+    - Be kell állítania egy fiókot a szükséges engedélyekkel az [előző oktatóanyagban](tutorial-prepare-vmware.md#set-up-permissions-for-assessment).
     - Ha a hatókör-felderítést meghatározott VMware-objektumokra (vCenter Server adatközpontokra, fürtökre, fürtökre, gazdagépekre, gazdagépekre vagy egyéni virtuális gépekre) szeretné alkalmazni, tekintse át az [ebben a cikkben](set-discovery-scope.md) szereplő utasításokat a Azure Migrate által használt fiók korlátozásához.
 
 3. Válassza a **kapcsolat ellenőrzése** lehetőséget, és győződjön meg arról, hogy a készülék csatlakozhat vCenter Serverhoz.
@@ -178,7 +178,7 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfi
 
     - Itt opcionálisan adhat meg hitelesítő adatokat, ha létrehozott egy fiókot az [alkalmazás-felderítési szolgáltatáshoz](how-to-discover-applications.md), vagy az [ügynök nélküli függőségek elemzése funkciót](how-to-create-group-machine-dependencies-agentless.md).
     - Ha nem használja ezeket a funkciókat, akkor kihagyhatja ezt a beállítást.
-    - Tekintse át az alkalmazás- [felderítéshez](migrate-support-matrix-vmware.md#application-discovery)szükséges hitelesítő adatokat, vagy az [ügynök nélküli elemzéshez](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements).
+    - Tekintse át az alkalmazás- [felderítéshez](migrate-support-matrix-vmware.md#application-discovery-requirements)szükséges hitelesítő adatokat, vagy az [ügynök nélküli elemzéshez](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless).
 
 5. A virtuális gép felderítésének **elindításához mentse és indítsa el a felderítést**.
 
@@ -278,7 +278,7 @@ A megbízhatósági minősítés segít megbecsülni az értékelés méretére 
 
 [Ismerje meg](best-practices-assessment.md#best-practices-for-confidence-ratings) a megbízhatósági minősítéssel kapcsolatos ajánlott eljárásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Azure Migrate berendezést állít be. Az értékelést is létrehozta és felülvizsgálta.
 

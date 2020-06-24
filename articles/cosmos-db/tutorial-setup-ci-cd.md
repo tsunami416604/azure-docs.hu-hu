@@ -3,16 +3,16 @@ title: CI/CD-folyamat beállítása Azure Cosmos DB emulátor felépítési fela
 description: Oktatóanyag a buildelési és kiadási munkafolyamatok Azure DevOpsban a Cosmos DB Emulator buildelési feladatával való beállításáról
 author: deborahc
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 521d5d8d587b39cf573dedc37ea9f6fd53646e66
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77cf98cae943b8652e20ed48fd41ed717d1e4fc5
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80410955"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262123"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
@@ -20,7 +20,7 @@ Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos 
 
 Az Azure Cosmos DB Emulator Azure DevOpshoz készült buildelési feladata lehetővé teszi ugyanezt CI-környezetben. A buildelési feladat segítségével összeállítási és kiadási munkafolyamatai részeként futtathat teszteket az emulátorban. A feladat elindít egy Docker-tárolót, amelyben már fut az emulátor, és végpontot biztosít a builddefiníció további része számára. Tetszőleges számú emulátorpéldányt hozhat létre és indíthat el, amelyek mind külön tárolóban futnak. 
 
-Ez a cikk bemutatja, hogyan állíthat be CI-folyamatot az Azure DevOpsban egy ASP.NET-alkalmazás számára, amely a Cosmos DB Emulator buildelési feladatával futtat teszteket. A CI-folyamatokat a Node. js-hez vagy egy Python-alkalmazáshoz hasonló módon állíthatja be. 
+Ez a cikk bemutatja, hogyan állíthat be CI-folyamatot az Azure DevOpsban egy ASP.NET-alkalmazás számára, amely a Cosmos DB Emulator buildelési feladatával futtat teszteket. A CI-folyamat egy Node.js vagy egy Python-alkalmazáshoz való beállításához hasonló módszer használható. 
 
 ## <a name="install-the-emulator-build-task"></a>Az emulátor buildelési feladatának telepítése
 
@@ -50,7 +50,7 @@ Most, hogy a bővítmény települt, jelentkezzen be az Azure DevOps-fiókjába,
 3. Végül válassza ki a buildfolyamathoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. Most már rendelkezik egy olyan összeállítási folyamattal, amely a Azure Cosmos DB Emulator Build feladatának használatára beállítható. 
 
 > [!NOTE]
-> A CI számára kijelölni kívánt ügynök-készletnek a Windows rendszerhez készült Docker-nek kell lennie, kivéve, ha a telepítést manuálisan végzik el egy korábbi feladatban a CI részeként. Tekintse meg a [Microsoft által üzemeltetett ügynökökkel](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) foglalkozó cikket az ügynök-készletek kiválasztásához. Javasoljuk, hogy kezdje a `Hosted VS2017`következővel:.
+> A CI számára kijelölni kívánt ügynök-készletnek a Windows rendszerhez készült Docker-nek kell lennie, kivéve, ha a telepítést manuálisan végzik el egy korábbi feladatban a CI részeként. Tekintse meg a [Microsoft által üzemeltetett ügynökökkel](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) foglalkozó cikket az ügynök-készletek kiválasztásához. Javasoljuk, hogy kezdje a következővel: `Hosted VS2017` .
 
 Azure Cosmos DB emulátor jelenleg nem támogatja az üzemeltetett VS2019-ügynök készletét. Az emulátor azonban már telepítve van a VS2019, és a következő PowerShell-parancsmagokkal elindítja az emulátort. Ha a VS2019 használata során problémákba ütközik, az [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) csapata segítségért tájékozódhat:
 
@@ -63,7 +63,7 @@ Start-CosmosDbEmulator
 
 1. Mielőtt hozzáadhatna egy feladatot a buildfolyamathoz, hozzá kell adnia egy ügynökfeladatot. Keresse meg a buildfolyamatot, kattintson a három pont (**...**) elemre, és válassza az **Add an agent job** (Ügynökfeladat hozzáadása) lehetőséget.
 
-1. Ezután válassza ki **+** az ügynök feladata melletti szimbólumot az emulátor felépítési feladatának hozzáadásához. Keressen a **cosmos** kifejezésre a keresőmezőben, válassza ki az **Azure Cosmos DB Emulator** lehetőséget, és adja hozzá az ügynökfeladathoz. A buildelési feladat elindít egy tárolót, amelyben már fut a Cosmos DB Emulator egy példánya. Az Azure Cosmos DB Emulator-feladatot minden olyan feladat elé kell ütemezni, amelyhez az emulátor futása szükséges.
+1. Ezután válassza ki az **+** ügynök feladata melletti szimbólumot az emulátor felépítési feladatának hozzáadásához. Keressen a **cosmos** kifejezésre a keresőmezőben, válassza ki az **Azure Cosmos DB Emulator** lehetőséget, és adja hozzá az ügynökfeladathoz. A buildelési feladat elindít egy tárolót, amelyben már fut a Cosmos DB Emulator egy példánya. Az Azure Cosmos DB Emulator-feladatot minden olyan feladat elé kell ütemezni, amelyhez az emulátor futása szükséges.
 
    ![Az emulátor buildelési feladatának hozzáadása a builddefinícióhoz](./media/tutorial-setup-ci-cd/addExtension_3.png)
 
@@ -178,4 +178,4 @@ Ha YAML feladattal állítja be a CI/CD-folyamatot, a YAML feladatot a következ
 
 További információ az emulátor helyi fejlesztéshez és teszteléshez való használatáról: [Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
 
-Az Emulator TLS/SSL-tanúsítványok exportálásával kapcsolatban lásd: [a Azure Cosmos db Emulator-tanúsítványok exportálása Java, Python és Node. js használatával.](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)
+Az Emulator TLS/SSL-tanúsítványok exportálásával kapcsolatban lásd: [a Azure Cosmos db Emulator-tanúsítványok exportálása Java, Python és Node.jshasználatával](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)

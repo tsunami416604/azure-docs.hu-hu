@@ -1,5 +1,5 @@
 ---
-title: Ismerje meg az alapokat egy minta ügyfélalkalmazás alkalmazásával
+title: Az alapok megismerése egy minta-ügyfélalkalmazással
 titleSuffix: Azure Digital Twins
 description: Oktatóanyag az Azure digitális Twins SDK-k megismeréséhez egy minta parancssori alkalmazás használatával
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 070a65207bc1aa2cf754f3a0dca59f1a2950a339
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613547"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262341"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Ismerje meg az Azure Digital Twins-t egy minta ügyfélalkalmazás alkalmazásával
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ez az oktatóanyag egy olyan minta alkalmazást vezet be, amely egy parancssori ügyfélalkalmazás megvalósítását teszi lehetővé egy Azure digitális Twins-példánnyal való interakcióhoz. Az ügyfélalkalmazás hasonló az [oktatóanyagban írt útmutatóhoz: az ügyfélalkalmazás kódolása](tutorial-code.md).
 
@@ -44,7 +47,7 @@ A modellek hasonlók az objektumorientált programozási nyelvekben található 
 
 A _**AdtE2ESample**_ -projektet megnyitó Visual Studio-ablakban a *megoldáskezelő* ablaktáblán navigáljon a *AdtSampleApp\SampleClientApp\Models* mappára. Ez a mappa minta modelleket tartalmaz.
 
-Válassza ki a *Room. JSON* fájlt a szerkesztési ablakban, és módosítsa a következő módon:
+Válassza a *Room.json* lehetőséget a szerkesztési ablakban való megnyitásához, és módosítsa a következő módokon:
 
 * **Frissítse a verziószámot**, hogy jelezze, hogy a modell egy frissített verzióját biztosítja. Ezt úgy teheti meg, hogy az érték végén lévő *1* `@id` értéket egy *2*értékre módosítja. A jelenlegi verziószámnál nagyobb szám is fog működni.
 * **Tulajdonság szerkesztése**. Módosítsa a `Humidity` tulajdonság nevét *HumidityLevel* értékre (vagy valami más, ha szeretné. Ha más, mint a *HumidityLevel*-t használja, jegyezze fel, hogy mit használt, és folytatja a használatát a *HumidityLevel* helyett az oktatóanyag során.
@@ -70,7 +73,7 @@ Válassza ki a *Room. JSON* fájlt a szerkesztési ablakban, és módosítsa a k
 
 Ha elkészült, a frissített modellnek a következőhöz hasonlóan kell kinéznie:
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Szerkesztett Room. JSON a frissített verziószámmal, a HumidityLevel és a RoomName tulajdonsággal, és tartalmaz kapcsolatot" border="false":::
+:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz" border="false":::
 
 Mielőtt továbblép, ügyeljen arra, hogy mentse a fájlt.
 
@@ -78,7 +81,7 @@ Mielőtt továbblép, ügyeljen arra, hogy mentse a fájlt.
 > Ha saját modellt szeretne létrehozni, beillesztheti a *Room* Model-kódot egy új fájlba, amelyet egy *. JSON* kiterjesztéssel menthet a *AdtSampleApp\SampleClientApp\Models* mappában. Ezt követően a következő lépésekkel adhat hozzá tulajdonságokat és kapcsolatokat, amelyeknek bármilyen tulajdonsága van. A mappában található egyéb mintákat is megtekintheti ötleteket.
 
 > [!TIP] 
-> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](https://github.com/Azure-Samples/DTDL-Validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [és ellenőrzése](how-to-use-parser.md)című témakörben olvashat.
+> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [és ellenőrzése](how-to-use-parser.md)című témakörben olvashat.
 
 ### <a name="get-started-with-the-command-line-app"></a>Ismerkedés a parancssori alkalmazással
 
@@ -308,7 +311,7 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Ebben az oktatóanyagban megkezdte az Azure Digital Twins használatát egy példány és egy ügyfélalkalmazás beállításával a példánnyal való interakcióhoz. Az ügyfélalkalmazás felhasználta az Azure digitális ikrek felfedezését, a modellek, a digitális ikrek és a kapcsolatok létrehozását. Néhány lekérdezést is futtatott a megoldással kapcsolatban, hogy megtudja, milyen kérdésekre ad választ az Azure Digital Twins a környezetről.
 
