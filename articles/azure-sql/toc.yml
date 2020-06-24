@@ -498,7 +498,7 @@
           items:
             - name: Migrálás az SQL Database-be
               href: database/migrate-to-database-from-sql-server.md
-            - name: SQL-adatbázis kezelése migrálás után
+            - name: SQL Database kezelése a migrálás után
               href: database/manage-data-after-migrating-to-database.md
             - name: Importálás/exportálás (Azure-szolgáltatások engedélyezése letiltva)
               href: database/database-import-export-azure-services-off.md
@@ -664,12 +664,15 @@
     - name: Rövid útmutatók
       href: managed-instance/quickstart-content-reference-guide.md
       items:
-        - name: Létrehozás
+        - name: Felügyelt SQL-példány létrehozása
           items:
-            - name: Az Azure Portal használata
+            - name: Azure Portal
               href: managed-instance/instance-create-quickstart.md
-            - name: A PowerShell használata
+            - name: PowerShell
               href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: ARM-sablon
+              displayName: Resource Manager
+              href: managed-instance/create-template-quickstart.md
             - name: Példánykészletek létrehozása
               href: managed-instance/instance-pools-configure.md
         - name: Konfigurálás

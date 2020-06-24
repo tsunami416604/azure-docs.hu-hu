@@ -70,8 +70,6 @@
           href: redirect-overview.md
         - name: HTTP-fejlécek átírása
           href: rewrite-http-headers.md
-        - name: Egyéni hibalapok
-          href: custom-error.md
     - name: SSL
       items:
         - name: SSL leállítása és végpontok közötti SSL
@@ -240,6 +238,8 @@
           href: log-analytics.md
         - name: Háttérrendszer állapotának problémái
           href: application-gateway-backend-health-troubleshooting.md
+    - name: Egyéni hibalapok
+      href: custom-error.md
     - name: Migrálás az 1-esről a 2-es verzióra
       href: migrate-v1-v2.md
 - name: Referencia
