@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ec52c5274891619cf7976e99b5241bfc67a4076
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: afb1108bacadd16007e1f53186107ea8458d96e9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415083"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205118"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Verziókövetés integrálása az SQL-készletbe
 
@@ -81,4 +81,4 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
 ## <a name="next-steps"></a>További lépések
 
-- [Fejlesztés az SQL-készlet fejlesztéséhez](sql-data-warehouse-overview-develop.md)
+- [SQL-készlet fejlesztése](sql-data-warehouse-overview-develop.md)

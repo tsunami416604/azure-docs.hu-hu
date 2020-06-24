@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6aa40d0914237a28c7bbd32b15bf0d8d02140192
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: cb939d223d0aa91b6da62d3045ccad919f1bd277
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783551"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887923"
 ---
 # <a name="payout-policy-details"></a>Fizetési szabályzat részletei
 
@@ -25,7 +25,7 @@ A partner Centerben válassza a **kifizetés** lehetőséget a portál jobb fels
 ![A partner Center portál jobb felső részén található kifizetési ikon illusztrálása.](./media/payout-overview.png)
 
 > [!TIP]
-> Nem minden fiók szerepkör fér hozzá a kifizetési adatokhoz. Részletekért lásd: [szerepkörök és engedélyek a kifizetési jelentés eléréséhez](./payout-summary.md).
+> Nem minden fiók szerepkör fér hozzá a kifizetési adatokhoz. Részletekért lásd: [szerepkörök és engedélyek a kifizetési jelentés eléréséhez](./payout-summary-overview.md#roles-and-permissions).
 
 ## <a name="payment-schedules"></a>Fizetési ütemtervek
 
@@ -102,12 +102,12 @@ A következő példa egy ütemezett ütemtervet mutat be:
 | Példa a kifizetés dátumára | 10/15/2020 | A kifizetési **irányítópulton a** tranzakciós előzmények és a fizetések részben ellátottként van megjelölve |
 | <font color="red">Ha az ügyfél nem fizet a Microsoftnak</font> | 12/2/2020 – 12/5/2020 | Nincs változás, ugyanaz, mint fent |
 | Az ügyfél megkapja az első késedelmes fizetési értesítő e-mailt | 12/6/2020 | Nincs |
-| Az ügyfél rendszeresen kap e-maileket a megnövekedett sürgősségről | 12/7/2020 – 1/31/2020 | Nincs |
-| Valószínűleg a közzétevő értesítést kap a kiírásról | 1/7/2020 | A közzétevőnek küldött e-mail-értesítés, amelyet az ügyfele még nem küldött el. A tranzakció-azonosító és a dollár összege is szerepel. |
-| Az ügyfél lemondási értesítést kap | 2/1/2020 | Nincs |
-| A gyűjtési folyamat vége/az alapok le vannak írva | 2/15/2020 | A közzétevőnek elküldött e-mail-értesítés, amelyből a rendszer kiírta a forrásokat. A tranzakció-azonosító és a dollár összege is szerepel. |
-| A kifizetés le van vonva | 3/1/2020 | A közzétevő negatív tranzakciót fog látni a partner Center kifizetési utasításban |
-| A kifizetés megtagadva | 3/15/2020 | A jövőbeli kifizetések a partner Center kifizetési nyilatkozatában jelennek meg. A közzétevő nem kap fizetést, amíg az egyenleg már nem negatív.  |
+| Az ügyfél rendszeresen kap e-maileket a megnövekedett sürgősségről | 12/7/2020 – 1/31/2021 | Nincs |
+| Valószínűleg a közzétevő értesítést kap a kiírásról | 1/7/2021 | A közzétevőnek küldött e-mail-értesítés, amelyet az ügyfele még nem küldött el. A tranzakció-azonosító és a dollár összege is szerepel. |
+| Az ügyfél lemondási értesítést kap | 2/1/2021 | Nincs |
+| A gyűjtési folyamat vége/az alapok le vannak írva | 2/15/2021 | A közzétevőnek elküldött e-mail-értesítés, amelyből a rendszer kiírta a forrásokat. A tranzakció-azonosító és a dollár összege is szerepel. |
+| A kifizetés le van vonva | 3/1/2021 | A közzétevő negatív tranzakciót fog látni a partner Center kifizetési utasításban |
+| A kifizetés megtagadva | 3/15/2021 | A jövőbeli kifizetések a partner Center kifizetési nyilatkozatában jelennek meg. A közzétevő nem kap fizetést, amíg az egyenleg már nem negatív.  |
 |||
 
 ## <a name="next-step"></a>Következő lépés

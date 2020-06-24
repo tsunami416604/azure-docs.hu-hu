@@ -8,18 +8,18 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92674ed9d39ea9e84d477d19aadbaeda6da6f32c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78206112"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728265"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Csoportok és tagok keresése (előzetes verzió) Azure Active Directory
 
@@ -45,7 +45,7 @@ Ha problémák merülnek fel, a **minden csoport** lap tetején található szal
 
 ## <a name="group-search-and-sorting"></a>Csoportos keresés és rendezés
 
-A csoportok listájának keresését továbbfejlesztettük, így amikor beírhat egy keresési karakterláncot, a keresés automatikusan végrehajt `startswith` egy és alkarakterlánc-keresést a csoportok neveinek listáján. Az alkarakterlánc-keresés csak egész szavakon hajtható végre, és nem tartalmaz speciális karaktereket. A karakterlánc-keresés a kis-és nagybetűk megkülönböztetésére szolgál.
+A csoportok listájának keresését továbbfejlesztettük, így amikor beírhat egy keresési karakterláncot, a keresés automatikusan végrehajt egy `startswith` és alkarakterlánc-keresést a csoportok neveinek listáján. Az alkarakterlánc-keresés csak egész szavakon hajtható végre, és nem tartalmaz speciális karaktereket. A karakterlánc-keresés a kis-és nagybetűk megkülönböztetésére szolgál.
 
 ![új alkarakterlánc-keresések a minden csoport lapon](./media/groups-members-owners-search/groups-search-preview.png)
 

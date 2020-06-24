@@ -2,17 +2,17 @@
 title: Azure IoT Hub TLS-támogatás
 description: Ajánlott eljárások a biztonságos TLS-kapcsolatok használatához a IoT Hub kommunikáló eszközökhöz és szolgáltatásokhoz
 services: iot-hub
-author: rezasherafat
+author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.author: rezas
-ms.openlocfilehash: 5b9f6b993b0d0f527d041b4ee055bf51fefa1253
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/18/2020
+ms.author: jlian
+ms.openlocfilehash: 8c52037684215d1672ed813389d0bbace9a03e42
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848245"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080618"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-támogatás a IoT Hub
 
@@ -20,11 +20,17 @@ A IoT Hub Transport Layer Security (TLS) protokollt használ a IoT-eszközök é
 
 A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](iot-hub-tls-deprecating-1-0-and-1-1.md). Javasoljuk, hogy a TLS 1,2-et használja elsődleges TLS-verzióként IoT Hubhoz való csatlakozáskor.
 
-## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>A TLS 1,2 kapcsolatának korlátozása a IoT Hub erőforrásban
+## <a name="tls-12-enforcement-available-in-select-regions"></a>A TLS 1,2 kényszerítés a kiválasztott régiókban érhető el
 
-A további biztonság érdekében javasoljuk, hogy a IoT-hubokat úgy konfigurálja, hogy *csak* a 1,2-es TLS-verziót használó ügyfélkapcsolatokat engedélyezze, és kényszerítse ki az [ajánlott titkosítási algoritmusok](#recommended-ciphers)használatát.
+A további biztonság érdekében konfigurálja a IoT hubokat úgy, hogy *csak* a 1,2-es TLS-verziót használó ügyfélkapcsolatokat engedélyezze, és kényszerítse az [ajánlott titkosítási algoritmusok](#recommended-ciphers)használatát. Ez a funkció csak a következő régiókban támogatott:
 
-Erre a célra hozzon létre egy új IoT Hub a bármelyik [támogatott régióban](#supported-regions) , és állítsa be a `minTlsVersion` tulajdonságot a `1.2` Azure Resource Manager sablon IoT hub erőforrás-specifikációjában:
+* USA keleti régiója
+* USA déli középső régiója
+* USA nyugati régiója, 2.
+* USA-beli államigazgatás – Arizona
+* USA-beli államigazgatás – Virginia
+
+Erre a célra hozzon létre egy új IoT Hub a bármelyik támogatott régióban, és állítsa be a `minTlsVersion` tulajdonságot a `1.2` Azure Resource Manager sablon IoT hub erőforrás-specifikációjában:
 
 ```json
 {
@@ -53,18 +59,7 @@ Az ezzel a konfigurációval létrehozott IoT Hub erőforrás elutasítja az esz
 
 > [!NOTE]
 > A `minTlsVersion` tulajdonság csak olvasható, és a IoT hub-erőforrás létrehozása után nem módosítható. Ezért fontos, hogy megfelelően tesztelje és ellenőrizze *, hogy a* IoT-eszközök és-szolgáltatások kompatibilisek-e a TLS 1,2-mel és az [ajánlott titkosítási](#recommended-ciphers) megoldásokkal.
-
-## <a name="supported-regions"></a>Támogatott régiók
-
-A TLS 1,2 használatát igénylő IoT-hubok a következő régiókban hozhatók létre:
-
-* USA keleti régiója
-* USA déli középső régiója
-* USA nyugati régiója, 2.
-* USA-beli államigazgatás – Arizona
-* USA-beli államigazgatás – Virginia
-
-> [!NOTE]
+> 
 > Feladatátvétel esetén a `minTlsVersion` IoT hub tulajdonsága továbbra is érvényben marad a helyszíni, a feladatátvételt követő régióban.
 
 ## <a name="recommended-ciphers"></a>Ajánlott titkosítási algoritmusok
@@ -97,7 +92,7 @@ Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett tit
 
 | Nyelv | A TLS 1,2-et támogató verziók | Dokumentáció |
 |----------|------------------------------------|---------------|
-| C#        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
+| C        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | 2.0.0 vagy újabb verzió             | [Hivatkozás](https://aka.ms/Tls_Python_SDK_IoT) |
 | C#       | 1.21.4 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_CSharp_SDK_IoT) |
 | Java     | 1.19.0 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |

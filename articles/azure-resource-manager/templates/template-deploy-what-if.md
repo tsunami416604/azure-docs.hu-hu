@@ -3,14 +3,14 @@ title: Template deployment mi a teendő (előzetes verzió)
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/16/2020
 ms.author: tomfitz
-ms.openlocfilehash: abe834670c5df461b523bd48717f20093bdef0a3
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457286"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888738"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sablon üzembe helyezési művelete (előzetes verzió)
 
@@ -100,6 +100,9 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 
 Resource changes: 1 to modify.
 ```
+
+> [!NOTE]
+> A mi – if művelet nem tudja feloldani a [hivatkozási függvényt](template-functions-resource.md#reference). Minden alkalommal, amikor olyan tulajdonságot állít be egy sablon-kifejezésre, amely tartalmazza a hivatkozási függvényt, mi – if jelentések esetén a tulajdonság módosul. Ez a viselkedés azért fordul elő, mert a mi – ha összehasonlítja a tulajdonság aktuális értékét (például `true` vagy `false` logikai érték esetén) a megoldatlan sablon kifejezéssel. Ezek az értékek nyilvánvalóan nem egyeznek. A sablon központi telepítésekor a tulajdonság csak akkor változik, ha a sablon kifejezése egy másik értékre oldódik fel.
 
 ## <a name="what-if-commands"></a>Mi – if parancsok
 
@@ -413,7 +416,7 @@ Az Azure SDK-k használatával a mi-if művelet is használható.
 
 * .NET esetén használja a [DeploymentWhatIf osztályt](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha az előzetes kiadásban helytelen eredményeket észlel, akkor jelentse a hibákat a következő helyen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - A sablonok Azure PowerShell használatával történő telepítéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md).

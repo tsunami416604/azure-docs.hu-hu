@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251010"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712428"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Speciális oktatóanyagok a Media Encoder Premium-munkafolyamathoz
 ## <a name="overview"></a>Áttekintés
@@ -601,7 +601,7 @@ Most futtasson egy helyi tesztet. A futtatást követően vizsgálja meg a napl�
 
 A Node objektum, amelyben a log metódust hívjuk, a jelenlegi "csomópontra" vagy a parancsfájlban található összetevőre hivatkozik. Minden összetevő, amely lehetővé teszi a naplózási adatokat, a System lapon elérhetővé válik. Ebben az esetben a "Hello World" karakterláncot adja eredményül. Fontos megjegyezni, hogy ez egy felbecsülhetetlen hibakeresési eszköz lehet, amely a szkript tényleges futtatásának megismerését teszi lehetővé.
 
-A parancsfájlkezelési környezetből más összetevők tulajdonságai is elérhetők. Próbálja ki a következőt:
+A parancsfájlkezelési környezetből más összetevők tulajdonságai is elérhetők. Próbálja meg a következőt:
 
 ```java
     //inspect current node:
@@ -761,7 +761,7 @@ Ez a normál karakterlánc-manipulációs műveleteken keresztül történt. Az 
 
 *Az eredményül kapott klipek listájának naplózása*
 
-Futtasson egy tesztet, hogy megtekintse a videó-és hangadatfolyamok kivágásának módját. Mivel egynél több tesztet hajt végre különböző értékekkel a kivágási pontokhoz, megfigyelheti, hogy ezeket a rendszer nem veszi figyelembe. Ennek az az oka, hogy a tervező az Azure-futtatókörnyezettől eltérően nem bírálja felül a cliplist XML-t minden futtatáskor. Ez azt jelenti, hogy a be-és kimenő pontok első beállításakor az XML átalakítható, az összes többi alkalommal, a Guard záradék (IF (`clipListXML.indexOf("<trim>") == -1`)) megakadályozza, hogy a munkafolyamat egy másik Trim elemet adjon hozzá, ha már van ilyen.
+Futtasson egy tesztet, hogy megtekintse a videó-és hangadatfolyamok kivágásának módját. Mivel egynél több tesztet hajt végre különböző értékekkel a kivágási pontokhoz, megfigyelheti, hogy ezeket a rendszer nem veszi figyelembe. Ennek az az oka, hogy a tervező az Azure-futtatókörnyezettől eltérően nem bírálja felül a cliplist XML-t minden futtatáskor. Ez azt jelenti, hogy a be-és kimenő pontok első beállításakor az XML átalakítható, az összes többi alkalommal, a Guard záradék (IF ( `clipListXML.indexOf("<trim>") == -1` )) megakadályozza, hogy a munkafolyamat egy másik Trim elemet adjon hozzá, ha már van ilyen.
 
 Ahhoz, hogy a munkafolyamatot helyileg tesztelni lehessen, a legjobb megoldás, ha egy Trim elem már szerepel. Ha igen, a folytatáshoz távolítsa el az XML-fájl új értékekkel való módosításával. Ahelyett, hogy egyszerű karakterlánc-manipulációkat használ, ez valószínűleg biztonságosabb, ha a valós XML-objektummodell elemzését végzi.
 

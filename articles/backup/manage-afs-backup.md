@@ -4,11 +4,11 @@ description: Ez a cikk a Azure Backup által biztonsági mentés alatt álló Az
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247656"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712088"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure-fájlmegosztások biztonsági másolatainak kezelése
 
@@ -83,7 +83,7 @@ Azure-fájlmegosztás védelmének megszüntetése:
 
 1. Nyissa meg a fájlmegosztási helyreállítási pontokat tartalmazó Recovery Services-tárolót. A **védett elemek** szakaszban válassza a **biztonsági másolati elemek** lehetőséget. Megjelenik a biztonsági mentési elemtípus-típusok listája.
 
-   ![Biztonsági másolati elemek](./media/manage-afs-backup/backup-items.png)
+   ![Biztonsági másolati elemei](./media/manage-afs-backup/backup-items.png)
 
 1. A **Biztonságimásolat-kezelés típusa** listából válassza ki az **Azure Storage (Azure Files)** lehetőséget. Megjelenik a **biztonsági mentési elemek (Azure Storage (Azure Files)** ) lista.
 

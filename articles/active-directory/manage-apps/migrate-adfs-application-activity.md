@@ -2,23 +2,23 @@
 title: AD FS-alkalmazások áthelyezése a tevékenység-jelentés használatával Azure Active Directory | Microsoft Docs "
 description: Az Active Directory összevonási szolgáltatások (AD FS) (AD FS) alkalmazási tevékenység jelentés segítségével gyorsan áttelepítheti az alkalmazásokat a AD FSról a Azure Active Directory (Azure AD) szolgáltatásba. Ez a AD FS áttelepítési eszköz azonosítja az Azure AD-vel való kompatibilitást, és áttelepítési útmutatót biztosít.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 01/14/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e379b81fafb156b1ea71a8992abfdc060065b8b2
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978036"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763176"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Alkalmazások áttelepíthetők az Azure AD-be a AD FS alkalmazás-tevékenységi jelentés (előzetes verzió) használatával
 

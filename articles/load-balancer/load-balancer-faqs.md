@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4ae15d0898cedb0ed17dc308584769395aa819c2
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014927"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079469"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -35,6 +35,9 @@ A NAT-szabályok olyan háttér-erőforrás megadására szolgálnak, amely a fo
 
 ## <a name="what-is-ip-1686312916"></a>Mi az IP-168.63.129.16?
 Az Azure-infrastruktúra Load Balancer címkézett gazdagéphez tartozó virtuális IP-cím, amelyen az Azure Health-Szondák származnak. A háttérbeli példányok konfigurálásakor engedélyezni kell, hogy az adott IP-címről érkező forgalom sikeresen válaszoljon az állapot-próbára. Ez a szabály nem működik együtt a Load Balancer előtér-felületéhez való hozzáféréssel. Ha nem használja a Azure Load Balancer, felülbírálhatja ezt a szabályt. A szolgáltatással kapcsolatos címkékkel kapcsolatban [itt](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)talál további információt.
+
+## <a name="can-i-use-global-vnet-peering-with-basic-load-blancer"></a>Használhatok globális VNET-társítást az alapszintű Load Blancer használatával?
+Nem. Az alapszintű Load Balancer nem támogatja a globális VNET-társítást. Ehelyett a standard Load Balancer is használhatja. A zökkenőmentes frissítés érdekében tekintse meg az [alapszintről standard verzióra való frissítést](upgrade-basic-standard.md) .
 
 ## <a name="next-steps"></a>Következő lépések
 Ha a kérdés nem szerepel a fentiekben, küldjön visszajelzést erről az oldalról a kérdésével kapcsolatban. Ez egy GitHub-problémát hoz létre a termékért felelős csapat számára, amely biztosítja, hogy az összes értékes vásárlói kérdés megválaszolva legyen.

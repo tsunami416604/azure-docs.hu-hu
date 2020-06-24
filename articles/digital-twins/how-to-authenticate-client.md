@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8390ed8777c2c15940bef5838890e49396404052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 89de2e86e425e2c585f9a1243f6666a0ae077c10
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613270"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726072"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Ügyfélalkalmazás hitelesítése az Azure Digital Twins használatával
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Miután [létrehozta az Azure Digital Twins-példányt](how-to-set-up-instance.md), létrehozhat egy ügyfélalkalmazás, amelyet a példánnyal való interakcióhoz fog használni. Miután beállította a Starter Client projektet, ez a cikk bemutatja, hogyan hitelesítheti az ügyfélalkalmazás az Azure Digital Twins-példánnyal.
 
@@ -44,7 +47,7 @@ Alkalmazás-regisztráció létrehozásához meg kell adnia az Azure digitális 
 }]
 ``` 
 
-Mentse a fájlt *manifest. JSON*néven.
+Mentse ezt a fájlt *manifest.jsként*.
 
 > [!NOTE] 
 > Vannak olyan helyek, ahol a "felhasználóbarát" emberi olvashatóságú karakterlánc `https://digitaltwins.azure.net` használható az Azure digitális Twins erőforrás-alkalmazás azonosítójára a GUID helyett `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` . A dokumentációban szereplő számos példa például a MSAL-könyvtárral történő hitelesítést használja, és a felhasználóbarát karakterláncot is használhatja erre a célra. Az alkalmazás regisztrációjának létrehozása során azonban az azonosító GUID formáját kell megadnia, mivel a fenti ábrán látható. 
@@ -52,7 +55,7 @@ Mentse a fájlt *manifest. JSON*néven.
 A Cloud Shell ablakban kattintson a "fájlok feltöltése/letöltése" ikonra, és válassza a "feltöltés" lehetőséget.
 
 :::image type="content" source="media/how-to-authenticate-client/upload-extension.png" alt-text="A feltöltési lehetőség kiválasztását ábrázoló Cloud Shell ablak":::
-Navigáljon az imént létrehozott *manifest. JSON* fájlhoz, és nyomja meg a "Megnyitás" kifejezést.
+Nyissa meg az imént létrehozott *manifest.js* , és nyomja meg a "Megnyitás" lehetőséget.
 
 Ezután futtassa a következő parancsot egy alkalmazás regisztrációjának létrehozásához (szükség szerint cserélje le a helyőrzőket):
 
@@ -250,7 +253,7 @@ Ne feledje, hogy ha a fenti kód megkeresi az ügyfél-azonosítót, a bérlői 
 
 A MSAL számos további lehetőség közül választhat, amelyek olyan dolgok megvalósítására használhatók, mint a gyorsítótárazás és más hitelesítési folyamatok. Erről további információt a [Microsoft Authentication Library (MSAL) áttekintése](../active-directory/develop/msal-overview.md)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogyan működik a biztonság az Azure digitális Twinsban:
 * [Fogalmak: az Azure Digital Twins-megoldások biztonsága](concepts-security.md)

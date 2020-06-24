@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594161"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888435"
 ---
 # <a name="core-reports-from-verizon"></a>Alapvető jelentések a Verizontól
 
@@ -31,7 +31,7 @@ A Verizon Core-jelentések a Verizon felügyeleti portálon keresztül történ�
 * Továbbított adatátvitel
 * Találatok
 * Gyorsítótár állapota
-* Gyorsítótár találati aránya
+* Gyorsítótár-találati arány
 * IPV4/IPV6-adatátvitel
 
 ## <a name="accessing-verizon-core-reports"></a>A Verizon Core-jelentések elérése
@@ -81,7 +81,7 @@ A gyorsítótár-kihagyás csökkentése érdekében konfigurálja a forrás-kis
  * Lekérdezés-karakterlánc gyorsítótárazása, kivéve, ha szigorúan szükséges  
  * Nem gyorsítótárazható válaszok kódjai
 
-A gyorsítótár-találatok számának csökkentéséhez állítson be egy `max-age` adategységet hosszú időtartamra, hogy minimálisra csökkentse a kérelmek számát a forráskiszolgálón.
+A gyorsítótár-találatok számának csökkentéséhez állítson be egy adategységet `max-age` hosszú időtartamra, hogy minimálisra csökkentse a kérelmek számát a forráskiszolgálón.
 
 ![Gyorsítótár-állapotok jelentés](./media/cdn-reports/cdn-cache-statuses.png)
 
@@ -106,9 +106,9 @@ A gyorsítótár-találatok számának csökkentéséhez állítson be egy `max-
 * NINCS – ez az állapot azt jelzi, hogy a gyorsítótár tartalmának frissességi ellenőrzését nem hajtották végre.
 * TCP_CLIENT_REFRESH_MISS: ez az állapot akkor jelenik meg, ha egy HTTP-ügyfél (például egy böngésző) a peremhálózati POP-ra kényszeríti egy elavult eszköz új verziójának lekérését a forrás-kiszolgálóról. Alapértelmezés szerint a kiszolgálók megakadályozzák, hogy egy HTTP-ügyfél kényszerítse a peremhálózati kiszolgálókat az eszköz új verziójának a forrás-kiszolgálóról való lekérésére.
 * TCP_PARTIAL_HIT: ez az állapot akkor kerül jelentésre, ha egy bájtos tartományra vonatkozó kérelem egy részlegesen gyorsítótárazott objektum találatot eredményez. A kért bájt-tartomány azonnal kiszolgálható a POP-ból az ügyfélnek.
-* Nem GYORSÍTÓTÁRAZható: ez az állapot akkor jelenik meg, ha `Cache-Control` egy `Expires` adott eszköz és fejléc azt jelzi, hogy nem szabad gyorsítótárazni a pop-on vagy a http-ügyfélen. Az ilyen típusú kérelmeket a rendszer a forráskiszolgálón kézbesíti.
+* Nem GYORSÍTÓTÁRAZható: ez az állapot akkor jelenik meg, ha egy adott eszköz `Cache-Control` és `Expires` fejléc azt jelzi, hogy nem szabad gyorsítótárazni a pop-on vagy a http-ügyfélen. Az ilyen típusú kérelmeket a rendszer a forráskiszolgálón kézbesíti.
 
-## <a name="cache-hit-ratio"></a>Gyorsítótár találati aránya
+## <a name="cache-hit-ratio"></a>Gyorsítótár-találati arány
 Ez a jelentés a gyorsítótárból közvetlenül kiszolgált gyorsítótárazott kérelmek százalékos arányát jelzi.
 
 A jelentés a következő adatokat tartalmazza:
@@ -120,7 +120,7 @@ A jelentés a következő adatokat tartalmazza:
 A jelentés nem tartalmazza a következőket:
 
 * Ország/régió szűrési lehetőségei miatt megtagadott kérelmek.
-* Olyan eszközökre vonatkozó kérelmek, amelyek fejlécei azt jelzik, hogy nem szabad gyorsítótárazni őket. A, a `Cache-Control: private` `Cache-Control: no-cache`, a vagy `Pragma: no-cache` a fejléc például megakadályozza egy eszköz gyorsítótárazását.
+* Olyan eszközökre vonatkozó kérelmek, amelyek fejlécei azt jelzik, hogy nem szabad gyorsítótárazni őket. A, a `Cache-Control: private` `Cache-Control: no-cache` , a vagy a fejléc például `Pragma: no-cache` megakadályozza egy eszköz gyorsítótárazását.
 * A részlegesen gyorsítótárazott tartalomhoz tartozó bájtos tartományra vonatkozó kérelmek.
 
 A képlet a következő: (TCP_ találat/(TCP_ HIT + TCP_MISS)) * 100

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9279622ee54a9fdaa6617cfe2758cfb563fdbffa
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74113310"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080601"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL Database tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
 
@@ -140,7 +140,7 @@ A válasznak a következőhöz hasonlóan kell kinéznie:
     }
 
 A végrehajtási előzmények akár 50 a legutóbb befejezett végrehajtásokat, amelyek fordított időrendi sorrendben vannak rendezve (így a legutolsó végrehajtás a válaszban).
-A válaszról további információt talál az [Indexelő állapotának lekérése](https://go.microsoft.com/fwlink/p/?LinkId=528198) című témakörben.
+A válaszról további információt talál az [Indexelő állapotának lekérése](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) című témakörben.
 
 ## <a name="run-indexers-on-a-schedule"></a>Indexelő futtatása ütemterv szerint
 Az indexelő úgy is rendezhető, hogy rendszeres időközönként fusson. Ehhez adja hozzá a **Schedule** tulajdonságot az indexelő létrehozásakor vagy frissítésekor. Az alábbi példa egy PUT-kérelmet mutat be az indexelő frissítéséhez:
@@ -155,7 +155,7 @@ Az indexelő úgy is rendezhető, hogy rendszeres időközönként fusson. Ehhez
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-Az **intervallum** paraméter megadása kötelező. Az intervallum a két egymást követő indexelő végrehajtásának kezdete közötti időpontra utal. A legkisebb megengedett intervallum 5 perc; a leghosszabb egy nap. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). A minta ehhez a következő: `P(nD)(T(nH)(nM))`. Példák: `PT15M` 15 percenként, `PT2H` minden 2 órában.
+Az **intervallum** paraméter megadása kötelező. Az intervallum a két egymást követő indexelő végrehajtásának kezdete közötti időpontra utal. A legkisebb megengedett intervallum 5 perc; a leghosszabb egy nap. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). A minta ehhez a következő: `P(nD)(T(nH)(nM))` . Példák: `PT15M` 15 percenként, `PT2H` minden 2 órában.
 
 Az indexelő-ütemtervek definiálásával kapcsolatos további információkért lásd: [Az Azure Cognitive Search indexelő szolgáltatásának beosztása](search-howto-schedule-indexers.md).
 
@@ -232,7 +232,28 @@ Ha magas vízjelekre vonatkozó szabályzatot szeretne használni, hozza létre 
 >
 >
 
-Ha időtúllépési hibák merülnek fel, az `queryTimeout` indexelő konfigurációs beállításával állíthatja be a lekérdezés időtúllépését az alapértelmezett 5 perces időkorlátnál magasabb értékre. Ha például 10 percre szeretné beállítani az időkorlátot, akkor a következő konfigurációval hozza létre vagy frissítse az indexelő:
+<a name="convertHighWaterMarkToRowVersion"></a>
+
+##### <a name="converthighwatermarktorowversion"></a>convertHighWaterMarkToRowVersion
+
+Ha [ROWVERSION](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) -adattípust használ a magas vízjelek oszlophoz, érdemes lehet használni az `convertHighWaterMarkToRowVersion` Indexelő konfigurációs beállítást. `convertHighWaterMarkToRowVersion`két dolgot tesz:
+
+* Használja a ROWVERSION adattípust az indexelő SQL-lekérdezés magas vízjelek oszlopához. A megfelelő adattípus használata javítja az indexelő lekérdezési teljesítményt.
+* Az indexelő lekérdezés futtatása előtt vonja ki az 1 értéket a ROWVERSION értékből. Az 1 és több illesztés közötti nézetek tartalmazhatnak ismétlődő ROWVERSION-értékekkel rendelkező sorokat. Az 1. kivonási funkció biztosítja, hogy az indexelő lekérdezés ne hagyja ki ezeket a sorokat.
+
+A funkció engedélyezéséhez hozza létre vagy frissítse az indexelő a következő konfigurációval:
+
+    {
+      ... other indexer definition properties
+     "parameters" : {
+            "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
+    }
+
+<a name="queryTimeout"></a>
+
+##### <a name="querytimeout"></a>queryTimeout
+
+Ha időtúllépési hibák merülnek fel, az `queryTimeout` Indexelő konfigurációs beállításával állíthatja be a lekérdezés időtúllépését az alapértelmezett 5 perces időkorlátnál magasabb értékre. Ha például 10 percre szeretné beállítani az időkorlátot, akkor a következő konfigurációval hozza létre vagy frissítse az indexelő:
 
     {
       ... other indexer definition properties
@@ -240,7 +261,11 @@ Ha időtúllépési hibák merülnek fel, az `queryTimeout` indexelő konfigurá
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-Le is tilthatja a `ORDER BY [High Water Mark Column]` záradékot. Ez azonban nem ajánlott, mert ha az indexelő végrehajtása egy hiba miatt megszakad, az indexelő újra kell feldolgoznia az összes sort, ha később fut, akkor is, ha az indexelő már majdnem az összes sort feldolgozta a megszakított időpontig. A `ORDER BY` záradék letiltásához használja az `disableOrderByHighWaterMarkColumn` indexelő definíciójában a következő beállítást:  
+<a name="disableOrderByHighWaterMarkColumn"></a>
+
+##### <a name="disableorderbyhighwatermarkcolumn"></a>disableOrderByHighWaterMarkColumn
+
+Le is tilthatja a `ORDER BY [High Water Mark Column]` záradékot. Ez azonban nem ajánlott, mert ha az indexelő végrehajtása egy hiba miatt megszakad, az indexelő újra kell feldolgoznia az összes sort, ha később fut, akkor is, ha az indexelő már majdnem az összes sort feldolgozta a megszakított időpontig. A záradék letiltásához `ORDER BY` használja az `disableOrderByHighWaterMarkColumn` Indexelő definíciójában a következő beállítást:  
 
     {
      ... other indexer definition properties
@@ -264,12 +289,12 @@ A Soft-delete eljárás használatakor az adatforrás létrehozásakor vagy fris
         }
     }
 
-A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érték karakterlánc-ábrázolását kell használnia. Ha például van egy egész oszlop, ahol a Törölt sorok az 1 értékkel vannak megjelölve, használja `"1"`a következőt:. Ha van egy olyan bites oszlopa, ahol a Törölt sorok a true értékkel vannak megjelölve, használja `True` a `true`literál karakterláncot, vagy az eset nem számít.
+A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érték karakterlánc-ábrázolását kell használnia. Ha például van egy egész oszlop, ahol a Törölt sorok az 1 értékkel vannak megjelölve, használja a következőt: `"1"` . Ha van egy olyan bites oszlopa, ahol a Törölt sorok a true értékkel vannak megjelölve, használja a literál karakterláncot `True` `true` , vagy az eset nem számít.
 
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Az SQL és az Azure Cognitive Search adattípusok közötti leképezés
-| SQL-adattípus | Engedélyezett cél index mezők típusai | Megjegyzések |
+| SQL-adattípus | Engedélyezett cél index mezők típusai | Jegyzetek |
 | --- | --- | --- |
 | bit |EDM. Boolean, EDM. String | |
 | int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |
@@ -291,7 +316,7 @@ Az SQL indexelő számos konfigurációs beállítást tesz elérhetővé:
 | queryTimeout |sztring |Az SQL-lekérdezés végrehajtásának időtúllépését állítja be |5 perc ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |logikai |Azt eredményezi, hogy a magas vízjelzési házirend által használt SQL-lekérdezés kihagyja a ORDER BY záradékot. Lásd: [magas vízjelek szabályzata](#HighWaterMarkPolicy) |hamis |
 
-Ezek a beállítások az indexelő `parameters.configuration` definíciójában található objektumban használatosak. Ha például a lekérdezés időtúllépését 10 percre szeretné beállítani, akkor a következő konfigurációval hozza létre vagy frissítse az indexelő:
+Ezek a beállítások az `parameters.configuration` Indexelő definíciójában található objektumban használatosak. Ha például a lekérdezés időtúllépését 10 percre szeretné beállítani, akkor a következő konfigurációval hozza létre vagy frissítse az indexelő:
 
     {
       ... other indexer definition properties

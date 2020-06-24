@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartom
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 45f82d5a6531b2a9584140d6ff309a799656926a
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 4d9030e21c3b8f31c18c26fc54dc76d5b8d84a17
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299570"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100055"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan használható az API-kiszolgáló által e
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az API-kiszolgáló által jóváhagyott IP-címtartományok csak a létrehozott új AK-fürtök esetében működnek. Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI használatával.
+Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI használatával.
 
 Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfigurálva van.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
@@ -36,10 +36,10 @@ További információ az API-kiszolgálóról és az egyéb fürt-összetevőkr�
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>AK-fürt létrehozása az API-kiszolgáló által engedélyezett IP-címtartományok engedélyezve
 
-Az API-kiszolgáló által engedélyezett IP-címtartományok csak az új AK-fürtök esetében működnek, és privát AK-fürtök esetén nem támogatottak. Hozzon létre egy fürtöt az az [AK Create][az-aks-create] paranccsal, és adja meg a *--API-Server-engedélyezve-IP-címtartományok* paramétert a jóváhagyott IP-címtartományok listájának megadásához. Ezek az IP-címtartományok általában a helyszíni hálózatok vagy a nyilvános IP-címek által használt címtartományok. CIDR-tartomány megadásakor a tartomány első IP-címével kezdjen el. Például a *137.117.106.90/29* egy érvényes tartomány, de győződjön meg arról, hogy az első IP-címet adta meg a tartományban, például *137.117.106.88/29*.
+Az API-kiszolgáló által engedélyezett IP-címtartományok csak az új AK-fürtök esetében működnek, és nem támogatottak a privát AK-fürtök esetében. Hozzon létre egy fürtöt az [az AK Create][az-aks-create] paranccsal, és adja meg a *`--api-server-authorized-ip-ranges`* paramétert a jóváhagyott IP-címtartományok listájának megadásához. Ezek az IP-címtartományok általában a helyszíni hálózatok vagy a nyilvános IP-címek által használt címtartományok. CIDR-tartomány megadásakor a tartomány első IP-címével kezdjen el. Például a *137.117.106.90/29* egy érvényes tartomány, de győződjön meg arról, hogy az első IP-címet adta meg a tartományban, például *137.117.106.88/29*.
 
 > [!IMPORTANT]
-> Alapértelmezés szerint a fürt a [standard SKU Load balancert][standard-sku-lb] használja, amelyet a kimenő átjáró konfigurálására használhat. Ha engedélyezi az API-kiszolgálók engedélyezett IP-tartományait a fürt létrehozása során, a fürt nyilvános IP-címe alapértelmezés szerint is engedélyezett a megadott tartományokon kívül. Ha *""* értéket ad meg, vagy nincs megadva a *--API-Server-engedélyezett-IP-címtartományok*, az API-kiszolgáló által engedélyezett IP-címtartományok le lesznek tiltva. Vegye figyelembe, hogy ha a PowerShellt használja, használja a *--API-Server-engedélyezve-IP-tartományok = ""* (egyenlő aláírással) lehetőséget az elemzési problémák elkerüléséhez.
+> Alapértelmezés szerint a fürt a [standard SKU Load balancert][standard-sku-lb] használja, amelyet a kimenő átjáró konfigurálására használhat. Ha engedélyezi az API-kiszolgálók engedélyezett IP-tartományait a fürt létrehozása során, a fürt nyilvános IP-címe alapértelmezés szerint is engedélyezett a megadott tartományokon kívül. Ha a *""* vagy a nem értéket ad meg *`--api-server-authorized-ip-ranges`* , az API-kiszolgáló által engedélyezett IP-címtartományok le lesznek tiltva. Vegye figyelembe, hogy ha a PowerShellt használja, használja az *`--api-server-authorized-ip-ranges=""`* (egyenlőségjel) lehetőséget az elemzési problémák elkerüléséhez.
 
 A következő példa egy *myAKSCluster* nevű egycsomópontos fürtöt hoz létre az *myResourceGroup* nevű erőforráscsoport és az API-kiszolgáló által engedélyezett IP-címtartományok használatával. Az IP-címtartományok megengedett *73.140.245.0/24*:
 
@@ -78,13 +78,13 @@ az aks create \
     --generate-ssh-keys
 ```
 
-A fenti példában a-- *Load-Balancer-kimenő-IP-előtag* paraméterben megadott összes IP-cím engedélyezett a *--API-Server-winuel-IP-Ranges* paraméterben található IP-címekkel együtt.
+A fenti példában a paraméterben megadott összes IP-cím *`--load-balancer-outbound-ip-prefixes`* engedélyezett a paraméterben található IP-címekkel együtt *`--api-server-authorized-ip-ranges`* .
 
-Másik lehetőségként megadhatja a *--Load-Balancer-kimenő-IP-előtag* paramétert is a kimenő terheléselosztó IP-előtagjainak engedélyezéséhez.
+Másik lehetőségként megadhatja a *`--load-balancer-outbound-ip-prefixes`* paramétert is, hogy engedélyezze a kimenő terheléselosztó IP-előtagjait.
 
 ### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Csak a standard SKU Load Balancer kimenő nyilvános IP-címének engedélyezése
 
-Ha engedélyezi az API-kiszolgáló engedélyezett IP-tartományait a fürt létrehozása során, akkor a fürt szabványos SKU-Load Balancer kimenő nyilvános IP-címe is alapértelmezés szerint engedélyezett a megadott tartományokon kívül. Ha csak a standard SKU Load Balancer kimenő nyilvános IP-címét szeretné engedélyezni, használja a *0.0.0.0/32* -et a *--API-Server-Allowed-IP-címtartományok* paraméter megadásakor.
+Ha engedélyezi az API-kiszolgáló engedélyezett IP-tartományait a fürt létrehozása során, akkor a fürt szabványos SKU-Load Balancer kimenő nyilvános IP-címe is alapértelmezés szerint engedélyezett a megadott tartományokon kívül. Ha csak a standard SKU Load Balancer kimenő nyilvános IP-címét szeretné engedélyezni, a paraméter megadásakor a *0.0.0.0/32* protokollt használja *`--api-server-authorized-ip-ranges`* .
 
 A következő példában csak a standard SKU Load Balancer kimenő nyilvános IP-címe engedélyezett, és csak a fürt csomópontjain található API-kiszolgáló férhet hozzá.
 
@@ -101,7 +101,7 @@ az aks create \
 
 ## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>Fürt API-kiszolgálójának IP-tartományának frissítése
 
-Ha egy meglévő fürtön szeretné frissíteni az API-kiszolgáló által jóváhagyott IP-tartományokat, használja az [az az AK Update][az-aks-update] parancsot, és használja a *--API-Server-* Reporting-IP-tartományok, *--Load-Balancer-kimenő-IP-előtagok*, *--Load-Balancer-kimenő-* IP-címek, vagy *--Load-Balancer-kimenő-IP-előtag*
+Ha egy meglévő fürtön szeretné frissíteni az API-kiszolgáló által jóváhagyott IP-tartományokat, használja az [az AK Update][az-aks-update] parancsot, és használja a *`--api-server-authorized-ip-ranges`* ,--Load-Balancer-kimenő-IP-előtag *, *`--load-balancer-outbound-ips`* , vagy--Load-Balancer-kimenő-IP-előtagok* paramétereit.
 
 Az alábbi példa frissíti az API-kiszolgáló által jóváhagyott IP-tartományokat a *myAKSCluster* nevű fürtön a *myResourceGroup*nevű erőforráscsoport alatt. Az engedélyezni kívánt IP-címtartomány a *73.140.245.0/24*:
 
@@ -112,7 +112,7 @@ az aks update \
     --api-server-authorized-ip-ranges  73.140.245.0/24
 ```
 
-A *0.0.0.0/32* -et is használhatja a *--API-Server-Allowed-IP-Ranges* paraméter megadásával, hogy csak a standard SKU Load Balancer nyilvános IP-címét engedélyezze.
+A *0.0.0.0/32* -et is használhatja a paraméter megadásával *`--api-server-authorized-ip-ranges`* , hogy csak a standard SKU Load Balancer nyilvános IP-címét engedélyezze.
 
 ## <a name="disable-authorized-ip-ranges"></a>A hitelesítő IP-címtartományok letiltása
 

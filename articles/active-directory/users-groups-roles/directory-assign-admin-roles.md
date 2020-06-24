@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38ac6400a882d98c68ea39ae359e20ed237cd5f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 25c477d0d293e896bc92cd3bd6047135a56cb4ad
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340266"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105980"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -114,7 +114,7 @@ Az ebben a szerepkörben lévő felhasználók létrehozhatnak, olvashatnak, fri
 > [!IMPORTANT]
 > A B2 IEF szabályzat rendszergazdája rendkívül kényes szerepkör, amelyet az éles környezetben működő szervezeteknek nagyon korlátozott mértékben kell kiosztaniuk.Ezeknek a felhasználóknak a tevékenységeit alaposan meg kell vizsgálni, különösen az éles környezetben működő szervezeteknek.
 
-### <a name="billing-administrator"></a>[Számlázási adminisztrátor](#billing-administrator-permissions)
+### <a name="billing-administrator"></a>[Számlázási rendszergazda](#billing-administrator-permissions)
 
 Lebonyolítja a vásárlásokat, kezeli az előfizetéseket és a támogatási jegyeket, valamint figyeli a szolgáltatás állapotát.
 
@@ -173,7 +173,7 @@ A szervezet [Ügyfélszéf-kérelmeit](https://docs.microsoft.com/office365/admi
 
 Az ebben a szerepkörben lévő felhasználók kezelhetik az asztali elemzési és az Office testreszabási & házirend-szolgáltatásait. Az asztali elemzések esetében ez magában foglalja az eszközök leltárának megtekintését, a központi telepítési tervek létrehozását, a központi telepítés és az állapot megtekintését. Az Office testreszabása & házirend-szolgáltatás esetében ez a szerepkör lehetővé teszi a felhasználóknak az Office-házirendek kezelését.
 
-### <a name="device-administrator"></a>[Eszköz rendszergazdája](#device-administrators-permissions)
+### <a name="device-administrators"></a>[Eszközrendszergazdák](#device-administrators-permissions)
 
 Ez a szerepkör csak az [eszközbeállítások](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)további helyi rendszergazdája számára érhető el. Az ezzel a szerepkörrel rendelkező felhasználók a Azure Active Directoryhoz csatlakozó összes Windows 10-es eszközön a helyi számítógép-Rendszergazdák lesznek. Nem tudja kezelni az eszközök objektumait Azure Active Directoryban.
 
@@ -209,7 +209,7 @@ Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rende
 
 ### <a name="external-id-user-flow-administrator"></a>[Külső azonosító – felhasználói folyamat rendszergazdája](#external-id-user-flow-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók B2C-Felhasználókövetés (más néven "beépített" szabályzatokat) hozhatnak létre és kezelhetnek a Azure Portalban.A felhasználói folyamatok létrehozásával vagy szerkesztésével ezek a felhasználók módosíthatják a felhasználói élmény HTML/CSS/JavaScript-tartalmát, módosíthatják a felhasználói folyamatok MFA-követelményeit, módosíthatják a jogkivonatokban lévő jogcímeket, és módosíthatják a munkamenet-beállításokat az Azure AD-szervezet összes házirendjéhez. Másfelől azonban ez a szerepkör nem teszi lehetővé a felhasználói adat áttekintését, illetve a szervezeti sémában található attribútumok módosítását.Az Identity Experience Framework (más néven egyéni) házirendek változásai a szerepkör hatókörén kívül esnek.
+Az ezzel a szerepkörrel rendelkező felhasználók felhasználói folyamatokat hozhatnak létre és kezelhetnek (más néven "beépített" szabályzatokat) a Azure Portalban. Ezek a felhasználók testre szabhatják a HTML/CSS/JavaScript tartalmakat, módosíthatják az MFA követelményeit, kiválaszthatják a jogcímek jogcímeit, kezelhetik az API-összekötőket, és konfigurálhatják a munkamenet-beállításokat az Azure AD-szervezet összes felhasználói Másfelől azonban ez a szerepkör nem teszi lehetővé a felhasználói adat áttekintését, illetve a szervezeti sémában foglalt attribútumok módosítását. Az Identity Experience Framework-szabályzatok (más néven egyéni szabályzatok) változásai a szerepkör hatókörén kívül esnek.
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[Külső azonosító felhasználói flow-attribútumának rendszergazdája](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -316,7 +316,7 @@ A modern kereskedelmi rendszergazdai szerepkör lehetővé teszi, hogy bizonyos 
 A modern kereskedelmi rendszergazdai szerepkörrel rendelkező felhasználók általában rendszergazdai jogosultságokkal rendelkeznek más Microsoft vásárlási rendszerekben, de nem rendelkeznek globális rendszergazdai vagy számlázási rendszergazdai szerepkörökkel a felügyeleti központ eléréséhez. 
 
 **Mikor van hozzárendelve a modern kereskedelmi rendszergazdai szerepkör?**
-* **Önkiszolgáló vásárlás a Microsoft 365 felügyeleti központban** – az önkiszolgáló vásárlás lehetővé teszi a felhasználóknak az új termékek kipróbálását a saját maguk általi megvásárlásával vagy regisztrálásával. Ezeket a termékeket a felügyeleti központban kezelheti. Azok a felhasználók, akik önkiszolgáló vásárlást végeznek, egy szerepkört kapnak a kereskedelmi rendszeren, és a modern kereskedelmi rendszergazda szerepkört, hogy a vásárlásokat a felügyeleti központban tudják kezelni. A rendszergazdák letilthatják az önkiszolgáló vásárlásokat (Power BI, energiagazdálkodási alkalmazások, automatizálás) a [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide)használatával. További információ: [önkiszolgáló vásárlás – gyakori kérdések](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
+* **Önkiszolgáló vásárlás a Microsoft 365 felügyeleti központban** – az önkiszolgáló vásárlás lehetővé teszi a felhasználóknak az új termékek kipróbálását a saját maguk általi megvásárlásával vagy regisztrálásával. Ezeket a termékeket a felügyeleti központban kezelheti. Azok a felhasználók, akik önkiszolgáló vásárlást végeznek, egy szerepkört kapnak a kereskedelmi rendszeren, és a modern kereskedelmi rendszergazda szerepkört, hogy a vásárlásokat a felügyeleti központban tudják kezelni. A rendszergazdák letilthatják az önkiszolgáló vásárlásokat (Power BI, energiagazdálkodási alkalmazások, automatizálás) a [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide)használatával. További információért olvassa el az [önkiszolgáló vásárlással kapcsolatos gyakori kérdéseket](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
 * **Vásárlások a Microsoft kereskedelmi piactérről** – az önkiszolgáló vásárláshoz hasonlóan, amikor egy felhasználó terméket vagy szolgáltatást vásárol Microsoft AppSource vagy az Azure Marketplace-en, a modern kereskedelmi rendszergazdai szerepkör hozzá lesz rendelve, ha nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel. Bizonyos esetekben előfordulhat, hogy a felhasználók nem tudják a vásárlásokat letiltani. További információ: [Microsoft kereskedelmi piactér](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).   
 * A Microsoft **javaslatai** – a javaslat a Microsoft hivatalos ajánlata a Microsoft termékeinek és szolgáltatásainak megvásárlására. Ha a javaslatot fogadó személy nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel az Azure AD-ben, akkor a javaslat és a modern kereskedelmi rendszergazdai szerepkör a felügyeleti központ eléréséhez is hozzá van rendelve. Amikor hozzáférnek a felügyeleti központhoz, csak azok a funkciók használhatók, amelyeket a kereskedelmi jellemző szerepköre is jogosult. 
 * **Commerce-specifikus szerepkörök** – egyes felhasználók kereskedelmi-specifikus szerepköröket kapnak. Ha a felhasználó nem globális vagy számlázási rendszergazda, akkor a modern kereskedelmi rendszergazdai szerepkört kapják meg, hogy hozzáférhessenek a felügyeleti központhoz.  
@@ -1922,7 +1922,7 @@ A következő szerepkörök nem használhatók. Elavultak, és a későbbiekben 
 
 Nem minden, a PowerShell vagy az MS Graph API által visszaadott szerepkör jelenik meg Azure Portalban. A következő táblázat ezeket a különbségeket rendezi.
 
-API neve | Azure Portal neve | Megjegyzések
+API neve | Azure Portal neve | Jegyzetek
 -------- | ------------------- | -------------
 Vállalati rendszergazda | Globális rendszergazda | [A jobb érthetőség érdekében a név módosult](directory-assign-admin-roles.md#role-template-ids)
 CRM szolgáltatás rendszergazdája | Dynamics 365-rendszergazda | [A termék aktuális arculatát tükrözi](directory-assign-admin-roles.md#role-template-ids)
@@ -1939,7 +1939,7 @@ Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 Felhasználó | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](directory-assign-admin-roles.md#deprecated-roles)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, tekintse meg az [Azure-szerepkörök (Azure RBAC) használatával történő hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.

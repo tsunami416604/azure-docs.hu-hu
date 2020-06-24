@@ -1,14 +1,14 @@
 ---
 title: Azure Policy-bővítmény a Visual Studio Code-hoz
 description: Megtudhatja, hogyan használhatja a Visual Studio Code Azure Policy bővítményét Resource Manager-aliasok kereséséhez.
-ms.date: 03/07/2020
+ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: 0c4e04cc352744fed1c7c2965f8096f0f05c2a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94d865e4a810fbebd8495153f97f9d1e3227e8af
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182565"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888514"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-bővítmény használata a Visual Studio Code-hoz
 
@@ -25,7 +25,7 @@ A Visual Studio Code-hoz készült Azure Policy-bővítmény a Visual Studio Cod
 
 A cikk lépéseinek végrehajtásához a következő elemek szükségesek:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-azure-policy-extension"></a>Azure Policy bővítmény telepítése
@@ -34,7 +34,7 @@ Az előfeltételek teljesítése után a következő lépésekkel telepítheti A
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-1. A menüsávban lépjen a**bővítmények** **megtekintése** > elemre.
+1. A menüsávban lépjen a **View**  >  **bővítmények**megtekintése elemre.
 
 1. A keresőmezőbe írja be a **Azure Policy**kifejezést.
 
@@ -68,7 +68,7 @@ Az erőforrások és a keresési aliasok kiértékeléséhez csatlakoznia kell a
 
    - Parancs paletta
 
-     A menüsávban lépjen a parancs- **View** > **paletta**megtekintése elemre, és írja be az **Azure: bejelentkezés**lehetőséget.
+     A menüsávban lépjen a parancs- **View**  >  **paletta**megtekintése elemre, és írja be az **Azure: bejelentkezés**lehetőséget.
 
      :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Azure Felhőbeli bejelentkezés a Visual Studio Code-hoz a parancssorból" border="false":::
 
@@ -82,11 +82,11 @@ Amikor először jelentkezik be, csak az alapértelmezett előfizetési erőforr
 
    - Parancs paletta: 
 
-     A menüsávban lépjen a parancs- **View** > **paletta**megtekintése elemre, és írja be az **Azure: Select Subscriptions (előfizetések) lehetőséget**.
+     A menüsávban lépjen a parancs- **View**  >  **paletta**megtekintése elemre, és írja be az **Azure: Select Subscriptions (előfizetések) lehetőséget**.
 
    - Ablak lábléce
 
-     A képernyő alján található ablak láblécében válassza ki az Azure-hoz illő szegmenst **: \<a fiókját\>**.
+     A képernyő alján található ablak láblécében válassza ki az Azure-nak megfelelő szegmenst **: \<your account\> **.
 
 1. A szűrő mező használatával gyorsan megkeresheti az előfizetéseket név szerint. Ezután a Azure Policy-bővítmény által megjelenített előfizetések beállításához jelölje be vagy távolítsa el az egyes előfizetések ellenőrzését. Ha végzett a megjelenítendő előfizetések hozzáadásával vagy eltávolításával, kattintson **az OK gombra**.
 
@@ -99,7 +99,7 @@ A Azure Policy bővítmény a kiválasztott előfizetések erőforrás-szolgált
 - **Erőforráscsoportok**
   - Az erőforráscsoport összes erőforrása
 
-Alapértelmezés szerint a bővítmény az "erőforrás-szolgáltató" részét a meglévő erőforrások és a házirend-aliasokkal rendelkező erőforrások alapján szűri. Módosítsa ezt a viselkedést a **Beállítások** > **bővítmények** > **Azure Policy** az összes szűrés nélküli erőforrás-szolgáltató megjelenítéséhez.
+Alapértelmezés szerint a bővítmény az "erőforrás-szolgáltató" részét a meglévő erőforrások és a házirend-aliasokkal rendelkező erőforrások alapján szűri. Módosítsa ezt a viselkedést a **Beállítások**  >  **bővítmények**  >  **Azure Policy** az összes szűrés nélküli erőforrás-szolgáltató megjelenítéséhez.
 
 Az egyes előfizetésekben több száz vagy több ezer erőforrást használó ügyfelek kereshetnek keresési módot az erőforrásaik megkereséséhez. A Azure Policy bővítmény lehetővé teszi egy adott erőforrás keresését a következő lépésekkel:
 
@@ -123,9 +123,12 @@ Az egyes előfizetésekben több száz vagy több ezer erőforrást használó �
 
 Ha erőforrás van kiválasztva, akár a keresési felületen keresztül, akár a TreeView-ban való kiválasztásával, a Azure Policy-bővítmény megnyitja az adott erőforrást jelképező JSON-fájlt és az összes Resource Manager-tulajdonság értékét.
 
-Ha egy erőforrás meg van nyitva, a Resource Manager-tulajdonságnév vagy-érték fölé húzva megjelenik a Azure Policy alias, ha van ilyen. Ebben a példában az erőforrás egy `Microsoft.Compute/virtualMachines` erőforrástípus, a **Properties. storageProfile. imageReference. Offer** tulajdonság pedig a fölé van helyezve. Az egérmutató a megfelelő aliasokat jeleníti meg.
+Ha egy erőforrás meg van nyitva, a Resource Manager-tulajdonságnév vagy-érték fölé húzva megjelenik a Azure Policy alias, ha van ilyen. Ebben a példában az erőforrás egy erőforrástípus, `Microsoft.Compute/virtualMachines` a **Properties. StorageProfile. imageReference. Offer** tulajdonság pedig a fölé van helyezve. Az egérmutató a megfelelő aliasokat jeleníti meg.
 
 :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Azure Policy bővítmény hover a Resource Manager-tulajdonság aliasát mutatja" border="false":::
+
+> [!NOTE]
+> A VS Code bővítmény csak a Resource Manager-üzemmód tulajdonságait mutatja be, és nem jeleníti meg az [erőforrás-szolgáltatói mód](../concepts/definition-structure.md#mode) tulajdonságait.
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>Szabályzatok és hozzárendelések keresése és megtekintése
 
@@ -151,7 +154,7 @@ Amikor kijelöl egy házirendet vagy hozzárendelést, legyen az a keresési fel
 
 ## <a name="sign-out"></a>Kijelentkezés
 
-A menüsávban válassza a parancs- **View** > **paletta**megtekintése elemet, majd írja be az **Azure: kijelentkezés**lehetőséget.
+A menüsávban válassza a parancs- **View**  >  **paletta**megtekintése elemet, majd írja be az **Azure: kijelentkezés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

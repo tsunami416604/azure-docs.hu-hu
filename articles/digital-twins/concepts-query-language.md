@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 64aa85cf0a749cb335fa68f968536881b591ab45
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e4952bc3df2b5b164038654f5d77f4c352827463
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613144"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726806"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Az Azure Digital Twins lekérdezési nyelvének ismertetése
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ne felejtse el, hogy az Azure Digital Twins középpontja a **digitális ikrekből** és **kapcsolatokból**kialakított [**Twin gráf**](concepts-twins-graph.md). Ez a gráf lekérdezhető a digitális ikrek és a benne található kapcsolatok adatainak lekérdezéséhez. Ezeket a lekérdezéseket az **Azure Digital Twins Query Store Language**nevű egyéni SQL-szerű lekérdezési nyelven írták.
 
@@ -35,6 +38,6 @@ Az alábbi műveletek érhetők el az Azure Digital Twins Query Store nyelvén:
 * Lekérdezés-összehasonlító operátorok használata:,,, `AND` / `OR` / `NOT` `IN` / `NOT IN` `STARTSWITH` / `ENDSWITH` `=` , `!=` , `<` , `>` , `<=` , `>=` .
 * A folytatás használata: a lekérdezési objektum egy Oldalméret (legfeljebb 100) használatával hozható létre. A digitális ikrek egy oldalát egyszerre is lekérheti, ha ismétlődő hívásokat kezdeményez a `nextAsTwin` metódusnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan írhat lekérdezéseket, és hogyan tekintheti meg az ügyféloldali kód példáit [: a Twin gráf lekérdezése](how-to-query-graph.md).

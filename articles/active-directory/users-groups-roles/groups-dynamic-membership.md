@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbdf4c57e1bf6e7f3f581b9a6186567e10743d52
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221170"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728367"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -135,7 +135,7 @@ Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabál
 
 A következő táblázat felsorolja az összes támogatott operátort és azok szintaxisát egyetlen kifejezéshez. A operátorok kötőjel (-) előtaggal vagy anélkül is használhatók.
 
-| Operátor | Szintaxis |
+| Operátor | Syntax |
 | --- | --- |
 | Nem egyenlő |– ne |
 | Egyenlő |– EQ |
@@ -390,7 +390,7 @@ A következő eszköz-attribútumok használhatók.
  deviceId | érvényes Azure AD-eszköz azonosítója | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | érvényes Azure AD-objektumazonosító |  (Device. objectId-EQ "76ad43c9-32c5-45E8-A272-7b58b58f596d")
  devicePhysicalIds | az Autopilot által használt bármely karakterláncérték, például az összes Autopilot-eszköz, a Rendeléskód vagy a PurchaseOrderID  | (Device. devicePhysicalIDs – any _ – tartalmazza a következőt: "[ZTDId]") (Device. devicePhysicalIds – any _-EQ "[Rendeléskód]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
- systemLabels | minden olyan karakterlánc, amely megfelel az Intune Device tulajdonságának a modern munkahelyi eszközök címkézéséhez | (Device. systemLabels – a "M365Managed" kifejezést tartalmazza)
+ systemLabels | minden olyan karakterlánc, amely megfelel az Intune Device tulajdonságának a modern munkahelyi eszközök címkézéséhez | (device.systemLabels – a "M365Managed" kifejezést tartalmazza)
 
 > [!Note]  
 > Ahhoz, hogy a deviceOwnership dinamikus csoportokat hozzon létre az eszközökhöz, a "vállalat" értékkel egyenlő értéket kell megadnia. Az Intune-ban az eszköz tulajdonjoga a céges helyet képviseli. További részletekért tekintse meg a [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 

@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 06/02/2020
+ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ec64facd554ca32ddc1357d9b92b08f1d844e377
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 5e46f9dabe2b6f38a08b8e14bae845e0fee22457
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673411"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081017"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -40,9 +40,10 @@ Az Azure Private link a következő előnyöket biztosítja:
 ## <a name="availability"></a>Rendelkezésre állás 
  A következő táblázat felsorolja a privát kapcsolati szolgáltatásokat, valamint azokat a régiókat, ahol elérhetők. 
 
-|Támogatott szolgáltatások  |Elérhető régiók | Állapot  |
+|Támogatott szolgáltatások  |Elérhető régiók | status  |
 |:-------------------|:-----------------|:--------|
 |A standard Azure Load Balancer mögötti privát kapcsolati szolgáltatások | Összes nyilvános régió  | FE <br/> [További információ](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+| Azure Automation  | Összes nyilvános régió | Előnézet | |
 | Azure Storage        |  Összes nyilvános régió       | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
 | 2. generációs Azure Data Lake Storage        |  Összes nyilvános régió      | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
 |  Azure SQL Database         | Összes nyilvános régió      |   FE <br/> [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
@@ -98,7 +99,7 @@ A korlátokat lásd: [Azure Private link Limits](../azure-resource-manager/manag
 ## <a name="service-level-agreement"></a>szolgáltatói szerződés
 SLA esetén lásd: [SLA az Azure Private linkhez](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: privát végpont létrehozása Azure Portal használatával](create-private-endpoint-portal.md)
 - [Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával](create-private-link-service-portal.md)

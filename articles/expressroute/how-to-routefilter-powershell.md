@@ -4,16 +4,16 @@ description: Ez a cikk bemutatja, hogyan konfigurálhat útválasztási szűrők
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 3fa53258321b22e1683122edca1816f6d4c291b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5a294a051350c4b08b34356abcd883b7580164e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618607"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729302"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Útválasztási szűrők konfigurálása a Microsoft-partnerek számára: PowerShell
 > [!div class="op_single_selector"]

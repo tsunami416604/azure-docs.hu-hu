@@ -2,13 +2,13 @@
 title: Az Azure Red Hat OpenShift v4. x konfigurálása az Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 4-es vagy újabb verziójában üzemeltetett Azure Monitor.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 4b827524845874dabaabe535163d99c408f77a60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/15/2020
+ms.openlocfilehash: 872d842f02e19313940dfeba5258feb7d3799547
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196295"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888459"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v4. x konfigurálása Azure Monitor for containers szolgáltatással
 
@@ -57,11 +57,11 @@ A következő lépések végrehajtásával engedélyezheti az Azure Red Hat Open
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aroV4/onboarding_azuremonitor_for_containers.sh.`
 
-3. A fürt `oc login` `kubectl config current-context` **Kube-környezetének** azonosításához futtassa a parancsot, és másolja az értéket.
+3. A fürt **Kube-környezetének** azonosításához `oc login` futtassa a parancsot, `kubectl config current-context` és másolja az értéket.
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integrálás meglévő munkaterülettel
 
-A következő lépés lehetővé teszi a fürt figyelését a korábban letöltött bash-szkript használatával. Egy meglévő Log Analytics-munkaterülettel való integrációhoz hajtsa végre a következő lépéseket a `workspaceResourceId` paraméterhez szükséges log Analytics munkaterület teljes erőforrás-azonosítójának azonosításához, majd futtassa a parancsot a figyelési bővítmény engedélyezéséhez a megadott munkaterületen. Ha nem rendelkezik a megadható munkaterülettel, ugorjon az 5. lépésre, és hagyja, hogy a szkript hozzon létre egy új munkaterületet.
+A következő lépés lehetővé teszi a fürt figyelését a korábban letöltött bash-szkript használatával. Egy meglévő Log Analytics-munkaterülettel való integrációhoz hajtsa végre a következő lépéseket a paraméterhez szükséges Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓjának azonosításához `workspaceResourceId` , majd futtassa a parancsot a figyelési bővítmény engedélyezéséhez a megadott munkaterületen. Ha nem rendelkezik a megadható munkaterülettel, ugorjon az [integrálás az alapértelmezett munkaterülettel](#integrate-with-default-workspace) lehetőségre, és hagyja, hogy a szkript létrehoz egy új munkaterületet.
 
 1. Sorolja fel az összes olyan előfizetést, amelyhez hozzáféréssel rendelkezik a következő parancs használatával:
 
@@ -74,7 +74,7 @@ A következő lépés lehetővé teszi a fürt figyelését a korábban letölt�
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
-    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
     Másolja a **SubscriptionId**értékét.
@@ -93,25 +93,25 @@ A következő lépés lehetővé teszi a fürt figyelését a korábban letölt�
 
     A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója**alá.
 
-4. Futtassa a következő parancsot a figyelés engedélyezéséhez, és cserélje le a `workspaceResourceId` paraméter értékét: 
+4. Futtassa a következő parancsot a figyelés engedélyezéséhez, és cserélje le a `workspaceResourceId` és a `azureAroV4ResourceIdparameter` Paraméterek értékét: 
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <LogAnayticsWorkspaceResourceId>`
+    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <workspaceResourceId>`
 
     Példa:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4  /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
+    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4 /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 
 ### <a name="integrate-with-default-workspace"></a>Integrálás az alapértelmezett munkaterülettel
 
-A következő lépés lehetővé teszi az Azure Red Hat OpenShift v4. x fürt monitorozását a letöltött bash-szkript használatával. Ebben a példában nem kell létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet a fürt-előfizetés alapértelmezett erőforráscsoporthoz, ha az egyik még nem létezik a régióban. A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület-\<GUID>\<-region>* formátumához hasonlít.  
+A következő lépés lehetővé teszi az Azure Red Hat OpenShift v4. x fürt monitorozását a letöltött bash-szkript használatával. Ebben a példában nem kell létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet a fürt-előfizetés alapértelmezett erőforráscsoporthoz, ha az egyik még nem létezik a régióban. A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \<GUID> - \<Region> *formátumához hasonlít.  
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
+`bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
 
-    For example:
+Például:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
+`bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 

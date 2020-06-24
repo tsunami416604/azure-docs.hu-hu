@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f75b080ce31a5c954471d277aad354879c16c6b3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 40b3ebf9193ad2d167cb36792900746201605298
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022197"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106463"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -37,7 +37,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
  
 - A hálózati kapcsolatokat csak a privát végponthoz csatlakozó ügyfelek indíthatják el, a szolgáltatók nem rendelkeznek útválasztási konfigurációval, hogy kapcsolatokat kezdeményezzenek a szolgáltatás felhasználói számára. A kapcsolatok csak egyetlen irányban hozhatók létre.
 
-- Privát végpont létrehozásakor a rendszer az erőforrás életciklusához is létrehoz egy írásvédett hálózati adaptert. A csatoló dinamikusan magánhálózati IP-címeket kap az alhálózatból, amely leképezi a magánhálózati kapcsolat erőforrását. a magánhálózati IP-cím értéke változatlan marad a magánhálózati végpont teljes életciklusa során.
+- Privát végpont létrehozásakor a rendszer az erőforrás életciklusához is létrehoz egy írásvédett hálózati adaptert. A csatoló dinamikusan magánhálózati IP-címeket kap az alhálózatból, amely leképezi a magánhálózati kapcsolat erőforrását. A magánhálózati IP-cím értéke változatlan marad a magánhálózati végpont teljes életciklusa során.
  
 - A magánhálózati végpontot a virtuális hálózattal megegyező régióban kell telepíteni. 
  
@@ -55,6 +55,7 @@ A privát kapcsolati erőforrás egy adott privát végpont célját célozza me
 |Privát hivatkozás erőforrásának neve  |Erőforrás típusa   |Alerőforrások  |
 |---------|---------|---------|
 |**Privát kapcsolati szolgáltatás** (saját szolgáltatás)   |  Microsoft. Network/privateLinkServices       | üres |
+|**Azure Automation** |  Microsoft. Automation/automationAccounts | Webhook, DSCAndHybridWorker |
 |**Azure SQL Database** | Microsoft. SQL/kiszolgálók    |  SQL Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft. SQL/kiszolgálók    |  SQL Server (sqlServer)        | 
 |**Azure Storage**  | Microsoft. Storage/storageAccounts    |  BLOB (blob, blob_secondary)<BR> Tábla (tábla, table_secondary)<BR> Üzenetsor (Üzenetsor, queue_secondary)<BR> Fájl (fájl, file_secondary)<BR> Web (web, web_secondary)        |

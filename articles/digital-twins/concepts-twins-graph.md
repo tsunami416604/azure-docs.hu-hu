@@ -1,5 +1,5 @@
 ---
-title: Digitális ikrek és a Twin gráf
+title: Digitális ikermodellek és az ikergráf
 titleSuffix: Azure Digital Twins
 description: Ismerje meg a digitális Twin fogalmát, és azt, hogy a kapcsolataik hogyan használják a diagramot.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05c0c66e7b6d301a749b301178c1f666a48d434b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 4e2b223337bbe5d46f314a8d2126ab562b937445
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613004"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726081"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Egy Azure digitális Twins-megoldásban a környezetében lévő entitásokat az Azure **digitális ikrek**képviselik. A digitális Twin a saját egyéni [modelljeinek](concepts-models.md)egyik példánya. Összeköthető más digitális Twins **kapcsolatokkal** a **kettős gráf**kialakításához: Ez a Twin gráf a teljes környezet ábrázolását mutatja be.
 
@@ -181,7 +184,7 @@ Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő me
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: gráf-elemek kezelése az Azure Digital Twin API-kkal:
 * [Útmutató: digitális kettős kezelés](how-to-manage-twin.md)

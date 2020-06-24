@@ -8,11 +8,11 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 5cfb0430bc94d347afd75bc01170a71a7ad53565
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240505"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711867"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a .NET-hez
 
@@ -29,7 +29,7 @@ Használja az Azure Blob Storage ügyféloldali kódtárat a .NET-hez a követke
 * A blob letöltése a helyi számítógépre
 * Tároló törlése
 
-[API-referenciák dokumentációs](/dotnet/api/azure.storage.blobs) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [-csomagjához (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | tartozó[minták](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+[API-referenciák dokumentációja](/dotnet/api/azure.storage.blobs)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -67,7 +67,7 @@ Hozzon létre egy *BlobQuickstartV12*nevű .net Core-alkalmazást.
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Miközben még mindig az alkalmazás könyvtárában van, telepítse az Azure Blob Storage ügyféloldali kódtárat a .NET- `dotnet add package` csomaghoz a parancs használatával.
+Miközben még mindig az alkalmazás könyvtárában van, telepítse az Azure Blob Storage ügyféloldali kódtárat a .NET-csomaghoz a `dotnet add package` parancs használatával.
 
 ```console
 dotnet add package Azure.Storage.Blobs
@@ -79,7 +79,7 @@ A projekt könyvtárából:
 
 1. Nyissa meg a *program.cs* fájlt a szerkesztőben
 1. Az `Console.WriteLine("Hello World!");` utasítás eltávolítása
-1. Irányelvek `using` hozzáadása
+1. `using`Irányelvek hozzáadása
 1. A `Main` metódus deklarációjának frissítése az aszinkron kód támogatásához
 
 A kód a következő:
@@ -138,7 +138,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőke
 
 Az alábbi kód a Storage- [kapcsolatok karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóból kéri le a Storage-fiókhoz tartozó kapcsolatok karakterláncát.
 
-Adja hozzá ezt a kódot `Main` a metódushoz:
+Adja hozzá ezt a kódot a `Main` metódushoz:
 
 ```csharp
 Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
@@ -161,7 +161,7 @@ Döntse el az új tároló nevét. Az alábbi kód egy GUID értéket fűz hozz�
 
 Hozza létre a [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) osztály egy példányát. Ezután hívja meg a [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) metódust a tároló létrehozásához a Storage-fiókban.
 
-Adja hozzá ezt a kódot a `Main` metódus végéhez:
+Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
 ```csharp
 // Create a BlobServiceClient object which will be used to create a container client
@@ -182,7 +182,7 @@ A következő kódrészlet:
 1. Beolvas egy [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) objektumra mutató hivatkozást úgy, hogy meghívja a [GetBlobClient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient) metódust a tárolóban a [tároló létrehozása](#create-a-container) szakaszban.
 1. A [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_IO_Stream_System_Boolean_System_Threading_CancellationToken_) metódus meghívásával feltölti a helyi szövegfájlt a blobba. Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
 
-Adja hozzá ezt a kódot a `Main` metódus végéhez:
+Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
 ```csharp
 // Create a local file in the ./data/ directory for uploading and downloading
@@ -208,7 +208,7 @@ uploadFileStream.Close();
 
 A tárolóban lévő Blobok listázása a [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) metódus meghívásával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
 
-Adja hozzá ezt a kódot a `Main` metódus végéhez:
+Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
 ```csharp
 Console.WriteLine("Listing blobs...");
@@ -224,7 +224,7 @@ await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
 
 Töltse le a korábban létrehozott blobot a [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) metódus meghívásával. A példában szereplő kód a "letöltött" utótagot adja hozzá a fájl nevéhez, hogy mindkét fájl látható legyen a helyi fájlrendszerben.
 
-Adja hozzá ezt a kódot a `Main` metódus végéhez:
+Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
 ```csharp
 // Download the blob to a local file
@@ -250,7 +250,7 @@ A következő kód megtisztítja az alkalmazás által létrehozott erőforráso
 
 Az alkalmazás a felhasználói bevitel szüneteltetését hívja `Console.ReadLine` meg, mielőtt törli a blobot, a tárolót és a helyi fájlokat. Ez jó eséllyel ellenőrizhető, hogy az erőforrások valóban helyesen lettek-e létrehozva a Törlésük előtt.
 
-Adja hozzá ezt a kódot a `Main` metódus végéhez:
+Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
 ```csharp
 // Clean up

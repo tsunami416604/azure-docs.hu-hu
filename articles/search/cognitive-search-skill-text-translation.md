@@ -8,12 +8,12 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b35af58141dc46e0cc36efe009023c1bf52850e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460775"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080045"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Szöveg fordítása – kognitív képességek
 
@@ -26,19 +26,19 @@ A [Translator Text API v 3.0](https://docs.microsoft.com/azure/cognitive-service
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
 >
-> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://go.microsoft.com/fwlink/?linkid=2042400)találja.
+> A beépített készségek elvégzése a meglévő Cognitive Services utólagos elszámolású [díjszabás szerint](https://azure.microsoft.com/pricing/details/cognitive-services/)történik. A rendszerkép kibontásának díjszabását az [Azure Cognitive Search díjszabási oldalán](https://azure.microsoft.com/pricing/details/search/)találja.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. Skills. Text. TranslationSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szüntetnie az adatokat, mielőtt elküldené a szöveg fordítási képességeinek, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
+A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Ha meg kell szüntetnie az adatokat, mielőtt elküldené a szöveg fordítási képességeinek, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bemenetek                | Leírás |
+| Bevitelek                | Leírás |
 |---------------------|-------------|
 | defaultToLanguageCode | Szükséges A dokumentumok olyan dokumentumokhoz való fordítására szolgáló nyelvkód, amelyek nem adják meg explicit módon a nyelvet. <br/> [A támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)itt tekintheti meg. |
 | defaultFromLanguageCode | Választható A dokumentumok olyan dokumentumokból való fordítására szolgáló nyelvkód, amelyek nem határozzák meg explicit módon a feladó nyelvét.  Ha a defaultFromLanguageCode nincs megadva, a rendszer az Translator Text API által megadott automatikus nyelvfelismerés alapján határozza meg a feladó nyelvét. <br/> [A támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)itt tekintheti meg. |

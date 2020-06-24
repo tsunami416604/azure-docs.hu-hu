@@ -11,18 +11,18 @@ Customer intent: I want only resources in a virtual network subnet to access an 
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 1d0cf65bb39dbda2b7451c50629ff8949c5507cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a9ae1b847d3f31a2cd4c01f9ecb61e39e950ffe
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185542"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688132"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>A virtuális hálózati szolgáltatásbeli végpontokkal való hálózati hozzáférés korlátozása a PowerShell használatával
 
@@ -37,7 +37,7 @@ Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózat
 * Erőforráshoz való alhálózati hozzáférés ellenőrzése
 * Erőforráshoz való alhálózati és internetes hozzáférés letiltásának ellenőrzése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -172,7 +172,7 @@ A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létr
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy Azure Storage [-fiókot a New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Cserélje `<replace-with-your-unique-storage-account-name>` le az karaktert az összes Azure-helyen található egyedi névre, amely 3-24 karakter hosszúságú, és csak számokat és kisbetűket használ.
+Hozzon létre egy Azure Storage [-fiókot a New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Cserélje le `<replace-with-your-unique-storage-account-name>` az karaktert az összes Azure-helyen található egyedi névre, amely 3-24 karakter hosszúságú, és csak számokat és kisbetűket használ.
 
 ```azurepowershell-interactive
 $storageAcctName = '<replace-with-your-unique-storage-account-name>'
@@ -193,7 +193,7 @@ $storageAcctKey = (Get-AzStorageAccountKey `
   -AccountName $storageAcctName).Value[0]
 ```
 
-A kulcs használatával a fájlmegosztás egy későbbi lépésben hozható létre. Adja `$storageAcctKey` meg és jegyezze fel az értéket, mivel azt is be kell írnia egy későbbi lépésben, ha a fájlmegosztást egy virtuális gépen lévő meghajtóra rendeli.
+A kulcs használatával a fájlmegosztás egy későbbi lépésben hozható létre. Adja meg `$storageAcctKey` és jegyezze fel az értéket, mivel azt is be kell írnia egy későbbi lépésben, ha a fájlmegosztást egy virtuális gépen lévő meghajtóra rendeli.
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Fájlmegosztás létrehozása a tárfiókban
 
@@ -297,9 +297,9 @@ A következő parancsban cserélje le a `<publicIpAddress>` értékét az előz�
 mstsc /v:<publicIpAddress>
 ```
 
-A rendszer létrehoz és letölt a számítógépre egy Remote Desktop Protocol (.rdp) fájlt. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania. Kattintson az **OK** gombra. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
+A rendszer létrehoz és letölt a számítógépre egy Remote Desktop Protocol (.rdp) fájlt. Nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót. Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához a **További lehetőségek**, majd a **Másik fiók használata** lehetőségre kell kattintania. Válassza az **OK** lehetőséget. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha figyelmeztetést kap, kattintson az **Igen** vagy a **Folytatás** gombra a csatlakozás folytatásához.
 
-A *myVmPrivate* virtuális gépen a PowerShell-lel képezze le az Azure-fájlmegosztást a Z meghajtóra. Az alábbi parancsok futtatása előtt cserélje le `<storage-account-key>` a és `<storage-account-name>` a értéket a megadott értékekre, vagy olvassa be a következőt: Storage- [fiók létrehozása](#create-a-storage-account).
+A *myVmPrivate* virtuális gépen a PowerShell-lel képezze le az Azure-fájlmegosztást a Z meghajtóra. Az alábbi parancsok futtatása előtt cserélje le a `<storage-account-key>` és `<storage-account-name>` a értéket a megadott értékekre, vagy olvassa be a következőt: [Storage-fiók létrehozása](#create-a-storage-account).
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -344,7 +344,7 @@ A következő parancsban cserélje le a `<publicIpAddress>` értékét az előz�
 mstsc /v:<publicIpAddress>
 ```
 
-A *myVmPublic* virtuális gépen próbálja meg leképezni az Azure-fájlmegosztást a Z meghajtóra. Az alábbi parancsok futtatása előtt cserélje le `<storage-account-key>` a és `<storage-account-name>` a értéket a megadott értékekre, vagy olvassa be a következőt: Storage- [fiók létrehozása](#create-a-storage-account).
+A *myVmPublic* virtuális gépen próbálja meg leképezni az Azure-fájlmegosztást a Z meghajtóra. Az alábbi parancsok futtatása előtt cserélje le a `<storage-account-key>` és `<storage-account-name>` a értéket a megadott értékekre, vagy olvassa be a következőt: [Storage-fiók létrehozása](#create-a-storage-account).
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -366,7 +366,7 @@ Get-AzStorageFile `
 
 A hozzáférés megtagadva, és *kap egy Get-AzStorageFile: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott. HTTP-állapotkód: 403-HTTP-hibaüzenet: Ez a kérelem nem jogosult a művelet hibájának elvégzésére* , mert a számítógép nem a *MyVirtualNetwork* virtuális hálózat *privát* alhálózatán található.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 

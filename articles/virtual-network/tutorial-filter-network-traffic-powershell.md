@@ -11,18 +11,18 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b941b81feb54ae6eed0333a9dcb4863cc885686
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66730033"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688134"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Hálózati forgalom szűrése hálózati biztonsági csoporttal a PowerShell használatával
 
@@ -35,7 +35,7 @@ A virtuális hálózatok alhálózatainak bejövő vagy kimenő hálózati forga
 * Virtuális gépek üzembe helyezése egy alhálózaton
 * Forgalomszűrők tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -277,7 +277,7 @@ Az alábbi parancs PowerShellben történő használatával telepítse a Microso
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Az IIS telepítésének befejezése után csatlakozzon le a *myVmWeb* virtuális gépről. Így csak a *myVmMgmt* virtuális géppel létesített távoli asztali kapcsolat marad. Az IIS-üdvözlőképernyő megtekintéséhez nyisson meg egy webböngészőt, és keresse meg a\/http:/myVmWeb.
+Az IIS telepítésének befejezése után csatlakozzon le a *myVmWeb* virtuális gépről. Így csak a *myVmMgmt* virtuális géppel létesített távoli asztali kapcsolat marad. Az IIS-üdvözlőképernyő megtekintéséhez nyisson meg egy webböngészőt, és keresse meg a http: \/ /myVmWeb.
 
 Csatlakozzon le a *myVmMgmt* virtuális gépről.
 
@@ -292,7 +292,7 @@ Get-AzPublicIpAddress `
 
 Annak megerősítéséhez, hogy eléri a *myVmWeb* webkiszolgálót az Azure-on kívülről is, nyisson meg egy webböngészőt a számítógépen, és lépjen a következő helyre: `http://<public-ip-address-from-previous-step>`. A kapcsolat sikeresen létrejön, mert a 80-as porton engedélyezve van az internetről a *myAsgWebServers* alkalmazásbiztonsági csoportba (amelyben a *myVmWeb* virtuális géphez csatlakoztatott hálózati adapter található) bejövő forgalom.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 

@@ -2,23 +2,23 @@
 title: Annak konfigurálása, hogy a végfelhasználók miként egyeznek az Azure AD-vel az alkalmazásokkal
 description: Megtudhatja, hogyan és mikor férhet hozzá a felhasználók a szervezet adataihoz hozzáférő alkalmazásokhoz.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 2bdb305e0342dc9b7807ad64de9b5d872237afcc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014332"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763465"
 ---
-# <a name="configure-how-end-users-consent-to-applications"></a>Annak konfigurálása, hogy a végfelhasználók hogyan hozzájárulásukat az alkalmazásokhoz
+# <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
 
 Az alkalmazásait a Microsoft Identity platformmal integrálva engedélyezheti a felhasználók számára, hogy munkahelyi vagy iskolai fiókjával jelentkezzenek be, és hozzáférjenek a szervezet adataihoz, és így gazdag adatvezérelt felhasználói élményt nyújtsanak.
 
@@ -230,7 +230,7 @@ A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=az
 
     | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Logikai érték | Jelző, amely azt jelzi, hogy a csoportok tulajdonosai jogosultak-e a csoportra vonatkozó engedélyek megadására. |
+    | _EnableGroupSpecificConsent_   | Logikai | Jelző, amely azt jelzi, hogy a csoportok tulajdonosai jogosultak-e a csoportra vonatkozó engedélyek megadására. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha a _EnableGroupSpecificConsent_ értéke "true" (igaz), és ez az érték egy csoport objektumazonosító, akkor az azonosított csoport tagjai jogosultak a csoportokra vonatkozó engedélyek megadására a saját maguknak. |
 
 1. Módosítsa a kívánt konfiguráció beállításait:
@@ -288,7 +288,7 @@ Ezt a fentiekben látható lépések végrehajtásával is megteheti a [csoport 
 
     | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Logikai érték |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
+    | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
 
 1. Helyettesítse be a következő értéket a 3. lépésben:
 

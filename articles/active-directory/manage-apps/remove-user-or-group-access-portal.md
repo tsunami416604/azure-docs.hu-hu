@@ -3,25 +3,25 @@ title: Felhasználói vagy csoportos hozzárendelések eltávolítása az Azure 
 description: Felhasználó vagy csoport hozzáférési hozzárendelésének eltávolítása egy vállalati alkalmazásból Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/12/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edf918b57212cf2adfbffb358a0257d9dbea85e9
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: a09b3307403cb78da3bd22f3cc85bd75d7ebd858
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74275879"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763057"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Felhasználó vagy csoport hozzárendelésének eltávolítása egy vállalati alkalmazásból Azure Active Directory
 
@@ -44,9 +44,9 @@ Egyszerűen eltávolíthat egy felhasználót vagy csoportot a Azure Active Dire
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-parancssort.
 
    > [!NOTE]
-   > Telepítenie kell a AzureAD modult (használja a parancsot `Install-Module -Name AzureAD`). Ha a rendszer kéri, hogy telepítsen egy NuGet modult vagy az új Azure Active Directory v2 PowerShell-modult, írja be az Y értéket, és nyomja le az ENTER
+   > Telepítenie kell a AzureAD modult (használja a parancsot `Install-Module -Name AzureAD` ). Ha a rendszer kéri, hogy telepítsen egy NuGet modult vagy az új Azure Active Directory v2 PowerShell-modult, írja be az Y értéket, és nyomja le az ENTER
 
-1. Futtassa `Connect-AzureAD` a parancsot, és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
+1. Futtassa a parancsot, `Connect-AzureAD` és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
 1. A következő parancsfájl használatával távolíthatja el a felhasználót és a szerepkört egy alkalmazásból:
 
     ```powershell

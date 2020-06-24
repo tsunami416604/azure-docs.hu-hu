@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: 6899df693232044e004517d8dabb3f8e26450314
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.date: 06/12/2020
+ms.openlocfilehash: 03468d8ff39cfbe64d6ef3707098732e22e5dd9b
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84666918"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100978"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Az Amazon Simple Storage szolgáltatásból származó adatok másolása Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -72,7 +72,7 @@ Az Amazon S3 társított szolgáltatás a következő tulajdonságokat támogatj
 | serviceUrl | Az egyéni S3-végpontot akkor válassza, ha a hivatalos Amazon S3 szolgáltatástól eltérő, S3-kompatibilis tárolási szolgáltatóról másol Adatmásolást. Az adatok Google Cloud Storage-ból való másolásához például a következőt kell megadnia: `https://storage.googleapis.com` . | No |
 | Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. |No |
 
-Ehhez az összekötőhöz hozzáférési kulcsok szükségesek egy AWS identitás-és hozzáférés-kezelési (IAM) fiókhoz az Amazon S3-ból való adatmásoláshoz. Az [ideiglenes biztonsági hitelesítő adatok](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) szintén támogatottak.
+Ehhez az összekötőhöz hozzáférési kulcsok szükségesek egy AWS identitás-és hozzáférés-kezelési (IAM) fiókhoz az Amazon S3-ból való adatmásoláshoz. Az [ideiglenes biztonsági hitelesítő adatok](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) jelenleg nem támogatottak.
 
 >[!TIP]
 >Az egyéni S3 szolgáltatás URL-címének megadása, ha az adatok másolása nem a hivatalos Amazon S3-szolgáltatástól eltérő, S3-kompatibilis tárolóból történt.
@@ -163,6 +163,7 @@ A következő tulajdonságok támogatottak az Amazon S3 `storeSettings` -ban a F
 | 3. lehetőség: a fájlok listája<br>- fileListPath | Egy adott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját, soronként egy fájlt, amely az adatkészletben konfigurált útvonal relatív elérési útja.<br/>Ha ezt a beállítást használja, ne adjon meg fájlnevet az adatkészletben. További példákat a [fájllista példákban](#file-list-examples)talál. |No |
 | ***További beállítások:*** |  | |
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a **rekurzív** értéke **true (igaz** ), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát. <br>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |No |
+| deleteFilesAfterCompletion | Azt jelzi, hogy a rendszer törli-e a bináris fájlokat a forrás-áruházból, miután sikeresen áthelyezte a célhelyre. A fájl törlése fájl alapján történik, így ha a másolási tevékenység meghiúsul, néhány fájl már át lett másolva a célhelyre, és törlődik a forrásból, míg mások továbbra is a forrás-áruházban maradnak. <br/>Ez a tulajdonság csak bináris másolási helyzetekben érvényes, ahol az adatforrás a blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, file, Azure file, SFTP vagy FTP. Az alapértelmezett érték: false. |No |
 | modifiedDatetimeStart    | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. <br>A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok lehetnek **Null értékűek**, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de **Null**értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de **Null**értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | No                                            |
 | modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | No                                                          |
 | maxConcurrentConnections | Az adattárhoz való egyidejű kapcsolatok száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No                                                          |
@@ -248,7 +249,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 ## <a name="legacy-models"></a>Örökölt modellek
 
 >[!NOTE]
->A következő modellek továbbra is támogatottak a visszamenőleges kompatibilitás érdekében. Javasoljuk, hogy a korábban említett új modellt használja, amíg a Data Factory authoring felhasználói felülete be nem váltott az új modell generálására.
+>A következő modellek továbbra is támogatottak a visszamenőleges kompatibilitás érdekében. Javasoljuk, hogy a korábban említett új modellt használja. Az Data Factory szerzői felhasználói felülete átváltott az új modell generálására.
 
 ### <a name="legacy-dataset-model"></a>Örökölt adatkészlet-modell
 
@@ -370,5 +371,5 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Data Factory másolási tevékenység által forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/16/2020
-ms.openlocfilehash: c6e4ff494ee79428f7d9e6a55d184b877c0d58e4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 6/11/2020
+ms.openlocfilehash: ba473942eea35ebcd5991b9b0dee4138d4963e16
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554956"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099146"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MySQLban a Azure Portal használatával
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MySQL a Azure Portal használatával
 
 Azure Database for MySQL támogatja egyes kiszolgálói paraméterek konfigurációját. Ez a cikk azt ismerteti, hogyan konfigurálhatja ezeket a paramétereket a Azure Portal használatával. Nem minden kiszolgáló paraméter módosítható.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigáljon a kiszolgálói paraméterek Azure Portal
+## <a name="configure-server-parameters"></a>Kiszolgáló paramétereinek konfigurálása
 
 1. Jelentkezzen be a Azure Portalba, majd keresse meg a Azure Database for MySQL-kiszolgálót.
 2. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MySQL kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
@@ -28,6 +28,17 @@ Azure Database for MySQL támogatja egyes kiszolgálói paraméterek konfigurác
 ![Módosítások mentése vagy elvetése](./media/howto-server-parameters/4-save_parameters.png)
 5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
 ![Az összes visszaállítása az alapértelmezett értékre](./media/howto-server-parameters/5-reset_parameters.png)
+
+## <a name="setting-parameters-not-listed"></a>Nem felsorolt paraméterek beállítása
+
+Ha a frissíteni kívánt kiszolgálói paraméter nem szerepel a Azure Portalban, akkor opcionálisan a paramétert is megadhatja a kapcsolódási szinten a használatával `init_connect` . Ezzel beállítja a kiszolgálóhoz csatlakozó egyes ügyfelek kiszolgálói paramétereit. 
+
+1. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MariaDB kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
+2. Keresés`init_connect`
+3. Adja hozzá a kiszolgáló paramétereit a (z) Value ( `SET parameter_name=YOUR_DESIRED_VALUE` érték) oszlopban a Format: értéknél.
+
+    Megváltoztathatja például a kiszolgáló karakterkészletét a következőre való beállításával: `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
+4. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
@@ -67,6 +78,6 @@ SET time_zone = 'US/Pacific';
 
 Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md).

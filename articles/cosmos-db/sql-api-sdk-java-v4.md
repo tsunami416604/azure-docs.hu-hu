@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: 35d83d11d631d94cad4781c69d985a73c70dde99
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 30d1ee46854a6bbe695bf2a70c266f71a2f906ec
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677967"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080989"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -48,9 +48,9 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 | |  |
 |---|---|
 | **SDK letöltése** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API-dokumentáció** | [Java API-referenciák dokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html) |
+|**API-dokumentáció** | [Java API-referenciák dokumentációja](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
 |**Közreműködés az SDK-val** | [Azure SDK a Java központi tárházhoz a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
-|**Első lépések** | Gyors útmutató [: Java-alkalmazás létrehozása Azure Cosmos db SQL API-beli adatkezelési szolgáltatásokhoz](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [GitHub](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) -tárház a gyors üzembe helyezési kóddal | 
+|**Bevezetés** | Gyors útmutató [: Java-alkalmazás létrehozása Azure Cosmos db SQL API-beli adatkezelési szolgáltatásokhoz](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [GitHub](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) -tárház a gyors üzembe helyezési kóddal | 
 |**Alapszintű kódok** | [Azure Cosmos db: Java-példák az SQL API](sql-api-java-sdk-samples.md) -ra · [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Konzolos alkalmazás változási hírcsatornával**| [Change feed-Java SDK v4 minta](create-sql-api-java-changefeed.md) · [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Webalkalmazás mintája**| [Webalkalmazás létrehozása Java SDK v4](sql-api-java-application.md) használatával [GitHub-tárház a mintakód](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
@@ -62,8 +62,11 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 
 ## <a name="release-history"></a>Kiadási előzmények
 
-### <a name="401-beta4-unreleased"></a>4.0.1-Beta. 4 (nem kiadott)
+### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
 #### <a name="new-features"></a>Új funkciók
+* Átnevezve: `QueryRequestOptions` `CosmosQueryRequestOptions` .
+* Frissítve `ChangeFeedProcessorBuilder` a Builder minta.
+* Frissítve `CosmosPermissionProperties` az új tároló neve és a gyermek erőforrások API-k segítségével.
 * További minták lettek hozzáadva & dúsított dokumentumok a következőhöz: `CosmosClientBuilder` . 
 * Frissített `CosmosDatabase`  &  `CosmosContainer` API-k az throughputProperties az autoscale/Autopilot támogatásához. 
 * Átnevezve: `CosmosClientException` `CosmosException` . 
@@ -80,9 +83,8 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 * `getETag()`  &  `getTimestamp()` API-k hozzáadása a `Cosmos*Properties` típusokhoz. 
 * További `userAgent` információ a alkalmazásban `CosmosException`  &  `CosmosDiagnostics` . 
 * Új sor karakterének frissítése az `Diagnostics` új sor karakterbe. 
-
-### <a name="401-beta3-2020-05-15"></a>4.0.1-Beta. 3 (2020-05-15)
-#### <a name="new-features"></a>Új funkciók
+* Eltávolított `readAll*` API-k, a lekérdezés használatával válassza ki az összes API-t.
+* A `ChangeFeedProcessor` becsült késési API hozzáadva.   
 * Az autoscale/Autopilot átviteli sebességének támogatása az SDK-ban.  
 * `ConnectionPolicy`Új kapcsolatok konfigurációjának lecserélése. Elérhető API-k `DirectConnectionConfig`  &  `GatewayConnectionConfig` `CosmosClientBuilder` a közvetlen & átjáró módú kapcsolatok konfigurációjában.
 * Áthelyezve `JsonSerializable`  &  `Resource` a implementációs csomagba. 
@@ -92,12 +94,6 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 * Az API átnevezve a következőre: `preferredLocations`  &  `multipleWriteLocations` `preferredRegions`  &  `multipleWriteRegions` . 
 * Frissítve `reactor-core` a 3.3.5. Release, `reactor-netty` a 0.9.7. Release & `netty` a 4.1.49. Final verziókig. 
 * Támogatás hozzáadva az `analyticalStoreTimeToLive` SDK-hoz.     
-#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
-* Rögzített szoftvercsatorna-szivárgási problémák a közvetlen TCP-ügyféllel.
-* `orderByQuery`A folytatási jogkivonat hibája javítva.
-
-### <a name="401-beta2-2020-04-21"></a>4.0.1-Beta. 2 (2020-04-21)
-#### <a name="new-features"></a>Új funkciók
 * `CosmosClientException`kiterjeszti `AzureException` . 
 * Ehelyett az API-k használatával eltávolította az API-kat `maxItemCount`  &  `requestContinuationToken` `FeedOptions` `byPage()` `CosmosPagedFlux`  &  `CosmosPagedIterable` .
 * `CosmosPermissionProperties`Az API-k nyilvános felületén lett bevezetve `Permission` .
@@ -107,13 +103,8 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 * A külső függőségek el lettek távolítva `fasterxml.uuid, guava, commons-io, commons-collection4, commons-text` .  
 * Áthelyezve `CosmosPagedFlux`  &  `CosmosPagedIterable` a `utils` csomagba. 
 * Frissítve a 4.1.45. Final & Project-reaktort a 3.3.3 verzióra.
-* Frissített nyilvános Rest-szerződések `Final` osztályokba. 
-#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
-* `ChangeFeedProcessor`a partíciók felosztására szolgáló hibajavítás &, ha a partíció nem található.
-* `ChangeFeedProcessor`hibajavítás a címbérleti frissítések különböző szálak közötti szinkronizálásakor.
-
-### <a name="401-beta1-2020-03-10"></a>4.0.1-Beta. 1 (2020-03-10)
-#### <a name="new-features"></a>Új funkciók 
+* Frissített nyilvános Rest-szerződések `Final` osztályokba.
+* Speciális diagnosztika támogatása a pont műveleteihez.
 * Csomag frissítve`com.azure.cosmos`
 * Csomag hozzáadva `models` a modell/Rest szerződések számára
 * Csomag hozzáadva `utils` a `CosmosPagedFlux`  &  `CosmosPagedIterable` típusokhoz. 
@@ -122,7 +113,16 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 * `RetryOptions`átnevezve: `ThrottlingRetryOptions` .
 * `CosmosPagedFlux`  &  `CosmosPagedIterable` A lekérdezési API-khoz hozzáadott tördelési típusok. 
 * A TransportClient megosztásának támogatása a CosmosClients több példányán keresztül egy új API-val a`CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
+* Lekérdezések optimalizálása a kettős szerializálás/deszerializálás eltávolításával. 
+* A válasz fejlécének optimalizálása a szükségtelen másolás visszavonásával. 
+* Optimalizált `ByteBuffer` szerializálás/deszerializálás közbenső karakterlánc-példányok eltávolításával.
 #### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+* Rögzített ConnectionPolicy `toString()` Null mutató kivétel.
+* Kijavítottuk a lekérdezés eredményeinek elemzését a lekérdezések alapján. 
+* Rögzített szoftvercsatorna-szivárgási problémák a közvetlen TCP-ügyféllel.
+* `orderByQuery`A folytatási jogkivonat hibája javítva.
+* `ChangeFeedProcessor`a partíciók felosztására szolgáló hibajavítás &, ha a partíció nem található.
+* `ChangeFeedProcessor`hibajavítás a címbérleti frissítések különböző szálak közötti szinkronizálásakor.
 * Rögzített versenyhelyzet okozza `ArrayIndexOutOfBound` a kivételt a StoreReader
 
 ## <a name="faq"></a>GYIK

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1e4428fecdbb5d664111adc591812a5122bf2eda
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 81a3d8e08486f76fc23a489acd3138d7b9fe8134
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125114"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711629"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -136,7 +136,7 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 
 ## <a name="error-windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Hiba: a Windows rendszerű virtuális asztali ügynök beállításjegyzékbeli bejegyzése IsRegistered 0 értéket jelenít meg
 
-**OK:** A regisztrációs jogkivonat lejárt, vagy a (999999) lejárati értékkel lett létrehozva.
+**OK:** A regisztrációs jogkivonat lejárt.
 
 **Javítás:** Az ügynök beállításjegyzékbeli hibájának kijavításához kövesse az alábbi utasításokat.
 
@@ -182,7 +182,7 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>A Windows rendszerű virtuális asztalok egymás melletti veremével kapcsolatos hibák elhárítása
 
-A Windows rendszerű virtuális asztali párhuzamos verem automatikusan települ a Windows Server 2019-es verzióra. A Microsoft Installer (MSI) használatával telepítse a párhuzamos stacket a Microsoft Windows Server 2016 vagy a Windows Server 2012 R2 rendszerre. A Microsoft Windows 10 rendszerben a Windows rendszerű virtuális asztali párhuzamos verem engedélyezve van a **enablesxstackrs. ps1**használatával.
+A Windows rendszerű virtuális asztali párhuzamos verem automatikusan települ a Windows Server 2019-es verzióra. A Microsoft Installer (MSI) használatával telepítse a párhuzamos stacket a Microsoft Windows Server 2016 vagy a Windows Server 2012 R2 rendszerre. A Microsoft Windows 10 rendszerben a Windows rendszerű virtuális asztali párhuzamos verem **enablesxstackrs.ps1tel **van engedélyezve.
 
 A munkamenet-gazdagépen futó virtuális gépeken a következő három fő módszert kell telepíteni vagy engedélyezni:
 
@@ -224,8 +224,8 @@ Vannak olyan ismert körülmények, amelyek az egymás melletti verem meghibáso
 - Nem követi a lépések helyes sorrendjét a párhuzamos verem engedélyezéséhez
 - Automatikus frissítés a Windows 10 továbbfejlesztett sokoldalú lemezére (EVD)
 - Hiányzik a Távoli asztal munkamenet-gazdagép (RDSH) szerepkör
-- Enablesxsstackrc. ps1 többszöri futtatása
-- A enablesxsstackrc. ps1 futtatása olyan fiókban, amely nem rendelkezik helyi rendszergazdai jogosultságokkal
+- enablesxsstackrc.ps1 futtatása többször
+- enablesxsstackrc.ps1 futtatása helyi rendszergazdai jogosultságokkal nem rendelkező fiókban
 
 Az ebben a szakaszban található utasítások segítséget nyújtanak a Windows rendszerű virtuális asztal egymás melletti verem eltávolításához. A párhuzamos verem eltávolítása után nyissa meg a "virtuális gép regisztrálása a Windows rendszerű virtuális asztali készlettel" című részt a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md) -lel című részből a párhuzamos verem újratelepítéséhez.
 
@@ -278,7 +278,7 @@ Az alábbi utasításokat követve futtassa a szervizelést ugyanarról az alhá
 
 Ha az operációs rendszer Microsoft Windows 10, folytassa az alábbi utasításokkal:
 
-14. A PsExec-t futtató virtuális gépen nyissa meg a fájlkezelőt, és másolja a disablesxsstackrc. ps1 fájlt a virtuális gép rendszermeghajtójába a meghibásodott párhuzamos verem használatával.
+14. A PsExec-t futtató virtuális gépről nyissa meg a fájlkezelőt, és másolja disablesxsstackrc.ps1 a virtuális gép rendszermeghajtóján a meghibásodott párhuzamos verem használatával.
 
     ```cmd
         \\<VMname>\c$\
@@ -287,7 +287,7 @@ Ha az operációs rendszer Microsoft Windows 10, folytassa az alábbi utasítás
     >[!NOTE]
     >A VMname a virtuális gép számítógépneve, amely a meghibásodott párhuzamos verem.
 
-15. Az ajánlott folyamat: a PsExec eszközből indítsa el a PowerShellt, és navigáljon az előző lépésben található mappára, és futtassa a disablesxsstackrc. ps1 parancsot. Azt is megteheti, hogy a következő parancsmagokat futtatja:
+15. Az ajánlott folyamat: a PsExec eszközből indítsa el a PowerShellt, és navigáljon az előző lépésben található mappára, és futtassa disablesxsstackrc.ps1. Azt is megteheti, hogy a következő parancsmagokat futtatja:
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force

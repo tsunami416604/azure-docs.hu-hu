@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.author: curtand
 ms.date: 04/30/2020
-ms.topic: article
+ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c87eabec8f09f082c258a439a17b9f3aa79336
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 8b448ef83752c3ffd7be992bc5fc3c376a641101
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759030"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729217"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -321,7 +321,7 @@ Az Azure AD rendszergazdai szerepköreivel felügyelheti, felügyelheti és figy
 Az Azure log-integráció lehetővé teszi, hogy az Azure-erőforrásokból származó nyers naplókat integrálja a szervezet meglévő biztonsági információi és eseménykezelő (SIEM) rendszereibe. Az [Azure log-integráció](../../security/fundamentals/azure-log-integration-overview.md) Windows-eseményeket gyűjt a Windows Eseménynapló-naplókból és az Azure-erőforrásokból a következő helyekről:
 
 * Azure-tevékenység naplói
-* Riasztások Azure Security Center
+* Azure Security Center-riasztások
 * Azure-erőforrás-naplók
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>További lépések a más felhőalapú alkalmazásokhoz való hozzáférést kezelő szervezetek számára az Azure AD-n keresztül
@@ -359,7 +359,7 @@ Az ütemterv 4. fázisát hat hónapon belül és azt meghaladóan kell megvaló
 Az emelt szintű hozzáférés biztonságossá tétele fontos, hogy biztonsági garanciákat hozzon létre üzleti eszközei számára. Azonban egy teljes biztonsági program részeként kell szerepelnie, amely folyamatos biztonsági garanciákat biztosít. A programnak olyan elemeket kell tartalmaznia, mint például a következők:
 
 * Szabályzat
-* Műveletek
+* Üzemeltetés
 * Információbiztonság
 * Kiszolgálók
 * Alkalmazások

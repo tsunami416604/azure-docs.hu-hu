@@ -1,5 +1,5 @@
 ---
-title: Azure-Instance Metadata Service
+title: Azure Instance Metadata szolgáltatás
 description: REST-felület a virtuális gépek számítási, hálózati és közelgő karbantartási eseményeivel kapcsolatos információk lekéréséhez.
 services: virtual-machines
 author: KumariSupriya
@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 5338f8b29f2328cec02e44185903eb2581226eff
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 195d9f6da88639cc3b4299519e90bf682bc743d9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635271"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888591"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
 
@@ -858,6 +858,55 @@ HTTP-állapotkód | Ok
    * A méretezési csoportok jelenleg csak a virtuális gépre mutatnak be egy újraindítás, rendszerkép vagy lemez módosítása a példányra.
 1. Időtúllépést kapok a kérésem a szolgáltatáshoz való meghívásakor?
    * A metaadat-hívásokat a virtuális gép elsődleges hálózati kártyához rendelt elsődleges IP-címről kell elvégezni. Továbbá abban az esetben, ha módosította az útvonalakat, a virtuális gép helyi útválasztási táblázatában található 169.254.169.254/32-címnek útvonalnak kell lennie.
+   * <details>
+        <summary>Az útválasztási táblázat ellenőrzése</summary>
+
+        1. Írja le a helyi útválasztási táblázatot, és keresse meg a IMDS bejegyzést (például):
+            ```console
+            > route print
+            IPv4 Route Table
+            ===========================================================================
+            Active Routes:
+            Network Destination        Netmask          Gateway       Interface  Metric
+                      0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                    127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                    127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+              127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+                168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+              169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+            ... (continues) ...
+            ```
+        1. Ellenőrizze, hogy létezik-e útvonal a következőhöz `169.254.169.254` , és jegyezze fel a megfelelő hálózati adaptert (például `172.16.69.7` ).
+        1. Az illesztőfelület konfigurációjának kiírása, valamint az útválasztási táblázatban hivatkozott, a MAC (fizikai) címek megadásával megegyező felület megkeresése.
+            ```console
+            > ipconfig /all
+            ... (continues) ...
+            Ethernet adapter Ethernet:
+
+               Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+               Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+               Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+               DHCP Enabled. . . . . . . . . . . : Yes
+               Autoconfiguration Enabled . . . . : Yes
+               Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+               IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+               Subnet Mask . . . . . . . . . . . : 255.255.255.0
+            ... (continues) ...
+            ```
+        1. Győződjön meg arról, hogy a csatoló megfelel a virtuális gép elsődleges hálózati adapterének és elsődleges IP-címének. Az elsődleges NIC/IP-t az Azure Portal hálózati konfigurációjának megtekintésével vagy [Az Azure CLI-vel](https://docs.microsoft.com/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)keresheti meg. Jegyezze fel a nyilvános és a privát IP-címeket (és a MAC-címet, ha a CLI-t használja). PowerShell CLI-példa:
+            ```powershell
+            $ResourceGroup = '<Resource_Group>'
+            $VmName = '<VM_Name>'
+            $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+            foreach($NicName in $NicNames)
+            {
+                $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+                Write-Host $NicName, $Nic.primary, $Nic.macAddress
+            }
+            # Output: wintest767 True 00-0D-3A-E5-1C-C0
+            ```
+        1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges NIC/IP-címet célozza meg.
+    </details>
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 

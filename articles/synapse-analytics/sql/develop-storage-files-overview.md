@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: c2e18919b287713f59ba8785006c952134994be0
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: bfea79fe232fbb6f1b39c03a5cc8e9fe06bee867
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258368"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204939"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
 
@@ -90,7 +90,7 @@ Ezek a további paraméterek a CSV (tagolt szöveg) fájlok használatához szü
 ```
 
 - A ESCAPE_CHAR = "char" a fájlban szereplő karaktert határozza meg, amely a fájlban lévő összes elválasztó érték kiszökésére szolgál. Ha a Escape-karaktert a saját maga vagy az elválasztó értékek egyike követi, az escape-karakter el lesz dobva az érték beolvasása során.
-A ESCAPE_CHAR paraméter akkor lesz alkalmazva, ha a FIELDQUOTE vagy nincs engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjeles karaktert dupla idézőjelek között kell megszökni az Excel CSV-viselkedéssel való igazításhoz.
+A ESCAPE_CHAR paraméter akkor lesz alkalmazva, ha a FIELDQUOTE vagy nincs engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjel karakternek egy másik idézőjel karakterrel kell megszöknie. Az idézőjel karakter csak akkor szerepelhet az oszlop értékén belül, ha az érték idézőjelekkel van ellátva.
 - A FIELDTERMINATOR = ' field_terminator ' meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző ("**,**")
 - A ROWTERMINATOR = ' row_terminator ' megadja a használandó sort. Az alapértelmezett sor lezáró egy sortörési karakter: **\r\n**.
 

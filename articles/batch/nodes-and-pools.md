@@ -2,13 +2,13 @@
 title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: eadc5236926fed12ebee087f7354c492ae5fc745
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/16/2020
+ms.openlocfilehash: 46c78fe1c45d2effe03008667dd424d943d75ec4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791154"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888370"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
@@ -27,6 +27,8 @@ A Batch szolgáltatásban működő számítási csomópontok emellett a követk
 - Szabványos [mappastruktúra](files-and-directories.md), valamint az ehhez tartozó [környezeti változók](jobs-and-tasks.md), amelyekre a tevékenységek hivatkozni tudnak.
 - A hozzáférés vezérléséhez konfigurált **tűzfalbeállítások**.
 - [Távelérés](error-handling.md#connect-to-compute-nodes) a windowsos (RDP-) és a linuxos (SSH-) csomópontokhoz.
+
+Alapértelmezés szerint a csomópontok képesek kommunikálni egymással, de nem tudnak kommunikálni olyan virtuális gépekkel, amelyek nem azonos készlet részét képezik. Ahhoz, hogy a csomópontok biztonságosan kommunikáljanak más virtuális gépekkel vagy helyszíni hálózattal, a készletet egy [Azure-beli virtuális hálózat (VNet) alhálózatában](batch-virtual-network.md)is kiépítheti. Ha így tesz, a csomópontok nyilvános IP-címeken keresztül is elérhetők. Ezeket a nyilvános IP-címeket a Batch hozza létre, és a készlet élettartamára változhat. Létrehozhat egy Ön által vezérelt [statikus nyilvános IP-címmel rendelkező készletet](create-pool-public-ip.md) is, amely biztosítja, hogy a rendszer váratlanul ne változzon meg.
 
 ## <a name="pools"></a>Készletek
 
@@ -162,13 +164,16 @@ További információkat az alkalmazások a Batch-csomópontokon alkalmazáscsom
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>A virtuális hálózat (VNet) és a tűzfal konfigurálása
 
-Amikor számítási csomópontok készletét hozza létre a Batchben, hozzárendelheti a készletet egy Azure-beli [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md) alhálózatához. Egy Azure-beli virtuális hálózat használatához a Batch-ügyfél API-jának Azure Active Directory- (AD-) hitelesítést kell használnia. Az Azure AD Azure Batch-támogatásának dokumentációjáért lásd a [Batch szolgáltatás Active Directoryval történő hitelesítésével](batch-aad-auth.md) foglalkozó témakört.  
+Amikor számítási csomópontok készletét hozza létre a Batchben, hozzárendelheti a készletet egy Azure-beli [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md) alhálózatához. Egy Azure-beli virtuális hálózat használatához a Batch-ügyfél API-jának Azure Active Directory- (AD-) hitelesítést kell használnia. Az Azure AD Azure Batch-támogatásának dokumentációjáért lásd a [Batch szolgáltatás Active Directoryval történő hitelesítésével](batch-aad-auth.md) foglalkozó témakört.
 
 ### <a name="vnet-requirements"></a>A virtuális hálózat követelményei
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
 A Batch-készletek virtuális hálózatban való beállítására vonatkozó további információért lásd: [Virtuális gépek készletének létrehozása a virtuális hálózattal](batch-virtual-network.md).
+
+> [!TIP]
+> Annak érdekében, hogy a csomópontokhoz való hozzáféréshez használt nyilvános IP-címek ne változzon meg, létrehozhat [egy olyan készletet, amely a megadott nyilvános IP-címekkel](create-pool-public-ip.md)rendelkezik.
 
 ## <a name="pool-and-compute-node-lifetime"></a>Készlet és számítási csomópont élettartama
 

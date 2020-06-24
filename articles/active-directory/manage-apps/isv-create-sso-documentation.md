@@ -2,22 +2,22 @@
 title: Hozzon létre & közzététel egyszeri bejelentkezési dokumentációt az alkalmazáshoz
 description: Útmutató független szoftvergyártók számára a Azure Active Directory integrálásához
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 7e2436175fc68d76dabb98fb8ca4c9c27cde007b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74232282"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763312"
 ---
 # <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Egyszeri bejelentkezési dokumentáció létrehozása és közzététele az alkalmazáshoz   
 

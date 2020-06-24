@@ -2,15 +2,15 @@
 title: Application Insights és Log Analytics által használt IP-címek | Microsoft Docs
 description: A Application Insights által igényelt kiszolgálói tűzfal-kivételek
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
-ms.date: 05/01/2020
-ms.openlocfilehash: f6b35551af61c50a3db2d15b47d8f3910024b527
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 06/18/2020
+ms.openlocfilehash: ae3179f388fa6aa2cc8f98899f525a3b3e7251ff
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773726"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079172"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és a Log Analytics által használt IP-címek
 Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) szolgáltatás számos IP-címet használ. Előfordulhat, hogy ismernie kell ezeket a címeket, ha a figyelt alkalmazás tűzfal mögött található.
@@ -30,7 +30,7 @@ Meg kell nyitnia néhány kimenő portot a kiszolgálója tűzfalán, hogy a App
 
 | Cél | URL-cím | IP | Portok |
 | --- | --- | --- | --- |
-| Telemetria |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23 | 443 |
+| Telemetria |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23<br/>20.44.17.0<br/>20.36.114.207 <br/>51.116.155.246 <br/>51.107.155.178 <br/>51.140.212.64  | 443 |
 | Élő metrikastream (USA keleti régiója) |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
 | Élő metrikastream (USA déli középső régiója) |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
 | Élő metrikastream (Észak-Európa) |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
@@ -239,7 +239,7 @@ Megjegyzés: a *. loganalytics.io tartomány tulajdonosa a Log Analytics csapata
 | --- | --- | --- | --- |
 | Ügynök | agent.azureserviceprofiler.net<br/>*. agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portál | gateway.azureserviceprofiler.net | dinamikus | 443
-| Storage | *.core.windows.net | dinamikus | 443
+| Tárolás | *.core.windows.net | dinamikus | 443
 
 ## <a name="snapshot-debugger"></a>Pillanatkép-hibakereső
 
@@ -250,4 +250,4 @@ Megjegyzés: a *. loganalytics.io tartomány tulajdonosa a Log Analytics csapata
 | --- | --- | --- | --- |
 | Ügynök | ppe.azureserviceprofiler.net<br/>*. ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portál | ppe.gateway.azureserviceprofiler.net | dinamikus | 443
-| Storage | *.core.windows.net | dinamikus | 443
+| Tárolás | *.core.windows.net | dinamikus | 443

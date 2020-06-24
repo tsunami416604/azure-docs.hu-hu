@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 59ef47ac67955ef5b9b7cb51ae6f39a9e0d30c3b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5862a446b1522926f8241959d5e1cff66e4da06b
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634933"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079385"
 ---
 # <a name="quickstart-create-a-search-index-in-net"></a>Gyors útmutató: keresési index létrehozása a .NET-ben
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "84634933"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Hozzon létre egy .NET Core Console-alkalmazást a C#-ban, amely egy Azure Cognitive Search indexet hoz létre, tölt be és kérdez le a Visual Studio és az [azure Cognitive Search .net SDK](https://aka.ms/search-sdk)használatával. 
+Hozzon létre egy .NET Core Console-alkalmazást a C#-ban, amely egy Azure Cognitive Search indexet hoz létre, tölt be és kérdez le a Visual Studio és az [azure Cognitive Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)használatával. 
 
 Ez a cikk azt ismerteti, hogyan hozható létre az alkalmazás lépésről lépésre. [Le is töltheti és futtathatja a teljes alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart) , ha a kódra szeretne ugrani.
 
@@ -64,7 +64,7 @@ Először nyissa meg a Visual studiót, és hozzon létre egy új, a .NET Core-o
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-Az [Azure Cognitive Search .net SDK](https://aka.ms/search-sdk) néhány, NuGet-csomagként terjesztett ügyféloldali kódtárat tartalmaz.
+Az [Azure Cognitive Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) néhány, NuGet-csomagként terjesztett ügyféloldali kódtárat tartalmaz.
 
 Ehhez a projekthez használja a `Microsoft.Azure.Search` NuGet csomag 9-es verzióját és a legújabb `Microsoft.Extensions.Configuration.Json` NuGet-csomagot.
 
@@ -85,9 +85,9 @@ Ehhez a projekthez használja a `Microsoft.Azure.Search` NuGet csomag 9-es verzi
 
 1. Az új elem hozzáadása lapon keressen rá a "JSON" kifejezésre, és adja vissza a JSON-hez kapcsolódó elemek listáját.
 
-1. Válassza a **JSON-fájl**nevet, nevezze el a "appSettings. JSON" fájlt, majd kattintson a **Hozzáadás**gombra. 
+1. Válassza a **JSON-fájl**elemet, nevezze el a "appsettings.json" fájlt, majd kattintson a **Hozzáadás**gombra. 
 
-1. Adja hozzá a fájlt a kimeneti könyvtárhoz. Kattintson a jobb gombbal a appSettings. JSON fájlra, és válassza a **Tulajdonságok**lehetőséget. A **Másolás kimeneti könyvtárba**lapon válassza a **Másolás, ha újabb**lehetőséget.
+1. Adja hozzá a fájlt a kimeneti könyvtárhoz. Kattintson a jobb gombbal a appsettings.jselemre, majd válassza a **Tulajdonságok**lehetőséget. A **Másolás kimeneti könyvtárba**lapon válassza a **Másolás, ha újabb**lehetőséget.
 
 1. Másolja a következő JSON-t az új JSON-fájlba. 
 
@@ -204,7 +204,7 @@ A Hotels index egyszerű és összetett mezőket tartalmaz, ahol egy egyszerű m
 
     Ebben az indexben a Description (Leírás) mezők a választható [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) tulajdonságot használják, ha felül szeretné írni az alapértelmezett standard Lucene-elemzőt. A `description_fr` mező a francia Lucene Analyzert ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) használja, mert francia nyelvű szöveget tárol. A a `description` választható Microsoft nyelvi analizátort ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)) használja.
 
-1. A Program.cs-ben hozza létre az osztály egy példányát a [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) szolgáltatáshoz való kapcsolódáshoz az alkalmazás konfigurációs fájljában (appSettings. JSON) tárolt értékek alapján. 
+1. A Program.cs-ben hozza létre az osztály egy példányát a [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) szolgáltatáshoz való kapcsolódáshoz az alkalmazás konfigurációs fájljában (appsettings.js) tárolt értékek alapján. 
 
    `SearchServiceClient`rendelkezik egy [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) tulajdonsággal, amely az Azure Cognitive Search indexek létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert biztosítja. 
 
@@ -559,7 +559,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a C# rövid útmutatóban egy sor feladatot dolgozott ki egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. Az olvashatóság és a megértés érdekében a kód leegyszerűsítése különböző fázisokban volt. Ha Ön az alapvető fogalmakkal is rendelkezik, javasoljuk, hogy a következő cikkből megtudhatja, milyen alternatív megközelítésekre és fogalmakra van szükség, amelyek elmélyítik az Ön ismereteit. 
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be6c1fdc5deb6d541656c198469822dae0a5f7c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77463205"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887894"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>A vállalati biztonsági általános információk és irányelvek az Azure HDInsight
 
@@ -43,9 +43,9 @@ Ha biztonságos HDInsight-fürtöt helyez üzembe, néhány ajánlott eljáráss
 
 * Az adathozzáférés olyan szolgáltatáson keresztül történik, amelyen engedélyezve van az engedélyezés:
   * A rendszer meghívja a Ranger engedélyezési beépülő modulját, és a kérelem kontextusát adja meg.
-  * A Ranger a szolgáltatáshoz konfigurált szabályzatokat alkalmazza. Ha a Ranger-szabályzatok sikertelenek, a hozzáférés-ellenőrzését a fájlrendszerre késlelteti a rendszer. Néhány szolgáltatás, például a MapReduce, csak azt vizsgálja, hogy a fájlt vagy mappát a kérést küldő felhasználó birtokolja-e. Olyan szolgáltatások, mint a kaptár, keresse meg a tulajdonosi egyeztetés vagy`rwx`a megfelelő fájlrendszer-engedélyeket ().
+  * A Ranger a szolgáltatáshoz konfigurált szabályzatokat alkalmazza. Ha a Ranger-szabályzatok sikertelenek, a hozzáférés-ellenőrzését a fájlrendszerre késlelteti a rendszer. Néhány szolgáltatás, például a MapReduce, csak azt vizsgálja, hogy a fájlt vagy mappát a kérést küldő felhasználó birtokolja-e. Olyan szolgáltatások, mint a kaptár, keresse meg a tulajdonosi egyeztetés vagy a megfelelő fájlrendszer-engedélyeket ( `rwx` ).
 
-* A kaptár esetében, a létrehozási/frissítési/törlési engedélyekhez szükséges engedélyek mellett a felhasználónak engedélyekkel kell `rwx`rendelkeznie a tárolón és az összes alkönyvtáron.
+* A kaptár esetében, a létrehozási/frissítési/törlési engedélyekhez szükséges engedélyek mellett a felhasználónak `rwx` engedélyekkel kell rendelkeznie a tárolón és az összes alkönyvtáron.
 
 * A szabályzatok az egyéni felhasználók helyett csoportokba (lehetőleg) is alkalmazhatók.
 
@@ -67,13 +67,13 @@ Ha a hierarchikus névtér nincs engedélyezve:
 ### <a name="default-hdfs-permissions"></a>Alapértelmezett HDFS engedélyek
 
 * Alapértelmezés szerint a felhasználók nem férhetnek hozzá a **/** mappához a HDFS (a sikeres elérés érdekében a Storage blob tulajdonosi szerepkörben kell lenniük).
-* A MapReduce és mások előkészítési könyvtárához a rendszer létrehoz egy felhasználó-specifikus könyvtárat, és megadja `sticky _wx` az engedélyeket. A felhasználók az alatta lévő fájlokat és mappákat is létrehozhatnak, de nem nézhetnek meg más elemeket.
+* A MapReduce és mások előkészítési könyvtárához a rendszer létrehoz egy felhasználó-specifikus könyvtárat, és megadja az `sticky _wx` engedélyeket. A felhasználók az alatta lévő fájlokat és mappákat is létrehozhatnak, de nem nézhetnek meg más elemeket.
 
 ### <a name="url-auth"></a>URL-hitelesítés
 
 Ha engedélyezve van az URL-cím hitelesítése:
 
-* A konfiguráció tartalmazni fogja, hogy mely előtagokat tartalmazza az URL- `adl://`hitelesítés (például).
+* A konfiguráció tartalmazni fogja, hogy mely előtagokat tartalmazza az URL-hitelesítés (például `adl://` ).
 * Ha a hozzáférés ehhez az URL-címhez van, akkor a Ranger azt vizsgálja, hogy a felhasználó szerepel-e az engedélyezési listán.
 * A Ranger nem vizsgálja meg a részletes szabályzatok egyikét sem.
 
@@ -119,7 +119,7 @@ A HDInsight nem függhet a helyszíni tartományvezérlőkön vagy az egyéni ta
 
 ### <a name="azure-ad-ds-instance"></a>Azure AD DS-példány
 
-* Hozza létre a példányt a `.onmicrosoft.com domain`paranccsal. Így nem lesz több DNS-kiszolgáló, amely a tartományt szolgálja ki.
+* Hozza létre a példányt a paranccsal `.onmicrosoft.com domain` . Így nem lesz több DNS-kiszolgáló, amely a tartományt szolgálja ki.
 * Hozzon létre egy önaláírt tanúsítványt az LDAPs szolgáltatáshoz, és töltse fel az Azure AD DSba.
 * A fürtök üzembe helyezéséhez használjon egy összevont virtuális hálózatot (ha több csapat is telepít HDInsight ESP-fürtöket, ez hasznos lesz). Ez biztosítja, hogy a tartományvezérlővel nem kell megnyitnia a portokat (NSG) a virtuális hálózaton.
 * Konfigurálja megfelelően a virtuális hálózat DNS-t (az Azure AD DS tartománynevet a gazdagépek bejegyzései nélkül kell feloldania).
@@ -159,6 +159,17 @@ Leggyakoribb okok:
 * A NSG túlságosan korlátozóak, megakadályozva a tartományhoz való csatlakozást.
 * A felügyelt identitás nem rendelkezik megfelelő engedélyekkel.
 * A fürt neve nem egyedi az első hat karakternél (vagy egy másik élő fürttel, vagy egy törölt fürttel).
+
+## <a name="authentication-setup-and-configuration"></a>Hitelesítés beállítása és konfigurálása
+
+### <a name="user-principal-name-upn"></a>Egyszerű felhasználónév (UPN)
+
+* Használjon kisbetűset az összes szolgáltatáshoz – az egyszerű felhasználónevek nem érzékenyek az ESP-fürtökben, de
+* Az UPN-előtagnak egyeznie kell mindkét SAMAccountName az Azure AD-DS-ben. Nincs szükség az e-mail mezőhöz való megfeleltetésre.
+
+### <a name="ldap-properties-in-ambari-configuration"></a>LDAP-tulajdonságok a Ambari-konfigurációban
+
+A HDInsight-Ambari befolyásoló tulajdonságok teljes listáját lásd: [AMBARI LDAP-hitelesítés beállítása](https://ambari.apache.org/1.2.1/installing-hadoop-using-ambari/content/ambari-chap2-4.html).
 
 ## <a name="next-steps"></a>További lépések
 

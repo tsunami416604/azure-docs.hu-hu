@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7a54d1d644d1069957db7f94d6f5e261e1a8dfb2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d33c9af2c66f04bc981ce92c6283e9d836f3f199
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747550"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204574"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-finomhangolás tényleges táblán alapuló nézetekkel
 
@@ -38,7 +38,7 @@ A standard nézetekre vonatkozó követelmények többsége továbbra is érvén
 |Adatfrissítés                    | Mindig frissítve                               | Mindig frissítve
 |Az összetett lekérdezések adatainak megtekintési sebessége     | Lassú                                         | Gyors  
 |Extra tárterület                   | Nem                                           | Igen
-|Szintaxis                          | NÉZET LÉTREHOZÁSA                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
+|Syntax                          | NÉZET LÉTREHOZÁSA                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
 
 ## <a name="benefits-of-using-materialized-views"></a>A lényeges nézetek használatának előnyei
 

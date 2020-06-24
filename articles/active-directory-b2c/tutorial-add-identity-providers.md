@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f49061210ca8e3c106b0569f77a67d1f10757a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3578f95bee3e3fdcd774675627ec212c07fb85ef
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183516"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099357"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Oktatóanyag: identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2C
 
@@ -26,12 +26,12 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Az Identity Provider-alkalmazások létrehozása
-> * Az identitás-szolgáltatók hozzáadása a bérlőhöz
+> * Adja hozzá az Identity providert a bérlőhöz – mindkettőt a Facebookban és a Azure Active Directory
 > * Az identitás-szolgáltatók hozzáadása a felhasználói folyamathoz
 
 Általában csak egy identitás-szolgáltatót használ az alkalmazásaiban, de lehetősége van további hozzáadására. Ez az oktatóanyag bemutatja, hogyan adhat hozzá Azure AD-identitás-szolgáltatót és egy Facebook-identitást az alkalmazásához. Ha mindkét identitás-szolgáltatót hozzáadja az alkalmazáshoz, nem kötelező megadni. Más identitás-szolgáltatók is hozzáadhatók, például az [Amazon](identity-provider-amazon.md), a [GitHub](identity-provider-github.md), a [Google](identity-provider-google.md), a [LinkedIn](identity-provider-linkedin.md), a [Microsoft](identity-provider-microsoft-account.md)vagy a [Twitter](identity-provider-twitter.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +51,7 @@ Ha engedélyezni szeretné a bejelentkezést az Azure AD-beli felhasználók sz�
 1. Válassza az **új regisztráció**lehetőséget.
 1. Adja meg az alkalmazás nevét. Például: `Azure AD B2C App`.
 1. Az **ebben a szervezeti könyvtárban lévő fiókok** kijelölésének elfogadása csak ehhez az alkalmazáshoz.
-1. Az **átirányítási URI**esetében fogadja el a **web** értékét, és írja be az alábbi URL-címet minden `your-B2C-tenant-name` kisbetűvel, a helyére pedig a Azure ad B2C bérlő nevét.
+1. Az **átirányítási URI**esetében fogadja el a **web** értékét, és írja be az alábbi URL-címet minden kisbetűvel, a helyére `your-B2C-tenant-name` pedig a Azure ad B2C bérlő nevét.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -69,24 +69,24 @@ Ha engedélyezni szeretné a bejelentkezést az Azure AD-beli felhasználók sz�
 
 ### <a name="create-a-facebook-application"></a>Facebook-alkalmazás létrehozása
 
-Ha Facebook-fiókot szeretne használni a Azure AD B2C identitás-szolgáltatóként, létre kell hoznia egy alkalmazást a Facebookon. Ha még nem rendelkezik Facebook-fiókkal, a következő címen érheti el [https://www.facebook.com/](https://www.facebook.com/):.
+Ha Facebook-fiókot szeretne használni a Azure AD B2C identitás-szolgáltatóként, létre kell hoznia egy alkalmazást a Facebookon. Ha még nem rendelkezik Facebook-fiókkal, a következő címen érheti el: [https://www.facebook.com/](https://www.facebook.com/) .
 
 1. A Facebook-fiók hitelesítő adataival jelentkezzen be a [facebookba a fejlesztők számára](https://developers.facebook.com/) .
 1. Ha még nem tette meg, regisztrálnia kell Facebook-fejlesztőként. Ehhez válassza az első **lépések** lehetőséget az oldal jobb felső sarkában, fogadja el a Facebook szabályzatait, és végezze el a regisztráció lépéseit.
 1. Válassza **a saját alkalmazások** lehetőséget, majd **hozza létre az alkalmazást**.
 1. Adjon meg egy **megjelenítendő nevet** és egy érvényes **kapcsolattartási e-mailt**.
 1. Kattintson az **alkalmazás-azonosító létrehozása**elemre. Előfordulhat, hogy el kell fogadnia a Facebook-platform szabályzatait, és el kell végeznie egy online biztonsági ellenőrzését.
-1. Válassza a **Beállítások** > **alapszintű**lehetőséget.
-1. Válasszon egy **kategóriát**, például `Business and Pages`:. Ez az érték a Facebook számára szükséges, de a Azure AD B2C nem használja.
+1. Válassza a **Beállítások**  >  **alapszintű**lehetőséget.
+1. Válasszon egy **kategóriát**, például: `Business and Pages` . Ez az érték a Facebook számára szükséges, de a Azure AD B2C nem használja.
 1. A lap alján válassza a **platform hozzáadása**lehetőséget, majd válassza a **webhely**lehetőséget.
-1. A **webhely URL**-címe `https://your-tenant-name.b2clogin.com/` mezőbe `your-tenant-name` írja be a helyére a bérlő nevét.
-1. Adja meg az **adatvédelmi szabályzat URL**-címét (például `http://www.contoso.com/`). Az adatvédelmi szabályzat URL-címe az az oldal, amelyet az alkalmazásra vonatkozó adatvédelmi információk biztosítására tart fenn.
+1. A **webhely URL-címe**mezőbe írja be a `https://your-tenant-name.b2clogin.com/` helyére a `your-tenant-name` bérlő nevét.
+1. Adja meg az **adatvédelmi szabályzat URL**-címét (például `http://www.contoso.com/` ). Az adatvédelmi szabályzat URL-címe az az oldal, amelyet az alkalmazásra vonatkozó adatvédelmi információk biztosítására tart fenn.
 1. Válassza a **módosítások mentése**lehetőséget.
 1. Az oldal tetején jegyezze fel az **alkalmazás azonosítójának**értékét.
 1. Az **alkalmazás titka**mellett válassza a **Megjelenítés** lehetőséget, és jegyezze fel az értékét. Az alkalmazás AZONOSÍTÓját és az alkalmazás titkos kulcsát is használhatja a Facebook identitás-szolgáltatóként való konfigurálásához a bérlőben. Az **alkalmazás titkos kulcsa** egy fontos biztonsági hitelesítő adat, amelyet biztonságosan kell tárolnia.
 1. Válassza a **termékek**melletti plusz jelre, majd a **Facebook-Bejelentkezés**alatt válassza a **beállítás**lehetőséget.
 1. A bal oldali menü **Facebook-Bejelentkezés** területén válassza a **Beállítások**lehetőséget.
-1. Az **érvényes OAuth átirányítási URI**- `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`k mezőben adja meg a értéket. Cserélje `your-tenant-name` le a helyére a bérlő nevét. A lap alján kattintson a **módosítások mentése** gombra.
+1. Az **érvényes OAuth átirányítási URI**-k mezőben adja meg a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a helyére a `your-tenant-name` bérlő nevét. A lap alján kattintson a **módosítások mentése** gombra.
 1. Ahhoz, hogy a Facebook-alkalmazás elérhető legyen a Azure AD B2C számára, kattintson az oldal jobb felső sarkában található **állapot** -választóra, majd kapcsolja be **, hogy az** alkalmazás nyilvános legyen, majd kattintson a **Confirm (megerősítés**) gombra. Ezen a ponton az állapotnak a **fejlesztéstől** az **élő**értékre kell váltania.
 
 ## <a name="add-the-identity-providers"></a>Az identitás-szolgáltatók hozzáadása
@@ -99,7 +99,7 @@ Miután létrehozta az alkalmazást a hozzáadni kívánt identitás-szolgáltat
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider**lehetőséget.
 1. Adjon meg egy **nevet**. Adja meg például a *contoso Azure ad*-t.
-1. A **metaadatok URL-címéhez**adja meg az `your-AD-tenant-domain` alábbi URL-címet, amely az Azure ad-bérlő tartománynevét helyettesíti:
+1. A **metaadatok URL-címéhez**adja meg az alábbi URL-címet, `your-AD-tenant-domain` amely az Azure ad-bérlő tartománynevét helyettesíti:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -140,11 +140,11 @@ Az előfeltételek részeként elvégzett oktatóanyagban létrehozott egy felha
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 1. A létrehozott felhasználói folyamat áttekintés lapján válassza a **felhasználói folyamat futtatása**lehetőséget.
-1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Válassza a **felhasználói folyamat futtatása**lehetőséget, majd jelentkezzen be egy korábban hozzáadott identitás-szolgáltatóval.
 1. Ismételje meg az 1 – 3. lépést a többi hozzáadott Identity Provider esetében.
 
-Ha a bejelentkezési művelet sikeres, a rendszer átirányítja a dekódolású jogkivonatot, `https://jwt.ms` amely a következőhöz hasonlóan jelenik meg:
+Ha a bejelentkezési művelet sikeres, a rendszer átirányítja `https://jwt.ms` a dekódolású jogkivonatot, amely a következőhöz hasonlóan jelenik meg:
 
 ```json
 {

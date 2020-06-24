@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283003"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688874"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-adatok indexelése indexelővel az Azure Cognitive Searchben 
 
@@ -71,7 +71,7 @@ A [varázsló elindításához](search-import-data-portal.md) a parancssáv az A
 
 + A **név** az adatforrás-objektum neve. A létrehozás után kiválaszthatja más számítási feladatokhoz is.
 
-+ **Cosmos db fióknak** az elsődleges vagy a másodlagos kapcsolatok karakterláncának kell lennie Cosmos DBból `AccountEndpoint` , `AccountKey`és a és a is. A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** a kapcsolódási karakterlánc végéhez, és válassza el a pontosvesszővel elválasztva a kapcsolódási karakterláncot. A Gremlin API és a Cassandra API esetében használja a [REST API](#cosmosdb-indexer-rest)utasításait.
++ **Cosmos db fióknak** az elsődleges vagy a másodlagos kapcsolatok karakterláncának kell lennie Cosmos DBból, és a és a is `AccountEndpoint` `AccountKey` . A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** a kapcsolódási karakterlánc végéhez, és válassza el a pontosvesszővel elválasztva a kapcsolódási karakterláncot. A Gremlin API és a Cassandra API esetében használja a [REST API](#cosmosdb-indexer-rest)utasításait.
 
 + Az **adatbázis** egy meglévő adatbázis a fiókból. 
 
@@ -128,7 +128,7 @@ A REST API használatával indexelheti Azure Cosmos db az összes indexelő munk
 A cikk korábbi részeiben már említettük, hogy [Azure Cosmos db indexelés](https://docs.microsoft.com/azure/cosmos-db/index-overview) és az [Azure Cognitive Search indexelési](search-what-is-an-index.md) indexelés különböző művelet. Cosmos DB indexeléshez alapértelmezés szerint a rendszer az összes dokumentumot automatikusan indexeli, kivéve a Cassandra API. Ha kikapcsolja az automatikus indexelést, a dokumentumok csak a saját vagy a dokumentumok AZONOSÍTÓjának használatával érhetők el. Az Azure Cognitive Search indexeléséhez Cosmos DB automatikus indexelést kell bekapcsolni az Azure Cognitive Search által indexelt gyűjteményben. Amikor regisztrál a Cosmos DB Cassandra API indexelő előzetes verziójára, útmutatást kap a Cosmos DB indexelés beállításával kapcsolatban.
 
 > [!WARNING]
-> Azure Cosmos DB a DocumentDB következő generációja. Korábban a **2017-11-11** -es API-verzióval `documentdb` használhatja a szintaxist. Ez azt jelentette, hogy az adatforrás típusát a következőként `cosmosdb` adja `documentdb`meg: vagy. Az API **2019-05-06** -es verziójától kezdve az Azure Cognitive Search API-k és `cosmosdb` a portál csak a jelen cikkben leírtaknak megfelelően támogatja a szintaxist. Ez azt jelenti, hogy az adatforrás típusának a Cosmos DB-végponthoz való kapcsolódáshoz is csatlakoznia kell `cosmosdb` .
+> Azure Cosmos DB a DocumentDB következő generációja. Korábban a **2017-11-11** -es API-verzióval használhatja a `documentdb` szintaxist. Ez azt jelentette, hogy az adatforrás típusát a következőként adja meg: `cosmosdb` vagy `documentdb` . Az API **2019-05-06** -es verziójától kezdve az Azure Cognitive Search API-k és a portál csak a `cosmosdb` jelen cikkben leírtaknak megfelelően támogatja a szintaxist. Ez azt jelenti, hogy az adatforrás típusának a `cosmosdb` Cosmos db-végponthoz való kapcsolódáshoz is csatlakoznia kell.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – bemenetek összegyűjtése a kérelemhez
 
@@ -176,7 +176,7 @@ A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalma
 | Mező   | Leírás |
 |---------|-------------|
 | **név** | Kötelező. Válasszon egy tetszőleges nevet az adatforrás-objektum megjelenítéséhez. |
-|**típusa**| Kötelező. Kell lennie `cosmosdb`. |
+|**típusa**| Kötelező. Kell lennie `cosmosdb` . |
 |**hitelesítő adatok** | Kötelező. Cosmos DB-kapcsolatok karakterláncának kell lennie.<br/>SQL-gyűjtemények esetén a kapcsolatok karakterláncai ebben a formátumban vannak:`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** karakterláncot a kapcsolódási sztringhez:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>A Gremlin gráfok és a Cassandra-táblázatok esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.<br/><br/>Kerülje a portok számát a végpont URL-címében. Ha a portszámot is tartalmazza, az Azure Cognitive Search nem tudja indexelni a Azure Cosmos DB-adatbázist.|
 | **tároló** | A következő elemeket tartalmazza: <br/>**név**: kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés**: nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amelyet az Azure Cognitive Search tud indexelni.<br/>A MongoDB API, a Gremlin API és a Cassandra API esetében a lekérdezések nem támogatottak. |
 | **dataChangeDetectionPolicy** | Ajánlott. Lásd: [módosított dokumentumok indexelése](#DataChangeDetectionPolicy) szakasz.|
@@ -186,7 +186,7 @@ A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalma
 Megadhat egy SQL-lekérdezést a beágyazott tulajdonságok vagy tömbök, a Project JSON-tulajdonságok és az indexelni kívánt adatszűréshez. 
 
 > [!WARNING]
-> Az egyéni lekérdezések nem támogatottak a **MongoDB API**, a **Gremlin API**és a `container.query` **Cassandra API**esetén: a paraméternek null értékűnek vagy elhagyott értéknek kell lennie. Ha egyéni lekérdezést kell használnia, kérjük, tudassa velünk a [felhasználói hangon](https://feedback.azure.com/forums/263029-azure-search).
+> Az egyéni lekérdezések nem támogatottak a **MONGODB API**, a **Gremlin api**és a **Cassandra API**esetén: a `container.query` paraméternek null értékűnek vagy elhagyott értéknek kell lennie. Ha egyéni lekérdezést kell használnia, kérjük, tudassa velünk a [felhasználói hangon](https://feedback.azure.com/forums/263029-azure-search).
 
 Példa dokumentumra:
 
@@ -247,9 +247,9 @@ Ha még nem rendelkezik ilyennel, [hozzon létre egy cél Azure Cognitive Search
 Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a forrás JSON-dokumentumok sémájával vagy az egyéni lekérdezési leképezés kimenetével.
 
 > [!NOTE]
-> A particionált gyűjtemények esetében az alapértelmezett dokumentum kulcsa Azure Cosmos DB `_rid` tulajdonsága, amelyet az Azure Cognitive Search automatikusan átnevez, `rid` mert a mezőnevek nem kezdődhetnek aláhúzás karakterrel. Emellett Azure Cosmos DB `_rid` értékek olyan karaktereket tartalmaznak, amelyek érvénytelenek az Azure Cognitive Search kulcsaiban. Emiatt az `_rid` értékek Base64 kódolású.
+> A particionált gyűjtemények esetében az alapértelmezett dokumentum kulcsa Azure Cosmos DB `_rid` tulajdonsága, amelyet az Azure Cognitive Search automatikusan átnevez, mert a `rid` mezőnevek nem kezdődhetnek aláhúzás karakterrel. Emellett Azure Cosmos DB `_rid` értékek olyan karaktereket tartalmaznak, amelyek érvénytelenek az Azure Cognitive Search kulcsaiban. Emiatt az `_rid` értékek Base64 kódolású.
 > 
-> A MongoDB-gyűjtemények esetében az Azure Cognitive Search automatikusan átnevezi `_id` a tulajdonságot a következőre: `id`.  
+> A MongoDB-gyűjtemények esetében az Azure Cognitive Search automatikusan átnevezi a tulajdonságot a következőre: `_id` `id` .  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>A JSON-adattípusok és az Azure Cognitive Search adattípusok közötti leképezés
 | JSON-adattípus | Kompatibilis cél index típusú mezők |
@@ -297,7 +297,7 @@ Az általánosan elérhető .NET SDK teljes paritással rendelkezik az általán
 
 ## <a name="indexing-changed-documents"></a>Módosított dokumentumok indexelése
 
-Az adatváltozás-észlelési szabályzat célja, hogy hatékonyan azonosítsa a módosított adatelemeket. Jelenleg az egyetlen támogatott szabályzat a [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) Azure Cosmos db által biztosított `_ts` (timestamp) tulajdonság, amely a következőképpen van megadva:
+Az adatváltozás-észlelési szabályzat célja, hogy hatékonyan azonosítsa a módosított adatelemeket. Jelenleg az egyetlen támogatott szabályzat a [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) `_ts` Azure Cosmos db által biztosított (timestamp) tulajdonság, amely a következőképpen van megadva:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -314,9 +314,9 @@ Ha egyéni lekérdezést használ, győződjön meg arról, hogy a `_ts` lekérd
 
 Az indexelés során fellépő növekményes előrehaladás biztosítja, hogy ha az indexelő végrehajtását átmeneti hibák vagy végrehajtási időkorlát miatt megszakítja, az indexelő elvégezheti, hogy a legközelebb Mikor fusson, és ne kelljen újraindexelni a teljes gyűjteményt. Ez különösen fontos a nagyméretű gyűjtemények indexelése során. 
 
-Ha egyéni lekérdezés használatakor szeretné engedélyezni a növekményes előrehaladást, győződjön meg arról, hogy a `_ts` lekérdezés az oszlop alapján rendeli az eredményeket. Ez lehetővé teszi, hogy az Azure Cognitive Search a meghibásodások jelenléte terén növekményes előrehaladást biztosítson.   
+Ha egyéni lekérdezés használatakor szeretné engedélyezni a növekményes előrehaladást, győződjön meg arról, hogy a lekérdezés az oszlop alapján rendeli az eredményeket `_ts` . Ez lehetővé teszi, hogy az Azure Cognitive Search a meghibásodások jelenléte terén növekményes előrehaladást biztosítson.   
 
-Bizonyos esetekben, még akkor is, ha a lekérdezés `ORDER BY [collection alias]._ts` tartalmaz egy záradékot, előfordulhat, hogy az Azure Cognitive Search nem következtet arra `_ts`, hogy a lekérdezést a által megrendelte. Megadhatja az Azure-Cognitive Search, hogy az eredmények a `assumeOrderByHighWaterMarkColumn` Configuration (konfiguráció) tulajdonság használatával legyenek rendezve. A célzás megadásához az alábbi módon hozza létre vagy frissítse az indexelő: 
+Bizonyos esetekben, még akkor is, ha a lekérdezés tartalmaz egy `ORDER BY [collection alias]._ts` záradékot, előfordulhat, hogy az Azure Cognitive Search nem következtet arra, hogy a lekérdezést a által megrendelte `_ts` . Megadhatja az Azure-Cognitive Search, hogy az eredmények a `assumeOrderByHighWaterMarkColumn` Configuration (konfiguráció) tulajdonság használatával legyenek rendezve. A célzás megadásához az alábbi módon hozza létre vagy frissítse az indexelő: 
 
     {
      ... other indexer definition properties
@@ -328,7 +328,7 @@ Bizonyos esetekben, még akkor is, ha a lekérdezés `ORDER BY [collection alias
 
 ## <a name="indexing-deleted-documents"></a>Törölt dokumentumok indexelése
 
-Ha a sorok törlődnek a gyűjteményből, általában törölni kívánja ezeket a sorokat a keresési indexből is. Az adattörlési észlelési szabályzat célja, hogy hatékonyan azonosítsa a törölt adatelemeket. Jelenleg az egyetlen támogatott házirend a házirend ( `Soft Delete` a törlés egy bizonyos rendezési jelzővel van megjelölve), amely a következőképpen van megadva:
+Ha a sorok törlődnek a gyűjteményből, általában törölni kívánja ezeket a sorokat a keresési indexből is. Az adattörlési észlelési szabályzat célja, hogy hatékonyan azonosítsa a törölt adatelemeket. Jelenleg az egyetlen támogatott házirend a `Soft Delete` házirend (a törlés egy bizonyos rendezési jelzővel van megjelölve), amely a következőképpen van megadva:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
@@ -336,7 +336,7 @@ Ha a sorok törlődnek a gyűjteményből, általában törölni kívánja ezeke
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
 
-Ha egyéni lekérdezést használ, győződjön meg arról, hogy a által `softDeleteColumnName` hivatkozott tulajdonság a lekérdezés szerint van-e kiválasztva.
+Ha egyéni lekérdezést használ, győződjön meg arról, hogy a által hivatkozott tulajdonság `softDeleteColumnName` a lekérdezés szerint van-e kiválasztva.
 
 Az alábbi példa egy olyan adatforrást hoz létre, amely egy törlési szabályzattal rendelkezik:
 

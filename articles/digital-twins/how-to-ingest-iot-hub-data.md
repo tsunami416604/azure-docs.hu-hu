@@ -1,5 +1,5 @@
 ---
-title: Telemetria betöltése IoT Hub
+title: Telemetria betöltése az IoT Hubról
 titleSuffix: Azure Digital Twins
 description: 'Lásd: az eszköz telemetria üzeneteinek betöltése IoT Hubról.'
 author: cschormann
@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 4d2b849df7371815a120e59cfff3d8bc7596b1ed
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612816"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725851"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure digitális Twins a IoT-eszközökről és más forrásokból származó adatokon alapul. Az Azure Digital Twins szolgáltatásban használható eszköz-adatforrások közös forrása [IoT hub](../iot-hub/about-iot-hub.md).
 
@@ -270,7 +273,7 @@ Most már rendelkezik egy Azure-függvénnyel, amely a IoT Hubból érkező forg
 
 Az Azure functions hibakeresése helyileg Event Grid triggerrel lehetséges. További információ erről: [Event Grid trigger helyi hibakeresése](../azure-functions/functions-debug-event-grid-trigger-local.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Digital Twins szolgáltatással való bejövő és kimenő adatforgalomról:
 * [Fogalmak: integráció más szolgáltatásokkal](concepts-integration.md)

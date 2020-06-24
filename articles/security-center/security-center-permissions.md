@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 06/12/2020
 ms.author: memildin
-ms.openlocfilehash: 16c2669dbb0a483a00d093871dfeeed65c5f9f20
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: e0988c60629cab2c6d7312e5067c31153b24e2dc
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669783"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688721"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
@@ -44,7 +44,7 @@ A következő táblázat a szerepköröket és az engedélyezett műveleteket mu
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |Biztonsági házirend szerkesztése|-|✔|-|-|✔|
 |Előfizetés díjszabási szintjének módosítása|-|✔|-|-|✔|
-|Automatikus kiépítés engedélyezése/letiltása|-|✔|-|-|✔|
+|Automatikus kiépítés engedélyezése/letiltása|-|✔|✔|-|✔|
 |Erőforrásokra vonatkozó biztonsági javaslatok alkalmazása</br> (és használjon [gyors javítást!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
 |Riasztások bezárása|-|✔|-|✔|✔|
 |Riasztások és javaslatok megtekintése|✔|✔|✔|✔|✔|
@@ -54,7 +54,7 @@ A következő táblázat a szerepköröket és az engedélyezett műveleteket mu
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk azt ismerteti, hogyan használja a Security Center a RBAC-t a felhasználók engedélyeinek hozzárendeléséhez és az egyes szerepkörökhöz engedélyezett műveletek azonosításához. Most, hogy már ismeri az előfizetés biztonsági állapotának figyeléséhez szükséges szerepkör-hozzárendeléseket, a biztonsági szabályzatok szerkesztését és a javaslatok alkalmazását, Ismerje meg a következőket:
 
 - [Biztonsági szabályzatok beállítása a Security Centerben](tutorial-security-policy.md)

@@ -5,11 +5,11 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128150"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712309"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows rendszerállapot biztonsági mentése a Resource Manager üzembe helyezése során
 
@@ -222,7 +222,7 @@ A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot
 
   ![IR befejezve](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>Kérdései vannak?
+## <a name="questions"></a>Kérdése van?
 
 Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](https://feedback.azure.com/forums/258995-azure-backup).
 

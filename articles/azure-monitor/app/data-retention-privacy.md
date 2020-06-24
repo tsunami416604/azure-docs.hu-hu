@@ -2,13 +2,13 @@
 title: Adatmegőrzés és tárolás az Azure Application Insightsban | Microsoft Docs
 description: Adatmegőrzési és adatvédelmi szabályzati nyilatkozat
 ms.topic: conceptual
-ms.date: 09/29/2019
-ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: d77eaa32c8487d1aa87626683b4c29bf1cee0e75
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275996"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718682"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés,-megőrzés és-tárolás Application Insights
 
@@ -52,10 +52,10 @@ A fő kategóriák a következők:
 * [Weblapok](../../azure-monitor/app/javascript.md) – oldal, felhasználói és munkamenetek száma. Oldal betöltési ideje Kivételek. Ajax-hívások.
 * Teljesítményszámlálók – memória, CPU, IO, hálózati kihasználtság.
 * Ügyfél-és kiszolgálói környezet – operációs rendszer, területi beállítás, eszköz típusa, böngésző, képernyőfelbontás.
-* [Kivételek](../../azure-monitor/app/asp-net-exceptions.md) és összeomlások – verem- `build id` **memóriaképek**, CPU-típus. 
+* [Kivételek](../../azure-monitor/app/asp-net-exceptions.md) és összeomlások – **verem-memóriaképek**, `build id` CPU-típus. 
 * [Függőségek](../../azure-monitor/app/asp-net-dependencies.md) – külső szolgáltatásokra irányuló hívások, például REST, SQL, Ajax. URI vagy a kapcsolatok karakterlánca, időtartam, sikeres, parancs.
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) – a tesztelés és a lépések időtartama, válaszok.
-* A [nyomkövetési naplók](../../azure-monitor/app/asp-net-trace-logs.md) és az [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md) - **minden kódot a naplókba vagy telemetria**.
+* A [nyomkövetési naplók](../../azure-monitor/app/asp-net-trace-logs.md) és az [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)  -  **minden kódot a naplókba vagy telemetria**.
 
 [További részletek](#data-sent-by-application-insights).
 
@@ -132,7 +132,7 @@ Ha az ügyfélnek meghatározott biztonsági követelményekkel kell konfigurál
 
 ###  <a name="net"></a>.Net
 
-Alapértelmezés `ServerTelemetryChannel` szerint az aktuális felhasználó helyi alkalmazás-adatmappáját `%localAppData%\Microsoft\ApplicationInsights` vagy ideiglenes mappáját `%TMP%`használja. (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) itt.)
+Alapértelmezés szerint `ServerTelemetryChannel` az aktuális felhasználó helyi alkalmazás-adatmappáját `%localAppData%\Microsoft\ApplicationInsights` vagy ideiglenes mappáját használja `%TMP%` . (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) itt.)
 
 
 Konfigurációs fájlon keresztül:
@@ -155,9 +155,9 @@ Kód használatával:
 
 ### <a name="netcore"></a>NetCore
 
-Alapértelmezés `ServerTelemetryChannel` szerint az aktuális felhasználó helyi alkalmazás-adatmappáját `%localAppData%\Microsoft\ApplicationInsights` vagy ideiglenes mappáját `%TMP%`használja. (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) itt.) Linux-környezetben a helyi tárterület le lesz tiltva, kivéve, ha meg van adva egy tárolási mappa.
+Alapértelmezés szerint `ServerTelemetryChannel` az aktuális felhasználó helyi alkalmazás-adatmappáját `%localAppData%\Microsoft\ApplicationInsights` vagy ideiglenes mappáját használja `%TMP%` . (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) itt.) Linux-környezetben a helyi tárterület le lesz tiltva, kivéve, ha meg van adva egy tárolási mappa.
 
-A következő kódrészlet bemutatja, hogyan állítható `ServerTelemetryChannel.StorageFolder` be az `ConfigureServices()` `Startup.cs` osztály metódusában:
+A következő kódrészlet bemutatja, hogyan állítható be `ServerTelemetryChannel.StorageFolder` az `ConfigureServices()` osztály metódusában `Startup.cs` :
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -167,21 +167,21 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 ### <a name="nodejs"></a>Node.js
 
-Alapértelmezés `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` szerint az adatmegőrzésre szolgál. A mappához való hozzáféréshez szükséges engedélyek az aktuális felhasználóra és rendszergazdákra korlátozódnak. (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) itt.)
+Alapértelmezés szerint az `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` adatmegőrzésre szolgál. A mappához való hozzáféréshez szükséges engedélyek az aktuális felhasználóra és rendszergazdákra korlátozódnak. (Lásd a [megvalósítást](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) itt.)
 
 A mappa előtagja `appInsights-node` felülbírálható a `Sender.TEMPDIR_PREFIX` [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)fájlban található statikus változó futásidejű értékének módosításával.
 
 ### <a name="javascript-browser"></a>JavaScript (böngésző)
 
-A [HTML5-munkamenet tárterülete](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) az adatmegőrzésre szolgál. Két különálló puffer van használatban: `AI_buffer` és `AI_sent_buffer`. A kötegelt telemetria, amely az elküldéses várakozásra vár, `AI_buffer`a következő helyen tárolódik:. Az imént elküldött telemetria akkor kerül be `AI_sent_buffer` , ha a betöltési kiszolgáló válaszol a sikeres fogadásra. A telemetria sikeres fogadásakor a rendszer eltávolítja az összes pufferből. Átmeneti hibák esetén (például ha egy felhasználó elveszti a hálózati kapcsolatot), a telemetria `AI_buffer` mindaddig megmarad, amíg nem fogadja el, vagy a betöltési kiszolgáló válaszol, hogy a telemetria érvénytelen (hibás séma vagy túl régi, például).
+A [HTML5-munkamenet tárterülete](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) az adatmegőrzésre szolgál. Két különálló puffer van használatban: `AI_buffer` és `AI_sent_buffer` . A kötegelt telemetria, amely az elküldéses várakozásra vár, a következő helyen tárolódik: `AI_buffer` . Az imént elküldött telemetria akkor kerül be, ha a betöltési `AI_sent_buffer` kiszolgáló válaszol a sikeres fogadásra. A telemetria sikeres fogadásakor a rendszer eltávolítja az összes pufferből. Átmeneti hibák esetén (például ha egy felhasználó elveszti a hálózati kapcsolatot), a telemetria mindaddig megmarad, `AI_buffer` amíg nem fogadja el, vagy a betöltési kiszolgáló válaszol, hogy a telemetria érvénytelen (hibás séma vagy túl régi, például).
 
-A telemetria- `false`pufferek letiltható [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) a beállításával. Ha a munkamenet-tároló ki van kapcsolva, a rendszer a helyi tömböt használja állandó tárolóként. Mivel a JavaScript SDK egy ügyfél-eszközön fut, a felhasználó a böngésző fejlesztői eszközein keresztül férhet hozzá ehhez a tárolási helyhez.
+A telemetria-pufferek letiltható a beállításával [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) `false` . Ha a munkamenet-tároló ki van kapcsolva, a rendszer a helyi tömböt használja állandó tárolóként. Mivel a JavaScript SDK egy ügyfél-eszközön fut, a felhasználó a böngésző fejlesztői eszközein keresztül férhet hozzá ehhez a tárolási helyhez.
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 
-Alapértelmezés szerint a OpenCensus Python SDK az aktuális felhasználói mappát `%username%/.opencensus/.azure/`használja. A mappához való hozzáféréshez szükséges engedélyek az aktuális felhasználóra és rendszergazdákra korlátozódnak. (Lásd a [megvalósítást](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) itt.) A megőrzött adataival ellátott mappa a telemetria létrehozó Python-fájl után lesz elnevezve.
+Alapértelmezés szerint a OpenCensus Python SDK az aktuális felhasználói mappát használja `%username%/.opencensus/.azure/` . A mappához való hozzáféréshez szükséges engedélyek az aktuális felhasználóra és rendszergazdákra korlátozódnak. (Lásd a [megvalósítást](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) itt.) A megőrzött adataival ellátott mappa a telemetria létrehozó Python-fájl után lesz elnevezve.
 
-A tárolási fájl helyét megváltoztathatja a használt exportőr konstruktorában lévő `storage_path` paraméterrel.
+A tárolási fájl helyét megváltoztathatja a `storage_path` használt exportőr konstruktorában lévő paraméterrel.
 
 ```python
 AzureLogHandler(
@@ -202,11 +202,11 @@ Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS
 
 |Platform/nyelv | Támogatás | További információ |
 | --- | --- | --- |
-| Azure App Services  | Támogatott, szükség lehet a konfigurációra. | A támogatást 2018 áprilisában jelentették be. Olvassa el a [konfigurációs adatokról](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)szóló közleményt.  |
-| Azure-függvényalkalmazások | Támogatott, szükség lehet a konfigurációra. | A támogatást 2018 áprilisában jelentették be. Olvassa el a [konfigurációs adatokról](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)szóló közleményt. |
+| Azure App Services  | Támogatott, szükség lehet a konfigurációra. | A támogatást 2018 áprilisában jelentették be. Olvassa el a [konfigurációs adatokról](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)szóló közleményt.  |
+| Azure-függvényalkalmazások | Támogatott, szükség lehet a konfigurációra. | A támogatást 2018 áprilisában jelentették be. Olvassa el a [konfigurációs adatokról](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)szóló közleményt. |
 |.NET | Támogatott, a konfiguráció a verziótól függően változik. | A .NET 4,7-es és korábbi verzióival kapcsolatos részletes konfigurációs információkhoz tekintse meg [ezeket az utasításokat](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|Állapotmonitor | Támogatott, konfigurálás szükséges | A Állapotmonitor az [operációs rendszer konfigurációja](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.net-konfigurációra](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) támaszkodik a TLS 1,2 támogatásához.
-|Node.js |  A v 10.5.0-ben támogatott konfigurációra lehet szükség. | Bármely alkalmazásspecifikus konfigurációhoz használja a [hivatalos Node. js TLS/SSL-dokumentációt](https://nodejs.org/api/tls.html) . |
+|Állapotmonitor | Támogatott, konfigurálás szükséges | A Állapotmonitor az [operációs rendszer konfigurációja](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  +  [.net-konfigurációra](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) támaszkodik a TLS 1,2 támogatásához.
+|Node.js |  A v 10.5.0-ben támogatott konfigurációra lehet szükség. | Bármely alkalmazásspecifikus konfigurációhoz használja a [hivatalos Node.js TLS/SSL-dokumentációt](https://nodejs.org/api/tls.html) . |
 |Java | Támogatott, a TLS 1,2-es JDK-támogatása a [jdk 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) és a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html)verzióban lett hozzáadva. | A JDK 8 [alapértelmezés szerint a TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)-et használja.  |
 |Linux | A Linux-disztribúciók általában az [OpenSSL](https://www.openssl.org) -t használják a TLS 1,2 támogatásához.  | Ellenőrizze az OpenSSL- [changelog](https://www.openssl.org/news/changelog.html) , hogy az OpenSSL verziója támogatott-e.|
 | Windows 8,0 – 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)használja.  |
@@ -277,19 +277,19 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 | Kérelmek |URL-cím, időtartam, válasz kódja |
 | Függőségek |Type (SQL, HTTP,...), kapcsolatok karakterlánca, vagy URI, szinkronizálás/aszinkron, időtartam, sikeres, SQL-utasítás (Állapotmonitor) |
 | **Kivételek** |Típus, **üzenet**, hívási verem, forrásfájl, sor száma,`thread id` |
-| Összeomlik |`Process id`, `parent process id`, `crash thread id`; alkalmazás-javítás `id`,, Build;  Kivétel típusa, címe, ok; eltorzított szimbólumok és regiszterek, bináris kezdő és záró címek, bináris név és elérési út, processzor típusa |
+| Összeomlik |`Process id`, `parent process id` , `crash thread id` ; alkalmazás-javítás, `id` , Build;  Kivétel típusa, címe, ok; eltorzított szimbólumok és regiszterek, bináris kezdő és záró címek, bináris név és elérési út, processzor típusa |
 | Nyomkövetés |**Üzenet** és súlyossági szint |
 | Teljesítményszámlálók |Processzoridő, rendelkezésre álló memória, kérelmek gyakorisága, kivételek száma, a folyamat saját bájtjai, i/o-sebesség, kérelem időtartama, kérelmek várólistájának hossza |
 | Rendelkezésre állás |Webteszt-válasz kódja, az egyes tesztelési lépések időtartama, teszt neve, időbélyeg, sikeres, válaszidő, tesztelési hely |
 | SDK-diagnosztika |Nyomkövetési üzenet vagy kivétel |
 
-[Az ApplicationInsights. config fájl szerkesztésével kikapcsolhatja az egyes adatmennyiségeket][config]
+[ApplicationInsights.configszerkesztésével kikapcsolhatja az egyes adatmennyiségeket][config]
 
 > [!NOTE]
 > Az ügyfél IP-címe a földrajzi hely kiértékelésére szolgál, de alapértelmezés szerint az IP-adatmennyiség már nem tárolódik, és az összes nulla a társított mezőbe íródik. Ha többet szeretne megtudni a személyes adatkezelésről, javasoljuk ezt a [cikket](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Ha IP-cím adatait kell tárolnia, az [IP-cím gyűjtésével kapcsolatos cikk](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) végigvezeti Önt a lehetőségein.
 
 ## <a name="credits"></a>Kreditek
-Ez a termék a [https://www.maxmind.com](https://www.maxmind.com)Maxmind által létrehozott GeoLite2-adatokból áll.
+Ez a termék a MaxMind által létrehozott GeoLite2-adatokból áll [https://www.maxmind.com](https://www.maxmind.com) .
 
 
 
