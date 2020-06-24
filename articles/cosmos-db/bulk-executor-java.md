@@ -5,16 +5,16 @@ author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: fec11b930be0487a7fbc0968c3c8a8003a2fb911
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559268"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260593"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Műveletek tömeges végrehajtása Azure Cosmos DB-adatokon a tömeges végrehajtási Java-kódtárral
 
@@ -133,7 +133,7 @@ A klónozott adattár a "\azure-cosmosdb-bulkexecutor-Java-Getting-started\sampl
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
-   A tömeges importáló létrehoz egy új adatbázist és egy gyűjteményt, amely az app. config fájlban megadott adatbázis-névvel, gyűjtemény nevével és átviteli értékkel rendelkezik. 
+   A tömeges importáló létrehoz egy új adatbázist és egy gyűjteményt, amely a App.config fájlban megadott adatbázis-névvel, gyűjtemény nevével és átviteli értékkel rendelkezik. 
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>A Azure Cosmos DBban tárolt adatmennyiségek tömeges frissítése
 
@@ -211,7 +211,7 @@ Tömeges végrehajtó könyvtár használata esetén vegye figyelembe a követke
 * Mivel egyetlen tömeges művelet API-végrehajtása nagy mennyiségű adatrészletet használ az ügyfélszámítógép CPU-és hálózati IO-jával. Ez úgy történik, hogy belsőleg több feladatot indít el, így elkerülhető, hogy az alkalmazás folyamatában több egyidejű feladat ne legyen végrehajtva a tömeges működésű API-hívások végrehajtása során. Ha egyetlen virtuális gépen futó egyetlen tömeges művelet API-hívása nem tudja felhasználni a teljes tároló átviteli sebességét (ha a tároló átviteli sebessége > 1 000 000 RU/s), érdemes lehet külön virtuális gépeket létrehozni a tömeges művelet API-hívások egyidejű végrehajtásához.
 
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a Maven csomag részleteiről és a tömeges végrehajtó Java-függvénytár kibocsátási megjegyzéséről:[tömeges végrehajtó SDK – részletek](sql-api-sdk-bulk-executor-java.md).
 
 

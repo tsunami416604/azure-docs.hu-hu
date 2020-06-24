@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261566"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692172"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
 Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. A Azure AD Connect (Sync) Azure AD Connect Health használatával történő figyelésével kapcsolatos információkért lásd: a [Azure ad Connect Health szinkronizálásának használata](how-to-connect-health-sync.md). Továbbá a Azure AD Connect Health Active Directory tartományi szolgáltatások figyelésével kapcsolatos további információkért lásd: a [Azure ad Connect Health használata AD DS használatával](how-to-connect-health-adds.md).
@@ -51,7 +51,7 @@ További metrikák kiválasztásához adjon meg egy időtartományt, vagy a csop
 
 |Csoportosítási szempont | Mit jelöl az adott csoportosítás, és miért hasznos? |
 | --- | --- |
-| Összes | Az összes AD FS-kiszolgáló által feldolgozott kérelmek teljes számát jeleníti meg.|
+| Mind | Az összes AD FS-kiszolgáló által feldolgozott kérelmek teljes számát jeleníti meg.|
 | Alkalmazás | Az összes kérelmet a célzott függő entitások alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, melyik alkalmazás hány százalékát fogadja a teljes forgalomnak. |
 |  Kiszolgáló |Az összes kérelmet az azokat feldolgozó kiszolgálók alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni a teljes forgalom terheléseloszlását.
 | Munkahelyi csatlakoztatás |Az összes kérelmet az alapján csoportosítja, hogy azok a munkahelyhez csatlakoztatott (ismert) eszközökről érkeznek-e. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, hogy erőforrásaihoz hozzáférnek-e az identitás-infrastruktúra számára ismeretlen eszközökről származó kérelmek. |
@@ -72,7 +72,7 @@ További metrikák kiválasztásához adjon meg egy időtartományt, vagy a csop
 
 |Csoportosítási szempont | Mit jelöl az adott csoportosítás, és miért hasznos? |
 | --- | --- |
-|Összes |Ez a mérőszám az összevonási szolgáltatást egy adott időszeletben használó felhasználók átlagos darabszámát adja meg. A felhasználók nincsenek csoportosítva. <br>Az átlag a választott időszelet függvénye. |
+|Mind |Ez a mérőszám az összevonási szolgáltatást egy adott időszeletben használó felhasználók átlagos darabszámát adja meg. A felhasználók nincsenek csoportosítva. <br>Az átlag a választott időszelet függvénye. |
 | Alkalmazás |Az átlagos felhasználószámot a célzott alkalmazás (jogcímfelhasználó alkalmazás) alapján csoportosítja. Ez a csoportosítás akkor hasznos, ha szeretné megtudni, melyik alkalmazást hány felhasználó használja. |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>Teljesítményfigyelés az AD FS szolgáltatáshoz

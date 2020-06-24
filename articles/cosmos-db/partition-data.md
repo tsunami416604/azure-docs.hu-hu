@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 19e4c61ba930bb9b127e2401174bcea3fd240dce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234212"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112778"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálás és horizontális skálázás az Azure Cosmos DB-ben
 
@@ -19,11 +19,11 @@ Ez a cikk a logikai és fizikai partíciók közötti kapcsolatot ismerteti. Eme
 
 ## <a name="logical-partitions"></a>Logikai partíciók
 
-A logikai partíciók olyan elemekből állnak, amelyek ugyanazzal a partíciós kulccsal rendelkeznek. Például egy olyan tárolóban, amely az élelmiszer-táplálkozással kapcsolatos adatokat tartalmaz, minden `foodGroup` elem tartalmaz egy tulajdonságot. A tároló partíciós kulcsaként is használható `foodGroup` . Olyan elemek csoportjai `foodGroup`, amelyek meghatározott értékekkel rendelkeznek, például `Beef Products``Baked Products`,, és `Sausages and Luncheon Meats`, különböző logikai partíciókat alkotnak. Nem kell aggódnia a logikai partíció törlésével kapcsolatban az alapul szolgáló adat törlésekor.
+A logikai partíciók olyan elemekből állnak, amelyek ugyanazzal a partíciós kulccsal rendelkeznek. Például egy olyan tárolóban, amely az élelmiszer-táplálkozással kapcsolatos adatokat tartalmaz, minden elem tartalmaz egy `foodGroup` tulajdonságot. A `foodGroup` tároló partíciós kulcsaként is használható. Olyan elemek csoportjai, amelyek meghatározott értékekkel rendelkeznek `foodGroup` , például,, `Beef Products` `Baked Products` és `Sausages and Luncheon Meats` , különböző logikai partíciókat alkotnak. Nem kell aggódnia a logikai partíció törlésével kapcsolatban az alapul szolgáló adat törlésekor.
 
 A logikai partíció az adatbázis-tranzakciók hatókörét is meghatározza. A logikai partíción belüli elemeket egy [Pillanatkép-elkülönítéssel rendelkező tranzakció](database-transactions-optimistic-concurrency.md)használatával frissítheti. Amikor új elemeket adnak hozzá egy tárolóhoz, a rendszer transzparens módon létrehozza az új logikai partíciókat.
 
-A tárolóban található logikai partíciók száma nincs korlátozva. Minden logikai partíció akár 20 GB-ot is tárolhat. A jó partíciós kulcs választása a lehetséges értékek széles választékával rendelkezik. Például egy olyan tárolóban, ahol minden elem tartalmaz egy `foodGroup`tulajdonságot, a `Beef Products` logikai PARTÍCIÓN belüli adatok 20 GB-ig növekednek. A lehetséges értékek széles választékával rendelkező [partíciós kulcs kiválasztásával](partitioning-overview.md#choose-partitionkey) biztosítható, hogy a tároló méretezhető legyen.
+A tárolóban található logikai partíciók száma nincs korlátozva. Minden logikai partíció akár 20 GB-ot is tárolhat. A jó partíciós kulcs választása a lehetséges értékek széles választékával rendelkezik. Például egy olyan tárolóban, ahol minden elem tartalmaz egy `foodGroup` tulajdonságot, a `Beef Products` logikai partíción belüli adatok 20 GB-ig növekednek. A lehetséges értékek széles választékával rendelkező [partíciós kulcs kiválasztásával](partitioning-overview.md#choose-partitionkey) biztosítható, hogy a tároló méretezhető legyen.
 
 ## <a name="physical-partitions"></a>Fizikai partíciók
 
@@ -40,11 +40,11 @@ A tárolók számára kiépített átviteli sebesség egyenletesen oszlik el a f
 
 A tároló fizikai partícióit a Azure Portal **metrika** panelének **Storage (tárolás** ) szakaszában tekintheti meg:
 
-[![Fizikai partíciók](./media/partition-data/view-partitions-zoomed-out.png) számának megtekintése](./media/partition-data/view-partitions-zoomed-in.png#lightbox)
+:::image type="content" source="./media/partition-data/view-partitions-zoomed-out.png" alt-text="Fizikai partíciók számának megtekintése" lightbox="./media/partition-data/view-partitions-zoomed-in.png" ::: 
 
-Ebben a példában a partíciós kulcsként `/foodGroup` kiválasztott tárolóban a három téglalap egy fizikai partíciót jelöl. A rendszerképben a **partíciós kulcs tartománya** ugyanaz, mint a fizikai partíció. A kiválasztott fizikai partíció három logikai partíciót tartalmaz: `Beef Products`, `Vegetable and Vegetable Products`és `Soups, Sauces, and Gravies`.
+Ebben a példában a `/foodGroup` partíciós kulcsként kiválasztott tárolóban a három téglalap egy fizikai partíciót jelöl. A rendszerképben a **partíciós kulcs tartománya** ugyanaz, mint a fizikai partíció. A kiválasztott fizikai partíció három logikai partíciót tartalmaz: `Beef Products` , `Vegetable and Vegetable Products` és `Soups, Sauces, and Gravies` .
 
-Ha a másodpercenkénti adat18 000 átviteli kapacitást (RU/s) is kiépítjük, akkor a három fizikai partíció 1/3 a teljes kiépített átviteli sebesség alapján. A kiválasztott fizikai partíción belül a logikai partíció kulcsai `Beef Products` `Vegetable and Vegetable Products`, és `Soups, Sauces, and Gravies` együttesen a fizikai partíció 6 000 kiépített ru/s-t használhatják. Mivel a kiépített átviteli sebesség egyenletesen oszlik meg a tároló fizikai partíciói között, fontos, hogy olyan partíciós kulcsot válasszon, amely egyenletesen osztja el az átviteli sebességet [a megfelelő logikai partíciós kulcs kiválasztásával](partitioning-overview.md#choose-partitionkey). Ha olyan partíciós kulcsot választ, amely egyenletesen osztja el az átviteli sebességet a logikai partíciók között, akkor gondoskodni fog arról, hogy a fizikai partíciók átviteli sebessége egyensúlyban legyen.
+Ha a másodpercenkénti adat18 000 átviteli kapacitást (RU/s) is kiépítjük, akkor a három fizikai partíció 1/3 a teljes kiépített átviteli sebesség alapján. A kiválasztott fizikai partíción belül a logikai partíció kulcsai `Beef Products` , `Vegetable and Vegetable Products` és `Soups, Sauces, and Gravies` együttesen a fizikai partíció 6 000 kiépített ru/s-t használhatják. Mivel a kiépített átviteli sebesség egyenletesen oszlik meg a tároló fizikai partíciói között, fontos, hogy olyan partíciós kulcsot válasszon, amely egyenletesen osztja el az átviteli sebességet [a megfelelő logikai partíciós kulcs kiválasztásával](partitioning-overview.md#choose-partitionkey). Ha olyan partíciós kulcsot választ, amely egyenletesen osztja el az átviteli sebességet a logikai partíciók között, akkor gondoskodni fog arról, hogy a fizikai partíciók átviteli sebessége egyensúlyban legyen.
 
 ## <a name="replica-sets"></a>Replikakészlet
 
@@ -54,7 +54,7 @@ A legtöbb kisméretű Cosmos-tároló csak egyetlen fizikai partíciót igénye
 
 Az alábbi képen látható, hogyan vannak leképezve a logikai partíciók a globálisan elosztott fizikai partíciókhoz:
 
-![Azure Cosmos DB particionálást bemutató rendszerkép](./media/partition-data/logical-partitions.png)
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Azure Cosmos DB particionálást bemutató rendszerkép" border="false":::
 
 ## <a name="next-steps"></a>További lépések
 

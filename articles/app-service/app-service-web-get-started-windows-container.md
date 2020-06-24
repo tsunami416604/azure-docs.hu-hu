@@ -4,12 +4,12 @@ description: Az első egyéni Windows-tároló üzembe helyezése Azure App Serv
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: cd6b78e5fd824cc013cc946d23677237923f485e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0689e46556c4ddfddde073d79886d5cb556fde49
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80047104"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205662"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Egyéni Windows-tároló futtatása az Azure-ban (előzetes verzió)
 
@@ -26,8 +26,8 @@ Az oktatóanyag elvégzéséhez:
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> -et a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal. Ha már telepítette a Visual Studio 2019-et:
 
-    - A**frissítések keresése**lehetőség **kiválasztásával** > telepítse a legújabb frissítéseket a Visual Studióban.
-    - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök** > **beolvasása eszközök és szolgáltatások beszerzése lehetőség**kiválasztásával.
+    - A **Help**  >  **frissítések keresése**lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
+    - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök**  >  **beolvasása eszközök és szolgáltatások beszerzése lehetőség**kiválasztásával.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
 
@@ -37,7 +37,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 1. Az **új projekt létrehozása**területen keresse meg és válassza a **ASP.net webalkalmazás (.NET-keretrendszer)** elemet a C# számára, majd kattintson a **tovább**gombra.
 
-1. Az **új projekt konfigurálása**lapon nevezze el az alkalmazás _myFirstAzureWebApp_, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új projekt konfigurálása**lapon nevezze el az alkalmazás _myfirstazurewebapp_, majd válassza a **Létrehozás**lehetőséget.
 
    ![A webalkalmazás-projekt konfigurálása](./media/app-service-web-get-started-windows-container/configure-web-app-project-container.png)
 
@@ -51,17 +51,17 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 1. Szüksége van egy [támogatott szülő rendszerképre](#use-a-different-parent-image). Módosítsa a szülőrendszerképet a `FROM` sor a következő kódra való lecserélésével, majd mentse a fájlt:
 
-   ```Dockerfile
+   ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
    ```
 
-1. A Visual Studio menüjében válassza a **hibakeresés** > **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
+1. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
 
    ![Az alkalmazás futtatása helyileg](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
 ## <a name="publish-to-docker-hub"></a>Közzététel a Docker Hubon
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **myFirstAzureWebApp** projektre, és válassza a **Közzététel**lehetőséget.
+1. A **megoldáskezelő**kattintson a jobb gombbal a **myfirstazurewebapp** projektre, és válassza a **Közzététel**lehetőséget.
 
 1. Válassza a **app Service** lehetőséget, majd válassza a **Közzététel**lehetőséget.
 
@@ -117,11 +117,11 @@ Várjon néhány percet, és próbálkozzon újra, amíg meg nem jelenik az ASP.
 
 ![Windows-tároló alkalmazás fut](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
-**Gratulálok!** Első egyéni Windows-tárolója immár fut az Azure App Service-ben.
+**Gratulálunk!** Első egyéni Windows-tárolója immár fut az Azure App Service-ben.
 
 ## <a name="see-container-start-up-logs"></a>A tároló rendszerindítási naplóinak megtekintése
 
-A Windows-tároló betöltése hosszabb időbe telhet. Ha szeretné megtekinteni az előrehaladást, navigáljon a következő URL-címhez, és cserélje * \<le APP_NAME>* az alkalmazás nevére.
+A Windows-tároló betöltése hosszabb időbe telhet. Ha szeretné megtekinteni a folyamatot, keresse meg a következő URL-címet, *\<app_name>* és cserélje le az alkalmazás nevét.
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```
@@ -138,22 +138,22 @@ A streamelt naplók a következőképpen néznek ki:
 
 ## <a name="update-locally-and-redeploy"></a>Frissítés helyileg és ismételt üzembe helyezés
 
-1. A Visual Studióban **Megoldáskezelőban**nyissa meg a **views** > **Home** > **index. cshtml**.
+1. A Visual Studióban **Megoldáskezelőban**nyissa meg a **views**  >  **Home**  >  **index. cshtml**.
 
 1. Keresse meg a `<div class="jumbotron">` HTML-címkét felül, és cserélje le az egész elemet az alábbi kódra:
 
-   ```HTML
+   ```html
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
        <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
    </div>
    ```
 
-1. Az Azure-ba történő ismételt üzembe helyezéshez kattintson a jobb gombbal a **myFirstAzureWebApp** projektre **megoldáskezelő** , majd válassza a **Közzététel**lehetőséget.
+1. Az Azure-ba történő ismételt üzembe helyezéshez kattintson a jobb gombbal a **myfirstazurewebapp** projektre **megoldáskezelő** , majd válassza a **Közzététel**lehetőséget.
 
 1. A közzétételi oldalon válassza a **Publish** (Közzététel) elemet, és várja meg, amíg a közzététel végbemegy.
 
-1. Ahhoz, hogy az App Service-nek előírhassa az új rendszerkép a Docker Hubból történő lekérését, az alkalmazás újraindítása szükséges. A portál alkalmazás lapján kattintson az **Újraindítás** > **Igen**gombra.
+1. Ahhoz, hogy az App Service-nek előírhassa az új rendszerkép a Docker Hubból történő lekérését, az alkalmazás újraindítása szükséges. A portál alkalmazás lapján kattintson az **Újraindítás**  >  **Igen**gombra.
 
    ![Webalkalmazás újraindítása az Azure-ban](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
 

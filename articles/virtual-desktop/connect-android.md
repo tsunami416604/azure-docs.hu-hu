@@ -4,16 +4,16 @@ description: Kapcsolódás a Windows rendszerű virtuális asztalhoz az Android-
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6c1ffb4b1c0018cf56771d3fea56fe56d151bae3
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a7ca15a301de3c54195c0978aa31121c3624a98a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612928"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209453"
 ---
 # <a name="connect-with-the-android-client"></a>Kapcsolódás az Android-ügyféllel
 
@@ -22,7 +22,7 @@ ms.locfileid: "82612928"
 >[!IMPORTANT]
 >Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/connect-android-2019.md).
 >
-> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 >[!NOTE]
@@ -40,9 +40,9 @@ Fizessen elő a rendszergazda által biztosított hírcsatornára, hogy lekérje
 
 Előfizetés a hírcsatornára:
 
-1. A csatlakoztatási központban koppintson **+** a elemre, majd koppintson a **távoli erőforrás-hírcsatorna**lehetőségre.
+1. A csatlakoztatási központban koppintson a **+** elemre, majd koppintson a **távoli erőforrás-hírcsatorna**lehetőségre.
 2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címe** mezőbe. A hírcsatorna URL-címe lehet URL vagy e-mail-cím.
-   - Ha URL-címet használ, használja a rendszergazdát, aki a szokásos módon <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>adta meg.
+   - Ha URL-címet használ, használja a rendszergazdát, aki a szokásos módon adta meg <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - E-mail-cím használatához adja meg az e-mail-címét. Az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda úgy konfigurálta a kiszolgálót.
 3. Koppintson a **tovább**gombra.
 4. Ha a rendszer kéri, adja meg a hitelesítő adatait.

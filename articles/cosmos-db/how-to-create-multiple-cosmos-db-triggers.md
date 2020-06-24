@@ -3,21 +3,21 @@ title: Több független Azure Functions eseményindító létrehozása a Cosmos 
 description: Megtudhatja, hogyan konfigurálhat több független Azure Functions eseményindítót a Cosmos DBhoz eseményvezérelt architektúrák létrehozásához.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604940"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261596"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Több Azure Functions eseményindító létrehozása a Cosmos DBhoz
 
 Ez a cikk azt ismerteti, hogyan konfigurálhat több Azure Functions-eseményindítót a Cosmos DB-hez úgy, hogy párhuzamosan működjenek és egymástól függetlenül reagáljanak a módosításokra.
 
-![Kiszolgáló nélküli eseményvezérelt függvények a Azure Functions eseményindítóval a Cosmos DB és a bérletek tárolójának megosztásakor](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="Kiszolgáló nélküli eseményvezérelt függvények a Azure Functions eseményindítóval a Cosmos DB és a bérletek tárolójának megosztásakor" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>Eseményvezérelt architektúra-követelmények
 
@@ -38,13 +38,13 @@ Ennek a cikknek a célja a második lehetőség megvalósítása.
 
 ## <a name="configuring-a-shared-leases-container"></a>Megosztott bérletek tárolójának konfigurálása
 
-A megosztott bérletek tárolójának konfigurálásához az eseményindítók esetében az egyetlen további konfigurációt kell hozzáadnia `LeaseCollectionPrefix` [, ha C#](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) vagy `leaseCollectionPrefix` [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) használ a JavaScript használata esetén. Az attribútum értékének logikai leírónak kell lennie az adott triggernél.
+A megosztott bérletek tárolójának konfigurálásához az eseményindítók esetében az egyetlen további konfigurációt kell hozzáadnia, `LeaseCollectionPrefix` [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) ha C# vagy `leaseCollectionPrefix` [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) használ a JavaScript használata esetén. Az attribútum értékének logikai leírónak kell lennie az adott triggernél.
 
-Ha például három eseményindítóval rendelkezik: egy olyan e-maileket küld, amelyek összesítést végeznek egy anyagbeli nézet létrehozásához, és az egyiket, amely egy másik tárhelyre küldi a módosításokat, akkor a későbbi elemzéshez az `LeaseCollectionPrefix` "e-mailek" kifejezést hozzárendelheti a másodikhoz, "az" anyagként ", a" Analytics "pedig a harmadikhoz.
+Ha például három eseményindítóval rendelkezik: egy olyan e-maileket küld, amelyek összesítést végeznek egy anyagbeli nézet létrehozásához, és az egyiket, amely egy másik tárhelyre küldi a módosításokat, akkor a későbbi elemzéshez az " `LeaseCollectionPrefix` e-mailek" kifejezést hozzárendelheti a másodikhoz, "az" anyagként ", a" Analytics "pedig a harmadikhoz.
 
 A fontos rész az, hogy mindhárom eseményindító **használhatja ugyanazt a bérletek tároló konfigurációját** (fiók, adatbázis és tároló neve).
 
-A C#-attribútumot használó, `LeaseCollectionPrefix` nagyon egyszerű mintakód a következőképpen fog kinézni:
+A `LeaseCollectionPrefix` C#-attribútumot használó, nagyon egyszerű mintakód a következőképpen fog kinézni:
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-A JavaScript esetében a konfigurációt a `function.json` fájlra is alkalmazhatja a következő `leaseCollectionPrefix` attribútummal:
+A JavaScript esetében a konfigurációt a fájlra is alkalmazhatja a következő `function.json` `leaseCollectionPrefix` attribútummal:
 
 ```json
 {

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6b91e36ee09aa855c119add2c0eb268cf8b97393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07a6b84569fe0356267440e38b31ac738b2659d6
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731817"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260831"
 ---
 # <a name="step-3-validate-connectivity"></a>3. lépés: a kapcsolat ellenőrzése
 
@@ -30,7 +30,7 @@ Miután telepítette a napló-továbbítót (az 1. lépésben), és úgy konfigu
 - Emelt szintű engedélyekkel (sudo) kell rendelkeznie a log továbbító számítógépén.
 
 - Telepítenie kell a Pythont a naplózási továbbító számítógépén.<br>
-A parancs `python –version` használatával keresse meg a következőt:.
+A parancs használatával keresse meg a következőt: `python –version` .
 
 ## <a name="how-to-validate-connectivity"></a>A kapcsolat érvényesítése
 
@@ -76,7 +76,7 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
 
     - Konfigurációs fájl:`/etc/rsyslog.d/security-config-omsagent.conf`
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. Ellenőrzi, hogy a syslog démon a 514-es porton fogad-e adatgyűjtést.

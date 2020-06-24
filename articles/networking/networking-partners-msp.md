@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 0db3d46edf1b6bb0b425235654824e26293eb4a9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ed94ff96d926630280b379c8c0c3eefb0c12f2ae
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800487"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209436"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Tudnivalók az Azure hálózatkezelési MSP-partnereiről
 
@@ -28,9 +28,9 @@ Az ügyfelek az Azure Marketplace-en vagy közvetlenül az MSP-ből vásárolhat
 
 Az ebben a szakaszban található hivatkozásokra kattintva további információt találhat az Azure hálózati MSP-partnerek által kínált felügyelt felhőalapú hálózati szolgáltatásokról. Ha a Cloud Network Services-partner nem szerepel az alábbi szakaszban, akkor a szolgáltató vegye fel velünk a kapcsolatot. Felvehetik velünk a kapcsolatot, ha e-mailt küldenek a címre ManagedVirtualWAN@microsoft.com . 
 
-| **MSP** | **Cloud Network Transformation Services** | **Felügyelt ExpressRoute** | **Felügyelt virtuális WAN** |
-| ---| ---| ---| ---|
-|[ANS csoport, Egyesült Királyság](https://www.ans.co.uk/)|[Azure Managed SVC + ANS Glass 10wk implementáció](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
+| **MSP** | **Cloud Network Transformation Services** | **Felügyelt ExpressRoute** | **Felügyelt virtuális WAN** | **Felügyelt saját peremhálózati zónák**|
+| ---| ---| ---| ---| ---|
+|[ANS csoport, Egyesült Királyság](https://www.ans.co.uk/)|[Azure Managed SVC + ANS Glass 10wk implementáció](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|[ExpressRoute & kapcsolat: 2 hetes Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_er)|[Azure Virtual WAN + Fortinet: 2 hetes Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_vw)|||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Networks Azure-kapcsolat](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Networks Azure-beli virtuális WAN](https://azuremarketplace.microsoft.com/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Hálózati transzformációs tanácsadás: 1 – HR értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting); [BT Cloud-kapcsolat az Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview) -ban|[BT Cloud-kapcsolat Azure-ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[BT Cloud-kapcsolat Azure-VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
 |[Kialakulás](https://www.coevolve.com/services/azure-networking-services/)|||[Felügyelt VMware SD-WAN virtuális Edge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
@@ -48,10 +48,11 @@ Az ebben a szakaszban található hivatkozásokra kattintva további informáci�
 |[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure hálózati tanácsadó szolgáltatás: 1 – hét értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Azure Assessment szolgáltatás: 1Week](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure-áttelepítés: 3 hetes Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
 |[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[Felügyelt Azure-ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[Felügyelt virtuális WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
+|[Technikai Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|[E2E által felügyelt hálózati megoldások](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-network-transformstrategy?tab=Overview)|||[Azure Private LTE MSP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-networking-azureprivate5g?tab=Overview)|
 |[Éberség](https://vigilant.it/manage-cloud-service/)|[Azure Health-ellenőrzés: 5 napos Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 napos megvalósítás](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis által felügyelt ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[A Vandis által felügyelt VWAN Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Palo Alto-hálózatokkal felügyelt VWAN-Vandis](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Az Azure piactéren a következő Azure hálózati MSP-partnerek által kínált új felügyelt biztonsági szolgáltatásokat és felügyelt MEC-szolgáltatásokat kínáljuk: [Amdocs](https://www.amdocs.com/); [AXESDN](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);  [Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX elérés](https://www.ixreach.com/services/sdn-cloud-connect/);  [Felhő](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Technikai Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Összevont vezeték nélküli](https://www.federatedwireless.com/caas/)
+Az Azure piactéren a következő Azure hálózati MSP-partnerek által kínált új felügyelt biztonsági szolgáltatásokat és felügyelt MEC-szolgáltatásokat kínáljuk: [Amdocs](https://www.amdocs.com/); [AXESDN](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);  [Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX elérés](https://www.ixreach.com/services/sdn-cloud-connect/);  [Felhő](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Összevont vezeték nélküli](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute-partnerek
 

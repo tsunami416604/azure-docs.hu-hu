@@ -3,15 +3,15 @@ title: Azure Cosmos DB Connector Power BI oktatóanyaga
 description: Ez a Power BI oktatóanyag a JSON importálására, az éleslátó jelentések létrehozására és az adatmegjelenítésre az Azure Cosmos DB és Power BI összekötő használatával.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89d7e46563182bf7808eb118f4526571c631fa23
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69616804"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262514"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok vizualizációja a Power BI-összekötő használatával
 
@@ -46,7 +46,7 @@ Az Power BI oktatóanyag utasításait követve ellenőrizze, hogy rendelkezik-e
 
       * **Gyűjtési átviteli sebesség:** 1000 
 
-A jelentések a PowerBI.com-ben való megosztásához fiókkal kell rendelkeznie a PowerBI.com-ben.  További információ a Power BI és a Power BI Proról: [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
+A jelentések a PowerBI.com-ben való megosztásához fiókkal kell rendelkeznie a PowerBI.com-ben.  További információ a Power BI és a Power BI Proról: [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) .
 
 ## <a name="lets-get-started"></a>Első lépések
 Ebben az oktatóanyagban képzeljük el, hogy Ön a geológus a világ különböző pontjain tanul. A vulkáni adatfájlok tárolása egy Azure Cosmos DB fiókban történik, a JSON-dokumentum formátuma pedig a következő:
@@ -120,7 +120,7 @@ A vulkáni adatok beolvasása a Azure Cosmos DB-fiókból, és az adatok megjele
     ![Power BI oktatóanyag a Azure Cosmos DB Power BI összekötőhöz – koordináták listája](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. A koordináták tömb összeolvasztásához hozzon létre egy LatLong nevű **Egyéni oszlopot** .  Válassza az **oszlop hozzáadása** menüszalagot, és kattintson az **Egyéni oszlop**elemre.  Megjelenik az **Egyéni oszlop** ablak.
 8. Adja meg az új oszlop nevét, például LatLong.
-9. Ezután adja meg az új oszlop egyéni képletét.  Példánkban a szélességi és a hosszúsági értékeket egy vesszővel elválasztva fogjuk összefűzve, az alábbi képlettel: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. Kattintson az **OK** gombra.
+9. Ezután adja meg az új oszlop egyéni képletét.  Példánkban a szélességi és a hosszúsági értékeket egy vesszővel elválasztva fogjuk összefűzve, az alábbi képlettel: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Kattintson az **OK** gombra.
    
     Az adatelemzési kifejezésekkel (DAX) kapcsolatos további információkért, beleértve a DAX-függvényeket is, tekintse meg a [DAX alapjai Power bi Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
    
@@ -132,7 +132,7 @@ A vulkáni adatok beolvasása a Azure Cosmos DB-fiókból, és az adatok megjele
     
     Ha hibaüzenetet kap az új oszlopban, győződjön meg arról, hogy a lekérdezési beállítások alatt alkalmazott lépések megfelelnek a következő ábrának:
     
-    ![Az alkalmazott lépések forrása, navigáció, kibontott dokumentum, kibontott dokumentum. hely, egyéni Hozzáadás](./media/powerbi-visualize/power-bi-applied-steps.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Az alkalmazott lépések forrása, navigáció, kibontott dokumentum, kibontott dokumentum. hely, egyéni Hozzáadás":::
     
     Ha a lépések eltérnek, törölje a további lépéseket, és próbálkozzon újra az egyéni oszlop hozzáadásával. 
 
@@ -179,11 +179,11 @@ Most, hogy már van egy jelentés, lehetővé teszi a megosztást a PowerBI.com
 
 Amikor a jelentést Power BI Desktopról a PowerBI.com-be teszi közzé, egy **jelentést** és egy **adatkészletet** hoz létre a PowerBI.com-bérlőben. Ha például közzétett egy **PowerBITutorial** nevű jelentést a PowerBI.com-ben, akkor a PowerBITutorial a PowerBI.com-on található **jelentések** és **adatkészletek** szakaszban is megjelenik.
 
-   ![Képernyőkép az új jelentésről és adatkészletről a PowerBI.com-ben](./media/powerbi-visualize/powerbi-reports-datasets.png)
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Képernyőkép az új jelentésről és adatkészletről a PowerBI.com-ben":::
 
 Megosztható irányítópult létrehozásához kattintson az **élő oldal rögzítése** gombra a PowerBI.com-jelentésben.
 
-   ![Képernyőkép az új jelentésről és adatkészletről a PowerBI.com-ben](./media/powerbi-visualize/power-bi-pin-live-tile.png)
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Képernyőkép az új jelentésről és adatkészletről a PowerBI.com-ben":::
 
 Ezután kövesse a [csempe rögzítése a jelentésből](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) című témakör utasításait egy új irányítópult létrehozásához. 
 
@@ -194,13 +194,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    

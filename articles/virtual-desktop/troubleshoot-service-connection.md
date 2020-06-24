@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 05/20/2020
+ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7bf05fe039de2ab9e25495f9e2652fde8fac34e1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 56a31caeefb3589527fdbbac118fa3a544a0d1a1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747697"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208893"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows rendszerű virtuális asztali szolgáltatások kapcsolatai
 
@@ -33,15 +33,17 @@ Küldhet visszajelzést, és megvitathatja a Windows rendszerű virtuális aszta
 
 A felhasználók elindíthatják Távoli asztal-ügyfeleket, és képesek hitelesíteni magukat, azonban a felhasználó nem lát ikonokat a webes felderítési hírcsatornában.
 
-Győződjön meg arról, hogy a problémát jelentő felhasználó a következő parancssor használatával van hozzárendelve az alkalmazási csoportokhoz:
+1. Győződjön meg arról, hogy a problémát jelentő felhasználó a következő parancssor használatával van hozzárendelve az alkalmazási csoportokhoz:
 
-```PowerShell
-Get-AzRoleAssignment -SignInName <userupn>
-```
+     ```powershell
+     Get-AzRoleAssignment -SignInName <userupn>
+     ```
 
-Győződjön meg arról, hogy a felhasználó a megfelelő hitelesítő adatokkal jelentkezik be.
+2. Győződjön meg arról, hogy a felhasználó a megfelelő hitelesítő adatokkal jelentkezik be.
 
-Ha a webes ügyfél használatban van, ellenőrizze, hogy nincsenek-e gyorsítótárazott hitelesítő adatok.
+3. Ha a webes ügyfél használatban van, ellenőrizze, hogy nincsenek-e gyorsítótárazott hitelesítő adatok.
+
+4. Ha a felhasználó egy Azure Active Directory (AD) felhasználói csoport tagja, győződjön meg róla, hogy a felhasználói csoport a terjesztési csoport helyett biztonsági csoport. A Windows virtuális asztal nem támogatja az Azure AD terjesztési csoportokat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,8 +3,8 @@ title: Összevont egyszeri bejelentkezés konfigurálása nem Gallery-alkalmazá
 description: Összevont egyszeri bejelentkezés konfigurálása egy olyan egyéni, nem katalógusbeli alkalmazáshoz, amelyet integrálni szeretne az Azure AD-vel
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d49ec5ef80b284aa6b1a305b037d19dae34870
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274594"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763550"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Összevont egyszeri bejelentkezés konfigurálása nem katalógusos alkalmazásokhoz
 
@@ -79,7 +79,7 @@ Az Azure AD-katalógusban nem szereplő alkalmazásokra vonatkozó egyszeri beje
 
     2. Kattintson a **Mentés gombra.** Megjelenik az új attribútum a táblán.
 
-14. kattintson **az &lt;alkalmazás nevének&gt; konfigurálása** elemre az alkalmazásban az egyszeri bejelentkezés konfigurálásához szükséges dokumentáció eléréséhez. Emellett rendelkezik az alkalmazáshoz szükséges Azure AD-URL-címekkel és tanúsítvánnyal.
+14. kattintson **az &lt; alkalmazás nevének &gt; konfigurálása** elemre az alkalmazásban az egyszeri bejelentkezés konfigurálásához szükséges dokumentáció eléréséhez. Emellett rendelkezik az alkalmazáshoz szükséges Azure AD-URL-címekkel és tanúsítvánnyal.
 
 15. [Felhasználók kiosztása az alkalmazáshoz.](#assign-users-to-the-application)
 
@@ -140,7 +140,7 @@ Az alkalmazás metaadatainak vagy tanúsítványának az Azure AD-ből való let
 
 8. Nyissa meg az **SAML aláíró tanúsítvány** szakaszt, majd kattintson az oszlop értékének **letöltése** elemre. Attól függően, hogy az alkalmazásnak hogyan kell konfigurálnia az egyszeri bejelentkezést, megjelenik a metaadatok XML-fájljának vagy a tanúsítványnak a letöltésére szolgáló lehetőség.
 
-Az Azure AD egy URL-címet is biztosít a metaadatok beszerzéséhez. Kövesse ezt a mintát az alkalmazáshoz tartozó metaadatok URL-címének `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`lekéréséhez:.
+Az Azure AD egy URL-címet is biztosít a metaadatok beszerzéséhez. Kövesse ezt a mintát az alkalmazáshoz tartozó metaadatok URL-címének lekéréséhez: `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` .
 
 ## <a name="assign-users-to-the-application"></a>Felhasználók hozzárendelése az alkalmazáshoz
 

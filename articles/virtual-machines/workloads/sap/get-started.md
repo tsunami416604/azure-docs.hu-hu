@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/10/2020
+ms.date: 06/22/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfe61c7e461d6598277aa9b38eafc16194b08bf1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: f79eabd960238b52c146d89af8aef050aab427c3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672119"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207175"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -112,6 +112,8 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 06/22/2020: telepítési lépések hozzáadása az SAP-hez készült új virtuálisgép-bővítményhez a [telepítési útmutatóban](deployment-guide.md)
+- 06/16/2020: változás a [virtuális gépek nyilvános végponti kapcsolatán az Azure standard ILB SAP ha-forgatókönyvek használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) a SUSE nyilvános felhőalapú infrastruktúra 101 dokumentációjának hivatkozása 
 - 06/10/2020: új HLI SKU-EK hozzáadása [elérhető SKU-HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) és [SAP HANA (nagyméretű példányok) tárolási architektúrája](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture)
 - 05/21/2020: változás a [pacemaker beállítása a SLES az Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) -ban és [a pacemaker beállítása az Azure-ban a RHEL-ben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) az Azure [standard ILB SAP if-forgatókönyvek használatával történő nyilvános végponti kapcsolathoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) való hozzáadásához  
 - 05/19/2020: fontos üzenet hozzáadása, hogy ne használja a gyökérszintű csoportot, ha az LVM-t használ a HANA-hez kapcsolódó kötetekhez [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 534d75a5b9009f0febee2746179ab7357a4985e0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77060424"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732871"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Oktatóanyag: az SAP Cloud platform Identity Authentication konfigurálása automatikus felhasználó-kiépítés esetén
 
@@ -58,7 +58,10 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
     ![SAP Cloud platform Identity Authentication felügyeleti konzol](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  Hozzon létre egy rendszergazda felhasználót, és válassza ki a felhasználót.  
+2.  A bal oldali panelen kattintson a **+ Hozzáadás** gombra, hogy új rendszergazdát adjon a listához. Válassza a **számítógép hozzáadása** lehetőséget, és adja meg a számítógép nevét.   
+
+> [!NOTE]
+> Az SAP Cloud platform Identity Authentication rendszergazdán-felhasználónak **System**típusúnak kell lennie. A normál rendszergazda felhasználó létrehozása *jogosulatlan* hibákat eredményezhet a kiépítés során.   
 
 3.  Az engedélyek konfigurálása területen kapcsolja be a váltás gombot a **felhasználók kezelése** és a **csoportok kezelése**elemnél.
 
@@ -155,7 +158,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * Az SAP Cloud platform Identity Authentication SCIM-végpontjának bizonyos attribútumokra van szüksége, amelyeknek adott formátumúnak kell lenniük. Ezekről az attribútumokról és az adott formátumról [itt](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#)talál további információt.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

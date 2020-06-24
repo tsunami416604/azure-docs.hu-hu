@@ -3,15 +3,15 @@ title: Az Azure Kubernetes használata Azure Cosmos DB
 description: Megtudhatja, hogyan indít el egy Kubernetes-fürtöt az Azure-ban, amely Azure Cosmos DBt használ (előzetes verzió)
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70093727"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262633"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Az Azure Kubernetes és a Azure Cosmos DB használata (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, tekintse meg az [�
 
    Az Azure Kubernetes Engine (**AK-Engine**) Azure Resource Manager sablonokat hoz létre az Azure-beli Kubernetes-fürtökhöz. Az Kabai-motor bemenete a fürt definíciós fájlja, amely leírja a kívánt fürtöt, beleértve a Orchestrator, a szolgáltatásokat és az ügynököket. A bemeneti fájlok szerkezete hasonló az Azure Kubernetes Service nyilvános API-hoz.
 
-1. A Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. Regisztráljon az előzetes verzió használatára a következő címen: https://aka.ms/cosmosetcdapi-signup. Az űrlap elküldése után az előfizetését az Azure Cosmos etcd API használatára fogja engedélyezni. 
+1. A Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. Regisztráljon az előzetes verzió használatára a következő címen: https://aka.ms/cosmosetcdapi-signup . Az űrlap elküldése után az előfizetését az Azure Cosmos etcd API használatára fogja engedélyezni. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>A fürt üzembe helyezése Azure Cosmos DB
 
@@ -80,7 +80,7 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, tekintse meg az [�
    cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
-1. Nyisson meg egy tetszőleges szövegszerkesztőt, és Definiáljon egy Resource Manager-sablont, amely a Azure Cosmos DB etcd API-val telepíti az Azure Kubernetes-fürtöt. Másolja az alábbi JSON-definíciót a szövegszerkesztőbe, és mentse a `apiModel.json`fájlt a következőként:
+1. Nyisson meg egy tetszőleges szövegszerkesztőt, és Definiáljon egy Resource Manager-sablont, amely a Azure Cosmos DB etcd API-val telepíti az Azure Kubernetes-fürtöt. Másolja az alábbi JSON-definíciót a szövegszerkesztőbe, és mentse a fájlt a következőként `apiModel.json` :
 
    ```json
 

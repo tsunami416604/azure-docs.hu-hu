@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873505"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113602"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Kiosztott átviteli sebesség globális skálázása 
 
 Azure Cosmos DB a kiépített átviteli sebesség a kérelmek egység/másodperc (RU/s vagy a többes számú RUs) formájában jelenik meg. A RUs az olvasási és írási műveletek költségeit a Cosmos-tárolón méri, ahogy az alábbi képen is látható:
 
-![Kérelemegységek](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+:::image type="content" source="./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png" alt-text="Kérelmek egységei" border="false":::
 
 Egy Cosmos-tárolón vagy egy Cosmos-adatbázison is kiépítheti az RUs-t. A tárolón kiépített RUs kizárólag az adott tárolón végrehajtott műveletekhez érhető el. Az adatbázison kiépített RUs az adott adatbázisban található összes tároló között megoszlik (kivéve a kizárólag hozzárendelt RUs-mel rendelkező tárolókat).
 

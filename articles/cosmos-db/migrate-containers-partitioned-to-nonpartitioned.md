@@ -3,15 +3,15 @@ title: Nem particionált Azure Cosmos-tárolók áttelepíthetők particionált 
 description: Megtudhatja, hogyan telepítheti át az összes meglévő nem particionált tárolót particionált tárolóba.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 619ec7e5510f9d3a5a17dcd5961fbd2182674df4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623350"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263483"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepíthetők particionált tárolók számára
 
@@ -24,7 +24,7 @@ A nem particionált tárolók örököltek, és a tárolók és az átviteli seb
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Tároló átmigrálása a rendszer által definiált partíciós kulccsal
 
-Az áttelepítés támogatásához a Azure Cosmos DB egy nevű `/_partitionkey` rendszerpartíció-kulcsot biztosít az összes olyan tárolón, amely nem rendelkezik partíciós kulccsal. A partíciós kulcs definíciója a tárolók migrálása után nem módosítható. Egy particionált tárolóba áttelepített tároló definíciója például a következő lesz:
+Az áttelepítés támogatásához a Azure Cosmos DB egy nevű rendszerpartíció-kulcsot biztosít az `/_partitionkey` összes olyan tárolón, amely nem rendelkezik partíciós kulccsal. A partíciós kulcs definíciója a tárolók migrálása után nem módosítható. Egy particionált tárolóba áttelepített tároló definíciója például a következő lesz:
 
 ```json
 {
@@ -95,7 +95,7 @@ A teljes minta esetében tekintse meg a [.net-minták][1] GitHub-tárházát.
                       
 ## <a name="migrate-the-documents"></a>A dokumentumok migrálása
 
-Amíg a tároló definíciója ki van bővítve egy Partition Key tulajdonsággal, a tárolóban található dokumentumok nem lesznek automatikusan áttelepítve. Ez azt jelenti, hogy a rendszerpartíciós kulcs tulajdonságának `/_partitionKey` elérési útja nincs automatikusan hozzáadva a meglévő dokumentumokhoz. A meglévő dokumentumokat úgy kell újraparticionálni, hogy beolvassa azokat a dokumentumokat, amelyeket nem partíciós kulcs nélkül hoztak `_partitionKey` létre, és visszaírják őket a dokumentumokban szereplő tulajdonsággal.
+Amíg a tároló definíciója ki van bővítve egy Partition Key tulajdonsággal, a tárolóban található dokumentumok nem lesznek automatikusan áttelepítve. Ez azt jelenti, hogy a rendszerpartíciós kulcs tulajdonságának `/_partitionKey` elérési útja nincs automatikusan hozzáadva a meglévő dokumentumokhoz. A meglévő dokumentumokat úgy kell újraparticionálni, hogy beolvassa azokat a dokumentumokat, amelyeket nem partíciós kulcs nélkül hoztak létre, és visszaírják őket `_partitionKey` a dokumentumokban szereplő tulajdonsággal.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>A partíciós kulccsal nem rendelkező dokumentumok elérése
 
@@ -122,9 +122,9 @@ Ha egy áttelepített tárolót az SDK legújabb/v3 verziója használ, és megk
 
 **A v3 SDK használatával a partíciós kulcs nélkül beszúrt elemek száma nagyobb átviteli sebességgel járhat**
 
-Ha a v2 SDK-val beszúrt elemek esetében a v3 SDK-val kérdez le, vagy a v3 SDK-val `PartitionKey.None` paraméterrel beszúrt elemeket, a Count lekérdezés több ru/s-t is felhasználhat, ha a `PartitionKey.None` paraméter a FeedOptions van megadva. Azt javasoljuk, hogy ne adja meg `PartitionKey.None` a paramétert, ha más elemeket nem szúrnak be partíciós kulccsal.
+Ha a v2 SDK-val beszúrt elemek esetében a v3 SDK-val kérdez le, vagy a v3 SDK-val paraméterrel beszúrt elemeket `PartitionKey.None` , a Count lekérdezés több ru/s-t is felhasználhat, ha a `PartitionKey.None` paraméter a FeedOptions van megadva. Azt javasoljuk, hogy ne adja meg a `PartitionKey.None` paramétert, ha más elemeket nem szúrnak be partíciós kulccsal.
 
-Ha az új elemek a partíciós kulcs különböző értékeivel vannak beszúrva, az ilyen elemek számának lekérdezése a megfelelő kulcs `FeedOptions` beadásával nem fog problémát okozni. Miután új dokumentumokat szúrt be a partíciós kulccsal, ha csak a dokumentumok darabszámát kell lekérdezni a partíciós kulcs értéke nélkül, a lekérdezés ismét magasabb RU/s-t eredményezhet a normál particionált gyűjteményekhez hasonló módon.
+Ha az új elemek a partíciós kulcs különböző értékeivel vannak beszúrva, az ilyen elemek számának lekérdezése a megfelelő kulcs beadásával `FeedOptions` nem fog problémát okozni. Miután új dokumentumokat szúrt be a partíciós kulccsal, ha csak a dokumentumok darabszámát kell lekérdezni a partíciós kulcs értéke nélkül, a lekérdezés ismét magasabb RU/s-t eredményezhet a normál particionált gyűjteményekhez hasonló módon.
 
 ## <a name="next-steps"></a>További lépések
 

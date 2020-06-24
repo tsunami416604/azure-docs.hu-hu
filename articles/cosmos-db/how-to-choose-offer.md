@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: b8c4fd3804bfa02b86f62912641eb936ff8cd15e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664430"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116808"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>A standard (manuális) és az automatikus méretezés kiépített átviteli sebességének kiválasztása 
 
@@ -26,7 +26,7 @@ Ha kiosztott átviteli sebességet használ, a számítási feladathoz a számí
 
 Az alábbi táblázat a standard (manuális) és az automatikus skálázás közötti magas szintű összehasonlítást mutatja be.
 
-|Description|Standard (manuális)|Automatikus méretezés|
+|Leírás|Standard (manuális)|Automatikus méretezés|
 |-------------|------|-------|
 |Legmegfelelőbb a következőhöz:|Állandó vagy kiszámítható forgalommal rendelkező számítási feladatok|Változó vagy kiszámíthatatlan forgalommal rendelkező számítási feladatok. Lásd: [az autoscale használatának esetei](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Működés|Kiépítheti a statikus RU/s mennyiségét az `T` idő függvényében, hacsak nem módosítja őket manuálisan. Másodpercenként akár `T` ru/s átviteli sebességet is használhat. <br/><br/>Ha például a standard (manuális) 400 RU/s érték van megadva, akkor az átviteli sebesség a 400 RU/s-ben marad.|Állítsa be a legmagasabb vagy a maximális RU/mp értéket, `Tmax` Ha nem szeretné, hogy a rendszeren túllépjek. A rendszer automatikusan méretezi az átviteli sebességet `T` `0.1* Tmax <= T <= Tmax` . <br/><br/>Ha például az 4000 RU/s értékre állítja be a maximálisan engedélyezett RU/s értéket, a rendszer a 400-4000 RU/s-t fogja méretezni.|
@@ -61,7 +61,7 @@ Idővel, az átviteli sebesség típusának kiválasztása után figyelje az alk
 
 Ha autoskálázást használ, a Azure Monitor használatával megtekintheti a kiépített autoskálázási Max RU/s (az**autoskálázás maximális átviteli sebessége**) és a rendszer jelenleg (**kiépített átviteli sebesség**) méretét. Az alábbi példa egy változót vagy kiszámíthatatlan munkaterhelést mutat be az autoscale használatával. Vegye figyelembe, hogy ha nincs forgalom, a rendszer az RU/s-t a maximális RU/s érték legalább 10%-át méretezi, ami ebben az esetben 5000 RU/s és 50 000 RU/s. 
 
-![Példa a munkaterhelés használatára az autoscale használatával](media/how-to-choose-offer/autoscale-metrics-azure-monitor.png)
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Példa a munkaterhelés használatára az autoscale használatával":::
 
 > [!NOTE]
 > Ha standard (manuális) kiosztott átviteli sebességet használ, a **kiosztott átviteli sebesség** mérőszáma arra utal, hogy mit állított be a felhasználó. Ha az autoscale átviteli sebességet használja, ez a metrika a rendszer aktuálisan méretezhető RU/s-re vonatkozik.

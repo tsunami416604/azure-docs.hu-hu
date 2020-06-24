@@ -3,15 +3,15 @@ title: A .NET SDK v2 Azure Cosmos DB teljesítményével kapcsolatos tippek
 description: Az ügyfél konfigurációs beállításainak megismerése Azure Cosmos DB .NET v2 SDK teljesítményének javításához.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 06/04/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: sngun
-ms.openlocfilehash: 07ca4674c1b8dafc9c02ff8fdf82de330862de73
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: fce6cd441214cff4c76b05f8a2b6cb630613a66f
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674023"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263432"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek a Azure Cosmos DB és a .NET SDK v2-hez
 
@@ -62,7 +62,7 @@ Ha magas átviteli sebességű (több mint 50 000 RU/s) tesztelést végez, az �
 > [!NOTE] 
 > A magas CPU-használat nagyobb késést és kérelem időtúllépési kivételt okozhat.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 <a id="direct-connection"></a>
 
 **Csatlakoztatási házirend: közvetlen kapcsolási mód használata**
@@ -93,8 +93,8 @@ Azure Cosmos DB egy egyszerű, nyitott, REST-alapú programozási modellt biztos
 A Microsoft.Azure.DocumentDB SDK esetében a paraméter használatával konfigurálja a csatlakozás módját a példány építése során `DocumentClient` `ConnectionPolicy` . Közvetlen mód használata esetén a paraméterrel is megadhatja a értékét `Protocol` `ConnectionPolicy` .
 
 ```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
+Uri serviceEndpoint = new Uri("https://contoso.documents.net");
+string authKey = "your authKey from the Azure portal";
 DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
 new ConnectionPolicy
 {
@@ -105,7 +105,18 @@ new ConnectionPolicy
 
 Mivel a TCP csak közvetlen módban támogatott, az átjáró mód használata esetén a rendszer mindig a HTTPS protokollt használja az átjáróval való kommunikációhoz, és a `Protocol` érték `ConnectionPolicy` figyelmen kívül lesz hagyva.
 
-![A Azure Cosmos DB-kapcsolatok házirendje](./media/performance-tips/connection-policy.png)
+:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendje" border="false":::
+
+**Ideiglenes port kimerülése**
+
+Ha a példányok nagy mennyiségű vagy magas portszámú használatot lát, először ellenőrizze, hogy az ügyfél példányai egyediek-e. Más szóval az ügyfél példányának egyedinek kell lennie az alkalmazás élettartama szempontjából.
+
+Ha a TCP protokollon fut, az ügyfél a hosszú élettartamú kapcsolatok és a HTTPS protokoll használata esetén is optimalizálja a késést, amely 2 perc inaktivitás után leállítja a kapcsolatokat.
+
+Olyan helyzetekben, ahol ritka hozzáférése van, és ha az átjáró mód eléréséhez képest nagyobb számú kapcsolatra van szüksége, a következőket teheti:
+
+* Konfigurálja a [ConnectionPolicy. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) tulajdonságot a `PrivatePortPool` következőre: (a keretrendszer verziószáma>= 4.6.1 és a .net Core verziója >= 2,0): Ez a tulajdonság lehetővé teszi, hogy az SDK a különböző Azure Cosmos db végpontokhoz tartozó ideiglenes portok kis készletét használja.
+* A [ConnectionPolicy. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) tulajdonság konfigurálásának 10 percnél nagyobbnak vagy azzal egyenlőnek kell lennie. Az ajánlott értékek 20 perc és 24 óra között vannak.
 
 **OpenAsync meghívása az első kérés indítási késésének elkerülése érdekében**
 
@@ -121,7 +132,8 @@ Alapértelmezés szerint az első kérelem nagyobb késéssel jár, mert be kell
 
 Ha lehetséges, helyezzen olyan alkalmazásokat, amelyek a Azure Cosmos DB-adatbázissal megegyező régióban Azure Cosmos DB hívnak. Íme egy hozzávetőleges összehasonlítás: az azonos régión belüli Azure Cosmos DB meghívása 1 MS és 2 MS között fejeződik be, de az USA nyugati és keleti partja közötti késés meghaladja a 50 MS-ot. Ez a késés a kérelemtől függően változhat, attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure-adatközpont határán. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
 
-![A Azure Cosmos DB-kapcsolatok házirendje ](./media/performance-tips/same-region.png)<a id="increase-threads"></a>
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendje" border="false":::
+   <a id="increase-threads"></a>
 
 **A szálak/feladatok számának növelésével**
 
@@ -272,7 +284,7 @@ Az automatikus újrapróbálkozási viselkedés segíti a legtöbb alkalmazás r
 
 Egy adott műveletre vonatkozó kérelem díja (azaz a kérelmek feldolgozási díja) közvetlenül a dokumentum méretével összefügg. A nagyméretű dokumentumokon végzett műveletek többek között a kis dokumentumokon végzett műveletekhez szükségesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az egyes ügyfélszámítógépeken a nagy teljesítményű forgatókönyvek Azure Cosmos DB kiértékeléséhez használt minta alkalmazással kapcsolatban lásd: [teljesítmény-és méretezési tesztek a Azure Cosmos db](performance-testing.md)használatával.
 
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partition-data.md)című témakört.

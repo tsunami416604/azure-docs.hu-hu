@@ -3,15 +3,15 @@ title: Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és
 description: Ismerje meg, hogyan használhatók együtt Azure Cosmos DB és Azure Functions az eseményvezérelt kiszolgáló nélküli számítástechnikai alkalmazások létrehozásához.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985252"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263260"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és Azure Functions használatával
 
@@ -33,7 +33,7 @@ Azure Cosmos DB és Azure Functions lehetővé teszi az adatbázisok és kiszolg
 
 A következő ábra az alábbi három integrációt szemlélteti: 
 
-![Azure Cosmos DB és Azure Functions integrálás](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-azure-functions-integration.png" alt-text="Azure Cosmos DB és Azure Functions integrálás" border="false":::
 
 A Azure Cosmos DBhoz tartozó Azure Functions trigger, bemeneti kötés és kimeneti kötés a következő kombinációkban használható:
 
@@ -61,7 +61,7 @@ A IoT implementációjában egy függvényt hívhat meg, ha az ellenőrzési mot
 
 Az alábbi képen az trigger Azure Portal írt kód látható.
 
-![Hozzon létre egy Azure Functions triggert a Cosmos DBhoz a Azure Portal](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Hozzon létre egy Azure Functions triggert a Cosmos DBhoz a Azure Portal":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Pénzügyi használati eset – időzítő trigger és bemeneti kötés
 
@@ -75,13 +75,13 @@ A pénzügyi megvalósításokban meghívhat egy függvényt, ha a bankszámla e
 
 Az alábbi képek a forgatókönyvben szereplő kódot mutatják a Azure Portal.
 
-![Egy pénzügyi forgatókönyvhöz tartozó időzítő trigger index. js fájlja](./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Egy pénzügyi forgatókönyvhöz tartozó időzítő-triggerIndex.js fájlja":::
 
-![A. CSX fájl futtatása időzítő triggerhez pénzügyi forgatókönyv esetén](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="A. CSX fájl futtatása időzítő triggerhez pénzügyi forgatókönyv esetén":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Játék használati eset – Azure Functions trigger és kimeneti kötés a Cosmos DB 
 
-A játékokban új felhasználó létrehozásakor megkeresheti azokat a felhasználókat, akik ismerik a [Azure Cosmos db GREMLIN API](graph-introduction.md)használatával. Ezután megírhatja az eredményeket egy [Azure Cosmos DB SQL Database-be] az egyszerű lekéréshez.
+A játékokban új felhasználó létrehozásakor megkeresheti azokat a felhasználókat, akik ismerik a [Azure Cosmos db GREMLIN API](graph-introduction.md)használatával. Ezután megírhatja az eredményeket egy [Azure Cosmos db vagy SQL Database]() -be az egyszerű lekéréshez.
 
 **Implementáció:** Azure Functions trigger és kimeneti kötés használata Cosmos DB
 

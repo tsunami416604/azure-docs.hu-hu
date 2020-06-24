@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d9e9ed1a65265a119f59edee7da1b8f244e2f7f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623333"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112735"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Az S1, S2 és S3 teljesítményszintek kivonása
 
@@ -76,7 +76,7 @@ Ezekben az esetekben a gyűjtemény áttelepítése után testre szabhatja az á
 
 Tegyük fel, hogy 10 S1-es gyűjteményt tartalmaz, 1 GB tárterületet az USA keleti régiójában, és a 10 S1-es gyűjteményt 10 egypartíciós gyűjteménybe telepíti át a 400 RU/s (a minimális szint) értékre. A számla a következőképpen jelenik meg, ha a 10 egypartíciós gyűjteményt egy teljes hónapra vonatkozóan tartja:
 
-![Az S1 díjszabása 10 gyűjtemény esetében 10 gyűjtemény összehasonlításával egyetlen partíciós gyűjtemény díjszabása alapján](./media/performance-levels/s1-vs-standard-pricing.png)
+:::image type="content" source="./media/performance-levels/s1-vs-standard-pricing.png" alt-text="Az S1 díjszabása 10 gyűjtemény esetében 10 gyűjtemény összehasonlításával egyetlen partíciós gyűjtemény díjszabása alapján" border="false":::
 
 <a name="more-storage-needed"></a>
 

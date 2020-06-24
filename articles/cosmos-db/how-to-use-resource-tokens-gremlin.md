@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78897851"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263561"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB erőforrás-tokenek használata a Gremlin SDK-val
 
@@ -24,13 +24,13 @@ Az Apache TinkerPop Gremlin SDK nem rendelkezik olyan API-val, amely erőforrás
 
 Az erőforrás-tokenek feletti objektummodell-hierarchia a következő vázlatban látható:
 
-- **Azure Cosmos db fiók** – a legfelső szintű entitás, amelyhez DNS társítva van (például: `contoso.gremlin.cosmos.azure.com`).
+- **Azure Cosmos db fiók** – a legfelső szintű entitás, amelyhez DNS társítva van (például: `contoso.gremlin.cosmos.azure.com` ).
   - **Adatbázis Azure Cosmos DB**
     - **Felhasználó**
       - **Engedély**
         - **Token** – A Permission objektum tulajdonsága, amely azt jelzi, hogy milyen műveleteket lehet engedélyezni vagy megtagadni.
 
-Az erőforrás-jogkivonat a következő formátumot használja `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`:. Ez a karakterlánc nem átlátszó az ügyfelek számára, és a következőképpen kell használni módosítás vagy értelmezés nélkül.
+Az erőforrás-jogkivonat a következő formátumot használja: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"` . Ez a karakterlánc nem átlátszó az ügyfelek számára, és a következőképpen kell használni módosítás vagy értelmezés nélkül.
 
 ```csharp
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.

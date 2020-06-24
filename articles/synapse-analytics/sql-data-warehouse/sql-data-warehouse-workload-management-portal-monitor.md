@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 31533eefbfae63e0eb4049d2eabaf6b853340636
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590247"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208688"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure szinapszis Analytics – munkaterhelés felügyeleti portál monitorozás
 
@@ -59,7 +59,7 @@ Az alábbi diagram a következőképpen van konfigurálva:<br>
 Metrika 1: *effektív minimális erőforrás-százalék* (AVG összesítés, `blue line` )<br>
 Metrika 2: *munkaterhelési csoport kiosztása rendszerszázalékkal* (AVG összesítés, `purple line` )<br>
 Filter: [munkaterhelés-csoport] =`wgPriority`<br>
-![underutilized-WG. png ](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) a diagram azt mutatja, hogy 25%-os munkaterhelés-elkülönítéssel átlagosan csak 10% használatos.  Ebben az esetben a `MIN_PERCENTAGE_RESOURCE` paraméter értéke 10 vagy 15 közötti értékre csökkenthető, és lehetővé teszi, hogy a rendszer más számítási feladatait használja az erőforrások felhasználásához.
+![underutilized-wg.png](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) a diagram azt mutatja, hogy 25%-os munkaterhelés-elkülönítéssel átlagosan csak 10% használatos.  Ebben az esetben a `MIN_PERCENTAGE_RESOURCE` paraméter értéke 10 vagy 15 közötti értékre csökkenthető, és lehetővé teszi, hogy a rendszer más számítási feladatait használja az erőforrások felhasználásához.
 
 ### <a name="workload-group-bottleneck"></a>Munkaterhelés-csoport szűk keresztmetszete
 

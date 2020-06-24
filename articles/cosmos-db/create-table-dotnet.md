@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: 45c1f9b5425b7e826776dc0f52681c67846bfdc5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 2c9af8c0839b56d5512bb17776182b3515a7d544
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218176"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115329"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB 
 
@@ -73,7 +73,7 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
 
 1. A Visual Studio **Fájl** menüjében válassza a **Megnyitás**, majd a **Projekt/Megoldás** elemet. 
 
-   ![A megoldás megnyitása](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-open-solution.png" alt-text="A megoldás megnyitása"::: 
 
 2. Navigáljon ahhoz a mappához, ahová klónozott a minta alkalmazást, és nyissa meg a TableStorage. SLN fájlt.
 
@@ -103,9 +103,9 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az [Azure Portalon](https://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. Az ablak jobb oldalán található Másolás gomb használatával másolja a vágólapra a **PRIMARY CONNECTION STRING** (Elsődleges kapcsolati sztring) értékét.
 
-   ![Tekintse meg és másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán.](./media/create-table-dotnet/connection-string.png)
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Tekintse meg és másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán.":::
 
-2. A Visual Studióban nyissa meg a **Settings. JSON** fájlt. 
+2. A Visual Studióban nyissa meg a **Settings.js** fájlt. 
 
 3. Illessze be az **elsődleges kapcsolatok karakterláncát** a portálról a StorageConnectionString értékre. Illessze be a sztringet az idézőjelek közé.
 
@@ -115,7 +115,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
    }
    ```
 
-4. Nyomja le a CTRL + S billentyűkombinációt a **Settings. JSON** fájl mentéséhez.
+4. Nyomja le a CTRL + S billentyűkombinációt a **Settings.js** fájlba mentéséhez.
 
 Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
@@ -123,27 +123,27 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 1. A Visual Studióban kattintson a jobb gombbal a **CosmosTableSamples** projektre **megoldáskezelő** , majd kattintson a **NuGet-csomagok kezelése**elemre. 
 
-   ![NuGet-csomagok kezelése](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="NuGet-csomagok kezelése":::
 
 2. A NuGet **Tallózás** mezőjébe írja be a Microsoft. Azure. Cosmos. table parancsot. Ezzel a Cosmos DB Table API-ügyfélkódtárát keresi meg. Vegye figyelembe, hogy ez a tár jelenleg a .NET-keretrendszer és a .NET Standard számára érhető el. 
    
-   ![A NuGet Tallózás lapja](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="A NuGet Tallózás lapja":::
 
 3. A **Microsoft. Azure. Cosmos. table** függvénytár telepítéséhez kattintson a **telepítés** gombra. Ez telepíti az Azure Cosmos DB Table API csomagot és annak összes függőségét.
 
 4. Ha a teljes alkalmazást futtatja, a rendszer beszúrja a táblázat entitásba, és a végén törli a mintákat, így a teljes minta futtatásakor nem jelenik meg az összes beszúrt oszlop. Azonban beszúrhat néhány töréspontot is az adatmegjelenítéshez. Nyissa meg a BasicSamples.cs fájlt, és kattintson a jobb gombbal a 52-es sorra, válassza a **töréspont**, majd a **töréspont beszúrása**lehetőséget. Szúrjon be egy másik töréspontot az 55. sorban.
 
-   ![Töréspont hozzáadása](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="Töréspont hozzáadása"::: 
 
 5. Az alkalmazás futtatásához nyomja le az F5 billentyűt. A konzol ablaka megjeleníti az új tábla adatbázisának nevét (ebben az esetben a demoa13b1) a Azure Cosmos DBban. 
     
-   ![Konzolkimenet](media/create-table-dotnet/azure-cosmosdb-console.png)
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="Konzolkimenet":::
 
    Az első töréspont elérésekor lépjen vissza az Adatkezelőbe az Azure Portalon. Kattintson a **Frissítés** gombra, bontsa ki a demo* táblát, majd kattintson az **Entitások** elemre. A jobb oldali **Entitások** lapon látható a Walter Harp számára újonnan hozzáadott entitás. Láthatja, hogy az új entitáshoz tartozó telefonszám 425-555-0101.
 
-   ![Új entitás](media/create-table-dotnet/azure-cosmosdb-entity.png)
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="Új entitás":::
     
-   Ha olyan hibaüzenetet kap, amely szerint a Project futtatásakor nem található a Settings. JSON fájl, a következő XML-bejegyzést adja hozzá a projekt beállításaihoz. Kattintson a jobb gombbal a CosmosTableSamples elemre, válassza a CosmosTableSamples. csproj szerkesztése lehetőséget, és adja hozzá a következő itemGroup: 
+   Ha olyan hibaüzenetet kap, amely szerint a Settings.jsnem található a projekt futtatásakor, akkor a következő XML-bejegyzés a projekt beállításaihoz való hozzáadásával oldható meg. Kattintson a jobb gombbal a CosmosTableSamples elemre, válassza a CosmosTableSamples. csproj szerkesztése lehetőséget, és adja hozzá a következő itemGroup: 
 
    ```csharp
      <ItemGroup>
@@ -170,7 +170,7 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

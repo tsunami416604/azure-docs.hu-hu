@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0c8b984801a0db2af648b0711d95de34bc9386f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273511"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114809"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Biztonság az Azure Cosmos DB-ben – Áttekintés
 
@@ -25,7 +25,7 @@ A REST-alapú titkosítás mostantól elérhető az összes Azure-régióban Azu
 
 Az adatbiztonság az Ön, az ügyfél és az adatbázis-szolgáltató között megosztott felelősség. Attól függően, hogy melyik adatbázis-szolgáltatót választja, az Ön által viselt felelősség mértéke változhat. Ha helyszíni megoldást választ, meg kell adnia mindent a végpontok elleni védelemtől a hardver fizikai biztonsága érdekében – ami nem egyszerű feladat. Ha úgy dönt, hogy egy olyan, a felhőben tárolt, a Azure Cosmos DBt is kiválasztó, a területe jelentősen csökken Az alábbi, a Microsoft által a [felhőalapú számítástechnikai feladatokkal kapcsolatos közös felelősséggel](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) foglalkozó rendszerkép azt mutatja be, hogyan csökken a felelőssége egy olyan Pásti-szolgáltatóval, mint a Azure Cosmos db.
 
-![Az ügyfél-és adatbázis-szolgáltató feladatai](./media/database-security/nosql-database-security-responsibilities.png)
+:::image type="content" source="./media/database-security/nosql-database-security-responsibilities.png" alt-text="Az ügyfél-és adatbázis-szolgáltató feladatai":::
 
 Az előző ábrán a magas szintű Felhőbeli biztonsági összetevők láthatók, de milyen elemek szükségesek az adatbázis-megoldáshoz? És hogyan lehet összehasonlítani egymással a megoldásokat?
 
@@ -73,13 +73,13 @@ Ismerkedjen meg minden részlettel.
 |Válaszadás a támadásokra|Miután felvette a kapcsolatot az Azure-támogatással, hogy jelentsen egy lehetséges támadást, egy 5 lépésből álló incidens-válasz indult el. Az 5 lépésből álló folyamat célja, hogy a probléma észlelése és a vizsgálat elindítása után a lehető leggyorsabban visszaállítsa a normál szolgáltatás biztonsági és üzemeltetési műveleteit.<br><br>További információ: [Microsoft Azure biztonsági válasz a felhőben](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
 |Földrajzi kerítés|Azure Cosmos DB biztosítja az adatkezelést a szuverén régiók számára (például Németország, Kína, US Gov).|
 |Védett létesítmények|A Azure Cosmos DBban tárolt adategységeket az Azure védett adatközpontjai SSD-k tárolják.<br><br>További információ a [Microsoft globális adatközpontokban](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
-|HTTPS/SSL/TLS titkosítás|A Azure Cosmos DB összes kapcsolata támogatja a HTTPS protokollt. A Azure Cosmos DB a TLS 1,2-et is támogatja.<br>Egy minimális TLS-verzió kiszolgálóoldali kikényszeríthető. Ehhez vegye fel a kapcsolatot [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).|
+|HTTPS/SSL/TLS titkosítás|A Azure Cosmos DB összes kapcsolata támogatja a HTTPS protokollt. A Azure Cosmos DB a TLS 1,2-et is támogatja.<br>Egy minimális TLS-verzió kiszolgálóoldali kikényszeríthető. Ehhez vegye fel a kapcsolatot [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) .|
 |Titkosítás inaktív állapotban|A Azure Cosmos DB tárolt összes adatforgalom inaktív állapotban van. További információ a [Azure Cosmos db inaktív titkosításról](./database-encryption-at-rest.md)|
 |Javított kiszolgálók|Felügyelt adatbázisként a Azure Cosmos DB szükségtelenné teszi a kiszolgálók felügyeletét és javítását, ami automatikusan történik.|
 |Erős jelszavakkal rendelkező rendszergazdai fiókok|Nehéz elhinni, hogy még meg is kell említeni ezt a követelményt, de a versenytársaktól eltérően nem lehet rendszergazdai fiókja, amely nem rendelkezik jelszóval a Azure Cosmos DBban.<br><br> A TLS-vel és a HMAC-alapú titkos hitelesítéssel történő biztonság alapértelmezés szerint besütött.|
 |Biztonsági és adatvédelmi tanúsítványok| A minősítések legnaprakészebb listája a teljes [Azure-megfelelőségi webhelyet](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) , valamint a legújabb [Azure-megfelelőségi dokumentumot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) tartalmazza minden minősítéssel (a Cosmos kifejezés keresése). A koncentráltabb olvasásért tekintse meg 2018 az [Azure #CosmosDB: Secure, Private, kompatibilis, SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP magas és sok más.
 
-A következő képernyőképen látható, hogyan használhatók a naplózási naplózási és a tevékenységi ![naplók a fiók figyeléséhez: Azure Cosmos db](./media/database-security/nosql-database-security-application-logging.png)
+A következő képernyőképen látható, hogyan használhatók a naplózási naplózási és a tevékenységi naplók a fiók figyeléséhez: :::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Azure Cosmos db":::
 
 ## <a name="next-steps"></a>További lépések
 

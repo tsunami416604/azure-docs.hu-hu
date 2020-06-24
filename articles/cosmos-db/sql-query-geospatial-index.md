@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839205"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116298"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatindexek indexelése Azure Cosmos DB
 
@@ -34,13 +34,13 @@ Válthat a **földrajzi** és a **geometriai** térbeli típus között a Azure 
 
 A következő témakörben állíthatja be a **térinformatikai konfigurációt** a Azure Portal **adatkezelő** belül:
 
-![Térinformatikai konfiguráció beállítása](./media/sql-query-geospatial-index/geospatial-configuration.png)
+:::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="Térinformatikai konfiguráció beállítása":::
 
 A (z) a `geospatialConfig` .net SDK-ban is módosítható a **térinformatikai konfiguráció**beállításához:
 
-Ha nincs megadva, a `geospatialConfig` alapértelmezés szerint a földrajzi adattípust fogja megadni. Ha módosítja a `geospatialConfig`-t, a tárolóban lévő összes meglévő térinformatikai elem újraindexelve lesz.
+Ha nincs megadva, a `geospatialConfig` alapértelmezés szerint a földrajzi adattípust fogja megadni. Ha módosítja a `geospatialConfig` -t, a tárolóban lévő összes meglévő térinformatikai elem újraindexelve lesz.
 
-Íme egy példa a térinformatikai adattípus `geometry` módosítására a `geospatialConfig` tulajdonság beállításával és a **boundingBox**hozzáadásával:
+Íme egy példa a térinformatikai adattípus módosítására `geometry` a tulajdonság beállításával `geospatialConfig` és a **boundingBox**hozzáadásával:
 
 ```csharp
     //Retrieve the container's details
@@ -107,7 +107,7 @@ Az [indexelési házirendet](how-to-manage-indexing-policy.md) az Azure CLI, a P
 
 ## <a name="geometry-data-indexing-examples"></a>Geometriai adatok indexelésére vonatkozó példák
 
-Ha a **geometria** adattípusa hasonló a földrajzi adattípushoz, a megfelelő elérési utakat és típusokat kell megadnia az indexhez. Emellett az indexelési házirendben is meg `boundingBox` kell adnia az indexet, hogy jelezze az adott elérési útra vonatkozó kívánt területeket. Minden földrajzi útvonalhoz saját`boundingBox`szükséges.
+Ha a **geometria** adattípusa hasonló a földrajzi adattípushoz, a megfelelő elérési utakat és típusokat kell megadnia az indexhez. Emellett az indexelési házirendben is meg kell adnia az indexet, `boundingBox` hogy jelezze az adott elérési útra vonatkozó kívánt területeket. Minden földrajzi útvonalhoz saját szükséges `boundingBox` .
 
 A határoló mező a következő tulajdonságokat tartalmazza:
 
@@ -120,7 +120,7 @@ A határolókeret megadása kötelező, mert a geometriai adat egy olyan gépet 
 
 Hozzon létre egy határoló mezőt, amely az összes (vagy a legtöbb) adatát tartalmazza. A térbeli indexet csak a teljes mértékben a határolókeret belsejében lévő objektumokra kiszámított műveletek lesznek képesek használni. Ha a határolókeret mérete nagyobb, mint amennyi szükséges, negatív hatással lesz a lekérdezés teljesítményére.
 
-Az alábbi példa olyan indexelési házirendet mutat `geometry`be, amely a **geometriai** adatoknak a **geospatialConfig** beállítását a következőre állítja:
+Az alábbi példa olyan indexelési házirendet mutat be, amely a **geometriai** adatoknak a **geospatialConfig** beállítását a következőre állítja `geometry` :
 
 ```json
  {
@@ -159,7 +159,7 @@ Az alábbi példa olyan indexelési házirendet mutat `geometry`be, amely a **ge
 A fenti indexelési házirend **boundingBox** (-10, 10) tartalmaz x koordinátákat és (-20, 20) az y koordinátákhoz. A fenti indexelési szabályzattal rendelkező tároló az összes olyan pontot, sokszöget, többsokszögű és Linestring indexeli, amely teljes egészében ebben a régióban található.
 
 > [!NOTE]
-> Ha egy adattípusú tárolóhoz `geography` próbál felvenni egy **boundingBox** tartalmazó indexelési házirendet, a művelet sikertelen lesz. A **boundingBox**hozzáadása `geometry` előtt módosítania kell a tároló **geospatialConfig** . A tároló térinformatikai adattípusának kiválasztását megelőzően vagy azt követően módosíthatja az indexelési szabályzat hátralévő részét (például az elérési utakat és típusokat).
+> Ha egy adattípusú tárolóhoz próbál felvenni egy **boundingBox** tartalmazó indexelési házirendet `geography` , a művelet sikertelen lesz. A BoundingBox hozzáadása előtt módosítania kell a tároló **geospatialConfig** `geometry` . **boundingBox** A tároló térinformatikai adattípusának kiválasztását megelőzően vagy azt követően módosíthatja az indexelési szabályzat hátralévő részét (például az elérési utakat és típusokat).
 
 ## <a name="next-steps"></a>További lépések
 

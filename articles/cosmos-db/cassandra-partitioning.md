@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2f62af434a49d11cdc1acfc4a09b5bffbd69140b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 566be788066db54f827bb4d6e46f0d832755ce26
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316704"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115671"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Particionálás Azure Cosmos DB Cassandra API
 
@@ -53,7 +53,7 @@ CREATE TABLE uprofile.user (
 
 Ebben a kialakításban a `id` mezőt elsődleges kulcsként definiáljuk. Az elsődleges kulcs a tábla rekordjának azonosítóját használja, és a Azure Cosmos DBban található partíciós kulcsként is használják. Ha az elsődleges kulcs a korábban leírt módon van definiálva, akkor csak egyetlen rekord lesz az egyes partíciókban. Ez tökéletesen horizontális és skálázható eloszlást eredményez az adatadatbázisba való íráskor, és ideális a kulcs-érték keresési használati esetekben. Az olvasási teljesítmény maximalizálása érdekében az alkalmazásnak meg kell adnia az elsődleges kulcsot, amikor az adatok beolvasása a táblából. 
 
-![partitions](./media/cassandra-partitioning/cassandra-partitioning.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning.png" alt-text="partíciók" border="false":::
 
 
 ## <a name="compound-primary-key"></a>Összetett elsődleges kulcs
@@ -83,11 +83,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 Az adatvisszaadás során a rendszer a fürtszolgáltatási kulcs szerint rendezi az Apache Cassandra-ban elvárt módon:
 
-![partitions](./media/cassandra-partitioning/select-from-pk.png)
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="partíciók":::
 
 Az ily módon létrehozott adatokkal több rekord is hozzárendelhető minden partícióhoz, felhasználó szerint csoportosítva. Így egy `partition key` `user` adott felhasználó összes üzenetének lekéréséhez egy olyan lekérdezést adhatunk ki, amely hatékonyan irányítja a (jelen esetben). 
 
-![partitions](./media/cassandra-partitioning/cassandra-partitioning2.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="partíciók" border="false":::
 
 
 ## <a name="composite-partition-key"></a>Összetett partíciós kulcs

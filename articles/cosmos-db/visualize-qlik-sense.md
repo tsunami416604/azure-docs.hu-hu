@@ -4,15 +4,15 @@ description: Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek ahh
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67985545"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263347"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Az Qlik-értelem összekapcsolásával Azure Cosmos DBhatja és megjelenítheti az adatait
 
@@ -54,7 +54,7 @@ A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy
 
 1. Nyissa meg a Qlik értelmet, és válassza az **új alkalmazás létrehozása**lehetőséget. Adja meg az alkalmazás nevét, majd válassza a **Létrehozás**lehetőséget.
 
-   ![Új Qlik Sense-alkalmazás létrehozása](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="Új Qlik Sense-alkalmazás létrehozása":::
 
 2. Az új alkalmazás létrehozása után kattintson az **alkalmazás megnyitása** lehetőségre, és válassza az **adatok hozzáadása fájlokból és más forrásokból**lehetőséget. 
 
@@ -62,15 +62,15 @@ A cikkben szereplő utasítások követése előtt győződjön meg arról, hogy
 
 4. Váltson a **felhasználói DSN** -re, és válassza ki a korábban létrehozott ODBC-kapcsolatokat. Adja meg a kapcsolatok nevét, majd válassza a **Létrehozás**lehetőséget. 
 
-   ![Új kapcsolat létrehozása](./media/visualize-qlik-sense/create-new-connection.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Új kapcsolat létrehozása":::
 
 5. A kapcsolatok létrehozása után kiválaszthatja az adatbázist, a gyűjtemény helyét, ahol a videojáték-adatforrások találhatók, majd megtekintheti azt.
 
-   ![Az adatbázis és a gyűjtemény kiválasztása](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Az adatbázis és a gyűjtemény kiválasztása"::: 
 
 6. Ezután válassza az **adathozzáadás** lehetőséget az Qlik értelembe való betöltéséhez. Az adatok Qlik való betöltését követően elemzéseket készíthet, és elemzéseket végezhet az adatokon. Használhatja az elemzéseket, vagy létrehozhat egy saját alkalmazást, amely a videojátékok értékesítéseit vizsgálja. Az alábbi képen látható 
 
-   ![Adatok vizualizációja](./media/visualize-qlik-sense/visualize-data.png)
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Adatok vizualizációja":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>Az ODBC-vel való csatlakozás korlátozásai 
 

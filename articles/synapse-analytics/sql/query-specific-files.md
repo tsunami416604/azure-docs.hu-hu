@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e8d7301799bfb4af9a0f5a6f242be929e8253d7c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9c573e6ea3f80369f9b5cced66302caf12d727a4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744218"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206360"
 ---
 # <a name="using-file-metadata-in-queries"></a>Fájl metaadatainak használata a lekérdezésekben
 
@@ -28,7 +28,7 @@ Használhatja a függvényt, és visszaállíthatja a `filepath` `filename` fáj
 
 Első lépésként létre kell **hoznia egy adatbázist** egy olyan adatforrással, amely a Storage-fiókra hivatkozik. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban használt külső fájlformátumokat.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 ### <a name="filename"></a>Filename
 

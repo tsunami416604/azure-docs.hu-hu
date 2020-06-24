@@ -4,15 +4,15 @@ description: Ez a cikk tájékoztatást nyújt arról, hogyan tehet elérhetőv�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68d4ff7e4617136e4c58ce672f34de56e46f0229
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297832"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207787"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>WebSocket-kiszolgáló közzététele Application Gateway
 
@@ -75,10 +75,10 @@ spec:
               servicePort: 80
 ```
 
-Tekintettel arra, hogy minden előfeltétel teljesült, és rendelkezik egy Application Gateway Kubernetes bevezetéssel, a fenti üzembe helyezés a Application Gateway nyilvános IP-címének és a `ws.contoso.com` tartományának 80-as portján elérhető WebSocket-kiszolgálóval fog rendelkezni.
+Tekintettel arra, hogy minden előfeltétel teljesült, és rendelkezik egy Application Gateway Kubernetes bevezetéssel, a fenti üzembe helyezés a Application Gateway nyilvános IP-címének és a tartományának 80-as portján elérhető WebSocket-kiszolgálóval fog rendelkezni `ws.contoso.com` .
 
 A következő cURL-parancs teszteli a WebSocket-kiszolgáló telepítését:
-```sh
+```shell
 curl -i -N -H "Connection: Upgrade" \
         -H "Upgrade: websocket" \
         -H "Origin: http://localhost" \
@@ -91,7 +91,7 @@ curl -i -N -H "Connection: Upgrade" \
 ## <a name="websocket-health-probes"></a>WebSocket-állapotú tesztek
 
 Ha az üzemelő példány nem határozza meg explicit módon az állapot-mintavételt, Application Gateway megkísérli egy HTTP GET-t a WebSocket Server-végponton.
-A kiszolgáló megvalósításának függvényében ([itt az egyik szeretjük](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)) WebSocket-specifikus fejlécekre lehet szükség`Sec-Websocket-Version` (például).
-Mivel Application Gateway nem ad hozzá WebSocket-fejléceket, a WebSocket-kiszolgálóról érkező Application Gateway állapot-mintavételi válasz valószínűleg a `400 Bad Request`következő lesz:.
-Ennek eredményeképpen Application Gateway a hüvelyét nem `502 Bad Gateway` megfelelő állapotba fogja megjelölni, ami végül a WebSocket-kiszolgáló felhasználói számára eredményez.
-Ennek elkerüléséhez előfordulhat, hogy egy HTTP GET kezelőt kell hozzáadnia az állapot-ellenőrzési kiszolgálóhoz (`/health` például a visszaadott értékhez `200 OK`).
+A kiszolgáló megvalósításának függvényében ([itt az egyik szeretjük](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)) WebSocket-specifikus fejlécekre lehet szükség (például `Sec-Websocket-Version` ).
+Mivel Application Gateway nem ad hozzá WebSocket-fejléceket, a WebSocket-kiszolgálóról érkező Application Gateway állapot-mintavételi válasz valószínűleg a következő lesz: `400 Bad Request` .
+Ennek eredményeképpen Application Gateway a hüvelyét nem megfelelő állapotba fogja megjelölni, ami végül a `502 Bad Gateway` WebSocket-kiszolgáló felhasználói számára eredményez.
+Ennek elkerüléséhez előfordulhat, hogy egy HTTP GET kezelőt kell hozzáadnia az állapot-ellenőrzési kiszolgálóhoz (például a visszaadott `/health` értékhez `200 OK` ).

@@ -11,15 +11,15 @@ ms.date: 12/05/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 568f284a22f170c2a6a0d60d9e2cfed0645937ba
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66253860"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261375"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Mi a jelszó-kivonatoló szinkronizálás az Azure AD-vel?
-A jelszó-kivonatolás szinkronizálása a hibrid identitások megvalósításához használt bejelentkezési módszerek egyike. Azure AD Connect szinkronizálja egy helyi Active Directory-példány kivonatát, a kivonatot egy felhőalapú Azure AD-példányra.
+A jelszó-kivonatolás szinkronizálása a hibrid identitások megvalósításához használt bejelentkezési módszerek egyike. Azure AD Connect szinkronizálja egy felhasználó jelszavának kivonatát egy helyszíni Active Directory példányból egy felhőalapú Azure AD-példányba.
 
 A jelszó-kivonatolási szinkronizálás a Azure AD Connect Sync által megvalósított címtár-szinkronizálási szolgáltatás kiterjesztése. Ezzel a szolgáltatással jelentkezhet be az Azure AD-szolgáltatásokba, például az Office 365-be. A szolgáltatásba való bejelentkezéshez ugyanazt a jelszót használja, amelyet a helyszíni Active Directory-példányba való bejelentkezéshez használ.
 

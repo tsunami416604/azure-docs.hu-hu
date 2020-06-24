@@ -3,15 +3,15 @@ title: Apache Spark összekötése a Azure Cosmos DB
 description: Ismerkedjen meg a Azure Cosmos DB Spark-összekötővel, amely lehetővé teszi Apache Spark összekapcsolását Azure Cosmos DBhoz.
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 7d5befdfde693becdd7e5f3f638e8d524081ad1b
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457001"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262225"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel big data elemzést az Azure Cosmos DB Connector Apache Spark használatával
 
@@ -31,7 +31,7 @@ Az összekötőt használhatja [Azure Databricks](https://azure.microsoft.com/se
 > Cosmos DB Cassandra API esetén használja a [Cassandra Spark-összekötőt](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Első lépések
+## <a name="quickstart"></a>Gyorsútmutató
 
 * Kövesse az Ismerkedés a [Java SDK-val](sql-api-async-java-get-started.md) című témakör lépéseit Cosmos db fiók beállításához és adatok feltöltéséhez.
 * Azure Databricks munkaterület és fürt beállításához kövesse [Azure Databricks első](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) lépések című szakasz lépéseit.
@@ -313,7 +313,7 @@ További információ a `azure-cosmosdb-spark` [wikiben](https://github.com/Azur
 
 * [Spark-feladatok figyelése az Application bepillantást](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, töltse le a Sparkot Azure Cosmos DB összekötőt az [Azure-cosmosdb-Spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub adattárból. Fedezze fel a következő további forrásokat a tárházban:
 

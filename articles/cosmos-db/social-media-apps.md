@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b121d7f5f1ad626f80a03ebe6cd47a932c209672
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73827298"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116433"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Tehát hogyan tárolja ezeket az adattárakat, és hol?
 
 Lehetséges, hogy az SQL-adatbázisokkal kapcsolatos tapasztalatokkal rendelkezik, vagy az [adatmodell-modellezési](https://en.wikipedia.org/wiki/Relational_model)fogalmakkal rendelkezik. A következőképpen kezdheti meg a rajzolást:
 
-![A relatív rokonsági modellt bemutató diagram](./media/social-media-apps/social-media-apps-sql.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-sql.png" alt-text="A relatív rokonsági modellt bemutató diagram" border="false":::
 
 Egy tökéletesen normalizált és csinos adatstruktúra... Ez nem méretezhető.
 
@@ -157,7 +157,7 @@ Vegyük például a felhasználói adatokat:
 
 Ennek az információnak a megtekintésével gyorsan észlelhető, hogy melyik a kritikus információ, ami nem így van, így a "létra" létrehozása is megtörténik:
 
-![A létra mintájának ábrája](./media/social-media-apps/social-media-apps-ladder.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="A létra mintájának ábrája" border="false":::
 
 A legkisebb lépés neve UserChunk, a felhasználó azonosítására szolgáló minimális információ, amely az adatok ismétlődésére szolgál. Ha csökkenti a duplikált adatok méretét, hogy csak a "show" adatokat fogja megjeleníteni, csökkentse a tömeges frissítések lehetőségét.
 
@@ -188,7 +188,7 @@ A post így néz ki:
         }
     }
 
-Ha egy szerkesztés olyankor lép fel, ahol a rendszer a darab attribútumot érinti, könnyedén megtalálhatja az érintett dokumentumokat. Csak az indexelt attribútumokra mutató lekérdezéseket használja, például `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"`:, majd frissítse az adattömböket.
+Ha egy szerkesztés olyankor lép fel, ahol a rendszer a darab attribútumot érinti, könnyedén megtalálhatja az érintett dokumentumokat. Csak az indexelt attribútumokra mutató lekérdezéseket használja, például: `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"` , majd frissítse az adattömböket.
 
 ## <a name="the-search-box"></a>A keresőmező
 
@@ -230,7 +230,7 @@ Cosmos DB az összes partíció transzparens módon futtatja a lekérdezéseket 
 
 Az idő múlásával végül növekedni fog a forgalom, és az erőforrás-fogyasztás (az [RUs](request-units.md)-ben vagy a kérelmek egységében mérve) nő. A felhasználói alapszintű növekedéshez gyakrabban kell olvasnia és írnia. A felhasználói alap több tartalom létrehozását és olvasását is megkezdi. Így létfontosságú az **átviteli sebesség skálázása** . Az RUs növelése egyszerű. Ezt elvégezheti néhány kattintással a Azure Portal vagy az API-n [keresztüli parancsok kiadásával](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
 
-![Partíciós kulcs skálázása és definiálása](./media/social-media-apps/social-media-apps-scaling.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Partíciós kulcs skálázása és definiálása":::
 
 Mi történik, ha a dolgok egyre jobbak maradnak? Tegyük fel, hogy egy másik régióból, országból vagy kontinensből származó felhasználók észlelik a platformot, és elkezdik használni azt. Mi a nagyszerű meglepetés!
 
@@ -240,13 +240,13 @@ Cosmos DB lehetővé teszi [az adatok globális és átlátható replikálását
 
 Amikor globálisan replikálja az adatait, meg kell győződnie arról, hogy az ügyfelek kihasználhatják. Ha webes felületet használ vagy API-kat fér hozzá a mobil ügyfelektől, üzembe helyezheti az [Azure Traffic Managert](https://azure.microsoft.com/services/traffic-manager/) , és megnyithatja a Azure app Servicet az összes kívánt régióban, a teljesítmény-konfigurációval, hogy támogassa a kiterjesztett globális lefedettséget. Amikor az ügyfelek hozzáférnek a előtérben vagy az API-khoz, a rendszer a legközelebbi App Service irányítja, amely viszont a helyi Cosmos DB replikához fog csatlakozni.
 
-![Globális lefedettség hozzáadása a közösségi platformhoz](./media/social-media-apps/social-media-apps-global-replicate.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Globális lefedettség hozzáadása a közösségi platformhoz" border="false":::
 
 ## <a name="conclusion"></a>Összegzés
 
 Ez a cikk néhány fényt mutat be a közösségi hálózatok teljes körű létrehozására az Azure-ban alacsony díjszabású szolgáltatásokkal. Ennek eredményeképpen a többrétegű tárolási megoldások és a "ladder" elnevezésű adateloszlás használatát ösztönözheti.
 
-![Az Azure-szolgáltatások közösségi hálózatkezeléssel való interakciójának ábrája](./media/social-media-apps/social-media-apps-azure-solution.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Az Azure-szolgáltatások közösségi hálózatkezeléssel való interakciójának ábrája" border="false":::
 
 Az igazság az, hogy az ilyen forgatókönyvek esetében nincs ilyen típusú ezüst-felsorolásjel. Ez a nagyszerű szolgáltatások kombinációja által létrehozott szinergia, amely lehetővé teszi számunkra, hogy nagyszerű tapasztalatokat építsünk ki: a Azure Cosmos DB gyorsasága és szabadsága, hogy kiváló közösségi alkalmazást, az intelligenciát egy olyan első osztályú keresési megoldás mögött, mint az Azure Cognitive Search, a rugalmasság az Azure-App Services, hogy még a nem egyenletes nyelvezetű alkalmazásokat, de hatékony háttér-folyamatokat, valamint a bővíthető Azure Storage-t és Azure SQL Database nagy mennyiségű adat tárolásához és az Azure Machine analitikai teljesítményének biztosításához. Tanuljon olyan tudást és intelligenciát létrehozni, amely visszajelzést tud adni a folyamatokról, és segít a megfelelő tartalomnak a megfelelő felhasználók számára történő továbbításában.
 

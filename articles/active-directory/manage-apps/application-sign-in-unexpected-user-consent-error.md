@@ -3,25 +3,25 @@ title: Váratlan hiba történt az alkalmazáshoz való beleegyező művelet vé
 description: Az alkalmazáshoz való hozzájárulás és a velük kapcsolatos teendők elvégzése során felmerülő hibák ismertetése
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519708"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763754"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba történt az alkalmazáshoz való beleegyezett művelet végrehajtásakor
 
@@ -32,35 +32,35 @@ Számos olyan alkalmazás, amely integrálva van Azure Active Directory a műkö
 Bizonyos feltételeknek igaznak kell lennie ahhoz, hogy egy felhasználó beleegyezik az alkalmazáshoz szükséges engedélyekkel. Ha ezek a feltételek nem teljesülnek, a következő hibák léphetnek fel.
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Nem engedélyezett engedélyeket kérő hiba
-* **AADSTS90093:** &lt;a&gt; clientAppDisplayName egy vagy több olyan engedélyt kér, amelyet Ön nem engedélyez. Forduljon a rendszergazdához, aki beleegyezik az alkalmazásba az Ön nevében.
-* **AADSTS90094:** &lt;a&gt; clientAppDisplayName engedélyre van szüksége ahhoz, hogy a szervezet erőforrásai hozzáférhessenek, csak a rendszergazda adhat meg. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
+* **AADSTS90093:** &lt; a clientAppDisplayName &gt; egy vagy több olyan engedélyt kér, amelynek Ön nem jogosult a jóváhagyásra. Forduljon a rendszergazdához, aki beleegyezik az alkalmazásba az Ön nevében.
+* **AADSTS90094:** &lt; &gt;a clientAppDisplayName engedélyre van szüksége a szervezet erőforrásaihoz való hozzáféréshez, csak a rendszergazda adhat meg. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
 
 Ez a hiba akkor fordul elő, ha egy olyan felhasználó, aki nem vállalati rendszergazda, olyan alkalmazást próbál meg használni, amely csak a rendszergazda által biztosított engedélyeket kér. Ezt a hibát feloldható egy rendszergazda, aki a szervezet nevében hozzáférést biztosít az alkalmazáshoz.
 
 Ez a hiba akkor is előfordulhat, ha a felhasználók nem tudnak beleegyezést adni egy alkalmazásba, mert a Microsoft észleli, hogy az engedélyek iránti kérelem kockázatos. Ebben az esetben a rendszer naplózási eseményt is naplóz a "ApplicationManagement" kategóriába, a "beleegyezés az alkalmazásba" és a "kockázatos alkalmazás észlelése" állapot miatt.
 
 ## <a name="policy-prevents-granting-permissions-error"></a>A szabályzat megakadályozza az engedélyek megadását
-* **AADSTS90093:** A &lt;tenantDisplayName&gt; rendszergazdája olyan szabályzatot állított be, amely megakadályozza az alkalmazás &lt;&gt; nevének megadását a kért engedélyek alapján. Forduljon a &lt;tenantDisplayName&gt;rendszergazdájához, aki az Ön nevében engedélyeket adhat az alkalmazásnak.
+* **AADSTS90093:** A tenantDisplayName rendszergazdája &lt; olyan &gt; szabályzatot állított be, amely megakadályozza az &lt; alkalmazás nevének megadását &gt; a kért engedélyek alapján. Forduljon a &lt; tenantDisplayName rendszergazdájához &gt; , aki az Ön nevében engedélyeket adhat az alkalmazásnak.
 
 Ez a hiba akkor fordul elő, ha a vállalati rendszergazda kikapcsolja a felhasználók által az alkalmazásokhoz való hozzáférés lehetőségét, és a nem rendszergazda felhasználó olyan alkalmazást próbál meg használni, amelyik beleegyezik. Ezt a hibát feloldható egy rendszergazda, aki a szervezet nevében hozzáférést biztosít az alkalmazáshoz.
 
 ## <a name="intermittent-problem-error"></a>Átmeneti hiba történt
-* **AADSTS90090:** Úgy tűnik, hogy a bejelentkezési folyamat időszakos hibát észlelt, és rögzíti a &lt;clientAppDisplayName&gt;megadására megkísérelt engedélyeket. próbálkozzon újra később.
+* **AADSTS90090:** Úgy tűnik, hogy a bejelentkezési folyamat időszakos hibát észlelt, és rögzíti a clientAppDisplayName megadására megkísérelt engedélyeket &lt; &gt; . próbálkozzon újra később.
 
 Ez a hiba azt jelzi, hogy egy időszakos szolgáltatási oldali probléma történt. Az alkalmazás újbóli beleegyezésével oldható fel.
 
 ## <a name="resource-not-available-error"></a>Az erőforrás nem érhető el. hiba
-* **AADSTS65005:** Az alkalmazás &lt;clientAppDisplayName&gt; a nem elérhető erőforrás &lt;-resourceAppDisplayName&gt; eléréséhez szükséges engedélyeket. 
+* **AADSTS65005:** Az alkalmazás &lt; clientAppDisplayName a &gt; nem elérhető erőforrás-resourceAppDisplayName eléréséhez szükséges engedélyeket &lt; &gt; . 
 
 Lépjen kapcsolatba az alkalmazás fejlesztőjével.
 
 ##  <a name="resource-not-available-in-tenant-error"></a>Az erőforrás nem érhető el a bérlői hiba esetén
-* **AADSTS65005:** &lt;a&gt; clientAppDisplayName olyan erőforrás &lt;-resourceAppDisplayName&gt; kér hozzáférést, amely nem érhető el a szervezet &lt;tenantDisplayName&gt;. 
+* **AADSTS65005:** &lt; a clientAppDisplayName olyan &gt; erőforrás-resourceAppDisplayName kér hozzáférést, &lt; &gt; amely nem érhető el a szervezet &lt; tenantDisplayName &gt; . 
 
-Győződjön meg arról, hogy ez az erőforrás elérhető, vagy &lt;forduljon&gt;a tenantDisplayName rendszergazdájához.
+Győződjön meg arról, hogy ez az erőforrás elérhető, vagy forduljon a tenantDisplayName rendszergazdájához &lt; &gt; .
 
 ## <a name="permissions-mismatch-error"></a>Nem megfelelő engedélyek – hiba
-* **AADSTS65005:** Az alkalmazás beleegyezett az erőforrás &lt;-resourceAppDisplayName&gt;való hozzáférésre. Ez a kérelem nem sikerült, mert nem egyezik meg azzal, hogy az alkalmazás hogyan lett előre konfigurálva az alkalmazás regisztrációja során. Forduljon az alkalmazás forgalmazójához. * *
+* **AADSTS65005:** Az alkalmazás beleegyezett az erőforrás-resourceAppDisplayName való hozzáférésre &lt; &gt; . Ez a kérelem nem sikerült, mert nem egyezik meg azzal, hogy az alkalmazás hogyan lett előre konfigurálva az alkalmazás regisztrációja során. Forduljon az alkalmazás forgalmazójához. * *
 
 Ezek a hibák akkor fordulnak elő, amikor az alkalmazás a felhasználó beleegyezését kéri, hogy engedélyt kér egy olyan erőforrás-alkalmazás elérésére, amely nem található a szervezet címtárában (bérlője). Ez a helyzet több okból is bekövetkezhet:
 

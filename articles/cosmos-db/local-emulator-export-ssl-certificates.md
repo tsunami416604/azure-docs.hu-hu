@@ -2,23 +2,23 @@
 title: Az Azure Cosmos DB Emulator tanúsítványok exportálása
 description: Ha olyan nyelveken és futtatókörnyezeteken fejleszt, amelyek nem használják a Windows-tanúsítványtárolót, exportálnia kell a TLS/SSL-tanúsítványokat. Ez a bejegyzés lépésről lépésre leírja a teendőket.
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
 ms.custom: tracking-python
-ms.openlocfilehash: 89d91a3c5c8a4209489ed427067a90e7e2d0b880
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a20d6bdb3a2d6070e81dfca84c851003f6ff4ca2
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561181"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262837"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java-, Python- és Node.js-környezethez használható Azure Cosmos DB Emulator-tanúsítványok exportálása
 
 [**Az Emulator letöltése**](https://aka.ms/cosmosdb-emulator)
 
-A Azure Cosmos DB Emulator olyan helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatást fejlesztési célokra emulálja, beleértve a TLS-kapcsolatok használatát is. Ez a bejegyzés bemutatja, hogyan exportálhatja a TLS/SSL-tanúsítványokat olyan nyelveken és futtatókörnyezetekben való használatra, amelyek nem integrálják a Windows-tanúsítványtárolót, például a Java-t, amely a saját [tanúsítványtárolóját](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) és a Pythont használja, amely a [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)-t használó [socket burkolókat](https://docs.python.org/2/library/ssl.html) és Node. js-t használ. Az emulátorról a [Fejlesztés és tesztelés az Azure Cosmos DB Emulator használatával](./local-emulator.md) című cikk ír bővebben.
+A Azure Cosmos DB Emulator olyan helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatást fejlesztési célokra emulálja, beleértve a TLS-kapcsolatok használatát is. Ez a bejegyzés bemutatja, hogyan exportálhatja a TLS/SSL-tanúsítványokat olyan nyelveken és futtatókörnyezetekben való használatra, amelyek nem integrálják a Windows-tanúsítványtárolót, például a Java-t, amely a saját [tanúsítványtárolóját](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) és a Pythont használja, amely [szoftvercsatorna-burkolókat](https://docs.python.org/2/library/ssl.html) és Node.jst használ a [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)használatával. Az emulátorról a [Fejlesztés és tesztelés az Azure Cosmos DB Emulator használatával](./local-emulator.md) című cikk ír bővebben.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -33,41 +33,41 @@ Az Azure Cosmos DB helyszíni emulátorában a tanúsítványok az emulátor els
 
 Mindkét tanúsítvány újragenerálható a Windows-tálcán futó Azure Cosmos DB Emulator menüjének **Adatok alaphelyzetbe állítása** elemére kattintva. Ha a tanúsítványokat újragenerálja és telepíti a Java-tanúsítványtárolóba vagy máshol felhasználja, akkor frissítenie kell őket, másként az alkalmazás nem kapcsolódik többé a helyszíni emulátorhoz.
 
-![Azure Cosmos DB helyszíni emulátor adatok alaphelyzetbe állítása](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB helyszíni emulátor adatok alaphelyzetbe állítása":::
 
 ## <a name="how-to-export-the-azure-cosmos-db-tlsssl-certificate"></a>A Azure Cosmos DB TLS/SSL-tanúsítvány exportálása
 
 1. Indítsa el a Windows Tanúsítványkezelőjét a certlm.msc futtatásával, nyissa meg a Személyes->Tanúsítványok mappát, majd nyissa meg a **DocumentDbEmulatorCertificate** nevű tanúsítványt.
 
-    ![Azure Cosmos DB helyszíni emulátor 1. exportálási lépés](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
 
 2. Kattintson a **Részletek**, majd az **OK** lehetőségre.
 
-    ![Azure Cosmos DB helyszíni emulátor 2. exportálási lépés](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB helyszíni emulátor 2. exportálási lépés":::
 
 3. Kattintson a **Másolás fájlba...** lehetőségre.
 
-    ![Azure Cosmos DB helyszíni emulátor 3. exportálási lépés](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB helyszíni emulátor 3. exportálási lépés":::
 
 4. Kattintson a **Tovább** gombra.
 
-    ![Azure Cosmos DB helyszíni emulátor 4. exportálási lépés](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB helyszíni emulátor 4. exportálási lépés":::
 
 5. Kattintson a **Nem, nem akarom exportálni a titkos kulcsomat** lehetőségre, majd a **Tovább** gombra.
 
-    ![Azure Cosmos DB helyszíni emulátor 5. exportálási lépés](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB helyszíni emulátor 5. exportálási lépés":::
 
 6. Kattintson a **Base-64 kódolású X.509 (.CER)** lehetőségre, majd a **Tovább** gombra.
 
-    ![Azure Cosmos DB helyszíni emulátor 6. exportálási lépés](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB helyszíni emulátor 6. exportálási lépés":::
 
 7. Nevezze el a tanúsítványt. Ebben a példában a név **documentdbemulatorcert**. Végül kattintson a **Tovább** lehetőségre.
 
-    ![Azure Cosmos DB helyszíni emulátor 7. exportálási lépés](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB helyszíni emulátor 7. exportálási lépés":::
 
 8. Kattintson a **Befejezés** gombra.
 
-    ![Azure Cosmos DB helyszíni emulátor 8. exportálási lépés](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB helyszíni emulátor 8. exportálási lépés":::
 
 ## <a name="how-to-use-the-certificate-in-java"></a>A tanúsítvány használata a Javában
 
@@ -83,9 +83,9 @@ Alapértelmezés szerint az SQL API-hoz készült [PYTHON SDK (2.0.0 vagy újabb
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>A tanúsítvány használata a Node.js-ben
 
-Alapértelmezés szerint a [Node. js SDK (1.10.1 vagy újabb verzió)](sql-api-sdk-node.md) az SQL API-hoz nem próbálkozik és nem használja a TLS/SSL-tanúsítványt a helyi emulátorhoz való csatlakozáskor. Ha azonban TLS-érvényesítést szeretne használni, kövesse a [Node. js dokumentációjában](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)található példákat.
+Alapértelmezés szerint a [Node.js SDK (1.10.1 vagy újabb verzió)](sql-api-sdk-node.md) az SQL API-hoz nem próbálja meg és nem használja a TLS/SSL-tanúsítványt a helyi emulátorhoz való csatlakozáskor. Ha azonban TLS-érvényesítést szeretne használni, kövesse az [Node.js dokumentációjában](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)található példákat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

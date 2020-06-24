@@ -1,5 +1,5 @@
 ---
-title: Modellek elemzése és érvényesítése
+title: Modellek elemzése és ellenőrzése
 titleSuffix: Azure Digital Twins
 description: Ismerje meg, hogyan elemezheti a DTDL-modelleket az elemző függvénytár használatával.
 author: cschormann
@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6346c1d2adca697649ebe879b97766672a23ae29
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cc6451d9be6c125d1b01bc5bb33fd553ce789f31
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613067"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263194"
 ---
 # <a name="dtdl-client-side-parser-library"></a>DTDL ügyféloldali elemző kódtár
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure Digital Twins [modelljei](concepts-models.md) a JSON-alapú digitális Twins Definition Language (DTDL) használatával vannak meghatározva. Olyan esetekben, ahol hasznos elemezni a modelleket, DTDL-elemzési függvénytár van megadva a NuGet.org ügyféloldali kódtárként: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
 
@@ -39,7 +42,7 @@ Az elemző képességei a következők:
 
 ## <a name="use-the-dtdl-validator-sample"></a>A DTDL-érvényesítő minta használata
 
-Létezik olyan mintakód, amely ellenőrizheti a modell dokumentumait, hogy a DTDL érvényes legyen. A DTDL-elemző könyvtárra épül, és nyelvtől független. Itt találja: [DTDL validator minta](https://github.com/Azure-Samples/DTDL-Validator).
+Létezik olyan mintakód, amely ellenőrizheti a modell dokumentumait, hogy a DTDL érvényes legyen. A DTDL-elemző könyvtárra épül, és nyelvtől független. Itt találja: [DTDL validator minta](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 Az érvényesítő minta parancssori segédprogramként használható a DTDL-fájlok címtár-fájának ellenőrzéséhez. Emellett interaktív módot is biztosít. A forráskód példákat mutat be az elemző függvénytár használatára.
 
@@ -166,7 +169,7 @@ void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEnt
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha befejezte a modellek írását, tekintse meg az DigitalTwinsModels API-k használatával történő feltöltését ismertető témakört (és végezze el a többi felügyeleti műveletet):
 * [Útmutató: kettős modell kezelése](how-to-manage-model.md)

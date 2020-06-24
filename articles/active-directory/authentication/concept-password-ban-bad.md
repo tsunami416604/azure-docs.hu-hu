@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263997"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691062"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>A rossz jelszavak kiküszöbölése a szervezetben
 
@@ -111,7 +111,7 @@ A normalizálás két részből áll.  Első lépésként az összes nagybetűt 
 | '$'  | képgalériája |
 | '\@'  | egy |
 
-Példa: tegyük fel, hogy az "üres" jelszó be van tiltva, és a felhasználó megpróbálja megváltoztatni aBl@nKjelszavát a "" értékre. Bár a "Bl@nk" nem kifejezetten tiltott, a normalizálás folyamata ezt a jelszót "üres" értékre konvertálja, amely egy tiltott jelszó.
+Példa: tegyük fel, hogy az "üres" jelszó be van tiltva, és a felhasználó megpróbálja megváltoztatni a jelszavát a "" értékre Bl@nK . Bár a " Bl@nk " nem kifejezetten tiltott, a normalizálás folyamata ezt a jelszót "üres" értékre konvertálja, amely egy tiltott jelszó.
 
 ### <a name="step-2-check-if-password-is-considered-banned"></a>2. lépés: Ellenőrizze, hogy a jelszó betiltottnak minősül-e
 
@@ -147,7 +147,7 @@ A normalizálás után a jelszó "contosoblank12" lesz. A megfelelő folyamat me
 
 [contoso] + [blank] + [1] + [2] = 4 pont, mivel a jelszó öt (5) pont alatt van, a rendszer elutasítja.
 
-Példa: a felhasználó a "ContoS0Bl@nkf9!" értékre módosítja a jelszavát.
+Példa: a felhasználó a "!" értékre módosítja a jelszavát ContoS0Bl@nkf9 .
 
 A normalizálás után ez a jelszó "contosoblankf9!" lesz. A megfelelő folyamat megállapítja, hogy ez a jelszó két tiltott jelszót tartalmaz: contoso és üres. Ezt a jelszót a rendszer a következő pontszámmal adja meg:
 

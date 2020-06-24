@@ -3,15 +3,15 @@ title: Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3
 description: Megtudhatja, hogyan migrálhatja az alkalmazást a refeed Processor Library módosítása a Azure Cosmos DB SDK v3 verzióra
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9640800bb53fe2fd5b27cb6e232e09c72158f8da
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588883"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261409"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3 SDK-ra
 
@@ -21,10 +21,10 @@ Ez a cikk azokat a szükséges lépéseket ismerteti, amelyekkel áttelepítheti
 
 A .NET v3 SDK több feltörési változást is tartalmaz, az alábbi lépésekkel telepítheti át az alkalmazást:
 
-1. Alakítsa át `DocumentCollectionInfo` a példányokat a figyelt és a bérleti tárolók `Container` hivatkozásaira.
-1. A `WithProcessorOptions` használatban lévő testreszabásokat a használat `WithLeaseConfiguration` és `WithPollInterval` az intervallumok, `WithStartTime` a [Kezdési idő](how-to-configure-change-feed-start-time.md)és `WithMaxItems` a maximális elemek számának meghatározására kell frissíteni.
-1. A `processorName` on `GetChangeFeedProcessorBuilder` érték megadásával egyeztetheti a `ChangeFeedProcessorOptions.LeasePrefix`vagy `string.Empty` más módon konfigurált értéket.
-1. A módosítások már nem `IReadOnlyList<Document>`kerülnek be a rendszerbe, hanem az a `IReadOnlyCollection<T>` hely, `T` ahol meg kell határozni a kívánt típust, már nincs alapelem osztálya.
+1. Alakítsa át a `DocumentCollectionInfo` példányokat `Container` a figyelt és a bérleti tárolók hivatkozásaira.
+1. A használatban lévő testreszabásokat a `WithProcessorOptions` használat `WithLeaseConfiguration` és `WithPollInterval` az intervallumok, a `WithStartTime` [Kezdési idő](how-to-configure-change-feed-start-time.md)és `WithMaxItems` a maximális elemek számának meghatározására kell frissíteni.
+1. A on érték megadásával `processorName` `GetChangeFeedProcessorBuilder` egyeztetheti a `ChangeFeedProcessorOptions.LeasePrefix` vagy `string.Empty` más módon konfigurált értéket.
+1. A módosítások már nem kerülnek be a rendszerbe, hanem az a `IReadOnlyList<Document>` `IReadOnlyCollection<T>` hely, ahol meg `T` kell határozni a kívánt típust, már nincs alapelem osztálya.
 1. A módosítások kezeléséhez már nincs szükség megvalósításra, hanem meg kell [adnia egy delegált](change-feed-processor.md#implementing-the-change-feed-processor). A delegált lehet statikus függvény, vagy ha meg kell őriznie az állapotot a végrehajtások között, létrehozhat egy saját osztályt, és delegált néven is átadhat egy példány-metódust.
 
 Ha például az eredeti kód a módosítási hírcsatorna processzorának összeállítására szolgál, a következőképpen néz ki:
@@ -51,7 +51,7 @@ A régi kóddal biztonságosan leállíthatja az alkalmazást, áttelepítheti a
 > A kódtárat a .NET v3 SDK-val használó alkalmazásokból való Migrálás egyirányú, mivel az állapot (bérletek) át lesz telepítve az új sémába. Az áttelepítés visszafelé nem kompatibilis.
 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

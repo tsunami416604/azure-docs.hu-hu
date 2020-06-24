@@ -2,22 +2,22 @@
 title: Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
 description: Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455584"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208161"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
 
 A Azure Portalon kívül az Azure CLI használatával is kezelheti az Azure Blockchain szolgáltatás blockchain-tagjait és tranzakciós csomópontjait.
 
-Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t, és bejelentkezett egy Azure `az login`-fiókba a-ben.
+Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t, és bejelentkezett egy Azure-fiókba a-ben `az login` .
 
-Az alábbi példákban cserélje le a `<parameter names>` példát a saját értékeire.
+Az alábbi példákban cserélje le a példát a `<parameter names>` saját értékeire.
 
 ## <a name="create-blockchain-member"></a>Blockchain-tag létrehozása
 
@@ -37,7 +37,7 @@ az resource create \
 | **erőforrás-csoport** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai jönnek létre. |
 | **név** | Egy egyedi név, amely az Azure Blockchain szolgáltatás Blockchain-tagját azonosítja. A nevet a rendszer a nyilvános végpont címeként használja. Például: `myblockchainmember.blockchain.azure.com`. |
 | **helyen** | Az az Azure-régió, ahol a blockchain-tag létrejött. Például: `eastus`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet. |
-| **alaphelyzetbe állítása** | A tag fiók jelszava. A tag fiók jelszava a blockchain-tag nyilvános végpontján történő hitelesítésre szolgál alapszintű hitelesítés használatával. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*),\`vissza idézőjel (), idézőjel ("), szimpla idézőjel ('), kötőjel (-) és semicolumn (;)|
+| **alaphelyzetbe állítása** | A tag fiók jelszava. A tag fiók jelszava a blockchain-tag nyilvános végpontján történő hitelesítésre szolgál alapszintű hitelesítés használatával. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel ( \` ), idézőjel ("), szimpla idézőjel ('), kötőjel (-) és semicolumn (;)|
 | **protokoll** | A nyilvános előzetes verzió támogatja a kvórumot. |
 | **Consortium** | A csatlakozáshoz vagy létrehozáshoz használandó konzorcium neve. |
 | **consortiumManagementAccountPassword** | A konzorcium felügyeleti jelszava. A rendszer a jelszót használja a konzorciumhoz való csatlakozáshoz. |
@@ -63,7 +63,7 @@ az resource update \
 |---------|-------------|
 | **erőforrás-csoport** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai jönnek létre. |
 | **név** | Az Azure Blockchain-szolgáltatás tagját azonosító név. |
-| **alaphelyzetbe állítása** | A tag fiók jelszava. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*),\`vissza idézőjel (), idézőjel ("), szimpla idézőjel ("), kötőjel (-) és pontosvessző (;). |
+| **alaphelyzetbe állítása** | A tag fiók jelszava. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel ( \` ), idézőjel ("), szimpla idézőjel ("), kötőjel (-) és pontosvessző (;). |
 
 ## <a name="create-transaction-node"></a>Tranzakciós csomópont létrehozása
 
@@ -83,7 +83,7 @@ az resource create \
 | **erőforrás-csoport** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai jönnek létre. |
 | **név** | Az Azure Blockchain szolgáltatás Blockchain azon tagja, amely az új tranzakciós csomópont nevét is tartalmazza. |
 | **helyen** | Az az Azure-régió, ahol a blockchain-tag létrejött. Például: `eastus`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet. |
-| **alaphelyzetbe állítása** | A tranzakciós csomópont jelszava. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*),\`vissza idézőjel (), idézőjel ("), szimpla idézőjel ("), kötőjel (-) és pontosvessző (;). |
+| **alaphelyzetbe állítása** | A tranzakciós csomópont jelszava. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel ( \` ), idézőjel ("), szimpla idézőjel ("), kötőjel (-) és pontosvessző (;). |
 | **ruleName** | Az IP-címtartomány engedélyezési szabályának neve. A tűzfalszabályok választható paramétere. |
 | **startIpAddress** | Az engedélyezési listán szereplő IP-címtartomány kezdete. A tűzfalszabályok választható paramétere. |
 | **endIpAddress** | Az engedélyezési listán szereplő IP-címtartomány vége. A tűzfalszabályok választható paramétere.|
@@ -104,7 +104,7 @@ az resource update \
 |---------|-------------|
 | **erőforrás-csoport** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai léteznek. |
 | **név** | Az Azure Blockchain szolgáltatás Blockchain azon tagja, amely az új tranzakciós csomópont nevét is tartalmazza. |
-| **alaphelyzetbe állítása** | A tranzakciós csomópont jelszava. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*),\`vissza idézőjel (), idézőjel ("), szimpla idézőjel ("), kötőjel (-) és pontosvessző (;). |
+| **alaphelyzetbe állítása** | A tranzakciós csomópont jelszava. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel ( \` ), idézőjel ("), szimpla idézőjel ("), kötőjel (-) és pontosvessző (;). |
 
 ## <a name="change-consortium-management-account-password"></a>A konzorcium-felügyeleti fiók jelszavának módosítása
 
@@ -123,7 +123,7 @@ az resource update \
 |---------|-------------|
 | **erőforrás-csoport** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai jönnek létre. |
 | **név** | Az Azure Blockchain-szolgáltatás tagját azonosító név. |
-| **consortiumManagementAccountPassword** | A konzorcium felügyeleti fiókjának jelszava. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*),\`vissza idézőjel (), idézőjel ("), szimpla idézőjel ("), kötőjel (-) és pontosvessző (;). |
+| **consortiumManagementAccountPassword** | A konzorcium felügyeleti fiókjának jelszava. A jelszónak meg kell felelnie a következő négy követelmény közül háromnak: a hossznak 12 & 72 karakter, 1 kisbetűs karakter, 1 nagybetű, 1 szám és 1 speciális karakter közé kell esnie, amely nem szám típusú jel (#), százalék (%), vessző (,), csillag (*), vissza idézőjel ( \` ), idézőjel ("), szimpla idézőjel ("), kötőjel (-) és pontosvessző (;). |
   
 ## <a name="update-firewall-rules"></a>Tűzfalszabályok frissítése
 
@@ -178,7 +178,7 @@ az resource invoke-action \
 |---------|-------------|
 | **erőforrás-csoport** | Az erőforráscsoport neve, ahol az Azure Blockchain szolgáltatás erőforrásai léteznek. |
 | **név** | Az Azure Blockchain szolgáltatás Blockchain azon tagja, amely az új tranzakciós csomópont nevét is tartalmazza. |
-| **Kulcsnév** | Cserélje \<le a\> Key1 vagy a key2 értéket. |
+| **Kulcsnév** | Cserélje le \<keyValue\> a key1 vagy a key2. |
 
 ## <a name="delete-a-transaction-node"></a>Tranzakciós csomópont törlése
 

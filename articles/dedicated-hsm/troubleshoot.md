@@ -13,19 +13,19 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: fc7d4caecb2ca3d35d7b1b8d0cd5f9ff380d7674
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310104"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209572"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
 Az Azure dedikált HSM szolgáltatásnak két különböző aspektusa van. Először is a HSM-eszközök regisztrációját és üzembe helyezését a mögöttes hálózati összetevőkkel. Másodszor, a HSM-eszközök konfigurációja az adott számítási feladathoz vagy alkalmazáshoz való használatra/integrációra készül. Bár a Thales Luna hálózati HSM-eszközök ugyanazok az Azure-ban, mint amikor közvetlenül a Thales vásárolnak, az a tény, hogy az Azure-beli erőforrások egyedi szempontokat hoznak létre. Ezeket a szempontokat és az esetlegesen felmerülő hibaelhárítási információkat és ajánlott eljárásokat itt dokumentáljuk, hogy magas szintű láthatóságot és a kritikus információkhoz való hozzáférést lehessen biztosítani. Ha a szolgáltatás használatban van, a végleges információk a Microsoft vagy a Thales támogatási kérésein keresztül érhetők el közvetlenül. 
 
 > [!NOTE]
-> Meg kell jegyezni, hogy az újonnan telepített HSM-eszközök konfigurációjának megkezdése előtt minden kapcsolódó javítással frissíteni kell azt. A Thales-támogatási portálon egy adott szükséges javítást is [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) , amely egy újraindítási probléma megoldását kezeli.
+> Meg kell jegyezni, hogy az újonnan telepített HSM-eszközök konfigurációjának megkezdése előtt minden kapcsolódó javítással frissíteni kell azt. A Thales-támogatási portálon egy adott szükséges javítást is [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) , amely egy olyan hibával foglalkozik, amelyben a rendszer a rendszerindítás során nem válaszol.
 
 ## <a name="hsm-registration"></a>HSM-regisztráció
 
@@ -120,7 +120,7 @@ A Thales SafeNet Luna 7 HSM-eszközök szoftvere és dokumentációja nem érhet
 
 ### <a name="hsm-device-reboot"></a>HSM-eszköz újraindítása
 
-Néhány konfigurációs módosításhoz a HSM-nek be kell vezetnie vagy újra kell indítania a rendszert. Az Azure-beli HSM Microsoft általi tesztelése azt állapította meg, hogy az újraindítás bizonyos esetekben nem válaszol. Ennek a következménye, hogy egy támogatási kérést kell létrehozni a merevlemez-újraindítás kérésének Azure Portal, amely akár 48 órát is igénybe vehet, figyelembe véve az Azure-adatközpontok manuális folyamatát.  Ennek elkerüléséhez győződjön meg arról, hogy a Thales közvetlenül elérhető az újraindítási javítás. Tekintse meg a [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) -t a Thales Luna hálózati HSM 7,2-es verziójában, és töltse le az újraindítási problémákra vonatkozó ajánlott javítást (Megjegyzés: a letöltéshez regisztrálnia kell a Thales támogatási portálon).
+Néhány konfigurációs módosításhoz a HSM-nek be kell vezetnie vagy újra kell indítania a rendszert. Az Azure-beli HSM Microsoft általi tesztelése azt állapította meg, hogy az újraindítás bizonyos esetekben nem válaszol. Ennek a következménye, hogy egy támogatási kérést kell létrehozni a merevlemez-újraindítás kérésének Azure Portal, amely akár 48 órát is igénybe vehet, figyelembe véve az Azure-adatközpontok manuális folyamatát.  Ennek elkerüléséhez győződjön meg arról, hogy a Thales közvetlenül elérhető az újraindítási javítás. Tekintse meg a [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) -t a Thales Luna hálózati HSM 7,2-es verziójának letöltéséhez egy olyan probléma esetén, amelyben a rendszer nem válaszol az újraindítás során (Megjegyzés: a letöltéshez regisztrálnia kell a Thales támogatási portálon).
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS-tanúsítványok szinkronizálása
 Előfordulhat, hogy egy ügyfél elveszti a kapcsolatot egy HSM-kapcsolattal, amikor egy tanúsítvány lejár vagy felül lett írva a konfigurációs frissítésekkel. A tanúsítvány-Exchange-ügyfél konfigurációját újra kell alkalmazni az egyes HSM-sel.
