@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6a4712f88a6f5351845233f4179e82e4b473ded
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 332ce90de334a384ee6017a12781d0ddb2ed4158
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266729"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126144"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -33,12 +33,12 @@ A Citrix kiterjeszti a Windows virtuális asztal értékét robusztus nagyválla
 
 ![VMware-embléma](./media/partners/vmware.png)
 
-A VMware Horizon Cloud on Microsoft Azure lehetővé teszi a szervezetek számára, hogy az egyszerű, intuitív horizontú felhő-ellenőrzési síkon összekapcsolják a saját Microsoft Azure a saját példányát, így biztonságos, átfogó, felhőben üzemeltetett megoldást biztosítanak a virtualizált Windows-alkalmazások és-asztalok kézbesítéséhez. A Windows rendszerű virtuális asztali verzióban a VMware a Microsofttal együttműködve kiterjesztheti a Windows rendszerű virtuális asztal funkcióit az ügyfeleknek a Horizon Cloud on Microsoft Azure használatával. Ez a funkció a tech Preview-ban lesz elérhető a 2019 végéig.
- 
-A jóváhagyott szolgáltatóként a Windows rendszerű virtuális asztalok előnyeit a VMware Horizon Cloud-ra terjeszti ki Microsoft Azure ügyfeleken, beleértve a Windows 10 Enterprise for multi-session, a Windows 7 és az ingyenes kiterjesztett biztonsági frissítéseket akár három évig, valamint FSLogix is. Emellett az ügyfelek a Horizon Cloud nagyvállalati szintű funkcióit is megkapják, például a széles körű végpontok támogatását; globális, felhőben optimalizált közvetítés; rugalmas asztali beállítások és konfigurációk; felhasználói környezet kezelése; és a hibrid környezetek támogatása.
+A VMware Horizon Cloud on Microsoft Azure egy natív felhőalapú szolgáltatás, amely lehetővé teszi, hogy a szervezetek gyorsan telepítsék a távoli asztalokat és alkalmazásokat a meglévő Microsoft Azure előfizetésekről, miközben kihasználják a VMware Horizon összes funkcióját. A Horizon Cloud a Horizon vezérlő síkja segítségével egyetlen felügyeleti felületet biztosít a helyi vagy a Felhőbeli környezetekhez. Ez lehetővé teszi a hibrid asztali virtualizálás használatát, és lehetővé teszi, hogy az ügyfelek saját tempójában áthelyezzenek munkaterhelést az Azure-ba.
 
-- [Regisztráljon a Horizon Cloud Microsoft Azure-on elérhető Tech Preview-ra](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+Windows rendszerű virtuális asztali jóváhagyott szolgáltatóként a VMware segítheti a Windows rendszerű virtuális asztalt használó ügyfeleket, miközben továbbra is élvezik a VMware horizonttal elérhető további funkciókat, például az integrált és könnyen használható energiagazdálkodást, a felhőalapú figyelést és a Blast Extreme protokollt. Ezek a funkciók úgy alkalmazkodnak a változó hálózati feltételekhez, hogy következetesen kiváló felhasználói élményt biztosítanak. A VMware Horizon Cloud a VMware app Volumes és a Dynamic Environment Manager szolgáltatással is rendelkezik, amely speciális alkalmazás-és felhasználói környezet-felügyeleti képességeket biztosít, amelyek a MSIX alkalmazással és a FSLogix együtt működnek.
+
 - [Lépjen a partner webhelyére](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+- [Olvassa el a VMware Horizon Cloud műszaki dokumentációját](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure).
 
 ## <a name="10zig"></a>10ZiG
 
@@ -102,6 +102,28 @@ a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a k�
 
 - [Lépjen a partner webhelyére](https://devicetrust.com/wvd).
 
+## <a name="ekran-system"></a>Ekran-rendszeren
+
+![Ekran-rendszerembléma](./media/partners/ekran.png)
+
+A Ekran System egy Windows rendszerű virtuális asztali érték – partner hozzáadása, amely lehetővé teszi, hogy a csapatok az összes távoli felhasználói tevékenységet figyelik Microsoft Azure virtuális gépeken. A Ekran rendszer használatával a közzétett alkalmazásokban vagy virtuális asztalokon lévő összes felhasználói munkamenethez rögzítheti a képernyőn megjelenő tevékenységeket, a kontextusban gazdag metaadatok, például az alkalmazások neve, az aktív ablak címei, a felkeresett URL-címek és a billentyűleütések széles körének begyűjtése során. A speciális funkciók részletes láthatóságot és gyors incidenseket biztosítanak, így a Ekran rendszer hatékony belső veszélyforrások kezelésére és megfelelőségi megoldásra tesz szert.  
+
+A Ekran rendszer ügyfeleinek egyedi, lebegőpontos licencelése automatikusan támogatja a dinamikusan változó virtuális asztalok használatát. A Ekran rendszer lehetővé teszi, hogy automatikusan törölje a licencek hozzárendelését a törölt nem állandó virtuális asztalokról, és távolítsa el azokat az adatbázisból. A Ekranrendszer zökkenőmentesen integrálható a Azure Active Directory és az Azure Sentinel szolgáltatással.
+
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8).
+- [Lépjen a partner oldalra](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring).
+
+## <a name="flexxible-it"></a>Flexxible
+
+![Flexxible IT-embléma](./media/partners/flexxible.png)
+
+A Flexxible egy Windows rendszerű virtuális asztali érték – partner hozzáadása, amely lehetővé teszi a szervezetek számára a Windows virtuális asztal és a Citrix Workspace-infrastruktúra gyors méretezését, monitorozását és hatékony kezelését. Flexxible | A SUITE lehetővé teszi a rendszergazdák számára, hogy a helyszíni és az Azure-ban üzemeltetett Windows rendszerű virtuális asztali számítási feladatokat intelligens módon tudják kiépíteni és kezelni.
+ 
+A Flexxible technológiája kiterjeszti a natív Windows-alapú virtuális asztali és Citrix munkaterület értékét a gyakori folyamatok automatizálásával az infrastruktúra-konfiguráció, az asztali üzembe helyezés és a napi felügyelet egyszerűsítése érdekében. A SUITE összetett PowerShell-parancsfájlok vagy időigényes manuális folyamatok nélkül biztosít méretezhető asztali telepítést, kiterjedt figyelést és jelentéskészítést, valamint biztonságos delegált felügyeletet. Ezek a funkciók lehetővé teszik a fejlett szolgáltatási szintek és a minőségi Windowsos virtuális asztali környezet kialakítását a felhasználók számára.
+
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A).
+- [Lépjen a partner webhelyére](https://www.flexxible.com/suite-for-windows-virtual-desktop).
+
 ## <a name="hp"></a>HP
 
 ![HP-embléma](./media/partners/hp.png)
@@ -127,7 +149,7 @@ A IGEL operációs rendszer az összes népszerű virtuális alkalmazást, aszta
 
 ![Ivanti embléma](./media/partners/ivanti.png)
 
-A Ivanti felhasználói munkaterület-kezelője egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely megkönnyíti az asztal üzembe helyezését és felügyeletét azáltal, hogy a felhasználói adatok az asztalról a zökkenőmentes hordozhatóság érdekében elválasztva. A Ivanti segítségével a felhasználók olyan összetett projekteket tehetnek elérhetővé, mint például a Windows 10-es verzióra való áttérés, az Office 365 bevezetése vagy a szolgáltatások felhőbe való áthelyezése. 
+A Ivanti felhasználói munkaterület-kezelője egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely megkönnyíti az asztal üzembe helyezését és felügyeletét azáltal, hogy a felhasználói adatok az asztalról a zökkenőmentes hordozhatóság érdekében elválasztva. A Ivanti lehetővé teszi, hogy a felhasználók összetett projekteket, például a Windows 10 rendszerbe való áttelepítést, a Microsoft 365 bevezetését vagy a szolgáltatások felhőbe való áthelyezését. 
 
 A Windows rendszerű virtuális asztallal való használat esetén a Ivanti felhasználói munkaterület-kezelője egyszerű környezetfüggő felügyeletet biztosít a felhasználói asztali élményben, kiküszöbölve a hosszú bejelentkezési időt és a csoportházirend-rémálmok felszámolását. A Ivanti felhasználói munkaterület-kezelő beépített sablonjai leegyszerűsítik a felhasználókat az ügynökökön és a meglévő konzolon keresztül. A Ivanti felhasználói munkaterület-kezelője rugalmas, biztonságos asztalokat biztosít a felhasználók számára, így pénzt takarít meg a kiszolgálókon, hatékonyabban kezelheti a felhasználókat, és csökkentheti a végpontok biztonsági kockázatát. 
 
@@ -163,6 +185,7 @@ A Liquit alkalmazás-összesítés és-továbbítási szoftver lehetővé teszi 
 
 Certified Integration partnerként a Liquit a felhőbe való áttérést a RIP és a csere késleltetése nélkül segíti. A Windows virtuális asztal egyszerűen csatlakozhat egy meglévő környezethez, létrehozhat egy munkaterületet, és elvégezheti az asztalt. Ezt követően elvégezheti a régi platformok áttelepítését, és a felhasználók közötti változások nélkül végezheti el a módosításokat. Következetes végfelhasználói élményt és rugalmas infrastruktúrát nyerhet, és kezelheti az alkalmazásait, függetlenül attól, hogy hol vannak.
 
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yol8).
 - [Lépjen a partner webhelyére](https://www.liquit.com/wvd/).
 
 ## <a name="login-vsi"></a>Bejelentkezési VSI
@@ -235,6 +258,17 @@ A RDPSoft egy olyan Windows rendszerű virtuális asztali partner, amely hatéko
 A RDPSoft Távoli asztal Commander-megoldásai fokozzák a Windows rendszerű virtuális asztali felügyeletet. A prémium szintű felügyeleti funkciók lehetővé teszik a Windows rendszerű virtuális asztalok felügyeleti feladatainak delegálását, és támogatják a Távsegítség, a felhasználói munkamenetek és a folyamatok kezelését. Ugyanakkor a Távoli asztal Commander Suite részletes mérőszámokat gyűjt a felhasználónkénti teljesítményről és betöltésről, a felhasználói tevékenységekről és a naplózásról, a Windows virtuális asztali kapcsolat minőségéről (késés és sávszélesség), a licencelésről és a biztonságról egy központi Azure SQL Database-példányra a felülvizsgálathoz. A RDPSoft, a gazdag történelmi jelentéskészítés és az átfogó irányítópultok csupán egy kattintással elérhetők.
 
 - [Lépjen a partner webhelyére](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
+
+## <a name="rimo3"></a>Rimo3
+
+![Rimo3 embléma](./media/partners/rimo3.png)
+
+A Rimo3 a telepítés felgyorsításával és a folyamatos változások kezelésének javításával fokozza a Windows rendszerű virtuális asztali élményt. A Rimo3 informatikai csapatoknak gondoskodik az alkalmazás-munkaterhelések Azure-beli áttelepítési felkészültségének támogatásához szükséges ismeretekről. A felhasználók gyorsan és fájdalommentesen helyezhetnek üzembe alkalmazásokat és tesztelik azokat a célként megadott Windows virtuális asztal munkaterületen. A felhasználók proaktív módon is megismerhetik a változások következményeit, mivel a szervezet az új alkalmazásokat és frissítéseket összesíti. Végezetül a rendszergazdák Rimo3's intelligens füst-tesztelési képességet, és a felhasználói munkamenetek megszakítása nélkül automatizálják a funkciók tesztelését.
+
+A Rimo3 egy könnyen használható, méretezhető, automatizált alkalmazás-tesztelési platformot kínál. Ez a platform mindhárom alkalmazás-tesztelési alapképességet magában foglalja: kompatibilitás, funkcionalitás és teljesítmény. Lehetővé teszi a szervezetek, a vezetők és a csapatok számára az üzletmenet folytonosságának javítását, a változás gyorsabb elfogadását és a felhasználói élmény optimalizálását.
+
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B).
+- [Lépjen a partner webhelyére](https://rimo3.com/outcomes/).
 
 ## <a name="sepago"></a>sepago
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f5c93e35b2a9124ac6d480b3719608ee3b4484a5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 681b81fa7f6ce74f7e48eb518a2c951e94c4b00d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554825"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789532"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel
 
@@ -165,7 +165,7 @@ A következő lépésekkel kérhet le egy teszt fiókot:
 
 1. [Töltse le a hálózati házirend-kiszolgáló bővítményt](https://aka.ms/npsmfa) a Microsoft letöltőközpontból.
 2. Másolja a bináris fájlt a konfigurálni kívánt hálózati házirend-kiszolgálóra.
-3. Futtassa a *Setup. exe fájlt* , és kövesse a telepítési utasításokat. Ha hibákba ütközik, ellenőrizze, hogy az előfeltételi szakasz két könyvtára sikeresen telepítve lett-e.
+3. Futtassa *setup.exe* , és kövesse a telepítési utasításokat. Ha hibákba ütközik, ellenőrizze, hogy az előfeltételi szakasz két könyvtára sikeresen telepítve lett-e.
 
 #### <a name="upgrade-the-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének frissítése
 
@@ -190,11 +190,20 @@ Ha nem szeretne saját tanúsítványokat használni (a PowerShell-parancsfájl 
 1. Futtassa a Windows PowerShellt rendszergazdaként.
 2. Módosítsa a címtárakat.
 
-   `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
+   ```powershell
+   cd "C:\Program Files\Microsoft\AzureMfa\Config"
+   ```
 
 3. Futtassa a telepítő által létrehozott PowerShell-szkriptet.
 
-   `.\AzureMfaNpsExtnConfigSetup.ps1`
+   > [!IMPORTANT]
+   > Az Azure Government vagy az Azure China 21Vianet felhők használatát használó ügyfelek esetében először szerkessze a `Connect-MsolService` *AzureMfaNpsExtnConfigSetup.ps1* parancsfájlban található parancsmagokat, hogy tartalmazza a szükséges felhőhöz tartozó *AzureEnvironment* paramétereket. Válassza például a *-AzureEnvironment USGovernment* vagy a *-AzureEnvironment AzureChinaCloud*.
+   >
+   > További információ: a [MsolService paraméter referenciája](/powershell/module/msonline/connect-msolservice#parameters).
+
+   ```powershell
+   .\AzureMfaNpsExtnConfigSetup.ps1
+   ```
 
 4. Jelentkezzen be az Azure AD-be rendszergazdaként.
 5. PowerShell-kérések a bérlői AZONOSÍTÓhoz. Használja az előfeltételek szakaszban található Azure Portalból másolt címtár-azonosító GUID azonosítót.
@@ -205,22 +214,30 @@ Ismételje meg ezeket a lépéseket minden olyan további hálózati házirend-k
 Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány lett létrehozva, törölje a lejárt tanúsítványokat. A lejárt tanúsítványok miatt a hálózati házirend-kiszolgáló bővítménnyel kapcsolatos problémák merülhetnek fel.
 
 > [!NOTE]
-> Ha saját tanúsítványokat használ a PowerShell-parancsfájllal történő tanúsítványok létrehozása helyett, akkor győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezési konvencióhoz vannak igazítva. A tulajdonos nevének a **CN = \<TenantID\> , OU = Microsoft NPS bővítménynek**kell lennie. 
+> Ha saját tanúsítványokat használ a PowerShell-parancsfájllal történő tanúsítványok létrehozása helyett, akkor győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezési konvencióhoz vannak igazítva. A tulajdonos nevének a **CN = \<TenantID\> , OU = Microsoft NPS bővítménynek**kell lennie.
 
-### <a name="microsoft-azure-government-additional-steps"></a>További lépések Microsoft Azure Government
+### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Microsoft Azure Government vagy az Azure China 21Vianet további lépések
 
-Azure Government felhőt használó ügyfelek esetén a következő további konfigurációs lépésekre van szükség az egyes NPS-kiszolgálókon.
+Az Azure Government vagy az Azure China 21Vianet felhők használatát használó ügyfelek esetében a következő további konfigurációs lépésekre van szükség az egyes NPS-kiszolgálókon.
 
 > [!IMPORTANT]
-> Csak akkor konfigurálja ezeket a beállításjegyzék-beállításokat, ha Ön Azure Government ügyfél.
+> Csak akkor konfigurálja ezeket a beállításjegyzék-beállításokat, ha Ön Azure Government vagy Azure China 21Vianet-ügyfél.
 
-1. Ha Ön Azure Government ügyfél, nyissa meg a **Beállításszerkesztőt** a hálózati házirend-kiszolgálón.
-1. Nyissa meg a `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` címet. Állítsa be a következő kulcs értékeit:
+1. Ha Ön Azure Government vagy Azure China 21Vianet-ügyfél, nyissa meg a **Beállításszerkesztőt** a hálózati házirend-kiszolgálón.
+1. Nyissa meg a `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` címet.
+1. Azure Government ügyfelek esetében állítsa be a következő kulcs értékeit:
 
     | Beállításkulcs       | Érték |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Az Azure China 21Vianet ügyfelei esetében állítsa be a következő kulcs-értékeket:
+
+    | Beállításkulcs       | Érték |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.cn   |
+    | STS_URL            | https://login.chinacloudapi.cn/   |
 
 1. Ismételje meg az előző két lépést az egyes NPS-kiszolgálók beállításkulcs-értékeinek beállításához.
 1. Indítsa újra a hálózati házirend-kiszolgáló szolgáltatást az egyes NPS-kiszolgálókon.
@@ -269,7 +286,7 @@ Dönthet úgy, hogy létrehozza ezt a kulcsot, és FALSE (hamis) értékre áll�
 
 A következő szkripttel végezheti el az alapszintű állapot-ellenőrzési lépéseket a hálózati házirend-kiszolgáló bővítményének hibaelhárításakor.
 
-[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
+[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -277,7 +294,7 @@ A következő szkripttel végezheti el az alapszintű állapot-ellenőrzési lé
 
 Keresse meg a telepítő által a tanúsítvány-tárolóban létrehozott önaláírt tanúsítványt, és ellenőrizze, hogy a titkos kulcs rendelkezik-e a felhasználói **hálózati szolgáltatáshoz**megadott engedélyekkel. A tanúsítvány tulajdonosának neve **CN \<tenantid\> , OU = Microsoft NPS bővítmény**
 
-A *AzureMfaNpsExtnConfigSetup. ps1* parancsfájl által létrehozott önaláírt tanúsítványok érvényességi ideje két év is lehet. A tanúsítvány telepítésének ellenőrzésekor azt is ellenőriznie kell, hogy a tanúsítvány nem járt-e le.
+A *AzureMfaNpsExtnConfigSetup.ps1* -szkript által létrehozott önaláírt tanúsítványok érvényességi időtartama két év is lehet. A tanúsítvány telepítésének ellenőrzésekor azt is ellenőriznie kell, hogy a tanúsítvány nem járt-e le.
 
 ---
 
@@ -285,7 +302,7 @@ A *AzureMfaNpsExtnConfigSetup. ps1* parancsfájl által létrehozott önaláírt
 
 Nyisson meg egy PowerShell-parancssort, és futtassa a következő parancsokat:
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
@@ -295,7 +312,7 @@ Ezek a parancsok kinyomtatják a bérlőhöz társító összes tanúsítványt 
 
 A következő parancs létrehoz egy "npscertificate" nevű fájlt a "C:" meghajtón a Format. cer fájlban.
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertificate.cer
@@ -350,7 +367,7 @@ Javasoljuk, hogy a régebbi és a gyengébb titkosítási csomagokat tiltsa le, 
 
 További hibaelhárítási útmutató és lehetséges megoldások találhatók az [Azure-multi-Factor Authentication hálózati házirend-kiszolgáló bővítményében található hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)című cikkben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A hálózati házirend-kiszolgáló áttekintése és konfigurálása a Windows Server rendszerben](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 

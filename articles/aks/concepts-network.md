@@ -2,14 +2,14 @@
 title: Fogalmak – hálózatkezelés az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg a hálózatkezelést az Azure Kubernetes szolgáltatásban (ak), beleértve a kubenet és az Azure CNI hálózatkezelését, a bejövő vezérlőket, a terheléselosztó és a statikus IP-címeket.
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 51773a46b77cb1e9a89b9c85a5f62c4a6b7af3be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae1c2b95a948f2344119af234539b6fab4edaaac
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146053"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789497"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
@@ -129,6 +129,8 @@ A belépési *vezérlők* a 7. rétegben működnek, és az alkalmazások forgal
 
 Az AK-ban létrehozhat egy bejövő erőforrásokat, például NGINX-et, vagy használhatja az AK HTTP-alkalmazás útválasztási szolgáltatását. Ha egy AK-fürthöz engedélyezi a HTTP-alkalmazás útválasztását, az Azure platform létrehozza a bejövő vezérlőt és egy *külső DNS-* vezérlőt. Mivel a Kubernetes-ben új bejövő erőforrások jönnek létre, a szükséges DNS-rekordok egy fürtre vonatkozó DNS-zónában jönnek létre. További információ: a [http-alkalmazás útválasztásának telepítése][aks-http-routing].
 
+A Application Gateway inporting Controller (AGIC) bővítmény lehetővé teszi, hogy az AK-ügyfelek kihasználják az Azure natív Application Gateway 7. szintű Load-balancert, hogy elérhetővé tegye a felhőalapú szoftvereket az interneten. A AGIC figyeli az üzemeltetett Kubernetes-fürtöt, és folyamatosan frissíti egy Application Gateway, hogy a kiválasztott szolgáltatások elérhetők legyenek az internethez. Ha többet szeretne megtudni az AK-beli AGIC-bővítményről, tekintse meg a [Mi az Application Gateway beáramló vezérlőt?][agic-overview]
+
 A bejövő forgalom egy másik gyakori funkciója az SSL/TLS-lezárás. A HTTPS-kapcsolaton keresztül elért nagyméretű webalkalmazások esetében a TLS-megszakítást a bejövő erőforrások nem az alkalmazáson belül, hanem a bejövő erőforrással is tudják kezelni. A TLS-hitelesítés automatikus létrehozásához és konfigurálásához beállíthatja, hogy a bejövő erőforrások olyan szolgáltatók használatára legyenek használhatók, mint például a titkosítás. Az NGINX beáramlási vezérlőnek a titkosítással való konfigurálásával kapcsolatos további információkért lásd: [bejövő és TLS][aks-ingress-tls].
 
 A bejövő adatkezelőt úgy is konfigurálhatja, hogy megőrizze az ügyfél forrásának IP-címét az AK-fürtön lévő tárolók kéréseire. Ha az ügyfél kérelmét az AK-fürtön lévő egyik tárolóhoz irányítja át a bejövő vezérlőn keresztül, a kérelem eredeti forrás IP-címe nem lesz elérhető a cél tároló számára. Ha engedélyezi az *ügyfél forrás IP-címének megőrzését*, az ügyfél forrás IP-címe a kérelem fejlécében érhető el az *X által továbbított – esetében*. Ha ügyfél-forrás IP-megőrzést használ a bejövő adatkezelőn, akkor nem használhatja a TLS átmenő átvitelt. Az ügyfél-forrás IP-megőrzés és a TLS-továbbítás más szolgáltatásokkal, például a *terheléselosztó* típussal is használható.
@@ -180,6 +182,7 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[agic-overview]: ../application-gateway/ingress-controller-overview.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
 [support-policies]: support-policies.md

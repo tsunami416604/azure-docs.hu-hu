@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 91918bb053c1f26e33d08dde3b68debfcffe350e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195758"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124987"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -237,7 +237,7 @@ Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancs
 
 > [!NOTE]
 >
-> - A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Exampple esetén: a letöltött szkript neve a \' VMname \' \_ \' geoname \' _ \' GUID azonosítóval kezdődik \' , például *ContosoVM_wcus_12345678*
+> - A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: a letöltött parancsfájl neve a \' VMname \' \_ \' geoname \' _ \' GUID azonosítóval kezdődik \' , például *ContosoVM_wcus_12345678*
 > - Az URL-cím a következő lenne: <https://pod01-rec2.wcus.backup.windowsazure.com> "
 >
 
@@ -258,7 +258,7 @@ Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a bizt
     - Győződjön meg arról, hogy az operációs rendszer WS 2012 vagy újabb.
     - Győződjön meg arról, hogy a beállításjegyzék-kulcsok az alábbi módon vannak beállítva a visszaállítási kiszolgálón, és indítsa újra a kiszolgálót. A GUID melletti szám a 0001-0005-tól terjedhet. A következő példában ez a 0004. A parameters (paraméterek) szakaszig navigáljon a beállításkulcs elérési útjára.
 
-    ![iSCSI-reg-Key-Changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200

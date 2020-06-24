@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 4d9f4475edb9d2f44fe51549dd0dc701b638bf8e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d12db3ab046d115b60b67a9c22bf4e885cd0ef02
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553965"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782568"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Függőségek követése a OpenCensus Pythonban
 
@@ -84,6 +84,9 @@ conn.close()
 ## <a name="dependencies-with-django-integration"></a>Függőségek a "Django" integrációval
 
 A kimenő Django-kérelmek nyomon követése a OpenCensus- `django` integrációval.
+
+> [!NOTE]
+> Az egyetlen követett kimenő Django-kérelem egy adatbázisra irányuló hívás. A Django alkalmazásra irányuló kérelmekért lásd: [bejövő kérelmek](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request#tracking-django-applications).
 
 Töltse le és telepítse a `opencensus-ext-django` [PyPI](https://pypi.org/project/opencensus-ext-django/) -ból, és adja hozzá a következő sort a `MIDDLEWARE` Django fájl szakaszához `settings.py` .
 
@@ -165,7 +168,7 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['sqlalchemy'])
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
 * [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)

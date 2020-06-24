@@ -11,12 +11,12 @@ ms.date: 07/18/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f1f6f4a6a1d48a0f409d5e5aba644a26653aa7df
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2e1167c92dccdfa7600a4827c0081647c190d7d4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726060"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252134"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -147,7 +147,7 @@ A várt értékek a következők:
 
 **Megjegyzés az előtagnál**: az URI-előtagot szegmens és nem karakter alapján számítja ki a rendszer. Például `/a/b` egy előtag, `/a/b/c` de nem `/a/bc` .
 
-A következő Node. js-kódrészlet egy **generateSasToken** nevű függvényt mutat be, amely kiszámítja a tokent a bemeneti adatokból `resourceUri, signingKey, policyName, expiresInMins` . A következő részek részletesen ismertetik, hogyan inicializálhatja a különböző adatforrásokat a különböző jogkivonat-használati esetekben.
+A következő Node.js kódrészlet egy **generateSasToken** nevű függvényt mutat be, amely kiszámítja a tokent a bemenetekben `resourceUri, signingKey, policyName, expiresInMins` . A következő részek részletesen ismertetik, hogyan inicializálhatja a különböző adatforrásokat a különböző jogkivonat-használati esetekben.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -198,11 +198,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
-Az előfeltételek a következő telepítési utasításokkal rendelkeznek.
-
-[!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
-
 A C#-ben a biztonsági jogkivonat létrehozásához szükséges funkciók a következőek:
 
 ```csharp
@@ -235,7 +230,6 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 ```
 
-
 > [!NOTE]
 > Mivel a jogkivonat érvényessége IoT Hub gépeken van érvényesítve, a tokent generáló gép óráján való eltolódásnak minimálisnak kell lennie.
 
@@ -266,7 +260,7 @@ Az összes eszköz funkció eléréséhez létrehozott tokennek például a köv
 * nincs szabályzat neve,
 * bármely lejárati idő.
 
-Az előző Node. js-függvényt használó példa a következő:
+Az előző Node.js függvényt használó példa a következő:
 
 ```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
@@ -300,7 +294,7 @@ Például az **eszköz** nevű, előre létrehozott megosztott elérési házire
 * Házirend neve: `device` ,
 * bármely lejárati idő.
 
-Az előző Node. js-függvényt használó példa a következő:
+Az előző Node.js függvényt használó példa a következő:
 
 ```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
@@ -444,7 +438,7 @@ A következő témakörök további információkat nyújtanak az IoT hub elér�
 
 A következő táblázat felsorolja az IoT hub elérésének szabályozásához használható engedélyeket.
 
-| Engedély | Megjegyzések |
+| Engedély | Jegyzetek |
 | --- | --- |
 | **RegistryRead** |Olvasási hozzáférést biztosít az identitás-beállításjegyzékhez. További információ: [Identity Registry](iot-hub-devguide-identity-registry.md). <br/>Ezt az engedélyt a háttérbeli felhőalapú szolgáltatások használják. |
 | **RegistryReadWrite** |Olvasási és írási hozzáférést biztosít az identitás-beállításjegyzékhez. További információ: [Identity Registry](iot-hub-devguide-identity-registry.md). <br/>Ezt az engedélyt a háttérbeli felhőalapú szolgáltatások használják. |
@@ -467,7 +461,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * [RFC 5246 – a Transport Layer Security (TLS) protokoll 1,2-es verziója](https://tools.ietf.org/html/rfc5246/) további információkat nyújt a TLS-hitelesítésről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a hozzáférési IoT Hub vezérlését, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információt:
 

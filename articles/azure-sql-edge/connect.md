@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7c6dbd628b4c271815c0210f93d776338cb01275
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669681"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252644"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Az Azure SQL Edge (előzetes verzió) összekötése és lekérdezése
 
-Az Azure SQL Edge-ben a tároló üzembe helyezése után az alábbi helyekről csatlakozhat az SQL Database-motorhoz:
+Az Azure SQL Edge-ben a tároló üzembe helyezése után a következő helyekről csatlakozhat az adatbázis-motorhoz:
 
 - A tárolón belül
 - Ugyanazon a gazdagépen futó másik Docker-tárolóból
@@ -114,7 +114,7 @@ Ha az Azure SQL Edge egy példányához szeretne csatlakozni a Visual Studio Cod
 
 Ha Windows, Mac vagy Linux rendszerű gépen Azure Data Studio használatával szeretne csatlakozni az Azure SQL Edge egy példányához, tekintse meg a [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Csatlakozás és lekérdezés](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-docker#connect-and-query)
 

@@ -4,24 +4,24 @@ description: Ismerje meg, hogyan használhatja az Azure AD-t az Azure Kubernetes
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 05/11/2020
-ms.openlocfilehash: 67f5f707ad2971551e3c9623dd5c07ad880afcf2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/04/2020
+ms.openlocfilehash: 8d446d82550a6bc790d162ee944b0753979b6546
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211144"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782670"
 ---
-# <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Az Azure AD integrálása az Azure Kubernetes szolgáltatásban (előzetes verzió)
+# <a name="integrate-aks-managed-azure-ad-preview"></a>Az AK által felügyelt Azure AD integrálása (előzetes verzió)
 
 > [!Note]
-> A HRE (Azure Active Directory) integrációt tartalmazó meglévő AK-fürtöket nem érinti az új AK által felügyelt HRE-élmény.
+> Az új AK által felügyelt Azure AD-felület nem érinti a meglévő AK (Azure Kubernetes Service) fürtök Azure Active Directory (Azure AD) integrációját.
 
-Az AK által felügyelt HRE való Azure AD-integráció lehetővé teszi az Azure AD integrációs felületének egyszerűsítését, ahol a felhasználóknak korábban egy ügyfélalkalmazás, egy kiszolgálói alkalmazás létrehozása és az Azure AD-bérlő szükséges a címtár-olvasási engedélyek megadásához. Az új verzióban az AK erőforrás-szolgáltató kezeli az ügyfél-és kiszolgálói alkalmazásokat.
+Az AK-val felügyelt Azure ad-integrációval egyszerűbbé válik az Azure AD integrációs felülete, ahol a felhasználóknak korábban egy ügyfélalkalmazás, egy kiszolgálói alkalmazás létrehozása és az Azure AD-bérlő számára szükséges a címtár-olvasási engedélyek megadása. Az új verzióban az AK erőforrás-szolgáltató kezeli az ügyfél-és kiszolgálói alkalmazásokat.
 
 ## <a name="limitations"></a>Korlátozások
 
-* Jelenleg nem frissíthet egy meglévő AK-HRE integrált fürtöt az új AK által felügyelt HRE-élményre.
+* Jelenleg nem frissíthet egy meglévő AK Azure AD-integrált fürtöt az új AK által felügyelt Azure AD-élményre.
 
 > [!IMPORTANT]
 > Az AK előzetes verziójának funkciói az önkiszolgáló, a választható lehetőségek alapján érhetők el. Az előzetes verziók az "adott állapotban" és "elérhetőként" jelennek meg, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A (z) és az ügyfél-támogatási szolgálatok a lehető leghatékonyabban fedezik az előzetes verziókat. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért lásd a következő támogatási cikkeket:
@@ -30,6 +30,8 @@ Az AK által felügyelt HRE való Azure AD-integráció lehetővé teszi az Azur
 > - [Azure-támogatás – gyakori kérdések](faq.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
+
+* Keresse meg az Azure-fiók bérlői AZONOSÍTÓját a Azure Portal navigálva, és válassza ki Azure Active Directory > tulajdonságok > könyvtár-azonosító
 
 > [!Important]
 > A Kubectl-et legalább 1,18-es verzióval kell használni
@@ -52,7 +54,7 @@ az extension update --name aks-preview
 az extension list
 ```
 
-A kubectl telepítéséhez használja a következőt:
+A kubectl telepítéséhez használja a következő parancsokat:
 
 ```azurecli
 sudo az aks install-cli
@@ -79,37 +81,64 @@ Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.C
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
+## <a name="azure-ad-authentication-overview"></a>Az Azure AD-hitelesítés áttekintése
+
+A Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) állíthat be a felhasználó identitása vagy a címtár csoporttagság alapján. Az Azure AD-hitelesítés az OpenID-kapcsolattal rendelkező AK-fürtökhöz van megadva. Az OpenID Connect egy OAuth 2,0 protokollra épülő identitási réteg. Az OpenID Connecttel kapcsolatos további információkért tekintse meg az [ID Connect dokumentációját][open-id-connect].
+
+A Kubernetes-fürtön belül a rendszer webhook jogkivonat-hitelesítést használ a hitelesítési tokenek ellenőrzéséhez. A webhook-jogkivonat hitelesítése az AK-fürt részeként van konfigurálva és felügyelve.
+
+## <a name="webhook-and-api-server"></a>Webhook és API-kiszolgáló
+
+:::image type="content" source="media/aad-integration/auth-flow.png" alt-text="Webhook és API-kiszolgáló hitelesítési folyamata":::
+
+Ahogy az a fenti ábrán is látható, az API-kiszolgáló meghívja az AK webhook-kiszolgálót, és a következő lépéseket hajtja végre:
+
+1. Az Azure AD ügyfélalkalmazás a kubectl által a OAuth 2,0-es eszköz- [engedélyezési folyamattal](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)rendelkező felhasználók bejelentkezésekor használható.
+2. Az Azure AD egy access_token, id_token és egy refresh_token biztosít.
+3. A felhasználó kérést küld a kubectl access_token a kubeconfig.
+4. A Kubectl elküldi a access_tokent a APIServer.
+5. Az API-kiszolgáló a hitelesítési webhook-kiszolgálóval van konfigurálva az érvényesítés végrehajtásához.
+6. A hitelesítési webhook-kiszolgáló megerősíti, hogy a JSON Web Token aláírása érvényes az Azure AD nyilvános aláíró kulcsának ellenőrzésével.
+7. A kiszolgálóalkalmazás felhasználó által megadott hitelesítő adatok használatával kérdezi le a bejelentkezett felhasználó csoporttagságait az MS Graph APIból.
+8. A rendszer választ kap a APIServer olyan felhasználói adatokkal, mint például a hozzáférési jogkivonat egyszerű felhasználóneve (UPN) jogcíme, valamint a felhasználó csoporttagság az objektumazonosító alapján.
+9. Az API a Kubernetes szerepkör/RoleBinding alapján hajt végre engedélyezési döntést.
+10. Az engedélyezést követően az API-kiszolgáló egy választ küld a kubectl.
+11. A Kubectl visszajelzést nyújt a felhasználónak.
+
 
 ## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>AK-fürt létrehozása az Azure AD-vel engedélyezve
 
-Most létrehozhat egy AK-fürtöt az alábbi parancssori felületi parancsokkal.
+Hozzon létre egy AK-fürtöt az alábbi CLI-parancsok használatával.
 
-Először hozzon létre egy Azure-erőforráscsoportot:
+Azure-erőforráscsoport létrehozása:
 
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location centralus
 ```
 
-Ezután hozzon létre egy AK-fürtöt:
+Használhat meglévő Azure AD-csoportot, vagy létrehozhat egy újat. Szüksége lesz az Azure AD-csoport objektumazonosító-AZONOSÍTÓJÁRA.
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
+# List existing groups in the directory
+az ad group list
 ```
-A fenti parancs létrehoz egy három csomópontos AK-fürtöt, de a fürtöt létrehozó felhasználó alapértelmezés szerint nem tagja egy olyan csoportnak, amely hozzáfér ehhez a fürthöz. A felhasználónak létre kell hoznia egy Azure AD-csoportot, fel kell vennie magát a csoport tagjaként, majd frissítenie kell a fürtöt az alábbiak szerint. Kövesse az [alábbi utasításokat](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)
 
-Miután létrehozott egy csoportot, és hozzáadta saját magát (és másokat) tagként, a következő parancs használatával frissítheti a fürtöt az Azure AD-csoporttal.
+Ha új Azure AD-csoportot szeretne létrehozása a fürt rendszergazdái számára, használja a következő parancsot:
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
+# Create an Azure AD group
+az ad group create --display-name MyDisplay --mail-nickname MyDisplay
 ```
-Ha először létrehoz egy csoportot, és tagokat ad hozzá, akkor az alábbi parancs használatával engedélyezheti az Azure AD-csoportot a létrehozás ideje alatt.
+
+AK-fürt létrehozása és rendszergazdai hozzáférés engedélyezése az Azure AD-csoport számára
 
 ```azurecli-interactive
+# Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
-Az AK által felügyelt HRE-fürtök sikeres létrehozása a válasz törzsének következő szakasza.
+Az AK által felügyelt Azure AD-fürtök sikeres létrehozása a válasz törzsének következő szakasza.
 ```
 "Azure ADProfile": {
     "adminGroupObjectIds": null,
@@ -124,12 +153,17 @@ Az AK által felügyelt HRE-fürtök sikeres létrehozása a válasz törzsének
 A fürt néhány percen belül létrejön.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Hozzáférés egy Azure AD-kompatibilis fürthöz
-A rendszergazdai hitelesítő adatok beszerzése a fürt eléréséhez:
 
+A következő lépések elvégzéséhez szüksége lesz az [Azure Kubernetes Service cluster felhasználói](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) beépített szerepkörre.
+
+A fürt eléréséhez szükséges felhasználói hitelesítő adatok beszerzése:
+ 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
+ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-Most használja a kubectl Get Nodes parancsot a fürt csomópontjainak megtekintéséhez:
+A bejelentkezéshez kövesse az utasításokat.
+
+A fürt csomópontjainak megtekintéséhez használja a kubectl Get Nodes parancsot:
 
 ```azurecli-interactive
 kubectl get nodes
@@ -139,22 +173,45 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
+[Szerepköralapú Access Control (RBAC)](https://review.docs.microsoft.com/azure/aks/azure-ad-rbac?branch=pr-en-us-117564) konfigurálása a fürtökhöz tartozó további biztonsági csoportok konfigurálásához.
 
-A fürt eléréséhez szükséges felhasználói hitelesítő adatok beszerzése:
- 
+## <a name="troubleshooting-access-issues-with-azure-ad"></a>Az Azure AD hozzáférési problémáinak elhárítása
+
+> [!Important]
+> Az alábbiakban ismertetett lépések megkerülik a normál Azure AD-csoport hitelesítését. Csak vészhelyzetben használható.
+
+Ha véglegesen letiltja azt, hogy nem fér hozzá a fürthöz hozzáféréssel rendelkező érvényes Azure AD-csoporthoz, továbbra is beszerezheti a rendszergazdai hitelesítő adatokat a fürt közvetlen eléréséhez.
+
+A lépések végrehajtásához hozzá kell férnie az [Azure Kubernetes szolgáltatás-fürt rendszergazdai](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role) beépített szerepköréhez.
+
 ```azurecli-interactive
- az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
+az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
 ```
-A bejelentkezéshez kövesse az utasításokat.
 
-A következőt kapja: be **kell jelentkeznie a kiszolgálóra (nem engedélyezett)**
+## <a name="non-interactive-login-with-kubelogin"></a>Nem interaktív bejelentkezés a kubelogin
 
-A fenti felhasználó hibaüzenetet kap, mert a felhasználó nem része egy olyan csoportnak, amely hozzáfér a fürthöz.
+Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integrációs folyamatok, amelyek jelenleg nem érhetők el a kubectl. A [kubelogin](https://github.com/Azure/kubelogin) használatával nem interaktív helyzetekben is elérheti a fürtöt.
 
 ## <a name="next-steps"></a>További lépések
 
 * Az [Azure ad szerepköralapú Access Control][azure-ad-rbac]megismerése.
 * [Kubelogin](https://github.com/Azure/kubelogin) használata az Azure-hitelesítés olyan szolgáltatásainak eléréséhez, amelyek nem érhetők el a kubectl-ben.
+* A [Azure Resource Manager-(ARM-) Sablonok][aks-arm-template] használatával hozzon létre AK által felügyelt Azure ad-kompatibilis fürtöket.
+
+<!-- LINKS - external -->
+[kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
 [azure-ad-rbac]: azure-ad-rbac.md
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-group-create]: /cli/azure/group#az-group-create
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
+[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
+[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[operator-best-practices-identity]: operator-best-practices-identity.md
+[azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md
+
