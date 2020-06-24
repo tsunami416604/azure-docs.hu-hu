@@ -14,21 +14,21 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5227fc89d99257f3390820d4930c3d57b63f03d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2a90003c9de2cf0e942b518c6d4e9c3569039caf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053398"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251420"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: fürtszolgáltatási modell üzembe helyezése az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A jelen háromrészes oktatóanyag-sorozat harmadik részében az R-ben kifejlesztett, Azure SQL Database Machine Learning Services (előzetes verzió) használatával egy SQL-adatbázisba helyez üzembe egy fürtözött modellt.
+A jelen háromrészes oktatóanyag-sorozat harmadik részében egy, az R-ben kifejlesztett fürtszolgáltatási modellt helyez üzembe egy Azure SQL Database-adatbázisban Azure SQL Database Machine Learning Services (előzetes verzió) használatával.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-Hozzon létre egy tárolt eljárást egy olyan beágyazott R-parancsfájllal, amely fürtözést végez. Mivel a modell végrehajtása az Azure SQL Database-ben történik, könnyen kitanítható az adatbázisban tárolt adataival.
+Hozzon létre egy tárolt eljárást egy olyan beágyazott R-parancsfájllal, amely fürtözést végez. Mivel a modell végrehajtása a Azure SQL Databaseban történik, könnyen betanítható az adatbázisban tárolt adataival.
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
@@ -38,7 +38,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 > * Fürtözés végrehajtása a SQL Databaseban
 > * A fürtözési adatok használata
 
-Az első [részben](clustering-model-prepare-data-tutorial.md)megtanulta, hogyan készítse elő az adatok előkészítését egy Azure SQL Database-adatbázisból a fürtözés végrehajtásához.
+Az első [részben](clustering-model-prepare-data-tutorial.md)megtanulta, hogyan készítheti elő az adatok egy adatbázisból a fürtözés végrehajtásához.
 
 A [második részben](clustering-model-build-tutorial.md)megtanulta, hogyan hozhat létre és taníthat egy k-csoportosítási modellt az R-ben.
 

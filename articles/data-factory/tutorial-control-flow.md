@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022112"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253460"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
@@ -48,7 +48,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 * Azure Storage-fiók. A blob Storage-t forrásként szolgáló adattárként használhatja. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakört.
 * Azure Storage Explorer. Az eszköz telepítéséhez lásd: [Azure Storage Explorer](https://storageexplorer.com/).
-* az Azure SQL Database-szel szemben. Ezt az adatbázist használjuk fogadóadattárként. Ha nem rendelkezik Azure SQL Databaseval, tekintse meg [Az Azure SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakört.
+* az Azure SQL Database-szel szemben. Ezt az adatbázist használjuk fogadóadattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse [meg az adatbázis létrehozása a Azure SQL Database-ben](../azure-sql/database/single-database-create-quickstart.md)című témakört.
 * Visual Studio. Ez a cikk a Visual Studio 2019-et használja.
 * Azure .NET SDK. Töltse le és telepítse az [Azure .net SDK](https://azure.microsoft.com/downloads/)-t.
 
@@ -58,7 +58,7 @@ Hozzon létre egy alkalmazást az [Azure Active Directory alkalmazás létrehoz�
 
 ### <a name="create-a-blob-table"></a>BLOB-tábla létrehozása
 
-1. Nyisson meg egy szövegszerkesztőt. Másolja a következő szöveget, és mentse helyileg a *input. txt*néven.
+1. Nyisson meg egy szövegszerkesztőt. Másolja az alábbi szöveget, és mentse helyileg *input.txtként *.
 
    ```
    Ethel|Berg
@@ -66,7 +66,7 @@ Hozzon létre egy alkalmazást az [Azure Active Directory alkalmazás létrehoz�
    ```
 
 1. Nyissa meg Azure Storage Explorer. Bontsa ki a Storage-fiókját. Kattintson a jobb gombbal a **blob-tárolók** elemre, majd válassza a **blob tároló létrehozása**lehetőséget.
-1. Nevezze el az új tároló *adfv2branch* , és válassza a **feltöltés** lehetőséget, hogy hozzáadja a *bemeneti. txt* fájlt a tárolóhoz.
+1. Nevezze el az új tároló *adfv2branch* , és válassza a **feltöltés** lehetőséget, hogy hozzáadja a *input.txt* fájlt a tárolóhoz.
 
 ## <a name="create-visual-studio-project"></a>Visual Studio-projekt létrehozása<a name="create-visual-studio-project"></a>
 

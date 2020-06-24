@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6ffc1aa6e28bf17d0de3783e5e03b6a2df541e4a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2c3f2ccd80f2f329a7495beda1a002d84d769802
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194643"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253919"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Azure Data Factory Azure-SSIS IR beállítása a PowerShell használatával
 
@@ -55,7 +55,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
     - A kiválasztott adatbázis-kiszolgáló alapján a SSISDB létrehozhatók az Ön nevében egyetlen adatbázisként vagy egy rugalmas készlet részeként SQL Database, vagy az SQL felügyelt példányában, és elérhetők egy nyilvános hálózaton, vagy csatlakozhatnak egy virtuális hálózathoz. Az adatbázis-kiszolgáló SSISDB gazdagépként való kiválasztásával kapcsolatos útmutatásért lásd: [az SQL Database és az SQL felügyelt példányának összevetése](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
     
       Ha a SQL Database IP-tűzfallal vagy virtuális hálózati szolgáltatás-végpontokkal, vagy egy SQL-alapú felügyelt példányt használ a SSISDB üzemeltetéséhez, vagy ha a helyszíni adatközponthoz való hozzáférésre van szüksége, a saját üzemeltetésű integrációs modul konfigurálása nélkül csatlakoztassa a Azure-SSIS IRt egy virtuális hálózathoz. További információ: [Azure-SSIS IR létrehozása virtuális hálózaton](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - Győződjön meg arról, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás engedélyezve van a SQL Database. Ez a beállítás nem alkalmazható, ha a SQL Database IP-tűzfalszabályok vagy virtuális hálózati szolgáltatás-végpontokkal, vagy egy SQL-alapú felügyelt példányt használ a SSISDB futtatására szolgáló privát végponttal. További információkért lásd: [Az Azure SQL-adatbázis védelme](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Ha ezt a beállítást a PowerShell használatával szeretné engedélyezni, tekintse meg a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)című témakört.
+    - Győződjön meg arról, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás engedélyezve van a SQL Database. Ez a beállítás nem alkalmazható, ha a SQL Database IP-tűzfalszabályok vagy virtuális hálózati szolgáltatás-végpontokkal, vagy egy SQL-alapú felügyelt példányt használ a SSISDB futtatására szolgáló privát végponttal. További információ: [Secure Azure SQL Database](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Ha ezt a beállítást a PowerShell használatával szeretné engedélyezni, tekintse meg a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)című témakört.
     - Adja hozzá az ügyfélszámítógép IP-címét vagy egy IP-címtartományt, beleértve az ügyfélszámítógép IP-címét az ügyfél IP-címeinek listájához a tűzfalbeállítások SQL Database. További információ: [kiszolgálói szintű és adatbázis-szintű tűzfalszabályok](../azure-sql/database/firewall-configure.md).
     - A kiszolgáló-rendszergazdai hitelesítő adataival vagy Azure Active Directory (Azure AD) hitelesítéssel az adat-előállító felügyelt identitásával csatlakozhat SQL Database vagy SQL felügyelt példányhoz. Azure AD-hitelesítés esetén ahhoz, hogy hozzá lehessen adni az adatokhoz tartozó felügyelt identitást az adatbázis-kiszolgálóhoz hozzáférési engedélyekkel rendelkező Azure AD-csoporthoz, tekintse meg a [Azure-SSIS IR Azure ad-hitelesítéssel történő létrehozását](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)ismertető témakört.
     - Győződjön meg arról, hogy SQL Database vagy az SQL felügyelt példánya még nem rendelkezik SSISDB. Egy Azure-SSIS IR beállítása nem támogatja a meglévő SSISDB használatát.

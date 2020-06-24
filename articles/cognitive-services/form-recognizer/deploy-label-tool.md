@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117267"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212445"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
@@ -89,13 +89,13 @@ Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Porta
 
 ### <a name="azure-cli"></a>Azure CLI
 
-A Azure Portal használatának alternatívájaként az Azure CLI használatával is létrehozhat egy erőforrást. A folytatás előtt telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t. Ezt a lépést kihagyhatja, ha már dolgozik az Azure CLI-vel. 
+A Azure Portal használatának alternatívájaként az Azure CLI használatával is létrehozhat egy erőforrást. A folytatás előtt telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)-t. Ezt a lépést kihagyhatja, ha már dolgozik az Azure CLI-vel. 
 
 Itt van néhány dolog, amit tudnia kell a paranccsal kapcsolatban:
 
 * `DNS_NAME_LABEL=aci-demo-$RANDOM`létrehoz egy véletlenszerű DNS-nevet. 
-* Ez a példa azt feltételezi, hogy rendelkezik egy olyan erőforráscsoporthoz, amelyet az erőforrások létrehozásához használhat. Helyettesítse `<resource_group_name>` be az előfizetéséhez tartozó érvényes erőforráscsoportot. 
-* Meg kell adnia, hogy hová szeretné létrehozni az erőforrást. Cserélje `<region name>` le a alkalmazást a kívánt régióra a webalkalmazáshoz. 
+* Ez a példa azt feltételezi, hogy rendelkezik egy olyan erőforráscsoporthoz, amelyet az erőforrások létrehozásához használhat. Helyettesítse be `<resource_group_name>` az előfizetéséhez tartozó érvényes erőforráscsoportot. 
+* Meg kell adnia, hogy hová szeretné létrehozni az erőforrást. Cserélje le a `<region name>` alkalmazást a kívánt régióra a webalkalmazáshoz. 
 * Ez a parancs automatikusan elfogadja a végfelhasználói licencszerződést.
 
 Az Azure CLI-ből futtassa ezt a parancsot egy webalkalmazás-erőforrás létrehozásához a minta feliratozási eszközhöz: 

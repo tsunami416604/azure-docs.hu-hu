@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a5936501f45694febe284d9747bdefdfeae6aeb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ca0af9a34587f8d3a3c0502c77556975b1d8df4e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053332"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253834"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Oktatóanyag: prediktív modell létrehozása az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A háromrészes oktatóanyag-sorozat második részében két prediktív modellt hoz létre az R-ben, és kiválasztja a legpontosabb modellt. A sorozat következő részében ezt a modellt egy Azure SQL Database Machine Learning Servicest (előzetes verzió) tartalmazó SQL-adatbázisban fogja telepíteni.
+A háromrészes oktatóanyag-sorozat második részében két prediktív modellt hoz létre az R-ben, és kiválasztja a legpontosabb modellt. A sorozat következő részében ezt a modellt a Azure SQL Database Azure SQL Database Machine Learning Services (előzetes verzió) című adatbázisban fogja telepíteni.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -38,7 +38,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 Az első [részben](predictive-model-prepare-data-tutorial.md)megtanulta, hogyan importálhat egy minta-adatbázist, majd hogyan készítheti elő a prediktív modell az R-ben való betanításához használni kívánt adatfeldolgozást.
 
-A [harmadik részből](predictive-model-deploy-tutorial.md)megtudhatja, hogyan tárolhatja a modellt egy adatbázisban, majd hogyan hozhat létre tárolt eljárásokat az 1. és a 2. részekben kifejlesztett R-parancsfájlok alapján. A tárolt eljárások egy SQL-adatbázisban futnak, így az előrejelzések az új adatértékek alapján lesznek elérhetők.
+A [harmadik részből](predictive-model-deploy-tutorial.md)megtudhatja, hogyan tárolhatja a modellt egy adatbázisban, majd hogyan hozhat létre tárolt eljárásokat az 1. és a 2. részekben kifejlesztett R-parancsfájlok alapján. A tárolt eljárások egy adatbázisban futnak, hogy előrejelzéseket készítsenek az új adatszolgáltatások alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

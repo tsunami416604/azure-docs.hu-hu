@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 182c5b4059874b6e03092481c68b39cf55bc7e62
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118171"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253936"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 * *Azure Storage-fiók*. A blobtárolót használjuk *forrás* adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg [az általános célú Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakört.
-* *Azure SQL Database*. Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Databaseval, tekintse meg [Az Azure SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakört.
+* *Azure SQL Database*. Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse [meg az adatbázis létrehozása a Azure SQL Database-ben](../azure-sql/database/single-database-create-quickstart.md)című témakört.
 * *Visual Studio*. A jelen cikkben található útmutató a Visual Studio 2019-et használja.
 * *[Azure SDK a .net-hez](/dotnet/azure/dotnet-tools)*.
 * *Azure Active Directory alkalmazás*. Ha nem rendelkezik Azure Active Directory alkalmazással, tekintse meg a következő témakört: a [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) című rész, amelyből megtudhatja, [hogyan hozhat létre Azure ad-alkalmazást a portál használatával](../active-directory/develop/howto-create-service-principal-portal.md). Másolja a következő értékeket a későbbi lépésekben való használatra: **alkalmazás (ügyfél) azonosítója**, **hitelesítési kulcs**és **könyvtár (bérlő) azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve.
@@ -54,14 +54,14 @@ Készítse elő az Azure-blobot, és Azure SQL Database az oktatóanyaghoz forr�
 
 Először hozzon létre egy forrás blobot egy tároló létrehozásával és egy bemeneti szövegfájl feltöltésével:
 
-1. Nyissa meg a jegyzettömböt. Másolja az alábbi szöveget, és mentse helyileg egy *inputEmp. txt*nevű fájlba.
+1. Nyissa meg a jegyzettömböt. Másolja az alábbi szöveget, és mentse helyileg egy *inputEmp.txt*nevű fájlba.
 
     ```inputEmp.txt
     John|Doe
     Jane|Doe
     ```
 
-2. A *adfv2tutorial* tároló létrehozásához használjon például [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) eszközt, és töltse fel az *inputEmp. txt* fájlt a tárolóba.
+2. Hozzon létre egy eszközt, például [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a *adfv2tutorial* -tároló létrehozásához, és töltse fel a *inputEmp.txt* fájlt a tárolóba.
 
 #### <a name="create-a-sink-sql-table"></a>Fogadó SQL-tábla létrehozása
 
@@ -98,7 +98,7 @@ Hozzon létre egy C# .NET-konzol alkalmazást a Visual Studióval.
 1. Nyissa meg a Visual Studiót.
 2. A **Start** ablakban válassza az **új projekt létrehozása**lehetőséget.
 3. A **create a New Project (új projekt létrehozása** ) ablakban válassza ki a **Console app (.NET-keretrendszer)** C#-verzióját a projekttípus listájából. Ezután válassza a **tovább**lehetőséget.
-4. Az **új projekt konfigurálása** ablakban adja meg az *ADFv2Tutorial* **projekt nevét** . A **Hely mezőben**keresse meg és/vagy hozza létre azt a könyvtárat, amelybe menteni szeretné a projektet. Ezután válassza a **Létrehozás**lehetőséget. Az új projekt megjelenik a Visual Studio IDE-ban.
+4. Az **új projekt konfigurálása** ablakban adja meg az *ADFv2Tutorial* **projekt nevét** . A **Hely mezőben**keresse meg és/vagy hozza létre azt a könyvtárat, amelybe menteni szeretné a projektet. Ezután kattintson a **Létrehozás** elemre. Az új projekt megjelenik a Visual Studio IDE-ban.
 
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 

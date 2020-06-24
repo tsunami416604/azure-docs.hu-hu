@@ -7,20 +7,18 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 02/27/2020
-ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/18/2020
+ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343790"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079370"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> A bemutatott oktatóanyag **nyilvános előzetes**verzióban érhető el. 
->
 > Ebben az oktatóanyagban a SQL Server 2017-es RHEL 7,6-et használjuk, de a magas rendelkezésre állás konfigurálásához a SQL Server 2019 a RHEL 7 vagy a RHEL 8 használatával lehetséges. A rendelkezésre állási csoport erőforrásainak konfigurálására szolgáló parancsok megváltoztak a RHEL 8-ban, és a megfelelő parancsokról további információért tekintse meg a [rendelkezésre állási csoport erőforrásának létrehozása](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) és a RHEL 8 erőforrásai című cikket.
 
 Az oktatóanyag a következőket ismerteti:
@@ -37,7 +35,7 @@ Az oktatóanyag a következőket ismerteti:
 
 Ez az oktatóanyag az Azure CLI használatával helyezi üzembe az erőforrásokat az Azure-ban.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -757,7 +755,7 @@ Az összes SQL Server példányon mentse a SQL Server bejelentkezéshez használ
 
 1. A másodlagos replikák csatlakoztatása után megtekintheti őket a SSMS Object Explorer az **Always on magas rendelkezésre állású** csomópont kibontásával:
 
-    ![Availability-Group-joined. png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>Adatbázis hozzáadása a rendelkezésre állási csoporthoz
 
@@ -983,7 +981,7 @@ Node: <VM3> fenced
 ```
 A kerítések eszközének tesztelésével kapcsolatos további információkért tekintse meg a következő [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a rendelkezésre állási csoport figyelőjét szeretné használni a SQL Server példányaihoz, létre kell hoznia és konfigurálnia kell egy Load balancert.
 

@@ -1,6 +1,6 @@
 ---
 title: Több tábla növekményes másolása Azure Portal használatával
-description: Ebben az oktatóanyagban egy Azure Data Factory folyamatot hoz létre, amely a különbözeti adatok növekményes másolását végzi egy SQL Server-adatbázis több táblájából egy Azure SQL Database-be.
+description: Ebben az oktatóanyagban egy Azure Data Factory folyamatot hoz létre, amely a különbözeti adatok növekményes másolását végzi egy SQL Server-adatbázis több táblájából egy Azure SQL Database-adatbázisba.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 680f8518e5d005aebeffd54fe6d05ae1124c595a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/10/2020
+ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559717"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251148"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-the-azure-portal"></a>Adatok növekményes betöltése a SQL Server több táblájából az Azure SQL Database-be a Azure Portal használatával
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Az adatok növekményes betöltése a SQL Server több táblájából egy Azure SQL Database-adatbázisba az Azure Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely egy SQL Server adatbázis több táblájából származó különbözeti adatok betöltését egy Azure SQL Database-adatbázisba.    
+Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely egy SQL Server-adatbázisban található több táblából származó különbözeti adatok betöltését Azure SQL Database-adatbázisba.    
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -69,7 +69,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **SQL Server**. Ebben az oktatóanyagban egy SQL Server adatbázist használ a forrásként szolgáló adattárként. 
-* **Azure SQL Database**. Egy SQL-adatbázist használ fogadóadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket. 
+* **Azure SQL Database**. A fogadó adattára Azure SQL Database-adatbázist használ. Ha nem rendelkezik SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Databaseben](../azure-sql/database/single-database-create-quickstart.md) a létrehozásához szükséges lépések. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Forrástáblák létrehozása az SQL Server-adatbázisban
 
@@ -111,12 +111,13 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     
     ```
 
-### <a name="create-destination-tables-in-your-azure-sql-database"></a>Céltáblák létrehozása az Azure SQL-adatbázisban
-1. Nyissa meg az SQL Server Management Studio alkalmazást, és csatlakozzon az Azure SQL-adatbázishoz.
+### <a name="create-destination-tables-in-your-database"></a>Céltábla létrehozása az adatbázisban
+
+1. Nyissa meg SQL Server Management Studio, és kapcsolódjon az adatbázishoz Azure SQL Database-ben.
 
 1. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
-1. Futtassa a következő SQL-parancsot az Azure SQL Database-ben a és a nevű tábla létrehozásához `customer_table` `project_table` :  
+1. Futtassa a következő SQL-parancsot az adatbázison a `customer_table` és a `project_table` nevű tábla létrehozásához:  
     
     ```sql
     create table customer_table
@@ -134,8 +135,9 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az Azure SQL-adatbázisban a felső küszöbértékek tárolására
-1. Futtassa a következő SQL-parancsot az Azure SQL Database-ben egy nevű tábla létrehozásához `watermarktable` a vízjel értékének tárolásához: 
+### <a name="create-another-table-in-your-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az adatbázisban a felső küszöbértékek tárolására
+
+1. Futtassa a következő SQL-parancsot az adatbázison egy nevű tábla létrehozásához `watermarktable` a vízjel értékének tárolásához: 
     
     ```sql
     create table watermarktable
@@ -156,9 +158,9 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Tárolt eljárás létrehozása az Azure SQL-adatbázisban 
+### <a name="create-a-stored-procedure-in-your-database"></a>Tárolt eljárás létrehozása az adatbázisban
 
-Az alábbi parancs futtatásával hozzon létre egy tárolt eljárást az Azure SQL-adatbázisban. Ez a tárolt eljárás minden folyamatfuttatás után frissíti a küszöbértéket. 
+Futtassa a következő parancsot egy tárolt eljárás létrehozásához az adatbázisban. Ez a tárolt eljárás minden folyamatfuttatás után frissíti a küszöbértéket. 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -174,8 +176,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása az Azure SQL-adatbázisban
-A következő lekérdezés futtatásával hozzon létre két tárolt eljárást és két adattípust az Azure SQL Database-ben. Ezek összevonják a forrástáblák adatait a céltáblákba.
+### <a name="create-data-types-and-additional-stored-procedures-in-your-database"></a>Adattípusok és további tárolt eljárások létrehozása az adatbázisban
+
+A következő lekérdezés futtatásával hozzon létre két tárolt eljárást és két adattípust az adatbázisban. Ezek összevonják a forrástáblák adatait a céltáblákba.
 
 Ahhoz, hogy az utazást könnyen el lehessen kezdeni, közvetlenül használjuk ezeket a tárolt eljárásokat egy tábla változón keresztül, majd egyesítjük őket a célhelyek tárolójába. Legyen óvatos, ha nem vár "nagy" számú különbözeti sort (több mint 100) a Table változóban.  
 
@@ -251,7 +254,7 @@ END
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-8. Kattintson a **Létrehozás**gombra.      
+8. Kattintson a **Létrehozás** lehetőségre.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -260,9 +263,13 @@ END
 ## <a name="create-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul létrehozása
 Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárból egy Azure-adattárba, telepítsen egy saját üzemeltetésű integrációs modult (IR) a helyszíni környezetben. A saját üzemeltetésű integrációs modul adatokat helyez át a magánhálózat és az Azure között. 
 
-1. Kattintson a bal oldali ablak alján látható **Connections** (Kapcsolatok) elemre, majd váltson át az **Integration Runtimes** (Integrációs modulok) lapra a **Connections** (Kapcsolatok) ablakban. 
+1. Azure Data Factory felhasználói felületének első **lépések** oldalán válassza a [kezelés fület](https://docs.microsoft.com/azure/data-factory/author-management-hub) a bal szélső ablaktáblán.
 
-1. Az **Integration Runtimes** (Integrációs modulok) lapon kattintson a **+ New** (Új) elemre. 
+   ![A Kezdőlap kezelés gombja](media/doc-common-process/get-started-page-manage-button.png)
+
+1. Válassza az **integrációs** modulok lehetőséget a bal oldali ablaktáblán, majd válassza az **+ új**lehetőséget.
+
+   ![Integrációs modul létrehozása](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. A **Integration Runtime telepítő** ablakban jelölje be az **adatáthelyezési és-küldési tevékenységek végrehajtása külső számításokhoz**lehetőséget, majd kattintson a **Folytatás**gombra. 
 
@@ -281,13 +288,14 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
 1. Győződjön meg róla, hogy a **MySelfHostedIR** szerepel az integrációs modulok listájában.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban társított szolgáltatásokat hoz létre a SQL Server-adatbázishoz és az Azure SQL Database-hez. 
+Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban társított szolgáltatásokat hoz létre a SQL Server-adatbázishoz és az adatbázishoz Azure SQL Database-ben. 
 
 ### <a name="create-the-sql-server-linked-service"></a>Az SQL Server társított szolgáltatásának létrehozása
 Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállítóval.
 
 1. A **Connections** (Kapcsolatok) ablakban váltson az **Integration Runtimes** (Integrációs modulok) lapról a **Linked Services** (Társított szolgáltatások) lapra, és kattintson a **+ New** (+ Új) elemre.
 
+   ![Új társított szolgáltatás](./media/doc-common-process/new-linked-service.png)
 1. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **SQL Server** lehetőséget, majd kattintson a **Continue** (Folytatás) gombra. 
 
 1. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
@@ -303,7 +311,7 @@ Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállító
     1. A társított szolgáltatás mentéséhez kattintson a **Befejezés**gombra.
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>Az Azure SQL Database társított szolgáltatás létrehozása
-Az utolsó lépésben létrehoz egy társított szolgáltatást, amely összekapcsolja az SQL Server-adatbázist az adat-előállítóval. Ebben a lépésben a cél/fogadó Azure SQL-adatbázist az adat-előállítóhoz kapcsolja. 
+Az utolsó lépésben létrehoz egy társított szolgáltatást, amely összekapcsolja az SQL Server-adatbázist az adat-előállítóval. Ebben a lépésben összekapcsolja a cél/fogadó adatbázisát az adatelőállítóval. 
 
 1. A **Connections** (Kapcsolatok) ablakban váltson az **Integration Runtimes** (Integrációs modulok) lapról a **Linked Services** (Társított szolgáltatások) lapra, és kattintson a **+ New** (+ Új) elemre.
 1. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre. 
@@ -311,8 +319,8 @@ Az utolsó lépésben létrehoz egy társított szolgáltatást, amely összekap
 
     1. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet. 
     1. A **kiszolgáló neve**mezőben válassza ki a kiszolgáló nevét a legördülő listából. 
-    1. A **Database name** (Adatbázis neve) mezőben válassza ki azt az Azure SQL-adatbázist, amelyben az előfeltételek részeként létrehozta a customer_table és a project_table táblákat. 
-    1. A **User name** (Felhasználónév) mezőben adja meg a Azure SQL-adatbázishoz hozzáféréssel rendelkező felhasználó nevét. 
+    1. Az **adatbázis neve**mezőben válassza ki azt az adatbázist, amelyben létrehozta customer_table és project_table az előfeltételek részeként. 
+    1. A **Felhasználónév**mezőbe írja be annak a felhasználónak a nevét, aki hozzáfér az adatbázishoz. 
     1. A **Password** (Jelszó) mezőben adja meg a felhasználónévhez tartozó **jelszót**. 
     1. Ha tesztelni szeretné, hogy a Data Factory csatlakozni tud-e az SQL Server-adatbázishoz, kattintson a **Test connection** (Kapcsolat tesztelése) gombra. Javítson ki minden hibát, amíg nem sikerül a kapcsolódás. 
     1. A társított szolgáltatás mentéséhez kattintson a **Befejezés**gombra.
@@ -349,7 +357,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
     1. Kattintson a **New** (Új) elemre a **Create/update parameters** (Paraméterek létrehozása/frissítése) szakaszban. 
     1. Adja meg a **SinkTableName****nevet** és a **String** (Sztring) **típust**. Ez az adatkészlet a **SinkTableName** paramétert használja. A SinkTableName paramétert a folyamat állítja be dinamikusan, futásidőben. A folyamat ForEach tevékenysége végighalad a táblanevek listáján, és minden egyes ismétléskor átadja a táblanevet ennek az adatkészletnek.
    
-    ![Fogadó adatkészlet – tulajdonságok](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+        ![Fogadó adatkészlet – tulajdonságok](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
 1. Váltson a Tulajdonságok ablak **kapcsolat** fülére, és válassza a **AzureSqlDatabaseLinkedService** lehetőséget a **társított szolgáltatáshoz**. A **Table** (Tábla) tulajdonsághoz kattintson az **Add dynamic content** (Dinamikus tartalom hozzáadása) lehetőségre.   
     
 1. A **dinamikus tartalom hozzáadása** ablakban válassza a **SinkTableName** elemet a **Parameters (paraméterek** ) szakaszban. 
@@ -371,7 +379,7 @@ Ebben a lépésben egy adatkészletet hozunk létre a felső küszöbértékek t
     1. A **Társított szolgáltatás** elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
     1. A **Tábla** mezőnél válassza a **[dbo].[watermarktable]** lehetőséget.
 
-    ![Küszöbérték-adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
+        ![Küszöbérték-adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 A folyamat táblanevek listáját használja paraméterként. A ForEach tevékenység végighalad a táblanevek listáján, és elvégzi a következő műveleteket: 
@@ -455,7 +463,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     1. A **Table Type** tulajdonságnál adja meg a következőt: `@{item().TableType}` .
     1. A **Table Type paraméter neve**mezőbe írja be a következőt: `@{item().TABLE_NAME}` .
 
-    ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+        ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Húzza át a **Tárolt eljárás** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. Kapcsolja a **Copy** (Másolás) tevékenységet a **Stored Procedure** (Tárolt eljárás) tevékenységhez. 
 
 1. Válassza ki a **Stored Procedure** (Tárolt eljárás) tevékenységet a folyamatban, és írja be a **StoredProceduretoWriteWatermarkActivity****nevet** a **Properties** (Tulajdonságok) ablak **General** (Általános) lapján. 
@@ -507,10 +515,12 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
-1. Váltson a bal oldali **Monitorozás** lapra. Láthatja a **manuális eseményindítás** által elindított folyamatfuttatást. A lista frissítéséhez kattintson a **Frissítés** gombra. Az **Actions** (Műveletek) oszlop hivatkozásaival megtekintheti a folyamat futásához társított tevékenységfuttatásokat, illetve újra futtathatja a folyamatot. 
+1. Váltson a bal oldali **Monitorozás** lapra. Láthatja a **manuális eseményindítás** által elindított folyamatfuttatást. A **folyamat neve** oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
 
-    ![Folyamatfuttatások](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
-1. Kattintson az **Actions** (Műveletek) oszlopban található **View Activity Runs** (Tevékenységfuttatások megtekintése) hivatkozásra. Itt a kiválasztott folyamatfuttatásához kapcsolódó összes tevékenységfuttatás látható. 
+1. A folyamat futtatásához társított tevékenységek megtekintéséhez válassza a **folyamat neve** oszlop alatt található hivatkozást. A tevékenység futtatásával kapcsolatos részletekért kattintson a **tevékenység neve** oszlop **részletek** hivatkozására (szemüveg ikon). 
+
+1. Válassza a felül található **összes folyamat futtatása** lehetőséget a folyamat futási nézetének visszalépéséhez. A nézet frissítéséhez válassza a **Frissítés** parancsot.
+
 
 ## <a name="review-the-results"></a>Az eredmények áttekintése
 Az SQL Server Management Studióban futtassa a következő lekérdezéseket a cél SQL-adatbázison annak ellenőrzéséhez, hogy a rendszer átmásolta-e az adatokat a forrástáblákból a céltáblákba: 
@@ -605,9 +615,11 @@ VALUES
 
 ## <a name="monitor-the-pipeline-again"></a>A folyamat ismételt monitorozása
 
-1. Váltson a bal oldali **Monitorozás** lapra. Láthatja a **manuális eseményindítás** által elindított folyamatfuttatást. A lista frissítéséhez kattintson a **Frissítés** gombra. Az **Actions** (Műveletek) oszlop hivatkozásaival megtekintheti a folyamat futásához társított tevékenységfuttatásokat, illetve újra futtathatja a folyamatot. 
+1. Váltson a bal oldali **Monitorozás** lapra. Láthatja a **manuális eseményindítás** által elindított folyamatfuttatást. A **folyamat neve** oszlopban található hivatkozások használatával megtekintheti a tevékenységek részleteit, és újra futtathatja a folyamatot.
 
-1. Kattintson az **Actions** (Műveletek) oszlopban található **View Activity Runs** (Tevékenységfuttatások megtekintése) hivatkozásra. Itt a kiválasztott folyamatfuttatásához kapcsolódó összes tevékenységfuttatás látható. 
+1. A folyamat futtatásához társított tevékenységek megtekintéséhez válassza a **folyamat neve** oszlop alatt található hivatkozást. A tevékenység futtatásával kapcsolatos részletekért kattintson a **tevékenység neve** oszlop **részletek** hivatkozására (szemüveg ikon). 
+
+1. Válassza a felül található **összes folyamat futtatása** lehetőséget a folyamat futási nézetének visszalépéséhez. A nézet frissítéséhez válassza a **Frissítés** parancsot.
 
 ## <a name="review-the-final-results"></a>A végső eredmények áttekintése
 A SQL Server Management Studioban futtassa a következő lekérdezéseket a cél SQL-adatbázison annak ellenőrzéséhez, hogy a frissített/új adatok át lettek-e másolva a forrás tábláiból a célhelyek táblájába. 
@@ -669,7 +681,7 @@ project_table   2017-10-01 00:00:00.000
 
 Megfigyelhető, hogy mindkét tábla küszöbértékei frissültek.
      
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

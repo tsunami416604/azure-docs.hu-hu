@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 6da2537464e39ecb2c613a97b19f2d8f316818af
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677554"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105934"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)
 
@@ -48,7 +48,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
 1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**.
 
-2. Válassza ki a ** \< ClusterName>_kafka** a **Kafka**alatt. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend.
+2. Válassza ki ** \<ClusterName> _Kafka** a **Kafka**alatt. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend.
 
 3. Válassza az **új szabályzat hozzáadása** lehetőséget, és adja meg a következő értékeket:
 
@@ -117,8 +117,8 @@ Két témakör létrehozásához `salesevents` `marketingspend` :
 1. Futtassa az alábbi parancsot:
 
    ```bash
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
 ## <a name="test-the-ranger-policies"></a>Ranger-házirendek tesztelése
@@ -131,13 +131,7 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
    ssh sales_user1@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-2. Hajtsa végre a következő parancsot:
-
-   ```bash
-   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
-   ```
-
-3. A következő környezeti változó megadásához használja az előző szakasz Broker-neveit:
+2. A következő környezeti változó megadásához használja az előző szakasz Broker-neveit:
 
    ```bash
    export KAFKABROKERS=<brokerlist>:9092
@@ -145,48 +139,80 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
    Például: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Kövesse az oktatóanyagban **a példa készítése és üzembe helyezése című** témakör 3. lépését [: a Apache Kafka producer és a fogyasztói API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) -k segítségével biztosíthatja, hogy a `kafka-producer-consumer.jar` **sales_user**is elérhető legyen.
+3. Kövesse az oktatóanyagban **a példa készítése és üzembe helyezése című** témakör 3. lépését [: a Apache Kafka producer és a fogyasztói API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) -k segítségével biztosíthatja, hogy a `kafka-producer-consumer.jar` **sales_user**is elérhető legyen.
 
-> [!NOTE]  
-> Ebben az oktatóanyagban használja a Kafka-producer-Consumer. jar fájlt a "DomainJoined-producer-Consumer" projektben (nem az a gyártó – fogyasztói projekt, amely a nem tartományhoz csatlakoztatott forgatókönyvek esetében).
+   > [!NOTE]  
+   > Ebben az oktatóanyagban használja a Kafka-producer-Consumer. jar fájlt a "DomainJoined-producer-Consumer" projektben (nem az a gyártó – fogyasztói projekt, amely a nem tartományhoz csatlakoztatott forgatókönyvek esetében).
 
-5. **sales_user1** `salesevents` A következő parancs végrehajtásával ellenőrizze, hogy a sales_user1 tud-e előállítani a témakörbe:
+4. **sales_user1** `salesevents` A következő parancs végrehajtásával ellenőrizze, hogy a sales_user1 tud-e előállítani a témakörbe:
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. Futtassa az alábbi parancsot a következő témakörben való használathoz `salesevents` :
+5. Futtassa az alábbi parancsot a következő témakörben való használathoz `salesevents` :
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    Ellenőrizze, hogy el tudja-e olvasni az üzeneteket.
 
-7. Győződjön meg arról, hogy a **sales_user1** nem tud a témakörbe bemutatni, ha `marketingspend` ugyanazon az SSH-ablakban hajtja végre a következőket:
+6. Győződjön meg arról, hogy a **sales_user1** nem tud a témakörbe bemutatni, ha `marketingspend` ugyanazon az SSH-ablakban hajtja végre a következőket:
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
    ```
 
    Engedélyezési hiba történik, amely figyelmen kívül hagyható.
 
-8. Figyelje meg, hogy **marketing_user1** nem használható a témakörből `salesevents` .
+7. Figyelje meg, hogy **marketing_user1** nem használható a témakörből `salesevents` .
 
-   Ismételje meg a 1-4. lépést, de ezúttal **marketing_user1**.
+   Ismételje meg a fenti 1–3. lépést, ám ezúttal a **marketing_user1** felhasználóként bejelentkezve.
 
    Futtassa az alábbi parancsot a következő témakörben való használathoz `salesevents` :
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    A korábbi üzenetek nem láthatók.
 
-9. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
+8. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
 
    ![A Ranger felhasználói felületi házirendjének naplózási hozzáférési eseményei ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   
+## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>Témakörök létrehozása és felhasználása az ESP Kafka-ben a konzol használatával
+
+> [!NOTE]
+> A konzol parancsai nem használhatók témakörök létrehozásához. Ehelyett az előző szakaszban bemutatott Java-kódot kell használnia. További információ: [témakörök létrehozása egy Kafka-fürtben ESP-vel](#create-topics-in-a-kafka-cluster-with-esp).
+
+A Kafka ESP-vel kapcsolatos témaköreinek létrehozása és felhasználása a konzol használatával:
+
+1. Használat `kinit` a felhasználó felhasználónevével. Ha a rendszer kéri, adja meg a jelszót.
+
+   ```bash
+   kinit sales_user1
+   ```
+
+2. Környezeti változók beállítása:
+
+   ```bash
+   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf"
+   export KAFKABROKERS=<brokerlist>:9092
+   ```
+
+3. Üzenetek készítése a témakörbe `salesevents` :
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --topic salesevents --broker-list $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
+
+4. Üzenetek felhasználása a témakörből `salesevents` :
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --topic salesevents --from-beginning --bootstrap-server $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
@@ -201,7 +227,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott Kafka-f�
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha a Kafka-producer-Consumer. jar nem működik tartományhoz csatlakozó fürtben, győződjön meg arról, hogy a Kafka-producer-Consumer. jar fájlt használja a "DomainJoined-producer-Consumer" projektben (nem pedig a nem tartományhoz csatlakoztatott forgatókönyvek esetében).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ügyfél által felügyelt kulcson alapuló lemeztitkosítás](../disk-encryption.md)

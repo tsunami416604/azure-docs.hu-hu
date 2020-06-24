@@ -3,12 +3,12 @@ title: Fizikai kiszolgálók felmérése az Azure-ba való Migrálás Azure Migr
 description: Ismerteti, hogyan értékelheti a helyszíni fizikai kiszolgálókat az Azure-ba való áttelepítéshez Azure Migrate Server Assessment használatával.
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331797"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080772"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Fizikai kiszolgálók értékelése a Azure Migratekel: kiszolgáló értékelése
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet fe
 > [!NOTE]
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a útmutató cikkeket.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -80,7 +80,7 @@ Azure Migrate: a kiszolgáló értékelése egy könnyűsúlyú készüléket fu
     - Bontsa ki a tömörített fájl tartalmát. Indítsa el a PowerShell-konzolt rendszergazdai jogosultságokkal.
     - Futtassa a PowerShell-szkriptet a berendezés webalkalmazásának elindításához.
     - Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel.
-- Több berendezést is beállíthat egyetlen Azure Migrate projekthez. Minden készüléken megtalálhatja a fizikai kiszolgálók számát. Eszközönként legfeljebb 250 kiszolgálót lehet felderíteni.
+- Több berendezést is beállíthat egyetlen Azure Migrate projekthez. Minden készüléken megtalálhatja a fizikai kiszolgálók számát. Eszközönként legfeljebb 1000 kiszolgálót lehet felderíteni.
 
 ### <a name="download-the-installer-script"></a>A telepítő parancsfájl letöltése
 
@@ -101,7 +101,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Példa a nyilvános felhő használatára:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - Példa kormányzati felhő használatára:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+    - Példa kormányzati felhő használatára:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
 3.  Ellenőrizze a készülék legújabb verzióit és a kivonatoló értékeket:
     - Nyilvános felhő esetén:
 
@@ -132,7 +132,7 @@ Futtassa a szkriptet a következő módon:
 1. Bontsa ki a tömörített fájlt egy olyan mappába a kiszolgálón, amely a készüléket fogja üzemeltetni.  Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate berendezésen lévő gépen.
 2. Indítsa el a PowerShellt a fenti kiszolgálón rendszergazdai (emelt szintű) jogosultsággal.
 3. Módosítsa a PowerShell könyvtárat arra a mappára, ahol a rendszer kibontotta a tartalmat a letöltött tömörített fájlból.
-4. Futtassa a **AzureMigrateInstaller. ps1** nevű szkriptet a következő parancs futtatásával:
+4. Futtassa a **AzureMigrateInstaller.ps1** nevű szkriptet a következő parancs futtatásával:
 
     - Nyilvános felhő esetén:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
     - Azure Government esetén:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
@@ -180,7 +180,7 @@ Most kapcsolódjon a készülékről a felderíteni kívánt fizikai kiszolgál�
 
 1. Kattintson a **hitelesítő adatok hozzáadása** elemre azon fiók hitelesítő adatainak megadásához, amelyet a berendezés a kiszolgálók felderítéséhez használ majd.  
 2. Adja meg az **operációs rendszert**, a hitelesítő adatok rövid nevét, valamint a felhasználónevet és a jelszót. Ezután kattintson az **Add** (Hozzáadás) gombra.
-A Windows-és Linux-kiszolgálókhoz is hozzáadhat egy hitelesítő adatot.
+Több hitelesítő adatot is hozzáadhat a Windows-és Linux-kiszolgálókhoz.
 4. Kattintson a **kiszolgáló hozzáadása**elemre, és adja meg a kiszolgáló adatait – FQDN/IP-cím és a hitelesítő adatok rövid neve (egy sor, soronként egy bejegyzés) a kiszolgálóhoz való kapcsolódáshoz.
 3. Kattintson a **Validate** (Érvényesítés) elemre. Az ellenőrzés után megjelenik a felderíthető kiszolgálók listája.
     - Ha egy kiszolgáló érvényesítése meghiúsul, tekintse át a hibát az **állapot** oszlopban látható ikon fölé helyezve. Javítsa ki a hibákat, és ismételje meg az érvényesítést.
@@ -296,7 +296,7 @@ Az értékelés megbízhatósági minősítése a következő.
 [További](best-practices-assessment.md#best-practices-for-confidence-ratings) információ a megbízhatósági minősítéssel kapcsolatos ajánlott eljárásokról.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

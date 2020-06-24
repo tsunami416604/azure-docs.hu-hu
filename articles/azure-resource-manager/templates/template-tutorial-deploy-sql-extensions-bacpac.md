@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018395"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250332"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása ARM-sablonokkal
 
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="prepare-a-bacpac-file"></a>A BACPAC-fájl előkészítése
 
-Egy BACPAC-fájl meg van osztva a [githubon](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). További információ saját fájl létrehozásához: [Azure SQL-adatbázis exportálása BACPAC-fájlba](../../azure-sql/database/database-export.md). Ha egy saját helyen kívánja közzétenni a fájlt, frissítenie kell a sablont az oktatóanyag egy későbbi részében.
+Egy BACPAC-fájl meg van osztva a [githubon](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Saját létrehozásához lásd: [adatbázis exportálása Azure SQL Databaseból egy BACPAC-fájlba](../../azure-sql/database/database-export.md). Ha egy saját helyen kívánja közzétenni a fájlt, frissítenie kell a sablont az oktatóanyag egy későbbi részében.
 
 A BACPAC-fájlt egy ARM-sablon használatával kell tárolni egy Azure Storage-fiókban. A következő PowerShell-szkript előkészíti a BACPAC-fájlt az alábbi lépésekkel:
 
@@ -116,7 +116,7 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
    * `Microsoft.SQL.servers/databases`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
 
         A Testreszabás előtt hasznos lehet a sablon alapvető megismerése.
-1. Válassza a **fájl**  >  **Mentés másként** lehetőséget, hogy mentse a fájl egy másolatát a helyi számítógépre a *azuredeploy. JSON*néven.
+1. Válassza a **fájl**  >  **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre *azuredeploy.js*a következő néven:.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
@@ -196,7 +196,7 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
 
         További információ az erőforrás-definícióról: [SQL Database-bővítmény referenciája](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). A következők a fontosabb elemek:
 
-        * **dependsOn**: A bővítményerőforrást az SQL Database létrehozása után kell létrehozni.
+        * **dependsOn**: az adatbázis létrehozása után létre kell hozni a bővítmény erőforrását.
         * **storageKeyType**: adja meg a használandó tárolási kulcs típusát. Az értéke `StorageAccessKey` vagy `SharedAccessKey` lehet. Ebben `StorageAccessKey` az oktatóanyagban használható.
         * **storageKey**: a BACPAC-fájlt tároló tárolási fiók kulcsát határozza meg. Ha a tárolási kulcs típusa `SharedAccessKey` , akkor meg kell előznie a következőt: "?".
         * **storageUri**: a Storage-fiókban tárolt BACPAC-fájl URL-címét határozza meg.
@@ -241,7 +241,7 @@ Használjon generált jelszót. Lásd: [Előfeltételek](#prerequisites).
 
 Ha az ügyfélszámítógépről szeretné elérni a kiszolgálót, hozzá kell adnia egy további tűzfalszabály-szabályt. További információt az [IP-Tűzfalszabályok létrehozásával és kezelésével](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules)foglalkozó témakörben talál.
 
-A Azure Portal válassza ki az újonnan telepített erőforráscsoport SQL-adatbázisát. Válassza a **Lekérdezésszerkesztő (előzetes verzió)** elemet, majd adja meg a rendszergazdai hitelesítő adatokat. Ekkor két, az adatbázisba importált tábla jelenik meg.
+A Azure Portal válassza ki az adatbázist az újonnan telepített erőforráscsoporthoz. Válassza a **Lekérdezésszerkesztő (előzetes verzió)** elemet, majd adja meg a rendszergazdai hitelesítő adatokat. Ekkor két, az adatbázisba importált tábla jelenik meg.
 
 ![Lekérdezés-szerkesztő (előzetes verzió)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 

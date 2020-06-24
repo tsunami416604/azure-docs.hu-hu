@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: c150972c2804b12ac436a0dd10cdf13f92f43478
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561004"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251510"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a PowerShell használatával
 
@@ -59,7 +59,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 **A forrás Azure SQL Database előkészítése**:
 
-Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázisban található összes táblát átmásolja egy SQL Data Warehouse-ba.
+Hozzon létre egy adatbázist az Adventure Works LT mintaadatok használatával SQL Database az [adatbázis létrehozása Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) cikkben. Ez az oktatóanyag a mintaadatbázisban található összes táblát átmásolja egy SQL Data Warehouse-ba.
 
 **A fogadó Azure SQL Data Warehouse előkészítése**:
 
@@ -334,7 +334,7 @@ Ez a folyamat a táblák listáját használja paraméterként. A lista minden e
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from SQL database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to SQL DW",
                                 "type": "Copy",
                                 "inputs": [
                                     {
@@ -575,7 +575,7 @@ Ez a folyamat két lépést hajt végre:
 
 3. Csatlakozzon a fogadó Azure SQL Data Warehouse-hoz, és ellenőrizze, hogy az adatok megfelelően át lettek-e másolva az Azure SQL Database-ből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

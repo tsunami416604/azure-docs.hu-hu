@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 83e6498f47c36fa54890131922dc8d452a3d9220
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560487"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253664"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Elágazó és láncolási tevékenységek egy Azure Data Factory-folyamatban a Azure Portal használatával
 
@@ -44,7 +44,7 @@ Ez az oktatóanyag az Azure Portalt használja. Az Azure Data Factoryvel való i
 
 * **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 * **Azure Storage-fiók**. A blobtárolót használjuk **forrás** adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket.
-* **Azure SQL Database**. Ezt az adatbázist használjuk **fogadó** adattárként. Ha még nem rendelkezik Azure SQL Database-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket.
+* **Azure SQL Database**. Ezt az adatbázist használjuk **fogadó** adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, a létrehozásához szükséges lépésekért tekintse meg az [adatbázis létrehozása Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) cikkben.
 
 ### <a name="create-blob-table"></a>Blobtábla létrehozása
 
@@ -150,7 +150,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás**gombra.      
+7. Kattintson a **Létrehozás** lehetőségre.      
 8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése**.
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-control-flow-portal/deploying-data-factory.png)
@@ -206,6 +206,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 13. Váltson a **folyamatot** tartalmazó lapra, (vagy) kattintson a folyamatra a fanézetben. Győződjön meg arról, hogy a **Forrásadatkészlet** mezőben a **SourceBlobDataset** adatkészlet van kiválasztva.
 
     ![Forrásadatkészlet](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+
 13. A tulajdonságok ablakában váltson a **Fogadó** lapra, és kattintson az **+ Új** elemre a **Fogadó adatkészlet** mezőben. Ebben a lépésben a forrásadatkészlet létrehozásához hasonlóan létrehoz egy fogadó adatkészletet a másolási tevékenységhez.
 
     ![Új fogadó adatkészlet gomb](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
@@ -328,7 +329,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     ![Tevékenységfuttatási hiba](./media/tutorial-control-flow-portal/activity-run-error.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

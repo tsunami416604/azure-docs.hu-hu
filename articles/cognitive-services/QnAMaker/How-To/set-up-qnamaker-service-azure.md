@@ -3,12 +3,12 @@ title: QnA Maker szolgáltatás beállítása – QnA Maker
 description: Mielőtt bármilyen QnA Maker tudásbázist létrehozni, először be kell állítania egy QnA Maker szolgáltatást az Azure-ban. Az előfizetésben lévő új erőforrások létrehozásához szükséges engedélyekkel rendelkező bárki beállíthat QnA Maker szolgáltatást.
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235520"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214128"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -60,9 +60,9 @@ Ez az eljárás létrehozza a Tudásbázis tartalmának kezeléséhez szüksége
     Az _Cognitive Services_ típusú erőforrás rendelkezik az _előfizetési_ kulcsokkal.
 
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Előfizetési kulcsok keresése a Azure Portal
+## <a name="find-authoring-keys-in-the-azure-portal"></a>Szerzői kulcsok keresése a Azure Portal
 
-Az előfizetési kulcsokat megtekintheti és alaphelyzetbe állíthatja a Azure Portal, ahol létrehozta a QnA Maker erőforrást.
+A szerzői kulcsok megtekinthetők és alaphelyzetbe állíthatók a Azure Portal, ahol létrehozta a QnA Maker erőforrást. Ezeket a kulcsokat előfizetési kulcsoknak is nevezzük. 
 
 1. Nyissa meg a Azure Portal QnA Maker erőforrását, és válassza ki a _Cognitive Services_ típust tartalmazó erőforrást:
 
@@ -72,7 +72,7 @@ Az előfizetési kulcsokat megtekintheti és alaphelyzetbe állíthatja a Azure 
 
     ![Előfizetői azonosító](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Végponti kulcsok keresése a QnA Maker portálon
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Lekérdezési végpont kulcsainak keresése a QnA Maker portálon
 
 A végpont ugyanabban a régióban található, mint az erőforrás, mert a végponti kulcsok használatával hívható meg a Tudásbázis.
 

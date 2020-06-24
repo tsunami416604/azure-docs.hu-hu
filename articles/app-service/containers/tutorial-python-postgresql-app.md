@@ -10,12 +10,12 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: 4a2f80ea30fc68ae1dfea72983fd2b229d40c711
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 29aeae7683c46b1e10acdf1b2c4a7183c22eb408
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559286"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807316"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Python-(Django-) webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -62,8 +62,8 @@ Tekintse meg a *azuresite/Production.* a (z), amely a app Service szükséges ko
 
 - Az összes beállítás öröklése a *azuresite/Settings.* másol.
 - Adja hozzá a App Service alkalmazás teljes tartománynevét az engedélyezett gazdagépekhez. 
-- A [WhiteNoise](https://whitenoise.evans.io/en/stable/) használatával engedélyezheti a statikus fájlok éles környezetben való kiszolgálását, mivel a Django alapértelmezés szerint nem szolgálja ki a statikus fájlokat az éles környezetben. A WhiteNoise csomag már szerepel a *követelmények. txt fájlban*.
-- Adja hozzá a PostgreSQL-adatbázis konfigurációját. Alapértelmezés szerint a Django a Sqlite3-t használja adatbázisként, de az éles alkalmazások esetében nem megfelelő. A [psycopg2-Binary](https://pypi.org/project/psycopg2-binary/) csomag már szerepel a *követelmények. txt fájlban*.
+- A [WhiteNoise](https://whitenoise.evans.io/en/stable/) használatával engedélyezheti a statikus fájlok éles környezetben való kiszolgálását, mivel a Django alapértelmezés szerint nem szolgálja ki a statikus fájlokat az éles környezetben. A WhiteNoise csomag már szerepel a *requirements.txtban *.
+- Adja hozzá a PostgreSQL-adatbázis konfigurációját. Alapértelmezés szerint a Django a Sqlite3-t használja adatbázisként, de az éles alkalmazások esetében nem megfelelő. A [psycopg2-bináris](https://pypi.org/project/psycopg2-binary/) csomag már szerepel a *requirements.txtban *.
 - A postgres-konfiguráció környezeti változókat használ. Később megtudhatja, hogyan állíthatja be a környezeti változókat a App Serviceban.
 
 a *azuresite/Production.* másolási funkció a tárházban található a kényelem érdekében, de az alkalmazás még nem használja. Annak érdekében, hogy a beállításai a App Serviceban legyenek használatban, két fájlt kell konfigurálnia, *Manage.py* és *azuresite/WSGI. file.*
@@ -220,6 +220,8 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
+# Install packages
+pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)
@@ -422,7 +424,7 @@ az group delete --name myResourceGroup
 az group delete --name <app-resource-group>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta a következőket:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 855feaf9b5b47b7b725ee7927418a2b3a9e25393
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8772607c7f43f2a06f5c9f12ee5efd603a1e324f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017768"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212649"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -47,7 +47,7 @@ Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az el
 
 `speak`a gyökérelem, és minden SSML-dokumentum esetében **kötelező** . Az `speak` elem fontos információkat tartalmaz, például a verziót, a nyelvet és a Markup szókincs definícióját.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
@@ -65,7 +65,7 @@ Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az el
 
 Az `voice` elem megadása kötelező. A szövegről beszédre használt hang megadására szolgál.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <voice name="string">
@@ -79,7 +79,7 @@ Az `voice` elem megadása kötelező. A szövegről beszédre használt hang meg
 |-----------|-------------|---------------------|
 | `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Kötelező |
 
-**Például**
+**Példa**
 
 > [!NOTE]
 > Ez a példa a `en-US-AriaRUS` hangot használja. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg.
@@ -173,7 +173,7 @@ speechConfig!.setPropertyTo(
 
 ---
 
-**Például**
+**Példa**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -200,7 +200,7 @@ A jelen neurális hangok esetében jelenleg a beszélő stílusának módosítá
 
 A módosításokat a rendszer a mondat szintjén alkalmazza, a stílus pedig hangon változik. Ha a stílus nem támogatott, a szolgáltatás az alapértelmezett semleges beszéd stílusát fogja visszaadni.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <mstts:express-as style="string"></mstts:express-as>
@@ -227,7 +227,7 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 |                         | `style="lyrical"`         | Az érzelmeket dallamos és szentimentális módon fejezi ki         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  | 
 
-**Például**
+**Példa**
 
 Ez a SSML-kódrészlet azt szemlélteti, hogy az `<mstts:express-as>` elem hogyan változtatja meg a beszéd stílusát a alkalmazásban `cheerful` .
 
@@ -249,7 +249,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 > [!NOTE]
 > Ezzel az elemmel felülbírálhatja egy szó vagy kifejezés szöveg-beszédre (TTS) vonatkozó alapértelmezett viselkedését, ha az adott szó vagy kifejezés szintetizált beszéde természetellenesen hangzik. Állítsa a értékre `strength` `none` , hogy megakadályozza a prosodic-töréspontot, amelyet a rendszer automatikusan beszúr a szöveg-beszéd szolgáltatásba.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <break strength="string" />
@@ -272,7 +272,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 | erős                        | 1000 MS     |
 | x – erős                      | 1250 MS     |
 
-**Például**
+**Példa**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -290,14 +290,14 @@ Az `p` elem tartalmazhat szöveget és a következő elemeket:,,,,,, `audio` `br
 
 Az `s` elem tartalmazhat szöveget és a következő elemeket:,,,,, `audio` `break` `phoneme` `prosody` `say-as` `mstts:express-as` és `sub` .
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <p></p>
 <s></s>
 ```
 
-**Például**
+**Példa**
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -320,7 +320,7 @@ Az `ph` elem a fonetikus KIEJTÉS SSML-dokumentumokban való használata. Az `ph
 
 A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokból vagy karakterből állnak, esetenként kombinációban. Minden telefon egyedi hangfelismerést ír elő. Ez ellentétben áll a latin ábécével, ahol bármely betű több beszélt hangot is jelenthet. Vegye figyelembe a "c" betű különböző kiejtéseit a "candy" és a "megszüntetés" kifejezésben, vagy a "th" betű kombinációjának különböző kiejtéseit a "Thing" és a "The" kifejezésben.
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <phoneme alphabet="string" ph="string"></phoneme>
@@ -366,7 +366,7 @@ Előfordulhat, hogy a szöveg-beszéd szolgáltatás nem tudja pontosan kiejteni
 > [!NOTE]
 > Az egyéni lexikon jelenleg támogatja az UTF-8 kódolást. 
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <lexicon uri="string"/>
@@ -403,7 +403,7 @@ Ha meg szeretné határozni, hogy az egyes entitások hogyan legyenek beolvasva,
 
 Az `lexicon` elem legalább egy elemet tartalmaz `lexeme` . Minden `lexeme` elem tartalmaz legalább egy `grapheme` elemet, és egy vagy több `grapheme` , `alias` és `phoneme` elemet. Az `grapheme` elem a <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">helyesírást <span class="docon docon-navigate-external x-hidden-focus"></span> </a>leíró szöveget tartalmaz. Az `alias` elemek a betűszó vagy egy rövidített kifejezés kiejtésének jelzésére szolgálnak. Az `phoneme` elem a kiejtését leíró szöveget tartalmaz `lexeme` .
 
-Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be közvetlenül egy szó kiejtése. Ha a kiejtést egy értékre kell állítania, először adjon meg egy `alias` , majd társítsa a-t a következőhöz: `phoneme` `alias` . Például:
+Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be közvetlenül egy szó kiejtése. Ha a kiejtést egy betűszóhoz vagy egy rövidített kifejezéshez kell beállítania, először adjon meg egy `alias` , majd társítsa a- `phoneme` t `alias` . Például:
 
 ```xml
   <lexeme>
@@ -481,7 +481,7 @@ Ezzel a beállítással `prosody` adható meg a szöveg és a beszéd kimenetén
 
 Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a beszédfelismerő felismeri a hozzárendelt értékeket arra a javaslatra, hogy a kiválasztott hang tényleges prosodic értékei legyenek. A szöveg-beszéd szolgáltatás korlátozza vagy helyettesíti a nem támogatott értékeket. Példa a nem támogatott értékekre: 1 MHz vagy 120-es kötet.
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
@@ -502,7 +502,7 @@ Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a bes
 
 A felszólalási arány a Word vagy a mondat szintjén is alkalmazható neurális hangokra és standard hangokra. 
 
-**Például**
+**Példa**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -518,7 +518,7 @@ A felszólalási arány a Word vagy a mondat szintjén is alkalmazható neuráli
 
 A kötetek módosításai a Word vagy a mondat szintjén is alkalmazhatók a standard hangokra. Míg a kötetek módosításai csak a mondat szintjén alkalmazhatók a neurális hangokra.
 
-**Például**
+**Példa**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -534,7 +534,7 @@ A kötetek módosításai a Word vagy a mondat szintjén is alkalmazhatók a sta
 
 A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standard hangokra. Míg a szurok módosításait csak a mondat szintjén lehet a neurális hangokra alkalmazni.
 
-**Például**
+**Példa**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -549,7 +549,7 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 > [!IMPORTANT]
 > A Pitch Contour változásai mostantól a neurális hangokkal is támogatottak.
 
-**Például**
+**Példa**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -564,7 +564,7 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 
 `say-as`egy opcionális elem, amely megadja az elem szövegének típusát (például szám vagy dátum). Ez útmutatást nyújt a beszédfelismerési motornak a szöveg kiejtéséről.
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
@@ -598,7 +598,7 @@ A `interpret-as` és attribútumok támogatott tartalomtípusai a következők: 
 
 Az `say-as` elem csak szöveget tartalmazhat.
 
-**Például**
+**Példa**
 
 A Speech szintézis motor a következő példát szemlélteti: "az első kérés egy, a tizenkilencedik 20 10-es, a korai érkezési idő pedig a 12 35 ÓRAKOR."
  
@@ -626,7 +626,7 @@ A SSML-dokumentumban szereplő összes hangnak meg kell felelnie a következő k
 * Az egyetlen válaszban lévő összes szöveges és hangfájl együttes teljes ideje nem lehet nagyobb, mint 90 (90) másodperc.
 * Az MP3 nem tartalmazhat ügyfél-specifikus vagy más bizalmas információt.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <audio src="string"/></audio>
@@ -638,7 +638,7 @@ A SSML-dokumentumban szereplő összes hangnak meg kell felelnie a következő k
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | Megadja a hangfájl helyét/URL-címét. | Kötelező, ha a hangelemet használja a SSML-dokumentumban. |
 
-**Például**
+**Példa**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -662,7 +662,7 @@ Ha a megadott háttérbeli hang rövidebb, mint a szöveg-beszéd vagy a Halván
 
 SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`Az elemen belüli címkéket azonban intersperse is `voice` felvehet, ha további hanganyagot szeretne hozzáadni a SSML-dokumentumhoz.
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
@@ -677,7 +677,7 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 | `fadein` | Meghatározza a háttérbeli hang "elhalványulás" időtartamát ezredmásodpercben. Az alapértelmezett érték `0` :, amely a nem áttűnéssel egyenértékű. **Elfogadott értékek**: `0` a `10000` bezárólag.  | Választható |
 | `fadeout` | Meghatározza, hogy a háttérbeli hang mennyi ideig elhalványul ezredmásodpercben. Az alapértelmezett érték a `0` , ami egyenértékű a kihalványítás nélkül. **Elfogadott értékek**: `0` a `10000` bezárólag.  | Választható |
 
-**Például**
+**Példa**
 
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">

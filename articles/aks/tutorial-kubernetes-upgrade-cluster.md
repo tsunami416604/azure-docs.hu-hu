@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 22aad0e601c600e582cbea0cea82dd67a20a2c06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a89e8bb42bec4323d2189ca93dfe73171c4a128c
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81392680"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888002"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Oktatóanyag: A Kubernetes frissítése az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -34,15 +34,30 @@ Ehhez az oktatóanyaghoz az Azure CLI 2.0.53 vagy újabb verzióját kell futtat
 A fürtök frissítése előtt az [az aks get-upgrades][] paranccsal ellenőrizze, hogy mely Kubernetes-kiadások frissíthetők:
 
 ```azurecli
-az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A következő példában az aktuális verzió a *1.14.8*, és az elérhető verziók a *frissítések* oszlopban láthatók.
+A következő példában az aktuális verzió a *1.15.11*, és az elérhető verziók a *frissítések*területen jelennek meg.
 
-```
-Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
+```json
+{
+  "agentPoolProfiles": null,
+  "controlPlaneProfile": {
+    "kubernetesVersion": "1.15.11",
+    ...
+    "upgrades": [
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.8"
+      },
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.9"
+      }
+    ]
+  },
+  ...
+}
 ```
 
 ## <a name="upgrade-a-cluster"></a>Fürt frissítése
@@ -55,16 +70,19 @@ Az alkalmazások futtatásának minimalizálásához az AK-csomópontok körült
 1. Ha az új csomópont készen áll, és csatlakozik a fürthöz, a Kubernetes ütemező elkezdi a hüvelyek futtatását.
 1. A régi csomópont törölve lett, és a fürt következő csomópontja megkezdi a Kordon és a kiürítés folyamatát.
 
-Az AKS-fürtök az [az aks upgrade][] paranccsal frissíthetők. A következő példa frissíti a fürtöt a Kubernetes verzió *1.14.6*.
+Az AKS-fürtök az [az aks upgrade][] paranccsal frissíthetők.
+
+```azurecli
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
+```
 
 > [!NOTE]
 > Egyszerre csak egy alverzió frissíthető. Például a *1.14. x* -ről a *1.15. x*-re frissítheti, de a *1.14. x* verziójáról nem lehet közvetlenül az *1.16. x* -re frissíteni. Ha a *1.14. x* -ről *1.16. x*-re szeretne frissíteni, először frissítse a *1.14. x* -ről *1.15. x*-re, majd végezzen újabb frissítést *1.15. x* -ről *1.16. x*-re.
 
-```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
-```
-
-A következő összetömörített példa kimenete a *kubernetesVersion* most jelentések *1.15.5*mutatja:
+A következő összetömörített példa kimenete a *1.16.8*-re való frissítés eredményét mutatja. Figyelje meg, hogy a *kubernetesVersion* most jelentések *1.16.8*:
 
 ```json
 {
@@ -82,7 +100,7 @@ A következő összetömörített példa kimenete a *kubernetesVersion* most jel
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.15.5",
+  "kubernetesVersion": "1.16.8",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -97,12 +115,12 @@ Az alábbiak szerint ellenőrizze az [az aks show][] paranccsal, hogy sikerült-
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-A következő példa kimenete azt mutatja, hogy az AK-fürt *KubernetesVersion 1.15.5*fut:
+A következő példa kimenete azt mutatja, hogy az AK-fürt *KubernetesVersion 1.16.8*fut:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>A fürt törlése

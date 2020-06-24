@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 78ae393c47de7a9d03d7b3de9b3dcd315d228f05
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 19a7cf2ec3a8a7a95952fcebfcf3a127c4dfd013
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605425"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792183"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása
 
@@ -22,6 +22,13 @@ Ez a cikk részletes útmutatást nyújt Azure Key Vault tűzfalak és virtuáli
 
 > [!IMPORTANT]
 > A tűzfalszabályok érvénybe léptetése után a felhasználók csak akkor hajthatják végre Key Vault [adatsík](secure-your-key-vault.md#data-plane-access-control) -műveleteket, ha a kérésük engedélyezett virtuális hálózatokból vagy IPv4-címtartományok származnak. Ez a Azure Portal Key Vault elérésére is vonatkozik. Bár a felhasználók megkereshetik a kulcstartót a Azure Portalból, előfordulhat, hogy nem tudják listázni a kulcsokat, titkokat vagy tanúsítványokat, ha az ügyfélszámítógépük nem szerepel az engedélyezési listán. Ez hatással van a más Azure-szolgáltatások Key Vault választóra is. Előfordulhat, hogy a felhasználók megtekinthetik a kulcstárolók listáját, de nem listázják a kulcsokat, ha a tűzfalszabályok megakadályozzák az ügyfélszoftvert.
+
+> [!NOTE]
+> Vegye figyelembe a következő konfigurációs korlátozásokat:
+> * Legfeljebb 127 virtuális hálózati szabály és 127 IPv4-szabály engedélyezett. 
+> * A "/31" vagy "/32" előtagot használó kisméretű címtartományok nem támogatottak. Ehelyett konfigurálja ezeket a tartományokat az egyes IP-címek szabályainak használatával.
+> * Az IP-hálózati szabályok csak nyilvános IP-címek esetén engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az RFC 1918-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózatok közé tartoznak a következők: **10.**, **172.16-31**és **192,168.** 
+> * Jelenleg csak IPv4-címek támogatottak.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -115,11 +122,11 @@ A következőképpen konfigurálhatja Key Vault tűzfalakat és virtuális hál�
    ```
 
 ## <a name="references"></a>Hivatkozások
-
+* ARM-sablon referenciája: [Azure Key Vault ARM-sablon referenciája](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/vaults)
 * Azure CLI-parancsok: [az Key Vault Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Azure PowerShell parancsmagok: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Virtuális hálózati szolgáltatási végpontok Key Vault](overview-vnet-service-endpoints.md))
 * [A Key Vault biztonságossá tétele](secure-your-key-vault.md))

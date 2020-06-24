@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c658283ed610dcd14fca82b14217cba979388fc2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323926"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252916"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -250,7 +250,7 @@ A speciális adatbiztonság engedélyezése:
 
 1. Az **SQL Server** oldalon keresse meg a **Biztonság** szakaszt, és válassza a **speciális adatbiztonság**lehetőséget.
 
-   1. A funkció engedélyezéséhez válassza a be lehetőséget **a** **speciális adatbiztonság** területen. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Ezután válassza a **Save** (Mentés) lehetőséget.
+   1. A funkció engedélyezéséhez válassza a be lehetőséget **a** **speciális adatbiztonság** területen. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Kattintson a **Mentés** gombra.
 
       ![Navigációs panel](./media/secure-database-tutorial/threat-settings.png)
 
@@ -301,7 +301,7 @@ A naplózás engedélyezése:
     ![Naplórekordok](./media/secure-database-tutorial/audit-records.png)
 
 > [!IMPORTANT]
-> Lásd: az [SQL Database naplózása](../../azure-sql/database/auditing-overview.md) a naplózási események további testreszabásához a PowerShell vagy a REST API használatával.
+> A naplózási események további testreszabásáról a PowerShell vagy a REST API használatával [SQL Database](../../azure-sql/database/auditing-overview.md) .
 
 ### <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás
 
@@ -338,7 +338,7 @@ A titkosítás engedélyezése vagy ellenőrzése:
 > [!NOTE]
 > A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](connect-query-ssms.md) használatával, és kérdezze le a `encryption_state` [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet oszlopát. A állapot `3` azt jelzi, hogy az adatbázis titkosítva van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogy csak néhány egyszerű lépéssel javítsa az adatbázis biztonságát. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

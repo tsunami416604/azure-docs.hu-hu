@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277476"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792064"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Alkalmazások méretezése az Azure Spring Cloud-ban
 
@@ -25,7 +25,7 @@ A befejezést követően tudni fogja, hogyan végezheti el a gyors manuális mó
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 * Egy üzembe helyezett Azure Spring Cloud Service-példány.  Az első lépésekhez kövesse [az alkalmazások Azure CLI-n keresztüli üzembe helyezését ismertető](spring-cloud-quickstart-launch-app-cli.md) útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
@@ -58,6 +58,9 @@ A skálázási beállítások alkalmazásához válassza a **Mentés** lehetős�
 ![A Azure Portal méretezési szolgáltatása](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 Néhány másodperc elteltével megjelenik az **áttekintő** oldal az Áttekintés oldalon, és további részleteket tartalmaz az **alkalmazás példányai** lapon. a skálázás nem igényli a kód módosítását vagy az újratelepítést.
+
+## <a name="upgrade-to-the-standard-tier"></a>Frissítés a Standard szintre
+Ha az alapszintű csomaggal rendelkezik, és egy vagy több ilyen [korláttal](spring-cloud-quotas.md)van korlátozva, a standard szintre válthat. Ehhez nyissa meg az árképzési szint menüt úgy, hogy először kiválasztja a standard szint oszlopot, és a **frissítés** gombra kattint.
 
 ## <a name="next-steps"></a>További lépések
 

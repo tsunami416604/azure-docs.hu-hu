@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81616533"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783367"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel
 
@@ -31,7 +31,7 @@ Azure Key Vault-törlési funkciója lehetővé teszi a törölt tárolók és t
 
 >[!NOTE]
 > A Key Vault PowerShell kimeneti formázó fájl elavult változata, amely a megfelelő verzió helyett a környezetbe **tölthető be.** A PowerShell frissített verziója arra készül, hogy tartalmazza a kimeneti formázáshoz szükséges korrekciót, és hogy a témakört a későbbiekben frissíti. A jelenlegi megkerülő megoldás, ha ezt a formázási problémát tapasztalja, a következő:
-> - Ha azt észleli, hogy a következő lekérdezés nem jelenik meg a jelen témakörben ismertetett, nem kötelező törlés engedélyezve `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`tulajdonság:.
+> - Ha azt észleli, hogy a következő lekérdezés nem jelenik meg a jelen témakörben ismertetett, nem kötelező törlés engedélyezve tulajdonság: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete` .
 
 
 A PowerShell-hez Key Vault konkrét referenciáért lásd: [Azure Key Vault PowerShell-útmutató](/powershell/module/az.keyvault).
@@ -165,7 +165,7 @@ A **helyreállítás** és **Törlés** műveletekhez saját engedélyek tartozn
 
 #### <a name="set-a-key-vault-access-policy"></a>Key Vault hozzáférési szabályzatának beállítása
 
-A következő parancs engedélyt user@contoso.com ad arra, hogy több műveletet használjon a kulcsokon a *ContosoVault* , beleértve a **kiürítést**:
+A következő parancs user@contoso.com engedélyt ad arra, hogy több műveletet használjon a kulcsokon a *ContosoVault* , beleértve a **kiürítést**:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
@@ -245,7 +245,7 @@ Ugyanez érvényes a Key Vault esetében is. Ha véglegesen törölni szeretné 
 
 ### <a name="purging-a-key-vault"></a>Kulcstartó törlése
 
-Ha töröl egy kulcstartót, a teljes tartalma véglegesen törlődik, beleértve a kulcsokat, a titkokat és a tanúsítványokat is. A helyreállítható kulcstartó törléséhez használja a `Remove-AzKeyVault` parancsot a kapcsolóval `-InRemovedState` , és a törölt kulcstartó helyét megadhatja az `-Location location` argumentummal. A törölt tároló helyét a parancs `Get-AzKeyVault -InRemovedState`használatával találja meg.
+Ha töröl egy kulcstartót, a teljes tartalma véglegesen törlődik, beleértve a kulcsokat, a titkokat és a tanúsítványokat is. A helyreállítható kulcstartó törléséhez használja a `Remove-AzKeyVault` parancsot a kapcsolóval, és a `-InRemovedState` törölt kulcstartó helyét megadhatja az `-Location location` argumentummal. A törölt tároló helyét a parancs használatával találja meg `Get-AzKeyVault -InRemovedState` .
 
 ```powershell
 Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
@@ -265,7 +265,7 @@ A törölt Key Vault-objektumok listázása azt is jelzi, hogy mikor Key Vault a
 
 ## <a name="enabling-purge-protection"></a>A kiürítési védelem engedélyezése
 
-Ha a védelem kitisztítása be van kapcsolva, a tároló vagy a törölt állapotú objektum nem törölhető, amíg a 90 napos megőrzési idő el nem telt. Ilyen tár vagy objektum továbbra is helyreállítható. Ez a funkció biztosítja, hogy egy tár vagy egy objektum soha nem törölhető véglegesen, amíg a megőrzési időszak el nem telik.
+Ha a kiürítési védelem be van kapcsolva, a tároló vagy a törölt állapotban lévő objektum nem törölhető, amíg meg nem adta a megőrzési időszakot. Ilyen tár vagy objektum továbbra is helyreállítható. Ez a funkció biztosítja, hogy egy tár vagy egy objektum soha nem törölhető véglegesen, amíg a megőrzési időszak el nem telik. Az alapértelmezett megőrzési időtartam 90 nap, de a Key Vault létrehozása során lehetséges, hogy a megőrzési házirend intervallumát 7 – 90 nap értékre állítja be. A kiürítési védelem adatmegőrzési szabályzata ugyanazt az intervallumot használja. A beállítás után az adatmegőrzési házirend intervalluma nem módosítható.
 
 Csak akkor engedélyezheti a kiürítést, ha a Soft-delete is engedélyezve van. 
 

@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 2cc8908b1ecd3225b5226b933eb570cffc180e67
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 6ff56ca61304bdacb3512156babd637afd337c7e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85111984"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242134"
 ---
-[Dokumentáció](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
+[Dokumentáció](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -130,7 +130,7 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 * A fenti módszer használatával beolvashatja a beérkezési képek URL-címét is.
 
 > [!NOTE]
-> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview).
+> Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/java/api/overview/azure/formrecognizer).
 
 ```java
     string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";

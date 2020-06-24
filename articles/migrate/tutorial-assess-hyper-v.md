@@ -4,12 +4,12 @@ description: Ismerteti, hogyan értékelheti a helyszíni Hyper-V virtuális gé
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 53cf4eea4bfe61951be9975bacf9adb2b3fcf435
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331763"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106479"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>A Hyper-V virtuális gépek felmérése Azure Migrate kiszolgáló értékelésével
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet fe
 > [!NOTE]
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a útmutató cikkeket.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 - [Fejezze](tutorial-prepare-hyper-v.md) be az első oktatóanyagot ebben a sorozatban. Ha nem, az oktatóanyagban szereplő utasítások nem fognak működni.
 - Az első oktatóanyagban az alábbiakat kell elvégeznie:
     - [Készítse elő az Azure](tutorial-prepare-hyper-v.md#prepare-azure) -t a Azure Migrate való együttműködéshez.
-    - A [Hyper-V-](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) gazdagépek és a virtuális gépek felmérésének előkészítése.
+    - A [Hyper-V-](tutorial-prepare-hyper-v.md#prepare-for-assessment) gazdagépek és a virtuális gépek felmérésének előkészítése.
     - [Ellenőrizze](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) , hogy mire van szüksége ahhoz, hogy a Azure Migrate berendezést telepíteni lehessen a Hyper-V értékeléséhez.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate projekt beállítása
@@ -96,13 +96,13 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  Ellenőrizze a készülék legújabb verzióit, és hogy vannak-e értékei:
+3.  Ellenőrizze a készülék legújabb verzióit és a kivonatoló értékeket:
 
     - Az Azure nyilvános felhőben:
 
         **Forgatókönyv** | **Letöltés** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,93 MB) | [Legújabb verzió](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (8,93 GB) | [Legújabb verzió](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
     - Azure Government esetén:
 
@@ -174,24 +174,21 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Az SMB virtuális merevlemezek hitelesítő adatainak delegálása
 
-Ha virtuális merevlemezeket futtat az SMB-n, engedélyeznie kell a hitelesítő adatok delegálását a készülékről a Hyper-V gazdagépekre. Ehhez a következőkre van szükség:
-
-- Engedélyezheti, hogy mindegyik gazdagép meghatalmazottként működjön a berendezésben. Ha követte az oktatóanyagokat, ezt az előző oktatóanyagban végezte el, amikor felkészítette a Hyper-V-t az értékeléshez és az áttelepítéshez. [Manuálisan](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)kell beállítania a CredSSP a gazdagépekhez, vagy [egy olyan parancsfájl futtatásával](tutorial-prepare-hyper-v.md#prepare-with-a-script) , amely ezt teszi.
-- Engedélyezze az CredSSP delegálást, hogy az Azure Migrate készülék ügyfélként működhet, hitelesítő adatokat delegáljon egy gazdagépre.
+Ha virtuális merevlemezeket futtat az SMB-n, engedélyeznie kell a hitelesítő adatok delegálását a készülékről a Hyper-V gazdagépekre. Ehhez engedélyeznie kell, hogy mindegyik gazdagép meghatalmazottként működjön a berendezésben. Ha követte az oktatóanyagokat, ezt az előző oktatóanyagban végezte el, amikor felkészítette a Hyper-V-t az értékeléshez és az áttelepítéshez. [Manuálisan](tutorial-prepare-hyper-v.md#enable-credssp-to-delegate-credentials)kell beállítania a CredSSP a gazdagépekhez, vagy [egy olyan parancsfájl futtatásával](tutorial-prepare-hyper-v.md#run-the-script) , amely ezt teszi.
 
 A következő módon engedélyezheti a készüléket:
 
-#### <a name="option-1"></a>1. lehetőség
+#### <a name="option-1"></a>1\. lehetőség
 
 Futtassa ezt a parancsot a készülék virtuális gépén. A HyperVHost1/HyperVHost2 például állomásnevek.
 
 ```
-Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
 ```
 
 Például: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `
 
-#### <a name="option-2"></a>2. lehetőség
+#### <a name="option-2"></a>2\. lehetőség
 
 Ezt is megteheti a berendezés Helyicsoportházirend-szerkesztőján:
 
@@ -325,7 +322,7 @@ Az értékelés megbízhatósági minősítése a következő.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

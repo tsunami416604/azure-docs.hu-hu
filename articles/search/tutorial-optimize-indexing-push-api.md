@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 85ac56eb20eabf308d6686a047d8c5ede914fed9
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966441"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079216"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Oktatóanyag: indexelés optimalizálása a leküldéses API-val
 
@@ -21,7 +21,7 @@ Az Azure Cognitive Search az adatok keresési indexbe történő importálásán
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet hatékonyan indexelni az információkat a [leküldéses modellel](search-what-is-data-import.md#pushing-data-to-an-index) a kérelmek kötegelt feldolgozásával, valamint egy exponenciális leállítási újrapróbálkozási stratégiájának használatával. [Letöltheti és futtathatja az alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Ez a cikk ismerteti az alkalmazás legfontosabb szempontjait és azokat a tényezőket, amelyeket figyelembe kell venni az adatok indexelése során.
 
-Ez az oktatóanyag a C# és a [.net SDK](https://aka.ms/search-sdk) használatával hajtja végre a következő feladatokat:
+Ez az oktatóanyag a C# és a [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) használatával hajtja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Index létrehozása
@@ -30,7 +30,7 @@ Ez az oktatóanyag a C# és a [.net SDK](https://aka.ms/search-sdk) használatá
 > * Több szál használata az indexelési sebesség növeléséhez
 > * Az exponenciális leállítási újrapróbálkozási stratégiájának használata a sikertelen elemek újrapróbálkozásához
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -70,15 +70,15 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
 ## <a name="2---set-up-your-environment"></a>2 – a környezet beállítása
 
 1. Indítsa el a Visual studiót, és nyissa meg a **OptimizeDataIndexing. SLN**.
-1. A Megoldáskezelőban nyissa meg a **appSettings. JSON** fájlt a kapcsolódási adatok biztosításához.
-1. Ha `searchServiceName`a teljes URL-cím "https://my-demo-service.search.windows.net", a szolgáltatás neve a következő: "My-demo-Service".
+1. Megoldáskezelő a kapcsolódási adatok megadásához nyissa meg a **appsettings.js** .
+1. `searchServiceName`Ha a teljes URL-cím " https://my-demo-service.search.windows.net ", a szolgáltatás neve a következő: "My-demo-Service".
 
 ```json
 {
@@ -90,7 +90,7 @@ Az API-hívásokhoz a szolgáltatás URL-címe és egy hozzáférési kulcs szü
 
 ## <a name="3---explore-the-code"></a>3 – a kód megismerése
 
-Miután frissítette a *appSettings. JSON*fájlt, a **OptimizeDataIndexing. SLN** -ben található minta program készen áll a létrehozásra és a futtatásra.
+A *appsettings.js*frissítését követően a **OptimizeDataIndexing. SLN** programban a minta programnak készen kell állnia a létrehozásra és a futtatásra.
 
 Ez a kód a [C#](search-get-started-dotnet.md)rövid útmutatóból származik. A .NET SDK-val kapcsolatos részletes információk a cikkben találhatók.
 
@@ -126,7 +126,7 @@ public Address Address { get; set; }
 . . .
 ```
 
-Az **program.cs** -fájlban az index egy névvel és egy, a `FieldBuilder.BuildForType<Hotel>()` metódus által generált mező-gyűjteménysel van definiálva, majd a következőképpen jön létre:
+Az **program.cs** -fájlban az index egy névvel és egy, a metódus által generált mező-gyűjteménysel van definiálva, `FieldBuilder.BuildForType<Hotel>()` majd a következőképpen jön létre:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -233,7 +233,7 @@ public static double EstimateObjectSize(object data)
 }
 ```
 
-A függvénynek szüksége `ISearchIndexClient` van egy, valamint az egyes kötegek méretének tesztelésére irányuló próbálkozások számára. Mivel előfordulhat, hogy az egyes kötegek indexelési ideje változó lehet, a rendszer alapértelmezés szerint háromszor megpróbál minden köteget kipróbálni, hogy az eredmények statisztikailag jelentősebbek legyenek.
+A függvénynek szüksége van egy `ISearchIndexClient` , valamint az egyes kötegek méretének tesztelésére irányuló próbálkozások számára. Mivel előfordulhat, hogy az egyes kötegek indexelési ideje változó lehet, a rendszer alapértelmezés szerint háromszor megpróbál minden köteget kipróbálni, hogy az eredmények statisztikailag jelentősebbek legyenek.
 
 ```csharp
 await TestBatchSizes(indexClient, numTries: 3);
@@ -269,7 +269,7 @@ Ha hiba történik, a kérelmeket az [exponenciális leállítási újrapróbál
 
 Az Azure Cognitive Search .NET SDK automatikusan újrapróbálkozik a 503s és más sikertelen kérelmekkel, de a 207s újrapróbálkozásához saját logikát kell megvalósítani. A nyílt forráskódú eszközök, például a [Polly](https://github.com/App-vNext/Polly) is használható az újrapróbálkozási stratégia megvalósításához. 
 
-Ebben a példában a saját exponenciális leállítási újrapróbálkozási stratégiát Implementáljuk. Ennek a stratégiának a megvalósításához néhány változót is meg kell `maxRetryAttempts` határozni, `delay` beleértve az és a sikertelen kérések kezdeti értékét:
+Ebben a példában a saját exponenciális leállítási újrapróbálkozási stratégiát Implementáljuk. Ennek a stratégiának a megvalósításához néhány változót is meg kell határozni, beleértve az `maxRetryAttempts` és a `delay` sikertelen kérések kezdeti értékét:
 
 ```csharp
 // Create batch of documents for indexing
@@ -281,9 +281,9 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Fontos, hogy a [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) elkapjon, mivel ezek a kivételek azt jelzik, hogy az indexelési művelet csak részben sikeres (207s). A sikertelen elemeket újra meg kell próbálni `FindFailedActionsToRetry` a metódus használatával, amely megkönnyíti egy olyan új köteg létrehozását, amely csak a hibás elemeket tartalmazza.
+Fontos, hogy a [IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) elkapjon, mivel ezek a kivételek azt jelzik, hogy az indexelési művelet csak részben sikeres (207s). A sikertelen elemeket újra meg kell próbálni a `FindFailedActionsToRetry` metódus használatával, amely megkönnyíti egy olyan új köteg létrehozását, amely csak a hibás elemeket tartalmazza.
 
-A kivételeken `IndexBatchException` kívül más kivételeket is el kell látni, és a kérést nem sikerült teljesen megadnia. Ezek a kivételek kevésbé gyakoriak, különösen a .NET SDK-val, mivel az automatikusan újrapróbálkozik a 503s.
+A kivételeken kívül más kivételeket `IndexBatchException` is el kell látni, és a kérést nem sikerült teljesen megadnia. Ezek a kivételek kevésbé gyakoriak, különösen a .NET SDK-val, mivel az automatikusan újrapróbálkozik a 503s.
 
 ```csharp
 // Implement exponential backoff
@@ -324,7 +324,7 @@ do
 
 Innen Becsomagoljuk az exponenciális leállítási kódot egy függvénybe, hogy könnyen meghívható legyen.
 
-Ekkor létrejön egy másik függvény az aktív szálak kezeléséhez. Az egyszerűség kedvéért ez a függvény nem szerepel itt, de a [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs)-ben is megtalálható. A függvény hívható a következő paranccsal, ahol `hotels` a feltölteni kívánt adatok, `1000` a köteg mérete, és `8` az egyidejű szálak száma:
+Ekkor létrejön egy másik függvény az aktív szálak kezeléséhez. Az egyszerűség kedvéért ez a függvény nem szerepel itt, de a [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs)-ben is megtalálható. A függvény hívható a következő paranccsal `hotels` , ahol a feltölteni kívánt adatok, `1000` a köteg mérete, és `8` az egyidejű szálak száma:
 
 ```csharp
 ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
@@ -380,7 +380,7 @@ Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő indexeket, és tör
 
 Az indexek törléséhez használhatja a portált is.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

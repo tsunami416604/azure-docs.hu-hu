@@ -1,24 +1,24 @@
 ---
 title: A Azure Stream Analytics beépített szabályzat-definíciói
 description: A Azure Stream Analytics Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.custom: subject-policy-samples
-ms.openlocfilehash: f4f97318044dc827a52a785cbb996a613597c3f8
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: f07a55fb62496417f89d84271cb38b0e4eb9a187
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235728"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887001"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-stream-analytics"></a>Azure Policy beépített szabályzat-definíciók a Azure Stream Analytics
+# <a name="azure-policy-built-in-definitions-for-azure-stream-analytics"></a>A Azure Stream Analytics beépített definíciói Azure Policy
 
 Ez az oldal a Azure Stream Analytics [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 

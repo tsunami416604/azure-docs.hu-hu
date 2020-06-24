@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: f6c8b388a9d1261e08314b8f8c607e5ee16362ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 57701218186266e897e8312d01372fd36ddee715
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013788"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906122"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás üzembe helyezése az Azure-ban Azure SQL Database
 
@@ -19,7 +19,7 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 
 ![Közzétett ASP.NET-alkalmazás Azure App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -43,7 +43,7 @@ Ha már telepítette a Visual studiót, adja hozzá a számítási feladatokat a
 ## <a name="download-the-sample"></a>A minta letöltése
 
 * [Töltse le a mintaprojektet](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
-* Bontsa ki (csomagolja ki) a *DotNet-sqldb-tutorial-Master. zip* fájlt.
+* Bontsa ki (csomagolja ki) a *dotnet-sqldb-tutorial-master.zip* fájlt.
 
 A mintaprojekt az [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) szolgáltatást használó, alapszintű [ASP.NET MVC](https://www.asp.net/mvc) CRUD (létrehoz-olvas-frissít-töröl) alkalmazást tartalmaz.
 
@@ -86,7 +86,7 @@ Megtarthatja a webalkalmazás létrehozott nevét, vagy módosíthatja egy mási
 
 ![A Create App Service (App Service létrehozása) párbeszédpanel](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
@@ -141,11 +141,11 @@ Adatbázis létrehozása előtt [logikai SQL Serverre](../azure-sql/database/log
 
    * Tartsa meg a **Database Name** (Adatbázisnév) alapértelmezés szerint létrehozott értékét.
    * A **Connection String Name** (Kapcsolati sztring neve) mezőben írja be a *MyDbConnection* nevet. Ennek a névnek meg kell egyeznie a *Models/MyDatabaseContext.cs* fájlban hivatkozott kapcsolati sztringgel.
-   * Kattintson az **OK** gombra.
+   * Válassza az **OK** lehetőséget.
 
     ![Adatbázis konfigurálása](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a konfigurált erőforrásokat. Kattintson a **Létrehozás**gombra.
+2. A **Create App Service** (App Service létrehozása) párbeszédpanel jeleníti meg a konfigurált erőforrásokat. Kattintson a **Létrehozás** lehetőségre.
 
    ![a létrehozott erőforrások](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -410,3 +410,8 @@ A következő oktatóanyag azt mutatja be, hogyan növelheti könnyedén az Azur
 
 > [!div class="nextstepaction"]
 > [Az SQL Database biztonságos elérése az Azure-erőforrások felügyelt identitásaival](app-service-web-tutorial-connect-msi.md)
+
+További források:
+
+> [!div class="nextstepaction"]
+> [ASP.NET-alkalmazás konfigurálása](configure-language-dotnet-framework.md)

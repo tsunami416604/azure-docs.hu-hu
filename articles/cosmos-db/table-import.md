@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3d1efc0a116a38686fa929a2058fa88e4c2cfa82
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66242574"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119477"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Adatok migrálása az Azure Cosmos DB Table API-fiókba
 
@@ -66,13 +66,13 @@ Használja az alábbi forrásbeállításokat, amikor egy Azure Table Storage-t�
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Ha az Azure Table Storage-ból való importáláskor szeretné lekérni a forrás kapcsolati karakterláncot, nyissa meg a Azure Portal, és kattintson a **Storage** > **Account** > -fiók**hozzáférési kulcsa**elemre, majd a Másolás gombra kattintva másolja a **kapcsolati karakterláncot**.
+Ha az Azure Table Storage-ból való importáláskor szeretné lekérni a forrás kapcsolati karakterláncot, nyissa meg a Azure Portal, és kattintson a **Storage**  >  **-fiók**  >  **hozzáférési kulcsa**elemre, majd a Másolás gombra kattintva másolja a **kapcsolati karakterláncot**.
 
-![Képernyőkép a HBase forrás beállításairól](./media/table-import/storage-table-access-key.png)
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Képernyőkép a HBase forrás beállításairól":::
 
-Ha Azure Cosmos db Table API (előzetes verzió) fiókból történő importáláskor szeretné lekérni a forrás-kapcsolódási karakterláncot, nyissa meg a Azure Portal, kattintson **Azure Cosmos db** > **fiók** > **kapcsolódási karakterlánca** elemre, majd a Másolás gombra kattintva másolja a **kapcsolódási karakterláncot**.
+Ha Azure Cosmos db Table API (előzetes verzió) fiókból történő importáláskor szeretné lekérni a forrás-kapcsolódási karakterláncot, nyissa meg a Azure Portal, kattintson **Azure Cosmos db**a  >  **fiók**  >  **kapcsolódási karakterlánca** elemre, majd a Másolás gombra kattintva másolja a **kapcsolódási karakterláncot**.
 
-![Képernyőkép a HBase forrás beállításairól](./media/table-import/cosmos-connection-string.png)
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Képernyőkép a HBase forrás beállításairól":::
 
 [Példaparancs az Azure Table Storage esetén](#azure-table-storage)
 

@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b84f98bd383c2b90c3291527b336d798e9b9cae9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666137"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886782"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Oktatóanyag: a készségkészlet változásainak diagnosztizálása, javítása és elutasítása
 
@@ -173,12 +173,12 @@ A hibakeresési munkamenet végrehajtásának befejeződése után kattintson a 
 ## <a name="fix-missing-skill-output-values"></a>Hiányzó szaktudás-kimeneti értékek javítása
 
 > [!div class="mx-imgBorder"]
-> ![Hibák és figyelmeztetések](media/cognitive-search-debug/warnings-missing-value-locs-orgs.png)
+> ![Hibák és figyelmeztetések](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
 
 A szakértelemből hiányzó kimeneti értékek találhatók. Ha azonosítani szeretné a hibát, ugorjon a dúsított adatstruktúrára, keresse meg az érték nevét, és tekintse meg az eredeti forrását. A hiányzó szervezetek és helyszínek értéke esetén a rendszer a skill #1ból származó kimeneteket jelenít meg. Az egyes elérési utakhoz tartozó Expression értékelő </> megnyitásakor a "/Document/Content/Organizations" és a "/Document/Content/Locations" kifejezés jelenik meg.
 
 > [!div class="mx-imgBorder"]
-> ![Expression értékelő szervezetek entitása](media/cognitive-search-debug/expression-eval-missing-value-locs-orgs.png)
+> ![Expression értékelő szervezetek entitása](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
 
 Az entitások kimenete üres, és nem lehet üres. Milyen bemenetek jönnek létre ez az eredmény?
 
@@ -187,7 +187,7 @@ Az entitások kimenete üres, és nem lehet üres. Milyen bemenetek jönnek lét
 1. Nyissa meg a kifejezés kiértékelését **</>** a "text" szövegben.
 
 > [!div class="mx-imgBorder"]
-> ![Szöveg-képzettség bevitele](media/cognitive-search-debug/input-skill-missing-value-locs-orgs.png)
+> ![Szöveg-képzettség bevitele](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
 
 A bemenet megjelenített eredménye nem hasonlít a szövegbeviteli adatokhoz. Úgy néz ki, mint egy új vonallal körülvett rendszerkép. A szöveg hiánya azt jelenti, hogy egyetlen entitás sem azonosítható. A készségkészlet hierarchiájának megtekintésekor a rendszer először a #6 (OCR) által dolgozza fel a tartalmat, majd átadja a #5 (Merge) szaktudásnak. 
 
@@ -195,7 +195,7 @@ A bemenet megjelenített eredménye nem hasonlít a szövegbeviteli adatokhoz. �
 1. Válassza a **végrehajtás** fület a jobb képességek részletei panelen, és nyissa meg a kifejezés kiértékelését **</>** a "mergedText" kimenetekhez.
 
 > [!div class="mx-imgBorder"]
-> ![Kimenet egyesítési képességhez](media/cognitive-search-debug/merge-output-detail-missing-value-locs-orgs.png)
+> ![Kimenet egyesítési képességhez](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
 
 Itt a szöveg párosítva van a képpel. A "/Document/merged_content" kifejezésben a "szervezetek" és a "Locations" elérési utakon található hiba látható a #1 skill számára. A "/Document/Content" helyett "/Document/merged_content"-t kell használnia a "text" bemenetekhez.
 
@@ -216,7 +216,7 @@ Az indexelő futásának befejeződése után a hibák még mindig vannak. Lépj
 1. Nyissa meg a **</>** "szervezetek" entitás kifejezés-értékelőjét.
 
 > [!div class="mx-imgBorder"]
-> ![A szervezetek entitásának kimenete](media/cognitive-search-debug/skill-output-detail-missing-value-locs-orgs.png)
+> ![A szervezetek entitásának kimenete](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
 
 A kifejezés eredményének kiértékelése a megfelelő eredményt adja. A szakértelem feladata az entitás, a "szervezetek" helyes értékének azonosítása. Az entitás elérési útjának kimeneti leképezése azonban továbbra is hibát jelez. A szakértelem kimeneti elérési útjának és a hiba kimeneti elérési útjának összevetésével a/Document/Content csomópontban lévő kimeneteket, szervezeteket és helyeket szülő képességgel. Míg a kimeneti mező leképezése az eredmények szülővé tételét várja a/Document/merged_content csomópont alatt. Az előző lépésben a bevitel "/Document/Content" értékről "/Document/merged_content" értékre változott. A szaktudás beállításainak környezetét módosítani kell annak érdekében, hogy a kimenet a megfelelő kontextussal legyen létrehozva.
 
@@ -228,7 +228,7 @@ A kifejezés eredményének kiértékelése a megfelelő eredményt adja. A szak
 1. A munkamenetek ablak menüjében kattintson a **Futtatás** elemre. Ez elindít egy másik végrehajtást a készségkészlet a dokumentum használatával.
 
 > [!div class="mx-imgBorder"]
-> ![Környezeti javítás a szaktudás beállításakor](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locs-orgs.png)
+> ![Környezeti javítás a szaktudás beállításakor](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
 
 Az összes hiba megoldódott.
 
@@ -257,7 +257,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ a szakértelmével](https://docs.microsoft.com/azure/search/cognitive-search-working-with-skillsets) 

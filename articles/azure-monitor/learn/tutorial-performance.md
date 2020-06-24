@@ -5,14 +5,14 @@ ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/13/2019
+ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e344908fff54a06f1885774c88b509096c26e08
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239594"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783146"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
 
@@ -36,7 +36,7 @@ Az oktatóanyag elvégzéséhez:
 - [Engedélyezze az Application Insights profilkészítőt](../../azure-monitor/app/profiler.md#installation) az alkalmazásához.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
+Jelentkezzen be a Azure Portalba a következő címen: [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="identify-slow-server-operations"></a>Lassú kiszolgálói műveletek azonosítása
 Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböző műveleteiről. A leghosszabb időtartamú műveletek azonosításával diagnosztizálhatja a potenciális problémákat vagy hatékonyabbá teheti a folyamatban lévő fejlesztéseit, ezáltal pedig javíthat az alkalmazás általános teljesítményén.
@@ -61,7 +61,7 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
     ![Végpontok közötti részletek](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  A **Profilkészítő** segít a kódszintű diagnosztikával való előrehaladásban azzal, hogy megmutatja a műveletnél futó kódot és az egyes lépésekhez szükséges időtartamot. Előfordulhat, hogy bizonyos műveletek nem hagynak nyomot, mivel a profilkészítő időszakosan fut.  Idővel több műveletnek lehet nyoma.  Kattintson a **Profilkészítői adatok** elemre a profilkészítő a műveleten való futtatásának elindításához.
+6.  A [**Profiler**](../../azure-monitor/app/profiler-overview.md) segítséget nyújt a kódok szintjének diagnosztizálásához azáltal, hogy megjeleníti a művelethez és az egyes lépésekhez szükséges időponthoz tartozó tényleges kódot. Előfordulhat, hogy bizonyos műveletek nem hagynak nyomot, mivel a profilkészítő időszakosan fut.  Idővel több műveletnek lehet nyoma.  Kattintson a **Profilkészítői adatok** elemre a profilkészítő a műveleten való futtatásának elindításához.
 5.  A nyom megjeleníti az egyes műveletekhez tartozó eseményeket, így diagnosztizálhatja a művelet időtartamáért felelős kiváltó okot.  Kattintson az egyik leghosszabb időtartamot megjelenítő példára.
 6.  Kattintson a **gyors elérési út** elemre, hogy kiemelje a művelet teljes időtartamára vonatkozó események megadott elérési útját.  Ebben a példában azt láthatja, hogy a leglassabb hívás a *FabrikamFiberAzureStorage.GetStorageTableData* metódusból származik. A legtöbb időt igénybe vevő metódus a *CloudTable.CreateIfNotExist*. Ha ez a kódsor lefut minden alkalommal, amikor a függvény meghívása megtörténik, az felesleges hálózati hívásokat és processzorhasználatot eredményez. A kód kijavításának legjobb módja az, hogy ha ezt a sort egy olyan indítási metódusba helyezi, amely csak egyszer fut le.
 
@@ -76,7 +76,7 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
 ## <a name="use-logs-data-for-server"></a>A kiszolgálók naplófájljainak használata
  A naplók részletes lekérdezési nyelvet biztosítanak, amely lehetővé teszi az Application Insights által összegyűjtött összes adatok elemzését. Ezzel a funkcióval részletes elemzéseket végezhet a kérések és a teljesítmény adatairól.
 
-1. Térjen vissza a művelet részletei panelre, ![és kattintson a naplók ikon](media/tutorial-performance/app-viewinlogs-icon.png)**nézet a naplókban (Analitika)** elemre.
+1. Térjen vissza a művelet részletei panelre, és kattintson a naplók ![ ikon](media/tutorial-performance/app-viewinlogs-icon.png)**nézet a naplókban (Analitika)** elemre.
 
 2. A naplók megnyílik egy lekérdezéssel a panel egyes nézeteinél.  Ezeket a lekérdezéseket futtathatja alapértelmezetten, vagy módosíthat rajtuk az igényei szerint.  Az első lekérdezés megjeleníti ennek a műveletnek a teljes időtartamát.
 
@@ -97,7 +97,7 @@ Amellett, hogy azonosítja a kiszolgálói folyamatokat az optimalizálás érde
 ## <a name="use-logs-data-for-client"></a>Az ügyfél naplófájljainak használata
 A kiszolgáló teljesítményére gyűjtött adatokhoz hasonlóan a Application Insights az összes ügyfél-adat számára elérhetővé teszi a mélyreható elemzést a naplók használatával.
 
-1. Térjen vissza a böngésző összegzéséhez, ![és kattintson](media/tutorial-performance/app-viewinlogs-icon.png) a naplók ikon **nézet a naplókban (Analitika)** elemre.
+1. Térjen vissza a böngésző összegzéséhez, és kattintson a naplók ![ ikon ](media/tutorial-performance/app-viewinlogs-icon.png) **nézet a naplókban (Analitika)** elemre.
 
 2. A naplók megnyílik egy lekérdezéssel a panel egyes nézeteinél. Az első lekérdezés a különböző oldalmegtekintések időtartamát jeleníti meg az idő függvényében.
 

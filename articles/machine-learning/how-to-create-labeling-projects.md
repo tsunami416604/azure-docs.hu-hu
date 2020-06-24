@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f514c33f2c39e205ac186b70711b478f67fcb4e5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629642"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212012"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -176,7 +176,10 @@ Miután a gépi tanulási modellt betanítják a manuálisan címkézett adatokr
 
 ## <a name="initialize-the-labeling-project"></a>A címkézési projekt inicializálása
 
-A címkézési projekt inicializálását követően a projekt egyes szempontjai nem változtathatók meg. A feladattípus vagy az adatkészlet nem módosítható. A címkék és a feladat leírásának URL-címe *is* módosítható. A projekt létrehozása előtt gondosan tekintse át a beállításokat. A projekt elküldése után visszaadja az **Adatcímkéző** kezdőlapjának, amely a projekt **inicializálását**fogja megjeleníteni. Ez a lap nem frissül automatikusan. Ezért egy szüneteltetés után manuálisan frissítse az oldalt, hogy megtekintse a projekthez **létrehozott**állapotot.
+A címkézési projekt inicializálását követően a projekt egyes szempontjai nem változtathatók meg. A feladattípus vagy az adatkészlet nem módosítható. A címkék és a feladat leírásának URL-címe *is* módosítható. A projekt létrehozása előtt gondosan tekintse át a beállításokat. A projekt elküldése után visszaadja az **Adatcímkéző** kezdőlapjának, amely a projekt **inicializálását**fogja megjeleníteni.
+
+> [!NOTE]
+> Előfordulhat, hogy a lap nem frissül automatikusan. Ezért egy szüneteltetés után manuálisan frissítse az oldalt, hogy megtekintse a projekthez **létrehozott**állapotot.
 
 ## <a name="run-and-monitor-the-project"></a>A projekt futtatása és figyelése
 
@@ -214,7 +217,7 @@ A kókusz-fájl a Azure Machine Learning munkaterület alapértelmezett blob-tá
 
 ![Exportált adatkészlet](./media/how-to-create-labeling-projects/exported-dataset.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: az első képbesorolási címkézési projekt létrehozása](tutorial-labeling.md).
 * [Képbesorolás vagy objektum-észlelési](how-to-label-images.md) lemezképek címkézése

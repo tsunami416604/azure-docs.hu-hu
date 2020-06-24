@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: 3c55becb098c9d93688b59f1db4f702acbff3f72
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bb61f6146e588673038fae9f41b770c4865cefb7
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837489"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945290"
 ---
 # <a name="azure-monitor-cli-samples"></a>CLI-minták Azure Monitor
 Ez a cikk a parancssori felület (CLI) parancsait mutatja be Azure Monitor szolgáltatások elérésének megkönnyítéséhez. A Azure Monitor lehetővé teszi a Cloud Services, a Virtual Machines és a Web Apps autoskálázását, illetve riasztási értesítések küldését vagy webes URL-címek meghívását a konfigurált telemetria-adatok értékei alapján.
@@ -29,51 +29,51 @@ az login
 
 A parancs futtatása után be kell jelentkeznie a képernyőn megjelenő utasítások segítségével. Az összes parancs az alapértelmezett előfizetés kontextusában működik.
 
-Az aktuális előfizetés részleteinek listázásához használja az alábbi parancsot.
+A jelenlegi előfizetés részleteinek listázása.
 
 ```azurecli
 az account show
 ```
 
-Ha másik előfizetésre szeretné módosítani a munkakörnyezetet, használja a következő parancsot.
+Módosítsa a munkakörnyezetet egy másik előfizetésre.
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-Az összes támogatott Azure Monitor parancs listájának megtekintéséhez hajtsa végre a következő parancsot.
+Az összes támogatott Azure Monitor parancs listájának megtekintése.
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>Előfizetés tevékenységi naplójának megtekintése
+## <a name="view-activity-log"></a>Műveletnapló megtekintése
 
-A műveletnapló eseményeinek megtekintéséhez hajtsa végre a következő parancsot.
+A műveletnapló eseményeinek listáját jeleníti meg.
 
 ```azurecli
 az monitor activity-log list
 ```
 
-Az összes elérhető beállítás megtekintéséhez próbálkozzon a következőkkel.
+Az összes elérhető beállítás megtekintése.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Íme egy példa a naplók resourceGroup való listázására
+Naplók listázása resourceGroup alapján.
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Példa a hívó által a naplók listázására
+A hívó által naplózott naplók listázása.
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Példa arra, hogy egy adott időtartományon belül a hívó által az erőforrás típusán lévő naplókat listázza
+Listázza a hívó által az erőforrástípus egy Dátumtartomány alapján megjelenő naplókat.
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \

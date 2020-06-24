@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 84e808caa033491ce3f2da099459d1242df6decd
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: afe231186adec95b09a75d7fe59552ca8a07049b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299536"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213142"
 ---
 # <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Az SQL on-demand (előzetes verzió) használata az Azure Open-adatkészletek elemzésére és az eredmények megjelenítésére az Azure szinapszis Studióban (előzetes verzió)
 
@@ -23,7 +23,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a felderítő adato
 Például elemezzük a [New York City (NYC) taxi adatkészletet](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) , amely a következőket tartalmazza:
 
 - Felvételi és lejárati dátumok és időpontok.
-- Felvételi és legördülő helyszínek. 
+- A pick up és a drop-off helyszínek. 
 - Utazási távolságok.
 - Részletezett viteldíjak.
 - Díjszabási típusok.
@@ -32,7 +32,7 @@ Például elemezzük a [New York City (NYC) taxi adatkészletet](https://azure.m
 
 ## <a name="automatic-schema-inference"></a>Automatikus séma-következtetés
 
-Mivel az adattárolás a Parquet fájlformátumban történik, az automatikus séma-következtetés elérhető. Egyszerűen lekérheti az adatlekérdezést anélkül, hogy a fájlok összes oszlopának adattípusait fel kellene sorolni. A virtuális oszlop mechanizmust és a filepath függvényt is használhatja a fájlok bizonyos részhalmazának kiszűrésére.
+Mivel az adattárolás a Parquet fájlformátumban történik, az automatikus séma-következtetés elérhető. Az adatokat egyszerűen lekérdezheti a fájlok összes oszlopának adattípusának listázása nélkül. A virtuális oszlop mechanizmust és a filepath függvényt is használhatja a fájlok bizonyos részhalmazának kiszűrésére.
 
 Először Ismerkedjen meg a New York-i taxi-adatszolgáltatással a következő lekérdezés futtatásával:
 

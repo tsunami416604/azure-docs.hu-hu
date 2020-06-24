@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e56040f5e17ee33da6b21ab42d2deddf5dd7064
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 030d5b5ad596b0d9e5eb2d636770c985b1cff5ed
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447798"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099120"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Oktatóanyag: Azure Active Directory önkiszolgáló jelszó-visszaállítási visszaírási engedélyezése helyszíni környezetbe
 
@@ -23,7 +23,7 @@ A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SS
 
 A jelszó-visszaírási az Azure AD-ben a helyi AD DS-környezetbe való visszatéréshez is szinkronizálhatja a jelszó módosításait. A Azure AD Connect biztonságos mechanizmust biztosít a jelszavak visszaküldéséhez egy meglévő helyszíni címtárba az Azure AD-ből.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A jelszó visszaírási szükséges engedélyek konfigurálása
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
-* Egy működő Azure AD-bérlő, amely legalább egy prémium szintű Azure AD P2 próbaverziós licenccel rendelkezik.
+* Egy működő Azure AD-bérlő, amely legalább egy prémium szintű Azure AD P1 vagy P2 próbaverziós licenccel rendelkezik.
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     * További információ: [licencelési követelmények az Azure ad SSPR](concept-sspr-licensing.md).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
@@ -123,7 +123,7 @@ A jelszó visszaírási a SSPR-ben való engedélyezéséhez hajtsa végre a kö
 
 1. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR visszaírási funkciót, hajtsa végre a következő lépéseket:
 
@@ -143,7 +143,7 @@ Ha már nem szeretne jelszó-funkciót használni, hajtsa végre a következő l
 1. A **Konfigurálásra kész** lapon kattintson a **Konfigurálás** gombra, és várja meg, amíg a folyamat véget ér.
 1. Ha látja, hogy a konfigurálás befejeződött, kattintson a **Kilépés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD-SSPR visszaírási egy helyszíni AD DS-környezetben. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
