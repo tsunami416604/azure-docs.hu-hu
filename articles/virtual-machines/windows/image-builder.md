@@ -3,28 +3,33 @@ title: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-k�
 description: Hozzon létre egy Windows rendszerű virtuális gépet az Azure rendszerkép-szerkesztővel.
 author: cynthn
 ms.author: cynthn
-ms.date: 07/31/2019
+ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 269b2f4674f2c99fc438c1a7be65e5660ca58d08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa1f6bcc6c91a493225726bc0df60d2d0b4a1e3
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869495"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119188"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Előzetes verzió: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre testreszabott Windows-rendszerképeket az Azure VM rendszerkép-készítő használatával. A cikkben szereplő példa [testreszabók](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) használatával testreszabja a rendszerképet:
 - PowerShell (ScriptUri) – [PowerShell-parancsfájl](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)letöltése és futtatása.
 - Windows újraindítása – újraindítja a virtuális gépet.
-- PowerShell (beágyazott) – adott parancs futtatása. Ebben a példában egy könyvtárat hoz létre a virtuális gépen a használatával `mkdir c:\\buildActions`.
-- Fájl – másolja a fájlt a GitHubról a virtuális gépre. Ez a példa [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) a index.MD `c:\buildArtifacts\index.html` másolja a virtuális gépre.
+- PowerShell (beágyazott) – adott parancs futtatása. Ebben a példában egy könyvtárat hoz létre a virtuális gépen a használatával `mkdir c:\\buildActions` .
+- Fájl – másolja a fájlt a GitHubról a virtuális gépre. Ez a példa a [index.MD](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) másolja a `c:\buildArtifacts\index.html` virtuális gépre.
+- buildTimeoutInMinutes – növelje a kiépítési időt, amely lehetővé teszi a már futó buildek használatát, az alapértelmezett érték 240 perc, és növelheti a felépítési időt, hogy a már futó buildek is lehetővé váljon.
+- vmProfile – vmSize és hálózati tulajdonságok megadása
+- osDiskSizeGB – növelheti a rendszerkép méretét
+- identitás – identitás biztosítása az Azure rendszerkép-készítő számára a Build során való használatra
 
-A `buildTimeoutInMinutes`is megadható. Az alapértelmezett érték 240 perc, és növelheti a felépítési időt, így a már futó buildek is elérhetővé válik.
 
-A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateWin. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
+A is megadható `buildTimeoutInMinutes` . Az alapértelmezett érték 240 perc, és növelheti a felépítési időt, így a már futó buildek is elérhetővé válik.
+
+A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateWin.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
 
 > [!IMPORTANT]
@@ -50,7 +55,8 @@ Győződjön meg a regisztrációról.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -58,9 +64,11 @@ Ha nem mondják a regisztrációt, futtassa a következőt:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
+
 
 ## <a name="set-variables"></a>Változók beállítása
 
@@ -80,7 +88,7 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel érheti `az account show | grep id`el:.
+Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel érheti el: `az account show | grep id` .
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -93,18 +101,41 @@ Ez az erőforráscsoport a rendszerkép-konfigurációs sablon és a rendszerké
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Az erőforráscsoport engedélyeinek beállítása
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Felhasználó által hozzárendelt identitás létrehozása és engedélyek beállítása az erőforráscsoporthoz
+A rendszerkép-szerkesztő a megadott [felhasználói identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) fogja használni a rendszerkép az erőforráscsoporthoz való beadásához. Ebben a példában egy Azure-szerepkör-definíciót hoz létre, amely a rendszerkép terjesztésének részletes műveleteit tartalmazni fogja. A szerepkör-definíció ezután a felhasználó-identitáshoz lesz rendelve.
 
-Adja meg a rendszerkép-készítő "közreműködő" engedélyt a rendszerkép létrehozásához az erőforráscsoporthoz. Enélkül a rendszerkép létrehozása sikertelen lesz. 
+## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása és engedélyek megadása 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $idenityName
 
-Az `--assignee` érték a rendszerkép-szerkesztő szolgáltatáshoz tartozó alkalmazás-regisztrációs azonosító. 
+# get identity id
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
 
-```azurecli-interactive
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# download preconfigured role definition example
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$imageResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
+
 
 
 ## <a name="download-the-image-configuration-template-example"></a>Példa a rendszerkép konfigurációs sablonjának letöltésére
@@ -119,18 +150,19 @@ sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateWin.json
 sed -i -e "s/<region>/$location/g" helloImageTemplateWin.json
 sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateWin.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateWin.json
 
 ```
 
-Ezt a példát módosíthatja a terminálon egy szövegszerkesztővel, például `vi`a paranccsal.
+Ezt a példát módosíthatja a terminálon egy szövegszerkesztővel, például a paranccsal `vi` .
 
 ```azurecli-interactive
-vi helloImageTemplateLinux.json
+vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> A forrás rendszerkép esetében mindig [meg kell adnia egy verziót](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), amelyet nem használhat `latest`.
-> Ha hozzáadja vagy megváltoztatja azt az erőforráscsoportot, amelyben a rendszerkép el van terjesztve, meg kell adnia az [engedélyeket](#set-permissions-on-the-resource-group) az erőforráscsoporthoz.
+> A forrás rendszerkép esetében mindig [meg kell adnia egy verziót](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), amelyet nem használhat `latest` .
+> Ha hozzáadja vagy megváltoztatja azt az erőforráscsoportot, amelyben a rendszerkép el van terjesztve, meg kell adnia az [engedélyeket](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) az erőforráscsoporthoz.
  
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
@@ -145,7 +177,7 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-Ha elkészült, a rendszer visszaküldi a sikert jelző üzenetet a-konzolra `Image Builder Configuration Template` , és `$imageResourceGroup`létrehoz egy-t a alkalmazásban. Ezt az erőforrást az erőforráscsoport Azure Portalban tekintheti meg, ha engedélyezi a "rejtett típusok megjelenítése" beállítását.
+Ha elkészült, a rendszer visszaküldi a sikert jelző üzenetet a-konzolra, és létrehoz egy `Image Builder Configuration Template` -t a alkalmazásban `$imageResourceGroup` . Ezt az erőforrást az erőforráscsoport Azure Portalban tekintheti meg, ha engedélyezi a "rejtett típusok megjelenítése" beállítását.
 
 A háttérben a rendszerkép-szerkesztő létrehoz egy átmeneti erőforráscsoportot is az előfizetésében. Ez az erőforráscsoport a rendszerkép létrehozásához használatos. Ez a következő formátumban fog megjelenni:`IT_<DestinationResourceGroup>_<TemplateName>`
 
@@ -181,7 +213,7 @@ Ha bármilyen hibát tapasztal, tekintse át ezeket a [hibaelhárítási](https:
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Hozza létre a virtuális gépet a létrehozott rendszerkép használatával. Cserélje le * \<a jelszó>* a saját jelszavával `aibuser` a virtuális gépre.
+Hozza létre a virtuális gépet a létrehozott rendszerkép használatával. Cserélje le a- *\<password>* t a saját jelszavára a `aibuser` virtuális gépen.
 
 ```azurecli-interactive
 az vm create \
@@ -216,6 +248,18 @@ az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateWin01
+```
+
+### <a name="delete-the-role-assignment-role-definition-and-user-identity"></a>Törölje a szerepkör-hozzárendelést, a szerepkör-definíciót és a felhasználói identitást.
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
 ### <a name="delete-the-image-resource-group"></a>A rendszerkép-erőforráscsoport törlése

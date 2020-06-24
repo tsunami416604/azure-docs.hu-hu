@@ -4,19 +4,19 @@ description: A Windows 10-es verzióban az ESR-ben barangoló vagy biztonsági m
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672628"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252967"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 
@@ -26,12 +26,12 @@ A következő lista felsorolja azokat a beállításokat, amelyek a Windows 10 r
 
 A Windows 10 szinkronizálási, biztonsági mentési és helyreállítási keretrendszere által támogatott eszközök és fióktípus összefoglalását a következő táblázat tartalmazza.
 
-| Fiók típusa és művelet | Asztal | Mobiltelefon |
+| Fiók típusa és művelet | Asztal | Mobil |
 | --- | --- | --- |
-| Azure Active Directory: szinkronizálás |Igen |Nem |
+| Azure Active Directory: szinkronizálás |Yes |No |
 | Azure Active Directory: biztonsági mentés/visszaállítás |Nem |Nem |
 | Microsoft-fiók: szinkronizálás |Igen |Igen |
-| Microsoft-fiók: biztonsági mentés/visszaállítás |Nem |Igen |
+| Microsoft-fiók: biztonsági mentés/visszaállítás |No |Yes |
 
 ## <a name="what-is-backup"></a>Mi az a biztonsági mentés?
 
@@ -69,7 +69,7 @@ A következő táblázatban a Settings Group (beállítások) csoport oszlopába
 A beállítások csoport oszlop belső bejegyzései olyan beállításokat és alkalmazásokat mutatnak be, amelyek csak az alkalmazáson belüli szinkronizálásból, vagy a teljes eszköz szinkronizálásának a mobileszköz-kezelés (MDM) vagy a Csoportházirend beállítások használatával történő letiltásával érhetők el.
 A nem barangoló vagy szinkronizált beállítások nem tartoznak csoporthoz.
 
-| Beállítások | Asztal | Mobiltelefon | Csoport |
+| Beállítások | Asztal | Mobil | Csoport |
 | --- | --- | --- | --- |
 | **Fiókok**: fiók képe |szinkronizálás |X |Téma |
 | **Fiókok**: egyéb Fiókbeállítások |X |X | |

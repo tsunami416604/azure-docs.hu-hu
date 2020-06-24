@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 3c922675619fc877d9d97a43b69a15f5ca4f393e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/10/2020
+ms.openlocfilehash: b02ba8bd6e3ae858c9e3ded07776a8a83ede171a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849110"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212589"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Új SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -80,11 +80,11 @@ Ha a Service (SaaS) szolgáltatást a partner Center kereskedelmi piactérről s
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS-díjszabás és számlázási lehetőségek
 
-A kiadó Azure-előfizetésében futó SaaS-megoldásokkal az ügyfelek által kifizetett licencek a szoftver üzembe helyezéséhez használt infrastruktúra díját is tartalmazzák. Az Azure-infrastruktúra használatának felügyelete és számlázása Önnek, a partnernek közvetlenül történik. Az ügyfél nem látja a tényleges infrastruktúra-használati díjakat. A kiadóknak az Azure-infrastruktúra használati díját kell megfizetniük a szoftverlicenc-díjszabásban. 
+A kiadó Azure-előfizetésében futó SaaS-megoldásokkal az ügyfelek által kifizetett licencek a szoftver üzembe helyezéséhez használt infrastruktúra díját is tartalmazzák. Az Azure-infrastruktúra használatának felügyelete és számlázása Önnek, a partnernek közvetlenül történik. Az ügyfél nem látja a tényleges infrastruktúra-használati díjakat. A kiadóknak az Azure-infrastruktúra használati díját kell megfizetniük a szoftverlicenc-díjszabásban.
 
 Az SaaS a mért számlázási szolgáltatással havi vagy éves számlázási támogatást biztosít, amely átalány, felhasználónkénti vagy használati díj alapján történik. A Microsoft kereskedelmi piactére egy ügynökségi modellen működik, amelynek során a kiadók díjszabást, Microsoft-számlákat és Microsoft-számlázást fizetnek a kiadónak, miközben az ügynökség díját is megtartják.
 
-Ez egy példa a költségek és a kifizetések megoszlására az Ügynökség modelljének bemutatásához:
+Ez egy példa a költségek és a kifizetések lebontására az Ügynökség modelljének bemutatására (a felsorolt árak kizárólag a célokat szolgálják, és nem tükrözik a tényleges költségeket):
 
 |**A licenc díja**|**$100/hó**|
 |:---|:---|
@@ -124,7 +124,36 @@ Az Ügyfélkapcsolat-kezelési (CRM) rendszer csatlakoztatásával Gyűjtse öss
 
 #### <a name="example-marketplace-offer-listing"></a>Példa a piactéri hirdetésekre
 
-![Példa a piactér ajánlatának listázására megjegyzésekkel](./media/marketplace-offer.svg)
+<!-- ![Example marketplace offer listing with notes](./media/marketplace-offer.svg) -->
+
+Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban:
+
+:::image type="content" source="media/example-appsource-saas.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Nagyméretű embléma
+2. Kategóriák
+3. Ágazatok
+4. Támogatási címe (hivatkozás)
+5. Használati feltételek
+6. Adatvédelmi irányelvek
+7. Ajánlat neve
+8. Összefoglalás
+9. Leírás
+10. Képernyőképek/videók
+11. Dokumentumok
+
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
+
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Cím
+2. Leírás
+3. Hasznos hivatkozások
+4. Képernyőképek
 
 ## <a name="enable-a-test-drive"></a>Tesztelési meghajtó engedélyezése
 
@@ -194,12 +223,12 @@ A kereskedelmi piactér-közzétevők számára két fajta módosítás érhető
 >[!NOTE]
 > Ez a két típusú módosítás egymásra épül. Az egyéni módosításokkal rendelkező ügyfelek a vásárlás során általános módosítást is kapnak a standard szerződéshez.
 
-**Általános módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéshez** – ebben a mezőben adja meg az univerzális módosítási feltételeket. Ajánlathoz egyetlen általános módosítást is megadhat. Ebben a mezőben korlátlan számú karaktert adhat meg. Ezek a feltételek a AppSource, az Azure Marketplace-en és/vagy Azure Portalban jelennek meg a felderítési és vásárlási folyamat során.
+**Általános módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéshez** – ebben a mezőben adja meg az univerzális módosítási feltételeket. Ajánlathoz egyetlen általános módosítást is megadhat. Ebben a mezőben korlátlan számú karaktert adhat meg. Ezek a feltételek a AppSource, az Azure Marketplace-en és/vagy a Azure Portal a felderítési és vásárlási folyamat során az ügyfelek számára jelennek meg.
 
 **Egyéni módosítási feltételek a Microsoft kereskedelmi Marketplace standard szerződéséhez** – először válassza az **Egyéni módosítási feltételek hozzáadása**lehetőséget. Ajánlatunk legfeljebb 10 egyéni módosítási feltételt adhat meg.
 
 - **Egyéni módosítási feltételek** – adja meg az egyéni módosítási feltételeket az egyéni módosítási feltételek mezőben. Ebben a mezőben korlátlan számú karaktert adhat meg. Csak az egyéni feltételekhez megadott bérlői azonosítók ügyfelei jelennek meg az ajánlat vásárlási folyamatában az Azure Portalban.  
-- **Bérlői azonosítók** (kötelező) – minden egyéni módosítás legfeljebb 20 bérlői azonosítót célozhat meg. Ha egyéni módosítást ad hozzá, meg kell adnia legalább egy bérlői azonosítót. A bérlő azonosítója azonosítja az ügyfelet az Azure-ban. Megkérheti az ügyfelet erre az AZONOSÍTÓra, és megkeresheti a portal.azure.com > Azure Active Directory > a Tulajdonságok lehetőségre kattintva. A címtár-azonosító értéke a bérlő azonosítója (például 50c464d3-4930-494c-963c-1e951d15360e). A szervezet bérlői AZONOSÍTÓját is megkeresheti a saját tartománynév URL-címével, amely a [Microsoft Azure és az Office 365-bérlői azonosítóját használja?](https://www.whatismytenantid.com).
+- **Bérlői azonosítók** (kötelező) – minden egyéni módosítás legfeljebb 20 bérlői azonosítót célozhat meg. Ha egyéni módosítást ad hozzá, meg kell adnia legalább egy bérlői azonosítót. A bérlő azonosítója azonosítja az ügyfelet az Azure-ban. Megkérheti az ügyfelet erre az AZONOSÍTÓra, és megkeresheti a portal.azure.com > Azure Active Directory > a Tulajdonságok lehetőségre kattintva. A címtár-azonosító értéke a bérlő azonosítója (például 50c464d3-4930-494c-963c-1e951d15360e). A szervezet bérlői AZONOSÍTÓját is megkeresheti a saját tartománynév URL-címével, [Mi az a Microsoft Azure és az Office 365-bérlő azonosítója?](https://www.whatismytenantid.com)
 - **Leírás** (nem kötelező) – opcionálisan megadhatja a bérlői azonosító rövid leírását, amely segít azonosítani a módosítással megcélzott ügyfelet.
 
 #### <a name="terms-and-conditions"></a>használati feltételei
@@ -251,7 +280,7 @@ A mező kitöltése kötelező.
 
 #### <a name="files-and-images"></a>Fájlok és lemezképek
 
-- **Dokumentumok** (kötelező) – kapcsolódó marketing-dokumentumok hozzáadása az ajánlathoz PDF formátumban, amely legalább egy (1) és legfeljebb három (3) dokumentumot biztosít az ajánlathoz.
+- **Dokumentumok** (kötelező) – kapcsolódó marketing-dokumentumok hozzáadása az ajánlathoz, PDF formátumban, legalább egy és legfeljebb három dokumentumhoz.
 - **Képek** (nem kötelező) – több hely is van, ahol az ajánlat emblémájának képei megjelenhetnek a piactéren (k) a következő képpont-méretek PNG formátumban való megadásával:
 
     - **Kicsi** (48 x 48, kötelező)
@@ -260,7 +289,7 @@ A mező kitöltése kötelező.
     - **Széles** (255 x 115)
     - **Hős** (815 x 290)
 
-- **Képernyőképek** (kötelező) – az ajánlatot bemutató képernyőképeket adhat hozzá. Legfeljebb öt (5) képernyőkép adható hozzá, és 1280 x 720 képpont méretűnek kell lennie. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
+- **Képernyőképek** (kötelező) – adjon meg legfeljebb öt képernyőképet, amely az ajánlatát mutatja be, a mérete 1280 x 720 képpont. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
 - **Videók** (nem kötelező) – az ajánlatot bemutató videókra mutató hivatkozásokat adhat hozzá. A YouTube-és/vagy a Vimeo-videókra mutató hivatkozásokat is használhat, amelyek az Ön ajánlatával együtt jelennek meg az ügyfelek számára. Emellett meg kell adnia a videó miniatűr képét is, amely az 1280 x 720 képpont méretű, PNG formátumú. Ajánlat legfeljebb négy videót jeleníthet meg.
 
 >[!NOTE]
@@ -290,18 +319,26 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ## <a name="technical-configuration"></a>Technikai konfiguráció
 
-Ez az oldal az ajánlathoz való kapcsolódáshoz használt technikai részleteket (URL-cím, webhook, bérlői azonosító és alkalmazás-azonosító) határozza meg. Ez a kapcsolat lehetővé teszi, hogy az ajánlatot a végfelhasználók számára kiépítse, ha úgy dönt, hogy megszerezzék. Az összegyűjtött mezők használatát leíró diagramok a [SaaS-teljesítési API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)-k dokumentációjában találhatók.
-
-- Kezdőlap **URL-címe** (kötelező) – adja meg a webhely URL-címét, amelyet az ügyfelek az ajánlatnak a piactéren való beszerzése után fognak leszállni. Ez az URL-cím lesz a végpont, amely megkapja a jogkivonatot, amikor az ügyfél az oldalra irányítja. Ez a jogkivonat a teljesítési API-k feloldási funkciójával kicserélhető a kiépítési adatokra. Ezek az adatok és a gyűjtött egyéb információk a regisztráció befejezéséhez és a vásárlás aktiválásához használható, a felhasználó által interaktív weblap részeként.
-
-- **Kapcsolati webhook** (kötelező) – a Microsoft által az ügyfél nevében küldendő összes aszinkron eseményhez (például az SaaS-előfizetés érvénytelennek bizonyult) a kapcsolati webhookot kell megadnia. Ha még nem rendelkezik webhook-rendszerrel, a legegyszerűbb konfiguráció egy olyan HTTP-végpont logikai alkalmazás, amely figyeli a neki küldött összes eseményt, majd megfelelően kezeli őket (például https: \/ /Prod-1westus.Logic.Azure.com:443/Work). További információk: [munkafolyamatok hívása, elindítása vagy beágyazása http-végpontokkal a Logic Appsben](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
-
-- **Azure ad-bérlői azonosító** (kötelező) – Azure Portalon belül létre kell [hoznia egy Azure Active Directory (ad) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok**lehetőséget, majd keresse meg a felsorolt **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
-
-- **Azure ad-alkalmazás azonosítója** (kötelező) – az alkalmazás- [azonosítóra](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) és egy hitelesítési kulcsra is szüksége lesz. Az értékek beszerzéséhez lépjen a Azure Active Directory, és válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a felsorolt **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e). A hitelesítési kulcs megkereséséhez lépjen a **Beállítások** elemre, és válassza a **kulcsok**lehetőséget. Meg kell adnia egy leírást és egy időtartamot, és ezután meg kell adni egy számértéket.
+A **technikai konfiguráció** lap a piactér által az SaaS-szolgáltatással való kommunikációhoz használt technikai részleteket határozza meg. Ez a kapcsolat lehetővé teszi, hogy az ajánlatot a végfelhasználók számára kiépítse, ha úgy dönt, hogy megszerezze és felügyelje azt. 
 
 >[!Note]
->Az Azure-alkalmazás azonosítója a közzétevő AZONOSÍTÓhoz van társítva, ezért ügyeljen arra, hogy ugyanazt az azonosítót használja az összes ajánlatában.
+>A részletek az ajánlat részleteiben való konfigurálása előtt meg kell valósítania a [SaaS-megvalósítás API](./pc-saas-fulfillment-api-v2.md) -kkal való integrációját.
+
+Az összegyűjtött mezők használatát leíró diagramok és részletes magyarázatok az [API](./pc-saas-fulfillment-api-v2.md)-k dokumentációjában találhatók.
+
+- Kezdőlap **URL-címe** (kötelező) – határozza meg a SaaS-webhely URL-címét (például: `https://contoso.com/signup` ), hogy a végfelhasználók az ajánlatot a piactéren szerezték be, és a konfigurációs folyamatot az újonnan létrehozott SaaS-előfizetésből aktiválják.  Ezt az URL-címet a piactér-vásárlási azonosító jogkivonat paraméterrel hívja meg a rendszer, amely egyedileg azonosítja az adott végfelhasználó SaaS-vásárlását.  Ezt a tokent a megfelelő SaaS-előfizetés részleteire kell cserélnie az API [feloldása](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) paranccsal.  Ezeket a részleteket és minden más összegyűjteni kívánt ügyfelet az ügyfél-interaktív weblap részeként kell használni, amely a végfelhasználói regisztráció befejezéséhez és a vásárlás aktiválásához szükséges.  Ezen az oldalon a felhasználónak az Azure Active Directory (Azure AD) használatával egy kattintással történő hitelesítéssel kell regisztrálnia. <br> <br> Ez az URL-cím a piactér-beli vásárlási azonosító jogkivonat paraméterrel is meghívható, ha a végfelhasználó a felügyelt SaaS-élményt Azure Portal vagy M365 felügyeleti központból indítja el. Mindkét folyamatot kezelni kell, ha a jogkivonatot az új ügyfelek megvásárlása után első alkalommal adták meg, és ha az SaaS-t kezelő meglévő ügyfél számára van megadva. <br> <br> Az itt konfigurált kezdőlapon a 24/7-es verzióját kell futtatnia. Ez az egyetlen módszer, amikor értesítést kap a SaaS-ajánlatok piactéren végzett új vásárlásáról, vagy egy ajánlat aktív előfizetésének konfigurációs kéréseiről.
+
+- **Kapcsolat webhook** (kötelező) – minden olyan aszinkron esemény esetében, amelyet a Microsoftnak el kell küldenie Önnek (például az SaaS-előfizetés meg lett szakítva), meg kell adnia egy kapcsolat webhook URL-címét. Meghívjuk ezt az URL-címet, hogy értesítse Önt az eseményről. <br> <br> Az Ön által megadott webhooknak a 24/7-as verzióját kell futtatnia, mivel ez az egyetlen módja, ha értesítést szeretne kapni az ügyfelek által a piactéren vásárolt SaaS-előfizetésekről.  Ha még nem rendelkezik webhook-rendszerrel, a legegyszerűbb konfiguráció egy olyan HTTP-végpont logikai alkalmazás, amely figyeli a neki küldött összes eseményt, majd megfelelően kezeli őket (például: `https://prod-1westus.logic.azure.com:443/work` ). További információk: [munkafolyamatok hívása, elindítása vagy beágyazása http-végpontokkal a Logic Appsben](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+
+- **Azure ad-bérlő azonosítója** (kötelező) – a Azure Portalon belül [létre kell hoznia egy Azure Active Directory (ad-) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok**lehetőséget, majd keresse meg a felsorolt **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
+
+- **Azure ad-alkalmazás azonosítója** (kötelező) – az alkalmazás- [azonosítóra](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)is szüksége lesz. Az érték beszerzéséhez lépjen a Azure Active Directory, és válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a felsorolt **alkalmazás-azonosító** számát (például: `50c464d3-4930-494c-963c-1e951d15360e` ).
+
+>[!Note]
+>Az Azure AD-alkalmazás azonosítója a partner Center-fiókban található közzétevői AZONOSÍTÓhoz van társítva.  Győződjön meg arról, hogy az összes ajánlatban ugyanaz az alkalmazás-azonosító van használatban.
+
+>[!Note]
+>Ha a közzétevő két vagy több különböző fiókkal rendelkezik a partner Centerben, akkor az egyik fiókhoz két vagy több különböző Azure AD-alkalmazás-azonosítót kell használni. A fiókpartner minden fiókpartner-fiókjának egyedi Azure AD-alkalmazás-azonosítót kell használnia a fiókon keresztül közzétett SaaS-ajánlatok esetében.
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
@@ -350,7 +387,7 @@ A folytatás előtt válassza a **Mentés** lehetőséget.
 
 ##### <a name="pricing-model"></a>Díjszabási modell
 
-**Átalány** – az ajánlathoz való hozzáférés engedélyezése egyetlen havi vagy éves díjszabási díjszabással. Ezt más néven a hely alapú díjszabásnak is nevezzük. Ezzel az árképzési modellel meghatározhat olyan mért csomagokat is, amelyek a Piactéri mérési szolgáltatás API-ját használják, hogy a nem standard egységek alapján felszámolják az ügyfeleket.  A mért számlázással kapcsolatos további információkért lásd: [mért számlázás a Marketplace-mérési szolgáltatás használatával](./saas-metered-billing.md).
+**Átalány** – az ajánlathoz való hozzáférés engedélyezése egyetlen havi vagy éves díjszabási díjszabással. Ezt más néven a hely alapú díjszabásnak is nevezzük. Ezzel az árképzési modellel meghatározhat olyan mért csomagokat is, amelyek a Piactéri mérési szolgáltatás API-ját használják, hogy a nem standard egységek alapján felszámolják az ügyfeleket.  A mért számlázással kapcsolatos további információkért lásd: [mért számlázás a Marketplace-mérési szolgáltatás használatával](./saas-metered-billing.md).  Ezt a beállítást akkor is érdemes használni, ha a használati viselkedés a SaaS-szolgáltatáshoz kapcsolódóan működik.  Az ügyfélnek nem ajánlott napi vagy óránkénti váltást végeznie.
 
 **Felhasználónkénti** – lehetővé teszi, hogy az ajánlathoz való hozzáférést az ajánlatot vagy az elfoglaló munkaállomásokat elérő felhasználók száma alapján biztosítsa. Ez a felhasználó-alapú modell lehetővé teszi, hogy beállítsa az árak alapján engedélyezett felhasználók minimális és maximális számát. Így a különböző díjszabási pontok a felhasználók számától függően konfigurálhatók több csomag konfigurálásával.  Ezeket a mezőket nem kötelező megadni. Ha nem jelöli be a jelölőnégyzetet, a rendszer a felhasználók számát úgy értelmezi, hogy nem rendelkezik korláttal (az 1. és a maximális érték legfeljebb annyit tud támogatni). Ezeket a mezőket a csomag frissítésének részeként lehet szerkeszteni.
 
@@ -375,7 +412,7 @@ A közzététel előtt körültekintően tekintse át az árakat, mivel bizonyos
 
 #### <a name="free-trial"></a>Ingyenes próbaverzió
 
-A kereskedelmi Piactéren keresztül elérhető SaaS-ajánlatok lehetővé teszik, hogy egy hónapos ingyenes próbaidőszakot biztosítson a Microsofton keresztüli értékesítés során. Az összes számlázási modellhez és használati feltételhez a mért csomagok kivételével az ingyenes próbaverziók támogatottak. Ez a beállítás lehetővé teszi, hogy az ügyfelek egy hónapon keresztül alacsony korláttal rendelkezzenek a belépéshez.  Ha úgy dönt, hogy engedélyezi az ajánlaton belüli csomagok ingyenes próbaverzióját, az ügyfél nem fog tudni áttérni fizetős előfizetésre a kezdeti egy hónapos időszak lejárta előtt.  Ebben az időszakban az ajánlatát vásárló ügyfelek kipróbálhatja a támogatott csomagokat, amelyeken engedélyezve van az ingyenes próbaverzió, és átválthat közöttük.  A díjköteles előfizetésre való áttérés a kifejezés végén automatikusan történik.
+A kereskedelmi Piactéren keresztül elérhető SaaS-ajánlatok egy hónapos ingyenes próbaverziót biztosítanak a Microsofton keresztüli értékesítéshez. Az összes számlázási modellhez és használati feltételhez a mért csomagok kivételével az ingyenes próbaverziók támogatottak. Ez a beállítás lehetővé teszi, hogy az ügyfelek egy hónapon keresztül alacsony korláttal rendelkezzenek a belépéshez.  Ha úgy dönt, hogy engedélyezi az ajánlaton belüli csomagok ingyenes próbaverzióját, az ügyfél nem fog tudni áttérni fizetős előfizetésre a kezdeti egy hónapos időszak lejárta előtt.  Ebben az időszakban az ajánlatát vásárló ügyfelek kipróbálhatja a támogatott csomagokat, amelyeken engedélyezve van az ingyenes próbaverzió, és átválthat közöttük.  A díjköteles előfizetésre való áttérés a kifejezés végén automatikusan történik.
 
 >[!NOTE]
 >Ha az ügyfél úgy dönt, hogy ingyenes próbaverziók nélkül szeretne átalakítani egy csomagra, az átalakítás megtörténik, de az ingyenes próbaverzió azonnal elvész. Azt is megteheti, hogy ha egy ügyfél megkezdi a csomag megfizetését, már nem kaphat ingyenes próbaidőszakot ugyanarra az előfizetésre, még akkor is, ha az ingyenes próbaverziókat támogató SKU-ra vált.
@@ -415,7 +452,14 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Példa a piactéren belüli csomagok listájára
 
-![Példa a Piactéri csomagokra – megjegyzések](./media/marketplace-plan.svg)
+:::image type="content" source="media/marketplace-plan.png" alt-text="Példa a Marketplace-tervre a megjegyzések listájával.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Csomag neve
+2. Csomag leírása
+
+<br>
 
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Cloud Solution Provider (CSP) viszonteladói közönség
 
@@ -433,8 +477,8 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
     - **Nincs elindítva** – a szakasz nem lett megérintve, és el kell végezni.
     - **Hiányos** – a szakasznak olyan hibákkal kell rendelkeznie, amelyeket meg kell oldani, vagy további információkat kell megadnia. Vissza kell térnie a szakaszhoz, és frissítenie kell.
     - **Complete (Befejezés** ) – a szakasz elkészült, az összes szükséges adattal megadták, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
-- Adjon meg tesztelési útmutatást a minősítési csapatnak, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzések mellett.
-- Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Vissza kell térnie a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat közzétételéhez a nyilvános (vagy ha egy privát ajánlat, a privát közönség) számára.
+- Adjon meg tesztelési utasításokat a minősítési csapatnak, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzések mellett.
+- Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget, ha közzé szeretné tenni az ajánlatát a nyilvános (vagy ha egy privát ajánlat, a privát célközönség) számára.
 
 ## <a name="next-step"></a>Következő lépés
 

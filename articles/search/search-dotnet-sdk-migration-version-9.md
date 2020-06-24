@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfff2a1278bc31dc9bc130941985aed2cfb74362
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72793018"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080634"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Frissítés a Azure Search .NET SDK 9-es verziójára
 
-Ha a [Azure Search .net SDK](https://aka.ms/search-sdk)-hoz készült 7,0-es vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás a 9-es verzió használatára való frissítéséhez.
+Ha a [Azure Search .net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)-hoz készült 7,0-es vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás a 9-es verzió használatára való frissítéséhez.
 
 > [!NOTE]
 > Ha az 8,0-es verzió előzetes verzióját szeretné használni a még nem általánosan elérhető funkciók kiértékeléséhez, a cikk utasításait követve frissítsen a 8,0-Preview verzióra a korábbi verziókról.
@@ -50,7 +50,7 @@ A Azure Search .NET SDK 9-es verziója a Azure Search REST API legújabb által�
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>A frissítés lépései
-Először frissítse a NuGet-referenciát `Microsoft.Azure.Search` a NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
+Először frissítse a NuGet-referenciát a `Microsoft.Azure.Search` NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
 
 Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. A kód szerkezetének módjától függően előfordulhat, hogy az Újraépítés sikeresen megtörtént. Ha igen, készen állsz!
 
@@ -84,7 +84,7 @@ Számos modell osztály nyilvános tulajdonságai mostantól nem változtatható
 
 Az `Field` osztály most már megváltozott, és összetett mezőket is jelenthet.
 
-A következő `bool` tulajdonságok mostantól üresek:
+A következő `bool` Tulajdonságok mostantól üresek:
 
   - `IsFilterable`
   - `IsFacetable`
@@ -93,14 +93,14 @@ A következő `bool` tulajdonságok mostantól üresek:
   - `IsRetrievable`
   - `IsKey`
 
-Ennek az az oka, hogy ezeknek a `null` tulajdonságoknak a komplex mezők esetében most kell lenniük. Ha van olyan kód, amely beolvassa ezeket a tulajdonságokat, fel kell készülnie a kezelésére `null`. Vegye figyelembe, hogy az összes `Field` többi tulajdonsága mindig és továbbra is üres, és ezek némelyike összetett mezők esetén `null` is előfordulhat – konkrétan a következők:
+Ennek az az oka, hogy ezeknek a tulajdonságoknak `null` a komplex mezők esetében most kell lenniük. Ha van olyan kód, amely beolvassa ezeket a tulajdonságokat, fel kell készülnie a kezelésére `null` . Vegye figyelembe, hogy az összes többi tulajdonsága `Field` mindig és továbbra is üres, és ezek némelyike `null` összetett mezők esetén is előfordulhat – konkrétan a következők:
 
   - `Analyzer`
   - `SearchAnalyzer`
   - `IndexAnalyzer`
   - `SynonymMaps`
 
-A paraméter nélküli konstruktor `Field` lett elvégezve. `internal` Mostantól minden `Field` esetben explicit névvel és adattípussal kell rendelkeznie az építőiparban.
+A paraméter nélküli konstruktor lett elvégezve `Field` `internal` . Mostantól minden `Field` esetben explicit névvel és adattípussal kell rendelkeznie az építőiparban.
 
 ### <a name="simplified-batch-and-results-types"></a>Egyszerűsített köteg-és eredmények típusai
 
@@ -113,13 +113,13 @@ Az 7,0-es verzióban – előzetes és korábbi verziók esetén a dokumentumok 
   -  `SearchResult`és `SearchResult<T>` öröklés forrása`SearchResultBase`
   -  `SuggestResult`és `SuggestResult<T>` öröklés forrása`SuggestResultBase`
 
-Az általános típusparaméter nélküli származtatott típusok a "dinamikusan gépelt" forgatókönyvekben és a `Document` típus feltételezett használatában használhatók.
+Az általános típusparaméter nélküli származtatott típusok a "dinamikusan gépelt" forgatókönyvekben és a típus feltételezett használatában használhatók `Document` .
 
-Az 8,0-es verziótól kezdődően az alaposztályok és a nem általános származtatott osztályok mind el lettek távolítva. A dinamikusan beírt forgatókönyvek esetében használhatja `IndexBatch<Document>` `DocumentSearchResult<Document>`a, és így tovább.
+Az 8,0-es verziótól kezdődően az alaposztályok és a nem általános származtatott osztályok mind el lettek távolítva. A dinamikusan beírt forgatókönyvek esetében használhatja a, `IndexBatch<Document>` `DocumentSearchResult<Document>` és így tovább.
  
 ### <a name="removed-extensibleenum"></a>ExtensibleEnum eltávolítva
 
-Az `ExtensibleEnum` alaposztály el lett távolítva. A rendszerből származtatott összes osztály most már struct, `AnalyzerName` `DataType`például, és. `DataSourceType` A `Create` metódusok is el lettek távolítva. Egyszerűen eltávolíthat hívásokat, `Create` mivel ezek a típusok implicit módon vannak konvertálva a karakterláncokból. Ha ez a fordítási hibákat eredményezi, explicit módon meghívhatja az átalakítási operátort a egyértelműsítse-típusok használatával. Például a következőhöz hasonló kódot lehet módosítani:
+Az `ExtensibleEnum` alaposztály el lett távolítva. A rendszerből származtatott összes osztály most már struct, például, `AnalyzerName` `DataType` és `DataSourceType` . A `Create` metódusok is el lettek távolítva. Egyszerűen eltávolíthat hívásokat, `Create` mivel ezek a típusok implicit módon vannak konvertálva a karakterláncokból. Ha ez a fordítási hibákat eredményezi, explicit módon meghívhatja az átalakítási operátort a egyértelműsítse-típusok használatával. Például a következőhöz hasonló kódot lehet módosítani:
 
 ```csharp
 var index = new Index()
@@ -151,7 +151,7 @@ Az ilyen típusú opcionális értékeket tartalmazó tulajdonságok mostantól 
 
 ### <a name="removed-facetresults-and-hithighlights"></a>FacetResults és HitHighlights eltávolítva
 
-A `FacetResults` és `HitHighlights` az osztályok el lettek távolítva. A dimenziók eredményei mostantól `IDictionary<string, IList<FacetResult>>` a és a találatok szerint `IDictionary<string, IList<string>>`vannak beírva. A módosítás által bevezetett felépítési hibák elhárításának gyors módja, ha az `using` eltávolított típusokat használó fájlok tetején lévő aliasokat ad hozzá. Például:
+A `FacetResults` és az `HitHighlights` osztályok el lettek távolítva. A dimenziók eredményei mostantól a `IDictionary<string, IList<FacetResult>>` és a találatok szerint vannak beírva `IDictionary<string, IList<string>>` . A módosítás által bevezetett felépítési hibák elhárításának gyors módja, ha az `using` eltávolított típusokat használó fájlok tetején lévő aliasokat ad hozzá. Például:
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;
@@ -160,17 +160,17 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 ### <a name="change-to-synonymmap"></a>Váltás a SynonymMap 
 
-A `SynonymMap` konstruktor már nem rendelkezik `enum` paraméterrel a következőhöz:. `SynonymMapFormat` Ez a felsorolás csak egy értéket tartalmazott, ezért redundáns volt. Ha a felépítési hibákat látja ennek eredményeképpen, egyszerűen távolítsa el a `SynonymMapFormat` paraméterre mutató hivatkozásokat.
+A `SynonymMap` konstruktor már nem rendelkezik `enum` paraméterrel a következőhöz: `SynonymMapFormat` . Ez a felsorolás csak egy értéket tartalmazott, ezért redundáns volt. Ha a felépítési hibákat látja ennek eredményeképpen, egyszerűen távolítsa el a paraméterre mutató hivatkozásokat `SynonymMapFormat` .
 
 ### <a name="miscellaneous-model-class-changes"></a>Egyéb modell-osztályok módosításai
 
-A `AutocompleteMode` tulajdonsága `AutocompleteParameters` már nem null értékű. Ha olyan kóddal rendelkezik `null`, amely ezt a tulajdonságot hozzárendeli a szolgáltatáshoz, egyszerűen távolítsa el, és a tulajdonság automatikusan inicializálva lesz az alapértelmezett értékre.
+A `AutocompleteMode` tulajdonsága már `AutocompleteParameters` nem null értékű. Ha olyan kóddal rendelkezik, amely ezt a tulajdonságot hozzárendeli a `null` szolgáltatáshoz, egyszerűen távolítsa el, és a tulajdonság automatikusan inicializálva lesz az alapértelmezett értékre.
 
-A konstruktor paramétereinek `IndexAction` sorrendje most már megváltoztak, hogy ez a konstruktor automatikusan létrejön. A konstruktor használata helyett javasoljuk a gyári metódusok `IndexAction.Upload` `IndexAction.Merge`használatát, stb.
+A konstruktor paramétereinek sorrendje `IndexAction` most már megváltoztak, hogy ez a konstruktor automatikusan létrejön. A konstruktor használata helyett javasoljuk a gyári metódusok használatát, `IndexAction.Upload` `IndexAction.Merge` stb.
 
 ### <a name="removed-preview-features"></a>Előzetes verziójú funkciók eltávolítva
 
-Ha a 8,0-es verzióról a 9-es verzióra frissít, vegye figyelembe, hogy az ügyfél által felügyelt kulcsokkal való titkosítás el lett távolítva, mivel ez a szolgáltatás még előzetes verzióban érhető el. Pontosabban a `EncryptionKey` `Index` és `SynonymMap` a tulajdonságait eltávolították.
+Ha a 8,0-es verzióról a 9-es verzióra frissít, vegye figyelembe, hogy az ügyfél által felügyelt kulcsokkal való titkosítás el lett távolítva, mivel ez a szolgáltatás még előzetes verzióban érhető el. Pontosabban a `EncryptionKey` és a `Index` tulajdonságait `SynonymMap` eltávolították.
 
 Ha az alkalmazás nem rendelkezik a szolgáltatáshoz szükséges függőséggel, akkor nem fog tudni frissíteni a Azure Search .NET SDK 9-es verziójára. Továbbra is használhatja a 8,0-es verziót – előzetes verzió. Ne feledje azonban, hogy az **előnézeti SDK-k éles alkalmazásokban való használatát nem javasoljuk**. Az előzetes verziójú funkciók csak értékelésre használhatók, és változhatnak.
 
@@ -179,7 +179,7 @@ Ha az alkalmazás nem rendelkezik a szolgáltatáshoz szükséges függőséggel
 
 ### <a name="behavioral-change-in-data-retrieval"></a>Az adatok lekérésének viselkedési változása
 
-Ha a "dinamikusan beírt `Search`", `Suggest`vagy `Get` "type" típusú `Document`példányokat visszaadó API-kat használ, vegye figyelembe, hogy most már deszerializálja az üres `object[]` JSON- `string[]`tömböket a helyett.
+Ha a "dinamikusan beírt" `Search` , `Suggest` vagy "type" `Get` típusú példányokat visszaadó API-kat használ `Document` , vegye figyelembe, hogy most már deszerializálja az üres JSON-tömböket a `object[]` helyett `string[]` .
 
 ## <a name="conclusion"></a>Összegzés
 Ha további részletekre van szüksége a Azure Search .NET SDK használatával kapcsolatban, tekintse meg a [.net útmutató](search-howto-dotnet-sdk.md)című témakört.

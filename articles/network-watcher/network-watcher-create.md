@@ -7,17 +7,17 @@ author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191177"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737546"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher-példány létrehozása
 
@@ -49,7 +49,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Network Watcher létrehozása a portálon
 
-Navigáljon az **összes szolgáltatás** > **hálózatkezelés** > **Network Watcher**. Kiválaszthatja az összes olyan előfizetést, amelyhez engedélyezni szeretné a Network Watcher. Ez a művelet minden elérhető régióban létrehoz egy Network Watcher.
+Navigáljon az **összes szolgáltatás**  >  **hálózatkezelés**  >  **Network Watcher**. Kiválaszthatja az összes olyan előfizetést, amelyhez engedélyezni szeretné a Network Watcher. Ez a művelet minden elérhető régióban létrehoz egy Network Watcher.
 
 ![Network Watcher létrehozása](./media/network-watcher-create/figure1.png)
 
@@ -103,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Network Watcher törlése a portálon
 
-Navigáljon az **összes szolgáltatás** > **hálózatkezelés** > **Network Watcher**.
+Navigáljon az **összes szolgáltatás**  >  **hálózatkezelés**  >  **Network Watcher**.
 
 Ha még nem tette meg, válassza az Áttekintés lapot. A legördülő listából válassza ki azt az előfizetést, amelynél le szeretné tiltani a Network watchert.
 A nyílra kattintva bontsa ki a kiválasztott előfizetéshez tartozó régiók listáját. A helyi menü eléréséhez használja a jobb oldalon található 3 pontot.

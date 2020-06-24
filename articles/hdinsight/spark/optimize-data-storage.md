@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5728a8e254074cd96ae1f13cb053220f347e3983
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791042"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737631"
 ---
-# <a name="data-storage-optimization"></a>Adattárolási optimalizálás
+# <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark adattárolási optimalizálása
 
 Ez a cikk azokat a stratégiákat ismerteti, amelyekkel optimalizálhatja az adattárolást az Azure HDInsight hatékony Apache Spark feladatok végrehajtásához.
 
@@ -100,7 +100,7 @@ Bizonyos speciális gyűjtő funkciók a következők:
 
 Egyszerre használhatja a particionálást és a gyűjtőt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az adatfeldolgozás optimalizálása Apache Spark](optimize-cluster-configuration.md)
 * [Memória használatának optimalizálása Apache Spark](optimize-memory-usage.md)

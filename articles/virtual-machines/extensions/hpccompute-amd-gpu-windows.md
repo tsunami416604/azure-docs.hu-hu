@@ -3,22 +3,20 @@ title: AMD GPU illesztőprogram-bővítmény – Azure Windows rendszerű virtu�
 description: Microsoft Azure bővítmény az AMD GPU-illesztőprogramok telepítéséhez Windows rendszerű NVv4-sorozatú virtuális gépeken.
 services: virtual-machines-windows
 documentationcenter: ''
-author: vikancha
+author: vikancha-MSFT
 manager: jkabat
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 0819eec5275fa9783fff363cabbd8c3ed22b7cd6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119552"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736968"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>AMD GPU illesztőprogram-bővítmény Windows rendszerhez
 
@@ -73,7 +71,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |
-| type | AmdGpuDriverWindows | sztring |
+| típus | AmdGpuDriverWindows | sztring |
 | typeHandlerVersion | 1.0 | int |
 
 
@@ -157,7 +155,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 ### <a name="error-codes"></a>Hibakódok
 
-| Hibakód | Jelentés | Lehetséges művelet |
+| Hibakód | Értelmezés | Lehetséges művelet |
 | :---: | --- | --- |
 | 0 | Sikeres művelet |
 | 1 | A művelet sikeresen befejeződött. Újraindítás szükséges. |

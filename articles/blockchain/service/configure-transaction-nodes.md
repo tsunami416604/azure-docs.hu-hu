@@ -2,14 +2,14 @@
 title: Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
 description: Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
 ms.date: 11/20/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80876929"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212564"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
 
@@ -37,7 +37,7 @@ Tranzakciós csomópont hozzáadása:
 
     | Beállítás | Leírás |
     |---------|-------------|
-    | Name (Név) | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
+    | Name | Tranzakciós csomópont neve. A név a tranzakciós csomópont végpontjának DNS-címeinek létrehozására szolgál. Például: `newnode-myblockchainmember.blockchain.azure.com`. A csomópont neve nem módosítható a létrehozása után. |
     | Jelszó | Állítson be egy erős jelszót. Használja a jelszót a tranzakciós csomópont végpontjának egyszerű hitelesítéssel való eléréséhez.
 
 1. Kattintson a **Létrehozás** gombra.
@@ -89,7 +89,7 @@ A tranzakciós csomópontok alapszintű hitelesítési végpontjának részletei
 
 A Felhasználónév a csomópont neve, és nem módosítható.
 
-Az URL-cím használatához a \<jelszót\> a csomópont kiosztásakor beállított jelszóval cserélje le. A jelszót a **jelszó alaphelyzetbe állítása**lehetőség kiválasztásával frissítheti.
+Az URL-cím használatához cserélje le a \<password\> jelszót a csomópont kiosztásakor beállított jelszóra. A jelszót a **jelszó alaphelyzetbe állítása**lehetőség kiválasztásával frissítheti.
 
 ### <a name="access-keys"></a>Elérési kulcs
 

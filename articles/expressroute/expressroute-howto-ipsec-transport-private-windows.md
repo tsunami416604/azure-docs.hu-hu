@@ -4,16 +4,16 @@ description: Az IPsec-átviteli mód engedélyezése az Azure Windows-alapú vir
 services: expressroute
 author: fabferri
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74022008"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737257"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>IPsec-átviteli mód konfigurálása a ExpressRoute privát társításához
 
@@ -161,7 +161,7 @@ Hozzon létre egy olyan szűrőlistát, amely a 8080-as porttal rendelkező titk
 2. A **név:** mezőben adja meg az IP-szűrőlista nevét. Például: **Azure-onpremises-HTTP8080**. Ezután kattintson a **Hozzáadás**gombra.
 
    [![25]][25]
-3. Az **IP-szűrő leírása és a tükrözött tulajdonság** lapon válassza a **tükrözött**lehetőséget. A tükrözött beállítás mindkét irányban elérhető csomagokat tartalmazza, ami kétirányú kommunikációt tesz lehetővé. Kattintson a **Tovább** gombra.
+3. Az **IP-szűrő leírása és a tükrözött tulajdonság** lapon válassza a **tükrözött**lehetőséget. A tükrözött beállítás mindkét irányban elérhető csomagokat tartalmazza, ami kétirányú kommunikációt tesz lehetővé. Ezután kattintson a **Tovább** gombra.
 
    [![26]][26]
 4. Az **IP-forgalom forrása** lapon, a **forrás címe:** legördülő menüben válasszon ki **egy adott IP-címet vagy alhálózatot**. 

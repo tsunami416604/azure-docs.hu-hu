@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: dc8f00e5764cea856e028acb7adb5aebc070c625
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: dee07db85d8886ab44be096e405143ea0d881ba2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559853"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118272"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása a Python SDK-val és a Azure Cosmos DB
 
@@ -137,31 +137,31 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kapcsolatok karakterlánc**lehetőséget. 
 
-    Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-python/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
+1. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-python/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
 
-    ![Hozzáférési felhasználónév, jelszó és kapcsolódási pont megtekintése és másolása az Azure Portal kapcsolati sztring paneljén](./media/create-cassandra-python/keys.png)
+    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Hozzáférési felhasználónév, jelszó és kapcsolódási pont megtekintése és másolása az Azure Portal kapcsolati sztring paneljén":::
 
-2. Nyissa meg a *config.py* fájlt. 
+1. Nyissa meg a *config.py* fájlt. 
 
-3. Illessze be a CONTACT POINT értéket a portálról a `<FILLME>` helyére a 10. sorban.
+1. Illessze be a CONTACT POINT értéket a portálról a `<FILLME>` helyére a 10. sorban.
 
     A 10. sornak ekkor a következőképp kell kinéznie: 
 
     `'contactPoint': 'cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350'`
 
-4. Másolja a USERNAME értéket a portálról, és illessze be a `<FILLME>` helyére a 6. sorban.
+1. Másolja a USERNAME értéket a portálról, és illessze be a `<FILLME>` helyére a 6. sorban.
 
     A 6. sornak ekkor a következőképp kell kinéznie: 
 
     `'username': 'cosmos-db-quickstart',`
     
-5. Másolja a PASSWORD értéket a portálról, és illessze be a `<FILLME>` helyére a 8. sorban.
+1. Másolja a PASSWORD értéket a portálról, és illessze be a `<FILLME>` helyére a 8. sorban.
 
     A 8. sornak ekkor a következőképp kell kinéznie:
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. Mentse a *config.py* fájlt.
+1. Mentse a *config.py* fájlt.
     
 ## <a name="use-the-x509-certificate"></a>Az X509-tanúsítvány használata
 
@@ -196,11 +196,11 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     Nyomja le a CTRL + C billentyűkombinációt a program végrehajtásának leállításához és a konzol ablak bezárásához. 
 
-    ![A kimenet megtekintése és ellenőrzése](./media/create-cassandra-python/output.png)
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="A kimenet megtekintése és ellenőrzése":::
     
 4. Ha megnyitja az **Adatkezelőt** az Azure Portalon, lekérdezheti és módosíthatja és használhatja az új adatokat. 
 
-    ![Adatok megtekintése az Adatkezelőben](./media/create-cassandra-python/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Adatok megtekintése az Adatkezelőben":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
@@ -210,7 +210,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot a Cassandra API, és hogyan futtathat egy Cassandra Python-alkalmazást, amely létrehoz egy Cassandra-adatbázist és-tárolót. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
 

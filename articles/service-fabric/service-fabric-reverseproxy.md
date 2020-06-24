@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282223"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735336"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Fordított proxy az Azure-ban Service Fabric
 Az Azure Service Fabric beépített fordított proxy segít felderíteni a Service Fabric-fürtökön futó és a http-végpontokat használó más szolgáltatásokkal való kommunikációt.
@@ -78,7 +78,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **TargetReplicaSelector** Ez határozza meg a cél replikájának vagy példányának kiválasztásának módját.
   * Ha a cél szolgáltatás állapot-nyilvántartó, a TargetReplicaSelector a következők egyike lehet: "PrimaryReplica", "RandomSecondaryReplica" vagy "RandomReplica". Ha ez a paraméter nincs megadva, az alapértelmezett érték a "PrimaryReplica".
   * Ha a cél szolgáltatás állapota nem megfelelő, a fordított proxy a szolgáltatás partíciójának véletlenszerűen kiválasztott példányát választja, hogy továbbítsa a kérést.
-* **Időtúllépés:**  Ezzel a beállítással adható meg a fordított proxy által a szolgáltatáshoz az ügyfél-kérelem nevében létrehozott HTTP-kérelem időtúllépése. Az alapértelmezett érték 60 másodperc. Ez egy opcionális paraméter.
+* **Időtúllépés:**  Ezzel a beállítással adható meg a fordított proxy által a szolgáltatáshoz az ügyfél-kérelem nevében létrehozott HTTP-kérelem időtúllépése. Az alapértelmezett érték 120 másodperc. Ez egy opcionális paraméter.
 
 ### <a name="example-usage"></a>Példa a használatra
 Vegyük például a *Fabric:/SajátPr/MyService* szolgáltatást, amely a következő URL-címen nyit meg egy http-figyelőt:
@@ -115,7 +115,7 @@ Az átjáró ezután továbbítja ezeket a kéréseket a szolgáltatás URL-cím
 ## <a name="special-handling-for-port-sharing-services"></a>Speciális kezelési szolgáltatások a portok megosztásához
 A Service Fabric fordított proxy megkísérli újból feloldani a szolgáltatási címeket, és újra próbálkozik a kéréssel, ha egy szolgáltatás nem érhető el. Általában, ha egy szolgáltatás nem érhető el, a szolgáltatási példány vagy a replika egy másik csomópontra került át a normál életciklusa során. Ebben az esetben a fordított proxy hálózati kapcsolódási hibát jelez, amely azt jelzi, hogy egy végpont már nem nyílik meg az eredetileg megoldott címen.
 
-A replikák és a szolgáltatási példányok azonban megoszthatnak egy gazdagépet, és egy http. sys-alapú webkiszolgáló által üzemeltetett portot is megoszthatnak, többek között a következő esetekben:
+A replikák és a szolgáltatási példányok azonban megoszthatnak egy gazdagépet, és egy http.sys-alapú webkiszolgáló által üzemeltetett portot is megoszthatnak, többek között:
 
 * [System .net. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
 * [ASP.NET Core webfigyelő](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
@@ -139,13 +139,13 @@ Ez a HTTP-válasz fejléce olyan normál HTTP 404-helyzetet jelez, amelyben a k�
 
 ## <a name="special-handling-for-services-running-in-containers"></a>A tárolókban futó szolgáltatások speciális feldolgozása
 
-A tárolók belsejében futó szolgáltatások esetében használhatja a környezeti változót `Fabric_NodeIPOrFQDN` a [fordított proxy URL-címének](#uri-format-for-addressing-services-by-using-the-reverse-proxy) létrehozásához a következő kódban látható módon:
+A tárolók belsejében futó szolgáltatások esetében használhatja a környezeti változót a `Fabric_NodeIPOrFQDN` [fordított proxy URL-címének](#uri-format-for-addressing-services-by-using-the-reverse-proxy) létrehozásához a következő kódban látható módon:
 
 ```csharp
     var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
-A helyi fürt esetében alapértelmezés `Fabric_NodeIPOrFQDN` szerint a "localhost" értékre van állítva. Indítsa el a helyi fürtöt `-UseMachineName` a paraméterrel, és győződjön meg arról, hogy a tárolók elérik a csomóponton futó fordított proxyt. További információ: [a fejlesztői környezet konfigurálása a tárolók hibakereséséhez](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+A helyi fürt esetében alapértelmezés szerint a `Fabric_NodeIPOrFQDN` "localhost" értékre van állítva. Indítsa el a helyi fürtöt a `-UseMachineName` paraméterrel, és győződjön meg arról, hogy a tárolók elérik a csomóponton futó fordított proxyt. További információ: [a fejlesztői környezet konfigurálása a tárolók hibakereséséhez](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
 
 Service Fabric Docker-összeállítási tárolókban futó szolgáltatások speciális Docker-compose igényelnek. a YML- *portok szakasz* http: vagy https: Configuration. További információ: [Docker-összeállítás támogatása az Azure Service Fabricban](service-fabric-docker-compose.md).
 

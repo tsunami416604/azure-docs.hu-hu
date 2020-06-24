@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77172aacc4c58e6430339328410744cc866def3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639269"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207124"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Hozzáférési korlátozások Azure App Service
 
@@ -30,7 +30,7 @@ A webalkalmazáshoz való hozzáférés korlátozása Azure-Virtual Network (VNe
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Hozzáférés-korlátozási szabályok hozzáadása és szerkesztése a portálon ##
 
-Ha hozzáférési korlátozási szabályt szeretne hozzáadni az alkalmazáshoz, a menü segítségével nyissa meg a **hálózati**>**hozzáférési korlátozásokat** , és kattintson a **hozzáférési korlátozások konfigurálása** elemre.
+Ha hozzáférési korlátozási szabályt szeretne hozzáadni az alkalmazáshoz, a menü segítségével nyissa meg a **hálózati** > **hozzáférési korlátozásokat** , és kattintson a **hozzáférési korlátozások konfigurálása** elemre.
 
 ![App Service hálózati beállítások](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -59,6 +59,10 @@ A szolgáltatási végpontok lehetővé teszik a kiválasztott Azure-beli virtu�
 A szolgáltatási végpontok nem használhatók a App Service Environmenton futó alkalmazásokhoz való hozzáférés korlátozására. Ha az alkalmazás egy App Service Environmentban van, az IP-hozzáférési szabályok segítségével szabályozhatja az alkalmazáshoz való hozzáférést. 
 
 A szolgáltatás-végpontokkal konfigurálhatja az alkalmazást Application Gateway vagy más WAF-eszközök használatával. A többrétegű alkalmazásokat is konfigurálhatja biztonságos háttérrendszer használatával. Az egyes lehetőségekkel kapcsolatos további részletekért olvassa el a [hálózatkezelési szolgáltatások és a app Service](networking-features.md) és [Application Gateway a szolgáltatás-végpontokkal való integráció](networking/app-gateway-with-service-endpoints.md)című részben.
+
+> [!NOTE]
+> A szolgáltatási végpontok jelenleg nem támogatottak IP SSL virtuális IP-címet (VIP) használó webalkalmazások esetén. 
+>
 
 ## <a name="managing-access-restriction-rules"></a>Hozzáférés-korlátozási szabályok kezelése
 

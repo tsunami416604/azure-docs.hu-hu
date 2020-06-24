@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan kezelheti az eszközöket a Azure Portal haszn�
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 241e5baf7f00bc9897e84fb0c10ac7db605fb712
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: bf3f6455be992502182fb942f0e6db089051ab1a
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628316"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253154"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Az eszközök identitásának kezelése a Azure Portal használatával
 
@@ -190,7 +190,7 @@ Az előnézet szűrési funkciójának engedélyezése a **minden eszköz** néz
 
 Mostantól lehetősége lesz **szűrők hozzáadására** a **minden eszköz** nézethez.
 
-## <a name="audit-logs"></a>Auditnaplók
+## <a name="audit-logs"></a>Naplók
 
 Az eszközök tevékenységeit a tevékenység naplóiban érheti el. Ezek a naplók az eszköz regisztrációs szolgáltatása és a felhasználók által aktivált tevékenységeket foglalják magukban:
 
@@ -207,11 +207,11 @@ A napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:
 - Egy tevékenység kezdeményezője/szereplője
 - A tevékenység (mi)
 
-![Auditnaplók](./media/device-management-azure-portal/63.png)
+![Naplók](./media/device-management-azure-portal/63.png)
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
-![Auditnaplók](./media/device-management-azure-portal/64.png)
+![Naplók](./media/device-management-azure-portal/64.png)
 
 A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a naplózott adatokat:
 
@@ -224,8 +224,8 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 
 A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
-![Auditnaplók](./media/device-management-azure-portal/65.png)
+![Naplók](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

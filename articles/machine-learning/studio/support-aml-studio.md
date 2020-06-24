@@ -5,16 +5,16 @@ description: Támogatás és képzés és visszajelzés a Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 708f337ebc627f863f632a677a2186a9d7fe99f8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209434"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213176"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Támogatás és képzés a Azure Machine Learning Studio (klasszikus)
 
@@ -38,7 +38,7 @@ Tekintse meg a következő támogatási forrásokat:
 
 + **Technikai támogatás Azure-ügyfelek számára**: [támogatási kérések elküldése és kezelése](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) a Azure Portalon keresztül.
 
-+ **Felhasználói fórum**: tegye fel kérdéseit, válaszoljon a kérdésekre, és kapcsolódjon más felhasználókkal a [Azure Machine learning Studio (klasszikus) támogatási fórumon az MSDN webhelyen](https://aka.ms/aml-forum-studio).
++ **Felhasználói fórum**: tegyen fel kérdéseket, válaszoljon a kérdésekre, és kapcsolódjon más felhasználókkal a [Azure Machine learning Studio (klasszikus) támogatási fórumon](https://docs.microsoft.com/answers/topics/azure-machine-learning.html).
 
 + **Stack overflow**: látogasson el a Azure Machine learning Közösségbe az "Azure-Machine-learning" címkével ellátott [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) .
 

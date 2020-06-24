@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 18158c867ba7a3307585eab0f950d15a6a12aa7c
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5323e54a81c7123e3e60f69d05accef9a63c7bc4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342629"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737444"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -105,7 +105,7 @@ Azure Migrate a kiszolgáló értékelése jelenleg csak Windows rendszerű gép
 
 A Server Assessment folyamatosan gyűjti a helyszíni gépek teljesítményadatait, és ezek alapján tesz javaslatot az Azure-beli virtuálisgép- és lemez-termékváltozatra. [Ismerje meg](concepts-assessment-calculation.md#calculate-sizing-performance-based) a teljesítmény-alapú adatok gyűjtésének módját.
 
-## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combintion-of-reserved-instances-vm-uptime-and-discount-"></a>Miért van az értékelésem arra utaló figyelmeztetést mutat, hogy a fenntartott példányok érvénytelen combintion lettek létrehozva, a virtuális gép üzemidő és a kedvezmény (%)?
+## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Miért van az értékelésem arra utaló figyelmeztetést mutat, hogy a fenntartott példányok érvénytelen kombinációjával lett létrehozva, a virtuális gép üzemidő és a kedvezmény (%)?
 Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információ](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="dependency-visualization-in-azure-government"></a>Függőségi vizualizáció a Azure Government
@@ -132,15 +132,14 @@ Linux rendszerű virtuális gépek esetén győződjön meg arról, hogy az MMA 
 
 ## <a name="visualize-dependencies-for--hour"></a>> óra függőségeinek megjelenítése
 
-Bár a Azure Migrate lehetővé teszi, hogy visszalépjen az előző hónapban egy adott dátumra, a függőségek megjelenítésének maximális időtartama egy óra.
+Az ügynök nélküli függőségek elemzésével megjelenítheti a függőségeket, és akár 30 napig is exportálhatja őket egy térképen.
 
-A függőségi Térkép időidőtartam funkciójának használatával például megtekintheti a tegnapi függőségeket, de csak egy órás időszakra megtekintheti őket.
-
-[A függőségi adat](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.
+Ügynök-alapú függőségi elemzéssel, bár a Azure Migrate lehetővé teszi, hogy visszalépjen egy adott dátumra az elmúlt hónapban, a függőségek megjelenítésének maximális időtartama egy óra. A függőségi Térkép időidőtartam funkciójának használatával például megtekintheti a tegnapi függőségeket, de csak egy órás időszakra megtekintheti őket. [A függőségi adat](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.
 
 ## <a name="visualized-dependencies-for--10-machines"></a>Vizualizációs függőségek > 10 gép esetén
 
-Azure Migrate kiszolgáló értékelése során a legfeljebb 10 virtuális géppel rendelkező [csoportok függőségeit jelenítheti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) meg. Nagyobb csoportok esetén azt javasoljuk, hogy a függőségek megjelenítéséhez ossza fel a virtuális gépeket kisebb csoportokra.
+Azure Migrate Server Assessment esetében az ügynök-alapú függőségi elemzéssel akár 10 virtuális géppel rendelkező [csoportok függőségeit is megjelenítheti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . Nagyobb csoportok esetén azt javasoljuk, hogy a függőségek megjelenítéséhez ossza fel a virtuális gépeket kisebb csoportokra.
+
 
 ## <a name="machines-show-install-agent"></a>Gépek "telepítési ügynök"
 
@@ -151,6 +150,9 @@ Miután az Azure-ba engedélyezte a függőségi vizualizációval rendelkező g
 - A gépek más IP-címmel is rendelkezhetnek, attól függően, hogy megtartotta-e a helyszíni IP-címet.
 - Ha a MAC és az IP-címek is eltérnek a helyi környezettől, Azure Migrate nem rendeli hozzá a helyszíni gépeket a Service Map függőségi adatokhoz. Ebben az esetben az ügynököt a függőségek megtekintése helyett az ügynök telepítésére fogja látni.
 - Az Azure-ba való áttelepítést követően a helyszíni gépek továbbra is a várt módon lesznek bekapcsolva. Az Azure-ban megjelenő egyenértékű gépek eltérő MAC-címet igényelnek, és különböző IP-címeket is megvásárolhatnak. Hacsak nem tiltja le a kimenő Azure Monitor ezen gépekről érkező forgalmat, Azure Migrate nem rendeli hozzá a helyszíni gépeket semmilyen Service Map függőségi adatokhoz, így a függőségek megtekintése helyett az ügynökök telepítésének lehetőségét fogja látni.
+
+## <a name="dependencies-export-csv-shows-unknown-process"></a>A CSV-exportálási függőségek az "ismeretlen folyamat" kifejezést mutatják
+Az ügynök nélküli függőségek elemzésében a folyamat neveit a rendszer a legjobb erőfeszítést követően rögzíti. Bizonyos helyzetekben, bár a forrás-és a célkiszolgáló neve és a célport is rögzítve van, nem valósítható meg a függőségek mindkét végén található folyamat neve. Ilyen esetekben a folyamat "ismeretlen folyamat" jelöléssel van megjelölve.
 
 
 ## <a name="capture-network-traffic"></a>Hálózati forgalom rögzítése
@@ -180,6 +182,6 @@ Gyűjtsön hálózati forgalmi naplókat a következőképpen:
 - Hyper-V virtuális gépek esetén az operációs rendszer adatait a Hyper-V gazdagépről gyűjti a rendszer.
 - Fizikai kiszolgálók esetében a rendszer beolvassa a kiszolgálót a kiszolgálóról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Értékelés [létrehozása](how-to-create-assessment.md) vagy [testreszabása](how-to-modify-assessment.md) .

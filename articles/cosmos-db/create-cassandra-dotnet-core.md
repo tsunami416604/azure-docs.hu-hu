@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 9df32b441d5dd2653fd3708013bb75660ef593c5
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 56adfa2ddab011372783a7a7872b4f4c8d7fc050
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84311049"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118440"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása a .NET Core és a Azure Cosmos DB használatával
 
@@ -133,13 +133,13 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az [Azure Portalon](https://portal.azure.com/) válassza a **Kapcsolati sztring** lehetőséget.
 
-    Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-dotnet/copy.png) a USERNAME érték másolásához.
+1. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-dotnet/copy.png) a USERNAME érték másolásához.
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kapcsolati sztring oldalán](./media/create-cassandra-dotnet/keys.png)
+   :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kapcsolati sztring oldalán":::
 
-2. A Visual Studióban nyissa meg a Program.cs fájlt. 
+1. A Visual Studióban nyissa meg a Program.cs fájlt. 
 
-3. Illessze be a USERNAME értéket a Portalból a `<PROVIDE>` helyére a 13. sorban.
+1. Illessze be a USERNAME értéket a Portalból a `<PROVIDE>` helyére a 13. sorban.
 
     A Program.cs 13. sorának ekkor a következőhöz hasonlónak kell kinéznie: 
 
@@ -149,14 +149,13 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com"; //  DnsName`
 
-3. Lépjen vissza a Portalba, és másolja a PASSWORD értéket. Illessze be a PASSWORD értéket a Portalból a 14. sorban található `<PROVIDE>` érték helyére.
+1. Lépjen vissza a Portalba, és másolja a PASSWORD értéket. Illessze be a PASSWORD értéket a Portalból a 14. sorban található `<PROVIDE>` érték helyére.
 
     A Program.cs 14. sorának ekkor a következőhöz hasonlóan kell kinéznie: 
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
-
-4. Mentse a Program.cs fájlt.
+1. Mentse a Program.cs fájlt.
     
 ## <a name="run-the-net-core-app"></a>A .NET Core-alkalmazás futtatása
 
@@ -169,19 +168,19 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
     ```
 3. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt. Az alkalmazás megjelenik a konzolablakban. 
 
-    ![A kimenet megtekintése és ellenőrzése](./media/create-cassandra-dotnet/output.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="A kimenet megtekintése és ellenőrzése":::
 
     Nyomja le a CTRL + C billentyűkombinációt a program futásának megszakításához, és zárja be a konzolablakot. 
     
 4. Ha megnyitja az **Adatkezelőt** az Azure Portalon, lekérdezheti és módosíthatja és használhatja az új adatokat.
 
-    ![Adatok megtekintése az Adatkezelőben](./media/create-cassandra-dotnet/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Adatok megtekintése az Adatkezelőben":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

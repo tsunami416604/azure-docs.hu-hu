@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840570"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737529"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure-beli virtuális hálózat topológiájának megtekintése
 
@@ -51,7 +51,7 @@ A diagramon látható erőforrások a virtuális hálózat hálózatkezelési ö
 
 A következő lépésekben futtathatja a parancsokat:
 - A Azure Cloud Shell a bármely parancs jobb felső sarkában lévő **kipróbálás** lehetőség kiválasztásával. A Azure Cloud Shell egy olyan ingyenes interaktív felület, amelynek általános Azure-eszközei előre telepítve és konfigurálva vannak a fiókjával való használatra.
-- A CLI-t a számítógépről futtatva. Ha a parancssori felületet a számítógépről futtatja, a cikkben ismertetett lépéseket az Azure CLI 2.0.31 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja az Azure CLI-t, akkor azt is futtatnia `az login` kell, hogy létre kell hoznia egy, az Azure-hoz való kapcsolódást.
+- A CLI-t a számítógépről futtatva. Ha a parancssori felületet a számítógépről futtatja, a cikkben ismertetett lépéseket az Azure CLI 2.0.31 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja az Azure CLI-t, akkor azt is futtatnia kell, `az login` hogy létre kell hoznia egy, az Azure-hoz való kapcsolódást.
 
 A használt fióknak rendelkeznie kell a szükséges [engedélyekkel](required-rbac-permissions.md).
 

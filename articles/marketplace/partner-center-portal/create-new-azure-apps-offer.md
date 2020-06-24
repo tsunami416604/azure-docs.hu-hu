@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1755d6808183887ca428f227272c3923d4bae21f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848787"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213846"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -92,9 +92,9 @@ Kétféle Azure-alkalmazási csomag létezik: megoldási sablonok és felügyelt
 
 Az összes Azure-alkalmazás legalább két fájlt tartalmaz az Archívum gyökérkönyvtárában `.zip` :
 
-* Egy [mainTemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Resource Manager-sablonfájl.  Ez a sablon határozza meg az ügyfél Azure-előfizetésében telepítendő erőforrásokat.  A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
+* Egy [mainTemplate.js](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Resource Manager-sablonfájl.  Ez a sablon határozza meg az ügyfél Azure-előfizetésében telepítendő erőforrásokat. A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
 
-* A [createUiDefinition. JSON](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview)nevű Azure-alkalmazás létrehozási élményének felhasználói felületi definíciója.  A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
+* Felhasználói felület definíciója az Azure-alkalmazás létrehozási élményéhez [createUiDefinition.js](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
 
 Minden új Azure-alkalmazás ajánlatának tartalmaznia kell egy [Azure-partner ügyfél-használati azonosítóját (GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)). 
 
@@ -161,12 +161,39 @@ Válasszon ki legalább egy legfeljebb három kategóriát, hogy az ajánlatot a
 
 ## <a name="offer-listing"></a>Ajánlati lista
 
-Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másolatok és lemezképek. 
+Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másolatok és lemezképek.
 
 ### <a name="marketplace-details"></a>Piactér – részletek
 
 > [!NOTE]
 > Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek és a használati feltételek) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
+
+Íme egy példa arra, hogyan jelennek meg az ajánlati információk az Azure Marketplace-en (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálják):
+
+:::image type="content" source="media/example-azure-marketplace-app.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Embléma
+2. Kategóriák
+3. Támogatási címe (hivatkozás)
+4. Használati feltételek
+5. Adatvédelmi szabályzat címe (hivatkozás)
+6. Ajánlat neve
+7. Összefoglalás
+8. Leírás
+9. Képernyőképek/videók
+
+<br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
+
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Cím
+2. Leírás
+3. Hasznos hivatkozások
+4. Képernyőképek
 
 #### <a name="name"></a>Name
 
@@ -265,7 +292,7 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 A technikai konfiguráció meghatározza a szolgáltatás azonosításához használt részleteket (bérlői azonosítót és az alkalmazás AZONOSÍTÓját), amely mérési eseményeket bocsát ki egy felügyelt alkalmazás számára a [Marketplace-mérési szolgáltatás API-jai](./marketplace-metering-service-apis.md)segítségével.  Adja meg azt az identitást, amelyet a szolgáltatás a mérési események kibocsátásakor használni fog.
 
-* **Azure ad-bérlő azonosítója** (kötelező): Azure Portalon belül [létre kell hoznia egy Azure Active Directory (ad) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok**lehetőséget, majd keresse meg a felsorolt **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
+* **Azure ad-bérlő azonosítója** (kötelező): a Azure Portal belül létre kell [hoznia egy Azure Active Directory (ad) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok**lehetőséget, majd keresse meg a felsorolt **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
 * **Azure ad-alkalmazás azonosítója** (kötelező): az alkalmazás- [azonosítóra](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) és egy hitelesítési kulcsra is szüksége lesz. Az értékek beszerzéséhez lépjen a Azure Active Directory, és válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a felsorolt **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e). A hitelesítési kulcs megkereséséhez lépjen a **Beállítások** elemre, és válassza a **kulcsok**lehetőséget. Meg kell adnia egy leírást és egy időtartamot, és ezután meg kell adni egy számértéket.
 
 >[!Note]
@@ -421,8 +448,8 @@ Ezen a lapon szerkesztheti a technikai konfiguráció vázlatos verzióját.
 
 Az összes Azure alkalmazáscsomag-csomagnak tartalmaznia kell ezt a két fájlt az Archívum gyökérkönyvtárában `.zip` :
 
-* Egy [mainTemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Resource Manager-sablonfájl. Ez a sablon automatizálja az erőforrások üzembe helyezését az ügyfeleknek az Azure-előfizetésben.  A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
-* A [createUiDefinition. JSON](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)nevű Azure-alkalmazás létrehozási élményének felhasználói felületi definíciója.
+* Egy [mainTemplate.js](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Resource Manager-sablonfájl. Ez a sablon automatizálja az erőforrások üzembe helyezését az ügyfeleknek az Azure-előfizetésben.  A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
+* Felhasználói felület definíciója az Azure-alkalmazás létrehozási élményéhez [createUiDefinition.js](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
 A maximálisan támogatott fájlméretek a következők:
 
@@ -511,7 +538,7 @@ A tesztelési meghajtó engedélyezéséhez jelölje be a **Test Drive engedély
 
 Annak engedélyezéséhez, hogy a tesztvezetés az Ön nevében legyen üzembe helyezhető, hozzon létre és adjon meg egy különálló, egyedi Azure-előfizetést (Power BI tesztelési meghajtókhoz nem szükséges).
 
-* **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges) – adja meg az előfizetés azonosítóját, hogy hozzáférést biztosítson az Azure-fiók szolgáltatásaihoz az erőforrás-használat jelentéskészítéséhez és számlázásához. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](https://docs.microsoft.com/azure/billing/billing-create-subscription) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztása esetén megjelenik az előfizetési azonosító (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
+* **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges) – adja meg az előfizetés azonosítóját, hogy hozzáférést biztosítson az Azure-fiók szolgáltatásaihoz az erőforrás-használat jelentéskészítéséhez és számlázásához. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](https://docs.microsoft.com/azure/billing/billing-create-subscription) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztása esetén megjelenik az előfizetési azonosító (például "a83645ac-1234-5ab6-6789-1h234g764ghty").
 * **Azure ad-bérlő azonosítója** (kötelező) – adja meg a Azure Active Directory (ad) [bérlői azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok**elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a következő helyen: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Azure ad-bérlő neve** (dinamikus 365 esetén szükséges) – adja meg a Azure Active Directory (ad) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
 * **Azure ad** -alkalmazás azonosítója (kötelező) – adja meg a Azure Active Directory (ad) [alkalmazás-azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), majd a bal oldali navigációs menüben válassza a Active Directory fület, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
@@ -531,7 +558,7 @@ A test Drive-élmény leírása.
 * **Videók: videók hozzáadása** (nem kötelező) – a videók a YouTube vagy a Vimeo webhelyre tölthetők fel, és a hivatkozás és a miniatűr képét (533 x 324 képpont) is feltölthetik, így az ügyfél megtekintheti az információk áttekintését, így könnyebben megismerheti a tesztelési meghajtót, beleértve az ajánlat funkcióinak sikeres használatát és az előnyeiket kiemelő forgatókönyveket.
   * **Név** (kötelező)
   * **Címe** (csak YouTube vagy Vimeo esetén szükséges)
-  * **Miniatűr** (a képfájlnak PNG formátumban kell lennie, és 533 x 324 px).
+  * **Miniatűr** (a képfájlnak PNG formátumban kell lennie, és 533 x 324 képpont).
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 

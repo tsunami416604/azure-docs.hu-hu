@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243496"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124051"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Az Azure adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásai
 Ez a cikk az adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásokat ismerteti.
@@ -121,7 +121,7 @@ A vállalaton kívül megosztott e-maileket, dokumentumokat és bizalmas adatoka
 
 A besorolás minden esetben azonosítható, függetlenül attól, hogy hol tárolják az adatok tárolási helyét vagy közösen a megosztást. A címkékhez vizuális jelölések (például fejlécek, láblécek vagy vízjelek) is tartoznak. A rendszer tiszta szöveges formátumban adja hozzá a metaadatokat a fájlokhoz és e-mail-fejlécekhez. A tiszta szöveg biztosítja, hogy más szolgáltatások, például az adatvesztés megelőzésére szolgáló megoldások azonosítják a besorolást, és megtehetik a megfelelő lépéseket.
 
-A védelmi technológia az Azure Rights Management (Azure RMS) szolgáltatást használja. Ez a technológia más Microsoft-felhőszolgáltatásokba és -alkalmazásokba (például Office 365 és Azure Active Directory). A védelmi technológia titkosítási, identitáskezelési és engedélyezési házirendeket használ. A Azure RMS által alkalmazott védelem a dokumentumok és e-mailek, a helytől függetlenül marad – a szervezeten, hálózatokon, fájlkiszolgálókon és alkalmazásokon belül vagy kívül.
+A védelmi technológia az Azure Rights Management (Azure RMS) szolgáltatást használja. Ez a technológia integrálva van más Microsoft Cloud Services és alkalmazások, például a Microsoft 365 és a Azure Active Directory szolgáltatással. A védelmi technológia titkosítási, identitáskezelési és engedélyezési házirendeket használ. A Azure RMS által alkalmazott védelem a dokumentumok és e-mailek, a helytől függetlenül marad – a szervezeten, hálózatokon, fájlkiszolgálókon és alkalmazásokon belül vagy kívül.
 
 Ez az adatvédelmi megoldás megtartja az adatok felügyeletét, még akkor is, ha más személyekkel van megosztva. A Azure RMS is használhatja saját üzletági alkalmazásaival és adatvédelmi megoldásaival a szoftvergyártók számára, függetlenül attól, hogy ezek az alkalmazások és megoldások a helyszínen vagy a felhőben vannak.
 

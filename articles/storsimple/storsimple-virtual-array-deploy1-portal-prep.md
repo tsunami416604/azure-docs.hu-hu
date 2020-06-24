@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254533"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698954"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – a Azure Portal előkészítése
 
@@ -127,7 +127,7 @@ Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure
 
 #### <a name="to-get-the-virtual-array-image"></a>A virtuális tömb rendszerképének beolvasása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/). 
 2. A Azure Portal kattintson a **tallózás > StorSimple-eszközkezelők**elemre.
 3. Válasszon ki egy meglévő StorSimple Eszközkezelő szolgáltatást. A **StorSimple Eszközkezelő** panelen kattintson az **gyorskonfigurálás**elemre. 
 4. Kattintson a Microsoft letöltőközpontból letölteni kívánt rendszerképhez tartozó hivatkozásra. A rendszerképfájlok mérete körülbelül 4,8 GB.

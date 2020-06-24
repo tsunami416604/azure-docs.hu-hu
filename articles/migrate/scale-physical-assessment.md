@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: a19a1b6e7416667079ab07fc5440ee8828c26bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76294369"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081069"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Nagy számú fizikai kiszolgáló értékelése az Azure-ba való áttelepítéshez
 
@@ -47,7 +47,7 @@ Használja az ebben a táblázatban foglalt korlátokat a tervezéshez.
 **Tervezés** | **Korlátok**
 --- | --- 
 **Azure Migrate projektek** | Egy projektben akár 35 000-kiszolgálót is megvizsgálhat.
-**Azure Migrate-berendezés** | Egy készülék legfeljebb 250 kiszolgálót képes felderíteni.<br/> Egy berendezés csak egyetlen Azure Migrate projekthez társítható.<br/> Tetszőleges számú készülék társítható egyetlen Azure Migrate-projekthez is. <br/><br/> 
+**Azure Migrate-berendezés** | Egy készülék legfeljebb 1000 kiszolgálót képes felderíteni.<br/> Egy berendezés csak egyetlen Azure Migrate projekthez társítható.<br/> Tetszőleges számú készülék társítható egyetlen Azure Migrate-projekthez is. <br/><br/> 
 **Csoport** | Egyetlen csoportban akár 35 000-kiszolgálót is hozzáadhat.
 **Azure Migrate Értékelés** | Egyetlen értékeléssel akár 35 000-kiszolgálót is megvizsgálhat.
 

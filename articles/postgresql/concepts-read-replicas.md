@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: be9e396a778b81e730906e4a6971505e164dfa43
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 06/11/2020
+ms.openlocfilehash: 48e23aa8cf20dd1225d3d7774d9703b960e0155a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636716"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737886"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -32,6 +32,9 @@ Az olvasási replika funkció PostgreSQL aszinkron replikálást használ. A fun
 
 ## <a name="cross-region-replication"></a>Régiók közötti replikáció
 Az olvasási replikát a főkiszolgálótól eltérő régióban is létrehozhatja. A régiók közötti replikáció hasznos lehet olyan forgatókönyvek esetén, mint például a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.
+
+>[!NOTE]
+> Az alapszintű kiszolgálók csak azonos régióbeli replikációt támogatnak.
 
 A főkiszolgáló bármely [Azure Database for PostgreSQL régióban](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)elérhető. A főkiszolgáló rendelkezhet replikával a párosított régiójában vagy az univerzális replika régiókban. Az alábbi képen látható, hogy mely replika régiók érhetők el a fő régiótól függően.
 
@@ -172,6 +175,9 @@ Ha a fent ismertetett kiszolgálói értékeket próbálja meg frissíteni, de n
 
 A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterek beállításai nem öröklődnek a főkiszolgálóról a replikára a replika létrehozásakor vagy azt követően.
 
+### <a name="basic-tier"></a>Alapszintű csomag
+Az alapszintű kiszolgálók csak azonos régióbeli replikációt támogatnak.
+
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
 A [PostgreSQL megköveteli](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) `max_prepared_transactions` , hogy az olvasási replika paraméterének értéke nagyobb legyen, mint a főérték, ellenkező esetben a replika nem indul el. Ha módosítani szeretné a `max_prepared_transactions` főkiszolgálót, először módosítsa a replikákat.
 
@@ -181,6 +187,6 @@ Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika kö
 ### <a name="deleted-master-and-standalone-servers"></a>Törölt fő-és önálló kiszolgálók
 Főkiszolgáló törlésekor az összes olvasási replikája önálló kiszolgáló lesz. A rendszer újraindítja a replikákat, hogy tükrözze ezt a változást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portalban](howto-read-replicas-portal.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI-ben és a REST APIban](howto-read-replicas-cli.md).

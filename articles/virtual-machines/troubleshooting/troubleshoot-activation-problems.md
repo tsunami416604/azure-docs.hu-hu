@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 820fe016d630e63660368c9065acbcda9b514921
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858608"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736934"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Windows rendszerű virtuális gépek Azure-ban való aktiválási problémáinak hibaelhárítása
 
@@ -92,7 +92,7 @@ Az egyéni rendszerképből létrehozott virtuális gép esetében konfigurálni
 4. A Psping használatával ellenőrizze, hogy csatlakozik-e a KMS-kiszolgálóhoz. Lépjen abba a mappába, amelybe kibontotta a letöltött Pstools.zip fájlt, majd futtassa a következőt:
   
     ```
-    \psping.exe kms.core.windows.net:1688
+    .\psping.exe kms.core.windows.net:1688
     ```
    A kimenet második – utolsó sorában ellenőrizze, hogy látható-e: elküldött = 4, fogadott = 4, elveszett = 0 (0% Loss).
 

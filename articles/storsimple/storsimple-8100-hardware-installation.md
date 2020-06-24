@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267585"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699107"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>A StorSimple 8100-eszköz kicsomagolása, rack-csatlakoztatása és kábele
 
@@ -27,7 +27,7 @@ Az alábbi lépések részletesen ismertetik a StorSimple 8100 Storage-eszköz k
 ### <a name="prepare-to-unpack-your-device"></a>Felkészülés az eszköz kicsomagolására
 Az eszköz kicsomagolása előtt tekintse át a következő információkat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![Figyelmeztetés ikon ](./media/storsimple-safety/IC740879.png)![ nagy súly ikon ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
 1. Győződjön meg arról, hogy két személy áll rendelkezésre a ház súlyának kezeléséhez, ha manuálisan végzi a kezelést. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 2. Helyezze a csomagot egy sima, vízszintes felületre.
@@ -83,7 +83,7 @@ Az eszközt olyan standard 19 hüvelykes állványra kell telepíteni, amely el�
 2. Győződjön meg arról, hogy a hely, ahol be kívánja állítani a standard szintű AC-áramellátást egy független forrásból vagy egy, a szünetmentes áramforrást (UPS-t) biztosító Power Distribution Unit (PDU) szolgáltatásból.
 3. Győződjön meg arról, hogy az állványon egy 2U-tárolóhely áll rendelkezésre, amelyhez csatlakoztatni kívánja az eszközt.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![Figyelmeztetés ikon ](./media/storsimple-safety/IC740879.png)![ nagy súly ikon ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
 Ügyeljen arra, hogy a súlyozás kezeléséhez két személy legyen elérhető, ha az eszköz telepítését manuálisan végzi. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 
@@ -199,7 +199,7 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
    |----- | ----------- |
    | A    | Helyi Internet-hozzáféréssel rendelkező LAN |
    | B    | Vezérlő 0 |
-   | C#    | PCM 0 |
+   | C    | PCM 0 |
    | D    | Vezérlő 1 |
    | E    | PCM 1 |
    | F, G | Hosts |

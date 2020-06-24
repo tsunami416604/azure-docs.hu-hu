@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714559"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117913"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
 
@@ -34,7 +34,7 @@ Az útmutató elolvasása előtt érdemes megfontolni az olyan általános SDK-p
 
 - A legjobb teljesítmény érdekében kövesse ezeket a [teljesítménnyel kapcsolatos tippeket](performance-tips.md).
     > [!NOTE]
-    > A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop. dll fájlt a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop. dll csak a Windows x64 platformon támogatott. A Linux és egyéb nem támogatott platformok esetében, ahol a ServiceInterop. dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez.
+    > A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop.dll a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop.dll csak a Windows x64 platformon támogatott. Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez.
 - Az SDK lehetővé teszi a beállítását a `MaxItemCount` lekérdezésekhez, de nem adhat meg minimális számú tételt.
     - A kódnak minden oldalméret, nulláról a értékre kell kezelnie `MaxItemCount` .
     - Egy oldal elemeinek száma mindig kisebb vagy egyenlő lesz a megadott értékkel `MaxItemCount` . A azonban `MaxItemCount` szigorúan maximális, és ennél az értéknél kevesebb eredmény lehet.
@@ -47,7 +47,7 @@ Az útmutató elolvasása előtt érdemes megfontolni az olyan általános SDK-p
 
 Ha Azure Cosmos DB-lekérdezését optimalizálja, az első lépés mindig a lekérdezési [metrikák beolvasása](profile-sql-api-query.md) . Ezek a metrikák a Azure Portalon keresztül is elérhetők. Miután futtatta a lekérdezést a Adatkezelőban, a lekérdezési metrikák az **eredmények** lap mellett láthatók:
 
-[![Lekérdezési mérőszámok ](./media/troubleshoot-query-performance/obtain-query-metrics.png) beolvasása](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+:::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="Lekérdezési mérőszámok beolvasása" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
 A lekérdezési metrikák lekérése után hasonlítsa össze a **lekért dokumentumok darabszámát** a lekérdezés **kimeneti dokumentumainak számával** . Ezt az összehasonlítást használva azonosíthatja a cikkben áttekinthető releváns részeket.
 
@@ -488,7 +488,7 @@ A párhuzamos lekérdezések több partíció párhuzamos lekérdezésével műk
 
 A lekérdezések az eredmények előzetes beolvasására lettek kialakítva, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javítására nyújt segítséget. A MaxBufferedItemCount beállítása korlátozza az előre beolvasott eredmények számát. Ha ezt az értéket a visszaadott várt számú eredmény (vagy egy magasabb szám) értékre állítja, a lekérdezés a lehető legtöbb előnyt érheti el az előzetes beolvasáskor. Ha a-1 értéket adja meg, a rendszer automatikusan meghatározza a pufferbe kerülő elemek számát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkekből megtudhatja, hogyan méri a lekérdezéseket, és hogyan végezhet végrehajtási statisztikát a lekérdezések finomhangolásához, és így tovább:
 
 * [SQL-lekérdezés végrehajtási metrikáinak lekérése a .NET SDK használatával](profile-sql-api-query.md)

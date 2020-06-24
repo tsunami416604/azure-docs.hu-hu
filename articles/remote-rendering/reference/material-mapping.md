@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: ce287ed94066aac4b900d2ddb02579a54b8550f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680387"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783010"
 ---
 # <a name="material-mapping-for-model-formats"></a>Anyagleképzés a modellformátumokhoz
 
@@ -47,14 +47,13 @@ A glTF minden textúrája tartalmazhat egy `texCoord` értéket, amelyet az Azur
 
 ### <a name="embedded-textures"></a>Beágyazott textúrák
 
-A * \*. bin* vagy * \*. borai* fájlokba ágyazott textúrák támogatottak.
+A * \* . bin* vagy * \* . borai* fájlokba ágyazott textúrák támogatottak.
 
 ### <a name="supported-gltf-extension"></a>Támogatott glTF-bővítmény
 
 Az alapszolgáltatások készletén kívül az Azure Remote rendering a következő glTF-bővítményeket támogatja:
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
-* [MSFT_texture_dds](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_texture_dds/README.md)
 * [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md): a [színes anyagoknak](../overview/features/color-materials.md)felel meg. A *Emissive* -anyagok esetében ajánlott ezt a bővítményt használni.
 * [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md): a fémes-érdes textúrák helyett diffúz ragyogás-textúrákat is biztosíthat. Az Azure távoli renderelési implementációja közvetlenül a bővítmény átalakítási képleteit követi.
 
@@ -102,17 +101,17 @@ A fenti leképezés az anyag-átalakítás legbonyolultabb része, mivel számos
 Néhány alább használt definíció:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Piros ∗ 0,2125 + `Specular`. Zöld ∗ 0,7154 + `Specular`. Kék ∗ 0,0721
-* `DiffuseBrightness`= 0,299 * `Diffuse`. Piros<sup>2</sup> + 0,587 * `Diffuse`. Zöld<sup>2</sup> + 0,114 * `Diffuse`. Kék<sup>2</sup>
-* `SpecularBrightness`= 0,299 * `Specular`. Piros<sup>2</sup> + 0,587 * `Specular`. Zöld<sup>2</sup> + 0,114 * `Specular`. Kék<sup>2</sup>
-* `SpecularStrength`= Max (`Specular`. Piros, `Specular`. Zöld, `Specular`. Kék
+* `SpecularIntensity` = `Specular`. Piros ∗ 0,2125 + `Specular` . Zöld ∗ 0,7154 + `Specular` . Kék ∗ 0,0721
+* `DiffuseBrightness`= 0,299 * `Diffuse` . Piros<sup>2</sup> + 0,587 * `Diffuse` . Zöld<sup>2</sup> + 0,114 * `Diffuse` . Kék<sup>2</sup>
+* `SpecularBrightness`= 0,299 * `Specular` . Piros<sup>2</sup> + 0,587 * `Specular` . Zöld<sup>2</sup> + 0,114 * `Specular` . Kék<sup>2</sup>
+* `SpecularStrength`= Max ( `Specular` . Piros, `Specular` . Zöld, `Specular` . Kék
 
 A SpecularIntensity képlet [innen](https://en.wikipedia.org/wiki/Luma_(video))származik.
 Ez a [specifikáció](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)a fényerő képletét írja le.
 
 ### <a name="roughness"></a>Érdesség
 
-`Roughness`[ennek a képletnek](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)a `Specular` kiszámítása és `ShininessExponent` használata. A képlet a (z) a következő:
+`Roughness``Specular` `ShininessExponent` ennek a [képletnek](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)a kiszámítása és használata. A képlet a (z) a következő:
 
 ```Cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
@@ -120,7 +119,7 @@ Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 
 ### <a name="metalness"></a>Fémmegmunkálás
 
-`Metalness`ezt a `Diffuse` [képletet a glTF-specifikáció](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)alapján számítja ki és `Specular` használja.
+`Metalness``Diffuse` `Specular` ezt a [képletet a glTF-specifikáció](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)alapján számítja ki és használja.
 
 Itt az a gondolat, hogy megoldjuk a következő egyenletet: AX<sup>2</sup> + BX + C = 0.
 Alapvetően a dielektromos felületek a fény 4%-át tükrözik a fényt tükröző módon, a többi pedig diffúz. A fémes felületek nem tükrözik a fényt a diffúz módon, hanem az egészet.
@@ -139,10 +138,10 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedó
 
-`Albedo`a, `Diffuse` `Specular`a és `Metalness`a alapján van kiszámítva.
+`Albedo`a, a és a alapján van kiszámítva `Diffuse` `Specular` `Metalness` .
 
 A Metaling című szakaszban leírtak szerint a dielektromos felületek a fény 4%-át tükrözik.  
-Az itt található ötlet a `Dielectric` és `Metal` a színek lineáris interpolációja az érték `Metalness` tényezőként való használatával. Ha a fémesség `0.0`értéke, akkor a visszaverődéstől függően sötét színű lesz (ha magas a visszaverődés), vagy a diffúzió nem változik (ha nincs fényvisszaverődés). Ha a fémesség nagy értékű, akkor a diffúz szín eltűnik a fényvisszaverődési szín mellett.
+Az itt található ötlet a és a színek lineáris interpolációja az `Dielectric` `Metal` `Metalness` érték tényezőként való használatával. Ha a fémesség értéke `0.0` , akkor a visszaverődéstől függően sötét színű lesz (ha magas a visszaverődés), vagy a diffúzió nem változik (ha nincs fényvisszaverődés). Ha a fémesség nagy értékű, akkor a diffúz szín eltűnik a fényvisszaverődési szín mellett.
 
 ```Cpp
 dielectricSpecularReflectance = 0.04
@@ -156,22 +155,22 @@ AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 
 `AlbedoRGB`a fenti képlet alapján számítottuk ki, de az alfa-csatorna további számításokat igényel. A FBX formátuma homályos az áttetszőséggel kapcsolatban, és számos módon definiálható. A különböző tartalmi eszközök különböző módszereket használnak. A következő ötlet az, hogy egyesítse őket egyetlen képletbe. A szolgáltatás nem megfelelően átlátszóként jeleníti meg az eszközöket, azonban ha azok nem közös módon jönnek létre.
 
-Ez a következőből lett `TransparentColor`kiszámítva:, `TransparencyFactor`, `Opacity`:
+Ez a következőből lett kiszámítva `TransparentColor` `TransparencyFactor` :,, `Opacity` :
 
-Ha `Opacity` meg van adva, használja közvetlenül a következőket `AlbedoAlpha`  =  `Opacity` : más  
-Ha `TransparencyColor` meg van adva, `AlbedoAlpha` akkor = 1,0-(`TransparentColor`(). Piros + `TransparentColor`. Zöld + `TransparentColor`. Kék)/3,0) egyéb  
-If `TransparencyFactor`, then `AlbedoAlpha` = 1,0-`TransparencyFactor`
+Ha `Opacity` meg van adva, használja közvetlenül a következőket: `AlbedoAlpha`  =  `Opacity` más  
+Ha `TransparencyColor` meg van adva, akkor `AlbedoAlpha` = 1,0-(( `TransparentColor` ). Piros + `TransparentColor` . Zöld + `TransparentColor` . Kék)/3,0) egyéb  
+If `TransparencyFactor` , then `AlbedoAlpha` = 1,0-`TransparencyFactor`
 
-A végső `Albedo` színnek négy csatornája van, `AlbedoRGB` amely a `AlbedoAlpha`és a együttesét kombinálja.
+A végső `Albedo` színnek négy csatornája van, amely a és a együttesét kombinálja `AlbedoRGB` `AlbedoAlpha` .
 
 ### <a name="summary"></a>Összefoglalás
 
-Ha itt szeretné összefoglalni, `Albedo` nagyon közel lesz az eredetihöz `Diffuse`, `Specular` ha közel van nullához. Ellenkező esetben a felület egy fémes felületnek fog kinézni, és elveszti a diffúz színt. A felület kifinomultabb és fényvisszaverő lesz, ha `ShininessExponent` elég nagy, és `Specular` világos. Ellenkező esetben a felület durva lesz, és alig tükrözi a környezetet.
+Ha itt szeretné összefoglalni, `Albedo` nagyon közel lesz az eredetihöz `Diffuse` , ha `Specular` közel van nullához. Ellenkező esetben a felület egy fémes felületnek fog kinézni, és elveszti a diffúz színt. A felület kifinomultabb és fényvisszaverő lesz, ha `ShininessExponent` elég nagy, és `Specular` világos. Ellenkező esetben a felület durva lesz, és alig tükrözi a környezetet.
 
 ### <a name="known-issues"></a>Ismert problémák
 
-* Az aktuális képlet nem működik jól az egyszerű, színes geometria esetében. Ha `Specular` elég fényes, akkor az összes geometriában fényvisszaverő fémes felületek válnak szín nélkül. A megkerülő megoldás `Specular` az eredetitől 30%-ra, a konverziós beállítások [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)pedig használható.
-* A PBR-anyagok a közelmúltban `Maya` lettek hozzáadva a és a tartalom- `3DS Max` létrehozási eszközökhöz. Egyéni, felhasználó által definiált fekete dobozos tulajdonságokat használnak a FBX való továbbításhoz. Az Azure távoli renderelés nem olvassa el ezeket a további tulajdonságokat, mert nincsenek dokumentálva, és a formátum lezárt – forrás.
+* Az aktuális képlet nem működik jól az egyszerű, színes geometria esetében. Ha `Specular` elég fényes, akkor az összes geometriában fényvisszaverő fémes felületek válnak szín nélkül. A megkerülő megoldás az `Specular` eredetitől 30%-ra, a konverziós beállítások [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)pedig használható.
+* A PBR-anyagok a közelmúltban lettek hozzáadva a `Maya` és a `3DS Max` tartalom-létrehozási eszközökhöz. Egyéni, felhasználó által definiált fekete dobozos tulajdonságokat használnak a FBX való továbbításhoz. Az Azure távoli renderelés nem olvassa el ezeket a további tulajdonságokat, mert nincsenek dokumentálva, és a formátum lezárt – forrás.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,19 +4,19 @@ description: Ismerteti azokat a lépéseket, amelyek szükségesek az Azure AD-h
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17e6660548084d64fce38617ba4e80ccf197f3d3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672696"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253069"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -104,7 +104,7 @@ Azure AD-csatlakozás:
 
 - Csak Windows 10-es eszközökre alkalmazható. 
 - Nem alkalmazható a Windows korábbi verzióira vagy más operációs rendszerekre. Windows 7/8.1 rendszerű eszközök esetén az Azure AD JOIN üzembe helyezéséhez frissítenie kell a Windows 10-es verzióra.
-- Nem támogatott a TPM-sel rendelkező eszközökön FIPS módban.
+- A támogatja a FIPS-kompatibilis TPM 2,0, de a TPM 1,2 esetében nem támogatott. Ha az eszközei rendelkeznek FIPS-kompatibilis TPM 1,2-mel, le kell tiltania azokat az Azure AD JOIN szolgáltatásban való továbblépés előtt. A Microsoft nem biztosít olyan eszközöket, amelyekkel letiltható a TPM FIPS üzemmódja, mert a TPM-gyártótól függ. Támogatásért forduljon a hardver OEM-hez.
  
 **Javaslat:** A frissített funkciók kihasználásához mindig a legújabb Windows 10-es verziót használja.
 
@@ -185,6 +185,8 @@ Az Azure AD-hez csatlakoztatott eszközök nem támogatják a számítógép-hit
 
 Az Azure AD-hez csatlakoztatott eszközökhöz való távoli asztali kapcsolathoz a gazdagépnek Azure AD-hez csatlakoztatott vagy hibrid Azure AD-csatlakozásra van szüksége. A távoli asztal nem csatlakoztatott vagy nem Windows rendszerű eszközről nem támogatott. További információ: [Csatlakozás távoli Azure ad-hez csatlakoztatott számítógéphez](/windows/client-management/connect-to-remote-aadj-pc)
 
+A Windows 10 2004 frissítésének indítása után a felhasználók a Távoli asztalt használhatják egy Azure AD-beli regisztrált Windows 10-es eszközről egy Azure AD-hez csatlakoztatott eszközre. 
+
 ## <a name="understand-your-provisioning-options"></a>A kiépítési lehetőségek megismerése
 
 Az Azure AD JOIN a következő módszerekkel építhető ki:
@@ -200,8 +202,8 @@ A következő három megközelítés összehasonlítása
 | Felhasználói beavatkozás szükséges a beállításhoz | Igen | Igen | Nem |
 | INFORMATIKAI erőfeszítés megkövetelése | Nem | Igen | Igen |
 | Alkalmazható folyamatok | OOBE & beállításai | Csak OOBE | Csak OOBE |
-| Helyi rendszergazdai jogosultságok az elsődleges felhasználóhoz | Igen, alapértelmezés szerint | Konfigurálható | Nem |
-| Eszköz OEM-támogatásának megkövetelése | Nem | Igen | Nem |
+| Helyi rendszergazdai jogosultságok az elsődleges felhasználóhoz | Igen, alapértelmezés szerint | Konfigurálható | No |
+| Eszköz OEM-támogatásának megkövetelése | Nem | Yes | Nem |
 | Támogatott verziók | 1511 + | 1709 + | 1703 + |
  
 Válassza ki az üzembe helyezési módszert vagy megközelítéseket a fenti táblázat áttekintésével, és tekintse át a következő szempontokat az egyik megközelítés elfogadásához:  
@@ -217,7 +219,7 @@ Válassza ki az üzembe helyezési módszert vagy megközelítéseket a fenti t�
 
 ## <a name="configure-your-device-settings"></a>Az eszközbeállítások konfigurálása
 
-A Azure Portal segítségével szabályozható az Azure AD-hez csatlakoztatott eszközök üzembe helyezése a szervezetben. A kapcsolódó beállítások konfigurálásához a **Azure Active Directory lapon**válassza a elemet `Devices > Device settings`.
+A Azure Portal segítségével szabályozható az Azure AD-hez csatlakoztatott eszközök üzembe helyezése a szervezetben. A kapcsolódó beállítások konfigurálásához a **Azure Active Directory lapon**válassza a elemet `Devices > Device settings` .
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>A felhasználók csatlakozhatnak az eszközökhöz az Azure AD-ben
 
@@ -243,7 +245,7 @@ A mobilitási beállítások konfigurálása előtt előfordulhat, hogy előbb h
 
 **Mdm-szolgáltató hozzáadása**:
 
-1. A **Azure Active Directory lap** **kezelés** szakaszában kattintson a elemre `Mobility (MDM and MAM)`. 
+1. A **Azure Active Directory lap** **kezelés** szakaszában kattintson a elemre `Mobility (MDM and MAM)` . 
 1. Kattintson az **alkalmazás hozzáadása**lehetőségre.
 1. Válassza ki a MDM-szolgáltatót a listából.
 
@@ -295,8 +297,8 @@ Ezzel a megvalósítással [feltételes hozzáféréssel rendelkező felügyelt 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egy új Windows 10-es eszköz csatlakoztatása az Azure ad-vel az első futtatáskor](azuread-joined-devices-frx.md)
-> a[munkahelyi eszköz csatlakoztatása a szervezet hálózatához](/azure/active-directory/user-help/user-help-join-device-on-network)
+> [Új Windows 10-es eszköz csatlakoztatása az Azure ad-vel az első futtatás során](azuread-joined-devices-frx.md) 
+>  [Munkahelyi eszköz csatlakoztatása a szervezet hálózatához](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

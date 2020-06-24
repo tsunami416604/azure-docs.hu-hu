@@ -3,12 +3,12 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 5baf9ce63442ee60d212362df92a44d0fa2723fa
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7d5a7d82aceae6902ad953e314434f1a3736a5e1
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610304"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117539"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -343,7 +343,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | laborok/képletek | Lab | 1–80 | Alfanumerikus karakterek, aláhúzások, kötőjelek és zárójelek. |
 > | Labor/virtualmachines | Lab | 1-15 (Windows)<br>1-64 (Linux) | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. Nem lehet az összes szám. |
 
-## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
+## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
@@ -524,7 +524,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek<br><br>Kezdő és záró alfanumerikus karakterek. |
+> | névterek | globális | 6-50 | Alfanumerikus karakterek és kötőjelek<br><br>Kezdje a betűvel. Alfanumerikus karakterrel végződik. |
 > | névterek/engedélyezési szabályok | névtér | 1-256 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
 > | névterek/notificationHubs | névtér | 1-260 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
 > | névterek/notificationHubs/engedélyezési szabályok | értesítési központ | 1-256 | Alfanumerikus karakterek, időszakok, kötőjelek és aláhúzások.<br><br>Alfanumerikus karakterek indítása |
@@ -702,6 +702,6 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!NOTE]
 > A Azure Functions azonos elnevezési szabályokkal és korlátozásokkal rendelkezik, mint a Microsoft. Web/Sites.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrások elnevezésével kapcsolatos ajánlásokat a [Ready: ajánlott elnevezési és címkézési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)című témakörben talál.

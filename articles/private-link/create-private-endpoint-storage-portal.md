@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan csatlakozhat magántulajdonban lévő Storage-f
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ccbb685ceb406fd7a52edf793b53d9e1c32630b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115108"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737325"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privát csatlakozás tárfiókokhoz az Azure privát végpontok használatával
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt.
@@ -34,26 +34,26 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 
 | Paraméter                   | Érték                |
 |-----------------------------|----------------------|
-| **\<erőforrás-csoport neve>**  | myResourceGroup |
-| **\<virtuális hálózat neve>** | myVirtualNetwork          |
-| **\<régió neve>**          | USA nyugati középső régiója      |
-| **\<IPv4 – címtartomány>**   | 10.1.0.0 \ 16          |
-| **\<alhálózat – név>**          | mySubnet        |
-| **\<alhálózat – címtartomány>** | 10.1.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | USA nyugati középső régiója      |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**számítási** > **virtuális gép**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép**lehetőséget.
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
@@ -94,14 +94,14 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 ## <a name="create-your-private-endpoint"></a>Saját végpont létrehozása
 Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont használatával. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**Storage** > -**fiók**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **Storage**-  >  **fiók**lehetőséget.
 
 1. A **Storage-fiók létrehozása – alapok**lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Storage account name (Tárfiók neve)  | Adja meg a *mystorageaccount*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
@@ -119,10 +119,10 @@ Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont ha
     | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     |Hely|Válassza a **WestCentralUS**lehetőséget.|
-    |Name (Név)|Adja meg a *myPrivateEndpoint*.  |
+    |Name|Adja meg a *myPrivateEndpoint*.  |
     |Tároló alerőforrása|Hagyja meg az alapértelmezett **blobot**. |
     | **HÁLÓZATI** |  |
     | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |
@@ -131,7 +131,7 @@ Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont ha
     | Integrálás saját DNS-zónával  | Hagyja meg az alapértelmezett **Igen értéket**. |
     | Privát DNS-zóna  | Hagyja meg az alapértelmezett **(új) privatelink.blob.Core.Windows.net**. |
     |||
-7. Kattintson az **OK** gombra. 
+7. Válassza az **OK** lehetőséget. 
 8. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
 9. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
 10. Tallózással keresse meg az imént létrehozott Storage-fiók erőforrását.
@@ -155,9 +155,9 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** > kell választania**egy másik fiók használatával**.
+        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 
@@ -168,7 +168,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 Ebben a szakaszban a privát végponton keresztül fog csatlakozni a Storage-fiókhoz.
 
 1. A *myVM*távoli asztal nyissa meg a PowerShellt.
-2. A `nslookup mystorageaccount.blob.core.windows.net` következőhöz hasonló üzenet jelenik meg:
+2. `nslookup mystorageaccount.blob.core.windows.net`A következőhöz hasonló üzenet jelenik meg:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -181,9 +181,9 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a Storage-fi�
 4. Kattintson a jobb gombbal a **Storage-fiókok** elemre.
 5. Válassza a **Kapcsolódás Azure-tárolóhoz**lehetőséget.
 6. Válassza **a kapcsolatok karakterlánc használata**lehetőséget.
-7. Kattintson a **Tovább** gombra.
+7. Válassza a **Tovább** lehetőséget.
 8. A korábban másolt adatok beillesztésével adja meg a kapcsolatok karakterláncát.
-9. Kattintson a **Tovább** gombra.
+9. Válassza a **Tovább** lehetőséget.
 10. Kattintson a **Csatlakozás** gombra.
 11. A blob-tárolók tallózása a mystorageaccount 
 12. Opcionálisan Mappák létrehozása és/vagy fájlok feltöltése a *mystorageaccount*. 
@@ -195,7 +195,7 @@ További lehetőségek a Storage-fiók eléréséhez:
 - A AzCopy segédprogram egy másik lehetőség az Azure Storage-hoz készült nagy teljesítményű, parancsfájl-továbbításhoz. Az AzCopy segítségével blob, fájl és tábla típusú tárolókból és tárolókba vihet át adatokat. 
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása 
 Ha elkészült a privát végponttal, a Storage-fiókkal és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást: 
 1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup* lehetőséget a keresési eredmények közül. 
 2. Válassza az **Erőforráscsoport törlése** elemet. 

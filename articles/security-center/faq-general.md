@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 3db9dc260cb8546109870834f364c62305aa3fbb
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324521"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783214"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>GYIK – általános kérdések Azure Security Center
 
@@ -81,7 +81,7 @@ Azure Security Center automatikusan gyűjti, elemzi és megtagadja az Azure-erő
 
 
 ## <a name="why-did-secure-score-values-change"></a>Miért változnak a biztonsági pontszám értékei? <a name="secure-score-faq"></a>
-Február 2019-én a súlyosságuk jobb illeszkedése érdekében Security Center néhány javaslat pontszámát. Ennek a beállításnak az eredményeképpen előfordulhat, hogy a biztonsági pontszámok teljes értékei módosulnak.  A biztonságos pontszámról további információt a [biztonságos pontszám kiszámítása](security-center-secure-score.md)című témakörben talál.
+Február 2019-én a súlyosságuk jobb illeszkedése érdekében Security Center néhány javaslat pontszámát. Ennek a beállításnak az eredményeképpen előfordulhat, hogy a biztonsági pontszámok teljes értékei módosulnak.  További információ a biztonságos pontszámról: [Azure Security Center továbbfejlesztett biztonságos pontszáma](secure-score-security-controls.md).
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Mi a különbség az észlelt fenyegetések és a riasztások között a Microsoft Security Response Center és a Azure Security Center között?

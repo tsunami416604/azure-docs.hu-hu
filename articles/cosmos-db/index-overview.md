@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bea6d01a8363dd68cff33435335391e0fb0f76c7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849790"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118593"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB-ben – Áttekintés
 
@@ -41,7 +41,7 @@ Példaként tekintse meg ezt az tételt:
 
 A következő fa fogja képviselni:
 
-![Az előző elem faszerkezetként van ábrázolva](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="Az előző elem faszerkezetként van ábrázolva" border="false":::
 
 Vegye figyelembe, hogy a tömbök a fában vannak kódolva: a tömb minden bejegyzése egy köztes csomópontot kap, amely a tömbben (0, 1 stb.) lévő bejegyzés indexével van megjelölve.
 
@@ -181,7 +181,7 @@ Az adatindexelés során kinyert elérési utak megkönnyítik az index keresés
 
 Vegyük például a következő lekérdezést: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . A lekérdezési predikátum (elemek szűrése, ahol bármely hely "Franciaország" országa/régiója) megfelel az alábbi piros színnel jelölt elérési útnak:
 
-![Megadott elérési út megfeleltetése egy fában belül](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Megadott elérési út megfeleltetése egy fában belül" border="false":::
 
 > [!NOTE]
 > Egy olyan `ORDER BY` záradék, amelyet egy adott tulajdonság megrendelése *mindig* egy tartomány indexre van szüksége, és sikertelen lesz, ha az általa hivatkozott elérési út nem rendelkezik ilyennel. Hasonlóképpen, a `ORDER BY` több tulajdonság által megrendelést igénylő lekérdezésnek *mindig* összetett indexre van szüksége.

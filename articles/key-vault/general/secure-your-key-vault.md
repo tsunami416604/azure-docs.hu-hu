@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c97645df5fb9183effa8f29f088376519404192d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827514"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212870"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -79,6 +79,8 @@ Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szer
 A Key vaulthoz Key Vault hozzáférési szabályzatok beállításával biztosíthatja az adatsíkok elérését. A hozzáférési szabályzatok beállításához a felhasználónak, csoportnak vagy alkalmazásnak `Contributor` engedélyekkel kell rendelkeznie az adott kulcstartó felügyeleti síkja számára.
 
 Egy kulcstartóban felhasználói, csoport-vagy alkalmazás-hozzáférési jogosultságot adhat adott műveletek végrehajtásához a kulcsok és titkok számára. A Key Vault a Key vaulthoz legfeljebb 1 024 hozzáférési szabályzatot támogat. Ha több felhasználó számára kíván hozzáférést biztosítani az adatsíkon, hozzon létre egy Azure AD biztonsági csoportot, és vegyen fel felhasználókat a csoportba.
+
+Megtekintheti a tár és a titkos műveletek teljes listáját, valamint megismerheti azokat a műveleteket, amelyeket a Key Vault hozzáférési házirendjeinek konfigurálásakor a következő hivatkozás megtekintésével lehet elérni. [Key Vault művelet leírása](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
 
 <a id="key-vault-access-policies"></a>Key Vault hozzáférési házirendek külön engedélyeket biztosítanak a kulcsokhoz, a titkokhoz és a tanúsítványokhoz. A felhasználók csak a kulcsokhoz és a titkokhoz való hozzáférést adhatnak meg. A kulcsok, titkos kódok és tanúsítványok hozzáférési engedélyei a tároló szintjén találhatók. Key Vault hozzáférési házirendek nem támogatják a szemcsés, az objektum szintű engedélyeket, például egy adott kulcsot, titkos kulcsot vagy tanúsítványt. A Key Vault hozzáférési házirendjeinek beállításához használja a [Azure Portal](https://portal.azure.com/), az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), a [Azure POWERSHELL](/powershell/azureps-cmdlets-docs)vagy a [Key Vault felügyeleti REST API-kat](https://msdn.microsoft.com/library/azure/mt620024.aspx).
 

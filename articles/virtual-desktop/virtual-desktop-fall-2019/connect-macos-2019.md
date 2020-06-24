@@ -4,16 +4,16 @@ description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a macOS-üg
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79eaefb5cd8181bd471618761255bf38f464d735
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 024a1ab1a7fef58bd5fd8f9e7e0fc743a4ecee71
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614914"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213159"
 ---
 # <a name="connect-with-the-macos-client"></a>Kapcsolódás a macOS-ügyfélhez
 
@@ -36,9 +36,9 @@ Előfizetés a hírcsatornára:
 
 1. A főoldalon válassza a **munkaterület hozzáadása** lehetőséget a szolgáltatáshoz való kapcsolódáshoz és az erőforrások lekéréséhez.
 2. Adja meg a hírcsatorna URL-címét. Ez lehet URL-cím vagy e-mail-cím:
-   - Ha URL-címet használ, használja a rendszergazdát. Általában az URL-cím <https://rdweb.wvd.microsoft.com>.
+   - Ha URL-címet használ, használja a rendszergazdát. Általában az URL-cím <https://rdweb.wvd.microsoft.com> .
    - E-mail-cím használatához adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda konfigurálta a kiszolgálót.
-3. Válassza a **Hozzáadás** lehetőséget.
+3. Válassza a **Hozzáadás** elemet.
 4. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.
 
 Miután bejelentkezett, megjelenik az elérhető erőforrások listája.

@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
-ms.openlocfilehash: 68ae42faaf4f3aea851fa1649ba033f60f2b199a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4aaf62af01933b24e666a3a1d626b666869d07e5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193915"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117369"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Microsoft Azure SQL Database és az Azure SQL felügyelt példány teljesítményének figyelése dinamikus felügyeleti nézetek használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -364,7 +364,7 @@ GROUP BY wait_type
 ORDER BY SUM(wait_time) DESC;
 ```
 
-### <a name="identity-high-memory-consuming-statements"></a>Identitás magas memória-felhasználására vonatkozó utasítások
+### <a name="identify-high-memory-consuming-statements"></a>Nagy mennyiségű memóriát használó utasítások azonosítása
 
 A nagy mennyiségű memóriát használó utasítások azonosításához használja a következő lekérdezést:
 

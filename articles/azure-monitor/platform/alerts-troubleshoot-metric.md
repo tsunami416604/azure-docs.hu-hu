@@ -4,14 +4,14 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 06/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 605d1f550335417a26340b6ee54736321ad69f80
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 36ff80bc0858d6d08cc120d126628de02ba6e703
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300761"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130738"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
 
@@ -112,7 +112,7 @@ Az előfizetésre vonatkozó metrikus riasztási szabályok megengedett számán
 Ha elérte a kvótakorlátot, az alábbi lépések segíthetnek a probléma megoldásában:
 1. Próbálja meg törölni vagy letiltani a már nem használt mérőszám-riasztási szabályokat.
 
-2. Váltson olyan metrikariasztási szabályok használatára, amelyek több erőforrást monitoroznak. Ezzel a képességgel egyetlen riasztási szabály több erőforrást is képes figyelni, csak egy riasztási szabályt használva, amely a kvóta alapján van megszámolva. További információ erről a képességről és a támogatott erőforrás-típusokról: [több](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
+2. Váltson olyan metrikariasztási szabályok használatára, amelyek több erőforrást monitoroznak. Ezzel a képességgel egyetlen riasztási szabály több erőforrást is képes figyelni, csak egy riasztási szabályt használva, amely a kvóta alapján van megszámolva. A képességről és a támogatott erőforrástípusokról [itt](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor) talál további információt.
 
 3. Ha növelni szeretné a kvóta korlátját, nyisson meg egy támogatási kérést, és adja meg a következő információkat:
 
@@ -191,6 +191,33 @@ Metrikus riasztási szabály létrehozásához a következő engedélyekkel kell
 - Olvasási engedély a riasztási szabály cél erőforrásához
 - Írási engedély a riasztási szabályt létrehozó erőforráscsoport számára (ha a riasztási szabályt a Azure Portal hozza létre, a riasztási szabály ugyanabban az erőforráscsoportban jön létre, amelyben a cél-erőforrás található)
 - Olvasási engedély a riasztási szabályhoz társított összes műveleti csoporthoz (ha van ilyen)
+
+
+## <a name="naming-restrictions-for-metric-alert-rules"></a>Metrikus riasztási szabályok elnevezési korlátozásai
+
+Vegye figyelembe a következő korlátozásokat a metrikus riasztási szabályok neveihez:
+
+- A metrika riasztási szabályainak neve nem módosítható (átnevezve) a létrehozás után
+- A metrikus riasztási szabályok neveinek egyedinek kell lenniük egy erőforráscsoporthoz
+- A metrikai riasztási szabályok nevei nem tartalmazhatják a következő karaktereket: * # & +:  < > ? @ % { } \ / 
+- A metrika riasztási szabályainak nevei nem végződhet a következő karakterrel:.
+
+
+## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Korlátozások a metrikus riasztási szabályokban több feltételt tartalmazó dimenziók használata esetén
+
+A metrikus riasztások támogatják a többdimenziós metrikák riasztásait, valamint a több feltétel meghatározásának támogatását (a riasztási szabály legfeljebb 5 feltételét).
+
+Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, vegye figyelembe a következő korlátozásokat:
+1. Minden feltételben csak egy értéket lehet kijelölni dimenzión belül.
+2. Nem használhatja a "minden aktuális és jövőbeli érték kijelölése" lehetőséget (válassza ki \* ).
+3. Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon kell beállítani az összes metrika esetében (a vonatkozó feltételek között).
+Például:
+    - Vegyünk egy olyan metrikai riasztási szabályt, amely egy Storage-fiókban van definiálva, és két feltételt figyel:
+        * **Tranzakciók** összesen > 5
+        * Átlagos **SuccessE2ELatency** > 250 MS
+    - Szeretném frissíteni az első feltételt, és csak olyan tranzakciókat figyelni, amelyekben az **ApiName** dimenzió *"GetBlob"* értékkel rendelkezik
+    - Mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája támogatja a **ApiName** -dimenziót, mindkét feltételt frissíteni kell, és mindkettőnek meg kell adnia a **ApiName** dimenziót *"GetBlob"* értékkel.
+
 
 ## <a name="next-steps"></a>További lépések
 

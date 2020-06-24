@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2a81d28998c531339a1b719e37e4b90004157edf
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 16828435dc8913fff8da4717ee7f77cc701504ed
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005845"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213074"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Ajánlott eljárások a Key Vault használatához
 
@@ -36,6 +36,19 @@ Javasoljuk, hogy a tárolót egy alkalmazás/környezet (fejlesztés, üzem elő
 ## <a name="backup"></a>Backup
 
 Győződjön meg arról, hogy a tárolóban rendszeresen készít biztonsági másolatot a tárolóban lévő objektumok frissítéséről/törléséről/létrehozásáról.
+
+### <a name="azure-powershell-backup-commands"></a>Azure PowerShell biztonsági mentési parancsok
+
+* [Biztonsági mentési tanúsítvány](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate?view=azurermps-6.13.0)
+* [Biztonsági mentési kulcs](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey?view=azurermps-6.13.0)
+* [Biztonsági másolat titka](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret?view=azurermps-6.13.0)
+
+### <a name="azure-cli-backup-commands"></a>Azure CLI biztonsági mentési parancsok
+
+* [Biztonsági mentési tanúsítvány](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-backup)
+* [Biztonsági mentési kulcs](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-backup)
+* [Biztonsági másolat titka](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-backup)
+
 
 ## <a name="turn-on-logging"></a>Naplózás bekapcsolása
 

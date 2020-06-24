@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cbadc10fb817c70bd259397c840aae68abc2d54
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633402"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213329"
 ---
 # <a name="assign-variables-in-synapse-sql-pool"></a>Változók társítása a szinapszis SQL-készletben
 
@@ -24,7 +24,7 @@ Ebben a cikkben alapvető tippeket talál a T-SQL-változók SQL-készletben val
 
 ## <a name="set-variables-with-declare"></a>Változók beállítása a DECLARE értékkel
 
-Az SQL-készletben lévő változók az `DECLARE` utasítással vagy `SET` az utasítással állíthatók be. A DEKLARÁLt változók inicializálása az egyik legrugalmasabb módszer az SQL-készletben lévő változó értékének megadására.
+Az SQL-készletben lévő változók az `DECLARE` utasítással vagy az utasítással állíthatók be `SET` . A DEKLARÁLt változók inicializálása az egyik legrugalmasabb módszer az SQL-készletben lévő változó értékének megadására.
 
 ```sql
 DECLARE @v  int = 0

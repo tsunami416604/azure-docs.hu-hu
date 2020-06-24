@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7c7358dc405b3db2b3f014bb99a96fa56580314
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742690"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213924"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Táblázatok particionálása a szinapszis SQL-készletben
 
@@ -125,7 +125,7 @@ Két táblázat közötti partíciók váltásához gondoskodnia kell arról, ho
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Adattároló partíció felosztása
 
-Egy olyan partíció felosztásának leghatékonyabb módszere, amely már tartalmaz olyan partíciót, amely `CTAS` egy utasítást használ. Ha a particionált tábla fürtözött oszlopcentrikus, akkor a tábla partíciójának üresnek kell lennie a felosztás előtt.
+Egy olyan partíció felosztásának leghatékonyabb módszere, amely már tartalmaz olyan partíciót, amely egy `CTAS` utasítást használ. Ha a particionált tábla fürtözött oszlopcentrikus, akkor a tábla partíciójának üresnek kell lennie a felosztás előtt.
 
 A következő példa egy particionált oszlopcentrikus táblát hoz létre. Egy sort szúr be minden partícióba:
 
@@ -182,7 +182,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 Msg 35346, 15. szint, 1. állapot, az ALTER PARTITION utasítás line 44 SPLIT záradéka nem sikerült, mert a partíció nem üres. Csak üres partíciók oszthatók meg, ha a táblán létezik egy oszlopcentrikus index. Az ALTER PARTITION utasítás kiadása előtt érdemes lehet letiltani a oszlopcentrikus indexet, majd a oszlopcentrikus indexet újra felépíteni a MÓDOSÍTÁSi partíció befejeződése után.
 
-A segítségével azonban új táblát `CTAS` is létrehozhat az adattároláshoz.
+A segítségével azonban `CTAS` új táblát is létrehozhat az adattároláshoz.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -208,7 +208,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Minden, ami a bal oldalon van `CTAS`, az új partíciós szegélyekhez igazítja az-t, majd visszaváltja a Főtáblába.
+Minden, ami a bal oldalon van, az új partíciós szegélyekhez igazítja az `CTAS` -t, majd visszaváltja a Főtáblába.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -237,7 +237,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Új adatbázis betöltése olyan partícióba, amely egyetlen lépésben tartalmaz egy adott adathalmazt.
 
-Az adatpartíciók partíciók közötti betöltése kényelmes módszer egy olyan tábla új adattípusának megadásához, amely nem látható a felhasználók számára az új adatváltásban.  Nagy kihívást jelenthet a forgalmas rendszereken a partíciós váltáshoz kapcsolódó zárolási tartalom kezeléséhez.  Egy partíció `ALTER TABLE` meglévő adattartalmának törléséhez az adatváltáshoz szükséges.  Ezután egy `ALTER TABLE` másikra volt szükség az új adatváltáshoz.  A szinapszis SQL-készletben `TRUNCATE_TARGET` a `ALTER TABLE` parancs támogatja a beállítást.  `TRUNCATE_TARGET` A `ALTER TABLE` paranccsal felülírja a partícióban lévő meglévő adatértékeket az új adattal.  Az alábbiakban egy példa látható, `CTAS` amely egy új tábla létrehozásához használja a meglévőket, beszúrja az új adatbevitelt, majd visszaváltja az összes adathalmazt a céltáblaba, felülírja a meglévőket.
+Az adatpartíciók partíciók közötti betöltése kényelmes módszer egy olyan tábla új adattípusának megadásához, amely nem látható a felhasználók számára az új adatváltásban.  Nagy kihívást jelenthet a forgalmas rendszereken a partíciós váltáshoz kapcsolódó zárolási tartalom kezeléséhez.  Egy partíció meglévő adattartalmának törléséhez az `ALTER TABLE` adatváltáshoz szükséges.  Ezután egy másikra `ALTER TABLE` volt szükség az új adatváltáshoz.  A szinapszis SQL-készletben a `TRUNCATE_TARGET` parancs támogatja a beállítást `ALTER TABLE` .  `TRUNCATE_TARGET`A `ALTER TABLE` paranccsal felülírja a partícióban lévő meglévő adatértékeket az új adattal.  Az alábbiakban egy példa látható, amely `CTAS` egy új tábla létrehozásához használja a meglévőket, beszúrja az új adatbevitelt, majd visszaváltja az összes adathalmazt a céltáblaba, felülírja a meglévőket.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]

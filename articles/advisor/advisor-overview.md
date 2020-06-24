@@ -3,30 +3,30 @@ title: Bevezetés a Azure Advisorba
 description: Az Azure-beli üzembe helyezések optimalizálásához használja a Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854438"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117777"
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés a Azure Advisorba
 
 Ismerkedjen meg Azure Advisor főbb képességeivel, és választ kaphat a gyakori kérdésekre.
 
 ## <a name="what-is-advisor"></a>Mi az Advisor?
-Az Advisor egy személyre szabott felhőalapú tanácsadó, amely az Azure-beli üzembe helyezések optimalizálására szolgáló ajánlott eljárások követésében nyújt segítséget. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
+Az Advisor egy személyre szabott felhőalapú tanácsadó, amely az Azure-beli üzembe helyezések optimalizálására szolgáló ajánlott eljárások követésében nyújt segítséget. Elemzi az erőforrás-konfigurációt és a használati telemetria, majd olyan megoldásokat ajánl fel, amelyek segítségével javíthatja a költséghatékonyságot, a teljesítményt, a megbízhatóságot (korábbi nevén magas rendelkezésre állást) és az Azure-erőforrások biztonságát.
 
 Az Advisor használatával a következőket teheti:
 * Proaktív, gyakorlatban hasznosítható és személyre szabott ajánlott eljárásokat kaphat. 
-* Az erőforrások teljesítményének, biztonságának és magas rendelkezésre állásának javítása a teljes Azure-kiadások csökkentése érdekében.
+* Az erőforrások teljesítményének, biztonságának és megbízhatóságának javítása a teljes Azure-költségek csökkentése érdekében.
 * A javasolt műveleteket tartalmazó beágyazott javaslatokat kaphat.
 
 Az Advisor a [Azure Portal](https://aka.ms/azureadvisordashboard)keresztül érhető el. Jelentkezzen be a [portálra](https://portal.azure.com), keresse meg az **Advisor** parancsot a navigációs menüben, vagy keresse meg a **minden szolgáltatás** menüben.
 
 Az Advisor irányítópultja személyre szabott javaslatokat jelenít meg az összes előfizetéséhez.  Szűrőket alkalmazhat az egyes előfizetésekhez és erőforrástípusokhöz tartozó javaslatok megjelenítéséhez.  A javaslatok öt kategóriába sorolhatók: 
 
-* **Magas rendelkezésre állás**: az üzleti szempontból kritikus fontosságú alkalmazások folytonosságának biztosítása és javítása. További információ: [Advisor magas rendelkezésre állási javaslatai](advisor-high-availability-recommendations.md).
+* **Megbízhatóság (korábbi nevén magas rendelkezésre állás)**: az üzleti szempontból kritikus fontosságú alkalmazások folytonosságának biztosításához és javításához. További információ: [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md).
 * **Biztonság**: az olyan fenyegetések és biztonsági rések észlelése, amelyek biztonsági réseket okozhatnak. További információ: [Advisor biztonsági javaslatok](advisor-security-recommendations.md).
 * **Teljesítmény**: az alkalmazások sebességének növelése érdekében. További információ: [Advisor Performance javaslatok](advisor-performance-recommendations.md).
 * **Költségek**: a teljes Azure-kiadások optimalizálása és csökkentése. További információ: [Advisor Cost javaslatok](advisor-cost-recommendations.md).
@@ -68,7 +68,7 @@ A javaslatok elhalasztásához vagy elvetéséhez kattintson az **elhalasztás**
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
-* [Advisor – magas rendelkezésre állási javaslatok](advisor-high-availability-recommendations.md)
+* [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)

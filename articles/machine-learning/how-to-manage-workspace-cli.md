@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9131ce9b211a33fe45ef571f3a274b4ddc81739f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/19/2020
+ms.openlocfilehash: f22ef4d1ebd9c4d3c226556c4ef28a873edd80ea
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430393"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119256"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ az extension add -n azure-cli-ml
 A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra vagy-entitásokra támaszkodik:
 
 > [!IMPORTANT]
-> Ha nem ad meg meglévő Azure-szolgáltatást, a rendszer automatikusan létrehozza az egyiket a munkaterület létrehozása során. Mindig meg kell adnia egy erőforráscsoportot.
+> Ha nem ad meg meglévő Azure-szolgáltatást, a rendszer automatikusan létrehozza az egyiket a munkaterület létrehozása során. Mindig meg kell adnia egy erőforráscsoportot. Saját Storage-fiók csatolásakor győződjön meg arról, hogy az Azure Blob és az Azure file képességek is engedélyezve vannak, valamint hogy a hierarchikus névtér (ADLS Gen 2) le van tiltva. A saját Storage-fiókját később is csatolhatja, miután a munkaterület adattárként lett létrehozva.
 
 | Szolgáltatás | Paraméter egy meglévő példány megadásához |
 | ---- | ---- |
@@ -317,7 +317,7 @@ További információ: az [ml Workspace Share](https://docs.microsoft.com/cli/az
 
 ## <a name="sync-keys-for-dependent-resources"></a>Függő erőforrások szinkronizálási kulcsai
 
-Ha módosítja a munkaterület által használt egyik erőforrás elérési kulcsait, a következő paranccsal szinkronizálhatja az új kulcsokat a munkaterülettel:
+Ha módosítja a munkaterület által használt egyik erőforrás elérési kulcsait, a munkaterület körülbelül egy órát vesz igénybe, hogy szinkronizálja az új kulcsot. Ha szeretné kényszeríteni a munkaterületet, hogy azonnal szinkronizálja az új kulcsokat, használja a következő parancsot:
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
@@ -363,6 +363,6 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gépi tanuláshoz készült Azure CLI bővítménnyel kapcsolatos további információkért tekintse meg az az [ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest) dokumentációt.

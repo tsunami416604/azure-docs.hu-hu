@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 8f84d611ecdf3fc0f86273498753e550315cd878
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586184"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119154"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API fiók rugalmas skálázása
 
@@ -19,7 +19,7 @@ Számos lehetőség áll rendelkezésre a Cassandra Azure Cosmos DB API rugalmas
 
 A Cassandra API esetében a [.net-és Java SDK-](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api)k használatával kérheti le a kérések egységét az egyes lekérdezésekhez. Ez hasznos lehet a szolgáltatásban kiépíthető RU/s mennyiségének meghatározásához.
 
-![Adatbázis-műveletek felhasználásának kérelmezési egységei](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="Adatbázis-műveletek felhasználásának kérelmezési egységei" border="false":::
 
 ## <a name="handling-rate-limiting-429-errors"></a>Kezelési sebesség korlátozása (429 hiba)
 

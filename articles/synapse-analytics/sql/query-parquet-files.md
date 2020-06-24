@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e9731b869b20c7d8cfc3b1e234711c818a2b7422
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4bab1ef4588a705f0dd6cdb34be8272868f826e9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744253"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207566"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
@@ -132,7 +132,7 @@ A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A követk
 | INT32 |INT (8, hamis) |tinyint |
 | INT32 |INT (16, hamis) |int |
 | INT32 |INT (32, hamis) |bigint |
-| INT32 |DATE |date |
+| INT32 |DATE |dátum |
 | INT32 |DECIMÁLIS |tizedes tört |
 | INT32 |IDŐ (MILLIS)|time |
 | INT64 |INT (64, true) |bigint |
