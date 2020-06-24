@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562b551bc8a46a45135bf6a9a8e328b4b0e74f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 182f51a150c2ef944b0104b73c63028e915c1a4a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048246"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728333"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok elévülési szabályzatának konfigurálása
 
@@ -134,7 +134,7 @@ Az adatmegőrzési szabályt a biztonsági és megfelelőségi központ konfigur
    Connect-AzureAD
    ```
 
-1. A lejárati beállítások konfigurálása a New-AzureADMSGroupLifecyclePolicy parancsmaggal állíthatja be az Azure AD-szervezet összes Office 365-csoportjának élettartamát 365 napra. A tulajdonosokkal nem rendelkező Office 365-emailaddress@contoso.comcsoportok megújítási értesítései a következőre lesznek küldve:
+1. A lejárati beállítások konfigurálása a New-AzureADMSGroupLifecyclePolicy parancsmaggal állíthatja be az Azure AD-szervezet összes Office 365-csoportjának élettartamát 365 napra. A tulajdonosokkal nem rendelkező Office 365-csoportok megújítási értesítései a következőre lesznek küldve: emailaddress@contoso.com
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -144,7 +144,7 @@ Az adatmegőrzési szabályt a biztonsági és megfelelőségi központ konfigur
 
    - A szabályzat azonosítója
    - Az Azure AD-szervezet összes Office 365-csoportjának élettartama 365 nap
-   - A tulajdonosokkal nem rendelkező Office 365-csoportok megújítási értesítéseiemailaddress@contoso.coma következőre lesznek küldve: "."
+   - A tulajdonosokkal nem rendelkező Office 365-csoportok megújítási értesítései a következőre lesznek küldve: " emailaddress@contoso.com ."
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy

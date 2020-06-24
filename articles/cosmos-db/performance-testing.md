@@ -3,16 +3,16 @@ title: Teljesítmény-és méretezési tesztelés a Azure Cosmos DB
 description: Ismerje meg, hogyan végezheti el a méretezést és a teljesítmény tesztelését Azure Cosmos DB használatával. Ezután kiértékelheti Azure Cosmos DB funkcióit a nagy teljesítményű alkalmazási forgatókönyvek esetében.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4b2394f48f9bf3ec436cda92e87fd99ad915474
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76313751"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262565"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Teljesítmény-és méretezési tesztelés a Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Első lépésként a leggyorsabb módszer a .NET-minta fordítása és futtatás
 
 **1. lépés:** Töltse le a projektet [Azure Cosmos db teljesítmény-tesztelési mintából](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), vagy a GitHub-tárházat.
 
-**2. lépés:** Módosítsa a EndpointUrl, a AuthorizationKey, a CollectionThroughput és a DocumentTemplate beállításait (opcionális) az app. config fájlban.
+**2. lépés:** Módosítsa a EndpointUrl, a AuthorizationKey, a CollectionThroughput és a DocumentTemplate beállításait (opcionális) a App.config.
 
 > [!NOTE]
 > Mielőtt nagy adatátviteli sebességű gyűjteményeket kiépíteni, tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) , és becsülje meg a begyűjtési költségeket. Azure Cosmos DB a számlák tárolását és átviteli sebességét óránként, egymástól függetlenül. A tesztelés után az Azure Cosmos-tárolók teljesítményének törlésével vagy csökkentésével költségeket takaríthat meg.
@@ -94,7 +94,7 @@ Első lépésként a leggyorsabb módszer a .NET-minta fordítása és futtatás
 Miután futtatta az alkalmazást, különböző [indexelési házirendeket](index-policy.md) és konzisztencia- [szinteket](consistency-levels.md) kipróbálva megtudhatja, milyen hatással vannak a teljesítményre és a késésre. Emellett áttekintheti a forráskódot, és hasonló konfigurációkat hozhat létre saját tesztelési lakosztállyal vagy éles alkalmazásokhoz.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben azt vizsgáltuk, hogyan végezheti el a teljesítmény és a méretezés tesztelését Azure Cosmos DB használatával egy .NET-konzol alkalmazás használatával. További információkért tekintse át a következő cikkeket:
+Ebben a cikkben azt vizsgáltuk, hogyan végezheti el a teljesítmény és a méretezés tesztelését Azure Cosmos DB használatával egy .NET-konzol alkalmazás használatával. További információért tekintse át a következő cikkeket:
 
 * [Azure Cosmos DB teljesítmény-tesztelési minta](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [Ügyfél-konfigurációs beállítások a Azure Cosmos DB teljesítményének növeléséhez](performance-tips.md)

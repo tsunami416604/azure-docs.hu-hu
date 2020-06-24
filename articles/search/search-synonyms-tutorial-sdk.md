@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794236"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079437"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Példa: az Azure Cognitive Search szinonimáinak hozzáadása a C-ben #
 
@@ -38,7 +38,7 @@ Az oktatóanyag az alábbi követelményekkel rendelkezik:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Cognitive Search szolgáltatás](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET-könyvtár](https://aka.ms/search-sdk)
+* [Microsoft.Azure.Search .NET-könyvtár](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 * [Az Azure Cognitive Search használata .NET-alkalmazásokból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Áttekintés
@@ -128,7 +128,7 @@ A szinonimák engedélyezése egy kétlépéses folyamat. Először meghatározz
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
    ```
-   A szinonimatérképnek meg kell felelnie a nyílt forráskódú szabványos `solr` formátumnak. A formátumot az [Azure Cognitive Search szinonimái](search-synonyms.md) ismertetik a szakasz `Apache Solr synonym format`alatt.
+   A szinonimatérképnek meg kell felelnie a nyílt forráskódú szabványos `solr` formátumnak. A formátumot az [Azure Cognitive Search szinonimái](search-synonyms.md) ismertetik a szakasz alatt `Apache Solr synonym format` .
 
 2. Konfiguráljon kereshető mezőket a szinonimatérkép indexdefinícióban történő használatához. Az `EnableSynonymsInHotelsIndex` parancsban engedélyezzük a szinonimákat a `category` és a `tags` mezőkben úgy, hogy a `synonymMaps` tulajdonságot az újonnan feltöltött szinonimatérkép nevére állítjuk.
    ```csharp
@@ -167,7 +167,7 @@ A szinonimák hozzáadásával teljesen megváltozik a keresési élmény. Ebben
 ## <a name="sample-application-source-code"></a>Mintaalkalmazás forráskódja
 A jelen útmutatóban használt mintaalkalmazás teljes forráskódját a [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) webhelyén találja.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Egy példa után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlése. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
 

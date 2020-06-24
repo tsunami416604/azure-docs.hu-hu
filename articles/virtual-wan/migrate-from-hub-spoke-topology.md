@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan migrálhat az Azure Virtual WAN-ba.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 61f98d7de6c278416b4bb46074cad9f9e143d468
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8dfcdd8195824cb732df2c0c70c338e69630c5cd
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341065"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753126"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrálás az Azure Virtual WAN-ba
 
@@ -280,6 +280,6 @@ A forgalom a következőképpen lesz átirányítva:
 
 ![8. folyamat](./media/migrate-from-hub-spoke-topology/flow8.png) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure Virtual WAN](virtual-wan-about.md) -ról

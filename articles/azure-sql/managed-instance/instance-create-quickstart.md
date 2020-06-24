@@ -2,8 +2,8 @@
 title: 'Gyors útmutató: felügyelt SQL-példány (portál) létrehozása'
 description: Hozzon létre egy felügyelt példányt, a hálózati környezetet és az ügyfél virtuális gépet a rövid útmutató Azure Portal használatával való hozzáféréshez.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: e00736c734b3e6f6ba6b188061ec2ffb59a5b169
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 906bcf97ad070eb8c2dfe3266bccf05db1598935
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659752"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708892"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Gyors útmutató: felügyelt SQL-példány felügyelt példányának létrehozása
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -173,7 +173,7 @@ A felügyelt SQL-példányhoz való kapcsolódáshoz kövesse az alábbi lépés
 
    A másolt érték egy teljes tartománynevet (FQDN) jelöl, amely az SQL felügyelt példányhoz való kapcsolódáshoz használható. A következőhöz hasonló példa: *your_host_name. a1b2c3d4e5f6. database. Windows. net*.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a felügyelt SQL-példányokhoz való kapcsolódásról:
 - Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).

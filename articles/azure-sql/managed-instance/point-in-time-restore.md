@@ -3,7 +3,7 @@ title: Időponthoz tartozó visszaállítás (PITR)
 titleSuffix: Azure SQL Managed Instance
 description: Adatbázis visszaállítása az Azure SQL felügyelt példányain egy korábbi időpontra.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 379d5e59024174c8f6cfbc185b3514287b7d5031
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310172"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708651"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Adatbázis visszaállítása az Azure SQL felügyelt példányában egy korábbi időpontra
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,7 +46,7 @@ Az alábbi táblázat az SQL felügyelt példányának időponthoz kapcsolódó 
 
 |           |Meglévő adatbázis visszaállítása a felügyelt SQL-példány ugyanazon példányára| Meglévő adatbázis visszaállítása másik SQL felügyelt példányra|Az eldobott adatbázis visszaállítása ugyanazon SQL felügyelt példányra|Az eldobott adatbázis visszaállítása egy másik felügyelt SQL-példányra|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Igen|Nem |Igen|Nem|
+|**Azure Portal**| Yes|No |Yes|No|
 |**Azure CLI**|Igen |Igen |Nem|Nem|
 |**PowerShell**| Igen|Igen |Igen|Igen|
 

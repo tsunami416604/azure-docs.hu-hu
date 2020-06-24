@@ -1,48 +1,47 @@
 ---
 title: Élő videó elemzése saját modell használatával – Azure
-description: Ebben a rövid útmutatóban a Computer víziót fogja alkalmazni, hogy elemezze az élő videó-hírcsatornát egy (szimulált) IP-kameráról.
+description: Ebben a rövid útmutatóban a számítógép jövőképét fogja alkalmazni az élő videó hírcsatornájának (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0b502fb4bcfa3a11890167c5ef297463a3c51cdc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 73b8f83b9e3c450612c742a831ac800343b3bbbc
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261971"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816683"
 ---
-# <a name="quickstart-analyze-live-video-with-your-own-model"></a>Gyors útmutató: élő videó elemzése saját modellel
+# <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Rövid útmutató: élő videó elemzése saját modell használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Live Video Analytics szolgáltatást a IoT Edgeon az élő videó-hírcsatorna egy (szimulált) IP-kamerából történő elemzéséhez egy számítógépes látási modell alkalmazásával az objektumok észleléséhez. Az élő video-hírcsatornában található keretek egy részhalmazát a rendszer egy következtetési szolgáltatásba továbbítja, és az eredményeket a IoT Edge hubhoz küldik. Egy Azure-beli virtuális gépet használ IoT Edge eszközként és szimulált élő videó streamként. Ez a cikk a C# nyelven írt mintakód alapján készült.
+Ez a rövid útmutató bemutatja, hogyan használható a Live Video Analytics a IoT Edge egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez. Megtudhatja, hogyan alkalmazhatja a Computer látási modellt az objektumok észlelésére. Az élő video-hírcsatornában található keretek egy részhalmazát a rendszer egy következtetési szolgáltatásnak továbbítja. Az eredményeket a rendszer IoT Edge hubhoz továbbítja. 
 
-Ez a cikk [erre](detect-motion-emit-events-quickstart.md) a rövid útmutatóra épül. 
+Ez a rövid útmutató egy Azure-beli virtuális gépet használ IoT Edge eszközként, és szimulált élő videó streamet használ. Ez a C# nyelven írt mintakód alapján készült, amely az [észlelési és a kibocsátási események](detect-motion-emit-events-quickstart.md) gyors üzembe helyezésére épül. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Visual Studio Code](https://code.visualstudio.com/) a gépen a következő kiterjesztésekkel:
+* Egy aktív előfizetést tartalmazó Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , ha még nem rendelkezik ilyennel.
+* [Visual Studio Code](https://code.visualstudio.com/)a következő kiterjesztésekkel:
     * [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* A [.net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) telepítve van a rendszeren
-* Ha még nem végezte el [ezt](detect-motion-emit-events-quickstart.md) a rövid útmutatót, végezze el a következő lépéseket:
-     * [Az Azure-erőforrások beállítása](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
+* [.Net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+* Ha nem fejezte be a [mozgás észlelése és az események kibocsátása](detect-motion-emit-events-quickstart.md) című rövid útmutatót, akkor ügyeljen arra, hogy [Azure-erőforrásokat állítson be](detect-motion-emit-events-quickstart.md#set-up-azure-resources).
 
 > [!TIP]
-> Az Azure IoT-eszközök telepítésekor előfordulhat, hogy a rendszer a Docker telepítésére kéri. Nyugodtan hagyja figyelmen kívül.
+> Az Azure IoT-eszközök telepítésekor előfordulhat, hogy a rendszer a Docker telepítésére kéri. A promptot figyelmen kívül hagyhatja.
 
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
-Az Azure-erőforrások létrehozásához szükséges lépések részeként a rendszer átmásolja az autópálya-forgalom (rövid) videóját az Azure-beli linuxos virtuális gépre, amelyet IoT Edge eszközként használ. Ez a videofájl az oktatóanyag élő folyamának szimulálására szolgál.
+Az Azure-erőforrások beállításakor a rendszer átmásolja az autópálya-forgalom rövid videóját az Azure-ban lévő, IoT Edge eszközként használt linuxos virtuális gépre. Ez a rövid útmutató egy élő stream szimulálására használja a videofájl használatával.
 
-Használhat egy alkalmazást, például a [VLC Playert](https://www.videolan.org/vlc/), elindíthatja, megnyomhatja a CTRL + N billentyűkombinációt, és a lejátszás megkezdéséhez illessze be [ezt](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) a hivatkozást a videóra. Látni fogja, hogy a felvételek forgalma egy autópályán történik, és sok jármű van rajta.
+Nyisson meg egy alkalmazást, például a [VLC Media Playert](https://www.videolan.org/vlc/). Válassza a CTRL + N billentyűkombinációt, majd illessze be a [videóra](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) mutató hivatkozást a lejátszás elindításához. Itt láthatja az autópálya-forgalomban mozgó számos jármű felvételét.
 
-Az alábbi lépések elvégzése után élő videó-elemzéseket használt IoT Edgeon, hogy felderítse az objektumokat, például a gépjárműveket, a személyeket stb., és tegye közzé a kapcsolódó következtetési eseményeket az IoT Edge hubhoz.
+Ebben a rövid útmutatóban élő videó-elemzéseket fog használni a IoT Edgeon az objektumok, például a gépjárművek és a személyek észleléséhez. A kapcsolódó következtetési eseményeket közzé kell tenni IoT Edge hubhoz.
 
 ## <a name="overview"></a>Áttekintés
 
 ![Áttekintés](./media/quickstarts/overview-qs5.png)
 
-A fenti ábra azt mutatja be, hogyan áramlik be a gyors útmutatóban szereplő jelek. Az Edge-modul (részletesen [itt](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)) SZIMULÁL egy RTSP-kiszolgálót futtató IP-kamerát. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame Fate Filter Processor](media-graph-concept.md#frame-rate-filter-processor) csomópontba küldi. Ez a processzor a [http-bővítmény processzor](media-graph-concept.md#http-extension-processor) -csomópontjának elérésekor korlátozza a videó stream képkockasebességét. 
+Ez az ábra azt mutatja be, hogyan áramlik be a gyors útmutatóban szereplő jelek. Az [Edge-modulok](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) egy valós idejű Streaming Protocol-(RTSP-) kiszolgálót üzemeltető IP-kamerát szimulálnak. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjára küldi. Ez a processzor korlátozza a [http-bővítmény processzor](media-graph-concept.md#http-extension-processor) -csomópontját elérő video stream képkockasebességét. 
 
-A HTTP-bővítmény csomópontja egy proxy szerepét játssza le, a képkockákat a megadott képtípusra konvertálva, a kép átadását a REST-on keresztül egy másik peremhálózati modulba, amely egy HTTP-végpont mögötti AI-modellt futtat. Ebben a példában az Edge-modul a [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modell használatával lett felépítve, amely képes számos típusú objektum észlelésére. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink ) fogadó csomóponton, amely ezután elküldi az eseményt az [IoT Edge hubhoz](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+A HTTP-bővítmény csomópont egy proxy szerepét játssza le. A képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a képet a REST-ben egy másik Edge-modulba, amely egy HTTP-végpont mögötti AI-modellt futtat. Ebben a példában az Edge-modul a [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modell használatával készült, amely számos típusú objektumot képes érzékelni. A HTTP-bővítmény processzor-csomópontja összegyűjti az észlelés eredményeit, és közzéteszi az eseményeket a [IoT hub](media-graph-concept.md#iot-hub-message-sink) fogadó csomópontban. A csomópont ezután elküldi ezeket az eseményeket [IoT Edge hubhoz](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 Ebben a rövid útmutatóban a következőket fogja megtekinteni:
 
@@ -56,59 +55,75 @@ Ebben a rövid útmutatóban a következőket fogja megtekinteni:
     
 ### <a name="examine-and-edit-the-sample-files"></a>A mintaadatok vizsgálata és szerkesztése
 
-Az előfeltételek részeként a mintakód egy mappába lett letöltve. Indítsa el a Visual Studio Code-ot, és nyissa meg a mappát.
+Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaadatok vizsgálatához és szerkesztéséhez kövesse az alábbi lépéseket.
 
-1. A Visual Studio Code-ban keresse meg az "src/Edge" parancsot. Ekkor megjelenik a létrehozott. env fájl, amely néhány központi telepítési sablon fájlját tartalmazza.
+1. A Visual Studio Code-ban lépjen az *src/Edge*elemre. Ekkor megjelenik a *. env* fájl és néhány központi telepítési sablon fájl.
 
-    * A központi telepítési sablon a peremhálózati eszköz központi telepítési jegyzékére hivatkozik néhány helyőrző értékkel. A. env fájl ezen változók értékeit tartalmazhatja.
-1. Ezután tallózással keresse meg a "src/Cloud-to-Device-Console-app" mappát. Itt láthatja a létrehozott appSettings. JSON fájlt, valamint néhány további fájlt is:
+    A központi telepítési sablon a peremhálózati eszköz üzembe helyezési jegyzékére hivatkozik. Tartalmaz néhány helyőrző értéket. A *. env* fájl tartalmazza a változók értékeit.
 
-    * C2D-Console-app. csproj – ez a Project fájl a Visual Studio Code-hoz.
-    * Operations. JSON – ez a fájl felsorolja azokat a különböző műveleteket, amelyekre a programot futtatni szeretné.
-    * Program.cs – ez a mintakód, amely a következő műveleteket végzi el:
+1. Lépjen a *src/Cloud-to-Device-Console-app* mappába. Itt láthatja a *appsettings.js* fájlt, és néhány további fájlt:
+
+    * ***C2D-Console-app. csproj*** – a Project fájl a Visual Studio Code-hoz.
+    * ***operations.json*** – a program futtatásához használni kívánt műveletek listája.
+    * ***Program.cs*** – a minta programkódja. Ez a kód:
 
         * Betölti az alkalmazás beállításait.
-        *  Az élő videó Analytics IoT Edge modulban elérhető közvetlen metódusokat hívja meg. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](direct-methods.md) meghívásával 
-        * Szünetelteti a program kimenetének vizsgálatát a terminál ablakban, valamint a kimenet ablakban a modul által generált eseményeket.
-        * Közvetlen metódusokat hív meg az erőforrások törléséhez   
+        * Közvetlen metódusokat hív meg, amelyeket az élő videó Analytics IoT Edge modulban tesz elérhetővé. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](direct-methods.md)meghívásával.
+        * Szünetelteti, hogy megvizsgálhatja a program kimenetét a **terminál** ablakban, és megvizsgálhatja a modul által a **kimeneti** ablakban generált eseményeket.
+        * Közvetlen metódusokat hív meg az erőforrások törléséhez.
 
 
-1. Végezze el az alábbi módosításokat a Operations. JSON fájlban
-    * Módosítsa a Graph-topológiára mutató hivatkozást:`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
-    * A GraphInstanceSet alatt szerkessze a gráf topológiájának nevét, hogy az megfeleljen a fenti hivatkozásban szereplő értéknek.`"topologyName" : "InferencingWithHttpExtension"`
-    * A GraphTopologyDelete alatt szerkessze a nevet`"name": "InferencingWithHttpExtension"`
+1. Szerkessze a *operations.js* fájlt:
+    * Módosítsa a Graph-topológiára mutató hivatkozást:
+
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+
+    * A (z) alatt `GraphInstanceSet` szerkessze a gráf topológiájának nevét, hogy az megfeleljen az előző hivatkozásban szereplő értéknek:
+
+      `"topologyName" : "InferencingWithHttpExtension"`
+
+    * `GraphTopologyDelete`A alatt szerkessze a nevet:
+
+      `"name": "InferencingWithHttpExtension"`
 
 ### <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Az IoT Edge telepítési jegyzék előállítása és üzembe helyezése
 
-1. Kattintson a jobb gombbal az "src/Edge/Deployment. yolov3. template. JSON" fájlra, és kattintson a IoT Edge üzembe helyezési jegyzék előállítása elemre.
+1. Kattintson a jobb gombbal a fájlon a *src/Edge/deployment.yolov3.template.js* elemre, majd válassza a **IoT Edge üzembe helyezési jegyzék előállítása**lehetőséget.
 
     ![IoT Edge üzembe helyezési jegyzék előállítása](./media/quickstarts/generate-iot-edge-deployment-manifest-yolov3.png)  
-1. Ehhez létre kell hoznia egy jegyzékfájlt az src/Edge/config mappában, a "Deployment. yolov3. amd64. JSON" nevű fájlban.
-1. Ha korábban már elvégezte [a gyors](detect-motion-emit-events-quickstart.md)üzembe helyezést, ugorja át ezt a lépést. Ellenkező esetben állítsa be a IoTHub-kapcsolódási karakterláncot úgy, hogy az AZURE IOT HUB panel melletti "További műveletek" ikonra kattint a bal alsó sarokban. A karakterláncot a appSettings. JSON fájlból másolhatja. (Íme egy másik ajánlott módszer, amely biztosítja, hogy a megfelelő IoT Hub konfigurálva legyen a Visual Studio Code-ban a [Select IoT hub parancs](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)használatával).
+
+    A manifest-fájl *deployment.yolov3.amd64.js* a *src/Edge/config* mappában jön létre.
+
+1. Ha befejezte a [mozgás észlelése és a kibocsátó események](detect-motion-emit-events-quickstart.md) rövid útmutatóját, ugorja át ezt a lépést. 
+
+    Ellenkező esetben a bal alsó sarokban található **Azure IOT hub** panel közelében válassza a **További műveletek** ikont, majd válassza a **IoT hub a kapcsolatok karakterláncának beállítása**lehetőséget. A karakterláncot a *appsettings.js* fájlból másolhatja. Vagy a megfelelő IoT hub a Visual Studio Code-ban való konfigurálásának biztosításához használja az [IoT hub kiválasztása parancsot](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
     
-    ![IoTHub-kapcsolatok karakterlánca](./media/quickstarts/set-iotconnection-string.png)
-1. Ezután kattintson a jobb gombbal az "src/Edge/config/Deployment. yolov3. amd64. JSON" elemre, majd kattintson a "központi telepítés létrehozása egyetlen eszközhöz" elemre. 
+    ![IoT Hub-kapcsolatok karakterláncának beállítása](./media/quickstarts/set-iotconnection-string.png)
+
+1. Kattintson a jobb gombbal *az src/Edge/config/deployment.yolov3.amd64.js* elemre, és válassza a **központi telepítés létrehozása egyetlen eszközhöz**lehetőséget. 
 
     ![Központi telepítés létrehozása egyetlen eszközhöz](./media/quickstarts/create-deployment-single-device.png)
-1. Ezután meg kell adnia egy IoT Hub eszköz kiválasztását. Válassza ki a LVA-Sample-Device elemet a legördülő menüből.
-1. Körülbelül 30 másodperc alatt frissítse az Azure IOT hub-t a bal alsó szakaszban, és a következő modulokat kell telepítenie a peremhálózati eszközön:
 
-    1. A "lvaEdge" névvel ellátott Live Video Analytics-modul.
-    1. Egy "rtspsim" nevű modul, amely szimulál egy RTSP-kiszolgálót, amely egy élő videó-hírcsatorna forrásaként működik.
-    1. Egy "yolov3" nevű modul, amely a neve is sugallja, a YOLOv3-objektum észlelési modellje, amely a számítógépeket a lemezképekre alkalmazza, és több objektumtípust ad vissza.
+1. Amikor a rendszer rákérdez a IoT Hub eszköz kiválasztására, válassza a **LVA-Sample-Device**elemet.
+1. Körülbelül 30 másodperc elteltével frissítse az Azure IoT Hubt az ablak bal alsó sarkában. A peremhálózati eszköz mostantól a következő központilag telepített modulokat mutatja:
+
+    * A **lvaEdge** nevű Live Video Analytics-modul
+    * Az **rtspsim** modul, amely egy RTSP-kiszolgálót szimulál, és élő videó-hírcsatorna forrásaként működik
+    * A **yolov3** modul, amely a yolov3 objektum-észlelési modell, amely a számítógépekre vonatkozó jövőképet alkalmaz a lemezképekre, és több objektumtípust ad vissza.
  
-        ![YOLOv3-objektum észlelési modellje](./media/quickstarts/yolov3.png)
+      ![A peremhálózati eszközön üzembe helyezett modulok](./media/quickstarts/yolov3.png)
 
-### <a name="prepare-for-monitoring-events"></a>Felkészülés a figyelési eseményekre
+### <a name="prepare-to-monitor-events"></a>Felkészülés az események figyelésére
 
-Kattintson a jobb gombbal az élő videó Analytics eszközre, és kattintson a "beépített esemény végpontjának figyelése" elemre. Ez a lépés szükséges a IoT Hub események figyeléséhez és a Visual Studio Code kimeneti ablakában való megjelenítéséhez. 
+Kattintson a jobb gombbal a Live Video Analytics-eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget. Erre a lépésre szüksége lesz a Visual Studio Code **kimeneti** ablakának IoT hub eseményeinek figyeléséhez. 
 
 ![Figyelés indítása](./media/quickstarts/start-monitoring-iothub-events.png) 
 
 ### <a name="run-the-sample-program"></a>A minta program futtatása
 
-1. Indítsa el a hibakeresési munkamenetet (nyomja meg az F5 billentyűt). Ekkor néhány üzenet jelenik meg a terminál ablakban.
-1. A Operations. JSON elindul a közvetlen metódusok GraphTopologyList és GraphInstanceList való hívásával. Ha az előző gyors útmutatók után törölte az erőforrásokat, az üres listát ad vissza, majd szünetelteti az ENTER billentyű lenyomását.
+1. A hibakeresési munkamenet indításához válassza az F5 billentyűt. A **terminál** ablakban láthatók a kinyomtatott üzenetek.
+1. A kód *operations.js* a közvetlen metódusok hívásával indul el `GraphTopologyList` `GraphInstanceList` . Ha az előző rövid útmutatók befejezése után törölte az erőforrásokat, akkor ez a folyamat üres listát ad vissza, majd szünetelteti. A folytatáshoz válassza az ENTER billentyűt.
+
    ```
    --------------------------------------------------------------------------
    Executing operation GraphTopologyList
@@ -125,55 +140,57 @@ Kattintson a jobb gombbal az élő videó Analytics eszközre, és kattintson a 
    Press Enter to continue
    ```
 
-1. Amikor lenyomja a "Enter" billentyűt a terminál ablakban, a rendszer a közvetlen metódusok következő készletét kéri
-     * A fenti topologyUrl használó GraphTopologySet-hívás
-     * A GraphInstanceSet hívása a következő törzs használatával
-     ```
-     {
-       "@apiVersion": "1.0",
-       "name": "Sample-Graph-1",
-       "properties": {
-         "topologyName": "InferencingWithHttpExtension",
-         "description": "Sample graph description",
-         "parameters": [
-           {
-             "name": "rtspUrl",
-             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-           },
-           {
-             "name": "rtspUserName",
-             "value": "testuser"
-           },
-           {
-             "name": "rtspPassword",
-             "value": "testpassword"
+    A **terminál** ablak a közvetlen metódusok következő készletét jeleníti meg:
+
+     * `GraphTopologySet`Az előzőt használó hívás`topologyUrl`
+     * A `GraphInstanceSet` következő törzset használó hívás:
+
+         ```
+         {
+           "@apiVersion": "1.0",
+           "name": "Sample-Graph-1",
+           "properties": {
+             "topologyName": "InferencingWithHttpExtension",
+             "description": "Sample graph description",
+             "parameters": [
+               {
+                 "name": "rtspUrl",
+                 "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+               },
+               {
+                 "name": "rtspUserName",
+                 "value": "testuser"
+               },
+               {
+                 "name": "rtspPassword",
+                 "value": "testpassword"
+               }
+             ]
            }
-         ]
-       }
-     }
-     ```
-     * A Graph-példány elindítására irányuló GraphInstanceActivate-hívás, valamint a videó folyamatának elindítása
-     * Egy második hívás a GraphInstanceList, amely azt mutatja, hogy a Graph-példány valóban fut állapotban van
-1. A terminál ablakban lévő kimenet szünetelteti a folytatást a "nyomja meg az ENTER billentyűt" üzenettel. Ne nyomja meg az "Enter" értéket. A felkeresett közvetlen metódusokhoz tartozó JSON-válaszokkal kapcsolatos hasznos adatok megtekintéséhez lapozzunk felfelé
-1. Ha most átvált a kimeneti ablakra a Visual Studio Code-ban, akkor a IoT Hub küldött üzeneteket a IoT Edge modul Live Video Analytics szolgáltatásával küldi el a rendszer.
-     * Ezeket az üzeneteket az alábbi szakaszban tárgyaljuk
-1. A Media Graph továbbra is futni fog, és kinyomtatja az eredményeket – az RTSP-szimulátor megtartja a forrás videóját. A Media Graph leállításához lépjen vissza a terminál ablakába, és nyomja le az ENTER billentyűt. A következő meghívások sorozata az erőforrások tisztítására készül:
-     * GraphInstanceDeactivate hívása a Graph-példány inaktiválására
-     * A példány törlésére irányuló GraphInstanceDelete-hívás
-     * A topológia törlésére irányuló GraphTopologyDelete-hívás
-     * A GraphTopologyList utolsó hívása, amely azt mutatja, hogy a lista már üres
+         }
+         ```
+
+     * A `GraphInstanceActivate` gráf-példányt és a videó folyamatát indító hívás
+     * Egy második hívás, `GraphInstanceList` amely azt mutatja, hogy a Graph-példány fut állapotban van
+1. A **terminál** ablakban lévő kimenet szünetelteti a `Press Enter to continue` kérdést. Ne jelölje be az ENTER billentyűt. Görgessen felfelé, és tekintse meg a meghívott közvetlen metódusok JSON-válaszának hasznos adatait.
+1. Váltson a **kimeneti** ablakra a Visual Studio Code-ban. Láthatja, hogy az élő videó Analytics IoT Edge-modulban az IoT hub-ra küld üzenetet. A rövid útmutató következő szakasza ezeket az üzeneteket tárgyalja.
+1. A Media Graph továbbra is fut, és kinyomtatja az eredményeket. Az RTSP-szimulátor megtartja a forrás videóját. A Media Graph leállításához térjen vissza a **terminál** ablakába, és válassza az ENTER billentyűt. 
+
+    A hívások következő sorozata törli az erőforrásokat:
+      * A Graph- `GraphInstanceDeactivate` példány inaktiválására irányuló hívás.
+      * A `GraphInstanceDelete` példány törlésére irányuló hívás.
+      * A `GraphTopologyDelete` topológia törlésére irányuló hívás.
+      * Egy végső hívás, `GraphTopologyList` amely azt jelzi, hogy a lista üres.
 
 ## <a name="interpret-results"></a>Eredmények értelmezése
 
-A Media Graph futtatásakor a http-bővítmény processzor csomópontjának eredményeit a rendszer a IoT Hub fogadó csomóponton keresztül továbbítja a IoT Hub. A Visual Studio Code kimenet ablakában látható üzenetek "Body" szakaszt és egy "applicationProperties" szakaszt tartalmaznak. Ennek a résznek a megismeréséhez olvassa el [ezt a](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) cikket.
+A Media Graph futtatásakor a HTTP-bővítmény processzor-csomópontjának eredményei áthaladnak a IoT Hub fogadó csomóponton az IoT hubhoz. A **kimeneti** ablakban látható üzenetek egy `body` szakaszt és egy `applicationProperties` szakaszt tartalmaznak. További információ: [IoT hub üzenetek létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
 
-Az alábbi üzenetekben az alkalmazás tulajdonságait és a törzs tartalmát az élő videó elemzési modulja határozza meg. 
+A következő üzenetekben az élő videó elemzési modulja az alkalmazás tulajdonságait és a törzs tartalmát határozza meg. 
 
+### <a name="mediasessionestablished-event"></a>MediaSessionEstablished esemény
 
-
-### <a name="mediasession-established-event"></a>MediaSession-létrehozási esemény
-
-Az adathordozó-diagramok példányainak létrehozásakor az RTSP-forrás csomópontja megpróbál csatlakozni az rtspsim-live55 tárolón futó RTSP-kiszolgálóhoz. Ha ez sikeres, a rendszer kinyomtatja ezt az eseményt. Az esemény típusa Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished.
+Az adathordozó-diagramok példányainak létrehozásakor az RTSP-forrás csomópontja megpróbál csatlakozni az rtspsim-live55 tárolón futó RTSP-kiszolgálóhoz. Ha a kapcsolat sikeres, a következő esemény lesz kinyomtatva. Az esemény típusa: `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:
@@ -191,16 +208,21 @@ Az adathordozó-diagramok példányainak létrehozásakor az RTSP-forrás csomó
 }
 ```
 
-Vegye figyelembe a következőket a fenti üzenetben:
-* Az üzenet egy diagnosztikai esemény, a MediaSessionEstablished azt jelzi, hogy az RTSP-forrás csomópont (a tárgy) képes volt kapcsolatot létesíteni az RTSP-szimulátorral, és elkezdi fogadni a (szimulált) élő hírcsatornát.
-* a "tárgy" a applicationProperties azt jelzi, hogy az üzenet a Media Graph RTSP-forrás csomópontjában lett létrehozva.
-* a applicationProperties "eventType" értéke azt jelzi, hogy ez egy diagnosztikai esemény.
-* a "eventTime" érték azt az időpontot jelzi, amikor az esemény bekövetkezett.
-* a "Body" a diagnosztikai eseménnyel kapcsolatos adatokat tartalmaz, amelyek ebben az esetben a [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) adatai.
+Ebben az üzenetben a következő információkat láthatja:
+
+* Az üzenet egy diagnosztikai esemény. `MediaSessionEstablished`azt jelzi, hogy az RTSP-szimulátorhoz csatlakoztatott RTSP-forrás csomópont (a tárgy) megkezdte a (szimulált) élő adatcsatorna fogadását.
+* A `applicationProperties` ben `subject` azt jelzi, hogy az üzenet a Media Graph RTSP-forrás csomópontjában lett létrehozva.
+* A `applicationProperties` ben `eventType` azt jelzi, hogy ez az esemény egy diagnosztikai esemény.
+* A `eventTime` jelzi az esemény időpontját.
+* A `body` diagnosztikai eseménnyel kapcsolatos információkat tartalmaz. Ebben az esetben az adatok a [Session Description Protocol (SDP)](https://en.wikipedia.org/wiki/Session_Description_Protocol) adatait tartalmazzák.
 
 ### <a name="inference-event"></a>Következtetési esemény
 
-A HTTP-bővítmény processzor-csomópontja a yolov3 modulból származtatott eredményeket fogad, és a IoT Hub fogadó csomóponton keresztül bocsátja ki őket. Ezekben az eseményekben a típus "Entity" (entitás) értékre van állítva, amely azt jelzi, hogy egy entitás, például egy autó vagy egy teherautó, a eventTime pedig megadja, hogy a rendszer mikor (UTC) észlelte az objektumot. Az alábbi példa azt mutatja be, hogy két autót észlelt különböző megbízhatósági szintekkel ugyanazon a videó keretén belül.
+A HTTP-bővítmény processzor-csomópontja a yolov3 modulból származó következtetéseket fogad. Ezután az eredményeket a IoT Hub fogadó csomóponton keresztül származtatott eseményként bocsátja ki. 
+
+Ezekben az eseményekben a típus úgy van beállítva, `entity` hogy jelezze, hogy egy entitás, például egy autó vagy egy teherautó. Az `eventTime` érték az a UTC-idő, amikor az objektum észlelve lett. 
+
+A következő példában két autót észleltek ugyanabban a képkockában, különböző megbízhatósági szinttel.
 
 ```
 [IoTHubMonitor] [11:37:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -248,22 +270,22 @@ A HTTP-bővítmény processzor-csomópontja a yolov3 modulból származtatott er
 }
 ```
 
-Vegye figyelembe a következőket a fenti üzenetekben:
+Az üzenetekben figyelje meg a következő adatokat:
 
-* a "tárgy" a applicationProperties hivatkozik a gráf topológiájában lévő csomópontra, amelyből az üzenet létrejött. 
-* a applicationProperties "eventType" értéke azt jelzi, hogy ez egy elemzési esemény.
-* a "eventTime" érték azt az időpontot jelzi, amikor az esemény bekövetkezett.
-* a "Body" az elemzési eseményre vonatkozó információkat tartalmaz. Ebben az esetben az esemény egy következtetési esemény, ezért a törzs "következtetéseket" tartalmaz.
-* a "következtetések" szakasz azt jelzi, hogy a "type" az "Entity", és további információkat tartalmaz az "Entity" tulajdonságról.
+* A alkalmazásban a `applicationProperties` `subject` diagram topológiájában lévő csomópontra hivatkozik, amelyről az üzenet létrejött. 
+* A `applicationProperties` ben `eventType` azt jelzi, hogy ez az esemény egy elemzési esemény.
+* Az `eventTime` érték az az idő, amikor az esemény bekövetkezett.
+* A `body` szakasz az elemzési eseményre vonatkozó információkat tartalmaz. Ebben az esetben az esemény egy következtetési esemény, így a törzs tartalmaz egy `inferences` adathalmazt.
+* A `inferences` szakasz azt jelzi, hogy az a `type` `entity` . Ez a szakasz az entitással kapcsolatos további információkat tartalmaz.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Ha szeretné kipróbálni a többi rövid útmutatót, tartsa be a következőt: a létrehozott erőforrásokhoz. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben futtatta ezt a rövid útmutatót, és törölje az összes erőforrást.
+Ha más gyors útmutatókat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben ezt a rövid útmutatót futtatta, és törölje az összes erőforrást.
 
 ## <a name="next-steps"></a>További lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 
-* Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az [ONVIF](https://www.onvif.org/conformant-products/) -kompatibilis termékek lapon megkeresheti az RTSP-támogatással rendelkező IP-kamerákat a G, S vagy T profiloknak megfelelő eszközök keresésével.
-* AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse az [Azure IoT Edge Runtime telepítése Linux rendszeren](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) című témakör utasításait, majd kövesse az [első IoT Edge modul üzembe helyezése a virtuális Linux-eszközökhöz című](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) rövid útmutatót az eszköz Azure-IoT hub való regisztrálásához.
+* Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Megkeresheti az RTSP-t támogató IP-kamerákat a [ONVIF-megfelelőséggel](https://www.onvif.org/conformant-products/) rendelkező termékek oldalon. Keresse meg azokat az eszközöket, amelyek megfelelnek a G, S vagy T profiloknak.
+* Az Azure Linux rendszerű virtuális gépek helyett AMD64-vagy x64-es Linux-eszközt használjon. Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. A [Azure IoT Edge futtatókörnyezet telepítése Linux rendszeren](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)című témakör útmutatását követheti. Ezután regisztrálja az eszközt az Azure IoT Hub az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)című témakör útmutatását követve.
 

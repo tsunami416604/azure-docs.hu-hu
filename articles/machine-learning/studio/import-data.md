@@ -5,17 +5,17 @@ description: Adatok importálása a Azure Machine Learning Studioba (klasszikus)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 10ff7b4f031934f2f7432e53efc3031272574d0e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: bf8d869582031d5bfa627edabac6a231e9cf8a74
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195319"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711136"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Betanítási adatok importálása Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból
 
@@ -44,7 +44,7 @@ A kísérlet bármely pontján megtekintheti vagy letöltheti a modul által el�
 A kísérletbe több adattípust is importálhat, attól függően, hogy milyen mechanizmust használ az adatok importálásához, és honnan származik:
 
 * Egyszerű szöveg (. txt)
-* Vesszővel tagolt értékek (CSV) fejléctel (. csv) vagy anélkül (. NH. csv)
+* Vesszővel tagolt értékek (CSV) fejléctel (. csv) vagy anélkül (.nh.csv)
 * Tabulátorral tagolt értékek (TSV) fejléctel (. TSV) vagy anélkül (. NH. TSV)
 * Excel-fájl
 * Azure-tábla

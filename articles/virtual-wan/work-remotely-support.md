@@ -4,15 +4,15 @@ description: Ez az oldal azt ismerteti, hogyan használhatja az Azure Virtual WA
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ce212b5da90906966025674b58884d0e2f5bb064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337127"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753768"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure virtuális WAN és a távoli működés támogatása
 
@@ -51,7 +51,7 @@ Az alapszintű virtuális WAN csak helyek közötti VPN-t biztosít. Ahhoz, hogy
 
 ## <a name="additional-information"></a><a name="other considerations"></a>További információ
 
-A virtuális WAN régiónként/helyenként egy hubot támogat. A tartózkodási helyről a [virtuális WAN-partnerek és-helyek](virtual-wan-locations-partners.md) című cikkben talál további információt. Minden központ legfeljebb 10 000 távoli felhasználói kapcsolatot, 1 000 ág-kapcsolatot, négy ExpressRoute-áramkört és legfeljebb 500 Virtual Network kapcsolatot támogat. Ha bármilyen kérdése van, a távoli felhasználók vertikális felskálázása esetén ne habozzon, hogy küldjön e-mailt a azurevirtualwan@microsoft.comcímre. Ha technikai támogatásra van szüksége, győződjön meg arról, hogy a Azure Portal egy támogatási jegyet nyit, és a Súgó a következőképpen fog megjelenni.
+A virtuális WAN régiónként/helyenként egy hubot támogat. A tartózkodási helyről a [virtuális WAN-partnerek és-helyek](virtual-wan-locations-partners.md) című cikkben talál további információt. Minden központ legfeljebb 10 000 távoli felhasználói kapcsolatot, 1 000 ág-kapcsolatot, négy ExpressRoute-áramkört és legfeljebb 500 Virtual Network kapcsolatot támogat. Ha bármilyen kérdése van, a távoli felhasználók vertikális felskálázása esetén ne habozzon, hogy küldjön e-mailt a címre azurevirtualwan@microsoft.com . Ha technikai támogatásra van szüksége, győződjön meg arról, hogy a Azure Portal egy támogatási jegyet nyit, és a Súgó a következőképpen fog megjelenni.
 
 ## <a name="faq"></a><a name="faq"></a>GYIK
 

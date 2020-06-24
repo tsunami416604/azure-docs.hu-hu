@@ -7,11 +7,11 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270237"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708042"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps
 
@@ -41,7 +41,7 @@ A logikai alkalmazás létrehozásakor bekapcsolhatja a Log Analytics.
 
       Miután befejezte ezt a lépést, az Azure létrehozza a logikai alkalmazást, amely most már társítva van a Log Analytics munkaterülethez. Emellett ez a lépés automatikusan telepíti a Logic Apps felügyeleti megoldást a munkaterületen.
 
-1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
 1. A logikai alkalmazás futtatása után a logikai alkalmazás futtatásának megtekintéséhez [folytassa ezeket a lépéseket](#view-logic-app-runs).
 
@@ -51,7 +51,7 @@ A logikai alkalmazás létrehozásakor bekapcsolhatja a Log Analytics.
 
 Ha bekapcsolta Log Analytics a logikai alkalmazás létrehozásakor, hagyja ki ezt a lépést. Már telepítve van a Logic Apps felügyeleti megoldás a Log Analytics munkaterületen.
 
-1. A [Azure Portal](https://portal.azure.com)keresési mezőjébe írja be `log analytics workspaces`a kifejezést, majd válassza **log Analytics munkaterületek**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)keresési mezőjébe írja be a kifejezést `log analytics workspaces` , majd válassza **log Analytics munkaterületek**lehetőséget.
 
    !["Log Analytics munkaterületek" kiválasztása](./media/monitor-logic-apps-log-analytics/find-select-log-analytics-workspaces.png)
 
@@ -59,7 +59,7 @@ Ha bekapcsolta Log Analytics a logikai alkalmazás létrehozásakor, hagyja ki e
 
    ![Log Analytics munkaterület kiválasztása](./media/monitor-logic-apps-log-analytics/select-log-analytics-workspace.png)
 
-1. Az **Áttekintés** ablaktáblán, az **első lépések a log Analytics** > a**figyelési megoldások konfigurálása**területen válassza a **megoldások megtekintése**lehetőséget.
+1. Az **Áttekintés** ablaktáblán, az **első lépések a log Analytics**a  >  **figyelési megoldások konfigurálása**területen válassza a **megoldások megtekintése**lehetőséget.
 
    ![Az Áttekintés panelen válassza a "megoldások megtekintése" lehetőséget.](./media/monitor-logic-apps-log-analytics/log-analytics-workspace.png)
 
@@ -67,7 +67,7 @@ Ha bekapcsolta Log Analytics a logikai alkalmazás létrehozásakor, hagyja ki e
 
    ![Az Áttekintés panelen új megoldás hozzáadása](./media/monitor-logic-apps-log-analytics/add-logic-apps-management-solution.png)
 
-1. A **piactér** megnyitása után a keresőmezőbe írja be `logic apps management`a kifejezést, majd válassza a **Logic apps felügyelet**lehetőséget.
+1. A **piactér** megnyitása után a keresőmezőbe írja be a kifejezést `logic apps management` , majd válassza a **Logic apps felügyelet**lehetőséget.
 
    ![A piactéren válassza a "Logic Apps kezelés" lehetőséget.](./media/monitor-logic-apps-log-analytics/select-logic-apps-management.png)
 
@@ -91,7 +91,7 @@ Ha [Azure monitor naplókban](../azure-monitor/platform/data-platform-logs.md)l�
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a logikai alkalmazást.
 
-1. A logikai alkalmazás menüjének **figyelés**területén válassza a **diagnosztikai beállítások** > **Hozzáadás diagnosztikai beállítás**elemet.
+1. A logikai alkalmazás menüjének **figyelés**területén válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás**elemet.
 
    ![A "Figyelés" területen válassza a "diagnosztikai beállítások" > "diagnosztikai beállítás hozzáadása" lehetőséget.](./media/monitor-logic-apps-log-analytics/logic-app-diagnostics.png)
 
@@ -123,7 +123,7 @@ A logikai alkalmazás futtatása után megtekintheti a futtatások adatait a Log
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és nyissa meg log Analytics munkaterületét.
 
-1. A munkaterület menüjében válassza a **munkaterület összefoglalása** > **Logic apps felügyelet**lehetőséget.
+1. A munkaterület menüjében válassza a **munkaterület összefoglalása**  >  **Logic apps felügyelet**lehetőséget.
 
    ![Logikai alkalmazás futtatásának állapota és darabszáma](./media/monitor-logic-apps-log-analytics/logic-app-runs-summary.png)
 
@@ -192,9 +192,9 @@ Annak a helynek a alapján, ahol diagnosztikai adatküldést szeretne végezni, 
 
 ## <a name="azure-monitor-diagnostics-events"></a>Diagnosztikai események Azure Monitor
 
-Minden diagnosztikai esemény a logikai alkalmazással és az eseménysel kapcsolatos részleteket tartalmaz, például az állapotot, a kezdési időt, a befejezési időpontot és így tovább. A figyelés, a nyomon követés és a naplózás programozott beállításához ezeket REST API az információkat a [Azure Logic Appshoz](https://docs.microsoft.com/rest/api/logic) és a [Azure monitor Rest APIához](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)használhatja. Használhatja a és `clientTrackingId` `trackedProperties` a tulajdonságokat is, amelyek megjelennek a 
+Minden diagnosztikai esemény a logikai alkalmazással és az eseménysel kapcsolatos részleteket tartalmaz, például az állapotot, a kezdési időt, a befejezési időpontot és így tovább. A figyelés, a nyomon követés és a naplózás programozott beállításához ezeket REST API az információkat a [Azure Logic Appshoz](https://docs.microsoft.com/rest/api/logic) és a [Azure monitor Rest APIához](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)használhatja. Használhatja a `clientTrackingId` és a tulajdonságokat is `trackedProperties` , amelyek megjelennek a 
 
-* `clientTrackingId`: Ha nincs megadva, az Azure automatikusan létrehozza ezt az azonosítót, és korrelálja az eseményeket egy logikai alkalmazás futása során, beleértve a logikai alkalmazásból meghívott beágyazott munkafolyamatokat is. Ezt az azonosítót manuálisan is megadhatja egy triggerben, `x-ms-client-tracking-id` ha egy fejlécet ad meg a trigger-kérelemben szereplő egyéni azonosító értékkel. Használhat kérelem-triggert, HTTP-triggert vagy webhook-triggert.
+* `clientTrackingId`: Ha nincs megadva, az Azure automatikusan létrehozza ezt az azonosítót, és korrelálja az eseményeket egy logikai alkalmazás futása során, beleértve a logikai alkalmazásból meghívott beágyazott munkafolyamatokat is. Ezt az azonosítót manuálisan is megadhatja egy triggerben, ha egy fejlécet ad meg a `x-ms-client-tracking-id` trigger-kérelemben szereplő egyéni azonosító értékkel. Használhat kérelem-triggert, HTTP-triggert vagy webhook-triggert.
 
 * `trackedProperties`: A diagnosztikai adatok bemenetének és kimenetének nyomon követéséhez hozzáadhat egy `trackedProperties` szakaszt egy művelethez a Logic app Designer használatával vagy közvetlenül a logikai alkalmazás JSON-definíciójában. A nyomon követett tulajdonságok csak egyetlen művelet bemeneteit és kimeneteit követhetik nyomon, de az `correlation` események tulajdonságaival korrelálhat a futtatási műveletek között. Egynél több tulajdonság nyomon követéséhez adja hozzá a `trackedProperties` szakaszt és a művelet definíciójában használni kívánt tulajdonságokat.
 
@@ -243,7 +243,7 @@ Minden diagnosztikai esemény a logikai alkalmazással és az eseménysel kapcso
   }
   ```
 
-Ez a példa azt szemlélteti `ActionCompleted` `clientTrackingId` , hogyan tartalmazza az `trackedProperties` esemény a és attribútumokat:
+Ez a példa azt szemlélteti `ActionCompleted` , hogyan tartalmazza az esemény a `clientTrackingId` és `trackedProperties` attribútumokat:
 
 ```json
 {

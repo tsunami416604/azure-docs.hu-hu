@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259070"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711034"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric-alkalmazás kezelése az Azure Service Fabric parancssori felület (sfctl) használatával
 
@@ -51,7 +51,7 @@ Ha például az alkalmazáscsomag a `app_package_dir` címtárban található, a
 sfctl application upload --path ~/app_package_dir
 ```
 
-Nagyméretű alkalmazáscsomag esetén megadhatja `--show-progress` a feltöltés folyamatának állapotát.
+Nagyméretű alkalmazáscsomag esetén megadhatja a `--show-progress` feltöltés folyamatának állapotát.
 
 ### <a name="provision-the-application-type"></a>Az alkalmazás típusának kiépítése
 
@@ -85,7 +85,7 @@ sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app
 
 `app-name`az alkalmazás példányához használni kívánt név. További paramétereket az előzőleg kiosztott alkalmazási jegyzékből kaphat.
 
-Az alkalmazás nevének az előtaggal `fabric:/`kell kezdődnie.
+Az alkalmazás nevének az előtaggal kell kezdődnie `fabric:/` .
 
 ### <a name="create-services-for-the-new-application"></a>Szolgáltatások létrehozása az új alkalmazáshoz
 
@@ -112,7 +112,7 @@ sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
 
-A kifogástalan állapotú szolgáltatások és `HealthState` alkalmazások értéke `Ok`.
+A kifogástalan állapotú szolgáltatások és alkalmazások `HealthState` értéke `Ok` .
 
 ## <a name="remove-an-existing-application"></a>Meglévő alkalmazás eltávolítása
 
@@ -158,9 +158,9 @@ A frissítések felülbírálják a meglévő paramétereket, bármilyen készle
 
 A korábban megadott paraméterek lekéréséhez használhatja az `sfctl application info` parancsot.
 
-Ha egy alkalmazás frissítése folyamatban van, az állapot a `sfctl application upgrade-status` parancs használatával kérhető le.
+Ha egy alkalmazás frissítése folyamatban van, az állapot a parancs használatával kérhető le `sfctl application upgrade-status` .
 
-Végül, ha folyamatban van egy frissítés, és meg kell szakítani, a `sfctl application upgrade-rollback` használatával visszaállíthatja a frissítést.
+Végül, ha folyamatban van egy frissítés, és meg kell szakítani, a használatával `sfctl application upgrade-rollback` visszaállíthatja a frissítést.
 
 ## <a name="next-steps"></a>További lépések
 

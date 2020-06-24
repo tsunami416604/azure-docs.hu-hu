@@ -4,16 +4,16 @@ description: Ez a cikk azt ismerteti, hogyan hozható létre FSLogix-profil tár
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7159eac0e71819fd75abef07cae979d5425fc07c
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 3348920260b6c256b25d0ff2419cdfd2a00dea35
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484618"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207311"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Profil tároló létrehozása Azure Files és Azure AD DS
 
@@ -41,7 +41,7 @@ Rendszergazda hozzáadása:
 
 ## <a name="set-up-an-azure-storage-account"></a>Azure Storage-fiók beállítása
 
-Itt az ideje, hogy engedélyezi az Azure AD DS a hitelesítést a Server Message Block (SMB) protokollon keresztül. 
+Itt az ideje, hogy engedélyezi az Azure AD DS a hitelesítést a Server Message Block (SMB) protokollon keresztül.
 
 A hitelesítés engedélyezése:
 
@@ -108,8 +108,8 @@ A Storage-fiók elérési kulcsának beszerzése:
     - Cserélje le a helyére a `<share-name>` korábban létrehozott megosztás nevét.
     - Cserélje le `<storage-account-key>` a elemet az Azure Storage-fiók kulcsára.
 
-    Például:  
-  
+    Például:
+
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
@@ -124,7 +124,7 @@ A Storage-fiók elérési kulcsának beszerzése:
     - A helyére írja be annak a felhasználónak a felhasználónevét, `<user-email>` aki ezt a profilt fogja használni a munkamenet-gazda virtuális gépek eléréséhez.
 
     Például:
-     
+
      ```cmd
      icacls y: /grant john.doe@contoso.com:(f)
      ```
@@ -137,7 +137,7 @@ FSLogix-profil tárolójának konfigurálása:
 
 1. Jelentkezzen be a cikk elején konfigurált munkamenet-gazda virtuális gépre, majd [töltse le és telepítse a FSLogix-ügynököt](/fslogix/install-ht/).
 
-2. Bontsa ki a letöltött FSLogix-ügynököt, és nyissa meg az **x64**  >  -es**kiadásokat**, majd nyissa meg a **FSLogixAppsSetup. exe**fájlt
+2. Bontsa ki a letöltött FSLogix-ügynök fájlját **x64**  >  , és nyissa meg az x64-es**kiadásokat**, majd nyissa meg **FSLogixAppsSetup.exe**.
 
 3. A telepítő elindítása után válassza az Elfogadom **a licencfeltételeket lehetőséget.** Ha van ilyen, adjon meg egy új kulcsot.
 
@@ -203,13 +203,13 @@ Felhasználók kiosztása:
 
      ```powershell
      $pool1 = "contoso"
-     
+
      $tenant = "contoso"
-     
+
      $appgroup = "Desktop Application Group"
-     
+
      $user1 = "jane.doe@contoso.com"
-     
+
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
@@ -233,7 +233,7 @@ A profil ellenőrzése:
 
     Ha minden megfelelően van beállítva, a következőhöz hasonló nevű **könyvtárat** kell megjelennie: `<user SID>-<username>` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha alternatív módszereket keres a FSLogix-profilok létrehozásához, tekintse meg a következő cikkeket:
 

@@ -3,17 +3,17 @@ title: A méretezéshez és a teljesítményhez Azure Cosmos DB táblázatok ter
 description: 'Az Azure Table Storage tervezési útmutatója: skálázható és teljesített táblázatok a Azure Cosmos DB és az Azure Table Storage szolgáltatásban'
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: conceptual
-ms.date: 05/21/2019
+ms.topic: how-to
+ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 78a38938ad31bb349b7215f0a26dda69f4fec966
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: beb80390bdeacd6775ccfb0b712fe6dd260fbce0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651925"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261086"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Az Azure Table Storage tábla tervezési útmutatója: skálázható és elvégezhető táblák
 
@@ -630,7 +630,7 @@ Ehhez a beállításhoz használja az indexelő entitásokat, amelyek a követke
 
 ![Az alkalmazott entitást bemutató ábra, amely tartalmazza az azonos vezetéknevű alkalmazottak azonosítóinak listáját.][15]
 
-A `EmployeeIDs` tulajdonság a ben tárolt utolsó névvel rendelkező alkalmazottak alkalmazotti azonosítóinak listáját tartalmazza `RowKey` .  
+A `EmployeeIDs` tulajdonság a (z) és a (z) és a utolsó néven tárolt alkalmazottak alkalmazotti azonosítóinak listáját tartalmazza `RowKey` `PartitionKey` .  
 
 A EGTs nem használható a konzisztencia fenntartásához, mert az index entitások az alkalmazott entitások külön partíciójában vannak. Győződjön meg arról, hogy az indexelő entitások végül konzisztensek az alkalmazott entitásokkal.  
 

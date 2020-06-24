@@ -2,14 +2,14 @@
 title: Azure Active Directory hozzáférés konfigurálása – Azure Blockchain szolgáltatás
 description: Az Azure Blockchain szolgáltatás konfigurálása Azure Active Directory-hozzáféréssel
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455872"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208773"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Az Azure Blockchain Service Azure Active Directory-hozzáférésének konfigurálása
 
@@ -63,7 +63,7 @@ A **readme** (rövid útmutató) című részében találhatja meg az összeköt
 
 ### <a name="connect-using-an-azure-ad-user-account"></a>Csatlakozási szolgáltatás Azure AD-felhasználói fiókkal
 
-1. Futtassa az alábbi parancsot egy Azure AD-felhasználói fiókkal történő hitelesítéshez. Cserélje \<le\> a MyAADDirectory-t egy Azure ad-tartományra. Például: `yourdomain.onmicrosoft.com`.
+1. Futtassa az alábbi parancsot egy Azure AD-felhasználói fiókkal történő hitelesítéshez. Cserélje le \<myAADDirectory\> egy Azure ad-tartományra. Például: `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
@@ -99,7 +99,7 @@ Az alkalmazások Azure AD-ben való regisztrálásával kapcsolatos további inf
 
 Olyan mobileszköz-vagy szöveges böngésző esetén, ahol az Azure AD-hitelesítés előugró ablaka nem lehetséges, az Azure AD egyszeri jelszót hoz létre. A PIN-kódot átmásolhatja, és folytathatja az Azure AD-hitelesítést egy másik környezetben.
 
-A PIN-kód létrehozásához cserélje le a **aadauthcode** a **aaddevice**értékre. Cserélje \<le\> a MyAADDirectory-t egy Azure ad-tartományra. Például: `yourdomain.onmicrosoft.com`.
+A PIN-kód létrehozásához cserélje le a **aadauthcode** a **aaddevice**értékre. Cserélje le \<myAADDirectory\> egy Azure ad-tartományra. Például: `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>

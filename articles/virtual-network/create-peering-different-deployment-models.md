@@ -4,24 +4,24 @@ description: Megtudhatja, hogyan hozhat létre virtuális hálózatokat a külö
 services: virtual-network
 documentationcenter: ''
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 61df13e78dc7115d4f4d45ab18b9ffdae107dc96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 318e51f12653b5cbe6bd47b9c48a57d72286a4a7
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023259"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710048"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Virtuális hálózati társítás létrehozása – különböző üzemi modellek, azonos előfizetés
 
@@ -84,8 +84,8 @@ A virtuális hálózati társítás létrehozásához használhatja a Azure Port
 
 Hajtsa végre az alábbi lépéseket a klasszikus Azure CLI-vel és az Azure CLI-vel. A Azure Cloud Shell lépéseinek elvégzéséhez egyszerűen válassza **ki a kipróbálás** gombot az alábbi lépések bármelyikén, vagy telepítse a [klasszikus CLI](/cli/azure/install-cli-version-1.0?toc=%2fazure%2fvirtual-network%2ftoc.json) -t és a [parancssori](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) felületet, és futtassa a parancsokat a helyi számítógépen.
 
-1. Ha a Cloud Shell használja, ugorjon a 2. lépésre, mert a Cloud Shell automatikusan bejelentkezik az Azure-ba. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be `azure login` az Azure-ba a parancs használatával.
-2. Futtassa a CLI-t a Service Management módban a `azure config mode asm` parancs beírásával.
+1. Ha a Cloud Shell használja, ugorjon a 2. lépésre, mert a Cloud Shell automatikusan bejelentkezik az Azure-ba. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-ba a `azure login` parancs használatával.
+2. Futtassa a CLI-t a Service Management módban a parancs beírásával `azure config mode asm` .
 3. A virtuális hálózat (klasszikus) létrehozásához adja meg a következő parancsot:
 
    ```azurecli-interactive
@@ -110,7 +110,7 @@ Hajtsa végre az alábbi lépéseket a klasszikus Azure CLI-vel és az Azure CLI
      --address-prefix 10.0.0.0/16
    ```
 
-5. Hozzon létre egy virtuális hálózatot a különböző üzemi modelleken keresztül létrehozott két virtuális hálózat között a parancssori felület használatával. Másolja a következő szkriptet egy szövegszerkesztőbe a SZÁMÍTÓGÉPén. Cserélje `<subscription id>` le az értékét az előfizetés-azonosítójával. Ha nem ismeri az előfizetés-AZONOSÍTÓját, írja `az account show` be a parancsot. A kimenetben lévő **azonosító** értéke az előfizetés azonosítója. Illessze be a módosított parancsfájlt a CLI-munkamenetbe, majd `Enter`nyomja le a gombot.
+5. Hozzon létre egy virtuális hálózatot a különböző üzemi modelleken keresztül létrehozott két virtuális hálózat között a parancssori felület használatával. Másolja a következő szkriptet egy szövegszerkesztőbe a SZÁMÍTÓGÉPén. Cserélje le `<subscription id>` az értékét az előfizetés-azonosítójával. Ha nem ismeri az előfizetés-AZONOSÍTÓját, írja be a `az account show` parancsot. A kimenetben lévő **azonosító** értéke az előfizetés azonosítója. Illessze be a módosított parancsfájlt a CLI-munkamenetbe, majd nyomja le a gombot `Enter` .
 
    ```azurecli-interactive
    # Get the ID for VNet1.
@@ -128,7 +128,7 @@ Hajtsa végre az alábbi lépéseket a klasszikus Azure CLI-vel és az Azure CLI
      --allow-vnet-access
    ```
 
-6. A szkript végrehajtása után tekintse át a virtuális hálózat (Resource Manager) társítását. Másolja be az alábbi parancsot, illessze be a CLI-munkamenetbe, majd `Enter`nyomja le a következőt:
+6. A szkript végrehajtása után tekintse át a virtuális hálózat (Resource Manager) társítását. Másolja be az alábbi parancsot, illessze be a CLI-munkamenetbe, majd nyomja le a következőt `Enter` :
 
    ```azurecli-interactive
    az network vnet peering list \
@@ -147,7 +147,7 @@ Hajtsa végre az alábbi lépéseket a klasszikus Azure CLI-vel és az Azure CLI
 
 1. Telepítse a PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) és [az modulok legújabb](https://www.powershellgallery.com/packages/Az/) verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Indítsa el a PowerShell-munkamenetet.
-3. A PowerShellben jelentkezzen be az Azure-ba `Add-AzureAccount` a parancs beírásával. A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#requirements-and-constraints)társítási engedélyek.
+3. A PowerShellben jelentkezzen be az Azure-ba a parancs beírásával `Add-AzureAccount` . A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#requirements-and-constraints)társítási engedélyek.
 4. Virtuális hálózat (klasszikus) PowerShell-lel történő létrehozásához létre kell hoznia egy újat, vagy módosítania kell egy meglévő hálózati konfigurációs fájlt. Útmutató [hálózati konfigurációs fájlok exportálásához, frissítéséhez és importálásához](virtual-networks-using-network-configuration-file.md). A fájlnak tartalmaznia kell a következő **VirtualNetworkSite** elemet az oktatóanyagban használt virtuális hálózathoz:
 
     ```xml
@@ -165,8 +165,8 @@ Hajtsa végre az alábbi lépéseket a klasszikus Azure CLI-vel és az Azure CLI
 
     > [!WARNING]
     > A módosított hálózati konfigurációs fájlok importálása a meglévő virtuális hálózatok (klasszikus) módosítását eredményezheti az előfizetésében. Győződjön meg arról, hogy csak az előző virtuális hálózatot adja hozzá, és hogy nem módosítja vagy nem távolítja el az előfizetéshez tartozó meglévő virtuális hálózatokat.
-5. Jelentkezzen be az Azure-ba a virtuális hálózat (Resource Manager) létrehozásához `Connect-AzAccount` a parancs beírásával. A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#requirements-and-constraints)társítási engedélyek.
-6. Hozzon létre egy erőforráscsoportot és egy virtuális hálózatot (Resource Manager). Másolja a szkriptet, illessze be a PowerShellbe, majd `Enter`nyomja meg a gombot.
+5. Jelentkezzen be az Azure-ba a virtuális hálózat (Resource Manager) létrehozásához a parancs beírásával `Connect-AzAccount` . A bejelentkezett fióknak rendelkeznie kell a virtuális hálózati társítás létrehozásához szükséges engedélyekkel. Az engedélyek listáját lásd: [virtuális hálózati](virtual-network-manage-peering.md#requirements-and-constraints)társítási engedélyek.
+6. Hozzon létre egy erőforráscsoportot és egy virtuális hálózatot (Resource Manager). Másolja a szkriptet, illessze be a PowerShellbe, majd nyomja meg a gombot `Enter` .
 
     ```powershell
     # Create a resource group.
@@ -180,7 +180,7 @@ Hajtsa végre az alábbi lépéseket a klasszikus Azure CLI-vel és az Azure CLI
       -Location eastus
     ```
 
-7. Hozzon létre egy virtuális hálózatot a különböző üzembe helyezési modelleken keresztül létrehozott két virtuális hálózat között. Másolja a következő szkriptet egy szövegszerkesztőbe a SZÁMÍTÓGÉPén. Cserélje `<subscription id>` le az értékét az előfizetés-azonosítójával. Ha nem ismeri az előfizetés-AZONOSÍTÓját, írja `Get-AzSubscription` be a parancsot a megtekintéséhez. A visszaadott kimenetben lévő **azonosító** értéke az előfizetés azonosítója. A szkript végrehajtásához másolja a módosított parancsfájlt a szövegszerkesztőből, majd kattintson a jobb gombbal a PowerShell-munkamenetre, majd nyomja `Enter`le a gombot.
+7. Hozzon létre egy virtuális hálózatot a különböző üzembe helyezési modelleken keresztül létrehozott két virtuális hálózat között. Másolja a következő szkriptet egy szövegszerkesztőbe a SZÁMÍTÓGÉPén. Cserélje le `<subscription id>` az értékét az előfizetés-azonosítójával. Ha nem ismeri az előfizetés-AZONOSÍTÓját, írja be a `Get-AzSubscription` parancsot a megtekintéséhez. A visszaadott kimenetben lévő **azonosító** értéke az előfizetés azonosítója. A szkript végrehajtásához másolja a módosított parancsfájlt a szövegszerkesztőből, majd kattintson a jobb gombbal a PowerShell-munkamenetre, majd nyomja le a gombot `Enter` .
 
     ```powershell
     # Peer VNet1 to VNet2.
@@ -190,7 +190,7 @@ Hajtsa végre az alábbi lépéseket a klasszikus Azure CLI-vel és az Azure CLI
       -RemoteVirtualNetworkId /subscriptions/<subscription Id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnet2
     ```
 
-8. A szkript végrehajtása után tekintse át a virtuális hálózat (Resource Manager) társítását. Másolja be az alábbi parancsot, illessze be a PowerShell-munkamenetbe, majd `Enter`nyomja le a következőt:
+8. A szkript végrehajtása után tekintse át a virtuális hálózat (Resource Manager) társítását. Másolja be az alábbi parancsot, illessze be a PowerShell-munkamenetbe, majd nyomja le a következőt `Enter` :
 
     ```powershell
     Get-AzVirtualNetworkPeering `

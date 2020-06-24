@@ -1,22 +1,22 @@
 ---
-title: Mappák és több CSV-fájl lekérdezése az SQL igény szerinti használatával (előzetes verzió)
+title: Mappák és több fájl lekérdezése az SQL igény szerinti használatával (előzetes verzió)
 description: Az SQL on-demand (előzetes verzió) támogatja több fájl/mappa olvasását helyettesítő karakterekkel, amelyek hasonlóak a Windows operációs rendszerben használt helyettesítő karakterekhez.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cb136fa9a3dc63144d26820b7170250b3598ba77
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235429"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207631"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>Mappák és több CSV-fájl lekérdezése  
+# <a name="query-folders-and-multiple-files"></a>Mappák és több fájl lekérdezése  
 
 Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban.
 

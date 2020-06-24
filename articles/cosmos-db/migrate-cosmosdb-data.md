@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 0eabb3c226a444d872e6f3e5c85ae1a9fa377de3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465762"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263544"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be 
 
@@ -45,7 +45,7 @@ Az egyéni eszköz a tömeges végrehajtó függvénytárat használja, és tám
 Az alábbi ábra az áttelepítési folyamatot írja le az egyéni eszközzel. Az eszköz virtuális gépeken fut, és minden egyes virtuális gép lekérdezi a nyomkövetési gyűjteményt Azure Cosmos DBban, hogy beszerezzen egy bérletet az egyik forrásoldali adatpartíción. Ha ez megtörtént, a rendszer beolvassa a forrásoldali adatpartíciót, és betölti a Azure Cosmos DBba a tömeges végrehajtó függvénytár használatával. Ezután a rendszer frissíti a nyomkövetési gyűjteményt, hogy rögzítse az adatfeldolgozási folyamat állapotát és az észlelt hibákat. Az adatpartíció feldolgozása után az eszköz megkísérli lekérdezni a következő rendelkezésre álló forrásoldali partíciót. Továbbra is feldolgozza a következő forrás partíciót, amíg az összes adatáttelepítés be nem fejeződik. Az eszköz forráskódja [itt](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)érhető el.  
 
  
-![Áttelepítési eszköz beállítása](./media/migrate-cosmosdb-data/migrationsetup.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Áttelepítési eszköz beállítása" border="false":::
  
 
  
@@ -145,10 +145,10 @@ Az áttelepítés befejezése után ellenőrizheti, hogy a dokumentumok száma A
 ## <a name="contact-the-azure-cosmos-db-team"></a>Kapcsolatfelvétel a Azure Cosmos DB csapattal
 Bár a nagy méretű adathalmazok sikeres áttelepítésére a nagyméretű adatkészletek Azure Cosmos DB, a nagyméretű áttelepítések esetében azt javasoljuk, hogy az adatmodellezés és az általános architektúra-felülvizsgálat ellenőrzéséhez a Azure Cosmos DB termék csapatát is el kell érnie. Az adatkészletek és a számítási feladatok alapján a termék csapata más teljesítményre és költséghatékonyságra is utalhat, amelyek alkalmazhatók az Ön számára. Ha a nagyléptékű áttelepítéssel kapcsolatos segítségért szeretne segítséget nyújtani a Azure Cosmos DB csapatának, nyisson meg egy támogatási jegyet az "általános tanácsadó" probléma típusa és a "nagy (TB +) Migrálás" problémás altípuson az alábbi ábrán látható módon.
 
-![Áttelepítési támogatás témakör](./media/migrate-cosmosdb-data/supporttopic.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Áttelepítési támogatás témakör":::
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ: a [.net](bulk-executor-dot-net.md) és a [Java](bulk-executor-java.md)szolgáltatásban a tömeges végrehajtó függvénytárat használó minta alkalmazások kipróbálása. 
 * A tömeges végrehajtó függvénytár integrálva van a Cosmos DB Spark-összekötőbe, és további információt a [Azure Cosmos db Spark-összekötő](spark-connector.md) című cikkben talál.  

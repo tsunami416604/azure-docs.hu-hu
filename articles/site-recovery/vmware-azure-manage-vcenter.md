@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257263"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692519"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter Server kezelése
 
@@ -26,7 +26,7 @@ A VMware virtuális gépek Azure-ba történő vész-helyreállítása során a 
 Ha a helyszíni VMware virtuális gépekhez állít be vész-helyreállítást, Site Recoverynak hozzá kell férnie a vCenter Server/vSphere-gazdagéphez. A Site Recovery Process Server automatikusan képes felderíteni a virtuális gépeket, és szükség esetén feladatátvételt hajt végre. Alapértelmezés szerint a Process Server a Site Recovery konfigurációs kiszolgálón fut. Vegyen fel egy fiókot a konfigurációs kiszolgálóhoz a vCenter Server/vSphere-gazdagéphez való kapcsolódáshoz a következőképpen:
 
 1. Jelentkezzen be a konfigurációs kiszolgálóra.
-1. Nyissa meg a konfigurációs kiszolgáló eszközt (_cspsconfigtool. exe_) az asztali parancsikon használatával.
+1. Nyissa meg a konfigurációs kiszolgáló eszközt (_cspsconfigtool.exe_) az asztali parancsikon használatával.
 1. A **fiók kezelése** lapon kattintson a **fiók hozzáadása**lehetőségre.
 
    ![fiók hozzáadása](./media/vmware-azure-manage-vcenter/addaccount.png)
@@ -48,7 +48,7 @@ Ha a helyszíni VMware virtuális gépekhez állít be vész-helyreállítást, 
 
 A helyszíni VMware virtuális gépekhez tartozó vész-helyreállítás beállításakor adja hozzá azt a vCenter Server/vSphere-gazdagépet, amelyen a virtuális gépeket felkeresi a Site Recovery-tárolóba, az alábbiak szerint:
 
-1. Nyissa meg a konfigurációs kiszolgálót a tárolóban > **site Recovery infrastruktúra** > -**konfigurációs**kiszolgálókon.
+1. **Site Recovery Infrastructure**  >  Nyissa meg a konfigurációs kiszolgálót a tárolóban > site Recovery infrastruktúra-**konfigurációs**kiszolgálókon.
 1. A **részletek** lapon kattintson a **vCenter**elemre.
 1. A **vCenter hozzáadása**területen adjon meg egy rövid nevet a vSphere-gazdagép vagy a vCenter-kiszolgáló számára.
 1. Itt adhatja meg a kiszolgáló IP-címét vagy teljes tartománynevét.
@@ -60,13 +60,13 @@ A helyszíni VMware virtuális gépekhez tartozó vész-helyreállítás beáll�
 Ha szükséges, módosíthatja a vCenter Server/vSphere gazdagéphez való kapcsolódáshoz használt hitelesítő adatokat a következőképpen:
 
 1. Jelentkezzen be a konfigurációs kiszolgálóra.
-1. Nyissa meg a konfigurációs kiszolgáló eszközt (_cspsconfigtool. exe_) az asztali parancsikon használatával.
+1. Nyissa meg a konfigurációs kiszolgáló eszközt (_cspsconfigtool.exe_) az asztali parancsikon használatával.
 1. Kattintson a **fiók hozzáadása** lehetőségre a **fiók kezelése** lapon.
 
    ![fiók hozzáadása](./media/vmware-azure-manage-vcenter/addaccount.png)
 
 1. Adja meg az új fiók adatait, majd kattintson **az OK**gombra. A fióknak szüksége van a [fiók engedélyei](#account-permissions) táblában felsorolt engedélyekre.
-1. Nyissa meg a konfigurációs kiszolgálót a tárolóban > **site Recovery infrastruktúra** > -**konfigurációs**kiszolgálókon.
+1. Nyissa meg a konfigurációs kiszolgálót a tárolóban > **site Recovery infrastruktúra**-  >  **konfigurációs**kiszolgálókon.
 1. A **részletek**területen kattintson a **kiszolgáló frissítése**elemre.
 1. A kiszolgáló frissítése feladatot követően válassza ki a vCenter Server.
 1. Az **Összefoglalás**területen válassza ki az újonnan hozzáadott fiókot a **vCenter-kiszolgáló/vSphere-gazdagép fiókban**, és kattintson a **Mentés**gombra.
@@ -75,7 +75,7 @@ Ha szükséges, módosíthatja a vCenter Server/vSphere gazdagéphez való kapcs
 
 ## <a name="delete-a-vcenter-server"></a>vCenter Server törlése
 
-1. Nyissa meg a konfigurációs kiszolgálót a tárolóban > **site Recovery infrastruktúra** > -**konfigurációs**kiszolgálókon.
+1. Nyissa meg a konfigurációs kiszolgálót a tárolóban > **site Recovery infrastruktúra**-  >  **konfigurációs**kiszolgálókon.
 1. A **részletek** lapon válassza ki a vCenter-kiszolgálót.
 1. Kattintson a **Törlés** gombra.
 
@@ -85,7 +85,7 @@ Ha szükséges, módosíthatja a vCenter Server/vSphere gazdagéphez való kapcs
 
 Módosíthatja a vCenter Server IP-címét, illetve a kiszolgáló és a Site Recovery közötti kommunikációhoz használt portokat. Alapértelmezés szerint a Site Recovery a 443-es porton keresztül fér hozzá a vCenter Server/vSphere-gazdagép adataihoz.
 
-1. A tároló > **site Recovery infrastruktúra** > -**konfigurációs kiszolgálók**területen kattintson arra a konfigurációs kiszolgálóra, amelyhez a vCenter Server hozzá van adva.
+1. A tároló > **site Recovery infrastruktúra**  >  -**konfigurációs kiszolgálók**területen kattintson arra a konfigurációs kiszolgálóra, amelyhez a vCenter Server hozzá van adva.
 1. A **vCenter-kiszolgálók**területen kattintson a módosítani kívánt vCenter Serverra.
 1. Az **Összefoglalás**lapon frissítse az IP-címet és a portot, majd mentse a módosításokat.
 
@@ -97,7 +97,7 @@ Módosíthatja a vCenter Server IP-címét, illetve a kiszolgáló és a Site Re
 
 Ha az összes virtuális gépet új vCenter Server használatára szeretné áttelepíteni, csak frissítenie kell a vCenter Serverhoz rendelt IP-címet. Ne adjon hozzá egy másik VMware-fiókot, mert az ismétlődő bejegyzéseket eredményezhet. Frissítse a címeket a következőképpen:
 
-1. A tároló > **site Recovery infrastruktúra** > -**konfigurációs kiszolgálók**területen kattintson arra a konfigurációs kiszolgálóra, amelyhez a vCenter Server hozzá van adva.
+1. A tároló > **site Recovery infrastruktúra**  >  -**konfigurációs kiszolgálók**területen kattintson arra a konfigurációs kiszolgálóra, amelyhez a vCenter Server hozzá van adva.
 1. A **vCenter-kiszolgálók** szakaszban kattintson arra a vCenter Serverra, amelyet át szeretne telepíteni.
 1. Az **Összefoglalás**lapon frissítse az IP-címet az új vCenter Server, és mentse a módosításokat.
 1. Amint az IP-cím frissül, Site Recovery elindítja a virtuális gép felderítési információinak fogadását az új vCenter Server. Ez nem befolyásolja a folyamatban lévő replikációs tevékenységeket.

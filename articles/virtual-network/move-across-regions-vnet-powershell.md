@@ -3,15 +3,15 @@ title: Azure-beli virtuális hálózat áthelyezése egy másik Azure-régióba 
 description: Azure-beli virtuális hálózat áthelyezése egyik Azure-régióból a másikba egy Resource Manager-sablon és Azure PowerShell használatával.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646710"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711459"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Azure-beli virtuális hálózat áthelyezése egy másik régióba Azure PowerShell használatával
 
@@ -60,7 +60,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. A letöltött fájl neve megegyezik azzal az erőforrás-csoporttal, amelyben az erőforrást exportálták. Keresse meg az * \<erőforrás-csoport neve>. JSON* fájlt, amelyet a paranccsal exportált, majd nyissa meg a szerkesztőben:
+1. A letöltött fájl neve megegyezik azzal az erőforrás-csoporttal, amelyben az erőforrást exportálták. Keresse meg a paranccsal exportált * \<resource-group-name> . JSON* fájlt, majd nyissa meg a szerkesztőben:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,9 +105,9 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
     Get-AzLocation | format-table
     ```
 
-1. Választható Az * \<erőforrás-csoport neve>. JSON* fájlban további paramétereket is megadhat, a követelményektől függően:
+1. Választható A további paramétereket a * \<resource-group-name> . JSON* fájlban is módosíthatja, a követelményektől függően:
 
-    * **Címterület**: a fájl mentése előtt megváltoztathatja a virtuális hálózat**addressSpace** , ha módosítja az **erőforrások** > szakaszát, és megváltoztatja a **addressPrefixes** tulajdonságot:
+    * **Címterület**: a fájl mentése előtt megváltoztathatja a virtuális hálózat addressSpace, ha módosítja az **erőforrások**  >  **addressSpace** szakaszát, és megváltoztatja a **addressPrefixes** tulajdonságot:
 
         ```json
                 "resources": [
@@ -193,7 +193,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
          ]
         ```
 
-1. Mentse az * \<erőforrás-csoport neve>. JSON* fájlt.
+1. Mentse a * \<resource-group-name> . JSON* fájlt.
 
 1. Hozzon létre egy erőforráscsoportot a cél régióban a cél virtuális hálózat [új-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával történő telepítéséhez:
     
@@ -201,7 +201,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. Telepítse a szerkesztett * \<erőforrás-csoport neve>. JSON* fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+1. Telepítse a szerkesztett * \<resource-group-name> . JSON* fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 

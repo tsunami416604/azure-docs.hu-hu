@@ -4,16 +4,16 @@ description: Windows 7 rendszerű virtuális gépek konfigurálása és központ
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0cb5b2ee8b8391dc4fcb78cc1d3bd212c44f1803
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eafe2050f834fdd9aecba492c7121be9c1e121e2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615408"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206002"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
 
@@ -32,28 +32,29 @@ Ha elvégezte az előfeltételeket, készen áll a Windows 7 rendszerű virtuál
 
 Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális asztalon:
 
-1. Jelentkezzen be a Azure Portalba, és keresse meg a Windows 7 Enterprise rendszerképet, vagy töltse fel a saját testreszabott Windows 7 Enterprise-(x64-) rendszerképét.  
+1. Jelentkezzen be a Azure Portalba, és keresse meg a Windows 7 Enterprise rendszerképet, vagy töltse fel a saját testreszabott Windows 7 Enterprise-(x64-) rendszerképét.
 2. Helyezzen üzembe egy vagy több virtuális gépet a Windows 7 Enterprise rendszerű gazdagép operációs rendszereként. Győződjön meg arról, hogy a virtuális gépek engedélyezik RDP protokoll (RDP) (a TCP/3389 portot).
-3. Kapcsolódjon a Windows 7 Enterprise-gazdagéphez az RDP használatával, és hitelesítse magát a telepítés konfigurálása során megadott hitelesítő adatokkal. 
+3. Kapcsolódjon a Windows 7 Enterprise-gazdagéphez az RDP használatával, és hitelesítse magát a telepítés konfigurálása során megadott hitelesítő adatokkal.
 4. Adja hozzá azt a fiókot, amelyet a gazdagéphez a "Távoli asztal user" csoport RDP-vel való csatlakozásakor használt. Ha ezt nem teszi meg, előfordulhat, hogy nem tud csatlakozni a virtuális géphez a Active Directory tartományhoz való csatlakoztatása után.
 5. Nyissa meg a Windows Updatet a virtuális gépen.
 6. Telepítse az összes Windows-frissítést a fontos kategóriába.
 7. Telepítse az összes Windows-frissítést a választható kategóriába (kivéve a nyelvi csomagokat). Ezzel telepíti a RDP protokoll 8,0 frissítést ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)), amelyre el kell végeznie ezeket az utasításokat.
-8. Nyissa meg a Helyicsoportházirend-szerkesztő, és navigáljon a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **távoli munkamenet-környezete**elemre.
+8. Nyissa meg a Helyicsoportházirend-szerkesztő, és navigáljon a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal munkamenet-gazdagép**  >  **távoli munkamenet-környezete**elemre.
 9. Engedélyezze a RDP protokoll 8,0 szabályzatot.
 10. Csatlakoztassa a virtuális gépet a Active Directory tartományhoz.
 11. Indítsa újra a virtuális gépet a következő parancs futtatásával:
-    
+
      ```cmd
      shutdown /r /t 0
      ```
-    
+
 12. A regisztrációs jogkivonat beszerzéséhez kövesse az [itt](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/) található utasításokat.
 13. [Töltse le a Windows 7 rendszerhez készült Windows Virtual Desktop Agent ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. [Töltse le a Windows virtuális asztali ügynök kezelőjét a Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)rendszerhez.
 15. Nyissa meg a Windows rendszerű virtuális asztali ügynök telepítőjét, és kövesse az utasításokat. Ha a rendszer kéri, adja meg a 12. lépésben létrehozott regisztrációs kulcsot.
-16. Nyissa meg a Windows rendszerű virtuális asztali telepítőt, és kövesse az utasításokat.
+16. Nyissa meg a Windows rendszerű virtuális asztali ügynök kezelőjét, és kövesse az utasításokat.
 17. Ha szeretné, tiltsa le a TCP/3389 portot a virtuális géphez való közvetlen RDP protokoll-hozzáférés eltávolításához.
+18. Szükség esetén győződjön meg arról, hogy a .NET-keretrendszer legalább 4.7.2-verzióval rendelkezik. Ez különösen akkor fontos, ha egyéni rendszerképet hoz létre.
 
 ## <a name="next-steps"></a>További lépések
 

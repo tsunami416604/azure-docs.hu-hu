@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 30bf5d3eaa034c033cf32e26c3229a028f036313
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cacf4c21e92b434aeb73cd76e6dda26508f41d77
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613137"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261358"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure Digital Twins egyik fő jellemzője, hogy saját szókincset definiálhat, és saját maga által definiált üzleti feltételeit felépítheti. Ezt a képességet felhasználó által definiált **modelleken**keresztül biztosítjuk. A modelleket a világa leírásában szereplő nevekre lehet gondolni. 
 
@@ -197,11 +200,11 @@ A kiterjesztési felület nem változtathatja meg a szülő felületek definíci
 
 ## <a name="validating-models"></a>Modellek ellenőrzése
 
-Rendelkezésre áll egy minta a modell dokumentumainak ellenőrzéséhez, hogy a DTDL érvényes legyen. A DTDL-elemző könyvtárra épül, és nyelvtől független. Itt találja: [DTDL validator minta](https://github.com/Azure-Samples/DTDL-Validator).
+Rendelkezésre áll egy minta a modell dokumentumainak ellenőrzéséhez, hogy a DTDL érvényes legyen. A DTDL-elemző könyvtárra épül, és nyelvtől független. Itt találja: [DTDL validator minta](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 Ha további információt szeretne az elemző könyvtárról, beleértve a közvetlen használattal kapcsolatos példát is, tekintse meg a [How-to: modellek elemzése és ellenőrzése](how-to-use-parser.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinsModels API-kkal:
 * [Útmutató: kettős modell kezelése](how-to-manage-model.md)

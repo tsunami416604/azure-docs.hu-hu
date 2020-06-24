@@ -3,16 +3,16 @@ title: DNS-névkeresési zónák üzemeltetése Azure DNS
 description: Megtudhatja, hogyan használhatja a Azure DNSt az IP-címtartományok fordított DNS-keresési zónáinak üzemeltetéséhez
 author: rohinkoul
 ms.service: dns
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 78fc3428274be5e1998abe9189bea996f15e278c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454261"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709198"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>DNS-névkeresési zónák üzemeltetése Azure DNS
 
@@ -29,7 +29,7 @@ Ez a cikk végigvezeti az első névkeresési DNS-zóna és-rekord létrehozás�
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Névkeresési DNS-zóna létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A **központi** menüben válassza az **új** > **hálózatkezelés**, majd a **DNS-zóna**lehetőséget.
+1. A **központi** menüben válassza az **új**  >  **hálózatkezelés**, majd a **DNS-zóna**lehetőséget.
 
    !["DNS-zóna" kiválasztása](./media/dns-reverse-dns-hosting/figure1.png)
 
@@ -37,16 +37,16 @@ Ez a cikk végigvezeti az első névkeresési DNS-zóna és-rekord létrehozás�
 
 ### <a name="ipv4"></a>IPv4
 
-Az IPv4 névkeresési zónák neve az általa reprezentált IP-tartományon alapul. A következő formátumúnak kell lennie: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Példák: a [fordított DNS és a támogatás áttekintése az Azure-ban](dns-reverse-dns-overview.md#ipv4).
+Az IPv4 névkeresési zónák neve az általa reprezentált IP-tartományon alapul. A következő formátumúnak kell lennie: `<IPv4 network prefix in reverse order>.in-addr.arpa` . Példák: a [fordított DNS és a támogatás áttekintése az Azure-ban](dns-reverse-dns-overview.md#ipv4).
 
 > [!NOTE]
-> Ha az osztály nélküli fordított DNS-keresési zónákat Azure DNSban hozza létre, akkor a zóna nevében kötőjelet (`-`) kell használnia a perjel (`/`) helyett.
+> Ha az osztály nélküli fordított DNS-keresési zónákat Azure DNSban hozza létre, akkor a zóna nevében kötőjelet () kell használnia a `-` perjel ( `/` ) helyett.
 >
-> Például a 192.0.2.128/26 IP-címtartomány esetében a helyett a zóna nevét `128-26.2.0.192.in-addr.arpa` kell használnia `128/26.2.0.192.in-addr.arpa`.
+> Például a 192.0.2.128/26 IP-címtartomány esetében a `128-26.2.0.192.in-addr.arpa` helyett a zóna nevét kell használnia `128/26.2.0.192.in-addr.arpa` .
 >
-> Bár a DNS-szabványok mindkét módszert támogatják, a Azure DNS nem támogatja a továbbítási perjel (`/`) karaktert tartalmazó DNS-zónák nevét.
+> Bár a DNS-szabványok mindkét módszert támogatják, a Azure DNS nem támogatja a továbbítási perjel () karaktert tartalmazó DNS-zónák nevét `/` .
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy Azure DNS nevű `2.0.192.in-addr.arpa` C. osztályú fordított DNS-zónát a Azure Portal használatával:
+Az alábbi példa bemutatja, hogyan hozhat létre egy Azure DNS nevű C. osztályú fordított DNS-zónát `2.0.192.in-addr.arpa` a Azure Portal használatával:
 
  !["DNS-zóna létrehozása" panel, betöltött mezőkkel](./media/dns-reverse-dns-hosting/figure2.png)
 
@@ -74,10 +74,10 @@ az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
 
 ### <a name="ipv6"></a>IPv6
 
-Egy IPv6-névkeresési zóna nevének a következő formátumúnak kell lennie: `<IPv6 network prefix in reverse order>.ip6.arpa`.  Példák: a [fordított DNS és a támogatás áttekintése az Azure-ban](dns-reverse-dns-overview.md#ipv6).
+Egy IPv6-névkeresési zóna nevének a következő formátumúnak kell lennie: `<IPv6 network prefix in reverse order>.ip6.arpa` .  Példák: a [fordított DNS és a támogatás áttekintése az Azure-ban](dns-reverse-dns-overview.md#ipv6).
 
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy Azure DNS nevű `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` IPv6-névlekérdezési zónát a Azure Portal használatával:
+Az alábbi példa bemutatja, hogyan hozhat létre egy Azure DNS nevű IPv6-névlekérdezési zónát `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` a Azure Portal használatával:
 
  !["DNS-zóna létrehozása" panel, betöltött mezőkkel](./media/dns-reverse-dns-hosting/figure3.png)
 

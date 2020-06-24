@@ -2,13 +2,13 @@
 title: A Hyper-V értékelésének támogatása a Azure Migrateban
 description: Ismerkedjen meg a Hyper-V felmérés támogatásával Azure Migrate kiszolgáló értékelésével
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 5ba7e74624f719feb6efbb3fb58dd3375250d649
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/14/2020
+ms.openlocfilehash: c2df23b1566b4d793f4511499fd82d7912d0520f
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266780"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051907"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>A Hyper-V felmérés támogatási mátrixa
 
@@ -40,7 +40,7 @@ A Hyper-V virtuális gép értékelésének beállításához létre kell hoznia
 | **Hyper-V replika**       | Ha a Hyper-V replikát használja (vagy több virtuális GÉPET ugyanazzal a virtuálisgép-azonosítóval), és az eredeti és a replikált virtuális gépeket Azure Migrate használatával észleli, előfordulhat, hogy a Azure Migrate által létrehozott értékelés nem pontos. |
 
 
-## <a name="hyper-v-vm-requirements"></a>Hyper-V virtuális gépekre vonatkozó követelmények
+## <a name="vm-requirements"></a>VIRTUÁLIS gépekre vonatkozó követelmények
 
 | **Támogatás**                  | **Részletek**               
 | :----------------------------- | :------------------- |
@@ -63,7 +63,7 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 **Eszköz** | **Kapcsolat**
 --- | ---
 **Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Kimenő kapcsolatok a 443-as porton (HTTPS), a felderítési és a teljesítménybeli metaadatok küldéséhez Azure Migrate.
-**Hyper-V-gazdagép/-fürt** | A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a Hyper-V virtuális gépek metaadatait és teljesítményadatait CIM (CIM) munkamenet használatával lehívhatják.
+**Hyper-V-gazdagép/-fürt** | Bejövő kapcsolat a WinRM port 5985 (HTTP) használatával, hogy lekérje a metaadatokat és teljesítményadatokat a Hyper-V virtuális gépek számára CIM (CIM) munkamenettel.
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Ügynök-alapú függőségek elemzésének követelményei
 

@@ -3,20 +3,19 @@ title: Erőforrás-naplózás engedélyezése az Azure-ban Traffic Manager
 description: Megtudhatja, hogyan engedélyezheti az erőforrás-naplózást a Traffic Manager profiljához, és hogyan férhet hozzá az eredményként létrehozott naplófájlokhoz.
 services: traffic-manager
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: d0ffcffd7d4a4f2072b640ace03ec819aa416d47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133905"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711680"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Erőforrás-naplózás engedélyezése az Azure-ban Traffic Manager
 
@@ -28,7 +27,7 @@ Az Azure Traffic Manager erőforrás-naplói betekintést nyerhetnek a Traffic M
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0-ra vagy az újabb verzióra. A futtatásával `Get-Module -ListAvailable Az` megkeresheti a telepített verziót. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, az Azure-ba `Login-AzAccount` való bejelentkezéshez is futtatnia kell.
+Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0-ra vagy az újabb verzióra. A futtatásával `Get-Module -ListAvailable Az` megkeresheti a telepített verziót. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, az Azure-ba való bejelentkezéshez is futtatnia kell `Login-AzAccount` .
 
 1. **Traffic Manager profil beolvasása:**
 
@@ -58,7 +57,7 @@ Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. Navigáljon az Azure Storage-fiókjához a portálon.
 2. Az Azure Storage-fiók **Áttekintés** lapján a **szolgáltatások** területen válassza a **Blobok**elemet.
-3. A **tárolók**területen válassza az elemzések **-naplók-probehealthstatusevents**lehetőséget, majd lépjen le a PT1H. JSON fájlhoz, és kattintson a **Letöltés** gombra a naplófájl másolatának letöltéséhez és mentéséhez.
+3. A **tárolók**területen válassza az elemzések **-naplók-probehealthstatusevents**lehetőséget, majd lépjen a fájl PT1H.jsra, és kattintson a **Letöltés** gombra a naplófájl másolatának letöltéséhez és mentéséhez.
 
     ![A Traffic Manager profilhoz tartozó naplófájlok elérése blob Storage-ból](./media/traffic-manager-logs/traffic-manager-logs.png)
 
@@ -71,7 +70,7 @@ Az alábbi táblázat az Azure Traffic Manager-profil erőforrásához tartozó 
 
 |||||
 |----|----|---|---|
-|**Mező neve**|**Mező típusa**|**Meghatározás**|**Példa**|
+|**Mező neve**|**Mező típusa**|**Definíció**|**Példa**|
 |Végpontneve|Sztring|Annak az Traffic Manager végpontnak a neve, amelynek az állapotát rögzíti a rendszer.|*myPrimaryEndpoint*|
 |status|Sztring|A kipróbált Traffic Manager végpont állapota. Az állapot lehet akár **felfelé** , akár **lefelé**is.|**Fel**|
 |||||

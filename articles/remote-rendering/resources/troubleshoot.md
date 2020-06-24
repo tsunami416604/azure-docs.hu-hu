@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 0aa09ffe5b5dd9dd0f49204495ecdd7179a0f36f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 2cf997cbe16f7ff4bfe75f90d3797ec97e7d5069
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660026"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808757"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -105,7 +105,7 @@ Ha ez a két lépés nem segített, meg kell állapítani, hogy az ügyfél foga
 
 **A modell meghaladja a kiválasztott virtuális gép korlátait, pontosabban a sokszögek maximális számát:**
 
-Lásd a virtuálisgép- [méretek bizonyos korlátozásait](../reference/limits.md#overall-number-of-polygons).
+Lásd: adott virtuálisgép- [méret korlátai](../reference/limits.md#overall-number-of-polygons).
 
 **A modell nem a kamera csonkakúpot belül található:**
 
@@ -146,6 +146,10 @@ Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, h
 
 ![Unity frame Debugger](./media/troubleshoot-unity-pipeline.png)
 
+## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>A Pepita minta a modell betöltését követően jelenik meg
+
+Ha a megjelenített rendszerkép a következőképpen néz ki: ![ Pepita ezt ](../reference/media/checkerboard.png) követően a megjelenítő [megkeresi a szabványos virtuálisgép-méret sokszögének korlátait](../reference/vm-sizes.md). A megoldáshoz váltson a prémium szintű **virtuális gép** méretére, vagy csökkentse a látható sokszögek számát.
+
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>A megjelenített rendszerkép (Unity)
 
 Ügyeljen arra, hogy pontosan kövesse a [projekt telepítési útmutatóját](../tutorials/unity/project-setup.md) . A lefelé irányuló kép azt jelzi, hogy az egységnek a képernyőn kívüli megjelenítési cél létrehozásához kell tartoznia. Ez a viselkedés jelenleg nem támogatott, és óriási teljesítménybeli hatást eredményez a 2. HoloLens.
@@ -168,6 +172,10 @@ Hamis hibák történtek, amikor az egységbeli mintákat (gyors üzembe helyez�
     reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
     ```
     
+### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Az Unity-projektek Arm64-buildei sikertelenek, mert AudioPluginMsHRTF.dll hiányzik
+
+A `AudioPluginMsHRTF.dll` for Arm64 hozzá lett adva a *Windows vegyes valósághoz* készült csomagjához *(com. Unity. XR. windowsmr. Metro)* a 3.0.1-es verzióban. Győződjön meg arról, hogy a Unity csomagkezelő segítségével telepítette az 3.0.1-es vagy újabb verziót. A Unity menüsávban navigáljon az *ablak > csomagkezelő* elemre, és keresse meg a *Windows vegyes valóság* csomagot.
+
 ## <a name="unstable-holograms"></a>Instabil Hologramok
 
 Ha úgy tűnik, hogy a megjelenített objektumok a fej mozgásával együtt mozognak, előfordulhat, hogy a *késői fázis-újravetítéssel* (LSR) kapcsolatos problémák merülhetnek fel. Az ilyen helyzetek megközelítésével kapcsolatos útmutatásért tekintse meg a [késői fázisok újravetítésének](../overview/features/late-stage-reprojection.md) szakaszát.
@@ -228,7 +236,7 @@ Az egymáshoz tartozó felületek számos különböző oka lehet:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Rendszerkövetelmények](../overview/system-requirements.md)
 * [A hálózatra vonatkozó követelmények](../reference/network-requirements.md)

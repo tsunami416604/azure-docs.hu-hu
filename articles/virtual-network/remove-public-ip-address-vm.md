@@ -8,17 +8,17 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
-ms.openlocfilehash: f29e29f809faeeb486e5b6b9bacc84a61380a012
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b171699a0c578b3761e58f6e0e977199369864a8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144459"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709963"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Nyilvános IP-cím leválasztása egy Azure-beli virtuális gépről 
 
@@ -44,7 +44,7 @@ A virtuális gép nyilvános IP-címének leválasztásához használhatja a [Az
 
 Telepítse az [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)-t, vagy használja a Azure Cloud shell. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Válassza ki az alábbi CLI-parancsok **kipróbálása** gombját. A **kipróbálás** gombra kattintva meghívja a Cloud shell, amelybe bejelentkezhet az Azure-fiókjába.
 
-1. Ha a parancssori felületet a Bashben helyileg használja, jelentkezzen be `az login`az Azure-ba a használatával.
+1. Ha a parancssori felületet a Bashben helyileg használja, jelentkezzen be az Azure-ba a használatával `az login` .
 2. A nyilvános IP-cím egy virtuális géphez csatolt hálózati adapter IP-konfigurációjához van társítva. A nyilvános IP-cím IP-konfigurációból való leválasztásához használja az az [Network NIC-IP-config Update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) parancsot. Az alábbi példa egy *myVMPublicIP* nevű nyilvános IP-címet választ ki egy *myVMVMNic* nevű meglévő hálózati adapter *ipconfigmyVM* nevű IP-konfigurációból, amely egy *myVM* nevű virtuális géphez van csatolva egy *myResourceGroup*nevű erőforráscsoporthoz.
   
    ```azurecli-interactive
@@ -86,7 +86,7 @@ Telepítse az [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-ne
 
 Telepítse a [PowerShellt](/powershell/azure/install-az-ps), vagy használja a Azure Cloud shell. Az Azure Cloud Shell olyan ingyenes felület, amelyet közvetlenül futtathat az Azure Portalon. A PowerShell előre telepítve van, és konfigurálva van a fiókkal való használatra. Válassza ki az alábbi PowerShell-parancsok **kipróbálása** gombját. A **kipróbálás** gombra kattintva meghívja a Cloud shell, amelybe bejelentkezhet az Azure-fiókjába.
 
-1. Ha helyileg használja a PowerShellt, jelentkezzen be `Connect-AzAccount`az Azure-ba a használatával.
+1. Ha helyileg használja a PowerShellt, jelentkezzen be az Azure-ba a használatával `Connect-AzAccount` .
 2. A nyilvános IP-cím egy virtuális géphez csatolt hálózati adapter IP-konfigurációjához van társítva. Hálózati adapter beszerzéséhez használja a [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) parancsot. Állítsa a nyilvános IP-cím értéket NULL értékre, majd a [set-AzNetworkInterface](/powershell/module/Az.Network/Set-AzNetworkInterface) parancs használatával írja az új IP-konfigurációt a hálózati adapterre.
 
    Az alábbi példa egy *myVMPublicIP* nevű nyilvános IP-címet választ ki egy *myVMVMNic* nevű hálózati adapterről, amely egy *myVM*nevű virtuális géphez van csatolva. Minden erőforrás egy *myResourceGroup*nevű erőforráscsoport.

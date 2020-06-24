@@ -7,15 +7,18 @@ ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
+ROBOTS: NOINDEX, NOFOLLOW
 ms.reviewer: baanders
-ms.openlocfilehash: cedd91ed0a6bcce01aea8fd56f06f6523c590016
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 4051b5c098b0ce299185a483abf2bdd39bb6c11f
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680174"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725817"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ez a cikk végigvezeti az Azure Digital Twins-adatok használatához szükséges lépéseken, hogy a [Azure Maps](../azure-maps/about-azure-maps.md)használatával egy *fedett térképen* megjelenített információkat frissítsen. Az Azure Digital Twins egy gráfot tárol a IoT, és a különböző végpontokra irányítja a telemetria, így tökéletes szolgáltatásként frissítheti a térképeken található információs átfedéseket.
 
@@ -156,7 +159,7 @@ Az adott példához tartozó megoldás a legfelső szintű helyek frissítését
 
 A topológia konfigurációjától függően a három attribútumot a Térkép részletességéhez képest különböző szinteken fogja tudni tárolni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozásokat követve további információkat olvashat az ikrek gráf információinak kezelésével, frissítésével és lekérésével kapcsolatban:
 
