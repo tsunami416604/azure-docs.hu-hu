@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 56288a65dc9e5b12a12393965b9670e394146181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9460208d66e859f5fe1ce0e9ae4d62087ea3f4ff
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234978"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696018"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>A virtuális hálózatok használata KOPPINTÁSsal az Azure CLI használatával
 
@@ -28,7 +28,7 @@ Az Azure Virtual Network (terminál-hozzáférési pont) funkció lehetővé tes
 
 ## <a name="create-a-virtual-network-tap-resource"></a>Virtuális hálózati KOPPINTÁS erőforrásának létrehozása
 
-Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása a virtuális hálózati koppintó erőforrás létrehozása előtt. Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja az Azure parancssori felületét (CLI) a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj, amely nem igényli az Azure CLI telepítését a számítógépre. Be kell jelentkeznie az Azure-ba egy olyan fiókkal, amely rendelkezik a megfelelő [engedélyekkel](virtual-network-tap-overview.md#permissions). Ehhez a cikkhez az Azure CLI 2.0.46 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). A virtuális hálózat KOPPINTÁS jelenleg bővítményként érhető el. A bővítmény telepítéséhez futtatnia kell a parancsot `az extension add -n virtual-network-tap`. Ha helyileg futtatja az Azure CLI-t, akkor azt is futtatnia `az login` kell, hogy létre kell hoznia egy, az Azure-hoz való kapcsolódást.
+Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása a virtuális hálózati koppintó erőforrás létrehozása előtt. Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja az Azure parancssori felületét (CLI) a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj, amely nem igényli az Azure CLI telepítését a számítógépre. Be kell jelentkeznie az Azure-ba egy olyan fiókkal, amely rendelkezik a megfelelő [engedélyekkel](virtual-network-tap-overview.md#permissions). Ehhez a cikkhez az Azure CLI 2.0.46 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). A virtuális hálózat KOPPINTÁS jelenleg bővítményként érhető el. A bővítmény telepítéséhez futtatnia kell a parancsot `az extension add -n virtual-network-tap` . Ha helyileg futtatja az Azure CLI-t, akkor azt is futtatnia kell, `az login` hogy létre kell hoznia egy, az Azure-hoz való kapcsolódást.
 
 1. Kérje le az előfizetés AZONOSÍTÓját egy olyan változóra, amelyet egy későbbi lépésben használ:
 

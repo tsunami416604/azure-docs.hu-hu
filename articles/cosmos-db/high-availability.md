@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ae20a0372c5808cc2265a4fae63b79ef2bb71605
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c3f3eddf57b559d9e8f4837db453232308869767
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125502"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118049"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Magas rendelkezésre állás az Azure Cosmos DB használatával
 
 Azure Cosmos DB transzparens módon replikálja az adatait a Cosmos-fiókjához társított összes Azure-régióban. Cosmos DB a következő képen látható módon több redundancia-réteget alkalmaz az adatokhoz:
 
-![Fizikai particionálás](./media/high-availability/cosmosdb-data-redundancy.png)
+:::image type="content" source="./media/high-availability/cosmosdb-data-redundancy.png" alt-text="Fizikai particionálás" border="false":::
 
 - A Cosmos-tárolókban lévő adatkeretek [horizontálisan particionálva](partitioning-overview.md)vannak.
 
@@ -32,7 +32,7 @@ Ha a Cosmos-fiókja *n* Azure-régióban van elosztva, az összes adatnak legal�
 
 Globálisan elosztott adatbázisként Cosmos DB átfogó SLA-kat biztosít, amelyek az átviteli sebességre, a esetek 99% percentilis, a konzisztencia és a magas rendelkezésre állásra vonatkozó késést foglalnak magukban. Az alábbi táblázat az egyes és a többrégiós fiókok Cosmos DB által biztosított magas rendelkezésre állási garanciákat mutatja be. A magas rendelkezésre állás érdekében mindig konfigurálja úgy a Cosmos-fiókokat, hogy több írási régióval rendelkezzenek.
 
-|Művelet típusa  | Egyetlen régió |Több régió (egyrégiós írások)|Többrégiós (több régiós írások) |
+|Művelettípus  | Egyetlen régió |Több régió (egyrégiós írások)|Többrégiós (több régiós írások) |
 |---------|---------|---------|-------|
 |Írja    | 99,99    |99,99   |99,999|
 |Olvasás     | 99,99    |99,999  |99,999|
@@ -128,7 +128,7 @@ az cosmosdb create \
 
 Az Azure Cosmos-fiók létrehozásakor Azure Portal használatával engedélyezheti Availability Zones. Fiók létrehozásakor ügyeljen arra, hogy engedélyezze a **geo-redundancia**, a **többrégiós írások**használatát, és válasszon egy régiót, ahol a Availability Zones támogatott:
 
-![Availability Zones engedélyezése a Azure Portal használatával](./media/high-availability/enable-availability-zones-using-portal.png) 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Availability Zones engedélyezése a Azure Portal használatával"::: 
 
 ## <a name="building-highly-available-applications"></a>Magasan elérhető alkalmazások fejlesztése
 

@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1f7d0d411ffbff6aad7d134711a0190251f68aa8
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 3a359e4b3523615623c76d48c1aafd7aa95a5277
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324436"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255041"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database és az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,7 +34,7 @@ A virtuális mag modellben található szolgáltatási rétegek beállításai k
 ||**általános célú**|**üzletileg kritikus**|**Rugalmas skálázás**|
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
-|Storage|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**SQL felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**SQL felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
+|Tárolás|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**SQL felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**SQL felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
 |IOPS és átviteli sebesség (hozzávetőleges)|**SQL Database**: az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátai.<br/>**SQL felügyelt példány**: lásd az [Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése](../managed-instance/resource-limits.md#service-tier-characteristics)című témakört.|Tekintse meg az [önálló adatbázisok](resource-limits-vcore-single-databases.md) és a [rugalmas készletek](resource-limits-vcore-elastic-pools.md)erőforrás-korlátozásait.|A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS és az átviteli sebesség a munkaterheléstól függ.|
 |Rendelkezésre állás|1 replika, nincsenek olvasási méretezésű replikák|3 replika, 1 [olvasási léptékű replika](read-scale-out.md),<br/>zóna – redundáns magas rendelkezésre állás (HA)|1 írható-olvasható replika, valamint 0-4 [-es olvasási léptékű replika](read-scale-out.md)|
 |Biztonsági másolatok|[Olvasási hozzáférés – geo-redundáns tárolás (ra-GRS)](../../storage/common/geo-redundant-design.md), 7-35 nap (alapértelmezés szerint 7 nap)|[Ra-GRS](../..//storage/common/geo-redundant-design.md), 7-35 nap (alapértelmezés szerint 7 nap)|Pillanatkép-alapú biztonsági másolatok az Azure-beli távoli tárolóban. A visszaállítja ezeket a pillanatképeket a gyors helyreállításhoz. A biztonsági másolatok azonnaliek, és nem befolyásolják a számítási I/O-teljesítményt. A visszaállítások gyorsak, és nem az adatmennyiség (óra vagy nap helyett percekben).|
@@ -91,10 +91,11 @@ A Fsv2 sorozat csak a általános célú szinten támogatott.  Azokon a régiók
 - Az M-sorozat egy memória-optimalizált hardveres beállítás, amely több memóriát és nagyobb számítási korlátot igényel, mint amennyit a Gen5 biztosít.
 - Az M-sorozat 29 GB-ot biztosít virtuális mag és 128 virtuális mag, ami növeli a Gen5 viszonyított memória korlátját a 8x-tól közel 4 TB-ig.
 
-Az M-sorozat csak a üzletileg kritikus szinten támogatott, és nem támogatja a zóna-redundanciát.
+Az M-sorozat csak a üzletileg kritikus szinten támogatott, és nem támogatja a zóna-redundanciát.  Az előfizetésnek fizetős ajánlat típusúnak kell lennie, beleértve az utólagos elszámolású vagy a Nagyvállalati Szerződés (EA) szolgáltatásokat.  Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
 
-Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyezéséhez meg kell nyitni egy támogatási kérést. Az előfizetésnek fizetős ajánlat típusúnak kell lennie, beleértve az utólagos elszámolású vagy a Nagyvállalati Szerződés (EA) szolgáltatásokat.  Ha a támogatási kérést jóváhagyják, az M sorozat kiválasztási és kiépítési tapasztalatai ugyanazt a mintát követik, mint az egyéb hardveres generációk esetében. Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
-
+<!--
+To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
+-->
 
 ### <a name="compute-and-memory-specifications"></a>Számítási és memória-specifikációk
 
@@ -112,7 +113,7 @@ Az erőforrás-korlátokkal kapcsolatos további információkért lásd: [az ö
 
 ### <a name="selecting-a-hardware-generation"></a>Hardver-létrehozás kiválasztása
 
-A Azure Portalban kiválaszthatja a hardver generációját a létrehozáskor SQL Database adatbázis vagy készlet számára, vagy megváltoztathatja egy meglévő SQL-adatbázis vagy-készlet hardveres létrehozását is.
+A Azure Portalban kiválaszthatja a hardver generációját a létrehozáskor SQL Database adatbázis vagy készlet számára, vagy megváltoztathatja egy meglévő adatbázis vagy készlet hardveres létrehozását.
 
 **Hardver létrehozásának kiválasztása SQL Database vagy-készlet létrehozásakor**
 
@@ -193,34 +194,35 @@ A Fsv2 sorozat a következő régiókban érhető el: Ausztrália középső ré
 #### <a name="m-series"></a>M sorozat
 
 Az M-sorozat a következő régiókban érhető el: USA keleti régiója, Észak-Európa, Nyugat-Európa, USA 2. nyugati régiója.
-Az M-sorozat további régiókban is korlátozott rendelkezésre állással rendelkezhet. Az itt felsoroltakon kívül más régiót is igényelhet, de előfordulhat, hogy egy másik régióban való teljesítés nem lehetséges.
+<!--
+M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
 
-Az M-sorozat rendelkezésre állásának az előfizetésben való engedélyezéséhez [egy új támogatási kérelem bejelentésével](#create-a-support-request-to-enable-m-series)kell megkövetelni a hozzáférést.
-
-
-##### <a name="create-a-support-request-to-enable-m-series"></a>Hozzon létre egy támogatási kérést az M-sorozat engedélyezéséhez: 
-
-1. Válassza a **Súgó + támogatás** lehetőséget a portálon.
-2. Válassza az **Új támogatási kérelem** lehetőséget.
-
-Az **alapok** lapon adja meg a következőket:
-
-1. A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
-2. **Előfizetés** = válassza ki az M-sorozat engedélyezéséhez szükséges előfizetést.
-3. A **kvóta típusa**beállításnál válassza az **SQL Database**lehetőséget.
-4. Kattintson a **tovább** gombra a **részletek** lapra való ugráshoz.
-
-A **részletek** lapon adja meg a következőket:
-
-1. A **probléma részletei** szakaszban válassza a **részletek megadása** hivatkozást. 
-2. **SQL Database a kvóta típusa** lapon válassza az **M-sorozat**lehetőséget.
-3. A **régió**területen válassza ki az M-sorozat engedélyezésének régióját.
-    Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
-
-A jóváhagyott támogatási kérelmek általában 5 munkanapon belül teljesülnek.
+To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
 
 
-## <a name="next-steps"></a>Következő lépések
+##### Create a support request to enable M-series: 
+
+1. Select **Help + support** in the portal.
+2. Select **New support request**.
+
+On the **Basics** page, provide the following:
+
+1. For **Issue type**, select **Service and subscription limits (quotas)**.
+2. For **Subscription** = select the subscription to enable M-series.
+3. For **Quota type**, select **SQL database**.
+4. Select **Next** to go to the **Details** page.
+
+On the **Details** page, provide the following:
+
+1. In the **PROBLEM DETAILS** section select the **Provide details** link. 
+2. For **SQL Database quota type** select **M-series**.
+3. For **Region**, select the region to enable M-series.
+    For regions where M-series is available, see [M-series availability](#m-series).
+
+Approved support requests are typically fulfilled within 5 business days.
+-->
+
+## <a name="next-steps"></a>További lépések
 
 Első lépésként tekintse meg a következőt: 
 - [SQL Database létrehozása a Azure Portal használatával](single-database-create-quickstart.md)

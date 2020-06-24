@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: ebc30f995c44685dfd58e627706e4ca60e8ecfd5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556823"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738294"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -124,18 +124,13 @@ Az Azure Storage-fiók, a számítási célok és az egyéb erőforrások bizton
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Alapszintű & Enterprise kiadás
 
 Azure Machine Learning két, a gépi tanulási igényekhez igazított kiadást kínál:
-+ Alapszintű (általánosan elérhető)
-+ Enterprise (előzetes verzió)
++ **Alapszintű**: kiváló a nyílt forráskódú fejlesztéshez a Cloud Scale-ben a Code-First felülettel.
 
-Ezek a kiadások határozzák meg, hogy mely gépi tanulási eszközök érhetők el a fejlesztők és az adatszakértők számára a munkaterületről.   
++ **Enterprise**: az összes alapszintű, valamint egy webes felület (Studio) + biztonságos, átfogó ml életciklus-kezelés minden képzettségi szinten.
 
-Az alapszintű munkaterületek lehetővé teszik a Azure Machine Learning használatának folytatását, és csak a gépi tanulási folyamat során felhasznált Azure-erőforrásokért kell fizetni. Az Enterprise Edition-munkaterületek csak az Azure-beli felhasználásra lesznek felszámítva, miközben a kiadás előzetes verzióban érhető el. További információ a Azure Machine Learning [kiadás áttekintése & díjszabási oldalán](https://azure.microsoft.com/pricing/details/machine-learning/). 
+Ha többet szeretne megtudni ezekről a kiadásokról és a feloldható képességekről, olvassa el a ["Azure Machine learning Editions" című cikket](concept-editions.md).
 
-A kiadást a munkaterület létrehozásakor rendeli hozzá. A meglévő munkaterületek pedig az alapszintű kiadásra lettek konvertálva. Az alapszintű kiadás minden olyan funkciót magában foglal, amely már általánosan elérhető a 2019. októberi verzióban. A vállalati kiadási funkciók használatával létrehozott munkaterületek összes kísérlete továbbra is csak olvasható lesz, amíg nem frissít a vállalatra. Megtudhatja, hogyan [frissíthet egy alapszintű munkaterületet nagyvállalati verzióra](how-to-manage-workspace.md#upgrade). 
-
-Az ügyfelek felelősek a számítási és egyéb Azure-erőforrásokért felmerülő költségekért.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozza létre első kísérletét a kívánt módszerrel:
   + [Python-jegyzetfüzetek használata & ML-modellek üzembe helyezéséhez](tutorial-1st-experiment-sdk-setup.md)

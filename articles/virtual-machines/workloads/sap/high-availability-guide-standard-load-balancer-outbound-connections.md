@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660171"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907465"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Nyilvános végponti kapcsolat a Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben
 
@@ -165,7 +165,7 @@ Az architektúra így néz ki:
    A tűzfalszabály a következőhöz hasonlóan néz ki: ![ Kimenő kapcsolatok Azure Firewall](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. Hozzon létre felhasználó által megadott útvonalat a virtuális gépek alhálózatáról a **MyAzureFirewall**magánhálózati IP-címére.
-   1. Ahogy az útválasztási táblázatban van elhelyezve, kattintson az útvonalak elemre. Válassza a Hozzáadás lehetőséget. 
+   1. Ahogy az útválasztási táblázatban van elhelyezve, kattintson az útvonalak elemre. Válassza a Hozzáadás elemet. 
    1. Útvonal neve: ToMyAzureFirewall, címzési előtag: **0.0.0.0/0**. Következő ugrás típusa: válassza a virtuális berendezés elemet. Következő ugrási cím: adja meg a konfigurált tűzfal magánhálózati IP-címét: **11.97.1.4**.  
    1. Mentés
 
@@ -222,7 +222,10 @@ Ha engedélyezni szeretné, hogy a pacemaker kommunikáljon az Azure felügyelet
 
 ## <a name="other-solutions"></a>Egyéb megoldások
 
-Ha a kimenő forgalom harmadik féltől származó tűzfalon keresztül van átirányítva, győződjön meg arról, hogy a tűzfal konfigurációja lehetővé teszi a kimenő kapcsolatot az Azure felügyeleti API-val: `https://management.azure.com` és `https://login.microsoftonline.com` .  
+Ha a kimenő forgalom továbbítása harmadik féltől származó tűzfalon keresztül történik:
+
+- Ha az Azure kerítés ügynökét használja, győződjön meg arról, hogy a tűzfal konfigurációja lehetővé teszi a kimenő kapcsolatot az Azure felügyeleti API-val: `https://management.azure.com``https://login.microsoftonline.com`   
+- Ha a SUSE Azure-beli nyilvános Felhőbeli frissítési infrastruktúráját használja a frissítések és javítások alkalmazásához, tekintse meg az [Azure nyilvános felhő frissítési infrastruktúrája 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ebb751826f0495f378c2df4118b3ad2008fd418f
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772233"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905017"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -230,11 +230,13 @@ Az alkalmazás üzleti logikája ezt a lépést fogja megállapítani, néhány 
 
 ## <a name="user-and-application-tokens"></a>Felhasználói és alkalmazási jogkivonatok
 
-Az alkalmazás a felhasználó nevében (a szokásos folyamat) vagy közvetlenül egy alkalmazásból (az ügyfél hitelesítő adataival ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) keresztül kaphat jogkivonatokat. Ezek az alkalmazási tokenek azt jelzik, hogy ez a hívás egy alkalmazásból származik, és nem rendelkezik a felhasználó biztonsági mentésével. Ezek a jogkivonatok nagyjából azonosak, néhány különbséggel:
+Előfordulhat, hogy az alkalmazás jogkivonatokat kap a felhasználó számára (általában a folyamatot tárgyalja), vagy közvetlenül egy alkalmazásból (az [ügyfél hitelesítő adatainak folyamatán](v1-oauth2-client-creds-grant-flow.md)keresztül). Ezek az alkalmazási tokenek azt jelzik, hogy ez a hívás egy alkalmazásból származik, és nem rendelkezik a felhasználó biztonsági mentésével. Ezek a jogkivonatok kezelése nagyjából azonos:
 
-* Az alkalmazáshoz tartozó jogkivonatok nem rendelkeznek `scp` jogcímevel, és ehelyett `roles` jogcímeket igényelhetnek. Ebben az esetben a rendszer rögzíti az alkalmazás engedélyét (a delegált engedélyekkel szemben). A delegált és az alkalmazásra vonatkozó engedélyekkel kapcsolatos további információkért lásd: engedély és hozzájárulás ([v 1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).
-* Számos emberi jogcíme hiányzik, például a `name` vagy a `upn` .
-* A `sub` és a `oid` jogcímek azonosak lesznek.
+* Ezzel a `roles` beállítással megtekintheti a jogkivonat tulajdonosának (az egyszerű szolgáltatásnév, a jelen esetben nem a felhasználó) engedélyeit.
+* A `oid` vagy a használatával `sub` ellenőrizze, hogy a hívó szolgáltatásnév a várt érték-e.
+
+Ha az alkalmazásnak meg kell különböztetnie az alkalmazáshoz tartozó hozzáférési jogkivonatokat és a felhasználók hozzáférési jogkivonatait, használja az `idtyp` [opcionális jogcímet](active-directory-optional-claims.md).  `idtyp`Ha a jogcímet hozzáadja a `accessToken` mezőhöz, és ellenőrzi az értéket `app` , akkor csak az alkalmazáshoz tartozó hozzáférési jogkivonatok észlelhetők.  A felhasználók azonosító jogkivonatai és hozzáférési jogkivonatai nem `idtyp` foglalják magukban a jogcímeket.
+
 
 ## <a name="token-revocation"></a>Jogkivonat visszavonása
 
@@ -246,7 +248,7 @@ A [jogkivonat-élettartam konfigurációjának](active-directory-configurable-to
 
 * MaxInactiveTime: Ha a frissítési token nem lett használva a MaxInactiveTime által diktált időn belül, a frissítési token többé nem lesz érvényes.
 * MaxSessionAge: Ha a MaxAgeSessionMultiFactor vagy a MaxAgeSessionSingleFactor értéke nem az alapértelmezett (a visszavonás után) értékre van állítva, akkor az újrahitelesítésre akkor van szükség, amikor a MaxAgeSession * eltelik.
-* Példák:
+* Angol nyelvű Példák:
   * A bérlőnek öt napja van egy MaxInactiveTime, és a felhasználó egy hétig ment a vakáción, így az Azure AD nem kapott új jogkivonat-kérelmet a felhasználótól 7 napon belül. Amikor a felhasználó legközelebb új jogkivonatot kér, megtalálják a frissítési jogkivonatot, és újra meg kell adniuk a hitelesítő adataikat.
   * Egy bizalmas alkalmazásnak egy nap MaxAgeSessionSingleFactor kell lennie. Ha a felhasználó hétfőn és kedden (25 óra elteltével) bejelentkezik, újra kell hitelesítenie.
 

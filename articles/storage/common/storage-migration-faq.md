@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1d8275d11b845df43238dce82beabe89d6464799
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651131"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944695"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Gyakori kérdések az Azure Storage migrálásával kapcsolatban
 
@@ -144,7 +144,7 @@ Kövesse az alábbi lépéseket:
     $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ```
 
-A virtuális gépek felügyelt lemezről történő központi telepítésével kapcsolatos további információkért lásd: [CreateVmFromManagedOsDisk. ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
+A virtuális gépek felügyelt lemezről történő központi telepítésével kapcsolatos további információkért lásd: [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
 
 **Hogyan az adatok áthelyezését vagy letöltését egy Storage-fiókból?**
 
@@ -215,19 +215,20 @@ Nincs biztonsági mentési megoldás. A Azure Files azonban támogatja az aszink
 - Egy megosztásból egy blob-tárolóba egy Storage-fiókban vagy egy másik Storage-fiókban.
 
 További információ: [adatok átvitele a AzCopy Windows rendszeren](storage-use-azcopy.md).
+
 ## <a name="configuration"></a>Konfiguráció
 
 **Hogyan módosítja a másodlagos helyet a Storage-fiókhoz tartozó Európa régióba?**
 
 A Storage-fiók létrehozásakor ki kell választania a fiók elsődleges régióját. A másodlagos régió kiválasztása az elsődleges régión alapul, és nem módosítható. További információ [: Geo-redundáns tárolás (GRS): régiók közötti replikáció az Azure Storage-](storage-redundancy.md)hoz.
 
-**Hol kaphatok további információt az Azure Storage Service Encryption (SSE) szolgáltatásról?**  
+**Hol kaphatok további információt az Azure Storage-titkosításról?**  
 
 Lásd az alábbi cikkeket:
 
--  [Biztonsági útmutató az Azure Storage-hoz](../blobs/security-recommendations.md)
-
--  [Azure-Storage Service Encryption a nyugalmi állapotban lévő adatokhoz](storage-service-encryption.md)
+- [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)
+- [Ügyfél által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez](encryption-customer-managed-keys.md)
+- [Titkosítási kulcs megadása blob Storage-kérelemre (előzetes verzió)](encryption-customer-provided-keys.md)
 
 **Hogyan egy Storage-fiókban tárolt adattitkosítást?**
 
@@ -253,21 +254,21 @@ Ha virtuális gépekkel rendelkezik, további lépéseket kell végrehajtania a 
 
 Más személyek számára a tárolási erőforrásokhoz való hozzáférés biztosítása:
 
--   Egy megosztott hozzáférés-aláírási (SAS-) token használatával biztosíthatja az erőforrásokhoz való hozzáférést.
+- Egy megosztott hozzáférés-aláírási (SAS-) token használatával biztosíthatja az erőforrásokhoz való hozzáférést.
 
--   Adjon meg egy felhasználót a Storage-fiók elsődleges vagy másodlagos kulcsával. További információ: a [Storage-fiók elérési kulcsainak kezelése](storage-account-keys-manage.md).
+- Adjon meg egy felhasználót a Storage-fiók elsődleges vagy másodlagos kulcsával. További információ: a [Storage-fiók elérési kulcsainak kezelése](storage-account-keys-manage.md).
 
--   Módosítsa a hozzáférési házirendet a névtelen hozzáférés engedélyezéséhez. További információ: [névtelen felhasználók engedélyeinek engedélyezése tárolók és Blobok](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)számára.
+- Módosítsa a hozzáférési házirendet a névtelen hozzáférés engedélyezéséhez. További információ: [névtelen felhasználók engedélyeinek engedélyezése tárolók és Blobok](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)számára.
 
 **Hol van telepítve a AzCopy?**
 
--   Ha a Microsoft Azure Storage parancssorból fér hozzá a AzCopy-hoz, írja be a következőt: **AzCopy**. A parancssor a AzCopy együtt települ.
+- Ha a Microsoft Azure Storage parancssorból fér hozzá a AzCopy-hoz, írja be a következőt: **AzCopy**. A parancssor a AzCopy együtt települ.
 
--   Ha telepítette a 32 bites verziót, a következő helyen található: **% ProgramFiles (x86)% \\ Microsoft SDK-k \\ Azure \\ AzCopy**.
+- Ha telepítette a 32 bites verziót, a következő helyen található: **% ProgramFiles (x86)% \\ Microsoft SDK-k \\ Azure \\ AzCopy**.
 
--   Ha telepítette a 64 bites verziót, a következő helyen található: **% ProgramFiles% \\ Microsoft SDK-k \\ Azure \\ AzCopy**.
+- Ha telepítette a 64 bites verziót, a következő helyen található: **% ProgramFiles% \\ Microsoft SDK-k \\ Azure \\ AzCopy**.
 
-**Hogyan használhat egy HTTPS-alapú egyéni tartományt a saját Storage-fiókommal? Például Hogyan tehetem meg a "https: \/ /mystorageaccountname.blob.Core.Windows.net/images/image.gif" kifejezést "https: \/ /www.contoso.com/images/image.gif" néven?**
+**Hogyan használhat egy HTTPS-alapú egyéni tartományt a saját Storage-fiókommal? Például Hogyan tehetem meg a "https: \/ /mystorageaccountname.blob.core.windows.net/images/image.gif" kifejezést "https: \/ /www.contoso.com/images/image.gif" néven?**
 
 A TLS/SSL jelenleg nem támogatott az egyéni tartományokkal rendelkező Storage-fiókok esetében.
 A nem HTTPS-alapú egyéni tartományokat azonban használhatja. További információ: [Egyéni tartománynév beállítása a blob Storage-végponthoz](../blobs/storage-custom-domain-name.md).
@@ -284,15 +285,15 @@ A redundáns tárterület eléréséhez olvasási hozzáférésű geo-redundáns
 
 **A replikált Storage-fiókhoz (például a zóna-redundáns tároláshoz, a Geo-redundáns tároláshoz vagy az olvasási hozzáférésű geo-redundáns tároláshoz), hogyan férhetnek hozzá a másodlagos régióban tárolt adatszolgáltatásokhoz?**
 
--   Ha zóna-redundáns tárolást vagy földrajzilag redundáns tárolást használ, nem férhet hozzá az adatokhoz a másodlagos régióból, kivéve, ha feladatátvételt kezdeményez az adott régióban. A feladatátvételi folyamattal kapcsolatos további információkért lásd a vész [-helyreállítási és a Storage-fiók feladatátvételét](storage-disaster-recovery-guidance.md)ismertető témakört.
+- Ha zóna-redundáns tárolást vagy földrajzilag redundáns tárolást használ, nem férhet hozzá az adatokhoz a másodlagos régióból, kivéve, ha feladatátvételt kezdeményez az adott régióban. A feladatátvételi folyamattal kapcsolatos további információkért lásd a vész [-helyreállítási és a Storage-fiók feladatátvételét](storage-disaster-recovery-guidance.md)ismertető témakört.
 
--   Ha olvasási hozzáférésű geo-redundáns tárolót használ, bármikor elérheti a másodlagos régió adatait. Használja az alábbi módszerek egyikét:  
+- Ha olvasási hozzáférésű geo-redundáns tárolót használ, bármikor elérheti a másodlagos régió adatait. Használja az alábbi módszerek egyikét:  
 
-    - **AzCopy**: Hozzáfűzés **– másodlagos** a Storage-fiók neve az URL-címben a másodlagos végpont eléréséhez. Például:  
+  - **AzCopy**: Hozzáfűzés **– másodlagos** a Storage-fiók neve az URL-címben a másodlagos végpont eléréséhez. Például:  
 
       `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
-    - **Sas-jogkivonat**: a végpontról származó adatok eléréséhez használjon sas-tokent. További információ: [közös hozzáférésű aláírások használata](storage-sas-overview.md).
+  - **Sas-jogkivonat**: a végpontról származó adatok eléréséhez használjon sas-tokent. További információ: [közös hozzáférésű aláírások használata](storage-sas-overview.md).
 
 **A Hogyan FTP használatával fér hozzá a Storage-fiókban lévő adatszolgáltatásokhoz?**
 
@@ -300,6 +301,6 @@ Nem lehet közvetlenül hozzáférni egy Storage-fiókhoz az FTP használatával
 
 Ha azt szeretné, hogy csak Storage Explorer vagy hasonló alkalmazás használata nélkül töltse le az adatletöltést, lehetséges, hogy SAS-tokent használ. További információ: [közös hozzáférésű aláírások használata](storage-sas-overview.md).
 
-## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha további segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

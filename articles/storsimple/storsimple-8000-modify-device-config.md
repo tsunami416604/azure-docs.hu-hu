@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267689"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702226"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple-eszköz konfigurációjának módosításához
 
@@ -65,7 +65,7 @@ Az eszköznek szinkronizálnia kell az időt ahhoz, hogy hitelesíteni lehessen 
 
  Válassza ki az időzónát a legördülő listából. Akár két hálózati időprotokoll (NTP) kiszolgálót is megadhat:
 
- - **Elsődleges NTP-kiszolgáló** – a konfiguráció megadása kötelező, ha a Windows PowerShell StorSimple-bővítménye használatával konfigurálja az eszközt. Az alapértelmezett Windows Server- **Time.Windows.com** az NTP-kiszolgálóként is megadhatja. Az elsődleges NTP-kiszolgáló konfigurációját a Azure Portalon keresztül tekintheti meg, de a Windows PowerShell felületét kell használnia a módosításhoz. Az eszköz `Set-HcsNTPClientServerAddress` elsődleges NTP-kiszolgálójának módosításához használja a parancsmagot. További információkért keresse fel a [set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmag szintaxisát.
+ - **Elsődleges NTP-kiszolgáló** – a konfiguráció megadása kötelező, ha a Windows PowerShell StorSimple-bővítménye használatával konfigurálja az eszközt. Az alapértelmezett Windows Server- **Time.Windows.com** az NTP-kiszolgálóként is megadhatja. Az elsődleges NTP-kiszolgáló konfigurációját a Azure Portalon keresztül tekintheti meg, de a Windows PowerShell felületét kell használnia a módosításhoz. Az `Set-HcsNTPClientServerAddress` eszköz elsődleges NTP-kiszolgálójának módosításához használja a parancsmagot. További információkért keresse fel a [set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmag szintaxisát.
 
 - **Másodlagos NTP-kiszolgáló** – a konfiguráció nem kötelező. A portálon másodlagos NTP-kiszolgálót is beállíthat.
 

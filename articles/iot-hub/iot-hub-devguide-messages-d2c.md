@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370457"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790517"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -35,7 +35,15 @@ Az IoT hub alapértelmezett beépített végpontja (**üzenetek/események**), a
 
 Minden üzenet az összes olyan végponthoz van irányítva, amelynek útválasztási lekérdezése megfelel. Más szóval egy üzenet több végponthoz is átirányítható.
 
-A IoT Hub jelenleg a következő szolgáltatásokat támogatja egyéni végpontként:
+
+Ha az egyéni végpont tűzfal-konfigurációval rendelkezik, érdemes lehet a Microsoft megbízható első féltől származó kivételt használni, hogy hozzáférést biztosítson IoT Hub az [Azure Storage](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing), az [Azure Event Hubs](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) és a [Azure Service Bus](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)eléréséhez. Ez a [felügyelt szolgáltatás identitásával](./virtual-network-support.md)rendelkező IoT hubok régiókban való kiválasztása esetén érhető el.
+
+A IoT Hub jelenleg a következő végpontokat támogatja:
+
+ - Beépített végpont
+ - Azure Storage
+ - Service Bus várólisták és Service Bus témakörök
+ - Event Hubs
 
 ### <a name="built-in-endpoint"></a>Beépített végpont
 
@@ -75,9 +83,6 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
-> [!NOTE]
-> Ha a Storage-fiók olyan tűzfal-konfigurációval rendelkezik, amely korlátozza IoT Hub kapcsolatát, érdemes lehet a [Microsoft megbízható első féltől származó kivételt](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) használni (az IoT-hubok számára elérhető régiókban, felügyelt szolgáltatás identitásával).
-
 Azure Data Lake Gen2-kompatibilis Storage-fiók létrehozásához hozzon létre egy új v2-es Storage-fiókot, és válassza az *engedélyezve* lehetőséget a **speciális** lap *hierarchikus névtér* mezőjében az alábbi képen látható módon:
 
 ![Azure Date Lake Gen2-tároló kiválasztása](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -87,17 +92,9 @@ Azure Data Lake Gen2-kompatibilis Storage-fiók létrehozásához hozzon létre 
 
 Service Bus várólisták és a IoT Hub végpontként használt témakörök nem rendelkezhetnek engedélyezett **munkamenetekkel** vagy **duplikált észleléssel** . Ha bármelyik beállítás engedélyezve van, a végpont nem **érhető el** a Azure Portalban.
 
-> [!NOTE]
-> Ha a Service Bus-erőforrás olyan tűzfal-konfigurációval rendelkezik, amely korlátozza IoT Hub kapcsolatát, érdemes lehet a [Microsoft megbízható első féltől származó kivételt](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing) használni (az IoT-hubok számára a felügyelt szolgáltatás identitásával érhető el).
-
-
 ### <a name="event-hubs"></a>Event Hubs
 
 A beépített Event Hubs kompatibilis végponton kívül az adatok átirányítása Event Hubs típusú egyéni végpontokra is elvégezhető. 
-
-> [!NOTE]
-> Ha az Event hub-erőforrás olyan tűzfallal rendelkezik, amely korlátozza IoT Hub kapcsolatát, érdemes lehet a [Microsoft megbízható első féltől származó kivételt](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) használni (amely a felügyelt szolgáltatás identitásával IoT hubok esetében érhető el).
-
 
 ## <a name="reading-data-that-has-been-routed"></a>Az átirányított adatolvasás
 
@@ -146,11 +143,9 @@ A legtöbb esetben a késés átlagos növekedése kevesebb, mint 500 MS. A kés
 
 ## <a name="monitoring-and-troubleshooting"></a>Figyelés és hibaelhárítás
 
-IoT Hub az útválasztáshoz és a végpontokhoz kapcsolódó metrikákat biztosít, hogy áttekintést nyújtson a hub állapotáról és az elküldött üzenetekről. Több mérőszámból is egyesítheti az információkat, így azonosíthatja a problémák alapvető okát. Használja például a metrika- **útválasztást: telemetria-üzenetek eldobott** vagy **D2C. telemetria. kimenő. eldobott** üzenet, amely meghatározza, hogy az egyes útvonalakon és a tartalék útvonalon lévő lekérdezések nem felelnek meg a letiltott üzenetek számának. [IoT hub mérőszámok](iot-hub-metrics.md) felsorolja az összes olyan metrikát, amely alapértelmezés szerint engedélyezve van a IoT hub számára.
+IoT Hub az útválasztáshoz és a végpontokhoz kapcsolódó metrikákat biztosít, hogy áttekintést nyújtson a hub állapotáról és az elküldött üzenetekről. [IoT hub mérőszámok](iot-hub-metrics.md) felsorolja az összes olyan metrikát, amely alapértelmezés szerint engedélyezve van a IoT hub számára. Az Azure Monitor [diagnosztikai beállításokban](../iot-hub/iot-hub-monitor-resource-health.md)található diagnosztikai naplók használatával nyomon követheti **az útválasztási** lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat IoT hub által észlelt módon. A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. 
 
-A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custom-endpoints) használja a REST API a [végpont állapota](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. Azt javasoljuk, hogy az útválasztási üzenet késéséhez kapcsolódó [IoT hub metrikák](iot-hub-metrics.md) használatával azonosítsa és hibakeresési hibákat, ha a végpont állapota meghalt vagy nem megfelelő. A végpont típusa Event Hubs esetében például figyelheti a **D2C. endpoints. késés. eventHubs**. A nem kifogástalan állapotú végpont állapota akkor frissül, ha a IoT Hub végül konzisztens állapotba került.
-
-Az Azure Monitor [diagnosztikai beállításokban](../iot-hub/iot-hub-monitor-resource-health.md)található diagnosztikai naplók használatával nyomon követheti **az útválasztási** lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat IoT hub, például ha egy végpont meghalt. Ezeket a diagnosztikai naplókat Azure Monitor naplókba, Event Hubsba vagy az Azure Storage-ba is elküldhetik egyéni feldolgozásra.
+További részletekért és az Útválasztás hibaelhárításához használja a [hibaelhárítási útmutatót](troubleshoot-message-routing.md) .
 
 ## <a name="next-steps"></a>További lépések
 

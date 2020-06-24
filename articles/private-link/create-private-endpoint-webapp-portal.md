@@ -3,17 +3,17 @@ title: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint has
 description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 34ea9961c257f398ebed3baaf4ed2ee5b6f3547e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298703"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737393"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint (előzetes verzió) használatával
 
@@ -198,7 +198,7 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a webalkalmaz
 
 1. A privát végponton keresztül fér hozzá a webalkalmazáshoz
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a privát végponttal, a webalkalmazással és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 

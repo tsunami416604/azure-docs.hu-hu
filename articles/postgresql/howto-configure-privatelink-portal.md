@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 188b8949d6cda12617433783a9d81eec6d8fce97
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 40e30d4011a52342c6fb610b19f70c8523a0331f
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488375"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736713"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Privát hivatkozás létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgáló számára a portál használatával
 
@@ -113,7 +113,7 @@ Ebben a szakaszban egy Azure Database for PostgreSQL-kiszolgálót fog létrehoz
     | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Kiszolgáló adatai** |  |
-    |Kiszolgálónév  | Adja meg a *MyServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
+    |Kiszolgáló neve  | Adja meg a *MyServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
     | Rendszergazdai Felhasználónév| Adja meg a választott rendszergazda nevét. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
     | Hely | Válassza ki azt az Azure-régiót, ahol a PostgreSQL-kiszolgálót tárolni szeretné. |
@@ -171,7 +171,7 @@ Ebben a szakaszban létre fog hozni egy PostgreSQL-kiszolgálót, és hozzá kel
     |||
 
     > [!Note] 
-    > Használja az előre definiált saját DNS-zónát a szolgáltatáshoz, vagy hozzon létre újat. A részletekért tekintse meg az [Azure-szolgáltatások DNS-zóna konfigurációját](../private-link/private-endpoint-dns.md) .
+    > Használja az előre definiált saját DNS-zónát a szolgáltatáshoz, vagy adja meg a kívánt DNS-zóna nevét. A részletekért tekintse meg az [Azure-szolgáltatások DNS-zóna konfigurációját](../private-link/private-endpoint-dns.md) .
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
 2. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
@@ -229,7 +229,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
     | Beállítás | Érték |
     | ------- | ----- |
     | Kiszolgáló típusa| Válassza a **PostgreSQL**lehetőséget.|
-    | Kiszolgálónév| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* kiválasztása |
+    | Kiszolgáló neve| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* kiválasztása |
     | Felhasználónév | Adja meg username@servername a PostgreSQL-kiszolgáló létrehozásakor megadott felhasználónevet. |
     |Jelszó |Adja meg a PostgreSQL-kiszolgáló létrehozásakor megadott jelszót. |
     |SSL|Válassza a **kötelező**lehetőséget.|
@@ -250,7 +250,7 @@ Ha végzett a privát végpont, a PostgreSQL-kiszolgáló és a virtuális gép 
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for PostgreSQL-kiszolgálót és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságos módon kommunikál a PostgreSQL-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
 

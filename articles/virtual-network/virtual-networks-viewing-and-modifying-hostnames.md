@@ -8,17 +8,17 @@ manager: dcscontentpm
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 09c911838d34a083de8450145ce849fc966eb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8c35604af9780fb4299bbd7bfd87c3d93ac537
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459151"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702839"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Állomásnevek megtekintése és módosítása
 Annak engedélyezéséhez, hogy a szerepkör-példányok állomásnévre legyenek hivatkozva, az egyes szerepkörökhöz tartozó szolgáltatás konfigurációs fájljában meg kell adnia az állomásnév értékét. Ezt úgy teheti meg, hogy hozzáadja a kívánt gazdagép nevét a **szerepkör** elem **vmName** attribútumához. A **vmName** attribútum értéke az egyes szerepkör-példányok állomásneve alapjául szolgál. Ha például a **vmName** *webrole* , és a szerepkör három példánya van, a példányok állomásneve a *webrole0*, a *webrole1 webes*és a *webrole2*lesz. A konfigurációs fájlban nem kell megadnia a virtuális gépek gazdagépének nevét, mert a virtuális gép állomásneve a virtuális gép neve alapján van feltöltve. Microsoft Azure szolgáltatás konfigurálásával kapcsolatos további információkért lásd: [Azure szolgáltatás konfigurációs sémája (. Cscfg fájl)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -41,7 +41,7 @@ A REST-ügyféltől kövesse az alábbi utasításokat:
 
 1. Ellenőrizze, hogy van-e ügyféltanúsítvány a Azure Portalhoz való kapcsolódáshoz. Az ügyféltanúsítvány beszerzéséhez kövesse az [útmutató: közzétételi beállítások és előfizetési információk letöltése és importálása](https://msdn.microsoft.com/library/dn385850.aspx)című cikkben ismertetett lépéseket. 
 2. Állítson be egy x-MS-Version nevű fejléc-bejegyzést 2013-11-01 értékkel.
-3. Kérelem küldése a következő formátumban:\/https:/Management.Core.Windows.net/\<előfizetés-ID\>/Services/hostedservices/\<Service-name\>? beágyazás-detail = True
+3. Kérelem küldése a következő formátumban: https: \/ /Management.Core.Windows.net/ \<subscrition-id\> /Services/hostedservices/ \<service-name\> ? beágyazás-detail = True
 4. Keresse meg a **hostname** elemet az egyes **RoleInstance** elemekhez.
 
 > [!WARNING]

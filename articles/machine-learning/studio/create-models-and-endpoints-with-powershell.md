@@ -5,17 +5,17 @@ description: A PowerShell használatával több Machine Learning modellt és web
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 145ee5b458927fc4e3cda5277de614383181eed5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 43f797981c6e3d32cdd5083f4ee1e16359667bdd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465694"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696490"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Több webszolgáltatás-végpont létrehozása egy kísérletből ML Studio (klasszikus) és a PowerShell használatával
 
@@ -42,7 +42,7 @@ Használja a [Cortana Intelligence Galleryban](https://gallery.azure.ai)találha
 > 
 > 
 
-A kísérlet egy **adatimportálási** modul használatával importálja a *customer001. csv* betanítási adatkészletet egy Azure Storage-fiókból. Tegyük fel, hogy begyűjtötte a betanítási adatkészleteket az összes kerékpár-kölcsönzési helyről, és ugyanazon a blob Storage-helyen tárolja őket, ahol a fájlnevek a *rentalloc001. csv* fájlból a *rentalloc10. csv*fájlba kerülnek.
+A kísérlet egy **adatimportálási** modul használatával importálja a betanítási adatkészletet *customer001.csv* egy Azure Storage-fiókból. Tegyük fel, hogy begyűjtötte a betanítási adatkészleteket az összes kerékpár-kölcsönzési helyről, és ugyanabban a blob Storage-helyen tárolja őket, és a fájlnevek *rentalloc001.csvtól* kezdve a *rentalloc10.csvig *.
 
 ![Olvasó modul adatok importálása Azure-blobból](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
@@ -54,7 +54,7 @@ Ezt többféleképpen is elvégezheti. Egy webszolgáltatási paraméterrel rend
 
 ![Egy betanított modell modul kimenete egy webszolgáltatás kimeneti moduljának](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Most futtassuk ezt a betanítási kísérletet a *rental001. csv* alapértelmezett értékkel, amely betanítási adatkészletet használ. Ha megtekinti a **kiértékelési** modul kimenetét (kattintson a kimenetre, **majd válassza a**vizualizáció lehetőséget), láthatja, hogy a *AUC* = 0,91 egy tisztességes teljesítményt nyújt. Ezen a ponton készen áll arra, hogy üzembe helyezzen egy webszolgáltatást ebből a betanítási kísérletből.
+Most futtassuk ezt a betanítási kísérletet az alapértelmezett értékkel *rental001.csv* a betanítási adatkészletként. Ha megtekinti a **kiértékelési** modul kimenetét (kattintson a kimenetre, **majd válassza a**vizualizáció lehetőséget), láthatja, hogy a *AUC* = 0,91 egy tisztességes teljesítményt nyújt. Ezen a ponton készen áll arra, hogy üzembe helyezzen egy webszolgáltatást ebből a betanítási kísérletből.
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>A képzési és pontozási webszolgáltatások üzembe helyezése
 A betanítási webszolgáltatás üzembe helyezéséhez kattintson a kísérlet vászon alatt a **webszolgáltatás beállítása** gombra, és válassza a **webszolgáltatás telepítése**lehetőséget. Hívja meg ezt a webszolgáltatást "Bike Rental Training".
@@ -87,7 +87,7 @@ Ezután futtassa a következő PowerShell-parancsot:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-Most létrehozott 10 végpontot, és mindegyikük ugyanazt a betanított modellt tartalmazza, amely a *customer001. csv*fájlra van betanítva. Megtekintheti őket a Azure Portalban.
+Most létrehozott 10 végpontot, és mindegyikük ugyanazt a betanított modellt tartalmazza *customer001.csvon *. Megtekintheti őket a Azure Portalban.
 
 ![A portálon megtekintheti a betanított modellek listáját](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 

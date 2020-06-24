@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282015"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692478"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Az Azure Service Fabric-összetevők rendszerállapot-jelentéseket biztosítanak a fürtben lévő összes entitáshoz, közvetlenül a jelölőnégyzetből. A [Health Store](service-fabric-health-introduction.md#health-store) a rendszerjelentések alapján hozza létre és törli az entitásokat. Azt is megszervezi egy hierarchiában, amely rögzíti az entitások interakcióit.
@@ -380,7 +380,7 @@ Az állapotjelentés az egyes replikák esetében az alábbiakat tartalmazza:
 - A csomópont, amelyen a replika fut
 - Replika azonosítója
 
-A példához hasonló esetben további vizsgálatra van szükség. Vizsgálja meg az egyes replikák állapotát az előző példában `Primary` `Secondary` (131482789658160654 és 131482789688598467) jelölt replikákkal kezdődően.
+A példához hasonló esetben további vizsgálatra van szükség. Vizsgálja meg az egyes replikák állapotát az `Primary` `Secondary` előző példában (131482789658160654 és 131482789688598467) jelölt replikákkal kezdődően.
 
 ### <a name="replica-constraint-violation"></a>Replika megkötésének megsértése
 A **System. PLB** figyelmeztetést küld, ha a replika korlátozásának megsértését észleli, és nem helyezi el az összes partíció replikáját. A jelentés részletei megmutatják, hogy mely megkötések és tulajdonságok akadályozzák meg a replika elhelyezését.
@@ -428,7 +428,7 @@ Ezek az állapot-figyelmeztetések akkor következnek be, amikor a művelet a h�
 * **Tulajdonság**: **ReplicaOpenStatus**, **ReplicaCloseStatus**és **ReplicaChangeRoleStatus**.
 * **Következő lépések**: vizsgálja meg a szolgáltatási kódot vagy az összeomlási memóriaképeket, hogy megtudja, miért sikertelen a művelet.
 
-Az alábbi példa egy olyan replika állapotát mutatja, amely a nyitott `TargetInvocationException` metódusból származik. A leírás tartalmazza a meghibásodási pontot, a **IStatefulServiceReplica. Open**, a kivétel típusát **TargetInvocationException**és a verem nyomkövetését.
+Az alábbi példa egy olyan replika állapotát mutatja, amely a `TargetInvocationException` nyitott metódusból származik. A leírás tartalmazza a meghibásodási pontot, a **IStatefulServiceReplica. Open**, a kivétel típusát **TargetInvocationException**és a verem nyomkövetését.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
@@ -639,30 +639,30 @@ HealthEvents          :
 
 A tulajdonság és a szöveg jelzi, hogy melyik API ragadt. A különböző beragadt API-kkal kapcsolatos következő lépések eltérnek. A *IStatefulServiceReplica* vagy *IStatelessServiceInstance* lévő API-k általában egy hiba a szolgáltatás kódjában. A következő szakasz ismerteti, hogyan fordítja le ezeket a [Reliable Services modellre](service-fabric-reliable-services-lifecycle.md):
 
-- **IStatefulServiceReplica. Open**: Ez a figyelmeztetés azt jelzi, hogy `CreateServiceInstanceListeners`a `ICommunicationListener.OpenAsync`(z),, vagy `OnOpenAsync` felülbírált hívása beragadt.
+- **IStatefulServiceReplica. Open**: Ez a figyelmeztetés azt jelzi, hogy a (z), `CreateServiceInstanceListeners` `ICommunicationListener.OpenAsync` , vagy felülbírált hívása `OnOpenAsync` beragadt.
 
-- **IStatefulServiceReplica. Bezárás** és **IStatefulServiceReplica. megszakítás**: a leggyakoribb eset egy olyan szolgáltatás, amely nem tartja tiszteletben az átadott visszavonási tokent `RunAsync`. Az is előfordulhat, hogy `ICommunicationListener.CloseAsync`a (vagy felülbírált) megakadt. `OnCloseAsync`
+- **IStatefulServiceReplica. Bezárás** és **IStatefulServiceReplica. megszakítás**: a leggyakoribb eset egy olyan szolgáltatás, amely nem tartja tiszteletben az átadott visszavonási tokent `RunAsync` . Az is előfordulhat, hogy a ( `ICommunicationListener.CloseAsync` vagy felülbírált `OnCloseAsync` ) megakadt.
 
-- **IStatefulServiceReplica. changerole művelet (S)** és **IStatefulServiceReplica. changerole művelet (N)**: a leggyakoribb eset egy olyan szolgáltatás, amely nem tartja tiszteletben az átadott visszavonási tokent `RunAsync`. Ebben az esetben a legjobb megoldás a replika újraindítása.
+- **IStatefulServiceReplica. changerole művelet (S)** és **IStatefulServiceReplica. changerole művelet (N)**: a leggyakoribb eset egy olyan szolgáltatás, amely nem tartja tiszteletben az átadott visszavonási tokent `RunAsync` . Ebben az esetben a legjobb megoldás a replika újraindítása.
 
-- **IStatefulServiceReplica. changerole művelet (P)**: a leggyakoribb eset az, hogy a szolgáltatás nem adott vissza feladatot a alkalmazásból `RunAsync`.
+- **IStatefulServiceReplica. changerole művelet (P)**: a leggyakoribb eset az, hogy a szolgáltatás nem adott vissza feladatot a alkalmazásból `RunAsync` .
 
 A beragadható egyéb API-hívások a **IReplicator** felületen találhatók. Például:
 
-- **IReplicator. CatchupReplicaSet**: Ez a figyelmeztetés két dolog egyikét jelzi. Nincsenek elegendő replikák. Ha meg szeretné tekinteni, hogy ez a helyzet-e, tekintse meg a partíció replikáinak replika állapotát, vagy a System.FM állapotáról szóló jelentést egy beragadt újrakonfiguráláshoz. Vagy a replikák nem ismerik fel a műveleteket. A PowerShell- `Get-ServiceFabricDeployedReplicaDetail` parancsmag segítségével meghatározható az összes replika állapota. A probléma olyan replikákkal rendelkezik, `LastAppliedReplicationSequenceNumber` amelyek értéke az elsődleges `CommittedSequenceNumber` érték mögött van.
+- **IReplicator. CatchupReplicaSet**: Ez a figyelmeztetés két dolog egyikét jelzi. Nincsenek elegendő replikák. Ha meg szeretné tekinteni, hogy ez a helyzet-e, tekintse meg a partíció replikáinak replika állapotát, vagy a System.FM állapotáról szóló jelentést egy beragadt újrakonfiguráláshoz. Vagy a replikák nem ismerik fel a műveleteket. A PowerShell-parancsmag segítségével `Get-ServiceFabricDeployedReplicaDetail` meghatározható az összes replika állapota. A probléma olyan replikákkal rendelkezik, amelyek `LastAppliedReplicationSequenceNumber` értéke az elsődleges érték mögött van `CommittedSequenceNumber` .
 
-- **IReplicator. BuildReplica (\<távoli ReplicaId>)**: Ez a figyelmeztetés problémát jelez a fordítási folyamat során. További információ: [replika életciklusa](service-fabric-concepts-replica-lifecycle.md). Ennek oka lehet a replikátor-címek helytelen konfigurációja. További információ: állapot- [nyilvántartó Reliable Services konfigurálása](service-fabric-reliable-services-configuration.md) és [erőforrások megadása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md). A távoli csomóponton is lehet probléma.
+- **IReplicator. BuildReplica ( \<Remote ReplicaId> )**: Ez a figyelmeztetés problémát jelez a fordítási folyamat során. További információ: [replika életciklusa](service-fabric-concepts-replica-lifecycle.md). Ennek oka lehet a replikátor-címek helytelen konfigurációja. További információ: állapot- [nyilvántartó Reliable Services konfigurálása](service-fabric-reliable-services-configuration.md) és [erőforrások megadása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md). A távoli csomóponton is lehet probléma.
 
 ### <a name="replicator-system-health-reports"></a>Replikátor rendszerállapot-jelentései
-**A replikációs várólista megtelt:**
-a**System. replikátor** figyelmeztetést küld, ha a replikációs várólista megtelt. Az elsődlegesen a replikációs várólista általában megtelik, mert egy vagy több másodlagos replika lassú a művelet elfogadásához. A másodlagosnál ez általában akkor fordul elő, ha a szolgáltatás lassan alkalmazza a műveleteket. A figyelmeztetés törlődik, ha a várólista már nem teljes.
+A **replikációs várólista megtelt:** 
+ A **System. replikátor** figyelmeztetést küld, ha a replikációs várólista megtelt. Az elsődlegesen a replikációs várólista általában megtelik, mert egy vagy több másodlagos replika lassú a művelet elfogadásához. A másodlagosnál ez általában akkor fordul elő, ha a szolgáltatás lassan alkalmazza a műveleteket. A figyelmeztetés törlődik, ha a várólista már nem teljes.
 
 * **SourceId forrásazonosító**: System. replikátor
 * **Tulajdonság**: **PrimaryReplicationQueueStatus** vagy **SecondaryReplicationQueueStatus**, a replika szerepkörtől függően.
 * **Következő lépések**: Ha a jelentés az elsődleges, ellenőrizze a fürt csomópontjai közötti kapcsolatot. Ha az összes kapcsolat kifogástalan állapotú, akkor lehet, hogy legalább egy lassú másodlagos értékkel rendelkezik, és nagy lemezterületet alkalmaz a műveletekre. Ha a jelentés a másodlagos oldalon található, először ellenőrizze a lemez használatát és teljesítményét a csomóponton. Ezután jelölje be a lassú csomópontról az elsődlegesre irányuló kimenő kapcsolatokat.
 
-**RemoteReplicatorConnectionStatus:**
-az elsődleges replika**System. replikátora** figyelmeztetést küld, ha a másodlagos (távoli) replikátorhoz való kapcsolódás nem kifogástalan állapotú. A távoli replikátor címe a jelentés üzeneteiben jelenik meg, így könnyebben észlelhető, ha a hibás konfigurációt átadták, vagy ha hálózati problémák vannak a replikálók között.
+**RemoteReplicatorConnectionStatus:** 
+ Az elsődleges replika **System. replikátora** figyelmeztetést küld, ha a másodlagos (távoli) replikátorhoz való kapcsolódás nem kifogástalan állapotú. A távoli replikátor címe a jelentés üzeneteiben jelenik meg, így könnyebben észlelhető, ha a hibás konfigurációt átadták, vagy ha hálózati problémák vannak a replikálók között.
 
 * **SourceId forrásazonosító**: System. replikátor
 * **Tulajdonság**: **RemoteReplicatorConnectionStatus**.

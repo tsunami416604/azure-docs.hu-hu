@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260448"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702311"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok áthelyezése az Azure Table-be és onnan az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -537,7 +537,7 @@ A típusnak az Azure Table OData típusról .NET-típusra való leképezése mia
 | Oszlop neve | Típus |
 | --- | --- |
 | userid |Edm.Int64 |
-| név |Edm.String |
+| name |Edm.String |
 | lastlogindate |EDM. DateTime |
 
 Ezután adja meg az Azure Table-adatkészletet az alábbiak szerint. Nem kell megadnia a "Structure" szakaszt a típus adataival, mivel a típus adatai már meg vannak adva az alapul szolgáló adattárban.

@@ -4,15 +4,15 @@ description: Felhőalapú hálózati figyelés (NPM) konfigurálása az Azure Ex
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74076591"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738379"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Network Performance Monitor for ExpressRoute konfigurálása
 
@@ -85,7 +85,7 @@ Hozzon létre egy olyan munkaterületet az előfizetésben, amely a virtuális h
 2. Ezután másolja a **munkaterület-azonosítót** és az **elsődleges kulcsot** a Jegyzettömbbe.
 3. A **log Analytics-ügynökök konfigurálása a TCP protokoll használatával történő figyeléshez** szakaszban töltse le a PowerShell-szkriptet. A PowerShell-parancsfájl segítségével megnyithatja a megfelelő tűzfal-portot a TCP-tranzakciókhoz.
 
-   ![PowerShell-szkript](./media/how-to-npm/7.png)
+   ![PowerShell-parancsprogram](./media/how-to-npm/7.png)
 
 ### <a name="22-install-a-monitoring-agent-on-each-monitoring-server-on-each-vnet-that-you-want-to-monitor"></a><a name="installagent"></a>2,2: figyelő ügynök telepítése minden figyelési kiszolgálón (minden figyelni kívánt VNET)
 

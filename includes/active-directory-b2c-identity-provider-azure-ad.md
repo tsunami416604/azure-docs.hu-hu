@@ -22,7 +22,7 @@ Ha egy adott Azure AD-szervezet felhasználói számára engedélyezni szeretné
 1. Válassza az **új regisztráció**lehetőséget.
 1. Adja meg az alkalmazás **nevét** . Például: `Azure AD B2C App`.
 1. Fogadja el a fiókok alapértelmezett kiválasztását ebben a **szervezeti könyvtárban csak** ehhez az alkalmazáshoz.
-1. Az **átirányítási URI**esetében fogadja el a **web**értékét, és írja be az alábbi URL-címet minden kisbetűvel, ahol `your-B2C-tenant-name` a helyére a Azure ad B2C bérlő neve kerül.
+1. Az **átirányítási URI**esetében fogadja el a **web**értékét, és írja be az alábbi URL-címet minden kisbetűvel, ahol a `your-B2C-tenant-name` helyére a Azure ad B2C bérlő neve kerül.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -36,7 +36,7 @@ Ha egy adott Azure AD-szervezet felhasználói számára engedélyezni szeretné
 
 ### <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
 
-Ha a és `family_name` `given_name` a jogcímeket az Azure ad-től szeretné beszerezni, az alkalmazáshoz a Azure Portal felhasználói felületén vagy az alkalmazás-jegyzékfájlban konfigurálhat választható jogcímeket is. További információkért lásd: [opcionális jogcímek megadása az Azure ad-alkalmazáshoz](/azure/active-directory/develop/active-directory-optional-claims).
+Ha a `family_name` és a `given_name` jogcímeket az Azure ad-től szeretné beszerezni, az alkalmazáshoz a Azure Portal felhasználói felületén vagy az alkalmazás-jegyzékfájlban konfigurálhat választható jogcímeket is. További információkért lásd: [opcionális jogcímek megadása az Azure ad-alkalmazáshoz](/azure/active-directory/develop/active-directory-optional-claims).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk**lehetőséget.
@@ -44,5 +44,5 @@ Ha a és `family_name` `given_name` a jogcímeket az Azure ad-től szeretné bes
 1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció**elemet.
 1. Válassza a **választható jogcím hozzáadása**lehetőséget.
 1. A **jogkivonat típusa**beállításnál válassza az **azonosító**lehetőséget.
-1. Válassza ki a hozzáadandó választható `family_name` jogcímeket `given_name`, és.
+1. Válassza ki a hozzáadandó választható jogcímeket, `family_name` és `given_name` .
 1. Kattintson a **Hozzáadás** parancsra.

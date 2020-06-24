@@ -15,29 +15,29 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e108451e4c19e77e01b5bcc5d8dd21e86ad73a
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 6a2a5df011cd074bbccc0c13570b2f49d902a0c3
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547416"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694314"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése REST API-hívások használatával
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Az Azure-erőforrások felügyelt identitásai lehetővé teszi az Azure-szolgáltatások hitelesítését az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy hitelesítő adatokat kellene megadnia a kódban. 
+Az Azure-erőforrások felügyelt identitásai biztosítják az Azure-szolgáltatások hitelesítését az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy hitelesítő adatokat kellene megadniuk a kódban. 
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre, listázhat és törölhet egy felhasználó által hozzárendelt felügyelt identitást a CURL használatával REST API-hívások kezdeményezéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ha Windows rendszert használ, telepítse a [Linux Windows alrendszerét](https://msdn.microsoft.com/commandline/wsl/about) , vagy használja a Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) .
 - Ha a [Windows alrendszert Linux](https://msdn.microsoft.com/commandline/wsl/about) vagy Linux rendszerű [terjesztési operációs rendszeren](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)használja, [telepítse az Azure CLI helyi konzolt](/cli/azure/install-azure-cli).
-- Ha az Azure CLI helyi konzolt használja, jelentkezzen be az Azure `az login` -ba egy olyan fiókkal, amely az Azure-előfizetéshez van társítva, vagy a felhasználó által hozzárendelt felügyelt személyazonossági adatokat szeretné lekérni.
-- Egy tulajdonosi hozzáférési jogkivonat lekérése a használatával `az account get-access-token` a következő, felhasználó által hozzárendelt felügyelt identitás-műveletek végrehajtásához.
+- Ha az Azure CLI helyi konzolt használja, jelentkezzen be az Azure-ba `az login` egy olyan fiókkal, amely az Azure-előfizetéshez van társítva, vagy a felhasználó által hozzárendelt felügyelt személyazonossági adatokat szeretné lekérni.
+- Egy tulajdonosi hozzáférési jogkivonat lekérése `az account get-access-token` a használatával a következő, felhasználó által hozzárendelt felügyelt identitás-műveletek végrehajtásához.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -67,7 +67,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **Kérelem törzse**
 
-|Name (Név)  |Leírás  |
+|Name  |Leírás  |
 |---------|---------|
 |location     | Kötelező. Erőforrás helye.        |
 

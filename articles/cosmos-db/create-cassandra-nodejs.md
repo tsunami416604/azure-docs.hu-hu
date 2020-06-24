@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 39bdd2d34260b9adb12b25adff9d661083d51fe4
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: fbb24ac1974c23bf5292a987fc64a84dff69bf7d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310053"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118355"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása a Node. js SDK-val és Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása Node.js SDK-val és Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -26,14 +26,14 @@ ms.locfileid: "84310053"
 > * [Python](create-cassandra-python.md)
 >  
 
-Ebben a rövid útmutatóban létrehoz egy Azure Cosmos DB Cassandra API fiókot, és egy Cassandra Node. js-alkalmazást klónozott a GitHubról, és létrehoz egy Cassandra-adatbázist és-tárolót. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
+Ebben a rövid útmutatóban létrehoz egy Azure Cosmos DB Cassandra API fiókot, és egy GitHub-Node.js alkalmazást használ a GitHubról egy Cassandra-adatbázis és-tároló létrehozásához. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatív lehetőségként [kipróbálhatja ingyenesen az Azure Cosmos DB-t](https://azure.microsoft.com/try/cosmosdb/) Azure-előfizetés, díjfizetés és elköteleződés nélkül.
 
 Emellett szüksége lesz a következőkre:
-* [Node. js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) v 0.10.29 vagy újabb verzió
+* [Node.js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) v 0.10.29 vagy újabb verzió
 * [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
@@ -170,31 +170,31 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kapcsolatok karakterlánc**lehetőséget. 
 
-    Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-nodejs/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
+1. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-nodejs/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
 
-    ![A CONTACT POINT (Kapcsolódási pont), USERNAME (Felhasználónév) és a PASSWORD (Jelszó) értékek másolása az Azure Portal kapcsolati sztring oldaláról](./media/create-cassandra-nodejs/keys.png)
+    :::image type="content" source="./media/create-cassandra-nodejs/keys.png" alt-text="A CONTACT POINT (Kapcsolódási pont), USERNAME (Felhasználónév) és a PASSWORD (Jelszó) értékek másolása az Azure Portal kapcsolati sztring oldaláról":::
 
-2. Nyissa meg az `config.js` fájlt. 
+1. Nyissa meg az `config.js` fájlt. 
 
-3. Illessze be a CONTACT POINT értéket a portálról a `<FillMEIN>` helyére a 4. sorban.
+1. Illessze be a CONTACT POINT értéket a portálról a `<FillMEIN>` helyére a 4. sorban.
 
     A 4. sornak ekkor a következőképp kell kinéznie: 
 
     `config.contactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350"`
 
-4. Másolja a USERNAME értéket a portálról, és illessze be a `<FillMEIN>` helyére a 2. sorban.
+1. Másolja a USERNAME értéket a portálról, és illessze be a `<FillMEIN>` helyére a 2. sorban.
 
     A 2. sornak ekkor a következőképp kell kinéznie: 
 
     `config.username = 'cosmos-db-quickstart';`
     
-5. Másolja a PASSWORD értéket a portálról, és illessze be a `<FillMEIN>` helyére a 3. sorban.
+1. Másolja a PASSWORD értéket a portálról, és illessze be a `<FillMEIN>` helyére a 3. sorban.
 
     A 3. sornak ekkor a következőképp kell kinéznie:
 
     `config.password = '2Ggkr662ifxz2Mg==';`
 
-6. Mentse a `config.js` fájlt.
+1. Mentse a `config.js` fájlt.
     
 ## <a name="use-the-x509-certificate"></a>Az X509-tanúsítvány használata
 
@@ -211,11 +211,11 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 > 
 > Kattintson duplán a. CRT fájlra a tanúsítvány megjelenítésének megnyitásához. 
 >
-> ![A kimenet megtekintése és ellenőrzése](./media/create-cassandra-nodejs/crtcer1.gif)
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="A kimenet megtekintése és ellenőrzése":::
 >
 > Nyomja meg a Tovább gombot a tanúsítvány varázslóban. Válassza a Base-64 kódolású X. 509 (. CER), majd a Tovább gombra.
 >
-> ![A kimenet megtekintése és ellenőrzése](./media/create-cassandra-nodejs/crtcer2.gif)
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="A kimenet megtekintése és ellenőrzése":::
 >
 > Válassza a Tallózás lehetőséget (cél megkereséséhez), és írja be a fájlnevet.
 > Válassza a tovább, majd a Befejezés lehetőséget.
@@ -236,25 +236,25 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 4. Ellenőrizze az eredményt a parancssorban.
 
-    ![A kimenet megtekintése és ellenőrzése](./media/create-cassandra-nodejs/output.png)
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="A kimenet megtekintése és ellenőrzése":::
 
     Nyomja le a CTRL + C billentyűkombinációt a program végrehajtásának leállításához és a konzol ablak bezárásához. 
 
 5. Ha megnyitja az **Adatkezelőt** az Azure Portalon, lekérdezheti és módosíthatja és használhatja az új adatokat. 
 
-    ![Adatok megtekintése az Adatkezelőben](./media/create-cassandra-nodejs/data-explorer.png) 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="Adatok megtekintése az Adatkezelőben"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot a Cassandra API, és hogyan futtathat egy Cassandra-adatbázist és-tárolót létrehozó Cassandra Node. js-alkalmazást. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
+Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot a Cassandra API, és hogyan futtathat Cassandra Node.js alkalmazást, amely létrehoz egy Cassandra-adatbázist és-tárolót. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
 
 > [!div class="nextstepaction"]
 > [Cassandra-adatok importálása az Azure Cosmos DB-be](cassandra-import-data.md)

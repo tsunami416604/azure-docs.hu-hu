@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 542861afe49d03a179a9740d5a58b9d27e0d7f20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300448"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945460"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>A Key Vault szolgáltatás figyelése Azure Monitor for Key Vault (előzetes verzió)
 A Key Vault (előzetes verzió) Azure Monitor a kulcstartók átfogó figyelését teszi lehetővé a Key Vault kérelmek, a teljesítmény, a hibák és a késések egységes áttekintésével.
@@ -158,55 +158,51 @@ A következő lépések végrehajtásával konfigurálhatja a többszörös elő
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
+Az általános hibaelhárítási útmutatóért tekintse meg a dedikált munkafüzet-alapú információkkal [kapcsolatos hibaelhárítási cikket](troubleshoot-workbooks.md).
+
 Ez a szakasz a Azure Monitor for Key Vault (előzetes verzió) használata során felmerülő gyakori problémák diagnosztizálását és hibaelhárítását ismerteti. Az alábbi lista segítségével megkeresheti az adott hibához kapcsolódó információkat.
 
 ### <a name="resolving-performance-issues-or-failures"></a>Teljesítménnyel kapcsolatos problémák és hibák elhárítása
 
 A Key Vault (előzetes verzió) Azure Monitor azonosított kulcstartóval kapcsolatos problémák elhárításához tekintse meg a [Azure Key Vault dokumentációját](https://docs.microsoft.com/azure/key-vault/).
 
-### <a name="why-can-i-only-see-200-key-vaults"></a>Miért csak a 200 Key vaultot láthatom?
+### <a name="why-can-i-only-see-200-key-vaults"></a>Miért csak a 200 Key vaultot láthatom
 
 A kiválasztható és megtekinthető 200 kulcstartók száma. A kiválasztott előfizetések számától függetlenül a kiválasztott kulcstartók száma 200.
 
-### <a name="what-will-happen-when-a-pinned-item-is-clicked"></a>Mi történik, ha egy rögzített elemet kíván rákattintani?
-
-Ha az irányítópulton egy rögzített elemre kattint, az két dolog közül fog megnyílni:
-* Ha az adatok mentése megtörtént, megnyílik a bepillantást kérő példány, amelyből a PIN-kódot mentette.
-* Ha az eredmények nem voltak mentve, megnyílik egy új alapértelmezett adatáttekintési példány.
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Miért nem látom az összes előfizetést az előfizetési választóban?
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Miért nem látom az összes előfizetést az előfizetési választóban
 
 Csak azokat az előfizetéseket mutatjuk be, amelyek a kiválasztott előfizetési szűrőből kiválasztott Key vaultokat tartalmaznak, amelyek a Azure Portal fejlécben a "címtár + előfizetés" lehetőségre vannak kiválasztva.
 
 ![Az előfizetés-szűrő képernyőképe](./media/key-vaults-insights-overview/Subscriptions.png)
 
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>Hibaüzenet jelenik meg, miszerint a "lekérdezés meghaladja a munkaterületek/régiók maximális számát", mi a teendő?
+### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>Hibaüzenet jelenik meg, miszerint a "lekérdezés meghaladja az engedélyezett munkaterületek és régiók maximális számát", mi a teendő most
 
 Jelenleg a 25 régióra és az 200-es munkaterületekre korlátozza az adatait, ezért csökkentenie kell az előfizetések és/vagy az erőforráscsoportok számát.
 
-### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Szeretném módosítani vagy további vizualizációkat hozzáadni Key Vault az információkhoz, Hogyan tehetem ezt meg?
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Szeretném módosítani vagy további vizualizációkat hozzáadni Key Vault az információkhoz
 
 Ha módosítani szeretné a módosításokat, válassza a "szerkesztési mód" lehetőséget a munkafüzet módosításához, majd mentse a munkáját új munkafüzetként, amely egy kijelölt előfizetéshez és erőforráscsoporthoz van kötve.
 
-### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>Mi az az idő, amikor a munkafüzetek bármelyik részét rögzítjük?
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>Mi az az idő, amikor a munkafüzetek bármely részét rögzítjük
 
 Kihasználjuk az "automatikus" időkeretet, ezért attól függ, hogy milyen időtartomány van kiválasztva.
 
-### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Mi az az időintervallum, amikor a munkafüzet bármely része rögzítve van?
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Mi az az időtartomány, amikor a munkafüzet bármely része rögzítve van
 
 Az időtartomány az irányítópult beállításaitól függ.
 
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Miért nem látok semmilyen adat a Key Vault az Operations & késési szakaszban?
+### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Miért nem látok semmilyen adat a Key Vault az Operations & késési szakaszban
 
 A naplókon alapuló adatai megtekintéséhez engedélyeznie kell a naplókat a figyelni kívánt kulcstartók mindegyikén. Ez az egyes kulcstartó diagnosztikai beállításai alatt végezhető el. Az adatait egy kijelölt Log Analytics munkaterületre kell küldenie.
 
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Már Engedélyeztem a naplókat a Key Vault, miért nem tudom megtekinteni az adataikat az Operations & késése alatt?
+### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Már Engedélyeztem a naplókat a Key Vault, miért nem látom az adataimat az Operations & késéssel
 
 A diagnosztikai naplók jelenleg nem működnek visszamenőlegesen, így az adatai csak akkor jelennek meg, ha a kulcstartók műveleteket hajtottak végre. Ezért eltarthat egy ideig, akár órákig, akár egy napig, attól függően, hogy milyen aktív a Key Vault.
 
 Emellett, ha nagy számú kulcstartót és előfizetést választott ki, előfordulhat, hogy a lekérdezési korlátozások miatt nem tudja megtekinteni az adatait. Ha szeretné megtekinteni az adatait, előfordulhat, hogy csökkentenie kell a kiválasztott előfizetések vagy kulcstartók számát. 
 
-### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>Mi a teendő, ha más típusú vagy saját vizualizációkat szeretnék látni? Hogyan módosíthatom a Key Vault az adatfelismeréseket?
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>Mi a teendő, ha más típusú vagy saját vizualizációkat szeretnék látni? Hogyan módosíthatom a Key Vault
 
 Szerkesztheti a meglévő munkafüzetet a szerkesztési mód használatával, majd mentheti a munkáját új munkafüzetként, amely az összes új módosítást tartalmazni fogja.
 

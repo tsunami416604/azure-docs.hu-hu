@@ -2,17 +2,17 @@
 title: NCv3 sorozat – Azure Virtual Machines
 description: A NCv3 sorozatú virtuális gépek specifikációi.
 ms.subservice: sizes
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a53dddb8449fd0c41a1e2c697e7097e409dae28a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: c553117aa02106e744150469dee533da3ddc0265
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672136"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736985"
 ---
 # <a name="ncv3-series"></a>NCv3 sorozat
 
@@ -59,6 +59,6 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

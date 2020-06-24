@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930454"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254922"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellek frissítése az erőforrás frissítése tevékenység használatával
 
@@ -47,7 +47,7 @@ Idővel az Azure ML-pontozási kísérletek prediktív modelljeit új bemeneti a
 A következő táblázat ismerteti az ebben a példában használt webszolgáltatásokat.  A részletekért lásd: [Machine learning Studio (klasszikus) modellek átképzése programozott](../../machine-learning/studio/retrain-machine-learning-model.md) módon.
 
 - A **betanítási webszolgáltatás** betanítási és betanított modelleket hoz létre. Az átképzés kimenete egy. ilearner fájl az Azure Blob Storage-ban. Az **alapértelmezett végpont** automatikusan létrejön, amikor webszolgáltatásként teszi közzé a betanítási kísérletet. Több végpontot is létrehozhat, de a példa csak az alapértelmezett végpontot használja.
-- **Pontozási webszolgáltatás** – a rendszer címkézetlen adatpéldákat fogad, és előrejelzéseket készít. Az előrejelzés kimenete különböző formákat tartalmazhat, például egy. csv-fájlt vagy egy Azure SQL-adatbázis sorait a kísérlet konfigurációjától függően. A rendszer automatikusan létrehozza az alapértelmezett végpontot, amikor a prediktív kísérletet webszolgáltatásként teszi közzé. 
+- **Pontozási webszolgáltatás** – a rendszer címkézetlen adatpéldákat fogad, és előrejelzéseket készít. Az előrejelzés kimenete különböző formákat tartalmazhat, például egy. csv-fájlt vagy Azure SQL Database-sorokat a kísérlet konfigurációjától függően. A rendszer automatikusan létrehozza az alapértelmezett végpontot, amikor a prediktív kísérletet webszolgáltatásként teszi közzé. 
 
 Az alábbi ábrán az Azure ML-ben megjelenő tanítási és pontozási végpontok közötti kapcsolat látható.
 
@@ -58,7 +58,7 @@ A **betanítási webszolgáltatás** az **Azure ml batch végrehajtási tevéken
 A **pontozási webszolgáltatást** az **Azure ml Update Resource tevékenység** használatával lehet meghívni a webszolgáltatás az újonnan betanított modellel való frissítéséhez. A következő példák a társított szolgáltatás definícióit biztosítják: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>A pontozási webszolgáltatás egy klasszikus webszolgáltatás
-Ha a pontozási webszolgáltatás egy **klasszikus webszolgáltatás**, akkor a Azure Portal használatával hozza létre a második **nem alapértelmezett és frissíthető végpontot** . A lépések a [végpontok létrehozása](../../machine-learning/machine-learning-create-endpoint.md) című cikkben olvashatók. Miután létrehozta a nem alapértelmezett frissíthető végpontot, hajtsa végre a következő lépéseket:
+Ha a pontozási webszolgáltatás egy **klasszikus webszolgáltatás**, akkor a Azure Portal használatával hozza létre a második **nem alapértelmezett és frissíthető végpontot** . A lépések a [végpontok létrehozása](../../machine-learning/studio/create-endpoint.md) című cikkben olvashatók. Miután létrehozta a nem alapértelmezett frissíthető végpontot, hajtsa végre a következő lépéseket:
 
 * Kattintson a **Batch-végrehajtás** elemre a **mlEndpoint** JSON-tulajdonság URI-értékének lekéréséhez.
 * Kattintson az **erőforrás frissítése** hivatkozásra az **updateResourceEndpoint** JSON-tulajdonság URI-értékének lekéréséhez. Az API-kulcs maga a végpont oldalon található (a jobb alsó sarokban).

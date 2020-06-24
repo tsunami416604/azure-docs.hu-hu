@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre olyan Application Gatewayt, amely
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: fc955b4959bb20628463f7699a0b66ec2b89a393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b671af46d34e3b45796186cd10282d060fa8c537
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74011594"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804672"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Application Gateway létrehozása külső átirányítással az Azure CLI használatával
 
@@ -25,7 +25,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Figyelő és átirányítási szabály létrehozása
 > * Application Gateway létrehozása
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -88,7 +88,7 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmaz�
 
 ### <a name="add-the-redirection-configuration"></a>Az átirányítás konfigurációjának hozzáadása
 
-Adja hozzá az átirányítási konfigurációt, amely forgalmat küld a *www\.-consoto.org* a *\.contoso.com* az Application Gatewaynek az az [Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config)paranccsal.
+Adja hozzá az átirányítási konfigurációt, amely forgalmat küld a *www- \. consoto.org* a * \. contoso.com* az Application Gatewaynek az az [Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config)paranccsal.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \

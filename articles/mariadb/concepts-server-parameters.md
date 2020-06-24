@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 3141bb3652cfa44c42125fe95f038582108a963f
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5ea5a94c73adda1328b97c3e985c4b6ac614d1b9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637136"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255024"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Kiszolgálói paraméterek a Azure Database for MariaDB
 
@@ -124,6 +124,9 @@ Ha a kapcsolatok túllépik a korlátot, a következő hibaüzenet jelenhet meg:
 
 Ha új ügyfélkapcsolatokat hoz létre a MariaDB-hoz, akkor az idő és a létrehozás után ezek a kapcsolatok adatbázis-erőforrásokat foglalnak el, még ha tétlen is. A legtöbb alkalmazás sok rövid életű kapcsolatot igényel, amely ezt a helyzetet összeképezi. Ennek eredményeképpen kevesebb erőforrás érhető el a tényleges munkaterheléshez, ami csökkenti a teljesítményt. Egy kapcsolati Pooler, amely csökkenti az üresjárati kapcsolatokat, és a meglévő kapcsolatokat újra felhasználva segít elkerülni ezt. A ProxySQL beállításával kapcsolatos további információkért látogasson el a [blogbejegyzésbe](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
 
+>[!Note]
+>A ProxySQL egy nyílt forráskódú közösségi eszköz. A szolgáltatást a Microsoft a lehető legjobb módon támogatja. Ahhoz, hogy az éles támogatáshoz mérvadó útmutatást kapjon, kiértékelheti és elérheti a [terméktámogatási ProxySQL](https://proxysql.com/services/support/).
+
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) .
@@ -224,7 +227,7 @@ Az alábbi kiszolgálói paraméterek nem konfigurálhatók a szolgáltatásban:
 
 Az itt felsorolt egyéb kiszolgálói paraméterek a [MariaDB](https://mariadb.com/kb/en/server-system-variables/)alapértelmezett értékeit adják meg a MariaDB.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket a Azure Portal használatával](./howto-server-parameters.md)
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket az Azure CLI használatával](./howto-configure-server-parameters-cli.md)

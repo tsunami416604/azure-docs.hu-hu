@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 978dbf3d8e6a92242c0a984b26bb35cf911a3369
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e7384237f91bf3af8ccad1a97b27fb62a1845a88
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590425"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118984"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -108,7 +108,7 @@ Az Azure Cosmos DB Cassandra API egy felügyelt szolgáltatási platform. A für
 
 Egy üzemeltetett natív Cassandra shellt (CQLSH v 5.0.1) közvetlenül a [Azure Portal](data-explorer.md) vagy az [Azure Cosmos Explorer](https://cosmos.azure.com/)adatkezelő lehet megnyitni. A CQL-rendszerhéj engedélyezése előtt engedélyeznie kell [a jegyzetfüzetek](enable-notebooks.md) szolgáltatást a fiókjában (ha még nincs engedélyezve, akkor a rendszer rákérdez a gombra `Open Cassandra Shell` ). Jelölje be a Kiemelt Megjegyzés a [jegyzetfüzetek engedélyezése Azure Cosmos db-fiókok](enable-notebooks.md) számára támogatott Azure-régiók számára című részt.
 
-![CQLSH](./media/cassandra-support/cqlsh.png)
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH":::
 
 A helyi gépre telepített CQLSH használatával a Azure Cosmos DB Cassandra API is csatlakozhat. Az Apache Cassandra 3.1.1-es verziójában a környezeti változók beállításával működik a doboz. A következő részekben a CQLSH-t használó Windowson vagy Linuxon Cassandra API telepítéséhez, konfigurálásához és a Azure Cosmos DBhoz való kapcsolódáshoz szükséges utasítások találhatók.
 

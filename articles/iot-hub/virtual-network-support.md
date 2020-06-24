@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7d7e04c526f7327a000ac26e255d2c8363c01f5c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: bf193859c140001def83a18ca7965d9cbd312b02
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871241"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907533"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -91,6 +91,76 @@ Ahhoz, hogy más szolgáltatások megbízható Microsoft-szolgáltatásként meg
 1. Az **állapot**területen válassza **a be**lehetőséget, majd kattintson a **Mentés**gombra.
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="A IoT Hub felügyelt identitásának bekapcsolását bemutató képernyőkép":::
+
+### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Felügyelt identitás kiosztása a IoT Hub a létrehozáskor az ARM-sablon használatával
+
+Ha a felügyelt identitást erőforrás-kiépítési időpontban szeretné hozzárendelni az IoT hubhoz, használja az alábbi ARM-sablont:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Devices/IotHubs",
+      "apiVersion": "2020-03-01",
+      "name": "<provide-a-valid-resource-name>",
+      "location": "<any-of-supported-regions>",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "sku": {
+        "name": "<your-hubs-SKU-name>",
+        "tier": "<your-hubs-SKU-tier>",
+        "capacity": 1
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-02-01",
+      "name": "updateIotHubWithKeyEncryptionKey",
+      "dependsOn": [
+        "<provide-a-valid-resource-name>"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "0.9.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Devices/IotHubs",
+              "apiVersion": "2020-03-01",
+              "name": "<provide-a-valid-resource-name>",
+              "location": "<any-of-supported-regions>",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "sku": {
+                "name": "<your-hubs-SKU-name>",
+                "tier": "<your-hubs-SKU-tier>",
+                "capacity": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+Az erőforráshoz tartozó értékek helyettesítése után `name` `location` `SKU.name` `SKU.tier` Az Azure CLI használatával telepítheti az erőforrást egy meglévő erőforráscsoporthoz a következő használatával:
+
+```azurecli-interactive
+az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
+```
+
+Az erőforrás létrehozása után lekérheti a hubhoz rendelt felügyelt szolgáltatás identitását az Azure CLI használatával:
+
+```azurecli-interactive
+az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
+```
 
 ### <a name="pricing-for-managed-identity"></a>A felügyelt identitás díjszabása
 
@@ -196,11 +266,11 @@ await registryManager.ExportDevicesAsync(
     cancellationToken);
 ```
 
-Az Azure IoT SDK-k ezen verziójának használata a C#, a Java és a Node. js virtuális hálózati támogatásával:
+Ha az Azure IoT SDK-k ezen verzióját szeretné használni a C#, a Java és a Node.js virtuális hálózati támogatásával:
 
 1. Hozzon létre egy nevű környezeti változót `EnableStorageIdentity` , és állítsa be a értékét a következőre: `1` .
 
-2. Az SDK letöltése: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node. js](https://aka.ms/vnetnodesdk)
+2. Az SDK letöltése: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node.js](https://aka.ms/vnetnodesdk)
  
 A Python esetében töltse le a korlátozott verziót a GitHubról.
 

@@ -7,13 +7,13 @@ ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
-ms.reviewer: cbrooks
-ms.openlocfilehash: 8360d78c8c33f99fa34cfe78e8b9882ee55a5c48
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.reviewer: dineshm
+ms.openlocfilehash: a0c94f3c9af9220bb3cf6476c50799d1f3313ffc
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655605"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809246"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>How to use Queue Storage from Java (A Queue Storage használata Javával)
 
@@ -394,7 +394,7 @@ catch (Exception e)
 > [!NOTE]
 > Egy SDK elérhető az Azure Storage-et Android-eszközökön használó fejlesztők számára. További információk: [Androidhoz készült Azure Storage SDK][Azure Storage SDK for Android].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a várólista-tárolás alapjait, az alábbi hivatkozásokat követve megismerheti az összetettebb tárolási feladatokat.
 
 * [Javához készült Azure Storage SDK][Azure Storage SDK for Java]

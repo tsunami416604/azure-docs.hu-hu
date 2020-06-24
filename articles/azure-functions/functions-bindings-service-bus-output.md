@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 198cbb9f66ec5c6b84ed3cc4f20898495d8c126f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1d3441847fc47146418265804457c37c693bd60b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560826"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297018"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions Azure Service Bus kimeneti kötése
 
@@ -38,9 +38,9 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy időzítő trigger használatával küld üzenetsor-üzenetet 15 másodpercenként.
+Az alábbi példa egy Service Bus kimeneti kötést mutat be a fájlban lévő *function.js* , és egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy időzítő trigger használatával küld üzenetsor-üzenetet 15 másodpercenként.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -89,9 +89,9 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy időzítő trigger használatával küld üzenetsor-üzenetet 15 másodpercenként.
+Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function.jsa* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy időzítő trigger használatával küld üzenetsor-üzenetet 15 másodpercenként.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -143,7 +143,7 @@ module.exports = function (context, myTimer) {
 
 Az alábbi példa bemutatja, hogyan írhat egy Service Bus üzenetsor-várólistára a Pythonban.
 
-Egy Service Bus kötés definíciója a *function. JSON* fájlban van megadva, ahol a Type értéke a *következő* : `serviceBus` .
+Service Bus kötés definíciója van definiálva a *function.jsn* , ahol a *típus* értéke: `serviceBus` .
 
 ```json
 {
@@ -278,9 +278,9 @@ A `ServiceBusQueueOutput` és a `ServiceBusTopicOutput` jegyzetek elérhetők eg
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `ServiceBus` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `ServiceBus` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "ServiceBus" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**direction** | n.a. | "Out" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -305,7 +305,7 @@ A kimeneti kötéshez használja a következő paramétereket:
 * `out byte[]`-Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
 * `out BrokeredMessage`-Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (az 1. x függvények esetében)
 * `out Message`– Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (a 2. x és újabb függvények esetében).
-* `ICollector<T>`vagy `IAsyncCollector<T>` – több üzenet létrehozásához. A metódus meghívásakor létrejön egy üzenet `Add` .
+* `ICollector<T>`vagy `IAsyncCollector<T>` (aszinkron módszerekhez) – több üzenet létrehozásához. A metódus meghívásakor létrejön egy üzenet `Add` .
 
 C#-függvények használata esetén:
 
@@ -353,12 +353,12 @@ A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](http
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
+## <a name="hostjson-settings"></a>Beállítások host.js
 
-Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. A következő példában szereplő Host. JSON fájl csak a kötés beállításait tartalmazza. A globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [Host. JSON-dokumentáció Azure functions verzióhoz](functions-host-json.md).
+Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti 2. x vagy újabb verziókban. Az alábbi példában szereplő host.jscsak a kötés beállításait tartalmazza. A globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [host.jsAzure functions verzióra vonatkozó hivatkozás](functions-host-json.md).
 
 > [!NOTE]
-> Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md).
+> Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [Azure functions 1. x](functions-host-json-v1.md)esetében.
 
 ```json
 {
@@ -391,6 +391,6 @@ Ha a értékre van `isSessionsEnabled` állítva `true` , a `sessionHandlerOptio
 |maxConcurrentCalls|16|A visszahívás egyidejű hívások maximális száma, amelyet az üzenet-szivattyúnak méretezhető példányon kell kezdeményeznie. Alapértelmezés szerint a függvények futtatókörnyezete egyszerre több üzenetet dolgoz fel.|
 |maxConcurrentSessions|2000|A többméretű példányon egyidejűleg kezelhető munkamenetek maximális száma.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása Service Bus üzenetsor vagy témakör-üzenet létrehozásakor (trigger)](./functions-bindings-service-bus-trigger.md)

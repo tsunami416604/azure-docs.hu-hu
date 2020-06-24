@@ -5,23 +5,30 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b360f36dfc80033ac95e4face438b66eed33cec4
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299553"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945511"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
 A rendelkezésre állási SLA egy opcionális funkció, amely lehetővé teszi egy adott fürt pénzügyi támogatását, magasabb szintű SLA-t. A rendelkezésre állási SLA garantálja a Kubernetes API-kiszolgáló végpontjának 99,95%-os rendelkezésre állását olyan fürtök esetében, amelyek [Availability Zones][availability-zones] és 99,9%-ot használnak a nem a Availability Zones használó fürtök számára. Az AK fő csomópont-replikákat használ a frissítési és a tartalék tartományok között az SLA-követelmények teljesítésének biztosítása érdekében.
 
-Azok az ügyfelek, akik SLA-t igényelnek a megfelelőségi követelmények kielégítése érdekében, vagy a végfelhasználók számára az SLA kibővítését igénylik, engedélyezni kell ezt a funkciót. A magasabb rendelkezésre állási SLA előnyeit kihasználó kritikus számítási feladatokkal rendelkező ügyfelek is hasznosak lehetnek. A Availability Zones rendelkezésre állási SLA funkciójának használata lehetővé teszi, hogy a Kubernetes API-kiszolgáló kihasználtsága nagyobb legyen.  
+Azok az ügyfelek, akik SLA-t igényelnek a megfelelőségi követelmények kielégítése érdekében, vagy a végfelhasználók számára az SLA kibővítését igénylik a funkció engedélyezéséhez. A magasabb rendelkezésre állási SLA előnyeit kihasználó kritikus számítási feladatokkal rendelkező ügyfelek is hasznosak lehetnek. A Availability Zones rendelkezésre állási SLA funkciójának használata lehetővé teszi, hogy a Kubernetes API-kiszolgáló kihasználtsága nagyobb legyen.  
 
 Az ügyfelek továbbra is létrehozhatnak korlátlan számú ingyenes fürtöt 99,5%-os szolgáltatási szintű célkitűzéssel (SLO), és igény szerint választhatják az előnyben részesített SLO-t vagy SLA-t.
 
 > [!Important]
 > A kilépési zárolást tartalmazó fürtök esetében lásd: a [kimenő forgalom korlátozása](limit-egress-traffic.md) a megfelelő portok megnyitására.
+
+## <a name="region-availability"></a>Régiónkénti elérhetőség
+
+A rendelkezésre állási SLA olyan nyilvános régiókban érhető el, ahol az [AK támogatott](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+
+* A Azure Government jelenleg nem támogatott.
+* Az Azure China 21Vianet jelenleg nem támogatott.
 
 ## <a name="sla-terms-and-conditions"></a>SLA-feltételek és kikötések
 
@@ -29,7 +36,7 @@ A rendelkezésre állási SLA egy fizetős szolgáltatás, és fürtön engedél
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Az Azure CLI verziója 2.7.0 vagy újabb verzió
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.7.0 vagy újabb verziójának telepítése
 
 ## <a name="creating-a-cluster-with-uptime-sla"></a>Fürt létrehozása a rendelkezésre állási SLA-val
 

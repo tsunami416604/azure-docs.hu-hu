@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262112"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692155"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Felhasználók hozzáadása vagy törlése Azure Active Directory használatával
 
@@ -44,7 +44,7 @@ Létrehozhat egy új felhasználót a Azure Active Directory portál használat�
 
    - **Felhasználónév**. Kötelező. Az új felhasználó felhasználóneve. Például: `mary@contoso.com`.
 
-     A Felhasználónév tartomány részének a kezdeti alapértelmezett tartománynevet, * \<a yourdomainname>. onmicrosoft.com*vagy egy egyéni tartománynevet kell használnia, például a *contoso.com*nevet. További információ az Egyéni tartománynév létrehozásáról: [Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával](add-custom-domain.md).
+     A Felhasználónév tartomány részének a kezdeti alapértelmezett tartománynevet, a * \<yourdomainname> . onmicrosoft.com*vagy egy egyéni tartománynevet kell használnia, például *contoso.com*. További információ az Egyéni tartománynév létrehozásáról: [Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával](add-custom-domain.md).
 
    - **Csoportok**. Igény szerint hozzáadhatja a felhasználót egy vagy több meglévő csoporthoz. A felhasználót később is hozzáadhatja a csoportokhoz. A felhasználók csoportokba való felvételével kapcsolatos további információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](active-directory-groups-create-azure-portal.md).
 

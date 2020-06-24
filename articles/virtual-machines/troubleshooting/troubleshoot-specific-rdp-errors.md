@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266870"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701881"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure-beli Windows virtuális gépek konkrét RDP-hibaüzeneteinek elhárítása
 A Windows rendszerű virtuális gépekhez (VM) az Azure-ban Távoli asztal-csatlakozás használatakor hibaüzenet jelenhet meg. Ez a cikk a leggyakoribb hibaüzenetek némelyikét ismerteti, valamint a hibaelhárítási lépéseket. Ha olyan problémák merülnek fel, amelyek RDP használatával kapcsolódnak a virtuális géphez, de nem találnak konkrét hibaüzenetet, tekintse [meg a távoli asztal hibaelhárítási útmutatóját](troubleshoot-rdp-connection.md).
@@ -69,7 +69,7 @@ Az RDP-fájl címzési része a következő:
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Hitelesítési hiba történt. Nem lehet felvenni a kapcsolatot a helyi biztonsági szolgáltatóval.
 Ok: a célként megadott virtuális gép nem találja a biztonsági szolgáltatót a hitelesítő adatok Felhasználónév részében.
 
-Ha a Felhasználónév a *SecurityAuthority*\\*Felhasználónév* (például: Corp \ Felhasználó1), akkor a *SecurityAuthority* része vagy a virtuális gép számítógépneve (a helyi biztonsági hatóságnál) vagy egy Active Directory tartománynév.
+Ha a Felhasználónév a *SecurityAuthority* \\ *Felhasználónév* (például: Corp \ Felhasználó1), akkor a *SecurityAuthority* része vagy a virtuális gép számítógépneve (a helyi biztonsági hatóságnál) vagy egy Active Directory tartománynév.
 
 Lehetséges megoldások:
 
@@ -84,8 +84,8 @@ Ok: a célként megadott virtuális gép nem tudja érvényesíteni a fiók nev�
 
 A Windows-alapú számítógépek ellenőrizhetik egy helyi fiók vagy egy tartományi fiók hitelesítő adatait.
 
-* Helyi fiókok esetén használja a *számítógépnév*\\*felhasználóneve* szintaxisát (például: SQL1\Admin4798).
-* Tartományi fiókok esetén használja a *tartománynév*\\*Felhasználónév* szintaxisát (például: CONTOSO\peterodman).
+* Helyi fiókok esetén használja a *számítógépnév* \\ *felhasználóneve* szintaxisát (például: SQL1\Admin4798).
+* Tartományi fiókok esetén használja a *tartománynév* \\ *Felhasználónév* szintaxisát (például: CONTOSO\peterodman).
 
 Ha előléptette a virtuális gépet egy új Active Directory erdőben lévő tartományvezérlőre, akkor a szolgáltatásba bejelentkezett helyi rendszergazdai fiók az új erdőben és tartományban ugyanazzal a jelszóval egyenértékű fiókba lesz konvertálva. Ekkor a helyi fiók törlődik.
 

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267624"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694807"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple-eszközök üzembe helyezésével kapcsolatos problémák elhárítása
 ## <a name="overview"></a>Áttekintés
@@ -82,7 +82,7 @@ Az alábbi táblázatok felsorolják az esetlegesen előforduló gyakori hibáka
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Hibák a nem kötelező Webproxy-beállítások alatt
 | Nem. | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 | --- | --- | --- | --- |
-| 1 |Meghívó-Hcssetupwizard parancsmagot: Érvénytelen paraméter (kivétel a HRESULT: 0x80070057) |A proxybeállítások számára megadott paraméterek egyike érvénytelen. |Az URI-azonosító nem a megfelelő formátumban van megadva. Használja a következő formátumot: http://*\<IP-címe vagy a webproxy-kiszolgáló teljes tartományneve>*:*\<TCP-port száma>* |
+| 1 |Meghívó-Hcssetupwizard parancsmagot: Érvénytelen paraméter (kivétel a HRESULT: 0x80070057) |A proxybeállítások számára megadott paraméterek egyike érvénytelen. |Az URI-azonosító nem a megfelelő formátumban van megadva. Használja a következő formátumot: http:// *\<IP address or FQDN of the web proxy server>* :*\<TCP port number>* |
 | 2 |Meghívás – Hcssetupwizard parancsmagot: az RPC-kiszolgáló nem érhető el (kivétel a HRESULT: 0x800706ba) |A kiváltó ok a következők egyike:<ol><li>A fürt nem működik.</li><li>A passzív vezérlő nem tud kommunikálni az aktív vezérlővel, és a parancs a passzív vezérlőről fut.</li></ol> |Az alapvető okoktól függően:<ol><li>[Lépjen kapcsolatba Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) , és ellenőrizze, hogy a fürt működik-e.</li><li>Futtassa a parancsot az aktív vezérlőből. Ha a parancsot a passzív vezérlőből szeretné futtatni, gondoskodnia kell arról, hogy a passzív vezérlő kommunikáljon az aktív vezérlővel. Ha a kapcsolat megszakad, [kapcsolatba kell lépnie Microsoft ügyfélszolgálataval](storsimple-8000-contact-microsoft-support.md) .</li></ol> |
 | 3 |Meghívó-Hcssetupwizard parancsmagot: az RPC-hívás sikertelen volt (kivétel a HRESULT: 0x800706be) |A fürt nem üzemel. |[Lépjen kapcsolatba Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) , és ellenőrizze, hogy a fürt működik-e. |
 | 4 |Meghívás – Hcssetupwizard parancsmagot: a fürterőforrás nem található (kivétel a HRESULT: 0x8007138f) |A fürterőforrás nem található. Ez akkor fordulhat elő, ha a telepítés nem megfelelő. |Előfordulhat, hogy alaphelyzetbe kell állítania az eszközt az alapértelmezett gyári beállításokra. Fürterőforrás létrehozásához [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) . |
@@ -173,7 +173,7 @@ A kapcsolódási hibák észleléséhez használja az alábbi Windows PowerShell
 * `Test-Connection`: Ezzel a parancsmaggal ellenőrizheti a hálózaton belüli és kívüli hálózati kapcsolatot.
 * `Test-HcsmConnection`: Ezzel a parancsmaggal ellenőrizheti egy sikeresen regisztrált eszköz kapcsolatát.
 * `Sync-HcsTime`: Ezzel a parancsmaggal megjelenítheti az eszköz időpontját, és kényszerítheti az időszinkronizálást az NTP-kiszolgálóval.
-* `Enable-HcsPing`és `Disable-HcsPing`: ezekkel a parancsmagokkal engedélyezheti a gazdagépek számára a StorSimple-eszközön lévő hálózati adapterek pingelését. Alapértelmezés szerint a StorSimple hálózati adapterek nem válaszolnak a pingelési kérelmekre.
+* `Enable-HcsPing`és `Disable-HcsPing` : ezekkel a parancsmagokkal engedélyezheti a gazdagépek számára a StorSimple-eszközön lévő hálózati adapterek pingelését. Alapértelmezés szerint a StorSimple hálózati adapterek nem válaszolnak a pingelési kérelmekre.
 * `Trace-HcsRoute`: Használja ezt a parancsmagot útvonal-nyomkövetési eszközként. A csomagokat az egyes útválasztóknak egy adott időszakon belül egy végső célhelyre küldi, majd az egyes ugrásokból visszaadott csomagok alapján kiszámítja az eredményeket. Mivel `Trace-HcsRoute` a csomagok elvesztésének mértékét az adott útválasztón vagy hivatkozáson jeleníti meg, meghatározhatja, hogy mely útválasztók vagy hivatkozások okozhatnak hálózati problémákat.
 * `Get-HcsRoutingTable`: Ezzel a parancsmaggal jelenítheti meg a helyi IP-útválasztási táblázatot.
 
@@ -181,8 +181,8 @@ A kapcsolódási hibák észleléséhez használja az alábbi Windows PowerShell
 Amikor a hálózati adaptereket konfigurálja egy első alkalommal üzemelő eszköz telepítésére, a hardver állapota nem érhető el a StorSimple Eszközkezelő szolgáltatás felhasználói felületén, mert az eszköz még nincs regisztrálva a szolgáltatásban. Emellett előfordulhat, hogy a **hardver állapota** panel nem mindig megfelelően tükrözi az eszköz állapotát, különösen akkor, ha olyan problémák merülnek fel, amelyek befolyásolják a szolgáltatás szinkronizálását. Ilyen helyzetekben a `Get-NetAdapter` parancsmaggal határozható meg a hálózati adapterek állapota és állapota.
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Az eszközön található összes hálózati adapter listájának megjelenítése
-1. Indítsa el Windows PowerShell StorSimple-bővítménye, majd írja `Get-NetAdapter`be a következőt:. 
-2. Használja a `Get-NetAdapter` parancsmag kimenetét és a következő irányelveket a hálózati adapter állapotának megismeréséhez.
+1. Indítsa el Windows PowerShell StorSimple-bővítménye, majd írja be a következőt: `Get-NetAdapter` . 
+2. Használja a parancsmag kimenetét `Get-NetAdapter` és a következő irányelveket a hálózati adapter állapotának megismeréséhez.
    
    * Ha a csatoló állapota Kifogástalan, és engedélyezve van, a **előtérillesztő ifindex** **állapot jelenik meg.**
    * Ha az illesztőfelület kifogástalan állapotú, de nincs fizikailag csatlakoztatva (hálózati kábel), a **előtérillesztő ifindex** **letiltottként**jelenik meg.
@@ -191,7 +191,7 @@ Amikor a hálózati adaptereket konfigurálja egy első alkalommal üzemelő esz
 
 A parancsmag használatáról további információt a [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) című témakörben olvashat a Windows PowerShell-parancsmagok dokumentációjában.
 
-A következő részekben a `Get-NetAdapter` parancsmag kimenetének mintái láthatók.
+A következő részekben a parancsmag kimenetének mintái láthatók `Get-NetAdapter` .
 
  Ezekben a mintákban a Controller 0 a passzív vezérlő volt, és a következőképpen lett konfigurálva:
 
@@ -239,7 +239,7 @@ A `Test-Connection` parancsmag segítségével meghatározhatja, hogy a StorSimp
 
 Ha a pingelés le van tiltva, engedélyezze a ping parancsot a parancsmag csatlakozási problémáinak elhárításához.
 
-Tekintse meg az alábbi, kimenetből `Test-Connection` származó mintákat a parancsmagból.
+Tekintse meg az alábbi, kimenetből származó mintákat a `Test-Connection` parancsmagból.
 
 > [!NOTE]
 > Az első mintában az eszköz helytelen DNS-sel van konfigurálva. A második mintában a DNS helyes.
@@ -305,7 +305,7 @@ További információ a parancsmag használatáról: [test-HcsmConnection](https
 > [!IMPORTANT]
 > Ezt a parancsmagot az aktív és a passzív vezérlőhöz is futtathatja.
 
-Tekintse meg az alábbi, kimenetből `Test-HcsmConnection` származó mintákat a parancsmagból.
+Tekintse meg az alábbi, kimenetből származó mintákat a `Test-HcsmConnection` parancsmagból.
 
 **Minta kimenet – a StorSimple 3. frissítését futtató eszköz regisztrálása sikeresen megtörtént**
 
@@ -407,7 +407,7 @@ Ha például 2 hálózati adaptere van, a 2. és a 3. adatkapcsolat az interneth
 
 Ha a StorSimple-eszközön az 1. frissítést futtatja, az adatok 0 hálózati adaptere a legmagasabb prioritású a Felhőbeli forgalom számára. Ez azt jelenti, hogy ha más felhőalapú felületek is vannak, akkor a Felhőbeli forgalom a 0. ADATon keresztül lesz átirányítva.
 
-Ha a (következő `Get-HcsRoutingTable` példában látható) paraméterek megadása nélkül futtatja a parancsmagot, a parancsmag az IPv4-és IPv6-útválasztási táblákat is kiírja. Másik lehetőségként `Get-HcsRoutingTable -IPv4` megadhatja `Get-HcsRoutingTable -IPv6` vagy beolvashatja a megfelelő útválasztási táblázatot.
+Ha a `Get-HcsRoutingTable` (következő példában látható) paraméterek megadása nélkül futtatja a parancsmagot, a parancsmag az IPv4-és IPv6-útválasztási táblákat is kiírja. Másik lehetőségként megadhatja `Get-HcsRoutingTable -IPv4` vagy `Get-HcsRoutingTable -IPv6` beolvashatja a megfelelő útválasztási táblázatot.
 
       Controller0>
       Controller0>Get-HcsRoutingTable
@@ -491,7 +491,7 @@ A hibát a következők bármelyike okozhatja:
 * Helytelen tűzfalbeállítások
 
 ### <a name="to-locate-and-fix-the-device-registration-problem"></a>Az eszköz regisztrációs problémájának megkeresése és javítása
-1. Keresse meg az eszköz konfigurációját: az aktív vezérlőn `Invoke-HcsSetupWizard`futtassa a parancsot.
+1. Keresse meg az eszköz konfigurációját: az aktív vezérlőn futtassa a parancsot `Invoke-HcsSetupWizard` .
    
    > [!NOTE]
    > A telepítővarázsló az aktív vezérlőn kell futnia. Annak ellenőrzéséhez, hogy csatlakozik-e az aktív vezérlőhöz, tekintse meg a soros konzolon megjelenő szalagcímet. A szalagcím jelzi, hogy csatlakozik-e a Controller 0 vagy az 1. vezérlőhöz, és hogy a vezérlő aktív vagy passzív. További információért lépjen az [aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).

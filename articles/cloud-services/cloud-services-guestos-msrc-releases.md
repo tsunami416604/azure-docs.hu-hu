@@ -10,39 +10,75 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/2/2020
+ms.date: 6/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: 89344c38c719a06d8241ec34136a75c96de9f901
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322872"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737461"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
+
+## <a name="june-2020-guest-os"></a>Június 2020 vendég operációs rendszer
+">[!NOTE]
+>A júniusi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások az áprilisi vendég operációs rendszer részét képezik. A lista módosítása változhat. "
+
+
+| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| --- | --- | --- | --- | --- |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2,99, 3,86, 4,79  |  Június 9., 2020  |
+|  Rel 20-06  |  [4561616]  |  Legújabb összesített frissítés (LCU)  |  5,44  |  Június 9., 2020  |
+|  Rel 20-06  |  [4561608]  |  Legújabb összesített frissítés (LCU)  |  6,20  |  Június 9., 2020  |
+|  Rel 20-06  |  [4562030]  |  Karbantartási verem frissítése  |  2,99  |  Június 9., 2020  |
+|  Rel 20-06  |  [4561643]  |  Havi összesítés  |  2,99  |  Június 9., 2020  |
+|  Rel 20-06  |  [4562252]  |  Karbantartási verem frissítése  |  3,86  |  Június 9., 2020  |
+|  Rel 20-06  |  [4561612]  |  Havi összesítés  |  3,86  |  Június 9., 2020  |
+|  Rel 20-06  |  [4561600]  |  Flash  |  3,86, 4,79, 5,44, 6,20  |  Június 9., 2020  |
+|  Rel 20-06  |  [4562253]  |  Karbantartási verem frissítése  |  4,79  |  Június 9., 2020  |
+|  Rel 20-06  |  [4561666]  |  Havi összesítés  |  4,79  |  Június 9., 2020  |
+|  Rel 20-06  |  [4562561]  |  Karbantartási verem frissítése  |  5,44  |  Június 9., 2020  |
+|  Rel 20-06  |  [4562562]  |  Karbantartási verem frissítése  |  6,20  |  Június 9., 2020  |
+
+
+
+[4561603]: https://support.microsoft.com/kb/4561603
+[4561616]: https://support.microsoft.com/kb/4561616
+[4561608]: https://support.microsoft.com/kb/4561608
+[4562030]: https://support.microsoft.com/kb/4562030
+[4561643]: https://support.microsoft.com/kb/4561643
+[4562252]: https://support.microsoft.com/kb/4562252
+[4561612]: https://support.microsoft.com/kb/4561612
+[4561600]: https://support.microsoft.com/kb/4561600
+[4562253]: https://support.microsoft.com/kb/4562253
+[4561666]: https://support.microsoft.com/kb/4561666
+[4562561]: https://support.microsoft.com/kb/4562561
+[4562562]: https://support.microsoft.com/kb/4562562
+
 
 ## <a name="may-2020-guest-os"></a>2020 vendég operációs rendszer
 
 
 | Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  2020. május 12.  |
-|  Rel 20-05   |  [4556813]  |  Legújabb összesített frissítés (LCU)   |  [5,43]  |  2020. május 12.  |
-|  Rel 20-05   |  [4551853]  |  Legújabb összesített frissítés (LCU)   |  [6,19]  |  2020. május 12.  |
-|  Rel 20-05   |  [4552940]  |  Havi összesítés   |  [2,98]  |  2020. május 12.  |
-|  Rel 20-05   |  [4556836]  |  Havi összesítés   |  [2,98]  |  2020. május 12.  |
-|  Rel 20-05   |  [4555449]  |  Karbantartási verem frissítése   |  [2,98]  |  2020. május 12.  |
-|  Rel 20-05   |  [4552920]  |  Havi összesítés   |  [2,98]  |  2020. május 12.  |
-|  Rel 20-05   |  [4552979]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
-|  Rel 20-05   |  [4556840]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
-|  Rel 20-05   |  [4552947]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
-|  Rel 20-05   |  [4552982]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
-|  Rel 20-05   |  [4552946]  |  Havi összesítés   |  [4,78]  |  2020. május 12.  |
-|  Rel 20-05   |  [4556846]  |  Havi összesítés   |  [4,78]  |  2020. május 12.  |
-|  Rel 20-05   |  [4550994]  |  Karbantartási verem frissítése   |  [5,43]  |  Apr 14, 2020  |
-|  Rel 20-05   |  [4552924]  |  Havi összesítés   |  [6,19]  |  2020. május 12.  |
-|  Rel 20-05   |  [4549947]  |  Karbantartási verem frissítése   |  [6,19]  |  Apr 14, 2020  |
+|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  2020. május 12.  |
+|  Rel 20-05  |  [4556813]  |  Legújabb összesített frissítés (LCU)   |  [5,43]  |  2020. május 12.  |
+|  Rel 20-05  |  [4551853]  |  Legújabb összesített frissítés (LCU)   |  [6,19]  |  2020. május 12.  |
+|  Rel 20-05  |  [4552940]  |  Havi összesítés   |  [2,98]  |  2020. május 12.  |
+|  Rel 20-05  |  [4556836]  |  Havi összesítés   |  [2,98]  |  2020. május 12.  |
+|  Rel 20-05  |  [4555449]  |  Karbantartási verem frissítése   |  [2,98]  |  2020. május 12.  |
+|  Rel 20-05  |  [4552920]  |  Havi összesítés   |  [2,98]  |  2020. május 12.  |
+|  Rel 20-05  |  [4552979]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
+|  Rel 20-05  |  [4556840]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
+|  Rel 20-05  |  [4552947]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
+|  Rel 20-05  |  [4552982]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
+|  Rel 20-05  |  [4552946]  |  Havi összesítés   |  [4,78]  |  2020. május 12.  |
+|  Rel 20-05  |  [4556846]  |  Havi összesítés   |  [4,78]  |  2020. május 12.  |
+|  Rel 20-05  |  [4550994]  |  Karbantartási verem frissítése   |  [5,43]  |  Apr 14, 2020  |
+|  Rel 20-05  |  [4552924]  |  Havi összesítés   |  [6,19]  |  2020. május 12.  |
+|  Rel 20-05  |  [4549947]  |  Karbantartási verem frissítése   |  [6,19]  |  Apr 14, 2020  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -66,6 +102,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 [4,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
 [5,43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
 [6,19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+
 
 ## <a name="april-2020-guest-os"></a>Április 2020 vendég operációs rendszer
 
@@ -1375,7 +1412,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 | MS16 – 065 |[3156757] |Biztonsági frissítés a .NET-keretrendszerhez |4,32, 3,39, 2,51 |Május 10., 2016 |
 | MS16 – 067 |[3155784] |A Volume Manager-illesztőprogram biztonsági frissítése |4,32, 3,39 |Május 10., 2016 |
 | N/A |[3148851] |Időzóna-változások Oroszországban a Windowsban  |4,32, 3,39, 2,51 |Május 10., 2016 |
-| N/A |[3133977] |A BitLocker nem tudja titkosítani a meghajtókat, mert a szolgáltatás összeomlik a Windows 7 vagy a Windows Server 2008 R2 rendszerben az svchost. exe folyamat során.  |2.51 |Május 10., 2016 |
+| N/A |[3133977] |A BitLocker nem tudja titkosítani a meghajtókat, mert a szolgáltatás összeomlik svchost.exe folyamat során a Windows 7 vagy a Windows Server 2008 R2 rendszerben  |2.51 |Május 10., 2016 |
 | N/A |[3133681] |A virtuális gépek nem válaszolnak a SCVMM a Windows Server 2012 R2 rendszerben  |4,32 |Május 10., 2016 |
 | N/A |[3123245] |A frissítés javítja a portok kimerülésének azonosítását a Windows Server 2012 R2 rendszerben  |4,32 |Május 10., 2016 |
 | N/A |[RC4 letiltása] | Microsoft biztonsági tanácsadó: az RC4 letiltásának frissítése  |4,32, 3,39, 2,51 |Május 10., 2016 |
@@ -1544,7 +1581,7 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 ## <a name="april-2015-guest-os"></a>Április 2015 vendég operációs rendszer
 | Közlemény azonosítója | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
-| [MS15 – 034] |[3042553] |A HTTP. sys biztonsági rése távoli kódfuttatást tesz lehetővé |4,19, 3,26, 2,38 |Április 17, 2015 |
+| [MS15 – 034] |[3042553] |A HTTP.sys biztonsági rése távoli kódfuttatást tehet lehetővé |4,19, 3,26, 2,38 |Április 17, 2015 |
 
 ## <a name="march-2015-guest-os"></a>Március 2015 vendég operációs rendszer
 | Közlemény azonosítója | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
