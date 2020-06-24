@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 971ec1fcda87a9db61147133604dd0e28cc4d102
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714049"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976166"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
 
@@ -32,6 +32,24 @@ ms.locfileid: "83714049"
 
 > [!NOTE]
 > Az Azure-erőforrások felügyelt identitásai a Managed Service Identity (MSI) szolgáltatás új neve.
+
+
+### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>Hogyan találhatják meg a felügyelt identitással rendelkező erőforrásokat?
+
+A rendszerhez rendelt felügyelt identitással rendelkező erőforrások listáját az alábbi Azure CLI-paranccsal érheti el: 
+
+`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
+
+
+
+
+### <a name="do-managed-identities-have-a-backing-app-object"></a>A felügyelt identitások rendelkeznek egy támogató alkalmazási objektummal?
+
+Nem. A felügyelt identitások és Azure AD alkalmazás regisztrációk nem egyeznek meg a címtárban. 
+
+Alkalmazásregisztrációk két összetevővel rendelkezik: egy Application Object + egy egyszerű szolgáltatásnév objektum. Az Azure-erőforrásokhoz tartozó felügyelt identitások csak a következő összetevők egyikével rendelkeznek: egyszerű szolgáltatásnév-objektum. 
+
+A felügyelt identitások nem rendelkeznek alkalmazás-objektummal a címtárban, ami általában az MS Graph alkalmazás engedélyeinek megadására szolgál. Ehelyett a felügyelt identitásokhoz tartozó MS Graph-engedélyeket közvetlenül az egyszerű szolgáltatásnak kell megadnia.  
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Az Azure-erőforrások felügyelt identitásai működnek az Azure Cloud Services?
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65c6045378c72722f5adc2262bf7bd644e8fe387
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137722"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251835"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -23,14 +23,14 @@ Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervez�
 * Egy Azure-fájlmegosztás abban a régióban, amelyet telepíteni kíván Azure File Sync. További információt a következő témakörben talál:
     - A [régió rendelkezésre állása](storage-sync-files-planning.md#azure-file-sync-region-availability) Azure file Sync számára.
     - [Hozzon létre egy fájlmegosztást](storage-how-to-create-file-share.md) a fájlmegosztás létrehozásának lépésenkénti leírásához.
-* A Windows Server vagy a Windows Server-fürt legalább egy támogatott példánya Azure File Sync-vel való szinkronizálásra. A Windows Server támogatott verzióival kapcsolatos további információkért lásd: együttműködés [a Windows Serverrel](storage-sync-files-planning.md#windows-file-server-considerations).
+* A Windows Server vagy a Windows Server-fürt legalább egy támogatott példánya Azure File Sync-vel való szinkronizálásra. A Windows Server támogatott verzióival és az ajánlott Rendszererőforrásokkal kapcsolatos további információkért lásd a [Windows-fájlkiszolgáló szempontjait](storage-sync-files-planning.md#windows-file-server-considerations).
 * Az az PowerShell-modul a PowerShell 5,1 vagy a PowerShell 6 + használatával is használható. Használhatja az az PowerShell-modult a Azure File Synchoz bármely támogatott rendszeren, beleértve a nem Windows rendszerű rendszereket is, azonban a kiszolgáló regisztrációs parancsmagját mindig futtatni kell a regisztrálni kívánt Windows Server-példányon (ezt közvetlenül vagy a PowerShell-távelérésen keresztül teheti meg). Windows Server 2012 R2 rendszeren ellenőrizheti, hogy legalább a PowerShell 5,1-et futtatja-e. \* a **$PSVersionTable** objektum **PSVersion** tulajdonságának értékét tekinti meg:
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    Ha a PSVersion értéke kisebb, mint 5,1. \*, a windows Server 2012 R2 legtöbb friss telepítésének esetében pedig könnyedén frissítheti a [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)letöltésével és telepítésével. A Windows Server 2012 R2-hoz letölthető és telepíthető megfelelő csomag a **Win 8.1 andw2k12r2-kb\*\*\*\*\*\*\*-x64. msu**. 
+    Ha a PSVersion értéke kisebb, mint 5,1 \* , akkor a Windows Server 2012 R2 legtöbb friss telepítése esetén a [Windows Management FRAMEWORK (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)letöltésével és telepítésével egyszerűen frissíthető. A Windows Server 2012 R2-hoz letölthető és telepíthető megfelelő csomag a **Win 8.1 andw2k12r2-kb \* \* \* \* \* \* \* -x64. msu**. 
 
     A PowerShell 6 + bármilyen támogatott rendszerrel használható, és a [GitHub-oldalán](https://github.com/PowerShell/PowerShell#get-powershell)is letölthető. 
 
@@ -40,7 +40,7 @@ Javasoljuk, hogy olvassa el a [Azure Files központi telepítésének megtervez�
 * Ha a PowerShell 5,1 használatát választotta, győződjön meg arról, hogy legalább .NET 4.7.2 van telepítve. További információ a [.NET-keretrendszer verzióiról és függőségeiről](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) a rendszeren.
 
     > [!Important]  
-    > Ha a .NET 4.7.2 + rendszert a Windows Server Core verzióra telepíti, a `quiet` és `norestart` a jelzőket kell telepítenie, vagy a telepítés sikertelen lesz. Ha például a .NET 4,8-et telepíti, a parancs a következőhöz hasonlóan fog kinézni:
+    > Ha a .NET 4.7.2 + rendszert a Windows Server Core verzióra telepíti, a és a jelzőket kell telepítenie, `quiet` `norestart` vagy a telepítés sikertelen lesz. Ha például a .NET 4,8-et telepíti, a parancs a következőhöz hasonlóan fog kinézni:
     > ```PowerShell
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
@@ -109,7 +109,7 @@ A megnyíló panelen adja meg a következőket:
 Ha elkészült, válassza a **Létrehozás** lehetőséget a Storage Sync szolgáltatás telepítéséhez.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-`<RG_Name>`Cserélje `<Az_Region>`le a és `<my_storage_sync_service>` a értéket a saját értékeire, majd használja a következő parancsokat a Storage Sync szolgáltatás létrehozásához és telepítéséhez:
+Cserélje le a `<Az_Region>` `<RG_Name>` és a értéket a `<my_storage_sync_service>` saját értékeire, majd használja a következő parancsokat a Storage Sync szolgáltatás létrehozásához és telepítéséhez:
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -257,14 +257,14 @@ A megnyíló panelen adja meg a következő információkat a szinkronizálási 
 - **Azure-fájlmegosztás**: annak az Azure-fájlmegosztásnak a neve, amellyel szinkronizálni kíván.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-A szinkronizálási csoport létrehozásához hajtsa végre a következő PowerShellt. Ne felejtse `<my-sync-group>` el lecserélni a szinkronizálási csoport kívánt nevére.
+A szinkronizálási csoport létrehozásához hajtsa végre a következő PowerShellt. Ne felejtse el lecserélni a `<my-sync-group>` szinkronizálási csoport kívánt nevére.
 
 ```powershell
 $syncGroupName = "<my-sync-group>"
 $syncGroup = New-AzStorageSyncGroup -ParentObject $storageSync -Name $syncGroupName
 ```
 
-A szinkronizálási csoport sikeres létrehozása után létrehozhatja a Felhőbeli végpontot. Ügyeljen arra, hogy `<my-storage-account>` a `<my-file-share>` és a értékét a várt értékekkel helyettesítse.
+A szinkronizálási csoport sikeres létrehozása után létrehozhatja a Felhőbeli végpontot. Ügyeljen arra, hogy `<my-storage-account>` `<my-file-share>` a és a értékét a várt értékekkel helyettesítse.
 
 ```powershell
 # Get or create a storage account with desired name
@@ -321,7 +321,7 @@ A **Kiszolgálói végpont felvétele** panelen adja meg a következő informác
 A kiszolgálói végpont hozzáadásához válassza a **Létrehozás**lehetőséget. A fájlok most már szinkronban vannak az Azure-fájlmegosztás és a Windows Server között. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-A kiszolgálói végpont létrehozásához hajtsa végre a következő PowerShell-parancsokat, és a `<your-server-endpoint-path>` kívánt `<your-volume-free-space>` értékekkel cserélje le a és a értéket.
+A kiszolgálói végpont létrehozásához hajtsa végre a következő PowerShell-parancsokat, és `<your-server-endpoint-path>` a kívánt értékekkel cserélje le a és a `<your-volume-free-space>` értéket.
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"

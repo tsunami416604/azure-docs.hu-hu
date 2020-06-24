@@ -5,121 +5,111 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 06/10/2020
 ms.author: dsindona
-ms.openlocfilehash: b3c20d25917d66cba8ae3d811eddaa6455b87722
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0201ea7b207b7d4c0eaa56de1ee062ea405f0bbb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792955"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119239"
 ---
 # <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
 
-Ez a cikk azt ismerteti, hogyan regisztrálhat SaaS-alkalmazásokat a Microsoft [Azure Portal](https://portal.azure.com/)használatával.  Sikeres regisztráció után Azure Active Directory (Azure AD) biztonsági jogkivonatot fog kapni, amelyet a SaaS-teljesítési API-k eléréséhez használhat.  További információ az Azure AD-ről: [Mi az a hitelesítés?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
+Ez a cikk azt ismerteti, hogyan regisztrálhat egy SaaS-alkalmazást a Microsoft [Azure Portal](https://portal.azure.com/) használatával, és hogyan kérheti le a közzétevő hozzáférési tokenjét (Azure Active Directory hozzáférési tokent). A közzétevő ezt a tokent fogja használni az SaaS-alkalmazás hitelesítéséhez a SaaS-teljesítési API-k meghívásával.  A teljesítési API-k a OAuth 2,0 ügyfél hitelesítő adatait használják Azure Active Directory (1.0-s) végpontokon történő adatforgalom biztosítására a szolgáltatások közötti hozzáférési jogkivonat kéréséhez.
 
-## <a name="service-to-service-authentication-flow"></a>A szolgáltatások közötti hitelesítési folyamat
+Az Azure Marketplace nem kényszeríti az SaaS-szolgáltatás által a végfelhasználók számára használt hitelesítési módszer korlátozásait. Az alábbi folyamat csak az SaaS szolgáltatás Azure piactéren történő hitelesítéséhez szükséges.
 
-Az alábbi ábrán egy új ügyfél előfizetési folyamata látható, valamint az API-k használatakor:
-
-![SaaS-ajánlat API-folyamata](./media/saas-offer-publish-api-flow-v1.png)
-
-Az Azure nem kényszeríti az olyan hitelesítési korlátozásokat, amelyeket az SaaS szolgáltatás a végfelhasználók számára tesz elérhetővé. A SaaS-teljesítési API-kkal való hitelesítés azonban egy Azure AD biztonsági jogkivonattal történik, amelyet általában az SaaS-alkalmazásnak az Azure Portal használatával történő regisztrálásával szereztek be. 
+További információ az Azure AD-ről (Active Directory): [Mi az a hitelesítés](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)?
 
 ## <a name="register-an-azure-ad-secured-app"></a>Azure AD-védelemmel ellátott alkalmazás regisztrálása
 
-Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni kell egy Azure AD-bérlőben. Ez a regisztrációs folyamat magában foglalja az alkalmazással kapcsolatos Azure AD-adatokat, például a hely URL-címét, a válaszok küldését a felhasználó hitelesítése után, az alkalmazást azonosító URI-t és így tovább.  Ha az Azure Portal használatával szeretne regisztrálni egy új alkalmazást, hajtsa végre a következő lépéseket:
+Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni kell egy Azure AD-bérlőben. Ez a regisztrációs folyamat magában foglalja az Azure AD néhány részletét az alkalmazásról. Ha az Azure Portal használatával szeretne regisztrálni egy új alkalmazást, hajtsa végre a következő lépéseket:
 
-1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2.  Ha a fiókja többhöz biztosít hozzáférést, kattintson a fiókra a jobb felső sarokban, és állítsa be a portál-munkamenetet a kívánt Azure AD-bérlőre.
-3.  A bal oldali navigációs ablaktáblán kattintson a **Azure Active Directory** szolgáltatásra, majd a **Alkalmazásregisztrációk**elemre, majd az **új alkalmazás regisztrálása**elemre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Ha a fiókja többhöz biztosít hozzáférést, kattintson a fiókra a jobb felső sarokban, és állítsa be a portál-munkamenetet a kívánt Azure AD-bérlőre.
+3. A bal oldali navigációs ablaktáblán kattintson a **Azure Active Directory** szolgáltatásra, majd a **Alkalmazásregisztrációk**elemre, majd az **új alkalmazás regisztrálása**elemre.
 
     ![SaaS AD-alkalmazások regisztrációi](./media/saas-offer-app-registration-v1.png)
 
-4.  A létrehozás lapon adja meg az alkalmazás\'regisztrációs adatait:
+4. A létrehozás lapon adja meg az alkalmazás \' regisztrációs adatait:
     -   **Név**: adjon meg egy értelmes alkalmazásnév-nevet
-    -   **Alkalmazás típusa**: 
-        - Válassza a **Natív** lehetőséget a helyileg vagy eszközre telepített [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) esetében. Ez a beállítás használatos a nyilvános OAuth [natív ügyfelekhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client).
-        - Válassza a **webalkalmazás/API** lehetőséget a biztonságos kiszolgálóra telepített [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) és [erőforrás-/API-alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) számára. Ezzel a beállítással OAuth a bizalmas [webes ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) és a nyilvános [felhasználói ügynökön alapuló ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
+    -   **Alkalmazás típusa**:  
+        
+        Válassza a **webalkalmazás/API** lehetőséget a biztonságos kiszolgálóra telepített [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) és [erőforrás-/API-alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) számára. Ezzel a beállítással OAuth a bizalmas [webes ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) és a nyilvános [felhasználói ügynökön alapuló ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
         Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
-    -   **Bejelentkezési URL-cím**: webalkalmazás/API-alkalmazások esetén adja meg az alkalmazás alap URL-címét. Például **http://localhost:31544** lehet a helyi gépen futó webalkalmazás URL-címe. A felhasználók ezután ezt az URL-címet használják a webes ügyfélprogramba való bejelentkezéshez.
-    -   **Átirányítási URI**: natív alkalmazásokhoz adja meg az Azure ad által a jogkivonat-válaszok visszaadásához használt URI-t. Adja meg az alkalmazáshoz tartozó értéket, például **http://MyFirstAADApp**:.
 
-        ![SaaS AD-alkalmazások regisztrációi](./media/saas-offer-app-registration-v1-2.png)
+        A webalkalmazások konkrét példái között tekintse meg az [Azure ad fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/)első [lépések](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) szakaszában elérhető gyors útmutatókat.
 
-        A webalkalmazásokhoz és a natív alkalmazásokhoz kapcsolódó példákért tekintse meg az [Azure ad fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)első *lépések* szakaszában elérhető gyors útmutatókat.
+5. Ha elkészült, kattintson a **regisztráció**gombra.  Az Azure AD egy egyedi *alkalmazás-azonosítót* rendel az új alkalmazáshoz. Javasoljuk, hogy regisztráljon egy olyan alkalmazást, amely csak az API-t és egyetlen bérlőt is elér.
 
-5.  Ha végzett, kattintson a **Létrehozás** gombra. Az Azure AD egy egyedi *alkalmazás-azonosítót* rendel az alkalmazáshoz, és\'újra az alkalmazás\'fő regisztrációs lapjára kerül. Attól függően, hogy az alkalmazás webes vagy natív, eltérő lehetőségek állnak rendelkezésre az alkalmazás további funkcióinak hozzáadásához.
+6. Az ügyfél titkos kulcsának létrehozásához navigáljon a **tanúsítványok & titkok lapra** , és kattintson az **+ új ügyfél titka**elemre.  Ügyeljen arra, hogy a titkos értéket a kódban használt értékre másolja.
+
+Az **Azure ad-alkalmazás azonosítója** a KÖZZÉTEVŐ-azonosítóhoz van társítva, ezért győződjön meg arról, hogy ugyanazt az *alkalmazás-azonosítót* használja az összes ajánlatban.
 
 >[!Note]
->Alapértelmezés szerint az újonnan regisztrált alkalmazás úgy van konfigurálva, hogy csak az azonos bérlőhöz tartozó felhasználók jelentkezzenek be az alkalmazásba.
+>Ha egy közzétevő két különböző fiókkal rendelkezik a partner Centerben, két különböző Azure AD-alkalmazás-azonosítót kell használnia.  A fiókpartner minden fiókpartner-fiókjának egyedi Azure AD-alkalmazás-azonosítót kell használnia az ezen a fiókon keresztül közzétett SaaS-ajánlatok esetében.
 
-## <a name="using-the-azure-ad-security-token"></a>Az Azure AD biztonsági jogkivonat használata
+## <a name="how-to-get-the-publishers-authorization-token"></a>A közzétevő engedélyezési jogkivonatának beszerzése
 
-Az alkalmazás regisztrálását követően programozott módon kérhet Azure AD biztonsági jogkivonatot.  A közzétevőnek a tokent kell használnia, és el kell végeznie a feloldását.  A különböző teljesítési API-k használatakor a jogkivonat-lekérdezési paraméter az URL-címben szerepel, ha a felhasználót az Azure-ból származó SaaS-webhelyre irányítja át.  Ez a jogkivonat csak egy órára érvényes.  Emellett érdemes lehet URL-címet dekódolni a jogkivonat értékének a böngészőből való használata előtt.
+Az alkalmazás regisztrálását követően programozott módon kérheti le a közzétevő engedélyezési jogkivonatát (Azure AD-hozzáférési jogkivonat az Azure AD v1-végpont használatával). A közzétevőnek ezt a jogkivonatot kell használnia a különböző SaaS-teljesítési API-k meghívásakor. Ez a jogkivonat csak egy órára érvényes. 
 
-További információ ezekről a jogkivonatokról: [Azure Active Directory hozzáférési tokenek](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+További információ ezekről a jogkivonatokról: [Azure Active Directory hozzáférési tokenek](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).  Vegye figyelembe, hogy a folyamat a v1 végponti tokent használja.
 
+### <a name="get-the-token-with-an-http-post"></a>A token lekérése HTTP-BEJEGYZÉSsel
 
-### <a name="get-a-token-based-on-the-azure-ad-app"></a>Token beszerzése az Azure AD-alkalmazás alapján
+#### <a name="http-method"></a>HTTP-metódus
 
-HTTP-metódus
+Közzététel<br>
 
-`POST`
+##### <a name="request-url"></a>*URL-cím kérése* 
 
-*Kérés URL-címe*
+`https://login.microsoftonline.com/*{tenantId}*/oauth2/token`
 
-**https://login.microsoftonline.com/*{tenantId}*/oauth2/token**
+##### <a name="uri-parameter"></a>*URI-paraméter*
 
-*URI-paraméter*
+|  Paraméter neve    |  Kötelező         |  Leírás |
+|  ---------------   |  ---------------  | ------------ |
+|  `tenantId`        |  True (Igaz)      |  A regisztrált HRE-alkalmazás bérlői azonosítója. |
 
-|  **Paraméter neve**  | **Szükséges**  | **Leírás**                               |
-|  ------------------  | ------------- | --------------------------------------------- |
-| tenantId             | True (Igaz)          | A regisztrált HRE-alkalmazás bérlői azonosítója   |
-|  |  |  |
+##### <a name="request-header"></a>*Kérelem fejléce*
 
+|  Fejléc neve       |  Kötelező         |  Leírás |
+|  ---------------   |  ---------------  | ------------ |
+|  `content-type`    |  True (Igaz)      |  A kérelemhez társított tartalomtípus. Az alapértelmezett érték `application/x-www-form-urlencoded`. |
 
-*Kérelem fejléce*
+##### <a name="request-body"></a>*Kérelem törzse*
 
-|  **Fejléc neve**  | **Szükséges** |  **Leírás**                                   |
-|  --------------   | ------------ |  ------------------------------------------------- |
-|  Content-Type     | True (Igaz)         | A kérelemhez társított tartalomtípus. Az alapértelmezett érték `application/x-www-form-urlencoded`.  |
-|  |  |  |
+|  Tulajdonság neve     |  Kötelező         |  Leírás |
+|  ---------------   |  ---------------  | ------------ |
+|  `grant-type`      |  True (Igaz)      |  Adja meg a típust. A `"client_credentials"` címet használja. |
+|  `client_id`       |  True (Igaz)      |  Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás-azonosító. |
+|  `client_secret`   |  True (Igaz)      |  Az Azure AD-alkalmazáshoz társított titkos kulcs. |
+|  `resource`        |  True (Igaz)      |  A célként megadott erőforrás, amelyre a tokent kérték. Akkor használja, `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` Ha a Marketplace SaaS API mindig a cél erőforrás ebben az esetben. |
 
+##### <a name="response"></a>*Válasz*
 
-*Kérelem törzse*
+|  Name     |  Típus         |  Description |
+|  ------   |  ---------------  | ------------ |
+|  200 OK   |  TokenResponse    |  A kérelem sikeres volt. |
 
-| **Tulajdonság neve**   | **Szükséges** |  **Leírás**                                                          |
-| -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True (Igaz)         | Adja meg a típust. Az alapértelmezett érték `client_credentials`.                    |
-|  Client_id          | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás-azonosító.                  |
-|  client_secret      | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított jelszó.                               |
-|  Erőforrás           | True (Igaz)         |  A célként megadott erőforrás, amelyre a tokent kérték. Az alapértelmezett érték `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
-|  |  |  |
+##### <a name="tokenresponse"></a>*TokenResponse*
 
+Példa a válaszra:
 
-*Válasz*
-
-|  **Név**  | **Típus**       |  **Leírás**    |
-| ---------- | -------------  | ------------------- |
-| 200 OK    | TokenResponse  | A kérelem sikeres volt   |
-|  |  |  |
-
-*TokenResponse*
-
-Példa a válasz tokenre:
-
-``` json
-  {
+```json
+{
       "token_type": "Bearer",
       "expires_in": "3600",
       "ext_expires_in": "0",
       "expires_on": "15251…",
       "not_before": "15251…",
-      "resource": "62d94f6c-d599-489b-a797-3e10e42fbe22",
+      "resource": "20e940b3-4c77-4b0b-9a53-9e16a1b010a7",
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
-  }               
+  }
 ```
+
+A `"access_token"` válaszban szereplő mező értéke az, amelyet a rendszer az `<access_token>` összes SaaS-beteljesülés és a Marketplace-mérési API-k meghívásakor ad át engedélyezési paraméterként.
 
 ## <a name="next-steps"></a>További lépések
 

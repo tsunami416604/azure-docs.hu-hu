@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611993"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735098"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -53,7 +53,7 @@ A Windows 10 Enterprise multi-session jelenleg támogatott hibrid Azure AD-hez. 
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Hol találhatom meg a Windows 10 Enterprise multi-session rendszerképet?
 
-A Windows 10 Enterprise multi-session az Azure-katalógusban található. A kereséshez keresse meg a Azure Portal, és keresse meg a Windows 10 Enterprise for Virtual desktops kiadását. Az Office Pro Plus szolgáltatással integrált rendszerképekhez lépjen a Azure Portalra, és keresse meg a Microsoft Windows 10 + Office 365 ProPlus.
+A Windows 10 Enterprise multi-session az Azure-katalógusban található. A kereséshez keresse meg a Azure Portal, és keresse meg a Windows 10 Enterprise for Virtual desktops kiadását. A nagyvállalati Microsoft 365 alkalmazásokkal integrált rendszerképekért keresse fel a Azure Portal, és keresse meg a **Microsoft Windows 10 + Microsoft 365 vállalati alkalmazásokat**.
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>Melyik Windows 10 Enterprise több munkamenetből álló képet szeretném használni?
 
@@ -92,7 +92,7 @@ A Microsoft Store alkalmazás letiltásával meggyőződhet arról, hogy a felha
 Az áruházbeli alkalmazás letiltása:
 
 1. Hozzon létre egy új Csoportházirend.
-2. Válassza ki a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők**elemet.
+2. Válassza ki a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**elemet.
 3. Válassza az **áruház**lehetőséget.
 4. Válassza az **áruházbeli alkalmazás**lehetőséget.
 5. Válassza a **Letiltva**lehetőséget, majd kattintson **az OK gombra**.

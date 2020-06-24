@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/18/2019
-ms.openlocfilehash: e9755c8a895dc441fc037a07dd36a1d1c07ce5fa
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 06/17/2020
+ms.openlocfilehash: 19560c3746c67f8eb8ae789b3d6009e8f2fa74d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324555"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976812"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -102,6 +102,14 @@ Ha engedélyezni szeretné az Azure-ban üzemeltetett alkalmazások számára az
 
 > [!IMPORTANT]
 > Ez a beállítás úgy konfigurálja a tűzfalat, hogy engedélyezze az Azure összes kapcsolatát, beleértve a más ügyfelek előfizetései által létesített kapcsolatokat is. Ha ezt a beállítást választja, győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei csak a jogosult felhasználókra korlátozzák a hozzáférést.
+
+## <a name="permissions"></a>Engedélyek
+
+Az Azure-SQL Server IP-tűzfalszabályok létrehozásához és kezeléséhez a következőkre lesz szüksége:
+
+- a [SQL Server közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor) szerepkörben
+- az [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepkörben
+- Az Azure-SQL Server tartalmazó erőforrás tulajdonosa
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP-tűzfalszabályok létrehozása és kezelése
 
@@ -259,7 +267,7 @@ Vegye figyelembe a következő szempontokat, amikor a Azure SQL Databasehoz val�
   - Kérje meg az internetszolgáltatót a kiszolgálót elérő ügyfélszámítógépekhez rendelt IP-címtartomány megadására. Adja hozzá az IP-címtartományt IP-tűzfalszabályként.
   - Az ügyfélszámítógépek helyett statikus IP-címzést kell lekérnie. Adja hozzá az IP-címeket IP-tűzfalszabályokként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ellenőrizze, hogy a vállalati hálózati környezet lehetővé teszi-e a bejövő kommunikációt az Azure-adatközpontok által használt számítási IP-címtartományok (beleértve az SQL-tartományokat is). Előfordulhat, hogy ezeket az IP-címeket fel kell vennie az engedélyezési listára. Lásd: [Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653).  
 - A kiszolgálói szintű IP-Tűzfalszabályok létrehozásával kapcsolatos rövid útmutató: [önálló adatbázis létrehozása Azure SQL Databaseban](single-database-create-quickstart.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 6242580e3f4199578d663456c14ee160603b372d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: fa873baa2d2006164536dd26e040ffbf5cdd51cb
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266151"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85123983"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Microsoft-szolgáltatások a kiberbiztonsági-ben
 
@@ -38,6 +38,6 @@ További információ a Microsoft-szolgáltatások által nyújtott szolgáltat�
 * [Fokozott biztonsági felügyeleti környezet](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Azure AD-implementációs szolgáltatások](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
 * [Az oldalirányú fiókok mozgatásának védelme](https://docs.microsoft.com/azure-advanced-threat-protection/use-case-lateral-movement-path)
-* [Incidensek válasza és helyreállítása](https://docs.microsoft.com/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services?view=o365-worldwide#data-protection-incident-response-overview)
+* [Incidensek válasza és helyreállítása](/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services#data-protection-incident-response-overview)
 
 [További](https://aka.ms/cyberserv) információ a Microsoft Services biztonsági tanácsadói szolgáltatásairól.

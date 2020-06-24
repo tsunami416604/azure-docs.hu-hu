@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c16dd4345e62fa9e826e657cce9a752186ec1b82
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: bca8ccaf06fb63b9029b93a8c59a6304139c8ff1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628657"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976880"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Az Azure Event Hubs funkciói és terminológiája
 
@@ -56,7 +56,7 @@ Az Event Hubs biztosítja, hogy az egyazon partíciókulcs-értékkel rendelkez�
 Az Event Hubs lehetővé teszi az esemény-közzétevők részletes szabályozását a *közzétevői házirendek* révén. A közzétevői házirendek olyan futásidejű szolgáltatások, amelyek célja, hogy nagy számú független esemény-közzétevőt tegyen lehetővé. A közzétevői házirendek használatával mindegyik közzétevő a saját egyedi azonosítóját használja, amikor eseményeket tesz közzé egy eseményközpontban az alábbi mechanizmust használva:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
+//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 ```
 
 Nem kell előre létrehoznia a közzétevők neveit, azoknak azonban egyezniük kell az esemény közzétételekor használt SAS-tokennel a független közzétevő-azonosságok biztosítása érdekében. A közzétevői házirendek használatakor a **PartitionKey** értéke a közzétevő neve lesz. A megfelelő működéshez ezeknek az értékeknek egyezniük kell.
@@ -85,12 +85,13 @@ A streamfeldolgozási architektúrákban mindegyik alárendelt alkalmazás megfe
 
 A felhasználónkénti csoportonként legfeljebb 5 egyidejű olvasó lehet egy partíción. **azt javasoljuk azonban, hogy a partíciók felhasználónkénti csoportjain csak egy aktív fogadó legyen**. Egyetlen partíción belül minden olvasó megkapja az összes üzenetet. Ha ugyanazon a partíción több olvasó is van, akkor ismétlődő üzeneteket dolgoz fel. Ezt a kódban kell kezelnie, ami esetleg nem triviális. Bizonyos helyzetekben azonban érvényes megközelítésnek kell lennie.
 
+Az Azure SDK-k által kínált egyes ügyfelek intelligens fogyasztói ügynökök, amelyek automatikusan kezelik annak biztosításának részleteit, hogy az egyes partíciók egyetlen olvasóval rendelkezzenek, és hogy az Event hub összes partíciója beolvasható legyen. Ez lehetővé teszi, hogy a kód az Event hub-ból beolvasott események feldolgozására koncentráljon, így a partíciók számos részletét figyelmen kívül hagyhatják. További információ: [Kapcsolódás partícióhoz](#connect-to-a-partition).
 
-Az alábbiakban néhány példa látható felhasználói csoportok URI-szabályaira:
+A következő példák a fogyasztói csoport URI-egyezményét mutatják be:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
 ```
 
 A következő ábrán az Event Hubs streamfeldolgozási architektúrája látható:
@@ -122,7 +123,12 @@ Az összes Event Hubs-felhasználó egy AMQP 1,0-munkameneten keresztül kapcsol
 
 #### <a name="connect-to-a-partition"></a>Csatlakozás partícióhoz
 
-Partíciókhoz való kapcsolódás esetén általános gyakorlat a bérlési mechanizmus használata az adott partíciók olvasói kapcsolatainak koordinálására. Így lehetséges, hogy az egyes felhasználói csoportokban minden partíció csak egyetlen aktív olvasóval rendelkezzen. Az ellenőrzőpontok használata, a bérlés, valamint az olvasók kezelése az [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) osztály használatával egyszerűsíthető .NET-ügyfelek esetén. Az Event Processor Host egy intelligens felhasználóügynök.
+A partíciókhoz való csatlakozáskor általános gyakorlat, hogy egy lízing mechanizmust használ az olvasói kapcsolatok adott partíciókhoz való koordinálására. Így előfordulhat, hogy a felhasználói csoport minden partíciója csak egyetlen aktív olvasóval rendelkezik. Az ellenőrzőpontok, a lízingek és az olvasók kezelése a Event Hubs SDK-k használatával egyszerűsíthető, amely intelligens fogyasztói ügynökként működik. Ezek a következők:
+
+- A .NET-hez készült [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient)
+- A Javához készült [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient)
+- A Python [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient)
+- A JavaScript/írógéppel [EventHubSoncumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
 
 #### <a name="read-events"></a>Események olvasása
 
@@ -142,13 +148,11 @@ Az eltolás kezelése a felhasználó felelőssége.
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:
 
 - Bevezetés az Event Hubs használatába
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [.NET](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
     - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs programozási útmutató](event-hubs-programming-guide.md)
 * [Rendelkezésre állás és konzisztencia az Event Hubsban](event-hubs-availability-and-consistency.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
-* [Event Hubs minták][]
-
-[Event Hubs minták]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+* [Event Hubs minták](event-hubs-samples.md)

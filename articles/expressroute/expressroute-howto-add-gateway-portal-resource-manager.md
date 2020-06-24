@@ -4,16 +4,16 @@ description: Ez a cikk bemutatja, hogyan adhat hozzá egy virtuális hálózati 
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 188d366dafce6ee79a084750b5f7d1fe4140432b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264829"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736373"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Virtuális hálózati átjáró konfigurálása a ExpressRoute-hez a Azure Portal használatával
 > [!div class="op_single_selector"]

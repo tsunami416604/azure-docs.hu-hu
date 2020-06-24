@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus témakörök használata az Azure/Service-Bus Node. js-csomaggal
-description: Megtudhatja, hogyan használhatja az Azure-ban Service Bus témaköröket és előfizetéseket egy Node. js-alkalmazásból az Azure/Service-Bus csomag használatával. "
+title: Azure Service Bus témakörök használata az Azure/Service-Bus Node.js-csomaggal
+description: Megtudhatja, hogyan használhatja az Azure-ban Service Bus témaköröket és előfizetéseket egy Node.js alkalmazásból az Azure/Service-Bus csomag használatával. "
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -14,20 +14,20 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: c85b63b4a56e74b0fef9a122ec995b4106496cbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 91fae982f53af8da359baaff685996c0d1cb57c2
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78330446"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976557"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Node. js-sel és az Azure-SB csomaggal
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node. js-alkalmazásokat az üzenetek egy Service Bus témakörbe való küldéséhez, és hogyan fogadhat üzeneteket egy Service Bus-előfizetésből az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag használatával. A mintákat JavaScript nyelven írták, és a Node. js [Azure-modult](https://www.npmjs.com/package/azure) használják, amely belsőleg `azure-sb` használja a csomagot.
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Node.js és az Azure-SB csomaggal
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node.js alkalmazásokat, hogy üzeneteket küldjön egy Service Bus témakörbe, és üzeneteket fogadjon egy Service Bus előfizetésből az [Azure-SB-](https://www.npmjs.com/package/azure-sb) csomag használatával. A minták JavaScript nyelven íródtak, és a Node.js [Azure-modult](https://www.npmjs.com/package/azure) használják, amely belsőleg használja a `azure-sb` csomagot.
 
 > [!IMPORTANT]
-> Az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A gyorsabb [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) [AMQP 1,0 protokollt](service-bus-amqp-overview.md)használó új csomag használatával gyorsabb élményt érhet el. 
+> Az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag [Service Bus Rest futásidejű API-kat](/rest/api/servicebus/service-bus-runtime-rest)használ. A [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) gyorsabb [AMQP 1,0 protokollt](service-bus-amqp-overview.md)használó új csomag használatával gyorsabb élményt érhet el. 
 > 
-> Az új csomaggal kapcsolatos további információkért lásd: [Service Bus témakörök és előfizetések használata a Node. js- @azure/service-bus szel és a csomaggal](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), ellenkező esetben az [Azure](https://www.npmjs.com/package/azure) -csomag használatának módjáról is tájékozódhat.
+> Ha többet szeretne megtudni az új csomagról, tekintse meg a [Service Bus témakörök és előfizetések használata a Node.js és a @azure/service-bus csomagban](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)című témakört, máskülönben folytassa az [Azure](https://www.npmjs.com/package/azure) -csomag használatát ismertető témakört.
 
 Az itt tárgyalt forgatókönyvek a következők:
 
@@ -44,13 +44,13 @@ A témakörökkel és az előfizetésekkel kapcsolatos további információkér
 - Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket a témakörhöz](service-bus-quickstart-topics-subscriptions-portal.md) , és hozzon létre egy Service Bus **névteret** , és szerezze be a **kapcsolódási karakterláncot**.
 
     > [!NOTE]
-    > Ebben a rövid útmutatóban egy **témakört** és egy **előfizetést** fog létrehozni a témakörhöz a **Node. js** használatával. 
+    > Ebben a rövid útmutatóban egy **témakört** és egy **előfizetést** fog létrehozni a témakörhöz **Node.js** használatával. 
 
 ## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
-Hozzon létre egy üres Node. js-alkalmazást. A Node. js-alkalmazások létrehozásával kapcsolatos utasításokért lásd: [Node. js-alkalmazás létrehozása és üzembe helyezése egy Azure-webhelyhez], [Node. js Cloud Service][Node.js Cloud Service] a Windows PowerShell használatával vagy webhelyről a WebMatrix.
+Hozzon létre egy üres Node.js alkalmazást. Node.js alkalmazás létrehozásával kapcsolatos utasításokért lásd: [Node.js-alkalmazás létrehozása és telepítése Azure-webhelyekre], [Node.js Cloud Service][Node.js Cloud Service] a Windows PowerShell használatával vagy webhelyről a WebMatrix-vel.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
-A Service Bus használatához töltse le a Node. js Azure-csomagot. Ez a csomag olyan kódtárakat tartalmaz, amelyek a Service Bus REST-szolgáltatásokkal kommunikálnak.
+Service Bus használatához töltse le a Node.js Azure-csomagot. Ez a csomag olyan kódtárakat tartalmaz, amelyek a Service Bus REST-szolgáltatásokkal kommunikálnak.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>A csomag beszerzéséhez használja a Node Package Managert (NPM)
 1. Nyisson meg egy parancssori felületet, például a **PowerShell** (Windows), a **Terminal** (Mac) vagy a **bash** (UNIX) eszközt.
@@ -70,30 +70,30 @@ A Service Bus használatához töltse le a Node. js Azure-csomagot. Ez a csomag 
    ├── xml2js@0.2.7 (sax@0.5.2)
    └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
    ```
-3. Az **ls** parancs manuális futtatásával ellenőrizheti, hogy létrejött-e a **csomópont\_-modulok** mappája. A mappában keresse meg azt az **Azure** -csomagot, amely a Service Bus témakörök eléréséhez szükséges kódtárakat tartalmazza.
+3. Az **ls** parancs manuális futtatásával ellenőrizheti, hogy létrejött-e a **csomópont- \_ modulok** mappája. A mappában keresse meg azt az **Azure** -csomagot, amely a Service Bus témakörök eléréséhez szükséges kódtárakat tartalmazza.
 
 ### <a name="import-the-module"></a>A modul importálása
-A Jegyzettömb vagy egy másik szövegszerkesztő használatával adja hozzá a következőt az alkalmazás **Server. js** fájljának elejéhez:
+A Jegyzettömb vagy egy másik szövegszerkesztő használatával adja hozzá a következőt az alkalmazás **server.js** fájljának elejéhez:
 
 ```javascript
 var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>Service Bus-kapcsolatok beállítása
-Az Azure-modul beolvassa `AZURE_SERVICEBUS_CONNECTION_STRING` a környezeti változót a korábbi lépésből beszerzett, "a hitelesítő adatok beszerzése" karakterláncra. Ha ez a környezeti változó nincs beállítva, meg kell adnia a fiók adatait a híváskor `createServiceBusService`.
+Az Azure-modul beolvassa a környezeti változót `AZURE_SERVICEBUS_CONNECTION_STRING` az [Előfeltételek](#prerequisites)részeként beszerzett kapcsolati karakterláncra. Ha a kapcsolatok karakterláncának ismételt beolvasására vonatkozó utasításokra van szüksége, olvassa el a következőt: [a kapcsolatok karakterláncának](service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string)beolvasása Ha ez a környezeti változó nincs beállítva, meg kell adnia a fiók adatait a híváskor `createServiceBusService` .
 
 Az Azure Cloud Service környezeti változóinak beállítására példát a [környezeti változók beállítása](../container-instances/container-instances-environment-variables.md#azure-cli-example)című témakörben talál.
 
 
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
-A **ServiceBusService** objektum lehetővé teszi, hogy a témakörökkel működjön. A következő kód létrehoz egy **ServiceBusService** objektumot. Adja hozzá a **Server. js** fájl elejéhez a következő utasítást az Azure-modul importálásához:
+A **ServiceBusService** objektum lehetővé teszi, hogy a témakörökkel működjön. A következő kód létrehoz egy **ServiceBusService** objektumot. Adja hozzá a **server.js** fájl elejéhez a következő utasítást az Azure-modul importálásához:
 
 ```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Ha a `createTopicIfNotExists` **ServiceBusService** objektumot hívja meg, a rendszer a megadott témakört adja vissza (ha létezik), vagy új témakört hoz létre a megadott névvel. A következő kód a `createTopicIfNotExists` nevű `MyTopic`témakör létrehozásához vagy a hozzá való kapcsolódáshoz használja:
+Ha a `createTopicIfNotExists` **ServiceBusService** objektumot hívja meg, a rendszer a megadott témakört adja vissza (ha létezik), vagy új témakört hoz létre a megadott névvel. A következő kód a `createTopicIfNotExists` nevű témakör létrehozásához vagy a hozzá való kapcsolódáshoz használja `MyTopic` :
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -128,13 +128,13 @@ A nem kötelező szűrési műveletek alkalmazhatók a **ServiceBusService**hasz
 function handle (requestOptions, next)
 ```
 
-Az előfeldolgozás végrehajtása után a metódus meghívja `next`a metódust, és átadja a visszahívást a következő aláírással:
+Az előfeldolgozás végrehajtása után a metódus meghívja a metódust `next` , és átadja a visszahívást a következő aláírással:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-Ebben a visszahívásban, és a `returnObject` (a kéréstől a kiszolgálónak küldött válasz) feldolgozását követően a visszahívásnak a következőt kell megadnia (ha létezik) a további szűrők `finalCallback` feldolgozásának folytatásához, vagy a szolgáltatás meghívásának befejezéséhez.
+Ebben a visszahívásban, és a `returnObject` (a kéréstől a kiszolgálónak küldött válasz) feldolgozását követően a visszahívásnak a következőt kell megadnia (ha létezik) a további szűrők feldolgozásának folytatásához, vagy a szolgáltatás meghívásának `finalCallback` befejezéséhez.
 
 Az Azure SDK for Node.js tartalmaz két szűrőt (**ExponentialRetryPolicyFilter** és **LinearRetryPolicyFilter**), amelyek újrapróbálkozási logikát implementálnak. A következő kód létrehoz egy **ServiceBusService** objektumot, amely a **ExponentialRetryPolicyFilter**használja:
 
@@ -174,7 +174,7 @@ A szűrők hozzáadhatók egy előfizetéshez a `createRule` **ServiceBusService
 >
 >
 
-Az alábbi példa egy nevű `HighMessages` előfizetést hoz létre egy **SqlFilter** , amely csak olyan üzeneteket választ `messagenumber` ki, amelyek 3. nagyobb egyéni tulajdonsággal rendelkeznek:
+Az alábbi példa egy nevű előfizetést hoz létre `HighMessages` egy **SqlFilter** , amely csak olyan üzeneteket választ ki, amelyek `messagenumber` 3. nagyobb egyéni tulajdonsággal rendelkeznek:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'HighMessages', function (error){
@@ -209,7 +209,7 @@ var rule={
 }
 ```
 
-Hasonlóképpen, a következő példa létrehoz egy nevű `LowMessages` előfizetést egy **SqlFilter** , amely csak a `messagenumber` 3 értéknél kisebb vagy azzal egyenlő értékű üzeneteket jelöl ki:
+Hasonlóképpen, a következő példa létrehoz egy nevű előfizetést `LowMessages` egy **SqlFilter** , amely csak a `messagenumber` 3 értéknél kisebb vagy azzal egyenlő értékű üzeneteket jelöl ki:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
@@ -244,14 +244,14 @@ var rule={
 }
 ```
 
-Amikor egy üzenetet küld a szolgáltatásnak `MyTopic`, a rendszer kézbesíti a `AllMessages` témakör-előfizetésre előfizetett fogadóknak, és szelektíven kézbesíti azokat a fogadóknak `HighMessages` , `LowMessages` akik előfizetettek a és témakör-előfizetésekre (az üzenet tartalmától függően).
+Amikor egy üzenetet küld a szolgáltatásnak `MyTopic` , a rendszer kézbesíti a témakör-előfizetésre előfizetett fogadóknak `AllMessages` , és szelektíven kézbesíti azokat a fogadóknak, akik előfizetettek a `HighMessages` és `LowMessages` témakör-előfizetésekre (az üzenet tartalmától függően).
 
 ## <a name="how-to-send-messages-to-a-topic"></a>Üzenetek küldése egy témakörbe
 Ha üzenetet szeretne küldeni egy Service Bus témakörnek, az alkalmazásnak a `sendTopicMessage` **ServiceBusService** objektum metódusát kell használnia.
 A Service Bus témakörökbe küldött üzenetek **BrokeredMessage** objektumok.
-A **BrokeredMessage** -objektumok szabványos tulajdonságokkal rendelkeznek (például `Label` és `TimeToLive`), az egyéni alkalmazásspecifikus tulajdonságok tárolására szolgáló szótár, valamint egy karakterlánc-adattörzs. Egy alkalmazás beállíthatja az üzenet törzsét úgy, hogy egy karakterláncot továbbít a `sendTopicMessage` értékre, és a szükséges általános tulajdonságokat az alapértelmezett értékek szerint tölti ki.
+A **BrokeredMessage** -objektumok szabványos tulajdonságokkal rendelkeznek (például `Label` és `TimeToLive` ), az egyéni alkalmazásspecifikus tulajdonságok tárolására szolgáló szótár, valamint egy karakterlánc-adattörzs. Egy alkalmazás beállíthatja az üzenet törzsét úgy, hogy egy karakterláncot továbbít a értékre, `sendTopicMessage` és a szükséges általános tulajdonságokat az alapértelmezett értékek szerint tölti ki.
 
-Az alábbi példa bemutatja, hogyan küldhet öt tesztüzenet a `MyTopic`következőnek:. Az `messagenumber` egyes üzenetek tulajdonságának értéke a hurok iterációjában változik (ez a tulajdonság határozza meg, hogy mely előfizetések kapják meg):
+Az alábbi példa bemutatja, hogyan küldhet öt tesztüzenet a következőnek: `MyTopic` . Az `messagenumber` egyes üzenetek tulajdonságának értéke a hurok iterációjában változik (ez a tulajdonság határozza meg, hogy mely előfizetések kapják meg):
 
 ```javascript
 var message = {
@@ -275,14 +275,14 @@ for (i = 0;i < 5;i++) {
 A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörben tárolt üzenetek száma nincs korlátozva, de a témakörben tárolt üzenetek teljes mérete korlátozott. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
 
 ## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
-Az üzenetek egy előfizetésből érkeznek a `receiveSubscriptionMessage` **ServiceBusService** objektum metódusának használatával. Alapértelmezés szerint az üzenetek törlődnek az előfizetésből az olvasáskor. A választható paramétert `isPeekLock` azonban **igaz** értékre állíthatja olvasási (betekintés) értékre, és zárolhatja az üzenetet anélkül, hogy törölné az előfizetésből.
+Az üzenetek egy előfizetésből érkeznek a `receiveSubscriptionMessage` **ServiceBusService** objektum metódusának használatával. Alapértelmezés szerint az üzenetek törlődnek az előfizetésből az olvasáskor. A választható paramétert azonban igaz értékre `isPeekLock` állíthatja **true** olvasási (betekintés) értékre, és zárolhatja az üzenetet anélkül, hogy törölné az előfizetésből.
 
 Az üzenet olvasásának és törlésének alapértelmezett viselkedése a fogadási művelet részeként a legegyszerűbb modell, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. A viselkedés megértéséhez vegye fontolóra azt a forgatókönyvet, amelyben a fogyasztó kiadja a fogadási kérelmet, majd összeomlik a feldolgozás előtt. Mivel Service Bus az üzenetet felhasználva jelölte meg, akkor az alkalmazás újraindításakor és az üzenetek újbóli használatának megkezdése után a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
 
 Ha a `isPeekLock` paraméter értéke TRUE ( **igaz**), a fogadás kétfázisú műveletvé válik, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tolerálják a kihagyott üzeneteket. Amikor Service Bus kap egy kérelmet, megkeresi a következő üzenetet, amelyet felhasznál, zárolja, hogy más fogyasztó ne fogadja, és visszaadja az alkalmazásnak.
 Miután az alkalmazás feldolgozta az üzenetet (vagy megbízhatóan tárolja a későbbi feldolgozáshoz), a **deleteMessage** metódus meghívásával végrehajtja a fogadási folyamat második szakaszát, és paraméterként továbbítja az üzenetet a törléshez. A **deleteMessage** metódus felhasznált jelöli meg az üzenetet, és eltávolítja az előfizetésből.
 
-Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az `receiveSubscriptionMessage`üzenetek a használatával. A példa először fogad és töröl egy üzenetet a "LowMessages" előfizetésből, majd a "HighMessages" előfizetésből üzenetet kap az `isPeekLock` igaz értékre állítva. Ezután törli az üzenetet a következő `deleteMessage`használatával:
+Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek a használatával `receiveSubscriptionMessage` . A példa először fogad és töröl egy üzenetet a "LowMessages" előfizetésből, majd a "HighMessages" előfizetésből üzenetet kap az `isPeekLock` igaz értékre állítva. Ezután törli az üzenetet a következő használatával `deleteMessage` :
 
 ```javascript
 serviceBusService.receiveSubscriptionMessage('MyTopic', 'LowMessages', function(error, receivedMessage){
@@ -314,7 +314,7 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően össze
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
 A témakörök és az előfizetések állandóak, kivéve, ha a [autoDeleteOnIdle tulajdonság](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) be van állítva, és explicit módon törölni kell őket a [Azure Portalon][Azure portal] vagy programozottan.
-Az alábbi példa bemutatja, hogyan törölheti a nevű `MyTopic`témakört:
+Az alábbi példa bemutatja, hogyan törölheti a nevű témakört `MyTopic` :
 
 ```javascript
 serviceBusService.deleteTopic('MyTopic', function (error) {
@@ -324,7 +324,7 @@ serviceBusService.deleteTopic('MyTopic', function (error) {
 });
 ```
 
-Egy témakör törlése az adott témakörre regisztrált összes előfizetést is törli. Az előfizetések független módon is törölhetők. Az alábbi példa bemutatja, hogyan törölhet egy nevű `HighMessages` előfizetést `MyTopic` a következő témakörből:
+Egy témakör törlése az adott témakörre regisztrált összes előfizetést is törli. Az előfizetések független módon is törölhetők. Az alábbi példa bemutatja, hogyan törölhet egy nevű előfizetést `HighMessages` a következő `MyTopic` témakörből:
 
 ```javascript
 serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error) {
@@ -350,6 +350,6 @@ Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hiv
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node. js-alkalmazás létrehozása és üzembe helyezése Azure-webhelyen]: ../app-service/app-service-web-get-started-nodejs.md
+[Node.js-alkalmazás létrehozása és üzembe helyezése Azure-webhelyen]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

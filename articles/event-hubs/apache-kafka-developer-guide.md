@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 manager: ''
 ms.author: spelluru
-ms.date: 03/31/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7486c251784b345351669bda6f0eb2309977728
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729629"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297460"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs
 Ez a cikk a Apache Kafka-alkalmazások Azure-Event Hubs való integrálását ismertető cikkekre mutató hivatkozásokat tartalmaz. 
@@ -53,7 +53,7 @@ Tekintse meg az alábbi oktatóanyagokat a GitHubon:
 | [Kapcsolódás](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Ez a dokumentum végigvezeti Önt a Kafka-csatlakozás Azure-Event Hubs való integrálásán, valamint az alapszintű FileStreamSource-és FileStreamSink-összekötők üzembe helyezésén. Habár ezek az összekötők nem éles használatra készültek, egy teljes körű Kafka-kapcsolódási forgatókönyvet mutatnak be, amelyben az Azure Event Hubs egy Kafka-közvetítőként álarcos.| 
 | [Filebeat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/filebeat) | Ez a dokumentum végigvezeti Önt a Filebeat és Event Hubs integrálásán a Filebeat Kafka-kimenetén keresztül. | 
 | [Flink](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) | Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az Apache flink a Kafka-kompatibilis Event Hubshoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. | 
-| [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | Ez a dokumentum bemutatja, hogyan integrálhatja a folyékonyan és Event Hubst `out_kafka` a kimeneti beépülő modullal. |
+| [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | Ez a dokumentum bemutatja, hogyan integrálhatja a folyékonyan és Event Hubst a `out_kafka` kimeneti beépülő modullal. |
 | [Interop](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/interop) | Ebből az oktatóanyagból megtudhatja, hogyan cserélhet be különböző protokollokat használó ügyfelek és gyártók közötti eseményeket. |
 | [LogStash](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/logstash) | Ez az oktatóanyag végigvezeti a Logstash és a Kafka-kompatibilis Event Hubs a Logstash Kafka bemeneti/kimeneti beépülő modullal történő integrálásán. | 
 | [MirrorMaker](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) | Ez az oktatóanyag azt mutatja be, hogy az Event hub és a Kafka MirrorMaker hogyan integrálhat egy meglévő Kafka-folyamatot az Azure-ba a Event Hubs szolgáltatásban található Kafka bemeneti stream tükrözésével. |

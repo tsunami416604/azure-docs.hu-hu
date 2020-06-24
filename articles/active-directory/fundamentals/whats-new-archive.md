@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8fa352d81a6df70634c00978a3db155d5fb0d7e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d2242dc3a80287b36554298fa1a15afb894c9ac1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217001"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976200"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -2095,8 +2095,6 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmaz
 
 Az OpenID-vel való frissítéssel az előhitelesítési protokollhoz tartozó OAuth 2,0 Code Grant protokollhoz való csatlakozással már nem kell további konfigurálást végeznie a tabló és az alkalmazásproxy használatához. Ez a protokoll változása azt is lehetővé teszi, hogy az alkalmazásproxy jobban támogassa a modern alkalmazásokat csak a HTTP-átirányítások használatával, amelyek JavaScript-és HTML-címkékben általában támogatottak.
 
-A tabló natív támogatásával kapcsolatos további információkért tekintse meg [Az Azure ad Application proxy most a natív tabló-támogatással foglalkozó](https://blogs.technet.microsoft.com/applicationproxyblog/2018/08/14/azure-ad-application-proxy-now-with-native-tableau-support)témakört.
-
 ---
 
 ### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>Új támogatás a Google identitás-szolgáltatóként való hozzáadásához Azure Active Directoryban (előzetes verzió)
@@ -2651,7 +2649,7 @@ További információkért lásd az [Azure ad használati feltételeinek funkci�
 
 ---
 
-### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Adott szervezetek B2B-felhasználók felé irányuló meghívásainak engedélyezése vagy letiltása
+### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Meghatározott B2B-felhasználóktól érkező meghívások engedélyezése vagy letiltása
 
 **Írja be a következőt:** Új szolgáltatás **szolgáltatásának kategóriája:** B2B- **termék funkció:** B2B/B2C
 
@@ -3032,7 +3030,7 @@ Ez a kiadás a következő frissítésekkel és módosításokkal rendelkezik:
 
 - Kijavítva a hiba, ha a SAN-helyettesítő karakterekkel rendelkező tanúsítványok nem rendelkeznek előre-REQ ellenőrzéssel.
 
-- Kijavítva egy hiba, amely a MIIServer. exe összeomlását okozza a HRE-összekötő exportálásakor.
+- Kijavítva egy olyan hibát, amely miiserver.exe összeomlást okoz a HRE-összekötő exportálásakor.
 
 - Kijavítva a hiba, ha a Futtatás során helytelen jelszó történt a TARTOMÁNYVEZÉRLŐn, amikor a HRE-csatlakozás varázsló a konfiguráció módosítását okozta
 

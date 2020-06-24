@@ -4,15 +4,15 @@ description: Ez a cikk segítséget nyújt a ExpressRoute Direct konfigurálás�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 343b63f960ccc458b1b1603f924b890366982477
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481976"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736271"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute közvetlen konfigurálása az Azure CLI használatával
 
@@ -276,7 +276,7 @@ Ezt a folyamatot az 1. rétegbeli tesztek elvégzéséhez használhatja. Győző
    }
    ```
 
-   Használja ugyanezt az eljárást a portok leállításához `AdminState = "Disabled"`a használatával.
+   Használja ugyanezt az eljárást a portok leállításához a használatával `AdminState = "Disabled"` .
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Kapcsolatcsoport létrehozása
 

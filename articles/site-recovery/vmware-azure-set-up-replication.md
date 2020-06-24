@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257120"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699600"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítási replikációs szabályzatok konfigurálása és kezelése
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálhat egy replikációs házirendet, ha
 
 ## <a name="create-a-policy"></a>Szabályzat létrehozása
 
-1. Válassza a**site Recovery infrastruktúra** **kezelése** > lehetőséget.
+1. Válassza **Manage**a  >  **site Recovery infrastruktúra**kezelése lehetőséget.
 2. A **VMware és a fizikai gépek esetében**válassza a **replikációs házirendek**lehetőséget.
 3. Kattintson a **+ replikációs házirend**elemre, és adja meg a házirend nevét.
 4. Az **RPO küszöbértéke** beállításnál adja meg az RPO-korlátot. A riasztások akkor jönnek létre, ha a folyamatos replikálás meghaladja ezt a korlátot.
@@ -49,7 +49,7 @@ A replikációs házirendet a létrehozása után módosíthatja.
 - Ha a replikált gépeket eltérő replikációs házirenddel szeretné hozzárendelni, le kell tiltania és újra engedélyeznie kell a megfelelő gépek védelmét.
 
 A szabályzatok a következőképpen szerkeszthetők:
-1. Válassza a**site Recovery infrastruktúra** > -**replikációs házirendek** **kezelése** > lehetőséget.
+1. Válassza **Manage**a  >  **site Recovery infrastruktúra**-  >  **replikációs házirendek**kezelése lehetőséget.
 2. Válassza ki a módosítani kívánt replikációs házirendet.
 3. Kattintson a **beállítások szerkesztése**elemre, és frissítse a RPO küszöbértékét/a helyreállítási pont megőrzési idejét, illetve az alkalmazás-konzisztens Pillanatképek gyakorisága mezőket a szükséges módon.
 4. Ha ki szeretné kapcsolni az alkalmazás-konzisztencia-pontok előállítását, válassza ki a "ki" értéket a mező **alkalmazás-konzisztens pillanatkép gyakoriságának**legördülő menüjében.
