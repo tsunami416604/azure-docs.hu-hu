@@ -3,16 +3,16 @@ title: Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példány
 description: Ez a cikk azt foglalja össze, hogyan takaríthat meg pénzt a vállalati regisztrációjában az Azure Reserved VM Instances szolgáltatás segítségével.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 06/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 649766d5daedbf880a3c17a1cb8282b0a9e4f2fe
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299060"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735421"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
 
@@ -28,7 +28,7 @@ A Nagyvállalati Szerződéssel rendelkező ügyfelek megtekinthetik a költség
 
 - Lekérheti a foglalás megvásárlására vonatkozó adatokat.
 - Megtudhatja, melyik előfizetés, erőforráscsoport vagy erőforrás használt foglalást.
-- Jóváírást kérhet a foglalási kihasználtság alapján.
+- Jóváírást kérhet a foglalás használata alapján.
 - Kiszámíthatja a foglalási megtakarításokat.
 - Lekérheti a foglalás kihasználatlansági adatait.
 - Amortizálhatja a foglalási költségeket.
@@ -39,21 +39,30 @@ A díjszabással kapcsolatos további információkért tekintse meg a [Linux re
 
 ## <a name="reserved-instances-api-support"></a>Fenntartott példányok API támogatása
 
-Az Azure API-k használatával programozott módon kérhet le információkat a szervezet számára az Azure-szolgáltatások vagy -szoftverek foglalásaival kapcsolatban. További információkért lásd [az Azure-foglalás automatizálásához elérhető API-kat](../reservations/reservation-apis.md).
+Az Azure API-k használatával programozott módon kérhet le információkat a szervezet számára az Azure-szolgáltatások vagy -szoftverek foglalásaival kapcsolatban. Az API-k például a következőkre használhatók:
+
+- Megvásárolható foglalások keresése
+- Foglalás vásárlása
+- Vásárolt foglalások megtekintése
+- Foglalások hozzáférésének megtekintése és kezelése
+- Foglalások felosztása vagy egyesítése
+- Foglalások hatókörének módosítása
+
+További információkért lásd [az Azure-foglalás automatizálásához elérhető API-kat](../reservations/reservation-apis.md).
 
 ## <a name="azure-reserved-virtual-machine-instances"></a>Azure-beli fenntartott virtuálisgép-példányok
 
-A fenntartott példányok a használatalapú fizetéshez képest akár 72 százalékkal csökkenthetik a virtuális gép költségeit az összes virtuális gépen, és az Azure Hybrid Benefittel együtt használva akár 82 százalékos megtakarítást jelenthetnek. Az egy és három éves időszakokhoz az előzetes fizetéssel jobban rangsorolhatók a számítási feladatok, a költségvetés és az előrejelzés. Az üzleti igények változásakor le is cserélheti vagy vissza is vonhatja a foglalásokat.
+A fenntartott példányok a használatalapú fizetéshez képest akár 72 százalékkal csökkenthetik a virtuális gép költségeit az összes virtuális gépen. Az Azure Hybrid Benefittel együtt használva akár 82 százalékos megtakarítást jelenthetnek. Az egy vagy három éves időszakokra vonatkozó előzetes fizetéssel a fenntartott példányok nagyobb segítséget nyújtanak a számítási feladatok, a költségvetés és az előrejelzések kezelésében. Az üzleti igények változásakor le is cserélheti vagy vissza is vonhatja a foglalásokat.
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>Fenntartott virtuálisgép-példányok megvásárlása
 
-Egy Azure-beli fenntartott virtuálisgép-példány megvásárlásához a vállalati Azure regisztrációs adminisztrátornak engedélyeznie kell a _Fenntartott példány_ vásárlási lehetőséget az [Azure EA Portal](https://ea.azure.com/)_Regisztráció_ lapjának _Regisztráció részletei_ szakaszában.
+Egy Azure-beli fenntartott virtuálisgép-példány megvásárlásához a nagyvállalati Azure regisztrációs rendszergazdájának engedélyeznie kell a _Fenntartott példány_ vásárlási lehetőséget. Ez a lehetőség az [Azure EA Portal](https://ea.azure.com/)_Regisztráció_ lapjának _Regisztráció részletei_ szakaszában található.
 
 Ha az EA-regisztrációhoz engedélyezett a fenntartott példányok hozzáadása, akkor az EA-regisztrációval társított aktív előfizetéssel rendelkező bármely fióktulajdonos vásárolhat fenntartott virtuálisgép-példányt az [Azure Portalon](https://aka.ms/reservations). További információkért lásd: [Előre fizetés virtuális gépekért és költségmegtakarítás fenntartott virtuálisgép-példányokkal](https://go.microsoft.com/fwlink/?linkid=861721).
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>A fenntartott példányok vásárlásával kapcsolatos részletek megtekintése
 
-A fenntartott példányok vásárlásának részleteit az [Azure Portal](https://aka.ms/reservations) vagy az [Azure EA Portal](https://ea.azure.com/) bal oldalán található _Foglalások_ menüben tekintheti meg. Válassza a bal oldali menüben a **Jelentések** lehetőséget, majd görgessen le a _Használati adatok összegzése_ lapon a _Díjak szolgáltatások szerint_ szakaszhoz. Görgessen a szakasz aljára, és láthatja a fenntartott példányok vásárlásának és használati adatainak listáját a szolgáltatás neve melletti „1 év” vagy „3 év” jelöléssel, például: Standard_DS1_v2 eastus 1 év vagy Standard_D2s_v3 eastus2 3 év.
+A fenntartott példányok vásárlásának részleteit az [Azure Portal](https://aka.ms/reservations) vagy az [Azure EA Portal](https://ea.azure.com/) bal oldalán található _Foglalások_ menüben tekintheti meg. Válassza a bal oldali menüben a **Jelentések** lehetőséget, majd görgessen le a _Használati adatok összegzése_ lapon a _Díjak szolgáltatások szerint_ szakaszhoz. A szakasz aljára görgetve láthatja a fenntartott példányok vásárlásának és használati adatainak listáját a szolgáltatás neve melletti `1 year` vagy `3 years` jelöléssel, például: `Standard_DS1_v2 eastus 1 year` vagy `Standard_D2s_v3 eastus2 3 years`.
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Hogyan változtathatom meg a fenntartott példányhoz társított előfizetést, vagy hogyan vihetem át a fenntartott példány előnyeit egy ugyanazon fiókhoz tartozó előfizetésre?
 
@@ -66,11 +75,11 @@ A foglalás hatókörének módosításáról szóló további információkért
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>A fenntartott példányok használatával kapcsolatos részletek megtekintése
 
-A fenntartott példányok használatával kapcsolatos részleteket az [Azure Portalon](https://aka.ms/reservations) vagy az [Azure EA Portalon](https://ea.azure.com/) tekintheti meg (olyan nagyvállalati szerződéssel rendelkező ügyfelek esetén, akik hozzáférnek a számlázási adatok megtekintéséhez) a _Jelentések_ > _Használati adatok összegzése_ > _Díjak szolgáltatások szerint_ területen. A fenntartott példányok a „Reservation” szót tartalmazó szolgáltatásnevekként azonosíthatók, például: Reservation-Base VM vagy Virtual Machines Reservation-Windows Svr (1 Core).
+A fenntartott példányok használatával kapcsolatos részleteket az [Azure Portalon](https://aka.ms/reservations) vagy az [Azure EA Portalon](https://ea.azure.com/) tekintheti meg (olyan nagyvállalati szerződéssel rendelkező ügyfelek esetén, akik hozzáférnek a számlázási adatok megtekintéséhez) a _Jelentések_ > _Használati adatok összegzése_ > _Díjak szolgáltatások szerint_ területen. A fenntartott példányok a „Reservation” szót tartalmazó szolgáltatásnevekként azonosíthatók, például: `Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)`.
 
-A használattal kapcsolatos részletek és a speciális jelentés letölthető CSV-fájlja további használati információt tartalmaz a fenntartott példánnyal kapcsolatban. Az _Additional Info_ (További információ) mező segít azonosítani a fenntartott példány használatát.
+A használati adatok és a speciális jelentés letölthető CSV-fájlja további használati információt tartalmaz a fenntartott példánnyal kapcsolatban. A _További információ_ mező segít meghatározni a fenntartott példány használatát.
 
-Ha nem az Azure Hybrid Benefittel vásárolt Azure-beli fenntartott virtuálisgép-példányokat, a fenntartott példányok két mérőszámot (hardverhasználati és szoftverhasználati) bocsátanak ki. Ha az Azure Hybrid Benefitet használta a fenntartott példány megvásárlására, a szoftverhasználati mérőszám nem látható a fenntartott példány használatának részleteiben.
+Ha nem az Azure Hybrid Benefittel vásárolt Azure-beli fenntartott virtuálisgép-példányokat, a fenntartott példányok két mérőszámot (hardverhasználati és szoftverhasználati) bocsátanak ki. Ha az Azure Hybrid Benefitet használja a fenntartott példány megvásárlására, a szoftverhasználati mérőszám nem látható a fenntartott példány használatának részleteiben.
 
 ### <a name="reserved-instance-billing"></a>Fenntartott példány számlázása
 
@@ -83,6 +92,7 @@ Az olyan forgatókönyvekben, ahol az Azure nagyvállalati szerződéssel rendel
 A fenntartás előtt 30 nappal és annak lejártakor e-mail-értesítéseket kap. Ha a fenntartás lejár, az üzemelő virtuális gépek továbbra is futnak majd, és a későbbiekben használatalapú fizetési díjszabás vonatkozik rájuk. További információ: [Fenntartott virtuálisgép-példányok ajánlata](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
 ## <a name="next-steps"></a>További lépések
+
 - További információ az Azure fenntartott példányokról: [Mi az az Azure Reservations?](../reservations/save-compute-costs-reservations.md).
 - A vállalati foglalási költségekkel és használati adatokkal kapcsolatos további információkért tekintse meg a [Nagyvállalati szerződés foglalási költségeinek és kihasználtságának lekérése](../reservations/understand-reserved-instance-usage-ea.md) szakaszt.
 - A díjszabással kapcsolatos további információkért tekintse meg a [Linux rendszerű virtuális gépek díjszabási](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) oldalát vagy a [Windows rendszerű virtuális gépek díjszabási](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) oldalát.

@@ -37,6 +37,8 @@
       href: ../../api-management/security-baseline.md
     - name: Az Application Gateway biztonsági alapkonfigurációja
       href: ../../application-gateway/security-baseline.md
+    - name: Az Automation biztonsági alapkonfigurációja
+      href: ../../automation/security-baseline.md
     - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: A Backup biztonsági alapkonfigurációja
@@ -51,24 +53,32 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Az Ügyfélszéf biztonsági alapkonfigurációja
       href: ../fundamentals/customer-lockbox-security-baseline.md
+    - name: A DataBox biztonsági alapkonfigurációja
+      href: ../../databox/security-baseline.md
     - name: A Data Explorer biztonsági alapkonfigurációja
       href: /azure/data-explorer/security-baseline
     - name: A Data Factory biztonsági alapkonfigurációja
-      href: /azure/data-factory/security-baseline
+      href: ../../data-factory/security-baseline.md
     - name: A Databricks biztonsági alapkonfigurációja
       href: ../../azure-databricks/security-baseline.md
     - name: Az Event Hubs biztonsági alapkonfigurációja
       href: ../../event-hubs/security-baseline.md
+    - name: Az ExpressRoute biztonsági alapkonfigurációja
+      href: ../../expressroute/security-baseline.md
     - name: A Functions biztonsági alapkonfigurációja
       href: ../../azure-functions/security-baseline.md
     - name: A HDInsight biztonsági alapkonfigurációja
       href: ../../hdinsight/security-baseline.md
     - name: A Key Vault biztonsági alapkonfigurációja
       href: ../../key-vault/security-baseline.md
+    - name: A Logic Apps biztonsági alapkonfigurációja
+      href: ../../logic-apps/security-baseline.md
     - name: A MariaDB biztonsági alapkonfigurációja
       href: ../../mariadb/security-baseline.md
     - name: A MySQL biztonsági alapkonfigurációja
       href: ../../mysql/security-baseline.md
+    - name: A Network Watcher biztonsági alapkonfigurációja
+      href: ../../network-watcher/security-baseline.md
     - name: A PostgreSQL biztonsági alapkonfigurációja
       href: ../../postgresql/security-baseline.md
     - name: Az SQL Database biztonsági alapkonfigurációja

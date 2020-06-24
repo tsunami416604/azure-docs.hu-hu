@@ -102,7 +102,7 @@
       href: monitor-container-security.md
     - name: Kiszolgálóvédelem a Microsoft Defender ATP-vel
       href: security-center-wdatp.md
-    - name: Az Advanced Data Security használata Azure-beli virtuális gépeken futó SQL-hez
+    - name: Az Advanced Data Security használata SQL-gépeken
       href: security-center-iaas-advanced-data.md
     - name: Az alkalmazások védelme az App Service-szel
       href: security-center-app-services.md

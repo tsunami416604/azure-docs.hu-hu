@@ -37,7 +37,7 @@
       items:
         - name: Megoldásarchitektúrák az Azure NetApp Filesszal
           href: azure-netapp-files-solution-architectures.md
-        - name: Adott megoldások
+        - name: Az Azure NetApp Files használatának előnyei
           items:
             - name: Az Azure NetApp Files Oracle Database-szel való használatának előnyei
               href: solutions-benefits-azure-netapp-files-oracle-database.md

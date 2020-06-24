@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 04/22/2020
+ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830310"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686409"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Gyorsútmutató: Költségvetés létrehozása Azure Resource Manager-sablonnal
 
@@ -74,7 +74,7 @@ A sablonban egyetlen Azure-erőforrás van definiálva:
     * **Küszöbérték**: adja meg az értesítési küszöbértéket. A rendszer értesítést küld, ha a költség meghaladja a küszöbértéket. Ez mindig egy százalékos érték, 0 és 1000 között.
     * **Kapcsolattartási e-mail-címek**: adja meg azon e-mail-címek listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. A várt formátum: `["user1@domain.com","user2@domain.com"]`.
     * **Kapcsolattartási szerepkörök**: adja meg azon kapcsolattartási szerepkörök listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. Az alapértelmezett értékek: Tulajdonos, Közreműködő és Olvasó. A várt formátum: `["Owner","Contributor","Reader"]`.
-    * **Kapcsolattartási csoportok**: adja meg azon műveletcsoportok listáját, ahová a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. Sztringtömböt fogad el. A várt formátum: `["Action Group Name1","Action Group Name2"]`. Ha nem szeretne műveletcsoportokat használni, adja meg a következőt: `[]`.
+    * **Kapcsolattartási csoportok**: adja meg azon műveletcsoportok erőforrás-azonosítójának listáját (teljes erőforrás-URI-ként), amelyeknek a rendszer költségvetési értesítést küld, ha túllépi a küszöbértéket. Sztringtömböt fogad el. A várt formátum: `["action group resource ID1","action group resource ID2"]`. Ha nem szeretne műveletcsoportokat használni, adja meg a következőt: `[]`.
     * **Erőforrások szűrő**: adja meg az erőforrások szűrőinek listáját. A várt formátum: `["Resource Filter Name1","Resource Filter Name2"]`. Ha nem szeretne szűrőt alkalmazni, adja meg a következőt: `[]`. Ha megad egy erőforrásszűrőt, akkor meg kell adnia a **mérőszámszűrők** értékeit is.
     * **Mérőszámok szűrő**: adja meg a mérőszámok szűrőinek listáját, ami kötelező a **Használat** költségvetési kategóriához tartozó költségvetések esetében. A várt formátum: `["Meter Filter Name1","Meter Filter Name2"]`. Ha nem adott meg **erőforrásszűrőt**, adja meg a következőt: `[]`.
     * **Elfogadom a fenti használati feltételeket**: Válassza ezt.

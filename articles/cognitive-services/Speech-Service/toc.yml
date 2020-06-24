@@ -394,30 +394,64 @@
       items:
         - name: Mi az a hangvezérelt asszisztens?
           href: voice-assistants.md
-    - name: Egyéni parancsok (előzetes verzió)
+    - name: Custom Commands
       items:
         - name: Mik azok az egyéni parancsok?
           href: custom-commands.md
         - name: Rövid útmutatók
           items:
             - name: Custom Commands-alkalmazás létrehozása
-              href: quickstart-custom-speech-commands-create-new.md
-            - name: Egyéni parancs létrehozása paraméterekkel
-              href: quickstart-custom-speech-commands-create-parameters.md
-            - name: Egyéni parancsok használata Custom Voice szolgáltatással
-              href: quickstart-custom-speech-commands-select-custom-voice.md
-            - name: Egyéni parancsok használata a Speech SDK-val
-              href: quickstart-custom-speech-commands-speech-sdk.md
+              href: quickstart-custom-commands-application.md
         - name: Útmutatók
           items:
-            - name: Ügyféltől származó parancsok végrehajtása
-              href: how-to-custom-speech-commands-fulfill-sdk.md
-            - name: Paraméter-ellenőrzés hozzáadása
-              href: how-to-custom-speech-commands-validations.md
-            - name: Megerősítés hozzáadása
-              href: how-to-custom-speech-commands-confirmations.md
-            - name: Egylépéses javítás hozzáadása
-              href: how-to-custom-speech-commands-one-step-correction.md
+            - name: Fejlesztés
+              items:
+                - name: Alkalmazás létrehozása egyszerű parancsokkal
+                  href: how-to-custom-commands-create-application-with-simple-commands.md
+                - name: Paraméterek hozzáadása parancsokhoz
+                  href: how-to-custom-commands-add-parameters-to-commands.md
+                - name: Konfigurációk hozzáadása parancsparaméterekhez
+                  href: how-to-custom-commands-add-parameter-configuration.md
+                - name: Használati szabályok hozzáadása
+                  href: how-to-custom-commands-add-interaction-rules.md
+                - name: Nyelvlétrehozási sablonok hozzáadása Speech-válaszokhoz
+                  href: how-to-custom-commands-add-language-generation-templates.md
+            - name: Integrálás
+              items:
+                - name: Integrálás ügyfélalkalmazással a Speech SDK használatával
+                  href: how-to-custom-commands-setup-speech-sdk.md
+                - name: Tevékenység küldése az ügyfélalkalmazásnak
+                  href: how-to-custom-commands-send-activity-to-client.md
+                - name: Webes végpontok beállítása
+                  href: how-to-custom-commands-setup-web-endpoints.md
+            - name: Üzembe helyezés
+              items:
+                - name: Folyamatos üzembe helyezés az Azure DevOps használatával
+                  href: how-to-custom-commands-deploy-cicd.md
+            - name: Tesztelés
+              items:
+                - name: Custom Commands-alkalmazás tesztelése
+                  href: how-to-custom-commands-developer-flow-test.md
+            - name: Hibakeresés
+              items:
+                - name: Hibakeresés az alkalmazás létrehozásakor
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Hibakeresés az alkalmazás futtatásakor
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: Referencia
+              items:
+                - name: A Custom Commands alapelvei
+                  href: custom-commands-references.md
+        - name: További források
+          items:
+            - name: Custom Commands-minták (GitHub)
+              href: 'https://aka.ms/speech/cc-samples'
+            - name: Hangvezérelt asszisztensek mintái (GitHub)
+              href: 'http://aka.ms/speech/va-samples'
+            - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
+              href: faq-voice-assistants.md
+            - name: Beszéd SDK
+              href: speech-sdk.md
     - name: Direct Line Speech
       items:
         - name: Mi az a Direct Line Speech?

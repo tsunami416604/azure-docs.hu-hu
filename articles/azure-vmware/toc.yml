@@ -16,6 +16,8 @@
       href: tutorial-access-private-cloud.md
     - name: 5 – Magánfelhő skálázása
       href: tutorial-scale-private-cloud.md
+    - name: 6 – Tartalomtár létrehozása virtuális gép üzembe helyezéséhez
+      href: tutorial-deploy-vm-content-library.md
 - name: Alapelvek
   items:
     - name: Magánfelhők és -fürtök
@@ -28,6 +30,8 @@
       href: concepts-identity.md
     - name: Magánfelhők frissítései
       href: concepts-upgrades.md
+    - name: API Management AVS virtuális gépekhez
+      href: concepts-api-management.md
 - name: Útmutatók
   items:
     - name: HCX beállítása

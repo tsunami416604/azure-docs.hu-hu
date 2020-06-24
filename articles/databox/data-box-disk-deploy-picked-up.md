@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: bfac12c6ef278072c6bb44d55dc12926fe906e6f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 07c86ca016d3e38359cbe8ba61d67f109c42edb0
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747674"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944967"
 ---
 ::: zone target="docs"
 
@@ -159,7 +159,7 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
 
 ### <a name="in-self-managed"></a>[Egyénileg kezelt szállítással](#tab/in-selfmanaged)
 
-Ha a Data Box Disket Japánban, Szingapúrban, Koreában vagy Nyugat-Európában használja, és a rendelés létrehozása során kiválasztotta az Egyénileg kezelt szállítás lehetőséget, kövesse az alábbi utasításokat. 
+Ha a Data Box Disket Japánban, Szingapúrban, Koreában, Nyugat-Európában vagy Indiában használja, és a rendelés létrehozása során kiválasztotta az Egyénileg kezelt szállítás lehetőséget, kövesse az alábbi utasításokat. 
 
 1. Az Azure Portalon lépjen a rendeléséhez tartozó **Áttekintés** panelre. Az **Átvétel ütemezése** lehetőség kiválasztásakor tekintse át a megjelenő utasításokat. Egy hitelesítési kódot fog látni, amelyre a rendelés feladásakor lesz szüksége.
 

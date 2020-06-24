@@ -3,16 +3,16 @@ title: Az Azure költségeinek elemzése a Power BI-alkalmazással
 description: Ez a cikk ismerteti az Azure Cost Management Power BI-alkalmazás telepítését és használatát.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 050df590827b94888c44826ac6391ff79ada1cfc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461599"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888209"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Az Azure költségeinek elemzése a Nagyvállalati Szerződésekhez (EA) készült Azure Cost Management Power BI-alkalmazással
 
@@ -127,6 +127,27 @@ A jelentés használatának részleteiről a [VM RI-lefedettség (megosztott jav
 ## <a name="troubleshoot-problems"></a>Problémák elhárítása
 
 Amennyiben problémái adódtak a Power BI alkalmazással, az alábbi hibaelhárítási információk a segítségére lehetnek.
+
+### <a name="error-processing-the-data-in-the-dataset"></a>Hiba történt az adatkészlet adatainak feldolgozása során
+
+A következő hibaüzenet jelenhet meg:
+
+```
+There was an error when processing the data in the dataset.
+Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError","pbi.error":{"code":"ModelRefresh_ShortMessage_ProcessingError","parameters":{},"details":[{"code":"Message","detail":{"type":1,"value":"We cannot convert the value \"Required Field: 'Enr...\" to type List."}}],"exceptionCulprit":1}}} Table: <TableName>.
+```
+
+A(z) `<TableName>` helyett egy táblanév jelenik meg.
+
+#### <a name="cause"></a>Ok
+
+A **Hatókör** alapértelmezett `Enrollment Number` értéke módosult a Cost Managementhez való csatlakozás során.
+
+#### <a name="solution"></a>Megoldás
+
+Csatlakozzon újra a Cost Managementhez, és állítsa a **Hatókör** értékét a következőre: `Enrollment Number`. Ne adja meg a szervezete regisztrációs számát, inkább írja be a(z) `Enrollment Number` értéket pont úgy, ahogy az alábbi képen megjelenik.
+
+![EA-regisztrációs adatok megadása](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 
 ### <a name="budgetamount-error"></a>BudgetAmount hiba
 

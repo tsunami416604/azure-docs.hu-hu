@@ -5,18 +5,18 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: da16e0898f08e1cca602ca5927bce82ed32353fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 379f7a0ef60020566de9edfcafb0809d1955cac8
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437861"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752142"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához
 
-A felügyelt szolgáltatások és az Azure-használat egyetlen, összevont számlájának biztosítása érdekében a Cloud Solution Provider (CSP) átveheti az Azure-előfizetések számlázási tulajdonjogát a közvetlen Nagyvállalati Szerződéssel (EA) rendelkező ügyfelektől.
+A felügyelt szolgáltatások és az Azure-használat egyetlen, összevont számlájának biztosítása érdekében a felhőszolgáltató (Cloud Solution Provider – CSP) átveheti az Azure-előfizetések számlázási tulajdonjogát a közvetlen Nagyvállalati Szerződéssel (EA) rendelkező ügyfelektől.
 
 Ez a szolgáltatás csak [Azure-beli szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) minősítésű közvetlen felhőszolgáltatói (Cloud Solution Provider) számlázási partnerek számára elérhető. A Microsoft szabályozása és szabályzatai hatálya alá tartozik, és bizonyos ügyfelek esetén felülvizsgálatot és jóváhagyást is igényelhet.
 
@@ -26,57 +26,40 @@ Ez a cikk a Microsoft-partnerszerződések számlázási fiókjaira vonatkozik. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Viszonteladói kapcsolat](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer) létesítése az ügyféllel. A [CSP regionális hitelesítés áttekintésének](https://docs.microsoft.com/partner-center/regional-authorization-overview) ellenőrzése annak megerősítésére, hogy az ügyfél és a partner bérlője is ugyanabban a hitelesített régióban van.  
-
-2. [Annak megerősítése, hogy az ügyfél elfogadta a Microsoft-ügyfélszerződést](https://docs.microsoft.com/partner-center/confirm-customer-agreement)
-
-3. [Azure-csomag](https://docs.microsoft.com/partner-center/purchase-azure-plan) beállítása az ügyfélnek. Ha az ügyfél több viszonteladótól is vásárol, Önnek mindegyik ügyfél-viszonteladó pároshoz be kell állítania az Azure-csomagot.
+1. [Viszonteladói kapcsolat](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer) létesítése az ügyféllel. A [CSP regionális hitelesítés áttekintésének](https://docs.microsoft.com/partner-center/regional-authorization-overview) ellenőrzése annak megerősítésére, hogy az ügyfél és a partner bérlője is ugyanabban a hitelesített régióban van.
+1. [Annak megerősítése, hogy az ügyfél elfogadta a Microsoft-ügyfélszerződést](https://docs.microsoft.com/partner-center/confirm-customer-agreement)
+1. [Azure-csomag](https://docs.microsoft.com/partner-center/purchase-azure-plan) beállítása az ügyfélnek. Ha az ügyfél több viszonteladótól is vásárol, Önnek mindegyik ügyfél-viszonteladó pároshoz be kell állítania az Azure-csomagot.
 
 ## <a name="request-billing-ownership"></a>Számlázási tulajdonjog kérése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a CSP rendszergazdai ügynök hitelesítő adataival.
-
-2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
-
-   ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/mpa-request-ownership/search-cmb.png)
-
-3. Válassza az **Ügyfelek** lehetőséget a bal oldalon, majd válasszon ki egy ügyfelet a listából.
-
-   ![Képernyőkép az ügyfelek kiválasztásáról](./media/mpa-request-ownership/mpa-select-customers.png)        
-
-4. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget, majd az **Új kérelem hozzáadása** elemet.
-
-   ![Képernyőkép az átadási kérelmek kiválasztásáról](./media/mpa-request-ownership/mpa-select-transfer-requests.png)
-
-5. Adja meg az ügyfél szervezete azon felhasználójának e-mail-címét, aki az átadási kérelmet fogadja. A felhasználónak egy Nagyvállalati Szerződéssel rendelkező fiók tulajdonosának kell lennie. Válassza az **Átadási kérelem küldése** lehetőséget.
-
-   ![Képernyőkép egy átadási kérelem küldéséről](./media/mpa-request-ownership/mpa-send-transfer-requests.png)
-
-6. A felhasználó egy e-mailt kap, amely felszólítja az átadási kérelem áttekintéséra.
-
-   ![Képernyőkép egy átadási kérelem áttekintésére felszólító e-mailről](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
-
-7. Az átadási kérelem jóváhagyásához a felhasználó kiválasztja az e-mailben szereplő hivatkozást, és követi az útmutatást.
-
-    ![Képernyőkép egy átadási kérelem áttekintésére felszólító e-mailről](./media/mpa-request-ownership/mpa-review-transfer-request.png)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a CSP rendszergazdai ügynök hitelesítő adataival a CSP-bérlőn.
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
+    ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/mpa-request-ownership/search-cmb.png)
+1. Válassza az **Ügyfelek** lehetőséget a bal oldalon, majd válasszon ki egy ügyfelet a listából.  
+    [![Képernyőkép az ügyfelek kiválasztásáról](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget, majd az **Új kérelem hozzáadása** elemet.  
+    [![Képernyőkép az átadási kérelmek kiválasztásáról](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
+1. Adja meg az ügyfél szervezete azon felhasználójának e-mail-címét, aki az átadási kérelmet fogadja. A felhasználónak egy Nagyvállalati Szerződéssel rendelkező fiók tulajdonosának kell lennie. Válassza az **Átadási kérelem küldése** lehetőséget.  
+    [![Képernyőkép egy átadási kérelem küldéséről](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
+1. A felhasználó egy e-mailt kap, amely felszólítja az átadási kérelem áttekintéséra.  
+    ![Képernyőkép egy átadási kérelem áttekintésére felszólító e-mailről](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
+1. Az átadási kérelem jóváhagyásához a felhasználó kiválasztja az e-mailben szereplő hivatkozást, és követi az útmutatást.  
+    [![Képernyőkép egy átadási kérelem áttekintéséről](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) A felhasználó kiválaszthatja, hogy melyik számlázási fiókból szeretné átadni az Azure-termékeket. A kiválasztást követően megjelennek az átadásra jogosult termékek. **Megjegyzés:** A letiltott előfizetések nem adhatók át, ezek (ha vannak) a „Nem átadható Azure-termékek” listában láthatók. Az átadni kívánt Azure-termékek kiválasztása után válassza az **Érvényesítés** lehetőséget.
+1. Az **Átadás érvényesítésének eredménye** területen megjelenik az átadni kívánt Azure-termékek hatása. A lehetséges állapotok a következők:
+    * **Sikeres** – Az Azure-termék érvényesítése sikerült, a termék átadható.
+    * **Figyelmeztetés** – Figyelmeztetés tartozik a kiválasztott Azure-termékhez. Habár a termék átadható, az átadás hatását mérlegelnie kell a felhasználónak, hogy kockázatcsökkentő műveleteket hajthasson végre. Tegyük fel például, hogy az átadni kívánt Azure-előfizetés megkapja egy fenntartott példány előnyeit. Az átadás után az előfizetés már nem fog részesülni ebben az előnyben. A megtakarítás maximalizálása érdekében ügyeljen arra, hogy a fenntartott példány egy olyan előfizetéshez legyen társítva, amely ki tudja használni az előnyeit. A felhasználó dönthet úgy is, hogy visszatér a kiválasztási oldalra, és törli ennek az Azure-előfizetésnek a kijelölését.
+    * **Sikertelen** – A kiválasztott Azure-termék hiba miatt nem adható át. A felhasználónak vissza kell térnie a kiválasztási oldalra, és törölnie kell ennek a terméknek a jelölését, hogy az egyéb kijelölt Azure-termékek átadását végrehajthassa.  
+    ![Az érvényesítési felületet megjelenítő képernyőkép](./media/mpa-request-ownership/validate-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>Az átadási kérelem állapotának ellenőrzése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-
-2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
-
-   ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
-
-3. Válassza az **Ügyfelek** lehetőséget a bal oldalon.
-
-   ![Képernyőkép az ügyfelek kiválasztásáról](./media/mpa-request-ownership/mpa-select-customers.png)
-
-4. Válassza ki a listából azt az ügyfelet, akire az elküldött átadási kérelem vonatkozik.
-
-5. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget. Az Átadási kérelmek lapon az alábbi információk jelennek meg:
-
-    ![Képernyőkép az átadási kérelmek listájáról](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
+    ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+1. Válassza az **Ügyfelek** lehetőséget a bal oldalon.  
+    [![Képernyőkép az ügyfelek kiválasztásáról](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. Válassza ki a listából azt az ügyfelet, akire az elküldött átadási kérelem vonatkozik.
+1. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget. Az Átadási kérelmek lapon az alábbi információk jelennek meg: [![Képernyőkép az átadási kérelmek listájáról](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
 
    |Oszlop|Meghatározás|
    |---------|---------|
@@ -97,7 +80,7 @@ Ez a cikk a Microsoft-partnerszerződések számlázási fiókjaira vonatkozik. 
    |Megszakítva|Valaki, akinek az átadási kérelemhez hozzáférése volt, megszakította a kérelmet|
    |Elutasítva|A felhasználó elutasította az átadási kérelmet|
 
-6. Válasszon ki egy átadási kérelmet a részletei megtekintéséhez. Az átadási részleteinek lapján az alábbi információk jelennek meg: ![Képernyőkép az átadott kérelmek listájáról](./media/mpa-request-ownership/mpa-transfer-completed.png)
+1. Válasszon ki egy átadási kérelmet a részletei megtekintéséhez. Az átadási részleteinek lapján az alábbi információk jelennek meg: [![Képernyőkép az átadott előfizetések listájáról](./media/mpa-request-ownership/mpa-transfer-completed.png)](./media/mpa-request-ownership/mpa-transfer-completed.png#lightbox)
 
    |Oszlop  |Meghatározás|
    |---------|---------|
@@ -112,10 +95,10 @@ Ez a cikk a Microsoft-partnerszerződések számlázási fiókjaira vonatkozik. 
 
 Az alább felsorolt előfizetés-típusok számlázási tulajdonjogát lehet kérelmezni.
 
-- [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
-- [Microsoft nagyvállalati szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/)
+* [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
+* [Microsoft nagyvállalati szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* A Dev/Test-előfizetést először nagyvállalati (EA-) ajánlattá kell átalakítani egy támogatási jegy létrehozásával. Az Enterprise Dev/Test-előfizetésre az átvitel után használatalapú fizetési díjszabás vonatkozik. A Nagyvállalati Szerződéssel rendelkező ügyfél nagyvállalati Dev/Test-ajánlata részeként kínált kedvezmények nem lesznek elérhetők a CSP-partner számára.
+\* A Dev/Test-előfizetést nagyvállalati (EA-) ajánlattá kell átalakítani egy támogatási jegy létrehozásával. Az Enterprise Dev/Test-előfizetésre az átvitel után használatalapú fizetési díjszabás vonatkozik. A Nagyvállalati Szerződéssel rendelkező ügyfél Enterprise Dev/Test-ajánlata részeként kínált kedvezmények nem lesznek elérhetők a CSP-partner számára.
 
 ## <a name="additional-information"></a>További információ
 
@@ -139,13 +122,13 @@ A felhőszolgáltatók (CSP-k) által kezelt előfizetésekhez elérhető Azure 
 
 ### <a name="azure-reservations-transfer"></a>Azure-foglalások átadása
 
-Az Azure-foglalásokat a rendszer nem helyezi át automatikusan. Megtarthatja a foglalását a Nagyvállalati Szerződésben egyéb előfizetésekhez, vagy [lemondhatja a foglalást](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations), amelyet egy partner újra megvásárolhat a CSP-ben. 
+Az Azure-foglalásokat a rendszer nem helyezi át automatikusan. Megtarthatja a foglalását a Nagyvállalati Szerződésben egyéb előfizetésekhez, vagy [lemondhatja a foglalást](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations), amelyet egy partner újra megvásárolhat a CSP-ben.
 
 ### <a name="access-to-azure-services"></a>Hozzáférés az Azure-szolgáltatásokhoz
 
-A meglévő felhasználók, csoportok vagy szolgáltatásnevek hozzáféréseire, amelyek az [Azure RBAC (szerepköralapú hozzáférés-vezérlés)](../../role-based-access-control/overview.md) segítségével lettek hozzárendelve, az átadás nincs hatással. A partner nem kap új RBAC-hozzáférést az előfizetésekhez.  
+A meglévő felhasználók, csoportok vagy szolgáltatásnevek hozzáféréseire, amelyek az [Azure RBAC (szerepköralapú hozzáférés-vezérlés)](../../role-based-access-control/overview.md) segítségével lettek hozzárendelve, az átadás nincs hatással. A partner nem kap új RBAC-hozzáférést az előfizetésekhez.
 
-A partnereknek együtt kell működniük az ügyféllel, hogy hozzáférjenek az előfizetésekhez.  A partnereknek rendelkezniük kell [Megbízott felügyeleti – AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) vagy [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider)-hozzáféréssel a támogatási jegyek eléréséhez.
+A partnereknek együtt kell működniük az ügyféllel, hogy hozzáférjenek az előfizetésekhez. A partnereknek rendelkezniük kell [Megbízott felügyeleti – AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) vagy [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider)-hozzáféréssel a támogatási jegyek eléréséhez.
 
 ### <a name="azure-support-plan"></a>Azure támogatási csomagot
 
@@ -168,12 +151,13 @@ A SaaS-termékek nem adhatók át az előfizetésekkel együtt. Kérje meg a fel
 Néhány ügyfél átadási kérelme esetében a Microsoft által elvégzett további felülvizsgálati folyamatra lehet szükség az ügyfél aktuális vállalati regisztrációs struktúrájának jellegéből adódóan. A partner értesítést kap az ilyen követelményekről, amikor meghívást küld az ügyfeleknek. A partnerek a partnerfejlesztési vezetőjükkel és az ügyfél fiókkezelési csapatával együttműködve végzik el a felülvizsgálati folyamatot.
 
 ### <a name="azure-subscription-directory"></a>Azure-előfizetés címtára
+
 Az átadott Azure-előfizetések címtárának meg kell egyeznie a CSP-kapcsolat létesítése során kiválasztott ügyfél címtárával.
 
 Ha a két címtár nem egyezik, az előfizetések átadása nem sikerült. Létesítenie kell egy új viszonteladói CSP-kapcsolatot az ügyféllel az Azure-előfizetések címtárának kiválasztásával, vagy módosítania kell az Azure-előfizetések címtárát, hogy az megfeleljen az ügyfél CSP-kapcsolati címtárának. További információ: [Meglévő előfizetés társítása az Azure AD-címtárral](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
 
-
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Microsoft-partnerszerződéshez való hozzáférés ellenőrzése
+
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
@@ -182,6 +166,5 @@ Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálatta
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure-előfizetések számlázási tulajdonjoga átadódik az Önnek. Az ezen előfizetésekre vonatkozó díjak alakulását nyomon követheti az [Azure Portalon](https://portal.azure.com).
-
-- Működjön együtt az ügyféllel, hogy hozzáférjen az átvitt Azure-előfizetésekhez. [Azure-erőforrásokhoz való hozzáférés kezelése RBAC használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+* Az Azure-előfizetések számlázási tulajdonjoga átadódik az Önnek. Az ezen előfizetésekre vonatkozó díjak alakulását nyomon követheti az [Azure Portalon](https://portal.azure.com).
+* Működjön együtt az ügyféllel, hogy hozzáférjen az átvitt Azure-előfizetésekhez. [Azure-erőforrásokhoz való hozzáférés kezelése RBAC használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).

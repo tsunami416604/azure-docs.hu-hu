@@ -14,6 +14,10 @@
       items:
         - name: Mesterséges intelligencia és gépi tanulás
           items:
+            - name: Cognitive Search
+              href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Cognitive Services
+              href: ../../cognitive-services/resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Adatelemzési virtuális gép
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Machine Learning
@@ -40,6 +44,8 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Synapse Analytics
+              href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blokklánc
           items:
             - name: Blokklánc
@@ -130,8 +136,6 @@
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
-            - name: Cognitive Search
-              href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
               href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Oktatóanyagok
@@ -293,6 +297,14 @@
           href: export-template-portal.md
         - name: Erőforrások felfedezése
           href: view-resources.md
+    - name: Sablonok ellenőrzése
+      items:
+        - name: What-if típusú üzembe helyezés
+          href: template-deploy-what-if.md
+        - name: Tesztelési eszközkészlet
+          href: test-toolkit.md
+        - name: Tesztelési esetek
+          href: test-cases.md
     - name: Sablonok üzembe helyezése
       items:
         - name: Üzembe helyezés – portál
@@ -309,8 +321,6 @@
           href: deploy-rest.md
         - name: Üzembe helyezés a GitHubból
           href: deploy-to-azure-button.md
-        - name: What-if típusú üzembe helyezés
-          href: template-deploy-what-if.md
         - name: Újratelepítés hiba esetén
           displayName: rollback
           href: rollback-on-error.md

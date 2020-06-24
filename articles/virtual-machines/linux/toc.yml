@@ -157,8 +157,16 @@
       href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: Alapelvek
   items:
-    - name: Képek
-      href: shared-image-galleries.md
+    - name: Képalkotás
+      items:
+        - name: Áttekintés
+          href: imaging.md
+        - name: Kiépítés
+          href: provisioning.md
+        - name: Megosztott lemezkép-katalógusok
+          href: shared-image-galleries.md
+        - name: Image Builder
+          href: image-builder-overview.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Régiók
@@ -394,7 +402,7 @@
               displayName: Azure Resource Manager
             - name: Hibakódok
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
-    - name: Áttelepítés a klasszikusból Azure Resource Manager-alapú környezetbe
+    - name: Migrálás a klasszikusból Azure Resource Manager-alapú környezetbe
       items:
         - name: 2023. március 1-től kezdődő kivezetések
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -415,6 +423,50 @@
     - name: Rendszerképek használata
       displayName: 'SIG, AMI, image'
       items:
+        - name: Terjesztéstől függő követelmények
+          items:
+            - name: Általános lépések
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: A cloud-init használata
+          items:
+            - name: A cloud-init áttekintése
+              href: using-cloud-init.md
+            - name: Részletes bemutatás
+              href: cloud-init-deep-dive.md
+            - name: Hibaelhárítás
+              href: cloud-init-troubleshooting.md
+            - name: Virtuális gépek állomásnevének konfigurálása
+              href: cloudinit-update-vm-hostname.md
+            - name: Csomagok frissítése virtuális gépeken
+              href: cloudinit-update-vm.md
+            - name: Felhasználó hozzáadása virtuális gépeken
+              href: cloudinit-add-user.md
+            - name: Lapozófájl konfigurálása
+              href: cloudinit-configure-swapfile.md
+            - name: Meglévő bash-szkript futtatása
+              href: cloudinit-bash-script.md
+            - name: Meglévő virtuális gépek előkészítése a cloud-initre
+              href: cloudinit-prepare-custom-image.md
+        - name: 'Rendszerképek létrehozása a következő nélkül:'
+          href: no-agent.md
+        - name: A Linux-ügynök üzembe helyezésének letiltása
+          href: disable-provisioning.md
         - name: Megosztott rendszerkép-katalógusok
           items:
             - name: parancssori felület
@@ -480,8 +532,6 @@
               href: ../image-version-encryption.md
         - name: Rendszerképkészítő (előzetes verzió)
           items:
-            - name: Áttekintés
-              href: image-builder-overview.md
             - name: Az Azure parancssori felület használatával
               href: image-builder.md
             - name: ARM-sablon referenciája
@@ -495,27 +545,7 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Rendszerképek keresése és használata
           href: cli-ps-findimage.md
-        - name: Egyéni kép létrehozása
-          items:
-            - name: Általános lépések
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: Virtuális gép rögzítése rendszerképben
+        - name: Virtuális gép rögzítése felügyelt rendszerképben
           href: capture-image.md
         - name: Rendszerkép összeállítása a Packerrel
           href: build-image-with-packer.md
@@ -813,22 +843,6 @@
               href: /azure/developer/terraform/install-configure
             - name: Teljes virtuális gép létrehozása
               href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
-        - name: Cloud-init
-          items:
-            - name: A cloud-init áttekintése
-              href: using-cloud-init.md
-            - name: Virtuális gépek állomásnevének konfigurálása
-              href: cloudinit-update-vm-hostname.md
-            - name: Csomagok frissítése virtuális gépeken
-              href: cloudinit-update-vm.md
-            - name: Felhasználó hozzáadása virtuális gépeken
-              href: cloudinit-add-user.md
-            - name: Lapozófájl konfigurálása
-              href: cloudinit-configure-swapfile.md
-            - name: Meglévő bash-szkript futtatása
-              href: cloudinit-bash-script.md
-            - name: Meglévő virtuális gépek előkészítése a cloud-initre
-              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: /azure/developer/jenkins/overview
           items:

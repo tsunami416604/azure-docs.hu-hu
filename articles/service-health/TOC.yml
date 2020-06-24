@@ -30,7 +30,9 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: Riasztások küldése az OpsGenie-nek
       href: service-health-alert-webhook-opsgenie.md
-    - name: Erőforrások állapoteseményeire vonatkozó riasztások beállítása
+    - name: Resource Health-riasztások konfigurálása az Azure Portal használatával
+      href: resource-health-alert-monitor-guide.md
+    - name: Resource Health-riasztások konfigurálása Resource Manager-sablonok használatával
       href: resource-health-alert-arm-template-guide.md
 - name: Referencia
   items:

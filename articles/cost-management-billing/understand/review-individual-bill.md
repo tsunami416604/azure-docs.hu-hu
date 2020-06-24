@@ -6,14 +6,14 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: banders
-ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5b0d30d31fbe65360c246282eb2dc2109a541a3f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194143"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888324"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Oktatóanyag: Saját Azure-számla áttekintése
 
@@ -100,7 +100,7 @@ A számla **Használati díjak** szakasza a számlázási időszakban feltüntet
 
 ![A számlán feltüntetett használati díjak](./media/review-individual-bill/invoice-usage-charges.png)
 
-A használati adatokat tartalmazó CSV-fájlban szűrjön a *MeterName* értékre a számlán szereplő megfelelő erőforrás esetében. Ezután adja össze az oszlop elemeinek *Költség* értékeit. Az alábbiakban erre láthat példát.
+A használati adatokat tartalmazó CSV-fájlban szűrjön a *MeterName* értékre a számlán szereplő megfelelő erőforrás esetében. Ezután adja össze az oszlop elemeinek *Költség* értékeit. Íme egy példa, amely a számlán szereplő sorelemnek megfelelő szolgáltatásmérő nevére (P10-lemezek) fókuszál.
 
 ![A használati fájl összegzett értéke a MeterName változó esetében](./media/review-individual-bill/usage-file-usage-charge-resource.png)
 

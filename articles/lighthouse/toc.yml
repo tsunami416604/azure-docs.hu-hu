@@ -69,6 +69,8 @@
         - name: Javítható szabályzat telepítése
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Sentinel-integráció
+      href: ./how-to/manage-sentinel-workspaces.md
     - name: Ügyfélműveletek
       items:
         - name: Szolgáltatók megtekintése és kezelése

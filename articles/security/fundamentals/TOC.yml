@@ -58,6 +58,10 @@
       href: network-best-practices.md
     - name: DDoS Protection
       href: ddos-best-practices.md
+    - name: Értékhiányos DNS és altartomány-átvétel
+      href: subdomain-takeover.md
+    - name: A DDoS Protection biztonsági alapkonfigurációja
+      href: ddos-protection-security-baseline.md
     - name: Biztonságos hibrid hálózati architektúra
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: IaaS-biztonság
@@ -94,6 +98,8 @@
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Ügyfélszéf
       href: customer-lockbox-overview.md
+    - name: Biztonsági alapkonfiguráció az Ügyfélszéfhez
+      href: customer-lockbox-security-baseline.md
 - name: Alkalmazás
   items:
     - name: PaaS
@@ -139,3 +145,5 @@
       href: event-support-ticket.md
     - name: Toll tesztelése
       href: pen-testing.md
+    - name: Azure-tartományok
+      href: azure-domains.md

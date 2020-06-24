@@ -48,6 +48,10 @@
           href: tutorial-assess-physical.md
         - name: Fizikai kiszolgálók migrálása
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: AWS virtuális gépek felmérése és migrálása
+      items:
+        - name: 'Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba'
+          href: tutorial-migrate-aws-virtual-machines.md
     - name: Importált kiszolgálók felmérése a migráláshoz
       items:
         - name: Importált kiszolgálók felmérése a migráláshoz

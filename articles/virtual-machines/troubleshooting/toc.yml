@@ -91,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: Windows Update-problémák
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: Váratlan újraindulás vagy hiba
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: A virtuális gép indítása elakadt
           href: troubleshoot-vm-boot-configure-update.md
         - name: A virtuális gép nem indítható el a Windows Rendszertöltés-vezérlő miatt

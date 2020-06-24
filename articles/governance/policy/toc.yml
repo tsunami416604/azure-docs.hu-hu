@@ -110,12 +110,17 @@
     - name: Szabályzatok létrehozása tömbtulajdonságokhoz
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
-    - name: Vendégkonfigurációs szabályzat létrehozása Windows rendszeren
-      displayName: 'powershell, dsc, chef, windows'
-      href: ./how-to/guest-configuration-create.md
-    - name: Vendégkonfigurációs szabályzat létrehozása Linux rendszeren
-      displayName: 'powershell, dsc, chef, linux'
-      href: ./how-to/guest-configuration-create-linux.md
+    - name: Vendégkonfiguráció
+      items:
+        - name: Vendégkonfigurációs szabályzat létrehozása Windows rendszeren
+          displayName: 'powershell, dsc, chef, windows'
+          href: ./how-to/guest-configuration-create.md
+        - name: Vendégkonfigurációs szabályzat létrehozása Linux rendszeren
+          displayName: 'powershell, dsc, chef, linux'
+          href: ./how-to/guest-configuration-create-linux.md
+        - name: Vendégkonfigurációs szabályzat létrehozása csoportházirendből
+          displayName: 'powershell, dsc, grouppolicy, windows'
+          href: ./how-to/guest-configuration-create-group-policy.md
     - name: Megfelelőségi adatok lekérése
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md
@@ -155,9 +160,9 @@
     - name: Azure PowerShell
       items:
         - name: Szabályzat
-          href: '/powershell/module/az.resources/#policies'
+          href: /powershell/module/az.resources/#policies
         - name: Policy Insights
-          href: '/powershell/module/az.policyinsights#policy_insights'
+          href: /powershell/module/az.policyinsights#policy_insights
         - name: Vendégkonfiguráció
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
     - name: Azure SDK for .NET

@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: Az Azure Kinect DK dokumentációja
+summary: Az Azure Kinect DK egy fejlesztői csomag, amelynek fejlett AI-érzékelői kifinomult számítógépes látástechnológiás és beszédmodelleket nyújtanak. A Kinect fejlett mélységérzékelőt, térbeli mikrofonsort, videokamerát és orientációs érzékelőt tartalmaz, és ez a kompakt kis eszköz számos móddal, beállítással és szoftverfejlesztői készlettel (SDK-k) rendelkezik.
+metadata:
+  title: Az Azure Kinect DK dokumentációja
+  description: Az Azure Kinect DK egy fejlesztői csomag, amelynek fejlett AI-érzékelői kifinomult számítógépes látástechnológiás és beszédmodelleket nyújtanak. A Kinect fejlett mélységérzékelőt, térbeli mikrofonsort, videokamerát és orientációs érzékelőt tartalmaz, és ez a kompakt kis eszköz számos móddal, beállítással és SDK-val rendelkezik.
+  ms.prod: kinect-dk
+  ms.topic: landing-page
+  author: tesych
+  ms.author: tesych
+  ms.date: 03/11/2020
+  ms.openlocfilehash: f1691507d75d6de630f3c5a48cd59c8cc22b5999
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "85277888"
+landingContent:
+- title: Az Azure Kinect DK bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Kinect DK?
+      url: about-azure-kinect-dk.md
+  - linkListType: reference
+    links:
+    - text: Hardverspecifikáció
+      url: hardware-specification.md
+    - text: Rendszerkövetelmények
+      url: system-requirements.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Azure Kinect Sensor SDK
+      url: sensor-sdk-download.md
+    - text: Azure Kinect Body Tracking SDK
+      url: body-sdk-download.md
+  - linkListType: quickstart
+    links:
+    - text: Az Azure Kinect DK beállítása
+      url: set-up-azure-kinect-dk.md
+    - text: Érzékelőstreamek rögzítése fájlba
+      url: record-sensor-streams-file.md
+    - text: Az első Azure Kinect-alkalmazás összeállítása
+      url: build-first-app.md
+    - text: A Body Tracking SDK beállítása
+      url: body-sdk-setup.md
+    - text: Az első testkövetési alkalmazás összeállítása
+      url: build-first-body-app.md
+- title: A Sensor SDK használata
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Keresse meg, majd nyissa meg az eszközt
+      url: find-then-open-device.md
+    - text: Képadatok lekérése
+      url: about-sensor-sdk.md
+    - text: Hozzáférés a mikrofonhoz
+      url: access-mics.md
+    - text: Rögzítés és lejátszás
+      url: record-playback-api.md
+- title: A Body Tracking SDK használata
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Testkövetési eredmények lekérése
+      url: get-body-tracking-results.md
+    - text: Adatok elérése a testkeretben
+      url: access-data-body-frame.md
+- title: Referencia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sensor SDK API
+      url: https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html
+    - text: Body Tracking SDK API
+      url: https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html
+    - text: Vision Service-szolgáltatások
+      url: https://azure.microsoft.com/services/cognitive-services/directory/vision/
+    - text: Beszédszolgáltatások
+      url: https://docs.microsoft.com/azure/cognitive-services/speech-service/

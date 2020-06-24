@@ -59,6 +59,8 @@
           href: automation-config-aws-account.md
         - name: Hitelesítés konfigurálása az Azure AD-vel
           href: automation-use-azure-ad.md
+        - name: Automation által használt DNS-rekord kezelése
+          href: how-to/automation-region-dns-records.md
         - name: Automation-futtatófiók kezelése
           href: manage-runas-account.md
         - name: Szerepköri engedélyek és biztonság kezelése
@@ -282,7 +284,7 @@
         - name: Integrálás az Event Griddel és a Microsoft Teamsszel
           href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md
         - name: Azure-SSIS integrációs modul indításának/leállításának automatizálása
-          href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
+          href: ../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir
 - name: Referencia
   items:
     - name: Azure PowerShell Az

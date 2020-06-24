@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745854"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052160"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -100,7 +100,7 @@ Ha elfogadta egy Azure-előfizetés számlázási tulajdonjogát, javasoljuk, ho
 
 ## <a name="supported-subscription-types"></a>Támogatott előfizetési típusok
 
-Az előfizetések Azure Portalon történő átadása az alábbi előfizetési típusok esetében érhető el. Az átadás lehetősége jelenleg nem támogatott az [ingyenes próba-előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p/) és az [Azure in Open- (AIO-)](https://azure.microsoft.com/offers/ms-azr-0111p/) előfizetések esetében. Áthidaló megoldásért tekintse meg az [erőforrások új erőforráscsoportba vagy előfizetésbe való áthelyezését](../../azure-resource-manager/management/move-resource-group-and-subscription.md) ismertető témakört. Egyéb előfizetések, például [Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) vagy támogatási csomagok átviteléhez [forduljon az Azure ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Az előfizetések Azure Portalon történő átadása az alábbi előfizetési típusok esetében érhető el. Az átadás lehetősége jelenleg nem támogatott az [ingyenes próba-előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p/) és az [Azure in Open- (AIO-)](https://azure.microsoft.com/offers/ms-azr-0111p/) előfizetések esetében. Áthidaló megoldásért tekintse meg az [erőforrások új erőforráscsoportba vagy előfizetésbe való áthelyezését](../../azure-resource-manager/management/move-resource-group-and-subscription.md) ismertető témakört. Egyéb előfizetések, például támogatási csomagok átviteléhez [forduljon az Azure ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 - [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)  
