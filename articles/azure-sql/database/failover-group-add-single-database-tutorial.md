@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 4df537e8cce51cc7358784fc72ef8ae077614df7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 53645b6ba9f1463eac14ea974a17c356c1791db6
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344560"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255313"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Oktatóanyag: Azure SQL Database hozzáadása egy autofeladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -163,7 +163,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá az adatbázist a Pow
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy kiszolgálót Azure SQL Database, amely önálló adatbázisokat és rugalmas készleteket üzemeltet. |
 | [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Tűzfalszabály létrehozása Azure SQL Database-kiszolgálóhoz. |
@@ -195,7 +195,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá az adatbázist az Az
 
 Az oktatóanyag ezen része a következő Azure CLI-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Adatbázisokat és rugalmas készleteket futtató kiszolgálót hoz létre. |
 | [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Létrehoz egy kiszolgáló tűzfalszabály-szabályait. |
@@ -225,7 +225,7 @@ Feladatátvételi teszt a Azure Portal használatával.
 1. Válassza a **feladatátvétel** lehetőséget a feladat ablaktáblán a minta-adatbázist tartalmazó feladatátvételi csoport feladatátvételéhez.
 1. Válassza az **Igen** lehetőséget arra a figyelmeztetésre, amely értesíti, hogy a TDS-munkamenetek le lesznek választva.
 
-   ![Az adatbázist tartalmazó feladatátvételi csoport feladatátvétele az SQL Database-ben](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
+   ![Az adatbázist tartalmazó feladatátvételi csoport feladatátvétele](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
 
 1. Tekintse át, hogy melyik kiszolgáló legyen az elsődleges, és melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie.
 1. Válassza újra a **feladatátvételt** , hogy a kiszolgálók vissza tudják térni az eredeti szerepköreiknek.
@@ -286,7 +286,7 @@ A feladatátvételi csoport visszaállítása az elsődleges kiszolgálóra:
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Lekérdezi vagy felsorolja Azure SQL Database feladatátvételi csoportokat. |
 | [Kapcsoló – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Database feladatátvételi csoport feladatátvételét hajtja végre. |
@@ -320,14 +320,14 @@ A feladatátvételi csoport visszaállítása az elsődleges kiszolgálóra:
 
 Az oktatóanyag ezen része a következő Azure CLI-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az SQL feladatátvételi csoport listája](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Felsorolja a kiszolgálók feladatátvételi csoportjait. |
 | [az SQL feladatátvétel-csoport beállítása – elsődleges](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Állítsa be a feladatátvételi csoport elsődlegesét úgy, hogy az a jelenlegi elsődleges kiszolgáló összes adatbázisát elvégzi. |
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Törölje az erőforrásokat az erőforráscsoport törlésével.
 
@@ -355,7 +355,7 @@ Törölje az erőforráscsoportot a PowerShell használatával.
 
 Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Erőforráscsoport eltávolítása |
 
@@ -371,7 +371,7 @@ Törölje az erőforráscsoportot az Azure CLI használatával.
 
 Az oktatóanyag ezen része a következő Azure CLI-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
@@ -388,7 +388,7 @@ Az oktatóanyag ezen része a következő Azure CLI-parancsmagokat használja:
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy kiszolgálót, amely önálló adatbázisokat és rugalmas készleteket üzemeltet Azure SQL Databaseban. |
@@ -407,7 +407,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Egy előfizetést állít be az aktuális aktív előfizetésre. |
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
@@ -427,7 +427,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 További Azure SQL Database szkriptek itt találhatók: [Azure PowerShell](powershell-script-content-guide.md) és [Azure CLI](az-cli-script-samples-content-guide.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Azure SQL Database-adatbázist adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

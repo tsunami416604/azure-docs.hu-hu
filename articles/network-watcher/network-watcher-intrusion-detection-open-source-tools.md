@@ -8,23 +8,23 @@ author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474925"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737359"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hálózati behatolás-észlelés végrehajtása Network Watcher és nyílt forráskódú eszközökkel
 
 A csomagok rögzítése kulcsfontosságú összetevő a hálózati behatolás-észlelési rendszerek (AZONOSÍTÓk) megvalósításához és a hálózati biztonsági monitorozás (NSM) végrehajtásához. Több nyílt forráskódú azonosító eszköz is feldolgozza a csomagok rögzítését, és megkeresi a lehetséges hálózati behatolások és rosszindulatú tevékenységek aláírásait. A Network Watcher által biztosított csomagok rögzítései segítségével elemezheti a hálózatot az ártalmas behatolások vagy sebezhetőségek tekintetében.
 
-Az egyik ilyen nyílt forráskódú eszköz a Suricata, egy szabályrendszerek használó azonosító motor, amely figyeli a hálózati forgalmat, és riasztást küld, amikor gyanús események történnek. A Suricata többszálas motort kínál, ami azt jelenti, hogy a hálózati forgalom elemzése nagyobb sebességgel és hatékonysággal végezhető. A Suricata és képességeivel kapcsolatos további információkért látogasson el a webhelyére a webhelyén https://suricata-ids.org/.
+Az egyik ilyen nyílt forráskódú eszköz a Suricata, egy szabályrendszerek használó azonosító motor, amely figyeli a hálózati forgalmat, és riasztást küld, amikor gyanús események történnek. A Suricata többszálas motort kínál, ami azt jelenti, hogy a hálózati forgalom elemzése nagyobb sebességgel és hatékonysággal végezhető. A Suricata és képességeivel kapcsolatos további információkért látogasson el a webhelyére a webhelyén https://suricata-ids.org/ .
 
 ## <a name="scenario"></a>Forgatókönyv
 
@@ -48,7 +48,7 @@ Az egyéb telepítési módszerekért látogasson el a következő webhelyre:htt
     sudo sudo apt-get install suricata
     ```
 
-1. A telepítés ellenőrzéséhez futtassa a parancsot `suricata -h` a parancsok teljes listájának megtekintéséhez.
+1. A telepítés ellenőrzéséhez futtassa a parancsot a `suricata -h` parancsok teljes listájának megtekintéséhez.
 
 ### <a name="download-the-emerging-threats-ruleset"></a>A feltörekvő fenyegetések alapszabályának letöltése
 
@@ -80,7 +80,7 @@ Míg a Suricata által előállított naplók értékes információkat tartalma
 
 #### <a name="install-elasticsearch"></a>A Elasticsearch telepítése
 
-1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot `java -version` a verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](https://aka.ms/azure-jdks)dokumentációját.
+1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot a `java -version` verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](https://aka.ms/azure-jdks)dokumentációját.
 
 1. Töltse le a rendszerének megfelelő bináris csomagot:
 
@@ -125,13 +125,13 @@ A rugalmas keresés telepítésével kapcsolatos további információkért teki
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. Ezután be kell állítania a Logstash, hogy beolvassa a Eve. JSON fájl kimenetét. Hozzon létre egy logstash. conf fájlt a használatával:
+1. Ezután be kell állítania a Logstash, hogy beolvassa a fájl eve.jskimenetét. Hozzon létre egy logstash. conf fájlt a használatával:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. Adja hozzá a következő tartalmat a fájlhoz (ellenőrizze, hogy helyes-e a Eve. JSON fájl elérési útja):
+1. Adja hozzá a következő tartalmat a fájlhoz (Győződjön meg arról, hogy a fájl eve.jselérési útja helyes):
 
     ```ruby
     input {
@@ -203,7 +203,7 @@ A rugalmas keresés telepítésével kapcsolatos további információkért teki
     }
     ```
 
-1. Ügyeljen arra, hogy a megfelelő engedélyeket adja a Eve. JSON fájlnak, hogy a Logstash képes legyen a fájl betöltésére.
+1. Ügyeljen arra, hogy a fájlhoz megfelelő engedélyeket adjon a eve.jsnak, hogy a Logstash képes legyen a fájl betöltésére.
     
     ```
     sudo chmod 775 /var/log/suricata/eve.json

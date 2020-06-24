@@ -12,33 +12,69 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 06/12/2019
 ms.author: inhenkel
-ms.openlocfilehash: 9481b4ee2f225c7f76337d73b27630e4c67cc780
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193605"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765012"
 ---
 # <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
 
 Az Azure Media Service videó-, hang-és szöveges szolgáltatásokat biztosít különböző protokollokban. Ha az élő streamet az MPEG-DASH vagy a HLS/CMAF használatával teszi közzé, akkor a videó-és hanganyagokkal együtt a szolgáltatás a IMSC 1.1-kompatibilis TTML-ban továbbítja az átmásolt szöveget. A kézbesítés az MPEG-4 rész 30 (ISO/IEC 14496-30) töredékbe van csomagolva. Ha a kézbesítést HLS/TS-n keresztül használja, a szöveg kidarabolt VTT lesz kézbesítve.
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető az élő átírás egy élő esemény Azure Media Services v3-vel való továbbításakor. A folytatás előtt győződjön meg arról, hogy ismeri a Media Services v3 REST API-k használatát (részletekért tekintse meg [ezt az oktatóanyagot](stream-files-tutorial-with-rest.md) ). Ismernie kell az [élő adatfolyam-továbbítási](live-streaming-overview.md) koncepciót is. Azt javasoljuk, hogy a [streamet a Media Services oktatóanyaggal élő közvetítéssel](stream-live-tutorial-with-api.md) fejezze be.
+Ha az élő átírás be van kapcsolva, a további díjak érvényesek. Tekintse át a díjszabási információkat a [Media Services díjszabási oldalának](https://azure.microsoft.com/pricing/details/media-services/)élő videó szakaszában.
 
-> [!NOTE]
-> Jelenleg az élő átírás csak előzetes verzióként érhető el az USA 2. nyugati régiójában. Támogatja az angol nyelvű szöveg átírását. Az ehhez a szolgáltatáshoz tartozó API-hivatkozás az alábbi – mert előzetes verzióban érhető el, a részletek nem érhetők el a REST-dokumentumokban.
+Ez a cikk azt ismerteti, hogyan engedélyezhető az élő átírás egy élő esemény Azure Media Services használatával való továbbításakor. A folytatás előtt győződjön meg arról, hogy ismeri a Media Services v3 REST API-k használatát (részletekért tekintse meg [ezt az oktatóanyagot](stream-files-tutorial-with-rest.md) ). Ismernie kell az [élő adatfolyam-továbbítási](live-streaming-overview.md) koncepciót is. Azt javasoljuk, hogy a [streamet a Media Services oktatóanyaggal élő közvetítéssel](stream-live-tutorial-with-api.md) fejezze be.
 
-## <a name="creating-the-live-event"></a>Az élő esemény létrehozása
+## <a name="live-transcription-preview-regions-and-languages"></a>Élő átiratok előzetes verziójának régiói és nyelvei
 
-Az élő esemény létrehozásához a PUT műveletet a 2019-05-01-Preview verzióra kell elküldeni, például:
+Az élő átírás a következő régiókban érhető el:
+
+- Délkelet-Ázsia
+- Nyugat-Európa
+- Észak-Európa
+- USA keleti régiója
+- USA középső régiója
+- USA déli középső régiója
+- USA nyugati régiója, 2.
+- Dél-Brazília
+
+Ez az elérhető nyelveket tartalmazó lista, az API-ban használt nyelvi kód használatával.
+
+| Nyelv | Nyelvkód |
+| -------- | ------------- |
+| Katalán  | ca-ES |
+| Dán (Dánia) | da-DK |
+| Német (Németország) | de-DE |
+| Angol (Ausztrália) | EN-AU |
+| Angol (Kanada) | en-CA |
+| angol (Egyesült Királyság) | en-GB |
+| Angol (India) | EN-IN |
+| Angol (Új-Zéland) | EN-NZ |
+| angol (Egyesült Államok) | en-US |
+| Spanyol (Spanyolország) | es-ES |
+| Spanyol (Mexikó) | es-MX |
+| Finn (Finnország) | fi-FI |
+| Francia (Kanada) | fr – CA |
+| Francia (Franciaország) | fr-FR |
+| Olasz (Olaszország) | it-IT |
+| Holland (Hollandia) | nl-NL |
+| Portugál (Brazília) | pt-BR |
+| Portugál (Portugália) | pt-PT |
+| Svéd (Svédország) | sv-SE |
+
+## <a name="create-the-live-event-with-live-transcription"></a>Élő esemény létrehozása élő átírással
+
+Ha az átírás bekapcsolásával élő eseményt szeretne létrehozni, küldje el a PUT műveletet a 2019-05-01-Preview API-verzióval, például:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-A művelet a következő törzstel rendelkezik (ahol egy átmenő élő esemény jön létre az RTMP-vel a betöltési protokollként). Vegye figyelembe a transzkripciós tulajdonság hozzáadását. A nyelvhez csak az en-US engedélyezett érték adható meg.
+A művelet a következő törzstel rendelkezik (ahol egy átmenő élő esemény jön létre az RTMP-vel a betöltési protokollként). Vegye figyelembe a transzkripciós tulajdonság hozzáadását.
 
 ```
 {
@@ -88,14 +124,14 @@ A művelet a következő törzstel rendelkezik (ahol egy átmenő élő esemény
 }
 ```
 
-Lekérdezheti az élő esemény állapotát, amíg a "Running" állapotba nem kerül, ami azt jelzi, hogy most már küldhet egy, az RTMP-hírcsatornát is. Mostantól ugyanazok a lépések láthatók, mint az oktatóanyagban, például az előnézeti hírcsatorna ellenőrzése és az élő kimenetek létrehozása.
+## <a name="start-or-stop-transcription-after-the-live-event-has-started"></a>Az élő esemény elindítása után az átirat elindítása vagy leállítása
 
-## <a name="start-transcription-after-live-event-has-started"></a>Átírás az élő esemény elindítása után
+Elindíthatja és leállíthatja az élő átírást, miközben az élő esemény fut állapotban van. Az élő események elindításával és leállításával kapcsolatos további információkért olvassa el a [Media Services V3 API](media-services-apis-overview.md#long-running-operations)-kkal végzett fejlesztés a hosszan futó műveletek című szakaszát.
 
-Az élő átírást egy élő esemény megkezdése után indíthatja el. Az élő átírások bekapcsolásához javítja az élő eseményt, hogy tartalmazza az "átiratok" tulajdonságot. Az élő átírások kikapcsolásához az "átiratok" tulajdonság el lesz távolítva az élő esemény objektumból.
+Az élő átírások bekapcsolásához vagy az átírási nyelv frissítéséhez az élő eseményt az "átiratok" tulajdonsággal együtt kell megadnia. Az élő átírások kikapcsolásához távolítsa el a "átiratok" tulajdonságot az élő esemény objektumból.  
 
 > [!NOTE]
-> Ha az élő esemény során többször is be-vagy kikapcsolja az átírást, nem támogatott a forgatókönyv.
+> **Ha** az élő esemény során többször is be-vagy kikapcsolja az átírást, nem támogatott a forgatókönyv.
 
 Ez az élő átírások bekapcsolására szolgáló példa.
 
@@ -160,10 +196,8 @@ Tekintse át a [dinamikus csomagolás áttekintése című](dynamic-packaging-ov
 
 Az előzetes verzióban az alábbi ismert problémák állnak az élő átirattal:
 
-* A szolgáltatás csak az USA 2. nyugati régiójában érhető el.
-* Az alkalmazásoknak az előnézeti API-kat kell használniuk, amelyeket a [Media Services v3 OpenAPI-specifikáció](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)ismertet.
-* Az egyetlen támogatott nyelv az angol (en-US).
-* A tartalomvédelem csak az AES-borítékok titkosítását támogatja.
+- Az alkalmazásoknak az előnézeti API-kat kell használniuk, amelyeket a [Media Services v3 OpenAPI-specifikáció](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)ismertet.
+- A digitális jogkezelési (DRM) védelem nem vonatkozik a szöveges nyomon követésre, csak az AES-borítékok titkosítása lehetséges.
 
 ## <a name="next-steps"></a>További lépések
 

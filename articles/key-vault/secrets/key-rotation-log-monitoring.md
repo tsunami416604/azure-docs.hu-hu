@@ -10,16 +10,16 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a5aaef50f12bfec89cf5e883ed6b1c85fa984ad6
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 1e8a2bc6f9a8103440b68f2e8d2de9328ed00145
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995971"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118610"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault beállítása a kulcsfontosságú rotációs és naplózási szolgáltatással
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A Key Vault használata után elkezdheti a kulcsok és titkok tárolására. Az alkalmazásai többé nem kell megőrizniük a kulcsokat vagy a titkokat, de igény szerint kérhetik őket a tárból. A Key Vault lehetővé teszi a kulcsok és a titkos kódok frissítését anélkül, hogy az hatással lenne az alkalmazás viselkedésére, ami a kulcs-és titkos felügyeleti lehetőségek széles körét nyitja meg.
 
@@ -127,7 +127,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-Az alkalmazás kódjában hozzon létre egy osztályt a Azure Active Directory-hitelesítés metódusának tárolására. Ebben a példában ez az osztály **utils**. Adja hozzá a `using` következő utasítást:
+Az alkalmazás kódjában hozzon létre egy osztályt a Azure Active Directory-hitelesítés metódusának tárolására. Ebben a példában ez az osztály **utils**. Adja hozzá a következő `using` utasítást:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -169,9 +169,6 @@ var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 Ha futtatja az alkalmazást, most hitelesítenie kell Azure Active Directory, majd le kell kérnie a titkos értéket a Azure Key Vault.
 
 ## <a name="key-rotation-using-azure-automation"></a>Kulcs elforgatása Azure Automation használatával
-
-> [!IMPORTANT]
-> Azure Automation runbookok továbbra is szükség van a `AzureRM` modul használatára.
 
 Most már készen áll egy rotációs stratégia beállítására a Key Vault titokként tárolt értékekhez. A titkok több módon is elforgathatók:
 
@@ -273,14 +270,14 @@ A következő lépés [egy Azure Service Bus üzenetsor létrehozása](../../ser
 
 1. Hozzon létre egy Service Bus névteret (ha már rendelkezik egy használni kívánttal, ugorjon a 2. lépésre).
 2. Keresse meg a Azure Portal Service Bus példányát, és válassza ki azt a névteret, amelyben létre kívánja hozni a várólistát.
-3. Válassza az **erőforrás** > létrehozása**Vállalati integráció** > **Service Bus**lehetőséget, majd adja meg a szükséges adatokat.
+3. Válassza az **erőforrás létrehozása**  >  **Vállalati integráció**  >  **Service Bus**lehetőséget, majd adja meg a szükséges adatokat.
 4. Keresse meg a Service Bus a kapcsolatok adatait a névtér kiválasztásával, majd a **kapcsolatok adatainak**kiválasztásával. Ezekre az információkra szüksége lesz a következő szakaszhoz.
 
 Ezután [hozzon létre egy Azure-függvényt](../../azure-functions/functions-create-first-azure-function.md) a Key Vault-naplók lekérdezéséhez a Storage-fiókon belül, és vegyen fel új eseményeket. Ezt a függvényt egy ütemezett időpontban indítja el a rendszer.
 
 Azure Function-alkalmazás létrehozásához válassza az **erőforrás létrehozása**lehetőséget, keresse meg a piactéren a **függvényalkalmazás**, majd válassza a **Létrehozás**lehetőséget. A létrehozás során használhat egy meglévő üzemeltetési csomagot, vagy létrehozhat egy újat. Dönthet úgy is, hogy dinamikus üzemeltetést végez. További információ a Azure Functions üzemeltetési lehetőségeiről: [Azure functions skálázása](../../azure-functions/functions-scale.md).
 
-Az Azure Function alkalmazás létrehozása után nyissa meg a következőt:, és válassza ki az **időzítő** forgatókönyvet, és a **C betűt\# ** a nyelvhez. Ezután válassza **a függvény létrehozása**lehetőséget.
+Az Azure Function alkalmazás létrehozása után nyissa meg a következőt:, és válassza ki az **időzítő** forgatókönyvet, és a **C betűt \# ** a nyelvhez. Ezután válassza **a függvény létrehozása**lehetőséget.
 
 ![Azure Functions Start panel](../media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -400,15 +397,15 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 A függvény felveszi a legújabb naplófájlt abból a Storage-fiókból, ahol a Key Vault-naplók meg vannak írva, megragadja a fájl legutóbbi eseményeit, és leküldi őket egy Service Bus-várólistára. 
 
-Mivel egyetlen fájl több eseménnyel is rendelkezhet, létre kell hoznia egy Sync. txt fájlt, amelyet a függvény a legutóbbi esemény időbélyegének meghatározására is rákeres. A fájl használata biztosítja, hogy ne kelljen többször leküldeni ugyanazt az eseményt. 
+Mivel egyetlen fájl több eseménnyel is rendelkezhet, létre kell hoznia egy sync.txt fájlt, amelyet a függvény a legutóbbi esemény időbélyegének meghatározására is rákeres. A fájl használata biztosítja, hogy ne kelljen többször leküldeni ugyanazt az eseményt. 
 
-A Sync. txt fájl a legutóbbi esemény időbélyegzőjét tartalmazza. A naplók betöltését követően a rendszer az időbélyegük alapján rendezi a naplókat, hogy a megfelelő sorrendben legyenek rendezve.
+A sync.txt fájl a legutóbbi esemény időbélyegzőjét tartalmazza. A naplók betöltését követően a rendszer az időbélyegük alapján rendezi a naplókat, hogy a megfelelő sorrendben legyenek rendezve.
 
 Ebben a függvényben egy pár további, a Azure Functions található dobozból nem elérhető függvénytárra hivatkozunk. A kódtárak felvételéhez Azure Functions kell őket a NuGet használatával történő lekéréséhez. A **kód** mezőben válassza a **fájlok megtekintése**lehetőséget.
 
 !["Fájlok megtekintése" lehetőség](../media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
-Vegyen fel egy Project. JSON nevű fájlt a következő tartalommal:
+Vegyen fel egy project.jsnevű fájlt a következő tartalommal:
 
 ```json
     {
@@ -425,11 +422,11 @@ Vegyen fel egy Project. JSON nevű fájlt a következő tartalommal:
 
 A **Mentés**gombra kattintva Azure functions letölti a szükséges bináris fájlokat.
 
-Váltson az **integráció** lapra, és adjon meg egy értelmes nevet a függvényen belül. Az előző kódban a függvény a *myTimer*nevű időzítőt várja. A következőképpen adja meg az időzítőhöz tartozó [cron](../../app-service/webjobs-create.md#CreateScheduledCRON) - `0 * * * * *`kifejezést:. Ez a kifejezés azt eredményezi, hogy a függvény percenként egyszer fut.
+Váltson az **integráció** lapra, és adjon meg egy értelmes nevet a függvényen belül. Az előző kódban a függvény a *myTimer*nevű időzítőt várja. A következőképpen adja meg az időzítőhöz tartozó [cron-kifejezést](../../app-service/webjobs-create.md#CreateScheduledCRON) : `0 * * * * *` . Ez a kifejezés azt eredményezi, hogy a függvény percenként egyszer fut.
 
-Az **integráció** lapon adja meg az **Azure Blob Storage**típus bemenetét. Ez a bemenet arra a Sync. txt fájlra mutat, amely a függvény által a legutóbbi esemény időbélyegét tartalmazza. Ez a bemenet a függvényen belül lesz elérhető a paraméter nevével. Az előző kódban az Azure Blob Storage-bemenet a *inputBlob*paraméter nevét várja. Válassza ki azt a Storage-fiókot, ahol a Sync. txt fájl található (ez lehet ugyanaz vagy egy másik Storage-fiók). Az elérési út mezőben adja meg a fájl elérési útját a `{container-name}/path/to/sync.txt`következő formátumban:.
+Az **integráció** lapon adja meg az **Azure Blob Storage**típus bemenetét. Ez a bemenet arra a sync.txt fájlra mutat, amely a függvény által a legutóbbi esemény időbélyegét tartalmazza. Ez a bemenet a függvényen belül lesz elérhető a paraméter nevével. Az előző kódban az Azure Blob Storage-bemenet a *inputBlob*paraméter nevét várja. Válassza ki azt a Storage-fiókot, ahol a sync.txt fájl található (ez lehet ugyanaz vagy egy másik Storage-fiók). Az elérési út mezőben adja meg a fájl elérési útját a következő formátumban: `{container-name}/path/to/sync.txt` .
 
-Adja hozzá az **Azure Blob Storage**típusú kimenetet. Ez a kimenet a bemenetben megadott Sync. txt fájlra mutat. Ezt a kimenetet a függvény a legutóbbi esemény időbélyegének megírására használja. Az előző kód azt várja, hogy ezt a paramétert *outputBlob*nevezzük.
+Adja hozzá az **Azure Blob Storage**típusú kimenetet. Ez a kimenet a bemenetben megadott sync.txt fájlra mutat. Ezt a kimenetet a függvény a legutóbbi esemény időbélyegének megírására használja. Az előző kód azt várja, hogy ezt a paramétert *outputBlob*nevezzük.
 
 A függvény most már készen áll. Ügyeljen arra, hogy a **fejlesztés** lapra váltson vissza, és mentse a kódot. A fordítási hibákért tekintse meg a kimeneti ablakot, és szükség szerint javítsa ki azokat. Ha a kód fordítása megtörtént, a kódnak most be kell néznie a Key Vault-naplókat percenként, és minden új eseményt be kell tolnia a megadott Service Bus várólistára. A naplózási információkat a függvény minden indításakor a napló ablakba kell írni.
 
@@ -437,7 +434,7 @@ A függvény most már készen áll. Ügyeljen arra, hogy a **fejlesztés** lapr
 
 Ezután létre kell hoznia egy Azure Logic app-alkalmazást, amely felveszi a függvény által az Service Bus várólistára irányuló eseményeket, elemzi a tartalmat, és egy megegyező feltétel alapján küld e-mailt.
 
-[Hozzon létre egy logikai alkalmazást](../../logic-apps/quickstart-create-first-logic-app-workflow.md) az **erőforrás** > -**integrációs** > **logikai alkalmazás**létrehozása lehetőség kiválasztásával.
+[Hozzon létre egy logikai alkalmazást](../../logic-apps/quickstart-create-first-logic-app-workflow.md) az **erőforrás**-  >  **integrációs**  >  **logikai alkalmazás**létrehozása lehetőség kiválasztásával.
 
 A logikai alkalmazás létrehozása után nyissa meg a elemet, és válassza a **Szerkesztés**lehetőséget. A Logic app Editorban válassza a **Service Bus üzenetsor** lehetőséget, és adja meg a Service Bus hitelesítő adatait, hogy az a várólistához kapcsolódjon.
 

@@ -2,26 +2,26 @@
 title: Az alkalmazások Azure Active Directoryba való áttelepítéséhez szükséges erőforrások | Microsoft Docs
 description: Az alkalmazások hozzáférésének és hitelesítésének Azure Active Directory (Azure AD) szolgáltatásba való áttelepíteni kívánt erőforrások.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/29/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3fe21b6509080e88c63d9c02c8116f3882fb64dd
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968724"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763108"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Az alkalmazások Azure Active Directoryba való áttelepítéséhez szükséges erőforrások
 
-Az alkalmazások hozzáférésének és hitelesítésének Azure Active Directory (Azure AD) szolgáltatásba való áttelepíteni kívánt erőforrások. Végezze el ezt ahttps://aka.ms/AppsMigrationFeedback) rövid kérdőívet (hogy visszajelzést kapjon az alkalmazások Azure ad-be történő áttelepítésével kapcsolatban (beleértve az áttelepítésre szolgáló blokkolók, az eszközök és a útmutatás szükségességét, vagy a helyszíni identitásszolgáltató megőrzésének okait). 
+Az alkalmazások hozzáférésének és hitelesítésének Azure Active Directory (Azure AD) szolgáltatásba való áttelepíteni kívánt erőforrások. Végezze el ezt a rövid kérdőívet ( https://aka.ms/AppsMigrationFeedback) hogy visszajelzést kapjon az alkalmazások Azure ad-be történő áttelepítésével kapcsolatban (beleértve az áttelepítésre szolgáló blokkolók, az eszközök és a útmutatás szükségességét, vagy a helyszíni identitásszolgáltató megőrzésének okait). 
 
 | Erőforrás  | Leírás  |
 |:-----------|:-------------|

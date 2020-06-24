@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: tracking-python
-ms.openlocfilehash: 4722e8adadf59f8a4ad7b36a73fad5a6cff3370f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3b5c48053f7015e2bd46045d376cde27ca07d4a7
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560877"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907040"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>A Twilio használata a hang-és SMS-funkciókhoz a Pythonban
 Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
@@ -62,10 +62,12 @@ A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelye
 
 Példaként a következő TwiML konvertálja a szöveget **"Helló világ!" alkalmazás** beszédre.
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-      <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+  <Response>
+    <Say>Hello World</Say>
+  </Response>
+```
 
 Amikor az alkalmazás meghívja a Twilio API-t, az egyik API-paraméter az a URL-cím, amely a TwiML választ adja vissza. A Twilio által biztosított URL-címek segítségével megadhatja az alkalmazások által használt TwiML-válaszokat. Saját URL-címeket is tárolhat a TwiML-válaszok létrehozásához, és egy másik lehetőség az objektum használata `TwiMLResponse` .
 
@@ -100,17 +102,17 @@ Az alkalmazás két módon konfigurálható a Pythonhoz készült Twilio-függv�
 
 * Telepítse a Python Twilio-kódtárat pip-csomagként. A következő parancsokkal telepíthető:
    
-        $ pip install twilio
+  `$ pip install twilio`
 
     -VAGY-
 
 * Töltse le a Pythonhoz készült Twilio-kódtárat a GitHubról ( [https://github.com/twilio/twilio-python][twilio_python] ), és telepítse a következőhöz hasonló módon:
 
-        $ python setup.py install
+  `$ python setup.py install`
 
 Miután telepítette a Pythonhoz készült Twilio-kódtárat, a `import` Python-fájlokban is elvégezheti a következőket:
 
-        import twilio
+  `import twilio`
 
 További információ: [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md).
 

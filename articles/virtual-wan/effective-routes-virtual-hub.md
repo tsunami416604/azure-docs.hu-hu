@@ -4,15 +4,15 @@ description: Az Azure Virtual WAN-ban lévő virtuális központ tényleges útv
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7f0785f8ce2528d0c17a8aca520212df931bf394
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c7d436f2aecb021a7848ef0455a3f1c834cc38c1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343370"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750553"
 ---
 # <a name="view-effective-routes-of-a-virtual-hub"></a>Virtuális központ tényleges útvonalának megtekintése
 
@@ -67,6 +67,6 @@ A virtuális központ képes propagálni egy megtanult alapértelmezett útvonal
 
 Az alapértelmezett útvonal nem a virtuális WAN-hubhoz származik. A rendszer az alapértelmezett útvonalat propagálja, ha a virtuális WAN-központ már megismerte a tűzfal központi telepítésének eredményeképpen, vagy ha egy másik csatlakoztatott hely esetében engedélyezve van a bújtatás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).

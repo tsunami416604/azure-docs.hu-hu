@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: 0f7e210c0818bd317f8e69ebed28301fd9b06dc0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: d169c638869cd9488605117552c9017dfd10c911
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263873"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118321"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Gyors útmutató: Azure Cosmos-fiók,-adatbázis,-tároló és-elemek létrehozása a Azure Portal
 
@@ -42,9 +42,9 @@ Azure-előfizetés vagy ingyenes Azure Cosmos DB próbaverziós fiók
 
 Azure Cosmos DB-fiók létrehozásához nyissa meg a [Azure Portal](https://portal.azure.com/) . Keresse meg és válassza az **Azure Cosmos DB** lehetőséget.
 
-   ![Az Azure Portal Adatbázisok panelje](./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png)
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Az Azure Portal Adatbázisok panelje":::
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 1. A **Azure Cosmos db fiók létrehozása** lapon adja meg az új Azure Cosmos-fiók alapszintű beállításait. 
 
     |Beállítás|Érték|Leírás |
@@ -64,17 +64,17 @@ Azure Cosmos DB-fiók létrehozásához nyissa meg a [Azure Portal](https://port
 > [!NOTE]
 > Az Azure-előfizetések esetében akár egy ingyenes szintű Azure Cosmos DB fiókot is beállíthat, és a fiók létrehozásakor be kell jelentkeznie. Ha nem látja az ingyenes csomagra vonatkozó kedvezményt, ez azt jelenti, hogy az előfizetés egy másik fiókja már engedélyezve van az ingyenes szinten.
    
-   ![Az Azure Cosmos DB új fiók lapja](./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png)
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Az Azure Cosmos DB új fiók lapja":::
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Kihagyhatja a **hálózat** és a **címkék** szakaszt.
 
 1. Tekintse át a Fiókbeállítások beállítást, majd kattintson a **Létrehozás**gombra. A fiók létrehozása néhány percet vesz igénybe. Várjon, amíg befejeződik a portál oldalának megjelenítése a **központi telepítés befejezéséhez**. 
 
-    ![Az Azure Portal Értesítések panelje](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png)
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Az Azure Portal Értesítések panelje":::
 
 1. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa a Azure Cosmos db fiók lapot. 
 
-    ![A Azure Cosmos DB fiók lapja](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png)
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="A Azure Cosmos DB fiók lapja":::
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Adatbázis és tároló hozzáadása 
@@ -85,7 +85,7 @@ Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezel
     
     Előfordulhat, hogy a **tároló hozzáadása** ablak megjelenítéséhez jobbra kell görgetni.
     
-    ![Az Azure Portal Adatkezelője a Tároló hozzáadása panellel](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Az Azure Portal Adatkezelője a Tároló hozzáadása panellel":::
     
 1.  A **tároló hozzáadása** panelen adja meg az új tároló beállításait.
     
@@ -99,7 +99,7 @@ Adatbázis és tároló létrehozásához használhatja a Azure Portal Adatkezel
     
     Ne adjon **egyedi kulcsokat** ehhez a példához. Az egyedi kulcsok lehetővé teszik adatintegritási réteg hozzáadását az adatbázishoz, ha a partíciós kulcs egy vagy több értékének egyediségét biztosítja. További információ: [Azure Cosmos DBban található egyedi kulcsok](unique-keys.md).
     
-1.  Kattintson az **OK** gombra. A Adatkezelő megjeleníti az új adatbázist és a létrehozott tárolót.
+1.  Válassza az **OK** lehetőséget. A Adatkezelő megjeleníti az új adatbázist és a létrehozott tárolót.
 
 ## <a name="add-data-to-your-database"></a>Adatbevitel az adatbázisba
 
@@ -107,7 +107,7 @@ Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
 
 1. A **adatkezelő**bontsa ki a **ToDoList** -adatbázist, és bontsa ki az **elemek** tárolót. Ezután válassza az **elemek elemet**, majd válassza az **új elem elemet**. 
    
-   ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Új dokumentumok létrehozása az Azure Portal Adatkezelőjében":::
    
 1. Adja hozzá a következő struktúrát a dokumentumhoz a **dokumentumok** ablaktábla jobb oldalán:
 
@@ -123,7 +123,7 @@ Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
 
 1. Kattintson a **Mentés** gombra.
    
-   ![Másolja a JSON-adatfájlt, és válassza a Mentés Adatkezelő a Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Másolja a JSON-adatfájlt, és válassza a Mentés Adatkezelő a Azure Portal":::
    
 1. Válassza újra az **új dokumentumot** , és hozzon létre és mentsen egy másik `id` , egyedi, valamint a kívánt tulajdonságokkal és értékekkel rendelkező dokumentumot. A dokumentumok bármilyen struktúrával rendelkezhetnek, mivel Azure Cosmos DB nem ró sémát az adataira.
 
@@ -131,7 +131,7 @@ Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
 
 [!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)] 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

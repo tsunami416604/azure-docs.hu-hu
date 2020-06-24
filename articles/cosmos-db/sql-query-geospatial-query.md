@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 08b12bd9d35aaa61c79d35a55068983cdc0f1b83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77566321"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764978"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatbázis lekérdezése Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan lehet lekérdezni a térinformatikai adataikat Azure
 
 Itt találja a Azure Cosmos DB lekérdezéséhez hasznos térinformatikai rendszerfunkciók listáját:
 
-|**Használati**|**Leírás**|
+|**Használat**|**Leírás**|
 |---|---|
 | ST_DISTANCE (spatial_expr, spatial_expr) | A két GeoJSON pont, a sokszög vagy a LineString kifejezés közötti távolságot adja vissza.|
 |ST_WITHIN (spatial_expr, spatial_expr) | Egy logikai kifejezést ad vissza, amely azt jelzi, hogy az első GeoJSON objektum (pont, sokszög vagy LineString) a második GeoJSON objektumon (pont, sokszög vagy LineString) belül van-e.|
@@ -29,14 +29,14 @@ Itt találja a Azure Cosmos DB lekérdezéséhez hasznos térinformatikai rendsz
 |ST_ISVALID| Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott GeoJSON pont, sokszög vagy LineString kifejezés érvényes-e.|
 | ST_ISVALIDDETAILED| Egy logikai értéket tartalmazó JSON-értéket ad vissza, ha a megadott GeoJSON pont, sokszög vagy LineString kifejezés érvényes. Ha érvénytelen, a rendszer karakterlánc-értékként adja vissza az okot.|
 
-A térbeli függvények használatával közelségi lekérdezéseket végezhet a térbeli adatokon. Például egy olyan lekérdezés, amely az összes olyan családi dokumentumot adja vissza, amely a megadott hely 30 km-n belül `ST_DISTANCE` található a beépített függvénnyel.
+A térbeli függvények használatával közelségi lekérdezéseket végezhet a térbeli adatokon. Például egy olyan lekérdezés, amely az összes olyan családi dokumentumot adja vissza, amely a megadott hely 30 km-n belül található a `ST_DISTANCE` beépített függvénnyel.
 
 **Lekérdezés**
 
 ```sql
     SELECT f.id
     FROM Families f
-    WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
+    WHERE ST_DISTANCE(f.location, {"type": "Point", "coordinates":[31.9, -4.8]}) < 30000
 ```
 
 **Results (Eredmények)**
@@ -51,7 +51,7 @@ Ha a térbeli indexelést az indexelési házirend tartalmazza, akkor a "távols
 
 `ST_WITHIN`a használatával ellenőrizhető, hogy egy pont egy Sokszögen belül található-e. A gyakran használt sokszögek olyan határokat jelölnek, mint például a zip-kódok, az állami határok vagy a természetes képződmények. Ha a térbeli indexelést is tartalmazza az indexelési házirendben, a "belül" lekérdezéseket a rendszer hatékonyan kézbesíti az indexen keresztül.
 
-A-ben `ST_WITHIN` a sokszög argumentumai csak egyetlen gyűrűt tartalmazhatnak, azaz a sokszög nem tartalmazhat lyukakat bennük.
+A-ben a sokszög argumentumai `ST_WITHIN` csak egyetlen gyűrűt tartalmazhatnak, azaz a sokszög nem tartalmazhat lyukakat bennük.
 
 **Lekérdezés**
 
@@ -59,8 +59,8 @@ A-ben `ST_WITHIN` a sokszög argumentumai csak egyetlen gyűrűt tartalmazhatnak
     SELECT *
     FROM Families f
     WHERE ST_WITHIN(f.location, {
-        'type':'Polygon',
-        'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
+        "type":"Polygon",
+        "coordinates": [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
     })
 ```
 
@@ -73,7 +73,7 @@ A-ben `ST_WITHIN` a sokszög argumentumai csak egyetlen gyűrűt tartalmazhatnak
 ```
 
 > [!NOTE]
-> Hasonlóan ahhoz, ahogyan a nem egyező típusok működnek Azure Cosmos DB lekérdezésekben, ha az argumentumban megadott Helykód helytelen formátumú vagy érvénytelen, akkor a rendszer nem **definiált** értékre értékeli, és a kiértékelt dokumentumot kihagyja a lekérdezés eredményeiből. Ha a lekérdezés nem ad vissza találatot, `ST_ISVALIDDETAILED` futtassa a parancsot a (z) parancs futtatásával, hogy miért érvénytelen a térbeli típus.
+> Hasonlóan ahhoz, ahogyan a nem egyező típusok működnek Azure Cosmos DB lekérdezésekben, ha az argumentumban megadott Helykód helytelen formátumú vagy érvénytelen, akkor a rendszer nem **definiált** értékre értékeli, és a kiértékelt dokumentumot kihagyja a lekérdezés eredményeiből. Ha a lekérdezés nem ad vissza találatot, futtassa a parancsot a (z) parancs futtatásával, `ST_ISVALIDDETAILED` hogy miért érvénytelen a térbeli típus.
 >
 >
 
@@ -84,7 +84,7 @@ A Azure Cosmos DB támogatja az inverz lekérdezések végrehajtását is, azaz 
 ```sql
     SELECT *
     FROM Areas a
-    WHERE ST_WITHIN({'type': 'Point', 'coordinates':[31.9, -4.8]}, a.location)
+    WHERE ST_WITHIN({"type": "Point", "coordinates":[31.9, -4.8]}, a.location)
 ```
 
 **Results (Eredmények)**
@@ -99,7 +99,7 @@ A Azure Cosmos DB támogatja az inverz lekérdezések végrehajtását is, azaz 
     }]
 ```
 
-`ST_ISVALID`és `ST_ISVALIDDETAILED` használható annak ellenőrzéséhez, hogy a térbeli objektum érvényes-e. Például a következő lekérdezés ellenőrzi egy pont érvényességét egy tartományon kívüli szélességi értékkel (-132,8). `ST_ISVALID`csak egy logikai értéket ad vissza, `ST_ISVALIDDETAILED` és visszaadja a logikai értéket, és egy olyan karakterláncot, amely az OK okának okát tartalmazza.
+`ST_ISVALID`és használható `ST_ISVALIDDETAILED` annak ellenőrzéséhez, hogy a térbeli objektum érvényes-e. Például a következő lekérdezés ellenőrzi egy pont érvényességét egy tartományon kívüli szélességi értékkel (-132,8). `ST_ISVALID`csak egy logikai értéket ad vissza, és `ST_ISVALIDDETAILED` visszaadja a logikai értéket, és egy olyan karakterláncot, amely az OK okának okát tartalmazza.
 
 **Lekérdezés**
 
@@ -115,7 +115,7 @@ A Azure Cosmos DB támogatja az inverz lekérdezések végrehajtását is, azaz 
     }]
 ```
 
-Ezek a függvények a sokszögek ellenőrzéséhez is használhatók. Itt például egy nem lezárt `ST_ISVALIDDETAILED` sokszög ellenőrzésére használjuk.
+Ezek a függvények a sokszögek ellenőrzéséhez is használhatók. Itt például `ST_ISVALIDDETAILED` egy nem lezárt sokszög ellenőrzésére használjuk.
 
 **Lekérdezés**
 
@@ -138,7 +138,7 @@ Ezek a függvények a sokszögek ellenőrzéséhez is használhatók. Itt péld�
 
 ## <a name="linq-querying-in-the-net-sdk"></a>LINQ-lekérdezés a .NET SDK-ban
 
-Az SQL .NET SDK emellett a `Distance()` betekintő `Within()` módszereit és a LINQ-kifejezéseken belüli használatot is tartalmazza. Az SQL LINQ-szolgáltató lefordítja ezt a metódust a megfelelő SQL beépített függvények hívására (ST_DISTANCE és ST_WITHIN, illetve).
+Az SQL .NET SDK emellett a `Distance()` `Within()` betekintő módszereit és a LINQ-kifejezéseken belüli használatot is tartalmazza. Az SQL LINQ-szolgáltató lefordítja ezt a metódust a megfelelő SQL beépített függvények hívására (ST_DISTANCE és ST_WITHIN, illetve).
 
 Íme egy példa egy LINQ-lekérdezésre, amely megkeresi az Azure Cosmos-tárolóban található összes olyan dokumentumot, amelynek `location` értéke a megadott pont 30 km-es sugarán belül van a LINQ használatával.
 
@@ -152,7 +152,7 @@ Az SQL .NET SDK emellett a `Distance()` betekintő `Within()` módszereit és a 
     }
 ```
 
-Hasonlóképpen, az alábbi lekérdezéssel megkeresheti az összes olyan `location` dokumentumot, amely a megadott dobozon/sokszögen belül található.
+Hasonlóképpen, az alábbi lekérdezéssel megkeresheti az összes olyan dokumentumot, amely `location` a megadott dobozon/sokszögen belül található.
 
 **LINQ-lekérdezés a következőn belül:**
 

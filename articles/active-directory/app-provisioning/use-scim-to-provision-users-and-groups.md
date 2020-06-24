@@ -2,21 +2,21 @@
 title: SCIM-végpont fejlesztése az Azure AD-ből származó alkalmazások felhasználó általi üzembe helyezéséhez
 description: A rendszer a tartományok közötti Identitáskezelés (SCIM) esetében szabványosítja a felhasználók automatikus kiépítési folyamatát. Ismerje meg, hogyan fejleszthet SCIM-végpontokat, hogyan integrálhatja a SCIM API-t a Azure Active Directoryval, és megkezdheti a felhasználók és csoportok kiépítésének automatizálását a felhőalapú alkalmazásokba.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/07/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 712d098ee5a10d0d99319796f24811e5805b7854
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: b08509bed6b26cb56caebd4dc47fc3b7ac84ce27
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84508879"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117318"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -1194,7 +1194,8 @@ A SCIM spec nem határoz meg SCIM-specifikus sémát a hitelesítéshez és az e
 |OAuth engedélyezési kód engedélyezése|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek.  Egy valós felhasználónak jelen kell lennie a kezdeti engedélyezés során, és hozzá kell adnia egy szintű elszámoltathatóságot. |A felhasználónak jelen kell lennie. Ha a felhasználó elhagyja a szervezetet, a jogkivonat érvénytelen, és az engedélyezést újra el kell végezni.|Gallery-alkalmazások esetén támogatott. Nem Gallery-alkalmazások támogatása folyamatban van.|
 |OAuth-ügyfél hitelesítő adatainak megadása|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek. Az engedélyezési kód és az ügyfél hitelesítő adatai is azonos típusú hozzáférési tokent hoznak létre, így a módszerek közötti váltás az API-ra is átlátható.  A kiépítés teljesen automatizált lehet, és az új tokenek felhasználói beavatkozás nélkül is csendesen kérhetők. ||Katalógus-és nem katalógus-alkalmazások esetén nem támogatott. A támogatás a várakozó fájlok között található.|
 
-[!NOTE] Nem ajánlott üresen hagyni a jogkivonat mezőt az Azure AD kiépítési konfiguráció egyéni alkalmazás felhasználói felületén. A generált jogkivonat elsődlegesen tesztelési célokra használható.
+> [!NOTE]
+> Nem ajánlott üresen hagyni a jogkivonat mezőt az Azure AD kiépítési konfiguráció egyéni alkalmazás felhasználói felületén. A generált jogkivonat elsődlegesen tesztelési célokra használható.
 
 **OAuth engedélyezési kód engedélyezése:** A kiépítési szolgáltatás támogatja az [engedélyezési kód engedélyezését](https://tools.ietf.org/html/rfc6749#page-24). Miután elküldte az alkalmazást a katalógusban való közzétételre vonatkozó kérelmét, a csapat együttműködik Önnel a következő információk összegyűjtéséhez:
 *  Engedélyezési URL-cím: az ügyfél URL-címe, amely a felhasználói ügynök átirányításával szerzi be az erőforrás-tulajdonostól az engedélyt. A rendszer átirányítja a felhasználót erre az URL-címre, hogy engedélyezze a hozzáférést. Vegye figyelembe, hogy ez az URL-cím jelenleg nem konfigurálható bérlőn.

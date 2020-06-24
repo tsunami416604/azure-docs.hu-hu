@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/8/2020
-ms.openlocfilehash: 674ae5c60b7e897f43d28f5813641ddc833b3002
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 6/11/2020
+ms.openlocfilehash: ae9878ba17f05b2d843e18c921c87c44b9396827
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636070"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738311"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MariaDBban a Azure Portal használatával
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MariaDB a Azure Portal használatával
 
 Azure Database for MariaDB támogatja egyes kiszolgálói paraméterek konfigurációját. Ez a cikk azt ismerteti, hogyan konfigurálhatja ezeket a paramétereket a Azure Portal használatával. Nem minden kiszolgáló paraméter módosítható.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigáljon a kiszolgálói paraméterek Azure Portal
+## <a name="configure-server-parameters"></a>Kiszolgáló paramétereinek konfigurálása
 
 1. Jelentkezzen be a Azure Portalba, majd keresse meg a Azure Database for MariaDB-kiszolgálót.
 2. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MariaDB kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
@@ -28,6 +28,17 @@ Azure Database for MariaDB támogatja egyes kiszolgálói paraméterek konfigur�
 ![Módosítások mentése vagy elvetése](./media/howto-server-parameters/4-save_parameters.png)
 5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
 ![Az összes visszaállítása az alapértelmezett értékre](./media/howto-server-parameters/5-reset_parameters.png)
+
+## <a name="setting-parameters-not-listed"></a>Nem felsorolt paraméterek beállítása
+
+Ha a frissíteni kívánt kiszolgálói paraméter nem szerepel a Azure Portalban, akkor opcionálisan a paramétert is megadhatja a kapcsolódási szinten a használatával `init_connect` . Ezzel beállítja a kiszolgálóhoz csatlakozó egyes ügyfelek kiszolgálói paramétereit. 
+
+1. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MariaDB kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
+2. Keresés`init_connect`
+3. Adja hozzá a kiszolgáló paramétereit a (z) Value ( `SET parameter_name=YOUR_DESIRED_VALUE` érték) oszlopban a Format: értéknél.
+
+    Megváltoztathatja például a kiszolgáló karakterkészletét a következőre való beállításával: `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
+4. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
@@ -66,6 +77,6 @@ SET time_zone = 'US/Pacific';
 
 A [dátum-és Időfüggvényekhez](https://mariadb.com/kb/en/library/convert_tz/)tekintse meg a MariaDB dokumentációját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [kiszolgálói paraméterekről](concepts-server-parameters.md)

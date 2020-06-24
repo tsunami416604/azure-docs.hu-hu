@@ -3,12 +3,12 @@ title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware szoftver által meghatározott adatközpontok és vSphere-fürtök főbb lehetőségeit az Azure-beli VMware-megoldásokban.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f51b76b654a43d690aa5c97fa9df99fad1f47d7a
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740381"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906989"
 ---
 # <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás (AVS) előzetes verzió – privát felhő és fürt – fogalmak
 
@@ -38,7 +38,7 @@ A Hyper-konvergens, operációs rendszer nélküli infrastruktúra-csomópontok 
 
 | Állomás típusa              |             CPU             |   Memória (GB)   |  vSAN NVMe gyorsítótárazási szintje (TB, nyers)  |  vSAN SSD kapacitási szintje (TB, nyers)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| Magas vég (IT)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3,2               |                15,20               |
+| Magas vég (IT)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 A fürtök létrehozásához vagy méretezéséhez használt gazdagépek a gazdagépek elkülönített készletéből szerezhetők be. Ezek a gazdagépek hardveres teszteket kaptak, és a Flash-lemezekről minden adattal biztonságosan törölve lettek. Ha eltávolít egy gazdagépet egy fürtből, a belső lemezek biztonságosan törlődnek, és a gazdagépek a gazdagépek elkülönített készletére kerülnek. Amikor egy gazdagépet ad hozzá egy fürthöz, a rendszer az elkülönített készletből megtisztított gazdagépet használ.
 
@@ -61,10 +61,10 @@ Az AVS platform szoftverre vonatkozó általános frissítési szabályzatokat �
 
 A gazdagép-karbantartási és életciklus-felügyelet a privát felhőalapú fürtök kapacitására vagy teljesítményére gyakorolt hatás nélkül történik. Az automatizált gazdagépek karbantartására például a belső vezérlőprogram frissítése és a hardver javítása vagy cseréje tartozik.
 
-A Microsoft felelős a NSX-T készülékek, például a NSX-T kezelő és a NSX-T élek életciklus-felügyeletével. A Microsoft feladata továbbá a hálózati konfiguráció beindításának elvégzése, például a 0. rétegbeli átjáró létrehozása és az észak-déli útválasztás engedélyezése. Az AVS Private Cloud rendszergazdája a NSX-T SDN-konfigurációért felelős, például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó.
+A Microsoft felelős a NSX-T készülékek, például a NSX-T Manager és a NSX-T Edge-eszközök életciklus-felügyeletével. A Microsoft feladata továbbá a hálózati konfiguráció beindításának elvégzése, például a 0. rétegbeli átjáró létrehozása és az észak-déli útválasztás engedélyezése. Az AVS Private Cloud rendszergazdája a NSX-T SDN-konfigurációért felelős, például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó.
 
 > [!IMPORTANT]
-> Az AVS-rendszergazdák nem változtathatják meg a NSX-T élek vagy a 0. rétegbeli átjáró konfigurációját. Ez a szolgáltatás elvesztését eredményezheti.
+> Az AVS-rendszergazdák nem változtathatják meg a NSX-T Edge vagy a 0. rétegbeli átjáró konfigurációját. Ez a szolgáltatás elvesztését eredményezheti.
 
 ## <a name="backup-and-restoration"></a>Biztonsági mentés és helyreállítás
 

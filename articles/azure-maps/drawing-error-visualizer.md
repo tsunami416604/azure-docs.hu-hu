@@ -3,17 +3,17 @@ title: Azure Maps Rajzolási hibák láthatóvá való használata
 description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a Creator Conversion API által visszaadott figyelmeztetéseket és hibákat.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681956"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791119"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>A Azure Maps rajzolási hiba láthatóvá tesző használata
 
@@ -58,16 +58,16 @@ Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja,
 
 A hivatkozáson belül a letöltött tömörített csomagban `diagnosticPackageLocation` két fájl található.
 
-* _VisualizationTool. zip_: a rajzolási hibákhoz tartozó forráskódot, adathordozót és weblapot tartalmazza.
-* _ConversionWarningsAndErrors. JSON_: tartalmazza a figyelmeztetések, hibák és a rajzolási hiba által megjelenített további részletek formázott listáját.
+* _VisualizationTool.zip_: a rajzolási hibákhoz tartozó forráskódot, adathordozót és weblapot tartalmazza.
+* _ConversionWarningsAndErrors.jsbekapcsolva_: a (z) tartalmaz egy formázott listát a figyelmeztetések, a hibák és a rajzolási hiba által megjelenített további részletekről.
 
-Bontsa ki a _VisualizationTool. zip_ mappát. A következő elemeket tartalmazza:
+Bontsa ki a _VisualizationTool.zip_ mappát. A következő elemeket tartalmazza:
 
 * _eszközök_ mappa: képeket és médiafájlokat tartalmaz
 * _statikus_ mappa: forráskód
-* _index. html_ fájl: a webalkalmazás.
+* _index.html_ fájl: a webalkalmazás.
 
-Nyissa meg az _index. html_ fájlt az alábbi böngészők bármelyikének használatával, a megfelelő verziószámmal. Más verziót is használhat, ha a verzió ugyanilyen kompatibilis viselkedést biztosít, mint a felsorolt verzió.
+Nyissa meg a _index.html_ fájlt az alábbi böngészők bármelyikével, a megfelelő verziószámmal. Más verziót is használhat, ha a verzió ugyanilyen kompatibilis viselkedést biztosít, mint a felsorolt verzió.
 
 * Microsoft Edge 80
 * Safari 13
@@ -78,15 +78,15 @@ Nyissa meg az _index. html_ fájlt az alábbi böngészők bármelyikének haszn
 
 Miután elindította a rajzolási hiba megjelenítő eszközét, megjelenik a feltöltés oldal. A feltöltési oldal egy fogd és vidd mezőt tartalmaz. A drag & drop (húzás) jelölőnégyzet a fájlkezelő párbeszédpanelt indító gombként is működik.
 
-![Rajzolási hiba-megjelenítő alkalmazás – Kezdőlap](./media/drawing-errors-visualizer/start-page.png)
+:::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="Rajzolási hiba-megjelenítő alkalmazás – Kezdőlap":::
 
-A _ConversionWarningsAndErrors. JSON_ fájl a letöltött könyvtár gyökeréhez lett helyezve. A _ConversionWarningsAndErrors. JSON_ fájl betöltéséhez húzza & dobja el a fájlt a mezőbe, vagy kattintson a mezőre, keresse meg a fájlt a Fájlkezelőben, majd töltse fel a fájlt.
+A fájl _ConversionWarningsAndErrors.js_ a letöltött könyvtár gyökeréhez lett helyezve. A _ConversionWarningsAndErrors.jsa_ betöltéséhez húzza & dobja a fájlt a mezőbe, vagy kattintson a mezőre, keresse meg a fájlt a Fájlkezelőben, majd töltse fel a fájlt.
 
-![Rajzolási hiba megjeleníthető alkalmazás – húzással betöltheti az adatterhelést](./media/drawing-errors-visualizer/loading-data.gif)
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Rajzolási hiba megjeleníthető alkalmazás – húzással betöltheti az adatterhelést":::
 
-A _ConversionWarningsAndErrors. JSON_ fájl betöltése után megjelenik a rajzolási csomagok hibái és figyelmeztetései. Az egyes hibákat vagy figyelmeztetéseket a réteg, a szint és a részletes üzenet határozza meg. Mostantól megtekintheti az egyes hibákat, és további információkat tudhat meg a hiba megoldásával kapcsolatban.  
+Ha a fájl _ConversionWarningsAndErrors.js_ betöltődik, megjelenik a rajzolási csomagok hibái és figyelmeztetései listája. Az egyes hibákat vagy figyelmeztetéseket a réteg, a szint és a részletes üzenet határozza meg. A hiba vagy figyelmeztetés részletes adatainak megtekintéséhez kattintson a **részletek** hivatkozásra. Egy megoldhatatlan szakasz jelenik meg a lista alatt. Mostantól megtekintheti az egyes hibákat, és további információkat tudhat meg a hiba megoldásával kapcsolatban.
 
-![Rajzolási hiba – az alkalmazás – hibák és figyelmeztetések](./media/drawing-errors-visualizer/errors.png)
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Rajzolási hiba – az alkalmazás – hibák és figyelmeztetések":::
 
 ## <a name="next-steps"></a>További lépések
 

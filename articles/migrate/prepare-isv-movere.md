@@ -2,13 +2,13 @@
 title: Azure Migrate előkészítése ISV-eszközzel vagy-mozgatóval való együttműködéshez
 description: Ez a cikk azt ismerteti, hogyan lehet előkészíteni a Azure Migratet egy ISV-eszközzel vagy-mozgatóval való együttműködésre, majd az eszköz használatának megkezdésére.
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9513e783d4f9d7be83f1434d4dd9011844af8993
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682648"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770373"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Felkészülés az ISV-eszköz vagy a mozgató tevékenységre
 
@@ -37,7 +37,19 @@ Az Azure-előfizetésében a fióknak **Microsoft. Authorization/*/Write** hozz�
 2. Válassza ki az adott előfizetést. Ha nem látja, válassza a **globális előfizetések szűrőt**. 
 3. Válassza **a saját engedélyek**lehetőséget. Ezután **kattintson ide az előfizetés teljes hozzáférés részleteinek megtekintéséhez**.
 4. A **szerepkör-hozzárendelések**  >  **nézetben**tekintse át az engedélyeket. Ha a fiókja nem rendelkezik jogosultságokkal, kérje meg az előfizetés rendszergazdáját, hogy vegye fel a [felhasználót a felhasználói hozzáférés rendszergazdai](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) szerepkörbe vagy a [tulajdonos](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) szerepkörbe.
- 
+
+## <a name="allow-access-to-urls"></a>URL-címek elérésének engedélyezése
+
+Az ISV-eszközök és az Azure Database Migration Assistant esetében engedélyezze a hozzáférést a táblázatban összefoglalt nyilvános Felhőbeli URL-címekhez. Ha URL-alapú proxyt használ az internethez való csatlakozáshoz, győződjön meg arról, hogy a proxy feloldja az URL-címek keresése során fogadott CNAME-rekordokat. 
+
+**URL-cím** | **Részletek**
+--- | ---
+*.portal.azure.com  | Lépjen az Azure Portalra. 
+*.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *. live.com   | Jelentkezzen be az Azure-előfizetésbe. 
+*.microsoftonline.com<br/> *.microsoftonline-p.com | Hozzon létre Azure Active Directory-(AD-) alkalmazásokat a berendezés számára a Azure Migratesal való kommunikációhoz. 
+management.azure.com | Azure Resource Manager hívásokat kezdeményez a Azure Migrate projekthez.
+*.servicebus.windows.net | Kommunikáció a készülék és a EventHub között az üzenetek küldéséhez.
+
 
 ## <a name="start-using-the-tool"></a>Az eszköz használatának megkezdése
 

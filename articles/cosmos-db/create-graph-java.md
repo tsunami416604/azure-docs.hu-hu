@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 9f9b6614c586d9c7c721dfc59da9c4a9c342b57c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 25a93377c1594fd1f45229ed2d837f02e9c0a46b
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062051"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118293"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Gyors útmutató: Graph-adatbázis létrehozása a Java SDK-val és a Azure Cosmos DB Gremlin API-val
 
@@ -31,7 +31,7 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB Gremlin-(Graph-) API-fiókot ho
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
-- [Java fejlesztői készlet (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Mutasson `JAVA_HOME` a környezeti változóra arra a mappára, ahol a JDK telepítve van.
+- [Java fejlesztői készlet (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Mutasson a `JAVA_HOME` környezeti változóra arra a mappára, ahol a JDK telepítve van.
 - A [Maven bináris archívuma](https://maven.apache.org/download.cgi). 
 - [Git](https://www.git-scm.com/downloads). 
 
@@ -104,8 +104,9 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
     Másolja az URI érték első részét.
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-java/copy-access-key-azure-portal.png)
-2. Nyissa meg az *src/Remote. YAML* fájlt, és illessze be `$name$` az `hosts: [$name$.graphs.azure.com]`egyedi azonosító értékét a alkalmazásba.
+    :::image type="content" source="./media/create-graph-java/copy-access-key-azure-portal.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán":::
+
+2. Nyissa meg az *src/Remote. YAML* fájlt, és illessze be az egyedi azonosító értékét `$name$` a alkalmazásba `hosts: [$name$.graphs.azure.com]` .
 
     A *távoli. YAML 1.* sora ekkor a következőhöz hasonlóan néz ki: 
 
@@ -168,21 +169,21 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 1. A Azure Portal Azure Cosmos DB-fiókjában válassza a **adatkezelő**, majd a **minta-gráf**csomópontot, válassza a **gráf**lehetőséget, majd válassza a **szűrő alkalmazása**lehetőséget. 
 
-   ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Új dokumentumok létrehozása az Azure Portal Adatkezelőjében":::
 
 2. A **Találatok** listában megjelennek a gráfhoz hozzáadott új felhasználók. Ha kiválasztja a **ben** elemet, láthatja, hogy a felhasználó kapcsolódik a robin elemhez. A csúcspontokat szabadon mozgathatja húzással, nagyíthat és kicsinyíthet az egérgörgő görgetésével, illetve megnövelheti a gráf méretét a duplaszárú nyíllal. 
 
-   ![Új csúcspontok az Azure Portal Adatkezelőjében megjelenő gráfban](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="Új csúcspontok az Azure Portal Adatkezelőjében megjelenő gráfban":::
 
 3. Adjunk hozzá néhány új felhasználót. Válassza az **új csúcspont** lehetőséget az adatgráfhoz való adatfelvételhez.
 
-   ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Új dokumentumok létrehozása az Azure Portal Adatkezelőjében":::
 
 4. A címke mezőbe írja be a *személy* kifejezést.
 
 5. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az id kulcsot kötelező megadni.
 
-    kulcs|érték|Megjegyzések
+    key|value|Jegyzetek
     ----|----|----
     id|ashley|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
     gender|female| 
@@ -191,7 +192,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
     > [!NOTE]
     > Ebben a rövid útmutatóban egy nem particionált gyűjteményt fog létrehozni. Ha azonban a gyűjtemény létrehozásakor megad egy partíciókulcsot és particionált gyűjteményt hoz létre, minden új csúcspontban meg kell adnia kulcsként a partíciókulcsot. 
 
-6. Kattintson az **OK** gombra. Előfordulhat, hogy ki kell terjesztenie a képernyőt a képernyő alján lévő **OK** gomb megjelenítéséhez.
+6. Válassza az **OK** lehetőséget. Előfordulhat, hogy ki kell terjesztenie a képernyőt a képernyő alján lévő **OK** gomb megjelenítéséhez.
 
 7. Válassza újra az **új csúcspontot** , és adjon hozzá egy további új felhasználót. 
 
@@ -199,29 +200,29 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 9. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához:
 
-    kulcs|érték|Megjegyzések
+    key|value|Jegyzetek
     ----|----|----
     id|rakesh|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
     gender|male| 
     school|MIT| 
 
-10. Kattintson az **OK** gombra. 
+10. Válassza az **OK** lehetőséget. 
 
 11. Válassza a **szűrő alkalmazása** gombot az alapértelmezett `g.V()` szűrővel a gráf összes értékének megjelenítéséhez. Most már az összes felhasználó megjelenik a **Találatok** listában. 
 
-    Ha további adatokat ad meg, szűrőkkel csökkentheti a találatok számát. Az Adatkezelő alapértelmezés szerint a `g.V()` lekérdezést használja a gráf összes csúcspontjának lekéréséhez. Ezt más [gráflekérdezésre](tutorial-query-graph.md) is módosíthatja, például a `g.V().count()` lekérdezésre, ha azt szeretné, hogy a rendszer JSON formátumban adja vissza a gráf csúcspontjainak számát. Ha módosította a szűrőt, váltson vissza a szűrőre `g.V()` , és válassza a **szűrő alkalmazása** lehetőséget az összes eredmény ismételt megjelenítéséhez.
+    Ha további adatokat ad meg, szűrőkkel csökkentheti a találatok számát. Az Adatkezelő alapértelmezés szerint a `g.V()` lekérdezést használja a gráf összes csúcspontjának lekéréséhez. Ezt más [gráflekérdezésre](tutorial-query-graph.md) is módosíthatja, például a `g.V().count()` lekérdezésre, ha azt szeretné, hogy a rendszer JSON formátumban adja vissza a gráf csúcspontjainak számát. Ha módosította a szűrőt, váltson vissza a szűrőre, `g.V()` és válassza a **szűrő alkalmazása** lehetőséget az összes eredmény ismételt megjelenítéséhez.
 
-12. Most már összekapcsolhatja a rakesh és az ashley elemet. Győződjön meg arról, hogy az **Ashley** ki van választva az ![ **eredmények** listájában, majd jelölje be a csúcspontok céljainak módosítása egy gráfban](./media/create-graph-java/edit-pencil-button.png) a jobb alsó sarokban lévő **célok** mellett. Előfordulhat, hogy szélesebbre kell állítania az ablakot a gomb megjelenítéséhez.
+12. Most már összekapcsolhatja a rakesh és az ashley elemet. Győződjön meg arról, hogy az **Ashley** ki van választva az **eredmények** listájában, majd jelölje be :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="a csúcspontok céljainak módosítása egy gráfban"::: a jobb alsó sarokban lévő **célok** mellett. Előfordulhat, hogy szélesebbre kell állítania az ablakot a gomb megjelenítéséhez.
 
-    ![Csúcspont céljának módosítása egy gráfban – Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Csúcspont céljának módosítása egy gráfban – Azure CosmosDB":::
 
 13. A **cél** mezőbe írja be a *Böjthe*értéket, és az **Edge felirat** mezőjébe írja be a *Knows*elemet, majd jelölje be a jelölőnégyzetet.
 
-    ![Adatkezelő-Azure CosmosDB-beli kapcsolatok hozzáadása](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="Adatkezelő-Azure CosmosDB-beli kapcsolatok hozzáadása":::
 
 14. Ezután válassza ki a **rakesh** elemet a találatok listájából. Láthatja, hogy az ashley és a rakesh elem össze van kapcsolva. 
 
-    ![Két csúcspont csatlakozik Adatkezelő-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="Két csúcspont csatlakozik Adatkezelő-Azure CosmosDB":::
 
 Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét. A gráfhoz továbbra is hozzáadhat csúcspontokat, módosíthatja a meglévő csúcspontokat, és megváltoztathatja a lekérdezéseket. Most pedig tekintsük át az Azure Cosmos DB által biztosított mérőszámokat, majd távolítsuk el az erőforrásokat. 
 
@@ -229,7 +230,7 @@ Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

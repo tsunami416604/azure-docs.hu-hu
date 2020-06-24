@@ -5,15 +5,15 @@ description: Tudnivalók az Azure-beli virtuális WAN-naplókról és-mérőszá
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7fa5353449db04184c60be79adece63489de0a74
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 4ce5bc3b4e5ccd26ec3f6b35c995ebe2274042c5
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466204"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749720"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure-beli virtuális WAN-naplók és-metrikák
 
@@ -121,7 +121,7 @@ Szükség esetén cserélje le az alábbi értékeket a **= =** érték után.
 
 A rendszer alapértelmezés szerint gyűjti a **tevékenység naplójának** bejegyzéseit, és megtekintheti őket a Azure Portalban. Az Azure-tevékenység naplóinak (korábbi nevén *operatív naplók* és *naplók*) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Firewall naplók és mérőszámok figyelésének megismeréséhez tekintse meg az [oktatóanyag: Azure Firewall naplók figyelése](../firewall/tutorial-diagnostics.md)című témakört.
 * Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](../azure-monitor/platform/data-platform-metrics.md).

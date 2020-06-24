@@ -4,15 +4,15 @@ description: Hálózatkezelési korlát növelése
 author: anavinahar
 ms.author: anavin
 ms.date: 01/23/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9b5c7043b06172c2d4931ca1c3fd3ac5d0e80883
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76547779"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764265"
 ---
 # <a name="networking-limit-increase"></a>Hálózatkezelési korlát növelése
 
@@ -37,7 +37,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure
 
     ![Súgó + támogatás](./media/networking-quota-request/help-plus-support.png)
 
-1. Válassza az **új támogatási kérelem**lehetőséget.
+1. Válassza az **Új támogatási kérelem** lehetőséget.
 
     ![Új támogatási kérelem](./media/networking-quota-request/new-support-request.png)
 
@@ -69,7 +69,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure Portal **használati és kvótájának** használatával.
 
-1. A https://portal.azure.comverzióban keresse meg és válassza ki az **előfizetéseket**.
+1. A verzióban https://portal.azure.com Keresse meg és válassza ki az **előfizetéseket**.
 
     ![Előfizetések](./media/networking-quota-request/search-for-suscriptions.png)
 

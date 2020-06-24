@@ -1,5 +1,5 @@
 ---
-title: AI-dúsítási készségkészlet (előzetes verzió) hibakeresése
+title: Hibakeresési munkamenetek – fogalmak (előzetes verzió)
 titleSuffix: Azure Cognitive Search
 description: A Azure Portal keresztül elért hibakeresési munkamenetek olyan IDE-környezetet biztosítanak, ahol azonosíthatja és kijavíthatja a hibákat, ellenőrizheti a módosításokat, és leküldheti a módosításokat a szakértelmével az AI-dúsítási folyamatban. A hibakeresési munkamenetek előzetes verzióban érhetők el.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 04b221d772abf923d7aabfe767a6424b72ed8fb2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d325b65b01ea13cfcb141d28343d94866d9e05e2
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664066"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751535"
 ---
-# <a name="debug-sessions"></a>Hibakeresési munkamenetek
+# <a name="debug-sessions-in-azure-cognitive-search"></a>Hibakeresési munkamenetek az Azure Cognitive Search
 
 A hibakeresési munkamenetek egy olyan vizualizációs szerkesztő, amely a Azure Portal meglévő készségkészlet működik. A hibakeresési munkameneten belül azonosíthatja és elháríthatja a hibákat, ellenőrizheti a módosításokat, és leküldheti a változtatásokat egy éles készségkészlet az AI-dúsítási folyamat során.
 

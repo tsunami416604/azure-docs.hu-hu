@@ -1,35 +1,39 @@
 ---
-title: Modell teljesítményének kiértékelése
+title: '& ellenőrzési modellek kiértékelése'
 titleSuffix: ML Studio (classic) - Azure
-description: Megtudhatja, hogyan értékelheti ki a modell teljesítményét a Azure Machine Learning Studio (klasszikus) és a feladathoz elérhető metrikák alapján.
+description: Ismerje meg a Azure Machine Learning Studio (klasszikus) modell teljesítményének figyeléséhez használható metrikákat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: caa37dbc3a09236c8e9553eba506e6c0b25e51e2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118442"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945103"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Modell teljesítményének kiértékelése Azure Machine Learning Studio (klasszikus)
+# <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Modell teljesítményének kiértékelése Azure Machine Learning Studio (klasszikus)
 
-Ez a cikk bemutatja, hogyan értékelheti ki a modell teljesítményét Azure Machine Learning Studio (klasszikus), és rövid magyarázatot ad a feladathoz elérhető mérőszámokról. Három közös felügyelt tanulási forgatókönyv jelenik meg: 
+Ebből a cikkből megtudhatja, hogyan figyelheti a modell teljesítményének figyeléséhez használható mérőszámokat Azure Machine Learning Studio (klasszikus).  A modell teljesítményének kiértékelése az adatelemzési folyamat egyik alapvető fázisa. Azt jelzi, hogy egy adatkészlethez tartozó pontozási (előrejelzések) hogyan lett kiképezve egy betanított modellből. A Azure Machine Learning Studio (klasszikus) a modell kiértékelését két fő gépi tanulási modulon keresztül támogatja: 
++ [Modell értékelése][evaluate-model] 
++ [Modell keresztre ellenőrzése][cross-validate-model]
 
+Ezek a modulok lehetővé teszik, hogy megtekintse, hogyan működik a modell a gépi tanulásban és a statisztikában leggyakrabban használt mérőszámok száma alapján.
+
+A modellek értékelését az alábbiakkal együtt kell figyelembe venni:
++ [Paraméterek optimalizálása algoritmusokhoz](algorithm-parameters-optimize.md)
++ [Modell értelmezhetősége](interpret-model-results.md)
+
+Három közös felügyelt tanulási forgatókönyv jelenik meg: 
 * regressziós
 * bináris besorolás 
 * többosztályos besorolás
 
-
-
-A modell teljesítményének kiértékelése az adatelemzési folyamat egyik alapvető fázisa. Azt jelzi, hogy egy adatkészlethez tartozó pontozási (előrejelzések) hogyan lett kiképezve egy betanított modellből. 
-
-A Azure Machine Learning Studio (klasszikus) a modell kiértékelését két fő gépi tanulási modulon keresztül támogatja: a [modell kiértékelése][evaluate-model] és a [több-érvényesítő modell][cross-validate-model]vizsgálata. Ezek a modulok lehetővé teszik, hogy megtekintse, hogyan működik a modell a gépi tanulásban és a statisztikában leggyakrabban használt mérőszámok száma alapján.
 
 ## <a name="evaluation-vs-cross-validation"></a>Értékelés és kereszt-ellenőrzés
 A kiértékelés és a több ellenőrzés a modell teljesítményének mérésére szolgáló szabványos módszer. Mindkettő olyan értékelési mérőszámokat is létrehoz, amelyeket megvizsgálhat vagy összehasonlíthat más modellektől.
@@ -138,7 +142,7 @@ Ebben a kísérletben a népszerű [írisz](https://archive.ics.uci.edu/ml/datas
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
 Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
 
-* [Adatimportálás][import-data]
+* [Adatok importálása][import-data]
 * [Többosztályos döntési erdő][multiclass-decision-forest]
 * [Adatok felosztása][split]
 * [Modell betanítása][train-model]

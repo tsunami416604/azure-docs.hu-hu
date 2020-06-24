@@ -1,5 +1,5 @@
 ---
-title: Azure-irányítópultok szoftveres létrehozása
+title: Azure-irányítópultok programozott létrehozása
 description: Az Azure-irányítópultok programozott létrehozásához használja a Azure Portalban található irányítópultot sablonként. JSON-hivatkozást tartalmaz.
 services: azure-portal
 documentationcenter: ''
@@ -7,19 +7,19 @@ author: adamabmsft
 manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 9ec9a4daad139a4930174ba9e3445e1cda1f8c54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461310"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764043"
 ---
-# <a name="programmatically-create-azure-dashboards"></a>Azure-irányítópultok szoftveres létrehozása
+# <a name="programmatically-create-azure-dashboards"></a>Azure-irányítópultok programozott létrehozása
 
 Ez a cikk végigvezeti az Azure-irányítópultok programozott létrehozásának és közzétételének folyamatán. Az alábbi irányítópult az egész dokumentumra hivatkozik.
 
@@ -387,7 +387,7 @@ Ebből a példából megtudhatja, Mit várhat, ha követte ezt a cikket. Az utas
 
 ### <a name="template-representation-of-our-example-dashboard"></a>A példában szereplő irányítópult sablon-ábrázolása
 
-Az irányítópult sablonjának verziója három paramétert `virtualMachineName` `virtualMachineResourceGroup`definiált:, és. `dashboardName`  A paraméterek lehetővé teszik, hogy az irányítópultot egy másik Azure-beli virtuális gépen mutassa be minden egyes telepítésekor. Ez az irányítópult programozott módon konfigurálható és üzembe helyezhető úgy, hogy bármely Azure-beli virtuális gépre mutasson. A szolgáltatás teszteléséhez másolja a következő sablont, és illessze be a [Azure Portal sablon üzembe helyezése lapra](https://portal.azure.com/#create/Microsoft.Template).
+Az irányítópult sablonjának verziója három paramétert definiált: `virtualMachineName` , `virtualMachineResourceGroup` és `dashboardName` .  A paraméterek lehetővé teszik, hogy az irányítópultot egy másik Azure-beli virtuális gépen mutassa be minden egyes telepítésekor. Ez az irányítópult programozott módon konfigurálható és üzembe helyezhető úgy, hogy bármely Azure-beli virtuális gépre mutasson. A szolgáltatás teszteléséhez másolja a következő sablont, és illessze be a [Azure Portal sablon üzembe helyezése lapra](https://portal.azure.com/#create/Microsoft.Template).
 
 Ez a példa egy irányítópultot helyez üzembe önmagával, de a sablon nyelve lehetővé teszi több erőforrás üzembe helyezését, valamint egy vagy több irányítópult egymás melletti elhelyezését.
 

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -21,10 +21,10 @@ Az ügyfél által felügyelt kulcsok beállítása a lemezekhez megköveteli, h
 
 #### <a name="setting-up-your-azure-key-vault"></a>A Azure Key Vault beállítása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 1. Keresse meg és válassza ki a **kulcstárolókat**.
 
-    [![SSE-Key-Vault-Portal-Search. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
+    [![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
 
     > [!IMPORTANT]
     > Az Azure Key Vault, a lemezes titkosítási készlet, a virtuális gépek, a lemezek és a pillanatképek mindegyikének ugyanabban a régióban kell lennie, és az előfizetés a sikeres telepítéshez.
