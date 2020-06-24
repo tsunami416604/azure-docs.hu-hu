@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 04/14/2020
+ms.date: 06/17/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 3f7e2a5c2dca13ac705d67e1491d88a2537a9064
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ced9453982615485e25b56be9b7a36dc8f6ce988
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555789"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974670"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,8 +128,16 @@ token, refresh_by = service.get_token()
 print(token)
 ```
 
+Ha rendelkezik az [Azure CLI-vel és a Machine learning bővítménnyel](reference-azure-machine-learning-cli.md), a következő paranccsal kérhet le jogkivonatot:
+
+```azurecli
+az ml service get-access-token -n <service-name>
+```
+
 > [!IMPORTANT]
-> A jogkivonat időpontját követően új jogkivonatot kell kérnie `refresh_by` . 
+> Jelenleg a jogkivonat lekérésének egyetlen módja a Azure Machine Learning SDK vagy az Azure CLI Machine learning bővítmény használata.
+
+A jogkivonat időpontját követően új jogkivonatot kell kérnie `refresh_by` . 
 
 ## <a name="request-data"></a>Adatkérés
 
@@ -519,6 +527,6 @@ Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való
 
 A webszolgáltatás üzembe helyezése után Power BI adatfolyamok. [Megtudhatja, hogyan használhat Azure Machine learning webszolgáltatást Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

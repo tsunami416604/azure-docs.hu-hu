@@ -5,16 +5,16 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 70c36f9a18a85b90bb3a66d4083a71a00f61f14e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: aa2b82e70b1a1372076483c7405c32b66da377af
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016372"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974432"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Container Registryvel történő hitelesítés az Azure Kubernetes Service-ből (AKS)
 
-Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatással (ak), akkor hitelesítési mechanizmust kell létrehoznia. Ez a cikk példákat tartalmaz a két Azure-szolgáltatás közötti hitelesítés konfigurálására. 
+Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatással (ak), akkor hitelesítési mechanizmust kell létrehoznia. Ez a művelet a CLI és a portál felhasználói felületének részeként valósul meg, az ACR számára szükséges engedélyek megadásával. Ez a cikk példákat tartalmaz a két Azure-szolgáltatás közötti hitelesítés konfigurálására. 
 
 Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Azure CLI-vel. Ez az integráció a AcrPull szerepkört az AK-fürthöz társított egyszerű szolgáltatáshoz rendeli.
 
@@ -23,7 +23,7 @@ Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Az
 A példákhoz a következők szükségesek:
 
 * Az **Azure-előfizetéshez** tartozó **tulajdonosi** vagy **Azure-fiók rendszergazdai** szerepköre
-* Azure CLI-verzió 2.0.73 vagy újabb verziója
+* Azure CLI-verzió 2.7.0 vagy újabb verziója
 
 Ha el szeretné kerülni a **tulajdonosi** vagy az **Azure-fiók rendszergazdai** szerepkörének megkövetelését, manuálisan is konfigurálhat egy egyszerű szolgáltatásnevet, vagy használhat egy meglévő egyszerű szolgáltatásnevet az ACR-ből való hitelesítéshez. További információkért tekintse meg az [ACR-hitelesítés egyszerű szolgáltatásokkal](../container-registry/container-registry-auth-service-principal.md) vagy a [Kubernetes egy lekéréses titokkal történő hitelesítését](../container-registry/container-registry-auth-kubernetes.md)ismertető témakört.
 
@@ -142,6 +142,10 @@ NAME                                 READY   STATUS    RESTARTS   AGE
 nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
+
+### <a name="troubleshooting"></a>Hibaelhárítás
+* További információ az [ACR Diagnostics](../container-registry/container-registry-diagnostics-audit-logs.md) szolgáltatásról
+* További információ az [ACR Health](../container-registry/container-registry-check-health.md) szolgáltatásról
 
 <!-- LINKS - external -->
 [AKS AKS CLI]:  https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
