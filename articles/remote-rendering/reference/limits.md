@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: c35930a93751cc82c3145d414a2a09b3a1e90c53
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659840"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808547"
 ---
 # <a name="limitations"></a>Korlátozások
 
@@ -26,9 +26,10 @@ Számos szolgáltatás mérete, száma vagy egyéb korlátai vannak.
 * Egyetlen típus összes engedélyezett objektuma (entitás, CutPlaneComponent stb.): 16 777 215.
 * Engedélyezett aktív kivágott síkok összesen: 8.
 
-## <a name="materials"></a>Anyagok
+## <a name="geometry"></a>Geometria
 
 * Az eszközön engedélyezett összes anyag: 65 535.
+* Egyetlen textúra maximális mérete: 16 384 x 16 384. A nagyobb forrású textúrákat az átalakítási folyamat fogja lemérni.
 
 ## <a name="overall-number-of-polygons"></a>Sokszögek összesített száma
 
@@ -39,6 +40,7 @@ Az összes betöltött modell számára engedélyezett számú sokszög a virtu�
 |Standard| 20 000 000 |
 |prémium szintű| korlátlan |
 
+A korlátozással kapcsolatos részletesebb információkért lásd a [VM-méret](../reference/vm-sizes.md) című fejezetet.
 
 ## <a name="platform-limitations"></a>A platformra vonatkozó korlátozások
 

@@ -10,20 +10,20 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d3fff80dcae3f97ca947504390ebc4a824e5f0d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133617"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255092"
 ---
 # <a name="azure-networking-services-overview"></a>Az Azure Networking Services áttekintése
 
 Az Azure hálózati szolgáltatásai különféle hálózati funkciókat biztosítanak, amelyek együtt vagy külön is használhatók. A következő főbb képességek bármelyikére kattintva további információkat tudhat meg róluk:
 - [**Csatlakozási szolgáltatások**](#connect): az Azure-erőforrások és a helyszíni erőforrások összekapcsolása az azure-Virtual Network (VNet), a Virtual WAN, a ExpressRoute, a VPN Gateway, a Virtual Network NAT Gateway, a Azure DNS, a peering Service és az Azure Bastion használatával.
-- [**Alkalmazás-védelmi szolgáltatások**](#protect) Az alkalmazások védelme az Azure-Private link, a DDoS Protection, a tűzfal, a hálózati biztonsági csoportok, a webalkalmazási tűzfal és a Virtual Network végpontok bármelyikének vagy kombinációjának használatával.
-- [**Application Delivery Services**](#deliver) Az Azure-hálózatban lévő alkalmazásokat az Azure-Content Delivery Network (CDN), az Azure bejárati szolgáltatás, a Traffic Manager, a Application Gateway, az Internet Analyzer és a Load Balancer ezen hálózati szolgáltatásainak bármilyen kombinációja alapján kézbesítheti.
-- [**Hálózati figyelés**](#monitor) – a hálózati erőforrások bármilyen vagy azzal együtt történő figyelése az Azure-Network Watcher, a ExpressRoute monitor, a Azure monitor vagy a VNet Terminal hozzáférési pont (TAP) használatával.
+- [**Alkalmazás-védelmi szolgáltatások**](#protect): az alkalmazásokat az Azure-Private link, a DDoS Protection, a tűzfal, a hálózati biztonsági csoportok, a webalkalmazási tűzfal és a Virtual Network végpontok bármely vagy több kombinációjának használatával biztosíthatja az alkalmazások védelmére.
+- [**Application Delivery Services**](#deliver): az Azure-hálózatban lévő alkalmazásokat az azure-Content DELIVERY Network (CDN), az Azure bejárati szolgáltatás, a Traffic Manager, a Application Gateway, az Internet Analyzer és a Load Balancer használatával biztosíthatja.
+- [**Hálózatfigyelő**](#monitor): az Azure-Network Watcher, a ExpressRoute monitor, a Azure monitor vagy a VNet terminál-hozzáférési pont (TAP) használatával figyelheti a hálózati erőforrásokat.
 
 ## <a name="connectivity-services"></a><a name="connect"></a>Kapcsolati szolgáltatások
  
@@ -34,8 +34,8 @@ Ez a szakasz azokat a szolgáltatásokat ismerteti, amelyek kapcsolatot biztosí
 |[Virtuális hálózat](#vnet)|Lehetővé teszi az Azure-erőforrások számára, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal.| <p>[Hálózati forgalom szűrése](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Hálózati forgalom továbbítása](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Erőforrások hálózati hozzáférésének korlátozása](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Virtuális hálózatok csatlakoztatása](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|Kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amely egy kapcsolati szolgáltató által könnyíti meg.|<p>[Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[ExpressRoute-kapcsolatcsoport társviszonyának létrehozása és módosítása](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[ExpressRoute-áramkörök útválasztási szűrőinek konfigurálása és kezelése](../expressroute/how-to-routefilter-portal.md)</p>|
 |[VPN Gateway](#vpngateway)|Titkosított forgalmat küld egy Azure-beli virtuális hálózat és egy helyszíni hely között a nyilvános interneten keresztül.|<p>[Helyek közötti kapcsolatok](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Virtuális hálózatok közötti kapcsolatok](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Pont – hely kapcsolatok](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
-|[Virtuális WAN](#virtualwan)|Optimalizálja és automatizálja az Azure-ra és az-ra irányuló ág-kapcsolatot. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk.|<p>[Helyek közötti kapcsolatok](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute kapcsolatok](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
-|[Azure DNS](#dns)|Olyan DNS-tartományokat üzemeltet, amelyek Microsoft Azure infrastruktúra használatával biztosítják a névfeloldást.|<p>[Saját tartomány üzemeltetése az Azure DNS-ben](../dns/dns-delegate-domain-azure-dns.md)</p><p>[DNS-rekordok létrehozása egy webalkalmazáshoz](../dns/dns-web-sites-custom-domain.md)</p> <p>[Alias-rekord létrehozása a Traffic Managerhoz](../dns/tutorial-alias-tm.md)</p> <p>[Alias-rekord létrehozása nyilvános IP-címhez](../dns/tutorial-alias-pip.md)</p> <p>[Alias-rekord létrehozása a zóna erőforrásrekord számára](../dns/tutorial-alias-rr.md)</p>|
+|[Virtual WAN](#virtualwan)|Optimalizálja és automatizálja az Azure-ra és az-ra irányuló ág-kapcsolatot. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk.|<p>[Helyek közötti kapcsolatok](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute kapcsolatok](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
+|[Azure DNS](#dns)|Olyan DNS-tartományokat üzemeltet, amelyek Microsoft Azure infrastruktúra használatával biztosítják a névfeloldást.|<p>[Üzemeltessen saját tartományt az Azure DNS-ben](../dns/dns-delegate-domain-azure-dns.md)</p><p>[DNS-rekordok létrehozása egy webalkalmazáshoz](../dns/dns-web-sites-custom-domain.md)</p> <p>[Alias-rekord létrehozása a Traffic Managerhoz](../dns/tutorial-alias-tm.md)</p> <p>[Alias-rekord létrehozása nyilvános IP-címhez](../dns/tutorial-alias-pip.md)</p> <p>[Alias-rekord létrehozása a zóna erőforrásrekord számára](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot konfigurálhat a virtuális gépekhez közvetlenül a TLS-Azure Portal. Amikor az Azure Bastion-n keresztül kapcsolódik, a virtuális gépeknek nincs szükségük nyilvános IP-címekre|<p>[Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md)</p><p>[Kapcsolódás az SSH-val Linux rendszerű virtuális géphez](../bastion/bastion-connect-vm-ssh.md)</p><p>[Kapcsolódás RDP használatával Windows rendszerű virtuális géphez](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[Virtuális hálózati NAT-átjáró](#nat)|Hozzon létre egy NAT-átjárót a virtuális gép kimenő kapcsolatának biztosításához.|<p>[NAT-átjáró létrehozása](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
 |[Azure-partneri szolgáltatás (előzetes verzió)](#azurepeeringservice)|Együttműködés a szolgáltatókkal a Microsoft Cloud számára a nyilvános hálózaton keresztül történő optimális és megbízható útválasztáshoz.|<p>[Azure-partneri szolgáltatás regisztrálása](../peering-service/azure-portal.md)</p>|
@@ -65,7 +65,7 @@ A következő ábra több helyek közötti VPN-kapcsolatot mutat be ugyanahhoz a
 
 További információ a VPN-kapcsolat különböző típusairól: [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtuális WAN
+### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtual WAN
 Az Azure Virtual WAN egy hálózati szolgáltatás, amely optimalizált és automatizált ág-kapcsolatot biztosít az Azure-hoz és a-n keresztül. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk. Az Azure-gerinc kihasználható az ágak összekapcsolásához és a VNet közötti kapcsolathoz is. Az Azure Virtual WAN számos Azure Cloud connectivity-szolgáltatást kínál, többek között a helyek közötti VPN-t, a ExpressRoute, a pont – hely típusú felhasználói VPN-t egyetlen operatív felületre. Az Azure virtuális hálózatok-hez való kapcsolódás virtuális hálózati kapcsolatok használatával történik. További információ: [Mi az az Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
 
 ![Virtuális WAN ábrája](./media/networking-overview/virtualwan1.png)
@@ -93,7 +93,7 @@ Ez a szakasz az Azure-beli hálózati szolgáltatásokat ismerteti, amelyek seg�
 |Szolgáltatás|Miért érdemes használni?|Forgatókönyv|
 |---|---|---|
 |[DDoS-védelem](#ddosprotection) |Magas rendelkezésre állás az alkalmazások számára a felesleges IP-forgalom elleni védelem ellenében|[Azure DDoS Protection kezelése](../virtual-network/manage-ddos-protection.md)|
-|[Web Application Firewall (Webalkalmazási tűzfal)](#waf)|<p>Az [Azure WAF és a Application Gateway](../web-application-firewall/ag/ag-overview.md) helyi védelmet biztosít a nyilvános és privát címtartománybeli entitásoknak</p><p>A [bejárati ajtóval rendelkező Azure-WAF](../web-application-firewall/afds/afds-overview.md) a hálózat peremén a nyilvános végpontok számára biztosít védelmet.</p>|<p>[A robot védelmi szabályainak konfigurálása](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Egyéni válaszkód konfigurálása](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP-korlátozási szabályok konfigurálása](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[A díjszabási korlát konfigurálása szabály](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Webalkalmazási tűzfal](#waf)|<p>Az [Azure WAF és a Application Gateway](../web-application-firewall/ag/ag-overview.md) helyi védelmet biztosít a nyilvános és privát címtartománybeli entitásoknak</p><p>A [bejárati ajtóval rendelkező Azure-WAF](../web-application-firewall/afds/afds-overview.md) a hálózat peremén a nyilvános végpontok számára biztosít védelmet.</p>|<p>[A robot védelmi szabályainak konfigurálása](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Egyéni válaszkód konfigurálása](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP-korlátozási szabályok konfigurálása](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[A díjszabási korlát konfigurálása szabály](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
 |[Azure Firewall](#firewall)|Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Egy teljes mértékben állapotalapú tűzfalszolgáltatás, beépített magas rendelkezésre állással és korlátlan felhőméretezhetőséggel.|<p>[Azure Firewall üzembe helyezése vnet](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[-Azure Firewall üzembe helyezése hibrid hálózaton](../firewall/tutorial-hybrid-ps.md)</p> <p>[Bejövő forgalom szűrése Azure Firewall DNAT](../firewall/tutorial-firewall-dnat.md)</p>|
 |[Network security groups (Hálózati biztonsági csoportok)](#nsg)|Teljes részletességű elosztott végpont-vezérlés a virtuális gépen/alhálózatban az összes hálózati forgalom forgalmához|[Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/tutorial-filter-network-traffic.md)|
 |[Virtuális hálózati szolgáltatásvégpontok](#serviceendpoints)|Lehetővé teszi egyes Azure-szolgáltatási erőforrások hálózati hozzáférésének korlátozását egy virtuális hálózati alhálózatra.|[PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
@@ -104,13 +104,13 @@ A [Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) a legkif
 
 ![DDoS Protection](./media/networking-overview/ddos-protection.png)
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a><a name="waf"></a>Webalkalmazási tűzfal
 
 Az [Azure webalkalmazási tűzfal](../web-application-firewall/overview.md) (WAF) védelmet nyújt a webalkalmazásoknak a gyakori webes biztonsági rések és sebezhetőségek, például az SQL-injektálás és a helyek közötti parancsfájlok használatával. Az Azure WAF a felügyelt szabályok segítségével a OWASP 10 legfontosabb biztonsági résen kívülről is biztosít védelmet a box-ban. Emellett az ügyfelek egyéni szabályokat is megadhatnak, amelyek az ügyfél által felügyelt szabályok a forrás IP-címtartomány alapján további védelmet biztosítanak, és olyan attribútumokat igényelnek, mint a fejlécek, a cookie-k, az űrlap adatmezői vagy a lekérdezési karakterlánc
 
 Az ügyfelek dönthetnek úgy, hogy üzembe helyezik az [Azure WAF-t Application Gateway,](../application-gateway/waf-overview.md) amely regionális védelmet biztosít a nyilvános és privát címtartomány entitásai számára. Az ügyfelek dönthetnek úgy is, hogy az [Azure WAF](../frontdoor/waf-overview.md) üzembe helyezését is lehetővé teszi, amely a hálózati peremhálózat védelmét biztosítja a nyilvános végpontok számára.
 
-![Web Application Firewall (Webalkalmazási tűzfal)](./media/networking-overview/waf-overview.png)
+![Webalkalmazási tűzfal](./media/networking-overview/waf-overview.png)
 
 
 ### <a name="azure-firewall"></a><a name="firewall"></a>Azure Firewall
@@ -137,7 +137,7 @@ A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerin
 
 ## <a name="application-delivery-services"></a><a name="deliver"></a>Application Delivery Services
 
-Ez a szakasz az Azure-ban elérhető hálózati szolgáltatásokat ismerteti, amelyek segítenek az alkalmazások – Network Watcher, ExpressRoute-figyelő, Azure Monitor vagy VNet terminál-hozzáférési pont (TAP) kézbesítésében.
+Ez a szakasz az Azure-ban elérhető hálózati szolgáltatásokat ismerteti, amelyek segítenek az alkalmazások – Content Delivery Network, az Azure bejárati szolgáltatás, a Traffic Manager, a Load Balancer és a Application Gateway szolgáltatás nyújtásában.
 
 |Szolgáltatás|Miért érdemes használni?|Forgatókönyv|
 |---|---|---|

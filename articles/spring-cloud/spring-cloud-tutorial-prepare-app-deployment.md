@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 668406bb90e1f1e064adf01d7dbab42923fe30aa
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657146"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789276"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -103,7 +103,7 @@ Spring boot-verzió | Tavaszi felhő verziója | Azure Spring Cloud-verzió
 2.1 | Greenwich. RELEASE | 2.1
 2,2 | Hoxton. RELEASE | 2,2
 
-Adja meg a következő függőségek egyikét a Pom. xml fájlban. Válassza ki azt a függőséget, amelynek az Azure Spring Cloud-verziója megfelel a saját igényeinek.
+Adja meg a következő függőségek egyikét a pom.xml fájlban. Válassza ki azt a függőséget, amelynek az Azure Spring Cloud-verziója megfelel a saját igényeinek.
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Az Azure Spring Cloud 2,1-es verziójának függősége
 
@@ -135,7 +135,7 @@ Annak érdekében, hogy az Azure Spring Cloud beépített funkciói a szolgálta
 
 ### <a name="service-registry"></a>Szolgáltatás beállításjegyzéke
 
-A felügyelt Azure szolgáltatás beállításjegyzék-szolgáltatásának használatához az `spring-cloud-starter-netflix-eureka-client` itt látható módon vegye fel a függőséget a Pom. XML fájlba:
+A felügyelt Azure szolgáltatás beállításjegyzék-szolgáltatásának használatához adja `spring-cloud-starter-netflix-eureka-client` meg a függőséget a pom.xml fájlban az itt látható módon:
 
 ```xml
     <dependency>
@@ -174,7 +174,7 @@ public class GatewayApplication {
 
 ### <a name="distributed-configuration"></a>Elosztott konfiguráció
 
-Az elosztott konfiguráció engedélyezéséhez vegye fel a következő `spring-cloud-config-client` függőséget a Pom. xml fájl függőségek szakaszába:
+Az elosztott konfiguráció engedélyezéséhez vegye fel a következő `spring-cloud-config-client` függőséget a pom.xml fájl függőségek szakaszába:
 
 ```xml
 <dependency>
@@ -188,7 +188,7 @@ Az elosztott konfiguráció engedélyezéséhez vegye fel a következő `spring-
 
 ### <a name="metrics"></a>Mérőszámok
 
-Vegye fel a függőséget a `spring-boot-starter-actuator` Pom. xml fájl függőségek szakaszába, ahogy az itt látható:
+Vegye fel a függőséget a `spring-boot-starter-actuator` pom.xml fájl függőségek szakaszába, ahogy az itt látható:
 
 ```xml
 <dependency>
@@ -199,9 +199,12 @@ Vegye fel a függőséget a `spring-boot-starter-actuator` Pom. xml fájl függ�
 
  A metrikák rendszeres időközönként a JMX-végpontokról vannak leképezve. A metrikákat a Azure Portal használatával jelenítheti meg.
 
+ > [!WARNING]
+ > Adja meg a `spring.jmx.enabled=true` konfigurációs tulajdonságot. Ellenkező esetben a metrikák nem megjeleníthetők Azure Portalban.
+
 ### <a name="distributed-tracing"></a>Elosztott nyomkövetés
 
-A következő és Függőségek belefoglalása a `spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` Pom. xml fájl függőségek szakaszába:
+Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-zipkin` függőségeket a pom.xml fájl függőségek szakaszában:
 
 ```xml
 <dependency>

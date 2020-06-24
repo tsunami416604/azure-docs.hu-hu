@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: febd5d1e49a87f0846aba2aaa976e170ee31fab8
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: c1801c1b26742661987ea822a3cb1479f40ec059
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432336"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751278"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Hibrid gépek összekötése az Azure-ba a Azure Portal
 
@@ -24,7 +24,7 @@ Ehhez a módszerhez rendszergazdai jogosultságokkal kell rendelkeznie a gépen 
 
 Mielőtt elkezdené, tekintse át az [előfeltételeket](agent-overview.md#prerequisites) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>A telepítési parancsfájl létrehozása a Azure Portal
 
@@ -40,6 +40,7 @@ A letöltés és telepítés automatizálására szolgáló parancsfájl, valami
 
     >[!NOTE]
     >Az Azure arc for Servers (előzetes verzió) csak a következő régiókat támogatja:
+    >- EastUS
     >- WestUS2
     >- WestEurope
     >- SoutheastAsia
@@ -58,7 +59,7 @@ A letöltés és telepítés automatizálására szolgáló parancsfájl, valami
 
 ### <a name="install-manually"></a>Manuális telepítés
 
-A csatlakoztatott gépi ügynököt manuálisan is telepítheti a *AzureConnectedMachineAgent. msi*Windows Installer csomag futtatásával. A [Windows agent Windows Installer csomag](https://aka.ms/AzureConnectedMachineAgent) legújabb verzióját a Microsoft letöltőközpontból töltheti le. 
+A csatlakoztatott gépi ügynököt manuálisan is telepítheti a Windows Installer csomag *AzureConnectedMachineAgent.msi*futtatásával. A [Windows agent Windows Installer csomag](https://aka.ms/AzureConnectedMachineAgent) legújabb verzióját a Microsoft letöltőközpontból töltheti le. 
 
 > [!NOTE]
 > * Az ügynök telepítéséhez vagy eltávolításához *rendszergazdai* jogosultságokkal kell rendelkeznie.
@@ -157,7 +158,7 @@ Miután telepítette az ügynököt, és úgy konfigurálja, hogy az Azure arc f
 
 ![Sikeres kiszolgálói kapcsolatok](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)és sok más további műveletet.
 

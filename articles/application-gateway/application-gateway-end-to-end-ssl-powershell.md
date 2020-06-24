@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan konfigurálható a végpontok közötti
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 2b5d2687ce95ca7db139ae06ab83bc3ecee8cf8a
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: e35569a1dc5ce7c1cb2889ac3e2ca8f60f8ccd42
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628809"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808196"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Végpontok közötti TLS konfigurálása a Application Gateway és a PowerShell használatával
 
@@ -357,7 +357,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a webalkalmazások biztonságának a webalkalmazási tűzfallal való megkeményedéséről Application Gatewayon keresztül: [webalkalmazási tűzfal – áttekintés](application-gateway-webapplicationfirewall-overview.md).
 

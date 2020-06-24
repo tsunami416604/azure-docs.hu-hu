@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63919d7770746025189f3d6e578919b2fc2799c3
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74278114"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84884916"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN használata a CORS
 ## <a name="what-is-cors"></a>Mi az a CORS?
@@ -30,7 +30,7 @@ Kétféle CORS-kérés, *egyszerű kérelem* és *összetett kérelem van.*
 
 ### <a name="for-simple-requests"></a>Egyszerű kérelmek esetén:
 
-1. A böngésző egy további **forrás** HTTP-kérelem fejlécével küldi el a CORS kérelmet. Ennek a fejlécnek az értéke a szülő lapot kiszolgáló forrás, amely a *protokoll,* a *tartomány* és a port kombinációjával van meghatározva *.*  Ha egy https\://www.contoso.com-oldal megpróbál hozzáférni egy felhasználói adatokhoz a fabrikam.com-forrásban, a rendszer a következő fabrikam.com küldi el:
+1. A böngésző egy további **forrás** HTTP-kérelem fejlécével küldi el a CORS kérelmet. Ennek a fejlécnek az értéke a szülő lapot kiszolgáló forrás, amely a *protokoll,* a *tartomány* és a port kombinációjával van meghatározva *.*  Ha egy https \: //www.contoso.com-oldal megpróbál hozzáférni egy felhasználói adatokhoz a fabrikam.com-forrásban, a rendszer a következő fabrikam.com küldi el:
 
    `Origin: https://www.contoso.com`
 
@@ -48,7 +48,7 @@ Kétféle CORS-kérés, *egyszerű kérelem* és *összetett kérelem van.*
 
 ### <a name="for-complex-requests"></a>Összetett kérelmek esetén:
 
-Egy összetett kérelem egy CORS-kérelem, amelyben a böngészőnek el kell küldenie egy *elővizsgálati kérelmet* (azaz egy előzetes mintavételt) a tényleges CORS-kérelem elküldése előtt. Az elővizsgálati kérelem arra kéri a kiszolgáló engedélyét, hogy az eredeti CORS- `OPTIONS` kérelem folytatható, és ugyanarra az URL-címre irányuló kérést küld.
+Egy összetett kérelem egy CORS-kérelem, amelyben a böngészőnek el kell küldenie egy *elővizsgálati kérelmet* (azaz egy előzetes mintavételt) a tényleges CORS-kérelem elküldése előtt. Az elővizsgálati kérelem arra kéri a kiszolgáló engedélyét, hogy az eredeti CORS-kérelem folytatható, és `OPTIONS` ugyanarra az URL-címre irányuló kérést küld.
 
 > [!TIP]
 > A CORS és a gyakori buktatókkal kapcsolatos további részletekért tekintse meg a [CORS for REST API](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/)-k útmutatóját.

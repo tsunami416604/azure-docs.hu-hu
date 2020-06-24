@@ -3,16 +3,16 @@ title: Erőforrások telepítési sorrendjének beállítása
 description: Ismerteti, hogyan lehet egy erőforrást egy másik erőforrástól függőként beállítani az üzembe helyezés során, hogy az erőforrások megfelelően legyenek telepítve a megfelelő sorrendben.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535468"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255211"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Erőforrások üzembe helyezési sorrendjének meghatározása ARM-sablonokban
 
-Erőforrás telepítésekor előfordulhat, hogy az üzembe helyezése előtt meg kell győződnie arról, hogy más erőforrások is léteznek. SQL-adatbázis üzembe helyezése előtt például SQL Serverre van szükség. Ezt a kapcsolatot úgy definiálhatja, hogy a másik erőforrástól függőként megjelöl egy erőforrást. A **dependsOn** elemmel vagy a **hivatkozási** függvénnyel határozhatja meg a függőséget.
+Erőforrás telepítésekor előfordulhat, hogy az üzembe helyezése előtt meg kell győződnie arról, hogy más erőforrások is léteznek. Egy adatbázis üzembe helyezése előtt például logikai SQL Serverre van szükség. Ezt a kapcsolatot úgy definiálhatja, hogy a másik erőforrástól függőként megjelöl egy erőforrást. A **dependsOn** elemmel vagy a **hivatkozási** függvénnyel határozhatja meg a függőséget.
 
 A Resource Manager kiértékeli az erőforrások közötti függőségeket, majd azokat függőségi sorrendben üzembe helyezi. Ha az erőforrások között nincs függőségi viszony, akkor a Resource Manager párhuzamosan helyezi üzembe azokat. Csak az ugyanabban a sablonban üzembe helyezett erőforrások függőségeit kell meghatároznia.
 
@@ -59,7 +59,7 @@ Az erőforrások tulajdonság lehetővé teszi a definiált erőforráshoz kapcs
 
 Minden szülő erőforrás csak bizonyos típusú erőforrásokat fogad el alárendelt erőforrásként. Az elfogadott erőforrástípusok a szülő erőforrás [sablon sémájában](https://github.com/Azure/azure-resource-manager-schemas) vannak megadva. A gyermek erőforrástípus neve tartalmazza a szülő erőforrástípus nevét, például a **Microsoft. Web/Sites/config** és a **Microsoft. Web/Sites/Extensions** is a **Microsoft. Web/Sites**alárendelt erőforrásai.
 
-Az alábbi példa egy SQL Servert és egy SQL-adatbázist mutat be. Figyelje meg, hogy az SQL-adatbázis és az SQL Server között explicit függőség van meghatározva annak ellenére, hogy az adatbázis a kiszolgáló gyermeke.
+Az alábbi példa egy logikai SQL Servert és adatbázist mutat be. Figyelje meg, hogy az adatbázis és a kiszolgáló között explicit függőség van meghatározva annak ellenére, hogy az adatbázis a kiszolgáló gyermeke.
 
 ```json
 "resources": [

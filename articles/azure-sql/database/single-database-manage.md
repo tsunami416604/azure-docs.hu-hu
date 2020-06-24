@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 0f348ea67583d10dae2ebc548a48b7e74b66a958
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343353"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254990"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Kiszolgálók és önálló adatbázisok létrehozása és kezelése Azure SQL Database
 
@@ -43,7 +43,7 @@ Ha egyetlen Azure SQL Database szeretne létrehozni a [Azure Portal](https://por
 
 ## <a name="manage-an-existing-server"></a>Meglévő kiszolgáló kezelése
 
-Egy meglévő kiszolgáló kezeléséhez navigáljon a kiszolgálóhoz számos módszer használatával – például egy adott SQL-adatbázisból, az **SQL-kiszolgálók** lapról vagy a **minden erőforrás** lapról.
+Egy meglévő kiszolgáló kezeléséhez navigáljon a kiszolgálóhoz számos módszer használatával – például egy adott adatbázis-oldalról, az **SQL-kiszolgálók** lapról vagy a **minden erőforrás** lapról.
 
 Meglévő adatbázis kezeléséhez navigáljon az SQL- **adatbázisok** lapra, és válassza ki a kezelni kívánt adatbázist. Az alábbi képernyőfelvételen megtudhatja, hogyan kezdheti el az adatbázishoz tartozó kiszolgálói szintű tűzfal beállítását az adatbázis **Áttekintés** lapján.
 
@@ -161,7 +161,7 @@ A kiszolgálók, adatbázisok és tűzfalak létrehozásához és kezeléséhez 
 |[Tűzfalszabályok – Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Tűzfalszabály beolvasása.|
 |[Tűzfalszabályok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|A tűzfalszabályok listáját adja vissza.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](migrate-to-database-from-sql-server.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](features-comparison.md).
