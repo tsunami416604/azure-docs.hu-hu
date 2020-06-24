@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: e4945535417f7d8d33308121267ba97e1f835e13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259603"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690421"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
@@ -37,7 +37,7 @@ Az AK-fürtök biztonsága javítható Azure Active Directory (AD) integrálás�
 
 ![Azure Active Directory-integráció AK-fürtökkel](media/concepts-identity/aad-integration.png)
 
-Az Azure AD-vel integrált AK-fürtök segítségével a felhasználók vagy csoportok hozzáférést biztosíthatnak a Kubernetes-erőforrásokhoz a névtérben vagy a fürtön belül. A `kubectl` konfigurációs környezet beszerzéséhez a felhasználó az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot futtathatja. Ha a felhasználó ezután együttműködik az AK-val a- `kubectl`vel, a rendszer felszólítja, hogy jelentkezzen be az Azure ad-beli hitelesítő adataival. Ez a megközelítés egyetlen forrást biztosít a felhasználói fiókok felügyeletéhez és a jelszó hitelesítő adataihoz. A felhasználó csak a fürt rendszergazdája által meghatározott erőforrásokat érheti el.
+Az Azure AD-vel integrált AK-fürtök segítségével a felhasználók vagy csoportok hozzáférést biztosíthatnak a Kubernetes-erőforrásokhoz a névtérben vagy a fürtön belül. A konfigurációs környezet beszerzéséhez a `kubectl` felhasználó az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot futtathatja. Ha a felhasználó ezután együttműködik az AK-val a `kubectl` -vel, a rendszer felszólítja, hogy jelentkezzen be az Azure ad-beli hitelesítő adataival. Ez a megközelítés egyetlen forrást biztosít a felhasználói fiókok felügyeletéhez és a jelszó hitelesítő adataihoz. A felhasználó csak a fürt rendszergazdája által meghatározott erőforrásokat érheti el.
 
 Az AK-fürtökön futó Azure AD-hitelesítés OpenID connectet használ, amely az OAuth 2,0 protokollra épülő identitási réteg. A OAuth 2,0 a védett erőforrások eléréséhez szükséges hozzáférési jogkivonatok beszerzésére és használatára vonatkozó mechanizmusokat határoz meg, az OpenID Connect pedig a OAuth 2,0 engedélyezési folyamat kiterjesztését valósítja meg a hitelesítéshez. Az OpenID Connecttel kapcsolatos további információkért tekintse meg az [ID Connect dokumentációját][openid-connect]. Az Azure AD által az OpenID Connect használatával beszerzett hitelesítési tokenek ellenőrzéséhez az AK-fürtök Kubernetes webhook token-hitelesítést használnak. További információt a [webhook token hitelesítési dokumentációjában][webhook-token-docs]talál.
 

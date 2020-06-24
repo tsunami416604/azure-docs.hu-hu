@@ -5,15 +5,15 @@ description: A Windows, Mac OS X és a Linux rendszerű ügyfelek biztonságos c
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: 013ebc2a1343c8eab3d477023e36660c93fa6da5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33f35dc2a8224f496e040b66b2b92bc4c2ec4682
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244484"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984854"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont – hely VPN-kapcsolat konfigurálása VNet natív Azure tanúsítványalapú hitelesítéssel: Azure Portal
 
@@ -159,7 +159,7 @@ A VPN-ügyfél konfigurációs fájljai tartalmazzák az eszközök azon beáll�
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Csatlakozás Mac VPN-ügyfélről
 
-A hálózat párbeszédpanelen keresse meg a használni kívánt ügyféloldali profilt, adja meg a beállításokat a [VpnSettings. XML fájlból](point-to-site-vpn-client-configuration-azure-cert.md#installmac), majd válassza a **Kapcsolódás**lehetőséget.
+A hálózat párbeszédpanelen keresse meg a használni kívánt ügyféloldali profilt, adja meg a beállításokat a [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac), majd válassza a **Kapcsolódás**lehetőséget.
 
 Részletes utasításokért lásd: [install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) . Ha nem sikerül a csatlakozás, ellenőrizze, hogy a virtuális hálózati átjáró nem alapszintű SKU-t használ-e. A Mac-ügyfelek nem támogatják az alapszintű SKU-t.
 

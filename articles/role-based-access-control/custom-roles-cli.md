@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/18/2020
+ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cac0116cf7a068e63cb54698f7273b8c063ff854
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734841"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984184"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure CLI-vel
 
@@ -41,31 +41,27 @@ Egyéni szerepkörök létrehozásához a következőkre lesz szüksége:
 
 ## <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
 
-A hozzárendeléshez elérhető egyéni szerepkörök listázásához használja [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Az alábbi példák az aktuális előfizetésben szereplő összes egyéni szerepkört felsorolják.
+A hozzárendeléshez elérhető egyéni szerepkörök listázásához használja [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Az alábbi példa felsorolja az aktuális előfizetés összes egyéni szerepkörét.
 
 ```azurecli
-az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
+az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
 ```
 
-```azurecli
-az role definition list --output json | jq '.[] | if .roleType == "CustomRole" then {"roleName":.roleName, "roleType":.roleType} else empty end'
-```
-
-```Output
-{
-  "roleName": "My Management Contributor",
-  "type": "CustomRole"
-}
-{
-  "roleName": "My Service Reader Role",
-  "type": "CustomRole"
-}
-{
-  "roleName": "Virtual Machine Operator",
-  "type": "CustomRole"
-}
-
-...
+```json
+[
+  {
+    "roleName": "My Management Contributor",
+    "type": "CustomRole"
+  },
+  {
+    "roleName": "My Service Reader Role",
+    "type": "CustomRole"
+  },
+  {
+    "roleName": "Virtual Machine Operator",
+    "type": "CustomRole"
+  }
+]
 ```
 
 ## <a name="list-a-custom-role-definition"></a>Egyéni szerepkör-definíció listázása
@@ -73,7 +69,7 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 Egyéni szerepkör-definíciók listázásához használja [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Ez ugyanaz a parancs, amelyet egy beépített szerepkörhöz használ.
 
 ```azurecli
-az role definition list --name <role_name>
+az role definition list --name {roleName}
 ```
 
 A következő példa a *virtuális gép operátori* szerepkörének definícióját sorolja fel:
@@ -82,14 +78,14 @@ A következő példa a *virtuális gép operátori* szerepkörének definíciój
 az role definition list --name "Virtual Machine Operator"
 ```
 
-```Output
+```json
 [
   {
     "assignableScopes": [
-      "/subscriptions/11111111-1111-1111-1111-111111111111"
+      "/subscriptions/{subscriptionId}"
     ],
     "description": "Can monitor and restart virtual machines.",
-    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000",
+    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000",
     "name": "00000000-0000-0000-0000-000000000000",
     "permissions": [
       {
@@ -121,22 +117,24 @@ az role definition list --name "Virtual Machine Operator"
 Az alábbi példa a *virtuális gép operátori* szerepkörének műveleteit sorolja fel:
 
 ```azurecli
-az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
+az role definition list --name "Virtual Machine Operator" --output json --query '[].permissions[0].actions'
 ```
 
-```Output
+```json
 [
-  "Microsoft.Storage/*/read",
-  "Microsoft.Network/*/read",
-  "Microsoft.Compute/*/read",
-  "Microsoft.Compute/virtualMachines/start/action",
-  "Microsoft.Compute/virtualMachines/restart/action",
-  "Microsoft.Authorization/*/read",
-  "Microsoft.ResourceHealth/availabilityStatuses/read",
-  "Microsoft.Resources/subscriptions/resourceGroups/read",
-  "Microsoft.Insights/alertRules/*",
-  "Microsoft.Insights/diagnosticSettings/*",
-  "Microsoft.Support/*"
+  [
+    "Microsoft.Storage/*/read",
+    "Microsoft.Network/*/read",
+    "Microsoft.Compute/*/read",
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/restart/action",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Insights/diagnosticSettings/*",
+    "Microsoft.Support/*"
+  ]
 ]
 ```
 
@@ -145,12 +143,12 @@ az role definition list --name "Virtual Machine Operator" --output json | jq '.[
 Egyéni szerepkör létrehozásához használja [az az role definition Create](/cli/azure/role/definition#az-role-definition-create)lehetőséget. A szerepkör-definíció lehet JSON-leírás vagy egy JSON-leírást tartalmazó fájl elérési útja.
 
 ```azurecli
-az role definition create --role-definition <role_definition>
+az role definition create --role-definition {roleDefinition}
 ```
 
 Az alábbi példa egy *Virtuálisgép-kezelő*nevű egyéni szerepkört hoz létre. Ez az egyéni szerepkör hozzáférést rendel a *Microsoft. számítás*, a *Microsoft. Storage*és a *Microsoft. Network* erőforrás-szolgáltatók összes olvasási műveletéhez, és hozzáférést rendel a virtuális gépek indításához, újraindításához és figyeléséhez. Ez az egyéni szerepkör két előfizetésben is használható. Ez a példa egy JSON-fájlt használ bemenetként.
 
-vmoperator. JSON
+vmoperator.jsbekapcsolva
 
 ```json
 {
@@ -173,8 +171,8 @@ vmoperator. JSON
 
   ],
   "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333"
+    "/subscriptions/{subscriptionId1}",
+    "/subscriptions/{subscriptionId2}"
   ]
 }
 ```
@@ -188,12 +186,12 @@ az role definition create --role-definition ~/roles/vmoperator.json
 Egyéni szerepkör frissítéséhez először az [az role definition List](/cli/azure/role/definition#az-role-definition-list) paranccsal kérheti le a szerepkör-definíciót. Másodszor, végezze el a kívánt módosításokat a szerepkör-definícióban. Végül az [az role definition Update](/cli/azure/role/definition#az-role-definition-update) paranccsal mentse a frissített szerepkör-definíciót.
 
 ```azurecli
-az role definition update --role-definition <role_definition>
+az role definition update --role-definition {roleDefinition}
 ```
 
-A következő példa hozzáadja a *Microsoft. bepillantást/diagnosticSettings/* operationt a `Actions` `AssignableScopes` szolgáltatáshoz, és hozzáadja a felügyeleti csoportot a *virtuális gép kezelője* egyéni szerepkörhöz. A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
+A következő példa hozzáadja a *Microsoft. bepillantást/diagnosticSettings/* operationt a `Actions` szolgáltatáshoz, és hozzáadja a felügyeleti csoportot a `AssignableScopes` *virtuális gép kezelője* egyéni szerepkörhöz. A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
 
-vmoperator. JSON
+vmoperator.jsbekapcsolva
 
 ```json
 {
@@ -217,8 +215,8 @@ vmoperator. JSON
 
   ],
   "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333",
+    "/subscriptions/{subscriptionId1}",
+    "/subscriptions/{subscriptionId2}",
     "/providers/Microsoft.Management/managementGroups/marketing-group"
   ]
 }
@@ -233,7 +231,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 Egyéni szerepkör törléséhez használja [az az role definition delete](/cli/azure/role/definition#az-role-definition-delete)paranccsal. A törlendő szerepkör megadásához használja a szerepkör nevét vagy a szerepkör AZONOSÍTÓját. A szerepkör-azonosító meghatározásához használja az [az role definition List](/cli/azure/role/definition#az-role-definition-list).
 
 ```azurecli
-az role definition delete --name <role_name or role_id>
+az role definition delete --name {roleNameOrId}
 ```
 
 A következő példa törli a *virtuális gép operátorának* egyéni szerepkörét.

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 0833215449c92a1710dcaf4f2fe13ce9a16685ba
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434045"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983383"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -32,11 +32,11 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 ## <a name="known-issues"></a>Ismert problémák
 
 > [!NOTE]
-> A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
+> A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md) és-feladatok megtekintésére, az API-k elérésére és a tartalmak titkosítására vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például az átalakítások és a feladatok kezeléséhez) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
+>
+> Részletekért lásd: [a Media Services v3 Azure Portal korlátozásai](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
-További információ: [áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
-
-## <a name="june-2020"></a>Június 2020
+## <a name="june-2020"></a>2020. június
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>Élő videó-elemzések IoT Edge előzetes kiadásban
 
@@ -69,7 +69,7 @@ Media Services GA'ed a következő Azure Government régiókban: *USA Korm. Ariz
 
 Az élő és a videó igény szerinti folyamatos átviteléhez a CDN támogatását is hozzáadta a *forrás-és a kisegítő* fejlécekhez. olyan ügyfelek számára érhető el, akik közvetlen szerződést kötöttek a Akamai CDN-vel. Forrás – Assist CDN – a Meghívási funkció a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Azure Media Services-forrás között:
 
-|HTTP-fejléc|Értékek|Küldő|Fogadó|Szerep|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
 |CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|A CDN elérési útjának biztosítása|
@@ -207,7 +207,7 @@ A Media Services teljesítmény-fejlesztési funkciókat tartalmazó frissítés
 
 ## <a name="march-2019"></a>2019. március
 
-A dinamikus csomagolás mostantól támogatja a Dolby Atmos-t. További információ: [dinamikus csomagolás által támogatott hangkodekek](dynamic-packaging-overview.md#audio-codecs).
+A dinamikus csomagolás mostantól támogatja a Dolby Atmos-t. További információ: [dinamikus csomagolás által támogatott hangkodekek](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
 
 Mostantól megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a folyamatos átviteli Lokátorra vonatkozik. További információ: [szűrők hozzárendelése a streaming Locator](filters-concept.md#associating-filters-with-streaming-locator)szolgáltatáshoz.
 
@@ -314,7 +314,7 @@ Az Azure AD-hitelesítés és a szerepköralapú Access Control (RBAC) lehetőv�
 
 #### <a name="client-sdks"></a>Ügyfél-SDK-k  
 
-A Media Services v3 által támogatott nyelvek: .NET Core, Java, Node. js, Ruby, írógéppel, Python, go.
+A Media Services v3 által támogatott nyelvek: .NET Core, Java, Node.js, Ruby, írógéppel, Python, go.
 
 #### <a name="live-encoding-updates"></a>Élő kódolási frissítések
 
@@ -370,13 +370,17 @@ A .NET SDK-ban a következő funkciók találhatók:
 
 ### <a name="known-issues"></a>Ismert problémák
 
-* A feladatok elküldésekor megadhatja, hogy a forrás videóját HTTPS URL-címek, SAS URL-címek vagy az Azure Blob Storage-ban található fájlok elérési útjai használatával beolvassa. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
+* A feladatok elküldésekor megadhatja, hogy a forrás videóját HTTPS URL-címek, SAS URL-címek vagy az Azure Blob Storage-ban található fájlok elérési útjai használatával beolvassa. A Media Services v3 jelenleg nem támogatja a HTTPS URL-címeken keresztüli darabolásos átvitel kódolását.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
+
+[Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="next-steps"></a>További lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v3 dokumentációjának frissítései](docs-release-notes.md)

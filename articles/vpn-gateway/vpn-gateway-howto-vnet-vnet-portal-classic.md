@@ -5,15 +5,15 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201849"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985472"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet-VNet közötti kapcsolatok konfigurálása (klasszikus)
 
@@ -71,7 +71,7 @@ Fontos, hogy döntse el, milyen tartományokat fog használni a virtuális hál�
 
 Az alábbi táblázat a virtuális hálózatok definiálására mutat példát. A tartományokat csak iránymutatásként használja. Jegyezze fel a virtuális hálózatok tartományait. Ezekre az információkra szüksége lesz a későbbi lépésekhez.
 
-**Például**
+**Példa**
 
 | Virtual Network | Címtartomány | Régió | Kapcsolódás helyi hálózati helyhez |
 |:--- |:--- |:--- |:--- |
