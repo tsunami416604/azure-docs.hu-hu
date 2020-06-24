@@ -11,24 +11,27 @@ ms.reviewer: nibaccam
 ms.topic: how-to
 ms.date: 06/04/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 5d6e4bfb3c99d2fb570fea7aaebc7150088f1036
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6dd3efb3e8bbe902d3c8267aff714a8e7f77acc0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559376"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738838"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Modell metrikáinak nyomon követése és ML modellek üzembe helyezése a MLflow és a Azure Machine Learning (előzetes verzió)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ez a cikk bemutatja, hogyan engedélyezheti a MLflow követési URI-és naplózási API-JÁT, a [MLflow-követést](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)együttesen, a MLflow-kísérletek és a Azure Machine learning összekapcsolásához. Ezzel lehetővé teszi, hogy
+Ez a cikk bemutatja, hogyan engedélyezheti a MLflow követési URI-és naplózási API-JÁT, a [MLflow-követést](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)együttesen, a MLflow-kísérletek és a Azure Machine learning összekapcsolásához.  Ezzel lehetővé teszi, hogy
 
 + A kísérlet metrikáinak és összetevőinek nyomon követése és naplózása a [Azure Machine learning munkaterületen](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces). Ha már használja a kísérletek MLflow követését, a munkaterület központosított, biztonságos és skálázható helyet biztosít a képzési mérőszámok és modellek tárolásához.
 
 + A MLflow-kísérletek Azure Machine Learning webszolgáltatásként való üzembe helyezése. Webszolgáltatásként való üzembe helyezéssel az éles modelleken alkalmazhatja a Azure Machine Learning monitorozási és adateltolódás-észlelési funkcióit. 
 
 A [MLflow](https://www.mlflow.org) egy nyílt forráskódú kódtár a gépi tanulási kísérletek életciklusának kezeléséhez. A MLFlow Tracking a MLflow egy olyan összetevője, amely naplózza és nyomon követi a képzési műveletek mérőszámait és modelljeit, függetlenül a kísérlet környezetében – helyileg a számítógépén, egy távoli számítási célponton, egy virtuális gépen vagy egy Azure Databricks fürtön. 
+
+>[!NOTE]
+> A nyílt forráskódú kódtár MLflow gyakran változnak. Ennek megfelelően a Azure Machine Learning és a MLflow-integráción keresztül elérhető funkciókat előzetes verziónak kell tekinteni, és a Microsoft nem támogatja teljes mértékben.
 
 Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon követheti a kísérlet futtatási metrikáit, és az Azure Machine Learning munkaterületen tárolhatja a modell összetevőit.
 
@@ -44,7 +47,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
  A MLflow követése olyan metrikai naplózási és összetevő-tárolási funkciókat kínál, amelyek csak a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-n keresztül érhetők el.
 
 
-| | MLflow &nbsp; követése <!--& Deployment--> | Python SDK Azure Machine Learning |  Azure Machine Learning parancssori felület | Azure Machine Learning Studio|
+| | MLflow &nbsp; követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning parancssori felület | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Munkaterület kezelése |   | ✓ | ✓ | ✓ |
 | Adattárak használata  |   | ✓ | ✓ | |
@@ -52,11 +55,10 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 | Összetevők feltöltése | ✓ | ✓ |   | |
 | Metrikák megtekintése     | ✓ | ✓ | ✓ | ✓ |
 | Számítások kezelése   |   | ✓ | ✓ | ✓ |
+| Modellek üzembe helyezése    | ✓ | ✓ | ✓ | ✓ |
+|Modell teljesítményének figyelése||✓|  |   |
+| Adateltérés észlelése |   | ✓ |   | ✓ |
 
-<!--| Deploy models    | ✓ | ✓ | ✓ | ✓ |
-|Monitor model performance||✓|  |   |
-| Detect data drift |   | ✓ |   | ✓ |
--->
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Telepítse a MLflow.](https://mlflow.org/docs/latest/quickstart.html)
@@ -72,9 +74,6 @@ Telepítse a `azureml-mlflow` csomagot a MLflow-követés használatára Azure M
 ```shell
 pip install azureml-mlflow
 ```
-
->[!NOTE]
->A azureml. a névterek gyakran változnak, ahogy dolgozunk a szolgáltatás tökéletesítésén. Ennek megfelelően az ebben a névtérben található bármit előzetes verziónak kell tekinteni, és a Microsoft nem támogatja teljes mértékben.
 
 Importálja a `mlflow` és [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) osztályokat a MLflow követési URI-ja eléréséhez és a munkaterület konfigurálásához.
 
@@ -366,6 +365,6 @@ Ha nem tervezi a naplózott metrikák és összetevők használatát a munkater�
 
 Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://aka.ms/azureml-mlflow-examples) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A modellek kezelése](concept-model-management-and-deployment.md).
 * Figyelje az [adateltolódáshoz](how-to-monitor-data-drift.md)használt üzemi modelleket.

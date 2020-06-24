@@ -1,28 +1,28 @@
 ---
-title: Azure Firewall Manager megbízható biztonsági partner üzembe helyezése
-description: Megtudhatja, hogyan helyezhet üzembe egy Azure Firewall Manager megbízható biztonságot a Azure Portal használatával.
+title: Azure Firewall Manager biztonsági partner szolgáltatójának üzembe helyezése
+description: Megtudhatja, hogyan helyezhet üzembe egy Azure Firewall Manager biztonsági partner-szolgáltatót a Azure Portal használatával.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 06/15/2020
 ms.author: victorh
-ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e06f8e3adaedbc8847aacba0ca4ad9c6a172c9b7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73931308"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791690"
 ---
-# <a name="deploy-a-trusted-security-partner-preview"></a>Megbízható biztonsági partner üzembe helyezése (előzetes verzió)
+# <a name="deploy-a-security-partner-provider-preview"></a>Biztonsági partner szolgáltató üzembe helyezése (előzetes verzió)
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-A Azure Firewall Managerben található *megbízható biztonsági partnerek* lehetővé teszik, hogy ismerős, legjobb, harmadik féltől származó biztonsági szolgáltatásokat (SECaaS) kínálja a felhasználók internet-hozzáférésének védelmére.
+A Azure Firewall Managerben található *biztonsági partner szolgáltatók* lehetővé teszik, hogy ismerős, legjobb, harmadik féltől származó biztonsági szolgáltatásokat (SECaaS) kínáljon, hogy megvédje a felhasználók internet-hozzáférését.
 
 További információ a támogatott forgatókönyvekről és az ajánlott eljárásokról: [Mik azok a megbízható biztonsági partnerek (előzetes verzió)?](trusted-security-partners.md).
 
-A támogatott biztonsági partnerek a **ZScaler** és a **iboss** az előzetes verzióhoz. A támogatott régiók a következők: WestCentralUS, NorthCentralUS, WestUS, WestUS2 és EastUS.
+A támogatott biztonsági partnerek a **ZScaler**, az **ellenőrzési pont**és a **iboss** . A támogatott régiók a következők: WestCentralUS, NorthCentralUS, WestUS, WestUS2 és EastUS.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,6 +41,8 @@ A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igényb
 
 ## <a name="deploy-a-third-party-security-provider-in-a-new-hub"></a>Külső gyártótól származó biztonsági szolgáltató üzembe helyezése új központban
 
+Ugorja át ezt a szakaszt, ha egy külső szolgáltatót egy meglévő hubhoz telepít.
+
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 2. A **Search (keresés**) mezőbe írja be a **Firewall Manager** kifejezést, majd válassza ki a **szolgáltatások**területen.
 3. Navigáljon **első lépések**. Válassza **a biztonságos virtuális központ létrehozása**lehetőséget. 
@@ -51,9 +53,9 @@ A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igényb
    > A megbízható biztonsági partnerek VPN Gateway alagutak használatával csatlakoznak a hubhoz. Ha törli a VPN Gateway, a megbízható biztonsági partnerekkel létesített kapcsolatok elvesznek.
 7. Ha Azure Firewall szeretné központilag telepíteni a privát forgalmat, valamint a külső szolgáltatót az internetes forgalom szűrésére, válassza ki a szabályzatot a Azure Firewallhoz. Tekintse meg a [támogatott forgatókönyveket](trusted-security-partners.md#key-scenarios).
 8. Ha csak egy külső gyártótól származó biztonsági szolgáltatót szeretne üzembe helyezni a központban, válassza a **Azure Firewall: engedélyezve/letiltva** lehetőséget a **Letiltva**beállításhoz. 
-9. Válassza a Next (tovább) lehetőséget **: megbízható biztonsági partnerek**.
-10. Válassza ki a **megbízható biztonsági partner** beállítást az **engedélyezéshez**. Válasszon partnert. 
-11. Kattintson a **Tovább** gombra. 
+9. Válassza a Next (tovább) lehetőséget **: biztonsági partner szolgáltatója**.
+10. Válassza ki a **biztonsági partner szolgáltatót** az **engedélyezéshez**. Válasszon partnert. 
+11. Válassza a **Tovább** lehetőséget. 
 12. Tekintse át a tartalmat, majd válassza a **Létrehozás**lehetőséget.
 
 A VPN-átjáró üzembe helyezése több mint 30 percet is igénybe vehet.
@@ -75,20 +77,25 @@ Ne feledje, hogy a VPN-átjárót központilag kell telepíteni ahhoz, hogy egy 
 
 A virtuális központ VPN Gatewayhoz tartozó alagutak beállításához a harmadik féltől származó szolgáltatók hozzáférési jogokkal kell rendelkezniük a központhoz. Ehhez társítson egy egyszerű szolgáltatást az előfizetéséhez vagy az erőforráscsoporthoz, és adja meg a hozzáférési jogosultságokat. Ezeket a hitelesítő adatokat a portálon keresztül kell megadnia a harmadik féltől.
 
+### <a name="create-and-authorize-a-service-principal"></a>Egyszerű szolgáltatás létrehozása és engedélyezése
+
 1. Azure Active Directory (AD) egyszerű szolgáltatás létrehozása: kihagyhatja az átirányítási URL-címet. 
 
-   [Útmutató: a portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
 2. Adja meg az egyszerű szolgáltatásnév hozzáférési jogosultságait és hatókörét.
-   [Útmutató: a portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
 
    > [!NOTE]
    > A részletesebb szabályozás érdekében korlátozhatja a hozzáférést csak az erőforráscsoporthoz.
-3. Kövesse a [ZScaler: Microsoft Azure virtuális WAN-integrációs utasítások konfigurálása](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) a következőhöz:
 
-   - Jelentkezzen be a partner portálra, és adja meg a hitelesítő adatait, és adja meg a megbízható partner hozzáférését a biztonságos hubhoz.
-   - Szinkronizálja a virtuális hubokat a partner portálon, és állítsa be az alagutat a virtuális hubhoz. Ezt az Azure AD-hitelesítési hitelesítő adatok érvényesítése után teheti meg.
+### <a name="visit-partner-portal"></a>A partneri portál meglátogatása
+
+1. Kövesse a partner által megadott utasításokat a telepítés befejezéséhez. Ide tartozik a HRE-információk elküldése a hub észleléséhez és a csatlakozáshoz, a kimenő házirendek frissítése, valamint a kapcsolati állapot és naplók ellenőrzése.
+
+   - [Zscaler: Microsoft Azure virtuális WAN-integráció konfigurálása](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration).
+   - [Ellenőrzési pont: Microsoft Azure virtuális WAN-integráció konfigurálása](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm).
    
-4. Az Azure-beli Azure Virtual WAN-portálon megtekintheti az alagút létrehozási állapotát. Miután az alagutak az Azure-ban és a partner portálon **is megjelennek, folytassa a következő** lépésekkel, hogy beállítsa az útvonalakat annak kiválasztásához, hogy mely ágakat és virtuális hálózatok kell elküldeni az internetes forgalomnak a partnernek.
+2. Az Azure-beli Azure Virtual WAN-portálon megtekintheti az alagút létrehozási állapotát. Miután az alagutak az Azure-ban és a partner portálon **is megjelennek, folytassa a következő** lépésekkel, hogy beállítsa az útvonalakat annak kiválasztásához, hogy mely ágakat és virtuális hálózatok kell elküldeni az internetes forgalomnak a partnernek.
 
 ## <a name="configure-route-settings"></a>Útvonal-beállítások konfigurálása
 
@@ -116,7 +123,3 @@ Az útvonal-beállítás lépéseinek befejezése után a VNet virtuális gépek
 ## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Manager előzetes verziójával a Azure Portal használatával](secure-cloud-network.md)
-
-
-
-

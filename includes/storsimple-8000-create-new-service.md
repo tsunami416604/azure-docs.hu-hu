@@ -19,7 +19,7 @@ ms.locfileid: "76020948"
 
     ![StorSimple-eszközkezelő létrehozása](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    _StorSimple fizikai eszközök_ keresése. Válassza ki, majd kattintson a **StorSimple fizikaieszköz-sorozat** lehetőségre, majd kattintson a **Létrehozás** gombra. Azt is megteheti, **+** hogy a Azure Portal kattintson a **tárolás**elemre, majd a **StorSimple fizikai eszköz sorozat**elemre.
+    _StorSimple fizikai eszközök_ keresése. Válassza ki, majd kattintson a **StorSimple fizikaieszköz-sorozat** lehetőségre, majd kattintson a **Létrehozás** gombra. Azt is megteheti, hogy a Azure Portal kattintson a **+** **tárolás**elemre, majd a **StorSimple fizikai eszköz sorozat**elemre.
 
     ![StorSimple-eszközkezelő létrehozása](./media/storsimple-8000-create-new-service/createssdevman11.png)
 

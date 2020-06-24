@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cosmos-db
 author: LuisBosquez
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: lbosq
 ms.custom: include file
-ms.openlocfilehash: 0f471c5aefdb39396ea189984d32a9e8f5419182
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8d12645bd302a7ea808f13c07e2a72f66846bad7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200498"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85121427"
 ---
 Most már használhatja a Azure Portal Adatkezelő eszközét egy Azure Cosmos DB API MongoDB-adatbázis és-tároló létrehozásához. 
 
@@ -21,7 +21,7 @@ Most már használhatja a Azure Portal Adatkezelő eszközét egy Azure Cosmos D
     
     A jobb szélen megjelenik a **tároló hozzáadása** felület, ezért a jobb oldali görgetéshez jobbra kell görgetni a megjelenítéshez.
 
-    ![Az Azure Portal Adatkezelője a Tároló hozzáadása panellel](./media/cosmos-db-create-collection/azure-cosmosdb-mongodb-data-explorer.png)
+    :::image type="content" source="./media/cosmos-db-create-collection/azure-cosmosdb-mongodb-data-explorer.png" alt-text="Az Azure Portal Adatkezelője a Tároló hozzáadása panellel":::
 
 2. A **tároló hozzáadása** lapon adja meg az új tároló beállításait.
 
@@ -33,4 +33,4 @@ Most már használhatja a Azure Portal Adatkezelő eszközét egy Azure Cosmos D
     |**Tárolókapacitás**|Rögzített (10 GB)|Adja meg a *rögzített (10gb)* értéket ehhez az alkalmazáshoz. Ha a *korlátlan*lehetőséget választja, létre kell hoznia egy `Shard Key` elemet, amelyhez a beszúrt elemek szükségesek.|
     |**Szilánk kulcsa**| /_id| A cikkben ismertetett minta nem használ szegmens kulcsot, ezért a *_id* az automatikusan generált azonosító mezőt fogja használni a szegmens kulcsaként. További információ a particionálásról, más néven particionálásról [Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview)|
         
-    Kattintson az **OK** gombra. Az Adatkezelő megjeleníti az új adatbázist és tárolót.
+    Válassza az **OK** lehetőséget. Az Adatkezelő megjeleníti az új adatbázist és tárolót.

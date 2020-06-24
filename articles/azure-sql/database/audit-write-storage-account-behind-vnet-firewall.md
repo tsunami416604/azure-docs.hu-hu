@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 06/09/2020
+ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 7e03f8436d432ffb4e20a442261ccf18c57a3934
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628165"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944764"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Naplózás írása a VNet és a tűzfal mögötti Storage-fiókba
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -77,7 +77,7 @@ Az ebben a szakaszban szereplő parancsfájloknak a futtatása előtt frissíten
 |:-----|:-----|
 |`<subscriptionId>`| Azure-előfizetés azonosítója|
 |`<resource group>`| Erőforráscsoport|
-|`<logical SQL server>`| Kiszolgálónév|
+|`<logical SQL server>`| Kiszolgáló neve|
 |`<administrator login>`| Rendszergazdai fiók |
 |`<complex password>`| A rendszergazdai fiókhoz tartozó összetett jelszó|
 
@@ -146,7 +146,19 @@ Az SQL audit beállítása az események VNet vagy tűzfal mögötti Storage-fi�
 - [Adatbázis-naplózási szabályzat létrehozása vagy frissítése (set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [Kiszolgáló naplózási szabályzatának létrehozása vagy frissítése (set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="using-azure-resource-manager-template"></a>Az Azure Resource Manager-sablonok használata
+
+A naplózás konfigurálásával adatbázis-eseményeket írhat a virtuális hálózat és a tűzfal mögötti Storage-fiókban [Azure Resource Manager](../../azure-resource-manager/management/overview.md) sablonnal, ahogy az alábbi példában is látható:
+
+> [!IMPORTANT]
+> A virtuális hálózat és a tűzfal mögötti Storage-fiók használatához a **isStorageBehindVnet** paramétert True értékre kell állítani.
+
+- [Egy Azure SQL Server üzembe helyezése, amely lehetővé teszi a naplózást egy blob Storage-ba a naplók írásához](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+
+> [!NOTE]
+> A csatolt minta egy külső nyilvános tárházban található, és az "adott állapotban" van megadva, garancia nélkül, és semmilyen Microsoft támogatási program/szolgáltatás nem támogatott.
+
+## <a name="next-steps"></a>További lépések
 
 * [A PowerShell használatával hozzon létre egy virtuális hálózati szolgáltatási végpontot, majd egy virtuális hálózati szabályt a Azure SQL Databasehoz.](scripts/vnet-service-endpoint-rule-powershell-create.md)
 * [Virtual Network szabályok: a REST API-kkal végzett műveletek](/rest/api/sql/virtualnetworkrules)

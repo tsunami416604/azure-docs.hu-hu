@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216448"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945392"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure-beli virtuális gépek figyelése Azure Monitor
 Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Azure-beli virtuális gépek monitorozási adatainak gyűjtésére és elemzésére az állapotuk fenntartása érdekében. A virtuális gépeket a rendelkezésre állás és a teljesítmény figyelésére használhatja Azure Monitor mint bármely [más Azure-erőforrást](monitor-azure-resource.md), de ezek más erőforrásokkal is egyediek, mivel a vendég operációs és a rendszer, valamint a rajta futó munkaterhelések figyelésére is szükség van. 
@@ -105,9 +105,9 @@ Telepítse a diagnosztikai bővítményt egyetlen Windowsos virtuális géphez a
 A következő témakörben talál további információt: a (z) és a. [configure](../platform/collect-custom-metrics-linux-telegraf.md#install-and-configure-telegraf) A **diagnosztikai beállítások** menüpont Linux rendszeren érhető el, de csak az Azure Storage-ba való adatküldést teszi lehetővé.
 
 ### <a name="collect-platform-metrics-and-activity-log"></a>Platform metrikáinak és tevékenységi naplójának gyűjtése
-Megtekintheti a Azure Portalban lévő egyes virtuálisgép-gazdagépek által gyűjtött platform-metrikákat és a tevékenység naplóját. Gyűjtsön adatokat ugyanabba a Log Analytics munkaterületre, mint Azure Monitor for VMs, hogy elemezze a virtuális gép által összegyűjtött többi figyelési adattal. Ez a gyűjtemény [diagnosztikai beállítással](../platform/diagnostic-settings.md)van konfigurálva. Gyűjtsön a tevékenység naplóját [az előfizetés diagnosztikai beállításával](../platform/diagnostic-settings.md#create-diagnostic-settings-in-azure-portal).
+Megtekintheti a Azure Portalban lévő egyes virtuálisgép-gazdagépek által gyűjtött platform-metrikákat és a tevékenység naplóját. Gyűjtsön adatokat ugyanabba a Log Analytics munkaterületre, mint Azure Monitor for VMs, hogy elemezze a virtuális gép által összegyűjtött többi figyelési adattal. Ez a gyűjtemény [diagnosztikai beállítással](../platform/diagnostic-settings.md)van konfigurálva. Gyűjtsön a tevékenység naplóját [az előfizetés diagnosztikai beállításával](../platform/diagnostic-settings.md#create-in-azure-portal).
 
-Platform-metrikák gyűjtése a virtuális gép diagnosztikai beállításával. A többi Azure-erőforrástól eltérően nem hozhat létre diagnosztikai beállítást a Azure Portal virtuális géphez, de [más módszert](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell)kell használnia. Az alábbi példák azt mutatják be, hogyan gyűjthetők be a virtuális gépek metrikái a PowerShell és a parancssori felület használatával.
+Platform-metrikák gyűjtése a virtuális gép diagnosztikai beállításával. A többi Azure-erőforrástól eltérően nem hozhat létre diagnosztikai beállítást a Azure Portal virtuális géphez, de [más módszert](../platform/diagnostic-settings.md#create-using-powershell)kell használnia. Az alábbi példák azt mutatják be, hogyan gyűjthetők be a virtuális gépek metrikái a PowerShell és a parancssori felület használatával.
 
 ```powershell
 Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"

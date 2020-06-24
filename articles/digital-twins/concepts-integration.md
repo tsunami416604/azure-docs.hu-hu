@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ba4188445f9bdf791ef760936bd27ac0f507fb4c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e266e9f8738a0c7d06c1f3b3f7213ad807e179fc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613235"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737172"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Az Azure Digital Twins integrálása más szolgáltatásokkal
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure digitális Twins jellemzően más szolgáltatásokkal együtt használható. Az [**Event Routes**](concepts-route-events.md)használatával az Azure Digital Twins olyan felsőbb rétegbeli szolgáltatásokból származó adatokhoz jut, mint például a [IoT hub](../iot-hub/about-iot-hub.md), amely a telemetria és az értesítések továbbítására szolgál. Az Azure Digital Twins a tárolás, a munkafolyamat-integráció, az elemzés és más felhasználás céljából is továbbíthatja az adattovábbítást a későbbi szolgáltatásokhoz. 
 
@@ -39,7 +42,7 @@ Számos más szolgáltatás is van, ahol érdemes lehet végső soron az adatait
 
 Ha például az [Azure Maps](../azure-maps/about-azure-maps.md) is használja, és szeretné összekapcsolni a helyet az Azure Digital Twins [Twin gráfmal](concepts-twins-graph.md), a Azure functions a Event Grid használatával a telepítésben lévő összes szolgáltatás közötti kommunikációt is létrehozhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a végpontokról és az útválasztási eseményekről a külső szolgáltatásokra:
 * [Fogalmak: az Azure Digital Twins eseményeinek továbbítása](concepts-route-events.md)

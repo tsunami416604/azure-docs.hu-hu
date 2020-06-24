@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffbf37730d5064edcd067c3383fe18c342a2b053
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77619914"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738498"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 
@@ -114,7 +114,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>A blokk blobjának beolvasása
 
-Ezután olvasnia kell a `$blocklist` változót az adatlekérdezéshez. Ebben a példában a Blocklist áttekintjük az egyes blokkokból származó bájtokat, és egy tömbben mesélik el őket. Az [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) metódus használatával kérheti le az adatgyűjtést.
+Ezután olvasnia kell a változót az adatlekérdezéshez `$blocklist` . Ebben a példában a Blocklist áttekintjük az egyes blokkokból származó bájtokat, és egy tömbben mesélik el őket. Az [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) metódus használatával kérheti le az adatgyűjtést.
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
@@ -158,7 +158,7 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Most a `$valuearray` tömb minden blokk sztring értékét tartalmazza. A bejegyzés ellenőrzéséhez szerezze be a másodikat a tömb utolsó értékére a futtatásával `$valuearray[$valuearray.Length-2]`. Nem szeretné, hogy az utolsó érték, mert ez a záró zárójel.
+Most a `$valuearray` tömb minden blokk sztring értékét tartalmazza. A bejegyzés ellenőrzéséhez szerezze be a másodikat a tömb utolsó értékére a futtatásával `$valuearray[$valuearray.Length-2]` . Nem szeretné, hogy az utolsó érték, mert ez a záró zárójel.
 
 Az érték eredményei az alábbi példában láthatók:
 

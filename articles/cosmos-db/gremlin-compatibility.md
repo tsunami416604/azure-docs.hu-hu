@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 989a033a843b861c34dc9dbdbced50399f8e5cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1db7937cb574ce62986f25e0bfa688dc54b5c606
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81449884"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700599"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin kompatibilitása
-Azure Cosmos DB Graph Engine szorosan követi az [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) bejárási lépések specifikációját, de különbségek vannak.
+Azure Cosmos DB Graph Engine szorosan követi az [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) bejárási lépések specifikációját, de eltérések vannak a Azure Cosmos DBra vonatkozó implementációban. A támogatott Gremlin lépések listáját a [GREMLIN API-protokoll támogatását](gremlin-support.md) ismertető cikkben tekintheti meg.
 
 ## <a name="behavior-differences"></a>Viselkedési különbségek
 
@@ -23,23 +23,53 @@ Azure Cosmos DB Graph Engine szorosan követi az [Apache TinkerPop](https://tink
 
 ## <a name="unsupported-features"></a>Nem támogatott funkciók
 
-* A ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** egy programnyelvfüggetlen specifikáció gráfbejárásokhoz. Cosmos DB gráf még nem támogatja. A `GremlinClient.SubmitAsync()` bejárást szöveges karakterláncként használja és adja át.
+* A ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** egy programnyelvfüggetlen specifikáció gráfbejárásokhoz. Cosmos DB gráf még nem támogatja. `GremlinClient.SubmitAsync()`A bejárást szöveges karakterláncként használja és adja át.
 
 * ***`property(set, 'xyz', 1)`*** a kardinális beállítása jelenleg nem támogatott. A `property(list, 'xyz', 1)` használható helyette. További információ: [Vertex Properties with TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-* ***`atch()`*** lehetővé teszi a graphok lekérdezését a deklaratív minta egyeztetésével. Ez a funkció nem érhető el.
+* A *** `match()` lépés*** jelenleg nem érhető el. Ez a lépés deklaratív lekérdezési képességeket biztosít.
 
 * A csúcspontokon vagy éleken lévő ***Tulajdonságok*** nem támogatottak. A tulajdonságok csak egyszerű típusok vagy tömbök lehetnek.
 
-* ***A tömb tulajdonságainak*** `order().by(<array property>)` rendezése nem támogatott. A rendezést csak az egyszerű típusok támogatják.
+* ***Rendezés tömb tulajdonságai szerint*** `order().by(<array property>)` nem támogatott. A rendezést csak az egyszerű típusok támogatják.
 
-* A ***nem PRIMITÍV JSON-típusok*** nem támogatottak. Használjon `string`, `number` `true` / vagy `false` típusokat. `null`az értékek nem támogatottak. 
+* A ***nem PRIMITÍV JSON-típusok*** nem támogatottak. Használjon `string` , `number` vagy `true` / `false` típusokat. `null`az értékek nem támogatottak. 
 
-* A ***GraphSONv3*** szerializáló jelenleg nem támogatott. Szerializáló, olvasó és író osztályok használata `GraphSONv2` a kapcsolatok konfigurációjában. A Azure Cosmos DB Gremlin API által visszaadott eredmények formátuma nem egyezik meg a GraphSON formátumával. 
+* A ***GraphSONv3*** szerializáló jelenleg nem támogatott. `GraphSONv2`Szerializáló, olvasó és író osztályok használata a kapcsolatok konfigurációjában. A Azure Cosmos DB Gremlin API által visszaadott eredmények formátuma nem egyezik meg a GraphSON formátumával. 
 
-* **A lambda kifejezések és függvények** jelenleg nem támogatottak. Ez magában foglalja `.map{<expression>}`a, `.by{<expression>}`a, és `.filter{<expression>}` a függvényeket. Ha többet szeretne megtudni, és meg szeretné tudni, hogyan írhatók újra a Gremlin lépések használatával, tekintse [meg a lambdas-ról szóló megjegyzést](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
+* **A lambda kifejezések és függvények** jelenleg nem támogatottak. Ez magában foglalja a `.map{<expression>}` , a `.by{<expression>}` , és a `.filter{<expression>}` függvényeket. Ha többet szeretne megtudni, és meg szeretné tudni, hogyan írhatók újra a Gremlin lépések használatával, tekintse [meg a lambdas-ról szóló megjegyzést](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
 
 * A rendszer elosztott jellege miatt a ***tranzakciók*** nem támogatottak.  Konfigurálja a megfelelő konzisztencia-modellt a Gremlin-fiókban a "saját írások olvasása" elemre, és használja az optimista párhuzamosságot az ütköző írások feloldásához.
+
+## <a name="known-limitations"></a>Ismert korlátozások
+
+* A **Gremlin lekérdezések használatának indexelése a bejárási `.V()` lépésekkel**: jelenleg csak a `.V()` bejárások első hívása fogja használni az indexet az ahhoz csatolt szűrők vagy predikátumok feloldásához. A következő hívások nem fogják megkeresni az indexet, ami növelheti a lekérdezés késését és költségeit.
+    
+    Az alapértelmezett indexelés feltételezi, hogy a lépéssel kezdődő tipikus olvasási Gremlin-lekérdezés `.V()` paramétereket használ a csatolt szűrési lépéseiben, például a `.has()` vagy a `.where()` segítségével optimalizálja a lekérdezés költségeit és teljesítményét. Például:
+
+    ```java
+    g.V().has('category', 'A')
+    ```
+
+    Ha azonban `.V()` a Gremlin-lekérdezés több lépést is tartalmaz, előfordulhat, hogy a lekérdezéshez tartozó adatfelbontás nem optimális. Példaként végezze el a következő lekérdezést:
+
+    ```java
+    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+    ```
+
+    Ez a lekérdezés a csúcspontok két csoportját fogja visszaadni a megnevezett tulajdonság alapján `category` . Ebben az esetben csak az első hívás `g.V().has('category', 'A')` fogja használni az indexet, hogy feloldja a csúcspontokat a tulajdonságaik értékei alapján.
+
+    A lekérdezésre vonatkozó Áthidaló megoldás az olyan bejárási lépések használata, mint a `.map()` és a `union()` . Ez az alábbi példán alapul:
+
+    ```java
+    // Query workaround using .map()
+    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+
+    // Query workaround using .union()
+    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+    ```
+
+    A lekérdezések teljesítményét a [Gremlin `executionProfile()` Step] (gráf-Execution-Profile.MD) segítségével tekintheti át.
 
 ## <a name="next-steps"></a>További lépések
 * Látogasson el [Cosmos db felhasználói hang](https://feedback.azure.com/forums/263030-azure-cosmos-db) oldalára, ahol megoszthatja a visszajelzéseket, és segítheti a csapatot a fontos funkciókhoz.

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: victorh
-ms.openlocfilehash: f8bfc163fbf32a2083b6e9250daaf5ea2629d10a
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509236"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791486"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -215,3 +215,7 @@ Igen. További információ: Azure- [előfizetések és-szolgáltatások korlát
 ## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Áthelyezhetek egy IP-csoportot egy másik erőforráscsoporthoz?
 
 Nem, az IP-csoportok másik erőforráscsoporthoz való áthelyezése jelenleg nem támogatott.
+
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Mi a Azure Firewall TCP üresjárati időkorlátja?
+
+A hálózati tűzfal szabványos viselkedése a TCP-kapcsolatok életben tartásának biztosítása, és ha nincs tevékenység, azonnal lezárhatja őket. Azure Firewall TCP Üresjárati időkorlát négy perc. Ez a beállítás nem konfigurálható. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nincs garancia arra, hogy a TCP-vagy HTTP-munkamenet továbbra is fennáll. Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információ: [.net-példák](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).

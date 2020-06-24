@@ -7,25 +7,25 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74077007"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803639"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Terheléselosztás több IP-konfiguráción a Azure Portal használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
-> * [parancssori felület](load-balancer-multiple-ip-cli.md)
+> * [Parancssori felület](load-balancer-multiple-ip-cli.md)
 
 
 Ebben a cikkben bemutatjuk, hogyan használhatók a Azure Load Balancer több IP-címmel egy másodlagos hálózati adapteren (NIC). A következő ábra szemlélteti a forgatókönyvet:
@@ -62,7 +62,7 @@ A jelen cikkben ismertetett forgatókönyv megvalósításához hajtsa végre az
 
 A virtuális hálózat minden egyes virtuális gépén adja hozzá a másodlagos hálózati adapter IP-konfigurációját:  
 
-1. Keresse meg a Azure Portal: https://portal.azure.com. Jelentkezzen be az Azure-fiókjával.
+1. Keresse meg a Azure Portal: https://portal.azure.com . Jelentkezzen be az Azure-fiókjával.
 
 2. A képernyő bal felső részén válassza ki az **erőforráscsoport** ikont. Ezután válassza ki azt az erőforráscsoportot, amelyben a virtuális gépek találhatók (például **contosofabrikam**). Az **erőforráscsoportok** ablaktábla megjeleníti a virtuális gépek összes erőforrását és hálózati adapterét.
 
@@ -78,7 +78,7 @@ A virtuális hálózat minden egyes virtuális gépén adja hozzá a másodlagos
 
         2. A **magánhálózati IP-cím**, **kiosztási** beállítás területen válassza a **statikus**lehetőséget.
 
-        3. Kattintson az **OK** gombra.
+        3. Válassza az **OK** lehetőséget.
 
 A másodlagos hálózati adapter második IP-konfigurációjának befejeződése után megjelenik az adott hálózati adapter **IP-konfigurációk** beállításai között.
 
@@ -86,9 +86,9 @@ A másodlagos hálózati adapter második IP-konfigurációjának befejeződése
 
 A terheléselosztó létrehozása a konfigurációhoz:
 
-1. Keresse meg a Azure Portal: https://portal.azure.com. Jelentkezzen be az Azure-fiókjával.
+1. Keresse meg a Azure Portal: https://portal.azure.com . Jelentkezzen be az Azure-fiókjával.
 
-2. A képernyő bal felső részén válassza az **erőforrás** > létrehozása**hálózatkezelés** > **Load Balancer**elemet. Ezután válassza a **Létrehozás**lehetőséget.
+2. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer**elemet. Ezután válassza a **Létrehozás**lehetőséget.
 
 3. A terheléselosztó **létrehozása**területen adja meg a terheléselosztó nevét. Ebben a forgatókönyvben a **mylb**nevet használjuk.
 
@@ -112,7 +112,7 @@ Az egyes webhelyekhez (contoso.com és fabrikam.com) konfigurálja az előtér-I
 
    3. A **hely**mezőben válassza ki a virtuális gépekkel megegyező helyet.
 
-   4. Kattintson az **OK** gombra.
+   4. Válassza az **OK** lehetőséget.
 
       A nyilvános IP-címek létrehozása után azok a **nyilvános IP-** címek alatt jelennek meg.
 
@@ -152,7 +152,7 @@ Minden webhelyhez (contoso.com és fabrikam.com) konfigurálja a háttérbeli c�
 
     2. A **hálózati IP-konfiguráció**területen válassza ki az előző lépésben kiválasztott virtuális gép másodlagos hálózati ADAPTERÉNEK IP-konfigurációját (például **VM1NIC2-ipconfig2** vagy **VM2NIC2-ipconfig2**).
 
-7. Kattintson az **OK** gombra.
+7. Válassza az **OK** lehetőséget.
 
 Miután konfigurálta a háttér-készletet, a címek a terheléselosztó **háttér-készletének** beállításai alatt jelennek meg.
 
@@ -166,7 +166,7 @@ Miután konfigurálta a háttér-készletet, a címek a terheléselosztó **hát
 
 3. A **Beállítások**területen válassza az **állapot**mintavétel elemet. A következő ablaktáblán a felső részen válassza a **Hozzáadás**lehetőséget. 
 
-4. Adja meg az állapot-mintavétel nevét (például **http**). Kattintson az **OK** gombra.
+4. Adja meg az állapot-mintavétel nevét (például **http**). Válassza az **OK** lehetőséget.
 
 ### <a name="step-6-configure-load-balancing-rules"></a>6. lépés: terheléselosztási szabályok konfigurálása
 

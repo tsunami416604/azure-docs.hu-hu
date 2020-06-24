@@ -3,15 +3,15 @@ title: Azure Storage-szolgáltatások figyelése Azure Monitor a Storage szolgá
 description: Ez a cikk az Azure Storage-fiókokkal kapcsolatos teljesítmény-és kihasználtsági problémák gyors megismerését biztosító Storage-rendszergazdáknak szóló Azure Monitor ismerteti.
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: e69e00eb9db43a76af1d6e541f44f750452cf858
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800070"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944491"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban
 
@@ -228,6 +228,8 @@ Ebben a példában a Storage-fiók kapacitása munkafüzettel dolgozunk, és bem
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
+Az általános hibaelhárítási útmutatóért tekintse meg a dedikált munkafüzet-alapú információkkal [kapcsolatos hibaelhárítási cikket](troubleshoot-workbooks.md).
+
 Ez a szakasz a Azure Monitor for Storage szolgáltatás használatakor felmerülő gyakori problémák diagnosztizálását és hibaelhárítását ismerteti. Az alábbi lista segítségével megkeresheti az adott hibához kapcsolódó információkat.
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Teljesítmény-, kapacitás-vagy rendelkezésre állási problémák megoldása
@@ -237,24 +239,6 @@ Az Azure Monitor for Storage szolgáltatással azonosított tárterülettel kapc
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Miért csak a 200 Storage-fiókokat láthatom?
 
 A kiválasztott Storage-fiókok száma legfeljebb 200, a kiválasztott előfizetések számától függetlenül.
-
-### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>Mi történik, ha egy nemrég rögzített csempére kattintok az irányítópulton?
-
-* Ha a csempén bárhová kattint, azzal a lapra kerül, ahol a csempét rögzítette. Ha például a "Storage-fiók áttekintése" lapon rögzít egy gráfot, akkor amikor az irányítópulton rákattint a csempére, megnyílik az alapértelmezett nézet, azonban ha egy gráfot a saját mentett másolata alapján rögzít, akkor a rendszer megnyitja a mentett másolat nézetét.
-* A cím bal felső részén található szűrő ikon a "csempe beállításainak konfigurálása" lapot nyitja meg.
-* A jobb felső sarokban található ellipszis ikonra kattintva megadhatja a "title-adatok testreszabása", a "Testreszabás", a "frissítés" és az "Eltávolítás az irányítópultról" lehetőséget.
-
-### <a name="what-happens-when-i-save-a-workbook"></a>Mi történik a munkafüzet mentésekor?
-
-* A munkafüzet mentésekor lehetővé teszi a munkafüzet új másolatának létrehozását a szerkesztéssel, és módosíthatja a címet. A Mentés nem írja felül a munkafüzetet, az aktuális munkafüzet mindig az alapértelmezett nézet lesz.
-* Egy nem **mentett** munkafüzet csak az alapértelmezett nézet.
-
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>Miért nem látom az összes előfizetést a portálon?
-
-A portálon csak a kiválasztott előfizetések adatai jelennek meg a portál indításakor. A kiválasztott előfizetések módosításához válassza a jobb felső sarokban található jegyzetfüzetet, és kattintson a szűrő ikonra. Ekkor megjelenik a címtár + előfizetések lap.
-
-![Címtár és előfizetés](./media/storage-insights-overview/fqa3.png)
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>A színezés és a küszöbérték módosítása a rendelkezésre álláshoz
 
@@ -273,7 +257,7 @@ Jelenleg legfeljebb három különböző típusú hiba látható, a további hib
 
     ![Nyissa meg a metrikákat, és kattintson a Szerkesztés, majd a "tranzakciók, összegek" elemre.](./media/storage-insights-overview/fqa7.png)
 
-1. Ezután módosítsa a felosztások számát.
+3. Ezután módosítsa a felosztások számát.
 
     ![Metrikai paraméterek kiválasztása "](./media/storage-insights-overview/fqa7-2.png)
 
@@ -283,38 +267,7 @@ Ha n + 1 értéknél több különböző típusú hibát szeretne megtekinteni, 
 
 A rendszer minden munkafüzetet a Storage-fiókba ment, amelyet a ben mentett. Próbálja meg megkeresni az adott Storage-fiókot, amelyben a felhasználó mentette a munkafüzetet. Ellenkező esetben nem talál egy adott munkafüzetet az erőforrás (Storage-fiók) ismerete nélkül.
 
-### <a name="what-is-time-range"></a>Mi az az időintervallum?
-
-Az időtartomány egy adott időkeretből származó adatokra mutat. Ha például az időtartomány 24 óra, akkor az elmúlt 24 órában megjelenített adatok láthatók.
-
-### <a name="what-is-time-granularity-time-grain"></a>Mi az idő részletessége (Time Grain)?
-
-Az idő részletessége két adatpont közötti időeltérés. Ha például az időtartam 1 másodpercre van állítva, ami azt jelenti, hogy a rendszer másodpercenként gyűjt metrikákat.
-
-### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>Mi az idő részletessége, ha a munkafüzetek bármely részét rögzítjük egy irányítópulton?
-
-Az alapértelmezett időrészletesség beállítása automatikus, jelenleg nem módosítható.
-
-### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Hogyan módosítja a munkafüzet TimeSpan/időtartományát az irányítópulton?
-
-Alapértelmezés szerint az irányítópult csempén lévő TimeSpan/időtartomány 24 órára van állítva, hogy a jobb felső sarokban lévő három pontra mutasson, majd válassza a **csempék testreszabása**elemet, jelölje be az irányítópult időbeállításainak felülbírálása jelölőnégyzetet, majd válasszon ki egy TimeSpan a legördülő menüből.  
-
-![Válassza ki a csempe jobb felső sarkában található három pontot, majd válassza az adatelemek testreszabása lehetőséget.](./media/storage-insights-overview/fqa-data-settings.png)
-
-![A csempe beállításainak konfigurálása területen válassza a TimeSpan legördülő menüt a TimeSpan/időtartomány módosításához.](./media/storage-insights-overview/fqa-timespan.png)
-
-### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>Hogyan módosíthatja a munkafüzet címét vagy egy, az irányítópultra rögzített lépést?
-
-Az irányítópultra rögzített munkafüzet vagy munkafüzet lépésének címe megőrzi a munkafüzetben megegyező nevet. A cím módosításához mentenie kell a munkafüzet saját példányát. Ezután a Save (Mentés) gombra kattintva megadhatja a munkafüzet nevét.
-
-![A felső Mentés elemre kattintva mentheti a munkafüzet másolatát, és módosíthatja annak nevét](./media/storage-insights-overview/fqa-change-workbook-name.png)
-
-Ha módosítani szeretné a mentett munkafüzet egyik lépésének a nevét, válassza a lépés alatt található szerkesztés lehetőséget, majd válassza ki a kívánt sebességfokozatot a beállítások alján.
-
-![A munkafüzet alján található Szerkesztés gombra kattintva megnyithatja a beállítások beállításokat a ](./media/storage-insights-overview/fqa-edit.png)
- ![ Beállítások területen válassza ki az alsó sebességfokozatot, hogy módosítani tudja a lépés nevét](./media/storage-insights-overview/fqa-change-name.png)
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
 

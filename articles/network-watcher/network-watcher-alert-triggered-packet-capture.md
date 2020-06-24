@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842937"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738056"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Az előjelzéses hálózati figyeléshez használja a csomagok rögzítését riasztásokkal és Azure Functionsokkal
 
@@ -68,7 +68,7 @@ Ez a forgatókönyv a következő műveleteket végzi el:
 
 Első lépésként létre kell hoznia egy Azure-függvényt a riasztás feldolgozásához és a csomagok rögzítésének létrehozásához.
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás** > létrehozása**számítási** > **függvényalkalmazás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása**  >  **számítási**  >  **függvényalkalmazás**lehetőséget.
 
     ![Függvényalkalmazás létrehozása][1-1]
 
@@ -83,7 +83,7 @@ Első lépésként létre kell hoznia egy Azure-függvényt a riasztás feldolgo
     |**Hely**|USA középső régiója| Az a régió, amelyben létre kívánja hozni a Function alkalmazást.|
     |**Storage-fiók**|automatikusan létrehozott| Az általános célú tároláshoz Azure Functions szükséges Storage-fiók.|
 
-3. A **PacketCaptureExample Function apps** panelen válassza a **functions** > **Egyéni függvény** >**+** lehetőséget.
+3. A **PacketCaptureExample Function apps** panelen válassza a **functions**  >  **Egyéni függvény**lehetőséget  > **+** .
 
 4. Válassza a **HttpTrigger-PowerShell**lehetőséget, majd adja meg a többi adatot. Végül a függvény létrehozásához válassza a **Létrehozás**lehetőséget.
 
@@ -120,7 +120,7 @@ Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb 
 
      ![PowerShell-mappák][functions5]
 
-1. Válassza a **Function app Settings** > **app Service Editor**lehetőséget.
+1. Válassza a **Function app Settings**  >  **app Service Editor**lehetőséget.
 
     ![A függvényalkalmazás beállításai][functions2]
 
@@ -225,7 +225,7 @@ Szerezze be a bérlő AZONOSÍTÓját a következő PowerShell-minta futtatásá
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-A AzureCredPassword környezeti változó értéke az az érték, amelyet a következő PowerShell-minta futtatásával érhet el. Ez a példa az előző **titkosított hitelesítő adatok** szakaszban látható. A szükséges érték a `$Encryptedpassword` változó kimenete.  Ez az egyszerű szolgáltatás jelszava, amelyet a PowerShell-parancsfájl használatával titkosított.
+A AzureCredPassword környezeti változó értéke az az érték, amelyet a következő PowerShell-minta futtatásával érhet el. Ez a példa az előző **titkosított hitelesítő adatok** szakaszban látható. A szükséges érték a változó kimenete `$Encryptedpassword` .  Ez az egyszerű szolgáltatás jelszava, amelyet a PowerShell-parancsfájl használatával titkosított.
 
 ```powershell
 #Variables
@@ -246,7 +246,7 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>A környezeti változók tárolása
 
-1. Nyissa meg a Function alkalmazást. Ezután válassza a **Function app Settings** > (Alkalmazásbeállítások**konfigurálása**) lehetőséget.
+1. Nyissa meg a Function alkalmazást. Ezután válassza a **Function app Settings**(Alkalmazásbeállítások  >  **konfigurálása**) lehetőséget.
 
     ![Alkalmazásbeállítások konfigurálása][functions11]
 
@@ -344,7 +344,7 @@ Nyissa meg a meglévő virtuális gépet, majd adjon hozzá egy riasztási szab�
 
   |**Beállítás** | **Érték** | **Részletek** |
   |---|---|---|
-  |**Név**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
+  |**Name (Név)**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
   |**Leírás**|A TCP-szegmensek elküldése túllépte a küszöbértéket|A riasztási szabály leírása.|
   |**Metrika**|Eljuttatott TCP-szegmensek| A riasztás elindításához használandó metrika. |
   |**Állapot**|Nagyobb, mint| A metrika kiértékeléséhez használandó feltétel.|

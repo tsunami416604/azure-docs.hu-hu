@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258004"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700885"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute Azure Site Recovery
 
@@ -38,7 +38,7 @@ Győződjön meg arról, hogy a konfigurációs kiszolgáló [hálózati követe
 Ha a helyszíni proxyt használja, és a ExpressRoute-t szeretné használni a replikálási forgalomhoz, konfigurálnia kell a proxy-megkerülési listát a konfigurációs kiszolgálón és a kiszolgálókon. Kövesse az alábbi lépéseket:
 
 - Töltse [le a PsExec eszközt innen a](https://aka.ms/PsExec) rendszer felhasználói környezetének eléréséhez.
-- A következő parancssori PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" futtatásával nyissa meg az Internet Explorert a rendszerfelhasználó környezetben.
+- Nyissa meg az Internet Explorert a rendszerfelhasználó környezetben a következő parancssori PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" parancs futtatásával
 - Proxybeállítások megadása az IE-ben
 - A Mellőzés listából adja hozzá az Azure Storage URL *. blob.core.windows.net
 
@@ -46,7 +46,7 @@ Ez biztosítja, hogy csak a replikálási forgalom haladjon át a ExpressRoute, 
 
 Ha a virtuális gépek vagy a kiszolgálók feladatátvételét egy Azure-beli virtuális hálózatra hajtja végre, a [privát](../expressroute/expressroute-circuit-peerings.md#privatepeering)kapcsolaton keresztül érheti el azokat. 
 
-A kombinált forgatókönyv a következő ábrán látható: ![helyszíni – Azure és ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+A kombinált forgatókönyv a következő ábrán látható: helyszíni ![ – Azure és ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Azure-ról Azure-ba történő replikáció a ExpressRoute
 

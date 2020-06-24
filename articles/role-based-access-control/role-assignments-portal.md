@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 88cb1e9893e0ca058e57ce12f00747a59248fb19
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 3e4d2dca6817951f2f06a86c4338106f194b7751
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735691"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790959"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával
 
@@ -67,7 +67,7 @@ Az Azure-RBAC az Azure-erőforrásokhoz való hozzáférés biztosításához ho
 
     ![Hozzáférés-vezérlés (IAM) és szerepkör-hozzárendelések lap](./media/role-assignments-portal/role-assignments.png)
 
-1. Kattintson a **Hozzáadás** > **szerepkör-hozzárendelés hozzáadása**lehetőségre.
+1. Kattintson a **Hozzáadás**  >  **szerepkör-hozzárendelés hozzáadása**lehetőségre.
 
    Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 
@@ -101,7 +101,7 @@ Ahhoz, hogy egy felhasználó egy Azure-előfizetés rendszergazdája legyen, re
 
     ![Hozzáférés-vezérlés (IAM) és szerepkör-hozzárendelések lap](./media/role-assignments-portal/role-assignments.png)
 
-1. Kattintson a **Hozzáadás** > **szerepkör-hozzárendelés hozzáadása**lehetőségre.
+1. Kattintson a **Hozzáadás**  >  **szerepkör-hozzárendelés hozzáadása**lehetőségre.
 
    Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0e46905ad280cd76d66befb1156e428b23f35664
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0d16823f920695f84db74122c9a2ac07de0abdb2
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235649"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907074"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
-A Azure Load Balancer több különböző mechanizmuson keresztül biztosít kimenő kapcsolatot az ügyfelek központi telepítéséhez. Ez a cikk a forgatókönyvek, a működésük és a kezelésük módját ismerteti. Ha a kimenő kapcsolattal kapcsolatos problémát tapasztal egy Azure Load Balanceron keresztül, tekintse meg a következőt: [hibaelhárítási útmutató a kimenő kapcsolatokhoz] (.. /load-balancer/troubleshoot-outbound-connection.md).
+A Azure Load Balancer több különböző mechanizmuson keresztül biztosít kimenő kapcsolatot az ügyfelek központi telepítéséhez. Ez a cikk a forgatókönyvek, a működésük és a kezelésük módját ismerteti. Ha a kimenő kapcsolattal kapcsolatos problémát tapasztal egy Azure Load Balanceron keresztül, tekintse meg a [Kimenő kapcsolatok hibaelhárítási útmutatóját](../load-balancer/troubleshoot-outbound-connection.md).
 
 >[!NOTE] 
 >Ez a cikk csak a Resource Manager-alapú üzemelő példányokat ismerteti. Tekintse át az Azure-beli klasszikus üzembe helyezési forgatókönyvek [kimenő kapcsolatait (klasszikus)](load-balancer-outbound-connections-classic.md) .

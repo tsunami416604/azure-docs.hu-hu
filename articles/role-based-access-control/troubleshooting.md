@@ -10,17 +10,17 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 58e7a46633b7bbdd6074fa7e511569ff9e2aebdf
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ac5c19866a164bbc927d23495e9d6ec9a1ef6bfe
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996598"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790704"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -51,20 +51,20 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure-beli szerepkör-hozzárendelésekkel kapcsolatos problémák
 
-- Ha nem tud szerepkör-hozzárendelést hozzáadni a Azure Portal on hozzáférés- **vezérlés (iam)** elemnél, **mert a** > **szerepkör-hozzárendelés hozzáadása** lehetőség le van tiltva, vagy ha az engedélyekkel kapcsolatos hibaüzenet jelenik meg, akkor a "nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel" nevű ügyfél. Győződjön meg arról, hogy jelenleg be van jelentkezve egy `Microsoft.Authorization/roleAssignments/write` olyan szerepkörrel rendelkező felhasználóval, amely jogosult a szerepkörhöz hozzárendelni kívánt hatókörre, például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdai](built-in-roles.md#user-access-administrator) jogosultsággal.
+- Ha nem tud szerepkör-hozzárendelést hozzáadni a Azure Portal on hozzáférés- **vezérlés (iam)** elemnél, **mert a**  >  **szerepkör-hozzárendelés hozzáadása** lehetőség le van tiltva, vagy ha az engedélyekkel kapcsolatos hibaüzenet jelenik meg, akkor a "nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel" nevű ügyfél. Győződjön meg arról, hogy jelenleg be van jelentkezve egy olyan szerepkörrel rendelkező felhasználóval, amely jogosult a `Microsoft.Authorization/roleAssignments/write` szerepkörhöz hozzárendelni kívánt hatókörre, például [tulajdonos](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdai](built-in-roles.md#user-access-administrator) jogosultsággal.
 
 ## <a name="problems-with-custom-roles"></a>Problémák az egyéni szerepkörökkel
 
 - Ha az egyéni szerepkörök létrehozásához szükséges lépéseket szeretné látni, tekintse meg az egyéni szerepkör-oktatóanyagokat a [Azure Portal](custom-roles-portal.md) (jelenleg előzetes verzióban elérhető), [Azure PowerShell](tutorial-custom-role-powershell.md)vagy az [Azure CLI](tutorial-custom-role-cli.md)használatával.
-- Ha nem tud frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, `Microsoft.Authorization/roleDefinition/write` amely jogosultsággal rendelkezik, például a [tulajdonos](built-in-roles.md#owner) vagy a [felhasználó hozzáférés-rendszergazdája](built-in-roles.md#user-access-administrator).
+- Ha nem tud frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, amely `Microsoft.Authorization/roleDefinition/write` jogosultsággal rendelkezik, például a [tulajdonos](built-in-roles.md#owner) vagy a [felhasználó hozzáférés-rendszergazdája](built-in-roles.md#user-access-administrator).
 - Ha nem sikerül törölni egy egyéni szerepkört, és a „There are existing role assignments referencing role (code: RoleDefinitionHasAssignments” (Szerepkör-hozzárendelések hivatkoznak a szerepkörre (kód: RoleDefinitionHasAssignments)) hibaüzenet jelenik meg, akkor vannak olyan szerepkör-hozzárendelések, amelyek továbbra is az adott egyéni szerepkört használják. Távolítsa el a szóban forgó szerepkör-hozzárendeléseket, majd próbálja meg ismét törölni az egyéni szerepkört.
 - Ha egy új egyéni szerepkör létrehozásakor a „Role definition limit exceeded. Nem hozhatók létre több szerepkör-definíció (code: RoleDefinitionLimitExceeded), ha új egyéni szerepkört próbál létrehozni, törölje a nem használt egyéni szerepköröket. Az Azure legfeljebb **5000** egyéni szerepkört támogat egy címtárban. (Az Azure Germany és az Azure China 21Vianet esetében a korlát 2000 egyéni szerepkör.)
 - Ha a következőhöz hasonló hibaüzenet jelenik meg: "az ügyfélnek van engedélye a" Microsoft. Authorization/roleDefinitions/Write "művelet végrehajtására a (z)"/Subscriptions/{subscriptionid} "hatókörben, de a csatolt előfizetés nem található" Ha egyéni szerepkört próbál frissíteni, ellenőrizze, hogy egy vagy több [hozzárendelhető hatókör](role-definitions.md#assignablescopes) törölve lett-e a címtárban. Ha a hatókör törölve lett, hozzon létre egy támogatási jegyet, mivel jelenleg nem áll rendelkezésre önkiszolgáló megoldás.
 
 ## <a name="custom-roles-and-management-groups"></a>Egyéni szerepkörök és felügyeleti csoportok
 
-- Egyéni szerepkörben csak egyetlen felügyeleti csoportot `AssignableScopes` lehet definiálni. A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
-- A felügyeleti csoport `DataActions` hatókörében nem lehet hozzárendelni egyéni szerepköröket.
+- Egyéni szerepkörben csak egyetlen felügyeleti csoportot lehet definiálni `AssignableScopes` . A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
+- `DataActions`A felügyeleti csoport hatókörében nem lehet hozzárendelni egyéni szerepköröket.
 - Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében.
 - Az egyéni szerepkörökkel és felügyeleti csoportokkal kapcsolatos további információkért lásd: [erőforrások rendszerezése az Azure felügyeleti csoportjaival](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment).
 
@@ -98,7 +98,7 @@ Ha nemrég meghívott egy felhasználót a szerepkör-hozzárendelés létrehoz�
 
 Ha azonban ez a rendszerbiztonsági tag nem a közelmúltban meghívott felhasználó, akkor lehet, hogy egy törölt rendszerbiztonsági tag. Ha szerepkört rendel egy rendszerbiztonsági tag számára, és később törli a rendszerbiztonsági tag törlését a szerepkör-hozzárendelés eltávolítása nélkül, akkor a rendszerbiztonsági tag **nem található identitásként** jelenik meg, és **ismeretlen** típusú.
 
-Ha Azure PowerShell használatával sorolja fel ezt a szerepkör-hozzárendelést, akkor előfordulhat `DisplayName` , hogy `ObjectType` egy üres és egy **ismeretlen**érték jelenik meg. A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) például a következő kimenethez hasonló szerepkör-hozzárendelést ad vissza:
+Ha Azure PowerShell használatával sorolja fel ezt a szerepkör-hozzárendelést, akkor előfordulhat, hogy egy üres `DisplayName` és egy `ObjectType` **ismeretlen**érték jelenik meg. A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) például a következő kimenethez hasonló szerepkör-hozzárendelést ad vissza:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -112,7 +112,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Hasonlóképpen, ha az Azure CLI használatával sorolja fel ezt a szerepkör-hozzárendelést, üresen `principalName`jelenhet meg. Az az [szerepkör-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list) például a következő kimenethez hasonló szerepkör-hozzárendelést ad vissza:
+Hasonlóképpen, ha az Azure CLI használatával sorolja fel ezt a szerepkör-hozzárendelést, üresen jelenhet meg `principalName` . Az az [szerepkör-hozzárendelési lista](/cli/azure/role/assignment#az-role-assignment-list) például a következő kimenethez hasonló szerepkör-hozzárendelést ad vissza:
 
 ```
 {
@@ -143,7 +143,7 @@ At line:1 char:1
 + FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
 ```
 
-Ha ez a hibaüzenet jelenik meg, győződjön meg arról, hogy a `-Scope` vagy `-ResourceGroupName` a paramétereket is megadja.
+Ha ez a hibaüzenet jelenik meg, győződjön meg arról, hogy a `-Scope` vagy a paramétereket is megadja `-ResourceGroupName` .
 
 ```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -153,7 +153,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 A Azure Resource Manager időnként a konfiguráció és az adat gyorsítótárazásával javítja a teljesítményt. Szerepkör-hozzárendelések hozzáadásakor vagy eltávolításakor akár 30 percet is igénybe vehet, amíg a módosítások érvénybe lépnek. Ha a Azure Portal, a Azure PowerShell vagy az Azure CLI-t használja, akkor kijelentkezéssel és bejelentkezéssel kényszerítheti a szerepkör-hozzárendelés módosításának frissítését. Ha REST API-hívásokkal módosítja a szerepkör-hozzárendelési módosításokat, a hozzáférési token frissítésével kényszerítheti a frissítést.
 
-Ha szerepkör-hozzárendelést ad hozzá vagy távolít el a felügyeleti csoport hatókörében, és `DataActions`a szerepkörhöz tartozik, előfordulhat, hogy az adatsíkon lévő hozzáférés több órán át nem frissül. Ez csak a felügyeleti csoport hatókörére és az adatsíkon érvényes.
+Ha szerepkör-hozzárendelést ad hozzá vagy távolít el a felügyeleti csoport hatókörében, és a szerepkörhöz tartozik `DataActions` , előfordulhat, hogy az adatsíkon lévő hozzáférés több órán át nem frissül. Ez csak a felügyeleti csoport hatókörére és az adatsíkon érvényes.
 
 ## <a name="web-app-features-that-require-write-access"></a>Írási hozzáférést igénylő webalkalmazás-funkciók
 

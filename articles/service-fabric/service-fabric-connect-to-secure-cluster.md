@@ -4,11 +4,11 @@ description: Útmutatás a Service Fabric-fürthöz való ügyfél-hozzáférés
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258576"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701219"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 
@@ -20,7 +20,7 @@ Amikor az ügyfél egy Service Fabric fürthöz csatlakozik, az ügyfél hiteles
 
 A Service Fabric CLI (sfctl) használatával többféleképpen csatlakozhat egy biztonságos fürthöz. Ha a hitelesítés ügyféltanúsítvány használatával történik, a tanúsítvány adatainak meg kell egyeznie egy, a fürtcsomópontokon telepített tanúsítvány adataival. Ha a tanúsítvány rendelkezik hitelesítésszolgáltatók (CAs) használatával, adja meg a megbízható hitelesítésszolgáltatókat is.
 
-A `sfctl cluster select` parancs használatával kapcsolódhat egy fürthöz.
+A parancs használatával kapcsolódhat egy fürthöz `sfctl cluster select` .
 
 Az ügyféltanúsítványok két különböző módon adhatók meg tanúsítványként és kulcspárként, vagy egyetlen PFX-fájlként. A jelszóval védett PEM-fájlok esetében a rendszer automatikusan kéri a jelszó megadását. Ha az ügyféltanúsítványt PFX-fájlként szerezte be, először alakítsa át a PFX-fájlt egy PEM-fájlba a következő parancs használatával. 
 
@@ -30,7 +30,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 Ha a. pfx fájl jelszava nem védett, használja a-passin pass: (utolsó paraméter) értékét.
 
-Az ügyféltanúsítvány PEM-fájlként való megadásához az `--pem` argumentumban meg kell adni a fájl elérési útját. Például:
+Az ügyféltanúsítvány PEM-fájlként való megadásához az argumentumban meg kell adni a fájl elérési útját `--pem` . Például:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -38,13 +38,13 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 A jelszóval védett PEM-fájlok a parancsok futtatása előtt kérik a jelszót.
 
-A tanúsítvány megadásához a kulcspár a és `--cert` `--key` az argumentumokat használja az egyes fájlok elérési útjának megadásához.
+A tanúsítvány megadásához a kulcspár a `--cert` és az `--key` argumentumokat használja az egyes fájlok elérési útjának megadásához.
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Esetenként a teszt-vagy fejlesztői fürtök biztonságos tanúsítvány-ellenőrzése nem sikerült. A tanúsítvány ellenőrzésének megkerüléséhez válassza `--no-verify` a lehetőséget. Például:
+Esetenként a teszt-vagy fejlesztői fürtök biztonságos tanúsítvány-ellenőrzése nem sikerült. A tanúsítvány ellenőrzésének megkerüléséhez válassza a `--no-verify` lehetőséget. Például:
 
 > [!WARNING]
 > Ne használja a `no-verify` kapcsolót éles Service Fabric fürtökhöz való csatlakozáskor.
@@ -53,7 +53,7 @@ Esetenként a teszt-vagy fejlesztői fürtök biztonságos tanúsítvány-ellen�
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Emellett megadhatja a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok vagy az egyes tanúsítványok könyvtárainak elérési útját is. Az elérési utak megadásához `--ca` használja az argumentumot. Például:
+Emellett megadhatja a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok vagy az egyes tanúsítványok könyvtárainak elérési útját is. Az elérési utak megadásához használja az `--ca` argumentumot. Például:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca

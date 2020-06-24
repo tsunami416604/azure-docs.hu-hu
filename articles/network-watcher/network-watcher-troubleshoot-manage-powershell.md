@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 0723ddc9b0e2f15d5c8e51c96d51f58f1313493a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1461f7f9811145553da6c200111d4db1f013060e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673666"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738685"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Az Azure Network Watcher PowerShell-lel Virtual Network átjáró és kapcsolatok hibáinak megoldása
 
@@ -44,7 +44,7 @@ Az erőforrás-hibaelhárítás lehetővé teszi a Virtual Network átjárókkal
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher beolvasása
 
-Az első lépés az Network Watcher példány beolvasása. A `$networkWatcher` változót a 4. `Start-AzNetworkWatcherResourceTroubleshooting` lépésben megadott parancsmagnak adja át a rendszer.
+Az első lépés az Network Watcher példány beolvasása. A `$networkWatcher` változót a `Start-AzNetworkWatcherResourceTroubleshooting` 4. lépésben megadott parancsmagnak adja át a rendszer.
 
 ```powershell
 $networkWatcher = Get-AzNetworkWatcher -Location "WestCentralUS" 
@@ -70,7 +70,7 @@ $sc = New-AzStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Network Watcher erőforrás-hibaelhárítás futtatása
 
-A parancsmaggal elháríthatja `Start-AzNetworkWatcherResourceTroubleshooting` az erőforrásokat. Átadjuk a parancsmagot a Network Watcher objektumnak, a kapcsolatok azonosítójának, a Virtual Network átjárónak, a Storage-fiók azonosítójának, valamint az eredmények tárolásának elérési útnak.
+A parancsmaggal elháríthatja az erőforrásokat `Start-AzNetworkWatcherResourceTroubleshooting` . Átadjuk a parancsmagot a Network Watcher objektumnak, a kapcsolatok azonosítójának, a Virtual Network átjárónak, a Storage-fiók azonosítójának, valamint az eredmények tárolásának elérési útnak.
 
 > [!NOTE]
 > A `Start-AzNetworkWatcherResourceTroubleshooting` parancsmag hosszú ideig fut, és eltarthat néhány percig.

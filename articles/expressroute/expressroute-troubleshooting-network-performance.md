@@ -4,16 +4,16 @@ description: Ez az oldal egy szabványosított módszert biztosít az Azure hál
 services: expressroute
 author: tracsman
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74869646"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738243"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -146,7 +146,7 @@ A WAN esetében a tesztelési eredmények megosztása a szolgáltatóval vagy az
 
 Az Azure-ban, ha a problémát a lehető legrészletesebben elkülöníti, itt az ideje, hogy áttekintse az [Azure hálózati dokumentációját][Network Docs] , és ha szükséges, [Nyisson meg egy támogatási jegyet][Ticket Link]is.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 ### <a name="latencybandwidth-expectations"></a>Késés/sávszélesség várakozási ideje
 >[!TIP]
 > A tesztelt végpontok közötti földrajzi késés (mérföld vagy kilométer) messze a késés legnagyobb összetevője. A berendezések késése (fizikai és virtuális összetevők, ugrások száma stb.) esetében a földrajz a WAN-kapcsolatok kezelése során a teljes késés legnagyobb részét bizonyította. Azt is fontos megjegyezni, hogy a távolság a szál távolsága, nem az egyenes vonal vagy a közúti Térkép távolsága. Ez a távolság hihetetlenül nehéz bármilyen pontossággal. Ennek eredményeképpen általában egy városi távolsági számológépet használok az interneten, és tudja, hogy ez a módszer egy durván pontatlan mérték, de elég egy általános elvárást beállítani.

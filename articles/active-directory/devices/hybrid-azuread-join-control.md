@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan végezheti el a hibrid Azure AD-csatlakozás el
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "80049979"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252712"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás szabályozott ellenőrzése
 
@@ -42,7 +42,7 @@ A Active Directory Services Interfaces Editor (ADSI szerkesztő) segítségével
 
 1. Indítsa el az **ADSI-szerkesztő** asztali alkalmazást a és a felügyeleti munkaállomásról, vagy egy tartományvezérlőt vállalati rendszergazdaként.
 1. Kapcsolódjon a tartomány **konfiguráció-névhasználati környezetéhez** .
-1. Tallózással keresse meg a **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = eszköz regisztrációs konfigurációját**
+1. Tallózással keresse meg a **CN = Configuration, DC = contoso, DC = com**  >  **CN = Services**  >  **CN = eszköz regisztrációs konfigurációját**
 1. Kattintson a jobb gombbal a **CN = 62a0ff2e-97b9-4513-943f-0d221bd30080** levél objektumra, és válassza a **Tulajdonságok** lehetőséget.
    1. Válassza ki a **kulcsszavakat** az **attribútum-szerkesztő** ablakban, és kattintson a **Szerkesztés** gombra.
    1. Válassza ki a **azureADId** és a **azureADName** értékeit (egy egyszerre), majd kattintson az **Eltávolítás** gombra.
@@ -55,24 +55,24 @@ A következő példa segítségével hozzon létre egy Csoportházirend objektum
 
 1. Nyisson meg egy Csoportházirend felügyeleti konzolt, és hozzon létre egy új Csoportházirend objektumot a tartományban.
    1. Adja meg az újonnan létrehozott csoportházirend-objektum nevét (például ClientSideSCP).
-1. Szerkessze a csoportházirend-objektumot, és keresse meg a következő elérési utat: **számítógép-konfigurációs** > **Beállítások** > **Windows-beállítások** > **beállításjegyzék**
-1. Kattintson a jobb gombbal a beállításjegyzékre, és válassza az **új** > **beállításjegyzék elemet** .
+1. Szerkessze a csoportházirend-objektumot, és keresse meg a következő elérési utat: **számítógép-konfigurációs**  >  **Beállítások**  >  **Windows-beállítások**  >  **beállításjegyzék**
+1. Kattintson a jobb gombbal a beállításjegyzékre, és válassza az **új**  >  **beállításjegyzék elemet** .
    1. Az **általános** lapon konfigurálja a következőket
       1. Művelet: **frissítés**
       1. Struktúra: **HKEY_LOCAL_MACHINE**
       1. Kulcs elérési útja: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Érték neve: **TenantId**
       1. Érték típusa: **REG_SZ**
-      1. Value (érték): az Azure ad-példány GUID- **azonosítója vagy könyvtára** (ez az érték a **Azure Portal** > **Azure Active Directory** > **Tulajdonságok** > **könyvtár-azonosítójában**található)
+      1. Value (érték): az Azure ad-példány GUID- **azonosítója vagy könyvtára** (ez az érték a **Azure Portal**  >  **Azure Active Directory**  >  **Tulajdonságok**  >  **könyvtár-azonosítójában**található)
    1. Kattintson **az OK** gombra
-1. Kattintson a jobb gombbal a beállításjegyzékre, és válassza az **új** > **beállításjegyzék elemet** .
+1. Kattintson a jobb gombbal a beállításjegyzékre, és válassza az **új**  >  **beállításjegyzék elemet** .
    1. Az **általános** lapon konfigurálja a következőket
       1. Művelet: **frissítés**
       1. Struktúra: **HKEY_LOCAL_MACHINE**
       1. Kulcs elérési útja: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Érték neve: **TenantName**
       1. Érték típusa: **REG_SZ**
-      1. Érték adatai: az ellenőrzött **tartománynevet** , ha összevont környezetet használ, például AD FS. A hitelesített **tartománynevet** vagy az onmicrosoft.com tartománynevet, `contoso.onmicrosoft.com` Ha például felügyelt környezetet használ
+      1. Érték adatai: az ellenőrzött **tartománynevet** , ha összevont környezetet használ, például AD FS. A hitelesített **tartománynevet** vagy az onmicrosoft.com tartománynevet, ha például `contoso.onmicrosoft.com` felügyelt környezetet használ
    1. Kattintson **az OK** gombra
 1. Az újonnan létrehozott csoportházirend-objektum szerkesztőjének lezárása
 1. Csatolja az újonnan létrehozott GPO-t az ellenőrzött bevezetési populációhoz tartozó, tartományhoz csatlakoztatott számítógépeket tartalmazó kívánt szervezeti egységhez.

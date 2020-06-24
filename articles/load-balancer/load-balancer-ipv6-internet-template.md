@@ -8,18 +8,18 @@ author: asudbring
 keywords: IPv6, Azure Load Balancer, Dual stack, nyilvános IP-cím, natív IPv6, mobil, IOT
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: eb9703a1944a650f41d76c05d79764f8bdf8cd52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045451"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803735"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Internetkapcsolattal rendelkező terheléselosztó megoldás üzembe helyezése IPv6-sablonnal sablon használatával
 
@@ -111,12 +111,12 @@ Egy Azure Resource Manager sablon több változót és paramétert tartalmaz, am
 
 A cikkben használt példa sablon a következő változókat és paramétereket tartalmazza:
 
-| Paraméter/változó | Megjegyzések |
+| Paraméter/változó | Jegyzetek |
 | --- | --- |
 | adminUsername |Adja meg a virtuális gépekre való bejelentkezéshez használt rendszergazdai fiók nevét. |
 | adminPassword |A alkalmazásban a virtuális gépekre való bejelentkezéshez használt rendszergazdai fiók jelszavának megadása. |
-| dnsNameforIPv4LbIP |Adja meg a terheléselosztó nyilvános neveként hozzárendelni kívánt DNS-állomásnév nevét. Ez a név a terheléselosztó nyilvános IPv4-címeként lett feloldva. A névnek kisbetűnek kell lennie, és meg kell egyeznie a reguláris kifejezéssel: ^ [a-z{1,61}] [a-Z0-9-] [a-Z0-9] $. |
-| dnsNameforIPv6LbIP |Adja meg a terheléselosztó nyilvános neveként hozzárendelni kívánt DNS-állomásnév nevét. Ez a név a terheléselosztó nyilvános IPv6-címeként van feloldva. A névnek kisbetűnek kell lennie, és meg kell egyeznie a reguláris kifejezéssel: ^ [a-z{1,61}] [a-Z0-9-] [a-Z0-9] $. Ez az IPv4-címként megegyező név lehet. Amikor egy ügyfél DNS-lekérdezést küld az Azure-nak, az a és az AAAA rekordot is visszaadja, ha a név meg van osztva. |
+| dnsNameforIPv4LbIP |Adja meg a terheléselosztó nyilvános neveként hozzárendelni kívánt DNS-állomásnév nevét. Ez a név a terheléselosztó nyilvános IPv4-címeként lett feloldva. A névnek kisbetűnek kell lennie, és meg kell egyeznie a reguláris kifejezéssel: ^ [a-z] [a-Z0-9-] {1,61} [a-Z0-9] $. |
+| dnsNameforIPv6LbIP |Adja meg a terheléselosztó nyilvános neveként hozzárendelni kívánt DNS-állomásnév nevét. Ez a név a terheléselosztó nyilvános IPv6-címeként van feloldva. A névnek kisbetűnek kell lennie, és meg kell egyeznie a reguláris kifejezéssel: ^ [a-z] [a-Z0-9-] {1,61} [a-Z0-9] $. Ez az IPv4-címként megegyező név lehet. Amikor egy ügyfél DNS-lekérdezést küld az Azure-nak, az a és az AAAA rekordot is visszaadja, ha a név meg van osztva. |
 | vmNamePrefix |Adja meg a virtuális gép nevének előtagját. A sablon hozzáfűz egy számot (0, 1 stb.) a virtuális gépek létrehozásakor a névhez. |
 | nicNamePrefix |Adja meg a hálózati adapter nevének előtagját. A sablon hozzáfűz egy számot (0, 1 stb.) a nevet a hálózati adapterek létrehozásakor. |
 | storageAccountName |Adja meg egy meglévő Storage-fiók nevét, vagy adja meg a sablon által létrehozandó új nevet. |

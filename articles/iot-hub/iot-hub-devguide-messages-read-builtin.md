@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: 791d41aae7dde3e1ef2ae511de4ffd84141f0232
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: a9bc0564a69124618d0a7e3ff6bafb65b2be0ee4
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310784"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907482"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -63,10 +63,10 @@ A beépített, az Event hub-kompatibilis végponthoz való kapcsolódáshoz hasz
 
 | Nyelv | SDK | Példa |
 | -------- | --- | ------ |
-| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [Első lépések](quickstart-send-telemetry-dotnet.md) |
-| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [Első lépések](quickstart-send-telemetry-java.md) |
-| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Első lépések](quickstart-send-telemetry-node.md) |
-| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
+| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [Gyorsútmutató](quickstart-send-telemetry-dotnet.md) |
+| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [Gyorsútmutató](quickstart-send-telemetry-java.md) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Gyorsútmutató](quickstart-send-telemetry-node.md) |
+| Python | https://pypi.org/project/azure-eventhub/ | [Gyorsútmutató](quickstart-send-telemetry-python.md) |
 
 A beépített, az Event hub-kompatibilis végponttal használható termék-integrációk, amelyeket IoT Hub tesznek elérhetővé:
 

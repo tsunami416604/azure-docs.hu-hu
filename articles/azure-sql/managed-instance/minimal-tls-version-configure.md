@@ -2,7 +2,7 @@
 title: A TLS-verzió minimálisan felügyelt példányának konfigurálása
 description: Megtudhatja, hogyan konfigurálhat minimális TLS-verziót a felügyelt példányhoz
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: ''
 ms.topic: conceptual
@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 309649fe099d5226ba6a4972e22a4e3d7ff0e526
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7982cb80c253ec3966319528e39390920c653e38
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267120"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974262"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának minimális TLS-verziójának konfigurálása
 A minimális [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) verzió beállítása lehetővé teszi, hogy az ügyfelek szabályozzák az Azure SQL felügyelt példányai által használt TLS-verziót.
 
-Jelenleg a TLS 1,0, 1,1 és 1,2 támogatottak. A TLS minimális verziójának beállítása biztosítja, hogy a következő, újabb TLS-verziók támogatottak legyenek. Például például a 1,1-nál nagyobb TLS-verzió választása. azt jelenti, hogy a rendszer csak a TLS 1,1-es és 1,2-as kapcsolatait fogadja el, és a TLS 1,0 A tesztelést követően, hogy az alkalmazásai támogatják az IT-t, javasoljuk, hogy a minimális TLS-verziót 1,2-re állítsa be, mert a korábbi verziókban található biztonsági rések javításait tartalmazza, és az Azure SQL felügyelt példányában támogatott TLS legmagasabb verziója.
+Jelenleg a TLS 1,0, 1,1 és 1,2 támogatottak. A TLS minimális verziójának beállítása biztosítja, hogy a következő, újabb TLS-verziók támogatottak legyenek. Például például a 1,1-nál nagyobb TLS-verzió választása. azt jelenti, hogy a rendszer csak a TLS 1,1-es és 1,2-as kapcsolatait fogadja el, és a TLS 1,0 Az alkalmazások támogatásának megerősítését követően javasoljuk, hogy a minimális TLS-verziót 1,2-re állítsa be, mivel az a korábbi verziókban talált biztonsági rések javításait tartalmazza, és az Azure SQL felügyelt példányában támogatott TLS legmagasabb verziója.
 
 A TLS régebbi verzióit használó ügyfelek esetében javasoljuk, hogy az alkalmazások követelményeinek megfelelően állítsa be a TLS minimális verziószámát. Azon ügyfelek esetében, akik nem titkosított kapcsolaton keresztül kapcsolódnak az alkalmazásokhoz, javasoljuk, hogy ne állítson be minimális TLS-verziót. 
 

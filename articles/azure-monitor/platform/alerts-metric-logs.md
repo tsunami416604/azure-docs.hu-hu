@@ -1,17 +1,17 @@
 ---
 title: Metrikai riasztások létrehozása a naplókhoz Azure Monitor
 description: Útmutató a közel valós idejű metrikai riasztások létrehozásához a népszerű log Analytics-adatokon.
-author: yanivlavi
-ms.author: yalavi
+author: harelbr
+ms.author: harelbr
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 6b21f228858954292e7a3bc5561d5e86fcfaaf41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c9998488013ce89b17a30a6c3948a02407d06bb
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80055175"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945324"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikai riasztások létrehozása a naplókhoz Azure Monitor
 
@@ -19,7 +19,7 @@ ms.locfileid: "80055175"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor támogatja a [metrikus riasztási típust](../../azure-monitor/platform/alerts-metric-near-real-time.md) , amely a [klasszikus riasztások](../../azure-monitor/platform/alerts-classic-portal.md)előnyeivel rendelkezik. A metrikák az [Azure-szolgáltatások nagyméretű listájához](../../azure-monitor/platform/metrics-supported.md)érhetők el. Ez a cikk az erőforráshoz tartozó részhalmazok (azaz) használatát ismerteti `Microsoft.OperationalInsights/workspaces`.
+Azure Monitor támogatja a [metrikus riasztási típust](../../azure-monitor/platform/alerts-metric-near-real-time.md) , amely a [klasszikus riasztások](../../azure-monitor/platform/alerts-classic-portal.md)előnyeivel rendelkezik. A metrikák az [Azure-szolgáltatások nagyméretű listájához](../../azure-monitor/platform/metrics-supported.md)érhetők el. Ez a cikk az erőforráshoz tartozó részhalmazok (azaz) használatát ismerteti `Microsoft.OperationalInsights/workspaces` .
 
 Metrikai riasztásokat használhat a mutatóként kinyert népszerű Log Analytics naplókban, beleértve az Azure-ban vagy a helyszínen található erőforrásokat is. A támogatott Log Analytics megoldások az alábbiak szerint vannak felsorolva:
 
@@ -163,7 +163,7 @@ Ha ugyanezt szeretné elérni, használhatja az alábbi minta Azure Resource Man
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -299,7 +299,7 @@ Ha ugyanezt szeretné elérni, használhatja az alábbi minta Azure Resource Man
 }
 ```
 
-Tegyük fel, hogy a fenti JSON-t a rendszer a metricfromLogsAlertStatic. JSON néven menti, majd az erőforrás-sablon alapú létrehozáshoz tartozó JSON-fájllal is párosítható. A következő lista egy példaként szolgáló JSON-fájlt mutat be:
+Tegyük fel, hogy a fenti JSON-t metricfromLogsAlertStatic.jsként menti a rendszer, így az erőforrás-sablon alapú létrehozáshoz tartozó JSON-fájllal is párosítható. A következő lista egy példaként szolgáló JSON-fájlt mutat be:
 
 ```json
 {
@@ -355,7 +355,7 @@ Tegyük fel, hogy a fenti JSON-t a rendszer a metricfromLogsAlertStatic. JSON n�
 }
 ```
 
-Feltételezve, hogy a fenti metricfromLogsAlertStatic. Parameters. JSON néven mentette a fájlt. Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/templates/deploy-portal.md).
+Feltételezve, hogy a fenti paraméter fájlja metricfromLogsAlertStatic.parameters.jsként van mentve; Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/templates/deploy-portal.md).
 
 Azt is megteheti, hogy az alábbi Azure PowerShell-parancsot is használhatja:
 
@@ -452,7 +452,7 @@ Ha ugyanezt szeretné elérni, használhatja az alábbi minta Azure Resource Man
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -609,7 +609,7 @@ Ha ugyanezt szeretné elérni, használhatja az alábbi minta Azure Resource Man
 }
 ```
 
-Tegyük fel, hogy a fenti JSON-t a rendszer a metricfromLogsAlertDynamic. JSON néven menti, majd az erőforrás-sablon alapú létrehozáshoz tartozó JSON-fájllal is párosítható. A következő lista egy példaként szolgáló JSON-fájlt mutat be:
+Tegyük fel, hogy a fenti JSON-t metricfromLogsAlertDynamic.jsként menti a rendszer, így az erőforrás-sablon alapú létrehozáshoz tartozó JSON-fájllal is párosítható. A következő lista egy példaként szolgáló JSON-fájlt mutat be:
 
 ```json
 {
@@ -671,7 +671,7 @@ Tegyük fel, hogy a fenti JSON-t a rendszer a metricfromLogsAlertDynamic. JSON n
 }
 ```
 
-Feltételezve, hogy a fenti metricfromLogsAlertDynamic. Parameters. JSON néven mentette a fájlt. Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/templates/deploy-portal.md).
+Feltételezve, hogy a fenti paraméter fájlja metricfromLogsAlertDynamic.parameters.jsként van mentve; Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/templates/deploy-portal.md).
 
 Azt is megteheti, hogy az alábbi Azure PowerShell-parancsot is használhatja:
 

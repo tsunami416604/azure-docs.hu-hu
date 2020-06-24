@@ -1,18 +1,18 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 06/15/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7dbac1f4fad940b817befa3a45447cf7367c28c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 64433f3233e249059c1c2d180a03e0a221924f15
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317643"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84793656"
 ---
 A helyszíni virtuális gépek használata lehetővé teszi, hogy a kihasználatlan kapacitást jelentős költségmegtakarítással használja. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
 
@@ -43,9 +43,22 @@ A következő virtuálisgép-méretek nem támogatottak a Direktszínű virtuál
  - B sorozat
  - Bármilyen méretű promóciós verzió (például Dv2, NV, NC, H promo-méretek)
 
-A helyszíni virtuális gépek jelenleg nem használhatnak ideiglenes operációsrendszer-lemezeket.
-
 A helyszíni virtuális gépek bármely régióba üzembe helyezhetők, kivéve Microsoft Azure China 21Vianet.
+
+Egyes előfizetési csatornák nem támogatottak:
+
+<a name="channel"></a>
+
+| Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
+|------------------------------|-----------------------------------|
+| Nagyvállalati Szerződés         | Yes                               |
+| Használatalapú fizetés                | Yes                               |
+| Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Előnyök                     | Nem érhető el                     |
+| Szponzorált                    | Nem érhető el                     |
+| Ingyenes próbaverzió                   | Nem érhető el                     |
+
+
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -75,23 +88,6 @@ A változó díjszabással maximális árat állíthat be az USA dollárban (USD
 **K:** Igényelhetek további kvótát a helyszínen?
 
 **A:** Igen, elküldheti a kérést, hogy növelje a helyszíni virtuális gépek kvótáját a [normál kvóta-kérési folyamaton](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)keresztül.
-
-
-**K:** Milyen csatornák támogatják a helyszíni virtuális gépeket?
-
-**A:** Tekintse meg az alábbi táblázatot a helyszíni virtuális gépek rendelkezésre állásához.
-
-<a name="channel"></a>
-
-| Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
-|------------------------------|-----------------------------------|
-| Nagyvállalati Szerződés         | Igen                               |
-| Használatalapú fizetés                | Igen                               |
-| Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Microsoft-ügyfélszerződés | Igen                               |
-| Előnyök                     | Nem érhető el                     |
-| Szponzorált                    | Igen                               |
-| Ingyenes próbaverzió                   | Nem érhető el                     |
 
 
 **K:** Hol tehetek közzé kérdéseket?

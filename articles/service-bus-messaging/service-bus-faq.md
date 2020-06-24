@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: aschhab
-ms.openlocfilehash: 38187bef1d9c73b20c3b1930f97e7dae2468c889
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 125132aec8e822bf6694076e9ff6029744608c1a
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673445"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975299"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
 
@@ -63,7 +63,7 @@ Az alábbi lépéseket követve megkeresheti a megfelelő IP-címeket a kapcsola
 1. Futtassa a következő parancsot egy parancssorból: 
 
     ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
+    nslookup <YourNamespaceName>.cloudapp.net
     ```
 2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . Ez az IP-cím statikus. Ha a névteret egy másik fürtre állítja vissza, az egyetlen olyan időpontot kell megváltoztatnia, amelyik megváltozhat.
 
@@ -72,14 +72,14 @@ Ha a zóna redundanciát használja a névtérhez, néhány további lépést is
 1. Először futtassa az nslookupt a névtéren.
 
     ```
-    nslookup <yournamespace>.servicebus.windows.net
+    nslookup <yournamespace>.cloudapp.net
     ```
 2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyike: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
 
@@ -160,7 +160,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a Service Busről, tekintse meg a következő cikkeket:
 
 * [Azure Service Bus Premium bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

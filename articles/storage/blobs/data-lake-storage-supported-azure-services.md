@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: edfcb1d0bfc87c84620b13ed26ec681fef32f1e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1854c6f86e1a3578b6314b072f104174032344e1
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878323"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907584"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások
 
@@ -39,10 +39,10 @@ Ez a táblázat felsorolja a Azure Data Lake Storage Gen2 használható Azure-sz
 |HDInsight |Általánosan elérhető|[Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[A HDFS CLI használata Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT Hub |Általánosan elérhető|[Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
 |Power BI|Általánosan elérhető|[Data Lake Storage Gen2 adatai elemzése a Power BI használatával](https://docs.microsoft.com/power-query/connectors/datalakestorage)|
-|SQL Data Warehouse|Általánosan elérhető|[Használat az Azure SQL Data Warehouse-zal](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
+|Azure Synapse Analytics (korábban SQL Data Warehouse)|Általánosan elérhető|[Használat az Azure szinapszis Analytics szolgáltatással (korábban SQL Data Warehouse)](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |SQL Server Integration Services (SSIS)|Általánosan elérhető|[Azure Storage-kapcsolatkezelő](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
-|Azure Cognitive Search|Előzetes verzió|[Azure Data Lake Storage Gen2 dokumentumok indexelése és keresése (előzetes verzió)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
-|Azure Data Explorer|Előzetes verzió|[Azure Data Lake lekérdezése az Azure-Adatkezelő használatával](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data)|
+|Azure Cognitive Search|Előnézet|[Azure Data Lake Storage Gen2 dokumentumok indexelése és keresése (előzetes verzió)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
+|Azure Data Explorer|Előnézet|[Azure Data Lake lekérdezése az Azure-Adatkezelő használatával](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data)|
 |Azure Content Delivery Network|Még nem támogatott|[Azure Data Lake Storage Gen2 dokumentumok indexelése és keresése (előzetes verzió)](https://docs.microsoft.com/azure/cdn/cdn-overview)|
 
 

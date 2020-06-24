@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan kezelheti a privát végponti kapcsolatokat az 
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75452964"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737495"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Privátvégpont-kapcsolat kezelése
 Az Azure Private link egy jóváhagyási hívási folyamat modelljén működik, amelyben a privát kapcsolati szolgáltatás fogyasztója kapcsolatot igényelhet a szolgáltatóval a szolgáltatás felhasználásához. A szolgáltató eldöntheti, hogy engedélyezi-e a fogyasztó számára a kapcsolódást. Az Azure Private link lehetővé teszi, hogy a szolgáltatók felügyelni tudják a magánhálózati végponti kapcsolatot az erőforrásokon. Ez a cikk útmutatást nyújt a magánhálózati végpontok kapcsolatainak kezeléséhez.
@@ -28,7 +28,7 @@ Az alábbi táblázatban láthatók a különböző szolgáltatói műveletek, v
 
 |Szolgáltatói művelet   |A szolgáltatás fogyasztói magánhálózati végpontjának állapota   |Leírás   |
 |---------|---------|---------|
-|None    |    Függőben     |    A kapcsolat manuálisan jön létre, és függőben van a privát hivatkozás erőforrás-tulajdonosa általi jóváhagyásra.       |
+|Nincs    |    Függőben     |    A kapcsolat manuálisan jön létre, és függőben van a privát hivatkozás erőforrás-tulajdonosa általi jóváhagyásra.       |
 |Jóváhagyás    |  Approved       |  A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra.     |
 |Elutasítás     | Elutasítva        | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot.        |
 |Eltávolítás    |  Leválasztott       | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a karbantartást.        |
@@ -79,7 +79,7 @@ Remove-AzPrivateEndpointConnection -Name myPrivateEndpointConnection1 -ResourceG
  
 ### <a name="azure-cli"></a>Azure CLI 
  
-A `az network private-link-service update` saját végpont kapcsolatainak kezelésére használható. A (z) ```azurecli connection-status``` paraméterben meg van adva a kapcsolási állapot. 
+`az network private-link-service update`A saját végpont kapcsolatainak kezelésére használható. A (z) paraméterben meg van adva a kapcsolási állapot ```azurecli connection-status``` . 
 ```azurecli
 az network private-link-service connection update -g myResourceGroup -n myPrivateEndpointConnection1 --service-name myPLS --connection-status Approved 
 ```

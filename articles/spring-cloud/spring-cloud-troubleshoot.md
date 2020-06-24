@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277580"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791656"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Az Azure Spring Cloud-problémák gyakori problémáinak elhárítása
 
@@ -35,7 +35,7 @@ A szolgáltatási kötések az alkalmazás indítási hibáját is okozhatják. 
 
 > "Java. SQL. SQLException: a kiszolgáló időzóna-értéke" egyezményes világidő "nem ismerhető fel, vagy egynél több időzónát jelöl."
 
-A hiba elhárításához lépjen `server parameters` a MySQL-példányhoz, és módosítsa az `time_zone` értéket a *rendszerről* a *+ 0:00*értékre.
+A hiba elhárításához lépjen a MySQL- `server parameters` példányhoz, és módosítsa az értéket a `time_zone` *rendszerről* a *+ 0:00*értékre.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Az alkalmazás összeomlik, vagy váratlan hibát ad vissza
@@ -49,7 +49,7 @@ Az alkalmazások összeomlásának hibakereséséhez először ellenőrizze az a
 
   - `TomcatErrorCount`(_tomcat. Global. Error_): az összes Spring Application-kivételt itt számoljuk el. Ha ez a szám nagy, nyissa meg az Azure Log Analytics az alkalmazás naplófájljainak vizsgálatához.
 
-  - `AppMemoryMax`(_JVM. Memory. max_): az alkalmazás számára rendelkezésre álló memória maximális mennyisége. Lehet, hogy az összeg nem definiált, vagy idővel változhat, ha meg van adva. Ha meg van adva, a felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, mint Max. Előfordulhat azonban, hogy egy memória kiosztása `OutOfMemoryError` egy üzenettel meghiúsul, ha a foglalás a használt memóriát úgy próbálja megjavítani, hogy az *> véglegesítése*során is felhasználja, még akkor is, ha *<= Max* még mindig igaz. Ilyen esetben próbálja meg a maximális halom méretének növelését a `-Xmx` paraméter használatával.
+  - `AppMemoryMax`(_JVM. Memory. max_): az alkalmazás számára rendelkezésre álló memória maximális mennyisége. Lehet, hogy az összeg nem definiált, vagy idővel változhat, ha meg van adva. Ha meg van adva, a felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, mint Max. Előfordulhat azonban, hogy egy memória kiosztása egy `OutOfMemoryError` üzenettel meghiúsul, ha a foglalás a használt memóriát úgy próbálja megjavítani, hogy az *> véglegesítése*során is felhasználja, még akkor is, ha *<= Max* még mindig igaz. Ilyen esetben próbálja meg a maximális halom méretének növelését a `-Xmx` paraméter használatával.
 
   - `AppMemoryUsed`(_JVM. Memory. használt_): az alkalmazás által jelenleg használt memória mennyisége bájtban kifejezve. A normál betöltésű Java-alkalmazások esetében ez a metrika egy *fűrészfog* mintát alkot, ahol a memóriahasználat folyamatosan nő és csökken, és hirtelen leesik, majd a mintázat ismétlődik. Ez a metrikai sorozat a Java virtuális gépen belüli adatgyűjtési művelet miatt következik be, ahol a gyűjtési műveletek a fűrészfog mintában lévő cseppeket jelölik.
     
@@ -111,7 +111,7 @@ Ha azonban az Azure [CLI](https://docs.microsoft.com/cli/azure/get-started-with-
 
 Ha az Azure Spring Cloud Service-példányt a Resource Manager-sablonnal szeretné beállítani, először olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)ismertető témakört.
 
-A rendszer az Azure Spring Cloud Service `azureapps.io`-példány nevét fogja használni a (z) altartomány nevének megadásához, így a telepítés sikertelen lesz, ha a név ütközik egy meglévővel. Előfordulhat, hogy további részleteket talál a tevékenység naplóiban.
+A rendszer az Azure Spring Cloud Service-példány nevét fogja használni a (z) altartomány nevének megadásához `azureapps.io` , így a telepítés sikertelen lesz, ha a név ütközik egy meglévővel. Előfordulhat, hogy további részleteket talál a tevékenység naplóiban.
 
 ### <a name="i-cant-deploy-a-jar-package"></a>Nem tudok telepíteni egy JAR-csomagot
 
@@ -160,7 +160,7 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
 
 1. Nyissa meg a következőt: `https://<your application test endpoint>/actuator/health`.  
     - Egy hasonló válasz, `{"status":"UP"}` amely azt jelzi, hogy a végpont engedélyezve van.
-    - Ha a válasz negatív, vegye fel a következő függőséget a *Pom. XML* fájlba:
+    - Ha a válasz negatív, adja meg a következő függőséget a *POM.xml* fájlban:
 
         ```xml
             <dependency>
@@ -169,7 +169,7 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
             </dependency>
         ```
 
-1. Ha engedélyezve van a Spring boot indítószerkezet végpontja, lépjen a Azure Portalra, és keresse meg az alkalmazás konfigurációs lapját.  Adjon hozzá egy környezeti változót a `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` névvel és az `*` értékkel. 
+1. Ha engedélyezve van a Spring boot indítószerkezet végpontja, lépjen a Azure Portalra, és keresse meg az alkalmazás konfigurációs lapját.  Adjon hozzá egy környezeti változót a névvel `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` és az értékkel `*` . 
 
 1. Indítsa újra az alkalmazást.
 
@@ -189,16 +189,18 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
     }
     ```
 
-Keresse meg a nevű `systemEnvironment`gyermek csomópontot.  Ez a csomópont tartalmazza az alkalmazás környezeti változóit.
+Keresse meg a nevű gyermek csomópontot `systemEnvironment` .  Ez a csomópont tartalmazza az alkalmazás környezeti változóit.
 
 > [!IMPORTANT]
-> Ne felejtse el megfordítani a környezeti változók expozícióját, mielőtt az alkalmazása elérhetővé váljon a nyilvánosság számára.  Nyissa meg a Azure Portal, keresse meg az alkalmazás konfigurációs lapját, és törölje a következő környezeti változót: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
+> Ne felejtse el megfordítani a környezeti változók expozícióját, mielőtt az alkalmazása elérhetővé váljon a nyilvánosság számára.  Nyissa meg a Azure Portal, keresse meg az alkalmazás konfigurációs lapját, és törölje a következő környezeti változót: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` .
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Nem találom az alkalmazás metrikáit vagy naplóit
 
 Az alkalmazások **felügyeletének** megtartásával _ellenőrizze, hogy_ _fut_ -e az alkalmazás állapota.
 
-Ha a _JVM_ metrikák láthatók, de nem a _tomcat_-ről származó mérőszámok, ellenőrizze, `spring-boot-actuator` hogy a függőség engedélyezve van-e az alkalmazáscsomag, és hogy sikeresen elindul-e.
+Ellenőrizze, hogy az _JMX_ engedélyezve van-e az alkalmazás-csomagban. Ez a funkció a Configuration tulajdonsággal engedélyezhető `spring.jmx.enabled=true` .  
+
+Ellenőrizze, hogy a `spring-boot-actuator` függőség engedélyezve van-e az alkalmazáscsomag, és hogy sikeresen elindul-e.
 
 ```xml
 <dependency>

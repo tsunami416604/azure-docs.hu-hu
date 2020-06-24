@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/30/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 380e65d3f3d659d8fa6f339a9dfd45263f711541
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325900"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296865"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Az ARM-sablonokkal kapcsolatos gyakori kérdések
 
@@ -128,7 +128,7 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
 * **Használhatom továbbra is az egyéni szkriptek bővítményeit és a kívánt állapot-konfigurációt (DSC)?**
 
-  Ezek a beállítások továbbra is elérhetők, és nem változtak. Az üzembe helyezési parancsfájlok olyan műveletek végrehajtására lettek kialakítva, amelyek nem kapcsolódnak a virtuális gép vendégéhez. Ha parancsfájlt kell futtatnia a gazdagép operációs rendszerén egy virtuális gépen, akkor az ügyfél-parancsfájl bővítmény és/vagy a DSC jobb választás lenne. Az üzembe helyezési parancsfájlok azonban előnyei vannak, például az időtúllépési időtartam beállítása.
+  Ezek a beállítások továbbra is elérhetők, és nem változtak. Az üzembe helyezési parancsfájlok olyan műveletek végrehajtására lettek kialakítva, amelyek nem kapcsolódnak a virtuális gép vendégéhez. Ha parancsfájlt kell futtatnia a gazdagép operációs rendszerén egy virtuális gépen, akkor az egyéni szkriptek bővítménye és/vagy a DSC jobb választás lenne. Az üzembe helyezési parancsfájlok azonban előnyei vannak, például az időtúllépési időtartam beállítása.
 
 * **Támogatottak-e az üzembe helyezési parancsfájlok Azure Government?**
 
@@ -188,6 +188,6 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
   Igen, lásd: [Azure Resource Manager-sablonok telepítése GitHub-műveletek használatával](deploy-github-actions.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ARM-sablonok bemutatása: [Mi az ARM-sablonok?](overview.md).

@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 11166d5578b90fe6ec936389bcd173c4c26b4852
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171242"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975265"
 ---
 # <a name="get-started-with-storage-explorer"></a>A Storage Explorer használatának első lépései
 
@@ -55,9 +55,9 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 A Storage Explorer *. tar. gz* letöltésként is elérhető. A függőségeket manuálisan kell telepítenie. A Linux-támogatás következő disztribúciói *. tar. gz* telepítés:
 
+* Ubuntu 20,04 x64
 * Ubuntu 18,04 x64
 * Ubuntu 16,04 x64
-* Ubuntu 14,04 x64
 
 A *. tar. gz* telepítése más disztribúciókban is működhet, de csak ezek a felsoroltak támogatottak.
 
@@ -266,7 +266,7 @@ Amikor szöveget ír be a keresőmezőbe, Storage Explorer megjeleníti az össz
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Blob Storage-erőforrások kezelése Storage Explorer](vs-azure-tools-storage-explorer-blobs.md)
 * [Adatok kezelése az Azure Storage Explorerrel](./cosmos-db/storage-explorer.md)

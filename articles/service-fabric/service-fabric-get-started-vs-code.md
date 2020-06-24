@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258485"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692598"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric a Visual Studio Code-hoz
 
@@ -56,7 +56,7 @@ A .NET Core/C# fejlesztéshez a következő előfeltételeket kell telepíteni:
 2. Kattintson a VS Code bal oldalán található **Activity sávban** a bővítmények ikonra. Keressen rá a "Service Fabric" kifejezésre. Kattintson a **telepítés** elemre a Service Fabric Reliable Services bővítményhez.
 
 ## <a name="commands"></a>Parancsok
-A VS Code Service Fabric Reliable Services bővítménye számos parancsot biztosít a fejlesztők számára Service Fabric projektek létrehozásához és üzembe helyezéséhez. A parancsok a **parancssorból** való meghívásához nyomja `(Ctrl + Shift + p)`le a parancsot, írja be a parancs nevét a bemeneti sávra, majd válassza ki a kívánt parancsot a prompt listából. 
+A VS Code Service Fabric Reliable Services bővítménye számos parancsot biztosít a fejlesztők számára Service Fabric projektek létrehozásához és üzembe helyezéséhez. A parancsok a **parancssorból** való meghívásához nyomja le `(Ctrl + Shift + p)` a parancsot, írja be a parancs nevét a bemeneti sávra, majd válassza ki a kívánt parancsot a prompt listából. 
 
 * Service Fabric: alkalmazás létrehozása 
 * Service Fabric: alkalmazás közzététele 
@@ -87,10 +87,10 @@ A **Service Fabric: Add Service** parancs új szolgáltatást ad hozzá egy megl
 5.  Az új szolgáltatás megjelenik a projekt címtárában. 
 
 ### <a name="service-fabric-publish-application"></a>Service Fabric: alkalmazás közzététele
-A **Service Fabric: Application publish** parancs üzembe helyezi a Service Fabric alkalmazást egy távoli fürtön. A célként megadott fürt biztonságos vagy nem biztonságos fürt lehet. Ha a paraméterek nincsenek beállítva a Cloud. JSON fájlban, az alkalmazás a helyi fürtre lesz telepítve.
+A **Service Fabric: Application publish** parancs üzembe helyezi a Service Fabric alkalmazást egy távoli fürtön. A célként megadott fürt biztonságos vagy nem biztonságos fürt lehet. Ha a paraméterek nincsenek megadva a Cloud.json beállításban, az alkalmazás a helyi fürtre lesz telepítve.
 
-1.  Az alkalmazás első felépítésekor a rendszer létrehoz egy Cloud. JSON fájlt a projekt könyvtárában.
-2.  Adja meg annak a fürtnek az értékeit, amelyhez csatlakozni szeretne a Cloud. JSON fájlban.
+1.  Az alkalmazás első felépítésekor a rendszer létrehoz egy Cloud.jsa fájlban a projekt könyvtárában.
+2.  Adja meg annak a fürtnek az értékeit, amelyhez csatlakozni szeretne a fájl Cloud.jsjában.
 3.  Válassza ki a **Service Fabric: Application publish (alkalmazás közzététele** ) parancsot.
 4.  Service Fabric Explorer megtekintheti a célként megadott fürtöt, és ellenőrizheti, hogy az alkalmazás telepítve van-e. 
 
@@ -98,8 +98,8 @@ A **Service Fabric: Application publish** parancs üzembe helyezi a Service Fabr
 A **Service Fabric: alkalmazás telepítése** parancs üzembe helyezi a Service Fabric alkalmazást a helyi fürtön. A parancs használata előtt győződjön meg arról, hogy a helyi fürt fut. 
 
 1. Válassza ki a **Service Fabric: alkalmazás telepítése** parancs
-2. A helyi fürtöt Service Fabric Explorer (http:\//localhost: 19080/Explorer) megtekintve ellenőrizheti, hogy telepítve van-e az alkalmazás. Ez eltarthat egy ideig, így türelmesnek kell lennie.
-3. A helyi fürtre történő központi telepítéshez a Cloud. JSON fájlban található paraméterek nélkül is használhatja a **Service Fabric: Application publish (alkalmazás közzététele** ) parancsot.
+2. A helyi fürtöt Service Fabric Explorer (http: \/ /localhost: 19080/Explorer) megtekintve ellenőrizheti, hogy telepítve van-e az alkalmazás. Ez eltarthat egy ideig, így türelmesnek kell lennie.
+3. A **Service Fabric: alkalmazás közzététele** parancs nem állítható be paraméterek nélkül a fájl Cloud.jsa helyi fürtre történő központi telepítéshez.
 
 > [!NOTE]
 > A Java-alkalmazások helyi fürtön történő üzembe helyezése Windows rendszerű gépeken nem támogatott.

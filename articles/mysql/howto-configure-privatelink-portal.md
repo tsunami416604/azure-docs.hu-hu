@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 7dbce3f2645a1ae4e01dc52d516962297ea07df6
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: b4ac25d6fca78962e9da4f7dd79476b8e8b9c2d5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488851"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738260"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Azure Database for MySQL privát hivatkozás létrehozása és kezelése a portál használatával
 
@@ -109,7 +109,7 @@ Ebben a szakaszban egy Azure Database for MySQL-kiszolgálót fog létrehozni az
     | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Kiszolgáló adatai** |  |
-    |Kiszolgálónév  | Adja meg a *myServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
+    |Kiszolgáló neve  | Adja meg a *myServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
     | Rendszergazdai Felhasználónév| Adja meg a választott rendszergazda nevét. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
     | Hely | Válassza ki azt az Azure-régiót, ahol a MySQL-kiszolgálót szeretné tárolni. |
@@ -173,7 +173,7 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
     |||
 
     > [!Note] 
-    > Használja az előre definiált saját DNS-zónát a szolgáltatáshoz, vagy hozzon létre újat. A részletekért tekintse meg az [Azure-szolgáltatások DNS-zóna konfigurációját](../private-link/private-endpoint-dns.md) .
+    > Használja az előre definiált saját DNS-zónát a szolgáltatáshoz, vagy adja meg a kívánt DNS-zóna nevét. A részletekért tekintse meg az [Azure-szolgáltatások DNS-zóna konfigurációját](../private-link/private-endpoint-dns.md) .
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
 2. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
@@ -231,7 +231,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
     | Beállítás | Érték |
     | ------- | ----- |
     | Kiszolgáló típusa| Válassza a **MySQL**lehetőséget.|
-    | Kiszolgálónév| *MyServer.privatelink.mysql.database.Azure.com* kiválasztása |
+    | Kiszolgáló neve| *MyServer.privatelink.mysql.database.Azure.com* kiválasztása |
     | Felhasználónév | Adja meg a felhasználónevet, username@servername amelyet a MySQL-kiszolgáló létrehozásakor adott meg. |
     |Jelszó |Adja meg a MySQL-kiszolgáló létrehozásakor megadott jelszót. |
     |SSL|Válassza a **kötelező**lehetőséget.|
@@ -252,7 +252,7 @@ Ha végzett a magánhálózati végpont, a MySQL-kiszolgáló és a virtuális g
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for MySQLt és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a MySQL-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Storage-titkosítás a REST-adatokhoz
+title: Inaktív adatok Azure Storage-titkosítása
 description: Az Azure Storage védi az adatait úgy, hogy automatikusan titkosítja azt, mielőtt megőrzi a felhőben. A Microsoft által felügyelt kulcsokat használhatja a Storage-fiókban lévő adatok titkosításához, vagy a titkosítást a saját kulcsaival is kezelheti.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 04/10/2020
+ms.date: 06/17/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c737ccf83dae0cc4b198b9cd708a55b988e6593b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b4236e40e8dfbe6ce67bca007be0b6737a6e0c8
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457943"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945579"
 ---
-# <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-titkosítás a REST-adatokhoz
+# <a name="azure-storage-encryption-for-data-at-rest"></a>Inaktív adatok Azure Storage-titkosítása
 
 Az Azure Storage automatikusan titkosítja az adatait, amikor azt megőrzi a felhőben. Az Azure Storage-titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
 
@@ -44,13 +44,15 @@ Az alábbi táblázat összehasonlítja az Azure Storage-titkosítás legfontosa
 |                                        |    Microsoft által felügyelt kulcsok                             |    Felhasználó által kezelt kulcsok                                                                                                                        |    Ügyfél által biztosított kulcsok                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Titkosítási/visszafejtési műveletek    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Az Azure Storage szolgáltatásai támogatottak    |    Összes                                                |    BLOB Storage, Azure Files<sup>1, 2</sup>                                                                                                               |    Blob Storage                                                                  |
+|    Az Azure Storage szolgáltatásai támogatottak    |    Mind                                                |    BLOB Storage, Azure Files<sup>1, 2</sup>                                                                                                               |    Blob Storage                                                                  |
 |    Kulcstároló                         |    Microsoft Key Store    |    Azure Key Vault                                                                                                                              |    Ügyfél saját kulcstárolója                                                                 |
 |    Kulcs rotációs felelőssége         |    Microsoft                                          |    Ügyfél                                                                                                                                     |    Ügyfél                                                                      |
 |    Kulcs vezérlő                          |    Microsoft                                     |    Ügyfél                                                                                                                    |    Ügyfél                                                                 |
 
 <sup>1</sup> . az ügyfél által felügyelt kulcsok üzenetsor-tárolással történő létrehozását támogató fiók létrehozásával kapcsolatos információkért lásd: [hozzon létre egy fiókot, amely támogatja az ügyfél által felügyelt kulcsokat a várólistákhoz](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).<br />
 <sup>2</sup> . az ügyfél által felügyelt kulcsokat tartalmazó fiók létrehozásával kapcsolatos információkért lásd: [hozzon létre egy fiókot, amely támogatja az ügyfél által felügyelt kulcsokat a táblázatokhoz](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
+
+Az Azure Managed Disks titkosításával és kulcskezelő szolgáltatásával kapcsolatos információkért lásd: az [Azure Managed Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/windows/disk-encryption.md) Windows rendszerű virtuális gépekhez, illetve az [Azure Managed Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/linux/disk-encryption.md) Linux rendszerű virtuális gépekhez.
 
 ## <a name="next-steps"></a>További lépések
 

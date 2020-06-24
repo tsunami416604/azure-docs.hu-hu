@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/30/2020
-ms.openlocfilehash: 5549f9eaf2bc44dfa7e99df04fd7864dd4b655ce
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.date: 6/11/2020
+ms.openlocfilehash: 0b23b01faf1b6ba09f1c55db2ddabd1696e452be
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610899"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738107"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
 
-Ez a cikk azt ismerteti, hogyan állíthatja be a felhőbe irányuló replikálás a Azure Database for MariaDBban a fő-és a replika-kiszolgálók konfigurálásával. Ez a cikk azt feltételezi, hogy a MariaDB-kiszolgálókkal és-adatbázisokkal kapcsolatban némi korábbi tapasztalat van.
+Ez a cikk azt ismerteti, hogyan állíthatja be a [felhőbe irányuló replikálás](concepts-data-in-replication.md) a Azure Database for MariaDBban a fő-és a replika-kiszolgálók konfigurálásával. Ez a cikk azt feltételezi, hogy a MariaDB-kiszolgálókkal és-adatbázisokkal kapcsolatban némi korábbi tapasztalat van.
 
-Ahhoz, hogy replikát hozzon létre a Azure Database for MariaDB szolgáltatásban, felhőbe irányuló replikálás szinkronizálja a helyszíni, a virtuális gépeken vagy a Cloud Database Servicesben lévő fő MariaDB-kiszolgáló adatait.
+Ahhoz, hogy replikát hozzon létre a Azure Database for MariaDB szolgáltatásban, [felhőbe irányuló replikálás](concepts-data-in-replication.md) szinkronizálja a helyszíni, a virtuális gépeken vagy a Cloud Database Servicesben lévő fő MariaDB-kiszolgáló adatait. A beérkező adatokra épülő replikáció a MariaDB natív bináris naplójának (binlog) fájlpozíció-alapú replikációján alapul. A BinLog replikálásával kapcsolatos további tudnivalókért tekintse meg a [BinLog-replikáció áttekintése](https://mariadb.com/kb/en/library/replication-overview/)című témakört.
 
 A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adatok replikálásának [korlátozásait és követelményeit](concepts-data-in-replication.md#limitations-and-considerations) .
 
@@ -281,5 +281,5 @@ A replikálási hibák kihagyásához és a replikáció engedélyezéséhez has
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a Azure Database for MariaDB [felhőbe irányuló replikálásról](concepts-data-in-replication.md) .

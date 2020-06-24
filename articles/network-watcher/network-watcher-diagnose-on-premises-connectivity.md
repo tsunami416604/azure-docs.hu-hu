@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845052"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738753"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Helyszíni kapcsolatok diagnosztizálása VPN-átjárók használatával
 
@@ -59,22 +59,22 @@ Ezek a problémák nehezen orvosolhatók, és a kiváltó okok gyakran nem intui
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Hibaelhárítás az Azure Network Watcher használatával
 
-A kapcsolat diagnosztizálásához kapcsolódjon Azure PowerShellhoz, és indítsa el `Start-AzNetworkWatcherResourceTroubleshooting` a parancsmagot. A parancsmag használatáról a következő cikkben talál további információt: [Virtual Network Gateway and Connections – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Ez a parancsmag akár néhány percet is igénybe vehet.
+A kapcsolat diagnosztizálásához kapcsolódjon Azure PowerShellhoz, és indítsa el a `Start-AzNetworkWatcherResourceTroubleshooting` parancsmagot. A parancsmag használatáról a következő cikkben talál további információt: [Virtual Network Gateway and Connections – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Ez a parancsmag akár néhány percet is igénybe vehet.
 
 A parancsmag befejezése után navigáljon a parancsmagban megadott tárolási helyre, ahol részletes információkhoz juthat a probléma és a naplókról. Az Azure Network Watcher egy zip-mappát hoz létre, amely a következő naplófájlokat tartalmazza:
 
 ![1][1]
 
-Nyissa meg a IKEErrors. txt nevű fájlt, és a következő hibaüzenetet jeleníti meg, amely a helyszíni IKE-beállítások helytelen konfigurálásával kapcsolatos problémát jelez.
+Nyissa meg a IKEErrors.txt nevű fájlt, és a következő hibaüzenetet jeleníti meg, amely a helyszíni IKE-beállítások helytelen konfigurálásával kapcsolatos problémát jelez.
 
 ```
 Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
-Részletes információkat kaphat a scrubbed-wfpdiag. txt fájlról a hibáról, ahogy ebben az esetben is megemlíti `ERROR_IPSEC_IKE_POLICY_MATCH` , hogy a kapcsolat nem működik megfelelően.
+Részletes információkat kaphat a Scrubbed-wfpdiag.txt a hibáról, ahogy ebben az esetben megemlíti, hogy a `ERROR_IPSEC_IKE_POLICY_MATCH` kapcsolat nem működik megfelelően.
 
-Egy másik gyakori hibás konfiguráció a helytelen megosztott kulcsok meghatározása. Ha az előző példában eltérő megosztott kulcsokat adott meg, a IKEErrors. txt fájl a következő hibaüzenetet jeleníti meg: `Error: Authentication failed. Check shared key`.
+Egy másik gyakori hibás konfiguráció a helytelen megosztott kulcsok meghatározása. Ha az előző példában eltérő megosztott kulcsokat adott meg, a IKEErrors.txt a következő hibaüzenetet jeleníti meg: `Error: Authentication failed. Check shared key` .
 
 Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway és az egyszerű PowerShell-parancsmagokkal való kapcsolat diagnosztizálását és hibakeresését. Jelenleg támogatjuk a következő feltételek diagnosztizálását, és még több feltétel hozzáadásával dolgozunk.
 
@@ -82,36 +82,36 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 
 | Hibatípus | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nem észlelhető hiba. |Igen|
-| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
-| PlannedMaintenance |  Az átjárópéldány karbantartása van folyamatban.  |Nem|
-| UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet. | Nem |
-| VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Ez akkor fordul elő, ha az állapot-ellenőrzés sikertelen. | Nem |
-| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | Nem|
-| ServiceNotRunning | A mögöttes szolgáltatás nem fut. | Nem|
-| NoConnectionsFoundForGateway | Nem található kapcsolat az átjárón. Ez csak egy figyelmeztetés.| Nem|
-| ConnectionsNotConnected | A kapcsolatok egyike sincs csatlakoztatva. Ez csak egy figyelmeztetés.| Igen|
-| GatewayCPUUsageExceeded | Az átjáró jelenlegi használati CPU-használata > 95%. | Igen |
+| NoFault | Ha nem észlelhető hiba. |Yes|
+| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |No|
+| PlannedMaintenance |  Az átjárópéldány karbantartása van folyamatban.  |No|
+| UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet. | No |
+| VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Ez akkor fordul elő, ha az állapot-ellenőrzés sikertelen. | No |
+| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | No|
+| ServiceNotRunning | A mögöttes szolgáltatás nem fut. | No|
+| NoConnectionsFoundForGateway | Nem található kapcsolat az átjárón. Ez csak egy figyelmeztetés.| No|
+| ConnectionsNotConnected | A kapcsolatok egyike sincs csatlakoztatva. Ez csak egy figyelmeztetés.| Yes|
+| GatewayCPUUsageExceeded | Az átjáró jelenlegi használati CPU-használata > 95%. | Yes |
 
 ### <a name="connection"></a>Kapcsolat
 
 | Hibatípus | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nem észlelhető hiba. |Igen|
-| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
-| PlannedMaintenance | Az átjárópéldány karbantartása van folyamatban.  |Nem|
-| UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet.  | Nem |
-| VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Akkor következik be, amikor az állapot mintavétele sikertelen. | Nem |
-| ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja. | Nem |
-| ConnectionIsMarkedDisconnected | A kapcsolat "leválasztva" jelölésű. |Nem|
-| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Igen |
-| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Igen|
-| Hitelesítés | Az előmegosztott kulcs nem egyezik. | Igen|
-| PeerReachability | A társ-átjáró nem érhető el. | Igen|
-| IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Igen|
+| NoFault | Ha nem észlelhető hiba. |Yes|
+| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |No|
+| PlannedMaintenance | Az átjárópéldány karbantartása van folyamatban.  |No|
+| UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet.  | No |
+| VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Akkor következik be, amikor az állapot mintavétele sikertelen. | No |
+| ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja. | No |
+| ConnectionIsMarkedDisconnected | A kapcsolat "leválasztva" jelölésű. |No|
+| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Yes |
+| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Yes|
+| Hitelesítés | Az előmegosztott kulcs nem egyezik. | Yes|
+| PeerReachability | A társ-átjáró nem érhető el. | Yes|
+| IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Yes|
 | WfpParse hiba | Hiba történt a WFP-napló elemzése során. |Igen|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan ellenőrizheti VPN Gateway kapcsolatot a PowerShell [Network Watcher](network-watcher-monitor-with-azure-automation.md) Azure Automation-lel
 
