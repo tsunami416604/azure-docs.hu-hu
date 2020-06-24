@@ -3,15 +3,15 @@ title: Megkeresi a kérési egység (RU) díját Azure Cosmos DB
 description: Megtudhatja, hogyan keresheti meg az Azure Cosmos-tárolón végrehajtott műveletekre vonatkozó kérési egység (RU) díját.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: e5420b9b765fffcf7b4ccd6775d05795b1b13871
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: bf109d3f15c9865a8e9ad1d27a1e8d320d172761
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872230"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261834"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>A kérési egység díjszabásának megkeresése Azure Cosmos DB
 
@@ -37,13 +37,13 @@ Jelenleg a Azure Portal csak az SQL-lekérdezésekhez tartozó kérelmek díját
 
 1. A **lekérdezési statisztikák** lehetőség kiválasztásával jelenítheti meg a tényleges kérelmek díját a végrehajtott kérelemért.
 
-![Képernyőkép az SQL-lekérdezési kérések díjszabásáról a Azure Portal](./media/find-request-unit-charge/portal-sql-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Képernyőkép az SQL-lekérdezési kérések díjszabásáról a Azure Portal":::
 
 ### <a name="use-the-net-sdk"></a>A .NET SDK használata
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-A [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) -ből visszaadott objektumok egy `RequestCharge` tulajdonságot tesznek elérhetővé:
+A [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) -ből visszaadott objektumok egy tulajdonságot tesznek elérhetővé `RequestCharge` :
 
 ```csharp
 ResourceResponse<Document> fetchDocumentResponse = await client.ReadDocumentAsync(
@@ -78,7 +78,7 @@ while (query.HasMoreResults)
 
 # <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
-A [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) által visszaadott objektumok a következő `RequestCharge` tulajdonságot teszik elérhetővé:
+A [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) által visszaadott objektumok a következő tulajdonságot teszik elérhetővé `RequestCharge` :
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
@@ -88,7 +88,7 @@ További információ: gyors útmutató [: .net-Webalkalmazás létrehozása a A
 
 ### <a name="use-the-java-sdk"></a>A Java SDK használata
 
-A [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) által visszaadott objektumok egy `getRequestCharge()` metódust tesznek elérhetővé:
+A [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) által visszaadott objektumok egy metódust tesznek elérhetővé `getRequestCharge()` :
 
 ```java
 RequestOptions requestOptions = new RequestOptions();
@@ -116,9 +116,9 @@ feedResponse.forEach(result -> {
 
 További információ: gyors útmutató [: Java-alkalmazás létrehozása Azure Cosmos db SQL API-fiók használatával](create-sql-api-java.md).
 
-### <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
+### <a name="use-the-nodejs-sdk"></a>Az Node.js SDK használata
 
-A [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) által visszaadott objektumok olyan `headers` alobjektumot tesznek elérhetővé, amely az alapul szolgáló http API által visszaadott összes fejlécet leképezi. A kérelem díja a `x-ms-request-charge` kulcs alatt érhető el:
+A [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) által visszaadott objektumok olyan alobjektumot tesznek elérhetővé `headers` , amely az alapul szolgáló http API által visszaadott összes fejlécet leképezi. A kérelem díja a kulcs alatt érhető el `x-ms-request-charge` :
 
 ```javascript
 const item = await client
@@ -149,11 +149,11 @@ while (query.hasMoreResults()) {
 }
 ```
 
-További információ: gyors útmutató [: Node. js-alkalmazás létrehozása Azure Cosmos db SQL API-fiók használatával](create-sql-api-nodejs.md). 
+További információ: gyors útmutató [: Node.js-alkalmazás létrehozása egy Azure Cosmos db SQL API-fiók használatával](create-sql-api-nodejs.md). 
 
 ### <a name="use-the-python-sdk"></a>A Python SDK használata
 
-A `CosmosClient` [Python SDK](https://pypi.org/project/azure-cosmos/) -ból származó objektum egy olyan `last_response_headers` szótárt tesz elérhetővé, amely leképezi a mögöttes http API által visszaadott összes fejlécet az utolsó művelet végrehajtásához. A kérelem díja a `x-ms-request-charge` kulcs alatt érhető el:
+A `CosmosClient` [Python SDK](https://pypi.org/project/azure-cosmos/) -ból származó objektum egy olyan `last_response_headers` szótárt tesz elérhetővé, amely leképezi a mögöttes http API által visszaadott összes fejlécet az utolsó művelet végrehajtásához. A kérelem díja a kulcs alatt érhető el `x-ms-request-charge` :
 
 ```python
 response = client.ReadItem(
@@ -169,7 +169,7 @@ További információ: gyors útmutató [: Python-alkalmazás létrehozása Azur
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 
-Az RU díját egy nevű `getLastRequestStatistics`egyéni adatbázis- [parancs](https://docs.mongodb.com/manual/reference/command/) teszi elérhetővé. A parancs egy olyan dokumentumot ad vissza, amely tartalmazza az utolsó végrehajtott művelet nevét, a kérések díját és annak időtartamát. Ha a MongoDB Azure Cosmos DB API-t használja, több lehetőség is van az RU-díj lekérésére.
+Az RU díját egy nevű egyéni adatbázis- [parancs](https://docs.mongodb.com/manual/reference/command/) teszi elérhetővé `getLastRequestStatistics` . A parancs egy olyan dokumentumot ad vissza, amely tartalmazza az utolsó végrehajtott művelet nevét, a kérések díját és annak időtartamát. Ha a MongoDB Azure Cosmos DB API-t használja, több lehetőség is van az RU-díj lekérésére.
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -187,11 +187,11 @@ Jelenleg a kérelmek díját a Azure Portal csak a lekérdezésekhez lehet megke
 
 1. A **lekérdezési statisztikák** lehetőség kiválasztásával jelenítheti meg a tényleges kérelmek díját a végrehajtott kérelemért.
 
-![Képernyőkép a MongoDB-lekérdezési kérelmekért a Azure Portal](./media/find-request-unit-charge/portal-mongodb-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Képernyőkép a MongoDB-lekérdezési kérelmekért a Azure Portal":::
 
 ### <a name="use-the-mongodb-net-driver"></a>A MongoDB .NET-illesztőprogram használata
 
-Ha a [hivatalos MongoDB .net-illesztőprogramot](https://docs.mongodb.com/ecosystem/drivers/csharp/)használja, végrehajthat parancsokat úgy, hogy meghívja a `RunCommand` metódust egy `IMongoDatabase` objektumon. Ehhez a metódushoz az `Command<>` absztrakt osztály megvalósítására van szükség:
+Ha a [hivatalos MongoDB .net-illesztőprogramot](https://docs.mongodb.com/ecosystem/drivers/csharp/)használja, végrehajthat parancsokat úgy, hogy meghívja a `RunCommand` metódust egy `IMongoDatabase` objektumon. Ehhez a metódushoz az absztrakt osztály megvalósítására van szükség `Command<>` :
 
 ```csharp
 class GetLastRequestStatisticsCommand : Command<Dictionary<string, object>>
@@ -211,7 +211,7 @@ További információ: gyors útmutató [: .net-Webalkalmazás létrehozása Azu
 ### <a name="use-the-mongodb-java-driver"></a>A MongoDB Java-illesztőprogram használata
 
 
-Ha a [hivatalos MongoDB Java-illesztőprogramot](https://mongodb.github.io/mongo-java-driver/)használja, parancsokat futtathat a `runCommand` metódus meghívásával egy `MongoDatabase` objektumon:
+Ha a [hivatalos MongoDB Java-illesztőprogramot](https://mongodb.github.io/mongo-java-driver/)használja, parancsokat futtathat a metódus meghívásával `runCommand` egy `MongoDatabase` objektumon:
 
 ```java
 Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));
@@ -220,9 +220,9 @@ Double requestCharge = stats.getDouble("RequestCharge");
 
 További információ: gyors útmutató [: Webalkalmazás létrehozása a MongoDB-hez készült Azure Cosmos db API-val és a Java SDK-](create-mongodb-java.md)val.
 
-### <a name="use-the-mongodb-nodejs-driver"></a>A MongoDB Node. js-illesztőprogram használata
+### <a name="use-the-mongodb-nodejs-driver"></a>A MongoDB Node.js illesztőprogramjának használata
 
-Ha a [hivatalos MongoDB Node. js-illesztőprogramot](https://mongodb.github.io/node-mongodb-native/)használja, parancsokat futtathat a `command` metódus meghívásával egy `db` objektumon:
+Ha a [hivatalos MongoDB Node.js illesztőprogramját](https://mongodb.github.io/node-mongodb-native/)használja, parancsokat futtathat a metódus meghívásával `command` egy `db` objektumon:
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -231,15 +231,15 @@ db.command({ getLastRequestStatistics: 1 }, function(err, result) {
 });
 ```
 
-További információ: gyors útmutató [: meglévő MongoDB Node. js-webalkalmazás migrálása Azure Cosmos DBra](create-mongodb-nodejs.md).
+További információ: gyors üzembe helyezés [meglévő MongoDB Node.js webalkalmazás migrálása Azure Cosmos db](create-mongodb-nodejs.md).
 
 ## <a name="cassandra-api"></a>Cassandra API
 
-Ha a Azure Cosmos DB Cassandra API műveleteit hajtja végre, a rendszer az RU-díjat a bejövő adattartalomban adja `RequestCharge`vissza egy nevű mezőként. Többféleképpen is lekérheti a kérelemegység-költséget.
+Ha a Azure Cosmos DB Cassandra API műveleteit hajtja végre, a rendszer az RU-díjat a bejövő adattartalomban adja vissza egy nevű mezőként `RequestCharge` . Többféleképpen is lekérheti a kérelemegység-költséget.
 
 ### <a name="use-the-net-sdk"></a>A .NET SDK használata
 
-A [.net SDK](https://www.nuget.org/packages/CassandraCSharpDriver/)használatával lekérheti a bejövő hasznos adatokat egy `Info` `RowSet` objektum tulajdonsága alatt:
+A [.net SDK](https://www.nuget.org/packages/CassandraCSharpDriver/)használatával lekérheti a bejövő hasznos adatokat `Info` egy objektum tulajdonsága alatt `RowSet` :
 
 ```csharp
 RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
@@ -265,11 +265,11 @@ Ha a Gremlin API-t használja, több lehetőség is rendelkezésre áll, amelyek
 
 ### <a name="use-drivers-and-sdk"></a>Illesztőprogramok és SDK használata
 
-A Gremlin API által visszaadott fejlécek egyéni állapot-attribútumokra vannak leképezve, amelyek jelenleg a Gremlin .NET és a Java SDK felületén vannak. A kérés díja a `x-ms-request-charge` kulcs alatt érhető el.
+A Gremlin API által visszaadott fejlécek egyéni állapot-attribútumokra vannak leképezve, amelyek jelenleg a Gremlin .NET és a Java SDK felületén vannak. A kérés díja a kulcs alatt érhető el `x-ms-request-charge` .
 
 ### <a name="use-the-net-sdk"></a>A .NET SDK használata
 
-Az [GREMLIN.net SDK](https://www.nuget.org/packages/Gremlin.Net/)használatakor az állapot attribútumai az `StatusAttributes` `ResultSet<>` objektum tulajdonsága alatt érhetők el:
+Az [GREMLIN.net SDK](https://www.nuget.org/packages/Gremlin.Net/)használatakor az állapot attribútumai az `StatusAttributes` objektum tulajdonsága alatt érhetők el `ResultSet<>` :
 
 ```csharp
 ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;
@@ -280,7 +280,7 @@ További információ: gyors útmutató [: .NET-keretrendszer vagy Core-alkalmaz
 
 ### <a name="use-the-java-sdk"></a>A Java SDK használata
 
-Ha a [Gremlin Java SDK](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver)-t használja, az állapot attribútumait az `statusAttributes()` `ResultSet` objektum metódusának meghívásával kérheti le:
+Ha a [Gremlin Java SDK](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver)-t használja, az állapot attribútumait az `statusAttributes()` objektum metódusának meghívásával kérheti le `ResultSet` :
 
 ```java
 ResultSet results = client.submit("g.V().count()");
@@ -291,7 +291,7 @@ További információ: gyors útmutató [: Graph-adatbázis létrehozása Azure 
 
 ## <a name="table-api"></a>Table API
 
-Jelenleg az egyetlen SDK, amely a Table Operations RU díját adja vissza, a [.NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table). Az `TableResult` objektum egy olyan `RequestCharge` tulajdonságot tesz elérhetővé, amelyet az SDK tölt fel, amikor a Azure Cosmos db Table API használja:
+Jelenleg az egyetlen SDK, amely a Table Operations RU díját adja vissza, a [.NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table). Az `TableResult` objektum egy olyan tulajdonságot tesz elérhetővé `RequestCharge` , amelyet az SDK tölt fel, amikor a Azure Cosmos db Table API használja:
 
 ```csharp
 CloudTable tableReference = client.GetTableReference("table");

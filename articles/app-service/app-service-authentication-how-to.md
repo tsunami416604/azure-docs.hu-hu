@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedély
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6efa5461fab9faf3ce1599a01540cf314b34281b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280832"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205645"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -33,9 +33,9 @@ Először a Azure Portal **hitelesítés/engedélyezés** lapján konfigurálja 
 
 **Ha a kérelem nem hitelesítve van**, válassza a **Névtelen kérelmek engedélyezése (nincs művelet)** lehetőséget.
 
-A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármely más helyén vegyen fel egy bejelentkezési hivatkozást az összes engedélyezett szolgáltatóhoz (`/.auth/login/<provider>`). Például:
+A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármely más helyén vegyen fel egy bejelentkezési hivatkozást az összes engedélyezett szolgáltatóhoz ( `/.auth/login/<provider>` ). Például:
 
-```HTML
+```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
 <a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
@@ -45,9 +45,9 @@ A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármel
 
 Amikor a felhasználó rákattint az egyik hivatkozásra, megnyílik a megfelelő bejelentkezési oldal, amely bejelentkezik a felhasználóba.
 
-Ha át szeretné irányítani a felhasználói bejelentkezést egy egyéni URL-címre, használja `post_login_redirect_url` a lekérdezési karakterlánc paramétert (a rendszer nem tévesztendő össze az identitás-szolgáltatói konfigurációban található ÁTIRÁNYÍTÁSI URI azonosítóval). Ha például a felhasználót a bejelentkezés után szeretné `/Home/Index` navigálni, használja a következő HTML-kódot:
+Ha át szeretné irányítani a felhasználói bejelentkezést egy egyéni URL-címre, használja a `post_login_redirect_url` lekérdezési karakterlánc paramétert (a rendszer nem tévesztendő össze az identitás-szolgáltatói konfigurációban található átirányítási URI azonosítóval). Ha például a felhasználót a bejelentkezés után szeretné navigálni `/Home/Index` , használja a következő HTML-kódot:
 
-```HTML
+```html
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
 ```
 
@@ -55,7 +55,7 @@ Ha át szeretné irányítani a felhasználói bejelentkezést egy egyéni URL-c
 
 Az ügyfél által irányított bejelentkezés során az alkalmazás manuálisan bejelentkezik a felhasználónak a szolgáltatóba, majd elküldi a hitelesítési jogkivonatot az ellenőrzéshez App Service (lásd: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow)). Ez az érvényesítés önmagában nem biztosít hozzáférést a kívánt alkalmazás-erőforrásokhoz, de sikeres ellenőrzés esetén egy munkamenet-tokent ad meg, amely az alkalmazás erőforrásainak elérésére használható. 
 
-A szolgáltatói jogkivonat érvényesítéséhez a App Service alkalmazást először konfigurálni kell a kívánt szolgáltatóval. Futásidőben a szolgáltatótól kapott hitelesítési jogkivonat lekérése után a tokent `/.auth/login/<provider>` az érvényesítéshez tegye közzé. Például: 
+A szolgáltatói jogkivonat érvényesítéséhez a App Service alkalmazást először konfigurálni kell a kívánt szolgáltatóval. Futásidőben a szolgáltatótól kapott hitelesítési jogkivonat lekérése után a tokent az `/.auth/login/<provider>` érvényesítéshez tegye közzé. Például: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -69,13 +69,13 @@ A jogkivonat formátuma a szolgáltatótól függően némileg eltér. A részle
 | Szolgáltató értéke | A kérelem törzsében kötelező | Megjegyzések |
 |-|-|-|
 | `aad` | `{"access_token":"<access_token>"}` | |
-| `microsoftaccount` | `{"access_token":"<token>"}` | A `expires_in` tulajdonság megadása nem kötelező. <br/>Ha az élő szolgáltatásokból kér jogkivonatot, mindig `wl.basic` kérje a hatókört. |
+| `microsoftaccount` | `{"access_token":"<token>"}` | A `expires_in` tulajdonság megadása nem kötelező. <br/>Ha az élő szolgáltatásokból kér jogkivonatot, mindig kérje a `wl.basic` hatókört. |
 | `google` | `{"id_token":"<id_token>"}` | A `authorization_code` tulajdonság megadása nem kötelező. Ha meg van adva, azt is elvégezheti a `redirect_uri` tulajdonsággal együtt. |
 | `facebook`| `{"access_token":"<user_access_token>"}` | Érvényes [felhasználói hozzáférési tokent](https://developers.facebook.com/docs/facebook-login/access-tokens) használhat a Facebook-ból. |
 | `twitter` | `{"access_token":"<access_token>", "access_token_secret":"<acces_token_secret>"}` | |
 | | | |
 
-Ha a szolgáltatói jogkivonat ellenőrzése sikeresen megtörtént, az API a válasz `authenticationToken` törzsében, azaz a munkamenet-jogkivonatban tér vissza. 
+Ha a szolgáltatói jogkivonat ellenőrzése sikeresen megtörtént, az API a `authenticationToken` Válasz törzsében, azaz a munkamenet-jogkivonatban tér vissza. 
 
 ```json
 {
@@ -95,7 +95,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 ## <a name="sign-out-of-a-session"></a>Kijelentkezés a munkamenetből
 
-A felhasználók elindíthatnak egy kijelentkezést az alkalmazás `GET` `/.auth/logout` végpontjának küldött kérelem elküldésével. A `GET` kérelem a következő műveleteket végzi el:
+A felhasználók elindíthatnak egy kijelentkezést `GET` az alkalmazás végpontjának küldött kérelem elküldésével `/.auth/logout` . A `GET` kérelem a következő műveleteket végzi el:
 
 - Törli a hitelesítési cookie-kat az aktuális munkamenetből.
 - Törli az aktuális felhasználó jogkivonatait a jogkivonat-tárolóból.
@@ -103,19 +103,19 @@ A felhasználók elindíthatnak egy kijelentkezést az alkalmazás `GET` `/.auth
 
 A következő egy egyszerű kijelentkezési hivatkozás egy webhelyen:
 
-```HTML
+```html
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Alapértelmezés szerint a sikeres kijelentkezés az URL-címre `/.auth/logout/done`irányítja át az ügyfelet. A kijelentkezési átirányítási lapot a `post_logout_redirect_uri` lekérdezési paraméter hozzáadásával módosíthatja. Például:
+Alapértelmezés szerint a sikeres kijelentkezés az URL-címre irányítja át az ügyfelet `/.auth/logout/done` . A kijelentkezési átirányítási lapot a lekérdezési paraméter hozzáadásával módosíthatja `post_logout_redirect_uri` . Például:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-Javasoljuk, hogy [kódolja](https://wikipedia.org/wiki/Percent-encoding) a értékét `post_logout_redirect_uri`.
+Javasoljuk, hogy [kódolja](https://wikipedia.org/wiki/Percent-encoding) a értékét `post_logout_redirect_uri` .
 
-Teljes URL-címek használatakor az URL-címnek vagy ugyanabban a tartományban kell lennie, vagy az alkalmazás számára engedélyezett külső átirányítási URL-címnek kell lennie. A következő példában a nem ugyanabban a tartományban `https://myexternalurl.com` üzemeltetett átirányítás:
+Teljes URL-címek használatakor az URL-címnek vagy ugyanabban a tartományban kell lennie, vagy az alkalmazás számára engedélyezett külső átirányítási URL-címnek kell lennie. A következő példában a `https://myexternalurl.com` nem ugyanabban a tartományban üzemeltetett átirányítás:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
@@ -129,9 +129,9 @@ az webapp auth update --name <app_name> --resource-group <group_name> --allowed-
 
 ## <a name="preserve-url-fragments"></a>URL-töredékek megőrzése
 
-Miután a felhasználók bejelentkeznek az alkalmazásba, általában ugyanarra a lapra szeretnének átirányítani, például: `/wiki/Main_Page#SectionZ`. Mivel azonban a rendszer soha nem küldi el a `#SectionZ`kiszolgálónak az [URL-töredékeket](https://wikipedia.org/wiki/Fragment_identifier) (például), a rendszer alapértelmezés szerint nem őrzi meg őket a OAuth bejelentkezés befejezése után, és visszairányítja az alkalmazásba. A felhasználók ezt követően optimális élményt kapnak, amikor újra kell navigálni a kívánt horgonyhoz. Ez a korlátozás az összes kiszolgálóoldali hitelesítési megoldásra vonatkozik.
+Miután a felhasználók bejelentkeznek az alkalmazásba, általában ugyanarra a lapra szeretnének átirányítani, például: `/wiki/Main_Page#SectionZ` . Mivel azonban a rendszer soha nem küldi el a kiszolgálónak az [URL-töredékeket](https://wikipedia.org/wiki/Fragment_identifier) (például `#SectionZ` ), a rendszer alapértelmezés szerint nem őrzi meg őket a OAuth bejelentkezés befejezése után, és visszairányítja az alkalmazásba. A felhasználók ezt követően optimális élményt kapnak, amikor újra kell navigálni a kívánt horgonyhoz. Ez a korlátozás az összes kiszolgálóoldali hitelesítési megoldásra vonatkozik.
 
-App Service hitelesítésnél megőrizheti az URL-töredékeket a OAuth-bejelentkezés során. Ehhez állítson be egy nevű `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` alkalmazást. `true` Ezt megteheti a [Azure Portalban](https://portal.azure.com), vagy egyszerűen futtathatja a következő parancsot a [Azure Cloud Shellban](../cloud-shell/quickstart.md):
+App Service hitelesítésnél megőrizheti az URL-töredékeket a OAuth-bejelentkezés során. Ehhez állítson be egy nevű alkalmazást `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` `true` . Ezt megteheti a [Azure Portalban](https://portal.azure.com), vagy egyszerűen futtathatja a következő parancsot a [Azure Cloud Shellban](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
@@ -146,7 +146,7 @@ A App Service speciális fejlécek használatával átadja az alkalmazásnak a f
 
 A bármely nyelven vagy keretrendszerben írt kód a fenti fejlécek által igényelt információkat kérheti le. A ASP.NET 4,6 alkalmazások esetében a **ClaimsPrincipal** automatikusan a megfelelő értékekkel van beállítva. ASP.NET Core azonban nem biztosít olyan hitelesítési middleware-t, amely App Service felhasználói jogcímekbe integrálódik. Megkerülő megoldásért tekintse meg a következőt: [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Az alkalmazás a meghívásával `/.auth/me`további részleteket is kérhet a hitelesített felhasználóról. Az Mobile Apps Server SDK-k segítő módszereket biztosítanak az adatkezeléshez. További információ: [az azure Mobile apps Node. js SDK használata](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)és [Az Azure-beli .net-háttérrendszer-kiszolgáló SDK-val való együttműködés. Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Az alkalmazás a meghívásával további részleteket is kérhet a hitelesített felhasználóról `/.auth/me` . Az Mobile Apps Server SDK-k segítő módszereket biztosítanak az adatkezeléshez. További információ: [az azure Mobile Apps Node.js SDK használata](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity), valamint az Azure-hoz [készült .net backend Server SDK-val való együttműködés. Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Jogkivonatok beolvasása az alkalmazás kódjában
 
@@ -161,7 +161,7 @@ A kiszolgáló kódjából a szolgáltatóra jellemző jogkivonatokat a rendszer
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-Küldjön HTTP `GET` -kérést az ügyfél kódjából (például egy mobil alkalmazásból vagy egy böngészőből származó JavaScriptből `/.auth/me`). A visszaadott JSON a szolgáltatóra jellemző jogkivonatokat tartalmaz.
+Küldjön HTTP-kérést az ügyfél kódjából (például egy mobil alkalmazásból vagy egy böngészőből származó JavaScriptből) `GET` `/.auth/me` . A visszaadott JSON a szolgáltatóra jellemző jogkivonatokat tartalmaz.
 
 > [!NOTE]
 > A hozzáférési tokenek a szolgáltatói erőforrások eléréséhez szükségesek, így csak akkor jelennek meg, ha a szolgáltatót egy ügyfél titkos kulcsával konfigurálja. A frissítési tokenek beszerzésével kapcsolatban lásd: hozzáférési tokenek frissítése.
@@ -170,15 +170,15 @@ Küldjön HTTP `GET` -kérést az ügyfél kódjából (például egy mobil alka
 
 Ha a szolgáltató hozzáférési jogkivonata (nem a [munkamenet jogkivonata](#extend-session-token-expiration-grace-period)) lejár, újra hitelesítenie kell a felhasználót, mielőtt újra felhasználja a tokent. A jogkivonat lejáratának elkerüléséhez `GET` hívja meg az `/.auth/refresh` alkalmazás végpontját. A híváskor App Service automatikusan frissíti a hitelesített felhasználó hozzáférési jogkivonatait a jogkivonat-tárolóban. Az alkalmazás kódjának a jogkivonatokra vonatkozó későbbi kérelmei megkapják a frissített jogkivonatokat. Ahhoz azonban, hogy a jogkivonat-frissítés működjön, a jogkivonat-tárolónak tartalmaznia kell a szolgáltató [frissítési jogkivonatait](https://auth0.com/learn/refresh-tokens/) . A frissítési tokenek beszerzésének módját az egyes szolgáltatók dokumentálják, de a következő lista egy rövid összefoglalás:
 
-- **Google**: fűzze hozzá `access_type=offline` a lekérdezési karakterlánc paramétert az `/.auth/login/google` API-híváshoz. Ha a Mobile Apps SDK-t használja, hozzáadhatja a paramétert a túlterhelések egyikéhez `LogicAsync` (lásd: [Google frissítési jogkivonatok](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Google**: fűzze hozzá a `access_type=offline` lekérdezési karakterlánc paramétert az `/.auth/login/google` API-híváshoz. Ha a Mobile Apps SDK-t használja, hozzáadhatja a paramétert a `LogicAsync` túlterhelések egyikéhez (lásd: [Google frissítési jogkivonatok](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: nem biztosít frissítési jogkivonatokat. A hosszú élettartamú tokenek 60 nap múlva lejárnak (lásd [a Facebook lejáratát és a hozzáférési tokenek kiterjesztését](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter**: a hozzáférési tokenek nem járnak le (lásd: [Twitter OAuth – gyakori kérdések](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
 - **Microsoft-fiók**: a [Microsoft-fiók hitelesítési beállításainak konfigurálásakor](configure-authentication-provider-microsoft.md)válassza ki a `wl.offline_access` hatókört.
-- **Azure Active Directory**: a [https://resources.azure.com](https://resources.azure.com)-ben végezze el a következő lépéseket:
+- **Azure Active Directory**: a-ben [https://resources.azure.com](https://resources.azure.com) végezze el a következő lépéseket:
     1. Az oldal tetején válassza az **írás/írás**lehetőséget.
-    2. A bal oldali böngészőben navigáljon a **Subscriptions** > **_\<\_előfizetés neve_****resourceGroups** > **_\<\_\_ _**  >  **config** > **authsettings** **providers** >   >  > **sites** > **_\<\_ _****Microsoft.Web**resourceGroups erőforráscsoport neve>Providers Microsoft. Web Sites alkalmazás neve>config authsettings elemre. >  
+    2. A bal oldali böngészőben navigáljon az **előfizetések** > * *_ \<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **szolgáltatók**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings elemre**. 
     3. Kattintson a **Szerkesztés** gombra.
-    4. Módosítsa a következő tulajdonságot. Cserélje _ \<le\_az alkalmazás azonosítóját>_ az elérni kívánt szolgáltatás Azure Active Directory alkalmazás-azonosítójával.
+    4. Módosítsa a következő tulajdonságot. Cserélje le az helyére az _\<app\_id>_ elérni kívánt szolgáltatás Azure Active Directory alkalmazás-azonosítóját.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
@@ -190,7 +190,7 @@ Miután konfigurálta a szolgáltatót, [megkeresheti a frissítési jogkivonato
 
 Ha bármikor frissíteni szeretné a hozzáférési jogkivonatot, csak `/.auth/refresh` tetszőleges nyelven hívhat meg. A következő kódrészlet a jQuery használatával frissíti a hozzáférési jogkivonatait egy JavaScript-ügyfélről.
 
-```JavaScript
+```javascript
 function refreshTokens() {
   let refreshUrl = "/.auth/refresh";
   $.ajax(refreshUrl) .done(function() {
@@ -201,11 +201,11 @@ function refreshTokens() {
 }
 ```
 
-Ha a felhasználó visszavonja az alkalmazás számára biztosított engedélyeket, a hívása sikertelen `/.auth/me` `403 Forbidden` lehet. A hibák diagnosztizálásához az alkalmazás naplófájljaiban tájékozódhat a részletekről.
+Ha a felhasználó visszavonja az alkalmazás számára biztosított engedélyeket, a hívása `/.auth/me` sikertelen lehet `403 Forbidden` . A hibák diagnosztizálásához az alkalmazás naplófájljaiban tájékozódhat a részletekről.
 
 ## <a name="extend-session-token-expiration-grace-period"></a>Munkamenet-jogkivonat lejárati türelmi időszakának kiterjesztése
 
-A hitelesített munkamenet 8 óra elteltével lejár. A hitelesített munkamenet lejárta után a rendszer alapértelmezés szerint 72 órás türelmi időszakot használ. A türelmi időszakon belül lehetősége van a munkamenet-jogkivonat frissítésére App Service a felhasználó ismételt hitelesítése nélkül. Csak akkor hívható `/.auth/refresh` meg, ha a munkamenet-jogkivonat érvénytelenné válik, és nem kell nyomon követnie a jogkivonat lejáratát. Ha a 72 órás türelmi időszak lejár, a felhasználónak újra be kell jelentkeznie, hogy érvényes munkamenet-tokent kapjon.
+A hitelesített munkamenet 8 óra elteltével lejár. A hitelesített munkamenet lejárta után a rendszer alapértelmezés szerint 72 órás türelmi időszakot használ. A türelmi időszakon belül lehetősége van a munkamenet-jogkivonat frissítésére App Service a felhasználó ismételt hitelesítése nélkül. Csak akkor hívható meg `/.auth/refresh` , ha a munkamenet-jogkivonat érvénytelenné válik, és nem kell nyomon követnie a jogkivonat lejáratát. Ha a 72 órás türelmi időszak lejár, a felhasználónak újra be kell jelentkeznie, hogy érvényes munkamenet-tokent kapjon.
 
 Ha a 72 órán belül nincs elég idő, kiterjesztheti ezt a lejárati időszakot. Ha hosszabb időn keresztül kiterjeszti a lejáratot, jelentős biztonsági következményekkel járhat (például egy hitelesítési jogkivonat kiszivárgásakor vagy ellopásakor). Ezért hagyja meg az alapértelmezett 72 órát, vagy állítsa a kiterjesztési időszakot a legkisebb értékre.
 
@@ -221,20 +221,20 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Bejelentkezési fiókok tartományának korlátozása
 
-A Microsoft-fiók és a Azure Active Directory egyaránt lehetővé teszi több tartományból való bejelentkezést. A Microsoft-fiók például lehetővé teszi a _Outlook.com_, a _live.com_és a _hotmail.com_ fiók használatát. Az Azure AD lehetővé teszi a bejelentkezési fiókok tetszőleges számú egyéni tartományának használatát. Előfordulhat azonban, hogy a felhasználóknak azonnal fel kell gyorsítania a saját márkás Azure AD bejelentkezési oldalát (például `contoso.com`). Ha a bejelentkezési fiókok tartománynevét szeretné javasolni, kövesse az alábbi lépéseket.
+A Microsoft-fiók és a Azure Active Directory egyaránt lehetővé teszi több tartományból való bejelentkezést. A Microsoft-fiók például lehetővé teszi a _Outlook.com_, a _live.com_és a _hotmail.com_ fiók használatát. Az Azure AD lehetővé teszi a bejelentkezési fiókok tetszőleges számú egyéni tartományának használatát. Előfordulhat azonban, hogy a felhasználóknak azonnal fel kell gyorsítania a saját márkás Azure AD bejelentkezési oldalát (például `contoso.com` ). Ha a bejelentkezési fiókok tartománynevét szeretné javasolni, kövesse az alábbi lépéseket.
 
-A [https://resources.azure.com](https://resources.azure.com)alkalmazásban navigáljon **az** > előfizetés-**_\<\_előfizetés neve_****resourceGroups** > **_\<\_resourceGroups erőforráscsoport\_neve>_**  >  **providers** > **Microsoft. Web** > **Sites** > **_\<\_app Name>_**  >  **config** > **authsettings elemre**. >  
+A alkalmazásban [https://resources.azure.com](https://resources.azure.com) navigáljon az **előfizetések** > * *_ \<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **szolgáltatók**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings elemre**. 
 
-Kattintson a **Szerkesztés**gombra, módosítsa a következő tulajdonságot, majd kattintson a **put**elemre. Ügyeljen arra, hogy _ \<a\_tartománynevet>_ a kívánt tartományra cserélje le.
+Kattintson a **Szerkesztés**gombra, módosítsa a következő tulajdonságot, majd kattintson a **put**elemre. Ne felejtse el lecserélni _\<domain\_name>_ a kívánt tartományra.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
 
-Ezzel a beállítással a `domain_hint` rendszer hozzáfűzi a lekérdezési karakterlánc paramétert a bejelentkezési átirányítás URL-címéhez. 
+Ezzel a beállítással a rendszer hozzáfűzi a `domain_hint` lekérdezési karakterlánc paramétert a bejelentkezési átirányítás URL-címéhez. 
 
 > [!IMPORTANT]
-> Lehetséges, hogy az ügyfél el szeretné távolítani a `domain_hint` paramétert az ÁTirányítási URL-cím fogadása után, majd egy másik tartományba való bejelentkezést. Így amíg ez a függvény kényelmes, nem biztonsági funkció.
+> Lehetséges, hogy az ügyfél el szeretné távolítani a `domain_hint` paramétert az átirányítási URL-cím fogadása után, majd egy másik tartományba való bejelentkezést. Így amíg ez a függvény kényelmes, nem biztonsági funkció.
 >
 
 ## <a name="authorize-or-deny-users"></a>Felhasználók engedélyezése vagy megtagadása
@@ -247,13 +247,13 @@ Míg App Service gondoskodik a legegyszerűbb engedélyezési esetről (azaz a n
 
 ### <a name="server-level-windows-apps-only"></a>Kiszolgáló szintje (csak Windows-alkalmazások esetén)
 
-Bármely Windows-alkalmazás esetében megadhatja az IIS-webkiszolgáló engedélyezési viselkedését a *web. config* fájl szerkesztésével. A Linux-alkalmazások nem használják az IIS-t, és nem konfigurálhatók a *web. config*fájlon keresztül.
+Bármely Windows-alkalmazás esetében a *Web.config* fájl szerkesztésével megadhatja az IIS-webkiszolgáló engedélyezési viselkedését. A Linux-alkalmazások nem használják az IIS-t, és nem konfigurálhatók *Web.configon *keresztül.
 
 1. Navigáljon a`https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. A App Service-fájlok böngésző-tallózójában navigáljon a *hely/wwwroot*elemre. Ha a *web. config* nem létezik, hozza létre az **+**  >  **új fájl**lehetőség kiválasztásával. 
+1. A App Service-fájlok böngésző-tallózójában navigáljon a *hely/wwwroot*elemre. Ha a *Web.config* nem létezik, hozza létre az **+**  >  **új fájl**kiválasztásával. 
 
-1. A szerkesztéshez válassza a *web. config* ceruza elemet. Adja hozzá a következő konfigurációs kódot, és kattintson a **Mentés**gombra. Ha a *web. config* fájl már létezik, egyszerűen `<authorization>` adja hozzá a elemet a benne található összes elemhez. Adja hozzá azokat a fiókokat, amelyeket engedélyezni `<allow>` szeretne a elemben.
+1. Válassza ki a ceruzát *Web.config* a szerkesztéshez. Adja hozzá a következő konfigurációs kódot, és kattintson a **Mentés**gombra. Ha *Web.config* már létezik, egyszerűen adja hozzá a `<authorization>` elemet a benne található összes elemhez. Adja hozzá azokat a fiókokat, amelyeket engedélyezni szeretne a `<allow>` elemben.
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -281,5 +281,5 @@ Ha a többi szint valamelyike nem rendelkezik a szükséges engedélyekkel, vagy
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: a felhasználók teljes körű (Windows)](app-service-web-tutorial-auth-aad.md)
-> oktatóanyagának hitelesítése és engedélyezése[: teljes körű hitelesítés és engedélyezés a felhasználók számára (Linux)](containers/tutorial-auth-aad.md)
+> [Oktatóanyag: felhasználók teljes körű hitelesítése és engedélyezése (Windows)](app-service-web-tutorial-auth-aad.md) 
+>  [Oktatóanyag: felhasználók hitelesítése és engedélyezése végpontok közötti (Linux)](containers/tutorial-auth-aad.md)

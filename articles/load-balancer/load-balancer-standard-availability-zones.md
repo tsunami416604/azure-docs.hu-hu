@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 6deb5714a43d61f5ceb793757d49bd099f09f2b7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2c16c40ba7ed97f933516811432c3d4768bd0c62
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977648"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888488"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
@@ -50,7 +50,9 @@ Egyetlen előtéri IP-cím fogja túlélni A zóna meghibásodását. Az előté
 
 A frontend IP-címét egyszerre több független infrastruktúra-telepítés is szolgálja, több rendelkezésre állási zónában. Az újrapróbálkozások és az újralétesítések a zóna meghibásodása által nem érintett más zónákban is sikeresek lesznek. 
 
-:::image type="content" source="./media/az-zonal/zone-redundant-lb-1.svg" alt-text="Felesleges zóna" border="true":::
+<p align="center">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="Virtual Network NAT">
+</p>
 
 *Ábra: a zóna redundáns Load Balancer*
 
@@ -60,7 +62,12 @@ Dönthet úgy is, hogy egy olyan előtérben van, amely egyetlen zónában van, 
 
 Ezen kívül az egyes zónákon belüli elosztott terhelésű végpontok esetén közvetlenül a zóna-előtérbeli környezetek használata is támogatott. Ez a konfiguráció lehetővé teszi, hogy zónán belüli elosztott terhelésű végpontok számára elérhetővé tegye a zónák egyedi figyelését. Nyilvános végpontok esetén integrálhatja őket egy DNS terheléselosztási termékkel, például [Traffic Manager](../traffic-manager/traffic-manager-overview.md) , és egyetlen DNS-nevet használhat.
 
-:::image type="content" source="./media/az-zonal/zonal-lb-1.svg" alt-text="Felesleges zóna" border="true":::
+
+<p align="center">
+  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="Virtual Network NAT">
+</p>
+
+*Ábra: a Zona redundáns Load Balancer*
 
 Ha szeretné összekeverni ezeket a fogalmakat (a zóna redundáns és az azonos háttérbeli névteret), tekintse át [Azure Load Balancer több](load-balancer-multivip-overview.md)előtérben is.
 

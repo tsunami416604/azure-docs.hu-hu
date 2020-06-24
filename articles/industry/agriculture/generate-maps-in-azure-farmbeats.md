@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271771"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709062"
 ---
 # <a name="generate-maps"></a>Térképek létrehozása
 
@@ -51,7 +51,7 @@ Ez a szakasz az érzékelő elhelyezési leképezések létrehozási eljárásai
 > [!NOTE]
 > Az érzékelő elhelyezési leképezését kezdeményezheti a **térképek** oldalról vagy a **Farm részletek** lapján található **precíziós térképek létrehozása** legördülő menüből.
 
-Kövesse az alábbi lépéseket.
+Hajtsa végre az alábbi lépéseket.
 
 1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
 2. Válassza a **térképek létrehozása**lehetőséget, majd a legördülő menüben válassza az **érzékelő elhelyezése** lehetőséget.
@@ -75,7 +75,7 @@ Kövesse az alábbi lépéseket.
 
 ### <a name="view-and-download-a-sensor-placement-map"></a>Érzékelő elhelyezési térképének megtekintése és letöltése
 
-Kövesse az alábbi lépéseket.
+Hajtsa végre az alábbi lépéseket.
 
 1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
 
@@ -110,7 +110,7 @@ A FarmBeats lehetővé teszi a NDVI, a továbbfejlesztett vegetációs index (EV
 
 ## <a name="create-a-satellite-indices-map"></a>Műholdas indexek létrehozása – Térkép
 
-Kövesse az alábbi lépéseket.
+Hajtsa végre az alábbi lépéseket.
 
 1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
 2. Válassza a **térképek létrehozása**lehetőséget, majd a legördülő menüben válassza a **Satellite indexek** lehetőséget.
@@ -136,7 +136,7 @@ Kövesse az alábbi lépéseket.
 
 ### <a name="view-and-download-a-map"></a>Térkép megtekintése és letöltése
 
-Kövesse az alábbi lépéseket.
+Hajtsa végre az alábbi lépéseket.
 
 1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
 
@@ -175,7 +175,7 @@ A következő előfeltételeknek kell megfelelnie, mielőtt megkísérli a talaj
 
 ## <a name="create-a-soil-moisture-heatmap"></a>Talaj nedvességtartalmának hő létrehozása
 
-Kövesse az alábbi lépéseket.
+Hajtsa végre az alábbi lépéseket.
 
 1. A kezdőlapon kattintson a Maps ( **térképek** ) elemre a bal oldali navigációs menüben a **Maps** oldal megtekintéséhez.
 2. Válassza a **térképek létrehozása**lehetőséget, majd a legördülő menüből válassza a **talaj nedvesség** lehetőséget.
@@ -203,7 +203,7 @@ Az érzékelő mértékének megkereséséhez nyissa meg az **érzékelők**elem
 
 ### <a name="view-and-download-a-map"></a>Térkép megtekintése és letöltése
 
-Kövesse az alábbi lépéseket.
+Hajtsa végre az alábbi lépéseket.
 
 1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
 

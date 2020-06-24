@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269730"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708331"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata
 > [!div class="op_single_selector"]
@@ -141,7 +141,7 @@ A stream kipróbálásához használja az [Azure Media Services-lejátszót](htt
 Az előző lépésben létrehozta az URL-címet, amely egy manifest-fájlra mutat. Az ügyfélnek ki kell bontania a szükséges információkat a streaming manifest-fájlokból, hogy kérést küldjön a Key Delivery Service-nek.
 
 ### <a name="manifest-files"></a>Jegyzékfájlok
-Az ügyfélnek ki kell bontania az URL-címet (amely szintén tartalmazza a tartalom-azonosító [Kid]) értékét a jegyzékfájlból. Az ügyfél ezután megpróbálja lekérni a titkosítási kulcsot a Key Delivery szolgáltatásból. Az ügyfélnek a IV értéket is ki kell bontania, és azt a stream visszafejtéséhez kell használnia. A következő kódrészlet a Smooth Streaming `<Protection>` jegyzékfájl elemét mutatja be:
+Az ügyfélnek ki kell bontania az URL-címet (amely szintén tartalmazza a tartalom-azonosító [Kid]) értékét a jegyzékfájlból. Az ügyfél ezután megpróbálja lekérni a titkosítási kulcsot a Key Delivery szolgáltatásból. Az ügyfélnek a IV értéket is ki kell bontania, és azt a stream visszafejtéséhez kell használnia. A következő kódrészlet a `<Protection>` Smooth streaming jegyzékfájl elemét mutatja be:
 
 ```xml
     <Protection>
@@ -159,7 +159,7 @@ Az ügyfélnek ki kell bontania az URL-címet (amely szintén tartalmazza a tart
 
 A HLS esetében a gyökérszintű jegyzékfájl a szegmens fájlokba van bontva. 
 
-A legfelső szintű jegyzékfájl például a következő: http\/:/test001.Origin.Mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL). A szegmensek fájlneveit tartalmazó listát tartalmaz.
+A legfelső szintű jegyzékfájl például a következő: http: \/ /test001.Origin.Mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = m3u8-AAPL). A szegmensek fájlneveit tartalmazó listát tartalmaz.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ A legfelső szintű jegyzékfájl például a következő: http\/:/test001.Origi
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Ha egy szövegszerkesztőben (például a http:\//test001.Origin.Mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (videó, Format = m3u8-AAPL) található szegmens fájlok egyikét nyitja meg, akkor #EXT-X-Key, amely azt jelzi, hogy a fájl titkosítva van.
+Ha egy szövegszerkesztőben (például a http: \/ /test001.Origin.Mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (videó, Format = m3u8-AAPL) található szegmens fájlok egyikét nyitja meg, akkor #EXT-X-Key, amely azt jelzi, hogy a fájl titkosítva van.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -239,14 +239,14 @@ A következő kód bemutatja, hogyan küldhet egy kérést a Media Services Key 
 
 1. Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint.
 
-2. Adja hozzá a következő elemeket a appSettings-hez az app. config fájlban megadott módon:
+2. Adja hozzá a következő elemeket a appSettings-hez a app.config fájlban megadott módon:
 
     ```xml
     <add key="Issuer" value="http://testissuer.com"/>
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a name="example"></a><a id="example"></a>Például
+### <a name="example"></a><a id="example"></a>Példa
 
 Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
  

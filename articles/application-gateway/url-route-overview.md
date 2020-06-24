@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1d393055b0ac62198bd5a7239b2b92b7aeff62e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145371"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987934"
 ---
 # <a name="url-path-based-routing-overview"></a>Az URL-alapú útválasztás áttekintése
 
@@ -24,7 +24,7 @@ Az alábbi példában az alkalmazásátjáró a contoso.com webhelyet szolgálja
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-A http\://contoso.com/video/* kérelmeket a rendszer átirányítja a VideoServerPool\:, a http//contoso.com/images/* pedig a ImageServerPool. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
+A http \: //contoso.com/video/* kérelmeket a rendszer átirányítja a VideoServerPool, a http \: //contoso.com/images/* pedig a ImageServerPool. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
 
 > [!IMPORTANT]
 > A v1 SKU esetében a szabályok a portálon felsorolt sorrendben lesznek feldolgozva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt. A v2 SKU esetében a pontos egyezések magasabb prioritással rendelkeznek. Azonban javasoljuk, hogy először konfigurálja a többhelyes figyelőket az alapszintű figyelő konfigurálása előtt. Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva.
@@ -75,7 +75,7 @@ Az elérésiút-szabályok a kis-és nagybetűk megkülönböztetése.
 |v1 elérésiút-minta  |Támogatott?  |
 |---------|---------|
 |`/images/*`     |igen|
-|`/images*`     |nem|
+|`/images*`     |igen|
 |`/images/*.jpg`     |nem|
 |`/*.jpg`     |nem|
 |`/Repos/*/Comments/*`     |nem|

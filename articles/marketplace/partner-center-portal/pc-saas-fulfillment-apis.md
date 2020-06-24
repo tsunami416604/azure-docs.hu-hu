@@ -5,31 +5,55 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 05/18/2020
 ms.author: dsindona
-ms.openlocfilehash: ba1b158bc529b148a8e3138d122c13ead19e073e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 70515ca04e870fa435f8e9f46122a8e0dcb9b588
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858086"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691356"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>SaaS-teljesítési API-k a Microsoft kereskedelmi piactéren
 
-A SaaS-teljesítési API-k lehetővé teszik a független szoftvergyártók számára a SaaS-alkalmazások integrálását Microsoft AppSource és az Azure piactéren. Ezek az API-k lehetővé teszik az ISV-alkalmazások számára az összes kereskedelmi támogatással rendelkező csatorna részvételét: közvetlen, partner által vezetett (viszonteladói) és mező-vezérelt. A Microsoft AppSource és az Azure Marketplace-en található, a transacter SaaS-ajánlatok listázásához szükségesek.
+A SaaS-teljesítési API-k lehetővé teszik a kiadók, más néven a független szoftvergyártók számára, hogy a Microsoft AppSource, az Azure Marketplace-en és a Azure Portalon keresztül tegyenek közzé és értékesítsenek SaaS-alkalmazásaikat. Ezek az API-k lehetővé teszik az ISV-alkalmazások számára az összes kereskedelmi támogatással rendelkező csatorna részvételét: közvetlen, partner által vezetett (viszonteladói) és mező-vezérelt.  Az ezekkel az API-kkal való integráció követelmény a transacter SaaS-ajánlatok partner Centerben történő létrehozásához és közzétételéhez.
 
-> [!WARNING]
-> Az API jelenlegi verziója 2. verzió, amelyet minden új SaaS-ajánlathoz használni kell.  Az API 1. verziója elavult, és a rendszer fenntartja a meglévő ajánlatok támogatását.
+Az ISV-k a következő API-folyamatokat implementálják az SaaS-szolgáltatás kódjának hozzáadásával, hogy ugyanazt az előfizetési állapotot használják az ISV-k és a Microsoft számára:
 
-## <a name="business-model-support"></a>Üzleti modell támogatása
+* Kezdőlap folyamata: a Microsoft értesíti a közzétevőt arról, hogy a piactéren egy ügyfél vásárolta meg a közzétevő SaaS-ajánlatát.
+* Aktiválási folyamat: a közzétevő értesíti a Microsoftot arról, hogy az újonnan megvásárolt SaaS-fiók konfigurálva van a közzétevő oldalán.
+* Folyamat frissítése: a megvásárolt csomag módosítása és/vagy a megvásárolt helyek száma.
+* Folyamat felfüggesztése és visszaállítása: a megvásárolt SaaS-ajánlat felfüggesztése arra az esetre, ha az ügyfél fizetési módja már nem érvényes. A felfüggesztett ajánlat visszaállítható, ha megoldódik a fizetési mód problémája.
+* Webhook-folyamatok: a Microsoft értesíti a közzétevőt a SaaS-előfizetések változásairól, valamint az ügyfél által a Microsoft oldaláról kiváltott törlésről.
 
-Ez az API a következő üzleti modell-képességeket támogatja: képes vagy:
+A megvásárolt SaaS-előfizetés lemondása esetén az integráció nem kötelező, mivel az ügyfél a Microsoft oldaláról is elvégezhető.
 
-* Több csomagot is megadunk egy ajánlathoz. Ezek a csomagok különböző funkciókkal rendelkeznek, és eltérő díjszabással rendelkezhetnek.
-* Adjon meg egy ajánlatot webhelyenként vagy felhasználónkénti számlázási modell alapján.
-* Adja meg a havi és az éves (fizetős előzetes) számlázási lehetőségeket.
-* Egy egyeztetett üzleti szerződés alapján privát díjszabást biztosíthat az ügyfeleknek.
+A SaaS-teljesítési API-kkal való megfelelő integráció elengedhetetlen annak biztosításához, hogy
 
+* a kiadó SaaS-ajánlatát megvásárló végfelhasználók számlázása a Microsoft által megfelelően történik.
+* a végfelhasználók a piactéren vásárolt SaaS-előfizetések megvásárlását, konfigurálását, használatát és felügyeletét végzik.
+
+Ezek az API-k lehetővé teszik, hogy a kiadó ajánlatai részt vegyenek az összes kereskedelmi támogató csatornán:
+
+* közvetlen
+* partner által vezetett (viszonteladó, CSP)
+* mező – LED
+
+A viszonteladói (CSP) forgatókönyvben a CSP a végfelhasználó nevében vásárolja meg az SaaS-ajánlatot. Az ügyfélnek a SaaS-ajánlatot kell használnia, de a CSP az a entitás, amely a következőket végzi el:
+
+* az ügyfél számlázása
+* előfizetési csomagok módosítása/a megvásárolt helyek mennyisége
+* az előfizetések megszakítása
+
+Ehhez a forgatókönyvhöz nem szükséges az API-hívások különböző folyamatainak implementálása.
+
+A CSP-vel kapcsolatos további információkért tekintse meg a következőt: https://partner.microsoft.com/en-us/licensing .
+
+>[!Warning]
+>Az API jelenlegi verziója 2. verzió, amelyet minden új SaaS-ajánlathoz használni kell. Az API 1. verziója elavult, és a rendszer fenntartja a meglévő ajánlatok támogatását.
+
+>[!Note]
+>A SaaS-teljesítési API-k csak a közzétevő háttér-szolgáltatásának meghívására szolgálnak. Az API-kkal való közvetlen integráció nem támogatott a közzétevő weblapján. Csak a szolgáltatás és a szolgáltatás közötti hitelesítési folyamat használható.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan figyelheti Azure Cosmos DB teljesítményét é
 author: bwren
 services: cosmos-db
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: a31636e4e56ddeb9f48cd8c955dc4415dacdc178
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0d675bd53eac728918c951b1db0dae0188f75df1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234923"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262786"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Figyelés Azure Cosmos DB
 
@@ -27,11 +27,11 @@ Az adatok figyelése ügyféloldali és kiszolgálóoldali metrikákkal végezhe
 
 * **Figyelő a Azure monitor diagnosztikai naplóival:** Nyomon követheti az Azure Cosmos-fiók naplóit, és irányítópultokat hozhat létre a Azure Monitorból. A telemetria, például az eseményeket és a nyomkövetéseket, amelyek egy második részletességgel történnek, naplóként tárolódnak. Ha például egy tároló átviteli sebessége megváltozik, a Cosmos-fiók tulajdonságai módosulnak, ezek az események a naplókon belül lesznek rögzítve. Ezeket a naplókat az összegyűjtött adatok lekérdezésének futtatásával elemezheti. További információért lásd a jelen cikk [naplózási információk elemzése](#analyze-log-data) című szakaszát.
 
-* **Programozott módon figyelheti az SDK** -kat: Az Azure Cosmos-fiókot programozott módon figyelheti a .NET, a Java, a Python, a Node. js SDK-k és a REST API fejlécei segítségével. További információért lásd a jelen cikk [figyelés Azure Cosmos db programozott](#monitor-cosmosdb-programmatically) módon című szakaszát.
+* **Programozott módon figyelheti az SDK** -kat: Az Azure Cosmos-fiókot programozott módon, a .NET, a Java, a Python, a Node.js SDK-k és a REST API fejlécei segítségével figyelheti. További információért lásd a jelen cikk [figyelés Azure Cosmos db programozott](#monitor-cosmosdb-programmatically) módon című szakaszát.
 
 Az alábbi képen a Azure Cosmos DB fiókok figyelésére szolgáló különböző lehetőségek láthatók Azure Portalon keresztül:
 
-![A Azure Portalban elérhető figyelési lehetőségek](media/monitor-cosmos-db/monitoring-options-portal.png)
+:::image type="content" source="media/monitor-cosmos-db/monitoring-options-portal.png" alt-text="A Azure Portalban elérhető figyelési lehetőségek" border="false":::
 
 Azure Cosmos DB használatakor az ügyfél oldalán összegyűjtheti a kérelem díjait, a tevékenység AZONOSÍTÓját, a kivétel/verem nyomkövetési adatait, a HTTP-állapotot, az alállapot kódját, a diagnosztikai karakterláncot az esetlegesen előforduló problémák hibakereséséhez. Ezekre az információkra akkor is szükség van, ha a Azure Cosmos DB támogatási csapatot kell elérnie.  
 
@@ -62,7 +62,7 @@ Azure Cosmos DB ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-e
 
 Az egyes Azure Cosmos-adatbázisokhoz tartozó Azure Portal **áttekintő** lapja az adatbázis-használat rövid áttekintését tartalmazza, beleértve a kérését és az óránkénti számlázási használatot. Ez hasznos információ, de csak kis mennyiségű figyelési adat érhető el. Ezeket az adatokat a rendszer automatikusan gyűjti, és az elemzéshez azonnal elérhetővé válik, miközben a további adatgyűjtést is engedélyezheti néhány konfigurációval.
 
-![Áttekintő lap](media/monitor-cosmos-db/overview-page.png)
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Áttekintő lap":::
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a>Metrikus adatok elemzése
 
@@ -82,27 +82,27 @@ A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítség
 
 1. Válassza a **figyelő** lehetőséget a bal oldali navigációs sávon, és válassza a **metrikák**lehetőséget.
 
-   ![Metrikák ablaktábla Azure Monitor](./media/monitor-cosmos-db/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
 1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget.
 
-   ![Cosmos DB fiók kiválasztása a metrikák megtekintéséhez](./media/monitor-cosmos-db/select-cosmosdb-account.png)
+   :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Cosmos DB fiók kiválasztása a metrikák megtekintéséhez":::
 
 1. Következő lépésként kiválaszthat egy mérőszámot az elérhető metrikák listájából. Kiválaszthatja a kérelmekhez tartozó mérőszámokat, a tárolást, a késést, a rendelkezésre állást, a Cassandra és másokat. A listán szereplő összes mérőszám részletes megismeréséhez tekintse meg a [metrikák kategória szerint](monitor-cosmos-db-reference.md) című cikket. Ebben a példában a **kérelmek egységeit** és az **átlagot** adja meg az összesítési értékként.
 
    Ezen részletek mellett kiválaszthatja a metrikák **időtartományát** és **időrészletességét** is. A maximális értéknél megtekintheti az elmúlt 30 nap mérőszámait.  A szűrő alkalmazása után egy diagram jelenik meg a szűrő alapján. A kiválasztott időszakra vonatkozóan percenként felhasználható kérelmek átlagos számát láthatja.  
 
-   ![Metrika kiválasztása a Azure Portal](./media/monitor-cosmos-db/metric-types.png)
+   :::image type="content" source="./media/monitor-cosmos-db/metric-types.png" alt-text="Metrika kiválasztása a Azure Portal":::
 
 ### <a name="add-filters-to-metrics"></a>Szűrők hozzáadása metrikához
 
 Az adott **CollectionName**, **databasename**, **OperationType**, **régió**és **statuscode**által megjelenített mérőszámokat és diagramokat is szűrheti. A metrikák szűréséhez válassza a **szűrő hozzáadása** lehetőséget, és válassza ki a szükséges tulajdonságot (például **OperationType** ), és válasszon egy értéket (például **lekérdezés**). A gráf ezután megjeleníti a kiválasztott időszakban a lekérdezési művelethez felhasznált kérelmek egységeit. A tárolt eljáráson keresztül végrehajtott műveletek nincsenek naplózva, így azok nem érhetők el az OperationType metrika alatt.
 
-![Szűrő hozzáadása a metrika részletességének kiválasztásához](./media/monitor-cosmos-db/add-metrics-filter.png)
+:::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Szűrő hozzáadása a metrika részletességének kiválasztásához":::
 
 A metrikákat a **felosztás alkalmazása** lehetőség használatával csoportosíthatja. Például csoportosíthatja a kérelmek egységeit, és megtekintheti az összes művelet gráfját, amint az alábbi képen is látható:
 
-![Alkalmazás-felosztási szűrő hozzáadása](./media/monitor-cosmos-db/apply-metrics-splitting.png)
+:::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="Alkalmazás-felosztási szűrő hozzáadása":::
 
 ## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a>Naplózási adatok elemzése
 

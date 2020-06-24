@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan használható az Azure diagnosztikai beállít�
 author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: b1a507c54c6a6555fc945dd35ee6e54d37d49bfd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: f5c286b9688c4e0ba9e59eda1472b624c84eb2b4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857568"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261936"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB adatai figyelése az Azure diagnosztikai beállításainak használatával
 
@@ -20,7 +20,7 @@ Az Azure diagnosztikai beállításai az erőforrás-naplók összegyűjtésére
 
 A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a rendszer, míg az erőforrás-naplók összegyűjtéséhez és a Azure Monitoron kívüli továbbításához létre kell hoznia egy diagnosztikai beállítást. Az Azure Cosmos-fiókok diagnosztikai beállításainak bekapcsolásához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 
 1. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg a **diagnosztikai beállítások** ablaktáblát, majd kattintson a **diagnosztikai beállítás hozzáadása** lehetőségre.
 
@@ -32,19 +32,19 @@ A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a ren
 
 1. Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer milyen típusú naplókat gyűjtsön. Az Azure Cosmos DB által támogatott naplók kategóriái a következőkkel együtt vannak felsorolva:
 
- * **DataPlaneRequests**: válassza ezt a lehetőséget, ha a háttérbeli kérelmeket naplózni szeretné az összes API-ra, beleértve az SQL-, Graph-, MongoDB-, Cassandra-és Table API-fiókokat Azure Cosmos db. A fontos tulajdonságok a következők: `Requestcharge`, `statusCode` `clientIPaddress`, és `partitionID`.
+ * **DataPlaneRequests**: válassza ezt a lehetőséget, ha a háttérbeli kérelmeket naplózni szeretné az összes API-ra, beleértve az SQL-, Graph-, MongoDB-, Cassandra-és Table API-fiókokat Azure Cosmos db. A fontos tulajdonságok a következők: `Requestcharge` , `statusCode` , `clientIPaddress` és `partitionID` .
 
     ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
     ```
 
-* **MongoRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből a MongoDB API-ra irányuló Azure Cosmos db kérések kiszolgálásához. Ez a napló típusa más API-fiókok esetében nem érhető el. A fontos tulajdonságok a következők: `Requestcharge`, `opCode`. Ha engedélyezi a MongoRequests a diagnosztikai naplókban, ügyeljen arra, hogy kikapcsolja a DataPlaneRequests. Az API-ra vonatkozó minden kérelem esetében megjelenik egy napló.
+* **MongoRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből a MongoDB API-ra irányuló Azure Cosmos db kérések kiszolgálásához. Ez a napló típusa más API-fiókok esetében nem érhető el. A fontos tulajdonságok a következők: `Requestcharge` , `opCode` . Ha engedélyezi a MongoRequests a diagnosztikai naplókban, ügyeljen arra, hogy kikapcsolja a DataPlaneRequests. Az API-ra vonatkozó minden kérelem esetében megjelenik egy napló.
 
     ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
 
-* **CassandraRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből, hogy a kérelmeket a CASSANDRA Azure Cosmos db API-jával kézbesítse. Ez a napló típusa más API-fiókok esetében nem érhető el. A legfontosabb tulajdonságok a következők `operationName` `requestCharge`:,. `piiCommandText` Ha engedélyezi a CassandraRequests a diagnosztikai naplókban, ügyeljen arra, hogy kikapcsolja a DataPlaneRequests. Az API-ra vonatkozó minden kérelem esetében megjelenik egy napló.
+* **CassandraRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből, hogy a kérelmeket a CASSANDRA Azure Cosmos db API-jával kézbesítse. Ez a napló típusa más API-fiókok esetében nem érhető el. A legfontosabb tulajdonságok a következők: `operationName` , `requestCharge` `piiCommandText` . Ha engedélyezi a CassandraRequests a diagnosztikai naplókban, ügyeljen arra, hogy kikapcsolja a DataPlaneRequests. Az API-ra vonatkozó minden kérelem esetében megjelenik egy napló.
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}

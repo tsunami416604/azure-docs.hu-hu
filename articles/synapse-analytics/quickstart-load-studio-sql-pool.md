@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96e79fdfeed5b56a4e0a33229f419f439b20b04c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ae13dc51b4621dc3d8be39049dcade87c105cbc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124470"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262616"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>Tömeges betöltés a szinapszis SQL-sel
 
@@ -28,7 +28,7 @@ Mostantól egyszerűen, a szinapszis Studióban található alábbi területekre
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A munkaterülethez hozzáféréssel kell rendelkeznie legalább a Storage blob adatközreműködői RBAC szerepkörrel a ADLS Gen2 fiókhoz.
+- A varázsló létrehoz egy MÁSOLÁSi utasítást, amely a HRE átmenő authentcation használja. A [HRE-felhasználónak hozzáféréssel](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) kell rendelkeznie a munkaterülethez legalább a Storage blob adatközreműködői RBAC szerepkörrel a ADLS Gen2 fiókhoz.
 
 - A [másolási utasítás használatához](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions) és a tábla létrehozásához szükséges engedélyekkel kell rendelkeznie, ha új táblát hoz létre a betöltéshez.
 
@@ -52,7 +52,7 @@ Mostantól egyszerűen, a szinapszis Studióban található alábbi területekre
 
 6. Kattintson a "parancsfájl megnyitása" elemre, és a MÁSOLÁSi utasítással hozza létre a T-SQL-szkriptet a következővel: ![ az SQL-szkript megnyitása](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A MÁSOLÁSi lehetőségekkel kapcsolatos további információkért olvassa el a [copy utasításról](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) szóló cikket.
 - Tekintse át az [adatbetöltések áttekintése című](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) cikket

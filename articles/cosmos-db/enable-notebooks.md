@@ -3,15 +3,15 @@ title: Jegyzetfüzetek engedélyezése a Azure Cosmos DB fiókban (előzetes ver
 description: A Azure Cosmos DB beépített jegyzetfüzetei lehetővé teszik az adatok elemzését és megjelenítését a portálon belülről. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót a Cosmos-fiókokhoz.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: dcec310db43baa513b2d574d03f3f35dee3f773b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c485bf6b9eb34e68e399c24e51286428f47586f
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76768022"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261902"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Jegyzetfüzetek engedélyezése Azure Cosmos DB-fiókokhoz (előzetes verzió)
 
@@ -21,30 +21,35 @@ ms.locfileid: "76768022"
 A Azure Cosmos DB beépített Jupyter notebookok lehetővé teszik az adatok elemzését és megjelenítését a Azure Portal. Ez a cikk leírja, hogyan lehet engedélyezni ezt a funkciót az Azure Cosmos DB-fiókhoz.
 
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Jegyzetfüzetek engedélyezése új Cosmos-fiókban
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Válassza **az erőforrás** > **létrehozása adatbázisok** > **Azure Cosmos db**elemet.
+
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Válassza **az erőforrás létrehozása**  >  **adatbázisok**  >  **Azure Cosmos db**elemet.
 1. A **Azure Cosmos db fiók létrehozása** lapon válassza a **jegyzetfüzetek**lehetőséget. 
  
-    ![Válassza a jegyzetfüzetek lehetőséget a Azure Cosmos DB létrehozás panelen](media/enable-notebooks/create-new-account-with-notebooks.png)
+    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Válassza a jegyzetfüzetek lehetőséget a Azure Cosmos DB létrehozás panelen":::
+
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Kihagyhatja a **hálózat** és a **címkék** lehetőséget. 
 1. Tekintse át a Fiókbeállítások beállítást, majd kattintson a **Létrehozás**gombra. A fiók létrehozása néhány percet vesz igénybe. Várjon, amíg befejeződik a portál oldalának megjelenítése a **központi telepítés befejezéséhez**. 
 
-    ![Az Azure Portal Értesítések panelje](media/enable-notebooks/create-new-account-with-notebooks-complete.png)
-1. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa a Azure Cosmos db fiók lapot. 
+   :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Az Azure Portal Értesítések panelje":::
 
-    ![A Azure Cosmos DB fiók lapja](../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png)
+1. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa a Azure Cosmos db fiók lapot.
+
+   :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png" alt-text="A Azure Cosmos DB fiók lapja":::
 
 1. Navigáljon a **adatkezelő** panelre. Ekkor látnia kell a jegyzetfüzetek munkaterületét.
 
-    ![Új Azure Cosmos DB notebookok munkaterülete](media/enable-notebooks/new-notebooks-workspace.png)
+    :::image type="content" source="media/enable-notebooks/new-notebooks-workspace.png" alt-text="Új Azure Cosmos DB notebookok munkaterülete":::
 
 ## <a name="enable-notebooks-in-an-existing-cosmos-account"></a>Jegyzetfüzetek engedélyezése egy meglévő Cosmos-fiókban
+
 A meglévő fiókokon is engedélyezheti a jegyzetfüzeteket. Ezt a lépést fiókkal csak egyszer kell elvégezni.
 
 1. Navigáljon a Cosmos-fiók **adatkezelő** ablaktáblájához.
 1. Válassza a **jegyzetfüzetek engedélyezése**lehetőséget.
 
-    ![Új jegyzetfüzetek munkaterületének létrehozása Adatkezelő](media/enable-notebooks/enable-notebooks-workspace.png)
+    :::image type="content" source="media/enable-notebooks/enable-notebooks-workspace.png" alt-text="Új jegyzetfüzetek munkaterületének létrehozása Adatkezelő":::
+
 1. Ez a művelet megkéri, hogy hozzon létre egy új jegyzetfüzet-munkaterületet. Válassza a **telepítés befejezése lehetőséget.**
 1. A fiókja már engedélyezve van a jegyzetfüzetek használatához.
 
@@ -54,18 +59,18 @@ Annak ellenőrzéséhez, hogy használhatók-e jegyzetfüzetek, válassza ki az 
 
 Ebben a példában a **bemutatása GettingStarted. ipynb**-t fogjuk használni. 
 
-![Bemutatása GettingStarted. ipynb jegyzetfüzet megtekintése](media/enable-notebooks/select-getting-started-notebook.png)
+:::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Bemutatása GettingStarted. ipynb jegyzetfüzet megtekintése":::
 
 A jegyzetfüzet futtatása:
 1. Válassza ki a Python-kódot tartalmazó első kódlapot. 
 1. Válassza a **Futtatás** lehetőséget a cella futtatásához. A cella futtatásához a **SHIFT + ENTER** billentyűkombinációt is használhatja.
 1. Frissítse az erőforrás-ablaktáblát, és tekintse meg a létrehozott adatbázist és tárolót.
 
-    ![Az első lépések jegyzetfüzet futtatása](media/enable-notebooks/run-first-notebook-cell.png)
+    :::image type="content" source="media/enable-notebooks/run-first-notebook-cell.png" alt-text="Az első lépések jegyzetfüzet futtatása":::
 
 Az **új jegyzetfüzet** lehetőség kiválasztásával új jegyzetfüzetet hozhat létre, vagy feltöltheti a meglévő jegyzetfüzeteket (. ipynb) a **saját jegyzetfüzetek** menüjének **fájl feltöltése** parancsával. 
 
-![Új jegyzetfüzet létrehozása vagy feltöltése](media/enable-notebooks/create-or-upload-new-notebook.png)
+:::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Új jegyzetfüzet létrehozása vagy feltöltése":::
 
 ## <a name="next-steps"></a>További lépések
 

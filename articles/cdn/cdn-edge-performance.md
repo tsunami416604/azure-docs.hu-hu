@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67593904"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887703"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Az élcsomópontok teljesítményének elemzése a Microsoft Azure CDN szolgáltatásban
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -171,7 +171,7 @@ A modul minden jelentése tartalmaz egy diagramot és statisztikát a különbö
 | Felhasználói ügynök |Egy oszlopdiagram, amely az első 10 felhasználói ügynököt jeleníti meg, hogy a CDN-en keresztül kérje a tartalmat. A felhasználói ügynök általában webböngésző, médialejátszó vagy mobiltelefonos böngésző. A legnépszerűbb 100 felhasználói ügynökök statisztikái közvetlenül ezen a diagramon jelennek meg. |
 | Utalt |Egy oszlopdiagram, amely az első 10 hivatkozót jeleníti meg a CDN-en keresztül elért tartalomhoz. A hivatkozó általában a weblap vagy az erőforrás URL-címe, amely a tartalomra hivatkozik. Részletes információkat a gráf alatt talál a legfontosabb 100-hivatkozók számára. |
 | Tömörítési típusok |Egy fánk-diagramot tartalmaz, amely lebontja a kért eszközöket, attól függetlenül, hogy azok a peremhálózati kiszolgálókon vannak-e tömörítve. A tömörített eszközök százalékos arányát a rendszer a használt tömörítési típus szerint bontja. Részletes információkat az egyes tömörítési típusokhoz és állapotokhoz tartozó gráf alatt talál. |
-| Fájltípusok |Egy oszlopdiagram, amely megjeleníti az Ön fiókja számára a CDN-en keresztül kért első 10 fájltípust. A jelentés esetében a fájl típusát az eszköz fájlnévkiterjesztés és az internetes adathordozó típusa ( \[például. html text/HTML\],. htm \[text/HTML\],. aspx \[szöveg/HTML\]stb.) határozza meg. A részletes információkat a Graph a legfontosabb 100-fájltípusok alatt találja. |
+| Fájltípusok |Egy oszlopdiagram, amely megjeleníti az Ön fiókja számára a CDN-en keresztül kért első 10 fájltípust. A jelentés esetében a fájl típusát az eszköz fájlnévkiterjesztés és az internetes adathordozó típusa (például. html \[ text/HTML \] ,. htm \[ text/HTML \] ,. aspx \[ szöveg/HTML \] stb.) határozza meg. A részletes információkat a Graph a legfontosabb 100-fájltípusok alatt találja. |
 | Egyedi fájlok |Egy olyan gráfot tartalmaz, amely egy adott napon a megadott időszakra vonatkozóan kért egyedi eszközök teljes számát ábrázolja. |
 | Jogkivonat-hitelesítés összegzése |Egy tortadiagramot tartalmaz, amely gyors áttekintést nyújt arról, hogy a kért eszközöket jogkivonat-alapú hitelesítés védi-e. A védett eszközök a diagramon a megkísérelt hitelesítés eredményei alapján jelennek meg. |
 | Jogkivonat-hitelesítés – megtagadás részletei |Egy sávdiagram, amely lehetővé teszi, hogy megtekintse a jogkivonat-alapú hitelesítés miatt megtagadott első 10 kérelmet. |

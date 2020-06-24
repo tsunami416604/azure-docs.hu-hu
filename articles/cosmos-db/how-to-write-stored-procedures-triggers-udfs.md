@@ -3,15 +3,15 @@ title: Tárolt eljárások, eseményindítók és UDF írása Azure Cosmos DB
 description: Megtudhatja, hogyan határozhat meg tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e9ebd8de956437273246d08821fc87838089a256
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982292"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262871"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása Azure Cosmos DB
 
@@ -52,21 +52,42 @@ Amikor tárolt eljárással hoz létre egy tételt, az elem bekerül az Azure Co
 
 A tárolt eljárás egy paramétert is tartalmaz a Leírás megadásához, ez egy logikai érték. Ha a paraméter értéke TRUE (igaz), és a Leírás hiányzik, akkor a tárolt eljárás kivételt jelez. Ellenkező esetben a tárolt eljárás többi része továbbra is fut.
 
-A következő példa tárolt eljárás egy új Azure Cosmos-elem bemenetként való behelyezését hajtja végre, beszúrja az Azure Cosmos tárolóba, és visszaadja az újonnan létrehozott elem AZONOSÍTÓját. Ebben a példában a ToDoList mintát használjuk a gyors üzembe helyezési [.net SQL API](create-sql-api-dotnet.md) -ból
+A következő példában tárolt eljárás az új Azure Cosmos-elemek egy tömbjét veszi fel bemenetként, beszúrja az Azure Cosmos-tárolóba, és visszaadja a beszúrt elemek számát. Ebben a példában a ToDoList mintát használjuk a gyors üzembe helyezési [.net SQL API](create-sql-api-dotnet.md) -ból
 
 ```javascript
-function createToDoItem(itemToCreate) {
+function createToDoItems(items) {
+    var collection = getContext().getCollection();
+    var collectionLink = collection.getSelfLink();
+    var count = 0;
 
-    var context = getContext();
-    var container = context.getCollection();
+    if (!items) throw new Error("The array is undefined or null.");
 
-    var accepted = container.createDocument(container.getSelfLink(),
-        itemToCreate,
-        function (err, itemCreated) {
-            if (err) throw new Error('Error' + err.message);
-            context.getResponse().setBody(itemCreated.id)
-        });
-    if (!accepted) return;
+    var numItems = items.length;
+
+    if (numItems == 0) {
+        getContext().getResponse().setBody(0);
+        return;
+    }
+
+    tryCreate(items[count], callback);
+
+    function tryCreate(item, callback) {
+        var options = { disableAutomaticIdGeneration: false };
+
+        var isAccepted = collection.createDocument(collectionLink, item, options, callback);
+
+        if (!isAccepted) getContext().getResponse().setBody(count);
+    }
+
+    function callback(err, item, options) {
+        if (err) throw err;
+        count++;
+        if (count >= numItems) {
+            getContext().getResponse().setBody(count);
+        } else {
+            tryCreate(items[count], callback);
+        }
+    }
 }
 ```
 
@@ -262,7 +283,7 @@ function async_sample() {
 
 Azure Cosmos DB támogatja az előtriggereket és az eseményindítókat. Az adatbázis-elemek módosítása és az eseményindítók végrehajtása előtt az eseményindítók végrehajtása az adatbázis-elemek módosítása után történik.
 
-### <a name="pre-triggers"></a><a id="pre-triggers"></a>Előzetes eseményindítók
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>Trigger előtti
 
 Az alábbi példa azt mutatja be, hogyan használható a pre-trigger a létrehozott Azure Cosmos-elemek tulajdonságainak ellenőrzésére. Ebben a példában kihasználjuk a ToDoList mintát a gyors üzembe helyezési [.net SQL API](create-sql-api-dotnet.md)-ból, hogy egy timestamp tulajdonságot adjon hozzá egy újonnan hozzáadott elemhez, ha az nem tartalmaz egyet.
 
@@ -291,7 +312,7 @@ Ha a triggerek regisztrálva vannak, megadhatja azokat a műveleteket, amelyeket
 
 A pre-triggerek regisztrálásával és meghívásával kapcsolatos Példákért lásd: [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és [trigger utáni](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) cikkek. 
 
-### <a name="post-triggers"></a><a id="post-triggers"></a>Utólagos eseményindítók
+### <a name="post-triggers"></a><a id="post-triggers"></a>Triggerek utáni
 
 Az alábbi példa egy trigger utáni műveletet mutat be. Ez a trigger lekérdezi a metaadat-elemeket, és frissíti azt az újonnan létrehozott elemmel kapcsolatos részletekkel.
 

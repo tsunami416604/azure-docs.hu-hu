@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 538baee092ea6e11469f7d0331cc1b89eaf9a161
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: cd0c8961cff15385249222986e5fb90ee75e3559
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672714"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887326"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
 
@@ -144,7 +144,7 @@ Az ajánlat rövid leírása. Ez akár 100 karakter hosszú lehet, és a piacté
 
 Az ajánlat részletesebb leírása. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -276,20 +276,20 @@ A **terv neve** mezőbe írja be a csomag nevét. Az ügyfelek ezt a nevet látj
 
 Ezen a lapon kiválaszthatja, hogy a terv mely felhőknél érhető el. Az ezen a lapon megjelenő válaszok hatással vannak arra, hogy mely mezők jelenjenek meg más lapokon.
 
-#### <a name="cloud-availability"></a>Felhőbeli rendelkezésre állás
+#### <a name="azure-regions"></a>Azure-régiók
 
 Az Azure-beli tárolók ajánlatait az **Azure Global**-ban automatikusan elérhetővé kell tenni.  A tervet a kereskedelmi piactért használó összes globális Azure-régióban használhatja. Részletekért lásd: a [földrajzi Elérhetőség és a pénznemek támogatása](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Válassza a [**Azure Government Cloud (felhő**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) ) lehetőséget a megoldás megjelenítéséhez. Ez egy kormányzati közösségi felhő, amely az Egyesült Államok szövetségi, állami és helyi vagy törzsi szerveinek ügyfeleinek, valamint az azok kiszolgálására jogosult partnereknek szóló szabályozott hozzáféréssel rendelkezik. Közzétevőként Ön felelős a felhőalapú Közösség megfelelőségi ellenőrzésével, biztonsági intézkedéseivel és ajánlott eljárásaival. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).
+Válassza a [**Azure Government**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) lehetőséget a megoldás megjelenítéséhez. Ez egy kormányzati közösségi felhő, amely az Egyesült Államok szövetségi, állami és helyi vagy törzsi szerveinek ügyfeleinek, valamint az azok kiszolgálására jogosult partnereknek szóló szabályozott hozzáféréssel rendelkezik. Közzétevőként Ön felelős a felhőalapú Közösség megfelelőségi ellenőrzésével, biztonsági intézkedéseivel és ajánlott eljárásaival. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).
 
 A Azure Government való [Közzététel](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) előtt tesztelje és erősítse meg a megoldást az adott területen belül, mivel az eredmények eltérőek lehetnek. A megoldás létrehozásához és teszteléséhez kérjen egy próbaverziós fiókot [Microsoft Azure Government próbaverzióból](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
-> Miután közzétette és elérhetővé tette a csomagot egy adott felhőben, nem távolíthatja el a felhőt.
+> Miután közzétette és elérhetővé tette a csomagot egy adott régióban, nem távolíthatja el a régiót.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government Felhőbeli tanúsítványok
+#### <a name="azure-government-certifications"></a>Azure Government minősítések
 
-Ez a beállítás csak akkor látható, ha **Azure Government felhő** van kiválasztva a **felhő rendelkezésre állása**alatt.
+Ez a beállítás csak akkor látható, ha **Azure Government** van kiválasztva a **felhő rendelkezésre állása**területen.
 
 Azure Government szolgáltatások kezelik bizonyos kormányzati előírások és követelmények hatálya alá eső adatmennyiséget. Például: FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD L4 és CJIS.
 
@@ -331,7 +331,7 @@ Ha el szeretné rejteni a közzétett ajánlatot, így az ügyfelek nem kereshet
 
 Ezt a mezőt a következő esetekben használja a rendszer:
 
-- Az ajánlat közvetlen használatra készült, ha egy másik alkalmazás hivatkozik rá.
+- Az ajánlat olyan közvetve használható, amikor egy másik alkalmazás hivatkozik rá.
 - Az ajánlatot nem szabad egyenként megvásárolni.
 - A tervet a kezdeti teszteléshez használták, és már nem releváns.
 - A csomag ideiglenes vagy szezonális ajánlatokhoz lett felhasználva, és a továbbiakban nem ajánlott.

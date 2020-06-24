@@ -2,13 +2,13 @@
 title: A containers Agent Azure Monitor kezelése | Microsoft Docs
 description: Ez a cikk ismerteti a leggyakoribb karbantartási feladatok kezelését a Azure Monitor által a tárolók számára használt Log Analytics ügynökkel.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: ce014d27c6acc473c4a435dfed4757fb0884f4fe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/15/2020
+ms.openlocfilehash: ca0fa88cf27db15d45a2c855a1af351764c48fde
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652188"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887504"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>A containers Agent Azure Monitor kezelése
 
@@ -68,7 +68,7 @@ $ helm upgrade --name myrelease-1 \
 --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
 ```
 
-Ha a Log Analytics munkaterület az Azure China-ban van, futtassa a következő parancsot:
+Ha a Log Analytics munkaterület az Azure China 21Vianet található, futtassa a következő parancsot:
 
 ```
 $ helm upgrade --name myrelease-1 \
@@ -93,6 +93,20 @@ Az alábbi lépések végrehajtásával frissítheti az ügynököt egy Azure Re
 ```
 $ helm upgrade --name myrelease-1 \
 --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+```
+
+### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Ügynök frissítése az Azure arc-kompatibilis Kubernetes
+
+A következő parancs végrehajtásával frissítheti az ügynököt egy Azure arc-kompatibilis Kubernetes-fürtön proxy végpont nélkül.
+
+```
+$ helm upgrade --install azmon-containers-release-1  –set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
+```
+
+A következő parancs végrehajtásával frissítheti az ügynököt proxy végpont megadásakor. További információ a proxy végpontról: [proxy végpont konfigurálása](container-insights-enable-arc-enabled-clusters.md#configure-proxy-endpoint).
+
+```
+helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
 ```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Környezeti változók gyűjteményének letiltása tárolón

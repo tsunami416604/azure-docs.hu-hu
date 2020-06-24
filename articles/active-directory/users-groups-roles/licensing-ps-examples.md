@@ -8,25 +8,25 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582669"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727330"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>A PowerShell és a Graph példák az Azure AD-beli csoportos licencelésre
 
 A csoport alapú licencelés teljes funkcionalitása a [Azure Portalon](https://portal.azure.com)keresztül érhető el, és jelenleg a PowerShell és a Microsoft Graph támogatás csak olvasási műveletekre korlátozódik. Vannak azonban olyan hasznos feladatok, amelyek a meglévő [MSOnline PowerShell-parancsmagokkal](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) és Microsoft Graphekkel végezhetők el. Ez a dokumentum példákat tartalmaz a lehetséges lehetőségek közül.
 
 > [!NOTE]
-> Mielőtt megkezdené a parancsmagok futtatását, először a `Connect-MsolService`  parancsmag futtatásával győződjön meg arról, hogy csatlakozik a szervezethez.
+> Mielőtt megkezdené a parancsmagok futtatását, először a parancsmag futtatásával győződjön meg arról, hogy csatlakozik a szervezethez `Connect-MsolService`   .
 
 > [!WARNING]
 > Ez a kód példaként szolgál a bemutató céljára. Ha a környezetében szeretné használni, érdemes lehet kis méretekben, vagy egy különálló tesztelési szervezetben is tesztelni. Előfordulhat, hogy az adott környezet igényeinek megfelelően módosítania kell a kódot.
@@ -617,7 +617,7 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> Frissítse a változók `$skuId` értékeit, és `$groupId`  azt célozza meg, hogy a fenti szkript futtatása előtt a rendszer a közvetlen licenceket a tesztkörnyezet alapján távolítsa el. 
+> Frissítse a változók értékeit `$skuId` , és `$groupId`   azt célozza meg, hogy a fenti szkript futtatása előtt a rendszer a közvetlen licenceket a tesztkörnyezet alapján távolítsa el. 
 
 ## <a name="next-steps"></a>További lépések
 

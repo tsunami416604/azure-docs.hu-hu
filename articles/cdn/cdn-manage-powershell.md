@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: 22602a1ea64e3dbca34d0c366cf6aa0dc6f35662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba67ea9455c8d7f077eae87f582f05b5c2672735
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260547"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887626"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Azure CDN kezelése a PowerShell-lel
 A PowerShell az Azure CDN profilok és végpontok kezelésének egyik legrugalmasabb módszerét biztosítja.  A PowerShellt interaktív módon is használhatja, vagy parancsfájlokat írhat a felügyeleti feladatok automatizálásához.  Ez az oktatóanyag bemutatja, hogyan kezelheti a PowerShell használatával a Azure CDN-profilok és-végpontok kezelésére szolgáló leggyakoribb feladatokat.
@@ -28,15 +28,15 @@ A PowerShell az Azure CDN profilok és végpontok kezelésének egyik legrugalma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ahhoz, hogy a PowerShell használatával kezelhesse a Azure CDN profilokat és végpontokat, telepítve kell lennie a Azure PowerShell modulnak.  További információ a Azure PowerShell telepítéséről és az Azure-hoz való `Connect-AzAccount` kapcsolódásról a parancsmag használatával: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+Ahhoz, hogy a PowerShell használatával kezelhesse a Azure CDN profilokat és végpontokat, telepítve kell lennie a Azure PowerShell modulnak.  További információ a Azure PowerShell telepítéséről és az Azure-hoz való kapcsolódásról a `Connect-AzAccount` parancsmag használatával: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 
 > [!IMPORTANT]
-> Azure PowerShell-parancsmagok végrehajtása `Connect-AzAccount` előtt be kell jelentkeznie.
+> `Connect-AzAccount`Azure PowerShell-parancsmagok végrehajtása előtt be kell jelentkeznie.
 > 
 > 
 
 ## <a name="listing-the-azure-cdn-cmdlets"></a>A Azure CDN-parancsmagok listázása
-A `Get-Command` parancsmag használatával listázhatja az összes Azure CDN parancsmagot.
+A parancsmag használatával listázhatja az összes Azure CDN parancsmagot `Get-Command` .
 
 ```text
 PS C:\> Get-Command -Module Az.Cdn
@@ -80,7 +80,7 @@ Cmdlet          Unpublish-AzCdnEndpointContent                     1.4.0      Az
 ```
 
 ## <a name="getting-help"></a>Segítség kérése
-Ezen parancsmagok bármelyikével kapcsolatban a `Get-Help` parancsmag használatával kaphat segítséget.  `Get-Help`a használatot és a szintaxist is tartalmazza, és opcionálisan példákat is mutat.
+Ezen parancsmagok bármelyikével kapcsolatban a parancsmag használatával kaphat segítséget `Get-Help` .  `Get-Help`a használatot és a szintaxist is tartalmazza, és opcionálisan példákat is mutat.
 
 ```text
 PS C:\> Get-Help Get-AzCdnProfile
@@ -134,7 +134,7 @@ Get-AzCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 ```
 
 > [!TIP]
-> Több CDN-profil is lehet ugyanazzal a névvel, amennyiben azok különböző erőforráscsoportok.  A `ResourceGroupName` paraméter kihagyása esetén a rendszer az összes olyan profilt visszaadja, amelynek a neve megegyezik.
+> Több CDN-profil is lehet ugyanazzal a névvel, amennyiben azok különböző erőforráscsoportok.  A paraméter kihagyása `ResourceGroupName` esetén a rendszer az összes olyan profilt visszaadja, amelynek a neve megegyezik.
 > 
 > 
 
@@ -192,7 +192,7 @@ Else { Write-Host "No, that endpoint name is not available." }
 `New-AzCdnCustomDomain`hozzáadja az egyéni tartománynevet egy meglévő végponthoz.
 
 > [!IMPORTANT]
-> A CNAME-t a DNS-szolgáltatóval kell beállítania a következő témakörben leírtak szerint: [Hogyan képezhető le az egyéni tartomány Content Delivery Network (CDN) végpont](cdn-map-content-to-custom-domain.md).  Tesztelheti a leképezést, mielőtt módosítja a végpontot a használatával `Test-AzCdnCustomDomain`.
+> A CNAME-t a DNS-szolgáltatóval kell beállítania a következő témakörben leírtak szerint: [Hogyan képezhető le az egyéni tartomány Content Delivery Network (CDN) végpont](cdn-map-content-to-custom-domain.md).  Tesztelheti a leképezést, mielőtt módosítja a végpontot a használatával `Test-AzCdnCustomDomain` .
 > 
 > 
 
@@ -223,7 +223,7 @@ Set-AzCdnEndpoint -CdnEndpoint $endpoint
 ```
 
 ## <a name="purgingpre-loading-cdn-assets"></a>CDN-eszközök végleges törlése/előzetes betöltése
-`Unpublish-AzCdnEndpointContent`kiüríti a gyorsítótárazott `Publish-AzCdnEndpointContent` eszközöket, míg előre betölti az eszközöket a támogatott végpontokon.
+`Unpublish-AzCdnEndpointContent`kiüríti a gyorsítótárazott eszközöket, míg `Publish-AzCdnEndpointContent` előre betölti az eszközöket a támogatott végpontokon.
 
 ```powershell
 # Purge some assets.
@@ -237,7 +237,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Unpublish-AzCdnEndpointContent -PurgeCont
 ```
 
 ## <a name="startingstopping-cdn-endpoints"></a>CDN-végpontok indítása/leállítása
-`Start-AzCdnEndpoint`és `Stop-AzCdnEndpoint` használható az egyes végpontok vagy végpontok csoportjának elindítására és leállítására.
+`Start-AzCdnEndpoint`és használható `Stop-AzCdnEndpoint` az egyes végpontok vagy végpontok csoportjának elindítására és leállítására.
 
 ```powershell
 # Stop the cdndocdemo endpoint
@@ -251,7 +251,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Start-AzCdnEndpoint
 ```
 
 ## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>Szabványos szabályok motorjának létrehozása és alkalmazása meglévő CDN-végpontra
-`New-AzCdnDeliveryRule``New=AzCdnDeliveryRuleCondition`a, a `New-AzCdnDeliveryRuleAction` és a használatával konfigurálhatja a Azure CDN Standard Rules Engine-t a Microsoft-profilok Azure CDN. 
+`New-AzCdnDeliveryRule`a, a `New=AzCdnDeliveryRuleCondition` és `New-AzCdnDeliveryRuleAction` a használatával konfigurálhatja a Azure CDN Standard Rules Engine-t a Microsoft-profilok Azure CDN. 
 
 ```powershell
 # Create a new http to https redirect rule
@@ -274,7 +274,7 @@ Set-AzCdnEndpoint -CdnEndpoint $ep
 ```
 
 ## <a name="deleting-cdn-resources"></a>CDN-erőforrások törlése
-`Remove-AzCdnProfile`és `Remove-AzCdnEndpoint` használhatók profilok és végpontok eltávolítására.
+`Remove-AzCdnProfile`és használhatók `Remove-AzCdnEndpoint` profilok és végpontok eltávolítására.
 
 ```powershell
 # Remove a single endpoint

@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: dd9620b690b031567a85cfd1dfc2dcbc76fb6835
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: b39c935af1215445f4cd0e68df04b86254f1fe31
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430495"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816610"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>A modell értelmezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ Az értelmező osztályok több SDK-csomagon keresztül érhetők el: (útmutat�
 
 * `azureml.train.automl.automlexplainer`csomag az automatizált gépi tanulási modellek értelmezéséhez.
 
-`pip install azureml-interpret`A és `pip install azureml-interpret-contrib` az általános használatra, a `pip install azureml-interpret-contrib` AutoML pedig az értelmező csomagok beszerzésére használható.
+`pip install azureml-interpret`A és `pip install azureml-interpret-contrib` az általános használatra, a `pip install azureml-contrib-interpret` AutoML pedig az értelmező csomagok beszerzésére használható.
 
 
 > [!IMPORTANT]
@@ -118,7 +118,7 @@ A `azureml.interpret` csomag úgy van kialakítva, hogy a helyi és távoli szá
 A magyarázatot távolról is futtathatja Azure Machine Learning számításon, és naplózhatja a magyarázat adatait a Azure Machine Learning futtatási előzmények szolgáltatásba. Az információk naplózása után a magyarázatokból származó jelentések és vizualizációk azonnal elérhetők a Azure Machine Learning Studióban a felhasználók elemzéséhez.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [útmutató](how-to-machine-learning-interpretability-aml.md) a modellek helyi és Azure Machine learning távoli számítási erőforrásokon való értelmezésének engedélyezéséhez című témakört. 
 - További forgatókönyvek: [minta notebookok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) . 

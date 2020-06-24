@@ -2,25 +2,25 @@
 title: Azure Active Directory-hozzáférési panel üzembe helyezésének megtervezése
 description: Útmutató a Azure Active Directory-hozzáférési panel üzembe helyezéséhez
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeffcfc919a6aeeae61ed79286d613d72c6b183c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897077"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761170"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory-hozzáférési panel üzembe helyezésének megtervezése
 
@@ -63,7 +63,7 @@ A hozzáférési panel ingyenes, és nincs szükség alapszintű licencek haszn�
 
 * [Csoport alapú tagság](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
-* [Önkiszolgáló jelszóátállítás](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
+* [Önkiszolgáló jelszó-visszaállítás](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 
 * [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
@@ -83,8 +83,8 @@ A következő táblázat a hozzáférési panel központi telepítésének legfo
 
 | Terület| Leírás |
 | - | - |
-| Hozzáférés| A hozzáférési panel portál a vállalati hálózaton belüli vállalati és személyes eszközökről érhető el. |
-|Hozzáférés | A hozzáférési panel portál a vállalati hálózaton kívüli vállalati eszközökről érhető el. |
+| Access| A hozzáférési panel portál a vállalati hálózaton belüli vállalati és személyes eszközökről érhető el. |
+|Access | A hozzáférési panel portál a vállalati hálózaton kívüli vállalati eszközökről érhető el. |
 | Naplózás| A használati adatok legalább 29 naponta letöltődnek a vállalati rendszerbe. |
 | Szabályozás| Az Azure AD-hez csatlakoztatott alkalmazások és csoportok felhasználói hozzárendeléseinek életciklusa definiálva és figyelve van. |
 | Biztonság| Az erőforrásokhoz való hozzáférést felhasználói és csoportos hozzárendelések segítségével szabályozhatja. Csak a jogosult felhasználók kezelhetik az erőforrás-hozzáférést. |
@@ -105,7 +105,7 @@ A hozzáférési panel működésének fokozatos engedélyezése is lehetséges.
    * Microsoft Office 365 integráció
 
 1. Önkiszolgáló alkalmazások felderítése
-   * Önkiszolgáló jelszóátállítás
+   * Új jelszó önkiszolgáló kérése
    * Multi-Factor Authentication beállítások
    * Eszközfelügyelet
    * Használati feltételek
@@ -122,16 +122,16 @@ Az alkalmazásoktól kezdve a felhasználók a portálra is bemutatják az erőf
 
 A következő táblázat a hozzáférési panel több fontos konfigurációját és az esetlegesen használt jellemző értékeket sorolja fel:
 
-| Configuration| Jellemző értékek |
+| Konfiguráció| Jellemző értékek |
 | - | - |
 | A kísérleti csoportok meghatározása| Azonosítsa a használni kívánt Azure AD biztonsági csoportot, és győződjön meg arról, hogy az összes kísérleti tag a csoport részét képezi. |
 | Határozza meg az éles környezetben engedélyezni kívánt csoportokat vagy csoportokat.| Azonosítsa a használni kívánt Azure AD-beli biztonsági csoportokat, illetve az Azure AD-vel szinkronizált Active Directory csoportokat. Győződjön meg arról, hogy az összes kísérleti tag a csoport részét képezi. |
 | Egyszeri bejelentkezés használatának engedélyezése a felhasználók számára bizonyos típusú alkalmazásokhoz| Összevont egyszeri bejelentkezés, OAuth, jelszó egyszeri bejelentkezés, alkalmazásproxy |
-| Önkiszolgáló jelszó-visszaállítás használatának engedélyezése a felhasználók számára | Igen |
-| Multi-Factor Authentication használatának engedélyezése a felhasználók számára| Igen |
+| Önkiszolgáló jelszó-visszaállítás használatának engedélyezése a felhasználók számára | Yes |
+| Multi-Factor Authentication használatának engedélyezése a felhasználók számára| Yes |
 | Lehetővé teszi a felhasználók számára az önkiszolgáló csoportok felügyeletének használatát bizonyos típusú csoportok esetében| Biztonsági csoportok, Office 365-csoportok |
-| Az önkiszolgáló alkalmazások felügyeletének engedélyezése a felhasználók számára| Igen |
-| Hozzáférési felülvizsgálatok használatának engedélyezése a felhasználók számára| Igen |
+| Az önkiszolgáló alkalmazások felügyeletének engedélyezése a felhasználók számára| Yes |
+| Hozzáférési felülvizsgálatok használatának engedélyezése a felhasználók számára| Yes |
 
 ### <a name="plan-consent-strategy"></a>A beleegyező stratégia megtervezése
 
@@ -215,7 +215,7 @@ Az Intune-szabályzattal (Microsoft Edge vagy Intune Managed Browser) védett b�
 
 ## <a name="plan-your-my-apps-deployment"></a>Saját alkalmazások üzembe helyezésének megtervezése
 
-A hozzáférési panel alapja az Application Launcher saját alkalmazások, amelyekhez a felhasználók férhetnek hozzá [https://myapps.microsoft.com](https://myapps.microsoft.com/). A saját alkalmazások oldalain egyetlen helyet biztosítanak a felhasználóknak a munkájuk elindításához és a szükséges alkalmazások eléréséhez. Itt a felhasználók az összes olyan alkalmazás listáját megtalálják, amelyhez egyszeri bejelentkezés hozzáférése van. 
+A hozzáférési panel alapja az Application Launcher saját alkalmazások, amelyekhez a felhasználók férhetnek hozzá [https://myapps.microsoft.com](https://myapps.microsoft.com/) . A saját alkalmazások oldalain egyetlen helyet biztosítanak a felhasználóknak a munkájuk elindításához és a szükséges alkalmazások eléréséhez. Itt a felhasználók az összes olyan alkalmazás listáját megtalálják, amelyhez egyszeri bejelentkezés hozzáférése van. 
 
 ![Az alkalmazások panel képernyőképe](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
@@ -338,11 +338,11 @@ A legkevesebb Kiemelt szerepkört kell használnia a szükséges feladatok végr
 
 | Szerepek| Szerepkörök| Azure AD-szerepkör  |
 | - | -| -|
-| Segélyszolgálat rendszergazdája| 1. szintű támogatás| None |
+| Segélyszolgálat rendszergazdája| 1. szintű támogatás| Nincs |
 | Identity admin| Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén| Globális rendszergazda |
-| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
+| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincs |
 | Infrastruktúra-rendszergazdák| Tanúsítvány-átváltási tulajdonos| Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
+| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincs |
 
 A [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) segítségével kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtár-jogosultságokkal rendelkező felhasználók számára.
 

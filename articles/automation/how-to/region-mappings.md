@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/03/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: 1ccf87bfd387182af269670abf1d86833854834d
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331627"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261188"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
@@ -30,26 +30,25 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 |**USA**||
 |<sup>1</sup> . EastUS|EastUS2|
 |WestUS2|WestUS2|
-|<sup>2</sup> . WestCentralUS|<sup>2</sup> . WestCentralUS|
+|WestCentralUS|WestCentralUS|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
 |**Ázsia és a Csendes-óceáni térség**||
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
-|<sup>3</sup> . ChinaEast2|ChinaEast2|
+|<sup>2</sup> . ChinaEast2|ChinaEast2|
 |JapanEast|JapanEast|
 |**Európa**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
+|<sup>2</sup> . USGovArizona|USGovArizona|
 
 <sup>1</sup> a log Analytics-munkaterületek Automation-fiókokba való EastUS nem pontos a régiók közötti leképezés, de a megfelelő leképezés.
 
-<sup>2</sup> a kapacitás korlátozásai miatt a régió nem érhető el új erőforrások létrehozásakor. Ez magában foglalja az Automation-fiókokat és a Log Analytics munkaterületeket. A régióban lévő, korábban már meglévő csatolt erőforrásoknak azonban továbbra is működniük kell.
-
-<sup>3</sup> az Azure China-ban csak Update Management támogatott, és egyéb funkciók, például a Change Tracking és a leltár jelenleg nem érhetők el. 
+<sup>2</sup> ebben a régióban csak Update Management támogatott, és más funkciók, például a Change Tracking és a leltár jelenleg nem érhetők el.
 
 ## <a name="unlink-a-workspace"></a>Munkaterület leválasztása
 
@@ -82,7 +81,7 @@ Azt is megteheti, hogy leválasztja a munkaterületet az Automation-fiókjából
 1. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen. 
 2. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg Update Management [Update Management áttekintésében](../automation-update-management.md).
 * Ismerkedjen meg a Change Tracking és a leltárral [change Tracking és leltár áttekintésében](../change-tracking.md).

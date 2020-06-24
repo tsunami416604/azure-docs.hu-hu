@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 47c504d9359779294c4690059d1958614d863e58
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299673"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260882"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Monitor
 
@@ -129,7 +129,7 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
  
    d.    Az érvényesítési fázis engedélyezése. 
  
-   e.    Kattintson a **Létrehozás**gombra. 
+   e.    Kattintson a **Létrehozás** lehetőségre. 
 
     ![Képernyőkép a Select Private Endpoint2 létrehozásáról](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -229,6 +229,10 @@ Ha engedélyezni szeretné, hogy a Log Analytics ügynök letöltse a megoldási
 |Azure Public     | scadvisor.blob.core.windows.net         | 443 | Kimenő
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Kimenő
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Kimenő
+
+### <a name="browser-dns-settings"></a>Böngésző DNS-beállításai
+
+Ha privát kapcsolaton keresztül csatlakozik a Azure Monitor-erőforrásokhoz, ezen erőforrás felé irányuló forgalomnak a hálózaton konfigurált privát végponton kell haladnia. A magánhálózati végpont engedélyezéséhez frissítse a DNS-beállításokat a [Kapcsolódás privát végponthoz](#connect-to-a-private-endpoint)című részben leírtak szerint. Egyes böngészők a beállított beállítások helyett a saját DNS-beállításait használják. Előfordulhat, hogy a böngésző megpróbál csatlakozni Azure Monitor nyilvános végpontokhoz, és teljesen megkerüli a privát hivatkozást. Győződjön meg arról, hogy a böngészők beállításai nem felülbírálják vagy gyorsítótárazzák a régi DNS-beállításokat. 
 
 ## <a name="next-steps"></a>További lépések
 

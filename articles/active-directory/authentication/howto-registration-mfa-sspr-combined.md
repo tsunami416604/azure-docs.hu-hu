@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40266f1b340ebe0ab665c576ff3be0e62ba7c705
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 7feb69b2ea53794b780a983ed8ab4ba5874ac022
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798281"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260848"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>A kombinált biztonsági információk regisztrációjának engedélyezése a Azure Active Directoryban
 
@@ -49,6 +49,9 @@ Ha az Internet Explorerben konfigurálta a hely-hozzárendelési listát, a köv
 
 Az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás felhasználó általi regisztrálásának engedélyezése a felhasználói műveletekhez a feltételes hozzáférési házirendben. Ez a funkció olyan szervezetek számára érhető el, akik engedélyezték a [kombinált regisztráció funkciót](../authentication/concept-registration-mfa-sspr-combined.md). Ez a funkció olyan szervezeteknél engedélyezhető, amelyekben a felhasználóknak regisztrálniuk kell az Azure Multi-Factor Authentication és SSPR egy központi helyről, például egy megbízható hálózati helyről az HR bevezetése során.
 
+> [!NOTE]
+> Ez a szabályzat csak akkor érvényes, ha egy felhasználó egy kombinált regisztrációs oldalhoz fér hozzá. Ez a szabályzat nem kényszeríti az MFA-regisztrációt, ha egy felhasználó más alkalmazásokhoz fér hozzá. Az Azure Identity Protection használatával létrehozhat egy MFA regisztrációs szabályzatot az [MFA-szabályzat konfigurálásával](../identity-protection/howto-identity-protection-configure-mfa-policy.md).
+
 A megbízható helyek feltételes hozzáférésben való létrehozásával kapcsolatos további információkért tekintse meg a következő cikket: [Mi a hely feltétele a feltételes hozzáférés Azure Active Directory?](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Szabályzat létrehozása megbízható helyről való regisztráció megköveteléséhez
@@ -76,7 +79,7 @@ A következő házirend az összes olyan kijelölt felhasználóra vonatkozik, a
 1. Állítsa a **Házirend engedélyezése** kapcsolót **Be** állásba.
 1. A szabályzat véglegesítéséhez válassza a **Létrehozás**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha segítségre van szüksége, olvassa el a következő témakört: a [kombinált biztonsági adatok regisztrációjának hibaelhárítása](howto-registration-mfa-sspr-combined-troubleshoot.md) vagy [a Azure Active Directory feltételes hozzáférésre vonatkozó hely feltételének](../conditional-access/location-condition.md) megismerése
 

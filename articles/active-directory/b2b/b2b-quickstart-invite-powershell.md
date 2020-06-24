@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79240925"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690948"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Rövid útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
 
@@ -75,7 +75,7 @@ Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
 
 ## <a name="send-an-invitation"></a>Meghívó küldése
 
-1. Ha egy meghívót szeretne elküldeni a teszt e-mail-fiókjába, futtassa a következő PowerShell-parancsot (cserélje le a **"sanda"** és a **sanda\@fabrikam.com** a teszt e-mail fiókjának nevére és e-mail-címére): 
+1. Ha egy meghívót szeretne elküldeni a teszt e-mail-fiókjába, futtassa a következő PowerShell-parancsot (cserélje le a **"sanda"** és a **sanda \@ fabrikam.com** a teszt e-mail fiókjának nevére és e-mail-címére): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
@@ -91,11 +91,11 @@ Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Ellenőrizze a kimenetet, és győződjön meg róla, hogy a meghívott felhasználó szerepel-e az egyszerű felhasználónévvel (UPN) a következő formátumban: *EmailAddress*#EXT #\@*tartomány*. Például *sanda_fabrikam. com # ext #\@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
+3. Ellenőrizze a kimenetet, és győződjön meg róla, hogy a meghívott felhasználó szerepel-e az egyszerű felhasználónévvel (UPN) a következő formátumban: *emailaddress*#EXT # \@ *tartomány*. Például *sanda_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
 
    ![A vendégfelhasználó felvételét mutató PowerShell kimenet](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölheti a tesztfelhasználói fiókot a címtárban. A felhasználói fiók törléséhez a következő parancsot futtassa:
 

@@ -2,23 +2,23 @@
 title: Azure Active Directory egyszeri bejelentkezéses telepítés megtervezése
 description: Útmutató az egyszeri bejelentkezés tervezéséhez, üzembe helyezéséhez és kezeléséhez a szervezetében.
 services: active-directory
-author: jeevansd
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2a2691935cb38c20e20b6a776acfe70cc458a6ed
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197872"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763074"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
 
@@ -32,7 +32,7 @@ Számos szervezet a szoftveres (SaaS) alkalmazásokra támaszkodik, például az
 
 Az Azure Marketplace-en több mint 3000 alkalmazás található előre integrált SSO-kapcsolattal, így könnyen integrálható a bérlőbe.
 
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 
 - **Azure ad-licencelés** – SSO az előre integrált SaaS-alkalmazásokhoz ingyenes. A címtárban lévő objektumok száma és a telepíteni kívánt funkciók azonban további licenceket is igényelhetnek. A licencekre vonatkozó követelmények teljes listáját itt tekintheti meg: [Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/).
 - **Alkalmazás licencelése** – szüksége lesz a megfelelő licencekre az SaaS-alkalmazásokhoz az üzleti igények kielégítése érdekében. Az alkalmazás tulajdonosával határozza meg, hogy az alkalmazáshoz hozzárendelt felhasználók rendelkeznek-e a megfelelő licenccel az alkalmazás szerepköreihez. Ha az Azure AD a szerepkörök alapján felügyeli az automatikus kiosztást, az Azure AD-ben hozzárendelt szerepköröknek meg kell egyezniük az alkalmazásban birtokolt licencek számával. Az alkalmazás tulajdonában lévő licencek helytelen száma hibát eredményezhet a felhasználó kiépítés/frissítése során.

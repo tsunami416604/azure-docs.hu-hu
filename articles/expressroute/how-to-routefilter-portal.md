@@ -4,16 +4,16 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Microsoft társk
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: f2be9b4e7152c61885b1a41e94ebd328059d437b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54674be0010bd062cfe6263db4167a24805a9e5a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618567"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727126"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Útválasztási szűrők konfigurálása a Microsoft-partnerek számára: Azure Portal
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Készítse el az útválasztási szűrőben használni kívánt [BGP-közösség
 Egy útvonal-szűrőnek csak egy szabálya lehet, és a szabálynak "Allow" típusúnak kell lennie. Ez a szabály tartalmazhatja a BGP-közösségi értékek listáját.
 
 ### <a name="1-create-a-route-filter"></a>1. útvonal-szűrő létrehozása
-Létrehozhat egy útvonal-szűrőt az új erőforrás létrehozásához szükséges lehetőség kiválasztásával. Kattintson az **erőforrás** > létrehozása**hálózati** > **RouteFilter**elemre, ahogy az a következő képen látható:
+Létrehozhat egy útvonal-szűrőt az új erőforrás létrehozásához szükséges lehetőség kiválasztásával. Kattintson az **erőforrás létrehozása**  >  **hálózati**  >  **RouteFilter**elemre, ahogy az a következő képen látható:
 
 ![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 

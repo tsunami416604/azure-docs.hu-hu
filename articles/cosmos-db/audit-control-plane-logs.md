@@ -3,15 +3,15 @@ title: Azure Cosmos DB vezérlési sík műveleteinek naplózása
 description: Megtudhatja, hogyan naplózhatja a vezérlési sík műveleteit, például egy régió hozzáadását, a frissítés sebességét, a régió feladatátvételét, a VNet stb. hozzáadását Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: sngun
-ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: cb6a27c0f03b7c0c41d8f323609df612363cfd9e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735351"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262650"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB vezérlési sík műveleteinek naplózása
 
@@ -27,9 +27,9 @@ A következő példák olyan forgatókönyveket mutatnak be, amelyekben a napló
 
 ## <a name="disable-key-based-metadata-write-access"></a>Kulcs alapú metaadatok írási hozzáférésének letiltása
 
-Mielőtt naplózza a vezérlési sík műveleteit a Azure Cosmos DBban, tiltsa le a kulcs alapú metaadatok írási hozzáférését a fiókjában. Ha a kulcs alapú metaadatok írási hozzáférése le van tiltva, a fiók kulcsain keresztül az Azure Cosmos-fiókhoz csatlakozó ügyfelek nem férnek hozzá a fiókhoz. A tulajdonság Igaz értékre állításával letilthatja az `disableKeyBasedMetadataWriteAccess` írási hozzáférést. A tulajdonság beállítása után bármely erőforrás módosítása a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel és a hitelesítő adatokkal rendelkező felhasználótól történhet. Ha többet szeretne megtudni ennek a tulajdonságnak a beállításáról, olvassa el az [SDK-k változásainak megakadályozása](role-based-access-control.md#preventing-changes-from-cosmos-sdk) című cikket. 
+Mielőtt naplózza a vezérlési sík műveleteit a Azure Cosmos DBban, tiltsa le a kulcs alapú metaadatok írási hozzáférését a fiókjában. Ha a kulcs alapú metaadatok írási hozzáférése le van tiltva, a fiók kulcsain keresztül az Azure Cosmos-fiókhoz csatlakozó ügyfelek nem férnek hozzá a fiókhoz. A tulajdonság Igaz értékre állításával letilthatja az írási hozzáférést `disableKeyBasedMetadataWriteAccess` . A tulajdonság beállítása után bármely erőforrás módosítása a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel és a hitelesítő adatokkal rendelkező felhasználótól történhet. Ha többet szeretne megtudni ennek a tulajdonságnak a beállításáról, olvassa el az [SDK-k változásainak megakadályozása](role-based-access-control.md#preventing-changes-from-cosmos-sdk) című cikket. 
 
-Ha a `disableKeyBasedMetadataWriteAccess` be van kapcsolva, ha az SDK-alapú ügyfelek létrehozási vagy frissítési műveletet futtatnak, a " *ContainerNameorDatabaseName" erőforrás "művelet" bejegyzése nem engedélyezett Azure Cosmos db végponton keresztül* . Be kell kapcsolnia a fiókjához való hozzáférést, vagy a létrehozás/frissítés műveletet a Azure Resource Manager, az Azure CLI vagy az Azure PowerShell használatával kell végrehajtania. A visszaállításhoz állítsa a disableKeyBasedMetadataWriteAccess **hamis** értékre az Azure CLI használatával, a [változások megakadályozása a Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) -ban című cikkben leírtak szerint. Ügyeljen arra, hogy a True érték `disableKeyBasedMetadataWriteAccess` helyett false értékűre módosítsa a értéket.
+Ha a `disableKeyBasedMetadataWriteAccess` be van kapcsolva, ha az SDK-alapú ügyfelek létrehozási vagy frissítési műveletet futtatnak, a " *ContainerNameorDatabaseName" erőforrás "művelet" bejegyzése nem engedélyezett Azure Cosmos db végponton keresztül* . Be kell kapcsolnia a fiókjához való hozzáférést, vagy a létrehozás/frissítés műveletet a Azure Resource Manager, az Azure CLI vagy az Azure PowerShell használatával kell végrehajtania. A visszaállításhoz állítsa a disableKeyBasedMetadataWriteAccess **hamis** értékre az Azure CLI használatával, a [változások megakadályozása a Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) -ban című cikkben leírtak szerint. Ügyeljen arra, hogy a True érték helyett false értékűre módosítsa a értéket `disableKeyBasedMetadataWriteAccess` .
 
 A metaadatok írási hozzáférésének kikapcsolásakor vegye figyelembe a következő szempontokat:
 
@@ -51,7 +51,7 @@ A következő lépésekkel engedélyezheti a naplózást a vezérlési sík műv
 
 A naplókat egy Storage-fiókban vagy egy Event hub-adatfolyamban is tárolhatja. Ez a cikk bemutatja, hogyan küldhet naplókat a log Analyticsnek, majd hogyan kérdezheti le őket. Az engedélyezést követően néhány percet vesz igénybe, amíg a diagnosztikai naplók érvénybe lépnek. Az ezen pont után végrehajtott összes vezérlő sík nyomon követhető. A következő képernyőképen a vezérlési sík naplófájljainak engedélyezése látható:
 
-![Vezérlési sík kérelmek naplózásának engedélyezése](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/enable-control-plane-requests-logs.png" alt-text="Vezérlési sík kérelmek naplózásának engedélyezése":::
 
 ## <a name="view-the-control-plane-operations"></a>A vezérlő síkja műveleteinek megtekintése
 
@@ -69,17 +69,17 @@ A naplózás bekapcsolását követően kövesse az alábbi lépéseket egy adot
 
 Az alábbi képernyőképek rögzítik a naplókat, ha egy Azure Cosmos-fiókhoz módosul egy konzisztencia-szint:
 
-![Vezérlési sík naplói a VNet hozzáadásakor](./media/audit-control-plane-logs/add-ip-filter-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Vezérlési sík naplói a VNet hozzáadásakor":::
 
 A következő képernyőképek rögzítik a Cassandra-tábla átviteli sebességét:
 
-![Vezérlési sík naplói az átviteli sebesség frissítésekor](./media/audit-control-plane-logs/throughput-update-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Vezérlési sík naplói az átviteli sebesség frissítésekor":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Egy adott művelethez társított identitás azonosítása
 
 Ha további hibakeresést szeretne végezni, akkor a tevékenység azonosítója vagy a művelet időbélyegzője segítségével azonosíthatja a **tevékenységek naplójában** megadott műveletet. Az időbélyeg olyan Resource Manager-ügyfelek esetében használatos, amelyekben a tevékenység azonosítója nem lett explicit módon átadva. A tevékenység naplója részletesen ismerteti a műveletet kezdeményező identitást. Az alábbi képernyőfelvételen a tevékenység-azonosító használata látható, és megkeresheti az ahhoz társított műveleteket a tevékenység naplójában:
 
-![A tevékenység-azonosító használata és a műveletek megkeresése](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="A tevékenység-azonosító használata és a műveletek megkeresése":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Vezérlési sík műveletei az Azure Cosmos-fiókhoz
 

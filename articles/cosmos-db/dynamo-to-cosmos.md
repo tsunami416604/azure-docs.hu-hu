@@ -3,15 +3,15 @@ title: Telepítse át az alkalmazást az Amazon DynamoDB-ból Azure Cosmos DB
 description: Ismerje meg, hogyan telepítheti át .NET-alkalmazását az Amazon DynamoDB, hogy Azure Cosmos DB
 author: manishmsfte
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: b30ebf7dae1d43b5f841677f98831fc4817a9b5a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664892"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261868"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Telepítse át az alkalmazást az Amazon DynamoDB-ból Azure Cosmos DB
 
@@ -23,14 +23,14 @@ A Azure Cosmos DB és a DynamoDB között a következők a legfontosabb fogalmi 
 
 |  DynamoDB | Azure Cosmos DB  |
 |---|---|
-|Nem alkalmazható|  Adatbázis |
-|Táblázat      |  Gyűjtemény |
+|Nem értelmezhető|  Adatbázis |
+|Tábla      |  Gyűjtemény |
 |  Item |  Dokumentum |
 |Attribútum|Mező|
 |Másodlagos index|Másodlagos index|
 |Elsődleges kulcs – partíciós kulcs|Partíciós kulcs|
 |Elsődleges kulcs – rendezési kulcs| Nem kötelező |
-|Stream|ChangeFeed|
+|Adatfolyam|ChangeFeed|
 |Számítási egység írása|Kérési egység (rugalmas, olvasásra és írásra is használható)|
 |Számítási egység olvasása    |Kérési egység (rugalmas, olvasásra és írásra is használható)|
 |Globális táblák| Nem kötelező. Közvetlenül is kiválaszthatja a régiót az Azure Cosmos-fiók kiépítés közben (később módosíthatja a régiót)|

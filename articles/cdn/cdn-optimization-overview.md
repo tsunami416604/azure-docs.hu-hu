@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 473636dc95d96ea348a42ec0f1090029bf3a7728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0255d7f47c8f9c63a2943830fa323a2e11994a9e
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260444"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887556"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Azure CDN optimalizálása a tartalom kézbesítésének típusára
 
@@ -45,7 +45,7 @@ A **Microsoft-profilokkal Azure CDN standard** a következő optimalizálásokat
 
 * [Általános webes kézbesítés](#general-web-delivery). Ez az optimalizálás a médiaadatfolyam-továbbításhoz és a nagyméretű fájlok letöltéséhez is használatos.
 
-* [Dinamikus hely gyorsulása](#dynamic-site-acceleration) 
+* [Dinamikus helygyorsítás](#dynamic-site-acceleration) 
 
 
 A **Akamai-profilokból Azure CDN standard** a következő optimalizálásokat támogatja:
@@ -58,7 +58,7 @@ A **Akamai-profilokból Azure CDN standard** a következő optimalizálásokat t
 
 * [Nagyméretű fájlok letöltése](#large-file-download)
 
-* [Dinamikus hely gyorsulása](#dynamic-site-acceleration) 
+* [Dinamikus helygyorsítás](#dynamic-site-acceleration) 
 
 A Microsoft azt javasolja, hogy tesztelje a különböző szolgáltatók közötti teljesítménybeli különbségeket, hogy kiválassza az optimális szolgáltatót a kézbesítéshez.
 

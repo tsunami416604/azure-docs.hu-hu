@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/30/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de10534cb00c66ad914b2c64ac2547b0e3fe03b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611083"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077921"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Az Azure AD hozzáférési felülvizsgálatokban lévő csoportok és alkalmazások hozzáférésének áttekintése
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan tekintheti át a saját hozzáférését egy csoport
 A hozzáférési felülvizsgálat végrehajtásának első lépése a hozzáférési felülvizsgálat megkeresése és megnyitása.
 
 >[!IMPORTANT]
-> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Engedélyezési azure-noreply@microsoft.com lista, hogy biztosan megkapja az összes e-mailt.
+> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Engedélyezési lista azure-noreply@microsoft.com , hogy biztosan megkapja az összes e-mailt.
 
 1. Keresse meg a Microsoft e-mail-címét, amely arra kéri, hogy tekintse át a hozzáférést. Íme egy példa e-mailben, amely áttekinti a csoporthoz való hozzáférést.
 
@@ -43,7 +43,7 @@ A hozzáférési felülvizsgálat végrehajtásának első lépése a hozzáfér
 
 Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megkeresheti a függőben lévő hozzáférési felülvizsgálatokat.
 
-1. Jelentkezzen be a saját alkalmazások portálján a [https://myapps.microsoft.com](https://myapps.microsoft.com)következő címen:.
+1. Jelentkezzen be a saját alkalmazások portálján a következő címen: [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
     ![A saját alkalmazások portál felsorolja azokat az alkalmazásokat, amelyekhez jogosultsággal rendelkezik](./media/review-your-access/myapps-access-panel.png)
 
@@ -88,7 +88,7 @@ Az új felhasználói felületet a saját hozzáférés a frissített felhaszná
 
 ### <a name="my-apps-portal"></a>Saját alkalmazások portál
 
-1. Jelentkezzen be a saját alkalmazások portálján a [https://myapps.microsoft.com](https://myapps.microsoft.com)következő címen:.
+1. Jelentkezzen be a saját alkalmazások portálján a következő címen: [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
     ![A saját alkalmazások portál felsorolja azokat az alkalmazásokat, amelyekhez jogosultsággal rendelkezik](./media/review-your-access/myapps-access-panel.png)
 
@@ -106,7 +106,7 @@ Az új felhasználói felületet a saját hozzáférés a frissített felhaszná
 ### <a name="email"></a>E-mail
 
 >[!IMPORTANT]
-> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Engedélyezési azure-noreply@microsoft.com lista, hogy biztosan megkapja az összes e-mailt.
+> Az e-mailek fogadása késéssel jár, és néhány esetben akár 24 órát is igénybe vehet. Engedélyezési lista azure-noreply@microsoft.com , hogy biztosan megkapja az összes e-mailt.
 
 1. Keressen egy e-mailt a Microsofttól, és kérje meg, hogy tekintse át a hozzáférést. Az alábbi e-mail-üzenetet láthatja:
 

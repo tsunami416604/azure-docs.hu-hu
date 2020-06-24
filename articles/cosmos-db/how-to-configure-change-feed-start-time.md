@@ -3,15 +3,15 @@ title: A hírcsatorna-feldolgozó processzor indítási idejének konfigurálás
 description: Megtudhatja, hogyan konfigurálhatja a módosítási hírcsatorna processzorát egy adott dátummal és időponttal való olvasás megkezdéséhez
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3d9af1b8cbda3f0fa2ff4650fef4602f7812f79
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77586274"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261715"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>A hírcsatorna-processzor módosításának kezdési idejének konfigurálása
 
@@ -23,7 +23,7 @@ Amikor az első alkalommal elindul a Change feed-processzor, a megkezdi a bérle
 
 ## <a name="reading-from-a-previous-date-and-time"></a>Olvasás egy korábbi dátumból és időpontból
 
-A módosítási hírcsatorna processzora inicializálható úgy, hogy egy **adott dátummal és**időponttal kezdődő módosításokat olvasson be, az a `DateTime` példányának `WithStartTime` átadásával a Builder bővítménnyel:
+A módosítási hírcsatorna processzora inicializálható úgy, hogy egy **adott dátummal és**időponttal kezdődő módosításokat olvasson be, az a példányának átadásával `DateTime` a `WithStartTime` Builder bővítménnyel:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -31,7 +31,7 @@ A módosítási hírcsatorna processzora az adott dátumra és időpontra lesz i
 
 ## <a name="reading-from-the-beginning"></a>Olvasás az elejétől
 
-Más forgatókönyvekben, például az adatáttelepítés során vagy egy tároló teljes előzményeinek elemzéséhez a **tároló élettartamának elejéről**kell olvasni a változási csatornát. Ehhez használhatja `WithStartTime` a Builder bővítményt, de a továbbítást `DateTime.MinValue.ToUniversalTime()`, amely a minimális `DateTime` érték UTC szerinti megjelenítését eredményezi, például:
+Más forgatókönyvekben, például az adatáttelepítés során vagy egy tároló teljes előzményeinek elemzéséhez a **tároló élettartamának elejéről**kell olvasni a változási csatornát. Ehhez használhatja a `WithStartTime` Builder bővítményt, de a továbbítást `DateTime.MinValue.ToUniversalTime()` , amely a minimális érték UTC szerinti megjelenítését eredményezi, például `DateTime` :
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 
@@ -43,7 +43,7 @@ A módosítási hírcsatorna processzora inicializálva lesz, és megkezdi a mó
 > [!NOTE]
 > Ha egy adott időpontot ad meg, csak a tárolóban aktuálisan létező elemek módosításai lesznek beolvasva. Ha egy elem törölve lett, a változási csatornán lévő előzmények is el lettek távolítva.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

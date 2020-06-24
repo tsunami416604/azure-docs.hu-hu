@@ -3,20 +3,20 @@ title: SAML-alapú egyszeri bejelentkezés konfigurálása Microsoft Graph API-k
 titleSuffix: Azure Active Directory
 description: SAML-alapú egyszeri bejelentkezést kell beállítania egy alkalmazás több példányához? Megtudhatja, hogyan takaríthat meg időt a Microsoft Graph API-k használatával az SAML-alapú egyszeri bejelentkezés konfigurációjának automatizálásához.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 3443ed3f4f0ad8bb5500a31f9a5da2cac5afa6d5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: c766fb84fa14eab09143cfb5b71f7aefc9f51d24
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84463705"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077778"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>SAML-alapú SSO-alkalmazások konfigurációjának automatizálása Microsoft Graph API-val
 
@@ -424,7 +424,7 @@ Content-type: claimsMappingPolicies/json
   "name": "servicePrincipals"
 }-->
 ```msgraph-interactive
-POST https://graph.microsoft.com/v1.0/servicePrincipals/f47a6776-bca7-4f2e-bc6c-eec59d058e3e/claimsMappingPolicies/$ref
+POST https://graph.microsoft.com/beta/servicePrincipals/f47a6776-bca7-4f2e-bc6c-eec59d058e3e/claimsMappingPolicies/$ref
 
 Content-type: claimsMappingPolicies/json
 
@@ -651,6 +651,6 @@ A következő URL-cím használatával lekérheti az Azure AD SAML-metaadatokat 
 
 https://login.microsoftonline.com/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={app-id}
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A felhasználók üzembe helyezésének konfigurálása Microsoft Graph API-k használatával](../app-provisioning/application-provisioning-configure-api.md)
 - [Alkalmazások migrálása az Azure AD-be a AD FS alkalmazás-tevékenység jelentés használatával](migrate-adfs-application-activity.md)

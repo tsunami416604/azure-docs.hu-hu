@@ -4,15 +4,15 @@ description: Ez a dokumentum áttelepítés utáni optimalizálási technikákat
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: lbosq
-ms.openlocfilehash: ce33651aae64d0a90264dde6da64b4044c6ce132
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 055604c399aa1641e823f24af499102bfff3ed0e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063616"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263092"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés utáni optimalizálási lépések Azure Cosmos DB API-MongoDB való használatakor
 
@@ -35,7 +35,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 2. A [Azure Portal](https://www.portal.azure.com/)a bal oldali ablaktáblán nyissa meg a **minden erőforrás** menüt, és keresse meg azt a Azure Cosmos db fiókot, amelyre áttelepítette az adatait.
 3. Nyissa meg a **kapcsolatok karakterláncának** paneljét. A jobb oldali panel tartalmazza a fiókhoz való kapcsolódáshoz szükséges összes információt.
 4. Használja a kapcsolódási adatokat az alkalmazás konfigurációjában (vagy más kapcsolódó helyeken), hogy tükrözze a Azure Cosmos DB API-ját az MongoDB való kapcsolódáshoz.
-![Kapcsolatok – karakterlánc](./media/mongodb-post-migration/connection-string.png)
+:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="Kapcsolatok – karakterlánc":::
 
 További részletekért tekintse meg a [MongoDB-alkalmazás Összekötése Azure Cosmos db](connect-mongodb-account.md) lapra.
 

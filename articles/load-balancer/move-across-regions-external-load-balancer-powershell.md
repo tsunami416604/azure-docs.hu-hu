@@ -3,15 +3,15 @@ title: Az Azure külső Load Balancer áthelyezése másik Azure-régióba Azure
 description: Azure Resource Manager sablon használatával áthelyezheti az Azure külső Load Balancer az egyik Azure-régióból a másikba Azure PowerShell használatával.
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a24eb4608e7630d5b613751fa2120361eccd7672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be1971c9184d0b2b406b669ae9d1ea61598b201f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75644817"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809432"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Az Azure külső Load Balancer áthelyezése másik régióba Azure PowerShell
 
@@ -60,7 +60,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg az ** \<erőforrás-csoport-név>. JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
+4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a ** \<resource-group-name> . JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -116,7 +116,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
     ```
 8. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
 
-    * **SKU** – a konfigurációban a nyilvános IP-cím SKU-jának a standard és az alap közötti értékről a standard típusra módosítható úgy, hogy az ** \<erőforrás-csoport neve>. JSON** fájlban módosítja az **SKU** > **Name** tulajdonságot:
+    * **SKU** – a nyilvános IP-cím SKU-jának a standard és az alap közötti értékről a standard típusra módosítható úgy, **sku**hogy a  >  ** \<resource-group-name> . JSON** fájlban módosítja az SKU**Name** tulajdonságot:
 
          ```json
             "resources": [
@@ -161,14 +161,14 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
         A kiosztási módszerekkel és az üresjárati időtúllépési értékekkel kapcsolatos további információkért lásd: [nyilvános IP-cím létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
 
-9. Mentse az ** \<erőforrás-csoport neve>. JSON** fájlt.
+9. Mentse a ** \<resource-group-name> . JSON** fájlt.
 
 10. Hozzon létre egy erőforráscsoportot a céltartományban a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával telepítendő cél nyilvános IP-címhez.
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Telepítse a szerkesztett ** \<erőforrás-csoport neve>. JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett ** \<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 
@@ -209,7 +209,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceExtLBID -IncludeParameterDefaultValue
    ```
-4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg az ** \<erőforrás-csoport-név>. JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
+4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a ** \<resource-group-name> . JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -232,7 +232,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
 
     ```
 
-6.  A fent áthelyezett cél nyilvános IP-cím értékének szerkesztéséhez először be kell szereznie az erőforrás-azonosítót, majd be kell másolnia és beillesztenie az ** \<erőforrás-csoport neve>. JSON** fájlba.  Az azonosító beszerzéséhez használja a [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
+6.  A fentiekben áthelyezett cél nyilvános IP-cím értékének szerkesztéséhez először be kell szereznie az erőforrás-azonosítót, majd be kell másolnia és beillesztenie a ** \<resource-group-name> . JSON** fájlba.  Az azonosító beszerzéséhez használja a [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
 
     ```azurepowershell-interactive
     $targetPubIPID = (Get-AzPublicIPaddress -Name <target-public-ip-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -244,7 +244,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupLB-Move/providers/Microsoft.Network/publicIPAddresses/myPubIP-in-move
     ```
 
-7.  Az ** \<erőforrás-csoport neve>. JSON** fájlban illessze be az erőforrás- **azonosítót** a második paraméterben található " **defaultValue** " érték helyett a nyilvános IP-címhez tartozó külső azonosítóhoz, és győződjön meg arról, hogy az elérési utat idézőjelek közé helyezi:
+7.  A ** \<resource-group-name> . JSON** fájlban illessze be az **erőforrás-azonosítót** a változó helyére a második paraméterben a nyilvános IP-cím külső azonosítójának ( **defaultValue** ) helyén, ügyeljen arra, hogy az elérési utat az idézőjelek közé foglalja:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -261,7 +261,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
 
     ```
 
-8.  Ha a terheléselosztó kimenő NAT-és kimenő szabályait konfigurálta, akkor a rendszer egy harmadik bejegyzést fog tartalmazni ebben a fájlban a kimenő nyilvános IP-címhez tartozó külső AZONOSÍTÓhoz.  Ismételje meg a fenti lépéseket a **cél régióban** a kimenő nyilvános IP-cím azonosítójának beszerzéséhez, és illessze be a bejegyzést az ** \<erőforrás-csoport-név>. JSON** fájlba:
+8.  Ha a terheléselosztó kimenő NAT-és kimenő szabályait konfigurálta, akkor a rendszer egy harmadik bejegyzést fog tartalmazni ebben a fájlban a kimenő nyilvános IP-címhez tartozó külső AZONOSÍTÓhoz.  Ismételje meg a fenti lépéseket a **cél régióban** a kimenő nyilvános iP-cím azonosítójának beszerzéséhez, és illessze be a bejegyzést a ** \<resource-group-name> . JSON** fájlba:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -282,7 +282,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
         },
     ```
 
-10. A külső terheléselosztó konfigurációját áthelyező célobjektum módosításához módosítsa a **Location** tulajdonságot az ** \<erőforrás-csoport neve>. JSON** fájlban: **resources**
+10. Ha módosítani szeretné a külső terheléselosztó konfigurációját áthelyező célhelyet, módosítsa a **Location (hely** ) tulajdonságot a ** \<resource-group-name> . JSON** fájlban található **erőforrások** területen:
 
     ```json
         "resources": [
@@ -306,7 +306,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
     ```
 12. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
     
-    * **SKU** – > **name** **az \<erőforrás-csoport neve>. JSON** fájlban lévő **SKU**Name tulajdonságának megváltoztatásával módosíthatja a külső Load Balancer a konfigurációban a standard és az alapszintű, illetve az alapszintű értékről a standard értékre.
+    * **SKU** – módosíthatja a külső terheléselosztó SKU-jának konfigurációját a standard értékről az alapszintű vagy az alapszintű értékre a **sku**(z  >  ** \<resource-group-name> ). JSON** fájlban található SKU**Name** tulajdonság megváltoztatásával:
 
         ```json
         "resources": [
@@ -322,7 +322,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
         ```
       Az alapszintű és standard SKU-terheléselosztó közötti különbségekről az [Azure standard Load Balancer áttekintése](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) című témakörben olvashat bővebben.
 
-    * Terheléselosztási **szabályok** – a konfigurációban hozzáadhat vagy eltávolíthat terheléselosztási szabályokat, ha bejegyzéseket ad hozzá vagy távolít el az ** \<erőforrás-csoport neve>. JSON** fájl **loadBalancingRules** részéhez:
+    * Terheléselosztási **szabályok** – a konfigurációban hozzáadhat vagy eltávolíthat terheléselosztási szabályokat a ** \<resource-group-name> . JSON** fájl **loadBalancingRules** szakaszának bejegyzéseinek hozzáadásával vagy eltávolításával:
 
         ```json
         "loadBalancingRules": [
@@ -354,7 +354,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
         ```
        További információ a terheléselosztási szabályokról: [Mi az Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Mintavételek – hozzáadhat** vagy eltávolíthat egy mintavételt a terheléselosztó számára a konfigurációban, ha bejegyzéseket ad hozzá vagy távolít el az ** \<erőforrás-csoport neve>. JSON** fájl mintavételek **szakaszához** :
+    * Mintavétel **– hozzáadhat** vagy eltávolíthat egy mintavételt a terheléselosztó számára a konfigurációban a ** \<resource-group-name> . JSON** fájl mintavételek **szakaszának** bejegyzéseinek hozzáadásával vagy eltávolításával:
 
         ```json
         "probes": [
@@ -374,7 +374,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
         ```
        Azure Load Balancer állapot-mintavételsel kapcsolatos további információkért lásd: [Load Balancer Health Szondák](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
 
-    * **Bejövő NAT-szabályok** – a terheléselosztó bejövő NAT-szabályainak hozzáadásához vagy eltávolításához adja hozzá a bejegyzéseket az ** \<erőforráscsoport-név>. JSON** fájl **inboundNatRules** szakaszához:
+    * **Bejövő NAT-szabályok** – a TERHELÉSELOSZTÓ bejövő NAT-szabályait hozzáadhatja vagy eltávolíthatja a (z ** \<resource-group-name> ). JSON** fájl **inboundNatRules** szakaszának bejegyzéseinek hozzáadásával vagy eltávolításával:
 
         ```json
         "inboundNatRules": [
@@ -396,7 +396,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
                     }
                 ]
         ```
-        Egy bejövő NAT-szabály hozzáadásának vagy eltávolításának befejezéséhez a szabálynak jelen kell lennie, vagy el kell távolítania az ** \<erőforrás-csoport neve>. JSON** fájl végén található **Type (típus** ) tulajdonságként:
+        Bejövő NAT-szabály hozzáadásának vagy eltávolításának befejezéséhez a szabálynak jelen kell lennie, vagy el kell távolítania a ** \<resource-group-name> . JSON** fájl végén található **Type (típus** ) tulajdonsággal:
 
         ```json
         {
@@ -422,7 +422,7 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
         ```
         További információ a bejövő NAT-szabályokról: [Mi az Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 
-    * **Kimenő szabályok** – a konfigurációban hozzáadhat vagy eltávolíthat kimenő szabályokat a **outboundRules** tulajdonság szerkesztésével az ** \<erőforrás-csoport neve>. JSON** fájlban:
+    * **Kimenő szabályok** – a konfigurációban a ** \<resource-group-name> . JSON** fájl **outboundRules** tulajdonságának szerkesztésével adhat hozzá vagy távolíthat el kimenő szabályokat:
 
         ```json
         "outboundRules": [
@@ -450,14 +450,14 @@ A következő lépések bemutatják, hogyan készítse elő a külső terhelése
 
          További információ a kimenő szabályokról: [Load Balancer kimenő szabályok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)
 
-13. Mentse az ** \<erőforrás-csoport neve>. JSON** fájlt.
+13. Mentse a ** \<resource-group-name> . JSON** fájlt.
     
 10. Hozzon létre vagy egy erőforráscsoportot a cél régióban ahhoz, hogy a cél külső terheléselosztó a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával legyen üzembe helyezhető. A fent említett meglévő erőforráscsoport a folyamat részeként is újra felhasználható:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Telepítse a szerkesztett ** \<erőforrás-csoport neve>. JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett ** \<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 

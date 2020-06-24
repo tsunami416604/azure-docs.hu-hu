@@ -3,17 +3,17 @@ title: A Studio 3T használata Azure Cosmos DB API-MongoDB való kapcsolódásho
 description: Megtudhatja, hogyan csatlakozhat a MongoDB Azure Cosmos DB API-hoz a Studio 3T használatával.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 84b703cceeb130b177b8ab32281ef616b1ec632b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0159f69dcef2a98a8597762902ff2f45f30b0bef
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548824"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263109"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Kapcsolódás Azure Cosmos-fiókhoz a Studio 3T használatával
 
@@ -28,39 +28,39 @@ Az alábbi lépéseket követve adhatja hozzá az Azure Cosmos-fiókot a Studio 
 
 1. Kérje le a Azure Cosmos DB API-MongoDB-fiókjának kapcsolati információit a MongoDB- [alkalmazás csatlakoztatása a Azure Cosmos db](connect-mongodb-account.md) cikk utasításait követve.
 
-    ![Képernyőfelvétel a kapcsolatok karakterláncának oldaláról](./media/mongodb-mongochef/ConnectionStringBlade.png)
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionStringBlade.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 
 2. Kattintson a **Kapcsolódás** gombra a Csatlakozáskezelő megnyitásához, majd kattintson az **új kapcsolat** elemre.
 
-    ![A Studio 3T-Csatlakozáskezelő képernyőképe](./media/mongodb-mongochef/ConnectionManager.png)
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="A Studio 3T-Csatlakozáskezelő képernyőképe":::
 3. Az **új csatlakozás** ablak **kiszolgáló** lapján adja meg az Azure Cosmos-fiók gazdagépét (FQDN) és a portot.
 
-    ![A Studio 3T Csatlakozáskezelő kiszolgáló lapjának képernyőképe](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="A Studio 3T Csatlakozáskezelő kiszolgáló lapjának képernyőképe":::
 4. Az **új kapcsolatok** ablakban a **hitelesítés** lapon válassza az **alapszintű hitelesítési mód (MONGODB-CR vagy SCARM-SHA-1)** lehetőséget, és adja meg a felhasználónevet és a jelszót.  Fogadja el az alapértelmezett hitelesítési adatbázist (rendszergazda), vagy adja meg a saját értékét.
 
-    ![A Studio 3T Csatlakozáskezelő hitelesítés lapjának képernyőképe](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png" alt-text="A Studio 3T Csatlakozáskezelő hitelesítés lapjának képernyőképe":::
 5. Az **új kapcsolat** ablak **SSL** LAPJÁN jelölje be az **SSL protokoll használata a kapcsolódáshoz** jelölőnégyzetet, valamint a **kiszolgáló önaláírt SSL-tanúsítványok fogadása** választógombot.
 
-    ![Képernyőfelvétel a Studio 3T-Csatlakozáskezelő SSL-lapjáról](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Képernyőfelvétel a Studio 3T-Csatlakozáskezelő SSL-lapjáról":::
 6. Kattintson a **Kapcsolódás tesztelése** gombra a kapcsolódási adatok érvényesítéséhez, kattintson az **OK** gombra az új kapcsolódási ablakhoz való visszatéréshez, majd kattintson a **Mentés**gombra.
 
-    ![Képernyőfelvétel a Studio 3T-tesztelési kapcsolatok ablakáról](./media/mongodb-mongochef/TestConnectionResults.png)
+    :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Képernyőfelvétel a Studio 3T-tesztelési kapcsolatok ablakáról":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Adatbázis, gyűjtemény és dokumentumok létrehozása a Studio 3T használatával
 Adatbázis, gyűjtemény és dokumentumok létrehozásához a Studio 3T használatával hajtsa végre a következő lépéseket:
 
 1. A **Csatlakozáskezelő**területen jelölje ki a kapcsolatot, majd kattintson a **Csatlakoztatás**gombra.
 
-    ![A Studio 3T-Csatlakozáskezelő képernyőképe](./media/mongodb-mongochef/ConnectToAccount.png)
+    :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="A Studio 3T-Csatlakozáskezelő képernyőképe":::
 2. Kattintson a jobb gombbal a gazdagépre, majd válassza az **adatbázis hozzáadása**elemet.  Adja meg az adatbázis nevét, majd kattintson **az OK gombra**.
 
-    ![Képernyőfelvétel a Studio 3T adatbázis hozzáadása lehetőségéről](./media/mongodb-mongochef/AddDatabase1.png)
+    :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Képernyőfelvétel a Studio 3T adatbázis hozzáadása lehetőségéről":::
 3. Kattintson a jobb gombbal az adatbázisra, és válassza a **gyűjtemény hozzáadása**elemet.  Adja meg a gyűjtemény nevét, és kattintson a **Létrehozás**gombra.
 
-    ![Képernyőfelvétel a Studio 3T-gyűjtemény hozzáadása lehetőségről](./media/mongodb-mongochef/AddCollection.png)
+    :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Képernyőfelvétel a Studio 3T-gyűjtemény hozzáadása lehetőségről":::
 4. Kattintson a **gyűjtemény** menüpontra, majd a **dokumentum hozzáadása**elemre.
 
-    ![Képernyőfelvétel a Studio 3T hozzáadása dokumentum menüelem](./media/mongodb-mongochef/AddDocument1.png)
+    :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Képernyőfelvétel a Studio 3T hozzáadása dokumentum menüelem":::
 5. A dokumentum hozzáadása párbeszédpanelen illessze be a következőt, majd kattintson a **dokumentum hozzáadása**lehetőségre.
 
         {
@@ -108,7 +108,7 @@ Adatbázis, gyűjtemény és dokumentumok létrehozásához a Studio 3T használ
         }
 7. Minta lekérdezés végrehajtása. Keressen például egy "Andersen" vezetéknevű családot, és adja vissza a szülők és az állam mezőket.
 
-    ![Képernyőkép a Mongo Chef lekérdezési eredményeiről](./media/mongodb-mongochef/QueryDocument1.png)
+    :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Képernyőkép a Mongo Chef lekérdezési eredményeiről":::
 
 ## <a name="next-steps"></a>További lépések
 

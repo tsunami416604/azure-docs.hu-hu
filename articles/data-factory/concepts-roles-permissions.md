@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 3955d3b9370a1cd2ee88c27e42b107f5ae0f87c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833506"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263245"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Szerepkörök és engedélyek az Azure Data Factoryhoz
 
@@ -82,15 +82,15 @@ Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és
   1. Társítsa a beépített **közreműködő** szerepkört a adat-előállító szintjén.
   2. Hozzon létre egy egyéni szerepkört az engedéllyel rendelkező **Microsoft. Resources/Deployments/**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz erőforráscsoport szintjén.
 
-- A felhasználó csak a társított szolgáltatásban lévő kapcsolat tesztelését teszi lehetővé
+- Lehetővé teszi, hogy a felhasználó tesztelje a kapcsolatokat egy társított szolgáltatásban, vagy előnézeti adatokat egy adatkészletben
 
-    Hozzon létre egy egyéni szerepkört, amely rendelkezik engedélyekkel a következő műveletekhez: **Microsoft. DataFactory/Factorys/getFeatureValue/Read** és **Microsoft. DataFactory/gyárak/getDataPlaneAccess/Read**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz.
+    Hozzon létre egy egyéni szerepkört, amely rendelkezik engedélyekkel a következő műveletekhez: **Microsoft. DataFactory/Factorys/getFeatureValue/Read** és **Microsoft. DataFactory/gyárak/getDataPlaneAccess/Action**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz.
 
 - Lehetővé teheti, hogy a felhasználó frissítsen egy adatgyárat a PowerShellből vagy az SDK-ból, de ne a Azure Portal.
 
   Rendelje hozzá a beépített **közreműködő** szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz. Ez a szerepkör lehetővé teszi, hogy a felhasználó láthassa a Azure Portal erőforrásait, de a felhasználó nem férhet hozzá a **Közzététel** és az **összes közzététel** gombhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)
 

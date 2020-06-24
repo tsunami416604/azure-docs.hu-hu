@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc869a8ab905275c8082c4fd375f8f6d6d48d97e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311661"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205458"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>A helyi konfigurációs fájl (C# ügynök) ismertetése
 
@@ -30,9 +30,9 @@ A biztonsági ügynök az ügynök indításakor egyszer beolvassa a konfigurác
 
 A C# biztonsági ügynök több konfigurációs fájlt használ:
 
-- **Általános. config** – az ügynökhöz kapcsolódó konfigurációk.
-- **Authentication. config** – hitelesítéssel kapcsolatos konfiguráció (beleértve a hitelesítés részleteit is).
-- **SecurityIotInterface. config** – IoT kapcsolódó konfigurációk.
+- **General.config** -ügynökhöz kapcsolódó konfigurációk.
+- **Authentication.config** – hitelesítéssel kapcsolatos konfiguráció (beleértve a hitelesítés részleteit is).
+- **SecurityIotInterface.config** IoT kapcsolódó konfigurációk.
 
 A konfigurációs fájlok tartalmazzák az alapértelmezett konfigurációt. A hitelesítési konfiguráció az ügynök telepítése során töltődik fel, és a konfigurációs fájl módosításai az ügynök újraindításakor jönnek létre.
 
@@ -40,13 +40,13 @@ A konfigurációs fájlok tartalmazzák az alapértelmezett konfigurációt. A h
 
 Linux esetén:
 
-- Az operációs rendszer konfigurációs fájljai a ben `/var/ASCIoTAgent`találhatók.
+- Az operációs rendszer konfigurációs fájljai a ben találhatók `/var/ASCIoTAgent` .
 
 Windows esetén:
 
 - Az operációs rendszer konfigurációs fájljai a biztonsági ügynök könyvtárán belül találhatók.
 
-### <a name="generalconfig-configurations"></a>Általános. config konfigurációk
+### <a name="generalconfig-configurations"></a>General.config konfigurációk
 
 | Konfiguráció neve | Lehetséges értékek | Részletek |
 |:-----------|:---------------|:--------|
@@ -62,9 +62,9 @@ Windows esetén:
 | logFilePath | Fájl elérési útja | Ha a fileLogLevel > ki, a rendszer a naplókat erre a fájlba írja. |
 | defaultEventPriority | "Magas", "alacsony", "off" | Alapértelmezett esemény prioritása. |
 
-### <a name="generalconfig-example"></a>Általános. config példa
+### <a name="generalconfig-example"></a>General.config példa
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <General>
   <add key="agentId" value="da00006c-dae9-4273-9abc-bcb7b7b4a987" />
@@ -81,7 +81,7 @@ Windows esetén:
 </General>
 ```
 
-### <a name="authenticationconfig"></a>Authentication. config
+### <a name="authenticationconfig"></a>Authentication.config
 
 | Konfiguráció neve | Lehetséges értékek | Részletek |
 |:-----------|:---------------|:--------|
@@ -89,16 +89,16 @@ Windows esetén:
 | deviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrálva). || schedulerInterval | TimeSpan karakterlánc | Belső ütemező időköze |
 | gatewayHostname | sztring | Az Azure IOT hub állomásneve. Általában <My-hub>. azure-devices.net |
 | filePath | karakterlánc – fájl elérési útja | A hitelesítési titkot tartalmazó fájl elérési útja.|
-| type | "SymmetricKey", "SelfSignedCertificate" | A hitelesítő felhasználói titok. Válassza a *SymmetricKey* lehetőséget, ha a felhasználói titok szimmetrikus kulcs, válassza az *önaláírt tanúsítvány* lehetőséget, ha a titok egy önaláírt tanúsítvány. |
+| típus | "SymmetricKey", "SelfSignedCertificate" | A hitelesítő felhasználói titok. Válassza a *SymmetricKey* lehetőséget, ha a felhasználói titok szimmetrikus kulcs, válassza az *önaláírt tanúsítvány* lehetőséget, ha a titok egy önaláírt tanúsítvány. |
 | identity | "DPS", "modul", "eszköz" | Hitelesítési identitás – DPS if hitelesítés a DPS-n keresztül történik, modul, ha a hitelesítés modul hitelesítő adataival történik, vagy ha hitelesítés történik az eszköz hitelesítő adataival.
 | certificateLocationKind |  "LocalFile", "Store" | LocalFile, ha a tanúsítvány egy fájlban van tárolva, tárolja, hogy a tanúsítvány tanúsítványtárolóban található-e. |
 | idScope | sztring | A DPS azonosító hatóköre |
 | regisztrációban | sztring  | DPS-eszköz regisztrációs azonosítója. |
 |
 
-### <a name="authenticationconfig-example"></a>Authentication. config példa
+### <a name="authenticationconfig-example"></a>Authentication.config példa
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
   <add key="moduleName" value="azureiotsecurity"/>
@@ -113,16 +113,16 @@ Windows esetén:
 </Authentication>
 ```
 
-### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface. config
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
 | Konfiguráció neve | Lehetséges értékek | Részletek |
 |:-----------|:---------------|:--------|
 | transportType | "Ampq" "Mqtt" | IoT Hub átviteli típus. |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface. config példa
+### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface.config példa
 
-```XML
+```xml
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
   <add key="transportType" value="Amqp"/>

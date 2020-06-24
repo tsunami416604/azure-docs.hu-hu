@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0a455ef911d28306b30bed2fbb00edea198181dd
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682829"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205424"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -220,7 +220,7 @@ Az ACR olyan [Egyéni szerepköröket](container-registry-roles.md) támogat, am
   az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
   ```
 
-  Vagy rendelje hozzá a szerepkört egy, az alkalmazás azonosítója alapján azonosított szolgáltatási alapelvhez:
+  Vagy rendeljen hozzá egy szerepkört egy egyszerű szolgáltatáshoz, amelyet az alkalmazás azonosítója azonosított:
 
   ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
@@ -438,6 +438,7 @@ Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigu
 * A klasszikus kibocsátásiegység-forgalmi jegyzékek már nem támogatottak. Frissítsen egy támogatott [szolgáltatási szintre](https://aka.ms/acr/skus) az [az ACR update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) vagy a Azure Portal használatával.
 * Előfordulhat, hogy a rendszerkép vagy a tárház zárolva van, ezért nem törölhető vagy nem frissíthető. A jelenlegi attribútumok megtekintéséhez használja az az [ACR show adattár](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) parancsot.
 * Néhány művelet nem engedélyezett, ha a rendszerkép karanténban van. További információ a [karanténba helyezésről](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
+* Lehetséges, hogy a beállításjegyzék elérte a [tárolási korlátot](container-registry-skus.md#service-tier-features-and-limits).
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?
 
@@ -495,8 +496,8 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 |---|---|---|---|
 | GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Igen |
 | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Igen | Igen |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Nem |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Igen | Nem |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Nem |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Nem |
 
 ## <a name="run-error-message-troubleshooting"></a>Hibaüzenetek futtatása – hibaelhárítás
 

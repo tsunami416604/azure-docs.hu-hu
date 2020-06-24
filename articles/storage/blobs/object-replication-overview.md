@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193424"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888069"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Objektum-replikálás blokk-Blobok számára (előzetes verzió)
 
@@ -44,7 +44,7 @@ Az objektumok replikálásának konfigurálása után az Azure Storage rendszere
 
 Az objektumok replikálásának konfigurálásakor a rendszer az Azure Storage erőforrás-szolgáltatón keresztül létrehoz egy replikációs házirendet a forrás és a cél fiókon is. A replikációs házirendet egy házirend-azonosító azonosítja. A forrás-és a célhelyen lévő házirendnek ugyanazzal a házirend-AZONOSÍTÓval kell rendelkeznie ahhoz, hogy a replikálás megtörténjen.
 
-A Storage-fiók legfeljebb két célobjektum forrásaként használható. Előfordulhat, hogy a forrás-és a cél fiók különböző régiókban található. Külön replikációs házirendeket konfigurálhat az egyes célszámítógépekre történő adatreplikáláshoz.
+A Storage-fiók legfeljebb két célobjektum forrásaként használható. A cél fiók legfeljebb két forrásoldali fiókkal rendelkezhet. A forrás- és célfiókok mind lehetnek eltérő régiókban. Külön replikációs házirendeket konfigurálhat az egyes célszámítógépekre történő adatreplikáláshoz.
 
 ### <a name="replication-rules"></a>Replikációs szabályok
 
@@ -54,7 +54,7 @@ A replikációs szabályok létrehozásakor alapértelmezés szerint csak a forr
 
 Egy vagy több szűrőt is megadhat egy replikációs szabály részeként a blokk Blobok előtag alapján történő szűréséhez. Egy előtag megadásakor a rendszer csak a forrás tárolóban lévő előtaggal egyező blobokat másolja a célhelyre.
 
-A forrás-és a cél tárolóknak is léteznie kell, mielőtt megadhatja őket egy szabályban. A replikációs házirend létrehozása után a cél tároló írásvédett lesz. A célként megadott tárolóba való írásra tett kísérletek sikertelenek, hibakód: 409 (ütközés). Meghívhatja azonban a [blob szint beállítása](/rest/api/storageservices/set-blob-tier) műveletet a cél tárolóban lévő blobon az archív szintre való áthelyezéshez. Az archiválási szinttel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md#archive-access-tier).
+A forrás-és a cél tárolóknak is léteznie kell, mielőtt megadhatja őket egy szabályban. A replikációs szabályzat létrehozása után a céltároló csak olvashatóvá válik. A céltárolóba történő írásra tett kísérlet sikertelen lesz a következő hibakóddal: 409 (ütközés). Meghívhatja azonban a [blob szint beállítása](/rest/api/storageservices/set-blob-tier) műveletet a cél tárolóban lévő blobon az archív szintre való áthelyezéshez. Az archiválási szinttel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
@@ -71,7 +71,7 @@ Az előzetes verzió ideje alatt a Storage-fiókok közötti replikálás nem j�
 > [!IMPORTANT]
 > Az objektum-replikáció előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
 
-### <a name="prerequisites-for-object-replication"></a>Az objektumok replikálásának előfeltételei
+### <a name="prerequisites-for-object-replication"></a>Az objektumreplikáció előfeltételei
 
 Az objektum-replikációhoz a következő Azure Storage-funkciókra van szükség: 
 - [Csatorna módosítása](storage-blob-change-feed.md)

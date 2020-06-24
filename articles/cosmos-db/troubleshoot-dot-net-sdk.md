@@ -3,17 +3,17 @@ title: Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztiz
 description: A .NET SDK használatakor olyan szolgáltatásokat használhat, mint az ügyféloldali naplózás és más külső eszközök a Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/06/2020
+ms.date: 06/16/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: c0f40b3c79c16046ef61e89cad72c714346d2674
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: b24c0b045bc7d894496a59eda00f0e8835ea6a8d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672629"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887368"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 
@@ -113,9 +113,11 @@ Ha a következő 401 hibaüzenetet kapta: "a HTTP-kérelemben található MAC-al
 
 1. A kulcsot elforgatták, és nem az [ajánlott eljárásokat](secure-access-to-data.md#key-rotation)követték. Általában ez a helyzet. Cosmos DB fiók kulcsának elforgatása eltarthat néhány másodperctől akár napokig is, az Cosmos DB fiók méretétől függően.
    1. 401 a MAC-aláírás röviddel a kulcs elforgatása után következik be, és végül leáll a módosítás nélkül. 
-2. A kulcs helytelenül van konfigurálva az alkalmazásban, így a kulcs nem egyezik meg a fiókkal.
+1. A kulcs helytelenül van konfigurálva az alkalmazásban, így a kulcs nem egyezik meg a fiókkal.
    1. 401 MAC-aláírási probléma konzisztens lesz, és az összes hívás esetén megtörténik
-3. Létezik egy versenyhelyzet a tároló létrehozásával. Egy alkalmazás-példány megpróbál hozzáférni a tárolóhoz a tároló létrehozása után. A leggyakoribb példa erre, ha az alkalmazás fut, és a tároló törlődik, és az alkalmazás futása során ugyanazzal a névvel jön létre. Az SDK megpróbálja használni az új tárolót, de a tároló létrehozása még folyamatban van, így nem rendelkezik a kulcsokkal.
+1. Az alkalmazás csak [olvasható kulcsokat](secure-access-to-data.md#master-keys) használ az írási műveletekhez.
+   1. 401 MAC-aláírási probléma csak akkor fordulhat elő, ha az alkalmazás írási kéréseket végez, de az olvasási kérések sikeresek lesznek.
+1. Létezik egy versenyhelyzet a tároló létrehozásával. Egy alkalmazás-példány megpróbál hozzáférni a tárolóhoz a tároló létrehozása után. A leggyakoribb példa erre, ha az alkalmazás fut, és a tároló törlődik, és az alkalmazás futása során ugyanazzal a névvel jön létre. Az SDK megpróbálja használni az új tárolót, de a tároló létrehozása még folyamatban van, így nem rendelkezik a kulcsokkal.
    1. 401 MAC-aláírási probléma röviddel a tároló létrehozása után következik be, és csak a tároló létrehozása után történik meg.
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>400-es HTTP-hiba. A kérések fejlécének mérete túl hosszú.

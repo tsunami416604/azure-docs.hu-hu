@@ -3,15 +3,15 @@ title: Tárolók lekérdezése az Azure Cosmos DB-ben
 description: Megtudhatja, hogyan kérdezheti le a tárolókat a Azure Cosmos DB partíciós és több partíciós lekérdezések használatával
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 299980b67caaea85fbfb40cb1a30ee50fa32d0f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131399"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261256"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos-tároló lekérdezése
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan lehet lekérdezni egy tárolót (gyűjtemény, g
 
 Ha tárolóból kérdez le adatlekérdezést, akkor a Azure Cosmos DB automatikusan optimalizálja a lekérdezést. A lekérdezés a szűrőben megadott partíciós kulcs értékeinek megfelelő [fizikai partíciókhoz](partition-data.md#physical-partitions) irányítja a lekérdezést.
 
-Vegyük például az alábbi lekérdezést egy Esélyegyenlőségi szűrővel `DeviceId`. Ha ezt a lekérdezést egy-on `DeviceId`particionált tárolón futtatjuk, akkor ez a lekérdezés egyetlen fizikai partícióra lesz szűrve.
+Vegyük például az alábbi lekérdezést egy Esélyegyenlőségi szűrővel `DeviceId` . Ha ezt a lekérdezést egy-on particionált tárolón futtatjuk `DeviceId` , akkor ez a lekérdezés egyetlen fizikai partícióra lesz szűrve.
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
@@ -41,7 +41,7 @@ Az alábbiakban egy olyan lekérdezés található, amely a partíciós kulcson 
 
 ## <a name="cross-partition-query"></a>Többpartíciós kiterjedő lekérdezés
 
-A következő lekérdezés nem rendelkezik szűrővel a partíciós kulcson`DeviceId`(). Ezért az összes olyan fizikai partícióra ki kell állnia, amely az egyes partíciók indexén fut:
+A következő lekérdezés nem rendelkezik szűrővel a partíciós kulcson ( `DeviceId` ). Ezért az összes olyan fizikai partícióra ki kell állnia, amely az egyes partíciók indexén fut:
 
 ```sql
     SELECT * FROM c WHERE c.Location = 'Seattle`
@@ -57,7 +57,7 @@ Az Azure Cosmos DB SDK-k 1.9.0, és később támogatják a párhuzamos lekérde
 
 A lekérdezések párhuzamos végrehajtását az alábbi paraméterek beállításával kezelheti:
 
-- **MaxConcurrency**: a tároló partícióinak egyidejű hálózati kapcsolatainak maximális számát állítja be. Ha ezt a tulajdonságot a `-1`értékre állítja, az SDK kezeli a párhuzamosság mértékét. Ha a `MaxConcurrency` értékre `0`van állítva, a tároló partícióinak egyetlen hálózati kapcsolatai vannak.
+- **MaxConcurrency**: a tároló partícióinak egyidejű hálózati kapcsolatainak maximális számát állítja be. Ha ezt a tulajdonságot a értékre állítja `-1` , az SDK kezeli a párhuzamosság mértékét. Ha a értékre van  `MaxConcurrency` állítva `0` , a tároló partícióinak egyetlen hálózati kapcsolatai vannak.
 
 - **MaxBufferedItemCount**: kompromisszumot alakít ki a lekérdezések késése és az ügyféloldali memóriahasználat között. Ha ez a beállítás nincs megadva, vagy az-1 értékre van állítva, az SDK kezeli a párhuzamos lekérdezés végrehajtása során pufferelt elemek számát.
 
@@ -83,7 +83,7 @@ Ha a kézbesítési illesztőprogram nem ismeri a megfelelő lakás-összetétel
 
 ### <a name="cross-partition-query-scoped-to-only-a-few-physical-partitions"></a>Több partíciós lekérdezés (hatóköre csak néhány fizikai partícióra vonatkozik)
 
-Ha a kézbesítési illesztőprogram tudja, hogy az összes csomag címzettjei egy bizonyos lakás-komplexumon belül vannak, akkor nem kell minden egyeshez vezetniük. A néhány apartman-komplexumhoz való vezetés továbbra is több munkát igényel, mint a csak egyetlen épület meglátogatása, a kézbesítési illesztőprogram továbbra is jelentős időt és fáradságot takarít meg. Ha egy lekérdezésben a `IN` kulcsszóval rendelkező szűrőben a partíció kulcsa szerepel, a rendszer csak a megfelelő fizikai partíció indexeit fogja megkeresni az adatokat.
+Ha a kézbesítési illesztőprogram tudja, hogy az összes csomag címzettjei egy bizonyos lakás-komplexumon belül vannak, akkor nem kell minden egyeshez vezetniük. A néhány apartman-komplexumhoz való vezetés továbbra is több munkát igényel, mint a csak egyetlen épület meglátogatása, a kézbesítési illesztőprogram továbbra is jelentős időt és fáradságot takarít meg. Ha egy lekérdezésben a kulcsszóval rendelkező szűrőben a partíció kulcsa szerepel `IN` , a rendszer csak a megfelelő fizikai partíció indexeit fogja megkeresni az adatokat.
 
 ## <a name="avoiding-cross-partition-queries"></a>A több partíciós lekérdezések elkerülése
 
