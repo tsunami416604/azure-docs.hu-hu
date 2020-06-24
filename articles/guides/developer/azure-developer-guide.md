@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245004"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695079"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -80,7 +80,7 @@ A virtuális gépekhez tartozó szabályozás szintje miatt a kiszolgálói munk
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (kiszolgáló nélküli)
 
-Nem kell aggódnia a teljes alkalmazás vagy az infrastruktúra a kód futtatásához való kiépítésével és kezelésével kapcsolatban, mi a teendő, ha csak megírhatja a kódot, és az eseményekre adott válaszként vagy ütemterv szerint futtatja?  [Azure functions](../../azure-functions/functions-overview.md) egy "kiszolgáló nélküli" stílusú ajánlat, amely lehetővé teszi, hogy csak a szükséges kódot írja. A függvények lehetővé teszi a kód végrehajtását HTTP-kérésekkel, webhookokkal, Cloud Service-eseményekkel vagy ütemezett műveletekkel. Megadhatja az Ön által választott fejlesztői nyelvet, például C\#, F\#, Node. js, Python vagy php. A fogyasztáson alapuló számlázással csak a kód végrehajtásának idejére kell fizetnie, az Azure pedig igény szerint méretezhető.
+Nem kell aggódnia a teljes alkalmazás vagy az infrastruktúra a kód futtatásához való kiépítésével és kezelésével kapcsolatban, mi a teendő, ha csak megírhatja a kódot, és az eseményekre adott válaszként vagy ütemterv szerint futtatja?  [Azure functions](../../azure-functions/functions-overview.md) egy "kiszolgáló nélküli" stílusú ajánlat, amely lehetővé teszi, hogy csak a szükséges kódot írja. A függvények lehetővé teszi a kód végrehajtását HTTP-kérésekkel, webhookokkal, Cloud Service-eseményekkel vagy ütemezett műveletekkel. Az Ön által választott fejlesztési nyelvben (például C \# , F \# , Node.js, PYTHON vagy php) kódot is használhat. A fogyasztáson alapuló számlázással csak a kód végrehajtásának idejére kell fizetnie, az Azure pedig igény szerint méretezhető.
 
 > **Használat esetén**: Azure functions használata, ha olyan kódot használ, amelyet más Azure-szolgáltatások, webalapú események vagy ütemterv alapján aktiválnak. A függvényeket akkor is használhatja, ha nincs szüksége egy teljes körűen üzemeltetett projekt terhelésére, vagy ha csak a kód futási idejét szeretné kifizetni. További információ: [Azure functions Overview (áttekintés](../../azure-functions/functions-overview.md)).
 >
@@ -96,7 +96,7 @@ Az Azure Service Fabric egy elosztott rendszerek platformja. Ez a platform megk�
 * Telepítése
 * Figyelés
 * Frissítés/javítás
-* Törlése
+* Törlés
 
 Az olyan alkalmazások, amelyek egy megosztott készleten futnak, kis méretűek és akár több száz vagy akár több ezer gép számára is elindíthatók.
 

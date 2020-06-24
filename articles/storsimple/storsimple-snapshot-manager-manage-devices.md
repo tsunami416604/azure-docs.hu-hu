@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254689"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694841"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>A StorSimple Snapshot Manager használata a StorSimple-eszközök csatlakoztatásához és kezeléséhez
 ## <a name="overview"></a>Áttekintés
@@ -33,7 +33,7 @@ A **nézet** kiválasztásának függvényében az **eredmények** ablaktábla a
 
 | Eredmények oszlop | Leírás |
 |:--- |:--- |
-| Name (Név) |A klasszikus Azure portálon konfigurált eszköz neve |
+| Name |A klasszikus Azure portálon konfigurált eszköz neve |
 | Modell |Az eszköz modellje |
 | Verzió |Az eszközre telepített szoftver verziója |
 | status |Az eszköz elérhető-e |
@@ -166,7 +166,7 @@ Meg kell adnia egy jelszót a StorSimple-eszköz StorSimple Snapshot Manager val
 
 #### <a name="to-change-the-expired-password"></a>A lejárt jelszó módosítása
 1. A klasszikus Azure portálon indítsa el a StorSimple Manager szolgáltatást.
-2. Kattintson az **eszközök** > **konfigurálása** az eszközhöz elemre.
+2. Kattintson az **eszközök**  >  **konfigurálása** az eszközhöz elemre.
 3. Görgessen le a StorSimple Snapshot Manager szakaszhoz. 14-15 karakterből álló jelszót adjon meg. Győződjön meg arról, hogy a jelszó kis-és nagybetűket, számokat és speciális karaktereket tartalmaz.
 4. Írja be újra a jelszót a megerősítéshez.
 5. Kattintson a lap alján található **Mentés** gombra.

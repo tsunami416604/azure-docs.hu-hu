@@ -1,6 +1,6 @@
 ---
 title: Felügyelt identitások konfigurálása az Azure-beli virtuális gépen a REST-Azure AD használatával
-description: Részletes útmutató a rendszer és a felhasználó által hozzárendelt felügyelt identitások Azure-beli virtuális gépeken történő konfigurálásához a CURL használatával REST API-hívások létrehozásához.
+description: Részletes útmutató a rendszer és a felhasználó által hozzárendelt felügyelt identitások konfigurálásához egy Azure-beli virtuális gépen a CURL használatával REST API-hívások létrehozásához.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f975595e935a5c0254450168aa295e6e7366a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19568cc62230c2f05efac789032dec7f444ff338
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244159"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693719"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépeken lévő Azure-erőforrásokhoz REST API hívások használatával
 
@@ -35,11 +35,11 @@ Ebből a cikkből megtudhatja, hogyan hajthatja végre a következő felügyelt 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Ha nem ismeri az Azure-erőforrások felügyelt identitásait, tekintse meg az [Áttekintés szakaszt](overview.md). **Mindenképpen tekintse át a [rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitás közötti különbséget](overview.md#managed-identity-types)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ha Windows rendszert használ, telepítse a [Linux Windows alrendszerét](https://msdn.microsoft.com/commandline/wsl/about) , vagy használja a Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) .
 - [Telepítse az Azure CLI helyi konzolját](/cli/azure/install-azure-cli), ha a [Windows alrendszert](https://msdn.microsoft.com/commandline/wsl/about) használja a Linux vagy Linux rendszerű [terjesztési operációs rendszeren](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
-- Ha az Azure CLI helyi konzolt használja, jelentkezzen be az Azure- `az login` ba egy olyan fiókkal, amely a rendszer vagy a felhasználó által hozzárendelt felügyelt identitások kezeléséhez használni kívánt Azure-előfizetéshez van társítva.
+- Ha az Azure CLI helyi konzolt használja, jelentkezzen be az Azure-ba `az login` egy olyan fiókkal, amely a rendszer vagy a felhasználó által hozzárendelt felügyelt identitások kezeléséhez használni kívánt Azure-előfizetéshez van társítva.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -69,7 +69,7 @@ Ha olyan Azure virtuális gépet szeretne létrehozni, amelyen engedélyezve van
    az account get-access-token
    ``` 
 
-4. Hozzon létre egy virtuális gépet a CURL használatával a Azure Resource Manager REST-végpont meghívásához. Az alábbi példa egy *myVM* nevű virtuális gépet hoz létre egy rendszerhez rendelt felügyelt identitással, amelyet a kérelem törzse az `"identity":{"type":"SystemAssigned"}`érték alapján azonosított. Cserélje `<ACCESS TOKEN>` le az elemet az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
+4. Hozzon létre egy virtuális gépet a CURL használatával a Azure Resource Manager REST-végpont meghívásához. Az alábbi példa egy *myVM* nevű virtuális gépet hoz létre egy rendszerhez rendelt felügyelt identitással, amelyet a kérelem törzse az érték alapján azonosított `"identity":{"type":"SystemAssigned"}` . Cserélje le az elemet az `<ACCESS TOKEN>` előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -156,10 +156,10 @@ Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárende
    az account get-access-token
    ```
 
-2. A következő CURL-paranccsal hívhatja meg a Azure Resource Manager REST-végpontot, hogy engedélyezze a rendszerhez rendelt felügyelt identitást a virtuális gépen a `{"identity":{"type":"SystemAssigned"}` *myVM*nevű virtuális gép értéke alapján.  Cserélje `<ACCESS TOKEN>` le az elemet az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
+2. A következő CURL-paranccsal hívhatja meg a Azure Resource Manager REST-végpontot, hogy engedélyezze a rendszerhez rendelt felügyelt identitást a virtuális gépen a `{"identity":{"type":"SystemAssigned"}` *myVM*nevű virtuális gép értéke alapján.  Cserélje le az elemet az `<ACCESS TOKEN>` előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
    
    > [!IMPORTANT]
-   > Annak biztosítása érdekében, hogy ne törölje a virtuális géphez hozzárendelt meglévő, felhasználóhoz rendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a felhasználó által hozzárendelt `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`felügyelt identitásokat:. Ha a válaszban szereplő `identity` értékben azonosított, felhasználó által hozzárendelt felügyelt identitások vannak hozzárendelve a virtuális géphez, ugorjon a 3. lépésre, amely bemutatja, hogyan őrzi meg a felhasználó által hozzárendelt felügyelt identitásokat, miközben engedélyezheti a rendszerhez rendelt felügyelt identitást a virtuális gépen.
+   > Annak biztosítása érdekében, hogy ne törölje a virtuális géphez hozzárendelt meglévő, felhasználóhoz rendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a felhasználó által hozzárendelt felügyelt identitásokat: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Ha a válaszban szereplő értékben azonosított, felhasználó által hozzárendelt felügyelt identitások vannak hozzárendelve a virtuális géphez `identity` , ugorjon a 3. lépésre, amely bemutatja, hogyan őrzi meg a felhasználó által hozzárendelt felügyelt identitásokat, miközben engedélyezheti a rendszerhez rendelt felügyelt identitást a virtuális gépen.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -185,11 +185,11 @@ Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárende
     }
    ```
 
-3. Ha a rendszer által hozzárendelt felügyelt identitást olyan virtuális gépen szeretné engedélyezni, amelyen már van felhasználó által hozzárendelt `SystemAssigned` felügyelt `type` identitás, hozzá kell adnia az értéket.  
+3. Ha a rendszer által hozzárendelt felügyelt identitást olyan virtuális gépen szeretné engedélyezni, amelyen már van felhasználó által hozzárendelt felügyelt identitás, hozzá kell adnia `SystemAssigned` az `type` értéket.  
    
-   Ha például a virtuális gépen a felhasználó által hozzárendelt felügyelt identitások `ID1` vannak `ID2` társítva, és hozzá van rendelve a virtuális géphez, akkor a következő curl-hívást kell használnia. Cserélje `<ACCESS TOKEN>` le `<SUBSCRIPTION ID>` a és a értéket a környezetének megfelelő értékekre.
+   Ha például a virtuális gépen a felhasználó által hozzárendelt felügyelt identitások `ID1` vannak `ID2` társítva, és hozzá van rendelve a virtuális géphez, akkor a következő curl-hívást kell használnia. Cserélje le a `<ACCESS TOKEN>` és `<SUBSCRIPTION ID>` a értéket a környezetének megfelelő értékekre.
 
-   Az API `2018-06-01` -verzió a felhasználó által hozzárendelt felügyelt `userAssignedIdentities` identitásokat a szótár formátumában tárolja az ÉRTÉKben `identityIds` , az API-verzióban `2017-12-01`használt tömb formátuma helyett.
+   Az API-verzió a `2018-06-01` felhasználó által hozzárendelt felügyelt identitásokat a `userAssignedIdentities` szótár formátumában tárolja az értékben, az `identityIds` API-verzióban használt tömb formátuma helyett `2017-12-01` .
    
    **API-VERZIÓ 2018-06-01**
 
@@ -266,10 +266,10 @@ Ha le szeretné tiltani a rendszerhez rendelt felügyelt identitást egy virtuá
    az account get-access-token
    ```
 
-2. Frissítse a virtuális gépet a CURL használatával, hogy meghívja a Azure Resource Manager REST-végpontot a rendszer által hozzárendelt felügyelt identitás letiltásához.  A következő példa letiltja a rendszer által hozzárendelt felügyelt identitást a *myVM*nevű virtuális gép `{"identity":{"type":"None"}}` értéke alapján a kérelem törzsében azonosított módon.  Cserélje `<ACCESS TOKEN>` le az elemet az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
+2. Frissítse a virtuális gépet a CURL használatával, hogy meghívja a Azure Resource Manager REST-végpontot a rendszer által hozzárendelt felügyelt identitás letiltásához.  A következő példa letiltja a rendszer által hozzárendelt felügyelt identitást a `{"identity":{"type":"None"}}` *myVM*nevű virtuális gép értéke alapján a kérelem törzsében azonosított módon.  Cserélje le az elemet az `<ACCESS TOKEN>` előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
 
    > [!IMPORTANT]
-   > Annak biztosítása érdekében, hogy ne törölje a virtuális géphez hozzárendelt meglévő, felhasználóhoz rendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a felhasználó által hozzárendelt `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`felügyelt identitásokat:. Ha a válaszban szereplő `identity` értékben azonosított, felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik, ugorjon a 3. lépésre, amely bemutatja, hogyan őrizze meg a felhasználó által hozzárendelt felügyelt identitásokat, miközben letiltja a rendszerhez rendelt felügyelt identitást a virtuális gépen.
+   > Annak biztosítása érdekében, hogy ne törölje a virtuális géphez hozzárendelt meglévő, felhasználóhoz rendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a felhasználó által hozzárendelt felügyelt identitásokat: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Ha a válaszban szereplő értékben azonosított, felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik `identity` , ugorjon a 3. lépésre, amely bemutatja, hogyan őrizze meg a felhasználó által hozzárendelt felügyelt identitásokat, miközben letiltja a rendszerhez rendelt felügyelt identitást a virtuális gépen.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -295,7 +295,7 @@ Ha le szeretné tiltani a rendszerhez rendelt felügyelt identitást egy virtuá
     }
    ```
 
-   Ha a rendszer által hozzárendelt felügyelt identitást egy olyan virtuális gépről szeretné eltávolítani, amely felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik, távolítsa `SystemAssigned` el az értéket az `{"identity":{"type:" "}}` érték és a `UserAssigned` `userAssignedIdentities` szótár értékének megtartásával, ha az **API 2018-06-01**-es verzióját használja. Ha a 2017-12-01-es vagy korábbi **API-verziót** használja, `identityIds` tartsa meg a tömböt.
+   Ha a rendszer által hozzárendelt felügyelt identitást egy olyan virtuális gépről szeretné eltávolítani, amely felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik, távolítsa el `SystemAssigned` az értéket az érték `{"identity":{"type:" "}}` `UserAssigned` és a szótár értékének megtartásával, `userAssignedIdentities` Ha az **API 2018-06-01**-es verzióját használja. Ha a 2017-12-01-es vagy korábbi **API-verziót** használja, tartsa meg a `identityIds` tömböt.
 
 ## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
@@ -325,7 +325,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 4. Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az itt található utasítások segítségével: [hozzon létre egy felhasználó által hozzárendelt felügyelt identitást](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Hozzon létre egy virtuális gépet a CURL használatával a Azure Resource Manager REST-végpont meghívásához. A következő példa egy *myVM* nevű virtuális gépet hoz létre az erőforráscsoport *myResourceGroup* egy felhasználó által hozzárendelt felügyelt `ID1`identitással, a kérelem törzsében az érték `"identity":{"type":"UserAssigned"}`szerint azonosítva. Cserélje `<ACCESS TOKEN>` le az elemet az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
+5. Hozzon létre egy virtuális gépet a CURL használatával a Azure Resource Manager REST-végpont meghívásához. A következő példa egy *myVM* nevű virtuális gépet hoz létre az erőforráscsoport *myResourceGroup* egy felhasználó által hozzárendelt felügyelt identitással `ID1` , a kérelem törzsében az érték szerint azonosítva `"identity":{"type":"UserAssigned"}` . Cserélje le az elemet az `<ACCESS TOKEN>` előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
  
    **API-VERZIÓ 2018-06-01**
 
@@ -500,7 +500,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 2.  Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az itt található utasítások alapján, [hozzon létre egy felhasználó által hozzárendelt felügyelt identitást](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-3. Annak biztosítása érdekében, hogy ne törölje a virtuális géphez hozzárendelt meglévő felhasználó vagy rendszer által hozzárendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a virtuális géphez rendelt identitási típusokat. Ha felügyelt identitások vannak hozzárendelve a virtuálisgép-méretezési csoporthoz, azok az `identity` érték alatt vannak felsorolva.
+3. Annak biztosítása érdekében, hogy ne törölje a virtuális géphez hozzárendelt meglévő felhasználó vagy rendszer által hozzárendelt felügyelt identitásokat, a következő CURL-parancs használatával fel kell sorolnia a virtuális géphez rendelt identitási típusokat. Ha felügyelt identitások vannak hozzárendelve a virtuálisgép-méretezési csoporthoz, azok az érték alatt vannak felsorolva `identity` .
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -515,11 +515,11 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
    |---------|---------|
    |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.
 
-    Ha a virtuális géphez a válaszban megadott módon azonosított `identity` felhasználó-vagy rendszerszintű felügyelt identitásokkal rendelkezik, ugorjon az 5. lépésre, amely bemutatja, hogyan őrizze meg a rendszer által hozzárendelt felügyelt identitást, miközben hozzáad egy felhasználóhoz rendelt felügyelt identitást a virtuális géphez.
+    Ha a virtuális géphez a válaszban megadott módon azonosított felhasználó-vagy rendszerszintű felügyelt identitásokkal rendelkezik `identity` , ugorjon az 5. lépésre, amely bemutatja, hogyan őrizze meg a rendszer által hozzárendelt felügyelt identitást, miközben hozzáad egy felhasználóhoz rendelt felügyelt identitást a virtuális géphez.
 
 4. Ha nem rendelkezik a virtuális géphez hozzárendelt, felhasználóhoz rendelt felügyelt identitásokkal, a következő CURL-paranccsal hívja meg az Azure Resource Manager REST-végpontot, hogy az első felhasználóhoz rendelt felügyelt identitást hozzárendelje a virtuális géphez.
 
-   Az alábbi példák egy felhasználó által hozzárendelt felügyelt identitást `ID1` rendelnek hozzá egy *myVM* nevű virtuális géphez az erőforráscsoport *myResourceGroup*.  Cserélje `<ACCESS TOKEN>` le az elemet az előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
+   A következő példa egy felhasználó által hozzárendelt felügyelt identitást rendel hozzá `ID1` egy *myVM* nevű virtuális géphez az erőforráscsoport *myResourceGroup*.  Cserélje le az elemet az `<ACCESS TOKEN>` előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
 
    **API-VERZIÓ 2018-06-01**
 
@@ -586,9 +586,9 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
    
    **API-VERZIÓ 2018-06-01**
 
-   Adja hozzá a felhasználó által hozzárendelt felügyelt `userAssignedIdentities` identitást a szótár értékéhez.
+   Adja hozzá a felhasználó által hozzárendelt felügyelt identitást a `userAssignedIdentities` szótár értékéhez.
     
-   Ha például a rendszer által hozzárendelt felügyelt identitással rendelkezik, és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuális géphez van rendelve, és hozzá szeretné adni a `ID2` felhasználó által hozzárendelt felügyelt identitást:
+   Ha például a rendszer által hozzárendelt felügyelt identitással rendelkezik, és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuális géphez van rendelve, és hozzá szeretné adni a felhasználó által hozzárendelt felügyelt identitást `ID2` :
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -625,9 +625,9 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
    **API-VERZIÓ 2017-12-01**
 
-   Őrizze meg a felhasználó által hozzárendelt felügyelt identitásokat, amelyeket meg szeretne `identityIds` őrizni a tömb értékében az új felhasználó által hozzárendelt felügyelt identitás hozzáadásakor.
+   Őrizze meg a felhasználó által hozzárendelt felügyelt identitásokat, amelyeket meg szeretne őrizni a `identityIds` tömb értékében az új felhasználó által hozzárendelt felügyelt identitás hozzáadásakor.
 
-   Ha például a rendszer által hozzárendelt felügyelt identitással rendelkezik, és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuális géphez van rendelve, és hozzá szeretné adni a `ID2` felhasználó által hozzárendelt felügyelt identitást: 
+   Ha például a rendszer által hozzárendelt felügyelt identitással rendelkezik, és a felhasználó által hozzárendelt felügyelt identitás `ID1` jelenleg a virtuális géphez van rendelve, és hozzá szeretné adni a felhasználó által hozzárendelt felügyelt identitást `ID2` : 
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -685,13 +685,13 @@ A felhasználó által hozzárendelt identitás egy virtuális géphez való elt
    |*Content-Type*     | Kötelező. Állítsa `application/json` értékre.        |
    |*Engedély*     | Kötelező. Érvényes `Bearer` hozzáférési jogkivonatra van beállítva.
  
-   Ha felügyelt identitások vannak hozzárendelve a virtuális géphez, azok szerepelnek az `identity` érték válaszában.
+   Ha felügyelt identitások vannak hozzárendelve a virtuális géphez, azok szerepelnek az érték válaszában `identity` .
 
-   Ha például a felhasználó által hozzárendelt felügyelt identitásokkal `ID1` rendelkezik, `ID2` és hozzá van rendelve a virtuális géphez, és csak a `ID1` hozzárendelt és a rendszer által hozzárendelt identitást szeretné megőrizni:
+   Ha például a felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik `ID1` `ID2` , és hozzá van rendelve a virtuális géphez, és csak a `ID1` hozzárendelt és a rendszer által hozzárendelt identitást szeretné megőrizni:
    
    **API-VERZIÓ 2018-06-01**
 
-   Adja `null` hozzá az eltávolítani kívánt felhasználóhoz rendelt felügyelt identitást:
+   Adja hozzá `null` az eltávolítani kívánt felhasználóhoz rendelt felügyelt identitást:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -723,7 +723,7 @@ A felhasználó által hozzárendelt identitás egy virtuális géphez való elt
 
    **API-VERZIÓ 2017-12-01**
 
-   Csak azokat a felhasználó által hozzárendelt felügyelt identitásokat őrizze meg, amelyeket meg szeretne őrizni `identityIds` a tömbben:
+   Csak azokat a felhasználó által hozzárendelt felügyelt identitásokat őrizze meg, amelyeket meg szeretne őrizni a `identityIds` tömbben:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"

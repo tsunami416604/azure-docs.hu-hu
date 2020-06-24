@@ -2,13 +2,13 @@
 title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: ed51361ca4d605487a5d273505df21780003bdbb
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.date: 06/08/2020
+ms.openlocfilehash: c4184628739b6c47b35263fe99285b05b9e0a190
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140480"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769727"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
@@ -19,8 +19,8 @@ Ez a cikk a VMware virtuális gépek [Azure Migrate: kiszolgáló áttelepítés
 
 A VMware virtuális gépeket több módon is áttelepítheti:
 
-- Ügynök nélküli Migrálás esetén: a virtuális gépek áttelepítése anélkül, hogy bármit telepíteni kellene. Az ügynök nélküli Migrálás [Azure Migrate berendezését](migrate-appliance.md) telepíti.
-- Ügynök-alapú áttelepítés esetén: telepítsen egy ügynököt a virtuális gépre a replikáláshoz. Az ügynök-alapú áttelepítés esetében telepítenie kell egy [replikációs berendezést](migrate-replication-appliance.md).
+- **Ügynök nélküli áttelepítés használata**: a virtuális gépek áttelepítése anélkül, hogy bármit telepíteni kellene. Az ügynök nélküli Migrálás [Azure Migrate berendezését](migrate-appliance.md) telepíti.
+- **Ügynök alapú áttelepítés használata**: telepítsen egy ügynököt a virtuális gépre a replikáláshoz. Az ügynök-alapú áttelepítés esetében egy [replikációs berendezést](migrate-replication-appliance.md)kell üzembe helyezni.
 
 Tekintse át [ezt a cikket](server-migrate-overview.md) , hogy kiderítse, melyik módszert szeretné használni.
 
@@ -29,22 +29,31 @@ Tekintse át [ezt a cikket](server-migrate-overview.md) , hogy kiderítse, melyi
 - Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha több gépet szeretne áttelepíteni, a replikálást a 10 csoportba.
 - A VMware ügynök nélküli Migrálás esetében akár 300 replikálást is futtathat egyszerre.
 
-## <a name="agentless-vmware-servers"></a>Ügynök nélkül – VMware-kiszolgálók
+## <a name="agentless-migration"></a>Ügynök nélküli áttelepítés 
+
+Ez a szakasz az ügynök nélküli áttelepítés követelményeit foglalja össze.
+
+### <a name="vmware-requirements-agentless"></a>VMware-követelmények (ügynök nélküli)
+
+A táblázat összefoglalja a VMware hypervisor követelményeit.
 
 **VMware** | **Részletek**
 --- | ---
 **VMware vCenter Server** | 5,5, 6,0, 6,5 vagy 6,7.
 **VMware vSphere ESXI-gazdagép** | 5,5, 6,0, 6,5 vagy 6,7.
-**engedélyek vCenter Server** | Az ügynök nélküli áttelepítés az áttelepítési [készüléket](migrate-appliance.md)használja. A készüléknek ezekre az engedélyekre van szüksége:<br/><br/> - **Adattár. Tallózás**: engedélyezi a virtuális gépek naplófájljainak böngészését a pillanatképek létrehozásával és törlésével kapcsolatos hibák megoldásához.<br/><br/> - **Adattár. LowLevelFileOperations**: olvasási/írási/törlési/átnevezési műveletek engedélyezése az adattár böngészőben a pillanatképek létrehozásához és törléséhez.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: engedélyezheti vagy letilthatja a virtuálisgép-lemezek módosításának nyomon követését, így a pillanatképek között megváltoztathatja az adatblokkokat.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: a virtuális gép lemezes bérletének engedélyezése a lemez olvasásához a VMware vSphere Virtual Disk Development Kit (VDDK) használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowDiskAccess**: (kifejezetten a vSphere 6,0-es és újabb verziók esetében) lehetővé teszi, hogy a virtuális gépen lévő lemez megnyitásával véletlenszerű olvasási hozzáférés legyen a LEMEZEN a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowReadOnlyDiskAccess**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowDiskRandomAccess**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowVirtualMachineDownload**: engedélyezi az olvasási műveleteket a virtuális géphez társított fájlokon, letölti a naplókat, és hiba esetén hibaelhárítást végez.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: lehetővé teszi a virtuális gépek pillanatképek létrehozását és kezelését a replikáláshoz.<br/><br/> - **Virtuális gép. interakció.** kikapcsolás: lehetővé teszi, hogy a virtuális gép ki legyen kapcsolva az Azure-ba való Migrálás során.
+**engedélyek vCenter Server** | Az ügynök nélküli áttelepítés az áttelepítési [készüléket](migrate-appliance.md)használja. A készüléknek az alábbi engedélyekkel kell rendelkeznie vCenter Serverban:<br/><br/> - **Adattár. Tallózás**: engedélyezi a virtuális gépek naplófájljainak böngészését a pillanatképek létrehozásával és törlésével kapcsolatos hibák megoldásához.<br/><br/> - **Adattár. LowLevelFileOperations**: olvasási/írási/törlési/átnevezési műveletek engedélyezése az adattár böngészőben a pillanatképek létrehozásához és törléséhez.<br/><br/> - **VirtualMachine.Configszülő. DiskChangeTracking**: engedélyezheti vagy letilthatja a virtuálisgép-lemezek módosításának nyomon követését, így a pillanatképek között megváltoztathatja az adatblokkokat.<br/><br/> - **VirtualMachine.Configszülő. DiskLease**: engedélyezze a lemez címbérleti műveleteit a virtuális gépek számára a VMware vSphere Virtual Disk Development Kit (VDDK) használatával történő olvasáshoz.<br/><br/> - **VirtualMachine. kiépítés. AllowDiskAccess**: (kifejezetten a vSphere 6,0-es és újabb verziók esetében) lehetővé teszi, hogy a virtuális gépen lévő lemez megnyitásával véletlenszerű olvasási hozzáférés legyen a LEMEZEN a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowReadOnlyDiskAccess**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowDiskRandomAccess**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. AllowVirtualMachineDownload**: engedélyezi az olvasási műveleteket a virtuális géphez társított fájlokon, letölti a naplókat, és hiba esetén hibaelhárítást végez.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: lehetővé teszi a virtuális gépek pillanatképek létrehozását és kezelését a replikáláshoz.<br/><br/> - **Virtuális gép. interakció.** kikapcsolás: lehetővé teszi, hogy a virtuális gép ki legyen kapcsolva az Azure-ba való Migrálás során.
 
 
 
-## <a name="agentless-vmware-vms"></a>Ügynök nélkül – VMware virtuális gépek
+### <a name="vm-requirements-agentless"></a>VIRTUÁLIS gépekre vonatkozó követelmények (ügynök nélküli)
+
+A táblázat összefoglalja a VMware virtuális gépek ügynök nélküli áttelepítési követelményeit.
 
 **Támogatás** | **Részletek**
 --- | ---
-**Támogatott operációs rendszerek** | Az Azure által támogatott Windows-és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) - [alapú](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) operációs rendszerek az ügynök nélküli Migrálás használatával telepíthetők át.
-**Az Azure szükséges módosításai** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek. A Azure Migrate a következő operációs rendszerek esetében automatikusan végrehajtja ezeket a módosításokat:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> Más operációs rendszerek esetében manuálisan kell elvégezni a módosításokat az áttelepítés előtt. A kapcsolódó cikkek erre vonatkozó utasításokat tartalmaznak.
+**Támogatott operációs rendszerek** | Áttelepítheti az Azure által támogatott [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -operációs rendszereket.
+**Windows rendszerű virtuális gépek az Azure-ban** | Előfordulhat, hogy a Migrálás előtt [módosításokat kell végeznie](prepare-for-migration.md#verify-required-changes-before-migrating) a virtuális gépeken. 
+**Linux rendszerű virtuális gépek az Azure-ban** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek.<br/><br/> A Linux rendszerben a Azure Migrate automatikusan végrehajtja a módosításokat a következő operációs rendszereken:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8. Más operációs rendszerekhez manuálisan végezze el a [szükséges módosításokat](prepare-for-migration.md#verify-required-changes-before-migrating) .
 **Linux rendszerű rendszerindítás** | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie.
 **UEFI-rendszerindítás** | Az UEFI-rendszerindítással rendelkező virtuális gépek migrálása nem támogatott.
 **Lemezméret** | 2 TB operációsrendszer-lemez; 8 TB adatlemezek esetében.
@@ -63,7 +72,7 @@ Tekintse át [ezt a cikket](server-migrate-overview.md) , hogy kiderítse, melyi
 **Egyidejű replikáció** | 300 virtuális gépek száma vCenter Server. Ha többre van szüksége, a 300-es kötegekben telepítse át őket.
 
 
-## <a name="agentless-azure-migrate-appliance"></a>Ügynök nélküli – Azure Migrate berendezés 
+### <a name="appliance-requirements-agentless"></a>Berendezésre vonatkozó követelmények (ügynök nélküli)
 
 Az ügynök nélküli áttelepítés a [Azure Migrate készüléket](migrate-appliance.md)használja. A készüléket VMWare virtuális gépként is telepítheti egy PETESEJT-sablonnal, amely a vCenter Serverba lett importálva, vagy egy [PowerShell-parancsfájl](deploy-appliance-script.md)használatával.
 
@@ -71,7 +80,7 @@ Az ügynök nélküli áttelepítés a [Azure Migrate készüléket](migrate-app
 - Ismerje meg azokat az URL-címeket, amelyekhez a készüléknek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell hozzáférnie.
 - Azure Government a készüléket [a szkript használatával](deploy-appliance-script-government.md)kell telepítenie.
 
-## <a name="agentless-ports"></a>Ügynök nélkül – portok
+### <a name="port-requirements-agentless"></a>Portra vonatkozó követelmények (ügynök nélküli)
 
 **Eszköz** | **Kapcsolat**
 --- | ---
@@ -79,8 +88,14 @@ Berendezés | Az 443-as porton kimenő kapcsolatok a replikált adatok az Azure-
 vCenter-kiszolgáló | Bejövő kapcsolatok a 443-as porton, hogy a készülék koordinálja a replikációt – pillanatképek létrehozása, Adatmásolás, kiadási Pillanatképek
 vSphere/ESXI-gazdagép | Bejövő a 902-es TCP-porton, hogy a készülék Pillanatképek adatait replikálja.
 
+## <a name="agent-based-migration"></a>Ügynök alapú áttelepítés 
 
-## <a name="agent-based-vmware-servers"></a>Ügynök-alapú – VMware-kiszolgálók
+
+Ez a szakasz az ügynök alapú áttelepítés követelményeit foglalja össze.
+
+
+### <a name="vmware-requirements-agent-based"></a>VMware-követelmények (ügynök-alapú)
+
 Ez a táblázat összefoglalja a VMware virtualizációs kiszolgálók értékelésének támogatását és korlátozásait.
 
 **VMware-követelmények** | **Részletek**
@@ -89,7 +104,7 @@ Ez a táblázat összefoglalja a VMware virtualizációs kiszolgálók értékel
 **VMware vSphere ESXI-gazdagép** | 5,5, 6,0, 6,5 vagy 6,7.
 **engedélyek vCenter Server** | Írásvédett fiók a vCenter Serverhoz.
 
-## <a name="agent-based-vmware-vms"></a>Ügynök-alapú – VMware virtuális gépek
+### <a name="vm-requirements-agent-based"></a>VIRTUÁLIS gépekre vonatkozó követelmények (ügynök-alapú)
 
 A táblázat összefoglalja a VMware VM-támogatást az áttelepíteni kívánt VMware virtuális gépekhez az ügynök-alapú áttelepítés használatával.
 
@@ -119,7 +134,7 @@ A táblázat összefoglalja a VMware VM-támogatást az áttelepíteni kívánt 
 
 
 
-## <a name="agent-based-replication-appliance"></a>Ügynök-alapú replikációs berendezés 
+### <a name="appliance-requirements-agent-based"></a>Berendezésre vonatkozó követelmények (ügynök-alapú)
 
 Amikor beállítja a replikációs berendezést az Azure Migrate központban megadott petesejtek sablonnal, a készülék futtatja a Windows Server 2016-et, és megfelel a támogatási követelményeknek. Ha a replikációs készüléket manuálisan állítja be egy fizikai kiszolgálón, akkor ellenőrizze, hogy az megfelel-e a követelményeknek.
 
@@ -128,7 +143,7 @@ Amikor beállítja a replikációs berendezést az Azure Migrate központban meg
 - Ismerje meg azokat az URL-címeket, amelyekhez a replikációs berendezésnek [nyilvános](migrate-replication-appliance.md#url-access) és [kormányzati](migrate-replication-appliance.md#azure-government-url-access) felhőkben kell hozzáférnie.
 - Tekintse át azokat a [portokat](migrate-replication-appliance.md#port-access) , amelyeket a replikációs berendezésnek el kell érnie.
 
-## <a name="agent-based-ports"></a>Ügynök-alapú portok
+### <a name="port-requirements-agent-based"></a>Portra vonatkozó követelmények (ügynök-alapú)
 
 **Eszköz** | **Kapcsolat**
 --- | ---
@@ -138,25 +153,25 @@ Folyamatkiszolgáló | A Process Server replikációs adatokat fogad, optimaliz�
 
 ## <a name="azure-vm-requirements"></a>Azure virtuálisgép-követelmények
 
-Az Azure-ba replikált összes helyszíni virtuális gépnek meg kell felelnie az ebben a táblázatban összefoglalt Azure-beli virtuálisgép-követelményeknek. Ha Site Recovery futtatja az előfeltétel-ellenőrzés replikálását, akkor az ellenőrzés sikertelen lesz, ha egyes követelmények nem teljesülnek.
+Az Azure-ba replikált összes helyszíni virtuális gép ügynök nélküli vagy ügynök-alapú áttelepítéssel kell, hogy megfeleljen az ebben a táblázatban összefoglalt Azure-beli virtuális gépekre vonatkozó követelményeknek. 
 
-**Összetevő** | **Követelmények** | **Részletek**
+**Összetevő** | **Követelmények** 
 --- | --- | ---
-Vendég operációs rendszer | Ellenőrzi a VMware virtuális gépek támogatott operációs rendszereinek áttelepítését.<br/> A támogatott operációs rendszereken futó munkaterhelések áttelepíthetők. | Az ellenőrzés sikertelen, ha nem támogatott.
-Vendég operációs rendszer architektúrája | 64 bites. | Az ellenőrzés sikertelen, ha nem támogatott.
-Operációsrendszer-lemez mérete | Akár 2 048 GB-ig. | Az ellenőrzés sikertelen, ha nem támogatott.
-Operációsrendszer-lemezek száma | 1 | Az ellenőrzés sikertelen, ha nem támogatott.
-Adatlemezek száma | 64 vagy kevesebb. | Az ellenőrzés sikertelen, ha nem támogatott.
-Adatlemez mérete | Legfeljebb 4 095 GB | Az ellenőrzés sikertelen, ha nem támogatott.
-Hálózati adapterek | Több adapter is támogatott. |
-Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
-FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
-BitLocker | Nem támogatott. | A számítógép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
-a virtuális gép neve | 1 – 63 karakter.<br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevének betűvel vagy számmal kell kezdődnie és végződnie. |  Frissítse az értéket a Site Recovery számítógép tulajdonságai között.
-Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszerű Azure-beli virtuális gépekhez a Migrálás után:<br/> – Az áttelepítés előtt engedélyezi az RDP-t a helyszíni virtuális gépen. Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.<br/> A helyek közötti VPN-hozzáféréshez engedélyezze az RDP-t, és engedélyezze az RDP használatát a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartomány és a magánhálózatok** számára. Továbbá győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](prepare-for-migration.md). |
-Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van. Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez. |  
+Vendég operációs rendszer | Ellenőrzi a VMware virtuális gépek támogatott operációs rendszereinek áttelepítését.<br/> A támogatott operációs rendszereken futó munkaterhelések áttelepíthetők. 
+Vendég operációs rendszer architektúrája | 64 bites. 
+Operációsrendszer-lemez mérete | Akár 2 048 GB-ig. 
+Operációsrendszer-lemezek száma | 1 
+Adatlemezek száma | 64 vagy kevesebb. 
+Adatlemez mérete | Legfeljebb 4 095 GB 
+Hálózati adapterek | Több adapter is támogatott.
+Megosztott VHD | Nem támogatott. 
+FC-lemez | Nem támogatott. 
+BitLocker | Nem támogatott.<br/><br/> A számítógép migrálása előtt le kell tiltani a BitLockert.
+a virtuális gép neve | 1 – 63 karakter.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevének betűvel vagy számmal kell kezdődnie és végződnie. 
+Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszerű Azure-beli virtuális gépekhez a Migrálás után:<br/><br/> – Az áttelepítés előtt engedélyezze az RDP-t a helyszíni virtuális gépen.<br/><br/> Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.<br/><br/> A helyek közötti VPN-hozzáféréshez engedélyezze az RDP-t, és engedélyezze az RDP használatát a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartomány és a magánhálózatok** számára.<br/><br/> Továbbá győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](prepare-for-migration.md).
+Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/><br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/><br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van.<br/><br/> Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Válassza ki](server-migrate-overview.md) a VMware áttelepítési lehetőséget.

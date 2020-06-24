@@ -3,25 +3,25 @@ title: Közzétett alkalmazások egyéni kezdőlapja – Azure AD Application Pr
 description: Az Azure AD Application Proxy-összekötők alapjait ismerteti
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1621b273f617955a374ed46d9c215ba99e5b2913
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e7e3a6666d467045b733b5401476fd83c93be19
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275597"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764876"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Egyéni Kezdőlap beállítása a közzétett alkalmazásokhoz az Azure AD Application Proxy használatával
 
@@ -32,9 +32,9 @@ Amikor egy felhasználó elindítja az alkalmazást, a rendszer alapértelmezés
 Íme egy forgatókönyv, amely leírja, hogy a vállalat miért állította be az egyéni kezdőlapot:
 
 - A vállalati hálózaton belül a felhasználók `https://ExpenseApp/login/login.aspx` bejelentkezhetnek, és hozzáférhetnek az alkalmazáshoz.
-- Mivel más eszközökkel (például képekkel) rendelkeznek, amelyeket az alkalmazásproxy a mappa struktúrájának legfelső szintjén kell elérnie, az alkalmazást `https://ExpenseApp` a belső URL-címként teheti közzé.
-- Az alapértelmezett külső URL- `https://ExpenseApp-contoso.msappproxy.net`cím:, amely nem végez külső felhasználót a bejelentkezési oldalon.
-- Ehelyett a Kezdőlap URL `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` -címét szeretné beállítani, így a külső felhasználók először a bejelentkezési oldalt láthatják.
+- Mivel más eszközökkel (például képekkel) rendelkeznek, amelyeket az alkalmazásproxy a mappa struktúrájának legfelső szintjén kell elérnie, az alkalmazást a `https://ExpenseApp` belső URL-címként teheti közzé.
+- Az alapértelmezett külső URL-cím `https://ExpenseApp-contoso.msappproxy.net` :, amely nem végez külső felhasználót a bejelentkezési oldalon.
+- `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`Ehelyett a Kezdőlap URL-címét szeretné beállítani, így a külső felhasználók először a bejelentkezési oldalt láthatják.
 
 > [!NOTE]
 > Amikor hozzáférést ad a felhasználóknak a közzétett alkalmazásokhoz, az alkalmazások megjelennek az [Azure ad hozzáférési paneljén](../user-help/my-apps-portal-end-user-access.md) és az [Office 365 app launcherben](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
@@ -45,7 +45,7 @@ A Kezdőlap URL-címének beállítása előtt vegye figyelembe a következő k�
 
 - A megadott elérési útnak a gyökértartomány URL-címéhez tartozó altartomány elérési útnak kell lennie.
 
-  Ha például a gyökér-tartomány URL-címe `https://apps.contoso.com/app1/`, a konfigurált Kezdőlap URL-címének a következővel kell `https://apps.contoso.com/app1/`kezdődnie:.
+  Ha például a gyökér-tartomány URL-címe `https://apps.contoso.com/app1/` , a konfigurált Kezdőlap URL-címének a következővel kell kezdődnie: `https://apps.contoso.com/app1/` .
 
 - Ha módosítja a közzétett alkalmazást, a módosítás a Kezdőlap URL-címének értékét is visszaállíthatja. Ha a jövőben frissíti az alkalmazást, újra kell ellenőriznie, és szükség esetén frissítenie kell a Kezdőlap URL-címét.
 
@@ -105,7 +105,7 @@ Az alkalmazás ObjectId úgy érheti el, hogy a megjelenített név vagy a Kezd�
    Connect-AzureAD
    ```
 
-1. Keresse meg az alkalmazást. Ez a példa a PowerShell használatával keresi meg a ObjectId az alkalmazás megjelenített névvel való keresésével `SharePoint`.
+1. Keresse meg az alkalmazást. Ez a példa a PowerShell használatával keresi meg a ObjectId az alkalmazás megjelenített névvel való keresésével `SharePoint` .
 
    ```powershell
    Get-AzureADApplication | Where-Object { $_.DisplayName -eq "SharePoint" } | Format-List DisplayName, Homepage, ObjectId
@@ -127,7 +127,7 @@ Az alkalmazás ObjectId úgy érheti el, hogy a megjelenített név vagy a Kezd�
 
 ### <a name="update-the-home-page-url"></a>A Kezdőlap URL-címének frissítése
 
-Hozza létre a Kezdőlap URL-címét, és frissítse az alkalmazást az adott értékkel. Folytassa ugyanazt a PowerShell-ablakot, vagy ha új PowerShell-ablakot használ, jelentkezzen be ismét az Azure AD-modulba a `Connect-AzureAD`használatával. Ez után kövesse az alábbi lépéseket:
+Hozza létre a Kezdőlap URL-címét, és frissítse az alkalmazást az adott értékkel. Folytassa ugyanazt a PowerShell-ablakot, vagy ha új PowerShell-ablakot használ, jelentkezzen be ismét az Azure AD-modulba a használatával `Connect-AzureAD` . Ez után kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy változót, amely az előző szakaszban másolt ObjectId értéket fogja tárolni. (Cserélje le az ebben a SharePoint-példában használt ObjectId-értéket az alkalmazás ObjectId értékével.)
 
@@ -147,7 +147,7 @@ Hozza létre a Kezdőlap URL-címét, és frissítse az alkalmazást az adott é
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-1. Állítsa be a Kezdőlap URL-címét a kívánt értékre. Az értéknek a közzétett alkalmazás altartományának elérési útjának kell lennie. Ha például megváltoztatja a Kezdőlap URL-címét a rendszerre `https://sharepoint-iddemo.msappproxy.net/` `https://sharepoint-iddemo.msappproxy.net/hybrid/`, az alkalmazás felhasználói közvetlenül az egyéni kezdőlapra kerülnek.
+1. Állítsa be a Kezdőlap URL-címét a kívánt értékre. Az értéknek a közzétett alkalmazás altartományának elérési útjának kell lennie. Ha például megváltoztatja a Kezdőlap URL-címét a rendszerre `https://sharepoint-iddemo.msappproxy.net/` `https://sharepoint-iddemo.msappproxy.net/hybrid/` , az alkalmazás felhasználói közvetlenül az egyéni kezdőlapra kerülnek.
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"

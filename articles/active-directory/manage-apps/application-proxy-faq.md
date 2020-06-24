@@ -3,24 +3,24 @@ title: Azure AD Application Proxy gyakori kérdések | Microsoft Docs
 description: Megtudhatja, milyen válaszokat kaphat az Azure AD Application Proxy a belső, helyszíni alkalmazások távoli felhasználók számára történő közzétételére vonatkozó gyakori kérdésekre (GYIK).
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 454412bc20fef1a10a51e027b52b6d54df52e6c0
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583082"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764604"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -65,7 +65,7 @@ Nincs ok a következőre:. Minden globális rendszergazda vagy alkalmazás-rends
 A Teljesítményfigyelő-számlálók a-összekötővel együtt települnek. Megtekintheti őket:  
 
 1. Kattintson a **Start**gombra, írja be a "Perfmon" kifejezést, majd nyomja le az ENTER billentyűt.
-2. Válassza a **Teljesítményfigyelő** lehetőséget, majd kattintson **+** a zöld ikonra.
+2. Válassza a **Teljesítményfigyelő** lehetőséget, majd kattintson a zöld **+** ikonra.
 3. Adja hozzá a figyelni kívánt **Microsoft HRE** -alkalmazásproxy összekötő számlálóit.
 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Az Azure AD Application Proxy-összekötőnek ugyanazon az alhálózaton kell lennie, mint az erőforrásnak?
@@ -152,7 +152,7 @@ Nem. Az Azure AD Application Proxy úgy lett kialakítva, hogy az Azure AD-vel m
 
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>A WebSocket-támogatás a QlikSense-től eltérő alkalmazásokhoz is működik?
 
-A WebSocket protokoll támogatása jelenleg még nyilvános előzetes verzióban érhető el, és előfordulhat, hogy más alkalmazásokhoz nem működik. Néhány ügyfél vegyes sikerrel járt a WebSocket protokoll használatával más alkalmazásokkal. Ha teszteli az ilyen forgatókönyveket, szeretnénk hallani az eredményeket. Kérjük, küldje el nekünk visszajelzését a következő címen: aadapfeedback@microsoft.com.
+A WebSocket protokoll támogatása jelenleg még nyilvános előzetes verzióban érhető el, és előfordulhat, hogy más alkalmazásokhoz nem működik. Néhány ügyfél vegyes sikerrel járt a WebSocket protokoll használatával más alkalmazásokkal. Ha teszteli az ilyen forgatókönyveket, szeretnénk hallani az eredményeket. Kérjük, küldje el nekünk visszajelzését a következő címen: aadapfeedback@microsoft.com .
 
 A Windows felügyeleti központban (WAC) vagy Távoli asztal webes ügyfélprogramban (HTML5) lévő funkciók (eseménynaplók, PowerShell és Távoli asztali szolgáltatások) nem működnek az Azure-AD Application Proxy használatával.
 
