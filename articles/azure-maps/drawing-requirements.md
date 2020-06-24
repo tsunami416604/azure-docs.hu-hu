@@ -3,17 +3,17 @@ title: A csomagra vonatkozó követelmények a Azure Maps Creatorban
 description: A Azure Maps átalakítási szolgáltatással megtudhatja, hogyan alakíthatja át a létesítmény fájljait az adatleképezésre a rajzi csomag követelményeivel
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/09/2020
+ms.date: 6/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: cb34cb386939fc1160ee5a7db0007cfbf500ccb8
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660616"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791571"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
 
@@ -34,7 +34,7 @@ A dokumentumban használt kifejezések glosszáriuma.
 | Réteg | Egy AutoCAD DWG-réteg.|
 | Szint | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
 | Xref  |Egy olyan fájl, amely az elsődleges rajzhoz külső hivatkozásként csatolt AutoCAD DWG-fájlformátumban (. DWG) van csatolva.  |
-| Funkció | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
+| Szolgáltatás | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
 | Szolgáltatási osztályok | A funkciók közös tervrajza. Egy egység például egy szolgáltatás osztály, az Office pedig egy szolgáltatás. |
 
 ## <a name="drawing-package-structure"></a>Rajzolási csomag szerkezete
@@ -169,12 +169,13 @@ A Zonelabel réteg példája az ZONELABELS rétegként látható a [minta rajzol
 
 A zip-mappának tartalmaznia kell egy jegyzékfájlt a könyvtár legfelső szintjén, és a fájlnak **manifest.js**nevűnek kell lennie. Leírja azokat a DWG-fájlokat, amelyek lehetővé teszik a [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) számára a tartalom elemzését. Csak a jegyzékfájlban azonosított fájlok lesznek betöltve. A rendszer figyelmen kívül hagyja a zip mappában található, de a jegyzékfájlban nem szereplő fájlokat.
 
-A fájl elérési útjai a jegyzékfájl **buildingLevels** objektumában a zip-mappa gyökeréhez viszonyítva kell, hogy legyenek. A DWG-fájl nevének pontosan egyeznie kell a létesítmény szintjének nevével. Például a "alagsor" szintjén található DWG-fájl "alagsor. DWG" lenne. A 2. szintű DWG-fájl neve "level_2. DWG" lesz. Ha a szint neve szóközt tartalmaz, használjon aláhúzást. 
+A fájl elérési útjai a jegyzékfájl **buildingLevels** objektumában a zip-mappa gyökeréhez viszonyítva kell, hogy legyenek. A DWG-fájl nevének pontosan egyeznie kell a létesítmény szintjének nevével. Például a "alagsor" szintjén található DWG-fájl "alagsor. DWG" lenne. A 2. szintű DWG-fájl neve "level_2. DWG" lesz. Ha a szint neve szóközt tartalmaz, használjon aláhúzást.
 
 Bár a jegyzékfájl-objektumok használatakor követelmények vannak, nem minden objektumra van szükség. Az alábbi táblázat a [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion)1,1-es verziójának kötelező és választható objektumait mutatja be.
 
 | Objektum | Kötelező | Leírás |
 | :----- | :------- | :------- |
+| version | igaz |Jegyzékfájl-séma verziója. Jelenleg csak a 1,1-es verzió támogatott.|
 | directoryInfo | igaz | Felvázolja a létesítmény földrajzi és kapcsolattartási adatait. Az utas földrajzi és kapcsolattartási adatainak tagolására is használható. |
 | buildingLevels | igaz | Meghatározza az épületek szintjét és a szintek kialakítását tartalmazó fájlokat. |
 | Georeference | igaz | Numerikus földrajzi adatokat tartalmaz a létesítmény rajzolásához. |
@@ -211,7 +212,7 @@ Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazz
 |-----------|------|----------|-------------|
 |Szint    |sztring    |igaz |    Leíró szint neve. Például: Floor 1, lobby, Blue parkoló, alagsor stb.|
 |sorszámok | egész szám |    igaz | A szintek függőleges sorrendjének meghatározásához a sorszámot kell használni. Minden létesítménynek 0 sorszámú szinten kell lennie. |
-|heightAboveFacilityAnchor | numerikus |    hamis |    A magasság szintje a talajszint felett méterben. |
+|heightAboveFacilityAnchor | numerikus | hamis |    A rögzítési magasság meghaladja a mérőórákat. |
 | verticalExtent | numerikus | hamis | A szint és a felső határ közötti magasság (vastagság) mértékegysége (méter). |
 |fájlnév |    sztring |    igaz |    A CAD-rajz fájlrendszerbeli elérési útja egy építési szinthez. Az értéknek az épületben található zip-fájl gyökeréhez viszonyítva kell lennie. |
 
@@ -253,7 +254,7 @@ Az `unitProperties` objektum az egység tulajdonságainak JSON-tömbjét tartalm
 |verticalPenetrationDirection|    sztring|    hamis    |Ha `verticalPenetrationCategory` meg van adva, nem kötelezően megadhatja az utazás érvényes irányát. A megengedett értékek:,, `lowToHigh` `highToLow` `both` és `closed` . Az alapértelmezett érték: `both` .|
 | nonPublic | logikai | hamis | Azt jelzi, hogy az egység nyitva van-e a nyilvános számára. |
 | isRoutable | logikai | hamis | Ha a értékre van állítva `false` , az egység nem navigálható a következőre:. Az alapértelmezett érték: `true` . |
-| isOpenArea | logikai | hamis | Lehetővé teszi az ügynök számára az egység megadását anélkül, hogy az egységhez csatlakoztatott megnyitásra van szükség. Alapértelmezés szerint ez az érték csak akkor van beállítva, `true` Ha az egység megnyitása megkezdődött. |
+| isOpenArea | logikai | hamis | Lehetővé teszi, hogy a navigáló ügynök belépjen az egységbe anélkül, hogy szükség lenne az egységhez csatolt megnyitásra. Alapértelmezés szerint ez az érték olyan egységekhez van beállítva, `true` amelyek nincsenek nyitva `false`  A manuális `isOpenArea` beállítás `false` olyan egységre, amely nem rendelkezik megnyitásokkal, a rendszer figyelmeztetést jelenít meg. Ennek az az oka, hogy az eredményül kapott egység nem érhető el egy navigáló ügynöknél.|
 
 ### <a name="the-zoneproperties-object"></a>Az zoneProperties objektum
 
@@ -265,6 +266,7 @@ Az `zoneProperties` objektum a zóna tulajdonságainak JSON-tömbjét tartalmazz
 |categoryName|    sztring|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |
 |zoneNameAlt|    sztring|    hamis    |A zóna alternatív neve.  |
 |zoneNameSubtitle|    sztring |    hamis    |A zóna alcíme. |
+|zoneSetId|    sztring |    hamis    | Állítsa be az azonosítót úgy, hogy kapcsolatot hozzon létre több zóna között, hogy azok lekérdezéssel vagy csoportként legyenek kijelölve. Például több szintet átölelő zónák. |
 
 ### <a name="sample-drawing-package-manifest"></a>Minta rajzolási csomag jegyzékfájlja
 
@@ -400,7 +402,7 @@ Alább látható a minta rajzolási csomaghoz tartozó jegyzékfájl-fájl. A te
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a rajzolási csomag megfelel a követelményeknek, a [Azure Maps konverziós szolgáltatással](https://docs.microsoft.com/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával. A beltéri térképek modul használatáról a következő cikkekből tájékozódhat:
 

@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b190f2392fae11b074b2ee90a1c89f272b88818d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298210"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790297"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -42,7 +42,7 @@ A Transact Publishing lehetőség jelenleg a következő típusú ajánlatok ese
 
 ### <a name="billing-infrastructure-costs"></a>Számlázási infrastruktúra költségei
 
-**Virtual Machines és Azure-alkalmazások**esetében az Azure-infrastruktúra használati díjait az ügyfél Azure-előfizetése alapján számoljuk el. Az infrastruktúra-használati díjak díjszabása és a szoftveres szolgáltató licencelési díjaitól függetlenül, az ügyfél számláján kell megjelenni.
+A **Virtual Machines** és az **Azure-alkalmazások**esetében az Azure-infrastruktúra használati díjait az ügyfél Azure-előfizetése alapján számoljuk el. Az infrastruktúra-használati díjak díjszabása és a szoftveres szolgáltató licencelési díjaitól függetlenül, az ügyfél számláján kell megjelenni.
 
 **SaaS-alkalmazások**esetén a közzétevőnek az Azure-infrastruktúra használati díjait és a szoftverlicenc-díjat egyetlen Cost-elemként kell megadnia.  Az ügyfél számára átalány-díj formájában történik. Az Azure-infrastruktúra használatát a rendszer felügyeli, és közvetlenül a partnernek számlázza. Az ügyfél nem látja a tényleges infrastruktúra-használati díjakat. A kiadók általában az Azure-infrastruktúra használati díjait az szoftverlicenc díjszabása szerint csomagolják. A szoftver licencelési díjait nem számítjuk fel, és nem használják a felhasználást.
 
@@ -51,8 +51,8 @@ A Transact Publishing lehetőség jelenleg a következő típusú ajánlatok ese
 A használt tranzakciós lehetőségtől függően a szoftverlicenc-díjak a következők:
 
 - **Ingyenes** – a szoftveres licencek díjmentesek.
-- **Saját licenc** használata (BYOL) – a licenccel kapcsolatos összes díjat közvetlenül a közzétevő és az ügyfél között kezelheti. A Microsoft csak az Azure-infrastruktúra használati díjain halad át. Ez csak a Virtual Machines és az Azure-alkalmazásokra vonatkozik.
-- **Utólagos elszámolású – a** szoftverlicenc-díj a felhasznált Azure-infrastruktúra alapján óránkénti (vCPU) díjszabás szerint jelenik meg. Ez csak a Virtual Machines és az Azure-alkalmazásokra vonatkozik.
+- **Saját licenc** használata (BYOL) – a licenccel kapcsolatos összes díjat közvetlenül a közzétevő és az ügyfél között kezelheti. A Microsoft csak az Azure-infrastruktúra használati díjain halad át. Ez csak a virtuális gépekre és az Azure-alkalmazásokra vonatkozik.
+- **Utólagos elszámolású – a** szoftverlicenc-díj a felhasznált Azure-infrastruktúra alapján óránkénti (vCPU) díjszabás szerint jelenik meg. Ez csak a virtuális gépekre és az Azure-alkalmazásokra vonatkozik.
 - Az **előfizetés díjszabása** – a szoftverlicenc-díj a havi vagy az éves, ismétlődő díj, amely átalányként vagy munkaállomásonkéntiként van kiszámlázva. Ez csak az SaaS-alkalmazásokra (havi vagy éves) és az Azure Applications által felügyelt alkalmazásokra vonatkozik (havonta).
 - **Ingyenes szoftver próbaverziója** – a szoftverlicenc 30 vagy 90 napig díjmentes.
 
@@ -183,7 +183,10 @@ A fiókok beállításával kapcsolatos további információkért lásd: [a ker
 A Transact Publishing beállítás csak a következő Piactéri ajánlatok esetében használható:
 
 - **Virtuális gép** – válassza az ingyenes, a saját licenc vagy az utólagos elszámolású modelleket, valamint az ajánlat szintjén meghatározott SKU-t. Az ügyfél Azure-számláján a Microsoft a mögöttes Azure-infrastruktúra díjaitól függetlenül bemutatja a kiadói szoftverlicenc-díjat. Az Azure-infrastruktúra díjait a közzétevő szoftver használja.
-- **Azure-alkalmazások: megoldási sablon vagy felügyelt alkalmazás** – egy vagy több virtuális gépet kell kiépítenie, és a virtuális gép díjszabásának összegével kell lekérnie. Egyetlen csomagban felügyelt alkalmazások esetén a virtuális gépek díjszabása helyett egy átalánydíjas havi előfizetés is kiválasztható a díjszabási modellként. Bizonyos esetekben az Azure-infrastruktúra használati díjait a rendszer külön adja át az ügyfélnek a szoftverlicenc-díjaktól, de ugyanarra a számlázási utasításra. Ha azonban a felügyelt alkalmazáshoz az ISV-infrastruktúra díjait konfigurálja, az Azure-erőforrások számlázása a kiadóra történik, és az ügyfél egy átalánydíjas díjat kap, amely magában foglalja az infrastruktúra, a szoftverlicenc és a felügyeleti szolgáltatások költségeit.
+
+- **Azure-alkalmazás: megoldás-sablon vagy felügyelt** alkalmazás – egy vagy több virtuális gépet kell kiépítenie, és a virtuális gép díjszabásának összegével kell lekérnie. Egyetlen csomagban felügyelt alkalmazások esetén a virtuális gépek díjszabása helyett egy átalánydíjas havi előfizetés is kiválasztható a díjszabási modellként. Bizonyos esetekben az Azure-infrastruktúra használati díjait a rendszer külön adja át az ügyfélnek a szoftverlicenc-díjaktól, de ugyanarra a számlázási utasításra. Ha azonban a felügyelt alkalmazáshoz az ISV-infrastruktúra díjait konfigurálja, az Azure-erőforrások számlázása a kiadóra történik, és az ügyfél egy átalánydíjas díjat kap, amely magában foglalja az infrastruktúra, a szoftverlicenc és a felügyeleti szolgáltatások költségeit.
+
+- **SaaS-alkalmazás** – több-bérlős megoldásnak kell lennie, a hitelesítéshez [Azure Active Directoryt](https://azure.microsoft.com/services/active-directory/) kell használnia, és integrálni kell a [SaaS-megvalósítási API](partner-center-portal/pc-saas-fulfillment-api-v2.md)-kkal. Az Azure-infrastruktúra használatának felügyelete és számlázása közvetlenül Önnek (a partnernek) történik, ezért az Azure-infrastruktúra használati díjait és a szoftveres licencelési díjakat egyetlen költségként kell elszámolni. Részletes útmutatásért lásd: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](partner-center-portal/create-new-saas-offer.md).
 
 ## <a name="next-steps"></a>További lépések
 

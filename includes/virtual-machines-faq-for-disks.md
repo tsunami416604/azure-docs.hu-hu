@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837860"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242207"
 ---
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
@@ -302,7 +302,7 @@ Nem. Azure Site Recovery Azure-ról Azure-ra, Managed Disks elérhető virtuáli
 
 **Áttelepíthetem a virtuális gépeket olyan nem felügyelt lemezekkel, amelyek olyan tárolási fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Igen
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks és Storage Service Encryption
 
@@ -340,7 +340,7 @@ Igen. Minden felügyelt pillanatkép és rendszerkép automatikusan titkosítva 
 
 **Átalakíthatók-e a virtuális gépek olyan nem felügyelt lemezekkel, amelyek olyan Storage-fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Igen
+Yes
 
 **Egy felügyelt lemezről exportált virtuális merevlemez vagy egy pillanatkép is titkosítva lesz?**
 
@@ -451,7 +451,7 @@ A 8 TiB, 16 TiB és 32 TiB Lemezes SKU minden régióban támogatott a globális
 
 **Támogatjuk a gazdagépek gyorsítótárazásának engedélyezését az összes lemez méretén?**
 
-Támogatjuk a gazdagépek írásvédett és olvasási/írási gyorsítótárazását a 4 TiB-nál kisebb méretű lemezeken. Ha a lemezek mérete meghaladja a 4 TiB-ot, a nincs beállításnál nem támogatott a gyorsítótárazás. Javasoljuk, hogy a kisebb méretű lemezek gyorsítótárazását olyankor is érdemes kihasználni, ahol a virtuális géphez gyorsítótárazott adatoknál nagyobb teljesítménybeli növekedést várhat.
+A gazdagépek gyorsítótárazása (írásvédett és olvasási/írási) a 4 TiB-nál kisebb méretű lemezek esetében támogatott. Ez azt jelenti, hogy a 4095 GiB-ra kiépített bármely lemez kihasználhatja a gazdagépek gyorsítótárazásának előnyeit. Az állomás-gyorsítótárazás nem támogatott a 4096 GiB-nál nagyobb vagy azzal egyenlő méretű lemezek esetében. Például a 4095 GiB-on kiépített P50 prémium lemez kihasználhatja a gazdagépek gyorsítótárazásának előnyeit, és a 4096 GiB által kiépített P50-lemez nem tudja kihasználni a gazdagépek gyorsítótárazását. Javasoljuk, hogy a kisebb méretű lemezek gyorsítótárazását olyankor is érdemes kihasználni, ahol a virtuális géphez gyorsítótárazott adatoknál nagyobb teljesítménybeli növekedést várhat.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 

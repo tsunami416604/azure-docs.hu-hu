@@ -2,31 +2,31 @@
 title: A hatókörön kívüli felhasználók törlésének kihagyása
 description: Megtudhatja, hogyan bírálhatja felül a kiépítés alapértelmezett viselkedését a hatókör felhasználói közül.
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5f17886736efb87cf44bc54c82ccca794482a093
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593267"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789905"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>A hatókörön kívüli felhasználói fiókok törlésének kihagyása
 
-Alapértelmezés szerint az Azure AD-létesítési motor Soft törli vagy letiltja a hatókörön kívüli felhasználókat. Azonban előfordulhat, hogy bizonyos forgatókönyvek, például az AD-felhasználó bejövő üzembe helyezése esetén ez a viselkedés nem a várt, és érdemes lehet felülbírálni ezt az alapértelmezett viselkedést.  
+Alapértelmezés szerint az Azure AD-létesítési motor Soft törli vagy letiltja a hatókörön kívüli felhasználókat. Bizonyos forgatókönyvek esetében azonban, például az AD-felhasználók bejövő kiépítéséhez, ez a viselkedés nem a várt módon lehetséges, és érdemes lehet felülbírálni ezt az alapértelmezett viselkedést.  
 
-Ez az útmutató ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer a hatókörön kívüli fiókok feldolgozását vezérlő ***SkipOutOfScopeDeletions*** beállításához. 
-* Ha a ***SkipOutOfScopeDeletions*** 0 (hamis) értékre van állítva, akkor a hatókörön kívüli fiókok le lesznek tiltva a célhelyen
-* Ha a ***SkipOutOfScopeDeletions*** értéke 1 (igaz), akkor a hatókörön kívüli fiókok nem lesznek letiltva a *kiépítési alkalmazás* szintjén, és a Graph API használatával konfigurálhatók. 
+Ez a cikk azt ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer a hatókörön kívüli fiókok feldolgozását vezérlő jelző ***SkipOutOfScopeDeletions*** beállításához. 
+* Ha a ***SkipOutOfScopeDeletions*** értéke 0 (hamis), akkor a hatókörön kívüli fiókok le lesznek tiltva a célhelyen.
+* Ha a ***SkipOutOfScopeDeletions*** értéke 1 (igaz), akkor a hatókörön kívüli fiókok nem lesznek letiltva a célhelyen. Ez a jelző a *kiépítési alkalmazás* szintjén van beállítva, és a Graph API használatával konfigurálható. 
 
-Mivel ezt a konfigurációt széles körben használják a *Munkanapokon Active Directory a felhasználók kiépítési* alkalmazásához, az alábbi lépésekben a munkanap alkalmazás képernyőképei szerepelnek. Ez azonban a **többi alkalmazással** (például ServiceNow, Salesforce, Dropbox stb.) is használható.
+Mivel ezt a konfigurációt széles körben használják a *Munkanapokon Active Directory a felhasználók kiépítési* alkalmazásához, a következő lépésekben a munkanap alkalmazás képernyőképei szerepelnek. A konfiguráció azonban *más alkalmazásokkal*is használható, például a ServiceNow, a Salesforce és a Dropbox használatával.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1. lépés: a kiépítési App Service rendszerbiztonsági tag AZONOSÍTÓjának beolvasása (objektumazonosító)
 

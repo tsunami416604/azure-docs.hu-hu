@@ -2,21 +2,21 @@
 title: A felhasználók nincsenek kiépítve az alkalmazásban
 description: Gyakori hibák elhárítása, ha nem jelenik meg a felhasználók számára az Azure AD-vel való üzembe helyezéshez konfigurált Azure AD Gallery-alkalmazásban megjelenő felhasználó
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fa47fbba7632077c83dc1d594c7c58c59c869bf7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594015"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782279"
 ---
 # <a name="no-users-are-being-provisioned"></a>Egyetlen felhasználó létrehozása sem történt meg 
 >[!NOTE]
@@ -31,7 +31,7 @@ Miután az automatikus kiépítés konfigurálva lett egy alkalmazáshoz (beleé
   
 Ha azt észleli, hogy a felhasználók nincsenek kiépítve, tekintse meg az Azure AD-beli [kiépítési naplókat (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) . Egy adott felhasználó bejegyzéseinek keresése.
 
-A Azure Portal kiépítési naplóit a **tevékenység** szakaszban **Azure Active Directory** &gt; **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
+A Azure Portal kiépítési naplóit a **Azure Active Directory** &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** **Activity** lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
 
 A kiépítési naplók rögzítik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az Azure AD lekérdezését olyan hozzárendelt felhasználók számára, akik a kiépítés hatókörét képezik, lekérdezik a felhasználók létezését, és összehasonlítják a rendszer közötti felhasználói objektumokat. Ezt követően az összehasonlítás alapján hozzáadhatja, frissítheti vagy letilthatja a felhasználói fiókot a megcélzott rendszeren.
 
@@ -42,7 +42,7 @@ Az alábbi lista az általános problémás területeket sorolja fel, amelyeket 
 - [A naplók kiosztása azt jelenti, hogy a felhasználók kimaradnak, és nincsenek kiépítve, még akkor is, ha hozzájuk vannak rendelve](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>A kiépítési szolgáltatás nem jelenik meg a Start menüben
-Ha úgy állítja be a **kiépítési állapotot** , hogy be legyen **kapcsolva** a Azure Portal ** &gt; Azure Active Directory vállalati alkalmazások &gt; \[alkalmazásának neve\] &gt;kiépítés** szakaszában. A további állapotok azonban nem jelennek meg az oldalon az újratöltést követően, ezért valószínű, hogy a szolgáltatás fut, de még nem hajtotta végre a kezdeti ciklust. Ellenőrizze a fentiekben ismertetett **kiépítési naplókat (előzetes verzió)** , és állapítsa meg, hogy milyen műveleteket végez a szolgáltatás, és hogy vannak-e hibák.
+Ha úgy állítja be a **kiépítési állapotot** , hogy be legyen **kapcsolva** a Azure Portal **Azure Active Directory &gt; vállalati alkalmazások &gt; \[ alkalmazásának neve \] &gt; kiépítés** szakaszában. A további állapotok azonban nem jelennek meg az oldalon az újratöltést követően, ezért valószínű, hogy a szolgáltatás fut, de még nem hajtotta végre a kezdeti ciklust. Ellenőrizze a fentiekben ismertetett **kiépítési naplókat (előzetes verzió)** , és állapítsa meg, hogy milyen műveleteket végez a szolgáltatás, és hogy vannak-e hibák.
 
 >[!NOTE]
 >Egy kezdeti ciklus akár 20 perctől akár több óráig is eltarthat, az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függően. A következő szinkronizálások gyorsabbak lesznek, mivel a kiépítési szolgáltatás a kezdeti ciklus után mindkét rendszer állapotát jelképező vízjeleket tárolja. A kezdeti ciklus javítja a későbbi szinkronizálások teljesítményét.

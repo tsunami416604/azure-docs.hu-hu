@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 012d183a20e5fdcf39d72813051d745a3f9787a7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560121"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214366"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Az Azure Kubernetes Service-szel és Azure Container Instances-mel kapcsolatos modellek Docker-telepítésének hibáinak megoldása 
 
@@ -277,7 +277,7 @@ A és a for beállításával kapcsolatos további információkért `autoscale_
 
 A 504 állapotkód azt jelzi, hogy a kérelem túllépte az időkorlátot. Az alapértelmezett időkorlát 1 perc.
 
-A felesleges hívások eltávolításához módosítsa a score.py, vagy próbálja meg felgyorsítani a szolgáltatást. Ha ezek a műveletek nem orvosolják a problémát, a jelen cikkben található információk segítségével a score.py-fájl hibakeresését végezheti el. Előfordulhat, hogy a kód lefagyott állapotban vagy végtelen hurokban van.
+A felesleges hívások eltávolításához módosítsa a score.py, vagy próbálja meg felgyorsítani a szolgáltatást. Ha ezek a műveletek nem orvosolják a problémát, a jelen cikkben található információk segítségével a score.py-fájl hibakeresését végezheti el. A kód nem válaszoló állapotban vagy végtelen hurokban is lehet.
 
 ## <a name="advanced-debugging"></a>Speciális hibakeresés
 
@@ -300,9 +300,9 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
 
 1. Ha a VS Code-t úgy szeretné konfigurálni, hogy kommunikáljon a Docker-lemezképpel, hozzon létre egy új hibakeresési konfigurációt:
 
-    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__lehetőséget. Megnyílik egy __Launch. JSON__ nevű fájl.
+    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__lehetőséget. Megnyílik egy __launch.js__ nevű fájl.
 
-    1. A __Launch. JSON__ fájlban keresse meg a tartalmazó sort `"configurations": [` , majd szúrja be a következő szöveget:
+    1. A fájl __launch.js__ keresse meg a tartalmazó sort `"configurations": [` , majd szúrja be a következő szöveget:
 
         ```json
         {
@@ -325,7 +325,7 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
 
         Ez a szakasz a Docker-tárolóhoz csatlakozik a 5678-es porton keresztül.
 
-    1. Mentse a __Launch. JSON__ fájlt.
+    1. Mentse a __launch.js__ fájlt.
 
 ### <a name="create-an-image-that-includes-ptvsd"></a>PTVSD tartalmazó rendszerkép létrehozása
 
@@ -451,7 +451,7 @@ A tároló leállításához használja a következő parancsot:
 docker stop debug
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk az üzembe helyezésről:
 

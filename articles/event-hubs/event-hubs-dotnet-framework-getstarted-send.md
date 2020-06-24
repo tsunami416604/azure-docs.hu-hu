@@ -3,24 +3,19 @@ title: Azure Event Hubs – események küldése/fogadása a .NET-keretrendszer 
 description: 'Gyors útmutató: Ez a cikk egy olyan .NET-keretrendszerbeli alkalmazás létrehozásához nyújt útmutatást, amely eseményeket küld az Azure Event Hubsnak.'
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
+author: spelluru
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
 ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 12/20/2019
-ms.author: shvija
-ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 0857bbcd292562e199eec4ec8cb07650f1989ec5
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240953"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299092"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Gyors útmutató: események küldése vagy fogadása az Azure Event Hubs a .NET-keretrendszerrel
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -188,7 +183,7 @@ Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Applica
       using Microsoft.ServiceBus.Messaging;
       ```
     
-2. Cserélje le `Main` a metódust `Program` a osztályban a következő kódra, az Event hub nevét és a korábban mentett névtér-szintű kapcsolati sztringet, valamint az előző részekben másolt Storage-fiókot és-kulcsot. 
+2. Cserélje le a `Main` metódust a `Program` osztályban a következő kódra, az Event hub nevét és a korábban mentett névtér-szintű kapcsolati sztringet, valamint az előző részekben másolt Storage-fiókot és-kulcsot. 
     
       ```csharp
       static void Main(string[] args)

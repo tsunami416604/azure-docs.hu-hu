@@ -1,33 +1,33 @@
 ---
-title: Mik azok a Azure Firewall Manager megbízható biztonsági partnerei (előzetes verzió)
-description: Ismerje meg Azure Firewall Manager megbízható biztonsági partnereit
+title: Mik azok a Azure Firewall Manager biztonsági partner-szolgáltatók (előzetes verzió)
+description: Tudnivalók a Azure Firewall Manager biztonsági partnereinek szolgáltatói
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 06/15/2020
 ms.author: victorh
-ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d430deae191fbc9f9ab5bbbc2b83ee4640dd831
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436768"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791517"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>Mik azok a megbízható biztonsági partnerek (előzetes verzió)?
+# <a name="what-are-security-partner-providers-preview"></a>Mik azok a biztonsági partner-szolgáltatók (előzetes verzió)?
 
 > [!IMPORTANT]
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-A Azure Firewall Manager *megbízható biztonsági partnerei (előzetes verzió)* lehetővé teszik az ismerős, legjobb, harmadik féltől származó biztonsági szolgáltatásként (SECaaS) kínált ajánlatok használatát a felhasználók internet-hozzáférésének védelme érdekében.
+A Azure Firewall Managerben a *biztonsági partnerek szolgáltatói (előzetes verzió)* lehetővé teszik a felhasználók számára az Internet-hozzáférés védelme érdekében az ismerős, legjobb, harmadik féltől származó biztonsági (SECaaS) ajánlatok használatát.
 
 A gyors konfigurálással biztonságossá teheti a hubot egy támogatott biztonsági partnerrel, és átirányíthatja és szűrheti az internetes forgalmat a virtuális hálózatok (virtuális hálózatok) vagy az adott régión belüli fiókirodák között. Ez az automatikus útválasztási felügyelettel végezhető el a felhasználó által megadott útvonalak (UDR-EK) beállítása és kezelése nélkül.
 
 Az Ön által választott biztonsági partnerrel konfigurált biztonságos hubokat több Azure-régióban is üzembe helyezheti, így a felhasználók bárhonnan és biztonságosan érhetik el a felhasználókat a különböző régiókban. A biztonsági partnernek az internetes/SaaS-alkalmazások forgalmára való használatának, valamint a biztonságos hubokon Azure Firewall a privát forgalomra való felépítése lehetővé teszi, hogy a globálisan elosztott felhasználókhoz és alkalmazásokhoz közeledő Azure-beli biztonsági szegélyt fejlesszen fel.
 
-Ebben az előzetes verzióban a támogatott biztonsági partnerek a **ZScaler** és a **iboss**. A támogatott régiók a következők: WestCentralUS, NorthCentralUS, WestUS, WestUS2 és EastUS.
+Ebben az előzetes verzióban a támogatott biztonsági partnerek a következők: **ZScaler**, **ellenőrzési pont**és **iboss**. A támogatott régiók a következők: WestCentralUS, NorthCentralUS, WestUS, WestUS2 és EastUS.
 
-![Megbízható biztonsági partnerek](media/trusted-security-partners/trusted-security-partners.png)
+![Biztonságipartner-szolgáltatók](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>Főbb forgatókönyvek
 
@@ -80,4 +80,4 @@ Emellett az Office 365-kapcsolatok szigorúan titkosítva vannak az adatvédelem
 
 ## <a name="next-steps"></a>További lépések
 
-[Helyezzen üzembe egy megbízható biztonsági ajánlatot egy biztonságos központban a Azure Firewall Manager használatával](deploy-trusted-security-partner.md).
+[Telepítsen egy biztonsági partneri ajánlatot egy biztonságos hubhoz a Azure Firewall Manager használatával](deploy-trusted-security-partner.md).

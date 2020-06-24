@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7144fa75d156ca7aed9d8215592f89c167cfb221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc5e035215e7cabd02861c6ee2498cadd1ef0534
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633456"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213363"
 ---
 # <a name="user-defined-schemas-in-synapse-sql-pool"></a>Felhasználó által definiált sémák a szinapszis SQL-készletben
 Ez a cikk arra összpontosít, hogy több tippet is biztosítson a T-SQL felhasználó által definiált sémák használatához a szinapszis SQL-készletben található megoldások fejlesztéséhez.
@@ -54,7 +54,7 @@ Ha a sémák már használatban vannak, akkor néhány lehetőség közül vála
 > 
 > 
 
-### <a name="examples"></a>Példák:
+### <a name="examples"></a>Angol nyelvű Példák:
 Felhasználó által definiált sémák implementálása az adatbázis neve alapján:
 
 ```sql

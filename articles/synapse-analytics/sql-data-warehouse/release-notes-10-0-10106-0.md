@@ -4,7 +4,7 @@ description: Az Azure szinapszis Analytics kibocsátási megjegyzései.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 4/30/2020
 author: anumjs
 ms.author: anjangsh
@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: bf74e520340690c3dda71496360e5d9a2fe54ae8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6e2247d448807413d425dfec5d572fa895041938
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115378"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206818"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Az Azure szinapszis Analytics kibocsátási megjegyzései
 
@@ -48,9 +48,9 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 |**Munkaterhelés elkülönítése (GA)**|A számítási [feladatok elkülönítése](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation) már általánosan elérhető.  A [munkaterhelési csoportok](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) segítségével erőforrásokat foglalhat le és tárolhat.  A lekérdezési időtúllépések konfigurálásának lehetősége is lehetséges a Runaway lekérdezések megszakítására.|
 |**Munkaterhelés felügyeleti portáli élmény (előzetes verzió)**| A felhasználók a Azure Portal használatával konfigurálhatják és kezelhetik a munkaterhelés-kezelési beállításokat.  Lehetőség van a [munkaterhelés-csoportok](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) és a számítási [feladatok besorolására](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) is.|
 |**Munkaterhelési csoport módosítása**|Az [Alter MUNKATERHELÉS Group](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) parancs használatának lehetősége már elérhető.  Egy meglévő [munkaterhelés-csoport](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)konfigurációjának módosításához használja az Alter (módosítás) lehetőséget.|
-|**A Parquet-fájlok automatikus sémájának észlelése MÁSOLÁSi paranccsal (előzetes verzió)**|A [copy parancs](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) mostantól támogatja az automatikus séma észlelését a parketta-fájlok betöltésekor. A parancs automatikusan felismeri a parketta-fájl sémáját, és a terhelés előtt hozza létre a táblát. A következő e-mail-terjesztési listával érheti el az engedélyezési listát: sqldwcopypreview@service.microsoft.com . |
-|**Összetett parketta-adattípusok betöltése MÁSOLÁSi paranccsal (előzetes verzió)**|A [copy parancs](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) mostantól támogatja az összetett parketta-típusok betöltését. Az összetett típusokat (például térképeket és listát) karakterlánc-oszlopokra lehet betölteni.  A következő e-mail-terjesztési listával érheti el az engedélyezési listát: sqldwcopypreview@service.microsoft.com . |
-|**A Parquet-fájlok automatikus tömörítésének észlelése MÁSOLÁSi paranccsal**|A [copy parancs](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) mostantól támogatja a Parquet-fájl (ok) tömörítési módszerének automatikus észlelését.|
+|**A Parquet-fájlok automatikus sémájának észlelése MÁSOLÁSi paranccsal (előzetes verzió)**|A [copy parancs](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) mostantól támogatja az automatikus séma észlelését a parketta-fájlok betöltésekor. A parancs automatikusan felismeri a parketta-fájl sémáját, és a terhelés előtt hozza létre a táblát. A funkció engedélyezéséhez vegye fel a következő e-mail-terjesztési listát: sqldwcopypreview@service.microsoft.com . |
+|**Összetett parketta-adattípusok betöltése MÁSOLÁSi paranccsal (előzetes verzió)**|A [copy parancs](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) mostantól támogatja az összetett parketta-típusok betöltését. Az összetett típusokat (például térképeket és listát) karakterlánc-oszlopokra lehet betölteni.  A funkció engedélyezéséhez vegye fel a következő e-mail-terjesztési listát: sqldwcopypreview@service.microsoft.com . |
+|**A Parquet-fájlok automatikus tömörítésének észlelése MÁSOLÁSi paranccsal**|A [copy parancs](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) mostantól támogatja a Parquet-fájl (ok) tömörítési módszerének automatikus észlelését. A funkció engedélyezéséhez vegye fel a következő e-mail-terjesztési listát: sqldwcopypreview@service.microsoft.com .|
 |**További betöltési javaslatok**|A [betöltési javaslatok](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations) mostantól elérhetők a szinapszis SQL-hez. Proaktív értesítéseket kaphat, ha a fájlokat a maximális átviteli sebesség érdekében szeretné felosztani, a Storage-fiókját az SQL-készlettel együtt megkeresve, vagy a SQLBulkCopy API-t vagy a BCP-t használó segédprogramok betöltéséhez növelje a Batch méretét.|
 |**T-SQL frissíthető terjesztési oszlop (GA)**|A felhasználók mostantól frissíthetik a terjesztési oszlopban tárolt adatfájlokat. A részletekért tekintse meg az [elosztott táblák tervezésével kapcsolatos útmutatót a SZINAPSZIS SQL-készletben](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute) .|
 |**T-SQL frissítése/törlése... Csatlakozás (GA)**|Mostantól elérhető a frissítés és a törlés egy másik táblával való csatlakozás eredményei alapján. További részletekért lásd a dokumentáció [frissítése](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) és [törlése](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest) című témakört.|

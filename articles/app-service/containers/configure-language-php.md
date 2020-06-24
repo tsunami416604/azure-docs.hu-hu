@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített PHP-tá
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 9e4237f1eecb9f6542aac946525ff4583e478c2e
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234937"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905697"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Linux PHP-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -104,17 +104,17 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabványos alkalmazási mintában lévő információk elérését. A [CodeIgniter](https://codeigniter.com/)-ben a [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) alapértelmezés szerint ellenőrzi a értéket `X_FORWARDED_PROTO` .
 
-## <a name="customize-phpini-settings"></a>A php. ini beállításainak testreszabása
+## <a name="customize-phpini-settings"></a>php.ini beállítások testreszabása
 
-Ha módosítania kell a PHP-telepítést, a következő lépésekkel módosíthatja a [php. ini-irányelvek](https://www.php.net/manual/ini.list.php) bármelyikét.
+Ha módosítania kell a PHP-telepítést, a következő lépésekkel módosíthatja a [php.ini irányelvek](https://www.php.net/manual/ini.list.php) bármelyikét.
 
 > [!NOTE]
-> A PHP-verzió és az aktuális *php. ini* -konfiguráció megtekintéséhez a legjobb módszer a [phpinfo ()](https://www.php.net/manual/function.phpinfo.php) meghívása az alkalmazásban.
+> A PHP-verzió és a jelenlegi *php.ini* konfiguráció megtekintésének legjobb módja az [phpinfo ()](https://php.net/manual/function.phpinfo.php) hívása az alkalmazásban.
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Testreszabás – nem PHP_INI_SYSTEM irányelvek
 
-PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabásához (lásd a [php. ini direktívát](https://www.php.net/manual/ini.list.php)), adjon hozzá egy *. htaccess* -fájlt az alkalmazás gyökérkönyvtárához.
+PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabásához (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), adjon hozzá egy *. htaccess* -fájlt az alkalmazás gyökérkönyvtárához.
 
 A *. htaccess* fájlban adja hozzá az irányelveket a `php_value <directive-name> <value>` szintaxis használatával. Például:
 
@@ -134,7 +134,7 @@ A *. htaccess*használatának alternatívájaként a [ini_set ()](https://www.ph
 
 ### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM irányelvek testreszabása
 
-PHP_INI_SYSTEM irányelvek testreszabásához (lásd a [php. ini-irányelveket](https://www.php.net/manual/ini.list.php)) nem használhatja a *. htaccess* megközelítést. A App Service az Alkalmazásbeállítások használatával külön mechanizmust biztosít `PHP_INI_SCAN_DIR` .
+PHP_INI_SYSTEM irányelvek testreszabásához (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)) nem használhatja a *. htaccess* megközelítést. A App Service az Alkalmazásbeállítások használatával külön mechanizmust biztosít `PHP_INI_SCAN_DIR` .
 
 Először futtassa az alábbi parancsot a [Cloud Shellban](https://shell.azure.com) egy, a következő nevű alkalmazás-beállítás hozzáadásához `PHP_INI_SCAN_DIR` :
 
@@ -142,11 +142,11 @@ Először futtassa az alábbi parancsot a [Cloud Shellban](https://shell.azure.c
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`az alapértelmezett könyvtár, ahol a *php. ini fájl* létezik. `/home/site/ini`az az egyéni könyvtár, amelyben hozzá kell adnia egy egyéni *. ini* -fájlt. Az értékeket az a értékkel válassza el `:` .
+`/usr/local/etc/php/conf.d`a *php.ini* létezésének alapértelmezett könyvtára. `/home/site/ini`az az egyéni könyvtár, amelyben hozzá kell adnia egy egyéni *. ini* -fájlt. Az értékeket az a értékkel válassza el `:` .
 
 Navigáljon a web SSH-munkamenethez a Linux-tárolóval ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
-Hozzon létre egy könyvtárat a `/home/site` néven `ini` , majd hozzon létre egy *. ini* fájlt a `/home/site/ini` könyvtárban (például: *Settings. ini)* a testreszabni kívánt irányelvek alapján. Használja ugyanazt a szintaxist, amelyet egy *php. ini* fájlban is használni fog. 
+Hozzon létre egy könyvtárat a `/home/site` néven `ini` , majd hozzon létre egy *. ini* -fájlt a `/home/site/ini` könyvtárban (például *settings.ini)* a testreszabni kívánt irányelvek alapján. Használja ugyanazt a szintaxist, amelyet egy *php.ini* fájlban szeretne használni. 
 
 > [!TIP]
 > A App Service beépített Linux-tárolókban a */Home* a megőrzött megosztott tárolóként szolgál. 
@@ -164,10 +164,10 @@ A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
 
 ## <a name="enable-php-extensions"></a>PHP-bővítmények engedélyezése
 
-A beépített PHP-telepítések a leggyakrabban használt bővítményeket tartalmazzák. A [php. ini-irányelvek testreszabásához](#customize-php_ini_system-directives)ugyanúgy engedélyezheti a további bővítményeket.
+A beépített PHP-telepítések a leggyakrabban használt bővítményeket tartalmazzák. A További bővítmények ugyanúgy engedélyezhetők, mint az [php.ini irányelvek testreszabása](#customize-php_ini_system-directives).
 
 > [!NOTE]
-> A PHP-verzió és az aktuális *php. ini* -konfiguráció megtekintéséhez a legjobb módszer a [phpinfo ()](https://php.net/manual/function.phpinfo.php) meghívása az alkalmazásban.
+> A PHP-verzió és a jelenlegi *php.ini* konfiguráció megtekintésének legjobb módja az [phpinfo ()](https://php.net/manual/function.phpinfo.php) hívása az alkalmazásban.
 >
 
 További bővítmények engedélyezéséhez kövesse az alábbi lépéseket:
@@ -187,7 +187,7 @@ A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>SSH-munkamenet megnyitása böngészőben
 
@@ -198,8 +198,8 @@ A módosítások érvénybe léptetéséhez indítsa újra az alkalmazást.
 Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat tartalmaz, próbálkozzon a következőkkel:
 
 - [A log stream elérése](#access-diagnostic-logs).
-- Az alkalmazás helyi tesztelése éles módban. App Service a Node. js-alkalmazásokat éles módban futtatja, ezért a projektnek a várt módon kell működnie a helyi üzemi módban. Például:
-    - A *Composer. JSON*fájltól függően különböző csomagok is telepíthetők üzemi módba (vagy `require` `require-dev` ).
+- Az alkalmazás helyi tesztelése éles módban. App Service éles módban futtatja az alkalmazást, ezért meg kell győződnie arról, hogy a projekt a várt módon működik a helyi üzemi módban. Például:
+    - A *composer.jstól*függően különböző csomagok is telepíthetők üzemi módba (vagy `require` `require-dev` ).
     - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
     - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.
 - Az alkalmazást hibakeresési módban App Service futtathatja. A [Laravel](https://meanjs.org/)-ben például beállíthatja, hogy az alkalmazás a hibakeresési üzeneteket az éles környezetben állítsa be úgy, hogy [az `APP_DEBUG` `true` alkalmazás beállítását ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)adja meg.

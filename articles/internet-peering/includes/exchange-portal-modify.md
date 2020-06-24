@@ -1,7 +1,7 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 titleSuffix: Azure
-description: fájl belefoglalása
+description: fájlbefoglalás
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -28,7 +28,7 @@ Ez a szakasz azt ismerteti, hogyan hajthatja végre a következő módosítási 
 
 ### <a name="remove-exchange-peering-connections"></a>Exchange-társi kapcsolatok eltávolítása
 
-1. Válassza ki a törölni kívánt társi kapcsolatot, majd válassza a **... lehetőséget.**  > A **kapcsolatok törlése**.
+1. Válassza ki a törölni kívánt társi kapcsolatot, majd válassza a **...**  >  lehetőséget. A **kapcsolatok törlése**.
     > [!div class="mx-imgBorder"]
     > ![Kapcsolatok törlése gomb](../media/setup-exchange-modify-deleteconnection.png)
 1. A **Törlés megerősítése** mezőbe írja be az erőforrás-azonosítót, és válassza a **Törlés**lehetőséget.
@@ -37,7 +37,7 @@ Ez a szakasz azt ismerteti, hogyan hajthatja végre a következő módosítási 
 
 ### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>IPv4-vagy IPv6-munkamenet hozzáadása az aktív kapcsolatokhoz
 
-1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **... lehetőséget.**  > A **Kapcsolatok szerkesztése**.
+1. Válassza ki a módosítani kívánt társi kapcsolatot, majd válassza a **...**  >  lehetőséget. A **Kapcsolatok szerkesztése**.
     > [!div class="mx-imgBorder"]
     > ![A kapcsolatok szerkesztése gomb](../media/setup-exchange-modify-editconnection.png)
 1. Adja meg az **IPv4-cím** vagy az **IPv6-cím** adatait, majd kattintson a **Mentés**gombra.

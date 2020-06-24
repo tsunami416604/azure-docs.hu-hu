@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 34f55d628b4e334df4b3e74edfd3c0defbdeaa93
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647723"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114241"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB számláinak ismertetése
 
@@ -73,7 +73,7 @@ Ha egy tárolóra vagy tárolók egy készletére emeli a kiépített átviteli 
 
 * 720 óra (24 óra * 30 nap), ha 500 óra kiépített átviteli sebesség volt a 1 200 RU/s, a fennmaradó 220 óra kiépített átviteli sebesség pedig 22 200 RU/s, a havi számla a következőket mutatja be: 500 x $0.096/Hour + 220 x $1.776/óra = $438.72/month.
 
-![Dedikált átviteli sebesség – példa](./media/understand-your-bill/bill-example1.png)
+:::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Dedikált átviteli sebesség – példa":::
 
 ### <a name="billing-example-containers-with-shared-throughput-mode"></a>Számlázási példa: megosztott átviteli sebességű tárolók
 
@@ -87,7 +87,7 @@ Ha egy tárolóra vagy tárolók egy készletére emeli a kiépített átviteli 
 
 * 720 óra alatt, ha 300 óra kiépített átviteli sebesség volt a 120-K RU/s, és a fennmaradó 420 óra kiépített átviteli sebesség a következő volt: 155-K RU/s, a havi számla az alábbiak szerint fog megjelenni: 300 x $9.60/Hour + 420 x $12.40/óra = $2 880 + $5 208 = $8088/month. 
 
-![Megosztott átviteli sebesség – példa](./media/understand-your-bill/bill-example2.png)
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Megosztott átviteli sebesség – példa":::
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Számlázási példák a Geo-replikációval és a több főkiszolgálóval  
 
@@ -177,11 +177,11 @@ Tekintsük át a következő példát, ahol egy többrégiós Azure Cosmos-fiók
 
 Az alábbi ábrán látható, hogy a teljes kiépített átviteli sebesség változásai a hónapban 720 óra alatt jelennek meg: 
 
-![Valós élet – példa](./media/understand-your-bill/bill-example3.png)
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Valós élet – példa":::
 
 A teljes havi számla (feltéve, hogy a havi 30 nap/720 óra) a következőképpen lesz kiszámítva:
 
-|**Óra**  |**RU/s** |**Item** |**Használat (óránként)** |**Költségek** |
+|**Órák**  |**RU/s** |**Item** |**Használat (óránként)** |**Költségek** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20000 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (az összes régió írható)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Átviteli sebesség 2 további régióban: USA keleti régiója, Észak-Európa (az összes régió írható)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2 880  |

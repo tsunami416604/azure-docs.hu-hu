@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89a4c934a0245c39f6015a43d9de16db800691d8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170630"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888119"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Objektumok replikálásának konfigurálása a blokk Blobok számára (előzetes verzió)
 
@@ -28,7 +28,9 @@ Ez a cikk azt ismerteti, hogyan konfigurálható az objektum replikálása a Sto
 
 Az objektumok replikálásának konfigurálása előtt hozza létre a forrás és a cél Storage-fiókokat, ha azok még nem léteznek. Mindkét fióknak általános célú v2 Storage-fióknak kell lennie. További információ: [Azure Storage-fiók létrehozása](../common/storage-account-create.md).
 
-Győződjön meg arról is, hogy regisztrált a következő szolgáltatás-előnézetekhez:
+A Storage-fiók legfeljebb két célobjektum forrásaként használható. A cél fiók legfeljebb két forrásoldali fiókkal rendelkezhet. A forrás- és célfiókok mind lehetnek eltérő régiókban. Külön replikációs házirendeket konfigurálhat az egyes célszámítógépekre történő adatreplikáláshoz.
+
+Mielőtt elkezdené, győződjön meg arról, hogy regisztrált a következő szolgáltatás-előnézetekhez:
 
 - [Objektum-replikáció (előzetes verzió)](object-replication-overview.md)
 - [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)
@@ -41,7 +43,7 @@ Mielőtt az objektum-replikálást konfigurálja a Azure Portalban, hozza létre
 Ha a Azure Portal replikációs szabályzatot szeretne létrehozni, kövesse az alábbi lépéseket:
 
 1. Navigáljon a forrás Storage-fiókhoz a Azure Portal.
-1. A **Beállítások**területen válassza az **objektum replikálása**elemet.
+1. A **blob Service**területen válassza az **objektum-replikáció**elemet.
 1. Válassza a **replikáció beállítása**lehetőséget.
 1. Válassza ki a cél előfizetést és a Storage-fiókot.
 1. A **Container Pairs (tároló párok** ) szakaszban válasszon ki egy forrásoldali tárolót a forrás fiókból, valamint egy célhelyet a célhelyről. Replikációs házirendben legfeljebb 10 tároló pár hozható létre.
@@ -275,6 +277,6 @@ az storage account or-policy delete \
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Objektum-replikáció áttekintése (előzetes verzió)](object-replication-overview.md)

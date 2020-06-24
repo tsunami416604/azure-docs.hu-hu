@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: storage
 author: alkohli
 ms.service: storage
@@ -17,9 +17,9 @@ ms.locfileid: "67179306"
 ---
 #### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
 
-1.  A Microsoft-fiók hitelesítő adataival jelentkezzen be a Azure Portalba ezen az URL <https://portal.azure.com/>-címen:. Ha az eszközt a Government Portalon helyezi üzembe, jelentkezzen be a következő címen:<https://portal.azure.us/>
+1.  A Microsoft-fiók hitelesítő adataival jelentkezzen be a Azure Portalba ezen az URL-címen: <https://portal.azure.com/> . Ha az eszközt a Government Portalon helyezi üzembe, jelentkezzen be a következő címen:<https://portal.azure.us/>
 
-2.  A Azure Portal kattintson az **+ erőforrás** &gt; létrehozása **tároló** &gt; **StorSimple virtuális sorozat**elemre.
+2.  A Azure Portal kattintson az **+ erőforrás létrehozása** &gt; **tároló** &gt; **StorSimple virtuális sorozat**elemre.
 
     ![Új szolgáltatás létrehozása](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 

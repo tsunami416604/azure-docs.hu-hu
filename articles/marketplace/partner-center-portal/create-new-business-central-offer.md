@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 04de89624dd0e6857e96327bb408cf8700a1f6a2
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 9fba2a898809c7c4062e1c0115ffce60f5becfdf
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848881"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213812"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Microsoft Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -26,7 +26,7 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
 3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Dynamics 365 Business Central**lehetőséget.
 
-    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-dynamics-365-bc.png)
+    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-dynamics-365-business-central.png)
 
 > [!NOTE]
 > Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
@@ -60,7 +60,7 @@ Az ajánlatát ingyenesen listázhatja, ha érvényes URL-címet ad meg (a *http
 
 #### <a name="free-trial-listing"></a>Ingyenes próbaverzió (Listázás)
 
-Az ajánlat az ingyenes próbaverzióra mutató hivatkozással listázhatja az ügyfeleket, ha egy érvényes URL-címet (a *http* -t vagy a *https*-t) biztosít, ahol próbaverziót kaphat.  Például: `https://contoso.com/trial/my-app`. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
+Az ajánlatot az ingyenes próbaverzióra mutató hivatkozással listázhatja, ha egy érvényes URL-címet biztosít (a vagy a verziótól kezdve `http` `https` ), ahol próbaverziót kaphat.  Például: `https://contoso.com/trial/my-app`. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
 
 > [!NOTE]
 > Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak Azure Active Directory (Azure AD) használatával szerezhetik be a felhasználói adatokat, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok nem támogatottak a jogkivonat használatával történő hitelesítéshez.
@@ -130,6 +130,23 @@ Itt adhatja meg az ajánlat részleteit, például a nevet, a leírást és a k�
 
 > [!NOTE]
 > Az ajánlat részletei csak egy nyelven adhatók meg. Nem kell angol nyelven lennie, amíg az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] nyelven érhető el." Azt is elfogadható, hogy a *Súgó hivatkozás URL-címe* , amely az ajánlati tartalomban használt tartalomtól eltérő nyelven kínál tartalmat.
+
+Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
+
+:::image type="content" source="media/example-d365-business-central.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Embléma
+2. Termékek
+3. Kategóriák
+4. Támogatási címe (hivatkozás)
+5. Használati feltételek
+6. Adatvédelmi irányelvek
+7. Ajánlat neve
+8. Összefoglalás
+9. Leírás
+10. Képernyőképek/videók
 
 ### <a name="name"></a>Name
 
@@ -358,7 +375,7 @@ A **Test Drive** (Piactér) lapon található **Marketplace listázási** lehet�
 - **Videók** (nem kötelező) – a videókat feltöltheti a YouTube-ra vagy a Vimeo-ra, és itt hivatkozhat egy hivatkozással és egy miniatűr képpel (533 x 324 képpont), így az ügyfelek megtekinthetik az információk áttekintését, így könnyebben megismerhetik a tesztelési meghajtót, beleértve az ajánlat funkcióinak sikeres használatát és az előnyeiket kiemelő forgatókönyvek megismerését.
   - **Név** (kötelező)
   - **URL-cím (csak YouTube vagy Vimeo)** (kötelező)
-  - **Miniatűr** képe (a fájlnak PNG formátumban kell lennie, és 533 x 324 px)
+  - **Miniatűr** képe (a fájlnak PNG formátumban kell lennie, és 533 x 324 képpont)
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 

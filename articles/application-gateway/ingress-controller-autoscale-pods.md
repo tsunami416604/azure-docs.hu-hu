@@ -4,15 +4,15 @@ description: Ez a cikk útmutatást nyújt az AK háttérbeli hüvelyek Applicat
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1169ed0e9a2b970ee0e30d73ea20c87001b62786
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239448"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125463"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>AK-hüvelyek autoskálázása Application Gateway metrikák (bétaverzió) használatával
 
@@ -27,7 +27,7 @@ A következő két összetevőt fogjuk használni:
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Az Azure Kubernetes metrikus adapter beállítása
 
-1. Először létre kell hozni egy Azure HRE egyszerű szolgáltatásnevet, és hozzá `Monitoring Reader` kell rendelnie Application Gateway erőforráscsoporthoz. 
+1. Először létre kell hozni egy Azure HRE egyszerű szolgáltatásnevet, és hozzá kell rendelnie `Monitoring Reader` Application Gateway erőforráscsoporthoz. 
 
     ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
@@ -35,11 +35,11 @@ A következő két összetevőt fogjuk használni:
         az ad sp create-for-rbac -n "azure-k8s-metric-adapter-sp" --role "Monitoring Reader" --scopes applicationGatewayGroupId
     ```
 
-1. Most a fent létrehozott HRE egyszerű [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) szolgáltatásnév használatával fogjuk telepíteni.
+1. Most a [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) fent létrehozott HRE egyszerű szolgáltatásnév használatával fogjuk telepíteni.
 
     ```bash
     kubectl create namespace custom-metrics
-    # use values from service principle created above to create secret
+    # use values from service principal created above to create secret
     kubectl create secret generic azure-k8s-metrics-adapter -n custom-metrics \
         --from-literal=azure-tenant-id=<tenantid> \
         --from-literal=azure-client-id=<clientid> \
@@ -47,7 +47,7 @@ A következő két összetevőt fogjuk használni:
     kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/Azure/azure-k8s-metrics-adapter/master/deploy/adapter.yaml -n custom-metrics
     ```
 
-1. Létre fogunk hozni egy `ExternalMetric` nevű `appgw-request-count-metric`erőforrást. Ez az erőforrás utasítja a metrikai adaptert `AvgRequestCountPerHealthyHost` , hogy `myApplicationGateway` kimutassa `myResourceGroup` a metrikát az erőforráscsoport erőforrásai számára. A `filter` mező használatával megcélozhat egy adott háttérbeli készletet és a háttérbeli http-beállítást a Application Gatewayban.
+1. Létre fogunk hozni egy `ExternalMetric` nevű erőforrást `appgw-request-count-metric` . Ez az erőforrás utasítja a metrikai adaptert, hogy kimutassa a `AvgRequestCountPerHealthyHost` metrikát az `myApplicationGateway` erőforráscsoport erőforrásai számára `myResourceGroup` . A `filter` mező használatával megcélozhat egy adott háttérbeli készletet és a háttérbeli http-beállítást a Application Gatewayban.
 
     ```yaml
     apiVersion: azure.com/v1alpha2
@@ -92,9 +92,9 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Az új metrika használata az üzemelő példány vertikális felskálázásához
 
-`appgw-request-count-metric` Miután elérhetővé tettük a metrika-kiszolgálót, készen [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) állunk a cél üzembe helyezésének vertikális felskálázására.
+Miután elérhetővé tettük `appgw-request-count-metric` a metrika-kiszolgálót, készen állunk a [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) cél üzembe helyezésének vertikális felskálázására.
 
-A következő példában egy minta üzembe helyezést `aspnet`fogunk megcélozni. A hüvelyek felskálázása `appgw-request-count-metric` akkor történik, amikor a > 200/Pod `10` akár max.
+A következő példában egy minta üzembe helyezést fogunk megcélozni `aspnet` . A hüvelyek felskálázása akkor történik `appgw-request-count-metric` , amikor a > 200/Pod akár Max `10` .
 
 Cserélje le a cél központi telepítési nevét, és alkalmazza a következő automatikus méretezési konfigurációt:
 ```yaml

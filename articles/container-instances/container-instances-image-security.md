@@ -1,15 +1,15 @@
 ---
-title: A Container instances biztonsága
+title: A Container instances biztonsági szempontjai
 description: Javaslatok a lemezképek és a titkos kulcsok biztonságossá tételéhez a Azure Container Instanceshoz, valamint általános biztonsági megfontolások bármilyen tároló platformhoz
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457994"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907023"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>A Azure Container Instances biztonsági szempontjai
 
@@ -18,6 +18,9 @@ Ez a cikk a Azure Container Instances a Container apps futtatásához való hasz
 > [!div class="checklist"]
 > * **Biztonsági javaslatok** a rendszerképek és a titkok kezeléséhez Azure Container instances
 > * A tároló- **ökoszisztémára vonatkozó megfontolások** a tároló életciklusa során, bármilyen tároló platform esetében
+
+Az üzembe helyezés biztonsági helyzetének javítására szolgáló átfogó javaslatokért tekintse meg a [Container instances Azure biztonsági alaptervét](security-baseline.md).
+
 
 ## <a name="security-recommendations-for-azure-container-instances"></a>A Azure Container Instances biztonsági javaslatai
 
@@ -140,6 +143,8 @@ A tároló ökoszisztémájának, például a Kubernetes-fürt, a tároló-beál
 * [Azure Container instances](container-instances-log-analytics.md) és [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) erőforrás-naplói
 
 ## <a name="next-steps"></a>További lépések
+
+* Tekintse meg a [Container instances Azure biztonsági alaptervét](security-baseline.md) , amely segítséget nyújt az üzembe helyezés biztonsági helyzetének javításához.
 
 * További információ a [Azure Security Center](../security-center/container-security.md) a valós idejű veszélyforrások észleléséhez a tároló környezetekben.
 

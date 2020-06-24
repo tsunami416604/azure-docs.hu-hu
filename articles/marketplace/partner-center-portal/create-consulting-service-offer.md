@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 52b97e772897289f0c54c4520da7d7af80f44dc3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700946"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213717"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -109,6 +109,37 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 
 > [!NOTE]
 > Az ajánlat részletei nem szükségesek angolul, ha az ajánlat leírása a kifejezéssel kezdődik, &quot; Ez az alkalmazás csak [nem angol nyelven] érhető el. &quot; Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
+
+Íme egy példa arra, hogyan jelennek meg az ajánlati információk az Azure Marketplace-en (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálják):
+
+:::image type="content" source="media/example-consulting-service-offer.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Embléma
+2. Price
+3. Megoldási területek
+4. Ágazatok
+5. Ajánlat neve
+6. Összefoglalás
+7. Leírás
+8. Képernyőképek/videók
+
+<br>Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
+
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
+
+#### <a name="call-out-descriptions"></a>Lehívási leírások
+
+1. Embléma
+2. Price
+3. Termékek
+4. Ágazatok
+5. Ajánlat neve
+6. Összefoglalás
+7. Leírás
+8. Képernyőképek/videók
+9. Dokumentumok
 
 ### <a name="name"></a>Name
 

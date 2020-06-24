@@ -4,16 +4,16 @@ description: Meglévő címkészlet kibontása új munkamenet-gazdagépekkel a W
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4313f36a0b250be9646c6658b98f15037374729
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615525"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214281"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
 
@@ -57,12 +57,12 @@ A következőképpen telepítheti újra a Azure Resource Manager sablont a gazda
      - Ha az eredeti alkalmazáskészletet az Azure Marketplace-ajánlattal hozta létre, válassza ki az **RDS. WVD-kiépítés-gazdagép-készletet**.
      - Ha az eredeti címkészletet a GitHub Azure Resource Manager sablonnal hozta létre, válassza ki a **Microsoft. template**nevű központi telepítést.
 6. Válassza az **újratelepítés**lehetőséget.
-     
+
      >[!NOTE]
      >Ha a sablon nem kerül automatikusan újratelepítésre az **újratelepítési**lehetőség kiválasztásakor, válassza a **sablon** lehetőséget a böngésző bal oldalán lévő panelen, majd válassza a **telepítés**lehetőséget.
 
 7. Válassza ki azt az erőforráscsoportot, amely a meglévő gazdagép-készletben lévő aktuális munkamenet-gazda virtuális gépeket tartalmazza.
-     
+
      >[!NOTE]
      >Ha olyan hibaüzenetet lát, amely azt jelzi, hogy egy másik erőforráscsoportot választ, még ha a beírt érték is helyes, válasszon másik erőforráscsoportot, majd válassza ki az eredeti erőforráscsoportot.
 
@@ -85,7 +85,7 @@ Az ebben a szakaszban szereplő összes értéknek egyeznie kell azzal, amit a g
 3.    A *régió*mezőben válassza ki azt a régiót, ahol a meglévő gazdagép-munkamenet-gazdagép virtuális gépei találhatók.
 4.    A *Hostpool neve*mezőbe írja be a meglévő címkészlet nevét.
 5.    Az *asztal típusa*mezőben válassza ki azt az asztal-típust, amely megegyezik a meglévő gazdagép-készlettel.
-6.    Az *alapértelmezett asztali felhasználók beállításnál*adja meg azokat a további felhasználókat, akik be kívánnak jelentkezni a Windows rendszerű virtuális asztali ügyfelekbe, és az Azure Marketplace-ajánlat befejezése után férnek hozzá az asztalhoz. Ha például hozzá kívánja user3@contoso.com rendelni és user4@contoso.com hozzáférést szeretne adni, írja user3@contoso.combeuser4@contoso.coma következőt:.
+6.    Az *alapértelmezett asztali felhasználók beállításnál*adja meg azokat a további felhasználókat, akik be kívánnak jelentkezni a Windows rendszerű virtuális asztali ügyfelekbe, és az Azure Marketplace-ajánlat befejezése után férnek hozzá az asztalhoz. Ha például hozzá kívánja rendelni user3@contoso.com és hozzáférést szeretne user4@contoso.com adni, írja be a következőt: user3@contoso.com user4@contoso.com .
 7.    Válassza a Next (tovább) lehetőséget **: virtuális gép konfigurálása**.
 
 >[!NOTE]
@@ -96,7 +96,7 @@ Az ebben a szakaszban szereplő összes értéknek egyeznie kell azzal, amit a g
 Az ebben a szakaszban szereplő összes paraméternek meg kell egyeznie a gazdagép és a munkamenet-gazda virtuális gépek első létrehozásakor megadott értékekkel, kivéve a virtuális gépek teljes számát. A virtuális gépek száma a kibontott gazdagép-készletben lévő virtuális gépek száma lesz:
 
 1. Válassza ki a virtuálisgép-méretet, amely megfelel a meglévő munkamenet-gazda virtuális gépeknek.
-    
+
     >[!NOTE]
     >Ha a keresett virtuálisgép-méret nem jelenik meg a virtuálisgép-méret választóban, ennek az az oka, hogy még nem készítettük üzembe az Azure Marketplace eszközre. A virtuális gép méretének igényléséhez hozzon létre egy kérést, vagy egy meglévő kérelmet a [Windows virtuális asztali UserVoice fórumában](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
 

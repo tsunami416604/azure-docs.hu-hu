@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center fenyegetésfelderítési jelentés | Microsoft Docs
-description: Ebből a dokumentumból megtudhatja hogyan használhatja az Azure Security Center fenyegetésfelderítési jelentést a vizsgálat során, amikor a biztonsági riasztásokkal kapcsolatos információkat keres.
+description: Ezen az oldalon megtudhatja, hogy a vizsgálat során Azure Security Center veszélyforrások intelligencia-jelentéseit használja a biztonsági riasztásokkal kapcsolatos további információkért
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,22 +11,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4fdbab4a69fac1376779f37d5fa69fef587bf52
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921249"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888244"
 ---
-# <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center fenyegetésfelderítési jelentés
-Ez a dokumentum ismerteti, hogy az Azure Security Center fenyegetésfelderítési jelentés segítségével hogyan tudhat meg többet az olyan fenyegetésekről, amelyek biztonsági riasztást hoztak létre.
+# <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center fenyegetés intelligencia jelentés
+
+Ezen a lapon megtudhatja, hogy Azure Security Center a fenyegetések felderítésével kapcsolatos jelentései Hogyan segíthetnek a biztonsági riasztást kiváltó veszélyforrások megismerésében.
+
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Mi a fenyegetésfelderítési jelentés?
+
 Security Center veszélyforrások elleni védelem az Azure-erőforrások, a hálózat és a csatlakoztatott partneri megoldások biztonsági adatainak figyelésével működik. A fenyegetések azonosításához elemzi ezeket az információkat, és gyakran megvizsgálja a különböző forrásokból származó adatok közötti összefüggéseket. További információ: [How Azure Security Center észleli és reagál a fenyegetésekre](security-center-alerts-overview.md#detect-threats).
 
-Ha a Security Center azonosít egy fenyegetést, akkor az [biztonsági riasztást](security-center-managing-and-responding-alerts.md) vált ki, amely részletes információkat tartalmaz az adott eseménnyel kapcsolatban, beleértve az elhárítási javaslatokat is. Az incidensek megválaszolásával foglalkozó csapatok támogatásához, a fenyegetések kivizsgálásához és elhárításához Security Center tartalmaz egy fenyegetési intelligencia-jelentést, amely az észlelt fenyegetéssel kapcsolatos információkat tartalmaz, beleértve a következő információkat:
+Ha a Security Center észleli a fenyegetést, egy [biztonsági riasztást](security-center-managing-and-responding-alerts.md)indít, amely részletes információkat tartalmaz az eseményről, beleértve a szervizeléssel kapcsolatos javaslatokat is. Az incidensek megvizsgálása és a fenyegetések elhárítása érdekében a Security Center az észlelt fenyegetésekkel kapcsolatos információkat tartalmazó veszélyforrás-felderítési jelentéseket nyújt. A jelentés olyan információkat tartalmaz, mint például a következők:
 
 * A támadó identitása vagy társításai (ha ez az információ elérhető)
 * A támadó céljai
@@ -38,36 +41,39 @@ Ha a Security Center azonosít egy fenyegetést, akkor az [biztonsági riasztás
 
 > [!NOTE]
 > Az információ mennyisége minden jelentésben más, a részletesség pedig a kártevő tevékenységén és gyakoriságán alapul.
->
->
 
 A Security Centerben három típusa van a fenyegetési jelentéseknek, amelyek a támadástól függően változnak. Az elérhető jelentések a következők:
 
-* **Tevékenységi csoport jelentés**: mélyreható információkat biztosít a támadókról, a céljaikról és a taktikáikról.
+* **Tevékenység-csoport jelentés**: a támadók, a célkitűzések és a taktikák mély merülését biztosítják.
 * **Kampányjelentés**: adott támadási kampányok részleteire összpontosít.
 * **Fenyegetésösszegző jelentés**: az előző két jelentés összes elemét tartalmazza.
 
-Az ilyen típusú információk az incidensek válaszának folyamata során hasznosak, ahol a támadás forrását, a támadó motivációit és a probléma megoldásának megelőzését szolgáló folyamatos vizsgálatot végeznek.
+Az ilyen típusú információk az incidensek válaszának folyamata során hasznosak, ahol a támadás forrását, a támadó motivációit és a probléma enyhítését célzó folyamatban lévő nyomozást végeznek a jövőben.
+
+
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>Hogyan értheti el a fenyegetésfelderítési jelentést?
-A **Biztonsági riasztások** csempén áttekintheti az aktuális riasztásokat. Nyissa meg a Azure Portal, és kövesse az alábbi lépéseket az egyes riasztások részleteinek megtekintéséhez:
 
-1. A Security Center irányítópultján található a **Biztonsági riasztások** csempe.
-2. Kattintson a csempére, hogy megnyissa a **Biztonsági riasztások** panelt, amely további részleteket tartalmaz a riasztásokról, majd kattintson arra a biztonsági riasztásra, amelyről többet szeretne megtudni.
+1. A Security Center oldalsávján nyissa meg a **biztonsági riasztások** lapot.
+1. Válasszon ki egy riasztást. 
+    Megnyílik a riasztások részletei lap a riasztással kapcsolatos további részletekkel. Alább látható a **ransomware-mutatók észlelt** riasztás részletei lap.
 
-    ![Biztonsági riasztások](./media/security-center-threat-report/security-center-threat-report-fig1.png)
-3. Ebben az esetben a **gyanús folyamat végrehajtotta** a riasztás részleteit az alábbi ábrán látható módon:
+    [![Ransomware-mutatók észlelt riasztás részletei lap](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png)](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png#lightbox)
 
-    ![Biztonsági figyelmeztetés részletei](./media/security-center-threat-report/security-center-threat-report-fig2.png)
-4. Az egyes biztonsági riasztásokhoz elérthető információ mennyisége a riasztás típusától függően változik. A **jelentések** mezőben a fenyegetési intelligencia jelentésre mutató hivatkozás található. Kattintson a hivatkozásra, és egy PDF-fájl jelenik meg egy új böngészőablakban.
+1. Válassza ki a jelentésre mutató hivatkozást, és egy PDF-fájlt fog megnyílni az alapértelmezett böngészőben.
 
-   ![Tároló kiválasztása](./media/security-center-threat-report/security-center-threat-report-fig3.png)
+    [![Potenciálisan nem biztonságos műveleti riasztás részletei lap](media/security-center-threat-report/threat-intelligence-report.png)](media/security-center-threat-report/threat-intelligence-report.png#lightbox)
 
-Innen letöltheti a jelentéshez tartozó PDF-fájlt, ahol további információkat olvashat az észlelt biztonsági problémáról, és a megadott információkat alapul véve intézkedhet.
+    Igény szerint letöltheti a PDF-jelentést. 
 
-## <a name="see-also"></a>Lásd még
-Ebben a dokumentumban megismerkedhetett azzal, hogyan segítheti Önt az Azure Security Center fenyegetésfelderítési jelentés a biztonsági riasztások vizsgálata során. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+    >[!TIP]
+    > Az egyes biztonsági riasztásokhoz elérthető információ mennyisége a riasztás típusától függően változik.
 
-* [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md). A tervezési szempontokat ismertető és az azokat figyelembe vevő tervezési folyamatokban segítő útmutató, amely megkönnyíti az Azure Security Center használatát.
+
+
+## <a name="next-steps"></a>További lépések
+
+Ez az oldal azt ismerteti, hogyan nyitható meg a veszélyforrások felderítésére vonatkozó jelentések a biztonsági riasztások kivizsgálása során. A kapcsolódó információkat a következő lapokon tekintheti meg:
+
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md). A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
-* [Biztonsági incidensek kezelése az Azure Security Centerben](security-center-incident.md)
+* [A biztonsági incidensek kezelésének Azure Security Center](security-center-incident.md)

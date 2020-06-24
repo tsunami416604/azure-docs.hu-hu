@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282262"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699811"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
 Az Azure Service Fabric állapot-nyilvántartó Reliable Services StatefulServiceBase osztály a szolgáltatás hibakereséséhez használható [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -eseményeket bocsát ki, betekintést nyújt a futtatókörnyezet működéséhez, és segít a hibaelhárításban.
@@ -56,7 +56,7 @@ A Windows [Teljesítményfigyelő](https://technet.microsoft.com/library/cc74924
 A nagy mennyiségű megbízható szolgáltatást vagy megbízható szolgáltatási partíciót tartalmazó fürtök nagy számú tranzakciós replikáló teljesítményszámláló-példánnyal rendelkeznek. Ez a TStore teljesítményszámlálók esetében is igaz, de a megbízható szótárak és a használt megbízható várólisták száma is megszorozva. A teljesítményszámláló-példányok nevei segítenek a TStore esetében az adott [partíció](service-fabric-concepts-partitioning.md), a szolgáltatás replikájának és az állami szolgáltatónak az azonosításában, hogy a teljesítményszámláló-példány társítva legyen.
 
 #### <a name="service-fabric-transactional-replicator-category"></a>Service Fabric tranzakciós replikátor kategóriája
-A kategória `Service Fabric Transactional Replicator`esetében a számláló példányainak neve a következő formátumú:
+A kategória esetében `Service Fabric Transactional Replicator` a számláló példányainak neve a következő formátumú:
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
@@ -64,14 +64,14 @@ A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a 
 
 A *ServiceFabricReplicaId* egy megbízható szolgáltatás adott replikájának azonosítója. A rendszer a teljesítményszámláló-példány neve tartalmazza a replika AZONOSÍTÓját, hogy biztosítsa annak egyediségét, és elkerülje az azonos partíció által generált teljesítményszámláló-példányokkal való ütközést. A replikákkal és a megbízható szolgáltatásokban lévő szerepével kapcsolatos további részletek [itt](service-fabric-concepts-replica-lifecycle.md)találhatók.
 
-A következő számláló-példány neve általában a `Service Fabric Transactional Replicator` kategóriához tartozó számlálóhoz tartozik:
+A következő számláló-példány neve általában a kategóriához tartozó számlálóhoz tartozik `Service Fabric Transactional Replicator` :
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571`
 
-Az előző példában `00d0126d-3e36-4d68-98da-cc4f7195d85e` a Service FABRIC partíció azonosítójának karakterlánc-ábrázolása, és `131652217797162571` a replika azonosítója.
+Az előző példában a `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric partíció azonosítójának karakterlánc-ábrázolása, és `131652217797162571` a replika azonosítója.
 
 #### <a name="service-fabric-tstore-category"></a>Service Fabric TStore kategóriája
-A kategória `Service Fabric TStore`esetében a számláló példányainak neve a következő formátumú:
+A kategória esetében `Service Fabric TStore` a számláló példányainak neve a következő formátumú:
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
@@ -85,15 +85,15 @@ A *PerformanceCounterInstanceDifferentiator* egy, az állami szolgáltatón bel�
 
 A *StateProviderName* egy megbízható szolgáltatáson belüli állami szolgáltatóhoz tartozó név. Az állapot-szolgáltató neve tartalmazza a teljesítményszámláló-példány nevét, amellyel a felhasználók könnyen azonosíthatják, hogy milyen állapotot biztosít.
 
-A következő számláló-példány neve általában a `Service Fabric TStore` kategóriához tartozó számlálóhoz tartozik:
+A következő számláló-példány neve általában a kategóriához tartozó számlálóhoz tartozik `Service Fabric TStore` :
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-Az `00d0126d-3e36-4d68-98da-cc4f7195d85e` előző példában a Service FABRIC partíció azonosítójának karakterlánc- `131652217797162571` ábrázolása, a replika azonosítója, `142652217797162571` az állami szolgáltató azonosítója, és a teljesítményszámláló- `1337` példány megkülönböztethető. `urn:MyReliableDictionary/dataStore`annak az állami szolgáltatónak a neve, amely a nevű `urn:MyReliableDictionary`gyűjteményhez tartozó adattárolást tárolja.
+Az előző példában a `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric partíció azonosítójának karakterlánc-ábrázolása, `131652217797162571` a replika azonosítója, az `142652217797162571` állami szolgáltató azonosítója, és `1337` a teljesítményszámláló-példány megkülönböztethető. `urn:MyReliableDictionary/dataStore`annak az állami szolgáltatónak a neve, amely a nevű gyűjteményhez tartozó adattárolást tárolja `urn:MyReliableDictionary` .
 
 ### <a name="transactional-replicator-performance-counters"></a>Tranzakciós replikáló teljesítményszámlálók
 
-A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki `Service Fabric Transactional Replicator` a kategóriába
+A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric Transactional Replicator` kategóriába
 
  Számláló neve | Leírás |
 | --- | --- |
@@ -106,7 +106,7 @@ A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki `
 
 ### <a name="tstore-performance-counters"></a>TStore teljesítményszámlálók
 
-A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki `Service Fabric TStore` a kategóriába
+A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric TStore` kategóriába
 
  Számláló neve | Leírás |
 | --- | --- |

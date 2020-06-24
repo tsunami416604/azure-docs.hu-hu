@@ -37,7 +37,7 @@ Amikor karbantartási mód frissítéseit alkalmazza a StorSimple-eszközre, az 
 
     `Get-HcsUpdateStatus`
 
-    Ha az `RunInProgress` a `True`, a frissítés még folyamatban van. Ha `RunInProgress` igen `False`, azt jelzi, hogy a frissítés befejeződött.
+    Ha az `RunInProgress` a `True` , a frissítés még folyamatban van. Ha `RunInProgress` Igen `False` , azt jelzi, hogy a frissítés befejeződött.
 
 5. A lemez belső vezérlőprogram-frissítéseinek sikeres alkalmazása és a frissített vezérlő újraindítása után ellenőrizze a lemez belső vezérlőprogram-verzióját. A frissített vezérlőn írja be a következőt:
 

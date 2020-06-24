@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 63fee90be773f61bfef73e21a272192eea5f789c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 496f519ba5e4eb17060ee35ed86fba45c85336d6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167485"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905731"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linux Java-alkalmazás konfigurálása az Azure App Service-hez
 
@@ -44,7 +44,7 @@ A teljesítménnyel kapcsolatos jelentések, a forgalmi vizualizációk és az �
 
 ### <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 További információ: [stream-naplók Cloud Shellban](../troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
@@ -280,7 +280,7 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 ### <a name="configure-new-relic"></a>Új ereklye konfigurálása
 
 1. NewRelic-fiók létrehozása a [NewRelic.com](https://newrelic.com/signup) -ben
-2. Töltse le a Java-ügynököt a NewRelic-ből, mert a fájlnév a *newrelic-Java-x. x. x. zip*fájlhoz hasonló lesz.
+2. Töltse le a Java-ügynököt a NewRelic webhelyről, és a fájl neve hasonló lesz a *newrelic-java-x.x.x.ziphoz *.
 3. A licenckulcs másolásához az ügynököt később kell konfigurálnia.
 4. [SSH-t a app Service-példányba](app-service-linux-ssh-support.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
 5. Töltse fel a kicsomagolt NewRelic Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/newrelic*-ben kell lenniük.
@@ -292,7 +292,7 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 ### <a name="configure-appdynamics"></a>AppDynamics konfigurálása
 
 1. AppDynamics-fiók létrehozása a [AppDynamics.com](https://www.appdynamics.com/community/register/) -ben
-2. Töltse le a Java-ügynököt a AppDynamics webhelyről, és a fájlnév a *AppServerAgent-x. x. x. xxxxx. zip* fájlhoz hasonló lesz.
+2. Töltse le a Java-ügynököt a AppDynamics webhelyről, a fájl neve hasonló lesz *AppServerAgent-x.x.x.xxxxx.zip*
 3. [SSH-t a app Service-példányba](app-service-linux-ssh-support.md) , és hozzon létre egy új címtár- */Home/site/wwwroot/APM*.
 4. Töltse fel a Java-ügynök fájljait egy könyvtárba a */Home/site/wwwroot/APM*alatt. Az ügynök fájljainak a */Home/site/wwwroot/APM/appdynamics*-ben kell lenniük.
 5. A Azure Portal tallózással keresse meg az alkalmazást App Service és hozzon létre egy új alkalmazás-beállítást.
@@ -306,7 +306,7 @@ Ez a szakasz bemutatja, hogyan csatlakoztathatók a Linux rendszeren üzembe Azu
 
 ### <a name="starting-jar-apps"></a>JAR-alkalmazások indítása
 
-Alapértelmezés szerint a App Service a JAR-alkalmazást *app. jar*néven várja. Ha ezt a nevet adja, a rendszer automatikusan futtatja. A Maven-felhasználók számára beállíthatja a JAR nevét a `<finalName>app</finalName>` `<build>` *Pom. xml fájl*szakaszának használatával. [Ugyanezt a Gradle is megteheti](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) a tulajdonság beállításával `archiveFileName` .
+Alapértelmezés szerint a App Service a JAR-alkalmazást *app. jar*néven várja. Ha ezt a nevet adja, a rendszer automatikusan futtatja. A Maven-felhasználók esetében a JAR nevét a `<finalName>app</finalName>` `<build>` *pom.xml*szakaszának megfelelően állíthatja be. [Ugyanezt a Gradle is megteheti](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) a tulajdonság beállításával `archiveFileName` .
 
 Ha más nevet szeretne használni a JAR számára, meg kell adnia a JAR-fájlt végrehajtó [indítási parancsot](app-service-linux-faq.md#built-in-images) is. Például: `java -jar my-jar-app.jar`. Megadhatja az indítási parancs értékét a portálon, a konfiguráció > általános beállítások alatt, vagy egy nevű Alkalmazásbeállítás használatával `STARTUP_COMMAND` .
 
@@ -350,9 +350,9 @@ Ezután állapítsa meg, hogy az adatforrásnak elérhetőnek kell lennie egy al
 
 #### <a name="application-level-data-sources"></a>Alkalmazás szintű adatforrások
 
-1. Hozzon létre egy *Context. XML* fájlt a projekt *META-INF-* fájljában/könyvtárában. Ha nem létezik, hozza létre a *META-INF/* könyvtárat.
+1. Hozzon létre egy *context.xml* fájlt a projekt *META-INF-* fájljában/könyvtárában. Ha nem létezik, hozza létre a *META-INF/* könyvtárat.
 
-2. A *Context. xml fájlban*adjon hozzá egy `Context` elemet az adatforrás JNDI való összekapcsolásához. Cserélje le a `driverClassName` helyőrzőt az illesztőprogram osztályának nevére a fenti táblázatból.
+2. A *context.xmlban *adjon hozzá egy `Context` elemet, amely összekapcsolja az adatforrást egy JNDI-címnek. Cserélje le a `driverClassName` helyőrzőt az illesztőprogram osztályának nevére a fenti táblázatból.
 
     ```xml
     <Context>
@@ -367,7 +367,7 @@ Ezután állapítsa meg, hogy az adatforrásnak elérhetőnek kell lennie egy al
     </Context>
     ```
 
-3. Frissítse az alkalmazás *web. XML* fájlját az alkalmazás adatforrásának használatára.
+3. Frissítse alkalmazása *web.xml* az alkalmazás adatforrásának használatára.
 
     ```xml
     <resource-env-ref>
@@ -378,9 +378,9 @@ Ezután állapítsa meg, hogy az adatforrásnak elérhetőnek kell lennie egy al
 
 #### <a name="shared-server-level-resources"></a>Megosztott kiszolgálói szintű erőforrások
 
-Megosztott, kiszolgálóoldali adatforrások hozzáadásához a Tomcat Server. XML fájljának szerkesztésére lesz szükség. Először töltse fel az [indítási parancsfájlt](app-service-linux-faq.md#built-in-images) , és állítsa be a parancsfájl elérési útját a **konfigurációs**  >  **indítási parancsban**. Az indítási parancsfájlt az [FTP](../deploy-ftp.md)használatával töltheti fel.
+Megosztott, kiszolgálóoldali adatforrások hozzáadásához a Tomcat server.xml szerkesztésére lesz szükség. Először töltse fel az [indítási parancsfájlt](app-service-linux-faq.md#built-in-images) , és állítsa be a parancsfájl elérési útját a **konfigurációs**  >  **indítási parancsban**. Az indítási parancsfájlt az [FTP](../deploy-ftp.md)használatával töltheti fel.
 
-Az indítási parancsfájl [XSL-átalakítót](https://www.w3schools.com/xml/xsl_intro.asp) készít a Server. XML fájlra, majd az eredményül kapott XML-fájlt kiírja a következőre: `/usr/local/tomcat/conf/server.xml` . Az indítási parancsfájlnak az apk használatával kell telepítenie a libxslt-t. Az XSL-fájl és az indítási parancsfájl FTP-n keresztül tölthető fel. Az alábbi példa egy indítási parancsfájlt mutat be.
+Az indítási parancsfájl [XSL-átalakítót](https://www.w3schools.com/xml/xsl_intro.asp) készít a server.xml fájlra, majd az eredményül kapott XML-fájlt kiírja a következőre: `/usr/local/tomcat/conf/server.xml` . Az indítási parancsfájlnak az apk használatával kell telepítenie a libxslt-t. Az XSL-fájl és az indítási parancsfájl FTP-n keresztül tölthető fel. Az alábbi példa egy indítási parancsfájlt mutat be.
 
 ```sh
 # Install libxslt. Also copy the transform file to /home/tomcat/conf/
@@ -390,7 +390,7 @@ apk add --update libxslt
 xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
-Alább található egy példa XSL-fájl. A példában szereplő XSL-fájl új összekötő csomópontot helyez el a Tomcat Server. XML fájlba.
+Alább található egy példa XSL-fájl. A példában szereplő XSL-fájl új összekötő csomópontot hoz létre a Tomcat server.xmlhoz.
 
 ```xml
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -524,7 +524,7 @@ A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [Pe
 
     A Azure Portal nevét, portját és hozzáférési kulcsát a szolgáltatási példány **Tulajdonságok** vagy **hozzáférési kulcsok** szakaszában tekintheti meg.
 
-2. Hozza létre vagy frissítse az alkalmazás *src/Main/WebApp/META-INF/Context. XML* fájlját a következő tartalommal:
+2. Az alkalmazás *src/Main/WebApp/META-INF/context.xml* fájljának létrehozása vagy frissítése a következő tartalommal:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -562,7 +562,7 @@ A Tomcat és a Redis használatához konfigurálnia kell az alkalmazást egy [Pe
 
 7. Nyissa meg a **Redis-példány** **Speciális beállítások** szakaszát, és állítsa a **hozzáférés engedélyezése csak SSL-kapcsolaton keresztül** beállítást. Ez lehetővé teszi, hogy az App Service-példány kommunikáljon a Redis cache-vel az Azure-infrastruktúrán keresztül.
 
-8. Frissítse az `azure-webapp-maven-plugin` alkalmazás *Pom. XML* fájljának konfigurációját, hogy a Redis-fiók adataira hivatkozzon. Ez a fájl a korábban beállított környezeti változókat használja, hogy a fiókadatok a forrásfájlok adatain kívül maradjanak.
+8. Frissítse az `azure-webapp-maven-plugin` alkalmazás *pom.xml* fájljának konfigurációját, hogy a Redis-fiók adataira hivatkozzon. Ez a fájl a korábban beállított környezeti változókat használja, hogy a fiókadatok a forrásfájlok adatain kívül maradjanak.
 
     Szükség esetén frissítse a [Maven Plugin for Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)`1.9.1`-ás verzióját a jelenlegire.
 
@@ -651,7 +651,7 @@ Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett futtatókör
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Látogasson el az Azure [for Java Developers](/java/azure/) Center webhelyre, ahol megtalálhatja az Azure rövid útmutatók, oktatóanyagok és a Java-dokumentációt.
 

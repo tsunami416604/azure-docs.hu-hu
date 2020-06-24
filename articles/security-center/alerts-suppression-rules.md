@@ -8,14 +8,14 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 84b5cd8a59103f60249da861238acb45f8aa2fd5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 8644a4e7dc8973775d952581bfc57d266c79f1a5
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871699"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130789"
 ---
-# <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Azure Security Center veszélyforrások elleni védelemből származó riasztások letiltása
+# <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Azure Security Center fenyegetések elleni védelemből származó riasztások letiltása
 
 Ez az oldal azt ismerteti, hogyan használhatók a riasztások letiltási szabályai a hamis pozitív vagy más nemkívánatos biztonsági riasztások letiltásához a Azure Security Centerban.
 
@@ -28,7 +28,7 @@ Ez az oldal azt ismerteti, hogyan használhatók a riasztások letiltási szabá
     - ✔ National/Sovereign (US Gov, Kína gov, other gov)
 
 
-## <a name="introduction-to-suppression-rules"></a>A mellőzési szabályok bemutatása
+## <a name="what-are-suppression-rules"></a>Mik azok a letiltási szabályok?
 
 Azure Security Center veszélyforrások elleni védelmi összetevői észlelnek fenyegetéseket a környezet bármely területén, és biztonsági riasztásokat hoznak.
 
@@ -45,7 +45,7 @@ A letiltási szabályok határozzák meg azokat a feltételeket, amelyek esetéb
 
 [![Azure Security Center biztonsági riasztások lap riasztások elnyomására vonatkozó beállításokkal](media/alerts-suppression-rules/alerts-screen-with-options.png)](media/alerts-suppression-rules/alerts-screen-with-options.png#lightbox)
 
-## <a name="creating-a-suppression-rule"></a>Mellőzési szabály létrehozása
+## <a name="create-a-suppression-rule"></a>Mellőzési szabály létrehozása
 
 A nemkívánatos biztonsági riasztások figyelmen kívül hagyása érdekében többféleképpen hozhat létre szabályokat:
 
@@ -89,13 +89,13 @@ Szabály létrehozása közvetlenül a Azure Portalban:
 
 1. Mentse a szabályt. 
 
-## <a name="editing-suppression-rules"></a>Mellőzési szabályok szerkesztése
+## <a name="edit-a-suppression-rules"></a>Mellőzési szabályok szerkesztése
 
 A létrehozott szabályok szerkesztéséhez használja a letiltási szabályok lapot.
 
 1. A Security Center biztonsági riasztásai lapon válassza a **letiltási szabályok** hivatkozást az oldal tetején.
 
-1. A tiltási szabályok lap az aktuálisan kiválasztott előfizetések szerint megjeleníti az összes elérhető szabályt. 
+1. Megnyílik a letiltási szabályok lap, amely a kijelölt előfizetésekre vonatkozó összes szabályt megjeleníti.
 
     [![Mellőzési szabályok listája](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
@@ -103,13 +103,13 @@ A létrehozott szabályok szerkesztéséhez használja a letiltási szabályok l
 
 1. Végezze el a szükséges módosításokat, majd válassza az **alkalmaz**lehetőséget. 
 
-## <a name="deleting-suppression-rules"></a>Mellőzési szabályok törlése
+## <a name="delete-a-suppression-rule"></a>Mellőzési szabály törlése
 
 Egy vagy több létrehozott szabály törléséhez használja a letiltási szabályok lapot.
 
 1. A Security Center biztonsági riasztásai lapon válassza a **letiltási szabályok** hivatkozást az oldal tetején.
 
-1. A tiltási szabályok lap az aktuálisan kiválasztott előfizetések szerint megjeleníti az összes elérhető szabályt. 
+1. Megnyílik a letiltási szabályok lap, amely a kijelölt előfizetésekre vonatkozó összes szabályt megjeleníti.
 
 1. Egyetlen szabály törléséhez nyissa meg a szabály három pontot (...), majd válassza a **Törlés**lehetőséget.
 
@@ -117,7 +117,7 @@ Egy vagy több létrehozott szabály törléséhez használja a letiltási szab�
 
     ![Egy vagy több elnyomási szabály törlése](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
-## <a name="viewing-alerts-that-have-been-suppressed"></a>A letiltott riasztások megtekintése
+## <a name="view-suppressed-alerts"></a>Letiltott riasztások megtekintése
 
 Az engedélyezett letiltási szabályoknak megfelelő riasztások továbbra is létrejönnek, de az állapotukat a rendszer **elutasítja**. Megtekintheti az állapotot a Azure Portalban, vagy hozzáférhet a Security Center biztonsági riasztásokhoz. 
 
@@ -131,7 +131,7 @@ A szabályok által elvetett riasztások megtekintéséhez használja Security C
    [![Elbocsátott riasztások megtekintése](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
 
 
-## <a name="using-the-api-to-create-and-manage-suppression-rules"></a>Az API használata a letiltási szabályok létrehozásához és kezeléséhez
+## <a name="create-and-manage-suppression-rules-with-the-api"></a>Letiltási szabályok létrehozása és kezelése az API-val
 
 A riasztások letiltási szabályait a Security Center REST API segítségével hozhatja létre, tekintheti meg vagy törölheti. 
 
@@ -152,7 +152,7 @@ A REST API a következő letiltási szabályokra vonatkozó HTTP-metódusok:
 A részletekért és a használati példákért tekintse meg az [API dokumentációját](https://docs.microsoft.com/rest/api/securitycenter/). 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk az Azure Security Center letiltási szabályait ismerteti, amelyek automatikusan elmulasztják a nemkívánatos riasztásokat.
 

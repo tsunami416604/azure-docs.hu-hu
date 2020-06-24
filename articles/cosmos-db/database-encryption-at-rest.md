@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 541c6f4a6c728844524af794f5e2063f4e352cce
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592134"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114775"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Adatok titkosítása az Azure Cosmos DB-ben 
 
@@ -24,7 +24,7 @@ A Azure Cosmos DB nagyon könnyen használható. Mivel a Azure Cosmos DBban tár
 
 A REST-alapú titkosítás számos biztonsági technológiával valósul meg, többek között a biztonságos kulcsú tárolási rendszerek, a titkosított hálózatok és a titkosítási API-k használatával. Az adatvisszafejtési és-feldolgozási rendszerek a kulcsokat kezelő rendszerekkel kommunikálnak. Az ábrán látható, hogy a titkosított adatok tárolása és a kulcsok kezelése elkülönül. 
 
-![Tervezési diagram](./media/database-encryption-at-rest/design-diagram.png)
+:::image type="content" source="./media/database-encryption-at-rest/design-diagram.png" alt-text="Tervezési diagram" border="false":::
 
 A felhasználói kérések alapszintű folyamatábrája a következő:
 - A felhasználói adatbázis fiókja készen áll, és a tárolási kulcsok beolvasása a kezelési szolgáltatás erőforrás-szolgáltatójának kérelme alapján történik.
@@ -46,7 +46,7 @@ A: a kulcsokat a Microsoft felügyeli.
 A: a Microsoft a titkosítási kulcs elforgatására vonatkozó belső irányelveket tartalmaz, amelyek Cosmos DB következnek. Az adott irányelvek nincsenek közzétéve. A Microsoft közzéteszi a [biztonsági fejlesztési életciklust (SDL)](https://www.microsoft.com/sdl/default.aspx), amelyet a belső útmutatások egy részhalmazának tekintenek, és hasznos gyakorlati tanácsokat tartalmaz a fejlesztők számára.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>K: használhatom a saját titkosítási kulcsokat?
-A: igen most ez a szolgáltatás elérhető az új Cosmos-fiókokhoz, és ezt a fiók létrehozásakor kell elvégezni. További információkért tekintse át az [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) című dokumentumot.
+A: igen, ez a funkció mostantól elérhető az új Azure Cosmos DB fiókokhoz, és ezt a fiók létrehozásakor kell elvégezni. További információért olvassa el az [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) című dokumentumot.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>K: mely régiókban van engedélyezve a titkosítás?
 A: minden Azure Cosmos DB régióban van a titkosítás bekapcsolva az összes felhasználói adattal.

@@ -15,7 +15,7 @@ ms.locfileid: "67179316"
 
 Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update katalógusból történő letöltéséhez.
 
-1. Indítsa el az Internet Explorert, [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)és navigáljon a gombra.
+1. Indítsa el az Internet Explorert, és navigáljon a gombra [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 2. Ha most használja először a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a rendszer a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 
     ![Katalógus telepítése](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -51,7 +51,7 @@ A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa 
 4. Amikor a rendszer kéri, adja meg a jelszót. Alább látható egy példa az elsőrendű frissítések telepítésének kimenetére. Az első megrendelés frissítéséhez az adott fájlra kell mutatnia.
 
     >[!NOTE] 
-    > Először telepítse a _HcsSoftwareUpdate. exe fájlt_ . A telepítés befejezése után telepítse a _CisMdsAgentUpdate. exe fájlt_.
+    > Először telepítenie kell a _HcsSoftwareUpdate.exe_ . A telepítés befejezése után telepítse a _CisMdsAgentUpdate.exe_.
    
         ```
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
@@ -68,7 +68,7 @@ A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa 
 5. Írja be az **Y** karaktert, amikor a rendszer kéri, hogy erősítse meg a gyorsjavítás telepítését.
 6. A frissítést a `Get-HcsUpdateStatus` parancsmag használatával figyelheti. A frissítés előbb a passzív vezérlőn lesz végrehajtva. Miután a passzív vezérlő frissítve lett, az azt követő feladatátvétel során a frissítés a másik vezérlőre is alkalmazva lesz. A frissítés akkor fejeződött be, ha mindkét vezérlő frissítve lett.
    
-    Az alábbi kimeneti példa azt mutatja, hogy a frissítés még folyamatban van. Az `RunInprogress` az `True` , amikor a frissítés folyamatban van.
+    Az alábbi kimeneti példa azt mutatja, hogy a frissítés még folyamatban van. Az az `RunInprogress` , `True` Amikor a frissítés folyamatban van.
 
     ```
     Controller0>Get-HcsUpdateStatus
@@ -79,7 +79,7 @@ A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa 
     Controller1Events   :
     ```
    
-     Az alábbi kimeneti példa azt mutatja, hogy a frissítés befejeződött. Az `RunInProgress` az `False` , amikor a frissítés befejeződött.
+     Az alábbi kimeneti példa azt mutatja, hogy a frissítés befejeződött. Az az `RunInProgress` , `False` Amikor a frissítés befejeződött.
    
     ```
     Controller0>Get-HcsUpdateStatus
@@ -107,11 +107,11 @@ A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa 
      > [!IMPORTANT]
      > A következő frissítés alkalmazása előtt újra kell indítania az aktív vezérlőt a `Restart-HcsController` parancsmagon keresztül.
      
-8. Ismételje meg a 3-6-es lépéseket a _CisMDSAgentupdate. exe_ ügynöknek a _FirstOrderUpdate_ mappába való letöltésének telepítéséhez.
+8. Ismételje meg a 3-6-es lépést a _CisMDSAgentupdate.exe_ ügynöknek a _FirstOrderUpdate_ mappába való letöltésének telepítéséhez.
 8. Ismételje meg a 3-6 lépést a második megrendelés frissítéseinek telepítéséhez. 
 
     > [!NOTE] 
-    > A második megrendelési frissítések esetében több frissítés is telepíthető a `Start-HcsHotfix cmdlet` futtatásával, és arra a mappára mutat, ahol a második megrendelés frissítései találhatók. A parancsmag végrehajtja a mappában található összes frissítést. Ha valamely frissítés már telepítve lett, a frissítési logika észleli ezt, és nem alkalmazza újra az adott frissítést.
+    > A második megrendelési frissítések esetében több frissítés is telepíthető a futtatásával, `Start-HcsHotfix cmdlet` és arra a mappára mutat, ahol a második megrendelés frissítései találhatók. A parancsmag végrehajtja a mappában található összes frissítést. Ha valamely frissítés már telepítve lett, a frissítési logika észleli ezt, és nem alkalmazza újra az adott frissítést.
 
     Miután az összes gyorsjavítás telepítve lett, használja a `Get-HcsSystem` parancsmagot. A verziónak a következőknek kell lennie:
     

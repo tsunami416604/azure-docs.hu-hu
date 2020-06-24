@@ -4,22 +4,23 @@ description: A Windows rendszerű virtuális asztalok MSIX alkalmazásának beá
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6544a0536a99261d1ebc13748a5365b9893e789
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605194"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204472"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
 > [!IMPORTANT]
 > A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
-> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ebből a témakörből megtudhatja, hogyan állíthatja be a MSIX-alkalmazások csatlakoztatását egy Windows rendszerű virtuális asztali környezetben.
 
@@ -29,11 +30,29 @@ Mielőtt elkezdené, a következő lépésekkel kell konfigurálnia a MSIX-alkal
 
 - Hozzáférés a Windows Insider portálhoz a Windows 10 azon verziójának beszerzéséhez, amely támogatja a MSIX app Attach API-kat.
 - Működő Windowsos virtuális asztali telepítés. A Windows rendszerű virtuális asztali környezet 2019-es verziójának üzembe helyezésével kapcsolatos további információkért lásd: [bérlő létrehozása a Windows Virtual Desktopban](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). A Windows rendszerű virtuális asztali 2020 kiadásának üzembe helyezéséről a következő témakörben talál további információt: [Host Pool létrehozása a Azure Portal](./create-host-pools-azure-marketplace.md).
+- A MSIX-csomagoló eszköz.
+- Hálózati megosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomagot tárolja a rendszer.
 
-- A MSIX-csomagoló eszköz
-- Hálózati megosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomag tárolva lesz
+## <a name="get-the-os-image"></a>Az operációs rendszer rendszerképének beolvasása
 
-## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>Az operációs rendszer rendszerképének beszerzése a Technology bevezetési program (TAP) portálján
+Először le kell kérnie az operációs rendszer rendszerképét. Az operációs rendszer rendszerképét az Azure Portalon keresztül érheti el. Ha azonban Ön a Windows Insider program tagja, lehetősége van a Windows Insider portál használatára.
+
+### <a name="get-the-os-image-from-the-azure-portal"></a>Az operációs rendszer rendszerképének beolvasása a Azure Portal
+
+Az operációs rendszer rendszerképének beszerzése a Azure Portalról:
+
+1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be.
+
+2. Válassza a **virtuális gép létrehozása**lehetőséget.
+
+3. Az **alapszintű** lapon válassza a **Windows 10 Enterprise multi-session (2004-es verzió**) lehetőséget.
+
+4. A virtuális gép létrehozásának befejezéséhez kövesse a további utasításokat.
+
+     >[!NOTE]
+     >A virtuális gép használatával közvetlenül tesztelheti a MSIX-alkalmazás csatolását. További információért ugorjon a [virtuális merevlemez-vagy VHDX-csomag MSIX való létrehozásához](#generate-a-vhd-or-vhdx-package-for-msix). Ellenkező esetben folytassa a szakasz olvasásával.
+
+### <a name="get-the-os-image-from-the-windows-insider-portal"></a>Az operációs rendszer rendszerképének beszerzése a Windows Insider portálról
 
 Az operációs rendszer rendszerképének beszerzése a Windows Insider portálról:
 
@@ -45,30 +64,15 @@ Az operációs rendszer rendszerképének beszerzése a Windows Insider portálr
 2. Görgessen le a **Select Edition (kiadás kiválasztása** ) szakaszhoz, és válassza a **Windows 10 Insider Preview Enterprise (gyors) – build 19041** vagy újabb lehetőséget.
 
 3. Válassza a **megerősítés**lehetőséget, majd válassza ki a használni kívánt nyelvet, majd kattintson ismét a **Confirm (megerősítés** ) gombra.
-    
+
      >[!NOTE]
      >Jelenleg az angol az egyetlen olyan nyelv, amelyet teszteltek a szolgáltatással. Kijelölhet más nyelveket is, de előfordulhat, hogy nem a kívánt módon jelennek meg.
-    
+
 4. A letöltési hivatkozás létrehozása után válassza ki a **64 bites letöltést** , és mentse a helyi merevlemezre.
 
-## <a name="get-the-os-image-from-the-azure-portal"></a>Az operációs rendszer rendszerképének beolvasása a Azure Portal
+## <a name="prepare-the-vhd-image-for-azure"></a>A VHD-rendszerkép előkészítése az Azure-hoz
 
-Az operációs rendszer rendszerképének beszerzése a Azure Portalról:
-
-1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be.
-
-2. Válassza a **virtuális gép létrehozása**lehetőséget.
-
-3. Az **alapszintű** lapon válassza a **Windows 10 Enterprise multi-session (2004-es verzió**) lehetőséget.
-      
-4. A virtuális gép létrehozásának befejezéséhez kövesse a további utasításokat.
-
-     >[!NOTE]
-     >A virtuális gép használatával közvetlenül tesztelheti a MSIX-alkalmazás csatolását. További információért ugorjon a [virtuális merevlemez-vagy VHDX-csomag MSIX való létrehozásához](#generate-a-vhd-or-vhdx-package-for-msix). Ellenkező esetben folytassa a szakasz olvasásával.
-
-## <a name="prepare-the-vhd-image-for-azure"></a>A VHD-rendszerkép előkészítése az Azure-hoz 
-
-A Kezdés előtt létre kell hoznia egy fő VHD-rendszerképet. Ha még nem hozta létre a fő VHD-lemezképet, ugorjon a [fő VHD-rendszerkép előkészítése és testreszabása](set-up-customize-master-image.md) című témakörre, és kövesse az itt található utasításokat. 
+Ezután létre kell hoznia egy fő VHD-lemezképet. Ha még nem hozta létre a fő VHD-lemezképet, ugorjon a [fő VHD-rendszerkép előkészítése és testreszabása](set-up-customize-master-image.md) című témakörre, és kövesse az itt található utasításokat.
 
 A fő VHD-rendszerkép létrehozása után le kell tiltania az MSIX alkalmazáshoz tartozó alkalmazások automatikus frissítését. Az automatikus frissítések letiltásához futtatnia kell a következő parancsokat egy rendszergazda jogú parancssorban:
 
@@ -90,7 +94,7 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Miután letiltotta az automatikus frissítéseket, engedélyeznie kell a Hyper-V-t, mert a Mount-VHD parancsot fogja használni a kilépéshez és a virtuális merevlemez leválasztásához. 
+Miután letiltotta az automatikus frissítéseket, engedélyeznie kell a Hyper-V-t, mert a Mount-VHD parancsot fogja használni a kilépéshez és a virtuális merevlemez leválasztásához.
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -102,7 +106,7 @@ Ezután készítse elő az Azure-beli virtuális gép virtuális merevlemezét, 
 
 Miután feltöltötte a VHD-t az Azure-ba, hozzon létre egy, az új rendszerképen alapuló alkalmazáskészletet az Azure Marketplace oktatóanyagának használatával, a [gazdagép létrehozása](create-host-pools-azure-marketplace.md) című témakör utasításait követve.
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>Az alkalmazás előkészítése MSIX-alkalmazás csatolásához 
+## <a name="prepare-the-application-for-msix-app-attach"></a>Az alkalmazás előkészítése MSIX-alkalmazás csatolásához
 
 Ha már rendelkezik MSIX-csomaggal, ugorjon előre a [Windows rendszerű virtuális asztali infrastruktúra konfigurálásához](#configure-windows-virtual-desktop-infrastructure). Ha az örökölt alkalmazásokat szeretné tesztelni, kövesse az [MSIX-csomag létrehozása egy virtuális gépen asztali telepítőből](/windows/msix/packaging-tool/create-app-package-msi-vm/) című témakör utasításait, hogy az örökölt alkalmazást egy MSIX-csomagba alakítsa át.
 
@@ -185,7 +189,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy a hálózati megosztás megfe
 - A megosztás SMB-kompatibilis.
 - A munkamenet-címkészlet részét képező virtuális gépek NTFS-jogosultságokkal rendelkeznek a megosztáshoz.
 
-### <a name="set-up-an-msix-app-attach-share"></a>MSIX-alkalmazás csatlakoztatása megosztás létrehozása 
+### <a name="set-up-an-msix-app-attach-share"></a>MSIX-alkalmazás csatlakoztatása megosztás létrehozása
 
 A Windows rendszerű virtuális asztali környezetben hozzon létre egy hálózati megosztást, és helyezze át a csomagot.
 
@@ -426,16 +430,16 @@ Ezen automatikus parancsfájlok mindegyike az alkalmazás egy fázisát futtatja
 
 ## <a name="use-packages-offline"></a>Csomagok használata kapcsolat nélküli üzemmódban
 
-Ha olyan csomagokat használ a [Microsoft Store for Business](https://businessstore.microsoft.com/) vagy a [Microsoft Store for Education](https://educationstore.microsoft.com/) szolgáltatásban a hálózaton vagy az internethez nem csatlakozó eszközökön, le kell kérnie a csomag licenceit a Microsoft Store, és telepítenie kell őket az eszközre az alkalmazás sikeres futtatásához. Ha az eszköz online állapotban van, és kapcsolódni tud a vállalati Microsoft Storehoz, a szükséges licenceket automatikusan le kell tölteni, de ha offline állapotban van, manuálisan kell beállítania a licenceket. 
+Ha olyan csomagokat használ a [Microsoft Store for Business](https://businessstore.microsoft.com/) vagy a [Microsoft Store for Education](https://educationstore.microsoft.com/) szolgáltatásban a hálózaton vagy az internethez nem csatlakozó eszközökön, le kell kérnie a csomag licenceit a Microsoft Store, és telepítenie kell őket az eszközre az alkalmazás sikeres futtatásához. Ha az eszköz online állapotban van, és kapcsolódni tud a vállalati Microsoft Storehoz, a szükséges licenceket automatikusan le kell tölteni, de ha offline állapotban van, manuálisan kell beállítania a licenceket.
 
-A licencfájl telepítéséhez egy PowerShell-szkriptet kell használnia, amely meghívja a MDM_EnterpriseModernAppManagement_StoreLicenses02_01 osztályt a WMI Bridge-szolgáltatóban.  
+A licencfájl telepítéséhez egy PowerShell-szkriptet kell használnia, amely meghívja a MDM_EnterpriseModernAppManagement_StoreLicenses02_01 osztályt a WMI Bridge-szolgáltatóban.
 
-A következő módon állíthatja be a licenceket offline használatra: 
+A következő módon állíthatja be a licenceket offline használatra:
 
 1. Töltse le az alkalmazáscsomag, a licencek és a szükséges keretrendszereket a vállalati Microsoft Store. A kódolt és a titkosítatlan licencek is szükségesek. Részletes letöltési utasítások [itt](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)találhatók.
 2. Frissítse a következő változókat a 3. lépéshez tartozó parancsfájlban:
       1. `$contentID`a ContentID értéke a nem kódolt licencfájl (. xml). A licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
-      2. `$licenseBlob`a a titkosított licencfájl (. bin) teljes karakterlánca a licenc blobjának. A kódolt licencfájl megnyitható egy tetszőleges szövegszerkesztőben. 
+      2. `$licenseBlob`a a titkosított licencfájl (. bin) teljes karakterlánca a licenc blobjának. A kódolt licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
 3. Futtassa a következő parancsfájlt egy rendszergazdai PowerShell-parancssorból. A licencek telepítésének megfelelő helye az [átmeneti parancsfájl](#stage-the-powershell-script) végén található, amelyet rendszergazdai parancssorból is futtatni kell.
 
 ```powershell
@@ -450,14 +454,14 @@ $contentID = "{'ContentID'_in_unencoded_license_file}"
 #TODO - Update $licenseBlob with the entire String in the encoded license file (.bin)
 $licenseBlob = "{Entire_String_in_encoded_license_file}"
 
-$session = New-CimSession 
+$session = New-CimSession
 
 #The final string passed into the AddLicenseMethod should be of the form <License Content="encoded license blob" />
-$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />' 
+$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />'
 
 $params = New-Object Microsoft.Management.Infrastructure.CimMethodParametersCollection
 $param = [Microsoft.Management.Infrastructure.CimMethodParameter]::Create("param",$licenseString ,"String", "In")
-$params.Add($param) 
+$params.Add($param)
 
 
 try
@@ -469,10 +473,10 @@ try
 catch [Exception]
 {
      write-host $_ | out-string
-}  
+}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a funkció jelenleg nem támogatott, de kérdéseket tehet fel a Közösségnek a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 

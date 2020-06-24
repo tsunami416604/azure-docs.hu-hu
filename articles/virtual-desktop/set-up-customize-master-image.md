@@ -4,16 +4,16 @@ description: Windows rendszerű virtuális asztali rendszerképek előkészíté
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 31a2bcdcf7b21999ddf17170b024589204c0e9e5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611959"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212785"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -63,9 +63,9 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 ## <a name="software-preparation-and-installation"></a>Szoftverek előkészítése és telepítése
 
-Ez a szakasz a FSLogix és a Windows Defender előkészítését és telepítését, valamint az alkalmazások és a rendszerkép beállításjegyzékének alapszintű konfigurációs beállításait ismerteti. 
+Ez a szakasz a FSLogix és a Windows Defender előkészítését és telepítését, valamint az alkalmazások és a rendszerkép beállításjegyzékének alapszintű konfigurációs beállításait ismerteti.
 
-Ha az Office 365 ProPlus és a OneDrive-et telepíti a virtuális gépre, lépjen az [Office telepítése fő VHD-lemezképre](install-office-on-wvd-master-image.md) , és kövesse az itt található utasításokat az alkalmazások telepítéséhez. Ha elkészült, térjen vissza ehhez a cikkhez.
+Ha nagyvállalati és OneDrive telepíti Microsoft 365 alkalmazásait a virtuális gépen, lépjen az [Office telepítése fő VHD-lemezképre](install-office-on-wvd-master-image.md) , és kövesse az itt található utasításokat az alkalmazások telepítéséhez. Ha elkészült, térjen vissza ehhez a cikkhez.
 
 Ha a felhasználóknak hozzá kell férniük bizonyos LOB-alkalmazásokhoz, javasoljuk, hogy a szakasz utasításainak elvégzése után telepítse őket.
 
@@ -87,7 +87,7 @@ Ha többet szeretne megtudni arról, hogyan konfigurálhatja a Windows Defendert
 
 Az automatikus frissítések letiltása helyi Csoportházirend használatával:
 
-1. Nyissa meg **Helyicsoportházirend-szerkesztő\\\\felügyeleti sablonok\\Windows-összetevők Windows Update**.
+1. Nyissa meg **Helyicsoportházirend-szerkesztő \\ Felügyeleti sablonok \\ Windows-összetevők \\ Windows Update**.
 2. Kattintson a jobb gombbal az **automatikus frissítés konfigurálása** elemre, és állítsa **le a Letiltva**értékre.
 
 A parancssorban a következő parancsot is futtathatja az automatikus frissítések letiltásához.
@@ -113,7 +113,7 @@ Időzónák átirányítása:
 1. A Active Directory-kiszolgálón nyissa meg a **csoportházirend-kezelő konzol**.
 2. Bontsa ki a tartományt és Csoportházirend objektumokat.
 3. Kattintson a jobb gombbal a csoportházirend-beállításokhoz létrehozott **csoportházirend objektumra** , és válassza a **Szerkesztés**lehetőséget.
-4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **számítógép-konfigurációs** > **házirendek** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **eszköz és erőforrás-átirányítás**elemre.
+4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **számítógép-konfigurációs**  >  **házirendek**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal munkamenet-gazdagép**  >  **eszköz és erőforrás-átirányítás**elemre.
 5. Engedélyezze az **időzóna-átirányítás engedélyezése** beállítást.
 
 Ezt a parancsot a fő lemezképen is futtathatja az időzónák átirányításához:
@@ -136,7 +136,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>További nyelvi támogatás
 
-Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információkért tekintse át a következő cikkeket:
+Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információért tekintse át a következő cikkeket:
 
 - [Nyelvek hozzáadása Windows-lemezképekhez](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [Igény szerinti szolgáltatások](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)

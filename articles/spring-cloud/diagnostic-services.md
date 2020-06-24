@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176787"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790585"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Naplók és mérőszámok elemzése diagnosztikai beállításokkal
 
@@ -105,7 +105,7 @@ A naplók és a metrikák megtekintésére többféle módszer áll rendelkezés
     | limit 50
     ```
 > [!NOTE]
-> `==`megkülönbözteti a kis- `=~` és nagybetűket, de nem.
+> `==`megkülönbözteti a kis-és nagybetűket, de `=~` nem.
 
 Ha többet szeretne megtudni a Log Analytics használt lekérdezési nyelvről, tekintse meg a [Azure monitor a naplók lekérdezését](../azure-monitor/log-query/query-language.md)ismertető témakört.
 
@@ -174,3 +174,31 @@ AppPlatformLogsforSpring
 ### <a name="learn-more-about-querying-application-logs"></a>További információ az alkalmazási naplók lekérdezéséről
 
 Azure Monitor széles körű támogatást nyújt az alkalmazások naplófájljainak lekérdezéséhez Log Analytics használatával. A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő témakört: az [első lépések a naplózási lekérdezésekkel kapcsolatban Azure monitor](../azure-monitor/log-query/get-started-queries.md). Az alkalmazás naplófájljainak elemzésére szolgáló lekérdezések létrehozásával kapcsolatos további információkért lásd: [a Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
+
+### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>Többsoros Java stack-nyomkövetés átalakítása egyetlen sorba
+
+Megkerülő megoldás, hogy a többsoros verem nyomkövetéseit egyetlen sorba alakítsa át. A Java-napló kimenetét módosíthatja a verem nyomkövetési üzeneteinek újraformázásához, a sortörési karaktereket pedig tokenre cserélve. Ha Java Logback-függvénytárat használ, a következőképpen formázhatja a verem nyomkövetési üzeneteit `%replace(%ex){'[\r\n]+', '\\n'}%nopex` :
+
+```xml
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                level: %level, message: "%logger{36}: %msg", exceptions: "%replace(%ex){'[\r\n]+', '\\n'}%nopex"%n
+            </pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+```
+Ezután az alábbi módon lecserélheti a tokent sortörési karakterekkel Log Analytics az alábbiak szerint:
+
+```sql
+AppPlatformLogsforSpring
+| extend Log = array_strcat(split(Log, '\\n'), '\n')
+```
+Használhatja ugyanezt a stratégiát más Java-naplókhoz is.

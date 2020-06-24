@@ -1,25 +1,25 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 05/14/2020
+ms.date: 06/22/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 4e00b0c46c79dc058d19076a396d055ba1d41b87
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe223030b98f95036f01cf69babdeb8a9a84dc2d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673526"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242068"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
 | Adatátviteli sebesség |30 GB/s<sup>1</sup> |
 |Szabályok|10 000. Minden szabálytípus kombinálva.|
-|Maximális DNAT-szabályok|298<br>Ha a szabály protokollja a TCP és az UDP használatára van konfigurálva, két szabálynak számít.|
+|Maximális DNAT-szabályok|298 egyetlen nyilvános IP-címhez.<br>Minden további nyilvános IP-cím a rendelkezésre álló SNAT-portokhoz járul hozzá, de csökkentheti az elérhető DNAT-szabályok számát. Például két nyilvános IP-cím lehetővé teszi a 297 DNAT-szabályok használatát. Ha a szabály protokollja a TCP és az UDP használatára van konfigurálva, két szabálynak számít.|
 |Minimális AzureFirewallSubnet-méret |/26|
 |Porttartomány a hálózat és az alkalmazás szabályaiban|1 - 65535|
 |Nyilvános IP-címek|250 maximális érték. Az összes nyilvános IP-cím használható DNAT-szabályokban, és mind hozzájárulnak az elérhető SNAT-portokhoz.|

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61bea7f3ca1105edfec54501c5f0725a5a10225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5ef454871f242adb9de5e5c567c1a76e00478cc
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654115"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789939"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A Távoli asztali átjáró-infrastruktúra integrálása a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD használatával
 
@@ -130,13 +130,14 @@ A hálózati házirend-kiszolgáló bővítmény konfigurációjának részekén
 
 Telepítse a hálózati házirend-kiszolgáló bővítményt egy olyan kiszolgálóra, amelyen telepítve van a hálózati házirend-és elérési szolgáltatások (NPS) szerepkör. Ez a megoldás RADIUS-kiszolgálóként működik.
 
-> [!Important]
-> Ügyeljen arra, hogy ne telepítse az NPS-bővítményt a Távoli asztali átjáró-kiszolgálóra.
+> [!IMPORTANT]
+> Ne telepítse az NPS-bővítményt a Távoli asztali átjáró (RDG) kiszolgálóra. A RDG-kiszolgáló nem használja a RADIUS protokollt az ügyfelével, így a bővítmény nem tudja értelmezni és végrehajtani az MFA-t.
 >
+> Ha a RDG-kiszolgáló és a hálózati házirend-kiszolgáló (NPS) bővítménye különböző kiszolgálók, a RDG belső hálózati házirend-kiszolgálót használ, hogy más hálózati házirend-kiszolgálókkal kommunikáljon, és a RADIUS protokollt használja a megfelelő kommunikációhoz.
 
 1. Töltse le a [hálózati házirend-kiszolgáló bővítményét](https://aka.ms/npsmfa).
-1. Másolja a telepítő végrehajtható fájlját (NpsExtnForAzureMfaInstaller. exe) az NPS-kiszolgálóra.
-1. Az NPS-kiszolgálón kattintson duplán a **NpsExtnForAzureMfaInstaller. exe fájlra**. Ha a rendszer kéri, kattintson a **Futtatás**gombra.
+1. Másolja a telepítő végrehajtható fájlját (NpsExtnForAzureMfaInstaller.exe) a hálózati házirend-kiszolgálóra.
+1. Az NPS-kiszolgálón kattintson duplán a **NpsExtnForAzureMfaInstaller.exe**elemre. Ha a rendszer kéri, kattintson a **Futtatás**gombra.
 1. Az Azure MFA beállítása párbeszédpanel NPS-bővítménye párbeszédpanelen tekintse át a szoftverlicenc-feltételeket, ellenőrizze, **hogy elfogadom-e a licencfeltételeket**, majd kattintson a **telepítés**gombra.
 1. Az Azure MFA beállítása párbeszédpanel NPS-bővítménye párbeszédpanelen kattintson a **Bezárás**gombra.
 
@@ -157,10 +158,10 @@ Ha saját tanúsítványokat kíván használni, a tanúsítvány nyilvános kul
 A szkript használatához adja meg a bővítményt az Azure AD-beli rendszergazdai hitelesítő adataival és a korábban átmásolt Azure AD-bérlői AZONOSÍTÓval. Futtassa a parancsfájlt minden olyan NPS-kiszolgálón, amelyre az NPS-bővítményt telepítette. Ezután tegye a következőket:
 
 1. Nyisson meg egy rendszergazdai Windows PowerShell-parancssort.
-1. A PowerShell parancssorába írja be a `cd 'c:\Program Files\Microsoft\AzureMfa\Config'`parancsot, majd nyomja le az **ENTER**billentyűt.
-1. Írja `.\AzureMfaNpsExtnConfigSetup.ps1`be a értéket, majd nyomja le az **ENTER**billentyűt. A parancsfájl ellenőrzi, hogy telepítve van-e a Azure Active Directory PowerShell-modul. Ha nincs telepítve, a parancsfájl telepíti a modult.
+1. A PowerShell parancssorába írja be a parancsot `cd 'c:\Program Files\Microsoft\AzureMfa\Config'` , majd nyomja le az **ENTER**billentyűt.
+1. Írja be `.\AzureMfaNpsExtnConfigSetup.ps1` a értéket, majd nyomja le az **ENTER**billentyűt. A parancsfájl ellenőrzi, hogy telepítve van-e a Azure Active Directory PowerShell-modul. Ha nincs telepítve, a parancsfájl telepíti a modult.
 
-   ![A AzureMfaNpsExtnConfigSetup. ps1 futtatása az Azure AD PowerShellben](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![AzureMfaNpsExtnConfigSetup.ps1 futtatása az Azure AD PowerShellben](./media/howto-mfa-nps-extension-rdg/image4.png)
   
 1. Miután a parancsfájl ellenőrzi a PowerShell-modul telepítését, megjeleníti a Azure Active Directory PowerShell-modul párbeszédpanelt. A párbeszédpanelen adja meg az Azure AD-beli rendszergazdai hitelesítő adatait és jelszavát, majd kattintson a **Bejelentkezés**elemre.
 
@@ -186,7 +187,7 @@ Távoli asztal a kapcsolatengedélyezési házirendek (RD CAPs) a Távoli asztal
 
 1. A RD-átjáró-kiszolgálón nyissa meg a **Kiszolgálókezelő eszközt**.
 1. A menüben kattintson az **eszközök**elemre, mutasson a **Távoli asztali szolgáltatások**pontra, majd kattintson az **Távoli asztali átjárókezelő**elemre.
-1. A RD-átjárókezelő kattintson a jobb gombbal a ** \[kiszolgáló neve\] (helyi)** elemre, majd kattintson a **Tulajdonságok**elemre.
+1. A RD-átjárókezelő kattintson a jobb gombbal a ** \[ kiszolgáló neve \] (helyi)** elemre, majd kattintson a **Tulajdonságok**elemre.
 1. A Tulajdonságok párbeszédpanelen válassza a **RD CAP áruház** lapot.
 1. A RD CAP tároló lapon válassza ki a **hálózati házirend-kiszolgálót futtató központi kiszolgáló**elemet. 
 1. Az **adja meg a hálózati házirend-kiszolgálót futtató kiszolgáló nevét vagy IP-címét** mezőbe írja be annak a kiszolgálónak az IP-címét vagy kiszolgálójának nevét, amelyre az NPS-bővítményt telepítette.

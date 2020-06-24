@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 9a6e77f630d9a78706a82bdc020dd7fd3eb11230
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431415"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213754"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>A tervezőhöz tartozó kivételek és hibakódok (előzetes verzió)
 
@@ -22,9 +22,9 @@ Ez a cikk a Azure Machine Learning Designerben (előzetes verzió) lévő hibaü
 
 A hibaüzenetet a tervezőben a következő lépésekkel érheti el:  
 
-- Válassza a hibás modult, lépjen a **kimenetek és naplók** lapra, ahol megtalálhatja a részletes naplót a **azureml-naplók** kategóriában található **70_driver_log. txt** fájlban.
+- Válassza ki a hibás modult, lépjen a **kimenetek és naplók** lapra, ahol megtalálhatja a részletes naplót a **azureml-naplók** kategóriában található **70_driver_log.txt** fájlban.
 
-- A modul részletes hibája a **module_statistics** kategóriában található error_info. JSON fájlban ellenőrizhető.
+- A modul részletes hibája a **module_statistics** kategóriában található error_info.jsban is ellenőrizhető.
 
 Az alábbiakban a Designer moduljainak hibakódja látható.
 
@@ -1515,7 +1515,7 @@ Belső függvénytár-kivétel.
 
 Ez a hiba a nem kezelt belső motor hibáinak rögzítésére szolgál. Ezért előfordulhat, hogy a hiba oka eltérő lehet a hibát generáló modultól függően.  
 
-Ha további segítségre van szüksége, javasoljuk, hogy tegye közzé a hibához tartozó részletes üzenetet a Azure Machine Learning fórumnak, a forgatókönyv leírásával együtt, beleértve a bemenetként használt adatokat is. Ez a visszajelzés segít rangsorolni a hibákat, és azonosítani a legfontosabb problémákat a további munkához.  
+Ha további segítségre van szüksége, javasoljuk, hogy tegye közzé a hibához tartozó részletes üzenetet a [Azure Machine learning fórumnak](https://docs.microsoft.com/answers/topics/azure-machine-learning.html), a forgatókönyv leírásával együtt, beleértve a bemenetként használt adatokat is. Ez a visszajelzés segít rangsorolni a hibákat, és azonosítani a legfontosabb problémákat a további munkához.  
 
 |Kivételek üzenetei|
 |------------------------|

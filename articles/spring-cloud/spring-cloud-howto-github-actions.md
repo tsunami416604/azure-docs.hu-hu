@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 1a0624c01a3bb75c1a7b07b130345776417cf482
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: e17fa3e99de9f429fa279ba2e5413b60e9084de8
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484319"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125702"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD GitHub-műveletekkel
 
@@ -21,7 +21,7 @@ A GitHub-műveletek egy automatizált szoftverfejlesztési életciklus-munkafoly
 Ehhez a példához az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)szükséges.
 
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub-adattár beállítása és hitelesítése
-Az Azure bejelentkezési műveletének engedélyezéséhez Azure-szolgáltatási elv szükséges. Azure-beli hitelesítő adatok beszerzéséhez hajtsa végre a következő parancsokat a helyi gépen:
+Szüksége lesz egy Azure-szolgáltatás egyszerű hitelesítő adataira az Azure bejelentkezési műveletének engedélyezéséhez. Azure-beli hitelesítő adatok beszerzéséhez hajtsa végre a következő parancsokat a helyi gépen:
 ```
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
@@ -208,7 +208,7 @@ Ha a művelet hibát jelez, például ha még nem állította be az Azure-beli h
 
  ![Ellenőrzések újrafuttatása](./media/github-actions/actions4.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Key Vault a Spring Cloud GitHub-műveletekhez](./spring-cloud-github-actions-key-vault.md)
 * [Azure Active Directory egyszerű szolgáltatások](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [GitHub-műveletek az Azure-hoz](https://github.com/Azure/actions/)
