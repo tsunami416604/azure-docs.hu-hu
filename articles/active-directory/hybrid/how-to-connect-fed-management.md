@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcbeedddc65a916f869a778616779917a9571181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d64be7350b373dcceb8c192f0859fa2ee7f47334
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331984"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360078"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory összevonási szolgáltatások (AD FS) kezelése és testreszabása Azure AD Connect használatával
 Ez a cikk a Active Directory összevonási szolgáltatások (AD FS) (AD FS) Azure Active Directory (Azure AD) használatával történő kezelését és testreszabását ismerteti. Emellett olyan gyakori AD FS feladatokat is tartalmaz, amelyeket a AD FS farmok teljes konfigurálásához lehet szükség.
@@ -226,7 +226,7 @@ Emellett a **Hozzáadás** és a nem **probléma**használatával nem adhat hozz
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Ez a szabály egy **idflag** nevű ideiglenes jelzőt határoz meg, amely **useguid** van beállítva, ha nincs **MS-DS-consistencyguid** feltöltve a felhasználó számára. A mögöttes logika az a tény, hogy AD FS nem engedélyezi az üres jogcímeket. Tehát a jogcímek `http://contoso.com/ws/2016/02/identity/claims/objectguid` hozzáadásakor és `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` az 1. szabályban csak akkor fejeződik be egy **msdsconsistencyguid** -jogcím, ha az érték a felhasználó számára van feltöltve. Ha nincs feltöltve, AD FS úgy látja, hogy üres értékkel fog rendelkezni, és azonnal eldobja. Az összes objektum **ObjectGUID**fog rendelkezni, így az 1. szabály végrehajtása után a jogcím mindig ott marad.
+Ez a szabály egy **idflag** nevű ideiglenes jelzőt határoz meg, amely **useguid** van beállítva, ha nincs **MS-DS-consistencyguid** feltöltve a felhasználó számára. A mögöttes logika az a tény, hogy AD FS nem engedélyezi az üres jogcímeket. Tehát a jogcímek hozzáadásakor `http://contoso.com/ws/2016/02/identity/claims/objectguid` és `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` az 1. szabályban csak akkor fejeződik be egy **msdsconsistencyguid** -jogcím, ha az érték a felhasználó számára van feltöltve. Ha nincs feltöltve, AD FS úgy látja, hogy üres értékkel fog rendelkezni, és azonnal eldobja. Az összes objektum **ObjectGUID**fog rendelkezni, így az 1. szabály végrehajtása után a jogcím mindig ott marad.
 
 **3. szabály: az MS-DS-consistencyguid nem módosítható azonosító kiadása, ha van**
 

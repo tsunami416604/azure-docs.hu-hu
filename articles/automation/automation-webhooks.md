@@ -3,14 +3,14 @@ title: Azure Automation runbook indítása webhookból
 description: Ez a cikk azt ismerteti, hogyan lehet webhook használatával elindítani a runbook a Azure Automation HTTP-hívásból.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/03/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 78ce1e46b7ea2cc82a0c478b0c81abbf701f68a9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342969"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361676"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Runbook indítása webhookból
 
@@ -29,7 +29,7 @@ A következő táblázat ismerteti azokat a tulajdonságokat, amelyeket egy webh
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Name |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
+| Name (Név) |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
 | URL-cím |A webhook URL-címe. Ez az az egyedi címnek, amelyet az ügyfél HTTP-BEJEGYZÉSsel hív meg, hogy elindítsa a webhookhoz csatolt runbook. A webhook létrehozásakor automatikusan létrejön. Nem adhat meg egyéni URL-címet. <br> <br> Az URL-cím olyan biztonsági jogkivonatot tartalmaz, amely lehetővé teszi, hogy egy harmadik féltől származó rendszer további hitelesítés nélkül hívja meg a runbook. Ezért az URL-címet jelszóként kell kezelni. Biztonsági okokból a webhook létrehozásakor csak a Azure Portal URL-címét tekintheti meg. A jövőbeli használatra biztonságos helyen jegyezze fel az URL-címet. |
 | Lejárat dátuma | A webhook lejárati dátuma, amely után már nem használható. A webhook létrehozása után módosíthatja a lejárati dátumot, feltéve, hogy a webhook nem járt le. |
 | Engedélyezve | Ez a beállítás azt jelzi, hogy a webhook alapértelmezés szerint engedélyezve van-e a létrehozásakor. Ha a tulajdonságot letiltva értékre állítja, akkor egyetlen ügyfél sem használhatja a webhookot. Ezt a tulajdonságot akkor állíthatja be, amikor létrehozza a webhookot vagy bármely más időt a létrehozása után. |
@@ -83,9 +83,13 @@ Most átadjuk a következő JSON-objektumot a paraméter felhasználói felület
 
 A webhook biztonsága az URL-címének védelmére támaszkodik, amely egy olyan biztonsági jogkivonatot tartalmaz, amely lehetővé teszi a webhook meghívását. A Azure Automation nem végez hitelesítést a kérelemben, amíg a megfelelő URL-címre kerül. Ezért az ügyfelek nem használhatnak olyan webhookokat a runbookok, amelyek nagy mértékben bizalmas műveleteket hajtanak végre anélkül, hogy alternatív módszert kellene alkalmazni a kérés érvényesítésére.
 
-A runbook belül eldöntheti, hogy egy webhook hívja-e meg a logikát. A runbook ellenőriznie kell a `WebhookName` paraméter tulajdonságát `WebhookData` . A runbook további ellenőrzéseket hajthat végre, ha a és a tulajdonságok között megkeresi az adott információkat `RequestHeader` `RequestBody` .
+Vegye figyelembe a következő stratégiákat:
 
-Egy másik stratégia az, hogy a runbook végre kell hajtania egy külső feltétel érvényességét, amikor webhook-kérést kap. Vegyünk például egy GitHub által meghívott runbook, amikor új véglegesít egy GitHub-tárházat. A runbook csatlakozhat a GitHubhoz annak ellenőrzéséhez, hogy új véglegesítés történt a folytatás előtt.
+* A runbook belül eldöntheti, hogy egy webhook hívja-e meg a logikát. A runbook ellenőriznie kell a `WebhookName` paraméter tulajdonságát `WebhookData` . A runbook további ellenőrzéseket hajthat végre, ha a és a tulajdonságok között megkeresi az adott információkat `RequestHeader` `RequestBody` .
+
+* A runbook végre kell hajtania egy külső feltétel érvényesítését, amikor webhook-kérést kap. Vegyünk például egy GitHub által meghívott runbook, amikor új véglegesít egy GitHub-tárházat. A runbook csatlakozhat a GitHubhoz annak ellenőrzéséhez, hogy új véglegesítés történt a folytatás előtt.
+
+* Azure Automation támogatja az Azure Virtual Network szolgáltatás címkéit, különösen a [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules) definiálhat hálózati hozzáférés-vezérlést, vagy a virtuális hálózatán belüli webhookokat is [Azure Firewall](../firewall/service-tags.md) és indíthat el. A szolgáltatás címkéi a biztonsági szabályok létrehozásakor a megadott IP-címek helyett használhatók. Ha a szolgáltatási címke nevét **GuestAndHybridManagement** adja meg egy szabály megfelelő forrás vagy cél mezőjében, engedélyezheti vagy megtagadhatja az Automation szolgáltatás forgalmát. Ez a szolgáltatási címke nem támogatja az IP-címtartományok egy adott régióra való korlátozásával a részletesebb szabályozás engedélyezését.
 
 ## <a name="create-a-webhook"></a>Webhook létrehozása
 
@@ -238,6 +242,6 @@ Az alábbi képen látható a Windows PowerShellből küldött kérelem és az e
 
 ![Webhookok gomb](media/automation-webhooks/webhook-request-response.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Runbook riasztásból való kiváltásához tekintse meg a [riasztások használata Azure Automation runbook elindításához](automation-create-alert-triggered-runbook.md)című témakört.

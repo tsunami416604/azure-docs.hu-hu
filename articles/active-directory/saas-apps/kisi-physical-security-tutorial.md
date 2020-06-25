@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ca4d30786953504218ef09c7c591ff2f46f524
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: bd85042d30be0bb37de590fe9b011948b9acf0db
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765536"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361370"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a kisi fizikai biztonsággal
 
@@ -91,7 +91,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://identity.kms.kisi.io/organizations/sign_in?domain=<DOMAIN>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://web.kisi.io/organizations/sign_in?domain=<DOMAIN>`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [kisi fizikai biztonsági ügyfelének ügyfélszolgálatához](mailto:support@getkisi.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -102,11 +102,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a kisi fizikai biztonsági alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name |  |  Forrás attribútum|
+    | Name (Név) |  |  Forrás attribútum|
     | ---------------| --------------- | --------- |
     | FirstName | | User. givenName |
     | LastName | | felhasználó. vezetéknév |
-    | E-mail | | User. mail |
+    | E-mail | | User. userPrincipalName |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 

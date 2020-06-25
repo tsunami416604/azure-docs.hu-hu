@@ -11,17 +11,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897258"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359348"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP-jelentés (nyilvános előzetes verzió)
 Az AD FS-ügyfelek az interneten elérhetővé tehetnek jelszóalapú hitelesési végpontokat, és ezzel hitelesítési szolgáltatásokat biztosíthatnak a végfelhasználók számára olyan SaaS-alkalmazások eléréséhez, mint az Office 365. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />

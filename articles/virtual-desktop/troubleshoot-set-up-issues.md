@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e248e7af5fc9ed2bc144a4b302577be56524d7d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612565"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361167"
 ---
-# <a name="host-pool-creation"></a>Gazdagép-készlet létrehozása
+# <a name="host-pool-creation"></a>Gazdagépkészlet létrehozása
 
 >[!IMPORTANT]
 >Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md).
@@ -31,13 +31,14 @@ Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe]
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>A Windows 10 Enterprise több munkamenetet ábrázoló rendszerképének beszerzése
 
-A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t, válassza a**Microsoft Windows 10** > és a [Windows 10 Enterprise multi-session, 1809-es verziójának](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)első **lépései** > lehetőséget.
+A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t **Get Started**, válassza a  >  **Microsoft Windows 10** > és a [Windows 10 Enterprise multi-session, 1809-es verziójának](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)első lépései lehetőséget.
 
 ## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>A gazdagépek létrehozásával kapcsolatos problémák a Azure Portal használatával
 
 ### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>Hiba: az "ingyenes fiók létrehozása" üzenet jelenik meg a szolgáltatás elérésekor
 
-![Az "ingyenes fiók létrehozása" üzenetet megjelenítő Azure Portal ábrázoló kép](media/create-new-account.png)
+> [!div class="mx-imgBorder"]
+> ![Az "ingyenes fiók létrehozása" üzenetet megjelenítő Azure Portal ábrázoló kép](media/create-new-account.png)
 
 **OK**: nincsenek aktív előfizetések abban a fiókban, amelybe bejelentkezett az Azure-ba, vagy a fiók nem rendelkezik az előfizetések megtekintéséhez szükséges engedélyekkel. 
 
@@ -60,9 +61,10 @@ A Azure Resource Manager-sablonok és a PowerShell DSC nem sikeres központi tel
 3. A hiba észlelése után használja a hibaüzenetet és az erőforrásokat az [Azure telepítési hibáinak elhárításához Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) a probléma megoldásához.
 4. Törölje az előző központi telepítés során létrehozott erőforrásokat, majd próbálkozzon újra a sablon üzembe helyezésével.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hiba: a telepítés nem sikerült...\<. állomásnév>/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hiba: a telepítés nem sikerült.... \<hostname> /JoinDomain
 
-![A telepítés sikertelen képernyőkép.](media/failure-joindomain.png)
+> [!div class="mx-imgBorder"]
+> ![A telepítés sikertelen képernyőkép.](media/failure-joindomain.png)
 
 Nyers hiba – példa:
 
@@ -103,7 +105,8 @@ A probléma megoldásához tegye a következőket:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Hiba: VMExtensionProvisioningError
 
-![A központi telepítés képernyőképe sikertelen volt, mert a terminál kiépítési állapota nem sikerült.](media/failure-vmextensionprovisioning.png)
+> [!div class="mx-imgBorder"]
+> ![A központi telepítés képernyőképe sikertelen volt, mert a terminál kiépítési állapota nem sikerült.](media/failure-vmextensionprovisioning.png)
 
 **1. ok:** Átmeneti hiba a Windows rendszerű virtuális asztali környezettel.
 
@@ -113,7 +116,8 @@ A probléma megoldásához tegye a következőket:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hiba: a megadott rendszergazdai Felhasználónév nem engedélyezett
 
-![A központi telepítés képernyőképe nem sikerült, mert a megadott rendszergazda nem engedélyezett.](media/failure-username.png)
+> [!div class="mx-imgBorder"]
+> ![A központi telepítés képernyőképe nem sikerült, mert a megadott rendszergazda nem engedélyezett.](media/failure-username.png)
 
 Nyers hiba – példa:
 
@@ -130,7 +134,8 @@ Nyers hiba – példa:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hiba: a virtuális gép hibát jelzett a bővítmény feldolgozásakor
 
-![Az erőforrás-művelet képernyőképe a terminál kiépítési állapotával fejeződött be a telepítés során.](media/failure-processing.png)
+> [!div class="mx-imgBorder"]
+> ![Az erőforrás-művelet képernyőképe a terminál kiépítési állapotával fejeződött be a telepítés során.](media/failure-processing.png)
 
 Nyers hiba – példa:
 
@@ -149,7 +154,8 @@ Nyers hiba – példa:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Hiba: DeploymentFailed – a (z) FirstSessionHost PowerShell DSC-konfiguráció hibával fejeződött be
 
-![A központi telepítés képernyőképe sikertelen, mert a PowerShell DSC-konfiguráció "FirstSessionHost" hibával fejeződött be.](media/failure-dsc.png)
+> [!div class="mx-imgBorder"]
+> ![A központi telepítés képernyőképe sikertelen, mert a PowerShell DSC-konfiguráció "FirstSessionHost" hibával fejeződött be.](media/failure-dsc.png)
 
 Nyers hiba – példa:
 

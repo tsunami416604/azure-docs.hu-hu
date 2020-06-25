@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401f8239cded04b6342b706242e970e39118d73d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827165"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357749"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezés Azure Active Directory
 
@@ -63,12 +63,12 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N.A.
-|Windows 8.1|Igen\*|N.A.|Igen|Igen\*\*\*|N.A.
-|Windows 8|Igen\*|N.A.|Igen|Igen\*\*\*|N.A.
-|Windows 7|Igen\*|N.A.|Igen|Igen\*\*\*|N.A.
-|Windows Server 2012 R2 vagy újabb|igen\*\*|N.A.|Igen|Igen\*\*\*|N.A.
-|Mac OS X|N.A.|N.A.|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
+|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N/A
+|Windows 8.1|igen\*|N/A|Yes|Igen\*\*\*|N/A
+|Windows 8|igen\*|N/A|Yes|Igen\*\*\*|N/A
+|Windows 7|igen\*|N/A|Yes|Igen\*\*\*|N/A
+|Windows Server 2012 R2 vagy újabb|igen\*\*|N/A|Yes|Igen\*\*\*|N/A
+|Mac OS X|N/A|N/A|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
 
 
 \*Az Internet Explorer 10-es vagy újabb verzióját igényli

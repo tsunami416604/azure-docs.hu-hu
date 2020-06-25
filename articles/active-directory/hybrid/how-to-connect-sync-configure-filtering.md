@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 753e00ef5f015c554e49d7326120d29f5c5da4a9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84690898"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357766"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. Az Office 365 munkaterheléseket, például az Exchange Online-t és a Skype vállalati alkalmazást használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.

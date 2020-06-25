@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eaeece4b44c0804774a15194e19c34ce200bc80
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558524"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358973"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával
 A Azure AD Connect SQL Server adatbázis tárolására van szükség az adattároláshoz. Használhatja a Azure AD Connect telepített alapértelmezett SQL Server 2012 Express LocalDB, vagy használhatja a saját teljes SQL-verzióját. Korábban a Azure AD Connect telepítésekor a rendszer a ADSync nevű új adatbázist mindig létrehozta. A Azure AD Connect verzió 1.1.613.0 (vagy azt követően) lehetősége van a Azure AD Connect telepítésére, ha egy meglévő ADSync-adatbázisra mutat.
@@ -56,7 +56,7 @@ Fontos megjegyzések a folytatás előtt jegyezze fel a következőt:
 - Nem rendelkezhet több Azure AD Connect kiszolgálóval ugyanazzal a ADSync-adatbázissal. A "meglévő adatbázis használata" módszer lehetővé teszi egy meglévő ADSync-adatbázis újrafelhasználását egy új Azure AD Connect-kiszolgálóval. Nem támogatja a megosztást.
 
 ## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>A Azure AD Connect telepítésének lépései a "meglévő adatbázis használata" módban
-1.  Töltse le Azure AD Connect telepítőt (AzureADConnect. MSI) a Windows Serverre. A Azure AD Connect telepítésének megkezdéséhez kattintson duplán a Azure AD Connect Installer elemre.
+1.  Töltse le Azure AD Connect telepítőt (AzureADConnect.MSI) a Windows Serverre. A Azure AD Connect telepítésének megkezdéséhez kattintson duplán a Azure AD Connect Installer elemre.
 2.  Miután az MSI-telepítés befejeződött, az Azure AD Connect varázslója elindítja az expressz módú telepítést. A Kilépés ikonra kattintva zárja be a képernyőt.
 ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db1.png)
 3.  Indítson új parancssort vagy PowerShell-munkamenetet. Navigáljon a "C:\Program Files\Microsoft Azure Active Directory Connect" mappába. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
@@ -99,7 +99,7 @@ Az alábbi táblázat segítségével ellenőrizheti a szükséges további lép
 |Átmenő hitelesítés és asztali egyszeri bejelentkezés|Frissítse a bejelentkezési metódust, hogy az megfeleljen az aktív szinkronizációs kiszolgáló konfigurációjának.  Ha ezt a kiszolgálót az elsődlegesnek való előléptetés előtt nem követi, a zökkenőmentes egyszeri bejelentkezés mellett a rendszer letiltja a bérlőt, és előfordulhat, hogy a bérlő zárolva van, ha nem rendelkezik a jelszó-kivonatok szinkronizálása biztonsági mentéssel lehetőséggel. Azt is vegye figyelembe, hogy az átmenő hitelesítés átmeneti módban való engedélyezésekor az új hitelesítési ügynök települ, regisztrálva lesz, és magas rendelkezésre állású ügynökként fog futni, amely elfogadja a bejelentkezési kérelmeket.|
 |Összevonás a PingFederate-tel|Az Azure-hitelesítések továbbra is az aktív szinkronizálási kiszolgálóhoz konfigurált PingFederate szabályzatot használják.  Igény szerint módosíthatja a bejelentkezési módszert, hogy PingFederate a készenléti kiszolgáló aktív szinkronizálási példányként való előkészítését.  Ez a lépés elhalasztható, amíg további tartományokat nem kell összevonása a PingFederate-mel.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).
 - Ismerkedjen meg a következő, a telepítéssel engedélyezett szolgáltatásokkal: a [Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) és az [Azure AD Connect Health](how-to-connect-health-sync.md).

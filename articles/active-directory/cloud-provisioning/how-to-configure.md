@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50f02ea42bb792320da6e2523b733f09afd412a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620972"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360962"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Új konfiguráció létrehozása Azure AD Connect felhőalapú kiépítés számára
 
@@ -25,7 +25,7 @@ Miután telepítette az ügynököt, be kell jelentkeznie a Azure Portalba, és 
 ## <a name="configure-provisioning"></a>Kiépítés konfigurálása
 A kiépítés konfigurálásához kövesse az alábbi lépéseket.
 
-1.  Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
+1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
 1.  Válassza a **Azure ad Connect**lehetőséget.
 1.  Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
 
@@ -41,7 +41,7 @@ A kiépítés konfigurálásához kövesse az alábbi lépéseket.
 ## <a name="scope-provisioning-to-specific-users-and-groups"></a>Hatókör-kiépítés adott felhasználókra és csoportokra
 Az ügynök hatókörével a helyi Active Directory csoportok vagy szervezeti egységek használatával szinkronizálhatja az adott felhasználókat és csoportokat. Nem konfigurálhat csoportokat és szervezeti egységeket a konfiguráción belül. 
 
-1.  Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
+1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
 1.  Válassza a **Azure ad Connect**lehetőséget.
 1.  Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
 1.  A **konfiguráció**területen válassza ki a konfigurációt.
@@ -64,7 +64,7 @@ Az ügynök hatókörével a helyi Active Directory csoportok vagy szervezeti eg
 
 ## <a name="restart-provisioning"></a>Kiépítés újraindítása 
 Ha nem szeretné megvárni a következő ütemezett futtatást, aktiválja a kiépítési futtatást az **Újraindítás kiépítés** gomb használatával. 
-1.  Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
+1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
 1.  Válassza a **Azure ad Connect**lehetőséget.
 1.  Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
 1.  A **konfiguráció**területen válassza ki a konfigurációt.
@@ -76,7 +76,7 @@ Ha nem szeretné megvárni a következő ütemezett futtatást, aktiválja a ki�
 ## <a name="remove-a-configuration"></a>Konfiguráció eltávolítása
 A konfiguráció törléséhez kövesse az alábbi lépéseket.
 
-1.  Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
+1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
 1.  Válassza a **Azure ad Connect**lehetőséget.
 1.  Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
 1.  A **konfiguráció**területen válassza ki a konfigurációt.

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 04f523a2615892268d56c167a682987453dc997c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200887"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359738"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Az Office 365 és Azure Active Directory összevonási tanúsítványainak megújítása
 ## <a name="overview"></a>Áttekintés
@@ -99,8 +99,8 @@ A Get-MsolFederationProperty vagy a Get-AdfsCertificate kimenetében keresse meg
 | Autocertificaterollover beállítást | Az Azure AD-vel szinkronizált tanúsítványok | Az összevonási metaadatok nyilvánosan elérhetők | Érvényességi | Műveletek |
 |:---:|:---:|:---:|:---:|:---:|
 | Igen |Igen |Igen |- |Nincs szükség művelet végrehajtására. Lásd: [jogkivonat-aláíró tanúsítvány automatikus megújítása](#autorenew). |
-| Igen |Nem |- |Kevesebb, mint 15 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
-| Nem |- |- |Kevesebb mint 30 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
+| Yes |Nem |- |Kevesebb, mint 15 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
+| No |- |- |Kevesebb mint 30 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
 
 \[-] Nem számít
 
@@ -116,9 +116,9 @@ A következő ellenőrzésével ellenőrizheti, hogy a tanúsítvány automatiku
 
 **2. a AD FS összevonási metaadatok nyilvánosan elérhetők.** Győződjön meg arról, hogy az összevonási metaadatok nyilvánosan elérhetők, ha a nyilvános interneten (a vállalati hálózaton kívül) lévő számítógép következő URL-címére navigál:
 
-https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.XML
+https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-ahol `(your_FS_name)` a helyére a szervezet által használt összevonási szolgáltatás állomásneve kerül, például FS.contoso.com.  Ha mindkét beállítást sikeresen ellenőrizni tudja, nem kell mást tennie.  
+ahol a `(your_FS_name)` helyére a szervezet által használt összevonási szolgáltatás állomásneve kerül, például FS.contoso.com.  Ha mindkét beállítást sikeresen ellenőrizni tudja, nem kell mást tennie.  
 
 Például: `https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
 ## <a name="renew-the-token-signing-certificate-manually"></a>Jogkivonat-aláíró tanúsítvány manuális megújítása<a name="manualrenew"></a>
@@ -141,7 +141,7 @@ Ha viszont az **autocertificaterollover beállítást** értéke **true (igaz**)
 1. Ellenőrizze, hogy be van-e jelentkezve az elsődleges AD FS-kiszolgálóra.
 2. Tekintse át a AD FS aktuális aláíró tanúsítványait egy PowerShell-parancssorablak megnyitásával, és futtassa a következő parancsot:
 
-    PS C:\>Get-ADFSCertificate – CertificateType jogkivonat – aláírás
+    PS C: \> Get-ADFSCertificate – CertificateType jogkivonat – aláírás
 
    > [!NOTE]
    > Ha a AD FS 2,0-et használja, először futtassa az Add-PSSnapin parancsmaggal Microsoft. ADFS. PowerShell eszközt.
@@ -149,8 +149,8 @@ Ha viszont az **autocertificaterollover beállítást** értéke **true (igaz**)
    >
 3. Tekintse meg a parancs kimenetét a felsorolt tanúsítványokban. Ha AD FS új tanúsítványt generált, akkor két tanúsítványt kell látnia a kimenetben: az egyiket, amelynél a **IsPrimary** értéke **igaz** , és a közelmúltbeli dátum 5 napon **belül van,** és az egyik, hogy a **IsPrimary** **hamis** , **és a** legkésőbbi egy évig.
 4. Ha csak egy tanúsítvány jelenik meg, és a még **5 napon belül** megjelenő dátum, új tanúsítványt kell létrehoznia.
-5. Új tanúsítvány létrehozásához futtassa a következő parancsot egy PowerShell-parancssorban: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`.
-6. A frissítés ellenőrzéséhez futtassa újra a következő parancsot: PS C:\>Get-ADFSCertificate – CertificateType jogkivonat-aláírás
+5. Új tanúsítvány létrehozásához futtassa a következő parancsot egy PowerShell-parancssorban: `PS C:\>Update-ADFSCertificate –CertificateType token-signing` .
+6. A frissítés ellenőrzéséhez futtassa újra a következő parancsot: PS C: \> Get-ADFSCertificate – CertificateType jogkivonat-aláírás
 
 Most két tanúsítványnak kell szerepelnie, amelyek közül az egyik **egy még egy év** múlva a későbbiekben, a **IsPrimary** értéke pedig **hamis**.
 
@@ -160,8 +160,8 @@ Az Office 365 frissítése a megbízhatósághoz használandó új jogkivonat-al
 1. Nyissa meg a Microsoft Azure Active Directory modult a Windows PowerShellhez.
 2. Futtassa $cred = Get-hitelesítő adatokat. Ha ez a parancsmag kéri a hitelesítő adatok megadását, írja be a Cloud Service rendszergazdai fiókjának hitelesítő adatait.
 3. Futtassa a kapcsolat-MsolService – hitelesítő $cred. Ez a parancsmag csatlakozik a Cloud Service-hez. Az eszköz által telepített további parancsmagok futtatása előtt a Cloud Service-hez csatlakozó környezet létrehozása szükséges.
-4. Ha ezeket a parancsokat olyan számítógépen futtatja, amely nem a AD FS elsődleges összevonási kiszolgáló, akkor futtassa a set-MSOLAdfscontext- &lt;Computer AD FS elsődleges&gt;kiszolgálót, &lt;ahol a AD FS&gt; elsődleges kiszolgáló az elsődleges AD FS-kiszolgáló belső FQDN-neve. Ez a parancsmag olyan környezetet hoz létre, amely összekapcsolja a AD FS.
-5. Futtassa az Update-MSOLFederatedDomain – &lt;tartománynév&gt;tartományt. Ez a parancsmag a AD FS beállításait a Cloud Service-be frissíti, és konfigurálja a két közötti megbízhatósági kapcsolatot.
+4. Ha ezeket a parancsokat olyan számítógépen futtatja, amely nem a AD FS elsődleges összevonási kiszolgáló, akkor futtassa a set-MSOLAdfscontext-Computer &lt; AD FS elsődleges kiszolgálót &gt; , ahol a &lt; AD FS elsődleges kiszolgáló az &gt; elsődleges AD FS-kiszolgáló belső FQDN-neve. Ez a parancsmag olyan környezetet hoz létre, amely összekapcsolja a AD FS.
+5. Futtassa az Update-MSOLFederatedDomain – tartománynév &lt; tartományt &gt; . Ez a parancsmag a AD FS beállításait a Cloud Service-be frissíti, és konfigurálja a két közötti megbízhatósági kapcsolatot.
 
 > [!NOTE]
 > Ha több legfelső szintű tartományt is támogatnia kell (például contoso.com és fabrikam.com), akkor a **SupportMultipleDomain** kapcsolót minden parancsmaggal együtt kell használnia. További információ: [több felső szintű tartomány támogatása](how-to-connect-install-multiple-domains.md).

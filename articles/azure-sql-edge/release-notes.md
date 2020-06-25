@@ -10,22 +10,30 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 06/05/2020
-ms.openlocfilehash: 7238e2d7cbcb26a7b45ae9d7db52a0826abe0754
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d5d60db2cc0c35b908454be3f00716db6d2da945
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897981"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361642"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Az Azure SQL Edge kibocsátási megjegyzései 
 
 Ez a cikk ismerteti az újdonságokat és az Azure SQL Edge minden új buildjét.
 
+## <a name="ctp-21"></a>CTP 2,1 
+### <a name="sql-engine-build-number---15020001545"></a>SQL Engine Build száma – 15.0.2000.1545
+### <a name="fixes"></a>Javítások
+1. Javítsa ki az ELŐREJELZÉSt a ONNX-modellekkel az CPUID-probléma ARM-ben való kezeléséhez 
+2. Javítás a TSQL-adatfolyam indításakor a hiba elérési útjának kezelésére 
+3. Javítsa ki a küszöbértékek helytelen értékét a feladatok metrikájában, ha nincs adat. 
+4. Javítsa ki a kimeneti adapterrel kapcsolatos problémát, ha az adapter változó sémát tartalmaz a kötegek között.  
+
 ## <a name="ctp-20"></a>CTP 2,0 
 ### <a name="sql-engine-build-number---15020001401"></a>SQL Engine Build száma – 15.0.2000.1401
 ### <a name="whats-new"></a>Újdonságok
 1.  A terméknév frissítve az "Azure SQL Edge" névre
-2.  Date_bucket függvény
+1.  Date_bucket függvény
 
     i.  A dátum, idő és DateTime típus támogatása
 3.  ELŐREJELZÉS a ONNX

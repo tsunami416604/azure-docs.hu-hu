@@ -5,18 +5,18 @@ services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
-ms.topic: reference
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ef693a48dc52854e4e1fd8359ef24f65ce236f7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229799"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358582"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Csoportok áttelepítése az egyik erdőből a másikba Azure AD Connect
 
@@ -29,13 +29,13 @@ Ez a cikk azt ismerteti, hogyan lehet csoportokat áttelepíteni az egyik erdőb
 
 ## <a name="migrate-groups"></a>Csoportok átmigrálása
 
-A 1.5.18.0 verziótól kezdődően a Azure AD Connect támogatja a csoportok `mS-DS-ConsistencyGuid` attribútumának használatát. Ha a forrás `mS-DS-ConsistencyGuid` -szerkesztőpont attribútumot választja, és az érték Active Directoryban van feltöltve, a Azure ad Connect a értéket `mS-DS-ConsistencyGuid` használja `immutableId`. Ellenkező esetben vissza kell térnie a `objectGUID`használatára. Vegye figyelembe azonban, hogy a Azure AD Connect nem írja vissza az `mS-DS-ConsistencyGuid` értéket Active Directory-attribútumba.
+A 1.5.18.0 verziótól kezdődően a Azure AD Connect támogatja a `mS-DS-ConsistencyGuid` csoportok attribútumának használatát. Ha `mS-DS-ConsistencyGuid` a forrás-szerkesztőpont attribútumot választja, és az érték Active Directoryban van feltöltve, a Azure ad Connect a értéket `mS-DS-ConsistencyGuid` használja `immutableId` . Ellenkező esetben vissza kell térnie a használatára `objectGUID` . Vegye figyelembe azonban, hogy a Azure AD Connect nem írja vissza az értéket `mS-DS-ConsistencyGuid` Active Directory-attribútumba.
 
-Erdők közötti áthelyezés esetén, ha egy csoport objektum egy erdőből (azaz F1-ből) egy másik erdőbe (például az F2-ből) kerül át, akkor a `mS-DS-ConsistencyGuid` (jelen) értéket (ha van), `objectGUID` vagy az objektum értékeit az F1 erdőben lévő `mS-DS-ConsistencyGuid` objektum attribútumára kell másolnia az F2-ben.
+Erdők közötti áthelyezés esetén, ha egy csoport objektum egy erdőből (azaz F1-ből) egy másik erdőbe (például az F2-ből) kerül át, akkor a ( `mS-DS-ConsistencyGuid` jelen) értéket (ha van), vagy az objektum `objectGUID` értékeit az F1 erdőben lévő objektum attribútumára kell másolnia `mS-DS-ConsistencyGuid` az F2-ben.
 
 A következő parancsfájlok segítségével megtudhatja, hogyan telepíthet át egyetlen csoportot az egyik erdőből a másikba. Ezeket a parancsfájlokat a több csoport áttelepítésére szolgáló útmutatóként is használhatja. A parancsfájlok az F1 erdő nevét használják a forrás erdőhöz és az F2-et a cél erdőhöz.
 
-Első lépésként `objectGUID` beolvasjuk `mS-DS-ConsistencyGuid` a Group objektumot az F1 erdőben. Ezeket az attribútumokat egy CSV-fájlba exportálja a rendszer.
+Első lépésként beolvasjuk a `objectGUID` `mS-DS-ConsistencyGuid` Group objektumot az F1 erdőben. Ezeket az attribútumokat egy CSV-fájlba exportálja a rendszer.
 ```
 <#
 DESCRIPTION
@@ -83,7 +83,7 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-Ezután a generált kimeneti CSV-fájlt használjuk a cél objektumon `mS-DS-ConsistencyGuid` lévő, az F2 erdőben található attribútum bélyegzéséhez:
+Ezután a generált kimeneti CSV-fájlt használjuk a `mS-DS-ConsistencyGuid` cél objektumon lévő, az F2 erdőben található attribútum bélyegzéséhez:
 
 
 ```

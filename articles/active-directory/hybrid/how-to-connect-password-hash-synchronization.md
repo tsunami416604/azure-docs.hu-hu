@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e37095a964e656160edbbbc4a325feceb1e48e74
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84749624"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358562"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat-szinkronizálás implementálása Azure AD Connect-szinkronizálással
 Ez a cikk azokat az információkat tartalmazza, amelyekkel szinkronizálhatja a felhasználói jelszavakat egy helyszíni Active Directory-példányról egy felhőalapú Azure Active Directory-(Azure AD-) példányra.
@@ -122,7 +122,6 @@ Figyelmeztetés: ha vannak olyan szinkronizált fiókok, amelyeknek az Azure AD-
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
 > A set-MsolPasswordPolicy PowerShell-parancs összevont tartományokon nem fog működni. 
 
 #### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Ideiglenes jelszavak szinkronizálása és a "jelszó módosítása a következő bejelentkezéskor"
@@ -140,9 +139,6 @@ Az Azure AD-ben a szinkronizált felhasználók számára az ideiglenes jelszava
 
 > [!CAUTION]
 > Ezt a funkciót csak akkor használja, ha a SSPR és a jelszó visszaírási engedélyezve vannak a bérlőn.  Ez azért van így, hogy ha a felhasználó a SSPR-n keresztül módosítja a jelszavát, a rendszer szinkronizálja Active Directory.
-
-> [!NOTE]
-> Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
 
 #### <a name="account-expiration"></a>Fiók lejárata
 

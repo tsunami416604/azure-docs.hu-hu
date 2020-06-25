@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60347778"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358327"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory átmenő hitelesítés: technikai mély merülés
 Ez a cikk áttekintést nyújt az Azure Active Directory (Azure AD) átmenő hitelesítésének működéséről. A részletes technikai és biztonsági tudnivalókat lásd a [biztonsági Deep Dive](how-to-connect-pta-security-deep-dive.md) -cikkben.
@@ -40,7 +40,7 @@ Amikor egy felhasználó megpróbál bejelentkezni egy Azure AD által védett a
 5. Az Azure AD a bejelentkezésre irányuló kérés fogadásakor elhelyezi a felhasználónevet és a jelszót (a hitelesítési ügynökök nyilvános kulcsával titkosítva) egy várólistában.
 6. A helyszíni hitelesítési ügynök lekéri a felhasználónevet és a titkosított jelszót a várólistából. Vegye figyelembe, hogy az ügynök nem kérdezi le gyakran a várólistáról érkező kérelmeket, de a kérelmeket egy előre kiállított állandó kapcsolaton keresztül kéri le.
 7. Az ügynök a titkos kulcs használatával visszafejti a jelszót.
-8. Az ügynök a normál Windows API-k használatával ellenőrzi a felhasználónevet és a jelszót Active Directoryon, ami hasonló módszer a Active Directory összevonási szolgáltatások (AD FS) (AD FS) által használt rendszerekhez. A Felhasználónév lehet a helyszíni alapértelmezett Felhasználónév, általában `userPrincipalName`vagy más, Azure ad Connect (más néven `Alternate ID`) konfigurált attribútum.
+8. Az ügynök a normál Windows API-k használatával ellenőrzi a felhasználónevet és a jelszót Active Directoryon, ami hasonló módszer a Active Directory összevonási szolgáltatások (AD FS) (AD FS) által használt rendszerekhez. A Felhasználónév lehet a helyszíni alapértelmezett Felhasználónév, általában `userPrincipalName` vagy más, Azure ad Connect (más néven) konfigurált attribútum `Alternate ID` .
 9. A helyszíni Active Directory tartományvezérlő (DC) kiértékeli a kérést, és visszaadja a megfelelő választ (sikeres, sikertelen, jelszó lejárt vagy felhasználó által zárolt) az ügynöknek.
 10. A hitelesítési ügynök viszont visszaadja ezt a választ az Azure AD-nek.
 11. Az Azure AD kiértékeli a választ, és szükség szerint válaszol a felhasználónak. Például az Azure AD vagy azonnal aláírja a felhasználót, vagy az Azure Multi-Factor Authenticationra vonatkozó kéréseket.

@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2f928ac2f8772942eb748d68a65662938b1405ed
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84882518"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361938"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>A saját tároló (BYOS) beállítása a Application Insights Profiler és a Snapshot Debugger
 
@@ -21,9 +21,9 @@ Application Insights Profiler vagy Snapshot Debugger használatakor az alkalmaz�
 Ha saját tárhelyet használ, a rendszer feltölti ezeket az összetevőket egy Ön által vezérelt Storage-fiókba. Ez azt jelenti, hogy a titkosítást a REST-re vonatkozó szabályzatot, az élettartam-kezelési házirendet és a hálózati hozzáférést szabályozza. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie.
 
 > [!NOTE]
-> Ha engedélyezi a privát hivatkozásokat, a saját tárterületet is igénybe kell hoznia. A privát hivatkozásokkal kapcsolatos további információkért [tekintse meg a dokumentációt](https://docs.microsoft.com/azure/private-link/private-link-overview).
+> Ha engedélyezi a privát hivatkozásokat, a saját tárterületet is igénybe kell hoznia. További információ a Application Insightshoz tartozó privát hivatkozásokról [: dokumentáció.](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)
 >
-> Ha az ügyfél által felügyelt kulcsokat engedélyezi, a saját tárterületet is igénybe kell hoznia. Az ügyfél által felügyelt kulcsokkal kapcsolatos további információkért [tekintse meg a dokumentációt](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).
+> Ha az ügyfél által felügyelt kulcsokat engedélyezi, a saját tárterületet is igénybe kell hoznia. A Application Insights ügyfél által felügyelt kulcsaival kapcsolatos további információkért [tekintse meg a dokumentációt.](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Hogyan lesz elérhető a Storage-fiókom?
 1. A Virtual Machinesban vagy App Serviceban futó ügynökök az összetevők (profilok, Pillanatképek és szimbólumok) feltöltését is feltölthetik a fiókban található blob-tárolóba. Ehhez a folyamathoz kapcsolatba kell lépnie a Application Insights Profiler vagy Snapshot Debugger szolgáltatással, hogy SAS (közös hozzáférésű aláírási) tokent szerezzen be a Storage-fiókjában lévő új blobba.

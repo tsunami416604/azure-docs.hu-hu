@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31a2bcdcf7b21999ddf17170b024589204c0e9e5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b8d0bcff79b6101047545614538dc1d58a854a6d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212785"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361251"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -37,11 +37,13 @@ Virtuális gép létrehozása a másolt VHD-vel:
 
 2. A generáció megadása lapon válassza az **1. generáció**lehetőséget.
 
-    ![Képernyőkép a létrehozási lap megadásáról. Az "1. generáció" beállítás van kiválasztva.](media/a41174fd41302a181e46385e1e701975.png)
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a létrehozási lap megadásáról. Az "1. generáció" beállítás van kiválasztva.](media/a41174fd41302a181e46385e1e701975.png)
 
 3. Az ellenőrzőpont típusa területen tiltsa le az ellenőrzőpontokat a jelölőnégyzet bejelölésének törlésével.
 
-    ![Az ellenőrzőpontok lap ellenőrzőpont-típus szakaszának képernyőképe.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    > [!div class="mx-imgBorder"]
+    > ![Az ellenőrzőpontok lap ellenőrzőpont-típus szakaszának képernyőképe.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
 Az ellenőrzőpontok letiltásához a PowerShellben a következő parancsmagot is futtathatja.
 
@@ -53,7 +55,8 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 Ha meglévő virtuális merevlemezről hoz létre virtuális gépet, alapértelmezés szerint dinamikus lemezt hoz létre. A rögzített lemezre a **lemez szerkesztése...** lehetőség kiválasztásával módosítható, ahogy az alábbi képen is látható. Részletesebb útmutatásért lásd: [Windows VHD vagy VHDX előkészítése az Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md)-ba való feltöltéshez.
 
-![Képernyőkép a lemez szerkesztése lehetőségről.](media/35772414b5a0f81f06f54065561d1414.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép a lemez szerkesztése lehetőségről.](media/35772414b5a0f81f06f54065561d1414.png)
 
 A következő PowerShell-parancsmag futtatásával is megváltoztathatja a lemezt egy rögzített lemezre.
 
@@ -126,7 +129,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 A Windows 10 Enterprise vagy a Windows 10 Enterprise multi-session hostt használó Windowsos virtuális asztali munkamenetgazda esetében ajánlott letiltani a tárterületet. Az alábbi képernyőképen látható beállítások menüben letilthatja **a tárolási**érzékelést:
 
-![Képernyőfelvétel a beállítások területen a tárolási menüről. A "tárolási értelem" beállítás ki van kapcsolva.](media/storagesense.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőfelvétel a beállítások területen a tárolási menüről. A "tárolási értelem" beállítás ki van kapcsolva.](media/storagesense.png)
 
 A beállítást a beállításjegyzékben a következő parancs futtatásával is módosíthatja:
 
@@ -189,15 +193,18 @@ Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezk�
 
 2. Töltse fel a VHD-t egy blob-tárolóba a Storage-fiókjában. Gyorsan feltöltheti az [Storage Explorer eszközzel](https://azure.microsoft.com/features/storage-explorer/). Ha többet szeretne megtudni a Storage Explorer eszközről, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
-    ![A Microsoft Azure Storage Explorer eszköz keresési ablakának képernyőképe. A "feltöltés. vhd vagy vhdx fájlok blobként (ajánlott)" jelölőnégyzet be van jelölve.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    > [!div class="mx-imgBorder"]
+    > ![A Microsoft Azure Storage Explorer eszköz keresési ablakának képernyőképe. A "feltöltés. vhd vagy vhdx fájlok blobként (ajánlott)" jelölőnégyzet be van jelölve.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
 3. Ezután nyissa meg a böngészőben a Azure Portalt, és keressen rá a "képek" kifejezésre. A keresésnek a **rendszerkép létrehozása** lapra kell mutatnia, ahogy az alábbi képernyőképen is látható:
 
-    ![A Azure Portal rendszerkép létrehozása oldalának képernyőképe, amely a képen látható értékekkel lett kitöltve.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    > [!div class="mx-imgBorder"]
+    > ![A Azure Portal rendszerkép létrehozása oldalának képernyőképe, amely a képen látható értékekkel lett kitöltve.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
 4. Miután létrehozta a rendszerképet, a következő képernyőképen láthatóhoz hasonló értesítést kell látnia:
 
-    ![A "rendszerkép létrehozása sikeres" értesítés képernyőképe.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    > [!div class="mx-imgBorder"]
+    > ![A "rendszerkép létrehozása sikeres" értesítés képernyőképe.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
 ## <a name="next-steps"></a>További lépések
 

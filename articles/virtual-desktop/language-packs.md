@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7d05c1222ff43537ab8dad34588b80fe537fd0a1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85200409"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361302"
 ---
 # <a name="install-language-packs"></a>Nyelvi csomagok telepítése
 
@@ -36,7 +36,8 @@ Nyelvi csomagok telepítése:
 4. Az **ország vagy régió**területen válassza ki az előnyben részesített országot vagy régiót a legördülő menüből.
     Ebben a példában a **franciaországi**lehetőséget fogjuk kiválasztani, ahogy az alábbi képernyőképen is látható:
 
-    ![A régió oldalának képernyőképe. A jelenleg kiválasztott régió Franciaország.](media/region-page-france.png)
+    > [!div class="mx-imgBorder"]
+    > ![A régió oldalának képernyőképe. A jelenleg kiválasztott régió Franciaország.](media/region-page-france.png)
 
 5. Ezután válassza a **Language (nyelv**), majd **a nyelv hozzáadása**lehetőséget. Válassza ki a listából a telepíteni kívánt nyelvet, majd kattintson a **tovább**gombra.
 6. Amikor megnyílik a **nyelvi szolgáltatások telepítése** ablak, jelölje be a **nyelvi csomag telepítése és beállítása a Windows megjelenítési nyelvként**jelölőnégyzetet.
@@ -45,15 +46,19 @@ Nyelvi csomagok telepítése:
 
     Futtassunk egy gyors vizuális bemutatót. Az alábbi képek bemutatják, hogyan telepítheti a francia és holland nyelvi csomagokat, majd beállíthatja a franciát megjelenítési nyelvként.
 
-    ![A folyamat elején található nyelvi oldal képernyőképe. A kiválasztott Windows megjelenítési nyelv az angol.](media/language-page-default.png)
+    > [!div class="mx-imgBorder"]
+    > ![A folyamat elején található nyelvi oldal képernyőképe. A kiválasztott Windows megjelenítési nyelv az angol.](media/language-page-default.png)
 
-    ![A nyelv kiválasztása ablak képernyőképe. A felhasználó a francia nyelvi csomagok megtalálásához a "francia" kifejezést adta meg a keresősávban.](media/select-language-french.png)
+    > [!div class="mx-imgBorder"]
+    > ![A nyelv kiválasztása ablak képernyőképe. A felhasználó a francia nyelvi csomagok megtalálásához a "francia" kifejezést adta meg a keresősávban.](media/select-language-french.png)
 
-    ![A nyelvi szolgáltatások telepítési oldalának képernyőképe. A franciát választott nyelvként válassza ki. A kiválasztott beállítások a "saját megjelenítési nyelv beállítása", "nyelvi csomag telepítése", "beszédfelismerés" és "kézírás".](media/install-language-features.png)
+    > [!div class="mx-imgBorder"]
+    > ![A nyelvi szolgáltatások telepítési oldalának képernyőképe. A franciát választott nyelvként válassza ki. A kiválasztott beállítások a "saját megjelenítési nyelv beállítása", "nyelvi csomag telepítése", "beszédfelismerés" és "kézírás".](media/install-language-features.png)
 
     Miután telepítette a nyelvi csomagokat, megjelenik a nyelvi csomagok neve a nyelvek listájában.
 
-    ![A nyelvi oldal képernyőképe a telepített új nyelvi csomagokkal. A francia és a holland nyelvi csomagok az "előnyben részesített nyelvek" területen jelennek meg.](media/language-page-complete.png)
+    > [!div class="mx-imgBorder"]
+    > ![A nyelvi oldal képernyőképe a telepített új nyelvi csomagokkal. A francia és a holland nyelvi csomagok az "előnyben részesített nyelvek" területen jelennek meg.](media/language-page-complete.png)
 
 9. Ha megjelenik egy ablak, amely arra kéri, hogy jelentkezzen ki a munkamenetből. Jelentkezzen ki, majd jelentkezzen be újra. A megjelenítési nyelvnek most a kiválasztott nyelvnek kell lennie.
 
@@ -113,7 +118,8 @@ Ha a Sysprep folyamat során hibaüzenet jelenik meg, a következőket kell tenn
 
    A hibaüzenet szövege azt jelzi, hogy el kell távolítania egy adott nyelvi csomagot, ahogy az az alábbi képen is látható. Másolja a nyelvi csomag nevét a következő lépéshez.
 
-   ![Képernyőkép a Setuperr-fájlról. A csomag nevét tartalmazó szöveg ki van emelve a sötétkék színnel.](media/setuperr-package-name.png)
+   > [!div class="mx-imgBorder"]
+   > ![Képernyőkép a Setuperr-fájlról. A csomag nevét tartalmazó szöveg ki van emelve a sötétkék színnel.](media/setuperr-package-name.png)
 
 2. Nyisson meg egy új PowerShell-ablakot, és futtassa a következő parancsmagot a 2. lépésben átmásolt csomag nevével a nyelvi csomag eltávolításához:
 
@@ -137,7 +143,8 @@ Rendszerkép rögzítése:
 
 3. Adja meg a rendszerkép nevét a Name ( **név** ) mezőben, és rendelje hozzá az **erőforráscsoporthoz az erőforráscsoport legördülő menüből** az alábbi ábrán látható módon.
 
-   ![A rendszerkép létrehozása ablak képernyőképe Az a név, amelyet a felhasználó adott a tesztelési képnek, a "vmwvd-képfájl-fr", és a "testwvdimagerg" erőforráscsoporthoz lett hozzárendelve.](media/create-image.png)
+   > [!div class="mx-imgBorder"]
+   > ![A rendszerkép létrehozása ablak képernyőképe Az a név, amelyet a felhasználó adott a tesztelési képnek, a "vmwvd-képfájl-fr", és a "testwvdimagerg" erőforráscsoporthoz lett hozzárendelve.](media/create-image.png)
 
 4. Kattintson a **Létrehozás** gombra.
 

@@ -8,17 +8,17 @@ editor: curtand
 ms.reviewer: darora10
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4626e0149028a140d143fb8d0969a03b732201fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79036981"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359755"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Módosított alapértelmezett szabályok javítása Azure AD Connect
 
@@ -49,7 +49,7 @@ Az alapértelmezett szabályok az alábbi általános beállítások:
 
 A szabályok módosítása előtt:
 
-- Tiltsa le a szinkronizálási ütemező funkciót. Alapértelmezés szerint az ütemező 30 percenként fut. Győződjön meg róla, hogy nem indul el, amíg a módosításokat végez, és elhárítja az új szabályokat. Az ütemező ideiglenes letiltásához indítsa el a PowerShellt, és futtassa a parancsot `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+- Tiltsa le a szinkronizálási ütemező funkciót. Alapértelmezés szerint az ütemező 30 percenként fut. Győződjön meg róla, hogy nem indul el, amíg a módosításokat végez, és elhárítja az új szabályokat. Az ütemező ideiglenes letiltásához indítsa el a PowerShellt, és futtassa a parancsot `Set-ADSyncScheduler -SyncCycleEnabled $false` .
  ![PowerShell-parancsok a szinkronizálási ütemező letiltásához](media/how-to-connect-fix-default-rules/default3.png)
 
 - A hatókörbeli szűrő módosítása a cél könyvtárban lévő objektumok törlését eredményezheti. Ügyeljen arra, hogy az objektumok hatókörében bármilyen változást ne végezzen. Azt javasoljuk, hogy az aktív kiszolgálón végzett módosítások előtt módosítsa az átmeneti kiszolgálót.
@@ -105,10 +105,10 @@ A **hatókör-szűrő** és a **csatlakoztatási szabályok** üresek maradnak. 
 Most már tudja, hogyan hozhat új attribútumot egy felhasználói objektumhoz Active Directoryról Azure Active Directoryre. Ezekkel a lépésekkel bármely objektumból leképezheti a forrás és a cél bármely attribútumát. További információ: [Egyéni szinkronizálási szabályok létrehozása](how-to-connect-create-custom-sync-rule.md) és [felkészülés a felhasználók](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization)kiépítésére.
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>Meglévő attribútum értékének felülbírálása
-Érdemes lehet felülbírálni egy már leképezett attribútum értékét. Ha például az Azure AD-ben mindig null értéket szeretne beállítani egy attribútumhoz, egyszerűen csak egy bejövő szabályt hozzon létre. Végezze el az állandó `AuthoritativeNull`értéket, a folyamatot a TARGET attribútumnak. 
+Érdemes lehet felülbírálni egy már leképezett attribútum értékét. Ha például az Azure AD-ben mindig null értéket szeretne beállítani egy attribútumhoz, egyszerűen csak egy bejövő szabályt hozzon létre. Végezze el az állandó értéket, a `AuthoritativeNull` folyamatot a TARGET attribútumnak. 
 
 >[!NOTE] 
-> Ebben `AuthoritativeNull` az esetben `Null` használja a helyett. Ennek az az oka, hogy a nem null értékű érték a null értéket váltja fel, még akkor is, ha az alacsonyabb prioritással rendelkezik (a szabályban magasabb számérték szerepel). `AuthoritativeNull`a másik viszont nem helyettesít más szabályok által nem null értékű értéket. 
+> Ebben az esetben használja a `AuthoritativeNull` helyett `Null` . Ennek az az oka, hogy a nem null értékű érték a null értéket váltja fel, még akkor is, ha az alacsonyabb prioritással rendelkezik (a szabályban magasabb számérték szerepel). `AuthoritativeNull`a másik viszont nem helyettesít más szabályok által nem null értékű értéket. 
 
 ### <a name="dont-sync-existing-attribute"></a>Ne szinkronizálja a meglévő attribútumot
 Ha ki szeretne zárni egy attribútumot a szinkronizálásból, használja a Azure AD Connectben megadott Attribute Filtering szolgáltatást. Indítsa el **Azure ad Connect** az asztal ikonján, majd válassza a **szinkronizálási beállítások testreszabása lehetőséget**.
@@ -141,7 +141,7 @@ Ez az attribútum nem állítható be Active Directoryban. Állítsa be az attri
 
 `cloudFiltered <= IIF(Left(LCase([department]), 3) = "hrd", True, NULL)`
 
-Az osztályt először a forrástól (Active Directory) a kisbetűsre alakítottuk át. Ezután a `Left` függvény használatával csak az első három karaktert vettük fel, és összehasonlítjuk `hrd`. Ha megfelel, az érték a következőre van beállítva `True`:, `NULL`ellenkező esetben. Ha az értéket NULL értékre állítja, akkor egy másik, alacsonyabb prioritású szabály (egy magasabb érték) más feltétellel írható. Futtassa az előzetes verziót egy objektumon a szinkronizálási szabály érvényesítéséhez, ahogy az a [szinkronizálási szabály ellenőrzése](#validate-sync-rule) szakaszban is szerepel.
+Az osztályt először a forrástól (Active Directory) a kisbetűsre alakítottuk át. Ezután a függvény használatával `Left` csak az első három karaktert vettük fel, és összehasonlítjuk `hrd` . Ha megfelel, az érték a következőre van beállítva: `True` , ellenkező esetben `NULL` . Ha az értéket NULL értékre állítja, akkor egy másik, alacsonyabb prioritású szabály (egy magasabb érték) más feltétellel írható. Futtassa az előzetes verziót egy objektumon a szinkronizálási szabály érvényesítéséhez, ahogy az a [szinkronizálási szabály ellenőrzése](#validate-sync-rule) szakaszban is szerepel.
 
 ![Bejövő szinkronizálási szabály beállításainak létrehozása](media/how-to-connect-fix-default-rules/default7a.png)
 
@@ -176,15 +176,15 @@ Előnézet kiválasztása. **..**
 
 Az előnézet ablakban válassza az **előnézet előállítása** és az **attribútum importálása** a bal oldali ablaktáblán lehetőséget.
 
-![Előzetes verzió](media/how-to-connect-fix-default-rules/default14.png)
+![Előnézet](media/how-to-connect-fix-default-rules/default14.png)
  
-Itt figyelje meg, hogy az újonnan hozzáadott szabály fut az objektumon, és az `cloudFiltered` attribútum értéke TRUE (igaz).
+Itt figyelje meg, hogy az újonnan hozzáadott szabály fut az objektumon, és az attribútum értéke `cloudFiltered` true (igaz).
 
-![Előzetes verzió](media/how-to-connect-fix-default-rules/default15a.png)
+![Előnézet](media/how-to-connect-fix-default-rules/default15a.png)
  
 Ha a módosított szabályt az alapértelmezett szabállyal szeretné összehasonlítani, mindkét szabályt külön, szövegfájlként exportálja. Ezeket a szabályokat PowerShell-parancsfájlként exportálja a rendszer. Ezeket összehasonlíthatja bármilyen fájl-összehasonlító eszközzel (például Windiff) a módosítások megtekintéséhez. 
  
-Figyelje meg, hogy a módosított szabályban `msExchMailboxGuid` az attribútum a **kifejezés** típusára változik a **közvetlen**helyett. Az érték a **Null** és a **ExecuteOnce** beállításra is módosul. Figyelmen kívül hagyhatja az azonosított és a prioritási különbségeket. 
+Figyelje meg, hogy a módosított szabályban az `msExchMailboxGuid` attribútum a **kifejezés** típusára változik a **közvetlen**helyett. Az érték a **Null** és a **ExecuteOnce** beállításra is módosul. Figyelmen kívül hagyhatja az azonosított és a prioritási különbségeket. 
 
 ![Windiff eszköz kimenete](media/how-to-connect-fix-default-rules/default17.png)
  

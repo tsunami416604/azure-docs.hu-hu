@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f716c52443abedb0fb838fa95b421033f5e93408
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 97ddc91b5e49cafa87b90113f0160d8aec9c699a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85218021"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360316"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
 
@@ -118,9 +118,8 @@ az iOS-és Android-eszközök csak az Azure AD regisztrálva lehetnek. A követk
 |**Főbb képességek**| | |  |
 | Egyszeri bejelentkezés a Felhőbeli erőforrásokhoz| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
 | Egyszeri bejelentkezés a helyszíni erőforrásokba| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
-| Feltételes hozzáférés| ![Ellenőrizze](./media/plan-device-deployment/check.png) 
-Megfelelő eszközök| ![Ellenőrizze](./media/plan-device-deployment/check.png)
-Megfelelő eszköz| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
+| Feltételes hozzáférés <br> (Az eszközök megfelelőségének megjelölése kötelező) <br> (A MDM-nek kell kezelnie)| ![Ellenőrizze](./media/plan-device-deployment/check.png) | ![Ellenőrizze](./media/plan-device-deployment/check.png)|![Ellenőrizze](./media/plan-device-deployment/check.png) |
+Feltételes hozzáférés <br>(Hibrid Azure AD-hez csatlakoztatott eszközök megkövetelése)| | | ![Ellenőrizze](./media/plan-device-deployment/check.png)
 | Önkiszolgáló jelszó-visszaállítás a Windows bejelentkezési képernyőjéről| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
 | Windows Hello PIN-kód alaphelyzetbe állítása| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |
 | Vállalati állapot barangolása az eszközök között| | ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |

@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db7c0595d109efddb092f5e96babda17038e5e9e
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635815"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359007"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
 Ez a szolgáltatás a Build [1.1.105.0 (2016. február) jelent](reference-connect-version-history.md#111050)meg.  Ez a szolgáltatás a [build 1.1.561](reference-connect-version-history.md#115610) lett frissítve, és mostantól támogatja azokat a további forgatókönyveket, amelyek korábban nem támogatottak.
@@ -37,7 +37,7 @@ Az automatikus frissítés alapértelmezés szerint engedélyezve van a követke
 
 Az automatikus frissítés aktuális állapotát a PowerShell-parancsmaggal lehet megtekinteni `Get-ADSyncAutoUpgrade` . A következő állapotokkal rendelkezik:
 
-| Állam | Megjegyzés |
+| Állapot | Megjegyzés |
 | --- | --- |
 | Engedélyezve |Az automatikus frissítés engedélyezve van. |
 | Felfüggesztve |Csak a rendszeren állítható be. A rendszer **jelenleg nem** jogosult automatikus frissítések fogadására. |
@@ -99,5 +99,5 @@ Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, 
 |UpgradeNotSupportedLocalDbSizeExceeded|A helyi adatbázis mérete nagyobb vagy egyenlő, mint 8 GB|
 |UpgradeNotSupportedAADHealthUploadDisabled|Az állapot-adatfeltöltés le lett tiltva a portálról|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

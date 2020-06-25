@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60d2f8017454cd73e91bb022bab79a48b0af8a36
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1a3b07dadba17f72f6f4c5765787c7122eebaa89
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209589"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361404"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -549,13 +549,6 @@ Az Azure-ban a lemez-/VHD-név a következő elnevezési kapcsolódást követi,
 A fenti sztringnek egyedi módon kell azonosítania az Azure Storage-ban tárolt lemezt/VHD-t.
 
 
-#### <a name="managed-disks"></a><a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Managed Disks
-
-A Managed Disks egy Azure Resource Manager erőforrástípus, amely az Azure Storage-fiókokban tárolt virtuális merevlemezek helyett használható. Managed Disks automatikusan összehangolja a virtuális gép rendelkezésre állási csoportját, amelyhez csatolva van, így növelheti a virtuális gép és a virtuális gépen futó szolgáltatások rendelkezésre állását. További információért olvassa el az [áttekintő cikket](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
-
-Javasoljuk, hogy használja az Azure Managed Disks használatát, mert leegyszerűsíti a virtuális gépek üzembe helyezését és felügyeletét.
-
-
 #### <a name="azure-persisted-storage-types"></a>Azure-beli megőrzött tárolási típusok
 Az Azure számos megőrzött tárolási lehetőséget kínál, amely az SAP számítási feladatokhoz és az adott SAP stack-összetevőkhöz használható. További részletekért olvassa el az [Azure Storage az SAP](./planning-guide-storage.md)számítási feladataihoz című dokumentumot.
 
@@ -967,7 +960,7 @@ A letöltés ideje alatt a VHD-k vagy a Managed Disks nem lehetnek aktívak. Mé
   ```
 
 * Virtuális merevlemez letöltése  
-  Ha az SAP-rendszer leállt, és a virtuális gép le van állítva, a AzVhd PowerShell-parancsmag használatával letöltheti a VHD-lemezeket a helyi világba. Ehhez szüksége lesz a virtuális merevlemez URL-címére, amelyet a Azure Portal tárolási szakasza tartalmaz (a Storage-fiókra és a VHD-t létrehozó tárolóra kell navigálnia), és tudnia kell, hogy hová kell másolni a virtuális merevlemezt.
+  Ha az SAP-rendszer leáll, és a virtuális gép le van állítva, a helyszíni célhelyen található PowerShell-parancsmag használatával `Save-AzVhd` letöltheti a VHD-lemezeket a helyszíni világba. Ehhez szüksége lesz a virtuális merevlemez URL-címére, amelyet a Azure Portal tárolási szakasza tartalmaz (a Storage-fiókra és a VHD-t létrehozó tárolóra kell navigálnia), és tudnia kell, hogy hová kell másolni a virtuális merevlemezt.
 
   Ezután kihasználhatja a parancsot úgy, hogy meghatározza a SourceUri paramétert a letölteni kívánt VHD URL-címével, a LocalFilePath pedig a virtuális merevlemez fizikai helyén (beleértve a nevét is). A parancs a következőképpen néz ki:
 
@@ -988,7 +981,7 @@ A letöltés ideje alatt a VHD-k vagy a Managed Disks nem lehetnek aktívak. Mé
   ```
 
 * Virtuális merevlemez letöltése   
-  Ha az SAP-rendszer leáll, és a virtuális gép le van állítva, az Azure CLI-parancs _Azure Storage-blob letöltésével_ a helyszíni célhelyen töltheti le a VHD-lemezeket a helyszíni világba. Ennek elvégzéséhez szüksége lesz a virtuális merevlemez nevére és tárolóra, amelyet a Azure Portal tárolási szakasza tartalmaz (meg kell keresnie a Storage-fiókot és a virtuális merevlemezt létrehozó tárolót), és tudnia kell, hogy a virtuális merevlemezt hová kell másolni.
+  Ha az SAP-rendszer leáll, és a virtuális gép le van állítva, a helyszíni célhelyen lévő Azure CLI parancs használatával `_azure storage blob download_` letöltheti a VHD-lemezeket a helyszíni világba. Ennek elvégzéséhez szüksége lesz a virtuális merevlemez nevére és tárolóra, amelyet a Azure Portal tárolási szakasza tartalmaz (meg kell keresnie a Storage-fiókot és a virtuális merevlemezt létrehozó tárolót), és tudnia kell, hogy a virtuális merevlemezt hová kell másolni.
 
   Ezután kihasználhatja a parancsot úgy, hogy meghatározza a parancsfájlhoz tartozó blobot és tárolót a letöltéshez, a célhelyet pedig a VHD fizikai célhelyének (beleértve a nevét is). A parancs a következőképpen néz ki:
 

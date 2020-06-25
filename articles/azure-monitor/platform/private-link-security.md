@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 47c504d9359779294c4690059d1958614d863e58
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: b0cdff2ce71fb63194933bdfed26da16fdebcca7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260882"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361921"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Monitor
 
@@ -168,9 +168,8 @@ A hozzáférés ezen a módon való korlátozása csak a Application Insights er
 
 > [!NOTE]
 > A munkaterület-alapú Application Insights teljes biztonsága érdekében le kell zárnia a Application Insights erőforráshoz és a mögöttes Log Analytics munkaterülethez való hozzáférést.
-
-> [!NOTE]
-> A kód szintű diagnosztika (Profiler/Debugger) jelenleg nem támogatja a privát hivatkozást.
+>
+> A kód szintű diagnosztika (Profiler/Debugger) esetében meg kell adnia a saját Storage-fiókját a privát kapcsolat támogatásához. Ehhez a [dokumentációban](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage) olvashat.
 
 ## <a name="use-apis-and-command-line"></a>API-k és parancssor használata
 
@@ -226,7 +225,7 @@ Ha engedélyezni szeretné, hogy a Log Analytics ügynök letöltse a megoldási
 
 | Felhőalapú környezet | Ügynök erőforrása | Portok | Irány |
 |:--|:--|:--|:--|
-|Azure Public     | scadvisor.blob.core.windows.net         | 443 | Kimenő
+|Azure Public     | scadvisorcontent.blob.core.windows.net         | 443 | Kimenő
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Kimenő
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Kimenő
 

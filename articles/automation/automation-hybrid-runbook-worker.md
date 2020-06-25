@@ -3,30 +3,30 @@ title: Azure Automation Hybrid Runbook Worker – áttekintés
 description: Ez a cikk áttekintést nyújt a hibrid Runbook-feldolgozóról, amellyel runbookok futtathatók a helyi adatközpontban vagy a felhőalapú szolgáltatóban található gépeken.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/22/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: bad64d030f3a5fd6c32ab82702ecd861fe4049a4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d921ecc390ae9361c9b36b4738e73a499aa2e8a4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206835"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361812"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hibrid runbook-feldolgozó – áttekintés
 
-Előfordulhat, hogy a Azure Automation runbookok nem fér hozzá más felhőben vagy a helyszíni környezetben található erőforrásokhoz, mert az Azure Cloud platformon futnak. A Azure Automation Hybrid Runbook Worker szolgáltatásával a runbookok közvetlenül a szerepkört üzemeltető számítógépen és a környezetben található erőforrásokon futtathatja a helyi erőforrások kezeléséhez. A runbookok tárolása és kezelése Azure Automation, majd egy vagy több hozzárendelt számítógéphez történik.
+Előfordulhat, hogy a Azure Automation runbookok nem fér hozzá más felhőben vagy a helyszíni környezetben található erőforrásokhoz, mert az Azure Cloud platformon futnak. A Azure Automation Hybrid Runbook Worker szolgáltatásával a runbookok közvetlenül a szerepkört üzemeltető gépen és a környezet erőforrásain keresztül futtathatja a helyi erőforrások kezeléséhez. A runbookok tárolása és kezelése Azure Automation történik, majd egy vagy több hozzárendelt géphez érkezik.
 
 A következő ábra szemlélteti ezt a funkciót:
 
 ![Hibrid runbook-feldolgozó – áttekintés](media/automation-hybrid-runbook-worker/automation.png)
 
-A hibrid Runbook-feldolgozók a Windows vagy a Linux operációs rendszert is futtathatják. A figyeléshez a Azure Monitor és egy Log Analytics ügynök használatát igényli a támogatott operációs rendszerhez. További információ: [Azure monitor](automation-runbook-execution.md#azure-monitor).
+A hibrid Runbook-feldolgozók a Windows vagy a Linux operációs rendszeren is futtathatók. Ez a [log Analytics ügynöktől](../azure-monitor/platform/log-analytics-agent.md) függ, amely egy Azure monitor [log Analytics munkaterületre](../azure-monitor/platform/design-logs-deployment.md)jelentett. A munkaterület nem csak a támogatott operációs rendszerhez tartozó gép figyelésére használható, hanem a hibrid Runbook-feldolgozóhoz szükséges összetevők letöltésére is.
 
 A hibrid Runbook-feldolgozók az ügynök telepítésekor megadott hibrid Runbook Worker Group tagjai. Egy csoport tartalmazhat egyetlen ügynököt, de a magas rendelkezésre állás érdekében több ügynököt is telepíthet egy csoportba. Mindegyik gép egyetlen Automation-fiókba egyetlen hibrid feldolgozót tud üzemeltetni.
 
-Ha hibrid Runbook-feldolgozón indítja el a runbook, akkor azt a csoportot kell megadnia, amelyen az fut. A csoport minden munkatársa lekérdezi Azure Automation, hogy van-e elérhető feladat. Ha egy feladatot elérhetővé tesz, az első feldolgozónak kell megszereznie a feladatot. A feladatok várólistájának feldolgozási ideje a hibrid feldolgozói hardverprofil és a betöltéstől függ. Nem adhat meg egy adott dolgozót. 
+Ha hibrid Runbook-feldolgozón indítja el a runbook, akkor azt a csoportot kell megadnia, amelyen az fut. A csoport minden munkatársa lekérdezi Azure Automation, hogy van-e elérhető feladat. Ha egy feladatot elérhetővé tesz, az első feldolgozónak kell megszereznie a feladatot. A feladatok várólistájának feldolgozási ideje a hibrid feldolgozói hardverprofil és a betöltéstől függ. Nem adhat meg egy adott dolgozót.
 
-Azure-beli [homokozó](automation-runbook-execution.md#runbook-execution-environment) helyett hibrid Runbook-feldolgozót használhat, mert nem rendelkezik a lemezterület, a memória vagy a hálózati szoftvercsatornák nagy részének [korlátozásával](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) . A hibrid feldolgozók korlátai csak a dolgozó saját erőforrásaihoz kapcsolódnak. 
+Azure-beli [homokozó](automation-runbook-execution.md#runbook-execution-environment) helyett hibrid Runbook-feldolgozót használhat, mert nem rendelkezik a lemezterület, a memória vagy a hálózati szoftvercsatornák nagy részének [korlátozásával](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) . A hibrid feldolgozók korlátai csak a dolgozó saját erőforrásaihoz kapcsolódnak.
 
 > [!NOTE]
 > A hibrid Runbook-feldolgozók nem korlátozzák az Azure-beli munkaterületek [valós idejű megosztásának](automation-runbook-execution.md#fair-share) korlátját.
@@ -40,7 +40,7 @@ A hibrid Runbook-feldolgozók telepítésének folyamata az operációs rendszer
 |Windows     | [Automatizált](automation-windows-hrw-install.md#automated-deployment)<br>[Kézi](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker)        |
 
-Az ajánlott telepítési módszer egy Azure Automation runbook használata a Windows rendszerű számítógépek konfigurálásának teljes automatizálásához. A második módszer egy lépésenkénti eljárás, amellyel manuálisan telepítheti és konfigurálhatja a szerepkört. A Linux rendszerű gépeken egy Python-szkriptet futtathat, amely telepíti az ügynököt a gépre.
+Az ajánlott telepítési módszer egy Azure Automation runbook használata a Windows rendszerű gépek konfigurálásának teljes automatizálásához. Ha ez nem valósítható meg, a szerepkör manuális telepítéséhez és konfigurálásához hajtsa végre a lépésenkénti útmutatót. A Linux rendszerű gépeken egy Python-szkriptet futtathat, amely telepíti az ügynököt a gépre.
 
 ## <a name="network-planning"></a><a name="network-planning"></a>Hálózattervezés
 
@@ -65,11 +65,23 @@ Ha a Azure Automation és a Log Analytics ügynököt futtató gépek közötti 
 
 Ha tűzfal használatával korlátozza az internethez való hozzáférést, a tűzfalat úgy kell konfigurálnia, hogy engedélyezze a hozzáférést. Ha a Log Analytics-átjárót proxyként használja, győződjön meg arról, hogy a hibrid Runbook-feldolgozók számára van konfigurálva. Lásd: [a log Analytics átjáró konfigurálása az Automation hibrid feldolgozók számára](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
 
+### <a name="service-tags"></a>Szolgáltatáscímkék
+
+A Azure Automation támogatja az Azure Virtual Network szolgáltatás címkéit, a szolgáltatási címke [GuestAndHybridManagement](../virtual-network/service-tags-overview.md)kezdve. A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatás címkéi a biztonsági szabályok létrehozásakor a megadott IP-címek helyett használhatók. Ha a szolgáltatási címke nevét **GuestAndHybridManagement** adja meg egy szabály megfelelő forrás vagy cél mezőjében, engedélyezheti vagy megtagadhatja az Automation szolgáltatás forgalmát. Ez a szolgáltatási címke nem támogatja az IP-címtartományok egy adott régióra való korlátozásával a részletesebb szabályozás engedélyezését.
+
+A Azure Automation szolgáltatáshoz tartozó szolgáltatás címkéje csak a következő forgatókönyvekhez használt IP-címeket biztosítja:
+
+* Webhookok indítása a virtuális hálózaton belülről
+* A hibrid Runbook-feldolgozók vagy állami konfigurációs ügynökök engedélyezése a VNet az Automation szolgáltatással való kommunikációhoz
+
+>[!NOTE]
+>A **GuestAndHybridManagement** szolgáltatás jelenleg nem támogatja a runbook-feladatok végrehajtását egy Azure-beli homokozóban, csak egy hibrid runbook-feldolgozón.
+
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Update Management hibrid Runbook-feldolgozón
 
-Ha Azure Automation [Update Management](automation-update-management.md) engedélyezve van, az log Analytics munkaterülethez csatlakoztatott összes számítógép automatikusan hibrid Runbook-feldolgozóként van konfigurálva. Az egyes feldolgozók támogatják az runbookok megcélozni kívánt frissítéseket.
+Ha Azure Automation [Update Management](automation-update-management.md) engedélyezve van, az log Analytics munkaterülethez csatlakoztatott összes gép automatikusan hibrid Runbook-feldolgozóként van konfigurálva. Az egyes feldolgozók támogatják az runbookok megcélozni kívánt frissítéseket.
 
-Az így konfigurált számítógépek nincsenek regisztrálva az Automation-fiókban már definiált hibrid Runbook-feldolgozói csoportokkal. A számítógépet hozzáadhatja egy hibrid Runbook Worker csoporthoz, de ugyanazt a fiókot kell használnia a Update Management és a hibrid Runbook Worker Group tagsághoz is. Ez a funkció a hibrid Runbook-feldolgozók verziójának 7.2.12024.0 lett hozzáadva.
+Az ily módon konfigurált gépek nincsenek regisztrálva az Automation-fiókban már definiált hibrid Runbook-feldolgozói csoportokkal. Felveheti a gépet egy hibrid Runbook Worker-csoportba, de ugyanazt a fiókot kell használnia a Update Management és a hibrid Runbook Worker csoport tagságához is. Ez a funkció a hibrid Runbook-feldolgozók verziójának 7.2.12024.0 lett hozzáadva.
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>A hibrid Runbook-feldolgozók Update Management címei
 
@@ -87,7 +99,7 @@ A hibrid Runbook-feldolgozó által igényelt szabványos címek és portok fele
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>Runbookok hibrid Runbook-feldolgozón
 
-Lehetnek olyan runbookok, amelyek a helyi számítógépen lévő erőforrásokat felügyelik, vagy a helyi környezet erőforrásain futnak, ahol hibrid Runbook-feldolgozót telepítenek. Ebben az esetben dönthet úgy, hogy egy Automation-fiók helyett a hibrid feldolgozón futtatja a runbookok. A hibrid Runbook-feldolgozón futó runbookok az Automation-fiókban futtatott struktúrában azonosak. Lásd: [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md).
+Lehetnek olyan runbookok, amelyek a helyi gépen lévő erőforrásokat felügyelik, vagy a helyi környezet erőforrásain futnak, ahol hibrid Runbook-feldolgozót telepítenek. Ebben az esetben dönthet úgy, hogy egy Automation-fiók helyett a hibrid feldolgozón futtatja a runbookok. A hibrid Runbook-feldolgozón futó runbookok az Automation-fiókban futtatott struktúrában azonosak. Lásd: [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md).
 
 ### <a name="hybrid-runbook-worker-jobs"></a>Hibrid Runbook Worker-feladatok
 

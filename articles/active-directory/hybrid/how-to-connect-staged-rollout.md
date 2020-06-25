@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b26d63c11bce073c544848db4a9cc9987efd77
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338424"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357851"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -240,5 +240,5 @@ A: nem, ez a funkció az összevontról a felhőbe való Migrálás fázisokban 
 
 V: Igen. Ha szeretné megtudni, hogyan használhatja a PowerShellt a szakaszos bevezetéshez, tekintse meg az [Azure ad előzetes](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzióját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure AD 2,0 előzetes verzió](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

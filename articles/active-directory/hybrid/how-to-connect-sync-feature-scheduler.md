@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261072"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357392"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Az Azure AD Connect szinkronizálása: ütemező
 Ez a témakör a Azure AD Connect Sync (Sync Engine) beépített feladatütemezőjét ismerteti.
@@ -41,11 +41,11 @@ Az ütemező feladata két feladat:
 Maga az ütemező mindig fut, de úgy is konfigurálható, hogy csak egy vagy több feladatot futtasson. Ha például saját szinkronizálási ciklusra van szüksége, letilthatja ezt a feladatot az ütemező alkalmazásban, de továbbra is futtathatja a karbantartási feladatot.
 
 ## <a name="scheduler-configuration"></a>Ütemező konfigurálása
-Az aktuális konfigurációs beállítások megtekintéséhez nyissa meg a PowerShellt, `Get-ADSyncScheduler`és futtassa a parancsot. A következőhöz hasonló képet mutat:
+Az aktuális konfigurációs beállítások megtekintéséhez nyissa meg a PowerShellt, és futtassa a parancsot `Get-ADSyncScheduler` . A következőhöz hasonló képet mutat:
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
-Ha a parancsmag futtatásakor **a szinkronizálási parancs vagy a parancsmag nem érhető el** , akkor a PowerShell-modul nincs betöltve. Ez a probléma akkor fordulhat elő, ha a Azure AD Connect tartományvezérlőn vagy az alapértelmezett beállításoknál magasabb PowerShell-korlátozási szinttel rendelkező kiszolgálón futtatja. Ha ezt a hibát látja, futtassa a `Import-Module ADSync` parancsot a parancsmag elérhetővé tételéhez.
+Ha a parancsmag futtatásakor **a szinkronizálási parancs vagy a parancsmag nem érhető el** , akkor a PowerShell-modul nincs betöltve. Ez a probléma akkor fordulhat elő, ha a Azure AD Connect tartományvezérlőn vagy az alapértelmezett beállításoknál magasabb PowerShell-korlátozási szinttel rendelkező kiszolgálón futtatja. Ha ezt a hibát látja, futtassa a parancsot a `Import-Module ADSync` parancsmag elérhetővé tételéhez.
 
 * **AllowedSyncCycleInterval**. Az Azure AD által engedélyezett szinkronizálási ciklusok közötti legrövidebb időtartam. Ennél a beállításnál gyakrabban nem lehet szinkronizálni, és továbbra is támogatott.
 * **CurrentlyEffectiveSyncCycleInterval**. Az ütemterv jelenleg érvényben van. Ez az érték megegyezik a CustomizedSyncInterval (ha be van állítva), ha az nem gyakoribb, mint a AllowedSyncInterval. Ha a 1.1.281 előtt hoz létre egy buildet, és megváltoztatja a CustomizedSyncCycleInterval, ez a változás a következő szinkronizálási ciklus után lép érvénybe. A build 1.1.281 a módosítás azonnal érvénybe lép.
@@ -58,7 +58,7 @@ Ha a parancsmag futtatásakor **a szinkronizálási parancs vagy a parancsmag ne
 * **StagingModeEnabled**. Azt mutatja, hogy engedélyezve van-e az [átmeneti üzemmód](how-to-connect-sync-staging-server.md) . Ha ez a beállítás engedélyezve van, a rendszer letiltja az exportálást, de továbbra is futtatja az importálást és a szinkronizálást.
 * **SchedulerSuspended**. A frissítés során állítsa be a csatlakozást, hogy ideiglenesen blokkolja az ütemező futtatását.
 
-Ezeket a beállításokat megváltoztathatja a `Set-ADSyncScheduler`következővel:. A következő paraméterek módosíthatók:
+Ezeket a beállításokat megváltoztathatja a következővel: `Set-ADSyncScheduler` . A következő paraméterek módosíthatók:
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -83,11 +83,11 @@ A módosítások az ütemező napi futtatását módosítják.
 ### <a name="disable-the-scheduler"></a>Ütemező letiltása  
 Ha módosítania kell a konfigurációt, akkor le kívánja tiltani a Feladatütemezőt. Ha például [Beállítja a szűrést](how-to-connect-sync-configure-filtering.md) , vagy [módosítja a szinkronizálási szabályokat](how-to-connect-sync-change-the-configuration.md).
 
-Az ütemező letiltásához `Set-ADSyncScheduler -SyncCycleEnabled $false`futtassa a parancsot.
+Az ütemező letiltásához futtassa a parancsot `Set-ADSyncScheduler -SyncCycleEnabled $false` .
 
 ![Ütemező letiltása](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
 
-A módosítások elvégzése után ne felejtse el újból engedélyezni az ütemező szolgáltatását `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+A módosítások elvégzése után ne felejtse el újból engedélyezni az ütemező szolgáltatását `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 ## <a name="start-the-scheduler"></a>Az ütemező elindítása
 Az ütemező alapértelmezés szerint 30 percenként fut. Bizonyos esetekben előfordulhat, hogy szinkronizálási ciklust szeretne futtatni az ütemezett ciklusok között, vagy egy másik típust kell futtatnia.
@@ -109,9 +109,9 @@ A teljes szinkronizálási ciklus a következő lépéseket tartalmazza:
 
 Előfordulhat, hogy sürgős változásra van szükség, amelyet azonnal szinkronizálni kell, ezért a ciklust manuálisan kell futtatni. 
 
-Ha manuálisan kell futtatnia egy szinkronizálási ciklust, akkor a PowerShell `Start-ADSyncSyncCycle -PolicyType Delta`futtatásával.
+Ha manuálisan kell futtatnia egy szinkronizálási ciklust, akkor a PowerShell futtatásával `Start-ADSyncSyncCycle -PolicyType Delta` .
 
-Teljes szinkronizálási ciklus kezdeményezéséhez futtassa `Start-ADSyncSyncCycle -PolicyType Initial` a parancsot egy PowerShell-parancssorból.   
+Teljes szinkronizálási ciklus kezdeményezéséhez futtassa a parancsot `Start-ADSyncSyncCycle -PolicyType Initial` egy PowerShell-parancssorból.   
 
 A teljes szinkronizálási ciklus futtatása nagyon időigényes lehet, olvassa el a következő szakaszt, és olvassa el, hogyan optimalizálhatja ezt a folyamatot.
 
@@ -156,8 +156,8 @@ Ha az ütemező jelenleg szinkronizálási ciklust futtat, lehet, hogy le kell �
 
 Ha egy szinkronizálási ciklus fut, nem végezheti el a konfigurációs módosításokat. Megvárhatja, amíg az ütemező befejezte a folyamatot, de leállíthatja azt is, hogy azonnal el tudja végezni a módosításokat. Az aktuális ciklus leállítása nem ártalmas, és a függőben lévő módosítások a következő futtatással lesznek feldolgozva.
 
-1. Először is mondja el, hogy az ütemező leállítja a jelenlegi ciklust a PowerShell-parancsmaggal `Stop-ADSyncSyncCycle`.
-2. Ha 1.1.281 előtti buildet használ, akkor az ütemező leállítása nem állítja le az aktuális összekötőt az aktuális feladatból. Az összekötő leállításának kényszerítéséhez végezze el a következő ![műveleteket: StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+1. Először is mondja el, hogy az ütemező leállítja a jelenlegi ciklust a PowerShell-parancsmaggal `Stop-ADSyncSyncCycle` .
+2. Ha 1.1.281 előtti buildet használ, akkor az ütemező leállítása nem állítja le az aktuális összekötőt az aktuális feladatból. Az összekötő leállításának kényszerítéséhez végezze el a következő műveleteket: ![ StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
    * Indítsa el a **szinkronizálási szolgáltatást** a Start menüből. Nyissa meg az **Összekötők**elemet, jelölje ki az összekötőt a-t **futtató**állapottal, majd válassza a **Leállítás** lehetőséget a műveletek közül.
 
 Az ütemező továbbra is aktív, és a következő lehetőségnél újra elindul.

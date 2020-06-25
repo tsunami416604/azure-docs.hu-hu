@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9614def5310bdc6fa8c6f37d7cdcc0a5f081a96
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67478718"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360299"
 ---
 # <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
 Azure AD Connect egy helyszíni szolgáltatást telepít, amely összehangolja Active Directory és Azure Active Directory közötti szinkronizálást.  A Microsoft Azure AD Sync synchronization Service (ADSync) a helyszíni környezetben futó kiszolgálón fut.  A szolgáltatás hitelesítő adatai alapértelmezés szerint az expressz telepítésekben vannak beállítva, de testreszabhatók a szervezeti biztonsági követelmények teljesítéséhez.  Ezek a hitelesítő adatok nem használhatók a helyszíni erdőkhöz vagy Azure Active Directoryhoz való kapcsolódáshoz.
@@ -55,7 +55,7 @@ Ha a telepítés után megváltoztatja a ADSync szolgáltatás hitelesítő adat
 
 A ADSync szolgáltatás egy hibaüzenetet ad ki az eseménynaplóba, amikor nem tud elindulni.  Az üzenet tartalma attól függően változhat, hogy a beépített adatbázis (localdb) vagy a teljes SQL használatban van-e.  A következő példák az Eseménynapló azon bejegyzéseire mutatnak, amelyek lehetnek jelen.
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 
 Nem található a AdSync szolgáltatás titkosítási kulcsa, és a rendszer újból létrehozta őket.  A szinkronizálás a probléma kijavítása után nem történik meg.
 
@@ -63,7 +63,7 @@ A probléma elhárítása: Microsoft Azure AD szinkronizálási titkosítási ku
 
 További információért tekintse meg a következő [cikket](https://go.microsoft.com/fwlink/?linkid=2086764) .
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 A szolgáltatás nem indult el, mert nem sikerült csatlakozni a helyi adatbázishoz (localdb).
 

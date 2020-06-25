@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e93ffd448113b58589611389b71f5bcbfec7a2e4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558543"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358956"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-adatbázis áthelyezése SQL Server Expressről SQL Serverre 
 
@@ -70,7 +70,7 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
 
 18. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).
 - [Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával](how-to-connect-install-existing-database.md)

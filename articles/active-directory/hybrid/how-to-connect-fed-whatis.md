@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0518c58abf156c718ee083ffadb0ef8e0a590252
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7730efd29e24f99bce3937a9ce5cc2caf4e1400f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331544"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359500"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect és összevonás
 A Azure Active Directory (Azure AD) összekapcsolása lehetővé teszi a helyszíni Active Directory összevonási szolgáltatások (AD FS) (AD FS) és az Azure AD-vel való összevonás konfigurálását. Az összevonási bejelentkezés lehetővé teszi a felhasználók számára, hogy az Azure AD-alapú szolgáltatásokba jelentkezzenek be helyszíni jelszavával – és közben a vállalati hálózaton, anélkül, hogy újra meg kellene adniuk a jelszavukat. A AD FS összevonásával telepítheti AD FS új telepítését, vagy megadhat egy meglévő telepítést egy Windows Server 2012 R2-farmban.
@@ -51,7 +51,7 @@ Ez a témakör a Azure AD Connect összevonásával kapcsolatos funkciókról ny
 | [AD FSi jogcím szabályainak módosítása](how-to-connect-fed-management.md#modclaims) |A Azure AD Connect szinkronizálási konfigurációnak megfelelő jogcímek módosítása vagy hozzáadása AD FS. |
 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 * [Egyesítő két Azure AD-t egyetlen AD FS](how-to-connect-fed-single-adfs-multitenant-federation.md)
 * [Az AD FS üzembe helyezése az Azure-ban](how-to-connect-fed-azure-adfs.md)
 * [Magas rendelkezésre állású, több földrajzi AD FS üzembe helyezés az Azure-ban az Azure-ban Traffic Manager](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)

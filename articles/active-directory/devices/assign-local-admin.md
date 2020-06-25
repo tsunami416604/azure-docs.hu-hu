@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4285c7d8cd6c9feee84eaae3c49ffd1f21d5df27
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 72b21514e07b65b89d10b317da95ec7d92ecae78
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253086"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360333"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -88,7 +88,7 @@ Nem rendelhet hozzá csoportokat az eszköz rendszergazdai szerepköréhez, csak
 
 Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Nem lehetnek hatókörük egy adott eszközre.
 
-Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer visszavonja a jogosultságot a következő bejelentkezéskor, vagy 4 óra elteltével, amikor új elsődleges frissítési jogkivonatot állít ki.
+Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer a következő bejelentkezéskor visszavonja a jogosultságot 4 óra elteltével, amikor új elsődleges frissítési jogkivonatot állít ki.
 
 ## <a name="next-steps"></a>További lépések
 

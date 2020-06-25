@@ -3,14 +3,14 @@ title: Azure Kubernetes szolgáltatás (ak) a rendelkezésre állási SLA-val
 description: Ismerje meg az Azure Kubernetes Service (ak) API-kiszolgáló opcionális, rendelkezésre állási SLA-ajánlatát.
 services: container-service
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: b360f36dfc80033ac95e4face438b66eed33cec4
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945511"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361574"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
@@ -30,29 +30,38 @@ A rendelkezésre állási SLA olyan nyilvános régiókban érhető el, ahol az 
 * A Azure Government jelenleg nem támogatott.
 * Az Azure China 21Vianet jelenleg nem támogatott.
 
+## <a name="limitations"></a>Korlátozások
+
+* A privát fürtök jelenleg nem támogatottak.
+
 ## <a name="sla-terms-and-conditions"></a>SLA-feltételek és kikötések
 
 A rendelkezésre állási SLA egy fizetős szolgáltatás, és fürtön engedélyezve van. A rendelkezésre állási SLA díjszabását a különálló fürtök száma határozza meg, nem az egyes fürtök méretével. További információért tekintse meg a [rendelkezésre állási SLA díjszabását](https://azure.microsoft.com/pricing/details/kubernetes-service/) .
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.7.0 vagy újabb verziójának telepítése
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.8.0 vagy újabb verziójának telepítése
 
-## <a name="creating-a-cluster-with-uptime-sla"></a>Fürt létrehozása a rendelkezésre állási SLA-val
+## <a name="creating-a-new-cluster-with-uptime-sla"></a>Új fürt létrehozása a rendelkezésre állási SLA-val
+
+> [!NOTE]
+> Jelenleg, ha engedélyezi a rendelkezésre állási SLA-t, nincs lehetőség a fürtből való eltávolítására.
 
 Ha a rendelkezésre állási SLA-val rendelkező új fürtöt szeretne létrehozni, használja az Azure CLI-t.
 
-A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli-interactive
+# Create a resource group
 az group create --name myResourceGroup --location eastus
 ```
-Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A Tárolókhoz készült Azure Monitor szintén engedélyezve van az *--enable-addons monitoring* paraméterrel.  A művelet végrehajtása több percet is igénybe vehet.
+Az [`az aks create`][az-aks-create] parancs használatával hozzon létre egy AK-fürtöt. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A művelet végrehajtása több percet is igénybe vehet:
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1 --enable-addons monitoring --generate-ssh-keys
+# Create an AKS cluster with uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1
 ```
-Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza. A következő JSON-kódrészlet az SKU fizetős szintjét mutatja be, amely azt jelzi, hogy a fürt engedélyezve van a rendelkezésre állási SLA-val.
+Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza. A következő JSON-kódrészlet az SKU fizetős szintjét mutatja be, amely azt jelzi, hogy a fürt engedélyezve van a rendelkezésre állási SLA-val:
 
 ```output
   },
@@ -62,15 +71,61 @@ Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-
   },
 ```
 
-## <a name="limitations"></a>Korlátozások
+## <a name="modify-an-existing-cluster-to-use-uptime-sla"></a>Meglévő fürt módosítása a rendelkezésre állási SLA használatára
 
-* Jelenleg a nem konvertálható meglévő fürtként a rendelkezésre állási SLA engedélyezéséhez.
-* Jelenleg a létrehozás és az engedélyezés után nem lehet eltávolítani a rendelkezésre állási SLA-t egy AK-fürtből.  
-* A privát fürtök jelenleg nem támogatottak.
+A meglévő fürtöket igény szerint frissítheti a rendelkezésre állási SLA használatára.
+
+Ha az előző lépésekkel létrehozott egy AK-fürtöt, törölje az erőforráscsoportot:
+
+```azurecli-interactive
+# Delete the existing cluster by deleting the resource group 
+az group delete --name myResourceGroup --yes --no-wait
+```
+
+Hozzon létre egy új erőforráscsoportot:
+
+```azurecli-interactive
+# Create a resource group
+az group create --name myResourceGroup --location eastus
+```
+
+Hozzon létre egy új fürtöt, és ne használja a rendelkezésre állási SLA-t:
+
+```azurecli-interactive
+# Create a new cluster without uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
+```
+
+A [`az aks update`][az-aks-nodepool-update] parancs használatával frissítse a meglévő fürtöt:
+
+```azurecli-interactive
+# Update an existing cluster to use Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
+ ```
+
+ A következő JSON-kódrészlet az SKU fizetős szintjét mutatja be, amely azt jelzi, hogy a fürt engedélyezve van a rendelkezésre állási SLA-val:
+
+ ```output
+  },
+  "sku": {
+    "name": "Basic",
+    "tier": "Paid"
+  },
+  ```
+
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+
+A díjak elkerüléséhez távolítsa el a létrehozott erőforrásokat. A fürt törléséhez használja a [`az group delete`][az-group-delete] parancsot az AK-erőforráscsoport törléséhez:
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes --no-wait
+```
+
 
 ## <a name="next-steps"></a>További lépések
 
 A [Availability Zones][availability-zones] használatával növelheti a magas rendelkezésre állást az AK-fürt számítási feladataival.
+
 Konfigurálja a fürtöt a [kimenő forgalom korlátozása](limit-egress-traffic.md)érdekében.
 
 <!-- LINKS - External -->
@@ -86,3 +141,5 @@ Konfigurálja a fürtöt a [kimenő forgalom korlátozása](limit-egress-traffic
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-group-delete]: /cli/azure/group#az-group-delete

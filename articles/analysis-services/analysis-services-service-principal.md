@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9797b4c8f8059f9cfefbb70672aa202c7a3f4825
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: f2ffd1ea098bcf98e25958ca40318a65b0ef6605
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168335"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361455"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
 
@@ -20,7 +20,7 @@ A szolgáltatásnevek olyan Azure Active Directory-alkalmazáserőforrások, ame
 
 Analysis Services az egyszerű szolgáltatásokkal automatizálható a Azure Automation, a PowerShell felügyelet nélküli módban, az egyéni ügyfélalkalmazások és a webalkalmazások használata a gyakori feladatok automatizálásához. Például a kiszolgálók kiépítése, a modellek üzembe helyezése, az Adatfrissítés, a vertikális fel-és leskálázás, valamint a Szüneteltetés/folytatás is automatizálható az egyszerű szolgáltatásnév használatával. Az engedélyek az egyszerű Azure AD UPN-fiókokhoz hasonlóan szerepkör-tagságon keresztül vannak hozzárendelve a szolgáltatásokhoz.
 
-A Analysis Services a felügyelt identitások által végrehajtott műveleteket is támogatja az egyszerű szolgáltatásokkal. További információt az Azure [ad-hitelesítést támogató](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)Azure-erőforrások és Azure-szolgáltatások [felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) című témakörben talál.  
+A Analysis Services a felügyelt identitások által végrehajtott műveleteket is támogatja az egyszerű szolgáltatásokkal. További információt az Azure [ad-hitelesítést támogató](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)Azure-erőforrások és Azure-szolgáltatások [felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) című témakörben talál.    
 
 ## <a name="create-service-principals"></a>Szolgáltatásnevek létrehozása
  
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO és ADOMD 
 
-Az ügyfél- és a webalkalmazások összekapcsolása esetén a NuGet [AMO- és ADOMD-ügyfélkódtárainak](analysis-services-data-providers.md) 15.0.2 és újabb telepíthető csomagjai támogatják a szolgáltatásneveket a kapcsolati sztringek esetén a következő szintaxissal: `app:AppID` és jelszó, vagy `cert:thumbprint`. 
+Az ügyfél- és a webalkalmazások összekapcsolása esetén a NuGet [AMO- és ADOMD-ügyfélkódtárainak](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 és újabb telepíthető csomagjai támogatják a szolgáltatásneveket a kapcsolati sztringek esetén a következő szintaxissal: `app:AppID` és jelszó, vagy `cert:thumbprint`. 
 
 Az alábbi példában az `appID` és egy `password` segítségével végezheti el egy modelladatbázis frissítési műveletét:
 

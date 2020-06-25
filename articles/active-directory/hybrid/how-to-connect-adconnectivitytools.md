@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "64571115"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360180"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Az Azure AD-kapcsolat hibáinak megoldása a ADConnectivityTool PowerShell-modullal
 
@@ -47,7 +47,7 @@ Ha például egy könyvtárat próbálunk felvenni a **Csatlakozás a címtárak
 
 Valójában a háttérben történik, hogy Azure AD Connect meghívja a `Start-NetworkConnectivityDiagnosisTools` függvényt.  Ezt a függvényt akkor hívja meg a rendszer, ha a hitelesítő adatok érvényesítése a hálózati kapcsolat hibája miatt meghiúsul.
 
-Végül egy részletes naplófájl jön létre, amikor az eszközt meghívja a varázsló. A napló a **C:\ProgramData\AADConnect\ADConnectivityTool-\<dátum>\<idő>. log** mappában található.
+Végül egy részletes naplófájl jön létre, amikor az eszközt meghívja a varázsló. A napló a **C:\ProgramData\AADConnect\ADConnectivityTool- \<date> - \<time> . log naplófájlban található.**
 
 ## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools utáni telepítés
 Azure AD Connect telepítését követően a ADConnectivityTools PowerShell-modul egyik funkciója is használható.  

@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/23/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af1c42e7e2c163e7f9e7407d0236e35bfacf8e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c915898d3eec4494b6a300e88ffde216f21d5d68
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76931007"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358123"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Felhasználói adatok védelme és az Azure Active Directory átmenő hitelesítése
 
@@ -46,10 +46,10 @@ Erősen ajánljuk a második lehetőséget, mivel egyszerűbb megvalósítani é
 
 ### <a name="delete-azure-ad-connect-trace-log-files"></a>Azure AD Connect nyomkövetési naplófájlok törlése
 
-Tekintse át a **%ProgramData%\AADConnect** mappa tartalmát, és törölje a mappához tartozó nyomkövetési napló tartalmát (**nyomkövetési\*** naplófájlok) a Azure AD Connect telepítésének vagy frissítésének 48 órán belül, illetve az átmenő hitelesítési konfiguráció módosításával, mivel ez a művelet a GDPR által érintett adatmennyiséget hozhat létre.
+Tekintse át a **%ProgramData%\AADConnect** mappa tartalmát, és törölje a mappához tartozó nyomkövetési napló tartalmát (**nyomkövetési \* ** naplófájlok) a Azure ad Connect telepítésének vagy frissítésének 48 órán belül, illetve az átmenő hitelesítési konfiguráció módosításával, mivel ez a művelet a GDPR által érintett adatmennyiséget hozhat létre.
 
 >[!IMPORTANT]
->Ne törölje a **PersistedState. XML** fájlt ebben a mappában, mivel ez a fájl a Azure ad Connect korábbi telepítésének állapotát fogja használni, és a rendszer a frissítés telepítésének befejezésekor használja. Ez a fájl soha nem tartalmaz semmilyen információt egy személyről, és soha nem törölhető.
+>Ne törölje a mappában található **PersistedState.xml** fájlt, mivel ez a fájl a Azure ad Connect előző telepítésének állapotát fogja használni, és a rendszer a frissítés telepítésekor használja. Ez a fájl soha nem tartalmaz semmilyen információt egy személyről, és soha nem törölhető.
 
 Áttekintheti és törölheti ezeket a nyomkövetési naplófájlokat a Windows Intézőben, vagy a következő PowerShell-parancsfájl használatával elvégezheti a szükséges műveleteket:
 

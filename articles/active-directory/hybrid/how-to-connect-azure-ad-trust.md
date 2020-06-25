@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f3e521fb7668305ce511aaddd63ed2cce8dfed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331722"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360095"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-megbízhatóság Azure AD általi kezelése az Azure AD Connect használatával
 
@@ -103,14 +103,14 @@ Azure AD Connect biztosítja, hogy az Azure AD-megbízhatóság mindig a javasol
 
 ## <a name="restore-issuance-transform-rules"></a>Kiállítási átalakítási szabályok visszaállítása
 
-Azure AD Connect a 1.1.873.0 vagy újabb verziója biztonsági másolatot készít az Azure AD megbízhatósági beállításairól, amikor frissítést végez az Azure AD megbízhatósági beállításaiban. Az Azure AD-megbízhatósági beállítások biztonsági mentése a következő helyen történik: **%ProgramData%\AADConnect\ADFS**. A Fájlnév formátuma a következő:&lt;AadTrust&gt;-&lt;&gt;. txt, például: AadTrust-20180710-150216. txt
+Azure AD Connect a 1.1.873.0 vagy újabb verziója biztonsági másolatot készít az Azure AD megbízhatósági beállításairól, amikor frissítést végez az Azure AD megbízhatósági beállításaiban. Az Azure AD-megbízhatósági beállítások biztonsági mentése a következő helyen történik: **%ProgramData%\AADConnect\ADFS**. A fájl neve a következő formátumú: AadTrust &lt; &gt; - &lt; &gt; . txt, például: AadTrust-20180710-150216.txt
 
 ![Képernyőkép az Azure AD-beli megbízható biztonsági mentésről](./media/how-to-connect-azure-ad-trust/backup.png)
 
 A kiadás átalakítási szabályait a javasolt lépések alapján állíthatja vissza
 
 1. A Kiszolgálókezelő AD FS felügyeleti felhasználói felületének megnyitása
-2. Nyissa meg az Azure AD-megbízhatósági tulajdonságokat **AD FS &gt; függő entitás &gt; megbízhatóságai Microsoft Office 365 Identity &gt; platform szerkesztési jogcímek kiállítási szabályzata**
+2. Nyissa meg az Azure AD-megbízhatósági tulajdonságokat **AD FS &gt; függő entitás megbízhatóságai &gt; Microsoft Office 365 Identity platform &gt; szerkesztési jogcímek kiállítási szabályzata**
 3. Kattintson a **szabály hozzáadása** elemre.
 4. A jogcím szabály sablonjában válassza a jogcímek küldése egyéni szabállyal elemet, és kattintson a **tovább** gombra.
 5. Másolja a jogcím-szabály nevét a biztonságimásolat-fájlból, és illessze be a mezőbe a **jogcím-szabály nevében** .

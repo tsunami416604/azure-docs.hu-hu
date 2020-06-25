@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 36031006f155f1651845dbce48b6c6ec84397e93
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572673"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361421"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office-adatkapcsolatok fájljának létrehozása
 
-A cikkben található információk azt ismertetik, hogyan hozhat létre Office-adatkapcsolati fájlt egy Azure Analysis Services-kiszolgálóhoz való kapcsolódáshoz az Excel 2016-es verziójának 16.0.7369.2117 vagy korábbi verziójából, vagy az Excel 2013-ből. A frissített [MSOLAP. 7 szolgáltató](analysis-services-data-providers.md) is szükséges.
+A cikkben található információk azt ismertetik, hogyan hozhat létre Office-adatkapcsolati fájlt egy Azure Analysis Services-kiszolgálóhoz való kapcsolódáshoz az Excel 2016-es verziójának 16.0.7369.2117 vagy korábbi verziójából, vagy az Excel 2013-ből. A frissített [MSOLAP. 7 szolgáltató](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) is szükséges.
 
 
 1. Másolja be az alábbi minta-kapcsolatfájl, és illessze be egy szövegszerkesztőbe. 
 
-2. A `odc:ConnectionString`alkalmazásban módosítsa a következő tulajdonságokat:
+2. A alkalmazásban `odc:ConnectionString` módosítsa a következő tulajdonságokat:
 
-    *   A `Data Source=asazure://<region>.asazure.windows.net/<servername>;` váltás `<region>` a Analysis Services-kiszolgáló régiójára és `<servername>` a kiszolgáló nevére.
+    *   A `Data Source=asazure://<region>.asazure.windows.net/<servername>;` Váltás a `<region>` Analysis Services-kiszolgáló régiójára és a `<servername>` kiszolgáló nevére.
 
-    *   A `Initial Catalog=<database>;` váltás `<database>` az adatbázis nevére.
+    *   A `Initial Catalog=<database>;` Váltás az `<database>` adatbázis nevére.
 
-3. `<odc:CommandText>Model</odc:CommandText>` Módosítsa `Model` a modell vagy perspektíva nevét. 
+3. `<odc:CommandText>Model</odc:CommandText>`Módosítsa a `Model` modell vagy perspektíva nevét. 
 
-4. Mentse a fájlt egy `.odc` kiterjesztéssel a C:\Users\\*username*\Documents\My adatforrások mappájába.
+4. Mentse a fájlt egy `.odc` kiterjesztéssel a C:\Users \\ *username*\Documents\My adatforrások mappájába.
 
 5. Kattintson a jobb gombbal a fájlra, majd kattintson a **Megnyitás az Excelben**elemre. Vagy **az Excelben az adatszalagon** kattintson a **létező kapcsolatok**elemre, jelölje ki a fájlt, majd kattintson a **Megnyitás**gombra.
 

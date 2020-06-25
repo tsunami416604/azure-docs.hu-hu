@@ -7,17 +7,17 @@ manager: daveba
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 634c10771751522dba4093fe1c830820926fd621
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558565"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357868"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
 Ebből a cikkből megtudhatja, hogyan módosíthatja az alapértelmezett konfigurációt Azure Active Directory (Azure AD) csatlakozási szinkronizálásban. Néhány gyakori forgatókönyvhöz nyújt lépéseket. Ezzel az ismerettel a saját üzleti szabályai alapján egyszerű módosításokat végezhet saját konfigurációjában.
@@ -264,7 +264,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Name | *Adjon meg egy nevet* | Például az *ad – User UserType* |
+    | Name (Név) | *Adjon meg egy nevet* | Például az *ad – User UserType* |
     | Leírás | *Adja meg a leírást* |  |
     | Csatlakoztatott rendszerek | *A helyszíni AD-összekötő kiválasztása* |  |
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
@@ -306,7 +306,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
-    | Name | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
+    | Name (Név) | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
     | Leírás | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki a HRE-összekötőt* ||
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
@@ -392,7 +392,7 @@ Engedélyezze újra a beépített szinkronizálási ütemező funkciót:
 2. Engedélyezze újra az ütemezett szinkronizálást a parancsmag futtatásával `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című cikkből.
 * További információ a kifejezés nyelvéről a [deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)című cikkből.
 

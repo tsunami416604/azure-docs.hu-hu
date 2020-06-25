@@ -183,7 +183,7 @@
               href: directory-admin-roles-secure.md
             - name: Vészelérési fiókok létrehozása
               href: directory-emergency-access.md
-        - name: Felügyeleti egység
+        - name: Felügyeleti egységek
           items:
             - name: Felügyeleti egységek áttekintése
               href: directory-administrative-units.md

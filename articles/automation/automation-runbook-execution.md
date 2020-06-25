@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9e602f9ed6a9132c78dbdf0ea3246cbeae80671
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4f62a94c8ed8baa9979aa1469e785d26781af7f0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832350"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361625"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -43,7 +43,7 @@ A [hibrid Runbook-feldolgozók](automation-hybrid-runbook-worker.md) a runbookok
 
 Az alábbi táblázat néhány runbook végrehajtási feladatot sorol fel, amelyek az ajánlott végrehajtási környezettel rendelkeznek.
 
-|Tevékenység|Ajánlás|Megjegyzések|
+|Tevékenység|Ajánlás|Jegyzetek|
 |---|---|---|
 |Integráció az Azure-erőforrásokkal|Azure-beli homokozó|Az Azure-ban üzemeltetett hitelesítés egyszerűbb. Ha hibrid Runbook-feldolgozót használ egy Azure-beli virtuális gépen, akkor a [Runbook-hitelesítést felügyelt identitásokkal használhatja](automation-hrw-run-runbooks.md#runbook-auth-managed-identities).|
 |Optimális teljesítmény az Azure-erőforrások kezeléséhez|Azure-beli homokozó|A parancsfájl ugyanabban a környezetben fut, amelynek kevesebb a késése.|
@@ -53,7 +53,7 @@ Az alábbi táblázat néhány runbook végrehajtási feladatot sorol fel, amely
 |Harmadik féltől származó szoftverek és végrehajtható fájlok megkövetelése|hibrid runbook-feldolgozó|Kezelheti az operációs rendszert, és telepíthet szoftvereket.|
 |Fájl vagy mappa figyelése runbook|hibrid runbook-feldolgozó|[Figyelő feladat](automation-watchers-tutorial.md) használata hibrid Runbook-feldolgozón.|
 |Erőforrás-igényes parancsfájl futtatása|hibrid runbook-feldolgozó| Az Azure-beli munkaterületeken [erőforrás-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)vannak.|
-|Speciális követelményekkel rendelkező modulok használata| hibrid runbook-feldolgozó|Néhány példa:</br> Megnyerő – függőség a megnyert. exe fájltól </br> IIS-felügyelet – az IIS engedélyezésével vagy kezelésével kapcsolatos függőség|
+|Speciális követelményekkel rendelkező modulok használata| hibrid runbook-feldolgozó|Néhány példa:</br> Megnyerő-függőség winscp.exe </br> IIS-felügyelet – az IIS engedélyezésével vagy kezelésével kapcsolatos függőség|
 |Modul telepítése telepítővel|hibrid runbook-feldolgozó|A sandbox moduljainak támogatnia kell a másolást.|
 |A 4.7.2-től eltérő .NET-keretrendszer verziót igénylő runbookok vagy modulok használata|hibrid runbook-feldolgozó|Az Azure-beli munkaterületek támogatják a .NET-keretrendszer 4.7.2, és más verzióra történő frissítés nem támogatott.|
 |Jogosultságszint-emelést igénylő parancsfájlok futtatása|hibrid runbook-feldolgozó|A sandboxok nem engedélyezik a jogosultságszint-emelést. A hibrid Runbook-feldolgozók kikapcsolhatják az UAC-t, és a jogosultságszint-emelést igénylő parancs futtatásakor a [Meghívási parancsot](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) is használhatják.|
@@ -131,7 +131,7 @@ A következő táblázat a feladatokhoz lehetséges állapotokat ismerteti. Megt
 
 | Állapot | Leírás |
 |:--- |:--- |
-| Befejeződött |A feladat sikeresen befejeződött. |
+| Befejezve |A feladat sikeresen befejeződött. |
 | Sikertelen |A grafikus vagy a PowerShell-munkafolyamat runbook nem sikerült lefordítani. Nem sikerült elindítani egy PowerShell-runbook, vagy kivétel történt a feladatokban. Lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).|
 | Sikertelen, várakozás erőforrásokra |A feladatot nem sikerült végrehajtani, mert elérte a [valós megosztási](#fair-share) korlátot háromszor, és ugyanabból az ellenőrzőpontból vagy a runbook elejétől indul el. |
 | Várólistán |A művelet arra vár, hogy az automatizálási feldolgozón lévő erőforrások elérhetővé váljanak, hogy el lehessen indítani. |

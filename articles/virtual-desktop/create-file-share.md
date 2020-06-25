@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7fca57bd517296711ada2f714d523bfa0709337c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: eea6f901a7228d7ed411d27296e1fb44a41d9f72
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208382"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361336"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Profil tároló létrehozása Azure Files és AD DS
 
@@ -74,7 +74,8 @@ Ezután engedélyeznie kell Active Directory (AD-) hitelesítést. Ennek a szab�
 
 3.  Nyissa meg a Azure Portal, nyissa meg a Storage-fiókját, válassza a **Konfigurálás**lehetőséget, majd erősítse meg, **Active Directory (ad)** beállítást **engedélyezze**.
 
-     ![A konfiguráció oldalának képernyőképe Azure Active Directory (AD) engedélyezve.](media/active-directory-enabled.png)
+     > [!div class="mx-imgBorder"]
+     > ![A konfiguráció oldalának képernyőképe Azure Active Directory (AD) engedélyezve.](media/active-directory-enabled.png)
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Azure RBAC engedélyek kiosztása a Windows rendszerű virtuális asztali felhasználók számára
 

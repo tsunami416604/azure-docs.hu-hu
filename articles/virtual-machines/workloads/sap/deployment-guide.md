@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 828615add9f24b5a2089e240bbf62647f34a25f0
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207402"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361387"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -211,10 +211,6 @@ ms.locfileid: "85207402"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Lemezek másolása az Azure Storage-fiókok között)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (VM-/VHD-struktúra SAP-környezetekhez)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (A csatlakoztatott lemezek automatikus csatlakoztatásának beállítása)
-[planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (Egyetlen virtuális gép SAP NetWeaver bemutatóval/betanítási forgatókönyvvel)
-[planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (Az SAP-példányok csak felhőalapú üzembe helyezésének fogalmai)
-[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure monitoring megoldás az SAP-hoz)
-[planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Managed Disks)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -446,7 +442,7 @@ A varázsló végigvezeti a virtuális gép létrehozásához szükséges param�
 1. **Beállítások**:
    * **Storage**
      * **Lemez típusa**: válassza ki az operációsrendszer-lemez típusát. Ha Premium Storaget szeretne használni az adatlemezekhez, javasoljuk, hogy az operációs rendszer lemezének Premium Storage használatát is használja.
-     * **Felügyelt lemezek használata**: ha a Managed Diskst szeretné használni, válassza az Igen lehetőséget. További információ a Managed Disksről: fejezet [Managed Disks][planning-guide-managed-disks] a tervezési útmutatóban.
+     * **Felügyelt lemezek használata**: ha a Managed Diskst szeretné használni, válassza az Igen lehetőséget. További információ a Managed Disksről: fejezet [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) a tervezési útmutatóban.
      * **Storage-fiók**: válasszon egy meglévő Storage-fiókot, vagy hozzon létre egy újat. Nem minden tárolási típus működik az SAP-alkalmazások futtatásához. További információ a tárolási típusokról: [virtuális gép tárolási szerkezete RDBMS üzemelő példányokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
    * **Hálózat**
      * **Virtuális hálózat** és **alhálózat**: Ha integrálni szeretné a virtuális gépet az intranettel, válassza ki azt a virtuális hálózatot, amely a helyszíni hálózathoz csatlakozik.
@@ -586,7 +582,7 @@ A varázsló végigvezeti a virtuális gép létrehozásához szükséges param�
 1. **Beállítások**:
    * **Storage**
      * **Lemez típusa**: válassza ki az operációsrendszer-lemez típusát. Ha Premium Storaget szeretne használni az adatlemezekhez, javasoljuk, hogy az operációs rendszer lemezének Premium Storage használatát is használja.
-     * **Felügyelt lemezek használata**: ha a Managed Diskst szeretné használni, válassza az Igen lehetőséget. További információ a Managed Disksről: fejezet [Managed Disks][planning-guide-managed-disks] a tervezési útmutatóban.
+     * **Felügyelt lemezek használata**: ha a Managed Diskst szeretné használni, válassza az Igen lehetőséget. További információ a Managed Disksről: fejezet [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) a tervezési útmutatóban.
    * **Hálózat**
      * **Virtuális hálózat** és **alhálózat**: Ha integrálni szeretné a virtuális gépet az intranettel, válassza ki azt a virtuális hálózatot, amely a helyszíni hálózathoz csatlakozik.
      * **Nyilvános IP-cím**: válassza ki a használni kívánt nyilvános IP-címet, vagy adja meg a paramétereket egy új nyilvános IP-cím létrehozásához. Nyilvános IP-címet is használhat a virtuális gép interneten keresztüli eléréséhez. Győződjön meg arról, hogy létrehoz egy hálózati biztonsági csoportot is a virtuális géphez való hozzáférés biztonságossá tételéhez.
@@ -917,7 +913,7 @@ A felhasználó által megadott útvonalakkal kapcsolatos további információk
 > Általános támogatási nyilatkozat: mindig nyisson meg egy, az SAP-vel kapcsolatos incidenst a BC-OP-NT-AZR for Windows vagy a BC-OP-LNX-AZR esetében, ha az SAP-hez készült Azure-bővítmény támogatása szükséges.
 > Az SAP-támogatási rendszeren vannak olyan dedikált Microsoft támogatási mérnökök, akik a közös ügyfeleink segítségére vannak.
 
-Ha előkészítette a virtuális gépet az Azure-beli virtuális [gépek üzembe helyezési forgatókönyvei][deployment-guide-3]című témakörben leírtak szerint, az Azure-beli virtuálisgép-ügynök telepítve van a virtuális gépen. A következő lépés az SAP-hez készült Azure-bővítmény üzembe helyezése, amely a globális Azure-adatközpontok Azure Extension adattárában érhető el. További információ: [Azure Virtual Machines tervezése és implementálása az SAP NetWeaver-][planning-guide-9.1]ban.
+Ha előkészítette a virtuális gépet az Azure-beli virtuális [gépek üzembe helyezési forgatókönyvei][deployment-guide-3]című témakörben leírtak szerint, az Azure-beli virtuálisgép-ügynök telepítve van a virtuális gépen. A következő lépés az SAP-hez készült Azure-bővítmény üzembe helyezése, amely a globális Azure-adatközpontok Azure Extension adattárában érhető el. További információ: [Azure Virtual Machines tervezés és megvalósítás SAP NetWeaver-hoz] [tervezési-útmutató-9,1].
 
 Az SAP-hez készült Azure-bővítmény új verziójának kiadása folyamatban van. Az új bővítmény a virtuális gép rendszerhez rendelt identitását használja a csatlakoztatott lemezek, a hálózati adapterek és a virtuális gép adatainak lekérésére. Ahhoz, hogy hozzáférhessenek ezekhez az erőforrásokhoz, a virtuális gép rendszeridentitásának olvasási engedéllyel kell rendelkeznie a virtuális géphez, az operációsrendszer-lemezhez, az adatlemezekhez és a hálózati adapterekhez. Jelenleg a következő esetekben javasoljuk, hogy csak az új bővítményt telepítse:
 

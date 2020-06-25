@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0178d95072bec7af60fa500e662abdd9698c72d0
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635747"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358293"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: gyakori kérdések
 
@@ -174,7 +174,7 @@ A június 15-től 2015-ig létrehozott bérlők alapértelmezett viselkedése az
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak, és melyek nem.
 - [Gyors üzembe helyezés](how-to-connect-pta-quick-start.md): megkezdheti az Azure ad átmenő hitelesítését.
 - [Migrálás ad FSról áteresztő hitelesítésre](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1b4e56dfeae2d4b7826f3ad30bc5eb4b8672b85
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676650"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361472"
 ---
 # <a name="connecting-to-servers"></a>Kapcsolódás kiszolgálókhoz
 
@@ -20,14 +20,14 @@ Ez a cikk a kiszolgálóhoz való csatlakozást ismerteti adatmodellezési és-k
 
 ## <a name="client-libraries"></a>Ügyfélkódtárak
 
-[A legújabb ügyféloldali kódtárak beszerzése](analysis-services-data-providers.md)
+[A legújabb ügyféloldali kódtárak beszerzése](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 A kiszolgálóhoz való minden kapcsolat, a típustól függetlenül, frissített AMO-, ADOMD.NET-és OLEDB-ügyféloldali kódtárak szükségesek a Analysis Services-kiszolgálóval való csatlakozáshoz és az ahhoz való kapcsolódáshoz. A SSMS, a Visual studióhoz, az Excel 2016-es és újabb verzióihoz, valamint Power BI a legújabb ügyféloldali kódtárakat a rendszer a havi kiadásokkal telepíti vagy frissíti. Bizonyos esetekben azonban lehetséges, hogy egy alkalmazás nem rendelkezik a legújabbal. Például ha a házirendek késleltetik a frissítéseket, vagy az Office 365 frissítései a késleltetett csatornán vannak.
 
 > [!NOTE]
 > Az ügyfél-kódtárak nem tudnak csatlakozni a Azure Analysis Services a felhasználónevet és jelszót igénylő proxykiszolgálók használatával. 
 
-## <a name="server-name"></a>Kiszolgálónév
+## <a name="server-name"></a>Kiszolgáló neve
 
 Amikor létrehoz egy Analysis Services kiszolgálót az Azure-ban, meg kell adnia egy egyedi nevet és azt a régiót, ahol a kiszolgálót létre kívánja hozni. Amikor a kiszolgáló nevét adja meg egy kapcsolatban, a kiszolgáló elnevezési sémája a következőket eredményezi:
 
@@ -38,7 +38,7 @@ Amikor létrehoz egy Analysis Services kiszolgálót az Azure-ban, meg kell adni
 
 ### <a name="get-the-server-name"></a>Kiszolgáló nevének lekérése
 
-A **Azure Portal** > Server > **áttekintő** > **kiszolgáló neve**területen másolja a teljes kiszolgálónevet. Ha a szervezet többi felhasználója is csatlakozik ehhez a kiszolgálóhoz, ezt a kiszolgálónevet megoszthatja velük. A kiszolgáló nevének megadásakor a teljes elérési utat kell használni.
+A **Azure Portal** > Server > **áttekintő**  >  **kiszolgáló neve**területen másolja a teljes kiszolgálónevet. Ha a szervezet többi felhasználója is csatlakozik ehhez a kiszolgálóhoz, ezt a kiszolgálónevet megoszthatja velük. A kiszolgáló nevének megadásakor a teljes elérési utat kell használni.
 
 ![A kiszolgáló nevének lekérése az Azure-ban](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 

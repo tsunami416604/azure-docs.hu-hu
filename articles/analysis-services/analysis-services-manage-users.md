@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ca9b1d9fbd18f60de80a80c932f0e27b8dc8583
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701042"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361489"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
 
@@ -24,7 +24,7 @@ Azure Analysis Services támogatja az [Azure ad B2B-együttműködést](../activ
 
 ## <a name="authentication"></a>Hitelesítés
 
-Minden ügyfélalkalmazás és eszköz egy vagy több Analysis Services [ügyféloldali kódtárat](analysis-services-data-providers.md) (amo, MSOLAP, ADOMD) használ a kiszolgálóhoz való kapcsolódáshoz. 
+Minden ügyfélalkalmazás és eszköz egy vagy több Analysis Services [ügyféloldali kódtárat](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (amo, MSOLAP, ADOMD) használ a kiszolgálóhoz való kapcsolódáshoz. 
 
 Mindhárom ügyfél-függvénytár támogatja az Azure AD interaktív folyamatot és a nem interaktív hitelesítési módszereket. A AMOMD-t és MSOLAP-t használó alkalmazásokban a két nem interaktív módszer, Active Directory jelszó és a Active Directory integrált hitelesítési módszer is használható. Ez a két módszer soha nem eredményez előugró párbeszédpanelt.
 

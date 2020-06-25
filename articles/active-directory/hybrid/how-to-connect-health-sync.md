@@ -11,17 +11,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 356697c4843742c12aa39d82602815e38dcca74a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897205"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359143"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Az Azure AD Connect-szinkronizálás megfigyelése az Azure AD Connect Health szolgáltatással
 Az alábbi dokumentáció az Azure AD Connect (szinkronizálási) szolgáltatás Azure AD Connect Health szolgáltatással végzett megfigyelésére vonatkozik.  Az AD FS az Azure AD Connect Health használatával történő megfigyelésére vonatkozó információkat lásd: [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md). Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](how-to-connect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.

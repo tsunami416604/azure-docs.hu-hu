@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77917913"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357460"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: címtárszolgáltatás-bővítmények
 A (z) Azure Active Directory (Azure AD) sémájának kiterjesztése a helyi Active Directory saját attribútumaival is elvégezhető. Ez a funkció lehetővé teszi LOB-alkalmazások készítését olyan attribútumok fogyasztásával, amelyeket továbbra is a helyszínen kezelhet. Ezek az attribútumok a [bővítményeken](https://docs.microsoft.com/graph/extensibility-overview
@@ -60,14 +60,14 @@ Azure AD Connect telepítésekor az alkalmazás regisztrálva lesz, ahol ezek az
 
 Győződjön meg róla, hogy az **összes alkalmazás** lehetőséget választotta az alkalmazás megtekintéséhez.
 
-Az attribútumok előtaggal vannak ellátva **{ApplicationId \_}\_bővítménnyel**. A ApplicationId ugyanazt az értéket adja meg az Azure AD-bérlő összes attribútuma számára. Erre az értékre szüksége lesz az ebben a témakörben található összes többi forgatókönyv esetében.
+Az attribútumok előtaggal vannak ellátva ** \_ {ApplicationId} \_ bővítménnyel**. A ApplicationId ugyanazt az értéket adja meg az Azure AD-bérlő összes attribútuma számára. Erre az értékre szüksége lesz az ebben a témakörben található összes többi forgatókönyv esetében.
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Attribútumok megtekintése a Microsoft Graph API használatával
 
 Ezek az attribútumok mostantól a Microsoft Graph API-n keresztül érhetők el a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#)használatával.
 
 >[!NOTE]
-> A Microsoft Graph API-ban meg kell kérnie a visszaadott attribútumok értékét. Explicit módon válassza ki a következő attribútumokat `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`:.
+> A Microsoft Graph API-ban meg kell kérnie a visszaadott attribútumok értékét. Explicit módon válassza ki a következő attribútumokat: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` .
 >
 > További információ [: Microsoft Graph: lekérdezési paraméterek használata](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 

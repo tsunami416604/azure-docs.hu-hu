@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793897"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360520"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Oktatóanyag: alapszintű Active Directory környezet
 
@@ -201,13 +201,13 @@ Most létre kell hoznia egy Azure AD-bérlőt, hogy szinkronizálni tudja a felh
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
 4. Kattintson a **Létrehozás** gombra.</br>
 ![Létrehozás](media/tutorial-single-forest/create1.png)</br>
-5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza a **Létrehozás**lehetőséget. Ezzel létrejön a címtár.
+5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután kattintson a **Létrehozás** elemre. Ezzel létrejön a címtár.
 6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Globális rendszergazda létrehozása az Azure AD-ben
 Most, hogy rendelkezik egy Azure AD-Bérlővel, létre fog hozni egy globális rendszergazdai fiókot.  A globális rendszergazdai fiók létrehozásához tegye a következőket.
 
-1.  A **Kezelés** alatt válassza a **Felhasználókat**.</br>
+1.  A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.</br>
 ![Létrehozás](media/tutorial-single-forest/administrator1.png)</br>
 2.  Válassza a **Minden felhasználó**, majd az **+ Új felhasználó** lehetőséget.
 3.  Adjon meg egy nevet és egy felhasználónevet ennek a felhasználónak. Ez lesz a bérlő globális rendszergazdája. A **címtárbeli szerepkört** a **globális rendszergazdára** is módosítani kívánja. Megjelenítheti az ideiglenes jelszót is. Ha elkészült, kattintson a **Létrehozás** gombra.</br>

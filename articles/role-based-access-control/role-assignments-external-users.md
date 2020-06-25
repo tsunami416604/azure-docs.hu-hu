@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: dc2763fd3c203a5b0443299d9824b6ebf61bdc78
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791078"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361904"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a külső vendég felhasználók számára a Azure Portal használatával
 
@@ -89,7 +89,9 @@ Az Azure RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört
 
     Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 
-    ![Menü hozzáadása](./media/role-assignments-external-users/add-menu.png)
+    ![Szerepkör-hozzárendelési menü hozzáadása](./media/shared/add-role-assignment-menu.png)
+
+    Megnyílik a Szerepkör-hozzárendelés hozzáadása panel.
 
 1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
 
@@ -119,7 +121,9 @@ Ha a vendég felhasználó még nem szerepel a címtárban, a felhasználót kö
 
 1. Kattintson a **Hozzáadás** > **Szerepkör-hozzárendelés hozzáadása** lehetőségre a Szerepkör-hozzárendelés hozzáadása szakasz megnyitásához.
 
-    ![Menü hozzáadása](./media/role-assignments-external-users/add-menu.png)
+    ![Szerepkör-hozzárendelési menü hozzáadása](./media/shared/add-role-assignment-menu.png)
+
+    Megnyílik a Szerepkör-hozzárendelés hozzáadása panel.
 
 1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
 

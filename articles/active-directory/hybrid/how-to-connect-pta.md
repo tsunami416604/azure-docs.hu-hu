@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa763c875b06bd7e22be0e814838f2e79b24e283
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185504"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358021"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználói bejelentkezés az Azure Active Directory átmenő hitelesítésével
 
@@ -58,7 +58,7 @@ Az átmenő hitelesítés a [zökkenőmentes egyszeri bejelentkezés](how-to-con
 ## <a name="feature-highlights"></a>A funkciók Kiemelt jellemzői
 
 - A lehetővé teszi a felhasználók bejelentkezését az összes webböngésző-alapú alkalmazásba és a [modern hitelesítést](https://aka.ms/modernauthga)használó Microsoft Office ügyfélalkalmazásokba.
-- A bejelentkezési felhasználónevek lehetnek a helyszíni alapértelmezett felhasználónevek (`userPrincipalName`) vagy a Azure ad Connect konfigurált más attribútumok (más néven `Alternate ID`).
+- A bejelentkezési felhasználónevek lehetnek a helyszíni alapértelmezett felhasználónevek ( `userPrincipalName` ) vagy a Azure ad Connect konfigurált más attribútumok (más néven `Alternate ID` ).
 - A szolgáltatás zökkenőmentesen működik együtt a feltételes hozzáférési funkciókkal, mint például a Multi-Factor Authentication (MFA) a felhasználók biztonságossá [tételéhez](../active-directory-conditional-access-azure-portal.md) .
 - Integrált a felhőalapú [önkiszolgáló jelszavas felügyelettel](../authentication/active-directory-passwords-overview.md), beleértve a jelszó visszaírási a helyszíni Active Directory és jelszavas védelmet a gyakran használt jelszavak betiltásával.
 - A többerdős környezetek akkor támogatottak, ha erdőszintű megbízhatósági kapcsolat van az AD-erdők között, és ha a névutótagok útválasztása megfelelően van konfigurálva.
