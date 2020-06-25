@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310257"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765080"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
 
@@ -169,14 +169,7 @@ Ha hozzáférést szeretne adni egy felhasználónak **egyetlen** SQL Databaseho
 > a *db_datareader* és a *db_datawriter* írási/olvasási engedélyekkel is működhet, ha a *db_owner* engedély megadása nem kívánatos.
 > Ahhoz, hogy egy Spark-felhasználó közvetlenül a Sparkból vagy egy SQL-készletből olvassa el és írja az írást, *db_owner* engedélyre van szükség.
 
-A felhasználók létrehozása után ellenőrizze, hogy az SQL on-demand képes-e lekérdezni a Storage-fiókot:
-
-- Futtassa az alábbi parancsot az SQL igény szerinti **Master** adatbázisához:
-
-    ```sql
-    CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
-    WITH IDENTITY='User Identity';
-    ```
+A felhasználók létrehozása után ellenőrizze, hogy az SQL on-demand képes-e lekérdezni a Storage-fiókot.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Hozzáférés-vezérlés a munkaterület-folyamat futtatásához
 

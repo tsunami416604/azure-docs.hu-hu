@@ -7,19 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/19/2020
-ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/23/2020
+ms.openlocfilehash: 34aeda7534c15b51b9759b696caaf3fcfac88659
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344203"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317710"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
 ## <a name="feature-announcements"></a>Szolgáltatások hirdetményei
+
+### <a name="june-2020"></a>2020. június
+
++ [Azure Machine learning (a pénzmosás) (előzetes verzió)](cognitive-search-aml-skill.md) az indexelés során használt kognitív képesség, amely egy Azure Machine learning modellt csomagol. A szakértelmet követve integrálhat egy korábban betanított és üzembe helyezett egyéni gépi tanulást egy AI-bővítési folyamatba. [Regisztráljon a hozzáférés kéréséhez](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). Ha készen áll egy pénzmosás-képesség hozzáadására, használja a Készségkészlet-szerkesztőben a Azure Portal-ben a pénzmosás sablont. Útmutatásért olvassa el [ezt az oktatóanyagot](cognitive-search-tutorial-aml-custom-skill.md).
 
 ### <a name="may-2020-microsoft-build"></a>Május 2020 (Microsoft Build)
 

@@ -1,18 +1,18 @@
 ---
 title: A Azure SQL Database beépített szabályzat-definíciói
 description: Felsorolja Azure Policy Azure SQL Database és az SQL felügyelt példányának beépített szabályzat-definícióit. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-samples
-ms.openlocfilehash: fc768870e02098e208b55aabd854093d9d66ba1d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 879321d119fb5213eed4b9c399d81a63f806fb4a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887282"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315972"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának beépített definíciói Azure Policy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

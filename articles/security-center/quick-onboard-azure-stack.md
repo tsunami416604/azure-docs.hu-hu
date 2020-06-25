@@ -86,7 +86,7 @@ A **Számítás** panelen kétféle ikon található:
 
 ![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure-beli virtuális gép (Azure Stack virtuális gépek ebben a csoportban jelennek meg)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rá szükség, eltávolíthatja a bővítményt a virtuális gépről a Azure Stack-portálon keresztül.
 
 A bővítmény eltávolítása:

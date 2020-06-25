@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 154f8f1923874a3221597f1c0017fe99b5d31844
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d240a212f898c917fd9c55b837210191eab704e5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015930"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319564"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Adatmásolás Data Lake Storage Gen1 és Azure SQL Database között az Sqoop használatával
 
@@ -22,7 +22,7 @@ Ismerje meg, hogyan importálhat és exportálhat az Apache Sqoop Azure SQL Data
 
 A Big Application típusú alkalmazások természetes választás a strukturálatlan és részben strukturált adatmennyiségek, például naplók és fájlok feldolgozásához. Azonban szükség lehet a kapcsolódó adatbázisokban tárolt strukturált adatfeldolgozásra is.
 
-Az [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) egy olyan eszköz, amelynek célja az adatok átvitele a kapcsolati adatbázisok és egy Big Data adattár között, például Data Lake Storage Gen1. Felhasználhatja az adatok importálását egy kapcsolódó adatbázis-kezelő rendszerből (RDBMS), például a Azure SQL Databaset a Data Lake Storage Gen1ba. Ezután átalakíthatja és elemezheti az adatok big data munkaterhelések használatával, majd visszaexportálhatja az adatok egy RDBMS. Ebben a cikkben egy Azure SQL Database-adatbázist használ a (z) importálásához és exportálásához.
+Az [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) egy olyan eszköz, amelynek célja az adatok átvitele a kapcsolati adatbázisok és egy Big Data adattár között, például Data Lake Storage Gen1. Felhasználhatja az adatok importálását egy kapcsolódó adatbázis-kezelő rendszerből (RDBMS), például a Azure SQL Databaset a Data Lake Storage Gen1ba. Ezután átalakíthatja és elemezheti az adatok big data munkaterhelések használatával, majd visszaexportálhatja az adatok egy RDBMS. Ebben a cikkben egy Azure SQL Database-adatbázist használ a (z) importálási/exportálási környezetében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,11 +31,11 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Storage Gen1-fiók**. A fiók létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépéseivel](data-lake-store-get-started-portal.md) foglalkozó témakört.
 * **Azure HDInsight-fürt** Data Lake Storage Gen1 fiókhoz való hozzáféréssel. Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Ez a cikk feltételezi, hogy rendelkezik egy Data Lake Storage Gen1 hozzáféréssel rendelkező HDInsight Linux-fürttel.
-* **Azure SQL Database**. A létrehozásával kapcsolatos útmutatásért tekintse meg [Az Azure SQL Database létrehozása](../sql-database/sql-database-get-started.md) című témakört.
+* **Azure SQL Database**. Az adatbázisok Azure SQL Databaseban való létrehozásával kapcsolatos utasításokért lásd: [adatbázis létrehozása a Azure SQL Database](../sql-database/sql-database-get-started.md)
 
-## <a name="create-sample-tables-in-the-azure-sql-database"></a>Minta táblák létrehozása az Azure SQL Database-ben
+## <a name="create-sample-tables-in-the-database"></a>Minta táblák létrehozása az adatbázisban
 
-1. A kezdéshez hozzon létre két minta táblát az Azure SQL Database-ben. A [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) vagy a Visual Studio használatával kapcsolódjon az adatbázishoz, majd futtassa a következő lekérdezéseket.
+1. A kezdéshez hozzon létre két minta táblát az adatbázisban. A [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) vagy a Visual Studio használatával kapcsolódjon az adatbázishoz, majd futtassa a következő lekérdezéseket.
 
     **Tábla1 létrehozása**
 
@@ -87,7 +87,7 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
 
        sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-   Az **SQL-Database-Server-Name** helyőrző annak a kiszolgálónak a nevét jelöli, amelyen az Azure SQL Database fut. az **SQL-Database-Name** helyőrző az adatbázis tényleges nevét jelöli.
+   Az **SQL-Database-Server-Name** helyőrző annak a kiszolgálónak a nevét jelöli, amelyen az adatbázis fut. az **SQL-Database-Name** helyőrző az adatbázis tényleges nevét jelöli.
 
    Példa:
 

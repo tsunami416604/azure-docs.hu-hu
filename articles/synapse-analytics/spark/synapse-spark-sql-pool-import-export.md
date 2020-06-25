@@ -16,11 +16,11 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 06/22/2020
 ms.locfileid: "85194671"
 ---
-# <a name="introduction"></a>Bevezetés
+# <a name="introduction"></a>Introduction (Bevezetés)
 
 Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz az Azure szinapszisban az adatoknak a Spark-készletek (előzetes verzió) és az SQL-készletek közötti hatékony átvitelét szolgálja. Az Azure szinapszis Apache Spark a szinapszis SQL-összekötő csak az SQL-készleteken működik, az SQL igény szerint nem működik.
 
-## <a name="design"></a>Kialakítás
+## <a name="design"></a>Tervezés
 
 A Spark-készletek és az SQL-készletek közötti adatátvitel a JDBC használatával végezhető el. Azonban a két elosztott rendszer, például a Spark és az SQL-készletek miatt a JDBC általában szűk keresztmetszetet jelent a soros adatátvitel során.
 

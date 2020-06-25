@@ -1,20 +1,14 @@
 ---
 title: Apache Kafka MirrorMaker használata – Azure Event Hubs | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Kafka-MirrorMaker a Kafka-fürtök AzureEvent-Hubokban való tükrözéséhez.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: fb041ec0d3cd474cca12d5ad55b733337566b9cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632787"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320190"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>A Kafka MirrorMaker használata a Event Hubs for Apache Kafka
 
@@ -59,7 +53,7 @@ Az Event Hubs-szolgáltatásokból való küldéshez és fogadáshoz szükség v
 
 ## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 
-Most, hogy rendelkezik egy Event Hubs kapcsolódási karakterlánccal, klónozott az Azure-Event Hubs a Kafka-tárházhoz `mirror-maker` , és navigáljon az almappába:
+Most, hogy rendelkezik egy Event Hubs kapcsolódási karakterlánccal, klónozott az Azure-Event Hubs a Kafka-tárházhoz, és navigáljon az `mirror-maker` almappába:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -80,9 +74,9 @@ A Kafka-MirrorMaker konfigurálásához adjon neki egy Kafka-fürtöt fogyasztó
 
 #### <a name="consumer-configuration"></a>Fogyasztói konfiguráció
 
-Frissítse a fogyasztói konfigurációs fájlt `source-kafka.config`, amely tájékoztatja a MirrorMaker a forrás Kafka-fürt tulajdonságairól.
+Frissítse a fogyasztói konfigurációs fájlt `source-kafka.config` , amely tájékoztatja a MirrorMaker a forrás Kafka-fürt tulajdonságairól.
 
-##### <a name="source-kafkaconfig"></a>forrás – Kafka. config
+##### <a name="source-kafkaconfig"></a>source-kafka.config
 
 ```
 bootstrap.servers={SOURCE.KAFKA.IP.ADDRESS1}:{SOURCE.KAFKA.PORT1},{SOURCE.KAFKA.IP.ADDRESS2}:{SOURCE.KAFKA.PORT2},etc
@@ -93,9 +87,9 @@ client.id=mirror_maker_consumer
 
 #### <a name="producer-configuration"></a>Producer konfigurációja
 
-Most frissítse a producer konfigurációs fájlját `mirror-eventhub.config`, amely azt jelzi, hogy a MirrorMaker küldi a duplikált (vagy "tükrözött") adattípust a Event Hubs szolgáltatásnak. Pontosabban módosítsa `bootstrap.servers` és `sasl.jaas.config` mutasson a Event Hubs Kafka-végpontra. A Event Hubs szolgáltatásnak biztonságos (SASL) kommunikációra van szüksége, amely a következő konfiguráció utolsó három tulajdonságának beállításával érhető el: 
+Most frissítse a producer konfigurációs fájlját `mirror-eventhub.config` , amely azt jelzi, hogy a MirrorMaker küldi a duplikált (vagy "tükrözött") adattípust a Event Hubs szolgáltatásnak. Pontosabban módosítsa `bootstrap.servers` és `sasl.jaas.config` mutasson a Event Hubs Kafka-végpontra. A Event Hubs szolgáltatásnak biztonságos (SASL) kommunikációra van szüksége, amely a következő konfiguráció utolsó három tulajdonságának beállításával érhető el: 
 
-##### <a name="mirror-eventhubconfig"></a>Mirror-eventhub. config
+##### <a name="mirror-eventhubconfig"></a>mirror-eventhub.config
 
 ```
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093

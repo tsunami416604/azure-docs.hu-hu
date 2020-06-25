@@ -1,17 +1,17 @@
 ---
 title: Beépített szabályzat-definíciók az Azure egyéni erőforrás-szolgáltatói számára
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure egyéni erőforrás-szolgáltatói számára. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 9730b99a9ae7af7e615cf1a6c7f187420ab4f13f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 3ff2095c3b3676facf82c8022896e918726767d3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887492"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314742"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Az Azure egyéni erőforrás-szolgáltatóinak beépített definíciói Azure Policy
 

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -18,7 +18,7 @@ ms.locfileid: "78164167"
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="azure-subscription"></a>Azure-előfizetés
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ### <a name="azure-roles"></a>Azure-szerepkörök
 Data Factory-példányok létrehozásához az Azure-ba történő bejelentkezéshez használt felhasználói fióknak a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie. Az előfizetésben található engedélyek megtekintéséhez lépjen a [Azure Portal](https://portal.azure.com), válassza ki a felhasználónevét a jobb felső sarokban, válassza a "**...**" ikont, és válassza a **saját engedélyek**lehetőséget. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést.
@@ -42,7 +42,7 @@ Ebben a rövid útmutatóban egy általános célú Azure Storage-fiókot (kifej
 Ehhez a rövid útmutatóhoz szüksége lesz az Azure Storage-fiók nevére. A következő eljárás a Storage-fiók nevének beszerzéséhez nyújt lépéseket: 
 
 1. A böngészőben nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be az Azure-beli felhasználónevével és jelszavával.
-2. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget, majd válassza **a Storage** > -**fiókok**lehetőséget. Bármelyik oldalon megkeresheti és kiválaszthatja a *Storage-fiókokat* is.
+2. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget, majd válassza a **Storage**-  >  **fiókok**lehetőséget. Bármelyik oldalon megkeresheti és kiválaszthatja a *Storage-fiókokat* is.
 3. A **Storage-fiókok** lapon szűrje a Storage-fiókot (ha szükséges), majd válassza ki a Storage-fiókját. 
 
 Bármelyik oldalon megkeresheti és kiválaszthatja a *Storage-fiókokat* is.
@@ -50,14 +50,14 @@ Bármelyik oldalon megkeresheti és kiválaszthatja a *Storage-fiókokat* is.
 #### <a name="create-a-blob-container"></a>Blobtároló létrehozása
 Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure Blob Storage-ban.
 
-1. A Storage-fiók lapon válassza az **áttekintő** > **tárolók**lehetőséget.
-2. A * \<fiók neve>*  -  **tárolók** lap eszköztárán válassza a **tároló**elemet.
-3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra. A rendszer frissíti a * \<fiók neve>*  -  **tárolók** lapot, hogy tartalmazza a **adftutorial** a tárolók listájában.
+1. A Storage-fiók lapon válassza az **áttekintő**  >  **tárolók**lehetőséget.
+2. A * \< fiók neve>*  -  **tárolók** lap eszköztárán válassza a **tároló**elemet.
+3. Az **Új tároló** párbeszédablakban adja meg az **adftutorial** nevet, és kattintson az **OK** gombra. A rendszer frissíti a * \< fiók neve>*  -  **tárolók** lapot, hogy tartalmazza a **adftutorial** a tárolók listájában.
 
    ![Tárolók listája](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Bemeneti mappa és fájl hozzáadása a blob-tárolóhoz
-Ebben a szakaszban létrehoz egy **input** nevű mappát az imént létrehozott tárolóban, majd feltölt egy mintát a bemeneti mappába. Mielőtt elkezdené, nyisson meg egy szövegszerkesztőt, például a **jegyzettömböt**, és hozzon létre egy **EMP. txt** nevű fájlt az alábbi tartalommal:
+Ebben a szakaszban létrehoz egy **input** nevű mappát az imént létrehozott tárolóban, majd feltölt egy mintát a bemeneti mappába. Mielőtt elkezdené, nyisson meg egy szövegszerkesztőt, például a **jegyzettömböt**, és hozzon létre egy **emp.txt** nevű fájlt a következő tartalommal:
 
 ```emp.txt
 John, Doe
@@ -66,14 +66,14 @@ Jane, Doe
 
 Mentse a fájlt a **C:\ADFv2QuickStartPSH** mappába. (Ha a mappa még nem létezik, hozza létre.) Ezután térjen vissza a Azure Portal, és kövesse az alábbi lépéseket:
 
-1. A * \<fiók neve>*  -  **tárolók** lapon válassza a **adftutorial** lehetőséget a tárolók frissített listájáról.
+1. A * \< fiók neve>*  -  **tárolók** lapon válassza a **adftutorial** lehetőséget a tárolók frissített listájáról.
 
    1. Ha bezárta az ablakot, vagy egy másik lapra ment, jelentkezzen be újra a [Azure Portalba](https://portal.azure.com) .
-   1. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget, majd válassza **a Storage** > -**fiókok**lehetőséget. Bármelyik oldalon megkeresheti és kiválaszthatja a *Storage-fiókokat* is.
-   1. Válassza ki a Storage-fiókját, majd válassza a **tárolók** > **adftutorial**lehetőséget.
+   1. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget, majd válassza a **Storage**-  >  **fiókok**lehetőséget. Bármelyik oldalon megkeresheti és kiválaszthatja a *Storage-fiókokat* is.
+   1. Válassza ki a Storage-fiókját, majd válassza a **tárolók**  >  **adftutorial**lehetőséget.
 
 2. A **adftutorial** -tároló lapja eszköztárán válassza a **feltöltés**lehetőséget.
-3. A **blob feltöltése** lapon kattintson a **fájlok** mezőre, majd keresse meg és válassza ki az **EMP. txt** fájlt.
+3. A **blob feltöltése** lapon kattintson a **fájlok** mezőre, majd keresse meg és válassza ki a **emp.txt** fájlt.
 4. Bontsa ki a **speciális** fejlécet. A lap ekkor megjelenik:
 
    ![Kattintás a Speciális hivatkozásra](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)

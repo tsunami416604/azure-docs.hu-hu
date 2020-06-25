@@ -1,20 +1,14 @@
 ---
 title: Azure Event Hubs – adatanomáliák megjelenítése valós idejű eseményekben
 description: 'Oktatóanyag: az adatrendellenességek megjelenítése a Microsoft Azureba eljuttatott valós idejű eseményekben Event Hubs'
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.author: shvija
 ms.topic: tutorial
-ms.service: event-hubs
-ms.custom: seodec18
-ms.date: 01/15/2020
-ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77163177"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315610"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 
@@ -159,8 +153,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 A [githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) található Event Hubs minták olyan anomália-detektor alkalmazást tartalmaznak, amely tesztelési célú adatfeldolgozást készít Önnek. Az alkalmazás szimulálja a hitelkártyák használatát azáltal, hogy hitelkártya-tranzakciókat ír az eseményközpontba, és időnként több tranzakciót ír ugyanahhoz a hitelkártyához, több helyszínen, hogy a rendszer anomáliaként jelölje meg őket. Az alkalmazás futtatásához kövesse az alábbi lépéseket: 
 
 1. Töltse le az [Azure Event Hubs-mintákat](https://github.com/Azure/azure-event-hubs/archive/master.zip) a GitHubról, majd bontsa ki őket helyben.
-2. Navigáljon a mappa **\azure-Event-Hubs-master\samples\DotNet\\ ** mappájába. 
-3. Váltson az **Azure. Messaging. EventHubs\AnomalyDetector\\ ** mappára, és kattintson duplán a **AnomalyDetector. SLN** elemre a megoldás a Visual Studióban való megnyitásához. 
+2. Navigáljon a mappa **\azure-Event-Hubs-master\samples\DotNet \\ ** mappájába. 
+3. Váltson az **Azure. Messaging. EventHubs\AnomalyDetector \\ ** mappára, és kattintson duplán a **AnomalyDetector. SLN** elemre a megoldás a Visual Studióban való megnyitásához. 
 
     A régi Microsoft. Azure. EventHubs csomagot használó minta régi verziójának használatához nyissa meg a megoldást a **Microsoft. Azure. EventHubs\AnomalyDetector** mappából. 
 3. Nyissa meg a Program.cs fájlt, és cserélje le az **Event Hubs kapcsolati sztringjét** a szkript futtatásakor mentett kapcsolati sztringre. 
@@ -186,7 +180,7 @@ Most már adatokat streamelhet az eseményközpontba. Az adatok Power BI-vizuali
 
    ![Új Azure Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás**gombra. 
+    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás** lehetőségre. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 

@@ -1,19 +1,14 @@
 ---
 title: Azure Event Hubs-beli események küldése vagy fogadása a Javával (legújabb)
 description: Ez a cikk bemutatja, hogyan hozhat létre olyan Java-alkalmazást, amely az Azure-Event Hubs legújabb Azure-Messaging-eventhubs csomag használatával küld/fogad eseményeket.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 04/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ca22f4481750abb3bd4432c8b42fbce93ede8ffd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 69c994eed0907c8bb46f47016769e2078432ee99
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770883"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320069"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Az Azure Event Hubs (Azure-Messaging-eventhubs) eseményeinek küldése vagy fogadása a Java használatával
 Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket az Event hub eseményeiről és fogadhat az **Azure-Messaging-eventhubs Java-** csomag használatával.
@@ -48,7 +43,7 @@ A Event Hubs Java-ügyféloldali könyvtára a [Maven Central adattárában](htt
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek eseményközpontba való küldésére
 
-A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Vegyen fel egy `Sender`nevű osztályt, és adja hozzá a következő kódot a osztályhoz:
+A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Vegyen fel egy nevű osztályt `Sender` , és adja hozzá a következő kódot a osztályhoz:
 
 ```java
 import com.azure.messaging.eventhubs.*;

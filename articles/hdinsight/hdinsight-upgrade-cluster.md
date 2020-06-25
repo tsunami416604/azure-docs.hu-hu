@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: 79cd3ddd21af700fd36d0e565b9f5a1be1e56343
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1a812740983c1ed74f4f728adda639069c6584dc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015131"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319411"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>HDInsight-fürt migrálása egy újabb verzióra
 
@@ -51,7 +51,7 @@ A következő dokumentumok útmutatást nyújtanak bizonyos számítási feladat
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
-Az adatbázis biztonsági mentésével és visszaállításával kapcsolatos további információkért lásd: [Az Azure SQL Database helyreállítása automatikus adatbázis-biztonsági mentéssel](../azure-sql/database/recovery-using-backups.md).
+Az adatbázis biztonsági mentésével és visszaállításával kapcsolatos további információkért lásd: [adatbázis helyreállítása Azure SQL Databaseban automatikus adatbázis-biztonsági mentések használatával](../azure-sql/database/recovery-using-backups.md).
 
 ## <a name="next-steps"></a>További lépések
 

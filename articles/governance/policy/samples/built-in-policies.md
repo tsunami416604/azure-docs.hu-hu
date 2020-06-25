@@ -1,21 +1,25 @@
 ---
 title: Beépített szabályzat-definíciók listája
 description: A Azure Policy beépített szabályzat-definícióinak listázása. A kategóriák közé tartoznak a címkék, a szabályozások megfelelősége, a Key Vault, a Kubernetes, a vendég konfigurációja és még sok más.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0ab717e4246112152b9a497c51d2a630bc48dfd1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 94f69754ab51728a18da10b45e05770f1271760b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709430"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313516"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy beépített szabályzat-definíciók
 
 Ez az oldal Azure Policy beépített szabályzat-definíciók indexe.
 
 Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára**való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a <kbd>CTRL</kbd> - <kbd>F</kbd> billentyűkombinációval használhatja a böngésző keresési funkcióját.
+
+## <a name="api-for-fhir"></a>API for FHIR
+
+[!INCLUDE [azure-policy-samples-policies-api-for-fhir](../../../../includes/policy/samples/bycat/policies-api-for-fhir.md)]
 
 ## <a name="api-management"></a>API Management
 
@@ -149,7 +153,7 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-samples-policies-sql](../../../../includes/policy/samples/bycat/policies-sql.md)]
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 [!INCLUDE [azure-policy-samples-policies-storage](../../../../includes/policy/samples/bycat/policies-storage.md)]
 

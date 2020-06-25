@@ -3,12 +3,12 @@ title: Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor 
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508071"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319703"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>A Java Code unapplication monitoring Azure monitor Application Insights – nyilvános előzetes verzió
 
@@ -24,13 +24,13 @@ Továbbra is küldhet egyéni telemetria az alkalmazásból. Az 3,0-ügynök nyo
 
 **1. Töltse le az ügynököt**
 
-A [applicationinsights-Agent-3.0.0-preview. 4. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) letöltése
+A [applicationinsights-Agent-3.0.0-preview. 5. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) letöltése
 
 **2. irányítsa a JVM az ügynökre**
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar` az alkalmazás JVM argumentumai
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` az alkalmazás JVM argumentumai
 
-A tipikus JVM argumentumok közé tartoznak `-Xmx512m` a és a `-XX:+UseG1GC`. Tehát ha tudja, hol adja hozzá ezeket, akkor már tudja, hová adja hozzá ezt a lehetőséget.
+A tipikus JVM argumentumok közé tartoznak `-Xmx512m` a és a `-XX:+UseG1GC` . Tehát ha tudja, hol adja hozzá ezeket, akkor már tudja, hová adja hozzá ezt a lehetőséget.
 
 Ha további segítségre van az alkalmazás JVM argumentumok konfigurálásához, tekintse meg a [3,0 előzetes verzió: Tippek a JVM argumentumok frissítéséhez](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)című témakört.
 
@@ -44,7 +44,7 @@ Mutasson az ügynököt a Application Insights erőforrásra, vagy egy környeze
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Vagy hozzon létre egy nevű `ApplicationInsights.json`konfigurációs fájlt, és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.0-PREVIEW.4.jar`, a következő tartalommal:
+Vagy hozzon létre egy nevű konfigurációs fájlt `ApplicationInsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.0-PREVIEW.5.jar` , a következő tartalommal:
 
 ```json
 {
@@ -68,7 +68,7 @@ Most indítsa el az alkalmazást, és nyissa meg a Application Insights erőforr
 
 ## <a name="configuration-options"></a>Beállítási lehetőségek
 
-A fájlban `ApplicationInsights.json` emellett a következőket is konfigurálhatja:
+A `ApplicationInsights.json` fájlban emellett a következőket is konfigurálhatja:
 
 * Felhőbeli szerepkör neve
 * Felhőalapú szerepkör-példány
@@ -132,7 +132,7 @@ Application Insights Java 3,0 már figyeli a Application Insights Java SDK 2. x 
 
 ## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Egyéni telemetria küldése Application Insights Java SDK 2. x használatával
 
-Vegye `applicationinsights-core-2.6.0.jar` fel az alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
+Vegye fel az `applicationinsights-core-2.6.0.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
 
 ```xml
   <dependency>

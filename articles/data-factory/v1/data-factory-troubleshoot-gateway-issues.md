@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 390cddf557905e95e313896f9f172e30b81352b9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195939"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319067"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
 Ez a cikk a adatkezelés átjáró használatával kapcsolatos hibaelhárítási problémákkal kapcsolatos információkat tartalmaz.
@@ -224,7 +224,7 @@ Ez különböző okok miatt fordulhat elő, és ennek megfelelően változik a m
 #### <a name="resolution"></a>Megoldás:
 Az SQL-adatbázishoz való csatlakozás előtt engedélyezze a kimenő TCP-kapcsolatok TCP/1433-kapcsolaton keresztüli portját a adatkezelés átjáró-ügyfél oldalán.
 
-Ha a céladatbázis egy Azure SQL Database-adatbázis, akkor ellenőrizze SQL Server tűzfalbeállítások Azure-ban is.
+Ha a céladatbázis Azure SQL Databaseban található, ellenőrizze az Azure-beli tűzfal-beállítások SQL Serverét is.
 
 A helyszíni adattárakkal létesített kapcsolatok teszteléséhez tekintse meg a következő szakaszt.
 

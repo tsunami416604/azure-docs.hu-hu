@@ -1,22 +1,14 @@
 ---
 title: Mi az Azure Event Hubs? – Big adatfeldolgozási szolgáltatás | Microsoft Docs
 description: További tudnivalók az Azure Event Hubsról, amely egy másodpercenként több millió eseményt feldolgozó Big Data streamszolgáltatás.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-manager: timlt
-ms.service: event-hubs
 ms.topic: overview
-ms.custom: seodec18
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 9f23bef37f6c858670de076b7a6a9ce5d8e2d046
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 175f7e249e02d5c85dd38cf49821b2893de159a3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297307"
+ms.locfileid: "85314260"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – A big data streaming platform és az esemény-betöltési szolgáltatás
 Az Azure Event Hubs egy big data streaming platform és esemény-betöltési szolgáltatás. Másodpercenként több millió eseményt képes fogadni és feldolgozni. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.

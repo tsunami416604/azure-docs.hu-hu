@@ -1,20 +1,14 @@
 ---
 title: Azure Event Hubs – különböző protokollokat használó Exchange-események
 description: Ez a cikk bemutatja, hogy a különböző protokollokat (AMQP, Apache Kafka és HTTPS) használó felhasználók és gyártók Hogyan válthatnak be eseményeket az Azure Event Hubs használatakor.
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-ms.service: event-hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 7ebcf1fc838fbe6b1c70b1fe422f40de3c47e752
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: ec3122dcf151fe3e7b7b9578725e810ddca22bdf
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296440"
+ms.locfileid: "85320604"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>A különböző protokollokat használó fogyasztók és gyártók közötti Exchange-események: AMQP, Kafka és HTTPS
 Az Azure Event Hubs három protokollt támogat a felhasználók és a termelők számára: AMQP, Kafka és HTTPS. A protokollok mindegyike saját módon jelképezi az üzenetet, így természetesen a következő kérdés merül fel: Ha egy alkalmazás egy adott protokollon keresztül küld eseményeket egy Event hub-nak, és egy másik protokollal használja őket, mi az esemény különböző részeinek és értékeinek a fogyasztóhoz való érkezésekor? Ez a cikk a gyártó és a fogyasztó ajánlott eljárásait ismerteti, így biztosítva, hogy az adott eseményen belüli értékeket a fogyasztó alkalmazás helyesen értelmezze.

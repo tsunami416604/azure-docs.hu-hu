@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan érheti el a fájlokat, a REST API-kat, az adat
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 2c7133e9c258c77aa9c242dd7276076625153703
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a7e242c000b57cbbfafebc1e11191199a7a4b95f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554367"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319135"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Felhőbeli adatok elérése egy jegyzetfüzetben
 
@@ -42,11 +42,11 @@ if response.status_code == 200:
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL-adatbázisok
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database és az SQL felügyelt példánya
 
-SQL Server adatbázisokhoz a pyodbc vagy a pymssql függvénytárak segítségével férhet hozzá.
+A pyodbc-vagy pymssql-kódtárak segítségével elérheti SQL Database vagy SQL felügyelt példányban található adatbázisokat.
 
-A [Python használatával lekérdezheti az Azure SQL Database-t](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) , és útmutatást nyújt a AdventureWorks tartalmazó adatbázisok létrehozásához, és bemutatja, hogyan lehet lekérdezni ezeket az információkat. Ugyanez a kód jelenik meg a minta jegyzetfüzetben ehhez a cikkhez.
+A [Python használata Azure SQL Database-adatbázis lekérdezéséhez](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) útmutatást nyújt az adatbázisok létrehozásához a AdventureWorks-t tartalmazó SQL Databaseban, és bemutatja, hogyan lehet lekérdezni ezeket az információkat. Ugyanez a kód jelenik meg a minta jegyzetfüzetben ehhez a cikkhez.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -79,6 +79,6 @@ Az Azure számos más adatbázis-típust biztosít, amelyeket használhat. Az al
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Azure Data Factory másolási varázslója](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Útmutató: Project-adatfájlok használata](work-with-project-data-files.md)

@@ -22,7 +22,7 @@ Első lépések a Body Tracking SDK-val? Ez a rövid útmutató a Body Tracking 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Az Azure Kinect DK beállítása](set-up-azure-kinect-dk.md)
-- [Body Tracking SDK beállítása](body-sdk-setup.md)
+- [A Body Tracking SDK beállítása](body-sdk-setup.md)
 - Útmutató az [első Azure-beli Kinect-alkalmazás létrehozásához](build-first-app.md) .
 - Ismerkedjen meg a következő Sensor SDK-funkciókkal:
   - [k4a_device_open ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113)
@@ -244,4 +244,4 @@ int main()
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
->[Törzs nyomon követési eredményeinek beolvasása](get-body-tracking-results.md)
+>[Testkövetési eredmények lekérése](get-body-tracking-results.md)

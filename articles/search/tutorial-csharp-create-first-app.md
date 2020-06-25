@@ -19,7 +19,7 @@ ms.locfileid: "85261460"
 
 Megtudhatja, hogyan hozhat létre webes felületet az indexek keresési eredményeinek lekérdezéséhez és megjelenítéséhez az Azure Cognitive Search használatával. Ez az oktatóanyag egy meglévő, üzemeltetett indextel kezdődik, így a keresési oldal kiépítésére koncentrálhat. Az index fiktív szállodai adathalmazt tartalmaz. Ha már rendelkezik alapszintű oldallal, a következő leckében javíthatja a lapozást, az aspektusokat és a fajta élményt.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Fejlesztési környezet beállítása
 > * Adatstruktúrák modellezése

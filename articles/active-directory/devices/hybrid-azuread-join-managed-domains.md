@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 2f3ea5f1810b5ca80e096b19e1dcf230e21eabcc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778833"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317643"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz
 
@@ -34,7 +34,7 @@ Ha az eszközöket az Azure AD-be szeretné állítani, az egyszeri bejelentkez�
 
 A felügyelt környezeteket a jelszó- [kivonatolási szinkronizálás (PHS)](../hybrid/whatis-phs.md) vagy az [átmenő hitelesítés (PTA ESP)](../hybrid/how-to-connect-pta.md) használatával, [zökkenőmentes egyszeri bejelentkezéssel](../hybrid/how-to-connect-sso.md)is üzembe helyezheti. Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfigurálni a hitelesítéshez.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A hibrid Azure AD-csatlakozás konfigurálása
@@ -70,9 +70,9 @@ A hibrid Azure AD-csatlakozáshoz az eszközöknek a szervezet hálózatán bel�
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com`(Ha a vagy a-t használja, és nem szeretné használni a zökkenőmentes SSO-t)
 
-Ha a szervezete egy kimenő proxyn keresztül igényli az internet elérését, javasoljuk, hogy a [webproxy automatikus felderítését (WPAD) implementálja](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) a Windows 10 rendszerű számítógépek Azure ad-beli regisztrációjának engedélyezéséhez. A WPAD konfigurálásával és kezelésével kapcsolatos problémák megoldásához tekintse meg az [automatikus észlelés hibaelhárítása](/previous-versions/tn-archive/cc302643(v=technet.10))című témakört.
+Ha a szervezete egy kimenő proxyn keresztül fér hozzá az internethez, a [webproxy automatikus felderítésének (WPAD) megvalósításával](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) engedélyezheti a Windows 10-es számítógépek számára az Azure ad-vel való regisztrációt. A WPAD konfigurálásával és kezelésével kapcsolatos problémák megoldásához tekintse meg az [automatikus észlelés hibaelhárítása](/previous-versions/tn-archive/cc302643(v=technet.10))című témakört. A Windows 10 rendszerű eszközökön a 1709-es frissítés előtt a WPAD az egyetlen elérhető lehetőség a proxyk hibrid Azure AD-csatlakozással való működésének konfigurálására. 
 
-Ha nem használ WPAD-t, a Windows 10 1709 rendszertől kezdődően konfigurálhatja a proxybeállításokat a számítógépen. További információ: [a GPO által központilag telepített WinHTTP-proxybeállítások](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+Ha nem használ WPAD-t, a Windows 10 1709 rendszertől kezdődően konfigurálhatja a WinHTTP-proxybeállításokat a számítógépen. További információ: [a GPO által központilag telepített WinHTTP-proxybeállítások](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 
 > [!NOTE]
 > Ha a proxybeállításokat a WinHTTP-beállítások használatával konfigurálja a számítógépen, a konfigurált proxyhoz nem csatlakoztatható számítógépek nem fognak csatlakozni az internethez.
@@ -222,7 +222,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásának kitöltésével kapcsolatos problémákat tapasztal, tekintse meg a következőt:
 
 - [Eszközök hibaelhárítása a dsregcmd paranccsal](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
-- [Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
+- [Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
 - [A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>További lépések

@@ -3,12 +3,12 @@ title: Java-alkalmazások bárhol figyelése – Azure Monitor Application Insig
 description: Kód nélküli alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz az alkalmazás kialakítása nélkül. Az elosztott nyomkövetési és az alkalmazás-hozzárendelés használatával megkeresheti a d problémák kiváltó okát.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509210"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319686"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurációs lehetőségek – Java önálló ügynök a Azure Monitor Application Insights
 
@@ -33,14 +33,14 @@ További részleteket és további konfigurációs beállításokat alább talá
 
 ## <a name="configuration-file-path"></a>Konfigurációs fájl elérési útja
 
-Alapértelmezés szerint a Application Insights Java 3,0 előzetes verziója elvárja, hogy a konfigurációs fájl legyen `ApplicationInsights.json`elnevezve, és hogy ugyanabban a könyvtárban legyen `applicationinsights-agent-3.0.0-PREVIEW.4.jar`, mint a.
+Alapértelmezés szerint a Application Insights Java 3,0 előzetes verziója elvárja, hogy a konfigurációs fájl legyen elnevezve `ApplicationInsights.json` , és hogy ugyanabban a könyvtárban legyen, mint a `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
 
 Megadhatja saját konfigurációs fájljának elérési útját a következők használatával
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`környezeti változó, vagy
 * `applicationinsights.configurationFile`Java rendszertulajdonság
 
-Ha relatív elérési utat ad meg, a `applicationinsights-agent-3.0.0-PREVIEW.4.jar` rendszer a helyen található könyvtárhoz viszonyítva megoldódik.
+Ha relatív elérési utat ad meg, a rendszer a helyen található könyvtárhoz viszonyítva megoldódik `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
 
 ## <a name="connection-string"></a>Kapcsolati sztring
 
@@ -48,7 +48,7 @@ Erre szükség van. A Application Insights erőforrásban található a kapcsola
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights a kapcsolatok karakterlánca":::
 
-A környezeti változó `APPLICATIONINSIGHTS_CONNECTION_STRING`használatával is beállíthatja a kapcsolatok karakterláncát.
+A környezeti változó használatával is beállíthatja a kapcsolatok karakterláncát `APPLICATIONINSIGHTS_CONNECTION_STRING` .
 
 ## <a name="cloud-role-name"></a>Felhőbeli szerepkör neve
 
@@ -68,7 +68,7 @@ Ha be szeretné állítani a Felhőbeli szerepkör nevét:
 
 Ha nincs beállítva a Felhőbeli szerepkör neve, a rendszer a Application Insights erőforrás nevét fogja használni az alkalmazás térképén lévő összetevő címkézéséhez.
 
-A Felhőbeli szerepkör nevét a környezeti változó `APPLICATIONINSIGHTS_ROLE_NAME`használatával is beállíthatja.
+A Felhőbeli szerepkör nevét a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_NAME` .
 
 ## <a name="cloud-role-instance"></a>Felhőalapú szerepkör-példány
 
@@ -86,13 +86,13 @@ Ha a Felhőbeli szerepkör-példányt a gép neve helyett más értékre szeretn
 }
 ```
 
-A Felhőbeli szerepkör-példányt a környezeti változó `APPLICATIONINSIGHTS_ROLE_INSTANCE`használatával is beállíthatja.
+A Felhőbeli szerepkör-példányt a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
 
 ## <a name="application-log-capture"></a>Alkalmazásnapló-rögzítés
 
 Application Insights Java 3,0 előzetes verzió automatikusan rögzíti az alkalmazások naplózását a Log4j, a Logback és a Java. util. Logging használatával.
 
-Alapértelmezés szerint a rendszer az összes, `WARN` szinten vagy felül végrehajtott naplózást rögzíti.
+Alapértelmezés szerint a rendszer az összes, szinten vagy felül végrehajtott naplózást rögzíti `WARN` .
 
 Ha módosítani kívánja ezt a küszöbértéket:
 
@@ -110,7 +110,7 @@ Ha módosítani kívánja ezt a küszöbértéket:
 }
 ```
 
-Ezek az érvényes `threshold` értékek, amelyeket megadhat a fájlban, `ApplicationInsights.json` és hogyan felelnek meg a naplózási szintnek a különböző naplózási keretrendszerek között:
+Ezek az érvényes `threshold` értékek, amelyeket megadhat a `ApplicationInsights.json` fájlban, és hogyan felelnek meg a naplózási szintnek a különböző naplózási keretrendszerek között:
 
 | `threshold`  | Log4j  | Logback | JÚL     |
 |--------------|--------|---------|---------|
@@ -123,7 +123,7 @@ Ezek az érvényes `threshold` értékek, amelyeket megadhat a fájlban, `Applic
 | HIBAKERESÉS/PÉNZBÍRSÁG   | HIBAKERESÉS  | HIBAKERESÉS   | RÉSZLETES    |
 | KIFINOMULTABBAN        | HIBAKERESÉS  | HIBAKERESÉS   | KIFINOMULTABBAN   |
 | NYOMKÖVETÉS/LEGFINOMABB | NYOMKÖVETÉSI  | NYOMKÖVETÉSI   | LEGJOBB  |
-| AZ ÖSSZES          | AZ ÖSSZES    | AZ ÖSSZES     | AZ ÖSSZES     |
+| ALL          | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>JMX metrikák
 
@@ -237,7 +237,7 @@ Az "öndiagnosztika" a Application Insights Java 3,0 előzetes verziójának bel
 
 Ez hasznos lehet a Application Insights saját maga által felmerülő problémák felderítésére és diagnosztizálására.
 
-Alapértelmezés szerint a konzolhoz a következő konfigurációnak `warn`megfelelő szintet naplóz:
+Alapértelmezés szerint a konzolhoz a `warn` következő konfigurációnak megfelelő szintet naplóz:
 
 ```json
 {
@@ -252,7 +252,7 @@ Alapértelmezés szerint a konzolhoz a következő konfigurációnak `warn`megfe
 }
 ```
 
-Az érvényes szintek `OFF`a `ERROR`következők `WARN` `INFO` `DEBUG`:,,, `TRACE`, és.
+Az érvényes szintek a következők:,,,, `OFF` `ERROR` `WARN` `INFO` `DEBUG` és `TRACE` .
 
 Ha a konzolra való bejelentkezés helyett egy fájlba szeretne bejelentkezni:
 
@@ -271,4 +271,4 @@ Ha a konzolra való bejelentkezés helyett egy fájlba szeretne bejelentkezni:
 }
 ```
 
-A fájlok naplózása, ha a fájl látogatottsága `maxSizeMB`befejeződik, a rendszer az aktuális naplófájl mellett csak a legutóbb befejezett naplófájlt fogja használni.
+A fájlok naplózása, ha a fájl látogatottsága `maxSizeMB` befejeződik, a rendszer az aktuális naplófájl mellett csak a legutóbb befejezett naplófájlt fogja használni.

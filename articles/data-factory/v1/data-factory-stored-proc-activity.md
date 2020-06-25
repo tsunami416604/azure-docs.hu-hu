@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 3f9f4db0119b10a2df3a1007f9e5fa710e31f0e2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b348f3f3684d580ca84eed9b9a094717c12cf849
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113704"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319084"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -49,7 +49,7 @@ A tárolt eljárási tevékenységgel egy tárolt eljárást hívhat meg a váll
 >
 > Az adatok Azure SQL Database vagy SQL Server vagy Azure SQL Data Warehouseból való másolása esetén a másolási tevékenységben beállíthatja, hogy egy tárolt eljárás meghívja a **SqlSource** a **sqlReaderStoredProcedureName** tulajdonság használatával. További információt a következő összekötő cikkeiben talál: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
-A következő útmutató egy folyamat tárolt eljárási tevékenységét használja egy tárolt eljárás meghívásához egy Azure SQL Database-adatbázisban.
+A következő útmutató egy folyamat tárolt eljárási tevékenységét használja egy Azure SQL Database tárolt eljárás meghívásához.
 
 ## <a name="walkthrough"></a>Útmutatás
 ### <a name="sample-table-and-stored-procedure"></a>Minta tábla és tárolt eljárás
@@ -106,7 +106,7 @@ A következő útmutató egy folyamat tárolt eljárási tevékenységét haszn�
    ![Data Factory Kezdőlap](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Azure SQL társított szolgáltatás létrehozása
-Az adatelőállító létrehozása után létre kell hoznia egy Azure SQL társított szolgáltatást, amely összekapcsolja az Azure SQL Database-t, amely a sampletable táblázatot és usp_sample tárolt eljárást tartalmazza a saját adatelőállítójának.
+Az adatelőállító létrehozása után létrehoz egy Azure SQL társított szolgáltatást, amely összekapcsolja az adatbázisát Azure SQL Databaseban, amely tartalmazza a sampletable táblát és a usp_sample tárolt eljárást a saját adatelőállítójának.
 
 1. A **SProcDF** **Data Factory** paneljén kattintson a **Szerző és üzembe helyezés** elemre, hogy elindítsa a Data Factory szerkesztőt.
 2. Kattintson a parancssáv **új adattár** elemére, és válassza a **Azure SQL Database**lehetőséget. Az Azure SQL társított szolgáltatás létrehozásához a szerkesztőben megjelenik a JSON-szkript.
@@ -207,7 +207,7 @@ Figyelje meg a következő tulajdonságokat:
 3. A diagram nézetben kattintson duplán az adatkészletre `sprocsampleout` . A szeletek kész állapotban jelennek meg. Öt szeletnek kell lennie, mivel a JSON-ből a kezdési idő és a befejezési idő között minden órában létrejön egy szelet.
 
     ![diagram csempe](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. Ha egy szelet **üzemkész** állapotban van, futtasson egy `select * from sampletable` LEKÉRDEZÉST az Azure SQL Database-ben annak ellenőrzéséhez, hogy a tárolt eljárás beszúrta-e az adott táblát a táblába.
+4. Ha egy szelet **üzemkész** állapotban van, futtasson egy `select * from sampletable` lekérdezést az adatbázison annak ellenőrzéséhez, hogy a tárolt eljárás beszúrta-e az adott táblát a táblába.
 
    ![Kimeneti adatok](./media/data-factory-stored-proc-activity/output.png)
 
@@ -305,13 +305,13 @@ A következő táblázat ismerteti ezeket a JSON-tulajdonságokat:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name | A tevékenység neve |Igen |
-| leírás |A tevékenység által használt szöveg leírása |Nem |
-| típus | A következőre kell beállítani: **SqlServerStoredProcedure** | Igen |
-| bemenetek | Választható. Ha megad egy bemeneti adatkészletet, a tárolt eljárási tevékenység futtatásához elérhetőnek kell lennie ("Ready" (kész) állapotban). A bemeneti adatkészlet nem használható paraméterként a tárolt eljárásban. A rendszer csak a tárolt eljárási tevékenység megkezdése előtt használja a függőség ellenőrzését. |Nem |
-| kimenetek | Meg kell adnia egy kimeneti adatkészletet egy tárolt eljárási tevékenységhez. A kimeneti adatkészlet meghatározza a tárolt eljárási tevékenység **ütemtervét** (óránként, hetente, havonta stb.). <br/><br/>A kimeneti adatkészletnek olyan **társított szolgáltatást** kell használnia, amely egy Azure SQL Database vagy egy Azure SQL Data Warehouse vagy egy SQL Server adatbázisra hivatkozik, amelyben a tárolt eljárást futtatni kívánja. <br/><br/>A kimeneti adatkészlet képes arra, hogy átadja a tárolt eljárás eredményét egy másik tevékenység által végzett későbbi feldolgozás céljából (a folyamaton belüli[láncolt tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) . A Data Factory azonban nem ír automatikusan egy tárolt eljárás kimenetét erre az adatkészletre. Ez a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. <br/><br/>Bizonyos esetekben a kimeneti adatkészlet lehet egy **próbabábu-adatkészlet**is, amely kizárólag a tárolt eljárási tevékenység futtatási ütemtervének megadására szolgál. |Igen |
-| storedProcedureName |Adja meg a tárolt eljárás nevét az Azure SQL Database-ben, vagy Azure SQL Data Warehouse vagy SQL Server adatbázist, amelyet a kimeneti tábla által használt társított szolgáltatás képvisel. |Igen |
-| storedProcedureParameters |A tárolt eljárás paramétereinek értékeinek megadása. Ha egy paraméternél null értéket kell átadnia, használja a következő szintaxist: "param1": null (az összes kisbetű). Tekintse meg a következő mintát, amelyből megtudhatja, hogyan használhatja ezt a tulajdonságot. |Nem |
+| name | A tevékenység neve |Yes |
+| leírás |A tevékenység által használt szöveg leírása |No |
+| típus | A következőre kell beállítani: **SqlServerStoredProcedure** | Yes |
+| bemenetek | Választható. Ha megad egy bemeneti adatkészletet, a tárolt eljárási tevékenység futtatásához elérhetőnek kell lennie ("Ready" (kész) állapotban). A bemeneti adatkészlet nem használható paraméterként a tárolt eljárásban. A rendszer csak a tárolt eljárási tevékenység megkezdése előtt használja a függőség ellenőrzését. |No |
+| kimenetek | Meg kell adnia egy kimeneti adatkészletet egy tárolt eljárási tevékenységhez. A kimeneti adatkészlet meghatározza a tárolt eljárási tevékenység **ütemtervét** (óránként, hetente, havonta stb.). <br/><br/>A kimeneti adatkészletnek olyan **társított szolgáltatást** kell használnia, amely egy Azure SQL Database vagy egy Azure SQL Data Warehouse vagy egy SQL Server adatbázisra hivatkozik, amelyben a tárolt eljárást futtatni kívánja. <br/><br/>A kimeneti adatkészlet képes arra, hogy átadja a tárolt eljárás eredményét egy másik tevékenység által végzett későbbi feldolgozás céljából (a folyamaton belüli[láncolt tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) . A Data Factory azonban nem ír automatikusan egy tárolt eljárás kimenetét erre az adatkészletre. Ez a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. <br/><br/>Bizonyos esetekben a kimeneti adatkészlet lehet egy **próbabábu-adatkészlet**is, amely kizárólag a tárolt eljárási tevékenység futtatási ütemtervének megadására szolgál. |Yes |
+| storedProcedureName |Adja meg a tárolt eljárás nevét Azure SQL Database, Azure SQL Data Warehouse vagy SQL Server, amelyet a kimeneti tábla által használt társított szolgáltatás képvisel. |Yes |
+| storedProcedureParameters |A tárolt eljárás paramétereinek értékeinek megadása. Ha egy paraméternél null értéket kell átadnia, használja a következő szintaxist: "param1": null (az összes kisbetű). Tekintse meg a következő mintát, amelyből megtudhatja, hogyan használhatja ezt a tulajdonságot. |No |
 
 ## <a name="passing-a-static-value"></a>Statikus érték átadása
 Most vegyünk fel egy "forgatókönyv" nevű oszlopot egy olyan táblában, amely a "Document Sample" nevű statikus értéket tartalmazza.

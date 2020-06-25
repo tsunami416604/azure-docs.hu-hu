@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók az Azure arc-kompatibilis Kubernetes
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure arc használatára képes Kubernetes. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.service: azure-arc
 author: mlearned
 ms.author: mlearned
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 8c34d19bfdd7a0fdc60e2e56de7db55d3552da69
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 8f1b7f6842ce298fd5131c670eb611ef8bd7c8a5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84947393"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316260"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-kubernetes"></a>Az Azure arc-kompatibilis Kubernetes beépített definíciói Azure Policy
 

@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: ETL-műveletek interaktív lekérdezéssel – Azure HDInsight'
-description: Oktatóanyag – megtudhatja, hogyan nyerheti ki az adatokat nyers CSV-adatkészletből. Alakítsa át az interaktív lekérdezés használatával a HDInsight. Ezután az Apache Sqoop használatával töltse be az átalakított adatkészleteket az Azure SQL Database-be.
+description: Oktatóanyag – megtudhatja, hogyan nyerheti ki az adatokat nyers CSV-adatkészletből. Alakítsa át az interaktív lekérdezés használatával a HDInsight. Ezután töltse be az átalakított adatAzure SQL Databaset az Apache Sqoop használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021738"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319191"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezés használatával
 
-Ebben az oktatóanyagban egy nyers CSV-adatfájlt tölt le nyilvánosan elérhető repülési adatfájlból. Importálja a HDInsight-fürt tárterületére, majd az Azure HDInsight interaktív lekérdezésével alakítsa át az adataikat. Az adatátalakítást követően a rendszer az [Apache Sqoop](https://sqoop.apache.org/)használatával tölti be ezeket az Azure SQL Database-adatbázisba.
+Ebben az oktatóanyagban egy nyers CSV-adatfájlt tölt le nyilvánosan elérhető repülési adatfájlból. Importálja a HDInsight-fürt tárterületére, majd az Azure HDInsight interaktív lekérdezésével alakítsa át az adataikat. Az adatátalakítást követően a rendszer az [Apache Sqoop](https://sqoop.apache.org/)használatával tölti be azokat az adatbázisba Azure SQL Databaseba.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -25,14 +25,14 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A repülőjárat-mintaadatok letöltése
 > * Az adatok feltöltése egy HDInsight-fürtre
 > * Az adatátalakítás interaktív lekérdezés használatával
-> * Tábla létrehozása az Azure SQL Database-ben
-> * Az Sqoop használata az Azure SQL Database-adatbázisba való exportáláshoz
+> * Tábla létrehozása a Azure SQL Database adatbázisban
+> * Az Sqoop használata az Azure SQL Database adatbázisba való exportálásához
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy interaktív lekérdezési fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza az **interaktív lekérdezés** a **fürt típusához**lehetőséget.
 
-* Egy Azure SQL Database. Egy Azure SQL-adatbázist használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](/azure/sql-database/sql-database-single-database-get-started) ismertető cikket.
+* Egy adatbázis a Azure SQL Databaseban. Az adatbázist célként megadott adattárként használja. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Database a Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
 
 * Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -250,9 +250,9 @@ Számos módon csatlakozhat az SQL Database-hez, majd hozhat létre egy táblát
 
 4. A tsql eszközből való kilépéshez írja be az `exit` kifejezést az `1>` parancssorba.
 
-## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Az SQL Database-be való exportálás az Apache Sqoop használatával
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Adatexportálás SQL Database az Apache Sqoop
 
-Az előző szakaszok során átmásolta az átalakított adatokat a következő helyre: `/tutorials/flightdelays/output`. Ebben a szakaszban a Sqoop segítségével fogja exportálni az adatokat az `/tutorials/flightdelays/output` helyről az Azure SQL-adatbázisban létrehozott táblába.
+Az előző szakaszok során átmásolta az átalakított adatokat a következő helyre: `/tutorials/flightdelays/output`. Ebben a szakaszban a Sqoop használatával exportálja az adatait `/tutorials/flightdelays/output` a Azure SQL Database-ben létrehozott táblába.
 
 1. Az alábbi parancs beírásával ellenőrizze, hogy a Sqoop látható-e az SQL Database-ben:
 
@@ -287,7 +287,7 @@ Az előző szakaszok során átmásolta az átalakított adatokat a következő 
 
     A tsql eszközből való kilépéshez írja be az `exit` parancsot.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 

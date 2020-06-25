@@ -1,24 +1,14 @@
 ---
 title: Az Azure Event Hubs rögzített adatok beolvasása egy Python-alkalmazásból (legújabb)
 description: Ebből a cikkből megtudhatja, hogyan írhat Python-kódot az Event hub számára elküldett adatok rögzítéséhez, és beolvashatja az Azure Storage-fiókból a rögzített események adatait.
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/30/2020
-ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 67bf19c08d9a9309d8d4b731bf30a6db1091ebf1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/23/2020
+ms.openlocfilehash: 752a582e59b438f7449d6722b222969dc641880c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558948"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315287"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs-információk rögzítése az Azure Storage-ban és a Python használatával (Azure-eventhub 5-ös verzió)
 
@@ -183,7 +173,7 @@ Ebben a példában a rögzített adattárolók tárolása az Azure Blob Storage-
 
    Ez a rögzítési processzor a helyi könyvtár használatával tölti le az összes blobot a Storage-fiókból és-tárolóból. Feldolgozza azokat, amelyek nem üresek, és az eredményeket CSV-fájlként írja a helyi könyvtárba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse [meg a Python-mintákat a githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples). 
 
 

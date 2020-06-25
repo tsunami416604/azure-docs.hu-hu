@@ -186,7 +186,7 @@ A titkos kód az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=az
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, használhatja az Azure CLI-t vagy Azure PowerShell a kulcstartó és a hozzá tartozó erőforráscsoport eltávolításához.
 

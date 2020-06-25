@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 06/19/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: c6358411572de6049a3362cc0e8e26b9cbc82d43
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 4f7be81c3593e35dfbbcf3a5671726da70ae0c7e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906851"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319669"
 ---
-# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal
+# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal    
 
 > [!NOTE]
 > Ez a cikk azt ismerteti, hogyan értelmezhető és szabályozható a Azure Monitor naplók költségei. A kapcsolódó cikkek, a [monitorozási használat és a becsült költségek](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) azt írják le, hogyan lehet megtekinteni a használati és becsült költségeket több Azure-figyelési funkció között különböző díjszabási modellekhez. Az ebben a cikkben látható árak és költségek csak példaként szolgálnak. 
@@ -32,7 +32,7 @@ Ebben a cikkben áttekintjük, hogyan lehet proaktív módon figyelni a betölt�
 
 ## <a name="pricing-model"></a>Díjszabási modell
 
-Az Log Analytics alapértelmezett díjszabása az adatmennyiség betöltését és opcionálisan **a hosszú** adatmegőrzést is igénybe véve. Az adatmennyiséget a rendszer a tárolni kívánt adattárolás méretének megfelelően méri. Minden Log Analytics munkaterület külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához. Az adatfeldolgozás mennyisége az alábbi tényezőktől függően jelentős lehet: 
+Az Log Analytics alapértelmezett díjszabása az adatmennyiség betöltését és opcionálisan **a hosszú** adatmegőrzést is igénybe véve. Az adatmennyiséget a rendszer a GB-ban (10 ^ 9 bájt) tárolt adat méretének megfelelően méri. Minden Log Analytics munkaterület külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához. Az adatfeldolgozás mennyisége az alábbi tényezőktől függően jelentős lehet: 
 
   - Az engedélyezett felügyeleti megoldások száma és a konfigurációjuk
   - Figyelt virtuális gépek száma
@@ -40,7 +40,7 @@ Az Log Analytics alapértelmezett díjszabása az adatmennyiség betöltését �
   
 Az utólagos elszámolású modellen kívül a Log Analytics **kapacitás-foglalási** csomagokkal rendelkezik, amelyek lehetővé teszik, hogy az utólagos elszámolású díjszabáshoz képest akár 25%-ot is mentsen. A kapacitás foglalásának díjszabása lehetővé teszi, hogy a foglalást 100 GB/nap után vásárolja meg. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. A kapacitás foglalási szintjeinek 31 napos kötelezettségvállalási időszaka van. A kötelezettségvállalás időtartama alatt magasabb szintű kapacitást biztosító foglalási szintre válthat (amely a 31 napos kötelezettségvállalási időszakot újraindítja), de az utólagos elszámolású vagy az alacsonyabb kapacitású foglalási szintig nem léphet vissza a kötelezettségvállalási időszak végéig. A kapacitás foglalási szintjeinek számlázása napi rendszerességgel történik. [További](https://azure.microsoft.com/pricing/details/monitor/) információ a log Analytics utólagos elszámolású és a kapacitás foglalásának díjszabásáról. 
 
-Az összes díjszabási szinten az esemény adatméretét az adott esemény Log Analytics tárolt tulajdonságok karakterlánc-ábrázolása alapján számítja ki a rendszer, függetlenül attól, hogy az adatok egy ügynöktől származnak, vagy a betöltési folyamat során lettek-e hozzáadva. Ebbe beletartozik az adatokként hozzáadott [Egyéni mezők](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) gyűjtése, majd a log Analytics tárolása. Számos, az összes adattípussal közös tulajdonság, beleértve a [log Analytics standard tulajdonságokat](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties)is, ki van zárva az esemény méretének kiszámításakor. Ilyenek például a következők:,, `_ResourceId` `_ItemId` `_IsBillable` `_BilledSize` és `Type` . A Log Analyticsban tárolt összes többi tulajdonságot az esemény méretének kiszámítása tartalmazza. Egyes adattípusok teljes egészében díjmentesek az adatfeldolgozási díjaktól, például a AzureActivity, a Szívveréstől és a használati típustól. Annak megállapításához, hogy egy esemény ki lett-e zárva az adatok betöltésének számlázása alól, használhatja a `_IsBillable` tulajdonságot az [alább](#data-volume-for-specific-events)látható módon.
+Az összes díjszabási szinten az esemény adatméretét az adott esemény Log Analytics tárolt tulajdonságok karakterlánc-ábrázolása alapján számítja ki a rendszer, függetlenül attól, hogy az adatok egy ügynöktől származnak, vagy a betöltési folyamat során lettek-e hozzáadva. Ebbe beletartozik az adatokként hozzáadott [Egyéni mezők](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) gyűjtése, majd a log Analytics tárolása. Számos, az összes adattípussal közös tulajdonság, beleértve a [log Analytics standard tulajdonságokat](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties)is, ki van zárva az esemény méretének kiszámításakor. Ilyenek például a következők:,, `_ResourceId` `_ItemId` `_IsBillable` `_BilledSize` és `Type` . A Log Analyticsban tárolt összes többi tulajdonságot az esemény méretének kiszámítása tartalmazza. Egyes adattípusok teljes egészében díjmentesek az adatfeldolgozási díjaktól, például a AzureActivity, a Szívveréstől és a használati típustól. Annak megállapításához, hogy egy esemény ki lett-e zárva az adatok betöltésének számlázása alól, használhatja a `_IsBillable` tulajdonságot az [alább](#data-volume-for-specific-events)látható módon. A használatot GB-ban (1,0 E9 bájt) kell jelenteni. 
 
 Azt is vegye figyelembe, hogy egyes megoldások, például az [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), az [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) és a [Configuration Management](https://azure.microsoft.com/pricing/details/automation/) saját díjszabási modellel rendelkeznek. 
 
@@ -196,7 +196,7 @@ Minden munkaterület napi korlátja a nap egy másik óráján érvényes. Az al
 A napi korlát elérésekor a számlázható adattípusok gyűjteménye a nap hátralevő részében leáll. (A napi korlát alkalmazása során felmerülő késés azt jelenti, hogy a kupakot nem alkalmazzák pontosan a megadott napi korlát szintjén.) A kijelölt Log Analytics munkaterülethez tartozó oldal tetején megjelenik egy figyelmeztető szalagcím, és a **LogManagement** kategóriában a *művelet* táblába egy műveleti esemény érkezik. Az adatgyűjtés a *napi korlát*alatt megadott alaphelyzetbe állítás időpontját követően fog folytatódni. Javasoljuk, hogy a műveleti esemény alapján határozzon meg egy riasztási szabályt, amely úgy van konfigurálva, hogy értesítést kapjon a napi adatkorlát elérésekor. 
 
 > [!WARNING]
-> A napi korlát nem állítja le az adatgyűjtést Azure Security Centerból, kivéve azokat a munkaterületeket, amelyekben a Azure Security Center a 2017. június 19. előtt volt telepítve. 
+> A napi korlát nem állítja le az adatok gyűjtését az Azure sentinal vagy a Azure Security Centerból, kivéve azokat a munkaterületeket, amelyekben a Azure Security Center a 2017. június 19. előtt volt telepítve. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>A definiálni kívánt napi adatkorlát meghatározása
 

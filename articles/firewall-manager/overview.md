@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/13/2020
+ms.date: 06/11/2020
 ms.author: victorh
-ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bef948def487e2b60764641e6cf38a3e122e2f87
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79366274"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792157"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Mi az Azure Firewall Manager előzetes verziója?
 
@@ -22,16 +22,16 @@ A Azure Firewall Manager előzetes verziója egy biztonsági felügyeleti szolg�
 
 A Firewall Manager két hálózati architektúra-típushoz biztosít biztonsági felügyeletet:
 
-- **biztonságos virtuális központ**
+- **Biztonságos virtuális központ**
 
    Az [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources) egy Microsoft által felügyelt erőforrás, amellyel könnyedén hozhat létre sugaras és küllős architektúrákat. Ha a biztonsági és útválasztási házirendek egy ilyen hubhoz vannak társítva, akkor azt a rendszer *[biztonságos virtuális központként](secured-virtual-hub.md)* említi. 
-- **hub virtuális hálózata**
+- **Hub virtuális hálózata**
 
    Ez egy szabványos Azure-beli virtuális hálózat, amelyet saját maga hozhat létre és kezelhet. Ha a biztonsági szabályzatok egy ilyen hubhoz vannak társítva, akkor azt *hub virtuális hálózatnak*nevezzük. Jelenleg csak Azure Firewall házirend támogatott. A munkaterhelési kiszolgálókat és szolgáltatásokat tartalmazó társ-küllős virtuális hálózatokat is használhatja. Az önálló virtuális hálózatokban olyan tűzfalak is kezelhetők, amelyek nem kapcsolódnak egyetlen küllőhöz sem.
 
 A *biztonságos virtuális központ* és a *hub virtuális hálózati* architektúráinak részletes összehasonlítását lásd: [Mik a Azure Firewall Manager architektúra lehetőségei?](vhubs-and-vnets.md).
 
-![tűzfal – kezelő](media/overview/firewallmanagerv5.png)
+![tűzfal – kezelő](media/overview/trusted-security-partners.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Azure Firewall Manager előzetes verziójának funkciói
 

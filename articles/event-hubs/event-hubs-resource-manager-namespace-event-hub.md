@@ -1,25 +1,14 @@
 ---
 title: 'Rövid útmutató: Event hub létrehozása fogyasztói csoporttal – Azure Event Hubs'
 description: 'Gyors útmutató: Event Hubs névtér létrehozása egy Event hub és egy fogyasztói csoport számára Azure Resource Manager sablonok használatával'
-services: event-hubs
-documentationcenter: .net
-author: spelluru
-editor: ''
-ms.assetid: 28bb4591-1fd7-444f-a327-4e67e8878798
-ms.service: event-hubs
-ms.devlang: tbd
 ms.topic: quickstart
-ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 02/11/2020
-ms.author: spelluru
-ms.custom: subject-armqs
-ms.openlocfilehash: c2221fe5b5ab38afbdde167e5bcbf6b47ed4f861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 8a1ad9a2b2ce7a8e9e5911cca18b297378a966bd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79528081"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315648"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Rövid útmutató: Event hub létrehozása Azure Resource Manager sablon használatával
 
@@ -31,13 +20,13 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincs.
+Nincsenek.
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/) származik.
 
 :::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
 

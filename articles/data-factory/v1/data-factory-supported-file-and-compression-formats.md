@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 901e15994b8a51a5fd45d57ca7a4db7778d968e1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 33f67e1bfa27f4314f64cbcc4d472905fcb15099
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707038"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318764"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>A Azure Data Factory által támogatott fájl-és Tömörítési formátumok
 *Ez a témakör az alábbi összekötőket érinti [: Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure Blob](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md), [File System](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [http](data-factory-http-connector.md)és [SFTP](data-factory-sftp-connector.md).*
@@ -219,7 +219,7 @@ Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba tá
 ```
 és az adatok objektumokból és tömbökből való kigyűjtésével szeretné átmásolni egy Azure SQL-táblába az alábbi formátumban:
 
-| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| ID | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
@@ -349,7 +349,7 @@ A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghat�
 
 Ha a következő táblázat szerepel a SQL Databaseban:
 
-| id | order_date | order_price | order_by |
+| ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
@@ -497,7 +497,7 @@ A **tömörítési** szakasz két tulajdonsággal rendelkezik:
 
 Ha `compression` egy bemeneti ADATKÉSZLET JSON-ban adja meg a tulajdonságot, a folyamat beolvashatja a tömörített adatokat a forrásból, és ha a tulajdonságot egy kimeneti ADATKÉSZLET JSON-fájljában adja meg, a másolási tevékenység képes tömörített adatokat írni a célhelyre. Íme néhány példa a példákra:
 
-* A GZIP által tömörített adatok beolvasása egy Azure-blobból, kibontása és az eredmények adatainak írása egy Azure SQL Database-adatbázisba. A bemeneti Azure Blob-adatkészletet a JSON-tulajdonsággal adhatja meg a `compression` `type` gzip-ként.
+* Olvassa el a GZIP tömörített adatait egy Azure-blobból, bontsa ki, majd írja be az eredményeket Azure SQL Databaseba. A bemeneti Azure Blob-adatkészletet a JSON-tulajdonsággal adhatja meg a `compression` `type` gzip-ként.
 * Az adatok beolvasása egy egyszerű szöveges fájlból a helyszíni fájlrendszerből, GZip formátum használatával tömöríthető, és a tömörített adatok megírása egy Azure-blobba. Egy kimeneti Azure Blob-adatkészletet a `compression` `type` JSON-tulajdonsággal a gzip-ként adhat meg.
 * Olvassa el a. zip fájlt az FTP-kiszolgálóról, bontsa ki, hogy beolvassa a fájlokat a belsejében, és a fájlokat a Azure Data Lake Storeba helyezi. A `compression` JSON tulajdonsággal rendelkező bemeneti FTP-adatkészletet ZipDeflate-ként definiálhatja `type` .
 * Egy Azure-blobból származó, GZIP-tömörített adatok beolvasása, kibontása, a BZIP2 használatával történő tömörítés, valamint az eredmények egy Azure-blobba írása. Ebben az esetben a bemeneti Azure Blob-adatkészletet a GZIP értékre, `compression` `type` a kimeneti adatkészletet pedig a bzip2 értékre kell beállítani `compression` `type` .   

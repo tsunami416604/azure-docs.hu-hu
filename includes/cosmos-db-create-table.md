@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -17,7 +17,7 @@ ms.locfileid: "68854655"
 ---
 Az Azure Portal Adatkezelő eszközét mostantól adatbázis és tábla létrehozására is használhatja. 
 
-1. Válassza ki **adatkezelő** > **új táblát**. 
+1. Válassza ki **adatkezelő**  >  **új táblát**. 
     
     A jobb szélen megjelenik a **Táblázat hozzáadása** terület. Esetenként jobbra kell görgetnie, hogy lássa.
 
@@ -28,9 +28,9 @@ Az Azure Portal Adatkezelő eszközét mostantól adatbázis és tábla létreho
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
     Táblaazonosító|minta tábla|Az új tábla azonosítója. A táblák nevére ugyanazok a korlátozások vonatkoznak, mint az adatbázis-azonosítókra. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat `/ \ # ?` karaktereket vagy záró szóközt.
-    Átviteli sebesség|400 kérelemegység|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
+    Teljesítmény|400 kérelemegység|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
 
-3. Kattintson az **OK** gombra.
+3. Válassza az **OK** lehetőséget.
 
 4. Az Adatkezelő megjeleníti az új adatbázist és táblát.
 

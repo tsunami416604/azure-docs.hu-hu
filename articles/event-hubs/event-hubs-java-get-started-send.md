@@ -1,19 +1,14 @@
 ---
 title: Események küldése vagy fogadása az Azure Event Hubs Java (örökölt) használatával
 description: Ez a cikk bemutatja, hogyan hozhat létre olyan Java-alkalmazást, amely az Azure Event Hubs a régi Azure-eventhubs csomag használatával küld/fogad eseményeket.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 02/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 379739533e15e60bc47bfc883a67037d4a58d0e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 8c44cfa2a3130e714ac95989248aee634996df2a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81417625"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320317"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Az Azure Event Hubs (Azure-eventhubs) eseményeinek küldése vagy fogadása a Java használatával
 
@@ -57,7 +52,7 @@ Egy egyszerű esemény-közzétevő esetében importálja a *com. microsoft. Azu
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek eseményközpontba való küldésére
 
-A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Vegyen fel egy `SimpleSend`nevű osztályt, és adja hozzá a következő kódot a osztályhoz:
+A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Vegyen fel egy nevű osztályt `SimpleSend` , és adja hozzá a következő kódot a osztályhoz:
 
 ```java
 import com.google.gson.Gson;
@@ -210,7 +205,7 @@ A Event Hubs Java-ügyféloldali könyvtára a Maven [központi tárházból](ht
 
 A különböző típusú Build-környezetek esetében explicit módon beszerezheti a legújabb kiadott JAR-fájlokat a [Maven központi adattárból](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22).
 
-1. A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Az osztály neve `ErrorNotificationHandler`.     
+1. A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Az osztály neve `ErrorNotificationHandler` .     
    
     ```java
     import java.util.function.Consumer;
@@ -316,7 +311,7 @@ A különböző típusú Build-környezetek esetében explicit módon beszerezhe
        }
    }
    ```
-3. Hozzon létre még egy `EventProcessor`nevű osztályt a következő kód használatával:
+3. Hozzon létre még egy nevű osztályt `EventProcessor` a következő kód használatával:
    
     ```java
     public static class EventProcessor implements IEventProcessor

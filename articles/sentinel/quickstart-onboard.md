@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 149ac61e4737faa81e55fac3e07133c73bbc00d5
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: a581288259a521f8f2f93ff3fbc16f4926486643
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488120"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771172"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Gyors útmutató: Azure Sentinel
 
@@ -58,7 +58,7 @@ Az adatforrások összekapcsolását követően válasszon egy, az adatok alapj�
    > - Az Azure Sentinel [log Analytics bármely GA régiójában](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) futtatható munkaterületeken, kivéve a kínai és a németországi (szuverén) régiókat. Az Azure Sentinel által létrehozott adatok (például az incidensek, a könyvjelzők és a riasztási szabályok, amelyek tartalmazhatnak néhány ügyfél-adatforrást az adott munkaterületről) Európa (az Európai munkaterületek számára), Ausztráliában (az Ausztráliában található munkaterületek esetében) vagy az USA keleti régiójában (a más régiókban található munkaterületek esetében) mentik.
 
    >[!IMPORTANT]
-   > - Miután az Azure Sentinel engedélyezve lett egy munkaterületen, a munkaterület áthelyezése más erőforráscsoportok vagy előfizetések között nem támogatott. Ha át kell helyeznie a munkaterületet, útmutatásért forduljon az ügyfélszolgálathoz.
+   > - Miután az Azure Sentinel engedélyezve lett egy munkaterületen, a munkaterület áthelyezése más erőforráscsoportok vagy előfizetések között nem támogatott. Ha át kell helyeznie a munkaterületet, forduljon az [Azure sentinelhez](mailto:AzureSentinel@microsoft.com).
 
 1. Válassza az **Azure Sentinel hozzáadása**lehetőséget.
   
@@ -76,7 +76,7 @@ Az adatforrások csatlakoztatása után az adatai streamet kezdenek az Azure Sen
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók az adatforrások az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

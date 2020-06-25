@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: e47dee10e00340f04afd4a9807501bf83d25f9ec
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: f16f9b3fe6cd17b9fb6eb1cb2bd3ef1f42824701
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709145"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312759"
 ---
-|Name |Leírás |Házirendek |Verzió |
+|Name (Név) |Leírás |Házirendek |Verzió |
 |---|---|---|---|
 |[Olyan linuxos virtuális gépek naplózása, amelyeken nincs telepítve a megadott alkalmazás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux.json) |Ez a kezdeményezés telepíti a szabályzat követelményeit, és naplózza azokat a linuxos virtuális gépeket, amelyeken nincs telepítve a megadott alkalmazás. A vendég-konfigurációs házirendekkel kapcsolatos további információkért tekintse meg a következőt:[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |
 |[Linux rendszerű virtuális gépek naplózása, amelyeken telepítve vannak a megadott alkalmazások](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationLinux.json) |Ez a kezdeményezés telepíti a szabályzat követelményeit, és naplózza azokat a linuxos virtuális gépeket, amelyeken telepítve vannak a megadott alkalmazások. A vendég-konfigurációs házirendekkel kapcsolatos további információkért tekintse meg a következőt:[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |
@@ -37,3 +37,4 @@ ms.locfileid: "84709145"
 |[A megadott telepített alkalmazásokkal rendelkező Windows rendszerű virtuális gépek naplózása](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |Ez a kezdeményezés telepíti a szabályzat követelményeit, és naplózza azokat a Windows rendszerű virtuális gépeket, amelyeken telepítve vannak a megadott alkalmazások. A vendég-konfigurációs házirendekkel kapcsolatos további információkért tekintse meg a következőt:[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[Windows rendszerű virtuális gépek naplózása függőben lévő újraindítással](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |Ez a kezdeményezés telepíti a házirend-követelményeket, és a Windows rendszerű virtuális gépeket a függőben lévő újraindítással naplózza. A vendég-konfigurációs házirendekkel kapcsolatos további információkért tekintse meg a következőt:[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózása](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |Ez a kezdeményezés telepíti a házirend-követelményeket, és naplózza azokat a Windows-webkiszolgálókat, amelyek nem használnak biztonságos kommunikációs protokollt (TLS 1,1 vagy TLS 1,2). A vendég-konfigurációs házirendekkel kapcsolatos további információkért tekintse meg a következőt:[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
+|[A vendég-konfigurációs szabályzatok virtuális gépeken való engedélyezéséhez szükséges előfeltételek üzembe helyezése](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |Ez a kezdeményezés egy rendszerhez rendelt felügyelt identitást helyez üzembe, és telepíti a platformhoz megfelelő vendég konfigurációs bővítményt olyan virtuális gépekre, amelyek jogosultak a vendég konfigurációs szabályzatok figyelésére. Ez az összes vendég konfigurációs házirend előfeltétele, és hozzá kell rendelni a szabályzat-hozzárendelési hatókörhöz a vendég konfigurációs szabályzatok használata előtt. A vendég konfigurációval kapcsolatos további információkért látogasson el a következő webhelyre: [https://aka.ms/gcpol](https://aka.ms/gcpol) . |4 |1.0.0 – előzetes verzió |

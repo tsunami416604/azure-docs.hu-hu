@@ -182,7 +182,7 @@ Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa
    > [!NOTE]
    > Az [értesítési központ névtere](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys) és az [értesítési központ](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) külön hozzáférési házirendekkel rendelkezik.  Győződjön meg arról, hogy a megfelelő Azure CLI-hivatkozást használja a kulcsok és a kapcsolódási karakterláncok lekérdezéséhez.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást.
 
