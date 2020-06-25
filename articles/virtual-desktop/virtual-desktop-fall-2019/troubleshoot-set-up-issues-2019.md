@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 124d81651cd937dc9671f725f54826b1ff9a42a5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235895"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362322"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -30,7 +30,8 @@ Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe]
 
 A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t, majd válassza az első **lépések**  >  **Microsoft Windows 10** > és [Windows 10 Enterprise for Virtual desktops, 1809-es verzió](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)lehetőséget.
 
-![Képernyőkép a Windows 10 Enterprise rendszerű virtuális asztalok, 1809-es verzió kiválasztásáról.](../media/AzureMarketPlace.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép a Windows 10 Enterprise rendszerű virtuális asztalok, 1809-es verzió kiválasztásáról.](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Windows rendszerű virtuális asztali bérlő létrehozása
 
@@ -54,7 +55,8 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
 
-![Képernyőkép a PowerShell-ablakról, amelyben a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez.](../media/UserNotAuthorizedNewTenant.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép a PowerShell-ablakról, amelyben a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez.](../media/UserNotAuthorizedNewTenant.png)
 
 Nyers hiba – példa:
 
@@ -75,7 +77,8 @@ Nyers hiba – példa:
 
 **Javítás:** Kövesse a TenantCreator- [alkalmazás szerepkörének a Azure Active Directory-bérlőben lévő felhasználóhoz való hozzárendelésével kapcsolatos](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)utasításokat. Az utasításokat követve egy felhasználó lesz hozzárendelve a TenantCreator szerepkörhöz.
 
-![Képernyőkép a hozzárendelt TenantCreator-szerepkörről.](../media/TenantCreatorRoleAssigned.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép a hozzárendelt TenantCreator-szerepkörről.](../media/TenantCreatorRoleAssigned.png)
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows rendszerű virtuális asztali munkamenetgazda-alapú virtuális gépek létrehozása
 
@@ -87,7 +90,8 @@ A Windows rendszerű virtuális asztal – alkalmazáskészlet sablonjának kié
 
 ### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Hiba: a GitHubról való hivatkozás használatakor megjelenik az "ingyenes fiók létrehozása" üzenet.
 
-![Képernyőkép egy ingyenes fiók létrehozásához.](../media/be615904ace9832754f0669de28abd94.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép egy ingyenes fiók létrehozásához.](../media/be615904ace9832754f0669de28abd94.png)
 
 **1. ok:** Nincsenek aktív előfizetések az Azure-ba való bejelentkezéshez, vagy a használt fiók nem rendelkezik engedéllyel az előfizetések megtekintéséhez.
 
@@ -110,7 +114,8 @@ A Windows rendszerű virtuális asztal – alkalmazáskészlet sablonjának kié
 
 ### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Hiba: "a sablon központi telepítése nem érvényes" hibaüzenet jelenik meg
 
-![Képernyőkép a "sablon központi telepítéséről... Érvénytelen "hiba](../media/troubleshooting-marketplace-validation-error-generic.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép a "sablon központi telepítéséről... Érvénytelen "hiba](../media/troubleshooting-marketplace-validation-error-generic.png)
 
 A művelet megkezdése előtt ellenőriznie kell a tevékenység naplóját, hogy megtekintse a sikertelen telepítés ellenőrzésének részletes hibáját.
 
@@ -119,10 +124,14 @@ A tevékenység naplójában lévő hiba megtekintéséhez:
 1. Lépjen ki az Azure Marketplace aktuális üzembe helyezési ajánlatával.
 2. A felső keresési sávban keresse meg és válassza ki a **műveletnapló**elemet.
 3. Keressen egy olyan nevű tevékenységet, amelynek az **érvényesítése** **sikertelen** állapotú, és válassza ki a tevékenységet.
-   ![Képernyőkép az egyes * * * * * * * * * * * * * állapot ellenőrzése](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![Képernyőkép az egyes * * * * * * * * * * * * * állapot ellenőrzése](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. Válassza a JSON lehetőséget, majd görgessen le a képernyő aljáig egészen addig, amíg meg nem jelenik a "statusMessage" mező.
-   ![Képernyőkép a sikertelen tevékenységről, a JSON-szöveg statusMessage tulajdonsága körüli piros mezővel.](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![Képernyőkép a sikertelen tevékenységről, a JSON-szöveg statusMessage tulajdonsága körüli piros mezővel.](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
 Ha a műveleti sablon túllépi a kvóta korlátját, akkor a következő műveletek egyikét hajthatja végre a kijavításához:
 
@@ -140,7 +149,8 @@ A Azure Resource Manager-sablonok és a PowerShell DSC nem sikeres központi tel
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hiba: a telepítés nem sikerült.... \<hostname> /JoinDomain
 
-![A telepítés sikertelen képernyőkép.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
+> [!div class="mx-imgBorder"]
+> ![A telepítés sikertelen képernyőkép.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 
 Nyers hiba – példa:
 
@@ -181,7 +191,8 @@ A probléma megoldásához tegye a következőket:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Hiba: VMExtensionProvisioningError
 
-![A központi telepítés képernyőképe sikertelen volt, mert a terminál kiépítési állapota nem sikerült.](../media/7aaf15615309c18a984673be73ac969a.png)
+> [!div class="mx-imgBorder"]
+> ![A központi telepítés képernyőképe sikertelen volt, mert a terminál kiépítési állapota nem sikerült.](../media/7aaf15615309c18a984673be73ac969a.png)
 
 **1. ok:** Átmeneti hiba a Windows rendszerű virtuális asztali környezettel.
 
@@ -191,7 +202,8 @@ A probléma megoldásához tegye a következőket:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hiba: a megadott rendszergazdai Felhasználónév nem engedélyezett
 
-![A központi telepítés képernyőképe nem sikerült, mert a megadott rendszergazda nem engedélyezett.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
+> [!div class="mx-imgBorder"]
+> ![A központi telepítés képernyőképe nem sikerült, mert a megadott rendszergazda nem engedélyezett.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
 
 Nyers hiba – példa:
 
@@ -210,7 +222,8 @@ Nyers hiba – példa:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hiba: a virtuális gép hibát jelzett a bővítmény feldolgozásakor
 
-![Az erőforrás-művelet képernyőképe a terminál kiépítési állapotával fejeződött be a telepítés során.](../media/49c4a1836a55d91cd65125cf227f411f.png)
+> [!div class="mx-imgBorder"]
+> ![Az erőforrás-művelet képernyőképe a terminál kiépítési állapotával fejeződött be a telepítés során.](../media/49c4a1836a55d91cd65125cf227f411f.png)
 
 Nyers hiba – példa:
 
@@ -236,7 +249,8 @@ Nyers hiba – példa:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Hiba: DeploymentFailed – a (z) FirstSessionHost PowerShell DSC-konfiguráció hibával fejeződött be
 
-![A központi telepítés képernyőképe sikertelen, mert a PowerShell DSC-konfiguráció "FirstSessionHost" hibával fejeződött be.](../media/64870370bcbe1286906f34cf0a8646ab.png)
+> [!div class="mx-imgBorder"]
+> ![A központi telepítés képernyőképe sikertelen, mert a PowerShell DSC-konfiguráció "FirstSessionHost" hibával fejeződött be.](../media/64870370bcbe1286906f34cf0a8646ab.png)
 
 Nyers hiba – példa:
 
@@ -365,7 +379,8 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hiba: a felhasználónak Azure Multi-Factor Authentication (MFA) szükséges
 
-![A központi telepítés képernyőképe nem sikerült, mert nincs Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
+> [!div class="mx-imgBorder"]
+> ![A központi telepítés képernyőképe nem sikerült, mert nincs Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
 
 Nyers hiba – példa:
 

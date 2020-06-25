@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cacf4c21e92b434aeb73cd76e6dda26508f41d77
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5aef0c9a9b0f3dbfb5ad2f4c827b1a11190e097a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261358"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362883"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
 
@@ -23,7 +23,7 @@ Az Azure Digital Twins egyik fő jellemzője, hogy saját szókincset definiálh
 
 A modell hasonlít egy objektumorientált programozási nyelv **osztályára** , amely egy adott koncepcióhoz tartozó adatalakzatot határoz meg a valós munkahelyi környezetben. A modellek névvel rendelkeznek (például a *Room* vagy a *hőmérséklet-érzékelő*), és olyan elemeket tartalmaznak, mint például a tulajdonságok, telemetria/események és parancsok, amelyek leírják, hogy milyen típusú entitást lehet a környezetben. Később ezeket a modelleket fogja használni, hogy olyan [**digitális ikreket**](concepts-twins-graph.md) hozzon létre, amelyek megfelelnek az ilyen típusú leírásnak megfelelő entitásoknak.
 
-A modellek a JSON-alapú **Digital Twin Definition Language (DTDL) nyelv**használatával íródnak.  
+A modellek a JSON-LD-alapú **Digital Twin Definition Language (DTDL) nyelv**használatával íródnak.  
 
 ## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>Digital Twin Definition Language (DTDL) modellek írásához
 
@@ -207,7 +207,7 @@ Ha további információt szeretne az elemző könyvtárról, beleértve a közv
 ## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinsModels API-kkal:
-* [Útmutató: kettős modell kezelése](how-to-manage-model.md)
+* [Útmutató: egyéni modellek kezelése](how-to-manage-model.md)
 
 Vagy Ismerje meg, hogyan hozhatók létre a digitális ikrek a modellek alapján:
 * [Fogalmak: digitális ikrek és a Twin gráf](concepts-twins-graph.md)

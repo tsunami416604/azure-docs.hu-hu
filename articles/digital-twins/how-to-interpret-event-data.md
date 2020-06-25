@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: 'Lásd: a különböző eseménytípus értelmezése és a különböző értesítési üzenetek.'
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e194c046cde623e0fcdd4c73ac24f2bf0755945c
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: e8a1bb19a18f43bae4639d2ca9d9b9941bd29324
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299432"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362822"
 ---
 # <a name="understand-event-data"></a>Az események értelmezése
 
@@ -39,7 +39,11 @@ Egyes értesítések megfelelnek az CloudEvents szabványnak. A CloudEvents-megf
 * A [digitális ikrek](concepts-twins-graph.md) által kibocsátott, a [modellel](concepts-models.md) megegyező CloudEvents-értesítések
 * Az Azure Digital Twins által feldolgozott és kibocsátott értesítések megfelelnek a CloudEvents
 
-A szolgáltatásoknak sorozatszámot kell hozzáadniuk az összes értesítéshez, hogy megadják a sorrendjét, vagy más módon megtartsák a saját rendelését. Az Azure Digital Twins által kibocsátott értesítések Event Grid formázva vannak a Event Grid sémába, amíg a Event Grid támogatja a CloudEvents a bemeneten. A fejlécek bővítmény-attribútumai a Event Grid séma tulajdonságaiként lesznek hozzáadva a hasznos adatokhoz. 
+A szolgáltatásoknak sorozatszámot kell hozzáadniuk az összes értesítéshez, hogy megadják a sorrendjét, vagy más módon megtartsák a saját rendelését. 
+
+Az Azure Digital Twins által kibocsátott értesítések Event Grid automatikusan a CloudEvents séma vagy a EventGridEvent sémára lesznek formázva az Event Grid témakörben definiált séma típusától függően. 
+
+A fejlécek bővítmény-attribútumai a Event Grid séma tulajdonságaiként lesznek hozzáadva a hasznos adatokhoz. 
 
 ### <a name="event-notification-bodies"></a>Esemény-értesítési testületek
 
@@ -50,43 +54,39 @@ A törzs által tartalmazott mezők halmaza eltérő értesítési típusokkal r
 Telemetria-üzenet:
 
 ```json
-{ 
-    "specversion": "1.0", 
-    "type": "microsoft.iot.telemetry", 
-    "source": "myhub.westus2.azuredigitaltwins.net", 
-    "subject": "thermostat.vav-123", 
-    "id": "c1b53246-19f2-40c6-bc9e-4666fa590d1a",
-    "dataschema": "dtmi:com:contoso:DigitalTwins:VAV;1",
-    "time": "2018-04-05T17:31:00Z", 
-    "datacontenttype" : "application/json", 
-    "data":  
-      {
-          "temp": 70,
-          "humidity": 40 
-      }
+{
+  "specversion": "1.0",
+  "id": "df5a5992-817b-4e8a-b12c-e0b18d4bf8fb",
+  "type": "microsoft.iot.telemetry",
+  "source": "contoso-adt.api.wus2.digitaltwins.azure.net/digitaltwins/room1",
+  "data": {
+    "Temperature": 10
+  },
+  "dataschema": "dtmi:example:com:floor4;2",
+  "datacontenttype": "application/json",
+  "traceparent": "00-7e3081c6d3edfb4eaf7d3244b2036baa-23d762f4d9f81741-01"
 }
 ```
 
 Életciklus-értesítési üzenet:
 
 ```json
-{ 
-    "specversion": "1.0", 
-    "type": "microsoft.digitaltwins.twin.create", 
-    "source": "mydigitaltwins.westus2.azuredigitaltwins.net", 
-    "subject": "device-123", 
-    "id": "c1b53246-19f2-40c6-bc9e-4666fa590d1a", 
-    "time": "2018-04-05T17:31:00Z", 
-    "datacontenttype" : "application/json", 
-    "dataschema": "dtmi:com:contoso:DigitalTwins:Device;1",           
-    "data":  
-      { 
-        "$dtId": "room-123", 
-        "property": "value",
-        "$metadata": { 
-                //...
-        } 
-      } 
+{
+  "specversion": "1.0",
+  "id": "d047e992-dddc-4a5a-b0af-fa79832235f8",
+  "type": "Microsoft.DigitalTwins.Twin.Create",
+  "source": "contoso-adt.api.wus2.digitaltwins.azure.net",
+  "data": {
+    "$dtId": "floor1",
+    "$etag": "W/\"e398dbf4-8214-4483-9d52-880b61e491ec\"",
+    "$metadata": {
+      "$model": "dtmi:example:Floor;1"
+    }
+  },
+  "subject": "floor1",
+  "time": "2020-06-23T19:03:48.9700792Z",
+  "datacontenttype": "application/json",
+  "traceparent": "00-18f4e34b3e4a784aadf5913917537e7d-691a71e0a220d642-01"
 }
 ```
 
@@ -111,12 +111,11 @@ Az életciklus-értesítés törzsének mezői.
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id`minden különböző esemény esetében egyedi. |
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net* |
 | `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete`<br>`Microsoft.DigitalTwins.TwinProxy.Create`<br>`Microsoft.DigitalTwins.TwinProxy.Delete`<br>`Microsoft.DigitalTwins.TwinProxy.Attach`<br>`Microsoft.DigitalTwins.TwinProxy.Detach` |
-| `datacontenttype` | application/json |
+| `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
+| `datacontenttype` | `application/json` |
 | `subject` | A digitális Twin azonosító |
 | `time` | Időbélyeg, amikor a művelet bekövetkezett a Twin |
-| `sequence` | Érték, amely az esemény pozícióját a nagyobb rendezett események sorrendjében fejezi ki. A szolgáltatásoknak sorozatszámot kell hozzáadniuk az összes értesítéshez, hogy megadják a sorrendjét, vagy más módon megtartsák a saját rendelését. A sorozatszám minden üzenettel nő. A rendszer visszaállítja az 1 értékre, ha az objektumot törli, és ugyanazzal az AZONOSÍTÓval hozza létre újra. |
-| `sequencetype` | További részletek a Sequence mező használatáról. Ez a tulajdonság például azt is megadhatja, hogy az értéknek egy aláírt 32 bites egész számnak kell lennie, amely az 1. időpontban kezdődik, és eggyel növekszik. |
+| `traceparent` | Az esemény W3C-nyomkövetési kontextusa |
 
 #### <a name="body-details"></a>Törzs részletei
 
@@ -165,7 +164,6 @@ A létrehozási események esetében a hasznos adatok az erőforrás létrehozá
   "comfortIndex": 85,
   "$metadata": {
     "$model": "dtmi:com:contoso:Building;1",
-    "$kind": "DigitalTwin",
     "avgTemperature": {
       "desiredValue": 72,
       "desiredVersion": 5,
@@ -197,11 +195,11 @@ Itt láthatók az Edge Change-értesítések törzsének mezői.
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id`egyedi a különböző eseményekhez |
 | `source` | Az Azure Digital Twins-példány neve, például *mydigitaltwins.westus2.azuredigitaltwins.net* |
 | `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`<br>`datacontenttype    application/json for Relationship.Create`<br>`application/json-patch+json for Relationship.Update` |
-| `subject` | A kapcsolat azonosítója, például:`<twinID>/relationships/<relationshipName>/<edgeID>` |
+| `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
+|`datacontenttype`| `application/json` |
+| `subject` | A kapcsolat azonosítója, például:`<twinID>/relationships/<relationshipName>` |
 | `time` | Időbélyeg, hogy mikor történt a művelet a kapcsolaton |
-| `sequence` | Érték, amely az esemény pozícióját a nagyobb rendezett események sorrendjében fejezi ki. A szolgáltatásoknak sorozatszámot kell hozzáadniuk az összes értesítéshez, hogy megadják a sorrendjét, vagy más módon megtartsák a saját rendelését. A sorozatszám minden üzenettel nő. A rendszer visszaállítja az 1 értékre, ha az objektumot törli, és ugyanazzal az AZONOSÍTÓval hozza létre újra. |
-| `sequencetype` | További részletek a Sequence mező használatáról. Ez a tulajdonság például azt is megadhatja, hogy az értéknek egy aláírt 32 bites egész számnak kell lennie, amely az 1. időpontban kezdődik, és eggyel növekszik. |
+| `traceparent` | Az esemény W3C-nyomkövetési kontextusa |
 
 #### <a name="body-details"></a>Törzs részletei
 
@@ -212,13 +210,16 @@ A "kapcsolat frissítése" érték azt jelenti, hogy a kapcsolat tulajdonságai 
 Íme egy példa egy frissítési kapcsolati értesítésre, amely frissíti a tulajdonságot:
 
 ```json
-[
-  {
-    "op": "replace",
-    "path": "ownershipUser",
-    "value": "user3"
+{
+    "modelId": "dtmi:example:Floor;1",
+    "patch": [
+      {
+        "value": "user3",
+        "path": "/ownershipUser",
+        "op": "replace"
+      }
+    ]
   }
-]
 ```
 
 A esetében `Relationship.Delete` a törzs megegyezik a `GET` kérelemmel, és a törlés előtt lekéri a legutóbbi állapotot.
@@ -227,7 +228,7 @@ A esetében `Relationship.Delete` a törzs megegyezik a `GET` kérelemmel, és a
 
 ```json
 {
-    "$relationshipId": "EdgeId1",
+    "$relationshipName": "RelationshipName1",
     "$sourceId": "building11",
     "$relationshipName": "Contains",
     "$targetId": "floor11",
@@ -235,6 +236,7 @@ A esetében `Relationship.Delete` a törzs megegyezik a `GET` kérelemmel, és a
     "ownershipDepartment": "Operations"
 }
 ```
+
 
 ### <a name="digital-twin-change-notifications"></a>Digitális kettős változások értesítései
 
@@ -252,11 +254,10 @@ Itt láthatók a digitális kettős változásokról szóló értesítés törzs
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net*
 | `specversion` | 1.0 |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
-| `datacontenttype` | alkalmazás/JSON-patch + JSON |
+| `datacontenttype` | `application/json` |
 | `subject` | A digitális Twin azonosító |
 | `time` | Időbélyeg a digitális Twin művelet bekövetkeztekor |
-| `sequence` | Érték, amely az esemény pozícióját a nagyobb rendezett események sorrendjében fejezi ki. A szolgáltatásoknak sorozatszámot kell hozzáadniuk az összes értesítéshez, hogy megadják a sorrendjét, vagy más módon megtartsák a saját rendelését. A sorozatszám minden üzenettel nő. A rendszer visszaállítja az 1 értékre, ha az objektumot törli, és ugyanazzal az AZONOSÍTÓval hozza létre újra. |
-| `sequencetype` | További részletek a Sequence mező használatáról. Ez a tulajdonság például azt is megadhatja, hogy az értéknek egy aláírt 32 bites egész számnak kell lennie, amely az 1. időpontban kezdődik, és eggyel növekszik. |
+| `traceparent` | Az esemény W3C-nyomkövetési kontextusa |
 
 #### <a name="body-details"></a>Törzs részletei
 
@@ -266,28 +267,37 @@ Tegyük fel például, hogy a digitális iker frissítése a következő javít�
 
 ```json
 [
-  {
-    "op": "replace",
-    "path": "/mycomp/prop1",
-    "value": {"a":3}
-  }
+    {
+        "op": "replace",
+        "value": 40,
+        "path": "/Temperature"
+    },
+    {
+        "op": "add",
+        "value": 30,
+        "path": "/comp1/prop1"
+    }
 ]
 ```
 
 A megfelelő értesítés (ha a szolgáltatás szinkron módon hajtja végre, mint például az Azure digitális ikrek frissítése egy digitális Twin-et), a következőhöz hasonló szervnek kell lennie:
 
 ```json
-[
-    { "op": "replace", "path": "/myComp/prop1", "value": {"a": 3}},
-    { "op": "replace", "path": "/myComp/$metadata/prop1",
-        "value": {
-            "desiredValue": { "a": 3 },
-            "desiredVersion": 2,
-                "ackCode": 200,
-            "ackVersion": 2 
-        }
-    }
-]
+{
+    "modelId": "dtmi:example:com:floor4;2",
+    "patch": [
+      {
+        "value": 40,
+        "path": "/Temperature",
+        "op": "replace"
+      },
+      {
+        "value": 30,
+        "path": "/comp1/prop1",
+        "op": "add"
+      }
+    ]
+  }
 ```
 
 ## <a name="next-steps"></a>További lépések

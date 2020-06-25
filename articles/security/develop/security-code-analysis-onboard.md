@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5b7e36c12dab65f4bcc6c05a1ee902301c402d5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147670"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362057"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
 
@@ -50,6 +50,7 @@ Ha megfelel a fenti képesítéseknek, a Microsoft biztonsági kód elemzése b�
 
 - Zónák – kapcsolattartási adatok:cloudsupport@zones.com
 - Wortell – kapcsolattartási adatok:info@wortell.nl
+- Logicis – kapcsolattartási adatok:Matthew.Curtis@us.logicalis.com 
 
 ### <a name="become-a-partner"></a>Partnerré válni
 
@@ -57,7 +58,7 @@ A Microsoft biztonsági kód elemzése csapat a partnereknek szóló szerződés
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzése bővítmény telepítése
 
-1. A bővítmény Azure DevOps-szervezettel való megosztása után nyissa meg az Azure DevOps-szervezet lapját. Ilyen oldal például a következő URL-cím `https://dev.azure.com/contoso`:.
+1. A bővítmény Azure DevOps-szervezettel való megosztása után nyissa meg az Azure DevOps-szervezet lapját. Ilyen oldal például a következő URL-cím: `https://dev.azure.com/contoso` .
 1. Válassza a bevásárló táska ikont a neve melletti jobb felső sarokban, majd válassza a **Bővítmények kezelése**lehetőséget.
 1. Válassza a **megosztott**lehetőséget.
 1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd válassza a **telepítés**lehetőséget.
@@ -72,12 +73,12 @@ A bővítmény telepítése után a biztonságos fejlesztési felépítési fela
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Konkrét felépítési feladatok hozzáadása az Azure DevOps-folyamathoz
 
 1. Az Azure DevOps-szervezetből nyissa meg a csapat projektjét.
-1. Válassza a **folyamatok** > **buildek**lehetőséget.
+1. Válassza a **folyamatok**  >  **buildek**lehetőséget.
 1. Válassza ki azt a folyamatot, amelyben hozzá szeretné adni a bővítmény felépítési feladatait:
    - Új folyamat: válassza az **új** lehetőséget, majd az új folyamat létrehozásához kövesse a részletes lépéseket.
    - Folyamat szerkesztése: válasszon ki egy meglévő folyamatot, majd válassza a **Szerkesztés** lehetőséget a folyamat szerkesztésének megkezdéséhez.
-1. Válassza **+** ki, majd lépjen a **feladatok hozzáadása** ablaktáblára.
-1. A listából vagy a keresőmező használatával keresse meg a felvenni kívánt felépítési feladatot. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza ki **+** , majd lépjen a **feladatok hozzáadása** ablaktáblára.
+1. A listából vagy a keresőmező használatával keresse meg a felvenni kívánt felépítési feladatot. Válassza a **Hozzáadás** elemet.
 1. Határozza meg a feladathoz szükséges paramétereket.
 1. Új Build várólistára helyezése.
    >[!NOTE]

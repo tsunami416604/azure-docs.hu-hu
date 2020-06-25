@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 7f98b2c94659c083f5dbd2c43fd9015f8b60a9db
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307502"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362407"
 ---
 # <a name="create-application-with-simple-commands"></a>Alkalmazás létrehozása egyszerű parancsokkal
 
@@ -27,6 +27,10 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="create-empty-application"></a>Üres alkalmazás létrehozása
 Hozzon létre egy üres egyéni parancsok alkalmazást. További részletekért tekintse meg a rövid [útmutatót.](quickstart-custom-commands-application.md) Ezúttal a projekt importálása helyett egy üres projektet kell létrehoznia.
 
+1. A **név** mezőbe írja be a Project Name (projekt neve `Smart-Room-Lite` ) nevet (vagy valami más választott).
+1. A **nyelv** listában válassza az **angol (Egyesült Államok)** lehetőséget.
+1. Válasszon ki vagy hozzon létre egy tetszőleges LUIS-erőforrást.
+
    > [!div class="mx-imgBorder"]
    > ![Projekt létrehozása](media/custom-commands/create-new-project.png)
 
@@ -36,7 +40,7 @@ Frissítheti az **új projekt** ablakban kiválasztott szerzői erőforrást, é
 
 ## <a name="add-turnon-command"></a>TurnOn-parancs hozzáadása
 
-Az **intelligens szobák – Lite** Custom commands alkalmazásban adjon hozzá egy egyszerű parancsot, amely feldolgozza a teljes műveletet, `turn on the tv` és válaszoljon az üzenetre `Ok, turning the tv on` .
+Az imént létrehozott **Smart-Room-Lite** egyéni parancsok alkalmazásban adjon hozzá egy egyszerű parancsot, amely feldolgozza a teljes, `turn on the tv` és válaszol az üzenetre `Ok, turning the tv on` .
 
 1. Hozzon létre egy új parancsot a bal oldali ablaktábla tetején található **új parancs** kiválasztásával. Megnyílik az **új parancssori** ablak.
 1. Adja meg a **Name (név** ) mező értékét **TurnOn**.
@@ -74,23 +78,17 @@ Egyelőre nem rendelkezünk paraméterekkel, így átléphetünk a **befejezési
 
 Ezután a parancsnak rendelkeznie kell egy befejezési szabállyal. Ez a szabály azt jelzi, hogy a felhasználó teljesíti a teljesítési műveletet. A szabályokkal és a befejezési szabályokkal kapcsolatos további információkért tekintse meg a [referenciákat](./custom-commands-references.md).
 
-1. Válassza az alapértelmezett befejezési szabály **kész** lehetőséget, és szerkessze a következő módon: 
+1. Válassza az alapértelmezett befejezési szabály **kész** lehetőséget, és szerkessze a következő módon:
 
     
     | Beállítás    | Ajánlott érték                          | Leírás                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Name (Név)**       | ConfirmationResponse                  | A szabály célját leíró név          |
-    | **Feltételek** | Nincs                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
+    | **Feltételek** | None                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
     | **Műveletek**    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban >`Ok, turning the tv on` | A szabály feltételének teljesülésekor végrehajtandó művelet |
     
 
-1. Másik lehetőségként törölheti a meglévő alapértelmezett befejezési szabályt, és létrehozhat egy újat a középső ablaktábla tetején található **Hozzáadás gombra** kattintva.
-1. Adjon meg értéket a **Name (név** ) szakaszban.
-1. Adjon hozzá egy műveletet.
-   1. Hozzon létre egy műveletet a **műveletek** szakaszban a **művelet hozzáadása lehetőség** kiválasztásával.
-   1. Az **új művelet** ablak **típus** listájában válassza a **beszédfelismerési válasz küldése**lehetőséget.
-   1. A **Válasz**területen válassza az **egyszerű szerkesztő**lehetőséget.
-   1. Az **első változat** mezőben adja meg a válasz értékét `Ok, turning the tv on` .
+
 
    > [!div class="mx-imgBorder"]
    > ![Beszédfelismerési válasz létrehozása](media/custom-commands/create-speech-response-action.png)
@@ -98,6 +96,9 @@ Ezután a parancsnak rendelkeznie kell egy befejezési szabállyal. Ez a szabál
 1. A művelet mentéséhez válassza a **Mentés** lehetőséget.
 1. A **befejezési szabályok** szakaszban kattintson a **Mentés** gombra a módosítások mentéséhez. 
 
+
+ > [!NOTE]
+    > A parancshoz tartozó alapértelmezett befejezési szabályt nem szükséges használni. Ha szükséges, törölheti a meglévő alapértelmezett befejezési szabályt, és hozzáadhatja a saját szabályt is.
 
 ### <a name="try-it-out"></a>Próba
 
@@ -124,8 +125,8 @@ Ezután szerkessze a meglévő **befejezett** befejezési szabályokat a követk
 
 | Beállítás    | Ajánlott érték                          |
 | ---------- | ---------------------------------------- |
-| Name  | ConfirmationResponse                  |
-| Feltételek | Nincs                                     |
+| Name (Név)  | ConfirmationResponse                  |
+| Feltételek | None                                     |
 | Műveletek    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban >`Ok, setting temperature to 40 degrees` |
 
 A **Mentés** gombra kattintva mentse a parancs összes módosítását.
@@ -136,7 +137,7 @@ Hozzon létre egy új parancsot a **SetAlarm** a "**riasztás beállítása a 9.
 | Beállítás    | Ajánlott érték                          |
 | ---------- | ---------------------------------------- |
 | Szabály neve  | ConfirmationResponse                  |
-| Feltételek | Nincs                                     |
+| Feltételek | None                                     |
 | Műveletek    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban >`Ok, setting an alarm for 9 am tomorrow` |
 
 A **Mentés** gombra kattintva mentse a parancs összes módosítását.

@@ -2,24 +2,20 @@
 title: Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal-Azure RBAC használatával
 description: Ismerje meg, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz felhasználók, csoportok, egyszerű szolgáltatások vagy felügyelt identitások számára a Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/25/2020
+ms.date: 06/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3e4d2dca6817951f2f06a86c4338106f194b7751
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 76f4f39e7def192b8cb97c37aefc9f67d82ad4be
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790959"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362238"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával
 
@@ -35,11 +31,11 @@ Szerepkör-hozzárendelések hozzáadásához vagy eltávolításához a követk
 
 ## <a name="access-control-iam"></a>Hozzáférés-vezérlés (IAM)
 
-A **hozzáférés-vezérlés (iam)** az a panel, amelyet a szerepkörök hozzárendeléséhez használhat az Azure-erőforrásokhoz való hozzáférés biztosításához. Az identitás-és hozzáférés-kezelés néven is ismert, és a Azure Portal több helyén is megjelenik. Az alábbi példa az előfizetés hozzáférés-vezérlés (IAM) paneljét mutatja be.
+A **hozzáférés-vezérlés (iam)** az a lap, amelyet általában a szerepkörök hozzárendelésére használ az Azure-erőforrásokhoz való hozzáférés biztosításához. Az identitás-és hozzáférés-kezelés néven is ismert, és a Azure Portal több helyén is megjelenik. Az alábbi példa az előfizetés hozzáférés-vezérlés (IAM) oldalát mutatja be.
 
-![Egy előfizetés hozzáférés-vezérlés (IAM) panelje](./media/role-assignments-portal/access-control-subscription.png)
+![Az előfizetés hozzáférés-vezérlés (IAM) lapja](./media/role-assignments-portal/access-control-subscription.png)
 
-Ahhoz, hogy a leghatékonyabb legyen a hozzáférés-vezérlés (IAM) panel, segít, ha a következő három kérdésre válaszol, amikor egy szerepkört szeretne hozzárendelni:
+Ahhoz, hogy a leghatékonyabb legyen a hozzáférés-vezérlés (IAM) lapon, segít, ha a következő három kérdésre válaszol, amikor egy szerepkört szeretne hozzárendelni:
 
 1. **Kinek van hozzáférése?**
 
@@ -71,7 +67,7 @@ Az Azure-RBAC az Azure-erőforrásokhoz való hozzáférés biztosításához ho
 
    Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 
-   ![Menü hozzáadása](./media/role-assignments-portal/add-menu.png)
+   ![Szerepkör-hozzárendelési menü hozzáadása](./media/shared/add-role-assignment-menu.png)
 
     Megnyílik a Szerepkör-hozzárendelés hozzáadása panel.
 
@@ -105,7 +101,7 @@ Ahhoz, hogy egy felhasználó egy Azure-előfizetés rendszergazdája legyen, re
 
    Ha nem rendelkezik jogosultsággal a szerepkörök hozzárendeléséhez, a szerepkör-hozzárendelés hozzáadása lehetőség le lesz tiltva.
 
-   ![Menü hozzáadása](./media/role-assignments-portal/add-menu.png)
+   ![Szerepkör-hozzárendelési menü hozzáadása](./media/shared/add-role-assignment-menu.png)
 
     Megnyílik a Szerepkör-hozzárendelés hozzáadása panel.
 
@@ -118,6 +114,75 @@ Ahhoz, hogy egy felhasználó egy Azure-előfizetés rendszergazdája legyen, re
 1. Kattintson a **Mentés** gombra a szerepkör hozzárendeléséhez.
 
    Néhány pillanat múlva a rendszer hozzárendeli a felhasználót a Tulajdonos szerepkörhöz az előfizetés hatókörében.
+
+## <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>Szerepkör-hozzárendelés hozzáadása felügyelt identitáshoz (előzetes verzió)
+
+A felügyelt identitásokhoz szerepkör-hozzárendeléseket a jelen cikk korábbi részében ismertetett **hozzáférés-vezérlés (iam)** lap használatával adhat hozzá. Ha a hozzáférés-vezérlés (IAM) lapot használja, először a hatókörrel kell kezdődnie, majd ki kell választania a felügyelt identitást és szerepkört. Ez a szakasz egy másik módszert ismertet a szerepkör-hozzárendelések felügyelt identitásokhoz való hozzáadására. Ezekkel a lépésekkel először a felügyelt identitást kell használni, majd ki kell választania a hatókört és a szerepkört.
+
+> [!IMPORTANT]
+> A felügyelt identitás szerepkör-hozzárendelésének ezen alternatív lépések használatával történő hozzáadása jelenleg előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+### <a name="system-assigned-managed-identity"></a>Rendszer által hozzárendelt felügyelt identitás
+
+Az alábbi lépéseket követve rendeljen hozzá egy szerepkört egy rendszerhez rendelt felügyelt identitáshoz a felügyelt identitással.
+
+1. A Azure Portal nyissa meg a rendszer által hozzárendelt felügyelt identitást.
+
+1. A bal oldali menüben kattintson az **Identity (identitás**) elemre.
+
+    ![Rendszer által hozzárendelt felügyelt identitás](./media/shared/identity-system-assigned.png)
+
+1. Az **engedélyek**területen kattintson az **Azure szerepkör-hozzárendelések**elemre.
+
+    Ha a szerepkörök már hozzá vannak rendelve a kiválasztott rendszerhez rendelt felügyelt identitáshoz, megjelenik a szerepkör-hozzárendelések listája. Ez a lista tartalmazza az összes olyan szerepkör-hozzárendelést, amelyről olvasási engedéllyel rendelkezik.
+
+    ![Szerepkör-hozzárendelések egy rendszerhez rendelt felügyelt identitáshoz](./media/shared/role-assignments-system-assigned.png)
+
+1. Az előfizetés módosításához kattintson az **előfizetés** listára.
+
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása (előzetes verzió)** elemre.
+
+1. A legördülő lista segítségével kiválaszthatja, hogy a szerepkör-hozzárendelés mely erőforrásokra vonatkozzon, például az **előfizetés**, az **erőforráscsoport**vagy az erőforrás.
+
+    Ha nem rendelkezik a szerepkör-hozzárendelés írási engedélyeivel a kiválasztott hatókörhöz, a rendszer egy beágyazott üzenetet jelenít meg. 
+
+1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
+
+   ![Szerepkör-hozzárendelési ablaktábla hozzáadása](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+
+1. Kattintson a **Mentés** gombra a szerepkör hozzárendeléséhez.
+
+   Néhány pillanat elteltével a felügyelt identitás hozzárendeli a szerepkört a kiválasztott hatókörhöz.
+
+### <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
+
+Az alábbi lépéseket követve rendeljen hozzá egy szerepkört a felhasználóhoz rendelt felügyelt identitáshoz a felügyelt identitással.
+
+1. A Azure Portal nyissa meg a felhasználó által hozzárendelt felügyelt identitást.
+
+1. A bal oldali menüben kattintson az **Azure szerepkör-hozzárendelések**elemre.
+
+    Ha a szerepkörök már hozzá vannak rendelve a kiválasztott felhasználóhoz rendelt felügyelt identitáshoz, megjelenik a szerepkör-hozzárendelések listája. Ez a lista tartalmazza az összes olyan szerepkör-hozzárendelést, amelyről olvasási engedéllyel rendelkezik.
+
+    ![Szerepkör-hozzárendelések egy rendszerhez rendelt felügyelt identitáshoz](./media/shared/role-assignments-user-assigned.png)
+
+1. Az előfizetés módosításához kattintson az **előfizetés** listára.
+
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása (előzetes verzió)** elemre.
+
+1. A legördülő lista segítségével kiválaszthatja, hogy a szerepkör-hozzárendelés mely erőforrásokra vonatkozzon, például az **előfizetés**, az **erőforráscsoport**vagy az erőforrás.
+
+    Ha nem rendelkezik a szerepkör-hozzárendelés írási engedélyeivel a kiválasztott hatókörhöz, a rendszer egy beágyazott üzenetet jelenít meg. 
+
+1. A **Szerepkör** legördülő listájában válasszon ki egy szerepkört, például a **Virtuális gépek közreműködője** szerepkört.
+
+   ![Szerepkör-hozzárendelési ablaktábla hozzáadása](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+
+1. Kattintson a **Mentés** gombra a szerepkör hozzárendeléséhez.
+
+   Néhány pillanat elteltével a felügyelt identitás hozzárendeli a szerepkört a kiválasztott hatókörhöz.
 
 ## <a name="remove-a-role-assignment"></a>Szerepkör-hozzárendelés eltávolítása
 

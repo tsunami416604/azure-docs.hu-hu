@@ -2,18 +2,18 @@
 title: Végpontok és útvonalak kezelése
 titleSuffix: Azure Digital Twins
 description: 'Lásd: végpontok és esemény-útvonalak beállítása és kezelése az Azure Digital Twins-adatszolgáltatásokhoz.'
-author: cschormann
-ms.author: cschorm
-ms.date: 3/17/2020
+author: alexkarcher-msft
+ms.author: alkarche
+ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cf18d8ef391115da5e1c8fcab235c30e96287f5b
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b6f5765f51983e3b1ca9c182849b64258476a2ce
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725681"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362764"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Végpontok és útvonalak kezelése az Azure digitális Ikrekben
 
@@ -74,17 +74,19 @@ A cikkben szereplő minták a C# SDK-t használják.
 
 Az események útvonala az adatsík API-k használatával van definiálva. Az útvonalak definíciója a következő elemeket tartalmazza:
 * A használni kívánt útvonal-azonosító
-* A használni kívánt végpont azonosítója
+* A használni kívánt végpont neve
 * Egy szűrő, amely meghatározza, hogy mely eseményeket küldi a rendszer a végpontnak. 
 
-Ha nincs útvonal-azonosító, a rendszer nem irányítja át az üzeneteket az Azure digitális Twins szolgáltatáson kívül. Ha van egy útvonal-azonosító, és a szűrő `null` , az összes üzenet a végponthoz lesz irányítva. Ha van egy útvonal-azonosító, és a rendszer hozzáad egy szűrőt, az üzenetek a szűrő alapján lesznek szűrve.
+Ha nincs útvonal-azonosító, a rendszer nem irányítja át az üzeneteket az Azure digitális Twins szolgáltatáson kívül. Ha van egy útvonal-azonosító, és a szűrő `true` , az összes üzenet a végponthoz lesz irányítva. Ha van egy útvonal-azonosító, és egy másik szűrő van hozzáadva, az üzenetek a szűrő alapján lesznek szűrve.
 
 Az egyik útvonalnak engedélyezni kell több értesítés és eseménytípus kijelölését. 
 
-Itt látható az esemény útvonalának hozzáadásához használt SDK-hívás:
+`CreateEventRoute`egy esemény-útvonal hozzáadására szolgáló SDK-hívás. Íme egy példa a használatra:
 
 ```csharp
-await client.CreateEventRoute("routeName", new EventRoute("endpointID"));
+EventRoute er = new EventRoute("endpointName");
+er.Filter("true"); //Filter allows all messages
+await client.CreateEventRoute("routeName", er);
 ```
 
 > [!TIP]
@@ -130,11 +132,11 @@ Szűrés nélkül a végpontok számos eseményt kapnak az Azure Digital ikrekt�
 
 Az elküldött eseményeket korlátozhatja egy szűrő egy végponthoz való hozzáadásával.
 
-Szűrő hozzáadásához használjon PUT-kérést a *https://{YourHost}/EventRoutes/myNewRoute? API-Version = 2020-03 -01-Preview-* ra a következő törzstel:
+Szűrő hozzáadásához használjon PUT-kérést a *https://{YourHost}/EventRoutes/myNewRoute? API-Version = 2020-05 -31-Preview-* ra a következő törzstel:
 
 ```json  
 {
-    "endpointId": "<endpoint-ID>",
+    "endpointName": "<endpoint-name>",
     "filter": "<filter-text>"
 }
 ``` 
@@ -143,9 +145,10 @@ Itt láthatók a támogatott útválasztási szűrők.
 
 | Szűrő neve | Leírás | Séma szűrése | Támogatott értékek | 
 | --- | --- | --- | --- |
-| Típus | A digitális kettős példányon keresztül áramló [esemény típusa](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Edge.Create`<br>`Microsoft.DigitalTwins.Edge.Update`<br> `Microsoft.DigitalTwins.Edge.Delete` <br> `microsoft.iot.telemetry`  |
-| Forrás | Az Azure Digital Twins-példány neve | `"filter" : "source = '<hostname>'"`|  **Értesítésekhez:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetria esetén:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/ digitaltwins/<twinId>`|
-| Tárgy | Az esemény leírása a fenti eseményforrás kontextusában | `"filter": " subject = '<subject>'"` | Az **értesítések esetében**a Tárgy:`<twinid>` <br> vagy a témák URI-formátuma, amelyeket a több rész vagy azonosító egyedileg azonosít:<br>`<twinid>/relationships/<relationship>/<edgeid>`<br> A **telemetria esetében**a tulajdonos az összetevő elérési útja (ha a telemetria egy Twin összetevőből lett kibocsátva), például: `comp1.comp2` . Ha a telemetria nem egy összetevőből származik, akkor a tárgy mezőjének üresnek kell lennie. |
+| Típus | A digitális kettős példányon keresztül áramló [esemény típusa](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
+| Forrás | Az Azure Digital Twins-példány neve | `"filter" : "source = '<hostname>'"`|  **Értesítésekhez**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetria esetén**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
+| Tárgy | Az esemény leírása a fenti eseményforrás kontextusában | `"filter": " subject = '<subject>'"` | **Értesítésekhez**: a tulajdonos`<twinid>` <br> vagy a témák URI-formátuma, amelyeket a több rész vagy azonosító egyedileg azonosít:<br>`<twinid>/relationships/<relationshipid>`<br> **Telemetria esetén**: a tulajdonos az összetevő elérési útja (ha a telemetria egy Twin összetevőből származik), például: `comp1.comp2` . Ha a telemetria nem egy összetevőből származik, akkor a tárgy mezőjének üresnek kell lennie. |
+| Adatséma | DTDL modell azonosítója | `"filter": "dataschema = 'dtmi:example:com:floor4;2'"` | **Telemetria esetében**: az Adatséma a Twin vagy a telemetria kibocsátó összetevő modell-azonosítója. <br>**Értesítések esetén**: az Adatséma nem támogatott|
 | Tartalomtípus | Adatérték tartalomtípusa | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
 | Spec verziója | Az Ön által használt esemény-séma verziója | `"filter": "specversion = '<version>'"` | Kell lennie `1.0` . Ez a CloudEvents séma 1,0-es verzióját jelzi. |
 | Igaz/hamis | Lehetővé teszi az útvonalak szűrés nélküli létrehozását vagy az útvonal letiltását. | `"filter" : "<true/false>"` | `true`= az útvonal engedélyezve van szűrés nélkül <br> `false`= az útvonal le van tiltva |

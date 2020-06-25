@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: trbye, jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 04/15/2020
+ms.date: 06/23/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: b26527321cf7fc5ca7fc4b061f11b86f8830ec29
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ae79a4f7264224f29db4ede0944ae079130b6394
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552320"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362611"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Az alábbi műveletek a Batch-következtetési folyamat futtatásához szükség
 
 ### <a name="configure-workspace"></a>Munkaterület konfigurálása
 
-Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. `Workspace.from_config()`beolvassa a config. JSON fájlt, és betölti a részleteket egy ws nevű objektumba.
+Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. `Workspace.from_config()`beolvassa a config.jsfájlt, és betölti a részleteket egy ws nevű objektumba.
 
 ```python
 from azureml.core import Workspace
@@ -266,11 +266,11 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>ParallelRunStep tartalmazó folyamat létrehozása és futtatása
 
-Most már mindent megtalál, amire szüksége lehet: az adatbemenetek, a modell, a kimenet és a következtetési parancsfájl. Hozzunk létre egy ParallelRunStep tartalmazó batch-következtetési folyamatot.
+Most már mindent megtalál, amire szüksége lehet: az adatbemenetek, a modell, a kimenet és a következtetési szkript. Hozzunk létre egy ParallelRunStep tartalmazó batch-következtetési folyamatot.
 
 ### <a name="prepare-the-environment"></a>A környezet előkészítése
 
-Először adja meg a parancsfájl függőségeit. Ez lehetővé teszi a pip-csomagok telepítését, valamint a környezet konfigurálását. Mindig adja meg a **azureml-Core** és a **azureml-adatelőkészítés [pandák, Fuse]** csomagokat.
+Először adja meg a parancsfájl függőségeit. Ez lehetővé teszi a pip-csomagok telepítését, valamint a környezet konfigurálását. Mindig tartalmazza a **azureml-Core** és a **azureml-adatelőkészítés [pandák, Fuse]** csomagokat.
 
 Ha egyéni Docker-rendszerképet használ (user_managed_dependencies = true), telepítenie kell a Conda is.
 
@@ -309,7 +309,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: A `run()` metódus meghívásának időtúllépése másodpercben. (nem kötelező; az alapértelmezett érték: `60` )
 - `run_max_try`: Maximális számú próbálkozás a `run()` mini batch számára. A nem `run()` sikerült, ha kivétel keletkezik, vagy ha a rendszer nem ad vissza semmit, ha `run_invocation_timeout` a szolgáltatás elérte az értéket (opcionális; az alapértelmezett érték `3` ). 
 
-A (z),,, és as értéket megadhatja, `mini_batch_size` `node_count` így a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor beállíthatja a paraméterek értékeit. Ebben a példában a és a PipelineParameter használja `mini_batch_size` , `Process_count_per_node` és ezeket az értékeket fogja módosítani, ha később újra elküld egy futtatást. 
+A (z),,,, és as értékeket megadhatja, `mini_batch_size` `node_count` így a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor beállíthatja a paraméterek értékeit. Ebben a példában a és a PipelineParameter használja `mini_batch_size` , `Process_count_per_node` és ezeket az értékeket fogja módosítani, ha később újra elküld egy futtatást. 
 
 ```python
 from azureml.pipeline.core import PipelineParameter
@@ -397,7 +397,7 @@ pipeline_run_2 = experiment.submit(pipeline,
 pipeline_run_2.wait_for_completion(show_output=True)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné látni, hogy ez a folyamat teljes körűen működjön, próbálja ki a [Batch következtetéseit tartalmazó jegyzetfüzetet](https://aka.ms/batch-inference-notebooks). 
 

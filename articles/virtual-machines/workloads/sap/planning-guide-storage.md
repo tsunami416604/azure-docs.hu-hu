@@ -13,17 +13,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3997ae5aa95423841a918a3b5ed1fb0a01d3602e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1e64624865a314a7487a7ce474c1e5e56e3d9277
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85218029"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85363002"
 ---
-# <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-típusok SAP-alapú számítási feladatokhoz
+# <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-tárolótípusok SAP számítási feladathoz
 Az Azure számos különböző tárolási típussal rendelkezik, amelyek nagy mértékben különböznek a képességek, a teljesítmény, a késés és az árak között. A tárolási típusok némelyike nem, vagy kizárólag SAP-forgatókönyvekhez használható. Míg számos Azure-beli tárolási típus jól használható vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. Különösen a SAP HANA esetében egyes Azure-beli tárolási típusok minősítést kaptak a SAP HANAval való használathoz. Ebben a dokumentumban a különböző típusú tárolásokat vesszük át, és leírjuk a képességeiket és a használhatóságát az SAP-munkaterhelésekkel és az SAP-összetevőkkel.
 
 Megjegyzés a cikk során használt egységekről. A nyilvános Felhőbeli szállítók a ([gibibájtnak](https://en.wikipedia.org/wiki/Gibibyte)) vagy a TiB ([Tebibyte](https://en.wikipedia.org/wiki/Tebibyte) as size units) használatával lettek áthelyezve gigabájt vagy terabájt helyett. Ezért az összes Azure-dokumentáció és-Prizing ezeket az egységeket használja.  A dokumentum teljes egészében a MiB-, GiB-és TiB-egységek ezen méretére hivatkozunk. Lehetséges, hogy MB, GB és TB csomaggal kell megterveznie. Ezért ügyeljen arra, hogy a számítások néhány kisebb eltérése legyen, ha egy 400 MiB/s átviteli sebességre van szükség a 250 MiB/mp átviteli sebesség helyett.
@@ -34,7 +34,23 @@ A standard HDD, a standard SSD, az Azure Premium Storage és az ultra Disk Micro
 
 Több redundancia-módszer is rendelkezésre áll, amelyek mindegyike az Azure által kínált különböző tárolási típusokra érvényes [Azure Storage-replikációval](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) kapcsolatos cikkekben szerepel. 
 
-A következő szakaszokban ismertetjük, hogy ezek a rugalmassági beállítások hogyan lesznek alkalmazva az SAP-hez használt Azure Storage-típusokra.
+### <a name="azure-managed-disks"></a>Azure Managed Disks
+
+A Managed Disks egy Azure Resource Manager erőforrástípus, amely az Azure Storage-fiókokban tárolt virtuális merevlemezek helyett használható. A Managed Disks automatikusan igazodik a (z) [rendelkezésre állási csoport] [Virtual-Machines-Manage-elérhetősége] helyhez, amelyhez a virtuális gép csatlakoztatva van, és így növelheti a virtuális gép és a virtuális gépen futó szolgáltatások rendelkezésre állását. További információért olvassa el az [áttekintő cikket](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
+
+A rugalmassággal kapcsolatos példa a felügyelt lemezek előnyeit mutatja be:
+
+- Egy Azure-beli rendelkezésre állási csoportba helyezi üzembe a két adatbázis-kezelő virtuális gépet az SAP-rendszerhez 
+- Ahogy az Azure üzembe helyezi a virtuális gépeket, az operációsrendszer-lemezképpel rendelkező lemez egy másik Storage-fürtbe kerül. Ezzel elkerülheti, hogy mindkét virtuális gép az egyetlen Azure Storage-fürt hibája miatt is hatással legyen
+- Amikor az ezekhez a virtuális gépekhez hozzárendelt új felügyelt lemezeket hoz létre az adatbázis adatai és naplófájljai számára, a két virtuális gép új lemezeit külön tároló fürtökbe is telepíti a rendszer, így az első virtuális gép egyik lemeze sem osztja meg a Storage-fürtöket a második virtuális gép lemezével.
+
+Felügyelt lemezek nélküli üzembe helyezés az ügyfél által definiált Storage-fiókokban, a lemez kiosztása tetszőleges, és nem ismeri azt a tényt, hogy a virtuális gépeket egy AvSet belül, rugalmassági célokra helyezik üzembe.
+
+> [!NOTE]
+> Ebből kifolyólag és számos egyéb, kizárólag felügyelt lemezeken keresztül elérhető fejlesztés esetén a virtuális gépek új, az Azure Block Storage-t használó, a lemezekhez (az összes Azure-tárolóhoz (kivéve Azure NetApp Files) használt telepítése szükséges az Azure Managed Disks használatához az alap VHD/operációsrendszer-lemezekhez, az SAP-adatbázis fájljait tartalmazó adatlemezekhez. Független attól, hogy a virtuális gépeket rendelkezésre állási csoporton keresztül helyezi-e üzembe Availability Zones vagy a készletek és zónáktól függetlenül. A biztonsági másolatok tárolásához használt lemezek nem feltétlenül szükségesek a felügyelt lemezekhez.
+
+> [!NOTE]
+> Az Azure Managed Disks csak helyi redundanciát (LRS) biztosít. 
 
 
 ## <a name="storage-scenarios-with-sap-workloads"></a>Tárolási forgatókönyvek SAP-munkaterhelésekkel
@@ -67,6 +83,7 @@ A részletek megkezdése előtt bemutatjuk a dokumentum elején már meglévő �
 | Adatbázis-kezelői naplózási kötet nem HANA M/Mv2 VM-család | nem támogatott | korlátozott megfelelő (nem gyártható) | ajánlott<sup>1</sup> | ajánlott | nem támogatott |
 | Adatbázis-kezelői naplózási kötet nem HANA nem M/Mv2 VM-család | nem támogatott | korlátozott megfelelő (nem gyártható) | akár közepes számítási feladatokhoz is alkalmas | ajánlott | nem támogatott |
 
+
 <sup>1</sup> az [Azure Írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) használata az M/Mv2 virtuálisgép-családokhoz a log/relog-kötetek <sup>2</sup> . ANF használatához a/Hana/Data és a/Hana/log is szükséges a ANF 
 
 A különböző tárolási típusok listájából várható jellemzők:
@@ -78,11 +95,25 @@ A különböző tárolási típusok listájából várható jellemzők:
 | Késleltetési írások | magas | közepes és magas  | alacsony (sub-ezredmásodperc<sup>1</sup>) | ezredmásodperc | ezredmásodperc |
 | HANA támogatott | nem | nem | igen<sup>1</sup> | igen | igen |
 | Lemezes Pillanatképek lehetséges | igen | igen | igen | nem | igen |
+| Lemezek kiosztása különböző tárolási fürtökön rendelkezésre állási csoportok használatakor | felügyelt lemezeken keresztül | felügyelt lemezeken keresztül | felügyelt lemezeken keresztül | a lemez típusa nem támogatott a rendelkezésre állási csoportokon keresztül üzembe helyezett virtuális gépek esetén | nem<sup>3</sup> |
+| Igazított Availability Zones | igen | igen | igen | igen | a Microsoft részvétele szükséges |
+| Zónabeli redundancia | nem felügyelt lemezekhez | nem felügyelt lemezekhez | nem felügyelt lemezekhez | nem | nem |
+| Geo-redundancia | nem felügyelt lemezekhez | nem felügyelt lemezekhez | nem | nem | nem |
 
 
 <sup>1</sup> az [Azure Írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) használata az M/Mv2 virtuálisgép-családokhoz a log/ismétlési naplók köteteihez
 
 <sup>2</sup> a költségek a kiépített IOPS és az átviteli sebességtől függenek
+
+<sup>3</sup> a különböző ANF kapacitású készletek létrehozása nem garantálja a kapacitás-készletek különböző tárolási egységekre való telepítését.
+
+
+> [!IMPORTANT]
+> Ha Azure NetApp Files (ANF) használatával kevesebb, mint 1 ezredmásodperces I/O-késést szeretne elérni, a Microsofttal együttműködve gondoskodjon a virtuális gépek és az NFS-megosztások megfelelő elhelyezéséről a ANF alapján. Eddig nincs olyan mechanizmus, amely egy üzembe helyezett virtuális gép és a ANF-on üzemeltetett NFS-kötetek közötti automatikus közelséget biztosít. A különböző Azure-régiók különböző beállításai miatt a hozzáadott hálózati késés az 1 ezredmásodpercnél nagyobb I/O-késést eredményezhet, ha a virtuális gép és az NFS-megosztás nincs lefoglalva a közelségbe.
+
+
+> [!IMPORTANT]
+> A jelenleg nem kínált Azure blokk Storage-alapú felügyelt lemezek egyike sem rendelkezik a rendelkezésre álló vagy a Azure NetApp Files bármely régióbeli vagy földrajzi redundanciával. Ennek eredményeképpen meg kell győződnie arról, hogy a magas rendelkezésre állású és a vész-helyreállítási architektúrák nem támaszkodnak a felügyelt lemezekre, az NFS-re vagy az SMB-megosztásokra vonatkozó bármilyen típusú Azure-beli natív tárolási replikációra.
 
 
 ## <a name="azure-premium-storage"></a>Prémium szintű Azure Storage
@@ -95,8 +126,7 @@ Az Azure Premium SSD Storage szolgáltatás a következő céllal lett bevezetve
 Az ilyen típusú tárolók az adatbázis-kezelői munkaterheléseket célozzák meg, az Azure Premium Storage esetében pedig a IOPS és az átviteli költséghatékonyságot igénylő tárolási forgalom nem az ilyen lemezeken tárolt tényleges adatmennyiség, hanem egy ilyen lemez méret kategóriája, a lemezen tárolt adatok mennyiségétől függetlenül. A Premium Storage-ban olyan lemezeket is létrehozhat, amelyek nem közvetlenül vannak leképezve a (z) [prémium SSD](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#premium-ssd)cikkben látható méret kategóriákba. A jelen cikk következtetései a következők:
 
 - A tároló tartományokba vannak rendezve. Például a 513 GiB tartományba tartozó, 1024 GiB kapacitású lemez ugyanazokat a képességeket és a havi költségeket használja
-- A IOPS/GiB nem követi nyomon
--  lineáris a méret kategóriák között. A 32-nál kisebb méretű lemezek esetében a IOPS magasabb sebességű. A 32 GiB és a 1024 GiB közötti lemezek esetében a IOPS-sebesség az 4-5 IOPS/GiB között van. A 32 767 GiB-ig terjedő nagyobb lemezek esetén a IOPS sebessége 1 lesz
+- A IOPS/GiB nem követi a lineáris adatmennyiséget a méret kategórián belül. A 32-nál kisebb méretű lemezek esetében a IOPS magasabb sebességű. A 32 GiB és a 1024 GiB közötti lemezek esetében a IOPS-sebesség az 4-5 IOPS/GiB között van. A 32 767 GiB-ig terjedő nagyobb lemezek esetén a IOPS sebessége 1 lesz
 - A tároló I/O-átviteli sebessége nem lineáris a lemez kategóriájának méretével. Kisebb lemezek esetében, mint például a 65 GiB és a 128 GiB kapacitás közötti kategória, az átviteli sebesség körülbelül 780KB/GiB. Míg a nagy méretű lemezek, például egy 32 767 GiB-lemez esetében az átviteli sebesség a 28KB/GiB közelében van
 - A IOPS és az adatátviteli SLA-kat nem lehet módosítani a lemez kapacitásának módosítása nélkül
 
@@ -318,7 +348,7 @@ Korlátozásként vegye figyelembe a következőket:
 - A ANF esetében a megosztott kötetekre irányuló forgalom a virtuális gép hálózati sávszélességét és nem a tárolási sávszélességet vesz igénybe
 - Ha nagy méretű NFS-köteteket használ a kétszámjegyű TiB kapacitású térben, akkor az ilyen kötethez hozzáférő átviteli sebesség egy virtuális gépen keresztül fog megjelenni a fennsíkon, a megosztott kötettel kommunikáló egyetlen munkamenet esetében pedig a Linux korlátain alapul. 
 
-Ahogy az Azure-beli virtuális gépeket egy SAP-rendszer életciklusa során felhasználva, ki kell értékelnie az új és nagyobb virtuálisgép-típus IOPS és tárolási átviteli sebességének korlátait. Bizonyos esetekben érdemes lehet módosítani a tárolási konfigurációt az Azure-beli virtuális gép új képességeire is. 
+Ahogy az Azure-beli virtuális gépeket egy SAP-rendszer életciklusa során felhasználja, értékelnie kell a IOPS és a tárterület átviteli sebességének korlátait az új és nagyobb virtuálisgép-típus esetében. Bizonyos esetekben érdemes lehet módosítani a tárolási konfigurációt az Azure-beli virtuális gép új képességeire is. 
 
 
 ## <a name="striping-or-not-striping"></a>Csíkozás vagy nem csíkozás

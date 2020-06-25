@@ -5,24 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: 9b577b12250f1a600c91776e64ecaf65be5d8476
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100896"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362424"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Naplók naplózása Azure Database for MariaDB
 
 A Azure Database for MariaDB a napló a felhasználók számára érhető el. A napló az adatbázis szintű tevékenységek nyomon követésére használható, és általában a megfelelőséghez használatos.
 
-> [!IMPORTANT]
-> A naplózási funkció jelenleg előzetes verzióban érhető el.
-
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
 
->[!NOTE]
+>[!IMPORTANT]
 > Azt javasoljuk, hogy csak azokat az eseményeket és felhasználókat naplózza, amelyek szükségesek a naplózáshoz, hogy a kiszolgáló teljesítménye ne legyen nagy hatással.
 
 Alapértelmezés szerint a napló le van tiltva. Az engedélyezéséhez állítsa be értékre a következőre: `audit_log_enabled` .

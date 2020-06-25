@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: 62bdb08d3627959b8985481c848db064149cf844
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: f05f26c54d9f3ea62180c598aada59d405c3c805
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100784"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362679"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Naplózási naplók konfigurálása és elérése a Azure Portal
 
 A Azure Portal [Azure Database for MariaDB naplózási naplókat](concepts-audit-logs.md) és diagnosztikai beállításokat is konfigurálhat.
-
-> [!IMPORTANT]
-> A naplózási funkció jelenleg előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +25,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
 
->[!NOTE]
+>[!IMPORTANT]
 > Azt javasoljuk, hogy csak azokat az eseményeket és felhasználókat naplózza, amelyek szükségesek a naplózáshoz, hogy a kiszolgáló teljesítménye ne legyen nagy hatással.
 
 A naplózás engedélyezése és konfigurálása.

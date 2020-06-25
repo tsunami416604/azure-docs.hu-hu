@@ -1,5 +1,5 @@
 ---
-title: Digitális iker kezelése
+title: Digitális ikrek kezelése
 titleSuffix: Azure Digital Twins
 description: 'Lásd: egyéni ikrek és kapcsolatok lekérése, frissítése és törlése.'
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 9acea128313fc440834626dd3a99b117e4b25a8f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 07c77f3cf149fdd6533a070b29f709758be23ce5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735897"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362730"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikrek kezelése
 
@@ -21,7 +21,7 @@ ms.locfileid: "84735897"
 
 A környezetben található entitásokat a [digitális ikrek](concepts-twins-graph.md)jelölik. A digitális ikrek kezelése magában foglalhatja a létrehozását, módosítását és eltávolítását. Ezeknek a műveleteknek a végrehajtásához használhatja a [**DigitalTwins API-kat**](how-to-use-apis-sdks.md), a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-t vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületét.
 
-Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a [Twin gráfmal](concepts-twins-graph.md) szeretne dolgozni, tekintse meg a következő témakört [: útmutató: Twin Graph kezelése kapcsolatokkal](how-to-manage-graph.md).
+Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a [Twin gráfmal](concepts-twins-graph.md) szeretne dolgozni, tekintse meg [az útmutató: a Twin gráf kezelése a kapcsolatokkal](how-to-manage-graph.md)című témakört.
 
 > [!TIP]
 > Minden SDK-függvény szinkron és aszinkron verzióban érhető el.
@@ -347,4 +347,4 @@ Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok 
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között:
-* [Útmutató: kettős gráf kezelése kapcsolatokkal](how-to-manage-graph.md)
+* [Útmutató: a Twin gráf kezelése kapcsolatok használatával](how-to-manage-graph.md)

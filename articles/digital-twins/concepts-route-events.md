@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: be5709c8ccf8626ac3a48fdf7cad1c61dbfbf628
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 87d57470ffbe1d65bb646c51387e15e58ab6fa30
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729516"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362917"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -59,7 +59,7 @@ Az események útvonalának definiálásához a fejlesztőknek először meg kel
 * Service Bus
 
 A végpontokat a vezérlési sík API-k (az [Azure digitális Twins parancssori](how-to-use-cli.md)felület vagy a Azure Portal segítségével lehet beállítani. A végpont definíciója a következőket biztosítja:
-* A végpont azonosítója (vagy felhasználóbarát név)
+* A végpont neve
 * A végpont típusa (Event Grid, Event hub vagy Service Bus)
 * A hitelesítő elsődleges kapcsolódási sztring és másodlagos kapcsolódási sztring 
 * A végpont témakörének elérési útja, például *Your-topic.westus2.eventgrid.Azure.net*
@@ -67,18 +67,18 @@ A végpontokat a vezérlési sík API-k (az [Azure digitális Twins parancssori]
 A vezérlési síkon elérhető Endpoint API-k a következők:
 * Végpont létrehozása
 * Végpontok listájának beolvasása
-* Végpont beolvasása azonosító alapján (a végpont AZONOSÍTÓjának átadása)
-* Végpont törlése azonosító alapján (pass in Endpoint ID)
+* Végpont beolvasása név alapján
+* Végpont törlése név szerint
 
 ## <a name="create-an-event-route"></a>Esemény útvonalának létrehozása
  
 Az események útvonalait egy ügyfélalkalmazás hozza létre a következő [.net (C#) SDK](how-to-use-apis-sdks.md) -hívással: 
 
 ```csharp
-await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-ID>"));
+await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
 ```
 
-* Az `endpoint-ID` azonosít egy végpontot, például egy Event hub, Event Grid vagy Service Bus. Ezeket a végpontokat az előfizetésében kell létrehoznia, és az Azure Digital Twins-hoz kell csatolni a vezérlési sík API-kkal a regisztrációs hívás előtt.
+* Az `endpoint-name` azonosít egy végpontot, például egy Event hub, Event Grid vagy Service Bus. Ezeket a végpontokat az előfizetésében kell létrehoznia, és az Azure Digital Twins-hoz kell csatolni a vezérlési sík API-kkal a regisztrációs hívás előtt.
 
 Az átadott esemény-útválasztási objektum `EventRoutes.Add` egy [ **szűrő** paramétert](./how-to-manage-routes.md#filter-events)is végrehajt, amellyel korlátozható az ezt az útvonalat követő események típusai.
 

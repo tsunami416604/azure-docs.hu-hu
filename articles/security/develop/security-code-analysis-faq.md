@@ -1,7 +1,7 @@
 ---
 title: A Microsoft biztonsági kód elemzésének dokumentációja – GYIK
 description: Ez a cikk a Microsoft biztonsági kód elemzése bővítménysel kapcsolatos gyakori kérdéseket tartalmaz
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,17 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7a888d95a97e30e7d663b528e8d9941aec1f51e9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015845"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362074"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 Kérdése van? További információért tekintse meg az alábbi gyakori kérdéseket.
 
-## <a name="general-faq"></a>Általános GYIK
+## <a name="general-faq"></a>Gyakori kérdések – általános
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Telepíthetem a bővítményt a Visual Studio Team Foundation Server példányára egy Azure DevOps-példány helyett?
 
@@ -123,7 +123,7 @@ A CredScan kimeneti fájljából származó titkos kód kivonatának kulcsát az
 
 A fájl kifejezés lehet fájlnév. Egy teljes fájl elérési útjának vagy fájlnevének basename része is lehet. Helyettesítő karakterek nem használhatók.
 
-A következő példák bemutatják, hogyan tilthatja le a fájlt a \<InputPath> \src\JS\lib\angular.js
+Az alábbi példák bemutatják, hogyan lehet letiltani a fájlt \<InputPath>\src\JS\lib\angular.js
 
 Példák az érvényes letiltási szabályokra:
 
@@ -131,7 +131,7 @@ Példák az érvényes letiltási szabályokra:
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
-- szögletes. js – bármely azonos nevű fájl letiltása
+- angular.js – azonos nevű fájl letiltása
 
         {
             "tool": "Credential Scanner",
@@ -166,7 +166,7 @@ További információkért tekintse meg a [titkok biztonságos kezelését a fel
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Írhatok saját egyéni keresőket?
 
-A hitelesítő adatok képolvasó a buildsearchers. xml fájlban általában definiált tartalomszolgáltatókon alapul. A fájl a **ContentSearcher** OBJEKTUMOT képviselő XML szerializált objektumok tömbjét tartalmazza. A program kiosztása jól tesztelt keresők készletével történik. Saját egyéni keresőket is megvalósíthat.
+A hitelesítő adatok beolvasása a buildsearchers.xml fájlban általában definiált tartalomszolgáltatókon alapul. A fájl a **ContentSearcher** OBJEKTUMOT képviselő XML szerializált objektumok tömbjét tartalmazza. A program kiosztása jól tesztelt keresők készletével történik. Saját egyéni keresőket is megvalósíthat.
 
 A tartalmi kereső a következőképpen van definiálva:
 
@@ -196,23 +196,23 @@ A teljes hibaüzenet:
 
 Mivel a (z) a (z) a gyűjtemény részeként futtatott a a-elemzők, a kiépíthető állapotban kell lennie a forrás fájának.
 
-Előfordulhat, hogy a fő Build és a a a a a a a a a a a a a (a)-elemzők lépései között a forrás fát olyan állapotba helyezi Ezt az extra lépést valószínűleg a **DotNet. exe teszi közzé**. Próbálja megismételni azt a lépést, amely egy NuGet-visszaállítást végez közvetlenül a a a-elemzők lépése előtt. Ez a duplikált lépés felépíthető állapotba helyezheti a forrás faszerkezetét.
+Előfordulhat, hogy a fő Build és a a a a a a a a a a a a a (a)-elemzők lépései között a forrás fát olyan állapotba helyezi Ezt az extra lépést valószínűleg **dotnet.exe közzétenni**. Próbálja megismételni azt a lépést, amely egy NuGet-visszaállítást végez közvetlenül a a a-elemzők lépése előtt. Ez a duplikált lépés felépíthető állapotba helyezheti a forrás faszerkezetét.
 
-##### <a name="cscexe-cant-create-an-analyzer-instance"></a>a CSC. exe nem tud elemző példányt létrehozni
+##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc.exe nem hozható létre elemző példány
 
 A teljes hibaüzenet:
 
-"a CSC. exe kilépett az 1. hibakódmal – az Analyzer *AAAA* -példánya nem hozható létre a C: \\ *BBBB*. dll fájlból: nem sikerült betölteni a (z)" Microsoft. CodeAnalysis, Version =*x. x. x.* x, Culture = semleges, PublicKeyToken = 31bf3856ad364e35 "vagy annak valamelyik függőségét. A megadott fájl nem található. "
+A (z) "" csc.exe "kilépett a következő hibakóddal:" az Analyzer *AAAA* -példánya nem hozható létre a C: \\ *BBBB*. dll fájlból: nem sikerült betölteni a (z) "Microsoft. CodeAnalysis, Version =*x. x*. x. x, Culture = semleges, PublicKeyToken = 31bf3856ad364e35" vagy annak egyik függőségét. A megadott fájl nem található. "
 
-Győződjön meg arról, hogy a fordító támogatja a a a a a a "a" A **CSC. exe** verziójának futtatásához a 2,6-es vagy újabb verziójú verziószámot kell jelenteni.
+Győződjön meg arról, hogy a fordító támogatja a a a a a a "a" A parancs futtatásához **csc.exe (Version** ) 2,6-es vagy újabb verziószámot kell jelentenie.
 
 Előfordulhat, hogy egy. csproj-fájl felülbírálja a Build Machine Visual Studio telepítését a Microsoft.Net. Compilers csomagból való hivatkozással. Ha nem kívánja használni a fordító egy adott verzióját, távolítsa el a Microsoft.Net. Compilers mutató hivatkozásait. Ellenkező esetben győződjön meg arról, hogy a hivatkozott csomag verziószáma 2,6 vagy újabb.
 
-Próbálja meg lekérni a hiba-napló elérési útját, amely a **CSC. exe/errorlog** beállításban van megadva. A beállítás és az elérési út megjelenik a következő naplóban: a-elemzők felépítési feladata. Ilyenek például a **/errorlog: f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Próbálja meg lekérni a hibanapló elérési útját, amely a **csc.exe/errorlog** beállításban van megadva. A beállítás és az elérési út megjelenik a következő naplóban: a-elemzők felépítési feladata. Ilyenek például a **/errorlog: f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>A C# fordítóprogram verziója nem elég közelmúltbeli
 
-A C# fordító legújabb verzióinak beszerzéséhez nyissa meg a [Microsoft.net. compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers)programot. A telepített verziójának lekéréséhez futtassa a **CSC. exe Version** parancsot a parancssorból. Győződjön meg arról, hogy a 2,6-es vagy újabb verziójú Microsoft.Net. Compilers NuGet-csomagra hivatkozik.
+A C# fordító legújabb verzióinak beszerzéséhez nyissa meg a [Microsoft.net. compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers)programot. A telepített verziójának lekéréséhez futtassa a következő parancsot a parancssorban: **csc.exe Version** . Győződjön meg arról, hogy a 2,6-es vagy újabb verziójú Microsoft.Net. Compilers NuGet-csomagra hivatkozik.
 
 ##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>Az MSBuild és a VSBuild naplók nem találhatók
 

@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: 670fd7f34b75ae05726053decdab7c15cdcdecc8
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 1dcad61ed94926aa2aa2237ea735287cd9c9f137
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100842"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362696"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Eseménynaplók konfigurálása és elérése az Azure CLI-ben
 
 Az [Azure Database for MariaDB naplókat](concepts-audit-logs.md) az Azure CLI-ből is konfigurálhatja.
-
-> [!IMPORTANT]
-> A naplózási funkció jelenleg előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +30,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
 
->[!NOTE]
+>[!IMPORTANT]
 > Azt javasoljuk, hogy csak azokat az eseményeket és felhasználókat naplózza, amelyek szükségesek a naplózáshoz, hogy a kiszolgáló teljesítménye ne legyen nagy hatással.
 
 A naplózást a következő lépésekkel engedélyezheti és konfigurálhatja: 

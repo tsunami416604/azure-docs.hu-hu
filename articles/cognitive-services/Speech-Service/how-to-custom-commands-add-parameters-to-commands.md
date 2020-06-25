@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 1d74bf089f3e5bc1fd04232b58ce95c649a170e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307493"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362373"
 ---
 # <a name="add-parameters-to-commands"></a>Paraméterek hozzáadása parancsokhoz
 
@@ -52,7 +52,7 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
 
        | Konfiguráció      | Ajánlott érték     | Leírás                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
-       | Name               | `OnOff`           | A paraméter leíró neve                                                                           |
+       | Name (Név)               | `OnOff`           | A paraméter leíró neve                                                                           |
        | Globális          | nincs bejelölve       | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan az alkalmazás összes parancsára vonatkozik-e|
        | Kötelező           | ellenőrizni         | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt |
        | A kötelező paraméterre adott válasz      |Egyszerű szerkesztő >`On or Off?`      | A paraméter értékének megadására vonatkozó kérés, ha nem ismert |
@@ -60,9 +60,10 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
        | Konfiguráció      | Előre megadott bemeneti értékek elfogadása a belső katalógusból | Karakterláncok esetén ez a beállítás a lehetséges értékek halmazára korlátozza a bemeneteket |
        | Előre megadott bemeneti értékek     | `on`, `off`           | A lehetséges értékek és az aliasok halmaza         |
        
-        > [!div class="mx-imgBorder"]
+        
+   1. Előre definiált bemeneti értékek hozzáadásához válassza az **előre definiált bevitel hozzáadása** lehetőséget, majd az **új elem** ablakban írja be a **nevet** a fenti táblázatban megadott módon. Ebben az esetben nem használunk aliasokat, így üresen hagyhatjuk. 
+    > [!div class="mx-imgBorder"]
         > ![Paraméter létrehozása](media/custom-commands/create-on-off-parameter.png)
-
    1. A paraméter összes konfigurációjának mentéséhez válassza a **Mentés** lehetőséget.
  
  ### <a name="add-subjectdevice-parameter"></a>SubjectDevice paraméter hozzáadása 
@@ -72,7 +73,7 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
 
        | Beállítás            | Ajánlott érték       |
        | ------------------ | --------------------- |
-       | Name               | `SubjectDevice`         |
+       | Name (Név)               | `SubjectDevice`         |
        | Globális          | nincs bejelölve             |
        | Kötelező           | ellenőrizni               |
        | A kötelező paraméterre adott válasz     | Egyszerű szerkesztő >`Which device do you want to control?`    | 
@@ -145,7 +146,7 @@ Módosítsa a **SetTemperature** parancsot úgy, hogy az a felhasználó által 
 
 | Konfiguráció      | Ajánlott érték     |
 | ------------------ | ----------------|
-| Name               | `Temperature`           |
+| Name (Név)               | `Temperature`           |
 | Kötelező           | ellenőrizni         |
 | A kötelező paraméterre adott válasz      | Egyszerű szerkesztő >`What temperature would you like?`
 | Típus               | Szám          |
@@ -182,7 +183,7 @@ Adja hozzá a **datetime** nevű paramétert a következő konfigurációval.
 
    | Beállítás                           | Ajánlott érték                     | 
    | --------------------------------- | ----------------------------------------|
-   | Name                              | `DateTime`                               |
+   | Name (Név)                              | `DateTime`                               |
    | Kötelező                          | ellenőrizni                                 |
    | A kötelező paraméterre adott válasz   | Egyszerű szerkesztő >`For what time?`            | 
    | Típus                              | DateTime                                |

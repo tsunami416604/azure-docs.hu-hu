@@ -8,18 +8,18 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cc6451d9be6c125d1b01bc5bb33fd553ce789f31
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 753fa7afb49ca58aa2eceb309beb8316024b41bc
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263194"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362713"
 ---
 # <a name="dtdl-client-side-parser-library"></a>DTDL ügyféloldali elemző kódtár
 
 [!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
-Az Azure Digital Twins [modelljei](concepts-models.md) a JSON-alapú digitális Twins Definition Language (DTDL) használatával vannak meghatározva. Olyan esetekben, ahol hasznos elemezni a modelleket, DTDL-elemzési függvénytár van megadva a NuGet.org ügyféloldali kódtárként: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
+Az Azure Digital Twins [modelljei](concepts-models.md) a JSON-ld-alapú digitális Twins Definition Language (DTDL) használatával vannak meghatározva. Olyan esetekben, ahol hasznos elemezni a modelleket, DTDL-elemzési függvénytár van megadva a NuGet.org ügyféloldali kódtárként: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
 
 Ez a könyvtár modell-hozzáférést biztosít a DTDL-definícióhoz, amely lényegében a DTDL C#-reflexiójának megfelelő módon működik. Ez a könyvtár az [Azure Digital Twins SDK](how-to-use-apis-sdks.md)-val függetlenül is használható, különösen a DTDL érvényesítéséhez egy vizualizációban vagy szövegszerkesztőben. A modell-definíciós fájlok érvényességének biztosításához hasznos, mielőtt feltölti őket a szolgáltatásba.
 
@@ -70,7 +70,7 @@ A mintával kapcsolatos további információkért tekintse meg a forráskódot,
 
 ## <a name="use-the-parser-library-in-code"></a>Az elemző függvénytár használata a kódban
 
-Az elemző függvénytárat közvetlenül is használhatja saját modelljeinek ellenőrzéséhez.
+Az elemző függvénytárat közvetlenül is használhatja olyan dolgokhoz, mint például a saját alkalmazásban található modellek ellenőrzése, vagy dinamikus, modell-vezérelt felhasználói felület, irányítópultok és jelentések létrehozása.
 
 Az alábbi elemzési kód támogatásához vegye fontolóra az Azure Digital Twins-példányban definiált több modellt:
 
@@ -172,4 +172,4 @@ void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEnt
 ## <a name="next-steps"></a>További lépések
 
 Ha befejezte a modellek írását, tekintse meg az DigitalTwinsModels API-k használatával történő feltöltését ismertető témakört (és végezze el a többi felügyeleti műveletet):
-* [Útmutató: kettős modell kezelése](how-to-manage-model.md)
+* [Útmutató: egyéni modellek kezelése](how-to-manage-model.md)

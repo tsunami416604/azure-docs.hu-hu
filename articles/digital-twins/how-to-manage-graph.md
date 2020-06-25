@@ -1,5 +1,5 @@
 ---
-title: Ikergráf kezelése kapcsolatokkal
+title: A Twin gráf kezelése kapcsolatokkal
 titleSuffix: Azure Digital Twins
 description: Megtudhatja, hogyan kezelheti a digitális ikrek gráfját úgy, hogy összekapcsolja őket a kapcsolatokkal.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e332936543cc36e20b88da4ce5cc9115d0890967
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 13ceed847b3946b47fb3389145843ad085391dc5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725698"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362798"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
@@ -23,7 +23,7 @@ Az Azure digitális ikrek szíve a teljes környezetet jelképező [kettős grá
 
 Ha rendelkezik egy működő [Azure digitális Twins-példánnyal](how-to-set-up-instance.md) , és beállította a [hitelesítést](how-to-authenticate-client.md) az ügyfélalkalmazás számára, a [**DigitalTwins API**](how-to-use-apis-sdks.md) -kkal digitális ikreket és azok kapcsolatait is létrehozhatja, módosíthatja és törölheti egy Azure digitális Twins-példányban. Használhatja a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-t vagy az [Azure Digital Twins CLI](how-to-use-cli.md)-t is.
 
-Ez a cikk a kapcsolatok és a gráf egészének kezelésére koncentrál. az egyes digitális ikrekkel való munkavégzéshez tekintse meg a következő témakört [: útmutató: digitális Twin-eszközök kezelése](how-to-manage-twin.md).
+Ez a cikk a kapcsolatok és a gráf egészének kezelésére koncentrál. az egyes digitális ikrekkel való munkavégzéshez tekintse meg az [útmutató: digitális ikrek kezelése](how-to-manage-twin.md)című témakört.
 
 ## <a name="create-relationships"></a>Kapcsolatok létrehozása
 

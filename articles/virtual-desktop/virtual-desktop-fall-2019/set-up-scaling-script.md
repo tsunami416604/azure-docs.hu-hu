@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3a82665f197301fe81c448dd18181f0602bdbef
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f94852a99f0bc430ac193b9951de607cdd7fa933
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209793"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362543"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
 
@@ -106,7 +106,8 @@ Először is szüksége lesz egy Azure Automation fiókra a PowerShell-runbook f
 
 6. Miután beállította Azure Automation-fiókját, jelentkezzen be az Azure-előfizetésbe, és ellenőrizze, hogy a Azure Automation-fiókja és a kapcsolódó runbook szerepeltek-e a megadott erőforráscsoporthoz, ahogy az alábbi képen is látható:
 
-![Az újonnan létrehozott Automation-fiókot és runbook bemutató Azure áttekintés oldal képe.](../media/automation-account.png)
+> [!div class="mx-imgBorder"]
+> ![Az újonnan létrehozott Automation-fiókot és runbook bemutató Azure áttekintés oldal képe.](../media/automation-account.png)
 
   Ha szeretné megnézni, hogy a webhook hol kell legyen, válassza ki a runbook nevét. Ezután nyissa meg a runbook erőforrásai szakaszt, és válassza a **webhookok**lehetőséget.
 
@@ -236,11 +237,13 @@ Végezetül létre kell hoznia az Azure logikai alkalmazást, és be kell állí
 
      A parancsfájl futtatása után a logikai alkalmazásnak egy erőforráscsoporthoz kell megjelennie, ahogy az alábbi képen is látható.
 
-     ![Egy példa az Azure logikai alkalmazás áttekintés lapjára.](../media/logic-app.png)
+     > [!div class="mx-imgBorder"]
+     > ![Egy példa az Azure logikai alkalmazás áttekintés lapjára.](../media/logic-app.png)
 
 Ha módosítani szeretné a végrehajtás ütemezését, például az ismétlődési intervallumot vagy az időzónát, lépjen az autoskálázás ütemező elemre, és válassza a **Szerkesztés** lehetőséget a Logic apps Designer megkereséséhez.
 
-![A Logic Apps Designer képe. A felhasználó ismétlődési idejének módosítására és a webhook fájljának megnyitására szolgáló ismétlődési és webhook-menük.](../media/logic-apps-designer.png)
+> [!div class="mx-imgBorder"]
+> ![A Logic Apps Designer képe. A felhasználó ismétlődési idejének módosítására és a webhook fájljának megnyitására szolgáló ismétlődési és webhook-menük.](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>Méretezési eszköz kezelése
 
@@ -252,7 +255,8 @@ Megtekintheti az összes runbook-feladat összegzett állapotát, vagy megtekint
 
 A kiválasztott Automation-fiók jobb oldalán, a "feladat statisztikái" alatt megtekintheti az összes runbook-feladat összefoglalóit tartalmazó listát. Az ablak bal oldalán a **feladatok** lap megnyitása megjeleníti a feladat aktuális állapotát, a kezdési időpontokat és a befejezési időpontokat.
 
-![A feladatok állapota lap képernyőképe.](../media/jobs-status.png)
+> [!div class="mx-imgBorder"]
+> ![A feladatok állapota lap képernyőképe.](../media/jobs-status.png)
 
 ### <a name="view-logs-and-scaling-tool-output"></a>Naplók és méretezési eszköz kimenetének megtekintése
 
@@ -260,5 +264,6 @@ A kibővíthető és a skálázási műveletek naplóit megtekintheti a runbook 
 
 Navigáljon a runbook (az alapértelmezett név WVDAutoScaleRunbook) az Azure Automation fiókot futtató erőforráscsoporthoz, és válassza az **Áttekintés**lehetőséget. Az Áttekintés lapon válasszon ki egy feladatot a legutóbbi feladatok területen a méretezési eszköz kimenetének megtekintéséhez, ahogy az alábbi képen is látható.
 
-![A skálázási eszköz kimeneti ablakának képe.](../media/tool-output.png)
+> [!div class="mx-imgBorder"]
+> ![A skálázási eszköz kimeneti ablakának képe.](../media/tool-output.png)
 

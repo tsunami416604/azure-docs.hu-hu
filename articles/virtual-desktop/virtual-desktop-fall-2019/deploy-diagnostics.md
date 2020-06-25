@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0660947907b26e1a86bbd68bb32d1ac5d211b20e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206053"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362339"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -195,7 +195,8 @@ Az átirányítási URI beállítása:
 6. A típus alatt válassza a **web** lehetőséget a legördülő menüben.
 7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Példa: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
-   ![Az átirányítási URI-lap](../media/redirect-uri-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![Az átirányítási URI-lap](../media/redirect-uri-page.png)
 
 8. Most nyissa meg az Azure-erőforrásokat, válassza ki az Azure App Services erőforrást a sablonban megadott névvel, és keresse meg a hozzá társított URL-címet. (Ha például a sablonban használt alkalmazás neve `contosoapp45` , akkor a társított URL-cím: <https://contosoapp45.azurewebsites.net> ).
 9. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiókkal.

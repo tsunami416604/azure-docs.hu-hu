@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 89de2e86e425e2c585f9a1243f6666a0ae077c10
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: ddbe49f34bbdbf0f9c461a25f23d6f7cbd8600d9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726072"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362951"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Ügyfélalkalmazás hitelesítése az Azure Digital Twins használatával
 
@@ -175,7 +175,7 @@ Ha .NET-alkalmazást szeretne hitelesíteni az Azure-szolgáltatásokkal, a köv
 Szüksége lesz az *alkalmazás (ügyfél) azonosítójának* és *könyvtárának (BÉRLŐi) azonosítójának* korábbi verziójára, valamint az Azure Digital Twins-példány URL-címére.
 
 > [!TIP]
-> Az Azure digitális Twins-példány URL-címe az Azure digitális Twins-példány *állomásneve* *https://* hozzáadásával történik. Az állomásnév, valamint a példány összes tulajdonságának megtekintéséhez futtathatja a parancsot `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
+> Az Azure digitális Twins-példány URL-címe az Azure digitális Twins-példány *állomásneve* *https://* hozzáadásával történik. Az *állomásnév*, valamint a példány összes tulajdonságának megtekintéséhez futtathatja a parancsot `az dt show --dt-name <your-Azure-Digital-Twins-instance>` . A `az account show --query tenantId` parancs használatával megtekintheti a *címtár (bérlő) azonosítóját*. 
 
 ```javascript
 import * as Msal from "msal";
@@ -259,4 +259,4 @@ További információ arról, hogyan működik a biztonság az Azure digitális 
 * [Fogalmak: az Azure Digital Twins-megoldások biztonsága](concepts-security.md)
 
 Vagy most, hogy a hitelesítés be van állítva, a következő lépésekkel hozhat létre modelleket a példányban:
-* [Útmutató: kettős modell kezelése](how-to-manage-model.md)
+* [Útmutató: egyéni modellek kezelése](how-to-manage-model.md)

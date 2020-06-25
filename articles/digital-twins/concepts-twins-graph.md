@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 4e2b223337bbe5d46f314a8d2126ab562b937445
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 79035a2fa2f7f3bed4890faa749661f025cea312
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726081"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362866"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
 
@@ -187,8 +187,8 @@ Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő me
 ## <a name="next-steps"></a>További lépések
 
 Lásd: gráf-elemek kezelése az Azure Digital Twin API-kkal:
-* [Útmutató: digitális kettős kezelés](how-to-manage-twin.md)
-* [Útmutató: kettős gráf kezelése kapcsolatokkal](how-to-manage-graph.md)
+* [Útmutató: digitális ikrek kezelése](how-to-manage-twin.md)
+* [Útmutató: a Twin gráf kezelése kapcsolatok használatával](how-to-manage-graph.md)
 
 Vagy Ismerje meg az Azure Digital ikrek Twin Graph lekérdezését az információkhoz:
 * [Fogalmak: lekérdezési nyelv](concepts-query-language.md)

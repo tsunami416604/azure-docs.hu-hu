@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ad222c5fb5554698b6166b0b10a52221a31b360
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 5b54f87635e1ea972778b0039dc34170c5b7ab8a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886208"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362288"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
 A felhőalapú rétegek a Azure File Sync választható funkciója, amelyekben a gyakran használt fájlok a kiszolgálón helyileg vannak gyorsítótárazva, míg az összes többi fájl a házirend-beállítások alapján Azure Files. Egy fájl többszintű kiválasztásakor a Azure File Sync fájlrendszer-szűrő (StorageSync.sys) a fájlt helyileg váltja fel egy mutatóval vagy újraelemzési ponttal. Az újraelemzési pont a fájl URL-címét jelöli Azure Files. A többrétegű fájlok "offline" attribútummal és az NTFS fájlrendszerrel beállított FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútummal is rendelkeznek, így a harmadik féltől származó alkalmazások biztonságosan azonosíthatják a többrétegű fájlokat.
@@ -31,7 +31,11 @@ Amikor egy felhasználó megnyit egy rétegű fájlt, Azure File Sync zökkenőm
 ### <a name="how-does-cloud-tiering-work"></a>Hogyan működik a felhőalapú rétegek működése?
 A Azure File Sync rendszerszűrő minden kiszolgálói végponton létrehoz egy "hő"-t a névtérből. A szolgáltatás az idő múlásával figyeli a hozzáféréseket (olvasási és írási műveleteket), majd a hozzáférés gyakorisága és recency alapján minden fájlhoz hozzárendel egy hő pontszámot. A legutóbb megnyitott fájl gyakran megtekinthető állapotba kerül, míg egy kis ideig nem fér hozzá a fájlhoz. Ha a kiszolgálón lévő fájl mennyisége meghaladja a szabad területhez beállított mennyiség küszöbértékét, akkor a rendszer a leghidegebb fájlokat Azure Files, amíg a szabad terület százalékos értéke nem teljesül.
 
-A Azure File Sync ügynök 4,0-es és újabb verzióiban megadhatja a dátumra vonatkozó házirendet minden olyan kiszolgálói végponton, amely a megadott számú napon belül nem hozzáférő vagy módosított fájlokat tartalmaz.
+Emellett megadhat egy dátum-házirendet minden olyan kiszolgálói végponton, amely a megadott számú napon belül nem elérhető fájlokat fogja felvenni, a rendelkezésre álló helyi tárterülettől függetlenül. Ez egy jó választás, hogy proaktívan szabadítson fel helyi lemezterületet, ha tudja, hogy az adott kiszolgálói végponton lévő fájlokat nem kell egy bizonyos életkoron túl helyileg megőrizni. Ezzel az adott köteten lévő más végpontok számára értékes helyi lemez-kapacitást szabadít fel, így több fájl is gyorsítótárazható.
+
+A Cloud rétegű hő lényegében az összes szinkronizált fájl rendezett listája, és olyan helyen található, amelyen engedélyezve van a felhőalapú rétegek használata. Egy adott hő található egyedi fájl relatív helyzetének meghatározásához a rendszer a következő időbélyegek közül a maximumot használja, az adott sorrendben: MAX (utolsó hozzáférés időpontja, utolsó módosítás időpontja, létrehozás időpontja). Általában a legutóbbi hozzáférési idő nyomon követhető és elérhető. Ha azonban új kiszolgálói végpont jön létre, a felhőalapú rétegek engedélyezve vannak, akkor kezdetben nem volt elég idő a fájl elérésének megfigyeléséhez. A legutóbbi hozzáférési idő hiányában az utolsó módosítás ideje a hő relatív pozíciójának kiértékelésére szolgál. Ugyanez a tartalék érvényes a dátum házirendre. A legutóbbi hozzáférési idő nélkül a dátum-házirend az utolsó módosítás időpontjában fog működni. Ha ez nem érhető el, az egy fájl létrehozási idejére fog visszatérni. Az idő múlásával a rendszer több és több fájlhoz való hozzáférési kérelmet is betart, és a kimutatást a saját maga által követett utolsó hozzáférési idő előállításához használja fel.
+
+A felhő-rétegek nem függnek az NTFS-szolgáltatástól a legutóbbi hozzáférési idő nyomon követéséhez. Ez az NTFS-szolgáltatás alapértelmezés szerint ki van kapcsolva, és a teljesítménnyel kapcsolatos megfontolások miatt nem ajánlott manuálisan engedélyezni ezt a szolgáltatást. A felhő-rétegek a legutóbbi hozzáférési időt külön és nagyon hatékonyan nyomon követik.
 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Mennyibe kerül a fájl minimális mérete a szinthez?
@@ -87,7 +91,7 @@ Több módon is ellenőrizhető, hogy a fájl az Azure-fájlmegosztás szintjér
    *  **Keresse meg a fájl attribútumait a fájlban.**
      Kattintson a jobb gombbal egy fájlra, lépjen a **részletek**menüpontra, majd görgessen le az **attribútumok** tulajdonsághoz. A rétegű fájlok a következő attribútumokkal vannak beállítva:     
         
-        | Attribútum betűjele | Attribútum | Definíció |
+        | Attribútum betűjele | Attribútum | Meghatározás |
         |:----------------:|-----------|------------|
         | A | Archívum | Azt jelzi, hogy a fájlt biztonsági mentési szoftverrel kell biztonsági másolatot készíteni. Ez az attribútum mindig be van állítva, függetlenül attól, hogy a fájl többszintes vagy teljes mértékben a lemezen van-e tárolva. |
         | P | Ritka fájl | Azt jelzi, hogy a fájl ritka fájl. A ritka fájlok olyan speciális fájltípusok, amelyeket az NTFS biztosít a hatékony használatra, ha a lemezen lévő fájl többnyire üres. A Azure File Sync ritka fájlokat használ, mivel a fájlok teljes mértékben, vagy részben visszahívásra kerülnek. A teljes mértékben többrétegű fájlokban a fájl stream a felhőben tárolódik. Egy részben visszanevezett fájlban a fájl egy része már lemezen van. Ha egy fájl teljesen visszahívásra kerül a lemezre, Azure File Sync átalakítja egy ritka fájlból egy normál fájlba. Ez az attribútum csak a Windows Server 2016-es és régebbi verzióra van beállítva.|

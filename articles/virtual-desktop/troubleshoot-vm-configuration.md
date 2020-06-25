@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 81a3d8e08486f76fc23a489acd3138d7b9fe8134
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: df2990e3799d0b16f316c522185ac9b779ca48e4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711629"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362356"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -121,7 +121,8 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 
 ### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>Hiba: a Get-AzWvdSessionHost parancsmagban bejelentkezett állapot a nem elérhető állapotot jeleníti meg.
 
-![A Get-AzWvdSessionHost parancsmag a nem elérhető állapotot jeleníti meg.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![A Get-AzWvdSessionHost parancsmag a nem elérhető állapotot jeleníti meg.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **OK:** Az ügynök nem tudja frissíteni magát egy új verzióra.
 
@@ -194,7 +195,8 @@ Ha problémákat tapasztal a Windowsos virtuális asztal egymás melletti veremb
 
 A **qwinsta** kimenete az **RDP-SxS** fogja listázni a kimenetben, ha a párhuzamos verem telepítve van és engedélyezve van.
 
-![Az egymás melletti verem telepítve van vagy engedélyezve van a kimenetben RDP-SxS-ként felsorolt qwinsta.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Az egymás melletti verem telepítve van vagy engedélyezve van a kimenetben RDP-SxS-ként felsorolt qwinsta.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és ellenőrizze, hogy az értékek egyeznek-e. Ha a beállításkulcsok hiányoznak, vagy az értékek nem egyeznek, kövesse a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md) -lel című témakör utasításait a párhuzamos verem újratelepítésének módjáról.
 
@@ -208,7 +210,8 @@ Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és elle
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Hiba: O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE hibakód.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![O_REVERSE_CONNECT_STACK_FAILURE hibakód.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **OK:** A párhuzamos verem nincs telepítve a munkamenet-gazdagép virtuális gépén.
 
@@ -244,19 +247,21 @@ Az alábbi utasításokat követve futtassa a szervizelést ugyanarról az alhá
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >A VMname a virtuális gép számítógépneve, amely a meghibásodott párhuzamos verem.
 
 7. Az elfogadás gombra kattintva fogadja el a PsExec-licencszerződést.
 
-    ![Szoftverlicenc-szerződés képernyőképe](media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![Szoftverlicenc-szerződés képernyőképe](media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >Ez a párbeszédpanel csak a PsExec első futtatásakor fog megjelenni.
 
 8. Miután a parancssor-munkamenet megnyílik a virtuális gépen a meghibásodott párhuzamos verem használatával, futtassa a qwinsta, és győződjön meg arról, hogy az RDP-SxS nevű bejegyzés elérhető. Ha nem, egy párhuzamos verem nem található a virtuális gépen, így a probléma nem a párhuzamos veremhez van kötve.
 
-    ![Rendszergazdai parancssor](media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![Rendszergazdai parancssor](media/AdministratorCommandPrompt.png)
 
 9. Futtassa a következő parancsot, amely felsorolja a virtuális gépen telepített Microsoft-összetevőket a meghibásodott párhuzamos verem használatával.
 
@@ -324,7 +329,8 @@ Ha szeretné megtekinteni, hogy a Windows 10 Enterprise több munkamenetének me
 3. Válassza **a számítógép névjegye**elemet.
 4. A "version" felirat melletti szám bejelölése A számnak "1809" vagy "1903" értékűnek kell lennie, ahogy az alábbi képen is látható.
 
-    ![A Windows-specifikációk ablak képernyőképe. A verziószám kék színnel van kiemelve.](media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![A Windows-specifikációk ablak képernyőképe. A verziószám kék színnel van kiemelve.](media/windows-specifications.png)
 
 Most, hogy már ismeri a verziószámát, ugorjon a megfelelő szakaszra.
 

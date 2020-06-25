@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 968e753cb8bf4376d2082d5238004c291b8f0938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211941"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362985"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Profil tároló létrehozása Azure NetApp Files és AD DS
 
@@ -53,7 +53,8 @@ Első lépésként be kell állítania egy Azure NetApp Files fiókot.
 
 4. Ha első alkalommal használja a Azure Cloud Shellt, hozzon létre egy Storage-fiókot ugyanabban az előfizetésben, és tartsa meg a Azure NetApp Files és a Windows rendszerű virtuális asztalt.
 
-   ![A Storage-fiók ablak az ablak alján található tároló létrehozása gombbal piros színnel kiemelve.](media/create-storage-button.png)
+   > [!div class="mx-imgBorder"]
+   > ![A Storage-fiók ablak az ablak alján található tároló létrehozása gombbal piros színnel kiemelve.](media/create-storage-button.png)
 
 5. Azure Cloud Shell betöltése után futtassa a következő két parancsmagot.
 
@@ -67,7 +68,8 @@ Első lépésként be kell állítania egy Azure NetApp Files fiókot.
 
 6. Az ablak bal oldalán válassza a **minden szolgáltatás**lehetőséget. Adja meg **Azure NetApp Files** a menü tetején megjelenő keresőmezőbe.
 
-   ![Képernyőfelvétel a "Azure NetApp Files" kifejezést a minden szolgáltatás keresőmezőbe. A keresési eredmények a Azure NetApp Files erőforrást jelenítik meg.](media/azure-netapp-files-search-box.png)
+   > [!div class="mx-imgBorder"]
+   > ![Képernyőfelvétel a "Azure NetApp Files" kifejezést a minden szolgáltatás keresőmezőbe. A keresési eredmények a Azure NetApp Files erőforrást jelenítik meg.](media/azure-netapp-files-search-box.png)
 
 
 7. Válassza a **Azure NetApp Files** lehetőséget a keresési eredmények között, majd válassza a **Létrehozás**lehetőséget.
@@ -108,7 +110,8 @@ Ezután csatlakoznia kell egy Active Directory-csatlakozáshoz.
 
 1. Válassza a lap bal oldalán található menü **Active Directory kapcsolatok** elemét, majd kattintson a JOIN ( **Csatlakozás** ) gombra a **Csatlakozás Active Directory** oldal megnyitásához.
 
-   ![A csatlakozás Active Directory kapcsolatok menüjének képernyőképe.](media/active-directory-connections-menu.png)
+   > [!div class="mx-imgBorder"]
+   > ![A csatlakozás Active Directory kapcsolatok menüjének képernyőképe.](media/active-directory-connections-menu.png)
 
 2. A csatlakozás **Active Directory** lapon adja meg a következő értékeket a kapcsolódáshoz:
 
@@ -148,7 +151,8 @@ A kötet létrehozása után konfigurálja a kötet-hozzáférési paramétereke
 
 6.  A csatlakoztatási útvonal megtekintéséhez válassza az **Ugrás az erőforráshoz** lehetőséget, és keresse meg az Áttekintés lapon.
 
-    ![Az áttekintő képernyő képernyőképe egy piros nyíllal, amely a csatlakoztatási útvonalra mutat.](media/overview-mount-path.png)
+    > [!div class="mx-imgBorder"]
+    > ![Az áttekintő képernyő képernyőképe egy piros nyíllal, amely a csatlakoztatási útvonalra mutat.](media/overview-mount-path.png)
 
 ## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>A FSLogix konfigurálása a munkamenet-gazdagépen futó virtuális gépeken (VM)
 
@@ -218,7 +222,8 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 4. Nyissa meg **Azure NetApp Files**, válassza ki a Azure NetApp Files-fiókot, majd válassza a **kötetek**lehetőséget. A kötetek menü megnyitása után válassza ki a megfelelő kötetet.
 
-   ![Képernyőfelvétel a Azure Portal korábban beállított NetApp-fiókról a kötetek gomb kiválasztásával.](media/netapp-account.png)
+   > [!div class="mx-imgBorder"]
+   > ![Képernyőfelvétel a Azure Portal korábban beállított NetApp-fiókról a kötetek gomb kiválasztásával.](media/netapp-account.png)
 
 5. Lépjen az **Áttekintés** lapra, és ellenőrizze, hogy a FSLogix-profil tárolója használ-e helyet.
 
@@ -226,7 +231,8 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
    Ebben a mappában léteznie kell egy profilt tartalmazó VHD-nek (vagy VHDX), amely az alábbi példában láthatóhoz hasonló.
 
-   ![Képernyőkép a mappa tartalmáról a csatlakoztatási útvonalon. A belül egy "Profile_ssbb" nevű VHD-fájl.](media/mount-path-folder.png)
+   > [!div class="mx-imgBorder"]
+   > ![Képernyőkép a mappa tartalmáról a csatlakoztatási útvonalon. A belül egy "Profile_ssbb" nevű VHD-fájl.](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>További lépések
 

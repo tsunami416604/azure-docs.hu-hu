@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: a27bd98b723e6e827ba7d9e155586d336ababc49
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 813e86e8446932d1618fff1853cee8972570f43f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100766"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85363019"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Eseménynaplók konfigurálása és elérése az Azure CLI-ben
 
 Az [Azure Database for MySQL naplókat](concepts-audit-logs.md) az Azure CLI-ből is konfigurálhatja.
-
-> [!IMPORTANT]
-> A naplózási funkció jelenleg előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +30,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
 
->[!NOTE]
+>[!IMPORTANT]
 > Azt javasoljuk, hogy csak azokat az eseményeket és felhasználókat naplózza, amelyek szükségesek a naplózáshoz, hogy a kiszolgáló teljesítménye ne legyen nagy hatással.
 
 A naplózást a következő lépésekkel engedélyezheti és konfigurálhatja:

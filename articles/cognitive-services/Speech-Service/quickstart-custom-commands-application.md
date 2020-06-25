@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 14bf43375e2ebe37d496a7343c5f85c41f55bc29
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307477"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362142"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Hangvezérelt asszisztens létrehozása egyéni parancsokkal
 
@@ -24,7 +24,7 @@ Ebben a rövid útmutatóban egy alapszintű egyéni parancsok alkalmazását ho
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech-erőforrás létrehozása<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Hozzon létre egy Azure Speech-erőforrást egy olyan régióban, amely támogatja az egyéni parancsokat.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * Töltse le a minta [Smart Room Lite](https://aka.ms/speech/cc-quickstart) JSON-fájlját.
 > * Töltse le a [Windows Voice Assistant-ügyfél](https://aka.ms/speech/va-samples-wvac)legújabb verzióját.
 
@@ -82,7 +82,8 @@ Ekkor az új egyéni parancsok alkalmazás áttekintését kell látnia.
     - A TV bekapcsolása
     - A hőmérséklet beállítása 80 fokos értékre
     - Kikapcsolás
-    - Riasztás beállítása
+    - A TV
+    - Ébresztés beállítása 5 óráig
 
 ## <a name="integrate-custom-commands-application-in-an-assistant"></a>Egyéni parancsok alkalmazásának integrálása asszisztensként
 Ahhoz, hogy hozzáférhessen az alkalmazáshoz a Speech studión kívül, közzé kell tennie az alkalmazást. Az alkalmazások közzétételéhez konfigurálnia kell az előrejelzési LUIS-erőforrást.  
@@ -110,7 +111,7 @@ Azt is megteheti, hogy ezeket az értékeket a **Beállítások**  >  **általá
 
 A jelen cikk hatókörében az előfeltételek részeként letöltött Windows Voice Assistant-ügyfelet fogjuk használni. Bontsa ki a mappát.
 1. **VoiceAssistantClient.exe**elindítása.
-1. Hozzon létre egy új közzétételi profilt, és adja meg a **kapcsolatprofil**értékét. Az **általános beállítások** szakaszban adja meg az értékek **előfizetési kulcs**, az **előfizetési kulcs régiója** és az **egyéni parancsok alkalmazás-azonosító**értéket.
+1. Hozzon létre egy új közzétételi profilt, és adja meg a **kapcsolatprofil**értékét. Az **általános beállítások** szakaszban adja meg az értékek **előfizetési kulcsát** (ez ugyanaz, mint az alkalmazás közzétételekor mentett **beszédfelismerési erőforrás kulcsának** értéke), az **előfizetési kulcs régiója** és az **egyéni parancsok alkalmazás-azonosítója**.
     > [!div class="mx-imgBorder"]
     > ![WVAC-profil létrehozása](media/custom-commands/create-profile.png)
 1. Válassza **a Mentés és a profil alkalmazása**lehetőséget.

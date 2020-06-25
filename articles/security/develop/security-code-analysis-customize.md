@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871891"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362091"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
 
@@ -61,15 +61,15 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
 - A **cél**mezőben adjon meg egy vagy több megjelölést egy fájlhoz, könyvtárhoz vagy szűrési mintához. Ezek a megadott beállítások egy vagy több elemzett bináris fájlra oldhatók fel:
     - Több megadott célpontot pontosvesszővel kell elválasztani (;).
     - A megadott elem lehet egyetlen fájl, vagy helyettesítő karakter is szerepelhet.
-    - A könyvtár specifikációinak mindig a \\* értékkel kell végződnie.
-    - Példák:
+    - A könyvtár specifikációinak mindig a * értékkel kell végződnie \\ .
+    - Angol nyelvű Példák:
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
 
-- Ha a **Type (típus** ) listában kiválasztja a **parancssort** , a binskim. exe fájlt kell futtatnia:
-     - Győződjön meg arról, hogy a binskim. exe első argumentumai a művelet **elemzése** után egy vagy több elérésiút-specifikáció. Minden elérési út lehet teljes elérési út vagy a forrás könyvtárhoz viszonyított elérési út.
+- Ha a **Type (típus** ) listában kiválasztja a **parancssort** , binskim.exe kell futtatnia:
+     - Győződjön meg arról, hogy az binskim.exe első argumentumai a műveletek **elemzését** , majd egy vagy több elérésiút-specifikációt követnek. Minden elérési út lehet teljes elérési út vagy a forrás könyvtárhoz viszonyított elérési út.
      - A célként megadott elérési utakat szóközzel kell elválasztani.
      - Kihagyhatja az **/o** vagy a **/output** beállítást. A kimeneti érték hozzá lesz adva vagy lecserélve.
      - A standard parancssori konfigurációk a következőképpen láthatók.
@@ -78,7 +78,7 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
            analyze *.dll *.exe --recurse --verbose
 
           > [!NOTE]
-          > A záró \\* fontos, ha a célként megadott könyvtárakat ad meg.
+          > A záró \\ * fontos, ha a célként megadott könyvtárakat ad meg.
 
 További információ a BinSkim parancssori argumentumokról, a szabályok azonosító alapján vagy kilépési kódokról: [BinSkim felhasználói útmutató](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 
@@ -103,40 +103,10 @@ Az elérhető lehetőségek a következők:
   - **Egyeztetési időkorlát**: az az időtartam másodpercben, ameddig a keresőnek meg kell felelnie az ellenőrzések elhagyása előtt.
   - **Fájl vizsgálata olvasási puffer mérete**: a tartalom olvasásakor használt puffer mérete bájtban megadva. Az alapértelmezett érték a 524 288.  
   - **Maximális fájl vizsgálatának olvasási bájtjai**: egy fájlból beolvasott bájtok maximális száma a tartalom elemzése során. Az alapértelmezett érték a 104 857 600.
-  - **Vezérlési beállítások** > **futtassa ezt a feladatot**: Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
+  - **Vezérlési beállítások**  >  A **feladat futtatása**: Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
   - **Verzió**: a Build feladat verziója az Azure DevOps-n belül. Ez a beállítás nem gyakran használatos.
 
 A feladathoz tartozó YAML-konfigurációval kapcsolatos információkért tekintse meg a [hitelesítő adatok szkennerének YAML beállításait](yaml-configuration.md#credential-scanner-task)
-
-## <a name="microsoft-security-risk-detection-task"></a>Microsoft biztonsági kockázatok észlelése feladat
-
-> [!NOTE]
-> A MSRD feladat használata előtt létre kell hoznia és konfigurálnia kell egy fiókot a Microsoft biztonsági kockázatok észlelése (MSRD) szolgáltatással. A szolgáltatáshoz külön előkészítési folyamat szükséges. A bővítmény legtöbb más feladatával ellentétben ehhez a feladathoz külön előfizetésre van szükség a MSRD.
->
-> Tekintse meg a [Microsoft biztonsági kockázatok észlelése](https://aka.ms/msrddocs) és a [Microsoft biztonsági kockázatok észlelése:](https://docs.microsoft.com/security-risk-detection/how-to/) útmutató című témakört.
-
-A feladat konfigurálásának részletei az alábbi listában láthatók. Bármely felhasználói felületi elemhez rákattinthat erre az elemre, ha segítségre van szüksége.
-
-   - **Az Azure DevOps szolgáltatás végpontjának neve a MSRD-hez**: az Azure DevOps Service-végpont általános típusa tárolja a BETÁROLT MSRD-példány URL-címét és a REST API hozzáférési tokenjét. Ha létrehozott egy ilyen végpontot, itt adhatja meg. Ellenkező esetben válassza a **kezelés** hivatkozást, hogy új szolgáltatási végpontot hozzon létre és konfiguráljon ehhez a MSRD feladathoz.
-   - **Fiókazonosító**: a MSRD-fiók URL-címéből beolvasható GUID azonosító.
-   - **Bináris fájlok URL-címei**: a nyilvánosan elérhető URL-címek pontosvesszővel tagolt listája. A fuzzy számítógép ezeket az URL-eket használja a bináris fájlok letöltéséhez.
-   - **A kezdőtőke-fájlok URL-címei**: a nyilvánosan elérhető URL-címek pontosvesszővel tagolt listája. A fuzzy számítógép ezeket az URL-címeket használja a magok letöltéséhez. Az érték megadása nem kötelező, ha a magok fájljai a bináris fájlokkal együtt letöltődnek.
-   - **Operációsrendszer-platform típusa**: a zavaros feladatot futtató gépek operációs rendszerének platformja. Az elérhető értékek a **Windows** és a **Linux**.
-   - **Windows Edition/Linux Edition**: a feladattípust futtató gépek operációsrendszer-kiadása. Ha a gépek eltérő operációsrendszer-kiadással rendelkeznek, felülírhatja az alapértelmezett értéket.
-   - **Csomag telepítési parancsfájlja**: a tesztelési gépen futtatandó parancsfájl. Ez a szkript telepíti a tesztelési célként megadott programot és annak függőségeit a zavaros feladatok elküldése előtt.
-   - **Feladatok küldésének paraméterei**:
-       - **Vetőmag könyvtára**: a magokat tartalmazó, a zavaros gépen található könyvtár elérési útja.
-       - **Vetőmag-kiterjesztés**: a magok fájlnév-kiterjesztése.
-       - **Tesztelési illesztőprogram végrehajtható**fájlja: a cél végrehajtható fájl elérési útja a fuzzy számítógépen.
-       - **Tesztelési illesztőprogram végrehajtható architektúrája**: a cél végrehajtható fájl architektúrája. Az elérhető értékek: **x86** és **amd64**.
-       - **Tesztelési illesztőprogram argumentumai**: a teszt végrehajtható fájlnak átadott parancssori argumentumok. A (z) "% TESTFILE%" argumentumot, beleértve az idézőjeleket is, a rendszer automatikusan a célfájl teljes elérési útjára cseréli. Ezt a fájlt a tesztelési illesztőprogram elemzi, és kötelező megadni.
-       - Teszt **befejezésekor kilépő illesztőprogram-folyamat kilépése**: jelölje be ezt a jelölőnégyzetet, ha a teszt illesztőprogramját a befejezés után le kell fejezni. Törölje a jelölést, ha a teszt illesztőprogramjának kényszerített lezártnak kell lennie.
-       - **Maximális időtartam (másodpercben)**: annak a leghosszabb ésszerű várható időnek a becslése, amelyet a célalkalmazás igényel a bemeneti fájl elemzéséhez. Minél pontosabb a becslés, annál hatékonyabban fut a zavaros alkalmazás.
-       - A **tesztelési illesztőprogram többször is futtatható**: jelölje be ezt a jelölőnégyzetet, ha a tesztelési illesztőprogram egy állandó vagy közös globális állapottól függően többször is futtatható.
-       - A **tesztelési illesztőprogram**átnevezhető: jelölje be ezt a jelölőnégyzetet, ha az illesztőprogram végrehajtható fájlját átnevezni lehet, és továbbra is megfelelően működik.
-       - **A Fuzzing alkalmazás egyetlen operációsrendszer-folyamatként fut**: jelölje be ezt a jelölőnégyzetet, ha a tesztelési illesztőprogram egyetlen operációsrendszer-folyamat alatt fut. Törölje, ha a teszt-illesztőprogram további folyamatokat indít el.
-
-A feladathoz tartozó YAML-konfigurációval kapcsolatos információkért tekintse meg a [Microsoft biztonsági kockázatok észlelésére vonatkozó YAML-beállításokat](yaml-configuration.md#microsoft-security-risk-detection-task) .
 
 ## <a name="roslyn-analyzers-task"></a>A-elemzők feladata
 
@@ -153,11 +123,11 @@ Az elérhető lehetőségek a következők:
 - **Szabály**: az értékek az **SDL szükségesek**, az **SDL javasolt**vagy a saját egyéni szabálykészlet.
 - **Elemzők verziója**: javasoljuk, hogy válassza a **legutóbbi**lehetőséget.
 - **Fordítói figyelmeztetések mellőzése fájl**: a letiltott figyelmeztető azonosítók listáját tartalmazó szövegfájl.
-- **Vezérlési beállítások** > **futtassa ezt a feladatot**: Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
+- **Vezérlési beállítások**  >  A **feladat futtatása**: Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
 
 > [!NOTE]
 >
-> - A a a fordítóval integrált, és csak a CSC. exe összeállítás részeként futtatható. Ezért ehhez a feladathoz a fordításban korábban futtatott fordítói parancsnak újra kell játszania vagy újra futnia. Ezt a lekérést vagy futtatást a Visual Studio Team Services (VSTS) lekérdezésével végezheti el az MSBuild Build feladat naplóihoz.
+> - A a a fordítóval integrált és csak csc.exe fordítás részeként futtatható. Ezért ehhez a feladathoz a fordításban korábban futtatott fordítói parancsnak újra kell játszania vagy újra futnia. Ezt a lekérést vagy futtatást a Visual Studio Team Services (VSTS) lekérdezésével végezheti el az MSBuild Build feladat naplóihoz.
 >
 >   Nincs más mód arra, hogy a feladat megbízhatóan lekérje az MSBuild fordítási parancssort a Build definícióból. Egy Szabadkézi szövegmező hozzáadásával engedélyezte a felhasználóknak a parancssorok megadását. Azonban nehéz lenne ezeket a parancssori vonalakat naprakészen tartani, és szinkronizálni a fő buildtel.
 >

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3348920260b6c256b25d0ff2419cdfd2a00dea35
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207311"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362441"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Profil tároló létrehozása Azure Files és Azure AD DS
 
@@ -93,7 +93,8 @@ A Storage-fiók elérési kulcsának beszerzése:
 
     Ezzel letölt egy RDP-fájlt, amely lehetővé teszi, hogy a saját hitelesítő adataival jelentkezzen be a virtuális gépre.
 
-    ![A virtuális gép kapcsolódása ablak RDP lapjának képernyőképe.](media/rdp-tab.png)
+    > [!div class="mx-imgBorder"]
+    > ![A virtuális gép kapcsolódása ablak RDP lapjának képernyőképe.](media/rdp-tab.png)
 
 6. Amikor bejelentkezett a virtuális gépre, futtassa a parancssort rendszergazdaként.
 
@@ -156,11 +157,13 @@ FSLogix-profil tárolójának konfigurálása:
 
 9.  Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**lehetőséget, majd válassza a **DWORD (32 bites) értéket.** Nevezze el az **engedélyezett** értéket, és állítsa az **adatértéket** **1-re**.
 
-    ![A profilok kulcs képernyőképe. A REG_DWORD fájl ki van emelve, és az adatérték értéke 1.](media/dword-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![A profilok kulcs képernyőképe. A REG_DWORD fájl ki van emelve, és az adatérték értéke 1.](media/dword-value.png)
 
 10. Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**, majd a **többkarakterláncos érték**elemet. Nevezze el az érték **VHDLocations** , és adja meg a Azure Files-megosztás URI-ját `\\fsprofile.file.core.windows.net\share` adatértékként.
 
-    ![A VHDLocations fájlt bemutató profilok kulcs képernyőképe. Az adatértéke a Azure Files-megosztás URI-JÁT jeleníti meg.](media/multi-string-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![A VHDLocations fájlt bemutató profilok kulcs képernyőképe. Az adatértéke a Azure Files-megosztás URI-JÁT jeleníti meg.](media/multi-string-value.png)
 
 ## <a name="assign-users-to-a-session-host"></a>Felhasználók társítása egy munkamenet-gazdagéphez
 

@@ -1,5 +1,5 @@
 ---
-title: Ikermodell kezelése
+title: Egyéni modellek kezelése
 titleSuffix: Azure Digital Twins
 description: Megtudhatja, hogyan hozhat létre, szerkeszthet és törölhet modelleket az Azure digitális Twins-n belül.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 6c023ff8419a41353e0c8aff70d04c5b9fcb27a4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 7d9fd0386f13f6c3e6df7b9d8bcf120b55c6446d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725647"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362781"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -255,4 +255,4 @@ A modellek az Azure Digital Twins CLI használatával is kezelhetők. A parancso
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet digitális ikreket a modelljei alapján:
-* [Útmutató: digitális kettős kezelés](how-to-manage-twin.md)
+* [Útmutató: digitális ikrek kezelése](how-to-manage-twin.md)
