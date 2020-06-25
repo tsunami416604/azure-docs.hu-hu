@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/07/2019
+ms.date: 06/24/2020
 ms.author: abnarain
-ms.openlocfilehash: f27132eb21d245d0d26de910abba088ba3b8efde
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170973"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315110"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -22,7 +22,9 @@ Ez a cikk a Azure Data Factory saját üzemeltetésű integrációs moduljának 
 
 ## <a name="common-errors-and-resolutions"></a>Gyakori hibák és megoldások
 
-### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Hibaüzenet: a saját üzemeltetésű Integration Runtime nem tud kapcsolódni a Cloud Service-hez
+### <a name="error-message"></a>Hibaüzenet: 
+
+`Self-hosted integration runtime can't connect to cloud service`
 
 ![Saját üzemeltetésű IR-kapcsolati probléma](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
@@ -86,7 +88,8 @@ A várt válasz a következő:
 > *    Győződjön meg arról, hogy a "wu2.frontend.clouddatahub.net/" TLS/SSL-tanúsítvány megbízható-e a proxykiszolgálón.
 > *    Ha Active Directory hitelesítést használ a proxyn, módosítsa a szolgáltatásfiókot arra a felhasználói fiókra, amely a proxyt "Integration Runtime szolgáltatás" néven éri el.
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Hibaüzenet: a saját üzemeltetésű integrációs modul csomópontja/logikai a (z) rendszer inaktív/"fut (korlátozott)" állapotban van.
+### <a name="error-message"></a>Hibaüzenet: 
+`Self-hosted integration runtime node/ logical SHIR is in Inactive/ "Running (Limited)" state`
 
 #### <a name="cause"></a>Ok 
 
@@ -132,7 +135,147 @@ Ez a viselkedés akkor fordul elő, ha a csomópontok nem tudnak kommunikálni e
     - Adja hozzá az IP-címet a gazdagépek leképezéséhez az összes üzemeltetett virtuális gép gazdagépének fájljaiban.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshoot-connectivity-issue"></a>Kapcsolódási probléma megoldása
+
+### <a name="troubleshoot-connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>A saját üzemeltetésű IR és Data Factory vagy saját üzemeltetésű IR és adatforrás/fogadó közötti kapcsolódási problémák megoldása
+
+A hálózati kapcsolat problémájának megoldásához tudnia kell, hogyan [gyűjtheti a hálózati nyomkövetést](#how-to-collect-netmon-trace), hogyan használhatja azt, és [elemezheti a netmon nyomkövetést](#how-to-analyze-netmon-trace) , mielőtt a netmon-eszközöket valós esetekben alkalmazza a saját üzemeltetésű integrációs modulból.
+
+Időnként, ha a kapcsolódási problémákat (például az alábbiakat) a saját üzemeltetésű integrációs modul és a Data Factory között elhárítja: 
+
+![HTTP-kérelem sikertelen](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
+
+Vagy a saját üzemeltetésű IR és adatforrás/fogadó között a következő hibákat tapasztaljuk:
+
+**Hibaüzenet:**
+`Copy failed with error:Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server: ‘IP address’`
+
+**Hibaüzenet:**
+`One or more errors occurred. An error occurred while sending the request. The underlying connection was closed: An unexpected error occurred on a receive. Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. An existing connection was forcibly closed by the remote host Activity ID.`
+
+**Megoldás:** A fenti problémák megoldásakor a további hibaelhárításhoz tekintse meg a következő utasításokat:
+
+Végezze el a netmon nyomkövetést, és elemezze tovább.
+- Először beállíthatja a szűrőt úgy, hogy a kiszolgálóról az ügyfél felé irányuló alaphelyzetbe állítson. Az alábbi példában látható, hogy a kiszolgáló oldalon Data Factory kiszolgáló található.
+
+    ![A adatfeldolgozó kiszolgáló](media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png)
+
+- A csomag alaphelyzetbe állítása után a következő TCP-vel keresheti meg a beszélgetést.
+
+    ![Beszélgetés keresése](media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png)
+
+- Ezután a szűrő eltávolításával lekérheti az ügyfél és Data Factory kiszolgáló közötti konverziót.
+
+    ![Beszélgetés beolvasása](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
+- Az összegyűjtött netmon-nyomkövetés alapján megtudhatjuk, hogy a TTL (TimeToLive) összesen 64. A [cikkben](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) említett **alapértelmezett TTL-és ugrási határértékek** (az alább leírtak szerint) alapján láthatjuk, hogy ez a Linux rendszer, amely alaphelyzetbe állítja a csomagot, és a leválasztást okoz.
+
+    Az alapértelmezett TTL-és ugrás-határértékek eltérőek lehetnek a különböző operációs rendszerek között:
+    - Linux kernel 2,4 (kb. 2001): 255 TCP, UDP és ICMP rendszerhez
+    - Linux kernel 4,10 (2015): 64 TCP, UDP és ICMP rendszerhez
+    - Windows XP (2001): 128 TCP, UDP és ICMP esetén
+    - Windows 10 (2015): 128 TCP, UDP és ICMP esetén
+    - Windows Server 2008:128 TCP, UDP és ICMP esetén
+    - Windows Server 2019 (2018): 128 TCP, UDP és ICMP rendszerhez
+    - macOS (2001): 64 a TCP, az UDP és az ICMP protokollhoz
+
+    ![TTL 61](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png)
+    
+    Azonban a fenti példában a 64 helyett 61 jelenik meg, mert ha a hálózati csomag eléri a célhelyet, a különböző ugrásokra, például útválasztók/hálózati eszközökre kell mutatnia. Az útválasztók/hálózati eszközök száma a végső TTL-ben lesz levonva.
+    Ebben az esetben láthatjuk, hogy az Alaphelyzetbe állítás a 64-es TTL-vel rendelkező Linux rendszerből is elvégezhető.
+
+- A negyedik ugrást a saját üzemeltetésű IR-ből kell ellenőrizni annak ellenőrzéséhez, hogy az eszköz alaphelyzetbe állítása honnan származhat.
+ 
+    *Hálózati csomag az A Linux rendszertől a TTL 64-> B TTL 64 mínusz 1 = 63-> C TTL 63 mínusz 1 = 62-> TTL 62 mínusz 1 = 61 saját üzemeltetésű IR*
+
+- Ideális esetben a TTL 128 lesz, ami azt jelenti, hogy a Windows rendszer fut a Data Factory. Ahogy az alábbi példában is látható, a *128 – 107 = 21 ugrás*, ami azt jelenti, hogy a csomaghoz tartozó 21 ugrást a rendszer a TCP 3-kézfogás során Data Factory a saját üzemeltetésű IR-be küldi.
+ 
+    ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
+
+    Ezért be kell vonnia a hálózati csapatot annak ellenőrzéséhez, hogy a negyedik Ugrás a saját üzemeltetésű integrációs modulból származik-e. Ha a tűzfal Linux rendszer, akkor ellenőrizze, hogy az eszköz miért állítja vissza a csomagot a TCP 3 kézfogás után. Ha azonban nem tudja, hol kell megvizsgálnia a vizsgálatot, próbálja meg a netmon-nyomkövetést a saját üzemeltetésű integrációs modulból és a tűzfalból összekapcsolni a problémás idő alatt, hogy kiderítse, melyik eszköz állíthatja alaphelyzetbe ezt a csomagot Ebben az esetben arra is szükség van, hogy a hálózati csapatot tovább folytassa.
+
+### <a name="how-to-collect-netmon-trace"></a>Netmon-nyomkövetés gyűjtése
+
+1.  Töltse le a netmon-eszközöket [erről a webhelyről](https://www.microsoft.com/en-sg/download/details.aspx?id=4865), és telepítse azt a kiszolgálói gépre (a problémával rendelkező kiszolgálóra) és az ügyfélre (például saját üzemeltetésű IR-re).
+
+2.  Hozzon létre egy mappát, például a következő elérési úton: *D:\netmon*. Győződjön meg arról, hogy elegendő lemezterülettel rendelkezik a napló mentéséhez.
+
+3.  Az IP-cím és a port adatainak rögzítése. 
+    1. Indítson el egy parancssort.
+    2. Válassza a Futtatás rendszergazdaként lehetőséget, és futtassa a következő parancsot:
+       
+        ```
+        Ipconfig /all >D:\netmon\IP.txt
+        netstat -abno > D:\netmon\ServerNetstat.txt
+        ```
+
+4.  Rögzítse a netmon nyomkövetését (hálózati csomag).
+    1. Indítson el egy parancssort.
+    2. Válassza a Futtatás rendszergazdaként lehetőséget, és futtassa a következő parancsot:
+        
+        ```
+        cd C:\Program Files\Microsoft Network Monitor 3
+        ```
+    3. A hálózat lap rögzítéséhez három különböző parancsot használhat:
+        - A: RoundRobin file parancs (ez csak egy fájlt fog rögzíteni, és felülírja A régi naplókat).
+
+            ```
+            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
+            ```         
+        - B. lehetőség: láncolt fájl parancs (ez az új fájlt fogja létrehozni, ha elérte a 200 MB-ot).
+        
+            ```
+            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
+            ```          
+        - C. lehetőség: ütemezett fájl parancs.
+
+            ```
+            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
+            ```  
+
+5.  Nyomja le a **CTRL + C** billentyűkombinációt a netmon nyomkövetés rögzítésének leállításához.
+ 
+> [!NOTE]
+> Ha csak a netmon nyomkövetést szeretné összegyűjteni az ügyfélszámítógépen, kérje le a kiszolgáló IP-címét, hogy segítsen a nyomkövetés elemzésében.
+
+### <a name="how-to-analyze-netmon-trace"></a>Netmon-nyomkövetés elemzése
+
+Ha a **8.8.8.8 888** -as netmon-nyomkövetéssel próbálkozik a fent leírtak szerint, az alábbi nyomkövetés látható:
+
+![netmon nyomkövetés 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
+
+![netmon nyomkövetés 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
+ 
+
+Ez azt jelenti, hogy a **888**-es porton alapuló TCP-csatlakozás nem végezhető el a **8.8.8.8** -kiszolgáló oldalára, így két **SynReTransmit** további csomagot láthat. Mivel a Source **HOST2** nem tudott kapcsolódni az **8.8.8.8** -hez az első csomagban, továbbra is a kapcsolódást fogja végezni.
+
+> [!TIP]
+> - Kattintson a **szűrő**  ->  **szabványos szűrő**  ->  **címek**  ->  **IPv4-címek**betöltése lehetőségre.
+> - Adja meg a bemeneti **IPv4.-címek = = 8.8.8.8** szűrőként, majd kattintson az **alkalmaz**gombra. Ezt követően csak a helyi gépről érkező kommunikáció jelenik meg a cél **8.8.8.8**.
+
+![címek szűrése 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
+        
+![címek szűrése 2](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png)
+
+Az alábbi példa egy jó forgatókönyv megjelenését mutatja be. 
+
+- Ha a Telnet **8.8.8.8 53** a probléma nélkül működik, láthatja a TCP 3 kézfogást, majd a munkamenet a TCP 4 kézfogással fejeződik be.
+
+    ![példa az 1. jó forgatókönyvre](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png)
+     
+    ![helyes forgatókönyv 2. példa](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png)
+
+- A fenti TCP 3 kézfogás alapján a következő munkafolyamat látható:
+
+    ![TCP 3 kézfogás munkafolyamata](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png)
+ 
+- A munkamenet és a munkafolyamata befejezéséhez a TCP 4 kézfogás a következőképpen fog megjelenni:
+
+    ![TCP 4 kézfogás](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
+
+    ![TCP 4 kézfogás munkafolyamata](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
+
+
+## <a name="next-steps"></a>További lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 

@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1878004f51a66ba414c3e74be97c7135a51295bc
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763703"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317464"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Váratlan alkalmazás szerepel az alkalmazások listájában
 
@@ -66,7 +66,7 @@ Ha az **összes alkalmazásra**szűri, a **minden alkalmazás** **lista** megjel
 
 5. Új alkalmazás regisztrációjának hozzáadásakor hozzon létre egy egyéni fejlesztésű alkalmazást a [v 2.0 alkalmazás regisztrációs portálján](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
-6. Ha olyan alkalmazást ad hozzá, amelyet a Visual Studio [ASP.net hitelesítési módszereivel](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatásaival](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) fejleszt
+6. Ha olyan alkalmazást ad hozzá, amelyet a Visual Studio [ASP.net hitelesítési módszereivel](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatásaival](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) fejleszt
 
 7. Egyszerű szolgáltatás létrehozásakor az [Azure ad PowerShell-modul](/powershell/azure/install-adv2?view=azureadps-2.0) használatával
 

@@ -13,12 +13,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 451615ae5a642260a596ee93dc27f04cfa4b644e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 893f449c6a8e6b41a79fe9d7c26db461b757e4a3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298157"
+ms.locfileid: "85317764"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Alkalmazások migrálása a Microsoft hitelesítési tárba (MSAL)
 
@@ -57,7 +57,8 @@ V: Igen. 2020. június 30-ig a továbbiakban nem fogunk új funkciókat hozzáad
 __K: Hogyan tudni, hogy mely alkalmazások használják a ADAL-t?__  
 A: Ha az alkalmazás forráskódját használja, a fenti áttelepítési útmutatók alapján meghatározhatja, hogy az alkalmazás melyik függvénytárat és hogyan telepítse át az MSAL-re. Ha nincs hozzáférése az alkalmazás forráskódhoz, [megnyithat egy támogatási kérést](developer-support-help-options.md#open-a-support-request) a regisztrált alkalmazások listájának beszerzéséhez és az egyes alkalmazások által használt könyvtárhoz.
 
-__K: a meglévő ADAL-alkalmazások továbbra is működni fognak?__ A: a meglévő alkalmazásai módosítás nélkül továbbra is működőképesek lesznek. Ha azt tervezi, hogy 2022. június 30-án továbbra is megtartja őket, érdemes frissíteni őket a MSAL, hogy biztonságban maradjanak, de a MSAL való Migrálás nem szükséges a meglévő funkciók fenntartása érdekében.
+__K: a meglévő ADAL-alkalmazások továbbra is működni fognak?__  
+A: a meglévő alkalmazásai módosítás nélkül továbbra is működőképesek lesznek. Ha azt tervezi, hogy 2022. június 30-án továbbra is megtartja őket, érdemes frissíteni őket a MSAL, hogy biztonságban maradjanak, de a MSAL való Migrálás nem szükséges a meglévő funkciók fenntartása érdekében.
 
 __K: Miért érdemes befektetni a MSAL-re?__  
 A: a MSAL olyan új szolgáltatásokat tartalmaz, amelyek nem a ADAL, beleértve a növekményes belefoglalást, az egyszeri bejelentkezést és a jogkivonat-gyorsítótárazási kezelést. A ADAL-től eltérően a MSAL a 2022. június 30-ig továbbra is a biztonsági javításokat fogja kapni. [További információ](msal-overview.md).

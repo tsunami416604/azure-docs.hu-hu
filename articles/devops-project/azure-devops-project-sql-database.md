@@ -8,19 +8,19 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 93b150d47f1703662ebda5b017e1824cf74b7ab0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233703"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318624"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Oktatóanyag: a ASP.NET-alkalmazás üzembe helyezése és Azure SQL Database kód használata az Azure DevOps Starter használatával
 
 Az Azure DevOps Starter egy egyszerűsített felhasználói felülettel rendelkezik, ahol meglévő kód-és git-tárházat hozhat létre, vagy kiválaszthat egy minta alkalmazást egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamat Azure-ba való létrehozásához. 
 
 A DevOps Starter is:
-* Automatikusan létrehoz Azure-erőforrásokat, például egy Azure SQL Database-adatbázist.
+* Automatikusan létrehozza az Azure-erőforrásokat, például egy adatbázist a Azure SQL Databaseban.
 * Létrehoz és konfigurál egy kiadási folyamatot az Azure-folyamatokban, amely tartalmazza a CI-hez készült Build folyamatát.
 * Egy kiadási folyamat beállítása a CD-hez. 
 * Létrehoz egy Azure Application Insights-erőforrást a figyeléshez.
@@ -33,16 +33,16 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
-> * Kapcsolódás az Azure SQL Database-hez 
+> * Kapcsolódás Azure SQL Databasehoz 
 > * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Létrehozhat egy ingyenes fiókot a [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) segítségével.
 
-## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Projekt létrehozása DevOps Projectsban egy ASP.NET-alkalmazáshoz és egy Azure SQL Database-adatbázishoz
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-azure-sql-database"></a>Hozzon létre egy projektet DevOps Projects egy ASP.NET-alkalmazáshoz, és Azure SQL Database
 
-A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Starter Azure-erőforrásokat, például egy Azure SQL Database-adatbázist is létrehoz az Ön által választott Azure-előfizetésben.
+A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Starter Azure-erőforrásokat is létrehoz, például a Azure SQL Databaset az Ön által választott Azure-előfizetésben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -56,7 +56,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Válassza **az adatbázis hozzáadása**lehetőséget, majd kattintson a **tovább**gombra. Az alkalmazás-keretrendszer, amelyet az előző lépésben választott, az itt elérhető Azure-szolgáltatás telepítési célját diktálja be. 
     
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure-DevOps és Azure-előfizetés konfigurálása
 
@@ -140,11 +140,11 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. A kiadás befejezése után frissítse az alkalmazást a módosítások ellenőrzéséhez.
 
-## <a name="connect-to-the-azure-sql-database"></a>Kapcsolódás az Azure SQL Database-hez
+## <a name="connect-to-azure-sql-database"></a>Kapcsolódás Azure SQL Databasehoz
 
-Megfelelő engedélyekkel kell rendelkeznie az Azure SQL Database-adatbázishoz való kapcsolódáshoz.
+A Azure SQL Databasehoz való kapcsolódáshoz megfelelő engedélyekkel kell rendelkeznie.
 
-1. A DevOps alapszintű irányítópultján válassza a **SQL Database** lehetőséget az SQL Database felügyeleti lapjára való ugráshoz.
+1. A DevOps alapszintű irányítópultján válassza a **SQL Database** lehetőséget a SQL Database felügyeleti lapjára való ugráshoz.
    
 1. Válassza a **kiszolgáló tűzfal beállítása**lehetőséget, majd kattintson az **ügyfél IP-** címének hozzáadása elemre. 
 
@@ -156,16 +156,16 @@ Megfelelő engedélyekkel kell rendelkeznie az Azure SQL Database-adatbázishoz 
 
 1. Válassza a **jelszó alaphelyzetbe állítása**lehetőséget, adjon meg egy jelszót a SQL Server rendszergazdai bejelentkezéshez, majd kattintson a **Mentés**gombra. Ügyeljen rá, hogy ezt a jelszót ne használja az oktatóanyag későbbi részében.
 
-    A SQL Serverhoz és az Azure SQL Database-hez való kapcsolódáshoz igény szerint használhatja a SQL Server Management Studio vagy a Visual Studio eszközt is. A kapcsolódáshoz használja a **Kiszolgáló neve** tulajdonságot.
+    A SQL Serverhoz és a Azure SQL Databasehoz való kapcsolódáshoz igény szerint használhatja a SQL Server Management Studio vagy a Visual Studio eszközt is. A kapcsolódáshoz használja a **Kiszolgáló neve** tulajdonságot.
 
-    Ha nem módosította az adatbázis-felhasználónevet, amikor először konfigurálta a projektet DevOps Projectsban, a Felhasználónév az e-mail cím helyi része. Ha például az e-mail-címe *johndoe\@Microsoft.com*, a Felhasználónév a *johndoe*.
+    Ha nem módosította az adatbázis-felhasználónevet, amikor először konfigurálta a projektet DevOps Projectsban, a Felhasználónév az e-mail cím helyi része. Ha például az e-mail-címe *johndoe \@ Microsoft.com*, a Felhasználónév a *johndoe*.
 
    > [!NOTE]
    > Ha megváltoztatja a jelszavát az SQL-bejelentkezéshez, a kiadási folyamat változóban módosítania kell a jelszót a [CD-folyamat vizsgálata](#examine-the-cd-pipeline) című részben leírtak szerint.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rájuk szükség, törölheti az oktatóanyagban létrehozott Azure SQL Database-adatbázist és kapcsolódó erőforrásokat. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
+Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rájuk szükség, törölheti Azure SQL Database és az ebben az oktatóanyagban létrehozott kapcsolódó erőforrásokat is. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 
 > [!IMPORTANT]
 > Az alábbi eljárás véglegesen törli az erőforrásokat. A *delete* funkció megsemmisíti a projekt által a DevOps-ben létrehozott, az Azure-ban és az Azure DevOps-ben létrehozott összes adatát, és nem fogja tudni beolvasni. Ezt az eljárást csak akkor használja, ha alaposan elolvasta a kérdéseit.
@@ -184,7 +184,7 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
-> * Kapcsolódás az Azure SQL Database-hez 
+> * Kapcsolódás Azure SQL Databasehoz 
 > * Az erőforrások eltávolítása
 
 A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: fc19f247a9a915bfafde68f652784c42285928ca
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 00b4306340e9888ea5a794c7940a021674060e05
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974925"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316118"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg az Azure cache-hez készült Redis kapcsolatos gyakori kérdésekre, mintákra és ajánlott eljárásokra adott válaszokat.
@@ -289,7 +289,7 @@ A Redis-kiszolgáló nem támogatja natív módon a TLS-t, de az Azure cache for
 >
 >
 
-A Redis-eszközök `redis-cli` , például a TLS-port használata nem működnek, de használhatnak olyan segédprogramot is, `stunnel` amely az eszközök TLS-porthoz való biztonságos csatlakoztatását a [bejelentési ASP.NET munkamenet-szolgáltatója a Redis előzetes kiadásához](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) című blogbejegyzésben.
+A Redis-eszközök `redis-cli` , például a TLS-port használata nem működnek, de használhatnak olyan segédprogramot is, `stunnel` amely az eszközök TLS-porthoz való biztonságos csatlakoztatását a [bejelentési ASP.NET munkamenet-szolgáltatója a Redis előzetes kiadásához](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/) című blogbejegyzésben.
 
 A Redis-eszközök letöltésével kapcsolatos utasításokért tekintse meg a [Hogyan futtathatom a Redis parancsokat?](#cache-commands) című szakaszt.
 

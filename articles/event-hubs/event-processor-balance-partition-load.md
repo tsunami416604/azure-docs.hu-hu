@@ -1,23 +1,14 @@
 ---
 title: Partíciók terhelésének elosztása több példány között – Azure Event Hubs | Microsoft Docs
 description: Ismerteti, hogyan lehet terheléselosztást végezni az alkalmazás több példánya között egy eseményvezérelt processzor és az Azure Event Hubs SDK használatával.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/28/2020
-ms.author: shvija
-ms.openlocfilehash: 4851a3edad9726230a8fc0dd3085caa172c8d5f3
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 06/23/2020
+ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147868"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314989"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>A partíciók terhelésének elosztása az alkalmazás több példánya között
 Az Event Processing-alkalmazás méretezéséhez az alkalmazás több példánya is futtatható, és saját maguk is elérhetik a terhelést. A régebbi verziókban a [EventProcessorHost](event-hubs-event-processor-host.md) lehetővé tette a program több példánya közötti terhelés elosztását és az ellenőrzőpont-események fogadását. Az újabb verziókban (5,0-ig) a **EventProcessorClient** (.net és Java) vagy a **EventHubConsumerClient** (Python és JavaScript) is lehetővé teszi ugyanezt. A fejlesztési modellt az események használatával egyszerűbbé teszik. Előfizet az Önt érdeklő eseményekre egy eseménykezelő regisztrálásával.
@@ -94,7 +85,7 @@ Ha az ellenőrzőpontot egy esemény feldolgozottként való megjelölésére ha
 
 Alapértelmezés szerint az eseményeket feldolgozó függvényt a rendszer szekvenciálisan egy adott partícióra hívja. Az ezt a függvényt érintő további események és hívások ugyanabból a partíciós várólistából a háttérben, ahogy az esemény-szivattyú továbbra is fut a háttérben a többi szálon. Vegye figyelembe, hogy a különböző partíciók eseményei egyszerre is feldolgozhatók, és a partíciók között elérhető megosztott állapotokat szinkronizálni kell.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg az alábbi rövid útmutatókat:
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)

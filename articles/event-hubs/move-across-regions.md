@@ -1,20 +1,14 @@
 ---
 title: Azure Event Hubs-névtér áthelyezése másik régióba | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan helyezhet át egy Azure Event Hubs-névteret az aktuális régióból egy másik régióba.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.custom: subject-moving-resources
-ms.date: 04/14/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 06/23/2020
+ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690490"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312961"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs-névtér áthelyezése másik régióba
 Különböző helyzetekben érdemes áthelyezni a meglévő Event Hubs névteret az egyik régióból a másikba. Előfordulhat például, hogy létre szeretne hozni egy névteret ugyanazzal a konfigurációval a teszteléshez. A vész- [helyreállítási tervezés](event-hubs-geo-dr.md#setup-and-failover-flow)részeként másodlagos névteret is létre kell hoznia egy másik régióban.
@@ -36,7 +30,7 @@ Első lépésként exportáljon egy Resource Manager-sablont. Ez a sablon a Even
 
 2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Event Hubs névteret.
 
-3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
+3. Válassza > **Beállítások**  >  **Exportálás sablon**lehetőséget.
 
 4. A **sablon exportálása** lapon kattintson a **Letöltés** elemre.
 
@@ -62,7 +56,7 @@ A sablon üzembe helyezésével hozzon létre egy Event Hubs névteret a célké
 
 5. Válassza a **Saját sablon készítése a szerkesztőben** lehetőséget.
 
-6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött **template. JSON** fájl betöltéséhez.
+6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött fájl **template.js** betöltéséhez.
 
 7. A sablon mentéséhez válassza a **Mentés** lehetőséget. 
 
@@ -85,7 +79,7 @@ A sablon üzembe helyezésével hozzon létre egy Event Hubs névteret a célké
               ```
               /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<CLUSTER'S RESOURCE GROUP>/providers/Microsoft.EventHub/clusters/<CLUSTER NAME>
               ```   
-        3. Ha a névtérben az Event hub Storage-fiókot használ az események rögzítéséhez, adja meg az erőforráscsoport nevét és a Storage `StorageAccounts_<original storage account name>_external` -fiókot a (z) mezőben. 
+        3. Ha a névtérben az Event hub Storage-fiókot használ az események rögzítéséhez, adja meg az erőforráscsoport nevét és a Storage-fiókot a (z `StorageAccounts_<original storage account name>_external` ) mezőben. 
             
             ```
             /subscriptions/0000000000-0000-0000-0000-0000000000000/resourceGroups/<STORAGE'S RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>

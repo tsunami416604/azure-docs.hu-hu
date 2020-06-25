@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 1599fe76f3542717bebe63228d8c46f7e5de97c3
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457167"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316080"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Az Azure Cache for Redis ASP.NET munkamenetállapot-szolgáltatója
 
@@ -42,7 +42,7 @@ A Redis munkamenet-szolgáltató NuGet csomagjának függősége van a StackExch
 >
 >
 
-A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat, és hozzáadja a következő szakaszt a web. config fájlhoz. Ez a szakasz tartalmazza a ASP.NET alkalmazás szükséges konfigurációját, hogy az Azure cache-t használja a Redis munkamenet-szolgáltatóhoz.
+A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat, és hozzáadja a következő szakaszt a web.config-fájlhoz. Ez a szakasz tartalmazza a ASP.NET alkalmazás szükséges konfigurációját, hogy az Azure cache-t használja a Redis munkamenet-szolgáltatóhoz.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -94,9 +94,9 @@ Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének ért
 * **operationTimeoutInMilliseconds** – ezzel a beállítással felülbírálhatja a StackExchange. Redis ügyfél syncTimeout-beállítását. Ha nincs megadva, a rendszer a 1000 alapértelmezett syncTimeout-beállítást használja. További információ: [StackExchange. Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **redisSerializerType** – ezzel a beállítással megadhatja a Redis számára eljuttatott munkamenet-tartalmak egyéni szerializálását. A megadott típusnak meg kell valósítania `Microsoft.Web.Redis.ISerializer` , és deklarálnia kell a nyilvános paraméter nélküli konstruktort. Alapértelmezés szerint `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` használatban van.
 
-További információ ezekről a tulajdonságokról: az eredeti blogbejegyzés a [Redis ASP.NET munkamenet-szolgáltatójának](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)bejelentése.
+További információ ezekről a tulajdonságokról: az eredeti blogbejegyzés a [Redis ASP.NET munkamenet-szolgáltatójának](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)bejelentése.
 
-Ne felejtse el kipróbálni a standard InProc munkamenet-szolgáltató szakaszt a web. config fájlban.
+Ne felejtse el kipróbálni a standard InProc munkamenet-szolgáltató szakaszt a web.config.
 
 ```xml
 <!-- <sessionState mode="InProc"
@@ -131,6 +131,6 @@ A munkamenet-állapottal és az egyéb ajánlott eljárásokkal kapcsolatos tov�
 * [NCache](https://www.alachisoft.com/ncache/session-index.html)
 * [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg az [Azure Cache ASP.NET kimeneti gyorsítótár-szolgáltatóját a Redis](cache-aspnet-output-cache-provider.md).

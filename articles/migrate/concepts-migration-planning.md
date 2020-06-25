@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: 377085a98214d5fa92d08dd78d37635364295c46
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 81132f0a6f8b57d8798a9a5c4f0a2b9c1ac736d4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85269077"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317394"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Áttelepítési terv készítése Azure Migrate
 
@@ -70,7 +70,7 @@ Miután felderítette a kiszolgálókat, az ügynök nélküli függőségi lek�
 
 Mivel az Azure rugalmasságot biztosít a felhő kapacitásának időbeli átméretezéséhez, a Migrálás lehetőséget nyújt a kiszolgálók számára lefoglalt CPU-és memória-erőforrások optimalizálására. Hozzon létre egy értékelést az azonosított csoport előtt, és Ismerje meg a számítási feladatok előzményeit, ami nagyon fontos szerepet játszik az Azure-beli Rights VM SKU-ket és lemezekkel kapcsolatos ajánlásokban.
 
-## <a name="asses-your-readiness-for-migration"></a>Az áttelepítésre való felkészülés felkészültsége
+## <a name="assess-your-readiness-for-migration"></a>Az áttelepítés készültségének felmérése
 
 ### <a name="readiness-and-suitability-analysis-for-azure"></a>Készültség és megfelelőség elemzése az Azure-hoz
 Exportálja az Azure VM Assessment-jelentést, és a következő készültségi kategóriák szerint szűrje az Azure-beli virtuális gépek készültségének megismeréséhez:

@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b7139c458d2cc2a59f4202e9cbc7d48433514f34
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: d054ff893e1bfdc0f48ede2e2aaa6050885ccc0a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792088"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314031"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Hivatkozás – IoT Hub végpontok
 
@@ -38,11 +38,11 @@ A következő lista a végpontokat ismerteti:
 
 * **Eszköz-identitás kezelése**. Mindegyik IoT hub HTTPS REST-végpontokat tesz elérhetővé az eszközök identitásának kezeléséhez (létrehozás, lekérés, frissítés és törlés). Az eszköz- [identitások](iot-hub-devguide-identity-registry.md) az eszközök hitelesítéséhez és a hozzáférés-vezérléshez használatosak.
 
-* **Eszközök kettős kezelése**. Mindegyik IoT hub szolgáltatáshoz kapcsolódó HTTPS REST-végpontot tesz elérhetővé az [eszközökhöz tartozó ikrek](iot-hub-devguide-device-twins.md) lekérdezéséhez és frissítéséhez (címkék és tulajdonságok frissítése).
+* **Eszközök kettős kezelése**. Mindegyik IoT hub szolgáltatáshoz kapcsolódó HTTPS REST-végpontot tesz elérhetővé az [eszközökhöz tartozó ikrek](iot-hub-devguide-device-twins.md) lekérdezéséhez és frissítéséhez (címkék és tulajdonságok frissítése). 
 
 * **Feladatok kezelése**. Mindegyik IoT hub egy szolgáltatáshoz kapcsolódó HTTPS REST-végpontot tesz elérhetővé a [feladatok](iot-hub-devguide-jobs.md)lekérdezéséhez és kezeléséhez.
 
-* **Eszköz-végpontok**. Az IoT Hub az identitásjegyzékben szereplő valamennyi eszközhöz elérhetővé tesz néhány végpontot:
+* **Eszköz-végpontok**. Az Identity Registry minden eszközén IoT Hub a végpontok készletét teszi elérhetővé. Ha ez nem történik meg, a végpontok a [MQTT v 3.1.1](https://mqtt.org/), a https 1,1 és a [AMQP 1,0](https://www.amqp.org/) protokoll használatával tehetők elérhetővé. A AMQP és a MQTT a 443-es porton keresztül is elérhetők [WebSockets](https://tools.ietf.org/html/rfc6455) -en keresztül.
 
   * *Eszközről a felhőbe irányuló üzenetek küldése*. Az eszköz ezt a végpontot használja az [eszközről a felhőbe irányuló üzenetek küldéséhez](iot-hub-devguide-messages-d2c.md).
 
@@ -50,11 +50,9 @@ A következő lista a végpontokat ismerteti:
 
   * A fájlfeltöltés *kezdeményezése*. Egy eszköz ezt a végpontot használja az Azure Storage SAS URI-azonosítójának IoT Hub [egy fájl feltöltéséhez](iot-hub-devguide-file-upload.md).
 
-  * *Eszköz Twin tulajdonságainak beolvasása és frissítése*. Az eszköz ezt a végpontot használja az [eszköz Twin](iot-hub-devguide-device-twins.md)tulajdonságainak eléréséhez.
+  * *Eszköz Twin tulajdonságainak beolvasása és frissítése*. Az eszköz ezt a végpontot használja az [eszköz Twin](iot-hub-devguide-device-twins.md)tulajdonságainak eléréséhez. A HTTPS nem támogatott.
 
-  * *Közvetlen metódusokra vonatkozó kérelmek fogadása*. Egy eszköz ezt a végpontot használja a [közvetlen metódus](iot-hub-devguide-direct-methods.md)kérelmének figyelésére.
-
-    Ezek a végpontok a [MQTT v 3.1.1](https://mqtt.org/), a https 1,1 és a [AMQP 1,0](https://www.amqp.org/) protokoll használatával tehetők elérhetővé. A AMQP és a MQTT a 443-es porton keresztül is elérhetők [WebSockets](https://tools.ietf.org/html/rfc6455) -en keresztül.
+  * *Közvetlen metódusokra vonatkozó kérelmek fogadása*. Egy eszköz ezt a végpontot használja a [közvetlen metódus](iot-hub-devguide-direct-methods.md)kérelmének figyelésére. A HTTPS nem támogatott.
 
 * **Szolgáltatási végpontok**. Minden IoT hub a megoldás hátterében lévő végpontokat tesz elérhetővé az eszközökkel való kommunikációhoz. Egyetlen kivétel esetén ezek a végpontok csak a [AMQP](https://www.amqp.org/) és a AMQP használatával lesznek elérhetők a WebSockets protokollokon keresztül. A közvetlen metódus Meghívási végpontja elérhető a HTTPS protokollon keresztül.
   

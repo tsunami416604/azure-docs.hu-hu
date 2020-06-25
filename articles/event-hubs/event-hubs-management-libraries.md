@@ -1,21 +1,14 @@
 ---
 title: Felügyeleti könyvtárak – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk az Azure Event Hubs névterek és entitások .NET-beli kezeléséhez használható könyvtárról nyújt információkat.
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: dotnet
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 431fe04461f422274697d1e91c4b56e914ce2d4e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.date: 06/23/2020
+ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60746658"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312978"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs felügyeleti könyvtárak
 
@@ -35,13 +28,13 @@ A Event Hubs felügyeleti kódtárak használatának megkezdéséhez hitelesíte
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure CLI használatával](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-Ezek az oktatóanyagok egy `AppId` (ügyfél-azonosító), `TenantId`és `ClientSecret` (hitelesítési kulcs) használatát teszik lehetővé, amelyek mindegyike a felügyeleti kódtárak általi hitelesítéshez használatos. A futtatni kívánt erőforráscsoport **tulajdonosi** engedélyekkel kell rendelkeznie.
+Ezek az oktatóanyagok egy `AppId` (ügyfél-azonosító), `TenantId` és `ClientSecret` (hitelesítési kulcs) használatát teszik lehetővé, amelyek mindegyike a felügyeleti kódtárak általi hitelesítéshez használatos. A futtatni kívánt erőforráscsoport **tulajdonosi** engedélyekkel kell rendelkeznie.
 
 ## <a name="programming-pattern"></a>Programozási minta
 
 A Event Hubs-erőforrások kezelésére szolgáló minta egy közös protokollt követ:
 
-1. Szerezze be a tokent a HRE `Microsoft.IdentityModel.Clients.ActiveDirectory` a könyvtár használatával.
+1. Szerezze be a tokent a HRE a `Microsoft.IdentityModel.Clients.ActiveDirectory` könyvtár használatával.
     ```csharp
     var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
@@ -51,7 +44,7 @@ A Event Hubs-erőforrások kezelésére szolgáló minta egy közös protokollt 
     );
     ```
 
-1. Hozza létre `EventHubManagementClient` az objektumot.
+1. Hozza létre az `EventHubManagementClient` objektumot.
     ```csharp
     var creds = new TokenCredentials(token);
     var ehClient = new EventHubManagementClient(creds)
@@ -60,7 +53,7 @@ A Event Hubs-erőforrások kezelésére szolgáló minta egy közös protokollt 
     };
     ```
 
-1. Állítsa be `CreateOrUpdate` a paramétereket a megadott értékekre.
+1. Állítsa be a `CreateOrUpdate` paramétereket a megadott értékekre.
     ```csharp
     var ehParams = new EventHubCreateOrUpdateParameters()
     {

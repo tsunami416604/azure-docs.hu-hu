@@ -1,24 +1,14 @@
 ---
 title: Azure Relay – áttelepítés közös hozzáférésű aláírás engedélyezésére
 description: Útmutató Azure Relay alkalmazások áttelepítéséhez Azure Active Directory Access Control Service használatával a közös hozzáférési aláírás engedélyezéséhez.
-services: service-bus-relay
-documentationcenter: ''
-author: clemensv
-manager: timlt
-editor: ''
-ms.service: service-bus-relay
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 59b9e734526c56016e2ddf59c2afb5b8f7b4ad09
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 300a7eb5bb69db878b208be8c1e2b404717a6265
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211774"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314305"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay – Migrálás Azure Active Directory Access Control Serviceról a közös hozzáférésű aláírás engedélyezésére
 
@@ -30,7 +20,7 @@ Az SAS azzal az előnnyel jár, hogy az nem függ azonnal egy másik szolgáltat
 
 Az ACS-től függő összes meglévő alkalmazás esetében arra buzdítjuk az ügyfeleket, hogy az alkalmazásokat az SAS-re támaszkodva használják.
 
-## <a name="migration-scenarios"></a> Áttelepítési forgatókönyvek
+## <a name="migration-scenarios"></a>Migrálási forgatókönyvek
 
 Az ACS és a Relay az *aláíró kulcs*közös ismeretével van integrálva. Az aláíró kulcsot egy ACS-névtér használja az engedélyezési jogkivonatok aláírásához, és a Azure Relay használja annak ellenőrzéséhez, hogy a tokent a párosított ACS-névtér adta-e ki. Az ACS-névtér a szolgáltatás identitásait és engedélyezési szabályait tartalmazza. Az engedélyezési szabályok határozzák meg, hogy melyik szolgáltatás-identitást vagy egy külső Identitáskezelő által kiállított jogkivonat adja meg a továbbítási névtér gráfjának egy részét a leghosszabb előtagú egyezés formájában.
 
