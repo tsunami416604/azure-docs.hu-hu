@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff25cb15257302ac806aa9480d6d7b911eb36d06
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253290"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339720"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -216,7 +216,7 @@ A hozzáférési jogkivonatok alapértelmezés szerint ki vannak állítva, ha a
 
 ### <a name="minimize-the-number-of-ca-policies"></a>A HITELESÍTÉSSZOLGÁLTATÓI házirendek számának csökkentése
 
-Az egyes alkalmazásokra vonatkozó szabályzatok létrehozása nem hatékony, és bonyolult felügyeletet eredményez. A feltételes hozzáférés csak az első 195 szabályzatot fogja alkalmazni felhasználónként. Javasoljuk, hogy elemezze az alkalmazásokat, és csoportosítsa azokat olyan alkalmazásokba, amelyek ugyanazok az erőforrás-követelmények ugyanazon felhasználók számára. Ha például az összes Office 365-alkalmazás vagy az összes HR-alkalmazás ugyanazokkal a követelményekkel rendelkezik, hozzon létre egy házirendet, és adja meg az összes alkalmazást, amelyre vonatkozik. 
+Az egyes alkalmazásokra vonatkozó szabályzatok létrehozása nem hatékony, és bonyolult felügyeletet eredményez. A feltételes hozzáférés csak az első 195 szabályzatot fogja alkalmazni felhasználónként. Javasoljuk, hogy elemezze az alkalmazásokat, és csoportosítsa azokat olyan alkalmazásokba, amelyek ugyanazok az erőforrás-követelmények ugyanazon felhasználók számára. Ha például az összes Microsoft 365 alkalmazás vagy az összes HR-alkalmazás ugyanazokkal a felhasználókkal azonos, hozzon létre egy házirendet, és adja meg az összes olyan alkalmazást, amelyre vonatkozik. 
 
 ### <a name="set-up-emergency-access-accounts"></a>Vészhelyzeti hozzáférési fiókok beállítása
 

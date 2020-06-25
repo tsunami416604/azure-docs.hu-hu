@@ -37,6 +37,11 @@
       href: access-fhir-postman-tutorial.md
     - name: A SMART használata FHIR-proxyn
       href: use-smart-on-fhir-proxy.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Útmutatók
   expanded: false
   items:

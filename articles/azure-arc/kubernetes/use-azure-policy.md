@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: A Azure Policy használata a fürt konfigurációjának méretekben történő alkalmazásához
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: 80ffd70b830483c548f29a029d448bb6b480a8d4
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676199"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341368"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>A Azure Policy használata a fürtök konfigurációjának alkalmazásához (előzetes verzió)
 
@@ -26,7 +26,7 @@ Ha több git-adattárakat használ az igazság forrásaként az egyes fürtökh�
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
 1. A Azure Portalban navigáljon a házirend elemre, és az oldalsáv **szerzői műveletek** területén válassza a **definíciók**lehetőséget.
-2. A "Kubernetes" kategóriában válassza a "GitOps üzembe helyezése a Kubernetes-fürthöz" beépített szabályzatot, majd kattintson a **kiválasztás**elemre.
+2. A "Kubernetes" kategóriában válassza a "GitOps üzembe helyezése a Kubernetes-fürthöz" beépített szabályzatot, majd kattintson a **hozzárendelés**elemre.
 3. Állítsa be a **hatókört** arra a felügyeleti csoportra, előfizetésre vagy erőforráscsoportre, ahol a házirend-hozzárendelés érvényes lesz.
 4. Ha ki szeretne zárni minden erőforrást a szabályzat hatóköréről, állítsa be a **kizárásokat**.
 5. Adja meg a szabályzat hozzárendelésének **nevét** és **leírását** , hogy könnyen azonosítható legyen.
@@ -49,6 +49,6 @@ A szabályzat-hozzárendelés létrehozása után minden olyan új `connectedClu
 5. A **kubectl** használata a fürt lekérdezéséhez: a által létrehozott névtereket és összetevőket kell látnia `sourceControlConfiguration` .
 6. 5 percen belül látnia kell a fürtben a beállított git-tárház jegyzékfájljában leírt összetevőket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Monitor beállítása az arc-kompatibilis Kubernetes-fürtökkel rendelkező tárolók számára](./deploy-azure-monitor-for-containers.md)

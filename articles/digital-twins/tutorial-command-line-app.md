@@ -8,12 +8,12 @@ ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 18f7657cdaf3eb1fef76ca65856fde3b29b714a7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262341"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355879"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Ismerje meg az Azure Digital Twins-t egy minta ügyfélalkalmazás alkalmazásával
 
@@ -43,7 +43,7 @@ Az Azure digitális Twins-megoldások létrehozásának első lépéseként a re
 A modellek hasonlók az objektumorientált programozási nyelvekben található osztályokhoz. felhasználói sablonokat biztosítanak a [digitális ikrek](concepts-twins-graph.md) számára a későbbi követéshez és létrehozáshoz. A rendszer a **digitális Twins Definition Language (DTDL)** nevű JSON-szerű nyelven íródott, és meghatározhatja a Twin *tulajdonságait*, *telemetria*, *kapcsolatait*és *összetevőit*.
 
 > [!NOTE]
-> A DTDL lehetővé teszi a digitális Twins- *parancsok* definíciójának használatát is. A parancsok azonban jelenleg nem támogatottak az Azure Digital Twins szolgáltatásban.
+> A DTDL lehetővé teszi a digitális Twins- *parancsok* definícióját is. A parancsok azonban jelenleg nem támogatottak az Azure Digital Twins szolgáltatásban.
 
 A _**AdtE2ESample**_ -projektet megnyitó Visual Studio-ablakban a *megoldáskezelő* ablaktáblán navigáljon a *AdtSampleApp\SampleClientApp\Models* mappára. Ez a mappa minta modelleket tartalmaz.
 
@@ -131,7 +131,8 @@ Futtassa újra a `CreateModels` parancsot, és próbálja meg újból feltölten
 CreateModels Room
 ```
 
-Mivel a modellek nem írhatók felül, ez a szolgáltatás hibaüzenetet ad vissza:
+Mivel a modellek nem írhatók felül, a szolgáltatás hibaüzenetet ad vissza.
+A meglévő modellek törlésével kapcsolatos részletekért lásd [: útmutató: egyéni modellek kezelése](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -285,7 +286,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Az összetett lekérdezés eredménye, amely nem mutat eredményt":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolgál, [oktatóanyag: végpontok közötti megoldás összekötése](tutorial-end-to-end.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított erőforrásokat, hogy továbbra is használhassa ezt az Azure Digital Twins-példányt és konfigurált minta alkalmazást.
 * Ebben az esetben a minta alkalmazás `DeleteAllTwins` és a `DeleteAllModels` parancsok segítségével törölheti az ikreket és a modelleket a példányában. Ez a következő oktatóanyaghoz biztosít tiszta lappal.

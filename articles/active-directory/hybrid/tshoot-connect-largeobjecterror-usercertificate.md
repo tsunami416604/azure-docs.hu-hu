@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "62095489"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356168"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: a userCertificate attribútum által okozott LargeObject hibák kezelésére
 
@@ -105,7 +105,7 @@ Egy meglévő szinkronizálási szabálynak kell lennie, amely engedélyezve van
 7. A Szerkesztés képernyőn válassza a hatókör- **szűrő** lapot.
 8. Jegyezze fel a hatókör-szűrő konfigurációját. Ha a OOB szinkronizálási szabályt használja, akkor pontosan **egy két záradékot tartalmazó hatókör-szűrő csoportnak**kell lennie, beleértve a következőket:
 
-    | Attribútum | Művelet | Érték |
+    | Attribútum | Operátor | Érték |
     | --- | --- | --- |
     | sourceObjectType | EGYENLŐ | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |

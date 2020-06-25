@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: jgao
-ms.openlocfilehash: 3d9ab41fdb05eca3b39bf1ad222f6d42a3311b77
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 6cf10ea9693f922ee8edfb6bab5d1a7cde681fcb
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85193727"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339417"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -362,10 +362,10 @@ Timeout             : PT1H
 
 Az Azure CLI használatával a telepítési parancsfájlokat az előfizetés vagy az erőforráscsoport hatóköre szerint kezelheti:
 
-- [az Deployment-Scripts delete](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): telepítési parancsfájl törlése.
-- [az Deployment-Scripts List](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): az összes üzembehelyezési parancsfájl listázása.
-- [az Deployment-Scripts show](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): telepítési parancsfájl beolvasása.
-- [az Deployment-Scripts show-log: az](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log)üzembe helyezési parancsfájl naplófájljainak megjelenítése.
+- [az Deployment-Scripts delete](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): telepítési parancsfájl törlése.
+- [az Deployment-Scripts List](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): az összes üzembehelyezési parancsfájl listázása.
+- [az Deployment-Scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): telepítési parancsfájl beolvasása.
+- [az Deployment-Scripts show-log: az](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log)üzembe helyezési parancsfájl naplófájljainak megjelenítése.
 
 A LIST parancs kimenete a következőhöz hasonló:
 

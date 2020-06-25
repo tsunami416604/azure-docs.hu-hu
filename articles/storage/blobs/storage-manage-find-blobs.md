@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 083b130d1bb02ccc922c834c09a0d16fab004ae9
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433580"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355658"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Azure Blob Storage-beli adatkezelés és-keresés a blob-Indextel (előzetes verzió)
 
@@ -36,11 +36,11 @@ A tároló és a blob neve előtag egydimenziós kategorizálás a tárolt adata
 
 Vegye figyelembe a következő öt blobot a Storage-fiókban:
 >
-> container1/Transaction. csv  
-> container2/Campaign. docx  
-> fényképek/bannerphoto. png  
-> Archívum/befejezett/2019review. pdf  
-> naplók/2020/01/01/logfile. txt  
+> container1/transaction.csv  
+> container2/campaign.docx  
+> fényképek/bannerphoto.png  
+> Archívum/befejezett/2019review.pdf  
+> naplók/2020/01/01/logfile.txt  
 >
 
 Ezek a Blobok jelenleg a tároló/virtuális mappa vagy a blob nevének előtagja alapján vannak elválasztva. A blob index használatával az alábbi öt blobon beállíthatja az index címke attribútumát, hogy azok együtt legyenek `Project = Contoso` kategorizálva az aktuális előtag-szervezetük megtartása mellett. Így nem kell áthelyeznie az adatok áthelyezését azáltal, hogy lehetővé teszi az adatok szűrését és keresését a Storage platform többdimenziós indexének használatával.
@@ -63,7 +63,7 @@ A blobon több címkét is alkalmazhat, hogy az adatai jobban meglegyenek.
 > "Priority" = "01" 
 >
 
-A meglévő index címke attribútumainak módosításához először le kell kérnie a meglévő címke attribútumait, módosítania kell a címke attribútumait, és cserélnie kell a SetBlobTags művelettel. Ha az összes index címkét el szeretné távolítani a blobból, hívja meg a SetBlobTags műveletet, és ne adja meg a címke attribútumait. Mivel a blob-index címkéi a blob-adattartalomhoz tartozó alerőforrások, a SetBlobTags nem módosítja a mögöttes tartalmakat, és nem módosítja a blob utolsó módosításának időpontját.
+A meglévő index címke attribútumainak módosításához először le kell kérnie a meglévő címke attribútumait, módosítania kell a címke attribútumait, és cserélnie kell a SetBlobTags művelettel. Ha az összes index címkét el szeretné távolítani a blobból, hívja meg a SetBlobTags műveletet, és ne adja meg a címke attribútumait. Mivel a blob-index címkéi a blob-adattartalomhoz tartozó alerőforrások, a SetBlobTags nem módosítja a mögöttes tartalmakat, és nem módosítja a blob utolsó módosításának idejét vagy ETag (Entity címke). A jelenlegi alapblobok és a korábbi verziók indexelési címkéi is létrehozhatók vagy módosíthatók. a pillanatképek vagy a törölt Blobok címkéi azonban nem módosíthatók. 
 
 A következő korlátozások vonatkoznak a blob index címkékre:
 - Minden blob legfeljebb 10 blob-index címkével rendelkezhet
@@ -306,7 +306,7 @@ A blob index címkéi csak a karakterlánc-adattípusokat támogatják, a lekér
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>A blob-indexek címkéi és a hozzájuk kapcsolódó Azure Resource Manager Címkék?
 Nem, Azure Resource Manager címkék segítenek megszervezni a vezérlési sík erőforrásait, például az előfizetéseket, az erőforráscsoportokat és a Storage-fiókokat. A blob index címkéi az objektumok kezelését és felderítését biztosítják az adatsík erőforrásain, például a Storage-fiókban található blobokon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a blob-index felhasználásának példáját. Lásd: [blob-index felhasználása az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md)
 

@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus Microsoft Docs
 description: Azure Service Bus üzenetek előhívásával javíthatja a teljesítményt. Az üzenetek az alkalmazások kérelme előtt azonnal elérhetők a helyi lekéréshez.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 80717ab940d27e9bf108b3740309bcd7d71668fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 05e23b0590f0c04171efda8fb561b4c2664ed096
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760657"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341051"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>A prefektus Azure Service Bus üzenetek
 
@@ -32,7 +22,7 @@ A .NET-tel a **MessageReceiver**, a **QueueClient**vagy a **SubscriptionClient**
 
 Ezt a beállítást egyszerűen hozzáadhatja a [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) vagy a [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) Samples beállítások fogadó-oldalához, így láthatja ennek hatását.
 
-Amíg az üzenetek elérhetők a visszahívási pufferben, a további **fogadási**/**ReceiveAsync** -hívások azonnal teljesülnek a pufferből, és a puffer a háttérben lesz feltöltve, mert elérhetővé válik. Ha nincs elérhető üzenet a kézbesítéshez, a fogadási művelet kiüríti a puffert, majd megvárja vagy blokkolja a várt módon.
+Amíg az üzenetek elérhetők a visszahívási pufferben, a további **fogadási** / **ReceiveAsync** -hívások azonnal teljesülnek a pufferből, és a puffer a háttérben lesz feltöltve, mert elérhetővé válik. Ha nincs elérhető üzenet a kézbesítéshez, a fogadási művelet kiüríti a puffert, majd megvárja vagy blokkolja a várt módon.
 
 A prefektus is ugyanúgy működik együtt a [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) és a [OnMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API-kkal.
 
@@ -40,7 +30,7 @@ A prefektus is ugyanúgy működik együtt a [OnMessage](/dotnet/api/microsoft.s
 
 A kiállítók felgyorsítják az üzenetek folyamatát azáltal, hogy egy üzenetet azonnal elérhetővé tesznek a helyi lekéréshez, amikor az alkalmazás kér egyet. Ez az átviteli sebesség azt eredményezi, hogy az alkalmazás szerzője explicit módon végzi el a kompromisszumot:
 
-A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) fogadási mód használata esetén a rendszer az összes, a Meghívási pufferben beszerzett üzenet már nem érhető el a várólistában, és csak a memóriában tárolt kiküldési pufferben tárolja, amíg a **fogadási**/**ReceiveAsync** vagy **OnMessage**/**OnMessageAsync** API-kkal nem érkeznek az alkalmazásba. Ha az alkalmazás leáll, mielőtt az üzenetek beérkeznek az alkalmazásba, az üzenetek visszaszerezhetetlenül elvesznek.
+A [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) fogadási mód használata esetén a rendszer az összes, a Meghívási pufferben beszerzett üzenet már nem érhető el a várólistában, és csak a memóriában tárolt kiküldési pufferben tárolja, amíg a **fogadási** / **ReceiveAsync** vagy **OnMessage** / **OnMessageAsync** API-kkal nem érkeznek az alkalmazásba. Ha az alkalmazás leáll, mielőtt az üzenetek beérkeznek az alkalmazásba, az üzenetek visszaszerezhetetlenül elvesznek.
 
 A [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) fogadási módban a visszahívási pufferbe beolvasott üzeneteket a rendszer zárolt állapotba tölti be a pufferbe, és a zárolási ketyegő időtúllépési idővel rendelkezik. Ha a visszahívási puffer mérete nagy, és a feldolgozás addig tart, amíg az üzenetek zárolása lejár, miközben a rendszer a visszahívási pufferben tartózkodik, vagy amíg az alkalmazás feldolgozza az üzenetet, előfordulhat, hogy az alkalmazás kezelésére bizonyos zavaros események szükségesek.
 

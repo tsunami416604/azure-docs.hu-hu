@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 10/22/2019
-  ms.openlocfilehash: 36b82d96f4bfbc3eac6d5ca7f961386224171268
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 06/23/2020
+  ms.openlocfilehash: 2961c46fe486c8e635e17a78cbe8095da13a2614
+  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74666290"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85340267"
 landingContent:
 - title: A Service Bus-üzenetkezelés bemutatása
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
       url: ../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json
     - text: Azure-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
       url: service-bus-azure-and-service-bus-queues-compared-contrasted.md
-    - text: Üzenetsorok, üzenettémák és előfizetések
+    - text: Queues, topics, and subscriptions
       url: service-bus-queues-topics-subscriptions.md
   - linkListType: architecture
     links:
@@ -105,7 +105,7 @@ landingContent:
       url: service-bus-resource-manager-overview.md
     - text: Kivételek hibaelhárítása
       url: service-bus-messaging-exceptions.md
-- title: Védelem
+- title: Biztonságos
   linkLists:
   - linkListType: how-to-guide
     links:

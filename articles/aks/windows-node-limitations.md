@@ -5,12 +5,12 @@ description: Ismerje meg az ismert korlátozásokat a Windows Server Node-készl
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: e03343bc0bf8d2b49d2322573e75fe76cc853e32
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976608"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339874"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>A Windows Server Node-készletek és az alkalmazások számítási feladatainak jelenlegi korlátai az Azure Kubernetes szolgáltatásban (ak)
 
@@ -85,7 +85,7 @@ A nevet legfeljebb 6 (hat) karakterrel kell megtartania. Ez az AK jelenlegi korl
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Támogatottak-e a Windows-csomópontok összes funkciója?
 
-A hálózati házirendek és a kubenet a Windows-csomópontok esetében jelenleg nem támogatottak. 
+A hálózati házirendek és a kubenet a Windows-csomópontok esetében jelenleg nem támogatottak.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Futtathatok bejövő vezérlőket Windows-csomópontokon?
 
@@ -101,7 +101,7 @@ A csoportosan felügyelt szolgáltatásfiókok (gMSA) támogatása jelenleg nem 
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Használhatom a Windows-csomópontokkal és-tárolókkal rendelkező tárolók Azure Monitor?
 
-Igen, azonban Azure Monitor [korlátozásokkal][azure-monitor] rendelkezik a Windows támogatásához.
+Igen, azonban Azure Monitor nyilvános előzetes verzióban érhető el a naplók (StdOut, stderr) és a Windows-tárolók metrikáinak összegyűjtéséhez. Az stdout-naplók élő streamjét egy Windows-tárolóból is csatlakoztathatja.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Mi a teendő, ha olyan szolgáltatásra van szükségem, amely nem támogatott?
 

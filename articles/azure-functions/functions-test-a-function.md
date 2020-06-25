@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: a37fd886e1bc70226b2e54750540dfcb79ee5973
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae826367661648f3ee56235fd6497d265bf6a1e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75768877"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339470"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kódtesztelési stratégiák az Azure Functions szolgáltatásban
 
@@ -26,6 +26,7 @@ Az alábbi tartalom két különböző szakaszra oszlik, amelyek célja különb
 A minta tárház a [githubon](https://github.com/Azure-Samples/azure-functions-tests)érhető el.
 
 ## <a name="c-in-visual-studio"></a>C# a Visual Studióban
+
 Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a Visual Studióban, és hogyan futtathat és tesztelheti a [xUnit](https://xunit.github.io).
 
 ![Azure Functions tesztelése a C# használatával a Visual Studióban](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
@@ -35,8 +36,8 @@ Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a
 A környezet beállításához hozzon létre egy Function és test alkalmazást. A következő lépések segítséget nyújtanak a tesztek támogatásához szükséges alkalmazások és függvények létrehozásában:
 
 1. [Hozzon létre egy új functions-alkalmazást](./functions-create-first-azure-function.md) , és nevezze el a *függvényeket*
-2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el *HttpTrigger*.
-3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el *TimerTrigger*.
+2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el *MyHttpTrigger*.
+3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el *MyTimerTrigger*.
 4. [Hozzon létre egy xUnit-tesztelési alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a Visual Studióban. ehhez kattintson a **fájl > új > projekt > Visual C# > .net Core > xUnit test Project** elemre, és nevezze el a *functions. test*parancsot. 
 5. A NuGet használata a tesztelési alkalmazásból a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) -re mutató hivatkozás hozzáadásához
 6. [Hivatkozzon a *functions* alkalmazásra](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *functions. test* alkalmazásban.
@@ -90,7 +91,7 @@ namespace Functions.Tests
             this.Logs = new List<string>();
         }
 
-        public void Log<TState>(LogLevel logLevel, 
+        public void Log<TState>(LogLevel logLevel,
                                 EventId eventId,
                                 TState state,
                                 Exception exception,
@@ -105,13 +106,13 @@ namespace Functions.Tests
 
 Az `ListLogger` osztály a következő tagokat valósítja meg, mint az `ILogger` illesztőfelület:
 
-- **BeginScope**: a hatókörök kontextust adhatnak a naplózáshoz. Ebben az esetben a teszt csak a `NullScope` osztály statikus példányára mutat, hogy lehetővé tegye a teszt működését.
+- **BeginScope**: a hatókörök kontextust adhatnak a naplózáshoz. Ebben az esetben a teszt csak a osztály statikus példányára mutat, `NullScope` hogy lehetővé tegye a teszt működését.
 
 - **IsEnabled**: az alapértelmezett érték `false` van megadva.
 
-- **Napló**: Ez a metódus a megadott `formatter` függvényt használja az üzenet formázásához, majd hozzáadja az eredményül `Logs` kapott szöveget a gyűjteményhez.
+- **Napló**: Ez a metódus a megadott `formatter` függvényt használja az üzenet formázásához, majd hozzáadja az eredményül kapott szöveget a `Logs` gyűjteményhez.
 
-A `Logs` gyűjtemény egy példánya `List<string>` , amely a konstruktorban van inicializálva.
+A `Logs` gyűjtemény egy példánya, amely a `List<string>` konstruktorban van inicializálva.
 
 Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **LoggerTypes.cs** , és adja meg a következő kódot:
 
@@ -125,6 +126,7 @@ namespace Functions.Tests
     }
 }
 ```
+
 Ez az enumerálás meghatározza a tesztek által használt naplózó típusát. 
 
 Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **TestFactory.cs** , és adja meg a következő kódot:
@@ -188,11 +190,12 @@ namespace Functions.Tests
     }
 }
 ```
+
 Az `TestFactory` osztály a következő tagokat valósítja meg:
 
 - **Adatok**: Ez a tulajdonság a mintaadatok [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) gyűjteményét adja vissza. A kulcs érték párok a lekérdezési karakterláncba átadott értékeket jelölik.
 
-- **CreateDictionary**: Ez a metódus fogadja a kulcs/érték párokat argumentumként, `Dictionary` és visszaadja `QueryCollection` a lekérdezési karakterlánc értékeit jelölő új létrehozáshoz használt újat.
+- **CreateDictionary**: Ez a metódus fogadja a kulcs/érték párokat argumentumként, és visszaadja a `Dictionary` `QueryCollection` lekérdezési karakterlánc értékeit jelölő új létrehozáshoz használt újat.
 
 - **CreateHttpRequest**: Ez a METÓDUS egy HTTP-kérést hoz létre, amely a megadott lekérdezési karakterlánc-paraméterekkel inicializálva van.
 
@@ -215,8 +218,8 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string()
         {
             var request = TestFactory.CreateHttpRequest("name", "Bill");
-            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
-            Assert.Equal("Hello, Bill", response.Value);
+            var response = (OkObjectResult)await MyHttpTrigger.Run(request, logger);
+            Assert.Equal("Hello, Bill. This HTTP triggered function executed successfully.", response.Value);
         }
 
         [Theory]
@@ -224,28 +227,29 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
         {
             var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
-            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
-            Assert.Equal($"Hello, {queryStringValue}", response.Value);
+            var response = (OkObjectResult)await MyHttpTrigger.Run(request, logger);
+            Assert.Equal($"Hello, {queryStringValue}. This HTTP triggered function executed successfully.", response.Value);
         }
 
         [Fact]
         public void Timer_should_log_message()
         {
             var logger = (ListLogger)TestFactory.CreateLogger(LoggerTypes.List);
-            TimerTrigger.Run(null, logger);
+            MyTimerTrigger.Run(null, logger);
             var msg = logger.Logs[0];
             Assert.Contains("C# Timer trigger function executed at", msg);
         }
     }
 }
 ```
+
 Az ebben az osztályban megvalósított tagok a következők:
 
-- **Http_trigger_should_return_known_string**: Ez a teszt egy http `name=Bill` -függvény lekérdezési karakterlánc-értékeivel rendelkező kérelmet hoz létre, és ellenőrzi, hogy a rendszer visszaadja-e a várt választ.
+- **Http_trigger_should_return_known_string**: Ez a teszt egy http-függvény lekérdezési karakterlánc-értékeivel rendelkező kérelmet hoz létre, `name=Bill` és ellenőrzi, hogy a rendszer visszaadja-e a várt választ.
 
 - **Http_trigger_should_return_string_from_member_data**: Ez a teszt xUnit-attribútumokat használ a http-függvényhez tartozó mintaadatok biztosításához.
 
-- **Timer_should_log_message**: Ez a teszt létrehoz egy példányt `ListLogger` , és átadja egy időzítő függvénynek. A függvény futtatása után a rendszer ellenőrzi, hogy a napló be van-e jelölve, hogy a várt üzenet megtalálható legyen.
+- **Timer_should_log_message**: Ez a teszt létrehoz egy példányt, `ListLogger` és átadja egy időzítő függvénynek. A függvény futtatása után a rendszer ellenőrzi, hogy a napló be van-e jelölve, hogy a várt üzenet megtalálható legyen.
 
 Ha a tesztek során szeretné elérni az alkalmazás beállításait, használhatja a [System. environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
 
@@ -267,17 +271,19 @@ Az alábbi példa azt ismerteti, hogyan hozható létre JavaScript-függvény al
 
 ### <a name="setup"></a>Telepítés
 
-A környezet beállításához a futtatásával `npm init`inicializáljon egy új Node. js-alkalmazást egy üres mappában.
+A környezet beállításához a futtatásával inicializáljon egy új Node.js alkalmazást egy üres mappában `npm init` .
 
 ```bash
 npm init -y
 ```
+
 Ezután telepítse a Jestet a következő parancs futtatásával:
 
 ```bash
 npm i jest
 ```
-Most frissítse a _Package. JSON_ fájlt, és cserélje le a meglévő teszt parancsot a következő parancsra:
+
+Most frissítse _package.jsa-on_ a meglévő teszt parancs lecseréléséhez a következő paranccsal:
 
 ```bash
 "scripts": {
@@ -286,18 +292,20 @@ Most frissítse a _Package. JSON_ fájlt, és cserélje le a meglévő teszt par
 ```
 
 ### <a name="create-test-modules"></a>Tesztelési modulok létrehozása
+
 A projekt inicializálása után létrehozhatja az automatizált tesztek futtatásához használt modulokat. Először hozzon létre egy *tesztelés* nevű új mappát a támogatási modulok tárolásához.
 
-A *tesztelési* mappában adjon hozzá egy új fájlt, nevezze el **defaultContext. js**néven, és adja hozzá a következő kódot:
+A *tesztelési* mappában adjon hozzá egy új fájlt **defaultContext.js**nevet, és adja hozzá a következő kódot:
 
 ```javascript
 module.exports = {
     log: jest.fn()
 };
 ```
+
 Ez a modul kigúnyolja a *log* függvényt, amely az alapértelmezett végrehajtási környezetet jelöli.
 
-Ezután adjon hozzá egy új fájlt, nevezze el **defaultTimer. js**néven, és adja hozzá a következő kódot:
+Ezután adjon hozzá egy új fájlt, nevezze el **defaultTimer.js**, majd adja hozzá a következő kódot:
 
 ```javascript
 module.exports = {
@@ -305,9 +313,9 @@ module.exports = {
 };
 ```
 
-Ez a modul implementálja `IsPastDue` a tulajdonságot, hogy az egy hamis időzítő példány legyen. Az időzítő konfigurációk, például a NCRONTAB-kifejezések nem szükségesek itt, mivel a teszt-hám egyszerűen hívja meg a függvényt közvetlenül az eredmény teszteléséhez.
+Ez a modul implementálja a `IsPastDue` tulajdonságot, hogy az egy hamis időzítő példány legyen. Az időzítő konfigurációk, például a NCRONTAB-kifejezések nem szükségesek itt, mivel a teszt-hám egyszerűen hívja meg a függvényt közvetlenül az eredmény teszteléséhez.
 
-Ezután a VS Code functions bővítmény használatával [hozzon létre egy új JavaScript http-függvényt](/azure/javascript/tutorial-vscode-serverless-node-01) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt az **index. test. js**nevű mappában, és adja hozzá a következő kódot:
+Ezután a VS Code functions bővítmény használatával [hozzon létre egy új JavaScript http-függvényt](/azure/javascript/tutorial-vscode-serverless-node-01) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt a **index.test.js**nevű mappában, és adja hozzá a következő kódot:
 
 ```javascript
 const httpFunction = require('./index');
@@ -325,9 +333,10 @@ test('Http trigger should return known text', async () => {
     expect(context.res.body).toEqual('Hello Bill');
 });
 ```
+
 A sablonból a HTTP-függvény egy "Hello" karakterláncot ad vissza, amely a lekérdezési karakterláncban megadott névvel van összefűzve. Ez a teszt egy kérelem hamis példányát hozza létre, és átadja a HTTP-függvénynek. A teszt ellenőrzi, hogy a rendszer egyszer hívja-e a *log* metódust, és a visszaadott szöveg "Hello Bill".
 
-Ezután a VS Code functions bővítmény használatával hozzon létre egy új JavaScript-időzítő függvényt, és nevezze el *TimerTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt az **index. test. js**nevű mappában, és adja hozzá a következő kódot:
+Ezután a VS Code functions bővítmény használatával hozzon létre egy új JavaScript-időzítő függvényt, és nevezze el *TimerTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt a **index.test.js**nevű mappában, és adja hozzá a következő kódot:
 
 ```javascript
 const timerFunction = require('./index');
@@ -339,10 +348,12 @@ test('Timer trigger should log message', () => {
     expect(context.log.mock.calls.length).toBe(1);
 });
 ```
+
 A sablon időzítő funkciója naplóz egy üzenetet a függvény törzsének végén. Ez a teszt azt biztosítja, hogy a *log* függvényt egyszer kell meghívni.
 
 ### <a name="run-tests"></a>Tesztek futtatása
-A tesztek futtatásához nyomja le a **CTRL + ~** billentyűkombinációt a parancssori ablak megnyitásához `npm test`, majd futtassa a következő parancsot:
+
+A tesztek futtatásához nyomja le a **CTRL + ~** billentyűkombinációt a parancssori ablak megnyitásához, majd futtassa a következő parancsot `npm test` :
 
 ```bash
 npm test
@@ -352,7 +363,7 @@ npm test
 
 ### <a name="debug-tests"></a>Hibakeresési tesztek
 
-A tesztek hibakereséséhez adja hozzá a következő konfigurációt a *Launch. JSON* fájlhoz:
+A tesztek hibakereséséhez adja hozzá a következő konfigurációt a *launch.js* fájlhoz:
 
 ```json
 {
@@ -373,6 +384,7 @@ Ezután állítson be egy töréspontot a tesztben, és nyomja le az **F5**bille
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan írhat automatizált teszteket a függvények számára, folytassa ezeket az erőforrásokat:
+
 - [Nem HTTP által aktivált függvény manuális futtatása](./functions-manually-run-non-http.md)
 - [Azure Functions hibakezelés](./functions-bindings-error-pages.md)
 - [Az Azure Function Event Grid helyi hibakeresést indít](./functions-debug-event-grid-trigger-local.md)

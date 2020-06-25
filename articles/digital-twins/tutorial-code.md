@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 7798151d0aeaa553c21db0fd8e71f4ac674a9a56
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298395"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355709"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Kódolás az Azure Digital Twins API-kkal
 
@@ -531,7 +531,7 @@ namespace minimal
     }
 }
 ```
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
  
 Az oktatóanyagban használt példány újra felhasználható a következő oktatóanyagban, [oktatóanyag: az alapokat egy minta ügyfélalkalmazás segítségével tárja fel](tutorial-command-line-app.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított Azure digitális Twins-példányt.
  
@@ -566,5 +566,5 @@ Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan teheti me
 > [Oktatóanyag: az alapok megismerése egy minta ügyfélalkalmazás alkalmazásával](tutorial-command-line-app.md)
 
 Azt is megteheti, hogy az oktatóanyagban írt kóddal több felügyeleti műveletet tanul, vagy megkezdi a koncepció dokumentációját, hogy többet tudjon meg az oktatóanyagban használt elemekről.
-* [Útmutató: kettős modell kezelése](how-to-manage-model.md)
+* [Útmutató: egyéni modellek kezelése](how-to-manage-model.md)
 * [Fogalmak: egyéni modellek](concepts-models.md)

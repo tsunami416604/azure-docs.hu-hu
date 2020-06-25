@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c4b253a3017f1a836ac989bb897065a6a7d8337
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a82f81888828cb5edd42c37a6e8b2c2ee51fe603
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739951"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339564"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Konfigurálja a "Stay bejelentkezve?" Azure AD-fiókok bekérése
 
@@ -28,7 +28,7 @@ A következő ábrán látható a felügyelt bérlő és az összevont bérlő f
 :::image type="content" source="./media/keep-me-signed-in/kmsi-workflow.png" alt-text="A felügyelt vagy összevont bérlő felhasználói bejelentkezési folyamatát bemutató ábra":::
 
 > [!NOTE]
-> A bejelentkezés megtartása lehetőség konfigurálásához Azure Active Directory (Azure AD) prémium 1, prémium 2 vagy alapszintű kiadást kell használnia, vagy Office 365-licenccel kell rendelkeznie. További információ a licencelésről és a kiadásokról: [regisztráció a prémium szintű Azure ADra](active-directory-get-started-premium.md).<br><br>A prémium szintű Azure AD és az alapszintű kiadás az Azure AD világméretű példányával érhető el Kínában lévő ügyfelek számára. Az Azure AD Prémium és Alapszintű kiadása jelenleg nem támogatott Kínában a 21Vianet által működtetett Azure-szolgáltatásban. További információért forduljon hozzánk az [Azure ad-fórum](https://feedback.azure.com/forums/169401-azure-active-directory/)használatával.
+> A bejelentkezett adatok megtartása beállítás megadásához Azure Active Directory (Azure AD) prémium 1, prémium 2 vagy alapszintű kiadást kell használnia, vagy Microsoft 365 licencre van szükség. További információ a licencelésről és a kiadásokról: [regisztráció a prémium szintű Azure ADra](active-directory-get-started-premium.md).<br><br>A prémium szintű Azure AD és az alapszintű kiadás az Azure AD világméretű példányával érhető el Kínában lévő ügyfelek számára. Az Azure AD Prémium és Alapszintű kiadása jelenleg nem támogatott Kínában a 21Vianet által működtetett Azure-szolgáltatásban. További információért forduljon hozzánk az [Azure ad-fórum](https://feedback.azure.com/forums/169401-azure-active-directory/)használatával.
 
 ## <a name="configure-kmsi"></a>KMSI konfigurálása
 
@@ -61,6 +61,6 @@ Leállíthatja a felhasználókat, hogy meglássák a megszakítást úgy, **hog
 
 További információ a bejelentkezési munkamenet időtúllépését érintő egyéb beállításokról:
 
-* Office 365 – [üresjárati munkamenet időkorlátja](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
+* Microsoft 365 – [üresjárati munkamenet időkorlátja](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
 * Azure AD feltételes hozzáférés – [felhasználói bejelentkezés gyakorisága](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
 * Azure Portal – a [címtár szintű inaktivitás időkorlátja](https://docs.microsoft.com/azure/azure-portal/admin-timeout)

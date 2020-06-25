@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus-erőforrások kezelése a PowerShell használatával | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet Service Bus entitásokat (névtereket, várólistákat, témákat, előfizetéseket) a Azure PowerShell modul használatával.
-services: service-bus-messaging
-documentationcenter: .NET
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 8605e269f09e4fedf7a61817a3634e75081593ca
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/23/2020
+ms.openlocfilehash: 7ff79d8cf2aac09a0b8d2f04ade0b3d1d9b2e74e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890239"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341748"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Service Bus erőforrások kezelése a PowerShell használatával
 
@@ -45,7 +34,7 @@ Első lépésként a PowerShell használatával jelentkezzen be az Azure-fiókj�
 
 Service Bus névterek használatakor a [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), a [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), a [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)és a [set-AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) parancsmagot használhatja.
 
-Ez a példa néhány helyi változót hoz létre a parancsfájlban; `$Namespace` és `$Location`.
+Ez a példa néhány helyi változót hoz létre a parancsfájlban; `$Namespace`és `$Location` .
 
 * `$Namespace`annak a Service Bus névtérnek a neve, amellyel dolgozni szeretne.
 * `$Location`azonosítja azt az adatközpontot, amelyben kiépítjük a névteret.

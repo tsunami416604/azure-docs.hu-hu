@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4e2957ea179d9737bb6aad6fb8f121780575115b
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 807cc4647a27cf62109885ba1adaeaf5058a20c4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976385"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355420"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása
 
@@ -62,7 +62,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. Tekintse át a címtár beállításait. Ezután kattintson a **Létrehozás** elemre.
 
-Egy Azure-előfizetéshez több Azure AD B2C bérlőt is csatolhat számlázási célokra.
+Egy Azure-előfizetéshez több Azure AD B2C bérlőt is csatolhat számlázási célokra. Bérlő összekapcsolásához rendszergazdai jogosultsággal kell rendelkeznie a Azure AD B2C bérlőben, és az Azure-előfizetésben legalább egy közreműködő szerepkört hozzá kell rendelni. Lásd: [Azure ad B2C bérlő összekapcsolása egy előfizetéssel](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 
 ## <a name="select-your-b2c-tenant-directory"></a>A B2C-bérlő címtárának kiválasztása
 

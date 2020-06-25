@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77895fd81bd37e304d422aea64da0298fc1673ff
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253532"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356474"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Az Azure Active Directory-val nem szinkronizált objektumok hibáinak megoldása
 
@@ -77,8 +77,8 @@ Az **állapot** oszlop a legfontosabb információkat tartalmazza, és megjelen�
 | --- | --- |
 | leállítva – * |A Futtatás nem fejezhető be. Ez akkor fordulhat elő, ha például a távoli rendszer nem érhető el, és nem lehet kapcsolatba lépni vele. |
 | leállítva – hiba – korlát |Több mint 5 000 hiba van. A Futtatás a hibák nagy száma miatt automatikusan leállt. |
-| befejezve\*– hibák |A Futtatás befejeződött, de vannak olyan hibák (kevesebb mint 5 000), amelyet meg kell vizsgálni. |
-| befejezve\*– figyelmeztetések |A Futtatás befejeződött, de bizonyos adatértékek nem a várt állapotban vannak. Ha hibákat észlel, ez az üzenet általában csak tünet. Ne vizsgálja meg a figyelmeztetéseket, amíg nem válaszol a hibákra. |
+| befejezve – \* hibák |A Futtatás befejeződött, de vannak olyan hibák (kevesebb mint 5 000), amelyet meg kell vizsgálni. |
+| befejezve – \* figyelmeztetések |A Futtatás befejeződött, de bizonyos adatértékek nem a várt állapotban vannak. Ha hibákat észlel, ez az üzenet általában csak tünet. Ne vizsgálja meg a figyelmeztetéseket, amíg nem válaszol a hibákra. |
 | sikeres |Nincs probléma. |
 
 Amikor kijelöl egy sort, a rendszer frissíti az **Operations (műveletek** ) lap alját, hogy megjelenítse a Futtatás részleteit. A terület bal oldali részén lehet, hogy egy lista szerepel a következő **lépésben: #**. Ez a lista csak akkor jelenik meg, ha az erdőben több tartomány található, és minden tartományt egy lépés képvisel. A tartománynév a fejléc **partíció**alatt található. A **szinkronizálási statisztika** fejlécében további információkat talál a feldolgozott módosítások számáról. Válassza ki a hivatkozásokat a módosított objektumok listájának lekéréséhez. Ha hibás objektumok vannak, ezek a hibák a **szinkronizálási hibák** fejlécében jelennek meg.
@@ -142,7 +142,7 @@ Az előző ábrán látható, hogy a **PasswordSync** oszlopban a bejövő össz
 
 A **Lineage** lapon a metaverse [**objektum tulajdonságainak**](#mv-attributes)kiválasztásával érheti el a metaverse-t.
 
-### <a name="preview"></a>Előzetes verzió
+### <a name="preview"></a>Előnézet
 Az **összekötő terület objektum Tulajdonságok** ablakának bal alsó sarkában az **előnézet** gomb jelenik meg. Ezzel a gombbal megnyithatja az **előnézet** lapot, ahol egyetlen objektumot is szinkronizálhat. Ez az oldal akkor hasznos, ha néhány egyéni szinkronizálási szabályt elhárít, és szeretné megtekinteni egy adott objektum változásának hatását. Választhatja a **teljes szinkronizálást** vagy a **különbözeti szinkronizálást**. Kiválaszthatja az **előnézet létrehozása**lehetőséget is, amely csak a memóriában megjelenő változást tárolja. Vagy válassza a **véglegesítés várható eredménye**lehetőséget, amely frissíti a metaverse-t, és a megcélzott összekötők tárolóhelyeit érintő összes változást.  
 
 ![Képernyőkép az előnézet oldalról, a Start Preview kiválasztva](./media/tshoot-connect-object-not-syncing/preview.png)  

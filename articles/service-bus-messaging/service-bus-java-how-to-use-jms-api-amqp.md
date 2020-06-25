@@ -1,25 +1,15 @@
 ---
 title: A AMQP használata Java-üzenetküldési szolgáltatás API-& Azure Service Bus
 description: A Java Message Service (JMS) használata a Azure Service Bus és a Advanced Message Queueing Protocol (AMQP) 1,0 használatával.
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-editor: spelluru
-ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: Java
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: aschhab
+ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ccea6175d0baec56b609538d15c32892bb2edff0
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371254"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341725"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>A Java Message Service (JMS) használata a Azure Service Bus és a AMQP 1,0
 Ez a cikk azt ismerteti, hogyan használhatók a Java-alkalmazások Azure Service Bus üzenetkezelési funkciói (Queues and publish/subscribe) a népszerű Java Message Service-(JMS-) API-szabvány használatával. Ez a [cikk](service-bus-amqp-dotnet.md) azt ismerteti, hogyan végezheti el ugyanezt a Azure Service Bus .NET API használatával. A két útmutató együttes használatával megismerheti a AMQP 1,0-et használó platformok közötti üzenetkezelést.
@@ -29,7 +19,7 @@ A Advanced Message Queueing Protocol (AMQP) 1,0 egy hatékony, megbízható, vez
 A AMQP 1,0-es verziójának támogatása a Azure Service Bus azt jelenti, hogy a több platformon futó, felügyelt és feliratkozott üzenetkezelési funkciókat egy hatékony bináris protokoll használatával lehet használni. Emellett a különböző nyelvek, keretrendszerek és operációs rendszerek együttes használatával létrehozott összetevőkből álló alkalmazásokat is készíthet.
 
 ## <a name="get-started-with-service-bus"></a>A Service Bus használatának első lépései
-Ez az útmutató feltételezi, hogy már rendelkezik egy nevű `basicqueue`várólistát tartalmazó Service Bus névtérrel. Ha nem, akkor a [névtér és a várólista](service-bus-create-namespace-portal.md) a [Azure Portal](https://portal.azure.com)használatával hozható létre. Service Bus névterek és várólisták létrehozásával kapcsolatos további információkért lásd: [Service Bus Queues – első lépések](service-bus-dotnet-get-started-with-queues.md).
+Ez az útmutató feltételezi, hogy már rendelkezik egy nevű várólistát tartalmazó Service Bus névtérrel `basicqueue` . Ha nem, akkor a [névtér és a várólista](service-bus-create-namespace-portal.md) a [Azure Portal](https://portal.azure.com)használatával hozható létre. Service Bus névterek és várólisták létrehozásával kapcsolatos további információkért lásd: [Service Bus Queues – első lépések](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
 > A particionált várólisták és témakörök szintén támogatják a AMQP. További információ: [particionált üzenetküldési entitások](service-bus-partitioning.md) és [AMQP 1,0 támogatás Service Bus particionált várólistákhoz és témakörökhöz](service-bus-partitioned-queues-and-topics-amqp-overview.md).
@@ -37,11 +27,11 @@ Ez az útmutató feltételezi, hogy már rendelkezik egy nevű `basicqueue`vár�
 > 
 
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>A AMQP 1,0 JMS ügyféloldali kódtár letöltése
-Az Apache csontos JMS AMQP 1,0 ügyféloldali kódtár legújabb verziójának letöltésével kapcsolatos információkért látogasson el a következő [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)webhelyre:.
+Az Apache csontos JMS AMQP 1,0 ügyféloldali kódtár legújabb verziójának letöltésével kapcsolatos információkért látogasson el a következő webhelyre: [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) .
 
 A következő négy JAR-fájlt hozzá kell adnia az Apache csontos JMS AMQP 1,0 Distribution Archive-ből a Java OSZTÁLYÚTVONAL-hoz a JMS-alkalmazások létrehozásakor és futtatásakor Service Bus használatával:
 
-* Geronimo-JMS\_1,1\_Spec-1.0. jar
+* Geronimo-JMS \_ 1,1 \_ Spec-1.0. jar
 * Csontos-JMS-Client-[Version]. jar
 
 > [!NOTE]
@@ -121,7 +111,7 @@ MessageConsumer consumer = session.createConsumer(queue);
 Nem szükségesek speciális API-k vagy beállítások a JMS és a Service Bus használata esetén. Van azonban néhány korlátozás, amelyet később fog tárgyalni. Ahogy a JMS-alkalmazásokhoz hasonlóan, az első szükséges a JNDI-környezet konfigurációja, amely lehetővé tenné a **ConnectionFactory** és a célhelyek feloldását.
 
 #### <a name="configure-the-jndi-initialcontext"></a>A JNDI-InitialContext konfigurálása
-A JNDI-környezet úgy van konfigurálva, hogy a konfigurációs adatok szórótábla átadja a javax. Naming. InitialContext osztály konstruktorának. A szórótábla két kötelező eleme a kezdeti környezeti gyár neve és a szolgáltató URL-címe. A következő kód azt mutatja be, hogyan konfigurálható a JNDI-környezet a csontos tulajdonságok fájl-alapú JNDI-szolgáltatójának használatára a **servicebus. properties**nevű tulajdonságokkal.
+A JNDI környezet úgy van konfigurálva, hogy a konfigurációs adatok szórótábla átadja a javax.naming.InitialContext osztály konstruktorának. A szórótábla két kötelező eleme a kezdeti környezeti gyár neve és a szolgáltató URL-címe. A következő kód azt mutatja be, hogyan konfigurálható a JNDI-környezet a csontos tulajdonságok fájl-alapú JNDI-szolgáltatójának használatára a **servicebus. properties**nevű tulajdonságokkal.
 
 ```java
 // set up JNDI context
@@ -297,7 +287,7 @@ public class JmsQueueQuickstart {
 }
 ```
 
-### <a name="run-the-application"></a>Az alkalmazás futtatása
+### <a name="run-the-application"></a>Alkalmazás futtatása
 Adja át a **kapcsolati karakterláncot** a megosztott hozzáférési szabályzatokból az alkalmazás futtatásához.
 Alább látható az űrlap kimenete az alkalmazás futtatásával:
 

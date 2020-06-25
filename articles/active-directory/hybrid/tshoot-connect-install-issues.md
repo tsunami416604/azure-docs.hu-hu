@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6da21e9aa3b3b4cafec71a4d1881b9eb32b4dedc
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70211845"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356219"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>Hibaelhárítás: Azure AD Connect telepítési problémák
 
-## <a name="recommended-steps"></a>**Ajánlott lépések**
+## <a name="recommended-steps"></a>**Javasolt lépések**
 Ellenőrizze, hogy a [Azure ad Connect telepítési típusa](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) megfelelő-e. Ha teljesíti az expressz telepítés feltételeit, javasoljuk, hogy az expressz telepítéssel lépjen tovább. Az expressz telepítés a telepítés befejezéséhez minimálisan szükséges beállításokat biztosít, ezért a problémák kevésbé valószínűek. 
 
 Ha azonban nem felel meg az expressz telepítési feltételeknek, és el kell végeznie az Egyéni telepítést, akkor itt talál néhány ajánlott eljárást, amelyekkel elkerülheti a gyakori problémákat. Az egyszerűség kedvéért csak a szelektív beállítások szerepelnek itt:

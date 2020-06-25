@@ -1,18 +1,14 @@
 ---
 title: Azure Service Bus üzenetkezelés biztonsági vezérlői
 description: A Azure Service Bus üzenetkezelés kiértékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
-services: service-bus-messaging
-ms.service: service-bus-messaging
-author: spelluru
 ms.topic: conceptual
-ms.date: 09/23/2019
-ms.author: spelluru
-ms.openlocfilehash: af119ef026b70fcb4a56b4f823d20c0e9eddddc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 3130150a227076befae3f58f65e00a36578b68d5
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75903250"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341627"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Azure Service Bus üzenetkezelés biztonsági vezérlői
 
@@ -22,43 +18,43 @@ Ez a cikk a Azure Service Bus Üzenetkezelésbe beépített biztonsági vezérl�
 
 ## <a name="network"></a>Network (Hálózat)
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek | Dokumentáció |
 |---|---|--|--|
 | Szolgáltatás végpontjának támogatása| Igen (csak prémium szint esetén) | A VNet szolgáltatási végpontok csak [Service Bus prémium szint](service-bus-premium-messaging.md) esetén támogatottak. |  |
-| VNet-befecskendezés támogatása| Nem | |  |
+| VNet-befecskendezés támogatása| No | |  |
 | Hálózati elkülönítés és tűzfalak támogatása| Igen (csak prémium szint esetén) |  |  |
-| Kényszerített bújtatás támogatása| Nem |  |  |
+| Kényszerített bújtatás támogatása| No |  |  |
 
 ## <a name="monitoring--logging"></a>& naplózás figyelése
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció |
 |---|---|--|--|
-| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | [Azure monitor és riasztások](service-bus-metrics-azure-monitor.md)használatával támogatott. |  |
-| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | Az operatív naplók elérhetők.  | [Diagnosztikai naplók Service Bus](service-bus-diagnostic-logs.md) |
-| Adatsíkok naplózása és naplózása| Nem |  |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Yes | [Azure monitor és riasztások](service-bus-metrics-azure-monitor.md)használatával támogatott. |  |
+| Vezérlési és felügyeleti síkok naplózása és naplózása| Yes | Az operatív naplók elérhetők.  | [Diagnosztikai naplók Service Bus](service-bus-diagnostic-logs.md) |
+| Adatsíkok naplózása és naplózása| No |  |
 
 ## <a name="identity"></a>Identitás
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció |
 |---|---|--|--|
-| Hitelesítés| Igen | Felügyelt [Azure Active Directory Managed Service Identityon](service-bus-managed-service-identity.md)keresztül.| [Service Bus hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md). |
-| Engedélyezés| Igen | A [RBAC](authenticate-application.md) -és Sas-tokenen keresztüli engedélyezést támogatja. | [Service Bus hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md). |
+| Hitelesítés| Yes | Felügyelt [Azure Active Directory Managed Service Identityon](service-bus-managed-service-identity.md)keresztül.| [Service Bus hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md). |
+| Engedélyezés| Yes | A [RBAC](authenticate-application.md) -és Sas-tokenen keresztüli engedélyezést támogatja. | [Service Bus hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md). |
 
 ## <a name="data-protection"></a>Adatvédelem
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek | Dokumentáció |
 |---|---|--|--|
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok |  Igen, alapértelmezés szerint a kiszolgálóoldali titkosításhoz. |  |  |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen. | Az Azure kulcstartóban lévő ügyfél által felügyelt kulcs segítségével titkosíthatja a Service Bus névtérben tárolt adatok inaktív állapotban lévő adattitkosítását. | [Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával](configure-customer-managed-key.md)  |
 | Oszlop szintű titkosítás (Azure Data Services)| N/A | |   |
-| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Támogatja a szabványos HTTPS/TLS-mechanizmust. |   |
-| Titkosított API-hívások| Igen | Az API-hívások [Azure Resource Manager](../azure-resource-manager/index.yml) és HTTPS protokollon keresztül történnek. |   |
+| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Yes | Támogatja a szabványos HTTPS/TLS-mechanizmust. |   |
+| Titkosított API-hívások| Yes | Az API-hívások [Azure Resource Manager](../azure-resource-manager/index.yml) és HTTPS protokollon keresztül történnek. |   |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció |
 |---|---|--|--|
-| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | Támogatja az erőforrás-szolgáltatói verziószámozást a [Azure Resource Manager API](/rest/api/resources/)-n keresztül.|   |
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Yes | Támogatja az erőforrás-szolgáltatói verziószámozást a [Azure Resource Manager API](/rest/api/resources/)-n keresztül.|   |
 
 ## <a name="next-steps"></a>További lépések
 

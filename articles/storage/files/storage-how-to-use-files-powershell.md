@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c419c2127b1c5fe3aaa60c6e828ff0c5a6676c07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77598544"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340827"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure PowerShell-lel 
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) PowerShell-lel való használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -40,7 +40,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 A Storage-fiók az Azure-fájlmegosztás üzembe helyezéséhez használható tároló megosztott készlete. Egy tárfiók korlátlan számú megosztást tartalmazhat, egy megosztás pedig korlátlan számú fájl tárolására használható, egészen a tárfiók kapacitásának korlátjáig. Ez a példa egy általános célú 2-es verziójú (GPv2 Storage-fiókot) hoz létre, amely a szabványos Azure-fájlmegosztás vagy más tárolási erőforrások, például Blobok vagy várólisták tárolásához használható a merevlemez-meghajtó (HDD) rotációs adathordozóján. A Azure Files támogatja a prémium SSD-meghajtókat is. a prémium szintű Azure-fájlmegosztás FileStorage-fiókokban is létrehozhatók.
 
-Ez a példa egy Storage-fiókot hoz létre a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancsmag használatával. A Storage-fiók neve *mystorageaccount\<Random Number>* , és az adott Storage-fiókra mutató hivatkozás a **$storageAcct**változóban van tárolva. A tárfiókok névnek egyedinek kell lenniük, ezért a `Get-Random` paranccsal fűzzön számot a névhez. 
+Ez a példa egy Storage-fiókot hoz létre a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancsmag használatával. A tárfiók neve *mystorageaccount\<random number>*, a tárfiókra mutató hivatkozást pedig a **$storageAcct** változó tárolja. A tárfiókok névnek egyedinek kell lenniük, ezért a `Get-Random` paranccsal fűzzön számot a névhez. 
 
 ```azurepowershell-interactive 
 $storageAccountName = "mystorageacct$(Get-Random)"
@@ -88,7 +88,7 @@ Az Azure-fájlmegosztást a legtöbb esetben az SMB protokollon keresztül fogja
 - Ki szeretné használni a kiszolgáló nélküli erőforrások, például az [Azure Functions](../../azure-functions/functions-overview.md) előnyeit. 
 - Olyan értéknövelt szolgáltatást hoz létre, amely számos Azure-fájlmegosztás esetében fog működni, például biztonsági mentési vagy víruskereső-vizsgálatok végrehajtásakor.
 
-Az alábbi példák bemutatják, hogyan kezelheti az Azure-fájlmegosztást a fájl REST protokollal a Azure PowerShell modul használatával. A `-Context` paraméter a Storage-fiók kulcsának beolvasására szolgál a megadott műveletek a fájlmegosztás alapján történő végrehajtásához. A Storage-fiók kulcsainak lekéréséhez a RBAC szerepkörrel `Owner` kell rendelkeznie a Storage-fiókban.
+Az alábbi példák bemutatják, hogyan kezelheti az Azure-fájlmegosztást a fájl REST protokollal a Azure PowerShell modul használatával. A `-Context` paraméter a Storage-fiók kulcsának beolvasására szolgál a megadott műveletek a fájlmegosztás alapján történő végrehajtásához. A Storage-fiók kulcsainak lekéréséhez a RBAC szerepkörrel kell rendelkeznie a `Owner` Storage-fiókban.
 
 #### <a name="create-directory"></a>Könyvtár létrehozása
 Ha a *myDirectory* nevű új könyvtárat szeretné létrehozni az Azure-fájlmegosztás gyökerében, használja a [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) parancsmagot.
@@ -186,7 +186,7 @@ Get-AzStorageFile `
     -Path "myDirectory2" 
 ```
 
-Habár a `Start-AzStorageFileCopy` parancsmag kényelmes az Azure-fájlmegosztás, az áttelepítések és a nagyobb adatátvitelek között, a Windows és `robocopy` `rsync` a MacOS és Linux rendszereken egyaránt ajánlott. `robocopy`és `rsync` az SMB használatával hajtsa végre az adatáthelyezést a legtöbbet a legtöbbet kihasználó API helyett.
+Habár a `Start-AzStorageFileCopy` parancsmag kényelmes az Azure-fájlmegosztás, az áttelepítések és a nagyobb adatátvitelek között, a `robocopy` Windows és `rsync` a MacOS és Linux rendszereken egyaránt ajánlott. `robocopy`és az `rsync` SMB használatával hajtsa végre az adatáthelyezést a legtöbbet a legtöbbet kihasználó API helyett.
 
 ## <a name="create-and-manage-share-snapshots"></a>Megosztási pillanatképek létrehozása és felügyelete
 Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megosztási pillanatképek létrehozása. A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható állapotát. A megosztási pillanatképek hasonlóak az esetleg már ismert operációsrendszer-technológiákhoz, például a következőkhöz:
@@ -195,11 +195,11 @@ Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megoszt
 - [Logikai Volume Manager-(LVM-)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) Pillanatképek Linux rendszerekhez.
 - [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) Pillanatképek MacOS rendszerhez. 
 
-Megoszthat megosztási pillanatképet a megosztáshoz a ( `Snapshot` z) metódus használatával a fájlmegosztás PowerShell-objektumán, amely a [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) parancsmaggal kérhető le. 
+Megoszthat megosztási pillanatképet a megosztáshoz a (z `Snapshot` ) metódus használatával a fájlmegosztás PowerShell-objektumán, amely a [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) parancsmaggal kérhető le. 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
-$snapshot = $share.Snapshot()
+$snapshot = $share.CloudFileShare.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>Böngészés a megosztási pillanatképekben
@@ -238,7 +238,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Megosztási pillanatkép törlése
-A [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) parancsmag használatával törölheti a megosztási pillanatképet a `$snapshot` `-Share` paraméterre mutató hivatkozást tartalmazó változóval.
+A [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) parancsmag használatával törölheti a megosztási pillanatképet a `$snapshot` paraméterre mutató hivatkozást tartalmazó változóval `-Share` .
 
 ```azurepowershell-interactive
 Remove-AzStorageShare `

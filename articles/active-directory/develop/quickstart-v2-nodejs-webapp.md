@@ -1,6 +1,6 @@
 ---
-title: OIDC-bejelentkezés hozzáadása egy Node. js-webalkalmazáshoz – Microsoft Identity platform | Azure
-description: Megtudhatja, hogyan valósítható meg a hitelesítés egy Node. js-webalkalmazásban az OpenID Connect használatával.
+title: OIDC-bejelentkezés hozzáadása egy Node.js webalkalmazáshoz – Microsoft Identity platform | Azure
+description: Megtudhatja, hogyan valósítható meg a hitelesítés egy Node.js webalkalmazásban az OpenID Connect használatával.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +11,24 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5522d35faf1888c862e0c42328f08067e7b9be26
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536063"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339896"
 ---
-# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával egy Node. js-webalkalmazáshoz
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
-Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az OpenID Connect-hitelesítést egy Node. js-vel létrehozott webalkalmazásban az Express használatával. A minta úgy van kialakítva, hogy bármilyen platformon fusson.
+Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az OpenID Connect-hitelesítést egy Node.js és Express használatával létrehozott webalkalmazásban. A minta úgy van kialakítva, hogy bármilyen platformon fusson.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A minta futtatásához a következőkre lesz szüksége:
 
-* A Node. js telepítése innen:http://nodejs.org/
+* Node.js telepítése innen:http://nodejs.org/
 
-* Vagy egy [Microsoft-fiók](https://www.outlook.com) vagy [Office 365 fejlesztői program](/office/developer-program/office-365-developer-program)
+* [Microsoft-fiók](https://www.outlook.com) vagy [Microsoft 365 fejlesztői program](/office/developer-program/office-365-developer-program)
 
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
@@ -52,7 +52,7 @@ A minta futtatásához a következőkre lesz szüksége:
 
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
     - Az **átirányítási URI** -k szakaszban válassza a **web** elemet a kombinált listában, és adja meg a következő átirányítási URI-t:`http://localhost:3000/auth/openid/return`
-    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a `http://localhost:3000`következőre:.
+    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: `http://localhost:3000` .
     - A **Speciális beállítások > implicit engedélyezési** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) engedélyezze a bejelentkezést a felhasználó számára.
 
 1. Kattintson a **Mentés** gombra.
@@ -82,23 +82,23 @@ A projekt gyökérkönyvtárában futtassa a következő parancsot:
 
 ## <a name="configure-the-application"></a>Az alkalmazás konfigurálása
 
-Adja meg a paramétereket `exports.creds` a config. js fájlban a utasítások szerint.
+Adja meg a paramétereket a `exports.creds` config.js utasítás szerint.
 
-* Frissítse `<tenant_name>` a `exports.identityMetadata` -t az Azure ad-bérlő neve. \*onmicrosoft.com formátumban.
+* Frissítse a `<tenant_name>` - `exports.identityMetadata` t az Azure ad-bérlő neve \* . onmicrosoft.com formátumban.
 * Frissítse `exports.clientID` az alkalmazás-regisztráció során feljegyzett alkalmazás-azonosítóval.
 * Frissítse `exports.clientSecret` az alkalmazás-regisztráció során feljegyzett alkalmazási titokkal.
 * Frissítse `exports.redirectUrl` az alkalmazás regisztrációja során feljegyzett átirányítási URI-val.
 
 **Az üzemi alkalmazások opcionális konfigurációja:**
 
-* Frissítse `exports.destroySessionUrl` a config. js fájlban, ha másikat `post_logout_redirect_uri`szeretne használni.
+* `exports.destroySessionUrl`Ha másikat szeretne használni, config.js frissítsen `post_logout_redirect_uri` .
 
-* Ha `exports.useMongoDBSessionStore` [mongoDB](https://www.mongodb.com) vagy más [kompatibilis munkamenet-tárolót](https://github.com/expressjs/session#compatible-session-stores)szeretne használni, állítsa be a config. js fájlt True értékre.
-A példában szereplő alapértelmezett munkamenet-tároló `express-session`. Az alapértelmezett munkamenet-tároló nem alkalmas az éles környezetben való használatra.
+* `exports.useMongoDBSessionStore`Ha a [mongoDB](https://www.mongodb.com) -t vagy más [kompatibilis munkamenet-tárolókat](https://github.com/expressjs/session#compatible-session-stores)szeretne használni, állítsa be config.js értéke TRUE (igaz) értékre.
+A példában szereplő alapértelmezett munkamenet-tároló `express-session` . Az alapértelmezett munkamenet-tároló nem alkalmas az éles környezetben való használatra.
 
-* Frissítsen `exports.databaseUri`, ha a mongoDB munkamenet-áruházat és egy másik adatbázis-URI-t szeretne használni.
+* Frissítsen `exports.databaseUri` , ha a mongoDB munkamenet-áruházat és egy másik adatbázis-URI-t szeretne használni.
 
-* Frissítés `exports.mongoDBSessionMaxAge`. Itt adhatja meg, hogy mennyi ideig szeretné megőrizni a munkamenetet a mongoDB. Az egység másodperc (ek).
+* Frissítés `exports.mongoDBSessionMaxAge` . Itt adhatja meg, hogy mennyi ideig szeretné megőrizni a munkamenetet a mongoDB. Az egység másodperc (ek).
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
@@ -120,7 +120,7 @@ $ node app.js | bunyan
 
 ### <a name="youre-done"></a>Ennyi az egész!
 
-A `http://localhost:3000`kiszolgáló sikeresen fut.
+A kiszolgáló sikeresen fut `http://localhost:3000` .
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

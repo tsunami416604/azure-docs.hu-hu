@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 64ab5901ad54e37fc05d7da757ce7f31d42fe3b6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60381407"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357103"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>A Sync Service Manager Operations (szinkronizálási műveletek) lap használata
 
@@ -39,8 +39,8 @@ Az **állapot** oszlop a legfontosabb információ, és megjeleníti a Futtatás
 | --- | --- |
 | megállt\* |A Futtatás nem fejeződött be. Ha például a távoli rendszer nem érhető el, és nem lehet kapcsolatba lépni vele. |
 | leállítva – hiba – korlát |Több mint 5 000 hiba van. A Futtatás a hibák nagy száma miatt automatikusan leállt. |
-| befejezve\*– hibák |A Futtatás befejeződött, de vannak olyan hibák (kevesebb mint 5 000), amelyeket meg kell vizsgálni. |
-| befejezve\*– figyelmeztetések |A Futtatás befejeződött, de bizonyos adatértékek nem a várt állapotban vannak. Ha hibák léptek fel, akkor ez az üzenet általában csak tünet. Amíg nem válaszol a hibákra, ne vizsgálja meg a figyelmeztetéseket. |
+| befejezve – \* hibák |A Futtatás befejeződött, de vannak olyan hibák (kevesebb mint 5 000), amelyeket meg kell vizsgálni. |
+| befejezve – \* figyelmeztetések |A Futtatás befejeződött, de bizonyos adatértékek nem a várt állapotban vannak. Ha hibák léptek fel, akkor ez az üzenet általában csak tünet. Amíg nem válaszol a hibákra, ne vizsgálja meg a figyelmeztetéseket. |
 | sikeres |Nincs probléma. |
 
 Amikor kijelöl egy sort, a lenti frissítések megjelenítik a Futtatás részleteit. A lenti bal szélen egy lista jelenik meg, amely a következő **lépést**jelzi: #. Ez a lista csak akkor jelenik meg, ha az erdőben több tartománnyal rendelkezik, ahol minden tartományt egy lépés képvisel. A tartománynév a fejléc **partíció**alatt található. A **szinkronizálási statisztikák**területen további információkat talál a feldolgozott módosítások számáról. A hivatkozásokra kattintva lekérheti a módosított objektumok listáját. Ha hibás objektumok vannak, ezek a hibák a **szinkronizálási hibák**alatt jelennek meg.

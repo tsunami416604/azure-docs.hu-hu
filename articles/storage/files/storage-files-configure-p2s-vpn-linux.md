@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41feacf180bbe21fdd3d04cabaaf3e3fbaacd20e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061052"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355471"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Pont – hely (P2S) VPN konfigurálása Linux rendszeren a Azure Files-vel való használatra
 A pont – hely (P2S) VPN-kapcsolattal Azure-fájlmegosztás az Azure-on kívülről is csatlakoztatható SMB-n keresztül, a 445-es port megnyitása nélkül. A pont – hely VPN-kapcsolat az Azure és az egyes ügyfelek közötti VPN-kapcsolat. Ha a P2S VPN-kapcsolatot Azure Files használatával szeretné használni, konfigurálnia kell egy P2S VPN-kapcsolatot minden olyan ügyfél számára, amelyhez csatlakozni szeretne. Ha sok ügyféllel kell csatlakoznia az Azure-fájlmegosztás számára a helyszíni hálózatból, akkor az egyes ügyfelek pont – hely kapcsolata helyett használhat helyek közötti (S2S) VPN-kapcsolatot. További információ: helyek közötti [VPN konfigurálása Azure Fileshoz való használatra](storage-files-configure-s2s-vpn.md).
@@ -44,7 +44,7 @@ Ha egy pont – hely típusú VPN-kapcsolaton keresztül szeretné elérni az Az
 
 A következő szkript létrehoz egy három alhálózattal rendelkező Azure-beli virtuális hálózatot: egyet a Storage-fiók szolgáltatási végpontja számára, egyet a Storage-fiók privát végpontja számára, amely a helyszíni Storage-fiókhoz való hozzáféréshez szükséges, anélkül, hogy egyéni útválasztást kellene létrehozni a Storage-fiók nyilvános IP-címéhez, és egyet a VPN szolgáltatást biztosító virtuális hálózati átjáróhoz. 
 
-Ne felejtse `<region>`el `<resource-group>`lecserélni `<desired-vnet-name>` a környezetet a megfelelő értékekre.
+Ne felejtse el lecserélni a `<region>` `<resource-group>` `<desired-vnet-name>` környezetet a megfelelő értékekre.
 
 ```bash
 region="<region>"
@@ -114,10 +114,12 @@ openssl pkcs12 -in "clientCert.pem" -inkey "clientKey.pem" -certfile rootCert.pe
 ## <a name="deploy-virtual-network-gateway"></a>Virtuális hálózati átjáró üzembe helyezése
 Az Azure-beli virtuális hálózati átjáró az a szolgáltatás, amellyel a helyszíni linuxos gépek csatlakozni fognak. A szolgáltatás üzembe helyezéséhez két alapvető összetevő szükséges: egy nyilvános IP-cím, amely azonosítja az átjárót az ügyfelek számára, bárhol is legyenek a világon, és egy korábban létrehozott főtanúsítvány, amelyet az ügyfelek hitelesítéséhez fog használni.
 
-Ne felejtse `<desired-vpn-name-here>` el lecserélni az ehhez az erőforrásokhoz hasonló nevet.
+Ne felejtse el lecserélni `<desired-vpn-name-here>` az ehhez az erőforrásokhoz hasonló nevet.
 
 > [!Note]  
-> Az Azure-beli virtuális hálózati átjáró üzembe helyezése akár 45 percet is igénybe vehet. Az erőforrás üzembe helyezése közben ez a bash parancsfájl-parancsfájl letiltja a központi telepítés befejeződését. Ez a várható eredmény.
+> Az Azure-beli virtuális hálózati átjáró üzembe helyezése akár 45 percet is igénybe vehet. Az erőforrás üzembe helyezése közben ez a bash parancsfájl-parancsfájl letiltja a központi telepítés befejeződését.
+>
+> A P2S IKEv2/OpenVPN-kapcsolatok nem támogatottak az **alapszintű** SKU-val. Ez a szkript a virtuális hálózati átjáróhoz tartozó **VpnGw1** SKU-t használja ennek megfelelően.
 
 ```bash
 vpnName="<desired-vpn-name-here>"

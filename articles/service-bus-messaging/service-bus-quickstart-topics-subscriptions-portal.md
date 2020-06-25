@@ -1,19 +1,16 @@
 ---
 title: Service Bus témakörök és előfizetések létrehozása a Azure Portal használatával
 description: 'Gyors útmutató: ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre Service Bus témakört és előfizetéseket az adott témakörhöz a Azure Portal használatával.'
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.topic: quickstart
-ms.date: 01/16/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a1e330a62a58daaa3fb2a2e8758d14791a3208c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc84b9ec9cc71d35e31a5c11ae0dd0d2228621da
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76260820"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341062"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Rövid útmutató: a Azure Portal használatával létrehozhat egy Service Bus témakört és előfizetéseket a témakörbe
 Ebben a rövid útmutatóban a Azure Portal használatával hozhat létre egy Service Bus témakört, majd előfizetéseket hozhat létre ehhez a témakörhöz. 

@@ -1,19 +1,14 @@
 ---
 title: A Azure Service Bus szabályozásának áttekintése | Microsoft Docs
 description: A Service Bus szabályozásának áttekintése – standard és prémium szintű csomagok.
-services: service-bus-messaging
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: aschhab
-ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598289"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340952"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Szabályozási műveletek Azure Service Bus
 

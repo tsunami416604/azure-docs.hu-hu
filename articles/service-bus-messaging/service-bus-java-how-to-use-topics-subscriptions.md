@@ -1,26 +1,16 @@
 ---
 title: A Java használatával Azure Service Bus témaköröket és előfizetéseket használhat
 description: Ebben a rövid útmutatóban a Java-kódokat kell írnia, hogy üzeneteket küldjön egy Azure Service Bus témakörbe, majd üzeneteket fogadjon az előfizetésből az adott témakörbe.
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
-ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 01/24/2020
-ms.author: aschhab
+ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: e025adfd3d8a29bc07cf14803f572dcba1097fd6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fb8e5196077e60c20d9354459cafe85302ad0e45
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791068"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341422"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata Javával
 
@@ -49,7 +39,7 @@ Emellett hozzá kell adnia a következő tégelyeket a Java Build elérési útj
 - Commons-CLI-1.4. jar
 - proton-j-0.21.0. jar
 
-Adjon hozzá egy **fő** metódussal rendelkező osztályt, majd adja hozzá `import` a következő utasításokat a Java-fájl elejéhez:
+Adjon hozzá egy **fő** metódussal rendelkező osztályt, majd adja hozzá a következő `import` utasításokat a Java-fájl elejéhez:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -70,7 +60,7 @@ Frissítse a **Main** metódust egy **TopicClient** objektum létrehozásához, 
 
 > [!NOTE] 
 > - A(z) `<NameOfServiceBusNamespace>` helyére írja be a Service Bus-névtér nevét. 
-> - Cserélje `<AccessKey>` le a-t a névtérhez tartozó hozzáférési kulcsra.
+> - Cserélje le a- `<AccessKey>` t a névtérhez tartozó hozzáférési kulcsra.
 
 ```java
 public class MyServiceBusTopicClient {

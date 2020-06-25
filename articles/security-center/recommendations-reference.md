@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 647d0b13930109b093532ce0b330e9b3eb6d439b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 92df0a7919a7d01b062356bfa4d32cc701e1e6f4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260950"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341283"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – útmutató
 
@@ -153,7 +153,7 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 |**Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás**|Transzparens adattitkosítás engedélyezése a REST-alapú adatok védelme és a megfelelőségi követelmények teljesítése érdekében.<br>(Kapcsolódó szabályzat: az SQL-adatbázisok transzparens adattitkosítás engedélyezése szükséges)|Alacsony|**I**|SQL|
 |**A sebezhetőségi felmérést engedélyezni kell SQL Database**|A sebezhetőségi felmérés felderítheti, nyomon követheti és javíthatja a lehetséges adatbázis-réseket.<br>(Kapcsolódó szabályzat: a sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon)|Magasság|**I**|SQL|
 |**A biztonsági rések felmérését engedélyezni kell a felügyelt SQL-példányon**|A sebezhetőségi felmérés felderítheti, nyomon követheti és javíthatja a lehetséges adatbázis-réseket.<br>(Kapcsolódó szabályzat: a sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányán)|Magasság|**I**|SQL|
-|**A virtuális gépeken található SQL-adatbázisokra vonatkozó biztonsági réseket szervizelni kell**|Az SQL sebezhetőségi felmérés megkeresi az adatbázist a biztonsági rések ellen, és az ajánlott eljárásoktól, például a helytelen konfigurációtól, a túlzott engedélyekkel és a nem védett bizalmas adatoktól származó eltéréseket tesz elérhetővé. A talált biztonsági rések feloldása nagyban növelheti az adatbázis biztonsági termetét.|Magasság|N|SQL|
+|**A gépeken futó SQL-kiszolgálók biztonsági réseit szervizelni kell**|Az SQL sebezhetőségi felmérés megkeresi az adatbázist a biztonsági rések ellen, és az ajánlott eljárásoktól, például a helytelen konfigurációtól, a túlzott engedélyekkel és a nem védett bizalmas adatoktól származó eltéréseket tesz elérhetővé. A talált biztonsági rések feloldása nagyban növelheti az adatbázis biztonsági termetét.|Magasság|N|SQL|
 |**Az SQL-adatbázisok biztonsági réseit szervizelni kell**|Az SQL sebezhetőségi felmérés megkeresi az adatbázist a biztonsági rések tekintetében, és az ajánlott eljárásoktól, például a helytelen konfigurációtól, a túlzott engedélyekkel és a nem védett bizalmas adatoktól származó eltéréseket tesz elérhetővé. A talált biztonsági rések feloldása nagyban növelheti az adatbázis biztonsági termetét.<br>(Kapcsolódó szabályzat: az SQL-adatbázisok biztonsági réseit szervizelni kell)|Magasság|N|SQL|
 ||||||
 

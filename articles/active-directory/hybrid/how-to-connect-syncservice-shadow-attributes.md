@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60384705"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356661"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect Sync szolgáltatás árnyék-attribútumai
 A legtöbb attribútum ugyanolyan módon jelenik meg az Azure AD-ben, mint a helyszíni Active Directory. Bizonyos attribútumok azonban bizonyos speciális kezelést is tartalmazhatnak, és az Azure AD attribútum értéke eltérő lehet, mint amit a Azure AD Connect szinkronizál.
@@ -58,7 +58,7 @@ A postaláda-felhasználók számára, akár a helyszínen, akár az Exchange On
 | helyszíni proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-Ebben az esetben az **SMTP:\@** a (z) a (z) és a (z), De az Exchange is hozzáadta a **SIP:\@fabrikamonline.com. Spencer.** A fabrikam nem használta a Lync/Skype szolgáltatást a helyszínen, de az Azure AD és az Exchange Online előkészíti azt.
+Ebben az esetben az **SMTP: \@ ** a (z) a (z) és a (z), De az Exchange is hozzáadta a **SIP: \@ fabrikamonline.com. Spencer.** A fabrikam nem használta a Lync/Skype szolgáltatást a helyszínen, de az Azure AD és az Exchange Online előkészíti azt.
 
 A proxyAddresses ezt a logikát **ProxyCalc**nevezzük. A ProxyCalc a felhasználó minden módosításával meghívja a következő esetekben:
 

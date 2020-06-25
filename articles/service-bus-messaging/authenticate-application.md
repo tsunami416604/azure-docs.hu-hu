@@ -1,19 +1,14 @@
 ---
 title: Alkalmazás hitelesítése Azure Service Bus entitásokhoz való hozzáféréshez
 description: Ez a cikk a Azure Service Bus entitások (várólisták, témakörök stb.) eléréséhez Azure Active Directoryekkel való hitelesítéssel kapcsolatos információkat tartalmaz.
-services: service-bus-messaging
-ms.service: event-hubs
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: aschhab
-ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 707fbec4317b4c34349e04895f9c6a0bdf4f1b47
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259291"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341515"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Alkalmazás hitelesítése és engedélyezése Azure Active Directory használatával Azure Service Bus entitások eléréséhez
 Azure Service Bus támogatja a Azure Active Directory (Azure AD) használatát a Service Bus entitások (várólisták, témakörök, előfizetések vagy szűrők) kérésének engedélyezéséhez. Az Azure AD-vel szerepköralapú hozzáférés-vezérlés (RBAC) használatával adhat meg engedélyeket egy rendszerbiztonsági tag számára, amely lehet egy felhasználó, egy csoport vagy egy egyszerű szolgáltatásnév. További információ a szerepkörökről és a szerepkör-hozzárendelésekről: [a különböző szerepkörök megismerése](../role-based-access-control/overview.md).
@@ -21,7 +16,7 @@ Azure Service Bus támogatja a Azure Active Directory (Azure AD) használatát a
 ## <a name="overview"></a>Áttekintés
 Ha egy rendszerbiztonsági tag (felhasználó, csoport vagy alkalmazás) egy Service Bus entitáshoz próbál hozzáférni, a kérést engedélyezni kell. Az Azure AD-vel az erőforrásokhoz való hozzáférés kétlépéses folyamat. 
 
- 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer egy OAuth 2,0 tokent ad vissza. A tokent kérő erőforrás neve `https://servicebus.azure.net`.
+ 1. Először a rendszerbiztonsági tag identitása hitelesítve van, és a rendszer egy OAuth 2,0 tokent ad vissza. A tokent kérő erőforrás neve `https://servicebus.azure.net` .
  1. Ezután a jogkivonat a Service Bus szolgáltatásnak küldött kérelem részeként a megadott erőforráshoz való hozzáférés engedélyezéséhez lesz átadva.
 
 A hitelesítési lépés megköveteli, hogy egy alkalmazás-kérelem OAuth 2,0 hozzáférési jogkivonatot tartalmazzon futásidőben. Ha egy alkalmazás egy Azure-entitáson, például egy Azure-beli virtuális gépen, egy virtuálisgép-méretezési csoporton vagy egy Azure Function-alkalmazáson belül fut, akkor a felügyelt identitás használatával férhet hozzá az erőforrásokhoz. Ha meg szeretné tudni, hogyan hitelesítheti a felügyelt identitás által küldött kéréseket Service Bus szolgáltatásra, tekintse meg a [Azure Service Bus erőforrásokhoz való hozzáférés hitelesítése Azure Active Directory és felügyelt identitások Azure-erőforrásokhoz](service-bus-managed-service-identity.md)című témakört. 
@@ -128,7 +123,7 @@ Az alkalmazásnak szüksége van egy ügyfél titkos kulcsára, hogy igazolja az
     ![Titkos ügyfélkulcs](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>A Service Bus API engedélyei
-Ha az alkalmazás egy konzolos alkalmazás, regisztrálnia kell egy natív alkalmazást, és hozzá kell adnia a **Microsoft. SERVICEBUS** API-engedélyeit a **szükséges engedélyekhez** . A natív alkalmazásokhoz szükség van egy **átirányítási URI-ra** is az Azure ad-ben, amely azonosítóként szolgál. az URI-nak nem kell hálózati célhelynek lennie. Ezt `https://servicebus.microsoft.com` a példát használja, mert a mintakód már használja ezt az URI-t.
+Ha az alkalmazás egy konzolos alkalmazás, regisztrálnia kell egy natív alkalmazást, és hozzá kell adnia a **Microsoft. SERVICEBUS** API-engedélyeit a **szükséges engedélyekhez** . A natív alkalmazásokhoz szükség van egy **átirányítási URI-ra** is az Azure ad-ben, amely azonosítóként szolgál. az URI-nak nem kell hálózati célhelynek lennie. `https://servicebus.microsoft.com`Ezt a példát használja, mert a mintakód már használja ezt az URI-t.
 
 ### <a name="client-libraries-for-token-acquisition"></a>Az ügyfél kódtárai a tokenek beszerzéséhez  
 Miután regisztrálta az alkalmazást, és engedélyezte az engedélyek küldését és fogadását Azure Service Busban, programkódot adhat hozzá az alkalmazáshoz egy rendszerbiztonsági tag hitelesítéséhez és a OAuth 2,0 token beszerzéséhez. A jogkivonat hitelesítéséhez és beszerzéséhez használhatja a [Microsoft Identity platform hitelesítési kódtárainak](../active-directory/develop/reference-v2-libraries.md) egyikét vagy egy olyan nyílt forráskódú függvénytárat, amely támogatja az OpenID vagy a Connect 1,0-et. Az alkalmazás ezután a hozzáférési token használatával engedélyezheti a kérelmeket Azure Service Bus.
@@ -142,12 +137,12 @@ Használja az **ügyfél titkos bejelentkezési** beállítását, ne pedig az *
 
 ### <a name="run-the-sample"></a>Minta futtatása
 
-A minta futtatása előtt szerkessze az **app. config** fájlt, és a forgatókönyvtől függően állítsa be a következő értékeket:
+A minta futtatása előtt szerkessze a **app.config** fájlt, és a forgatókönyvtől függően állítsa be a következő értékeket:
 
 - `tenantId`: A **TenantId** értékre van állítva.
 - `clientId`: A **ApplicationId** értékre van állítva.
 - `clientSecret`: Ha az ügyfél titkos kódjával szeretne bejelentkezni, hozza létre azt az Azure AD-ben. Natív alkalmazás helyett webalkalmazást vagy API-t is használhat. Emellett adja hozzá az alkalmazást **Access Control (iam)** alatt a korábban létrehozott névtérben.
-- `serviceBusNamespaceFQDN`: Állítsa az újonnan létrehozott Service Bus névtér teljes DNS-nevére; például: `example.servicebus.windows.net`.
+- `serviceBusNamespaceFQDN`: Állítsa az újonnan létrehozott Service Bus névtér teljes DNS-nevére; például: `example.servicebus.windows.net` .
 - `queueName`: Állítsa be a létrehozott üzenetsor nevét.
 - Az alkalmazásban az előző lépésekben megadott átirányítási URI.
 

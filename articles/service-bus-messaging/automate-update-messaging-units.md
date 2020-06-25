@@ -1,19 +1,14 @@
 ---
 title: Azure Service Bus – üzenetkezelési egységek automatikus frissítése
 description: Ez a cikk bemutatja, hogyan használható egy Azure Automation runbook egy Service Bus névtér üzenetkezelési egységének automatikus frissítéséhez.
-services: service-bus-messaging
-ms.service: service-bus-messaging
-documentationcenter: ''
-author: spelluru
 ms.topic: how-to
-ms.date: 05/14/2020
-ms.author: spelluru
-ms.openlocfilehash: db86f22247b757ed2f1cc2c168421346ad90a1fc
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/23/2020
+ms.openlocfilehash: 52f5b13b482739bfa56ff606f684fd5a9c7d3b6e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657643"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341494"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus névtér üzenetkezelési egységeinek automatikus frissítése 
 Ez a cikk bemutatja, hogyan lehet automatikusan frissíteni egy Service Bus névtér [üzenetkezelési egységeit](service-bus-premium-messaging.md) erőforrás-(CPU-vagy memória-) használat alapján. 
@@ -177,5 +172,5 @@ Az alábbi eljárás bemutatja, hogyan hozhat létre olyan riasztást, amely eli
     > [!NOTE]
     > Ha a névtér CPU-használata a 75-nál nagyobb, akkor a riasztás elindítja az Automation runbook, ami növeli az Service Bus névtér üzenetkezelési egységeit. Hasonlóképpen létrehozhat egy riasztást egy másik Automation-runbook is, amely csökkenti az üzenetkezelési egységeket, ha a névtér CPU-kihasználtsága 25 alá kerül. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az üzenetkezelési egységekről a prémium szintű [üzenetkezelés](service-bus-premium-messaging.md) című témakörben olvashat bővebben.

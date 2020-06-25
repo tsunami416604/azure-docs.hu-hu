@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190415"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340888"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Szolgáltatók Azure Monitor naplófájljai
 
@@ -64,7 +64,7 @@ A központosított architektúra előnyei a következők:
 A központosított architektúra hátrányai a következők:
 
 * Ez az architektúra csak az ügynök-alapú virtuálisgép-adatforrásokra vonatkozik, nem fedi le a Pásti, az SaaS és az Azure Fabric adatforrásait.
-* Előfordulhat, hogy a felhasználók közötti adategységeket nem lehet külön munkaterületre egyesíteni. Az egyetlen jó módszer, ha a számítógép teljes tartománynevét (FQDN) vagy az Azure-előfizetés AZONOSÍTÓját használja. 
+* Előfordulhat, hogy a felhasználók közötti adategységeket nem lehet külön munkaterületre egyesíteni. Az egyetlen jó módszer, ha a számítógép teljes tartománynevét (FQDN) vagy az Azure-előfizetés AZONOSÍTÓját használja.
 * Az összes ügyféltől származó összes adatok ugyanabban a régióban lesznek tárolva, mint egyetlen számla és egy adatmegőrzési és konfigurációs beállítás.
 * Az Azure Fabric és a Pásti-szolgáltatások, mint például a Azure Diagnostics és az Azure-naplók esetében a munkaterület ugyanabban a bérlőben kell lennie, mint az erőforrásnak, így a naplók nem küldhetők el a központi munkaterületre.
 * Az összes ügyféltől származó összes virtuálisgép-ügynök hitelesítése a központi munkaterületre ugyanazzal a munkaterület-AZONOSÍTÓval és kulccsal történik. Egy adott ügyfél naplóit nem lehet blokkolni más ügyfelek megszakítása nélkül.
@@ -77,13 +77,13 @@ A naplók központi helyen történő megvalósításának két lehetősége van
 
 1. Központi munkaterület: a szolgáltató létrehozhat egy munkaterületet a bérlőben, és olyan parancsfájlt használhat, amely a [lekérdezési API](https://dev.loganalytics.io/) -t használja az [ADATgyűjtési API](../../azure-monitor/platform/data-collector-api.md) -val, hogy az adatok a különböző munkaterületekről a központi helyre kerüljenek. Egy másik lehetőség, amely nem parancsfájl, a [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)használatára szolgál.
 
-2. Power BI központi helyként: Power BI a központi helyként működhet, ha a különböző munkaterületek az Log Analytics munkaterület és a [Power bi](../../azure-monitor/platform/powerbi.md)közötti integráció használatával exportálják az adataikat. 
+2. Power BI központi helyként: Power BI a központi helyként működhet, ha a különböző munkaterületek az Log Analytics munkaterület és a [Power bi](../../azure-monitor/platform/powerbi.md)közötti integráció használatával exportálják az adataikat.
 
 ## <a name="next-steps"></a>További lépések
 
 * Munkaterületek létrehozásának és konfigurálásának automatizálása [Resource Manager-sablonok](template-workspace-configuration.md) használatával
 
-* Munkaterületek létrehozásának automatizálása a [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) használatával 
+* Munkaterületek létrehozásának automatizálása a [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) használatával
 
 * [Riasztások](../../azure-monitor/platform/alerts-overview.md) használata a meglévő rendszerekkel való integrációhoz
 

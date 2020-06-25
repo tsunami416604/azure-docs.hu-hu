@@ -1,24 +1,14 @@
 ---
 title: Üzenetek, hasznos adatok és szerializálás Azure Service Bus | Microsoft Docs
 description: Ez a cikk áttekinti a Azure Service Bus üzeneteket, a hasznos adatokat, az üzenet-útválasztást és a szerializálást.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 11e56ae2483a254fb00e3593da7841f3f3d844f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759397"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341676"
 ---
 # <a name="messages-payloads-and-serialization"></a>Üzenetek, hasznos adatforgalom és szerializáció
 
@@ -34,7 +24,7 @@ A AMQP protokoll szintjén használt egyenértékű nevek zárójelben vannak fe
 
 | Tulajdonság neve                         | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (Content-Type)           | Opcionálisan leírja az üzenet tartalmát a RFC2045 formátumát követő leíróval, 5. szakasz; például: `application/json`.                                                                                                                                                                                                                                                                                             |
+|  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (Content-Type)           | Opcionálisan leírja az üzenet tartalmát a RFC2045 formátumát követő leíróval, 5. szakasz; például: `application/json` .                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (korrelációs azonosító)       | Lehetővé teszi az alkalmazás számára, hogy korrelációs célból megismertesse az üzenet környezetét. például egy olyan üzenet **MessageID** , amelyről válaszol.                                                                                                                                                                                                                                                                  |
 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource)                      | Csak a kézbesítetlen üzenetekből és a kézbesítetlen levelek várólistáról egy másik entitásba automatikusan továbbított üzenetekben van beállítva. Azt az entitást jelzi, amelyben az üzenet el lett kézbesítve. Ez a tulajdonság csak olvasható.                                                                                                                                                                                                                                  |
 | [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deliverycount)                         | Az üzenethez megkísérelt kézbesítések száma. Ha egy üzenet zárolása lejár, vagy a fogadó explicit módon megszakította az üzenetet, a szám növekszik. Ez a tulajdonság csak olvasható.                                                                                                                                                                                                                                                  |
@@ -73,11 +63,11 @@ A Service Bus névteren belüli útválasztást az automatikus továbbítási l�
 
 ## <a name="payload-serialization"></a>Hasznos adatok szerializálása
 
-Ha az átvitel során vagy a Service Bus belsejében tárolja a hasznos adatokat, a rendszer mindig átlátszatlan, bináris blokkot tárol. A [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) tulajdonság lehetővé teszi az alkalmazások számára, hogy írják le a hasznos adatokat, a tulajdonságértékek javasolt formátuma pedig az IETF RFC2045; szerinti MIME-tartalomtípus leírása. például: `application/json;charset=utf-8`.
+Ha az átvitel során vagy a Service Bus belsejében tárolja a hasznos adatokat, a rendszer mindig átlátszatlan, bináris blokkot tárol. A [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) tulajdonság lehetővé teszi az alkalmazások számára, hogy írják le a hasznos adatokat, a tulajdonságértékek javasolt formátuma pedig az IETF RFC2045; szerinti MIME-tartalomtípus leírása. például: `application/json;charset=utf-8` .
 
 A Java-vagy .NET Standard változatokkal ellentétben a Service Bus API .NET-keretrendszerbeli verziója támogatja a **BrokeredMessage** -példányok létrehozását azáltal, hogy tetszőleges .net-objektumokat továbbít a konstruktorba. 
 
-Az örökölt SBMP protokoll használatakor ezeket az objektumokat a rendszer az alapértelmezett bináris szerializáló használatával szerializálja, vagy egy külsőleg megadott szerializáló segítségével. Az AMQP protokoll használatakor az objektum szerializálva lesz egy AMQP objektumba. A fogadó lekérheti ezeket az objektumokat [a\<GetBody T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal, amely megadja a várt típust. A AMQP-ben az objektumok szerializálva lesznek a **ArrayList** és a IDictionary AMQP-gráfba, **<sztringek** , objektumok>objektumok, és minden AMQP-ügyfél dekódolni tudja őket. 
+Az örökölt SBMP protokoll használatakor ezeket az objektumokat a rendszer az alapértelmezett bináris szerializáló használatával szerializálja, vagy egy külsőleg megadott szerializáló segítségével. Az AMQP protokoll használatakor az objektum szerializálva lesz egy AMQP objektumba. A fogadó lekérheti ezeket az objektumokat a [GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal, és megadja a várt típust. A AMQP-ben az objektumok szerializálva lesznek a **ArrayList** és a IDictionary AMQP-gráfba, **<sztringek** , objektumok>objektumok, és minden AMQP-ügyfél dekódolni tudja őket. 
 
 Habár ez a rejtett szerializálási varázslat kényelmes, az alkalmazásoknak explicit módon át kell irányítani az objektumok szerializálását, és el kell végezniük az objektumok gráfait, mielőtt azok bekerülnek egy üzenetbe, és megfordítják a fogadó oldalát. Ez a művelet interoperábilis eredményeket eredményez. Azt is figyelembe kell venni, hogy míg a AMQP egy hatékony bináris kódolási modellel rendelkezik, a AMQP üzenetkezelési ökoszisztémához kötődik, és a HTTP-ügyfeleknek problémát okoz a hasznos adatok dekódolása. 
 

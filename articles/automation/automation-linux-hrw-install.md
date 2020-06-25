@@ -3,14 +3,14 @@ title: Linuxos hibrid Runbook-feldolgozó üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan telepíthet egy Azure Automation hibrid Runbook-feldolgozót a runbookok Linux-alapú gépeken való futtatásához a helyi adatközpontban vagy a felhőalapú környezetben.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/17/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: a8679c189e77fe7b191a645b07c68b6101604644
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c569c83ed0bc5d78f0e5670c802188ee9fd8fd53
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079149"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340800"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -120,13 +120,25 @@ A Linux Hybrid Runbook Worker telepítéséhez és konfigurálásához hajtsa v�
 
     A keresési eredmények között meg kell jelennie a gép szívverési rekordjainak, ami azt jelzi, hogy csatlakoztatva van, és a szolgáltatáshoz jelent jelentést. Alapértelmezés szerint minden ügynök egy szívverési rekordot továbbít a hozzárendelt munkaterülethez.
 
-3. A következő parancs futtatásával vegye fel a gépet egy hibrid Runbook Worker-csoportba, és módosítsa a paraméterek értékeit *– w*, *-k*, *-g*és *-e*. A *-g* paraméternél cserélje le az értéket annak a hibrid Runbook-feldolgozó csoportnak a nevére, amelynek az új Linux Hybrid Runbook Worker-nek csatlakoznia kell. Ha a név nem létezik az Automation-fiókjában, akkor a rendszer létrehoz egy új hibrid Runbook Worker-csoportot ezzel a névvel.
+3. A következő parancs futtatásával vegye fel a gépet egy hibrid Runbook Worker-csoportba, adja meg a paraméterek, a, és a értékeit `-w` `-k` `-g` `-e` .
+
+    A paraméterekhez `-k` és az `-e` Automation-fiók **kulcsok** lapjáról kérheti le a szükséges információkat. A lap bal oldalán található **Fiókbeállítások** szakaszban válassza a **kulcsok** lehetőséget.
+
+    ![Kulcsok kezelése lap](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
+
+    * A `-e` paraméter esetében másolja az **URL-cím**értékét.
+
+    * A `-k` paraméter esetében másolja az **elsődleges elérési kulcs**értékét.
+
+    * A `-g` paraméternél adja meg annak a hibrid Runbook-feldolgozó csoportnak a nevét, amelyhez az új Linux Hybrid Runbook Worker csatlakoznia kell. Ha ez a csoport már létezik az Automation-fiókban, az aktuális gép hozzá lesz adva. Ha ez a csoport nem létezik, akkor a rendszer ezt a nevet hozza létre.
+
+    * A `-w` paraméternél adja meg a log Analytics-munkaterület azonosítóját.
 
    ```bash
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <logAnalyticsworkspaceId> -k <automationSharedKey> -g <hybridGroupName> -e <automationEndpoint>
    ```
 
-4. A parancs befejezése után a Azure Portal hibrid feldolgozói csoportok lapja az új csoportot és a tagok számát jeleníti meg. Ha ez egy meglévő csoport, a tagok száma nő. Válassza ki a csoportot a hibrid munkavégző csoportok lapon a listából, és válassza a **hibrid feldolgozók** csempét. A hibrid dolgozók oldalon láthatja a csoport egyes tagjait.
+4. A parancs befejezése után az Automation-fiókjában lévő hibrid feldolgozói csoportok lap az új csoportot és a tagok számát jeleníti meg. Ha ez egy meglévő csoport, a tagok száma nő. Válassza ki a csoportot a hibrid munkavégző csoportok lapon a listából, és válassza a **hibrid feldolgozók** csempét. A hibrid dolgozók oldalon láthatja a csoport egyes tagjait.
 
     > [!NOTE]
     > Ha a Linux rendszerhez készült Log Analytics virtuálisgép-bővítményt használja az Azure-beli virtuális gépekhez, javasoljuk, `autoUpgradeMinorVersion` hogy a `false` verzió automatikus verziófrissítésének beállítása a hibrid Runbook-feldolgozóval kapcsolatos problémákat okozzon. A bővítmény manuális frissítéséről az [Azure CLI üzembe helyezésével](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)foglalkozó témakörben olvashat bővebben.

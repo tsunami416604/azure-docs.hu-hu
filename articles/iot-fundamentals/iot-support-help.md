@@ -6,13 +6,13 @@ ms.author: phil
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 1/23/2020
-ms.openlocfilehash: 74d8d05ba3c7a061bc78dc4c24a24d6a6275525d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 6/10/2020
+ms.openlocfilehash: 3ba7e4b73fb0ac8d6318b7bfee73300800d5b7ee
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659614"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340773"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT – Támogatási és súgólehetőségek
 
@@ -99,7 +99,7 @@ Az Azure IoT kapcsolatos hírek és információk az [Azure blogban](https://azu
 
 Ossza meg tapasztalatait, ismerkedjen meg a [eszközök internetes hálózata technikai Közösség](https://techcommunity.microsoft.com/t5/Internet-of-Things-IoT/ct-p/IoT)szakértőitől.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Mi az az Azure IoT?](iot-introduction.md)

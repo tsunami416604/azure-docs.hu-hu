@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan készítheti elő a helyszíni gépeket a Azure
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: d5ac4ded59a69e57de02779b0ba8ade9d7b48b26
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 01e4a0652d575efd1c40612153be1742cd8e8927
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106359"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341332"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -31,11 +31,11 @@ Ebben a cikkben:
 
 A táblázat összefoglalja a Azure Migrate felderítési, felmérési és áttelepítési korlátait. Javasoljuk, hogy az áttelepítés előtt mérje fel a gépeket, de nem kell.
 
-**Forgatókönyv** | **Projekt** | **Felderítés/Értékelés** | **Áttelepítés**
+**Forgatókönyv** | **Projekt** | **Felderítés/Értékelés** | **Migrálás**
 --- | --- | --- | ---
 **VMware virtuális gépek** | Egy Azure Migrate-projektben akár 35 000 virtuális gépet is felderítheti és felbecsülheti. | Akár 10 000 VMware virtuális gépet is felfedezheti egyetlen [Azure Migrate berendezéssel](common-questions-appliance.md) a VMware-hez. | **Ügynök nélküli áttelepítés**: egyszerre legfeljebb 300 virtuális gépet lehet replikálni. A legjobb teljesítmény érdekében javasoljuk, hogy hozzon létre több köteget a virtuális gépeken, ha több mint 50 rendelkezik.<br/><br/> **Ügynök-alapú áttelepítés**: a [replikációs berendezést](migrate-replication-appliance.md) nagy számú virtuális gép replikálására is [felskálázással](./agent-based-migration-architecture.md#performance-and-scaling) végezheti el.<br/><br/> A portálon egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Több gép replikálásához vegyen fel 10-es kötegeket.
 **Hyper-V virtuális gépek** | Egy Azure Migrate-projektben akár 35 000 virtuális gépet is felderítheti és felbecsülheti. | Akár 5 000 Hyper-V virtuális gép felderítése egyetlen Azure Migrate berendezéssel | Egy berendezés nem használatos a Hyper-V áttelepítéséhez. Ehelyett a Hyper-V replikációs szolgáltató minden Hyper-V-gazdagépen fut.<br/><br/> A replikációs kapacitást a teljesítménnyel kapcsolatos tényezők, például a virtuális gépek elváltozása és a replikációs adatok feltöltési sávszélessége befolyásolja.<br/><br/> A portálon egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Több gép replikálásához vegyen fel 10-es kötegeket.
-**Fizikai gépek** | Akár 35 000 gépet is felderítheti és felbecsülheti egyetlen Azure Migrate projektben. | Akár 250 fizikai kiszolgálót is felderítheti egyetlen Azure Migrate berendezéssel a fizikai kiszolgálók számára. | A [replikációs berendezés](migrate-replication-appliance.md) a nagy számú kiszolgáló replikálására is [méretezhető](/agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> A portálon egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Több gép replikálásához vegyen fel 10-es kötegeket.
+**Fizikai gépek** | Akár 35 000 gépet is felderítheti és felbecsülheti egyetlen Azure Migrate projektben. | Akár 250 fizikai kiszolgálót is felderítheti egyetlen Azure Migrate berendezéssel a fizikai kiszolgálók számára. | A [replikációs berendezés](migrate-replication-appliance.md) a nagy számú kiszolgáló replikálására is [méretezhető](./agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> A portálon egyszerre legfeljebb 10 gépet választhat a replikáláshoz. Több gép replikálásához vegyen fel 10-es kötegeket.
 
 ## <a name="select-a-vmware-migration-method"></a>VMware áttelepítési módszer kiválasztása
 

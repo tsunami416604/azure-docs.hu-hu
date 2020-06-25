@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: c766fb84fa14eab09143cfb5b71f7aefc9f51d24
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 50ee9e3c22c885931e2586f65ba2fa3353fccfeb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077778"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355845"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>SAML-alapú SSO-alkalmazások konfigurációjának automatizálása Microsoft Graph API-val
 
@@ -111,6 +111,8 @@ Content-type: application/json
 
 Az utolsó lépésben az alkalmazáshoz beolvasott sablon AZONOSÍTÓjának használatával [hozzon létre egy példányt](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) az alkalmazás és a szolgáltatásnév számára a bérlőben.
 
+> [!NOTE] 
+> A applicationTemplate API használatával nem katalógusbeli [alkalmazásokat](add-non-gallery-app.md)hozhat létre. ApplicationTemplateId használata `8adf8e6e-67b2-4cf2-a259-e3dc5476c621` .
 #### <a name="request"></a>Kérés
 
 <!-- {
@@ -594,7 +596,7 @@ HTTP/1.1 204
 
 Rendelje hozzá a következő felhasználót az egyszerű szolgáltatáshoz, és rendelje hozzá a AWS_Role1. 
 
-| Name  | ID  |
+| Name (Név)  | ID  |
 |---------|---------|
 | Felhasználói azonosító (principalId) | 6cad4079-4e79-4a3f-9efb-ea30a14bdb26 |
 | Típus (principalType) | Felhasználó |
