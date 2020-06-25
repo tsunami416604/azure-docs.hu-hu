@@ -3,14 +3,14 @@ title: Windows Hybrid Runbook Worker üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy hibrid Runbook-feldolgozót, amely a helyi adatközpontban vagy a felhőalapú környezetben lévő Windows-alapú gépeken futtatott runbookok futtatására használható.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/17/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: b1cac1ed1ff92086991d405ad72950e362493619
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6141440cdb5b232145417c6051cb340e806f9352
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079180"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338002"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
@@ -190,15 +190,15 @@ Most futtassa a `Add-HybridRunbookWorker` parancsmagot a következő szintaxis h
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 ```
 
-A parancsmaghoz szükséges adatokat a Azure Portal kulcsok kezelése lapján érheti el. Az Automation-fiók beállítások lapján található **kulcsok** lehetőség kiválasztásával nyissa meg ezt a lapot.
+A paraméterekhez `EndPoint` és az `Token` Automation-fiók Keys ( **kulcsok** ) lapjához szükséges információkat lekérheti. A lap bal oldalán található **Fiókbeállítások** szakaszban válassza a **kulcsok** lehetőséget.
 
 ![Kulcsok kezelése lap](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
+* A `EndPoint` paraméter esetében másolja az **URL-cím**értékét.
+
+* A `Token` paraméter esetében másolja az **elsődleges elérési kulcs**értékét.
+
 * A `GroupName` paraméterhez használja a Hybrid Runbook Worker Group nevét. Ha ez a csoport már létezik az Automation-fiókban, az aktuális gép hozzá lesz adva. Ha ez a csoport nem létezik, a rendszer hozzáadja.
-
-* A `EndPoint` paraméter esetében használja az **URL-címet** a kulcsok kezelése lapon.
-
-* A `Token` paraméter esetében használja az **elsődleges hozzáférési kulcs** bejegyzést a kulcsok kezelése lapon.
 
 * Ha szükséges, állítsa be a `Verbose` paramétert a telepítés részleteinek fogadására.
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1b5d51eafc0cb21a02f8a750bd78b5be7aca734f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605510"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336876"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -197,7 +197,7 @@ A (z) adatfeldolgozó csapata a cikk alján található, [előzetes és üzembe 
 
    ![Saját sablon létrehozása](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. Válassza a **fájl betöltése**lehetőséget, majd válassza ki a generált Resource Manager-sablont. Ez az 1. lépésben exportált. zip fájlban található **arm_template. JSON** fájl.
+1. Válassza a **fájl betöltése**lehetőséget, majd válassza ki a generált Resource Manager-sablont. Ez az 1. lépésben exportált. zip fájlban található fájl **arm_template.js** .
 
    ![Sablon szerkesztése](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -212,7 +212,7 @@ Ha a fejlesztői gyárhoz tartozik egy társított git-tárház, felülbírálha
 * Automatikus CI/CD-t használ, és módosítani szeretné néhány tulajdonságot a Resource Manager üzembe helyezése során, de a tulajdonságok alapértelmezés szerint nem paraméterek.
 * A gyár olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan megengedett paraméterek (256).
 
-Az alapértelmezett paraméterezés-sablon felülbírálásához hozzon létre egy **ARM-template-Parameters-definition. JSON** nevű fájlt a git-ág gyökérkönyvtárában. Pontosan ezt a fájlnevet kell használnia.
+Az alapértelmezett paraméterezés-sablon felülbírálásához hozzon létre egy **arm-template-parameters-definition.js** nevű fájlt a git-ág gyökérmappa mappájába. Pontosan ezt a fájlnevet kell használnia.
 
    ![Egyéni paraméterek fájlja](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -225,7 +225,7 @@ Egy Resource Manager-sablon exportálásakor Data Factory beolvassa ezt a fájlt
 
 ### <a name="custom-parameter-syntax"></a>Egyéni paraméter szintaxisa
 
-Az alábbiakban néhány útmutatást talál az egyéni paraméterek fájljának létrehozásakor: **ARM-template-Parameters-definition. JSON**. A fájl az egyes entitások típusának egy szakaszát tartalmazza: trigger, folyamat, társított szolgáltatás, adatkészlet, integrációs modul és adatfolyam.
+Az alábbi útmutatást követve az egyéni paraméterek fájljának létrehozásakor **arm-template-parameters-definition.js**. A fájl az egyes entitások típusának egy szakaszát tartalmazza: trigger, folyamat, társított szolgáltatás, adatkészlet, integrációs modul és adatfolyam.
 
 * Adja meg a tulajdonság elérési útját a megfelelő entitás típusa mezőben.
 * A tulajdonságnév beállítása  `*` azt jelzi, hogy az összes tulajdonságot meg szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Kivételeket is megadhat ehhez a konfigurációhoz.
@@ -422,6 +422,7 @@ Alább látható az aktuális alapértelmezett paraméterezés-sablon. Ha csak n
                     "systemNumber": "=",
                     "server": "=",
                     "url":"=",
+                    "functionAppUrl":"=",
                     "environmentUrl": "=",
                     "aadResourceId": "=",
                     "sasUri": "|:-sasUri:secureString",
@@ -574,9 +575,9 @@ Ha a git-t konfigurálta, a csatolt sablonok a adf_publish ág teljes Resource M
 
 ![Társított Resource Manager-sablonok mappája](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-A társított Resource Manager-sablonok általában egy fősablonból és egy, a főkiszolgálóhoz csatolt alárendelt sablonokból állnak. A fölérendelt sablon neve ArmTemplate_master. JSON, és a gyermek sablonok neve a következő mint ArmTemplate_0. JSON, ArmTemplate_1. JSON stb. 
+A társított Resource Manager-sablonok általában egy fősablonból és egy, a főkiszolgálóhoz csatolt alárendelt sablonokból állnak. A fölérendelt sablon neve ArmTemplate_master.json, és a gyermek-sablonok neve a következő mintával: ArmTemplate_0.json, ArmTemplate_1.json, és így tovább. 
 
-Ha a teljes Resource Manager-sablon helyett csatolt sablonokat kíván használni, frissítse a CI/CD-feladatot úgy, hogy a ArmTemplateForFactory. JSON helyett a ArmTemplate_master. JSON fájlra mutasson (a teljes Resource Manager-sablon). A Resource Manager emellett azt is megköveteli, hogy a csatolt sablonokat egy Storage-fiókba töltse fel, hogy az Azure az üzembe helyezés során is hozzáférhessen. További információ: [a társított Resource Manager-sablonok üzembe helyezése a vsts](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+Ha a teljes Resource Manager-sablon helyett csatolt sablonokat szeretne használni, frissítse a CI/CD-feladatot úgy, hogy az a ArmTemplateForFactory.js(teljes Resource Manager-sablon) helyett ArmTemplate_master.jsre mutasson. A Resource Manager emellett azt is megköveteli, hogy a csatolt sablonokat egy Storage-fiókba töltse fel, hogy az Azure az üzembe helyezés során is hozzáférhessen. További információ: [a társított Resource Manager-sablonok üzembe helyezése a vsts](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
 
 Ne felejtse el hozzáadni az Data Factory szkripteket a CI/CD-folyamathoz az üzembe helyezési feladat előtt és után.
 
@@ -726,8 +727,10 @@ function triggerSortUtil {
         return;
     }
     $visited[$trigger.Name] = $true;
-    $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
-        triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+    if ($trigger.Properties.DependsOn) {
+        $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
+            triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+        }
     }
     $sortedList.Push($trigger)
 }

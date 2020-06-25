@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 05/29/2020
+ms.date: 06/23/2020
 tags: connectors
-ms.openlocfilehash: 557e162d9d7f0238d5554c32cb3ae96885877dbe
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220506"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323161"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -49,9 +49,12 @@ Ennek a cikknek a követéséhez a következő elemek szükségesek:
 
 * Az [SAP-alkalmazáskiszolgáló](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) vagy az [SAP-üzenetküldési kiszolgáló](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* Az SAP-kiszolgálónak küldendő üzenetek, például a minta IDoc fájlnak XML formátumúnak kell lennie, és tartalmaznia kell a használni kívánt SAP-művelet névterét.
+* Az SAP-kiszolgálónak küldött üzenetek, például a minta IDoc fájlnak XML formátumúnak kell lennie, és tartalmaznia kell a használni kívánt SAP-művelet névterét.
 
 * Ha az SAP triggertől **érkező üzenetet** szeretne használni, a következő lépéseket is végre kell hajtania:
+  
+  > [!NOTE]
+  > Ez az trigger ugyanazt az URI-helyet használja a megújításhoz és a leiratkozáshoz egy webhook-előfizetésből. A megújítási művelet a HTTP `PATCH` metódust használja, míg a leiratkozási művelet a http- `DELETE` metódust használja. Ez a viselkedés megújíthatja a megújítási műveletet az aktiválási előzményekben lemondási műveletként, de a művelet továbbra is megújítható, mert az trigger `PATCH` http-metódusként működik, nem `DELETE` .
 
   * Állítsa be az SAP Gateway biztonsági engedélyeit a következő beállítással:
 
@@ -90,10 +93,10 @@ Ezek az előfeltételek akkor érvényesek, ha a logikai alkalmazások prémium 
 
 1. [Töltse le és telepítse a legújabb SAP ügyféloldali kódtárat](#sap-client-library-prerequisites) a helyi számítógépen. A következő szerelvény-fájloknak kell szerepelniük:
 
-   * libicudecnumber. dll
-   * rscp4n. dll
-   * sapnco. dll
-   * sapnco_utils. dll
+   * libicudecnumber.dll
+   * rscp4n.dll
+   * sapnco.dll
+   * sapnco_utils.dll
 
 1. Hozzon létre egy. zip-fájlt, amely tartalmazza ezeket a szerelvényeket, és töltse fel ezt a csomagot a blob-tárolóba az Azure Storage-ban.
 
@@ -111,7 +114,7 @@ Ezek az előfeltételek akkor érvényesek, ha a logikai alkalmazások prémium 
    
    1. Az **új felügyelt összekötő hozzáadása** ablaktábla **SAP-csomag** mezőjébe illessze be az SAP-szerelvényekkel rendelkező. zip-fájl URL-címét. *Győződjön meg arról, hogy tartalmazza az SAS-tokent.*
 
-   1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+   1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
    További információ: ISE- [Összekötők hozzáadása](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment).
 
@@ -360,9 +363,9 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
       Logic Apps beállítja és teszteli a kapcsolódást, hogy a kapcsolódás megfelelően működjön.
 
-1. Adja meg a [szükséges paramétereket](#parameters) az SAP rendszerkonfigurációja alapján.
+1. Adja meg a [szükséges paramétereket](#parameters) az SAP rendszerkonfigurációja alapján. 
 
-   Szükség esetén egy vagy több SAP-műveletet is megadhat. A műveletek listája azokat az üzeneteket határozza meg, amelyeket az trigger az SAP-kiszolgálótól kap. Az üres lista azt adja meg, hogy az trigger megkapja az összes üzenetet. Ha a lista egynél több üzenetet tartalmaz, az trigger csak a listában megadott üzeneteket kapja meg. A rendszer elutasítja az SAP-kiszolgálóról küldött összes többi üzenetet.
+   Az SAP [-kiszolgálótól kapott üzeneteket szűrheti az SAP-műveletek listájának megadásával](#filter-with-sap-actions).
 
    Kiválaszthat egy SAP-műveletet a file pickerből:
 
@@ -395,6 +398,56 @@ Az egyszerű karakterlánc-és szám típusú bemenetekkel együtt az SAP-össze
 * A paraméterek módosítása, amelyek lecserélik a tábla irányának paramétereit az újabb SAP-kiadásokra.
 * Hierarchikus tábla paramétereinek
 
+<a name="filter-with-sap-actions"></a>
+
+#### <a name="filter-with-sap-actions"></a>Szűrés SAP-műveletekkel
+
+Lehetősége van arra, hogy a logikai alkalmazás által az SAP-kiszolgálótól kapott üzeneteket egy vagy több SAP-művelettel rendelkező lista vagy tömb megadásával szűrheti. Alapértelmezés szerint ez a tömb üres, ami azt jelenti, hogy a logikai alkalmazás a szűrés nélkül megkapja az összes üzenetet az SAP-kiszolgálótól. 
+
+A tömb szűrő beállításakor az trigger csak a megadott SAP-tevékenységtípusok üzeneteit fogadja, és elutasítja az SAP-kiszolgálóról érkező összes többi üzenetet. Ez a szűrő azonban nem befolyásolja, hogy a kapott tartalom beírása gyenge vagy erős.
+
+Az SAP-műveletek szűrése a helyszíni adatátjáróhoz tartozó SAP-adapter szintjén történik. További információ: [hogyan küldhet teszt IDocs az SAP-Logic apps](#send-idocs-from-sap).
+
+Ha nem tud IDoc-csomagokat küldeni az SAP-ból a logikai alkalmazás triggerére, tekintse meg a tranzakciós RFC (tRFC) Call elutasítás üzenetet az SAP tRFC párbeszédpanelen (T-Code SM58). Az SAP-felületen a következő hibaüzenetek jelenhetnek meg, amelyeket az **állapot szövegmezőben** lévő alsztring korlátok miatt levágja a program.
+
+* `The RequestContext on the IReplyChannel was closed without a reply being`: Váratlan hibák történnek, amikor a csatorna összes kezelője leállítja a csatornát egy hiba miatt, és újraépíti a csatornát más üzenetek feldolgozására.
+
+  * Ha szeretné megismerni, hogy a logikai alkalmazás fogadta a IDoc, [adjon hozzá egy](../connectors/connectors-native-reqres.md#add-a-response-action) , az állapotkódot visszaadó Response műveletet `200 OK` . A IDoc a tRFC-en keresztül történik, ami nem teszi lehetővé a válasz adattartalommal való elszállítását.
+
+  * Ha ehelyett a IDoc el kell utasítania, akkor az SAP-adaptertől eltérő HTTP-állapotkódot kell válaszolnia az `200 OK` Ön nevében. 
+
+* `The segment or group definition E2EDK36001 was not found in the IDoc meta`: A várt hibák más hibákkal történnek, például a IDoc XML-adattartalom létrehozása nem sikerült, mert a szegmenseit nem az SAP bocsátja ki, így az átalakításhoz szükséges szegmens típusú metaadatok hiányoznak. 
+
+  * Ahhoz, hogy ezeket a szegmenseket az SAP felszabadítsa, forduljon az SAP-rendszerhez készült ABAP mérnökhez.
+
+<a name="find-extended-error-logs"></a>
+
+#### <a name="find-extended-error-logs"></a>Kiterjesztett hibanapló keresése
+
+A teljes hibaüzeneteket az SAP-adapter kiterjesztett naplófájljaiban találja. 
+
+A helyszíni adatátjárók 2020-es és újabb verzióiban az [alkalmazás beállításaiban engedélyezheti az átjáró naplóit](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
+
+A helyszíni adatátjárók esetében az április 2020-es és korábbi verzióiban a naplók alapértelmezés szerint le vannak tiltva. A kiterjesztett naplók lekéréséhez kövesse az alábbi lépéseket:
+
+1. A helyszíni adatátjáró telepítési mappájában nyissa meg a `Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` fájlt. 
+
+1. A **SapExtendedTracing** beállításnál módosítsa a **false** értéket **true**értékre.
+
+1. Ha kevesebb eseményre van szükség, módosítsa a **SapTracingLevel** értéket a **tájékoztató** (alapértelmezett) értékről a **hiba** vagy a **Figyelmeztetés**értékre. Vagy ha további események is megváltoznak **Informational** , az információk **részletesen**is megváltoztathatók.
+
+1. Mentse a konfigurációs fájlt.
+
+1. Indítsa újra az adatátjárót. Nyissa meg a helyszíni adatátjáró-telepítő alkalmazást, és nyissa meg a **szolgáltatási beállítások** menüt. **Az átjáró újraindítása**területen válassza az **Újraindítás most**lehetőséget.
+
+1. Reprodukálja a problémát.
+
+1. Exportálja az átjáró naplóit. A adatátjáró-telepítő alkalmazásban lépjen a **diagnosztika** menüre. Az **átjáró naplófájljai**területen válassza a **naplók exportálása**lehetőséget. Ezek a fájlok tartalmazzák az SAP-naplókat dátum szerint rendezve. A napló méretétől függően több naplófájl is létezhet egyetlen dátumhoz.
+
+1. A konfigurációs fájlban állítsa a **SapExtendedTracing** beállítást **hamis**értékre.
+
+1. Indítsa újra az átjárószolgáltatást.
+
 ### <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
 
 1. A logikai alkalmazás elindításához küldjön üzenetet az SAP-rendszerből.
@@ -403,9 +456,148 @@ Az egyszerű karakterlánc-és szám típusú bemenetekkel együtt az SAP-össze
 
 1. Nyissa meg a legutóbbi futtatást, amely az SAP-rendszerből a trigger kimenetek szakaszban küldött üzenetet mutatja.
 
+<a name="send-idocs-from-sap"></a>
+
+### <a name="test-sending-idocs-from-sap"></a>IDocs küldésének tesztelése az SAP-ból
+
+A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minimális konfiguráció szükséges:
+
+> [!IMPORTANT]
+> Ezeket a lépéseket csak akkor használja, ha a logikai alkalmazással teszteli az SAP-konfigurációt. Az éles környezetek további konfigurálást igényelnek.
+
+1. [RFC-cél konfigurálása az SAP-ben](#create-rfc-destination)
+
+1. [ABAP-kapcsolatok létrehozása az RFC-célhoz](#create-abap-connection)
+
+1. [Fogadó port létrehozása](#create-receiver-port)
+
+1. [Feladó portjának létrehozása](#create-sender-port)
+
+1. [Logikai rendszerpartner létrehozása](#create-logical-system-partner)
+
+1. [Partneri profil létrehozása](#create-partner-profiles)
+
+1. [Üzenetek küldésének tesztelése](#test-sending-messages)
+
+#### <a name="create-rfc-destination"></a>RFC-cél létrehozása
+
+1. Az RFC- **kapcsolatok beállításainak konfigurálásához** az SAP-felületén használja az **sm59** -tranzakció kódját (T Code) a **/n** előtaggal.
+
+1. Válassza a **TCP/IP-kapcsolatok**  >  **Létrehozás**lehetőséget.
+
+1. Hozzon létre egy új RFC-célhelyet a következő beállításokkal:
+    
+    * Az **RFC-cél**mezőben adjon meg egy nevet.
+    
+    * A **technikai beállítások** lapon az **aktiválás típusa**beállításnál válassza a **regisztrált kiszolgáló program**elemet. A **program azonosítójának**megadásához adjon meg egy értéket. Az SAP-ben a logikai alkalmazás triggere az azonosító használatával lesz regisztrálva.
+    
+    * A **Unicode** lapon a **rendszerhez tartozó kommunikációs típushoz**válassza a **Unicode**lehetőséget.
+
+1. Mentse a módosításokat.
+
+1. Regisztrálja az új **program azonosítóját** a Azure Logic apps.
+
+1. A kapcsolat teszteléséhez az SAP-felületen az új **RFC-cél**területen válassza a **kapcsolat tesztelése**elemet.
+
+#### <a name="create-abap-connection"></a>ABAP-kapcsolatok létrehozása
+
+1. Az RFC- **kapcsolatok beállításainak konfigurálásához** az SAP-felületen használja az **sm59*** tranzakciós kódot (T Code) a **/n** előtaggal.
+
+1. Válassza ki a **ABAP kapcsolatok**  >  **létrehozása**lehetőséget.
+
+1. Az **RFC-cél**mezőben adja meg a [teszt SAP-rendszer](#create-rfc-destination)azonosítóját.
+
+1. Mentse a módosításokat.
+
+1. A kapcsolódás teszteléséhez válassza a **kapcsolódási teszt** lehetőséget.
+
+#### <a name="create-receiver-port"></a>Fogadó port létrehozása
+
+1. Ha meg szeretné nyitni a IDOC-feldolgozási beállításokban található **portokat** , az SAP-felületen használja az **we21** -tranzakció kódját (T Code) a **/n** előtaggal.
+
+1. Válassza a **portok**  >  **tranzakciós RFC**-  >  **Létrehozás**lehetőséget.
+
+1. A megnyíló beállítások mezőben válassza a **saját port neve**lehetőséget. A tesztelési porthoz adjon meg egy **nevet**. Mentse a módosításokat.
+
+1. Az új fogadó port beállításainál az **RFC-cél**mezőben adja meg a [teszt RFC-cél](#create-rfc-destination)azonosítóját.
+
+1. Mentse a módosításokat.
+
+#### <a name="create-sender-port"></a>Feladó portjának létrehozása
+
+1.  Ha meg szeretné nyitni a IDOC-feldolgozási beállításokban található **portokat** , az SAP-felületen használja az **we21** -tranzakció kódját (T Code) a **/n** előtaggal.
+
+1. Válassza a **portok**  >  **tranzakciós RFC**-  >  **Létrehozás**lehetőséget.
+
+1. A megnyíló beállítások mezőben válassza a **saját port neve**lehetőséget. A tesztelési porthoz adjon meg egy olyan **nevet** , amely az **SAP**-vel kezdődik. Az összes küldő port nevének az **SAP**betűvel kell kezdődnie, például **SAPTEST**. Mentse a módosításokat.
+
+1. Az új feladó portjának beállításaiban az RFC- **cél**mezőben adja meg a ABAP- [kapcsolatok](#create-abap-connection)azonosítóját.
+
+1. Mentse a módosításokat.
+
+#### <a name="create-logical-system-partner"></a>Logikai rendszerpartner létrehozása
+
+1. Ha meg szeretné nyitni a **"logikai rendszerek" módosítási nézetet: az áttekintő** beállítások az SAP-felületen, használja a **bd54** tranzakciós kódot (T Code).
+
+1. Fogadja el a megjelenő figyelmeztető üzenetet: **Vigyázat: a tábla több ügyfél**
+
+1. A meglévő logikai rendszereket megjelenítő lista felett válassza az **új bejegyzések**lehetőséget.
+
+1. Az új logikai rendszer esetében adjon meg egy **Log.System** -azonosítót és egy rövid **nevet** . Mentse a módosításokat.
+
+1. Amikor megjelenik a **Workbench Rákérdezése** , hozzon létre egy új kérést egy leírás megadásával, vagy ha már létrehozott egy kérést, hagyja ki ezt a lépést.
+
+1. Miután létrehozta a Workbench-kérelmet, csatolja a kérést a tábla frissítési kérelméhez. A táblázat frissítésének megerősítéséhez mentse a módosításokat.
+
+#### <a name="create-partner-profiles"></a>Partneri profilok létrehozása
+
+Éles környezetekben két partneri profilt kell létrehoznia. Az első profil a küldő, amely a szervezet és az SAP-rendszer. A második profil a fogadó, amely a logikai alkalmazás.
+
+1. A **partneri profilok** beállításainak megnyitásához az SAP-felületen használja az **We20** (T Code) a **/n** előtaggal.
+
+1. A **partneri profilok**területen válassza az **ls Create partner típusa**lehetőséget  >  **Create**.
+
+1. Hozzon létre egy új partner-profilt a következő beállításokkal:
+
+    * A **partner nem.** mezőben adja meg [a logikai rendszer partnerének azonosítóját](#create-logical-system-partner).
+
+    * **Partn. Írja be a következőt**: **ls**.
+
+    * Az **ügynök**mezőben adja meg az SAP-felhasználói fiók azonosítóját, amelyet akkor kell használni, ha Azure Logic apps vagy más nem SAP rendszerekhez regisztrálja a program azonosítóit.
+
+1. Mentse a módosításokat. Ha még nem [hozta létre a logikai rendszerpartnert](#create-logical-system-partner), a hibaüzenetet kapja meg, és **adjon meg egy érvényes partneri számot**.
+
+1. A partner profiljának beállításaiban a **kimenő parmtrs**alatt válassza a **kimenő paraméter létrehozása**lehetőséget.
+
+1. Hozzon létre egy új kimenő paramétert a következő beállításokkal:
+
+    * Adja meg az **üzenet típusát**(például: **cremas**).
+
+    * Adja meg a [fogadó portjának azonosítóját](#create-receiver-port).
+
+    * Adja meg a csomag IDoc méretét **. Méret**. Vagy ha az [SAP-ból egyszerre csak egy IDocs szeretne küldeni](#receive-idoc-packets-from-sap), válassza a **IDoc azonnali továbbítása**lehetőséget.
+
+1. Mentse a módosításokat.
+
+#### <a name="test-sending-messages"></a>Üzenetek küldésének tesztelése
+
+1. A IDoc- **feldolgozási beállítások tesztelési eszközének** megnyitásához az SAP-felületen használja az **we19** -tranzakció kódját (T Code) a **/n** előtaggal.
+
+1. A **sablon a teszteléshez**területen válassza az **üzenet típusa**lehetőséget, majd írja be az üzenet típusát (például: **cremas**). Kattintson a **Létrehozás** gombra.
+
+1. A **Folytatás**gombra kattintva erősítse meg, hogy **melyik IDoc-típust?** üzenet jelenik meg.
+
+1. Válassza ki a **EDIDC** csomópontot. Adja meg a fogadó és a küldő portok megfelelő értékeit. Válassza a **Folytatás** elemet.
+
+1. Válassza a **normál kimenő feldolgozás**lehetőséget.
+
+1. A kimenő IDoc-feldolgozás indításához válassza a **Folytatás**lehetőséget. A feldolgozás befejezésekor a IDoc az **SAP-rendszerbe vagy külső programba küldött** üzenet jelenik meg.
+
+1.  A feldolgozási hibák kereséséhez használja a **sm58** tranzakciós kódot (T Code) a **/n** előtaggal.
+
 ## <a name="receive-idoc-packets-from-sap"></a>IDoc-csomagok fogadása az SAP-ból
 
-Beállíthatja az SAP-t, hogy [IDocs küldjön a csomagokban](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), amelyek kötegek vagy IDocs-csoportok. A IDoc-csomagok fogadásához az SAP-összekötőt, és különösen az triggert nem kell külön konfigurálni. Ahhoz azonban, hogy az trigger megkapja a csomagot, a IDoc-csomagok minden egyes elemét fel kell dolgozni, néhány további lépés szükséges a csomag különálló IDocs való felosztásához.
+Beállíthatja az SAP-t, hogy [IDocs küldjön a csomagokban](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/4ab38886549a6d8ce10000000a42189c.html), amelyek kötegek vagy IDocs-csoportok. A IDoc-csomagok fogadásához az SAP-összekötőt, és különösen az triggert nem kell külön konfigurálni. Ahhoz azonban, hogy az trigger megkapja a csomagot, a IDoc-csomagok minden egyes elemét fel kell dolgozni, néhány további lépés szükséges a csomag különálló IDocs való felosztásához.
 
 Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDocs egy csomagból a következő [ `xpath()` függvény](./workflow-definition-language-functions-reference.md#xpath)használatával:
 
@@ -439,7 +631,14 @@ A minta rövid útmutató sablonjának használatával új logikai alkalmazás l
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>Sémák előállítása összetevők számára az SAP-ban
 
-Ez a példa egy logikai alkalmazást használ, amely HTTP-kéréssel aktiválható. Az SAP-művelet kérést küld egy SAP-rendszernek, hogy létrehozza a sémákat a megadott IDoc és BAPI. A válaszban visszaadott sémákat az Azure Resource Manager-összekötő használatával kell feltölteni egy integrációs fiókba.
+Ez a példa egy logikai alkalmazást használ, amely HTTP-kéréssel aktiválható. A megadott IDoc és BAPI sémáinak létrehozásához a **séma-létrehozási** SAP-művelet elküld egy kérést egy SAP-rendszernek.
+
+Ez az SAP-művelet egy XML-sémát ad vissza, nem pedig maga az XML-dokumentum tartalmát vagy adatmennyiségét. A válaszban visszaadott sémákat az Azure Resource Manager-összekötő használatával kell feltölteni egy integrációs fiókba. A sémák a következő részeket tartalmazzák:
+
+* A kérelem üzenetének szerkezete. Ezeket az információkat a BAPI listájának megalkotása céljából használhatja `get` .
+* A válaszüzenet szerkezete. Ezekkel az információkkal elemezheti a választ. 
+
+A kérelem üzenetének elküldéséhez használja az általános SAP-művelet **üzenetet küld az SAP**-nek, vagy a **meghívott hívási BAPI** műveleteket.
 
 ### <a name="add-an-http-request-trigger"></a>HTTP-kérelem triggerének hozzáadása
 
@@ -639,9 +838,23 @@ Ha az üzenetek **biztonságos gépeléssel** való küldése engedélyezve van,
 
 ## <a name="advanced-scenarios"></a>Speciális forgatókönyvek
 
+### <a name="change-language-headers"></a>Nyelvi fejlécek módosítása
+
+Ha Logic Apps-ból kapcsolódik az SAP-hoz, a kapcsolat alapértelmezett nyelve az angol. Megadhatja a kapcsolatok nyelvét [a szabványos http- `Accept-Language` fejléc](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4) és a bejövő kérések használatával.
+
+> [!TIP]
+> A legtöbb webböngésző egy `Accept-Language` fejlécet ad hozzá a felhasználó beállításai alapján. A webböngésző akkor alkalmazza ezt a fejlécet, amikor új SAP-kapcsolat jön létre a Logic Apps Designerben. Ha nem szeretne SAP-kapcsolatokat létrehozni a webböngésző előnyben részesített nyelvén, frissítse a webböngésző beállításait az előnyben részesített nyelv használatára, vagy hozza létre az SAP-kapcsolatot Azure Resource Manager használatával a Logic Apps Designer helyett. 
+
+Küldhet például egy kérelmet a `Accept-Language` logikai alkalmazás fejlécével a **http-kérelem** trigger használatával. A logikai alkalmazás összes művelete megkapja a fejlécet. Ezt követően az SAP a megadott nyelveket használja a rendszerüzenetekben, például a BAPI hibaüzeneteket.
+
+A logikai alkalmazások SAP-kapcsolatainak paraméterei nem rendelkeznek nyelvi tulajdonsággal. Ha tehát a `Accept-Language` fejlécet használja, a következő hibaüzenet jelenhet meg: **ellenőrizze a fiók adatait és/vagy engedélyeit, és próbálkozzon újra.** Ebben az esetben az SAP-összetevő naplófájljait kell megnéznie. A hiba valójában a fejlécet használó SAP-összetevőben történik, így előfordulhat, hogy a következő hibaüzenetek valamelyikét kapja:
+
+* `"SAP.Middleware.Connector.RfcLogonException: Select one of the installed languages"`
+* `"SAP.Middleware.Connector.RfcAbapMessageException: Select one of the installed languages"`
+
 ### <a name="confirm-transaction-explicitly"></a>Tranzakció explicit megerősítése
 
-Ha Logic Appsről küld tranzakciókat az SAP-nak, ez az Exchange két lépésben történik az SAP-dokumentumban, a [tranzakciós RFC-kiszolgáló programjaiban](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)leírtak szerint. Alapértelmezés szerint a **Küldés az SAP-be** művelet a függvények átvitelének lépéseit és a tranzakciós megerősítést egyetlen hívásban kezeli. Az SAP-összekötő lehetővé teszi, hogy leválasztsa ezeket a lépéseket. IDoc küldhet, és nem lehet automatikusan megerősíteni a tranzakciót, a explicit tranzakció- **azonosító megerősítése** műveletet használhatja.
+Ha Logic Appsről küld tranzakciókat az SAP-nak, ez az Exchange két lépésben történik az SAP-dokumentumban, a [tranzakciós RFC-kiszolgáló programjaiban](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)leírtak szerint. Alapértelmezés szerint a **Küldés az SAP-be** művelet a függvények átvitelének lépéseit és a tranzakciós megerősítést egyetlen hívásban kezeli. Az SAP-összekötő lehetővé teszi, hogy leválasztsa ezeket a lépéseket. IDoc küldhet, és nem lehet automatikusan megerősíteni a tranzakciót, a explicit tranzakció- **azonosító megerősítése** műveletet használhatja.
 
 Ez a tranzakció-azonosító megerősítése leválasztásának lehetősége akkor hasznos, ha nem szeretne ismétlődő tranzakciókat használni az SAP-ban, például olyan helyzetekben, ahol a hibák oka lehet például a hálózati problémák miatt. A tranzakció-azonosító külön megerősítésével a tranzakció csak egyszer lesz végrehajtva az SAP-rendszeren.
 

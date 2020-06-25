@@ -1,20 +1,14 @@
 ---
 title: Kapcsolódási problémák elhárítása – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk az Azure Event Hubs kapcsolódási problémáinak elhárításával kapcsolatos információkat tartalmaz.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2020
-ms.author: spelluru
-ms.openlocfilehash: 4111a71200ec9bffdfed37c926635754c868f71e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/23/2020
+ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726718"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322376"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Kapcsolódási problémák elhárítása – Azure Event Hubs
 Számos oka lehet annak, hogy az ügyfélalkalmazások nem tudnak csatlakozni az Event hub-hoz. Előfordulhat, hogy az Ön által tapasztalt kapcsolódási problémák állandóak vagy átmenetiek. Ha a probléma minden alkalommal (állandó) történik, érdemes megtekinteni a kapcsolódási karakterláncot, a szervezet tűzfalbeállítások, az IP-tűzfal beállításait, a hálózati biztonsági beállításokat (szolgáltatási végpontok, privát végpontok stb.). Átmeneti problémák esetén az SDK legújabb verziójára való frissítés, az eldobott csomagok vizsgálatára szolgáló parancsok futtatása, valamint a hálózati nyomkövetés beszerzése segíthet a hibák elhárításában. 

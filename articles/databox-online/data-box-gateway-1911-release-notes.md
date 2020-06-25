@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: v-grpr
-ms.openlocfilehash: 526f0ae21ac0c49d8c5fd984b09b7a2252afb606
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c22ba44c3d567d363b1fec702fecb81ca203a48b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129358"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322469"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-1911-release-notes"></a>Azure Stack Edge és Azure Data Box Gateway 1911 kibocsátási megjegyzései
 
@@ -39,5 +39,5 @@ Ebben a kiadásban nem jelennek meg új problémák a kiadásban. Az összes meg
 
 ## <a name="next-steps"></a>További lépések
 
-- [Felkészülés az Azure Stack Edge üzembe helyezésére](data-box-edge-deploy-prep.md)
+- [Felkészülés az Azure Stack Edge üzembe helyezésére](azure-stack-edge-deploy-prep.md)
 - [Az Azure Data Box Gateway üzembe helyezésének előkészítése](data-box-gateway-deploy-prep.md)

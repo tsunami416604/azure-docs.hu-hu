@@ -4,41 +4,38 @@ description: Ez a cikk a metrikák valós idejű nézetét írja le anélkül, h
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 54d751769005dabb4708eb198bcc765d830ba605
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196133"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338032"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>A metrikák valós idejű megtekintése
 
-A containers Live-adatok (előzetes verzió) szolgáltatásban Azure Monitor a valós idejű csomópont-és Pod-állapot mérőszámait jeleníti meg. Közvetlen hozzáférést emulál a `kubectl top nodes` , a `kubectl get pods –all-namespaces` és `kubectl get nodes` parancsokhoz, hogy meghívja, elemezze és megjelenítse az ebben az elemzésben szereplő teljesítmény-diagramokban lévő információkat. 
+A containers Live-adatok (előzetes verzió) szolgáltatásban Azure Monitor a valós idejű csomópont-és Pod-állapot mérőszámait jeleníti meg. Közvetlen hozzáférést emulál a `kubectl top nodes` , a `kubectl get pods –all-namespaces` és `kubectl get nodes` parancsokhoz, hogy meghívja, elemezze és megjelenítse az ebben az elemzésben szereplő teljesítmény-diagramokban lévő információkat.
 
-Ez a cikk részletes áttekintést nyújt, és segít megérteni a funkció használatát.  
-
->[!NOTE]
->Ez a funkció nem támogatja a [privát fürtökként](https://azure.microsoft.com/updates/aks-private-cluster/) engedélyezett AK-fürtöket. Ez a funkció arra támaszkodik, hogy közvetlenül a böngészőből egy proxykiszolgálón keresztül éri el a Kubernetes API-t. A hálózati biztonság engedélyezésével letilthatja a Kubernetes API-t ebből a proxyból, és letiltja a forgalmat. 
+Ez a cikk részletes áttekintést nyújt, és segít megérteni a funkció használatát.
 
 >[!NOTE]
->Ez a funkció minden Azure-régióban elérhető, beleértve az Azure China-t is. Jelenleg nem érhető el az Azure USA kormányzati szerveiben.
+>Ez a funkció nem támogatja a [privát fürtökként](https://azure.microsoft.com/updates/aks-private-cluster/) engedélyezett AK-fürtöket. Ez a funkció arra támaszkodik, hogy közvetlenül a böngészőből egy proxykiszolgálón keresztül éri el a Kubernetes API-t. A hálózati biztonság engedélyezésével letilthatja a Kubernetes API-t ebből a proxyból, és letiltja a forgalmat.
 
 Az élő adatszolgáltatások (előzetes verzió) beállításával vagy hibaelhárításával kapcsolatos segítségért tekintse át a [telepítési útmutatót](container-insights-livedata-setup.md).
 
-## <a name="how-it-works"></a>Működési elv 
+## <a name="how-it-works"></a>Működési elv
 
-Az élő adatok (előzetes verzió) funkció közvetlenül a Kubernetes API-hoz érhető el, és a hitelesítési modellel kapcsolatos további információk [itt](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)találhatók. 
+Az élő adatok (előzetes verzió) funkció közvetlenül a Kubernetes API-hoz érhető el, és a hitelesítési modellel kapcsolatos további információk [itt](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)találhatók.
 
-Ez a szolgáltatás lekérdezési műveletet hajt végre a metrikák végpontokon (beleértve `/api/v1/nodes` a, `/apis/metrics.k8s.io/v1beta1/nodes` és a `/api/v1/pods` ), amely alapértelmezés szerint öt másodpercenként van. Ezeket az adatfájlokat a rendszer a böngészőben gyorsítótárazza, és a **fürt** lapján lévő tárolók Azure monitor a négy teljesítményű diagramban szerepel, a **Go Live (előzetes verzió)** lehetőség kiválasztásával. Minden további lekérdezés táblázatos, öt perces vizualizációs ablakba kerül. 
+Ez a szolgáltatás lekérdezési műveletet hajt végre a metrikák végpontokon (beleértve `/api/v1/nodes` a, `/apis/metrics.k8s.io/v1beta1/nodes` és a `/api/v1/pods` ), amely alapértelmezés szerint öt másodpercenként van. Ezeket az adatfájlokat a rendszer a böngészőben gyorsítótárazza, és a **fürt** lapján lévő tárolók Azure monitor a négy teljesítményű diagramban szerepel, a **Go Live (előzetes verzió)** lehetőség kiválasztásával. Minden további lekérdezés táblázatos, öt perces vizualizációs ablakba kerül.
 
 ![Ugrás az élő lehetőségre a fürt nézetben](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
-A lekérdezési időközt a **beállított intervallum** legördülő menüben állíthatja be, amely lehetővé teszi az új adatok lekérdezésének megadását az egyes 1, 5, 15 és 30 másodpercekben. 
+A lekérdezési időközt a **beállított intervallum** legördülő menüben állíthatja be, amely lehetővé teszi az új adatok lekérdezésének megadását az egyes 1, 5, 15 és 30 másodpercekben.
 
 ![Ugrás élő legördülő lekérdezési időköz](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
->Javasoljuk, hogy a lekérdezési időközt egy másodpercre állítsa be, miközben rövid idő alatt hibaelhárítást végez a probléma megoldásában. Ezek a kérések befolyásolhatják a fürtön a Kubernetes API rendelkezésre állását és szabályozását. Ezt követően a rendszer újrakonfigurálja a lekérdezési időközt. 
+>Javasoljuk, hogy a lekérdezési időközt egy másodpercre állítsa be, miközben rövid idő alatt hibaelhárítást végez a probléma megoldásában. Ezek a kérések befolyásolhatják a fürtön a Kubernetes API rendelkezésre állását és szabályozását. Ezt követően a rendszer újrakonfigurálja a lekérdezési időközt.
 
 >[!IMPORTANT]
 >A szolgáltatás működése során a rendszer nem tárolja véglegesen az adattárolást. A munkamenet során rögzített összes információ azonnal törlődik a böngésző bezárásával vagy a szolgáltatásból való kilépéssel. Az adatmegjelenítés csak az öt perces időszakon belül marad elérhető. az öt percnél régebbi mérőszámok is véglegesen törlődnek.
@@ -47,9 +44,9 @@ Ezeket a diagramokat nem lehet az élő módban megtekintett utolsó Azure-irán
 
 ## <a name="metrics-captured"></a>Rögzített metrikák
 
-### <a name="node-cpu-utilization---node-memory-utilization-"></a>Csomópont CPU-kihasználtsága%/Node memória kihasználtsága (%) 
+### <a name="node-cpu-utilization---node-memory-utilization-"></a>Csomópont CPU-kihasználtsága%/Node memória kihasználtsága (%)
 
-Ez a két teljesítmény-diagram a `kubectl top nodes` **CPU%** és a **memória%** Columns eredményének a megfelelő diagramra való meghívásának és rögzítésének megfelelőjét képezi. 
+Ez a két teljesítmény-diagram a `kubectl top nodes` **CPU%** és a **memória%** Columns eredményének a megfelelő diagramra való meghívásának és rögzítésének megfelelőjét képezi.
 
 ![Kubectl – példa a legfontosabb csomópontokra](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
 
@@ -81,7 +78,7 @@ Ez a teljesítményteszt az `kubectl get pods –all-namespaces` **állapot** t�
 ![Csomópontok Pod Count diagram](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->Előfordulhat, hogy az állapot neve `kubectl` nem egyezik meg pontosan a diagramban. 
+>Előfordulhat, hogy az állapot neve `kubectl` nem egyezik meg pontosan a diagramban.
 
 ## <a name="next-steps"></a>További lépések
 

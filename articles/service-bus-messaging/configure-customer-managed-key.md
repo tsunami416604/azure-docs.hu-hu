@@ -1,19 +1,14 @@
 ---
 title: Saját kulcs konfigurálása a Azure Service Bus inaktív adatok titkosításához
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a saját kulcsát a Azure Service Bus adatok titkosításához.
-services: service-bus-messaging
-ms.service: service-bus
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: aschhab
-ms.openlocfilehash: 82a5fbef8c307d60d82b147f04a2a687b8b0433e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9bc48d82d1e63f08ab68e8f9c6a63e781c14c675
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459066"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338102"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával
 A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Service Bus Premium az Azure Storage szolgáltatásban tárolja az adattárolást, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal titkosítva van. 
@@ -42,7 +37,7 @@ Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kö
 2. A Service Bus névtér **Beállítások** lapján válassza a **titkosítás**lehetőséget.
 3. Válassza ki az **ügyfél által felügyelt kulcs titkosítását a nyugalmi** állapotban, ahogy az az alábbi képen is látható.
 
-    ![Ügyfél által felügyelt kulcs engedélyezése](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![Felhasználó által kezelt kulcs engedélyezése](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Key Vault beállítása kulcsokkal
@@ -117,7 +112,7 @@ Ez a szakasz bemutatja, hogyan végezheti el a következő feladatokat **Azure R
 ### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Prémium szintű Service Bus névtér létrehozása felügyelt szolgáltatás identitásával
 Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Azure Service Bus névteret felügyelt szolgáltatás identitásával egy Azure Resource Manager sablonnal és a PowerShell használatával. 
 
-1. Hozzon létre egy Azure Resource Manager sablont egy olyan Service Bus prémium szintű névtér létrehozásához, amelynek felügyelt szolgáltatás identitása van. Nevezze el a fájlt: **CreateServiceBusPremiumNamespace. JSON**: 
+1. Hozzon létre egy Azure Resource Manager sablont egy olyan Service Bus prémium szintű névtér létrehozásához, amelynek felügyelt szolgáltatás identitása van. Nevezze el a következő fájlt: **CreateServiceBusPremiumNamespace.js**: 
 
     ```json
     {
@@ -165,7 +160,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Azure Service Bus né
        }
     }
     ```
-2. Hozzon létre egy sablon-paraméter nevű fájlt: **CreateServiceBusPremiumNamespaceParams. JSON**. 
+2. Hozzon létre egy sablon-paraméter nevű fájlt: **CreateServiceBusPremiumNamespaceParams.js**. 
 
     > [!NOTE]
     > Cserélje le a következő értékeket: 
@@ -186,7 +181,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Azure Service Bus né
        }
     }
     ```
-3. Futtassa a következő PowerShell-parancsot a sablon üzembe helyezéséhez Premium Service Bus névtér létrehozásához. Ezután kérje le a Service Bus névtér AZONOSÍTÓját, hogy később használhassa. A `{MyRG}` parancs futtatása előtt cserélje le az nevet az erőforráscsoport nevére.  
+3. Futtassa a következő PowerShell-parancsot a sablon üzembe helyezéséhez Premium Service Bus névtér létrehozásához. Ezután kérje le a Service Bus névtér AZONOSÍTÓját, hogy később használhassa. `{MyRG}`A parancs futtatása előtt cserélje le az nevet az erőforráscsoport nevére.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
@@ -225,7 +220,7 @@ A következő lépéseket eddig végrehajtotta:
 
 Ebben a lépésben frissíteni fogja a Service Bus névteret a Key Vault-információkkal. 
 
-1. Hozzon létre egy **UpdateServiceBusNamespaceWithEncryption. JSON** nevű JSON-fájlt a következő tartalommal: 
+1. Hozzon létre egy **UpdateServiceBusNamespaceWithEncryption.js** nevű JSON-fájlt a következő tartalommal: 
 
     ```json
     {
@@ -288,7 +283,7 @@ Ebben a lépésben frissíteni fogja a Service Bus névteret a Key Vault-inform�
     }
     ``` 
 
-2. Hozzon létre egy sablon-paramétert tartalmazó fájlt: **UpdateServiceBusNamespaceWithEncryptionParams. JSON**.
+2. Hozzon létre egy sablon-paramétert tartalmazó fájlt: **UpdateServiceBusNamespaceWithEncryptionParams.json**.
 
     > [!NOTE]
     > Cserélje le a következő értékeket: 
@@ -317,7 +312,7 @@ Ebben a lépésben frissíteni fogja a Service Bus névteret a Key Vault-inform�
        }
     }
     ```             
-3. Futtassa a következő PowerShell-parancsot a Resource Manager-sablon üzembe helyezéséhez. A `{MyRG}` parancs futtatása előtt cserélje le az nevet az erőforráscsoport nevére. 
+3. Futtassa a következő PowerShell-parancsot a Resource Manager-sablon üzembe helyezéséhez. `{MyRG}`A parancs futtatása előtt cserélje le az nevet az erőforráscsoport nevére. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
@@ -327,6 +322,6 @@ Ebben a lépésben frissíteni fogja a Service Bus névteret a Key Vault-inform�
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 - [Service Bus áttekintése](service-bus-messaging-overview.md)
-- [A Key Vault áttekintése](../key-vault/general/overview.md)
+- [Key Vault áttekintése](../key-vault/general/overview.md)
 
 

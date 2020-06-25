@@ -1,7 +1,7 @@
 ---
 title: Keresés az Azure SQL-on keresztül
 titleSuffix: Azure Cognitive Search
-description: Adatok importálása Azure SQL Database az indexelő használatával az Azure Cognitive Search teljes szöveges kereséséhez. Ez a cikk a kapcsolatokat, az indexelő konfigurációját és az adatfeldolgozást ismerteti.
+description: Adatok importálása Azure SQL Database vagy SQL felügyelt példányból indexelő használatával, teljes szöveges kereséshez az Azure Cognitive Searchban. Ez a cikk a kapcsolatokat, az indexelő konfigurációját és az adatfeldolgozást ismerteti.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,20 +9,20 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9279622ee54a9fdaa6617cfe2758cfb563fdbffa
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 1afe92720997ede327f098b9a435d00842ae201e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080601"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322136"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL Database tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
+# <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL-tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
 
-Az [Azure Cognitive Search indexek](search-what-is-an-index.md)lekérdezéséhez fel kell töltenie azt az adataival. Ha az adatmennyiség egy Azure SQL Database-adatbázisban található, akkor az **azure Cognitive Search indexelő Azure SQL Database** (vagy az **Azure SQL indexelő** esetében) automatizálhatja az indexelési folyamatot, ami azt jelenti, hogy kevesebb kód írható és kevésbé fontos az infrastruktúra.
+Az [Azure Cognitive Search indexek](search-what-is-an-index.md)lekérdezéséhez fel kell töltenie azt az adataival. Ha az adatkezelés Azure SQL Database vagy SQL felügyelt példányban történik, az **azure Cognitive Search indexelő for Azure SQL Database** (vagy az **Azure SQL Indexer** röviden) automatizálhatja az indexelési folyamatot, ami azt jelenti, hogy kevesebb kód írható és kevésbé fontos az infrastruktúra.
 
-Ez a cikk az [Indexelő](search-indexer-overview.md)használatának mechanikája, de a csak az Azure SQL Database-adatbázisokkal (például integrált változások követése) elérhető funkciókat ismerteti. 
+Ez a cikk az [Indexelő](search-indexer-overview.md)használatát ismerteti, de a Azure SQL Database vagy az SQL felügyelt példányain (például integrált változások követése) elérhető funkciókat is ismerteti. 
 
-Az Azure SQL Database-adatbázisok mellett az Azure Cognitive Search indexelő lehetőségeket biztosít a [Azure Cosmos db](search-howto-index-cosmosdb.md), az [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)és az [Azure Table Storage](search-howto-indexing-azure-tables.md)szolgáltatáshoz. Más adatforrások támogatásának kéréséhez adja meg az [Azure Cognitive Search visszajelzési fórumának](https://feedback.azure.com/forums/263029-azure-search/)visszajelzéseit.
+A Azure SQL Database és az SQL felügyelt példányán kívül az Azure Cognitive Search indexelő lehetőségeket biztosít a [Azure Cosmos db](search-howto-index-cosmosdb.md), az [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)és az [Azure Table Storage](search-howto-indexing-azure-tables.md)szolgáltatáshoz. Más adatforrások támogatásának kéréséhez adja meg az [Azure Cognitive Search visszajelzési fórumának](https://feedback.azure.com/forums/263029-azure-search/)visszajelzéseit.
 
 ## <a name="indexers-and-data-sources"></a>Indexelő és adatforrások
 
@@ -172,7 +172,7 @@ Ha az SQL-adatbázis támogatja a [változások követését](https://docs.micro
 
 + Az adatbázis verziószámára vonatkozó követelmények:
   * SQL Server 2012 SP3 és újabb verziók, ha SQL Server Azure-beli virtuális gépeken használ.
-  * Azure SQL Database V12-es verziót, ha Azure SQL Databaset használ.
+  * Azure SQL Database vagy SQL felügyelt példánya.
 + Csak táblák (nincsenek nézetek). 
 + Az adatbázison engedélyezze a táblázat [módosítás-követését](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) . 
 + Nincs összetett elsődleges kulcs (egy elsődleges kulcs, amely egynél több oszlopot tartalmaz) a táblán.  
@@ -354,7 +354,7 @@ A növekményes indexeléshez az Azure Cognitive Search két változás-észlel�
 
 Írásvédett replikák esetén az SQL Database nem támogatja az integrált változások követését. Ezért magas vízjelekre vonatkozó házirendet kell használnia. 
 
-Standard Javaslatunk a ROWVERSION adattípusának használata a magas vízjelek oszlophoz. A ROWVERSION használata azonban a SQL Database `MIN_ACTIVE_ROWVERSION` függvényére támaszkodik, amely csak olvasható replikák esetén nem támogatott. Ezért az indexelő egy elsődleges replikára kell irányítani, ha a ROWVERSION-t használja.
+Standard Javaslatunk a ROWVERSION adattípusának használata a magas vízjelek oszlophoz. A ROWVERSION használata azonban a `MIN_ACTIVE_ROWVERSION` függvényre támaszkodik, amely csak olvasható replikák esetén nem támogatott. Ezért az indexelő egy elsődleges replikára kell irányítani, ha a ROWVERSION-t használja.
 
 Ha a ROWVERSION csak olvasható replikán kísérli meg használni, a következő hibaüzenet jelenik meg: 
 

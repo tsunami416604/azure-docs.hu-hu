@@ -1,25 +1,14 @@
 ---
 title: A AMQP hibáinak elhárítása a Azure Service Busban | Microsoft Docs
 description: A Azure Service Bus használatakor esetlegesen megjelenő AMQP-hibák listáját jeleníti meg, illetve a hibák okát.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/03/2019
-ms.author: aschhab
-ms.openlocfilehash: 85d24a9e7c753ec5dba80c4f259dd3fb51d9c14b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9680e930dd8c1cb8cbd062f029af9d674d62c0e2
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60402785"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337829"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>AMQP hibák a Azure Service Busban
 Ez a cikk a AMQP és a Azure Service Bus használatával kapott hibákat ismerteti. A szolgáltatás minden szabványos viselkedése. Elkerülheti őket úgy, hogy küldési/fogadási hívásokat végez a kapcsolaton/hivatkozáson, amely automatikusan újra létrehozza a kapcsolatot vagy a hivatkozást.

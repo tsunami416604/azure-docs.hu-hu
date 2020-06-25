@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 4f9da6cbfe8d1e6b92c39148b275de193730c8f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7ebcf39c203f9956b23ef22754b38f32e9d9352
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623580"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323019"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Első lépések az Azure IT-kezelők számára
 
@@ -144,7 +144,7 @@ Az Azure használatának egyik előnye, hogy az alkalmazásait különböző ada
 
 A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használható. A Azure Portal a következő helyen található: [Portal.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópultot és az Azure-erőforrások kezelésére szolgáló eszközöket. Emellett számlázási és előfizetési információkat is biztosít. További információ: [Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és az [Azure-erőforrások kezelése a portálon keresztül](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>További források
 
 Az Azure-erőforrások az Azure-előfizetésbe telepített egyéni számítási, hálózati, adatkezelési és alkalmazás-üzemeltetési szolgáltatások. Néhány gyakori erőforrás a virtuális gépek, a Storage-fiókok vagy az SQL-adatbázisok. Az Azure-szolgáltatások gyakran több kapcsolódó Azure-erőforrásból állnak. Előfordulhat például, hogy egy Azure-beli virtuális gép tartalmaz egy virtuális gépet, egy Storage-fiókot, egy hálózati adaptert és egy nyilvános IP-címet. Ezek az erőforrások egyenként vagy csoportként hozhatók létre, kezelhetők és törölhetők. Az Azure-erőforrásokat az útmutató későbbi részében részletesebben tárgyaljuk.
 
@@ -186,7 +186,7 @@ Az Azure-szolgáltatásokkal való együttműködéshez előfizetésre van szük
 
 **Ingyenes fiókok**: az ingyenes fiók regisztrálására szolgáló hivatkozás az [Azure webhelyén](https://azure.microsoft.com/)található. Ez az Azure-beli erőforrások bármely kombinációjának kipróbálására szolgáló 30 napos időszakra vonatkozó kreditet biztosít. Ha túllépi a kredit összegét, a rendszer felfüggeszti a fiókját. A próbaverzió végén a szolgáltatások leszerelése megszűnik, és a továbbiakban nem fog működni. Bármikor frissítheti az utólagos elszámolású előfizetést.
 
-**MSDN-előfizetések**: Ha rendelkezik MSDN-előfizetéssel, az Azure-kreditek havonta egy adott összeget kapnak. Ha például Microsoft Visual Studio Enterprise with MSDN-előfizetéssel rendelkezik, az Azure- \$kreditek havonta 150-et kapnak.
+**MSDN-előfizetések**: Ha rendelkezik MSDN-előfizetéssel, az Azure-kreditek havonta egy adott összeget kapnak. Ha például Microsoft Visual Studio Enterprise with MSDN-előfizetéssel rendelkezik, \$ Az Azure-kreditek havonta 150-et kapnak.
 
 Ha túllépi a kredit összegét, a szolgáltatás le lesz tiltva a következő hónap megkezdése előtt. Kikapcsolhatja a költségkeretet, és hozzáadhat egy hitelkártyát, amelyet a további költségekhez kíván használni. A költségek némelyike az MSDN-fiókok esetében diszkontálva van. A Windows Servert futtató virtuális gépek esetében például a Linux árát kell fizetnie, és a Microsoft-kiszolgálókhoz (például Microsoft SQL Server) nem számítunk fel további díjat. Ez lehetővé teszi, hogy az MSDN-fiókok fejlesztési és tesztelési helyzetekben is ideálisak legyenek.
 
@@ -226,7 +226,7 @@ Az Azure-szolgáltatások díjszabása eltérő. Számos Azure-szolgáltatás al
 
 Azure Resource Manager az Azure-erőforrások üzembe helyezési, felügyeleti és szervezeti mechanizmusa. A Resource Manager használatával számos egyéni erőforrást helyezhet el egy erőforráscsoporthoz.
 
-A Resource Manager olyan üzembe helyezési képességeket is tartalmaz, amelyek lehetővé teszik a kapcsolódó erőforrások testreszabható üzembe helyezését és konfigurálását. A Resource Manager használatával például több virtuális gépről, egy terheléselosztóból és egy SQL-adatbázisból álló alkalmazást is telepíthet egyetlen egységként. Ezeket a központi telepítéseket Resource Manager-sablonok használatával fejlesztheti.
+A Resource Manager olyan üzembe helyezési képességeket is tartalmaz, amelyek lehetővé teszik a kapcsolódó erőforrások testreszabható üzembe helyezését és konfigurálását. Például a Resource Manager használatával olyan alkalmazást telepíthet, amely több virtuális gépről, egy terheléselosztóból és egy Azure SQL Database adatbázisból áll, amely egyetlen egységként használható. Ezeket a központi telepítéseket Resource Manager-sablonok használatával fejlesztheti.
 
 A Resource Manager számos előnyt kínál:
 

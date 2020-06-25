@@ -177,7 +177,7 @@
           href: /java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable
         - name: Szabályzatdefiníciók
           href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable
-    - name: Node-hoz készült Azure SDK
+    - name: Azure SDK for JavaScript
       items:
         - name: Szabályzat
           href: /javascript/api/@azure/arm-policy

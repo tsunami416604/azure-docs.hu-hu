@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 75bbce0f1e9787e55880ccac80dacb5457e1f2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56afed264facb6a02040cef01cd5d5d41526ec49
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68728386"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322660"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Biztonsági keret: Engedélyezés | Enyhítését 
 | Termék/szolgáltatás | Cikk |
@@ -136,7 +136,7 @@ A lehetséges támadók mostantól nem változtathatják meg és nem módosítha
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | N/A  |
-| **Lépéseket** | <p>A bizalmas statikus és konfigurációs fájlokat nem szabad a webes gyökérben tárolni. Ahhoz, hogy a tartalom ne legyen nyilvános, a megfelelő hozzáférés-vezérlést kell alkalmazni, vagy magát a tartalmat kell eltávolítani.</p><p>Az erőteljes böngészést általában a találgatásos támadásokkal kombinálva gyűjtjük össze az adatokat úgy, hogy a lehető legtöbb URL-címet próbálják elérni a kiszolgálók könyvtárainak és fájljainak enumerálásához. A támadók a gyakran létező fájlok összes változatát megvizsgálják. A fájlok keresése például a psswd. txt, a Password. htm, a Password. dat és más változatok fájljait is magában foglalja.</p><p>Ennek enyhítése érdekében fel kell venni a találgatásos támadások észlelésére vonatkozó képességeket.</p>|
+| **Lépéseket** | <p>A bizalmas statikus és konfigurációs fájlokat nem szabad a webes gyökérben tárolni. Ahhoz, hogy a tartalom ne legyen nyilvános, a megfelelő hozzáférés-vezérlést kell alkalmazni, vagy magát a tartalmat kell eltávolítani.</p><p>Az erőteljes böngészést általában a találgatásos támadásokkal kombinálva gyűjtjük össze az adatokat úgy, hogy a lehető legtöbb URL-címet próbálják elérni a kiszolgálók könyvtárainak és fájljainak enumerálásához. A támadók a gyakran létező fájlok összes változatát megvizsgálják. A fájlok keresése például a következő fájlokat tartalmazza: psswd.txt, password.htm, Password. dat és egyéb változatok.</p><p>Ennek enyhítése érdekében fel kell venni a találgatásos támadások észlelésére vonatkozó képességeket.</p>|
 
 ## <a name="ensure-that-least-privileged-accounts-are-used-to-connect-to-database-server"></a><a id="privileged-server"></a>Győződjön meg arról, hogy az adatbázis-kiszolgálóhoz való kapcsolódáshoz a legkevésbé privilegizált fiókok használhatók
 
@@ -146,7 +146,7 @@ A lehetséges támadók mostantól nem változtathatják meg és nem módosítha
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [SQL Database engedélyek hierarchiája](https://msdn.microsoft.com/library/ms191465), [SQL Database-biztonságos elemek migrálására](https://msdn.microsoft.com/library/ms190401) |
+| **Referencia**              | [SQL-engedélyek hierarchiája](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-biztonságos elemek migrálására](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Lépéseket** | Az adatbázishoz való kapcsolódáshoz a legkevésbé Kiemelt jogosultságú fiókokat kell használni. Az alkalmazás bejelentkezését korlátozni kell az adatbázisban, és csak a kiválasztott tárolt eljárásokat kell végrehajtania. Az alkalmazás bejelentkezésének nincs közvetlen táblához való hozzáférése. |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>A sor szintű biztonsági RLS megvalósítása annak megakadályozása érdekében, hogy a bérlők hozzáférjenek egymás adatokhoz
@@ -160,7 +160,7 @@ A lehetséges támadók mostantól nem változtathatják meg és nem módosítha
 | **Referencia**              | [SQL Server sor szintű biztonság (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
 | **Lépéseket** | <p>A sorszintű biztonság lehetővé teszi az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz való hozzáférést a lekérdezést végrehajtó felhasználó jellemzői alapján (például csoporttagság vagy végrehajtási környezet).</p><p>A soros szintű biztonság (RLS) leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását. Az RLS használatával korlátozásokat érvényesíthet az adatsorokhoz való hozzáférésre. Biztosítható például, hogy a munkavállalók csak a szervezeti egységükre vonatkozó adatsorokhoz férjenek hozzá, vagy egy ügyfél adathozzáférése korlátozható a vállalatával kapcsolatos adatokra.</p><p>A hozzáférés-korlátozási logika az adatbázis-szinten található, nem pedig egy másik alkalmazási szinten lévő adatoktól. Az adatbázisrendszer minden alkalommal alkalmazza a hozzáférési korlátozásokat, amikor az adathozzáférés bármely szintről megkísérelhető. Így a biztonsági rendszerek megbízhatóbbak és robusztusak a biztonsági rendszerek felületének csökkentésével.</p><p>|
 
-Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 2016-es és az Azure SQL Database-t futtató SQL Serverre vonatkozik. Ha a beépített RLS funkció nincs implementálva, gondoskodni kell arról, hogy az adathozzáférés korlátozott legyen a nézetek és eljárások használatával
+Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 2016-es, a Azure SQL Database-es és SQL Server az SQL-alapú felügyelt példányok elindítására vonatkozik. Ha a beépített RLS funkció nincs implementálva, gondoskodni kell arról, hogy az adathozzáférés korlátozott legyen a nézetek és eljárások használatával
 
 ## <a name="sysadmin-role-should-only-have-valid-necessary-users"></a><a id="sysadmin-users"></a>A sysadmin szerepkörnek csak érvényes szükséges felhasználókkal kell rendelkeznie
 
@@ -170,7 +170,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **SDL-fázis**               | Felépítés |  
 | **Alkalmazható technológiák** | Általános |
 | **Attribútumok**              | N/A  |
-| **Referencia**              | [SQL Database engedélyek hierarchiája](https://msdn.microsoft.com/library/ms191465), [SQL Database-biztonságos elemek migrálására](https://msdn.microsoft.com/library/ms190401) |
+| **Referencia**              | [SQL-engedélyek hierarchiája](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-biztonságos elemek migrálására](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Lépéseket** | A SysAdmin (rendszergazda) rögzített kiszolgálói szerepkör tagjainak nagyon korlátozottnak kell lenniük, és soha nem tartalmazhatják az alkalmazások által használt fiókokat.  Tekintse át a szerepkörbe tartozó felhasználók listáját, és távolítsa el a szükségtelen fiókokat|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>Kapcsolódás a Cloud Gatewayhez a legkevésbé privilegizált jogkivonatok használatával
@@ -317,7 +317,7 @@ Vegye figyelembe, hogy az RLS mint beépített adatbázis-szolgáltatás csak a 
 | **Lépéseket** | <p>A rendszer gyenge osztályú referenciát használ, ami lehetővé teheti, hogy egy támadó jogosulatlan kódot hajtson végre. A program olyan felhasználó által definiált osztályra hivatkozik, amely nem egyedi módon van azonosítva. Ha a .NET betölti ezt a gyengén azonosított osztályt, a CLR-beli típus a megadott sorrendben a következő helyeken keresi a osztályt:</p><ol><li>Ha a típus szerelvénye ismert, a betöltő a konfigurációs fájl átirányítási helyein, a GAC-ban, a jelenlegi szerelvényben a konfigurációs adatokat és az alkalmazás alapkönyvtárát keresi.</li><li>Ha a szerelvény ismeretlen, a betöltő megkeresi az aktuális szerelvényt, a mscorlib és a TypeResolve-eseménykezelő által visszaadott helyet.</li><li>Ez a CLR-beli keresési sorrend módosítható a hookokkal, például a típus továbbítási mechanizmusával és a alkalmazástartomány. TypeResolve eseménysel.</li></ol><p>Ha egy támadó kihasználja a CLR keresési sorrendjét úgy, hogy létrehoz egy azonos nevű alternatív osztályt, és azt egy másik helyen helyezi el, amelyet a CLR betölt, akkor a CLR véletlenül nem fogja végrehajtani a támadó által megadott kódot.</p>|
 
 ### <a name="example"></a>Példa
-Az `<behaviorExtensions/>` alábbi WCF konfigurációs fájl eleme arra UTASÍTJA a WCF-t, hogy adjon hozzá egy egyéni viselkedési osztályt egy adott WCF-bővítményhez.
+Az `<behaviorExtensions/>` alábbi WCF konfigurációs fájl eleme arra utasítja a WCF-t, hogy adjon hozzá egy egyéni viselkedési osztályt egy adott WCF-bővítményhez.
 ```
 <system.serviceModel>
     <extensions>
@@ -327,10 +327,10 @@ Az `<behaviorExtensions/>` alábbi WCF konfigurációs fájl eleme arra UTASÍTJ
     </extensions>
 </system.serviceModel>
 ```
-A teljesen minősített (erős) nevek egyedileg azonosítanak egy típust, és növelik a rendszer biztonságát. A Machine. config és az app. config fájlban található típusok regisztrálása esetén használjon teljesen minősített szerelvény-neveket.
+A teljesen minősített (erős) nevek egyedileg azonosítanak egy típust, és növelik a rendszer biztonságát. A machine.config és app.config fájlokban lévő típusok regisztrálásakor teljes szerelvény-neveket használjon.
 
 ### <a name="example"></a>Példa
-Az `<behaviorExtensions/>` alábbi WCF konfigurációs fájl eleme arra UTASÍTJA a WCF-t, hogy egy adott WCF-bővítményhez erősen hivatkozott egyéni viselkedési osztályt adjon hozzá.
+Az `<behaviorExtensions/>` alábbi WCF konfigurációs fájl eleme arra utasítja a WCF-t, hogy egy adott WCF-bővítményhez erősen hivatkozott egyéni viselkedési osztályt adjon hozzá.
 ```
 <system.serviceModel>
     <extensions>

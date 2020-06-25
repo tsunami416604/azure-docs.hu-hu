@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: kgremban
-ms.openlocfilehash: 5c3c9c7a061fd4c471b1ef159388deb1a851dd57
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d73f3a37bb084533733b27b49ac171747cee814c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297154"
+ms.locfileid: "85321888"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken
 
@@ -166,7 +166,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>2. lehetőség: automatikus kiépítés
 
-IoT Edge eszközök automatikusan üzembe helyezhetők az [Azure IoT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)használatával. A IoT Edge jelenleg két igazolási mechanizmust támogat az automatikus kiépítés használatakor, de a hardverre vonatkozó követelmények befolyásolhatják a választásait. A málna PI-eszközök például nem rendelkeznek alapértelmezett platformmegbízhatósági modul (TPM) csiptel. További információért tekintse át a következő cikkeket:
+IoT Edge eszközök automatikusan üzembe helyezhetők az [Azure IoT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)használatával. A IoT Edge jelenleg három igazolási mechanizmust támogat az automatikus kiépítés használatakor, de a hardverre vonatkozó követelmények befolyásolhatják a választásait. A málna PI-eszközök például nem rendelkeznek alapértelmezett platformmegbízhatósági modul (TPM) csiptel. További információért tekintse át a következő cikkeket:
 
 * [Virtuális TPM-sel rendelkező IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű virtuális GÉPEN](how-to-auto-provision-simulated-device-linux.md)
 * [IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával](how-to-auto-provision-x509-certs.md)

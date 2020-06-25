@@ -1,18 +1,18 @@
 ---
 title: Az Azure Cognitive Services beépített szabályzat-definíciói
 description: Az Azure Cognitive Services beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 06/11/2020
+ms.date: 06/23/2020
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 36dfeb93502e9d1d2a2694fb709b3a6cdeb6520a
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 26766a43c3e8b76000768e85c4fe07d99045fb59
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84989013"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322944"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-services"></a>Azure Policy beépített szabályzat-definíciók az Azure Cognitive Services
 

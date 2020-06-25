@@ -4,12 +4,12 @@ description: Ismerje meg a Kubernetes alapszintű fürt-és munkaterhelés-össz
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ddf6543ff0e4313b28c183718b6ac3b2395e0dbf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729971"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336633"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai
 
@@ -105,9 +105,9 @@ A csomópontok teljesítményének és funkcióinak fenntartásához az erőforr
 
 A memóriára és a CPU-elosztásra vonatkozó fenti szabályok az ügynök csomópontjainak kifogástalan megőrzésére szolgálnak, beleértve a fürt állapotának kritikus fontosságú részét képező üzemeltetési rendszerhüvelyeket is. Ezek a kiosztási szabályok azt is okozják, hogy a csomópont kevésbé lefoglalható memóriát és CPU-t jelent, mint a Kubernetes-fürt része. A fenti erőforrás-foglalások nem módosíthatók.
 
-Ha például egy csomópont 7 GB-ot biztosít, akkor a 750Mi-kiürítési küszöbértéken felül nem foglalható memória 34%-át fogja jelenteni.
+Ha például egy csomópont 7 GB-ot biztosít, akkor a memória 34%-a nem foglalható le, beleértve a 750Mi Hard kilakoltatási küszöbértékét.
 
-`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
+`0.75 + (0.25*4) + (0.20*3) = 0.75GB + 1GB + 0.6GB = 2.35GB / 7GB = 33.57% reserved`
 
 A Kubernetes foglalása mellett az alapul szolgáló Node operációs rendszer a processzor-és memória-erőforrások mennyiségét is lefoglalja az operációs rendszer funkcióinak fenntartásához.
 

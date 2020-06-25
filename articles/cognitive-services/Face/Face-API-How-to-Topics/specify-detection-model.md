@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 40ca1dbf981c5a9025cf5a0bac6b007709d69a77
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a90b37b197e25a8db79a87761d94dfded53acf50
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76934579"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323209"
 ---
 # <a name="specify-a-face-detection-model"></a>Arcfelismerési modell megadása
 
@@ -38,7 +38,7 @@ Ismernie kell a mesterséges intelligencia Arcfelismerés fogalmát. Ha nem, tek
 
 Az Arcfelismerés megkeresi az emberi arcok határos helyét, és azonosítja a vizuális tereptárgyait. Kibontja az arc funkcióit, és a későbbi használat érdekében tárolja azokat az [elismerési](../concepts/face-recognition.md) műveletekben.
 
-Az [arc-észlelési] API használatakor a modell verzióját hozzárendelheti a (z) `detectionModel` paraméterrel. Az elérhető értékek a következők:
+Az [arc-észlelési] API használatakor a modell verzióját hozzárendelheti a (z `detectionModel` ) paraméterrel. Az elérhető értékek a következők:
 
 * `detection_01`
 * `detection_02`
@@ -47,11 +47,11 @@ Az [arc-észlelési] Rest APIhoz tartozó kérelem URL-címe a következőképpe
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
-Ha az ügyféloldali függvénytárat használja, a értékét `detectionModel` a megfelelő sztring átadásával rendelheti hozzá. Ha nem törli a hozzárendelést, az API az alapértelmezett modell (`detection_01`) verziót fogja használni. Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
+Ha az ügyféloldali függvénytárat használja, a értékét a `detectionModel` megfelelő sztring átadásával rendelheti hozzá. Ha nem törli a hozzárendelést, az API az alapértelmezett modell () verziót fogja használni `detection_01` . Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_02", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>Arc hozzáadása a megadott modellel rendelkező személyhez
@@ -63,7 +63,7 @@ Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 ```csharp
 // Create a PersonGroup and add a person with face detected by "detection_02" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
@@ -71,7 +71,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Ez a kód egy **PersonGroup** azonosítóval `mypersongroupid` rendelkező PersonGroup hoz létre, és egy **személyt** helyez el hozzá. Ezután hozzáadja az adott **személyt** a `detection_02` modell használatával. Ha nem ad meg *detectionModel* paramétert, az API az alapértelmezett modellt fogja használni `detection_01`.
+Ez a kód egy AZONOSÍTÓval rendelkező **PersonGroup** hoz létre, `mypersongroupid` és egy **személyt** helyez el hozzá. Ezután hozzáadja az adott **személyt** a `detection_02` modell használatával. Ha nem ad meg *detectionModel* paramétert, az API az alapértelmezett modellt fogja használni `detection_01` .
 
 > [!NOTE]
 > Nem kell ugyanazt az észlelési modellt használnia egy **személy** objektum összes arcához, és nem kell ugyanazt az észlelési modellt használnia, amikor az új arcok észlelésével összehasonlítja a **személy** objektummal (például a [Face-IDENTIFY] API-val).
@@ -81,13 +81,13 @@ Ez a kód egy **PersonGroup** azonosítóval `mypersongroupid` rendelkező Perso
 Az észlelési modellt is megadhatja, ha egy meglévő **FaceList** -objektumhoz ad hozzá egy arcot. Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Ez a kód létrehoz **FaceList** egy nevű `My face collection` FaceList, és hozzáadja a `detection_02` modellt a modellhez. Ha nem ad meg *detectionModel* paramétert, az API az alapértelmezett modellt fogja használni `detection_01`.
+Ez a kód létrehoz egy nevű **FaceList** , `My face collection` és hozzáadja a `detection_02` modellt a modellhez. Ha nem ad meg *detectionModel* paramétert, az API az alapértelmezett modellt fogja használni `detection_01` .
 
 > [!NOTE]
 > Nem kell ugyanazt az észlelési modellt használnia egy **FaceList** objektum összes arcához, és nem kell ugyanazt az észlelési modellt használnia, amikor a **FaceList** objektummal összehasonlítandó új arcokat észlel.
@@ -103,7 +103,7 @@ A különböző Arcfelismerés modellek különböző feladatokra vannak optimal
 |Arc-attribútumokat ad vissza (fej, kor, érzelem stb.), ha az észlelési hívásban van megadva. |  Nem ad vissza arc-attribútumokat.     |
 |Arc tereptárgyak visszaadása, ha meg vannak adva az észlelési hívásban.   | Nem tér vissza az arcokhoz tartozó tereptárgyak.  |
 
-A `detection_01` és `detection_02` a modellek teljesítményének összehasonlítására a legjobb módszer, ha egy minta adatkészleten használják őket. Azt javasoljuk, hogy az egyes észlelési modellek használatával különböző rendszerképeken hívja meg az [arc-észlelési API-] t, különösen a sok arc vagy olyan arc képeit, amelyek nehezen láthatók. Ügyeljen arra, hogy hány arcot ad vissza az egyes modellek.
+A és a modellek teljesítményének összehasonlítására a legjobb módszer, `detection_01` `detection_02` Ha egy minta adatkészleten használják őket. Azt javasoljuk, hogy az egyes észlelési modellek használatával különböző rendszerképeken hívja meg az [arc-észlelési API-] t, különösen a sok arc vagy olyan arc képeit, amelyek nehezen láthatók. Ügyeljen arra, hogy hány arcot ad vissza az egyes modellek.
 
 ## <a name="next-steps"></a>További lépések
 

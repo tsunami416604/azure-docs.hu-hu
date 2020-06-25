@@ -3,12 +3,12 @@ title: A tárolók Azure Monitorának engedélyezése | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan engedélyezheti és konfigurálhatja a tárolók Azure Monitorét, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: a765c601682eb594d40ba98b8b4ef1853f35fb37
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: e17a346418bc5d38470168339f2078a0a187fe4e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886008"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338258"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor engedélyezése tárolók számára
 
@@ -57,7 +57,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 A következőt hivatalosan támogatja a tárolók Azure Monitor.
 
 - Környezetek: az Azure Red Hat OpenShift, a helyszíni Kubernetes, valamint az Azure-beli és a Azure Stack-es AK-motor. További információ: az [AK-motor Azure stackon](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
-- A Kubernetes és a támogatási szabályzat verziói ugyanazok, mint a [támogatott AK](../../aks/supported-kubernetes-versions.md)-verziók. 
+- A Kubernetes és a támogatási szabályzat verziói ugyanazok, mint a [támogatott AK](../../aks/supported-kubernetes-versions.md)-verziók.
 
 ## <a name="network-firewall-requirements"></a>Hálózati tűzfalra vonatkozó követelmények
 
@@ -65,7 +65,7 @@ A következő táblázatban található információk a tároló-ügynök által
 
 |Ügynök erőforrása|Portok |
 |--------------|------|
-| `*.ods.opinsights.azure.com` | 443 |  
+| `*.ods.opinsights.azure.com` | 443 |
 | `*.oms.opinsights.azure.com` | 443 |
 | `dc.services.visualstudio.com` | 443 |
 | `*.monitoring.azure.com` | 443 |
@@ -73,7 +73,7 @@ A következő táblázatban található információk a tároló-ügynök által
 
 Az alábbi táblázatban található információk az Azure China 21Vianet proxy-és tűzfal-konfigurációs információit ismertetik.
 
-|Ügynök erőforrása|Portok |Leírás | 
+|Ügynök erőforrása|Portok |Leírás |
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.cn` | 443 | OMS bevezetése |
@@ -81,7 +81,7 @@ Az alábbi táblázatban található információk az Azure China 21Vianet proxy
 
 Az alábbi táblázatban található információk az Azure US government proxy-és tűzfal-konfigurációs információit ismertetik.
 
-|Ügynök erőforrása|Portok |Leírás | 
+|Ügynök erőforrása|Portok |Leírás |
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.us` | 443 | OMS bevezetése |
@@ -92,7 +92,7 @@ Az alábbi táblázatban található információk az Azure US government proxy-
 A teljesítmény figyelésének lehetősége a tárolók számára kifejezetten a Azure Monitor a tárolók számára kifejlesztett, Log Analytics ügynökön alapul. Ez a speciális ügynök a fürt összes csomópontjának teljesítményét és eseményeit gyűjti, és az üzembe helyezés során a rendszer automatikusan telepíti és regisztrálja a megadott Log Analytics munkaterületet. Az ügynök verziója Microsoft/OMS: ciprod04202018 vagy újabb, és a következő formátumban egy dátum jelöli: *mmddyyyy*.
 
 >[!NOTE]
->Az AK-hoz készült Windows Server-támogatás előzetes kiadásában a Windows Server-csomópontokkal rendelkező AK-fürthöz nincs telepítve ügynök az adatok összegyűjtésére és a Azure Monitor való továbbítására. Ehelyett a normál telepítés részeként automatikusan a fürtben üzembe helyezett Linux-csomópont gyűjti és továbbítja az adatokat Azure Monitor a fürt összes Windows-csomópontjának nevében.  
+>Az AK-hoz készült Windows Server-támogatás általános elérhetősége esetén a Windows Server-csomópontokkal rendelkező AK-fürtök előnézeti ügynöke daemonset elemet Pod-ként van telepítve minden egyes Windows Server-csomóponton, hogy összegyűjtse a naplókat, és továbbítsa azt Log Analytics. A teljesítmény-mérőszámok esetében a normál telepítés részeként automatikusan a fürtben üzembe helyezett Linux-csomópont gyűjti és továbbítja az adatokat Azure Monitor a fürt összes Windows-csomópontjának nevében.
 >
 
 Az ügynök új verziójának felszabadításakor a rendszer automatikusan frissíti az Azure Kubernetes szolgáltatásban (ak) üzemeltetett felügyelt Kubernetes-fürtökön. A kiadott verziók követéséhez tekintse meg az [ügynök kiadási hirdetményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört.

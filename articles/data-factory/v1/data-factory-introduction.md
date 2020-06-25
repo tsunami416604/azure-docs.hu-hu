@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 4175214219350620ae44d0249243e23b1a25144a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196593"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321090"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -142,6 +142,6 @@ A következő oktatóanyagok részletes utasításait követve megtudhatja, hogy
 
 | Oktatóanyag | Leírás |
 | --- | --- |
-| [Két felhőalapú adattár közötti adatáthelyezés](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Olyan folyamattal rendelkező adat-előállítót hozhat létre, amely egy blobtárolóból SQL-adatbázisba helyez át adatokat. |
+| [Két felhőalapú adattár közötti adatáthelyezés](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Hozzon létre egy adatfeldolgozót egy olyan folyamattal, amely a blob Storage-ból SQL Databaseba helyezi át az adatait. |
 | [Adatok átalakítása Hadoop-fürttel](data-factory-build-your-first-pipeline.md) |Kiépítheti az első Azure adat-előállítóját egy olyan adatfolyamattal, amely egy Azure HDInsight- (Hadoop-) fürtön futtatott Hive-szkripttel dolgozza fel az adatokat. |
 | [Egy helyszíni és egy felhőalapú adattár közötti adatáthelyezés adatkezelési átjáró segítségével](data-factory-move-data-between-onprem-and-cloud.md) |Hozzon létre egy adatfeldolgozót egy olyan folyamattal, amely egy SQL Server-adatbázisból egy Azure-blobba helyez át egy adatátvitelt. A bemutató részeként telepíti és konfigurálja az adatkezelési átjárót a gépen. |

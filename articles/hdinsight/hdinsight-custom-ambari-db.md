@@ -6,20 +6,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 06/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4cb96e1299010636e0bce3cb99fbba9862822564
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e92b0679111a6d5c6173da04c5061c95956125b8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022265"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322950"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>HDInsight-fürtök beállítása egyéni Ambari-ADATBÁZISsal
 
 Az Apache Ambari leegyszerűsíti egy Apache Hadoop-fürt felügyeletét és figyelését. A Ambari egy könnyen használható webes felhasználói felületet és REST API biztosít. A Ambari a HDInsight-fürtökben található, és a fürt figyelésére és a konfiguráció módosítására szolgál.
 
-A fürt normál létrehozásakor az egyéb cikkek, például a [fürtök beállítása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md)-ben című témakörben leírtak szerint a Ambari a HDInsight által felügyelt, [S0 Azure SQL Database-adatbázisba](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) kerül üzembe, és a felhasználók számára nem érhető el.
+A fürt normál létrehozásakor az egyéb cikkek, például a [fürtök beállítása a HDInsight](hdinsight-hadoop-provision-linux-clusters.md)-ben című témakörben leírtak szerint a Ambari egy HDInsight által felügyelt [S0-Azure SQL Database](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) van telepítve, és nem érhető el a felhasználók számára.
 
 Az egyéni Ambari adatbázis-szolgáltatás lehetővé teszi, hogy új fürtöt helyezzen üzembe, és beállítsa a Ambari egy olyan külső adatbázisban, amelyet Ön felügyel. Az üzembe helyezés egy Azure Resource Manager sablonnal történik. Ez a funkció a következő előnyöket nyújtja:
 
@@ -38,6 +38,7 @@ Az egyéni Ambari-ADATBÁZISokat a fürt összes típusával és verziójával i
 
 Az egyéni Ambari-adatbázis a következő egyéb követelményekkel rendelkezik:
 
+- Az adatbázis neve nem tartalmazhat kötőjeleket és szóközöket
 - Rendelkeznie kell egy meglévő Azure SQL DB-kiszolgálóval és-adatbázissal.
 - A Ambari-telepítéshez megadott adatbázisnak üresnek kell lennie. Az alapértelmezett dbo-sémában nem szerepelhetnek táblák.
 - Az adatbázishoz való kapcsolódáshoz használt felhasználónak SELECT, CREATE TABLE és INSERT engedélyekkel kell rendelkeznie az adatbázishoz.

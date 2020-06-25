@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ae27aba9fb6dc1421d224dab0c36373753acd5a2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: f56d3a364e38d13931f8e07d749d3a5958dcee67
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690532"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322517"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage Gen1 integrálása más Azure-szolgáltatásokkal
 A Azure Data Lake Storage Gen1 más Azure-szolgáltatásokkal együtt is használható, így szélesebb körű forgatókönyvek engedélyezhetők. A következő cikk felsorolja azokat a szolgáltatásokat, amelyeket a Data Lake Storage Gen1 integrálhat.
@@ -39,7 +39,7 @@ A Azure Data Factory és az Data Lake Storage Gen1 használatával kapcsolatos u
 Azure Data Lake Storage Gen1 olyan parancssori eszközt biztosít, amely lehetővé teszi, hogy az Azure Blob Storageból egy Data Lake Storage Gen1-fiókba másolhatja az AdlCopy. További információ: [adatok másolása az Azure Storage-blobokból a Data Lake Storage Gen1ba](data-lake-store-copy-data-azure-storage-blob.md).
 
 ## <a name="copy-data-between-azure-sql-database-and-data-lake-storage-gen1"></a>Az Adatmásolás Azure SQL Database és Data Lake Storage Gen1 között
-Az Apache Sqoop használatával Azure SQL Database és Data Lake Storage Gen1 közötti adatimportálást és-exportálást is használhat. További információ: [adatok másolása Data Lake Storage Gen1 és az Azure SQL Database között a Sqoop használatával](data-lake-store-data-transfer-sql-sqoop.md).
+Az Apache Sqoop használatával Azure SQL Database és Data Lake Storage Gen1 közötti adatimportálást és-exportálást is használhat. További információ: [adatok másolása Data Lake Storage Gen1 és Azure SQL Database között a Sqoop használatával](data-lake-store-data-transfer-sql-sqoop.md).
 
 ## <a name="use-data-lake-storage-gen1-with-stream-analytics"></a>Data Lake Storage Gen1 használata a Stream Analytics
 A Azure Stream Analytics használatával adatfolyamként tárolt adatokat az egyik kimenetként Data Lake Storage Gen1 használhatja. További információ: [stream-adatok Azure Storage Blobból a Data Lake Storage Gen1 a Azure stream Analytics használatával](data-lake-store-stream-analytics.md).

@@ -1,15 +1,15 @@
 ---
 title: A Azure Backup beépített szabályzat-definíciói
 description: A Azure Backup Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: a4e0873167dc2edb86abeed2cdbcb2e214c1032b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 9057585896f6fc06d7db48af27a432f0430e4672
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888725"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322761"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-backup"></a>A Azure Backup beépített definíciói Azure Policy
 

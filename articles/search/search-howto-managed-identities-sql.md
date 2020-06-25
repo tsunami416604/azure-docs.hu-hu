@@ -1,7 +1,7 @@
 ---
-title: Azure SQL Database-adatbázishoz való kapcsolódás beállítása felügyelt identitás (előzetes verzió) használatával
+title: Azure SQL Database-kapcsolatok beállítása felügyelt identitással (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: Ismerje meg, hogyan állíthat be indexelő-kapcsolatokat egy Azure SQL Database-adatbázishoz felügyelt identitás használatával (előzetes verzió)
+description: Ismerje meg, hogyan állíthat be egy indexelő-kapcsolódást Azure SQL Database felügyelt identitás (előzetes verzió) használatával
 manager: luisca
 author: markheff
 ms.author: maheff
@@ -9,22 +9,23 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 87389651707a3bdcc18ae7eb03b88681b5303c4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3e58bdafce6746d7f83dfbceeff529c6d4b5075a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664801"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321343"
 ---
-# <a name="set-up-an-indexer-connection-to-an-azure-sql-database-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása egy Azure SQL Database-adatbázishoz felügyelt identitás használatával (előzetes verzió)
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása Azure SQL Database felügyelt identitás használatával (előzetes verzió)
 
 > [!IMPORTANT] 
 > A felügyelt identitással létesített kapcsolatok egy adatforráshoz való beállításának támogatása jelenleg egy kezdeményezett nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott.
 > Az előnézet elérését az [űrlap](https://aka.ms/azure-cognitive-search/mi-preview-request)kitöltésével kérheti le.
 
-Ez a lap azt ismerteti, hogyan állítható be egy Azure SQL Database-hez tartozó indexelő-kapcsolódás egy felügyelt identitás használatával ahelyett, hogy hitelesítő adatokat kellene megadnia az adatforrás-objektum kapcsolódási karakterláncában.
+Ez a lap azt ismerteti, hogyan állítható be egy indexelő-kapcsolódás a Azure SQL Database felügyelt identitás használatával, nem biztosítva hitelesítő adatokat az adatforrás-objektum kapcsolódási karakterláncában.
 
 Mielőtt többet szeretne megtudni a szolgáltatásról, javasoljuk, hogy Ismerje meg, mi az indexelő, és hogyan állítható be egy indexelő az adatforráshoz. További információt az alábbi hivatkozásokon talál:
+
 * [Az indexelő áttekintése](search-indexer-overview.md)
 * [Azure SQL-indexelő](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
@@ -39,7 +40,7 @@ Ha egy rendszerhez rendelt felügyelt identitás engedélyezve van, az Azure lé
 A **Mentés** gombra kattintva megjelenik egy objektumazonosító, amely hozzá van rendelve a keresési szolgáltatáshoz.
 
 ![Objektumazonosító](./media/search-managed-identities/system-assigned-identity-object-id.png "Objektumazonosító")
- 
+
 ### <a name="2---provision-azure-active-directory-admin-for-sql-server"></a>2 – Azure Active Directory rendszergazda kiépítése SQL Server számára
 
 Ha a következő lépésben csatlakozik az adatbázishoz, csatlakoznia kell egy olyan Azure Active Directory (Azure AD) fiókhoz, amely rendszergazdai hozzáféréssel rendelkezik az adatbázishoz ahhoz, hogy a keresési szolgáltatás hozzáférhessen az adatbázishoz.
@@ -102,7 +103,7 @@ SQL-adatbázisból való indexeléskor az adatforrásnak a következő szükség
 * a **Name** a keresési szolgáltatásban található adatforrás egyedi neve.
 * **típus**`azuresql`
 * **hitelesítő adatok**
-    * Ha felügyelt identitást használ a hitelesítéshez, a **hitelesítő adatok** formátuma különbözik, mint ha nem használ egy összekeveredéses identitást. Itt meg kell adnia egy kezdeti katalógus vagy adatbázis nevét, valamint egy olyan ResourceId, amely nem rendelkezik fiók-kulccsal vagy jelszóval. A ResourceId tartalmaznia kell az Azure SQL Database-adatbázis előfizetés-AZONOSÍTÓját, az SQL Database-adatbázis erőforrás-csoportját és az SQL-adatbázis nevét. 
+    * Ha felügyelt identitást használ a hitelesítéshez, a **hitelesítő adatok** formátuma különbözik, mint ha nem használ egy összekeveredéses identitást. Itt meg kell adnia egy kezdeti katalógus vagy adatbázis nevét, valamint egy olyan ResourceId, amely nem rendelkezik fiók-kulccsal vagy jelszóval. A ResourceId tartalmaznia kell a Azure SQL Database előfizetés-AZONOSÍTÓját, SQL Database erőforrás-csoportját és az SQL-adatbázis nevét. 
     * Felügyelt identitás-kapcsolatok karakterláncának formátuma:
         * *Kezdeti katalógus | Adatbázis =**adatbázis neve**; ResourceId =/Subscriptions/**az előfizetés-azonosítóját****az/resourceGroups//Providers/Microsoft.SQL/Servers/** a**SQL Server neve**/; Kapcsolat időtúllépése = a**kapcsolat időtúllépési hossza**;*
 * a **Container (tároló** ) megadja az indexelni kívánt tábla vagy nézet nevét.

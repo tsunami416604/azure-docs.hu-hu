@@ -1,20 +1,14 @@
 ---
 title: Hozzáférés engedélyezése közös hozzáférésű aláírással az Azure-ban Event Hubs
 description: Ez a cikk az Azure Event Hubs-erőforrásokhoz való hozzáférés megosztott hozzáférési aláírásokkal (SAS) történő engedélyezésével kapcsolatos információkat tartalmaz.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 0c572723c493847ed15f80948511d1cc993fa7e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298752"
+ms.locfileid: "85323114"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>A Event Hubs-erőforrásokhoz való hozzáférés engedélyezése közös hozzáférési aláírások használatával
 A közös hozzáférésű aláírás (SAS) lehetővé teszi, hogy korlátozott hozzáférést biztosítson a Event Hubs-névtér erőforrásaihoz. Az SAS az engedélyezési szabályok alapján Event Hubs erőforrásokhoz való hozzáférést. Ezek a szabályok névtérben vagy entitáson (Event hub vagy témakör) vannak konfigurálva. Ez a cikk áttekintést nyújt az SAS-modellről, és a SAS ajánlott eljárásait ismerteti.

@@ -1,26 +1,19 @@
 ---
 title: Névtér és üzenetsor létrehozása Azure Service Bus Azure-sablon használatával
 description: 'Gyors útmutató: Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával'
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 03/30/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e382d39e10e1907c9892f03a3da64945f3049fee
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80422616"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337023"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Gyors útmutató: Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával
 
@@ -38,7 +31,7 @@ None
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue) származik.
 
 :::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json" range="1-75" highlight="31-63":::
 
@@ -80,7 +73,7 @@ Ha a központi telepítést automatikusan szeretné futtatni, kattintson a köve
 ## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
 
 1. A Azure Portal navigáljon az **erőforráscsoport oldalához** .
-2. Az eszköztáron kattintson az **Erőforráscsoport törlése** gombra. 
+2. Válassza az **Erőforráscsoport törlése** elemet az eszköztáron. 
 3. Írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget. 
 
     ![Erőforráscsoport – törlés](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)

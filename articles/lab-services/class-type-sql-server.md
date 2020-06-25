@@ -7,12 +7,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 06/05/2020
 ms.author: enewman
-ms.openlocfilehash: f37ace3663b49da8a8e6b3b16047111988609d6b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: cd27264e91220c7f68aaae35650234bd9c1e4cac
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898996"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322277"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Tesztkörnyezet beállítása a SQL Server kezeléséhez és fejlesztéséhez
 
@@ -102,7 +102,7 @@ A [Azure Data Studio](https://github.com/microsoft/azuredatastudio) egy több ad
 6. A **telepítésre kész lapon**kattintson a **tovább**gombra.
 7. Várjon, amíg a telepítő futni próbál.  Kattintson a **Befejezés** gombra.
 
-Most, hogy Azure Data Studio telepítve van, állítsa be a Azure SQL Databasehoz való kapcsolódást.
+Most, hogy Azure Data Studio telepítve van, állítsuk be a Azure SQL Databasehoz való kapcsolódást.
 
 1. A Azure Data Studio **Üdvözöljük** lapon kattintson az **új kapcsolat** hivatkozásra.
 2. A **kapcsolat részletei** mezőben adja meg a szükséges információkat.

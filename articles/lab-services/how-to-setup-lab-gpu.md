@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/28/2020
 ms.author: nicolela
-ms.openlocfilehash: adac35bd3f59870f0c164b69548375610e9733b1
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 0d42d3292c894aec1deff5da548383499ca50db9
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897340"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338295"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Tesztkörnyezet beállítása GPU virtuális gépekkel
 
@@ -26,7 +26,6 @@ Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
 
 - Válasszon a *vizualizációk* és a *számítási* grafikus processzorok (GPU-k) közül.
 - Győződjön meg arról, hogy a megfelelő GPU-illesztőprogramok telepítve vannak.
-- Konfigurálja RDP protokoll (RDP) beállításait egy GPU virtuális géphez (VM) való kapcsolódáshoz.
 
 ## <a name="choose-between-visualization-and-compute-gpu-sizes"></a>Választás a vizualizációk és a számítási GPU-méretek között
 A labor létrehozási varázsló első lapján, amelyben a virtuálisgép- **méretre van szüksége?** legördülő listában válassza ki az osztályhoz szükséges virtuális gépek méretét.  
@@ -56,9 +55,6 @@ A laboratóriumi virtuális gépek GPU-képességeinek kihasználásához győz�
 Ahogy az előző képen is látható, ez a beállítás alapértelmezés szerint engedélyezve van, amely biztosítja, hogy a *legújabb* illesztőprogramok telepítve legyenek a kiválasztott GPU-hoz és lemezképhez.
 - A *számítási* GPU méretének kiválasztásakor a labor virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU látja el.  Ebben az esetben a rendszer telepíti a legújabb [számítási egységesített architektúra-(CUDA-)](https://www.nvidia.com/object/io_69526.html) illesztőprogramokat, ami lehetővé teszi a nagy teljesítményű számítástechnikai eszközök használatát.
 - Ha kijelöl egy *vizualizációs* GPU-méretet, a labor virtuális gépeket az [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU és a [Grid technológia](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf)látja el.  Ebben az esetben a legújabb GRID-illesztőprogramok települnek, ami lehetővé teszi a nagy teljesítményű alkalmazások használatát.
-
-> [!IMPORTANT]
-> Ahhoz, hogy a legjobb felhasználói élmény legyen a *vizualizáció* GPU-k számára, győződjön meg arról, hogy *mindkét* illesztőprogram telepítve van, *és* a GPU engedélyezve van az RDP-kapcsolatokon keresztül. További információ: a [GPU engedélyezése RDP-kapcsolaton keresztül a Windows rendszerű virtuális gépekhez](how-to-setup-lab-gpu.md#enable-gpu-over-rdp-connection-to-windows-vms) című rész ebben a cikkben.
 
 ### <a name="install-the-drivers-manually"></a>Az illesztőprogramok manuális telepítése
 Előfordulhat, hogy a legújabb verziótól eltérő illesztőprogram-verziót kell telepítenie.  Ebből a szakaszból megtudhatja, hogyan telepítheti manuálisan a megfelelő illesztőprogramokat attól függően, hogy *számítási* GPU-t vagy *vizualizációs* GPU-t használ.
@@ -99,7 +95,6 @@ Ha manuálisan szeretné telepíteni az illesztőprogramokat a vizualizáció GP
   
 1. Indítsa újra a sablon virtuális gépet.
 1. Ellenőrizze, hogy az illesztőprogramok megfelelően vannak-e telepítve. Ehhez kövesse a [telepített illesztőprogramok ellenőrzése](how-to-setup-lab-gpu.md#validate-the-installed-drivers) szakasz utasításait.
-1. Konfigurálja az RDP-beállításokat a GPU-kapcsolat engedélyezéséhez a [GPU engedélyezése RDP-kapcsolaton keresztül a Windows rendszerű virtuális gépekre](how-to-setup-lab-gpu.md#enable-gpu-over-rdp-connection-to-windows-vms) című témakör utasításait követve.
 1. Miután telepítette az adott osztályhoz szükséges illesztőprogramokat és más szoftvereket, válassza a **Közzététel** lehetőséget a tanulói virtuális gépek létrehozásához.
 
 ### <a name="validate-the-installed-drivers"></a>A telepített illesztőprogramok ellenőrzése
@@ -121,25 +116,6 @@ Ez a szakasz azt ismerteti, hogyan ellenőrizhető, hogy a GPU-illesztőprogramo
 
 #### <a name="linux-images"></a>Linux-rendszerképek
 Kövesse az [NVIDIA GPU-illesztőprogramok telepítése a Linux rendszerű N sorozatú virtuális gépekre](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation)című témakör "az illesztőprogramok telepítésének ellenőrzése" című szakaszának utasításait.
-
-## <a name="enable-gpu-over-rdp-connection-to-windows-vms"></a>A GPU engedélyezése RDP-kapcsolaton keresztül a Windows rendszerű virtuális gépeken
-Amikor RDP használatával csatlakozik egy *vizualizációs* GPU-val rendelkező Windows rendszerű virtuális géphez, további konfigurációt kell elvégeznie, hogy a GPU-t a grafikák renderelésére használják. Ellenkező esetben a rendszer a PROCESSZORt használja a grafikák megjelenítéséhez.
-
-A sablon virtuális gépen tegye a következőket:
-
-1. Konfigurálja az RDP-beállításokat a GPU használatára.
-
-   a. Kövesse a [GPU-gyorsított alkalmazások renderelésének beállítása](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#configure-gpu-accelerated-app-rendering)című témakör utasításait.  
-   b. Kövesse a [GPU-gyorsított keret kódolásának beállítása](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#configure-gpu-accelerated-frame-encoding)című témakör utasításait.
-
-1. Ellenőrizze a konfigurációt. 
-
-   a. Kövesse a [GPU-gyorsított alkalmazások megjelenítésének ellenőrzése](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#verify-gpu-accelerated-app-rendering)című témakör utasításait.  
-   b. Kövesse a [GPU-gyorsított keret kódolásának ellenőrzése](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#verify-gpu-accelerated-frame-encoding)című témakör utasításait.
-
-1. Most már telepítette az illesztőprogramokat és a GPU használatára konfigurált RDP-beállításokat.  Miután telepítette az osztályhoz szükséges egyéb szoftvereket, a **Közzététel** lehetőségre kattintva hozhatja létre a tanulói virtuális gépeket.  
-
-Ha a tanulók RDP-kapcsolaton keresztül csatlakoznak a virtuális gépekhez, az asztali számítógépek a virtuális gép GPU-je szerint jelennek meg.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
