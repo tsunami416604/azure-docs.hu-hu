@@ -58,6 +58,8 @@
           href: tutorial-assess-import.md
 - name: Alapelvek
   items:
+    - name: Migrálási terv létrehozása az Azure Migrate-tel
+      href: concepts-migration-planning.md
     - name: Támogatási mátrixok
       items:
         - name: Általános támogatás

@@ -41,6 +41,10 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Adatbiztonság
       items:
         - name: Biztonságos eszközök titkosítása
@@ -63,6 +67,8 @@
           href: how-to/automation-region-dns-records.md
         - name: Automation-futtatófiók kezelése
           href: manage-runas-account.md
+        - name: Privát csatlakozás Automation-fiókhoz
+          href: how-to/private-link-security.md
         - name: Szerepköri engedélyek és biztonság kezelése
           href: automation-role-based-access-control.md
         - name: Automation-fiók áthelyezése másik előfizetésbe
