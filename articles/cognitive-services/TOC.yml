@@ -17,11 +17,11 @@
       href: cognitive-services-apis-create-account.md
     - name: Új erőforrás létrehozása az Azure CLI használatával
       href: cognitive-services-apis-create-account-cli.md
-    - name: Diagnosztikai naplózás
-      href: diagnostic-logging.md
-    - name: ARM-sablon
+    - name: Új erőforrás létrehozása ARM-sablonnal
       displayName: Resource Manager
       href: resource-manager-template.md
+    - name: Diagnosztikai naplózás
+      href: diagnostic-logging.md
 - name: Példák
   items:
     - name: Az Azure Policy beépített elemei

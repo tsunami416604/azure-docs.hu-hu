@@ -4,7 +4,7 @@
   items:
     - name: Mi az az Azure Resource Graph?
       displayName: 'Resource Manager, query language, rbac, permissions'
-      href: overview.md
+      href: ./overview.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -20,6 +20,9 @@
     - name: Az első lekérdezés futtatása – Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
+    - name: Az első lekérdezés futtatása – JavaScript
+      displayName: 'library, node, arm-resourcegraph'
+      href: ./first-query-javascript.md
     - name: Az első lekérdezés futtatása – Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
@@ -77,7 +80,7 @@
       href: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
     - name: Javához készült Azure SDK (Maven)
       href: 'https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar'
-    - name: Node-hoz készült Azure SDK
+    - name: Azure SDK for JavaScript
       href: /javascript/api/@azure/arm-resourcegraph
     - name: Azure SDK for Python
       href: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph

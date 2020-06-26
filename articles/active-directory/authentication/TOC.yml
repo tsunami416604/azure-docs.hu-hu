@@ -225,6 +225,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell-parancsmagok
       href: /powershell/azure/overview
+    - name: 'Microsoft Graph REST API, bétaverzió'
+      href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Szolgáltatási korlátozások
       href: ../users-groups-roles/directory-service-limits-restrictions.md
 - name: További források

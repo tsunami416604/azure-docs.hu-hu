@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Alkalmazáskezelési dokumentáció
-summary: Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik az Office 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.
+summary: Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik a Microsoft 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.
 metadata:
   title: Alkalmazáskezelési dokumentáció
-  description: Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik az Office 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.
+  description: Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik a Microsoft 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3bea7dda1cf44548ea924ffa84fb922410242f27
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ed81c8d5eda3a9db84d85d79b10c0a5ab76705a4
+  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77063472"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85339206"
 landingContent:
 - title: Az alkalmazáskezelés ismertetése
   linkLists:

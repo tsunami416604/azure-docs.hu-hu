@@ -121,6 +121,8 @@
       href: troubleshoot-sign-in-issue.md
     - name: Vállalati költségek nézet letiltva
       href: enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: Nem található számlázási fiók
+      href: troubleshoot-account-not-found.md
     - name: Kapcsolatfelvétel a támogatási szolgáltatással
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: Példák

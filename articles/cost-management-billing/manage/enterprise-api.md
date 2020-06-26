@@ -5,16 +5,20 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: bf1acd8bce53801c7c241121db2079e9b8a01851
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383166"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253706"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A nagyvállalati ügyfeleknek elérhető jelentéskészítési API-k áttekintése
+
+> [!Note]
+> A Microsoft már nem frissíti az Azure Billing – Nagyvállalati jelentéskészítő API-kat. Az [Azure használati API-kat](/rest/api/consumption) használja helyettük.
+
 A jelentéskészítési API-kkal a nagyvállalati Azure-ügyfelek programozott módon kérhetnek le használati és számlázási adatokat az előnyben részesített adatelemző eszközökbe. A nagyvállalati ügyfelek aláírtak egy [Nagyvállalati Szerződést (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral, amelyben egyeztetett pénzügyi kötelezettségeket állapítanak meg annak érdekében, hogy az Azure-erőforrások egyéni díjszabására legyenek jogosultak.
 
 Az API-khoz szükséges minden dátum- és időparamétert az Egyezményes világidő (UTC) szerinti kombinált értékként kell megjeleníteni. Az API-k által visszaadott értékek UTC-formátumban jelennek meg.
@@ -27,7 +31,7 @@ Az API-khoz szükséges minden dátum- és időparamétert az Egyezményes vilá
 |-|-|
 |Engedélyezés| Adja meg az értéket ebben a formátumban: **bearer {API-KULCS}** <br/> Példa: bearer eyr....09|
 
-## <a name="consumption-apis"></a>Használati API-k
+## <a name="consumption-based-apis"></a>Használatalapú API-k
 [Itt](https://consumption.azure.com/swagger/ui/index) talál egy Swagger-végpontot az alább leírt API-khoz, amely lehetővé teszi az API egyszerű vizsgálatát és az ügyfél SDK-k létrehozását [AutoRest](https://github.com/Azure/AutoRest) vagy [Swagger CodeGen](https://swagger.io/swagger-codegen/) használatával. A 2014. május 1. utáni adatok érhetők el ezen az API-n keresztül.
 
 * **Egyenleg és összefoglalás** – A [Balance and Summary API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) havi összefoglaló információkat nyújt az egyenlegekről, az új vásárlásokról, az Azure Marketplace szolgáltatási díjairól, a kiigazításokról és a többletköltségekről.

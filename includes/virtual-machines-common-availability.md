@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b823ea97e39dfa05295449fd5a039d2b9debdfa
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76748855"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412025"
 ---
 Ez a cikk áttekintést nyújt az Azure Virtual Machines (VM) rendelkezésre állási funkcióiról.
 
@@ -48,17 +48,6 @@ Ez lehetővé teszi, hogy az alkalmazás legalább egy példánya mindig fusson 
 ## <a name="virtual-machines-scale-sets"></a>Virtual Machines méretezési csoportok 
 
 Az Azure virtuálisgép-méretezési csoportok lehetővé teszik elosztott terhelésű virtuális gépek csoportjának létrehozását és kezelését. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok magas rendelkezésre állást biztosítanak alkalmazásai számára, és lehetővé teszik számos virtuális gép központi felügyeletét, konfigurálását és frissítését. Azt javasoljuk, hogy legalább két virtuális gépet hozzon létre egy méretezési csoporton belül, hogy egy magasan elérhető alkalmazást biztosítson, és kielégítse a [99,95%-os Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-t. Magának a méretezési csoportnak nincs díja, csak az Ön által létrehozott virtuálisgép-példányért kell fizetnie. Ha egyetlen virtuális gép használja az [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)-ket, az Azure SLA a nem tervezett karbantartási eseményekre vonatkozik. A méretezési csoportokban lévő virtuális gépek több frissítési tartományon és tartalék tartományon is üzembe helyezhetők, hogy maximalizálja a rendelkezésre állást és a rugalmasságot az adatközpont-kimaradások, valamint a tervezett vagy nem tervezett karbantartási események miatt. A méretezési csoportokban lévő virtuális gépeket egyetlen rendelkezésre állási zónába vagy regionálisan is üzembe lehet helyezni. A rendelkezésre állási zónák központi telepítési beállításai eltérhetnek az előkészítési mód alapján.
-
-### <a name="preview-orchestration-mode-preview"></a>Előzetes verzió: előkészítési mód – előzetes verzió
-A Virtual Machines Scale sets segítségével megadhatja az előkészítési módot.  A virtuálisgép-méretezési csoport (előzetes verzió) beállításával kiválaszthatja, hogy a méretezési csoport a méretezési csoport konfigurációs modelljén kívül létrehozott virtuális gépeket vagy a konfigurációs modell alapján, implicit módon létrehozott virtuálisgép-példányokat kell-e összehangolni. Válassza ki azt a hangszerelési módot, amelyet a virtuálisgép-előkészítési modell lehetővé teszi, hogy a csoport explicit módon definiálva legyen Virtual Machines egy régióban vagy egy rendelkezésre állási zónában. A rendelkezésre állási zónában üzembe helyezett virtuális gépeknél a virtuális gépek a rendelkezésre állási zóna határához vannak kötve, és nem tartoznak a régió más rendelkezésre állási zónájában esetlegesen előforduló hibákra. 
-
-|   | "orchestrationMode": "VM" (VirtualMachine)| "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
-|----|----|----|
-| Virtuális gép konfigurációs modellje| Nincs. A VirtualMachineProfile nincs definiálva a méretezési csoport modelljében. | Kötelező. A VirtualMachineProfile a méretezési csoport modelljében van feltöltve. |
-| Új virtuális gép felvétele a méretezési csoportba| A virtuális gép létrehozásakor a rendszer explicit módon hozzáadja a virtuális gépeket a méretezési csoporthoz. | A virtuális gépek implicit módon jönnek létre, és hozzáadódnak a méretezési csoporthoz a virtuálisgép-konfigurációs modell, a példányszám és az automatikus skálázási szabályok alapján. |
-| Rendelkezésre állási zónák| Regionális telepítést vagy virtuális gépeket támogat egy rendelkezésre állási zónában| Támogatja a regionális telepítést vagy több Availability Zones; Megadhatja a zóna kiegyensúlyozási stratégiáját |
-| Tartalék tartományok| Meghatározhatja a tartalék tartományok darabszámát. 2 vagy 3 a regionális támogatás és az 5 a rendelkezésre állási zóna alapján. A hozzárendelt virtuálisgép-tartalék tartomány a virtuális gép életciklusával marad, beleértve a felszabadítást és az újraindítást is. | 1, 2 vagy 3 tartalék tartományt határozhat meg a nem zónákra kiterjedő központi telepítésekhez, és 5 a rendelkezésre állási zónák üzembe helyezéséhez. A hozzárendelt virtuálisgép-tartalék tartomány nem marad meg a virtuális gép életciklusa alatt, a virtuális gépek kiosztáskor tartalék tartományt kapnak. |
-| Frissítési tartományok| N/A. A frissítési tartományok automatikusan le vannak képezve a tartalék tartományokra| N/A. A frissítési tartományok automatikusan le vannak képezve a tartalék tartományokra |
 
 **Tartalék tartományok és frissítési tartományok**
 

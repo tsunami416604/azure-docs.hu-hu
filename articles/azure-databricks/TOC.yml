@@ -581,6 +581,9 @@
         - name: Bevezető jegyzetfüzetek
           href: /azure/databricks/delta/intro-notebooks
           maintainContext: true
+        - name: Adatok betöltése a Delta Lake-be
+          href: /azure/databricks/delta/delta-ingest
+          maintainContext: true
         - name: Táblaolvasási és írási kötegműveletek
           href: /azure/databricks/delta/delta-batch
           maintainContext: true
@@ -593,68 +596,65 @@
         - name: Tábla segédprogramparancsai
           href: /azure/databricks/delta/delta-utility
           maintainContext: true
-        - name: Delta Lake API-referencia
+        - name: API-referencia
           href: /azure/databricks/delta/delta-apidoc
           maintainContext: true
         - name: Egyidejűség-vezérlés
           href: /azure/databricks/delta/concurrency-control
           maintainContext: true
-        - name: Optimalizálás
-          items:
-            - name: Optimalizálás áttekintése
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: Teljesítmény optimalizálása fájlkezeléssel
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: Automatikus optimalizálás
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: Teljesítmény optimalizálása gyorsítótárazással
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: Elkülönítési szintek
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: MySQL-táblák replikálása Delta Lake-táblákba
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: Csatlakozási teljesítmény optimalizálása
-              items:
-                - name: Csatlakozási teljesítmény optimalizálásának áttekintése
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: Tartomány – csatlakozás optimalizálása
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: Döntés – csatlakozás optimalizálása
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: Optimalizált adatátalakítás
-              items:
-                - name: Optimalizált adatátalakítás áttekintése
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: Magasabb rendű függvények
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: Összetett adattípusok átalakítása
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: Ajánlott eljárások
-              href: /azure/databricks/delta/best-practices
-              maintainContext: true
-            - name: Tábla verziószámozása
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: Optimalizálási példák
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
+        - name: Ajánlott eljárások
+          href: /azure/databricks/delta/best-practices
+          maintainContext: true
         - name: Gyakori kérdések
           href: /azure/databricks/delta/delta-faq
           maintainContext: true
-        - name: További Delta-erőforrások
+        - name: További források
           href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: Delta Engine
+      items:
+        - name: A Delta Engine áttekintése
+          href: /azure/databricks/delta/optimizations/index
+          maintainContext: true
+        - name: Teljesítmény optimalizálása fájlkezeléssel
+          href: /azure/databricks/delta/optimizations/file-mgmt
+          maintainContext: true
+        - name: Automatikus optimalizálás
+          href: /azure/databricks/delta/optimizations/auto-optimize
+          maintainContext: true
+        - name: Teljesítmény optimalizálása gyorsítótárazással
+          href: /azure/databricks/delta/optimizations/delta-cache
+          maintainContext: true
+        - name: Elkülönítési szintek
+          href: /azure/databricks/delta/optimizations/isolation-level
+          maintainContext: true
+        - name: Csatlakozási teljesítmény optimalizálása
+          items:
+            - name: Csatlakozási teljesítmény optimalizálásának áttekintése
+              href: /azure/databricks/delta/join-performance/index
+              maintainContext: true
+            - name: Tartomány – csatlakozás optimalizálása
+              href: /azure/databricks/delta/join-performance/range-join
+              maintainContext: true
+            - name: Döntés – csatlakozás optimalizálása
+              href: /azure/databricks/delta/join-performance/skew-join
+              maintainContext: true
+        - name: Optimalizált adatátalakítás
+          items:
+            - name: Optimalizált adatátalakítás áttekintése
+              href: /azure/databricks/delta/data-transformation/index
+              maintainContext: true
+            - name: Magasabb rendű függvények
+              href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+              maintainContext: true
+            - name: Összetett adattípusok átalakítása
+              href: /azure/databricks/delta/data-transformation/complex-types
+              maintainContext: true
+        - name: Tábla verziószámozása
+          href: /azure/databricks/delta/optimizations/versioning
+          maintainContext: true
+        - name: Optimalizálási példák
+          href: /azure/databricks/delta/optimizations/optimization-examples
           maintainContext: true
     - name: Adatkeretek és adathalmazok
       items:
@@ -1899,7 +1899,7 @@
                 - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
-                - name: Databricks Runtime 7.0 ML (bétaverzió)
+                - name: Databricks Runtime 7.0 ML
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
                 - name: Databricks Runtime 7.0 Genomics
