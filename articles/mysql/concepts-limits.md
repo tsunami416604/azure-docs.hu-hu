@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/10/2020
-ms.openlocfilehash: 9b808eb69a013cb513de4ef15f112d7392dfe36e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.date: 6/25/2020
+ms.openlocfilehash: c562b8a82ef21e78eccad2c2ed6159251056f4fc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669878"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392692"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>A Azure Database for MySQL korlátozásai
 A következő szakaszok ismertetik a kapacitást, a tárolási motor támogatását, a jogosultságok támogatását, az adatmanipulációs nyilatkozatok támogatását és az adatbázis-szolgáltatás működési korlátait. Lásd még a MySQL-adatbázismotor esetében alkalmazandó [általános korlátozásokat](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) is.
@@ -21,7 +21,9 @@ A következő szakaszok ismertetik a kapacitást, a tárolási motor támogatás
 > [!NOTE]
 > Ha a (z) és a (z) kiszolgáló-paraméterek minimális/maximális értékeit keresi `max_connections` `innodb_buffer_pool_size` , akkor ezek az adatok a **[kiszolgálói paraméterek](./concepts-server-parameters.md)** cikkbe kerültek.
 
-Azure Database for MySQL támogatja a kiszolgálói paraméterek értékének finomhangolását. Néhány paraméter minimális és maximális értéke (pl. `max_connections`, `join_buffer_size` , `query_cache_size` ) meghatározása a kiszolgáló díjszabási szintjével és virtuális mag történik. A korlátokkal kapcsolatos további információkért tekintse meg a [kiszolgálói paramétereket](./concepts-server-parameters.md) . 
+Azure Database for MySQL támogatja a kiszolgálói paraméterek értékének finomhangolását. Néhány paraméter minimális és maximális értéke (pl. `max_connections`, `join_buffer_size` , `query_cache_size` ) meghatározása a kiszolgáló díjszabási szintjével és virtuális mag történik. A korlátokkal kapcsolatos további információkért tekintse meg a [kiszolgálói paramétereket](./concepts-server-parameters.md) .
+
+A kezdeti üzembe helyezéskor az Azure for MySQL-kiszolgáló az időzóna-információkhoz tartozó rendszertáblákat tartalmazza, de ezek a táblák nem lesznek feltöltve. Az időzóna-táblázatok úgy tölthetők fel, hogy meghívja a `mysql.az_load_timezone` tárolt eljárást egy eszközről, például a MySQL-parancssorból vagy a MySQL Workbenchből. A tárolt eljárás meghívásához és a globális vagy munkamenet szintű időzónák beállításához tekintse meg a [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) -cikkeket.
 
 ## <a name="storage-engine-support"></a>A Storage Engine támogatása
 

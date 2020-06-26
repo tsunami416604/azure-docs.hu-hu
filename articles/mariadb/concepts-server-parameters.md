@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/8/2020
-ms.openlocfilehash: 5ea5a94c73adda1328b97c3e985c4b6ac614d1b9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.date: 6/25/2020
+ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255024"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392726"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Kiszolgálói paraméterek a Azure Database for MariaDB
 
@@ -211,7 +211,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 ### <a name="time_zone"></a>time_zone
 
-Az időzóna-táblázatok úgy tölthetők fel, hogy meghívja a `mysql.az_load_timezone` tárolt eljárást egy eszközről, például a MySQL-parancssorból vagy a MySQL Workbenchből. A tárolt eljárás meghívásához és a globális vagy munkamenet szintű időzónák beállításához tekintse meg a [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) vagy az [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) -cikkeket.
+A kezdeti üzembe helyezés után az Azure for MariaDB-kiszolgáló az időzóna-információkhoz tartozó rendszertáblákat tartalmazza, de ezek a táblák nem lesznek feltöltve. Az időzóna-táblázatok úgy tölthetők fel, hogy meghívja a `mysql.az_load_timezone` tárolt eljárást egy eszközről, például a MySQL-parancssorból vagy a MySQL Workbenchből. A tárolt eljárás meghívásához és a globális vagy munkamenet szintű időzónák beállításához tekintse meg a [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) vagy az [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) -cikkeket.
 
 ## <a name="non-configurable-server-parameters"></a>Nem konfigurálható kiszolgálói paraméterek
 
@@ -227,7 +227,7 @@ Az alábbi kiszolgálói paraméterek nem konfigurálhatók a szolgáltatásban:
 
 Az itt felsorolt egyéb kiszolgálói paraméterek a [MariaDB](https://mariadb.com/kb/en/server-system-variables/)alapértelmezett értékeit adják meg a MariaDB.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket a Azure Portal használatával](./howto-server-parameters.md)
 - Megtudhatja, hogyan [konfigurálhat sever-paramétereket az Azure CLI használatával](./howto-configure-server-parameters-cli.md)

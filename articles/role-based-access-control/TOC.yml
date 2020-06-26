@@ -92,6 +92,9 @@
           href: custom-roles-cli.md
         - name: REST API
           href: custom-roles-rest.md
+        - name: ARM-sablon
+          displayName: Resource Manager
+          href: custom-roles-template.md
     - name: Tevékenységnaplók megtekintése
       href: change-history-report.md
     - name: Hozzáférési szint emelése
@@ -107,7 +110,7 @@
     - name: Erőforrás-szolgáltatói műveletek
       href: resource-provider-operations.md
     - name: Az Azure RBAC korlátai
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI

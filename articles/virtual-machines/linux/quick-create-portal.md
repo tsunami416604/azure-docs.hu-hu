@@ -5,37 +5,21 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 11/05/2019
+ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6bf9a89a4806db53797191336578ef9148886181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759238"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392844"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
 Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Az Azure Portal egy böngészőalapú felhasználói felület az Azure-erőforrások létrehozásához. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal az Ubuntu 18,04 LTS-t futtató linuxos virtuális gép (VM) üzembe helyezéséhez. A virtuális gép működésének megtekintéséhez hozzon létre SSH-kapcsolatot a virtuális géppel, és telepítse az NGINX-webkiszolgálót.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-
-## <a name="create-ssh-key-pair"></a>SSH-kulcspár létrehozása
-
-A rövid útmutató elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már rendelkezésére áll egy SSH-kulcspár, kihagyhatja ezt a lépést.
-
-SSH-kulcspár létrehozásához nyissa meg a Bash-felületet, és használja az [ssh-keygen](https://www.ssh.com/ssh/keygen/) eszközt. Ha nincs Bash-felület a helyi számítógépén, használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
-
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Az oldal tetején lévő menüben válassza ki a `>_` Cloud Shell megnyitására szolgáló ikont.
-1. Győződjön meg arról, hogy a Cloudshellben a bal felső sarokban található **bash** . Ha a PowerShell-t mondja, a legördülő menüből válassza a **bash** elemet, és válassza a **megerősítés** lehetőséget a bash rendszerhéjra való váltáshoz.
-1. Az `ssh-keygen -t rsa -b 2048` SSH-kulcs létrehozásához írja be a következőt:. 
-1. A rendszer kérni fogja, hogy adjon meg egy fájlt, amelybe menteni szeretné a kulcspárt. Csak nyomja le az **ENTER** billentyűt az alapértelmezett helyen való mentéshez, zárójelek között. 
-1. A rendszer megkéri, hogy adjon meg egy jelszót. Megadhatja az SSH-kulcshoz tartozó jelszót, vagy megnyomhatja az **ENTER** billentyűt a jelszó nélküli folytatáshoz.
-1. A `ssh-keygen` parancs nyilvános és titkos kulcsokat hoz létre a (z `id_rsa` `~/.ssh directory`) alapértelmezett nevével. A parancs visszaadja a nyilvános kulcs teljes útvonalát. A nyilvános kulcs elérési útját használva jelenítse meg a `cat` tartalmát a `cat ~/.ssh/id_rsa.pub`következő beírásával:.
-1. Másolja ki a parancs kimenetét, és mentse valahova a cikk későbbi részében való használatra. Ez az Ön nyilvános kulcsa, és szüksége lesz rá, amikor konfigurálja a rendszergazdai fiókot a virtuális gépre való bejelentkezéshez.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -54,11 +38,15 @@ Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.c
 
     ![Példány részletei szakasz](./media/quick-create-portal/instance-details.png)
 
-1. A **rendszergazdai fiók**területen válassza a **nyilvános SSH-kulcs**elemet, írja be a felhasználónevét, majd illessze be a nyilvános kulcsát. Távolítsa el a kezdő vagy záró szóközöket a nyilvános kulcsból.
+1. A **rendszergazdai fiók**területen válassza az **SSH nyilvános kulcs**lehetőséget.
+
+1. A **Felhasználónév** mezőbe írja be a következőt: *azureuser*.
+
+1. Az **SSH nyilvános kulcs forrása**beállításnál hagyja meg az alapértelmezett **új kulcspár létrehozását**, majd írja be a *myKey* **nevet a kulcspár neveként**.
 
     ![Rendszergazdai fiók](./media/quick-create-portal/administrator-account.png)
 
-1. A **bejövő port szabályai** > **nyilvános bejövő portok**területen válassza a **kiválasztott portok engedélyezése** lehetőséget, majd válassza az **SSH (22)** és a **http (80)** lehetőséget a legördülő menüből. 
+1. A **bejövő port szabályai**  >  **nyilvános bejövő portok**területen válassza a **kiválasztott portok engedélyezése** lehetőséget, majd válassza az **SSH (22)** és a **http (80)** lehetőséget a legördülő menüből. 
 
     ![Az RDP- és a HTTP-portok megnyitása](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -66,24 +54,29 @@ Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.c
 
 1. A **Virtuális gép létrehozása** lapon láthatja a létrehozandó virtuális gép részleteit. Ha készen áll, kattintson a **Létrehozás** gombra.
 
-A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helyezés végeztével lépjen tovább a következő szakaszra.
+1. Amikor megnyílik az **új kulcspár létrehozása** ablak, válassza a **titkos kulcs letöltése és az erőforrás létrehozása**lehetőséget. A kulcsfájl a **myKey. PEM**fájlként lesz letöltve. Győződjön meg arról, hogy tudja `.pem` , hol töltötte le a fájlt, a következő lépésben szüksége lesz rá az elérési útra.
 
-    
+1. Ha a telepítés befejeződött, válassza az **Ugrás az erőforráshoz**lehetőséget.
+
+1. Az új virtuális gép lapján válassza ki a nyilvános IP-címet, és másolja a vágólapra.
+
+
+    ![A nyilvános IP-cím másolása](./media/quick-create-portal/ip-address.png)
+
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
 Hozzon léte egy SSH-kapcsolatot a virtuális géppel.
 
-1. A virtuális gép áttekintő oldalán kattintson a **Csatlakozás** gombra. 
+1. Mac vagy Linux rendszerű gépen nyisson meg egy bash-parancssort. Ha Windows rendszerű gépen van, nyisson meg egy PowerShell-parancssort. 
 
-    ![Portál – 9](./media/quick-create-portal/portal-quick-start-9.png)
+1. A parancssorban nyisson meg egy SSH-kapcsolódást a virtuális géphez. Cserélje le az IP-címet a virtuális gépről az egyikre, és cserélje le az elérési utat arra a helyére, `.pem` ahová a kulcsfájl le lett töltve.
 
-2. A **Csatlakozás a virtuális géphez** oldalon tartsa meg az alapértelmezett beállításokat az IP-címmel való csatlakozáshoz a 22-es porton keresztül. A **Bejelentkezés a virtuális gép helyi fiókjával** területen egy csatlakozási parancs jelenik meg. A parancs másolásához kattintson a gombra. Az SSH-kapcsolat parancsa az alábbi példához hasonlóan néz ki:
+```console
+ssh -i .\Downloads\myKey1.pem azureuser@10.111.12.123
+```
 
-    ```bash
-    ssh azureuser@10.111.12.123
-    ```
-
-3. Ugyanazzal a bash-rendszerhéjsal, amelyet az SSH-kulcspár létrehozásához használt (újra megnyithatja a Cloud Shell `>_` az újra vagy a `https://shell.azure.com/bash`parancs kiválasztásával), illessze be az SSH-kapcsolati parancsot a rendszerhéjba egy SSH-munkamenet létrehozásához.
+> [!TIP]
+> A létrehozott SSH-kulcs az Azure-beli virtuális gép következő létrehozásakor használható. Ha legközelebb létrehoz egy virtuális gépet, válassza az Azure-ban az **SSH nyilvános kulcs forrásaként** **tárolt kulcs használata** lehetőséget. Már rendelkezik a titkos kulccsal a számítógépen, így nem kell semmit letöltenie.
 
 ## <a name="install-web-server"></a>A webkiszolgáló telepítése
 
@@ -107,7 +100,7 @@ Egy tetszőleges webböngészővel tekintse meg az alapértelmezett NGINX-kezdő
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, kattintson a **Törlés** elemre, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, létrehozott egy hálózati biztonsági csoportot és szabályt, valamint telepített egy alapszintű webkiszolgálót. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 

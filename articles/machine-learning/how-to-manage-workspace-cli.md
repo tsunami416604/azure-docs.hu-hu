@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 06/19/2020
-ms.openlocfilehash: f22ef4d1ebd9c4d3c226556c4ef28a873edd80ea
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 06/25/2020
+ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119256"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392709"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -363,6 +363,6 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gépi tanuláshoz készült Azure CLI bővítménnyel kapcsolatos további információkért tekintse meg az az [ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest) dokumentációt.
