@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154780"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383699"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése iOS-en a ADAL használatával
 
@@ -214,7 +214,7 @@ Az átirányítási URI-k formátumát alább találja. Bármely átirányítás
 
 A kulcstartó megosztásának engedélyezése meghaladja a dokumentum hatókörét, és az Apple a dokumentumhoz való [hozzáadásával](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)is rendelkezik. Fontos, hogy eldöntse, mit szeretne meghívni a kulcstartóhoz, és adja hozzá ezt a képességet az összes alkalmazásához.
 
-Ha a jogosultságok megfelelően vannak beállítva, akkor a projekt könyvtárában `entitlements.plist` található fájlnak kell megjelennie, amely a következőhöz hasonlót tartalmaz:
+Ha a jogosultságok megfelelően vannak beállítva, akkor a projekt könyvtárában található fájlnak kell megjelennie, amely `entitlements.plist` a következőhöz hasonlót tartalmaz:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -260,7 +260,7 @@ Az alkalmazás a közvetítő használatára való képessége a "környezet" va
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-A `AD_CREDENTIALS_AUTO` beállítás lehetővé teszi, hogy az SDK megpróbálja meghívni a közvetítőt, `AD_CREDENTIALS_EMBEDDED` MEGAKADÁLYOZZA, hogy az SDK meghívja a közvetítőt.
+A `AD_CREDENTIALS_AUTO` beállítás lehetővé teszi, hogy az SDK megpróbálja meghívni a közvetítőt, `AD_CREDENTIALS_EMBEDDED` megakadályozza, hogy az SDK meghívja a közvetítőt.
 
 #### <a name="step-2-registering-a-url-scheme"></a>2. lépés: URL-séma regisztrálása
 
@@ -309,7 +309,7 @@ pl.: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.MyApp.mytestapp*
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>4. lépés: konfigurációs paraméter hozzáadása az alkalmazáshoz
 
-ADAL – canOpenURL: annak ellenőrzését, hogy a közvetítő telepítve van-e az eszközön. Az iOS 9-es verziójában az Apple lezárta az alkalmazás által lekérdezhető sémákat. A "msauth" kifejezést hozzá kell adnia a összes szakaszhoz `info.plist file`.
+ADAL – canOpenURL: annak ellenőrzését, hogy a közvetítő telepítve van-e az eszközön. Az iOS 9-es verziójában az Apple lezárta az alkalmazás által lekérdezhető sémákat. A "msauth" kifejezést hozzá kell adnia a összes szakaszhoz `info.plist file` .
 
 ```
     <key>LSApplicationQueriesSchemes</key>
@@ -323,6 +323,6 @@ ADAL – canOpenURL: annak ellenőrzését, hogy a közvetítő telepítve van-e
 
 Most az Identity SDK automatikusan megosztja a hitelesítő adatokat az alkalmazásokban, és meghívja a közvetítőt, ha az eszközön van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [egyszeri bejelentkezéses SAML protokollról](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)

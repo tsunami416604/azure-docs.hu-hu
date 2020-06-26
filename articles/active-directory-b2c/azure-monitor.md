@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 2dc65c2e1b87c50ad2400b8ffb5d4c548e860c91
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85201293"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386215"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
@@ -234,7 +234,7 @@ Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálá
 1. Adja meg a beállítás nevét, ha még nem rendelkezik ilyennel.
 1. Jelölje be az egyes célhelyek jelölőnégyzetét a naplók elküldéséhez. Válassza a **Konfigurálás** lehetőséget a beállítások megadásához az alábbi táblázatban leírtak szerint.
 
-    | Beállítás | Leírás |
+    | Beállítás | Description |
     |:---|:---|
     | Archiválás tárfiókba | A Storage-fiók neve. |
     | Streamelés eseményközpontba | Az a névtér, amelyben az Event hub létre lett hozva (ha ez az első adatfolyam-naplók), vagy adatfolyamként továbbítja a (ha már van olyan erőforrás, amely ezen a névtéren keresztül továbbítja a naplózási kategóriát).
@@ -243,7 +243,7 @@ Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálá
 1. Válassza a **AuditLogs** és a **SignInLogs**lehetőséget.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Monitor diagnosztikai beállításainak hozzáadásával és konfigurálásával kapcsolatos további információkért lásd [: oktatóanyag: erőforrás-naplók összegyűjtése és elemzése az Azure-erőforrásokból](../azure-monitor/insights/monitor-azure-resource.md).
 

@@ -4,19 +4,19 @@ description: API-összekötők hozzáadása egyéni jóváhagyási munkafolyamat
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a08ff8d1f796cec2d4562ae64392253a539416
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: c4b40c284c8d034d92f29eb25d754d9294ac2e3d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886489"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386776"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz
 
@@ -371,7 +371,7 @@ Content-type: application/json
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg az [Azure Function](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)gyors üzembe helyezési mintákkal.
 - Az [önkiszolgáló regisztrációt a vendég felhasználók manuális jóváhagyási mintával regisztrálhatják](code-samples-self-service-sign-up.md#custom-approval-workflows). 

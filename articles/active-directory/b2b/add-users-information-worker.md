@@ -4,7 +4,7 @@ description: A B2B-együttműködés lehetővé teszi, hogy az informatikai szak
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eef791f4036382634c0f0f191a825e21e3561b9
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338040"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387388"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hogyan hívhatják meg a felhasználók a vendégeket egy alkalmazásba
 
@@ -113,7 +113,7 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 7. A **kezelés**területen válassza a **felhasználók és csoportok**lehetőséget, majd ellenőrizze, hogy az Ön által létrehozott önkiszolgáló csoport megjelenik-e a listában.
 8. Ha hozzá szeretné adni az alkalmazást a csoport tulajdonosának hozzáférési paneljéhez, válassza a **felhasználói**  >  **felhasználók és csoportok**hozzáadása lehetőséget. Keresse meg a csoport tulajdonosát, és válassza ki a felhasználót, kattintson a **kiválasztás**elemre, majd kattintson a **hozzárendelés** gombra a felhasználó az alkalmazáshoz való hozzáadásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

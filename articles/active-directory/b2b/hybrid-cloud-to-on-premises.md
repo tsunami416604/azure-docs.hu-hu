@@ -4,19 +4,19 @@ description: Bemutatja, hogyan biztosítható a felhőalapú B2B-felhasználók 
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272803"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387014"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
 
@@ -52,7 +52,7 @@ A következő ábra áttekintést nyújt arról, hogyan működik együtt az Azu
 ![A webalkalmazási és B2B parancsfájl-megoldások ábrája](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
 
 1.  A rendszer meghívja a contoso bérlőt a partner szervezet (a fabrikam bérlője) felhasználójának.
-2.  A rendszer létrehoz egy vendég felhasználói objektumot a contoso-bérlőben (például egy olyan felhasználói objektumot, amelynek UPN-je guest_fabrikam. com #@contoso.onmicrosoft.comext #).
+2.  A rendszer létrehoz egy vendég felhasználói objektumot a contoso-bérlőben (például egy olyan felhasználói objektumot, amelynek UPN-je guest_fabrikam. com # EXT # @contoso.onmicrosoft.com ).
 3.  A fabrikam vendég a contoso-ból vagy a B2B PowerShell-parancsfájllal lett importálva.
 4.  A fabrikam vendég felhasználói objektum (vendég # EXT #) képviselete vagy lábnyoma a helyszíni címtárban, a Contoso.com-ben vagy a B2B PowerShell-parancsfájllal hozható létre.
 5.  A vendég felhasználó hozzáfér a helyszíni alkalmazáshoz, a app.contoso.com.
@@ -61,7 +61,7 @@ A következő ábra áttekintést nyújt arról, hogyan működik együtt az Azu
 
 ### <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 
-A helyszíni B2B felhasználói objektumokat életciklus-kezelési házirendekkel kezelheti. Például:
+A helyszíni B2B felhasználói objektumokat életciklus-kezelési házirendekkel kezelheti. Példa:
 
 - Beállíthatja a többtényezős hitelesítési (MFA) házirendeket a vendég felhasználó számára, hogy az MFA-t használja az alkalmazásproxy hitelesítése során. További információ: [feltételes hozzáférés vállalatközi együttműködéssel rendelkező felhasználók](conditional-access.md)számára.
 - A felhőalapú B2B-felhasználó által végrehajtott szponzorálások, hozzáférési felülvizsgálatok, fiókok ellenőrzése stb. a helyszíni felhasználókra is érvényesek. Ha például a Felhőbeli felhasználót az életciklus-kezelési szabályzatok segítségével törli, a helyszíni felhasználót is törli a helyi felhasználó, vagy a Azure AD Connect Sync használatával. További információ: [a vendég hozzáférésének kezelése az Azure ad hozzáférési felülvizsgálatokkal](../governance/manage-guest-access-with-access-reviews.md).
@@ -74,7 +74,7 @@ További információ a (z) 2016 Service Pack 1 és a Rendszerfelügyeleti websz
 
 Létezik egy PowerShell-minta parancsfájl, amely kiindulási pontként használható a vendég felhasználói objektumok létrehozásához a helyszíni Active Directory.
 
-A parancsfájlt és a Readme fájlt letöltheti a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt és a readme-t az Azure ad B2B-felhasználók on-Prem. zip fájljának lekéréséhez** .
+A parancsfájlt és a Readme fájlt letöltheti a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt és a readme-t az Azure ad B2B-felhasználók on-prem.zipfájljának lekéréséhez** .
 
 A szkript használata előtt győződjön meg arról, hogy áttekinti az előfeltételeket és a fontos szempontokat a társított readme fájlban. Továbbá Ismerje meg, hogy a szkript csak mintaként érhető el. A fejlesztői csapatnak vagy partnernek a futtatása előtt testre kell szabnia és ellenőriznie kell a parancsfájlt.
 
@@ -82,7 +82,7 @@ A szkript használata előtt győződjön meg arról, hogy áttekinti az előfel
 
 Győződjön meg arról, hogy rendelkezik a megfelelő ügyféllicencekkel a külső vendég felhasználók számára, akik hozzáférnek a helyszíni alkalmazásokhoz. További információ: az [ügyfél-hozzáférési licencek és a felügyeleti licencek](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)"külső összekötők" szakasza. Forduljon a Microsoft képviselőjéhez vagy a helyi viszonteladóhoz az adott licencelési igényekkel kapcsolatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Active Directory B2B-együttműködés hibrid szervezeteknél](hybrid-organizations.md)
 

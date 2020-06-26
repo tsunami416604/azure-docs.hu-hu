@@ -7,19 +7,19 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: sample
 ms.workload: identity
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ae283529abb3b71ee50fc710dd1ebe0d17a12be0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154831"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387609"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kód mintái (v 1.0 végpont)
 
@@ -100,13 +100,13 @@ ASP.NET-webalkalmazás  | ![Ez a rendszerkép a .NET-emblémát jeleníti meg](m
 
 ### <a name="web-api-protected-by-azure-active-directory"></a>A Azure Active Directory által védett webes API
 
-Az alábbi példa bemutatja, hogyan védhető a Node. js webes API-k az Azure AD-vel.
+Az alábbi példa bemutatja, hogyan lehet védelemmel ellátni egy node.js webes API-t az Azure AD-vel.
 
 A cikk előző részeiben más mintákat is megtalálhat, amelyek egy ASP.NET vagy ASP.NET Core **webes API**-t **hívó** ügyfélalkalmazás bemutatnak. Ezek a minták még nem szerepelnek ebben a szakaszban, de a fenti táblázatok utolsó oszlopában is megtalálhatók.
 
 | Platform | Sample |
 |--------|-------------------|
-| ![Ez a képen a Node. js-embléma látható](media/sample-v2-code/logo-nodejs.png)  | [csomópont – webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |
+| ![Ez a képen a Node.js embléma látható](media/sample-v2-code/logo-nodejs.png)  | [csomópont – webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |
 
 ### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>Webes API meghívása Microsoft Graph vagy egy másik webes API
 

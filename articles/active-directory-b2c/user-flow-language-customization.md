@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2040d4521f655a0043987f2363e520abcc6c5d3a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: dd6e22052d2fab6d39382b21eec7a7bd379adb82
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85203175"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384073"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Nyelvi Testreszabás a Azure Active Directory B2Cban
 
@@ -245,8 +245,8 @@ A Azure AD B2C a következő nyelvek támogatását tartalmazza. A felhasználó
 | Orosz               | ru            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
 | Szlovák                | sk            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
 | Szlovén             | SL            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Szerb – cirill betűs    | SR-cryl-cs    | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Szerb – latin betűs       | SR-Latn-cs    | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Szerb – cirillbetűs    | SR-cryl-cs    | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Szerb – latinbetűs       | SR-Latn-cs    | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
 | Svéd               | Sv            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
 | tamil                 | ta            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
 | telugu                | ttelepítése            | ![igen](./media/user-flow-language-customization/yes.png) | ![nem](./media/user-flow-language-customization/no.png) |
@@ -254,5 +254,5 @@ A Azure AD B2C a következő nyelvek támogatását tartalmazza. A felhasználó
 | Török               | TR            | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
 | Ukrán             | uk            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
 | Vietnami            | VI            | ![nem](./media/user-flow-language-customization/no.png) | ![igen](./media/user-flow-language-customization/yes.png) |
-| Egyszerűsített kínai  | zh-Hans       | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
+| Kínai – egyszerűsített  | zh-Hans       | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |
 | Kínai – hagyományos | zh-Hant       | ![igen](./media/user-flow-language-customization/yes.png) | ![igen](./media/user-flow-language-customization/yes.png) |

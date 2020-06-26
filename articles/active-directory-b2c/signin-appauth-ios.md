@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186828"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384940"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: bejelentkezés iOS-alkalmazás használatával
 
@@ -47,7 +47,7 @@ Azure AD B2C minden felhasználói élményt egy [felhasználói folyamat](user-
 
 * A **regisztrálási attribútumok**területen válassza ki az attribútum **megjelenítendő nevét**.  Más attribútumok is kiválaszthatók.
 * Az **alkalmazás jogcímei**területen válassza ki a jogcímek **megjelenítendő nevét** és a **felhasználó objektumának azonosítóját**. Más jogcímeket is kijelölhet.
-* A létrehozás után másolja az egyes felhasználói folyamatok **nevét** . A felhasználói folyamat neve a felhasználói folyamat mentésekor `b2c_1_` előtaggal van ellátva.  A felhasználói folyamat nevét később kell megadnia.
+* A létrehozás után másolja az egyes felhasználói folyamatok **nevét** . A felhasználói folyamat neve `b2c_1_` a felhasználói folyamat mentésekor előtaggal van ellátva.  A felhasználói folyamat nevét később kell megadnia.
 
 Miután létrehozta a felhasználói folyamatokat, készen áll az alkalmazás létrehozására.
 
@@ -66,15 +66,15 @@ Ezt a mintát a [githubon lévő iOS AppAuth projekt](https://github.com/openid/
 
 Az Azure AD B2Cval való kommunikációt az engedélyezési végpont és a jogkivonat-végpont URI-k megadásával állíthatja be.  Az URI-k létrehozásához a következő információk szükségesek:
 * Bérlő azonosítója (például contoso.onmicrosoft.com)
-* Felhasználói folyamat neve (például B2C\_1\_SignUpIn)
+* Felhasználói folyamat neve (például B2C \_ 1 \_ SignUpIn)
 
-A jogkivonat-végpont URI-ja a bérlői\_azonosító és a szabályzat\_nevének a következő URL-címben való lecserélésével hozható létre:
+A jogkivonat-végpont URI-ja a bérlői \_ azonosító és a szabályzat \_ nevének a következő URL-címben való lecserélésével hozható létre:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Az engedélyezési végpont URI-ja a bérlői\_azonosító és a szabályzat\_nevének a következő URL-címben való lecserélésével hozható létre:
+Az engedélyezési végpont URI-ja a bérlői \_ azonosító és a szabályzat nevének a \_ következő URL-címben való lecserélésével hozható létre:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
@@ -123,7 +123,7 @@ appDelegate.currentAuthorizationFlow =
 
 Ha úgy szeretné beállítani az alkalmazást, hogy az az egyéni sémával kezelje az átirányítást az URI-ra, frissítenie kell az "URL-sémák" listáját az info. plist fájlban:
 * Nyissa meg az info. plist fájlt.
-* Vigye az egérmutatót egy olyan sorra, mint a "köteg operációs rendszer \+ típusa", majd kattintson a szimbólumra.
+* Vigye az egérmutatót egy olyan sorra, mint a "köteg operációs rendszer típusa", majd kattintson a \+ szimbólumra.
 * Nevezze át az új sor URL-típusait.
 * Kattintson az "URL-típusok" bal oldalán található nyílra a fa megnyitásához.
 * Kattintson a "0. elem" bal oldalán található nyílra a fa megnyitásához.

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1028707a63f720f814c90b1376caf7b745a76224
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85203469"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385331"
 ---
 # <a name="secure-your-restful-services"></a>A REST-szolgáltatások biztonságossá tétele 
 
@@ -365,6 +365,6 @@ A következő példa egy olyan REST-alapú műszaki profilt mutat be, amely a tu
 </ClaimsProvider>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az IEF-referenciában található [Rest technikai profil](restful-technical-profile.md) elemről. 

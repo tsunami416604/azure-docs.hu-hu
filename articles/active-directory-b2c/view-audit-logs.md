@@ -6,18 +6,18 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 33fa1b063a2c45af41c0da6450bac3f86683653b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85202976"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383937"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
@@ -32,7 +32,7 @@ A naplózási naplózási események csak **hét napig**őrződnek meg. Tervezze
 
 A naplókban a **B2C** kategória a következő típusú tevékenységeket tartalmazza:
 
-|Tevékenység típusa |Leírás  |
+|Tevékenység típusa |Description  |
 |---------|---------|
 |Engedélyezés |A B2C-erőforrásokhoz való hozzáférés engedélyezésével kapcsolatos tevékenységek (például egy rendszergazda, amely a B2C-szabályzatok listáját használja).         |
 |Címtár |Címtár-attribútumokkal kapcsolatos tevékenységek, amikor egy rendszergazda bejelentkezik a Azure Portal használatával. |
@@ -51,7 +51,7 @@ Ez a példa a Azure Portal képet jeleníti meg, amikor egy felhasználó küls�
 
 A tevékenység részletei panel a következő releváns információkat tartalmazza:
 
-|Section|Mező|Leírás|
+|Section|Mező|Description|
 |-------|-----|-----------|
 | Tevékenység | Name | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
 | Kezdeményező (színész) | ObjectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
@@ -221,6 +221,6 @@ Itt látható a cikkben korábban bemutatott példa tevékenység esemény JSON-
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Más felügyeleti feladatokat is automatizálhat, például [felügyelheti Azure ad B2C felhasználói fiókjait Microsoft Graph](manage-user-accounts-graph-api.md)használatával.

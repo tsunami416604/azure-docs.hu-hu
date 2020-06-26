@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7a8d0766cfa09569fd973a5e4bc7fa0e60862941
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: d34bb14dd0f474ff9350fec513c02fbb470d6738
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84809997"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385654"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Oktatóanyag a IDology konfigurálásához a Azure Active Directory B2C 
 
@@ -139,7 +139,7 @@ A minta szabályzat ezeket a neveket használja:
 
 7. A **Folytatás**gombra való belépés után a IDology puzzle jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

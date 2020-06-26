@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3841f4c4f068fd597bd537288a45dd188c7d1a2f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85203335"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385263"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -60,7 +60,7 @@ Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra
 Az egyszeri kijelentkezés támogatásához a token kiállítói technikai profiljainak mind a JWT, mind az SAML esetében meg kell adniuk a következőket:
 
 - A protokoll neve, például`<Protocol Name="OpenIdConnect" />`
-- A munkamenet technikai profiljára mutató hivatkozás, például: `UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />` .
+- A munkamenet technikai profiljára mutató hivatkozás, például: `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />` .
 
 Az alábbi példa a JWT és az SAML-jogkivonat kiállítóit mutatja be egyszeri kijelentkezéssel:
 
@@ -74,7 +74,7 @@ Az alábbi példa a JWT és az SAML-jogkivonat kiállítóit mutatja be egyszeri
       <Protocol Name="OpenIdConnect" />
       <OutputTokenFormat>JWT</OutputTokenFormat>
       ...    
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />
     </TechnicalProfile>
 
     <!-- Session management technical profile for OIDC based tokens -->
@@ -101,6 +101,6 @@ Az alábbi példa a JWT és az SAML-jogkivonat kiállítóit mutatja be egyszeri
 </ClaimsProvider>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure ad B2C-munkamenetről](session-overview.md).

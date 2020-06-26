@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e80503ce300d3ddca1a1bceabfc09d11cf7625f7
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 57dbec2b91d313c9c93c141c9f3ec839a299d47d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84809955"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385484"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio-ellenőrzési alkalmazás integrálása Azure Active Directory B2C
 
@@ -116,7 +116,7 @@ Adja hozzá a Azure AD B2C a házirend-fájlokat:
 
 * Keresse meg az alkalmazást, és tesztelje a bejelentkezést, a regisztrációt és a pénz küldése műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

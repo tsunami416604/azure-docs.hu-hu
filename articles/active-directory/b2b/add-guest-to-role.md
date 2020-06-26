@@ -4,7 +4,7 @@ description: Vendég felhasználó hozzáadása egy szerepkörhöz Azure Active 
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 703e68994a9d156ccf3e74a5df4a2f4ee2f062cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5e9983c265fcc032908424f747066f8f348771f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74268555"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387371"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Engedélyek megadása a Azure Active Directory-bérlőben lévő partnerszervezetek felhasználói számára
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) VÁLLALATKÖZI együttműködéssel rendelkez�
 
 ![A korlátozott rendszergazdai szerepkört ábrázoló képernyőfelvétel](./media/add-guest-to-role/limited-admin-role.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [B2B-együttműködés felhasználói tulajdonságok](user-properties.md)

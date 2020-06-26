@@ -4,19 +4,19 @@ description: Webes API beállítása felhasználói folyamatokban való használ
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f186bdc60ed5a30dd51b293e168c7a41377e621
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905097"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386742"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
 
@@ -204,7 +204,7 @@ Content-type: application/json
 ### <a name="integration-with-azure-functions"></a>Integrálás az Azure Functionszel
 A Azure Functions HTTP-triggert egyszerűen létrehozhat egy API-t az API-összekötővel való használatra. Az Azure-függvényt használhatja [például](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)az érvényesítési logikára, és meghatározott tartományokra korlátozza a bejelentkezéseket. Más webes API-kat, felhasználói tárolókat és más felhőalapú szolgáltatásokat is hívhat és hívhat meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 <!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - Ismerje meg, hogyan [adhat hozzá egyéni jóváhagyási munkafolyamatot önkiszolgáló regisztrációhoz](self-service-sign-up-add-approvals.md)

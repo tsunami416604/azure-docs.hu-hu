@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,18 +10,18 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 192d3d1a7bd792779b068a9c0c7ac34c7bee1c80
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cbb79c6c7467306bbc202d317684a5c62835d53c
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80117156"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374872"
 ---
 Ha az alkalmazásokat más személyeknek kell létrehoznia, hozzá kell adnia a társított e-mail-címeket a Azure Portal szerzői erőforrásához.
 
-Ha Ön az **Azure-előfizetés tulajdonosa vagy rendszergazdája**, hozzáadhat egy közreműködőt az erőforráshoz.
+Ha Ön az Azure-előfizetése tulajdonosa vagy rendszergazdája, hozzáadhat egy közreműködőt az erőforráshoz.
 
-Ha nem Ön **Az Azure-előfizetése tulajdonosa vagy rendszergazdája**, az Azure-fióknak engedéllyel `Microsoft.Authorization/roleAssignments/write` kell rendelkeznie.
+Ha nem Ön az Azure-előfizetése tulajdonosa vagy rendszergazdája, az Azure-fióknak engedéllyel kell rendelkeznie `Microsoft.Authorization/roleAssignments/write` .
 
 Ha problémája van a szerepkör-hozzárendeléssel, tekintse át a következőt:
 

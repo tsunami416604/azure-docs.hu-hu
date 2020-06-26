@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebf0cfffa410d8dfe2f0e0b42a0fee0c16106fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187406"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387677"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure AD B2C egyéni házirendek kezelése a Azure PowerShell
 
@@ -112,7 +112,7 @@ PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 </TrustFrameworkPolicy>
 ```
 
-A szabályzat tartalmának helyi szerkesztéséhez a parancs kimenetét egy `-OutputFilePath` argumentummal rendelkező fájlba kell átadnia, majd meg kell nyitnia a fájlt a kedvenc szerkesztőjében.
+A szabályzat tartalmának helyi szerkesztéséhez a parancs kimenetét egy argumentummal rendelkező fájlba kell átadnia, `-OutputFilePath` majd meg kell nyitnia a fájlt a kedvenc szerkesztőjében.
 
 Példa a kimenet fájlba küldésére:
 
@@ -193,7 +193,7 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 
 További információ az egyéni házirendek hibaelhárításáról: [Azure ad B2C egyéni szabályzatok és az identitások felhasználói felületének](active-directory-b2c-guide-troubleshooting-custom.md)hibaelhárítása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan használható a PowerShell az egyéni házirendek folyamatos integrációs/folyamatos teljesítési (CI/CD) folyamat részeként történő telepítéséhez: [Egyéni szabályzatok telepítése Azure DevOps-folyamatból](deploy-custom-policies-devops.md).
 

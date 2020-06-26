@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc227081af4f306a27b77eb727ea96467f94fa2e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: fad29c32731ee2470354a51acf32e350eb0c4cfc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85203112"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384872"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
@@ -61,7 +61,7 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
     * `ClientEnabled="true"`a ApplicationInsights ügyféloldali parancsfájlt küld a követési oldal nézetre és az ügyféloldali hibákra. Ezeket a **browserTimings** táblában tekintheti meg a Application Insights-portálon. A beállítással `ClientEnabled= "true"` Application Insightsokat adhat hozzá az oldal parancsfájljaihoz, és megtekintheti az oldal betöltésének és az Ajax-hívások, a számok, a böngészőbeli kivételek és az Ajax-hibák részleteit, valamint a felhasználók és a munkamenetek számát. Ez a mező nem **kötelező**, és alapértelmezés szerint be van állítva `false` .
     * `ServerEnabled="true"`a meglévő UserJourneyRecorder JSON-t egy egyéni eseményként küldi a Application Insights.
 
-    Például:
+    Példa:
 
     ```xml
     <TrustFrameworkPolicy
@@ -93,7 +93,7 @@ Az új naplók a Application Insightsban való megtekintése előtt rövid késl
 
 Az alábbi lista felsorolja a naplók megtekintésére használható lekérdezéseket:
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |---------------------|--------------------|
 `traces` | A Azure AD B2C által generált naplók megtekintése |
 `traces | where timestamp > ago(1d)` | Az elmúlt nap Azure AD B2C által generált naplók megtekintése
@@ -102,7 +102,7 @@ Előfordulhat, hogy a bejegyzések hosszúak. Exportálás CSV-be alaposabb kere
 
 A lekérdezéssel kapcsolatos további információkért lásd: [Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Közösség kidolgozta a felhasználói útvonalak megjelenítőjét, hogy segítse az identitás-fejlesztőket. Beolvassa a Application Insights példányát, és jól strukturált áttekintést nyújt a felhasználói útvonalak eseményeiről. Szerezze be a forráskódot, és telepítse azt a saját megoldásában.
 

@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666936"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383869"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -51,7 +51,7 @@ A prémium szintű Azure AD-funkciókkal ingyenes tesztelési fiókot vehet igé
 
 Miután tesztelte, hogy az alkalmazás-integráció az Azure AD-vel működik, küldje el kérelmét a [Microsoft Application Network portálon](https://microsoft.sharepoint.com/teams/apponboarding/Apps).
 
-Ha a bejelentkezés után a következő oldal jelenik meg, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Adja meg a kérelem elküldéséhez használni kívánt e-mail-fiókot. Egy üzleti e-mail- [name@yourbusiness.com](mailto:name@yourbusiness.com) cím, például előnyben részesített. Az Azure AD csapata felveszi a fiókot a Microsoft Application Network portálon.
+Ha a bejelentkezés után a következő oldal jelenik meg, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Adja meg a kérelem elküldéséhez használni kívánt e-mail-fiókot. Egy üzleti e-mail-cím, például [name@yourbusiness.com](mailto:name@yourbusiness.com) előnyben részesített. Az Azure AD csapata felveszi a fiókot a Microsoft Application Network portálon.
 
 ![Hozzáférési kérelemre vonatkozó üzenet a SharePoint-portálon](./media/howto-app-gallery-listing/errorimage.png)
 
@@ -79,11 +79,11 @@ A vendég felhasználó összevonása egy otthoni Bérlővel, amely egyben Azure
  
 **Biztonságos megoldások:**
 
-* Az MFA által regisztrált vendég felhasználók a saját felhasználói kockázatot szervizelik. Ezt megteheti a vendég felhasználó a biztonságos jelszó módosításával vagy alaphelyzetbehttps://aka.ms/sspr) állításával (a saját bérlőn (ez az MFA és a SSPR szükséges a hazai bérlőn). A biztonságos jelszó módosítását vagy alaphelyzetbe állítását az Azure AD-ben kell elindítani, nem pedig a helyi gépen.
+* Az MFA által regisztrált vendég felhasználók a saját felhasználói kockázatot szervizelik. Ezt megteheti a vendég felhasználó a biztonságos jelszó módosításával vagy alaphelyzetbe állításával (a saját https://aka.ms/sspr) bérlőn (ez az MFA és a SSPR szükséges a hazai bérlőn). A biztonságos jelszó módosítását vagy alaphelyzetbe állítását az Azure AD-ben kell elindítani, nem pedig a helyi gépen.
 
-* A vendég felhasználók rendelkeznek a saját adminisztrátorokkal. Ebben az esetben a rendszergazda jelszó-visszaállítást (ideiglenes jelszó létrehozása) hajt végre. Ehhez nincs szükség az identitások védelmére. A vendég felhasználó rendszergazdája a "jelszó alaphelyzetbe állítása" lehetőségre kattintva léphet ki https://aka.ms/RiskyUsers .
+* A vendég felhasználók rendelkeznek a saját adminisztrátorokkal. Ebben az esetben a rendszergazda jelszó-visszaállítást (ideiglenes jelszó létrehozása) hajt végre. Ehhez nincs szükség az identitások védelmére. A vendég felhasználó rendszergazdája a https://aka.ms/RiskyUsers "jelszó alaphelyzetbe állítása" lehetőségre kattintva léphet ki.
 
-* A vendég felhasználók a rendszergazdájuk bezárják vagy elmulasztják a kockázatokat. Ez megint nem szükséges az identitások védelméhez. A rendszergazda a "felhasználói https://aka.ms/RiskyUsers kockázat elvetése" gombra kattintva léphet ki. Azonban a rendszergazdának el kell végeznie az átvilágítás elvégzését annak érdekében, hogy ez hamis pozitív kockázatértékelés legyen a felhasználói kockázat bezárása előtt. Ellenkező esetben a kockázat kiértékelését vizsgálat nélkül letiltva veszélyeztetik a Microsoft erőforrásait.
+* A vendég felhasználók a rendszergazdájuk bezárják vagy elmulasztják a kockázatokat. Ez megint nem szükséges az identitások védelméhez. A rendszergazda a https://aka.ms/RiskyUsers "felhasználói kockázat elvetése" gombra kattintva léphet ki. Azonban a rendszergazdának el kell végeznie az átvilágítás elvégzését annak érdekében, hogy ez hamis pozitív kockázatértékelés legyen a felhasználói kockázat bezárása előtt. Ellenkező esetben a kockázat kiértékelését vizsgálat nélkül letiltva veszélyeztetik a Microsoft erőforrásait.
 
 > [!NOTE]
 > Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
@@ -136,7 +136,7 @@ Egy meglévő alkalmazás Azure AD-katalógusban való frissítéséhez vagy elt
 
 ## <a name="list-requests-by-customers"></a>Ügyfelek által küldött kérések listázása
 
-Az ügyfelek az alkalmazások **igénylésére vonatkozó** > kérelmet küldhetnek az**új kérés beküldéséhez**.
+Az ügyfelek az alkalmazások **igénylésére vonatkozó**kérelmet küldhetnek az  >  **új kérés beküldéséhez**.
 
 ![Az ügyfél által kért alkalmazások csempe megjelenítése](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -156,4 +156,4 @@ A katalógusban található OpenID Connect-alkalmazás listázási folyamatának
 
 ## <a name="escalations"></a>Azok következményeinek
 
-Minden eszkaláció esetében küldjön e-mailt az [Azure ad SSO integrációs csapatának](mailto:SaaSApplicationIntegrations@service.microsoft.com) a címen SaaSApplicationIntegrations@service.microsoft.com, és a lehető leghamarabb válaszolunk.
+Minden eszkaláció esetében küldjön e-mailt az [Azure ad SSO integrációs csapatának](mailto:SaaSApplicationIntegrations@service.microsoft.com) a címen SaaSApplicationIntegrations@service.microsoft.com , és a lehető leghamarabb válaszolunk.

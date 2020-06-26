@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e023e9c8c4c6f0021eabccad8783c27eba98d0d5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116526"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385025"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Oktatóanyag: a felhasználói élmények felületének testreszabása Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A felhasználói folyamat frissítése a fájlok használatára
 > * A testreszabott felhasználói felület tesztelése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,7 +46,7 @@ Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [A
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Győződjön meg arról, hogy az Azure-előfizetését tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki az előfizetést tartalmazó könyvtárat. Ez a könyvtár nem azonos az Azure B2C-bérlőt tartalmazó címtárral.
 3. A Azure Portal bal felső sarkában válassza a minden szolgáltatás lehetőséget, majd keresse meg és válassza ki a **Storage-fiókokat**.
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza a **Hozzáadás** elemet.
 5. Az **erőforráscsoport**területen válassza az **új létrehozása**elemet, adja meg az új erőforráscsoport nevét, majd kattintson **az OK**gombra.
 6. Adja meg a tárfiók nevét. A választott névnek egyedinek kell lennie az Azure-ban, 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 7. Válassza ki a Storage-fiók helyét, vagy fogadja el az alapértelmezett helyet.
@@ -95,7 +95,7 @@ A regisztrációs élmény felhasználói felületének testreszabásához hozzo
 
     A lap bármilyen módon kialakítható, de a létrehozott HTML-testreszabási fájlhoz az **API** div elem szükséges.
 
-3. Mentse a fájlt *Custom-UI. html*néven.
+3. Mentse a fájlt *custom-ui.html*néven.
 4. Hozza létre a következő egyszerű CSS-t, amely a regisztrációs vagy bejelentkezési oldalon lévő összes elemet központilag tartalmazza, beleértve a Azure AD B2C Beinjektált elemeket is.
 
     ```css
@@ -129,7 +129,7 @@ Ebben az oktatóanyagban a Storage-fiókban létrehozott fájlokat tárolja, hog
 
 1. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki a **Storage-fiókokat**.
 2. Válassza ki a létrehozott Storage-fiókot, válassza a **Blobok**lehetőséget, majd válassza ki a létrehozott tárolót.
-3. Válassza a **feltöltés**lehetőséget, keresse meg és válassza ki a *Custom-UI. html* fájlt, majd kattintson a **feltöltés**elemre.
+3. Válassza a **feltöltés**lehetőséget, keresse meg és válassza ki a *custom-ui.html* fájlt, majd kattintson a **feltöltés**gombra.
 
     ![BLOB-oldal feltöltése a portálon a feltöltés gombbal és a kijelölt fájlokkal](./media/tutorial-customize-ui/upload-blob.png)
 
@@ -141,7 +141,7 @@ Ebben az oktatóanyagban a Storage-fiókban létrehozott fájlokat tárolja, hog
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 2. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget, majd válassza ki a *B2C_1_signupsignin1* felhasználói folyamatot.
 3. Válassza **ki a lapelrendezések lehetőséget**, majd **az egyesített regisztráció vagy a bejelentkezés lapon**kattintson az **Igen** lehetőségre az **Egyéni oldal tartalmának használatához**.
-4. Az **Egyéni lap URI-ja**mezőben adja meg a korábban rögzített *Custom-UI. html* fájl URI azonosítóját.
+4. Az **Egyéni lap URI-ja**mezőben adja meg a korábban feljegyzett *custom-ui.html* fájl URI azonosítóját.
 5. A lap tetején válassza a **Mentés**lehetőséget.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
@@ -156,7 +156,7 @@ Ebben az oktatóanyagban a Storage-fiókban létrehozott fájlokat tárolja, hog
 
     ![Webböngészőt, amely az egyéni felhasználói felületi elemekkel való regisztrációt vagy bejelentkezési oldalt jeleníti meg](./media/tutorial-customize-ui/run-now.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

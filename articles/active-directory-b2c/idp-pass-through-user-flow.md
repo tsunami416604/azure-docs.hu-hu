@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 312d093548b6e3cf3654f45d7610e8fc474a87b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187782"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387830"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Hozzáférési token átadása egy felhasználói folyamaton keresztül az alkalmazáshoz Azure Active Directory B2C
 
@@ -44,16 +44,16 @@ Azure AD B2C jelenleg csak az [OAuth 2,0](authorization-code-flow.md) Identity P
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure AD B2C token visszaadja `https://jwt.ms` a jogcímeket a jogcímek áttekintéséhez.
+Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy a Azure AD B2C token visszaadja a `https://jwt.ms` jogcímeket a jogcímek áttekintéséhez.
 
 1. A felhasználói folyamat áttekintés lapján válassza a **felhasználói folyamat futtatása**lehetőséget.
-2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. Az alábbi példában szereplő token megjelenítéséhez a **Válasz URL-címének** meg `https://jwt.ms`kell jelennie.
+2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. Az alábbi példában szereplő token megjelenítéséhez a **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 3. Kattintson a **felhasználói folyamat futtatása**elemre, majd jelentkezzen be a fiókja hitelesítő adataival. Ekkor meg kell jelennie az Identitáskezelő hozzáférési jogkivonatának az **idp_access_token** jogcímben.
 
     Az alábbi példához hasonlónak kell megjelennie:
 
     ![Dekódolású token a jwt.ms-ben idp_access_token blokk kiemelve](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure ad B2C tokenek áttekintése](tokens-overview.md).

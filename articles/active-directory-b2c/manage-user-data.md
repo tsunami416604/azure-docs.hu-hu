@@ -6,17 +6,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e245b58449ab773914fc60be056082b82f05035a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7cc772e2a2e44a72af5e47a794c8b0f36aa9786
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184485"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387643"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Felhasználói adatkezelés Azure Active Directory B2C
 
@@ -57,6 +57,6 @@ Az exportálási folyamat következő példájában az alkalmazás által elvég
 3. Az alkalmazás lekéri a felhasználói naplózási tevékenységet. A Microsoft Graph API biztosítja az eseményre vonatkozó adatértékeket az alkalmazásnak.
 4. Az alkalmazás összesíti az adatokat, és elérhetővé teszi a felhasználó számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználók alkalmazáshoz való hozzáférésének kezelésével kapcsolatos információkért lásd: [felhasználói hozzáférés kezelése](manage-user-access.md).

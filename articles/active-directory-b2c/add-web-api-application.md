@@ -7,15 +7,15 @@ manager: celestedg
 ms.author: mimart
 ms.date: 04/16/2019
 ms.custom: mvc
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 2265ac0880822a46abf8597730fa28703e9b3cfc
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 438d2fec9efc6a1ad3fcdaa2829573e7205820ff
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300154"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385960"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Webes API-alkalmazás hozzáadása a Azure Active Directory B2C-bérlőhöz
 
@@ -50,7 +50,7 @@ Ha olyan alkalmazással rendelkezik, amely megvalósítja az implicit engedélye
 6. A **Web App/web API belefoglalása** és az **implicit folyamat engedélyezése**lehetőségnél válassza az **Igen**lehetőséget.
 7. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Az éles alkalmazásban beállíthatja a válasz URL-címét egy értékre (például `https://localhost:44332` ). Tesztelési célból állítsa be a válasz URL-címét a következőre: `https://jwt.ms` .
 8. Az **alkalmazás-azonosító URI-ja**mezőben adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
-9. Kattintson a **Létrehozás**gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 10. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
 
 * * *

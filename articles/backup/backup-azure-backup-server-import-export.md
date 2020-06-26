@@ -3,12 +3,12 @@ title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 1fb9910f2cdf8f000725fde697d971fc1c3d385b
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: bb9b3599e74e74058598acd53f5156459c0b74fb
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84631981"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374933"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>A DPM és a Azure Backup Server offline biztonsági mentési munkafolyamata (MABS)
 
@@ -83,9 +83,9 @@ Az ebben a szakaszban található információk segítségével elvégezheti az 
    A bemenetek leírása a következő:
 
    * **Átmeneti hely**: az az ideiglenes tárolási hely, ahová a rendszer a kezdeti biztonsági másolatot írja. Előfordulhat, hogy az előkészítési hely egy hálózati megosztáson vagy egy helyi számítógépen található. Ha a számítógép és a forrásszámítógép másolása eltérő, akkor az előkészítési hely teljes hálózati elérési útját kell megadni.
-   * **Azure Storage-fiók**: az Azure-közzétételi beállítási fájlhoz társított Azure-előfizetéshez tartozó Storage-fiók neve.
-   * **Azure Storage-tároló**: annak az Azure Storage-fióknak a neve, amelybe a biztonsági mentési adatmennyiséget importálja.
-   * **Azure-előfizetés azonosítója**: annak az előfizetésnek az Azure-ELŐfizetési azonosítója, amelyből letöltötte az Azure közzétételi beállítások fájlját.
+   * **Azure Resource Manager Storage-fiók**: a Resource Manager típusú Storage-fiók (általános célú v1 vagy általános célú v2) neve bármely Azure-előfizetésben.
+   * **Azure Storage-tároló**: a cél blob Storage-tároló neve abban az Azure Storage-fiókban, ahová a biztonsági mentési adatmennyiséget importálja.
+   * **Azure-előfizetés azonosítója**: annak az Azure-előfizetésnek az azonosítója, amelyhez az Azure Storage-fiókot létrehozták.
    * **Azure importálási feladattípus**: az az egyedi név, amellyel az Azure import service és Azure Backup nyomon követheti a lemezeken továbbított adatok átvitelét az Azure-ba.
 
     Mentse az **előkészítési helyet** és az **Azure-beli importálási feladathoz megadott nevet** . A lemezek előkészítéséhez szükséges.

@@ -4,19 +4,19 @@ description: A összevonása a Facebook használatával lehetővé teheti a kül
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eabee8e287d29f3a3a01b63b0d79da651be9082
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: dfdae4a219408e811a49826999c85837aac449c0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886476"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386691"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)
 |     |
@@ -104,7 +104,7 @@ Most már hozzárendelheti az alkalmazásokat a felhasználói folyamathoz.
 8. Válassza ki az alkalmazást a listából. Vagy használja a keresőmezőt az alkalmazás megkereséséhez, majd jelölje ki.
 9. Kattintson a **Kiválasztás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Google hozzáadása a közösségi identitású szolgáltatók listájához](google-federation.md)
 - [Facebook hozzáadása a közösségi identitású szolgáltatók listájához](facebook-federation.md)

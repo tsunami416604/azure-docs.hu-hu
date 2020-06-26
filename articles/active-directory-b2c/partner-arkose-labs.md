@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 92b40fc22a148727760df2d25f73c4cbd80bd852
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: d4e5dfe26af7e1d92c20cf15e3519563e600b256
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810081"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385705"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Oktatóanyag a Arkóz Labs konfigurálásához a Azure Active Directory B2C
 
@@ -176,7 +176,7 @@ Ezt az egyéni oldal URL-címét a blob Storage-ban lévő index.html fájl hely
 
 7. A **Folytatás**gombra kattintva megjelenik egy Arkóz Labs-puzzle.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

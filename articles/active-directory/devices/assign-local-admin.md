@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72b21514e07b65b89d10b317da95ec7d92ecae78
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360333"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386368"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
 Windows-eszközök kezeléséhez a helyi Rendszergazdák csoport tagjának kell lennie. A Azure Active Directory (Azure AD) csatlakoztatási folyamatának részeként az Azure AD frissíti a csoport tagságát az eszközön. A tagsági frissítést testreszabhatja az üzleti igények kielégítése érdekében. A tagság frissítése például hasznos, ha engedélyezni szeretné, hogy az ügyfélszolgálat munkatársai olyan feladatokat végezzenek el, amelyeken rendszergazdai jogosultságok szükségesek az eszközön.
 
-Ez a cikk azt ismerteti, hogyan működik a tagsági frissítés, és hogyan szabható testre az Azure AD JOIN szolgáltatásban. A cikk tartalma nem vonatkozik a **hibrid** Azure ad-csatlakozásra.
+Ez a cikk azt ismerteti, hogyan működik a helyi rendszergazdák tagságának frissítése, és hogyan szabható testre az Azure AD JOIN szolgáltatásban. A cikk tartalma nem vonatkozik a **hibrid Azure ad-hez csatlakoztatott** eszközökre.
 
 ## <a name="how-it-works"></a>Működés
 
@@ -59,10 +59,13 @@ Az eszköz rendszergazdai szerepkörének módosításához **további helyi ren
 >[!NOTE]
 > Ehhez a beállításhoz prémium szintű Azure AD bérlő szükséges. 
 
-Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Az eszközök rendszergazdái nem állíthatók be egy adott eszközre. Az eszköz rendszergazdai szerepkörének frissítése nem feltétlenül jelent azonnali hatást az érintett felhasználókra. Azokon az eszközökön, amelyeken a felhasználó már be van jelentkezve, a jogosultsági frissítés akkor kerül sor, ha az alábbi műveletek *is* megtörténnek:
+Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Az eszközök rendszergazdái nem állíthatók be egy adott eszközre. Az eszköz rendszergazdai szerepkörének frissítése nem feltétlenül jelent azonnali hatást az érintett felhasználókra. Azokon az eszközökön, amelyeken a felhasználó már be van jelentkezve, a jogosultsági szint megemelése akkor történik meg, ha az alábbi műveletek *is* történnek:
 
-- 4 óra telt el az Azure AD számára, hogy új elsődleges frissítési jogkivonatot adjon ki a megfelelő jogosultságokkal. 
+- A 4 óra elteltével az Azure AD új elsődleges frissítési jogkivonatot adott ki a megfelelő jogosultságokkal. 
 - A felhasználó kijelentkezik, és visszajelentkezik, nem zárolja vagy oldja fel a profil frissítését.
+
+>[!NOTE]
+> A fenti műveletek nem alkalmazhatók azokra a felhasználókra, akik korábban nem jelentkezett be a megfelelő eszközre. Ebben az esetben a rendszergazdai jogosultságokat az eszközre való első bejelentkezés után azonnal alkalmazza a rendszer. 
 
 ## <a name="manage-regular-users"></a>Normál felhasználók kezelése
 
@@ -88,9 +91,9 @@ Nem rendelhet hozzá csoportokat az eszköz rendszergazdai szerepköréhez, csak
 
 Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhöz vannak rendelve. Nem lehetnek hatókörük egy adott eszközre.
 
-Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer a következő bejelentkezéskor visszavonja a jogosultságot 4 óra elteltével, amikor új elsődleges frissítési jogkivonatot állít ki.
+Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer visszavonja a jogosultságot a következő bejelentkezéskor, amikor új elsődleges frissítési jogkivonatot állít ki. Ez a visszavonás a jogosultság megemeléséhez hasonlóan akár 4 órát is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).
 - Ha többet szeretne megtudni az eszközökön alapuló feltételes hozzáférésről, tekintse meg [Azure Active Directory eszközön alapuló feltételes hozzáférési szabályzatok konfigurálása](../conditional-access/require-managed-devices.md)című témakört.

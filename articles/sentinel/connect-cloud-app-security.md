@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2a48b3990afc5fb4ecfb8d40738b18873846459
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422146"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374916"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Adatok összekapcsolásának Microsoft Cloud App Security 
-
-
 
 A [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) összekötővel riasztásokat és [Cloud Discovery naplókat](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) továbbíthat a MCAS-ből az Azure sentinelbe. Ez lehetővé teszi a felhőalapú alkalmazások láthatóságát, a kifinomult elemzéseket a előforduló kiberfenyegetésekkel kapcsolatban azonosításához és leküzdéséhez, valamint az adattovábbítások szabályozásához.
 
@@ -50,14 +48,16 @@ Ha Cloud App Security üzembe helyezése és az adatai betöltése történik, a
 
 1. Kattintson a **módosítások alkalmazása**lehetőségre.
 
-1. Ha Cloud App Security riasztásokhoz a Log Analytics vonatkozó sémát szeretné használni, `SecurityAlert` írja be a következőt a lekérdezési ablakba:. A Cloud Discovery naplók sémája mezőbe írja `McasShadowItReporting`be a következőt:.
+1. Kiválaszthatja, hogy a Azure Security Center riasztások automatikusan előállítanak-e incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása**területen válassza az **engedélyezve** lehetőséget az alapértelmezett elemzési szabály bekapcsolásához, amely automatikusan létrehozza az incidenseket a riasztásokból. Ezt a szabályt az **elemzés**területen módosíthatja az **aktív szabályok** lapon.
+
+1. Ha Cloud App Security riasztásokhoz a Log Analytics vonatkozó sémát szeretné használni, írja be a következőt `SecurityAlert` a lekérdezési ablakba:. A Cloud Discovery naplók sémája mezőbe írja be a következőt: `McasShadowItReporting` .
 
 > [!NOTE]
 > Cloud Discovery segít a trendek észlelésében és azonosításában azáltal, hogy összesíti az adatokat használó felhasználók kapcsolatait a felhőalapú alkalmazásokkal.
 >
 > Mivel Cloud Discovery adatokat összesítenek napi rendszerességgel, vegye figyelembe, hogy a legfrissebb adatokat akár 24 órányi érték nem fogja tükrözni az Azure Sentinelben. Abban az esetben, ha egy alacsony szintű vizsgálat több azonnali adatra van szüksége, közvetlenül a forrás berendezésben vagy olyan szolgáltatásban kell elvégezni, ahol a nyers adat található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Microsoft Cloud App Security az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerkedjen meg a fenyegetések észlelésével az Azure Sentinel használatával, [beépített](tutorial-detect-threats.md) vagy [Egyéni](tutorial-detect-threats-custom.md) szabályokkal.

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: a71d8e251de1d1aedea1d1a329a27bfa236ddfff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652378"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374848"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
@@ -91,6 +91,7 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 
 * A HDInsight 4,0 nem támogatja a Apache Hive MapReduce. Használja helyette az Apache TEZ. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
 * A HDInsight 4,0 nem támogatja a Apache Storm.
+* A HDInsight 4,0 nem támogatja a ML Services-fürt típusát.
 * A kaptár nézet már nem érhető el a HDInsight 4,0-ben.
 * Az Apache Zeppelin rendszerhéj-értelmező nem támogatott a Spark és az interaktív lekérdezési fürtökben.
 * Az LLAP nem *tiltható le* a Spark-LLAP-fürtön. Csak az LLAP kikapcsolására van lehetősége.
@@ -99,7 +100,7 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 * A Spark SQL Ranger integrációja a sor-és az oszlop biztonsága elavult
 * A Spark 2,4 és a Kafka 2,1 a HDInsight 4,0-ban érhető el, így a Spark 2,3 és a Kafka 1,1 már nem támogatott. Javasoljuk, hogy a Spark 2,4 & Kafka 2,1-es vagy újabb verzióját használja a HDInsight 4,0-ban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure HDInsight dokumentációja](index.yml)
 * [Kibocsátási megjegyzések](hdinsight-release-notes.md)

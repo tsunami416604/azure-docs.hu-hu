@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3578f95bee3e3fdcd774675627ec212c07fb85ef
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 746c406c4e6d458f699eb844156190e47d5c7a26
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099357"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384906"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Oktatóanyag: identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2C
 
@@ -168,7 +168,7 @@ Ha a bejelentkezési művelet sikeres, a rendszer átirányítja `https://jwt.ms
 }.[Signature]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

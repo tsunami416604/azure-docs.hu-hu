@@ -6,21 +6,21 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5d92b43b47a20a75d2c8b6becb69cfee5829e80f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbd622ccb7aeecfff4d3dc744623105a593e6a67
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154848"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383580"
 ---
-# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>SAML-alapú egyszeri bejelentkezés hibakeresése Azure Active Directory-alkalmazásokban
+# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Az Azure Active Directoryban található alkalmazásokba történő SAML-alapú egyszeri bejelentkezés hibaelhárítása
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -102,6 +102,6 @@ A hiba elhárításához kövesse az alábbi lépéseket:
 1. Most, hogy áttekintette az SAML-választ, tekintse meg a [hiba az alkalmazás oldalán, miután bejelentkezett](../manage-apps/application-sign-in-problem-application-error.md) a probléma megoldásához szükséges útmutatásra. 
 1. Ha még nem tud sikeresen bejelentkezni, megkérheti az alkalmazás gyártójától, hogy mi hiányzik az SAML-válaszból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy az egyszeri bejelentkezés az alkalmazáson dolgozik, [automatizálhatja a felhasználók üzembe](../manage-apps/user-provisioning.md) helyezését és megszüntetését az SaaS-alkalmazásokhoz vagy [a feltételes hozzáférés használatának megkezdéséhez](../conditional-access/app-based-conditional-access.md).

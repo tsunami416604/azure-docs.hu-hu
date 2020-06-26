@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190007"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386062"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Számlázási modell Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ A következőkben megtudhatja, hogyan válthat egy meglévő Azure AD B2C erőfo
 
 A MAU-alapú mérés az előfizetés/erőforrás tulajdonosaként azonnal engedélyezve van, erősítse meg a változást. A havi számla a változás és a MAU új egységeinek változása után számlázza a hitelesítési egységeket.
 
-A felhasználók nem számítanak fel kétszer az átmeneti hónap során. A módosítást megelőzően hitelesítő egyedi aktív felhasználóknak egy naptári hónapban kell fizetniük a hitelesítési díjak alapján. Ugyanazok a felhasználók nem szerepelnek a MAU-számításban az előfizetés számlázási ciklusának hátralévő részében. Például:
+A felhasználók nem számítanak fel kétszer az átmeneti hónap során. A módosítást megelőzően hitelesítő egyedi aktív felhasználóknak egy naptári hónapban kell fizetniük a hitelesítési díjak alapján. Ugyanazok a felhasználók nem szerepelnek a MAU-számításban az előfizetés számlázási ciklusának hátralévő részében. Példa:
 
 * A contoso B2C-bérlő 1 000 felhasználóval rendelkezik. 250 a felhasználók egy adott hónapban aktívak. Az előfizetés rendszergazdája a hónap 10. napján megváltoztathatja a hitelesítést a havi aktív felhasználók (MAU) esetében.
 * Az 1 – 10. számlázási díj számlázása az egyes hitelesítési modell alapján történik.
@@ -93,7 +93,7 @@ Azure AD B2C bérlőhöz kapcsolódó előfizetés használható Azure AD B2C ha
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a használni kívánt Azure-előfizetést tartalmazza (*nem* pedig a Azure ad B2C bérlőt tartalmazó könyvtár).
-1. Válassza az **erőforrás létrehozása**lehetőséget, `Active Directory B2C` írja be a **Keresés a piactéren** mezőbe, majd válassza a **Azure Active Directory B2C**lehetőséget.
+1. Válassza az **erőforrás létrehozása**lehetőséget, írja be a `Active Directory B2C` **Keresés a piactéren** mezőbe, majd válassza a **Azure Active Directory B2C**lehetőséget.
 1. **Létrehozás** kiválasztása
 1. Válassza a **meglévő Azure ad B2C bérlő összekapcsolása az Azure-előfizetéssel**lehetőséget.
 1. Válasszon ki egy **Azure ad B2C bérlőt** a legördülő listából. Csak azok a bérlők jelennek meg, amelyekhez Ön globális rendszergazda, és amelyek még nem kapcsolódnak előfizetéshez. A **Azure ad B2C erőforrás neve** mező a kiválasztott Azure ad B2C-bérlő tartománynevével van feltöltve.
@@ -138,6 +138,6 @@ Ha szeretné megismerni, hogyan helyezhetők át az Azure-erőforrások, példá
 
 Mielőtt elkezdené az áthelyezést, olvassa el a teljes cikket, amely részletesen ismerteti az ilyen áthelyezésre vonatkozó korlátozásokat és követelményeket. Az erőforrások áthelyezésére vonatkozó utasítások mellett olyan kritikus információkat is tartalmaz, mint például az áthelyezés előtti ellenőrzőlista, valamint a mozgatási művelet ellenőrzése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A legfrissebb díjszabási információkért lásd: [Azure Active Directory B2C díjszabása](https://azure.microsoft.com/pricing/details/active-directory-b2c/).

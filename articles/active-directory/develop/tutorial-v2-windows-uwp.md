@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0dc70aa67a1414c08ec70e2e034f4ab12b194c0a
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: cbdeb1b2987188a23e71726f54db84b12d060b27
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "81535944"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386460"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph API meghívása Univerzális Windows-platform alkalmazásból (XAML)
 
@@ -42,9 +42,10 @@ Ez az útmutató egy minta UWP-alkalmazást hoz létre, amely lekérdezi Microso
 
 Ez az útmutató a következő NuGet-csomagot használja:
 
-|Kódtár|Leírás|
+|Kódtár|Description|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
+|[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph ügyféloldali kódtár|
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
@@ -66,15 +67,16 @@ Ez az útmutató egy olyan alkalmazást hoz létre, amely lekérdezi Graph API �
 
 ### <a name="add-microsoft-authentication-library-to-your-project"></a>Microsoft hitelesítési függvénytár hozzáadása a projekthez
 
-1. A Visual Studióban válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**.
-1. Másolja és illessze be a következő parancsot a **Package Manager konzol** ablakában:
+1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**.
+1. Másolja és illessze be a következő parancsokat a **Package Manager konzol** ablakában:
 
     ```powershell
     Install-Package Microsoft.Identity.Client
+    Install-Package Microsoft.Graph
     ```
 
    > [!NOTE]
-   > Ez a parancs telepíti a [Microsoft hitelesítési tárat](https://aka.ms/msal-net). A MSAL a Microsoft Identity platform által védett API-khoz hozzáférő felhasználói jogkivonatok beszerzését, gyorsítótárazását és frissítését végzi.
+   > Az első parancs telepíti a [Microsoft Authentication Libraryt (MSAL.net)](https://aka.ms/msal-net). A MSAL.NET a Microsoft Identity platform által védett API-khoz hozzáférő felhasználói jogkivonatok beszerzését, gyorsítótárazását és frissítését végzi. A második parancs telepíti [Microsoft Graph .net Ügyféloldali kódtárat](https://github.com/microsoftgraph/msgraph-sdk-dotnet) , hogy hitelesítse a kérelmeket Microsoft Graph és hívásokat kezdeményez a szolgáltatásnak.   
 
 ### <a name="create-your-applications-ui"></a>Az alkalmazás felhasználói felületének létrehozása
 
@@ -103,101 +105,110 @@ Ez a szakasz bemutatja, hogyan használható a MSAL a Microsoft Graph API-hoz ta
 
     ```csharp
     using Microsoft.Identity.Client;
+    using Microsoft.Graph;
     using System.Diagnostics;
     using System.Threading.Tasks;
     ```
 
-1. Cserélje le `MainPage` az osztályt a következő kódra:
+1. Cserélje le az `MainPage` osztályt a következő kódra:
 
     ```csharp
     public sealed partial class MainPage : Page
     {
-        //Set the API Endpoint to Graph 'me' endpoint
-        string graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
-
+       
         //Set the scope for API call to user.read
-        string[] scopes = new string[] { "user.read" };
+        private string[] scopes = new string[] { "user.read" };
 
         // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
-        // - the content of Tenant with the information about the accounts allowed to sign in in your application:
-        //   - for Work or School account in your org, use your tenant ID, or domain
-        //   - for any Work or School accounts, use organizations
-        //   - for any Work or School accounts, or Microsoft personal account, use common
-        //   - for Microsoft Personal account, use consumers
-        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";
+        private const string ClientId = "[Application Id pasted from the application registration portal]";
 
-        public IPublicClientApplication PublicClientApp { get; }
+        private const string Tenant = "common"; // Alternatively "[Enter your tenant, as obtained from the Azure portal, e.g. kko365.onmicrosoft.com]"
+        private const string Authority = "https://login.microsoftonline.com/" + Tenant;
+
+        // The MSAL Public client app
+        private static IPublicClientApplication PublicClientApp;
+
+        private static string MSGraphURL = "https://graph.microsoft.com/v1.0/";
+        private static AuthenticationResult authResult;
 
         public MainPage()
         {
-          this.InitializeComponent();
-
-          PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
-                .WithAuthority(AadAuthorityAudience.AzureAdAndPersonalMicrosoftAccount)
-                .WithLogging((level, message, containsPii) =>
-                {
-                    Debug.WriteLine($"MSAL: {level} {message} ");
-                }, LogLevel.Warning, enablePiiLogging:false,enableDefaultPlatformLogging:true)
-                .WithUseCorporateNetwork(true)
-                .Build();
+            this.InitializeComponent();
         }
 
         /// <summary>
-        /// Call AcquireTokenInteractive - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenAsync - to acquire a token requiring user to sign in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
-         AuthenticationResult authResult = null;
-         ResultText.Text = string.Empty;
-         TokenInfoText.Text = string.Empty;
+            try
+            {
+                // Sign in user using MSAL and obtain an access token for Micrososft Graph
+                GraphServiceClient graphClient = await SignInAndInitializeGraphServiceClient(scopes);
 
-         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.
-         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
-         IAccount firstAccount = accounts.FirstOrDefault();
+                // Call the /me endpoint of Graph
+                User graphUser = await graphClient.Me.Request().GetAsync();
 
-         try
-         {
-          authResult = await PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
+                // Go back to the UI thread to make changes to the UI
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                {
+                    ResultText.Text = "Display Name: " + graphUser.DisplayName + "\nBusiness Phone: " + graphUser.BusinessPhones.FirstOrDefault()
+                                      + "\nGiven Name: " + graphUser.GivenName + "\nid: " + graphUser.Id
+                                      + "\nUser Principal Name: " + graphUser.UserPrincipalName;
+                    DisplayBasicTokenInfo(authResult);
+                    this.SignOutButton.Visibility = Visibility.Visible;
+                });
+            }
+            catch (MsalException msalEx)
+            {
+                await DisplayMessageAsync($"Error Acquiring Token:{System.Environment.NewLine}{msalEx}");
+            }
+            catch (Exception ex)
+            {
+                await DisplayMessageAsync($"Error Acquiring Token Silently:{System.Environment.NewLine}{ex}");
+                return;
+            }
+        }
+                /// <summary>
+        /// Signs in the user and obtains an access token for Microsoft Graph
+        /// </summary>
+        /// <param name="scopes"></param>
+        /// <returns> Access Token</returns>
+        private static async Task<string> SignInUserAndGetTokenUsingMSAL(string[] scopes)
+        {
+            // Initialize the MSAL library by building a public client application
+            PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+                .WithAuthority(Authority)
+                .WithUseCorporateNetwork(false)
+                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+                 .WithLogging((level, message, containsPii) =>
+                 {
+                     Debug.WriteLine($"MSAL: {level} {message} ");
+                 }, LogLevel.Warning, enablePiiLogging: false, enableDefaultPlatformLogging: true)
+                .Build();
+
+            // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.
+            IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
+            IAccount firstAccount = accounts.FirstOrDefault();
+
+            try
+            {
+                authResult = await PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                                   .ExecuteAsync();
-         }
-         catch (MsalUiRequiredException ex)
-         {
-          // A MsalUiRequiredException happened on AcquireTokenSilent.
-          // This indicates you need to call AcquireTokenInteractive to acquire a token
-          System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
+            }
+            catch (MsalUiRequiredException ex)
+            {
+                // A MsalUiRequiredException happened on AcquireTokenSilentAsync. This indicates you need to call AcquireTokenAsync to acquire a token
+                Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
 
-          try
-          {
-           authResult = await PublicClientApp.AcquireTokenInteractive(scopes)
-                                                      .ExecuteAsync()
-                                                      .ConfigureAwait(false);
-           }
-           catch (MsalException msalex)
-           {
-            await DisplayMessageAsync($"Error Acquiring Token:{System.Environment.NewLine}{msalex}");
-           }
-          }
-          catch (Exception ex)
-          {
-           await DisplayMessageAsync($"Error Acquiring Token Silently:{System.Environment.NewLine}{ex}");
-           return;
-          }
+                authResult = await PublicClientApp.AcquireTokenInteractive(scopes)
+                                                  .ExecuteAsync()
+                                                  .ConfigureAwait(false);
 
-          if (authResult != null)
-          {
-           var content = await GetHttpContentWithToken(graphAPIEndpoint,
-                                                       authResult.AccessToken).ConfigureAwait(false);
-
-           // Go back to the UI thread to make changes to the UI
-           await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-           {
-            ResultText.Text = content;
-            DisplayBasicTokenInfo(authResult);
-            this.SignOutButton.Visibility = Visibility.Visible;
-           });
-          }
+            }
+            return authResult.AccessToken;
         }
     }
     ```
@@ -210,86 +221,73 @@ A `AcquireTokenInteractive` metódus egy olyan ablakot eredményez, amely arra k
 
 A `AcquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. Ha `AcquireTokenInteractive` első alkalommal futtatja a programot, és felszólítja a felhasználót a hitelesítő adatokra, használja a `AcquireTokenSilent` metódust a későbbi hívások jogkivonatának igényléséhez. Ez a metódus csendes módon szerzi be a jogkivonatokat. A MSAL kezeli a jogkivonat gyorsítótárát és megújítását.
 
-A `AcquireTokenSilent` metódus végül sikertelen lesz. A hiba okai közé tartozik az a felhasználó, aki kijelentkezett vagy módosította a jelszavát egy másik eszközön. Ha a MSAL észleli, hogy a probléma interaktív műveletet igényel, `MsalUiRequiredException` kivételt jelez. Az alkalmazás két módon tudja kezelni ezt a kivételt:
+A metódus végül `AcquireTokenSilent` sikertelen lesz. A hiba okai közé tartozik az a felhasználó, aki kijelentkezett vagy módosította a jelszavát egy másik eszközön. Ha a MSAL észleli, hogy a probléma interaktív műveletet igényel, `MsalUiRequiredException` kivételt jelez. Az alkalmazás két módon tudja kezelni ezt a kivételt:
 
-* Azonnal meghívja `AcquireTokenInteractive` az alkalmazást. Ez a hívás azt eredményezi, hogy a rendszer felszólítja a felhasználót, hogy jelentkezzen be. Ezt a módszert általában olyan online alkalmazásokhoz használja, amelyeken nincs elérhető offline tartalom a felhasználó számára. Az irányított telepítő által generált minta követi a mintát. A minta első futtatásakor ez a művelet jelenik meg.
+* Azonnal meghívja az alkalmazást `AcquireTokenInteractive` . Ez a hívás azt eredményezi, hogy a rendszer felszólítja a felhasználót, hogy jelentkezzen be. Ezt a módszert általában olyan online alkalmazásokhoz használja, amelyeken nincs elérhető offline tartalom a felhasználó számára. Az irányított telepítő által generált minta követi a mintát. A minta első futtatásakor ez a művelet jelenik meg.
 
-   Mivel egyetlen felhasználó sem használta az alkalmazást, `accounts.FirstOrDefault()` null értéket tartalmaz, és `MsalUiRequiredException` kivételt dob.
+   Mivel egyetlen felhasználó sem használta az alkalmazást, `accounts.FirstOrDefault()` Null értéket tartalmaz, és `MsalUiRequiredException` kivételt dob.
 
-   A mintában szereplő kód a kivételt a hívásával `AcquireTokenInteractive`kezeli. Ez a hívás azt eredményezi, hogy a rendszer felszólítja a felhasználót, hogy jelentkezzen be.
+   A mintában szereplő kód a kivételt a hívásával kezeli `AcquireTokenInteractive` . Ez a hívás azt eredményezi, hogy a rendszer felszólítja a felhasználót, hogy jelentkezzen be.
 
-* Az alkalmazás vizuálisan jelzi a felhasználóknak, hogy be kell jelentkezniük. Ezután kiválaszthatják a megfelelő időpontot a bejelentkezéshez. Az alkalmazás később újra `AcquireTokenSilent` próbálkozik. Ezt a módszert akkor használja, ha a felhasználók más alkalmazás-funkciókat is használhatnak megszakítás nélkül. Ilyen eset például, ha offline tartalom érhető el az alkalmazásban. Ebben az esetben a felhasználók dönthetnek arról, hogy mikor szeretnének bejelentkezni. Az alkalmazás újra próbálkozik `AcquireTokenSilent` , miután a hálózat átmenetileg nem volt elérhető.
+* Az alkalmazás vizuálisan jelzi a felhasználóknak, hogy be kell jelentkezniük. Ezután kiválaszthatják a megfelelő időpontot a bejelentkezéshez. Az alkalmazás később újra próbálkozik `AcquireTokenSilent` . Ezt a módszert akkor használja, ha a felhasználók más alkalmazás-funkciókat is használhatnak megszakítás nélkül. Ilyen eset például, ha offline tartalom érhető el az alkalmazásban. Ebben az esetben a felhasználók dönthetnek arról, hogy mikor szeretnének bejelentkezni. Az alkalmazás újra próbálkozik, `AcquireTokenSilent` miután a hálózat átmenetileg nem volt elérhető.
 
-### <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Microsoft Graph API meghívása az imént beszerzett token használatával
+### <a name="instantiate-the-microsoft-graph-service-client-by-obtaining-the-token-from-the-signinuserandgettokenusingmsal-method"></a>A Microsoft Graph szolgáltatás ügyfelének példánya a token SignInUserAndGetTokenUsingMSAL metódussal való beszerzésével
 
 Adja hozzá a következő új metódust a *MainPage.XAML.cs*:
 
-   ```csharp
-   /// <summary>
-   /// Perform an HTTP GET request to a URL using an HTTP Authorization header
-   /// </summary>
-   /// <param name="url">The URL</param>
-   /// <param name="token">The token</param>
-   /// <returns>String containing the results of the GET operation</returns>
-   public async Task<string> GetHttpContentWithToken(string url, string token)
-   {
-       var httpClient = new System.Net.Http.HttpClient();
-       System.Net.Http.HttpResponseMessage response;
-       try
-       {
-           var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, url);
-           // Add the token in Authorization header
-           request.Headers.Authorization =
-             new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-           response = await httpClient.SendAsync(request);
-           var content = await response.Content.ReadAsStringAsync();
-           return content;
-       }
-       catch (Exception ex)
-        {
-           return ex.ToString();
-       }
-    }
-   ```
+```csharp
+      /// <summary>
+     /// Sign in user using MSAL and obtain a token for Microsoft Graph
+     /// </summary>
+     /// <returns>GraphServiceClient</returns>
+     private async static Task<GraphServiceClient> SignInAndInitializeGraphServiceClient(string[] scopes)
+     {
+         GraphServiceClient graphClient = new GraphServiceClient(MSGraphURL,
+             new DelegateAuthenticationProvider(async (requestMessage) =>
+             {
+                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", await SignInUserAndGetTokenUsingMSAL(scopes));
+             }));
 
- Ez a metódus egy `GET` `Authorization` fejléc használatával kezdeményezi a Graph API kérését.
+         return await Task.FromResult(graphClient);
+     }
+```
 
 #### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>További információ a védett API-k REST-hívásáról
 
-Ebben a példában a `GetHttpContentWithToken` metódus http `GET` -kérést végez egy olyan védett erőforráson, amely tokent igényel. Ezután a metódus visszaadja a tartalmat a hívónak. Ez a metódus hozzáadja a beszerzett jogkivonatot a **http-engedélyezési** fejlécben. Ebben a példában az erőforrás a Microsoft Graph API **Me** -végpontja, amely megjeleníti a felhasználó profiljának adatait.
+Ebben a példában a `GetGraphServiceClient` metódus `GraphServiceClient` egy hozzáférési jogkivonat használatával példányát hozza létre. Ezt követően a `GraphServiceClient` rendszer a felhasználó profiljának adatait kérdezi le a **Me** végpontról.
 
 ### <a name="add-a-method-to-sign-out-the-user"></a>Metódus hozzáadása a felhasználó kijelentkezéséhez
 
 A felhasználó kijelentkezéséhez adja hozzá a következő metódust a *MainPage.XAML.cs*:
 
-   ```csharp
-   /// <summary>
-   /// Sign out the current user
-   /// </summary>
-   private async void SignOutButton_Click(object sender, RoutedEventArgs e)
-   {
-       IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
-       IAccount firstAccount = accounts.FirstOrDefault();
+```csharp
+/// <summary>
+/// Sign out the current user
+/// </summary>
+private async void SignOutButton_Click(object sender, RoutedEventArgs e)
+{
+    IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
+    IAccount firstAccount = accounts.FirstOrDefault();
 
-       try
-       {
-           await PublicClientApp.RemoveAsync(firstAccount).ConfigureAwait(false);
-           await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-           {
-               ResultText.Text = "User has signed out";
-               this.CallGraphButton.Visibility = Visibility.Visible;
-                   this.SignOutButton.Visibility = Visibility.Collapsed;
-               });
-           }
-           catch (MsalException ex)
-           {
-               ResultText.Text = $"Error signing out user: {ex.Message}";
-           }
-       }
-   ```
+    try
+    {
+        await PublicClientApp.RemoveAsync(firstAccount).ConfigureAwait(false);
+        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+        {
+            ResultText.Text = "User has signed out";
+            this.CallGraphButton.Visibility = Visibility.Visible;
+                this.SignOutButton.Visibility = Visibility.Collapsed;
+            });
+        }
+        catch (MsalException ex)
+        {
+            ResultText.Text = $"Error signing out user: {ex.Message}";
+        }
+    }
+```
 
 > [!NOTE]
-> A MSAL.NET aszinkron metódusokat használ a jogkivonatok beszerzéséhez vagy a fiókok kezeléséhez. A felhasználói FELÜLETi szálban támogatni kell a felhasználói felületi műveleteket. Ez a hívás oka `Dispatcher.RunAsync` és a meghívott `ConfigureAwait(false)`óvintézkedések.
+> A MSAL.NET aszinkron metódusokat használ a jogkivonatok beszerzéséhez vagy a fiókok kezeléséhez. A felhasználói FELÜLETi szálban támogatni kell a felhasználói felületi műveleteket. Ez a hívás oka `Dispatcher.RunAsync` és a meghívott óvintézkedések `ConfigureAwait(false)` .
 
 #### <a name="more-information-about-signing-out"></a>További információ a kijelentkezésről<a name="more-information-on-sign-out"></a>
 
@@ -301,20 +299,20 @@ Az ebben a példában szereplő alkalmazás egyetlen felhasználót támogat. A 
 
 Adja hozzá a következő metódust a *MainPage.XAML.cs* a jogkivonat alapvető adatainak megjelenítéséhez:
 
-   ```csharp
-   /// <summary>
-   /// Display basic information contained in the token. Needs to be called from the UI thread.
-   /// </summary>
-   private void DisplayBasicTokenInfo(AuthenticationResult authResult)
-   {
-       TokenInfoText.Text = "";
-       if (authResult != null)
-       {
-           TokenInfoText.Text += $"User Name: {authResult.Account.Username}" + Environment.NewLine;
-           TokenInfoText.Text += $"Token Expires: {authResult.ExpiresOn.ToLocalTime()}" + Environment.NewLine;
-       }
-   }
-   ```
+```csharp
+/// <summary>
+/// Display basic information contained in the token. Needs to be called from the UI thread.
+/// </summary>
+private void DisplayBasicTokenInfo(AuthenticationResult authResult)
+{
+    TokenInfoText.Text = "";
+    if (authResult != null)
+    {
+        TokenInfoText.Text += $"User Name: {authResult.Account.Username}" + Environment.NewLine;
+        TokenInfoText.Text += $"Token Expires: {authResult.ExpiresOn.ToLocalTime()}" + Environment.NewLine;
+    }
+}
+```
 
 #### <a name="more-information"></a>További információ<a name="more-information-1"></a>
 
@@ -324,34 +322,34 @@ Az **OpenID Connect** használatával beszerzett azonosító tokenek a felhaszn�
 
 Adja hozzá a következő új metódust a *MainPage.XAML.cs*:
 
-   ```csharp
-   /// <summary>
-   /// Displays a message in the ResultText. Can be called from any thread.
-   /// </summary>
-   private async Task DisplayMessageAsync(string message)
-   {
-        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
-            () =>
-            {
-                ResultText.Text = message;
-            });
-        }
-   ```
+```csharp
+/// <summary>
+/// Displays a message in the ResultText. Can be called from any thread.
+/// </summary>
+private async Task DisplayMessageAsync(string message)
+{
+     await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+         () =>
+         {
+             ResultText.Text = message;
+         });
+     }
+```
 
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
 Most regisztrálnia kell az alkalmazást:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza ki **Azure Active Directory** > **Alkalmazásregisztrációk**.
+1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
 1. Válassza az **új regisztráció**lehetőséget. Adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például UWP- *app-Calling-MSGraph*.
 1. A **támogatott fióktípus**területen válassza a **fiókok lehetőséget a szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox)**, majd a folytatáshoz válassza a **regisztráció** lehetőséget.
-1. Az Áttekintés oldalon keresse meg az **alkalmazás (ügyfél) azonosítójának** értékét, és másolja. Lépjen vissza a Visual studióba, nyissa meg a *MainPage.XAML.cs*, és `ClientId` cserélje le az értéket ezzel az értékkel.
+1. Az Áttekintés oldalon keresse meg az **alkalmazás (ügyfél) azonosítójának** értékét, és másolja. Lépjen vissza a Visual studióba, nyissa meg a *MainPage.XAML.cs*, és cserélje le az értéket ezzel az `ClientId` értékkel.
 
 Az alkalmazás hitelesítésének konfigurálása:
 
 1. A [Azure Portal](https://portal.azure.com)vissza a **kezelés**alatt válassza a **hitelesítés**lehetőséget.
-1. Az **átirányítási URI** | -**k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban, a következőt: **https://login.microsoftonline.com/common/oauth2/nativeclient**.
+1. Az **átirányítási URI**-  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban, a következőt: **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Kattintson a **Mentés** gombra.
 
 API-engedélyek konfigurálása az alkalmazáshoz:
@@ -376,6 +374,69 @@ Ha egy összevont Azure AD-tartománnyal együtt használja a Windows-integráci
 > [!IMPORTANT]
 > Az [integrált Windows-hitelesítés](https://aka.ms/msal-net-iwa) alapértelmezés szerint nincs konfigurálva ehhez a mintához. A kérést `Enterprise Authentication` vagy `Shared User Certificates` képességeket igénylő alkalmazások magasabb szintű ellenőrzést igényelnek a Windows áruházban. Emellett nem minden fejlesztő szeretné végrehajtani a magasabb szintű ellenőrzést. Ezt a beállítást csak akkor engedélyezze, ha egy összevont Azure AD-tartománnyal rendelkező integrált Windows-hitelesítésre van szüksége.
 
+## <a name="alternate-approach-to-using-withdefaultredirecturi"></a>A WithDefaultRedirectURI () használatának alternatív megközelítése
+
+Az aktuális példában a `WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")` metódust használjuk. A használatához `WithDefaultRedirectURI()` hajtsa végre a következő lépéseket:
+
+1. A *MainPage.XAML.cs*-ben cserélje le a (z) `WithRedirectUri` `WithDefaultRedirectUri` :
+
+   **Jelenlegi kód**
+
+   ```csharp
+
+   PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+       .WithAuthority(Authority)
+       .WithUseCorporateNetwork(false)
+       .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+       .WithLogging((level, message, containsPii) =>
+        {
+            Debug.WriteLine($"MSAL: {level} {message} ");
+        }, LogLevel.Warning, enablePiiLogging: false, enableDefaultPlatformLogging: true)
+       .Build();
+
+   ```
+
+   **Frissített kód**
+
+   ```csharp
+
+   PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+       .WithAuthority("https://login.microsoftonline.com/common")
+       .WithUseCorporateNetwork(false)
+       .WithDefaultRedirectUri()
+       .WithLogging((level, message, containsPii) =>
+        {
+            Debug.WriteLine($"MSAL: {level} {message} ");
+        }, LogLevel.Warning, enablePiiLogging: false, enableDefaultPlatformLogging: true)
+       .Build();
+   ```
+
+2.  Keresse meg az alkalmazás visszahívási URI-JÁT úgy, hogy hozzáadja a `redirectURI` mezőt a *MainPage.XAML.cs* -ben, és beállítja a töréspontot:
+
+    ```csharp
+
+    public sealed partial class MainPage : Page
+    {
+            ...
+
+            string redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker
+                                .GetCurrentApplicationCallbackUri().ToString();
+            public MainPage()
+            {
+                ...
+            }
+           ...
+    }
+  
+    ```
+
+    Futtassa az alkalmazást, majd másolja az értéket a `redirectUri` töréspont találata után. Az értéknek a következőhöz hasonlóan kell kinéznie:  
+    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+
+    Ezután eltávolíthatja a kód sorát, mert csak egyszer szükséges, hogy beolvassa az értéket. 
+
+3. Az alkalmazás regisztrációs portálján adja hozzá a visszaadott értéket a **RedirectUri** a **hitelesítés** panelen.
+   
 ## <a name="test-your-code"></a>A kód tesztelése
 
 Az alkalmazás teszteléséhez válassza az F5 billentyűt a projekt futtatásához a Visual Studióban. Megjelenik a fő ablak:
@@ -384,7 +445,7 @@ Az alkalmazás teszteléséhez válassza az F5 billentyűt a projekt futtatásá
 
 Ha készen áll a tesztelésre, válassza a **Microsoft Graph API meghívása**lehetőséget. Ezután jelentkezzen be egy Azure AD-beli szervezeti fiókkal vagy egy Microsoft-fiók, például live.com vagy outlook.com használatával. Amikor a felhasználó először futtatja ezt, az alkalmazás megjeleníti a felhasználót a bejelentkezést kérő ablakot.
 
-### <a name="consent"></a>Hozzájárulása
+### <a name="consent"></a>Hozzájárulás
 
 Amikor először jelentkezik be az alkalmazásba, a következőhöz hasonló beleegyezési képernyő jelenik meg. Válassza az **Igen** lehetőséget a hozzáféréshez való explicit beleegyezéshez:
 
@@ -396,18 +457,18 @@ A Microsoft Graph API-hívás által visszaadott felhasználói profil adatait a
 
 ![API-hívás eredményei képernyő](./media/tutorial-v2-windows-uwp/uwp-results-screen-vs2019.png)
 
-A jogkivonat- `AcquireTokenInteractive` **információ** mezőben a vagy `AcquireTokenSilent` a használatával beszerzett jogkivonatra vonatkozó alapvető információk is megjelennek:
+A jogkivonat `AcquireTokenInteractive` `AcquireTokenSilent` - **információ** mezőben a vagy a használatával beszerzett jogkivonatra vonatkozó alapvető információk is megjelennek:
 
-|Tulajdonság  |Formátum  |Leírás |
+|Tulajdonság  |Formátum  |Description |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |A felhasználót azonosító Felhasználónév.|
 |`Token Expires` |`DateTime` |A jogkivonat lejárati ideje. A MSAL a jogkivonatot szükség szerint megújítva kiterjeszti a lejárati dátumot.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörökről és a delegált engedélyekről
 
-Microsoft Graph API-nak `user.read` a hatókörnek kell beolvasnia a felhasználó profilját. Ezt a hatókört alapértelmezés szerint a rendszer minden olyan alkalmazásban hozzáadja, amely az alkalmazás regisztrációs portálján van regisztrálva. A Microsoft Graph és az egyéni API-k egyéb API-jai a háttér-kiszolgáló számára további hatókörökre is szükség lehet. Például Microsoft Graph API-nak a `Calendars.Read` hatókört kell megadnia a felhasználó naptárának listázásához.
+Microsoft Graph API-nak a `user.read` hatókörnek kell beolvasnia a felhasználó profilját. Ezt a hatókört alapértelmezés szerint a rendszer minden olyan alkalmazásban hozzáadja, amely az alkalmazás regisztrációs portálján van regisztrálva. A Microsoft Graph és az egyéni API-k egyéb API-jai a háttér-kiszolgáló számára további hatókörökre is szükség lehet. Például Microsoft Graph API-nak a `Calendars.Read` hatókört kell megadnia a felhasználó naptárának listázásához.
 
-Ha egy alkalmazás kontextusában szeretné elérni a felhasználó naptárait, adja hozzá a `Calendars.Read` delegált engedélyt az alkalmazás regisztrációs adataihoz. Ezután adja hozzá `Calendars.Read` a hatókört `acquireTokenSilent` a híváshoz.
+Ha egy alkalmazás kontextusában szeretné elérni a felhasználó naptárait, adja hozzá a `Calendars.Read` delegált engedélyt az alkalmazás regisztrációs adataihoz. Ezután adja hozzá a `Calendars.Read` hatókört a `acquireTokenSilent` híváshoz.
 
 > [!NOTE]
 > A rendszer a hatókörök számának növelésével további hozzájárulásokat is kérhet a felhasználóknak.

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64b440054795670b99a22e37dec7188f3e1cd74c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4297ee64742b81e86eb8b85c0a6c405fac07d67f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189990"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386164"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Átirányítási URL-címek beállítása b2clogin.com Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ Az alkalmazások *b2clogin.com*való áttelepíteni több módosítást is szük
 
 ## <a name="change-identity-provider-redirect-urls"></a>Identitás-szolgáltató átirányítási URL-címeinek módosítása
 
-Minden identitás-szolgáltató webhelyén, amelyben létrehozott egy alkalmazást, módosítsa az összes megbízható URL-címet úgy, hogy `your-tenant-name.b2clogin.com` átirányítsa a *login.microsoftonline.com*helyett.
+Minden identitás-szolgáltató webhelyén, amelyben létrehozott egy alkalmazást, módosítsa az összes megbízható URL-címet úgy, hogy átirányítsa a `your-tenant-name.b2clogin.com` *login.microsoftonline.com*helyett.
 
 A b2clogin.com-átirányítási URL-címekhez két formátumot használhat. Az első lehetőséget biztosít arra, hogy a bérlői tartománynév helyett a bérlői azonosító (GUID) használatával a "Microsoft" ne jelenjen meg az URL-ben.
 
@@ -58,7 +58,7 @@ A b2clogin.com-átirányítási URL-címekhez két formátumot használhat. Az e
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-A második lehetőség a bérlői tartománynevet használja a (z `your-tenant-name.onmicrosoft.com`) formában. Például:
+A második lehetőség a bérlői tartománynevet használja a (z `your-tenant-name.onmicrosoft.com` ) formában. Példa:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -66,12 +66,12 @@ https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth
 
 Mindkét formátum esetében:
 
-* Cserélje `{your-tenant-name}` le a helyére a Azure ad B2C bérlő nevét.
-* Távolítsa el `/te` , ha az szerepel az URL-címben.
+* Cserélje le a helyére `{your-tenant-name}` a Azure ad B2C bérlő nevét.
+* Távolítsa el, `/te` Ha az szerepel az URL-címben.
 
 ## <a name="update-your-applications-and-apis"></a>Alkalmazások és API-k frissítése
 
-A Azure AD B2C-kompatibilis alkalmazások és API-k kódja több helyen is `login.microsoftonline.com` hivatkozhat. Előfordulhat például, hogy a kód a felhasználói folyamatokra és a jogkivonat-végpontokra mutató hivatkozásokat tartalmaz. Frissítse a következőt a hivatkozás `your-tenant-name.b2clogin.com`helyett:
+A Azure AD B2C-kompatibilis alkalmazások és API-k kódja `login.microsoftonline.com` több helyen is hivatkozhat. Előfordulhat például, hogy a kód a felhasználói folyamatokra és a jogkivonat-végpontokra mutató hivatkozásokat tartalmaz. Frissítse a következőt a hivatkozás helyett `your-tenant-name.b2clogin.com` :
 
 * Engedélyezési végpont
 * Jogkivonat-végpont
@@ -91,7 +91,7 @@ A Azure AD B2C által védett Azure API Management API-k áttelepítéséhez tek
 
 ### <a name="validateauthority-property"></a>ValidateAuthority tulajdonság
 
-Ha a [MSAL.net][msal-dotnet] v2 vagy a korábbi verzióját használja, állítsa az **ValidateAuthority** tulajdonságot `false` az ügyfél-példányra, hogy engedélyezze az átirányítást a *b2clogin.com*. Erre a beállításra nincs szükség a MSAL.NET v3 és újabb verziókhoz.
+Ha a [MSAL.net][msal-dotnet] v2 vagy a korábbi verzióját használja, állítsa az **ValidateAuthority** tulajdonságot az `false` ügyfél-példányra, hogy engedélyezze az átirányítást a *b2clogin.com*. Erre a beállításra nincs szükség a MSAL.NET v3 és újabb verziókhoz.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
@@ -111,7 +111,7 @@ this.clientApplication = new UserAgentApplication(
 );
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a OWIN-alapú webalkalmazások b2clogin.com való áttelepítéséről: [OWIN-alapú webes API áttelepítése b2clogin.com](multiple-token-endpoints.md).
 

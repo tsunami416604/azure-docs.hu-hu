@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e99b5717cdcc32d8fd138d1edf5fe1bd3283c70e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08aa7e4af6dc5d5e5bff470bc4c5d023e25b3014
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187899"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387881"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>WeiBo-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "78187899"
 
 ## <a name="create-a-weibo-application"></a>WeiBo-alkalmazás létrehozása
 
-Ha a WeiBo-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként szeretné használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik WeiBo-fiókkal, regisztrálhat a következő címen: [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
+Ha a WeiBo-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgáltatóként szeretné használni, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik WeiBo-fiókkal, regisztrálhat a következő címen: [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) .
 
 1. Jelentkezzen be a [WeiBo fejlesztői portálra](https://open.weibo.com/) a WeiBo-fiókja hitelesítő adataival.
 1. A bejelentkezést követően válassza ki a megjelenítendő nevet a jobb felső sarokban.
@@ -44,7 +44,7 @@ Ha a WeiBo-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgál
 1. Válassza a**保存以上信息**(Mentés) lehetőséget.
 1. Válassza a**高级信息**(speciális információ) lehetőséget.
 1. Válassza a**编辑**(Szerkesztés) lehetőséget a OAuth 2.0**授权设置**(átirányítási URL-cím) mező mellett.
-1. Adja `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` meg a OAuth 2.0**授权设置**(átirányítási URL-cím). Ha például a bérlő neve contoso, állítsa be az URL-címet a következőre: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a OAuth 2.0**授权设置**(átirányítási URL-cím). Ha például a bérlő neve contoso, állítsa be az URL-címet a következőre: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
 1. Válassza a**提交**(elküldés) lehetőséget.
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>WeiBo-fiók konfigurálása identitás-szolgáltatóként

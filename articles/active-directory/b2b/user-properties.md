@@ -4,7 +4,7 @@ description: A B2B vendég felhasználói tulajdonságainak és állapotának Az
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da41209747198a9d6e034373e1b396d0f086a74
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: e7271c4de6d5c186c9e561aa37a140eaa04cbc0a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361098"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386623"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai
 
@@ -110,7 +110,7 @@ Igen. Alapértelmezés szerint a vendég objektumok nem láthatók a szervezet g
 
 Ha a vendég felhasználói elfogadják a meghívót, és később módosítják az e-mail-címüket, az új e-mail nem szinkronizálódik automatikusan a címtár vendég felhasználói objektumával. A mail tulajdonságot [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)-n keresztül hozza létre a rendszer. Az e-mail tulajdonságot az Exchange felügyeleti központ vagy az [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)segítségével frissítheti, és a módosítás az Azure ad vendég felhasználói objektumában jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 * [B2B együttműködési felhasználói jogkivonatok](user-token.md)

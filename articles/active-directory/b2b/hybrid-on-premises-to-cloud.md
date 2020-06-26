@@ -4,7 +4,7 @@ description: A helyileg felügyelt külső partnerek a helyi és a Felhőbeli er
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76b17391008160cfea9cbf029932d7081466cf3d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272613"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386929"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Helyileg felügyelt partneri fiókok hozzáférésének biztosítása a felhőalapú erőforrásokhoz az Azure AD B2B Collaboration használatával
 
@@ -32,7 +32,7 @@ Mielőtt engedélyezi a UserType attribútum szinkronizálását, először el k
 Két gyakori megközelítés:
 
 - Kijelöl egy nem használt helyszíni Active Directory attribútumot (például extensionAttribute1), amelyet a forrás attribútumként kíván használni. 
-- Azt is megteheti, hogy származtatja a UserType attribútum értékét más tulajdonságokból. Például ha a helyi Active Directory userPrincipalName attribútuma a tartomány * \@Partners.contoso.com*végződik, szinkronizálni szeretné az összes felhasználót a vendégként.
+- Azt is megteheti, hogy származtatja a UserType attribútum értékét más tulajdonságokból. Például ha a helyi Active Directory UserPrincipalName attribútuma a tartomány * \@ Partners.contoso.com*végződik, szinkronizálni szeretné az összes felhasználót a vendégként.
  
 A részletes attribútumokra vonatkozó követelményekért lásd: [a UserType szinkronizálásának engedélyezése](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
 
@@ -42,7 +42,7 @@ Az egyedi attribútum azonosítása után beállíthatja, hogy Azure AD Connect 
 
 A megvalósítási utasításokért lásd: [a UserType szinkronizálásának engedélyezése](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Active Directory B2B-együttműködés hibrid szervezeteknél](hybrid-organizations.md)
 - [B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez](hybrid-cloud-to-on-premises.md)
