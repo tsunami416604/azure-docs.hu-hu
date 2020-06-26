@@ -6,18 +6,18 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: f13872352e8b4da89d2dcf955440bc54be0fe000
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: fe06d68a7e618b728e314d539dd83dfdf93beaed
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817333"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368209"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
 Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el és kéri le, a Secrets Store Container Storage Interface (CSI) illesztőprogram használatával a titkokat a Kubernetes hüvelybe csatlakoztatni.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy egyszerű szolgáltatásnevet, vagy használjon felügyelt identitásokat.
@@ -339,8 +339,8 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 Ellenőrizze, hogy a titkos kód tartalma megjelenik-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Key Vault helyreállításának biztosításához lásd:
 > [!div class="nextstepaction"]
-> [A Soft delete bekapcsolása](https://docs.microsoft.com/azure/key-vault/general/soft-delete-clid)
+> [A Soft delete bekapcsolása](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)

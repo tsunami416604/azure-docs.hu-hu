@@ -1,20 +1,20 @@
 ---
-author: sptramer
-ms.author: sttramer
-manager: carmonm
-ms.date: 06/05/2019
 ms.topic: include
-ms.openlocfilehash: 550ace93479278df2a592a87ee34d10f8763d2f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/05/2019
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.openlocfilehash: 083d2ecb973a2c0ffc6cfddb9cdcb387e6025fb2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67133651"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378435"
 ---
 > [!IMPORTANT]
 >
-> Ha ezt az Azure-szolgáltatást a PowerShell `AzureRM` használatával kívánja használni, telepítenie kell a modult. Ez egy régebbi modul csak a Windows PowerShell 5,1 esetében érhető el, amely már nem kap új funkciókat.
-> A `Az` és `AzureRM` a modulok __nem__ kompatibilisek a PowerShell ugyanazon verziójára való telepítésekor.
+> Ha ezt az Azure-szolgáltatást a PowerShell használatával kívánja használni, `AzureRM` telepítenie kell a modult. Ez egy régebbi modul csak a Windows PowerShell 5,1 esetében érhető el, amely már nem kap új funkciókat.
+> A `Az` és a `AzureRM` modulok __nem__ kompatibilisek a PowerShell ugyanazon verziójára való telepítésekor.
 > Ha mindkét verzióra szüksége van:
 >
 > 1. [Távolítsa el az az modult](/powershell/azure/uninstall-az-ps) egy PowerShell 5,1-munkamenetből.

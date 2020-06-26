@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36aa0a4a87e439c128c5247b6850100a7f2e826e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598051"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373665"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Alkalmazásbeállítások konfigurálása az Azure statikus Web Apps előzetes verziójának beállításához
 
@@ -60,9 +60,9 @@ A környezeti változók JavaScript-keretrendszerrel vagy-könyvtárral történ
 
 ## <a name="about-api-app-settings"></a>Az API-alkalmazások beállításai
 
-Az Azure-beli statikus Web Apps API-k Azure Functions-alapúak, amely lehetővé teszi az Alkalmazásbeállítások megadását a _Local. Settings. JSON_ fájlban. Ez a fájl határozza meg az alkalmazás beállításait a `Values` konfiguráció tulajdonságában.
+Az Azure statikus Web Apps API-jai Azure Functions-t használnak, ami lehetővé teszi az Alkalmazásbeállítások megadását a _local.settings.js_ fájlban. Ez a fájl határozza meg az alkalmazás beállításait a `Values` konfiguráció tulajdonságában.
 
-A következő minta _Local. Settings. JSON_ azt mutatja be, hogyan adhat hozzá értéket a számára `DATABASE_CONNECTION_STRING` .
+A következő minta _local.settings.js_ bemutatja, hogyan adhat hozzá értéket a számára `DATABASE_CONNECTION_STRING` .
 
 ```json
 {
@@ -105,15 +105,17 @@ A Azure Portal egy felületet biztosít az Alkalmazásbeállítások létrehozá
 
     :::image type="content" source="media/application-settings/configuration.png" alt-text="Azure statikus Web Apps konfiguráció nézet":::
 
-1. Adjon meg egy **nevet** és egy **értéket**
+1. Adjon meg egy **nevet** és egy **értéket**.
 
-1. Kattintson **az OK** gombra
+1. Kattintson az **OK** gombra.
+
+1. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 
 A parancs használatával a `az rest` Beállítások tömeges feltöltését végezheti el az Azure-ban. A parancs JSON-objektumokként fogadja el az Alkalmazásbeállítások egy nevű szülő tulajdonságban `properties` .
 
-A megfelelő értékekkel rendelkező JSON-fájlok létrehozásának legegyszerűbb módja a _helyi. Settings. JSON_ fájl módosított verziójának létrehozása.
+A megfelelő értékekkel rendelkező JSON-fájlok létrehozásának legegyszerűbb módja a _local.settings.js_ fájlon létrehozott módosított verziójának létrehozása.
 
 1. Annak biztosítása érdekében, hogy az új, bizalmas adatokkal nem rendelkező fájlok nyilvánosan elérhetők legyenek, adja hozzá a következő bejegyzést a _. gitignore_ -fájlhoz.
 
@@ -121,7 +123,7 @@ A megfelelő értékekkel rendelkező JSON-fájlok létrehozásának legegyszer�
    local.settings*.json
    ```
 
-2. Ezután készítsen egy másolatot a _Local. Settings. JSON_ fájlról, és nevezze el a _Local. Settings. properties. JSON_névre.
+2. Ezután készítsen másolatot a _local.settings.js_ fájlról, és nevezze el _local.settings.properties.jsa_következőn:.
 
 3. Az új fájlban távolítsa el az összes többi fájlt a fájlból, kivéve az alkalmazás beállításait, és nevezze át a következőre: `Values` `properties` .
 
@@ -150,19 +152,19 @@ Az Azure CLI-parancshoz a feltöltés futtatásához a fiókhoz tartozó érték
    ```
 
 > [!IMPORTANT]
-> A "local. Settings. properties. JSON" fájlnak ugyanabban a címtárban kell lennie, ahol ez a parancs fut. A fájl neve tetszőleges. A név nem jelentős.
+> A "local.settings.properties.json" fájlnak ugyanabban a könyvtárban kell lennie, ahol ez a parancs fut. A fájl neve tetszőleges. A név nem jelentős.
 
 ### <a name="view-application-settings-with-the-azure-cli"></a>Alkalmazásbeállítások megtekintése az Azure CLI-vel
 
 Az Alkalmazásbeállítások az Azure CLI-n keresztül tekinthetők meg.
 
-1. Futtassa a következő parancsot egy terminálról vagy parancssorból. Ügyeljen rá, hogy a helyőrzőket cserélje le az `<YOUR_SUBSCRIPTION_ID>` `<YOUR_RESOURCE_GROUP_NAME>` `<YOUR_STATIC_SITE_NAME>` értékekre.
+- Futtassa a következő parancsot egy terminálról vagy parancssorból. Ügyeljen rá, hogy a helyőrzőket cserélje le az `<YOUR_SUBSCRIPTION_ID>` `<YOUR_RESOURCE_GROUP_NAME>` `<YOUR_STATIC_SITE_NAME>` értékekre.
 
    ```bash
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Helyi fejlesztés beállítása](local-development.md)

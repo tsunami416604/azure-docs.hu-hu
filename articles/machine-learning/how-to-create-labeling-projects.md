@@ -7,14 +7,14 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: f514c33f2c39e205ac186b70711b478f67fcb4e5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 0870f389e366a9249e98d60a51aa7fdd40238ea0
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212012"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374508"
 ---
-# <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
+# <a name="create-a-data-labeling-project-preview-and-export-labels"></a>Adatcímkéző projekt (előzetes verzió) és az exportálási Címkék létrehozása 
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -217,7 +217,7 @@ A kókusz-fájl a Azure Machine Learning munkaterület alapértelmezett blob-tá
 
 ![Exportált adatkészlet](./media/how-to-create-labeling-projects/exported-dataset.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: az első képbesorolási címkézési projekt létrehozása](tutorial-labeling.md).
 * [Képbesorolás vagy objektum-észlelési](how-to-label-images.md) lemezképek címkézése

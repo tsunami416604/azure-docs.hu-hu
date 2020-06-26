@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 06/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46864b0af7a4770debaed84cc3805a219f6687e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd170d505286d57f383af50da282e120167fe499
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361285"
+ms.locfileid: "85367359"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -112,6 +112,8 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 06/24/2020: változás a [pacemaker beállítása a SLES az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) az új továbbfejlesztett Azure kerítés-ügynök és az Azure kerítési ügynökön alapuló eszközök rugalmasabb STONITH-konfigurációjának kiadásához 
+- 06/24/2020: változás a [pacemaker beállítása a RHEL az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) a rugalmasabb STONITH-konfiguráció felszabadításához
 - 06/23/2020: az [azure Virtual Machines tervezésének és megvalósításának változásai az SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) útmutatóban és az [Azure Storage-típusok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) bevezetése az SAP számítási feladatok útmutatójában
 - 06/22/2020: telepítési lépések hozzáadása az SAP-hez készült új virtuálisgép-bővítményhez a [telepítési útmutatóban](deployment-guide.md)
 - 06/16/2020: változás a [virtuális gépek nyilvános végponti kapcsolatán az Azure standard ILB SAP ha-forgatókönyvek használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) a SUSE nyilvános felhőalapú infrastruktúra 101 dokumentációjának hivatkozása 

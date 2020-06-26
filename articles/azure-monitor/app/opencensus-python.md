@@ -7,12 +7,12 @@ ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 04581826ab6b05333e910a162c7a0ca9566ec334
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c6b84b25ae85d20ccd7872daf16014e5bed6934b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079122"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374151"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
 
@@ -251,9 +251,9 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
 
 4. Az exportőr a metrikus adatokat a Azure Monitor rögzített időközönként küldi el. Az alapértelmezett érték 15 másodpercenként. Egyetlen mérőszámot követünk nyomon, ezért a metrikai adatok minden, a benne foglalt értékkel és időbélyegzővel elküldve lesznek minden intervallumban. Az adat a alatt található `customMetrics` .
 
-#### <a name="standard-metrics"></a>Standard mérőszámok
+#### <a name="performance-counters"></a>Teljesítményszámlálók
 
-Alapértelmezés szerint a metrikák exportőre szabványos mérőszámok egy készletét küldi Azure Monitorra. Ezt úgy tilthatja le, ha a `enable_standard_metrics` jelölőt a `False` metrika-exportőr konstruktorában állítja be.
+Alapértelmezés szerint a metrikák exportőre a teljesítményszámlálók készletét küldi el Azure Monitor. Ezt úgy tilthatja le, ha a `enable_standard_metrics` jelölőt a `False` metrika-exportőr konstruktorában állítja be.
 
 ```python
 ...
@@ -262,17 +262,16 @@ exporter = metrics_exporter.new_metrics_exporter(
   connection_string='InstrumentationKey=<your-instrumentation-key-here>')
 ...
 ```
-Az alábbi lista a jelenleg eljuttatott szabványos metrikákat tartalmazza:
+Az alábbi lista az aktuálisan eljuttatott teljesítményszámlálók listáját tartalmazza:
 
 - Rendelkezésre álló memória (bájt)
 - CPU-processzoridő (százalék)
 - Bejövő kérelmek aránya (másodpercenként)
 - Bejövő kérelem átlagos végrehajtási ideje (ezredmásodperc)
-- Kimenő kérelmek aránya (másodpercenként)
 - CPU-használat feldolgozása (százalék)
 - Folyamat saját bájtjai (bájt)
 
-Ezeket a mérőszámokat a alkalmazásban tekintheti meg `performanceCounters` . A bejövő kérelmek aránya a következő lesz: `customMetrics` . [További információ: teljesítményszámlálók](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
+Ezeket a mérőszámokat a alkalmazásban tekintheti meg `performanceCounters` . [További információ: teljesítményszámlálók](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
 
 #### <a name="modify-telemetry"></a>Telemetria módosítása
 
@@ -473,7 +472,7 @@ További információ a lekérdezések és naplók használatáról: [naplók a 
 * [OpenCensus-integrációk](https://github.com/census-instrumentation/opencensus-python#extensions)
 * [Azure Monitor minta alkalmazások](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejövő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-dependency.md)
 * [Folyamatban lévő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-request.md)

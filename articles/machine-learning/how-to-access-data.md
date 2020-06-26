@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d73427db5fd168a31c478f92ef11307df136a775
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 07d2326d6677ccba93e2d3173bf8abccf309fe70
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125412"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374712"
 ---
 # <a name="connect-to-azure-storage-services"></a>Kapcsolódás az Azure Storage-szolgáltatásokhoz
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ Javasoljuk, hogy hozzon létre egy adattárt egy [Azure Blob-tárolóhoz](https:
 
 [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction?toc=/azure/storage/blobs/toc.json) az Azure Blob Storage-ra épül, és nagyvállalati Big Data elemzésre lett tervezve. Data Lake Storage Gen2 alapvető része egy [hierarchikus névtér](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) hozzáadása a blob Storage-hoz. A hierarchikus névtér objektumokat vagy fájlokat rendez a címtárak hierarchiájában a hatékony adateléréshez.
 
-Munkaterületek létrehozásakor a rendszer automatikusan regisztrálja az Azure BLOB-tárolót és egy Azure-fájlmegosztást a munkaterületen. Ezek neve `workspaceblobstore` és `workspacefilestore` , illetve. `workspaceblobstore`a a munkaterület-összetevők és a Machine learning-kísérletek naplófájljainak tárolására szolgál. `workspacefilestore`a a [számítási példányon](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)keresztül engedélyezve lévő jegyzetfüzetek és R-parancsfájlok tárolására szolgál. A `workspaceblobstore` tároló alapértelmezett adattárként van beállítva.
+Munkaterületek létrehozásakor a rendszer automatikusan regisztrálja az Azure BLOB-tárolót és egy Azure-fájlmegosztást a munkaterületen. Ezek neve `workspaceblobstore` és `workspacefilestore` , illetve. `workspaceblobstore`a a munkaterület-összetevők és a Machine learning-kísérletek naplófájljainak tárolására szolgál. `workspacefilestore`a a [számítási példányon](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)keresztül engedélyezve lévő jegyzetfüzetek és R-parancsfájlok tárolására szolgál. A `workspaceblobstore` tároló alapértelmezett adattárként van beállítva, és nem törölhető a munkaterületről.
 
 > [!IMPORTANT]
 > A Azure Machine Learning Designer (előzetes verzió) automatikusan létrehoz egy **azureml_globaldatasets** nevű adattárat, amikor megnyit egy mintát a tervező kezdőlapján. Ez az adattár csak minta adatkészleteket tartalmaz. A bizalmas adatokhoz való hozzáféréshez **ne** használja ezt az adattárt.
@@ -158,8 +158,6 @@ Ha a fájlmegosztás virtuális hálózatban található, a paramétert is adja 
 
 Egy Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake Gen 2 tárolóhoz csatlakoztatott hitelesítő adatokat az [egyszerű szolgáltatás engedélyeivel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Az egyszerű szolgáltatás használatához [regisztrálnia](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) kell az alkalmazást, és biztosítania kell az egyszerű szolgáltatásnév számára a *Storage blob adatolvasói* hozzáférését. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
-Az egyszerű szolgáltatás használatához [regisztrálnia](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) kell az alkalmazást, és a megfelelő adateléréssel kell megadnia az egyszerű szolgáltatásnevet. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
-
 A következő kód létrehozza és regisztrálja az `adlsgen2_datastore_name` adattárt a `ws` munkaterületen. Ez az adattár hozzáfér a fájlrendszerhez a `test` `account_name` Storage-fiókban a megadott egyszerű szolgáltatás hitelesítő adataival.
 
 ```python 
@@ -237,6 +235,7 @@ Az alapértelmezett adattár a következő kóddal is módosítható. Ez a képe
 ```Python
  ws.set_default_datastore(new_default_datastore)
 ```
+
 <a name="up-and-down"></a>
 ## <a name="upload-and-download-data"></a>Adatok feltöltése és letöltése
 
@@ -293,7 +292,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 A Azure Machine Learning számos módszert kínál a modellek pontozási célra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
 
-| Metódus | Adattár-hozzáférés | Leírás |
+| Metódus | Adattár-hozzáférés | Description |
 | ----- | :-----: | ----- |
 | [Kötegelt előrejelzés](how-to-use-parallel-run-step.md) | ✔ | Előrejelzések készítése aszinkron módon nagy mennyiségű adattal. |
 | [Webszolgáltatás](how-to-deploy-and-where.md) | &nbsp; | Modellek üzembe helyezése webszolgáltatásként. |
@@ -309,7 +308,7 @@ Azure Machine Learning támogatja az Azure Blob Storage, Azure Files, Azure Data
 
 Azure Data Factory a hatékony és rugalmas adatátvitelt több mint 80 előre összeépített összekötővel biztosítja, felár nélkül. Ezek az összekötők közé tartoznak az Azure adatszolgáltatások, a helyszíni adatforrások, az Amazon S3 és a vöröseltolódás, valamint a Google BigQuery.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Machine learning-adatkészlet létrehozása](how-to-create-register-datasets.md)
 * [Modell betanítása](how-to-train-ml-models.md)

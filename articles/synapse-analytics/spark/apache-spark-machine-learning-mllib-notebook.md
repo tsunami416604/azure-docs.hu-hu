@@ -6,15 +6,15 @@ author: euangMS
 ms.service: synapse-analytics
 ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
-ms.subservice: spark
+ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 402b479280f0cb7655b68cc00a0ea7fbe55b8c15
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: fd3637eed35fa4b9f40623612be9fc99703051e3
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194654"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368175"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Gépi tanulási alkalmazás létrehozása Apache Spark MLlib és az Azure szinapszis Analytics használatával
 
@@ -282,7 +282,7 @@ Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erő
 
 - [Áttekintés: Apache Spark az Azure szinapszis Analytics szolgáltatásban](apache-spark-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 903bfd0be6c82cb5836248a784805b45edcabf36
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7295007c356b520641ba7d3e6f548b5f455f67c0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196376"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367172"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Az Azure-Availability Zones támogató régiók
 
@@ -28,13 +28,13 @@ Az egyes régiókban elérhető szolgáltatások, valamint a rendelkezésre áll
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|-------------|
 |          |USA középső régiója|USA keleti régiója|USA 2. keleti régiója|USA nyugati régiója, 2.|Közép-Franciaország|Észak-Európa|Az Egyesült Királyság déli régiója|Nyugat-Európa|Kelet-Japán|Délkelet-Ázsia|Kelet-Ausztrália|
 | **Számítás**                         |            |              |           |           |                |              |          |             |            |                |                |
-| Linux rendszerű virtuális gépek          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
-| Windows rendszerű virtuális gépek        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
+| Linux Virtual Machines          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
+| Windows Virtual Machines        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | Virtual Machine Scale Sets      | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | Azure App Service környezetek ILB | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | Azure Kubernetes Service        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | **Storage**   |            |              |           |           |                |              |          |             |            |                |                |
-| Felügyelt lemezek                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
+| Managed Disks                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | Zóna – redundáns tárolás          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | **Hálózat**                     |            |              |           |           |                |              |          |             |            |                |                |
 | Szabványos IP-cím        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
@@ -47,7 +47,7 @@ Az egyes régiókban elérhető szolgáltatások, valamint a rendelkezésre áll
 | Azure Data Explorer                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;        | &#10003;       |                |
 | SQL Database                    | &#10003;   | &#10003;     | &#10003;  | &#10003; (előzetes verzió) | &#10003;       | &#10003; (előzetes verzió)     | &#10003; | &#10003;    | &#10003;       | &#10003;       |&#10003;        |
 | Azure Cache for Redis           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |                |
-| Azure Cosmos DB      | &#10003;   |  &#10003;  |  &#10003; | &#10003; |  &#10003;  | &#10003;    | &#10003; |  &#10003;   |     &#10003;       | &#10003;    | &#10003;    |
+| Azure Cosmos DB      | &#10003;   |  &#10003;  |  &#10003; | &#10003; |  &#10003;  | &#10003;    | &#10003; |  &#10003;   |     &#10003;       | &#10003;    |   |
 | **Elemzés**                       |            |              |           |           |                |              |          |             |            |                |                |
 | Event Hubs                      | &#10003;   |   &#10003; | &#10003;  | &#10003;  | &#10003; | &#10003; | &#10003; | &#10003; | &#10003; | &#10003;       |                |
 | **Integráció**                     |            |              |           |           |                |              |          |             |            |                |                |
@@ -57,6 +57,6 @@ Az egyes régiókban elérhető szolgáltatások, valamint a rendelkezésre áll
 | Azure AD Domain Services | &#10003;   |  &#10003;  | &#10003;  | &#10003;  | &#10003;  | &#10003;     |&#10003;   | &#10003;    |&#10003;      | &#10003;       |                |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Régiók és Availability Zones az Azure-ban](az-overview.md)

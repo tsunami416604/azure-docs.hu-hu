@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 357fe6f04c79b5ad0cdf569e6716589007f6253b
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 189ebcc74461a57a4e91bf50262c377540cf885b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791962"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367835"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Közvetlen metódusok megismerése és meghívása az IoT Hubból
 
@@ -33,7 +33,7 @@ Ha kétségei vannak a kívánt tulajdonságok, közvetlen metódusok vagy a fel
 
 ## <a name="method-lifecycle"></a>Módszer életciklusa
 
-A közvetlen metódusok implementálva vannak az eszközön, és az adattartalom megfelelő létrehozásához nulla vagy több bemenet szükséges. Közvetlen metódust hív meg egy szolgáltatással szemben álló URI-n ( `{iot hub}/twins/{device id}/methods/` ) keresztül. Egy eszköz közvetlen metódusokat kap egy adott eszközre vonatkozó MQTT-témakörben ( `$iothub/methods/POST/{method name}/` ), vagy AMQP-hivatkozásokon keresztül (a `IoThub-methodname` és az `IoThub-status` alkalmazás tulajdonságain) keresztül. 
+A közvetlen metódusok implementálva vannak az eszközön, és az adattartalom megfelelő létrehozásához nulla vagy több bemenet szükséges. Közvetlen metódust hív meg egy szolgáltatással szemben álló URI-n ( `{iot hub}/twins/{device id}/methods/` ) keresztül. Egy eszköz közvetlen metódusokat kap egy adott eszközre vonatkozó MQTT-témakörben ( `$iothub/methods/POST/{method name}/` ), vagy AMQP-hivatkozásokon keresztül (a `IoThub-methodname` és az `IoThub-status` alkalmazás tulajdonságain) keresztül.
 
 > [!NOTE]
 > Ha egy eszközön közvetlen metódust hív meg, a tulajdonságok nevei és értékei csak az US-ASCII nyomtatható alfanumerikus karaktereket tartalmazhatják, kivéve a következő készletben lévőket:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
@@ -41,7 +41,7 @@ A közvetlen metódusok implementálva vannak az eszközön, és az adattartalom
 
 A közvetlen metódusok szinkronban vannak, és sikeresek vagy sikertelenek az időkorlát után (alapértelmezett: 30 másodperc, 5 és 300 másodperc között állítható be). A közvetlen metódusok olyan interaktív helyzetekben hasznosak, amikor azt szeretné, hogy az eszköz csak akkor járjon el, ha az eszköz online állapotban van, és parancsokat fogad. Tegyük fel például, hogy a telefonról bekapcsol egy fényt. Ezekben az esetekben azonnali sikerességet vagy hibát szeretne látni, hogy a felhőalapú szolgáltatás a lehető leghamarabb képes legyen az eredményre. Előfordulhat, hogy az eszköz valamilyen üzenetet ad vissza a metódus eredményeként, de nem szükséges ehhez a metódushoz. A metódusok hívásakor nincs garancia a rendelésre vagy a párhuzamossági szemantikara.
 
-A közvetlen metódusok csak HTTPS-alapúak, a felhőalapú oldalról, a HTTPS-ről, a MQTT, a AMQP, a MQTT-en keresztül, vagy a websocketek AMQP keresztül az eszköz oldaláról.
+A közvetlen metódusok csak HTTPS-alapúak, a felhőalapú oldalról, a MQTT, a AMQP, a MQTT-en keresztül a websocketek, vagy a AMQP WebSocket-kapcsolaton keresztül az eszköz oldaláról.
 
 A metódus-kérelmek és válaszok adattartalma egy JSON-dokumentum, amely akár 128 KB-ig is használható.
 
@@ -80,12 +80,11 @@ A kérelemben megadott érték azt `responseTimeoutInSeconds` az időtartamot, a
 
 A `connectTimeoutInSeconds` kérelemben megadott érték azt az időtartamot határozza meg, ameddig egy közvetlen metódus meghívásakor a IoT hub szolgáltatásnak meg kell várnia, hogy egy leválasztott eszköz online állapotba kerüljön. Az alapértelmezett érték 0, ami azt jelenti, hogy az eszközöknek már online állapotba kell esniük a közvetlen metódus meghívása után. A maximális érték `connectTimeoutInSeconds` 300 másodperc.
 
-
 #### <a name="example"></a>Példa
 
 Ez a példa lehetővé teszi, hogy biztonságosan kezdeményezzen egy közvetlen metódus meghívására irányuló kérelmet egy Azure-IoT Hub regisztrált IoT-eszközön.
 
-A kezdéshez használja a [Microsoft Azure IoT bővítményét az Azure CLI-hez](https://github.com/Azure/azure-iot-cli-extension) egy SharedAccessSignature létrehozásához. 
+A kezdéshez használja a [Microsoft Azure IoT bővítményét az Azure CLI-hez](https://github.com/Azure/azure-iot-cli-extension) egy SharedAccessSignature létrehozásához.
 
 ```bash
 az iot hub generate-sas-token -n <iothubName> -du <duration>
@@ -219,7 +218,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * [IOT hub MQTT-támogatás](iot-hub-mqtt-support.md) további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a közvetlen módszerek használatát, érdemes lehet a következő IoT Hub fejlesztői útmutató cikke érdekli:
 

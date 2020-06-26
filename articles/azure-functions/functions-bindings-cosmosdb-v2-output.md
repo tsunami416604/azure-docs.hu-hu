@@ -1,19 +1,19 @@
 ---
-title: A 2. x függvények kimeneti kötésének Azure Cosmos DB
+title: Azure Cosmos DB a 2. x és újabb függvények kimeneti kötését
 description: Megtudhatja, hogyan használhatja a Azure Functions Azure Cosmos DB kimeneti kötését.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: b58924607f002af27d21343389404fcc66d1f35d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 2228a9609b0e0325dc4e6f7ccbe88417c900b688
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561663"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374338"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Functions 2. x kimeneti kötésének Azure Cosmos DB
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB kimeneti kötés Azure Functions 2. x és újabb verziókhoz
 
 A Azure Cosmos DB kimeneti kötés lehetővé teszi, hogy új dokumentumot írjon egy Azure Cosmos DB-adatbázisba az SQL API használatával.
 
@@ -125,7 +125,7 @@ Ez a szakasz a következő példákat tartalmazza:
 
 ### <a name="queue-trigger-write-one-doc"></a>Üzenetsor-trigger, egy doc írása
 
-Az alábbi példa egy Azure Cosmos DB kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény üzenetsor-beviteli kötést használ egy olyan várólistához, amely a következő formátumban fogadja a JSON-t:
+Az alábbi példa egy Azure Cosmos DB kimeneti kötést mutat be a fájlban lévő *function.js* , és egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény üzenetsor-beviteli kötést használ egy olyan várólistához, amely a következő formátumban fogadja a JSON-t:
 
 ```json
 {
@@ -146,7 +146,7 @@ A függvény a következő formátumban hozza létre Azure Cosmos DB dokumentumo
 }
 ```
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -205,7 +205,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Itt látható a function. JSON fájl:
+A fájl function.js:
 
 ```json
 {
@@ -250,7 +250,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy Azure Cosmos DB kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény üzenetsor-beviteli kötést használ egy olyan várólistához, amely a következő formátumban fogadja a JSON-t:
+Az alábbi példa egy Azure Cosmos DB kimeneti kötést mutat be egy *function.jsa* fájlban és egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény üzenetsor-beviteli kötést használ egy olyan várólistához, amely a következő formátumban fogadja a JSON-t:
 
 ```json
 {
@@ -271,7 +271,7 @@ A függvény a következő formátumban hozza létre Azure Cosmos DB dokumentumo
 }
 ```
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -307,7 +307,7 @@ Itt látható a JavaScript-kód:
 
 Az alábbi példa azt mutatja be, hogyan írhat dokumentumokat egy Azure CosmosDB-adatbázisba egy függvény kimenete.
 
-A kötés definíciója a *function. JSON* fájlban van megadva, ahol a Type értéke a *következő* : `cosmosDB` .
+A kötés definíciója *function.js* van meghatározva, ahol a *típus* értékre van állítva `cosmosDB` .
 
 ```json
 {
@@ -560,11 +560,11 @@ A `CosmosDBOutput` jegyzet elérhető az adatCosmos DBba való íráshoz. A jegy
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `CosmosDB` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `CosmosDB` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa**     | n.a. | Értékre kell állítani `cosmosDB` .        |
 |**direction**     | n.a. | Értékre kell állítani `out` .         |
@@ -595,9 +595,9 @@ Alapértelmezés szerint, amikor a függvény kimeneti paraméterére ír, létr
 
 <a name="host-json"></a>
 
-## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
+## <a name="hostjson-settings"></a>Beállítások host.js
 
-Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti a 2. x verzióban. A 2. x verziójú globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [Host. JSON-dokumentáció Azure functions 2. x verzióhoz](functions-host-json.md).
+Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti a 2. x verzióban. A 2. x verzióban található globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [host.jsAzure functions 2. x verzió hivatkozása](functions-host-json.md).
 
 ```json
 {
@@ -614,7 +614,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |GatewayMode|Átjáró|A függvény által a Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt kapcsolati mód. A lehetőségek a következők `Direct` ,`Gateway`|
 |Protokoll|Https|A függvény által a Azure Cosmos DB szolgáltatáshoz való kapcsolódáskor használt kapcsolati protokoll.  A [két mód magyarázata itt](../cosmos-db/performance-tips.md#networking) olvasható|

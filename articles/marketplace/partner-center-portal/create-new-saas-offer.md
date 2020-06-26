@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: b02ba8bd6e3ae858c9e3ded07776a8a83ede171a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f214dbbc1991e64f86890687523be256c69e46d3
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212589"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374270"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Új SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -140,7 +140,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
 8. Összefoglalás
-9. Leírás
+9. Description
 10. Képernyőképek/videók
 11. Dokumentumok
 
@@ -256,7 +256,7 @@ Adja meg a piactéren megjelenítendő adatokat, beleértve az ajánlat és a ma
 - **Kulcsszavak keresése** – adjon meg legfeljebb három olyan keresési kulcsszót, amelyet az ügyfelek az ajánlat megtalálására használhatnak a piactéren.
 - **Első lépéseket ismertető utasítások** (kötelező) – magyarázza el, hogyan konfigurálhatja és indíthatja el az alkalmazás használatát a potenciális ügyfelek számára.  Ez a rövid útmutató a részletesebb online dokumentációra mutató hivatkozásokat is tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 A mező kitöltése kötelező.
 
@@ -287,7 +287,6 @@ A mező kitöltése kötelező.
     - **Közepes** (90 x 90, kötelező)
     - **Nagyméretű** (216 x 216, kötelező)
     - **Széles** (255 x 115)
-    - **Hős** (815 x 290)
 
 - **Képernyőképek** (kötelező) – adjon meg legfeljebb öt képernyőképet, amely az ajánlatát mutatja be, a mérete 1280 x 720 képpont. Az összes rendszerképnek a-ben kell lennie. PNG-formátum.
 - **Videók** (nem kötelező) – az ajánlatot bemutató videókra mutató hivatkozásokat adhat hozzá. A YouTube-és/vagy a Vimeo-videókra mutató hivatkozásokat is használhat, amelyek az Ön ajánlatával együtt jelennek meg az ügyfelek számára. Emellett meg kell adnia a videó miniatűr képét is, amely az 1280 x 720 képpont méretű, PNG formátumú. Ajánlat legfeljebb négy videót jeleníthet meg.

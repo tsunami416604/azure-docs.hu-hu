@@ -186,7 +186,7 @@ Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
 
 Ezt követően már készen is van!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy elvégezte a gazdagép készletét, feltöltheti azt a RemoteApp-programok használatával. Ha többet szeretne megtudni a Windows rendszerű virtuális asztali alkalmazások kezeléséről, tekintse meg a következő oktatóanyagot:
 

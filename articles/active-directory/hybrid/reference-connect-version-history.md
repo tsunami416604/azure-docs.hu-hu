@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f54eae8c57d3317c6d654b4a019501410239bf9
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ff1c0bd880f2052e6ee2ad3c5cdc3bed803f6da1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317498"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367767"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -569,7 +569,7 @@ Zárja le a AD DS fiók hozzáférését a helyszíni AD-ben a következő enged
 *   Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket. Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 *   Rendelje hozzá ezeket a konkrét engedélyeket:
 
-Típus     | Name (Név)                          | Access               | Érvényesség
+Típus     | Name                          | Access               | Érvényesség
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
@@ -581,8 +581,6 @@ Engedélyezés    | Vállalati tartományvezérlők | Olvasási engedélyek     
 Engedélyezés    | Hitelesített felhasználók           | Tartalom listázása        | Ez az objektum  |
 Engedélyezés    | Hitelesített felhasználók           | Az összes tulajdonság olvasása  | Ez az objektum  |
 Engedélyezés    | Hitelesített felhasználók           | Olvasási engedélyek     | Ez az objektum  |
-
-A AD DS fiók beállításainak szigorításához futtathatja [ezt a PowerShell-parancsfájlt](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). A PowerShell-szkript a fent említett engedélyeket a AD DS fiókhoz rendeli.
 
 #### <a name="powershell-script-to-tighten-a-pre-existing-service-account"></a>PowerShell-parancsfájl egy már meglévő szolgáltatásfiók szigorításához
 
@@ -1430,5 +1428,5 @@ Kiadás dátuma: szeptember 2014
 
 **Azure AD-szinkronizáló kezdeti kiadása.**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: d1dc54810371c4258616ca95b9f0f0abeee4c415
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462957"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374610"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Előnézet – direktszínes csomópont-készlet hozzáadása egy Azure Kubernetes Service (ak) fürthöz
 
@@ -26,7 +26,7 @@ Ez a cikk a Kubernetes és a Azure Load Balancer fogalmak alapszintű megismeré
 
 Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -41,9 +41,6 @@ Amikor létrehoz egy fürtöt egy direktszínes csomópont-készlet használatá
 ### <a name="register-spotpoolpreview-preview-feature"></a>Spotpoolpreview előzetes funkciójának regisztrálása
 
 Ha egy olyan AK-fürtöt szeretne létrehozni, amely egy direktszín-készletet használ, engedélyeznie kell a *spotpoolpreview* funkció jelzőjét az előfizetésén. Ez a szolgáltatás a fürt konfigurálásakor a legújabb szolgáltatás-fejlesztéseket biztosítja.
-
-> [!CAUTION]
-> Ha regisztrál egy szolgáltatást egy előfizetéshez, jelenleg nem tudja regisztrálni a szolgáltatást. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
 Regisztrálja a *spotpoolpreview* szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
 

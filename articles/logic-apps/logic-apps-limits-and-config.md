@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/20/2020
-ms.openlocfilehash: dcb0f60f38fbc1b52e29d7fffe0bce7a59257cb5
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 3c62f9794a4eb963bcd23a294d82b67cd9e37d08
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119069"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367223"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -104,7 +104,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 | Művelet: végrehajtások száma 5 percenként | 100 000 az alapértelmezett korlát, de a 300 000 a maximális korlát. | Az alapértelmezett korlát módosításához tekintse [meg a logikai alkalmazás futtatása nagy teljesítményű módban](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), amely előzetes verzióban érhető el. Vagy a számítási feladatok több logikai alkalmazásban is eloszthatók a szükséges módon. |
 | Művelet: egyidejű kimenő hívások | ~2.500 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
 | Futásidejű végpont: egyidejű bejövő hívások | ~ 1 000 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
-| Futásidejű végpont: olvasási hívások/5 perc  | 60.000 | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
+| Futásidejű végpont: olvasási hívások/5 perc  | 60.000 | Ez a korlát a logikai alkalmazás futtatási előzményeiből származó nyers bemenetek és kimenetek lekérésére irányuló hívásokra vonatkozik. Szükség szerint több alkalmazásban is terjesztheti a munkaterhelést. |
 | Futásidejű végpont: hívások hívása 5 percenként | 45.000 | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
 | Tartalom átviteli sebessége 5 percenként | 600 MB | Szükség szerint több alkalmazáson is terjesztheti a számítási feladatokat. |
 ||||
@@ -439,7 +439,7 @@ Ez a szakasz a Azure Logic Apps szolgáltatás és a felügyelt összekötők ki
 | USA-beli államigazgatás – Virginia | 13.72.54.205, 52.227.138.30, 52.227.152.44 | 52.127.42.128 - 52.127.42.143, 52.227.143.61, 52.227.162.91 |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhatja létre első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
 * Tudnivalók a [gyakori példákról és forgatókönyvekről](../logic-apps/logic-apps-examples-and-scenarios.md)

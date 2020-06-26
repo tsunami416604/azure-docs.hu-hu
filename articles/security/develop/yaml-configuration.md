@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c53954e1aa1779bbf6933f7a81a95d25c8b4043a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362271"
+ms.locfileid: "85367257"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>YAML konfigurációs beállítások a felépítési feladatok testreszabásához
 
@@ -125,7 +125,6 @@ Ez a cikk felsorolja az egyes összeállítási feladatokban elérhető összes 
 | Kártevőirtó | logikai | AllTools = false | True (Igaz) | igaz |  | A kártevők elleni felépítési feladatok által generált eredmények közzététele.
 | BinSkim | logikai | AllTools = false | True (Igaz) | igaz |  | A BinSkim-Build feladatai által generált eredmények közzététele.
 | CredScan | logikai | AllTools = false | True (Igaz) | igaz |  | A hitelesítőadat-olvasó felépítési feladatai által generált eredmények közzététele.
-| MSRD | logikai | AllTools = false | True (Igaz) | igaz |  | A MSRD Build feladat által elindított MSRD-feladatok közzétételi feladatainak és a feladat URL-címeinek közzététele. A MSRD feladatok hosszú ideig futnak, és külön jelentéseket biztosítanak.
 | RoslynAnalyzers | logikai | AllTools = false | True (Igaz) | hamis |  | Közzéteszi a a a a (a)-elemzők által generált eredményeket.
 | TSLint | logikai | AllTools = false | True (Igaz) | igaz |  | A TSLint-Build feladatai által generált eredmények közzététele. Vegye figyelembe, hogy a jelentésekben csak a JSON formátumú TSLint-naplók támogatottak. Ha más formátumot választott, akkor ennek megfelelően frissítse a TSLint felépítési feladatát.
 | ToolLogsNotFoundAction | választásilista | mindig | True (Igaz) | Standard | Hiba, nincs, standard, figyelmeztetés | A kiválasztott eszköz (vagy bármely eszköz, ha az összes eszköz) naplóihoz tartozó naplók nem találhatók, ami azt jelenti, hogy az eszközt nem futtatták.<br/><br/>**Beállítások**<br/>**Nincs:** Az üzenet csak az VSTS változó **System. debug** értéke **true**értékre való beállításával érhető el a részletes kimeneti adatfolyamhoz.<br/>**Standard:** (alapértelmezett) a standard kimeneti üzenetet ír, amely szerint nem találhatók naplók az eszközhöz.<br/>**Figyelmeztetés:** Egy sárga figyelmeztető üzenetet ír arról, hogy az eszközhöz nem található napló, amely figyelmeztetésként megjelenik a Build Summary (összefoglalás) lapon.<br/>**Hiba:** Egy piros hibaüzenetet ír, és kivételt jelez, és megszakítja a buildet. Ezzel a beállítással biztosíthatja, hogy az eszközök milyen módon legyenek futtatva.
@@ -141,7 +140,6 @@ Ez a cikk felsorolja az egyes összeállítási feladatokban elérhető összes 
 | BinSkim | logikai | AllTools = false | True (Igaz) | hamis |  | A BinSkim-Build feladatai által generált jelentések eredményei.
 | BinSkimBreakOn | Választásilista | AllTools = TRUE vagy BinSkim = True | True (Igaz) | Hiba | Hiba, WarningAbove | A jelentés eredményének szintje.
 | CredScan | logikai | AllTools = false | True (Igaz) | hamis |  | A hitelesítőadat-olvasó által felépített feladatok által generált jelentések eredményei.
-| MSRD | logikai | AllTools = false | True (Igaz) | hamis |  | A MSRD-felépítési feladat által elindított MSRD-feladatok jelentési feladatainak és a feladat URL-címei. A MSRD feladatok hosszú ideig futnak, és külön jelentéseket biztosítanak.
 | RoslynAnalyzers | logikai | AllTools = false | True (Igaz) | hamis |  | A Java-elemző felépítési feladatai által generált jelentések eredményei.
 | RoslynAnalyzersBreakOn | Választásilista | AllTools = TRUE vagy RoslynAnalyzers = True | True (Igaz) | Hiba | Hiba, WarningAbove | A jelentés eredményének szintje.
 | TSLint | logikai | AllTools = false | True (Igaz) | hamis |  | A TSLint-Build feladatai által generált jelentések eredményei. Vegye figyelembe, hogy a jelentésekben csak a JSON formátumú TSLint-naplók támogatottak. Ha más formátumot választott, akkor ennek megfelelően frissítse a TSLint felépítési feladatát.
@@ -164,6 +162,6 @@ Ez a cikk felsorolja az egyes összeállítási feladatokban elérhető összes 
 | VstsConsole | logikai | mindig | False (Hamis) | igaz |  | Eredmények írása a folyamat-konzolra.
 | ToolLogsNotFoundAction | választásilista | mindig | True (Igaz) | Standard | Hiba, nincs, standard, figyelmeztetés | A kiválasztott eszköz (vagy bármely eszköz, ha az összes eszköz) naplóihoz tartozó naplók nem találhatók, ami azt jelenti, hogy az eszközt nem futtatták.<br/><br/>**Beállítások**<br/>**Nincs:** Az üzenet csak az VSTS változó **System. debug** értéke **true**értékre való beállításával érhető el a részletes kimeneti adatfolyamhoz.<br/>**Standard:** (alapértelmezett) a standard kimeneti üzenetet ír, amely szerint nem találhatók naplók az eszközhöz.<br/>**Figyelmeztetés:** Egy sárga figyelmeztető üzenetet ír arról, hogy az eszközhöz nem található napló, amely figyelmeztetésként megjelenik a Build Summary (összefoglalás) lapon.<br/>**Hiba:** Egy piros hibaüzenetet ír, és kivételt jelez, és megszakítja a buildet. Ezzel a beállítással biztosíthatja, hogy az eszközök milyen módon legyenek futtatva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további kérdése van a biztonsági kód elemzési bővítménnyel és a rendelkezésre álló eszközökkel kapcsolatban, tekintse meg a [Gyakori kérdések oldalát](security-code-analysis-faq.md).

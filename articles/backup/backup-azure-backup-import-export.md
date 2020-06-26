@@ -4,12 +4,12 @@ description: Ebből a témakörből megtudhatja, hogy az Azure import/export szo
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 6d448687836842835259fcf7bbad41af815dfb58
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 5611b5a6fc9ba8bbff11e35449caf0dd9d33fa21
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629291"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373302"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat a Azure Backup
 
@@ -90,7 +90,7 @@ Ez a szakasz az offline biztonsági mentési munkafolyamatot ismerteti, hogy az 
 
     * **Átmeneti hely**: az az ideiglenes tárolási hely, ahová a rendszer a kezdeti biztonsági másolatot írja. Előfordulhat, hogy az előkészítési hely egy hálózati megosztáson vagy egy helyi számítógépen található. Ha a számítógép és a forrásszámítógép másolása eltérő, akkor az előkészítési hely teljes hálózati elérési útját kell megadni.
     * **Azure Resource Manager Storage-fiók**: a Resource Manager típusú Storage-fiók (általános célú v1 vagy általános célú v2) neve bármely Azure-előfizetésben.
-    * **Azure Storage-tároló**: annak az Azure Storage-fióknak a neve, amelybe a biztonsági mentési adatmennyiséget importálja, mielőtt a rendszer átmásolja a Recovery Services-tárolóba.
+    * **Azure Storage-tároló**: a cél blob Storage-tároló neve abban az Azure Storage-fiókban, ahol a biztonsági mentési adatmennyiséget importálja a rendszer a Recovery Services-tárolóba való másolás előtt.
     * **Azure-előfizetés azonosítója**: annak az Azure-előfizetésnek az azonosítója, amelyhez az Azure Storage-fiókot létrehozták.
     * **Azure importálási feladatok neve**: az az egyedi név, amellyel az Azure import/export szolgáltatás és Azure Backup nyomon követheti a lemezeken az Azure-ba továbbított adatok átvitelét.
   
@@ -212,7 +212,7 @@ Az importálási feladatok sikeres befejezését követően a kezdeti biztonság
 
 A következő ütemezett biztonsági mentés időpontjában a Azure Backup növekményes biztonsági mentést hajt végre.
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A kezdeti biztonsági mentés befejezését követően biztonságosan törölheti az Azure Storage-tárolóba importált és az átmeneti helyen található biztonsági mentési adataikat.
 

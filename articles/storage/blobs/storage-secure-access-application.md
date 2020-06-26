@@ -11,12 +11,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: ac9bf7edf6e3973dd2f1f917d26ac280be4648e3
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: b5ca24a68b271c08ea7cd4196d5b8659eb0262d2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945647"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367376"
 ---
 # <a name="secure-access-to-application-data"></a>Az alkalmazásadatok biztonságos elérése
 
@@ -39,7 +39,7 @@ Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktat�
 
 Az oktatóanyag-sorozat ezen részében SAS-jogkivonatokat használunk a miniatűr képekhez való hozzáféréshez. Ebben a lépésben a *thumbnails* tároló nyilvános hozzáférését `off` értékre állítja be.
 
-```azurecli-interactive 
+```bash
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
@@ -52,6 +52,19 @@ az storage container set-permission \
     --public-access off
 ```
 
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
+
+az storage container set-permission `
+    --account-name $blobStorageAccount `
+    --account-key $blobStorageAccountKey `
+    --name thumbnails `
+    --public-access off
+```
+
 ## <a name="configure-sas-tokens-for-thumbnails"></a>SAS-jogkivonatok konfigurálása miniatűr képekhez
 
 Az oktatóanyag-sorozat első részében a webalkalmazás egy nyilvános tárolóból származó képeket jelenített meg. A sorozat ezen részében a közös hozzáférésű aláírások (SAS) jogkivonatok segítségével kérheti le a miniatűr lemezképeket. A SAS-jogkivonatok segítségével korlátozott hozzáférést biztosíthat egy tárolóhoz vagy blobhoz IP-cím, protokoll, időintervallum vagy engedélyezett jogosultságok alapján. Az SAS-vel kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférési aláírások (SAS) használatával](../common/storage-sas-overview.md).
@@ -60,11 +73,19 @@ A példában a forráskód adattára a `sasTokens` ágat használja, amely egy f
 
 Az alábbi parancsban a `<web-app>` a webalkalmazás neve.
 
-```azurecli-interactive 
+```bash
 az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
 
 az webapp deployment source config --name <web_app> \
     --resource-group myResourceGroup --branch sasTokens --manual-integration \
+    --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+```
+
+```powershell
+az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
+
+az webapp deployment source config --name <web_app> `
+    --resource-group myResourceGroup --branch sasTokens --manual-integration `
     --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
@@ -163,7 +184,7 @@ Most, hogy biztonságos átvitel szükséges, az alábbi üzenetet kapja:
 HTTP/1.1 400 The account being accessed does not support http.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat harmadik részében megtanulta, hogy miként teheti biztonságossá a tárfiókhoz való hozzáférést, többek között:
 

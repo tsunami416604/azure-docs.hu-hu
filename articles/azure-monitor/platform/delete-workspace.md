@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 0fad77f4704b9cbd8c2a37e39c09a334b08766ef
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85193544"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367954"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és helyreállítása
 
@@ -24,7 +24,7 @@ Ha töröl egy Log Analytics munkaterületet, a rendszer egy törlési művelete
 > [!NOTE]
 > Ha szeretné felülbírálni a törlési viselkedést és véglegesen törölni a munkaterületet, kövesse az [állandó munkaterület törlésének](#permanent-workspace-delete)lépéseit.
 
-Fontos, hogy körültekintően járjon el, amikor töröl egy munkaterületet, mert olyan fontos adat és konfiguráció lehet, amely negatív hatással lehet a szolgáltatási műveletre. Tekintse át, hogy milyen ügynökök, megoldások és más Azure-szolgáltatások és-források tárolják az adataikat Log Analyticsban, például:
+Fontos, hogy körültekintően járjon el, amikor töröl egy munkaterületet, mert olyan fontos adat és konfiguráció lehet, amely negatív hatással lehet a szolgáltatási műveletre. Tekintse át, hogy az ügynökök, a megoldások és az egyéb Azure-szolgáltatások hogyan tárolják az adataikat Log Analyticsban, például:
 
 * Felügyeleti megoldások
 * Azure Automation
@@ -105,10 +105,13 @@ A rendszer a helyreállítási művelet után visszaküldi a munkaterületet és
 > * Egy munkaterület újbóli létrehozása a Soft-delete időszakban azt jelzi, hogy a munkaterület neve már használatban van. 
  
 ## <a name="troubleshooting"></a>Hibaelhárítás
-A munkaterület törléséhez legalább *log Analytics közreműködői* engedélyekkel kell rendelkeznie.<br>
-Ha hibaüzenet jelenik meg, akkor *a munkaterület neve már használatban van* , vagy *ütközést* okoz a munkaterület létrehozásakor, az a következő lehet:
-* A munkaterület neve nem érhető el, és a szervezete vagy más ügyfél által használt személy használja.
-* A munkaterületet az elmúlt 14 napban törölték, és a neve a törlési időszak számára fenntartott marad. Ha felül szeretné bírálni a munkaterületet, hogy az azonos nevű új munkaterületet hozzon létre, az alábbi lépéseket követve állítsa helyre a munkaterületet, és végezzen végleges törlést:<br>
-   1. [Állítsa helyre](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) a munkaterületet.
-   2. A munkaterület [végleges törlése](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
-   3. Hozzon létre egy új munkaterületet ugyanazzal a munkaterület-névvel.
+
+A munkaterület törléséhez legalább *log Analytics közreműködői* engedélyekkel kell rendelkeznie.
+
+* Ha nem biztos abban, hogy a törölt munkaterület helyreállítható törlési állapotban van-e, és visszaállítható, kattintson a [helyreállítás](#recover-workspace) lehetőségre *log Analytics munkaterületek* lapon, hogy megtekintse az előfizetéshez tartozó, nem törölt munkaterületek listáját. A véglegesen törölt munkaterületek nem szerepelnek a listában.
+* Ha hibaüzenet jelenik meg, akkor *a munkaterület neve már használatban van* , vagy *ütközést* okoz a munkaterület létrehozásakor, az a következő lehet:
+  * A munkaterület neve nem érhető el, és a szervezete vagy más ügyfél által használt személy használja.
+  * A munkaterületet az elmúlt 14 napban törölték, és a neve a törlési időszak számára fenntartott marad. Ha felül szeretné bírálni a munkaterületet, hogy az azonos nevű új munkaterületet hozzon létre, az alábbi lépéseket követve állítsa helyre a munkaterületet, és végezzen végleges törlést:<br>
+     1. [Állítsa helyre](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) a munkaterületet.
+     2. A munkaterület [végleges törlése](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
+     3. Hozzon létre egy új munkaterületet ugyanazzal a munkaterület-névvel.

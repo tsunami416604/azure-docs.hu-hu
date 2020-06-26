@@ -3,14 +3,16 @@ title: Az Azure AD használata az Azure Kubernetes szolgáltatásban
 description: Ismerje meg, hogyan használhatja az Azure AD-t az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 manager: gwallace
+author: mlearned
 ms.topic: article
-ms.date: 06/04/2020
-ms.openlocfilehash: 8d446d82550a6bc790d162ee944b0753979b6546
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.date: 06/25/2020
+ms.author: mlearned
+ms.openlocfilehash: 280637be417d904de6dbb7ae2e2647026da6c838
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782670"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374542"
 ---
 # <a name="integrate-aks-managed-azure-ad-preview"></a>Az AK által felügyelt Azure AD integrálása (előzetes verzió)
 
@@ -62,9 +64,6 @@ kubectl version --client
 ```
 
 [Ezeket az utasításokat](https://kubernetes.io/docs/tasks/tools/install-kubectl/) más operációs rendszerekhez használhatja.
-
-> [!CAUTION]
-> Miután regisztrált egy szolgáltatást egy előfizetéshez, jelenleg nem tudja törölni a szolgáltatást. Az előzetes verziójú funkciók engedélyezésekor az alapértelmezett beállítások az előfizetésben később létrehozott AK-fürtökhöz is használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Ehelyett használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
 ```azurecli-interactive
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
@@ -190,9 +189,9 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 
 ## <a name="non-interactive-login-with-kubelogin"></a>Nem interaktív bejelentkezés a kubelogin
 
-Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integrációs folyamatok, amelyek jelenleg nem érhetők el a kubectl. A [kubelogin](https://github.com/Azure/kubelogin) használatával nem interaktív helyzetekben is elérheti a fürtöt.
+Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integrációs folyamatok, amelyek jelenleg nem érhetők el a kubectl. A [kubelogin](https://github.com/Azure/kubelogin) segítségével hozzáférhet a fürthöz nem interaktív egyszerű szolgáltatásbeli bejelentkezéssel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [Azure ad szerepköralapú Access Control][azure-ad-rbac]megismerése.
 * [Kubelogin](https://github.com/Azure/kubelogin) használata az Azure-hitelesítés olyan szolgáltatásainak eléréséhez, amelyek nem érhetők el a kubectl-ben.

@@ -1,116 +1,124 @@
 ---
-title: Fizikai alapú renderelési anyagok beállítása a Mayában
-description: A cikk azt ismerteti, hogyan állíthatók be fizikailag alapú renderelési anyagok a Mayaba, és hogyan exportálhatók a FBX formátumba
+title: Fizikai alapú renderelési anyagok beállítása a Maya-ban
+description: Elmagyarázza, hogyan állíthat be fizikailag alapú renderelési anyagokat a Maya-ben, és hogyan exportálhatja őket FBX formátumba.
 author: muxanickms
 ms.author: misams
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5579994b0746a2de4b0f2ca927027ac709940024
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 72742ff4f6aa19fda092b44d8d2237e7d49dd816
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977827"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373241"
 ---
-# <a name="tutorial-setting-up-physically-based-rendering-materials-in-maya"></a>Oktatóanyag: fizikailag alapú renderelési anyagok beállítása a Maya-ban
+# <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Oktatóanyag: fizikailag alapú renderelési anyagok beállítása a Maya-ban
 
 ## <a name="overview"></a>Áttekintés
-Az oktatóanyag a következőket ismerteti:
+Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 >
-> * a speciális világítási modellel rendelkező anyagokat a jelenetben lévő objektumokhoz rendelheti hozzá.
-> * objektumok és anyagok egypéldányos kezelése.
-> * egy jelenet exportálása FBX formátumba és fontos beállításokkal.
+> * Az anyagokat speciális megvilágítás használatával rendelheti hozzá a jelenetben lévő objektumokhoz.
+> * Objektumok és anyagok egypéldányos kezelése.
+> * FBX-formátumba exportálhatja a jeleneteket, és kiválaszthatja a fontos beállítások lehetőséget.
 
-A [fizikai alapú renderelési (pbr) anyagok](../../overview/features/pbr-materials.md) a-ben `Maya` viszonylag egyszerű továbbítási feladat, amely a pbr számos módszeréhez hasonlóan más tartalom-létrehozási alkalmazásokban, például: `3DS Max` . A következő oktatóanyag egy útmutató az alapszintű PBR shader üzembe helyezéséhez és a FBX exportálásához az ARR-projektekhez. 
+A [fizikai alapú renderelési (pbr) anyagok](../../overview/features/pbr-materials.md) létrehozása a Maya-ben viszonylag egyszerű feladat. Számos módon hasonló a PBR-telepítőhöz más tartalom-létrehozási alkalmazásokban, például a 3DS max-ban. Ez az oktatóanyag az Azure-beli távoli renderelési projektek alapszintű PBR shader-telepítésének és FBX-exportálásának útmutatója. 
 
-Az oktatóanyagban szereplő minta jelenet számos olyan objektumot tartalmaz, `Polygon Box` amelyek számos különböző anyaghoz lettek hozzárendelve – fa, fém, festett fém, műanyag és gumi. Általánosságban elmondható, hogy minden anyag a következő textúrákat tartalmazza 
+Az oktatóanyagban szereplő minta jelenet számos sokszög típusú objektumot tartalmaz. Különböző anyagokat rendelnek hozzájuk, például fa, fém, festett fém, műanyag és gumi. Általánosságban elmondható, hogy minden anyag a következő textúrákat tartalmazza:
 
-* `Albedo`, az anyagok színleképezése, más néven `Diffuse` vagy`BaseColor`
-* `Metalness`, amely meghatározza, hogy egy anyag fémes-e, és hogy mely részek fémesek. 
-* `Roughness`, amely meghatározza, hogy a felület milyen durva vagy zökkenőmentes legyen, ami hatással van a reflexiók és a felszínek egy felületének élességére vagy homályos.
-* `Normals`, amely részletes adatokat ad hozzá egy felülethez, például egy fémes felületen vagy egy faszínen lévő fatüzeléssel, és nem kell további sokszögeket hozzáadnia.
-* `Ambient Occlusion`, amely lágy árnyékolás hozzáadására és az árnyékok a modellhez való kapcsolódására szolgál. Ez egy szürkeárnyalatos Térkép, amely azt jelzi, hogy a modell mely területein kap teljes világítást (fehér) vagy teljes árnyalatot (fekete). 
+* **Albedó**, amely az anyagok színleképezése, és más néven **diffúz** vagy **BaseColor**.
+* Fémesség, amely meghatározza, hogy egy anyag fémes- **e, és**hogy mely részek fémesek. 
+* A **érdesség**, amely meghatározza, hogy a felületek milyen durva vagy egyenletesek legyenek, és hatással vannak a reflexiók és a kiemelések élességére vagy homályos a felületen.
+* **Normál**, amely részletes adatokat ad hozzá egy felülethez anélkül, hogy további sokszögeket kellene hozzáadnia. A részletek közé tartozhatnak például a fém felületen vagy a gabona faanyagban való kihúzása.
+* **Környezeti elzáródás**, amely lágy árnyékolás hozzáadására és az árnyékok a modellhez való kapcsolódására szolgál. Ez egy szürkeárnyalatos Térkép, amely azt jelzi, hogy a modell mely területein kap teljes világítást (fehér) vagy teljes árnyalatot (fekete). 
 
 ## <a name="prerequisites"></a>Előfeltételek
-* `Autodesk Maya 2017`vagy újabb
+* Autodesk Maya 2017 vagy újabb
 
-## <a name="setting-up-materials-in-the-scene"></a>Anyagok beállítása a jelenetben
-A Maya-ben a PBR-anyagok beállításának folyamata a következő:
+## <a name="set-up-materials-in-the-scene"></a>Anyagok beállítása a jelenetben
+A következő módon állíthatja be a PBR-anyagokat a Maya alkalmazásban.
 
-A kezdéshez, ahogy látni fogja a minta jelenetben, számos Box objektumot hoztunk létre, amelyek mindegyike más típusú anyagokat képvisel. Vegye figyelembe, ahogy az alábbi képen is látható, hogy mindegyik objektum a saját megfelelő nevét kapta. 
+Ahogy a minta jelenetben is látható, létrehoztunk több Box objektumot is. Minden objektum más típusú anyagot képvisel. Ahogy az ábrán is látható, ezek az objektumok a megfelelő nevet kaptak.
 
-> Érdemes megjegyezni, mielőtt megkezdi az Azure távoli renderelés (ARR) eszközeinek létrehozását, hogy mérőszámokat használjon, és a felfelé irányított Y tengely legyen. Ezért javasoljuk, hogy állítsa be a jelenet egységeit a Maya-ben. Emellett ajánlott, hogy az exportálás során a FBX exportálási beállításainál a mérőszámok egységei értékre legyenek beállítva. 
+Az Azure-alapú távoli renderelés mérőműszereket használ a méréshez, a felfelé irány pedig az Y tengely. Mielőtt megkezdené az eszközök létrehozását, azt javasoljuk, hogy a jelenet egységeit a Maya-ben állítsa be. Az exportáláshoz állítsa a FBX exportálási beállítások mértékegységek mérőszámait.
 
 > [!TIP]
-Célszerű a modell eszközeinek megfelelő nevet készíteni, általában az érintett rész vagy anyag típusával, mivel a nevek megkönnyítik az objektumok nagy méretű jelenetek közötti navigálást.
+> Adja meg a modellnek megfelelő neveket a megfelelő rész vagy anyag típusa alapján. Az értelmes nevek megkönnyítik az objektum – nehéz jelenetek átjárását.
 
 ![Objektumok nevei](media/object-names.jpg)
 
-Miután létrehozta/beszerezte a textúrákat – az igényeitől függően érdemes lehet egyedi textúrákat létrehozni a textúrát használó alkalmazásokhoz, például a `Quixel Suite` , `Photoshop` vagy `Substance Suite` más forrásokból származó általános csempe-textúrákat, a következőképpen alkalmazhatja a modelljét:
+Miután létrehozta vagy beszerzett néhány textúrát, létrehozhat egyedi textúrákat is. Olyan anyagmintás alkalmazásokat is használhat, mint például a Quixel Suite, a PhotoShop vagy az anyag Suite, vagy az általános csempe-textúrákat más forrásokból is lekérheti.
 
-* A jelenet nézőpontjában válassza ki a modellt/geometriát, és kattintson rá a jobb gombbal. A megjelenő menüben kattintson a`Assign New Material`
-* A beállítások területen válassza a következőt: `Assign New Material` `Maya` > `Stingray PBS` . Ez a művelet egy PBR-anyagot rendel hozzá a modellhez. 
+Textúrák alkalmazása a modellre:
 
-A-ben `Maya 2020` számos különböző pbr-árnyékolás érhető el – `Maya Standard Surface` , `Arnold Standard Surface` és `Stingray PBR` . A `Maya Standard Surface Shader` még nem exportálható a on keresztül `FBX plugin 2020` , míg a `Arnold Standard Surface Shader` FBX-fájlokkal is exportálható. A legtöbb esetben ez megegyezik a-vel, és a `Maya Standard Surface Shader` `Physical Material` következőhöz hasonló: `3D Studio Max` .
+1. A jelenet nézőpontjában válassza ki a modellt vagy a geometriát, majd kattintson rá a jobb gombbal. A megjelenő menüben válassza az **új anyag kiosztása**elemet.
+1. Az **új anyag kiosztása** párbeszédpanelen nyissa meg a **Maya**  >  **rája PBS**-t. Ez a művelet egy PBR-anyagot rendel a modellhez. 
 
-**`The Stingray PBR Shader`** számos más alkalmazással kompatibilis, és a legszorosabban megfelel a követelményeinek, `ARR` és azóta is támogatott `Maya 2017` . Emellett kényelmes, hogy az ilyen típusú anyagok vizualizációja a nézetablakban hasonló, az ARR-ban később láthatóvá válik.
+A Maya 2020-ben számos különböző PBR-árnyékolás érhető el. Ide tartoznak a **Maya standard Surface**, az **Arnold standard Surface**és a **rája pbr**. A **Maya standard Surface shader** még nem exportálható a FBX 2020 beépülő modulon keresztül. Az **Arnold standard Surface SHADER** FBX-fájlokkal is exportálható. A legtöbb tekintetben megegyezik a **Maya standard Surface shader**szolgáltatással. Ez hasonló a **fizikai anyagokhoz** a 3D Studio Max-ban.
 
-!["Rája" anyag](media/stingray-material.jpg)
+A **rája pbr shader** számos más alkalmazással kompatibilis, és a legszorosabban megfelel az Azure Remote rendering követelményeinek. A Maya 2017 óta támogatott. Ha az ilyen típusú anyagok vizualizációja a nézetablakban történik, az az Azure-beli távoli renderelés során később láthatóvá válik.
 
-Ha az eszközhöz hozzárendelt anyagot és a megfelelő nevet látja, most már folytathatja a különböző textúrák hozzárendelését. A következő képek részletesen ismertetik, hogy az egyes textúra-típusok hogyan illeszkednek a PBR-anyagokhoz. Az `Stingray PBR` anyag lehetővé teszi, hogy kiválassza az aktiválni kívánt attribútumokat, így a `plug in` textúra térképei előtt aktiválnia kell a megfelelő attribútumokat: 
+![Rája anyagok](media/stingray-material.jpg)
+
+Az objektumhoz hozzárendelt, és a megfelelő névvel ellátott anyagokkal már hozzárendelheti a különböző textúrákat is. Az alábbi képek azt mutatják be, hogy az egyes textúra-típusok hol vannak a PBR-anyagokba. A rája PBR-anyagok segítségével kiválaszthatja, hogy mely attribútumok közül lehet aktiválni. A textúratérkép csatlakoztatása előtt aktiválnia kell a megfelelő attribútumokat.
 
 ![Anyag beállítása](media/material-setup.jpg)
 
-> [!TIP]
-Célszerű az anyagok megfelelő nevet használni, figyelembe véve a használatukat és/vagy típusát. Előfordulhat, hogy az egyedi részekben használni kívánt anyag neve az adott részhez tartozik, míg a szélesebb körben használható anyagokat a tulajdonságai vagy típusaik alapján lehet megnevezni.
+Megfelelő módon nevezze el az anyagokat a használat vagy a típus figyelembevételével. Az egyedi részekben használt anyagok neve az adott rész számára is megadható. A területeken szélesebb körben használt anyagok neve megadható a tulajdonságának vagy típusának.
 
-A textúrákat a következőképpen rendelheti hozzá:
+Rendelje hozzá a textúrákat a képen látható módon.
 
 ![Textúra beállítása](media/texture-setup.jpg)
 
-Ha létrehozta és beállította a PBR-anyagokat, érdemes meggondolni a [egypéldányos objektumokat](../../how-tos/conversion/configure-model-conversion.md#instancing) a jelenetben. A egypéldányos hasonló objektumok, például a NUTS, a csavarok, a csavaros alátétek – lényegében minden olyan objektum, amely azonos, jelentős megtakarítást eredményezhet a fájlméret szempontjából. A főobjektum példányai rendelkezhetnek a saját méretével, elforgatásával és átalakításával, amelyeket szükség szerint helyezhetnek el a jelenetben. A Maya-ben a egypéldányos folyamata egyszerű.
+Ha létrehozta és beállította a PBR-anyagokat, érdemes lehet [egypéldányos objektumokat](../../how-tos/conversion/configure-model-conversion.md#instancing) létrehozni a jelenetben. A egypéldányos hasonló objektumok, például a NUTS, a csavarok, a csavarok és a mosók jelentős megtakarításokat eredményeznek a fájlméretben. A főobjektum példányai rendelkezhetnek a saját méretezésével, elforgatásával és átalakításával, így szükség szerint helyezhetők el a jelenetben. 
 
-* A `Edit` menüben `Duplicate Special` nyissa meg a parancsot, és nyissa meg a következőt: `Options` 
-* A `Duplicate Special` beállítások között váltson a `Geometry Type` következőre: `Copy` `Instance` 
-* Kattintson a következőre: `Duplicate Special`
+A Maya-ben a egypéldányos folyamata egyszerű.
 
-![Egypéldányos](media/instancing.jpg)
+1. A **Szerkesztés** menüben nyissa meg a **speciális** lehetőséget a megnyitáshoz.
+1. A **Speciális beállítások duplikálása** párbeszédpanelen, a **geometria típusa** mezőben válassza a **példány** lehetőséget. 
+1. Válassza az **ismétlődő speciális**lehetőséget.
 
-Ez a művelet létrehozza az objektum egy példányát, amely a szülőtől és a szülő más példányaitól függetlenül elforgatható vagy méretezhető. 
->Azonban – ha egy példányon végrehajtott módosításokat az összetevő módban végez, a rendszer továbbítja az objektum összes példányára, így ha egy példányban lévő objektum-(csúcspont-), sokszög-és sokszög-elemekkel dolgozik, először győződjön meg arról, hogy az összes ilyen példányra hatással van.
+   ![Egypéldányos](media/instancing.jpg)
 
-A minta jelenetben minden egyes Box-objektum példánya megtörtént. Ez a művelet a jelenet FBX formátumba való exportálásakor lesz releváns.
+Ez a művelet létrehozza az objektum egy példányát. A szülőtől és a szülő más példányaitól függetlenül áthelyezheti, elforgathatja vagy méretezheti is. 
+
+Az egyes példányokon végrehajtott módosítások az objektum összes példányára továbbítódnak. Használhat például egy példányban lévő objektum összetevőit, például a csúcspontokat és a sokszögeket. Győződjön meg arról, hogy az összes ilyen példányra hatással van. 
+
+A minta jelenetben minden egyes Box-objektum példánya meg lett szakítva. Ez a művelet a jelenet FBX formátumba való exportálásakor lesz releváns.
 
 ![A jelenet áttekintése](media/scene-overview.jpg)
 
->A jelenet egypéldányos kapcsolatos ajánlott eljárás az, hogy a későbbiekben is létrehozza őket, mivel a példányokat tartalmazó példányok később rendkívül megnehezítik a másolást. 
+> [!TIP]
+> Hozzon létre példányokat a jelenetben. A példányokat tartalmazó példányok későbbi cseréje rendkívül nehéz. 
 
 ## <a name="fbx-export-process"></a>FBX-exportálási folyamat
 
-Most már beléphetünk a jelenet vagy a jelenet FBX exportálására. Általánosságban elmondható, hogy az eszközök exportálásával csak a kívánt jelenetből exportálja ezeket az objektumokat/eszközöket. Ha egy jelenetben 100 objektum van, de csak 30 közülük szeretné használni, akkor a teljes jelenet exportálására nincs pont. Tehát ha nem szeretné exportálni a teljes jelenetet, válassza ki a kijelölést, és lépjen a következőre:
+Térjünk át a jelenet vagy a jelenet FBX exportálásához. Az eszközök exportálásakor érdemes csak azokat az objektumokat vagy eszközöket kijelölni, amelyek az exportálni kívánt jelenetből származnak. Előfordulhat például, hogy egy jelenetben 100 objektum található. Ha csak 30 közülük kívánja használni, nincs értelme a teljes jelenet exportálásának. 
 
-* `File` > `Export Selection`az Exportálás párbeszédpanelen válassza a lent, majd a értékre `Files of Type` `FBX Export` . Ez az ablak teszi elérhetővé a FBX exportálási beállításait. Az FBX-exportálás elsődleges beállításai piros színnel jelennek meg az alábbi képen.
+Válassza ki a következőt:
 
-![FBX exportálása](media/FBX-exporting.jpg)
+1. **File**  >  Nyissa meg a fájl**exportálása lehetőséget** a kijelölés **exportálása** párbeszédpanel megnyitásához.
+1. A **fájltípusok** mezőben válassza a **FBX EXPORTÁLÁS** lehetőséget a FBX exportálási beállításainak megjelenítéséhez. A FBX-exportálás elsődleges beállításai piros színnel jelennek meg a képen.
 
-A követelményektől függően – előfordulhat például, hogy egy adategységet szeretne küldeni egy ügyfélnek, de nem szeretne nagy számú textúrát küldeni az objektummal, a textúrákat az exportált FBX-fájlba ágyazhatja. Ez a beállítás azt jelenti, hogy csak egy fájlt kell becsomagolni, de jelentősen növeli az adott FBX-eszköz méretét. Engedélyezheti a textúrák beágyazásának lehetőségét az `Embed Media` alább látható módon történő váltással.
+   ![FBX exportálása](media/FBX-exporting.jpg)
+
+A követelményektől függően előfordulhat például, hogy egy adategységet szeretne küldeni egy ügyfélnek. Lehet, hogy nem szeretne nagy mennyiségű textúra-fájlt küldeni az objektummal. Kiválaszthatja, hogy beágyazza a textúrákat az exportált FBX-fájlba. Ez a beállítás azt jelenti, hogy csak egy fájlt kell becsomagolni, de a FBX-eszköz mérete jelentősen megnő. Engedélyezheti a textúrák beágyazásának lehetőségét a **média beágyazása** lehetőség kiválasztásával az ábrán látható módon.
 
 > [!TIP]
-> Figyelje meg, hogy ebben az esetben a fájl neve ennek a feltételnek megfelelően van elnevezve. Ez jó gyakorlat az eszközök nyomon követésének biztosításához. 
+> Ebben a példában a fájl neve, hogy tükrözze ezt a feltételt. Ez a névadási stílus jó módszer az eszközök nyomon követésére. 
 
-Miután befejezte a konfiguráció exportálását, kattintson a jobb alsó sarokban található kiválasztás exportálása gombra.
+Miután beállította az exportálási konfigurációt, a jobb alsó sarokban válassza a **kijelölés exportálása** lehetőséget.
 
 ![Adathordozók beágyazása](media/embedding-media.jpg)
 
 ## <a name="conclusion"></a>Összegzés
 
-Általánosságban elmondható, hogy az ilyen típusú anyagok élethűek, mivel a fény valós fizikáján alapulnak. Ez egy további, a valós világban elérhetővé válik.
+Általánosságban elmondható, hogy az ilyen típusú anyagok reálisak, mert a fény valós fizikáján alapulnak. Ez egy további alámerülés hatást eredményez, amely úgy tűnik, hogy a jelenet valóban létezik a valós világban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most már ismeri a legfontosabb funkciókat a speciális világítású anyagok beállításához a jelenetben lévő objektumoknál, és exportálja azt az ARR által támogatott FBX formátumba. A következő lépés a FBX-fájl konvertálása és az ARR-ban való megjelenítése.
+Most már tudja, hogyan állíthat be speciális világítású anyagokat a jelenetekben található objektumokhoz. Arról is tájékozódhat, hogyan exportálhatja az objektumokat az Azure távoli renderelés által támogatott FBX formátumba. A következő lépés a FBX fájl átalakítása és megjelenítése az Azure-beli távoli renderelésben.
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: modell átalakítása renderelésre](../../quickstarts\convert-model.md)

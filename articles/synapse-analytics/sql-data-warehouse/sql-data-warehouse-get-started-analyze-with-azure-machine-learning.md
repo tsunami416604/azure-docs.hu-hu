@@ -6,18 +6,18 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: sql-dw
+ms.subservice: machine-learning
 ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 2f69ece56ebd17bcf012fdbc2c1d8da7a020be66
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 76a0e4660967dafec8e314fd681d05e694e562b1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212326"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368192"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Adatok elemzése Azure Machine Learning segítségével
 > [!div class="op_single_selector"]
@@ -131,5 +131,5 @@ Látni fogja, hogy a tesztelési adatkészletnél megjelent két új oszlop.
 
 A Kerékpárvásárló (tényleges) és a Pontozott címkék (előrejelzés) oszlopok összehasonlításával láthatja, milyen jól teljesített a modell. Ezt a modellt használhatja az új ügyfelek előrejelzéséhez, és közzéteheti a modellt webszolgáltatásként, vagy visszaállíthatja az eredményeket az Azure szinapszis szolgáltatásba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A prediktív gépi tanulási modellek létrehozásával kapcsolatos további tudnivalókért olvassa el [Az Azure Machine Learning bemutatása](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) című részt.

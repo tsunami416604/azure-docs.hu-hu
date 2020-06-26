@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7144cb18d19fd6be040b0a6ca4e8bb18498dfe6c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977932"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85365323"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -29,9 +29,34 @@ Minden átjáró két példánnyal rendelkezik, a felosztás úgy történik, ho
 
 ### <a name="how-do-i-add-dns-servers-for-p2s-clients"></a>Hogyan DNS-kiszolgálókat hozzáadni a P2S-ügyfelekhez?
 
-A P2S-ügyfelekhez két lehetőség van a DNS-kiszolgálók hozzáadására.
+A P2S-ügyfelekhez két lehetőség van a DNS-kiszolgálók hozzáadására. Az első módszer a javasolt, mivel az ügyfél helyett az egyéni DNS-kiszolgálókat adja hozzá az átjáróhoz.
 
-1. Nyisson meg egy támogatási jegyet a Microsofttal, és adja hozzá a DNS-kiszolgálókat a hubhoz.
+1. Használja az alábbi PowerShell-szkriptet az egyéni DNS-kiszolgálók hozzáadásához. Cserélje le a környezetének értékeit.
+```
+// Define variables
+$rgName = "testRG1"
+$virtualHubName = "virtualHub1"
+$P2SvpnGatewayName = "testP2SVpnGateway1"
+$vpnClientAddressSpaces = 
+$vpnServerConfiguration1Name = "vpnServerConfig1"
+$vpnClientAddressSpaces = New-Object string[] 2
+$vpnClientAddressSpaces[0] = "192.168.2.0/24"
+$vpnClientAddressSpaces[1] = "192.168.3.0/24"
+$customDnsServers = New-Object string[] 2
+$customDnsServers[0] = "7.7.7.7"
+$customDnsServers[1] = "8.8.8.8"
+$virtualHub = $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+$vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $vpnServerConfiguration1Name
+
+// Specify custom dns servers for P2SVpnGateway VirtualHub while creating gateway
+createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgname -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers
+
+// Specify custom dns servers for P2SVpnGateway VirtualHub while updating existing gateway
+$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+$updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName  -CustomDnsServer $customDnsServers 
+
+// Re-generate Vpn profile either from PS/Portal for Vpn clients to have the specified dns servers
+```
 2. Ha a Windows 10 rendszerhez készült Azure VPN-ügyfelet használja, akkor a letöltött profil XML-fájlját is módosíthatja, ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** és az importálás előtt hozzáadhatja a címkéket.
 
 ```
@@ -72,12 +97,19 @@ A partnerek automatizálásának lépéseiért tekintse át [a Virtual WAN-partn
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Kötelező egy adott partner eszközét használnom?
 
-Nem. Bármely olyan VPN-kompatibilis eszközt használhat, amely megfelel az Azure IKEv2/IKEv1 IPsec-támogatásra vonatkozó követelményeinek.
+Nem. Bármely olyan VPN-kompatibilis eszközt használhat, amely megfelel az Azure IKEv2/IKEv1 IPsec-támogatásra vonatkozó követelményeinek. A Virtual WAN olyan CPE-partneri megoldásokat is tartalmaz, amelyek automatizálják az Azure Virtual WAN-kapcsolatait, így könnyebben állíthatók be az IPsec VPN-kapcsolatok a skálán.
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Hogyan csatlakozhatnak a Virtual WAN-partnerek automatikusan az Azure Virtual WAN-hoz?
 
 A szoftveralapú csatlakozási megoldások jellemzően vezérlővel vagy eszközkiépítési központtal kezelik a kompatibilis eszközöket. A vezérlők Azure API-kat is használhatnak az Azure Virtual WAN-hoz való automatikus csatlakozáshoz. Az Automation magában foglalja a fiókirodák feltöltését, az Azure-konfiguráció letöltését, az IPSec-alagutak Azure-beli virtuális hubokba való beállítását, valamint a kapcsolat automatikus beállítását az Azure Virtual WAN-hoz. Ha több száz ága van, a virtuális WAN CPE-partnerekkel való csatlakozás egyszerű, mivel a bevezetési élmény eltartja a nagyméretű IPsec-kapcsolatok beállításának, konfigurálásának és felügyeletének szükségességét. További információ: [Virtual WAN partner Automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
+### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Mi a teendő, ha a virtuális WAN-partnerek listáján nem szerepel a használni kívánt eszköz? Használhatom továbbra is az Azure Virtual WAN VPN-hez való csatlakozáshoz?
+
+Igen, amíg az eszköz támogatja az IPsec-IKEv1 vagy a IKEv2. A virtuális WAN-partnerek automatizálják az eszközről az Azure VPN-végpontokhoz való kapcsolódást. Ez olyan lépéseket tesz szükségessé, mint például az "ág-adatok feltöltése", az "IPsec és a konfiguráció" és a "kapcsolat". Mivel az eszköz nem virtuális WAN-partneri ökoszisztémából származik, az Azure-konfiguráció manuális megkezdése és az eszköz az IPsec-kapcsolat beállításához való frissítése után kell elvégezni a nagy mennyiségű emelést.
+
+### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hogyan készülhetnek elő a szolgáltatásra a meglévő partnerek listáján még nem szereplő új partnerek?
+
+Minden virtuális WAN API nyitott API. A technikai megvalósíthatóság értékeléséhez áttekintheti a [Virtual WAN partner Automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) dokumentációját. Ideális esetben a partner olyan eszközzel rendelkezik, amely támogatja az IKEv1 vagy az IKEv2 IPsec-kapcsolatot. Miután a vállalat befejezte a CPE-eszközre vonatkozó automatizálási munkát, az automatizálási irányelvek alapján a fentiekben elérhető, a azurevirtualwan@microsoft.com [partnereken keresztüli kapcsolat]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners)itt látható. Ha Ön olyan ügyfél, amely egy adott céges megoldást szeretne virtuális WAN-partnerként felvenni, forduljon a virtuális WAN-hoz, és küldjön e-mailt a címre azurevirtualwan@microsoft.com .
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Hogyan támogatja a virtuális WAN az SD-WAN-eszközöket?
 
@@ -132,14 +164,6 @@ Igen. Lásd a [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-
 * Ha a virtuális hubhoz csatlakozó ExpressRoute-áramkörök miatt ExpressRoute az átjárót, akkor a skálázási egység árát kell fizetnie. Az ABB-ben minden egyes méretezési egység 2 GB/s, az egyes kapcsolati egységek pedig a VPN-kapcsolati egységgel megegyező sebességgel vannak terhelve.
 
 * Ha küllős virtuális hálózatok csatlakozott a központhoz, a küllős virtuális hálózatok továbbra is érvényesek lesznek a kitöltési díjak. 
-
-### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hogyan készülhetnek elő a szolgáltatásra a meglévő partnerek listáján még nem szereplő új partnerek?
-
-Minden virtuális WAN API nyitott API. A technikai megvalósíthatóság értékeléséhez áttekintheti a dokumentációt. Ha bármilyen kérdése van, küldjön egy e-mailt a címre azurevirtualwan@microsoft.com . Ideális esetben a partner olyan eszközzel rendelkezik, amely támogatja az IKEv1 vagy az IKEv2 IPsec-kapcsolatot.
-
-### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Mi a teendő, ha a virtuális WAN-partnerek listáján nem szerepel a használni kívánt eszköz? Használhatom továbbra is az Azure Virtual WAN VPN-hez való csatlakozáshoz?
-
-Igen, amíg az eszköz támogatja az IPsec-IKEv1 vagy a IKEv2. A virtuális WAN-partnerek automatizálják az eszközről az Azure VPN-végpontokhoz való kapcsolódást. Ez olyan lépéseket tesz szükségessé, mint például az "ág-adatok feltöltése", az "IPsec és a konfiguráció" és a "kapcsolat". Mivel az eszköz nem virtuális WAN-partneri ökoszisztémából származik, az Azure-konfiguráció manuális megkezdése és az eszköz az IPsec-kapcsolat beállításához való frissítése után kell elvégezni a nagy mennyiségű emelést.
 
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Lehetséges Azure Virtual WAN létrehozása Resource Manager-sablon használatával?
 

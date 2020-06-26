@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: 6eb6403ad6d1f181d1f51dde6db266070bf32a56
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 458cbe35e9d46b8a6afde399e20f3b484dfe6478
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194756"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373369"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása
 
@@ -71,7 +71,7 @@ Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördül�
 
 Több nyelvet is használhat egy jegyzetfüzetben a cella elején található megfelelő nyelvi mágikus parancs megadásával. A következő táblázat a cella nyelveinek váltására szolgáló mágikus parancsokat sorolja fel.
 
-|Magic parancs |Nyelv | Leírás |  
+|Magic parancs |Nyelv | Description |  
 |---|------|-----|
 |%% pyspark| Python | **Python** -lekérdezés végrehajtása a Spark-környezettel.  |
 |%% Spark| Scala | **Scala** -lekérdezés végrehajtása a Spark-környezettel.  |  
@@ -344,7 +344,7 @@ A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok mo
 
    ![parancssori üzemmód](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, nem kell beírnia a cellába. Adja meg a szerkesztési módot úgy, `Enter` hogy az egérrel kattint a cella szerkesztői területeire, vagy az egér használatával rákattint.
+2. A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, beírhatja a cellába. Adja meg a szerkesztési módot úgy, `Enter` hogy az egérrel kattint a cella szerkesztői területeire, vagy az egér használatával rákattint.
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 
@@ -389,7 +389,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 |Kihúzás|CTRL + [|
 |Váltás parancs módba| Esc |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával](../quickstart-apache-spark-notebook.md)
 - [Az Azure szinapszis Analytics Apache Spark](apache-spark-overview.md)

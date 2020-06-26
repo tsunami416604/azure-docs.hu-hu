@@ -13,16 +13,16 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b1a89acdf189e41f3c72ec12fc84920cd0c795d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84731087"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374576"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Munkahelyi vagy iskolai fiók lezárása egy nem felügyelt Azure AD-szervezetben
 
-Ha Ön egy nem felügyelt Azure Active Directory-(Azure AD-) szervezetben lévő felhasználó, és már nem kell az adott szervezettől származó alkalmazásokat használnia, vagy semmilyen társítást nem kell fenntartania, akkor bármikor lezárhatja a fiókját. A nem felügyelt szervezeteknek nincs globális rendszergazdája. A nem felügyelt szervezet felhasználói saját fiókjaikat a rendszergazdához való kapcsolatfelvétel nélkül is lezárják.
+Ha nem felügyelt Azure Active Directory (Azure AD) szervezet felhasználója, és már nem kell használnia az adott szervezettől származó alkalmazásokat, vagy nem kívánja fenntartani a társítást, bármikor lezárhatja a fiókját. A nem felügyelt szervezeteknek nincs globális rendszergazdája. A nem felügyelt szervezet felhasználói saját fiókjaikat a rendszergazdához való kapcsolatfelvétel nélkül is lezárják.
 
 A nem felügyelt szervezetekben lévő felhasználók gyakran jönnek létre az önkiszolgáló regisztráció során. Ilyen lehet például egy olyan adatfeldolgozó, amely egy ingyenes szolgáltatásra regisztrál. Az önkiszolgáló regisztrációval kapcsolatos további információkért lásd: [Mi az a Azure Active Directory önkiszolgáló regisztrációja?](directory-self-service-signup.md)
 
@@ -53,7 +53,7 @@ Nem felügyelt munkahelyi vagy iskolai fiók bezárásához kövesse az alábbi 
 
     ![Adatkérések – Bezárás megerősítése](./media/users-close-account/confirm-close.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a Azure Active Directory önkiszolgáló regisztrációja?](directory-self-service-signup.md)
 - [A felhasználó törlése nem felügyelt bérlőből](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)

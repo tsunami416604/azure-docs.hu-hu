@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5b54f87635e1ea972778b0039dc34170c5b7ab8a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 869614c2e3fe11c289ab6eb7f6c1407f666de2b0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362288"
+ms.locfileid: "85368141"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
 A felhőalapú rétegek a Azure File Sync választható funkciója, amelyekben a gyakran használt fájlok a kiszolgálón helyileg vannak gyorsítótárazva, míg az összes többi fájl a házirend-beállítások alapján Azure Files. Egy fájl többszintű kiválasztásakor a Azure File Sync fájlrendszer-szűrő (StorageSync.sys) a fájlt helyileg váltja fel egy mutatóval vagy újraelemzési ponttal. Az újraelemzési pont a fájl URL-címét jelöli Azure Files. A többrétegű fájlok "offline" attribútummal és az NTFS fájlrendszerrel beállított FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútummal is rendelkeznek, így a harmadik féltől származó alkalmazások biztonságosan azonosíthatják a többrétegű fájlokat.
@@ -82,7 +82,11 @@ A további adatok helyi megtartása csökkenti a kimenő forgalom költségeit, 
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Új kiszolgálói végpontot adott hozzá. Mennyi ideig tartanak a fájlok a kiszolgálói szinten?
-A Azure File Sync ügynök 4,0-es és újabb verzióiban a fájlok Azure-fájlmegosztásba való feltöltése után a rendszer a szabályzatok alapján a következő, az óránként egyszer megjelenő munkamenet-futtatási időpontokat fogja felosztani. A régebbi ügynökök esetében a rétegek akár 24 órát is igénybe vehetnek.
+
+Azt határozza meg, hogy a fájlokat a beállított szabályzatok alapján kell-e kiértékelni, óránként egyszer. Új kiszolgálói végpont létrehozásakor két helyzet fordulhat elő:
+
+1. Amikor új kiszolgálói végpontot ad hozzá, az adott kiszolgáló helyén gyakran előfordulnak fájlok. Először fel kell tölteni őket, mielőtt megkezdené a Felhőbeli rétegek megkezdését. A kötet szabad területének házirendje nem indul el, amíg az összes fájl kezdeti feltöltésének véget nem ér. A választható dátumra vonatkozó házirend azonban egy adott fájl alapján fog működni, amint a fájl feltöltése megtörtént. Az egyórás időköz itt is érvényes. 
+2. Új kiszolgálói végpont hozzáadásakor előfordulhat, hogy egy üres kiszolgáló helyét egy Azure-fájlmegosztás számára az adataival kapcsolja össze. Akár egy második kiszolgáló, akár vész-helyreállítási helyzetben van. Ha úgy dönt, hogy letölti a névteret, és felidézi a tartalmat a kiszolgáló kezdeti letöltése során, akkor a névtér leállása után a rendszer visszahívja a fájlokat az utolsó módosítás időbélyegzője alapján. Csak annyi fájl lesz meghívva, amely a kötet szabad területére vonatkozó házirendben és a választható dátum-házirendben is elfér.
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Honnan tudhatom meg, hogy van-e lépcsőzetesen egy fájl?
@@ -91,7 +95,7 @@ Több módon is ellenőrizhető, hogy a fájl az Azure-fájlmegosztás szintjér
    *  **Keresse meg a fájl attribútumait a fájlban.**
      Kattintson a jobb gombbal egy fájlra, lépjen a **részletek**menüpontra, majd görgessen le az **attribútumok** tulajdonsághoz. A rétegű fájlok a következő attribútumokkal vannak beállítva:     
         
-        | Attribútum betűjele | Attribútum | Meghatározás |
+        | Attribútum betűjele | Attribútum | Definíció |
         |:----------------:|-----------|------------|
         | A | Archívum | Azt jelzi, hogy a fájlt biztonsági mentési szoftverrel kell biztonsági másolatot készíteni. Ez az attribútum mindig be van állítva, függetlenül attól, hogy a fájl többszintes vagy teljes mértékben a lemezen van-e tárolva. |
         | P | Ritka fájl | Azt jelzi, hogy a fájl ritka fájl. A ritka fájlok olyan speciális fájltípusok, amelyeket az NTFS biztosít a hatékony használatra, ha a lemezen lévő fájl többnyire üres. A Azure File Sync ritka fájlokat használ, mivel a fájlok teljes mértékben, vagy részben visszahívásra kerülnek. A teljes mértékben többrétegű fájlokban a fájl stream a felhőben tárolódik. Egy részben visszanevezett fájlban a fájl egy része már lemezen van. Ha egy fájl teljesen visszahívásra kerül a lemezre, Azure File Sync átalakítja egy ritka fájlból egy normál fájlba. Ez az attribútum csak a Windows Server 2016-es és régebbi verzióra van beállítva.|

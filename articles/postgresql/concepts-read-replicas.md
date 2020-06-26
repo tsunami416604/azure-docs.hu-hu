@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.openlocfilehash: 48e23aa8cf20dd1225d3d7774d9703b960e0155a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/24/2020
+ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737886"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367995"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -43,10 +43,7 @@ A főkiszolgáló bármely [Azure Database for PostgreSQL régióban](https://az
 ### <a name="universal-replica-regions"></a>Univerzális replika-régiók
 A következő régiókban bármikor létrehozhat egy olvasási replikát, függetlenül attól, hogy hol található a főkiszolgáló. Ezek az univerzális replika-régiók:
 
-Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Közép-Korea, Dél-Brazília, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója.
-
-* Az USA 2. nyugati régiója átmenetileg nem érhető el a régiók közötti replika helyeként.
-
+Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati középső régiója
 
 ### <a name="paired-regions"></a>Párosított régiók
 Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a főkiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról szóló cikkből](../best-practices-availability-paired-regions.md).
@@ -55,7 +52,7 @@ Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshe
 
 A következő szempontokat kell figyelembe venni: 
 
-* Regionális elérhetőség: Azure Database for PostgreSQL az USA 2. nyugati régiójában, Közép-Franciaország, Észak-Európa és Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
+* Regionális elérhetőség: Azure Database for PostgreSQL a közép-Franciaországban, Észak-és Közép-Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
     
 * Egyirányú párok: egyes Azure-régiók csak egyetlen irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília. 
    Ez azt jelenti, hogy a Nyugat-Indiai főkiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai főkiszolgálók azonban nem hozhatnak létre replikát Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
@@ -187,6 +184,6 @@ Ha leállítja a replikálást egy főkiszolgáló és egy olvasási replika kö
 ### <a name="deleted-master-and-standalone-servers"></a>Törölt fő-és önálló kiszolgálók
 Főkiszolgáló törlésekor az összes olvasási replikája önálló kiszolgáló lesz. A rendszer újraindítja a replikákat, hogy tükrözze ezt a változást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portalban](howto-read-replicas-portal.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI-ben és a REST APIban](howto-read-replicas-cli.md).

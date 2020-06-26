@@ -5,19 +5,19 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: f5b87d048127bf856a5a683397540769a7040fd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 382849c30c3520bbb208886de5f302f59fdac98b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323443"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374456"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>A késés és a közelségi csoportok (előzetes verzió) csökkentése
 
 > [!Note]
 > Ha az AK-val közelítő elhelyezési csoportokat használ, az együttes elhelyezés csak az ügynök csomópontjaira vonatkozik. A csomópont csomópontra és a megfelelő üzemeltetett Pod-ról a pod-késésre való kijavítása megtörténik. Az egyhelyes elhelyezés nem befolyásolja a fürt vezérlő síkja elhelyezését.
 
-Amikor üzembe helyezi az alkalmazást az Azure-ban, a virtuálisgép-(VM-) példányok elosztása a régiók vagy a rendelkezésre állási zónák között hálózati késést okoz, ami hatással lehet az alkalmazás általános teljesítményére. A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. Egyes alkalmazások, például a játékok, a mérnöki szimulációk és a nagy gyakoriságú kereskedelem (HFT) kis késést és gyorsan elvégezhető feladatokat igényelnek. A nagy teljesítményű számítástechnikai (HPC) forgatókönyvek esetében, például a következő esetekben érdemes lehet [Proximity elhelyezési csoportokat](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#proximity-placement-groups) használni a fürt s csomópont-készletekhez.
+Amikor üzembe helyezi az alkalmazást az Azure-ban, a virtuálisgép-(VM-) példányok elosztása a régiók vagy a rendelkezésre állási zónák között hálózati késést okoz, ami hatással lehet az alkalmazás általános teljesítményére. A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. Egyes alkalmazások, például a játékok, a mérnöki szimulációk és a nagy gyakoriságú kereskedelem (HFT) kis késést és gyorsan elvégezhető feladatokat igényelnek. A nagy teljesítményű számítástechnikai (HPC) forgatókönyvek esetében, például a következő esetekben érdemes lehet [Proximity elhelyezési csoportokat](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#proximity-placement-groups) használni a fürt csomópontjaihoz.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -143,7 +143,7 @@ A fürt törléséhez használja a [`az group delete`][az-group-delete] parancso
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [közelségi elhelyezési csoportokról][proximity-placement-groups].
 

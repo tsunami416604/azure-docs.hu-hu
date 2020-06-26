@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 30d71333bb29720afd82c7dbbde7126b30a7f6d6
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84803686"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367393"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Terheléselosztás és kimenő szabályok konfigurálása standard Load Balancerban a Azure Portal használatával
 
@@ -45,7 +45,7 @@ Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást v�
     | Name                   | **myLoadBalancer**                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | Termékváltozat           | Válassza a **standard** vagy az **alapszintű**lehetőséget. A Microsoft a standard szintű üzemi számítási feladatokhoz ajánlja. |
+    | Termékváltozat           | Válassza a **standard**lehetőséget. |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. Ha meglévő nyilvános IP-címmel szeretne használni, válassza a **meglévő használata**lehetőséget.  A meglévő nyilvános IP-nek **standard** SKU-nak kell lennie.  Az alapszintű nyilvános IP-címek nem kompatibilisek a **standard** SKU Load balancerrel.  |
     | Nyilvános IP-cím              | Írja be a **myPublicIP** szöveget a szövegmezőbe.|
     | Rendelkezésreállási zóna | Rugalmas Load Balancer létrehozásához válassza a **felesleges zóna** lehetőséget. A zóna Load Balancer létrehozásához válasszon ki egy 1, 2 vagy 3 zónát egy adott zónából |
@@ -166,11 +166,11 @@ A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális 
 
 4. Válassza a **Hozzáadás** elemet.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó **myresourcegroupslb erőforráscsoportban** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikk tartalma:
  - Létrehozta a standard Load balancert.

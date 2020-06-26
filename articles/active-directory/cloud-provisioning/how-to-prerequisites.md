@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a2ea1cfba9b460f5723f69cd0382c7413b97bef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360809"
+ms.locfileid: "85373862"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>A felhő-kiépítés Azure AD Connectának előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
@@ -27,7 +27,7 @@ Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőal
 Azure AD Connect felhőalapú kiépítés használatához a következőkre lesz szüksége:
     
 - Egy hibrid identitás-rendszergazdai fiók az Azure AD-bérlőhöz, amely nem vendég felhasználó.
-- Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.
+- Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.  A kiszolgálónak a [Active Directory felügyeleti rétegek modellje](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)alapján 0. rétegű kiszolgálónak kell lennie.
 - Helyszíni tűzfal-konfigurációk.
 
 >[!NOTE]
@@ -92,7 +92,7 @@ A TLS 1,2 engedélyezéséhez kövesse az alábbi lépéseket.
 1. Indítsa újra a kiszolgálót.
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

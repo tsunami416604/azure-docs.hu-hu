@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 19691a654162ee3855cb257fd42e29d2e1fc0157
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: bf5821a0781b5208096a0c02058cf2239a99e7d6
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697238"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367852"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
@@ -132,8 +132,9 @@ Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.de
 
     | Linux-disztribúció | Verzió |
     | --------------- | ----------- |
-    | Debian 9 | `stretch` |
-    | Debian 8 | `jessie` |
+    | Debian 10 | `buster`  |
+    | Debian 9  | `stretch` |
+    | Ubuntu 19,04    | `disco`     |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
@@ -193,7 +194,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`a a következő beállításokat támogatja, amelyek csak a 2. x verziójúak, hacsak másként nincs jelezve:
 
-| Beállítás     | Leírás                            |
+| Beállítás     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | Egy [C# szintű függvénytár-(. cs) projekt](functions-dotnet-class-library.md)inicializálása. |
 | **`--csx`** | Egy [C# parancsfájl-(. CSX) projekt](functions-reference-csharp.md)inicializálása. `--csx`A következő parancsokban meg kell adni. |
@@ -294,7 +295,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok használatával:
 
-| Argumentum     | Leírás                            |
+| Argumentum     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (2. x verzió) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
 | **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x verzióban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
@@ -353,7 +354,7 @@ npm start
 
 `func start`a a következő lehetőségeket támogatja:
 
-| Beállítás     | Leírás                            |
+| Beállítás     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | A Futtatás előtt ne hozzon létre aktuális projektet. Csak a DotNet-projektekhez. Az alapértelmezett érték false (hamis). Az 1. x verzió esetében nem támogatott. |
 | **`--cert`** | A titkos kulcsot tartalmazó. pfx-fájl elérési útja. Csak a alkalmazásban használatos `--useHttps` . Az 1. x verzió esetében nem támogatott. |
@@ -459,7 +460,7 @@ Az 1. x verzióban a függvényt közvetlenül is meghívhatja `func run <Functi
 
 `func run`a a következő lehetőségeket támogatja:
 
-| Beállítás     | Leírás                            |
+| Beállítás     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Beágyazott tartalom. |
 | **`--debug`**, **`-d`** | A függvény futtatása előtt csatoljon egy hibakeresőt a gazdagéphez.|
@@ -498,14 +499,14 @@ Ez a parancs egy meglévő Function alkalmazásba tesz közzé az Azure-ban. Hib
 
 A következő közzétételi beállítások mindkét verzióra érvényesek: 1. x és 2. x.
 
-| Beállítás     | Leírás                            |
+| Beállítás     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  A beállítások közzététele az Azure-ban local.settings.js, ha a beállítás már létezik, a rendszer megkéri a felülírását. Ha a Microsoft Azure Storage Emulator használja, először módosítsa az alkalmazás beállításait egy [tényleges tárolási kapcsolatban](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | A használatakor a rendszer letiltja az Alkalmazásbeállítások felülírására vonatkozó kérést `--publish-local-settings -i` .|
 
 A következő közzétételi beállítások csak a 2. x verzióban támogatottak:
 
-| Beállítás     | Leírás                            |
+| Beállítás     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  Csak a beállítások közzététele és a tartalom kihagyása. Az alapértelmezett érték a prompt. |
 |**`--list-ignored-files`** | A közzététel során figyelmen kívül hagyott fájlok listáját jeleníti meg, amely a. funcignore fájlon alapul. |
@@ -529,7 +530,7 @@ func deploy
 
 A következő egyéni tároló üzembe helyezési lehetőségei érhetők el:
 
-| Beállítás     | Leírás                            |
+| Beállítás     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Annak a Docker-beállításjegyzéknek a neve, amelyre az aktuális felhasználó bejelentkezett. |
 | **`--platform`** | Üzemeltetési platform a Function alkalmazáshoz. Az érvényes beállítások a következők`kubernetes` |
@@ -559,7 +560,7 @@ Megtekintheti a függvények által a helyi számítógépen lévő parancssori 
 Az ilyen típusú folyamatos átviteli naplókhoz a Application Insights integrációjának engedélyezése szükséges a Function alkalmazáshoz.   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan fejlesztheti, tesztelheti és teheti közzé Azure Functions a Azure Functions Core Tools [Microsoft Learning modul](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) használatával Azure functions Core Tools [nyílt forráskódú, és a githubon üzemeltethető](https://github.com/azure/azure-functions-cli).  
 Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitHub-problémát](https://github.com/azure/azure-functions-cli/issues).

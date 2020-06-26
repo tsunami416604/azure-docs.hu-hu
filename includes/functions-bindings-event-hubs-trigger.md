@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 41e6352afb5eebc6ab09f43feac4e211232fd270
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 7826df83506083e2db1bdb011704cb0fef628801
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85292134"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378591"
 ---
 Az Event hub Event streambe küldött eseményre való reagáláshoz használja a függvény eseményindítóját. Az eseményindító beállításához olvasási hozzáféréssel kell rendelkeznie a mögöttes Event hub-hoz. A függvény elindításakor a függvénynek átadott üzenet karakterláncként van beírva.
 
@@ -343,11 +343,11 @@ A Java [functions futtatókörnyezet könyvtárában](https://docs.microsoft.com
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `EventHubTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `eventHubTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**direction** | n.a. | Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -355,7 +355,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. Az [alkalmazás beállításain](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings) keresztül lehet hivatkozni`%eventHubName%` |
 |**consumerGroup** |**ConsumerGroup** | Egy opcionális tulajdonság, amely a központban lévő eseményekre való előfizetéshez használt [fogyasztói csoportot](../articles/event-hubs/event-hubs-features.md#event-consumers) állítja be. Ha nincs megadva, a `$Default` rendszer a fogyasztói csoportot használja. |
-|**számosság** | n.a. | A JavaScripthez. A `many` kötegelt feldolgozás engedélyezéséhez állítsa a következőre:.  Ha nincs megadva vagy a értékre `one` van állítva, a függvény egyetlen üzenetet ad át. |
+|**számosság** | n.a. | Az összes nem C nyelvhez használatos. A `many` kötegelt feldolgozás engedélyezéséhez állítsa a következőre:.  Ha nincs megadva vagy a értékre `one` van állítva, a függvény egyetlen üzenetet ad át.<br><br>A C# nyelvben ez a tulajdonság automatikusan lesz hozzárendelve, amikor az trigger rendelkezik tömbvel a típushoz.|
 |**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
@@ -364,7 +364,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 A Event Hubs trigger számos [metaadat-tulajdonságot](../articles/azure-functions/./functions-bindings-expressions-patterns.md)biztosít. A metaadatok tulajdonságai más kötésekben vagy a kódban szereplő paraméterek részeként is használhatók. A tulajdonságok a [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) osztályból származnak.
 
-|Tulajdonság|Típus|Leírás|
+|Tulajdonság|Típus|Description|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|A `PartitionContext` példány.|
 |`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő idő UTC szerint.|

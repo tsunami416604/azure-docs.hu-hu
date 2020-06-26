@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0641272177371ff5e8b6eac98b5bdbd381af931
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591216"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367461"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 |     |
@@ -31,7 +31,7 @@ Ha közvetlen kapcsolatot hoz létre egy partner identitásszolgáltató, az ado
 > A közvetlen összevonási vendég felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői környezetet (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>` egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A közvetlen összevonási felhasználók jelenleg nem tudnak bejelentkezni olyan közös végpontok használatával, amelyek nem rendelkeznek bérlői környezettel. Például a, a, a vagy a használatakor `https://myapps.microsoft.com` `https://portal.azure.com` `https://teams.microsoft.com` hibaüzenetet fog eredményezni.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Mikor van hitelesítve a vendég felhasználó közvetlen összevonással?
-Miután beállította a közvetlen összevonást egy szervezettel, a meghívott új vendég-felhasználók a közvetlen összevonás használatával lesznek hitelesítve. Fontos megjegyezni, hogy a közvetlen összevonás beállítása nem módosítja a hitelesítési módszert azon vendég felhasználók számára, akik már beváltottak egy meghívót. Néhány példa:
+Miután beállította a közvetlen összevonást egy szervezettel, a meghívott új vendég-felhasználók a közvetlen összevonás használatával lesznek hitelesítve. Fontos megjegyezni, hogy a közvetlen összevonás beállítása nem módosítja a hitelesítési módszert azon vendég felhasználók számára, akik már beváltottak egy meghívót. Az alábbiakban néhány példa következik:
  - Ha a vendég felhasználói már beváltották a meghívókat, és ezt követően a szervezethez tartozó közvetlen összevonást is beállította, akkor a vendég felhasználói továbbra is ugyanazt a hitelesítési módszert használják, mint a közvetlen összevonás beállítása előtt.
  - Ha úgy állítja be a közvetlen kapcsolatot egy partner szervezettel, hogy meghívja a vendég felhasználókat, majd a partnervállalat később áthelyezi az Azure AD-be, a már beváltott meghívókat továbbra is a közvetlen összevonás fogja használni, feltéve, hogy a bérlői közvetlen összevonási házirend létezik.
  - Ha közvetlen kapcsolatot töröl egy partner szervezettel, a közvetlen kapcsolatot használó vendég felhasználók nem fognak tudni bejelentkezni.
@@ -174,7 +174,7 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
    Connect-AzureAD
    ```
 1. A bejelentkezési kérésben jelentkezzen be a felügyelt globális rendszergazdai fiókkal. 
-2. Futtassa az alábbi parancsokat, és cserélje le az összevonási metaadatok fájljának értékeit. AD FS-kiszolgáló és a okta esetében az összevonási fájl az federationmetadata. XML, például: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
+2. Futtassa az alábbi parancsokat, és cserélje le az összevonási metaadatok fájljának értékeit. AD FS-kiszolgáló és a okta esetében az összevonási fájl federationmetadata.xml, például: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -221,3 +221,7 @@ Az identitás-szolgáltatóval való közvetlen összevonás eltávolítása a P
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
+
+## <a name="next-steps"></a>Következő lépések
+
+További információ a [meghívás beváltási élményéről](redemption-experience.md) , ha a külső felhasználók különböző identitás-szolgáltatókkal jelentkeznek be.

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/24/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1e9ec975a17be2675d2f56b2cee87f91d7e9aae
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 388c40867c21390c3de8a033a1bfa08eb95bd602
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733126"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367410"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Arculat hozzáadása a szervezet Azure Active Directory bejelentkezési lapjához
 A szervezet emblémájának és egyéni színsémáinak használatával egységes megjelenést és működést biztosíthat a Azure Active Directory (Azure AD) bejelentkezési oldalain. A bejelentkezési oldalai akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet web-alapú alkalmazásaiba, például az Office 365-be, amely az Azure AD-t használja az identitás-szolgáltatóként.
@@ -62,7 +62,17 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
 
         - **Felhasználónév-emlékeztető.** Írja be a felhasználók számára megjelenő tipp szövegét, ha elfelejtik a felhasználónevét. A szövegnek Unicode formátumúnak kell lennie, hivatkozás vagy kód nélkül, és nem lehet hosszabb 64 karakternél. Ha a vendégek bejelentkeznek az alkalmazásba, javasoljuk, hogy ne adja hozzá ezt a tippet.
 
-        - **A bejelentkezési oldal szövege.** Írja be a bejelentkezési oldal alján megjelenő szöveget. Ezt a szöveget használhatja további információk, például telefonszámok vagy jogi nyilatkozatok közlésére. A szövegnek Unicode-nak kell lennie, és nem lehet hosszabb 256 karakternél.
+        - **A bejelentkezési oldal szövege és formázása.** Írja be a bejelentkezési oldal alján megjelenő szöveget. Ezt a szöveget használhatja további információk, például telefonszámok vagy jogi nyilatkozatok közlésére. A szövegnek Unicode-nak kell lennie, és nem lehet hosszabb 1024 karakternél.
+
+           Testreszabhatja a beírt bejelentkezési oldal szövegét. Új bekezdés megkezdéséhez használja kétszer az ENTER billentyűt. A szövegformázást úgy is megváltoztathatja, hogy félkövér, dőlt, aláhúzás vagy kattintható hivatkozást tartalmazzon. A szöveg formázásának hozzáadásához használja a következő szintaxist: 
+
+          > Hivatkozás```[text](link)``` 
+          
+          > Félkövér: ``` **text** ``` vagy``` __text__ ``` 
+          
+          > Dőlt betű: ``` *text* ``` vagy``` _text_ ``` 
+          
+          > Aláhúzása``` ++text++ ``` 
 
     - **Speciális beállítások**
             
@@ -129,7 +139,7 @@ Az eredeti konfiguráció nyelvét nem módosíthatja az alapértelmezett nyelvr
 ## <a name="add-your-custom-branding-to-pages"></a>Egyéni arculat hozzáadása lapokhoz
 Adja hozzá az egyéni arculatot a lapokhoz az URL-cím végének szöveggel való módosításával `?whr=yourdomainname` . Ez a módosítás több oldalon is működik, beleértve a Multi-Factor Authentication (MFA) telepítési oldalát, az önkiszolgáló jelszó-visszaállítás (SSPR) telepítési lapját és a bejelentkezési lapot.
 
-**Példák**
+**Példák:**
 
 **Eredeti URL-cím:**https://aka.ms/MFASetup<br>
 **Egyéni URL-cím:**`https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`

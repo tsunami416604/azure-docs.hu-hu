@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
-ms.date: 06/28/2019
-ms.openlocfilehash: 02e0947de3e7e5c6ce5110740127571ea393b168
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/24/2020
+ms.openlocfilehash: 2975b98306b7019022799d5ba69b9d7af5797a2b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343863"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368039"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Resource Manager sablon használatával
 
@@ -24,39 +24,32 @@ ms.locfileid: "84343863"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az üzembe helyezés az Azure-ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-database%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincsenek.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
-## <a name="create-a-single-database"></a>Önálló adatbázis létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Egyetlen adatbázis a számítási, a memória-, az IO-és a tárolási erőforrások meghatározott készletével rendelkezik, és a két [vásárlási modell](purchasing-models.md)egyikét használja. Egyetlen adatbázis létrehozásakor meg kell adnia egy [kiszolgálót](logical-servers.md) is a kezeléséhez, és egy adott régióban lévő [Azure-erőforráscsoporthoz](../../active-directory-b2c/overview.md) helyezheti azt.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
 Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/101-sql-logical-server/) származik.
 
-:::code language="json" source="~/quickstart-templates/101-sql-logical-server/azuredeploy.json" range="1-163" highlight="63-132":::
+:::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 
 Ezek az erőforrások a sablonban vannak definiálva:
 
 - [**Microsoft. SQL/kiszolgálók**](/azure/templates/microsoft.sql/servers)
-- [**Microsoft. SQL/kiszolgálók/firewallRules**](/azure/templates/microsoft.sql/servers/firewallrules)
-- [**Microsoft. SQL/kiszolgálók/securityAlertPolicies**](/azure/templates/microsoft.sql/servers/securityalertpolicies)
-- [**Microsoft. SQL/kiszolgálók/vulnerabilityAssessments**](/azure/templates/microsoft.sql/servers/vulnerabilityassessments)
-- [**Microsoft. SQL/kiszolgálók/connectionPolicies**](/azure/templates/microsoft.sql/servers/connectionpolicies)
-- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)
-- [**Microsoft. Storage/storageAccounts/Providers/roleAssignments**](/azure/templates/microsoft.authorization/roleassignments)
+- [**Microsoft. SQL/kiszolgálók/adatbázisok**](/azure/templates/microsoft.sql/servers/databases)
 
 További Azure SQL Database-sablonok találhatók az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 A Azure Cloud Shell megnyitásához válassza a **kipróbálás** a következő PowerShell-kódból elemet.
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -67,32 +60,10 @@ $adminPassword = Read-Host -Prompt "Enter the SQl server administrator password"
 $resourceGroupName = "${projectName}rg"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-sql-logical-server/azuredeploy.json" -administratorLogin $adminUser -administratorLoginPassword $adminPassword
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-sql-database/azuredeploy.json" -administratorLogin $adminUser -administratorLoginPassword $adminPassword
 
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
-
-# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
-
-```azurecli-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
-$location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
-$adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
-$adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
-
-$resourceGroupName = "${projectName}rg"
-
-az group create --location $location --name $resourceGroupName
-
-az group deployment create -g $resourceGroupName --template-uri "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" `
-    --parameters 'projectName=' + $projectName \
-                 'administratorLogin=' + $adminUser \
-                 'administratorLoginPassword=' + $adminPassword
-
-Read-Host -Prompt "Press [ENTER] to continue ..."
-```
-
-* * *
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -104,22 +75,10 @@ Tartsa meg ezt az erőforráscsoportot, kiszolgálót és önálló adatbázist,
 
 Az erőforráscsoport törlése:
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
-
-# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
-
-```azurecli-interactive
-echo "Enter the Resource Group name:" &&
-read resourceGroupName &&
-az group delete --name $resourceGroupName
-```
-
-* * *
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -130,4 +89,3 @@ az group delete --name $resourceGroupName
 - Ha egyetlen adatbázist szeretne létrehozni az Azure CLI használatával, tekintse meg az [Azure CLI-minták](az-cli-script-samples-content-guide.md)című témakört.
 - Ha Azure PowerShell használatával szeretne önálló adatbázist létrehozni, tekintse meg a [Azure PowerShell mintákat](powershell-script-content-guide.md).
 - A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [az első sablon létrehozása](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).
- 

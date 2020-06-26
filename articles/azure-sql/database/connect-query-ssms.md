@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 14e7f4d09185f76786fd88576eef0b6df02877c4
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253613"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368073"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódás és lekérdezés a SSMS használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -155,7 +155,7 @@ Futtassa ezt a [Insert](/sql/t-sql/statements/insert-transact-sql/) Transact-SQL
 
 ### <a name="update-data"></a>Adatok frissítése
 
-Futtassa ezt a [frissítési](/sql/t-sql/statements/update-transact-sql) Transact-SQL-kódot az új termék módosításához.
+Futtassa ezt a [frissítési](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) Transact-SQL-kódot az új termék módosításához.
 
 1. Cserélje le az előző lekérdezést, amely a korábban létrehozott új rekordot adja vissza:
 
@@ -180,7 +180,7 @@ Futtassa ezt a [delete](/sql/t-sql/statements/delete-transact-sql/) Transact-SQL
 
 2. Válassza a **végrehajtás** lehetőséget a tábla megadott sorának törléséhez `Product` . Megjelenik az **üzenetek** ablaktábla **(1 sor érintett)**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a SSMS: [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms/).
 - A Azure Portal használatával történő kapcsolódáshoz és lekérdezéshez lásd: [Kapcsolódás és lekérdezés a Azure Portal SQL-lekérdezés szerkesztőjével](connect-query-portal.md).

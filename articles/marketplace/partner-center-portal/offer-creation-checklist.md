@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c34eee74070dfb137311867615f55a7c89522cd5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708989"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374406"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>SaaS-ajánlat létrehozási ellenőrzőlistája a partner Centerben
 
@@ -83,7 +83,7 @@ A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket
 | :---------------- | :-----------| 
 | Name  | Kötelező, Max 50 karakter. |
 | Összefoglalás  | Kötelező, Max 100 karakter. | 
-| Leírás  | Kötelező, Max 3000 karakter. |
+| Description  | Kötelező, Max 3000 karakter. |
 | Első lépések utasítások  | Kötelező, Max 3000 karakter. |
 | Első lépések utasítások  | Kötelező, Max 3000 karakter. |
 | Kulcsszavak keresése  | Nem kötelező, ajánlott, legfeljebb 3 kulcsszó. |
@@ -92,7 +92,7 @@ A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket
 | Hasznos hivatkozások címe + URL-cím  | Választható. |
 | Támogató dokumentumok cím + fájl  | Kötelező, minimum 1 és Max 3. PDF-fájlformátumnak kell lennie. |
 | Képernyőképek  | Kötelező, min. 1 képernyőfelvétel és max. 5; négy vagy több ajánlott. PNG formátumban 1280 X 720 értéknek kell lennie. |
-| Emblémák tárolása (kicsi, közepes, nagy, széles, hős)  | Kicsi (48 X 48) és nagy (216 X 216) szükséges; Egyéb méretek nem kötelező, de ajánlott: közepes (90 x 90), Wide (255 x 115), Hero (815 x 290). PNG formátumúnak kell lennie. |
+| Emblémák tárolása (kicsi, közepes, nagy, széles)  | Kicsi (48 X 48) és nagy (216 X 216) szükséges; Egyéb méretek nem kötelező, de ajánlott: közepes (90 x 90), széles (255 x 115). A-ben kell lennie. PNG-formátum. |
 | Videók neve + URL + miniatűr  | Opcionális, ajánlott, legfeljebb 4 videó. A miniatűr 1280 x 720 PNG formátumúnak kell lennie. A videót a YouTube vagy a Vimeo szolgáltatásban kell tárolni. |
 | Névjegyek (CSP program, mérnöki, támogatás)  | Mérnöki és támogatási Kapcsolatfelvétel szükséges (név, e-mail és telefonszám); A CSP program elérhetősége nem kötelező, de ajánlott. |
 | Támogatási URL-cím  | Kötelező. |
@@ -153,7 +153,7 @@ Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló megh
 
 | **Mezőnév**    | **Megjegyzések**   | 
 | :---------------- | :-----------| 
-| Leírás  | Kötelező. |
+| Description  | Kötelező. |
 | Felhasználói manuális név + fájl  | Kötelező, legfeljebb 1 doc. PDF formátumúnak kell lennie. |
 | Videó neve, URL + miniatűr  | Nem kötelező, ajánlott. A miniatűrnek 533 x 324 JPGP vagy PNG formátumúnak kell lennie. A videót a YouTube vagy a Vimeo szolgáltatásban kell tárolni. |
 
@@ -163,6 +163,6 @@ Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló megh
 | :---------------- | :-----------| 
 | A minősítéssel kapcsolatos megjegyzések  | Választható. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új SaaS-ajánlat létrehozása](./create-new-saas-offer.md)

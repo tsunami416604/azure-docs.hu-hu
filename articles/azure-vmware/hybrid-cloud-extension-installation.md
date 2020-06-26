@@ -3,17 +3,19 @@ title: Hibrid felhőalapú bővítmény (HCX) telepítése
 description: A VMware Hybrid Cloud Extension (HCX) megoldás beállítása az Azure VMware-megoldás (AVS) privát felhőhöz
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873652"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367546"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Az Azure VMware-megoldás HCX telepítése
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a VMware Hybrid Cloud Extension (HCX) megoldást az Azure VMware-megoldás (AVS) privát felhőbe. A HCX Advanced (alapértelmezett telepítés) legfeljebb három külső helyet támogat, ahol minden külső helyhez telepíteni és aktiválni kell a HCX Enterprise Managert vagy összekötőt.
-A HCX lehetővé teszi a VMware-alapú számítási feladatok áttelepítését a felhőbe vagy más csatlakoztatott webhelyekre a különböző beépített HCX támogatott áttelepítési típusokon keresztül. Ha több mint három hely szükséges, az ügyfeleknek lehetővé kell tenniük a HCX Enterprise bővítmény támogatását. A HCX Enterprise további díjakat biztosít az ügyfelek számára az általánosan elérhető verzió (GA) után, de [további funkciókat](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)is kínál.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a VMWare Hybrid Cloud Extension (HCX) megoldást az Azure VMWare-megoldás (AVS) privát felhőbe. A HCX lehetővé teszi a VMware-alapú számítási feladatok felhőbe és más csatlakoztatott webhelyekre történő áttelepítését a különböző beépített HCX támogatott áttelepítési típusokon keresztül.
+
+A HCX Advanced, az alapértelmezett telepítés legfeljebb három külső helyet támogat. Ha több mint három hely szükséges, az ügyfeleknek lehetővé kell tenniük a HCX Enterprise bővítmény támogatását. A HCX Enterprise telepítése további díjakat biztosít az ügyfelek számára az általánosan elérhetővé tétel (GA) után, de [további funkciókat](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)is kínál.
+
 
 Először alaposan [áttekintheti](#before-you-begin)a [szoftver verziójának követelményeit](#software-version-requirements)és [előfeltételeit](#prerequisites) . 
 
@@ -25,7 +27,7 @@ Ezután az összes szükséges eljárást bemutatjuk:
 > * A hálózati kimenő és a szolgáltatási háló konfigurálása
 > * A telepítés befejezése a készülék állapotának ellenőrzésével
 
-A telepítés befejezése után javasolt a következő lépések elvégzése.
+A telepítés befejezése után kövesse a cikk végén elérhető, javasolt következő lépéseket.  
 
 ## <a name="before-you-begin"></a>Előkészületek
     
@@ -36,17 +38,17 @@ A telepítés befejezése után javasolt a következő lépések elvégzése.
 * Ha szeretné áttekinteni a kapcsolódó VMware-anyagokat a HCX-on, mint például a VMware vSphere [blog sorozat](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) a HCX. 
 * Az AVS HCX Enterprise aktiválása AVS-támogatási csatornákon keresztül történik.
 
-A számítási és tárolási erőforrások méretezése alapvető tervezési lépés az AVS Private Cloud HCX megoldás használatának előkészítése során. Ezt a méretezési lépést a belső felhőalapú környezet kezdeti megtervezésének részeként kell kezelni. 
+A számítási és tárolási erőforrások méretezése alapvető tervezési lépés az AVS Private Cloud HCX megoldás használatának előkészítése során. A méretezési lépést a saját felhőalapú környezet kezdeti megtervezésének részeként kell kezelni.   
 
 ## <a name="software-version-requirements"></a>A szoftver verziójának követelményei
 Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtatniuk. 
                                                          
-| Összetevő típusa                                                          | Forrás-környezeti követelmények                                                                   | A célként megadott környezeti követelmények                                                                      |
+| Összetevő típusa    | Forrás-környezeti követelmények    | A célként megadott környezeti követelmények   |
 | --- | --- | --- |
-| vCenter Server                                                          | 5.1<br/><br/>Ha 5,5 U1-es vagy korábbi verzióját használ, használja az önálló HCX felhasználói felületet a HCX műveletekhez.         | 6,0 U2 és újabb verziók                                                                                          |
-| ESXi                                                                    | 5.0                                                                                               | ESXi 6,0 és újabb verziók                                                                                        |
-| NSX                                                                     | A logikai kapcsolók HCX hálózati kiterjesztése a következő forrásnál: NSXv 6.2 + vagy NSX-T 2.4 +              | NSXv 6.2 + vagy NSX-T 2.4 +<br/><br/a HCX közelségének útválasztásához: NSXv 6.4 + (a közelségi útválasztás nem támogatott a NSX-T-vel) |
-| vCloud igazgató                                                         | Nem kötelező – nincs együttműködés a vCloud igazgatóval a forrás helyén | Ha a célként megadott környezet integrálva van a vCloud-igazgatóval, a minimum a 9.1.0.2.              |
+| vCenter Server   | 5.1<br/><br/>Ha 5,5 U1-es vagy korábbi verzióját használ, használja az önálló HCX felhasználói felületet a HCX műveletekhez.  | 6,0 U2 és újabb verziók   |
+| ESXi   | 5.0    | ESXi 6,0 és újabb verziók   |
+| NSX    | A logikai kapcsolók HCX hálózati kiterjesztése a következő forrásnál: NSXv 6.2 + vagy NSX-T 2.4 +   | NSXv 6.2 + vagy NSX-T 2.4 +<br/><br/>A HCX közelségének útválasztásához: NSXv 6.4 + (a közelségi útválasztás nem támogatott a NSX-T-vel) |
+| vCloud igazgató   | Nem kötelező – nincs együttműködés a vCloud igazgatóval a forrás helyén | A cél környezet vCloud-igazgatóval való integrálásakor a minimális érték a 9.1.0.2.  |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,7 +60,7 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
 
 * A helyszíni HCX IX-es és a NE készülékeknek képesnek kell lenniük a vCenter és az ESXi-infrastruktúra elérésére.
 
-* A WAN Interconnect-berendezés üzembe helyezéséhez a Azure Portal a SDDC való üzembe helyezéshez használt/22 CIDR-blokkon kívül a HCX egy/29 blokkot igényel. Ezt a hálózat megtervezése során érdemes figyelembe venni.
+* A WAN Interconnect-berendezés üzembe helyezéséhez a Azure Portal a SDDC való üzembe helyezéshez használt/22 CIDR-blokkon kívül a HCX egy/29 blokkot igényel. Ügyeljen arra, hogy ezt a követelményt a hálózat megtervezésében is figyelembe kell venni.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>A VMware HCX-petesejtek üzembe helyezése a helyszínen
 
@@ -66,11 +68,11 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
 
     ![HCX kiválasztása az AVS vCenter](./media/hybrid-cloud-extension-installation/avs-vsphere-client.png)
 
-1. A VMware HCX-petesejt fájl letöltéséhez válassza az **Adminisztráció**  >  **rendszerfrissítések**lehetőséget.
+1. Az **Adminisztráció**területen válassza a **rendszerfrissítések** lehetőséget, majd a VMware HCX-petesejt fájl letöltéséhez válassza a **kérelem letöltési hivatkozását** .
 
     ![Rendszerfrissítések beolvasása](./media/hybrid-cloud-extension-installation/administration-updates.png)
 
-1. Válassza ki a helyszíni vCenter telepítendő OVF-sablont.  
+1. Ezután nyissa meg a helyszíni vCenter, és válasszon ki egy OVF-sablont a helyszíni vCenter való üzembe helyezéshez.  
 
     ![OVF-sablon kiválasztása](./media/hybrid-cloud-extension-installation/select-template.png)
 
@@ -90,7 +92,10 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
 
 A telepítést követően hajtsa végre az alábbi lépéseket.
 
-1. Nyissa meg a HCX Managert `https://HCXManagerIP:9443` , és jelentkezzen be felhasználónevével és jelszavával. 
+1. Jelentkezzen be a helyszíni HCX-kezelőbe `https://HCXManagerIP:9443` , és jelentkezzen be felhasználónevével és jelszavával. 
+
+   > [!IMPORTANT]
+   > Ügyeljen arra, hogy a `9443` portszámot a HCX Manager IP-címével együtt adja meg.
 
 1. A **Licencelés**területen adja meg a **HCX speciális kulcsát**.  
 
@@ -99,7 +104,7 @@ A telepítést követően hajtsa végre az alábbi lépéseket.
     > [!NOTE]
     > A HCX-kezelőnek meg kell nyitnia az internet-hozzáférést, vagy konfigurálnia kell egy proxyt.
 
-1. Konfigurálja a vCenter.
+1. Ha szükséges, a **vCenter**szerkessze a vCenter adatait.
 
     ![VCenter konfigurálása](./media/hybrid-cloud-extension-installation/configure-vcenter.png)
 
@@ -109,25 +114,25 @@ A telepítést követően hajtsa végre az alábbi lépéseket.
 
 ## <a name="configure-hcx"></a>HCX konfigurálása 
 
-1. Jelentkezzen be a helyszíni vCenter, majd válassza a **Kezdőlap**  >  **HCX**lehetőséget.
+1. Jelentkezzen be a helyszíni vCenter, és a **Home (Kezdőlap**) területen válassza a **HCX**lehetőséget.
 
     ![HCX a VCenter](./media/hybrid-cloud-extension-installation/hcx-vcenter.png)
 
-1. Válassza az **infrastruktúra**-  >  **hely párosítása**  >  **hely párosításának hozzáadása**lehetőséget.
+1. Az **infrastruktúra**területen válassza a **hely**párosítása lehetőséget  >  **a hely párosításának hozzáadásához**.
 
     ![Hely párosításának hozzáadása](./media/hybrid-cloud-extension-installation/site-pairing.png)
 
-1. Adja meg a **távoli HCX URL-címét**, **felhasználónevét**és **jelszavát**. Ezután válassza a **Csatlakozás** lehetőséget.
+1. Adja meg a távoli HCX URL-címét vagy IP-címét, az AVS cloudadmin felhasználónevét és jelszavát, majd kattintson a **kapcsolat**elemre.
 
    A rendszeren a csatlakoztatott hely látható.
    
     ![Hely kapcsolata](./media/hybrid-cloud-extension-installation/site-connection.png)
 
-1. Válassza az **összekötő**  >  **többhelyes szolgáltatás háló**  >  **hálózati profilok**  >  **hálózati profil létrehozása**lehetőséget.
+1. Az **infrastruktúra**területen válassza az **összekötő**  >  **többhelyes szolgáltatás háló**  >  **hálózati profilok**  >  **hálózati profil létrehozása**lehetőséget.
 
     ![Hálózati profil létrehozása](./media/hybrid-cloud-extension-installation/create-network-profile.png)
 
-1. Adja meg a HCX IX és NE IP-címtartományok értéket (a IX-es és a NE készülékek esetében legalább két IP-cím szükséges).
+1. Az új hálózati profilnál adja meg a IX-es és a NE IP-címtartományok HCX (a IX-es és a NE berendezések esetében legalább két IP-cím szükséges).
     
    ![Adja meg az IP-címtartományok](./media/hybrid-cloud-extension-installation/enter-address-ranges.png)
   
@@ -140,7 +145,7 @@ A telepítést követően hajtsa végre az alábbi lépéseket.
 
     ![Számítási profil létrehozása](./media/hybrid-cloud-extension-installation/create-compute-profile.png)
 
-1. Válassza ki az áttelepítéshez, a hálózati bővítményhez, a PR-katasztrófa-helyreállításhoz szükséges szolgáltatásokat. Válassza a **Folytatás** elemet.
+1. Válassza ki az engedélyezni kívánt szolgáltatásokat, például az áttelepítést, a hálózati bővítményt vagy a vész-helyreállítást, majd válassza a **Folytatás**lehetőséget.
 
     ![Szolgáltatások kiválasztása](./media/hybrid-cloud-extension-installation/select-services.png)
 
@@ -165,7 +170,7 @@ A telepítést követően hajtsa végre az alábbi lépéseket.
 
 1. Válassza a **hálózati kimenő hálózat** lehetőséget, majd válassza a **Folytatás**lehetőséget.
       
-    Válasszon ki egy vagy több hálózati profilt, amelyek közül az alábbiak egyike igaz:  
+    Válasszon ki egy vagy több hálózati profilt, hogy a következők egyike igaz legyen:  
     * A távoli helyen található Interconnect-berendezések ezen a hálózaton keresztül érhetők el  
     * A távoli oldali berendezések ezen a hálózaton keresztül érhetik el a helyi összekötő berendezéseket.  
     
@@ -175,25 +180,25 @@ A telepítést követően hajtsa végre az alábbi lépéseket.
 
 1. Válassza a **VMotion hálózati profil** lehetőséget, majd válassza a **Folytatás**lehetőséget.
       
-    Válassza ki azt a hálózati profilt, amelyen keresztül elérhetővé vált az ESXi-gazdagépek vMotion felülete. Ha még nem adott meg ilyen hálózati profilt, itt is létrehozhatja. Ha nem rendelkezik vMotion-hálózattal, válassza a **felügyeleti hálózati profil**lehetőséget.  
+   Válassza ki azt a hálózati profilt, amelyen keresztül elérhetővé vált az ESXi-gazdagépek vMotion felülete. Ha még nem adott meg ilyen hálózati profilt, itt is létrehozhatja. Ha nem rendelkezik vMotion-hálózattal, válassza a **felügyeleti hálózati profil**lehetőséget.  
     
-    ![VMotion hálózati profil kiválasztása](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
+   ![VMotion hálózati profil kiválasztása](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
 
-1. Válassza a **vSphere replikációs hálózati profil** lehetőséget, és válassza a **Folytatás**lehetőséget.
+1. A **vSphere-replikációs hálózati profil kiválasztása**lapon válassza ki a hálózati profilt az ESXi-gazdagépek vSphere replikációs felületén, majd válassza a **Folytatás**lehetőséget.
       
-    Válassza ki azt a hálózati profilt, amelyen keresztül az ESXi-gazdagépek vSphere-replikációs felülete elérhető lehet. A legtöbb esetben ez a profil megegyezik a felügyeleti hálózati profillal.  
+   A legtöbb esetben ez a profil megegyezik a felügyeleti hálózati profillal.  
     
-    ![VSphere-replikációs hálózati profil kiválasztása](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
+   ![VSphere-replikációs hálózati profil kiválasztása](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
 
-1. Válassza **a hálózati bővítmények elosztott kapcsolók** lehetőséget, majd válassza a **Folytatás**lehetőséget.  
+1. A **hálózati bővítmények számára válassza az elosztott kapcsolók lehetőséget**, válassza ki azt a DVS-t, amelyen a hálózatokat integrálni és csatlakoztatni kívánó virtuális gépek vannak.  Válassza a **Folytatás** elemet.  
       
-    Válassza ki azokat az elosztott virtuális kapcsolókat, amelyeken az áttelepítendő Virtual Machines csatlakoztatva vannak.
-
     ![Elosztott virtuális kapcsolók kiválasztása](./media/hybrid-cloud-extension-installation/distributed-switches.png)
 
-1. Ellenőrizze a kapcsolatok szabályait, és válassza a **Folytatás**lehetőséget. A számítási profil létrehozásához válassza a **Befejezés** lehetőséget.  
+1. Tekintse át a kapcsolatok szabályait, és válassza a **Folytatás**lehetőséget.  
 
     ![Számítási profil létrehozása](./media/hybrid-cloud-extension-installation/complete-compute-profile.png)
+
+1.  A számítási profil létrehozásához válassza a **Befejezés** lehetőséget.
 
 ## <a name="configure-network-uplink"></a>Hálózati kimenő hálózat konfigurálása
 
@@ -201,7 +206,7 @@ Most konfigurálja a hálózati profil megváltozását az AVS SDDC-ben a háló
 
 1. Jelentkezzen be a SDDC NSX-T-re egy új logikai kapcsoló létrehozásához, vagy használjon olyan meglévő logikai kapcsolót, amely a helyszíni és az AVS SDDC közötti hálózati kimenő kapcsolathoz használható.
 
-1. Hozzon létre egy hálózati profilt a HCX kimenő forgalomhoz az AVS SDDC, amely a helyszíni rendszerhez használható az AVS SDDC-kommunikációhoz.  
+1. Hozzon létre egy hálózati profilt a HCX kimenő forgalomhoz az AVS SDDC, amely a helyszínen, az AVS SDDC-kommunikációhoz használható.  
     
    ![Hálózati profil létrehozása a kimenő hálózat számára](./media/hybrid-cloud-extension-installation/network-profile-uplink.png)
 
@@ -217,45 +222,45 @@ Most konfigurálja a Service Mesh szolgáltatást a helyszíni és az AVS SDDC k
 
 1. Jelentkezzen be az AVS SDDC vCenter, és válassza a **HCX**lehetőséget.
 
-1. Válassza az **infrastruktúra**-  >  **összekötő**  >  **szolgáltatás háló**  >  **létrehozása Service Mesh**elemet.  Konfigurálja az előző lépésekben létrehozott hálózati és számítási profilokat.    
+2. Az **infrastruktúra**területen válassza az **összekötő**  >  **szolgáltatás hálójának**  >  **létrehozása szolgáltatás rácsvonal** lehetőséget az előző lépésekben létrehozott hálózati és számítási profilok konfigurálásához.    
       
     ![A Service Mesh konfigurálása](./media/hybrid-cloud-extension-installation/configure-service-mesh.png)
 
-1. Válassza a **szolgáltatás háló létrehozása** elemet, és válassza a **Folytatás**lehetőséget.  
-      
-    Válassza ki azokat a párosított helyeket, amelyekkel engedélyezni szeretné a hibrid mobilitást.  
+3. Válassza a párosított helyek lehetőséget a hibrid képesség engedélyezéséhez, majd válassza a **Folytatás**lehetőséget.   
     
     ![Párosított helyek kiválasztása](./media/hybrid-cloud-extension-installation/select-paired-sites.png)
 
-1. Válassza a **számítási profil** lehetőséget, majd válassza a **Folytatás**lehetőséget.
+4. Válassza ki a forrás-és távoli számítási profilokat a hibrid szolgáltatások engedélyezéséhez, majd válassza a **Folytatás**lehetőséget.
       
-    A hibrid szolgáltatások engedélyezéséhez válasszon ki egy számítási profilt a forrás-és a távoli helyeken. A kiválasztások határozzák meg azokat az erőforrásokat, amelyekben a Virtual Machines fel tudják használni a HCX szolgáltatásokat.  
+    A beállítások határozzák meg azokat az erőforrásokat, amelyekben a virtuális gépek használhatják a HCX szolgáltatásokat.  
       
     ![Hibrid szolgáltatások engedélyezése](./media/hybrid-cloud-extension-installation/enable-hybridity.png)
 
-1. Válassza ki a HCX engedélyezni kívánt szolgáltatásokat, majd válassza a **Folytatás**lehetőséget.  
+5. Válassza ki az engedélyezni kívánt szolgáltatásokat, majd válassza a **Folytatás**lehetőséget.  
       
     ![HCX-szolgáltatások kiválasztása](./media/hybrid-cloud-extension-installation/hcx-services.png)
 
-1. A **speciális konfigurációban – a kimenő hálózati profilok felülbírálása** válassza a **Folytatás**lehetőséget.  
+6. A **speciális konfigurációban – a kimenő hálózati profilok felülbírálása** válassza a **Folytatás**lehetőséget.  
       
     A kimenő hálózati profilok használatával csatlakozhat ahhoz a hálózathoz, amelyen keresztül a távoli hely összekötő készülékei elérhetők.  
       
     ![Kimenő profilok felülbírálása](./media/hybrid-cloud-extension-installation/override-uplink-profiles.png)
 
-1. A **Speciális konfiguráció – hálózati bővítmények Felskálázása**területen válassza **a hálózati bővítmény berendezésének konfigurálása**lehetőséget. 
+7. Válassza **a hálózati bővítmény berendezésének konfigurálása**lehetőséget. 
       
     ![Hálózati bővítmény felskálázása](./media/hybrid-cloud-extension-installation/network-extension-scale-out.png)
 
-1. Adja meg a DVS-kapcsolók számának megfelelő készülékek darabszámát.  
+8. Adja meg a DVS-kapcsolók számának megfelelő készülékek darabszámát.  
       
     ![Berendezések számának konfigurálása](./media/hybrid-cloud-extension-installation/appliance-scale.png)
 
-1. A **Speciális konfiguráció – Traffic Engineering**területen válassza a **Continue (folytatás**) lehetőséget.  
+9. Válassza a **Folytatás** lehetőséget a kihagyáshoz.  
       
     ![Traffic Engineering konfigurálása](./media/hybrid-cloud-extension-installation/traffic-engineering.png)
 
-1. Tekintse át a topológia előzetes verzióját, és válassza a **Folytatás**lehetőséget. Ezután adja meg a szolgáltatás rácsvonalának felhasználóbarát nevét, majd a Befejezés gombra kattintva fejezze be a **Befejezés** gombot.  
+10. Tekintse át a topológia előzetes verzióját, és válassza a **Folytatás**lehetőséget. 
+
+11. Adja meg a szolgáltatás rácsvonalának felhasználóbarát nevét, és válassza a **Befejezés gombot a befejezéshez** .  
       
     ![A Service Mesh befejezése](./media/hybrid-cloud-extension-installation/complete-service-mesh.png)
 
@@ -268,6 +273,6 @@ A készülék állapotának vizsgálatához válassza az **összekötő**  >  **
       
 ![Berendezés állapota](./media/hybrid-cloud-extension-installation/appliance-status.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a készülék összekötő **alagútjának állapota** felfelé és zöldre van **állítva** , készen áll az AVS virtuális gépek áttelepítésére és védelemre a HCX használatával. Tekintse meg a VMware [HCX dokumentációját](https://docs.vmware.com/en/VMware-HCX/index.html) és a VMware [HCX átVirtual Machines telepítését](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g) a VMware technikai dokumentációjában.

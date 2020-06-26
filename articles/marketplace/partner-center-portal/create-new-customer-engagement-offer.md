@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 51df588b1ccd41bf05d8851f00399b61292b0736
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8996335a8d39e4dd9fc79584593fe333b302c8be
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214101"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373437"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
 
@@ -151,7 +151,7 @@ Itt adhatja meg az egyes nyelvekhez/piacokhoz tartozó piactér részleteit, pé
 4. Támogatási címe (hivatkozás)
 5. Használati feltételek címe (hivatkozás)
 6. Ajánlat neve
-7. Leírás
+7. Description
 8. Képernyőképek/videók
 
 ### <a name="name"></a>Name
@@ -162,7 +162,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -213,10 +213,6 @@ Adja meg ajánlata emblémáját három képpontos méretben:
 - **Kicsi** (kötelező; 48 x 48)
 - **Nagyméretű** (kötelező; 216 x 216)
 - **Wide** (opcionális; 255 x 115)
-
-#### <a name="hero"></a>Hero
-
-A hős képe nem kötelező. Ha megadja az egyiket, a 815 x 290 képpont értéket kell mérnie.
 
 #### <a name="screenshots"></a>Képernyőképek
 

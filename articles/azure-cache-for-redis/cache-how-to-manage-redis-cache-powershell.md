@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: cabb1a7d45906c9e60e1defd7d3d99286cdd39fb
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 10591c6e1e47be5d0f8fcb5eb4a4d4d8c1adf564
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318249"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367869"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Az Azure cache kezelése a Redis Azure PowerShell
 > [!div class="op_single_selector"]
@@ -119,7 +119,7 @@ A következő táblázat a gyakran használt paraméterek tulajdonságait és le
 
 | Paraméter | Leírás | Alapértelmezett |
 | --- | --- | --- |
-| Name (Név) |A gyorsítótár neve | |
+| Name |A gyorsítótár neve | |
 | Hely |A gyorsítótár helye | |
 | ResourceGroupName |Az erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat | |
 | Méret |A gyorsítótár mérete Érvényes értékek: P1, P2, P3, P4, c0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1 GB |
@@ -134,7 +134,7 @@ A következő táblázat a gyakran használt paraméterek tulajdonságait és le
 | KeyType |Megadja, hogy melyik hozzáférési kulcsot kell újragenerálni a hozzáférési kulcsok megújításakor. Az érvényes értékek a következők: elsődleges, másodlagos | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration tulajdonságai
-| Tulajdonság | Leírás | Árképzési szintek |
+| Tulajdonság | Description | Árképzési szintek |
 | --- | --- | --- |
 | RDB – biztonsági mentés engedélyezve |Annak megadása, hogy engedélyezve van-e a [Redis adatmegőrzés](cache-how-to-premium-persistence.md) |Csak prémium |
 | RDB-Storage – kapcsolatok – sztring |A [Redis adatmegőrzéshez](cache-how-to-premium-persistence.md) használt Storage-fiókhoz tartozó kapcsolódási karakterlánc |Csak prémium |
@@ -771,7 +771,7 @@ A következő parancs újraindítja a megadott gyorsítótár mindkét csomópon
         -Force
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Windows PowerShell és az Azure használatával kapcsolatban, tekintse meg a következő forrásokat:
 
 * [Az Azure cache for Redis parancsmag dokumentációja az MSDN-ben](https://docs.microsoft.com/powershell/module/az.rediscache)
@@ -779,5 +779,5 @@ Ha többet szeretne megtudni a Windows PowerShell és az Azure használatával k
 * [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/templates/deploy-portal.md): megtudhatja, hogyan hozhat létre és kezelhet erőforráscsoportokat a Azure Portalban.
 * [Azure blog](https://azure.microsoft.com/blog/): Ismerkedjen meg az Azure új szolgáltatásaival.
 * [Windows PowerShell blog](https://devblogs.microsoft.com/powershell/): Ismerkedjen meg a Windows PowerShell új szolgáltatásaival.
-* ["Hey, Scripting Guy!" Blog](https://devblogs.microsoft.com/scripting/author/the-scripting-guys/): valós tippeket és trükköket szerezhet be a Windows PowerShell Közösségből.
+* ["Hey, Scripting Guy!" Blog](https://blogs.technet.microsoft.com/heyscriptingguy/author/the-scripting-guys/): valós tippeket és trükköket szerezhet be a Windows PowerShell Közösségből.
 

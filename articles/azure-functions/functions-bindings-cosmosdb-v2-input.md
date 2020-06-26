@@ -1,19 +1,19 @@
 ---
-title: A 2. x függvények bemeneti kötésének Azure Cosmos DB
+title: A 2. x és újabb függvények bemeneti kötésének Azure Cosmos DB
 description: Megtudhatja, hogyan használhatja a Azure Functions Azure Cosmos DB bemeneti kötését.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: bce234b0d2fee38f0644ae0bd961cdcd815b0bd2
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: b6daccb7ec4665842fd42a0938e3cbf18e2d7540
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667896"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374372"
 ---
-# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Azure Functions 2. x Azure Cosmos DB bemeneti kötésének megadása
+# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB bemeneti kötés Azure Functions 2. x és újabb verziókhoz
 
 Az Azure Cosmos DB bemeneti adatkötése az SQL API-t használja egy vagy több Azure Cosmos DB-dokumentum lekérésére, majd átadja ezeket a függvény bemeneti paraméterének. A dokumentumazonosítót vagy lekérdezési paramétereket a függvényt meghívó eseményindító alapján lehet meghatározni.
 
@@ -1424,7 +1424,7 @@ A [Java functions futtatókörnyezet könyvtárában](https://docs.microsoft.com
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `CosmosDB` .
 

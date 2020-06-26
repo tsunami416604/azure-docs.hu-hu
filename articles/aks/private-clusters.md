@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 6/18/2020
-ms.openlocfilehash: d2705570f6993ecda0c88241d2dc517fac60695c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ebbe2f754aa70c6c65ec7016da29a4a1b0bd7dd6
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194042"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374525"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -100,7 +100,7 @@ A központilag [és küllős architektúrákat](https://docs.microsoft.com/azure
 
 ## <a name="limitations"></a>Korlátozások 
 * Az IP-címekre jogosult tartományok nem alkalmazhatók a privát API-kiszolgálói végpontra, csak a nyilvános API-kiszolgálóra érvényesek.
-* A Availability Zones jelenleg bizonyos régiókban támogatott, tekintse meg a dokumentum elejét 
+* A [Availability Zones][availability-zones] jelenleg bizonyos régiókban támogatottak. 
 * Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre vonatkoznak.
 * Az Azure DevOps nem támogatja a Microsoft által üzemeltetett ügynököket privát fürtökkel. Érdemes lehet saját üzemeltetésű [ügynököket][devops-agents]használni. 
 * Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
@@ -121,3 +121,4 @@ A központilag [és küllős architektúrákat](https://docs.microsoft.com/azure
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 [devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
+[availability-zones]: availability-zones.md

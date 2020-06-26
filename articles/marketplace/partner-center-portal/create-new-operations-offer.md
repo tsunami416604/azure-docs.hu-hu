@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: badad6da0c0e244cbdb30e4b89955dd073782f04
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 6a062723394b9a5187b72cabf449cdc17b2bbbcd
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752542"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373488"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations-ajánlat létrehozása
 
@@ -148,7 +148,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
 9. Képernyőképek/videók
-10. Leírás
+10. Description
 
 ### <a name="name"></a>Name
 
@@ -158,7 +158,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -210,9 +210,6 @@ Adja meg az ajánlat emblémáját két képpontos méretben:
 - **Kicsi** (48 x 48)
 - **Nagyméretű** (216 x 216)
 
-#### <a name="hero"></a>Hero
-
-A hős képe nem kötelező. Ha megadja az egyiket, a 815 x 290 képpont értéket kell mérnie.
 
 #### <a name="screenshots"></a>Képernyőképek
 

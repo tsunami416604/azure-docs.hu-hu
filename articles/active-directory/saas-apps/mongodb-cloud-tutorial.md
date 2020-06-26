@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef8094464b428f1f46017b0d4abaac5aeb1fa428
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 901022e31a917cd499d9a1daf5903c72e96aa9f0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024513"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367206"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a MongoDB-felhővel
 
@@ -101,7 +101,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az előző attribútumok mellett a MongoDB Cloud Application néhány további attribútumot vár, amelyeket vissza kell adni az SAML-válaszban. Ezek az attribútumok előre fel vannak töltve, de a követelmények szerint áttekinthetők.
     
-    | Name (Név) | |  Forrás attribútum|
+    | Name | |  Forrás attribútum|
     | ---------------| --------------- | --------- |
     | e-mail | | User. userPrincipalName |
     | firstName | | User. givenName |
@@ -118,11 +118,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszót.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -130,13 +130,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a MongoDB-felhőhöz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 1. Az alkalmazások listában válassza a **MongoDB-felhő**elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![Képernyőfelvétel a kezelés szakaszról, Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**elemet. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
 
     ![Képernyőkép a felhasználók és csoportok oldalról, a felhasználó hozzáadása elem kiemelésével](common/add-assign-user.png)
 
@@ -158,7 +158,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hoz
 
 Amikor kiválasztja a MongoDB felhő csempét a hozzáférési panelen, automatikusan bejelentkezik a MongoDB-felhőbe, amelyhez be kell állítania az SSO-t. További információ: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -166,7 +166,7 @@ Amikor kiválasztja a MongoDB felhő csempét a hozzáférési panelen, automati
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Regisztráció a MongoDB Atlas szolgáltatásra az Azure-ban](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/mongodb.mongodb_atlas_azure_08082019?tab=Overview)
+- [Regisztráció a MongoDB Atlas szolgáltatásra az Azure-ban](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mongodb_atlas_may_2020?tab=Overview)
 
 - [Próbálja ki a MongoDB-felhőt az Azure AD-vel](https://aad.portal.azure.com/)
 

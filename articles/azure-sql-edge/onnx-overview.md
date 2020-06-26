@@ -4,17 +4,17 @@ description: Az Azure SQL Edge (előzetes verzió) gépi tanulása a nyílt neur
 keywords: SQL Edge üzembe helyezése
 services: sql-edge
 ms.service: sql-edge
-ms.subservice: ''
+ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 3b36052fa3ee0d7d449be1719e67554b539d0207
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233179"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368056"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>Gépi tanulás és AI a ONNX az SQL Edge-ben (előzetes verzió)
 
@@ -52,7 +52,7 @@ A más numerikus típusok a [Cast és a convert](https://docs.microsoft.com/sql/
 
 A modell bemeneteit strukturálni kell, hogy a modell minden bemenete egy tábla egyetlen oszlopának felel meg. Ha például pandák dataframe használ a modell betanításához, akkor minden bemenetnek külön oszlopnak kell lennie a modellhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az SQL Edge üzembe helyezése Azure Portal](deploy-portal.md)
 - [ONNX-modell üzembe helyezése az Azure SQL Edge-ben (előzetes verzió)](deploy-onnx.md)

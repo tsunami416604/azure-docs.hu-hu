@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 92fdb48f11d4d8753706d61fab9fd32e2b06f488
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: bc9cd134e4c83aea94ae0049158b3054c602cce8
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668185"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374423"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
 
@@ -57,7 +57,7 @@ Biztonsági szempontból:
 - Ha engedélyezi a privát végpontot a webalkalmazáshoz, a rendszer nem értékeli ki a webalkalmazás [hozzáférési korlátozásait][accessrestrictions] .
 - Az adatok kiszűrése kockázatát a VNet távolíthatja el az összes olyan NSG-szabály eltávolításával, ahol a cél az Internet vagy az Azure-szolgáltatások címkéje. Ha privát végpontot telepít egy webalkalmazáshoz, akkor csak a privát végponton keresztül érheti el ezt az adott webalkalmazást. Ha van egy másik webalkalmazása, egy másik dedikált privát végpontot kell telepítenie ehhez a webalkalmazáshoz.
 
-A webalkalmazás webes HTTP-naplóiban megtalálja az ügyfél forrásának IP-címét. Ez a TCP proxy protokoll használatával valósul meg, amely a-ügyfél IP-tulajdonságát továbbítja a webalkalmazásnak. További információ: a [kapcsolatok adatainak beszerzése a TCP proxy v2 használatával][tcpproxy].
+A webalkalmazás webes HTTP-naplóiban megtalálja az ügyfél forrásának IP-címét. Ez a funkció a TCP proxy protokoll használatával valósul meg, amely a-ügyfél IP-tulajdonságát továbbítja a webalkalmazásnak. További információ: a [kapcsolatok adatainak beszerzése a TCP proxy v2 használatával][tcpproxy].
 
 
   > [!div class="mx-imgBorder"]
@@ -65,12 +65,22 @@ A webalkalmazás webes HTTP-naplóiban megtalálja az ügyfél forrásának IP-c
 
 ## <a name="dns"></a>DNS
 
-Mivel ez a funkció előzetes verzióban érhető el, nem változtatjuk meg a DNS-bejegyzést az előzetes verzióban. A DNS-bejegyzést a saját DNS-kiszolgálójában vagy saját maga Azure DNS saját zónájában kell kezelnie.
+Alapértelmezés szerint privát végpont nélkül a webalkalmazás nyilvános neve a fürt kanonikus neve.
+A névfeloldás például a következő lesz: mywebapp.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+
+Privát végpont telepítésekor a DNS-bejegyzést úgy módosítjuk, hogy a kanonikus név mywebapp.privatelink.azurewebsites.net mutasson.
+A névfeloldás például a következő lesz: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+
+Ha rendelkezik privát DNS-kiszolgálóval vagy Azure DNS privát zónával, a privatelink.azurewebsites.net nevű zónát kell beállítania. Regisztrálja a webalkalmazás rekordját egy rekorddal és a magánhálózati végpont IP-címével.
+A névfeloldás például a következő lesz: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net A 10.10.10.8 
+
 Ha egyéni DNS-nevet kell használnia, hozzá kell adnia az egyéni nevet a webalkalmazásban. Az előzetes verzióban az egyéni nevet a nyilvános DNS-feloldást használó bármely egyéni névnek hasonlóan kell érvényesíteni. További információ: [Egyéni DNS-ellenőrzés][dnsvalidation].
 
 Ha például a kudu-konzolt kell használnia, vagy a kudu REST API (az Azure DevOps saját üzemeltetésű ügynökökkel való üzembe helyezése), két rekordot kell létrehoznia a saját Azure DNS saját zónájában vagy az egyéni DNS-kiszolgálón. 
 - PrivateEndpointIP yourwebappname.azurewebsites.net 
 - PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+
+Ezt a két rekordot automatikusan kitölti a rendszer, ha rendelkezik egy privatelink.azurewebsites.net nevű privát zónával ahhoz a VNet, amelyhez létrehozta a privát végpontot.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -86,7 +96,7 @@ Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot
 
 ## <a name="next-steps"></a>Következő lépések
 
-Privát végpont üzembe helyezése a webalkalmazáshoz a portálon keresztül: a [webalkalmazásokhoz való magánhálózati kapcsolódás][howtoguide]
+Ha privát végpontot szeretne telepíteni a webalkalmazáshoz a portálon keresztül, tekintse meg a következő témakört: [privát kapcsolódás webalkalmazáshoz][howtoguide]
 
 
 

@@ -3,12 +3,12 @@ title: Azure Event Hubs-beli események küldése vagy fogadása a Javával (leg
 description: Ez a cikk bemutatja, hogyan hozhat létre olyan Java-alkalmazást, amely az Azure-Event Hubs legújabb Azure-Messaging-eventhubs csomag használatával küld/fogad eseményeket.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 69c994eed0907c8bb46f47016769e2078432ee99
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 3e2d22fe09de23fdf148fe36a0c97615f291f4c9
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320069"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367920"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Az Azure Event Hubs (Azure-Messaging-eventhubs) eseményeinek küldése vagy fogadása a Java használatával
 Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket az Event hub eseményeiről és fogadhat az **Azure-Messaging-eventhubs Java-** csomag használatával.
@@ -133,80 +133,183 @@ public class Sender {
 Hozza létre a programot, és ellenőrizze, hogy nincsenek-e hibák. Ezt a programot a fogadó program futtatása után fogja futtatni. 
 
 ## <a name="receive-events"></a>Események fogadása
-Az oktatóanyagban szereplő kód a [githubon található EventProcessorClient-mintán](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java)alapul, amelyet megvizsgálva megtekintheti a teljes működő alkalmazást.
+Az oktatóanyagban szereplő kód a [githubon található EventProcessorClient-mintán](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorBlobCheckpointStoreSample.java)alapul, amelyet megvizsgálva megtekintheti a teljes működő alkalmazást.
 
 > [!NOTE]
 > Ha Azure Stack hub-on fut, akkor a platform a Storage blob SDK egy másik verzióját is támogatja, mint az Azure-ban általában elérhető. Ha például [Azure stack Hub 2002-es verzióján](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben a szakasz következő lépésein kívül kódot is hozzá kell adnia a Storage szolgáltatás API 2017-11-09-es verziójának célzásához. Az adott tárolási API-verzió célzásának példáját a [githubon](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)tekintheti meg. Az Azure Stack hub által támogatott Azure Storage szolgáltatás verziójával kapcsolatos további információkért tekintse meg [Azure stack hub Storage: különbségek és megfontolások](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)című témakört.
 
-### <a name="create-a-java-project"></a>Java-projekt létrehozása
+### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure Storage és blob-tároló létrehozása
+Ebben a rövid útmutatóban az Azure Storage-t (pontosabban Blob Storage) használja ellenőrzőpont-tárolóként. Az ellenőrzőpontok olyan folyamat, amellyel egy adott esemény processzora megjelöli vagy véglegesíti az utolsó sikeresen feldolgozott esemény pozícióját egy partíción belül. Az ellenőrzőpontok megjelölése általában az eseményeket feldolgozó függvényen belül történik. Az ellenőrzőpontokkal kapcsolatos további információkért lásd: [Event Processor](event-processor-balance-partition-load.md).
 
-A Event Hubs Java-ügyféloldali könyvtára a Maven [központi tárházból](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)származó Maven-projektekben használható, és a következő függőségi deklarációval hivatkozhat a Maven-projektfájl használatával: 
+Egy Azure Storage-fiók létrehozásához kövesse az alábbi lépéseket. 
+
+1. [Azure Storage-fiók létrehozása](/azure/storage/common/storage-account-create?tabs=azure-portal)
+2. [Blobtároló létrehozása](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md)
+
+    Jegyezze fel a **kapcsolatok sztringjét** és a **tároló nevét**. Ezeket a fogadási kódban fogja használni. 
+
+### <a name="add-event-hubs-libraries-to-your-java-project"></a>Event Hubs kódtárak hozzáadása a Java-projekthez
+Adja hozzá a következő függőségeket a pom.xml fájlban. 
+
+- [Azure-üzenetkezelés – eventhubs](https://search.maven.org/search?q=a:azure-messaging-eventhubs)
+- [Azure-üzenetkezelés-eventhubs-checkpointstore-blob](https://search.maven.org/search?q=a:azure-messaging-eventhubs-checkpointstore-blob)
 
 ```xml
 <dependencies>
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-messaging-eventhubs</artifactId>
-        <version>5.0.1</version>
+        <version>5.1.1</version>
+    </dependency>
+    <dependency>
+        <groupId>com.azure</groupId>
+        <artifactId>azure-messaging-eventhubs-checkpointstore-blob</artifactId>
+        <version>1.1.1</version>
     </dependency>
 </dependencies>
 ```
 
-1. A következő kóddal hozzon létre egy `Receiver` nevű új osztályt. Cserélje le a helyőrzőket az Event hub és a Storage-fiók létrehozásakor használt értékekre:
-   
-   ```java
-     import com.azure.messaging.eventhubs.*;
-     import com.azure.messaging.eventhubs.models.ErrorContext;
-     import com.azure.messaging.eventhubs.models.EventContext;
-     import java.util.concurrent.TimeUnit;
-     import java.util.function.Consumer;
-    
-     public class Receiver {
-    
-         final static String connectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";
-         final static String eventHubName = "<EVENT HUB NAME>";
-         
-         public static void main(String[] args) throws Exception {
-    
-             // function to process events
-             Consumer<EventContext> processEvent = eventContext  -> {
-                 System.out.print("Received event: ");
-                 // print the body of the event
-                 System.out.println(eventContext.getEventData().getBodyAsString());
-                 eventContext.updateCheckpoint();
-             };
-    
-             // function to process errors
-             Consumer<ErrorContext> processError = errorContext -> {
-                 // print the error message
-                 System.out.println(errorContext.getThrowable().getMessage());
-             };
-    
-            
-             EventProcessorClient eventProcessorClient = new EventProcessorClientBuilder()
-                     .connectionString(connectionString, eventHubName)
-                     .processEvent(processEvent)
-                     .processError(processError)
-                     .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
-                     .checkpointStore(new SampleCheckpointStore())
-                     .buildEventProcessorClient();
-    
-             System.out.println("Starting event processor");
-             eventProcessorClient.start();
-    
-             System.out.println("Press enter to stop.");
-             System.in.read();
-    
-             System.out.println("Stopping event processor");
-             eventProcessorClient.stop();
-             System.out.println("Event processor stopped.");
-    
-             System.out.println("Exiting process");
-         }
-     }
+1. Adja hozzá a következő **importálási** utasításokat a Java-fájl elejéhez. 
+
+    ```java
+    import com.azure.messaging.eventhubs.EventHubClientBuilder;
+    import com.azure.messaging.eventhubs.EventProcessorClient;
+    import com.azure.messaging.eventhubs.EventProcessorClientBuilder;
+    import com.azure.messaging.eventhubs.checkpointstore.blob.BlobCheckpointStore;
+    import com.azure.messaging.eventhubs.models.ErrorContext;
+    import com.azure.messaging.eventhubs.models.EventContext;
+    import com.azure.storage.blob.BlobContainerAsyncClient;
+    import com.azure.storage.blob.BlobContainerClientBuilder;
+    import java.util.function.Consumer;
+    import java.util.concurrent.TimeUnit;
     ```
+2. Hozzon létre egy nevű osztályt `Receiver` , és adja hozzá a következő karakterlánc-változókat a osztályhoz. Cserélje le a helyőrzőket a megfelelő értékekre. 
+    ```java
+    private static final String EH_NAMESPACE_CONNECTION_STRING = "<EVENT HUBS NAMESPACE CONNECTION STRING>";
+    private static final String eventHubName = "<EVENT HUB NAME>";
+    private static final String STORAGE_CONNECTION_STRING = "<AZURE STORAGE CONNECTION STRING>";
+    private static final String STORAGE_CONTAINER_NAME = "<AZURE STORAGE CONTAINER NAME>";
+    ```
+3. Adja hozzá a következő `main` metódust a osztályhoz. 
+
+    ```java
+    public static void main(String[] args) throws Exception {
+        // Create a blob container client that you use later to build an event processor client to receive and process events
+        BlobContainerAsyncClient blobContainerAsyncClient = new BlobContainerClientBuilder()
+            .connectionString(STORAGE_CONNECTION_STRING) 
+            .containerName(STORAGE_CONTAINER_NAME) 
+            .buildAsyncClient();
     
-2. Töltse le a **SampleCheckpointStore. Java** fájlt a [githubról](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/SampleCheckpointStore.java), és adja hozzá a projekthez. 
+        // Create a builder object that you will use later to build an event processor client to receive and process events and errors.
+        EventProcessorClientBuilder eventProcessorClientBuilder = new EventProcessorClientBuilder()
+            .connectionString(EH_NAMESPACE_CONNECTION_STRING, eventHubName) 
+            .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
+            .processEvent(PARTITION_PROCESSOR) 
+            .processError(ERROR_HANDLER) 
+            .checkpointStore(new BlobCheckpointStore(blobContainerAsyncClient)); 
+
+        // Use the builder object to create an event processor client 
+        EventProcessorClient eventProcessorClient = eventProcessorClientBuilder.buildEventProcessorClient();
+
+        System.out.println("Starting event processor");
+        eventProcessorClient.start();
+
+        System.out.println("Press enter to stop.");
+        System.in.read();
+
+        System.out.println("Stopping event processor");
+        eventProcessorClient.stop();
+        System.out.println("Event processor stopped.");
+
+        System.out.println("Exiting process");
+    }    
+    ```
+4. Adja hozzá az eseményeket és hibákat feldolgozó két segítő metódust ( `PARTITION_PROCESSOR` és `ERROR_HANDLER` ) az `Receiver` osztályhoz. 
+
+    ```java
+    public static final Consumer<EventContext> PARTITION_PROCESSOR = eventContext -> {
+        System.out.printf("Processing event from partition %s with sequence number %d with body: %s %n", 
+                eventContext.getPartitionContext().getPartitionId(), eventContext.getEventData().getSequenceNumber(), eventContext.getEventData().getBodyAsString());
+
+        if (eventContext.getEventData().getSequenceNumber() % 10 == 0) {
+            eventContext.updateCheckpoint();
+        }
+    };
+    
+    public static final Consumer<ErrorContext> ERROR_HANDLER = errorContext -> {
+        System.out.printf("Error occurred in partition processor for partition %s, %s.%n",
+            errorContext.getPartitionContext().getPartitionId(),
+            errorContext.getThrowable());
+    };    
+    ```
+3. A teljes kódnak így kell kinéznie: 
+
+    ```java
+
+    import com.azure.messaging.eventhubs.EventHubClientBuilder;
+    import com.azure.messaging.eventhubs.EventProcessorClient;
+    import com.azure.messaging.eventhubs.EventProcessorClientBuilder;
+    import com.azure.messaging.eventhubs.checkpointstore.blob.BlobCheckpointStore;
+    import com.azure.messaging.eventhubs.models.ErrorContext;
+    import com.azure.messaging.eventhubs.models.EventContext;
+    import com.azure.storage.blob.BlobContainerAsyncClient;
+    import com.azure.storage.blob.BlobContainerClientBuilder;
+    import java.util.function.Consumer;
+    import java.util.concurrent.TimeUnit;
+    
+    public class Receiver {
+        
+        private static final String EH_NAMESPACE_CONNECTION_STRING = "<EVENT HUBS NAMESPACE CONNECTION STRING>";
+        private static final String eventHubName = "<EVENT HUB NAME>";
+        private static final String STORAGE_CONNECTION_STRING = "<AZURE STORAGE CONNECTION STRING>";
+        private static final String STORAGE_CONTAINER_NAME = "<AZURE STORAGE CONTAINER NAME>";
+    
+        public static final Consumer<EventContext> PARTITION_PROCESSOR = eventContext -> {
+        System.out.printf("Processing event from partition %s with sequence number %d with body: %s %n", 
+                eventContext.getPartitionContext().getPartitionId(), eventContext.getEventData().getSequenceNumber(), eventContext.getEventData().getBodyAsString());
+
+            if (eventContext.getEventData().getSequenceNumber() % 10 == 0) {
+                eventContext.updateCheckpoint();
+            }
+        };
+        
+        public static final Consumer<ErrorContext> ERROR_HANDLER = errorContext -> {
+            System.out.printf("Error occurred in partition processor for partition %s, %s.%n",
+                errorContext.getPartitionContext().getPartitionId(),
+                errorContext.getThrowable());
+        };
+        
+        public static void main(String[] args) throws Exception {
+            BlobContainerAsyncClient blobContainerAsyncClient = new BlobContainerClientBuilder()
+                .connectionString(STORAGE_CONNECTION_STRING)
+                .containerName(STORAGE_CONTAINER_NAME)
+                .buildAsyncClient();
+    
+            EventProcessorClientBuilder eventProcessorClientBuilder = new EventProcessorClientBuilder()
+                .connectionString(EH_NAMESPACE_CONNECTION_STRING, eventHubName)
+                .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
+                .processEvent(PARTITION_PROCESSOR)
+                .processError(ERROR_HANDLER)
+                .checkpointStore(new BlobCheckpointStore(blobContainerAsyncClient));
+    
+            EventProcessorClient eventProcessorClient = eventProcessorClientBuilder.buildEventProcessorClient();
+
+            System.out.println("Starting event processor");
+            eventProcessorClient.start();
+        
+            System.out.println("Press enter to stop.");
+            System.in.read();
+        
+            System.out.println("Stopping event processor");
+            eventProcessorClient.stop();
+            System.out.println("Event processor stopped.");
+        
+            System.out.println("Exiting process");
+        }
+        
+    }
+    ```
 3. Hozza létre a programot, és ellenőrizze, hogy nincsenek-e hibák. 
 
 ## <a name="run-the-applications"></a>Az alkalmazások futtatása
@@ -215,6 +318,9 @@ A Event Hubs Java-ügyféloldali könyvtára a Maven [központi tárházból](ht
 1. A **fogadó** alkalmazás ablakban ellenőrizze, hogy láthatók-e a küldő alkalmazás által közzétett események.
 1. Az alkalmazás leállításához nyomja le az **ENTER** billentyűt a fogadó alkalmazás ablakban. 
 
-## <a name="next-steps"></a>További lépések
-Tekintse [meg a Java SDK-mintákat a githubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
+## <a name="next-steps"></a>Következő lépések
+Tekintse meg a következő mintákat a GitHubon:
+
+- [Azure-üzenetkezelés – eventhubs minták](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
+- [Azure-Messaging-eventhubs-checkpointstore-blob minták](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob).  
 

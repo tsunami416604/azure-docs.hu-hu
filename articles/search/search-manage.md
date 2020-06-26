@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: f1887065ef356717e05814a23ad85c7f0e6c6ab0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 47c3606b0b1ada93aeb8a107f48222fb26483a9c
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362662"
+ms.locfileid: "85368277"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Szolgáltatás-felügyelet az Azure Cognitive Search a Azure Portal
 
@@ -43,7 +43,8 @@ Az Azure Cognitive Search további Azure-szolgáltatásokat használ a további 
 A keresési szolgáltatás több aspektusa is meg van határozva, ha a szolgáltatás kiépítve lett, és később nem módosítható:
 
 * Szolgáltatás neve (a szolgáltatás nem nevezhető át)
-* A replika és a partíciók maximális száma (a szintek határozzák meg)
+* Szolgáltatás helye (jelenleg nem helyezhető át egy érintetlen szolgáltatás egy másik régióba)
+* A replika és a partíciók maximális száma (a szint, az alapszintű vagy a standard alapján meghatározva)
 
 Ha az alapszintű és egy partícióval rendelkezik, és most már több partícióra van szüksége, [új szolgáltatást kell létrehoznia](search-create-service-portal.md) egy magasabb szintű szinten, és újra létre kell hoznia a tartalmat az új szolgáltatáson. 
 
@@ -137,7 +138,7 @@ Nincs olyan észlelési módszer, amely közli, hogy mely indexek vannak tárolv
 
 Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes lehet megtekinteni a tárterületet (az [indexek statisztikájának lekérése](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)használatával), hogy megtekintse, mennyit használt 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Automatizálás a [PowerShell](search-manage-powershell.md) -lel
 

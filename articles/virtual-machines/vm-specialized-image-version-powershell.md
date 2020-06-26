@@ -9,20 +9,20 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7d54fa25bc4ab55e62b8f88a3cf76a5ba1130e55
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fdf1e6cf15279a0ff5be4b45385a13a3b967d22e
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796758"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374627"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>Virtuális gép létrehozása speciális rendszerkép használatával 
 
-Hozzon létre egy virtuális gépet egy megosztott rendszerkép-gyűjteményben tárolt speciális rendszerkép-verzióból. Ha általánosított rendszerkép-verzió használatával szeretne virtuális gépet létrehozni, tekintse meg [a virtuális gép létrehozása speciális rendszerkép-verzióból](vm-generalized-image-version-powershell.md)című témakört.
+Hozzon létre egy virtuális gépet egy megosztott rendszerkép-gyűjteményben tárolt speciális rendszerkép-verzióból. Ha általánosított rendszerkép-verzió használatával szeretne virtuális gépet létrehozni, tekintse meg [a virtuális gép létrehozása általánosított rendszerkép használatával](vm-generalized-image-version-powershell.md)című témakört.
 
 Ha speciális rendszerkép-verziót használ, létrehozhat egy vagy több új virtuális gépet is. A [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag használata. 
 
-Ebben a példában a rendszerkép-definíció AZONOSÍTÓját használjuk annak biztosítására, hogy az új virtuális gép a rendszerkép legújabb verzióját fogja használni. Egy adott verziót is használhat a rendszerkép-verziójának AZONOSÍTÓjának használatával `Set-AzVMSourceImage -Id`. Például a következő rendszerkép *-verzió használata* : `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` 
+Ebben a példában a rendszerkép-definíció AZONOSÍTÓját használjuk annak biztosítására, hogy az új virtuális gép a rendszerkép legújabb verzióját fogja használni. Egy adott verziót is használhat a rendszerkép-verziójának AZONOSÍTÓjának használatával `Set-AzVMSourceImage -Id` . Például a következő rendszerkép *-verzió használata* `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` : 
 
 Vegye figyelembe, hogy egy adott rendszerkép-verzió használata azt jelenti, hogy az Automation sikertelen lehet, ha az adott rendszerkép verziója nem érhető el, mert törölték vagy eltávolították a régióból. Javasoljuk, hogy az új virtuális gép létrehozásához használja a rendszerkép-definíció AZONOSÍTÓját, kivéve, ha egy adott rendszerkép-verzióra van szükség.
 
@@ -123,7 +123,7 @@ Add-AzVMDataDisk `
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 

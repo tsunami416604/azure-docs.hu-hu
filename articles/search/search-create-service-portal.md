@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/24/2020
+ms.openlocfilehash: 988b26b319c706b97edfbd3545a525b7d685d7f1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488222"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368294"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search szolgáltatás létrehozása a portálon
 
@@ -24,6 +24,14 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre erőforrásokat a [Azure Por
 [![Animált GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Az első lépésekkel kapcsolatos segítségért lásd: az [Azure Cognitive Search kezelése a PowerShell](search-manage-powershell.md)-lel.
+
+## <a name="before-you-start"></a>Előkészületek
+
+A szolgáltatás élettartamára a következő szolgáltatási tulajdonságok vannak rögzítve. Ezen tulajdonságok bármelyikének módosításához később új szolgáltatásra lesz szükség:
+
+* name
+* szint (ingyenes, alapszintű, standard)
+* régió (Válasszon olyan helyet, amelyhez kapcsolódó szolgáltatások, például Cognitive Services vagy adatszolgáltatások tartoznak)
 
 ## <a name="subscribe-free-or-paid"></a>Feliratkozás (ingyenes vagy fizetős)
 

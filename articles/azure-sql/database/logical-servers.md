@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: fa8baa5f17b0f6d667ce05c027e41120b4a15e82
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316064"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367571"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Mi a logikai SQL Server Azure SQL Database és az Azure szinapszis?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -87,7 +87,7 @@ Meglévő adatbázis kezeléséhez navigáljon az SQL- **adatbázisok** oldalra,
 
 Kiszolgálók, adatbázisok és tűzfalak Azure PowerShell használatával történő létrehozásához és kezeléséhez használja a következő PowerShell-parancsmagokat. Ha telepítenie vagy frissítenie kell a PowerShellt, olvassa el a [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)című témakört. Rugalmas készletek létrehozásához és kezeléséhez lásd: [rugalmas készletek](elastic-pool-overview.md).
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Létrehoz egy adatbázist |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Egy vagy több adatbázis beolvasása|
@@ -112,7 +112,7 @@ Kiszolgálók, adatbázisok és tűzfalak Azure PowerShell használatával tört
 
 A kiszolgálók, adatbázisok és tűzfalak [Azure CLI](/cli/azure)-vel való létrehozásához és kezeléséhez használja az alábbi [Azure CLI SQL Database](/cli/azure/sql/db) parancsokat. A [Cloud Shell-lel](/azure/cloud-shell/overview) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren. Rugalmas készletek létrehozásához és kezeléséhez lásd: [rugalmas készletek](elastic-pool-overview.md).
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Létrehoz egy adatbázist|
 |[az SQL db List](/cli/azure/sql/db#az-sql-db-list)|A kiszolgáló által kezelt összes adatbázis vagy egy rugalmas készletben lévő összes adatbázis listája|
@@ -145,12 +145,12 @@ Kiszolgálók, adatbázisok és tűzfalak a Transact-SQL használatával törté
 > [!IMPORTANT]
 > A Transact-SQL használatával nem lehet kiszolgálót létrehozni vagy törölni.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[ADATBÁZIS létrehozása (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Egy új adatbázist hoz létre Azure SQL Databaseban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 |[ADATBÁZIS létrehozása (Azure szinapszis)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Új adatraktár-adatbázist hoz létre az Azure Szinapszisban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Módosítja az adatbázist vagy a rugalmas készletet. |
-|[ALTER DATABASE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)|Módosít egy adatraktár-adatbázist az Azure Szinapszisban.|
+|[ALTER DATABASE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Módosít egy adatraktár-adatbázist az Azure Szinapszisban.|
 |[ADATBÁZIS eldobása (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Visszaadja a kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét (ha van ilyen) egy adatbázishoz. Ha bejelentkezett a kiszolgáló főadatbázisára, az az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis esetében csatlakoznia kell a Master adatbázishoz.|
 |[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| A CPU-t, az i/o-t és a memória-felhasználást adja vissza egy Azure SQL Database adatbázisában. 15 másodpercenként egy sor létezik, még akkor is, ha nincs tevékenység az adatbázisban.|
@@ -171,7 +171,7 @@ Kiszolgálók, adatbázisok és tűzfalak a Transact-SQL használatával törté
 
 Kiszolgálók, adatbázisok és tűzfalak létrehozásához és kezeléséhez használja ezeket a REST API kérelmeket.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[Kiszolgálók – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Új kiszolgáló létrehozása vagy frissítése.|
 |[Kiszolgálók – törlés](https://docs.microsoft.com/rest/api/sql/servers/delete)|Töröl egy kiszolgálót.|
@@ -190,7 +190,7 @@ Kiszolgálók, adatbázisok és tűzfalak létrehozásához és kezeléséhez ha
 |[Tűzfalszabályok – Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Tűzfalszabály beolvasása.|
 |[Tűzfalszabályok – kiszolgálók listázása](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|A tűzfalszabályok listáját adja vissza.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server-adatbázisok Azure SQL Databaseba való áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](migrate-to-database-from-sql-server.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](features-comparison.md).

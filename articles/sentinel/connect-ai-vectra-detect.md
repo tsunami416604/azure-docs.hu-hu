@@ -1,0 +1,58 @@
+---
+title: Az AI Vectra összekapcsolásával észlelhetők az Azure Sentinel | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztathatók az AI Vectra az Azure Sentinel szolgáltatáshoz.
+services: sentinel
+documentationcenter: na
+author: yelevin
+manager: rkarlin
+editor: ''
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
+ms.devlang: na
+ms.topic: how-to
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 06/21/2020
+ms.author: yelevin
+ms.openlocfilehash: 964bab2b81f6ce69e77fd69cab55f6d1894e4edb
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368449"
+---
+# <a name="connect-ai-vectra-detect-to-azure-sentinel"></a>AI Vectra-észlelés összekötése az Azure Sentinel használatával
+
+Ez a cikk azt ismerteti, hogyan csatlakoztatható a [AI Vectra-észlelési](https://www.vectra.ai/product/cognito-detect) berendezés az Azure sentinelhez. A mesterséges intelligenciát érzékelő adatösszekötő lehetővé teszi, hogy a mesterséges intelligenciát az Azure Sentinelbe könnyedén felismerje, így a munkafüzetekbe is megtekintheti, hogy egyéni riasztásokat hozzon létre, és a vizsgálat javítása érdekében beépítse azt.
+
+> [!NOTE]
+> Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
+
+## <a name="configure-your-ai-vectra-detect-appliance-to-send-cef-messages"></a>AI Vectra-észlelési berendezés konfigurálása CEF-üzenetek küldéséhez  
+
+Állítsa be a AI Vectra észlelését, hogy továbbítsa a CEF-formázott syslog-üzeneteket a Log Analytics munkaterületre az [1. lépés: a napló-továbbító üzembe helyezése című témakörben](connect-cef-agent.md)beállított syslog-továbbítón keresztül.
+
+1. A Vectra felületen navigáljon a beállítások > értesítések elemre, és válassza a syslog-konfiguráció szerkesztése lehetőséget. A kapcsolódás beállításához kövesse az alábbi utasításokat:
+
+    - Új cél hozzáadása (a [napló-továbbító](connect-cef-agent.md)állomásneve)
+    - A port beállítása **514** -ként
+    - A protokoll beállítása **UDP** -ként
+    - A **CEF** formátumának beállítása
+    - Naplózási típusok beállítása (az összes elérhető naplózási típus kijelölése)
+    - Kattintson a **Mentés** gombra.
+
+2. A **teszt** gombra kattintva kényszerítheti a tesztelési események küldését a napló továbbítójának.
+
+3. Ha a Log Analytics vonatkozó sémát szeretné használni a AI Vectra-észlelési eseményekhez, keresse meg a **CommonSecurityLog**.
+
+4. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
+
+## <a name="next-steps"></a>Következő lépések
+
+Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók az AI Vectra-eszközök az Azure Sentinelhez. Az adatösszekötőhöz beépített képességek teljes kihasználásához kattintson a **következő lépések** lapra az adatösszekötő lapon. Itt talál néhány kész minta lekérdezést, hogy megismerkedjen a hasznos információk megtalálásával.
+
+Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.

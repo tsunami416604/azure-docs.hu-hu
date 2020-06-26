@@ -13,16 +13,16 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 893f449c6a8e6b41a79fe9d7c26db461b757e4a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 52a4a7131c85231107a2a23a1916016776b219fd
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317764"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367427"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Alkalmazások migrálása a Microsoft hitelesítési tárba (MSAL)
 
-Számos fejlesztő készített és telepített alkalmazásokat az aktív Active Directory-hitelesítési tár (ADAL) használatával. A Microsoft Authentication Library (MSAL) használatát javasoljuk az Azure AD-entitások hitelesítéséhez és engedélyezéséhez.
+Számos fejlesztő a Azure Active Directory Authentication Library (ADAL) használatával épített és telepített alkalmazásokat. A Microsoft Authentication Library (MSAL) használatát javasoljuk az Azure AD-entitások hitelesítéséhez és engedélyezéséhez.
 
 A ADAL helyett a MSAL használatával:
 
@@ -72,7 +72,7 @@ A: a MSAL.NET bizonyos forgatókönyveket támogat a AD FS 2019-es hitelesítés
 __K: Hogyan segítséget nyújt az alkalmazás áttelepítéséhez?__  
 Válasz: Tekintse meg a jelen cikk [áttelepítési útmutató](#migration-guidance) című szakaszát. Ha az alkalmazás platformjának elolvasása után további kérdései vannak, Stack Overflow közzéteheti a címkével, `[adal-deprecation]` vagy megnyithatja a problémát a könyvtár GitHub-tárházában. Az egyes könyvtárak tárházára mutató hivatkozásokat az MSAL áttekintését ismertető cikk [nyelvek és keretrendszerek](msal-overview.md#languages-and-frameworks) című szakaszában találja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások frissítése a Microsoft Authentication Library és a Microsoft Graph API használatára](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
 - [További információ a Microsoft Identity platformról (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)

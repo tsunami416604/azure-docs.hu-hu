@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6a8d156cc2eea881b84dc0ef58f7b6538e0225f
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84759861"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367750"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nem lehet hozzáférni a vállalati alkalmazáshoz" hibaüzenet alkalmazásproxy-alkalmazás használatakor
 
@@ -71,7 +71,7 @@ Első lépésként nyissa meg a belső URL-címet úgy, hogy megnyitja az alkalm
 Annak ellenőrzése, hogy az alkalmazás hozzá van-e rendelve egy működő összekötő-csoporthoz:
 
 1. Nyissa meg az alkalmazást a portálon a **Azure Active Directory**, majd a **vállalati alkalmazások**, majd az **összes alkalmazás** lehetőségre kattintva. Nyissa meg az alkalmazást, majd válassza az **alkalmazásproxy** elemet a bal oldali menüben.
-1. Tekintse meg az összekötő csoport mezőt. Ha nincsenek aktív összekötők a csoportban, a rendszer figyelmeztetést jelenít meg. Ha nem jelennek meg figyelmeztetések, a bekapcsolásával ellenőrizze, hogy az összes [szükséges port](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to) engedélyezve van-e.
+1. Tekintse meg az összekötő csoport mezőt. Ha nincsenek aktív összekötők a csoportban, a rendszer figyelmeztetést jelenít meg. Ha nem jelennek meg figyelmeztetések, a bekapcsolásával ellenőrizze, hogy az összes [szükséges port](application-proxy-add-on-premises-application.md) engedélyezve van-e.
 1. Ha nem megfelelő összekötő-csoport jelenik meg, a legördülő menüben válassza ki a megfelelő csoportot, és erősítse meg, hogy többé nem jelenik meg figyelmeztetés. Ha a kívánt összekötő csoport látható, kattintson a figyelmeztető üzenetre az oldal összekötő-kezeléssel való megnyitásához.
 1. Íme néhány módszer a további részletezéshez:
 
@@ -83,7 +83,7 @@ A lépések végrehajtása után ellenőrizze, hogy az alkalmazás hozzá van-e 
 
 ## <a name="check-all-required-ports-are-open"></a>Győződjön meg arról, hogy az összes szükséges port meg van nyitva
 
-Annak ellenőrzéséhez, hogy az összes szükséges port meg van-e nyitva, tekintse [meg a portok megnyitására vonatkozó dokumentációt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to). Ha az összes szükséges port meg van nyitva, lépjen a következő szakaszra.
+Győződjön meg arról, hogy az összes szükséges port meg van nyitva. A szükséges portokért tekintse meg a portok megnyitása szakaszt az [oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez az Application proxyn keresztül Azure Active Directory](application-proxy-add-on-premises-application.md). Ha az összes szükséges port meg van nyitva, lépjen a következő szakaszra.
 
 ## <a name="check-for-other-connector-errors"></a>Más összekötők hibáinak keresése
 
@@ -103,6 +103,6 @@ Ha a hiba továbbra is fennáll, lépjen arra a gépre, amelyen az összekötő 
 
 Ha az adott gépről elérheti az alkalmazást, akkor az összekötővel kapcsolatos problémákat és hibákat kereshet. A [hibaelhárítási dokumentumban](application-proxy-troubleshoot.md#connector-errors)néhány gyakori hibát láthat. A hibák azonosításához közvetlenül az összekötő naplófájljaiban is kereshet. A hibaüzenetek nagy része a javításokra vonatkozó konkrétabb javaslatok megosztását is lehetővé teheti. A naplók megtekintésének megismeréséhez tekintse meg az [Összekötők dokumentációját](application-proxy-connectors.md#under-the-hood).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)

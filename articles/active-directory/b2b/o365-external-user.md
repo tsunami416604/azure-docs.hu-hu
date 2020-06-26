@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/24/2017
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272268"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367444"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 külső megosztási és Azure Active Directory B2B-együttműködés
+# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Office 365 külső megosztási és Azure Active Directory (Azure AD) B2B-együttműködés
 
-Az Office 365 külső megosztása (OneDrive, SharePoint Online, Unified groups stb.) és a Azure Active Directory (Azure AD) VÁLLALATKÖZI együttműködés technikailag ugyanaz. Az összes külső megosztás (kivéve a OneDrive/SharePoint Online-t), beleértve az Office 365-csoportok vendégeit is, már használja az Azure AD B2B Collaboration meghívó API-kat a megosztáshoz.
+Az Azure AD B2B együttműködés és az Office 365 külső megosztás (OneDrive, SharePoint Online, egyesített csoportok stb.) esetében a külső felhasználók hitelesítése az Azure AD B2B használatával történik.
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Miben különbözik az Azure AD B2B a külső megosztástól a SharePoint Online-ban?
 
@@ -43,7 +43,7 @@ A külső megosztás engedélyezése után lehetőség van arra, hogy a felhaszn
 
 Ezt a funkciót a bérlői és a webhelycsoport szintjén a "ShowPeoplePickerSuggestionsForGuestUsers" beállítás használatával engedélyezheti. A szolgáltatást a set-SPOTenant és a set-SPOSite parancsmagok segítségével állíthatja be, amelyek lehetővé teszik a tagok számára a címtárban lévő összes vendég felhasználó keresését. A bérlői hatókör változásai nincsenek hatással a már kiépített Spongya-webhelyekre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 * [B2B csoportmunka-felhasználó hozzáadása egy szerepkörhöz](add-guest-to-role.md)

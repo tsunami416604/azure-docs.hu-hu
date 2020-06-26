@@ -3,12 +3,12 @@ title: Előzetes verzió – a Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére. Ez egy előzetes verziójú szolgáltatás.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ab18b85fc24deb58a6c65ca038d47120056eaa75
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791707"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373624"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>A Kubernetes-fürtök Azure Policy megismerése (előzetes verzió)
 
@@ -52,9 +52,6 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 1. Szüksége lesz az Azure CLI-verzió 2.0.62 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 1. Regisztrálja az erőforrás-szolgáltatókat és az előzetes verziójú funkciókat.
-
-   > [!CAUTION]
-   > Ha az előfizetéshez regisztrál egy szolgáltatást, a szolgáltatás nem regisztrálható. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
    - Azure Portal:
 
@@ -533,7 +530,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - A Azure Policy bővítmény által nem telepített forgalomirányító házirend-definíciók száma
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

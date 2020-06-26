@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3d04751cb8796290135cfc045385e1bf4cf3c3c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84759946"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367733"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő karakteres alkalmazások a Azure Active Directory alkalmazásproxy
 
@@ -62,7 +62,7 @@ Míg az [Egyéni tartományok](application-proxy-configure-custom-domain.md) nem
 1. Ellenőrzött tartomány létrehozása az Azure-ban.
 1. Töltsön fel egy TLS-/SSL-tanúsítványt PFX formátumban az alkalmazásproxy számára.
 
-Érdemes helyettesítő tanúsítványt használni a létrehozni kívánt alkalmazásnak megfelelően. Azt is megteheti, hogy olyan tanúsítványt is használhat, amely csak bizonyos alkalmazásokat listáz. Ebben az esetben csak a tanúsítványban felsorolt alkalmazások lesznek elérhetők a helyettesítő alkalmazáson keresztül.
+Érdemes helyettesítő tanúsítványt használni a létrehozni kívánt alkalmazásnak megfelelően. 
 
 Biztonsági okokból ez nehéz követelmény, és nem támogatjuk a helyettesítő karaktereket olyan alkalmazások esetében, amelyek nem használhatnak egyéni tartományt a külső URL-címhez.
 
@@ -156,7 +156,7 @@ A konfiguráció a következő struktúrát valósítja meg:
 
 ![Megjeleníti a példa konfigurációjában megvalósított struktúrát](./media/application-proxy-wildcard/05.png)
 
-| Szín | Leírás |
+| Szín | Description |
 | ---   | ---         |
 | Kék  | A Azure Portal explicit módon közzétett és látható alkalmazások. |
 | Szürke  | A fölérendelt alkalmazás segítségével elérhető alkalmazások. |
@@ -189,7 +189,7 @@ Mivel a `finance.adventure-works.com` egy konkrétabb URL-cím `*.adventure-work
 
 Ha több alkalmazás van közzétéve a Finance szolgáltatásban, és Ön `finance.adventure-works.com` ellenőrzött tartománnyal rendelkezik, közzétehet egy másik helyettesítő karaktert `*.finance.adventure-works.com` . Mivel ez az általánosnál sokkal pontosabb `*.adventure-works.com` , elsőbbséget élvez, ha egy felhasználó a pénzügyi tartományban található alkalmazáshoz fér hozzá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az **Egyéni tartományokkal**kapcsolatos további tudnivalókért tekintse meg az [Egyéni tartományok használata az Azure ad Application proxy-ban](application-proxy-configure-custom-domain.md)című témakört.
 - További információ az **alkalmazások közzétételéről**: [alkalmazások közzététele az Azure ad Application proxy használatával](application-proxy-add-on-premises-application.md)

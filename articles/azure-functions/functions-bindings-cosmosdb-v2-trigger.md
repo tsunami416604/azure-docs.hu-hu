@@ -1,19 +1,19 @@
 ---
-title: A 2. x függvények Azure Cosmos DB triggere
+title: Azure Cosmos DB trigger a 2. x és újabb függvényeknél
 description: Ismerje meg, hogyan használhatja a Azure Cosmos DB triggert a Azure Functionsban.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: e7a422e0637c6343e1b2757fdf9aee7375ee2c3f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ff8281a420eb1e967cb9f1d4db620d8f816794b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561634"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374236"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Cosmos DB trigger a Azure Functions 2. x esetében
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB trigger Azure Functions 2. x és újabb verziókhoz
 
 A Azure Cosmos DB trigger a [Azure Cosmos db változási csatornát](../cosmos-db/change-feed.md) használja, hogy figyelje a lapkákat és a frissítéseket a partíciók között. A módosítási hírcsatorna közzéteszi a lapkákat és a frissítéseket, a törlést nem.
 
@@ -57,9 +57,9 @@ namespace CosmosDBSamplesV2
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az alábbi példa egy Cosmos DB trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény naplófájlokat ír, amikor Cosmos DB rekordokat adnak hozzá vagy módosítanak.
+Az alábbi példa egy Cosmos DB trigger kötést mutat be a fájlban lévő *function.js* , és egy [C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény naplófájlokat ír, amikor Cosmos DB rekordokat adnak hozzá vagy módosítanak.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -93,9 +93,9 @@ A C# szkript kódja:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa egy Cosmos DB trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény naplófájlokat ír, amikor Cosmos DB rekordokat adnak hozzá vagy módosítanak.
+Az alábbi példa egy Cosmos DB trigger kötést mutat be a fájlban lévő *function.js* , és egy olyan [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény naplófájlokat ír, amikor Cosmos DB rekordokat adnak hozzá vagy módosítanak.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -122,9 +122,9 @@ Itt látható a JavaScript-kód:
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy Cosmos DB trigger kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja. A függvény naplófájlokat ír a Cosmos DB rekordok módosításakor.
+Az alábbi példa egy Cosmos DB trigger kötést mutat be a fájlban lévő *function.js* és egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja. A függvény naplófájlokat ír a Cosmos DB rekordok módosításakor.
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -213,11 +213,11 @@ A [Java functions futtatókörnyezet könyvtárában](https://docs.microsoft.com
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `CosmosDBTrigger` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `CosmosDBTrigger` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `cosmosDBTrigger` . |
 |**direction** | n.a. | Értékre kell állítani `in` . Ez a paraméter automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/10/2020
-ms.openlocfilehash: 35aedbc4a3d1dcb87b23633acd413c4a55448ef9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 6/24/2020
+ms.openlocfilehash: 29ae9c47ca4ed8cdfedf78ffa7957376c7556076
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710405"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367485"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -47,9 +47,7 @@ A főkiszolgáló bármely [Azure Database for MySQL régióban](https://azure.m
 ### <a name="universal-replica-regions"></a>Univerzális replika-régiók
 A következő régiók bármelyikében létrehozhat egy olvasási replikát, függetlenül attól, hogy hol található a főkiszolgáló. A támogatott univerzális replika-régiók a következők:
 
-Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Közép-Korea, Dél-Brazília, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója.
-
-* Az USA 2. nyugati régiója átmenetileg nem érhető el a régiók közötti replika helyeként.
+Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati középső régiója
 
 ### <a name="paired-regions"></a>Párosított régiók
 Az univerzális replika régión kívül egy olvasási replikát is létrehozhat a főkiszolgáló Azure párosított régiójában. Ha nem ismeri a régió pár elemét, többet is megtudhat az [Azure párosított régiókról szóló cikkből](../best-practices-availability-paired-regions.md).
@@ -58,7 +56,7 @@ Ha régiók közötti replikákat használ a vész-helyreállítási tervezéshe
 
 Azonban a következő szempontokat kell figyelembe venni: 
 
-* Regionális elérhetőség: Azure Database for MySQL az USA 2. nyugati régiójában, Közép-Franciaország, Észak-Európa és Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
+* Regionális elérhetőség: Azure Database for MySQL a közép-Franciaországban, Észak-és Közép-Németország középső régiójában érhető el. A párosított régiói azonban nem érhetők el.
     
 * Egyirányú párok: egyes Azure-régiók csak egyetlen irányban vannak párosítva. Ezek a régiók közé tartoznak a Nyugat-India, Dél-Brazília és US Gov Virginia. 
    Ez azt jelenti, hogy a Nyugat-Indiai főkiszolgáló létrehozhat egy replikát Dél-Indiában. A dél-indiai főkiszolgálók azonban nem hozhatnak létre replikát Nyugat-Indiában. Ennek az az oka, hogy Nyugat-India másodlagos régiója Dél-India, de Dél-India másodlagos régiója nem Nyugat-India.
@@ -168,7 +166,7 @@ Ha frissíteni szeretné a fenti paraméterek egyikét a főkiszolgálón, tör�
 - Győződjön meg arról, hogy a fő kiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a fő és a replikák között.
 - A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) található MySQL-replikálási korlátozások teljes listájának áttekintése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

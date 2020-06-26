@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 1d3804a019add8f97dcbad0f9d707d50c35830bb
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: ffc8e1919350c9a14cb53bd243af66fdfa839d04
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753909"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373454"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
@@ -103,7 +103,7 @@ Adja meg az ajánlat rövid leírását (legfeljebb 100 karakter), amelyet a pia
 
 Adja meg az ajánlat hosszabb leírását (legfeljebb 256 karakter). Ez a hosszú összefoglalás a piactér keresési eredményei között is felhasználható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -138,9 +138,9 @@ Ebben a szakaszban megadhatja azokat az emblémákat és képeket, amelyeket az 
 
 Adja meg ajánlata emblémáját négy képpontos méretben:
 
-- **Kicsi** (40 x 40)
+- **Kicsi** (48 x 48)
 - **Közepes** (90 x 90)
-- **Nagyméretű** (115 x 115)
+- **Nagyméretű** (216 x 216)
 - **Széles** (255 x 115)
 
 Kövesse az alábbi irányelveket a logókhoz:
@@ -264,7 +264,7 @@ Amikor egy ügyfél üzembe helyezi az ajánlatot, az Azure-beli [delegált erő
 
 Bármikor [közzéteheti az ajánlat frissített verzióját](update-existing-offer.md) . Előfordulhat például, hogy új szerepkör-definíciót szeretne hozzáadni egy korábban közzétett ajánlathoz. Ha így tesz, a már hozzáadott ügyfelek egy ikont láthatnak a Azure Portal [**szolgáltatók**](../../lighthouse/how-to/view-manage-service-providers.md) lapján, amely lehetővé teszi, hogy a frissítés elérhető legyen. Minden ügyfél áttekintheti a módosításokat, és eldöntheti, hogy szeretné-e frissíteni az új verzióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)
 - [További tudnivalók az Azure Lighthouse-ról](../../lighthouse/overview.md)

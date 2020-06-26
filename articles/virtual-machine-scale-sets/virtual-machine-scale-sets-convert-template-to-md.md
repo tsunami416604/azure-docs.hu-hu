@@ -7,15 +7,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: disks
-ms.date: 5/18/2017
+ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 85f8694a017c8de94d987c244994a24ad0929441
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 03cbe4eb56f3b3b99f87048b699f76b30b7937c8
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124890"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373964"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Méretezési csoport sablonjának átalakítása felügyelt lemezes méretezési csoport sablonba
 
@@ -137,7 +137,7 @@ Ha ebben a `n` tömbben megadja a lemezeket, a méretezési csoport minden virtu
 Ha többet szeretne megtudni a méretezési csoportokkal rendelkező adatlemezek használatáról, tekintse meg [ezt a cikket](./virtual-machine-scale-sets-attached-disks.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A méretezési csoportokkal rendelkező Resource Manager-sablonok esetében például keressen rá a "vmss" kifejezésre az [Azure Gyorsindítás sablonok GitHub](https://github.com/Azure/azure-quickstart-templates)-tárházában.
 
 Általános információkért tekintse meg a [méretezési csoportok fő oldalát](https://azure.microsoft.com/services/virtual-machine-scale-sets/).

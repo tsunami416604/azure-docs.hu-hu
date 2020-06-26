@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0aea258ac52e078c48255b39145193272aa65b25
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690612"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367971"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés LucidChart konfigurálása
 
@@ -162,12 +162,13 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 ## <a name="change-log"></a>Változási napló
 
 * 04/30/2020 – a vállalati bővítmény attribútum és az egyéni "CanEdit" attribútum támogatása a felhasználók számára.
+* 06/15/2020 – a felhasználók ideiglenes törlése engedélyezve van (az [aktív](https://tools.ietf.org/html/rfc7643) attribútum támogatása).
 
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

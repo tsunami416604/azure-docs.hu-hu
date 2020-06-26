@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
-ms.author: kenwith
+ms.date: 06/10/2020
+ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2a2691935cb38c20e20b6a776acfe70cc458a6ed
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763074"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374441"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
 
@@ -195,8 +195,6 @@ A következő fázisok segítségével tervezze meg és telepítse üzembe megol
 
    Igény szerint a vállalati alkalmazás SAML-jogkivonatában kiállított jogcímeket a [Microsoft útmutatási dokumentációja](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)alapján is használhatja. Gondoskodjon arról, hogy az alkalmazáshoz tartozó SAML-válaszban milyen térképeket kapjon. Ha a konfigurálás során problémák merülnek fel, kövesse az [SSO-integráció hibakeresését ismertető](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)útmutatót.
 
-Az egyéni alkalmazások bevezetése prémium szintű Azure AD P1 vagy P2 licencek szolgáltatás.
-
 ### <a name="provide-sso-change-communications-to-end-users"></a>Egyszeri bejelentkezéses változások kommunikációjának biztosítása a végfelhasználók számára
 
 A kommunikációs terv megvalósítása. Győződjön meg arról, hogy a végfelhasználók tudják, hogy egy változás érkezik, amikor megérkezett, mi a teendő, és hogyan kérhet segítséget.
@@ -237,11 +235,11 @@ Mindig a legkevesebb engedélyekkel rendelkező szerepkört használja a szüks�
 
 | Persona| Szerepkörök | Azure AD-szerepkör (ha szükséges) |
 |--------|-------|-----------------------------|
-| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | Nincs |
+| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | None |
 | Identity admin | Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén | Globális rendszergazda |
-| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
+| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | None |
 | Infrastruktúra-rendszergazdák | Tanúsítvány-átváltási tulajdonos | Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
+| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | None |
 
 Javasoljuk, hogy az [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) használatával kezelje a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot nyújtson a felhasználók számára a címtár-jogosultságokkal.
 
@@ -305,7 +303,7 @@ A következő hivatkozások hibaelhárítási forgatókönyveket mutatnak be. El
 
 - [Probléma az összevont egyszeri bejelentkezéssel az Azure Application Galleryben nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [SAML-alapú SSO hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 

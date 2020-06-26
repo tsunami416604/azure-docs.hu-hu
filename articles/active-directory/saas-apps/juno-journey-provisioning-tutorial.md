@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1a516374e0ac478b24fa1c3ced1627c4814f9bbd
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647741"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367597"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Oktatóanyag: Juno-utazás konfigurálása automatikus felhasználó-kiépítési folyamathoz
 
@@ -40,7 +40,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 * [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
-*  Egy [Juno-utazás bérlője](https://www.junojourney.com/blank).
+*  Egy [Juno-utazás bérlője](https://www.junojourney.com/getstarted).
 *  Egy felhasználói fiók a Juno-úton, rendszergazdai jogosultságokkal.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési üzembe helyezés megtervezése
@@ -159,6 +159,6 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

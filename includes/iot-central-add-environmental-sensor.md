@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9717c76b42a63479c77f862057bfb141954eacff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673407"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378424"
 ---
 ## <a name="create-a-device-template"></a>Eszközsablon létrehozása
 
@@ -21,7 +21,7 @@ Hozzon létre egy nevű mappát a `environmental-sensor` helyi gépen.
 
 Töltse le a [környezeti érzékelő képesség modell](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensorInline.capabilitymodel.json) JSON-fájlját, és mentse a `environmental-sensor` mappába.
 
-Szövegszerkesztővel cserélje le a `{YOUR_COMPANY_NAME_HERE}` vállalata nevével a letöltött fájlban lévő két példányt `EnvironmentalSensorInline.capabilitymodel.json` .
+Szövegszerkesztővel cserélje le a `{YOUR_COMPANY_NAME_HERE}` vállalata nevével a letöltött fájlban lévő két példányt `EnvironmentalSensorInline.capabilitymodel.json` . Csak az a – z, A-Z, 0-9 és aláhúzás karaktereket használja.
 
 Az Azure IoT Central alkalmazásban hozzon létre egy *környezeti érzékelő* nevű sablont az `EnvironmentalSensorInline.capabilitymodel.json` eszköz képességi modell fájljának importálásával:
 

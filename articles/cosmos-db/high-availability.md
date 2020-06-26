@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c3f3eddf57b559d9e8f4837db453232308869767
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: f459e1dd70850db1d7087b4c99de741b37d3bfda
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118049"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367121"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Magas rendelkezésre állás az Azure Cosmos DB használatával
 
@@ -82,7 +82,7 @@ A zóna redundancia a [több főkiszolgálós replikáció](how-to-multi-master.
 
 Ha többrégiós írásokat konfigurál az Azure Cosmos-fiókhoz, külön díj nélkül is dönthet a zóna-redundancia szolgáltatásban. Ellenkező esetben tekintse meg az alábbi megjegyzést a zóna redundancia támogatásának díjszabását illetően. Az Azure Cosmos-fiók meglévő régiójába engedélyezheti a zóna redundanciát, ha eltávolítja a régiót, és újból hozzáadja a zóna redundancia beállítással.
 
-Ez a funkció a következő helyen érhető el: *Egyesült Királyság déli régiója, Délkelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, USA középső régiója, Nyugat-Európa, USA 2. nyugati régiója, Kelet-Ausztrália, Kelet-Japán, Észak-Európa*
+Ez a funkció a következő helyen érhető el: Egyesült Királyság déli régiója, Délkelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, USA középső régiója, *Nyugat-Európa, USA 2. nyugati* régiója, Kelet-Japán, Észak-Európa
 
 > [!NOTE]
 > Az egyetlen régióhoz tartozó Azure Cosmos-fiók Availability Zonesának engedélyezése olyan díjakat eredményez, amelyek egy további régiónak a fiókhoz való hozzáadásával egyenértékűek. A díjszabással kapcsolatos részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) és a [többrégiós költségeket Azure Cosmos db](optimize-cost-regions.md) cikkekben.
@@ -140,7 +140,7 @@ Az Azure Cosmos-fiók létrehozásakor Azure Portal használatával engedélyezh
 
 - Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a helyreállítási időre vonatkozó célkitűzés (RTO). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. Az adatfrissítés-vesztés megengedhető időkorlátja a helyreállítási időkorlát (RPO). A Azure Cosmos DB RPO és RTO lásd: a [konzisztencia szintjei és az adattartósság](consistency-levels-tradeoffs.md#rto)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután olvassa el a következő cikkeket:
 

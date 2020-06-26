@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: dae826367661648f3ee56235fd6497d265bf6a1e
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 45a7de4f19b663823a5eff7ba4f352992c3aaf0d
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339470"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374202"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kódtesztelési stratégiák az Azure Functions szolgáltatásban
 
@@ -35,22 +35,22 @@ Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a
 
 A környezet beállításához hozzon létre egy Function és test alkalmazást. A következő lépések segítséget nyújtanak a tesztek támogatásához szükséges alkalmazások és függvények létrehozásában:
 
-1. [Hozzon létre egy új functions-alkalmazást](./functions-create-first-azure-function.md) , és nevezze el a *függvényeket*
-2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el *MyHttpTrigger*.
-3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el *MyTimerTrigger*.
-4. [Hozzon létre egy xUnit-tesztelési alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a Visual Studióban. ehhez kattintson a **fájl > új > projekt > Visual C# > .net Core > xUnit test Project** elemre, és nevezze el a *functions. test*parancsot. 
+1. [Hozzon létre egy új functions-alkalmazást](./functions-create-first-azure-function.md) , és nevezze el a **függvényeket**
+2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el **MyHttpTrigger**.
+3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el **MyTimerTrigger**.
+4. [Hozzon létre egy XUnit teszt alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a megoldásban, és nevezze el a **functions.** tests nevet. 
 5. A NuGet használata a tesztelési alkalmazásból a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) -re mutató hivatkozás hozzáadásához
-6. [Hivatkozzon a *functions* alkalmazásra](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *functions. test* alkalmazásban.
+6. [Hivatkozzon a *functions* alkalmazásra](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *functions. tesztek* alkalmazásban.
 
 ### <a name="create-test-classes"></a>Tesztelési osztályok létrehozása
 
-Most, hogy létrehozta az alkalmazásokat, létrehozhatók az automatizált tesztek futtatásához használt osztályok.
+Most, hogy létrejöttek a projektek, létrehozhatók az automatizált tesztek futtatásához használt osztályok.
 
 A függvények a [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) egy példányát veszik fel az üzenetek naplózásának kezelésére. Egyes tesztek vagy nem naplóznak üzeneteket, vagy nem érintik a naplózás megvalósításának módját. Más teszteknek ki kell értékelniük a naplózott üzeneteket annak megállapításához, hogy egy teszt átadásra kerül-e.
 
-Az `ListLogger` osztály implementálja az `ILogger` illesztőfelületet, és a tesztek során az üzenetek belső listáját tárolja.
+Létre fog hozni egy nevű új osztályt, `ListLogger` amely a tesztelés során kiértékelésre kerülő üzenetek belső listáját tartalmazza. A szükséges felület megvalósításához `ILogger` az osztálynak hatókörre van szüksége. A következő osztály kigúnyolja az osztálynak átadandó tesztelési esetek hatókörét `ListLogger` .
 
-**Kattintson a jobb gombbal** a *functions. test* alkalmazásra, majd válassza a **> osztály hozzáadása**lehetőséget, nevezze el **NullScope.cs** , és adja meg a következő kódot:
+Hozzon létre egy új osztályt a *functions. tesztek* **NullScope.cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 using System;
@@ -68,7 +68,7 @@ namespace Functions.Tests
 }
 ```
 
-Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **ListLogger.cs** , és adja meg a következő kódot:
+Ezután hozzon létre egy új osztályt a *functions. tesztek* **ListLogger.cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -114,7 +114,7 @@ Az `ListLogger` osztály a következő tagokat valósítja meg, mint az `ILogger
 
 A `Logs` gyűjtemény egy példánya, amely a `List<string>` konstruktorban van inicializálva.
 
-Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **LoggerTypes.cs** , és adja meg a következő kódot:
+Ezután hozzon létre egy új fájlt a *functions. tesztek* **LoggerTypes.cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 namespace Functions.Tests
@@ -129,7 +129,7 @@ namespace Functions.Tests
 
 Ez az enumerálás meghatározza a tesztek által használt naplózó típusát. 
 
-Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **TestFactory.cs** , és adja meg a következő kódot:
+Most hozzon létre egy új osztályt a *functions. tesztek* **TestFactory.cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -163,12 +163,11 @@ namespace Functions.Tests
             return qs;
         }
 
-        public static DefaultHttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
+        public static HttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
         {
-            var request = new DefaultHttpRequest(new DefaultHttpContext())
-            {
-                Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue))
-            };
+            var context = new DefaultHttpContext();
+            var request = context.Request;
+            request.Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue));
             return request;
         }
 
@@ -201,7 +200,7 @@ Az `TestFactory` osztály a következő tagokat valósítja meg:
 
 - **CreateLogger**: a naplózó típus alapján ez a metódus a teszteléshez használt naplózó osztályt adja vissza. A `ListLogger` nyomon követi a naplózott üzeneteket a tesztek kiértékeléséhez.
 
-Ezután **kattintson a jobb gombbal** a *functions. test* alkalmazásra, és válassza a **Hozzáadás > osztály**lehetőséget, nevezze el **FunctionsTests.cs** , és adja meg a következő kódot:
+Végül hozzon létre egy új osztályt a *functions. tesztek* **FunctionsTests.cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -381,7 +380,7 @@ A tesztek hibakereséséhez adja hozzá a következő konfigurációt a *launch.
 
 Ezután állítson be egy töréspontot a tesztben, és nyomja le az **F5**billentyűt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan írhat automatizált teszteket a függvények számára, folytassa ezeket az erőforrásokat:
 

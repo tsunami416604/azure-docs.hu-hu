@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771121"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367104"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -81,6 +81,7 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 |  | [Azure Virtual Network szolgáltatásbeli végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) konfigurálása a Cosmos db és az [Azure SQL db](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) -hez | Ügyfél |
 |  | Győződjön meg arról, hogy a [TLS-titkosítás](../../storage/common/storage-security-tls.md) engedélyezve van az átvitt adatforgalomban. | Ügyfél |
 |  | [Ügyfél által felügyelt kulcsok](../../storage/common/storage-encryption-keys-portal.md) konfigurálása az Azure Storage encryption szolgáltatáshoz | Ügyfél |
+|  | Az Azure-támogatás által az adataihoz való hozzáférés vezérlése az [ügyfél kulcstárolójának](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) használatával | Ügyfél |
 | Alkalmazás-és middleware-biztonság | Integráció a HRE-DS szolgáltatással és a [hitelesítés konfigurálása](apache-domain-joined-configure-using-azure-adds.md) | Ügyfél |
 |  | [Apache Ranger-engedélyezési](apache-domain-joined-run-hive.md) házirendek konfigurálása | Ügyfél |
 |  | [Azure monitor naplók](../hdinsight-hadoop-oms-log-analytics-tutorial.md) használata | Ügyfél |
@@ -92,7 +93,7 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 | Virtualizált infrastruktúra | N/A | HDInsight (felhőalapú szolgáltató) |
 | Fizikai infrastruktúra biztonsága | N/A | HDInsight (felhőalapú szolgáltató) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az ESP-vel rendelkező HDInsight-fürtök tervezése](apache-domain-joined-architecture.md)
 * [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md)

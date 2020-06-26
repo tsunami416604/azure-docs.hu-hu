@@ -3,26 +3,38 @@ title: Erőforrás-szolgáltató létrehozása
 description: Útmutatás erőforrás-szolgáltató létrehozásához és az egyéni erőforrástípusok üzembe helyezéséhez.
 author: MSEvanhi
 ms.topic: tutorial
-ms.date: 06/19/2020
+ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: ce547c010d3cc814d4e6f6182c19572248228fc3
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125005"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368107"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Gyors útmutató: egyéni szolgáltató létrehozása és egyéni erőforrások üzembe helyezése
+# <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Gyors útmutató: egyéni szolgáltató létrehozása és egyéni erőforrások üzembe helyezése
 
 Ebben a rövid útmutatóban létrehoz egy saját erőforrás-szolgáltatót, és üzembe helyezi az adott erőforrás-szolgáltató egyéni erőforrás-típusait. További információ az egyéni szolgáltatókról: az [Azure Custom Providers előzetes](overview.md)verziójának áttekintése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató lépéseinek elvégzéséhez meg kell hívnia a `REST` műveleteket. [A REST-kérelmek küldésének különböző módjai](/rest/api/azure/)vannak.
+- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- A rövid útmutató lépéseinek elvégzéséhez meg kell hívnia a `REST` műveleteket. [A REST-kérelmek küldésének különböző módjai](/rest/api/azure/)vannak.
 
-Az Azure CLI-parancsok futtatásához használja a [bash eszközt Azure Cloud Shell](/azure/cloud-shell/quickstart). Az [Egyéni szolgáltatók](/cli/azure/ext/custom-providers/custom-providers/resource-provider) parancsaihoz bővítmény szükséges. További információ: [bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A PowerShell-parancsok helyi futtatásához használja a PowerShell 7-es vagy újabb verzióját és a Azure PowerShell modulokat. További információ: [Install Azure PowerShell](/powershell/azure/install-az-ps). Ha még nincs eszköz a `REST` műveletekhez, telepítse a [ARMClient](https://github.com/projectkudu/ARMClient). Ez egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti a Azure Resource Manager API meghívását.
+- Az [Egyéni szolgáltatók](/cli/azure/ext/custom-providers/custom-providers/resource-provider) parancsaihoz bővítmény szükséges. További információ: [bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
+- Az Azure CLI-példák `az rest` a `REST` kérelmekhez használhatók. További információ: [az Rest](/cli/azure/reference-index#az-rest).
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+- A PowerShell-parancsok helyileg futnak a PowerShell 7 vagy újabb verzió és a Azure PowerShell modulok használatával. További információ: [Install Azure PowerShell](/powershell/azure/install-az-ps).
+- Ha még nincs eszköz a `REST` műveletekhez, telepítse a [ARMClient](https://github.com/projectkudu/ARMClient). Ez egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti a Azure Resource Manager API meghívását.
+- A **ARMClient** telepítése után a következő beírásával jelenítheti meg a használati adatokat egy PowerShell-parancssorból: `armclient.exe` . Vagy nyissa meg a [ARMClient wikit](https://github.com/projectkudu/ARMClient/wiki).
+
+---
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>Egyéni szolgáltató üzembe helyezése
 
@@ -30,14 +42,16 @@ Az egyéni szolgáltató beállításához telepítsen egy [példa sablont](http
 
 A sablon telepítése után az előfizetése a következő erőforrásokkal rendelkezik:
 
-* Függvényalkalmazás az erőforrásokkal és műveletekkel kapcsolatos műveletekkel.
-* Az egyéni szolgáltatón keresztül létrehozott felhasználók tárolására szolgáló Storage-fiók.
-* Egyéni erőforrás-típusokat és műveleteket definiáló egyéni szolgáltató. A függvény alkalmazás-végpontot használja a kérelmek küldéséhez.
-* Egyéni erőforrás az egyéni szolgáltatótól.
+- Függvényalkalmazás az erőforrásokkal és műveletekkel kapcsolatos műveletekkel.
+- Az egyéni szolgáltatón keresztül létrehozott felhasználók tárolására szolgáló Storage-fiók.
+- Egyéni erőforrás-típusokat és műveleteket definiáló egyéni szolgáltató. A függvény alkalmazás-végpontot használja a kérelmek küldéséhez.
+- Egyéni erőforrás az egyéni szolgáltatótól.
 
-Az egyéni szolgáltató üzembe helyezéséhez használja az Azure CLI-t vagy a PowerShellt:
+Az egyéni szolgáltató üzembe helyezéséhez használja az Azure CLI-t, a PowerShellt vagy a Azure Portal:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Ez a példa arra kéri, hogy adjon meg egy erőforráscsoportot, egy helyet és egy szolgáltató Function alkalmazásának nevét. A nevek a más parancsokban használt változók szerint vannak tárolva. Az az [Group Create](/cli/azure/group#az-group-create) és az [Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create) parancsok telepítik az erőforrásokat.
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&
@@ -52,6 +66,8 @@ read
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+Ez a példa arra kéri, hogy adjon meg egy erőforráscsoportot, egy helyet és egy szolgáltató Function alkalmazásának nevét. A nevek a más parancsokban használt változók szerint vannak tárolva. A [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) és a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsok telepítik az erőforrásokat.
+
 ```powershell
 $rgName = Read-Host -Prompt "Enter a resource group name"
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -64,7 +80,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ---
 
-Vagy a Azure Portal a következő gomb használatával telepítheti a megoldást:
+A megoldás a Azure Portal is üzembe helyezhető. Válassza az **üzembe helyezés az Azure** -ban gombot a sablon megnyitásához a Azure Portalban.
 
 [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
@@ -252,7 +268,7 @@ Az egyéni [szolgáltatói](/cli/azure/ext/custom-providers/custom-providers/res
 
 ### <a name="list-custom-resource-providers"></a>Egyéni erőforrás-szolgáltatók listázása
 
-Az előfizetésben lévő összes egyéni erőforrás-szolgáltató listázása. Az alapértelmezett érték a jelenlegi előfizetéshez tartozó egyéni erőforrás-szolgáltatókat listázza, vagy megadhatja a `--subscription` paramétert. Egy erőforráscsoport listázásához használja a (z `--resource-group` ) paramétert.
+A `list` parancs használatával jelenítheti meg az összes egyéni erőforrás-szolgáltatót egy előfizetésben. Az alapértelmezett érték listázza az aktuális előfizetés egyéni erőforrás-szolgáltatóit, vagy megadhatja a `--subscription` paramétert. Egy erőforráscsoport listázásához használja a (z `--resource-group` ) paramétert.
 
 ```azurecli-interactive
 az custom-providers resource-provider list --subscription $subID
@@ -289,7 +305,7 @@ az custom-providers resource-provider list --subscription $subID
 
 ### <a name="show-the-properties"></a>Tulajdonságok megjelenítése
 
-Egyéni erőforrás-szolgáltató tulajdonságainak megjelenítése. A kimeneti formátum a `list` kimenethez hasonlít.
+A `show` parancs használatával jelenítse meg az egyéni erőforrás-szolgáltató tulajdonságait. A kimeneti formátum a `list` kimenethez hasonlít.
 
 ```azurecli-interactive
 az custom-providers resource-provider show --resource-group $rgName --name $funcName
@@ -345,7 +361,7 @@ A `delete` parancs felszólítja, és csak az egyéni erőforrás-szolgáltatót
 az custom-providers resource-provider delete --resource-group $rgName --name $funcName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni szolgáltatók bevezetését a következő cikk ismerteti:
 
