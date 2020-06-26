@@ -303,8 +303,6 @@
               href: application-proxy-page-load-speed-problem.md
             - name: Az alkalmazáslap hivatkozásai nem működnek
               href: application-proxy-page-links-broken-problem.md
-            - name: Milyen portokat nyissak meg az alkalmazáshoz?
-              href: application-proxy-connectivity-ports-how-to.md
             - name: Az alkalmazás összekötőcsoportjában nem volt működő összekötő
               href: application-proxy-connectivity-no-working-connector.md
             - name: Konfigurálás a felügyeleti portálon
