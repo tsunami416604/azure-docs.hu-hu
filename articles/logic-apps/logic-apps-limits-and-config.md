@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 06/20/2020
-ms.openlocfilehash: 3c62f9794a4eb963bcd23a294d82b67cd9e37d08
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 06/25/2020
+ms.openlocfilehash: 33e521046889733b2f0a66b839ab5dde46398318
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367223"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412695"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -216,7 +216,7 @@ A webes API-k által létrehozott egyéni összekötők korlátai.
 
 Az egyes Azure-előfizetések az alábbi integrációs fiókra korlátozzák:
 
-* Egy [ingyenes szintű](../logic-apps/logic-apps-pricing.md#integration-accounts) integrációs fiók/Azure-régió
+* Egy [ingyenes szintű](../logic-apps/logic-apps-pricing.md#integration-accounts) integrációs fiók Azure-régiónként. Ez a lehetőség csak az Azure nyilvános régiói esetében érhető el, például az USA nyugati régiójában vagy Délkelet-Ázsiában, de nem az [Azure China 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) vagy a [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * 1 000 összes integrációs fiók, beleértve az Integration [Service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) integrációs fiókjait mind a [fejlesztői, mind a prémium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-ban.
 
@@ -268,7 +268,7 @@ A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.mic
 
 | Futásidejű végpont | Ingyenes | Alapszintű | Standard | Jegyzetek |
 |------------------|------|-------|----------|-------|
-| Olvasási hívások száma 5 percenként | 3,000 | 30 000 | 60.000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
+| Olvasási hívások száma 5 percenként | 3,000 | 30 000 | 60.000 | Ez a korlát a logikai alkalmazás futtatási előzményeiből származó nyers bemenetek és kimenetek lekérésére irányuló hívásokra vonatkozik. Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
 | Hívások hívása 5 percenként | 3,000 | 30 000 | 45.000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
 | Hívások követése 5 percenként | 3,000 | 30 000 | 45.000 | Szükség szerint több fiókon is terjesztheti a munkaterhelést. |
 | Egyidejű hívások blokkolása | ~ 1 000 | ~ 1 000 | ~ 1 000 | Minden SKU esetében azonos. Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
@@ -439,7 +439,7 @@ Ez a szakasz a Azure Logic Apps szolgáltatás és a felügyelt összekötők ki
 | USA-beli államigazgatás – Virginia | 13.72.54.205, 52.227.138.30, 52.227.152.44 | 52.127.42.128 - 52.127.42.143, 52.227.143.61, 52.227.162.91 |
 ||||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [hozhatja létre első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
 * Tudnivalók a [gyakori példákról és forgatókönyvekről](../logic-apps/logic-apps-examples-and-scenarios.md)

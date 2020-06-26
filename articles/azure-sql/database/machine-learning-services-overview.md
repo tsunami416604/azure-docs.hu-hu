@@ -7,18 +7,18 @@ ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: dphansen
-ms.author: davidph
+author: garyericson
+ms.author: garye
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c45d52b89d23b2b030f6292a2257dfd732e8f766
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 0a11e2ba820797bac8ce93517841fd37a8256d2c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344764"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413059"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services R-vel (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -52,7 +52,7 @@ Az előre telepített csomagok mellett [további csomagokat is telepíthet](mach
 > [!IMPORTANT]
 > Azure SQL Database Machine Learning Services (előzetes verzió) regisztrációja jelenleg be van **zárva**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg [SQL Server Machine learning Services főbb különbségeit](machine-learning-services-differences.md).
 - Ha szeretné megtudni, hogyan használhatja az R-t a Azure SQL Database Machine Learning Services (előzetes verzió) lekérdezéséhez, tekintse meg a gyors [üzembe helyezési útmutatót](connect-query-r.md).

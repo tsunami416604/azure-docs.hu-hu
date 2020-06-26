@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 73cd8083dc6853e36b05854ab2fd7c0226f99bd6
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: a672db649323a82c75a7e8c0cd6556eadce8089d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080087"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414555"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR – kognitív képesség
 
 Az **optikai karakterfelismerési (OCR)** képesség felismeri a nyomtatott és a kézírásos szövegeket a képfájlokban. Ez a képesség a Cognitive Services [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) által biztosított gépi tanulási modelleket használja. Az **OCR** -képesség a következő funkciókra mutat:
 
 + Angol, spanyol, német, francia, olasz, portugál és holland nyelven az új ["READ"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API használatos.
-+ Az összes többi nyelv esetében az ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API használatos.
++ Az összes többi nyelv esetében az ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md) API használatos.
 
 Az **OCR** -képesség kigyűjti a szöveget a képfájlokból. A támogatott formátumok a következők:
 

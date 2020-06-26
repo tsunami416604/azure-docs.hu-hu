@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 40b3ebf9193ad2d167cb36792900746201605298
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: f4e5bbdc50d99eca774dc5b96657ac8bfdebca17
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106463"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414147"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -76,7 +76,7 @@ A privát kapcsolati erőforrás egy adott privát végpont célját célozza me
 |**Azure Relay** | Microsoft. Relay/névterek | névtér |
 |**Azure Event Grid** | Microsoft. EventGrid/témakörök    | témakör |
 |**Azure Event Grid** | Microsoft. EventGrid/tartományok    | domain |
-|**Azure-WebApps** | Microsoft. Web/Sites    | hely |
+|**Azure-WebApps** | Microsoft. Web/Sites    | helyek |
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/munkaterületek    | munkaterület |
   
  

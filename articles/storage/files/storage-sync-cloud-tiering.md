@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 869614c2e3fe11c289ab6eb7f6c1407f666de2b0
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 23e98c40420a5f1ed9b048d5530eacfe5eedfb32
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368141"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413977"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
 A felhőalapú rétegek a Azure File Sync választható funkciója, amelyekben a gyakran használt fájlok a kiszolgálón helyileg vannak gyorsítótárazva, míg az összes többi fájl a házirend-beállítások alapján Azure Files. Egy fájl többszintű kiválasztásakor a Azure File Sync fájlrendszer-szűrő (StorageSync.sys) a fájlt helyileg váltja fel egy mutatóval vagy újraelemzési ponttal. Az újraelemzési pont a fájl URL-címét jelöli Azure Files. A többrétegű fájlok "offline" attribútummal és az NTFS fájlrendszerrel beállított FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútummal is rendelkeznek, így a harmadik féltől származó alkalmazások biztonságosan azonosíthatják a többrétegű fájlokat.
@@ -39,7 +39,30 @@ A felhő-rétegek nem függnek az NTFS-szolgáltatástól a legutóbbi hozzáfé
 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Mennyibe kerül a fájl minimális mérete a szinthez?
-Az ügynök 9. x vagy újabb verziójában a fájl minimális fájlmérete a fájlrendszer fürtjének méretétől függ (a fájlrendszer fürt méretének kétszerese). Ha például az NTFS fájlrendszerű fürt mérete 4KB, akkor a fájlnak az eredményül kapott minimális fájlméret 8 kb. Az ügynök 8. x vagy régebbi verziójában a fájl minimális mérete 64 kb.
+
+Az ügynök 9-es és újabb verzióiban a fájl minimális fájlmérete a fájlrendszer fürtjének méretétől függ. A következő táblázat a mennyiségi fürt méretétől függően a minimálisan felhasználható fájlméretet mutatja be:
+
+|Kötet fürtjének mérete (bájt) |Ennek a méretnek vagy nagyobb méretű fájloknak lépcsőzetesen kell lenniük  |
+|----------------------------|---------|
+|4 KB (4096)                 | 8 KB    |
+|8 KB (8192)                 | 16 KB   |
+|16 KB (16384)               | 32 KB   |
+|32 KB (32768) és nagyobb    | 64 KB   |
+
+A Windows által használt összes fájlrendszer a fürt méretétől függően rendezi a merevlemezt (más néven a foglalási egység mérete). A fürt mérete a fájl tárolására használható legkisebb lemezterületet jelöli. Ha a fájlméret nem a fürt méretének még többszörösét eredményezi, a fájl tárolásához további helyet kell használni (a fürt következő többszörösére).
+
+A Azure File Sync a Windows Server 2012 R2 és újabb operációs rendszert futtató NTFS-kötetek esetében támogatott. Az alábbi táblázat az új NTFS-kötet létrehozásakor az alapértelmezett szektorcsoport-méreteket ismerteti. 
+
+|Kötet mérete    |Windows Server 2012R2 és újabb verziók |
+|---------------|---------------|
+|7 MB – 16 TB   | 4 KB          |
+|16TB – 32 TB   | 8 KB          |
+|32 TB TÁRTERÜLETET – 64 TB   | 16 KB         |
+|64TB – 128 TB  | 32 KB         |
+|128TB – 256 TB | 64 KB         |
+|> 256 TB       | Nem támogatott |
+
+Lehetséges, hogy a kötet létrehozásakor manuálisan formázta a kötetet egy másik fürt (kiosztási egység) mérettel. Ha a kötet a Windows egy korábbi verziójából ered, akkor az alapértelmezett szektorcsoportok mérete is eltérő lehet. [Ez a cikk további részleteket tartalmaz az alapértelmezett fürtök méretéről.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat)
 
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Hogyan működik a köteten található szabad hely rétegzési szabályzata?
@@ -85,7 +108,7 @@ A további adatok helyi megtartása csökkenti a kimenő forgalom költségeit, 
 
 Azt határozza meg, hogy a fájlokat a beállított szabályzatok alapján kell-e kiértékelni, óránként egyszer. Új kiszolgálói végpont létrehozásakor két helyzet fordulhat elő:
 
-1. Amikor új kiszolgálói végpontot ad hozzá, az adott kiszolgáló helyén gyakran előfordulnak fájlok. Először fel kell tölteni őket, mielőtt megkezdené a Felhőbeli rétegek megkezdését. A kötet szabad területének házirendje nem indul el, amíg az összes fájl kezdeti feltöltésének véget nem ér. A választható dátumra vonatkozó házirend azonban egy adott fájl alapján fog működni, amint a fájl feltöltése megtörtént. Az egyórás időköz itt is érvényes. 
+1. Amikor új kiszolgálói végpontot ad hozzá, az adott kiszolgáló helyén gyakran előfordulnak fájlok. Először fel kell tölteni őket, mielőtt megkezdené a Felhőbeli rétegek megkezdését. A kötet szabad területének házirendje nem kezdi meg a munkáját, amíg az összes fájl kezdeti feltöltését befejezte. A választható dátumra vonatkozó házirend azonban egy adott fájl alapján fog működni, amint a fájl feltöltése megtörtént. Az egyórás időköz itt is érvényes. 
 2. Új kiszolgálói végpont hozzáadásakor előfordulhat, hogy egy üres kiszolgáló helyét egy Azure-fájlmegosztás számára az adataival kapcsolja össze. Akár egy második kiszolgáló, akár vész-helyreállítási helyzetben van. Ha úgy dönt, hogy letölti a névteret, és felidézi a tartalmat a kiszolgáló kezdeti letöltése során, akkor a névtér leállása után a rendszer visszahívja a fájlokat az utolsó módosítás időbélyegzője alapján. Csak annyi fájl lesz meghívva, amely a kötet szabad területére vonatkozó házirendben és a választható dátum-házirendben is elfér.
 
 <a id="is-my-file-tiered"></a>
@@ -95,7 +118,7 @@ Több módon is ellenőrizhető, hogy a fájl az Azure-fájlmegosztás szintjér
    *  **Keresse meg a fájl attribútumait a fájlban.**
      Kattintson a jobb gombbal egy fájlra, lépjen a **részletek**menüpontra, majd görgessen le az **attribútumok** tulajdonsághoz. A rétegű fájlok a következő attribútumokkal vannak beállítva:     
         
-        | Attribútum betűjele | Attribútum | Definíció |
+        | Attribútum betűjele | Attribútum | Meghatározás |
         |:----------------:|-----------|------------|
         | A | Archívum | Azt jelzi, hogy a fájlt biztonsági mentési szoftverrel kell biztonsági másolatot készíteni. Ez az attribútum mindig be van állítva, függetlenül attól, hogy a fájl többszintes vagy teljes mértékben a lemezen van-e tárolva. |
         | P | Ritka fájl | Azt jelzi, hogy a fájl ritka fájl. A ritka fájlok olyan speciális fájltípusok, amelyeket az NTFS biztosít a hatékony használatra, ha a lemezen lévő fájl többnyire üres. A Azure File Sync ritka fájlokat használ, mivel a fájlok teljes mértékben, vagy részben visszahívásra kerülnek. A teljes mértékben többrétegű fájlokban a fájl stream a felhőben tárolódik. Egy részben visszanevezett fájlban a fájl egy része már lemezen van. Ha egy fájl teljesen visszahívásra kerül a lemezre, Azure File Sync átalakítja egy ritka fájlból egy normál fájlba. Ez az attribútum csak a Windows Server 2016-es és régebbi verzióra van beállítva.|

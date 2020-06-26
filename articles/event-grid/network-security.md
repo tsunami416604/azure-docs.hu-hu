@@ -5,14 +5,14 @@ services: event-grid
 author: VidyaKukke
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/25/2020
 ms.author: vkukke
-ms.openlocfilehash: ba3bc14c9b4a9d5d866dbb1b9369557b948078d0
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: f3b3877ae3278e12eec43843dbed6ac686227860
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390193"
+ms.locfileid: "85414249"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid erőforrások hálózati biztonsága
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Event Grid használatával: 
@@ -37,6 +37,7 @@ A Azure Event Grid támogatja az IP-alapú hozzáférés-vezérlést a témakör
 
 Alapértelmezés szerint a témakör és a tartomány elérhető az internetről, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja az IP-címek és IP-címtartományok [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelölését. A más IP-címről származó közzétevőket a rendszer elutasítja, és 403 (tiltott) választ fog kapni.
 
+A témakörökhöz és tartományokhoz tartozó IP-tűzfal konfigurálásának lépésenkénti lépéseiért lásd az [IP-tűzfal konfigurálását](configure-firewall.md)ismertető témakört.
 
 ## <a name="private-endpoints"></a>Privát végpontok
 A [privát végpontok](../private-link/private-endpoint-overview.md) lehetővé teszik, hogy közvetlenül a virtuális hálózatról küldje el az eseményeket egy [privát kapcsolaton](../private-link/private-link-overview.md) keresztül, anélkül, hogy a nyilvános interneten kellene haladnia. A privát végpontok egy speciális hálózati adapterek a VNet található Azure-szolgáltatásokhoz. Ha saját témakörhöz vagy tartományhoz hoz létre privát végpontot, biztonságos kapcsolatot biztosít a VNet található ügyfelek és a Event Grid erőforrás között. A magánhálózati végpont IP-címet kap a VNet IP-címének tartományához. A magánhálózati végpont és a Event Grid szolgáltatás közötti kapcsolat biztonságos privát hivatkozást használ.
@@ -96,7 +97,7 @@ A **privát végpontok** a Event Grid alapszintű és prémium szintű csomagjai
 
 Az **IP-tűzfal** funkció a Event Grid alapszintű és prémium szintjein is elérhető. Egy témakör vagy tartomány alapján legfeljebb 16 IP-tűzfalszabály hozható létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Event Grid erőforrás IP-tűzfalát úgy is beállíthatja, hogy a nyilvános interneten keresztül csak az IP-címek és az IP-címtartományok egyetlen kiválasztott készletével korlátozza a hozzáférést. Részletes útmutatásért lásd: az [IP-tűzfal konfigurálása](configure-firewall.md).
 
 A privát végpontokat úgy is beállíthatja, hogy csak a kiválasztott virtuális hálózatokról korlátozza a hozzáférést. Részletes útmutatásért lásd: [privát végpontok konfigurálása](configure-private-endpoints.md).

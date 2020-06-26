@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417169"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414606"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Ha a feltétel tevékenysége Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek if utasítása. Egy tevékenységkészletet futtat le, ha a feltétel `true` értéket ad vissza, és egy másik tevékenységkészletet, ha a feltétel `false` értéket ad vissza. 
+Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek if utasítása. Tevékenységek készletét hajtja végre, ha a feltétel kiértékelése `true` és a tevékenységek egy másik csoportja, amikor a feltétel kiértékeli a következőt: `false` . 
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -67,11 +67,11 @@ Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a prog
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | Az IF-Condition tevékenység neve. | Sztring | Igen
-type | **IfCondition** értékre kell állítani | Sztring | Igen
-kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Igen
-ifTrueActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `true`. | Tömb | Igen
-ifFalseActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `false`. | Tömb | Igen
+name | Az IF-Condition tevékenység neve. | Sztring | Yes
+típus | **IfCondition** értékre kell állítani | Sztring | Yes
+kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Yes
+ifTrueActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `true` . | Tömb | Yes
+ifFalseActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `false` . | Tömb | Yes
 
 ## <a name="example"></a>Példa
 Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából a kimeneti mappába. A kimeneti mappát a (z) routeSelection folyamat paraméterének értéke határozza meg. Ha a routeSelection értéke TRUE (igaz), a rendszer átmásolja az adatmennyiséget a outputPath1. Ha pedig a routeSelection értéke hamis, a rendszer az outputPath2-re másolja az adatfájlokat. 
@@ -79,7 +79,7 @@ Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából
 > [!NOTE]
 > Ez a szakasz JSON-definíciókat és PowerShell-parancsokat tartalmaz a folyamat futtatásához. A Data Factory-adatfolyamatok Azure PowerShell és JSON-definíciók használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd [: oktatóanyag: az adatfeldolgozó létrehozása a Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Folyamat IF-Condition tevékenységgel (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Folyamat IF-Condition tevékenységgel (Adfv2QuickStartPipeline.jsbekapcsolva)
 
 ```json
 {
@@ -190,7 +190,7 @@ Egy másik példa a kifejezésre:
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage társított szolgáltatás (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage társított szolgáltatás (AzureStorageLinkedService.jsbekapcsolva)
 
 ```json
 {
@@ -204,7 +204,7 @@ Egy másik példa a kifejezésre:
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméteres Azure Blob-adatkészlet (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Paraméteres Azure Blob-adatkészlet (BlobDataset.jsbekapcsolva)
 A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **outputPath2** paraméterének értékére. 
 
 ```json
@@ -231,7 +231,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Adatcsatorna-paraméter JSON (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Adatcsatorna-paraméter JSON-je (PipelineParameters.jsbekapcsolva)
 
 ```json
 {

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: bb2e6256a3272bea74ac1176c859fcbfefe46b10
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391995"
+ms.locfileid: "85412634"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -61,6 +61,16 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 | **Azure Cosmos DB workshopok és Labs** |[Cosmos DB workshopok kezdőlapja](https://aka.ms/cosmosworkshop)
 
 ## <a name="release-history"></a>Kiadási előzmények
+
+### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
+#### <a name="new-features"></a>Új funkciók
+* A lekérdezés támogatása hozzáadva `GROUP BY` .
+* Megnövelte a maxConnectionsPerEndpoint alapértelmezett értékét a 130 értékre a DirectConnectionConfig-ben.
+* Megnövelte a maxRequestsPerConnection alapértelmezett értékét a DirectConnectionConfig-ben.
+#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+* Az Order by lekérdezés által visszaadott hibák a folytatási token használatával ismétlődő eredményeket adnak vissza. 
+* Az érték lekérdezésével kapcsolatos rögzített hibák a beágyazott objektumhoz null értékeket adnak vissza.
+* Rögzített null értékű kivétel a RntbdClientChannelPool-ben a Request Managerben.
 
 ### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
 #### <a name="new-features"></a>Új funkciók

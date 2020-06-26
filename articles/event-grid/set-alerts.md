@@ -7,15 +7,15 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: spelluru
-ms.openlocfilehash: 488d3025f279916cb98e75f3f8db56fdc9d6d1de
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 1a2eacb5fa03ea2a5a8ba2d38d9b3e7dea315890
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392924"
+ms.locfileid: "85412838"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Riasztások beállítása Azure Event Grid mérőszámokra és tevékenységi naplókra
-Ez a cikk azt ismerteti, hogyan hozhatók létre riasztások Azure Event Grid mérőszámokra és tevékenység-naplózási műveletekre. 
+Ez a cikk azt ismerteti, hogyan hozhatók létre riasztások Azure Event Grid mérőszámokra és tevékenység-naplózási műveletekre. Riasztásokat hozhat létre a közzétételi és kézbesítési mérőszámokon Azure Event Grid erőforrásokhoz (témakörökhöz és tartományokhoz) is. Rendszertémakörök esetén [hozzon létre riasztásokat a **metrikák** lapon](#create-alerts-using-the-metrics-page).
 
 ## <a name="create-alerts-on-dead-lettered-events"></a>Riasztásokat hozhat létre a kézbesítetlen eseményeken
 A következő eljárás azt mutatja be, hogyan hozhat létre riasztást a **Kézbesítetlen események** metrikájában egy egyéni témakörhöz. Ebben a példában egy e-mailt küldünk az Azure erőforráscsoport-tulajdonosának, amikor egy témakörhöz tartozó kézbesítetlen események száma 10 fölé esik. 
@@ -33,6 +33,9 @@ A következő eljárás azt mutatja be, hogyan hozhat létre riasztást a **Kéz
     2. Válasszon dimenziókat (nem kötelező). 
         
         :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Jellogika konfigurálása":::        
+
+        > [!NOTE]
+        > A **+** **EventSubscriptionName** gomb kiválasztásával megadhatja az események szűrésére szolgáló esemény-előfizetés nevét. 
     3. Görgessen le. A **riasztási logika** szakaszban válasszon ki egy **operátort**, egy **összesítési típust**, és adjon meg egy **küszöbértéket**, és válassza a **kész**lehetőséget. Ebben a példában a riasztás akkor aktiválódik, ha a teljes kézbesítetlen üzenetek száma nagyobb, mint 10. 
     
         :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Riasztási logika":::                
@@ -66,7 +69,7 @@ Ha például egy kézbesítési hiba eseményéről szeretne riasztást létreho
 
 
 ## <a name="create-alerts-using-the-metrics-page"></a>Riasztások létrehozása a metrikák lapról
-Riasztásokat a **metrikák** lapon is létrehozhat. A lépések hasonlóak. 
+Riasztásokat a **metrikák** lapon is létrehozhat. A lépések hasonlóak. A rendszertémakörökhöz csak a **metrikák** lapot használhatja riasztások létrehozásához, mert a **riasztások** lap nem érhető el. 
 
 :::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Metrikák lap – riasztás létrehozása gomb":::   
     
@@ -74,7 +77,7 @@ Riasztásokat a **metrikák** lapon is létrehozhat. A lépések hasonlóak.
 > [!NOTE]
 > Ez a cikk nem tárgyalja a riasztások létrehozásához használható különböző lépéseket és kombinációkat. A riasztások áttekintését lásd: [riasztások áttekintése](../azure-monitor/platform/alerts-metric.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

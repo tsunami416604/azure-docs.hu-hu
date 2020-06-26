@@ -3,22 +3,23 @@ title: Az Azure Resource naplózza a támogatott szolgáltatásokat és sémáka
 description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatásait és esemény-sémáját.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 10/22/2019
-ms.openlocfilehash: 04f89f53eb8ee0f5205b77ff65d14380c1b68144
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.date: 06/15/2020
+ms.openlocfilehash: 37c4093e52caf091489c60a8cdf497cffeffe9ac
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418756"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413858"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Az Azure-erőforrás naplóihoz tartozó általános és szolgáltatás-specifikus séma
 
 > [!NOTE]
-> Az erőforrás-naplók korábban diagnosztikai naplóként ismertek. A név 2019 októberében módosult, mivel az Azure Monitor által összegyűjtött naplók típusai többek között az Azure-erőforrást is tartalmazzák.
+> Az erőforrás-naplók korábban diagnosztikai naplóként ismertek. A név 2019 októberében módosult, mivel az Azure Monitor által összegyűjtött naplók típusai többek között az Azure-erőforrást is tartalmazzák. Emellett az ebben a cikkben felsorolt erőforrás-napló-kategóriák listáját is felhasználhatja. Átkerültek az [erőforrás-napló kategóriájára](resource-logs-categories.md). 
 
 [Azure monitor az erőforrás-naplókat](../../azure-monitor/platform/platform-logs-overview.md) az Azure-szolgáltatások által kibocsátott naplók, amelyek leírják ezeknek a szolgáltatásoknak vagy erőforrásoknak a működését. A Azure Monitoron keresztül elérhető összes erőforrás-napló közös legfelső szintű sémával rendelkezik, és minden szolgáltatás számára rugalmasságot biztosít, hogy egyedi tulajdonságokat bocsát ki a saját eseményeihez.
 
 Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category` séma egyedileg azonosítható kombinációja. Ez a cikk az erőforrás-naplók legfelső szintű sémáját, valamint az egyes szolgáltatások sémák mutató hivatkozásokat ismerteti.
+
 
 ## <a name="top-level-common-schema"></a>Legfelső szintű közös séma
 

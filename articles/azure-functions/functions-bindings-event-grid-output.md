@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: 891eda49e11d9a9252cfcb5a0677eb47551135bc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 2eaa2202ac6c2f0fac0f53c6eeb2f5d08c764f1e
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561800"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413348"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions Azure Event Grid kimeneti kötése
 
-A Event Grid kimeneti kötés használatával írhat eseményeket egyéni témakörbe. [Az egyéni témakörhöz érvényes hozzáférési kulccsal](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)kell rendelkeznie.
+A Event Grid kimeneti kötés használatával írhat eseményeket egyéni témakörbe. [Az egyéni témakörhöz érvényes hozzáférési kulccsal](../event-grid/security-authenticate-publishing-clients.md)kell rendelkeznie.
 
 További információ a telepítésről és a konfigurációról: [Áttekintés](./functions-bindings-event-grid.md).
 
@@ -59,7 +59,7 @@ public static async Task Run(
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az alábbi példa a *function. JSON* fájlban lévő Event Grid kimeneti kötési adatokat mutatja be.
+Az alábbi példa a *function.js* fájl Event Grid kimeneti kötési adatokat mutatja be.
 
 ```json
 {
@@ -102,7 +102,7 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa a *function. JSON* fájlban lévő Event Grid kimeneti kötési adatokat mutatja be.
+Az alábbi példa a *function.js* fájl Event Grid kimeneti kötési adatokat mutatja be.
 
 ```json
 {
@@ -162,9 +162,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy trigger-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](functions-reference-python.md) , amely a kötést használja. Ezután egy eseményben küldi el az egyéni Event Grid témakört, amelyet a következő ad meg: `topicEndpointUri` .
+Az alábbi példa egy trigger kötést mutat be egy *function.jsa* fájlban, és egy [Python-függvényt](functions-reference-python.md) , amely a kötést használja. Ezután egy eseményben küldi el az egyéni témakört, amelyet a következő ad meg: `topicEndpointUri` .
 
-Itt található a *function. JSON* fájlban található kötési adat:
+A *function.js* fájlban található kötési adatfájlok:
 
 ```json
 {
@@ -187,7 +187,7 @@ Itt található a *function. JSON* fájlban található kötési adat:
 }
 ```
 
-Itt látható a Python-minta, amely egy eseményt küld egy egyéni Event Grid témakörre a következő beállításával `EventGridOutputEvent` :
+Itt látható a Python-minta, amely egy eseményt küld egy egyéni témakörre a következő beállításával `EventGridOutputEvent` :
 
 ```python
 import logging
@@ -253,11 +253,11 @@ A Event Grid kimeneti kötés nem érhető el a Javához.
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `EventGrid` .
+Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `EventGrid` .
 
-|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "EventGrid" értékre kell állítani. |
 |**direction** | n.a. | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
@@ -278,11 +278,11 @@ Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállí
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Üzenetek küldése a metódus paraméterének használatával, például: `out EventGridEvent paramName` . A C#-szkriptben `paramName` a `name` *function. JSON*tulajdonságban megadott érték. Több üzenet írásához használhatja a `ICollector<EventGridEvent>` vagy `IAsyncCollector<EventGridEvent>` a helyét `out EventGridEvent` .
+Üzenetek küldése a metódus paraméterének használatával, például: `out EventGridEvent paramName` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<EventGridEvent>` vagy `IAsyncCollector<EventGridEvent>` a helyét `out EventGridEvent` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A kimeneti eseményt a `context.bindings.<name>` `<name>` `name` *függvény. JSON*tulajdonságában megadott érték használatával érheti el.
+A kimeneti esemény eléréséhez használja `context.bindings.<name>` a `<name>` `name` *function.js*tulajdonságában megadott értéket.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -294,6 +294,6 @@ A Event Grid kimeneti kötés nem érhető el a Javához.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Event Grid esemény elküldése](./functions-bindings-event-grid-trigger.md)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 100e4b88589f3731d127ccb1060e556c1f3a2f39
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450972"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413246"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -46,7 +46,7 @@ A jelszóval nem rendelkező hitelesítési módszerek regisztrációs funkciói
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Jelszó nélküli telefonos bejelentkezési hitelesítési módszerek engedélyezése
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
-1. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági** > **hitelesítési módszerek** > **hitelesítési módszer házirend (előzetes verzió) lehetőséget.**
+1. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonsági**  >  **hitelesítési módszerek**  >  **hitelesítési módszer házirend (előzetes verzió) lehetőséget.**
 1. A **jelszó nélküli telefonos bejelentkezés**területen válassza a következő beállításokat
    1. **Engedélyezés** – igen vagy nem
    1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
@@ -82,9 +82,9 @@ A rendszergazda dönthet úgy, hogy engedélyezi a felhasználó számára a jel
 
 ### <a name="ad-fs-integration"></a>AD FS integráció
 
-Ha egy felhasználó engedélyezte a Microsoft Authenticator jelszóval nem rendelkező hitelesítő adatokat, akkor a felhasználó hitelesítése mindig az alapértelmezett, ha értesítést szeretne küldeni jóváhagyásra. Ez a logika megakadályozza, hogy a hibrid bérlő felhasználói ne legyenek átirányítva az ADFS-be a bejelentkezési ellenőrzéshez anélkül, hogy a felhasználó további lépést kellene tennie a jelszó használata helyett. Ez a folyamat a helyszíni feltételes hozzáférési szabályzatokat és az átmenő hitelesítési folyamatokat is megkerüli. 
+Ha egy felhasználó engedélyezte a Microsoft Authenticator jelszóval nem rendelkező hitelesítő adatokat, akkor a felhasználó hitelesítése mindig az alapértelmezett, ha értesítést szeretne küldeni jóváhagyásra. Ez a logika megakadályozza, hogy a hibrid bérlő felhasználói ne kelljen AD FS a bejelentkezési ellenőrzésre, anélkül, hogy a felhasználó további lépést kellene tennie, hogy rákattint a jelszó használata helyett. Ez a folyamat a helyszíni feltételes hozzáférési szabályzatokat és az átmenő hitelesítési folyamatokat is megkerüli. 
 
-Ha a felhasználó nem válaszol, és a rendszer megkísérli bejelentkezni a jelszó nélküli telefonos bejelentkezési ellenőrzésre, akkor előfordulhat, hogy a felhasználót a rendszer az ADFS-be fogja írni a jelszó megadására.  
+Ha a felhasználó nem válaszol, és a rendszer megkísérli bejelentkezni a jelszó nélküli telefonos bejelentkezési ellenőrzésre, akkor előfordulhat, hogy a felhasználó AD FS a jelszó megadására.  
 
 ### <a name="azure-mfa-server"></a>Azure MFA-kiszolgáló
 

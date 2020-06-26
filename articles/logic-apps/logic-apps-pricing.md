@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: df9d1989253bd1e6b168aa00dad941917ca2dfd3
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536233"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412481"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -81,7 +81,7 @@ A Azure Logic Apps-összekötők a logikai alkalmazások számára megkönnyíti
 
 <a name="triggers"></a>
 
-## <a name="triggers"></a>Eseményindítók
+## <a name="triggers"></a>Triggerek
 
 Az eseményindítók olyan speciális műveletek, amelyek egy adott esemény bekövetkezésekor létrehoznak egy Logic app-példányt. Az eseményindítók különböző módokon működnek, amelyek befolyásolják a logikai alkalmazás mérési módját. Itt láthatók a Azure Logic Appsban található különféle triggerek:
 
@@ -116,13 +116,13 @@ A letiltott logikai alkalmazások nem számítanak fel díjat, mert nem tudnak �
 
 A [rögzített díjszabási modell](https://azure.microsoft.com/pricing/details/logic-apps) olyan [integrációs fiókokra](logic-apps-enterprise-integration-create-integration-account.md) vonatkozik, ahol a [B2B-és EDI](logic-apps-enterprise-integration-b2b.md) -és [XML-feldolgozási](logic-apps-enterprise-integration-xml.md) funkcióit a Azure Logic apps további költség nélkül vizsgálhatja, fejlesztheti és tesztelheti. Az egyes Azure-előfizetések esetében az [integrációs fiókok egy adott korlátja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)is lehet. [Az egyes](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)integrációs fiókok akár a kereskedelmi partnereket, a szerződéseket, a térképeket, a sémákat, a szerelvényeket, a tanúsítványokat, a Batch-konfigurációkat és egyebeket is tartalmazhatnak.
 
-A Azure Logic Apps ingyenes, alapszintű és standard integrációs fiókokat kínál. Az alapszintű és a standard szintű csomagokat a Logic Apps szolgáltatói szerződés (SLA) támogatja, az ingyenes szintet pedig SLA nem támogatja, és korlátozza az átviteli sebességet és a használatot. Az ingyenes szintű integrációs fiókok kivételével az egyes Azure-régiókban több integrációs fiók is lehet. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
+A Azure Logic Apps ingyenes, alapszintű és standard integrációs fiókokat kínál. Az alapszintű és a standard szintű csomagokat a Logic Apps szolgáltatói szerződés (SLA) támogatja, az ingyenes szintet pedig SLA nem támogatja, és korlátozza a régió rendelkezésre állását, az átviteli sebességet és a használatot. Az ingyenes szintű integrációs fiókok kivételével az egyes Azure-régiókban több integrációs fiók is lehet. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 Ha a [Premium vagy a Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) [ *integrációs szolgáltatási környezettel* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)rendelkezik, az ISE-ben 5 teljes integrációs fiók tartozhat. Ha szeretné megtudni, hogyan működik a rögzített díjszabási modell egy ISE esetében, tekintse meg a jelen témakör előző [rögzített díjszabási modell](#fixed-pricing) című szakaszát. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Az ingyenes, az alapszintű vagy a standard integrációs fiók közötti választáshoz tekintse át az alábbi használati esetek leírását:
 
-* **Ingyenes**: Ha ki szeretné próbálni a feltáró forgatókönyveket, nem éles forgatókönyveket
+* **Ingyenes**: Ha szeretné kipróbálni a feltáró forgatókönyveket, nem pedig éles környezetben. Ez a lehetőség csak az Azure nyilvános régiói esetében érhető el, például az USA nyugati régiójában vagy Délkelet-Ázsiában, de nem az [Azure China 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) vagy a [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * **Alapszintű**: Ha csak az üzenetkezelést szeretné használni, vagy olyan kisméretű üzleti partnerként tevékenykedik, amely egy nagyobb üzleti egységgel rendelkező kereskedelmi partneri kapcsolattal rendelkezik
 

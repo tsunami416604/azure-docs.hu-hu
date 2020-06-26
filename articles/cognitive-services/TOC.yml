@@ -36,6 +36,8 @@
       href: ./encryption/cognitive-services-encryption-keys-portal.md
     - name: A Cognitive Services felé küldött kérelmek hitelesítése
       href: authentication.md
+    - name: Biztonsági alapkonfiguráció
+      href: security-baseline.md
 - name: Tárolótámogatás
   items:
     - name: Tárolótámogatás
