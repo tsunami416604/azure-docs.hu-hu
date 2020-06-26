@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 5aef0c9a9b0f3dbfb5ad2f4c827b1a11190e097a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a1bb07ee900622b138a556a33469641e4e8310af
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362883"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392301"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure Digital Twins egyik fő jellemzője, hogy saját szókincset definiálhat, és saját maga által definiált üzleti feltételeit felépítheti. Ezt a képességet felhasználó által definiált **modelleken**keresztül biztosítjuk. A modelleket a világa leírásában szereplő nevekre lehet gondolni. 
 
@@ -112,7 +109,7 @@ A Twin Type modellek bármilyen szövegszerkesztőben megírhatók. A DTDL nyelv
 
 A modell mezői a következők:
 
-| Mező | Leírás |
+| Mező | Description |
 | --- | --- |
 | `@id` | A modell azonosítója. Formátumúnak kell lennie `dtmi:<domain>:<unique model identifier>;<model version number>` . |
 | `@type` | A leírt információ típusát azonosítja. Illesztőfelület esetén a típus *illesztőfelület*. |
@@ -204,7 +201,7 @@ Rendelkezésre áll egy minta a modell dokumentumainak ellenőrzéséhez, hogy a
 
 Ha további információt szeretne az elemző könyvtárról, beleértve a közvetlen használattal kapcsolatos példát is, tekintse meg a [How-to: modellek elemzése és ellenőrzése](how-to-use-parser.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinsModels API-kkal:
 * [Útmutató: egyéni modellek kezelése](how-to-manage-model.md)

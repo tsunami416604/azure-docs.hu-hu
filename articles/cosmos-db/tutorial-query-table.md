@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 14a6d2b448bb943356ae1738c3d53d9c6fee1a98
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484667"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391893"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a Tábla API használatával
 
-Az Azure Cosmos DB [Tábla API](table-introduction.md) támogatja a kulcs/érték (tábla) adatok OData- és [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-lekérdezéseit.  
+Az Azure Cosmos DB [Tábla API](table-introduction.md) támogatja a kulcs/érték (tábla) adatok OData- és [LINQ](/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-lekérdezéseit.  
 
 Ez a cikk a következő feladatokat mutatja be:
 
@@ -32,7 +32,7 @@ A cikkben szereplő lekérdezések a következő minta `People` táblát haszná
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 |
 
-A [Táblák és entitások lekérdezése](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) című szakaszban talál további részleteket a Tábla API-val való lekérdezés menetéről.
+A [Táblák és entitások lekérdezése](/rest/api/storageservices/fileservices/querying-tables-and-entities) című szakaszban talál további részleteket a Tábla API-val való lekérdezés menetéről.
 
 További információ az Azure Cosmos DB által nyújtott prémium képességekről: [Azure Cosmos DB Tábla API](table-introduction.md) és [Fejlesztés a Tábla API-val .NET-keretrendszerben](tutorial-develop-table-dotnet.md).
 
@@ -50,7 +50,7 @@ Mivel a PartitionKey és a RowKey tulajdonságok képezik az entitás fő kulcs�
 https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')  
 ```
 
-**Eredmények**
+**Results (Eredmények)**
 
 | PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
@@ -65,7 +65,7 @@ Szűrő sztringjének felépítésekor ne feledje ezeket a szabályokat:
 * Az OData-protokollspecifikáció által definiált logikai operátorokat használja a tulajdonságok és az értékek összehasonlítására. Vegye figyelembe, hogy nem hasonlíthat össze tulajdonságot dinamikus értékkel. A kifejezés egyik oldalának állandónak kell lennie.
 * A tulajdonság nevét, az operátort és az állandó értéket URL-kódolású szóközzel kell elválasztani. A szóköz URL-kódolása `%20`.
 * A szűrési sztring minden része megkülönbözteti a kis- és nagybetűket.
-* Az állandó érték adattípusának meg kell egyeznie a tulajdonságéval ahhoz, hogy a szűrő érvényes eredményeket adjon vissza. További információ a támogatott tulajdonságtípusokról: [A Table szolgáltatás adatmodelljének ismertetése](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model).
+* Az állandó érték adattípusának meg kell egyeznie a tulajdonságéval ahhoz, hogy a szűrő érvényes eredményeket adjon vissza. További információ a támogatott tulajdonságtípusokról: [A Table szolgáltatás adatmodelljének ismertetése](/rest/api/storageservices/understanding-the-table-service-data-model).
 
 A következő példalekérdezés bemutatja, hogyan szűrhet a PartitionKey és az E-mail tulajdonságok alapján OData `$filter` használatával.
 
@@ -75,9 +75,9 @@ A következő példalekérdezés bemutatja, hogyan szűrhet a PartitionKey és a
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
 ```
 
-További információ a szűrőkifejezések felépítéséről különböző adattípusokhoz:[Táblák és entitások lekérdezése](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
+További információ a szűrőkifejezések felépítéséről különböző adattípusokhoz:[Táblák és entitások lekérdezése](/rest/api/storageservices/querying-tables-and-entities).
 
-**Eredmények**
+**Results (Eredmények)**
 
 | PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |

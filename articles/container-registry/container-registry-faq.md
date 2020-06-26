@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 0a455ef911d28306b30bed2fbb00edea198181dd
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205424"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390363"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -269,6 +269,7 @@ Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés
 - [Miért nem sorolja fel a Azure Portal az összes saját tárházat vagy címkét?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Miért nem sikerül beolvasni a Azure Portal adattárakat vagy címkéket?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Miért sikertelen a lekéréses vagy leküldéses kérelem a nem engedélyezett művelettel?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [A tárház formátuma érvénytelen vagy nem támogatott](#repository-format-is-invalid-or-unsupported)
 - [A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Állapot-ellenõrzés`az acr check-health`
@@ -313,7 +314,7 @@ unauthorized: authentication required
 ```
 
 A hiba elhárítása:
-1. Adja hozzá a kapcsolót `--signature-verification=false` a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker` . Például:
+1. Adja hozzá a kapcsolót `--signature-verification=false` a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker` . Példa:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -426,7 +427,7 @@ Ha a Microsoft Edge/IE böngészőt használja, legfeljebb 100 adattárat vagy c
 Előfordulhat, hogy a böngésző nem tudja elküldeni a tárolók vagy címkék kiszolgálónak való beolvasására vonatkozó kérést. Többek között a következők lehetnek:
 
 * Hálózati kapcsolat hiánya
-* Firewall
+* Tűzfal
 * Ad-blokkolók
 * DNS-hibák
 
@@ -439,6 +440,12 @@ Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigu
 * Előfordulhat, hogy a rendszerkép vagy a tárház zárolva van, ezért nem törölhető vagy nem frissíthető. A jelenlegi attribútumok megtekintéséhez használja az az [ACR show adattár](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) parancsot.
 * Néhány művelet nem engedélyezett, ha a rendszerkép karanténban van. További információ a [karanténba helyezésről](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Lehetséges, hogy a beállításjegyzék elérte a [tárolási korlátot](container-registry-skus.md#service-tier-features-and-limits).
+
+### <a name="repository-format-is-invalid-or-unsupported"></a>A tárház formátuma érvénytelen vagy nem támogatott
+
+Ha olyan hibaüzenetet lát, mint például a "nem támogatott adattár formátuma", "érvénytelen formátum" vagy "a kért adatok nem léteznek", amikor az adattár nevét adja meg a tárház műveleteiben, ellenőrizze a név helyesírását és az esetét. Az érvényes Tárházak neve csak kisbetűs alfanumerikus karaktereket, pontokat, kötőjeleket, aláhúzásokat és perjeleket tartalmazhat. 
+
+A Tárházak elnevezési szabályainak elvégzéséhez tekintse [meg a nyílt tároló kezdeményezésének terjesztési specifikációját](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?
 
@@ -510,6 +517,6 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub-műveletek](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További](container-registry-intro.md) információ a Azure Container Registryról.

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 816d1f762698deeed38afe01899916b491809db2
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890826"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390465"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Privát végpontok konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz
 A [privát végpontok](../private-link/private-endpoint-overview.md) lehetővé teszik, hogy közvetlenül a virtuális hálózatról küldje el az eseményeket egy [privát kapcsolaton](../private-link/private-link-overview.md) keresztül, anélkül, hogy a nyilvános interneten kellene haladnia. A privát végpont egy IP-címet használ a témakörhöz vagy tartományhoz tartozó VNet. További elméleti információkat a [hálózati biztonság](network-security.md)című témakörben talál.
@@ -47,7 +47,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre saját végpontot egy té
 
             ![Magánhálózati végpont – Erőforrás lap](./media/configure-private-endpoints/resource-page.png)
     2. Ha a **Kapcsolódás erőforráshoz erőforrás-azonosító vagy alias használatával**lehetőséget választja, kövesse az alábbi lépéseket:
-        1. Adja meg az erőforrás AZONOSÍTÓját. Például: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
+        1. Adja meg az erőforrás AZONOSÍTÓját. Példa: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. Az **erőforrás**mezőbe írja be a következőt: **témakör** vagy **tartomány**. 
         3. választható Adja meg a kérelem üzenetét. 
         4. Válassza a **Tovább: konfigurációs >** gombot az oldal alján. 
@@ -71,9 +71,9 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
 |--|--|--|
-| Nincs | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| None | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
@@ -140,8 +140,8 @@ az network private-endpoint create \
 
 A példában használt paraméterek leírását az az [Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)című dokumentációban találja. Ebben a példában a következő szempontokat kell figyelembe venni: 
 
-- A `private-connection-resource-id`esetében a **témakör** vagy **tartomány**erőforrás-azonosítóját kell megadnia. Az előző példa a következő típust használja: témakör.
-- a `group-ids`esetében válassza `topic` a `domain`vagy a következőt:. Az előző példában a használatban `topic` van. 
+- A esetében `private-connection-resource-id` a **témakör** vagy **tartomány**erőforrás-azonosítóját kell megadnia. Az előző példa a következő típust használja: témakör.
+- a esetében válassza a vagy a következőt: `group-ids` `topic` `domain` . Az előző példában a `topic` használatban van. 
 
 Privát végpont törléséhez használja az az [Network Private-Endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) metódust az alábbi példában látható módon:
 
@@ -184,8 +184,8 @@ az network private-endpoint create \
 
 A példában használt paraméterek leírását az az [Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)című dokumentációban találja. Ebben a példában a következő szempontokat kell figyelembe venni: 
 
-- A `private-connection-resource-id`esetében a **témakör** vagy **tartomány**erőforrás-azonosítóját kell megadnia. Az előző példa a következő típust használja: témakör.
-- a `group-ids`esetében válassza `topic` a `domain`vagy a következőt:. Az előző példában a használatban `topic` van. 
+- A esetében `private-connection-resource-id` a **témakör** vagy **tartomány**erőforrás-azonosítóját kell megadnia. Az előző példa a következő típust használja: témakör.
+- a esetében válassza a vagy a következőt: `group-ids` `topic` `domain` . Az előző példában a `topic` használatban van. 
 
 Privát végpont törléséhez használja az az [Network Private-Endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) metódust az alábbi példában látható módon:
 
@@ -483,5 +483,6 @@ Invoke-RestMethod -Method 'Get'
 
 Az API-n keresztüli elutasítása után is jóváhagyhatja a kapcsolatokat. Ha Azure Portal használ, nem hagyhat jóvá egy elutasított végpontot. 
 
-## <a name="next-steps"></a>További lépések
-Az IP-tűzfalbeállítások konfigurálásával kapcsolatos további tudnivalókért lásd: [IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz](configure-firewall.md).
+## <a name="next-steps"></a>Következő lépések
+* Az IP-tűzfalbeállítások konfigurálásával kapcsolatos további tudnivalókért lásd: [IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz](configure-firewall.md).
+* A hálózati kapcsolattal kapcsolatos problémák elhárításáról lásd: [hálózati kapcsolattal kapcsolatos problémák elhárítása](troubleshoot-network-connectivity.md)

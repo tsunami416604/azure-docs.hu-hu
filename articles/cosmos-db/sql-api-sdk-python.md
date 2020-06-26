@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: 07ccfaf842af0959388e4a3c49e7ae30c029e3c1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: e70d7d1f2ca7aa0eeec08d69720e37c5be34f8ae
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677616"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391910"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
 
@@ -28,8 +28,8 @@ ms.locfileid: "84677616"
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST erőforrás-szolgáltató](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
@@ -39,7 +39,7 @@ ms.locfileid: "84677616"
 |**SDK letöltése**|[PyPI](https://pypi.org/project/azure-cosmos)|
 |**API-dokumentáció**|[Python API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
-|**Első lépések**|[Ismerkedés a Python SDK-val](create-sql-api-python.md)|
+|**Bevezetés**|[Ismerkedés a Python SDK-val](create-sql-api-python.md)|
 |**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) és [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Kiadási előzmények
@@ -96,7 +96,7 @@ ms.locfileid: "84677616"
 
 * A 4.0.0 B2 verziója a második iteráció a Python nyelvi ajánlott eljárásainak megfelelő ügyféloldali kódtár létrehozásához.
 
-**Kompatibilitástörő változások**
+**Változtatások megszakítása**
 
 * Az ügyfélkapcsolatot a ben definiált HTTP-folyamat felhasználására alakítottuk ki `azure.core.pipeline` .
 
@@ -306,7 +306,7 @@ A szolgáltatás elutasítja a kivont SDK-val Azure Cosmos DBre irányuló kér�
 > [!WARNING]
 > Az SQL API- **hoz készült PYTHON** SDK minden verziójának a **2016. február 29-** én kivonult. Emellett az SQL API-hoz készült Python SDK összes verziójának 1. x és 2. x verziója a **2020-es augusztus 30-** án megszűnik.
 
-| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
 | [4.0.0](#400) |2020. május 20. |--- |
 | [3.0.2](#302) |November 15., 2018 |--- |

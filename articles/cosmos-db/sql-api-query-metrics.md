@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 5183591133b6892f6f57db45cf1936851784a45a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262055"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392131"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel
 
@@ -38,7 +38,7 @@ Ha Azure Cosmos DB lekérdezést ad ki, az SDK ezeket a logikai lépéseket hajt
 
 Az SDK-k különböző lehetőségeket biztosítanak a lekérdezés végrehajtásához. Például a .NET-ben ezek a beállítások a osztályban érhetők el `FeedOptions` . A következő táblázat ismerteti ezeket a beállításokat, és azt, hogy azok hogyan befolyásolják a lekérdezés végrehajtási idejét. 
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Minden olyan lekérdezés esetében igaz értékre kell állítani, amely több partíción való végrehajtást igényel. Ez egy explicit jelző, amely lehetővé teszi, hogy a fejlesztési idő során tudatos teljesítménybeli kompromisszumokat hozzon. |
 | `EnableScanInQuery` | Igaz értékre kell állítani, ha kikapcsolta az indexelést, de mindenképpen egy vizsgálaton keresztül szeretné futtatni a lekérdezést. Csak akkor alkalmazható, ha a kért szűrő elérési útjának indexelése le van tiltva. | 
@@ -124,14 +124,14 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 A lekérdezés által visszaadott kulcs-válasz fejlécek a következők:
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 | ------ | ----------- |
 | `x-ms-item-count` | A válaszban visszaadott elemek száma. Ez a megadott értéktől függ `x-ms-max-item-count` , a maximális válasz-adattartalom méretétől, a kiosztott átviteli sebességtől és a lekérdezés végrehajtási idejétől függően elférő elemek száma. |  
 | `x-ms-continuation:` | A folytatási token a lekérdezés végrehajtásának folytatásához, ha további eredmények állnak rendelkezésre. | 
 | `x-ms-documentdb-query-metrics` | A végrehajtás lekérdezési statisztikája. Ez egy tagolt karakterlánc, amely a lekérdezés-végrehajtás különböző fázisaiban eltöltött idő statisztikáit tartalmazza. Ha `x-ms-documentdb-populatequerymetrics` a érték van beállítva, a rendszer visszaadja `True` . | 
 | `x-ms-request-charge` | A lekérdezés által felhasznált [kérelmek egységeinek](request-units.md) száma. | 
 
-További információ a REST API kérelmek fejlécéről és lehetőségeiről: [erőforrások lekérdezése a REST API használatával](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
+További információ a REST API kérelmek fejlécéről és lehetőségeiről: [erőforrások lekérdezése a REST API használatával](/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Ajánlott eljárások a lekérdezési teljesítményhez
 A következő leggyakoribb tényezők befolyásolják Azure Cosmos DB lekérdezési teljesítményt. Ebben a cikkben részletesebben ismertetjük ezeket a témákat.
@@ -237,7 +237,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Unit (Egység) | Leírás | 
+| Metrika | Unit (Egység) | Description | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | ezredmásodperc | Lekérdezés végrehajtási ideje | 
 | `queryCompileTimeInMs` | ezredmásodperc | Lekérdezés fordítási ideje  | 
@@ -259,7 +259,7 @@ Az ügyfél SDK-k belsőleg több lekérdezési műveletet végezhetnek el a lek
 
 Íme néhány példa a lekérdezésekre, és hogyan kell értelmezni a lekérdezés-végrehajtásból visszaadott metrikákat: 
 
-| Lekérdezés | Minta metrika | Leírás | 
+| Lekérdezés | Minta metrika | Description | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | A beolvasott dokumentumok száma 100 + 1 a TOP záradéknak megfelelően. A lekérdezési időt többnyire a és a vizsgálat során kell kitölteni `WriteOutputTime` `DocumentLoadTime` . | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | A RetrievedDocumentCount mostantól magasabb (500 + 1 a TOP záradéknak megfelelően). | 
@@ -271,7 +271,7 @@ Az ügyfél SDK-k belsőleg több lekérdezési műveletet végezhetnek el a lek
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | A lekérdezés vizsgálatként történik, mivel a rendszer a-t használja `LOWER` , és 500-ből 2491 lekért dokumentumokat ad vissza. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a támogatott SQL-lekérdezési operátorokról és-kulcsszavakról: [SQL-lekérdezés](sql-query-getting-started.md). 
 * A kérelmek egységeit a [kérelmek egységei](request-units.md)című témakörben tekintheti meg.
 * Az indexelési szabályzattal kapcsolatos további tudnivalókért lásd: [indexelési házirend](index-policy.md) 

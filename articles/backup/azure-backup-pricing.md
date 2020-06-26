@@ -3,12 +3,12 @@ title: Az Azure Backup díjszabása
 description: Megtudhatja, hogyan becsülheti meg a költségvetési Azure Backup díjszabásának költségeit.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: d88587cfdbb4f60d0da8641fc0362b8f763779ad
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 274a61ff5a98fa1291f9d8917af9ab1d1b3da2fd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84908115"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391111"
 ---
 # <a name="azure-backup-pricing"></a>Az Azure Backup díjszabása
 
@@ -56,7 +56,7 @@ Az Azure-beli virtuális gépek vagy a helyszíni kiszolgálók Azure Backup has
 
   - Meddig várható az "éves" biztonsági mentések megőrzése? (években)
 
-  - Mennyi ideig tart az azonnali visszaállítási Pillanatképek megőrzése? (1-7 nap)
+  - Mennyi ideig tart az azonnali visszaállítási Pillanatképek megőrzése? (1-5 nap)
 
     - Ez a beállítás lehetővé teszi, hogy a lemezeken tárolt Pillanatképek gyors használatával akár hét nap múlva visszaállítsa a visszaállítást.
 
@@ -66,7 +66,7 @@ Az Azure-beli virtuális gépek vagy a helyszíni kiszolgálók Azure Backup has
 
 - **Opcionális** – biztonsági mentési tárterület-redundancia
 
-  - Ez azt jelzi, hogy a biztonsági mentési adataiba bekerülő Storage-fiók redundancia. Javasoljuk, hogy a **GRS** használatát a legmagasabb rendelkezésre állás érdekében. Mivel biztosítja, hogy a biztonsági mentési adatait egy másik régióban tárolja, így több megfelelőségi szabványnak is megfelel. Módosítsa a redundanciát a **LRS** , ha olyan fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot, amelyeknek nincs szükségük vállalati szintű biztonsági mentésre. Válassza a **RAGRS** lehetőséget, ha engedélyezni szeretné a **régiók közötti visszaállítást** a biztonsági mentések esetén
+  - Ez azt jelzi, hogy a biztonsági mentési adataiba bekerülő Storage-fiók redundancia. Javasoljuk, hogy a **GRS** használatát a legmagasabb rendelkezésre állás érdekében. Mivel biztosítja, hogy a biztonsági mentési adatait egy másik régióban tárolja, így több megfelelőségi szabványnak is megfelel. Módosítsa a redundanciát a **LRS** , ha olyan fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot, amelyeknek nincs szükségük vállalati szintű biztonsági mentésre. Válassza a **RAGRS** lehetőséget a lapon, ha szeretné megismerni a költségeket, amikor a [régiók közötti visszaállítás](backup-azure-arm-restore-vms.md#cross-region-restore) engedélyezve van a biztonsági másolatokhoz.
 
 - **Opcionális** – regionális díjszabás módosítása vagy kedvezményes díjszabás alkalmazása
 
@@ -104,7 +104,7 @@ Ha az Azure-beli virtuális gépeken futó SQL Server-kiszolgálók biztonsági 
 
     - Azt is beállíthatja, hogy a szabályzat napi/heti/havi/éves teljes biztonsági mentéssel rendelkezzen. Ezzel a beállítással a rendszer valamivel több tárterületet használ, mint az első lehetőség.
 
-  - Mennyi ideig tart a "napló" biztonsági mentések megőrzése? (napban) [1-35]
+  - Mennyi ideig tart a "napló" biztonsági mentések megőrzése? (napban) [7-35]
 
   - Meddig várható a napi biztonsági másolatok megőrzése? (napban)
 
@@ -124,8 +124,30 @@ Ha az Azure-beli virtuális gépeken futó SQL Server-kiszolgálók biztonsági 
 
 ## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>A SAP HANA-kiszolgálók Azure-beli virtuális gépeken történő biztonsági mentésével kapcsolatos költségek becslése
 
-Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók biztonsági mentésének költségei, például az SQL-kiszolgálók becslése. Az előző szakaszban említett változókat használhatja az SQL-tömörítésen kívül is.
+Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók Azure Backup használatával történő biztonsági mentésével kapcsolatos költségek megbecsléséhez a következő paraméterekre lesz szüksége:
 
-## <a name="next-steps"></a>További lépések
+- Azon SAP HANA adatbázisok teljes mérete, amelyekről biztonsági mentést szeretne készíteni. Az egyes adatbázisok teljes biztonsági mentési méretének összegének kell lennie, amelyet SAP HANA jelentett.
+- A fenti mérettel rendelkező SAP HANA kiszolgálók száma
+- Mi a naplózott biztonsági másolatok várható mérete?
+  - A (z)% megadja az átlagos napi naplózási méretet a SAP HANA adatbázisok teljes méretének%-ában, amelyekről biztonsági másolatot készít a SAP HANA-kiszolgálón
+- Milyen mennyiségű napi adatforgalom várható a kiszolgálókon?
+  - A (z)% az átlagos napi adatváltozási méretet jelzi SAP HANA adatbázisok teljes méretének%-ában, amelyekről biztonsági másolatot készít a SAP HANA-kiszolgálón
+  - Az adatbázisok jellemzően "magas" adatforgalommal rendelkeznek
+  - Ha ismeri a **(z)%-os**adatváltozást, használhatja a **saját% megadása** lehetőséget.
+- Válassza ki a biztonsági mentési szabályzatot
+  - Biztonsági mentés típusa
+    - A leghatékonyabb kiválasztható szabályzat **napi különbség** a **heti/havi/éves** teljes biztonsági mentéssel. Azure Backup a különbözetet egyetlen kattintással is visszaállíthatja.
+    - Azt is beállíthatja, hogy a szabályzat **napi/heti/havi/éves** teljes biztonsági mentéssel rendelkezzen. Ezzel a beállítással a rendszer valamivel több tárterületet használ, mint az első lehetőség.
+  - Mennyi ideig tart a "napló" biztonsági mentések megőrzése? (napban) [7-35]
+  - Meddig várható a napi biztonsági másolatok megőrzése? (napban)
+  - Mennyi ideig tart a heti biztonsági másolatok megőrzése? (hetek)
+  - Meddig várható a "havi" biztonsági mentések megőrzése? (hónap)
+  - Meddig várható az "éves" biztonsági mentések megőrzése? (években)
+- **Opcionális** – biztonsági mentési tárterület-redundancia
+  - Ez azt jelzi, hogy a biztonsági mentési adataiba bekerülő Storage-fiók redundancia. Javasoljuk, hogy a **GRS** használatát a legmagasabb rendelkezésre állás érdekében. Mivel biztosítja, hogy a biztonsági mentési adatait egy másik régióban tárolja, így több megfelelőségi szabványnak is megfelel. Módosítsa a redundanciát a **LRS** , ha olyan fejlesztési vagy tesztelési környezetekről készít biztonsági másolatot, amelyeknek nincs szükségük vállalati szintű biztonsági mentésre.
+- **Opcionális** – regionális díjszabás módosítása vagy kedvezményes díjszabás alkalmazása
+  - Ha egy másik régióra vagy kedvezményes díjszabásra vonatkozó becsléseket szeretne megtekinteni, válassza az **Igen** lehetőséget **egy másik régióra vonatkozó kipróbálási becslések esetében?** lehetőségre, és adja meg azokat a díjakat, amelyeknek a becsléseit futtatni kívánja.
+
+## <a name="next-steps"></a>Következő lépések
 
 [Mi a Azure Backup szolgáltatás?](backup-overview.md)

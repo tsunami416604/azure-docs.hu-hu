@@ -7,38 +7,38 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd0e19de88a6a65d72a2e7e19f7fca2a94d8da55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a9026db19d453100971739dcf633629a3f06d43
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188273"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388303"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Facebook-fiókkal Azure Active Directory B2C használatával
 
 ## <a name="create-a-facebook-application"></a>Facebook-alkalmazás létrehozása
 
-Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](authorization-code-flow.md) szeretné használni a Facebook-fiókot, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik Facebook-fiókkal, regisztrálhat a következő címen: [https://www.facebook.com/](https://www.facebook.com/).
+Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](authorization-code-flow.md) szeretné használni a Facebook-fiókot, létre kell hoznia egy alkalmazást a bérlőben, amely azt jelképezi. Ha még nem rendelkezik Facebook-fiókkal, regisztrálhat a következő címen: [https://www.facebook.com/](https://www.facebook.com/) .
 
 1. A Facebook-fiók hitelesítő adataival jelentkezzen be a [facebookba a fejlesztők számára](https://developers.facebook.com/) .
 1. Ha még nem tette meg, regisztrálnia kell Facebook-fejlesztőként. Ehhez válassza az első **lépések** lehetőséget az oldal jobb felső sarkában, fogadja el a Facebook szabályzatait, és végezze el a regisztráció lépéseit.
 1. Válassza **a saját alkalmazások** lehetőséget, majd **hozza létre az alkalmazást**.
 1. Adjon meg egy **megjelenítendő nevet** és egy érvényes **kapcsolattartási e-mailt**.
 1. Válassza az **alkalmazás-azonosító létrehozása**lehetőséget. Előfordulhat, hogy el kell fogadnia a Facebook-platform szabályzatait, és el kell végeznie egy online biztonsági ellenőrzését.
-1. Válassza a **Beállítások** > **alapszintű**lehetőséget.
-1. Válasszon egy **kategóriát**, például `Business and Pages`:. Ez az érték a Facebook számára szükséges, de Azure AD B2C nem használható.
+1. Válassza a **Beállítások**  >  **alapszintű**lehetőséget.
+1. Válasszon egy **kategóriát**, például: `Business and Pages` . Ez az érték a Facebook számára szükséges, de Azure AD B2C nem használható.
 1. A lap alján válassza a **platform hozzáadása**lehetőséget, majd válassza a **webhely**lehetőséget.
-1. A **webhely URL**-címe `https://your-tenant-name.b2clogin.com/` mezőbe `your-tenant-name` írja be a helyére a bérlő nevét. Adja meg az **adatvédelmi szabályzat URL**-címét (például `http://www.contoso.com`). A szabályzat URL-címe olyan oldal, amelyet az alkalmazásra vonatkozó adatvédelmi információk biztosítására tart fenn.
+1. A **webhely URL-címe**mezőbe írja be a `https://your-tenant-name.b2clogin.com/` helyére a `your-tenant-name` bérlő nevét. Adja meg az **adatvédelmi szabályzat URL**-címét (például `http://www.contoso.com` ). A szabályzat URL-címe olyan oldal, amelyet az alkalmazásra vonatkozó adatvédelmi információk biztosítására tart fenn.
 1. Válassza a **módosítások mentése**lehetőséget.
 1. Az oldal tetején másolja az **alkalmazás-azonosító**értékét.
 1. Válassza az **alkalmazás titkos kulcsának** **megjelenítése** és másolása lehetőséget. Mindkettőt használja a Facebook identitás-szolgáltatóként való konfigurálásához a bérlőben. Az **alkalmazás titkos kulcsa** fontos biztonsági hitelesítő adat.
 1. Válassza ki a **termékek**melletti plusz jelet, majd válassza a **beállítás** a **Facebook-Bejelentkezés**alatt lehetőséget.
 1. A **Facebook-Bejelentkezés**területen válassza a **Beállítások**lehetőséget.
-1. Az **érvényes OAuth átirányítási URI**- `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`k mezőben adja meg a értéket. Cserélje `your-tenant-name` le a helyére a bérlő nevét. A lap alján kattintson a **módosítások mentése** gombra.
+1. Az **érvényes OAuth átirányítási URI**-k mezőben adja meg a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a helyére a `your-tenant-name` bérlő nevét. A lap alján kattintson a **módosítások mentése** gombra.
 1. Ha szeretné, hogy a Facebook-alkalmazás elérhető legyen a Azure AD B2C számára, válassza ki a lap jobb felső sarkában található állapotjelzőt, és kapcsolja be **, hogy az** alkalmazás nyilvános legyen, majd válassza a **váltás mód**lehetőséget.  Ezen a ponton az állapotnak a **fejlesztéstől** az **élő**értékre kell váltania.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Facebook-fiók konfigurálása identitás-szolgáltatóként

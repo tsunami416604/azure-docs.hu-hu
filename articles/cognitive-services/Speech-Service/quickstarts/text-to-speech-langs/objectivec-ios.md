@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 1f5a569f9c3bfa91b78c836e37a22642238674be
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7a1cc2c45988e0c5a8c757e4d280b48dbbe56daa
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975941"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391383"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Gyors útmutató: beszédfelismerési célú beszéd a Objective-C-ben iOS-ben a Speech SDK használatával
 
@@ -40,7 +40,7 @@ Xcode-projektekben használható [CocoaPod](https://cocoapods.org/), illetve man
 
 ## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
 
-Indítsa el a Xcode, és indítsa el az új projektet a **fájl** > **új** > **projekt**elemre kattintva.
+Indítsa el a Xcode, és indítsa el az új projektet a **fájl**  >  **új**  >  **projekt**elemre kattintva.
 A sablonválasztó párbeszédpanelen válassza az „iOS Single View App” sablont.
 
 A további párbeszédpaneleken válassza az alábbi lehetőségeket:
@@ -58,13 +58,13 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Az SDK telepítése CocoaPod
 
 1. Telepítse a CocoaPod-függőség kezelőjét a [telepítési utasításokban](https://guides.cocoapods.org/using/getting-started.html)leírtak szerint.
-1. Navigáljon a minta alkalmazás (`helloworld`) könyvtárába. Helyezzen el egy szövegfájlt a névvel `Podfile` és a következő tartalommal a könyvtárban:  
+1. Navigáljon a minta alkalmazás ( `helloworld` ) könyvtárába. Helyezzen el egy szövegfájlt a névvel `Podfile` és a következő tartalommal a könyvtárban:  
    [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/ios/text-to-speech/helloworld/Podfile)]
-1. Navigáljon a `helloworld` címtárhoz egy terminálon, és futtassa `pod install`a parancsot. Ez egy `helloworld.xcworkspace` Xcode-munkaterületet hoz majd, amely a minta alkalmazást és a Speech SDK-t is függőségként fogja tartalmazni. Ezt a munkaterületet a következőben fogjuk használni.
+1. Navigáljon a `helloworld` címtárhoz egy terminálon, és futtassa a parancsot `pod install` . Ez egy `helloworld.xcworkspace` Xcode-munkaterületet hoz majd, amely a minta alkalmazást és a SPEECH SDK-t is függőségként fogja tartalmazni. Ezt a munkaterületet a következőben fogjuk használni.
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
-1. Nyissa `helloworld.xcworkspace` meg a munkaterületet a Xcode.
+1. Nyissa meg a `helloworld.xcworkspace` munkaterületet a Xcode.
 1. Cserélje le az automatikusan létrehozott `AppDelegate.m` fájl tartalmát az alábbi kódra:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/ios/text-to-speech/helloworld/helloworld/AppDelegate.m#code)]
 1. Cserélje le az automatikusan létrehozott `ViewController.m` fájl tartalmát az alábbi kódra:  
@@ -74,15 +74,15 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. A hibakeresési kimenet láthatóvá tétele **(** > a**hibakeresési területek** > **aktiválása konzolon**).
-1. Válassza ki az iOS-szimulátort vagy egy olyan iOS-eszközt, amely a fejlesztői géphez van csatlakoztatva, mint az alkalmazás célhelye a **termék** > **cél** menüjének listájában.
-1. Hozza létre és futtassa a példában szereplő kódot az iOS-szimulátorban. Ehhez válassza a **termék** > **futtatása** lehetőséget a menüből, vagy kattintson a **Lejátszás** gombra.
+1. A hibakeresési kimenet láthatóvá tétele **(a**  >  **hibakeresési területek**  >  **aktiválása konzolon**).
+1. Válassza ki az iOS-szimulátort vagy egy olyan iOS-eszközt, amely a fejlesztői géphez van csatlakoztatva, mint az alkalmazás célhelye a **termék**  >  **cél** menüjének listájában.
+1. Hozza létre és futtassa a példában szereplő kódot az iOS-szimulátorban. Ehhez válassza a **termék**  >  **futtatása** lehetőséget a menüből, vagy kattintson a **Lejátszás** gombra.
 
    ![Szimulált iOS-alkalmazás](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-simulated-app-tts.png)
 
 1. Miután beírt valamilyen szöveget, és rákattintott a gombra az alkalmazásban, hallania kell a szintetizált hanglejátszást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Objective-C minták megismerése a GitHubon](https://aka.ms/csspeech/samples)

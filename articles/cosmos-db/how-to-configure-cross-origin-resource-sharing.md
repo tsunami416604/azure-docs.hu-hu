@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 331b78737000a51b09d393160f07150f81058412
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261647"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390873"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Az idegen eredetű erőforrások megosztásának konfigurálása (CORS)
 
 Az eltérő eredetű erőforrás-megosztás (CORS) egy olyan HTTP-szolgáltatás, amely lehetővé teszi, hogy az egyik tartományon futó webalkalmazások hozzáférjenek egy másik tartomány erőforrásaihoz. A böngészők olyan biztonsági korlátozást valósítanak meg, amelyik azonos eredetű házirend, amely megakadályozza, hogy egy weblap egy másik tartományban lévő API-kat hívjon fel. A CORS azonban biztonságos módot biztosít ahhoz, hogy a forrás tartomány egy másik tartományban lévő API-kat hívjon fel. A Azure Cosmos DB a Core (SQL) API mostantól támogatja az CORS-alapú erőforrás-megosztást a "allowedOrigins" fejléc használatával. Miután engedélyezte az Azure Cosmos-fiók CORS-támogatását, a rendszer csak a hitelesített kérelmeket értékeli ki, hogy azok a megadott szabályoknak megfelelően engedélyezettek-e.
 
-Az CORS-beállítást a Azure Portal vagy egy Azure Resource Manager sablonból is konfigurálhatja. A Core (SQL) API-t használó Cosmos-fiókok esetében a Azure Cosmos DB támogatja a JavaScript-függvénytárat, amely Node.js és böngészőalapú környezetekben is működik. Ez a tár most kihasználhatja a CORS-támogatás előnyeit az átjáró mód használata esetén. A funkció használatához nincs szükség ügyféloldali konfigurációra. A CORS-támogatással a böngészőből származó erőforrások közvetlenül hozzáférhetnek Azure Cosmos DB a [JavaScript-könyvtárból](https://www.npmjs.com/package/@azure/cosmos) , vagy közvetlenül a [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) az egyszerű műveletekhez.
+Az CORS-beállítást a Azure Portal vagy egy Azure Resource Manager sablonból is konfigurálhatja. A Core (SQL) API-t használó Cosmos-fiókok esetében a Azure Cosmos DB támogatja a JavaScript-függvénytárat, amely Node.js és böngészőalapú környezetekben is működik. Ez a tár most kihasználhatja a CORS-támogatás előnyeit az átjáró mód használata esetén. A funkció használatához nincs szükség ügyféloldali konfigurációra. A CORS-támogatással a böngészőből származó erőforrások közvetlenül hozzáférhetnek Azure Cosmos DB a [JavaScript-könyvtárból](https://www.npmjs.com/package/@azure/cosmos) , vagy közvetlenül a [REST API](/rest/api/cosmos-db/) az egyszerű műveletekhez.
 
 > [!NOTE]
 > A CORS-támogatás csak az Azure Cosmos DB Core (SQL) API esetében alkalmazható és támogatott. Nem alkalmazható a Cassandra, a Gremlin vagy a MongoDB Azure Cosmos DB API-kra, mivel ezek a protokollok nem használják a HTTP protokollt az ügyfél-kiszolgáló kommunikációhoz.
@@ -83,7 +83,7 @@ module.exports = {
 Az alábbiakban egy olyan [mintakód-minta](https://github.com/christopheranderson/cosmos-browser-sample) látható, amely a Azure Cosmos db JavaScript SDK-könyvtárral rendelkező írógéppel és webpack-t használja egy olyan Todo-alkalmazás létrehozásához, amely valós idejű frissítéseket küld, amikor új elemek jönnek létre.
 Ajánlott eljárásként ne használja az elsődleges kulcsot a Azure Cosmos DB a böngészőből való kommunikációhoz. Ehelyett használjon erőforrás-jogkivonatokat a kommunikációhoz. Az erőforrás-jogkivonatokkal kapcsolatos további információkért lásd: [hozzáférés biztonságossá tétele Azure Cosmos db](secure-access-to-data.md#resource-tokens) cikkhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Cosmos-fiók biztonságossá tételének egyéb módjaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 

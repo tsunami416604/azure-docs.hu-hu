@@ -1,16 +1,16 @@
 ---
 title: Hibaelhárítás rendszerállapot-jelentések segítségével
 description: Az Azure Service Fabric Components által elküldett, a fürthöz vagy az alkalmazásokkal kapcsolatos problémák elhárítására szolgáló állapotjelentést ismerteti
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.author: gwallace
+ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84692478"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392573"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Az Azure Service Fabric-összetevők rendszerállapot-jelentéseket biztosítanak a fürtben lévő összes entitáshoz, közvetlenül a jelölőnégyzetből. A [Health Store](service-fabric-health-introduction.md#health-store) a rendszerjelentések alapján hozza létre és törli az entitásokat. Azt is megszervezi egy hierarchiában, amely rögzíti az entitások interakcióit.
@@ -647,7 +647,7 @@ A tulajdonság és a szöveg jelzi, hogy melyik API ragadt. A különböző bera
 
 - **IStatefulServiceReplica. changerole művelet (P)**: a leggyakoribb eset az, hogy a szolgáltatás nem adott vissza feladatot a alkalmazásból `RunAsync` .
 
-A beragadható egyéb API-hívások a **IReplicator** felületen találhatók. Például:
+A beragadható egyéb API-hívások a **IReplicator** felületen találhatók. Példa:
 
 - **IReplicator. CatchupReplicaSet**: Ez a figyelmeztetés két dolog egyikét jelzi. Nincsenek elegendő replikák. Ha meg szeretné tekinteni, hogy ez a helyzet-e, tekintse meg a partíció replikáinak replika állapotát, vagy a System.FM állapotáról szóló jelentést egy beragadt újrakonfiguráláshoz. Vagy a replikák nem ismerik fel a műveleteket. A PowerShell-parancsmag segítségével `Get-ServiceFabricDeployedReplicaDetail` meghatározható az összes replika állapota. A probléma olyan replikákkal rendelkezik, amelyek `LastAppliedReplicationSequenceNumber` értéke az elsődleges érték mögött van `CommittedSequenceNumber` .
 
@@ -872,7 +872,7 @@ A System. hosting figyelmeztetést küld, ha a fürt jegyzékfájljában nincs d
 * **Tulajdonság**: **ResourceGovernance**.
 * **Következő lépések**: a probléma megoldásának előnyben részesített módja a fürt jegyzékfájljának módosítása az elérhető erőforrások automatikus észlelésének engedélyezéséhez. Egy másik lehetőség a fürt jegyzékfájljának frissítése a metrikák megfelelően megadott csomópont-kapacitása alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Service Fabric állapottal kapcsolatos jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
 * [A szolgáltatás állapotának jelentése és ellenõrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)

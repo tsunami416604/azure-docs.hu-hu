@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 4be2f61cb0a45f30f0201d1ecca0efc2d8cbd9ae
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 05a7af9bcedd84f53e020bec57fc58854861af3e
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836226"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392352"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Table APIról Azure Cosmos DB
 
@@ -45,10 +45,10 @@ Vannak olyan viselkedési eltérések, amelyeket a felhasználók az Azure Table
 
   | Rest metódus (ok) | Rest-végpont/lekérdezési beállítás | Doc URL-címek | Magyarázat |
   | ------------| ------------- | ---------- | ----------- |
-  | LETÖLTÉS, PUT | `/?restype=service@comp=properties`| A [Table szolgáltatás tulajdonságainak beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) és a [Table szolgáltatás tulajdonságainak beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Ez a végpont a CORS-szabályok, a tárolási elemzési konfiguráció és a naplózási beállítások beállítására szolgál. A CORS jelenleg nem támogatott, és az elemzési és a naplózási módokat az Azure Storage-táblák Azure Cosmos DB eltérő módon kezelik. |
-  | BEÁLLÍTÁSOK | `/<table-resource-name>` | [Repülés előtti CORS-tábla kérése](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Ez a CORS része, amely Azure Cosmos DB jelenleg nem támogatott. |
-  | GET | `/?restype=service@comp=stats` | [Table szolgáltatás statisztikáinak beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Információt nyújt arról, hogy az adatok milyen gyorsan replikálódnak az elsődleges és a formátumú másodlagos zónák között. Ez nem szükséges Cosmos DBban, mert a replikálás része az írásoknak. |
-  | LETÖLTÉS, PUT | `/mytable?comp=acl` | [Táblázat ACL lekérése](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) és a [tábla ACL beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Ez lekérdezi és beállítja a megosztott hozzáférési aláírások (SAS) kezelésére használt tárolt hozzáférési szabályzatokat. Bár a SAS támogatott, a rendszer másként állítja be és kezeli őket. |
+  | LETÖLTÉS, PUT | `/?restype=service@comp=properties`| A [Table szolgáltatás tulajdonságainak beállítása](/rest/api/storageservices/set-table-service-properties) és a [Table szolgáltatás tulajdonságainak beolvasása](/rest/api/storageservices/get-table-service-properties) | Ez a végpont a CORS-szabályok, a tárolási elemzési konfiguráció és a naplózási beállítások beállítására szolgál. A CORS jelenleg nem támogatott, és az elemzési és a naplózási módokat az Azure Storage-táblák Azure Cosmos DB eltérő módon kezelik. |
+  | BEÁLLÍTÁSOK | `/<table-resource-name>` | [Repülés előtti CORS-tábla kérése](/rest/api/storageservices/preflight-table-request) | Ez a CORS része, amely Azure Cosmos DB jelenleg nem támogatott. |
+  | GET | `/?restype=service@comp=stats` | [Table szolgáltatás statisztikáinak beolvasása](/rest/api/storageservices/get-table-service-stats) | Információt nyújt arról, hogy az adatok milyen gyorsan replikálódnak az elsődleges és a formátumú másodlagos zónák között. Ez nem szükséges Cosmos DBban, mert a replikálás része az írásoknak. |
+  | LETÖLTÉS, PUT | `/mytable?comp=acl` | [Táblázat ACL lekérése](/rest/api/storageservices/get-table-acl) és a [tábla ACL beállítása](/rest/api/storageservices/set-table-acl) | Ez lekérdezi és beállítja a megosztott hozzáférési aláírások (SAS) kezelésére használt tárolt hozzáférési szabályzatokat. Bár a SAS támogatott, a rendszer másként állítja be és kezeli őket. |
 
 * A Azure Cosmos DB Table API csak a JSON formátumot támogatja, az ATOMot nem.
 
@@ -85,7 +85,7 @@ A Azure Portal a kapcsolatok karakterlánc oldaláról kérheti le a kapcsolatok
 
 ### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-net-sdk-for-the-table-api"></a>Hogyan felülbírálja a kérés beállításainak konfigurációs beállításait a .NET SDK-ban a Table APIhoz?
 
-Egyes beállítások kezelése a CreateCloudTableClient metódussal történik, az ügyfélalkalmazás appSettings szakaszában pedig az app. config fájlon keresztül. További információ a konfigurációs beállításokról: [Azure Cosmos db képességek](tutorial-develop-table-dotnet.md).
+Egyes beállítások kezelése a CreateCloudTableClient metódussal történik, a másik pedig az ügyfélalkalmazás appSettings szakaszának app.configén keresztül. További információ a konfigurációs beállításokról: [Azure Cosmos db képességek](tutorial-develop-table-dotnet.md).
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>Van-e változás a meglévő Azure Table Storage SDK-kat használó ügyfeleknél?
 
@@ -151,7 +151,7 @@ A Azure Cosmos DB globális replikációs portál panel használatával hozzáad
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>Hogyan a saját előnyben részesített olvasási régiókat az adatelosztáskor alacsony késés érdekében?
 
-A helyi helyről való olvasáshoz használja a PreferredLocation kulcsot az app. config fájlban. Meglévő alkalmazások esetén a Table API hibát jelez, ha a Blobrequestoptions locationmode be van állítva. Távolítsa el ezt a kódot, mert a Table API az app. config fájlból veszi fel ezeket az információkat. 
+A helyi helyről való olvasáshoz használja a PreferredLocation kulcsot a app.config fájlban. Meglévő alkalmazások esetén a Table API hibát jelez, ha a Blobrequestoptions locationmode be van állítva. Távolítsa el ezt a kódot, mert a Table API az app.config fájlból veszi fel ezeket az információkat. 
 
 ### <a name="how-should-i-think-about-consistency-levels-in-the-table-api"></a>Hogyan érdemes meggondolni az Table API konzisztencia-szintjét?
 
@@ -171,7 +171,7 @@ Azure Cosmos DB véglegesíti az tartósan a helyi régióban, és azonnal lekü
 
 ### <a name="can-the-read-request-consistency-level-be-changed"></a>Módosítható az olvasási kérelmek konzisztenciáji szintje?
 
-A Azure Cosmos DB használatával beállíthatja a konzisztencia szintjét a tároló szintjén (a táblán). A .NET SDK használatával megváltoztathatja a szintet úgy, hogy megadja a TableConsistencyLevel kulcs értékét az app. config fájlban. A lehetséges értékek: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. További információkért lásd: [Azure Cosmos db hangolt adatkonzisztencia-szintjei](consistency-levels.md). A legfontosabb elképzelés az, hogy a kérelem konzisztencia-szintje nem állítható be a tábla beállításától eltérő értékre. Nem állíthatja be például a tábla konzisztencia-szintjét, és a kérések konzisztencia-szintje erős.
+A Azure Cosmos DB használatával beállíthatja a konzisztencia szintjét a tároló szintjén (a táblán). A .NET SDK használatával megváltoztathatja a szintet úgy, hogy megadja a TableConsistencyLevel kulcs értékét a app.config fájlban. A lehetséges értékek: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. További információkért lásd: [Azure Cosmos db hangolt adatkonzisztencia-szintjei](consistency-levels.md). A legfontosabb elképzelés az, hogy a kérelem konzisztencia-szintje nem állítható be a tábla beállításától eltérő értékre. Nem állíthatja be például a tábla konzisztencia-szintjét, és a kérések konzisztencia-szintje erős.
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Hogyan kezeli a Table API a feladatátvételt, ha egy régió leáll?
 
@@ -197,7 +197,7 @@ Igen, az indexelési házirendet megadhatja az index definíciójának megadás�
 
 A non-.NET SDK-k esetében az indexelési házirend csak a portálon állítható be **Adatkezelőon**, navigáljon a módosítani kívánt táblához, majd nyissa meg a **méretezési & beállításait**– >indexelési házirend, végezze el a kívánt módosításokat, majd **mentse**.
 
-A .NET SDK-ból az app. config fájlban is elküldhető:
+A .NET SDK-ból a app.config fájlban is elküldhető:
 
 ```JSON
 {
@@ -246,7 +246,7 @@ Igen, az adatátviteli sebesség méretezéséhez használhatja a Azure Cosmos D
 
 ### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>Alapértelmezett TableThroughput van beállítva az újonnan kiosztott táblákhoz?
 
-Igen, ha nem bírálja felül a TableThroughput az app. config fájlon keresztül, és nem használ előre létrehozott tárolót Azure Cosmos DBban, a szolgáltatás létrehoz egy táblázatot, amelynek átviteli sebessége 400.
+Igen, ha nem bírálja felül a TableThroughput app.configon keresztül, és nem használ előre létrehozott tárolót a Azure Cosmos DBban, a szolgáltatás egy 400-os átviteli sebességgel rendelkező táblázatot hoz létre.
 
 ### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Módosult az Azure Table Storage szolgáltatás meglévő ügyfeleinek díjszabása?
 
@@ -262,7 +262,7 @@ Ha a kérelmek aránya nagyobb, mint az alapul szolgáló tároló vagy a tárol
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Miért van szükség a PartitionKey és a RowKey melletti átviteli sebesség kiválasztására, hogy kihasználhassa a Azure Cosmos DB Table API ajánlatát?
 
-Azure Cosmos DB beállítja a tároló alapértelmezett átviteli sebességét, ha nem ad meg egyet az app. config fájlban vagy a portálon keresztül.
+Azure Cosmos DB beállítja a tároló alapértelmezett átviteli sebességét, ha nem ad meg egyet a app.config fájlban vagy a portálon keresztül.
 
 A Azure Cosmos DB a teljesítményre és a késésre vonatkozó garanciákat biztosít, és a felső korláttal működik. Ez a garancia akkor lehetséges, ha a motor érvényesítheti a bérlő műveleteinek irányítását. A TableThroughput beállítása biztosítja, hogy megkapja a garantált átviteli sebességet és a késést, mivel a platform fenntartja ezt a kapacitást, és garantálja a működés sikerességét.
 
@@ -296,7 +296,7 @@ A következő módokon megoszthatja a visszajelzéseit:
 * [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A Stack Overflow a programozási kérdésekre legmegfelelőbb. Győződjön meg arról, hogy a kérdés [a témában](https://stackoverflow.com/help/on-topic) van, és a [lehető legtöbb részletet biztosít, így a kérdés egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Table API-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB](create-table-dotnet.md)
 * [Java-alkalmazás létrehozása Azure Cosmos DB Table API-alapú adatkezeléshez](create-table-java.md)

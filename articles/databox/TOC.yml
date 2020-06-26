@@ -203,6 +203,10 @@
       items:
         - name: Azure CLI
           href: /cli/azure/ext/databox/databox
+        - name: Azure PowerShell
+          href: /powershell/module/az.databox
+        - name: .NET API-k
+          href: /dotnet/api/overview/azure/databox/management
     - name: További források
       items:
         - name: Data Box-termék

@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811115"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389775"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -19,17 +19,17 @@ Ez a témakör azt ismerteti, hogyan konfigurálható a webalkalmazások, a mobi
 
 ## <a name="configure-app-settings"></a>Alkalmazásbeállítások konfigurálása
 
-App Service az Alkalmazásbeállítások a környezeti változókként átadott változók az alkalmazás kódjába. A Linux-alkalmazások és az egyéni tárolók esetében a `--env` app Service a jelző használatával átadja az alkalmazás beállításait a tárolóhoz a környezeti változónak a tárolóban történő beállításához.
+App Service az Alkalmazásbeállítások a környezeti változókként átadott változók az alkalmazás kódjába. A Linux-alkalmazások és az egyéni tárolók esetében a App Service a jelző használatával átadja az alkalmazás beállításait a tárolóhoz a `--env` környezeti változónak a tárolóban történő beállításához.
 
 A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. 
 
 ![App Services keresése](./media/configure-common/search-for-app-services.png)
 
-Az alkalmazás bal oldali menüjében válassza a **konfigurációs** > **alkalmazás beállításai**lehetőséget.
+Az alkalmazás bal oldali menüjében válassza a **konfigurációs**  >  **alkalmazás beállításai**lehetőséget.
 
 ![Alkalmazásbeállítások](./media/configure-common/open-ui.png)
 
-A ASP.NET és a ASP.NET Core fejlesztők esetében az Alkalmazásbeállítások beállítása a App Serviceban hasonló, mint `<appSettings>` a *web. config* vagy a *appSettings. json*fájlban, de a app Serviceban szereplő értékek felülbírálják a *web. config* vagy a *appSettings. JSON*fájlban található értékeket. A fejlesztői beállítások (például a helyi MySQL-jelszó) a *web. config* vagy a *appSettings. JSON*fájlban maradhatnak, de az üzemi titkok (például az Azure MySQL-adatbázis jelszava) biztonságosak a app Serviceban. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
+A ASP.NET és a ASP.NET Core fejlesztők esetében az Alkalmazásbeállítások beállítása a App Serviceban hasonló, mint `<appSettings>` a *Web.config* vagy a *appsettings.js*be értékének beállítása, de a app Serviceban szereplő értékek felülbírálják *Web.config* vagy *appsettings.js*. Megtarthatja a fejlesztési beállításokat (például a helyi MySQL-jelszót) *Web.config* vagy *appsettings.js*, de az üzemi titkok (például az Azure MySQL-adatbázis jelszava) biztonságosak a app Serviceban. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
 
 Más nyelvi stackekhez hasonlóan az Alkalmazásbeállítások környezeti változókként is beszerezhetők futásidőben. A nyelvspecifikus speciális lépéseiért lásd:
 
@@ -59,7 +59,7 @@ A beállítások szerkesztéséhez kattintson a jobb oldalon található **Szerk
 Ha elkészült, kattintson a **frissítés**gombra. Ne felejtse el, hogy a **konfiguráció** lapon a **Mentés** vissza gombra kattint.
 
 > [!NOTE]
-> Egy alapértelmezett Linux-tárolóban vagy egy egyéni Linux-tárolóban az alkalmazás-beállítás nevének `ApplicationInsights:InstrumentationKey` bármely beágyazott JSON-kulcsának struktúráját app Service `ApplicationInsights__InstrumentationKey` kell konfigurálni a kulcs neveként. Más szóval, minden `:` esetben a `__` következőt kell cserélnie (dupla aláhúzás).
+> Egy alapértelmezett Linux-tárolóban vagy egy egyéni Linux-tárolóban az alkalmazás-beállítás nevének bármely beágyazott JSON-kulcsának struktúráját `ApplicationInsights:InstrumentationKey` app Service kell konfigurálni `ApplicationInsights__InstrumentationKey` a kulcs neveként. Más szóval, minden esetben a `:` következőt kell cserélnie `__` (dupla aláhúzás).
 >
 
 ### <a name="edit-in-bulk"></a>Szerkesztés tömegesen
@@ -86,11 +86,11 @@ Az Alkalmazásbeállítások a következő JSON-formátummal rendelkeznek:
 
 ## <a name="configure-connection-strings"></a>Kapcsolati sztringek konfigurálása
 
-A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfigurációs** > **alkalmazás beállításai**lehetőséget.
+A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfigurációs**  >  **alkalmazás beállításai**lehetőséget.
 
 ![Alkalmazásbeállítások](./media/configure-common/open-ui.png)
 
-A ASP.NET és a ASP.NET Core fejlesztők számára a kapcsolati karakterláncok a App Serviceban való `<connectionStrings>` beállítása olyan, mint a *web. config fájlban*, de a app Serviceban beállított értékek felülbírálják a *web. config fájlban*megadott értékeket. A fejlesztői beállításokat (például egy adatbázisfájlt) a *web. config* fájlban és a termelési titkokban (például SQL Database hitelesítő adatokban) biztonságosan megtarthatja app Serviceban. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
+A ASP.NET és a ASP.NET Core fejlesztők számára a App Service a kapcsolatok karakterláncának beállítása, például `<connectionStrings>` a *Web.configban *való beállítása, de a app Serviceban megadott értékek felülbírálják a *Web.config*. A fejlesztési beállításokat (például egy adatbázisfájlt) a *Web.config* és a termelési titkokban (például SQL Database hitelesítő adatokban) biztonságosan megtarthatja app Service. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
 
 Más nyelvi stackek esetében érdemes inkább az [Alkalmazásbeállítások](#configure-app-settings) használatát használni, mert a kapcsolati karakterláncok speciális formázást igényelnek a változó kulcsokban az értékek eléréséhez. Íme egy kivétel, azonban bizonyos Azure-adatbázisok biztonsági mentése az alkalmazással együtt történik, ha az alkalmazásban konfigurálja a kapcsolatok karakterláncait. További információ: [Mi történik a biztonsági mentésben](manage-backup.md#what-gets-backed-up). Ha nincs szüksége erre az automatikus biztonsági mentésre, használja az Alkalmazásbeállítások szolgáltatást.
 
@@ -102,7 +102,7 @@ Futásidőben a kapcsolatok karakterláncai környezeti változókként érhető
 * Egyéni`CUSTOMCONNSTR_`
 * PostgreSQL`POSTGRESQLCONNSTR_`  
 
-Egy *connectionstring1* nevű MySQL-kapcsolati sztring például környezeti változóként `MYSQLCONNSTR_connectionString1`érhető el. A nyelvspecifikus speciális lépéseiért lásd:
+Egy *connectionstring1* nevű MySQL-kapcsolati sztring például környezeti változóként érhető el `MYSQLCONNSTR_connectionString1` . A nyelvspecifikus speciális lépéseiért lásd:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
@@ -158,7 +158,7 @@ A kapcsolatok sztringje a következő JSON-formátummal rendelkezik:
 
 ## <a name="configure-general-settings"></a>Általános beállítások konfigurálása
 
-A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció** > **általános beállítások**lehetőséget.
+A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció**  >  **általános beállítások**lehetőséget.
 
 ![Általános beállítások](./media/configure-common/open-general.png)
 
@@ -168,22 +168,22 @@ Itt konfigurálhatja az alkalmazás egyes gyakori beállításait. Néhány beá
 - **Platform beállításai**: lehetővé teszi az üzemeltetési platform beállításainak konfigurálását, beleértve a következőket:
     - **Bitszáma**: 32 bites vagy 64 bites.
     - **WebSocket protokoll**: [ASP.net-jelzőhöz] vagy [socket.IO](https://socket.io/), például.
-    - **Always On**: megtarthatja az alkalmazás betöltését akkor is, ha nincs forgalom. Szükség van a folyamatos webjobs-feladatokra, illetve a CRON-kifejezéssel aktivált webjobs-feladatokra.
+    - **Always On**: megtartja az alkalmazás betöltését akkor is, ha nincs forgalom. Szükség van a folyamatos webjobs-feladatokra, illetve a CRON-kifejezéssel aktivált webjobs-feladatokra.
       > [!NOTE]
-      > Az Always On funkcióval nem vezérelheti a végpontot. Mindig kérelmet küld az alkalmazás gyökerének.
+      > Az Always On szolgáltatással az előtér-terheléselosztó kérelmet küld az alkalmazás gyökerének. Nem lehet konfigurálni a App Service alkalmazás-végpontját.
     - **Felügyelt folyamat verziója**: az IIS- [folyamat mód]. Állítsa **klasszikusra** , ha olyan örökölt alkalmazással rendelkezik, amelyhez az IIS régebbi verziója szükséges.
     - **Http-verzió**: állítsa **2,0** értékre a [https/2](https://wikipedia.org/wiki/HTTP/2) protokoll támogatásának engedélyezéséhez.
     > [!NOTE]
     > A legtöbb modern böngésző csak a TLS protokollal támogatja a HTTP/2 protokollt, a nem titkosított forgalom pedig továbbra is HTTP/1.1-et használ. Győződjön meg arról, hogy az ügyféloldali böngészők a HTTP/2 protokollal csatlakoznak az alkalmazáshoz, és biztonságossá teszi az egyéni DNS-nevet. További információ: [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban](configure-ssl-bindings.md).
     - **ARR affinitás**: többpéldányos telepítés esetén győződjön meg arról, hogy az ügyfél ugyanahhoz a példányhoz van irányítva a munkamenet élettartama szempontjából. Ezt a beállítást **kikapcsolhatja** az állapot nélküli alkalmazások esetében.
-- **Hibakeresés**: engedélyezze a távoli hibakeresést [ASP.net](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.net Core](/visualstudio/debugger/remote-debugging-azure)vagy [Node. js](containers/configure-language-nodejs.md#debug-remotely) -alkalmazásokhoz. Ez a beállítás 48 óra elteltével automatikusan kikapcsol.
+- **Hibakeresés**: engedélyezze a távoli hibakeresést [ASP.net](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.net Core](/visualstudio/debugger/remote-debugging-azure)vagy [Node.js](containers/configure-language-nodejs.md#debug-remotely) alkalmazásokhoz. Ez a beállítás 48 óra elteltével automatikusan kikapcsol.
 - **Bejövő Ügyféltanúsítványok**: ügyféltanúsítvány megkövetelése [kölcsönös hitelesítéssel](app-service-web-configure-tls-mutual-auth.md).
 
 ## <a name="configure-default-documents"></a>Alapértelmezett dokumentumok konfigurálása
 
 Ez a beállítás csak Windows-alkalmazásokhoz használható.
 
-A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció** > **alapértelmezett dokumentumok**elemet.
+A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfiguráció**  >  **alapértelmezett dokumentumok**elemet.
 
 ![Alapértelmezett dokumentumok](./media/configure-common/open-documents.png)
 
@@ -193,7 +193,7 @@ Ha az alkalmazás olyan modulokat használ, amelyek az URL-cím alapján statiku
 
 ## <a name="configure-path-mappings"></a>Elérésiút-megfeleltetések konfigurálása
 
-A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfigurációs** > **útvonal-hozzárendelések**lehetőséget.
+A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Az alkalmazás bal oldali menüjében válassza a **konfigurációs**  >  **útvonal-hozzárendelések**lehetőséget.
 
 ![Elérésiút-megfeleltetések](./media/configure-common/open-path.png)
 
@@ -205,13 +205,13 @@ Windows-alkalmazások esetén testreszabhatja az IIS-kezelő leképezéseit és 
 
 A kezelő-hozzárendelések lehetővé teszik egyéni parancsfájl-feldolgozók hozzáadását az adott fájlkiterjesztések kéréseinek kezeléséhez. Egyéni kezelő hozzáadásához kattintson az **új kezelő**elemre. Konfigurálja a kezelőt a következőképpen:
 
-- **Bővítmény**. A kezelni kívánt fájlkiterjesztés, például * \*. php* vagy *Handler. fcgi*.
-- **Parancsfájl-feldolgozó**. A parancsfájl-feldolgozó abszolút elérési útja. A fájlkiterjesztés által megegyező fájlokra irányuló kérelmeket a parancsfájl-feldolgozó dolgozza fel. Az elérési `D:\home\site\wwwroot` út használatával tekintse meg az alkalmazás gyökérkönyvtárát.
+- **Bővítmény**. A kezelni kívánt fájlkiterjesztés, például * \* . php* vagy *Handler. fcgi*.
+- **Parancsfájl-feldolgozó**. A parancsfájl-feldolgozó abszolút elérési útja. A fájlkiterjesztés által megegyező fájlokra irányuló kérelmeket a parancsfájl-feldolgozó dolgozza fel. Az elérési út használatával `D:\home\site\wwwroot` tekintse meg az alkalmazás gyökérkönyvtárát.
 - **Argumentumok**. Nem kötelező parancssori argumentumok a parancsfájl-feldolgozóhoz.
 
-Mindegyik alkalmazáshoz az alapértelmezett gyökérszintű elérési`/`út () `D:\home\site\wwwroot`van rendelve, ahol a kód alapértelmezés szerint telepítve van. Ha az alkalmazás gyökérkönyvtára egy másik mappában található, vagy ha a tárház több alkalmazással is rendelkezik, akkor itt szerkesztheti vagy adhatja hozzá a virtuális alkalmazásokat és címtárakat. Kattintson az **új virtuális alkalmazás vagy könyvtár**elemre.
+Mindegyik alkalmazáshoz az alapértelmezett gyökérszintű elérési út ( `/` ) van rendelve `D:\home\site\wwwroot` , ahol a kód alapértelmezés szerint telepítve van. Ha az alkalmazás gyökérkönyvtára egy másik mappában található, vagy ha a tárház több alkalmazással is rendelkezik, akkor itt szerkesztheti vagy adhatja hozzá a virtuális alkalmazásokat és címtárakat. Kattintson az **új virtuális alkalmazás vagy könyvtár**elemre.
 
-A virtuális alkalmazások és könyvtárak konfigurálásához adja meg az összes virtuális könyvtárat és a hozzá tartozó fizikai elérési utat a`D:\home`webhely gyökeréhez () viszonyítva. Ha szeretné, bejelölheti az **alkalmazás** jelölőnégyzetet is, ha a virtuális könyvtárat alkalmazásként szeretné megjelölni.
+A virtuális alkalmazások és könyvtárak konfigurálásához adja meg az összes virtuális könyvtárat és a hozzá tartozó fizikai elérési utat a webhely gyökeréhez () viszonyítva `D:\home` . Ha szeretné, bejelölheti az **alkalmazás** jelölőnégyzetet is, ha a virtuális könyvtárat alkalmazásként szeretné megjelölni.
 
 ### <a name="containerized-apps"></a>Tároló alkalmazások
 
@@ -245,7 +245,7 @@ Linux-alkalmazások esetén lásd:
 
 Lásd: [Egyéni Linux-tároló konfigurálása Azure app Servicehoz](containers/configure-custom-container.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni tartománynév konfigurálása Azure App Service]
 - [Átmeneti környezetek beállítása az Azure App Service-ben]
@@ -253,7 +253,7 @@ Lásd: [Egyéni Linux-tároló konfigurálása Azure app Servicehoz](containers/
 - [Diagnosztikai naplók engedélyezése](troubleshoot-diagnostic-logs.md)
 - [Alkalmazás méretezése Azure App Service]
 - [A Azure App Service figyelésének alapjai]
-- [A applicationHost. config beállításainak módosítása a applicationHost. XDT](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
+- [applicationHost.config beállítások módosítása a applicationHost. XDT](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 

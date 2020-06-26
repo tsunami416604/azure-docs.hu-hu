@@ -1,16 +1,16 @@
 ---
 title: Általános FabricClient-kivételek elvetve
 description: Ismerteti azokat a gyakori kivételeket és hibákat, amelyeket a FabricClient API-k okozhatnak az alkalmazás-és fürtszolgáltatási műveletek végrehajtása során.
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 06/20/2018
-ms.author: oanapl
-ms.openlocfilehash: 9ad3097a490d4728e05ea90652c17c24b79cac2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: gwallace
+ms.openlocfilehash: d22184d6d275adb95932fb29338768210547c199
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75457932"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392624"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>A FabricClient API-k használata során előforduló gyakori kivételek és hibák
 A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API-k lehetővé teszik a fürt és az alkalmazás rendszergazdái számára, hogy rendszergazdai feladatokat végezzenek el egy Service Fabric alkalmazáson, szolgáltatáson vagy fürtön. Például az alkalmazások központi telepítése, frissítése és eltávolítása, a fürt állapotának ellenőrzése vagy a szolgáltatás tesztelése. Az alkalmazások fejlesztői és a FabricClient API-kat használhatnak a Service Fabric-fürt és-alkalmazások kezeléséhez szükséges eszközök fejlesztéséhez.

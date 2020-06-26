@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/18/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a02ad3ea43ae9d91489417bc314e3c23d54a958
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9e7c537e85039675f27fa3e276b6b964ce1679b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188766"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388595"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Közvetlen bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -29,7 +29,7 @@ A bejelentkezési felhasználói úton a függő entitás alkalmazás egy adott 
 
 A felhasználó módosíthatja a bejelentkezési szövegmezőben lévő értéket.
 
-Ha egyéni szabályzatot használ, bírálja felül a `SelfAsserted-LocalAccountSignin-Email` technikai profilt. A `<InputClaims>` szakaszban állítsa be a SignInName jogcím DefaultValue értékét a következőre: `{OIDC:LoginHint}`. A `{OIDC:LoginHint}` változó tartalmazza a `login_hint` paraméter értékét. Azure AD B2C beolvassa a signInName jogcím értékét, és előre feltölti a signInName szövegmezőt.
+Ha egyéni szabályzatot használ, bírálja felül a `SelfAsserted-LocalAccountSignin-Email` technikai profilt. A `<InputClaims>` szakaszban állítsa be a signInName jogcím DefaultValue értékét a következőre: `{OIDC:LoginHint}` . A `{OIDC:LoginHint}` változó tartalmazza a `login_hint` paraméter értékét. Azure AD B2C beolvassa a signInName jogcím értékét, és előre feltölti a signInName szövegmezőt.
 
 ```xml
 <ClaimsProvider>
@@ -47,11 +47,11 @@ Ha egyéni szabályzatot használ, bírálja felül a `SelfAsserted-LocalAccount
 
 ## <a name="redirect-sign-in-to-a-social-provider"></a>Bejelentkezés átirányítása egy közösségi szolgáltatóba
 
-Ha úgy konfigurálta a bejelentkezési utat, hogy az alkalmazás belefoglalja a közösségi fiókokat, például a Facebookot, a LinkedInt vagy a `domain_hint` Google-t, megadhatja a paramétert. Ez a lekérdezési paraméter egy olyan célzást tartalmaz, amely a bejelentkezéshez használandó közösségi identitás-szolgáltatóról Azure AD B2C. Ha például az alkalmazás megadja `domain_hint=facebook.com`, a bejelentkezés közvetlenül a Facebook bejelentkezési oldalára kerül.
+Ha úgy konfigurálta a bejelentkezési utat, hogy az alkalmazás belefoglalja a közösségi fiókokat, például a Facebookot, a LinkedInt vagy a Google-t, megadhatja a `domain_hint` paramétert. Ez a lekérdezési paraméter egy olyan célzást tartalmaz, amely a bejelentkezéshez használandó közösségi identitás-szolgáltatóról Azure AD B2C. Ha például az alkalmazás megadja, a `domain_hint=facebook.com` Bejelentkezés közvetlenül a Facebook bejelentkezési oldalára kerül.
 
 ![Bejelentkezési oldal regisztrálása az URL-cím domain_hint lekérdezési paraméterrel kiemelve](./media/direct-signin/domain-hint.png)
 
-Ha egyéni szabályzatot használ, a tartománynevet a `<Domain>domain name</Domain>` tetszőleges `<ClaimsProvider>`XML-elem használatával is konfigurálhatja.
+Ha egyéni szabályzatot használ, a tartománynevet a `<Domain>domain name</Domain>` tetszőleges XML-elem használatával is konfigurálhatja `<ClaimsProvider>` .
 
 ```xml
 <ClaimsProvider>

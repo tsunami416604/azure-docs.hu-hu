@@ -2,20 +2,20 @@
 title: Az üzembe helyezési kvóta túllépve
 description: Ismerteti, hogyan oldható fel a több mint 800 üzemelő példány hibája az erőforráscsoport előzményeiben.
 ms.topic: troubleshooting
-ms.date: 05/26/2020
-ms.openlocfilehash: 0fec8fa91ec79822115d83b15e8c8a839dc7fd69
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/25/2020
+ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117804"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391179"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Hiba elhárítása, ha a központi telepítés száma meghaladja a 800
 
 Az egyes erőforráscsoportok az üzembe helyezési előzményekben legfeljebb 800 üzemelő példányra korlátozódnak. Ez a cikk azt a hibát ismerteti, amikor egy központi telepítés meghiúsul, mert túllépi az engedélyezett 800 üzemelő példányokat. A hiba megoldásához törölje az üzemelő példányokat az erőforráscsoport előzményeiből. Egy központi telepítés az előzményekből való törlése nem befolyásolja az üzembe helyezett erőforrásokat.
 
 > [!NOTE]
-> A június 2020-től kezdődően Azure Resource Manager automatikusan törli az előzményekből származó üzembe helyezéseket a korlát közelében. Ez a hiba akkor is megjelenhet, ha az automatikus törlést választotta. További információ: [automatikus törlések az üzembe helyezési előzményekből](deployment-history-deletions.md).
+> A Azure Resource Manager hamarosan automatikusan elindítja az előzményekből való üzembe helyezések törlését a korlát közelében. Ez a hiba akkor is megjelenhet, ha az automatikus törlést választotta. További információ: [automatikus törlések az üzembe helyezési előzményekből](deployment-history-deletions.md).
 
 ## <a name="symptom"></a>Hibajelenség
 

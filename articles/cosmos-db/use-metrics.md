@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/18/2019
-ms.openlocfilehash: 735c68a3aec4d7bbb5626497de445f61e375b34b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 157f0a710a0b3aed25455600bbf19d4ae84ed848
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263398"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391944"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A Azure Cosmos DB metrikáinak monitorozása és hibakeresése
 
@@ -46,7 +46,7 @@ A következő szakaszokban ismertetjük azokat a gyakori forgatókönyveket, ame
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Megtudhatja, hány kérelem sikeres vagy hibát okoz
 
-Első lépésként lépjen a [Azure Portalra](https://portal.azure.com) , és navigáljon a **metrikák** panelre. A panelen keresse meg a * * kérelmek száma meghaladja a kapacitást egy 1 perces diagramon. Ez a diagram az állapotkód által szegmentált percenkénti kérelmek számát mutatja. További információ a HTTP-állapotkódok használatáról: [Azure Cosmos db HTTP-állapotkódok](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Első lépésként lépjen a [Azure Portalra](https://portal.azure.com) , és navigáljon a **metrikák** panelre. A panelen keresse meg a * * kérelmek száma meghaladja a kapacitást egy 1 perces diagramon. Ez a diagram az állapotkód által szegmentált percenkénti kérelmek számát mutatja. További információ a HTTP-állapotkódok használatáról: [Azure Cosmos db HTTP-állapotkódok](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 A leggyakoribb hiba az állapotkód 429 (ráta korlátozása/szabályozása). Ez a hiba azt jelenti, hogy a Azure Cosmos DBre irányuló kérelmek többek, mint a kiosztott átviteli sebesség. A probléma leggyakoribb megoldása az, hogy az adott gyűjteményhez tartozó [RUs vertikális felskálázását](./set-throughput.md) .
 
@@ -107,7 +107,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 A *QueryMetrics* részletesen ismerteti, hogy mennyi ideig tartott a lekérdezés egyes összetevőinek végrehajtása. A hosszú ideig futó lekérdezések esetében a leggyakoribb kiváltó ok a vizsgálatok, ami azt jelenti, hogy a lekérdezés nem tudta kihasználni az indexeket. Ez a probléma jobb szűrőfeltétel használatával oldható meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most megtanulta, hogyan figyelheti és hibakeresési hibákat a Azure Portalban megadott mérőszámok használatával. Ha többet szeretne megtudni az adatbázis teljesítményének növeléséről, olvassa el a következő cikkeket:
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: erhopf
-ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04a6742d3db8d65e06fe3d7b35ed94ebe5dc13a5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77469017"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391213"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Oktatóanyag: bérlői modell létrehozása (előzetes verzió)
 
@@ -24,7 +24,7 @@ A bérlői modell (Custom Speech Office 365-adatokkal) egy, az Office 365 válla
 > [!IMPORTANT]
 > Ha a szervezet a bérlői modell szolgáltatással regisztrálja magát, a beszédfelismerési szolgáltatás elérheti a szervezet nyelvi modelljét. A modell az Office 365 nyilvános csoportbeli e-mailek és dokumentumok alapján jön létre, amelyeket bárki láthat a szervezetében. A szervezet Office 365-rendszergazdája be-és kikapcsolhatja a szervezeti szintű nyelvi modell használatát az Office 365 felügyeleti portálján.
 
-Az oktatóanyag segítségével megtanulhatja a következőket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Regisztrálás a bérlői modellben a Microsoft 365 felügyeleti központ használatával
@@ -289,9 +289,9 @@ namespace PrincetonSROnly.FrontEnd.Samples
 
 Ezután újra kell építenie és futtatnia a projektet a parancssorból. A parancs futtatása előtt frissítsen néhány paramétert a következő módon:
 
-1. Egy érvényes bérlői felhasználó értékeit cserélje le `<Username>` `<Password>`
-1. Cserélje `<Subscription-Key>` le a szöveget a beszédfelismerési erőforráshoz tartozó előfizetési kulcsra. Ez az érték a [Azure Portal](https://aka.ms/azureportal)beszédfelismerési erőforrásának **Áttekintés** szakaszában érhető el.
-1. Cserélje `<Endpoint-Uri>` le a helyére a következő végpontot. Győződjön meg arról, hogy `{your region}` a lecserélte azt a régiót, ahol a beszédfelismerési erőforrás létrejött. A következő régiók támogatottak `westus`: `westus2`, és `eastus`. A régióval kapcsolatos információk a [Azure Portal](https://aka.ms/azureportal)beszédfelismerési erőforrásának **Áttekintés** szakaszában találhatók.
+1. `<Username>` `<Password>` Egy érvényes bérlői felhasználó értékeit cserélje le.
+1. Cserélje le a szöveget `<Subscription-Key>` a beszédfelismerési erőforráshoz tartozó előfizetési kulcsra. Ez az érték a [Azure Portal](https://aka.ms/azureportal)beszédfelismerési erőforrásának **Áttekintés** szakaszában érhető el.
+1. Cserélje le `<Endpoint-Uri>` a helyére a következő végpontot. Győződjön meg arról, hogy a lecserélte azt `{your region}` a régiót, ahol a beszédfelismerési erőforrás létrejött. A következő régiók támogatottak: `westus` , `westus2` és `eastus` . A régióval kapcsolatos információk a [Azure Portal](https://aka.ms/azureportal)beszédfelismerési erőforrásának **Áttekintés** szakaszában találhatók.
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
@@ -303,7 +303,7 @@ Ezután újra kell építenie és futtatnia a projektet a parancssorból. A para
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egyéni beszédfelismerési modellt az Office 365-ben, hogyan helyezheti üzembe, és hogyan használhatja azt a Speech SDK-val.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Speech Studio](https://speech.microsoft.com/)
 * [Beszéd SDK](speech-sdk.md)

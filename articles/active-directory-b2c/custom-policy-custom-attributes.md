@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15623d622a40fa80889a8704e0b7f19d358a052c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295405"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389326"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: egyéni attribútumok engedélyezése egyéni profil házirendben
 
@@ -85,7 +85,7 @@ Ha egyéni attribútumokat kíván engedélyezni a házirendben, adja meg az **a
 2. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a Azure ad B2C bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 4. Válassza az **identitási élmény keretrendszert**.
-5. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított TrustFrameworkExtensions. xml fájlt.
+5. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított TrustFrameworkExtensions.xml házirend-fájlokat.
 
 > [!NOTE]
 > Amikor az Azure AD műszaki profilja megőrzi a jogcímet a címtárba, ellenőrzi, hogy létezik-e az egyéni attribútum. Ha nem, akkor az egyéni attribútumot hozza létre.  
@@ -135,7 +135,7 @@ Az alábbi példa egy egyéni attribútum használatát mutatja be Azure AD B2C 
 Kövesse a [jogcímek hozzáadását és a felhasználói bevitel egyéni házirendek használatával történő testreszabását](custom-policy-configure-user-input.md)ismertető útmutatót. Ez a példa egy beépített "City" jogcímet használ. Egyéni attribútum használatához cserélje le a "City" kulcsszót a saját egyéni attribútumaira.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk:
 

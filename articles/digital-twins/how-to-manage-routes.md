@@ -7,17 +7,14 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: b6f5765f51983e3b1ca9c182849b64258476a2ce
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 5049e875c3b8047b99e3256c7bbac60d0af822bb
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362764"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392267"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Végpontok és útvonalak kezelése az Azure digitális Ikrekben
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz, vagy kapcsolódhat a számítási erőforrásokhoz. Ezt úgy teheti meg, hogy először olyan **végpontokat** állít be, amelyek megkapják az eseményeket, majd azokat az [**esemény-útvonalakat**](concepts-route-events.md) , amelyek meghatározzák, hogy az Azure Digital Twins mely eseményeit kapja meg a végpontok.
 
@@ -143,7 +140,7 @@ Szűrő hozzáadásához használjon PUT-kérést a *https://{YourHost}/EventRou
 
 Itt láthatók a támogatott útválasztási szűrők.
 
-| Szűrő neve | Leírás | Séma szűrése | Támogatott értékek | 
+| Szűrő neve | Description | Séma szűrése | Támogatott értékek | 
 | --- | --- | --- | --- |
 | Típus | A digitális kettős példányon keresztül áramló [esemény típusa](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Forrás | Az Azure Digital Twins-példány neve | `"filter" : "source = '<hostname>'"`|  **Értesítésekhez**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetria esetén**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
@@ -184,7 +181,7 @@ A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adj
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [Útmutató: az események értelmezése](how-to-interpret-event-data.md)

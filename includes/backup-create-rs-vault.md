@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: backup
 author: dcurwin
 manager: carmonm
@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 2c74783ea8246232cb5c4270691daf3f83fe9a30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2509bdae01fc9de5511dcd67eb95bf0d13d5cf39
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204522"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391152"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-A Recovery Services-tároló egy olyan tárolási entitás, amely az idő múlásával létrehozott helyreállítási pontokat tárolja. Emellett tartalmazza a védett elemekhez társított biztonsági mentési házirendeket is.
+A Recovery Services-tároló egy felügyeleti entitás, amely az idő múlásával létrehozott helyreállítási pontokat tárolja, és felületet biztosít a biztonsági mentéssel kapcsolatos műveletek elvégzéséhez. Ezek közé tartoznak az igény szerinti biztonsági másolatok készítése, a visszaállítások végrehajtása és a biztonsági mentési szabályzatok létrehozása.
 
 Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket.
 

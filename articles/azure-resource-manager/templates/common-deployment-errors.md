@@ -3,13 +3,13 @@ title: Gyakori üzembehelyezési hibák elhárítása
 description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrásokat helyez üzembe az Azure-ban Azure Resource Manager használatával.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: c9acdcb3d04b6f415c78115ccbd067ab7d859c47
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.date: 06/25/2020
+ms.openlocfilehash: 77a1359f81df1df9508e942ff6fa1f73ece51ca8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678188"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391230"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
@@ -114,7 +114,7 @@ Az üzembehelyezési hibakódok és üzenetek megtekintése a PowerShell-lel:
 Az üzembehelyezési hibakódok és üzenetek megtekintése az Azure CLI-vel:
 
 ```azurecli-interactive
-az deployment group operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment operation group list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 A portálon válassza ki az értesítést.
@@ -172,7 +172,7 @@ Az Azure CLI jelenleg nem támogatja a hibakeresési naplózás bekapcsolását,
 Vizsgálja meg a telepítési műveleteket a következő paranccsal:
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
@@ -180,7 +180,7 @@ az deployment group operation list \
 Vizsgálja meg a kérelem tartalmát a következő paranccsal:
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
@@ -189,7 +189,7 @@ az deployment group operation list \
 Vizsgálja meg a válasz tartalmát a következő paranccsal:
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response

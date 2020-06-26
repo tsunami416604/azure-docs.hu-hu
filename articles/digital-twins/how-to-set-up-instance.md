@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 792b3894bf051298250ea8f402086c1edf297842
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c9489b9e1afe5e42121f61a3b0b50b28b2401bd3
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362747"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392284"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Azure digitális Twins-példány beállítása
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ez a cikk végigvezeti az új Azure Digital Twins-példány beállításának alapvető lépésein. Ez magában foglalja a példány létrehozását, valamint [Azure Active Directory (HRE)](../active-directory/fundamentals/active-directory-whatis.md) engedélyeknek a példányhoz való hozzárendelését.
 
@@ -58,7 +55,9 @@ Ahhoz, hogy az Azure Digital Twins-t egy ügyfélalkalmazás használatával has
 
 #### <a name="assign-yourself-a-role"></a>Saját szerepkör kiosztása
 
-Hozzon létre egy szerepkör-hozzárendelést saját magához az Azure-előfizetéséhez tartozó HRE-bérlőhöz társított e-mail-cím használatával. Először is győződjön meg róla, hogy az Azure-előfizetésében tulajdonosként van besorolva. Ezt a parancs használatával ellenőrizheti, `az role assignment list --assignee <your-Azure-email>` hogy a *roleDefinitionName* *tulajdonos*-e. Ezután a következő paranccsal rendelheti hozzá a felhasználót az Azure Digital Twins-példány tulajdonosi szerepköréhez:
+Hozzon létre egy szerepkör-hozzárendelést saját magához az Azure-előfizetéséhez tartozó HRE-bérlőhöz társított e-mail-cím használatával. 
+
+Először is győződjön meg róla, hogy az Azure-előfizetésében tulajdonosként van besorolva. Ezt a parancs használatával ellenőrizheti `az role assignment list --assignee <your-Azure-email>` , és ellenőrizheti, hogy a *RoleDefinitionName* értéke *tulajdonos*-e. Az előfizetés tulajdonosaként a következő paranccsal rendelheti hozzá a felhasználót az Azure Digital Twins-példány tulajdonosi szerepköréhez:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"
@@ -75,7 +74,7 @@ Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel ka
 
 Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a használatra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan állíthatja be és hitelesítheti az ügyfélalkalmazás működését a példánnyal való együttműködéshez:
 * [Útmutató: ügyfélalkalmazás hitelesítése](how-to-authenticate-client.md)

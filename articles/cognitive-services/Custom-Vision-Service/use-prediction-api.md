@@ -3,19 +3,19 @@ title: Előrejelzési végpont használata a lemezképek programozott tesztelés
 titleSuffix: Azure Cognitive Services
 description: Megismerheti, hogyan használható az API képek programozott tesztelésére a Custom Vision Service osztályozóval.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.author: anroth
-ms.openlocfilehash: 88aaa3d54ea44a15f7900aba093bf28c70c19695
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: 0766ad38265368a00272eb8abbe974ce94f5dd72
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82129855"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391689"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Modell használata az előrejelzési API-val
 
@@ -110,10 +110,10 @@ Ebben az útmutatóban egy helyi rendszerképet fog használni, ezért másolja 
 
 1. Írja át a következő információkat:
    * Állítsa a `namespace` mezőt a projekt nevére.
-   * Cserélje le a `<Your prediction key>` helyőrzőt a korábban lekért kulcs értékére.
-   * Cserélje le a `<Your prediction URL>` helyőrzőt a korábban lekért URL-címre.
+   * Cserélje le a helyőrzőt `<Your prediction key>` a korábban lekért kulcs értékére.
+   * Cserélje le a helyőrzőt `<Your prediction URL>` a korábban lekért URL-címre.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Az alkalmazás futtatásakor a rendszer felszólítja egy képfájl elérési útjának megadására a konzolon. A rendszer ezután elküldi a rendszerképet az előrejelzési API-nak, és az előrejelzési eredményeket JSON-formátumú karakterláncként adja vissza. A következő egy példa erre a válaszra.
 
@@ -130,7 +130,7 @@ Az alkalmazás futtatásakor a rendszer felszólítja egy képfájl elérési ú
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan küldhet képeket az egyéni rendszerkép-osztályozó/detektorba, és hogyan kaphat választ programozott módon a C# SDK-val. Következő lépésként megtudhatja, hogyan végezheti el a teljes körű forgatókönyvek megvalósítását a C# használatával, vagy egy másik nyelvi SDK használatának megkezdését.
 

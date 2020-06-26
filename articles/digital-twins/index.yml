@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Az Azure Digital Twins előzetes verziójának dokumentációja
-summary: A Microsoft Build 2020-on tett bejelentésnek megfelelően az Azure Digital Twins új nyilvános előzetes szolgáltatásverziót készít. Az új szolgáltatás és a funkciók teljes dokumentációja itt lesz hamarosan elérhető. Az alábbi hivatkozáson továbbra is elérheti az Azure Digital Twins első verziójának dokumentációját.
+summary: Megtudhatja, hogyan hozhatja létre az eszközei, környezetei és üzleti rendszerei digitális ábrázolását az Azure Digital Twins platform segítségével, a valós világot modellező, következő generációs IoT-megoldások létrehozásához.
 metadata:
   title: Az Azure Digital Twins előzetes verziójának dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: Útmutató az Azure Digital Twins használatához személyek, helyek és dolgok összekapcsolására és térbeli intelligenciával rendelkező IoT-megoldások létrehozására.
@@ -10,16 +10,72 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: c6822c319489eedf1ecdd7d1fddcd19456c35dd9
-  ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+  ms.openlocfilehash: 105a9de63f13a7a6460638ad967be40edd0783a4
+  ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/12/2020
-  ms.locfileid: "84744017"
+  ms.lasthandoff: 06/26/2020
+  ms.locfileid: "85392148"
 landingContent:
-- title: Azure Digital Twins, első verzió
+- title: Az Azure Digital Twins bemutatása
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Digital Twins?
+      url: overview.md
+- title: Ismerkedés az oktatóanyagokkal
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Ügyfélalkalmazás kódolása
+      url: tutorial-code.md
+  - linkListType: tutorial
+    links:
+    - text: Az alapok megismerése egy minta-ügyfélalkalmazással
+      url: tutorial-command-line-app.md
+  - linkListType: tutorial
+    links:
+    - text: Teljes körű megoldás csatlakoztatása
+      url: tutorial-end-to-end.md
+- title: Tanulás
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Egyéni modellek
+      url: concepts-models.md
+  - linkListType: concept
+    links:
+    - text: Digitális ikermodellek és az ikergráf
+      url: concepts-twins-graph.md
+  - linkListType: concept
+    links:
+    - text: Lekérdezés nyelve
+      url: concepts-query-language.md
+- title: Fejlesztés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Digital Twins CLI használata
+      url: how-to-use-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Digital Twins-példány létrehozása
+      url: how-to-set-up-instance.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ügyfélalkalmazás hitelesítése
+      url: how-to-authenticate-client.md
+- title: API-referencia
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Digital Twins API-k és SDK-k használata
+      url: how-to-use-apis-sdks.md
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni SDK-k létrehozása az AutoRest használatával
+      url: how-to-create-custom-sdks.md
   - linkListType: reference
     links:
-    - text: 'Előző verziók dokumentációja: Azure Digital Twins'
-      url: https://docs.microsoft.com/previous-versions/azure/digital-twins/about-digital-twins
+    - text: REST API-k
+      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/

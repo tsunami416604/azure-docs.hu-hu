@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 09/10/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 1b3c95f5727c3839974f79e8d147f99d49c4b1d6
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: a0feac9bbd98dc4c67464e84e9a3204bd9730355
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261749"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390346"
 ---
 # <a name="system-document-properties"></a>Rendszerdokumentum tulajdonságai
 
-Azure Cosmos db olyan [rendszertulajdonságokkal](https://docs.microsoft.com/rest/api/cosmos-db/databases) rendelkezik, mint a,,, ```_ts``` ```_self``` ```_attachments``` ```_rid``` és ```_etag``` minden dokumentumon. Ezenkívül a Gremlin-motor az élekhez az ```inVPartition``` és az ```outVPartition``` tulajdonságokat is hozzárendeli. Alapértelmezés szerint ezek a tulajdonságok a bejáráshoz érhetők el. Azonban a Gremlin bejárásakor lehetséges, hogy a megadott tulajdonságokat vagy azok mindegyikét is tartalmazza.
+Azure Cosmos db olyan [rendszertulajdonságokkal](/rest/api/cosmos-db/databases) rendelkezik, mint a,,, ```_ts``` ```_self``` ```_attachments``` ```_rid``` és ```_etag``` minden dokumentumon. Ezenkívül a Gremlin-motor az élekhez az ```inVPartition``` és az ```outVPartition``` tulajdonságokat is hozzárendeli. Alapértelmezés szerint ezek a tulajdonságok a bejáráshoz érhetők el. Azonban a Gremlin bejárásakor lehetséges, hogy a megadott tulajdonságokat vagy azok mindegyikét is tartalmazza.
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())
@@ -40,6 +40,6 @@ Az alábbi bejárással létrehozott csúcs **123 másodperc** múlva automatiku
 g.addV('vertex-one').property('ttl', 123)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Cosmos DB optimista egyidejűség-kezelése](faq.md#how-does-the-sql-api-provide-concurrency)
 * Élettartam [(TTL)](time-to-live.md) Azure Cosmos db

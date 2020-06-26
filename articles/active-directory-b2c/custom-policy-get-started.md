@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcc1affb953a737c12ca5bdb70ba7eadee20cd97
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295524"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389292"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -138,9 +138,9 @@ Az egyéni házirendek a Azure AD B2C bérlőre feltöltött, a technikai profil
 
 Minden kezdő csomag a következőket tartalmazza:
 
-- **Alapfájl** – kevés módosításra van szükség az alaphoz. Például: *TrustFrameworkBase. XML*
-- **Kiterjesztési fájl** – ez a fájl a legtöbb konfigurációs módosítást hajtja végre. Például: *TrustFrameworkExtensions. XML*
-- **Függő entitás fájljai** – az alkalmazás által meghívott feladat-specifikus fájlok. Példák: *SignUpOrSignin. XML*, *ProfileEdit. XML*, *PasswordReset. XML*
+- **Alapfájl** – kevés módosításra van szükség az alaphoz. Példa: *TrustFrameworkBase.xml*
+- **Kiterjesztési fájl** – ez a fájl a legtöbb konfigurációs módosítást hajtja végre. Példa: *TrustFrameworkExtensions.xml*
+- **Függő entitás fájljai** – az alkalmazás által meghívott feladat-specifikus fájlok. Példák: *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*
 
 Ebben a cikkben a **SocialAndLocalAccounts** alapszintű csomagban lévő egyéni XML-házirendek fájljait szerkeszti. Ha XML-szerkesztőre van szüksége, próbálja ki a [Visual Studio Code](https://code.visualstudio.com/download)-ot, amely egy könnyű platformfüggetlen szerkesztő.
 
@@ -160,7 +160,7 @@ Szerezze be az egyéni házirend-előindítási csomagokat a GitHubról, majd fr
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>Alkalmazás-azonosítók hozzáadása az egyéni szabályzathoz
 
-Adja hozzá az alkalmazás-azonosítókat a *TrustFrameworkExtensions. XML*kiterjesztésű fájlhoz.
+Adja hozzá az alkalmazás-azonosítókat a kiterjesztések fájlhoz *TrustFrameworkExtensions.xml*.
 
 1. Nyissa meg `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** és keresse meg az elemet `<TechnicalProfile Id="login-NonInteractive">` .
 1. Cserélje le mindkét példányát a `IdentityExperienceFrameworkAppId` korábban létrehozott IdentityExperienceFramework alkalmazás alkalmazás-azonosítójával.
@@ -172,11 +172,11 @@ Adja hozzá az alkalmazás-azonosítókat a *TrustFrameworkExtensions. XML*kiter
 1. Válassza ki az **Identity Experience Framework** menüpontot a B2C-bérlőben a Azure Portalban.
 1. Válassza az **egyéni házirend feltöltése**lehetőséget.
 1. Ebben a sorrendben töltse fel a házirend-fájlokat:
-    1. *TrustFrameworkBase. XML*
-    1. *TrustFrameworkExtensions. XML*
-    1. *SignUpOrSignin. XML*
-    1. *ProfileEdit. XML*
-    1. *PasswordReset. XML*
+    1. *TrustFrameworkBase.xml*
+    1. *TrustFrameworkExtensions.xml*
+    1. *SignUpOrSignin.xml*
+    1. *ProfileEdit.xml*
+    1. *PasswordReset.xml*
 
 A fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` mindegyikhez.
 
@@ -206,11 +206,11 @@ Az [Előfeltételek](#prerequisites)értelmében a Facebook *nem* szükséges eg
        <Item Key="client_id">00000000000000</Item>
    ```
 
-1. Töltse fel a *TrustFrameworkExtensions. XML* fájlt a bérlőbe.
+1. Töltse fel a *TrustFrameworkExtensions.xml* fájlt a bérlőbe.
 1. Az **Egyéni házirendek**területen válassza a **B2C_1A_signup_signin**lehetőséget.
 1. Kattintson a **Futtatás most** lehetőségre, és válassza a Facebook lehetőséget a Facebook használatával való bejelentkezéshez és az egyéni szabályzat teszteléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután próbálkozzon Azure Active Directory (Azure AD) identitás-szolgáltatóként való hozzáadásával. Az első lépéseket ismertető útmutatóban használt alapfájl már tartalmazza a más személyazonossági szolgáltatók (például az Azure AD) hozzáadásához szükséges tartalmakat.
 
