@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: aa11f7e964f66d0a345e25f307127d75838f872f
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 253d2c80f5a6ff96ba9249eddd127abb74f79a33
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718716"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515809"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ A Azure Machine Learning különböző számítási célok esetében eltérő t�
 
 
 > [!NOTE]
-> Azure Machine Learning a számítás állandó erőforrásként hozható létre, vagy dinamikusan hozható létre, amikor futtatást kér. A futtatáson alapuló létrehozás eltávolítja a számítási célt a betanítási Futtatás befejezése után, így nem használhatja fel az így létrehozott számítási célokat.
+> Azure Machine Learning számítási fürtök állandó erőforrásként hozhatók létre, vagy dinamikusan hozhatók létre futtatáskor. A futtatáson alapuló létrehozás eltávolítja a számítási célt a betanítási Futtatás befejezése után, így nem használhatja fel az így létrehozott számítási célokat.
 
 ## <a name="whats-a-run-configuration"></a>Mi az a futtatási konfiguráció?
 
@@ -76,7 +76,8 @@ Míg a ML-folyamatok képesek betanítani a modelleket, a betanítás előtt is 
 Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 
 * [Helyi számítógép](#local)
-* [Azure Machine Learning Compute](#amlcompute)
+* [Számítási fürt Azure Machine Learning](#amlcompute)
+* [Azure Machine Learning számítási példány](#instance)
 * [Távoli virtuális gépek](#vm)
 * [Azure-HDInsight](#hdinsight)
 
@@ -91,9 +92,9 @@ Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
 
-### <a name="azure-machine-learning-compute"></a><a id="amlcompute"></a>Azure Machine Learning Compute
+### <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Számítási fürt Azure Machine Learning
 
-Azure Machine Learning a számítás egy felügyelt számítási infrastruktúra, amely lehetővé teszi, hogy a felhasználó egyszerűen hozzon létre egy vagy több csomópontos számítási módszert. A számítás a munkaterület-régión belül jön létre olyan erőforrásként, amely a munkaterület más felhasználóival is megoszthatók. A számítási feladatok automatikusan méretezhetők, ha egy feladatot elküldenek, és egy Azure-Virtual Network helyezhetők el. A számítás egy tároló környezetbe kerül, és a modell függőségeit egy [Docker-tárolóban](https://www.docker.com/why-docker)csomagolja.
+Azure Machine Learning számítási fürt felügyelt számítási infrastruktúra, amely lehetővé teszi, hogy egyszerűen hozzon létre egy vagy több csomópontos számítási módszert. A számítás a munkaterület-régión belül jön létre olyan erőforrásként, amely a munkaterület más felhasználóival is megoszthatók. A számítási feladatok automatikusan méretezhetők, ha egy feladatot elküldenek, és egy Azure-Virtual Network helyezhetők el. A számítás egy tároló környezetbe kerül, és a modell függőségeit egy [Docker-tárolóban](https://www.docker.com/why-docker)csomagolja.
 
 A betanítási folyamat a felhőben lévő CPU-vagy GPU-alapú számítási csomópontok fürtön keresztüli elosztásához Azure Machine Learning számítást is használhat. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
@@ -125,6 +126,41 @@ Azure Machine Learning a számítások újra felhasználhatók a futtatások kö
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
+
+
+### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning számítási példány
+
+A [Azure Machine learning számítási példány](concept-compute-instance.md) felügyelt számítási infrastruktúra, amely lehetővé teszi egyetlen virtuális gép egyszerű létrehozását. A számítás a munkaterület-régión belül jön létre, de a számítási fürttől eltérően a példányok nem oszthatók meg a munkaterület más felhasználóival. A példány nem méretezhető le automatikusan.  A folyamatos költségek elkerülése érdekében le kell állítania az erőforrást.
+
+Egy számítási példány több feladatot is futtathat párhuzamosan, és feladat-várólistával rendelkezik. 
+
+A számítási példányok biztonságosan futtathatnak feladatokat egy [virtuális hálózati környezetben](how-to-enable-virtual-network.md#compute-instance)anélkül, hogy a vállalatoknak SSH-portokat kellene megnyitnia. A feladatot egy tároló környezetben hajtja végre a rendszer, és a modell függőségeit egy Docker-tárolóban csomagolja. 
+
+1. **Létrehozás és csatolás**: 
+    
+    [! notebook-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb? Name = create_instance)]
+
+1. **Konfigurálás**: futtatási konfiguráció létrehozása.
+    
+    ```python
+    
+    from azureml.core import ScriptRunConfig
+    from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+    
+    src = ScriptRunConfig(source_directory='', script='train.py')
+    
+    # Set compute target to the one created in previous step
+    src.run_config.target = instance
+    
+    # Set environment
+    src.run_config.environment = myenv
+     
+    run = experiment.submit(config=src)
+    ```
+
+A számítási példányhoz hasznos további parancsokat a notebook [Train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)című témakörben talál. Ez a jegyzetfüzet a *Training/Train-on-computeinstance*Studio **Samples** mappában is elérhető.
+
+Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás beküldése](#submit)
 
 
 ### <a name="remote-virtual-machines"></a><a id="vm"></a>Távoli virtuális gépek
@@ -500,7 +536,7 @@ Tekintse meg ezeket a jegyzetfüzeteket a különböző számítási célokból 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Ismerje meg, hogy miként lehet [hatékonyan hangolni a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához.

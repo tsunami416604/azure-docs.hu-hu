@@ -219,6 +219,10 @@
           href: troubleshoot.md
         - name: Gyakori hibák megoldásai
           href: troubleshoot-common-errors.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek

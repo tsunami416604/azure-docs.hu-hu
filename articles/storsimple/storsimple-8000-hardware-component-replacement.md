@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69b6c4e81446cf6a922fe9a1d0da8452e5ec164d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60321732"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513205"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Hardver-összetevő cseréje a StorSimple 8000 Series eszközön
 
@@ -51,12 +51,12 @@ Ismerkedjen meg a jelen oktatóanyagban használt eszközével és biztonsági i
 
 Az összetevők cseréjének megkísérlése előtt vegye figyelembe a következő információkat.
 
-![Figyelmeztető ikon](./media/storsimple-hardware-component-replacement/Warning.png) ![áramütés ikonja](./media/storsimple-hardware-component-replacement/Electric.png) **Figyelmeztetés!**
+![Figyelmeztető ikon ](./media/storsimple-hardware-component-replacement/Warning.png) ![ áramütés ikonja ](./media/storsimple-hardware-component-replacement/Electric.png) **Figyelmeztetés!**
 
 * A StorSimple-eszköz moduljainak és összetevőinek kezelésekor az elektrosztatikus kisülés vagy a antisztatikus matrac használatával megfelelően kihasználhatja magát.
 * Ne érintsen semmilyen áramkört. A megadott fogópontok és útmutatók használata az áramkört esetlegesen fellépő összetevők kezelése során.
 
-![Figyelmeztető ikon](./media/storsimple-hardware-component-replacement/Warning.png) ![](./media/storsimple-hardware-component-replacement/NoticeIcon.png) figyelmeztetési ikonjának megjegyzése **:**
+![Figyelmeztető ikon figyelmeztetési ikonjának megjegyzése ](./media/storsimple-hardware-component-replacement/Warning.png) ![ ](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **:**
 
 Egy modul cseréjekor **Soha ne hagyjon üres öbölben a ház hátsó részén**. Egy helyettesítő vagy üres modul beszerzése a probléma részének eltávolítása előtt.
 
@@ -67,11 +67,11 @@ Az eszköz fő hardveres összetevői az alábbi táblázatokban vannak összefo
 
 | Összetevők | # Jelen | Beépülő modul? | Helyettesítési eljárás |
 |:--- |:--- |:--- |:--- |
-| Váz |1 |Nem |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
-| Elsődleges vezérlők |2 |Igen |[Vezérlő modul cseréje a StorSimple-eszközön](storsimple-8000-controller-replacement.md) |
-| 764W teljesítmény-és hűtési modulok (PCMs) |2 |Igen |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
-| Tartalék akkumulátor |2 |Igen |[A tartalék akkumulátor modul cseréje a StorSimple-eszközön](storsimple-8000-battery-replacement.md) |
-| Lemezmeghajtók |12 |Igen |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
+| Váz |1 |No |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
+| Elsődleges vezérlők |2 |Yes |[Vezérlő modul cseréje a StorSimple-eszközön](storsimple-8000-controller-replacement.md) |
+| 764W teljesítmény-és hűtési modulok (PCMs) |2 |Yes |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
+| Tartalék akkumulátor |2 |Yes |[A tartalék akkumulátor modul cseréje a StorSimple-eszközön](storsimple-8000-battery-replacement.md) |
+| Lemezmeghajtók |12 |Yes |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
 
 **1. táblázat** Az elsődleges házban található hardver-összetevők
 
@@ -79,10 +79,10 @@ Az elsődleges bekerítés és a EBOD ház különbözik az I/O-modulokban. Emel
 
 | Összetevők | # Jelen | Beépülő modul? | Helyettesítési eljárás |
 |:--- |:--- |:--- |:--- |
-| Váz |1 |Nem |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
-| EBOD-vezérlők |2 |Igen |[EBOD-vezérlő cseréje a StorSimple-eszközön](storsimple-8000-ebod-controller-replacement.md) |
-| 580W teljesítmény-és hűtési modulok (PCMs) |2 |Igen |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
-| Lemezmeghajtók |12 |Igen |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
+| Váz |1 |No |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
+| EBOD-vezérlők |2 |Yes |[EBOD-vezérlő cseréje a StorSimple-eszközön](storsimple-8000-ebod-controller-replacement.md) |
+| 580W teljesítmény-és hűtési modulok (PCMs) |2 |Yes |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
+| Lemezmeghajtók |12 |Yes |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
 
 **2. táblázat** A EBOD ház hardveres összetevői
 

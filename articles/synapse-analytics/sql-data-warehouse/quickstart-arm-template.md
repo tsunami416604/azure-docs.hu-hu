@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 766a41b61f32804c7d7f59c946530f8e1a7b869a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 3f84cd92a4c4f96831d39cac783df6710c5ea5f4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296270"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513419"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>Rövid útmutató: Azure szinapszis Analytics SQL-készlet létrehozása ARM-sablonnal
 
-Ez a sablon létrehoz egy Azure szinapszis Analytics SQL-készletet, amelynek transzparens adattitkosítás engedélyezve van. A szinapszis SQL-készlet az Azure Szinapszisban általánosan elérhető vállalati adattárház-funkciókra utal.
+Ez a Azure Resource Manager sablon (ARM-sablon) egy Azure szinapszis Analytics SQL-készletet hoz létre, amelynek transzparens adattitkosítás engedélyezve van. A szinapszis SQL-készlet az Azure Szinapszisban általánosan elérhető vállalati adattárház-funkciókra utal.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -107,8 +107,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure szinapszis Analytics SQL-készletet egy Azure Resource Manager sablonnal, és ellenőrizte az üzemelő példányt. Ha többet szeretne megtudni az Azure Azure szinapszis Analyticsről és Azure Resource Managerról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Azure szinapszis Analytics SQL-készletet egy ARM-sablonnal, és ellenőrizte az üzembe helyezést. Ha többet szeretne megtudni az Azure szinapszis Analyticsről és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 
 - Az [Azure szinapszis Analytics áttekintése](sql-data-warehouse-overview-what-is.md)
 - További információ az [Azure Resource Managerről](../../azure-resource-manager/management/overview.md)
-- [Az első Azure Resource Manager-sablon létrehozása ás üzembe helyezése](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+- [Az első ARM-sablon létrehozása és üzembe helyezése](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

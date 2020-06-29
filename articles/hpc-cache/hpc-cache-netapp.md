@@ -3,15 +3,15 @@ title: Az Azure HPC cache és a Azure NetApp Files használata
 description: Az Azure HPC cache használata a Azure NetApp Filessal tárolt adathozzáférések javítására
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6d4dd69b30acb26d02218fe05a60ace9aa855ddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 374f3106ec42233cd5309c2773b05e3c96bbf98e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194958"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515489"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Az Azure HPC cache használata Azure NetApp Files
 
@@ -80,7 +80,7 @@ Emellett az Azure CLI-vel is megtalálhatja az IP-címeket:
 az netappfiles volume list -g ${RESOURCE_GROUP} --account-name ${ANF_ACCOUNT} --pool-name ${POOL} --query "[].mountTargets[].ipAddress" | grep -Ee '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+' | tr -d '"' | tr -d , | sort | uniq
 ```
 
-A Azure NetApp Files rendszerbeli nevek exportálása egyetlen elérésiút-összetevővel rendelkezik. Ne próbálkozzon olyan tárolási cél létrehozásával, amely a Azure NetApp Files, ``/`` mert az exportálás nem biztosít a fájlokhoz való hozzáférést.
+A Azure NetApp Files rendszerbeli nevek exportálása egyetlen elérésiút-összetevővel rendelkezik. Ne próbálkozzon olyan tárolási cél létrehozásával, amely a ``/`` Azure NetApp Files, mert az exportálás nem biztosít a fájlokhoz való hozzáférést.
 
 Nincsenek különleges korlátozások a virtuális névtér elérési útjaihoz a tárolási célokhoz.
 
@@ -88,7 +88,7 @@ Nincsenek különleges korlátozások a virtuális névtér elérési útjaihoz 
 
 Az ügyfélszámítógépeknek csatlakoztatnia kell a gyorsítótárat a Azure NetApp Files kötetek közvetlen csatlakoztatása helyett. Kövesse az [Azure HPC cache csatlakoztatása](hpc-cache-mount.md)című témakör utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure NetApp Files](../azure-netapp-files/index.yml) beállításáról és használatáról
 * Az Azure HPC cache-rendszer Azure NetApp Files használatára való megtervezéséhez és beállításához [forduljon az ügyfélszolgálathoz](hpc-cache-support-ticket.md).

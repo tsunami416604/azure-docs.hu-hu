@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: ea68fa8d9326e6d9ebb4f475d16ac83959cae6e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416878"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513303"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Adatok másolása az Office 365-ből az Azure-ba Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,10 +40,10 @@ Egyelőre egyetlen másolási tevékenységen belül csak az **Office 365 adatai
 Az Office 365-ből az Azure-ba másolt adatok másolásához a következő előfeltételek szükségesek:
 
 - Az Office 365-bérlői rendszergazdának be kell fejeznie az [itt](https://docs.microsoft.com/graph/data-connect-get-started)leírtak szerint végrehajtandó műveleteket.
-- Azure AD-Webalkalmazás létrehozása és konfigurálása Azure Active Directoryban.  Útmutatásért lásd: [Azure ad-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
+- Azure AD-Webalkalmazás létrehozása és konfigurálása Azure Active Directoryban.  Útmutatásért lásd: [Azure ad-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal).
 - Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához fog használni az Office 365-hoz:
-    - Bérlő azonosítója. Útmutatásért lásd: [bérlői azonosító lekérése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-    - Az alkalmazás azonosítója és az alkalmazás kulcsa.  Útmutatásért lásd az [alkalmazás-azonosító és a hitelesítési kulcs beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)című témakört.
+    - Bérlő azonosítója. Útmutatásért lásd: [bérlői azonosító lekérése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
+    - Az alkalmazás azonosítója és az alkalmazás kulcsa.  Útmutatásért lásd az [alkalmazás-azonosító és a hitelesítési kulcs beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)című témakört.
 - Adja hozzá azt a felhasználói identitást, aki az adatelérési kérelmet az Azure AD-webalkalmazás tulajdonosaként hozza létre (az Azure AD webalkalmazás > beállítások > tulajdonos > tulajdonos hozzáadása). 
     - A felhasználói identitásnak az Office 365 szervezetben kell lennie, és nem lehet vendég felhasználó.
 
@@ -79,12 +79,12 @@ Az Office 365 társított szolgáltatás a következő tulajdonságokat támogat
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **Office 365** | Igen |
-| office365TenantId | Az Azure-bérlő azonosítója, amelyhez az Office 365-fiók tartozik. | Igen |
-| servicePrincipalTenantId | Adja meg a bérlői adatokat, amelyek alatt az Azure AD-webalkalmazás található. | Igen |
-| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
-| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt Integration Runtime.  Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Office 365** | Yes |
+| office365TenantId | Az Azure-bérlő azonosítója, amelyhez az Office 365-fiók tartozik. | Yes |
+| servicePrincipalTenantId | Adja meg a bérlői adatokat, amelyek alatt az Azure AD-webalkalmazás található. | Yes |
+| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Yes |
+| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt Integration Runtime.  Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | No |
 
 >[!NOTE]
 > A **office365TenantId** és a **servicePrincipalTenantId** és a megfelelő érték közötti különbség:
@@ -119,12 +119,12 @@ Az Office 365-ből származó adatok másolásához a következő tulajdonságok
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Office365Table** | Igen |
-| tableName | Az Office 365-ből kinyerni kívánt adatkészlet neve. [Itt](https://docs.microsoft.com/graph/data-connect-datasets#datasets) tekintheti meg a kinyeréshez elérhető Office 365-adatkészletek listáját. | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Office365Table** | Yes |
+| tableName | Az Office 365-ből kinyerni kívánt adatkészlet neve. [Itt](https://docs.microsoft.com/graph/data-connect-datasets#datasets) tekintheti meg a kinyeréshez elérhető Office 365-adatkészletek listáját. | Yes |
 
-Ha a, a `dateFilterColumn`, `startTime`és `endTime` `userScopeFilterUri` az adatkészletben beállítást választotta, akkor továbbra is támogatott, míg az új modellt a tevékenység forrásaként fogja használni.
+Ha a, a `dateFilterColumn` , `startTime` `endTime` és `userScopeFilterUri` az adatkészletben beállítást választotta, akkor továbbra is támogatott, míg az új modellt a tevékenység forrásaként fogja használni.
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -153,13 +153,13 @@ Az Office 365-ből származó adatok másolásához a másolási tevékenység *
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **Office365Source** | Igen |
-| allowedGroups | Csoport kiválasztási predikátuma  Ezzel a tulajdonsággal legfeljebb 10 olyan felhasználói csoportot választhat ki, amelyekhez az adott adatlekérdezést kéri.  Ha nincsenek megadva csoportok, akkor a rendszer az összes szervezetre vonatkozó adatvisszaadás után visszaadja az értékeket. | Nem |
-| userScopeFilterUri | Ha `allowedGroups` a tulajdonság nincs megadva, a teljes bérlőn alkalmazott predikátum kifejezés használatával szűrheti az Office 365-ből kinyerni kívánt sorokat. A predikátum formátumának meg kell egyeznie Microsoft Graph API-k lekérdezési `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`formátumával, például:. | Nem |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **Office365Source** | Yes |
+| allowedGroups | Csoport kiválasztási predikátuma  Ezzel a tulajdonsággal legfeljebb 10 olyan felhasználói csoportot választhat ki, amelyekhez az adott adatlekérdezést kéri.  Ha nincsenek megadva csoportok, akkor a rendszer az összes szervezetre vonatkozó adatvisszaadás után visszaadja az értékeket. | No |
+| userScopeFilterUri | Ha a `allowedGroups` tulajdonság nincs megadva, a teljes bérlőn alkalmazott predikátum kifejezés használatával szűrheti az Office 365-ből kinyerni kívánt sorokat. A predikátum formátumának meg kell egyeznie Microsoft Graph API-k lekérdezési formátumával, például `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'` :. | No |
 | dateFilterColumn | A DateTime szűrő oszlop neve. Ezzel a tulajdonsággal korlátozhatja azt az időtartományt, amelyre az Office 365-adatkivonatot ki kell olvasni. | Igen, ha az adatkészlet egy vagy több DateTime oszloppal rendelkezik. [Itt](https://docs.microsoft.com/graph/data-connect-filtering#filtering) tekintse meg a DateTime típusú szűrőt igénylő adatkészletek listáját. |
-| startTime | A szűréshez kezdjen el DateTime értéket. | Igen, `dateFilterColumn` ha meg van adva |
-| endTime | A szűréshez záró DateTime érték. | Igen, `dateFilterColumn` ha meg van adva |
-| outputColumns | A fogadóba másolandó oszlopok tömbje. | Nem |
+| startTime | A szűréshez kezdjen el DateTime értéket. | Igen, ha meg `dateFilterColumn` van adva |
+| endTime | A szűréshez záró DateTime érték. | Igen, ha meg `dateFilterColumn` van adva |
+| outputColumns | A fogadóba másolandó oszlopok tömbje. | No |
 
 **Például**
 

@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan hozhat létre importálási és exportálási f
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 570c663861361a19190f6fb5d608b6aa029a0885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282494"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514215"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure import/export szolgáltatás használata az Azure-ba való adatimportálásra Blob Storage
 
@@ -33,11 +33,11 @@ A következőket kell tennie:
 * Engedélyezze a BitLockert a Windows rendszeren. Lásd: [a BitLocker engedélyezése](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 * [Töltse le a legújabb WAImportExport 1-es verzióját](https://www.microsoft.com/download/details.aspx?id=42659) a Windows rendszerre. Az eszköz legújabb verziója olyan biztonsági frissítésekkel rendelkezik, amelyek lehetővé teszik a BitLocker-kulcs külső oltalmazójának és a frissített feloldási mód funkciójának használatát.
 
-  * Bontsa ki az alapértelmezett `waimportexportv1`mappát. Például: `C:\WaImportExportV1`.
-* Van egy FedEx/DHL-fiókja. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, lépjen kapcsolatba Azure Data Box Operations `adbops@microsoft.com`csapatával a következő címen:.  
+  * Bontsa ki az alapértelmezett mappát `waimportexportv1` . Például: `C:\WaImportExportV1`.
+* Van egy FedEx/DHL-fiókja. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, lépjen kapcsolatba Azure Data Box Operations csapatával a következő címen: `adbops@microsoft.com` .  
   * A fióknak érvényesnek kell lennie, egyensúlyt kell tartalmaznia, és vissza kell adni a szállítási képességeket.
   * Nyomkövetési szám létrehozása az exportálási feladatokhoz.
-  * Minden feladattípusnak külön nyomkövetési számmal kell rendelkeznie. Nem támogatott több feladat ugyanazzal a követési számmal.
+  * Minden feladatnak külön nyomkövetési számmal kell rendelkeznie. Nem támogatott, hogy több feladatnak is ugyanaz legyen a nyomkövetési száma.
   * Ha nem rendelkezik Carrier-fiókkal, lépjen a következőre:
     * [Hozzon létre egy FedEx-fiókot](https://www.fedex.com/en-us/create-account.html), vagy
     * [Hozzon létre egy DHL-fiókot](http://www.dhl-usa.com/en/express/shipping/open_account.html).
@@ -73,21 +73,21 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
 
-    A rendszer ugyanabban a mappában hozza létre a naplófájlt, ahol az eszközt futtatta. Két másik fájl is létrejön – egy *. XML* fájl (az eszközt futtató mappa) és egy *Drive-manifest. XML* fájl (a mappa, ahol az adat található).
+    A rendszer ugyanabban a mappában hozza létre a naplófájlt, ahol az eszközt futtatta. Két másik fájl is létrejön – egy *. XML* fájl (az eszköz futtatására szolgáló mappa) és egy *drive-manifest.xml* fájl (a mappa, ahol az adat található).
 
     A használt paramétereket a következő táblázat ismerteti:
 
-    |Beállítás  |Leírás  |
+    |Beállítás  |Description  |
     |---------|---------|
     |/j     |A naplófájl neve, a. jrn kiterjesztéssel. Egy naplófájl jön létre egy meghajtón. Javasoljuk, hogy a lemez sorozatszámát használja a naplófájl neveként.         |
     |/ID     |A munkamenet-azonosító. A parancs minden példányához használjon egyedi munkamenet-számot.      |
-    |/t:     |A szállítandó lemez meghajtóbetűjele. Például: meghajtó `D`.         |
+    |/t:     |A szállítandó lemez meghajtóbetűjele. Például: meghajtó `D` .         |
     |BK     |A meghajtó BitLocker-kulcsa. A numerikus jelszava a kimenetből`manage-bde -protectors -get D:`      |
-    |/srcdir:     |A szállítandó lemez meghajtóbetűjele, majd a `:\`. Például: `D:\`.         |
+    |/srcdir:     |A szállítandó lemez meghajtóbetűjele, majd a `:\` . Például: `D:\`.         |
     |/dstdir:     |A cél tároló neve az Azure Storage-ban.         |
-    |/blobtype:     |Ezzel a beállítással adható meg, hogy milyen típusú blobokat kíván importálni az alkalmazásba. A blokk Blobok esetében ez `BlockBlob` a és a Blobok esetében is `PageBlob`.         |
+    |/blobtype:     |Ezzel a beállítással adható meg, hogy milyen típusú blobokat kíván importálni az alkalmazásba. A blokk Blobok esetében ez a `BlockBlob` és a Blobok esetében is `PageBlob` .         |
     |/skipwrite:     |Ez a beállítás azt határozza meg, hogy nincs szükség új adatmásolásra és a lemezen lévő meglévő adatfeldolgozásra.          |
-    |/enablecontentmd5:     |Ha a beállítás engedélyezve van, biztosítja, hogy az MD5 kiszámítva `Content-md5` legyen, és az egyes Blobok tulajdonságként legyen beállítva. Ezt a lehetőséget csak akkor használja, ha a `Content-md5` mezőt az Azure-ba való feltöltés után szeretné használni. <br> Ez a beállítás nincs hatással az adatintegritás-ellenőrzésre (alapértelmezés szerint ez történik). A beállítással megnövelhető az adatok felhőbe való feltöltéséhez szükséges idő.          |
+    |/enablecontentmd5:     |Ha a beállítás engedélyezve van, biztosítja, hogy az MD5 kiszámítva legyen, és az `Content-md5` egyes Blobok tulajdonságként legyen beállítva. Ezt a lehetőséget csak akkor használja, ha a `Content-md5` mezőt az Azure-ba való feltöltés után szeretné használni. <br> Ez a beállítás nincs hatással az adatintegritás-ellenőrzésre (alapértelmezés szerint ez történik). A beállítással megnövelhető az adatok felhőbe való feltöltéséhez szükséges idő.          |
 8. Ismételje meg az előző lépést minden egyes leszállításra szoruló lemez esetében. A rendszer a megadott névvel rendelkező naplófájlt hoz létre a parancssor minden futtatásához.
 
     > [!IMPORTANT]
@@ -97,7 +97,7 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 
 Az alábbi lépések végrehajtásával hozzon létre egy importálási feladatot a Azure Portal.
 
-1. Jelentkezzen be https://portal.azure.com/a következőre:.
+1. Jelentkezzen be a következőre: https://portal.azure.com/ .
 2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**.
 
     ![Ugrás az importálási/exportálási feladatokra](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
@@ -127,7 +127,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
 6. **Visszaszállítási adatok**:
 
-   * Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával `adbops@microsoft.com` a használni kívánt szolgáltatóra vonatkozó információkkal.
+   * Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com` használni kívánt szolgáltatóra vonatkozó információkkal.
    * Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az importálási feladatok befejezését követően. Ha nem rendelkezik fiókkal, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Carrier-fiókot.
    * Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, utcanév-címet, várost, irányítószámot, államot/régiót és országot/régiót.
 
@@ -159,7 +159,7 @@ Hagyja ki ezt a lépést, és folytassa a következő lépéssel, ha a Microsoft
 
 A feladatot nyomon követheti befejezésre. A feladatok befejezése után ellenőrizze, hogy az adatok fel lettek-e töltve az Azure-ba. Csak a feltöltés sikeres ellenőrzése után törölje a helyszíni adatok törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 * [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

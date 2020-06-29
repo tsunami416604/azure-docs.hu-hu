@@ -3,15 +3,15 @@ title: Tároló hozzáadása egy Azure HPC-gyorsítótárhoz
 description: Tárolási célok meghatározása úgy, hogy az Azure HPC-gyorsítótára használhassa a helyszíni NFS-rendszert vagy az Azure Blob-tárolókat a hosszú távú fájlok tárolásához
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: 442c9897c5f02e9ed9cbcda96b6a540b9201f428
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 4c3ef79806d29b188eb2738919bf912cfedc8ef1
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434120"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513871"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -153,9 +153,9 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 
 | Használati modell | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
 | ---- | ---- | ---- | ---- |
-| Súlyos, ritka írások olvasása | Olvasás | Soha | Nincs |
+| Súlyos, ritka írások olvasása | Olvasás | Soha | None |
 | 15%-nál nagyobb írások | Olvasás/írás | Soha | 1 óra |
-| Az ügyfelek megkerülik a gyorsítótárat | Olvasás | 30 másodperc | Nincs |
+| Az ügyfelek megkerülik a gyorsítótárat | Olvasás | 30 másodperc | None |
 
 ## <a name="next-steps"></a>Következő lépések
 

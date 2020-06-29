@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 1755d6808183887ca428f227272c3923d4bae21f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 3195fd9e367caed352cb4f9881573740399851e4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213846"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513557"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -38,8 +38,8 @@ Tekintse át a következő erőforrásokat, amikor előkészíti az Azure-alkalm
 
 * Gyorsútmutatók:
 
-    * [Azure-gyorssablonok](https://azure.microsoft.com/documentation/templates/)
-    * [GitHub Azure gyorsindítási sablonok](https://github.com/azure/azure-quickstart-templates)
+    * [Azure Gyorsindítás sablonok](https://azure.microsoft.com/documentation/templates/)
+    * [Azure-sablonok – ajánlott eljárások útmutatója](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Alkalmazásdefiníció közzététele](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
@@ -195,7 +195,7 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 3. Hasznos hivatkozások
 4. Képernyőképek
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Name (Név)
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -426,10 +426,14 @@ Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vag
 
 Válassza **ezt a csomagot** , hogy a terv magánjellegű legyen, és csak az Ön által választott korlátozott közönség számára legyen látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy dönthet úgy, hogy a tervet mindenki számára elérhetővé teszi. Ha a csomagot mindenki számára láthatóvá teszi, mindenki számára láthatóvá kell maradnia. nem konfigurálható újra privát csomagként.
 
+>[!Note]
+>A privát vagy a korlátozott célközönség nem azonos az **Előnézet lapon megadott** előnézeti célközönséggel. Az előnézeti közönség hozzáférhet az ajánlathoz a piactéren közzétett élő állapot _előtt_ . Míg a privát célközönség választása csak egy adott csomagra vonatkozik, az előzetes verzió célközönsége az összes csomagot (magán vagy nem) megtekintheti érvényesítési célból.
+
 Ha a csomag magánjellegű, adjon meg egy **Azure-előfizetési azonosítót** és annak leírását. Minden olyan célközönség, amely hozzáfér ehhez a privát csomaghoz. A hozzáférés az Azure-előfizetési azonosítók használatával van hozzárendelve, hogy tartalmazza az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását. Egy CSV-fájl importálásával akár 10 ügyfél-előfizetési azonosítót is hozzáadhat egyenként vagy 20 000. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és a betűknek kisbetűsnek kell lenniük.
 
 >[!Note]
->A privát vagy a korlátozott célközönség nem azonos az **Előnézet lapon megadott** előnézeti célközönséggel. Az előnézeti közönség hozzáférhet az ajánlathoz a piactéren közzétett élő állapot _előtt_ . Míg a privát célközönség választása csak egy adott csomagra vonatkozik, az előzetes verzió célközönsége az összes csomagot (magán vagy nem) megtekintheti érvényesítési célból.
+>A privát ajánlatok nem támogatottak a Cloud Solution Provider program (CSP) viszonteladóján keresztül létesített Azure-előfizetések esetében.
+
 
 ### <a name="technical-configuration"></a>Technikai konfiguráció 
 

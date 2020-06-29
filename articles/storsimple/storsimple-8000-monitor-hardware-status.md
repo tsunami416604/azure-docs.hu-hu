@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6eb983eb5e36c5f3ac6b6eca049239d12bc01a0f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711697"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514618"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>A StorSimple Eszközkezelő szolgáltatás használata a hardver összetevőinek és állapotának figyeléséhez
 
@@ -79,7 +79,7 @@ A következő lépések végrehajtásával tekintheti meg egy eszköz összetev�
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple-eszköz elsődleges bekerítéséhez tartozó összetevők listája
 Az alábbi táblázat az elsődleges házban található fizikai és logikai összetevőket ismerteti (a helyszíni StorSimple-eszköz 8100-es és 8600-es verziójában egyaránt).
 
-| Összetevő | Modul | Típus | Hely | Mezőre cserélhető egység (cserélhető)? | Leírás |
+| Összetevő | Modul | Típus | Hely | Mezőre cserélhető egység (cserélhető)? | Description |
 | --- | --- | --- | --- | --- | --- |
 | Meghajtó a tárolóhelyen [0-11] |Lemezmeghajtók |Fizikai |Megosztott |Yes |Az egyes SSD-k vagy az elsődleges házban található HDD meghajtók esetében egy sor jelenik meg. |
 | Környezeti hőmérséklet érzékelője |Ház |Fizikai |Megosztott |No |Az alvázon belüli hőmérsékletet méri. |
@@ -120,7 +120,7 @@ Az alábbi táblázat az elsődleges házban található fizikai és logikai ös
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>A StorSimple-eszköz EBOD bekerítéséhez tartozó összetevők listája
 Az alábbi táblázat az EBOD-házban található fizikai és logikai összetevőket ismerteti (csak a 8600 modellben jelennek meg) a helyszíni StorSimple-eszközön.
 
-| Összetevő | Modul | Típus | Hely | FRU? | Leírás |
+| Összetevő | Modul | Típus | Hely | FRU? | Description |
 | --- | --- | --- | --- | --- | --- |
 | Meghajtó a tárolóhelyen [0-11] |Lemezmeghajtók |Fizikai |Megosztott |Yes |Az EBOD-ház elején található HDD-meghajtókon egy sor jelenik meg. |
 | Környezeti hőmérséklet érzékelője |Ház |Fizikai |Megosztott |No |Az alvázon belüli hőmérsékletet méri. |
@@ -143,7 +143,7 @@ Az alábbi táblázat az EBOD-házban található fizikai és logikai összetev�
 | Az elektronikai diagnosztika bekerítése |I/O |Fizikai |Tartományvezérlő |No |A vezérlő által biztosított diagnosztikai alrendszerek állapotát jelzi. |
 | Kapcsolódás az eszköz-vezérlőhöz |I/O |Fizikai |Tartományvezérlő |No |Az EBOD I/O-modul és az eszköz vezérlője közötti kapcsolat állapotát jelzi. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ha a StorSimple Eszközkezelő szolgáltatást szeretné használni az eszköz felügyeletéhez, folytassa [a StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatását](storsimple-8000-manager-service-administration.md).
 * Ha egy csökkentett teljesítményű vagy sikertelen állapotú eszköz-összetevőt kell elhárítani, tekintse meg a [StorSimple figyelési mutatóit](storsimple-monitoring-indicators.md).
 * A meghibásodott hardver-összetevők lecserélését lásd: [StorSimple hardveres összetevők cseréje](storsimple-hardware-component-replacement.md).

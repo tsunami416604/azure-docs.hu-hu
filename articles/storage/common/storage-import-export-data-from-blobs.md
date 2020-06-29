@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan hozhat létre exportálási feladatokat Azure P
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8605fb3c43e625d86fd4d4008ddc49b0e29c8d44
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509474"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513497"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
 
@@ -155,7 +155,7 @@ Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szü
 
     A paramétereket a következő táblázat ismerteti:
 
-    |Parancssori paraméter|Leírás|  
+    |Parancssori paraméter|Description|  
     |--------------------------|-----------------|  
     |**/logdir:**|Választható. A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva, a rendszer az aktuális könyvtárat használja a napló könyvtáraként.|  
     |**SN**|Kötelező. Az exportálási feladatokhoz tartozó Storage-fiók neve.|  
@@ -209,15 +209,15 @@ Number of drives needed:        3
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Leírás |
+   | Szelektor | BLOB elérési útja | Description |
    | --- | --- | --- |
    | Kezdete |/ |A Storage-fiókban lévő összes blob exportálása |
    | Kezdete |/$root/ |A gyökér tárolóban lévő összes blob exportálása |
    | Kezdete |/book |Minden blob exportálása minden olyan tárolóban, **amely előtaggal** kezdődik |
    | Kezdete |zene |A **tárolóban** lévő összes blob exportálása |
    | Kezdete |/music/love |Az összes olyan blob exportálása **a tárolóba, amely** a **Love** előtaggal kezdődik |
-   | Egyenlő |$root/logo.bmp |BLOB **logo. bmp** exportálása a gyökér-tárolóban |
-   | Egyenlő |videók/Story. MP4 |BLOB **Story. mp4** exportálása a Container **videosban** |
+   | Egyenlő |$root/logo.bmp |A blob **logo.bmp** exportálása a gyökér tárolóba |
+   | Egyenlő |videók/story.mp4 |BLOB- **story.mp4** exportálása a tároló- **videókban** |
 
 ## <a name="next-steps"></a>Következő lépések
 

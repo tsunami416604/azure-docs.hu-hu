@@ -3,15 +3,15 @@ title: Szolgáltatások közötti hitelesítés – Data Lake Storage Gen1 – A
 description: Ismerje meg, hogyan valósítható meg a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 Azure Active Directory használatával.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688185"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515148"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ Az előző hivatkozás utasításait követve válassza ki a webalkalmazás **/A
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>2. lépés: az alkalmazás-azonosító, a hitelesítési kulcs és a bérlő AZONOSÍTÓjának beolvasása
 Ha programozott módon jelentkezik be, szüksége lesz az alkalmazás AZONOSÍTÓJÁRA. Ha az alkalmazás a saját hitelesítő adatai alatt fut, akkor is szüksége lesz egy hitelesítési kulcsra.
 
-* Az alkalmazás AZONOSÍTÓjának és hitelesítési kulcsának (más néven az ügyfél titkos kulcsa) beolvasására vonatkozó utasításokért lásd az [alkalmazás-azonosító és a hitelesítési kulcs beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)című témakört.
+* Az alkalmazás AZONOSÍTÓjának és hitelesítési kulcsának (más néven az ügyfél titkos kulcsa) beolvasására vonatkozó utasításokért lásd az [alkalmazás-azonosító és a hitelesítési kulcs beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)című témakört.
 
-* A bérlői azonosító lekérésével kapcsolatos utasításokért lásd: [bérlő azonosítójának](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)beolvasása.
+* A bérlői azonosító lekérésével kapcsolatos utasításokért lásd: [bérlő azonosítójának](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)beolvasása.
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>3. lépés: az Azure AD-alkalmazás kiosztása a Azure Data Lake Storage Gen1 fiók fájljához vagy mappájához
 
@@ -94,7 +94,7 @@ Ha programozott módon jelentkezik be, szüksége lesz az alkalmazás AZONOSÍT�
 
     ![OAuth jogkivonat-végpont](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth jogkivonat-végpont")   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben egy Azure AD-webalkalmazást hozott létre, és összegyűjtötte a szükséges információkat a .NET SDK, a Java, a Python, a REST API stb. használatával létrehozott ügyfélalkalmazások számára. A következő cikkekkel megtudhatja, hogyan használhatja az Azure AD natív alkalmazást az első hitelesítéshez Data Lake Storage Gen1, majd más műveleteket hajthat végre az áruházban.
 
 * [Szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-service-to-service-authenticate-java.md)

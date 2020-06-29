@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52f90f3ce6d6cd53fcf17f7c735dafe5411303c4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371273"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514510"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Nem interaktív hitelesítéssel rendelkező .NET HDInsight-alkalmazás létrehozása
 
@@ -21,9 +21,9 @@ Futtassa a Microsoft .NET Azure HDInsight alkalmazást az alkalmazás saját ide
 
 A nem interaktív .NET-alkalmazásból a következőkre lesz szüksége:
 
-* Az Azure-előfizetés bérlői azonosítója (más néven *címtár-azonosító*). Lásd: [bérlői azonosító lekérése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* Az Azure Active Directory (Azure AD) alkalmazás ügyfél-azonosítója. Lásd: [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) és [alkalmazás-azonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* Az Azure AD-alkalmazás titkos kulcsa. Lásd: [alkalmazás hitelesítési kulcsának beolvasása](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Az Azure-előfizetés bérlői azonosítója (más néven *címtár-azonosító*). Lásd: [bérlői azonosító lekérése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
+* Az Azure Active Directory (Azure AD) alkalmazás ügyfél-azonosítója. Lásd: [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) és [alkalmazás-azonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
+* Az Azure AD-alkalmazás titkos kulcsa. Lásd: [alkalmazás hitelesítési kulcsának beolvasása](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -119,7 +119,7 @@ Rendeljen hozzá egy [szerepkört](../role-based-access-control/built-in-roles.m
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hozzon létre egy Azure Active Directory alkalmazást és szolgáltatásnevet a Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 * Megtudhatja, hogyan [hitelesítheti az egyszerű szolgáltatásokat Azure Resource Managerokkal](../active-directory/develop/howto-authenticate-service-principal-powershell.md).

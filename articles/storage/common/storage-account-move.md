@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.subservice: common
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 64d987ff01e596eefa98e8086788546c465e2d83
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195393"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515010"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure Storage-fiók áthelyezése másik régióba
 
@@ -113,9 +113,9 @@ A sablon üzembe helyezése Azure Portal használatával:
 
 5. Válassza a **Saját sablon készítése a szerkesztőben** lehetőséget.
 
-6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött **template. JSON** fájl betöltéséhez.
+6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött fájl **template.js** betöltéséhez.
 
-7. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be értékre `mytargetaccount` .
+7. A fájl **template.js** a Storage-fiók nevének alapértelmezett értékének megadásával nevezze el a cél Storage-fiókot. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be értékre `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -143,7 +143,7 @@ A sablon üzembe helyezése Azure Portal használatával:
 
 A sablon üzembe helyezése a PowerShell használatával:
 
-1. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be értékre `mytargetaccount` .
+1. A fájl **template.js** a Storage-fiók nevének alapértelmezett értékének megadásával nevezze el a cél Storage-fiókot. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be értékre `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ A sablon üzembe helyezése a PowerShell használatával:
     },
     ``` 
 
-2. Szerkessze a **Location (hely** ) tulajdonságot a **template. JSON** fájlban a célként megadott régióban. Ebben a példában a célként megadott régiót állítja be `eastus` .
+2. Szerkessze a **Location (hely** ) tulajdonságot a fájl **template.jsjában** a célként megadott régióban. Ebben a példában a célként megadott régiót állítja be `eastus` .
 
     ```json
     "resources": [{
@@ -182,7 +182,7 @@ A sablon üzembe helyezésével hozzon létre egy új Storage-fiókot a célkén
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Mentse a **template. JSON** fájlt.
+1. Mentse a **template.js** fájlt.
 
 2. Adja meg vagy válassza ki a tulajdonságértékek értékét:
 
@@ -219,7 +219,7 @@ Néhány funkció nem exportál sablonba, ezért hozzá kell adnia őket az új 
 
 A következő táblázat felsorolja ezeket a funkciókat, valamint útmutatást nyújt azok hozzáadásához az új Storage-fiókhoz.
 
-| Szolgáltatás    | Útmutatás    |
+| Szolgáltatás    | Útmutató    |
 |--------|-----------|
 | **Életciklus-kezelési szabályzatok** | [Az Azure Blob Storage-életciklus felügyelete](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statikus webhelyek** | [Statikus webhely üzemeltetése az Azure Storage-ban](../blobs/storage-blob-static-website-how-to.md) |
@@ -268,7 +268,7 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Storage-fiókot helyezett át egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 958244a5-f9f5-455e-b7ef-71a65558872e
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "62123805"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515434"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömb felügyeletéhez
 ![folyamat beállítása folyamatban](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -42,7 +42,7 @@ A cikk elolvasása után a következőket fogja tudni:
 A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut, és több StorSimple virtuális tömbhöz csatlakozik. Az eszközök kezeléséhez egy böngészőben futó központi Microsoft Azure Portal fog használni. A StorSimple Eszközkezelő szolgáltatáshoz való kapcsolódáshoz tegye a következőket.
 
 #### <a name="to-connect-to-the-service"></a>Kapcsolódás a szolgáltatáshoz
-1. Ugrás a [https://ms.portal.azure.com](https://ms.portal.azure.com)következőre:.
+1. Ugrás a következőre: [https://ms.portal.azure.com](https://ms.portal.azure.com) .
 2. A Microsoft-fiók hitelesítő adataival jelentkezzen be a Microsoft Azure Portalba (a panel jobb felső sarkában található).
 3. Navigáljon a Tallózás gombra – > "filter" a StorSimple-Eszközkezelőben az összes Eszközkezelő egy adott előfizetésben való megtekintéséhez.
 
@@ -76,6 +76,6 @@ Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a 
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A webes felhasználói felületről és annak használatáról a [StorSimple webes felhasználói felületének használata a StorSimple virtuális tömb felügyeletéhez](storsimple-ova-web-ui-admin.md)című témakörben olvashat bővebben.
 

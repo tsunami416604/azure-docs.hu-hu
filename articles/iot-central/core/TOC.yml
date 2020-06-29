@@ -151,6 +151,10 @@
               href: howto-manage-preferences.md
             - name: Élő csevegés ki-/bekapcsolása
               href: howto-show-hide-chat.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek

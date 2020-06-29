@@ -3,16 +3,16 @@ title: Azure File Sync hálózatkezelési megfontolások | Microsoft Docs
 description: A Azure File Sync hálózati beállításainak áttekintése.
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95fb967fa33a581096df65c3ed77e575aa3f6268
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466747"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512566"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync hálózati megfontolások
 Az Azure-fájlmegosztás két módon is kapcsolódhat:
@@ -48,7 +48,7 @@ Biztonsági okokból elkülönítheti a fájlkiszolgálók a legtöbb internetes
 
 A Azure File Sync a következő szolgáltatások IP-címtartományok használatát igényli a szolgáltatásuk címkéi alapján azonosítva:
 
-| Szolgáltatás | Description | Szolgáltatáscímke |
+| Szolgáltatás | Leírás | Szolgáltatáscímke |
 |---------|-------------|-------------|
 | Azure File Sync | A tárolási szinkronizálási szolgáltatás objektuma által jelzett Azure File Sync szolgáltatás felelős az Azure-fájlmegosztás és a Windows-fájlkiszolgáló közötti adatszinkronizálás fő tevékenységének. | `StorageSyncService` |
 | Azure Files | Az Azure File Syncon keresztül szinkronizált összes adatot az Azure-fájlmegosztás tárolja. A Windows-fájlkiszolgálók módosításait a rendszer replikálja az Azure-fájlmegosztás számára, és a helyszíni fájlkiszolgálón lévő fájlok zökkenőmentesen letöltődnek, amikor egy felhasználó kéri őket. | `Storage` |

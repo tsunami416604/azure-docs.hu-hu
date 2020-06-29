@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: dsindona
-ms.openlocfilehash: ee3ab7be4d15b13a3c0bb014a3ca4d4096299b4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4f21539979b54d9aba8dcc0e950b2d3f8bf2ea0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280388"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515428"
 ---
 <a name="private-skus-and-plans"></a>Privát SKU-i és csomagok
 ============
@@ -98,11 +98,11 @@ Ha az API-t használja, és nem szeretne CSV-fájlt fenntartani, a célközöns�
 
 ###  <a name="managing-subscriptions-with-the-api"></a>Előfizetések kezelése az API-val
 
-Az API-val feltölthet egy CSV-fájlt, vagy közvetlenül is kezelheti a célközönségét (CSV használata nélkül). Általánosságban elmondható, hogy egyszerűen le kell kérnie az ajánlatot `restrictedAudience` , frissítenie kell az objektumot, majd ezeket a módosításokat vissza kell küldenie az ajánlatba, hogy hozzá lehessen adni vagy el lehessen távolítani a célközönség tagjait.
+Az API-val feltölthet egy CSV-fájlt, vagy közvetlenül is kezelheti a célközönségét (CSV használata nélkül). Általánosságban elmondható, hogy egyszerűen le kell kérnie az ajánlatot, frissítenie kell az `restrictedAudience` objektumot, majd ezeket a módosításokat vissza kell küldenie az ajánlatba, hogy hozzá lehessen adni vagy el lehessen távolítani a célközönség tagjait.
 
 A célközönségek listájának programozott frissítése a következőképpen történik:
 
-1. [Ajánlati adatai lekérése](cloud-partner-portal-api-retrieve-specific-offer.md) :
+1. [Ajánlati adatai lekérése](../cloud-partner-portal-api-retrieve-specific-offer.md) :
 
     ```
     GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
@@ -126,7 +126,7 @@ A célközönségek listájának programozott frissítése a következőképpen 
 
     Minden korlátozott célközönség objektum esetében:
 
-    a. Töltse le a tartalmát `restrictedAudience.uploadedCsvUri`. A tartalom egyszerűen egy fejléceket tartalmazó CSV-fájl. Például:
+    a. Töltse le a tartalmát `restrictedAudience.uploadedCsvUri` . A tartalom egyszerűen egy fejléceket tartalmazó CSV-fájl. Példa:
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
@@ -156,9 +156,9 @@ A célközönségek listájának programozott frissítése a következőképpen 
         ]}
     ```
 
-    a. Minden korlátozott célközönség objektum esetében szükség szerint adjon hozzá vagy töröljön bejegyzéseket `restrictedAudience.manualEntries` a listában.
+    a. Minden korlátozott célközönség objektum esetében szükség szerint adjon hozzá vagy töröljön bejegyzéseket a `restrictedAudience.manualEntries` listában.
 
-4. Ha befejezte a privát ajánlat egyes SKU- *restrictedAudience* összes objektumának frissítését, [frissítse az ajánlatot](cloud-partner-portal-api-creating-offer.md):
+4. Ha befejezte a privát ajánlat egyes SKU- *restrictedAudience* összes objektumának frissítését, [frissítse az ajánlatot](../cloud-partner-portal-api-creating-offer.md):
 
     ```
     PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31

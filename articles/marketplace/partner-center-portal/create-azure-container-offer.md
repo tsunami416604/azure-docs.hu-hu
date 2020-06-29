@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: cd0c8961cff15385249222986e5fb90ee75e3559
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: f7f0a466f288031474b100f42c9ba41aafb9ff9a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887326"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515545"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
 
@@ -48,7 +48,7 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 Az **ajánlat áttekintése** oldalon láthatók az ajánlat közzétételéhez szükséges lépések (a befejezett és a közelgő), valamint az egyes lépések befejezésének időtartamát.
 
-Ezen az oldalon különböző hivatkozások jelennek meg az ajánlat aktuális állapota alapján. Például:
+Ezen az oldalon különböző hivatkozások jelennek meg az ajánlat aktuális állapota alapján. Példa:
 
 - Ha az ajánlat Piszkozat- [törlési ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -144,7 +144,7 @@ Az ajánlat rövid leírása. Ez akár 100 karakter hosszú lehet, és a piacté
 
 Az ajánlat részletesebb leírása. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -238,9 +238,6 @@ Adja meg az előnézeti célközönséget az Azure-előfizetési azonosító GUI
 > Az Azure-előfizetési azonosítót a Azure Portal előfizetések oldalán találja.
 
 Adjon hozzá legalább egy Azure-előfizetési azonosítót egyenként (legfeljebb 10) vagy egy CSV-fájl feltöltésével (legfeljebb 100). Az előfizetés-azonosítók hozzáadásával meghatározhatja, hogy ki tekintheti meg az ajánlatot az élő közzététel előtt. Ha az ajánlat már aktív, kiválaszthatja az előnézeti közönséget az ajánlat változásainak és frissítéseinek teszteléséhez.
-
-> [!NOTE]
-> Az előzetes verzió célközönsége különbözik a privát közönségtől. Az **előzetes** verzió célközönsége megtekintheti és megerősítheti az összes ajánlati csomagot, mielőtt azok elérhetővé válnak a piactéren, beleértve azokat is, amelyeket csak a **privát** célközönség számára tesznek közzé (a rendelkezésre állás lapon állítható be).
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
@@ -396,7 +393,7 @@ Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**l
 
 Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz.
 
-Ha közzé szeretné tenni az ajánlatát a nyilvános (vagy privát ajánlat, privát közönség) számára, lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
+Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
 
 ## <a name="next-step"></a>Következő lépés
 

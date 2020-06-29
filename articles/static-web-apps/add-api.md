@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 7101d23d4611f4eea9b5a9e2a7f3ba417c9fcb1a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: e3cb45ee2cfa299a482391d59359b40baea0feb5
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476121"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517337"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>API hozzáadása az Azure statikus Web Apps előzetes verziójához Azure Functions
 
@@ -156,7 +156,7 @@ A Visual Studio Code integrálva van [Azure functions Core Tools](https://docs.m
 
 ### <a name="call-the-api-from-the-application"></a>Az API meghívása az alkalmazásból
 
-Az Azure-ba való üzembe helyezéskor az API-ra irányuló kérelmek automatikusan átkerülnek a functions alkalmazásba az útvonalra küldött kérésekhez `api` . A helyileg végzett munka során az Alkalmazásbeállítások a helyi API-ra történő proxy-kérelmekre vannak konfigurálva.
+Az Azure-ba való üzembe helyezéskor az API-ra irányuló kérelmek automatikusan átkerülnek a functions alkalmazásba az útvonalra küldött kérésekhez `api` . Helyi munkavégzés esetén az Alkalmazásbeállítások konfigurálását a helyi API-ra kell konfigurálnia.
 
 [!INCLUDE [static-web-apps-local-proxy](../../includes/static-web-apps-local-proxy.md)]
 
@@ -269,7 +269,7 @@ Ha nem szeretné tovább használni ezt az alkalmazást, a következő lépések
 1. Írja be a **myResourceGroup** szöveget a szövegmezőbe
 1. Válassza a **Törlés** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásbeállítások konfigurálása](./application-settings.md)

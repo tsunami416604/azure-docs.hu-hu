@@ -3,15 +3,15 @@ title: Azure HPC cache-adatfeldolgozás – manuális másolás
 description: A CP-parancsok használata az Azure HPC cache-ben lévő blob Storage-tárolóba való áthelyezéshez
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 1d5f8e6b59a4ae0149f219738952b47ce399c2ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a5fdc3b76c330619601e171c152d7a2e583ae90
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194992"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514495"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC cache-adatfeldolgozás – manuális másolási módszer
 
@@ -23,7 +23,7 @@ Ha többet szeretne megtudni arról, hogy az Azure HPC gyorsítótára hogyan he
 
 Manuálisan is létrehozhat többszálas másolatot egy ügyfélen, ha több másolási parancsot futtat egyszerre a háttérben a fájlok vagy elérési utak előre definiált készletei között.
 
-A Linux/UNIX ``cp`` parancs tartalmazza a tulajdonosi és a mtime metaadatok megőrzésére szolgáló argumentumot ``-p`` . Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyféltől a célhely fájlrendszerig a metaadatok módosítására irányuló fájlrendszer-hívások számát.)
+A Linux/UNIX ``cp`` parancs tartalmazza a ``-p`` tulajdonosi és a mtime metaadatok megőrzésére szolgáló argumentumot. Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyféltől a célhely fájlrendszerig a metaadatok módosítására irányuló fájlrendszer-hívások számát.)
 
 Ez az egyszerű példa két fájlt másol át párhuzamosan:
 
@@ -37,7 +37,7 @@ A parancs kiadása után a `jobs` parancs azt jeleníti meg, hogy két szál fut
 
 Ha a fájlnevek előre jelezhető, használhat kifejezéseket párhuzamos másolási szálak létrehozására.
 
-Ha például a könyvtár 1000-es fájlokat tartalmaz `0001` `1000`, amelyek egymás után vannak számozva a rendszerből, az alábbi kifejezésekkel hozhat létre 10 párhuzamos szálat, amelyet az egyes 100-fájlok másolnak:
+Ha például a könyvtár 1000-es fájlokat tartalmaz, amelyek egymás után vannak számozva a rendszerből `0001` `1000` , az alábbi kifejezésekkel hozhat létre 10 párhuzamos szálat, amelyet az egyes 100-fájlok másolnak:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -56,7 +56,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Ha a fájl elnevezési szerkezete nem kiszámítható, a fájlokat a címtár neve alapján csoportosíthatja.
 
-Ez a példa a ``cp`` parancsok futtatásához használható teljes címtárakat gyűjti a háttérben:
+Ez a példa a parancsok futtatásához használható teljes címtárakat gyűjti a ``cp`` háttérben:
 
 ```bash
 /root
@@ -92,7 +92,7 @@ Ha ez történik, az ügyféloldali csatlakoztatási pontokat hozzáadhatja más
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Az ügyféloldali csatlakoztatási pontok hozzáadásával kikapcsolhatja a további másolási parancsokat a `/mnt/destination[1-3]` további csatlakoztatási pontokra a további párhuzamosságok elérése érdekében.
+Az ügyféloldali csatlakoztatási pontok hozzáadásával kikapcsolhatja a további másolási parancsokat a további `/mnt/destination[1-3]` csatlakoztatási pontokra a további párhuzamosságok elérése érdekében.
 
 Ha például a fájlok nagyon nagy méretűek, a másolási parancsokat definiálhatja a különböző elérési utak használatára, és a másolást végző ügyféltől párhuzamosan több parancsot is küldhet.
 
@@ -214,7 +214,7 @@ for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-A rendszer *n* eredményül kapott fájlokat fog kapni, amelyek mindegyike *n* -ügyfélhez tartozik, és az elérési út neve megegyezik a `find` parancs kimenetének részeként megadott négy szintű könyvtárral.
+A rendszer *n* eredményül kapott fájlokat fog kapni, amelyek mindegyike *n* -ügyfélhez tartozik, és az elérési út neve megegyezik a parancs kimenetének részeként megadott négy szintű könyvtárral `find` .
 
 Az egyes fájlok használatával hozza létre a másolási parancsot:
 

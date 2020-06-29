@@ -258,36 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Virtuálisgép-ajánlat
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-    - name: API-hivatkozás
-      items:
-        - name: Áttekintés
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: Előfeltételek
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
-        - name: Megfontolandó szempontok
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
-        - name: Egyidejűség-vezérlés
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
-        - name: Ajánlatok lekérése
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-        - name: Adott ajánlat lekérése
-          href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: Ajánlat hozzáadása vagy módosítása
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
-        - name: Ajánlat állapotának lekérése
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
-        - name: Ajánlat közzététele
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-publish-offer.md
-        - name: Műveletek lekérése
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-operations.md
-        - name: Műveletek megszakítása
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
-        - name: Élesítés
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
-        - name: Virtuálisgép-ajánlatok díjszabása
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
-        - name: Hitelesítési hibák hibaelhárítása
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Támogatás igénylése
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
 - name: A kereskedelmi piactér a Partnerközpontban
@@ -433,8 +403,6 @@
       href: ./partner-center-portal/update-existing-offer.md
     - name: Kedvezmények aktiválása
       href: ./partner-center-portal/marketplace-rewards.md
-    - name: Támogatási lehetőségek
-      href: ./partner-center-portal/support.md
     - name: Partnerközpont – elemzések
       items:
         - name: A kereskedelmi piactérre vonatkozó elemzések
@@ -471,3 +439,35 @@
           href: ./partner-center-portal/payout-policy-details.md
         - name: Adó részletei
           href: ./partner-center-portal/tax-details-paid-transactions.md
+    - name: CPP API-referencia
+      items:
+        - name: Áttekintés
+          href: ./cloud-partner-portal-api-overview.md
+        - name: Előfeltételek
+          href: ./cloud-partner-portal-api-prerequisites.md
+        - name: Megfontolandó szempontok
+          href: ./cloud-partner-portal-api-considerations.md
+        - name: Egyidejűség-vezérlés
+          href: ./cloud-partner-portal-api-concurrency-control.md
+        - name: Ajánlatok lekérése
+          href: ./cloud-partner-portal-api-retrieve-offers.md
+        - name: Adott ajánlat lekérése
+          href: ./cloud-partner-portal-api-retrieve-specific-offer.md
+        - name: Ajánlat hozzáadása vagy módosítása
+          href: ./cloud-partner-portal-api-creating-offer.md
+        - name: Ajánlat állapotának lekérése
+          href: ./cloud-partner-portal-api-retrieve-offer-status.md
+        - name: Ajánlat közzététele
+          href: ./cloud-partner-portal-api-publish-offer.md
+        - name: Műveletek lekérése
+          href: ./cloud-partner-portal-api-retrieve-operations.md
+        - name: Műveletek megszakítása
+          href: ./cloud-partner-portal-api-cancel-operations.md
+        - name: Élesítés
+          href: ./cloud-partner-portal-api-go-live.md
+        - name: Virtuálisgép-ajánlatok díjszabása
+          href: ./cloud-partner-portal-api-setting-price.md
+        - name: Hitelesítési hibák hibaelhárítása
+          href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - name: Támogatási lehetőségek
+      href: ./partner-center-portal/support.md

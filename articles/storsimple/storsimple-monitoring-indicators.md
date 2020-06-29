@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60630608"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512968"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple-figyelési mutatók használata az eszköz kezeléséhez
 
@@ -136,7 +136,7 @@ Az alábbi ábrán az elsődleges vezérlőn lévő LED-ek azonosíthatók. (Az 
 A következő táblázat segítségével meghatározhatja, hogy a vezérlő modul megfelelően működik-e.  
 
 ### <a name="controller-indicator-leds"></a>Vezérlő kijelző LED-EK
-| VEZETETT | Leírás |
+| VEZETETT | Description |
 | --- | --- |
 | AZONOSÍTÓ LED (kék) |Azt jelzi, hogy a modul azonosítva van. Ha a kék LED egy futó vezérlőn villog, akkor a vezérlő az aktív vezérlő, a másik pedig a készenléti vezérlő. További információ: [az aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | Hiba LED (Amber) |A vezérlő hibáját jelzi. |
@@ -241,7 +241,7 @@ A következő táblázat ismerteti a különböző riasztási feltételeket.
 | Meghajtó eltávolítva |Figyelmeztetés |None |Modul hibája |
 | Nem áll rendelkezésre elegendő energiaellátás |Figyelmeztetés |Nincs |Modul hibája |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [StorSimple hardveres összetevőiről és állapotáról](storsimple-8000-monitor-hardware-status.md).
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png

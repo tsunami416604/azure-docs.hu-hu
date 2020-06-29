@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: a929f5bc-03e2-4b01-b925-973db236f19f
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: bb1a56d204a46f89213f20e317494120f0ea565e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c787df901fc33c2dcd2c8a901202c72ea6de45d4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60580598"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513611"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Virtuális StorSimple-tömb inaktiválása és törlése
 
@@ -86,7 +86,7 @@ Az eszköz törléséhez hajtsa végre a következő lépéseket.
    
     Az eszköz törlése után megtekintheti az eszközök frissített listáját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a feladatátvételi feladatokról: [a StorSimple virtuális tömb feladatátvétele és vész-helyreállítása](storsimple-virtual-array-failover-dr.md).
 

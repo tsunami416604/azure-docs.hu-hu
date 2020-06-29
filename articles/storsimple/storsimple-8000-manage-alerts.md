@@ -3,15 +3,15 @@ title: Riasztások megtekintése és kezelése a StorSimple 8000 Series eszközh
 description: Ismerteti a StorSimple riasztási feltételeit és súlyosságát, a riasztási értesítések konfigurálását, valamint a StorSimple Eszközkezelő szolgáltatás használatát a riasztások kezeléséhez.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 4956c511f67fc5929eef2e39797cbe93b5b1d73e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711935"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515514"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-riasztások megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással
 
@@ -219,7 +219,12 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 |:--- |:--- |:--- |
 | Nem sikerült létrehozni a támogatási csomagot. |A StorSimple nem tudta előállítani a csomagot. |Próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. A probléma megoldása után törölje a riasztást a riasztások lapról. |
 
-## <a name="next-steps"></a>További lépések
+### <a name="enclosure-environment-alerts"></a>Bekerítési környezet riasztásai
+
+| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+|:--- |:--- |:--- |
+| A hardver-összetevő környezeti hőmérséklet-érzékelője nem sikerült állapotot jelez.  | Ház típusa: fő ház | Ez a riasztás akkor aktiválódik, ha a StorSimple körüli környezeti környezet egy elfogadható tartomány fölé esik. Győződjön meg róla, hogy az adatközpontban az AC-szellőzőn kívül a környezeti környezet vagy a légáram található. Ha a hőmérséklet visszatér a normál értékre, a rendszer automatikusan törli a riasztást egy kis idő elteltével. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.   |
+
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [StorSimple hibákról és az eszközök telepítési problémáinak elhárításáról](storsimple-8000-troubleshoot-deployment.md).
-

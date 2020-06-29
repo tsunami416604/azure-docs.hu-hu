@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
-ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: a5a7a31c174271f963bb005f10b8376a59133d36
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711765"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513131"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Lemezmeghajtó cseréje StorSimple 8000 sorozatú eszközökön
 
@@ -46,7 +46,7 @@ Ez az eljárás azt mutatja be, hogy a StorSimple-eszközön a lemezmeghajtók c
    
     **1. ábra** Illetéktelen módosítások zárolása elvégezve
    
-   | Címke | Leírás |
+   | Címke | Description |
    |:--- |:--- |
    | 1 |Kijelző rekesze |
    | 2 |Antimanipulálás zárolása |
@@ -109,6 +109,6 @@ Ha egy meghajtó meghiúsult a StorSimple-eszközön, és eltávolította azt, k
    > [!NOTE]
    > Több órát is igénybe vehet, amíg a lemez állapota a csere után zöldre vált.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

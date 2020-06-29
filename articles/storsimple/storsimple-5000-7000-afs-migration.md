@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d656fd8757580b8ce96acf168e92fc847d400ca
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65150739"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514065"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Adatok migrálása a StorSimple 5000-7000 sorozatból a Azure File Syncba
 
@@ -74,7 +74,7 @@ A következő lépések végrehajtásával telepítse át a StorSimple-köteteke
     - [Telepítse a Storage Sync szolgáltatást](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
     - [Regisztrálja a Windows Servert a Storage Sync szolgáltatással](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
     - [Hozzon létre egy szinkronizálási csoportot és egy Felhőbeli végpontot](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint). A szinkronizálási csoportokat minden olyan Windows-fájlmegosztás esetében el kell végezni, amelyet át kell telepíteni a gazdagépről.
-    - [Hozzon létre egy kiszolgálói végpontot](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Adja meg az elérési utat a fájlmegosztás adatait tartalmazó StorSimple kötet elérési útjával. Ha például a StorSimple kötet meghajtó `J`, és az adatai a ben találhatók `J:/<myafsshare>`, akkor adja hozzá ezt az elérési utat kiszolgálói végpontként. Hagyja **Letiltva a rétegek letiltását**. **Tiering**
+    - [Hozzon létre egy kiszolgálói végpontot](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Adja meg az elérési utat a fájlmegosztás adatait tartalmazó StorSimple kötet elérési útjával. Ha például a StorSimple kötet meghajtó `J` , és az adatai a ben találhatók `J:/<myafsshare>` , akkor adja hozzá ezt az elérési utat kiszolgálói végpontként. Hagyja **Letiltva a rétegek letiltását**. **Tiering**
 2.  Várjon, amíg a fájlkiszolgáló szinkronizálása befejeződik. Az adott szinkronizálási csoport minden egyes kiszolgálójára vonatkozóan ügyeljen a következőre:
     - A legutóbbi szinkronizálásra és letöltésre irányuló legutóbbi szinkronizálás időbélyege nemrég történt.
     - Az állapot a feltöltéshez és a letöltéshez egyaránt zöld.

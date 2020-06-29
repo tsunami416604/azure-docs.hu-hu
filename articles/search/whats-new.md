@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 34aeda7534c15b51b9759b696caaf3fcfac88659
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 086e3cf71012f168851df1c85b19689294fe6302
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317710"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515728"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -23,11 +23,11 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 ### <a name="june-2020"></a>2020. június
 
-+ [Azure Machine learning (a pénzmosás) (előzetes verzió)](cognitive-search-aml-skill.md) az indexelés során használt kognitív képesség, amely egy Azure Machine learning modellt csomagol. A szakértelmet követve integrálhat egy korábban betanított és üzembe helyezett egyéni gépi tanulást egy AI-bővítési folyamatba. [Regisztráljon a hozzáférés kéréséhez](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). Ha készen áll egy pénzmosás-képesség hozzáadására, használja a Készségkészlet-szerkesztőben a Azure Portal-ben a pénzmosás sablont. Útmutatásért olvassa el [ezt az oktatóanyagot](cognitive-search-tutorial-aml-custom-skill.md).
+A Azure Machine Learning skill új képzettségi típus, amely a következtetési végpontot Azure Machine Learningból integrálja. A portál a Azure Machine Learning-végpont felderítését és integrálását támogatja egy Cognitive Search készségkészlet belül. A felderítéshez a Cognitive Search és az Azure ML szolgáltatásainak ugyanabban az előfizetésben kell lenniük. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-aml-custom-skill.md).
 
 ### <a name="may-2020-microsoft-build"></a>Május 2020 (Microsoft Build)
 
-+ A [hibakeresési munkamenetek](cognitive-search-debug-session.md) szolgáltatás mostantól előzetes verzióban érhető el. [Regisztráljon a hozzáférés kéréséhez](https://aka.ms/DebugSessions). A hibakeresési munkamenetek egy portálon alapuló felületet biztosítanak a készségkészlet kapcsolatos problémák kivizsgálásához és megoldásához. A hibakeresési munkamenetben létrehozott javítások az éles szakértelmével menthetők. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-debug-sessions.md).
++ A [hibakeresési munkamenetek](cognitive-search-debug-session.md) szolgáltatás mostantól előzetes verzióban érhető el. A hibakeresési munkamenetek egy portálon alapuló felületet biztosítanak a készségkészlet kapcsolatos problémák kivizsgálásához és megoldásához. A hibakeresési munkamenetben létrehozott javítások az éles szakértelmével menthetők. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-debug-sessions.md).
 
 + A biztonsági fejlesztések közé tartozik a nyilvános interneten nem elérhető [privát keresési végpont (előzetes verzió) beállítása](service-create-private-endpoint.md) . [Az IP-szabályokat is konfigurálhatja a kötött tűzfalak támogatásához (előzetes verzió)](service-configure-firewall.md).
 

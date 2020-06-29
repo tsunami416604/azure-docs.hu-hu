@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6ddf3db422a192b82b8d67e8e532a9ae0030d6f7
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 0a247626566a4b0156d879954bf6734d248f01d8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212520"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513521"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Power BI-alkalmazás létrehozása Microsoft AppSourcehoz
 
@@ -53,7 +53,7 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 Ezen az oldalon látható az ajánlat közzétételéhez szükséges lépések vizuális ábrázolása (a befejezett és a közelgő is), valamint az egyes lépések befejezésének ideje.
 
-Hivatkozásokat tartalmaz az ajánlaton végzett műveletekre, az Ön által választott beállítás alapján. Például:
+Hivatkozásokat tartalmaz az ajánlaton végzett műveletekre, az Ön által választott beállítás alapján. Példa:
 
 - Ha az ajánlat Piszkozat- [törlési ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -111,7 +111,7 @@ Igény szerint két iparágban és két vertikálisan is kiválaszthatja az egye
 | Disztribúció | * Nagykereskedelmi<br>Csomagok és csomagok szállítása |
 | Education | *Felsőoktatás <br> * Elsődleges és másodlagos oktatás/K-12<br>* Könyvtárak és múzeumok |
 | Pénzügyi szolgáltatások | *Banki és tőkepiacok <br> * Biztosítási |
-| Államigazgatás | *A védelem és az intelligencia (amelyet a nemzeti és a Közbiztonságnak neveztek) <br> * Közbiztonság és jogérvényesülés<br>* Polgári kormányzat |
+| Government | *A védelem és az intelligencia (amelyet a nemzeti és a Közbiztonságnak neveztek) <br> * Közbiztonság és jogérvényesülés<br>* Polgári kormányzat |
 | Egészségügyi ellátás (ún. állapot) | *Állapot költségviselő <br> * Állapot szolgáltatója<br>* Gyógyszeripar |
 | Gyártási és erőforrás-használat (a gyártás meghívásához használt) | *Vegyi és Agrokémiai <br> * Diszkrét gyártás<br>* Energia |
 | Kiskereskedelmi és fogyasztási cikkek (kiskereskedelmi használatra) | *Fogyasztási <br> cikkek* Kiskereskedők |
@@ -163,7 +163,7 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 10. Leírás
 11. Képernyőképek/videók
 
-### <a name="name"></a>Name
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -270,4 +270,4 @@ A felülvizsgálati oldalon a következőket teheti:
 
 Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**lehetőséget.
 
-Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Ha közzé szeretné tenni az ajánlatát a nyilvános (vagy privát ajánlat, privát közönség) számára, lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
+Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.

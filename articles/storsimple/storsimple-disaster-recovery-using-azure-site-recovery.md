@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67875396"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514921"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatikus vész-helyreállítási megoldás a StorSimple-on üzemeltetett fájlmegosztás Azure Site Recovery használatával
 
@@ -61,10 +61,10 @@ A helyszíni környezet minden összetevőjét védeni kell a teljes replikáci�
 ### <a name="set-up-active-directory-and-dns-replication-optional"></a>A Active Directory és a DNS-replikáció beállítása (nem kötelező)
 Ha a Active Directoryt és a DNS-t futtató gépeket szeretné védelemmel ellátni, hogy azok elérhetők legyenek a DR webhelyén, explicit módon meg kell védelemmel ellátnia őket (hogy a fájlkiszolgálók a hitelesítéssel való feladatátvétel után is elérhetők legyenek). Az ügyfél helyszíni környezetének összetettsége alapján két ajánlott lehetőség van.
 
-#### <a name="option-1"></a>1. lehetőség
+#### <a name="option-1"></a>1\. lehetőség
 Ha az ügyfél kis számú alkalmazással rendelkezik, a teljes helyszíni hely egyetlen tartományvezérlője, és a teljes helyen meghiúsul, akkor azt javasoljuk, hogy Azure Site Recovery replikáció használatával replikálja a tartományvezérlői gépet egy másodlagos helyre (ez a helyek közötti és a helyek közötti Azure-hoz is alkalmazható).
 
-#### <a name="option-2"></a>2. lehetőség
+#### <a name="option-2"></a>2\. lehetőség
 Ha az ügyfél nagy számú alkalmazással rendelkezik, Active Directory erdőt futtat, és egyszerre csak néhány alkalmazást hajt végre, akkor javasoljuk, hogy állítson be egy további tartományvezérlőt a DR-helyen (másodlagos vagy az Azure-ban).
 
 A DR webhelyre való csatlakozáshoz szükséges útmutatásért tekintse meg a [Active Directory és a DNS AUTOMATIZÁLT Dr-megoldását Azure site Recovery használatával](../site-recovery/site-recovery-active-directory.md) . A dokumentum további részében feltételezzük, hogy a DR webhelyén elérhető egy tartományvezérlő.
@@ -84,7 +84,7 @@ Ehhez a lépéshez elő kell készítenie a helyszíni fájlkiszolgáló környe
 
 1. Telepítse a virtuálisgép-ügynököt mindegyik fájlkiszolgáló virtuális GÉPRE. Erre azért van szükség, hogy Azure Automation-parancsfájlokat futtasson a feladatátvételen áthelyezett virtuális gépeken.
    
-   1. [Töltse le az ügynököt](https://aka.ms/vmagentwin) a `C:\\Users\\<username>\\Downloads`következőre:.
+   1. [Töltse le az ügynököt](https://aka.ms/vmagentwin) a következőre: `C:\\Users\\<username>\\Downloads` .
    1. Nyissa meg a Windows PowerShellt rendszergazdai módban (Futtatás rendszergazdaként), majd írja be a következő parancsot a letöltési hely eléréséhez:  
          `cd C:\\Users\\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
          
@@ -164,7 +164,7 @@ Helyreállítási tervet is létrehozhat az ASR-ben a fájlmegosztás feladatát
    
       ![Tallózás a katalógusban](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
    
-1. Tegye közzé az összes parancsfájlt úgy, hogy kiválasztja a runbook az Automation-fiókban, és kattintson a **Közzététel** **szerkesztése** &gt; lehetőségre, majd az **Igen** gombra az ellenőrző üzenethez. A lépés után a **runbookok** lap a következőképpen fog megjelenni:
+1. Tegye közzé az összes parancsfájlt úgy, hogy kiválasztja a runbook az Automation-fiókban, és kattintson a közzététel **szerkesztése** lehetőségre, &gt; **Publish** majd az **Igen** gombra az ellenőrző üzenethez. A lépés után a **runbookok** lap a következőképpen fog megjelenni:
    
    ![Runbookok](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
    
@@ -174,7 +174,7 @@ Helyreállítási tervet is létrehozhat az ASR-ben a fájlmegosztás feladatát
    - _RecoveryPlanName_**-ResourceGroupName**: a StorSimple erőforrással rendelkező Resource Manager-csoport.
    - _RecoveryPlanName_**-ManagerName**: a StorSimple-eszközt tartalmazó StorSimple-erőforrás.
    - _RecoveryPlanName_**-DeviceName**: a feladatátvételt igénylő StorSimple-eszköz.
-   - _RecoveryPlanName_**-DeviceIpAddress**: az eszköz IP-címe (ez a StorSimple Eszközkezelő szakasz &gt; **Beállítások** &gt; **hálózati** &gt; **DNS-beállítások** csoportjának **eszközök** lapján található).
+   - _RecoveryPlanName_**-DeviceIpAddress**: az eszköz IP-címe (ez a StorSimple Eszközkezelő szakasz **Devices** &gt; **Beállítások** &gt; **hálózati** &gt; **DNS-beállítások** csoportjának eszközök lapján található).
    - _RecoveryPlanName_**-VolumeContainers**: az eszközön található, vesszővel tagolt mennyiségi tárolók, amelyeknek feladatátvételre van szükségük; például: volcon1, volcon2, volcon3.
    - _RecoveryPlanName_**-TargetDeviceName**: az a StorSimple Cloud Appliance, amelyen a tárolók feladatátvétele történik.
    - _RecoveryPlanName_**-TargetDeviceIpAddress**: a cél eszköz IP-címe (ez a **virtuális gép** szakasz &gt; **Beállítások** csoport &gt; **hálózatkezelés** lapján található).
@@ -195,7 +195,7 @@ Helyreállítási tervet is létrehozhat az ASR-ben a fájlmegosztás feladatát
             cd C:\scripts\StorSimpleSDKTools
       ```
    1. Töltse le a nuget CLI-t a 1. lépés azonos mappájába.
-      A nuget. exe különböző verziói elérhetők a [nuget-letöltéseknél](https://www.nuget.org/downloads). Minden letöltési hivatkozás közvetlenül egy. exe-fájlra mutat, ezért a jobb gombbal kattintson a fájlra, és mentse a fájlt a böngészőből, és ne futtassa azt a böngészőben.
+      A nuget.exe különböző verziói a nuget- [letöltéseken](https://www.nuget.org/downloads)érhetők el. Minden letöltési hivatkozás közvetlenül egy. exe-fájlra mutat, ezért a jobb gombbal kattintson a fájlra, és mentse a fájlt a böngészőből, és ne futtassa azt a böngészőben.
       
       ```
             wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
@@ -230,7 +230,7 @@ Helyreállítási tervet is létrehozhat az ASR-ben a fájlmegosztás feladatát
             compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
       ```
          
-   1. Importálja a fenti lépésben létrehozott Azure Automation modul ZIP-fájlját (Microsoft. Azure. Management. StorSimple8000Series. zip). Ezt az Automation-fiók kiválasztásával végezheti el, kattintson a megosztott erőforrások területen található **modulok** elemre, majd kattintson **a modul hozzáadása**lehetőségre.
+   1. Importálja a fenti lépésben létrehozott Azure Automation modul ZIP-fájlját (Microsoft.Azure.Management.StorSimple8000Series.zip). Ezt az Automation-fiók kiválasztásával végezheti el, kattintson a megosztott erőforrások területen található **modulok** elemre, majd kattintson **a modul hozzáadása**lehetőségre.
    
    Az StorSimple 8000 Series modul importálása után a **modulok** lap a következőképpen jelenik meg:
    
@@ -291,7 +291,7 @@ A feladatátvételi teszt során Active Directoryra vonatkozó megfontolásokér
    A tervezett feladatátvétel során a helyszíni fájlkiszolgáló virtuális gép szabályosan leáll, és a StorSimple-eszközön lévő kötetek Felhőbeli biztonsági mentési pillanatképe készül. A StorSimple köteteket a rendszer átadja a virtuális eszköznek, a replika virtuális gép üzembe kerül az Azure-ban, és a kötetek a virtuális GÉPHEZ vannak csatlakoztatva.
 
 #### <a name="to-perform-a-planned-failover"></a>Tervezett feladatátvétel végrehajtása
-1. A Azure Portal válassza a fájlkiszolgáló virtuális géphez létrehozott &gt; **Recovery Services** -tároló **helyreállítási terveket (site Recovery)** &gt; **recoveryplan_name** .
+1. A Azure Portal válassza a fájlkiszolgáló virtuális géphez létrehozott **Recovery Services** - &gt; tároló **helyreállítási terveket (site Recovery)** &gt; **recoveryplan_name** .
 1. A helyreállítási terv panelen kattintson a **további** &gt; **tervezett feladatátvétel**lehetőségre.  
 
    ![Helyreállítási terv](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
@@ -303,7 +303,7 @@ A feladatátvételi teszt során Active Directoryra vonatkozó megfontolásokér
 A nem tervezett feladatátvétel során a rendszer átadja a StorSimple köteteket a virtuális eszköznek, a replika virtuális gép üzembe kerül az Azure-ban, és a kötetek a virtuális GÉPHEZ vannak csatlakoztatva.
 
 #### <a name="to-perform-a-failover"></a>Feladatátvétel elvégzése
-1. A Azure Portal válassza a fájlkiszolgáló virtuális géphez létrehozott &gt; **Recovery Services** -tároló **helyreállítási terveket (site Recovery)** &gt; **recoveryplan_name** .
+1. A Azure Portal válassza a fájlkiszolgáló virtuális géphez létrehozott **Recovery Services** - &gt; tároló **helyreállítási terveket (site Recovery)** &gt; **recoveryplan_name** .
 1. A helyreállítási terv panelen kattintson a **további** &gt; **feladatátvétel**lehetőségre.  
 1. A **feladatátvétel megerősítése** panelen válassza ki a forrás és a cél helyét.
 1. Válassza a **virtuális gépek leállítása lehetőséget, és szinkronizálja a legfrissebb adatokat** annak megadásához, hogy site Recovery megpróbálja leállítani a védett virtuális gépet, és szinkronizálja az adatokat, hogy az adat legújabb verziójának feladatátvétele megtörténjen.
@@ -314,7 +314,7 @@ A nem tervezett feladatátvétel során a rendszer átadja a StorSimple kötetek
 A feladat-visszavétel során a rendszer a biztonsági másolat készítése után visszaadja a StorSimple a fizikai eszközre.
 
 #### <a name="to-perform-a-failback"></a>Feladat-visszavétel végrehajtása
-1. A Azure Portal válassza a fájlkiszolgáló virtuális géphez létrehozott &gt; **Recovery Services** -tároló **helyreállítási terveket (site Recovery)** &gt; **recoveryplan_name** .
+1. A Azure Portal válassza a fájlkiszolgáló virtuális géphez létrehozott **Recovery Services** - &gt; tároló **helyreállítási terveket (site Recovery)** &gt; **recoveryplan_name** .
 1. A helyreállítási terv panelen kattintson a **további** &gt; **tervezett feladatátvétel**lehetőségre.  
 1. Válassza ki a forrás-és célhelyeket, válassza ki a megfelelő adatszinkronizálási és virtuálisgép-létrehozási beállításokat.
 1. A feladat-visszavételi folyamat elindításához kattintson **az OK** gombra.

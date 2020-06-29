@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b864cc8bc0e5d39967a2307bd98bda082b6cfd5e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77467215"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515216"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Vészhelyreállítás és az eszköz feladatátvétele a StorSimple Virtual Arrayhez az Azure Portalon keresztül
 
@@ -60,7 +60,7 @@ Az eszközök feladatátvétele esetén győződjön meg arról, hogy teljesüln
 * A DR-hez készült fájlkiszolgáló esetében javasoljuk, hogy a forrással megegyező tartományhoz csatlakoztassa a célként megadott eszközt. Ez a konfiguráció biztosítja a megosztási engedélyek automatikus feloldását. Csak az azonos tartományban lévő céleszköz feladatátvétele támogatott.
 * A DR számára elérhető céleszköz olyan eszközök, amelyek a forrásoldali eszközhöz képest azonos vagy nagyobb kapacitással rendelkeznek. A szolgáltatáshoz csatlakoztatott eszközök, de nem felelnek meg a megfelelő hely feltételeinek, nem érhetők el célként.
 
-### <a name="other-considerations"></a>Egyéb szempontok
+### <a name="other-considerations"></a>További szempontok
 
 * Tervezett feladatátvétel esetén:
   

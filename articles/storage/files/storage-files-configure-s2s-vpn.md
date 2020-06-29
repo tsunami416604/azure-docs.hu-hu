@@ -3,16 +3,16 @@ title: Helyek közötti (S2S) VPN konfigurálása Azure Fileshoz való használa
 description: Helyek közötti (S2S) VPN konfigurálása Azure Fileshoz való használatra
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061042"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515342"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Helyek közötti VPN konfigurálása Azure Fileshoz való használatra
 A helyek közötti (S2S) VPN-kapcsolat használatával csatlakoztathatja az Azure-fájlmegosztást az SMB-hez a helyszíni hálózatról a 445-es port megnyitása nélkül. Létrehozhat egy helyek közötti VPN-t az [azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával, amely egy VPN-szolgáltatásokat kínáló Azure-erőforrás, amelyet a Storage-fiókok vagy más Azure-erőforrások mellett egy erőforráscsoporthoz helyeznek üzembe.

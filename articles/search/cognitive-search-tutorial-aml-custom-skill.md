@@ -8,24 +8,24 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 1ff29be9cde4a2bd53f0edbe57f3eab603c1796f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740366"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513805"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Oktatóanyag: egyéni szakértelem létrehozása és üzembe helyezése Azure Machine Learning 
 
-Ebben az oktatóanyagban a [Hotel Reviews adatkészletet](https://www.kaggle.com/datafiniti/hotel-reviews) fogja használni (amelyet a Creative Commons Licence [CC-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) használ, hogy [Egyéni képességeket](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface) hozzon létre a Azure Machine learning használatával, hogy kinyerje a véleményekből származó Aspect-alapú véleményét. Ez lehetővé teszi a pozitív és negatív érzelmek hozzárendelését ugyanabban a felülvizsgálatban, hogy helyesen legyenek megjelölve az azonosított entitásokhoz, például a személyzethez, a helyiséghez, a lobbyhoz vagy a készlethez.
+Ebben az oktatóanyagban a [Hotel Reviews adatkészletet](https://www.kaggle.com/datafiniti/hotel-reviews) fogja használni (amelyet a Creative Commons Licence [CC-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) használ, hogy [Egyéni képességeket](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) hozzon létre a Azure Machine learning használatával, hogy kinyerje a véleményekből származó Aspect-alapú véleményét. Ez lehetővé teszi a pozitív és negatív érzelmek hozzárendelését ugyanabban a felülvizsgálatban, hogy helyesen legyenek megjelölve az azonosított entitásokhoz, például a személyzethez, a helyiséghez, a lobbyhoz vagy a készlethez.
 
-A Aspect-alapú hangulati modell betanításához az [NLP receptek tárházat](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)fogja használni. Ezután a modell egy Azure Kubernetes-fürtön végpontként lesz üzembe helyezve. Az üzembe helyezést követően a modellt a Cognitive Search szolgáltatás általi használatra szolgáló egyéni képességként adja hozzá a rendszer a dúsítási folyamathoz.
+A Azure Machine Learning aspektus-alapú hangulati modell betanításához az [NLP receptek tárházat](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)fogja használni. Ezután a modell egy Azure Kubernetes-fürtön végpontként lesz üzembe helyezve. Az üzembe helyezést követően a végpontot a Cognitive Search szolgáltatás általi használatra vonatkozó pénzmosás-képességként adja hozzá a dúsítási folyamathoz.
 
 Két adatkészlet van megadva. Ha saját maga szeretné betanítani a modellt, a hotel_reviews_1000.csv fájlra van szükség. Szeretné kihagyni a betanítási lépést? Töltse le a hotel_reviews_100.csv.
 
 > [!div class="checklist"]
 > * Azure Cognitive Search-példány létrehozása
-> * Azure Machine Learning munkaterület létrehozása
+> * Azure Machine Learning munkaterület létrehozása (a keresési szolgáltatásnak és a munkaterületnek ugyanahhoz az előfizetéshez kell tartoznia)
 > * Modell betanítása és üzembe helyezése Azure Kubernetes-fürtön
 > * AI-dúsítási folyamat összekapcsolása az üzembe helyezett modellel
 > * Az üzembe helyezett modell kimenetének beolvasása egyéni képességként
@@ -84,7 +84,7 @@ A portálon lépjen a Készségkészlet elemre, és válassza ki a Készségkés
 
 Másolja a készségkészlet sablont az ablakból, és illessze be a készségkészlet-definícióba a bal oldalon. Szerkessze a sablont, hogy a hiányzó értékeket adja meg a következőhöz:
 
-* Name
+* Name (Név)
 * Leírás
 * Környezet
 * "bemenetek" neve és forrása
@@ -94,7 +94,7 @@ Mentse a készségkészlet.
 
 A készségkészlet mentése után lépjen az indexelő elemre, és válassza ki az indexelő definíció (JSON) hivatkozást. A portál megjeleníti a jegyzetfüzet első cellájában létrehozott indexelő JSON-t. A kimeneti mezők leképezéseit további mező-hozzárendelésekkel kell frissíteni, hogy az indexelő képes legyen megfelelően kezelni és továbbítani azokat. Mentse a módosításokat, majd válassza a Futtatás lehetőséget. 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

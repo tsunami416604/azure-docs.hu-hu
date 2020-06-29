@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/19/2019
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: bb7ffb06bb0cffeefae87ada665e2c123213186a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4fb623a77fc97fea1584451b73eef930c725f8a1
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218645"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517422"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry integráció a Security Center
 
@@ -27,7 +27,7 @@ Ha Azure Security Center standard szintű csomaggal rendelkezik, hozzáadhatók 
 
 Ha egy rendszerképet küld a beállításjegyzékbe, Security Center automatikusan megvizsgálja a képet. A rendszerkép vizsgálatának elindításához küldje le az adattárba.
 
-Ha a vizsgálat befejeződik (általában körülbelül 10 percet vesz igénybe, de akár 48h is eltarthat), az eredmények az alábbi Security Center-javaslatokban érhetők el:
+Ha a vizsgálat befejeződik (általában körülbelül 10 percet, de akár 40 percet is igénybe vehet), a megállapítások a következőhöz hasonló módon érhetők el Security Center javaslatként:
 
 [![Példa Azure Security Center a Azure Container Registry (ACR) tárolt rendszerképben felderített biztonsági rések észlelésére](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
@@ -41,7 +41,7 @@ A Security Center az előfizetésében található ARM-alapú ACR-nyilvántartá
 
 ![Azure Security Center és Azure Container Registry (ACR) – magas szintű áttekintés](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
 

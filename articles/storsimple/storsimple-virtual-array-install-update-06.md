@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f0be5d8378cd1640d3052f2e56c8161e2c0b203
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 02b85cb90948f35cb6f6c855cfbe81fd58301de0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "62116891"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513593"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Az 0,6-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -30,6 +30,7 @@ Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a 0,6-es frissí
 A frissítés alkalmazása előtt javasoljuk, hogy a köteteket vagy a megosztásokat a gazdagépen, majd az eszközön offline állapotba helyezze. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. A kötetek vagy a megosztások offline állapotba helyezése után manuálisan kell biztonsági másolatot készíteni az eszközről.
 
 > [!IMPORTANT]
+>
 > - Az 0,6-es frissítés megfelel az eszközön **10.0.10293.0** szoftver verziójának. A frissítéssel kapcsolatos újdonságokról a 0,6-es [frissítés kibocsátási megjegyzései](storsimple-virtual-array-update-06-release-notes.md)című témakörben olvashat bővebben.
 >
 > - Ha a 0,2-es vagy újabb frissítést futtatja, javasoljuk, hogy telepítse a frissítéseket a Azure Portal használatával. Ha a 0,1-es vagy a GA-os verziót futtatja, a gyorsjavítást a helyi webes felületen keresztül kell használnia az 0,6-es frissítés telepítéséhez.
@@ -57,7 +58,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás letöltése
 
-1. Indítsa el az Internet Explorert, [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)és navigáljon a gombra.
+1. Indítsa el az Internet Explorert, és navigáljon a gombra [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Ha első alkalommal használja a Microsoft Update-katalógust ezen a számítógépen, kattintson a **telepítés** gombra, amikor a rendszer felszólítja az Microsoft Update Catalog bővítmény telepítésére.
 
@@ -75,15 +76,15 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
     ![A csomagban található fájlok](./media/storsimple-virtual-array-install-update-06/update06folder.png)
 
     A következőt fogja látni:
-    -  Egy önálló csomagfájl Microsoft Update `WindowsTH-KB3011067-x64`. Ez a fájl az eszköz szoftverének frissítésére szolgál.
-    - Egy Genfi figyelési ügynök csomagfájl `GenevaMonitoringAgentPackageInstaller`. Ez a fájl a monitoring and Diagnostics szolgáltatás (MDS) ügynökének frissítésére szolgál. Kattintson duplán a cab-fájlra. Megjelenik egy _. msi fájl_ . Válassza ki a fájlt, kattintson rá a jobb gombbal, majd **bontsa** ki a fájlt. Az _. msi_ fájl segítségével frissítheti az ügynököt.
+    -  Egy önálló csomagfájl Microsoft Update `WindowsTH-KB3011067-x64` . Ez a fájl az eszköz szoftverének frissítésére szolgál.
+    - Egy Genfi figyelési ügynök csomagfájl `GenevaMonitoringAgentPackageInstaller` . Ez a fájl a monitoring and Diagnostics szolgáltatás (MDS) ügynökének frissítésére szolgál. Kattintson duplán a cab-fájlra. Megjelenik egy _. msi fájl_ . Válassza ki a fájlt, kattintson rá a jobb gombbal, majd **bontsa** ki a fájlt. Az _. msi_ fájl segítségével frissítheti az ügynököt.
 
         ![MDS-ügynök frissítési fájljának kibontása](./media/storsimple-virtual-array-install-update-06/extract-geneva-monitoring-agent-installer.png)
 
         > [!IMPORTANT]
         > Ha a 0,5-es StorSimple-frissítést (0.0.10293.0) futtatja, nem kell frissítenie az MDS-ügynököt.
 
-    - Három fájl, amelyek kritikus fontosságú Windows biztonsági frissítéseket `windows8.1-kb4012213-x64``windows8.1-kb3205400-x64`,, és `windows8.1-kb4019213-x64`rendszert tartalmaznak.
+    - Három fájl, amelyek kritikus fontosságú Windows biztonsági frissítéseket,, és rendszert tartalmaznak `windows8.1-kb4012213-x64` `windows8.1-kb3205400-x64` `windows8.1-kb4019213-x64` .
 
 
 ### <a name="install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
@@ -94,7 +95,7 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
-1. A helyi webes kezelőfelületen lépjen a **karbantartási** > **szoftverfrissítés**elemre. Jegyezze fel a futtatott szoftver verzióját. Ha a **10.0.10290.0**-et futtatja, a 6. lépésben nem kell frissítenie az MDS-ügynököt.
+1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés**elemre. Jegyezze fel a futtatott szoftver verzióját. Ha a **10.0.10290.0**-et futtatja, a 6. lépésben nem kell frissítenie az MDS-ügynököt.
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
@@ -110,7 +111,7 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
    
     ![eszköz frissítése](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási** > **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10293** kell lennie az 0,6-es frissítéshez.
+5. Az újraindítás után a rendszer a **bejelentkezési** oldalra kerül. Annak ellenőrzéséhez, hogy az eszköz szoftvere frissítve lett-e, a helyi webes felületen lépjen a **karbantartási**  >  **szoftverfrissítés**lapra. A megjelenített szoftververzió **10.0.0.0.0.10293** kell lennie az 0,6-es frissítéshez.
    
    > [!NOTE]
    > A szoftver-verziókat a helyi webes KEZELŐFELÜLETen és a Azure Portal némileg eltérő módon jelentik be. A helyi webes felhasználói felület például a **10.0.0.0.0.10293** és a Azure Portal jelentések **10.0.10293.0** ugyanazt a verziót jelenti.
@@ -121,9 +122,9 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
 
     Ha a 0,5-es frissítés előtt szoftveres verziót futtat, a következő lépés az MDS-ügynök frissítése. A **szoftverfrissítés** lapon lépjen a **fájl frissítése elérési útra** , és keresse meg a `GenevaMonitoringAgentPackageInstaller.msi` fájlt. Ismételje meg a 2-4. lépést. A virtuális tömb újraindítása után jelentkezzen be a helyi webes felhasználói felületre.
 
-7. Ismételje meg a 2-4 lépést a Windows biztonsági javításoknak `windows8.1-kb4012213-x64`a`windows8.1-kb3205400-x64`fájlok, `windows8.1-kb4019213-x64`a és a használatával történő telepítéséhez. A virtuális tömb az egyes telepítések után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
+7. Ismételje meg a 2-4 lépést a Windows biztonsági javításoknak a fájlok, a és a használatával történő telepítéséhez `windows8.1-kb4012213-x64` `windows8.1-kb3205400-x64` `windows8.1-kb4019213-x64` . A virtuális tömb az egyes telepítések után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).
 

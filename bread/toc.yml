@@ -441,9 +441,9 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Data Box termékcsalád
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: Storage
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: Offline Data Box-adatátvitel
           tocHref: /azure/databox/

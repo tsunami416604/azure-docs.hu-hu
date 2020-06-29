@@ -4,16 +4,16 @@ description: Itt megismerkedhet azzal, hogyan fejleszthet az Azure Files szolgá
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301437"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515380"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -34,12 +34,12 @@ További információ a Azure Filesről: [Mi az Azure Files?](storage-files-intr
 
 ## <a name="understanding-the-net-apis"></a>A .NET API-k ismertetése
 
-Az Azure Files két széleskörű megközelítést nyújt az ügyfélalkalmazásokhoz: az SMB protokollt és a REST-et. A .NET-ben `System.IO` a `WindowsAzure.Storage` és a API-k elvonták ezeket a megközelítést.
+Az Azure Files két széleskörű megközelítést nyújt az ügyfélalkalmazásokhoz: az SMB protokollt és a REST-et. A .NET-ben a `System.IO` és a API-k `WindowsAzure.Storage` elvonták ezeket a megközelítést.
 
 API | A következő esetekben használja | Megjegyzések
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Az alkalmazás/alkalmazásnak: <ul><li>Az SMB használatával kell olvasni/írni a fájlokat</li><li>Olyan eszközön fut, amely a 445-ös porton keresztül éri el az Azure Files-fiókot.</li><li>Nem kell kezelnie a fájlmegosztás rendszergazdai beállításait.</li></ul> | A Azure Files SMB protokollon keresztül megvalósított fájl I/O általában ugyanaz, mint a hálózati fájlmegosztás vagy a helyi tárolóeszköz I/O-értéke. A .NET-szolgáltatások számos funkciójának bevezetéséhez, beleértve a fájl I/O-t, tekintse meg a [konzol alkalmazás](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) oktatóanyagát.
-[Microsoft. Azure. Storage. file](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Az alkalmazás/alkalmazásnak: <ul><li>Az 445-as porton keresztüli SMB használatával nem lehet hozzáférni Azure Files tűzfal-vagy INTERNETSZOLGÁLTATÓi megkötések miatt</li><li>Rendszergazdai funkciókat igényel, például a fájlmegosztás kvótájának beállítását vagy közös hozzáférésű jogosultságkód létrehozásának lehetőségét.</li></ul> | Ez a cikk azt mutatja `Microsoft.Azure.Storage.File` be, hogyan használható a fájl I/O-használata az SMB és a fájlmegosztás kezelése helyett a REST használatával.
+[Microsoft. Azure. Storage. file](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Az alkalmazás/alkalmazásnak: <ul><li>Az 445-as porton keresztüli SMB használatával nem lehet hozzáférni Azure Files tűzfal-vagy INTERNETSZOLGÁLTATÓi megkötések miatt</li><li>Rendszergazdai funkciókat igényel, például a fájlmegosztás kvótájának beállítását vagy közös hozzáférésű jogosultságkód létrehozásának lehetőségét.</li></ul> | Ez a cikk azt mutatja be, `Microsoft.Azure.Storage.File` hogyan használható a fájl I/O-használata az SMB és a fájlmegosztás kezelése helyett a REST használatával.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>A konzolalkalmazás létrehozása és az összeállítás elérése
 
@@ -80,11 +80,11 @@ A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 
    * **Microsoft. Azure. Storage. Common**
    * **Microsoft. Azure. Storage. file**
-   * **Microsoft. Azure. ConfigurationManager**
+   * **Microsoft.Azure.ConfigurationManager**
 
-## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Mentse a Storage-fiók hitelesítő adatait az app. config fájlba
+## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>A Storage-fiók hitelesítő adatainak mentése a App.config fájlba
 
-Ezután mentse a hitelesítő adatait a projekt `App.config` fájljába. A **megoldáskezelő**kattintson `App.config` duplán a fájlra, és szerkessze a fájlt úgy, hogy az a következő példához hasonló legyen. Cserélje `myaccount` le a nevet a Storage- `mykey` fiók nevére és a Storage-fiók kulcsára.
+Ezután mentse a hitelesítő adatait a projekt `App.config` fájljába. A **megoldáskezelő**kattintson duplán `App.config` a fájlra, és szerkessze a fájlt úgy, hogy az a következő példához hasonló legyen. Cserélje le a `myaccount` nevet a Storage-fiók nevére és a `mykey` Storage-fiók kulcsára.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -103,7 +103,7 @@ Ezután mentse a hitelesítő adatait a projekt `App.config` fájljába. A **meg
 
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 
-A **Megoldáskezelőban**nyissa `Program.cs` meg a fájlt, és adja hozzá az alábbi utasításokat a fájl elejéhez.
+A **Megoldáskezelőban**nyissa meg a `Program.cs` fájlt, és adja hozzá az alábbi utasításokat a fájl elejéhez.
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -435,7 +435,7 @@ using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Bár az Azure-Blobok, az Azure-táblák és az `ServiceProperties` Azure-várólisták `Microsoft.Azure.Storage.Shared.Protocol` használják a névtérben lévő megosztott típust, `FileServiceProperties` Azure Files a saját `Microsoft.Azure.Storage.File.Protocol` típusát használja, a típust a névtérben. Az alábbi kód fordításához azonban mindkét névteret hivatkoznia kell a kódból.
+Bár az Azure-Blobok, az Azure-táblák és az Azure-várólisták használják a `ServiceProperties` névtérben lévő megosztott típust, `Microsoft.Azure.Storage.Shared.Protocol` Azure Files a saját típusát használja, a `FileServiceProperties` típust a `Microsoft.Azure.Storage.File.Protocol` névtérben. Az alábbi kód fordításához azonban mindkét névteret hivatkoznia kell a kódból.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -480,7 +480,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Ha bármilyen problémába ütközik, tekintse meg a [Windows Azure Files kapcsolatos problémák elhárítása](storage-troubleshoot-windows-file-connection-problems.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Filesről:
 

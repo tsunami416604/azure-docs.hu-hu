@@ -3,15 +3,15 @@ title: A StorSimple 8000 Series eszköz monitorozása
 description: Ismerteti, hogyan használható a StorSimple Eszközkezelő szolgáltatás a használat, az I/O-teljesítmény és a kapacitás kihasználtságának figyelésére.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: b3b77024606c5cdb02ff7bdd357c2d14a2415efa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277061"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514692"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>A StorSimple-eszköz figyelése a StorSimple Eszközkezelő szolgáltatással
 
@@ -138,7 +138,7 @@ A **CPU-kihasználtság** az eszközön használt CPU-ra vonatkozó metrikákat 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [használhatja a StorSimple Eszközkezelő szolgáltatás-eszköz irányítópultot](storsimple-device-dashboard.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-manager-service-administration.md).
 

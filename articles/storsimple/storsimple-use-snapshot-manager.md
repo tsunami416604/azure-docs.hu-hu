@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
-ms.openlocfilehash: 6a94a533dbc31e2f2d4ddb5d1985c77da8b29032
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476971"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513736"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>A StorSimple Snapshot Manager felhasználói felület használata a biztonsági mentési feladatok és a biztonságimásolat-katalógus kezeléséhez
 
@@ -373,7 +373,7 @@ Az alábbi táblázat a menüsáv billentyűparancsait ismerteti. A billentyűpa
 | ALT+O |A **Kedvencek** menü megnyitása. |A |Megnyitja a **Hozzáadás a kedvencekhez** lapot. |
 |  |O |Megnyitja a **Kedvencek rendszerezése** lapot. | |
 | ALT + W |Megnyitja a **ablak** menüt. |N |Egy másik StorSimple Snapshot Manager ablak megnyitása. |
-|  |C |Megjeleníti az összes megnyitott konzol ablakát egy lépcsőzetes stílusban. | |
+|  |C# |Megjeleníti az összes megnyitott konzol ablakát egy lépcsőzetes stílusban. | |
 |  |T |Megjeleníti az összes megnyitott konzolos ablakot egy rácsos mintában. | |
 |  |I |A képernyő alján található vízszintes sorba rendezi az ikonokat. | |
 | ALT + H |A **Súgó** menü megnyitása. |H |Az online súgó megnyitása. |
@@ -393,7 +393,7 @@ A következő táblázatok a **hatókör** panel egyes csomópontjainak billenty
 #### <a name="devices-node-shortcut-keys"></a>Eszközök csomópontjának billentyűparancsai
 | Helyi menü | Eredmény |
 |:--- |:--- |
-| C |Megnyitja az **eszköz konfigurálása** lapot. |
+| C# |Megnyitja az **eszköz konfigurálása** lapot. |
 | D |Frissíti az eszközök és az eszköz adatainak listáját. |
 | V |Megnyitja a **nézet** menüt. |
 | W |Új StorSimple Snapshot Manager-konzol megnyitása a **részletek** csomópontra összpontosítva. |

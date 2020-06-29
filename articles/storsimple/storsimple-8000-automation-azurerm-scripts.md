@@ -3,15 +3,15 @@ title: AzureRM PowerShell-parancsfájlok használata a StorSimple-eszközök fel
 description: Megtudhatja, hogyan használhatja Azure Resource Manager szkripteket a StorSimple-feladatok automatizálásához
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 03a5ef49b2d58d351d882b30b5d11e4a5ba90264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009e8c7e1cb59d68f3d3aa15de32ec47083095f9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471958"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513101"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK-alapú parancsfájlok használata a StorSimple-eszközök kezeléséhez
 
@@ -25,22 +25,22 @@ A különböző StorSimple-feladatok automatizálásához a következő minta-pa
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Azure Resource Manager SDK-alapú minta-parancsfájlok táblázata
 
-| Azure Resource Manager parancsfájl                    | Leírás                                                                                                                                                                                                       |
+| Azure Resource Manager parancsfájl                    | Description                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Authorize-ServiceEncryptionRollover. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Ezzel a szkripttel engedélyezheti a StorSimple-eszköz számára a szolgáltatás adattitkosítási kulcsának módosítását.                                                                                                           |
-| [Create-StorSimpleCloudAppliance. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Ez a szkript 8010 vagy 8020 StorSimple Cloud Appliance hoz létre. A felhőalapú berendezés ezután konfigurálható és regisztrálható a StorSimple Data Manager szolgáltatásban.                                                       |
-| [CreateOrUpdate-Volume. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/CreateOrUpdate-Volume.ps1)                        | Ez a szkript létrehozza vagy módosítja a StorSimple-köteteket.                                                                                                                                                             |
-| [Get-DeviceBackup. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Ez a parancsfájl felsorolja a StorSimple Eszközkezelő szolgáltatásban regisztrált eszközök összes biztonsági mentését.                                                                                                          |
-| [Get-DeviceBackupPolicy. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackupPolicy.ps1)                       | Ez a szkript a StorSimple-eszközre vonatkozó összes biztonsági mentési szabályzatot.                                                                                                                                                 |
-| [Get-DeviceJobs. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1)                               | Ez a szkript beolvassa a StorSimple Eszközkezelő szolgáltatáson futó összes StorSimple feladatot.                                                                                                                     |
-| [Get-DeviceUpdateAvailability. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceUpdateAvailability.ps1)                 | Ez a szkript megvizsgálja a frissítési kiszolgálót, és lehetővé teszi, hogy a frissítések elérhetők legyenek a StorSimple-eszközön való telepítéshez.                                                                                          |
-| [Install-DeviceUpdate. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Install-DeviceUpdate.ps1)                         | Ez a szkript telepíti a rendelkezésre álló frissítéseket a StorSimple-eszközön.                                                                                                                                           |
-| [Manage-CloudSnapshots. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Manage-CloudSnapshots.ps1)                        | Ez a szkript elindít egy manuális Felhőbeli pillanatképet, és törli a megadott megőrzési napoknál régebbi Felhőbeli pillanatképeket.                                                                                                   |
-| [Monitor-Backups. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1)                              | Ez a Azure Automation Runbook PowerShell-parancsfájl az összes biztonsági mentési feladat állapotát jelenti.                                                                                                              |
-| [Remove-DeviceBackup. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Remove-DeviceBackup.ps1)                          | Ez a parancsfájl egyetlen biztonsági mentési objektumot töröl.                                                                                                                                                           |
-| [Start-DeviceBackupJob. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Start-DeviceBackupJob.ps1)                        | Ez a szkript elindít egy manuális biztonsági mentést a StorSimple-eszközön.                                                                                                                                       |
-| [Update-CloudApplianceServiceEncryptionKey. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Ez a szkript frissíti a szolgáltatás adattitkosítási kulcsát a StorSimple Eszközkezelő szolgáltatásban regisztrált összes 8010/8020 StorSimple felhőalapú készülékre vonatkozóan.                                     |
-| [Verify-BackupScheduleAndBackup. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Verify-BackupScheduleAndBackup.ps1)               | Ez a parancsfájl a biztonsági mentési házirendekhez kapcsolódó összes ütemezés elemzése után kiemeli a hiányzó biztonsági másolatokat. Azt is ellenőrzi, hogy a biztonsági mentési katalógus tartalmazza-e az elérhető biztonsági másolatok listáját.             |
+| [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Ezzel a szkripttel engedélyezheti a StorSimple-eszköz számára a szolgáltatás adattitkosítási kulcsának módosítását.                                                                                                           |
+| [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Ez a szkript 8010 vagy 8020 StorSimple Cloud Appliance hoz létre. A felhőalapú berendezés ezután konfigurálható és regisztrálható a StorSimple Data Manager szolgáltatásban.                                                       |
+| [CreateOrUpdate-Volume.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/CreateOrUpdate-Volume.ps1)                        | Ez a szkript létrehozza vagy módosítja a StorSimple-köteteket.                                                                                                                                                             |
+| [Get-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Ez a parancsfájl felsorolja a StorSimple Eszközkezelő szolgáltatásban regisztrált eszközök összes biztonsági mentését.                                                                                                          |
+| [Get-DeviceBackupPolicy.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackupPolicy.ps1)                       | Ez a szkript a StorSimple-eszközre vonatkozó összes biztonsági mentési szabályzatot.                                                                                                                                                 |
+| [Get-DeviceJobs.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1)                               | Ez a szkript beolvassa a StorSimple Eszközkezelő szolgáltatáson futó összes StorSimple feladatot.                                                                                                                     |
+| [Get-DeviceUpdateAvailability.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceUpdateAvailability.ps1)                 | Ez a szkript megvizsgálja a frissítési kiszolgálót, és lehetővé teszi, hogy a frissítések elérhetők legyenek a StorSimple-eszközön való telepítéshez.                                                                                          |
+| [Install-DeviceUpdate.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Install-DeviceUpdate.ps1)                         | Ez a szkript telepíti a rendelkezésre álló frissítéseket a StorSimple-eszközön.                                                                                                                                           |
+| [Manage-CloudSnapshots.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Manage-CloudSnapshots.ps1)                        | Ez a szkript elindít egy manuális Felhőbeli pillanatképet, és törli a megadott megőrzési napoknál régebbi Felhőbeli pillanatképeket.                                                                                                   |
+| [Monitor-Backups.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1)                              | Ez a Azure Automation Runbook PowerShell-parancsfájl az összes biztonsági mentési feladat állapotát jelenti.                                                                                                              |
+| [Remove-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Remove-DeviceBackup.ps1)                          | Ez a parancsfájl egyetlen biztonsági mentési objektumot töröl.                                                                                                                                                           |
+| [Start-DeviceBackupJob.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Start-DeviceBackupJob.ps1)                        | Ez a szkript elindít egy manuális biztonsági mentést a StorSimple-eszközön.                                                                                                                                       |
+| [Update-CloudApplianceServiceEncryptionKey.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Ez a szkript frissíti a szolgáltatás adattitkosítási kulcsát a StorSimple Eszközkezelő szolgáltatásban regisztrált összes 8010/8020 StorSimple felhőalapú készülékre vonatkozóan.                                     |
+| [Verify-BackupScheduleAndBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Verify-BackupScheduleAndBackup.ps1)               | Ez a parancsfájl a biztonsági mentési házirendekhez kapcsolódó összes ütemezés elemzése után kiemeli a hiányzó biztonsági másolatokat. Azt is ellenőrzi, hogy a biztonsági mentési katalógus tartalmazza-e az elérhető biztonsági másolatok listáját.             |
 
 
 
@@ -69,7 +69,7 @@ Az ebben a példában használt parancsfájl felsorolja a StorSimple-eszközön 
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [Töltse le az NUGET CLI](https://www.nuget.org/downloads) -t az előző lépésben létrehozott mappában. A _nuget. exe_különböző verziói vannak. Válassza ki az SDK-nak megfelelő verziót. Minden letöltési hivatkozás közvetlenül egy _. exe_ -fájlra mutat. Győződjön meg arról, hogy a jobb gombbal rákattint, és mentse a fájlt a számítógépre ahelyett, hogy a böngészőből futtatná.
+2. [Töltse le az NUGET CLI](https://www.nuget.org/downloads) -t az előző lépésben létrehozott mappában. A _nuget.exe_különböző verziói vannak. Válassza ki az SDK-nak megfelelő verziót. Minden letöltési hivatkozás közvetlenül egy _. exe_ -fájlra mutat. Győződjön meg arról, hogy a jobb gombbal rákattint, és mentse a fájlt a számítógépre ahelyett, hogy a böngészőből futtatná.
 
     A következő parancs futtatásával is letöltheti és tárolhatja a parancsfájlt ugyanabban a mappában, amelyet korábban hozott létre.
     
@@ -166,6 +166,6 @@ PS C:\Scripts\StorSimpleSDKTools>
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A StorSimple-eszköz kezeléséhez használja a StorSimple Eszközkezelő szolgáltatást](storsimple-8000-manager-service-administration.md).

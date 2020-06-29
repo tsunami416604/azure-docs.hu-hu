@@ -3,15 +3,15 @@ title: .NET SDK – fájlrendszerbeli műveletek Data Lake Storage Gen1-Azure-ba
 description: Használja a Azure Data Lake Storage Gen1 .NET SDK-t a fájlrendszerbeli műveletekhez Data Lake Storage Gen1 például mappák létrehozása stb.).
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 9e52a3cb8d31b5fccc9a0b5a3a76d4e9b43de123
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690968"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515658"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Fájlrendszer-műveletek Data Lake Storage Gen1 a .NET SDK használatával
 
@@ -41,7 +41,7 @@ A [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-s
 
 1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt**elemre.
 1. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább**gombra.
-1. A **Project Name (projekt neve**) mezőben adja meg `CreateADLApplication`a nevet, majd válassza a **Létrehozás**lehetőséget.
+1. A **Project Name (projekt neve**) mezőben adja meg a nevet `CreateADLApplication` , majd válassza a **Létrehozás**lehetőséget.
 1. Adja hozzá a NuGet-csomagokat a projekthez.
 
    1. Kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) elemre.
@@ -156,7 +156,7 @@ var directoryEntry = client.GetDirectoryEntry(fileName);
 PrintDirectoryEntry(directoryEntry);
 ```
 
-A `PrintDirectoryEntry` metódus definíciója a [githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)található minta részeként érhető el.
+A metódus definíciója `PrintDirectoryEntry` a [githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)található minta részeként érhető el.
 
 ## <a name="rename-a-file"></a>Fájl átnevezése
 
@@ -180,7 +180,7 @@ foreach (var entry in client.EnumerateDirectory("/Test"))
 }
 ```
 
-A `PrintDirectoryEntry` metódus definíciója a [githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)található minta részeként érhető el.
+A metódus definíciója `PrintDirectoryEntry` a [githubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)található minta részeként érhető el.
 
 ## <a name="delete-directories-recursively"></a>Könyvtárak rekurzív törlése
 
@@ -203,6 +203,6 @@ client.DeleteRecursive("/Test");
 * [Fiókkezelés Data Lake Storage Gen1 a .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Storage Gen1 .NET SDK-dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

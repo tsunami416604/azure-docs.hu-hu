@@ -12,6 +12,12 @@
   items:
     - name: Azure-erőforrás monitorozása
       href: learn/quick-monitor-azure-resource.md
+    - name: Tevékenységnapló küldése munkaterületre
+      items:
+        - name: Azure Portal
+          href: learn/quick-collect-activity-log-portal.md
+        - name: ARM-sablon
+          href: learn/quick-collect-activity-log-arm.md
     - name: Virtuális gépek figyelése
       items:
         - name: Azure-beli virtuális gépek
@@ -455,7 +461,7 @@
             - name: Webhook-műveletek
               href: platform/alerts-log-webhook.md
             - name: Naplóriasztások hibaelhárítása
-              href: platform/alert-log-troubleshoot.md
+              href: platform/alerts-troubleshoot-log.md
         - name: Tevékenységnapló-riasztási szabályok
           items:
             - name: Riasztás tevékenységnapló-eseményhez
@@ -506,6 +512,8 @@
           href: platform/api-alerts.md
         - name: Riasztások hibaelhárítása
           href: platform/alerts-troubleshoot.md
+        - name: Riasztások és régióáthelyezések
+          href: platform/alerts-resource-move.md
         - name: Informatikai szolgáltatásfelügyelet
           items:
             - name: Informatikai szolgáltatásfelügyeleti összekötő
@@ -555,12 +563,12 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
+            - name: ASP.NET konzol
+              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+              href: app/console.md
             - name: Nem HTTP alkalmazások/háttérben futó alkalmazások
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET-konzol
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
             - name: Java
               items:
                 - name: Webalkalmazások

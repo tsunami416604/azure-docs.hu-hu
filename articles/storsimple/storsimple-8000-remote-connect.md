@@ -3,16 +3,16 @@ title: Távoli kapcsolódás a StorSimple-eszközhöz
 description: Ismerteti, hogyan konfigurálhatja az eszközt a távoli felügyelethez, és hogyan csatlakozhat a Windows PowerShell StorSimple-bővítménye HTTP-vagy HTTPS-kapcsolaton keresztül.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58d61df932da06e32bb4c8f21a3a296b185f02d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80299011"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514579"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Távoli kapcsolódás a StorSimple 8000 Series eszközhöz
 
@@ -103,7 +103,7 @@ A Távoli felügyelet engedélyezéséhez hajtsa végre az alábbi lépéseket a
      `Enter-PSSession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
    
    > [!NOTE]
-   > Ha Windows PowerShell-munkamenetet szeretne létrehozni a StorSimple virtuális eszközzel való használatra, fűzze `–Port` hozzá a paramétert, és határozza meg azt a nyilvános portot, amelyet a StorSimple virtuális készüléken a távelérési szolgáltatásban konfigurált.
+   > Ha Windows PowerShell-munkamenetet szeretne létrehozni a StorSimple virtuális eszközzel való használatra, fűzze hozzá a `–Port` paramétert, és határozza meg azt a nyilvános portot, amelyet a StorSimple virtuális készüléken a távelérési szolgáltatásban konfigurált.
    
    
 Ezen a ponton aktív távoli Windows PowerShell-munkamenetet kell használnia az eszközhöz.
@@ -155,7 +155,7 @@ A Távoli felügyelet engedélyezéséhez hajtsa végre a következő lépéseke
     Győződjön meg arról, hogy a **RemoteManagementMode** mező a **HttpsEnabled**jeleníti meg. A következő ábra ezeket a beállításokat jeleníti meg a PuTTY-ban.
    
      ![Soros HTTPS engedélyezve](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
-4. A kimenetében másolja `Get-HcsSystem`az eszköz sorozatszámát, és mentse későbbi használatra.
+4. A kimenetében `Get-HcsSystem` másolja az eszköz sorozatszámát, és mentse későbbi használatra.
    
    > [!NOTE]
    > A sorozatszám a tanúsítványban szereplő CN-névre van leképezve.
@@ -236,7 +236,7 @@ Hajtsa végre az alábbi eljárást azon a számítógépen, amelyről a távoli
    
     ![PowerShell-távelérés a HTTPS és a TLS használatával](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Windows PowerShell a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-windows-powershell-administration.md).
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).

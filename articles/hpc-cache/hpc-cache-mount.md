@@ -3,19 +3,19 @@ title: Azure HPC-gyorsítótár csatlakoztatása
 description: Ügyfelek összekötése az Azure HPC cache szolgáltatással
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb3e4fd4935afc4869e50ccbc35c53333d43b1df
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458369"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515522"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC-gyorsítótár csatlakoztatása
+# <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC Cache csatlakoztatása
 
-A gyorsítótár létrehozása után az NFS-ügyfelek egy egyszerű `mount` parancs használatával férhetnek hozzá. A parancs egy adott tárolási cél elérési utat csatlakoztat az Azure HPC-gyorsítótárból egy helyi könyvtárba az ügyfélszámítógépen.
+A gyorsítótár létrehozása után az NFS-ügyfelek egy egyszerű parancs használatával férhetnek hozzá `mount` . A parancs egy adott tárolási cél elérési utat csatlakoztat az Azure HPC-gyorsítótárból egy helyi könyvtárba az ügyfélszámítógépen.
 
 A csatlakoztatási parancs az alábbi elemekből áll:
 
@@ -57,7 +57,7 @@ Amikor az ügyfélszámítógépet a gyorsítótárhoz kapcsolja, társítja ezt
 
 Másolható csatlakoztatási parancs létrehozásához a Azure Portal **csatlakoztatási utasítások** lapja használható. A portálon nyissa meg a lap gyorsítótár nézetének **configure (Konfigurálás** ) szakaszát.
 
-A parancsnak az ügyfélen való használata előtt győződjön meg arról, hogy az ügyfél megfelel az előfeltételeknek, és a szoftver `mount` szükséges az NFS-parancs használatához az [ügyfelek előkészítése](#prepare-clients)című cikkben leírtak szerint.
+A parancsnak az ügyfélen való használata előtt győződjön meg arról, hogy az ügyfél megfelel az előfeltételeknek, és a szoftver szükséges az NFS `mount` -parancs használatához az [ügyfelek előkészítése](#prepare-clients)című cikkben leírtak szerint.
 
 ![képernyőkép egy Azure HPC cache-példányról a portálon, a configure > Mount utasítások lapon betöltve](media/mount-instructions.png)
 
@@ -107,7 +107,7 @@ root@test-client:/tmp# sudo mount -o hard,proto=tcp,mountproto=tcp,retry=30 10.0
 root@test-client:/tmp#
 ```
 
-A parancs sikeres végrehajtása után a tároló exportálásának tartalma látható lesz az ügyfél ``hpccache`` címtárában.
+A parancs sikeres végrehajtása után a tároló exportálásának tartalma látható lesz az ``hpccache`` ügyfél címtárában.
 
 ### <a name="mount-command-options"></a>Csatlakoztatási parancs beállításai
 
@@ -120,7 +120,7 @@ Robusztus ügyfél csatlakoztatása esetén adja át ezeket a beállításokat �
 ``hard`` | Az Azure HPC cache-hez való Soft mounts az alkalmazás hibáival és az esetleges adatvesztéssel jár.
 ``proto=tcp`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
 ``mountproto=tcp`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
-``retry=<value>`` | Állítsa ``retry=30`` be az átmeneti csatlakoztatási hibák elkerülését. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
+``retry=<value>`` | Állítsa be ``retry=30`` az átmeneti csatlakoztatási hibák elkerülését. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
 
 ### <a name="find-mount-command-components"></a>Csatlakoztatási parancs összetevőinek keresése
 
@@ -129,12 +129,12 @@ Ha a csatlakoztatási **utasítások** lap használata nélkül szeretné létre
 ![képernyőkép az Azure HPC cache-példány áttekintő oldaláról, amely a jobb alsó sarokban lévő csatlakoztatási címek listája körüli kiemelési lista](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE]
-> A gyorsítótár-csatlakoztatási címek a gyorsítótár alhálózatán belüli hálózati adaptereknek felelnek meg. Egy erőforráscsoport esetében ezek a hálózati adapterek a (z) `-cluster-nic-` és egy szám végződésű névvel vannak felsorolva. Ne módosítsa vagy törölje ezeket a csatolókat, vagy a gyorsítótár elérhetetlenné válik.
+> A gyorsítótár-csatlakoztatási címek a gyorsítótár alhálózatán belüli hálózati adaptereknek felelnek meg. Egy erőforráscsoport esetében ezek a hálózati adapterek a (z `-cluster-nic-` ) és egy szám végződésű névvel vannak felsorolva. Ne módosítsa vagy törölje ezeket a csatolókat, vagy a gyorsítótár elérhetetlenné válik.
 
 A virtuális névtér elérési útjai az egyes tárolási cél részletek lapján jelennek meg. Kattintson egy egyedi tárolási cél nevére a részletek megjelenítéséhez, beleértve a hozzájuk társított összesített névtér-elérési utakat is.
 
 ![a tárolási cél részletes oldalának képernyőképe (fejléc "frissítési tárolási cél"). A tábla virtuális névtér elérési útja oszlopában található egy kiemelési mező](media/hpc-cache-view-namespace-paths.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha adatokat szeretne áthelyezni a gyorsítótár tárolási céljaira, olvassa el az [új Azure Blob Storage feltöltése](hpc-cache-ingest.md)című cikkét.

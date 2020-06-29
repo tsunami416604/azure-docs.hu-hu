@@ -3,15 +3,15 @@ title: Azure HPC cache-adatfeldolgozás – párhuzamos másolási parancsfájl
 description: Egy párhuzamos másolási parancsfájl használata az Azure HPC cache-ben lévő blob Storage-tárolóba való áthelyezéshez
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 90e05ad3d42b1009b631630fe476669a9f418d33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5db04b3ee89ab5a0a4f85f3b833ea513310dce18
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74166895"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514787"
 ---
 # <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC cache-adatfeldolgozás – párhuzamos másolási parancsfájl metódusa
 
@@ -21,7 +21,7 @@ Ha többet szeretne megtudni arról, hogy az Azure HPC gyorsítótára hogyan he
 
 ## <a name="create-the-parallelcp-script"></a>A parallelcp parancsfájl létrehozása
 
-Az alábbi szkript hozzáadja a végrehajtható fájlt `parallelcp`. (Ezt a szkriptet Ubuntu-re tervezték, ha más disztribúciót használ ``parallel`` , külön kell telepítenie.)
+Az alábbi szkript hozzáadja a végrehajtható fájlt `parallelcp` . (Ezt a szkriptet Ubuntu-re tervezték, ha más disztribúciót használ, külön kell telepítenie ``parallel`` .)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Példa párhuzamos másolásra
 
-Ez a példa a párhuzamos másolási parancsfájl ``glibc`` használatával fordítja le a forrásfájlokat az Azure HPC cache-ben.
+Ez a példa a párhuzamos másolási parancsfájl használatával fordítja le ``glibc`` a forrásfájlokat az Azure HPC cache-ben.
 
 A forrásfájlok az Azure HPC cache csatlakoztatási pontján vannak gyorsítótárazva, és az objektum fájljai a helyi merevlemezen vannak tárolva.
 
-Ebben a példában a párhuzamos másolási parancsfájlt használja ``-j`` a ``make`` kapcsolóval, és párhuzamos nyerhet.
+Ebben a példában a párhuzamos másolási parancsfájlt használja a kapcsolóval, ``-j`` és ``make`` párhuzamos nyerhet.
 
 ```bash
 sudo apt-get update

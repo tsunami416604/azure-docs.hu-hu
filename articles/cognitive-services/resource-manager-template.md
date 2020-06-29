@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbaa10ec8a0b48d40644bb90144d89f53ab52563
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299483"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513538"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása ARM-sablonnal
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Cognitive Services-erőforrást egy Azure Resource Manager-(ARM-) sablon használatával. A több szolgáltatásból álló erőforrás a következőket teszi lehetővé:
+Ebből a cikkből megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Cognitive Services erőforrást egy Azure Resource Manager sablon (ARM-sablon) használatával. A több szolgáltatásból álló erőforrás a következőket teszi lehetővé:
 * Több Azure-Cognitive Services elérése egyetlen kulccsal és végponttal.
 * Konszolidálja a számlázási szolgáltatásokat a használt szolgáltatásokból.
 
@@ -108,7 +108,7 @@ az cognitiveservices account list -g $resourceGroupName
 ---
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlése a csoportban található egyéb erőforrásokat is törli.
 

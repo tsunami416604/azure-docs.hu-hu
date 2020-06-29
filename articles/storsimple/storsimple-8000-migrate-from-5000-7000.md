@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c05b62b254320bd56a6f0591f1edbe32d5362e56
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60631655"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514731"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Adatok migrálása a StorSimple 5000-7000 sorozatból az 8000 Series eszközre
 
@@ -123,7 +123,7 @@ A StorSimple áttelepítési eszköz telepítéséhez hajtsa végre a következ�
 
 1. Másolja a _StorSimple8000SeriesMigrationTool_ mappát a Windows rendszerű számítógépre. Győződjön meg arról, hogy a meghajtó, ahová a szoftvert másolja, elegendő lemezterülettel rendelkezik.
 
-    Nyissa meg az _StorSimple8000SeriesMigrationTool. exe. config_ nevű eszközt a mappában. Itt látható a fájl kódrészlete.
+    Nyissa meg az eszköz konfigurációs fájlját _StorSimple8000SeriesMigrationTool.exe.config_ a mappában. Itt látható a fájl kódrészlete.
     
     ```xml
         <add key="UserName" value="username@xyz.com" />
@@ -145,7 +145,7 @@ A StorSimple áttelepítési eszköz telepítéséhez hajtsa végre a következ�
     ![Azure Active Directory bérlői AZONOSÍTÓjának megkeresése](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Mentse a konfigurációs fájlban végrehajtott módosításokat.
-4.  Futtassa a _StorSimple8000SeriesMigrationTool. exe fájlt_ az eszköz elindításához. Amikor a rendszer kéri a hitelesítő adatokat, adja meg az előfizetéséhez tartozó hitelesítő adatokat Azure Portalban. 
+4.  Az eszköz elindításához futtassa a _StorSimple8000SeriesMigrationTool.exe_ . Amikor a rendszer kéri a hitelesítő adatokat, adja meg az előfizetéséhez tartozó hitelesítő adatokat Azure Portalban. 
 5.  Megjelenik a StorSimple áttelepítési eszköz felhasználói felülete.
   
 

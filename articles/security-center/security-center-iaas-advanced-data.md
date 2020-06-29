@@ -1,6 +1,6 @@
 ---
-title: Speciális adatbiztonság a IaaS-ben a Azure Security Centerban | Microsoft Docs
-description: Ismerje meg, hogyan engedélyezheti a speciális adatbiztonságot a Azure Security Centerban található SQL-gépekhez.
+title: Azure Security Center az SQL-gépek speciális adatbiztonsága (előzetes verzió)
+description: Ismerje meg, hogyan engedélyezheti az SQL-gépek speciális adatbiztonságát Azure Security Center
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: 1c269ad13072ae4dcff9caba892ccc0643647e5c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 673524f08ecae28fb6f2e18f3c0c7230cf102b06
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254180"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513463"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Fejlett adatbiztonság SQL-gépekhez (előzetes verzió)
 
@@ -127,7 +127,7 @@ A biztonsági riasztások a Security Center riasztások lapján, az erőforrás 
     [További információ a riasztások kezeléséről és megválaszolásáról](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kapcsolódó anyagok esetében tekintse meg a következő cikket:
 
