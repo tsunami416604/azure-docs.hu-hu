@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886782"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510992"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Oktatóanyag: a készségkészlet változásainak diagnosztizálása, javítása és elutasítása
 
 Ebben a cikkben a Azure Portal segítségével érheti el a hibakeresési munkameneteket a megadott készségkészlet kapcsolatos hibák kijavításához. A készségkészlet néhány hibát tartalmaz, amelyeket meg kell oldani. Ez az oktatóanyag végigvezeti egy hibakeresési munkameneten, amellyel azonosíthatja és megoldhatja a szaktudás bemeneteit és kimeneteit.
 
 > [!Important]
-> A hibakeresési munkamenetek támogatása az Azure [Cognitive Search számára korlátozott](https://aka.ms/DebugSessions) hozzáférésű előzetes verzióként érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlottak. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A hibakeresési munkamenetek az előzetes verziójú szolgáltatások, amelyek szolgáltatói szerződés nélkül érhetők el, és nem ajánlottak éles számítási feladatokhoz. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Miután hozzáférést kapott az előzetes verzióhoz, a Azure Portal használatával elérheti és használhatja a szolgáltatáshoz tartozó hibakeresési munkameneteket.
->   
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -249,7 +247,7 @@ Ha az indexelő befejezte a futást, akkor a futtatási Előzmények lapon a leg
 1. Nyissa meg a "klinikai kísérletek" indexet, és a keresési Explorer lapon kattintson a **Keresés**gombra.
 1. Az eredmény ablaknak be kell mutatnia, hogy a szervezetek és a helyszínek entitások már a várt értékekkel lesznek feltöltve.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

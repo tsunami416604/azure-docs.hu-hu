@@ -3,16 +3,16 @@ title: Azure Files hálózati végpontok konfigurálása | Microsoft Docs
 description: A Azure Files hálózati beállításainak áttekintése.
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e58a84d8c001ad273cfa14ffb871aaea71bc468b
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 0859b034cf0caa60039fbf9eb4dd9be54448a940
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465032"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510319"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files hálózati végpontok konfigurálása
 Azure Files két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 

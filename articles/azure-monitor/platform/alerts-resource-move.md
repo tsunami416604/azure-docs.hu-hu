@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe89f932bcf7aa22657a3fcabddd015df4b9913d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 65c2e3dbe7cb99c9b7c6e1a84178fd28d5013a69
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85486666"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507942"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Riasztási szabályok vagy műveleti szabályok frissítése, ha a célként megadott erőforrás egy másik Azure-régióba kerül át
 
@@ -32,6 +32,7 @@ Két fő oka lehet annak, hogy a szabályok miért nem működnek a cél erőfor
 Amikor áthelyez egy erőforrást, az erőforrás-azonosítója a legtöbb esetben megváltozik. A rendszer a háttérben replikálja az erőforrást az új régióba, mielőtt törölné a régi régióból. Ehhez a folyamathoz két erőforrás szükséges, így két különböző erőforrás-azonosító is létezik egyszerre egy kis ideig. Mivel az erőforrás-azonosítóknak egyedieknek kell lenniük, új azonosítót kell létrehozni a folyamat során. 
 
 **Hogyan befolyásolja az erőforrás áthelyezése a meglévő szabályokat?**
+
 A riasztási szabályok és a műveleti szabályok olyan erőforrás-hatókörrel rendelkeznek, amelyre vonatkoznak. A hatókör lehet egy teljes előfizetés, egy erőforráscsoport vagy egy vagy több konkrét erőforrás.
 Íme például egy olyan szabály, amelynek hatóköre két erőforrással rendelkezik (két virtuális gép):
 
@@ -101,8 +102,12 @@ Ha a hatókörben lévő erőforrások **közül csak néhány** lett áthelyezv
 2. Módosítsa a hatókört. Szükség esetén két szabályra osztható (amelyek a fentiekben leírtak szerint a metrikus riasztások bizonyos eseteire vonatkoznak).
 3. A szabály újbóli üzembe helyezése ([metrikai riasztások](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2), [műveletnapló-riasztások](https://docs.microsoft.com/powershell/module/az.monitor/enable-azactivitylogalert), [műveleti szabályok](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule)).
 
-### <a name="changing-the-scope-of-a-rule-using-azure-cli"></a>Szabály hatókörének módosítása az Azure CLI használatával
+### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Szabály hatókörének módosítása az Azure CLI használatával
 
 1.  A meglévő szabály beszerzése ([metrikus riasztások](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [műveletnapló riasztásai](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
 2.  A szabály hatókörének frissítése közvetlenül ([metrikus riasztások](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [műveletnapló riasztásai](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope))
 3.  Szükség esetén két szabályra osztható (amelyek a fentiekben leírtak szerint a metrikus riasztások bizonyos eseteire vonatkoznak).
+
+## <a name="next-steps"></a>Következő lépések
+
+További információ a [Riasztási értesítések](alerts-troubleshoot.md), a [metrikus riasztások](alerts-troubleshoot-metric.md)és a [naplózási riasztások](alerts-troubleshoot-log.md)egyéb problémáinak kijavításáról. 

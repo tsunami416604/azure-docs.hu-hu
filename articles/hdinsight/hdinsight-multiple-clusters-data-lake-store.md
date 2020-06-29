@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bc6659904530bfa40ee54cd55eab5eaca689069
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495748"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509217"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata Azure Data Lake Storage fiókkal
 
@@ -44,7 +44,7 @@ A táblázatban
 - Az **egyszerű szolgáltatásnév** a fiókhoz társított Azure Active Directory (HRE) egyszerű szolgáltatásnév.
 - A **FINGRP** a HRE-ben létrehozott felhasználói csoport, amely a pénzügyi szervezet felhasználóit tartalmazza.
 
-A HRE-alkalmazások létrehozásával kapcsolatos utasításokért (amely egyben egyszerű szolgáltatásnevet is létrehoz) tekintse meg a [HRE-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)című témakört. A felhasználói csoportok HRE-ben való létrehozásával kapcsolatos utasításokért lásd: [csoportok kezelése a Azure Active Directoryban](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+A HRE-alkalmazások létrehozásával kapcsolatos utasításokért (amely egyben egyszerű szolgáltatásnevet is létrehoz) tekintse meg a [HRE-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)című témakört. A felhasználói csoportok HRE-ben való létrehozásával kapcsolatos utasításokért lásd: [csoportok kezelése a Azure Active Directoryban](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Néhány fontos szempontot figyelembe kell venni.
 
@@ -85,7 +85,7 @@ Ahogy azt a korábban a JIRA csatolta, a nyilvános erőforrások honosítása k
 
 #### <a name="workaround"></a>Áthidaló megoldás
 
-Állítsa be az olvasási végrehajtás engedélyeit **mások** számára a hierarchián keresztül, például **/** a következő táblázatban látható módon:, **/Clusters** és **/Clusters/Finance** .
+Állítsa be az olvasási végrehajtás engedélyeit **mások** számára a hierarchián keresztül, például a következő **/** táblázatban látható módon:, **/Clusters** és **/Clusters/Finance** .
 
 ## <a name="see-also"></a>Lásd még
 

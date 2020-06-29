@@ -3,15 +3,15 @@ title: Azure Data Lake Storage Gen1 fiók kezelése – Azure CLI
 description: Az Azure CLI használatával hozzon létre egy Data Lake Storage Gen1 fiókot, és hajtson végre alapszintű műveleteket.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 4e278981ce7647a53d2e80c5b835c8ed666db541
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 29aa3932f8ba566e4542031ce157fc7bb8c05ce7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688171"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511185"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>A Azure Data Lake Storage Gen1 használatának első lépései az Azure CLI-vel
 
@@ -228,7 +228,7 @@ az dls account delete --account mydatalakestoragegen1
 
 Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Data Lake Storage Gen1 használata big data követelményekhez](data-lake-store-data-scenarios.md) 
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 * [Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

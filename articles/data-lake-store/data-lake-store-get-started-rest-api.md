@@ -3,15 +3,15 @@ title: Azure Data Lake Storage Gen1-fiók kezelése REST-tel
 description: A WebHDFS-REST API használatával elvégezheti a fiókok felügyeleti műveleteit egy Azure Data Lake Storage Gen1-fiókon.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8a106b55fb90f320b90c81216a205dd10a9bf934
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: cc3f848dc0718e1d721cecbfeb53ca034580ae81
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692076"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509253"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Fiókkezelés Azure Data Lake Storage Gen1 a REST API használatával
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Az Azure Active Directory használatával történő hitelesítést két módon 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
 Ez a művelet az [itt](https://docs.microsoft.com/rest/api/datalakestore/accounts/create) definiált REST API-híváson alapul.
 
-Használja a következő cURL-parancsot. Cserélje le ** \<a yourstoragegen1name>** a Data Lake Storage Gen1 nevére.
+Használja a következő cURL-parancsot. Cserélje le a helyére **\<yourstoragegen1name>** a Data Lake Storage Gen1 nevét.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
 
@@ -55,7 +55,7 @@ A fenti parancsban cserélje le a(z) \<`REDACTED`\> részt a korábban kapott en
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 fiók törlése
 Ez a művelet az [itt](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete) definiált REST API-híváson alapul.
 
-Data Lake Storage Gen1 fiók törléséhez használja a következő cURL-parancsot. Cserélje le ** \<a yourstoragegen1name>** az Data Lake Storage Gen1-fiók nevére.
+Data Lake Storage Gen1 fiók törléséhez használja a következő cURL-parancsot. Cserélje le a helyére **\<yourstoragegen1name>** a Data Lake Storage Gen1 fiók nevét.
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview
 
@@ -65,7 +65,7 @@ A következő kódrészlethez hasonló kimenetnek kell megjelennie:
     ...
     ...
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Fájlrendszer-műveletek Data Lake Storage Gen1 a REST API használatával](data-lake-store-data-operations-rest-api.md).
 
 ## <a name="see-also"></a>Lásd még

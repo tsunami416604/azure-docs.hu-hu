@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d3bfb589ec4c152b136e8e1f432864b719c97d58
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779166"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509319"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban
 
@@ -56,12 +56,17 @@ Azure Time Series Insights támogatja az Azure IoT Hub vagy az Azure Event Hubs 
 
 A támogatott adattípusok a következők:
 
-| Adattípus | Leírás |
+| Adattípus | Description |
 |---|---|
 | **logikai** | Olyan adattípus, amely két állapot egyikét adja meg: `true` vagy `false` . |
 | **dateTime** | Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formátumban kifejezve. |
+| **hosszú** | Aláírt 64 bites egész szám  |
 | **double** | Kétszeres pontosságú 64 bites [IEEE 754](https://ieeexplore.ieee.org/document/8766229) lebegőpontos pont. |
-| **sztring** | Szöveges értékek, amelyek Unicode-karakterből állnak.          |
+| **karakterlánc** | Szöveges értékek, amelyek Unicode-karakterből állnak.          |
+
+> [!IMPORTANT]
+>
+> * Az ÁME-környezet erősen van beírva. Ha az eszközök vagy címkék mind az integrált, mind a nem integrált adatok küldését végzik, az eszköz tulajdonságának értékét két különálló dupla és hosszú oszlop tárolja, és az [Egyesítés () függvényt](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) kell használni API-hívások készítésekor és az idősorozat-modell változó kifejezésének definiálásakor.
 
 #### <a name="objects-and-arrays"></a>Objektumok és tömbök
 
@@ -118,7 +123,7 @@ Alapértelmezés szerint a Time Series Insights-előnézet a bejövő adatmennyi
     * A másodpercenkénti betöltési arány 0,25 MBps.
     * A contoso szállításának betöltési sebessége az előzetes verzióra vonatkozó korlátozáson belül lenne.
 
-* **2. példa**
+* **2. példa:**
 
     A contoso Fleet Analytics 60 000 olyan eszközt tartalmaz, amely másodpercenként egy eseményt bocsát ki. Egy Event hub-t használnak, amelynek a partícióinak száma 4, Time Series Insights eseményforrás. Az események mérete 200 bájt.
 
@@ -232,9 +237,11 @@ Time Series Insights az alábbi módon tárolja az adatai másolatait:
 
 * A második, újraparticionált másolat az idősorozat-azonosítók szerint van csoportosítva, és a `PT=TsId` mappában található:
 
-  `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+  `V=1/PT=TsId/<TSI_INTERNAL_STRUCTURE>/<TSI_INTERNAL_NAME>.parquet`
 
-Mindkét esetben a Parquet fájl Time tulajdonsága a blob létrehozási idejére vonatkozik. A mappában lévő adatértékek a `PT=Time` fájlba való írás után nem módosulnak. A mappában lévő adatok a `PT=TsId` lekérdezéshez az idő múlásával lesznek optimalizálva, és nem statikus.
+A mappában lévő Blobok neveinek időbélyeg-értéke az `PT=Time` ÁME (az események időbélyege nem).
+
+A mappában lévő adatok a `PT=TsId` lekérdezéshez az idő múlásával lesznek optimalizálva, és nem statikus. Az újraparticionálás során ugyanezek az események több blobban is előfordulhatnak. Emellett a Blobok elnevezése a jövőben is változhat.
 
 > [!NOTE]
 >

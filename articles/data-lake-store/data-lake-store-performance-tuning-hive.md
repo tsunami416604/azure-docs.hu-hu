@@ -3,15 +3,15 @@ title: Performance tuning – struktúra Azure Data Lake Storage Gen1
 description: Teljesítmény-finomhangolási irányelvek a HdInsight és a Azure Data Lake Storage Gen1 struktúrához.
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 2e44332ddab9387c05a45d15101ccd2bdec3ada4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 819e158ce2613441efdf2177d50fc8e7989bf68f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690520"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510935"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a HDInsight és Azure Data Lake Storage Gen1 struktúrához
 
@@ -35,7 +35,7 @@ A továbbfejlesztett Data Lake Storage Gen1 teljesítményének finomhangolásá
 
 * **TEZ. grouping. max-size** – az egyes leképezések maximális mérete
 
-* **kaptár. exec. szűkítő. Bytes. per. szűkítő** – az egyes csökkentők mérete
+* **hive.exec. szűkítő. Bytes. per. szűkítő** – az egyes csökkentők mérete
 
 **kaptár. TEZ. Container. size** – a tároló mérete határozza meg, hogy mennyi memória érhető el az egyes feladatokhoz.  Ez a fő bemenet a párhuzamosságok struktúrában való vezérléséhez.  
 
@@ -43,11 +43,11 @@ A továbbfejlesztett Data Lake Storage Gen1 teljesítményének finomhangolásá
 
 **TEZ. grouping. max-size** – a paraméter lehetővé teszi az egyes leképezések maximális méretének beállítását.  Ha a TEZ által választott leképezések száma nagyobb, mint a paraméter értéke, akkor a TEZ az itt beállított értéket fogja használni.
 
-**kaptár. exec. szűkítő. Bytes. per. szűkítő** – ez a paraméter beállítja az egyes szűkítők méretét.  Alapértelmezés szerint minden egyes csökkentő 256MB.  
+**hive.exec. szűkítő. Bytes. per. szűkítő** – ez a paraméter beállítja az egyes szűkítők méretét.  Alapértelmezés szerint minden egyes csökkentő 256MB.  
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Útmutató
 
-A **kaptár. exec. szűkítő. Bytes. per. szűkítő beállítása** – az alapértelmezett érték jól működik, ha az adat kibontása nem történik meg.  A tömörített adatmennyiség csökkentése érdekében csökkentse a szűkítő méretét.  
+**hive.exec. szűkítő. Bytes. per. szűkítő beállítása** – az alapértelmezett érték jól működik, ha az adat ki van tömörítve.  A tömörített adatmennyiség csökkentése érdekében csökkentse a szűkítő méretét.  
 
 A **kaptár. TEZ. Container. size beállítása** – az egyes csomópontokban a memóriát a következő szálak határozzák meg: fonal. nodemanager. Resource. Memory-MB, és a HDI-fürthöz alapértelmezés szerint helyesen kell beállítani.  A megfelelő memória a FONALban való beállításával kapcsolatos további információkért tekintse meg ezt a [bejegyzést](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
 
@@ -77,7 +77,7 @@ Annak vizsgálatához, hogy a rendszer leszabályozza-e a szabályozást, enged�
 
 1. Helyezze a következő tulajdonságot a kaptár konfigurációjának log4j tulajdonságaiba. Ezt a Ambari nézetből teheti meg: log4j. Logger. com. microsoft. Azure. datalake. Store = hibakeresés az összes csomópont/szolgáltatás újraindítása a konfiguráció érvénybe léptetéséhez.
 
-2. Ha a szabályozása folyamatban van, a rendszer a kaptár naplófájljában a HTTP 429 hibakódot fogja látni. A kaptár naplófájlja a/tmp/&lt;felhasználói&gt;/Hive.log található.
+2. Ha a szabályozása folyamatban van, a rendszer a kaptár naplófájljában a HTTP 429 hibakódot fogja látni. A kaptár naplófájlja a/tmp/ &lt; felhasználói &gt; /Hive.log található.
 
 ## <a name="further-information-on-hive-tuning"></a>További információ a kaptár hangolásáról
 

@@ -3,15 +3,15 @@ title: Az Azure FXT Edge Filer monitorozása
 description: Az Azure FXT Edge Filer Hybrid Storage cache hardveres állapotának figyelése
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 3f422339af2040ad81c585c0e193e6cb3667b135
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7027fe9988c0c559db72c3c388c7a579d533c57e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72254870"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509438"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Az Azure FXT Edge Filer-hardver állapotának figyelése
 
@@ -34,7 +34,7 @@ Mindegyik meghajtón két állapotú LED látható: egy tevékenység-jelző (1)
 * A tevékenység LED (1) fények, ha a meghajtó használatban van.  
 * A LED állapota (2) az alábbi táblázatban szereplő kódok használatával jelzi a meghajtó feltételét.
 
-| Meghajtó állapotának LED-állapota              | Jelentés  |
+| Meghajtó állapotának LED-állapota              | Értelmezés  |
 |-------------------------------------|----------------------------------------------------------|
 | Másodpercenként kétszer villan fel a zöld      | Meghajtó *vagy* <br> Meghajtó előkészítése az eltávolításhoz  |
 | Kikapcsolva (nem világít)                         | A rendszer nem fejezte be az indítást *, vagy* <br>A meghajtó készen áll az eltávolításra |
@@ -60,7 +60,7 @@ A bal oldali állapotjelzők folytonos sárga fényt mutatnak, ha hiba van a ren
 
 Ha a megoldások kipróbálása után is megjelenik a hibaüzenet, [forduljon az ügyfélszolgálathoz](fxt-support-ticket.md) segítségért. 
 
-| Ikon | Leírás | Hibafeltétel | Lehetséges megoldások |
+| Ikon | Description | Hibafeltétel | Lehetséges megoldások |
 |----------------|---------------|--------------------|----------------------|
 | ![meghajtó ikonja](media/fxt-monitor/fxt-hd-icon.jpg) | Meghajtó állapota | Meghajtó-hiba | Ellenőrizze a rendszer eseménynaplóját, és állapítsa meg, hogy a meghajtó hibával rendelkezik-e, vagy <br>Futtassa a megfelelő online diagnosztikai tesztet; Indítsa újra a rendszert, és futtassa a beágyazott diagnosztikát (ePSA), vagy <br>Ha a meghajtók RAID-tömbben vannak konfigurálva, indítsa újra a rendszert, és adja meg a gazdagép-adapter konfigurációs segédprogramjának programját |
 |![hőmérséklet ikon](media/fxt-monitor/fxt-temp-icon.jpg) | Hőmérséklet állapota | Termikus hiba – például egy ventilátor meghiúsult, vagy a környezeti hőmérséklet a megengedett tartományon kívül esik. | A következő címezhető feltételek keresése: <br>Egy hűtési ventilátor hiányzik vagy nem sikerült <br>A rendszer fedelét, az Air lepel, a memóriamodul üres vagy a hátsó kitöltő zárójelet eltávolítja <br>A környezeti hőmérséklet túl magas <br>A külső légáram akadályozva van |

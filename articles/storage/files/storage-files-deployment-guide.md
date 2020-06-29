@@ -3,16 +3,16 @@ title: A Azure Files üzembe helyezése | Microsoft Docs
 description: Megtudhatja, hogyan helyezheti üzembe a Azure Files az elejétől a végéig.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 38339defc9d06f3e809bc24f957ebbb30abb46d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9df9375dee59df987cea01a4142a22a78eb533e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598782"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510794"
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő SMB protokollon keresztül érhető el. Ez a cikk bemutatja, hogyan lehet gyakorlatilag üzembe helyezni Azure Files a szervezeten belül.
@@ -65,7 +65,7 @@ A következő lépések a helyszíni helyről az Azure-fájlmegosztás adatait f
 
     A Storage-fiókkal több megosztás is megadható. További információ: [az ADATKÉSZLET CSV-fájljának előkészítése](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
-5. Hozza létre a driveset CSV-fájlt. A driveset CSV-fájl felsorolja a helyszíni exportálási ügynök számára elérhető lemezeket. Például a következő driveset CSV-fájlok listája `X:`, `Y:`és `Z:` a helyszíni exportálási feladatokban használandó meghajtók:
+5. Hozza létre a driveset CSV-fájlt. A driveset CSV-fájl felsorolja a helyszíni exportálási ügynök számára elérhető lemezeket. Például a következő driveset CSV-fájlok listája `X:` , és a helyszíni `Y:` `Z:` exportálási feladatokban használandó meghajtók:
 
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -129,7 +129,7 @@ Egy helyszíni fájlmegosztás cseréjéhez hasznos a megosztások előzetes csa
 > Az Azure-fájlmegosztás csatlakoztatásához jelszóként a Storage-fiók kulcsát kell használnia, ezért csak megbízható környezetekben javasolt a csatlakoztatás. 
 
 ### <a name="windows"></a>Windows
-A PowerShell több számítógépen is használható a csatlakoztatási parancs futtatására. A következő példában manuálisan `$computers` van feltöltve, de létrehozhatja az automatikusan csatlakoztatni kívánt számítógépek listáját. Feltöltheti például ezt a változót a Active Directory eredményeiből.
+A PowerShell több számítógépen is használható a csatlakoztatási parancs futtatására. A következő példában `$computers` manuálisan van feltöltve, de létrehozhatja az automatikusan csatlakoztatni kívánt számítógépek listáját. Feltöltheti például ezt a változót a Active Directory eredményeiből.
 
 ```powershell
 $computer = "MyComputer1", "MyComputer2", "MyComputer3", "MyComputer4"
@@ -147,7 +147,7 @@ do
 done
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure File Sync központi telepítésének megtervezése](storage-sync-files-planning.md)
 - [Azure-fájlok hibaelhárítása Windows rendszeren](storage-troubleshoot-windows-file-connection-problems.md)
 - [Azure-fájlok hibaelhárítása Linux rendszeren](storage-troubleshoot-linux-file-connection-problems.md)

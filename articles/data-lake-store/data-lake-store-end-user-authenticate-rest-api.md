@@ -3,15 +3,15 @@ title: Végfelhasználói hitelesítés – REST Data Lake Storage Gen1 – Azur
 description: Ismerje meg, hogyan érheti el a végfelhasználói hitelesítést Azure Data Lake Storage Gen1 használatával Azure Active Directory használatával REST API
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ac06c9ef355eeba489d2006c435a48b7efcfd7f0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: f0b79ec08883c81aee535a6eff1176e3e10027d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688064"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511203"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 használatával REST API
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > A \<REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. Tehát a esetében https://localhosthasználja `https%3A%2F%2Flocalhost`a következőt:)
+   > \<REDIRECT-URI>egy URL-címben való használatra kell kódolni. Tehát a esetében https://localhost használja a `https%3A%2F%2Flocalhost` következőt:)
 
     A jelen oktatóanyagban kicserélheti a fenti URL-ben szereplő helyőrző értékeket, és beillesztheti egy webböngésző címsorába. A rendszer átirányítja az Azure bejelentkezési azonosítójával történő hitelesítéshez. Miután sikeresen bejelentkezett, a válasz megjelenik a böngésző címsorában. A válasz az alábbi formátumban jelenik meg:
 
@@ -60,11 +60,11 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
         -F code=<AUTHORIZATION-CODE>
 
    > [!NOTE]
-   > Ebben az esetben a \<REDIRECT-URI> kódolása nem szükséges.
+   > Ebben az esetben a \<REDIRECT-URI> szükségtelen kódolást kell végezni.
    > 
    > 
 
-3. A válasz egy JSON-objektum, amely egy hozzáférési jogkivonatot (például `"access_token": "<ACCESS_TOKEN>"`) és egy frissítési tokent (például `"refresh_token": "<REFRESH_TOKEN>"`) tartalmaz. Az alkalmazás a hozzáférési jogkivonatot használja a Azure Data Lake Storage Gen1hoz való hozzáféréshez és a frissítési tokenhez egy másik hozzáférési jogkivonat beszerzéséhez, amikor egy hozzáférési jogkivonat lejár.
+3. A válasz egy JSON-objektum, amely egy hozzáférési jogkivonatot (például `"access_token": "<ACCESS_TOKEN>"` ) és egy frissítési tokent (például `"refresh_token": "<REFRESH_TOKEN>"` ) tartalmaz. Az alkalmazás a hozzáférési jogkivonatot használja a Azure Data Lake Storage Gen1hoz való hozzáféréshez és a frissítési tokenhez egy másik hozzáférési jogkivonat beszerzéséhez, amikor egy hozzáférési jogkivonat lejár.
 
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 
@@ -78,7 +78,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
 
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 REST API használatával történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használhatja a REST API a Azure Data Lake Storage Gen1 használatához.
 
 * [Fiókkezelés Data Lake Storage Gen1 a REST API használatával](data-lake-store-get-started-rest-api.md)

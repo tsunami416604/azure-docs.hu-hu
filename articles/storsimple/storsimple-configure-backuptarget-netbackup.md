@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 87885d9b476582fcce53b8b960d24093693af4ec
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67876208"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509387"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple biztonsági mentési célként a NetBackup
 
@@ -55,8 +55,8 @@ A tárolási megoldásokhoz hasonlóan a megoldás tárolási teljesítményére
 
 A StorSimple úgy lett kialakítva, hogy olyan alkalmazások számára biztosítson tárhelyet, amelyek jól meghatározott munkakészleten (forró adatokon) működnek. Ebben a modellben a munkakészletet a helyi szinten tárolja a rendszer, és a fennmaradó nem működő/hideg/archivált adathalmazt a felhőbe tömöríti. Ez a modell a következő ábrán látható. A közel lapos zöld vonal a StorSimple-eszköz helyi szintjein tárolt adatmennyiséget jelöli. A piros vonal a StorSimple-megoldásban tárolt összes adatmennyiséget jelenti az összes szinten. A Flat zöld vonal és az exponenciális piros görbe közötti térköz a felhőben tárolt összes adatmennyiséget jelöli.
 
-**StorSimple-rétegű**
-![StorSimple-rétegek diagramja](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
+**StorSimple-rétegek** 
+ ![ StorSimple-rétegű diagram](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
 
 Ebben az architektúrában azt tapasztalhatja, hogy a StorSimple ideális megoldás biztonsági mentési célként való működésre. A StorSimple a következőre használhatja:
 -   Végezze el a leggyakoribb visszaállításokat a helyi munkakészletből.
@@ -185,7 +185,7 @@ Ebben a szakaszban néhány konfigurációs példát mutatunk be. Az alábbi pé
 | StorSimple üzembe helyezési feladatai  | További megjegyzések |
 |---|---|
 | A helyszíni StorSimple-eszköz üzembe helyezése. | Támogatott verziók: 3. frissítés és újabb verziók. |
-| Kapcsolja be a biztonsági mentési célt. | Ezekkel a parancsokkal bekapcsolhatja vagy kikapcsolhatja a biztonsági mentési cél üzemmódot, és lekérheti az állapotot. További információ: [távoli kapcsolódás StorSimple-eszközhöz](storsimple-remote-connect.md).</br> A biztonsági mentési mód bekapcsolása: `Set-HCSBackupApplianceMode -enable`. </br> A biztonsági mentési mód kikapcsolásához: `Set-HCSBackupApplianceMode -disable`. </br> A biztonsági mentési mód beállításainak aktuális állapotának beolvasása: `Get-HCSBackupApplianceMode`. |
+| Kapcsolja be a biztonsági mentési célt. | Ezekkel a parancsokkal bekapcsolhatja vagy kikapcsolhatja a biztonsági mentési cél üzemmódot, és lekérheti az állapotot. További információ: [távoli kapcsolódás StorSimple-eszközhöz](storsimple-remote-connect.md).</br> A biztonsági mentési mód bekapcsolása: `Set-HCSBackupApplianceMode -enable` . </br> A biztonsági mentési mód kikapcsolásához: `Set-HCSBackupApplianceMode -disable` . </br> A biztonsági mentési mód beállításainak aktuális állapotának beolvasása: `Get-HCSBackupApplianceMode` . |
 | Hozzon létre egy közös mennyiségi tárolót a kötethez, amely a biztonsági mentési adatait tárolja. A mennyiségi tárolóban lévő összes érték deduplikált. | A StorSimple mennyiségi tárolók a deduplikáló tartományokat határozzák meg.  |
 | Hozzon létre StorSimple-köteteket. | Hozzon létre a méretekkel rendelkező köteteket a lehető leghamarabb a várt használathoz, mert a kötet mérete befolyásolja a Felhőbeli pillanatkép időtartamát. További információ a kötetek méretének [megtartásáról: adatmegőrzési szabályzatok](#retention-policies).</br> </br> Használjon StorSimple rétegű köteteket, és jelölje be a **kötet használata a ritkábban használt archiválási** mezőkhöz jelölőnégyzetet. </br> Csak a helyileg rögzített kötetek használata nem támogatott. |
 | Hozzon létre egy egyedi StorSimple biztonsági mentési szabályzatot az összes biztonsági mentési cél kötethez. | A StorSimple biztonsági mentési szabályzata határozza meg a kötet konzisztencia-csoportját. |
@@ -265,7 +265,7 @@ Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rét
 
 ### <a name="to-set-up-netbackup-storage"></a>NetBackup-tároló beállítása
 
-1.  A NetBackup felügyeleti konzolon válassza a **média és eszközkezelés** > **eszközök** > **lemezes készletek**elemet. A lemez készlet konfigurálása varázslóban válassza ki a **AdvancedDisk**típust, majd kattintson a **tovább**gombra.
+1.  A NetBackup felügyeleti konzolon válassza a **média és eszközkezelés**  >  **eszközök**  >  **lemezes készletek**elemet. A lemez készlet konfigurálása varázslóban válassza ki a **AdvancedDisk**típust, majd kattintson a **tovább**gombra.
 
     ![NetBackup felügyeleti konzol, a lemez készletének konfigurálása varázsló](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
@@ -277,7 +277,7 @@ Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rét
 
     ![NetBackup felügyeleti konzol, válassza ki a StorSimple kötet lemezét](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  Adja meg a biztonsági mentési cél nevét, majd a varázsló befejezéséhez kattintson a **tovább** > **gombra.**
+4.  Adja meg a biztonsági mentési cél nevét, majd **Next**  >  **Next** a varázsló befejezéséhez kattintson a Tovább gombra.
 
 5.  Tekintse át a beállításokat, majd kattintson a **Befejezés gombra**.
 
@@ -316,7 +316,7 @@ A következő folyamat azt feltételezi, hogy a NetBackup és a célként megado
 
    ![NetBackup felügyeleti konzol, új szabályzat létrehozása](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2. Az **új házirend hozzáadása** párbeszédpanelen adja meg a házirend nevét, majd jelölje be a **házirend konfigurálása varázsló használata** jelölőnégyzetet. Kattintson az **OK** gombra.
+2. Az **új házirend hozzáadása** párbeszédpanelen adja meg a házirend nevét, majd jelölje be a **házirend konfigurálása varázsló használata** jelölőnégyzetet. Válassza az **OK** lehetőséget.
 
    ![NetBackup felügyeleti konzol, új házirend hozzáadása párbeszédpanel](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
@@ -328,7 +328,7 @@ A következő folyamat azt feltételezi, hogy a NetBackup és a célként megado
 
    ![NetBackup felügyeleti konzol, válassza a házirend típusa lehetőséget.](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. Jelölje ki a gazdagépet, jelölje be az **ügyfél operációs rendszerének észlelése** jelölőnégyzetet, majd kattintson a **Hozzáadás**gombra. Kattintson a **Tovább** gombra.
+5. Jelölje ki a gazdagépet, jelölje be az **ügyfél operációs rendszerének észlelése** jelölőnégyzetet, majd kattintson a **Hozzáadás**gombra. Válassza a **Tovább** lehetőséget.
 
    ![NetBackup felügyeleti konzol, ügyfelek listázása egy új szabályzatban](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -340,7 +340,7 @@ A következő folyamat azt feltételezi, hogy a NetBackup és a célként megado
 
    ![NetBackup felügyeleti konzol, biztonsági mentés gyakorisága és elforgatása új szabályzathoz](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. Válassza a **következő** > **Next** > **Befejezés**lehetőséget.  A szabályzat létrehozása után módosíthatja az ütemtervet.
+8. Válassza a **következő**  >  **Next**  >  **Befejezés**lehetőséget.  A szabályzat létrehozása után módosíthatja az ütemtervet.
 
 9. Válassza ki az imént létrehozott házirend kibontását, majd válassza az **ütemtervek**lehetőséget.
 
@@ -360,7 +360,7 @@ A következő folyamat azt feltételezi, hogy a NetBackup és a célként megado
 
     ![NetBackup felügyeleti konzol, indítási ablak módosítása](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14. Kattintson az **OK** gombra.
+14. Válassza az **OK** lehetőséget.
 
 15. Ismételje meg a 10-14. lépést minden növekményes biztonsági mentéshez. Válassza ki a megfelelő kötetet és ütemtervet minden létrehozott biztonsági mentéshez.
 
@@ -395,7 +395,7 @@ A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentés
 
 ### <a name="backup-configuration-and-capacity-requirements"></a>A biztonsági mentési konfiguráció és a kapacitásra vonatkozó követelmények
 
-| Biztonsági mentés típusa és megőrzése | Konfigurált tároló | Méret (TiB) | GFS szorzó | Teljes kapacitás\* (TiB) |
+| Biztonsági mentés típusa és megőrzése | Konfigurált tároló | Méret (TiB) | GFS szorzó | Teljes kapacitás \* (TiB) |
 |---|---|---|---|---|
 | 1. hét (teljes és növekményes) |Helyi lemez (rövid távú)| 1 | 1 | 1 |
 | StorSimple hét 2-4 |StorSimple lemez (hosszú távú) | 1 | 4 | 4 |
@@ -430,13 +430,13 @@ A kezdeti lemez-készletek meghatározása után három további tárolási éle
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>StorSimple-kötetek társítása NetBackup archiválási és ismétlődési feladatokhoz
 
-1. A NetBackup felügyeleti konzolon válassza a **Storage** > -**életciklus-szabályzatok** > **új tárolási életciklus-házirend**elemet.
+1. A NetBackup felügyeleti konzolon válassza a **Storage**-  >  **életciklus-szabályzatok**  >  **új tárolási életciklus-házirend**elemet.
 
    ![NetBackup felügyeleti konzol, új tárolási életciklus-szabályzat](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
 2. Adja meg a pillanatkép nevét, majd kattintson a **Hozzáadás**gombra.
 
-3. Az **új művelet** párbeszédpanel **Tulajdonságok** lapjának **művelet**területén válassza a **biztonsági mentés**lehetőséget. Válassza ki a **célhelyhez**, a **megőrzési típushoz**és a **megőrzési időszakhoz**használni kívánt értékeket. Kattintson az **OK** gombra.
+3. Az **új művelet** párbeszédpanel **Tulajdonságok** lapjának **művelet**területén válassza a **biztonsági mentés**lehetőséget. Válassza ki a **célhelyhez**, a **megőrzési típushoz**és a **megőrzési időszakhoz**használni kívánt értékeket. Válassza az **OK** lehetőséget.
 
    ![NetBackup felügyeleti konzol, új művelet párbeszédpanel](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
@@ -507,9 +507,9 @@ A következő szakasz azt ismerteti, hogyan hozhat létre egy rövid parancsfáj
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Felhőbeli pillanatkép elindítása vagy törlése
 
-1. [Telepítse a Azure PowerShell](/powershell/azure/overview).
-2. Töltse le és állítsa be a [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell-szkriptet.
-3. A parancsfájlt futtató kiszolgálón futtassa a PowerShellt rendszergazdaként. Győződjön meg arról, hogy a parancsfájl `-WhatIf $true` futtatásával megtekintheti, hogy a parancsfájl milyen módosításokat hajt végre. Az ellenőrzés befejezése után adja át `-WhatIf $false`a t. Futtassa az alábbi parancsot:
+1. [Telepítse az Azure PowerShellt](/powershell/azure/overview).
+2. Töltse le és állítsa be [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell-szkriptet.
+3. A parancsfájlt futtató kiszolgálón futtassa a PowerShellt rendszergazdaként. Győződjön meg arról, hogy a parancsfájl futtatásával `-WhatIf $true` megtekintheti, hogy a parancsfájl milyen módosításokat hajt végre. Az ellenőrzés befejezése után adja át a t `-WhatIf $false` . Futtassa az alábbi parancsot:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```
@@ -529,13 +529,13 @@ Visszaállít egy StorSimple-eszközről, például helyreállítja az összes b
 
 A katasztrófák számos tényezőt okozhatnak. A következő táblázat az általános vész-helyreállítási forgatókönyveket ismerteti.
 
-| Forgatókönyv | Hatás | Helyreállítás | Megjegyzések |
+| Forgatókönyv | Hatás | Helyreállítás | Jegyzetek |
 |---|---|---|---|
 | StorSimple-eszköz meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Cserélje le a meghibásodott eszközt, és hajtsa végre a [StorSimple feladatátvételt és a vész-helyreállítást](storsimple-device-failover-disaster-recovery.md). | Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adathalmazok beolvasása a felhőből az új eszközre történik. Minden művelet Felhőbeli sebességgel történik. Az index és a katalógus újraellenőrzésének folyamata okozhatja az összes biztonságimásolat-készlet vizsgálatát és lekérését a felhő szintjéről a helyi eszköz rétegre, amely időigényes folyamat lehet. |
 | NetBackup-kiszolgáló meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Hozza létre újra a biztonsági mentési kiszolgálót, és végezze el az adatbázis-visszaállítást. | A NetBackup-kiszolgálót újra kell építenie vagy visszaállítani a vész-helyreállítási helyen. Állítsa vissza az adatbázist a legutóbbi pontra. Ha a visszaállított NetBackup-adatbázis nincs szinkronban a legújabb biztonsági mentési feladatokkal, az indexelés és a katalogizálás szükséges. Az index és a katalógus újraellenőrzésének folyamata okozhatja, hogy az összes biztonságimásolat-készlet beolvasható, és a felhő szintjéről a helyi eszköz szintjére kell húzni. Ez további időigényesvé teszi. |
 | A hely meghibásodása, amely a biztonsági mentési kiszolgáló és a StorSimple elvesztését eredményezi | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Először állítsa vissza a StorSimple, majd állítsa vissza a NetBackup. | Először állítsa vissza a StorSimple, majd állítsa vissza a NetBackup. Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adatfeldolgozási készletek a felhőből az új eszközre lesznek beolvasva. Minden művelet Felhőbeli sebességgel történik. |
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 Ehhez a cikkhez a következő dokumentumok hivatkoznak:
 
@@ -544,7 +544,7 @@ Ehhez a cikkhez a következő dokumentumok hivatkoznak:
 - [GPT-meghajtók használata](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Árnyékmásolatok beállítása megosztott mappákhoz](https://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [biztonságimásolat-készletből való visszaállításról](storsimple-restore-from-backup-set-u2.md).
 - További információ az [eszközök feladatátvételének és a vész-helyreállításnak](storsimple-device-failover-disaster-recovery.md)a végrehajtásáról.

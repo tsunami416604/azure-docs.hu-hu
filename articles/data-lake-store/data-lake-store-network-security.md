@@ -8,17 +8,17 @@ manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 471633414603ede123382b46b549acb2fd4fd98e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60612541"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508707"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Virtual Network Integration for Azure Data Lake Storage Gen1
 
@@ -99,7 +99,7 @@ Néhány elérhető lehetőség:
 
      ![A Microsoft.AzureActiveDirectory szolgáltatásvégpont kiválasztása](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  Válassza ki, mely alhálózatok számára kívánja engedélyezni a csatlakozást. Válassza a **Hozzáadás** lehetőséget.
+6.  Válassza ki, mely alhálózatok számára kívánja engedélyezni a csatlakozást. Válassza a **Hozzáadás** elemet.
 
     ![Alhálózat kiválasztása](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -124,7 +124,7 @@ Néhány elérhető lehetőség:
 
     ![Meglévő virtuális hálózat hozzáadása](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  Válassza ki azokat a virtuális hálózatokat és alhálózatokat, amelyek számára engedélyezi a csatlakozást. Válassza a **Hozzáadás** lehetőséget.
+5.  Válassza ki azokat a virtuális hálózatokat és alhálózatokat, amelyek számára engedélyezi a csatlakozást. Válassza a **Hozzáadás** elemet.
 
     ![A virtuális hálózat és alhálózatok kiválasztása](media/data-lake-store-network-security/config-adls-3.png)
 

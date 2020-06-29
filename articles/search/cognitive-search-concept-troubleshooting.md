@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 25f0e0f15a299ef8b946b3d5fa0eb3eddc2272c2
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84508620"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510859"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tippek az AI-bővítéshez az Azure Cognitive Search
 
@@ -49,7 +49,16 @@ Ebben az esetben érdemes megállapítania, hogy az indexelő figyelmen kívül 
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>4. tipp: dúsított dokumentumok megtekintése a motorháztető alatt 
+> [!NOTE]
+> Ajánlott eljárásként állítsa be a maxFailedItems, maxFailedItemsPerBatch 0-ra az éles számítási feladatokhoz
+
+## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>4. tipp: hibakeresési munkamenetek használata a készségkészlet kapcsolatos problémák azonosításához és megoldásához 
+
+A hibakeresési munkamenetek egy olyan vizualizációs szerkesztő, amely a Azure Portal meglévő készségkészlet működik. Hibakeresési munkameneten belül azonosíthatja és elháríthatja a hibákat, ellenőrizheti a módosításokat, és véglegesítheti a változtatásokat egy éles készségkészlet az AI-bővítési folyamatban. Ez egy előzetes verziójú funkció, amely [elolvassa a dokumentációt](https://docs.microsoft.com/azure/search/cognitive-search-debug-session). További információ a fogalmakról és az első lépésekről: [hibakeresési munkamenetek](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions).
+
+A hibakeresési munkamenetek egyetlen dokumentumon működnek, így a iteratív összetettebb bővítési folyamatokat hozhat létre.
+
+## <a name="tip-5-looking-at-enriched-documents-under-the-hood"></a>5. tipp: dúsított dokumentumok megtekintése a motorháztető alatt 
 A dúsított dokumentumok a dúsítás során létrehozott ideiglenes struktúrák, majd a feldolgozás befejezésekor törlődnek.
 
 Ha pillanatképet szeretne készíteni az indexelés során létrejött bővített dokumentumról, adja hozzá az indexhez az ```enriched``` mezőt. Az indexelő automatikusan hozzáadja a mezőhöz az adott dokumentum bővítéseinek sztringes leképezését.
@@ -77,11 +86,7 @@ Adjon hozzá egy ```enriched``` mezőt az index definíciójának részeként a 
 }
 ```
 
-### <a name="debug-sessions"></a>Munkamenetek hibakeresése
-
-A hibakeresési munkamenetek egy olyan vizualizációs szerkesztő, amely a Azure Portal meglévő készségkészlet működik. A hibakeresési munkameneten belül azonosíthatja és elháríthatja a hibákat, ellenőrizheti a módosításokat, és leküldheti a változtatásokat egy éles készségkészlet az AI-dúsítási folyamat során. Ez egy előzetes verziójú funkció, és a hozzáférés eseti alapon történik. [Olvassa el a dokumentációt](https://docs.microsoft.com/azure/search/cognitive-search-debug-session) , és Ismerje meg, hogyan használható a hozzáférés.
-
-## <a name="tip-5-expected-content-fails-to-appear"></a>5. tipp: a várt tartalom nem jelenik meg
+## <a name="tip-6-expected-content-fails-to-appear"></a>6. tipp: a várt tartalom nem jelenik meg
 
 A hiányzó tartalom az indexelés során eldobott dokumentumok eredménye lehet. Az ingyenes és az alapszintű csomagok esetében a dokumentumok mérete alacsony. Az indexelés során a korlátot meghaladó fájlok el lettek dobva. Az eldobott dokumentumokat a Azure Portalban tekintheti meg. A Search szolgáltatás Irányítópultján kattintson duplán az indexelő csempére. Tekintse át a sikeres dokumentumok indexelésének arányát. Ha az érték nem 100%, akkor további részletekért kattintson az arányra. 
 
@@ -89,7 +94,7 @@ Ha a probléma fájlmérethez kapcsolódik, a következőhöz hasonló hibaüzen
 
 A tartalom nem jelenik meg egy második oka, hogy kapcsolódó bemeneti/kimeneti leképezési hibák merülhetnek fel. Például a kimeneti cél neve "People", de az index mező neve kisbetűs "emberek". A rendszer 201 sikeres üzeneteket adhat vissza a teljes folyamathoz, így úgy gondolja, hogy sikeres volt az indexelés, ha valójában egy mező üres. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>6. tipp: a feldolgozás kiterjesztése a maximális futási idő után (24 órás időszak)
+## <a name="tip-7-extend-processing-beyond-maximum-run-time-24-hour-window"></a>7. tipp: a feldolgozás kiterjesztése a maximális futási idő után (24 órás időszak)
 
 A képelemzés még egyszerű esetekre is számításba vehető, így ha a képek különösen nagyok vagy bonyolultak, a feldolgozási idő túllépheti a maximálisan engedélyezett időt. 
 
@@ -102,12 +107,12 @@ Az ütemezett indexek esetében az indexelés az utolsó ismert jó dokumentumon
 
 A portálon alapuló indexeléshez (a gyors útmutatóban leírtak szerint) a "Futtatás egyszer" indexelő beállítás a feldolgozást 1 órára korlátozza ( `"maxRunTime": "PT1H"` ). Előfordulhat, hogy hosszabb időre szeretné kiterjeszteni a feldolgozási ablakot.
 
-## <a name="tip-7-increase-indexing-throughput"></a>7. tipp: az indexelési teljesítmény növelése
+## <a name="tip-8-increase-indexing-throughput"></a>8. tipp: az indexelési teljesítmény növelése
 
 [Párhuzamos indexeléshez](search-howto-large-index.md)helyezze az adatait több tárolóba vagy több virtuális mappába ugyanabban a tárolóban. Ezután hozzon létre több DataSource és indexelő párokat. Az összes indexelő használhatja ugyanazt a készségkészlet, és az azonos keresési indexbe írhat, így a keresési alkalmazásnak nem kell megismernie ezt a particionálást.
 További információ: [nagyméretű adathalmazok indexelése](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 + [Rövid útmutató: AI-dúsítási folyamat létrehozása a portálon](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: az AI-gazdagítás REST API-k megismerése](cognitive-search-tutorial-blob.md)
 + [Adatforráshoz tartozó hitelesítő adatok megadása](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)

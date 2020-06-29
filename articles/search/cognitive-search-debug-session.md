@@ -8,21 +8,20 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: d325b65b01ea13cfcb141d28343d94866d9e05e2
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 6c658053afcaff99249e5d20ca2dc5a14037470b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84751535"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510857"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Hibakeresési munkamenetek az Azure Cognitive Search
 
 A hibakeresési munkamenetek egy olyan vizualizációs szerkesztő, amely a Azure Portal meglévő készségkészlet működik. A hibakeresési munkameneten belül azonosíthatja és elháríthatja a hibákat, ellenőrizheti a módosításokat, és leküldheti a változtatásokat egy éles készségkészlet az AI-dúsítási folyamat során.
 
 > [!Important]
-> A hibakeresési munkamenetek támogatása az Azure [Cognitive Search számára korlátozott](https://aka.ms/DebugSessions) hozzáférésű előzetes verzióként érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlottak. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A hibakeresési munkamenetek az előzetes verziójú szolgáltatások, amelyek szolgáltatói szerződés nélkül érhetők el, és nem ajánlottak éles számítási feladatokhoz. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Miután hozzáférést kapott az előzetes verzióhoz, a Azure Portal használatával elérheti és használhatja a szolgáltatáshoz tartozó hibakeresési munkameneteket.
 
 ## <a name="using-debug-sessions"></a>Hibakeresési munkamenetek használata
 
@@ -87,7 +86,11 @@ A **kifejezés kiértékelése** gyors betekintést biztosít bármely útvonal 
 
 Ez az ablak megjeleníti az összes olyan hibát és figyelmeztetést, amelyet a készségkészlet a hibakeresési munkamenetben a dokumentumon végrehajtott végrehajtás során hoz létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="limitations"></a>Korlátozások
+
+A hibakeresési sesisons az összes általánosan elérhető adatforrással, az AMD legtöbb előzetes verziójú adatforrásával működnek. A Cosmos DB MongoDB API (előzetes verzió) és Cassandra API (előzetes verzió) jelenleg nem támogatott.
+
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette a hibakeresési munkamenetek elemeit, próbálja ki az oktatóanyagot gyakorlati tapasztalatokra.
 

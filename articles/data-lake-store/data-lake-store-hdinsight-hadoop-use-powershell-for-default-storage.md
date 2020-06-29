@@ -3,15 +3,15 @@ title: PowerShell-HDInsight-fürt Data Lake Storage Gen1-Azure-val
 description: A Azure PowerShell használatával Azure HDInsight-fürtöket hozhat létre és használhat Azure Data Lake Storage Gen1 használatával.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 2b4e5fad65d2ad358bca6b5a2b87d4aa36b77e73
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: cd4faec2d57b15dd23fe01dfc49063f06d70639e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692074"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510965"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight-fürtök létrehozása Azure Data Lake Storage Gen1 alapértelmezett tárolóként a PowerShell használatával
 
@@ -65,7 +65,7 @@ Data Lake Storage Gen1 fiók létrehozásához tegye a következőket:
         Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Ha regisztrálja a Data Lake Storage Gen1 erőforrás-szolgáltatót, és a következőhöz hasonló hibaüzenetet kap, előfordulhat, hogy `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`az előfizetése nem engedélyezett a Data Lake Storage Gen1 számára. Az Data Lake Storage Gen1 Azure-előfizetésének engedélyezéséhez kövesse az [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait.
+    > Ha regisztrálja a Data Lake Storage Gen1 erőforrás-szolgáltatót, és a következőhöz hasonló hibaüzenetet kap `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , előfordulhat, hogy az előfizetése nem engedélyezett a Data Lake Storage Gen1 számára. Az Data Lake Storage Gen1 Azure-előfizetésének engedélyezéséhez kövesse az [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait.
     >
 
 2. Egy Data Lake Storage Gen1 fiók egy Azure-erőforráscsoporthoz van társítva. Első lépésként hozzon létre egy erőforráscsoportot.
@@ -209,7 +209,7 @@ Ebben a szakaszban egy HDInsight Hadoop Linux-fürtöt hoz létre, amely az alap
     A parancsmag sikeres befejeződése után megjelenik egy kimenet, amely felsorolja a fürt részleteit.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Tesztelési feladatok futtatása a HDInsight-fürtön a Data Lake Storage Gen1 használatához
-Miután konfigurálta a HDInsight-fürtöt, a tesztelési feladatok futtatásával biztosíthatja, hogy hozzáférhessen Data Lake Storage Gen1hoz. Ehhez futtasson egy minta kaptár-feladatot egy olyan tábla létrehozásához, amely a Data Lake Storage Gen1 * \<* már elérhető mintaadatok használatával>/example/Data/sample.log.
+Miután konfigurálta a HDInsight-fürtöt, a tesztelési feladatok futtatásával biztosíthatja, hogy hozzáférhessen Data Lake Storage Gen1hoz. Ehhez futtasson egy minta kaptár-feladatot egy olyan tábla létrehozásához, amely a Data Lake Storage Gen1ban már elérhető mintaadatok használatával rendelkezik a következő helyen: * \<cluster root> /example/Data/sample.log*.
 
 Ebben a szakaszban egy Secure Shell-(SSH-) kapcsolatokat hoz létre a létrehozott HDInsight Linux-fürthöz, majd futtat egy minta kaptár-lekérdezést.
 
@@ -230,7 +230,7 @@ Ebben a szakaszban egy Secure Shell-(SSH-) kapcsolatokat hoz létre a létrehozo
     Ekkor meg kell jelennie a lekérdezés kimenetének az SSH-konzolon.
 
     >[!NOTE]
-    >Az előző CREATE TABLE parancsban található mintaadatok elérési útja `adl:///example/data/`, ahol `adl:///` a a fürt gyökerét. Az oktatóanyagban megadott fürtcsomópont példáját követve a parancs a következő: `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`. Használhatja a rövidebb alternatívát, vagy megadhatja a fürt gyökerének teljes elérési útját.
+    >Az előző CREATE TABLE parancsban található mintaadatok elérési útja `adl:///example/data/` , ahol a a `adl:///` fürt gyökerét. Az oktatóanyagban megadott fürtcsomópont példáját követve a parancs a következő: `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster` . Használhatja a rövidebb alternatívát, vagy megadhatja a fürt gyökerének teljes elérési útját.
     >
 
 ## <a name="access-data-lake-storage-gen1-by-using-hdfs-commands"></a>Hozzáférés Data Lake Storage Gen1 HDFS parancsok használatával
@@ -245,7 +245,7 @@ Miután elvégezte a kapcsolatokat, a következő HDFS-paranccsal sorolja fel Da
 
     hdfs dfs -ls adl:///
 
-A `hdfs dfs -put` parancs használatával is feltölthet néhány fájlt a Data Lake Storage Gen1ba, majd a használatával `hdfs dfs -ls` ellenőrizheti, hogy a fájlok feltöltése sikeres volt-e.
+A parancs használatával is `hdfs dfs -put` feltölthet néhány fájlt a Data Lake Storage Gen1ba, majd a használatával ellenőrizheti, hogy `hdfs dfs -ls` a fájlok feltöltése sikeres volt-e.
 
 ## <a name="see-also"></a>Lásd még
 * [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

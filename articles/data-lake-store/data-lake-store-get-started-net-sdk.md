@@ -3,15 +3,15 @@ title: Azure Data Lake Storage Gen1-fiók kezelése a .NET-tel
 description: Ismerje meg, hogyan használhatja a .NET SDK-t a Azure Data Lake Storage Gen1 Fiókkezelés műveleteihez.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d7ea2b7fffc4edff6cae895e08b955d2e21ff5f2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c163629f4c74a812ee7dc3da7391148a92ae6435
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692118"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511176"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fiókkezelés Azure Data Lake Storage Gen1 a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Az adatkezelési műveletek .NET SDK használatával történő végrehajtásáv
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
 1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt**elemre.
 2. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább**gombra.
-3. A **Project Name (projekt neve**) mezőben adja meg `CreateADLApplication`a nevet, majd válassza a **Létrehozás**lehetőséget.
+3. A **Project Name (projekt neve**) mezőben adja meg a nevet `CreateADLApplication` , majd válassza a **Létrehozás**lehetőséget.
 
 4. Adja hozzá a NuGet-csomagokat a projekthez.
 
@@ -133,5 +133,5 @@ A következő kódrészlet törli a korábban létrehozott Data Lake Storage Gen
 * [Fájlrendszer-műveletek Data Lake Storage Gen1 a .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)
 * [Data Lake Storage Gen1 .NET SDK-dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

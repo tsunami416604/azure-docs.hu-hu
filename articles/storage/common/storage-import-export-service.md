@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan hozhat létre importálási és exportálási f
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872431"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512426"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az az Azure import/export szolgáltatás?
 
@@ -135,9 +135,9 @@ A meghajtón lévő adatai titkosítva vannak az AES 256 bites BitLocker meghajt
 
 Az importálási feladatok esetében a meghajtók két módon lesznek titkosítva.  
 
-* A WAImportExport eszköz a meghajtó előkészítése során történő futtatásakor az *adatkészlet. csv* fájljának használatakor válassza a lehetőséget.
+* A WAImportExport eszköz a meghajtó előkészítése során való futtatásakor *dataset.csv* fájl használatakor válassza a beállítást.
 
-* Engedélyezze a BitLocker-titkosítást manuálisan a meghajtón. A *driveset. csv fájlban* állítsa be a titkosítási kulcsot a WAImportExport-eszköz parancssorának futtatásakor a meghajtó előkészítése során. A BitLocker titkosítási kulcsa a külső kulcstartó (más néven a Microsoft által felügyelt kulcs) vagy egy ügyfél által felügyelt kulcs használatával tovább védhető. További információkért lásd: Hogyan lehet [ügyfél által felügyelt kulcsot használni a BitLocker-kulcs védeleméhez](storage-import-export-encryption-key-portal.md).
+* Engedélyezze a BitLocker-titkosítást manuálisan a meghajtón. A meghajtó előkészítése során a WAImportExport eszköz parancssorának futtatásakor a *driveset.csv* titkosítási kulcsát kell megadnia. A BitLocker titkosítási kulcsa a külső kulcstartó (más néven a Microsoft által felügyelt kulcs) vagy egy ügyfél által felügyelt kulcs használatával tovább védhető. További információkért lásd: Hogyan lehet [ügyfél által felügyelt kulcsot használni a BitLocker-kulcs védeleméhez](storage-import-export-encryption-key-portal.md).
 
 Az exportálási feladatok esetében az adatoknak a meghajtókra való másolása után a szolgáltatás a BitLocker használatával titkosítja a meghajtót, mielőtt a rendszer visszaküldi azt. A titkosítási kulcsot a Azure Portalon keresztül kapja meg. A meghajtót fel kell oldani a WAImporExport eszközzel a kulcs használatával.
 
@@ -157,7 +157,7 @@ Ha meghajtókat szállít az Azure-ba, a szállítási költséget a szállítá
 
 A [standard szintű tárolási tranzakciós díj](https://azure.microsoft.com/pricing/details/storage/) az importálás során és az adatexportálás során is érvényes. Az Azure Storage-ból származó adatok exportálásakor a standard szintű kimenő költségek is érvényesek a tárolási tranzakciós költségekkel együtt. A kimenő költségekkel kapcsolatos további információkért lásd az [adatátviteli díjszabást.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja az import/export szolgáltatást a következőhöz:
 

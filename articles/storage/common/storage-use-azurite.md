@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.topic: how-to
+ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195945"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512136"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>A Azurite Emulator használata helyi Azure Storage-fejlesztéshez és-teszteléshez (előzetes verzió)
 
@@ -70,7 +70,7 @@ A következő beállítások támogatottak:
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>A Azurite telepítése és futtatása a NPM használatával
 
-Ehhez a telepítési módszerhez a [Node. js 8,0-es vagy újabb verziójára](https://nodejs.org) van szükség. A Node Package Manager (NPM) az összes Node. js-telepítésben található csomagkezelő eszköz. A Node. js telepítése után hajtsa végre a következő `npm` parancsot a Azurite telepítéséhez.
+Ehhez a telepítési módszerhez a [Node.js 8,0-es vagy újabb verziójára](https://nodejs.org) van szükség. A Node Package Manager (NPM) a csomagkezelő eszköz, amely minden Node.js telepítéshez tartozik. Node.js telepítése után hajtsa végre a következő `npm` parancsot a Azurite telepítéséhez.
 
 ```console
 npm install -g azurite
@@ -148,7 +148,7 @@ Ez a parancs arra utasítja a Azurite, hogy egy adott címtárban ( *c:\azurite*
 
 Ez a szakasz részletesen ismerteti a Azurite indításakor elérhető parancssori kapcsolókat.
 
-### <a name="help"></a>Súgó
+### <a name="help"></a>Help
 
 **Opcionális** – parancssori Segítség kérése a `-h` vagy `--help` kapcsoló használatával.
 
@@ -355,7 +355,7 @@ A Azurite alapértelmezés szerint percenként frissíti az egyéni fiókok nev�
 
 ### <a name="connection-strings"></a>Kapcsolati sztringek
 
-Az alkalmazás Azurite való csatlakoztatásának legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely a *UseDevelopmentStorage = True*billentyűparancsra hivatkozik. Íme egy példa az *app. config* fájlban található kapcsolatok karakterláncra:
+Az alkalmazás Azurite való csatlakoztatásának legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely a *UseDevelopmentStorage = True*billentyűparancsra hivatkozik. Íme egy példa a *app.config* fájlban található kapcsolatok karakterláncra:
 
 ```xml
 <appSettings>
@@ -490,7 +490,7 @@ A következő lépésekkel adhat hozzá HTTPS-Azurite a Storage Explorerhoz:
 1. **Helyi & csatolásának** kiválasztása
 1. Kattintson a jobb gombbal a **Storage-fiókok** elemre, és válassza a **Kapcsolódás az Azure Storage-hoz**lehetőséget.
 1. Válassza **a kapcsolatok sztring használata** lehetőséget
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 1. Adjon meg egy értéket a **megjelenítendő név** mezőben.
 1. Adja meg a jelen dokumentum előző szakaszának [https-kapcsolati karakterláncát](#https-connection-strings) .
 1. Válassza a **tovább** lehetőséget
@@ -551,7 +551,7 @@ A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (
 
 Szívesen fogadjuk a Azurite vonatkozó hozzájárulásokat és javaslatokat. Lépjen a Azurite [GitHub-projekt](https://github.com/Azure/Azurite/projects) oldalra, vagy [GitHub-problémák](https://github.com/Azure/Azurite/issues) a mérföldkövek és munkaelemek számára, amelyeket nyomon követünk a közelgő funkciókkal és hibajavításokkal kapcsolatban. A részletes munkaelemeket is nyomon követheti a GitHubon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Használja az Azure Storage emulatort fejlesztési és tesztelési](storage-use-emulator.md) dokumentumaihoz az örökölt Azure Storage-emulátort, amelyet a Azurite felülír.
 - Az [Azure Storage-kapcsolódási karakterláncok konfigurálása](storage-configure-connection-string.md) azt ismerteti, hogyan lehet egy érvényes Azure Storage-beli kapcsolódási karakterláncot összeállítani.

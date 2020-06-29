@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c177adaa6fe0808d6719a8e87669d7f2fa4fb9cf
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75931469"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508826"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Használja az MMC menü műveleteit a StorSimple Snapshot Manager
 
@@ -30,7 +30,7 @@ A StorSimple Snapshot Manager a következő műveleteket fogja látni az összes
 * Új ablak innen 
 * Frissítés 
 * Exportálási lista 
-* Súgó 
+* Help 
 
 Ezek a műveletek a Microsoft Management Console (MMC) részét képezik, és nem kifejezetten a StorSimple Snapshot Manager. Ez az oktatóanyag ismerteti ezeket a műveleteket, és elmagyarázza, hogyan használhatja őket a StorSimple Snapshot Manager.
 
@@ -91,14 +91,14 @@ A lista **exportálása** művelettel egy vesszővel tagolt (CSV-) fájlba menth
       
       ![Lista exportálása vesszővel elválasztott érték fájlként](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>Súgó
+## <a name="help"></a>Help
 A **Súgó** menü használatával megtekintheti a StorSimple Snapshot Manager és az MMC-hez elérhető online súgót.
 
 #### <a name="to-view-available-online-help"></a>Az elérhető online Súgó megtekintése
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
 2. A **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópontra, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemre az **eredmények** ablaktábláján, majd kattintson a **Súgó**elemre. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple Snapshot Manager felhasználói felületéről](storsimple-use-snapshot-manager.md).
 * További információ a [StorSimple Snapshot Manager használatáról a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).
 

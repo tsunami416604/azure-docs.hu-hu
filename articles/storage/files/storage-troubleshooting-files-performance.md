@@ -3,16 +3,16 @@ title: Azure Files teljesítmény hibaelhárítási útmutatója
 description: Az Azure-fájlmegosztás és a kapcsolódó megkerülő megoldásokkal kapcsolatos ismert teljesítményproblémák.
 author: gunjanj
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598085"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511947"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>A teljesítménnyel kapcsolatos problémák elhárítása Azure Files
 
@@ -113,7 +113,7 @@ A címtár-bérletek támogatásának hiánya.
 ### <a name="workaround"></a>Áthidaló megoldás
 
 - Ha lehetséges, kerülje a túlzott nyitó/záró leírót egy rövid időn belül ugyanazon a címtáron.
-- Linux rendszerű virtuális gépek esetén növelje a címtár-bejegyzés gyorsítótárának időtúllépését úgy, hogy a **actimeo =\<SEC>** , csatlakoztatási lehetőségként van megadva. Alapértelmezés szerint ez egy másodperc, így egy nagyobb érték, például három vagy öt, segítségre lehet.
+- Linux rendszerű virtuális gépek esetén növelje a címtár-bejegyzés gyorsítótárának időtúllépését a **actimeo = \<sec> ** csatlakoztatási lehetőség megadásával. Alapértelmezés szerint ez egy másodperc, így egy nagyobb érték, például három vagy öt, segítségre lehet.
 - Linux rendszerű virtuális gépek esetén a kernelt 4,20-re vagy újabbra kell frissíteni.
 
 ## <a name="low-iops-on-centosrhel"></a>Alacsony IOPS a CentOS/RHEL
@@ -160,7 +160,7 @@ A nagy mennyiségű fájl létrehozására támaszkodó munkaterhelések nem fog
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
-- Nincs.
+- Nincsenek.
 
 ## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Lassú teljesítmény a Windows 8,1 vagy a Server 2012 R2 rendszerből
 
@@ -187,7 +187,7 @@ Nagyobb, mint a várt késés a Azure Files IO-igényű számítási feladatokho
 6. A **jel logikai beállítása** panelen lépjen a **Válasz típusa** dimenzióra, kattintson a **dimenzió értékek** legördülő listára, és válassza a **SuccessWithThrottling** (SMB) vagy a **ClientThrottlingError** (REST) lehetőséget. 
 
   > [!NOTE]
-  > Ha a SuccessWithThrottling vagy a ClientThrottlingError dimenzió értéke nem szerepel a listáján, ez azt jelenti, hogy az erőforrás nincs szabályozva.  A dimenzióérték hozzáadásához **+** kattintson a **dimenzió értékek** melletti legördülő listára, írja be a **SuccessWithThrottling** vagy a **ClientThrottlingError**értéket, kattintson az **OK** gombra, majd ismételje meg a lépést #6.
+  > Ha a SuccessWithThrottling vagy a ClientThrottlingError dimenzió értéke nem szerepel a listáján, ez azt jelenti, hogy az erőforrás nincs szabályozva.  A dimenzióérték hozzáadásához kattintson a **+** **dimenzió értékek** melletti legördülő listára, írja be a **SuccessWithThrottling** vagy a **ClientThrottlingError**értéket, kattintson az **OK** gombra, majd ismételje meg a lépést #6.
 
 7. Nyissa meg a **fájlmegosztás** dimenziót, kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni. 
 

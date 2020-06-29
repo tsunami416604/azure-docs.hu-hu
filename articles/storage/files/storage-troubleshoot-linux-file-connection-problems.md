@@ -3,16 +3,16 @@ title: A Linux Azure Files problémáinak elhárítása | Microsoft Docs
 description: A Linux-Azure Files kapcsolatos problémák elhárítása
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 95e220102cba290664a32cb6bbebef881ae4ffde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159489"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512014"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files problémáinak elhárítása
 
@@ -80,7 +80,7 @@ Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően va
 
 A Linux rendszerben a következőhöz hasonló hibaüzenet jelenik meg:
 
-**\<Fájlnév> [engedély megtagadva] a lemezkvóta túllépve**
+**\<filename>[engedély megtagadva] Túllépte a lemez kvótáját**
 
 ### <a name="cause"></a>Ok
 
@@ -106,14 +106,14 @@ Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához
 - Használja a megfelelő másolási módszert:
     - Használjon [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a két fájlmegosztás közötti átvitelhez.
     - A CP vagy a dd párhuzamosan történő használata a másolási sebesség növelését eredményezheti, a szálak száma a használati esettől és a számítási feladatoktól függ. A következő példák hat-ot használnak: 
-    - CP-példa (a CP a fájlrendszer alapértelmezett méretét fogja használni az adathalmaz méretének megfelelően): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - CP-példa (a CP a fájlrendszer alapértelmezett méretét fogja használni az adathalmaz méretének megfelelően): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
     - dd-példa (ez a parancs explicit módon beállítja az adatrészlet méretét 1 MiB-re):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Nyílt forráskódú, külső gyártótól származó eszközök, például:
         - [GNU Parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) – fájlokat rendez, és partícióba csomagolja őket.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) – a Fpart és a másolási eszköz használatával több példányt is áttelepíthet az adatok src_dirról dst_urlba.
         - [Több](https://github.com/pkolano/mutil) szálat összefűzött CP-és md5sum GNU-coreutils alapján.
-- Ha előre állítja be a fájl méretét, ahelyett, hogy minden írási kiterjesztést ír, a segít a másolási sebesség javításában olyan helyzetekben, ahol ismert a fájl mérete. Ha az írások kiterjesztését el kell kerülni, megadhatja a célfájl méretét a `truncate - size <size><file>` paranccsal. Ezt követően a `dd if=<source> of=<target> bs=1M conv=notrunc`parancs a forrásfájl méretének ismételt frissítése nélkül másolja a forrásfájlt. Megadhatja például a célfájl méretét a másolni kívánt összes fájlhoz (tegyük fel, hogy a megosztás a/mnt/Share alatt van csatlakoztatva):
+- Ha előre állítja be a fájl méretét, ahelyett, hogy minden írási kiterjesztést ír, a segít a másolási sebesség javításában olyan helyzetekben, ahol ismert a fájl mérete. Ha az írások kiterjesztését el kell kerülni, megadhatja a célfájl méretét a `truncate - size <size><file>` paranccsal. Ezt követően a `dd if=<source> of=<target> bs=1M conv=notrunc` parancs a forrásfájl méretének ismételt frissítése nélkül másolja a forrásfájlt. Megadhatja például a célfájl méretét a másolni kívánt összes fájlhoz (tegyük fel, hogy a megosztás a/mnt/Share alatt van csatlakoztatva):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
     - Ezután másolja a fájlokat a párhuzamos írások kiterjesztése nélkül:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
@@ -217,11 +217,11 @@ A fájlok másolásához használja a Storage-fiók felhasználóját:
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: az "&lt;elérési&gt;út" nem érhető el: bemeneti/kimeneti hiba
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: az " &lt; elérési út" nem érhető el &gt; : bemeneti/kimeneti hiba
 
 Ha egy Azure-fájlmegosztás fájljait az ls parancs használatával próbálja meg listázni, a parancs lefagy a fájlok listázásakor. A következő hibaüzenetet kapja:
 
-**ls: az "&lt;elérési&gt;út" nem érhető el: bemeneti/kimeneti hiba**
+**ls: az " &lt; elérési út" nem érhető el &gt; : bemeneti/kimeneti hiba**
 
 
 ### <a name="solution"></a>Megoldás

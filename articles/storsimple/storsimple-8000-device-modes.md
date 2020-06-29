@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: e55964beff48df6ce24d99c01975d39b662f1612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b0ea489c1d70ab86d677aad666ea6728fa76b4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60576089"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511621"
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>Az eszköz üzemmódjának módosítása a StorSimple-eszközön
 
@@ -78,7 +78,7 @@ A StorSimple-eszközt karbantartási módba helyezheti (normál módból) a karb
 #### <a name="to-enter-maintenance-mode"></a>Karbantartási mód megadása
 
 1. Jelentkezzen be az eszköz soros konzolján a [Putty használata az eszköz soros konzolhoz való kapcsolódáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)című témakör lépéseit követve.
-2. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel. Ha a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát**. Az alapértelmezett jelszó: `Password1`.
+2. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel. Ha a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát**. Az alapértelmezett jelszó: `Password1` .
 3. A parancssorba írja be a következőt: 
    
     `Enter-HcsMaintenanceMode`
@@ -161,7 +161,7 @@ A StorSimple-eszközt karbantartási módba helyezheti (normál módból) a karb
     Please enter your choice>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [alkalmazhat normál és karbantartási üzemmódú frissítéseket](storsimple-update-device.md) a StorSimple-eszközön.
 

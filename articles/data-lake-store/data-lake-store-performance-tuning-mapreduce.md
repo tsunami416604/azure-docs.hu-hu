@@ -3,21 +3,21 @@ title: Azure Data Lake Storage Gen1 Performance tuning – MapReduce
 description: Azure Data Lake Storage Gen1 MapReduce teljesítményének finomhangolására vonatkozó irányelvek
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: a645049665bc1d51efa94a879b9d2e4e5529282f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904595"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510911"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a HDInsight és Azure Data Lake Storage Gen1 MapReduce
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg az Ismerkedés [a Azure Data Lake Storage Gen1rel](data-lake-store-get-started-portal.md) című témakört.
 * **Azure HDInsight-fürt** Data Lake Storage Gen1 fiókhoz való hozzáféréssel. Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
 * **A MapReduce használata a HDInsight-on**. További információ: [MapReduce használata a Hadoop on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
@@ -36,13 +36,13 @@ A MapReduce-feladatok futtatásakor itt láthatók a legfontosabb paraméterek, 
 
 ### <a name="mapreducemapmemory--mapreducereducememory"></a>MapReduce. map. Memory/MapReduce. csökkentse a memóriát
 
-Módosítsa ezt a számot attól függően, hogy mennyi memóriát igényel a Térkép és/vagy a feladat csökkentése. A `mapreduce.map.memory` és `mapreduce.reduce.memory` a Ambari alapértelmezett értékeit a fonal konfigurációján keresztül tekintheti meg. A Ambari-ben navigáljon a fonal lapra, és tekintse meg a **konfigurációk** lapot. Ekkor megjelenik a szál memóriája.
+Módosítsa ezt a számot attól függően, hogy mennyi memóriát igényel a Térkép és/vagy a feladat csökkentése. A és a Ambari alapértelmezett értékeit `mapreduce.map.memory` `mapreduce.reduce.memory` a fonal konfigurációján keresztül tekintheti meg. A Ambari-ben navigáljon a fonal lapra, és tekintse meg a **konfigurációk** lapot. Ekkor megjelenik a szál memóriája.
 
 ### <a name="mapreducejobmaps--mapreducejobreduces"></a>MapReduce. job. Maps/MapReduce. job. csökkentse
 
 Ez határozza meg a létrehozandó leképezések vagy szűkítők maximális számát. A felosztások száma határozza meg, hogy a rendszer hány leképezést hoz létre a MapReduce feladatokhoz. Ezért előfordulhat, hogy kevesebb leképezést kap, mint amennyit kért, ha a kért leképezések száma kevesebb.
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Útmutató
 
 ### <a name="step-1-determine-number-of-jobs-running"></a>1. lépés: a futó feladatok számának meghatározása
 
@@ -110,7 +110,7 @@ Annak vizsgálatához, hogy a rendszer leszabályozza-e a szabályozást, enged�
 
 2. A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
 
-3. Ha leszabályozást végez, a HTTP 429 hibakód jelenik meg a fonal naplófájljában. A fonal naplófájlja a/tmp/&lt;felhasználói&gt;/yarn.log található.
+3. Ha leszabályozást végez, a HTTP 429 hibakód jelenik meg a fonal naplófájljában. A fonal naplófájlja a/tmp/ &lt; felhasználói &gt; /yarn.log található.
 
 ## <a name="examples-to-run"></a>Futtatási példák
 

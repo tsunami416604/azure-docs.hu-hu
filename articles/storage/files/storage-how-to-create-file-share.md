@@ -4,16 +4,16 @@ titleSuffix: Azure Files
 description: Azure-fájlmegosztás létrehozása a Azure Portal, a PowerShell vagy az Azure CLI használatával.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ed6abbac7c5953eaec4fa4584248d0d98b49ba63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba6f4bcaffbf9fa11c949853362485d524bec23a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596896"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510016"
 ---
 # <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 Azure-fájlmegosztás létrehozásához három kérdést kell megválaszolnia, hogy miként fogja használni:
@@ -97,7 +97,7 @@ $storageAccountName = "mystorageacct$(Get-Random)"
 $region = "westus2"
 ```
 
-Szabványos Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. A `-SkuName` paraméter a kívánt redundancia típusára vonatkozik; Ha földrajzilag redundáns vagy földrajzilag redundáns tárolási fiókot szeretne, akkor el kell távolítania a `-EnableLargeFileShare` paramétert is.
+Szabványos Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. A `-SkuName` paraméter a kívánt redundancia típusára vonatkozik; ha földrajzilag redundáns vagy földrajzilag redundáns tárolási fiókot szeretne használni, akkor a paramétert is el kell távolítania `-EnableLargeFileShare` .
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -109,7 +109,7 @@ $storAcct = New-AzStorageAccount `
     -EnableLargeFileShare
 ```
 
-Prémium szintű Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. Vegye figyelembe, `-SkuName` hogy a paraméter úgy módosult `Premium` , hogy mindkettőt és a helyileg redundáns (`LRS`) kívánt redundancia szintjét is tartalmazza. A `-Kind` paraméter azért `FileStorage` van, `StorageV2` mert a prémium fájlmegosztás FileStorage-fiókban kell létrehozni a GPv2 helyett.
+Prémium szintű Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. Vegye figyelembe, hogy a `-SkuName` paraméter úgy módosult, hogy mindkettőt `Premium` és a helyileg redundáns () kívánt redundancia szintjét is tartalmazza `LRS` . A `-Kind` paraméter azért van, `FileStorage` mert a `StorageV2` prémium fájlmegosztás FileStorage-fiókban kell létrehozni a GPv2 helyett.
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -131,7 +131,7 @@ storageAccountName="mystorageacct$RANDOM"
 region="westus2"
 ```
 
-Szabványos Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. A `--sku` paraméter a kívánt redundancia típusára vonatkozik; Ha földrajzilag redundáns vagy földrajzilag redundáns tárolási fiókot szeretne, akkor el kell távolítania a `--enable-large-file-share` paramétert is.
+Szabványos Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. A `--sku` paraméter a kívánt redundancia típusára vonatkozik; ha földrajzilag redundáns vagy földrajzilag redundáns tárolási fiókot szeretne használni, akkor a paramétert is el kell távolítania `--enable-large-file-share` .
 
 ```azurecli-interactive
 az storage account create \
@@ -143,7 +143,7 @@ az storage account create \
     --output none
 ```
 
-Prémium szintű Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. Vegye figyelembe, `--sku` hogy a paraméter úgy módosult `Premium` , hogy mindkettőt és a helyileg redundáns (`LRS`) kívánt redundancia szintjét is tartalmazza. A `--kind` paraméter azért `FileStorage` van, `StorageV2` mert a prémium fájlmegosztás FileStorage-fiókban kell létrehozni a GPv2 helyett.
+Prémium szintű Azure-fájlmegosztás tárolására alkalmas Storage-fiók létrehozásához a következő parancsot fogjuk használni. Vegye figyelembe, hogy a `--sku` paraméter úgy módosult, hogy mindkettőt `Premium` és a helyileg redundáns () kívánt redundancia szintjét is tartalmazza `LRS` . A `--kind` paraméter azért van, `FileStorage` mert a `StorageV2` prémium fájlmegosztás FileStorage-fiókban kell létrehozni a GPv2 helyett.
 
 ```azurecli-interactive
 az storage account create \
@@ -175,10 +175,10 @@ Az új fájlmegosztás panelnek a képernyőn kell megjelennie. Fájlmegosztás 
 - **Name (név**): a létrehozandó fájlmegosztás neve.
 - **Kvóta**: a fájlmegosztás kvótája a szabványos fájlmegosztás esetében; a prémium fájlmegosztás esetén a fájlmegosztás kiosztott mérete.
 
-Válassza a **Létrehozás** lehetőséget az új megosztás létrehozásának befejezéséhez. Vegye figyelembe, hogy ha a Storage-fiókja virtuális hálózatban található, akkor nem fog tudni sikeres Azure-fájlmegosztást létrehozni, kivéve, ha az ügyfél a virtuális hálózatban is szerepel. Az időponthoz kötött korlátozásokat az Azure PowerShell `New-AzRmStorageShare` parancsmaggal is elvégezheti.
+Válassza a **Létrehozás** lehetőséget az új megosztás létrehozásának befejezéséhez. Vegye figyelembe, hogy ha a Storage-fiókja virtuális hálózatban található, akkor nem fog tudni sikeres Azure-fájlmegosztást létrehozni, kivéve, ha az ügyfél a virtuális hálózatban is szerepel. Az időponthoz kötött korlátozásokat az Azure PowerShell parancsmaggal is elvégezheti `New-AzRmStorageShare` .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Az Azure-fájlmegosztás a [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) parancsmaggal hozható létre. A következő PowerShell-parancsok feltételezik, hogy beállította a változókat `$resourceGroupName` , a Storage-fiók létrehozása Azure PowerShell szakaszban megadott `$storageAccountName` módon. 
+Az Azure-fájlmegosztás a parancsmaggal hozható létre [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) . A következő PowerShell-parancsok feltételezik, hogy beállította a változókat, a `$resourceGroupName` `$storageAccountName` Storage-fiók létrehozása Azure PowerShell szakaszban megadott módon. 
 
 > [!Important]  
 > A prémium fájlmegosztás esetén a `-QuotaGiB` paraméter a fájlmegosztás kiépített méretére hivatkozik. A fájlmegosztás kiosztott mérete az a mennyiség, amelyet a rendszer a használattól függetlenül számláz. A standard fájlmegosztás számlázása a használat alapján történik, nem pedig kiosztott méret.
@@ -197,7 +197,7 @@ New-AzRmStorageShare `
 > A fájlmegosztás nevében csak kisbetű szerepelhet. A fájlmegosztás és a fájlok elnevezésével kapcsolatos részletes információkért lásd: [megosztások, könyvtárak, fájlok és metaadatok elnevezése és hivatkozása](https://msdn.microsoft.com/library/azure/dn167011.aspx).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Ahhoz, hogy létre lehessen hozni egy Azure-fájlmegosztást az Azure CLI-vel, be kell szereznie egy Storage-fiók kulcsát, hogy engedélyezze a fájlmegosztás-létrehozási műveletet a használatával. Ezt a [`az storage account keys list`](/cli/azure/storage/account/keys) következő paranccsal teheti meg:
+Ahhoz, hogy létre lehessen hozni egy Azure-fájlmegosztást az Azure CLI-vel, be kell szereznie egy Storage-fiók kulcsát, hogy engedélyezze a fájlmegosztás-létrehozási műveletet a használatával. Ezt a következő paranccsal teheti meg [`az storage account keys list`](/cli/azure/storage/account/keys) :
 
 ```azurecli-interactive
 storageAccountKey=$(az storage account keys list \
@@ -222,7 +222,7 @@ az storage share create \
     --output none
 ```
 
-Ez a parancs sikertelen lesz, ha a Storage-fiók egy virtuális hálózaton belül található, és a parancsot futtató számítógép nem része a virtuális hálózatnak. Az adott időpontra vonatkozó korlátozást a fentiekben ismertetett Azure PowerShell `New-AzRmStorageShare` parancsmag használatával vagy a virtuális hálózat részét képező számítógépről, beleértve a VPN-kapcsolaton keresztül is végrehajthatja.
+Ez a parancs sikertelen lesz, ha a Storage-fiók egy virtuális hálózaton belül található, és a parancsot futtató számítógép nem része a virtuális hálózatnak. Az adott időpontra vonatkozó korlátozást a `New-AzRmStorageShare` fentiekben ismertetett Azure PowerShell parancsmag használatával vagy a virtuális hálózat részét képező számítógépről, beleértve a VPN-kapcsolaton keresztül is végrehajthatja.
 
 ---
 
