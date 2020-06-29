@@ -3,15 +3,15 @@ title: Az Azure Data Lake Storage Gen1-Power BIban lévő adatelemzés
 description: A Power BI segítségével elemezheti a Azure Data Lake Storage Gen1 tárolt adatelemzést.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: eb34199f6f1b304d56c691f56b78d9c035be8a5b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a692c5b23eaf23b33eef9bd2baf1e62b4bcca74e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744780"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504933"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage Gen1i adatelemzés Power BI használatával
 Ebből a cikkből megtudhatja, hogyan elemezheti és jelenítheti meg a Azure Data Lake Storage Gen1ban tárolt információkat a Power BI Desktop használatával.
@@ -20,8 +20,8 @@ Ebből a cikkből megtudhatja, hogyan elemezheti és jelenítheti meg a Azure Da
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Ez a cikk azt feltételezi, hogy már létrehozott egy **myadlsg1**nevű Data Lake Storage Gen1 fiókot, és feltöltött egy minta adatfájlt (**Drivers. txt**). Ez a mintakód [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)tölthető le.
-* **Power bi Desktop**. Ezt letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
+* **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Ez a cikk azt feltételezi, hogy már létrehozott egy **myadlsg1**nevű Data Lake Storage Gen1 fiókot, és feltöltött egy minta adatfájlt (**Drivers.txt**). Ez a mintakód [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)tölthető le.
+* **Power BI Desktop**. Ezt letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Jelentés létrehozása a Power BI Desktopban
 1. Power BI Desktop elindítása a számítógépen.
@@ -56,7 +56,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 10. A lekérdezés-szerkesztő **tartalom** oszlopában kattintson a **bináris**elemre.
     
     ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/convert-query1.png "Lekérdezések szerkesztése")
-11. Egy fájl ikon jelenik meg, amely a feltöltött **Drivers. txt** fájlt jelöli. Kattintson a jobb gombbal a fájlra, majd kattintson a **CSV**elemre.    
+11. Egy fájl ikon jelenik meg, amely a feltöltött **Drivers.txt** fájlt jelöli. Kattintson a jobb gombbal a fájlra, majd kattintson a **CSV**elemre.    
     
     ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/convert-query2.png "Lekérdezések szerkesztése")
 12. Az alább látható kimenetnek kell megjelennie. Az adatai mostantól a vizualizációk létrehozásához használható formátumban érhetők el.
@@ -90,6 +90,6 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 ## <a name="publish-report-to-power-bi-service"></a>Jelentés közzététele Power BI szolgáltatás
 Miután létrehozta a vizualizációkat a Power BI Desktopban, megoszthatja másokkal, ha közzéteszi azt a Power BI szolgáltatás. Ennek módjával kapcsolatos útmutatásért lásd: [közzététel Power bi Desktopról](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Data Lake Storage Gen1 adatai elemzése a Data Lake Analytics használatával](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 

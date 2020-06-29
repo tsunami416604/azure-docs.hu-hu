@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: e0f1caf77f0e898b13045e2c840d93f42a5569fc
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609148"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484043"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterületek előzetes verzió) – gyakori kérdések
 
@@ -22,7 +22,7 @@ Ebben az útmutatóban megtalálja a szinapszis-elemzések leggyakrabban feltett
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="q-what-is-azure-synapse-analytics"></a>K: Mi az az Azure szinapszis Analytics?
 
@@ -48,6 +48,10 @@ A: az Azure szinapszis a következő képességekkel rendelkezik:
 A: az Azure szinapszis Analytics a Azure SQL Data Warehouse fejlődése egy elemzési platformon, amely az SQL-készletet is tartalmazza adattárház-megoldásként. Ez a platform ötvözi az adatfeltárást, a betöltést, az átalakítást, az előkészítést és a kiszolgáló elemzési rétegét.
 
 ## <a name="use-cases"></a>Használati esetek
+
+### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>K: Hogyan átnevezni egy közzétett összetevőt (adatkészlet, jegyzetfüzet, SQL-parancsfájl stb.) az Azure Szinapszisban?
+
+A: egy közzétett összetevő-fájl átnevezéséhez először a fájlt kell megadnia, és átnevezni az új fájlt a kívánt névre. Manuálisan kell frissítenie az összetevő összes hivatkozását az új fájlnévre, és törölnie kell a régit.
 
 ### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>K: mi a jó használati eset a szinapszis SQL-készlethez
 

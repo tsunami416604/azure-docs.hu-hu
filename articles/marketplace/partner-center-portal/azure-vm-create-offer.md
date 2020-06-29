@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 7d32e4100d00a4ecff9f8bd5017d8bc5ab74105e
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 38228e7080cb0bdead2f2b3490729702d923ae36
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752406"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504899"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -191,7 +191,7 @@ Adja meg az ajánlat rövid leírását, amely az Azure Marketplace keresési er
 
 Adja meg az ajánlatát, hogy megjelenjen az Azure Marketplace keresési eredményei között. Akár 256 karaktert is tartalmazhat.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -400,10 +400,14 @@ Megtervezheti, hogy az egyes tervek mindenki számára láthatók legyenek, vagy
 
 **Privát célközönség**: a terv csak az előkiválasztott közönség számára látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy megváltoztathatja nyilvánosra. Miután megnyitotta a csomagot, nyilvánosnak kell maradnia. Nem módosítható egy privát csomagra.
 
-**Korlátozott célközönség (Azure-előfizetési azonosítók)**: rendelje hozzá azt a célközönséget, amely hozzáférhet ehhez a privát csomaghoz az Azure-előfizetési azonosítók használatával. Igény szerint az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását is megadhatja. Akár 10 előfizetés-azonosítót is hozzáadhat manuálisan vagy akár 20 000 azonosítóhoz, ha CSV-táblázatot importál. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és minden betűnek kisbetűsnek kell lennie.
-
 > [!NOTE]
 > A privát vagy korlátozott célközönség nem azonos az **előnézeti ablaktáblán** meghatározott előnézeti célközönséggel. Az előzetes verzió célközönsége az Azure Marketplace-en való élő közzététel _előtt_ elérheti az ajánlatát. Bár a privát célközönség választása csak egy adott csomagra vonatkozik, az előzetes verzió célközönsége az összes magán-és nyilvános csomagot megtekintheti érvényesítés céljából.
+
+**Korlátozott célközönség (Azure-előfizetési azonosítók)**: rendelje hozzá azt a célközönséget, amely hozzáférhet ehhez a privát csomaghoz az Azure-előfizetési azonosítók használatával. Igény szerint az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását is megadhatja. Akár 10 előfizetés-azonosítót is hozzáadhat manuálisan vagy akár 20 000 azonosítóhoz, ha CSV-táblázatot importál. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és minden betűnek kisbetűsnek kell lennie.
+
+>[!Note]
+>A privát ajánlatok nem támogatottak a Cloud Solution Provider program (CSP) viszonteladóján keresztül létesített Azure-előfizetések esetében.
+
 
 #### <a name="hide-a-plan"></a>Csomag elrejtése
 
@@ -526,7 +530,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Leírás
+7. Description
 8. Hasznos hivatkozások
 9. Képernyőképek/videók
 
@@ -558,7 +562,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
 1. Name
-2. Leírás
+2. Description
 3. Hasznos hivatkozások
 4. Képernyőképek/videók
 

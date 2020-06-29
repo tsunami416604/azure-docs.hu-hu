@@ -1,25 +1,14 @@
 ---
 title: Virtuális gép hozzáadása megosztott rendszerkép használatával Azure DevTest Labsban | Microsoft Docs
 description: Megtudhatja, hogyan adhat hozzá virtuális gépet (VM) a csatolt megosztott rendszerkép-katalógus rendszerképének használatával Azure DevTest Labs
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
-ms.author: spelluru
-ms.openlocfilehash: c13b2c3d00a0ab0af0f7785feae645d907ffdaa3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898814"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483856"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>Virtuális gép hozzáadása rendszerkép használatával a csatolt megosztott rendszerkép-gyűjteményből
 Azure DevTest Labs lehetővé teszi, hogy megosztott képtárat csatoljon a laborhoz, majd a galériában lévő lemezképeket a laborban létrehozott virtuális gépek alapjaként használja. Ha meg szeretné tudni, hogyan csatolhat megosztott képtárat a laborhoz, tekintse meg a [megosztott képgyűjtemény konfigurálása](configure-shared-image-gallery.md)című témakört. Ebből a cikkből megtudhatja, hogyan adhat hozzá egy virtuális gépet a laborhoz a csatolt megosztott rendszerkép-katalógusból származó rendszerképek használatával. 

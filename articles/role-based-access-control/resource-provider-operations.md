@@ -8,12 +8,12 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
-ms.openlocfilehash: 2131912244b2f895ebb7d9bbc28f132ac2404ae7
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 3e79f0498aa14bed1cda29148a6b3c7e1e9e2a3d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414572"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508469"
 ---
 # <a name="azure-resource-providers-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -1358,8 +1358,7 @@ Azure-szolgáltatás: klasszikus üzembe helyezési modell tárolója
 
 ### <a name="microsoftdatabox"></a>Microsoft. DataBox
 
-Azure-szolgáltatás: [Azure Data Box](../databox-family/index.md)
-
+Azure-szolgáltatás: [Azure Data Box](../databox/index.yml)
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
 > | --- | --- |

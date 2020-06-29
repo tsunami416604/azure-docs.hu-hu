@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60723306"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508044"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>A StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást
 
@@ -37,7 +37,7 @@ A cikk elolvasása után a következőket fogja megtanulni:
 A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut, és több StorSimple-eszközhöz csatlakozik. Az eszközök kezeléséhez egy böngészőben futó központi Microsoft Azure Portal fog használni. A StorSimple Eszközkezelő szolgáltatáshoz való kapcsolódáshoz tegye a következőket.
 
 #### <a name="to-connect-to-the-service"></a>Kapcsolódás a szolgáltatáshoz
-1. Navigáljon [https://portal.azure.com/](https://portal.azure.com/)a következőhöz:.
+1. Navigáljon a következőhöz: [https://portal.azure.com/](https://portal.azure.com/) .
 2. A Microsoft-fiók hitelesítő adataival jelentkezzen be a Microsoft Azure Portalba (a panel jobb felső sarkában található).
 3. Görgessen le a bal oldali navigációs ablaktáblán a StorSimple Eszközkezelő szolgáltatás eléréséhez.
 
@@ -80,7 +80,7 @@ Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a 
 | Támogatási csomag létrehozása |[Támogatási csomag létrehozása és kezelése](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple) |
 | Szoftverfrissítések telepítése |[Az eszköz frissítése](storsimple-update-device.md) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha bármilyen problémát tapasztal a StorSimple-eszköz napi működésével vagy annak hardveres összetevőivel kapcsolatban, tekintse meg a következőt:
 

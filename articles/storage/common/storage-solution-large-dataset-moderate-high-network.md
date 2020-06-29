@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: cfe450972acda3affbea6cbe3d262bc4b1956dc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b60162800695be67c742554881b296c3d8bb9dc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262859"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504372"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Nagy méretű adathalmazok átvitele közepes vagy nagy hálózati sávszélességen
  
@@ -67,9 +67,9 @@ Ha kapcsolat nélküli adatátvitelt használ, a következő táblázat segíts�
 |    Adatméret                        |    Akár 35 TBs                 |    Akár 80 TBs/eszköz                       |    Akár 800 TB/eszköz               |    Változó                            |
 |    Adattípus                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
 |    Űrlap tényező                      |    5 SSD/megrendelés             |    1 X 50 – lbs. asztali méretű eszköz/megrendelés    |    1 X ~ 500 – lbs. nagyméretű eszköz/megrendelés    |    Akár 10 HDD/SSD/megrendelés        |
-|    Kezdeti telepítési idő               |    Alacsony <br>(15 perc)            |    Alacsony – mérsékelt <br> (<30 perc)               |    Közepes<br>(1-2 óra)               |    Mérsékelt – nehéz<br>változó |
+|    Kezdeti telepítési idő               |    Alacsony <br>(15 perc)            |    Alacsony – mérsékelt <br> (<30 perc)               |    Mérsékelt<br>(1-2 óra)               |    Mérsékelt – nehéz<br>változó |
 |    Adatküldés az Azure-ba               |    Igen                          |    Igen                                           |    Igen                                   |    Igen                                 |
-|    Adatexportálás az Azure-ból           |    Nem                           |    Nem                                            |    Nem                                    |    Igen                                 |
+|    Adatexportálás az Azure-ból           |    Nem                           |    Nem                                            |    Nem                                    |    Yes                                 |
 |    Titkosítás                       |    AES 128 bites                  |    AES 256 bites                                   |    AES 256 bites                           |    AES 128 bites                         |
 |    Hardver                         |     Microsoft által megadott          |    Microsoft által megadott                            |    Microsoft által megadott                    |    Ügyfél által megadott                   |
 |    Hálózati illesztő                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
@@ -87,8 +87,8 @@ Ha online adatátvitelt használ, használja a következő szakaszban találhat�
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    Adattípus                  |    Azure-Blobok, Azure Files, Azure-táblák    |    Azure-Blobok, Azure Files, Azure-táblák    |    Azure-Blobok, Azure Files                           |   70 + adatösszekötőt támogat az adattárakhoz és a formátumokhoz    |
 |    Űrlap tényező                |    Parancssori eszközök                        |    Programozott felület                    |    A Microsoft biztosítja a virtuális <br>vagy fizikai eszköz     |    Szolgáltatás Azure Portal                                            |
-|    Kezdeti egyszeri telepítés     |    Könnyen               |    Közepes                       |    Easy (<30 perc) – mérsékelt (1-2 óra)            |    Kiterjedt                                                          |
-|    Adatfeldolgozás előtti              |    Nem                                        |    Nem                                        |    Igen (az Edge számítási feladatokkal)                               |    Igen                                                                |
+|    Kezdeti egyszeri telepítés     |    Könnyen               |    Mérsékelt                       |    Easy (<30 perc) – mérsékelt (1-2 óra)            |    Kiterjedt                                                          |
+|    Adatfeldolgozás előtti              |    Nem                                        |    Nem                                        |    Igen (az Edge számítási feladatokkal)                               |    Yes                                                                |
 |    Átvitel más felhőkből       |    Nem                                        |    Nem                                        |    Nem                                                    |    Igen                                                                |
 |    Felhasználó típusa                        |    IT Pro vagy dev                                       |    Dev                                       |    IT-szakértő                                                |    IT-szakértő                                                             |
 |    Díjszabás                          |    Ingyenes, a kimenő adatforgalomra vonatkozó díjak érvényesek         |    Ingyenes, a kimenő adatforgalomra vonatkozó díjak érvényesek         |    [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Díjszabás](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 6/10/2020
-ms.openlocfilehash: 00c60a0ff20c67b63b2ca93f9e5997e78a283f26
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.date: 6/26/2020
+ms.openlocfilehash: 2b5da354e8e8b49e40e7d960e368aad8067de659
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667590"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506701"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -125,7 +125,7 @@ Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgálta
 
 Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
 
-|Funkció|Trigger újraindítása|
+|Szolgáltatás|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
 |Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
@@ -347,9 +347,9 @@ A Azure Hybrid Benefit (AHB) és a fenntartott kapacitási kedvezmények nem von
 
 ## <a name="available-regions"></a>Elérhető régiók
 
-A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Németország, Északkelet, Egyesült Királyság északi régiója, Egyesült Királyság 2., az USA nyugati középső régiója és a US Gov Central (Iowa).
+A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Kelet-Németország és US Gov Central (Iowa).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Első lépésként tekintse meg a rövid útmutató [: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](single-database-create-quickstart.md)című témakört.
 - Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).

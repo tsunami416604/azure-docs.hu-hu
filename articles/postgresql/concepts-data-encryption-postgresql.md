@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e4811b1b892fb04400b5a96450db14a260532003
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 3eb429c4981cbc548c7d68c788008b841ff5d33e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488834"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484077"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -144,7 +144,16 @@ Azure Database for PostgreSQL esetén az ügyfelek által felügyelt kulcs (CMK)
 
 * A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="infrastructure-double-encryption"></a>Infrastruktúra – kettős titkosítás
+A Azure Database for PostgreSQL a Microsoft által felügyelt kulcsok használatával adattárolási [titkosítást használ a REST-](concepts-security.md#at-rest) adatokon. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva vannak, és ez a titkosítás mindig be van kapcsolva, és nem tiltható le. A titkosítás FIPS 140-2 ellenőrzött titkosítási modult és egy AES 256-bites titkosítást használ az Azure Storage-titkosításhoz. 
+
+Az infrastruktúra-kettős titkosítás egy második titkosítási réteget ad egy FIPS 140-2 ellenőrzött titkosítási modul és egy másik titkosítási algoritmus használatával, amely további védelmi réteget biztosít az adatok nyugalmi szintjén. Az infrastruktúra kettős titkosításához használt kulcsot a szolgáltatás is kezeli. Ez alapértelmezés szerint *nem érhető el,* mert a további titkosítási réteg miatt hatással lesz a teljesítményre. 
+
+   > [!NOTE]
+   > - Ez a funkció továbbra is globálisan nem érhető el. 
+   > - A funkció támogatása a **általános célú** és a **memória optimalizált** díjszabási szintjeire korlátozódik.
+
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [állíthatja be az adattitkosítást egy ügyfél által felügyelt kulccsal a PostgreSQL-hez készült Azure-adatbázishoz a Azure Portal használatával](howto-data-encryption-portal.md).
 

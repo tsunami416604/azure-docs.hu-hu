@@ -3,15 +3,15 @@ title: Azure Data Lake Storage Gen1 Performance tuning – PowerShell
 description: Tippek a teljesítmény javításához a Azure PowerShell és a Azure Data Lake Storage Gen1 használatával.
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: c975af1799d427651b76bb9fde5ff765afed3f86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904578"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504695"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a PowerShell és a Azure Data Lake Storage Gen1 használatával
 
@@ -21,7 +21,7 @@ Ez a cikk azokat a tulajdonságokat ismerteti, amelyekkel jobb teljesítményt �
 
 ## <a name="performance-related-properties"></a>Teljesítménnyel kapcsolatos tulajdonságok
 
-| Tulajdonság            | Alapértelmezett | Leírás |
+| Tulajdonság            | Alapértelmezett | Description |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | Ez a paraméter lehetővé teszi a párhuzamos szálak számának megadását az egyes fájlok fel- vagy letöltéséhez. Ez a szám a fájlok számára lefoglalható maximális szálakat jelöli, de előfordulhat, hogy a forgatókönyvtől függően kevesebb szálat kap (például ha egy 1 KB-os fájlt tölt fel, akkor is egy szálat kap, ha 20 szálat kér).  |
 | ConcurrentFileCount | 10      | Ez a paraméter kifejezetten a mappák fel- és letöltéséhez kapcsolódik. Ez a paraméter határozza meg az egyidejűleg fel- vagy letölthető fájlok számát. Ez a szám azt jelenti, hogy legfeljebb hány egyidejű fájl tölthető fel vagy tölthető le egyszerre, de előfordulhat, hogy a forgatókönyvtől függően kisebb a párhuzamosság (például ha két fájlt tölt fel, akkor is két egyidejű fájlt tölt fel, akkor is, ha 15-et kér). |
@@ -96,7 +96,7 @@ A beállítások hangolását a **PerFileThreadCount** értékének növelésév
 
 * **Szabályozási hibák**: Elképzelhető, hogy szabályozási hibákat tapasztal, ha az egyidejűség túl magas. Ha szabályozás hibák merülnek fel, csökkentse az egyidejűséget vagy lépjen kapcsolatba velünk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Data Lake Storage Gen1 használata big data követelményekhez](data-lake-store-data-scenarios.md) 
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

@@ -3,16 +3,16 @@ title: Az Azure Storage-ba másolhatja vagy áthelyezheti az AzCopy v10 használ
 description: A AzCopy egy parancssori segédprogram, amellyel az adatok átmásolhatók a, a-ból vagy a Storage-fiókok között. Ez a cikk segítséget nyújt a AzCopy letöltésében, a Storage-fiókhoz való kapcsolódásban, majd a fájlok átvitelében.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 2cff9a427cf395414c5b0778f51f4587c8578478
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340922"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504474"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -65,7 +65,7 @@ A táblázat használata útmutatóként:
 
 | Tárolási típus | Jelenleg támogatott hitelesítési módszer |
 |--|--|
-|**Blob Storage** | Azure AD & SAS |
+|**BLOB Storage** | Azure AD & SAS |
 |**BLOB Storage (hierarchikus névtér)** | Azure AD & SAS |
 |**File Storage** | Csak SAS |
 

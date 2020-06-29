@@ -3,15 +3,15 @@ title: StorSimple-kötetek kezelése (3. frissítés)
 description: Ismerteti, hogyan lehet StorSimple-kötetek hozzáadását, módosítását, figyelését és törlését, valamint szükség esetén offline állapotba helyezni őket.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254767"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508248"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A kötetek kezelése a StorSimple Eszközkezelő szolgáltatásával (3. frissítés vagy újabb)
 
@@ -112,7 +112,7 @@ A StorSimple 8000 Series-eszköz üzembe helyezése során [létrehozott egy kö
       
        Ha a 8100-as eszközön kioszt egy 8,5 TB-os (vagyis a legnagyobb megengedett méretű) gyors helyi kötetet, azzal elfoglalja az összes rendelkezésre álló helyi területet az eszközön. Innentől kezdve nem hozhat létre további rétegzett köteteket, mivel nincs helyi terület az eszközön, amely üzemeltethetné a rétegzett kötet munkakészletét. A meglévő rétegzett kötetek is hatással vannak a rendelkezésre álló területre. Ha például egy 8100-as eszközhöz már tartozik körülbelül 106 TB rétegzett kötet, akkor csak 4 TB érhető el a gyors helyi kötetekhez.
 
-    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t, vagy adjon hozzá egy új ACR-t. Ha új ACR-t választ, akkor adjon meg egy **nevet** az ACR számára, adja meg a Windows-gazdagép **iSCSI minősített nevét** (IQN). Ha nem tudja az IQN-t, lépjen a Windows Server-gazdagép IQN nevének lekérése szakaszhoz. Kattintson a **Létrehozás**gombra. Létrejön egy kötet a megadott beállításokkal.
+    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t, vagy adjon hozzá egy új ACR-t. Ha új ACR-t választ, akkor adjon meg egy **nevet** az ACR számára, adja meg a Windows-gazdagép **iSCSI minősített nevét** (IQN). Ha nem tudja az IQN-t, lépjen a Windows Server-gazdagép IQN nevének lekérése szakaszhoz. Kattintson a **Létrehozás** lehetőségre. Létrejön egy kötet a megadott beállításokkal.
 
         ![Kattintson a Létrehozás gombra](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -157,13 +157,13 @@ Módosítsa a kötetet, ha ki kell bontania, vagy módosítania kell a kötetet 
 
        ![A kötet offline állapotba helyezésének következményeinek áttekintése](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A Azure Portal megjeleníti a kötet frissítési üzenetét. Ekkor megjelenik egy sikeres üzenet, ha a kötet sikeresen frissítve lett.
+5. Kattintson a **Mentés** gombra a módosítások mentéséhez. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A Azure Portal megjeleníti a kötet frissítési üzenetét. Ekkor megjelenik egy sikeres üzenet, ha a kötet sikeresen frissítve lett.
 
     ![A kötet offline állapotba helyezésének következményeinek áttekintése](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
 7. Ha bővít egy kötetet, hajtsa végre a következő lépéseket a Windows-gazdagépen:
    
-   1. Nyissa meg a **Számítógép-kezelés** ->**Lemezkezelés webhelyét**.
+   1. Nyissa meg a **Számítógép-kezelés**  -> **Lemezkezelés webhelyét**.
    2. Kattintson a jobb gombbal a **Lemezkezelés** elemre, majd válassza a **Lemezek újraellenőrzése**elemet.
    3. A lemezek listájában válassza ki a frissített kötetet, kattintson a jobb gombbal, majd válassza a **Kötet kiterjesztése**lehetőséget. Elindul a Kötet kiterjesztése varázsló. Kattintson a **Tovább** gombra.
    4. Fejezze be a varázslót, és fogadja el az alapértelmezett értékeket. A varázsló befejezése után a kötetnek meg kell jelennie a megnövelt méretnek.

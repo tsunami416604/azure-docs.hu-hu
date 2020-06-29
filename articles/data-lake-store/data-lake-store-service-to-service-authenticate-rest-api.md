@@ -3,15 +3,15 @@ title: REST-szolgáltatás – szolgáltatás hitelesítése – Data Lake Stora
 description: Megtudhatja, hogyan valósítható meg a szolgáltatás és a szolgáltatás közötti hitelesítés Azure Data Lake Storage Gen1 és Azure Active Directory a REST API használatával.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d7d0ec39e9f0f294324eb18337f4234ddaa63e2c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 08b5e915902fb4e2002bd20699cdaca9f0f35e3e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688141"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505066"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 használatával REST API
 > [!div class="op_single_selector"]
@@ -40,13 +40,13 @@ Ebben az esetben az alkalmazás a saját hitelesítő adatait biztosítja a műv
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-A kérelem kimenete tartalmaz egy engedélyezési jogkivonatot (amelyet `access-token` az alábbi kimenetben jelöl), amelyet később a REST API-hívásokkal továbbít. Mentse a hitelesítési jogkivonatot szövegfájlba; szüksége lesz rá, amikor Data Lake Storage Gen1 REST-hívásokat végez.
+A kérelem kimenete tartalmaz egy engedélyezési jogkivonatot (amelyet az `access-token` alábbi kimenetben jelöl), amelyet később a REST API-hívásokkal továbbít. Mentse a hitelesítési jogkivonatot szövegfájlba; szüksége lesz rá, amikor Data Lake Storage Gen1 REST-hívásokat végez.
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
 Ez a cikk a **nem interaktív** módszert alkalmazza. További információk a nem interaktív (szolgáltatások közötti) hívásokról: [Szolgáltatások közötti hívások hitelesítő adatok használatával](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 REST API használatával történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használhatja a REST API a Data Lake Storage Gen1 használatához.
 

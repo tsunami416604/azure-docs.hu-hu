@@ -1,23 +1,14 @@
 ---
 title: Tesztkörnyezet konfigurálása Távoli asztali átjáró használatára Azure DevTest Labs
 description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs egy távoli asztali átjáróval, hogy biztosítsa a laboratóriumi virtuális gépek biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 68cb830c765a71b06f9732c4062be23d9e7f67d0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899304"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483839"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>A labor konfigurálása Azure DevTest Labs távoli asztali átjáró használatához
 Azure DevTest Labs egy távoli asztali átjárót konfigurálhat a laborhoz, így biztosíthatja a labor virtuális gépek (VM-EK) biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni. A labor központi helyet biztosít a labor felhasználói számára az összes olyan virtuális gép megtekintésére és a hozzájuk való kapcsolódásra, amelyhez hozzáférése van. A **virtuális gép** oldalon a **Kapcsolódás** gomb egy, a géphez való kapcsolódáshoz megnyitható RDP-fájlt hoz létre. Az RDP-kapcsolatot tovább testreszabhatja és biztonságossá teheti úgy, hogy a labort egy távoli asztali átjáróhoz csatlakoztatja. 

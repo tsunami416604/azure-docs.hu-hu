@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: cb35021ad7e4d735a7dd521e39e4fe5fd102ae01
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888353"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506599"
 ---
 ### <a name="general-requirements"></a>Általános követelmények
 
@@ -38,16 +38,14 @@ A virtuális hálózat további követelményei eltérhetnek attól függően, h
 
 **Alhálózati azonosító** – Az alhálózat Batch API-kkal történő megadásakor használja az alhálózat *erőforrás-azonosítóját*. Az alhálózat azonosítója a következő formátumot követi:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}`
 
 **Engedélyek** – Ellenőrizze, hogy a virtuális hálózat előfizetésén vagy erőforráscsoportján lévő biztonsági szabályzatok vagy zárolások korlátozzák-e egy felhasználó virtuális hálózat kezelésére vonatkozó engedélyét.
 
 **További hálózati erőforrások** – A Batch automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoportban.
 
 > [!IMPORTANT]
->Minden 100 dedikált vagy alacsony prioritású csomópont esetében a Batch foglalások: egy hálózati biztonsági csoport (NSG), egy nyilvános IP-cím és egy terheléselosztó. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagy készletekhez szükség lehet a kvóta egy vagy több erőforrásra való megemelésének igénylésére.
+> Minden 100 dedikált vagy alacsony prioritású csomópont esetében a Batch foglalások: egy hálózati biztonsági csoport (NSG), egy nyilvános IP-cím és egy terheléselosztó. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagy készletekhez szükség lehet a kvóta egy vagy több erőforrásra való megemelésének igénylésére.
 
 #### <a name="network-security-groups-batch-default"></a>Hálózati biztonsági csoportok: Batch-alapértelmezés
 
@@ -59,11 +57,11 @@ Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejö
 * Kimenő forgalom bármilyen porton keresztül az internetre. Ez az alhálózati szintű NSG-szabályok (lásd alább) alapján módosítható.
 
 > [!IMPORTANT]
-> Körültekintően járjon el a bejövő vagy kimenő szabályok módosításakor és hozzáadásakor a Batch által konfigurált NSG-kben. Ha a megadott alhálózaton a számítási csomópontok felé irányuló kommunikációt egy NSG letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát. Emellett nem szabad erőforrás-zárolást alkalmazni a Batch által létrehozott semmilyen erőforrásra, mivel az a felhasználó által kezdeményezett műveletek, például egy készlet törlése eredményeképpen megakadályozhatja az erőforrások eltávolítását.
+> Körültekintően járjon el, ha a Batch-konfigurált NSG módosítja vagy hozzáadja a bejövő vagy kimenő szabályokat. Ha a megadott alhálózaton lévő számítási csomópontok felé irányuló kommunikációt egy NSG megtagadja, a Batch szolgáltatás a számítási csomópontok állapotát **használhatatlanná**fogja állítani. Emellett nem kell erőforrás-zárolást alkalmazni a Batch által létrehozott összes erőforrásra, mivel ez megakadályozhatja az erőforrások törlését a felhasználó által kezdeményezett műveletek, például a készlet törlése miatt.
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Hálózati biztonsági csoportok: Alhálózati szintű szabályok meghatározása
 
-Nem szükséges megadnia NSG-t a virtuális hálózat alhálózati szintjén, mert a Batch konfigurálja a saját NSG-it (lásd fentebb). Ha rendelkezik olyan NSG-vel, amely ahhoz az alhálózathoz van társítva. amelyen a Batch számítási csomópontok üzembe lettek helyezve, vagy egyéni NSG-szabályokat szeretne használni az alkalmazott alapértelmezett beállítások felülbírálására, akkor legalább a következő táblázatokban látható bejövő és kimenő biztonsági szabályokkal kell konfigurálnia az adott NSG-t.
+Nem kell megadnia a NSG a virtuális hálózat alhálózatának szintjén, mert a Batch konfigurálja a saját NSG (lásd fent). Ha van olyan NSG társítva az alhálózathoz, ahol a Batch számítási csomópontok vannak telepítve, vagy ha egyéni NSG-szabályokat szeretne alkalmazni az alapértelmezett beállítások felülbírálására, akkor a NSG-t legalább az alábbi táblázatban látható bejövő és kimenő biztonsági szabályokkal kell konfigurálnia.
 
 Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 22-es porton (Linux) keresztül, ha engedélyeznie kell a számítási csomópontok külső forrásból való távoli elérését. Linux rendszeren előfordulhat, hogy engedélyezni kell a 22-es portra vonatkozó szabályokat, ha többpéldányos, bizonyos MPI-futtatókörnyezetekkel rendelkező feladatok támogatására van szüksége. E portok forgalmának engedélyezése nem feltétlenül szükséges a készletezett számítási csomópontok használhatóságához.
 
@@ -75,7 +73,7 @@ Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 
 | Felhasználók forrás IP-címei a számítási csomópontok és/vagy egy számítási csomópont alhálózatának távoli eléréséhez a Linux többpéldányos feladatai esetében, amennyiben szükséges. | N/A | * | Bármelyik | 3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
 
 > [!WARNING]
-> A Batch szolgáltatás IP-címei idővel módosulhatnak. Ezért kifejezetten ajánlott az NSG-szabályokhoz a `BatchNodeManagement` szolgáltatáscímke (vagy helyi változatának) használata. Nem ajánlott az NSG-szabályok feltöltése közvetlenül a Batch szolgáltatás IP-címeivel.
+> A Batch szolgáltatás IP-címei idővel módosulhatnak. Ezért erősen ajánlott a `BatchNodeManagement` NSG-szabályokhoz használni a szolgáltatási címkét (vagy a regionális változatot). Kerülje a NSG-szabályok feltöltését adott batch szolgáltatás IP-címeivel.
 
 **Kimenő biztonsági szabályok**
 
@@ -89,9 +87,7 @@ Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 
 
 **Alhálózati azonosító** – Az alhálózat Batch API-kkal történő megadásakor használja az alhálózat *erőforrás-azonosítóját*. Az alhálózat azonosítója a következő formátumot követi:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
 **Engedélyek** – A `Microsoft Azure Batch` szolgáltatásnévnek rendelkeznie kell a `Classic Virtual Machine Contributor` szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel az adott virtuális hálózaton.
 
@@ -99,9 +95,9 @@ Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 
 
 Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejövő kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon, illetve a kimenő kommunikációt, hogy kommunikálhasson az Azure Storage szolgáltatással vagy más erőforrásokkal.
 
-Nem kell megadnia NSG-t, mert a Batch szolgáltatás csak a Batch IP-címeiről a készletezett csomópontokra érkező bejövő kommunikációt konfigurálja. Ugyanakkor ha a megadott alhálózathoz hálózati biztonsági csoportok (NSG-k) és/vagy egy tűzfal van társítva, a következő táblázatokban látható módon konfigurálja a bejövő és kimenő biztonsági szabályokat. Ha a megadott alhálózaton a számítási csomópontok felé irányuló kommunikációt egy NSG letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát.
+Nem kell megadnia NSG-t, mert a Batch szolgáltatás csak a Batch IP-címeiről a készletezett csomópontokra érkező bejövő kommunikációt konfigurálja. Ugyanakkor ha a megadott alhálózathoz hálózati biztonsági csoportok (NSG-k) és/vagy egy tűzfal van társítva, a következő táblázatokban látható módon konfigurálja a bejövő és kimenő biztonsági szabályokat. Ha a megadott alhálózaton lévő számítási csomópontok felé irányuló kommunikációt egy NSG megtagadja, a Batch szolgáltatás nem **használható**állapotba állítja a számítási csomópontok állapotát.
 
-Windows rendszer esetében csak akkor konfigurálja a bejövő forgalmat a 3389-es porton keresztül, ha engedélyeznie kell az RDP-hozzáférést a készletezett csomópontokhoz. Ez nem szükséges a készletezett csomópontok használhatóságához.
+Windows rendszer esetében csak akkor konfigurálja a bejövő forgalmat a 3389-es porton keresztül, ha engedélyeznie kell az RDP-hozzáférést a készletezett csomópontokhoz. Ez nem szükséges ahhoz, hogy a készlet csomópontjai felhasználhatók legyenek.
 
 **Bejövő biztonsági szabályok**
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: d3f5095f8b8c140f704160feff9cd12ad9ca0974
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6228696f864409b9f966039ebdbbf8fd260e51e2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553757"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506828"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -181,7 +181,7 @@ A `stat` parancs használatával megtekintheti, hogy egy címtár eléri-e a max
 
 320 MB-os könyvtár esetén a blokkok száma 655360, és minden blokk mérete 512 bájt.  (Ez a 320x1024x1024/512.)  
 
-Angol nyelvű Példák:
+Példák:
 
     [makam@cycrh6rtp07 ~]$ stat bin
     File: 'bin'
@@ -233,10 +233,10 @@ Nem. A Azure Data Box jelenleg nem támogatja a Azure NetApp Files.
 
 Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetApp Files.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 - [Microsoft Azure ExpressRoute GYIK](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure Virtual Network GYIK](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
 - [Azure-támogatáskérések létrehozása](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- [Azure Data Box](https://docs.microsoft.com/azure/databox-family/)
+- [Azure Data Box](https://docs.microsoft.com/azure/databox)
 - [A Azure NetApp Files SMB-teljesítményével kapcsolatos gyakori kérdések](azure-netapp-files-smb-performance.md)

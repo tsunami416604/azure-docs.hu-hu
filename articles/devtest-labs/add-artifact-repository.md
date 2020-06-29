@@ -1,24 +1,14 @@
 ---
 title: Összetevő hozzáadása a laborhoz Azure DevTest Labsban | Microsoft Docs
 description: Ismerje meg, hogyan adhat hozzá egy műtárgy-tárházat a laborhoz az Azure DevTest Labs szolgáltatásban.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
-ms.author: spelluru
-ms.openlocfilehash: 3b4d09e784cf7bfff359fe5ec7ae86243da15349
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898870"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483907"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban lévő tároló hozzáadása a laborhoz
 A DevTest Labs lehetővé teszi, hogy a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után adja meg a virtuális géphez hozzáadandó összetevőt. Ez az összetevő lehet egy eszköz vagy egy alkalmazás, amelyet telepíteni kíván a virtuális gépre. Az összetevők egy GitHub vagy Azure DevOps git-tárházból betöltött JSON-fájlban vannak meghatározva.

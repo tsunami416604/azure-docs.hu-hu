@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/22/2020
-ms.openlocfilehash: 7765788e9bd0803cd806ef0980991429dbe30af9
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: eed333b5e6a83b140df515fc02767b8a7c7a63c7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413841"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506639"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>Gyors útmutató: felügyelt Azure SQL-példány létrehozása ARM-sablonnal
 
-Ez a rövid útmutató egy ARM-sablon üzembe helyezésének folyamatát tárgyalja az Azure SQL felügyelt példányainak és vNet létrehozásához. Az [Azure SQL felügyelt példánya](sql-managed-instance-paas-overview.md) egy intelligens, teljes körűen felügyelt, méretezhető Felhőbeli adatbázis, amely csaknem 100%-os szolgáltatási paritást biztosít a SQL Server adatbázis-motorral.
+Ez a rövid útmutató egy Azure Resource Manager-sablon (ARM-sablon) üzembe helyezésének folyamatát tárgyalja az Azure SQL felügyelt példányának és vNet létrehozásához. Az [Azure SQL felügyelt példánya](sql-managed-instance-paas-overview.md) egy intelligens, teljes körűen felügyelt, méretezhető Felhőbeli adatbázis, amely csaknem 100%-os szolgáltatási paritást biztosít a SQL Server adatbázis-motorral.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -115,7 +115,7 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure-beli virtuális gép konfigurálása a felügyelt Azure SQL-példányhoz való kapcsolódáshoz](connect-vm-instance-configure.md)

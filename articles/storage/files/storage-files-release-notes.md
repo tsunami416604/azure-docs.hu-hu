@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 5/19/2020
+ms.date: 6/26/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 8e6105a83aec9c2141c6b1083602c54d1fa545b0
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 54a7f3f50de27747ab15f6895ebfb4f65faf5fdf
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464827"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484060"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -23,7 +23,7 @@ A jelen cikk az Azure File Sync ügynök támogatott verzióinak kibocsátási m
 ## <a name="supported-versions"></a>Támogatott verziók
 Az Azure File Sync ügynök alábbi verziói támogatottak:
 
-| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
+| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
 |----|----------------------|--------------|------------------|
 | V 10.1 kiadás – [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020. június 5. | Támogatott – Berepülés |
 | 2020. május kumulatív frissítés – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | Május 19., 2020 | Támogatott |
@@ -130,7 +130,7 @@ A következő elemek nem szinkronizálhatók, de a rendszer többi része továb
 
 ### <a name="cloud-endpoint"></a>Felhőbeli végpont
 - Azure File Sync támogatja az Azure-fájlmegosztás közvetlen módosítását. Az Azure-fájlmegosztást érintő módosításokat azonban először egy Azure File Sync változás-észlelési feladatokkal kell felderíteni. A rendszer 24 óránként egyszer egy változás-észlelési feladatot kezdeményez a Felhőbeli végpontok számára. Az Azure-fájlmegosztás által módosított fájlok azonnali szinkronizálásához a [Meghívási AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell-parancsmag használatával manuálisan indíthatja el az Azure-fájlmegosztás változásainak észlelését. Emellett az Azure-fájlmegosztás REST protokollon keresztül végrehajtott módosításai nem frissítik az SMB utolsó módosításának időpontját, és a szinkronizálás nem lesz látható változásként.
-- A Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoporthoz vagy előfizetésbe a meglévő Azure AD-bérlőn belül. Ha áthelyezi a Storage-fiókot, meg kell adnia a hibrid File Sync szolgáltatás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+- A Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoport, előfizetés vagy Azure AD-bérlőbe. A Storage Sync szolgáltatás vagy a Storage-fiók áthelyezése után meg kell adnia a Microsoft. StorageSync alkalmazás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > A Felhőbeli végpont létrehozásakor a Storage Sync szolgáltatásnak és a Storage-fióknak ugyanabban az Azure AD-bérlőben kell lennie. A Felhőbeli végpont létrehozása után a Storage Sync szolgáltatás és a Storage-fiók áthelyezhető a különböző Azure AD-bérlők között.
@@ -171,7 +171,7 @@ A következő kibocsátási megjegyzések az Azure File Sync-ügynök verziójá
  
         A hálózati kapcsolati teszt futtatásához futtassa a következő PowerShell-parancsokat: 
  
-        Importálás – "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll" modul  
+        "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll" modul importálása  
         Teszt – StorageSyncNetworkConnectivity
  
 - A kiszolgálói végpontok javításának eltávolítása, ha engedélyezve van a felhőalapú rétegek használata 
@@ -236,7 +236,7 @@ A következő elemek nem szinkronizálhatók, de a rendszer többi része továb
 ### <a name="cloud-tiering"></a>Felhőbeli rétegzés
 - Ha egy rétegzett fájlt a Robocopy használatával másik helyre másol, az eredményül kapott fájl nem lesz rétegzett. Előfordulhat, hogy az offline attribútum be lesz állítva, mert a Robocopy helytelenül belefoglalja ezt az attribútumot a másolási műveletekbe.
 - Fájlok a Robocopy használatával történő másolásakor használja a/MIR beállítást a fájl időbélyegének megőrzéséhez. Ezzel biztosíthatja, hogy a régebbi fájlok a legutóbb használt fájlokhoz legyenek bontva.
-- Előfordulhat, hogy a fájlok sikertelenek lehetnek, ha a lapozófájl. sys egy olyan köteten található, amelyen engedélyezve van a felhőalapú rétegek használata. A pagefile. sys fájlnak egy olyan köteten kell lennie, amely a felhőalapú rétegek letiltásával rendelkezik.
+- Ha a pagefile.sys olyan köteten található, amelynél engedélyezve van a felhőalapú rétegek használata, előfordulhat, hogy a fájlok sikertelenek lehetnek. A pagefile.sys egy olyan köteten kell lennie, amely a felhőalapú rétegek letiltásával rendelkezik.
 
 ## <a name="agent-version-8000"></a>Ügynök verziója 8.0.0.0
 A következő kibocsátási megjegyzések a Azure File Sync ügynök verziójának 8.0.0.0 vonatkoznak (2019. október 8.).

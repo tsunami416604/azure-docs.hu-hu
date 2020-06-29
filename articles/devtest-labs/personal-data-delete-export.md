@@ -1,23 +1,14 @@
 ---
 title: Személyes adatok törlése és exportálása Azure DevTest Labs
 description: Megtudhatja, hogyan törölheti és exportálhatja a személyes adatait az Azure DevLast Labs szolgáltatásból a Általános adatvédelmi rendelet (GDPR) alatti kötelezettségek támogatásához.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: b59a799b2e2211ee8fd473de2e26a26148777502
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898086"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483516"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Személyes adatok exportálása vagy törlése Azure DevTest Labs
 Ez a cikk a személyes adatok Azure DevTest Labs szolgáltatásból történő törlésének és exportálásának lépéseit ismerteti. 
@@ -169,7 +160,7 @@ A **virtualmachines.csv** a következő adatoszlopokat tartalmazza:
 | ResourceGroupName | A virtuális gépet tartalmazó erőforráscsoport neve | 
 | ResourceId | A virtuális gép teljes erőforrás-azonosítója. |
 | ResourceUId | A virtuális gép GUID azonosítója |
-| Name | A virtuális gép neve. |
+| Name (Név) | A virtuális gép neve. |
 | CreatedTime | A virtuális gép létrehozásának dátuma és időpontja. |
 | DeletedDate | A virtuális gép törlésének dátuma és időpontja. Ha üres, a törlés még nem történt meg. |
 | ResourceOwner | A virtuális gép tulajdonosa. Ha az érték üres, akkor vagy egy lekérhető virtuális gép, vagy egy egyszerű szolgáltatásnév hozza létre. |
@@ -197,7 +188,7 @@ A **disks.csvban** található adatoszlopok alább láthatók:
 | ResourceGroupName | A labort tartalmazó erőforráscsoport neve | 
 | ResourceId | A virtuális gép teljes erőforrás-azonosítója. |
 | ResourceUId | A virtuális gép GUID azonosítója |
- |Name | A csatolt lemez neve |
+ |Name (Név) | A csatolt lemez neve |
 | CreatedTime |Az adatlemez létrehozásának dátuma és időpontja. |
 | DeletedDate | Az adatlemez törlésének dátuma és időpontja. |
 | ResourceStatus | Az erőforrás állapota. Aktív, ha az erőforrás létezik. Inaktív, törléskor. |

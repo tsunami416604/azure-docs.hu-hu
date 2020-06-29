@@ -1,25 +1,14 @@
 ---
 title: Egyéni rendszerképek és képletek összehasonlítása a DevTest Labs szolgáltatásban | Microsoft Docs
 description: Ismerje meg az egyéni lemezképek és a képletek közötti különbséget virtuálisgép-bázisként, így eldöntheti, hogy melyik a legmegfelelőbb a környezetéhez.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: a3cb259a-7d80-40ec-8ee8-45105704d589
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
-ms.author: spelluru
-ms.openlocfilehash: ae7556eda817b9eb7be84f9d4a23ea91d3d5440d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: dac820d0600745906e4b1aeef95806ed5679488a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896325"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484026"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Egyéni rendszerképek és képletek összehasonlítása a DevTest Labs szolgáltatásban
 Az [Egyéni rendszerképek](devtest-lab-create-template.md) és [képletek](devtest-lab-manage-formulas.md) is használhatók a [létrehozott új virtuális gépek](devtest-lab-add-vm.md)alapjaként. Az egyéni lemezképek és a képletek közötti különbség azonban az, hogy az egyéni rendszerkép egyszerűen egy virtuális merevlemezen alapuló rendszerkép, míg a képlet egy, az előre konfigurált beállításokon (például a virtuális GÉPEN, a virtuális hálózaton, az alhálózaton és az összetevőkön) *kívüli* virtuális merevlemezen alapuló rendszerkép. Ezek az előre konfigurált beállítások alapértelmezett értékekkel vannak beállítva, amelyek felülbírálják a virtuális gépek létrehozásakor. Ez a cikk az Egyéni rendszerképek és a képletek használatának előnyeit (előnyeit) és hátrányait (hátrányait) ismerteti.

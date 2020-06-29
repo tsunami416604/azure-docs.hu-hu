@@ -1,25 +1,14 @@
 ---
 title: Egyéni rendszerkép létrehozása VHD-fájlból Azure PowerShell használatával
 description: Egyéni rendszerkép létrehozásának automatizálása Azure DevTest Labs VHD-fájlból a PowerShell használatával
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: cd144659dd8a8e981e267be998c9c783b7482840
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 2ae2a6b6b2f904915a51b94ad931d6c97996d27b
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896255"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483992"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Egyéni rendszerkép létrehozása VHD-fájlból a PowerShell használatával
 

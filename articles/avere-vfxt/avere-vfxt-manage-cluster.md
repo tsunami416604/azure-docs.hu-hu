@@ -3,15 +3,15 @@ title: A avere vFXT-fürt kezelése – Azure
 description: Avere-fürt kezelése – csomópontok hozzáadása vagy eltávolítása, újraindítás, Leállítás vagy a vFXT-fürt megsemmisítése
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153479"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505494"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt felügyelete
 
@@ -77,7 +77,7 @@ Amikor egy fürt megkezdi a leállítását, az állapotjelző üzeneteket köny
 
 a vfxt.py egy parancssori eszköz a fürtök létrehozásához és felügyeletéhez.
 
-a vfxt.py előre telepítve van a fürt vezérlő virtuális gépén. Ha másik rendszeren szeretné telepíteni, tekintse meg a dokumentációját a következő címen <https://github.com/Azure/AvereSDK>:.
+a vfxt.py előre telepítve van a fürt vezérlő virtuális gépén. Ha másik rendszeren szeretné telepíteni, tekintse meg a dokumentációját a következő címen: <https://github.com/Azure/AvereSDK> .
 
 A vfxt.py parancsfájl használható a következő fürtszolgáltatási feladatokhoz:
 
@@ -181,7 +181,7 @@ Ezt a módszert használhatja a fürtcsomópontok végleges eltávolításához,
 ### <a name="destroy-the-cluster-from-the-azure-portal"></a>A fürt megsemmisítése a Azure Portal
 
 > [!NOTE]
-> Ha azt szeretné, hogy a gyorsítótárban megmaradt összes ügyfél megváltoztassa a háttérbeli tárterületet, használja `--destroy` a vfxt.py kapcsolót, vagy a avere Vezérlőpulton állítsa le a fürtöt a Azure Portal csomópont példányainak eltávolítása előtt.
+> Ha azt szeretné, hogy a gyorsítótárban megmaradt összes ügyfél megváltoztassa a háttérbeli tárterületet, használja a vfxt.py `--destroy` kapcsolót, vagy a avere Vezérlőpulton állítsa le a fürtöt a Azure Portal csomópont példányainak eltávolítása előtt.
 
 A csomópont-példányok végleges megsemmisítéséhez törölje őket a Azure Portal. Ezeket egyenként törölheti a fent leírtak szerint, vagy a **Virtual Machines** lapon megkeresheti az összes fürt virtuális gépet, kijelölheti őket a jelölőnégyzetekkel, majd a **Törlés** gombra kattintva eltávolíthatja őket egy művelettel.
 

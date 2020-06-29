@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0d854c8815ff6acd54036e023b35c3b3ac2c56cf
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 66fb5741a5ed1af9e7edf002485c959f9f2fc82f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85444522"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507262"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók kezelése
 
@@ -63,14 +63,14 @@ Futtató fiók létrehozásához vagy frissítéséhez konkrét jogosultságokka
 
 |Tevékenység|Parancsmag  |Minimális engedélyek  |Az engedélyek beállítása|
 |---|---------|---------|---|
-|Azure AD-alkalmazás létrehozása|[Új – AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Alkalmazás fejlesztői szerepköre<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja > |
-|Adjon hozzá egy hitelesítő adatot az alkalmazáshoz.|[Új – AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja >|
-|Azure AD-szolgáltatásnév létrehozása és beszerzése|[Új – AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja >|
+|Azure AD-alkalmazás létrehozása|[Új – AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Alkalmazás fejlesztői szerepköre<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja > |
+|Adjon hozzá egy hitelesítő adatot az alkalmazáshoz.|[Új – AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja >|
+|Azure AD-szolgáltatásnév létrehozása és beszerzése|[Új – AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Alkalmazás-rendszergazda vagy globális rendszergazda<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Az Azure AD > alkalmazásbeli regisztrációjának kezdőlapja >|
 |A RBAC szerepkör kiosztása vagy beolvasása a megadott rendszerbiztonsági tag számára|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Felhasználói hozzáférés a rendszergazdához vagy a tulajdonoshoz, vagy a következő engedélyekkel rendelkezik:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Előfizetés](../role-based-access-control/role-assignments-portal.md)</br>Home >-előfizetések > \<subscription name\> -Access Control (iam)|
 |Automation-tanúsítvány létrehozása vagy eltávolítása|[Új – AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | Közreműködő az erőforráscsoporthoz         |Automation-fiók erőforráscsoport|
 |Automation-kapcsolatok létrehozása vagy eltávolítása|[Új – AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|Közreműködő az erőforráscsoporthoz |Automation-fiók erőforráscsoport|
 
-<sup>1</sup> az Azure ad-bérlőben nem rendszergazda felhasználók [regisztrálhatnak ad-alkalmazásokat](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) , ha az Azure ad-bérlő **felhasználóinak az alkalmazások regisztrálása** lehetőség a felhasználói beállítások lapon az **Igen**értékre van állítva. Ha az alkalmazás regisztrációs beállítása **nem**, a műveletet végrehajtó felhasználónak a táblázatban megadott módon kell szerepelnie.
+<sup>1</sup> az Azure ad-bérlőben nem rendszergazda felhasználók [regisztrálhatnak ad-alkalmazásokat](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) , ha az Azure ad-bérlő **felhasználóinak az alkalmazások regisztrálása** lehetőség a felhasználói beállítások lapon az **Igen**értékre van állítva. Ha az alkalmazás regisztrációs beállítása **nem**, a műveletet végrehajtó felhasználónak a táblázatban megadott módon kell szerepelnie.
 
 Ha nem tagja az előfizetés Active Directory példányának, mielőtt hozzáadja az előfizetés globális rendszergazdai szerepköréhez, vendégként lesz hozzáadva. Ebben az esetben `You do not have permissions to create…` figyelmeztetést kap az **Automation-fiók hozzáadása** oldalon.
 

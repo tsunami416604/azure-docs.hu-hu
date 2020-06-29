@@ -3,15 +3,15 @@ title: PowerShell – HDInsight Data Lake Storage Gen1-bővítmény tárolásáv
 description: Megtudhatja, hogyan konfigurálhat egy HDInsight-fürtöt a Azure Data Lake Storage Gen1 további tárolóként a Azure PowerShell használatával.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fb4ab1cdb60fff40effc1ff2f12f8600ba263d23
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b1264475a9e5100e2b38079fe0540ada5d91cd55
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692045"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504712"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>A Azure PowerShell használatával hozzon létre egy HDInsight-fürtöt Azure Data Lake Storage Gen1 (további tárterületként)
 
@@ -75,7 +75,7 @@ Data Lake Storage Gen1 fiók létrehozásához kövesse az alábbi lépéseket.
         Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
    > [!NOTE]
-   > Ha a Data Lake Storage Gen1 erőforrás-szolgáltató regisztrálásához hasonló `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` hibaüzenetet kap, akkor előfordulhat, hogy az előfizetése nem rendelkezik engedélyezési Data Lake Storage Gen1. Ezeket az [utasításokat](data-lake-store-get-started-portal.md)követve engedélyezze Data Lake Storage Gen1 Azure-előfizetését.
+   > Ha `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` a Data Lake Storage Gen1 erőforrás-szolgáltató regisztrálásához hasonló hibaüzenetet kap, akkor előfordulhat, hogy az előfizetése nem rendelkezik engedélyezési Data Lake Storage Gen1. Ezeket az [utasításokat](data-lake-store-get-started-portal.md)követve engedélyezze Data Lake Storage Gen1 Azure-előfizetését.
    >
    >
 2. Egy Data Lake Storage Gen1 fiók egy Azure-erőforráscsoporthoz van társítva. Először hozzon létre egy Azure-erőforráscsoportot.
@@ -132,7 +132,7 @@ Data Lake Storage Gen1 Active Directory hitelesítésének beállításához a k
 
 Az ebben a szakaszban ismertetett lépések végrehajtása előtt győződjön meg arról, hogy [Windows SDK](https://dev.windows.com/en-us/downloads) telepítve van. Létre kell hoznia egy könyvtárat is, például a **C:\mycertdir**-t, ahol a tanúsítvány létre lesz hozva.
 
-1. A PowerShell ablakában navigáljon arra a helyre, ahová a Windows SDK telepítette ( `C:\Program Files (x86)\Windows Kits\10\bin\x86` jellemzően, és a [MakeCert][makecert] segédprogram használatával hozzon létre egy önaláírt tanúsítványt és egy titkos kulcsot. Használja az alábbi parancsokat.
+1. A PowerShell ablakában navigáljon arra a helyre, ahová a Windows SDK telepítette (jellemzően, `C:\Program Files (x86)\Windows Kits\10\bin\x86` és a [MakeCert][makecert] segédprogram használatával hozzon létre egy önaláírt tanúsítványt és egy titkos kulcsot. Használja az alábbi parancsokat.
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
@@ -262,7 +262,7 @@ Ekkor fel kell sorolni a korábban feltöltött fájlt Data Lake Storage Gen1.
     Found 1 items
     -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
 
-A `hdfs dfs -put` parancs használatával is feltölthet néhány fájlt a Data Lake Storage Gen1ba, majd a használatával `hdfs dfs -ls` ellenőrizheti, hogy a fájlok feltöltése sikeres volt-e.
+A parancs használatával is `hdfs dfs -put` feltölthet néhány fájlt a Data Lake Storage Gen1ba, majd a használatával ellenőrizheti, hogy `hdfs dfs -ls` a fájlok feltöltése sikeres volt-e.
 
 ## <a name="see-also"></a>Lásd még:
 * [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

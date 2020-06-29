@@ -3,15 +3,15 @@ title: A avere vFXT-Vezérlőpult elérése – Azure
 description: A vFXT-fürthöz és a böngészőalapú avere-vezérlőpulthoz való kapcsolódás a avere-vFXT konfigurálásához
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75416152"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505613"
 ---
 # <a name="access-the-vfxt-cluster"></a>Hozzáférés a vFXT-fürthöz
 
@@ -35,7 +35,7 @@ Létrehozhat egy SSH-alagutat egy Linux-alapú vagy Windows 10 rendszerű ügyf�
 
 SSH-bújtatási parancs használata az alábbi űrlappal:
 
-SSH-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username*\@*controller_public_IP*
+SSH-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username* \@ *controller_public_IP*
 
 Ez a parancs a fürt felügyeleti IP-címéhez csatlakozik a tartományvezérlő IP-címén keresztül.
 
@@ -51,7 +51,7 @@ A hitelesítés automatikusan történik, ha az SSH nyilvános kulcsával létre
 
 Ez a lépés egy webböngészővel csatlakozik a konfigurációs segédprogramhoz a vFXT-fürtön.
 
-* SSH-alagútbeli kapcsolat esetén nyissa meg a webböngészőt `https://127.0.0.1:8443`, és navigáljon a következőre:.
+* SSH-alagútbeli kapcsolat esetén nyissa meg a webböngészőt, és navigáljon a következőre: `https://127.0.0.1:8443` .
 
   Az alagút létrehozásakor kapcsolódott a fürt IP-címéhez, így csak a localhost IP-címet kell használnia a böngészőben. Ha a 8443-től eltérő helyi portot használt, használja helyette a portszámot.
 
@@ -65,6 +65,6 @@ Adja meg a `admin` fürt létrehozásakor megadott felhasználónevet és rendsz
 
 Kattintson a **Bejelentkezés** gombra, vagy nyomja le az ENTER billentyűt a billentyűzeten.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután bejelentkezett a fürt Vezérlőpultján, engedélyezze a [támogatást](avere-vfxt-enable-support.md).

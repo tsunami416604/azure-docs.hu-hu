@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299825"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506973"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Egyéni metrikák a Azure Monitorban (előzetes verzió)
 
@@ -86,7 +86,7 @@ A metrikai adatpontok jelentésekor a jelentésben szereplő összes dimenzió k
 
 * A metrika neve a **használatban lévő memória bájtjai**.
 * A dimenzió kulcsa **feldolgozható**.
-* A dimenzió értéke **ContosoApp. exe**lenne.
+* A dimenzió értéke **ContosoApp.exe**.
 
 Metrikus érték közzétételekor csak egy dimenzió érték adható meg dimenzió-kulcsként. Ha a virtuális gépen több folyamat esetében is ugyanazt a memóriát keresi, több metrikai értéket is jelenthet az adott időbélyeghez. Minden metrika értéke eltérő dimenzióértéket határozhat meg a **folyamat** dimenzió kulcsához.
 A méretek nem kötelezőek, nem minden metrika rendelkezhet dimenziókkal. Ha egy metrikai bejegyzés definiálja a dimenzió kulcsait, a megfelelő dimenzióértékeket kötelező megadni.
@@ -189,28 +189,28 @@ A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehet�
 |Azure-régió |Regionális végpont előtagja|
 |---|---|
 | **Egyesült Államok és Kanada** | |
-|USA nyugati középső régiója | https: \/ /westcentralus.monitoring.Azure.com/ |
-|USA nyugati régiója, 2.       | https: \/ /westus2.monitoring.Azure.com/ |
+|USA nyugati középső régiója | https: \/ /westcentralus.monitoring.Azure.com |
+|USA nyugati régiója, 2.       | https: \/ /westus2.monitoring.Azure.com |
 |USA északi középső régiója | https: \/ /northcentralus.monitoring.Azure.com
-|USA déli középső régiója| https: \/ /southcentralus.monitoring.Azure.com/ |
+|USA déli középső régiója| https: \/ /southcentralus.monitoring.Azure.com |
 |USA középső régiója      | https: \/ /CentralUS.monitoring.Azure.com |
-|Közép-Kanada | https: \/ /canadacentral.monitoring.Azure.comc
-|USA keleti régiója| https: \/ /eastus.monitoring.Azure.com/ |
-|USA 2. keleti régiója | https: \/ /eastus2.monitoring.Azure.com/
+|Közép-Kanada | https: \/ /canadacentral.monitoring.Azure.com |
+|USA keleti régiója| https: \/ /eastus.monitoring.Azure.com |
+|USA 2. keleti régiója | https: \/ /eastus2.monitoring.Azure.com |
 | **Európa** | |
-|Észak-Európa    | https: \/ /northeurope.monitoring.Azure.com/ |
-|Nyugat-Európa     | https: \/ /westeurope.monitoring.Azure.com/ |
+|Észak-Európa    | https: \/ /northeurope.monitoring.Azure.com |
+|Nyugat-Európa     | https: \/ /westeurope.monitoring.Azure.com |
 |Az Egyesült Királyság déli régiója | https: \/ /uksouth.monitoring.Azure.com
 |Közép-Franciaország | https: \/ /francecentral.monitoring.Azure.com |
 | **Afrika** | |
-|Dél-Afrika északi régiója | https: \/ /southafricanorth.monitoring.Azure.com
+|Dél-Afrika északi régiója | https: \/ /southafricanorth.monitoring.Azure.com |
 | **Ázsia** | |
-|Közép-India | https: \/ /centralindia.monitoring.Azure.com
-|Kelet-Ausztrália | https: \/ /australiaeast.monitoring.Azure.com
-|Kelet-Japán | https: \/ /japaneast.monitoring.Azure.com
+|Közép-India | https: \/ /centralindia.monitoring.Azure.com |
+|Kelet-Ausztrália | https: \/ /australiaeast.monitoring.Azure.com |
+|Kelet-Japán | https: \/ /japaneast.monitoring.Azure.com |
 |Délkelet-Ázsia  | https: \/ /southeastasia.monitoring.Azure.com |
-|Kelet-Ázsia | https: \/ /eastasia.monitoring.Azure.com
-|Dél-Korea középső régiója   | https: \/ /koreacentral.monitoring.Azure.com
+|Kelet-Ázsia | https: \/ /eastasia.monitoring.Azure.com |
+|Dél-Korea középső régiója   | https: \/ /koreacentral.monitoring.Azure.com |
 
 ## <a name="latency-and-storage-retention"></a>Késés és tárolás megőrzése
 
@@ -223,13 +223,13 @@ A Azure Monitor a következő használati korlátokat szabja meg az egyéni metr
 
 |Kategória|Korlát|
 |---|---|
-|Aktív idősorozat/előfizetések/régió|50 000|
+|Aktív idősorozat/előfizetések/régió|50,000|
 |Dimenzió kulcsok/metrika|10|
 |A metrikai névterek, a metrikák nevei, a dimenzió kulcsai és a dimenzió értékeinek karakterlánc-hossza|256 karakter|
 
 Az aktív idősorozatok a metrika, a dimenzióérték vagy a dimenzió érték bármely egyedi kombinációja, amely az elmúlt 12 órában közzétett metrikai értékeket tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Egyéni metrikák használata különböző szolgáltatásokból: 
  - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Virtuálisgép-méretezési csoport](collect-custom-metrics-guestos-resource-manager-vmss.md)

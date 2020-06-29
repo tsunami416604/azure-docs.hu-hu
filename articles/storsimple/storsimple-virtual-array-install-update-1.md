@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 41546a449165951cd7b462d1db2b1b58ae74e407
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712275"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508095"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Az 1,0-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -30,6 +30,7 @@ Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a 1,0-es frissí
 A szoftverfrissítések vagy gyorsjavítások alkalmazása a StorSimple virtuális tömb naprakészen tartásához. A frissítés alkalmazása előtt javasoljuk, hogy a köteteket vagy a megosztásokat a gazdagépen, majd az eszközön offline állapotba helyezze. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. A kötetek vagy a megosztások offline állapotba helyezése után manuálisan kell biztonsági másolatot készíteni az eszközről.
 
 > [!IMPORTANT]
+>
 > - Az 1,0-es frissítés megfelel az eszközön **10.0.10296.0** szoftver verziójának. A frissítéssel kapcsolatos újdonságokról a 1,0-es [frissítés kibocsátási megjegyzései](storsimple-virtual-array-update-1-release-notes.md)című témakörben olvashat bővebben.
 >
 > - Ne feledje, hogy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
@@ -127,6 +128,6 @@ Az eljárás végrehajtása körülbelül 4 percet vesz igénybe. A frissítés 
 > [!NOTE]
 > Ha közvetlenül az 1. frissítést alkalmazza egy olyan eszközre, amely a 0,6-es frissítés előtt fut, akkor hiányoznak néhány frissítés. A következő lépésekhez forduljon Microsoft ügyfélszolgálatahoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).

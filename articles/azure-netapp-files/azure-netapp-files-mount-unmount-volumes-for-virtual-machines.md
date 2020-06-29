@@ -5,14 +5,14 @@ author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
-ms.openlocfilehash: d02ceda9dc2c6a822d45c2a31fe91a976610292b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b7586fcd0a262fa325e171480ec0becc297f65fe
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610853"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483584"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása 
 
@@ -30,7 +30,7 @@ Szükség szerint csatlakoztathat vagy leválaszthat Windows-vagy Linux-alapú v
     
     Ha a NFSv 4.1-et használja, használja a következő parancsot a fájlrendszer csatlakoztatásához:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
 
-3. Ha egy Azure-beli virtuális gép indításakor vagy újraindításakor automatikusan csatlakoztatni szeretné az NFS-kötetet, vegyen fel egy `/etc/fstab` bejegyzést a gazdagépen lévő fájlba. 
+3. Ha egy Azure-beli virtuális gép indításakor vagy újraindításakor automatikusan csatlakoztatni szeretné az NFS-kötetet, vegyen fel egy bejegyzést a `/etc/fstab` gazdagépen lévő fájlba. 
 
     Például:`$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -41,11 +41,11 @@ Szükség szerint csatlakoztathat vagy leválaszthat Windows-vagy Linux-alapú v
 4. Ha csatlakoztatni szeretné a kötetet a Windowshoz az NFS használatával:
 
     a. Először csatlakoztassa a kötetet egy UNIX vagy Linux rendszerű virtuális gépre.  
-    b. Futtasson `chmod 777` egy `chmod 775` vagy parancsot a köteten.  
+    b. Futtasson egy `chmod 777` vagy `chmod 775` parancsot a köteten.  
     c. Csatlakoztassa a kötetet a Windows rendszer NFS-ügyfelén keresztül.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A NFSv 4.1 alapértelmezett tartományának konfigurálása a Azure NetApp Fileshoz](azure-netapp-files-configure-nfsv41-domain.md)
+* [Az NFSv 4.1 alapértelmezett tartományának konfigurálása az Azure NetApp Fileshoz](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS – gyakori kérdések](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [Hálózati fájlrendszer – áttekintés](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)

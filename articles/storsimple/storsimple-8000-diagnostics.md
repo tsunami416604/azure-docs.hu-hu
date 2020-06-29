@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298747"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504457"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Az 8000 sorozatú eszköz problémáinak elhárításához használja a StorSimple Diagnostics eszközt
 
@@ -210,7 +210,7 @@ Ez a teszt a rendszerinformációkat, a rendelkezésre álló frissítéseket, a
 
 * A Rendszerinformáció magában foglalja a modellt, az eszköz sorozatszámát, az időzónát, a vezérlő állapotát, valamint a rendszeren futó részletes szoftververzió-verziót. A kimenetként jelentett különböző rendszerparaméterek megismeréséhez lépjen a [rendszerinformációk értelmezése](#appendix-interpreting-system-information)elemre.
 
-* A frissítés rendelkezésre állása jelentést készít arról, hogy a rendszeres és a karbantartási módok elérhetők-e, valamint a hozzájuk tartozó csomagok nevét. Ha `RegularUpdates` és `MaintenanceModeUpdates` így `false`van, ez azt jelzi, hogy a frissítések nem érhetők el. Az eszköz naprakész.
+* A frissítés rendelkezésre állása jelentést készít arról, hogy a rendszeres és a karbantartási módok elérhetők-e, valamint a hozzájuk tartozó csomagok nevét. Ha `RegularUpdates` és így `MaintenanceModeUpdates` van `false` , ez azt jelzi, hogy a frissítések nem érhetők el. Az eszköz naprakész.
 * A fürt adatai tartalmazzák az összes HCS FRISSÍTŐÜGYNÖK-fürt és a hozzájuk tartozó állapotok különböző logikai összetevőinek információit. Ha a jelentés ezen szakaszában a kapcsolat nélküli fürtszolgáltatás jelenik meg, forduljon a [Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).
 * A szolgáltatás adatai tartalmazzák az eszközön futó összes HCS FRISSÍTŐÜGYNÖK és CiS-szolgáltatás nevét és állapotát. Ezek az információk hasznosak lehetnek a Microsoft ügyfélszolgálata az eszköz problémáinak elhárításában.
 
@@ -414,10 +414,10 @@ Controller0>
 
 Itt látható egy táblázat, amely leírja, hogy a rendszerinformációk különböző Windows PowerShell-paraméterei hogyan jelennek meg a rendszerben. 
 
-| PowerShell-paraméter    | Leírás  |
+| PowerShell-paraméter    | Description  |
 |-------------------------|------------------|
-| Instance ID (Példányazonosító)             | Minden vezérlő egyedi azonosítóval vagy a hozzá társított GUID azonosítóval rendelkezik.|
-| Name (Név)                    | Az eszköz rövid neve, amelyet az eszköz telepítése során a Azure Portal konfigurál. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma. |
+| Instance ID             | Minden vezérlő egyedi azonosítóval vagy a hozzá társított GUID azonosítóval rendelkezik.|
+| Name                    | Az eszköz rövid neve, amelyet az eszköz telepítése során a Azure Portal konfigurál. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma. |
 | Modell                   | A StorSimple 8000 sorozatú eszköz modellje. A modell 8100 vagy 8600 lehet.|
 | Sorozatszám            | Az eszköz sorozatszáma a gyárban van hozzárendelve, és 15 karakter hosszú. Például: 8600-SHX0991003G44HT azt jelzi, hogy:<br> 8600 – az eszköz modellje.<br>SHX – a gyártási hely.<br> 0991003 – egy adott termék. <br> G44HT – az utolsó 5 számjegy növekszik az egyedi sorozatszámok létrehozásához. Ez nem lehet szekvenciális készlet.|
 | TimeZone                | Az eszköz üzembe helyezése során a Azure Portal konfigurált eszköz időzónája.|
@@ -438,7 +438,7 @@ Itt látható egy táblázat, amely leírja, hogy a rendszerinformációk külö
 | RemoteManagementMode    | Azt jelzi, hogy az eszköz távolról felügyelhető-e Windows PowerShell-felületén keresztül. |
 | FipsMode                | Azt jelzi, hogy engedélyezve van-e a Egyesült Államok Federal Information Processing standard (FIPS) mód az eszközön. Az FIPS 140 szabvány a bizalmas adatok védelméhez jóváhagyott titkosítási algoritmusokat határoz meg az USA szövetségi kormányzati számítógépes rendszereinek használatára. A 4-es vagy újabb frissítést futtató eszközök esetében a FIPS mód alapértelmezés szerint engedélyezve van. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [meghívó-HcsDiagnostics parancsmag szintaxisának](https://technet.microsoft.com/library/mt795371.aspx)megismerése.
 

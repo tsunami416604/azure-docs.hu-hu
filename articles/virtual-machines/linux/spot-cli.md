@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 3f341271c208cc56a704c836433c33af0129a4ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6560f11d26200bdd9f39c4cbae643022872d362
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758362"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506072"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Helyszíni virtuális gépek üzembe helyezése az Azure CLI használatával
 
@@ -21,9 +21,9 @@ Az [Azure helyszíni virtuális gépek](spot-vms.md) használata lehetővé tesz
 
 A helyszíni virtuális gépek díjszabása a régió és az SKU alapján változó. További információ: virtuális gépek díjszabása [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows rendszerekhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
-Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő maximális árat adja meg. A helyszíni virtuális gépek maximális díja az USA dollárban (USD) állítható be, akár 5 tizedesjegyet is igénybe vehet. Az érték `0.98765`például a maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1`, a virtuális gép ára nem kerül kizárásra. A virtuális gép ára a jelenlegi díj vagy a standard virtuális gép díjszabása, amely soha nem kevesebb, amíg rendelkezésre áll a kapacitás és a kvóta. A maximális ár beállításával kapcsolatos további információkért lásd: [virtuális gépek – díjszabás](spot-vms.md#pricing).
+Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő maximális árat adja meg. A helyszíni virtuális gépek maximális díja az USA dollárban (USD) állítható be, akár 5 tizedesjegyet is igénybe vehet. Az érték például a `0.98765` maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1` , a virtuális gép ára nem kerül kizárásra. A virtuális gép ára a jelenlegi díj vagy a standard virtuális gép díjszabása, amely soha nem kevesebb, amíg rendelkezésre áll a kapacitás és a kvóta. A maximális ár beállításával kapcsolatos további információkért lásd: [virtuális gépek – díjszabás](spot-vms.md#pricing).
 
-A helyszíni virtuális gép Azure CLI-vel való létrehozásának folyamata ugyanaz, mint a gyors üzembe helyezési [cikkben](/azure/virtual-machines/linux/quick-create-cli). Csak adja hozzá a "--priority spot" paramétert, és adja meg `-1`a maximális árat vagy a-t.
+A helyszíni virtuális gép Azure CLI-vel való létrehozásának folyamata ugyanaz, mint a gyors üzembe helyezési [cikkben](/azure/virtual-machines/linux/quick-create-cli). Csak adja hozzá a "--priority spot" paramétert, állítsa be a `--eviction-policy` (z) felszabadítását (ez az alapértelmezett érték) `Delete` , és adja meg a maximális árat vagy a értéket `-1` . 
 
 
 ## <a name="install-azure-cli"></a>Telepítse az Azure CLI-t
@@ -38,7 +38,7 @@ az login
 
 ## <a name="create-a-spot-vm"></a>Direktszínű virtuális gép létrehozása
 
-Ebből a példából megtudhatja, hogyan helyezhet üzembe egy olyan linuxos helyszíni virtuális gépet, amelyet az ár alapján nem lehet kizárni. 
+Ebből a példából megtudhatja, hogyan helyezhet üzembe egy olyan linuxos helyszíni virtuális gépet, amelyet az ár alapján nem lehet kizárni. A kizárási szabályzat úgy van beállítva, hogy felszabadítsa a virtuális gépet, hogy később újra lehessen indítani. Ha törölni szeretné a virtuális gépet és a mögöttes lemezt a virtuális gép kizárásakor, állítsa a következőre: `--eviction-policy` `Delete` .
 
 ```azurecli
 az group create -n mySpotGroup -l eastus
@@ -49,8 +49,11 @@ az vm create \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
-    --max-price -1
+    --max-price -1 \
+    --eviction-policy Deallocate
 ```
+
+
 
 A virtuális gép létrehozása után a lekérdezéssel megtekintheti az erőforráscsoport összes virtuális gépe esetében a maximális számlázási árat.
 
@@ -61,8 +64,8 @@ az vm list \
    --output table
 ```
 
-**További lépések**
+**Következő lépések**
 
-[Azure PowerShell](../windows/spot-powershell.md) vagy [sablon](spot-template.md)használatával is létrehozhat egy direkt virtuális gépet.
+[Azure PowerShell](../windows/spot-powershell.md), [portál](../windows/spot-portal.md)vagy [sablon](spot-template.md)használatával is létrehozhat egy helyszíni virtuális gépet.
 
 Ha hibát tapasztal, tekintse meg a [hibakódokat](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

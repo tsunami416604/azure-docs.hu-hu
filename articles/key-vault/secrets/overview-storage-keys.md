@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 1a39a8e4d09da1f9ec8721c2ea89672e7bfc096a
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118542"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508503"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>A Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI használatával
 
@@ -125,11 +125,11 @@ A művelet sikeres futtatása után másolja ki a kimenetet.
 "se=2020-01-01&sp=***"
 ```
 
-Ez a kimenet a `--template-id` következő lépésben a paraméternek lesz átadva.
+Ez a kimenet a `--template-uri` következő lépésben a paraméternek lesz átadva.
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Közös hozzáférésű aláírás definíciójának létrehozása
 
-A közös hozzáférésű aláírás definíciójának létrehozásához használja az Azure CLI az Key [Vault Storage sas-definition Create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) parancsot, és adja át az előző lépés eredményét a `--template-id` paraméternek.  Megadhatja az Ön által választott nevet a `-n` paraméternek.
+A közös hozzáférésű aláírás definíciójának létrehozásához használja az Azure CLI az Key [Vault Storage sas-definition Create](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) parancsot, és adja át az előző lépés eredményét a `--template-uri` paraméternek.  Megadhatja az Ön által választott nevet a `-n` paraméternek.
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>
@@ -161,7 +161,7 @@ az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 A parancs kimenete az SAS-definíciós karakterláncot fogja megjeleníteni `value` .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](https://docs.microsoft.com/rest/api/keyvault/).
 - Tekintse át a [Azure Key Vault csapat blogján](https://blogs.technet.microsoft.com/kv/)található cikkeket.

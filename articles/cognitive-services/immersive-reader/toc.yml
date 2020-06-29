@@ -29,9 +29,15 @@
       href: how-to-customize-launch-button.md
     - name: A hitelesítési jogkivonat gyorsítótárazása
       href: how-to-cache-token.md
+    - name: Felolvasás konfigurálása
+      href: how-to-configure-read-aloud.md
+    - name: Fordítás konfigurálása
+      href: how-to-configure-translation.md
+    - name: Felhasználói beállítások tárolása
+      href: how-to-store-user-preferences.md
 - name: Referencia
   items:
-    - name: SDK-referencia
+    - name: JavaScript SDK
       href: reference.md
 - name: További források
   items:

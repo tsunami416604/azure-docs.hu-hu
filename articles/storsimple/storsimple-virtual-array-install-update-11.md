@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f8ec56cc5747921ee786bd4c069070ff865f9fb
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711714"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507925"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Az 1,1-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -125,6 +125,6 @@ Az eljárás végrehajtása körülbelül 4 percet vesz igénybe. A frissítés 
 6. Ismételje meg a 2-4 lépést a Windows biztonsági javítás fájl használatával történő telepítéséhez `Windows8.1-KB4284815-x64` . A virtuális tömb a telepítés után újraindul, és be kell jelentkeznie a helyi webes felhasználói felületre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).

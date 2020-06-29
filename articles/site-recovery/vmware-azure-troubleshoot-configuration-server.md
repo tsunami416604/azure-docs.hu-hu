@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 26376c6b20816d2e7302403c8391195e16092fa3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246883"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504320"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>A konfigurációs kiszolgáló problémáinak elhárítása
 
@@ -64,10 +64,10 @@ Ez a hiba akkor fordul elő, ha a szolgáltatás nem tudja beolvasni az adatátv
 A vCenter-felderítési hibák elhárításához adja hozzá a vCenter-kiszolgálót a mellőzési lista proxybeállításait. 
 
 - Töltse [le a PsExec eszközt innen a](https://aka.ms/PsExec) rendszerfelhasználói tartalmak eléréséhez.
-- Nyissa meg az Internet Explorert a rendszerfelhasználói tartalomban a következő parancssori PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" parancs futtatásával
+- Az Internet Explorer rendszerfelhasználói tartalomban való megnyitásához futtassa a következő parancssori PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
 - Adja hozzá a proxybeállításokat az IE-ben, és indítsa újra a tmanssvc szolgáltatást.
 - A DRA-proxybeállítások konfigurálásához futtassa a CD C:\Program Files\Microsoft Azure Site Recovery Providert
-- Következő lépésként hajtsa végre a DRCONFIGURATOR. EXE/configure/AddBypassUrls [adja hozzá a [konfigurációs kiszolgáló üzembe helyezése](vmware-azure-deploy-configuration-server.md#configure-settings)során **vCenter Server/vSphere ESXi-kiszolgáló konfigurálása** során megadott vCenter Server IP-cím/teljes tartománynevet.
+- Következő lépésként hajtsa végre DRCONFIGURATOR.EXE/configure/AddBypassUrls [adja hozzá vCenter Server IP-címét/teljes tartománynevét az **vCenter Server/vSphere ESXi-kiszolgáló konfigurálása** a [konfigurációs kiszolgáló üzembe helyezése](vmware-azure-deploy-configuration-server.md#configure-settings)során]
 
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>A konfigurációs kiszolgáló IP-címének módosítása
 
@@ -99,7 +99,7 @@ Futtassa a következő parancsot a forrásoldali gépen:
 
 Beállítás | Részletek
 --- | ---
-Használat | UnifiedAgentConfigurator. exe/CSEndPoint < konfigurációs kiszolgáló IP-címének \> /PassphraseFilePath < a hozzáférési kód elérési útja\>
+Használat | UnifiedAgentConfigurator.exe/CSEndPoint <konfigurációs kiszolgáló IP-címének \> /PassphraseFilePath <a hozzáférési kód elérési útja\>
 Ügynök konfigurációs naplói | A%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log. alatt található
 /CSEndPoint | Kötelező paraméter. A konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 /PassphraseFilePath |  Kötelező. A jelszó helye. Használjon bármely érvényes UNC-vagy helyi elérési útvonalat.
@@ -173,7 +173,7 @@ A probléma azonosításához keresse meg a C:\ProgramData\ASRSetupLogs\ CX_TP_I
     2018-06-28 14:38:12.971   Rolling back the install changes.
     2018-06-28 14:38:12.971   Upgrade has failed.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 Állítsa le manuálisan a következő szolgáltatásokat:
 
@@ -193,7 +193,7 @@ Nem rendelkezik megfelelő engedélyekkel ahhoz, hogy alkalmazásokat hozzon lé
 A probléma megoldásához jelentkezzen be a Azure Portalba, és tegye a következők egyikét:
 
 - Kérje meg az alkalmazás fejlesztői szerepkörét a HRE-ben. Az alkalmazás fejlesztői szerepkörével kapcsolatos további információkért tekintse meg a [rendszergazdai szerepkörre vonatkozó engedélyeket Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-- Győződjön meg arról, hogy a **felhasználó létrehozhat** -e alkalmazás-jelölőt *true* értékre a HRE-ben. További információkért lásd [: útmutató: a portál használata az erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatásnév létrehozásához](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Győződjön meg arról, hogy a **felhasználó létrehozhat** -e alkalmazás-jelölőt *true* értékre a HRE-ben. További információkért lásd [: útmutató: a portál használata az erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatásnév létrehozásához](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>A Process Server/fő cél nem tud kommunikálni a konfigurációs kiszolgálóval 
 
@@ -216,7 +216,7 @@ Ha az MT-ügynök naplóiban az alábbihoz hasonló nyomkövetéseket talál, az
  
 Ez a hiba akkor fordulhat elő, ha más alkalmazások is a 443-es portot használják, vagy egy tűzfal a portot blokkoló beállítások miatt.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 - Ellenőrizze, hogy a tűzfal nem blokkolja-e a 443-es portot.
 - Ha a port egy másik, a portot használó alkalmazás miatt nem érhető el, állítsa le és távolítsa el az alkalmazást.
@@ -228,7 +228,7 @@ A probléma megoldásához:
 
 Ez a hiba akkor fordulhat elő, ha több konfigurációs kiszolgáló (CS) példány UUID-bejegyzés van az adatbázisban. A probléma gyakran előfordul a konfigurációs kiszolgáló virtuális gépe klónozásakor.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 1. Távolítsa el az elavult/régi CS virtuális gépet a vCenter-ből. További információ: [kiszolgálók eltávolítása és a védelem letiltása](site-recovery-manage-registration-and-protection.md).
 2. Jelentkezzen be a konfigurációs kiszolgáló virtuális gépre, és kapcsolódjon a MySQL svsdb1-adatbázishoz. 
@@ -251,7 +251,7 @@ Miután megadta a megfelelő felhasználónevet és jelszót a konfigurációs k
 
 Ez a probléma akkor fordulhat elő, ha a rendszer ideje helytelen.
 
-A probléma megoldásához:
+A hiba megoldása érdekében:
 
 Állítsa be a megfelelő időt a számítógépen, majd próbálja megismételni a bejelentkezést. 
  

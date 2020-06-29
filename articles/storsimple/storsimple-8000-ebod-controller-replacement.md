@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34a02181632c301f443ce48ade0de2013e2ae86c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254884"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508282"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>EBOD-vezérlő cseréje a StorSimple-eszközön
 
@@ -42,7 +42,7 @@ Mielőtt lecseréli a sikertelen EBOD vezérlő modult a StorSimple-eszközön, 
 
 #### <a name="to-remove-an-ebod-module"></a>EBOD-modul eltávolítása
 1. Nyissa meg az Azure Portalt.
-2. Nyissa meg az eszközt, és navigáljon a **Beállítások** > **hardver állapota**elemhez, és ellenőrizze, hogy az aktív EBOD vezérlő moduljának állapota zöld-e, és hogy a sikertelen EBOD vezérlő modulhoz tartozó LED piros színű-e.
+2. Nyissa meg az eszközt, és navigáljon a **Beállítások**  >  **hardver állapota**elemhez, és ellenőrizze, hogy az aktív EBOD vezérlő moduljának állapota zöld-e, és hogy a sikertelen EBOD vezérlő modulhoz tartozó LED piros színű-e.
 3. Keresse meg a sikertelen EBOD vezérlő modult az eszköz hátoldalán.
 4. Távolítsa el azokat a kábeleket, amelyek a EBOD-vezérlő modult csatlakoztatják a vezérlőhöz, mielőtt a EBOD-modult a rendszeren kívülre tenné.
 5. Jegyezze fel a vezérlőhöz csatlakoztatott EBOD vezérlő modul pontos SAS-portját. A EBOD modul cseréje után vissza kell állítania a rendszer erre a konfigurációra.
@@ -54,7 +54,7 @@ Mielőtt lecseréli a sikertelen EBOD vezérlő modult a StorSimple-eszközön, 
    
      **1. ábra** A EBOD modul hátoldala
    
-   | Címke | Leírás |
+   | Címke | Description |
    |:--- |:--- |
    | 1 |Hiba LED |
    | 2 |Power LED |
@@ -86,7 +86,7 @@ A következő eljárás és táblázat ismerteti, hogyan telepíthet egy EBOD ve
    
     **4. ábra**. Kábelek újracsatlakoztatása
    
-   | Címke | Leírás |
+   | Címke | Description |
    |:--- |:--- |
    | 1 |Elsődleges ház |
    | 2 |PCM 0 |
@@ -98,6 +98,6 @@ A következő eljárás és táblázat ismerteti, hogyan telepíthet egy EBOD ve
    | 8 |EBOD ház |
    | 9 |Energiaellátási egységek |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

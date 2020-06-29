@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 0873f9b55adbf54abe47bf275f953c3cc2b1cd3f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 2266046923000f3353e2fa01c183846a1b5814bc
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488443"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483941"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
@@ -143,6 +143,15 @@ A Azure Database for MySQL esetében az ügyfelek által felügyelt kulcs (CMK) 
 
 * A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="infrastructure-double-encryption"></a>Infrastruktúra – kettős titkosítás
+A Azure Database for MySQL a Microsoft által felügyelt kulcsok használatával adattárolási [titkosítást használ a REST-](concepts-security.md#at-rest) adatokon. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva vannak, és ez a titkosítás mindig be van kapcsolva, és nem tiltható le. A titkosítás FIPS 140-2 ellenőrzött titkosítási modult és egy AES 256-bites titkosítást használ az Azure Storage-titkosításhoz. 
+
+Az infrastruktúra-kettős titkosítás egy második titkosítási réteget ad egy FIPS 140-2 ellenőrzött titkosítási modul és egy másik titkosítási algoritmus használatával, amely további védelmi réteget biztosít az adatok nyugalmi szintjén. Az infrastruktúra kettős titkosításához használt kulcsot a szolgáltatás is kezeli. Ez alapértelmezés szerint *nem érhető el,* mert a további titkosítási réteg miatt hatással lesz a teljesítményre. 
+
+   > [!NOTE]
+   > - Ez a funkció továbbra is globálisan nem érhető el. 
+   > - A funkció támogatása a **általános célú** és a **memória optimalizált** díjszabási szintjeire korlátozódik.
+
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [állíthatja be az adattitkosítást a MySQL-hez készült Azure-adatbázishoz tartozó ügyfél által felügyelt kulccsal a Azure Portal használatával](howto-data-encryption-portal.md).

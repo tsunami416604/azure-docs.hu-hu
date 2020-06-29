@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: bad0d7adfd77dff53b1582e63a91f2cd87a9233d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64724420"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507619"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>StorSimple Eszközkezelő használata a StorSimple virtuális tömb hozzáférés-vezérlési rekordjainak kezeléséhez
 
@@ -127,7 +127,7 @@ Egy hozzáférés-vezérlési rekord törléséhez hajtsa végre a következő l
    
    ![Figyelmeztető üzenet](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [kötetek hozzáadásáról és a ACR-EK konfigurálásáról](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
 

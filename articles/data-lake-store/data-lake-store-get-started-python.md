@@ -3,16 +3,16 @@ title: Azure Data Lake Storage Gen1-fiók kezelése a Pythonban
 description: Ismerje meg, hogyan használhatja a Python SDK-t a Azure Data Lake Storage Gen1 Fiókkezelés műveleteihez.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: tracking-python
-ms.openlocfilehash: afdb132e4e3dd4ca155b6ea0dda413438f0c6b4f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 78e638952513eddf8da828158c4afa3187819fbb
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557833"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508605"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Fiókkezelés Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -128,7 +128,7 @@ A következő kódrészlet először létrehozza a Data Lake Storage Gen1 fiók 
 ## <a name="next-steps"></a>Következő lépések
 * [Fájlrendszer-műveletek Data Lake Storage Gen1 a Python használatával](data-lake-store-data-operations-python.md).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Azure-datalake-Store Python (fájlrendszer) – dokumentáció](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Azure Data Lake Storage Gen1-kompatibilis nyílt forráskódú Big adatalkalmazások](data-lake-store-compatible-oss-other-applications.md)

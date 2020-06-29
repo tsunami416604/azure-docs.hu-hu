@@ -3,15 +3,15 @@ title: Performance tuning – Spark és Azure Data Lake Storage Gen1
 description: Ismerkedjen meg a Spark Azure HDInsight-és Azure Data Lake Storage Gen1-beli teljesítmény-hangolási iránymutatásaival.
 author: stewu
 ms.service: data-lake-store
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 665fd3bf29f0ec4d2196bd29be300ee909364e31
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: f604d1d054717e426fcb02271b3a2aa06c6489b6
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691105"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505256"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Spark on HDInsight és Azure Data Lake Storage Gen1
 
@@ -43,7 +43,7 @@ A Spark-feladatok futtatásakor a legfontosabb beállítások a Data Lake Storag
 
 Alapértelmezés szerint a Spark on HDInsight-on való futtatásakor két virtuális fonal-mag van definiálva mindegyik fizikai mag számára. Ez a szám egy jó párhuzamosságot és a több szálon átváltott környezetek mennyiségét biztosítja.
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Útmutató
 
 Ha a Spark analitikus számítási feladatait a Data Lake Storage Gen1ban lévő adatokkal kívánja használni, javasoljuk, hogy a legújabb HDInsight-verziót használja a legjobb teljesítmény eléréséhez a Data Lake Storage Gen1. Ha a feladata nagyobb I/O-igényű, a teljesítmény javítása érdekében bizonyos paraméterek is konfigurálhatók. A Data Lake Storage Gen1 egy nagy mértékben méretezhető tárolási platform, amely képes a magas átviteli sebesség kezelésére. Ha a feladatnak többnyire olvasási vagy írási művelete van, akkor a Data Lake Storage Gen1 az I/O-hoz és a-ból való párhuzamosság növelése növelheti a teljesítményt.
 

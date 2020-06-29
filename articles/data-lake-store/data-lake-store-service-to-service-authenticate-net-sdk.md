@@ -3,15 +3,15 @@ title: .NET – szolgáltatás – szolgáltatás hitelesítése – Data Lake S
 description: Ismerje meg, hogyan valósítható meg a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 használatával Azure Active Directory .NET SDK használatával
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bac5fa95ca5ce4e289d4dd18cba9238da7b8a2e2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 19b4ac619ec3e72c787efc8e9f043f42dbd8b09b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691619"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505154"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t a szolgáltatá
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
 1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt**elemre.
 2. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább**gombra.
-3. A **Project Name (projekt neve**) mezőben adja meg `CreateADLApplication`a nevet, majd válassza a **Létrehozás**lehetőséget.
+3. A **Project Name (projekt neve**) mezőben adja meg a nevet `CreateADLApplication` , majd válassza a **Létrehozás**lehetőséget.
 
 4. Adja hozzá a NuGet-csomagokat a projekthez.
 
@@ -84,7 +84,7 @@ private static void Main(string[] args)
 }
 ```
 
-Az előző kódrészlet egy segítő függvényt `GetCreds_SPI_SecretKey`használ. Ennek a segítő függvénynek a kódja itt érhető el a [githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
+Az előző kódrészlet egy segítő függvényt használ `GetCreds_SPI_SecretKey` . Ennek a segítő függvénynek a kódja itt érhető el a [githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
 
 ## <a name="service-to-service-authentication-with-certificate"></a>Szolgáltatások közötti hitelesítés tanúsítvánnyal
 
@@ -105,9 +105,9 @@ private static void Main(string[] args)
 }
 ```
 
-Az előző kódrészlet egy segítő függvényt `GetCreds_SPI_Cert`használ. Ennek a segítő függvénynek a kódja itt érhető el a [githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
+Az előző kódrészlet egy segítő függvényt használ `GetCreds_SPI_Cert` . Ennek a segítő függvénynek a kódja itt érhető el a [githubon](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK-val történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használhatja a .NET SDK-t a Data Lake Storage Gen1-vel való együttműködésre.
 
 * [Fiókkezelés Data Lake Storage Gen1 a .NET SDK használatával](data-lake-store-get-started-net-sdk.md)

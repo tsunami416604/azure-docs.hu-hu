@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 03/09/2020
-ms.openlocfilehash: 513e198f9184d5789d5b33de7f05cda0c5dc094d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/26/2020
+ms.openlocfilehash: fceac1a5852c0be767ffc375ad9ec5de033f17b7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046620"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506769"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database és az Azure szinapszis Analytics kapcsolati architektúrája
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -109,6 +109,8 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Dél-Afrika nyugati régiója    | 102.133.24.0       |
 | USA déli középső régiója     | 13.66.62.124, 23.98.162.75, 104.214.16.32   |
 | Délkelet-Ázsia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
+| Észak-Svájc    | 51.107.56.0, 51.107.57.0 |
+| Nyugat-Svájc     | 51.107.152.0, 51.107.153.0 |
 | UAE középső régiója          | 20.37.72.64        |
 | Észak-Egyesült Arab            | 65.52.248.0        |
 | Az Egyesült Királyság déli régiója             | 51.140.184.11      |
@@ -119,7 +121,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | USA nyugati régiója, 2.            | 13.66.226.202      |
 |                      |                    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kiszolgálók Azure SQL Database-kapcsolódási házirendjének módosításáról további információt a [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)című témakörben talál.
 - A ADO.NET 4,5-as vagy újabb verziót használó ügyfelek Azure SQL Database-kapcsolatainak működéséről további információért lásd: [a 1433-nál nagyobb portok a ADO.NET 4,5](adonet-v12-develop-direct-route-ports.md)-ban.

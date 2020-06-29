@@ -4,15 +4,15 @@ description: fájlbefoglalás
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 76af1084626944d8399edd2c7ec5dec92e25f3ed
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378484"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506045"
 ---
 A helyszíni virtuális gépek használata lehetővé teszi, hogy a kihasználatlan kapacitást jelentős költségmegtakarítással használja. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
 
@@ -21,9 +21,17 @@ A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a na
 
 ## <a name="eviction-policy"></a>Kizárási szabályzat
 
-A virtuális gépeket a kapacitás vagy a beállított maximális ár alapján lehet kizárni. A virtuális gépek esetében a kizárási szabályzat úgy van beállítva, hogy *felszabadítsa* a kizárt virtuális gépeket a leállított, lefoglalt állapotba, így később újra üzembe helyezheti a kizárt virtuális gépeket. A helyszíni virtuális gépek újbóli kiosztása azonban attól függ, hogy elérhető-e a hely kapacitása. A fel nem osztott virtuális gépek a helyszíni vCPU-kvótába kerülnek, és a mögöttes lemezekért díjat számítunk fel. 
+A virtuális gépeket a kapacitás vagy a beállított maximális ár alapján lehet kizárni. A Direktszínű virtuális gépek létrehozásakor beállíthatja a kizárási házirendet a *felszabadításhoz* (alapértelmezett) vagy a *törléshez*. 
 
-A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)használatával kapják meg. Ez értesíti Önt, ha a virtuális gépek ki vannak zárva, és 30 másodpercen belül befejezi az összes feladatot, és leállítási feladatokat hajt végre a kizárás előtt. 
+A *felszabadítási* házirend áthelyezi a virtuális gépet a leállított, lefoglalt állapotba, így később újra üzembe helyezheti. Azonban nem garantálható, hogy a foglalás sikeres lesz. A fel nem osztott virtuális gépek a kvóta alapján számítanak, és a mögöttes lemezek tárolási költségei lesznek felszámítva. 
+
+Ha azt szeretné, hogy a virtuális gép törölhető legyen a kizárása után, beállíthatja a kizárási házirendet a *törléshez*. A kizárt virtuális gépeket a rendszer a mögöttes lemezekkel együtt törli, így nem kell tovább fizetnie a tárterületért. 
+
+> [!NOTE]
+>
+> A portál jelenleg nem támogatja a `Delete` kizárási lehetőséget, csak a `Delete` PowerShell, a CLI és a sablonok használatával állítható be.
+
+Engedélyezheti, hogy a virtuális gép értesítéseit az [Azure Scheduled Eventson](../articles/virtual-machines/linux/scheduled-events.md)keresztül fogadja. Ez értesíti Önt, ha a virtuális gépek ki vannak zárva, és 30 másodpercen belül befejezi az összes feladatot, és leállítási feladatokat hajt végre a kizárás előtt. 
 
 
 | Beállítás | Eredmény |
@@ -36,6 +44,7 @@ A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure 
 | A kizárás után a virtuális gép ára visszatérhet, hogy < a maximális árat. | A virtuális gép nem indul el automatikusan újra. Saját maga is újraindíthatja a virtuális gépet, és az aktuális áron kell fizetnie. |
 | Ha a maximális díj értéke`-1` | A virtuális gép díjszabása nem kerül kizárásra. A maximális díj a jelenlegi díj, amely a standard szintű virtuális gépek árával függ. A standard díj felett soha nem számítunk fel díjat.| 
 | A maximális ár módosítása | A maximális díj megváltoztatásához fel kell szabadítania a virtuális gépet. Szabadítsa fel a virtuális gépet, állítson be egy új maximális árat, majd frissítse a virtuális gépet. |
+
 
 ## <a name="limitations"></a>Korlátozások
 

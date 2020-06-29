@@ -1,25 +1,14 @@
 ---
 title: Összetevő hozzáadása egy virtuális géphez a Azure DevTest Labsban | Microsoft Docs
 description: Megtudhatja, hogyan adhat hozzá egy összetevőt egy virtuális géphez egy tesztkörnyezetben Azure DevTest Labs
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
-ms.author: spelluru
-ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898849"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483890"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Műtermék hozzáadása virtuális géphez
 A virtuális gépek létrehozása során meglévő összetevőket is hozzáadhat. Ezek az összetevők lehetnek a [nyilvános DevTest Labs git-tárházból](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) vagy a saját git-tárházból is. Ebből a cikkből megtudhatja, hogyan adhat hozzá összetevőket a Azure Portal és a Azure PowerShell használatával. 

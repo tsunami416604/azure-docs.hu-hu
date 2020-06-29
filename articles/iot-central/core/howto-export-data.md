@@ -4,16 +4,16 @@ description: Adatok exportálása az Azure IoT Central alkalmazásból az Azure-
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 04/07/2020
+ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: f23a91a278b81c1583d88db2ede265ba2ad2d415
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414222"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483924"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>IoT-adatexportálás a célhelyekre az Azure-ban
 
@@ -82,11 +82,9 @@ Most, hogy van egy célhelye az adatexportáláshoz, az alábbi lépéseket köv
     > [!Tip]
     > Ha nem látja az **adatexportálást** a bal oldali ablaktáblán, akkor nincs engedélye az adatexportálás konfigurálására az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
 
-3. Kattintson a jobb felső sarokban található **+ új** gombra. Válassza ki az **azure Event Hubs**, **Azure Service Bus**vagy az **Azure Blob Storage** egyikét az Exportálás céljaként. Az alkalmazáson keresztüli exportálások maximális száma öt.
+3. Kattintson az **+ új** gombra. Válassza ki az **azure blob Storage**, az **azure Event Hubs**, **Azure Service Bus üzenetsor**vagy a **Azure Service Bus témakör** egyikét az Exportálás céljának megfelelően. Az alkalmazáson keresztüli exportálások maximális száma öt.
 
-    ![Új adatexportálás létrehozása](media/howto-export-data/new-export-definition.png)
-
-4. A legördülő listában válassza ki a **Event Hubs névteret**, **Service Bus névteret**, a **Storage-fiók névterét**, vagy **adjon meg egy kapcsolatok karakterláncot**.
+4. Adja meg az Exportálás nevét. A legördülő listában válassza ki a **névteret**, vagy **adjon meg egy kapcsolatok karakterláncot**.
 
     - A IoT Central alkalmazással megegyező előfizetésben csak a Storage-fiókok, a Event Hubs névterek és a Service Bus névterek láthatók. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **az adja meg a kapcsolati karakterláncot** , és tekintse meg a 6. lépést.
     - Az ingyenes díjszabási csomag használatával létrehozott alkalmazások esetében az adatexportálás konfigurálása egyetlen módon történik a kapcsolódási karakterláncon keresztül. Az ingyenes díjszabási csomag alkalmazásai nem rendelkeznek társított Azure-előfizetéssel.
@@ -108,7 +106,7 @@ Most, hogy van egy célhelye az adatexportáláshoz, az alábbi lépéseket köv
           1. A **Beállítások**területen válassza a **hozzáférési kulcsok** elemet.
           2. Másolja a key1-vagy a key2-kapcsolatok karakterláncát
 
-    Illessze be a kapcsolatok karakterláncát. Írja be a példány vagy a tároló nevét, és vegye figyelembe, hogy ez megkülönbözteti a kis-és nagybetűket.
+    Illessze be a kapcsolatok karakterláncát. Írja be a példány vagy a **tároló nevét**, és vegye figyelembe, hogy ez megkülönbözteti a kis-és nagybetűket.
 
 7. Az **exportálni**kívánt adat területen válassza ki az exportálandó adattípusokat **, ha a**típust be értékre állítja.
 
@@ -754,4 +752,4 @@ Az **eszközök sablonjai**esetében a régi adatformátum és az új adatformá
 Most, hogy tudja, hogyan exportálhatja adatait az Azure Event Hubsba, Azure Service Busba és az Azure Blob Storage-ba, folytassa a következő lépéssel:
 
 > [!div class="nextstepaction"]
-> [Webhookok létrehozása](./howto-create-webhooks.md)
+> [Egyéni elemzések futtatása a Databricks](./howto-create-custom-analytics.md)
