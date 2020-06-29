@@ -7,29 +7,29 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 94c9a2b6a46262ad293da9ca3ba493d6f898c870
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e36237e67b4498ca6aad4b7ffa8c645abeff6143
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77085834"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477294"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>A felhasználó beleegyezik több erőforráshoz a MSAL.NET használatával
-A Microsoft Identity platform végpontja nem teszi lehetővé, hogy egyszerre több erőforráshoz kapjon tokent. A .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatakor a beszerzési jogkivonat metódus Scopes paraméterének csak egyetlen erőforráshoz tartozó hatóköröket kell tartalmaznia. A `.WithExtraScopeToConsent` Builder metódussal azonban további hatóköröket is megadhat, ha előre beleegyezett több erőforráshoz.
+A Microsoft Identity platform végpontja nem teszi lehetővé, hogy egyszerre több erőforráshoz kapjon tokent. A .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatakor a beszerzési jogkivonat metódus Scopes paraméterének csak egyetlen erőforráshoz tartozó hatóköröket kell tartalmaznia. A Builder metódussal azonban további hatóköröket is megadhat, ha előre beleegyezett több erőforráshoz `.WithExtraScopeToConsent` .
 
 > [!NOTE]
 > A Microsoft Identity platform számos erőforrásának beszerzése, de nem Azure AD B2C. A Azure AD B2C csak a rendszergazdai jogosultságokat támogatja, a felhasználói beleegyezett nem.
 
 Ha például két olyan erőforrással rendelkezik, amelyek mindegyike 2 hatókörrel rendelkezik:
 
-- https:\//mytenant.onmicrosoft.com/customerapi (2 hatókörrel `customer.read` és `customer.write`)
-- https:\//mytenant.onmicrosoft.com/vendorapi (2 hatókörrel `vendor.read` és `vendor.write`)
+- https: \/ /mytenant.onmicrosoft.com/customerapi (2 hatókörrel `customer.read` és `customer.write` )
+- https: \/ /mytenant.onmicrosoft.com/vendorapi (2 hatókörrel `vendor.read` és `vendor.write` )
 
 Az `.WithExtraScopeToConsent` alábbi példában látható módon a *extraScopesToConsent* paraméterrel rendelkező módosítót kell használnia:
 

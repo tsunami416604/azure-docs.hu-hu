@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ea97d7a2aa5fdc18d11e952eafe65b167b3397
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483926"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476835"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Az Azure Multi-Factor Authentication felhasználónkénti engedélyezése a bejelentkezési események biztonságossá tételéhez
 
@@ -39,7 +39,7 @@ Az Azure Multi-Factor Authentication felhasználói fiókjai a következő háro
 | Állapot | Leírás | Érintett nem böngészőbeli alkalmazások | Érintett böngészőalapú alkalmazások | A modern hitelesítés érintett |
 |:---:| --- |:---:|:--:|:--:|
 | Letiltva | Az Azure Multi-Factor Authenticationban nem regisztrált új felhasználók alapértelmezett állapota. | Nem | Nem | Nem |
-| Engedélyezve | A felhasználó regisztrálva lett az Azure Multi-Factor Authenticationban, de nincs regisztrálva. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. | Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure Multi-Factor Authentication regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure Multi-Factor Authentication regisztrációra van szükség. |
+| Engedélyezve | A felhasználó regisztrálva lett az Azure Multi-Factor Authenticationban, de nem regisztrált hitelesítési módszerekkel. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. | Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure Multi-Factor Authentication regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure Multi-Factor Authentication regisztrációra van szükség. |
 | Kényszerítve | A felhasználó regisztrálva lett, és befejezte az Azure Multi-Factor Authentication regisztrációs folyamatát. | Igen. Az alkalmazásokhoz alkalmazások jelszava szükséges. | Igen. Bejelentkezéskor Azure Multi-Factor Authentication szükséges. | Igen. Bejelentkezéskor Azure Multi-Factor Authentication szükséges. |
 
 A felhasználó állapota azt jelzi, hogy egy rendszergazda regisztrálta-e őket az Azure Multi-Factor Authenticationban, és hogy elvégezték-e a regisztrációs folyamatot.
@@ -181,7 +181,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 >
 > Ha a többtényezős hitelesítés engedélyezve van egy olyan felhasználói objektumon, amely már rendelkezik regisztrációs adatokkal, például telefonon vagy e-mailben, akkor a rendszergazdáknak Azure Portal vagy PowerShell használatával újra regisztrálniuk kell az MFA-t. Ha a felhasználó nem regisztrálja újra a regisztrációt, az MFA-állapota nem lesz *engedélyezve* az MFA felügyeleti felhasználói felületén való *kikényszerített* állapotra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Multi-Factor Authentication beállításainak, például a megbízható IP-címek, az egyéni hangüzenetek és a csalási riasztások konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md). Az Azure Multi-Factor Authentication felhasználói beállításainak kezeléséhez lásd: [felhasználói beállítások kezelése az azure multi-Factor Authentication](howto-mfa-userdevicesettings.md).
 

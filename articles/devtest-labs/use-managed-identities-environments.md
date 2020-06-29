@@ -1,22 +1,14 @@
 ---
 title: Környezetek létrehozása az Azure által felügyelt identitásokkal a DevTest Labs szolgáltatásban | Microsoft Docs
 description: Megtudhatja, hogyan használhatja a felügyelt identitásokat az Azure-ban környezetek üzembe helyezéséhez egy Azure DevTest Labsban található laborban.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: spelluru
-ms.openlocfilehash: a4ba4206c01e492f2ae980c5806de1e72c7051c3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 4d4df9cab17289eba21caf9d7c88eb37626b3349
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895310"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478875"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Környezetek üzembe helyezése az Azure által felügyelt identitások használatával tesztkörnyezetben 
 A tesztkörnyezet tulajdonosaként felügyelt identitást használhat a környezetek tesztkörnyezetben való üzembe helyezéséhez. Ez a funkció olyan esetekben hasznos, amikor a környezet olyan Azure-erőforrásokra hivatkozik, mint a kulcstartók, a megosztott képtárak és a környezet erőforráscsoporthoz tartozó hálózatok. Lehetővé teszi olyan homokozó környezetek létrehozását, amelyek nem korlátozódnak az adott környezet erőforráscsoporthoz.

@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 3a954167dc0698389680a92511621fb6acf4b12b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889993"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478161"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Az új Azure Portal alkalmazás regisztrációs felülete
 
@@ -77,7 +77,7 @@ Az új felhasználói élményben az **alkalmazás-titkok** átnevezve lettek a 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformok/hitelesítés: válasz URL-címek/átirányítási URI-k
 A régi felületen a webes, natív és webes API-k platformokkal foglalkozó szakasza az átirányítási URL-címek, a kijelentkezési URL-cím és az implicit folyamat konfigurálására használható.
 
-Az új felhasználói felületen a válasz URL-címei megtalálhatók az\'alkalmazás-s hitelesítés szakaszban. Emellett a rendszer átirányítási URI-ként is hivatkozik rá, és módosult az átirányítási URI-k formátuma. Egy alkalmazás típusához (webes vagy nyilvános ügyfél – mobil és asztali) kell társítani őket. [További információ](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Az új felhasználói felületen a válasz URL-címei megtalálhatók az alkalmazás- \' s hitelesítés szakaszban. Emellett a rendszer átirányítási URI-ként is hivatkozik rá, és módosult az átirányítási URI-k formátuma. Egy alkalmazás típusához (webes vagy nyilvános ügyfél – mobil és asztali) kell társítani őket. [További információ](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
 A webes API-k API-lapokon vannak konfigurálva.
 
@@ -106,7 +106,7 @@ A korábban csak a manifest Editor vagy az API használatával beállított tula
 
 -   Az API (oauth2Permissions) és a jóváhagyott ügyfélalkalmazások (preAuthorizedApplications) által definiált hatókörök az API-k közzététele lapon konfigurálhatók. További információ az alkalmazások webes API-ként való konfigurálásáról és az engedélyek/hatókörök elérhetővé tétele: [ebben](quickstart-configure-app-expose-web-apis.md)a rövid útmutatóban.
 
--   A kiadói tartomány (amely megjelenik az [alkalmazás\'jóváhagyására szolgáló kérésben](application-consent-experience.md)a felhasználók számára) a márkaépítés lapon található. A közzétevő tartomány konfigurálásával kapcsolatos további információkért tekintse meg [ezt a útmutató](howto-configure-publisher-domain.md)című témakört.
+-   A kiadói tartomány (amely megjelenik az [alkalmazás \' jóváhagyására szolgáló kérésben](application-consent-experience.md)a felhasználók számára) a márkaépítés lapon található. A közzétevő tartomány konfigurálásával kapcsolatos további információkért tekintse meg [ezt a útmutató](howto-configure-publisher-domain.md)című témakört.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -116,7 +116,7 @@ Az új felhasználói élmény a következő korlátozásokkal jár:
 
 -   Az új felhasználói felület még nem támogatja a személyes Microsoft-fiókokkal létrehozott élő SDK-alkalmazásokat.
 
--   A támogatott fiókok értékének módosítása nem támogatott a felhasználói felületen. Az alkalmazás-jegyzékfájlt csak akkor kell használni\', ha nem vált át az Azure ad egybérlős és több-bérlős között.
+-   A támogatott fiókok értékének módosítása nem támogatott a felhasználói felületen. Az alkalmazás-jegyzékfájlt csak akkor kell használni, ha nem vált át az \' Azure ad egybérlős és több-bérlős között.
 
    > [!NOTE]
    > Ha Ön személyes Microsoft-fiók felhasználó az Azure AD-bérlőben, és a bérlői rendszergazdának korlátozott hozzáférése van a Azure Portalhoz, akkor a hozzáférés megtagadva lesz. Ha azonban a parancsikonon a Alkalmazásregisztrációk beírásával, vagy a rögzítéssel megadhatja azt, akkor hozzáférhet az új felülethez.

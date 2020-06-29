@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 68f8a7086dd164c102e42c99bb8d6ba22b71ad6f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710983"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480133"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hálózati adapterek hozzáadása vagy eltávolítása virtuális gépekről
 
@@ -151,7 +151,7 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 - A virtuális gép törlése nem törli a hozzá csatolt hálózati adaptereket. Ha töröl egy virtuális gépet, a hálózati adapterek le lesznek választva a virtuális gépről. Ezeket a hálózati adaptereket különböző virtuális gépekhez is hozzáadhatja, vagy törölheti őket.
 
-- Mint az IPv6 esetében, a létrehozása után nem csatolhat hálózati adaptert a gyorsított hálózatkezelést használó virtuális gépekhez. A gyorsított hálózatkezelés kihasználása érdekében a virtuális gép operációs rendszerének lépéseit is végre kell hajtania. További információ a gyorsított hálózatkezelésről és egyéb korlátozásokról Windows vagy [Linux](create-vm-accelerated-networking-cli.md) [rendszerű](create-vm-accelerated-networking-powershell.md) virtuális gépek esetén.
+- Az optimális teljesítmény dokumentációjának megvalósításához gyorsított hálózatkezelésre van szükség. Bizonyos esetekben explicit módon engedélyeznie kell a gyorsított hálózatkezelést a Windows vagy [Linux](create-vm-accelerated-networking-cli.md) [rendszerű](create-vm-accelerated-networking-powershell.md) virtuális gépekhez.
 
 ## <a name="next-steps"></a>További lépések
 

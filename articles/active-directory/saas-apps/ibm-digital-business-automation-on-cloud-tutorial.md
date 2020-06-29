@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: c0a8185d81966932c17fd3b0590b5f8ef2f7b6df
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099675"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479793"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az IBM Digital Business Automation szolgáltatással a felhőben
 
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > Ha az **azonosító** és a **Válasz URL-címe** nem kap automatikus kitöltést, akkor a követelménynek megfelelően adja meg manuálisan az értékeket.
 
     > [!Note]
-    > Az ügyfelek a [DBAoC DevOps-csapattól](mailto:supportbpmoncloud@us.ibm.com)szerezhetik be a saját felhőalapú előfizetésük metaadat-fájlját.
+    > Az ügyfelek a felhőalapú előfizetésük metaadat-fájlját az IBM Digital Business Automation szolgáltatásban szerezhetik be a [Cloud Client ügyfélszolgálati csapatában](mailto:supportbpmoncloud@us.ibm.com).
 
 1. Ha nem rendelkezik **szolgáltatói metaadat-fájllal**, az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 

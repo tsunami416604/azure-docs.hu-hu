@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3f020abd4d207a49068ccffb9bb7f57b88bc87df
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206393"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480439"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban 
 
@@ -89,21 +89,21 @@ Az SQL on-demand nem rendelkezik helyi tárterülettel, csak a metaadat-objektum
 
 Ahhoz, hogy zökkenőmentesen lehessen megtapasztalni a fájlokban tárolt adatlekérdezéseket a adattárban, az SQL igény szerint kiterjeszti a meglévő [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) függvényt a következő képességek hozzáadásával:
 
-[Több fájl vagy mappa lekérdezése](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[Több fájl vagy mappa lekérdezése](query-data-storage.md#query-multiple-files-or-folders)
 
-[PARKETTA fájlformátum](develop-storage-files-overview.md#parquet-file-format)
+[PARKETTA fájlformátum](query-data-storage.md#query-parquet-files)
 
-[A tagolt szöveg (mező lezáró, sor lezáró, escape-karakter) használatának további lehetőségei](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[A tagolt szöveg (mező lezáró, sor lezáró, escape-karakter) használatának további lehetőségei](query-data-storage.md#query-csv-files)
 
-[Oszlopok kiválasztott részhalmazának olvasása](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[Oszlopok kiválasztott részhalmazának olvasása](query-data-storage.md#read-a-chosen-subset-of-columns)
 
-[Séma-következtetés](develop-storage-files-overview.md#schema-inference)
+[Séma-következtetés](query-data-storage.md#schema-inference)
 
-[filename függvény](develop-storage-files-overview.md#filename-function)
+[filename függvény](query-data-storage.md#filename-function)
 
-[filepath függvény](develop-storage-files-overview.md#filepath-function)
+[filepath függvény](query-data-storage.md#filepath-function)
 
-[Összetett típusok és beágyazott vagy ismétlődő adatstruktúrák használata](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[Összetett típusok és beágyazott vagy ismétlődő adatstruktúrák használata](query-data-storage.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>Biztonság
 

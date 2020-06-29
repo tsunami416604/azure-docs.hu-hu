@@ -1,24 +1,15 @@
 ---
 title: Azure DevTest Labs megvalósításának koordinálása
 description: Ez a cikk útmutatást nyújt a Azure DevTest Labs szervezeten belüli megvalósításának előkészítéséhez.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: fc6cbbd0aa9cb0750e497c7cc7edbd42f21bda55
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 0438445f99a22ed9fd239156044d6b3f6b477edc
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899269"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480847"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>A Azure DevTest Labs megvalósításának összehangolása
 Ez a cikk a Azure DevTest Labs gyors üzembe helyezésének és megvalósításának ajánlott módszerét ismerteti. Az alábbi képen az általános folyamat részletes útmutatást nyújt a különböző iparági követelmények és forgatókönyvek támogatásának rugalmasságával kapcsolatban.

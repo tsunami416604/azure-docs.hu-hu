@@ -17,7 +17,7 @@ ms.locfileid: "67179322"
 
     ![Eszköz kiválasztása](./media/storsimple-8000-install-update4-via-portal/update1.png)
 
-2. Navigáljon az eszközbeállítások**eszköz frissítései** **menüpontra** > .
+2. Navigáljon az **eszközbeállítások**  >  **eszköz frissítései**menüpontra.
 
     ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update4-via-portal/update2.png)
 

@@ -1,26 +1,16 @@
 ---
-title: Az Azure Lab Services bemutatása | Microsoft Docs
-description: Megismerheti, hogyan könnyítheti meg a Lab Services a tesztkörnyezetek létrehozását, felügyeletét és védelmét a fejlesztők, tesztelők, oktatók, diákok és mások által használható virtuális gépekkel.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Lab Services vs Azure DevTest Labs
+description: Azure DevTest Labs és Azure Lab Services összehasonlítása.
 ms.topic: overview
-ms.date: 02/03/2020
-ms.author: spelluru
-ms.openlocfilehash: a1e42a415e99bfaec1c48204efdaacd178005705
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899671"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480082"
 ---
-# <a name="an-introduction-to-azure-lab-services"></a>Az Azure Lab Services bemutatása
+# <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>Azure DevTest Labs és Azure Lab Services összehasonlítása
 Az Azure-ban két olyan szolgáltatás található, amely lehetővé teszi, hogy tesztkörnyezet-környezeteket hozzon létre a felhőben. 
 
 - **Azure DevTest Labs** – ez a szolgáltatás lehetővé teszi, hogy gyorsan beállítson egy környezetet a csapat számára (például: fejlesztési környezet vagy tesztkörnyezetben a felhőben). A tesztkörnyezet tulajdonosa létrehoz egy tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket, és elérhetővé teszi azokat a tesztkörnyezet felhasználói számára. A labor felhasználói a laborban csatlakoznak a virtuális gépekhez (VM), és felhasználhatják azokat a napi munkához, a rövid távú projektekhez. Miután a felhasználók megkezdik az erőforrások használatát a tesztkörnyezetben, a tesztkörnyezet egy rendszergazdája több tesztkörnyezetre kiterjedően elemezheti a költségeket és a használatot, és átfogó szabályzatokat állíthat be a vállalat vagy csapat költségeinek optimalizálásához.

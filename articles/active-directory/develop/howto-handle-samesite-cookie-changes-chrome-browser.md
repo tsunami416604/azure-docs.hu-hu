@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81534601"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477804"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookie-k változásainak kezelése a Chrome böngészőben
 
@@ -26,24 +26,24 @@ ms.locfileid: "81534601"
 
 `SameSite`a egy olyan tulajdonság, amely HTTP-cookie-kon állítható be, hogy megakadályozza a helyek közötti kérelmek hamisításának (CSRF) támadásait a webalkalmazásokban:
 
-- Ha `SameSite` a értéke **LAX**, a cookie-t a rendszer ugyanazon a helyen és a más helyekről érkező kérésekre küldött kérelmekben továbbítja. A rendszer nem fogadja el a tartományok közötti GET kérésekben.
+- Ha a `SameSite` értéke **LAX**, a cookie-t a rendszer ugyanazon a helyen és a más helyekről érkező kérésekre küldött kérelmekben továbbítja. A rendszer nem fogadja el a tartományok közötti GET kérésekben.
 - A **szigorú** érték biztosítja, hogy a cookie-t csak ugyanazon a helyen belül küldje el a rendszer a kérelmekben.
 
-Alapértelmezés szerint az érték `SameSite` nincs beállítva a böngészőkben, ezért a rendszer nem korlátozza a kérésekben a cookie-k küldésére vonatkozó korlátozásokat. Egy alkalmazásnak a CSRF-védelemre kell kattintania a **LAX** vagy **szigorú** beállításával.
+Alapértelmezés szerint az érték nincs beállítva a böngészőkben, ezért a rendszer nem `SameSite` korlátozza a kérésekben a cookie-k küldésére vonatkozó korlátozásokat. Egy alkalmazásnak a CSRF-védelemre kell kattintania a **LAX** vagy **szigorú** beállításával.
 
 ## <a name="samesite-changes-and-impact-on-authentication"></a>SameSite változások és a hitelesítés hatása
 
-[A SameSite vonatkozó szabványok legújabb frissítései](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) az alkalmazások védelmének biztosítását teszik elérhetővé azáltal `SameSite` , hogy az alapértelmezett viselkedés az, ha nincs megadva érték a LAX értékre. Ez a megoldás azt jelenti, hogy a cookie-k a HTTP-kérelmekre korlátozottak lesznek, kivéve a más helyekről történő letöltést. Emellett a **none** érték nem lesz bevezetve az elküldött cookie-k korlátozásának eltávolításához. Ezek a frissítések hamarosan a Chrome böngésző egy későbbi verziójában jelennek meg.
+[A SameSite vonatkozó szabványok legújabb frissítései](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) az alkalmazások védelmének biztosítását teszik elérhetővé azáltal, hogy az alapértelmezett viselkedés az, `SameSite` Ha nincs megadva érték a LAX értékre. Ez a megoldás azt jelenti, hogy a cookie-k a HTTP-kérelmekre korlátozottak lesznek, kivéve a más helyekről történő letöltést. Emellett a **none** érték nem lesz bevezetve az elküldött cookie-k korlátozásának eltávolításához. Ezek a frissítések hamarosan a Chrome böngésző egy későbbi verziójában jelennek meg.
 
-Ha a webalkalmazások a "form_post" válasz mód használatával hitelesítik a Microsoft Identity platformot, a bejelentkezési kiszolgáló egy HTTP-POST használatával válaszol az alkalmazásra, hogy elküldje a jogkivonatokat vagy az hitelesítési kódot. Mivel ez a kérelem egy tartományok közötti kérelem ( `login.microsoftonline.com` a tartományból `https://contoso.com/auth`), az alkalmazás által beállított cookie-k már a Chrome új szabályai alá tartoznak. A helyek közötti forgatókönyvekben használandó cookie-k az *állapotot* *és az* egyszer használatos értékeket tartalmazó cookie-k, amelyeket a rendszer a bejelentkezési kérelemben is elküld. Az Azure AD más cookie-kat is eldobott a munkamenet tárolására.
+Ha a webalkalmazások a "form_post" válasz mód használatával hitelesítik a Microsoft Identity platformot, a bejelentkezési kiszolgáló egy HTTP-POST használatával válaszol az alkalmazásra, hogy elküldje a jogkivonatokat vagy az hitelesítési kódot. Mivel ez a kérelem egy tartományok közötti kérelem (a `login.microsoftonline.com` tartományból `https://contoso.com/auth` ), az alkalmazás által beállított cookie-k már a Chrome új szabályai alá tartoznak. A helyek közötti forgatókönyvekben használandó cookie-k az *állapotot* *és az* egyszer használatos értékeket tartalmazó cookie-k, amelyeket a rendszer a bejelentkezési kérelemben is elküld. Az Azure AD más cookie-kat is eldobott a munkamenet tárolására.
 
 Ha nem frissíti a webalkalmazásokat, ez az új viselkedés a hitelesítési hibákhoz vezet.
 
 ## <a name="mitigation-and-samples"></a>Enyhítés és minták
 
-A hitelesítési hibák elhárítása érdekében a Microsoft Identity platformmal hitelesítő webalkalmazások megadhatják `SameSite` a `None` tulajdonságot a tartományok közötti forgatókönyvekben használt cookie-k számára a Chrome böngészőben történő futtatáskor.
+A hitelesítési hibák elhárítása érdekében a Microsoft Identity platformmal hitelesítő webalkalmazások megadhatják a `SameSite` tulajdonságot a tartományok `None` közötti forgatókönyvekben használt cookie-k számára a Chrome böngészőben történő futtatáskor.
 Más böngészők [(lásd a](https://www.chromium.org/updates/same-site/incompatible-clients) teljes listát) kövesse a korábbi viselkedését, `SameSite` és ha `SameSite=None` be van állítva, a cookie-k nem tartalmazzák.
-Ezért a több böngészőből álló webalkalmazások hitelesítésének támogatásához `SameSite` `None` csak a Chrome-ra kell beállítani az értéket, és más böngészőkben üresen kell hagyni az értéket.
+Ezért a több böngészőből álló webalkalmazások hitelesítésének támogatásához `SameSite` csak a Chrome-ra kell beállítani az értéket, `None` és más böngészőkben üresen kell hagyni az értéket.
 
 Ezt a módszert az alábbi kódrészletek szemléltetik.
 

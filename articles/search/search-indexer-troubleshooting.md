@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62c35eefe50643dc65dcf84305a9b4b3ee64cadb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190933"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478637"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Az Azure Cognitive Search gyakori indexelő problémáinak elhárítása
 
@@ -28,13 +28,13 @@ Az indexelő több problémát is futtathat az Azure Cognitive Searchba való ad
 > [!NOTE]
 > Az indexelő korlátozott támogatást biztosít az Azure hálózati biztonsági mechanizmusok által védett adatforrásokhoz és egyéb erőforrásokhoz való hozzáféréshez. Jelenleg az indexelő csak a megfelelő IP-címtartomány korlátozási mechanizmusai vagy NSG-szabályok segítségével férhetnek hozzá az adatforrásokhoz, ha van ilyen. Az egyes támogatott adatforrásokhoz való hozzáférés részleteit alább találja.
 >
-> A keresési szolgáltatás IP-címét a teljes tartománynév (pl.: `<your-search-service-name>.search.windows.net`) pingelésével tekintheti meg.
+> A keresési szolgáltatás IP-címét a teljes tartománynév (pl.:) pingelésével tekintheti meg `<your-search-service-name>.search.windows.net` .
 >
-> A `AzureCognitiveSearch` [Service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címtartomány a [letölthető JSON-fájlok](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) használatával vagy a [Service tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)-n keresztül található meg. Az IP-címtartomány hetente frissül.
+> A `AzureCognitiveSearch` [Service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-CÍMTARTOMÁNY a [letölthető JSON-fájlok](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) használatával vagy a [Service tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)-n keresztül található meg. Az IP-címtartomány hetente frissül.
 
 ### <a name="configure-firewall-rules"></a>Tűzfalszabályok konfigurálása
 
-Az Azure Storage, a CosmosDB és az Azure SQL konfigurálható tűzfalat biztosít. Nincs konkrét hibaüzenet, ha a tűzfal engedélyezve van. A tűzfal hibái általában általánosak, és a `The remote server returned an error: (403) Forbidden` következőképpen `Credentials provided in the connection string are invalid or have expired`néznek ki: vagy.
+Az Azure Storage, a CosmosDB és az Azure SQL konfigurálható tűzfalat biztosít. Nincs konkrét hibaüzenet, ha a tűzfal engedélyezve van. A tűzfal hibái általában általánosak, és a következőképpen néznek ki: `The remote server returned an error: (403) Forbidden` vagy `Credentials provided in the connection string are invalid or have expired` .
 
 A következő két lehetőség közül választhat, amelyek lehetővé teszik az indexelő számára ezen erőforrások elérését egy adott példányban:
 
@@ -51,7 +51,7 @@ Az IP-címtartomány korlátozásának az egyes adatforrások esetében történ
 
 **Korlátozás**: az Azure Storage fenti dokumentációjában leírtaknak megfelelően az IP-címtartomány korlátozásai csak akkor működnek, ha a keresési szolgáltatás és a Storage-fiók különböző régiókban található.
 
-Az Azure functions (amely [egyéni webes API-képességként](cognitive-search-custom-skill-web-api.md)használható) az [IP-címek korlátozásait](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)is támogatja. A konfigurálni kívánt IP-címek listája a keresési szolgáltatás IP-címe és a `AzureCognitiveSearch` szolgáltatási címke IP-címtartomány.
+Az Azure functions (amely [egyéni webes API-képességként](cognitive-search-custom-skill-web-api.md)használható) az [IP-címek korlátozásait](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)is támogatja. A konfigurálni kívánt IP-címek listája a keresési szolgáltatás IP-címe és a szolgáltatási címke IP-címtartomány `AzureCognitiveSearch` .
 
 Az Azure-beli virtuális gépen futó SQL Server-adatokhoz való hozzáférés részleteit [itt](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) találja:
 
@@ -111,6 +111,7 @@ api-key: [admin key]
 Az indexelő a dokumentumokat egy [adatforrásból](https://docs.microsoft.com/rest/api/searchservice/create-data-source)keresi meg. Időnként előfordulhat, hogy az adatforrásból olyan dokumentum van, amelyet indexelni kellett volna egy indexből. A hibák néhány gyakori oka lehet:
 
 * A dokumentum nem lett indexelve. A sikeres indexelő futtatásához keresse meg a portált.
+* A [change Tracking](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) értékének megadásával. Ha a magas küszöbértékű érték egy jövőbeli időpontra van állítva, akkor az indexelő által kihagyható minden olyan dokumentum, amelynek a dátumnál kisebb a dátuma. Az indexelő Change Tracking állapotát az [Indexelő állapotának](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result)"initialTrackingState" és "finalTrackingState" mezőivel tudja értelmezni.
 * A dokumentum frissült az indexelő futtatása után. Ha az indexelő [ütemezett](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), akkor a rendszer végül Újrafuttatja és felveszi a dokumentumot.
 * Az adatforrásban megadott [lekérdezés](/rest/api/searchservice/create-data-source) kizárja a dokumentumot. Az indexelő nem tudja indexelni azokat a dokumentumokat, amelyek nem részei az adatforrásnak.
 * A [mező-hozzárendelések](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) vagy a [mesterséges intelligencia-gazdagítás](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) megváltoztatta a dokumentumot, és a várttól eltérőnek tűnik.

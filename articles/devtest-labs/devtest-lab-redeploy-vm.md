@@ -1,25 +1,14 @@
 ---
 title: Virtuális gép újbóli üzembe helyezése laborban Azure DevTest Labsban | Microsoft Docs
 description: Megtudhatja, hogyan telepítheti át a virtuális gépeket (az egyik Azure-csomópontról a másikra) Azure DevTest Labs.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 8460f09e-482f-48ba-a57a-c95fe8afa001
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
-ms.author: spelluru
-ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: da0edf13adaa0d7ecd84ee2c190f376c19b398db
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898723"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480235"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Virtuális gép újbóli üzembe helyezése laborban Azure DevTest Labs
 Ha nem tud csatlakozni egy virtuális géphez a laborban távoli asztali kapcsolaton keresztül, telepítse újra a virtuális gépet, és próbálkozzon újra a csatlakozással. Egy virtuális gép újratelepítésekor a DevTest Labs áthelyezi a virtuális gépet abból a csomópontból, amelyen az Azure-infrastruktúrán belüli új csomópontra fut. Ezután elindítja a virtuális gépet, miközben megőrzi az összes konfigurációs beállítást és a kapcsolódó erőforrásokat. Ez a szolgáltatás időt takarít meg a távoli asztali kapcsolat vagy az alkalmazás Windows-alapú virtuális gépekhez való hozzáférésének hibaelhárítása során. 

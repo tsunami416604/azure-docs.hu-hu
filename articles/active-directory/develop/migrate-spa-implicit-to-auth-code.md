@@ -1,46 +1,46 @@
 ---
 title: A JavaScript-alapú egyoldalas alkalmazások áttelepíthetők az implicit támogatásból az engedélyezési kód folyamatábrába | Azure
 titleSuffix: Microsoft identity platform
-description: JavaScript SPA frissítése a MSAL. js 1. x használatával és az implicit engedélyezési folyamattal a MSAL. js 2. x és az engedélyezési kód PKCE és CORS támogatásával.
+description: JavaScript-SPA frissítése MSAL.js 1. x használatával és az implicit engedélyezési folyamat MSAL.js 2. x és a PKCE-és CORS-támogatással rendelkező hitelesítési kód esetében.
 services: active-directory
 author: hahamil
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: tutorial
+ms.topic: how-to
 ms.workload: identity
 ms.date: 06/01/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 6af203759cca830a6adcf9f70436d42f3d983da4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 8115f8e767d1bdcbacb74e90606526c98b0820f7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84301040"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479538"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>JavaScript-alapú egyoldalas alkalmazás migrálása implicit engedélyről az Auth Code flow-ba
 
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány aspektusa változhat az általános elérhetősége előtt.
 
-A Microsoft hitelesítési könyvtára a JavaScripthez (MSAL. js) a 2.0-s verzióban támogatja az engedélyezési kód áramlását a PKCE és a CORS-mel a Microsoft Identity platform egyoldalas alkalmazásaihoz. Az alábbi szakaszokban ismertetett lépéseket követve áttelepítheti a MSAL. js 1. x alkalmazást a MSAL. js 2.0 + (a továbbiakban *2. x*) és az Auth-kód folyamatával.
+A Microsoft hitelesítési könyvtára a JavaScripthez (MSAL.js) a 2.0-s verzióban támogatja az engedélyezési kód áramlását a PKCE és a CORS használatával egyoldalas alkalmazásokhoz a Microsoft Identity platformon. Az alábbi szakaszokban ismertetett lépéseket követve áttelepítheti a MSAL.js 1. x alkalmazást a MSAL.js 2.0 + (a továbbiakban *2. x*) és az Auth kód folyamatával.
 
-A MSAL. js 2. x a MSAL. js 1. x verziójában javítja az engedélyezési kód folyamatát a böngészőben az implicit engedélyezési folyamat helyett. A MSAL. js 2. x **nem támogatja az** implicit folyamatot.
+MSAL.js 2. x a MSAL.js 1. x verzióban javítja az engedélyezési kód folyamatát a böngészőben az implicit engedélyezési folyamat helyett. MSAL.js 2. x nem **támogatja az** implicit folyamatot.
 
 ## <a name="migration-steps"></a>A migrálás lépései
 
-Az alkalmazás frissítéséhez a MSAL. js 2. x és az Auth Code folyamat esetében három fő lépés szükséges:
+Ha szeretné frissíteni az alkalmazást MSAL.js 2. x-re és az Auth kód folyamatára, három fő lépésből áll:
 
 1. Átválthatja az [alkalmazás regisztrációs](#switch-redirect-uris-to-spa-platform) ÁTirányítási URI-ját a **webes** platformról **egyoldalas alkalmazás** platformra.
-1. Frissítse a [kódot](#switch-redirect-uris-to-spa-platform) a MSAL. js 1. x és **2. x**között.
-1. Ha a regisztrációt megosztó összes alkalmazás frissítve lett a MSAL. js 2. x és az Auth kód folyamatára, tiltsa le az [implicit hozzáférést](#disable-implicit-grant-settings) az alkalmazás regisztrálásakor.
+1. Frissítse a [kódját](#switch-redirect-uris-to-spa-platform) MSAL.js 1. x és **2. x**között.
+1. Ha a regisztrációt megosztó összes alkalmazás frissítve lett MSAL.js 2. x és az Auth kód folyamatára, tiltsa le az [implicit hozzáférést](#disable-implicit-grant-settings) az alkalmazás regisztrálásakor.
 
 A következő szakaszok további részletekben ismertetik az egyes lépéseket.
 
 ## <a name="switch-redirect-uris-to-spa-platform"></a>Átirányítási URI-k váltása a SPA platformra
 
-Ha továbbra is szeretné használni a meglévő alkalmazás-regisztrációt az alkalmazásaihoz, használja a Azure Portal a regisztráció átirányítási URI-k a SPA platformra történő frissítéséhez. Ez lehetővé teszi, hogy az engedélyezési kód PKCE és CORS támogassa a regisztrációt használó alkalmazások támogatását (az alkalmazás kódját továbbra is frissítenie kell a MSAL. js v2. x verzióra).
+Ha továbbra is szeretné használni a meglévő alkalmazás-regisztrációt az alkalmazásaihoz, használja a Azure Portal a regisztráció átirányítási URI-k a SPA platformra történő frissítéséhez. Ez lehetővé teszi, hogy az engedélyezési kód a PKCE és a CORS támogatással támogassa a regisztrációt használó alkalmazásokat (továbbra is frissítenie kell az alkalmazás kódját MSAL.js v2. x-re).
 
 Kövesse az alábbi **lépéseket a webplatform-** átirányítási URI-k által jelenleg konfigurált alkalmazások regisztrálásához:
 
@@ -49,7 +49,7 @@ Kövesse az alábbi **lépéseket a webplatform-** átirányítási URI-k által
 1. A **webplatform csempén az** URI-k **átirányítása**területen válassza a figyelmeztetési szalagcímet, amely jelzi, hogy át kell telepítenie az URI-ket.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Implicit flow figyelmeztetési szalagcím a webalkalmazás csempén Azure Portal":::
-1. *Csak* azokat az átirányítási URI-ket válassza, amelyek alkalmazásai a MSAL. js 2. x fájlt használják, majd válassza a **Konfigurálás**lehetőséget.
+1. *Csak* azokat az átirányítási URI-ket válassza, amelyek alkalmazásai MSAL.js 2. x-et használják, majd válassza a **Konfigurálás**lehetőséget.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Az átirányítási URI ablaktábla kiválasztása a SPA panelen Azure Portal":::
 
@@ -59,7 +59,7 @@ Ezek az átirányítási URI-k mostantól megjelennek az **egyoldalas alkalmazá
 
 [Új alkalmazás-regisztrációt is létrehozhat](scenario-spa-app-registration.md) , ha nem frissíti az átirányítási URI-ket a meglévő regisztráció során.
 
-## <a name="update-your-code-to-msaljs-2x"></a>A kód frissítése a MSAL. js 2. x verzióra
+## <a name="update-your-code-to-msaljs-2x"></a>A kód frissítése MSAL.js 2. x-re
 
 Az 1. x MSAL a [UserAgentApplication][msal-js-useragentapplication] inicializálásával létrehozott egy alkalmazás-példányt a következőképpen:
 
@@ -89,7 +89,7 @@ Miután frissítette az összes olyan üzemi alkalmazást, amely ezt az alkalmaz
 
 Ha törli az implicit engedélyezési beállításokat az alkalmazás regisztrációjában, az implicit folyamat le lesz tiltva minden alkalmazásnál, amely a regisztrációt és az ügyfél-azonosítót használja.
 
-Az összes alkalmazásnak a MSAL. js 2. x és a [PublicClientApplication][msal-js-publicclientapplication]való frissítése előtt **ne tiltsa le** az implicit engedélyezési folyamatot.
+Az összes alkalmazás MSAL.js 2. x és a [PublicClientApplication][msal-js-publicclientapplication]való frissítése előtt **ne tiltsa le** az implicit engedélyezési folyamatot.
 
 ## <a name="next-steps"></a>További lépések
 

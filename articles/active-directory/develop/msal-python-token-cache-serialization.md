@@ -7,18 +7,18 @@ author: rayluo
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 9bdfc3be7194c13123250f83d6f0e19a884597ca
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 57efe11f0c44d7dfe6d35f2e56d512d6e2e2fa98
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558606"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479283"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>Egyéni jogkivonat-gyorsítótár szerializálása a MSAL-ben a Pythonhoz
 
@@ -36,6 +36,6 @@ A nyilvános ügyfélalkalmazások egy felhasználó eszközén futnak, és egye
 
 Webalkalmazások vagy webes API-k esetén használhatja a munkamenetet vagy egy Redis-gyorsítótárat, vagy egy adatbázist a jogkivonat-gyorsítótár tárolására. Felhasználónként egy jogkivonat-gyorsítótárnak kell lennie (fiókkal), ezért ügyeljen arra, hogy a jogkivonat-gyorsítótárat a fiók alapján szerializálja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72) , amelyből megtudhatja, hogyan használható a jogkivonat-gyorsítótár egy Windows-vagy Linux-alapú webalkalmazáshoz vagy webes API-hoz. A példa egy olyan webalkalmazásra mutat, amely meghívja a Microsoft Graph API-t.

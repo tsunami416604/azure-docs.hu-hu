@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1ded745b5a734fd92a8ace851e3ecfc4a7a487d5
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e8d68e5f2eeeb7363469535c027f258fbc9d7ed1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636393"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480490"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Oktatóanyag: Windowsos virtuális gépek rendszerképeinek létrehozása a Azure PowerShell
 
@@ -54,7 +54,7 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 
 ## <a name="get-the-vm"></a>A virtuális gép beszerzése
 
-A [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)használatával megtekintheti az erőforráscsoporthoz elérhető virtuális gépek listáját. Ha ismeri a virtuális gép nevét és az erőforráscsoportot, használhatja `Get-AzVM` újra a virtuálisgép-objektum beolvasásához és egy változóban való tárolásához. Ez a példa egy *sourceVM* nevű virtuális gépet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$VM*változóhoz. 
+A [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)használatával megtekintheti az erőforráscsoporthoz elérhető virtuális gépek listáját. Ha ismeri a virtuális gép nevét és az erőforráscsoportot, használhatja `Get-AzVM` újra a virtuálisgép-objektum beolvasásához és egy változóban való tárolásához. Ez a példa egy *sourceVM* nevű virtuális gépet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$sourceVM*változóhoz. 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -131,7 +131,7 @@ New-AzGalleryImageVersion `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
    -TargetRegion $targetRegions  `
-   -Source $vm.Id.ToString() `
+   -Source $sourceVM.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01'
 ```
 
@@ -193,7 +193,7 @@ New-AzRoleAssignment `
    -ResourceGroupName $resourceGroup.ResourceGroupName
 ```
    
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsmagot az erőforráscsoport és az összes kapcsolódó erőforrás eltávolításához:
 
@@ -209,7 +209,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy speciális virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

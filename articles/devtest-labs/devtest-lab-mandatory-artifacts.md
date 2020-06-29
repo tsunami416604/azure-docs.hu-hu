@@ -1,24 +1,14 @@
 ---
 title: Kötelező összetevők megadása a Azure DevTest Labshoz | Microsoft Docs
 description: Megtudhatja, hogyan adhatja meg azokat a kötelező összetevőket, amelyeket telepíteni kell, mielőtt a tesztkörnyezetben lévő virtuális gépekre (VM) telepíti a felhasználó által kiválasztott összetevőket.
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: spelluru
-ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897557"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480303"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>A laborhoz tartozó kötelező összetevők megadása Azure DevTest Labs
 A labor tulajdonosaként megadhatja a laborban létrehozott összes gépen alkalmazott kötelező összetevőket. Képzelje el, hogy hol szeretné, hogy a laborban lévő egyes gépek a vállalati hálózathoz kapcsolódjanak. Ebben az esetben minden tesztkörnyezet-felhasználónak hozzá kell adnia egy tartományhoz való csatlakozást a virtuális gép létrehozása során, hogy a számítógépe csatlakoztatva legyen a vállalati tartományhoz. Más szóval a labor felhasználóknak lényegében újra létre kell hozniuk egy gépet abban az esetben, ha elfelejtik a kötelező összetevők alkalmazását a gépen. A labor tulajdonosaként a tartományhoz való csatlakozást kötelező összetevőként kell elvégeznie a laborban. Ez a lépés gondoskodik arról, hogy minden számítógép a vállalati hálózathoz kapcsolódjon, és megtakarítsa az időt és erőfeszítést a labor felhasználói számára.

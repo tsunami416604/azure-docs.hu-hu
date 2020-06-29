@@ -1,24 +1,15 @@
 ---
 title: A Azure DevTest Labs-infrastruktúra vertikális felskálázása
 description: Ez a cikk útmutatást nyújt a Azure DevTest Labs infrastruktúra méretezéséhez.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 50bf08678a12a1a0499abd08c52a264d03f4a401
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899213"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478790"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>A Azure DevTest Labs-infrastruktúra vertikális felskálázása
 A nagyvállalati szintű DevTest Labs megvalósítása előtt több kulcsfontosságú döntési pont is van. Ezen döntési pontok magas szinten való megismerése segíti a szervezetet a jövőbeli tervezési döntések meghozatalában. Ezek a pontok azonban nem tudják visszatartani a szervezetet a koncepció igazolásának elindításával. A kezdeti méretezési tervezés első három területe a következő:

@@ -6,17 +6,17 @@ services: active-directory
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 67dbf696903e7a930d75762deb00ad58ed1a4f69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cdcb5287434c72bf54337611d67de8d6f65d8d9
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886466"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479512"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -55,6 +55,6 @@ Ha elvégezte a gyors üzembe helyezést, már van egy alkalmazás, amely késze
 
 ## <a name="tools"></a>Eszközök
 
-A Microsoft Graph Explorer egy webalapú eszköz, amellyel Microsoft Graph API-k használatával hozhat létre és tesztelheti a kérelmeket. Microsoft Graph Explorer a következő címen érhető el `https://developer.microsoft.com/graph/graph-explorer`:.
+A Microsoft Graph Explorer egy webalapú eszköz, amellyel Microsoft Graph API-k használatával hozhat létre és tesztelheti a kérelmeket. Microsoft Graph Explorer a következő címen érhető el: `https://developer.microsoft.com/graph/graph-explorer` .
 
-A Poster olyan eszköz, amellyel a Microsoft Graph API-k használatával hozhat létre és tesztelheti a kérelmeket. A Poster a következő címen tölthető `https://www.getpostman.com/`le:. Ha a Poster-ben szeretné használni a Microsoft Grapht, használja a Microsoft Graph gyűjteményt a Poster szolgáltatásban. További információ: [Poster használata a Microsoft Graph API-val](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+A Poster olyan eszköz, amellyel a Microsoft Graph API-k használatával hozhat létre és tesztelheti a kérelmeket. A Poster a következő címen tölthető le: `https://www.getpostman.com/` . Ha a Poster-ben szeretné használni a Microsoft Grapht, használja a Microsoft Graph gyűjteményt a Poster szolgáltatásban. További információ: [Poster használata a Microsoft Graph API-val](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).

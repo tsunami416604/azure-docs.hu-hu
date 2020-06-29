@@ -13,7 +13,7 @@ ms.locfileid: "72038162"
 ---
 A [Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)egy osztályt biztosít a konfigurációs fájlokból származó kapcsolati sztringek elemzéséhez. A [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) osztály elemzi a konfigurációs beállításokat. Az alkalmazás az asztali gépen, egy mobileszközön, egy Azure-beli virtuális gépen vagy egy Azure Cloud Service-ben futó ügyfélalkalmazások beállításait elemzi.
 
-A `CloudConfigurationManager` csomagra való hivatkozáshoz adja hozzá `using` a következő irányelveket:
+A csomagra való hivatkozáshoz `CloudConfigurationManager` adja hozzá a következő `using` irányelveket:
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager

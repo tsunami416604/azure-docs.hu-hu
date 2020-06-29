@@ -15,7 +15,7 @@ ms.locfileid: "67179318"
 
 Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update katalógusból történő letöltéséhez.
 
-1. Indítsa el az Internet Explorert, [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)és navigáljon a gombra.
+1. Indítsa el az Internet Explorert, és navigáljon a gombra [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 2. Ha most használja először a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a rendszer a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 
     ![Katalógus telepítése](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -107,7 +107,7 @@ A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa 
      > A következő frissítés alkalmazása előtt újra kell indítania az aktív vezérlőt a `Restart-HcsController` parancsmagon keresztül.
      
 7. Ismételje meg a 3-5-es lépéseket a CIS/MDS ügynöknek a _FirstOrderUpdate_ mappába való letöltéséhez. 
-8. A másodrendű frissítések telepítéséhez hajtsa ismét végre a 3–5. lépést. **A második megrendelési frissítések esetében több frissítés is telepíthető a `Start-HcsHotfix cmdlet` futtatásával, és arra a mappára mutat, ahol a második megrendelés frissítései találhatók. A parancsmag végrehajtja a mappában elérhető összes frissítést.** Ha valamely frissítés már telepítve lett, a frissítési logika észleli ezt, és nem alkalmazza újra az adott frissítést. 
+8. A másodrendű frissítések telepítéséhez hajtsa ismét végre a 3–5. lépést. **A második megrendelési frissítések esetében több frissítés is telepíthető a futtatásával, `Start-HcsHotfix cmdlet` és arra a mappára mutat, ahol a második megrendelés frissítései találhatók. A parancsmag végrehajtja a mappában elérhető összes frissítést.** Ha valamely frissítés már telepítve lett, a frissítési logika észleli ezt, és nem alkalmazza újra az adott frissítést. 
 
 Miután az összes gyorsjavítás telepítve lett, használja a `Get-HcsSystem` parancsmagot. A verziónak a következőknek kell lennie:
 

@@ -15,30 +15,34 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 175c5a36c873d16d50d5192a489133a01018e335
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ebf2f926f5be86ffee5f3a3e30277962a6060762
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80474596"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479760"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Gyors útmutató: Load Balancer létrehozása a virtuális gépek terheléselosztásához Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Gyors útmutató: Load Balancer létrehozása a virtuális gépek terheléselosztásához ARM-sablon használatával
 
-A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe olyan Azure Resource Manager-sablont, amely létrehoz egy standard Load balancert a virtuális gépek terheléselosztásához. A Resource Manager-sablon használata kevesebb lépést vesz igénybe a többi üzembe helyezési módszer összehasonlításával.
+A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Azure Resource Manager-sablont (ARM-sablon), amely létrehoz egy standard Load balancert a virtuális gépek terheléselosztásához. Az ARM-sablon használata kevesebb lépést vesz igénybe, mint a többi üzembe helyezési módszer.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
 
-## <a name="create-a-load-balancer"></a>Load Balancer-terheléselosztó létrehozása
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-load-balancer-standard-create%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="review-the-template"></a>A sablon áttekintése
+
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/)származik.
 
 A Load Balancer és a nyilvános IP-címeknek egyezniük kell. Standard Load Balancer létrehozásakor létre kell hoznia egy új szabványos nyilvános IP-címet is, amely a standard Load Balancer előtérben van konfigurálva. Ha alapszintű Load Balancer szeretne létrehozni, használja [ezt a sablont](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). A Microsoft a standard SKU használatát javasolja üzemi számítási feladatokhoz.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)származik.
-
-:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-324" highlight="58-122":::
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-324" highlight="57-122":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
@@ -46,13 +50,13 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses): a terheléselosztó és a három virtuális gép mindegyike számára.
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft. számítási/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3 közülük)
-- [**Microsoft. számítás/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3): az IIS és a weblapok konfigurálására használható.
+- [**Microsoft. számítási/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3).
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3).
+- [**Microsoft. számítás/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3): az IIS és a weblapok konfigurálásához használható.
 
 A Azure Load Balancer kapcsolódó további sablonok kereséséhez tekintse meg az [Azure Gyorsindítás sablonjait](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget a Azure Cloud Shell megnyitásához, majd kövesse az utasításokat az Azure-ba való bejelentkezéshez.
 
@@ -89,7 +93,7 @@ A sablon üzembe helyezése körülbelül 10 percet vesz igénybe. Ha elkészül
 
 A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon kívül használhatja a Azure Portal, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-portal.md).
 
-## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
+## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 

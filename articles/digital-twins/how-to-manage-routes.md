@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5049e875c3b8047b99e3256c7bbac60d0af822bb
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: d6ecc2ddab7bc0fa739989e9cfdc2645cc1ccb27
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392267"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476903"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Végpontok és útvonalak kezelése az Azure digitális Ikrekben
 
@@ -25,7 +25,10 @@ A támogatott végpontok típusai a következők:
 
 További információ a különböző végpontokról: [választás az Azure Messaging Services között](https://docs.microsoft.com/azure/event-grid/compare-messaging-services).
 
-A végpontokat és útvonalakat a [**EventRoutes API**](how-to-use-apis-sdks.md)-k, a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felülete kezeli.
+A végpontokat és útvonalakat a [**EventRoutes API**](how-to-use-apis-sdks.md)-k, a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felülete kezeli. A [Azure Portal](https://portal.azure.com)is kezelhetők.
+
+> [!NOTE]
+> Az események útvonalának Azure Portalon keresztüli kezelése jelenleg csak az Azure-felhasználók számára érhető el a vállalati-tartományi fiókokban. Ha személyes [Microsoft-fiók (MSA)](https://account.microsoft.com/account/Account)használ, használja az Azure Digital Twins API-kat vagy a CLI-t az események útvonalának kezeléséhez a jelen cikkben leírtak szerint.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Végpont létrehozása az Azure Digital Twins számára
 
@@ -140,7 +143,7 @@ Szűrő hozzáadásához használjon PUT-kérést a *https://{YourHost}/EventRou
 
 Itt láthatók a támogatott útválasztási szűrők.
 
-| Szűrő neve | Description | Séma szűrése | Támogatott értékek | 
+| Szűrő neve | Leírás | Séma szűrése | Támogatott értékek | 
 | --- | --- | --- | --- |
 | Típus | A digitális kettős példányon keresztül áramló [esemény típusa](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Forrás | Az Azure Digital Twins-példány neve | `"filter" : "source = '<hostname>'"`|  **Értesítésekhez**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetria esetén**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
@@ -181,7 +184,7 @@ A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adj
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [Útmutató: az események értelmezése](how-to-interpret-event-data.md)

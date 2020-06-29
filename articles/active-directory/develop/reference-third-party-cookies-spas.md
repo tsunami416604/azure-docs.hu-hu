@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cf385ef9af152308bcd96f25df49aebddd25b059
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1478ee1396390e26d333230b0254578ec748ef6c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691060"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477260"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Az ITP kezelése a Safariban és más böngészőkben, ahol a harmadik féltől származó cookie-k blokkolva vannak
 
@@ -36,7 +36,7 @@ A cikkben ismertetett megoldás az összes böngészőben működik, vagy a harm
 
 ## <a name="overview-of-the-solution"></a>A megoldás áttekintése
 
-A gyógyfürdőben lévő felhasználók hitelesítésének folytatásához az alkalmazás-fejlesztőknek az [engedélyezési kód folyamatát](v2-oauth2-auth-code-flow.md)kell használniuk. Az Auth Code folyamatában az identitás-szolgáltató kiad egy kódot, és a SPA beváltja a kódot egy hozzáférési jogkivonat és egy frissítési jogkivonat számára. Ha az alkalmazás további jogkivonatokat igényel, akkor a [token frissítése folyamat](v2-oauth2-auth-code-flow.md#refresh-the-access-token) használatával új jogkivonatokat kaphat. A MSAL. js 2,0, a Microsoft Identity platform Library for SPAs, implementálja a gyógyfürdők engedélyezési kódját, és kisebb frissítésekkel helyettesíti a MSAL. js 1. x-es verzióját.
+A gyógyfürdőben lévő felhasználók hitelesítésének folytatásához az alkalmazás-fejlesztőknek az [engedélyezési kód folyamatát](v2-oauth2-auth-code-flow.md)kell használniuk. Az Auth Code folyamatában az identitás-szolgáltató kiad egy kódot, és a SPA beváltja a kódot egy hozzáférési jogkivonat és egy frissítési jogkivonat számára. Ha az alkalmazás további jogkivonatokat igényel, akkor a [token frissítése folyamat](v2-oauth2-auth-code-flow.md#refresh-the-access-token) használatával új jogkivonatokat kaphat. MSAL.js 2,0, a Microsoft Identity platform Library for SPAs, implementálja a gyógyfürdők engedélyezési kódjának folyamatát, és kisebb frissítésekkel helyettesíti a MSAL.js 1. x.
 
 A Microsoft Identity platformhoz a fürdők és a natív ügyfelek a hasonló protokoll-útmutatást követik:
 
@@ -63,7 +63,7 @@ A bejelentkezés két módon hajtható végre:
     * Érdemes lehet olyan előre betöltési sorozatot kötni az alkalmazásban, amely ellenőrzi a bejelentkezési munkamenetet, és átirányítja a bejelentkezési oldalra, mielőtt az alkalmazás teljes mértékben kicsomagolja és végrehajtja a JavaScript-adattartalmat.
 * **Előugró ablakok**
     * Ha a teljes oldal átirányításának felhasználói élménye (UX) nem működik az alkalmazás esetében, érdemes lehet felugró ablakokat használni a hitelesítés kezelésére.
-    * Ha az előugró ablak hitelesítés után átirányítja az alkalmazást az alkalmazásba, a kód az átirányítási kezelőben a helyi tárolóban tárolja a kódot és a jogkivonatokat, amelyeket az alkalmazás használni fog. A MSAL. js támogatja az előugró ablakokat a hitelesítéshez, akárcsak a legtöbb kódtárat.
+    * Ha az előugró ablak hitelesítés után átirányítja az alkalmazást az alkalmazásba, a kód az átirányítási kezelőben a helyi tárolóban tárolja a kódot és a jogkivonatokat, amelyeket az alkalmazás használni fog. A MSAL.js támogatja az előugró ablakokat a hitelesítéshez, akárcsak a legtöbb kódtárat.
     * A böngészők csökkentik a felugró ablakok támogatását, így azok nem a legmegbízhatóbb megoldás. Az előugró ablak létrehozása előtt a felhasználói interakcióra lehet szükség a böngésző követelményeinek kielégítése érdekében.
 
 >[!NOTE]
@@ -83,4 +83,4 @@ Ez a korlátozott élettartamú frissítési jogkivonat-minta a biztonság és a
 
 További információ az [engedélyezési kód folyamatáról](v2-oauth2-auth-code-flow.md).
 
-Próbálja ki az engedélyezési kód folyamatát a [MSAL. js 2,0](quickstart-v2-javascript-auth-code.md)gyors útmutatóval.
+Próbálja ki az engedélyezési kód folyamatát a [MSAL.js 2,0](quickstart-v2-javascript-auth-code.md)gyors útmutatóval.

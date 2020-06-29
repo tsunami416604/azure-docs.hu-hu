@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220960"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478484"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -66,6 +66,7 @@ Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szüks
 * Az egyéni szkriptek bővítménye nem támogatja natív módon a proxykiszolgálót, azonban használhat olyan fájlátviteli eszközt, amely támogatja a parancsfájlban lévő proxykiszolgálót, például a *curl*
 * Vegye figyelembe, hogy vannak olyan nem alapértelmezett könyvtárhelyek, amelyekre a szkriptjei és a parancsai támaszkodhatnak, és amelyek rendelkeznek a helyzet kezeléséhez szükséges logikával.
 * Az egyéni szkriptek bővítménye a LocalSystem fiókban fog futni.
+* Ha azt tervezi, hogy a *storageAccountName* és a *storageAccountKey* tulajdonságot használja, ezeknek a tulajdonságoknak közös elhelyezésű kell lenniük a *protectedsettingsfromkeyvault*.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -122,13 +123,13 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 | Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft.Compute | sztring |
 | típus | CustomScriptExtension | sztring |
 | typeHandlerVersion | 1.10 | int |
 | fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
 | időbélyeg (például) | 123456789 | 32 bites egész szám |
-| commandToExecute (például) | PowerShell – ExecutionPolicy nem korlátozott – fájl configure-Music-app. ps1 | sztring |
+| commandToExecute (például) | PowerShell – ExecutionPolicy korlátozás nélküli fájl configure-music-app.ps1 | sztring |
 | storageAccountName (például) | examplestorageacct | sztring |
 | storageAccountKey (például) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | sztring |
 | managedIdentity (például) | {} vagy {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} vagy {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-objektum |
@@ -177,7 +178,7 @@ Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtu
 
 Ha a felhasználó által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, konfigurálja a "managedidentity" mezőt az ügyfél-AZONOSÍTÓval vagy a felügyelt identitás objektum-azonosítójával.
 
-> Angol nyelvű Példák:
+> Példák:
 >
 > ```json
 > {
@@ -342,7 +343,7 @@ ahol a `<n>` decimális egész szám, amely változhat a bővítmény végrehajt
 
 A parancs végrehajtásakor `commandToExecute` a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2` ) az aktuális munkakönyvtárként. Ez a folyamat lehetővé teszi a relatív elérési utak használatát a tulajdonságon keresztül letöltött fájlok megkereséséhez `fileURIs` . Példákért tekintse meg az alábbi táblázatot.
 
-Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet relatív parancsfájl-/fájlelérési utakat választani a `commandToExecute` karakterláncban, amikor csak lehetséges. Például:
+Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet relatív parancsfájl-/fájlelérési utakat választani a `commandToExecute` karakterláncban, amikor csak lehetséges. Példa:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

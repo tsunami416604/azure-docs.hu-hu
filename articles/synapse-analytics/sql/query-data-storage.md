@@ -1,6 +1,6 @@
 ---
 title: Áttekintés – adatlekérdezés a Storage-ban az SQL on-demand használatával (előzetes verzió)
-description: Ez a szakasz azokat a lekérdezéseket tartalmazza, amelyekkel kipróbálhatja az Azure-beli SQL on-demand (előzetes verzió) erőforrást az Azure szinapszis Analyticsen belül.
+description: Ez a cikk bemutatja, hogyan kérdezheti le az Azure Storage-t az Azure-beli SQL on-demand (előzetes verzió) erőforrás használatával az Azure szinapszis Analyticsben.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,42 +9,228 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d42dac0899c5ab9c4f817df40095dd08891fb8e7
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 72db484814c0ecf0ab6bb70d12ab088e1ce44ef5
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207702"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478569"
 ---
-# <a name="overview-query-data-in-storage"></a>Áttekintés: adatlekérdezés a Storage szolgáltatásban
+# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
 
-Ez a szakasz azokat a lekérdezéseket tartalmazza, amelyekkel kipróbálhatja az Azure-beli SQL on-demand (előzetes verzió) erőforrást az Azure szinapszis Analyticsen belül.
-A jelenleg támogatott formátumok a következők:  
-- CSV
-- Parquet
-- JSON
+Az SQL on-demand (előzetes verzió) segítségével lekérdezheti az adatait az adattóban. Egy T-SQL-lekérdezési felületet kínál, amely a félig strukturált és a strukturálatlan adatlekérdezéseket is tartalmazza. A lekérdezéshez a következő T-SQL-szempontok támogatottak:
 
-## <a name="prerequisites"></a>Előfeltételek
+- Teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) felületi terület, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét.
+- KÜLSŐ tábla létrehozása SELECT ([CETAS](develop-tables-cetas.md)) – létrehoz egy [külső táblát](develop-tables-external-tables.md) , majd párhuzamosan exportálja a Transact-SQL SELECT utasítás eredményeit az Azure Storage-ba.
+
+Ha többet szeretne megtudni arról, hogy mi is a jelenleg nem támogatott, olvassa el az [SQL igény szerinti áttekintését ismertető](on-demand-workspace-overview.md) cikket, vagy a következő cikkeket:
+- [Tárterület-hozzáférés fejlesztése](develop-storage-files-overview.md) , amelyből megtudhatja, hogyan lehet a [külső tábla](develop-tables-external-tables.md) és a [OpenRowset](develop-openrowset.md) függvény használatával beolvasni az adatait a tárolóból.
+- A [tárterület-hozzáférés vezérlése](develop-storage-files-storage-access-control.md) , amelyből megtudhatja, hogyan engedélyezheti a szinapszis SQL számára a tárhely ELÉRÉSét sas-hitelesítés vagy a munkaterület felügyelt identitása segítségével.
+
+## <a name="overview"></a>Áttekintés
+
+Az Azure Storage-fájlokban található adatlekérdezés zökkenőmentes működésének támogatásához az SQL on-demand a [OpenRowset](develop-openrowset.md) függvényt használja további képességekkel:
+
+- [Több fájl vagy mappa lekérdezése](#query-multiple-files-or-folders)
+- [PARKETTA fájlformátum](#query-parquet-files)
+- [CSV és tagolt szöveg lekérdezése (mező lezáró, sor lezáró, escape-karakter)](#query-csv-files)
+- [Oszlopok kiválasztott részhalmazának olvasása](#read-a-chosen-subset-of-columns)
+- [Séma-következtetés](#schema-inference)
+- [filename függvény](#filename-function)
+- [filepath függvény](#filepath-function)
+- [Összetett típusok és beágyazott vagy ismétlődő adatstruktúrák használata](#work-with-complex-types-and-nested-or-repeated-data-structures)
+
+## <a name="query-parquet-files"></a>PARQUEt-fájlok lekérdezése
+
+A parketta-forrásadatok lekérdezéséhez használja a FORMAT = "PARQUEt"
+
+```syntaxsql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', TYPE = 'PARQUET') 
+WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+```
+
+A használati példákért tekintse át a [lekérdezési parketta fájljait](query-parquet-files.md) ismertető cikket.
+
+## <a name="query-csv-files"></a>CSV-fájlok lekérdezése
+
+A parketta-forrásadatok lekérdezéséhez használja a FORMAT = "CSV" formátumot. A CSV-fájl sémáját a függvény részeként is megadhatja a `OPENROWSET` CSV-fájlok lekérdezése során:
+
+```sql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.csv', TYPE = 'CSV', PARSER_VERSION='2.0') 
+WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+```
+
+Néhány további lehetőség is használható az elemzési szabályok egyéni CSv-formátumra való beállításához:
+- A ESCAPE_CHAR = "char" a fájlban szereplő karaktert határozza meg, amely a fájlban lévő összes elválasztó érték kiszökésére szolgál. Ha az Escape-karaktert a saját maga vagy az elválasztó értékek egyike követi, az escape-karakter eldobása az érték beolvasása közben történik.
+A ESCAPE_CHAR paraméter akkor lesz alkalmazva, ha a FIELDQUOTE vagy nincs engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjel karakternek egy másik idézőjel karakterrel kell megszöknie. Az idézőjel karakter csak akkor szerepelhet az oszlop értékén belül, ha az érték idézőjelekkel van ellátva.
+- A FIELDTERMINATOR = ' field_terminator ' meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző ("**,**")
+- A ROWTERMINATOR = ' row_terminator ' megadja a használandó sort. Az alapértelmezett sor lezáró egy sortörési karakter: **\r\n**.
+
+## <a name="file-schema"></a>Fájl sémája
+
+A szinapszis SQL SQL nyelve lehetővé teszi a fájl sémájának megadását a függvény részeként, illetve az `OPENROWSET` oszlopok beolvasását, vagy az oszlopok összes részhalmazát, vagy megpróbálja automatikusan meghatározni a fájl típusú oszlop típusát a Schema következtetés használatával.
+
+### <a name="read-a-chosen-subset-of-columns"></a>Oszlopok kiválasztott részhalmazának olvasása
+
+Az olvasni kívánt oszlopok megadásához megadhat egy opcionális záradékot az `OPENROWSET` utasításon belül.
+
+- Ha CSV-adatfájlok vannak, az összes oszlop olvasásához adja meg az oszlopnevek és az adattípusok nevét. Ha az oszlopok egy részhalmazát szeretné használni, a sorszámok használatával válassza ki az oszlopokat a származó adatfájlokból a sorszám alapján. Az oszlopokat a sorszám megjelölése fogja kötni.
+- Ha vannak parketta-adatfájlok, adjon meg olyan oszlopnevek, amelyek egyeznek a kezdeményező adatfájlokban lévő oszlopnevek. Az oszlopok név szerint lesznek kötve.
+
+```sql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', TYPE = 'PARQUET') 
+WITH (
+      C1 int, 
+      C2 varchar(20),
+      C3 as varchar(max)
+) as rows
+```
+
+Minden oszlop esetében meg kell adnia az oszlopnév nevet és a Type in `WITH` záradékot.
+Minták esetében tekintse meg a [CSV-fájlok olvasása az összes oszlop megadása nélkül](query-single-csv-file.md#returning-subset-of-columns)című témakört.
+
+## <a name="schema-inference"></a>Séma-következtetés
+
+Ha kihagyja a WITH záradékot az `OPENROWSET` utasításból, utasíthatja a szolgáltatást, hogy automatikusan érzékelje (következteti) a sémát az alapul szolgáló fájlokból.
+
+> [!NOTE]
+> Ez jelenleg csak a PARQUEt fájlformátum esetében működik.
+
+```sql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', TYPE = 'PARQUET') 
+```
+
+Győződjön meg arról, hogy a [megfelelő késleltetett adattípusok](best-practices-sql-on-demand.md#check-inferred-data-types) használatos az optimális teljesítmény érdekében. 
+
+## <a name="query-multiple-files-or-folders"></a>Több fájl vagy mappa lekérdezése
+
+Ha T-SQL-lekérdezést szeretne futtatni egy mappa vagy mappák készletén belül, miközben egyetlen entitásként vagy sorhalmazként kezeli őket, adjon meg egy mappát vagy egy mintát (helyettesítő karakterek használatával) egy fájlon vagy mappán keresztül.
+
+A következő szabályok érvényesek:
+
+- A minták a könyvtár elérési útjának vagy a fájlnevek egy részében is megjelenhetnek.
+- Több minta is szerepelhet ugyanabban a címtárbeli lépésben vagy fájlnévben.
+- Ha több helyettesítő karakter is van, akkor az összes egyező elérési úton található fájlok szerepelni fognak az eredményül kapott fájlban.
+
+```sql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.parquet', TYPE = 'PARQUET' ) as rows
+```
+
+A használati példákat a [lekérdezési mappákban és több fájlban](query-folders-multiple-csv-files.md) találja.
+
+## <a name="file-metadata-functions"></a>Fájl metaadatainak függvények
+
+### <a name="filename-function"></a>Filename függvény
+
+Ez a függvény annak a fájlnak a nevét adja vissza, amelyből a sor származik. 
+
+Adott fájlok lekérdezéséhez olvassa el a fájl- [specifikus fájlok lekérdezése](query-specific-files.md#filename) című cikket.
+
+A visszatérési adattípus a következő: nvarchar (1024). Az optimális teljesítmény érdekében a filename függvény eredményét mindig a megfelelő adattípusra konvertálja. Ha a karakter adattípust használja, ügyeljen arra, hogy a megfelelő hossz legyen használatban.
+
+### <a name="filepath-function"></a>Filepath függvény
+
+Ez a függvény teljes elérési utat vagy az elérési út egy részét adja vissza:
+
+- Ha paraméter nélkül hívja meg, a a fájl teljes elérési útját adja vissza, amelyből a sor származik.
+- Ha paraméterrel hívja meg a metódust, az az elérési út azon részét adja vissza, amely megfelel a paraméterben megadott helyettesítő karakternek. Például az 1. paraméter értéke az elérési út azon részét fogja visszaadni, amely megfelel az első helyettesítő karakternek.
+
+További információért olvassa el az [adott fájlok lekérdezése](query-specific-files.md#filepath) című cikk filepath című szakaszát.
+
+A visszatérési adattípus a következő: nvarchar (1024). Az optimális teljesítmény érdekében a filepath függvény eredményét mindig a megfelelő adattípusra konvertálja. Ha a karakter adattípust használja, ügyeljen arra, hogy a megfelelő hossz legyen használatban.
+
+## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Összetett típusok és beágyazott vagy ismétlődő adatstruktúrák használata
+
+A beágyazott vagy ismétlődő adattípusokban (például a [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) -fájlokban) tárolt adathalmazok zökkenőmentes használatának lehetővé tételéhez az SQL on-demand hozzáadta a következő bővítményeket.
+
+#### <a name="project-nested-or-repeated-data"></a>Beágyazott vagy ismétlődő projekt
+
+Az adatok kivetítéséhez futtasson egy SELECT utasítást a beágyazott adattípusú oszlopokat tartalmazó parketta-fájlon. A kimenetben a beágyazott értékek a JSON-be lesznek szerializálva, és varchar (8000) SQL-adattípusként lesznek visszaadva.
+
+```sql
+    SELECT * FROM
+    OPENROWSET
+    (   BULK 'unstructured_data_path' ,
+        FORMAT = 'PARQUET' )
+    [AS alias]
+```
+
+Részletesebb információkért tekintse meg a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#project-nested-or-repeated-data) című cikket a projekt beágyazott vagy ismétlődő adatok szakaszában.
+
+#### <a name="access-elements-from-nested-columns"></a>Elemek elérése beágyazott oszlopokból
+
+Egy beágyazott oszlop (például a struct) beágyazott elemeinek eléréséhez használja a "dot jelölést", hogy összefűzse a mezőneveket az elérési útra. Adja meg az elérési utat column_nameként a függvény WITH záradékában `OPENROWSET` .
+
+A szintaxis kódrészlet példája a következő:
+
+```syntaxsql
+    OPENROWSET
+    (   BULK 'unstructured_data_path' ,
+        FORMAT = 'PARQUET' )
+    WITH ({'column_name' 'column_type',})
+    [AS alias]
+    'column_name' ::= '[field_name.] field_name'
+```
+
+Alapértelmezés szerint a `OPENROWSET` függvény megegyezik a forrás mező nevével és elérési útjával a with záradékban megadott oszlopnevek alapján. Az azonos forrásban lévő parketta-fájl különböző beágyazási szintjein található elemek a WITH záradék használatával érhetők el.
+
+**Visszaadott értékek**
+
+- A függvény egy skaláris értéket ad vissza, például: int, decimális és varchar, a megadott elemből és a megadott elérési úton, a beágyazott Type csoportban nem szereplő összes parketta típushoz.
+- Ha az elérési út egy beágyazott típusú elemre mutat, a függvény egy JSON-töredéket ad vissza a megadott elérési út felső elemétől kezdve. A JSON-töredék varchar (8000) típusú.
+- Ha a tulajdonság nem található a megadott column_name, a függvény hibát ad vissza.
+- Ha a tulajdonság nem található a megadott column_pathban, az [elérési út módjától](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)függően, a függvény hibát ad vissza, ha a szigorú vagy a null értéket adja meg LAX módban.
+
+A lekérdezési minták esetében tekintse át a beágyazott oszlopok hozzáférési elemeit a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#access-elements-from-nested-columns) című cikkben.
+
+#### <a name="access-elements-from-repeated-columns"></a>Elemek elérése ismétlődő oszlopokból
+
+Ha ismétlődő oszlop elemeit szeretné elérni, például egy tömb vagy Térkép elemét, használja a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) függvényt minden olyan skaláris elemnél, amelyet a projekthez és a biztosításához szükséges:
+
+- Beágyazott vagy ismétlődő oszlop, az első paraméterként
+- Egy [JSON-elérési út](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , amely megadja az elérni kívánt elemet vagy tulajdonságot második paraméterként
+
+A nem skaláris elemek ismétlődő oszlopokból való eléréséhez használja a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) függvényt minden olyan nem skaláris elemhez, amelyet a projekthez és a biztosításához szükséges:
+
+- Beágyazott vagy ismétlődő oszlop, az első paraméterként
+- Egy [JSON-elérési út](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , amely megadja az elérni kívánt elemet vagy tulajdonságot második paraméterként
+
+Lásd az alábbi szintaxist:
+
+```syntaxsql
+    SELECT
+       { JSON_VALUE (column_name, path_to_sub_element), }
+       { JSON_QUERY (column_name [ , path_to_sub_element ]), )
+    FROM
+    OPENROWSET
+    (   BULK 'unstructured_data_path' ,
+        FORMAT = 'PARQUET' )
+    [AS alias]
+```
+
+Lekérdezési mintákat talál az elemek az ismétlődő oszlopokból való eléréséhez a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#access-elements-from-repeated-columns) cikkben.
+
+## <a name="query-samples"></a>Példák lekérdezésekre
+
+A különböző típusú adattípusok lekérdezésével kapcsolatos további információkért tekintse meg a minta lekérdezéseket.
+
+### <a name="tools"></a>Eszközök
 
 A lekérdezések kibocsátásához szükséges eszközök:
-
-- Tetszőleges SQL-ügyfél:
     - Azure szinapszis Studio (előzetes verzió)
     - Azure Data Studio
     - SQL Server Management Studio
 
-Emellett a paraméterek a következők:
+### <a name="demo-setup"></a>Bemutató beállítása
 
-| Paraméter                                 | Leírás                                                   |
-| ----------------------------------------- | ------------------------------------------------------------- |
-| Igény szerinti SQL-szolgáltatás végpontjának címe    | A kiszolgáló neveként lesz használva.                                   |
-| Igény szerinti SQL-szolgáltatás végpontjának régiója     | A rendszer a mintákban használt tárterület meghatározására szolgál. |
-| A végpontok hozzáférésének felhasználóneve és jelszava | A végpont eléréséhez lesz használva.                               |
-| A nézetek létrehozásához használni kívánt adatbázis     | Ezt az adatbázist a rendszer kiindulási pontként fogja használni a mintákhoz.       |
+Első lépésként létre kell **hoznia egy adatbázist** , amelyen végre fogja hajtani a lekérdezéseket. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. 
 
-## <a name="first-time-setup"></a>Első beállítás
-
-Első lépésként létre kell **hoznia egy adatbázist** , amelyen végre fogja hajtani a lekérdezéseket. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban lévő adatok olvasásához használt külső fájlformátumokat.
+Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban lévő adatok olvasásához használt külső fájlformátumokat.
 
 > [!NOTE]
 > Az adatbázisokat csak a metaadatok megtekintésére használják, nem a tényleges adatokhoz.  Jegyezze fel a használni kívánt adatbázis nevét, később szüksége lesz rá.
@@ -53,19 +239,14 @@ Első lépésként létre kell **hoznia egy adatbázist** , amelyen végre fogja
 CREATE DATABASE mydbname;
 ```
 
-## <a name="provided-demo-data"></a>Megadott bemutatói információk
+### <a name="provided-demo-data"></a>Megadott bemutatói információk
 
 A demo-adat a következő adatkészleteket tartalmazza:
 
-- New York-i taxi – Yellow taxi Trip Records – a Public NYC adathalmazának része
-  - CSV-formátum
-  - Parquet formátum
-- Populációs adatkészlet
-  - CSV-formátum
+- New York-i taxi – Yellow taxi Trip Records – a nyilvános NYC-adathalmaz része CSV-ben és parketta formátumban
+- Populációs adatkészlet CSV formátumban
 - Parketta-fájlok beágyazott oszlopokkal
-  - Parquet formátum
-- Könyvek JSON
-  - JSON formátum
+- Könyvek JSON formátumban
 
 | Mappa elérési útja                                                  | Leírás                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -78,37 +259,15 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | JSON                                                       | JSON formátumú adatszülő mappa                        |
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
-### <a name="sample-query"></a>Mintalekérdezés
-
-Az érvényesítés utolsó lépése a következő lekérdezés végrehajtása:
-
-```sql
-SELECT
-    COUNT_BIG(*)
-FROM  
-    OPENROWSET(
-        BULK 'parquet/taxi/year=2017/month=9/*.parquet',
-        DATA_SOURCE = 'sqlondemanddemo',
-        FORMAT='PARQUET'
-    ) AS nyc;
-```
-
-A fenti lekérdezésnek a következő számot kell visszaadnia: **8945574**.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már készen áll a folytatásra a következő cikkekkel:
+A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Egyetlen CSV-fájl lekérdezése](query-single-csv-file.md)
-
-- [Mappák és több CSV-fájl lekérdezése](query-folders-multiple-csv-files.md)
-
-- [Adott fájlok lekérdezése](query-specific-files.md)
-
+- [CSV-fájlok lekérdezése](query-single-csv-file.md)
 - [Parquet-fájlok lekérdezése](query-parquet-files.md)
-
-- [A Parquet beágyazott típusainak lekérdezése](query-parquet-nested-types.md)
-
 - [JSON-fájlok lekérdezése](query-json-files.md)
-
+- [Beágyazott értékek lekérdezése](query-parquet-nested-types.md)
+- [Mappák és több CSV-fájl lekérdezése](query-folders-multiple-csv-files.md)
+- [Fájl metaadatainak használata a lekérdezésekben](query-specific-files.md)
 - [Nézetek létrehozása és használata](create-use-views.md)

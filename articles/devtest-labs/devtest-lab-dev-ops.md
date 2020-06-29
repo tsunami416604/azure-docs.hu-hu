@@ -1,24 +1,14 @@
 ---
 title: A Azure DevTest Labs és a DevOps integrációja | Microsoft Docs
 description: Ismerje meg, hogyan használhatók a Azure DevTest Labs Labs a folyamatos integrációs (CI)/folyamatos továbbítási (CD) folyamatokon belül egy vállalati környezetben.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
-ms.author: spelluru
-ms.openlocfilehash: db9e338891a4e8bab9f9b36482815542ae348ec2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896927"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481068"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>A Azure DevTest Labs és az Azure DevOps integrációja
 A DevOps egy szoftverfejlesztői módszer, amely integrálja a szoftverfejlesztői (dev) rendszereket a rendszerekhez tartozó műveletekkel (Ops). Ez a rendszer az üzleti célokkal való összhangban új funkciókat, frissítéseket és javításokat biztosíthat. Ez a módszer magában foglalja az új funkciók megtervezését a célok, a használati minták és a felhasználói visszajelzések alapján. a rendszerek javítása, helyreállítása és megerősítése a problémák bekövetkezésekor. Ennek a módszernek a könnyen azonosítható összetevője a folyamatos integráció (CI)/folyamatos továbbítás (CD) folyamata. A CI/CD-folyamatok az adatok, a kódok és az erőforrások elvégzését végzik el egy sorozattal, amely magában foglalja a létrehozási, tesztelési és üzembe helyezési műveleteket a rendszer előállításához. Ez a cikk azt ismerteti, hogyan lehet hatékonyan használni a laborokat egy folyamaton belül egy vállalati környezetben. 

@@ -8,32 +8,32 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 4974fe3b387683f662d7a7b4f3ccb4935153f07e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883096"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477192"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Útmutató: egyéni jogcímek kérése az iOS és a macOS rendszerhez készült MSAL használatával
 
 Az OpenID Connect segítségével igény szerint kérheti az egyes jogcímek visszaadását a UserInfo-végpontból és/vagy az azonosító jogkivonatban. A jogcím-kérelmek JSON-objektumként jelennek meg, amely tartalmazza a kért jogcímek listáját. További részletekért lásd: [OpenID Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) .
 
-Az iOS és a macOS rendszerhez készült Microsoft Authentication Library (MSAL) lehetővé teszi, hogy konkrét jogcímeket kérjen az interaktív és a csendes jogkivonat-beszerzési forgatókönyvekben. Ezt a `claimsRequest` paraméterrel végezheti el.
+Az iOS és a macOS rendszerhez készült Microsoft Authentication Library (MSAL) lehetővé teszi, hogy konkrét jogcímeket kérjen az interaktív és a csendes jogkivonat-beszerzési forgatókönyvekben. Ezt a paraméterrel végezheti el `claimsRequest` .
 
-Több forgatókönyv is van, ahol ez szükséges. Például:
+Több forgatókönyv is van, ahol ez szükséges. Példa:
 
 - Az alkalmazás szabványos készletén kívüli jogcímek igénylése.
 - A standard jogcímek adott kombinációinak kérése, amelyek nem adhatók meg hatókörökkel az alkalmazáshoz. Ha például egy hozzáférési jogkivonat a hiányzó jogcímek miatt elutasításra kerül, az alkalmazás a MSAL használatával kérheti le a hiányzó jogcímeket.
 
 > [!NOTE]
-> A MSAL megkerüli a hozzáférési jogkivonat gyorsítótárát, ha meg van adva jogcím-kérelem. Fontos, hogy csak akkor adja `claimsRequest` meg a paramétereket, ha további jogcímek szükségesek (az egyes `claimsRequest` MSAL API-hívásokban mindig ugyanazt a paramétert biztosítjuk).
+> A MSAL megkerüli a hozzáférési jogkivonat gyorsítótárát, ha meg van adva jogcím-kérelem. Fontos, hogy csak akkor adja meg a `claimsRequest` paramétereket, ha további jogcímek szükségesek (az `claimsRequest` egyes MSAL API-hívásokban mindig ugyanazt a paramétert biztosítjuk).
 
-`claimsRequest`a és `MSALInteractiveTokenParameters`a esetén `MSALSilentTokenParameters` adható meg:
+`claimsRequest`a és a esetén adható meg `MSALSilentTokenParameters` `MSALInteractiveTokenParameters` :
 
 ```objc
 /*!

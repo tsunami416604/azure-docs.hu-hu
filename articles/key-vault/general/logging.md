@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2ac68f1cab6958c0fc79fa6518c61417e75c0a70
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211392"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480609"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -95,7 +95,7 @@ A [első lépések oktatóanyagban](../secrets/quick-create-cli.md)a kulcstárol
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Naplózás engedélyezése az Azure PowerShell-lel
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Naplózás engedélyezése Azure PowerShell használatával
 
 A Key Vault naplózásának engedélyezéséhez a **set-AzDiagnosticSetting** parancsmagot fogjuk használni az új Storage-fiókhoz és a kulcstartóhoz létrehozott változókkal együtt. Az **-enabled** jelzőt úgy is beállítjuk, hogy **$true** , és a kategóriát a **AuditEvent** (az egyetlen kategória Key Vault naplózás) értékre állítsa be:
 
@@ -188,7 +188,7 @@ A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
 Mivel ugyanazt a Storage-fiókot használhatja több erőforráshoz tartozó naplók összegyűjtésére, a blob nevében lévő teljes erőforrás-azonosító hasznos lehet, ha csak a szükséges blobokat szeretné elérni vagy letölteni. Előtte azonban nézzük meg, hogyan tölthető le az összes blob.
 
-Hozzon létre egy mappát a Blobok letöltéséhez. Például:
+Hozzon létre egy mappát a Blobok letöltéséhez. Példa:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -208,7 +208,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 Ha ezt a második parancsot futtatja, a **/** Blobok neveiben szereplő határolójel teljes mappastruktúrát hoz létre a célmappában. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
@@ -279,7 +279,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **identitás** |Az REST API kérelemben bemutatott jogkivonat identitása. Ez általában a "felhasználó", "a" szolgáltatásnév "vagy" felhasználó + appId "kombinációja, amely egy Azure PowerShell-parancsmagból származó kérelem esetében van. |
 | **Tulajdonságok** |A művelettől (**operationName**) függően változó információk. A legtöbb esetben ez a mező tartalmazza az ügyfél adatait (az ügyfél által átadott felhasználói ügynök sztringjét), a pontos REST API kérelem URI-JÁT és a HTTP-állapotkódot. Emellett, ha egy objektum egy kérelem eredményeképpen lett visszaadva (például a Key **create** vagy a **VaultGet**), a kulcs URI-ját ("id"), a tároló URI-JÁT vagy a titkos azonosítót is tartalmazza. |
 
-A **OperationName** *ObjectVerb* formátumban vannak. Például:
+A **OperationName** *ObjectVerb* formátumban vannak. Példa:
 
 * A Key Vault összes műveletének `Vault<action>` formátuma, például `VaultGet` és `VaultCreate` .
 * Az összes kulcsfontosságú művelet `Key<action>` formátuma, például `KeySign` és `KeyList` .
@@ -330,5 +330,3 @@ A .NET-alapú webalkalmazásokban Azure Key Vaultt használó oktatóanyagért l
 Programozási hivatkozások: [Azure Key Vault developer’s guide](developers-guide.md) (Az Azure Key Vault fejlesztői útmutatója).
 
 Azure Key Vault Azure PowerShell 1,0-parancsmagok listáját itt tekintheti meg: [Azure Key Vault parancsmagok](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
-
-A Key rotációs és a Azure Key Vault használatával történő naplózással kapcsolatos oktatóanyagért tekintse meg a [Key Vault teljes körű kulcsfontosságú rotációs és naplózási](../secrets/key-rotation-log-monitoring.md)funkciójának beállítása című témakört.

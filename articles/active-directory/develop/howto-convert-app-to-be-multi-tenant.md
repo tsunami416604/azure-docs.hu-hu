@@ -7,20 +7,20 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f22ecb13284eaf6fb2a833791b5563351ca19147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884086"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477855"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: bejelentkezés bármely Azure Active Directory felhasználó számára a több-bérlős alkalmazás mintájának használatával
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
 Ha egy szolgáltatott szoftver (SaaS) alkalmazást biztosít számos szervezet számára, beállíthatja, hogy az alkalmazás minden Azure Active Directory (Azure AD-) bérlőtől fogadja a bejelentkezéseket. Ezt a konfigurációt az *alkalmazás több-bérlővé tétele hívja meg*. Az Azure AD-bérlők felhasználói bejelentkezhetnek az alkalmazásba, miután beleegyezett a fiókja alkalmazásával.
 
@@ -44,14 +44,14 @@ Alapértelmezés szerint az Azure AD-ben a webalkalmazás/API-regisztráció egy
 
 A több-bérlős alkalmazások megkezdése előtt az Azure AD-nek az alkalmazás alkalmazásspecifikus URI azonosítójának globálisan egyedinek kell lennie. Az alkalmazásazonosító URI egy módszer, amellyel az alkalmazás a protokollüzenetekben azonosítható. Egybérlős alkalmazás esetében az alkalmazásazonosító URI-nak csak a bérlőn belül kell egyedinek lennie. Több-bérlős alkalmazás esetében azonban globálisan egyedinek kell lennie, hogy az Azure AD megtalálja az alkalmazást a különböző bérlők közt. A globális egyediség azzal kényszeríthető ki, hogy a rendszer megköveteli, hogy az alkalmazásazonosító URI egy olyan egy gazdanévvel rendelkezzen, amely egyezik az Azure AD-bérlő egy ellenőrzött tartományával.
 
-Alapértelmezés szerint a Azure Portal használatával létrehozott alkalmazások globálisan egyedi alkalmazás-azonosító URI-t hoznak létre az alkalmazás létrehozásakor, de ezt az értéket módosíthatja. Ha például a bérlő neve contoso.onmicrosoft.com volt, akkor egy érvényes alkalmazás-azonosító URI lenne `https://contoso.onmicrosoft.com/myapp`. Ha a bérlő ellenőrizte a tartományát `contoso.com`, akkor egy érvényes alkalmazás-azonosító URI is lesz `https://contoso.com/myapp`. Ha az alkalmazásazonosító URI nem ezt a mintát követi, az alkalmazások több-bérlősként való konfigurálása meghiúsul.
+Alapértelmezés szerint a Azure Portal használatával létrehozott alkalmazások globálisan egyedi alkalmazás-azonosító URI-t hoznak létre az alkalmazás létrehozásakor, de ezt az értéket módosíthatja. Ha például a bérlő neve contoso.onmicrosoft.com volt, akkor egy érvényes alkalmazás-azonosító URI lenne `https://contoso.onmicrosoft.com/myapp` . Ha a bérlő ellenőrizte a tartományát `contoso.com` , akkor egy érvényes alkalmazás-azonosító URI is lesz `https://contoso.com/myapp` . Ha az alkalmazásazonosító URI nem ezt a mintát követi, az alkalmazások több-bérlősként való konfigurálása meghiúsul.
 
 > [!NOTE]
 > A natív ügyfél-regisztrációk, valamint a [Microsoft Identity platform-alkalmazások](./active-directory-appmodel-v2-overview.md) a több-bérlős beállítások. Nem kell semmilyen műveletet végrehajtania, hogy az alkalmazás regisztrációja több-bérlős legyen.
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>A kód frissítése a/gyakori hibák érkező kérések küldésére
 
-Egyetlen bérlős alkalmazásban a bejelentkezési kérelmeket a rendszer a bérlő bejelentkezési végpontjának küldi el. A végpont contoso.onmicrosoft.com például a következő lesz: `https://login.microsoftonline.com/contoso.onmicrosoft.com`. A bérlői végpontnak küldött kérések bejelentkezhetnek a bérlőbe az adott bérlő alkalmazásaiba.
+Egyetlen bérlős alkalmazásban a bejelentkezési kérelmeket a rendszer a bérlő bejelentkezési végpontjának küldi el. A végpont contoso.onmicrosoft.com például a következő lesz: `https://login.microsoftonline.com/contoso.onmicrosoft.com` . A bérlői végpontnak küldött kérések bejelentkezhetnek a bérlőbe az adott bérlő alkalmazásaiba.
 
 Egy több-bérlős alkalmazás esetében az alkalmazás nem tudja, hogy melyik bérlőről származik a felhasználó, így nem küldhet kéréseket a bérlői végpontnak. Ehelyett a rendszer a kérelmeket egy olyan végpontnak küldi, amely az összes Azure AD-bérlőre kiterjed:`https://login.microsoftonline.com/common`
 
@@ -81,7 +81,7 @@ a jogkivonatok érvényesítésére szolgáló két kritikus információ letöl
 
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
 
-ahol a GUID értéke a bérlő bérlői AZONOSÍTÓjának átnevezéses biztonságos verziója. Ha az előző metaadat `contoso.onmicrosoft.com`-hivatkozást választja, akkor a kiállító értéke a dokumentumban látható.
+ahol a GUID értéke a bérlő bérlői AZONOSÍTÓjának átnevezéses biztonságos verziója. Ha az előző metaadat-hivatkozást választja `contoso.onmicrosoft.com` , akkor a kiállító értéke a dokumentumban látható.
 
 Ha egy bérlői alkalmazás érvényesít egy jogkivonatot, ellenőrzi a jogkivonat aláírását az aláíró kulcsokkal a metaadat-dokumentumból. Ez a teszt lehetővé teszi annak biztosítását, hogy a jogkivonatban szereplő kiállító érték egyezik a metaadat-dokumentumban található azonosítóval.
 
@@ -89,9 +89,9 @@ Mivel a/gyakori hibák végpont nem felel meg egy bérlőnek, és nem kiállít�
 
     https://sts.windows.net/{tenantid}/
 
-Ezért a több-bérlős alkalmazások nem tudják érvényesíteni a jogkivonatokat úgy, hogy a metaadatokban lévő kiállítói értéket a tokenben lévő `issuer` értékkel egyeztetik. A több-bérlős alkalmazásoknak logikával kell eldönteniük, hogy mely kibocsátói értékek érvényesek, és melyek nem a kibocsátó értékének bérlői azonosító részén alapulnak. 
+Ezért a több-bérlős alkalmazások nem tudják érvényesíteni a jogkivonatokat úgy, hogy a metaadatokban lévő kiállítói értéket a `issuer` tokenben lévő értékkel egyeztetik. A több-bérlős alkalmazásoknak logikával kell eldönteniük, hogy mely kibocsátói értékek érvényesek, és melyek nem a kibocsátó értékének bérlői azonosító részén alapulnak. 
 
-Ha például egy több-bérlős alkalmazás csak olyan bérlők számára engedélyezi a bejelentkezést, akik regisztráltak a szolgáltatásra, akkor ellenőriznie kell a kibocsátó értékét vagy a jogkivonatban lévő `tid` jogcím értékét, hogy megbizonyosodjon róla, hogy a bérlő szerepel az előfizetők listáján. Ha egy több-bérlős alkalmazás csak az egyéni felhasználókra vonatkozik, és nem végez hozzáférési döntéseket a bérlők alapján, akkor az a kibocsátó értékét is figyelmen kívül hagyhatja.
+Ha például egy több-bérlős alkalmazás csak olyan bérlők számára engedélyezi a bejelentkezést, akik regisztráltak a szolgáltatásra, akkor ellenőriznie kell a kibocsátó értékét vagy a `tid` jogkivonatban lévő jogcím értékét, hogy megbizonyosodjon róla, hogy a bérlő szerepel az előfizetők listáján. Ha egy több-bérlős alkalmazás csak az egyéni felhasználókra vonatkozik, és nem végez hozzáférési döntéseket a bérlők alapján, akkor az a kibocsátó értékét is figyelmen kívül hagyhatja.
 
 A [több-bérlős mintákban][AAD-Samples-MT]a kibocsátó ellenőrzése le van tiltva, hogy bármely Azure ad-bérlő bejelentkezzen.
 
@@ -122,7 +122,7 @@ A bérlői rendszergazdák letilthatják, hogy a felhasználók miként tudnak h
 
 A `prompt=admin_consent` paramétert olyan alkalmazások is használhatják, amelyek rendszergazdai jogosultságot nem igénylő engedélyeket kérnek. Példa arra, hogy mikor érdemes használni, ha az alkalmazásnak olyan élményre van szüksége, amelyben a bérlői rendszergazda "feliratkozik", és a rendszer nem kér más felhasználókat az adott ponttól való csatlakozásra.
 
-Ha egy alkalmazáshoz rendszergazdai hozzájárulásra van szükség, és a rendszergazda `prompt=admin_consent` bejelentkezik a paraméter küldése nélkül, amikor a rendszergazda sikeresen beleegyezett az alkalmazásba, akkor **csak a felhasználói fiókjához**lesz érvényes. A normál felhasználók továbbra sem tudnak bejelentkezni vagy beleegyezni az alkalmazásba. Ez a funkció akkor hasznos, ha azt szeretné, hogy a bérlői rendszergazda meg tudja vizsgálni az alkalmazást, mielőtt engedélyezné más felhasználók hozzáférését.
+Ha egy alkalmazáshoz rendszergazdai hozzájárulásra van szükség, és a rendszergazda bejelentkezik a `prompt=admin_consent` paraméter küldése nélkül, amikor a rendszergazda sikeresen beleegyezett az alkalmazásba, akkor **csak a felhasználói fiókjához**lesz érvényes. A normál felhasználók továbbra sem tudnak bejelentkezni vagy beleegyezni az alkalmazásba. Ez a funkció akkor hasznos, ha azt szeretné, hogy a bérlői rendszergazda meg tudja vizsgálni az alkalmazást, mielőtt engedélyezné más felhasználók hozzáférését.
 
 > [!NOTE]
 > Egyes alkalmazások olyan felhasználói élményt szeretnének, ahol a normál felhasználók először is megadhatják a felhasználókat, és később az alkalmazás belefoglalhatja a rendszergazdát, és kérheti a rendszergazdai jogosultságot igénylő engedélyeket. Ezt az Azure AD-ben jelenleg nem lehet elvégezni egy v 1.0-alkalmazás regisztrálásával. a Microsoft Identity platform (v 2.0) végpontjának használatával azonban lehetővé válik, hogy az alkalmazások a regisztrációs idő helyett a futásidejű engedélyeket igényeljenek, ami lehetővé teszi ezt a forgatókönyvet. További információt a [Microsoft Identity platform végpontja][AAD-V2-Dev-Guide]című témakörben talál.
@@ -133,7 +133,7 @@ Előfordulhat, hogy az alkalmazásnak több rétege is van, amelyek mindegyike a
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Több réteg egyetlen bérlőn
 
-Ez akkor lehet probléma, ha a logikai alkalmazás két vagy több alkalmazás-regisztrációból áll, például egy különálló ügyfélről és erőforrásról. Először hogyan szerezheti be az erőforrást az ügyfél bérlője számára? Az Azure AD ezt az esetet mutatja be azáltal, hogy lehetővé teszi az ügyfelek és az erőforrások egyetlen lépésben való hozzájárulását. A felhasználó az ügyfél és az erőforrás által kért engedélyek összegét látja a belefoglalási oldalon. Ennek a viselkedésnek az engedélyezéséhez az erőforrás alkalmazás `knownClientApplications` -regisztrációjának tartalmaznia kell az ügyfél alkalmazás-azonosítóját az [alkalmazás jegyzékfájljában][AAD-App-Manifest]. Például:
+Ez akkor lehet probléma, ha a logikai alkalmazás két vagy több alkalmazás-regisztrációból áll, például egy különálló ügyfélről és erőforrásról. Először hogyan szerezheti be az erőforrást az ügyfél bérlője számára? Az Azure AD ezt az esetet mutatja be azáltal, hogy lehetővé teszi az ügyfelek és az erőforrások egyetlen lépésben való hozzájárulását. A felhasználó az ügyfél és az erőforrás által kért engedélyek összegét látja a belefoglalási oldalon. Ennek a viselkedésnek az engedélyezéséhez az erőforrás alkalmazás-regisztrációjának tartalmaznia kell az ügyfél alkalmazás-AZONOSÍTÓját az `knownClientApplications` [alkalmazás jegyzékfájljában][AAD-App-Manifest]. Példa:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 

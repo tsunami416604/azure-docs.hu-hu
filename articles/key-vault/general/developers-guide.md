@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 18e1ab1d01394d585cfb06ced8c5fbac04114177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431955"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476767"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -28,7 +28,7 @@ További általános információk a Azure Key Vaultről: [Mi az Key Vault](over
 
 ## <a name="public-previews"></a>Nyilvános előzetes verziók
 
-Időnként új Key Vault szolgáltatás nyilvános előzetes verzióját bocsátjuk rendelkezésére. Próbálja ki ezeket, és tudassa velünk, hogy mit gondol azurekeyvault@microsoft.coma szolgáltatáson keresztül, a visszajelzési e-mail-címünk alapján.
+Időnként új Key Vault szolgáltatás nyilvános előzetes verzióját bocsátjuk rendelkezésére. Próbálja ki ezeket, és tudassa velünk, hogy mit gondol a azurekeyvault@microsoft.com szolgáltatáson keresztül, a visszajelzési e-mail-címünk alapján.
 
 ## <a name="creating-and-managing-key-vaults"></a>Kulcstartók létrehozása és kezelése
 
@@ -43,7 +43,7 @@ A Key vaultban található kulcsok, titkok vagy tanúsítványok használata el�
 - [Kulcstartók létrehozása és kezelése az Azure porttal](../secrets/quick-create-portal.md)
 - [Kulcstartók létrehozása és kezelése a Pythonban](../secrets/quick-create-python.md)
 - [Key Vaultok létrehozása és kezelése Javával](../secrets/quick-create-java.md)
-- [Key Vaultok létrehozása és kezelése Node. js-sel](../secrets/quick-create-node.md)
+- [Kulcstartók létrehozása és kezelése Node.js](../secrets/quick-create-node.md)
 - [Kulcstartók létrehozása és kezelése .NET-tel (v4 SDK)](../secrets/quick-create-net.md)
 - [Kulcstartó létrehozása és titkos kód hozzáadása Azure Resource Manager sablon használatával](../secrets/quick-create-template.md)
 - [Kulcstartók létrehozása és kezelése a REST-tel](/rest/api/keyvault/)
@@ -73,9 +73,9 @@ A .NET SDK 2. x verziójával kapcsolatos további információkért tekintse me
 
 #### <a name="nodejs"></a>Node.js
 
-A Node. js-ben a Key Vault Management API és a Key Vault Object API különállóak. A következő áttekintő cikk a mindkettőhöz biztosít hozzáférést. 
+Node.js a Key Vault Management API és a Key Vault Object API különállóak. A következő áttekintő cikk a mindkettőhöz biztosít hozzáférést. 
 
-[A Node. js Azure Key Vault moduljai](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Node.jsAzure Key Vault moduljai](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
@@ -106,7 +106,6 @@ A következő cikkek és forgatókönyvek feladat-specifikus útmutatást nyújt
 - [Biztonságos értékek (például jelszavak)](../../azure-resource-manager/templates/key-vault-parameter.md) átadása az üzembe helyezés során – ha egy biztonságos értéket (például jelszót) kell megadni paraméterként az üzembe helyezés során, az értéket tárolhatja titkosként egy Azure Key Vault, és hivatkozhat az értékre más Resource Manager-sablonokban.
 - A [Key Vault használata a bővíthető kulcsok felügyeletéhez a SQL Server használatával](https://msdn.microsoft.com/library/dn198405.aspx) – a SQL Server Connector Azure Key Vault lehetővé teszi, hogy a SQL Server és az SQL-a-a-VM kihasználja a Azure Key Vault szolgáltatást bővíthető kulcs-felügyeleti (EKM) szolgáltatóként, hogy megvédje a titkosítási kulcsait az alkalmazások hivatkozásához; Transzparens adattitkosítás, biztonsági másolatok titkosítása és az oszlopok szintjének titkosítása.
 - [Tanúsítványok telepítése virtuális gépekre Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) – az Azure-beli virtuális gépen futó Felhőbeli alkalmazásnak tanúsítványra van szüksége. Hogyan szerezheti be ezt a tanúsítványt még ma a virtuális gépre?
-- Az [Key Vault beállítása a végpontok közötti kulcsfontosságú rotációs és naplózási szolgáltatással](../secrets/key-rotation-log-monitoring.md) – ez a lépés végigvezeti a kulcsfontosságú rotációs és naplózási funkció beállításán Azure Key Vaultokkal.
 - Az [Azure webalkalmazás-tanúsítványnak a Key Vault segítségével történő üzembe helyezése]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) részletes útmutatást nyújt a Key Vault tárolt tanúsítványok [app Service-tanúsítvány](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) ajánlat részeként történő telepítéséhez.
 - [Engedélyek megadása számos alkalmazás számára a kulcstartó eléréséhez](group-permissions-for-apps.md) Key Vault hozzáférés-vezérlési házirend legfeljebb 1024 bejegyzést támogat. Azonban létrehozhat egy Azure Active Directory biztonsági csoportot is. Adja hozzá az összes társított egyszerű szolgáltatást ehhez a biztonsági csoporthoz, majd engedélyezze a biztonsági csoport számára a Key Vaulthoz való hozzáférést.
 - A Key Vaultok Azure-beli integrálásával és használatával kapcsolatos további feladatra vonatkozó útmutatásért lásd: [Ryan Jones Azure Resource Manager sablon példák a Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

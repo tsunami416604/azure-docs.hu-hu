@@ -1,23 +1,14 @@
 ---
 title: A szolgáltatásként nyújtott platform (a-Service) szolgáltatás használata Azure DevTest Labs
 description: Ismerje meg, hogyan használhatók a szolgáltatásként nyújtott platform (pass) szolgáltatások a Azure DevTest Labsban.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895296"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478739"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>A szolgáltatásként nyújtott platform (a-Service) szolgáltatás használata Azure DevTest Labs
 A DevTest Labs a környezetek funkció használatával támogatja a Pásti használatát. A DevTest Labs környezetei a git-tárházban előre konfigurált Azure Resource Manager-sablonokkal támogatottak. A környezetek a Pásti és a IaaS erőforrásokat is tartalmazhatják. Lehetővé teszik olyan összetett rendszerek létrehozását, amelyek olyan Azure-erőforrásokat is tartalmazhatnak, mint például a virtuális gépek, az adatbázisok, a virtuális hálózatok és a webalkalmazások, amelyek testre szabhatók a közös munkához. Ezek a sablonok lehetővé teszik az egységes üzembe helyezést és a környezetek jobb kezelését a forráskód-vezérlés használatával. 

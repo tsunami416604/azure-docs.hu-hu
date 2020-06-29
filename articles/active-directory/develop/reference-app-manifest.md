@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 9b2368cdd3fbd2699cb3579d922d81ad66efdc91
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558587"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479249"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory alkalmazás jegyzékfájlja
 
@@ -672,7 +672,7 @@ Ha az alábbi hibák valamelyikét látja, a következő műveleteket javasoljuk
 1. Szerkessze az attribútumokat egyenként a jegyzékfájl-szerkesztőben egy korábban letöltött jegyzékfájl feltöltése helyett. A [jegyzékfájlok hivatkozási](#manifest-reference) táblázatával megismerheti a régi és az új attribútumok szintaxisát és szemantikaát, így sikeresen szerkesztheti a kívánt attribútumokat. 
 1. Ha a munkafolyamata megköveteli, hogy később is használhassa a jegyzékfájlokat a forrás-adattárban, javasoljuk, hogy az adattárban lévő mentett jegyzékfájlokat a **Alkalmazásregisztrációk** felhasználói felületén látható értékre alapozza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az alkalmazások alkalmazás-és szolgáltatásnév-objektumai közötti kapcsolattal kapcsolatos további információkért lásd: [alkalmazás-és szolgáltatásnév-objektumok az Azure ad-ben](app-objects-and-service-principals.md).
 * Tekintse meg a Microsoft [Identity platform fejlesztői szószedetét](developer-glossary.md) a Microsoft Identity platform néhány alapvető fejlesztői koncepciójának meghatározásához.
