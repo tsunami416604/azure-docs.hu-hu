@@ -3,15 +3,15 @@ title: A avere-vFXT csatlakoztatása – Azure
 description: Ügyfelek csatlakoztatása az Azure-hoz készült avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6a4b2c1d95bc803d10697ce2164ea190f824d96
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153411"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505443"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt csatlakoztatása
 
@@ -80,7 +80,7 @@ Ha a fürt blob Storage-sel lett létrehozva, a tárolóhoz tartozó névtér el
 
 Például: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-Ha a fürt létrehozása után hozzáadta a tárolót, a névtér-elágazás elérési útja az elágazás létrehozásakor a **névtér elérési** útja mezőben megadott érték. Ha például a névtér elérési ``/avere/files`` útjaként használta, az ügyfelek csatlakoztatni *IP_address*:/avere/Files a helyi csatlakoztatási ponthoz.
+Ha a fürt létrehozása után hozzáadta a tárolót, a névtér-elágazás elérési útja az elágazás létrehozásakor a **névtér elérési** útja mezőben megadott érték. Ha például ``/avere/files`` a névtér elérési útjaként használta, az ügyfelek csatlakoztatni *IP_address*:/avere/Files a helyi csatlakoztatási ponthoz.
 
 !["Új elágazás hozzáadása" párbeszédpanel a/avere/Files a névtér elérési útja mezőben](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
@@ -107,9 +107,9 @@ A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a b
 ``hard`` | A vFXT-fürthöz való Soft-csatlakoztatások az alkalmazás hibáival és az esetleges adatvesztéssel vannak társítva.
 ``proto=netid`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
 ``mountproto=netid`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
-``retry=n`` | Állítsa ``retry=30`` be az átmeneti csatlakoztatási hibák elkerülését. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
+``retry=n`` | Állítsa be ``retry=30`` az átmeneti csatlakoztatási hibák elkerülését. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután csatlakoztatta az ügyfeleket, felhasználhatja őket az új blob Storage-tárolóba való másolásához a fürtön. Ha nem kell új tárterületet kitöltenie, olvassa el a további telepítési feladatokkal kapcsolatos további hivatkozásokat:
 

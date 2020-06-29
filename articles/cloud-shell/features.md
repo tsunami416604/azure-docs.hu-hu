@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 7490eef7b6203b6bb2623efa4518c7bee5400fb3
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 409e8667f03843ae1b1bad56f189ff17b29d549a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610768"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506565"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Szolgáltatások & eszközök Azure Cloud Shell
 
 [!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
-Azure Cloud Shell fut `Ubuntu 16.04 LTS`.
+Azure Cloud Shell fut `Ubuntu 16.04 LTS` .
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 ### <a name="secure-automatic-authentication"></a>Biztonságos automatikus hitelesítés
 
@@ -36,7 +36,7 @@ Cloud Shell biztonságosan és automatikusan hitelesíti a fiókhoz való hozzá
 ### <a name="home-persistence-across-sessions"></a>$HOME adatmegőrzés a munkamenetek között
 
 A fájlok munkamenetek közötti megőrzéséhez Cloud Shell végigvezeti egy Azure-fájlmegosztás első indításkor való csatlakoztatásán.
-Ha elkészült, Cloud Shell automatikusan csatolja a tárolót (csatolva `$HOME\clouddrive`) az összes jövőbeli munkamenethez.
+Ha elkészült, Cloud Shell automatikusan csatolja a tárolót (csatolva `$HOME\clouddrive` ) az összes jövőbeli munkamenethez.
 Emellett a `$HOME` címtára. img néven is megmarad az Azure-fájlmegosztás számára.
 A és a `$HOME` gép állapotán kívüli fájlok nem maradnak meg a munkamenetek között. Ajánlott eljárások használata titkos kódok, például SSH-kulcsok tárolásához. Olyan szolgáltatások [, mint a Azure Key Vault a telepítőhöz kapcsolódó oktatóanyagok](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
 
@@ -44,7 +44,7 @@ A és a `$HOME` gép állapotán kívüli fájlok nem maradnak meg a munkamenete
 
 ### <a name="azure-drive-azure"></a>Azure-meghajtó (Azure:)
 
-A Cloud Shell PowerShell-je biztosítja az Azure`Azure:`-meghajtót (). Átválthat az Azure `cd Azure:` -ra, és visszatérhet a saját kezdőkönyvtárának a `cd  ~`saját könyvtárába.
+A Cloud Shell PowerShell-je biztosítja az Azure-meghajtót ( `Azure:` ). Átválthat az Azure-ra, és visszatérhet a saját kezdőkönyvtárának a saját `cd Azure:` könyvtárába `cd  ~` .
 Az Azure-meghajtó az Azure-erőforrások (például számítás, hálózat, tárolás stb.) egyszerű felderítését és navigálását teszi lehetővé a fájlrendszerhez hasonló módon.
 Továbbra is használhatja az ismerős [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure) az erőforrások kezeléséhez, függetlenül attól, hogy melyik meghajtóról van.
 Az Azure-erőforrásokon végrehajtott, közvetlenül Azure Portal vagy Azure PowerShell parancsmagokkal végzett módosítások az Azure-meghajtón is megjelennek.  A futtatásával `dir -Force` frissítheti az erőforrásokat.
@@ -53,13 +53,13 @@ Az Azure-erőforrásokon végrehajtott, közvetlenül Azure Portal vagy Azure Po
 
 ### <a name="manage-exchange-online"></a>Exchange Online kezelése
 
-A Cloud Shell PowerShell az Exchange Online modul privát összeállítását tartalmazza.  Az `Connect-EXOPSSession` Exchange-parancsmagok beszerzéséhez futtassa a parancsot.
+A Cloud Shell PowerShell az Exchange Online modul privát összeállítását tartalmazza.  `Connect-EXOPSSession`Az Exchange-parancsmagok beszerzéséhez futtassa a parancsot.
 
 ![](media/features-powershell/exchangeonline.png)
 
  Futtassa a `Get-Command -Module tmp_*` parancsot.
 > [!NOTE]
-> A modul nevének a (z `tmp_`) értékkel kell kezdődnie, ha azonos előtaggal rendelkező modulokat telepített, a parancsmagok is felszínre kerülnek. 
+> A modul nevének a (z) értékkel kell kezdődnie `tmp_` , ha azonos előtaggal rendelkező modulokat telepített, a parancsmagok is felszínre kerülnek. 
 
 ![](media/features-powershell/exchangeonlinecmdlets.png)
 
@@ -76,22 +76,22 @@ A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansibl
 |Szövegszerkesztők           |Code (Cloud Shell Editor)<br> vim<br> nano<br> emacs    |
 |Verziókövetés         |git                    |
 |Buildelő eszközök            |make<br> maven<br> npm<br> pip         |
-|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
+|Tárolók             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
 |Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [MSSQL – parancsfájl](https://github.com/Microsoft/sql-xplat-cli) |
-|Egyéb                  |iPython-ügyfél<br> [Cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef Inspect](https://www.chef.io/inspec/)<br> [Báb-bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp-csomagoló](https://www.packer.io/)|
+|Egyéb                  |iPython-ügyfél<br> [Cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef Inspect](https://www.chef.io/inspec/)<br> [Báb-bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp-csomagoló](https://www.packer.io/)<br> [Office 365 parancssori felület](https://pnp.github.io/office365-cli/)|
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
 |Nyelv   |Verzió   |
 |---|---|
 |.NET Core  |2.2.402       |
-|Indítás         |1.9        |
+|Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2,7 és 3,5 (alapértelmezett)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>
 [PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md) <br>
 [További tudnivalók az Azure CLI-ről](https://docs.microsoft.com/cli/azure/) <br>

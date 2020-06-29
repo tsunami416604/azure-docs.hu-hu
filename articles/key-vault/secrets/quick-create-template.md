@@ -11,30 +11,34 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 273a467f5db2201015352aaf4a232f5a42e29673
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5206c73ac225f31ee8c40105e292726a9f951a79
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618083"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478927"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Rövid útmutató: titkos kód beállítása és lekérése Azure Key Vault Resource Manager-sablon használatával
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>Gyors útmutató: Azure Key Vault titkos kód beállítása és beolvasása ARM-sablon használatával
 
-A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkok számára, például kulcsokat, jelszavakat, tanúsítványokat és egyéb titkokat. Ez a rövid útmutató egy Resource Manager-sablon üzembe helyezésének folyamatát, amely egy kulcstartó és egy titkos kulcs létrehozásával foglalkozik.
+A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkok számára, például kulcsokat, jelszavakat, tanúsítványokat és egyéb titkokat. Ez a rövid útmutató egy Azure Resource Manager-sablon (ARM-sablon) üzembe helyezésének folyamatát tárgyalja egy kulcstartó és egy titkos kulcs létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
+A cikk elvégzéséhez:
+
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * A sablonnak szüksége van az ÖN Azure AD-felhasználói objektumazonosítójára az engedélyek konfigurálásához. Az alábbi eljárás az objektumazonosító (GUID) beolvasása.
 
     1. Futtassa a következő Azure PowerShell vagy Azure CLI-parancsot a **kipróbálás**lehetőség kiválasztásával, majd illessze be a szkriptet a rendszerhéj ablaktáblába. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**lehetőséget.
 
-        # <a name="cli"></a>[parancssori felület](#tab/CLI)
+        # <a name="cli"></a>[Parancssori felület](#tab/CLI)
         ```azurecli-interactive
         echo "Enter your email address that is used to sign in to Azure:" &&
         read upn &&
@@ -53,22 +57,20 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
     2. Jegyezze fel az objektum AZONOSÍTÓját. Ennek a rövid útmutatónak a következő szakaszában kell megadnia.
 
-## <a name="create-a-vault-and-a-secret"></a>Tár és titkos kód létrehozása
-
-### <a name="review-the-template"></a>A sablon áttekintése
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-key-vault-create/)származik.
 
-:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="107-148":::
+:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="106-148":::
 
 Két Azure-erőforrás van definiálva a sablonban:
 
 * [**Microsoft. kulcstartó/**](/azure/templates/microsoft.keyvault/vaults)tárolók: hozzon létre egy Azure Key vaultot.
-* [**Microsoft. kulcstartó/tárolók/titkok**](/azure/templates/microsoft.keyvault/vaults/secrets): Create a Key Vault Secret.
+* [**Microsoft. kulcstartó/tárolók/titkok**](/azure/templates/microsoft.keyvault/vaults/secrets): hozzon létre egy Key Vault-titkot.
 
-[Itt](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)több Azure Key Vault sablon is található.
+További Azure Key Vault-sablonok találhatók az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy kulcstartót és egy titkos kulcsot.
 
@@ -76,30 +78,30 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
-    ![Resource Manager-sablon, Key Vault integráció, portál üzembe helyezése](../media/quick-create-template/create-key-vault-using-template-portal.png)
+    ![ARM-sablon, Key Vault integráció, portál üzembe helyezése](../media/quick-create-template/create-key-vault-using-template-portal.png)
 
     Ha meg van adva, az alapértelmezett érték használatával hozza létre a kulcstartót és a titkos kulcsot.
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
     * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
-    * **Hely**: válasszon ki egy helyet.  Például az **USA középső**régiója.
+    * **Hely**: válasszon ki egy helyet. Például: **USA középső régiója**.
     * **Key Vault neve**: adja meg a Key Vault nevét, amelynek globálisan egyedinek kell lennie a. Vault.Azure.net névtérben. A telepítés ellenőrzésekor a következő szakaszban kell megadnia a nevet.
-    * **Bérlő azonosítója**: a sablon függvény automatikusan lekéri a bérlő azonosítóját.  Ne módosítsa az alapértelmezett értéket.
+    * **Bérlő azonosítója**: a sablon függvény automatikusan lekéri a bérlő azonosítóját. Ne módosítsa az alapértelmezett értéket.
     * **Ad felhasználói azonosító**: adja meg az [előfeltételekből](#prerequisites)beolvasott Azure ad felhasználói objektum azonosítóját.
-    * **Titkos kód neve**: adja meg a Key vaultban tárolt titok nevét.  Például: **AdminPassword**.
-    * **Titkos érték**: adja meg a titkos értéket.  Ha jelszót tárol, azt javasoljuk, hogy használja az előfeltételekben létrehozott generált jelszót.
-    * **Elfogadom a fenti feltételeket és kikötéseket**: Válassza ki.
+    * **Titkos kód neve**: adja meg a Key vaultban tárolt titok nevét. Például: **AdminPassword**.
+    * **Titkos érték**: adja meg a titkos értéket. Ha jelszót tárol, azt javasoljuk, hogy használja az előfeltételekben létrehozott generált jelszót.
+    * **Elfogadom a fenti használati feltételeket**: Válassza ezt.
 3. Válassza a **Beszerzés** lehetőséget. A Key Vault sikeres üzembe helyezését követően értesítést kap:
 
-    ![Resource Manager-sablon, Key Vault integráció, portál-értesítés üzembe helyezése](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+    ![ARM-sablon, Key Vault integráció, portál-értesítés üzembe helyezése](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
-A Azure Portal a sablon üzembe helyezéséhez használható. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).
+Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
 A Azure Portal segítségével megtekintheti a kulcstartót és a titkos kulcsot, vagy a következő Azure CLI-vagy Azure PowerShell-szkripttel listázhatja a létrehozott titkos kulcsot.
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your key vault name:" &&
@@ -120,21 +122,22 @@ Write-Host "Press [ENTER] to continue..."
 
 A kimenet a következőhöz hasonlóan néz ki:
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
-![Resource Manager-sablon, Key Vault integráció, portál-ellenőrzési kimenet üzembe helyezése](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
+![ARM-sablon, Key Vault integráció, portál-ellenőrzési kimenet üzembe helyezése](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-![Resource Manager-sablon, Key Vault integráció, portál-ellenőrzési kimenet üzembe helyezése](../media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
+![ARM-sablon, Key Vault integráció, portál-ellenőrzési kimenet üzembe helyezése](../media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
 
 ---
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Erre a rövid útmutatóra egyéb Key Vault-útmutatók és oktatóanyagok is épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell használatával:
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -155,8 +158,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy kulcstartót és egy titkos kulcsot hozott létre egy Azure Resource Manager sablonnal, és ellenőrizte az üzemelő példányt. Ha többet szeretne megtudni a Key Vault és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy kulcstartót és egy titkos kulcsot egy ARM-sablonnal, és ellenőrizte az üzembe helyezést. Ha többet szeretne megtudni a Key Vault és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
-- További információ a [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
+- További információ az [Azure Resource Managerről](../../azure-resource-manager/management/overview.md)
 - [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése

@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884426"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478195"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
@@ -63,11 +63,11 @@ Az alkalmazása eltérően működhet regisztráció és bejelentkezés esetén.
 
 Az „Alkalmazás beszerzése” hivatkozás átirányítja a felhasználót az Azure AD hozzáférési megadása (engedélyezés) oldalra, hogy a szervezet rendszergazdája engedélyezhesse, hogy az alkalmazás hozzáférhessen a szervezet Microsoft által szolgáltatott adataihoz. További részletek a hozzáférés kéréséről az [Alkalmazások integrálása az Azure Active Directoryval](quickstart-v1-integrate-apps-with-azure-ad.md) cikkben találhatók.
 
-Miután a rendszergazdák beleegyeznek az alkalmazásba, választhatják, hogy hozzáadják a felhasználók Office 365 app Launcher-felületéhez (elérhető a Waffle és a [https://portal.office.com/myapps](https://portal.office.com/myapps)verzióból). Ha hirdetni szeretné ezt a képességet, használja az „Adja a szervezetéhez ezt az alkalmazást” vagy egy hasonló kifejezést, és jelenítsen meg egy, a példához hasonló gombot:
+Miután a rendszergazdák beleegyeznek az alkalmazásba, választhatják, hogy hozzáadják a felhasználók Office 365 app Launcher-felületéhez (elérhető a Waffle és a verzióból [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Ha hirdetni szeretné ezt a képességet, használja az „Adja a szervezetéhez ezt az alkalmazást” vagy egy hasonló kifejezést, és jelenítsen meg egy, a példához hasonló gombot:
 
 ![A Microsoft emblémát és a "Hozzáadás a saját szervezethez" szöveget megjelenítő gomb](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Például:
+Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Példa:
 
 > *Ha már használja az Office 365-et vagy más üzleti szolgáltatást a Microsofttól, megadhatja <your_app_name> hozzáférést a szervezet adataihoz. Ez lehetővé teszi, hogy a felhasználók hozzáférhessenek <your_app_name> a meglévő munkahelyi fiókjaikkal.*
 

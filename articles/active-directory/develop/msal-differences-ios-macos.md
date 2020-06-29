@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 62b79ee7398286b8e6c8ed8612bd001595e1f6ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41389bc5ed8580cd80dbc40e771c7f15241f5ae7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084978"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479402"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>Microsoft Authentication Library iOS és macOS rendszerekre
 
@@ -33,7 +33,7 @@ A macOS-hez készült MSAL az iOS-hez elérhető funkciók egy részhalmaza.
 
 A macOS rendszerhez készült MSAL nem támogatja a következőket:
 
-- különböző böngésző-típusok, `ASWebAuthenticationSession`például `SFAuthenticationSession`: `SFSafariViewController`,.
+- különböző böngésző-típusok, például: `ASWebAuthenticationSession` , `SFAuthenticationSession` `SFSafariViewController` .
 - a Microsoft Authenticator alkalmazáson keresztül felügyelt hitelesítés macOS rendszeren nem támogatott.
 
 Az azonos közzétevőtől származó alkalmazások közötti kulcstartó-megosztás a macOS 10,14-es és korábbi verzióiban korlátozott. A [hozzáférés-vezérlési listában](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc) megadhatja az alkalmazások elérési útját, amelyeknek meg kell osztaniuk a kulcstartót. Előfordulhat, hogy a felhasználó további kulcstartó-kéréseket lát.

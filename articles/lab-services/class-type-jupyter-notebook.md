@@ -1,24 +1,16 @@
 ---
 title: Tesztkörnyezet létrehozása az adatelemzéshez Python-és Jupyter-jegyzetfüzetekkel | Microsoft Docs
 description: Ismerje meg, hogyan állíthat be olyan labort, amely a Python és a Jupyter notebookok használatával tanítja az adatelemzést.
-services: lab-services
-documentationcenter: na
 author: emaher
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 587a982e98789c2c1004d6aedb066b615744db99
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 25fd090f76c0aa11617b34503ea18d1b45a0e1ce
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899052"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445015"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Tesztkörnyezet létrehozása az adatelemzéshez Python és Jupyter notebookokkal
 Ez a cikk azt ismerteti, hogyan állítható be a sablon virtuális gép (VM) a labor Servicesben a diákoknak a [Jupyter-jegyzetfüzetek](http://jupyter-notebook.readthedocs.io/)használatának megtanításához szükséges eszközökkel, valamint arról, hogy a tanulók hogyan kapcsolódhatnak a notebookokhoz a virtuális gépeken (VM-EK).

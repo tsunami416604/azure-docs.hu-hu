@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: c4b80e62d3800392b847a411dfc66c3278e72bba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 597b12a584e7b4c17ec21635e18368f897ad168a
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661864"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443876"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Gyors útmutató: Azure-erőforrások figyelése Azure Monitor
 [Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-erőforrásokból a létrehozásuk pillanatában. Ez a rövid útmutató egy adott erőforráshoz automatikusan összegyűjtött és a Azure Portalban megtekinthető adatokat ismerteti. Később további adatokat is hozzáadhat a konfigurációhoz, és a Azure Monitor menüben megtekintheti az előfizetéshez tartozó összes erőforráshoz gyűjtött adatokat.
@@ -54,20 +54,20 @@ A metrikák olyan numerikus értékek, amelyek egy adott időpontban írják le 
 1. Az erőforrás menüjének **figyelés** területén válassza a **metrikák**lehetőséget. Ekkor megnyílik a metrikák kezelője az erőforráshoz beállított hatókörrel.
 2. A diagramhoz metrika hozzáadásához kattintson a **metrika hozzáadása** lehetőségre.
    
-   ![Metrikák Explorer](media/quick-monitor-azure-resource/metrics-explorer-01.png)
+   ![Metrikaböngésző](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
 4. Válasszon ki egy **mérőszámot** a legördülő listából, majd egy **összesítést**. Ez határozza meg, hogyan történjen az összegyűjtött értékek mintavételezése az egyes időintervallumokban.
 
-    ![Metrikák Explorer](media/quick-monitor-azure-resource/metrics-explorer-02.png)
+    ![Metrikaböngésző](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
 5. Kattintson a **metrika hozzáadása** lehetőségre további mérőszámok és összesítési kombinációk hozzáadásához a diagramhoz.
 
-    ![Metrikák Explorer](media/quick-monitor-azure-resource/metrics-explorer-03.png)
+    ![Metrikaböngésző](media/quick-monitor-azure-resource/metrics-explorer-03.png)
 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban megtekintett egy Azure-erőforrás tevékenység-naplóját és metrikáit, amelyeket a Azure Monitor automatikusan gyűjt. Az erőforrás-naplók betekintést nyújtanak az erőforrás részletes műveleteibe, de a gyűjtéshez konfigurálni kell őket. Folytassa az erőforrás-naplók Log Analytics munkaterületre való összegyűjtését ismertető oktatóanyagot, ahol a naplózási lekérdezések használatával elemezhetők.
+Ebben a rövid útmutatóban megtekintett egy Azure-erőforrás tevékenység-naplóját és metrikáit, amelyeket a Azure Monitor automatikusan gyűjt. Folytassa a következő rövid útmutatóval, amely bemutatja, hogyan gyűjtheti be a tevékenység naplóját egy Log Analytics munkaterületre, ahol a [naplózási lekérdezések](../log-query/log-query-overview.md)használatával elemezhetők.
 
 > [!div class="nextstepaction"]
-> [Erőforrás-naplók összegyűjtése és elemzése Azure Monitor](tutorial-resource-logs.md)
+> [Azure-tevékenység naplójának küldése Log Analytics munkaterületre](quick-monitor-azure-resource.md)

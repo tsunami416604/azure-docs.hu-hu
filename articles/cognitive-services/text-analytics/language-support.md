@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465592"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413331"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 nyelvi támogatás 
 
@@ -25,7 +25,7 @@ ms.locfileid: "84465592"
 
 #### <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment-analysis)
 
-| Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójának elindítása: |              Megjegyzések |
+| Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójának elindítása: |              Jegyzetek |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
 | Egyszerűsített kínai    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh`szintén elfogadva |
 | Kínai – hagyományos   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
@@ -49,7 +49,7 @@ ms.locfileid: "84465592"
 
 ### <a name="opinion-mining-v31-preview-only"></a>Közvélemény-bányászat (csak előzetes verzió)
 
-| Nyelv              | Nyelvkód | A v3 modell verziójától kezdve: |              Megjegyzések |
+| Nyelv              | Nyelvkód | A v3 modell verziójától kezdve: |              Jegyzetek |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | Angol               |     `en`      |              2020-04-01              |                    |
 
@@ -57,10 +57,10 @@ ms.locfileid: "84465592"
 #### <a name="named-entity-recognition-ner"></a>[Elnevezett entitások felismerése](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * Az egynyelvű v3 jelenleg csak az angol nyelvet támogatja. Ha más nyelvvel hívja meg a meghívott "v3"-t, az API a v 2.1 eredményeit fogja visszaadni, ha az 2,1-es verzió támogatja a nyelvet.
+> * Az egynyelvű v3 jelenleg csak az angol és a spanyol nyelvet támogatja. Ha más nyelvvel hívja meg a meghívott "v3"-t, az API a v 2.1 eredményeit fogja visszaadni, ha az 2,1-es verzió támogatja a nyelvet.
 > * a v 2.1 csak az angol, a kínai – egyszerűsített, francia, német és spanyol nyelven elérhető entitások teljes készletét adja vissza.  A többi támogatott nyelvhez a "person", a "location" és a "Organization" entitást adja vissza a rendszer.
 
-| Nyelv               | Nyelvkód | v 2.1 támogatás | v3 támogatás | A v3 modell verziójától kezdve: |       Megjegyzések        |
+| Nyelv               | Nyelvkód | v 2.1 támogatás | v3 támogatás | A v3 modell verziójától kezdve: |       Jegyzetek        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arab                |     `ar`      |     ✓      |            |                                 |                    |
 | Cseh                 |     `cs`      |     ✓      |            |                                 |                    |
@@ -82,13 +82,13 @@ ms.locfileid: "84465592"
 | Portugál (Portugália) |    `pt-PT`    |     ✓      |            |                                 | `pt`szintén elfogadva |
 | Portugál (Brazília)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | Orosz              |     `ru`      |     ✓      |            |                                 |                    |
-| Spanyol               |     `es`      |     ✓      |            |                                 |                    |
+| Spanyol               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | Svéd               |     `sv`      |     ✓      |            |                                 |                    |
 | Török               |     `tr`      |     ✓      |            |                                 |                    |
 
 #### <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
 
-| Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: |       Megjegyzések        |
+| Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: |       Jegyzetek        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
 | Holland                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Angol               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -108,7 +108,7 @@ ms.locfileid: "84465592"
 
 #### <a name="entity-linking"></a>[Entitás összekapcsolása](#tab/entity-linking)
 
-| Nyelv | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: | Megjegyzések |
+| Nyelv | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: | Jegyzetek |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
 | Angol  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
 | Spanyol  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |

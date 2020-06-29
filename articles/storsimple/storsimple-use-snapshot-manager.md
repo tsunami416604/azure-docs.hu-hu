@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
-ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a94a533dbc31e2f2d4ddb5d1985c77da8b29032
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933969"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476971"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>A StorSimple Snapshot Manager felhasználói felület használata a biztonsági mentési feladatok és a biztonságimásolat-katalógus kezeléséhez
 
@@ -118,7 +118,7 @@ A következő táblázat a StorSimple Snapshot Manager műveletek betűrendes li
 | Részletek |Kattintson az **eszközök** csomópontra, majd kattintson a jobb gombbal az eszközre az **eredmények** ablaktábláján. |A **részletek** elemre kattintva megtekintheti az eszköz konfigurációs adatait. |
 | Szerkesztés |Kattintson a **biztonsági mentési házirendek**elemre, majd kattintson a jobb gombbal egy házirendre az **eredmények** ablaktábláján. |A kötetek biztonsági mentési ütemtervének módosításához kattintson a **Szerkesztés** gombra. |
 | Exportálási lista |Kattintson bármelyik csomópontra vagy eredményre (ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Kattintson a **lista exportálása** lehetőségre egy lista vesszővel tagolt (CSV-) fájlban való mentéséhez. Ezt követően importálhatja ezt a fájlt egy táblázatkezelő alkalmazásba elemzés céljából. |
-| Súgó |Kattintson bármelyik csomópontra vagy eredményre. (Ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Kattintson a **Súgó** lehetőségre az online súgó megnyitásához egy külön böngészőablakban. |
+| Help |Kattintson bármelyik csomópontra vagy eredményre. (Ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Kattintson a **Súgó** lehetőségre az online súgó megnyitásához egy külön böngészőablakban. |
 | Új ablak innen |Kattintson bármelyik csomópontra vagy eredményre (ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Új StorSimple Snapshot Manager ablak megnyitásához kattintson **az új ablak** elemre. |
 | Frissítés |Kattintson bármelyik csomópontra vagy eredményre (ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Kattintson a **frissítés** gombra az aktuálisan megjelenített StorSimple Snapshot Manager ablak frissítéséhez. |
 | Eszköz frissítése |Kattintson az **eszközök** csomópontra, majd kattintson a jobb gombbal az eszközre az **eredmények** ablaktábláján. |Kattintson az **eszköz frissítése** gombra egy adott csatlakoztatott eszköz StorSimple Snapshot Manager való szinkronizálásához. |
@@ -373,7 +373,7 @@ Az alábbi táblázat a menüsáv billentyűparancsait ismerteti. A billentyűpa
 | ALT+O |A **Kedvencek** menü megnyitása. |A |Megnyitja a **Hozzáadás a kedvencekhez** lapot. |
 |  |O |Megnyitja a **Kedvencek rendszerezése** lapot. | |
 | ALT + W |Megnyitja a **ablak** menüt. |N |Egy másik StorSimple Snapshot Manager ablak megnyitása. |
-|  |C# |Megjeleníti az összes megnyitott konzol ablakát egy lépcsőzetes stílusban. | |
+|  |C |Megjeleníti az összes megnyitott konzol ablakát egy lépcsőzetes stílusban. | |
 |  |T |Megjeleníti az összes megnyitott konzolos ablakot egy rácsos mintában. | |
 |  |I |A képernyő alján található vízszintes sorba rendezi az ikonokat. | |
 | ALT + H |A **Súgó** menü megnyitása. |H |Az online súgó megnyitása. |
@@ -393,7 +393,7 @@ A következő táblázatok a **hatókör** panel egyes csomópontjainak billenty
 #### <a name="devices-node-shortcut-keys"></a>Eszközök csomópontjának billentyűparancsai
 | Helyi menü | Eredmény |
 |:--- |:--- |
-| C# |Megnyitja az **eszköz konfigurálása** lapot. |
+| C |Megnyitja az **eszköz konfigurálása** lapot. |
 | D |Frissíti az eszközök és az eszköz adatainak listáját. |
 | V |Megnyitja a **nézet** menüt. |
 | W |Új StorSimple Snapshot Manager-konzol megnyitása a **részletek** csomópontra összpontosítva. |
@@ -428,7 +428,7 @@ A következő táblázatok a **hatókör** panel egyes csomópontjainak billenty
 | V |Megnyitja a **nézet** menüt. |
 | W |Egy új StorSimple nyit meg Snapshot Manager konzolon, amely a **mennyiségi csoportok** csomópontra koncentrál. |
 | F |Frissíti a StorSimple Snapshot Manager-konzolt. |
-| L |Megnyitja az * * exportálási lista * * lapot. |
+| L |Megnyitja az **exportálási lista** lapot. |
 | H |Az online súgó megnyitása. |
 
 #### <a name="backup-catalog-node-shortcut-keys"></a>Biztonságimásolat-katalógus csomópontjának billentyűparancsai

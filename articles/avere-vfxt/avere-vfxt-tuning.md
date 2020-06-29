@@ -3,15 +3,15 @@ title: Avere vFXT-fürt finomhangolása – Azure
 description: Az Azure-beli avere-vFXT teljesítményének optimalizálására szolgáló egyéni beállítások áttekintése
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: df20f050ff87fdb59a3e5cca373098240f8bfbb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d06e3cc80f05cc86980dd2570d1d4d203295ff2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76152935"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505290"
 ---
 # <a name="cluster-tuning"></a>A fürtök finomhangolása
 
@@ -34,7 +34,7 @@ Ezeket a módosításokat az adatkészlet tulajdonságai vagy a munkafolyamat st
 
 ## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Cloud NAS vagy Cloud Gateway-optimalizálás
 
-A Felhőbeli NAS-vagy átjáró-forgatókönyvekben a vFXT-fürt NAS stílusú hozzáférést biztosít egy felhőalapú tárolóhoz. A vFXT-fürt és a Felhőbeli tárolók közötti nagyobb adatsebességek kihasználásához a képviselő javaslatot tehet a beállítások módosítására, hogy a rendszer a gyorsítótárból agresszíven küldje el az adatait a tárolási kötetre. Például:
+A Felhőbeli NAS-vagy átjáró-forgatókönyvekben a vFXT-fürt NAS stílusú hozzáférést biztosít egy felhőalapú tárolóhoz. A vFXT-fürt és a Felhőbeli tárolók közötti nagyobb adatsebességek kihasználásához a képviselő javaslatot tehet a beállítások módosítására, hogy a rendszer a gyorsítótárból agresszíven küldje el az adatait a tárolási kötetre. Példa:
 
 * Növelje meg a fürt és a tároló közötti TCP-kapcsolatok számát
 

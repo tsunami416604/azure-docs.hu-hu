@@ -1,24 +1,14 @@
 ---
 title: A Azure Lab Services virtuális gépekhez való hozzáférés oktatója
 description: Ez a cikk bemutatja, hogyan férhetnek hozzá az oktatók a tanulói virtuális gépekhez a pedagógus nézetből. Egy tanítási asszisztens például lehet egy oktató az egyik osztályhoz, de egy tanuló más osztályokhoz.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: ac17f6853d8531a5854d161f41300f1bbec41552
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: ad4f9cfd11b372e5c6da5c17eaeba82b0cd8a91f
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895765"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445100"
 ---
 # <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>Virtuális gépek elérése tanulóként a pedagógus nézetből
 Ez a cikk bemutatja, hogyan érhetik el a pedagógusok a virtuális gépeket tanulóként részt vevő osztályokhoz. 

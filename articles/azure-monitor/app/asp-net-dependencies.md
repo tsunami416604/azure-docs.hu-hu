@@ -2,13 +2,13 @@
 title: Függőségek nyomon követése az Azure Application Insightsban | Microsoft Docs
 description: A helyszíni vagy Microsoft Azure webalkalmazástól származó függőségi hívások figyelése Application Insightsokkal.
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: 759e465a21b421c22a62245536827546acc2d79e
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.date: 06/26/2020
+ms.openlocfilehash: 17fa2120df45b5cb940f6c1b6887718023a3926f
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204752"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445219"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -80,7 +80,7 @@ Ha például a kódot egy olyan szerelvény alapján hozza létre, amelyet nem �
 
 Azt is megteheti, `TelemetryClient` hogy bővítményi metódusokat biztosít, `StartOperation` `StopOperation` amelyek használatával manuálisan követheti a függőségeket, ahogy az [itt](custom-operations-tracking.md#outgoing-dependencies-tracking) látható.
 
-Ha ki szeretné kapcsolni a normál függőség-követési modult, távolítsa el a ASP.NET-alkalmazások [ApplicationInsights. config fájljában](../../azure-monitor/app/configuration-with-applicationinsights-config.md) található DependencyTrackingTelemetryModule mutató hivatkozást. ASP.NET Core alkalmazásokhoz kövesse az alábbi [utasításokat.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
+Ha ki szeretné kapcsolni a szabványos függőség-követési modult, távolítsa el a ASP.NET-alkalmazások DependencyTrackingTelemetryModule mutató hivatkozást a [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) alkalmazásban. ASP.NET Core alkalmazásokhoz kövesse az alábbi [utasításokat.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>AJAX-hívások követése weblapokról
 
@@ -95,14 +95,22 @@ ASP.NET Core alkalmazások esetében most meg kell adnia az SQL-szöveg gyűjté
 services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
 ```
 
-A ASP.NET-alkalmazások esetében a teljes SQL-lekérdezéseket a rendszer a System. adat. SqlClient könyvtár helyett a [Microsoft. adat. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomag használatával gyűjti. Az alább leírtak szerint további platform-specifikus lépések szükségesek.
+A ASP.NET-alkalmazások esetében a teljes SQL-lekérdezési szöveget a rendszer a System. adat. SqlClient könyvtár helyett a [Microsoft. adat. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomag használatával gyűjti. Az SQL-lekérdezések teljes gyűjtésének engedélyezéséhez a platformra vonatkozó konkrét lépéseket lásd alább:
 
 | Platform | A teljes SQL-lekérdezés beolvasásához szükséges lépés (ek) |
 | --- | --- |
 | Azure-webalkalmazás |A webalkalmazás-Vezérlőpulton [nyissa meg a Application Insights](../../azure-monitor/app/azure-web-apps.md) panelt, és engedélyezze az SQL-parancsokat a .net alatt. |
 | IIS-kiszolgáló (Azure-beli virtuális gép, helyszíni stb.) | Használja a [Microsoft. Information. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomagot, vagy használja a Állapotmonitor PowerShell-modult [a Instrumentation-motor telepítéséhez](../../azure-monitor/app/status-monitor-v2-api-reference.md) , és indítsa újra az IIS-t. |
 | Azure-felhőszolgáltatás | [Indítási feladat hozzáadása a StatusMonitor telepítéséhez](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Az alkalmazást a NuGet-csomagok [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) vagy [ASP.net Core alkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) számára történő telepítésével kell előkészíteni a ApplicationInsights SDK-ra. |
-| IIS Express | A [Microsoft. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomag használata
+| IIS Express | Használja a [Microsoft. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomagot.
+
+A fenti platform-specifikus lépések mellett **explicit módon be kell jelentkeznie az SQL-parancsok gyűjtésének engedélyezéséhez** a applicationInsights.config fájl módosításával a következőkkel:
+
+```xml
+<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+</Add>
+```
 
 A fenti esetekben a rendszerállapot-kezelő motor megfelelő ellenőrzésének helyes módszere az, hogy ellenőrzi, hogy a gyűjtött SDK-verzió `DependencyTelemetry` "rddp". a "rdddsd" vagy a "rddf" érték azt jelzi, hogy a függőségek gyűjtése DiagnosticSource vagy EventSource visszahívásokon keresztül történik, így a teljes SQL-lekérdezés nem lesz rögzítve.
 

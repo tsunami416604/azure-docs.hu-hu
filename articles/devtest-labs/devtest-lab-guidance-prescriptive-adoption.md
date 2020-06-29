@@ -1,24 +1,15 @@
 ---
 title: Azure DevTest Labs elfogadása a vállalat számára
 description: Ez a cikk részletes útmutatást nyújt a vállalati Azure DevTest Labs használatához.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 32e828f420d41d7a67e4f41ac8a4a0698711ce2f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 81767c36b2a5b46eb41be1e516a14fb3ebe3fb7f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899255"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476988"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>Vállalati DevTest Labs
 A vállalatok gyorsan alkalmazzák a felhőt a rugalmasságot, a rugalmasságot és a gazdaságosságot magában foglaló [előnyök](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) miatt. Az első lépések gyakran fejlesztési és tesztelési számítási feladatok. Azure DevTest Labs olyan [funkciókat](devtest-lab-concepts.md) biztosít, amelyek hasznosak a vállalat számára, és támogatják a [legfontosabb fejlesztési és tesztelési forgatókönyveket](devtest-lab-guidance-get-started.md).

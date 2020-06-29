@@ -65,7 +65,7 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure-minták
       items:
-        - name: 'C#'
+        - name: C#
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
@@ -112,11 +112,11 @@
       items:
         - name: Támogatott nyelvek
           href: supported-languages.md
-        - name: 'C# (osztálytár)'
+        - name: C# (osztálytár)
           href: functions-dotnet-class-library.md
-        - name: 'C#-szkript (.csx)'
+        - name: C#-szkript (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
@@ -127,7 +127,7 @@
         - name: Python
           href: functions-reference-python.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
+          href: functions-reference-node.md#typescript
     - name: Biztonság
       items:
         - name: Biztonsági áttekintés
@@ -377,7 +377,7 @@
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
-            - name: Functions 2.x
+            - name: Functions 2.x és újabb
               displayName: Azure Cosmos DB
               items:
                 - name: Áttekintés
@@ -507,7 +507,7 @@
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Kvótákra vonatkozó információk
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Videók

@@ -3,15 +3,15 @@ title: Az Azure HPC gyorsítótár beállításainak konfigurálása
 description: Ez a cikk azt ismerteti, hogyan konfigurálhat további beállításokat a gyorsítótárhoz, például az MTU-t és a nem root-fallabda-t, valamint az expressz Pillanatképek elérését az Azure Blob Storage-célokból.
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: e9eebc9e977c6065f08b996f5ab3f3e46bc1a134
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344271"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505307"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>További Azure HPC-gyorsítótár beállításainak konfigurálása
 

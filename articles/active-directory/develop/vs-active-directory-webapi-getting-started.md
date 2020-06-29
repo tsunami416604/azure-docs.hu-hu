@@ -6,21 +6,21 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 9a9f8aaa9e3f90e78668d2294ea9959b480e3384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee79333e1092cfcf2cd35e408f86dcfc9e1327cc
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886075"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479011"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Ismerkedés a Azure Active Directoryrel (WebApi-projektek)
 
 > [!div class="op_single_selector"]
-> - [Bevezetés](vs-active-directory-webapi-getting-started.md)
+> - [Első lépések](vs-active-directory-webapi-getting-started.md)
 > - [mi történt](vs-active-directory-webapi-what-happened.md)
 
 Ez a cikk további útmutatást nyújt, miután hozzáadta Active Directoryt egy ASP.NET WebAPI projekthez a Visual Studio **project > Connected Services** parancsával. Ha még nem adta hozzá a szolgáltatást a projekthez, bármikor megteheti.

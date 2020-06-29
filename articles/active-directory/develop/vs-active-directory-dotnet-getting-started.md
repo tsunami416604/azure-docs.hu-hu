@@ -6,21 +6,21 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: fe408e965c528db1d82b73ee7b20bbe3b3933657
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36479acca56aa97a5453a9ab99691ed1993daaf3
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886126"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477005"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Első lépések Azure Active Directory (ASP.NET MVC-projektekkel)
 
 > [!div class="op_single_selector"]
-> - [Bevezetés](vs-active-directory-dotnet-getting-started.md)
+> - [Első lépések](vs-active-directory-dotnet-getting-started.md)
 > - [mi történt](vs-active-directory-dotnet-what-happened.md)
 
 Ez a cikk további útmutatást nyújt, miután hozzáadta Active Directory egy ASP.NET MVC-projekthez a Visual Studio **project > Connected Services** parancsával. Ha még nem adta hozzá a szolgáltatást a projekthez, bármikor megteheti.
@@ -33,7 +33,7 @@ A projekt összes vezérlőjét az `[Authorize]` attribútummal díszítették. 
 
 ## <a name="adding-signin--signout-controls"></a>Bejelentkezési-/kijelentkezés-vezérlők hozzáadása
 
-A bejelentkezési/kijelentkezés vezérlőelemeknek a nézethez való hozzáadásához a `_LoginPartial.cshtml` részleges nézetet használhatja a funkciók egyik nézethez való hozzáadásához. Íme egy példa a standard `_Layout.cshtml` nézethez hozzáadott funkciókra. (Jegyezze fel az utolsó elemet a div-összecsukási osztályhoz:
+A bejelentkezési/kijelentkezés vezérlőelemeknek a nézethez való hozzáadásához a `_LoginPartial.cshtml` részleges nézetet használhatja a funkciók egyik nézethez való hozzáadásához. Íme egy példa a standard nézethez hozzáadott funkciókra `_Layout.cshtml` . (Jegyezze fel az utolsó elemet a div-összecsukási osztályhoz:
 
 ```html
 <!DOCTYPE html>

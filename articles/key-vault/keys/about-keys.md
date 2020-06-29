@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900920"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413723"
 ---
 # <a name="about-azure-key-vault-keys"></a>Azure Key Vault kulcsok ismertetése
 
@@ -30,10 +30,10 @@ A Key Vaultban található titkosítási kulcsok JSON webkulcs [JWK] objektumké
 
 Az alap JWK-/JWA-specifikációk is kiterjeszthetők a Key Vault implementációban egyedi kulcs típusú típusok engedélyezéséhez. Ha például a kulcsokat a HSM gyártótól függő csomagolás használatával importálja, a lehetővé teszi a kulcsok biztonságos szállítását, amelyek csak Key Vault HSM használhatók. 
 
-A Azure Key Vault a Soft és a Hard kulcsok használatát is támogatja:
+A Azure Key Vault a szoftveres védelemmel ellátott és a HSM által védett kulcsokat is támogatja:
 
-- **"Soft"-kulcsok**: a szoftver által Key Vault által feldolgozott kulcs, de a titkosítást a rendszer a HSM-ben lévő rendszerkulcs használatával titkosítja. Az ügyfelek importálhatók egy meglévő RSA-vagy EC-(elliptikus görbe-) kulcs, vagy kérhetik, hogy Key Vault létrehozzon egyet.
-- **"Hard" kulcsok**: egy HSM-ben feldolgozott kulcs (hardveres biztonsági modul). Ezeket a kulcsokat a Key Vault HSM biztonsági világok egyikén védik (az elkülönítés fenntartása érdekében a földrajz egy biztonsági világa van). Előfordulhat, hogy az ügyfelek nem importálnak egy RSA-vagy EK-kulcsot, vagy egy kompatibilis HSM-eszközről exportálnak. Előfordulhat, hogy az ügyfelek Key Vault kérhetnek a kulcsok létrehozásához. Ez a kulcspár hozzáadja a key_hsm attribútumot a JWK a HSM-kulcs anyagának elvégzéséhez.
+- **Szoftveres védelemmel ellátott kulcsok**: a szoftver által Key Vault által feldolgozott kulcs, de a rendszer egy HSM-ben lévő rendszerkulcs használatával titkosítja a nyugalmi állapotot. Az ügyfelek importálhatók egy meglévő RSA-vagy EC-(elliptikus görbe-) kulcs, vagy kérhetik, hogy Key Vault létrehozzon egyet.
+- **HSM-potected kulcsok**: egy HSM-ben feldolgozott kulcs (hardveres biztonsági modul). Ezeket a kulcsokat a Key Vault HSM biztonsági világok egyikén védik (az elkülönítés fenntartása érdekében a földrajz egy biztonsági világa van). Az ügyfelek a szoftveres védelemmel ellátott űrlapon vagy egy kompatibilis HSM-eszközről is importálhatók. Előfordulhat, hogy az ügyfelek Key Vault kérhetnek a kulcsok létrehozásához. Ez a kulcspár hozzáadja a key_hsm attribútumot a JWK a HSM-kulcs anyagának elvégzéséhez.
 
 A földrajzi határokra vonatkozó további információkért lásd: [Microsoft Azure Adatvédelmi központ](https://azure.microsoft.com/support/trust-center/privacy/)  
 
@@ -41,9 +41,9 @@ A földrajzi határokra vonatkozó további információkért lásd: [Microsoft 
 
 A Key Vault csak az RSA és az elliptikus görbe kulcsait támogatja. 
 
--   **EC**: "Soft" elliptikus görbe kulcsa.
+-   **EC**: szoftveres védelemmel ellátott elliptikus görbe kulcsa.
 -   **EC-HSM**: "kemény" elliptikus görbe kulcsa.
--   **RSA**: "Soft" RSA-kulcs.
+-   **RSA**: szoftveres védelemmel ELlátott RSA-kulcs.
 -   **RSA-HSM**: "Hard" RSA-kulcs.
 
 A Key Vault a 2048, 3072 és 4096 méretű RSA-kulcsokat támogatja. Key Vault támogatja a P-256, a P-384, a P-521 és a P-256K (SECP256K1) elliptikus görbe típusú kulcsokat.
@@ -119,7 +119,7 @@ A JWK-objektumokkal kapcsolatos további információkért lásd a [JSON webkulc
 
 A fő elemek mellett a következő attribútumok is megadhatók. JSON-kérelemben az attribútumok kulcsszó és a kapcsos zárójelek ({"}") szükségesek, még akkor is, ha nincsenek megadva attribútumok.  
 
-- *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadja, hogy a kulcs engedélyezve van-e, és használható-e titkosítási műveletekhez. Az *engedélyezett* attribútum a *NBF* és az *exp*együttes használata esetén használatos. Ha a *NBF* és az *exp*közötti művelet történik, akkor csak akkor lesz *engedélyezve* , ha a beállítás értéke **true (igaz**). Az *NBF* / *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat.
+- *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadja, hogy a kulcs engedélyezve van-e, és használható-e titkosítási műveletekhez. Az *engedélyezett* attribútum a *NBF* és az *exp*együttes használata esetén használatos. Ha a *NBF* és az *exp*közötti művelet történik, akkor csak akkor lesz *engedélyezve* , ha a beállítás értéke **true (igaz**). Az *NBF*  /  *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat.
 - *NBF*: IntDate, nem kötelező, alapértelmezés szerint most. A *NBF* (nem előtte) attribútum azt az időpontot határozza meg, ameddig a kulcs nem használható a titkosítási műveletekhez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. A *NBF* attribútum feldolgozásához az aktuális dátumnak és időpontnak a *NBF* attribútumban felsorolt nem korábbi dátummal és időponttal kell rendelkeznie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely általában legfeljebb néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
 - *exp*: IntDate, nem kötelező, az alapértelmezett érték a "Forever". Az *exp* (lejárati idő) attribútum azt a lejárati időt határozza meg, amely után a kulcs nem használható a titkosítási művelethez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. Az *exp* attribútum feldolgozásához szükséges, hogy az aktuális dátumnak és időpontnak az *exp* attribútumban felsorolt lejárati dátum/idő előtt kell lennie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely jellemzően nem csupán néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
 
@@ -132,7 +132,7 @@ A IntDate és más adattípusokkal kapcsolatos további információkért lásd:
 
 ### <a name="date-time-controlled-operations"></a>Dátum-idő vezérelt műveletek
 
-A *NBF* / *exp* ablakon kívül még nem érvényes és lejárt kulcsok is használhatók a **visszafejtéshez**, a **kicsomagoláshoz**és a műveletek **ellenőrzéséhez** (nem ad vissza 403, tiltott). A még nem érvényes állapot használatának indoklása az éles használat előtt a kulcs tesztelésének engedélyezése. A lejárt állapot használatának indoklása a helyreállítási műveletek engedélyezése a kulcs érvényessége után létrehozott adatokon. Emellett letilthatja a hozzáférést egy kulcshoz Key Vault szabályzatok használatával, vagy az *engedélyezett* kulcs attribútum **hamis értékre**való frissítésével.
+A *NBF*exp ablakon kívül még nem érvényes és lejárt kulcsok  /  *exp* is használhatók a **visszafejtéshez**, a **kicsomagoláshoz**és a műveletek **ellenőrzéséhez** (nem ad vissza 403, tiltott). A még nem érvényes állapot használatának indoklása az éles használat előtt a kulcs tesztelésének engedélyezése. A lejárt állapot használatának indoklása a helyreállítási műveletek engedélyezése a kulcs érvényessége után létrehozott adatokon. Emellett letilthatja a hozzáférést egy kulcshoz Key Vault szabályzatok használatával, vagy az *engedélyezett* kulcs attribútum **hamis értékre**való frissítésével.
 
 Az adattípusokkal kapcsolatos további információkért lásd az [adattípusokat](../general/about-keys-secrets-certificates.md#data-types)ismertető témakört.
 

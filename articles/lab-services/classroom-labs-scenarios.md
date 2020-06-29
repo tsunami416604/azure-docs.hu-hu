@@ -1,24 +1,14 @@
 ---
 title: Tantermi Labs használata képzésekhez – Azure Lab Services
 description: Ez a cikk azt ismerteti, hogyan használhatók a Azure DevTest Labs az Azure-beli laborok létrehozásához a betanítási forgatókönyvekhez.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.assetid: 57ff4e30-7e33-453f-9867-e19b3fdb9fe2
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
-ms.author: spelluru
-ms.openlocfilehash: cd5a2fb55e1c2ec360d1585155f53b9213a72179
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 582508968609ba53de14b95b71ee75b5fec9ba93
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897389"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445253"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>A tanterem Labs használata képzésekhez
 Az Azure Labs-szolgáltatások lehetővé teszik a pedagógusok (tanárok, oktatók, oktatók vagy oktatási asszisztensek stb.) számára, hogy gyorsan és egyszerűen hozzon létre egy online labort az előre konfigurált oktatási környezetek kiépítéséhez a gyakornokok számára. Az egyes gyakornokok azonos és elszigetelt környezeteket tudnak használni a képzéshez. A szabályzatok alkalmazhatók annak biztosítására, hogy a képzési környezetek csak akkor legyenek elérhetők az egyes gyakornokok számára, ha szükségük van rájuk, és elegendő erőforrást tartalmaznak – például virtuális gépek – szükségesek a betanításhoz. 

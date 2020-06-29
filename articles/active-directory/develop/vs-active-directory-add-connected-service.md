@@ -7,15 +7,15 @@ ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b77241b1413fea09e5a16e8bd5cbcda8db5b2327
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535825"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477124"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Azure Active Directory hozzáadása csatlakoztatott szolgáltatások használatával a Visual Studióban
 
@@ -44,7 +44,7 @@ A Active Directory csatlakoztatott szolgáltatás jelenleg nem támogatja ASP.NE
 
     ![Bevezetés oldal](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Az **egyszeri bejelentkezés** lapon válasszon ki egy tartományt a **tartomány** legördülő listából. A lista tartalmazza a Visual Studio Fiókbeállítások párbeszédpanelén felsorolt fiókok által elérhető összes tartományt (a**fájl > Fiókbeállítások...**). Másik lehetőségként megadhatja a tartománynevet, ha nem találja a keresett nevet, például: `mydomain.onmicrosoft.com`. Lehetőség van Azure Active Directory alkalmazás létrehozására, vagy egy meglévő Azure Active Directory alkalmazás beállításainak használatára. Ha elkészült, válassza a **tovább** lehetőséget.
+1. Az **egyszeri bejelentkezés** lapon válasszon ki egy tartományt a **tartomány** legördülő listából. A lista tartalmazza a Visual Studio Fiókbeállítások párbeszédpanelén felsorolt fiókok által elérhető összes tartományt (a**fájl > Fiókbeállítások...**). Másik lehetőségként megadhatja a tartománynevet, ha nem találja a keresett nevet, például: `mydomain.onmicrosoft.com` . Lehetőség van Azure Active Directory alkalmazás létrehozására, vagy egy meglévő Azure Active Directory alkalmazás beállításainak használatára. Ha elkészült, válassza a **tovább** lehetőséget.
 
     ![Egyszeri bejelentkezés lap](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 

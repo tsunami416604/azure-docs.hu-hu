@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 5ab0b9abd32ef2e5eb7ea02d6118e387ef753348
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a24c0a3129a851eb94c43158424f786b1df5a532
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609295"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414358"
 ---
 Ha Univerzális Windows-platform (UWP) fejlesztéshez szeretne létrehozni Visual Studio-projektet, be kell állítania a Visual Studio fejlesztői beállításait, létre kell hoznia a projektet, ki kell választania a cél architektúrát, be kell állítania a hangrögzítést, és telepítenie kell a Speech SDK-t.
 
@@ -70,7 +70,7 @@ Most válassza ki a cél platform architektúráját. A Visual Studio eszköztá
 
 ### <a name="set-up-audio-capture"></a>Hangrögzítés beállítása
 
-Ezután engedélyezze a projektnek a hangbemenet rögzítését:
+Hangbemenet rögzítésének engedélyezése a projekt számára:
 
 1. A **megoldáskezelő**kattintson duplán a **Package. appxmanifest** elemre a Package Application manifest megnyitásához.
 

@@ -3,15 +3,15 @@ title: Avere-vFXT támogatásának engedélyezése – Azure
 description: Támogatási feltöltések engedélyezése az Azure-hoz készült avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: d12bbd1708ceb948aea982f9ed1ab36879e3751c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc86cca1b73eb58a038a0a6da109e86b995709c9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75415369"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505477"
 ---
 # <a name="enable-support-uploads"></a>Támogatási feltöltések engedélyezése
 
@@ -40,7 +40,7 @@ A támogatás aktiválásához kövesse az alábbi lépéseket a avere Vezérlő
 
    ![A támogatási beállítások lapon található, biztonságos proaktív támogatásról szóló szakaszt tartalmazó képernyőkép](media/avere-vfxt-support-sps.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha helyszíni vagy meglévő felhőalapú tárolási rendszerre van szüksége a fürthöz, kövesse a [tárterület konfigurálása](avere-vfxt-add-storage.md)című témakör útmutatását.
 

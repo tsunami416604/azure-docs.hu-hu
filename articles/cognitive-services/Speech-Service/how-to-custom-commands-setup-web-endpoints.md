@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 5bdb77d27b01f576ca06aa5b6d3df0572b3b1ea6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307743"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414283"
 ---
 # <a name="set-up-web-endpoints"></a>Webes végpontok beállítása
 
-Ebből a cikkből megtudhatja, hogyan telepíthet webes végpontokat egy egyéni parancsok alkalmazásban, amely lehetővé teszi, hogy HTTP-kéréseket hozzon egy ügyfélalkalmazás számára. A következő feladatokat hajtja végre:
+Ebből a cikkből megtudhatja, hogyan telepíthet webes végpontokat egy egyéni parancsok alkalmazásban, amely lehetővé teszi, hogy HTTP-kéréseket hozzon egy ügyfélalkalmazás számára. A következő feladatokat kell végrehajtania:
 
 - Webes végpontok beállítása egyéni parancsok alkalmazásban
 - Webes végpontok hívása egyéni parancsok alkalmazásban
@@ -43,7 +43,7 @@ Ebből a cikkből megtudhatja, hogyan telepíthet webes végpontokat egy egyéni
 
    | Beállítás | Ajánlott érték | Leírás |
    | ------- | --------------- | ----------- |
-   | Name | UpdateDeviceState | A webes végpont neve. |
+   | Name (Név) | UpdateDeviceState | A webes végpont neve. |
    | URL-cím | https://webendpointexample.azurewebsites.net/api/DeviceState | Annak a végpontnak az URL-címe, amelyet az egyéni alkalmazásnak szeretne beszélni. |
    | Metódus | POST | Az engedélyezett interakciók (például GET, POST) és a végpont.|
    | Fejlécek | Kulcs: alkalmazás, érték: az alkalmazás egyedi neve | A kérelem fejlécében szerepeltetni kívánt fejléc-paraméterek.|

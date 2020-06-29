@@ -29,13 +29,13 @@
               href: QuickStarts/python-analyze.md
         - name: Helyi rendszerkép elemzése
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp-analyze.md
             - name: Python
               href: QuickStarts/python-disk.md
         - name: Miniatűr létrehozása
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp-thumb.md
             - name: cURL
               href: QuickStarts/curl-thumb.md
@@ -51,7 +51,7 @@
               href: QuickStarts/python-thumb.md
         - name: Szöveg kinyerése (Computer Vision – Read API)
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp-hand-text.md
             - name: Java
               href: QuickStarts/java-hand-text.md
@@ -61,7 +61,7 @@
               href: QuickStarts/python-hand-text.md
         - name: Nyomtatott szöveg kinyerése (OCR)
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp-print-text.md
             - name: cURL
               href: QuickStarts/curl-print-text.md
@@ -105,7 +105,7 @@
       href: concept-detecting-color-schemes.md
     - name: Intelligens körbevágású miniatűrök
       href: concept-generating-thumbnails.md
-    - name: Nyomtatott és kézzel írt szöveg felismerése
+    - name: Szövegfelismerés
       href: concept-recognizing-text.md
     - name: Felnőtteknek szóló tartalom észlelése
       href: concept-detecting-adult-content.md

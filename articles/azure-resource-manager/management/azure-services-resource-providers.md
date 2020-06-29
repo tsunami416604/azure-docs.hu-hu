@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 70abbfe09f3200f0d26978727d21a033e1d4ee34
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: d4dea1dc5ee46d9be7bbc92166535aa93db46275
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462855"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506803"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -55,7 +55,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. ClassicSubscription<sup>1</sup> | Klasszikus üzemi modell |
 | Microsoft. CognitiveServices | [Cognitive Services](/azure/cognitive-services/) |
 | Microsoft. Commerce<sup>1</sup> | Core |
-| Microsoft.Compute | [Virtual Machines](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
+| Microsoft.Compute | [Virtuális gépek](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
 | Microsoft.<sup>1</sup> . felhasználás | [Költségkezelés](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Tárolópéldányok](/azure/container-instances/) |
 | Microsoft. ContainerRegistry | [Container Registry](/azure/container-registry/) |
@@ -64,7 +64,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. CostManagementExports | [Költségkezelés](/azure/cost-management/) |
 | Microsoft. CustomerLockbox | [Microsoft Azure Ügyfélszéf](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
-| Microsoft. DataBox | [Azure Data Box](/azure/databox-family/) |
+| Microsoft. DataBox | [Azure Data Box](/azure/databox/) |
 | Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
 | Microsoft. Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft. DataCatalog | [Data Catalog](/azure/data-catalog/) |
@@ -84,7 +84,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. DevSpaces | [Azure Dev Spaces](/azure/dev-spaces/) |
 | Microsoft. segédösszetevője | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft. DigitalTwins | [Azure Digital Twins](../../digital-twins/about-digital-twins.md) |
-| Microsoft. DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
+| Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
 | Microsoft. DomainRegistration | [App Service](/azure/app-service/) |
 | Microsoft. EnterpriseKnowledgeGraph | Enterprise Knowledge Graph |
 | Microsoft. EventGrid | [Event Grid](/azure/event-grid/) |
@@ -176,6 +176,6 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 
 <sup>1</sup> alapértelmezés szerint regisztrálva
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrás-szolgáltatókkal kapcsolatos további információkért, beleértve az erőforrás-szolgáltatók regisztrálásának módját, lásd: [Azure erőforrás-szolgáltatók és-típusok](resource-providers-and-types.md)

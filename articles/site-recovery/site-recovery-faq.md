@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű által�
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: b16301bb092395ac71a5bfd6f53f392ab708b10c
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: dd3b9b8eca4f1eab66f8982b22be5941d082b229
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345172"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506174"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -128,7 +128,7 @@ Igen. Ha a fiókirodákban a replikáció és a feladatátvétel összekapcsolá
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Az Azure-beli virtuális gépek esetében támogatott a vész-helyreállítási szolgáltatás?
 
-Igen, Site Recovery támogatja az Azure-beli virtuális gépek Azure-régiók közötti katasztrófáját. [Tekintse át](azure-to-azure-common-questions.md) az Azure virtuális gépek vész-helyreállítási szolgáltatásával kapcsolatos gyakori kérdéseket.
+Igen, Site Recovery támogatja az Azure-beli virtuális gépek Azure-régiók közötti katasztrófáját. [Tekintse át](azure-to-azure-common-questions.md) az Azure virtuális gépek vész-helyreállítási szolgáltatásával kapcsolatos gyakori kérdéseket. Ha két Azure-régió között szeretne replikálni ugyanazon a kontinensen, használja az Azure-t az Azure-beli DR-ajánlathoz. Nem kell beállítania a konfigurációs kiszolgáló/folyamat kiszolgálóját és a ExpressRoute-kapcsolatokat.
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>Támogatott-e a vész-helyreállítási szolgáltatás a VMware virtuális gépeken?
 
@@ -272,6 +272,6 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 
 [Ismerje meg](site-recovery-whats-new.md) az új frissítéseket, és szerezze be a [kumulatív információkat](service-updates-how-to.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Olvassa el a [Site Recovery áttekintését](site-recovery-overview.md)
 

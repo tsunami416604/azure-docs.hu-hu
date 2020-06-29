@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 1720ea31c8f0b15485df194e62e463671d092b26
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 7101d23d4611f4eea9b5a9e2a7f3ba417c9fcb1a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310852"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476121"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>API hozzáadása az Azure statikus Web Apps előzetes verziójához Azure Functions
 
@@ -25,7 +25,7 @@ Kiszolgáló nélküli API-kat adhat hozzá az Azure statikus Web Appshoz a Azur
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Azure functions-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) a Visual Studio Code-hoz
 - [Élő kiszolgáló Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) bővítmény.
-- [Node. js](https://nodejs.org/download/) az API-alkalmazás helyi futtatásához
+- [Node.js](https://nodejs.org/download/) az API-alkalmazás helyi futtatásához
 
 ## <a name="create-a-git-repository"></a>Git-Tárház létrehozása
 
@@ -89,7 +89,7 @@ Az alkalmazás mostantól az alábbi példához hasonló projekt-szerkezettel re
 
 Ezután módosítsa a `GetMessage` függvényt, hogy egy üzenetet ad vissza az előtérben.
 
-1. Frissítse a `GetMessage` függvényt az _API/GetMessage/index. js_ alatt a következő kóddal.
+1. Frissítse a `GetMessage` függvényt az _API/GetMessage/index.js_ alatt a következő kóddal.
 
     ```javascript
     module.exports = async function (context, req) {
@@ -162,7 +162,7 @@ Az Azure-ba való üzembe helyezéskor az API-ra irányuló kérelmek automatiku
 
 #### <a name="update-html-files-to-access-the-api"></a>HTML-fájlok frissítése az API-hoz való hozzáféréshez
 
-1. Ezután frissítse az _index. html_ fájl tartalmát a következő kóddal, hogy beolvassa a szöveget az API-függvényből, és megjeleníti a képernyőn:
+1. Ezután frissítse a _index.html_ fájl tartalmát a következő kóddal, hogy beolvassa a szöveget az API-függvényből, és megjeleníti a képernyőn:
 
    ```html
    <!DOCTYPE html>
@@ -178,7 +178,7 @@ Az Azure-ba való üzembe helyezéskor az API-ra irányuló kérelmek automatiku
    <body>
      <main>
        <h1>Vanilla JavaScript App</h1>
-       <p>Loading message from the API: <b id="name">...</b></p>
+       <p>Loading content from the API: <b id="name">...</b></p>
      </main>
 
      <script>

@@ -8,9 +8,13 @@
       href: lab-services-overview.md
 - name: Oktatóanyagok
   items:
-    - name: 1. Tesztkörnyezet beállítása
-      href: tutorial-create-custom-lab.md
-    - name: 2. Tesztkörnyezet elérése
+    - name: Tesztkörnyezet beállítása
+      items:
+        - name: Az Azure Portal használata
+          href: tutorial-create-custom-lab.md
+        - name: Resource Manager-sablon használata
+          href: create-lab-windows-vm-template.md
+    - name: Tesztkörnyezet elérése
       href: tutorial-use-custom-lab.md
 - name: Példák
   items:

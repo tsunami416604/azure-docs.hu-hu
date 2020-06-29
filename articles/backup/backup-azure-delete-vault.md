@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-tároló törlése
 description: Ebből a cikkből megtudhatja, hogyan távolíthatja el a függőségeket, majd törölhet egy Azure Backup Recovery Services-tárolót.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 946b199119ee9e03ec9348c4e180f8e4c9b9a776
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 986b3c3ef5bd3903a764726281b6bd0a25ba76a4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84751860"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506827"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -118,6 +118,9 @@ A folyamat befejezése után törölheti a biztonsági mentési elemeket a felü
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Biztonsági másolati elemek törlése a MARS felügyeleti konzolról
 
+>[!NOTE]
+>Ha a biztonsági mentés leállítása nélkül törölte vagy elvesztette a forrás gépet, a következő ütemezett biztonsági mentés sikertelen lesz. A régi helyreállítási pont a szabályzatnak megfelelően lejár, de az utolsó egyszeri helyreállítási pont mindig megmarad, amíg le nem állítja a biztonsági mentést, és nem törli az adatvesztést. Ezt a [szakasz](#delete-protected-items-on-premises)lépéseit követve teheti meg.
+
 1. Nyissa meg a MARS felügyeleti konzolját, lépjen a **műveletek** ablaktáblára, és válassza a **biztonsági mentés időzítése**elemet.
 2. Az **ütemezett biztonsági mentés módosítása vagy leállítása** lapon válassza a **Leállítás a biztonsági mentési ütemezés használatával lehetőséget, és törölje az összes tárolt biztonsági**mentést. Ezután válassza a **tovább**lehetőséget.
 
@@ -140,6 +143,9 @@ A folyamat befejezése után törölheti a biztonsági mentési elemeket a felü
 A helyszíni biztonsági mentési elemek törlését követően kövesse a portál következő lépéseit.
 
 ### <a name="delete-backup-items-from-the-mabs-management-console"></a>Biztonsági másolati elemek törlése a MABS felügyeleti konzolról
+
+>[!NOTE]
+>Ha a biztonsági mentés leállítása nélkül törölte vagy elvesztette a forrás gépet, a következő ütemezett biztonsági mentés sikertelen lesz. A régi helyreállítási pont a szabályzatnak megfelelően lejár, de az utolsó egyszeri helyreállítási pont mindig megmarad, amíg le nem állítja a biztonsági mentést, és nem törli az adatvesztést. Ezt a [szakasz](#delete-protected-items-on-premises)lépéseit követve teheti meg.
 
 A MABS felügyeleti konzolon két módszer használható a biztonsági mentési elemek törlésére.
 
