@@ -191,8 +191,12 @@
               displayName: 'ux, input, cors, html, css'
             - name: Nyelv testreszabása
               href: custom-policy-localization.md
-            - name: Egyéni e-mail-cím
-              href: custom-email.md
+            - name: Egyéni e-mail-cím ellenőrzése
+              items:
+                - name: Mailjet
+                  href: custom-email-mailjet.md
+                - name: SendGrid
+                  href: custom-email-sendgrid.md
               displayName: verification
             - name: E-mailes ellenőrzés letiltása
               href: custom-policy-disable-email-verification.md
@@ -373,6 +377,8 @@
           href: partner-trusona.md
         - name: Twilio
           href: partner-twilio.md
+        - name: TypingDNA
+          href: partner-typingdna.md
     - name: A b2clogin.com használata
       items:
         - name: b2clogin.com – áttekintés

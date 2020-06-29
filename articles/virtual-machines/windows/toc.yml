@@ -351,9 +351,9 @@
     - name: Biztonsági másolat és helyreállítás
       href: backup-recovery.md
     - name: A felhő bevezetésének keretrendszere
-      href: 'https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'
     - name: Architektúra-központ
-      href: 'https://docs.microsoft.com/en-us/azure/architecture/'
+      href: 'https://docs.microsoft.com/azure/architecture/'
     - name: Példa infrastruktúrára
       href: infrastructure-example.md
 - name: Útmutatók

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded7d1b6a5f353c009b5c56bcaabe96baf424c51
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76549053"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445406"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>ELAVULT Teljes CI/CD-folyamat egy többtárolós alkalmazás üzembe helyezéséhez Azure Container Service a Docker Swarm használatával az Azure DevOps Services segítségével
 
@@ -80,7 +80,7 @@ Hozzon létre egy kapcsolatot az Azure DevOps Services-projekt és a GitHub-fió
 
     ![Azure DevOps Services – külső kapcsolatok](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-1. A bal oldalon kattintson az **új szolgáltatási végpont** > **GitHub**elemre.
+1. A bal oldalon kattintson az **új szolgáltatási végpont**  >  **GitHub**elemre.
 
     ![Azure DevOps Services – GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
@@ -143,7 +143,7 @@ Az egyes rendszerképekhez két Docker-lépést kell felvennie, egyet a rendszer
 
     ![Azure DevOps Services – Build lépések hozzáadása](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-1. Minden rendszerkép esetében állítson be egy lépést, amely `docker build` a parancsot használja.
+1. Minden rendszerkép esetében állítson be egy lépést, amely a `docker build` parancsot használja.
 
     ![Azure DevOps Services – Docker-Build](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
@@ -151,7 +151,7 @@ Az egyes rendszerképekhez két Docker-lépést kell felvennie, egyet a rendszer
     
     Ahogy az előző képernyőn is látható, indítsa el a rendszerkép nevét az Azure Container Registry URI-ja alapján. (A Build változó használatával parametrizálja a rendszerkép címkéjét, például az ebben a példában szereplő Build-azonosítót is.)
 
-1. Minden rendszerkép esetében konfigurálja a `docker push` parancsot használó második lépést.
+1. Minden rendszerkép esetében konfigurálja a parancsot használó második lépést `docker push` .
 
     ![Azure DevOps Services – Docker leküldés](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
@@ -171,15 +171,15 @@ Az egyes rendszerképekhez két Docker-lépést kell felvennie, egyet a rendszer
 
 ## <a name="step-3-create-the-release-pipeline"></a>3. lépés: a kiadási folyamat létrehozása
 
-Az Azure DevOps Services lehetővé teszi a [kiadások különböző környezetekben való kezelését](https://www.visualstudio.com/team-services/release-management/). A folyamatos üzembe helyezés lehetővé teszi, hogy az alkalmazás a különböző környezetekben (például a fejlesztési, tesztelési, üzem előtti és éles környezetben) zökkenőmentes módon legyen telepítve. Létrehozhat egy új környezetet, amely a Azure Container Service Docker Swarm-fürtöt jelképezi.
+Az Azure DevOps Services lehetővé teszi a [kiadások különböző környezetekben való kezelését](https://azure.microsoft.com/services/devops/pipelines/). A folyamatos üzembe helyezés lehetővé teszi, hogy az alkalmazás a különböző környezetekben (például a fejlesztési, tesztelési, üzem előtti és éles környezetben) zökkenőmentes módon legyen telepítve. Létrehozhat egy új környezetet, amely a Azure Container Service Docker Swarm-fürtöt jelképezi.
 
 ![Azure DevOps Services – kiadás az ACS-be](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
 ### <a name="initial-release-setup"></a>Kezdeti kiadás beállítása
 
-1. Kiadási folyamat létrehozásához kattintson a **kiadások** > **+ kiadás** elemre.
+1. Kiadási folyamat létrehozásához kattintson a **kiadások**  >  **+ kiadás** elemre.
 
-1. Az összetevő forrásának konfigurálásához kattintson **az** > összetevők**csatolása az összetevők forrásához**elemre. Itt csatolja az új kiadási folyamatot az előző lépésben megadott buildhez. Ezzel a Docker-compose. YML fájl elérhető a kiadási folyamatban.
+1. Az összetevő forrásának konfigurálásához kattintson **az**összetevők  >  **csatolása az összetevők forrásához**elemre. Itt csatolja az új kiadási folyamatot az előző lépésben megadott buildhez. Ezzel a Docker-compose. YML fájl elérhető a kiadási folyamatban.
 
     ![Azure DevOps Services – kiadási összetevők](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
@@ -195,16 +195,16 @@ A kiadási munkafolyamat két felvenni kívánt feladatból áll.
 
     ![Azure DevOps Services – kiadási SCP](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-1. Konfiguráljon egy második feladatot egy bash-parancs futtatásához `docker` , `docker-compose` és futtassa a parancsot a fő csomóponton. A részletekért tekintse meg a következő képernyőt.
+1. Konfiguráljon egy második feladatot egy bash-parancs futtatásához, `docker` és futtassa `docker-compose` a parancsot a fő csomóponton. A részletekért tekintse meg a következő képernyőt.
 
     ![Azure DevOps Services – kiadási bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
     A főkiszolgálón futtatott parancs a Docker CLI-t és a Docker-levélírás CLI-t használja a következő feladatok elvégzéséhez:
 
-   - Jelentkezzen be az Azure Container registrybe (Ez három, a **változók** lapon definiált Build variab'les használ)
+   - Jelentkezzen be az Azure Container registrybe (Ez három, a **változók** lapon definiált Build változót használ)
    - Adja meg a **DOCKER_HOST** változót a Swarm-végponttal való együttműködéshez (: 2375)
    - Navigáljon az előző biztonságos másolási feladat által létrehozott, a Docker-compose. YML fájlt tartalmazó *központi telepítés* mappájához. 
-   - Hajtsa végre `docker-compose` az új képeket lekérő parancsokat, állítsa le a szolgáltatásokat, távolítsa el a szolgáltatásokat, és hozza létre a tárolókat.
+   - Hajtsa végre az `docker-compose` új képeket lekérő parancsokat, állítsa le a szolgáltatásokat, távolítsa el a szolgáltatásokat, és hozza létre a tárolókat.
 
      >[!IMPORTANT]
      > Az előző képernyőn látható módon hagyja bejelölve a **sikertelen stderr** jelölőnégyzetet. Ez egy fontos beállítás, mert `docker-compose` számos diagnosztikai üzenetet (például a tárolók leállítása vagy törlése) nyomtat a standard hiba kimenetén. Ha bejelöli a jelölőnégyzetet, az Azure DevOps Services jelentést küld a kiadás során felmerülő hibákról, még akkor is, ha az összes jól megy.

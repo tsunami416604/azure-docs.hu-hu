@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: b8afaae744522bec5675e5a8c17d8b0ea0be0c37
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367138"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445372"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
@@ -71,7 +71,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 ## <a name="essentials"></a>Alapvető erőforrások
 
-| Mező | Description|
+| Mező | Leírás|
 |:---|:---|
 | alertId | A riasztási példány egyedi azonosítására szolgáló GUID. |
 | alertRule | Annak a riasztási szabálynak a neve, amely a riasztási példányt generálta. |
@@ -180,7 +180,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
                 "value": "INC-Gen2Alert"
             }
         ],
-        "SearchResult": {
+        "SearchResults": {
             "tables": [
                 {
                     "name": "PrimaryResult",
@@ -223,7 +223,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
         ]
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
-    },
+    }
 }
 ```
 
@@ -497,7 +497,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [közös riasztási sémáról](https://aka.ms/commonAlertSchemaDocs).
 - Megtudhatja, [hogyan hozhat létre egy logikai alkalmazást, amely az általános riasztási sémát használja az összes riasztás kezeléséhez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 

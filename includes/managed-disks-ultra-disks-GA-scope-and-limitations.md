@@ -1,19 +1,19 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f66bb1c271418b02c2548de486793b4474f40c8b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337384"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85448739"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
@@ -38,6 +38,7 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 |Nyugat-Európa     |Három zóna          |
 |Az Egyesült Királyság déli régiója     |Három zóna          |
 |Kelet-Japán     |Két zóna         |
+|Közép-Franciaország    |Két zóna        |
 
 
 - Csak a következő virtuálisgép-sorozatokban támogatott:

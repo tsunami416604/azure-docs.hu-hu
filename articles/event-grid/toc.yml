@@ -242,10 +242,14 @@
           href: enable-diagnostic-logs-topic.md
         - name: Hibák elhárítása
           href: troubleshoot-errors.md
+        - name: Hálózati kapcsolati problémák hibaelhárítása
+          href: troubleshoot-network-connectivity.md
         - name: Hibaelhárítás – Előfizetés ellenőrzése
           href: troubleshoot-subscription-validation.md
-        - name: Metrikák megtekintése és riasztások létrehozása
+        - name: Metrikák megtekintése
           href: monitor-event-delivery.md
+        - name: Riasztások létrehozása
+          href: set-alerts.md
 - name: Referencia
   items:
     - name: Azure CLI

@@ -1,21 +1,16 @@
 ---
 title: Útmutató Windows-sablonok számítógépének beállításához | Microsoft Docs
 description: Általános lépések a Windows-sablonok számítógépének előkészítéséhez a labor Servicesben.  Ezek a lépések a Windows Update ütemtervének, a OneDrive telepítésének és az Office telepítésének beállítását foglalják magukban.
-services: lab-services
-documentationcenter: na
 author: EMaher
-manager: ''
-editor: ''
-ms.service: lab-services
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 7ed2a506fc4446f78685c6cd6ae9dec2b65e1743
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 5e1d772deb71e03311489ea61d012415860cbe54
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895828"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445321"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Útmutató Windows-sablonok számítógépének beállításához Azure Lab Services
 

@@ -1,24 +1,14 @@
 ---
 title: Hely kiválasztásának engedélyezése a labor Creator számára Azure Lab Services
 description: Ez a cikk azt ismerteti, hogy a labor-fiókok rendszergazdája hogyan veheti igénybe a labor-készítőket a laboratóriumok helyeinek kiválasztásához.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
-ms.author: spelluru
-ms.openlocfilehash: 8d11b0fcf57be35d5a47d720a07fa274acc05b35
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899136"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444199"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>A labor létrehozójának kiválasztási helyének engedélyezése a laborban Azure Lab Services
 Azure Lab Services a labor-fiók tulajdonosa engedélyezheti a labor-létrehozók (oktatók) számára, hogy kiválasszák a létrehozott labor helyét. Ez a hely eltérő lehet a labor-fiók helyétől. A hely az Azure-régiók egy csoportja. Például Egyesült Államok hely olyan régiók csoportja, mint például az USA keleti régiója, az USA nyugati régiója és így tovább. 

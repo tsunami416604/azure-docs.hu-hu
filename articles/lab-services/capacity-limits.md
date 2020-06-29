@@ -1,29 +1,19 @@
 ---
 title: A Azure Lab Services kapacitásának korlátai
 description: További információ a kapacitási korlátokról (a virtuális gépek korlátairól) Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.author: spelluru
-ms.openlocfilehash: 721dd664bb3a2d38d3e698a813a69ba9b61fb32d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899115"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444097"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>A Azure Lab Services kapacitásának korlátai
 Azure Lab Services az Azure-előfizetések alapértelmezett kapacitása korlátozza az Azure számítási kvótájának korlátozásait és a csalások enyhítését. Az Azure-előfizetések kezdeti kapacitási korláttal rendelkeznek, amely az előfizetés típusa, a normál számítási magok száma és a Azure Lab Services belül elérhető GPU magok alapján változhat. Ez korlátozza, hogy hány virtuális gép hozható létre a laborban, mielőtt a korlát növelésére lenne szüksége.  
 
-Ha a vagy az előfizetés virtuálisgép-magokra vonatkozó korlátja eléri vagy elérte az előfizetést, akkor a rendszer üzeneteket fog látni Azure Lab Services amikor további virtuális gépeket létrehozó műveleteket próbál végrehajtani. Például: 
+Ha a vagy az előfizetés virtuálisgép-magokra vonatkozó korlátja eléri vagy elérte az előfizetést, akkor a rendszer üzeneteket fog látni Azure Lab Services amikor további virtuális gépeket létrehozó műveleteket próbál végrehajtani. Példa: 
 
 - Labor létrehozása
 - Tesztkörnyezet közzététele

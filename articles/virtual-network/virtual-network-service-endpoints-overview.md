@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 3e17df2a3c92d24a7fa662fbf92f8c89b434eb0d
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338235"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444454"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -80,7 +80,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 ![Azure-szolgáltatások biztosítása virtuális hálózatokhoz](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
-### <a name="configuration"></a>Konfiguráció
+### <a name="configuration"></a>Configuration
 
 - Szolgáltatási végpontok konfigurálása egy virtuális hálózat alhálózatán. A végpontok bármilyen típusú számítási példányokkal működnek, ha azok az adott alhálózaton belül futnak.
 - Az összes támogatott Azure-szolgáltatáshoz (például az Azure Storage-hoz vagy Azure SQL Database-hoz) több szolgáltatási végpont is konfigurálható egy alhálózaton.
@@ -90,7 +90,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-- A szolgáltatási végpont engedélyezése után a virtuális gépek forrás IP-címe az alhálózat-kapcsolóban. A forrás IP-címek nyilvános IPv4-címek használatával váltanak át saját IPv4-címük használatára az adott alhálózat szolgáltatással való kommunikáció során. A váltás során bármilyen, a szolgáltatás felé nyitott fennálló TCP-kapcsolat bezárul. Győződjön meg arról, hogy semmilyen kritikus feladat nem fut, amikor egy alhálózaton engedélyez vagy letilt egy szolgáltatáshoz vezető szolgáltatásvégpontot. Továbbá győződjön meg arról is, hogy az alkalmazásai képesek automatikusan csatlakozni az Azure-szolgáltatásokhoz az IP-címváltást követően.
+- A szolgáltatási végpont engedélyezését követően a forrás IP-címek nyilvános IPv4-címekről a saját IPv4-címük használatára váltanak, amikor az adott alhálózat szolgáltatásával kommunikálnak. A váltás során bármilyen, a szolgáltatás felé nyitott fennálló TCP-kapcsolat bezárul. Győződjön meg arról, hogy semmilyen kritikus feladat nem fut, amikor egy alhálózaton engedélyez vagy letilt egy szolgáltatáshoz vezető szolgáltatásvégpontot. Továbbá győződjön meg arról is, hogy az alkalmazásai képesek automatikusan csatlakozni az Azure-szolgáltatásokhoz az IP-címváltást követően.
 
   Az IP-címváltás csak a virtuális hálózatról kimenő szolgáltatásforgalomra van hatással. Nincs hatással a virtuális gépekhez rendelt nyilvános IPv4-címekre vagy azokra irányuló egyéb forgalomra. Azure-szolgáltatások esetében, ha a meglévő tűzfalszabályok az Azure nyilvános IP-címeit használják, akkor a virtuális hálózat privát címeire történő váltást követően a szabályok nem működnek tovább.
 - A szolgáltatási végpontok esetében az Azure-szolgáltatásokhoz tartozó DNS-bejegyzések a mai napon maradnak, és továbbra is az Azure-szolgáltatáshoz rendelt nyilvános IP-címekre lesznek feloldva.

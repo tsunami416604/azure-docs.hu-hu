@@ -8,6 +8,12 @@
       href: azure-portal-quickstart-center.md
     - name: Támogatott böngészők és eszközök
       href: azure-portal-supported-browsers-devices.md
+- name: Rövid útmutatók
+  items:
+    - name: Virtuális gép létrehozása a portálon
+      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - name: Irányítópult létrehozása – ARM-sablon
+      href: quick-create-template.md
 - name: Alapelvek
   items:
     - name: Irányítópultok megosztása szerepköralapú hozzáférés-vezérléssel

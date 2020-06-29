@@ -1,24 +1,14 @@
 ---
 title: Labs megtekintése és törlése labor-fiókban Azure Lab Services
 description: Megtudhatja, hogyan tekintheti meg az összes labort egy tesztkörnyezet-fiókban, és hogyan törölhet laborokat a labor-fiókból.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 23da222ab43394793afec96c31000bdc8baa54e0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: cc097e97430462e36a33b982a7394a20c308eab5
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895744"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443485"
 ---
 # <a name="manage-labs-in-a-lab-account"></a>Tesztkörnyezetek kezelése tesztkörnyezeti fiókban
 Ebből a cikkből megtudhatja, hogyan tekintheti meg a labor-fiók tulajdonosa vagy rendszergazdája az összes labort egy tesztkörnyezet-fiókban, és hogyan törölhet egy labort a labor-fiókban. 

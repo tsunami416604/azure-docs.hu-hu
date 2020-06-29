@@ -1,30 +1,21 @@
 ---
 title: Azure Lab Services használata a Hackathon
 description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Lab Services a ötletbörzékhez futtatásához használható laborok létrehozásához.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2020
-ms.author: spelluru
-ms.openlocfilehash: ba5559289f3d17f1a24a90a0daa466d4c8895c9c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 06/26/2020
+ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85120524"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445882"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Azure Lab Services használata a következő Hackathon
 A Azure Lab Services könnyű és könnyen használható, így gyorsan üzembe helyezhet egy új, virtuális gépeket (VM) a Hackathon számára.  A következő ellenőrzőlista használatával biztosíthatja, hogy a Hackathon a lehető legzökkenőmentesebb legyen. Ezt az ellenőrzőlistát az informatikai részlegnek vagy a Hackathon-labor létrehozásával és felügyeletével megbízott szakoktatóknak kell elvégeznie. 
 
 Ha labor-szolgáltatásokat szeretne használni a Hackathon, győződjön meg arról, hogy a labor-fiók és a labor legalább néhány nappal a Hackathon kezdete előtt jön létre. Továbbá kövesse az alábbi útmutatást:
 
-## <a name="guidance"></a>Útmutató
+## <a name="guidance"></a>Útmutatás
 
 - **Hozza létre a labort a résztvevőkhöz legközelebb eső régióban vagy helyen**. 
 

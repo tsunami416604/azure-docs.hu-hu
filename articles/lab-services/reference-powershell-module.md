@@ -1,24 +1,14 @@
 ---
 title: PowerShell-modul a Azure Lab Serviceshoz | Microsoft Docs
 description: Ez a cikk egy PowerShell-modulról nyújt információkat, amely segítséget nyújt az összetevők Azure Lab Servicesban való kezeléséhez.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2019
-ms.author: spelluru
-ms.openlocfilehash: cc82355ee43f9fee4f9c2e1bb1bcc0481e4dcea3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: d9c184f3917be378eb77d1bf4096bfebb5ee1884
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895303"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445593"
 ---
 # <a name="azlabservices-powershell-module-preview"></a>Az.LabServices PowerShell-modul (előzetes verzió)
 Az az. LabServices egy PowerShell-modul, amely leegyszerűsíti az Azure Lab Services felügyeletét. Lehetővé teszi a laboratóriumi fiókok, laborok, virtuális gépek és lemezképek létrehozását, lekérdezését, frissítését és törlését. További információ erről a modulról: az az [. LabServices Kezdőlap a githubon](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library).

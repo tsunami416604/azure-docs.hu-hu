@@ -1,24 +1,14 @@
 ---
 title: Etikai hackelési tesztkörnyezet beállítása Azure Lab Servicesokkal | Microsoft Docs
 description: Megtudhatja, hogyan állíthatja be a labort a Azure Lab Services használatával az etikai hackerek tanításához.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2019
-ms.author: spelluru
-ms.openlocfilehash: e71efa1c0992a815950d280d4febc9ccdd213936
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 0e3a5c6e09038ea731e4157657b0e6ad9c9263ea
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899059"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443995"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Tesztkörnyezet beállítása az etikai hackelési osztály tanításához 
 Ez a cikk bemutatja, hogyan állíthat be egy olyan osztályt, amely az etikai feltörések kriminalisztikai oldalára koncentrál. A behatolási teszt, amelyet az etikai hackelési Közösség használ, akkor következik be, amikor valaki megpróbál hozzáférni a rendszerhez vagy a hálózathoz a rosszindulatú támadó által kihasználható biztonsági rések bemutatására. 

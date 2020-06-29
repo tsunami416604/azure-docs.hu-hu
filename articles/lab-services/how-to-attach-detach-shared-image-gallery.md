@@ -1,24 +1,14 @@
 ---
 title: Megosztott rendszerkép csatolása vagy leválasztása Azure Lab Servicesban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan csatolhat egy megosztott képtárat egy osztálytermi laborhoz Azure Lab Servicesban.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2020
-ms.author: spelluru
-ms.openlocfilehash: 5574b490ddf949ce0eaac6ccbed436890fe40f2e
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: e0b29bcabe1cfb234b422982c0f8faab49c30796
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896045"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445355"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény csatolása vagy leválasztása Azure Lab Services
 Ebből a cikkből megtudhatja, hogyan csatolhat vagy leválaszthatja a megosztott képgyűjteményt egy labor-fiókhoz. 

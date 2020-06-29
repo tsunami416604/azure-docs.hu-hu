@@ -1,24 +1,14 @@
 ---
 title: Tantermi laborok kezelése Azure Lab Servicesban | Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre és konfigurálhat egy tantermi labort, megtekintheti az összes tantermi labort, megoszthatja a regisztrációs hivatkozást egy labor felhasználóval, vagy törölhet egy labort.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 04/10/2020
-ms.author: spelluru
-ms.openlocfilehash: 93084772852e289c1b35d889e1f4d4378c0298a8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895863"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445389"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Tantermi laborok kezelése Azure Lab Services 
 Ez a cikk a tantermi laborok létrehozását és törlését ismerteti. Azt is bemutatja, hogyan tekintheti meg az összes osztályterem Labs-t egy labor-fiókban. 

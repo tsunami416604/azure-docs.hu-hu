@@ -3,13 +3,13 @@ title: 'Oktatóanyag: a végpont hosszúságú kimondott szöveg áttekintése �
 description: Ebben az oktatóanyagban a Luis nem biztos, hogy a Luis HTTP-végponton keresztül kapott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejleszti az alkalmazások előrejelzéseit. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 06/22/2020
+ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592576"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445924"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: a nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
 Ebben az oktatóanyagban a Luis HTTPS-végponton keresztül fogadott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejlesztheti az alkalmazás-előrejelzéseket, hogy a LUIS nem biztos benne. Tekintse át a végpontok hosszúságú kimondott szöveg az ütemezett LUIS-karbantartás rendszeres részeként.
@@ -22,7 +22,7 @@ Ez a felülvizsgálati folyamat lehetővé teszi a LUIS számára az alkalmazás
 
 A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavíthatja a kimondott szöveg előrejelzett szándékát.
 
-**Az oktatóanyag a következőket ismerteti:**
+**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -215,7 +215,7 @@ Felmerülhet a kérdés, hogy miért ne adhatna hozzá további példaként szol
 ## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Miért szerepel a felső szándék a kimondott szövegek listáján?
 Néhány végponti kimondott szöveg magas előrejelzési pontszámmal szerepel az áttekintési listán. Ezeknek a kimondott szövegeknek az áttekintésére és ellenőrzésére ugyanúgy szükség van. Azért szerepelnek a listán, mert a következő legnagyobb pontszámú szándék a legfelső szándék pontszámához túl közeli pontszámmal rendelkezik. Körülbelül 15%-os különbséget szeretne az első két szándék között.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 

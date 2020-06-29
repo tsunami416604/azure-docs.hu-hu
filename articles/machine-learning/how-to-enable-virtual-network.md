@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 084c1c604ac780b133f89eaeeb3fa5e780c2d565
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 3189fec114ca68dfd862c0973b289b9eff25fed5
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392590"
+ms.locfileid: "85445559"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -289,7 +289,7 @@ Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot sze
 
 Ha egy virtuális hálózaton (például egy számítási példányon vagy virtuális gépen) lévő erőforráshoz fér hozzá a studióhoz, engedélyeznie kell a kimenő forgalmat a virtuális hálózatról a studióhoz. 
 
-Ha például hálózati biztonsági csoportokat (NSG) használ a kimenő forgalom korlátozására, adjon hozzá egy szabályt a __AzureFrontDoor. FirstParty__ __szolgáltatási címkéhez__ .
+Ha például hálózati biztonsági csoportokat (NSG) használ a kimenő forgalom korlátozására, adjon hozzá egy szabályt a __AzureFrontDoor. frontend__nevű __szolgáltatási címkéhez__ .
 
 <a id="aksvnet"></a>
 
@@ -640,7 +640,7 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 1. Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Betanítási környezetek beállítása](how-to-set-up-training-targets.md)
 * [Privát végpontok beállítása](how-to-configure-private-link.md)

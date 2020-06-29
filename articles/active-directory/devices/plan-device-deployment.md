@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97ddc91b5e49cafa87b90113f0160d8aec9c699a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360316"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444250"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
 
@@ -42,7 +42,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy már ismeri az [Eszközállapo
 
 Az eszközök Azure AD-identitásként való megadásának legfőbb előnyei:
 
-* Növelje termelékenységét – az Azure AD-vel a felhasználók [zökkenőmentes bejelentkezést (SSO)](/azuread-join-sso.md) végezhetnek a helyszíni és a Felhőbeli erőforrásokhoz, ami lehetővé teszi számukra, hogy bárhol is legyenek.
+* Növelje termelékenységét – az Azure AD-vel a felhasználók [zökkenőmentes bejelentkezést (SSO)](./azuread-join-sso.md) végezhetnek a helyszíni és a Felhőbeli erőforrásokhoz, ami lehetővé teszi számukra, hogy bárhol is legyenek.
 
 * A biztonság fokozása – az Azure AD-eszközök lehetővé teszik, hogy [feltételes hozzáférési (CA) házirendeket](../conditional-access/require-managed-devices.md) alkalmazzon az eszközök vagy felhasználók identitása alapján. A HITELESÍTÉSSZOLGÁLTATÓI házirendek további védelmet biztosíthatnak [Azure ad Identity Protection](../identity-protection/overview-identity-protection.md)használatával. Az eszköz az Azure AD-hez való csatlakoztatásának előfeltétele, hogy a biztonságot egy [jelszóval](../authentication/concept-authentication-passwordless.md) nem rendelkező hitelesítési stratégiával növelje.
 

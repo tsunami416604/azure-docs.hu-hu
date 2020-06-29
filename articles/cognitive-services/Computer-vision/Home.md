@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 90c2068021f1e9a173f37bdf1098edda10ab3d8d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117517"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413467"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -52,7 +52,7 @@ Elemezheti a képeket, hogy információkat szolgáltasson a vizualizáció szol
 
 A Computer Vision [READ](concept-recognizing-text.md#read-api) API-val kinyerheti a nyomtatott és a kézírásos szöveget a képekből egy géppel olvasható karakteres adatfolyamba. Az olvasási API a legújabb modelleket használja, és számos felületen és háttéren, például nyugtán, plakáton, névjegykártyán, levélen és táblán is működik szöveggel. Jelenleg hét különböző nyelven működik (lásd a [nyelvi támogatást](./language-support.md)).
 
-Az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API használatával több nyelven is kinyerheti a nyomtatott szöveget. Ha szükséges, az OCR kijavította a felismert szöveg forgását, és megadja az egyes szavak keretének koordinátáit. Az OCR 25 nyelvet támogat, és automatikusan észleli a felismert szöveg nyelvét.
+Az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md) API használatával több nyelven is kinyerheti a nyomtatott szöveget. Ha szükséges, az OCR kijavította a felismert szöveg forgását, és megadja az egyes szavak keretének koordinátáit. Az OCR 25 nyelvet támogat, és automatikusan észleli a felismert szöveg nyelvét.
 
 ## <a name="moderate-content-in-images"></a>Képek tartalmának moderálása
 

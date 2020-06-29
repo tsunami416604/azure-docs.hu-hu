@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/04/2020
 ms.author: mlearned
-ms.openlocfilehash: 1a5069259e631d1cc33aeebc56164d8407b9ca6c
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 5854f512eb5a85430fbf95499274187a6d66016c
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413586"
+ms.locfileid: "85445270"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -36,7 +36,7 @@ A következő erőforrást kell telepítenie:
 
 Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
 
-| Identitás                       | Name    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
+| Identitás                       | Name (Név)    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
 |----------------------------|-----------|----------|
 | Vezérlő síkja | nem látható | A hálózati erőforrások kezeléséhez, például a Load Balancer létrehozásához, a nyilvános IP-címekhez stb.| A csomópont-erőforráscsoport közreműködői szerepköre | Egyelőre nem támogatott
 | Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | A csomópont-erőforráscsoport olvasói szerepköre | Egyelőre nem támogatott
@@ -66,7 +66,7 @@ az group create --name myResourceGroup --location westus2
 Ezután hozzon létre egy AK-fürtöt:
 
 ```azurecli-interactive
-az aks create -g myResourceGroup -n MyManagedCluster --enable-managed-identity
+az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ```
 
 A felügyelt identitásokat használó sikeres fürtök az egyszerű szolgáltatás profiljának adatait tartalmazzák:
@@ -75,6 +75,22 @@ A felügyelt identitásokat használó sikeres fürtök az egyszerű szolgáltat
 "servicePrincipalProfile": {
     "clientId": "msi"
   }
+```
+
+Az alábbi paranccsal lekérdezheti a vezérlési sík felügyelt identitásának ObjectId:
+
+```azurecli-interactive
+az aks show -g myResourceGroup -n MyManagedCluster --query "identity"
+```
+
+Az eredménynek a következőhöz hasonlóan kell kinéznie:
+
+```json
+{
+  "principalId": "<object_id>",   
+  "tenantId": "<tenant_id>",      
+  "type": "SystemAssigned"                                 
+}
 ```
 
 > [!NOTE]

@@ -4,12 +4,12 @@ description: Az Azure-fájlmegosztás biztonsági mentésekor a támogatási be�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 72492ea77534b636d90820c96e36163e6c6efebe
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 3d9c9e4518ea6cd53c1f1d5e4a50040e3cf025b4
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488460"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443315"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 
@@ -31,7 +31,8 @@ USA nyugati középső régiója, Kelet-Ausztrália, Közép-Kanada
 | ------------------------ | ------------------------------------------------------------ |
 | Fiók típusa            | A Azure Backup támogatja az általános célú v1, általános célú v2 és file Storage típusú Storage-fiókokban lévő Azure-fájlmegosztás használatát |
 | Teljesítmény              | A Azure Backup a standard és a Premium Storage fiókban egyaránt támogatja a fájlmegosztást |
-| Replikáció              | A Storage-fiókokban bármely replikációs típussal rendelkező Azure Files-megosztás támogatott |
+| Replikáció              | A Storage-fiókokban bármely replikációs típussal rendelkező Azure-fájlmegosztás támogatott |
+| Tűzfal engedélyezve         | Az Azure-fájlmegosztás olyan tűzfalszabályok esetében támogatott, amelyek lehetővé teszik Microsoft Azure szolgáltatások elérését a Storage-fiókhoz.|
 
 ## <a name="supported-file-shares"></a>Támogatott fájlmegosztás
 
@@ -46,8 +47,10 @@ USA nyugati középső régiója, Kelet-Ausztrália, Közép-Kanada
 
 | Beállítás                                                      | Korlát |
 | ------------------------------------------------------------ | ----- |
-| A felhasználónként naponta védhető fájlmegosztás maximális száma | 200   |
+| A naponta védetté tehető fájlmegosztás maximális száma| 200   |
 | A tár naponta regisztrálható tárolási fiókok maximális száma | 50    |
+| A tár által védhető fájlmegosztás maximális száma | 2000   |
+| A tár által regisztrálható tárolási fiókok maximális száma | 200   |
 
 ## <a name="backup-limits"></a>Biztonsági mentési korlátok
 
@@ -82,7 +85,7 @@ USA nyugati középső régiója, Kelet-Ausztrália, Közép-Kanada
 | Teljes megosztás visszaállítása | A teljes fájlmegosztást visszaállíthatja az eredeti vagy egy másik helyre. |
 | Elemszintű visszaállítás | Az egyes fájlokat és mappákat az eredetire vagy egy másik helyre állíthatja vissza |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést az Azure file shares](backup-afs.md) -ről
 * Ismerje meg, hogyan [állíthatja vissza az Azure-fájlmegosztást](restore-afs.md)

@@ -1,24 +1,14 @@
 ---
 title: Az Azure Lab Services bemutatása | Microsoft Docs
 description: Megismerheti, hogyan könnyítheti meg a Lab Services a tesztkörnyezetek létrehozását, felügyeletét és védelmét a fejlesztők, tesztelők, oktatók, diákok és mások által használható virtuális gépekkel.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 06/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 1c4fb6660f8eaebe2a65e3dba3f9adbb07f1eb22
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 7661b26d16eb2c2acd53c30889ea791689c1eec0
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84882724"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85442805"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Az Azure Lab Services bemutatása
 **Azure Lab Services** lehetővé teszi, hogy olyan laborokat hozzon létre, amelyek infrastruktúráját az Azure felügyeli. Jelenleg a tanterem Lab az egyetlen, Azure Lab Services által támogatott felügyelt tesztkörnyezet. A szolgáltatás maga kezeli a felügyelt tesztkörnyezet összes infrastruktúrájának kezelését, a virtuális gépek felgyorsítását a hibák kezelésére és az infrastruktúra skálázására. AZT követően, hogy a rendszergazda létrehoz egy labor-fiókot Azure Lab Servicesban, az oktató gyorsan beállíthatja az osztályhoz tartozó labort, megadhatja az osztályban felhasználható virtuális gépek számát és típusát, valamint felhasználókat adhat hozzá a osztályhoz. Miután a felhasználó regisztrált a osztályba, a felhasználó elérheti a virtuális gépet, hogy az osztályhoz tartozó gyakorlatokat végezzen.  

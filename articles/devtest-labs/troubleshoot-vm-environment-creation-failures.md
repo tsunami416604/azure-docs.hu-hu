@@ -1,23 +1,14 @@
 ---
 title: A virtuális gép és a környezet hibáinak elhárítása Azure DevTest Labs
 description: Megtudhatja, hogyan lehet elhárítani a virtuális gépek (VM) és a környezet-létrehozási hibák elhárítását Azure DevTest Labs.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 155a359608cf6d846578306545f5ce0b4003949c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b7d3f3ad34d8a5bb48607816623c67121d21d78c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895331"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476478"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>A virtuális gép (VM) és a környezet-létrehozási hibák elhárítása Azure DevTest Labs
 A DevTest Labs figyelmeztetést ad, ha a gép neve érvénytelen, vagy ha a rendszer megsért egy tesztkörnyezet-házirendet. Időnként `X` a laborbeli virtuális gép vagy a környezeti állapot mellett vörös színnel jelenik meg, amely arról tájékoztatja, hogy valamilyen hiba történt.  Ez a cikk néhány trükköt tartalmaz, amelyek segítségével megtalálhatja a mögöttes problémát, és remélhetőleg a későbbiekben elkerülhető a probléma.

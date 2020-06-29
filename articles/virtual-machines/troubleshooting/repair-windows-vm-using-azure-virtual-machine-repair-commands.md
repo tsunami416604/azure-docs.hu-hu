@@ -14,19 +14,25 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: b754c9e02567939569bf2ef59359dbb2614a6647
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: f23df5924354fa688743d29919095413ec12ce18
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219896"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444352"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Windows rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
 
 Ha az Azure-beli Windows rendszerű virtuális gép (VM) rendszerindítási vagy lemezhiba miatt fordul elő, előfordulhat, hogy maga a lemezen is el kell végeznie a csökkentést. Gyakori példa egy sikertelen alkalmazás frissítése, amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan használható az Azure-beli virtuális gépek javítási parancsai a lemez egy másik Windowsos virtuális géphez való összekapcsolásához a hibák elhárításához, majd az eredeti virtuális gép újraépítéséhez.
 
 > [!IMPORTANT]
-> A cikkben szereplő parancsfájlok csak a [Azure Resource Managert](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)használó virtuális gépekre vonatkoznak.
+> * A cikkben szereplő parancsfájlok csak a [Azure Resource Managert](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)használó virtuális gépekre vonatkoznak.
+> * A parancsfájl futtatásához kimenő kapcsolat szükséges a virtuális gépről (443-es port).
+> * Egyszerre csak egy parancsfájl futhat.
+> * Egy futó parancsfájlt nem lehet megszakítani.
+> * A parancsfájlok futtatásának maximális ideje 90 perc, ami után időtúllépés történik.
+> * A Azure Disk Encryptiont használó virtuális gépek esetében csak az egymenetes titkosítással titkosított felügyelt lemezek támogatottak (KEK-vel vagy anélkül).
+
 
 ## <a name="repair-process-overview"></a>Javítási folyamat áttekintése
 
@@ -44,12 +50,6 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
 
 ## <a name="repair-process-example"></a>Javítási folyamat – példa
 
-> [!NOTE]
-> * A parancsfájl futtatásához kimenő kapcsolat szükséges a virtuális gépről (443-es port).
-> * Egyszerre csak egy parancsfájl futhat.
-> * Egy futó parancsfájlt nem lehet megszakítani.
-> * A parancsfájlok futtatásának maximális ideje 90 perc, ami után időtúllépés történik.
-
 1. Az Azure Cloud Shell indítása
 
    Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. Az előtelepített és a fiókkal való használatra konfigurált általános Azure-eszközöket tartalmaz.
@@ -59,6 +59,8 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
    Válassza a **Másolás** elemet a kód blokkjának másolásához, majd illessze be a kódot a Cloud Shellba, majd a futtatásához válassza az **ENTER billentyűt** .
 
    Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.30-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ``az --version``. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+   
+   Ha egy másik fiókkal kell bejelentkeznie Cloud Shellba, mint amellyel jelenleg bejelentkezett az Azure Portalra, használhatja az ``az login`` [az login Reference](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login).  A fiókjához társított előfizetések közötti váltáshoz használhatja ``az account set --subscription`` [az az Account set Reference](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)lehetőséget.
 
 2. Ha első alkalommal használja a `az vm repair` parancsokat, adja hozzá a virtuális gép javítási CLI-bővítményét.
 
@@ -72,7 +74,7 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
    az extension update -n vm-repair
    ```
 
-3. Futtassa az `az vm repair create` parancsot. Ezzel a paranccsal létrejön a nem működőképes virtuális géphez tartozó operációsrendszer-lemez másolata, létrehozhat egy új erőforráscsoport-javító virtuális gépet, és csatolhatja az operációsrendszer-lemez másolatát.  A javítási virtuális gép mérete és régiója megegyezik a megadott nem funkcionális virtuális géppel. Az erőforráscsoport és a virtuális gép neve az összes lépésben a nem funkcionális virtuális géphez lesz használva.
+3. Futtassa az `az vm repair create` parancsot. Ezzel a paranccsal létrejön a nem működőképes virtuális géphez tartozó operációsrendszer-lemez másolata, létrehozhat egy új erőforráscsoport-javító virtuális gépet, és csatolhatja az operációsrendszer-lemez másolatát.  A javítási virtuális gép mérete és régiója megegyezik a megadott nem funkcionális virtuális géppel. Az erőforráscsoport és a virtuális gép neve az összes lépésben a nem funkcionális virtuális géphez lesz használva. Ha a virtuális gép Azure Disk Encryption használja, a parancs megkísérli a titkosított lemez zárolását, hogy az elérhető legyen a javítási virtuális géphez való csatlakozáskor.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose

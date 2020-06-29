@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0b926491ef3fc672626317184fb7ed2760919866
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210507"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476274"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -52,7 +52,7 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>Helyettesítő karakterek leküldése az elérési út alacsonyabb szintjeire
 
-Az elérési úton helyettesítő karaktereket használhat [több fájl és mappa lekérdezéséhez](develop-storage-files-overview.md#query-multiple-files-or-folders). Az SQL on-demand listázza a Storage-fiókban lévő fájlokat, az elsőtől kezdve a Storage API használatával. Kiküszöböli a megadott elérési úttal nem egyező fájlokat. A fájlok kezdeti listájának csökkentése növelheti a teljesítményt, ha sok olyan fájl található, amely megfelel a megadott elérési útnak az első helyettesítő karakternek.
+Az elérési úton helyettesítő karaktereket használhat [több fájl és mappa lekérdezéséhez](query-data-storage.md#query-multiple-files-or-folders). Az SQL on-demand listázza a Storage-fiókban lévő fájlokat, az elsőtől kezdve a Storage API használatával. Kiküszöböli a megadott elérési úttal nem egyező fájlokat. A fájlok kezdeti listájának csökkentése növelheti a teljesítményt, ha sok olyan fájl található, amely megfelel a megadott elérési útnak az első helyettesítő karakternek.
 
 ## <a name="use-appropriate-data-types"></a>Megfelelő adattípusok használata
 
@@ -113,7 +113,7 @@ FROM
 
 Az adathalmazok gyakran partíciókban vannak rendszerezve. Az SQL igény szerint kérhető az adott mappák és fájlok lekérdezésére. Ez csökkenti a fájlok számát és a lekérdezés által beolvasott és feldolgozandó adatmennyiséget. A hozzáadott bónusz az, hogy jobb teljesítményt érhet el.
 
-További információért olvassa el a [filename](develop-storage-files-overview.md#filename-function) és a [filepath](develop-storage-files-overview.md#filepath-function) függvényt, és tekintse meg az [adott fájlok lekérdezésének](query-specific-files.md)példáit.
+További információért olvassa el a [filename](query-data-storage.md#filename-function) és a [filepath](query-data-storage.md#filepath-function) függvényt, és tekintse meg az [adott fájlok lekérdezésének](query-specific-files.md)példáit.
 
 > [!TIP]
 > A filepath és a filename függvények eredményét mindig a megfelelő adattípusokra konvertálja. Ha karakteres adattípusokat használ, ügyeljen arra, hogy a megfelelő hosszúságot használja.

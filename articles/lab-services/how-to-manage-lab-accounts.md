@@ -1,24 +1,14 @@
 ---
 title: Labor-fiókok kezelése a Azure Lab Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes laboratóriumi fiókot, vagy törölhet egy Lab-fiókot egy Azure-előfizetésben.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: ba66cb5a112b546fdf7d22b7ecd60102aaaa95ba
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 13b477504833b8d72845735304563eef334c49ac
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895856"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445491"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Tesztkörnyezeti fiókok létrehozása és felügyelete
 Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. Ez a cikk bemutatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes tesztkörnyezet fiókját, vagy törölhet egy labor-fiókot.

@@ -30,7 +30,9 @@
       href: concepts-identity.md
     - name: Magánfelhők frissítései
       href: concepts-upgrades.md
-    - name: API Management AVS virtuális gépekhez
+    - name: Küllős integráció
+      href: concepts-avs-hub-and-spoke-integration.md
+    - name: API Management
       href: concepts-api-management.md
 - name: Útmutatók
   items:
@@ -40,8 +42,6 @@
       href: manage-dhcp.md
     - name: Vészhelyreállítás
       href: disaster-recovery.md
-    - name: Segítségkérés az AVS üzembehelyezési vagy kiépítési hibáival kapcsolatban
-      href: fix-deployment-provisioning-failures.md
     - name: Azure Backup Server AVS-hez
       items:
         - name: Azure Backup Server beállítása az AVS-hez
@@ -52,5 +52,9 @@
   items: null
 - name: További források
   items:
+    - name: Hibaelhárítás
+      items:
+        - name: Segítségkérés az AVS üzembehelyezési vagy kiépítési hibáival kapcsolatban
+          href: fix-deployment-provisioning-failures.md
     - name: GYIK
       href: faq.md

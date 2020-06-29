@@ -3,12 +3,12 @@ title: Saját kulcs konfigurálása a Azure Service Bus inaktív adatok titkosí
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a saját kulcsát a Azure Service Bus adatok titkosításához.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 9bc48d82d1e63f08ab68e8f9c6a63e781c14c675
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: ca1597f26ec1c7ccaa578d4e7dcd68e0ef54f60c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338102"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85475985"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával
 A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Service Bus Premium az Azure Storage szolgáltatásban tárolja az adattárolást, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal titkosítva van. 
@@ -93,7 +93,7 @@ Miután engedélyezte az ügyfél által felügyelt kulcsokat, hozzá kell rende
 
 ## <a name="rotate-your-encryption-keys"></a>A titkosítási kulcsok elforgatása
 
-A Key vaultban az Azure Key Vaults rotációs mechanizmus használatával forgathatja el a kulcsot. További információkért lásd: a [kulcs rotációjának és naplózásának beállítása](../key-vault/secrets/key-rotation-log-monitoring.md). Az aktiválási és a lejárati dátumok is megadhatók a kulcs elforgatásának automatizálására. A Service Bus szolgáltatás felderíti az új kulcs-verziókat, és automatikusan elkezdi használni őket.
+A Key vaultban az Azure Key Vaults rotációs mechanizmus használatával forgathatja el a kulcsot. Az aktiválási és a lejárati dátumok is megadhatók a kulcs elforgatásának automatizálására. A Service Bus szolgáltatás felderíti az új kulcs-verziókat, és automatikusan elkezdi használni őket.
 
 ## <a name="revoke-access-to-keys"></a>Kulcsok elérésének visszavonása
 

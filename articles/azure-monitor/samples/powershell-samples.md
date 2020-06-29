@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945256"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413892"
 ---
 # <a name="azure-monitor-powershell-samples"></a>PowerShell-minták Azure Monitor
 Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.
@@ -150,7 +150,7 @@ A következő táblázat a riasztások metrika használatával történő létre
 
 | parameter | value |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Name (Név) |simpletestdiskwrite |
 | A riasztási szabály helye |USA keleti régiója |
 | ResourceGroup |legtöbbször |
 | Targetresourceid azonosítója |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -220,6 +220,10 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 A további webhook-tulajdonságok nem kötelezőek. Egy műveletnapló-riasztás tartalmát a használatával kérheti vissza `Get-AzActivityLogAlert` .
 
 ## <a name="create-and-manage-autoscale-settings"></a>Az autoskálázási beállítások létrehozása és kezelése
+
+> [!NOTE] 
+> Cloud Services (Microsoft. ClassicCompute) esetében az autoskálázás 5 perces időtartamot (PT5M) támogat. A többi szolgáltatás esetében az autoscale legalább 1 perces időtartamot támogat (PT1M)
+
 Egy erőforrás (webalkalmazás, virtuális gép, felhőalapú szolgáltatás vagy virtuálisgép-méretezési csoport) csak egy, a számára konfigurált méretezési beállítással rendelkezhet.
 Az egyes autoskálázási beállítások azonban több profillal is rendelkezhetnek. Például egy a teljesítmény-alapú méretezési profilhoz, egy másik pedig egy ütemezett profilhoz. Minden profilhoz több szabály is konfigurálható. Az autoscale használatával kapcsolatos további információkért lásd az [alkalmazások autoskálázását](../../cloud-services/cloud-services-how-to-scale-portal.md)ismertető témakört.
 

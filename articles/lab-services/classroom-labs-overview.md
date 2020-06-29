@@ -1,24 +1,14 @@
 ---
 title: A tanterem Labs ismertetése a Azure Lab Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre gyorsan egy tantermi tesztkörnyezet-környezetet a felhőben – beállíthatja a labort egy sablonos virtuális géppel az osztályhoz szükséges szoftverrel, és elkészítheti a virtuális gép másolatát a osztály minden tanulója számára.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
-ms.author: spelluru
-ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: e6ff56a831282c3abf5eec644573b9a3e88c6543
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899695"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445627"
 ---
 # <a name="introduction-to-classroom-labs"></a>Az osztályterem-tesztkörnyezetek bemutatása
 Az Azure Lab Services lehetővé teszi egy osztályterem-tesztkörnyezet gyors beállítását a felhőben. Az oktató létrehoz egy osztályterem-tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket a tesztkörnyezetben, és elérhetővé teszi őket a diákok számára. A diákok osztályterem-tesztkörnyezetben található virtuális gépekhez csatlakoznak, és a projektjeikhez, feladataikhoz vagy osztálytermi gyakorlataikhoz használják őket. 

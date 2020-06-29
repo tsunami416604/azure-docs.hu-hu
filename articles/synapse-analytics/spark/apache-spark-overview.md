@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 1f1a83bce3a8b46bb49bf78917690851390408e0
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 0a9a89b6ff3d0e2d3987d4b4281b9e4e1605475f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194688"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476784"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics Apache Spark
 
@@ -60,7 +60,7 @@ A SparkContext csatlakozhat a fürtfelügyelőhoz, amely erőforrásokat foglal 
 
 A SparkContext futtatja a felhasználó fő funkcióját, és végrehajtja a különböző párhuzamos műveleteket a csomópontokon. Ezután a SparkContext objektum összegyűjti a műveletek eredményeit. A csomópontok a és a fájlrendszerből származó adatok olvasását és írását írják le. A csomópontok a memóriában található átalakított adatokat rugalmasan elosztott adatkészletek (RDD) formájában is gyorsítótárazzák.
 
-A SparkContext összeköti a Spark-készletet, és felelős az alkalmazások irányított gráfra (DAG) való átalakításához. A gráf a csomópontokon futó végrehajtó folyamaton belül végrehajtott egyes feladatokból áll. Mindegyik alkalmazás saját végrehajtó folyamatokkal rendelkezik, amelyek az alkalmazás teljes időtartamáig működnek, és több szálon futtatnak feladatokat.
+A SparkContext összeköti a Spark-készletet, és felelős az alkalmazások irányított aciklikus gráfba (DAG) való átalakításához. A gráf a csomópontokon futó végrehajtó folyamaton belül végrehajtott egyes feladatokból áll. Mindegyik alkalmazás saját végrehajtó folyamatokkal rendelkezik, amelyek az alkalmazás teljes időtartamáig működnek, és több szálon futtatnak feladatokat.
 
 ## <a name="apache-spark-in-synapse-analytics-use-cases"></a>Apache Spark a szinapszis Analytics használati eseteiben
 

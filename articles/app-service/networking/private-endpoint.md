@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: b9cf0467829425003a33ef806d8e7028e7f27add
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 462de426a365a2aca4572dae6bff9261e4ee37f7
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413399"
+ms.locfileid: "85445474"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
 
@@ -70,7 +70,7 @@ Ha privát végpontot használ a webalkalmazáshoz, a kért URL-címnek meg kell
 Alapértelmezés szerint privát végpont nélkül a webalkalmazás nyilvános neve a fürt kanonikus neve.
 A névfeloldás például a következő lesz:
 
-|Name |Típus |Érték |
+|Name (Név) |Típus |Érték |
 |-----|-----|------|
 |mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
@@ -80,18 +80,18 @@ A névfeloldás például a következő lesz:
 Privát végpont telepítésekor a DNS-bejegyzést úgy frissítjük, hogy a kanonikus név mywebapp.privatelink.azurewebsites.net mutasson.
 A névfeloldás például a következő lesz:
 
-|Name |Típus |Érték |Megjegyzés |
+|Name (Név) |Típus |Érték |Megjegyzés |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
-|cloudservicename.cloudapp.net|A|40.122.110.154|< – ez a nyilvános IP-cím nem az Ön privát végpontja, 503-as hibát fog kapni|
+|cloudservicename.cloudapp.net|A|40.122.110.154|< – ez a nyilvános IP-cím nem az Ön privát végpontja, 403-as hibát fog kapni|
 
 Egy privát DNS-kiszolgálót vagy egy Azure DNS privát zónát kell beállítania, hogy tesztelje a számítógép gazdagépének bejegyzését.
 A létrehozandó DNS-zóna a következő: **privatelink.azurewebsites.net**. Regisztrálja a webalkalmazás rekordját egy rekorddal és a magánhálózati végpont IP-címével.
 A névfeloldás például a következő lesz:
 
-|Name |Típus |Érték |Megjegyzés |
+|Name (Név) |Típus |Érték |Megjegyzés |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|< – ezt a bejegyzést a DNS-rendszerben úgy kezelheti, hogy a magánhálózati végpont IP-címére mutasson.|
@@ -103,7 +103,7 @@ Ha egyéni DNS-nevet kell használnia, hozzá kell adnia az egyéni nevet a weba
 
 A kudu-konzol vagy a kudu REST API (az Azure DevOps saját üzemeltetésű ügynökökkel való üzembe helyezése) esetében két rekordot kell létrehoznia a Azure DNS saját zónájában vagy az egyéni DNS-kiszolgálón. 
 
-| Name | Típus | Érték |
+| Name (Név) | Típus | Érték |
 |-----|-----|-----|
 | mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 

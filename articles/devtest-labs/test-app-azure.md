@@ -1,23 +1,14 @@
 ---
 title: Az alkalmazás tesztelése az Azure-ban | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre fájlmegosztást a laborban, és hogyan csatlakoztathatja a helyi gépre és egy virtuális gépre a laborban, majd telepíthet asztali/webalkalmazásokat a fájlmegosztást, és tesztelheti azokat.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
-ms.author: spelluru
-ms.openlocfilehash: 65d7ee23195e69c67d9235aeea9a7a166a3a22c1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 06/26/2020
+ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211527"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476495"
 ---
 # <a name="test-your-app-in-azure"></a>Alkalmazás tesztelése az Azure-ban 
 Ez a cikk az alkalmazás Azure-beli DevTest Labs használatával történő tesztelésének lépéseit ismerteti. Először állítson be egy fájlmegosztást egy laborban, és csatlakoztassa meghajtóként a helyi fejlesztési gépen, illetve egy virtuális gépet egy laboron belül. Ezt követően a Visual Studio 2019 használatával helyezheti üzembe az alkalmazást a fájlmegosztást, így az alkalmazást a laborban futtathatja a virtuális gépen.  

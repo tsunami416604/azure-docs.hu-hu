@@ -1,18 +1,16 @@
 ---
 title: Beágyazott virtualizáció engedélyezése sablonbeli virtuális gépen Azure Lab Services (UI) | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre több virtuális géppel rendelkező sablonos virtuális gépet a rendszeren belül.  Más szóval engedélyezze a beágyazott virtualizációt a sablonban lévő virtuális gépen Azure Lab Servicesban.
-services: lab-services
 author: emaher
-ms.service: lab-services
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 10f8d2760474631fbcabac4d66139aedf4c7560c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: ad92862c78260e7385168faf794c013e85f66b82
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895961"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445729"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-manually"></a>Beágyazott virtualizálás engedélyezése sablonbeli virtuális gépen Azure Lab Services manuálisan
 

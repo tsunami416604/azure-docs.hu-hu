@@ -2,13 +2,13 @@
 title: Sablonok csatolása az üzembe helyezéshez
 description: Azt ismerteti, hogyan használhatók a Azure Resource Manager sablonban található csatolt sablonok a moduláris sablonok megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 5ade39d014ca309796813cc6ff9259bcc8bdd17b
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.date: 06/26/2020
+ms.openlocfilehash: d8e9617fca38ca2b1f16ba2c6c1599e3663347e7
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194076"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445185"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
@@ -34,9 +34,9 @@ Sablon beágyazásához vegyen fel egy [központi telepítési erőforrást](/az
   "variables": {},
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -63,9 +63,9 @@ A következő példa egy Storage-fiókot helyez üzembe egy beágyazott sablonon
   },
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -313,8 +313,6 @@ Csatolt sablonra hivatkozó érték esetén a `uri` nem lehet helyi fájl vagy o
 > [!NOTE]
 >
 > A sablonok olyan paraméterekkel is hivatkozhatnak, amelyek végső soron **http** vagy **https**protokollt használó, például a következő `_artifactsLocation` paramétert használják:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
-
-
 
 A Resource Managernek képesnek kell lennie hozzáférni a sablonhoz. Az egyik lehetőség, hogy a csatolt sablont egy Storage-fiókba helyezi, és az adott elemhez tartozó URI-t használja.
 

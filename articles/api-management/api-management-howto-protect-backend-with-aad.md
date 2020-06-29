@@ -12,12 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: b74874806585357fe2c7fa2603bfb50751c4d843
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355488"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445508"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az OAuth 2.0 Azure Active Directoryval és API Managementtel történő használatával
 
@@ -224,12 +224,12 @@ A [JWT szabályzat érvényesítésével](https://docs.microsoft.com/azure/api-m
 
 ## <a name="build-an-application-to-call-the-api"></a>Alkalmazás létrehozása az API meghívásához
 
-Ebben az útmutatóban a fejlesztői konzolt használta a API Managementban, mint a `Echo API` OAuth 2,0 által védettként hívható minta ügyfélalkalmazás. Ha többet szeretne megtudni az alkalmazások létrehozásáról és a 2,0-es OAuth megvalósításáról, tekintse meg a [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code.md).
+Ebben az útmutatóban a fejlesztői konzolt használta a API Managementban, mint a `Echo API` OAuth 2,0 által védettként hívható minta ügyfélalkalmazás. Ha többet szeretne megtudni az alkalmazások létrehozásáról és a 2,0-es OAuth megvalósításáról, tekintse meg a [Azure Active Directory](../active-directory/develop/sample-v2-code.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [Azure Active Directory és a OAuth 2.0-s](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios.md)verzióról.
+- További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-scenarios.md)verzióról.
 - További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.
-- A háttér-szolgáltatás biztonságossá tételének egyéb módjaival kapcsolatban lásd: [kölcsönös Tanúsítványos hitelesítés](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates).
-- [Hozzon létre egy API Management Service-példányt](https://docs.microsoft.com/azure/api-management/get-started-create-service-instance).
-- [Az első API kezelése](https://docs.microsoft.com/azure/api-management/import-and-publish).
+- A háttér-szolgáltatás biztonságossá tételének egyéb módjaival kapcsolatban lásd: [kölcsönös Tanúsítványos hitelesítés](./api-management-howto-mutual-certificates.md).
+- [Hozzon létre egy API Management Service-példányt](./get-started-create-service-instance.md).
+- [Az első API kezelése](./import-and-publish.md).

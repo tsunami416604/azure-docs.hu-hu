@@ -1,2 +1,178 @@
 - name: Azure Digital Twins
   href: index.yml
+- name: Áttekintés
+  items:
+    - name: Az Azure Digital Twins bemutatása
+      href: overview.md
+    - name: Eltérések a korábbi kiadáshoz képest
+      href: overview-differences.md
+- name: Oktatóanyagok
+  items:
+    - name: Ügyfélalkalmazás kódolása
+      href: tutorial-code.md
+    - name: Az alapok megismerése egy minta-ügyfélalkalmazással
+      href: tutorial-command-line-app.md
+    - name: Teljes körű megoldás csatlakoztatása
+      href: tutorial-end-to-end.md
+- name: Alapelvek
+  items:
+    - name: Egyéni modellek
+      href: concepts-models.md
+    - name: Digitális ikermodellek és az ikergráf
+      href: concepts-twins-graph.md
+    - name: Lekérdezés nyelve
+      href: concepts-query-language.md
+    - name: Integráció más szolgáltatásokkal
+      href: concepts-integration.md
+    - name: Eseményútvonalak
+      href: concepts-route-events.md
+    - name: Az Azure Digital Twins-megoldások biztonsága
+      href: concepts-security.md
+- name: Útmutatók
+  items:
+    - name: Fejlesztés
+      items:
+        - name: Az API-k és SDK-k használata
+          href: how-to-use-apis-sdks.md
+        - name: Egyéni SDK-k létrehozása az AutoRest használatával
+          href: how-to-create-custom-sdks.md
+    - name: Üzembe helyezés
+      items:
+        - name: Az Azure Digital Twins CLI használata
+          href: how-to-use-cli.md
+        - name: Azure Digital Twins-példány létrehozása
+          href: how-to-set-up-instance.md
+        - name: Ügyfélalkalmazás hitelesítése
+          href: how-to-authenticate-client.md
+    - name: Tervezési modellek
+      items:
+        - name: Egyéni modellek kezelése
+          href: how-to-manage-model.md
+        - name: Modellek elemzése és ellenőrzése
+          href: how-to-use-parser.md
+    - name: Élő végrehajtási környezet használata
+      items:
+        - name: Digitális ikereszközök kezelése
+          href: how-to-manage-twin.md
+        - name: Ikergráf kezelése kapcsolatokkal
+          href: how-to-manage-graph.md
+        - name: Eseményadatok értelmezése
+          href: how-to-interpret-event-data.md
+        - name: Azure-függvény beállítása az adatok feldolgozásához
+          href: how-to-create-azure-function.md
+        - name: Az ikergráf lekérdezése
+          href: how-to-query-graph.md
+    - name: Bemenet csatlakoztatása
+      items:
+        - name: Telemetria betöltése az IoT Hubról
+          href: how-to-ingest-iot-hub-data.md
+    - name: Kimenet csatlakoztatása
+      items:
+        - name: Végpontok és útvonalak kezelése
+          href: how-to-manage-routes.md
+        - name: Integrálás az Azure Mapsszel
+          href: how-to-integrate-maps.md
+- name: Referencia
+  items:
+    - name: Digital Twins szolgáltatási korlátok
+      href: reference-service-limits.md
+    - name: API-k és SDK-k
+      items:
+        - name: Vezérlősík
+          items:
+            - name: Swagger
+              href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins'
+            - name: .NET (C#) SDK – NuGet
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1'
+            - name: .NET (C#) SDK – forrás
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
+            - name: Python SDK
+              href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
+            - name: Python SDK – forrás
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins'
+            - name: Go SDK – forrás
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins'
+        - name: Adatsík
+          items:
+            - name: REST API-referencia
+              href: 'https://docs.microsoft.com/rest/api/azure-digitaltwins/'
+            - name: Swagger
+              href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
+            - name: .NET (C#) SDK – referencia
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview'
+            - name: .NET (C#) SDK – NuGet
+              href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
+            - name: .NET (C#) SDK – forrás
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
+    - name: DTDL
+      items:
+        - name: DTDL v2-specifikáció
+          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+        - name: DTDL-bővítmény VS Code-hoz
+          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+        - name: DTDL-elemzőkódtár – NuGet
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
+        - name: DTDL-érvényesítő minta
+          href: 'https://github.com/Azure-Samples/dtdl-validator'
+        - name: DTMI-specifikáció
+          href: 'https://github.com/Azure/digital-twin-model-identifier'
+    - name: Azure-eszközök
+      items:
+        - name: Azure CLI-referencia
+          href: /cli/azure/iot
+        - name: Azure IoT CLI-bővítmény – referencia
+          href: /cli/azure/ext/azure-iot/iot?view=azure-cli-latest
+        - name: Azure IoT CLI-bővítmény – kiadások
+          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+        - name: Azure Cloud Shell
+          href: 'https://shell.azure.com'
+        - name: Azure PowerShell
+          href: /powershell/module/az.iothub#iot
+        - name: Azure Portal
+          href: 'https://portal.azure.com'
+    - name: Az Azure RBAC dokumentációja
+      href: /azure/role-based-access-control/overview
+- name: További források
+  items:
+    - name: Támogatási és súgólehetőségek
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: Ügyfelek történetei
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9-videók
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: Ügyfelek adatkérései
+      href: resources-customer-data-requests.md
+    - name: Díjszabás és rendelkezésre állás
+      items:
+        - name: Díjszabás
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: Régiók és rendelkezésre állás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+- name: Kapcsolódó témakörök
+  items:
+    - name: Megoldások
+      items:
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-suite
+        - name: IoT-központ
+          href: /azure/iot-central/core/overview-iot-central
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Szolgáltatási SDK-k
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge-megoldások
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
