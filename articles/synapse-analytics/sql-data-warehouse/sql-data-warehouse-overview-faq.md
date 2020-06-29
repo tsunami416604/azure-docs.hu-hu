@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a0d98a2c58e7629f988d0d3e8015355ba414c07a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85201141"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482530"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 
@@ -56,10 +56,6 @@ A. Tekintse meg a jelenlegi [Kapacitási korlátok](sql-data-warehouse-service-c
 K. Miért van a méretezési/szüneteltetési vagy folytatási művelet?
 
 A. Több tényező is befolyásolhatja a számítási felügyeleti műveletek idejét. A hosszú ideig futó műveletek esetében gyakori eset a tranzakciós visszaállítás. Ha egy méretezési vagy szüneteltetési műveletet kezdeményeznek, az összes bejövő munkamenet le lesz tiltva, és a rendszer leállítja a lekérdezéseket. Ahhoz, hogy a rendszer stabil állapotban maradjon, a tranzakciókat vissza kell állítani a művelet megkezdése előtt. Minél nagyobb a szám, és nagyobb a tranzakciók naplózási mérete, annál hosszabb a művelet, mert a rendszer stabil állapotba állítja vissza a műveletet.
-
-K: Hogyan átnevezni egy közzétett összetevőt (adatkészlet, jegyzetfüzet, SQL-parancsfájl stb.) az Azure Szinapszisban?
-
-A: egy közzétett összetevő-fájl átnevezéséhez először a fájlt kell megadnia, és átnevezni az új fájlt a kívánt névre. Manuálisan kell frissítenie az összetevő összes hivatkozását az új fájlnévre, és törölnie kell a régit.
 
 ## <a name="user-support"></a>Felhasználói támogatás
 

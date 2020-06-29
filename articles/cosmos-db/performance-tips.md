@@ -4,14 +4,14 @@ description: Az ügyfél konfigurációs beállításainak megismerése Azure Co
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: 67354ca5b9dc7b553b8aa40183b504542d4c08b4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 6b1adca1bf3482a6ce44bb5b1aec7d62ac8bd5a8
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392386"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483091"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek a Azure Cosmos DB és a .NET SDK v2-hez
 
@@ -230,7 +230,7 @@ A Azure Cosmos DB indexelési házirend azt is lehetővé teszi, hogy az indexel
 var collection = new DocumentCollection { Id = "excludedPathCollection" };
 collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
 collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
-collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), collection);
 ```
 
 További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
@@ -284,7 +284,7 @@ Az automatikus újrapróbálkozási viselkedés segíti a legtöbb alkalmazás r
 
 Egy adott műveletre vonatkozó kérelem díja (azaz a kérelmek feldolgozási díja) közvetlenül a dokumentum méretével összefügg. A nagyméretű dokumentumokon végzett műveletek többek között a kis dokumentumokon végzett műveletekhez szükségesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az egyes ügyfélszámítógépeken a nagy teljesítményű forgatókönyvek Azure Cosmos DB kiértékeléséhez használt minta alkalmazással kapcsolatban lásd: [teljesítmény-és méretezési tesztek a Azure Cosmos db](performance-testing.md)használatával.
 
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partition-data.md)című témakört.

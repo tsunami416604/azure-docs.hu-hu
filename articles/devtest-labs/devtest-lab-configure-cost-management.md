@@ -1,25 +1,14 @@
 ---
 title: Tekintse meg a havi becsült tesztkörnyezet Azure DevTest Labs
 description: Ez a cikk azt ismerteti, hogyan lehet nyomon követni a labor (havi becsült költség trend diagram) költségeit a Azure DevTest Labsban.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 1f46fdc5-d917-46e3-a1ea-f6dd41212ba4
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: ff4c6861fdd25c62ba4547c3f859640320291df9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896437"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482768"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Laborhoz kapcsolódó költségek nyomon követése Azure DevTest Labs
 Ez a cikk a labor díjszabásának nyomon követésére vonatkozó információkat tartalmaz. Bemutatja, hogyan tekintheti meg a tesztkörnyezet aktuális naptári hónapjának becsült költségeit. A cikk azt is bemutatja, hogyan tekintheti meg az erőforrásokra vonatkozó havi költségeket a laborban.
@@ -39,7 +28,7 @@ A havi becsült költség trend diagram megtekintéséhez kövesse az alábbi l�
 
     A **becsült költségérték** az aktuális naptári hónap becsült költséghatékony értéke. A **tervezett költségek** a teljes aktuális naptári hónap becsült díja, amelyet az előző öt nap Lab-díja alapján számítunk fel.
 
-    A rendszer a következő egész számra kerekíti a költségeket. Például: 
+    A rendszer a következő egész számra kerekíti a költségeket. Példa: 
 
    * 5,01 legfeljebb 6 
    * 5,50 legfeljebb 6

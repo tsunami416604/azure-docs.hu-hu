@@ -1,23 +1,14 @@
 ---
 title: Rendszerkép-előállító létrehozása a Azure DevTest Labsban | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan állíthat be egyéni rendszerkép-előállítót a git-tárházban (Azure DevTest Labs) elérhető minta-parancsfájlok használatával.
-services: devtest-lab, lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: 2c5a44a9505d4a312be521cdc3219c5e4ce95a42
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896185"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482071"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egyéni rendszerkép-előállító létrehozása Azure DevTest Labs
 Ez a cikk bemutatja, hogyan állíthat be egyéni rendszerkép-előállítót a [git-tárházban](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)elérhető minta-parancsfájlok használatával.

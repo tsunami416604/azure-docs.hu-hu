@@ -1,23 +1,14 @@
 ---
 title: Gépek elindítása a Azure DevTest Labs Automation runbookok használatával
 description: Megtudhatja, hogyan indíthatja el a virtuális gépeket Azure DevTest Labs tesztkörnyezetben Azure Automation runbookok használatával.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: df6d7943a5344b4288dfe369dcce9087b894984f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 72ce964b451fb6bcd1e93d75e6ae674c7608d63a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895324"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481901"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Virtuális gépek indítása tesztkörnyezetben Azure Automation runbookok használatával
 A DevTest Labs automatikus [indítási](devtest-lab-set-lab-policy.md#set-autostart) funkciója lehetővé teszi, hogy a virtuális gépek egy adott időpontban automatikusan induljon el. Ez a funkció azonban nem támogatja, hogy a gépek meghatározott sorrendben induljon el. Több esetben is hasznos lehet az ilyen típusú automatizálás.  Az egyik esetben, ha a laboron belül egy Jumpbox virtuális gépet először kell elindítani, a többi virtuális gép előtt, mivel a Jumpbox a többi virtuális géphez való hozzáférési pontként használják.  Ez a cikk bemutatja, hogyan állíthat be egy Azure Automation fiókot egy olyan PowerShell-runbook, amely egy parancsfájlt futtat. A szkript címkéket használ a virtuális gépeken a laborban, így lehetővé teszi az indítási sorrend szabályozását anélkül, hogy módosítani kellene a parancsfájlt.

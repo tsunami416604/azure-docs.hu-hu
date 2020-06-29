@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/30/2020
+ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 85977819d30ddc8745eb9231242eb1990222676c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530988"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481782"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuális gépi bővítmény Windowshoz
 
@@ -36,14 +36,15 @@ Az alábbi táblázat a Windows Log Analytics virtuálisgép-bővítmény verzi�
 
 | Log Analytics Windows-ügynök csomagjának verziója | Log Analytics Windowsos virtuálisgép-bővítmény verziója | Kiadás dátuma | Kibocsátási megjegyzések |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18038 | 1.0.18038 | 2020. április   | <ul><li>Privát kapcsolaton keresztüli kapcsolat engedélyezése Azure Monitor privát hivatkozás hatókörök használatával</li><li>Betöltési szabályozást tesz elérhetővé, hogy elkerülje a munkaterületek hirtelen, véletlen beáramlását</li><li>További Azure Government felhők és régiók támogatása</li><li>Feloldja a hibát, ha HealthService.exe összeomlott</li></ul> |
 | 10.20.18029 | 1.0.18029 | 2020. március   | <ul><li>Az SHA-2 kód aláírásának támogatása</li><li>Javítja a virtuálisgép-bővítmények telepítését és felügyeletét</li><li>Elhárít egy hibát az Azure arc-kiszolgálók integrációjában</li><li>Beépített hibaelhárítási eszközt biztosít az ügyfélszolgálathoz</li><li>További Azure Government régiók támogatása</li> |
 | 10.20.18018 | 1.0.18018 | 2019. október | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019. július | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Megnövekedett MaxExpressionDepth – 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019. június | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Lehetővé tette az alapértelmezett hitelesítő adatok letiltását proxy-kapcsolatok létrehozásakor (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH támogatása) </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019. március | <ul><li>Kisebb stabilizációs javítások </li></ul> |
-| 10.19.10006 | n/a | Dec 2018 | <ul><li> Kisebb stabilizációs javítások </li></ul> | 
-| 8.0.11136 | n/a | Szeptember 2018 |  <ul><li> Az erőforrás-azonosító változásának észlelése a virtuális gépek áthelyezésének támogatásával </li><li> Jelentéskészítési erőforrás-azonosító támogatása a nem bővítmények telepítésének használatakor </li></ul>| 
-| 8.0.11103 | n/a |  2018. április | |
+| 10.19.10006 | n.a. | Dec 2018 | <ul><li> Kisebb stabilizációs javítások </li></ul> | 
+| 8.0.11136 | n.a. | Szeptember 2018 |  <ul><li> Az erőforrás-azonosító változásának észlelése a virtuális gépek áthelyezésének támogatásával </li><li> Jelentéskészítési erőforrás-azonosító támogatása a nem bővítmények telepítésének használatakor </li></ul>| 
+| 8.0.11103 | n.a. |  2018. április | |
 | 8.0.11081 | 1.0.11081 | November 2017 | | 
 | 8.0.11072 | 1.0.11072 | Szeptember 2017 | |
 | 8.0.11049 | 1.0.11049 | Feb 2017 | |
@@ -89,7 +90,7 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | közzétevő | Microsoft. EnterpriseCloud. monitoring |
-| type | MicrosoftMonitoringAgent |
+| típus | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
 | Munkaterület azonosítója (például) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
@@ -108,7 +109,7 @@ Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üz
 
 A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforrásaiba, vagy egy Resource Manager JSON-sablon legfelső szintű vagy legfelső szintjén helyezhető el. A JSON elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
-Az alábbi példa azt feltételezi, hogy a Log Analytics bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a virtuális gép `"resources": []` objektumára kerül.
+Az alábbi példa azt feltételezi, hogy a Log Analytics bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a `"resources": []` virtuális gép objektumára kerül.
 
 
 ```json

@@ -1,25 +1,14 @@
 ---
 title: Labor létrehozása az Azure DevTest Labs szolgáltatásban | Microsoft Docs
 description: Ez a cikk végigvezeti a labor létrehozásának folyamatán a Azure Portal és a Azure DevTest Labs használatával.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 8b6d3e70-6528-42a4-a2ef-449575d0f928
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: 5cd675823b85e975dcb8dfe152c27b2d30463c1c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 09999c5b0187f924f9cfbbc2afad8954adee0fd7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897039"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481255"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Labor létrehozása az Azure DevTest Labs szolgáltatásban
 Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet erőforráscsoportokat, például virtuális gépeket (VM-eket) magában foglaló infrastruktúra, amely korlátok és kvóták meghatározásával segíti ezen erőforráscsoportok jobb kezelését. Ez a cikk végigvezeti a tesztkörnyezet Azure Portalon való létrehozásának folyamatán.

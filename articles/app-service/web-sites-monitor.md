@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738099"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482683"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített figyelési funkciókat biztosít a webalkalmazások, a mobil és az API-alkalmazások számára a [Azure Portal](https://portal.azure.com).
@@ -58,7 +58,7 @@ Az App Service terv frissítésével növelheti vagy eltávolíthatja az alkalma
 ## <a name="understand-metrics"></a>A metrikák ismertetése
 
 > [!NOTE]
-> A **fájlrendszer használata** egy új metrika, amely globálisan zajlik, és nem számítunk fel adatokat, kivéve, ha Ön rendelkezik a privát előzetes verzióra vonatkozó engedélyezési listával.
+> A **fájlrendszer használata** egy új metrika, amely globálisan zajlik, nem számítunk fel adatokat, hacsak nem kapta meg a hozzáférést a privát előzetes verzióhoz.
 > 
 
 > [!IMPORTANT]
@@ -68,12 +68,12 @@ A metrikák az alkalmazással vagy a App Service terv működésével kapcsolato
 
 Egy alkalmazás esetében az elérhető metrikák a következők:
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | --- | --- |
 | **Válaszidő** | Az alkalmazás által a kérelmek kiszolgálásához szükséges idő (másodpercben). |
 | **Átlagos válaszidő (elavult)** | Az alkalmazásnak a kérelmek kiszolgálásához szükséges átlagos ideje másodpercben. |
 | **Memória átlagos munkakészlete** | Az alkalmazás által használt memória átlagos mérete (MB) (MiB). |
-| **Kapcsolatok** | A homokozóban meglévő kötött szoftvercsatornák (w3wp. exe és annak alárendelt folyamatai) száma.  A kötött szoftvercsatorna a kötési ()/Connect () API-k meghívásával jön létre, és addig marad, amíg az említett szoftvercsatorna le nem zárul a CloseHandle függvény hívásakor ()/closesocket () használatával. |
+| **Kapcsolatok** | A homokozóban meglévő kötött szoftvercsatornák (w3wp.exe és annak alárendelt folyamatai) száma.  A kötött szoftvercsatorna a kötési ()/Connect () API-k meghívásával jön létre, és addig marad, amíg az említett szoftvercsatorna le nem zárul a CloseHandle függvény hívásakor ()/closesocket () használatával. |
 | **CPU-idő** | Az alkalmazás által felhasznált CPU mennyisége másodpercben. További információ erről a metrikáról: [CPU Time vs CPU százalék](#cpu-time-vs-cpu-percentage). |
 | **Aktuális szerelvények** | Az alkalmazás összes alkalmazástartományok betöltött szerelvények aktuális száma. |
 | **A-ben tárolt adatértékek** | Az alkalmazás által felhasznált bejövő sávszélesség mennyisége a MiB-ben. |
@@ -112,7 +112,7 @@ App Service csomag esetében az elérhető metrikák a következők:
 > A App Service terv metrikái csak *Alapszintű*, *standard*és *prémium* szintű csomagokban érhetők el.
 > 
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | --- | --- |
 | **CPU-százalék** | A csomag összes példányán használt átlagos CPU. |
 | **Memória százaléka** | A csomag összes példányán használt átlagos memória. |
@@ -138,13 +138,13 @@ Az alkalmazást érintő különböző kvóták és mérőszámok állapotának 
 
 ![Kvóta diagram a Azure Portal][quotas]
 
-A kvóták megkereséséhez válassza a **Beállítások** > **kvóták**lehetőséget. A diagramon a következőket tekintheti át: 
+A kvóták megkereséséhez válassza a **Beállítások**  >  **kvóták**lehetőséget. A diagramon a következőket tekintheti át: 
 1. A kvóta neve.
 1. Az alaphelyzetbe állítási időköz.
 1. Jelenlegi korlátja.
 1. A jelenlegi értéke.
 
-![Metrikus diagram a Azure Portal][metrics] a metrikák közvetlenül az erőforrás- **Áttekintés** lapról érhetők el. Itt láthatja az alkalmazások mérőszámait képviselő diagramokat.
+![Metrikus diagram a Azure Portal a ][metrics] metrikák közvetlenül az erőforrás- **Áttekintés** lapról érhetők el. Itt láthatja az alkalmazások mérőszámait képviselő diagramokat.
 
 A diagramok bármelyikére kattintva megtekintheti a mérőszámokat, ahol egyéni diagramokat hozhat létre, különböző mérőszámokat jeleníthet meg, és még sok minden mást is megadhat. 
 

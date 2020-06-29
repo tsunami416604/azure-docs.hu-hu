@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 911fa7d509e756f482b2deefad11e35f9cb5ec01
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117947"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483312"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>A Storage-fiók elérési kulcsainak újragenerálása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,6 +23,9 @@ ms.locfileid: "85117947"
 Megtudhatja, hogyan módosíthatja a Azure Machine Learning által használt Azure Storage-fiókok hozzáférési kulcsait. Azure Machine Learning használhatja a Storage-fiókokat az adattároláshoz vagy a betanított modellekhez.
 
 Biztonsági okokból előfordulhat, hogy módosítania kell egy Azure Storage-fiók hozzáférési kulcsait. A hozzáférési kulcs újralétrehozásakor a Azure Machine Learning frissíteni kell az új kulcs használatához. A Azure Machine Learning a Storage-fiókot is használhatja mind a Model Storage, mind pedig adattárként.
+
+> [!IMPORTANT]
+> Az adattárolókkal nyilvántartó hitelesítő adatokat a rendszer a munkaterülethez társított Azure Key Vault menti. Ha a Key Vault a [Törlés](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) engedélyezve van, ügyeljen arra, hogy a hitelesítő adatok frissítéséhez kövesse ezt a cikket. Az adattár regisztrációjának törlése és az ugyanazon a néven való újbóli regisztrálása sikertelen lesz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

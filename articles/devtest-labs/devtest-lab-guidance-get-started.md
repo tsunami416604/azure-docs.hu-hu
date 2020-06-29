@@ -1,24 +1,15 @@
 ---
 title: Népszerű forgatókönyvek Azure DevTest Labs használatára
 description: Ez a cikk a Azure DevTest Labs és két általános elérési út használatát ismerteti a szervezeten belüli szolgáltatás használatának megkezdéséhez.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: spelluru
+ms.date: 06/20/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 1adb9b009a250942bab7e9b0e3b4b3e52840341c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896059"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481595"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Népszerű forgatókönyvek Azure DevTest Labs használatára
 A nagyvállalati igényektől függően a DevTest Labs konfigurálható úgy, hogy az megfeleljen a különböző követelményeknek.  Ez a cikk a népszerű forgatókönyveket ismerteti. Az egyes forgatókönyvek az DevTest Labs és az ilyen forgatókönyvek megvalósítására szolgáló erőforrások használatával járó előnyöket foglalják magukban.  

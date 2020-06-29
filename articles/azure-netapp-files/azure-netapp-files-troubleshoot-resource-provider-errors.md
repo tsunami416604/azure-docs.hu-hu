@@ -12,15 +12,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72597211"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483465"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Az Azure NetApp Files erőforrás-szolgáltatójának hibaelhárítása 
 
@@ -30,12 +30,12 @@ Ez a cikk a gyakori Azure NetApp Files erőforrás-szolgáltatói hibákat, azok
 
 ***A BareMetalTenantId nem módosítható.***  
 
-Ez a hiba akkor fordul elő, ha egy kötetet próbál frissíteni vagy `BaremetalTenantId` javítani, és a tulajdonság módosult értékkel rendelkezik.
+Ez a hiba akkor fordul elő, ha egy kötetet próbál frissíteni vagy javítani, és a `BaremetalTenantId` tulajdonság módosult értékkel rendelkezik.
 
 * Ok:   
 Egy kötetet próbál frissíteni, és a `BaremetalTenantId` tulajdonság értéke eltér az Azure-ban tárolt értéktől.
 * Megoldás:   
-Ne foglalja `BaremetalTenantId` bele a patch és a Update (Put) kérelembe. `BaremetalTenantId` Azt is megteheti, hogy a kérelemben megegyeznek.
+Ne foglalja bele `BaremetalTenantId` a patch és a Update (Put) kérelembe. Azt is megteheti, hogy `BaremetalTenantId` a kérelemben megegyeznek.
 
 ***A ServiceLevel nem módosítható.***  
 
@@ -50,32 +50,32 @@ Hozzon létre egy másik kapacitási készletet, majd hozza létre újra a köte
 
 ***A PoolId nem módosítható***  
 
-Ez a hiba akkor fordul elő, ha módosított `PoolId` tulajdonsággal rendelkező kapacitási készletet próbál frissíteni vagy kijavítani.
+Ez a hiba akkor fordul elő, ha módosított tulajdonsággal rendelkező kapacitási készletet próbál frissíteni vagy kijavítani `PoolId` .
 
 * Ok:   
 Egy Capacity Pool `PoolId` tulajdonságot próbál frissíteni. A `PoolId` tulajdonság csak olvasható tulajdonság, és nem módosítható.
 * Megoldás:   
-Ne foglalja `PoolId` bele a patch és a Update (Put) kérelembe.  `PoolId` Azt is megteheti, hogy a kérelemben megegyeznek.
+Ne foglalja bele `PoolId` a patch és a Update (Put) kérelembe.  Azt is megteheti, hogy `PoolId` a kérelemben megegyeznek.
 
 ***A CreationToken nem módosítható.***
 
-Ez a hiba akkor fordul elő, amikor a kötet létrehozása után`CreationToken`megpróbálja módosítani a fájl elérési útját (). A kötet létrehozásakor meg kell adni a fájl elérési útját (`CreationToken`), és később nem módosítható.
+Ez a hiba akkor fordul elő, amikor a kötet létrehozása után megpróbálja módosítani a fájl elérési útját ( `CreationToken` ). A kötet létrehozásakor meg kell adni a fájl elérési útját ( `CreationToken` ), és később nem módosítható.
 
 * Ok:   
-A kötet létrehozása után megpróbálja módosítani a fájl elérési útját (`CreationToken`), amely nem támogatott művelet. 
+A kötet létrehozása után megpróbálja módosítani a fájl elérési útját ( `CreationToken` ), amely nem támogatott művelet. 
 * Megoldás:   
 Ha a fájl elérési útjának módosítása nem szükséges, akkor érdemes lehet eltávolítani a paramétert a kérelemből a hibaüzenet bezárásához.
 * Megkerülő megoldás:   
-Ha módosítania kell a fájl elérési útját (`CreationToken`), létrehozhat egy új kötetet új elérési úttal, majd áttelepítheti az új kötetre.
+Ha módosítania kell a fájl elérési útját ( `CreationToken` ), létrehozhat egy új kötetet új elérési úttal, majd áttelepítheti az új kötetre.
 
 ***A CreationToken legalább 16 karakter hosszúnak kell lennie.***
 
-Ez a hiba akkor fordul elő, ha`CreationToken`a fájl elérési útja () nem felel meg a hosszra vonatkozó követelménynek. A fájl elérési útjának hosszának legalább egy karakterből kell állnia.
+Ez a hiba akkor fordul elő, ha a fájl elérési útja ( `CreationToken` ) nem felel meg a hosszra vonatkozó követelménynek. A fájl elérési útjának hosszának legalább egy karakterből kell állnia.
 
 * Ok:   
 A fájl elérési útja üres.  Ha az API használatával hoz létre kötetet, a létrehozási jogkivonat megadása kötelező. Ha a Azure Portal használja, a fájl elérési útja automatikusan létrejön.
 * Megoldás:   
-Adjon meg legalább egy karaktert a fájl elérési útjaként (`CreationToken`).
+Adjon meg legalább egy karaktert a fájl elérési útjaként ( `CreationToken` ).
 
 ***A tartománynév nem módosítható.***
 
@@ -84,7 +84,7 @@ Ez a hiba akkor fordul elő, ha a tartománynevet Active Directoryban próbálja
 * Ok:   
 A tartománynév tulajdonságot próbálja frissíteni.
 * Megoldás:    
-Nincs. A tartomány neve nem módosítható.
+Nincsenek. A tartomány neve nem módosítható.
 * Megkerülő megoldás:   
 Törölje az összes kötetet a Active Directory konfiguráció használatával. Ezután törölje a Active Directory konfigurációt, és hozza létre újra a köteteket.
 
@@ -101,14 +101,14 @@ Használjon másik indexet a beállítani kívánt szabályhoz.
 
 ***Hiba {Action} {resourceTypeName}***
 
-Ez a hiba akkor jelenik meg, ha más hibakezelés nem tudta kezelni a hibát egy erőforráson végrehajtott művelet végrehajtása közben.   Ide tartozik a "hiba" szöveg. Az `{action}` a következő lehet: (`getting`, `creating`, `updating`, vagy `deleting`).  A `{resourceTypeName}` a `resourceTypeName` következő: (például `netAppAccount` `capacityPool` `volume`,, stb.).
+Ez a hiba akkor jelenik meg, ha más hibakezelés nem tudta kezelni a hibát egy erőforráson végrehajtott művelet végrehajtása közben.   Ide tartozik a "hiba" szöveg. Az a következő lehet: `{action}` ( `getting` , `creating` , `updating` , vagy `deleting` ).  A a `{resourceTypeName}` `resourceTypeName` következő: (például, `netAppAccount` , `capacityPool` `volume` stb.).
 
 * Ok:   
 Ez a hiba nem kezelt kivétel, ha az ok ismeretlen.
 * Megoldás:   
 A naplók részletes okának jelentéséhez forduljon az Azure támogatási központjához.
 * Megkerülő megoldás:   
-Nincs.
+Nincsenek.
 
 ***A fájl elérési útjának neve csak betűket, számokat és kötőjeleket (""-") tartalmazhat.***
 
@@ -123,16 +123,16 @@ Az aláhúzást lecserélheti egy kötőjelre, vagy a szóközök helyett a nagy
 
 ***A FileSystemId nem módosítható.***
 
-Ez a hiba akkor fordul elő, ha `FileSystemId`megpróbálja módosítani.  A `FileSystemdId` módosítás nem támogatott művelet. 
+Ez a hiba akkor fordul elő, ha megpróbálja módosítani `FileSystemId` .  A módosítás `FileSystemdId` nem támogatott művelet. 
 
 * Ok:   
 A rendszer a kötet létrehozásakor beállítja a fájlrendszer AZONOSÍTÓját. `FileSystemId`ezt követően nem módosítható.
 * Megoldás:   
-Ne szerepeljen `FileSystemId` a javítási és frissítési (Put) kérelemben.  Azt is megteheti, hogy `FileSystemId` ugyanaz a kérelemben.
+Ne szerepeljen a `FileSystemId` javítási és frissítési (Put) kérelemben.  Azt is megteheti, hogy `FileSystemId` ugyanaz a kérelemben.
 
 ***A (z) {string} azonosítójú ActiveDirectory nem létezik.***
 
-A `{string}` rész a Active Directory-kapcsolatok `ActiveDirectoryId` tulajdonságában megadott érték.
+A `{string}` rész a `ActiveDirectoryId` Active Directory-kapcsolatok tulajdonságában megadott érték.
 
 * Ok:   
 Amikor létrehozott egy fiókot a Active Directory-konfigurációval, a megadott értéknek `ActiveDirectoryId` üresnek kell lennie.
@@ -144,22 +144,22 @@ Ne szerepeljenek `ActiveDirectoryId` a létrehozás (Put) kérelemben.
 Az API-verzió vagy nincs elküldve, vagy érvénytelen értéket tartalmaz.
 
 * Ok:   
-A lekérdezési paraméter `api-version` értéke érvénytelen értéket tartalmaz.
+A lekérdezési paraméter értéke `api-version` érvénytelen értéket tartalmaz.
 * Megoldás:   
 A megfelelő API-verzió értékének használata.  Az erőforrás-szolgáltató számos API-verziót támogat. Az érték éééé-hh-nn formátumban van.
 
-***Érvénytelen "{value}" érték érkezett a következőhöz {1}:.***
+***Érvénytelen "{value}" érték érkezett a következőhöz: {1} .***
 
-Ez az üzenet a,,,, és `RuleIndex` `Nfsv4`rendszer `AllowedClients`mezőinek `UnixReadWrite` `Nfsv3` `UnixReadOnly`hibáját jelzi.
+Ez az üzenet a,,,, és rendszer mezőinek hibáját jelzi `RuleIndex` `AllowedClients` `UnixReadOnly` `UnixReadWrite` `Nfsv3` `Nfsv4` .
 
 * Ok:   
-A bemeneti ellenőrzési kérelem sikertelen `RuleIndex`volt a következő mezők legalább egyike esetében: `AllowedClients` `UnixReadOnly`,,, `UnixReadWrite`, `Nfsv`3 és. `Nfsv4`
+A bemeneti ellenőrzési kérelem sikertelen volt a következő mezők legalább egyike esetében:,,, `RuleIndex` `AllowedClients` `UnixReadOnly` `UnixReadWrite` , `Nfsv` 3 és `Nfsv4` .
 * Megoldás:   
-Ügyeljen arra, hogy az összes szükséges és nem ütköző paramétert a parancssorban állítsa be. Nem állíthatja be például a `UnixReadOnly` és `UnixReadWrite` a paramétereket egyszerre.
+Ügyeljen arra, hogy az összes szükséges és nem ütköző paramétert a parancssorban állítsa be. Nem állíthatja be például a `UnixReadOnly` és a paramétereket egyszerre `UnixReadWrite` .
 * Megkerülő megoldás:   
 Tekintse meg a fenti megoldást.
 
-***A VLAN {0} {2} - {1} hoz tartozó IP-címtartomány már használatban van***
+***A VLAN-hoz tartozó IP-címtartomány {0} {1} {2} már használatban van***
 
 Ez a hiba azért fordul elő, mert a használt IP-címtartományok belső rekordjai ütköznek az újonnan hozzárendelt IP-címmel.
 
@@ -185,7 +185,7 @@ Ez a hiba akkor fordul elő, ha a felhasználó frissíteni vagy javítani szere
 * Ok:   
 A Volume `MountTargets` tulajdonságot próbálja frissíteni. A tulajdonság módosítása nem támogatott.
 * Megoldás:   
-Ne szerepeljen `MountTargets` a javítási és frissítési (Put) kérelemben.  Azt is megteheti `MountTargets` , hogy ugyanaz a kérelemben.
+Ne szerepeljen a `MountTargets` javítási és frissítési (Put) kérelemben.  Azt is megteheti, hogy `MountTargets` ugyanaz a kérelemben.
 
 ***A név már használatban van.***
 
@@ -250,9 +250,9 @@ A mögöttes API nem válaszol, ami belső hibát eredményez. Ez a hiba valósz
 * Megoldás:   
 A probléma valószínűleg ideiglenes. Egy kis idő elteltével a kérelemnek sikeresnek kell lennie.
 * Megkerülő megoldás:   
-Nincs. Az alapul szolgáló API elengedhetetlen a kötetek kezeléséhez.
+Nincsenek. Az alapul szolgáló API elengedhetetlen a kötetek kezeléséhez.
 
-***Nem található műveleti eredmény-azonosító a{0}következőhöz: "".***
+***Nem található műveleti eredmény-azonosító a következőhöz: " {0} ".***
 
 Ez a hiba azt jelzi, hogy egy belső hiba megakadályozza a művelet befejezését.
 
@@ -294,7 +294,7 @@ Egy Active Directoryt próbál létrehozni (nem frissíteni), de egy már létez
 * Megoldás:   
 Ha a Active Directory konfiguráció nincs használatban, először törölje a meglévő konfigurációt, majd próbálja megismételni a létrehozási műveletet.
 * Megkerülő megoldás:   
-Nincs. Csak egy Active Directory engedélyezett.
+Nincsenek. Csak egy Active Directory engedélyezett.
 
 ***A (z) {Operation} művelet nem támogatott.***
 
@@ -312,7 +312,7 @@ Ez a hiba akkor fordul elő, amikor megpróbálja módosítani a kötet OwnerId 
 * Ok:   
 A `OwnerId` tulajdonság beállítása a kötet létrehozásakor történik. A tulajdonságot később nem lehet módosítani.
 * Megoldás:   
-Ne szerepeljen `OwnerId` a javítási és frissítési (Put) kérelemben. Azt is megteheti `OwnerId` , hogy ugyanaz a kérelemben.
+Ne szerepeljen a `OwnerId` javítási és frissítési (Put) kérelemben. Azt is megteheti, hogy `OwnerId` ugyanaz a kérelemben.
 
 ***A szülő készlet nem található***
 
@@ -331,11 +331,11 @@ Ez a hiba akkor fordul elő, amikor megpróbálja módosítani a csatlakoztatás
 A csatlakoztatási cél a létrehozáskor van definiálva, és a későbbiekben nem módosítható.
 A pillanatképek nem tartalmaznak a megváltoztathatatlan tulajdonságokat.
 * Megoldás:   
-Nincs. Ezeknek az erőforrásoknak nincs módosítható tulajdonsága.
+Nincsenek. Ezeknek az erőforrásoknak nincs módosítható tulajdonsága.
 
 ***A készlet mérete túl kicsi a teljes kötet méretéhez.***
 
-Ez a hiba akkor fordul elő, ha frissíti a kapacitási készlet méretét, és a méret kisebb, `usedBytes` mint az adott kapacitású készlet összes kötetének teljes értéke.  Ez a hiba akkor is előfordulhat, ha új kötetet hoz létre, vagy egy meglévő kötetet átméretezi, és az új kötet mérete meghaladja a kapacitási készletben lévő szabad területet.
+Ez a hiba akkor fordul elő, ha frissíti a kapacitási készlet méretét, és a méret kisebb, mint az `usedBytes` adott kapacitású készlet összes kötetének teljes értéke.  Ez a hiba akkor is előfordulhat, ha új kötetet hoz létre, vagy egy meglévő kötetet átméretezi, és az új kötet mérete meghaladja a kapacitási készletben lévő szabad területet.
 
 * Ok:   
 A kapacitási készletet kisebb méretre próbálja frissíteni, mint a usedBytes lévő összes köteten.  Vagy olyan kötetet próbál létrehozni, amely nagyobb, mint a kapacitási készletben lévő szabad terület.  Azt is megteheti, hogy átméretezi a kötetet, és az új méret meghaladja a szabad területet a kapacitási készletben.
@@ -355,12 +355,12 @@ Ez a hiba akkor fordul elő, ha olyan pillanatképet hoz létre, amely nem a pil
 
 ***A (z) {resourceType} nevének meg kell egyeznie az erőforrás-azonosító nevével.***
 
-Ez a hiba akkor fordul elő, ha erőforrást hoz létre, és a name tulajdonságot más értékkel tölti ki, mint `resourceId`a name tulajdonsága.
+Ez a hiba akkor fordul elő, ha erőforrást hoz létre, és a name tulajdonságot más értékkel tölti ki, mint a name tulajdonsága `resourceId` .
 
 * Ok:   
 Az erőforrás létrehozásakor érvénytelen érték szerepel a name tulajdonságban.
 * Megoldás:   
-Hagyja üresen a Name (név `resourceId`) tulajdonságot, vagy engedélyezze, hogy ugyanazt az értéket használja, mint a Name tulajdonság (az utolsó fordított perjel "/" és a "?" kérdőjel között).
+Hagyja üresen a Name (név) tulajdonságot, vagy engedélyezze, hogy ugyanazt az értéket használja, mint a Name tulajdonság (az utolsó fordított perjel "/" és a "?" kérdőjel között) `resourceId` .
 
 ***A protokoll típusa ({Value}) ismeretlen***
 
@@ -369,27 +369,27 @@ Ez a hiba akkor fordul elő, ha ismeretlen protokoll típusú kötetet hoz létr
 * Ok:   
 Érvénytelen értéket próbál beállítani a Volume `protocolType` tulajdonságban.
 * Megoldás:   
-Állítson be egy érvényes `protocolType`karakterláncot a alkalmazásban.
+Állítson be egy érvényes karakterláncot a alkalmazásban `protocolType` .
 * Megkerülő megoldás:   
-NULL `protocolType` értékűként van beállítva.
+`protocolType`Null értékűként van beállítva.
 
 ***A protokollok típusai nem módosíthatók***
 
-Ez a hiba akkor fordul elő, ha egy kötet `ProtocolType` frissítését vagy javítását kísérli meg.  A ProtocolType módosítása nem támogatott művelet.
+Ez a hiba akkor fordul elő, ha egy kötet frissítését vagy javítását kísérli meg `ProtocolType` .  A ProtocolType módosítása nem támogatott művelet.
 
 * Ok:   
 A `ProtocolType` tulajdonság beállítása a kötet létrehozásakor történik.  Nem frissíthető.
 * Megoldás:   
-Nincs.
+Nincsenek.
 * Megkerülő megoldás:   
 Hozzon létre egy másik kötetet új protokoll-típusokkal.
 
 ***A (z) {resourceType} típusú erőforrás létrehozása meghaladja a (z) {parentResourceType} {resourceType} típusú erőforrásokra vonatkozó kvótát. Az aktuális erőforrások száma {currentCount}, törölje az ilyen típusú erőforrásokat egy új létrehozása előtt.***
 
-Ez a hiba akkor fordul elő, ha erőforrást`NetAppAccount`(, `CapacityPool` `Volume`, vagy `Snapshot`) próbál létrehozni, de a kvóta elérte a korlátot.
+Ez a hiba akkor fordul elő, ha erőforrást ( `NetAppAccount` ,, `CapacityPool` vagy) próbál létrehozni `Volume` `Snapshot` , de a kvóta elérte a korlátot.
 
 * Ok:   
-Megpróbál létrehozni egy erőforrást, de elérte a kvóta korlátját (például: `NetAppAccounts` előfizetés vagy `CapacityPools` / `NetAppAccount`).
+Megpróbál létrehozni egy erőforrást, de elérte a kvóta korlátját (például: `NetAppAccounts` előfizetés vagy `CapacityPools` / `NetAppAccount` ).
 * Megoldás:   
 Növelje a kvóta korlátját.
 * Megkerülő megoldás:   
@@ -435,38 +435,38 @@ Az SMB-kiszolgáló nevének hossza meghaladja a 10 karaktert.
 * Megoldás:   
 Használjon rövidebb kiszolgálónevet. A maximális hossz 10 karakter.
 * Megkerülő megoldás:   
-Nincs.  Tekintse meg a fenti megoldást. 
+Nincsenek.  Tekintse meg a fenti megoldást. 
 
 ***A denetid nem módosítható.***
 
-Ez a hiba akkor fordul elő, ha a `subnetId` kötet létrehozása után megpróbálja módosítani a módosítást.  `SubnetId`a kötet létrehozásakor be kell állítani, és később nem módosítható.
+Ez a hiba akkor fordul elő, ha a kötet létrehozása után megpróbálja módosítani a módosítást `subnetId` .  `SubnetId`a kötet létrehozásakor be kell állítani, és később nem módosítható.
 
 * Ok:   
-A kötet létrehozása után megpróbálja módosítani `subnetId` a kötetet, amely nem támogatott művelet. 
+A `subnetId` kötet létrehozása után megpróbálja módosítani a kötetet, amely nem támogatott művelet. 
 * Megoldás:   
-Ha a `subnetId` módosítása nem szükséges, akkor érdemes lehet eltávolítani a paramétert a kérelemből a hibaüzenet elvetése érdekében.
+Ha a módosítása `subnetId` nem szükséges, akkor érdemes lehet eltávolítani a paramétert a kérelemből a hibaüzenet elvetése érdekében.
 * Megkerülő megoldás:   
-Ha módosítania kell a `subnetId`-t, létrehozhat egy új kötetet új `subnetId`értékkel, majd áttelepítheti az új kötetre.
+Ha módosítania kell a `subnetId` -t, létrehozhat egy új kötetet új `subnetId` értékkel, majd áttelepítheti az új kötetre.
 
 ***A denetid formátuma érvénytelen.***
 
-Ez a hiba akkor fordul elő, amikor új kötetet próbál létrehozni `subnetId` , de a `resourceId` nem alhálózathoz tartozik.
+Ez a hiba akkor fordul elő, amikor új kötetet próbál létrehozni, de a `subnetId` nem `resourceId` alhálózathoz tartozik.
 
 * Ok:   
-Ez a hiba akkor fordul elő, amikor új kötetet próbál létrehozni, `subnetId` de a nem `resourceId` alhálózathoz tartozik. 
+Ez a hiba akkor fordul elő, amikor új kötetet próbál létrehozni, de a `subnetId` nem `resourceId` alhálózathoz tartozik. 
 * Megoldás:   
-Ellenőrizze a értékét, hogy `subnetId` az tartalmazza `resourceId` -e a használt alhálózatot.
+Ellenőrizze a értékét, hogy az `subnetId` tartalmazza-e a `resourceId` használt alhálózatot.
 * Megkerülő megoldás:   
-Nincs. Tekintse meg a fenti megoldást. 
+Nincsenek. Tekintse meg a fenti megoldást. 
 
 ***Az alhálózatnak "Microsoft. NetApp/Volumes" delegálással kell rendelkeznie.***
 
-Ez a hiba akkor fordul elő, ha kötetet hoz létre, és a kiválasztott alhálózat nincs `Microsoft.NetApp/volumes`delegálva.
+Ez a hiba akkor fordul elő, ha kötetet hoz létre, és a kiválasztott alhálózat nincs delegálva `Microsoft.NetApp/volumes` .
 
 * Ok:   
-Megpróbált létrehozni kötetet, és olyan alhálózatot választott, amely nincs delegálva `Microsoft.NetApp/volumes`.
+Megpróbált létrehozni kötetet, és olyan alhálózatot választott, amely nincs delegálva `Microsoft.NetApp/volumes` .
 * Megoldás:   
-Válasszon másik alhálózatot, amely delegált `Microsoft.NetApp/volumes`.
+Válasszon másik alhálózatot, amely delegált `Microsoft.NetApp/volumes` .
 * Megkerülő megoldás:   
 Adjon hozzá egy megfelelő delegálást az alhálózathoz.
 
@@ -490,7 +490,7 @@ Az alapul szolgáló API ismeretlen hibát küld. Ez a hiba valószínűleg átm
 * Megoldás:   
 A probléma valószínűleg ideiglenes lesz, és egy kis idő elteltével a kérésnek sikeresnek kell lennie. Ha a probléma továbbra is fennáll, hozzon létre egy támogatási jegyet a probléma kivizsgálásához.
 * Megkerülő megoldás:   
-Nincs. Az alapul szolgáló API elengedhetetlen a kötetek kezeléséhez.
+Nincsenek. Az alapul szolgáló API elengedhetetlen a kötetek kezeléséhez.
 
 ***A (z) {propertyName} ismeretlen tulajdonsághoz kapott érték.***
 
@@ -510,7 +510,7 @@ Csak kötetek frissíthetők. Ez a hiba akkor fordul elő, ha nem támogatott fr
 * Ok:   
 A frissíteni kívánt erőforrás nem támogatja a frissítési műveletet. Csak a kötetek módosíthatók a tulajdonságok.
 * Megoldás:   
-Nincs. A frissíteni kívánt erőforrás nem támogatja a frissítési műveletet. Ezért nem módosítható.
+Nincsenek. A frissíteni kívánt erőforrás nem támogatja a frissítési műveletet. Ezért nem módosítható.
 * Megkerülő megoldás:   
 Kötet esetén hozzon létre egy új erőforrást a frissítéssel, és telepítse át az adatátvitelt.
 
@@ -567,7 +567,7 @@ A kötet nem létezik, vagy a létrehozás sikertelen volt.
 * Megoldás:   
 Győződjön meg arról, hogy a megfelelő kötetet módosítja, és hogy a kötet létrehozása sikeres volt. Vagy győződjön meg arról, hogy a pillanatképet létrehozó kötet létezik.
 * Megkerülő megoldás:   
-Nincs.  Tekintse meg a fenti megoldást. 
+Nincsenek.  Tekintse meg a fenti megoldást. 
 
 ***A megadott létrehozási jogkivonat már létezik***
 
@@ -681,4 +681,4 @@ Törölje a kötetet, majd próbálja megismételni a kötet-létrehozási műve
  
 ## <a name="next-steps"></a>További lépések
 
-* [Azure NetApp Files fejlesztése REST API](azure-netapp-files-develop-with-rest-api.md)
+* [Fejlesztés az Azure NetApp Filesra a REST API-val](azure-netapp-files-develop-with-rest-api.md)

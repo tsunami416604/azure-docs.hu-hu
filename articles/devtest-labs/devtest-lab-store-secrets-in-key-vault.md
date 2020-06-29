@@ -1,25 +1,14 @@
 ---
 title: Kulcsok tárolása a kulcstartóban Azure DevTest Labsban | Microsoft Docs
 description: Megtudhatja, hogyan tárolhatja a titkokat egy Azure Key Vault, és hogyan használhatja őket virtuális gépek, képletek vagy környezetek létrehozása során.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
-ms.author: spelluru
-ms.openlocfilehash: 0ca36a7081aaf70ee2045ee7586184c89591df16
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 5714279ef183cb930d643575466dae3d6cb69bba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896780"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481646"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Titkos kulcsok tárolása Azure DevTest Labsban található kulcstartóban
 Előfordulhat, hogy egy összetett titkot kell megadnia, ha Azure DevTest Labs: jelszót használ a Windows rendszerű virtuális géphez, a Linux rendszerű virtuális gép nyilvános SSH-kulcsához vagy a személyes hozzáférési tokenhez a git-tárház egy összetevőn keresztüli klónozásához. A titkok általában hosszúak, és véletlenszerű karakterekkel rendelkeznek. Ezért a megadásuk bonyolult és kényelmetlen lehet, különösen akkor, ha ugyanazt a titkos kódot többször használja.

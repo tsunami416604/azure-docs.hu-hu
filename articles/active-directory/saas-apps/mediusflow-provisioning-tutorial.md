@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3b194755e96e8b8dec2bd0325417950ffe96241c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339322"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482411"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MediusFlow konfigurálása
 
@@ -56,10 +56,10 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 Először engedélyezze az Azure AD-bejelentkezés és az Azure AD konfigurációs funkciójának a MediusFlow-n belüli elérését az alábbi lépések végrehajtásával:
 
 #### <a name="user-login"></a>Felhasználói bejelentkezés
-Ahhoz, hogy engedélyezze a bejelentkezési folyamatot Microsoft 365/Azure AD-re, tekintse át a következőt: [this] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) cikk.
+Ha engedélyezni szeretné a bejelentkezést Microsoft 365/Azure AD-re, tekintse át a következőt: [this] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) cikk.
 
 #### <a name="user-transfer-configuration"></a>Felhasználói átvitel konfigurációja
-A alkalmazásban az Azure AD-ből való kiépítési felhasználók konfigurációs portáljának engedélyezéséhez tekintse meg [ezt](
+Ha engedélyezni szeretné az Azure AD-ből való kiépítési felhasználók konfigurációs portálját, olvassa el [ezt](
 https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup) a cikket.
 
 #### <a name="configure-user-provisioning"></a>Felhasználók átadásának konfigurálása

@@ -1,24 +1,14 @@
 ---
 title: Tesztkörnyezet vagy virtuális gép törlése a laborban Azure DevTest Labs
 description: Ez a cikk bemutatja, hogyan törölheti a labort, vagy törölhet egy virtuális gépet egy laborban a Azure Portal (Azure DevTest Labs) használatával.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 495fb98f3da41a47d316dd64554ba616ede0af47
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897060"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481221"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet vagy virtuális gép törlése a laborban Azure DevTest Labs
 Ebből a cikkből megtudhatja, hogyan törölhet laboratóriumi vagy virtuális gépet egy laborban.

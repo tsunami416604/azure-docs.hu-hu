@@ -1,25 +1,14 @@
 ---
 title: Laborok létrehozása vagy módosítása Azure Resource Manager sablonok használatával
 description: Megtudhatja, hogyan használhatja Azure Resource Manager-sablonokat a PowerShell-lel a Labs automatikus létrehozására vagy módosítására egy DevTest-laborban
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: dad9944c-0b20-48be-ba80-8f4aa0950903
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 180081829387afeb7e63defe7a22378aa8d417d6
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: af225e8cfade30a64aa1f4cf747e2a4d8d3f895f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898541"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483176"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Labs automatikus létrehozása vagy módosítása Azure Resource Manager-sablonokkal és a PowerShell-lel
 

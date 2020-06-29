@@ -9,14 +9,14 @@ ms.author: magoedte
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449481"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482190"
 ---
-# <a name="what-is-azure-arc-for-servers-preview"></a>Mi az Azure arc for Servers (előzetes verzió)
+# <a name="what-is-azure-arc-for-servers-preview"></a>Mi az Azure arc for Servers (előzetes verzió)?
 
 Az Azure arc for Servers (előzetes verzió) lehetővé teszi az Azure-on kívül üzemeltetett Windows-és Linux-gépek felügyeletét a vállalati hálózaton vagy más felhőalapú szolgáltatón, hasonlóan a natív Azure-beli virtuális gépek kezeléséhez. Ha egy hibrid gép csatlakozik az Azure-hoz, az egy csatlakoztatott gép lesz, és erőforrásként van kezelve az Azure-ban. Minden csatlakoztatott számítógép rendelkezik erőforrás-AZONOSÍTÓval, egy előfizetéshez tartozó erőforráscsoport részeként, valamint a szabványos Azure-konstrukciók, például a Azure Policy és a címkék alkalmazásának előnyei.
 
@@ -48,6 +48,6 @@ A legtöbb esetben a telepítési parancsfájl létrehozásakor kiválasztott he
 
 A csatlakoztatott gépi ügynök egy normál szívverésű üzenetet küld a szolgáltatásnak 5 percenként. Ha a szolgáltatás nem tudja fogadni ezeket a szívverési üzeneteket a gépről, a gép offline állapotba kerül, és a rendszer 15 – 30 percen belül automatikusan **megszakítja a kapcsolatot** a portálon. Amikor egy későbbi szívverési üzenetet kap a csatlakoztatott számítógép ügynökéről, az állapota automatikusan **csatlakoztatva**lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kiszolgálók (előzetes verzió) több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gépi ügynök áttekintő](agent-overview.md) cikkét, hogy megtudja, mi szükséges, az ügynök technikai részleteit és a telepítési módszereket.

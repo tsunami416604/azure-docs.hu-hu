@@ -1,5 +1,5 @@
 ---
-title: Tárolási fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával a szinapszis SQL-en belül
+title: A Storage-ban található fájlok elérése az SQL on-demand (előzetes verzió) használatával a szinapszis SQL-ben
 description: Leírja a tárolási fájlok lekérdezését az SQL on-demand (előzetes verzió) típusú, a szinapszis SQLon belüli erőforrásainak használatával.
 services: synapse-analytics
 author: azaricstefan
@@ -9,220 +9,172 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bfea79fe232fbb6f1b39c03a5cc8e9fe06bee867
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 4b6331977cc2237801b84647e4edeb5d789cb9e8
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204939"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482462"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
+# <a name="accessing-external-storage-in-synapse-sql"></a>Külső tároló elérése a szinapszis SQL-ben
 
-Az SQL on-demand (előzetes verzió) segítségével lekérdezheti az adatait az adattóban. Egy T-SQL-lekérdezési felületet kínál, amely a félig strukturált és a strukturálatlan adatlekérdezéseket is tartalmazza.
+Ez a dokumentum azt ismerteti, hogyan olvasható be a felhasználó az Azure Storage-ban tárolt fájlokból származó adatokból a szinapszis SQL-ben (igény szerinti és készlet). A felhasználók a következő beállításokkal férhetnek hozzá a tárolóhoz:
 
-A lekérdezéshez a következő T-SQL-szempontok támogatottak:
+- [OpenRowset](develop-openrowset.md) függvény, amely alkalmi lekérdezéseket tesz lehetővé az Azure Storage-ban található fájlokon.
+- Külső [tábla](develop-tables-external-tables.md) , amely a külső fájlok készletére épülő, előre definiált adatstruktúra.
 
-- Teljes [kijelölési](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) felület, beleértve az SQL-függvények többségét, a kezelőket stb.
-- KÜLSŐ tábla létrehozása SELECT ([CETAS](develop-tables-cetas.md)) – létrehoz egy [külső táblát](develop-tables-external-tables.md) , majd párhuzamosan exportálja a Transact-SQL SELECT utasítás eredményeit az Azure Storage-ba.
+A felhasználó [különböző hitelesítési módszereket](develop-storage-files-storage-access-control.md) használhat, például az Azure ad áteresztő hitelesítést (az alapértelmezett Azure ad-rendszerbiztonsági tag esetében) és az SAS-hitelesítést (az SQL-rendszerbiztonsági tag esetében alapértelmezés szerint).
 
-Ha többet szeretne megtudni arról, hogy mi is a jelenleg nem támogatott, olvassa el az [SQL igény szerinti áttekintését](on-demand-workspace-overview.md) ismertető cikket.
+## <a name="openrowset"></a>OPENROWSET
 
-Amikor az Azure AD-felhasználók lekérdezéseket futtatnak, az alapértelmezett érték a Storage-fiókok eléréséhez az Azure AD átmenő hitelesítési protokoll használatával. Ennek megfelelően a rendszer megszemélyesíti a felhasználókat, és a tárolási szinten ellenőrzi az engedélyeket. Az igényeinek megfelelően [szabályozhatja a tárterület-hozzáférést](develop-storage-files-storage-access-control.md) .
+A [OpenRowset](develop-openrowset.md) függvény lehetővé teszi a felhasználó számára, hogy beolvassa a fájlokat az Azure Storage-ból.
 
-## <a name="extensions"></a>Bővítmények
+### <a name="query-files-using-openrowset"></a>Fájlok lekérdezése a OPENROWSET használatával
 
-Az Azure Storage-fájlokban található adatlekérdezés zökkenőmentes működésének támogatásához az SQL on-demand a [OpenRowset](develop-openrowset.md) függvényt használja további képességekkel:
+A OPENROWSET lehetővé teszi a felhasználók számára az Azure Storage-beli külső fájlok lekérdezését, ha azok hozzáférnek a tárolóhoz. A szinapszis SQL igény szerinti végponthoz csatlakozó felhasználónak a következő lekérdezéssel kell elolvasnia az Azure Storage-ban tárolt fájlok tartalmát:
 
-- [Több fájl vagy mappa lekérdezése](#query-multiple-files-or-folders)
-- [PARKETTA fájlformátum](#parquet-file-format)
-- [A tagolt szöveg (mező lezáró, sor lezáró, escape-karakter) használatának további lehetőségei](#additional-options-for-working-with-delimited-text)
-- [Oszlopok kiválasztott részhalmazának olvasása](#read-a-chosen-subset-of-columns)
-- [Séma-következtetés](#schema-inference)
-- [filename függvény](#filename-function)
-- [filepath függvény](#filepath-function)
-- [Összetett típusok és beágyazott vagy ismétlődő adatstruktúrák használata](#work-with-complex-types-and-nested-or-repeated-data-structures)
-
-### <a name="query-multiple-files-or-folders"></a>Több fájl vagy mappa lekérdezése
-
-Ha T-SQL-lekérdezést szeretne futtatni egy mappa vagy mappák készletén belül, miközben egyetlen entitásként vagy sorhalmazként kezeli őket, adjon meg egy mappát vagy egy mintát (helyettesítő karakterek használatával) egy fájlon vagy mappán keresztül.
-
-A következő szabályok érvényesek:
-
-- A minták a könyvtár elérési útjának vagy a fájlnevek egy részében is megjelenhetnek.
-- Több minta is szerepelhet ugyanabban a címtárbeli lépésben vagy fájlnévben.
-- Ha több helyettesítő karakter is van, akkor az összes egyező elérési úton található fájlok szerepelni fognak az eredményül kapott fájlban.
-
-```
-N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.csv'
+```sql
+SELECT * FROM
+ OPENROWSET(BULK 'http://storage...com/container/file/path/*.csv', format= 'parquet') as rows
 ```
 
-A használati példákat a [lekérdezési mappákban és több fájlban](query-folders-multiple-csv-files.md) találja.
+A felhasználók a következő hozzáférési szabályok használatával férhetnek hozzá a tárolóhoz:
 
-### <a name="parquet-file-format"></a>PARKETTA fájlformátum
+- Az Azure AD User-OPENROWSET a hívó Azure AD-identitását fogja használni az Azure Storage vagy a hozzáférés-tárolók névtelen hozzáféréssel való eléréséhez.
+- SQL-felhasználó – a OPENROWSET névtelen hozzáféréssel fogja elérni a tárolót.
 
-A parketta-forrásadatok lekérdezéséhez használja a FORMAT = "PARQUEt"
+Az SQL-rendszerbiztonsági tag a OPENROWSET használatával közvetlenül is lekérdezheti az SAS-tokenekkel vagy a munkaterület felügyelt identitásával védett fájlokat. Ha egy SQL-felhasználó végrehajtja ezt a függvényt, a HITELESÍTő adatok megváltoztatására jogosult felhasználónak létre kell hoznia egy kiszolgáló-hatókörű hitelesítő adatot, amely megfelel a függvény URL-címének (a tároló neve és tárolója alapján), és a hitelesítő adatokra vonatkozó jogosultságot kapott a OPENROWSET függvény hívója számára:
 
-```syntaxsql
-OPENROWSET
-(
-    { BULK 'data_file' ,
-    { FORMATFILE = 'format_file_path' [ <bulk_options>] } }
-)
-AS table_alias(column_alias,...n)
-<bulk_options> ::=
-...
-[ , FORMAT = {'CSV' | 'PARQUET'} ]
+```sql
+EXECUTE AS somepoweruser
+
+CREATE CREDENTIAL [http://storage.dfs.com/container]
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sas token';
+
+GRANT REFERENCES CREDENTIAL::[http://storage.dfs.com/container] TO sqluser
 ```
 
-A használati példákért tekintse át a [lekérdezési parketta fájljait](query-parquet-files.md) ismertető cikket.
-
-### <a name="additional-options-for-working-with-delimited-text"></a>A tagolt szöveg használatának további lehetőségei
-
-Ezek a további paraméterek a CSV (tagolt szöveg) fájlok használatához szükségesek:
-
-```syntaxsql
-<bulk_options> ::=
-...
-[ , FIELDTERMINATOR = 'char' ]
-[ , ROWTERMINATOR = 'char' ]
-[ , ESCAPE_CHAR = 'char' ]
-...
-```
-
-- A ESCAPE_CHAR = "char" a fájlban szereplő karaktert határozza meg, amely a fájlban lévő összes elválasztó érték kiszökésére szolgál. Ha a Escape-karaktert a saját maga vagy az elválasztó értékek egyike követi, az escape-karakter el lesz dobva az érték beolvasása során.
-A ESCAPE_CHAR paraméter akkor lesz alkalmazva, ha a FIELDQUOTE vagy nincs engedélyezve. A rendszer nem használja fel az idézett karakter megmenekülésére. Az idézőjel karakternek egy másik idézőjel karakterrel kell megszöknie. Az idézőjel karakter csak akkor szerepelhet az oszlop értékén belül, ha az érték idézőjelekkel van ellátva.
-- A FIELDTERMINATOR = ' field_terminator ' meghatározza a használni kívánt lezáró mezőt. Az alapértelmezett lezáró mező egy vessző ("**,**")
-- A ROWTERMINATOR = ' row_terminator ' megadja a használandó sort. Az alapértelmezett sor lezáró egy sortörési karakter: **\r\n**.
-
-### <a name="read-a-chosen-subset-of-columns"></a>Oszlopok kiválasztott részhalmazának olvasása
-
-Az olvasni kívánt oszlopok megadásához a OPENROWSET utasításban megadhat egy opcionális záradékot.
-
-- Ha CSV-adatfájlok vannak, az összes oszlop olvasásához adja meg az oszlopnevek és az adattípusok nevét. Ha az oszlopok egy részhalmazát szeretné használni, a sorszámok használatával válassza ki az oszlopokat a származó adatfájlokból a sorszám alapján. Az oszlopokat a sorszám megjelölése fogja kötni.
-- Ha vannak parketta-adatfájlok, adjon meg olyan oszlopnevek, amelyek egyeznek a kezdeményező adatfájlokban lévő oszlopnevek. Az oszlopok név szerint lesznek kötve.
-
-```syntaxsql
-OPENROWSET
-...
-| BULK 'data_file',
-{ FORMATFILE = 'format_file_path' [ <bulk_options>] } }
-) AS table_alias(column_alias,...n) | WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
-```
-
-Minták esetében tekintse meg a [CSV-fájlok olvasása az összes oszlop megadása nélkül](query-single-csv-file.md#returning-subset-of-columns)című témakört.
-
-### <a name="schema-inference"></a>Séma-következtetés
-
-Ha kihagyja a WITH záradékot a OPENROWSET utasításból, utasíthatja a szolgáltatást, hogy automatikusan érzékelje (következteti) a sémát az alapul szolgáló fájlokból.
+Ha nincs olyan kiszolgálói szintű HITELESÍTő adat, amely megfelel az URL-címnek vagy az SQL-felhasználónak nincs hivatkozása erre a hitelesítő adatra, a rendszer a hibaüzenetet adja vissza. Az SQL-rendszerbiztonsági tag nem tud megszemélyesíteni néhány Azure AD-identitást.
 
 > [!NOTE]
-> Ez jelenleg csak a PARQUEt fájlformátum esetében működik.
+> A OPENROWSET ezen verziója az alapértelmezett hitelesítéssel történő gyors és egyszerű adatelemzéshez készült. A megszemélyesítés vagy a felügyelt identitás kihasználása érdekében használja a következő szakaszban ismertetett adatforrással rendelkező OPENROWSET.
+
+### <a name="querying-data-sources-using-openrowset"></a>Adatforrások lekérdezése az OPENROWSET használatával
+
+A OPENROWSET lehetővé teszi a felhasználó számára, hogy lekérdezze a külső adatforráson elhelyezett fájlokat:
 
 ```sql
-OPENROWSET(
-BULK N'path_to_file(s)', FORMAT='PARQUET');
+SELECT * FROM
+ OPENROWSET(BULK 'file/path/*.csv',
+ DATASOURCE = MyAzureInvoices,
+ FORMAT= 'csv') as rows
 ```
 
-Győződjön meg arról, hogy a [megfelelő késleltetett adattípusok](best-practices-sql-on-demand.md#check-inferred-data-types) használatos az optimális teljesítmény érdekében. 
-
-### <a name="filename-function"></a>Filename függvény
-
-Ez a függvény annak a fájlnak a nevét adja vissza, amelyből a sor származik. 
-
-Adott fájlok lekérdezéséhez olvassa el a fájl- [specifikus fájlok lekérdezése](query-specific-files.md#filename) című cikket.
-
-A visszatérési adattípus a következő: nvarchar (1024). Az optimális teljesítmény érdekében a filename függvény eredményét mindig a megfelelő adattípusra konvertálja. Ha a karakter adattípust használja, ügyeljen arra, hogy a megfelelő hossz legyen használatban.
-
-### <a name="filepath-function"></a>Filepath függvény
-
-Ez a függvény teljes elérési utat vagy az elérési út egy részét adja vissza:
-
-- Ha paraméter nélkül hívja meg, a a fájl teljes elérési útját adja vissza, amelyből a sor származik.
-- Ha paraméterrel hívja meg a metódust, az az elérési út azon részét adja vissza, amely megfelel a paraméterben megadott helyettesítő karakternek. Például az 1. paraméter értéke az elérési út azon részét fogja visszaadni, amely megfelel az első helyettesítő karakternek.
-
-További információért olvassa el az [adott fájlok lekérdezése](query-specific-files.md#filepath) című cikk filepath című szakaszát.
-
-A visszatérési adattípus a következő: nvarchar (1024). Az optimális teljesítmény érdekében a filepath függvény eredményét mindig a megfelelő adattípusra konvertálja. Ha a karakter adattípust használja, ügyeljen arra, hogy a megfelelő hossz legyen használatban.
-
-### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Összetett típusok és beágyazott vagy ismétlődő adatstruktúrák használata
-
-Ha a beágyazott vagy ismétlődő adattípusokban (például a [parketta](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) -fájlokban) tárolt adatfeldolgozás során zavartalan működést szeretne végezni, az SQL on-demand az alábbi bővítményeket adta hozzá.
-
-#### <a name="project-nested-or-repeated-data"></a>Beágyazott vagy ismétlődő projekt
-
-Az adatok kivetítéséhez futtasson egy SELECT utasítást a beágyazott adattípusú oszlopokat tartalmazó parketta-fájlon. A kimenetben a beágyazott értékek a JSON-be lesznek szerializálva, és varchar (8000) SQL-adattípusként lesznek visszaadva.
+Az adatbázis-VEZÉRLÉSi engedéllyel rendelkező felhasználónak létre kell hoznia egy adatbázis-HATÓKÖRű HITELESÍTő adatot, amelyet a rendszer a tároló és a külső ADATFORRÁS eléréséhez fog használni, amely megadja az adatforrás és a hitelesítő adatok URL-címét:
 
 ```sql
-    SELECT * FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
+
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3' ,
+ CREDENTIAL = AccessAzureInvoices) ;
 ```
 
-Részletesebb információkért tekintse meg a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#project-nested-or-repeated-data) című cikket a projekt beágyazott vagy ismétlődő adatok szakaszában.
+Az ADATBÁZIShoz kötődő HITELESÍTő adatok a hivatkozott adatforráson (jelenleg SAS és felügyelt identitás) lévő fájlok elérését határozzák meg.
 
-#### <a name="access-elements-from-nested-columns"></a>Elemek elérése beágyazott oszlopokból
+A hívónak a következő engedélyek egyikével kell rendelkeznie a OPENROWSET függvény végrehajtásához:
 
-Egy beágyazott oszlop (például a struct) beágyazott elemeinek eléréséhez használja a "dot jelölést", hogy összefűzse a mezőneveket az elérési útra. Adja meg az elérési utat column_nameként a OPENROWSET függvény WITH záradékában.
+- A OPENROWSET végrehajtásának egyik engedélye:
+  - A TÖMEGES művelet felügyelete lehetővé teszi a bejelentkezést a OPENROWSET függvény végrehajtásához.
+  - Az adatbázis TÖMEGES MŰVELETének felügyelete lehetővé teszi, hogy az adatbázis-hatókörű felhasználó végrehajtsa a OPENROWSET függvényt.
+- HIVATKOZik az adatbázis HATÓKÖRön belüli HITELESÍTő ADATAIra a külső adatforrásban hivatkozott hitelesítő adathoz.
 
-A szintaxis kódrészlet példája a következő:
+#### <a name="accessing-anonymous-data-sources"></a>Névtelen adatforrások elérése
 
-```syntaxsql
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    WITH ({'column_name' 'column_type',})
-    [AS alias]
-    'column_name' ::= '[field_name.] field_name'
+A felhasználó létrehozhat külső adatforrást olyan HITELESÍTő adatok nélkül, amely a nyilvános elérésű tárolóra hivatkozik, vagy az Azure AD átadó hitelesítést használja:
+
+```sql
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3') ;
 ```
 
-Alapértelmezés szerint a OPENROWSET függvény megegyezik a forrás mező nevével és elérési útjával a WITH záradékban megadott oszlopnevek alapján. Az azonos forrásban lévő parketta-fájl különböző beágyazási szintjein található elemek a WITH záradék használatával érhetők el.
+## <a name="external-table"></a>KÜLSŐ TÁBLA
 
-**Visszaadott értékek**
+A táblázat olvasására jogosult felhasználók külső fájlokat is elérhet az Azure Storage-mappák és-fájlok készletén létrehozott külső tábla használatával.
 
-- A függvény egy skaláris értéket ad vissza, például int, decimális és varchar, a megadott elemből és a megadott elérési úton, a beágyazott típusú csoportba nem tartozó összes fatípushoz.
-- Ha az elérési út egy beágyazott típusú elemre mutat, a függvény egy JSON-töredéket ad vissza a megadott elérési út felső elemétől kezdve. A JSON-töredék varchar (8000) típusú.
-- Ha a tulajdonság nem található a megadott column_name, a függvény hibát ad vissza.
-- Ha a tulajdonság nem található a megadott column_pathban, az [elérési út módjától](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)függően, a függvény hibát ad vissza, ha a szigorú vagy a null értéket adja meg LAX módban.
+A [külső tábla létrehozásához szükséges engedélyekkel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) rendelkező felhasználó (például CREATE TABLE és a hitelesítő adatok vagy az adatbázis HATÓKÖRű HITELESÍTŐ adatainak módosítása) a következő parancsfájllal hozhat létre táblázatot az Azure Storage-adatforráson:
 
-A lekérdezési minták esetében tekintse át a beágyazott oszlopok hozzáférési elemeit a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#access-elements-from-nested-columns) című cikkben.
-
-#### <a name="access-elements-from-repeated-columns"></a>Elemek elérése ismétlődő oszlopokból
-
-Ha ismétlődő oszlop elemeit szeretné elérni, például egy tömb vagy Térkép elemét, használja a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) függvényt minden olyan skaláris elemnél, amelyet a projekthez és a biztosításához szükséges:
-
-- Beágyazott vagy ismétlődő oszlop, az első paraméterként
-- Egy [JSON-elérési út](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , amely megadja az elérni kívánt elemet vagy tulajdonságot második paraméterként
-
-A nem skaláris elemek ismétlődő oszlopokból való eléréséhez használja a [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) függvényt minden olyan nem skaláris elemhez, amelyet a projekthez és a biztosításához szükséges:
-
-- Beágyazott vagy ismétlődő oszlop, az első paraméterként
-- Egy [JSON-elérési út](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) , amely megadja az elérni kívánt elemet vagy tulajdonságot második paraméterként
-
-Lásd az alábbi szintaxist:
-
-```syntaxsql
-    SELECT
-       { JSON_VALUE (column_name, path_to_sub_element), }
-       { JSON_QUERY (column_name [ , path_to_sub_element ]), )
-    FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+```sql
+CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
+( ProductKey int, ProductLabel nvarchar, ProductName nvarchar )
+WITH
+(
+LOCATION='/DimProduct/year=*/month=*' ,
+DATA_SOURCE = AzureDataLakeStore ,
+FILE_FORMAT = TextFileFormat
+) ;
 ```
 
-Lekérdezési mintákat talál az elemek az ismétlődő oszlopokból való eléréséhez a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#access-elements-from-repeated-columns) cikkben.
+A CONTROL DATABASE engedéllyel rendelkező felhasználónak létre kell hoznia egy adatbázis-HATÓKÖRű HITELESÍTő adatot, amelyet a rendszer a tároló és a külső ADATFORRÁS eléréséhez fog használni, amely megadja az adatforrás és a hitelesítő adatok URL-címét:
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL cred
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
+
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
+ WITH ( LOCATION = 'https://samples.blob.core.windows.net/products' ,
+ CREDENTIAL = cred
+ ) ;
+```
+
+Az adatbázis-HATÓKÖRrel rendelkező hitelesítő adatok a hivatkozott adatforráson lévő fájlok elérését határozzák meg.
+
+### <a name="reading-external-files-with-external-table"></a>Külső fájlok olvasása külső TÁBLÁZATtal
+
+A külső tábla lehetővé teszi az adatok olvasását az adatforráson keresztül hivatkozott fájlokból a szabványos SQL SELECT utasítás használatával:
+
+```sql
+SELECT *
+FROM dbo.DimProductsExternal
+```
+
+A hívónak az alábbi engedélyekkel kell rendelkeznie az információk olvasásához:
+- Engedély kiválasztása külső táblában
+- Az adatbázis HATÓKÖRén belüli HITELESÍTő adatokra HIVATKOZik, ha az adatforrás HITELESÍTő adatokkal rendelkezik
+
+## <a name="permissions"></a>Engedélyek
+
+A következő táblázat a fent felsorolt műveletekhez szükséges engedélyeket sorolja fel.
+
+| Lekérdezés | Szükséges engedélyek|
+| --- | --- |
+| OPENROWSET (BULK) adatforrás nélkül | A TÖMEGES rendszergazdai SQL-bejelentkezés FELÜGYELETéhez HIVATKOZÁSokkal rendelkező HITELESÍTő adatok szükségesek:: \<URL> sas által védett tároló esetén |
+| OPENROWSET (TÖMEGES) adatforrással hitelesítő adatok nélkül | TÖMEGES RENDSZERGAZDA FELÜGYELETE |
+| OPENROWSET (TÖMEGES) adatforrással, hitelesítő adatokkal | A TÖMEGES RENDSZERGAZDAI HIVATKOZÁS ADATBÁZIS-HATÓKÖRŰ HITELESÍTŐ ADATAINAK KEZELÉSE |
+| KÜLSŐ ADATFORRÁS LÉTREHOZÁSA | AZ ADATBÁZIS-HATÓKÖRÖN BELÜLI HITELESÍTŐ ADATOKRA HIVATKOZÓ KÜLSŐ ADATFORRÁS MÓDOSÍTÁSA |
+| KÜLSŐ TÁBLA LÉTREHOZÁSA | CREATE TABLE, BÁRMILYEN SÉMA MÓDOSÍTÁSA, BÁRMILYEN KÜLSŐ FÁJLFORMÁTUM MÓDOSÍTÁSA, BÁRMILYEN KÜLSŐ ADATFORRÁS MÓDOSÍTÁSA |
+| KIVÁLASZTÁS KÜLSŐ TÁBLÁBÓL | TÁBLA KIVÁLASZTÁSA |
+| CETAS | Táblázat létrehozásához – CREATE TABLE bármely séma módosítása bármilyen adatforrásra + bármilyen külső FÁJLFORMÁTUMra módosítható. Adatok beolvasása: rendszergazdai TÖMEGES műveletek + REFERENCIÁk a hitelesítő adatokhoz, vagy a lekérdezés + R/W engedéllyel rendelkező tábla/nézet/függvény tábla kijelölése a tároláshoz |
 
 ## <a name="next-steps"></a>További lépések
 
-A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
+Most már készen áll a folytatásra a következő cikkekkel:
 
-- [Egyetlen CSV-fájl lekérdezése](query-single-csv-file.md)
+- [Adatlekérdezés a Storage szolgáltatásban](query-data-storage.md)
+
+- [CSV-fájl lekérdezése](query-single-csv-file.md)
+
+- [Mappák és több fájl lekérdezése](query-folders-multiple-csv-files.md)
+
+- [Adott fájlok lekérdezése](query-specific-files.md)
+
 - [Parquet-fájlok lekérdezése](query-parquet-files.md)
+
+- [Beágyazott típusok lekérdezése](query-parquet-nested-types.md)
+
 - [JSON-fájlok lekérdezése](query-json-files.md)
-- [A Parquet beágyazott típusainak lekérdezése](query-parquet-nested-types.md)
-- [Mappák és több CSV-fájl lekérdezése](query-folders-multiple-csv-files.md)
-- [Fájl metaadatainak használata a lekérdezésekben](query-specific-files.md)
+
 - [Nézetek létrehozása és használata](create-use-views.md)

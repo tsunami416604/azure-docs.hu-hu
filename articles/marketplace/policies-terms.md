@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/26/2020
 ms.author: dsindona
-ms.openlocfilehash: ff38749145de3ea2d80cb0ca850ce3428bc1b386
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 093348d8eeb5d83831ec0bedd8c542f1a2d5a064
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484926"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482598"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>A kereskedelmi piactér szabályzatai és feltételei
 
@@ -33,7 +33,7 @@ A piactéren elérhető ajánlatoknak meg kell felelniük a szabályzatoknak és
 
 * [Az Azure Marketplace használati feltételei](https://docs.microsoft.com/legal/marketplace/terms)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Látogasson el a [kereskedelmi piactér közzétételi útmutató](./marketplace-publishers-guide.md) oldalára.
 

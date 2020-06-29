@@ -8,20 +8,22 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: e626f6e5b65e369c3c77900cd46f2b86cd6f9d52
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117998"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483295"
 ---
-# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Gyors útmutató: Azure Cosmos DB és tároló létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Rövid útmutató: Azure Cosmos DB és tároló létrehozása ARM-sablonnal
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A Azure Cosmos DB a kulcs/érték adatbázisok, dokumentum-adatbázisok és Graph-adatbázisok gyors létrehozásához és lekérdezéséhez használható. Ez a rövid útmutató egy Resource Manager-sablon üzembe helyezésének folyamatát, amely egy Azure Cosmos-adatbázis létrehozásához és az adatbázison belüli tárolóhoz szükséges. A tárolóban később tárolhatók az adattárolók.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A Azure Cosmos DB a kulcs/érték adatbázisok, dokumentum-adatbázisok és Graph-adatbázisok gyors létrehozásához és lekérdezéséhez használható. Ez a rövid útmutató egy Azure Resource Manager sablon (ARM-sablon) üzembe helyezésének folyamatát tárgyalja egy Azure Cosmos-adatbázis létrehozásához és az adatbázison belüli tároló létrehozásához. A tárolóban később tárolhatók az adattárolók.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Üzembe helyezés az Azure-ban":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,11 +33,9 @@ Azure-előfizetés vagy ingyenes Azure Cosmos DB próbaverziós fiók
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-## <a name="create-an-azure-cosmos-account-database-container"></a>Azure Cosmos-fiók, adatbázis, tároló létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
@@ -49,7 +49,7 @@ Három Azure-erőforrás van definiálva a sablonban:
 
 További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb)katalógusában találhatók.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy Azure Cosmos-fiókot, egy adatbázist és egy tárolót.
 
@@ -57,7 +57,7 @@ További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.mic
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
-   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Resource Manager-sablon, Azure Cosmos DB integráció, portál üzembe helyezése":::
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM-sablon, Azure Cosmos DB integráció, portál üzembe helyezése":::
 
     Ha meg van adva, használja az alapértelmezett értékeket az Azure Cosmos-erőforrások létrehozásához.
 
@@ -78,7 +78,7 @@ További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.mic
 
 3. Válassza a **Beszerzés** lehetőséget. Miután sikeresen telepítette az Azure Cosmos-fiókot, értesítést kap:
 
-   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Resource Manager-sablon, Cosmos DB integráció, portál-értesítés üzembe helyezése":::
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM-sablon, Cosmos DB integráció, portál-értesítés üzembe helyezése":::
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -132,7 +132,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure Cosmos-fiókot, egy adatbázist és egy tárolót egy Azure Resource Manager sablon használatával, és ellenőrizte a telepítést. Ha többet szeretne megtudni a Azure Cosmos DB és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Azure Cosmos-fiókot, egy adatbázist és egy tárolót egy ARM-sablon használatával, és ellenőrizte az üzemelő példányt. Ha többet szeretne megtudni a Azure Cosmos DB és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 
 - [A Azure Cosmos db áttekintése](introduction.md)
 - További információ az [Azure Resource Managerről](../azure-resource-manager/management/overview.md)

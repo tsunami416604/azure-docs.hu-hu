@@ -1,25 +1,14 @@
 ---
 title: Azure Marketplace-rendszerkép beállításainak konfigurálása Azure DevTest Labs
 description: Annak konfigurálása, hogy mely Azure Marketplace-rendszerképek használhatók virtuális gépek létrehozásakor Azure DevTest Labs
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 804c6af2-17e9-4320-af3a-f454bd398379
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 2dc3aa000cefc0e65305b58f8fdce93b94bfd35f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 9fdb4e3a888e876f91b8af2e4854a9c101eea45c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896304"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482717"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Azure Marketplace-rendszerkép beállításainak konfigurálása Azure DevTest Labs
 A DevTest Labs támogatja a virtuális gépek Azure Marketplace-lemezképek alapján történő létrehozását, attól függően, hogy az Azure Marketplace-lemezképek hogyan legyenek felhasználva a laborban. Ez a cikk bemutatja, hogyan határozhatja meg, hogy mely, ha van ilyen, Azure Marketplace-lemezképeket használhat a virtuális gépek tesztkörnyezetben való létrehozásakor. Ez biztosítja, hogy a csapata csak a szükséges Piactéri rendszerképekhez férhet hozzá. 

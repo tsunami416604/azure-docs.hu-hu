@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6141440cdb5b232145417c6051cb340e806f9352
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: b98a5a25ed0aa97a8fa187a9bb1a8075f550d7ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338002"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482394"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
@@ -187,16 +187,16 @@ Import-Module .\HybridRegistration.psd1
 Most futtassa a `Add-HybridRunbookWorker` parancsmagot a következő szintaxis használatával.
 
 ```powershell-interactive
-Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
+Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 ```
 
-A paraméterekhez `EndPoint` és az `Token` Automation-fiók Keys ( **kulcsok** ) lapjához szükséges információkat lekérheti. A lap bal oldalán található **Fiókbeállítások** szakaszban válassza a **kulcsok** lehetőséget.
+A paraméterekhez `Url` és az `Key` Automation-fiók Keys ( **kulcsok** ) lapjához szükséges információkat lekérheti. A lap bal oldalán található **Fiókbeállítások** szakaszban válassza a **kulcsok** lehetőséget.
 
 ![Kulcsok kezelése lap](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* A `EndPoint` paraméter esetében másolja az **URL-cím**értékét.
+* A `Url` paraméter esetében másolja az **URL-cím**értékét.
 
-* A `Token` paraméter esetében másolja az **elsődleges elérési kulcs**értékét.
+* A `Key` paraméter esetében másolja az **elsődleges elérési kulcs**értékét.
 
 * A `GroupName` paraméterhez használja a Hybrid Runbook Worker Group nevét. Ha ez a csoport már létezik az Automation-fiókban, az aktuális gép hozzá lesz adva. Ha ez a csoport nem létezik, a rendszer hozzáadja.
 
@@ -219,7 +219,7 @@ A telepített moduloknak a környezeti változó által hivatkozott helyen kell 
 3. Nyisson meg egy PowerShell-munkamenetet rendszergazdai módban, és futtassa az alábbi parancsot az URL-cím és az elsődleges elérési kulcs értékeivel. Az `Verbose` eltávolítási folyamat részletes naplójához használja a paramétert. Ha el szeretné távolítani az elavult gépeket a hibrid feldolgozói csoportból, használja a választható `machineName` paramétert.
 
 ```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <primaryAccessKey> -machineName <computerName>
+Remove-HybridRunbookWorker -Url <URL> -Key <primaryAccessKey> -MachineName <computerName>
 ```
 
 ## <a name="remove-a-hybrid-worker-group"></a>Hibridfeldolgozó-csoport eltávolítása

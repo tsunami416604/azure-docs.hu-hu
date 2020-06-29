@@ -1,24 +1,14 @@
 ---
 title: A koncepció igazolása – Azure DevTest Labs | Microsoft Docs
 description: Megtudhatja, hogyan teheti elérhetővé a koncepciót, hogy Azure DevTest Labs sikeresen beépíthető legyen egy vállalati környezetbe.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: tanmayeekamath
-manager: femila
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: takamath
-ms.openlocfilehash: ca843213760cee60799568a6f33059c2bd91c835
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/2/2020
+ms.openlocfilehash: b0178d412154de556f25ab71bb30eed7be5e9ba6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897179"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481357"
 ---
 # <a name="deliver-a-proof-of-concept"></a>A koncepció igazolása 
 

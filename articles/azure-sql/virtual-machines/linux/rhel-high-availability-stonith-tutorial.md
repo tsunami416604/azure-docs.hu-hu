@@ -7,21 +7,21 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 06/18/2020
-ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.date: 06/25/2020
+ms.openlocfilehash: cd4128328ac0c3e9f03ecc80abb6e7b17537b2ee
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079370"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483057"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> Ebben az oktatóanyagban a SQL Server 2017-es RHEL 7,6-et használjuk, de a magas rendelkezésre állás konfigurálásához a SQL Server 2019 a RHEL 7 vagy a RHEL 8 használatával lehetséges. A rendelkezésre állási csoport erőforrásainak konfigurálására szolgáló parancsok megváltoztak a RHEL 8-ban, és a megfelelő parancsokról további információért tekintse meg a [rendelkezésre állási csoport erőforrásának létrehozása](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) és a RHEL 8 erőforrásai című cikket.
+> Ebben az oktatóanyagban a SQL Server 2017-es RHEL 7,6-et használjuk, de a magas rendelkezésre állás konfigurálásához a SQL Server 2019 a RHEL 7 vagy a RHEL 8 használatával lehetséges. A pacemake-fürt és a rendelkezésre állási csoport erőforrásainak konfigurálására szolgáló parancsok a 8. RHEL módosultak, és a megfelelő parancsokkal kapcsolatos további információkért tekintse meg a [rendelkezésre állási csoport erőforrásának létrehozása](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) és a RHEL 8 erőforrásai című cikket.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > - Új erőforráscsoport, rendelkezésre állási csoport és Linux rendszerű virtuális gépek (VM-EK) létrehozása
@@ -103,32 +103,118 @@ A parancs befejeződése után a következő eredményeket kell megkapnia:
 
     ```output
     [
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.4",
-              "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
-              "version": "7.4.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.5",
-              "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
-              "version": "7.5.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.6",
-              "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
-              "version": "7.6.2019062019"
-            }
+      {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.4",
+    "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
+    "version": "7.4.2019062021"
+       },
+       {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.5",
+    "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
+    "version": "7.5.2019062021"
+        },
+        {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.6",
+    "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
+    "version": "7.6.2019062019"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.0",
+    "urn": "RedHat:RHEL-HA:8.0:8.0.2020021914",
+    "version": "8.0.2020021914"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.1",
+    "urn": "RedHat:RHEL-HA:8.1:8.1.2020021914",
+    "version": "8.1.2020021914"
+          },
+          {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "80-gen2",
+    "urn": "RedHat:RHEL-HA:80-gen2:8.0.2020021915",
+    "version": "8.0.2020021915"
+           },
+           {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "81_gen2",
+    "urn": "RedHat:RHEL-HA:81_gen2:8.1.2020021915",
+    "version": "8.1.2020021915"
+           }
     ]
     ```
 
-    Ebben az oktatóanyagban a képet választjuk `RedHat:RHEL-HA:7.6:7.6.2019062019` .
+    Ebben az oktatóanyagban a `RedHat:RHEL-HA:7.6:7.6.2019062019` RHEL 7 példáját választjuk, és `RedHat:RHEL-HA:8.1:8.1.2020021914` a RHEL 8 példára választjuk.
+    
+    SQL Server 2019 előre telepített RHEL8-képekre is kiválaszthatja. A rendszerképek listájának lekéréséhez futtassa a következő parancsot:  
+    
+    ```azurecli-interactive
+    az vm image list --all --offer "sql2019-rhel8"
+    ```
 
+    A következő eredményeknek kell megjelennie:
+
+    ```output
+    [
+      {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200317",
+    "version": "15.0.200317"
+       },
+       }
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200512",
+    "version": "15.0.200512"
+       }
+    ]
+    ```
+
+    Ha a fenti rendszerképek egyikét használja a virtuális gépek létrehozásához, a SQL Server 2019 előre telepítve van. Ugorja át a [telepítési SQL Server és az MSSQL-Tools](#install-sql-server-and-mssql-tools) szakaszt a jelen cikkben leírtak szerint.
+    
+    
     > [!IMPORTANT]
     > A rendelkezésre állási csoport beállításához a gépek nevének 15 karakternél rövidebbnek kell lennie. A Felhasználónév nem tartalmazhat nagybetűket, és a jelszónak 12 karakternél hosszabbnak kell lennie.
 
@@ -276,9 +362,22 @@ Ebben a szakaszban engedélyezjük és elindítjuk a pcsd szolgáltatást, majd 
 
     - Ha a `pcs cluster auth` parancsot a fürtcsomópontok hitelesítésére futtatja, a rendszer kérni fogja a jelszót. Adja meg a korábban létrehozott **hacluster** -felhasználó jelszavát.
 
+    **RHEL7**
+
     ```bash
     sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
     sudo pcs cluster setup --name az-hacluster <VM1> <VM2> <VM3> --token 30000
+    sudo pcs cluster start --all
+    sudo pcs cluster enable --all
+    ```
+
+    **RHEL8**
+
+    A 8. RHEL a csomópontokat külön kell hitelesítenie. Ha a rendszer kéri, adja meg manuálisan a **hacluster** felhasználónevét és jelszavát.
+
+    ```bash
+    sudo pcs host auth <node1> <node2> <node3>
+    sudo pcs cluster setup <clusterName> <node1> <node2> <node3>
     sudo pcs cluster start --all
     sudo pcs cluster enable --all
     ```
@@ -289,6 +388,8 @@ Ebben a szakaszban engedélyezjük és elindítjuk a pcsd szolgáltatást, majd 
     sudo pcs status
     ```
 
+   **7. RHEL** 
+   
     Ha az összes csomópont online állapotban van, a következőhöz hasonló kimenet jelenik meg:
 
     ```output
@@ -315,7 +416,36 @@ Ebben a szakaszban engedélyezjük és elindítjuk a pcsd szolgáltatást, majd 
           pacemaker: active/enabled
           pcsd: active/enabled
     ```
-
+   
+   **RHEL 8** 
+   
+    ```output
+    Cluster name: az-hacluster
+     
+    WARNINGS:
+    No stonith devices and stonith-enabled is not false
+     
+    Cluster Summary:
+    * Stack: corosync
+    * Current DC: <VM2> (version 1.1.19-8.el7_6.5-c3c624ea3d) - partition with quorum
+    * Last updated: Fri Aug 23 18:27:57 2019
+    * Last change: Fri Aug 23 18:27:56 2019 by hacluster via crmd on <VM2>
+    * 3 nodes configured
+    * 0 resource instances configured
+     
+   Node List:
+    * Online: [ <VM1> <VM2> <VM3> ]
+   
+   Full List of Resources:
+   * No resources
+     
+   Daemon Status:
+          corosync: active/enabled
+          pacemaker: active/enabled
+          pcsd: active/enabled
+    
+    ```
+    
 1. Állítsa be a várt szavazatokat az élő fürtben 3 értékre. Ez a parancs csak az élő fürtöt érinti, és nem módosítja a konfigurációs fájlokat.
 
     Az összes csomóponton állítsa be a várt szavazatokat a következő paranccsal:
@@ -469,12 +599,18 @@ sudo firewall-cmd --reload
 ```
 
 ## <a name="install-sql-server-and-mssql-tools"></a>SQL Server-és MSSQL-eszközök telepítése
- 
-Az alábbi szakasz segítségével telepítheti a virtuális gépekre SQL Server és MSSQL-eszközöket. Hajtsa végre ezeket a műveleteket az összes csomóponton. További információ: [Install SQL Server on a Red Hat VM](/sql/linux/quickstart-install-connect-red-hat).
+
+> [!NOTE]
+> Ha a virtuális gépeket a RHEL8-on előre telepített SQL Server 2019-es verzióval hozta létre, akkor az alábbi lépéseket kihagyhatja a SQL Server és az MSSQL-Tools telepítéséhez, valamint a **rendelkezésre állási csoport konfigurálása** szakasz elindításához, miután az összes virtuális gépen futtatja a (z `sudo /opt/mssql/bin/mssql-conf set-sa-password` ) parancsot.
+
+Az alábbi szakasz segítségével telepítheti a virtuális gépekre SQL Server és MSSQL-eszközöket. Az alábbi minták közül választhatja ki a SQL Server 2017-es verziójának RHEL 7-es vagy SQL Server 2019-es RHEL való telepítését. Hajtsa végre ezeket a műveleteket az összes csomóponton. További információ: [Install SQL Server on a Red Hat VM](/sql/linux/quickstart-install-connect-red-hat).
+
 
 ### <a name="installing-sql-server-on-the-vms"></a>SQL Server telepítése a virtuális gépekre
 
 A következő parancsokat használja a SQL Server telepítéséhez:
+
+**RHEL 7 SQL Server 2017** 
 
 ```bash
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2017.repo
@@ -483,6 +619,14 @@ sudo /opt/mssql/bin/mssql-conf setup
 sudo yum install mssql-server-ha
 ```
 
+**RHEL 8 SQL Server 2019** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/mssql-server-2019.repo
+sudo yum install -y mssql-server
+sudo /opt/mssql/bin/mssql-conf setup
+sudo yum install mssql-server-ha
+```
 ### <a name="open-firewall-port-1433-for-remote-connections"></a>A 1433-es tűzfal megnyitása távoli kapcsolatokhoz
 
 A távoli csatlakozáshoz meg kell nyitnia a 1433-as portot a virtuális gépen. Az alábbi parancsokkal nyithatja meg az 1433-as portot az egyes virtuális gépek tűzfalán:
@@ -496,8 +640,17 @@ sudo firewall-cmd --reload
 
 A következő parancsok segítségével telepítheti SQL Server parancssori eszközöket. További információ: [install the SQL Server parancssori eszközök](/sql/linux/quickstart-install-connect-red-hat#tools).
 
+**7. RHEL** 
+
 ```bash
 sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
+sudo yum install -y mssql-tools unixODBC-devel
+```
+
+**RHEL 8** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo
 sudo yum install -y mssql-tools unixODBC-devel
 ```
  
@@ -796,26 +949,47 @@ A [rendelkezésre állási csoport erőforrásainak a pacemaker-fürtön törté
 
 ### <a name="create-the-ag-cluster-resource"></a>Az AG-fürt erőforrásának létrehozása
 
-1. A következő parancs használatával hozza létre az erőforrást `ag_cluster` a rendelkezésre állási csoportban `ag1` .
+1. Használja az alábbi parancsok egyikét a korábban kiválasztott környezet alapján, hogy létrehozza az erőforrást `ag_cluster` a rendelkezésre állási csoportban `ag1` .
 
-    ```bash
-    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-    ```
+      **7. RHEL** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+        ```
 
-1. Ellenőrizze az erőforrást, és győződjön meg arról, hogy online állapotban van, mielőtt továbblép a következő parancs használatával:
+      **RHEL 8** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+        ```
+
+2. Ellenőrizze az erőforrást, és győződjön meg arról, hogy online állapotban van, mielőtt továbblép a következő parancs használatával:
 
     ```bash
     sudo pcs resource
     ```
 
     A következő kimenetnek kell megjelennie:
-
+    
+    **7. RHEL** 
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs resource
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
     ```
+    
+    **RHEL 8** 
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs resource
+    * Clone Set: ag_cluster-clone [ag_cluster] (promotable):
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel3 (Monitoring) 
+    * ag_cluster             (ocf::mssql:ag) :            Master VMrhel1 (Monitoring)
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel2 (Monitoring)
+    ```
+
 
 ### <a name="create-a-virtual-ip-resource"></a>Virtuális IP-erőforrás létrehozása
 
@@ -827,13 +1001,13 @@ A [rendelkezésre állási csoport erőforrásainak a pacemaker-fürtön törté
     # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
     ```
 
-1. A **stonith-kompatibilis** tulajdonság beállítása false (hamis) értékre
+2. A **stonith-kompatibilis** tulajdonság beállítása false (hamis) értékre
 
     ```bash
     sudo pcs property set stonith-enabled=false
     ```
 
-1. Hozza létre a virtuális IP-erőforrást a következő parancs használatával:
+3. Hozza létre a virtuális IP-erőforrást a következő parancs használatával:
 
     - Cserélje le az `<availableIP>` alábbi értéket egy nem használt IP-címhez.
 
@@ -845,23 +1019,41 @@ A [rendelkezésre állási csoport erőforrásainak a pacemaker-fürtön törté
 
 1. Annak érdekében, hogy az IP-cím és az AG-erőforrás ugyanazon a csomóponton fusson, konfigurálni kell egy közös elhelyezési korlátozást. Futtassa az alábbi parancsot:
 
+   **7. RHEL**
+  
     ```bash
     sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
     ```
 
-1. Hozzon létre egy megrendelési korlátozást, amely biztosítja, hogy az AG-erőforrás az IP-cím előtt fusson. Míg a elhelyezési megkötés egy megrendelés megkötését jelenti, ez kikényszeríti azt.
+   **RHEL 8**
+   
+    ```bash
+     sudo pcs constraint colocation add virtualip with master ag_cluster-clone INFINITY with-rsc-role=Master
+    ```
+  
+2. Hozzon létre egy megrendelési korlátozást, amely biztosítja, hogy az AG-erőforrás az IP-cím előtt fusson. Míg a elhelyezési megkötés egy megrendelés megkötését jelenti, ez kikényszeríti azt.
 
+   **7. RHEL**
+   
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start virtualip
     ```
 
-1. A megkötések ellenőrzéséhez futtassa a következő parancsot:
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs constraint order promote ag_cluster-clone then start virtualip
+    ```
+  
+3. A megkötések ellenőrzéséhez futtassa a következő parancsot:
 
     ```bash
     sudo pcs constraint list --full
     ```
 
     A következő kimenetnek kell megjelennie:
+    
+    **7. RHEL**
 
     ```
     Location Constraints:
@@ -869,6 +1061,17 @@ A [rendelkezésre állási csoport erőforrásainak a pacemaker-fürtön törté
           promote ag_cluster-master then start virtualip (kind:Mandatory) (id:order-ag_cluster-master-virtualip-mandatory)
     Colocation Constraints:
           virtualip with ag_cluster-master (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-master-INFINITY)
+    Ticket Constraints:
+    ```
+    
+    **RHEL 8**
+    
+    ```output
+    Location Constraints:
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
     Ticket Constraints:
     ```
 
@@ -917,12 +1120,22 @@ Annak biztosítása érdekében, hogy a konfiguráció eddig sikeres volt, teszt
 
 1. Futtassa az alábbi parancsot az elsődleges replika manuális feladatátvételéhez `<VM2>` . Cserélje le a `<VM2>` nevet a kiszolgálónév értékére.
 
+   **7. RHEL**
+   
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. Ha újra megtekinti a korlátozásokat, a manuális feladatátvétel miatt egy másik korlátozás lett hozzáadva:
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master
+    ```
 
+2. Ha újra megtekinti a korlátozásokat, a manuális feladatátvétel miatt egy másik korlátozás lett hozzáadva:
+    
+    **7. RHEL**
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs constraint list --full
     Location Constraints:
@@ -935,10 +1148,32 @@ Annak biztosítása érdekében, hogy a konfiguráció eddig sikeres volt, teszt
     Ticket Constraints:
     ```
 
-1. Távolítsa el a megkötést AZONOSÍTÓval a `cli-prefer-ag_cluster-master` következő parancs használatával:
+    **RHEL 8**
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs constraint list --full
+    Location Constraints:
+          Resource: ag_cluster-master
+            Enabled on: VM2 (score:INFINITY) (role: Master) (id:cli-prefer-ag_cluster-clone)
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
+    Ticket Constraints:
+    ```
+    
+3. Távolítsa el a megkötést AZONOSÍTÓval a `cli-prefer-ag_cluster-master` következő parancs használatával:
 
+    **7. RHEL**
+    
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
+    ```
+
+    **RHEL 8**
+    
+    ```bash
+    sudo pcs constraint remove cli-prefer-ag_cluster-clone
     ```
 
 1. Ellenőrizze a fürt erőforrásait a parancs használatával `sudo pcs resource` , és láthatja, hogy az elsődleges példány most már `<VM2>` .

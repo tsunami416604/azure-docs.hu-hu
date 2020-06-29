@@ -9,13 +9,13 @@ ms.author: sgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 507b03266e70ae082872890c9d5cddb50fdeb703
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84719989"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481884"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Az adatfeldolgozás optimalizálása Azure Machine Learning
 
@@ -61,9 +61,10 @@ Indexelés | Alkalmazzon és használjon egy összegzést, amely megadja, hogy h
 
 Ha az előző javaslatok nem elégek, és nem tud beolvasni egy olyan virtuális gépet, amely megfelel az adatainak, 
 
-* Használjon hasonló keretrendszert `Spark` , vagy `Dask` dolgozza fel az adatmennyiséget a memóriából. Ebben a beállításban a dataframe a partíció és a feldolgozás alatt lévő RAM-partícióba töltődik be, és a végeredmény a végén gyűlik össze. 
+* Használjon hasonló keretrendszert `Spark` , vagy `Dask` dolgozza fel az adatmennyiséget a memóriából. Ebben a beállításban a dataframe a partíció és a feldolgozás alatt lévő RAM-partícióba töltődik be, és a végeredmény a végén gyűlik össze.  
 
 * Elosztott keretrendszer használatával bővítheti a fürtöket. Ebben a beállításban az adatfeldolgozási terhelések felosztása és feldolgozása több, párhuzamosan működő processzoron történik, az utolsó eredmény pedig a végén gyűlik össze.
+
 
 ### <a name="recommended-distributed-frameworks"></a>Ajánlott elosztott keretrendszerek
 
@@ -75,6 +76,8 @@ Ha már ismeri a`Pandas`| `Modin`vagy `Dask` dataframe
 Ha szeretné`Spark` | `PySpark`
 1 GB-nál kisebb adatmennyiség esetén | `Pandas`helyi **vagy** távoli Azure Machine learning számítási példány
 10 GB-nál nagyobb adatmennyiség esetén| Áthelyezés fürtre a `Ray` , `Dask` , vagy rendszer használatával`Spark`
+
+Létrehozhat `Dask` fürtöket az Azure ml számítási fürtön a [dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) csomaggal. Vagy helyileg is futtatható `Dask` számítási példányon.
 
 ## <a name="next-steps"></a>További lépések
 

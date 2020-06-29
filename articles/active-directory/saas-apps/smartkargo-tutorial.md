@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/02/2020
+ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310023893d25a484cf05dac00628c632a4421edb
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: d8f65236fee57b4dc3e2bb012d8cdd222f431ec0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84719033"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482615"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartkargo"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SmartKargo
 
@@ -92,13 +92,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, a válasz URL-címével és az azonosítóval. Az értékek lekéréséhez forduljon a SmartKargo ügyfélszolgálati [csapatához](https://www.smartkargo.com/company/contact-2/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **SAML aláíró tanúsítvány** szakaszban kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![SAML aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
-
-1. Az **SAML aláíró tanúsítvány** szakaszban másolja az **ujjlenyomat értékét** , és mentse a számítógépre.
-
-    ![Ujjlenyomat értékének másolása](common/copy-thumbprint.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
 1. A **SmartKargo beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
@@ -136,7 +132,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-smartkargo-sso"></a>SmartKargo SSO konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **SmartKargo** oldalon, el kell küldenie az **ujjlenyomat értékét** és a megfelelő másolt url-címeket a Azure Portal [SmartKargo platform támogatási csapatának](https://www.smartkargo.com/company/contact-2/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **SmartKargo** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal [SmartKargo platform támogatási csapatának](https://www.smartkargo.com/company/contact-2/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-smartkargo-test-user"></a>SmartKargo-tesztelési felhasználó létrehozása
 

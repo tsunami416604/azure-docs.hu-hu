@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 2111ccd65a2944ec5f5ea0526e6e7f577261b213
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 87c1aa4d65b313f4c068ef11c9d2209e9318ef02
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906819"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482870"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -155,11 +155,11 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
     
 * <a id="afs-resource-move"></a>
-  **Áthelyezhetem a Storage Sync szolgáltatást és/vagy a Storage-fiókot egy másik erőforráscsoporthoz vagy előfizetésbe?**  
-   Igen, a Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoporthoz vagy előfizetésbe a meglévő Azure AD-bérlőn belül. Ha áthelyezi a Storage-fiókot, meg kell adnia a hibrid File Sync szolgáltatás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+  **Áthelyezhetem a Storage Sync szolgáltatást és/vagy a Storage-fiókot egy másik erőforráscsoport, előfizetés vagy Azure AD-bérlőbe?**  
+   Igen, a Storage Sync szolgáltatás és/vagy a Storage-fiók áthelyezhető egy másik erőforráscsoport, előfizetés vagy Azure AD-bérlőbe. A Storage Sync szolgáltatás vagy a Storage-fiók áthelyezése után meg kell adnia a Microsoft. StorageSync alkalmazás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
-    > A Azure File Sync nem támogatja az előfizetés másik Azure AD-bérlőre való áthelyezését.
+    > A Felhőbeli végpont létrehozásakor a Storage Sync szolgáltatásnak és a Storage-fióknak ugyanabban az Azure AD-bérlőben kell lennie. A Felhőbeli végpont létrehozása után a Storage Sync szolgáltatás és a Storage-fiók áthelyezhető a különböző Azure AD-bérlők között.
     
 * <a id="afs-ntfs-acls"></a>
   **A Azure File Sync a könyvtár/fájl szintű NTFS ACL-ek és a Azure Files tárolt adathozzáférések megőrzése mellett?**

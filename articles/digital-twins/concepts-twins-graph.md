@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c4bbc3510cc273504d7c97287d3aeb1948db2eb2
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c4cdfc35d39be827109c56a16d68f6e51b56ef43
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390669"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483346"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
 
@@ -95,7 +95,7 @@ A digitális Twin-és a kapcsolati adatfájlok egyaránt JSON formátumban vanna
 
 Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$dtId` | A digitális Twin AZONOSÍTÓját jelölő, felhasználó által megadott karakterlánc |
 | `$conformance` | A digitális iker megfelelőségi állapotát tartalmazó felsorolás ( *nem**megfelelő,* *ismeretlen*) |
@@ -124,7 +124,6 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
   "component": {
     "TableOccupancy": 1,
     "$metadata": {
-      "$model": "dtmi:com:contoso:Table;1",
       "TableOccupancy": {
         "desiredValue": 1,
         "desiredVersion": 3,
@@ -161,9 +160,9 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
 
 Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
-| `$edgeId` | Egy felhasználó által megadott karakterlánc, amely a kapcsolati szegély AZONOSÍTÓját jelöli. Ez a karakterlánc egyedi a forrásként szolgáló digitális Twin környezetben, ami azt is jelenti, hogy az `sourceId`  +  `edgeId` Azure Digital Twins-példány kontextusában egyedi. |
+| `$relationshipId` | Egy felhasználó által megadott karakterlánc, amely a kapcsolat AZONOSÍTÓját jelöli. Ez a karakterlánc egyedi a forrásként szolgáló digitális Twin környezetben, ami azt is jelenti, hogy az `sourceId`  +  `relationshipId` Azure Digital Twins-példány kontextusában egyedi. |
 | `$sourceId` | A forrásként szolgáló digitális Twin azonosító |
 | `$targetId` | A cél digitális iker azonosítója |
 | `$relationshipName` | A kapcsolat neve |
@@ -173,15 +172,16 @@ Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő me
 
 ```json
 {
-  "$edgeId": "Edge-01",
+  "$relationshipId": "relationship-01",
+  "$etag": "W/\"506e8391-2b21-4ac9-bca3-53e6620f6a90\"",
   "$sourceId": "GroundFloor",
-  "$relationship": "contains",
+  "$relationshipName": "contains",
   "$targetId": "Cafe",
   "startDate": "2020-02-04"
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: gráf-elemek kezelése az Azure Digital Twin API-kkal:
 * [Útmutató: digitális ikrek kezelése](how-to-manage-twin.md)

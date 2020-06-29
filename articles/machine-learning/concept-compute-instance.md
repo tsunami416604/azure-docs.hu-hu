@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 8c03df8fb0cd8f5f092450ebe4c66266d2ff4293
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 8713e7538ae65fc8e750d5b3244482a5503b0e37
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816352"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483261"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -33,7 +33,7 @@ A számítási példány egy teljes körűen felügyelt felhőalapú munkaállom
 
 |Főbb előnyök||
 |----|----|
-|Termelékenység|Az adatszakértők a modelleket integrált jegyzetfüzetekkel és a böngészőben a következő eszközökkel hozhatják létre és helyezhetik üzembe:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio|
+|Termelékenység|Az adatszakértők a modelleket integrált jegyzetfüzetekkel és a böngészőben a következő eszközökkel hozhatják létre és helyezhetik üzembe:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio (előzetes verzió)|
 |Felügyelt & biztonságos|Csökkentse a biztonsági lábnyomot, és adja hozzá a vállalati biztonsági követelményeknek való megfelelést. A számítási példányok robusztus felügyeleti házirendeket és biztonságos hálózati konfigurációkat biztosítanak, például:<br/><br/>– Automatikus kiépítés Resource Manager-sablonokból vagy Azure Machine Learning SDK-ból<br/>- [Szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)<br/>- [Virtuális hálózatok támogatása](how-to-enable-virtual-network.md#compute-instance)<br/>– SSH-szabályzat az SSH-hozzáférés engedélyezéséhez vagy letiltásához|
 |Előre konfigurált &nbsp; vagy &nbsp; ml|Időt takaríthat meg a telepítési feladatokban előre konfigurált és naprakész ML-csomagokkal, mély tanulási keretrendszerekkel, GPU-illesztővel.|
 |Teljes mértékben testreszabható|Az Azure-beli virtuálisgép-típusok széles körű támogatása, beleértve a GPU-ket és a megőrzött alacsony szintű testreszabásokat, például a csomagok és illesztőprogramok telepítésének speciális forgatókönyveit. |
@@ -58,7 +58,7 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 
 |**R** -eszközök & környezetek|Részletek|
 |----|:----:|
-|RStudio-kiszolgáló – nyílt forráskódú kiadás||
+|RStudio Server nyílt forráskódú kiadás (előzetes verzió)||
 |R kernel||
 |Az R-hez készült Azure Machine Learning SDK|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK-minták|
 

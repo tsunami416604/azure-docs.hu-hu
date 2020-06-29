@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3de9ef12619ed27eb48af64c4bf4bd1a79229d04
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77482180"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483159"
 ---
 # <a name="azure-firewall-certifications"></a>Azure Firewall minősítések
 
@@ -38,16 +38,18 @@ A következő Azure Firewall minősítések a globális Azure-ra vonatkoznak:
 - Kanadai adatvédelmi törvények
 - DPP (EGYESÜLT KIRÁLYSÁG)
 - EU ENISA IAF
-- Az EU Model záradékai
+- Uniós modellként szolgáló szerződéses klauzulák
 - Európai Bankfelügyeleti Hatóság
 - FCA és PRA (Egyesült Királyság)
-- FERPA (US)
+- FERPA (USA)
 - FFIEC (US)
 - FINMA (Svájc)
 - FSA (Dánia)
-- GLBA (US)
+- GLBA (USA)
 - Németországi C5
-- GxP (FDA 21 CFR rész 11)
+- GxP (FDA 21 CFR Part 11)
+- HIPPA
+- HITECH-szabály (US)
 - HITRUST
 - ISO 20000-1:2011
 - ISO 22301:2012
@@ -66,11 +68,11 @@ A következő Azure Firewall minősítések a globális Azure-ra vonatkoznak:
 - Holland BIR 2012
 - OSFI (Kanada)
 - 1. szintű PCI DSS
-- REGISZTRÁCIÓRA és IRDAI (India)
+- RBI és IRDAI (India)
 - SOC 1 típus 2
 - SOC 2 Type 2
 - SOC 3
-- SOX (US)
+- SOX (USA)
 - Spanyolországi DPA
 - TISAX
 - TruSight
@@ -87,22 +89,24 @@ A következő Azure Firewall minősítések a Azure Government:
 - CSA-csillag igazolása
 - DFARS
 - DoD DISA SRG 2. szint
-- DoE 10 CFR rész 810
-- BIOTERMIKUS
+- DoE 10 CFR Part 810
+- EAR
 - FIPS 140-2
 - FedRAMP High
+- HIPPA
+- HITECH-szabály (US)
 - HITRUST
 - IRS 1075
 - ITAR
-- MARS-E (US)
+- MARS-E (USA)
 - NERC
 - NIST kiberbiztonsági-keretrendszer
 - NIST SP 800-171
 - SOC 1 típus 2
 - SOC 2 Type 2
 - SOC 3
-- SOX (US)
-- 508. szakasz Vpat
+- SOX (USA)
+- Section 508 VPATs
 
 ## <a name="icsa-labs-corporate-firewall-certification"></a>ICSA Labs vállalati tűzfal minősítése
 

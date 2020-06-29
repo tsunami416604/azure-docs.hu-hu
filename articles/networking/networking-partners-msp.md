@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: ed94ff96d926630280b379c8c0c3eefb0c12f2ae
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: aa77ac3652d8646a3354cb137ba7cf4240e58e6c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209436"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482887"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Tudnivalók az Azure hálózatkezelési MSP-partnereiről
 
@@ -33,6 +33,7 @@ Az ebben a szakaszban található hivatkozásokra kattintva további informáci�
 |[ANS csoport, Egyesült Királyság](https://www.ans.co.uk/)|[Azure Managed SVC + ANS Glass 10wk implementáció](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|[ExpressRoute & kapcsolat: 2 hetes Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_er)|[Azure Virtual WAN + Fortinet: 2 hetes Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_vw)|||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Networks Azure-kapcsolat](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Networks Azure-beli virtuális WAN](https://azuremarketplace.microsoft.com/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Hálózati transzformációs tanácsadás: 1 – HR értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting); [BT Cloud-kapcsolat az Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview) -ban|[BT Cloud-kapcsolat Azure-ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[BT Cloud-kapcsolat Azure-VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
+|[CenturyLink](https://www.centurylink.com/business.html)||[ExpressRoute Consulting SVC-ket: 8 – hét megvalósítás](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylink2362604-2362604.centurylink_consultingservicesforexpressroute)||||
 |[Kialakulás](https://www.coevolve.com/services/azure-networking-services/)|||[Felügyelt VMware SD-WAN virtuális Edge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Hálózati optimalizálás az Azure-ban: 2 – HR-Értékelés](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
 |[NTT-adatkészletek](https://us.nttdata.com/en/digital/cloud-transformation)|[Felügyelt szolgáltatások: 10 hetes implementáció](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||

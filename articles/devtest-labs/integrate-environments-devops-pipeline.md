@@ -1,23 +1,14 @@
 ---
 title: Környezetek integrálása Azure-folyamatokra Azure DevTest Labs
 description: Ismerje meg, hogyan integrálhatja Azure DevTest Labs környezeteit az Azure DevOps folyamatos integrációs (CI) és a folyamatos továbbítási (CD-) folyamatokba.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: bafc4cd08d7b4ee2124c46984121b53cd4651baf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898107"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483023"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Környezetek integrálása az Azure DevOps CI/CD-folyamatokba
 Az Azure DevOps Services szolgáltatásban (korábbi nevén Visual Studio Team Services) telepített Azure DevTest Labs Tasks bővítmény használatával egyszerűen integrálhatja a folyamatos integrációs (CI)/folyamatos kézbesítés (CD) build-és kiadási folyamatát Azure DevTest Labsokkal. Ezek a bővítmények megkönnyítik a [környezet](devtest-lab-test-env.md) gyors üzembe helyezését egy adott teszt feladathoz, majd a teszt befejezésekor törli azt. 
