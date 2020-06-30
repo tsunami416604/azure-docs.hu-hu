@@ -180,9 +180,11 @@
           href: geo-disaster-recovery.md
     - name: Biztonság
       items:
-        - name: Hitelesítés
+        - name: Eseménykezelőknek történő eseménykézbesítés hitelesítése
           href: security-authentication.md
-        - name: Engedélyezés
+        - name: Közzétételi ügyfelek hitelesítése
+          href: security-authenticate-publishing-clients.md
+        - name: Event Grid-erőforrásokhoz való hozzáférés engedélyezése
           href: security-authorization.md
         - name: Hálózati biztonság
           href: network-security.md
@@ -202,6 +204,8 @@
           href: create-view-manage-system-topics-cli.md
         - name: Azure Resource Manager-sablon
           href: create-view-manage-system-topics-arm.md
+    - name: Témakörök vagy tartományok hozzáférési kulcsainak beszerzése
+      href: get-access-keys.md
     - name: Közzététel egyéni témakörben
       href: post-to-custom-topic.md
     - name: Feliratkozás Auth0-eseményekre
