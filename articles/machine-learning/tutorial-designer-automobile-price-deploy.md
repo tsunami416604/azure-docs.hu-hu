@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 41b6fb38798e9aa7264000676d81101db1c83236
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e10e5050912788732128a8b765716c22fe9e576e
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656539"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517460"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -40,7 +40,7 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
 
 1. A folyamat fölötti vászonnál válassza a **következtetés létrehozása folyamat**  >  **valós idejű következtetési folyamat**lehetőséget.
 
-    ![Képernyőfelvétel a folyamat létrehozása gombról](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Képernyőfelvétel a folyamat létrehozása gombról":::
 
     A folyamatnak most így kell kinéznie: 
 
@@ -72,7 +72,7 @@ A megjelenő párbeszédpanelen bármelyik meglévő Azure Kubernetes Service-(a
 1. A navigációs menüszalagon válassza a **következtetési fürtök**  >  **+ új**lehetőséget.
 
     ![Az új következtetési fürt ablaktábla beszerzését bemutató képernyőkép](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
-
+   
 1. A következtetési fürt ablaktáblán konfigurálja az új Kubernetes szolgáltatást.
 
 1. Írja be a következőt: *Kaba-számítás* a **számítási névhez**.
@@ -96,8 +96,8 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 1. Válassza ki a létrehozott AK-fürtöt.
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
-
-    ![Az új valós idejű végpont beállítását bemutató képernyőkép](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Az új valós idejű végpont beállítását bemutató képernyőkép":::
 
     Az üzembe helyezés befejeződése után a vászon fölötti sikeres értesítés jelenik meg. Néhány percet is igénybe vehet.
 
@@ -117,11 +117,11 @@ Az üzembe helyezés befejeződése után a **végpontok** lapon ellenőrizheti 
 
     ![Képernyőfelvétel: a valós idejű végpont és az emelt szintű címke tesztelése](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre, helyezhet üzembe és használhat fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni arról, hogyan használhatja a tervezőt más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
 

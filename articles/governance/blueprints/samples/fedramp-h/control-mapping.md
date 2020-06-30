@@ -3,12 +3,12 @@ title: FedRAMP nagy terv-minta vezérlők
 description: A FedRAMP magas tervrajzi minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: f57f753c405e736a4c83dd6f10b6f38184ce74b6
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: cf9db71a18654f973306637831ae1bcdf8dbef9e
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168879"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517201"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>A FedRAMP magas tervrajzi minta leképezésének vezérlése
 
@@ -355,7 +355,7 @@ Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenci
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a FedRAMP magas tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti a tervet, és bemutatja, hogyan helyezheti üzembe a mintát:
 
@@ -363,7 +363,7 @@ Most, hogy áttekintette a FedRAMP magas tervezetének vezérlési leképezésé
 > [FedRAMP nagy terv – áttekintés](./index.md) 
 >  [FedRAMP High Blueprint – lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

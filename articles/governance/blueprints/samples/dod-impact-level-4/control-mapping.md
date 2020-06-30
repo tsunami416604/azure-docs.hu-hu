@@ -3,12 +3,12 @@ title: DoD Impact Level 4 terv minta-vezérlők
 description: A DoD Impact Level 4 terv minta hozzárendelésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: 48734e62f47c38feb8bc34409f9ba41af2648e7a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 3da2450b935d33ccb5b6b5d23bde6333540a79e6
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168981"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517269"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 tervezetének vezérlése
 
@@ -415,7 +415,7 @@ Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenci
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a DoD Impact Level 4 tervezetének vezérlési leképezését, a következő cikkekben megismerheti a terv ismertetését és a minta üzembe helyezésének módját:
 
@@ -423,7 +423,7 @@ Most, hogy áttekintette a DoD Impact Level 4 tervezetének vezérlési leképez
 > [DoD Impact Level 4 tervezet – áttekintés](./index.md) 
 >  [DoD Impact Level 4 tervezet – a lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
