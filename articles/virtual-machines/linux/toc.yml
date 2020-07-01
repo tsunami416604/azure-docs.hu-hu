@@ -947,6 +947,8 @@
           items:
             - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
               href: migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Konvertálás kiszolgálóoldali titkosításra
+              href: disks-ade-sse-conversion-cli.md
             - name: Konvertálás felügyelt lemezekké
               href: convert-unmanaged-to-managed-disks.md
             - name: Lemez konvertálása a standard és a prémium szint között

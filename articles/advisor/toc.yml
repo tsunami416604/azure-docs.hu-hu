@@ -4,6 +4,14 @@
   items:
     - name: Mi az Azure Advisor?
       href: advisor-overview.md
+- name: Rövid útmutatók
+  items:
+    - name: Riasztások konfigurálása új javaslatokhoz
+      items:
+        - name: Azure Portal
+          href: advisor-alerts-portal.md
+        - name: ARM-sablon
+          href: advisor-alerts-arm.md
 - name: Oktatóanyagok
   items:
     - name: Bevezetés az Advisor használatába
@@ -25,7 +33,7 @@
     - name: Engedélyek és letiltott műveletek
       href: permissions.md
     - name: Riasztások konfigurálása javaslatokhoz
-      href: advisor-alerts.md
+      href: advisor-alerts-portal.md
     - name: Tömeges szervizelés javaslatokhoz
       href: advisor-quick-fix.md
     - name: Advisor-adatok az Azure Resource Graph-ban

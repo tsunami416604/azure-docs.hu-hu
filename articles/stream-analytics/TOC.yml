@@ -30,7 +30,7 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 – Üzembe helyezés CI/CD-vel az Azure Pipelinesban
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4 – C# UDF futtatása'
+    - name: 4 – C# UDF futtatása
       href: stream-analytics-edge-csharp-udf.md
     - name: 5 – Egyéni .NET-deszerializáló létrehozása
       href: custom-deserializer.md
@@ -82,10 +82,12 @@
           href: stream-analytics-javascript-user-defined-functions.md
         - name: JavaScript UDA
           href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 'C# UDF'
+        - name: C# UDF
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: Machine Learning UDF
           href: machine-learning-udf.md
+        - name: UDF-ek hibakeresése és frissítései
+          href: debug-user-defined-functions.md
     - name: Stream Analytics-feladat optimalizálása
       items:
         - name: A streamelési egységek ismertetése és módosítása
@@ -228,6 +230,8 @@
           href: visual-studio-code-local-run.md
         - name: Helyi tesztelés élő adatokkal
           href: visual-studio-code-local-run-live-input.md
+        - name: Lekérdezések hibakeresése feladatábra segítségével
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: CI-/CD-folyamat beállítása
           href: setup-cicd-vs-code.md
         - name: Feladatok böngészése

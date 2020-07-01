@@ -117,6 +117,8 @@
       items:
         - name: Támogatás hozzáadása long adattípushoz
           href: time-series-insights-long-data-type.md
+        - name: Változások a JSON-egybesimításban és -tárolásban
+          href: ingestion-rules-update.md
 - name: Referencia
   items:
     - name: Time Series Insights

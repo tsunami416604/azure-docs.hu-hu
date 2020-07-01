@@ -36,6 +36,30 @@
           href: virtual-wan-locations-partners.md
         - name: Automation-irányelvek partnerek számára
           href: virtual-wan-configure-automation-providers.md
+    - name: A díjszabás alapelvei
+      href: pricing-concepts.md
+    - name: Útválasztás
+      items:
+        - name: Információ a virtuális központ útválasztásáról
+          href: about-virtual-hub-routing.md
+        - name: Forgatókönyvek
+          items:
+            - name: Bármely elemek között
+              href: scenario-any-to-any.md
+            - name: Virtuális hálózatok elkülönítése
+              href: scenario-isolate-vnets.md
+            - name: Virtuális hálózatok elkülönítése – egyéni
+              href: scenario-isolate-vnets-custom.md
+            - name: Megosztott szolgáltatások virtuális hálózatai
+              href: scenario-shared-services-vnet.md
+            - name: Útvonal NVA-n keresztül
+              href: scenario-route-through-nva.md
+            - name: Útvonal NVA-n keresztül – egyéni (előzetes verzió)
+              href: scenario-route-through-nvas-custom.md
+            - name: Azure Firewall – központok közötti (előzetes verzió)
+              href: scenario-route-between-hubs-firewall.md
+            - name: Azure Firewall – egyéni
+              href: scenario-route-between-vnets-firewall.md
     - name: Helyek közötti kapcsolat
       items:
         - name: Információk az IPsec-házirendekről
@@ -44,8 +68,6 @@
           href: path-selection-multiple-links.md
 - name: Útmutatók
   items:
-    - name: Virtuális hálózatok közötti globális társviszony konfigurálása
-      href: global-peering-vnet.md
     - name: Virtuális WAN SKU-jának frissítése
       href: upgrade-virtual-wan.md
     - name: ExpressRoute
@@ -90,12 +112,8 @@
           href: openvpn-azure-ad-tenant-multi-app.md
     - name: Útválasztás
       items:
-        - name: Forgalom irányítása virtuális központról NVA-ra
-          items:
-            - name: Azure Portal
-              href: virtual-wan-route-table-portal.md
-            - name: Azure PowerShell
-              href: virtual-wan-route-table.md
+        - name: Virtuális központ útválasztásának konfigurálása
+          href: how-to-virtual-hub-routing.md
         - name: Virtuális központ érvényes útvonalainak megtekintése
           href: effective-routes-virtual-hub.md
     - name: Biztonság

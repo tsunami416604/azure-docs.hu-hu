@@ -58,6 +58,8 @@
       href: central-management.md
     - name: Távmunka támogatása
       href: remote-work-support.md
+    - name: FQDN a hálózatszabályokban
+      href: fqdn-filtering-network-rules.md
 - name: Útmutatók
   items:
     - name: Üzembe helyezés az Azure PowerShell-lel
@@ -80,6 +82,10 @@
       href: create-ip-group.md
     - name: A Windows Virtual Desktop védelme
       href: protect-windows-virtual-desktop.md
+    - name: Az Azure Kubernetes Service (AKS) védelme
+      href: protect-azure-kubernetes-service.md
+    - name: DNS-beállítások
+      href: dns-settings.md
 - name: Referencia
   items:
     - name: Azure CLI

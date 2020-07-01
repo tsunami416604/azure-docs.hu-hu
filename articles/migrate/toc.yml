@@ -86,8 +86,10 @@
       href: hyper-v-migration-architecture.md
     - name: VMware ügynökalapú migrálási architektúra
       href: agent-based-migration-architecture.md
-    - name: Felmérések áttekintése
+    - name: Azure-beli virtuális gépek felméréseinek áttekintése
       href: concepts-assessment-calculation.md
+    - name: Az AVS-felmérések áttekintése
+      href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: Ajánlott felmérési eljárások
       href: best-practices-assessment.md
     - name: Függőségelemzés áttekintése
@@ -124,8 +126,10 @@
       href: how-to-create-group-machine-dependencies.md
     - name: A gép függőségeinek elemzése (ügynök nélküli)
       href: how-to-create-group-machine-dependencies-agentless.md
-    - name: Értékelés létrehozása
+    - name: Azure-beli virtuális gép felmérésének létrehozása
       href: how-to-create-assessment.md
+    - name: AVS-felmérés létrehozása
+      href: how-to-create-azure-vmware-solution-assessment.md
     - name: SQL Server-adatbázis értékelése
       href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: Értékelés testreszabása

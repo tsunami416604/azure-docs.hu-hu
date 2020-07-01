@@ -855,6 +855,8 @@
           href: incremental-snapshots.md
         - name: Migrálás és átalakítás
           items:
+            - name: Konvertálás kiszolgálóoldali titkosításra
+              href: disks-ade-sse-conversion-powershell.md
             - name: Lemez konvertálása a standard és a prémium szint között
               href: convert-disk-storage.md
             - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel

@@ -7,12 +7,15 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Logikai alkalmazások létrehozása – Azure Portal
+    - name: Logikai alkalmazások létrehozása – Portal
       href: quickstart-create-first-logic-app-workflow.md
     - name: Logikai alkalmazások létrehozása – Visual Studio
       href: quickstart-create-logic-apps-with-visual-studio.md
     - name: Logikai alkalmazások létrehozása – Visual Studio Code
       href: quickstart-create-logic-apps-visual-studio-code.md
+    - name: Logikai alkalmazások létrehozása – ARM-sablon
+      displayName: Resource Manager
+      href: quickstart-create-deploy-azure-resource-manager-template.md
 - name: Oktatóanyagok
   items:
     - name: Ütemezésalapú munkafolyamatok létrehozása

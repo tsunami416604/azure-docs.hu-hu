@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 10/10/2019
-  ms.openlocfilehash: e3b98f3954ee70b5e002bb844147d4d51b1f6d9d
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bf7474f1519fbd94be3de8daa15a43775a6a6a0a
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508669"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85561427"
 landingContent:
 - title: Az Azure Firewall Manager ismertetése
   linkLists:
@@ -31,15 +31,15 @@ landingContent:
     links:
     - text: Mi az a biztonságos virtuális központ?
       url: secured-virtual-hub.md
-- title: Megbízható biztonsági partnerek
+- title: Biztonságipartner-szolgáltatók
   linkLists:
   - linkListType: concept
     links:
-    - text: Mik azok a megbízható biztonsági partnerek (előzetes verzió)?
+    - text: Mik azok a biztonságipartner-szolgáltatók?
       url: trusted-security-partners.md
   - linkListType: how-to-guide
     links:
-    - text: Megbízható biztonsági partner üzembe helyezése (előzetes verzió)
+    - text: Biztonságipartner-szolgáltató üzembe helyezése
       url: deploy-trusted-security-partner.md
 - title: Az Azure-felhőhálózat biztonságossá tétele
   linkLists:

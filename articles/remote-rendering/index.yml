@@ -9,12 +9,12 @@ metadata:
   author: florianborn71
   ms.author: flborn
   ms.date: 03/26/2020
-  ms.openlocfilehash: 265c4087dbb93bc429cf61ebbeab13dc18c83353
-  ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+  ms.openlocfilehash: e740fd08dc3e616b0768c6c15fd4191cb58e261a
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/16/2020
-  ms.locfileid: "84808933"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85565431"
 landingContent:
 - title: Az Azure Remote Rendering ismertetése
   linkLists:
@@ -60,11 +60,19 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 'Unity: Projekt létrehozása az alapoktól'
-      url: tutorials/unity/project-setup.md
-    - text: 'Unity: Távoli entitások használata'
-      url: tutorials/unity/working-with-remote-entities.md
-    - text: 'Unity: A környezet és az anyagok módosítása'
-      url: tutorials/unity/changing-environment-and-materials.md
+    - text: Áttekintés
+      url: tutorials/unity/tutorial-landing.md
+    - text: Távolról renderelt modell megtekintése
+      url: tutorials/unity/view-remote-models/view-remote-models.md
+    - text: Egyéni modellek betöltése
+      url: tutorials/unity/custom-models/custom-models.md
+    - text: Modellek módosítása
+      url: tutorials/unity/manipulate-models/manipulate-models.md
+    - text: Az anyagok, a megvilágítás és az effektusok finomítása
+      url: tutorials/unity/materials-lighting-effects/materials-lighting-effects.md
+    - text: Az Azure Remote Rendering biztonságossá tétele és a modellek tárolása
+      url: tutorials/unity/security/security.md
+    - text: Forgalmazásra kész Azure Remote Rendering-alkalmazás létrehozása
+      url: tutorials/unity/commercial-ready/commercial-ready.md
     - text: 'Natív C++: Távoli renderelés integrálása HoloLens holografikus alkalmazásba'
       url: tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md
