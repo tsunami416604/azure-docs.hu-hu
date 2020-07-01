@@ -9,44 +9,48 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: bdb30fed4dadef84fe012c11893661b8d9d70325
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 39f10ed627320527a7a34fec52d540739f36e9ce
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483040"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554430"
 ---
-# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---resource-manager-template"></a>Gyors útmutató: Azure CDN profil és végpont – Resource Manager-sablon létrehozása
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Gyors útmutató: Azure CDN profil és végpont-ARM sablon létrehozása
 
-A Azure CDN használatának első lépései Azure Resource Manager sablonnal.  Ez a sablon egy profilt és egy végpontot helyez üzembe.
+Az Azure Content Delivery Network (CDN) használatának első lépései Azure Resource Manager sablon (ARM-sablon) használatával. A sablon egy profilt és egy végpontot telepít.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-cdn-profile-and-endpoint"></a>CDN-profil és-végpont létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
+
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-cdn-with-custom-origin/)származik.
 
 Ez a sablon a következő létrehozására van konfigurálva:
 
 * Profil
 * Végpont
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cdn-with-custom-origin/azuredeploy.json) származik.
-
-:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json" range="1-125" highlight="46-117":::
-
+:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json" range="1-125" highlight="45-117":::
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
 
-**Microsoft. CDN**
-
 * **[Microsoft. CDN/profilok](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)**
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-**Azure CLI**
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. eastus): " location
@@ -62,7 +66,7 @@ az group deployment create \
 --template-uri  $templateUri
 ```
 
-**Azure PowerShell**
+### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -74,7 +78,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-**Azure Portal**
+### <a name="portal"></a>Portál
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
 
@@ -92,7 +96,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-**Azure CLI**
+### <a name="azure-cli"></a>Azure CLI
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást.
 
@@ -101,7 +105,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
     --name myResourceGroupCDN
 ```
 
-**Azure PowerShell**
+### <a name="powershell"></a>PowerShell
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
 
@@ -109,7 +113,7 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](https://docs.microsoft.c
 Remove-AzResourceGroup -Name myResourceGroupCDN
 ```
 
-**Azure Portal**
+### <a name="portal"></a>Portál
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a CDN-profilt és az összes kapcsolódó erőforrást. Válassza ki a CDN-profilt és-végpontot tartalmazó erőforráscsoport **myResourceGroupCDN** , majd válassza a **Törlés**lehetőséget.
 

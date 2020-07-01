@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: d50217bed3850f0e9021dda4bf1b577d006839d1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 52a76e685a9db58870c9a18b419ef725f559a969
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674482"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553002"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
 
@@ -104,7 +104,6 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 A következő kód bemutatja, hogyan állíthatja be az előnyben részesített helyszíneket a Python SDK használatával:
 
 ```python
-
 connectionPolicy = documents.ConnectionPolicy()
 connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
 client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
@@ -130,14 +129,13 @@ A következő kód bemutatja, hogyan állíthatja be az előnyben részesített 
 --- 
 
 ## <a name="rest"></a>REST
-Ha az adatbázisfiók több régióban is elérhetővé vált, az ügyfelek lekérdezhetik a rendelkezésre állását egy GET kéréssel, amely a következő URI-ra vonatkozik.
-
-    https://{databaseaccount}.documents.azure.com/
+Ha egy adatbázis-fiókot több régióban is elérhetővé tettek, az ügyfelek lekérhetik a rendelkezésre állást egy GET kérelem elvégzésével ezen az URI-n`https://{databaseaccount}.documents.azure.com/`
 
 A szolgáltatás visszaadja a régiók listáját és a replikák régiókhoz tartozó Azure Cosmos-DB végpont URI-jait. A válasz az aktuális írási régiót is tartalmazni fogja. Az ügyfél ezután a következő módon választhatja ki a megfelelő végpontot a további REST API-kérésekhez.
 
 Példaválasz
 
+```json
     {
         "_dbs": "//dbs/",
         "media": "//media/",
@@ -167,7 +165,7 @@ Példaválasz
         "_ts": 0,
         "_etag": null
     }
-
+```
 
 * Az összes PUT, POST és DELETE kérelemnek a megadott írási URI-ra kell érkeznie
 * A beolvasás és az egyéb írásvédett kérelmek (például a lekérdezések) az ügyfél tetszőleges végpontján léphetnek fel
@@ -178,7 +176,7 @@ Ha az írási régió az ügyfél kezdeti felderítési fázisa után változik,
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

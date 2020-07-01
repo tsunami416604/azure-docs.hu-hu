@@ -11,16 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a055216634775254867421854aa0b456fa90c709
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84448682"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551078"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
-A Azure Load Balancer néhány kulcsfontosságú összetevőből áll. Ezek az előfizetésben Azure Portal, Azure CLI, Azure PowerShell vagy sablonok használatával konfigurálhatók.
+Azure Load Balancer tartalmaz néhány kulcsfontosságú összetevőt. Ezek az összetevők az előfizetésen keresztül konfigurálhatók az alábbi módokon:
+
+* Azure Portal
+* Azure CLI
+* Azure PowerShell
+* Resource Manager-sablonok
 
 ## <a name="frontend-ip-configuration"></a>Előtér-IP-konfiguráció<a name = "frontend-ip-configurations"></a>
 
@@ -34,7 +39,7 @@ Az IP-cím természete határozza meg, hogy milyen **típusú** terheléseloszt�
 |  | Nyilvános terheléselosztó  | Belső terheléselosztó |
 | ---------- | ---------- | ---------- |
 | Előtér-IP-konfiguráció| Nyilvános IP-cím | Magánhálózati IP-cím|
-| Description | A nyilvános terheléselosztó a nyilvános IP-címet és a bejövő forgalom portját a virtuális gép magánhálózati IP-címére és portjára képezi le. A Load Balancer a virtuális gépről érkező válasz felé irányuló forgalmat is leképezi. A terheléselosztási szabályok alkalmazásával a különböző típusú adatforgalmat több virtuális gépre vagy szolgáltatásra is terjesztheti. A webkérések adatforgalmát például eloszthatja több webkiszolgáló között.| A belső terheléselosztó a virtuális hálózaton belüli erőforrásokra osztja el a forgalmat. Az Azure korlátozza a hozzáférést egy elosztott virtuális hálózat előtér-IP-címeihez. Az előtér-IP-címeket és a virtuális hálózatokat a rendszer soha nem teszi elérhetővé közvetlenül az internetes végpontok számára. A belső üzletági alkalmazások az Azure-ban futnak, és csak az Azure-ból vagy a helyszíni erőforrásokból érhetők el. |
+| Leírás | A nyilvános terheléselosztó a nyilvános IP-címet és a bejövő forgalom portját a virtuális gép magánhálózati IP-címére és portjára képezi le. A Load Balancer a virtuális gépről érkező válasz felé irányuló forgalmat is leképezi. A terheléselosztási szabályok alkalmazásával adott típusú adatforgalom több virtuális gépre vagy szolgáltatásba is terjeszthető. A webkérések adatforgalmát például eloszthatja több webkiszolgáló között.| A belső terheléselosztó a virtuális hálózaton belüli erőforrásokra osztja el a forgalmat. Az Azure korlátozza a hozzáférést egy elosztott virtuális hálózat előtér-IP-címeihez. Az előtér-IP-címeket és a virtuális hálózatokat a rendszer soha nem teszi elérhetővé közvetlenül az internetes végpontok számára. A belső üzletági alkalmazások az Azure-ban futnak, és csak az Azure-ból vagy a helyszíni erőforrásokból érhetők el. |
 | Támogatott SKU-i | Alapszintű, standard | Alapszintű, standard |
 
 ![Rétegű terheléselosztó – példa](./media/load-balancer-overview/load-balancer.png)
@@ -51,7 +56,7 @@ A háttérbeli készlet kialakításának megtervezése során tervezze meg a mi
 
 ## <a name="health-probes"></a>Állapotminták
 
-Az állapot-mintavétel a háttér-készletben lévő példányok állapotának meghatározására szolgál. Load Balancer létrehozásakor be kell állítania egy állapot-mintavételt, amelyet a Load Balancer használhat annak megállapítására, hogy a példány állapota Kifogástalan-e, és irányítsa-e a forgalmat.
+Az állapot-mintavétel a háttér-készletben lévő példányok állapotának meghatározására szolgál. A terheléselosztó létrehozása során állítson be egy állapot-mintavételt a terheléselosztó számára a használathoz.  Ez az állapot-mintavétel megállapítja, hogy egy példány állapota Kifogástalan-e, és képes-e a forgalom fogadására.
 
 Megadhatja az állapot-mintavételek nem megfelelő állapotát. Ha egy mintavétel nem válaszol, Load Balancer leállítja az új kapcsolatok küldését a nem kifogástalan állapotú példányokra. A mintavételi hiba nem érinti A meglévő kapcsolatokat. A kapcsolatok addig folytatódnak, amíg az alkalmazás:
 
@@ -65,13 +70,24 @@ Az alapszintű Load Balancer nem támogatja a HTTPS-próbákat. Az alapszintű L
 
 ## <a name="load-balancing-rules"></a>Terheléselosztási szabályok
 
-Load Balancer szabály segítségével határozható meg, hogy a rendszer hogyan ossza el a bejövő forgalmat a háttér-készleten belüli **összes** példányra. A terheléselosztási szabály egy adott előtérbeli IP-konfigurációt és portot képez le több háttérbeli IP-cím és port számára.
+Load Balancer szabály segítségével határozható meg, hogy a rendszer hogyan ossza el a bejövő forgalmat a háttér-készleten belüli **összes** példányra. Egy terheléselosztási szabály egy adott előtérbeli IP-konfigurációt és portot képez le több háttérbeli IP-cím és port számára.
 
-Ha például azt szeretné, hogy az 80-as porton (vagy egy másik porton) lévő forgalom az összes háttér-példány 80-es portjához legyen átirányítva, akkor ezt a terheléselosztási szabályt kell használnia.
+Használjon például egy terheléselosztási szabályt az 80-es porthoz, hogy a felületi IP-cím forgalmát a háttérbeli példányok 80-es portjára irányítsa.
 
-### <a name="high-availability-ports"></a>Magas rendelkezésre állású portok
+<p align="center">
+  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="Terheléselosztási szabályok">
+</p>
 
-Egy Load Balancer-szabály, amely a "Protocol-all és a port-0" protokollal van konfigurálva. Ez lehetővé teszi egyetlen szabály betöltését a belső standard Load Balancer összes portjára érkező TCP-és UDP-folyamatok terheléselosztásához. A terheléselosztási döntés egy folyamaton alapul. Ez a művelet a következő öt rekordos kapcsolaton alapul: 
+*Ábra: terheléselosztási szabályok*
+
+## <a name="high-availability-ports"></a>Magas rendelkezésre állású portok
+
+Egy **"protokoll – mind és port – 0"** konfigurált terheléselosztó-szabály. 
+
+Ez a szabály lehetővé teszi egyetlen szabály számára, hogy betöltse a belső standard Load Balancer összes portjára érkező TCP-és UDP-folyamatokat. 
+
+A terheléselosztási döntés egy folyamaton alapul. Ez a művelet a következő öt rekordos kapcsolaton alapul: 
+
 1. 
     forrás IP-címe
   
@@ -80,27 +96,39 @@ Egy Load Balancer-szabály, amely a "Protocol-all és a port-0" protokollal van 
 4. célport
 5. protokoll
 
-A HA-portok terheléselosztási szabályai segítenek a kritikus forgatókönyvek, például a magas rendelkezésre állás és a virtuális hálózatokon belüli hálózati virtuális berendezések (NVA-EK) méretezése terén. A funkció akkor is segíthet, ha nagy számú portot kell terheléselosztással elválasztani.
+A HA-portok terheléselosztási szabályai segítenek a kritikus forgatókönyvek, például a magas rendelkezésre állás és a virtuális hálózatokon belüli hálózati virtuális berendezések (NVA-EK) méretezése terén. A funkció segíthet, ha nagy számú portot kell terheléselosztással elválasztani.
 
-További információ: [Ha portok](load-balancer-ha-ports-overview.md).
+<p align="center">
+  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA portok szabályai">
+</p>
+
+*Ábra: HA portok szabályai*
+
+További információ a [Ha portokról](load-balancer-ha-ports-overview.md).
 
 ## <a name="inbound-nat-rules"></a>Bejövő NAT-szabályok
 
-A bejövő NAT-szabály továbbítja a bejövő forgalmat a kiválasztott előtéri IP-cím és port kombinációra egy **adott** virtuális gépre vagy példányra a háttér-készletben. A portok továbbítása a terheléselosztással megegyező kivonatoló alapú eloszlással történik.
+A bejövő NAT-szabály továbbítja a bejövő forgalmat az IP-cím és a port kombinációja számára. A rendszer elküldje a forgalmat egy **adott** virtuális gépre vagy példányra a háttér-készletben. A portok továbbítása a terheléselosztással megegyező kivonatoló alapú eloszlással történik.
 
 Ha például az RDP protokoll (RDP) vagy a Secure Shell (SSH) munkameneteket szeretné elkülöníteni a háttérbeli készletben lévő virtuálisgép-példányokat. Több belső végpont is rendelhető ugyanahhoz a előtér-IP-címhez tartozó portokhoz. Az előtérbeli IP-címek használatával távolról felügyelheti a virtuális gépeket egy további Jump Box nélkül.
 
-A bejövő NAT-szabályok Virtual Machine Scale Sets (VMSS) kontextusában a bejövő NAT-készletek. További információ a [Load Balancer összetevőiről és VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer).
+<p align="center">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="Bejövő NAT-szabályok">
+</p>
+
+*Ábra: bejövő NAT-szabályok*
+
+A bejövő NAT-szabályok Virtual Machine Scale Sets környezetében a bejövő NAT-készletek. További információ a [Load Balancer-összetevőkről és a virtuálisgép-méretezési csoportról](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer).
 
 ## <a name="outbound-rules"></a>Kimenő szabályok
 
-Egy kimenő szabály konfigurálja a kimenő hálózati címfordítást (NAT) a háttér-készlet által azonosított összes virtuális géphez vagy példányhoz. Ez lehetővé teszi, hogy a háttérbeli példányok kommunikáljanak (kimenő) az interneten vagy más végpontokon.
+Egy kimenő szabály konfigurálja a kimenő hálózati címfordítást (NAT) a háttér-készlet által azonosított összes virtuális géphez vagy példányhoz. Ez a szabály lehetővé teszi, hogy a háttérbeli példányok kommunikáljanak (kimenő) az interneten vagy más végpontokon.
 
 További információ a [kimenő kapcsolatokról és a szabályokról](load-balancer-outbound-connections.md).
 
 Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).

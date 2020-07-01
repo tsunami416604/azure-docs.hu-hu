@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5489c65a0e955183b034e173706b6decfa6df9d5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: db158a50cfc164a0fc839e858cc6e7c46558eb77
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85387490"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551590"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>Azure Active Directory fejlesztők számára (v 1.0) – áttekintés
 
@@ -29,11 +29,8 @@ Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgálta
 > [!NOTE]
 > Az oldal tartalmának nagy része a 1.0-s végpontra és platformra koncentrál, amely kizárólag a Microsoft munkahelyi vagy iskolai fiókjait támogatja. Ha felhasználói vagy személyes Microsoft-fiókokat szeretne bejelentkezni, tekintse meg a [v 2.0-végpont és-platform](../develop/v2-overview.md)információit. A v 2.0 végpontja olyan alkalmazások egységes fejlesztői felületét kínálja, amelyek az összes Microsoft-identitást szeretnék bejelentkezni.
 
-| | |
-| --- | --- |
-|[Hitelesítési alapok](v1-authentication-scenarios.md) | Bevezetés az Azure AD-vel történő hitelesítés használatába. |
-|[Alkalmazástípusok](app-types.md) | Áttekintés az Azure AD által támogatott hitelesítési forgatókönyvekről. |
-| | |
+- A [hitelesítés alapjai](v1-authentication-scenarios.md) Bevezetés az Azure AD-vel való hitelesítésbe.
+- [Alkalmazások típusai](app-types.md) Az Azure AD által támogatott hitelesítési forgatókönyvek áttekintése.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -47,12 +44,9 @@ Az Azure AD leggyakoribb feladatainak részletes információit és bemutatóit 
 
 A következő cikkekben az API-król, a protokollüzenetekről és az Azure AD által használt kifejezésekről találhat részletes információkat.
 
-|                                                                                   | |
-| ----------------------------------------------------------------------------------| --- |
-| [Hitelesítési tárak (ADAL)](active-directory-authentication-libraries.md)   | Áttekintés az Azure AD által támogatott kódtárakról és SDK-król. |
-| [Kódminták](sample-v1-code.md)                                  | Az Azure AD összes kódmintáját tartalmazó lista. |
-| [Szószedet](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | A jelen dokumentációban használt fogalmak terminológiája és meghatározásai. |
-|  |  |
+- [Hitelesítési kódtárak (ADAL)](active-directory-authentication-libraries.md) Az Azure AD által biztosított kódtárak és SDK-k áttekintése.
+- [Kód mintái](sample-v1-code.md) Az Azure AD-kódok összes mintájának listája.
+- [Szószedet](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) A jelen dokumentációban használt kifejezések terminológiája és definíciói.
 
 ## <a name="videos"></a>Videók
 

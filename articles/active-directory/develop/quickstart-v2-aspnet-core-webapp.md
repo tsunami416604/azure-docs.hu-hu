@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 50b6244e5db6f812d1f9e3d23ea5fa88ea3bebea
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456810"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554142"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core webalkalmazás a személyes fiókokban (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
@@ -79,7 +79,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 > #### <a name="step-3-run-your-visual-studio-project"></a>3. lépés: a Visual Studio-projekt futtatása
 > 1. Bontsa ki a zip-fájlt a gyökérmappa egyik helyi mappájába – például **C:\Azure-Samples**
 > 1. A megoldás megnyitása a Visual Studióban
-> 1. Szerkessze a **appSettings. JSON** fájlt. Megkeresheti `ClientId` és frissítheti a `ClientId` regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítójának** értékét.
+> 1. Szerkessze a **appsettings.js** fájlt. Megkeresheti `ClientId` és frissítheti a `ClientId` regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítójának** értékét.
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -145,7 +145,7 @@ A metódus `AddAuthentication` úgy konfigurálja a szolgáltatást, hogy cookie
 
 A sort tartalmazó vonal `.AddAzureAd` hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezt követően a rendszer a Microsoft Identity platform-végpont használatával történő bejelentkezésre van konfigurálva.
 
-> |Ahol  |  |
+> |Ahol | Leírás |
 > |---------|---------|
 > | ClientID  | Az alkalmazás (ügyfél) azonosítója a Azure Portal regisztrált alkalmazásban. |
 > | Authority | A hitelesítést végző felhasználó STS-végpontja. Általában ez a <https://login.microsoftonline.com/{tenant}/v2.0> nyilvános felhő, ahol a (z) {bérlő} a bérlő vagy a bérlői azonosító neve, vagy *közös* a közös végpontra (több-bérlős alkalmazásokhoz használt) való hivatkozásra. |
@@ -175,7 +175,7 @@ A vezérlő vagy vezérlő metódusait az attribútum használatával lehet véd
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a GitHub-tárházat ehhez a ASP.NET Core oktatóanyaghoz, amely útmutatást nyújt a hitelesítés új ASP.NET Core webalkalmazáshoz való hozzáadásához, a Microsoft Graph és más Microsoft API-k meghívásához, a saját API-k meghívásához, az engedélyezés hozzáadásához, a felhasználók nemzeti felhőkbe való bejelentkezéséhez, illetve a közösségi identitások kezeléséhez :
 

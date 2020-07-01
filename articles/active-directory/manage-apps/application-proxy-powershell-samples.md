@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e624be8103097a8356ae4167cb8f21cce819649
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760174"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554982"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-példák az Azure AD Application Proxy
 
@@ -26,7 +26,7 @@ Az alábbi táblázat az Azure AD Application Proxy PowerShell-parancsfájlokra 
 
 A példákban használt parancsmagokkal kapcsolatos további információkért lásd: alkalmazásproxy- [alkalmazás kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) és alkalmazásproxy- [összekötő kezelése](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
 
-| | |
+| Hivatkozás | Leírás |
 |---|---|
 |**Alkalmazásproxy-alkalmazások**||
 | [Az összes alkalmazásproxy-alkalmazás alapszintű információinak listázása](scripts/powershell-get-all-app-proxy-apps-basic.md) | A címtárban lévő összes alkalmazásproxy-alkalmazás alapvető információit (AppId, DisplayName, ObjId) listázza. |

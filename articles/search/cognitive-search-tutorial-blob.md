@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d2783d658d3420575da5d9d480fb705afe2495fc
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78190722"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85550373"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: az Azure-Blobok kereshető tartalmának létrehozásához használja a REST és a AI használatát
 
@@ -109,9 +109,9 @@ Ahogy az Azure Blob Storage-hoz, szánjon egy kis időt a hozzáférési kulcs g
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Rendszergazdai API-kulcs és URL-cím beszerzése az Azure Cognitive Search
 
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon szerezze be a keresési szolgáltatás nevét. A szolgáltatás nevét a végpont URL-címének áttekintésével ellenőrizheti. Ha a végpont URL- `https://mydemo.search.windows.net`címe volt, a szolgáltatás neve `mydemo`a következő lesz:.
+1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **áttekintése** lapon szerezze be a keresési szolgáltatás nevét. A szolgáltatás nevét a végpont URL-címének áttekintésével ellenőrizheti. Ha a végpont URL-címe volt `https://mydemo.search.windows.net` , a szolgáltatás neve a következő lesz: `mydemo` .
 
-2. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
@@ -125,7 +125,7 @@ Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha nem ismeri ezt 
 
 Az oktatóanyagban használt metódusok a **post**, a **put**és a **Get**. A következő módszerekkel hozhat létre négy API-hívást a keresési szolgáltatáshoz: adatforrás, készségkészlet, index és indexelő létrehozása.
 
-A fejlécekben a "Content-Type" értéket `application/json` állítsa be `api-key` , és állítsa az Azure Cognitive Search szolgáltatás felügyeleti API-kulcsára. Miután beállította a fejléceket, használhatja azokat minden kérelemhez ebben a gyakorlatban.
+A fejlécekben a "Content-Type" értéket állítsa be, `application/json` és állítsa `api-key` az Azure Cognitive Search szolgáltatás felügyeleti API-kulcsára. Miután beállította a fejléceket, használhatja azokat minden kérelemhez ebben a gyakorlatban.
 
   ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
 
@@ -140,7 +140,7 @@ Az [adatforrás-objektumok](https://docs.microsoft.com/rest/api/searchservice/cr
 1. A **post** és a következő URL-cím helyett használja a-Service-Name kifejezést a szolgáltatás tényleges nevével.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
 1. A kérelem **törzsében**másolja a következő JSON-definíciót, `connectionString` és cserélje le a-t a Storage-fiókja tényleges kapcsolatára. 
@@ -161,7 +161,7 @@ Az [adatforrás-objektumok](https://docs.microsoft.com/rest/api/searchservice/cr
     ```
 1. Küldje el a kérést. Meg kell jelennie a 201-es állapotkód megerősítő sikerességének. 
 
-Ha a 403-as vagy 404-es hibát kapja, ellenőrizze a kérés szerkezetét: az `api-version=2019-05-06` legyen a végpont, az `api-key` szerepeljen a fejlécben a `Content-Type` kifejezés után, az értékének pedig érvényesnek kell lennie egy keresési szolgáltatáshoz. Előfordulhat, hogy a JSON-dokumentumot egy online JSON-érvényesítő használatával szeretné futtatni, hogy ellenőrizze a szintaxis helyességét. 
+Ha a 403-as vagy 404-es hibát kapja, ellenőrizze a kérés szerkezetét: az `api-version=2020-06-30` legyen a végpont, az `api-key` szerepeljen a fejlécben a `Content-Type` kifejezés után, az értékének pedig érvényesnek kell lennie egy keresési szolgáltatáshoz. Előfordulhat, hogy a JSON-dokumentumot egy online JSON-érvényesítő használatával szeretné futtatni, hogy ellenőrizze a szintaxis helyességét. 
 
 ### <a name="step-2-create-a-skillset"></a>2. lépés: készségkészlet létrehozása
 
@@ -170,7 +170,7 @@ A [készségkészlet objektum](https://docs.microsoft.com/rest/api/searchservice
 1. Használja a **put** és a következő URL-címet, és cserélje le a-Service-Name kifejezést a szolgáltatás tényleges nevére.
 
     ```http
-    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2019-05-06
+    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2020-06-30
     ```
 
 1. A kérelem **törzsében**másolja az alábbi JSON-definíciót. Ez a készségkészlet a következő beépített készségekből áll.
@@ -182,9 +182,9 @@ A [készségkészlet objektum](https://docs.microsoft.com/rest/api/searchservice
    | [Szöveg felosztása](cognitive-search-skill-textsplit.md)  | Megszakítja a nagyméretű tartalmakat kisebb adattömbökbe, mielőtt meghívja a Key kifejezés kinyerési készségét. A kulcskifejezések kinyerése legfeljebb 50 000 karakter méterű bemeneteket fogad el. A mintafájlok közül néhányat fel kell osztani ahhoz, hogy beleférjen a korlátozásba. |
    | [Kulcskifejezések kinyerése](cognitive-search-skill-keyphrases.md) | Lekéri a legfontosabb mondatokat. |
 
-   Minden képesség a dokumentum tartalmán fut le. A feldolgozás során az Azure Cognitive Search kihasználja az egyes dokumentumokat a különböző fájlformátumokból származó tartalmak olvasásához. A forrásfájlban talált szöveg a létrehozott ```content``` mezőbe kerül, amelyből dokumentumonként egy jön létre. A bemenet így lesz ```"/document/content"```.
+   Minden képesség a dokumentum tartalmán fut le. A feldolgozás során az Azure Cognitive Search kihasználja az egyes dokumentumokat a különböző fájlformátumokból származó tartalmak olvasásához. A forrásfájlban talált szöveg a létrehozott ```content``` mezőbe kerül, amelyből dokumentumonként egy jön létre. A bemenet így lesz ```"/document/content"``` .
 
-   A legfontosabb mondatok kinyeréséhez, mivel a Text Splitter skill használatával nagyobb méretű fájlokat kell megtörni a lapokra, a kulcs kifejezés kinyerési képességének ```"document/pages/*"``` (a dokumentum minden oldalához) ```"/document/content"```kontextusa a helyett.
+   A legfontosabb mondatok kinyeréséhez, mivel a Text Splitter skill használatával nagyobb méretű fájlokat kell megtörni a lapokra, a kulcs kifejezés kinyerési képességének ```"document/pages/*"``` (a dokumentum minden oldalához) kontextusa a helyett ```"/document/content"``` .
 
     ```json
     {
@@ -255,10 +255,10 @@ Az [index](https://docs.microsoft.com/rest/api/searchservice/create-index) bizto
 1. Használja az **put** és a következő URL-címet, és cserélje le a-Service-Name kifejezést a szolgáltatás tényleges nevére, és nevezze el az indexet.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
-1. A kérelem **törzsében**másolja a következő JSON-definíciót. A `content` mező maga tárolja a dokumentumot. További mezők a `languageCode`, `keyPhrases`a és `organizations` a készségkészlet által létrehozott új információk (mezők és értékek) megjelenítéséhez.
+1. A kérelem **törzsében**másolja a következő JSON-definíciót. A `content` mező maga tárolja a dokumentumot. További mezők a `languageCode` , a `keyPhrases` és `organizations` a készségkészlet által létrehozott új információk (mezők és értékek) megjelenítéséhez.
 
     ```json
     {
@@ -339,14 +339,14 @@ Az [Indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 1. Használja az **put** és a következő URL-címet, és cserélje le a-Service-Name kifejezést a szolgáltatás tényleges nevére, hogy az indexelő nevet adja.
 
    ```http
-   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
 1. A kérelem **törzsében**másolja az alábbi JSON-definíciót. Figyelje meg a mező-hozzárendelési elemeket; Ezek a leképezések azért fontosak, mert definiálják az adatfolyamot. 
 
    A `fieldMappings` feldolgozása a készségkészlet előtt történik, és az adatforrásból az indexben lévő mezőkbe küld tartalmat. A mező-hozzárendelések használatával meglévő, nem módosított tartalmakat küldhet az indexbe. Ha a mezők nevei és típusai mindkét végén azonosak, nincs szükség leképezésre.
 
-   A `outputFieldMappings` a szaktudás által létrehozott mezőkre vonatkoznak, amelyek feldolgozása a készségkészlet futtatása után történik. A `sourceFieldNames` alkalmazásban `outputFieldMappings` való hivatkozás nem létezik, amíg a dokumentum repedése vagy a dúsítása létre nem hozza őket. A `targetFieldName` az index sémában definiált index mezője.
+   A a `outputFieldMappings` szaktudás által létrehozott mezőkre vonatkoznak, amelyek feldolgozása a készségkészlet futtatása után történik. A `sourceFieldNames` alkalmazásban való hivatkozás `outputFieldMappings` nem létezik, amíg a dokumentum repedése vagy a dúsítása létre nem hozza őket. A az index `targetFieldName` sémában definiált index mezője.
 
     ```json
     {
@@ -432,7 +432,7 @@ Az indexelés és a dúsítás a Create Indexer-kérelem elküldésekor azonnal 
 1. Használja a **Get** és a következő URL-címet, és cserélje le a-Service-Name kifejezést a szolgáltatás tényleges nevére, hogy az indexelő nevet adja.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2020-06-30
    ```
 
 1. Tekintse át a választ, és Ismerje meg, hogy az indexelő fut-e, vagy hogy megtekintse a hiba-és figyelmeztetési információkat.  
@@ -446,12 +446,12 @@ Ha az ingyenes szintet használja, a következő üzenet várható: "" nem tudot
 
 Most, hogy új mezőket és információkat hozott létre, futtasson néhány lekérdezést a kognitív keresés értékének megismeréséhez, mivel az egy tipikus keresési forgatókönyvhöz kapcsolódik.
 
-Ne felejtse el, hogy a blob tartalmával kezdtük el, ahol a teljes dokumentum `content` egyetlen mezőbe van csomagolva. Kereshet ebben a mezőben, és megkeresheti az egyezéseket a lekérdezésekben.
+Ne felejtse el, hogy a blob tartalmával kezdtük el, ahol a teljes dokumentum egyetlen mezőbe van csomagolva `content` . Kereshet ebben a mezőben, és megkeresheti az egyezéseket a lekérdezésekben.
 
-1. Használja a **Get** és a következő URL-címet, cserélje le a-Service-Name kifejezést a szolgáltatás tényleges nevére, és keressen rá egy kifejezés vagy kifejezés példányaira, `content` adja vissza a mezőt és a megfelelő dokumentumok számát.
+1. Használja a **Get** és a következő URL-címet, cserélje le a-Service-Name kifejezést a szolgáltatás tényleges nevére, és keressen rá egy kifejezés vagy kifejezés példányaira, adja vissza a `content` mezőt és a megfelelő dokumentumok számát.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
    ```
    
    A lekérdezés eredménye visszaküldi a dokumentum tartalmát, ami ugyanazt az eredményt kapja, ha a blob indexelő a kognitív keresési folyamat nélkül használta. Ez a mező kereshető, de nem használható, ha dimenziókat, szűrőket vagy automatikus kiegészítést szeretne használni.
@@ -461,7 +461,7 @@ Ne felejtse el, hogy a blob tartalmával kezdtük el, ahol a teljes dokumentum `
 1. A második lekérdezés esetében a folyamat által létrehozott új mezőket (személyek, szervezetek, helyszínek, languageCode) kell visszaadnia. A rövidítések kimaradnak, de érdemes megadnia, ha meg szeretné jeleníteni ezeket az értékeket.
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2019-05-06
+   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    A $select utasítás mezői a Cognitive Services természetes nyelvi feldolgozási képességeiből létrehozott új információkat tartalmazzák. Ahogy várható, némi zaj van a dokumentumok eredményei és variációja között, de sok esetben az analitikai modellek pontos eredményeket hoznak létre.
 
@@ -472,7 +472,7 @@ Ne felejtse el, hogy a blob tartalmával kezdtük el, ahol a teljes dokumentum `
 1. Ha szeretné megtekinteni, hogyan használhatja ki ezeket a mezőket, adjon hozzá egy dimenziós paramétert a megfelelő dokumentumok hely szerinti összesítésének visszaadásához.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2020-06-30
    ``` 
 
    Ebben a példában az egyes helyekhez 2 vagy 3 egyezés van.
@@ -483,7 +483,7 @@ Ne felejtse el, hogy a blob tartalmával kezdtük el, ahol a teljes dokumentum `
 1. Ebben a végső példában egy szűrőt alkalmaz a szervezetek gyűjteményére, és két egyezést ad vissza a NASDAQ alapján történő szűrési feltételekhez.
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
+   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 Ezek a lekérdezések néhány módszert mutatnak be, amelyekkel a lekérdezési szintaxissal és szűrőkkel dolgozhat a kognitív keresés által létrehozott új mezőkben. További példákat a példák [a keresési dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), az [egyszerű szintaxisú lekérdezési példák](search-query-simple-examples.md)és a [teljes Lucene lekérdezési](search-query-lucene-examples.md)példák című részben talál.
@@ -501,7 +501,7 @@ A portál használatával törölhet indexeket, indexelő fájlokat, adatforrás
 Vagy használja a **delete (Törlés** ) lehetőséget, és adja meg az egyes objektumok URL-címét A következő parancs törli az indexelő.
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
 ```
 
 Sikeres törlés esetén a rendszer a 204-es állapotkódot adja vissza.

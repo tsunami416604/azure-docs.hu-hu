@@ -26,7 +26,7 @@
     - name: Adat-előállító létrehozása – Resource Manager-sablon
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Biztonság – Felhasználó által kezelt kulcstitkosítás engedélyezése
-      href: quickstart-enable-customer-managed-key.md
+      href: enable-customer-managed-key.md
     - name: Adatfolyam létrehozása
       href: data-flow-create.md
 - name: Oktatóanyagok
@@ -576,7 +576,7 @@
         - name: Felügyelt identitás Data Factoryhoz
           href: data-factory-service-identity.md
         - name: Ügyfél által felügyelt kulcstitkosítás
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: Monitorozás és kezelés
       items:
         - name: Vizuális megfigyelés

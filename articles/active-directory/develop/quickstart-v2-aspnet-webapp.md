@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6f4c18d0fb2a4414dc98100dcec85161fdda85f0
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853957"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554091"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások személyes fiókjait (hotmail.com, outlook.com, másokat) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD-példányból).  (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
@@ -43,7 +43,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások szem
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `ASPNET-Quickstart`).
->      - Adja `https://localhost:44368/` hozzá az **átirányítási URI**-t, majd kattintson a **regisztráció**elemre.
+>      - Adja hozzá `https://localhost:44368/` az **ÁTirányítási URI**-t, majd kattintson a **regisztráció**elemre.
 >      - A kezelés szakasz bal oldali navigációs paneljén válassza a **hitelesítés** lehetőséget.
 >          - Az **implicit támogatás** alszakasza alatt válassza az **azonosító tokenek**lehetőséget.
 >          - Majd válassza a **Mentés**lehetőséget.
@@ -76,7 +76,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások szem
 
 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
 1. Nyissa meg a megoldást (AppModelv2-WebApp-OpenIDConnect-DotNet.sln) a Visual Studióban.
-1. A Visual Studio verziójától függően előfordulhat, hogy a jobb gombbal a projektre `AppModelv2-WebApp-OpenIDConnect-DotNet` kell kattintania, és vissza kell állítania a NuGet- **csomagokat**
+1. A Visual Studio verziójától függően előfordulhat, hogy a jobb gombbal a projektre kell kattintania, `AppModelv2-WebApp-OpenIDConnect-DotNet` és **vissza kell állítania a NuGet-csomagokat**
 1. Nyissa meg a Package Manager konzolját (View-> egyéb Windows-> csomagkezelő konzol), és futtassa a következőt:`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 
 > [!div renderon="docs"]
@@ -94,7 +94,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások szem
 >
 > > [!TIP]
 > > - Az *alkalmazásazonosító*, a *címtár (bérlő) azonosítója* és a *támogatott fióktípusok* értékét az **Áttekintés** oldalon találja
-> > - Győződjön meg arról, `redirectUri` hogy a **web. config fájl** értéke megfelel az alkalmazás REGISZTRÁLÁSához az Azure ad-ben megadott **átirányítási URI** -nak (ha nem, navigáljon az alkalmazás regisztrálásához használt **hitelesítési** menüre, és frissítse az **átirányítási URI** -t az egyeztetéshez)
+> > - Győződjön meg arról, hogy a `redirectUri` **Web.config** értéke megfelel az alkalmazás regisztrálásához az Azure ad-ben megadott **átirányítási URI** -nak (ha nem, navigáljon az alkalmazás regisztrációjának **hitelesítés** menüjéhez, és frissítse az **átirányítási URI** -t az egyeztetéshez)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -156,7 +156,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Ahol  |  |
+> |Ahol  | Leírás |
 > |---------|---------|
 > | `ClientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója |
 > | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában <https://login.microsoftonline.com/{tenant}/v2.0> a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |
@@ -169,7 +169,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> A `ValidateIssuer = false` beállítás a rövid útmutató egyszerűsítése. A valós alkalmazásokban ellenőriznie kell a kiállítót.
+> A beállítás a rövid útmutató `ValidateIssuer = false` egyszerűsítése. A valós alkalmazásokban ellenőriznie kell a kiállítót.
 > Ennek megértéséhez tekintse meg a mintákat.
 
 ### <a name="initiate-an-authentication-challenge"></a>Hitelesítő kérdés kezdeményezése
