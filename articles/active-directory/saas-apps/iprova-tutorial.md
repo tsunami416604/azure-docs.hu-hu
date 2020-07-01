@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98458f8be162d0903f5ea0d1f7d4651d46f78e8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7092ea68f2b7f35e372013a94108e43a83c8777
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048437"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608634"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a iProva
 
@@ -78,11 +78,10 @@ Ebben a szakaszban adatokat kér le a iProva-ből az Azure AD egyszeri bejelentk
 
 1. Nyisson meg egy webböngészőt, és nyissa meg a iProva **egy saml2-információ** lapját az alábbi URL-minta használatával:
 
-    | | |
-    |-|-|
-    | `https://SUBDOMAIN.iprova.nl/saml2info`|
-    | `https://SUBDOMAIN.iprova.be/saml2info`|
-    | | |
+    ```https
+    https://SUBDOMAIN.iprova.nl/saml2info
+    https://SUBDOMAIN.iprova.be/saml2info
+    ```
 
     ![A iProva egy SAML2-információs oldalának megtekintése](media/iprova-tutorial/iprova-saml2-info.png)
 
@@ -112,7 +111,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a iProva alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum| Névtér  |
+    | Name | Forrás attribútum| Névtér  |
     | ---------------| -------- | -----|
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -128,9 +127,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -162,13 +161,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 5. Válassza a **Hozzáadás** lehetőséget.
 
-6. A **Felhasználónév** mezőbe írja be a felhasználóhoz hasonló `B.Simon@contoso.com`felhasználónevet.
+6. A **Felhasználónév** mezőbe írja be a felhasználóhoz hasonló felhasználónevet `B.Simon@contoso.com` .
 
 7. A **Full Name (teljes név** ) mezőbe írja be a felhasználó teljes nevét, például: **B. Simon**.
 
 8. Válassza a **nincs jelszó (egyszeri bejelentkezés használata)** lehetőséget.
 
-9. Az **e-mail cím** mezőbe írja be a felhasználóhoz hasonló `B.Simon@contoso.com`e-mail címet.
+9. Az **e-mail cím** mezőbe írja be a felhasználóhoz hasonló e-mail címet `B.Simon@contoso.com` .
 
 10. Görgessen le a lap végére, és válassza a **Befejezés**gombot.
 
@@ -192,7 +191,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 8. Válassza a **Beállítás** lehetőséget.
 
-9. Kattintson a **Tovább** gombra.
+9. Válassza a **Tovább** lehetőséget.
 
 10. a iProva megkérdezi, hogy szeretné-e letölteni az összevonási adatok URL-címről való letöltését vagy fájlból való feltöltését. Válassza ki a **from URL** lehetőséget.
 
@@ -204,13 +203,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 13. Ha a letöltés befejeződött, megjelenik a megerősítő üzenet **érvényes összevonási adatfájlja** .
 
-14. Kattintson a **Tovább** gombra.
+14. Válassza a **Tovább** lehetőséget.
 
 15. Ugorja át most a **bejelentkezési teszt** lehetőséget, majd kattintson a **tovább**gombra.
 
 16. A **használni kívánt jogcím** legördülő listáról válassza a **windowsaccountname**lehetőséget.
 
-17. Válassza a **Finish** (Befejezés) elemet.
+17. Válassza a **Befejezés** gombot.
 
 18. Most térjen vissza az **általános beállítások szerkesztése** képernyőre. Görgessen le a lap aljára, majd kattintson **az OK gombra** a konfiguráció mentéséhez.
 
@@ -220,7 +219,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a iProva csempére kattint, automatikusan be kell jelentkeznie arra a iProva, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

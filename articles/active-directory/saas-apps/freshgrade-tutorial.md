@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 852cd728f17902a83f5efeb3ccfb596f67ba37e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c7a6716bbc4b297973c8bfb0305434ee08a4730
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158124"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Oktatóanyag: Azure Active Directory integráció a FreshGrade
 
@@ -107,17 +107,17 @@ Az Azure AD egyszeri bejelentkezés FreshGrade való konfigurálásához hajtsa 
 
      a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minták használatával:
 
-      | |
-      |--|
-      | `https://<subdomain>.freshgrade.com/login` |
-      | `https://<subdomain>.onboarding.freshgrade.com/login` |
+        ```https        
+        https://<subdomain>.freshgrade.com/login
+        https://<subdomain>.onboarding.freshgrade.com/login
+        ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minták használatával:
     
-      | |
-      |--|
-      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
-      | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
+        ```https
+        https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>
+        https://login.freshgrade.com:443/saml/metadata/alias/<instancename>
+        ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a FreshGrade ügyfélszolgálati [csapatához](mailto:support@freshgrade.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -148,12 +148,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

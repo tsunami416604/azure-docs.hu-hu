@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 338ebc584cc718fd9d3b587d17ec0895483dfb0c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 048161ec13edbd0cf474fb6598fdd9ff981077ae
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560439"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611679"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt figyelése az Azure-ban
 
 A monitorozás és a diagnosztika kritikus fontosságú a számítási feladatok bármilyen felhőalapú környezetben való fejlesztéséhez, teszteléséhez és üzembe helyezéséhez. Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan figyelheti és diagnosztizálhatja a Service Fabric-fürtöket események, teljesítményszámlálók és állapotjelentés használatával.   További információért olvassa el a [fürt figyelése](service-fabric-diagnostics-overview.md#platform-cluster-monitoring) és az [infrastruktúra figyelése](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring)című témakört.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Service Fabric események megtekintése
@@ -41,7 +41,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Telepítse [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
 * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása 
 * A fürt telepítési [diagnosztikai gyűjteménye](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor)
 * A [EventStore szolgáltatás](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) engedélyezése a fürtben
@@ -191,7 +191,7 @@ ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-A szolgáltatás runasync indításakor és befejezésekor különböző eseményeket tekinthet meg, amelyek általában az üzembe helyezéseken és a frissítéseken történnek.
+A szolgáltatás `runasync` elindításakor és befejezésekor különböző eseményeket tekinthet meg, amelyek általában az üzembe helyezéseken és a frissítéseken történnek.
 
 ![Service Fabric megoldás Reliable Services](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
@@ -487,5 +487,5 @@ Ezután folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan m
 > [!div class="nextstepaction"]
 > [Fürt skálázása](service-fabric-tutorial-scale-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json

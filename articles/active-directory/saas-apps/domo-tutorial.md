@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0141b8e3e0953a1b436b9e3b1da72249dae19eb1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ba0bdd58dfcadf4c524e9c386aac94628f77c8a
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70163382"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608774"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-domo"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Domo-val
 
@@ -87,20 +87,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |--|
-    | `https://<companyname>.domo.com` |
-    | `https://<companyname>.beta.domo.com` |
-    | `https://<companyname>.demo.domo.com` |
-    | `https://<companyname>.dev.domo.com` |
-    | `https://<companyname>.fastage1.domo.com` |
-    | `https://<companyname>.frdev.domo.com` |
-    | `https://<companyname>.gastage.domo.com` |
-    | `https://<companyname>.load.domo.com` |
-    | `https://<companyname>.local.domo.com` |
-    | `https://<companyname>.qa.domo.com` |
-    | `https://<companyname>.stage.domo.com` |
-    | | |
+        ```https
+        https://<companyname>.domo.com` |
+        https://<companyname>.beta.domo.com` |
+        https://<companyname>.demo.domo.com` |
+        https://<companyname>.dev.domo.com` |
+        https://<companyname>.fastage1.domo.com` |
+        https://<companyname>.frdev.domo.com` |
+        https://<companyname>.gastage.domo.com` |
+        https://<companyname>.load.domo.com` |
+        https://<companyname>.local.domo.com` |
+        https://<companyname>.qa.domo.com` |
+        https://<companyname>.stage.domo.com` |
+        ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Ezekhez az értékekhez forduljon a [Domo-ügyfél támogatási csapatához](mailto:support@domo.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -121,9 +120,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -157,7 +156,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen a Domo csempére kattint, automatikusan be kell jelentkeznie a Domo-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

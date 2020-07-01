@@ -3,19 +3,19 @@ title: Biztonság
 titleSuffix: Azure Cognitive Services
 description: További információ a Cognitive Services használatának különböző biztonsági szempontjairól.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: dapine
+ms.date: 06/30/2020
+ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608451"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611407"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
@@ -205,12 +205,12 @@ NSString* value =
 
 Language Understanding esetén a Microsoft Engineers nem fér hozzá a E0 SKU-ban lévő összes ügyfél-adatszolgáltatáshoz. Ha a E0 SKU használatára van lehetősége, töltse ki és küldje el a [Luis szolgáltatási kérelem űrlapját](https://aka.ms/cogsvc-cmk). Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a E0 SKU-val a LUIS-t, létre kell hoznia egy új Language Understanding-erőforrást a Azure Portal, és a E0 kell választania. A felhasználók nem fognak tudni frissíteni a F0 az új E0 SKU-ra.
 
-A beszédfelismerési szolgáltatás jelenleg nem támogatja a Ügyfélszéf. Az ügyféladatok azonban a BYOS használatával is tárolhatók, így a [Ügyfélszéfhoz](../security/fundamentals/customer-lockbox-overview.md)hasonló adatellenőrzéseket érhet el. Ne feledje, hogy a beszédfelismerési szolgáltatás adatmennyisége és feldolgozása abban a régióban történik, ahol a beszédfelismerési erőforrás létrejött. Ez a nyugalmi állapotban tárolt adatokra és a tranzitban tárolt adatokra is vonatkozik. A testreszabási funkciók, például a Custom Speech és az egyéni hang használatakor az összes ügyfél-adat átvitele, tárolása és feldolgozása ugyanabban a régióban történik, ahol a BYOS (ha használatban van) és a Speech Service-erőforrás található.
+A beszédfelismerési szolgáltatás jelenleg nem támogatja a Ügyfélszéf. A vásárlói adatait azonban a BYOS ("saját tárhely használata") tárolhatja, így a [Ügyfélszéfhoz](../security/fundamentals/customer-lockbox-overview.md)hasonló adatkezelési funkciók érhetők el. Ne feledje, hogy a beszédfelismerési szolgáltatás adatmennyisége és feldolgozása abban a régióban történik, ahol a beszédfelismerési erőforrás létrejött. Ez a nyugalmi állapotban tárolt adatokra és a tranzitban tárolt adatokra is vonatkozik. A testreszabási funkciók, például a Custom Speech és az egyéni hang használatakor az összes ügyfél-adat átvitele, tárolása és feldolgozása ugyanabban a régióban történik, ahol a BYOS (ha használatban van) és a Speech Service-erőforrás található.
 
 > [!IMPORTANT]
 > A Microsoft **nem** használja fel az ügyféladatokat, hogy javítsa a beszédfelismerési modelljeit. Emellett, ha a végpont-naplózás le van tiltva, és nem használ testreszabást, akkor a rendszer nem tárolja az ügyféladatokat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg a különböző [Cognitive Servicesokkal](welcome.md)
 * További információ a [Cognitive Services Virtual Networks](cognitive-services-virtual-networks.md) szolgáltatásról

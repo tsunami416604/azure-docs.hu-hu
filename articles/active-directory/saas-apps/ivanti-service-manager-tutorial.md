@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e45903bfc54f2c685abea0a8e2924274a21e07b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 87ceeeb1a712c37bc74e12e910645013d77e8df6
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157974"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605321"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Oktatóanyag: Azure Active Directory integráció a Ivanti-Service Managerokkal (ISM)
 
@@ -109,11 +109,11 @@ Az Azure AD egyszeri bejelentkezés Ivanti Service Manager (ISM) szolgáltatáss
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |--|
-    | `https://<customer>.saasit.com/` |
-    | `https://<customer>.saasiteu.com/` |
-    | `https://<customer>.saasitau.com/` |
+        ```https
+        https://<customer>.saasit.com/
+        https://<customer>.saasiteu.com/
+        https://<customer>.saasitau.com/
+        ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
 
@@ -162,12 +162,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

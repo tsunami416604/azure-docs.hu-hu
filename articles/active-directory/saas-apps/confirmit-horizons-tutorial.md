@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 6127f149141db275c4b13c25fd6fbd0241b3e404
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5b43a871eefa313982275b90e2c31f99badcf97
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67105041"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608851"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Oktatóanyag: Azure Active Directory integráció Confirmit Horizontokkal
 
@@ -109,25 +109,23 @@ Az Azure AD egyszeri bejelentkezés Confirmit horizonton történő konfigurál�
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>` |
-    | `https://sso.us.confirmit.com/<UNIQUEID>` |
-    | |
+        ```https
+        https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>
+        https://sso.us.confirmit.com/<UNIQUEID>
+        ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://sso.us.confirmit.com/<UNIQUEID>/saml/acs` |
-    | |
+        ```https
+        https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>/acs
+        https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>/acs
+        https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>/acs
+        https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>/acs
+        https://sso.us.confirmit.com/<UNIQUEID>/saml/acs
+        ```
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -135,14 +133,13 @@ Az Azure AD egyszeri bejelentkezés Confirmit horizonton történő konfigurál�
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.confirmit.com/identity/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.com.au/identity/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.ca/identity/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.hk/identity/<UNIQUEID>` |
-    | `https://sso.us.confirmit.com/<UNIQUEID>` |
-    | | 
+        ```https
+        https://<SUBDOMAIN>.confirmit.com/identity/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.com.au/identity/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.ca/identity/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.hk/identity/<UNIQUEID>
+        https://sso.us.confirmit.com/<UNIQUEID>
+        ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [Confirmit Horizons ügyfélszolgálatával](mailto:support@confirmit.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -178,7 +175,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

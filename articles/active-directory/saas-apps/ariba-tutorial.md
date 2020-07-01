@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d151deb3b8f7a5784cd9c22bd124145be092489
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f9800e2c4e5c99ea86ec7bf27a5925b7c96b5384
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158905"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Oktatóanyag: Azure Active Directory integráció az Aribavel
 
@@ -108,10 +108,10 @@ Az Azure AD egyszeri bejelentkezés az Ariba szolgáltatással való konfigurál
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |--|
-    | `https://<subdomain>.sourcing.ariba.com` |
-    | `https://<subdomain>.supplier.ariba.com` |
+        ```https
+        https://<subdomain>.sourcing.ariba.com
+        https://<subdomain>.supplier.ariba.com
+        ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`http://<subdomain>.procurement-2.ariba.com`
 
@@ -144,12 +144,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

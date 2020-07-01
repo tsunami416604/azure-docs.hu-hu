@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d044a229764d0d6ce1d0f3b10b95d406ccd3dd5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1a2fd4a4649b38434d196e8f4203966efdff876
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77371412"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606562"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-experience-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Experience Cloud szolgáltatással
 
@@ -86,33 +86,32 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be a következő mintákat használó URL-címet:
     
-    |||
-    |-|-|
-    | `https://<cluster>.medallia.com/sso/<company>`|
-    | `https://<cluster>.medallia.ca/sso/<company>`|
-    | `https://<cluster>.medallia.eu/sso/<company>`|
-    | `https://<cluster>.medallia.au/sso/<company>`|
+        ```https
+        https://<cluster>.medallia.com/sso/<company>
+        https://<cluster>.medallia.ca/sso/<company>
+        https://<cluster>.medallia.eu/sso/<company>
+        https://<cluster>.medallia.au/sso/<company>
+        ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be a következő mintákat használó URL-címet:
 
-    |||
-    |-|-|
-    | `https://<cluster>.medallia.com/sso/<company>/logonSubmit.do`|
-    | `https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do`|
-    | `https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do`|
-    | `https://<cluster>.medallia.au/sso/<company>/logonSubmit.do`|
-
+        ```https
+        https://<cluster>.medallia.com/sso/<company>/logonSubmit.do
+        https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do
+        https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do
+        https://<cluster>.medallia.au/sso/<company>/logonSubmit.do
+        ```
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minták használatával:
 
-    |||
-    |-|-|
-    | `https://<cluster>.medallia.com/sso/<company>`|
-    | `https://<cluster>.medallia.ca/sso/<company>`|
-    | `https://<cluster>.medallia.eu/sso/<company>`|
-    | `https://<cluster>.medallia.au/sso/<company>`|
+        ```https
+        https://<cluster>.medallia.com/sso/<company>
+        https://<cluster>.medallia.ca/sso/<company>
+        https://<cluster>.medallia.eu/sso/<company>
+        https://<cluster>.medallia.au/sso/<company>
+        ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ha ezeket az értékeket szeretné megkapni, forduljon a felhőalapú ügyfélszolgálati [csapathoz](mailto:support@medallia.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -133,9 +132,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -169,7 +168,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a élmény felhő csempére kattint, automatikusan be kell jelentkeznie arra a felhőbe, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

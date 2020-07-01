@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2feb65384e8586b30840a37a66aaee5375881c22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7233ea2d9d49d9a030f11f45e8aeba3fb0927c2
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67103934"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Oktatóanyag: Azure Active Directory integráció a dokumentációval
 
@@ -107,11 +107,10 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |-|-|
-    | `https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn`|
-    | `https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn`|
-    | |
+        ```https
+        https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn
+        https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn
+        ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`Dossier/<CLIENTNAME>`
 
@@ -120,11 +119,10 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |-|-|
-    |  `https://<SUBDOMAIN>.dossiersystems.com/azuresso`|
-    | `https://dossier.<CLIENTDOMAINNAME>/azuresso`|
-    | |
+        ```https
+        https://<SUBDOMAIN>.dossiersystems.com/azuresso
+        https://dossier.<CLIENTDOMAINNAME>/azuresso
+        ```
 
 
     > [!NOTE]
@@ -166,11 +164,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

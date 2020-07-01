@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 151ec17308a593bd9361bff6ad6340cccd82edd5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048559"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607353"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Oktatóanyag: Azure Active Directory integráció a helyettessel
 
@@ -108,43 +108,43 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    |  |
-    | ----|
-    | `https://<subdomain>.<region>.au.deputy.com` |
-    | `https://<subdomain>.<region>.ent-au.deputy.com` |
-    | `https://<subdomain>.<region>.na.deputy.com`|
-    | `https://<subdomain>.<region>.ent-na.deputy.com`|
-    | `https://<subdomain>.<region>.eu.deputy.com` |
-    | `https://<subdomain>.<region>.ent-eu.deputy.com` |
-    | `https://<subdomain>.<region>.as.deputy.com` |
-    | `https://<subdomain>.<region>.ent-as.deputy.com` |
-    | `https://<subdomain>.<region>.la.deputy.com` |
-    | `https://<subdomain>.<region>.ent-la.deputy.com` |
-    | `https://<subdomain>.<region>.af.deputy.com` |
-    | `https://<subdomain>.<region>.ent-af.deputy.com` |
-    | `https://<subdomain>.<region>.an.deputy.com` |
-    | `https://<subdomain>.<region>.ent-an.deputy.com` |
-    | `https://<subdomain>.<region>.deputy.com` |
+        ```https
+        https://<subdomain>.<region>.au.deputy.com
+        https://<subdomain>.<region>.ent-au.deputy.com
+        https://<subdomain>.<region>.na.deputy.com
+        https://<subdomain>.<region>.ent-na.deputy.com
+        https://<subdomain>.<region>.eu.deputy.com
+        https://<subdomain>.<region>.ent-eu.deputy.com
+        https://<subdomain>.<region>.as.deputy.com
+        https://<subdomain>.<region>.ent-as.deputy.com
+        https://<subdomain>.<region>.la.deputy.com
+        https://<subdomain>.<region>.ent-la.deputy.com
+        https://<subdomain>.<region>.af.deputy.com
+        https://<subdomain>.<region>.ent-af.deputy.com
+        https://<subdomain>.<region>.an.deputy.com
+        https://<subdomain>.<region>.ent-an.deputy.com
+        https://<subdomain>.<region>.deputy.com
+        ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |----|
-    | `https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-au.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.na.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-na.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.eu.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-eu.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.as.deputy.com/exec/devapp/samlacs.` |
-    | `https://<subdomain>.<region>.ent-as.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.la.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-la.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.af.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-af.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.an.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs` |
+        ```https
+        https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-au.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.na.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-na.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.eu.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-eu.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.as.deputy.com/exec/devapp/samlacs.
+        https://<subdomain>.<region>.ent-as.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.la.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-la.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.af.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-af.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.an.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs
+        ```
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -174,7 +174,7 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
 
 ### <a name="configure-deputy-single-sign-on"></a>Az egyszeri bejelentkezés konfigurálása
 
-1. Navigáljon a következő URL-`https://(your-subdomain).deputy.com/exec/config/system_config`címre:. Lépjen a **biztonsági beállítások** menüpontra, majd kattintson a **Szerkesztés**elemre.
+1. Navigáljon a következő URL-címre: `https://(your-subdomain).deputy.com/exec/config/system_config` . Lépjen a **biztonsági beállítások** menüpontra, majd kattintson a **Szerkesztés**elemre.
    
     ![Egyszeri bejelentkezés konfigurálása](./media/deputy-tutorial/tutorial_deputy_004.png)
 
@@ -188,9 +188,9 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
    
     c. Az SAML SSO URL szövegmezőbe írja be a következőt:`https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
     
-    d. Az SAML SSO URL szövegmezőben cserélje le `<your subdomain>` az altartományát.
+    d. Az SAML SSO URL szövegmezőben cserélje le az `<your subdomain>` altartományát.
    
-    e. Az SAML SSO URL szövegmezőben cserélje le `<saml sso url>` a elemet a Azure Portalból másolt **bejelentkezési URL-címre** .
+    e. Az SAML SSO URL szövegmezőben cserélje le a `<saml sso url>` elemet a Azure Portalból másolt **bejelentkezési URL-címre** .
    
     f. Kattintson a **Beállítások mentése**gombra.
 
@@ -212,12 +212,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

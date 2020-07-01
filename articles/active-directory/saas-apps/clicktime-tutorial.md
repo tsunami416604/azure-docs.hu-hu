@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27803187e06ee523ff7e6b773bd302eed7422111
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157402"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608872"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Oktatóanyag: Azure Active Directory integráció a ClickTime
 
@@ -110,10 +110,10 @@ Az Azure AD egyszeri bejelentkezés ClickTime való konfigurálásához hajtsa v
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |--|
-    | `https://app.clicktime.com/Login/` |
-    | `https://app.clicktime.com/App/Login/Consume.aspx` |
+        ```https
+        https://app.clicktime.com/Login/
+        https://app.clicktime.com/App/Login/Consume.aspx
+        ```
 
 4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
@@ -165,12 +165,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -224,7 +224,7 @@ ClickTime esetén a kiépítés manuális feladat.
    
     a.  A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét, például a **Britta Simon**nevet. 
   
-    b.  Az **e-mail cím** szövegmezőbe írja be a felhasználó, például a **brittasimon\@contoso.com**-e-mail-címét.
+    b.  Az **e-mail cím** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com**-e-mail-címét.
        
     > [!NOTE]
     > Ha szeretné, az új személy objektum további tulajdonságait is megadhatja.
@@ -237,7 +237,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a ClickTime csempére kattint, automatikusan be kell jelentkeznie arra a ClickTime, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

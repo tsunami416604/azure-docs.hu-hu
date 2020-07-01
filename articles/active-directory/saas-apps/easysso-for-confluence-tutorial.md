@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f33972f80075281b735ad69848631e81d2366e
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 5c7570a21d8135e98024486372aaa49587b0d052
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905254"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608784"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a EasySSO for torkolatánál
 
@@ -101,13 +101,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az EasySSO for torkolatánál alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name |  |  Forrás attribútum|
-    | ---------------| --------------- | --------- |
-    | urn: OID: 0.9.2342.19200300.100.1.1 | | User. userPrincipalName |
-    | urn: OID: 0.9.2342.19200300.100.1.3 | | User. mail |
-    | urn: OID: 2.16.840.1.113730.3.1.241 | | felhasználó. DisplayName |
-    | urn: OID: 2.5.4.4 | | felhasználó. vezetéknév |
-    | urn: OID: 2.5.4.42 | | User. givenName |
+    | Name | Forrás attribútum|
+    | ---------------| --------- |
+    | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName |
+    | urn: OID: 0.9.2342.19200300.100.1.3 | User. mail |
+    | urn: OID: 2.16.840.1.113730.3.1.241 | felhasználó. DisplayName |
+    | urn: OID: 2.5.4.4 | felhasználó. vezetéknév |
+    | urn: OID: 2.5.4.42 | User. givenName |
     
     Abban az esetben, ha az Azure AD-felhasználók **sAMAccountName** konfigurálva van, le kell képeznie az **urn: OID: 0.9.2342.19200300.100.1.1** alakzatot a **sAMAccountName** attribútumra.
     

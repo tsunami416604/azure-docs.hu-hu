@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f77f00870af7b9d1788d96391264bdf9b4ee73c
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68879673"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607667"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Oktatóanyag: a Carbonite-végpontok biztonsági mentésének integrálása Azure Active Directory
 
@@ -84,36 +84,33 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
-    | | |
-    |-|-|
-    | `https://red-us.mysecuredatavault.com`|
-    | `https://red-apac.mysecuredatavault.com`|
-    | `https://red-fr.mysecuredatavault.com`|
-    | `https://red-emea.mysecuredatavault.com`|
-    | `https://kamino.mysecuredatavault.com`|
-    | | |
+        ```https
+        https://red-us.mysecuredatavault.com
+        https://red-apac.mysecuredatavault.com
+        https://red-fr.mysecuredatavault.com
+        https://red-emea.mysecuredatavault.com
+        https://kamino.mysecuredatavault.com
+        ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
-    | | |
-    |-|-|
-    | `https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | `https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | `https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | `https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | | |
+        ```https
+        https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx
+        https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx
+        https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx
+        https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx
+        ```
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
-    | | |
-    |-|-|
-    | `https://red-us.mysecuredatavault.com/`|
-    | `https://red-apac.mysecuredatavault.com/`|
-    | `https://red-fr.mysecuredatavault.com/`|
-    | `https://red-emea.mysecuredatavault.com/`|
-    | | |
+    ```https
+    https://red-us.mysecuredatavault.com/
+    https://red-apac.mysecuredatavault.com/
+    https://red-fr.mysecuredatavault.com/
+    https://red-emea.mysecuredatavault.com/
+    ```
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -167,9 +164,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -211,7 +208,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Carbonite-végpont biztonsági mentési csempére kattint, automatikusan be kell jelentkeznie a Carbonite-végpont biztonsági másolatából, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

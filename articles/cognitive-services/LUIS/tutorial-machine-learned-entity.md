@@ -3,12 +3,12 @@ title: 'Oktatóanyag: strukturált adatok kinyerése gépi tanulási entitással
 description: A gépi tanulási entitás használatával kinyerheti a strukturált adatok teljes körű kinyerését. A kinyerési pontosság növeléséhez adja hozzá az alentitásokat a szolgáltatásokhoz.
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: f9a732d38d2d4557340080d9d1bbdcf789caea08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676175"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611016"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Oktatóanyag: strukturált adatok kinyerése a felhasználóktól a gépi tanulási entitásokkal Language Understanding (LUIS)
 
@@ -16,7 +16,7 @@ Ebben az oktatóanyagban a gépi tanulási entitás használatával kinyerheti a
 
 A gépi tanulási entitás támogatja a [modell dekompozíciós fogalmát](luis-concept-model.md#v3-authoring-model-decomposition) azáltal, hogy alentitási entitásokat biztosít a [funkciókhoz](luis-concept-feature.md).
 
-**Az oktatóanyag a következőket ismerteti:**
+**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
 > * Alkalmazás importálása – példa
@@ -98,7 +98,7 @@ Az előző lépések az entitást és alentitást hozza létre. A kivonás javí
 
 1. Válassza az **új kifejezés létrehozása** lehetőséget a legördülő menüből.
 
-1. Az **új kifejezés létrehozása listában** adja meg a nevet, `SizePhraselist` majd adja meg a: `small` , és a értéket `medium` `large` . A **javaslatok** mező kitöltése után válassza a és a elemet `extra large` `xl` . Válassza a **Mentés** lehetőséget az új kifejezések listájának létrehozásához.
+1. Az **új kifejezés létrehozása listában** adja meg a nevet, `SizePhraselist` majd adja meg a: `small` , és a értéket `medium` `large` . A **javaslatok** mező kitöltése után válassza a és a elemet `extra large` `xl` . Válassza a **Létrehozás** lehetőséget az új kifejezések listájának létrehozásához.
 
     Ez a kifejezés-lista funkció segít az `Size` alentitásnak a mérettel kapcsolatos szavak megkeresésében, ha például szavakat biztosít. A kifejezések listájának nem kell tartalmaznia minden méret szót, de tartalmaznia kell azokat a szavakat, amelyek várhatóan a méretet jelzik.
 
@@ -131,7 +131,7 @@ Ismert méretek listájának hozzáadása esetén az ügyfélalkalmazás felisme
 
 1. A **séma és szolgáltatások** lapon válassza ki a **méret** entitást, majd válassza a **+ szolgáltatás hozzáadása**elemet.
 
-1. Válassza a **@ SizeList** elemet a legördülő listából.
+1. Válassza a **@ SizeListentity** elemet a legördülő listából.
 
 <a name="add-prebuilt-number-entity-to-app"></a>
 
@@ -302,7 +302,7 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügy
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az alkalmazás egy gépi tanulási entitás használatával keresi meg a felhasználó teljes részletességét, és Kinyeri a részleteket ebből a részletekből. A gépi tanulási entitás segítségével elvégezheti az entitás részleteit.
 

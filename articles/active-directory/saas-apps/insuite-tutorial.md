@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8b2af6ff99db384586dad359285a08ad187bd5d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c1226d181a47f48e294d8a7da4c42467c9ade488
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666077"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608619"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-insuite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az insuite szolgáltatással
 
@@ -84,19 +84,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-    | | |
-    |-|-|
-    | `https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi`|
-    | `https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi`|
+        ```https
+        https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
+        https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
+        ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`DreamArts_insuite_TENANTNAME`
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-    | | |
-    |-|-|
-    | `https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi`|
-    | `https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi`|
+        ```https
+        https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
+        https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
+        ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba a [insuite ügyfél-támogatási csapatával](mailto:e-support@dreamarts.co.jp) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -119,7 +119,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32d8944b55794412eb322697469933030e2fbb56
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 39e2d72ba63633d7c5d3da3094cfa00e076513af
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74184039"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609112"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Felügyelt identitások konfigurálása egy virtuálisgép-méretezési csoport Azure-erőforrásaihoz a Azure Portal használatával
 
@@ -86,7 +86,7 @@ A Azure Portal jelenleg nem támogatja a felhasználó által hozzárendelt fel�
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>Felhasználóhoz rendelt felügyelt identitás hozzárendelése meglévő virtuálisgép-méretezési csoportokhoz
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez társított fiók használatával.
-2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz, és kattintson az **identitás**, ** \+** a **felhasználó hozzárendelve** , majd a Hozzáadás elemre.
+2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz, és kattintson az **identitás**, a **felhasználó hozzárendelve** , majd a ** \+ Hozzáadás**elemre.
 
    ![Felhasználó által hozzárendelt identitás hozzáadása a VMSS-hez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 

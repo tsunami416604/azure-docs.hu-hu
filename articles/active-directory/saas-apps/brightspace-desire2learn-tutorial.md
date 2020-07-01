@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6423920f5583cf811624a62205a433febddec02e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09bb4cfb62217ffa16d30170ce2aa5e065a7eae6
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158766"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Oktatóanyag: Azure Active Directory integráció a Brightspace-mel a Desire2Learn szerint
 
@@ -108,10 +108,10 @@ Ha az Azure AD egyszeri bejelentkezést a Desire2Learn Brightspace szeretné kon
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-    | |
-    |--|
-    | `https://<companyname>.tenants.brightspace.com/samlLogin`|
-    | `https://<companyname>.desire2learn.com/shibboleth-sp`|
+        ```https
+        https://<companyname>.tenants.brightspace.com/samlLogin
+        https://<companyname>.desire2learn.com/shibboleth-sp
+        ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l`
 
@@ -154,12 +154,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

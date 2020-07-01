@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f532976e80c4284addcf09d81d8a32fd5f6f8827
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 60248d1326d872734a49a93a689625cf2603f929
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733942"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601700"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -22,7 +22,7 @@ A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartománysal 
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat LDAPs-t egy Azure AD DS felügyelt tartományhoz.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Digitális tanúsítvány létrehozása az Azure AD DS használatával
@@ -230,7 +230,7 @@ Az interneten keresztüli biztonságos LDAP-hozzáférés használatával friss�
 
 ![A felügyelt tartomány Secure LDAP külső IP-címének megtekintése a Azure Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
-Konfigurálja a külső DNS-szolgáltatót egy olyan gazda rekord létrehozásához, mint például az *LDAPS*, hogy feloldja ezt a külső IP-címet. Ha először szeretné tesztelni a gépet a gépen, létrehozhat egy bejegyzést a Windows-gazdagépek fájljában. A gazdagépek fájljának a helyi gépen való sikeres szerkesztéséhez nyissa meg rendszergazdaként a *jegyzettömböt* , majd nyissa meg a *C:\Windows\System32\drivers\etc* fájlt.
+Konfigurálja a külső DNS-szolgáltatót egy olyan gazda rekord létrehozásához, mint például az *LDAPS*, hogy feloldja ezt a külső IP-címet. Ha először szeretné tesztelni a gépet a gépen, létrehozhat egy bejegyzést a Windows-gazdagépek fájljában. A gazdagépek fájljának a helyi gépen való sikeres szerkesztéséhez nyissa meg rendszergazdaként a *jegyzettömböt* , majd nyissa meg a *C:\Windows\System32\drivers\etc\hosts* fájlt.
 
 A következő példában szereplő DNS-bejegyzés a külső DNS-szolgáltatóval vagy a helyi gazdagépek fájljával oldja fel a *LDAPS.aaddscontoso.com* a *168.62.205.103*külső IP-címére irányuló forgalmat:
 
@@ -264,7 +264,7 @@ A felügyelt tartományban tárolt objektumok megtekintéséhez:
 
 Egy adott tároló közvetlen lekérdezéséhez a **nézet > fa** menüjében megadhat egy **BaseDN** , például *ou = AADDC-felhasználók, DC = AADDSCONTOSO, DC = com* vagy *ou = AADDC számítógépek, DC = AADDSCONTOSO, DC = com*. További információ a lekérdezések formázásáról és létrehozásáról: az [LDAP-lekérdezés alapjai][ldap-query-basics].
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a számítógép helyi gazdagépek fájljához hozzáadott egy DNS-bejegyzést az oktatóanyag kapcsolatának teszteléséhez, távolítsa el ezt a bejegyzést, és adjon hozzá egy formális rekordot a DNS-zónához. Ha el szeretné távolítani a bejegyzést a helyi gazdagépek fájljából, hajtsa végre a következő lépéseket:
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed5370fda9be2573f773bd2fe653feb74defeb7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2f1ff2247cb3b8f673f187f688e80bde8559c0a4
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68248864"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606001"
 ---
 # <a name="tutorial-integrate-hyperanna-with-azure-active-directory"></a>Oktatóanyag: a HyperAnna és a Azure Active Directory integrálása
 
@@ -85,19 +85,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta bármelyikének egyikének használatával:
 
-    | |
-    |--|
-    | `https://microsoft.hyperanna.com/userservice/auth/saml` |
-    | `https://anna.hyperanna.com/userservice/auth/saml` |
+    ```https
+    https://microsoft.hyperanna.com/userservice/auth/saml
+    https://anna.hyperanna.com/userservice/auth/saml
+    ```
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta bármelyikének egyikének használatával:
 
-    | |
-    |--|
-    | `https://microsoft.hyperanna.com/` |
-    | `https://anna.hyperanna.com/` |
+    ```https
+    `https://microsoft.hyperanna.com/
+    `https://anna.hyperanna.com/
+    ```
 
 4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -118,9 +118,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -150,7 +150,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a HyperAnna csempére kattint, automatikusan be kell jelentkeznie arra a HyperAnna, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

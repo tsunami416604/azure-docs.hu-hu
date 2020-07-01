@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0fc56fe040528df5b4bd5e9217bd614c4a640c15
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74074758"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608050"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
@@ -116,9 +116,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -281,20 +281,20 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alábbi lista az alapértelmezett SAML-attribútumok teljes listáját tartalmazza. A GivenName a következő karakterláncot használja.
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-| | |
+| Munkamenet | Attribútum |
 | -- | -- |
 | eb46b6b6. Session. SAML. Last. assertionID | `<TENANT ID>` |
 | eb46b6b6. Session. SAML. Last. assertionIssueInstant  | `<ID>` |
 | eb46b6b6. Session. SAML. Last. assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/DisplayName | user0 |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/objectidentifier | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.microsoft.com/Identity/Claims/tenantid | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/EmailAddress | `user0@superdemo.live` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/givenName | user0 |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/Name | `user0@superdemo.live` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/surname | 0 |
+| eb46b6b6. Session. SAML. Last. attr. name. http: \/ /schemas.microsoft.com/Claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
+| eb46b6b6. Session. SAML. Last. attr. name. http: \/ /schemas.microsoft.com/Identity/Claims/DisplayName | user0 |
+| eb46b6b6. Session. SAML. Last. attr. name. http: \/ /schemas.microsoft.com/Identity/Claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
+| eb46b6b6. Session. SAML. Last. attr. name. http: \/ /schemas.microsoft.com/Identity/Claims/objectidentifier | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. attr. name. http: \/ /schemas.microsoft.com/Identity/Claims/tenantid | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. attr. name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/Identity/Claims/EmailAddress | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. attr. name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/Identity/Claims/givenName | user0 |
+| eb46b6b6. Session. SAML. Last. attr. name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/Identity/Claims/Name | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. attr. name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/Identity/Claims/surname | 0 |
 | eb46b6b6. Session. SAML. Last. hallgatóság | `https://kerbapp.superdemo.live` |
 | eb46b6b6. Session. SAML. Last. authNContextClassRef | urn: Oasis: nevek: TC: SAML: 2.0: AC: classs: Password |
 | eb46b6b6. Session. SAML. Last. authNInstant | `<ID>` |
@@ -326,7 +326,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen az F5 csempére kattint, automatikusan be kell jelentkeznie az F5-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -3,20 +3,25 @@ title: Azure-tevékenység naplójának küldése Log Analytics munkaterületre 
 description: ARM-sablonokkal létrehozhat egy Log Analytics munkaterületet és egy diagnosztikai beállítást, amellyel elküldheti a tevékenység naplóját Azure Monitor naplókba.
 ms.subservice: logs
 ms.topic: quickstart
+ms.custom: subject-armqs
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: ed2a18f4d7e9784566036a598098a015d3050dbd
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: ce7c8df0fcea66d21ba2640ba26213a49efcb1c0
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563545"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601649"
 ---
-# <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-resource-manager-template"></a>Azure-tevékenység naplójának küldése Log Analytics munkaterületre Azure Resource Manager sablon használatával
-A műveletnapló egy Azure-beli platform-napló, amely betekintést nyújt az előfizetési szintű eseményekre. Ez olyan adatokat tartalmaz, mint amikor egy erőforrás módosul, vagy amikor a virtuális gép elindul. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató bemutatja, hogyan használhatja a ARM-sablonokat egy Log Analytics munkaterület létrehozásához, valamint egy diagnosztikai beállítást, amellyel elküldheti a tevékenység naplóját Azure Monitor naplókba, amelyekkel elemezheti a [napló lekérdezéseit](../log-query/log-query-overview.md) , és más funkciókat is engedélyezhet, például [naplózási riasztásokat](../platform/alerts-log-query.md) és [munkafüzeteket](../platform/workbooks-overview.md). 
+# <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Gyors útmutató: Azure-beli tevékenység naplójának küldése Log Analytics munkaterületre ARM-sablon használatával
+A műveletnapló egy Azure-beli platform-napló, amely betekintést nyújt az előfizetési szintű eseményekre. Ez olyan adatokat tartalmaz, mint amikor egy erőforrás módosul, vagy amikor a virtuális gép elindul. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató azt ismerteti, hogyan használhatók Azure Resource Manager sablonok (ARM-sablonok) egy Log Analytics-munkaterület létrehozásához és egy diagnosztikai beállításhoz, amely a tevékenység naplóját Azure Monitor naplókba küldi, ahol elemezheti a [napló lekérdezésekkel](../log-query/log-query-overview.md) , és más funkciókat is engedélyezhet, például a [naplózási riasztásokat](../platform/alerts-log-query.md) és a [munkafüzeteket](../platform/workbooks-overview.md).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-log-analytics-workspace"></a>A Log Analytics-munkaterület létrehozása
 
@@ -25,100 +30,104 @@ A következő sablon egy üres Log Analytics munkaterületet hoz létre. Mentse 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "workspaceName": {
-          "type": "string",
-          "metadata": {
-            "description": "Name of the workspace."
-          }
-      },
-      "sku": {
-          "type": "string",
-          "allowedValues": [
-            "pergb2018",
-            "Free",
-            "Standalone",
-            "PerNode",
-            "Standard",
-            "Premium"
-            ],
-          "defaultValue": "pergb2018",
-          "metadata": {
-          "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
-          }
-        },
-        "location": {
-          "type": "string",
-          "allowedValues": [
-          "australiacentral", 
-          "australiaeast", 
-          "australiasoutheast", 
-          "brazilsouth",
-          "canadacentral", 
-          "centralindia", 
-          "centralus", 
-          "eastasia", 
-          "eastus", 
-          "eastus2", 
-          "francecentral", 
-          "japaneast", 
-          "koreacentral", 
-          "northcentralus", 
-          "northeurope", 
-          "southafricanorth", 
-          "southcentralus", 
-          "southeastasia",
-          "switzerlandnorth",
-          "switzerlandwest",
-          "uksouth", 
-          "ukwest", 
-          "westcentralus", 
-          "westeurope", 
-          "westus", 
-          "westus2" 
-          ],
-          "metadata": {
-              "description": "Specifies the location for the workspace."
-              }
-        },
-        "retentionInDays": {
-          "type": "int",
-          "defaultValue": 120,
-          "metadata": {
-            "description": "Number of days to retain data."
-          }
-        },
-        "resourcePermissions": {
-          "type": "bool",
-          "defaultValue": true,
-          "metadata": {
-            "description": "true to use resource or workspace permissions. false to require workspace permissions."
-          }
+    "workspaceName": {
+      "type": "string",
+        "metadata": {
+          "description": "Name of the workspace."
         }
-      },
-      "resources": [
-      {
-          "type": "Microsoft.OperationalInsights/workspaces",
-          "name": "[parameters('workspaceName')]",
-          "apiVersion": "2020-03-01-preview",
-          "location": "[parameters('location')]",
-          "properties": {
-              "sku": {
-                  "name": "[parameters('sku')]"
-              },
-              "retentionInDays": "[parameters('retentionInDays')]",
-              "features": {
-                  "searchVersion": 1,
-                  "legacy": 0,
-                  "enableLogAccessUsingOnlyResourcePermissions": "[parameters('resourcePermissions')]"
-              }
-          }
+    },
+    "sku": {
+      "type": "string",
+      "allowedValues": [
+        "pergb2018",
+        "Free",
+        "Standalone",
+        "PerNode",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "pergb2018",
+      "metadata": {
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
+    },
+    "location": {
+      "type": "string",
+      "allowedValues": [
+        "australiacentral",
+        "australiaeast",
+        "australiasoutheast",
+        "brazilsouth",
+        "canadacentral",
+        "centralindia",
+        "centralus",
+        "eastasia",
+        "eastus",
+        "eastus2",
+        "francecentral",
+        "japaneast",
+        "koreacentral",
+        "northcentralus",
+        "northeurope",
+        "southafricanorth",
+        "southcentralus",
+        "southeastasia",
+        "switzerlandnorth",
+        "switzerlandwest",
+        "uksouth",
+        "ukwest",
+        "westcentralus",
+        "westeurope",
+        "westus",
+        "westus2"
+      ],
+      "metadata": {
+        "description": "Specifies the location for the workspace."
+      }
+    },
+    "retentionInDays": {
+      "type": "int",
+      "defaultValue": 120,
+      "metadata": {
+        "description": "Number of days to retain data."
+      }
+    },
+    "resourcePermissions": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "true to use resource or workspace permissions. false to require workspace permissions."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2020-03-01-preview",
+      "name": "[parameters('workspaceName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "name": "[parameters('sku')]"
+        },
+        "retentionInDays": "[parameters('retentionInDays')]",
+        "features": {
+          "searchVersion": 1,
+          "legacy": 0,
+          "enableLogAccessUsingOnlyResourcePermissions": "[parameters('resourcePermissions')]"
+        }
+      }
+    }
   ]
 }
 ```
+
+Ez a sablon egy erőforrást definiál:
+
+- [Microsoft. OperationalInsights/munkaterületek](/azure/templates/microsoft.operationalinsights/workspaces)
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](../../azure-resource-manager/templates/deploy-portal.md) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport**, a **workspaceName**és a **hely** minta értékeit a környezetének megfelelő értékekkel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
@@ -145,7 +154,7 @@ New-AzResourceGroupDeployment -Name AzureMonitorDeployment -ResourceGroupName my
 
 ---
 
-### <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+### <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 Győződjön meg arról, hogy a munkaterület az alábbi parancsok egyikével lett létrehozva. Cserélje le az **erőforráscsoport** és a **workspaceName** minta értékeit a fent használt értékekre.
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI2)
@@ -163,67 +172,73 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 ---
 
 ## <a name="create-diagnostic-setting"></a>Diagnosztikai beállítások létrehozása
+
+### <a name="review-the-template"></a>A sablon áttekintése
 A következő sablon egy diagnosztikai beállítást hoz létre, amely elküldi a tevékenység naplóját egy Log Analytics munkaterületre. Mentse ezt a sablont *CreateDiagnosticSetting.jsként*.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "settingName": {
-            "type": "String"
-        },
-        "workspaceId": {
-            "type": "String"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "settingName": {
+        "type": "String"
     },
-    "resources": [
-        {
-          "type": "Microsoft.Insights/diagnosticSettings",
-          "apiVersion": "2017-05-01-preview",
-          "name": "[parameters('settingName')]",
-          "dependsOn": [],
-          "properties": {
-            "workspaceId": "[parameters('workspaceId')]",
-            "logs": [
-              {
-                "category": "Administrative",
-                "enabled": true
-              },
-              {
-                "category": "Alert",
-                "enabled": true
-              },
-              {
-                "category": "Autoscale",
-                "enabled": true
-              },
-              {
-                "category": "Policy",
-                "enabled": true
-              },
-              {
-                "category": "Recommendation",
-                "enabled": true
-              },
-              {
-                "category": "ResourceHealth",
-                "enabled": true
-              },
-              {
-                "category": "Security",
-                "enabled": true
-              },
-              {
-                "category": "ServiceHealth",
-                "enabled": true
-              }
-            ]
+    "workspaceId": {
+        "type": "String"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2017-05-01-preview",
+      "name": "[parameters('settingName')]",
+      "dependsOn": [],
+      "properties": {
+        "workspaceId": "[parameters('workspaceId')]",
+        "logs": [
+          {
+          "category": "Administrative",
+          "enabled": true
+          },
+          {
+          "category": "Alert",
+          "enabled": true
+          },
+          {
+          "category": "Autoscale",
+          "enabled": true
+          },
+          {
+          "category": "Policy",
+          "enabled": true
+          },
+          {
+          "category": "Recommendation",
+          "enabled": true
+          },
+          {
+          "category": "ResourceHealth",
+          "enabled": true
+          },
+          {
+          "category": "Security",
+          "enabled": true
+          },
+          {
+          "category": "ServiceHealth",
+          "enabled": true
           }
-        }
-    ]
+        ]
+      }
+    }
+  ]
 }
 ```
+
+Ez a sablon egy erőforrást definiál:
+
+- [Microsoft. bepillantások/diagnosticSettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](/azure-resource-manager/templates/deploy-portal) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport**, a **workspaceName**és a **hely** minta értékeit a környezetének megfelelő értékekkel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
@@ -242,7 +257,7 @@ New-AzSubscriptionDeployment -Name CreateDiagnosticSetting -location eastus -Tem
 ```
 ---
 
-### <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+### <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 Győződjön meg arról, hogy a diagnosztikai beállítás az alábbi parancsok egyikével lett létrehozva. Cserélje le a minta értékeit az előfizetésre, és állítsa a nevet a fent használt értékekre.
 
 > [!NOTE]

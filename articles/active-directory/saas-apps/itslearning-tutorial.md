@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a4a95452c11993f57674bcbd16cf3ed5ea828e4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c07c518b4898f64e7ef726ec173c7e31083dae7d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67099547"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605374"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Oktatóanyag: Azure Active Directory integráció a itslearning
 
@@ -107,11 +107,10 @@ Az Azure AD egyszeri bejelentkezés itslearning való konfigurálásához hajtsa
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:
     
-    | |
-    |--|
-    | `https://www.itslearning.com/index.aspx`|
-    | `https://us1.itslearning.com/index.aspx`|
-    | |
+        ```https
+        https://www.itslearning.com/index.aspx
+        https://us1.itslearning.com/index.aspx
+        ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`urn:mace:saml2v2.no:services:com.itslearning`
 
@@ -151,11 +150,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com.
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com.
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

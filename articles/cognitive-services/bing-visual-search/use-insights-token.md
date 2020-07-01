@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: tracking-python
-ms.openlocfilehash: ac704ff7213b08072debf9d56da10a74e8315c68
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 733eec452501a829d0162b91aca9ece191d68914
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607033"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611424"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Elemzések lekérése a rendszerképekről
 
-A Bing Visual Search API információkat ad vissza egy Ön által megadott képről. A kép feltöltéséhez használhatja a kép URL-címét, egy megállapítási jogkivonatot, vagy feltöltheti magát a képet. Ezekről a beállításokról a [Mi az Bing Visual Search API?](overview.md)című témakörben olvashat bővebben. Ez a cikk az adatellenőrzési jogkivonat használatát mutatja be. Az olyan példákat, amelyek bemutatják, hogyan tölthet fel egy képet az elemzések lekéréséhez, lásd a gyors útmutatókat ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [Node. js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
+A Bing Visual Search API információkat ad vissza egy Ön által megadott képről. A kép feltöltéséhez használhatja a kép URL-címét, egy megállapítási jogkivonatot, vagy feltöltheti magát a képet. Ezekről a beállításokról a [Mi az Bing Visual Search API?](overview.md)című témakörben olvashat bővebben. Ez a cikk az adatellenőrzési jogkivonat használatát mutatja be. Az olyan példákat, amelyek bemutatják, hogyan tölthet fel egy képet az elemzések lekéréséhez, tekintse meg a rövid útmutatók ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)) című témakört.
 
 Ha képtokent vagy URL-címet küld Bing Visual Search, az alábbi ábrán láthatók a bejegyzés törzsében szerepeltetni kívánt űrlapadatok. Az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek, és a `name` paramétert "knowledgeRequest" értékre kell állítania. Az objektum részleteit a `imageInfo` kérelemben tekintheti meg:
 
@@ -59,14 +59,15 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Az információkból álló tokent használó Példákért lásd: [C#](#use-with-c)  |  [Java](#use-with-java)  |  [Node. js](#use-with-nodejs)  |  [Python](#use-with-python).
+Az információkból álló tokent használó Példákért lásd: [C#](#use-with-c)  |  [Java](#use-with-java)  |  [Node.js](#use-with-nodejs)  |  [Python](#use-with-python).
 
 ## <a name="use-with-c"></a>Használat a C használatával #
 
 ### <a name="c-prerequisites"></a>C# előfeltételek
 
-- A [Visual Studio 2019](https://www.visualstudio.com/downloads/) bármely verziója a Windows rendszeren futó kód beszerzéséhez.
-- Azure-előfizetés. Ebben a rövid útmutatóban egy [ingyenes próbaverziós](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcsot vagy egy fizetős előfizetési kulcsot is használhat.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* A [Visual Studio 2019](https://www.visualstudio.com/downloads/) bármely verziója a Windows rendszeren futó kód beszerzéséhez.
 
 ## <a name="run-the-application"></a>Alkalmazás futtatása
 
@@ -238,8 +239,10 @@ namespace VisualSearchInsightsToken
 
 ### <a name="java-prerequisites"></a>A Java előfeltételei
 
-- A kód fordításához és futtatásához a [JDK 7-es vagy 8-as](https://aka.ms/azure-jdks) verzióját kell használnia. Ha kedvence van, akkor használhat egy Java IDE, de a szövegszerkesztővel is elegendő.
-- Ebben a rövid útmutatóban egy [ingyenes próbaverziós](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcsot vagy egy fizetős előfizetési kulcsot is használhat.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* A kód fordításához és futtatásához a [JDK 7-es vagy 8-as](https://aka.ms/azure-jdks) verziójának kell futnia. Ha kedvence van, akkor használhat egy Java IDE, de a szövegszerkesztővel is elegendő.
+
 
 ## <a name="run-the-java-application"></a>A Java-alkalmazás futtatása
 
@@ -348,12 +351,13 @@ public class InsightsToken {
 }
 ```
 
-## <a name="use-with-nodejs"></a>Használat a Node. js-sel
+## <a name="use-with-nodejs"></a>Használat Node.js
 
-### <a name="nodejs-prerequisites"></a>A Node. js előfeltételei
+### <a name="nodejs-prerequisites"></a>Előfeltételek Node.js
 
-- A kód futtatásához [Node. js 6](https://nodejs.org/en/download/) szükséges.
-- Ebben a rövid útmutatóban egy [ingyenes próbaverziós](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcsot vagy egy fizetős előfizetési kulcsot is használhat.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* A kód futtatásához [Node.js 6](https://nodejs.org/en/download/) szükséges.
 
 ## <a name="run-the-javascript-application"></a>A JavaScript-alkalmazás futtatása
 
@@ -416,8 +420,9 @@ function requestCallback(err, res, body) {
 
 ### <a name="python-prerequisites"></a>A Python előfeltételei
 
-- A kód futtatásához [Python 3](https://www.python.org/) szükséges.
-- Ehhez a rövid útmutatóhoz használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetői azonosítóját, vagy beszerezhet egy fizetős előfizetői azonosítót.
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* A kód futtatásához [Python 3](https://www.python.org/) szükséges.
 
 ## <a name="run-the-python-application"></a>A Python-alkalmazás futtatása
 
@@ -475,10 +480,9 @@ if __name__ == '__main__':
     main()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Visual Search egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)  
 [Mi az a Bing Visual Search API?](overview.md)  
 [A Cognitive Services kipróbálása](https://aka.ms/bingvisualsearchtryforfree)  
-[Ingyenes próbaverzióhoz tartozó hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [Képek – Visual Search](https://aka.ms/bingvisualsearchreferencedoc)

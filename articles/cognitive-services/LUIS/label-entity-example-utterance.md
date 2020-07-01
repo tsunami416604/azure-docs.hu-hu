@@ -3,12 +3,12 @@ title: Címke-entitás – példa Kimondás
 description: Megtudhatja, hogyan címkézheti a gépi tanulási entitásokat alentitásokkal a LUIS-portálon található, a szándékok részleteinek kimondása mellett.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722643"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610489"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Címke gépi tanulásra szolgáló entitása egy példa Kimondás esetén
 
@@ -16,7 +16,7 @@ Ha egy entitást címkéz egy példa kiírásakor, az a LUIS példa arra, hogy m
 
 Felcímkézheti a géppel megtanult entitásokat és alentitásokat.
 
-Mivel nem címkézheti a reguláris kifejezéseket, a listákat vagy az előre elkészített entitásokat, létrehozhat egy entitást vagy alentitást, majd hozzáadhatja ezeket az entitásokat a szolgáltatásokhoz, ha vannak ilyenek.
+Mivel nem címkézheti a reguláris kifejezéseket, a listákat vagy az előre felépített entitásokat, létrehozhat egy entitást vagy alentitást, majd felveheti ezeket az entitásokat szolgáltatásként, ha alkalmazható, az entitásra vagy alentitásra.
 
 ## <a name="label-example-utterances-from-the-intent-detail-page"></a>Címke – példa hosszúságú kimondott szöveg a szándék részletei lapról
 
@@ -134,6 +134,6 @@ Az entitás-előrejelzési hibák azt jelzik, hogy az előre jelzett entitás ne
 > [!div class="mx-imgBorder"]
 > ![A gépi tanulási entitás entitás-palettája](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Használja az [irányítópultot](luis-how-to-use-dashboard.md) , és [tekintse át a végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) az alkalmazás előrejelzési minőségének javítása érdekében.

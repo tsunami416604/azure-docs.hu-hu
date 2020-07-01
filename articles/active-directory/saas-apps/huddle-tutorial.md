@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1faf1c1fcdefb0c93d36c195f0cf44626a555f44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 439a904c4e70a6e7e9633757c6d89fd3ce0a3a90
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158987"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608738"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Oktatóanyag: Azure Active Directory integráció a zűrzavar
 
@@ -111,20 +111,18 @@ Az Azure AD egyszeri bejelentkezés zűrzavar való konfigurálásához hajtsa v
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet:
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net`|
-    | `https://login.huddle.com`|
-    | |
+        ```https
+        https://login.huddle.net
+        https://login.huddle.com
+        ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net/saml/browser-sso`|
-    | `https://login.huddle.com/saml/browser-sso`|
-    | `https://login.huddle.com/saml/idp-initiated-sso`|
-    | |
+        ```https
+        https://login.huddle.net/saml/browser-sso
+        https://login.huddle.com/saml/browser-sso
+        https://login.huddle.com/saml/idp-initiated-sso
+        ```
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -132,11 +130,10 @@ Az Azure AD egyszeri bejelentkezés zűrzavar való konfigurálásához hajtsa v
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | | |
-    |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com`|
-    | |
+        ```https
+        https://<customsubdomain>.huddle.com
+        https://us.huddle.com
+        ```
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [zűrzavar](https://huddle.zendesk.com) ügyfélszolgálatával.
@@ -180,12 +177,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -223,7 +220,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a z�
 
 2. Kattintson a **munkaterület**elemre.
 
-3. Kattintson **a \> személyek meghívása személyek**elemre.
+3. Kattintson a **személyek \> meghívása személyek**elemre.
 
     ![People](./media/huddle-tutorial/ic787838.png "People")
 
