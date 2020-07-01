@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b0a26b4d3f0f59f8e05c5990bbc64ee55f12f124
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307742"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604692"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Hibakeresési hibák egyéni parancsok alkalmazásának létrehozásakor
 
@@ -26,7 +26,7 @@ Az egyéni parancsok szintén létrehoznak egy alkalmazást a [luisban](https://
 
 [Luis korlátozza a 500 alkalmazást egy szerzői erőforráson](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits). A LUIS-alkalmazás létrehozása sikertelen lehet, ha olyan authoring-erőforrást használ, amely már rendelkezik 500-alkalmazásokkal. 
 
-Győződjön meg arról, hogy a kiválasztott LUIS authoring-erőforrás kevesebb, mint 500. Ha nem, akkor új LUIS authoring Resource, váltson át egy másikra, vagy próbálja meg törölni a LUIS-alkalmazásait.  
+Győződjön meg arról, hogy a kiválasztott LUIS authoring-erőforrás kevesebb, mint 500 alkalmazást tartalmaz. Ha nem, hozzon létre új LUIS authoring-erőforrást, váltson át egy másikra, vagy próbálja meg megtisztítani a LUIS-alkalmazásait.  
 
 ## <a name="errors-when-deleting-an-application"></a>Hibák az alkalmazások törlésekor
 ### <a name="cant-delete-luis-application"></a>A LUIS-alkalmazás nem törölhető
@@ -48,13 +48,13 @@ A paramétert nem lehet törölni, ha használatban van. Távolítsa el a param�
 Használat közben nem törölhet webes végpontot. A webes végpont eltávolítása előtt távolítsa el a webes végpontot használó **hívási webes végponti** műveletet.
 
 ## <a name="errors-when-training-an-application"></a>Hibák az alkalmazás betanításakor
-### <a name="build-in-intents"></a>Létrehozás szándék szerint
-LUIS nem tartalmaz igen/nem szándékot. A csak az "igen", a "No" kifejezéssel rendelkező minta mondatok betanítása sikertelen lesz. 
+### <a name="built-in-intents"></a>Beépített leképezések
+A LUIS beépített igen/nem szándékkal rendelkezik. A csak az "igen", a "No" kifejezéssel rendelkező minta mondatok betanítása sikertelen lesz. 
 
 | Kulcsszó | Változatok | 
 | ------- | --------- | 
-| Yes | Persze, OK |
-| No | Nem, nem | 
+| Igen | Persze, OK |
+| Nem | Nem, nem | 
 
 ### <a name="common-sample-sentences"></a>Gyakori minta mondatok
 Az egyéni parancsok nem teszik lehetővé a különböző parancsok közötti közös példákban szereplő mondatok használatát. Egy alkalmazás betanítása meghiúsulhat, ha az egyik parancsban szereplő egyes mondatok már egy másik parancsban vannak definiálva. 

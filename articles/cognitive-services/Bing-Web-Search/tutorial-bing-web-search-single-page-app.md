@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943881"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603587"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
 
@@ -30,15 +30,16 @@ Ez a mintaalkalmazás a következőkre képes:
 > * Előfizetési kulcsok kezelése
 > * Hibakezelés
 
-Az alkalmazás használatához szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k mellé. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) egy előfizetői azonosító beszerzéséhez.
+Az alkalmazás használatához szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k mellé.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Néhány dolog, amire az alkalmazás futtatásához szüksége lesz:
 
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+
 * A Node.js 8-as vagy újabb verziója
-* A Bing Search API-hoz tartozó előfizetési kulcs. Ha még nem rendelkezik ilyennel, [hozzon létre egy Bing Search v7-erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Használhat [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)is.
-## <a name="get-the-source-code-and-install-dependencies"></a>A forráskód és a telepítési függőségek beszerzése
 
 Az első lépés az adattár klónozása a mintaalkalmazás forráskódjával.
 
@@ -127,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-A `SafeSearch` beállítása `strict`, `moderate` vagy `off` lehet. A Bing Web Search alapértelmezett beállítása `moderate`. Ez az űrlap egy jelölőnégyzetet használ, amely két állapottal rendelkezik: `strict` vagy `moderate`.
+A `SafeSearch` beállítása `strict`, `moderate` vagy `off` lehet. A Bing Web Search alapértelmezett beállítása `moderate`. Ez az űrlap egy jelölőnégyzetet használ, amely két állapottal rendelkezik: `strict` vagy `moderate` .
 
 Ha az **Előléptetés** jelölőnégyzetek bármelyike be van jelölve, akkor a lekérdezéshez az `answerCount` paraméter is hozzá lesz fűzve. A `promote` paraméter használata mellett az `answerCount` is kötelező. Ebben a kódrészletben `9` értékre van beállítva, hogy minden elérhető eredménytípus vissza legyen adva.
 > [!NOTE]

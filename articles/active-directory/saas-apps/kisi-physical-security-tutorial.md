@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd85042d30be0bb37de590fe9b011948b9acf0db
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 556fd1f9fe4ba5753d882fa81c6d5a89051bcd91
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361370"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605015"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a kisi fizikai biztonsággal
 
@@ -102,11 +102,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a kisi fizikai biztonsági alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name (Név) |  |  Forrás attribútum|
-    | ---------------| --------------- | --------- |
-    | FirstName | | User. givenName |
-    | LastName | | felhasználó. vezetéknév |
-    | E-mail | | User. userPrincipalName |
+    | Name | Forrás attribútum|
+    | ---------------| --------- |
+    | FirstName | User. givenName |
+    | LastName | felhasználó. vezetéknév |
+    | E-mail | User. userPrincipalName |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 

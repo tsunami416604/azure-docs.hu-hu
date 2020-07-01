@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 14acebb71538dddfd2421fbb27794f456b6c9c8f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446661"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611509"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Mi az a Bing Visual Search API?
 
@@ -48,7 +48,7 @@ Bing Visual Search az eredmények közé tartoznak a rendszerképekben érdekes 
 
 A Bing Visual Search API egy REST-alapú webszolgáltatás, így könnyen hívható bármely programozási nyelvről, amely HTTP-kéréseket tesz elérhetővé, és értelmezi a JSON-t. A szolgáltatáshoz használhatja a REST API vagy az SDK-t is.
 
-1. Hozzon létre egy [Cognitive Services fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiókot is létrehozhat](https://azure.microsoft.com/free/). Az előfizetési kulcsot a fiók létrehozása után, vagy az ingyenes próbaverzió aktiválása után az [Azure-webhelyről](https://azure.microsoft.com/try/cognitive-services/my-apis) szerezheti be a [Azure Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
+1. Hozzon létre egy [Cognitive Services fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiókot is létrehozhat](https://azure.microsoft.com/free/cognitive-services/).
 2. Kérelem küldése az API-nak érvényes keresési lekérdezéssel.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
@@ -57,7 +57,7 @@ A Bing Visual Search API egy REST-alapú webszolgáltatás, így könnyen hívha
 Először próbálja ki a Bing Visual Search API [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
 A bemutató azt mutatja be, hogyan lehet gyorsan testreszabni a keresési lekérdezéseket, és a weben képeket kutatni.
 
-Az első kérésének gyors megkezdéséhez tekintse meg a rövid útmutatókat: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Az első kérésének gyors megkezdéséhez tekintse meg a rövid útmutatókat: [C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
 
 ## <a name="see-also"></a>Lásd még
 

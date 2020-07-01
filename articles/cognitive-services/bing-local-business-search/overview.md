@@ -10,15 +10,15 @@ ms.subservice: bing-local-business
 ms.topic: overview
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 0006761126eb1d561da7eeff97e8a9928d62ddb0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 685ee0c616234563981e55f14213e424daae32f5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478939"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611271"
 ---
 # <a name="what-is-bing-local-business-search"></a>Mi a Bing helyi üzleti keresés?
-A Bing local Business Search API egy REST-alapú szolgáltatás, amely lehetővé teszi az alkalmazások számára, hogy keresési lekérdezések alapján megtalálják a helyi vállalkozások adatait. Például `q=<business-name> in Redmond, Washington`:, vagy `q=Italian restaurants near me`. 
+A Bing local Business Search API egy REST-alapú szolgáltatás, amely lehetővé teszi az alkalmazások számára, hogy keresési lekérdezések alapján megtalálják a helyi vállalkozások adatait. Például:, `q=<business-name> in Redmond, Washington` vagy `q=Italian restaurants near me` . 
 
 ## <a name="features"></a>Szolgáltatások
 | Szolgáltatás | Leírás |  
@@ -30,8 +30,8 @@ A Bing local Business Search API egy REST-alapú szolgáltatás, amely lehetőv�
 ## <a name="workflow"></a>Munkafolyamat
 Hívja meg a Bing local Business Search API-t bármilyen programozási nyelvről, amely HTTP-kéréseket tesz elérhetővé, és elemezheti a JSON-válaszokat. Ez a szolgáltatás a REST API használatával érhető el.
  
-1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).   
-2. Az URL-cím kódolja a keresési `q=""` kifejezéseket a lekérdezési paraméterhez. Például `q=nearby+restaurant` vagy `q=nearby%20restaurant`. Szükség esetén állítsa be a tördelést is. 
+1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).   
+2. Az URL-cím kódolja a keresési kifejezéseket a `q=""` lekérdezési paraméterhez. Például `q=nearby+restaurant` vagy `q=nearby%20restaurant`. Szükség esetén állítsa be a tördelést is. 
 3. Kérelem küldése [a Bing helyi üzleti keresési API-](quickstarts/local-quickstart.md) nak 
 4. A JSON-válasz elemzése 
 

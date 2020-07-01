@@ -10,16 +10,16 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943907"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603349"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
 
-A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. Ha például egy keresési funkciót is biztosító, küzdősportokról szóló webhellyel rendelkezik, megadhatja azokat a tartományokat, alwebhelyeket és weblapokat, amelyeken a Bingnek keresnie kell. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi általános találatot kellene átnézniük, amelyben irreleváns tartalom is lehet. 
+A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. Ha például egy olyan harcművészeti webhelyhez tartozik, amely keresési élményt nyújt, megadhatja a Bing által megkeresett tartományokat, alhelyeket és weblapokat. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi általános találatot kellene átnézniük, amelyben irreleváns tartalom is lehet. 
 
 Az oktatóanyag bemutatja, hogyan állíthat be egy Custom Search-példányt, és hogyan integrálhatja egy új weboldalba.
 
@@ -34,7 +34,7 @@ Az oktatóanyag az alábbi feladatokat tárgyalja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  A kulcs lekéréséhez [hozzon létre egy Bing Custom Search erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) a Azure Portalban. használhat [próbaverziós kulcsot](https://azure.microsoft.com/try/cognitive-services)is.
+- Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  A kulcs lekéréséhez [hozzon létre egy Bing Custom Search erőforrást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) a Azure Portalban.
 - Ha még nem rendelkezik a Visual Studio 2017-es vagy újabb verziójával, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Egyéni keresési példány létrehozása
@@ -79,7 +79,7 @@ Ha szeretné kizárni egyes webhelyek vagy URL-címek eredményeit, adja hozzá 
 
 ## <a name="add-pinned-entries"></a>Rögzített bejegyzések hozzáadása
 
-Egy adott weboldal a keresési eredmények tetejére való rögzítéséhez adja hozzá a weblapot és a lekérdezési kifejezést a **rögzített** laphoz. A **rögzített** lap a weblap és a lekérdezési kifejezés párok listáját tartalmazza, amelyek az adott lekérdezés legfontosabb eredményének megfelelő weblapot határozzák meg. A weblap rögzítése csak akkor történik meg, ha a felhasználó lekérdezési karakterlánca a PIN-kód egyeztetési feltétele alapján egyezik a PIN-kód lekérdezési karakterláncával. Csak az indexelt webhelyek jelennek meg a keresésekben. További információkért lásd az [egyéni nézet meghatározásával](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results) foglalkozó témakört.
+Egy adott weboldal a keresési eredmények tetejére való rögzítéséhez adja hozzá a weblapot és a lekérdezési kifejezést a **rögzített** laphoz. A **rögzített** lap a weblap és a lekérdezési kifejezés párok listáját tartalmazza, amelyek az adott lekérdezés legfontosabb eredményének megfelelő weblapot határozzák meg. A weblap rögzítése csak akkor történik meg, ha a felhasználó lekérdezési karakterlánca a PIN-kód egyeztetési feltétele alapján egyezik a PIN-kód lekérdezési karakterláncával. Csak az indexelt webhelyek jelennek meg a keresésekben. További információ: [Egyéni nézet definiálása](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. A **Configuration** (Konfiguráció) lapon kattintson a **Pinned** (Rögzített) lapra, és adja meg az első helyen megjeleníteni kívánt weblapot és a hozzá tartozó lekérdezési kifejezést.  
   
@@ -116,7 +116,7 @@ A Custom Search üzemeltetett felhasználói felületet biztosít, amelyen megje
 
    ![Képernyőkép az üzemeltetett felhasználói felület speciális beállítási lépéséről](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. Válassza ki előfizetési kulcsait a legördülő listákból. Másik lehetőségként manuálisan is megadhatja az előfizetési kulcsot. További információ az előfizetői kulcsok beszerzéséről: [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
+5. Válassza ki előfizetési kulcsait a legördülő listákból. Másik lehetőségként manuálisan is megadhatja az előfizetési kulcsot.
   
    ![Képernyőkép az üzemeltetett felhasználói felület további beállítási lépéséről](./media/custom-search-hosted-ui-subscription-key.png)
 
@@ -130,7 +130,7 @@ Az üzemeltetett felhasználói felület kétféleképpen használható fel.
 - 1. lehetőség: A megadott JavaScript-kódrészlet integrálása az alkalmazásba.
 - 2. lehetőség: A megadott HTML-végpont használata.
 
-Az oktatóanyag fennmaradó része az **1. lehetőséget, vagyis a Javascript-kódrészletet** mutatja be.  
+Az oktatóanyag hátralévő része az 1. **lehetőség: JavaScript-kódrészletet**mutatja be.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>A Visual Studio-megoldás beállítása
 

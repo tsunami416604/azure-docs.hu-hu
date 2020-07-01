@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5ea98a4ef759937c5962dc86f0384051b8fa0bb3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4cbf79abaf915e7f6e055f5bcb0d8f09de026ad5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477468"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604862"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Mi a Bing Web Search API?
 
@@ -42,7 +42,7 @@ Bing Web Search nem csak az azonnali válaszokhoz biztosít hozzáférést. Emel
 
 A Bing Web Search API bármely olyan programnyelvből meghívható, amely képes HTTP-lekérdezéseket kezelni és JSON-válaszokat elemezni. A szolgáltatás a [REST API](quickstarts/python.md) vagy a [Bing Web Search ügyféloldali kódtárak](./quickstarts/client-libraries.md)használatával érhető el.
 
-1. [Hozzon létre egy Azure-erőforrást](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k számára. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  
+1. [Hozzon létre egy Azure-erőforrást](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search API-k számára. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).  
 2. Küldjön egy [kérést a Bing Web Search API-ra](quickstarts/python.md).
 3. Elemezze a JSON-választ.
 

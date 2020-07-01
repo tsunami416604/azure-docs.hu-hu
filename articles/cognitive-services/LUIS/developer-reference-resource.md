@@ -3,12 +3,12 @@ title: Fejlesztői erőforrások – Language Understanding
 description: Az SDK-k, a REST API-k, a CLI, a programozási nyelvben Language Understanding (LUIS) alkalmazások fejlesztését segítik. Kezelheti Azure-erőforrásait és a LUIS-előrejelzéseket.
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 27212f30c90abb20e7ded2eee01365c7b023f851
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758061"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610786"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK, REST és CLI fejlesztői erőforrások a Language Understandinghoz (LUIS)
 
@@ -73,6 +73,10 @@ Az alábbi táblázat az előző táblázatban szereplő, kapcsos zárójelekkel
 |`version`|10 karakteres verzió neve|
 |`slot`| `production` vagy `staging`|
 
+### <a name="rest-query-string-parameters"></a>REST lekérdezési karakterlánc paraméterei
+
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
+
 ## <a name="app-schema"></a>Alkalmazásséma
 
 Az [alkalmazás sémája](app-schema-definition.md) importálva van, `.json` vagy formátumba van exportálva `.lu` .
@@ -88,7 +92,7 @@ Az [alkalmazás sémája](app-schema-definition.md) importálva van, `.json` vag
 |Python|[Szerzői műveletek és előrejelzések](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Tartalomkészítés](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Tartalomkészítés](sdk-authoring.md?pivots=programming-language-python)<br>[Előrejelzés REST használatával](luis-get-started-get-intent-from-rest.md)
 
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Tárolók
 
 A Language Understanding (LUIS) egy [tárolót](luis-container-howto.md) biztosít az alkalmazás helyszíni és a benne foglalt verziói számára.
 

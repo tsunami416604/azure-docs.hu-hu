@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 09/07/2017
 ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1f4addf9bb1fff34d99867fb3730a9197c9c05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c146640112190fe08bb1b3b806c95a2854da9083
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73721227"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604454"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Prémium szintű Azure Active Directory-kiadások – Regisztráció
 Azure-előfizetésével vásárolhat és rendelhet Azure Active Directory (Azure AD) prémium szintű kiadásokat. Ha új Azure-előfizetés létrehozására van szüksége, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is.
@@ -67,7 +67,7 @@ Ha új Azure AD licenccsomaggal regisztrált, akkor a vásárlás után kapott v
    
     ![Megerősítő e-mailek bejelentkezési és regisztrációs hivatkozásokkal](media/active-directory-get-started-premium/MOLSEmail.png)
 
-    - **Bejelentkezés.** Ezt a hivatkozást válassza, ha rendelkezik meglévő bérlővel, majd a meglévő rendszergazdai fiókjával jelentkezzen be. Globális rendszergazdának kell lennie azon a bérlőn, amelyen a licencek aktiválva vannak.
+    - **bejelentkezés.** Ezt a hivatkozást válassza, ha rendelkezik meglévő bérlővel, majd a meglévő rendszergazdai fiókjával jelentkezzen be. Globális rendszergazdának kell lennie azon a bérlőn, amelyen a licencek aktiválva vannak.
 
     - **Regisztráció.** Ezt a hivatkozást válassza, ha új Azure AD-bérlőt szeretne aktiválni a licenccsomaghoz a **Fiókprofil létrehozása** párbeszédpanel megnyitásával.
 

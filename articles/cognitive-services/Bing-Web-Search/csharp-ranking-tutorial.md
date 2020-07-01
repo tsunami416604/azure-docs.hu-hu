@@ -9,14 +9,14 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 272a10e211e99e200b82807b188d828a9ece42d8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382327"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609435"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>A konzol alkalmazás keresési ügyfelének létrehozása C-ben #
 
@@ -31,8 +31,9 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Ahhoz, hogy követni tudja az oktatóanyagot, a következőkre lesz szüksége:
 
-- Visual Studio. Ha nem rendelkezik ezzel, [töltse le és telepítse az ingyenes Visual Studio 2017 Community Edition verziót](https://www.visualstudio.com/downloads/).
-- A Bing Web Search APIhoz tartozó előfizetési kulcs. Ha nem rendelkezik ilyennel, regisztrálhat az [ingyenes próbaverzióra](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* A [Visual Studio ide](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-new-console-app-project"></a>Új konzolos alkalmazás projekt létrehozása
 
@@ -42,12 +43,12 @@ Az **új projekt** párbeszédpanelen kattintson a **Visual C# > Windows klasszi
 
 Nevezze el az alkalmazás **MyConsoleSearchApp**, majd kattintson **az OK**gombra.
 
-## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>A JSON.net Nuget-csomag hozzáadása a projekthez
+## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>A JSON.net NuGet-csomag hozzáadása a projekthez
 
 A JSON.net lehetővé teszi az API által visszaadott JSON-válaszok használatát. Adja hozzá a NuGet-csomagot a projekthez:
 
 - **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése...** lehetőséget.
-- A **Tallózás** lapon keressen rá a kifejezésre `Newtonsoft.Json`. Válassza ki a legújabb verziót, majd kattintson a **telepítés**gombra.
+- A **Tallózás** lapon keressen rá a kifejezésre `Newtonsoft.Json` . Válassza ki a legújabb verziót, majd kattintson a **telepítés**gombra.
 - Kattintson a **módosítások áttekintése** ablak **OK** gombjára.
 - Zárjuk be a Visual Studio fület a **NuGet: MyConsoleSearchApp**címen.
 
@@ -92,7 +93,7 @@ static void Main()
 Ez a metódus:
 
 - Kéri a felhasználót a lekérdezésre
-- A `RunQueryAndDisplayResults(userQuery)` lekérdezés végrehajtásának és az eredmények megjelenítésének meghívása
+- `RunQueryAndDisplayResults(userQuery)`A lekérdezés végrehajtásának és az eredmények megjelenítésének meghívása
 - Megvárja a felhasználói bevitelt, hogy megakadályozza a konzol ablakának azonnali bezárását.
 
 ## <a name="search-for-query-results-using-the-bing-web-search-api"></a>Lekérdezési eredmények keresése a Bing Web Search API használatával
@@ -142,7 +143,7 @@ Ez a metódus:
 - Végrehajtja a kérést, és a JSON.net használatával deszerializálja az eredményeket
 - Az `DisplayAllRankedResults(responseObjects)` összes eredmény rangsorolt sorrendben való megjelenítésének meghívása
 
-Ügyeljen arra, hogy az előfizetési `Ocp-Apim-Subscription-Key` kulcs értékét állítsa be.
+Ügyeljen arra, hogy az `Ocp-Apim-Subscription-Key` előfizetési kulcs értékét állítsa be.
 
 ## <a name="display-ranked-results"></a>Rangsorolt eredmények megjelenítése
 
@@ -273,7 +274,7 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 
 Ez a metódus:
 
-- Hurkok a `rankingResponse` válasz által tartalmazott csoportok felett
+- Hurkok a `rankingResponse` Válasz által tartalmazott csoportok felett
 - Megjeleníti az egyes csoportok elemeit a hívással`DisplaySpecificResults(...)`
 
 A **program.cs**-ben adja hozzá a következő két módszert:
@@ -307,7 +308,7 @@ static void DisplayItem(Newtonsoft.Json.Linq.JToken item, string title, string[]
 
 Ezek a módszerek együttműködve a keresési eredményeket a konzolra exportálják.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást. A kimenetnek a következőképpen kell kinéznie:
 
