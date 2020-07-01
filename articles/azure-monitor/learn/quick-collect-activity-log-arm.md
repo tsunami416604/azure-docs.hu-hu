@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: b4b8bb991685ce13be89eff26a4442f32cde7206
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: ed2a18f4d7e9784566036a598098a015d3050dbd
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446387"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563545"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-resource-manager-template"></a>Azure-tevékenység naplójának küldése Log Analytics munkaterületre Azure Resource Manager sablon használatával
 A műveletnapló egy Azure-beli platform-napló, amely betekintést nyújt az előfizetési szintű eseményekre. Ez olyan adatokat tartalmaz, mint amikor egy erőforrás módosul, vagy amikor a virtuális gép elindul. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató bemutatja, hogyan használhatja a ARM-sablonokat egy Log Analytics munkaterület létrehozásához, valamint egy diagnosztikai beállítást, amellyel elküldheti a tevékenység naplóját Azure Monitor naplókba, amelyekkel elemezheti a [napló lekérdezéseit](../log-query/log-query-overview.md) , és más funkciókat is engedélyezhet, például [naplózási riasztásokat](../platform/alerts-log-query.md) és [munkafüzeteket](../platform/workbooks-overview.md). 
@@ -121,7 +121,7 @@ A következő sablon egy üres Log Analytics munkaterületet hoz létre. Mentse 
 ```
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
-A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](/azure-resource-manager/templates/deploy-portal) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport**, a **workspaceName**és a **hely** minta értékeit a környezetének megfelelő értékekkel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
+A sablont bármely szabványos módszer használatával üzembe helyezheti [egy ARM-sablon üzembe helyezéséhez](../../azure-resource-manager/templates/deploy-portal.md) , például a parancssori felület és a PowerShell használatával. Cserélje le az **erőforráscsoport**, a **workspaceName**és a **hely** minta értékeit a környezetének megfelelő értékekkel. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetés között.
 
 # <a name="cli"></a>[Parancssori felület](#tab/CLI1)
 
@@ -278,6 +278,24 @@ Bontsa ki az egyik rekordot a részletes tulajdonságainak megtekintéséhez.
 
 ![Összetett lekérdezés](media/quick-collect-activity-log/query-02.png)
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, érdemes lehet ezeket az erőforrásokat helyben hagyni. Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli a riasztási szabályt és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell használatával
+
+
+ 
+# <a name="cli"></a>[Parancssori felület](#tab/CLI3)
+
+```azurecli
+az group delete --name my-resource-group
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell3)
+
+```powershell
+Remove-AzResourceGroup -Name my-resource-group
+```
+
+---
 
 ## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban úgy konfigurálta a tevékenység naplóját, hogy az Log Analytics munkaterületre legyen küldve. Mostantól más adatokat is konfigurálhat a munkaterületre, ahol elemezheti azt a Azure Monitor található [naplók](../log-query/log-query-overview.md) használatával, és olyan funkciókat használhat, mint például a [naplózási riasztások](../platform/alerts-log-query.md) és a [munkafüzetek](../platform/workbooks-overview.md). A következő lépésekkel gyűjtsön [erőforrás-naplókat](../platform/resource-logs.md) az Azure-erőforrásokból, amelyek a tevékenység naplójában lévő adatokat szolgáltatva betekintést nyújtanak az egyes erőforrásokon végrehajtott műveletekre.

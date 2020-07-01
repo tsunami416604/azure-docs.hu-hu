@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 12af4c57fd906d687eedfe7c865d36abaa0da18e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d9bb6ef7629d236120660912daaad82ad18b8480
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209147"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563104"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával
 
@@ -65,8 +65,8 @@ Az összes fájlnak ugyanabban az almappájában kell lennie, és a következő 
 
 Ahhoz, hogy a szolgáltatás figyelembe vegye a címkével ellátott betanításhoz tartozó bemeneti fájlokat, az OCR-találati fájlok szükségesek. Egy adott forrás űrlap OCR-eredményeinek beszerzéséhez kövesse az alábbi lépéseket:
 
-1. Hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** API-t az olvasási elrendezés tárolójában a bemeneti fájllal a kérelem törzsének részeként. Mentse a válasz **műveleti helye** fejlécében található azonosítót.
-1. Hívja meg az elemzési **[elrendezés eredményének beolvasása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeLayoutResult)** API-t az előző lépés műveleti azonosítójának használatával.
+1. Hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API-t az olvasási elrendezés tárolójában a bemeneti fájllal a kérelem törzsének részeként. Mentse a válasz **műveleti helye** fejlécében található azonosítót.
+1. Hívja meg az elemzési **[elrendezés eredményének beolvasása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API-t az előző lépés műveleti azonosítójának használatával.
 1. Szerezze be a választ, és írja a tartalmat egy fájlba. Minden forrás űrlap esetében a megfelelő OCR-fájlnak tartalmaznia kell az eredeti fájlnevet a következővel: `.ocr.json` . Az OCR JSON-kimenetének a következő formátumúnak kell lennie. Tekintse meg a [minta OCR-fájlját](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) a teljes példaként. 
 
     ```json
@@ -197,7 +197,7 @@ Minden forrás űrlap esetében a megfelelő címkefájl az eredeti fájlnevet f
 
 ## <a name="train-a-model-using-labeled-data"></a>Modell betanítása címkézett adattal
 
-Ha címkével ellátott adattal szeretne betanítani egy modellt, a következő Python-kód futtatásával hívja meg az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)** API-t. A kód futtatása előtt végezze el a következő módosításokat:
+Ha címkével ellátott adattal szeretne betanítani egy modellt, a következő Python-kód futtatásával hívja meg az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API-t. A kód futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le az értékét `<Endpoint>` az űrlap-felismerő erőforrás végponti URL-címére.
 1. Cserélje le `<SAS URL>` az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
@@ -561,4 +561,4 @@ Tisztában vagyunk azzal, hogy ez a forgatókönyv elengedhetetlen az ügyfelek 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythont az űrlap-felismerő REST API, hogy a modelleket manuálisan címkézett adattal végezze. Következő lépésként tekintse meg az API-referenciák dokumentációját, amely részletesebben vizsgálja meg az űrlap-felismerő API-t.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)
+> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

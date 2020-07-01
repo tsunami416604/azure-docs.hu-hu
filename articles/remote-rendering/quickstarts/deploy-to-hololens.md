@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 75b6629ea924ec17888ec2f981ff85ed917434c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679736"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557054"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Gyors útmutató: Unity-minta üzembe helyezése a HoloLens-ben
 
@@ -36,12 +36,14 @@ Győződjön meg arról, hogy a hitelesítő adatai megfelelően vannak mentve a
 1. *Platform* módosítása **univerzális Windows-platformre**
 1. *Cél eszköz* beállítása **HoloLens**
 1. *Architektúra* beállítása **ARM64**
-1. *Build típusának* beállítása a **D3D-projekt** ![létrehozási beállításaihoz](./media/unity-build-settings.png)
+1. *Build típusának* beállítása a **D3D-projekthez**\
+    ![Összeállítási beállítások](./media/unity-build-settings.png)
 1. Válassza **a váltás a platformra** lehetőséget
 1. A **Build** (vagy a build és a Run) gomb megnyomásakor a rendszer arra kéri, hogy válasszon ki egy mappát, ahol a megoldást tárolni szeretné
 1. A generált gyors útmutató **SLN** megnyitása a Visual Studióval
 1. Konfiguráció módosítása **kiadásra** és **ARM64**
-1. A hibakereső üzemmód átváltása a **távoli gépi** ![megoldás konfigurációjához](media/unity-deploy-config.png)
+1. A hibakereső üzemmód átváltása **Távoli gépre**\
+    ![Megoldás konfigurálása](media/unity-deploy-config.png)
 1. Megoldás létrehozása (F7)
 1. A "gyors útmutató" projekt esetében lépjen a *tulajdonságok > hibakeresés* elemre.
     1. Győződjön meg arról, hogy a konfigurációs *kiadás* aktív

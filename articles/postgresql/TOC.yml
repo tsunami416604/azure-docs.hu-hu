@@ -161,6 +161,10 @@
               href: concepts-read-replicas.md
             - name: Logikai dekódolás
               href: concepts-logical.md
+        - name: Áthelyezés régiók között
+          items:
+            - name: Azure Portal
+              href: howto-move-regions-portal.md
     - name: Rugalmas skálázás (Citus)
       items:
         - name: Csomópontok

@@ -1,14 +1,14 @@
 ---
 title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogy az Azure Resource Graph szolgáltatás hogyan teszi lehetővé az erőforrások összetett lekérdezését az előfizetések és a bérlők között.
-ms.date: 03/02/2020
+ms.date: 06/29/2020
 ms.topic: overview
-ms.openlocfilehash: a084215f6f2d1b5a8ed34ca59266e1c0087f608b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 055bb0be75de4d5f6a5a27c5fb3b218fda8777d7
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167264"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565686"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az az Azure Resource Graph?
 
@@ -52,8 +52,7 @@ Most, hogy jobban megértette az Azure-erőforrások Gráfját, nézzük meg, ho
 
 Fontos tisztában lenni azzal, hogy az Azure Resource Graph lekérdezési nyelve az Azure Adatkezelő által használt [Kusto-lekérdezési nyelven](/azure/data-explorer/data-explorer-overview) alapul.
 
-Első lépésként olvassa el az Azure Resource Graphfal használható műveleteket és funkciókat ismertető, [a Resource Graph lekérdezőnyelve](./concepts/query-language.md) című cikket.
-Az erőforrások tallózását az [erőforrások kezeléséről](./concepts/explore-resources.md) szóló cikk írja le.
+Első lépésként olvassa el az Azure Resource Graphfal használható műveleteket és funkciókat ismertető, [a Resource Graph lekérdezőnyelve](./concepts/query-language.md) című cikket. Az erőforrások tallózását az [erőforrások kezeléséről](./concepts/explore-resources.md) szóló cikk írja le.
 
 ## <a name="permissions-in-azure-resource-graph"></a>Engedélyek az Azure Resource Graphban
 
@@ -62,8 +61,7 @@ A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie 
 > [!NOTE]
 > Az erőforrás-diagram a rendszerbiztonsági tag számára elérhető előfizetéseket használja a bejelentkezés során. Egy aktív munkamenet során hozzáadott új előfizetés erőforrásainak megtekintéséhez a rendszerbiztonsági tag frissítenie kell a környezetet. Ez a művelet automatikusan megtörténik a kijelentkezéskor és vissza.
 
-Az Azure CLI és Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználónak hozzáférése van. REST API közvetlen használatakor az előfizetési listát a felhasználó kapja meg. Ha a felhasználó hozzáfér a listában szereplő egyik előfizetéshez, a rendszer visszaadja a lekérdezés eredményét azon előfizetések esetében, amelyekhez a felhasználónak hozzáférése van. Ez a viselkedés ugyanaz, mint az erőforráscsoportok meghívásakor [– listázza](/rest/api/resources/resourcegroups/list) \- azokat az erőforráscsoportokat, amelyekhez hozzáférése van, anélkül, hogy az eredmény részleges lenne.
-Ha nincsenek olyan előfizetések az előfizetések listájában, amelyhez a felhasználó megfelelő jogosultsággal rendelkezik, a válasz _403_ (tiltott).
+Az Azure CLI és Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználónak hozzáférése van. REST API közvetlen használatakor az előfizetési listát a felhasználó kapja meg. Ha a felhasználó hozzáfér a listában szereplő egyik előfizetéshez, a rendszer visszaadja a lekérdezés eredményét azon előfizetések esetében, amelyekhez a felhasználónak hozzáférése van. Ez a viselkedés ugyanaz, mint az erőforráscsoportok meghívásakor [– listázza](/rest/api/resources/resourcegroups/list) \- azokat az erőforráscsoportokat, amelyekhez hozzáférése van, anélkül, hogy az eredmény részleges lenne. Ha nincsenek olyan előfizetések az előfizetések listájában, amelyhez a felhasználó megfelelő jogosultsággal rendelkezik, a válasz _403_ (tiltott).
 
 ## <a name="throttling"></a>Throttling
 
@@ -88,7 +86,7 @@ Az erőforrás-gráf támogatja az Azure CLI-t, a Azure PowerShell, a Pythonhoz 
 - [Azure PowerShell](./first-query-powershell.md#add-the-resource-graph-module)
 - [Python](./first-query-python.md#add-the-resource-graph-library)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési nyelvről](./concepts/query-language.md).
 - Tekintse meg az [alapszintű lekérdezésekben](./samples/starter.md)használt nyelvet.

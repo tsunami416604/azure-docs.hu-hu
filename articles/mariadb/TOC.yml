@@ -112,6 +112,10 @@
           href: concepts-data-in-replication.md
         - name: Olvasási replikák
           href: concepts-read-replicas.md
+    - name: Áthelyezés régiók között
+      items:
+        - name: Azure Portal
+          href: howto-move-regions-portal.md
 - name: Útmutatók
   items:
     - name: Kiszolgáló kezelése

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 88b795b52955a6bd323e7a900c0cd62dab1dd2d4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 7536a2e3fc32aeb330aad52625a5946e856d6646
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262939"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556049"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Azure CLI-minták a Azure Cosmos DB MongoDB API-hoz
 
@@ -21,7 +21,7 @@ Az alábbi táblázat a Azure Cosmos DB MongoDB API-hoz készült Azure CLI-szkr
 > [!NOTE]
 > A PowerShell, a CLI és a Resource Manager-sablonok használatával jelenleg csak a 3,2-es verziót hozhatja létre (azaz a a végpontot használó fiókokat `*.documents.azure.com` Azure Cosmos db) a MongoDB-fiókokhoz. A fiókok 3,6-es verziójának létrehozásához használja a Azure Portal helyet.
 
-| |  |
+|Tevékenység | Leírás |
 |---|---|
 | [Azure Cosmos-fiók, adatbázis és gyűjtemény létrehozása](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, adatbázist és gyűjteményt a MongoDB API-hoz. |
 | [Átviteli sebesség módosítása](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Az RU/s frissítése egy adatbázison és gyűjteményen.|

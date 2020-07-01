@@ -7,20 +7,27 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 06/15/2020
-ms.openlocfilehash: bd68778eb3f0ca9c2af456cdb88cdcc9fe5862dc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fd2d7006e0c13f7e652b4edd973a36f94f2e2265
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85393877"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560495"
 ---
-# <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-azure-resource-manager-template"></a>Rövid útmutató: irányítópult létrehozása a Azure Portal Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Rövid útmutató: irányítópult létrehozása a Azure Portal ARM-sablon használatával
 
-A Azure Portal egyik irányítópultja a Felhőbeli erőforrások célzott és rendezett nézete. Ez a rövid útmutató egy Resource Manager-sablon üzembe helyezésének folyamatát összpontosítja az irányítópult létrehozásához. Az irányítópulton egy virtuális gép (VM) teljesítménye, valamint néhány statikus információ és hivatkozás látható.
+A Azure Portal egyik irányítópultja a Felhőbeli erőforrások célzott és rendezett nézete. Ez a rövid útmutató egy Azure Resource Manager-sablon (ARM-sablon) üzembe helyezésének folyamatát tárgyalja az irányítópult létrehozásához. Az irányítópulton egy virtuális gép (VM) teljesítménye, valamint néhány statikus információ és hivatkozás látható.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Egy meglévő virtuális gép.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -63,9 +70,9 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
 
 1. Válassza ki vagy adja meg a következő értékeket, majd válassza a **felülvizsgálat + létrehozás**elemet.
 
-    ![Resource Manager-sablon, irányítópult létrehozása, portál üzembe helyezése](media/quick-create-template/create-dashboard-using-template-portal.png)
+    ![ARM-sablon, irányítópult létrehozása, portál üzembe helyezése](media/quick-create-template/create-dashboard-using-template-portal.png)
 
-    Ha meg van adva, az irányítópult létrehozásához használja az alapértelmezett értékeket.
+    Ha nincs megadva, az alapértelmezett értékeket használja az irányítópult létrehozásához.
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
     * **Erőforráscsoport**: válassza a **SimpleWinVmResourceGroup**lehetőséget.
@@ -75,7 +82,7 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
 
 1. Válassza a **Létrehozás** vagy a **vásárlás**lehetőséget. Az irányítópult sikeres üzembe helyezését követően értesítést kap:
 
-    ![Resource Manager-sablon, irányítópult létrehozása, portál üzembe helyezése – értesítés](media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+    ![ARM-sablon, irányítópult létrehozása, portál üzembe helyezése – értesítés](media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
 A Azure Portal a sablon üzembe helyezéséhez volt használva. Az Azure Portalon kívül használhatja a következőket is: Azure PowerShell, Azure CLI és REST API. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -105,7 +112,7 @@ Ha el szeretné távolítani a virtuális gépet és a hozzá tartozó irányít
 
     ![Erőforráscsoport törlése](media/quick-create-template/delete-resource-group.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Portal irányítópultokkal kapcsolatos további információkért lásd:
 

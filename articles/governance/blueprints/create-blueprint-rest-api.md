@@ -1,14 +1,14 @@
 ---
 title: 'Gyors útmutató: terv létrehozása REST API'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a REST API használatával.
-ms.date: 02/26/2020
+ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: ec84e8396ad65aa01f73414b971f27bc95396e2f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 51fe927f1ee60f18cff7907e9e641c89acd751e2
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745096"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563299"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Gyors útmutató: Azure Blueprint definiálása és hozzárendelése REST API
 
@@ -408,7 +408,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      > [!IMPORTANT]
      > Az Azure-tervrajzok nem kezelik a felhasználó által hozzárendelt felügyelt identitást. A felhasználók feladata a megfelelő szerepkörök és engedélyek kiosztása, vagy a terv hozzárendelése sikertelen lesz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 

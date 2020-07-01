@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a207118af0b07be79c934a9665f47e73c5eecde0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589193"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560168"
 ---
 # <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
 
 A Computer Vision egyes funkciói több nyelvet támogatnak; az itt nem említett szolgáltatások csak az angol nyelvet támogatják.
 
-## <a name="text-recognition"></a>Szövegfelismerés
+## <a name="text-detection-ocr"></a>Szöveg észlelése (OCR)
 
-A Computer Vision számos nyelven képes felismerni a szöveget. Az OCR és az olvasási API-k nem igénylik a nyelvi kód megadását. További információ a funkcióról és az egyes API-k előnyeiről: a [nyomtatott és a kézírásos szöveg felismerése](concept-recognizing-text.md) .
+A Computer Vision számos nyelven képes a szöveg észlelésére. Az olvasási és OCR API-k nem igénylik a nyelvi kód megadását. A funkcionalitással és az egyes API-k előnyeivel kapcsolatos további információkért tekintse meg a [képek és dokumentumok olvasása szöveget](concept-recognizing-text.md) .
 
 |Nyelv| Nyelvkód | OCR API | API olvasása |
 |:-----|:----:|:-----:|:---:|

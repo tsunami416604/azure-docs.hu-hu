@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659929"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557068"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Gyors útmutató: Unity-minta üzembe helyezése az asztalra
 
@@ -38,7 +38,7 @@ Jelenleg csak a lapos asztali alkalmazások támogatottak az asztalon, így a VR
 1. Válassza ki a bal oldali **lejátszót** .
 1. Válassza a **univerzális Windows-platform beállítások** lapot.
 1. Bontsa ki az **XR beállításait**.
-1. Tiltsa le a **virtuális valóságot**.
+1. Tiltsa le a **virtuális valóságot**. \
     ![lejátszó beállításai](./media/unity-disable-xr.png)
 1. A fenti *XR-beállítások*között bontsa ki a **közzétételi beállítások**elemet.
 1. A **támogatott eszközökhöz tartozó családokban**ellenőrizze, hogy az **asztal** be van-e jelölve.
@@ -49,13 +49,13 @@ Jelenleg csak a lapos asztali alkalmazások támogatottak az asztalon, így a VR
 1. A *platform* **univerzális Windows-platformre** való módosítása (a**PC standalone** is támogatott, de itt nincs használatban, lásd a [platformra vonatkozó korlátozásokat](../reference/limits.md#platform-limitations)).
 1. A *célszámítógép* beállítása a **számítógépnek**.
 1. *Architektúra* beállítása **x86**-ra.
-1. A *Build típusának* beállítása a **D3D-projekthez**.
+1. A *Build típusának* beállítása a **D3D-projekthez**. \
   ![Összeállítási beállítások](./media/unity-build-settings-pc.png)
 1. Válassza **a váltás platformra**lehetőséget.
 1. A **Build** (vagy a build és a Run) gomb megnyomásakor a rendszer arra kéri, hogy válasszon ki egy mappát, ahol a megoldást tárolni szeretné.
 1. Nyissa meg a generált rövid útmutató **. SLN** a Visual Studióval.
 1. Módosítsa a konfigurációt **kiadásra** és **x86**-ra.
-1. Kapcsolja a hibakereső üzemmódot a **helyi gépre**.
+1. Állítsa át a hibakereső üzemmódot a **helyi gépre**. \
   ![Megoldás konfigurálása](./media/unity-deploy-config-pc.png)
 1. Hozza létre a megoldást (F7).
 
@@ -69,7 +69,7 @@ Indítsa el a hibakeresőt a Visual Studióban (F5). A rendszer automatikusan te
 A minta alkalmazásnak el kell indítania, majd el kell indítania egy új munkamenetet. Egy idő után a munkamenet készen áll, és a távolról renderelt modell fog megjelenni az Ön előtt.
 Ha később szeretné elindítani a mintát, azt a Start menüből is megtalálhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő rövid útmutatóban egy egyéni modell átalakítását fogjuk megtekinteni.
 

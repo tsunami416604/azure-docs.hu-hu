@@ -9,12 +9,12 @@ ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 3539349560b159f5c4f39387fe0eed0c5bbf6606
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 6ebf7d35529a9bf0f6d9caca35b7429a803fed2f
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261035"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562216"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
@@ -154,7 +154,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
         SearchServiceAdminKey=<YOUR-ADMIN-KEY>
         SearchServiceQueryKey=<YOUR-QUERY-KEY>
         IndexName=hotels-quickstart
-        ApiVersion=2019-05-06
+        ApiVersion=2020-06-30
     ```
 
 ### <a name="add-the-main-method"></a>A Main metódus hozzáadása
@@ -817,7 +817,7 @@ Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lek�
 
     Keresse meg az egyes lekérdezések összegzését és eredményeit. A futtatásnak SIKERESnek kell lennie a BUILD SIKERe üzenettel és egy nulla (0) kilépési kóddal.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

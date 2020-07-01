@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: bb57d61f3f60e6461243ade8be855ffe4d119345
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 5a2b72e87f77d29e62336f0d3b9c2b956ec417e1
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341340"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563066"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: bevételezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -38,7 +38,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 ## <a name="analyze-a-receipt"></a>Visszaigazolás elemzése
 
-A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **[elemzés visszaigazolása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)** API-t. A szkript futtatása előtt végezze el a következő módosításokat:
+A visszaigazolás elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **[elemzés visszaigazolása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** API-t. A szkript futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `<Endpoint>` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le a értékét `<your receipt URL>` egy nyugtát ábrázoló rendszerkép URL-címére.
@@ -94,7 +94,7 @@ https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b07
 
 ## <a name="get-the-receipt-results"></a>A Bevételezés eredményeinek beolvasása
 
-Az **elemzés visszaigazolási** API meghívása után hívja meg az **[elemzés visszaigazolásának eredményét](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeReceiptResult)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. Adja hozzá a következő kódot a Python-szkript aljához. Ez a műveleti azonosító értékét használja egy új API-hívásban. Ez a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
+Az **elemzés visszaigazolási** API meghívása után hívja meg az **[elemzés visszaigazolásának eredményét](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. Adja hozzá a következő kódot a Python-szkript aljához. Ez a műveleti azonosító értékét használja egy új API-hívásban. Ez a parancsfájl rendszeres időközönként meghívja az API-t, amíg az eredmények elérhetővé nem válnak. Javasoljuk, hogy egy vagy több másodperces intervallumot válasszon.
 
 ```python
 n_tries = 10
@@ -466,4 +466,4 @@ A `"recognitionResults"` csomópont tartalmazza az összes felismert szöveget. 
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával az értékesítési nyugták tartalmának kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)
+> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

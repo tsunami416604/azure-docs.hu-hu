@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 6e1dc5f0016c27d987361aa52e59682806a31c95
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: d85176ee092011d7c697856921f911da6a5e235a
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118916"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561679"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Bevezetés az Azure Cosmos DB Table API és az Azure Table Storage a .NET SDK-val való használatába
 
@@ -255,7 +255,7 @@ Kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzá
  }
 ```
 
-### <a name="get-an-entity-from-a-partition"></a>Entitás beolvasása egy partícióból
+## <a name="get-an-entity-from-a-partition"></a>Entitás beolvasása egy partícióból
 
 Az entitásokat a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztály lekérési metódusának használatával szerezheti be a partícióból. A következő kódrészlet a partíciós kulcs sorát, e-mail-címét és telefonszámát kéri le. Ez a példa az entitás lekérdezéséhez felhasznált kérelmek egységeit is kiírja. Az entitások lekérdezéséhez fűzze hozzá a következő kódot a **SamplesUtils.cs** fájlhoz: 
 

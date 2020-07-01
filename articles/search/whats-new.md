@@ -1,19 +1,18 @@
 ---
-title: Új funkció bejelentései
-titleSuffix: Azure Cognitive Search
+title: Az Azure Cognitive Search újdonságai
 description: Új és továbbfejlesztett funkciókkal kapcsolatos bejelentések, beleértve a Azure Search az Azure Cognitive Search-ba történő átnevezését.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 086e3cf71012f168851df1c85b19689294fe6302
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/30/2020
+ms.openlocfilehash: bca6cbe2a605131083536b3e709943fe2353f38f
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515728"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565075"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -23,23 +22,33 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 ### <a name="june-2020"></a>2020. június
 
-A Azure Machine Learning skill új képzettségi típus, amely a következtetési végpontot Azure Machine Learningból integrálja. A portál a Azure Machine Learning-végpont felderítését és integrálását támogatja egy Cognitive Search készségkészlet belül. A felderítéshez a Cognitive Search és az Azure ML szolgáltatásainak ugyanabban az előfizetésben kell lenniük. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-aml-custom-skill.md).
++ A [Knowledge Store](knowledge-store-concept-intro.md) már általánosan elérhető.
+
++ [Search Service REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) a REST API-k új stabil verziója. A tudásbázison kívül ez az általánosan elérhető verzió a keresés relevanciájának és pontozásának fejlesztését is tartalmazza.
+
++ Az új relevancia-rangsorolási algoritmus mostantól a létrehozott új szolgáltatások [BM25](https://en.wikipedia.org/wiki/Okapi_BM25) . Meglévő szolgáltatások esetén a `similarity` tulajdonságot a tárgymutató mezőinek beállításával engedélyezheti. Ez a tulajdonság általánosan elérhető.
+
++ Az új indexelő beállítható `executionEnvironment` explicit módon `private` . Ez a funkció támogatja az indexelő számára a külső adathoz való hozzáférést privát végpontokon keresztül, és általánosan elérhető.
+
++ A [Azure Machine learning (pénzmosás)](cognitive-search-aml-skill.md) egy új szaktudás, amely a következtetési végpontok Azure Machine Learningból való integrálását írja elő. A portál a Azure Machine Learning-végpont felderítését és integrálását támogatja egy Cognitive Search készségkészlet belül. A felderítéshez a Cognitive Search és az Azure ML szolgáltatásainak ugyanabban az előfizetésben kell lenniük. Ez a képesség általánosan elérhető. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-aml-custom-skill.md).
 
 ### <a name="may-2020-microsoft-build"></a>Május 2020 (Microsoft Build)
 
 + A [hibakeresési munkamenetek](cognitive-search-debug-session.md) szolgáltatás mostantól előzetes verzióban érhető el. A hibakeresési munkamenetek egy portálon alapuló felületet biztosítanak a készségkészlet kapcsolatos problémák kivizsgálásához és megoldásához. A hibakeresési munkamenetben létrehozott javítások az éles szakértelmével menthetők. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-debug-sessions.md).
 
-+ A biztonsági fejlesztések közé tartozik a nyilvános interneten nem elérhető [privát keresési végpont (előzetes verzió) beállítása](service-create-private-endpoint.md) . [Az IP-szabályokat is konfigurálhatja a kötött tűzfalak támogatásához (előzetes verzió)](service-configure-firewall.md).
++ Egy keresési szolgáltatási végpontot a nyilvános internetről az [IP-szabályoknak a kötött tűzfal-támogatáshoz való konfigurálásával](service-configure-firewall.md) vagy [egy privát keresési végpontra vonatkozó Azure Private-hivatkozás](service-create-private-endpoint.md)használatával konfigurálhat. Mindkét funkció általánosan elérhető.
 
 + A [rendszer által felügyelt identitás (előzetes verzió)](search-howto-managed-identities-data-sources.md) használatával állítson be egy Azure-adatforráshoz való kapcsolódást az indexeléshez. Az olyan [Indexelő](search-indexer-overview.md) anyagokra vonatkozik, amelyek az Azure-adatforrásokból (például Azure SQL Database, Azure Cosmos db és Azure Storage) származó tartalmakat töltenek be.
 
-+ Módosítsa a keresési pontszámok kiszámításának alapját, a [scoringStatistics = globális](index-similarity-and-scoring.md#scoring-statistics) és munkamenet-azonosító lekérdezési paraméterek használatával.
++ Változtassa meg a keresési pontszámok számításának alapját, a szegmenstől az összes szegmensig, a [munkamenet](index-similarity-and-scoring.md) -azonosító és a [scoringStatistics = globális](index-similarity-and-scoring.md#scoring-statistics)lekérdezési paraméterek használatával. Ezek a paraméterek általánosan elérhetők.
+
++ Vegyen fel egy [featuresMode (előzetes verzió)](index-similarity-and-scoring.md#featuresMode-param) lekérdezési paramétert a relevancia pontszám kibontásához a részletek megjelenítéséhez: mező szerinti hasonlósági pontszám, mező szerinti kifejezés gyakorisága, valamint az egyedi tokenek által egyeztetve. Ezeket az adatpontokat egyéni pontozási algoritmusokban is felhasználhatja. A képességet bemutató minta: a [Machine learning (LearnToRank) hozzáadása a relevancia kereséséhez](https://github.com/Azure-Samples/search-ranking-tutorial).
 
 ### <a name="march-2020"></a>2020. március
 
 + A [natív blob Soft Delete (előzetes verzió)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) azt jelenti, hogy az Azure Blob Storage indexelő az Azure-ban Cognitive Search felismeri a törölt állapotban lévő blobokat, és eltávolítja a megfelelő keresési dokumentumot az indexelés során.
 
-+ Most már elérhető az új stabil [felügyeleti REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) . 
++ Az új stabil [felügyeleti REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) már általánosan elérhető. 
 
 ### <a name="february-2020"></a>2020. február
 
@@ -49,13 +58,11 @@ A Azure Machine Learning skill új képzettségi típus, amely a következtetés
 
 ### <a name="january-2020"></a>2020. január
 
-+ Az [ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) már általánosan elérhetők. Ha REST-et használ, a szolgáltatást a használatával érheti el `api-version=2019-05-06` . A felügyelt kód esetében a megfelelő csomag még mindig a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) , bár a funkció nem előzetes verzió. 
++ Az [ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) már általánosan elérhetők. Ha REST-et használ, a vagy újabb használatával érheti el a szolgáltatást `api-version=2019-05-06` . A felügyelt kód esetében a megfelelő csomag még mindig a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) , bár a funkció nem előzetes verzió. 
 
 + A keresési szolgáltatásokhoz való privát hozzáférés két, jelenleg előzetes verzióban elérhető mechanizmuson keresztül érhető el:
 
   + A szolgáltatás létrehozásához a felügyeleti REST API használatával korlátozhatja a hozzáférést adott IP-címekhez `api-version=2019-10-01-Preview` . Az előzetes verziójú API új **IpRule** és **NetworkRuleSet** tulajdonságokkal rendelkezik a [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)-ban. Ez az előzetes verziójú funkció a kiválasztott régiókban érhető el. További információ: [a felügyeleti REST API használata](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
-
-  + Jelenleg korlátozott hozzáférésű előzetes verzióban érhető el, ha olyan Azure Search szolgáltatást is kiépít, amely támogatja az Azure Private-végpontot az azonos virtuális hálózatban lévő ügyfelekkel létesített kapcsolatokhoz. További információ: [privát végpont létrehozása biztonságos kapcsolatban](service-create-private-endpoint.md).
 
 ### <a name="december-2019"></a>2019. december
 

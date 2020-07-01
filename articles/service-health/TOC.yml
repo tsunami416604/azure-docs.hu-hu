@@ -7,7 +7,11 @@
 - name: Rövid útmutatók
   items:
     - name: Szolgáltatások állapoteseményeire vonatkozó riasztások beállítása
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
+      items:
+        - name: Azure Portal
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: ARM-sablon
+          href: alerts-activity-log-service-notifications-arm.md
 - name: Alapelvek
   items:
     - name: Az Azure állapota oldal

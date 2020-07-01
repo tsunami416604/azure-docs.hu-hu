@@ -3,25 +3,148 @@ title: Szerzői és futtatókörnyezeti kulcsok használata – LUIS
 description: Ha először használja a Language Understanding (LUIS), nem kell létrehoznia authoring-kulcsot. Ha közzé szeretné tenni az alkalmazást, majd használja a futásidejű végpontját, létre kell hoznia és hozzá kell rendelnie a futásidejű kulcsot az alkalmazáshoz.
 services: cognitive-services
 ms.topic: how-to
-ms.date: 04/06/2020
-ms.openlocfilehash: c566e8fe56d19856f5a577e472929b7610497d7c
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/26/2020
+ms.openlocfilehash: 5f6d62a63ea5ae0d3e4ca5913d6e7834ba07692a
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344458"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560433"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
-A szerzői és futtatókörnyezeti erőforrások hitelesítést biztosítanak a LUIS-alkalmazás és az előrejelzési végpont számára.
+A szerzői és lekérdezési előrejelzési futtatókörnyezet erőforrásai hitelesítést biztosítanak a LUIS-alkalmazás és az előrejelzési végpont számára.
 
-<a name="create-luis-service"></a>
-<a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
+<a name="programmatic-key" ></a>
+<a name="endpoint-key"></a>
+<a name="authoring-key"></a>
 
-Amikor bejelentkezik a LUIS-portálra, a következő lépések közül választhat:
+## <a name="luis-resources"></a>LUIS-erőforrások
 
-* ingyenes [próbaverzió](#trial-key) , amely lehetővé teszi a szerzői műveletek és néhány előrejelzési végpont lekérdezését.
-* egy Azure [Luis authoring](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) -erőforrás.
+A LUIS három típusú Azure-erőforrást és egy nem Azure-erőforrást is lehetővé tesz:
+
+|Kulcs|Cél|Kognitív szolgáltatás`kind`|Kognitív szolgáltatás`type`|
+|--|--|--|--|
+|Szerzői kulcs|A szerzői műveletek, a képzés, a közzététel és a tesztelés segítségével hozzáférhetnek az alkalmazáshoz, és kezelhetik azokat. Hozzon létre egy LUIS authoring-kulcsot, ha a LUIS-alkalmazásokat programozott módon szeretné létrehozni.<br><br>A kulcs célja, `LUIS.Authoring` hogy lehetővé tegye a következőket:<br>* programozott módon felügyelheti Language Understanding alkalmazásokat és modelleket, beleértve a képzést és a közzétételt<br> * a szerzői erőforrásra vonatkozó engedélyek vezérlése [a közreműködő szerepkörhöz](#contributions-from-other-authors)rendelt személyek hozzárendelésével.|`LUIS.Authoring`|`Cognitive Services`|
+|Lekérdezés-előrejelzési kulcs| Lekérdezés-előrejelzési végponti kérelmek. Hozzon létre egy LUIS-előrejelzési kulcsot, mielőtt az ügyfélalkalmazás a kezdő erőforrás által biztosított 1 000-kérelmeknél újabb előrejelzéseket kér. |`LUIS`|`Cognitive Services`|
+|[Kognitív szolgáltatás – több szolgáltatásból álló erőforrás kulcsa](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|A lekérdezés-előrejelzési végpontok megosztva a LUIS és más támogatott Cognitive Servicesokkal.|`CognitiveServices`|`Cognitive Services`|
+|Kezdő|Ingyenes szerzői műveletek (szerepköralapú hozzáférés-vezérlés nélkül) a LUIS-portálon vagy API-kon keresztül (beleértve az SDK-kat), az ingyenes 1 000 előrejelzési végponti kérések havonta egy böngészőben, API-n vagy SDK-n keresztül|-|Nem Azure-erőforrás|
+
+Ha az Azure-Erőforrás-létrehozási folyamat elkészült, [rendelje hozzá a kulcsot](#assign-a-resource-to-an-app) az alkalmazáshoz a Luis portálon.
+
+Fontos, hogy LUIS-alkalmazásokat hozzon létre azokon a [régiókban](luis-reference-regions.md#publishing-regions) , amelyeken közzé és lekérdezéseket szeretne közzétenni.
+
+## <a name="resource-ownership"></a>Erőforrás-tulajdonos
+
+Az Azure-erőforrás, például a LUIS, az erőforrást tartalmazó előfizetés tulajdonosa.
+
+Egy erőforrás tulajdonjogának átadásához a szervezeti egység a következőkre képes:
+* Az előfizetés [tulajdonjogának](../../cost-management-billing/manage/billing-subscription-transfer.md) átruházása
+* Exportálja a LUIS alkalmazást fájlként, majd importálja az alkalmazást egy másik előfizetésre. Az Exportálás a LUIS portál **saját alkalmazások** lapján érhető el.
+
+
+## <a name="resource-limits"></a>Erőforráskorlátok
+
+### <a name="authoring-key-creation-limits"></a>Szerzői kulcsok létrehozási korlátai
+
+Régiónként legfeljebb 10 szerzői kulcsot hozhat létre egy előfizetéshez.
+
+Lásd a [legfontosabb korlátokat](luis-limits.md#key-limits) és az [Azure-régiókat](luis-reference-regions.md).
+
+A közzétételi régiók eltérnek a szerzői régióktól. Győződjön meg arról, hogy létrehoz egy alkalmazást a szerzői régióban, amely ahhoz a közzétételi régióhoz tartozik, amelyet az ügyfélalkalmazás el szeretne helyezni.
+
+### <a name="key-usage-limit-errors"></a>Kulcshasználat korlátozási hibák
+
+A használati korlátok a díjszabási szinten alapulnak.
+
+Ha túllépi a tranzakció-másodpercenkénti (TPS-) kvótát, HTTP 429-es hibaüzenetet kap. Ha túllépi a havi tranzakciós (TPS) kvótát, HTTP 403-es hibaüzenetet kap.
+
+
+### <a name="reset-authoring-key"></a>Szerzői kulcs alaphelyzetbe állítása
+
+Az [áttelepített erőforrás-alkalmazások létrehozásához](luis-migration-authoring.md) : Ha a szerzői kulcs biztonsága sérül, állítsa alaphelyzetbe a kulcsot a Azure Portal az adott authoring Resource **kulcsok** lapján.
+
+Még nem telepített alkalmazások esetén: a kulcs alaphelyzetbe áll a LUIS-portál összes alkalmazásán. Ha a szerzői API-kon keresztül készíti el az alkalmazásokat, a OCP-APIM-Subscription-Key értékét az új kulcsra kell módosítania.
+
+### <a name="regenerate-azure-key"></a>Azure-kulcs újrakészítése
+
+Az Azure-kulcsok újragenerálása a Azure Portal a **kulcsok** lapon.
+
+
+## <a name="app-ownership-access-and-security"></a>Alkalmazások tulajdonlása, hozzáférése és biztonsága
+
+Az alkalmazást az Azure-erőforrásai határozzák meg, amelyet a tulajdonos előfizetése határoz meg.
+
+Elvégezheti a LUIS-alkalmazás áthelyezését. Használja az alábbi dokumentációs erőforrásokat a Azure Portal vagy az Azure CLI-ben:
+
+* [Alkalmazás áthelyezése a LUIS authoring-erőforrások között](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
+* [Erőforrás áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+* [Erőforrás áthelyezése ugyanazon az előfizetésen belül vagy előfizetések között](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
+
+
+### <a name="contributions-from-other-authors"></a>Más szerzők hozzájárulásai
+
+Az [áttelepített erőforrás-alkalmazások létrehozásához](luis-migration-authoring.md) : a _közreműködők_ kezelése a Azure Portal a szerzői erőforráshoz a **hozzáférés-vezérlés (iam)** lapon. Megtudhatja, [hogyan adhat hozzá felhasználót](luis-how-to-collaborate.md)a közreműködő e-mail-címével és a _közreműködő_ szerepkörrel.
+
+Még nem telepített alkalmazások esetén: az összes _közreműködőt_ a Luis portálon kezelheti a **Manage-> közreműködők** lapról.
+
+### <a name="query-prediction-access-for-private-and-public-apps"></a>Lekérdezés-előrejelzési hozzáférés magán-és nyilvános alkalmazásokhoz
+
+**Privát** alkalmazások esetén a lekérdezési előrejelzési futtatókörnyezet hozzáférése a tulajdonosokhoz és a közreműködők számára érhető el. **Nyilvános** alkalmazások esetén a futtatókörnyezet-hozzáférés mindenki számára elérhető, aki saját Azure [kognitív szolgáltatással](../cognitive-services-apis-create-account.md) vagy [Luis](#create-resources-in-the-azure-portal) futásidejű erőforrással rendelkezik, és rendelkezik a nyilvános alkalmazás azonosítójával.
+
+Jelenleg nem létezik katalógus a nyilvános alkalmazásokról.
+
+### <a name="authoring-permissions-and-access"></a>Szerzői engedélyek és hozzáférés
+Az alkalmazáshoz való hozzáférést a [Luis](luis-reference-regions.md#luis-website) portálról vagy a [szerzői API-kat](https://go.microsoft.com/fwlink/?linkid=2092087) az Azure authoring Resource vezérli.
+
+A tulajdonos és az összes közreműködő hozzáfér az alkalmazás létrehozásához.
+
+|A szerzői hozzáférés magában foglalja a|Jegyzetek|
+|--|--|
+|Végponti kulcsok hozzáadása vagy eltávolítása||
+|Verzió exportálása||
+|Végponti naplók exportálása||
+|Verzió importálása||
+|Alkalmazás nyilvánosvé tétele|Ha egy alkalmazás nyilvános, a szerzői vagy végponti kulccsal bárki lekérdezheti az alkalmazást.|
+|Modell módosítása|
+|Közzététel|
+|Az [aktív tanulási](luis-how-to-review-endpoint-utterances.md) végpont hosszúságú kimondott szöveg áttekintése|
+|Betanítás|
+
+<a name="prediction-endpoint-runtime-key"></a>
+
+### <a name="prediction-endpoint-runtime-access"></a>A végpont futásidejű hozzáférésének előrejelzése
+
+Az előrejelzési végpont lekérdezéséhez a **kezelés** szakasz **alkalmazás adatai** lapján található beállítás vezérli.
+
+|[Privát végpont](#runtime-security-for-private-apps)|[Nyilvános végpont](#runtime-security-for-public-apps)|
+|:--|:--|
+|Elérhető a tulajdonos és a közreműködők számára|Elérhető a tulajdonos, a közreműködők és bárki másnak, aki ismeri az alkalmazás AZONOSÍTÓját|
+
+Megadhatja, hogy ki látja el a LUIS Runtime-kulcsot úgy, hogy a kiszolgálót kiszolgáló-kiszolgáló környezetben hívja meg. Ha a LUIS-t egy robotból használja, a robot és a LUIS közötti kapcsolat már biztonságos. Ha közvetlenül hívja meg a LUIS-végpontot, hozzon létre egy kiszolgálóoldali API-t (például egy Azure- [függvényt](https://azure.microsoft.com/services/functions/)) vezérelt hozzáféréssel (például [HRE](https://azure.microsoft.com/services/active-directory/)). A kiszolgálóoldali API meghívása és hitelesítése, valamint az engedélyezés ellenőrzése után adja át a hívást a LUIS-nek. Habár ez a stratégia nem gátolja meg az emberen belüli támadásokat, az eltorzítja a felhasználók kulcs-és végpont-URL-címét, lehetővé teszi a hozzáférés nyomon követését, és lehetővé teszi a végponti válaszok naplózásának hozzáadását (például [Application Insights](https://azure.microsoft.com/services/application-insights/)).
+
+### <a name="runtime-security-for-private-apps"></a>Futásidejű biztonság privát alkalmazásokhoz
+
+A privát alkalmazások futtatókörnyezete csak a következőkhöz érhető el:
+
+|Kulcs és felhasználó|Magyarázat|
+|--|--|
+|Tulajdonos szerzői kulcsa| Akár 1000 végpontot elér|
+|Közreműködő/közreműködő szerzői kulcsok| Akár 1000 végpontot elér|
+|Egy szerző vagy közreműködő vagy közreműködő által a LUIShoz rendelt kulcs|Kulcshasználat szintje alapján|
+
+### <a name="runtime-security-for-public-apps"></a>Futtatókörnyezeti biztonság nyilvános alkalmazásokhoz
+
+Az alkalmazás nyilvánosként való konfigurálása után _bármely_ érvényes Luis authoring Key vagy Luis Endpoint kulcs lekérdezheti az alkalmazást, feltéve, hogy a kulcs nem használta a teljes végponti kvótát.
+
+Olyan felhasználó, aki nem tulajdonos vagy közreműködő, csak akkor férhet hozzá egy nyilvános alkalmazás futtatókörnyezetéhez, ha az alkalmazás azonosítója van megadva. A LUIS nem rendelkezik nyilvános _piaccal_ vagy más módszerrel a nyilvános alkalmazások kereséséhez.
+
+A nyilvános alkalmazások minden régióban közzé vannak téve, hogy a régió-alapú LUIS-erőforrás kulcsával rendelkező felhasználók hozzáférhessenek az alkalmazáshoz, amely bármelyik régióban hozzá van rendelve az erőforrás-kulcshoz.
+
+
+### <a name="securing-the-query-prediction-endpoint"></a>A lekérdezés-előrejelzési végpont biztonságossá tétele
+
+Megadhatja, hogy ki láthatja a LUIS előrejelzési futtatókörnyezet végpontjának kulcsát úgy, hogy a kiszolgálót kiszolgáló-kiszolgáló környezetben hívja meg. Ha a LUIS-t egy robotból használja, a robot és a LUIS közötti kapcsolat már biztonságos. Ha közvetlenül hívja meg a LUIS-végpontot, hozzon létre egy kiszolgálóoldali API-t (például egy Azure- [függvényt](https://azure.microsoft.com/services/functions/)) vezérelt hozzáféréssel (például [HRE](https://azure.microsoft.com/services/active-directory/)). A kiszolgálóoldali API meghívásakor, valamint a hitelesítés és az engedélyezés ellenőrzése után adja át a hívást a LUIS-nek. Habár ez a stratégia nem gátolja meg az emberen belüli támadásokat, az eltorzítja a végpontot a felhasználóktól, lehetővé teszi a hozzáférés nyomon követését, és lehetővé teszi a végponti válaszok naplózásának (például [Application Insights](https://azure.microsoft.com/services/application-insights/)) hozzáadását.
 
 <a name="starter-key"></a>
 
@@ -34,20 +157,14 @@ Amikor bejelentkezik a LUIS-portálra, a következő lépések közül választh
 
 1. Ha elkészült az erőforrás-kiválasztási folyamattal, [hozzon létre egy új alkalmazást](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
-## <a name="trial-key"></a>Próbaverziós kulcs
 
-A próbaverzió (kezdő) kulcsát Önnek kell megadnia. A hitelesítési kulcsként szolgál az előrejelzési végpont futtatókörnyezetének lekérdezéséhez, havonta akár 1000 lekérdezéssel.
-
-A **felhasználói beállítások** lapon és a " **Manage-> Azure-erőforrások** " oldalon is látható a Luis-portálon.
-
-Ha készen áll az előrejelzési végpont közzétételére, [hozzon létre](#create-luis-resources) és [rendeljen hozzá](#assign-a-resource-to-an-app) létrehozási és előrejelzési futtatókörnyezeti kulcsokat az alapszintű kulcs funkcióinak cseréjéhez.
+## <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
 
 <a name="create-resources-in-the-azure-portal"></a>
 
+[!INCLUDE [Create LUIS resource in Azure Portal](includes/create-luis-resource.md)]
 
-[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
-
-## <a name="create-resources-in-azure-cli"></a>Erőforrások létrehozása az Azure CLI-ben
+### <a name="create-resources-in-azure-cli"></a>Erőforrások létrehozása az Azure CLI-ben
 
 Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) használatával egyenként hozhatja létre az erőforrásokat.
 
@@ -79,7 +196,9 @@ Erőforrás `kind` :
     > [!Note]
     > A LUIS portál **nem** használja ezeket a kulcsokat, amíg hozzá nem rendelik a Luis portálon a **> Azure-erőforrások kezeléséhez**.
 
-## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Szerzői erőforrás kiosztása a LUIS-portálon az összes alkalmazáshoz
+<a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
+
+### <a name="assign-resource-in-the-luis-portal"></a>Erőforrás kiosztása a LUIS-portálon
 
 Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS összes alkalmazásához. Az alábbi eljárás az összes alkalmazást egyetlen szerzői erőforráshoz rendeli.
 
@@ -89,7 +208,7 @@ Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS öss
 
 ## <a name="assign-a-resource-to-an-app"></a>Erőforrás kiosztása egy alkalmazáshoz
 
-A következő eljárással hozzárendelhet egyetlen erőforrást, szerzői vagy előrejelzési végponti futtatókörnyezetet az alkalmazáshoz.
+A következő eljárással rendelhet hozzá egy alkalmazást.
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), majd válasszon ki egy alkalmazást a **saját alkalmazások** listából.
 1. Navigáljon a **Manage-> Azure-erőforrások** lapra.
@@ -99,7 +218,7 @@ A következő eljárással hozzárendelhet egyetlen erőforrást, szerzői vagy 
 1. Válassza az előrejelzés vagy a szerzői erőforrás létrehozása fület, majd jelölje be az **előrejelzési erőforrás hozzáadása** vagy a **szerzői erőforrás hozzáadása** gomb.
 1. A megfelelő erőforrás megkereséséhez válassza ki a mezőket az űrlapon, majd válassza a **Mentés**lehetőséget.
 
-### <a name="assign-runtime-resource-without-using-luis-portal"></a>Futásidejű erőforrás kiosztása a LUIS-portál használata nélkül
+### <a name="assign-query-prediction-runtime-resource-without-using-luis-portal"></a>Lekérdezés-előrejelzési futtatókörnyezet erőforrásának kiosztása a LUIS-portál használata nélkül
 
 Az automatizálási célokra, például a CI/CD-folyamatok esetében érdemes automatizálni egy LUIS Runtime-erőforrás hozzárendelését egy LUIS-alkalmazásba. Ehhez a következő lépéseket kell elvégeznie:
 
@@ -140,15 +259,6 @@ Az automatizálási célokra, például a CI/CD-folyamatok esetében érdemes au
 
 Ha törli az erőforrás hozzárendelését, az nem törlődik az Azure-ból. Csak a LUIS-ról van csatolva.
 
-## <a name="reset-authoring-key"></a>Szerzői kulcs alaphelyzetbe állítása
-
-**Az [áttelepített erőforrás-alkalmazások létrehozásához](luis-migration-authoring.md) **: Ha a szerzői kulcs biztonsága sérül, állítsa alaphelyzetbe a kulcsot a Azure Portal az adott authoring Resource **kulcsok** lapján.
-
-**Még nem telepített alkalmazások esetén**: a kulcs alaphelyzetbe áll a Luis-portál összes alkalmazásán. Ha a szerzői API-kon keresztül készíti el az alkalmazásokat, a OCP-APIM-Subscription-Key értékét az új kulcsra kell módosítania.
-
-## <a name="regenerate-azure-key"></a>Azure-kulcs újrakészítése
-
-Az Azure-kulcsok újragenerálása a Azure Portal a **kulcsok** lapon.
 
 ## <a name="delete-account"></a>Fiók törlése
 
@@ -189,9 +299,7 @@ Ha szeretné tudni, hogy mikor ért el egy bizonyos tranzakciós küszöbérték
 
 Adjon hozzá egy metrikai riasztást a **hívások teljes** metrikája számára egy adott időtartamra vonatkozóan. Adja meg az összes olyan személy e-mail-címét, akinek meg kell kapnia a riasztást. Webhookok hozzáadása a riasztást fogadó összes rendszerhez. Egy logikai alkalmazást is futtathat a riasztás elindítása után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
-* Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .
-* Útmutató szerzői és futtatókörnyezeti erőforrások [létrehozásához](luis-how-to-azure-subscription.md)
 * Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md)

@@ -7,12 +7,12 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e0845e7cdc2ce6dc57ed5a18d263f117f0c2005c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006243"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563483"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár V12 és Xamarin
 
@@ -26,7 +26,7 @@ Használja az Azure Blob Storage ügyféloldali kódtárat a Xamarin:
 * A blob letöltése az eszközre
 * Tároló törlése
 
-[API-referenciák dokumentációs](/dotnet/api/azure.storage.blobs) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [-csomagjához (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | tartozó[minta](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+[API-referenciák dokumentációja](/dotnet/api/azure.storage.blobs)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Minta](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -55,7 +55,7 @@ Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure Bl
 A **BlobQuickstartV12** könyvtárából:
 
 1. Nyissa meg a *Főoldal. XAML* fájlt a szerkesztőben
-1. Távolítson el mindent `<ContentPage></ContentPage>` az elemek között, és cserélje le az alábbira:
+1. Távolítson el mindent az `<ContentPage></ContentPage>` elemek között, és cserélje le az alábbira:
 
 ```xaml
 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
@@ -151,7 +151,7 @@ protected async override void OnAppearing()
 A következő kódrészlet:
 
 1. Létrehoz egy `MemoryStream` szöveget.
-1. Feltölti a szöveget egy Blobba úgy, hogy meghívja a [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) osztály [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) függvényét, és átadja azt az osztály szintjének változót `MemoryStream` és a szöveget is. Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
+1. Feltölti a szöveget egy Blobba a [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) osztály [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) függvényének meghívásával, amely a fájlnévben és a szövegben is áthalad `MemoryStream` . Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
 
 Adja hozzá ezt a kódot a *MainPage.XAML.cs* -fájlhoz:
 
@@ -190,7 +190,7 @@ async void List_Clicked(object sender, EventArgs e)
 
 ### <a name="download-blobs"></a>Blobok letöltése
 
-Töltse le a korábban létrehozott blobot a [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) metódus meghívásával. A példában szereplő kód először `Stream` a blobot másolja át a `MemoryStream` -ba, majd `StreamReader` a szöveg megjelenítéséhez.
+Töltse le a korábban létrehozott blobot a [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) metódus meghívásával. A példában szereplő kód először a blobot másolja át a `Stream` `MemoryStream` -ba, majd a `StreamReader` szöveg megjelenítéséhez.
 
 Adja hozzá ezt a kódot a *MainPage.XAML.cs* -fájlhoz:
 

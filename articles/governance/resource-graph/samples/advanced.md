@@ -3,12 +3,12 @@ title: Összetett lekérdezési példák
 description: Az Azure Resource Graph használatával speciális lekérdezéseket futtathat, beleértve az oszlopok használatát, a használt címkék felsorolását és az erőforrások reguláris kifejezésekkel való egyeztetését.
 ms.date: 06/18/2020
 ms.topic: sample
-ms.openlocfilehash: 454692ab650752738700e5303e9092b23489514b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ce949eb9f718f8526ef189993d7004db152d5e22
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323040"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565635"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Speciális Resource Graph lekérdezési minták
 
@@ -375,7 +375,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 ## <a name="list-all-extensions-installed-on-a-virtual-machine"></a><a name="join-vmextension"></a>A virtuális gépre telepített összes bővítmény felsorolása
 
 Először is ez a lekérdezés a `extend` virtuális gépek erőforrástípus alapján kéri le az azonosítót nagybetűs ( `toupper()` ) azonosítóként, az operációs rendszer nevének és típusának beolvasásához, valamint a virtuális gép méretének lekéréséhez.
-Az erőforrás-azonosító nagybetűs beszerzése jó módszer arra, hogy felkészüljenek egy másik tulajdonsághoz való csatlakozásra. Ezt követően a lekérdezés a `join` _leftouter_ használatával beolvassa a virtuálisgép-bővítményeket a bővítmény-azonosító felső tokozásának megfelelő módon **kind** `substring` . Az azonosító "/Extensions/" előtti része \<ExtensionName\> megegyezik a virtuális gépek azonosítójának formátumával, ezért ezt a tulajdonságot használjuk `join` . `summarize`Ezután a a virtuálisgép-bővítmény nevével együtt használja `make_list` az egyes bővítmények nevének összevonására, ahol az _azonosító_, a _OSName_, a _OSType_és a _VMSize_ ugyanaz, mint egyetlen tömb tulajdonság. Végül `order by` pedig az alsó tokozású _OSName_ az **Asc**. A defualt szerint `order by` csökkenő.
+Az erőforrás-azonosító nagybetűs beszerzése jó módszer arra, hogy felkészüljenek egy másik tulajdonsághoz való csatlakozásra. Ezt követően a lekérdezés a `join` _leftouter_ használatával beolvassa a virtuálisgép-bővítményeket a bővítmény-azonosító felső tokozásának megfelelő módon **kind** `substring` . Az azonosító "/Extensions/" előtti része \<ExtensionName\> megegyezik a virtuális gépek azonosítójának formátumával, ezért ezt a tulajdonságot használjuk `join` . `summarize`Ezután a a virtuálisgép-bővítmény nevével együtt használja `make_list` az egyes bővítmények nevének összevonására, ahol az _azonosító_, a _OSName_, a _OSType_és a _VMSize_ ugyanaz, mint egyetlen tömb tulajdonság. Végül `order by` pedig az alsó tokozású _OSName_ az **Asc**. Alapértelmezés szerint `order by` csökkenő.
 
 ```kusto
 Resources

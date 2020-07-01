@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687922"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562965"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -29,7 +29,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > * VPN-hely összekötése egy hubhoz
 > * Virtuális hálózat csatlakoztatása elosztóhoz
 > * Konfigurációs fájl letöltése
-> * A virtuális WAN megtekintése
+> * A VPN-átjáró konfigurálása
 
 > [!NOTE]
 > Ha több hellyel rendelkezik, általában egy [Virtual WAN-partner](https://aka.ms/virtualwan) segítségével hozza létre ezt a konfigurációt. A konfigurációt azonban maga is létrehozhatja, ha elboldogul a hálózatkezeléssel, és tudja, hogyan kell konfigurálnia saját VPN-eszközeit.
@@ -251,11 +251,20 @@ Amennyiben útmutatásra van szüksége az eszköz konfigurálásához, használ
 * Az új virtuális WAN A IKEv1 és a IKEv2 is támogatja.
 * A Virtual WAN a házirend-alapú és az útválasztó-alapú VPN-eszközöket és az eszközökre vonatkozó utasításokat is használhatja.
 
-## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>A virtuális WAN megtekintése
+## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>A VPN-átjáró konfigurálása
 
-1. Lépjen a virtuális WAN-ra.
-2. Az **Áttekintés** oldalon a térképen lévő minden pont egy hubot jelöl. Vigye a kurzort a központ állapotának összegzése, a kapcsolat állapota és a bejövő és kimenő bájtok megtekintéséhez.
-3. A hubok és kapcsolatok szakaszban megtekintheti a központ állapotát, a VPN-helyeket stb. Ha további részletekre van szüksége, kattintson egy adott hub-névre, és navigáljon a VPN-webhelyre.
+A VPN-átjáró beállításait bármikor megtekintheti és konfigurálhatja a **Megtekintés/konfigurálás**lehetőség kiválasztásával.
+
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Konfiguráció megtekintése" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+
+A **VPN Gateway szerkesztése** lapon a következő beállításokat tekintheti meg:
+
+* VPN Gateway nyilvános IP-cím (az Azure által hozzárendelt)
+* VPN Gateway magánhálózati IP-cím (az Azure által hozzárendelt)
+* Alapértelmezett BGP IP-cím VPN Gateway (az Azure által hozzárendelt)
+* Egyéni BGP IP-cím konfigurációs beállítása: Ez a mező az APIPA (automatikus magánhálózati IP-címzés) számára van fenntartva. Az Azure támogatja a BGP IP-címet a 169.254.21. * és a 169.254.22. * tartományban. *
+
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Konfiguráció megtekintése" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>További lépések
 

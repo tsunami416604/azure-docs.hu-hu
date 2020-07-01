@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 04bbfe3ee38c5ce37c36ab2f85467ce68e7335be
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 093d8cdd97f28a419788070e674d80aad595f46a
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262973"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556319"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Azure CLI-minták Azure Cosmos DB Cassandra API
 
 Az alábbi táblázat a Azure Cosmos DB Cassandra API Azure CLI-parancsfájlokra mutató hivatkozásokat tartalmaz. Az összes Azure Cosmos DB CLI-parancsra vonatkozó hivatkozási lapok az [Azure CLI-referenciában](/cli/azure/cosmosdb)érhetők el. A CLI-szkriptek összes Azure Cosmos DB a [Azure Cosmos db CLI GitHub-tárházban](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)található.
 
-| |  |
+|Tevékenység | Leírás |
 |---|---|
 | [Azure Cosmos-fiók, térköz és tábla létrehozása](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, a térközt és a Cassandra API táblát. |
 | [Átviteli sebesség módosítása](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Az RU/s frissítése a szóköz és a tábla alapján.|

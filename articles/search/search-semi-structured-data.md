@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 64cb864b50f44f70bb9ceccc9983641970116cc7
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261443"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85559015"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Oktatóanyag: JSON-Blobok indexelése az Azure Storage-ból REST használatával
 
@@ -112,13 +112,13 @@ A fejlécekben a "Content-Type" értéket állítsa be, `application/json` és �
 
   ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
 
-Az URI-k API-verziót kell megadni, és minden hívásnak egy **201**-as értéket kell visszaadnia. A JSON-tömbök használatának általánosan elérhető API-verziója a következő: `2019-05-06` .
+Az URI-k API-verziót kell megadni, és minden hívásnak egy **201**-as értéket kell visszaadnia. A JSON-tömbök használatának általánosan elérhető API-verziója a következő: `2020-06-30` .
 
 ## <a name="3---create-a-data-source"></a>3 – adatforrás létrehozása
 
 Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) létrehoz egy Azure Cognitive Search objektumot, amely meghatározza, hogy milyen adatindexet szeretne.
 
-1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/datasources?api-version=2019-05-06` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
+1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/datasources?api-version=2020-06-30` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
 
 1. Másolja a következő JSON-t a kérelem törzsébe.
 
@@ -161,7 +161,7 @@ Az [adatforrás létrehozása API](https://docs.microsoft.com/rest/api/searchser
     
 A második hívás [index API-t hoz létre](https://docs.microsoft.com/rest/api/searchservice/create-index), amely egy Azure Cognitive Search indexet hoz létre, amely az összes kereshető adattal tárolja. Az index határozza meg az összes paramétert és ezek attribútumait.
 
-1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/indexes?api-version=2019-05-06` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+1. A hívás végpontjának beállítása a következőre: `https://[service name].search.windows.net/indexes?api-version=2020-06-30` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 1. Másolja a következő JSON-t a kérelem törzsébe.
 
@@ -236,7 +236,7 @@ A második hívás [index API-t hoz létre](https://docs.microsoft.com/rest/api/
 
 Az indexelő csatlakozik az adatforráshoz, importálja az adatmennyiséget a cél keresési indexbe, és opcionálisan biztosít egy ütemtervet az Adatfrissítés automatizálásához. A REST API [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-1. Állítsa be a hívás URI-JÁT a következőre: `https://[service name].search.windows.net/indexers?api-version=2019-05-06` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+1. Állítsa be a hívás URI-JÁT a következőre: `https://[service name].search.windows.net/indexers?api-version=2020-06-30` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 1. Másolja a következő JSON-t a kérelem törzsébe.
 
@@ -281,7 +281,7 @@ Az első dokumentum betöltését követően megkezdheti a keresést.
 
 1. Módosítsa a **lekérdezni**kívánt műveletet.
 
-1. Állítsa be a hívás URI-JÁT a következőre: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+1. Állítsa be a hívás URI-JÁT a következőre: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2020-06-30&$count=true` . Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 1. Küldje el a kérést. Ez egy nem megadott teljes szöveges keresési lekérdezés, amely visszaadja az indexben beolvasható összes mezőt, valamint a dokumentumok számát. A válasznak így kell kinéznie:
 
@@ -313,7 +313,7 @@ Az első dokumentum betöltését követően megkezdheti a keresést.
             . . . 
     ```
 
-1. Adja hozzá a `$select` lekérdezési paramétert az eredmények kevesebb mezőre való korlátozásához: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true` .  Ehhez a lekérdezéshez a 100-es dokumentumok egyeznek, de alapértelmezés szerint az Azure Cognitive Search csak a 50 értéket adja vissza az eredményekben.
+1. Adja hozzá a `$select` lekérdezési paramétert az eredmények kevesebb mezőre való korlátozásához: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true` .  Ehhez a lekérdezéshez a 100-es dokumentumok egyeznek, de alapértelmezés szerint az Azure Cognitive Search csak a 50 értéket adja vissza az eredményekben.
 
    ![Paraméteres lekérdezés](media/search-semi-structured-data/lastquery.png "Paramterized-lekérdezés")
 
@@ -333,12 +333,12 @@ A fejlesztés korai kísérleti szakaszaiban a tervezési iteráció legalkalmas
 A portál használatával törölhet indexeket, indexelő fájlokat és adatforrásokat. Vagy használja a **delete (Törlés** ) lehetőséget, és adja meg az egyes objektumok URL-címét A következő parancs törli az indexelő.
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2020-06-30
 ```
 
 Sikeres törlés esetén a rendszer a 204-es állapotkódot adja vissza.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

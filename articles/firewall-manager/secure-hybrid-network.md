@@ -1,26 +1,24 @@
 ---
-title: 'Oktatóanyag: a hub virtuális hálózat biztonságossá tétele a Azure Firewall Manager előzetes verziójával'
+title: 'Oktatóanyag: hub virtuális hálózat biztonságossá tétele a Azure Firewall Managerrel'
 description: Ebből az oktatóanyagból megtudhatja, hogyan védheti a virtuális hálózatot a Azure Firewall Managerrel a Azure Portal használatával.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: cdd416bdb833e4784334a6847d724a7375e2ef8d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77459953"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563648"
 ---
-# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager-preview"></a>Oktatóanyag: a hub virtuális hálózat biztonságossá tétele a Azure Firewall Manager előzetes verziójával 
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>Oktatóanyag: hub virtuális hálózat biztonságossá tétele a Azure Firewall Managerrel
 
 Ha a helyszíni hálózatot egy Azure-beli virtuális hálózathoz kapcsolja egy hibrid hálózat létrehozásához, az Azure hálózati erőforrásaihoz való hozzáférés szabályozása egy átfogó biztonsági csomag fontos részét képezi.
 
-A Azure Firewall Manager előzetes verziójának használatával létrehozhat egy hub virtuális hálózatot, amellyel biztonságossá teheti a saját IP-címekre, az Azure-ra és az internetre irányuló hibrid hálózati forgalmat. A Azure Firewall Manager használatával vezérelheti a hálózati hozzáférést egy hibrid hálózatban az engedélyezett és a letiltott hálózati forgalmat definiáló házirendekkel.
+A Azure Firewall Manager használatával létrehozhat egy központi virtuális hálózatot, amellyel biztonságossá teheti a saját IP-címekre, az Azure-ra és az internetre irányuló hibrid hálózati forgalmat. A Azure Firewall Manager használatával vezérelheti a hálózati hozzáférést egy hibrid hálózatban az engedélyezett és a letiltott hálózati forgalmat definiáló házirendekkel.
 
 A Firewall Manager a biztonságos virtuális központ architektúráját is támogatja. A biztonságos virtuális központ és a hub virtuális hálózati architektúrájának összevetéséhez tekintse meg [a mi a Azure Firewall Manager architektúrájának beállításait?](vhubs-and-vnets.md)
 
@@ -67,7 +65,7 @@ Az útvonalak létrehozásával kapcsolatos információkért lásd az oktatóan
 >[!NOTE]
 >A közvetlenül összekapcsolt virtuális hálózatok közötti forgalom közvetlenül akkor is átirányítva van, ha egy UDR az alapértelmezett átjáróként való Azure Firewallre mutat. Ha ebben a forgatókönyvben az alhálózatot alhálózati forgalomra szeretné küldeni a tűzfalra, a UDR mindkét alhálózaton explicit módon tartalmaznia kell a célként megadott alhálózat hálózati előtagot.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-firewall-policy"></a>Tűzfalszabály létrehozása
 
@@ -154,7 +152,7 @@ A virtuális hálózat üzembe helyezése után hozzon létre egy második alhá
 2. Válassza a **+ alhálózat**lehetőséget.
 3. A **név**mezőbe írja be a következőt: **GatewaySubnet**.
 4. A **címtartomány (CIDR blokk)** **192.168.2.0/24**típusában.
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 ### <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
@@ -238,7 +236,7 @@ Ebben a lépésben létrehozza a kapcsolódást a hub virtuális hálózatról a
 5. Válassza a **VNet – VNet** **lehetőséget.**
 6. A **második virtuális hálózati átjáró**esetében válassza a **GW-helyszíni**lehetőséget.
 7. A **megosztott kulcs (PSK)** mezőbe írja be a következőt: **AzureA1b2C3**.
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 Hozza létre a helyszíni és a hub közötti virtuális hálózati kapcsolatokat. Ez a lépés hasonló az előzőhöz, kivéve, ha a VNet-helyszíni és a VNet-hub közötti kapcsolatokat hozza létre. Ügyeljen arra, hogy a megosztott kulcsok megegyezzenek. A kapcsolat néhány perc alatt létrejön.
 
@@ -249,7 +247,7 @@ Hozza létre a helyszíni és a hub közötti virtuális hálózati kapcsolatoka
 5. Válassza a **VNet – VNet** **lehetőséget.**
 6. A **második virtuális hálózati átjáró**esetében válassza a **GW-hub**elemet.
 7. A **megosztott kulcs (PSK)** mezőbe írja be a következőt: **AzureA1b2C3**.
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 
 #### <a name="verify-the-connection"></a>A kapcsolat ellenőrzése
@@ -269,7 +267,7 @@ A hub és a küllős virtuális hálózatok most már egyenrangúak.
 5. A **virtuális hálózat**esetében válassza a **VNet – küllő** elemet.
 6. A VNetSpoke-ről VNet-hubhoz való társítás neve mezőbe írja be a következőt: **SpoketoHub**.
 7. Jelölje be az **átjárók átvitelének engedélyezése**jelölőnégyzetet.
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 ### <a name="configure-additional-settings-for-the-spoketohub-peering"></a>További beállítások konfigurálása a SpoketoHub-társításhoz
 
@@ -303,7 +301,7 @@ Ezután hozzon létre néhány útvonalat:
 14. A **10.6.0.0/16**mezőbe írja be a következőt:.
 15. A következő ugrás típusa beállításnál válassza a **virtuális berendezés**lehetőséget.
 16. A következő ugrási cím mezőbe írja be a tűzfal a korábban feljegyzett magánhálózati IP-címét.
-17. Kattintson az **OK** gombra.
+17. Válassza az **OK** lehetőséget.
 
 Most rendelje hozzá az útvonalat az alhálózathoz.
 
@@ -311,7 +309,7 @@ Most rendelje hozzá az útvonalat az alhálózathoz.
 2. Válassza a **hozzárendelés**lehetőséget.
 4. A **virtuális hálózat**területen válassza az **VNet-hub**elemet.
 5. Az **alhálózat**területen válassza a **GatewaySubnet**lehetőséget.
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 Most hozza létre az alapértelmezett útvonalat a küllő alhálózatból.
 
@@ -331,7 +329,7 @@ Most hozza létre az alapértelmezett útvonalat a küllő alhálózatból.
 6. A címzési előtag mezőbe írja be a következőt: **0.0.0.0/0**.
 7. A következő ugrás típusa beállításnál válassza a **virtuális berendezés**lehetőséget.
 8. A következő ugrási cím mezőbe írja be a tűzfal a korábban feljegyzett magánhálózati IP-címét.
-9. Kattintson az **OK** gombra.
+9. Válassza az **OK** lehetőséget.
 
 Most rendelje hozzá az útvonalat az alhálózathoz.
 
@@ -339,7 +337,7 @@ Most rendelje hozzá az útvonalat az alhálózathoz.
 2. Válassza a **hozzárendelés**lehetőséget.
 4. A **virtuális hálózat**területen válassza a **VNet-küllő**elemet.
 5. Az **alhálózat**területen válassza az **SN-munkaterhelés**elemet.
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
@@ -354,7 +352,7 @@ Hozzon létre egy virtuális gépet a küllős virtuális hálózaton, amely nyi
 3. Adja meg a következő értékeket a virtuális gép számára:
     - **Erőforráscsoport** – válassza az **FW-Hybrid-test**elemet.
     - **Virtuális gép neve**: *VM-küllős-01*.
-    - **Régió** - *(USA) USA keleti*régiója).
+    - **Régió**  -  *(USA) USA keleti*régiója).
     - **Felhasználónév**: *azureuser*.
     - **Password (jelszó**): írja be a jelszót
 
@@ -392,8 +390,8 @@ Ez egy virtuális gép, amelyet a Távoli asztal a nyilvános IP-címhez való k
 2. A **népszerű**területen válassza a **Windows Server 2016 Datacenter**elemet.
 3. Adja meg a következő értékeket a virtuális gép számára:
     - **Erőforráscsoport** – válassza a meglévő lehetőséget, majd válassza az **FW-Hybrid-test**lehetőséget.
-    - **Virtuális gép neve** - *VM-helyszíni*.
-    - **Régió** - *(USA) USA keleti*régiója).
+    - **Virtuális gép neve**  -  *Virtuális gép – helyszíni*.
+    - **Régió**  -  *(USA) USA keleti*régiója).
     - **Felhasználónév**: *azureuser*.
     - **Password (jelszó**): írja be a jelszót.
 
@@ -413,9 +411,9 @@ Ez egy virtuális gép, amelyet a Távoli asztal a nyilvános IP-címhez való k
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-3. Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse\<meg a http://VM-küllő-\>01 magánhálózati IP-címét.
+3. Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse meg a http:// \<VM-spoke-01 private IP\> .
 
-   Megjelenik a VM- **küllős-01** weblap: ![VM-küllős-01 weblap](media/secure-hybrid-network/vm-spoke-01-web.png)
+   Megjelenik a VM- **küllős-01** weblap: ![ VM-küllős-01 weblap](media/secure-hybrid-network/vm-spoke-01-web.png)
 
 4. A **VM-helyszíni** virtuális gépről nyisson meg egy távoli asztalt a virtuális gép **által küllő-01** ÉRTÉKre a magánhálózati IP-címen.
 
@@ -444,4 +442,4 @@ A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is haszn
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: virtuális WAN biztonságossá tétele a Azure Firewall Manager előzetes verziójával](secure-cloud-network.md)
+> [Oktatóanyag: virtuális WAN biztonságossá tétele a Azure Firewall Managerrel](secure-cloud-network.md)

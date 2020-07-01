@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 17c64fd1d0e04130867b484ff7eb3fcdb3f0977d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: bd64faf46f91c3b73d58f7c226748cd0ac083701
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263279"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562146"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Node.js REST API-k használatával
 > [!div class="op_single_selector"]
@@ -280,7 +280,7 @@ class AzureSearchClient {
         // The query key is used for read-only requests and so can be distributed with less risk of abuse.
         this.queryKey = queryKey;
         this.indexName = indexName;
-        this.apiVersion = '2019-05-06';
+        this.apiVersion = '2020-06-30';
     }
 
     // All methods go inside class body here!
@@ -289,7 +289,7 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-Az osztály első feladata, hogy megtudja, hogyan hozhat létre olyan URL-címeket, amelyekhez a különböző kéréseket küldeni szeretné. Ezeket az URL-címeket olyan példány-metódusokkal hozza létre, amelyek az osztály konstruktorának átadott konfigurációs adathalmazt használják. Figyelje meg, hogy az általuk létrehozott URL-cím egy API-verzióra vonatkozik, és rendelkeznie kell egy olyan argumentummal, amely megadja az adott verziót (ebben az alkalmazásban `2019-05-06` ). 
+Az osztály első feladata, hogy megtudja, hogyan hozhat létre olyan URL-címeket, amelyekhez a különböző kéréseket küldeni szeretné. Ezeket az URL-címeket olyan példány-metódusokkal hozza létre, amelyek az osztály konstruktorának átadott konfigurációs adathalmazt használják. Figyelje meg, hogy az általuk létrehozott URL-cím egy API-verzióra vonatkozik, és rendelkeznie kell egy olyan argumentummal, amely megadja az adott verziót (ebben az alkalmazásban `2020-06-30` ). 
 
 Az első ilyen módszer az index URL-címét fogja visszaadni. Adja hozzá a következő metódust az osztály törzsében:
 
@@ -690,7 +690,7 @@ A **AzureSearchClient** osztály a keresési szolgáltatás konfigurációját, 
 
 A függvény általános viselkedése az `run` Azure Cognitive Search index törlése, ha létezik, hozza létre az indexet, adjon hozzá néhány adathoz, és hajtson végre néhány lekérdezést.  
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 

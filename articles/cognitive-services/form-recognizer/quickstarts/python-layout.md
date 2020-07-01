@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 61402a851ddac1cc279c51a59e48bed7949da273
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: c84e36f668a9b5cd7fdb61103300d971fdf6c0fa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85412855"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563086"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: szöveg-és elrendezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -39,7 +39,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 ## <a name="analyze-the-form-layout"></a>Az űrlap elrendezésének elemzése
 
-Az elrendezés elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** API-t. A szkript futtatása előtt végezze el a következő módosításokat:
+Az elrendezés elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API-t. A szkript futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `<Endpoint>` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le a helyére `<path to your form>` a helyi űrlaphoz tartozó dokumentum elérési útját.
@@ -283,4 +283,4 @@ Tekintse meg a következő számla képét és a hozzá tartozó JSON-kimenetet.
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a számla szöveg elrendezésének kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)
+> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)

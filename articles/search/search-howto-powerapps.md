@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: 2a2e292390b2f060bf31d739605d7506203a5619
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901394"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565840"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Oktatóanyag: Cognitive Search index lekérdezése a Power Appsből
 
@@ -43,7 +43,7 @@ A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létr
 
 1. [Jelentkezzen be](http://make.powerapps.com) a Power Apps szolgáltatásba.
 
-1. A bal **oldalon bontsa ki** > az**Egyéni adatösszekötők**elemet.
+1. A bal **oldalon bontsa ki az**  >  **Egyéni adatösszekötők**elemet.
  
     :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Egyéni összekötő menü" border="true":::
 
@@ -57,7 +57,7 @@ A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létr
 
    * Ikon háttérszíne (például #007ee5)
    * Leírás (például "összekötő az Azure Cognitive Search")
-   * A gazdagépen meg kell adnia a keresési szolgáltatás URL-címét (például `<yourservicename>.search.windows.net`).
+   * A gazdagépen meg kell adnia a keresési szolgáltatás URL-címét (például `<yourservicename>.search.windows.net` ).
    * Az alap URL-cím mezőben egyszerűen írja be a "/" értéket
 
     :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Általános tájékoztatási párbeszéd" border="true":::
@@ -74,9 +74,9 @@ A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létr
 
    * Válassza ki a műveletet`GET`
 
-   * Az URL-cím mezőben adja meg a keresési index mintájának`search=*` lekérdezését (az `$select=` összes dokumentum visszaadása lehetővé teszi a mezők kiválasztását). Az API-verziót kötelező megadni. Teljesen meg van adva egy URL-cím, amely a következőhöz hasonló lehet:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06`
+   * Az URL-cím mezőben adja meg a keresési index mintájának lekérdezését (az `search=*` összes dokumentum visszaadása `$select=` lehetővé teszi a mezők kiválasztását). Az API-verziót kötelező megadni. Teljesen meg van adva egy URL-cím, amely a következőhöz hasonló lehet:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
-   * A fejlécek mezőbe `Content-Type`írja be a következőt:. 
+   * A fejlécek mezőbe írja be a következőt: `Content-Type` . 
 
      A **Power apps** a szintaxis használatával Kinyeri a paramétereket a lekérdezésből. Figyelje meg, hogy explicit módon definiálta a keresőmezőt. 
 
@@ -90,15 +90,15 @@ A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létr
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Keresési paraméter metaadatai" border="true":::
 
-1. A *Select*(kiválasztás `HotelName,Description,Address/City` ) beállításnál állítsa be az alapértelmezett értéket **, állítsa a** *false (hamis*) **értékre**, **és állítsa a** *nincs*értékre.  
+1. A *Select (kiválasztás*) beállításnál állítsa be `HotelName,Description,Address/City` az **required** alapértelmezett értéket, állítsa a False **visibility** ( *hamis*) **értékre**, és állítsa a *nincs*értékre.  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Version paraméter metaadatai" border="true":::
 
-1. Az *API-Version*: beállítás `2019-05-06` értékeként **állítsa be az** **alapértelmezett értéket**, állítsa *igaz*értékre, és *belsőként*állítsa be a **láthatóságot** .  
+1. Az *API-Version*: beállítás értékeként állítsa be `2020-06-30` az **alapértelmezett értéket**, állítsa *igaz*értékre, és *belsőként*állítsa be a **láthatóságot** . **required**  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Version paraméter metaadatai" border="true":::
 
-1. A *Content-Type*: értéknél `application/json`állítsa be a következőt:.
+1. A *Content-Type*: értéknél állítsa be a következőt: `application/json` .
 
 1. A módosítások végrehajtása után váltson át a **hencegő szerkesztő** nézetre. A parameters (paraméterek) szakaszban a következő konfigurációnak kell megjelennie:
 
@@ -106,14 +106,14 @@ A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létr
     parameters:
       - {name: search, in: query, required: false, type: string, default: '*'}
       - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
-      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+      - {name: api-version, in: query, required: true, type: string, default: '2020-06-30',
         x-ms-visibility: internal}
       - {name: Content-Type, in: header, required: false, type: string}
     ```
 
 1. Térjen vissza a **3. Kérjen** lépést, és görgessen le a válasz szakaszhoz. Kattintson az **"alapértelmezett válasz hozzáadása"** lehetőségre. Ez azért fontos, mert segíteni fog a Power apps számára a válasz sémájának megismerésében. 
 
-1. Egy minta válasz beillesztése. A minta válaszok rögzítésének egyszerű módja a Azure Portal keresési ablaka. A Search Explorerben ugyanazt a lekérdezést kell megadnia, mint a kérelemhez, de vegye fel **$Top = 2** értéket, hogy csak két dokumentumra korlátozza az `search=*&$select=HotelName,Description,Address/City&$top=2`eredményeket::. 
+1. Egy minta válasz beillesztése. A minta válaszok rögzítésének egyszerű módja a Azure Portal keresési ablaka. A Search Explorerben ugyanazt a lekérdezést kell megadnia, mint a kérelemhez, de vegye fel **$Top = 2** értéket, hogy csak két dokumentumra korlátozza az eredményeket:: `search=*&$select=HotelName,Description,Address/City&$top=2` . 
 
    A Power apps szolgáltatásnak csak néhány eredményre van szüksége a séma észleléséhez.
 
@@ -176,7 +176,7 @@ Ehhez a feladathoz szüksége lesz egy [lekérdezési API-kulcsra](search-securi
 
 Ebben a lépésben hozzon létre egy energiagazdálkodási alkalmazást egy keresőmező, egy keresési gomb és egy megjelenített területen az eredményekhez. A Power app a legutóbb létrehozott egyéni összekötőhöz csatlakozik, hogy lekérje az Azure Searchból származó adatok beolvasását.
 
-1. A bal oldalon bontsa ki az **alkalmazások** > **+ új alkalmazás** > **vászon**elemet.
+1. A bal oldalon bontsa ki az **alkalmazások**  >  **+ új alkalmazás**  >  **vászon**elemet.
 
     :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Vászon alkalmazás létrehozása" border="true":::
 

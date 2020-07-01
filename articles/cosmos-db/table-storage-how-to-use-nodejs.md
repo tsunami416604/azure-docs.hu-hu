@@ -1,5 +1,5 @@
 ---
-title: Az Azure Table Storage vagy a Azure Cosmos DB Table API használata a Node. js-ből
+title: Az Azure Table Storage vagy a Azure Cosmos DB Table API használata a Node.js
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: d04cf082f5dc7ca3ae07b60dc193c66613fa5c4f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 35435bd318596ffd0a46e5d272565358c092bc03
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76771084"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562694"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -41,16 +41,19 @@ Az Azure Storage vagy Azure Cosmos DB használatához szükség van az Azure Sto
 1. Használjon egy parancssori felületet, amilyen például a **PowerShell** (Windows), a **Terminal** (Mac) vagy a **Bash** (Unix), és keresse meg azt a mappát, amelyben létrehozta az alkalmazást.
 2. Írja be az **npm install azure-storage** kifejezést a parancsablakba. A parancs kimenete az alábbihoz fog hasonlítani.
 
-       azure-storage@0.5.0 node_modules\azure-storage
-       +-- extend@1.2.1
-       +-- xmlbuilder@0.4.3
-       +-- mime@1.2.11
-       +-- node-uuid@1.4.3
-       +-- validator@3.22.2
-       +-- underscore@1.4.4
-       +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
-       +-- xml2js@0.2.7 (sax@0.5.2)
-       +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+   ```bash
+    azure-storage@0.5.0 node_modules\azure-storage
+    +-- extend@1.2.1
+    +-- xmlbuilder@0.4.3
+    +-- mime@1.2.11
+    +-- node-uuid@1.4.3
+    +-- validator@3.22.2
+    +-- underscore@1.4.4
+    +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
+    +-- xml2js@0.2.7 (sax@0.5.2)
+    +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+   ```
+
 3. A **node_modules** mappa létrehozásának ellenőrzéséhez manuálisan is futtathatja az **ls** parancsot. A mappában található az **azure-storage** csomag, amely a tárhely eléréséhez szükséges kódtárakat tartalmazza.
 
 ### <a name="import-the-package"></a>A csomag importálása
@@ -68,7 +71,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
-Azure Cosmos DB-kapcsolat hozzáadásához hozzon létre egy **TableService** objektumot, és adja meg fiókjának nevét, elsődleges kulcsát és végpontját. Ezeket az értékeket a Cosmos db-fiókjához tartozó Azure Portalban lévő **Beállítások** > **közötti kapcsolatok sztringből** másolhatja. Például:
+Azure Cosmos DB-kapcsolat hozzáadásához hozzon létre egy **TableService** objektumot, és adja meg fiókjának nevét, elsődleges kulcsát és végpontját. Ezeket az értékeket a **Settings**  >  Cosmos db-fiókjához tartozó Azure Portalban lévő beállítások**közötti kapcsolatok sztringből** másolhatja. Például:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -136,8 +139,6 @@ var task = {
 
 > [!NOTE]
 > Minden rekordhoz tartozik egy **Timestamp** mező is, amelyet az Azure állít be az entitások beszúrásakor vagy frissítésekor.
->
->
 
 Emellett az **entityGenerator** is használható entitások létrehozásához. A következő példa ugyanezt a feladatentitást hozza létre az **entityGenerator** használatával.
 
@@ -173,8 +174,6 @@ Példaválasz:
 > Alapértelmezés szerint az **insertEntity** nem adja vissza a beszúrt entitást a `response` információinak részeként. Ha egyéb műveleteket szeretne végrehajtani ezen az entitáson vagy gyorsítótárazni kívánja az információkat, érdemes lehet visszakérni a `result` részeként. Ezt az **echoContent** engedélyezésével érheti el:
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
->
->
 
 ## <a name="update-an-entity"></a>Entitás frissítése
 Több metódus is rendelkezésre áll a meglévő entitások frissítéséhez:
@@ -365,7 +364,7 @@ dc.table.queryEntities(tableName,
 
 Ha megvizsgálja a `continuationToken` objektumot, olyan tulajdonságokat fog találni, mint például a `nextPartitionKey`, `nextRowKey` és `targetLocation`, amelyeket az eredmények közti iterációhoz használhat.
 
-A és `continuationToken` a együtt `top` is használható az oldalméret beállításához. 
+A és a együtt is használható `top` `continuationToken` az oldalméret beállításához. 
 
 ## <a name="work-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok használata
 A közös hozzáférésű jogosultságkódokkal (Shared access signatures, SAS) biztonságos és részletes hozzáférést biztosíthat a táblákhoz anélkül, hogy megadná Storage-fiókjának nevét vagy kulcsait. Az SAS-t gyakran használják az adatokhoz való korlátozott hozzáférés biztosítására, például arra, hogy a mobilalkalmazások hozzáférhessenek a lekérdezésrekordokhoz.

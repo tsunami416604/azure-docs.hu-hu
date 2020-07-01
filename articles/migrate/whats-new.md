@@ -4,12 +4,12 @@ description: Ismerkedjen meg a Azure Migrate szolgáltatás új és legújabb fr
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: be617590ce0c96c3ec8ea705732534c8395ac0ce
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052318"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556930"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
@@ -17,6 +17,7 @@ A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszo
 
 ## <a name="update-june-2020"></a>Frissítés (2020. június)
 
+- A helyszíni VMware virtuális gépek [Azure VMware-megoldásba (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) való áttelepítésének felmérése mostantól támogatott. [További információ](how-to-create-azure-vmware-solution-assessment.md)
 - Több hitelesítő adat támogatása a készüléken a fizikai kiszolgálók felderítéséhez.
 - Támogatás, amely lehetővé teszi az Azure-bejelentkezést a készülékről olyan bérlőre, ahol a bérlői korlátozás konfigurálva van.
 - Az alább felsorolt új Azure Migrate Appliance-verziók.
@@ -46,7 +47,7 @@ A Azure Migrate a Azure Government üzemelő példányait támogatja.
 
 - A VMware virtuális gépeket, a Hyper-V virtuális gépeket és a fizikai kiszolgálókat is felderítheti és elemezheti.
 - VMware virtuális gépeket, Hyper-V virtuális gépeket és fizikai kiszolgálókat telepíthet át az Azure-ba.
-- A VMware-áttelepítés esetében ügynök nélküli vagy ügynök alapú áttelepítést használhat. [További információ](server-migrate-overview.md).
+- A VMware-áttelepítés esetében ügynök nélküli vagy ügynök alapú áttelepítést használhat. [További információk](server-migrate-overview.md).
 - [Tekintse át](migrate-support-matrix.md#supported-geographies-azure-government) a Azure Government támogatott földrajzi területeit és régióit.
 - Azure Government nem támogatja az [ügynök-alapú függőségek elemzését](concepts-dependency-visualization.md#agent-based-analysis) .
 - Az előzetes verzióban elérhető funkciók a Azure Government, különösen az [ügynök nélküli függőségek elemzése](concepts-dependency-visualization.md#agentless-analysis)és az [alkalmazások felderítése](how-to-discover-applications.md)esetén támogatottak.

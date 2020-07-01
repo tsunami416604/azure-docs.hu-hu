@@ -3,16 +3,16 @@ title: A vállalati integrációval kapcsolatos feladatok automatizálása
 description: Ismerje meg, hogyan automatizálhat olyan munkafolyamatokat, amelyek az alkalmazásokat, az információkat, a szolgáltatásokat és a rendszereket integrálják minimális kóddal a vállalati integrációhoz Azure Logic Apps használatával.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 789ddf39e4493d11d63a07f2341ab36ac161f32d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 08b3863ac9a03cda2659cf4934b781eeb9330e17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659594"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563807"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Áttekintés – mi az Azure Logic Apps?
 
@@ -32,7 +32,7 @@ Ha Azure Logic Apps segítségével szeretne nagyvállalati integrációs megold
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-## <a name="how-does-logic-apps-work"></a>A Logic Apps működése 
+## <a name="how-do-logic-apps-work"></a>Hogyan működnek a Logic apps? 
 
 Minden logikai alkalmazás munkafolyamata egy eseményindítóval indul, amely akkor aktiválódik, ha egy adott esemény bekövetkezik, vagy egy adott feltételnek megfelelő új adatok válnak elérhetővé. A Logic Apps összekötői által biztosított számos eseményindító tartalmaz alapszintű ütemezési funkciókat, így beállíthatja, hogy a számítási feladatok milyen gyakran fussanak. Összetettebb ütemezések vagy speciális ismétlődések esetén bármelyik munkafolyamat első lépéseként használhat ismétlődési eseményindítót. További információ a [Schedule-alapú munkafolyamatokról](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
@@ -42,7 +42,7 @@ A Logic Apps-motor a trigger minden elindulásakor létrehoz egy logikaialkalmaz
 
 Logikai alkalmazásait vizuálisan hozhatja létre a Logic Apps Designer segítségével, amely a böngészőn keresztül az Azure Portalon, illetve a Visual Studióban érhető el. További egyéni logikai alkalmazásokért létrehozhat vagy szerkeszthet JavaScript Object Notation (JSON) logikaialkalmazás-definíciókat a „kódnézet” szerkesztő alkalmazásával. Bizonyos feladatokat Azure PowerShell-parancsokkal és az Azure Resource Manager-sablonokkal is elvégezhet. A logikai alkalmazások az Azure felhőjében üzemelnek és futnak. Részletesebb bevezetésért tekintse meg a következő videót: [Az Azure vállalati integrációs szolgáltatások használata felhőalkalmazások futtatásához ipari méretekben](https://channel9.msdn.com/Events/Connect/2017/T119/)
 
-## <a name="why-use-logic-apps"></a>Miért érdemes a Logic Apps-et használni?
+## <a name="why-use-logic-apps"></a>Miért érdemes a Logic Apps szolgáltatást használni?
 
 A legtöbb vállalat a digitalizáció felé halad, a Logic Apps pedig segít egyszerűbben és gyorsabban kapcsolatot teremteni a régebbi és a modern rendszerek között a Microsoft által felügyelt összekötőkként biztosított beépített API-k segítségével. Így Ön az alkalmazások üzleti logikáira és funkcióira koncentrálhat. Nem kell az alkalmazások létrehozásával, üzemeltetésével, méretezésével, felügyeletével, karbantartásával és monitorozásával foglalkoznia. Ezeket a Logic Apps elvégzi Ön helyett. Emellett a használatalapú [díjszabás](../logic-apps/logic-apps-pricing.md) keretében csak a valóban használt funkciókért kell fizetni.
 
@@ -150,7 +150,7 @@ A Logic Apps a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike. 
 
 Ha már van Azure-előfizetése, próbálja ki ezt a rövid útmutatót [az első logikai alkalmazása létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md), amely egy RSS-hírfolyamon keresztül monitoroz egy adott weboldalt, és az új tartalmak megjelenésekor e-mailes értesítést küld.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Forgalom ellenőrzése ütemezésalapú logikai alkalmazás használatával](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 * További információk [az Azure kiszolgáló nélküli megoldásairól](../logic-apps/logic-apps-serverless-overview.md)

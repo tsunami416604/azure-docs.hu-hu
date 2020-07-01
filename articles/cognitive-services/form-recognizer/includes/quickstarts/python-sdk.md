@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: c150d60b05ccd306f055c60d180ee9421b356feb
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 811daf9b1bf5bf26419385517a67cd22cb8346e6
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242124"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85570165"
 ---
 [Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Csomag (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
@@ -58,7 +58,7 @@ key = os.environ["FORM_RECOGNIZER_KEY"]
 A Python telepítése után az ügyféloldali kódtár a következővel telepíthető:
 
 ```console
-pip install azure_ai_formrecognizer
+pip install azure-ai-formrecognizer
 ```
 
 <!-- 
@@ -395,7 +395,7 @@ Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban találhat�
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

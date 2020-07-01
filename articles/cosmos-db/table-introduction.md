@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 91a6ae308faf31b3d3eb0c9f287dd5bd791f628e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695249"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557535"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
 
@@ -32,7 +32,7 @@ Ezek az Azure Table Storage számára írt alkalmazások kódmódosítás nélk�
 ## <a name="table-offerings"></a>Table ajánlatok
 Ha jelenleg az Azure Table Storage szolgáltatást használja, az alábbi előnyökben részesülhet az Azure Cosmos DB Table API-ra való áttéréskor:
 
-| | Azure Table Storage | Azure Cosmos DB Table API |
+| Szolgáltatás | Azure Table Storage | Azure Cosmos DB Table API |
 | --- | --- | --- |
 | Késés | Gyors, de nincs felső korlátja a késésnek. | Az olvasások és írások egyszámjegyű ezredmásodperces késése <10 ms-os késéssel, az olvasási és írási műveletek esetében a esetek 99% percentilis esetében, bármilyen méretben, bárhol a világon. |
 | Teljesítmény | Változó teljesítménymodell. A táblák skálázhatósági korlátja másodpercenként 20 000 művelet. | Hatékonyan skálázható a [táblánként dedikált és fenntartott átviteli sebességgel](request-units.md), amelynek rendelkezésre állását SLA-k szavatolják. A fiókokban nincs korlátozva az átviteli sebesség felső határa, és a szolgáltatás táblánként és másodpercenként legalább 10 millió műveletet támogat. |

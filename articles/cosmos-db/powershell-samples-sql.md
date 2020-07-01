@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 82d709567e75540a865758162ac87f55dfa84bea
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: fc4ec916e71f2fcfd3b411420879d42b2fa90f18
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126093"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563841"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Azure PowerShell minták a Azure Cosmos DB-SQL (Core) API-hoz
 
@@ -22,7 +22,7 @@ További Cosmos DB PowerShell-minták az SQL (Core) API-hoz és a dokumentáció
 > [!NOTE]
 > A minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. Ellenőrizze, hogy rendszeresen frissülnek-e a frissítések `Az.CosmosDB` .
 
-| | |
+|Tevékenység | Leírás |
 |---|---|
 |[Fiók, adatbázis és tároló létrehozása](scripts/powershell/sql/ps-sql-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hozzon létre egy Azure Cosmos DB fiókot, adatbázist és tárolót. |
 |[Tároló létrehozása nagyméretű partíciós kulccsal](scripts/powershell/sql/ps-sql-container-create-large-partition-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hozzon létre egy tárolót egy nagyméretű partíciós kulccsal. |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/29/2020
 ms.author: swmachan
-ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995785"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561468"
 ---
 # <a name="request-limits-for-translator"></a>Fordítói kérelmek korlátai
 
@@ -31,8 +31,8 @@ A következő táblázat a fordító egyes műveleteinek tömb elemeit és karak
 |:----|:----|:----|:----|
 | Fordítás | 5000    | 100    | 5000 |
 | Átírás | 5000    | 10    | 5000 |
-| Észlelés | 10,000 |    100 |    50 000 |
-| BreakSentence | 10,000    | 100 |    50 000 |
+| Észlelés | 10,000 |    100 |    50,000 |
+| BreakSentence | 10,000    | 100 |    50,000 |
 | Keresés a szótárban| 100 |    10    | 1,000 |
 | Szótár – példák | 100 szöveg és 100 fordításhoz (200 összesen)| 10|    2000 |
 
@@ -66,14 +66,13 @@ A [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator
 
 | Nyelv | Code | Karakteres korlát |
 |----------|------|-----------------|
-| Kínai | zh | 132 |
-| Német | de | 290 |
-| Olasz | Ez | 280 |
-| Japán | Japán | 150 |
-| Portugál | pt | 290 |
-| Spanyol | Igen | 280 |
-| Olasz | Ez | 280 |
-| Thai | adik | 258 |
+| Kínai | zh | 166 |
+| Német | de | 800 |
+| Olasz | Ez | 800 |
+| Japán | Japán | 166 |
+| Portugál | pt | 800 |
+| Spanyol | Igen | 800 |
+| Thai | adik | 180 |
 
 > [!NOTE]
 > Ez a korlát nem vonatkozik a fordításokra.

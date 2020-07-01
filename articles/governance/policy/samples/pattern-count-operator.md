@@ -1,18 +1,18 @@
 ---
 title: 'Minta: egy házirend-definícióban szereplő Count operátor'
 description: Ez a Azure Policy minta azt szemlélteti, hogyan használható a Count operátor egy házirend-definícióban.
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: 88c2d1083a92732ac56ca4d6da7087cc4220d9a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 807890b7fb08d790deff6e0be9e08ad91c4ec44d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172946"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565743"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy minta: a Count operátor
 
-A [Count](../concepts/definition-structure.md#count) operátor kiértékeli az \[ \* \] alias tagjait.
+A [Count](../concepts/definition-structure.md#count) operátor kiértékeli az alias tagjait \[ \* \] .
 
 ## <a name="sample-policy-definition"></a>Példa a házirend-definícióra
 
@@ -24,7 +24,7 @@ Ez a házirend-definíció [naplózza](../concepts/effects.md#audit) a bejövő 
 
 A **Count** operátor alapvető összetevői a _mezők_, _ahol_és a feltételt. Mindegyik az alábbi kódrészletben van kiemelve.
 
-- a _mező_ a tagok kiértékeléséhez szükséges [aliasok](../concepts/definition-structure.md#aliases) számát mutatja. Itt a hálózati biztonsági csoport **\[ \* securityRules** alias _tömbjét_ tekintjük meg.
+- a _mező_ a tagok kiértékeléséhez szükséges [aliasok](../concepts/definition-structure.md#aliases) számát mutatja. Itt a hálózati biztonsági csoport ** \[ \* \] securityRules** alias _tömbjét_ tekintjük meg.
 - _ahol_ a a szabályzat nyelvét használja annak meghatározásához, hogy mely _tömb_ tagjai felelnek meg a feltételeknek. Ebben a példában egy **allOf** logikai operátor az alias _tömb_ tulajdonságainak három különböző feltétel-értékelését csoportosítja: _irány_, _hozzáférés_és _destinationPortRange_.
 - Ebben a példában a Count feltétel **nagyobb**. A Count értéke TRUE (igaz), ha az alias _tömb_ egy vagy több tagja megegyezik a _Where_ záradékkal.
 

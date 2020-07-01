@@ -1,24 +1,22 @@
 ---
-title: Azure Firewall Manager előzetes verziójának üzembe helyezése – áttekintés
-description: A Azure Firewall Manager előzetes verziójához szükséges magas szintű telepítési lépések ismertetése
+title: Azure Firewall Manager üzembe helyezésének áttekintése
+description: A Azure Firewall Managerhez szükséges magas szintű üzembe helyezési lépések ismertetése
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77443125"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565794"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure Firewall Manager előzetes verziójának üzembe helyezése – áttekintés
+# <a name="azure-firewall-manager-deployment-overview"></a>Azure Firewall Manager üzembe helyezésének áttekintése
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Azure Firewall Manager előzetes verzióját több módon is üzembe helyezheti, de a következő általános folyamat ajánlott.
+Azure Firewall Manager üzembe helyezésének több módja is van, de a következő általános folyamat ajánlott.
 
 ## <a name="general-deployment-process"></a>Az üzembe helyezés általános folyamata
 
@@ -70,4 +68,4 @@ Azure Firewall Manager előzetes verzióját több módon is üzembe helyezheti,
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Manager előzetes verziójával a Azure Portal használatával](secure-cloud-network.md)
+- [Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Managerrel a Azure Portal használatával](secure-cloud-network.md)

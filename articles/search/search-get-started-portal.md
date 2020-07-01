@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 2829f451b90a20c5ad399796b0485c6e533bbb23
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488766"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562288"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Azure Portal
 > [!div class="op_single_selector"]
@@ -150,7 +150,7 @@ A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/
 
    ![Keresési ablak parancs](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Az **index** legördülő menüben válassza a *Hotels-Sample-index*lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2019-05-06).
+2. Az **index** legördülő menüben válassza a *Hotels-Sample-index*lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2020-06-30).
 
    ![Index és API-parancsok](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -262,7 +262,7 @@ Az Azure Portal **Keresési ablakával** megismert egyes alapvető lekérdezési
 
 Azt is megtanulta, hogyan találhat indexeket, indexelő fájlokat és adatforrásokat a portálon. Később bármilyen új adatforrás definícióit és mezőgyűjteményeit gyorsan és egyszerűen ellenőrizheti a portálon.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
@@ -270,7 +270,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy portál varázsló segítségével előkészítheti a böngészőben futó, használatra kész webalkalmazást. Ezt a varázslót kipróbálhatja az imént létrehozott kis indexen, vagy használhatja a beépített mintaadatok egyikét egy gazdagabb keresési élményhez.
 

@@ -1,27 +1,27 @@
 ---
-title: 'Gyors útmutató: virtuális központ biztonságossá tétele a Azure Firewall Manager előzetes verziójával – Resource Manager-sablon'
-description: Megtudhatja, hogyan védheti meg a virtuális hubot a Azure Firewall Manager előzetes verziójának használatával.
+title: 'Gyors útmutató: virtuális központ biztonságossá tétele a Azure Firewall Managerrel – Resource Manager-sablon'
+description: Ismerje meg, hogyan védheti a virtuális hubot a Azure Firewall Manager használatával.
 services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167196"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563687"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Rövid útmutató: a virtuális központ biztonságossá tétele a Azure Firewall Manager – Resource Manager-sablon használatával
 
-Ebben a rövid útmutatóban egy Resource Manager-sablonnal biztosíthatja a virtuális központ védelmét Azure Firewall Manager előzetes verziójának használatával. Az üzembe helyezett tűzfalon van egy alkalmazás-szabály, amely lehetővé teszi a kapcsolódást `www.microsoft.com` . A tűzfal teszteléséhez két Windows Server 2019 virtuális gép van telepítve. Az egyik ugrási kiszolgáló a munkaterhelés-kiszolgálóhoz való kapcsolódásra szolgál. A munkaterhelés-kiszolgálóról csak a következőhöz csatlakozhat: `www.microsoft.com` .
+Ebben a rövid útmutatóban egy Resource Manager-sablonnal biztosíthatja a virtuális központ védelmét a Azure Firewall Manager használatával. Az üzembe helyezett tűzfalon van egy alkalmazás-szabály, amely lehetővé teszi a kapcsolódást `www.microsoft.com` . A tűzfal teszteléséhez két Windows Server 2019 virtuális gép van telepítve. Az egyik ugrási kiszolgáló a munkaterhelés-kiszolgálóhoz való kapcsolódásra szolgál. A munkaterhelés-kiszolgálóról csak a következőhöz csatlakozhat: `www.microsoft.com` .
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-A Azure Firewall Manager előzetes verziójával kapcsolatos további információkért lásd: [Mi az a Azure Firewall Manager Preview?](overview.md).
+A Azure Firewall Managerrel kapcsolatos további információkért lásd: [Mi az a Azure Firewall Manager?](overview.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,11 +29,11 @@ A Azure Firewall Manager előzetes verziójával kapcsolatos további informáci
 
 ## <a name="create-a-secured-virtual-hub"></a>Biztonságos virtuális központ létrehozása
 
-Ez a sablon egy biztonságos virtuális hubot hoz létre Azure Firewall Manager előzetes verziójának használatával, valamint a forgatókönyv támogatásához szükséges erőforrásokat.
+Ez a sablon egy biztonságos virtuális hubot hoz létre a Azure Firewall Manager használatával, valamint a forgatókönyv támogatásához szükséges erőforrásokat.
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/fwm-docs-qs/) származik.
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
@@ -88,7 +88,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 * Az egyetlen engedélyezett FQDN-t el tudja érni, de másokat nem.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a tűzfallal létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a tűzfalat és az összes kapcsolódó erőforrást.
 
@@ -98,7 +98,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a megbízható biztonsági partnerekről](trusted-security-partners.md)
+> [További tudnivalók a biztonsági partner-szolgáltatókról](trusted-security-partners.md)

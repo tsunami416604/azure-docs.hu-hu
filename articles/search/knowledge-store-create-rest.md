@@ -1,24 +1,21 @@
 ---
-title: Knowledge Store (előzetes verzió) létrehozása REST használatával
+title: Knowledge Store létrehozása REST használatával
 titleSuffix: Azure Cognitive Search
-description: Az REST API és a Poster használatával hozzon létre egy Azure Cognitive Search Knowledge Store-t, amely egy mesterséges intelligencia-bővítési folyamatból származó dúsítást tart fenn. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+description: Az REST API és a Poster használatával hozzon létre egy Azure Cognitive Search Knowledge Store-t, amely egy mesterséges intelligencia-bővítési folyamatból származó dúsítást tart fenn.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: f030fc81ab33ecd0531040662346e1ed44f5d17c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: f496413cf1a5175cee65bce46a2f7f6260d5451d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263024"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565229"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Knowledge Store létrehozása REST és Poster használatával
-
-> [!IMPORTANT] 
-> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
 A Knowledge Store egy Azure Cognitive Search-bővítési folyamatból származó kimenetet tartalmaz későbbi elemzésekhez vagy más alsóbb rétegbeli feldolgozáshoz. A mesterséges intelligenciával rendelkező folyamatok képfájlokat vagy strukturálatlan szövegfájlokat fogadnak el, az Azure Cognitive Search használatával indexelik őket, és a mesterséges intelligenciát Cognitive Services (például a képelemzést és a természetes nyelvi feldolgozást) használják, majd az eredményeket az Azure Storage-ban tárolt tudásbázisba mentik. A Azure Portalban Power BI vagy Storage Explorer eszközökkel is elvégezheti a Tudásbázis megismerését.
 
@@ -81,7 +78,7 @@ Az érték beszerzéséhez `admin-key` nyissa meg az Azure Cognitive Search szol
 | Változó    | Honnan szerezhető be? |
 |-------------|-----------------|
 | `admin-key` | Az Azure Cognitive Search szolgáltatás **Keys (kulcsok** ) lapján.  |
-| `api-version` | **2019-05-06 – előzetes**verzióként érhető el. |
+| `api-version` | **2020-06-30**-ig marad. |
 | `datasource-name` | Távozás a **Hotel-Reviews-DS**. | 
 | `indexer-name` | Távozás a **Hotel-Reviews-IXR**. | 
 | `index-name` | Hagyja a **Hotel-Reviews-IX**. | 
