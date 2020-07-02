@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: c2855239db7395e5abf8e507678e9e9831147f67
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 65bf1b0d0b2168d8469c3e0233212eea6000d1ad
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564673"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800783"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Mi az az Azure Data Lake Analytics?
 
@@ -42,9 +42,9 @@ A Data Lake Analytics egy költséghatékony megoldás big data-számítási fel
 
 ## <a name="works-with-all-your-azure-data"></a>Az összes Azure Data-szolgáltatással együttműködik
   
-A Data Lake Analytics a legmagasabb teljesítmény-, átviteli teljesítmény-és párhuzamos Azure Data Lake Storage működik, és az Azure Storage-Blobokkal, Azure SQL Databaseekkel, Azure Warehouse-val működik együtt.
+A Azure Data Lake Storage Data Lake Analytics a legmagasabb teljesítmény-, átviteli sebesség-és párhuzamos, valamint az Azure Storage-Blobok, Azure SQL Database, Azure szinapszis Analytics (korábban Azure SQL Data Warehouse) használatával működik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedés a Data Lake Analytics [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [CLI](data-lake-analytics-get-started-cli.md) használatával
 * Azure Data Lake Analytics kezelése az [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)  |  [Azure .net SDK](data-lake-analytics-manage-use-dotnet-sdk.md) -val  |  [Node.js](data-lake-analytics-manage-use-nodejs.md)

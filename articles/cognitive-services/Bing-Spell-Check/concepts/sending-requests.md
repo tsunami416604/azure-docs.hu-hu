@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 893317b8f46415b1df540d67ebf28b65c5ba6d32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f79e3d8d8d32bb577e8c6c6f6f6c247de13c58a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68883451"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801240"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Kérelmek küldése a Bing Spell Check API-nak
 
@@ -46,15 +46,18 @@ A probléma megoldásához a Bing Spell Check API kérelmet CORS-proxyn kereszt�
 
 Egyszerűen telepíthet egy CORS-proxyt, amely lehetővé teszi, hogy az [oktatóanyag-alkalmazás](../tutorials/spellcheck.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Ezután módosítsa a HTML-fájlban lévő Bing Spell Check API végpontot a következőre:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
+Ezután módosítsa a HTML-fájlban lévő Bing Spell Check API végpontot a következőre: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/`
 
 Végül indítsa el a CORS-proxyt a következő paranccsal:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A keresési eredmények alatt a kibontható HTTP-fejlécek szakaszban láthatja a `X-MSEdge-ClientID` fejlécet (többek között), és ellenőrizheti, hogy minden kérelem esetében azonos-e.
 
@@ -121,7 +124,7 @@ BingAPIs-Market: en-US
 }  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

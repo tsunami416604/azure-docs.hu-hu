@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72757193"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800148"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Mérsékelt és egyéni képlista az API-konzolon
 
@@ -77,15 +77,17 @@ Miután módosította a Képlista módosításait, frissítenie kell az indexét
 
 6. A kulcs-érték párok helyőrzői segítségével további leíró metaadatokat rendelhet a listához.
 
-       {
-          "Name": "MyExclusionList",
-          "Description": "MyListDescription",
-          "Metadata": 
-          {
+    ```json
+    {
+        "Name": "MyExclusionList",
+        "Description": "MyListDescription",
+        "Metadata": 
+        {
             "Category": "Competitors",
             "Type": "Exclude"
-          }
-       }
+        }
+    }
+    ```
 
    Adja hozzá a lista metaadatait kulcs-érték párokként, nem pedig a tényleges képeket.
  
@@ -164,6 +166,6 @@ Szerkesztheti a lista nevét és leírását, és metaadatokat is hozzáadhat.
    ![Képlista – a details konzolra vonatkozó kérelem törzsének módosítása](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazással való integrációhoz használja a kódban szereplő REST API, vagy Kezdje a [képet a .net](image-lists-quickstart-dotnet.md) rövid útmutatóval.

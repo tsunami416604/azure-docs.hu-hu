@@ -208,7 +208,7 @@ $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType "SystemAssigned"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt identitások az Azure-erőforrásokhoz – áttekintés](overview.md)
 - A teljes körű Azure-beli virtuális gépek létrehozásához a következő témakörben talál további információt:

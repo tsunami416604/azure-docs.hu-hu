@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: dd6228ea50968c98c5ba151b8af9a0c2fa829582
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fe76e32bfd9b1734f3c84a400f897b7af7e3168b
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684066"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800995"
 ---
 # <a name="learn-image-moderation-concepts"></a>A képek moderálásával kapcsolatos fogalmak megismerése
 
@@ -25,14 +25,16 @@ A felnőtteknek és a zamatos tartalmaknak a Content Moderator géppel támogato
 
 A **kiértékelési** művelet 0 és 1 közötti megbízhatósági pontszámot ad vissza. Az érték igaz vagy HAMIS logikai értéket ad vissza. Ezek az értékek azt jelzik, hogy a rendszerkép tartalmaz-e potenciális felnőtt vagy zamatos tartalmat. Ha az API-t a rendszerképpel (fájl vagy URL) hívja meg, a visszaadott válasz a következő információkat tartalmazza:
 
-    "ImageModeration": {
-      .............
-      "adultClassificationScore": 0.019196987152099609,
-      "isImageAdultClassified": false,
-      "racyClassificationScore": 0.032390203326940536,
-      "isImageRacyClassified": false,
-      ............
-      ],
+```json
+"ImageModeration": {
+    .............
+    "adultClassificationScore": 0.019196987152099609,
+    "isImageAdultClassified": false,
+    "racyClassificationScore": 0.032390203326940536,
+    "isImageRacyClassified": false,
+    ............
+    ],
+```
 
 > [!NOTE]
 > 
@@ -51,18 +53,19 @@ A válasz a következő információkat tartalmazza:
 
 Példa kivonatra:
 
-    "TextDetection": {
-      "status": {
+```json
+"TextDetection": {
+    "status": {
         "code": 3000.0,
         "description": "OK",
         "exception": null
-      },
-      .........
-      "language": "eng",
-      "text": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n",
-      "candidates": []
     },
-
+    .........
+    "language": "eng",
+    "text": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n",
+    "candidates": []
+},
+```
 
 ## <a name="detecting-faces"></a>Arcfelismerés
 
@@ -75,29 +78,30 @@ A válasz a következő információkat tartalmazza:
 
 Példa kivonatra:
 
-
-    "FaceDetection": {
-       ......
-      "result": true,
-      "count": 2,
-      "advancedInfo": [
-      .....
-      ],
-      "faces": [
+```json
+"FaceDetection": {
+    ......
+    "result": true,
+    "count": 2,
+    "advancedInfo": [
+        .....
+    ],
+    "faces": [
         {
-          "bottom": 598,
-          "left": 44,
-          "right": 268,
-          "top": 374
+            "bottom": 598,
+            "left": 44,
+            "right": 268,
+            "top": 374
         },
         {
-          "bottom": 620,
-          "left": 308,
-          "right": 532,
-          "top": 396
+            "bottom": 620,
+            "left": 308,
+            "right": 532,
+            "top": 396
         }
-      ]
-    }
+    ]
+}
+```
 
 ## <a name="creating-and-managing-custom-lists"></a>Egyéni listát hozhat létre és kezelhet
 
@@ -124,7 +128,8 @@ Ha egyezést talál, a művelet visszaadja az egyező rendszerkép azonosítój�
 
 Példa kivonatra:
 
-    {
+```json
+{
     ..............,
     "IsMatch": true,
     "Matches": [
@@ -137,7 +142,8 @@ Példa kivonatra:
         }
     ],
     ....
-    }
+}
+```
 
 ## <a name="review-tool"></a>Felülvizsgálati eszköz
 
@@ -145,6 +151,6 @@ Példa kivonatra:
 
 ![Képek felülvizsgálata emberi moderátorok által](images/moderation-reviews-quickstart-dotnet.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tesztelje a [rendszerkép moderálási API-konzolját](try-image-api.md) , és használja a REST API-kód mintáit. Tekintse meg az [értékeléseket, a munkafolyamatokat és a feladatokat](./review-api.md) , amelyekből megtudhatja, hogyan állíthatja be az emberi felülvizsgálatokat.

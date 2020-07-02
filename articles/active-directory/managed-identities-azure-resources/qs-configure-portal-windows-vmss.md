@@ -102,7 +102,7 @@ A Azure Portal jelenleg nem támogatja a felhasználó által hozzárendelt fel�
    ![Felhasználó által hozzárendelt identitás eltávolítása egy VMSS](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vmss-screenshot.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure Portal használatával adjon meg egy Azure-beli virtuálisgép-méretezési csoport felügyelt identitás [-hozzáférését egy másik Azure-erőforráshoz](howto-assign-access-portal.md).
 

@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: eeaab547a1f0648d2e7a59fda24454d7bfe1fadf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8948850734b310d70e7e457f075d13ade0c55619
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84754683"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805655"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Hitelesítés az Azure Active Directoryval
 
@@ -86,6 +86,10 @@ Ebben a példában egy jelszót használunk az egyszerű szolgáltatás hiteles�
    ```
 
 2. Token beszerzése:
+   > [!NOTE]
+   > Ha Azure Cloud Shell használ, az `SecureClientSecret` osztály nem érhető el. 
+
+   #### <a name="poweershell"></a>[PoweerShell](#tab/powershell)
    ```powershell-interactive
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
    $secureSecretObject = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.SecureClientSecret" -ArgumentList $SecureStringPassword   
@@ -93,6 +97,17 @@ Ebben a példában egy jelszót használunk az egyszerű szolgáltatás hiteles�
    $token=$authContext.AcquireTokenAsync("https://cognitiveservices.azure.com/", $clientCredential).Result
    $token
    ```
+   
+   #### <a name="azure-cloud-shell"></a>[Azure Cloud Shell](#tab/azure-cloud-shell)
+   ```Azure Cloud Shell
+   $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
+   $clientCredential = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential" -ArgumentList $app.ApplicationId, <YOUR_PASSWORD>
+   $token=$authContext.AcquireTokenAsync("https://cognitiveservices.azure.com/", $clientCredential).Result
+   $token
+   ``` 
+
+   ---
+
 3. Hívja meg a Computer Vision API:
    ```powershell-interactive
    $url = $account.Endpoint+"vision/v1.0/models"
@@ -110,10 +125,10 @@ Cognitive Services támogatja Azure Active Directory (Azure AD) hitelesítését
 
 Mielőtt felügyelt identitásokat használ az Azure-erőforrásokhoz a virtuális gépről Cognitive Services erőforrásokhoz való hozzáférés engedélyezéséhez, engedélyeznie kell az Azure-erőforrások felügyelt identitásait a virtuális gépen. Az Azure-erőforrások felügyelt identitásának engedélyezéséről a következő témakörben tájékozódhat:
 
-- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure Portalra](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
 - [Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-- [Azure Resource Manager-sablon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+- [Azure Resource Manager sablon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
 - [Azure Resource Manager ügyféloldali kódtárak](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
 
 A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).

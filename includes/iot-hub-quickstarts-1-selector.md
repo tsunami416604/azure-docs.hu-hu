@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 654b905088d8623ad49a066cec572ee35fd64131
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 29a923b3e3abbcff2200f9e0f8c9b6b342d9bbf3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73846655"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801189"
 ---
 > [!div class="op_single_selector"]
 > * [Parancssori felület](../articles/iot-hub/quickstart-send-telemetry-cli.md)
@@ -24,3 +24,4 @@ ms.locfileid: "73846655"
 > * [Python](../articles/iot-hub/quickstart-send-telemetry-python.md)
 > * [Android](../articles/iot-hub/quickstart-send-telemetry-android.md)
 > * [iOS](../articles/iot-hub/quickstart-send-telemetry-ios.md)
+> * [Xamarin Forms](../articles/iot-hub/quickstart-send-telemetry-xamarinforms.md)

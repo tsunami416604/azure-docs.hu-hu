@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561032"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800091"
 ---
 # <a name="learn-text-moderation-concepts"></a>A szöveg moderálásával kapcsolatos fogalmak megismerése
 
@@ -36,13 +36,15 @@ A szolgáltatástól érkező válaszban az alábbi információk szerepelnek:
 
 Ha az API bármely [támogatott nyelven](Text-Moderation-API-Languages.md)észleli a profán kifejezéseket, a válasz tartalmazza ezeket a kifejezéseket. A válasz `Index` az eredeti szöveg helyét () is tartalmazza. A `ListId` következő példában szereplő JSON az [Egyéni kifejezési listában](try-terms-list-api.md) található kifejezésekre vonatkozik, ha vannak ilyenek.
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 0,
         "Term": "crap"
     }
+```
 
 > [!NOTE]
 > A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
@@ -55,18 +57,20 @@ Content Moderator géppel támogatott **szöveg besorolási funkciója** **csak 
 
 A JSON-kivonat következő kivonata egy példa kimenetet mutat be:
 
-    "Classification": {
-        "ReviewRecommended": true,
-        "Category1": {
-              "Score": 1.5113095059859916E-06
-            },
-        "Category2": {
-              "Score": 0.12747249007225037
-            },
-        "Category3": {
-              "Score": 0.98799997568130493
-        }
+```json
+"Classification": {
+    "ReviewRecommended": true,
+    "Category1": {
+        "Score": 1.5113095059859916E-06
+    },
+    "Category2": {
+        "Score": 0.12747249007225037
+    },
+    "Category3": {
+        "Score": 0.98799997568130493
     }
+}
+```
 
 ### <a name="explanation"></a>Magyarázat
 
@@ -127,11 +131,11 @@ A következő példa egy példaként szolgáló választ mutat be:
 
 Tegyük fel, hogy a bemeneti szöveg (a "lzay" és a "f0x" szándékos):
 
-    The qu!ck brown f0x jumps over the lzay dog.
+> A Qu! CK Brown f0x felugrik a lzay-kutyára.
 
 Ha automatikus javítást kér, a válasz tartalmazza a szöveg javított verzióját:
 
-    The quick brown fox jumps over the lazy dog.
+> A gyors barna róka a lusta kutya fölé ugrik.
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>A kifejezések egyéni listájainak létrehozása és kezelése
 
@@ -143,13 +147,15 @@ Habár a kifejezések alapértelmezett globális listája a legtöbb esetben rem
 
 A következő példa a megfelelő lista AZONOSÍTÓját mutatja be:
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 231.
         "Term": "crap"
     }
+```
 
 A Content Moderator egy [kifejezés-lista API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) -t biztosít az egyéni kifejezések listáinak kezelésére szolgáló műveletekkel. Kezdje a [kifejezést a lists API-konzolra](try-terms-list-api.md) , és használja a REST API kódot. Tekintse meg a [.net](term-lists-quickstart-dotnet.md) gyors útmutató listáját is, ha ismeri a Visual studiót és a C#-ot.
 

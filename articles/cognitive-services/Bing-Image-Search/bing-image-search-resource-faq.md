@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3114c19ecff1a8ae70012592592078302d4a6222
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68881694"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800023"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Gyakran ismételt kérdések (GYIK) a Bing Image Search API
 
@@ -39,15 +39,18 @@ A fejlécek eléréséhez a Bing Image Search API kérelmet CORS-proxyn kereszt�
 
 Egyszerűen telepíthet CORS-proxyt, hogy az oktatóanyag- [alkalmazás](tutorial-bing-image-search-single-page-app.md) hozzáférhessen a választható ügyfél-fejlécekhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután írja be a következő parancsot a parancssorba.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Ezután módosítsa a HTML-fájlban lévő Bing Image Search API végpontot a következőre:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Ezután módosítsa a HTML-fájlban lévő Bing Image Search API végpontot a következőre: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Végül indítsa el a CORS-proxyt a következő paranccsal:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
@@ -59,10 +62,10 @@ Az előző válaszban leírt CORS-proxy módszer a fejlesztés, a tesztelés és
 
 Ez a megközelítés az API-kulcs védelmét is védi a nyilvánosság számára, mivel csak a kiszolgálóoldali parancsfájlra van szükség. A parancsfájl egy másik módszert is használhat (például a HTTP-hivatkozót), hogy a kérelem engedélyezve legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Javasoljuk, hogy a [felhasználói hang webhelyére](https://cognitive.uservoice.com/forums/555907-bing-search)kérje vagy szavazzon rá.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
  [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

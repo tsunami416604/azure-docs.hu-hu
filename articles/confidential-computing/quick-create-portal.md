@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 49824b324df044ae2883ab6844dd321be27cbcbf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 905c76a3c5399ecae8acb2a18d35006306afcb2f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82149241"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801257"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Gyors útmutató: Azure-beli bizalmas számítástechnikai virtuális gép üzembe helyezése a Azure Portal
 
@@ -77,14 +77,14 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fi
     ![DCsv2 sorozatú virtuális gépek](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Meg kell jelennie a méretek **DC1s_v2**, **DC2s_v2**, **DC4s_V2**és **DC8_v2**. Ez az egyetlen olyan virtuálisgép-méret, amely jelenleg támogatja a bizalmas számítástechnikai feladatokat. [További információ](virtual-machine-solutions.md).
+    > Meg kell jelennie a méretek **DC1s_v2**, **DC2s_v2**, **DC4s_V2**és **DC8_v2**. Ez az egyetlen olyan virtuálisgép-méret, amely jelenleg támogatja a bizalmas számítástechnikai feladatokat. [További információk](virtual-machine-solutions.md).
 
 1. Adja meg a következő információkat:
 
    * **Hitelesítés típusa**: válassza a **nyilvános SSH-kulcs** lehetőséget, ha Linux rendszerű virtuális gépet hoz létre. 
 
         > [!NOTE]
-         > Választhat, hogy a hitelesítéshez egy SSH-s nyilvános kulcsot vagy egy jelszót használ. Az SSH használata biztonságosabb. Az SSH-kulcs létrehozásával kapcsolatban lásd az [SSH-kulcsok az Azure-ban történő létrehozásának lépéseit Linux és Mac rendszeren Linux rendszerű virtuális gépek számára](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
+        > Választhat, hogy a hitelesítéshez egy SSH-s nyilvános kulcsot vagy egy jelszót használ. Az SSH használata biztonságosabb. Az SSH-kulcs létrehozásával kapcsolatban lásd az [SSH-kulcsok az Azure-ban történő létrehozásának lépéseit Linux és Mac rendszeren Linux rendszerű virtuális gépek számára](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
 
     * **Username (Felhasználónév**): adja meg a virtuális gép rendszergazdájának nevét.
 
@@ -190,13 +190,13 @@ sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-
 
 Lásd: [az Open ENKLÁVÉ SDK használata](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/Linux_using_oe_sdk.md) a githubon a telepített SDK ellenőrzéséhez és használatához.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. 
 
 Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy bizalmas számítástechnikai virtuális gépet helyezett üzembe, és telepítette az Open enklávé SDK-t. Az Azure-beli bizalmas számítástechnikai virtuális gépekkel kapcsolatos további információkért lásd: [Virtual Machines-megoldások](virtual-machine-solutions.md). 
 
