@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/19/2019
 ms.author: spelluru
 ms.openlocfilehash: 7f05665f4bcc5449c1a81fa24582b333b0a944e0
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60822847"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>SDK-k Event Grid a felügyelethez és a közzétételhez
@@ -26,7 +26,7 @@ A felügyeleti SDK-k lehetővé teszik az Event Grid-témakörök és-előfizet�
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
 * [Ugrás](https://github.com/Azure/azure-sdk-for-go)
 * [Java](https://search.maven.org/#search%7Cga%7C1%7Cazure-mgmt-eventgrid)
-* [Node](https://www.npmjs.com/package/azure-arm-eventgrid)
+* [Csomópont](https://www.npmjs.com/package/azure-arm-eventgrid)
 * [Python](https://pypi.python.org/pypi/azure-mgmt-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_mgmt_event_grid)
 
@@ -37,7 +37,7 @@ Az adatközponti SDK-k lehetővé teszik események küldését a témakörökbe
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)
 * [Ugrás](https://github.com/Azure/azure-sdk-for-go)
 * [Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)
-* [Node](https://www.npmjs.com/package/azure-eventgrid)
+* [Csomópont](https://www.npmjs.com/package/azure-eventgrid)
 * [Python](https://pypi.python.org/pypi/azure-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_event_grid)
 

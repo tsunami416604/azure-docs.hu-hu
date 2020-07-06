@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
 ms.openlocfilehash: b99ca444532799d21850058eae0e3f40ed871135
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61074054"
 ---
 # <a name="terminology"></a>Terminológia
@@ -25,7 +25,7 @@ Ez a cikk a API Managementra (APIM) vonatkozó feltételek definícióit ismerte
 ## <a name="term-definitions"></a>Kifejezés-definíciók
 
 * **Háttérbeli API** – egy http-szolgáltatás, amely megvalósítja az API-t és annak műveleteit. 
-* **Előtér-API**/**APIM API** – a APIM API nem üzemeltet API-kat, az API-k számára a homlokzatok létrehozásához az igényeknek megfelelően testre szabhatja a homlokzatot, anélkül, hogy a háttérrendszer API-ját kellene megérintenie. További információ: [API importálása és közzététele](import-and-publish.md).
+* **FRONTEND API** / **APIM API** – egy APIM API nem üzemeltet API-kat, és az API-k számára is létrehoz egy homlokzatot, hogy az igényeinek megfelelően testreszabja a homlokzatot anélkül, hogy a háttér API-t kellene megérintenie. További információ: [API importálása és közzététele](import-and-publish.md).
 * **APIM termék** – egy termék tartalmaz egy vagy több API-t, valamint egy használati kvótát és a használati feltételeket. Több API-t is megadhat, és a fejlesztői portálon keresztül biztosíthatja őket a fejlesztőknek. További információ: [termékek létrehozása és közzététele](api-management-howto-add-products.md).
 * **APIM API-művelet** – minden APIM API a fejlesztők számára elérhető műveletek készletét jelöli. Minden APIM API tartalmaz egy hivatkozást a háttérrendszer számára, amely megvalósítja az API-t, valamint a műveleteik leképezését a háttérrendszer által megvalósított műveletekre. További információ: az [API-válaszok modellezése](mock-api-responses.md).
 * **Verzió** – előfordulhat, hogy egyes felhasználók számára új vagy más API-szolgáltatásokat szeretne közzétenni, míg mások a jelenleg használt API-val szeretnének ragaszkodni. További információ: [az API több verziójának közzététele](api-management-get-started-publish-versions.md).

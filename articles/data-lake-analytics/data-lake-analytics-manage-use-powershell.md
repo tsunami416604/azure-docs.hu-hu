@@ -10,10 +10,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66156430"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
@@ -240,7 +240,7 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 
 ### <a name="list-jobs-by-job-result"></a>Feladatok listázása feladat eredménye alapján
 
-A paraméter `-Result` használatával ellenőrizze, hogy a Befejezett feladatok sikeresen befejeződtek-e. Ezek az értékek:
+A `-Result` paraméter használatával ellenőrizze, hogy a Befejezett feladatok sikeresen befejeződtek-e. Ezek az értékek:
 
 * Lemondva
 * Sikertelen
@@ -295,7 +295,7 @@ Stop-AdlJob -Account $adla -JobID $jobID
 
 ### <a name="wait-for-a-job-to-finish"></a>Várakozás a feladatok befejeződésére
 
-Ahelyett, hogy `Get-AdlAnalyticsJob` megismétli a feladatot, a `Wait-AdlJob` parancsmaggal megvárhatja, hogy a feladatok véget ér.
+Ahelyett, hogy megismétli a `Get-AdlAnalyticsJob` feladatot, a `Wait-AdlJob` parancsmaggal megvárhatja, hogy a feladatok véget ér.
 
 ```powershell
 Wait-AdlJob -Account $adla -JobId $job.JobId
@@ -314,7 +314,7 @@ $pipelines = Get-AdlJobPipeline -Account $adla
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 
-A korábban `Get-AdlJobRecurrence` elküldött feladatok ismétlődési adatainak megtekintéséhez használja a parancsmagot.
+A `Get-AdlJobRecurrence` korábban elküldött feladatok ismétlődési adatainak megtekintéséhez használja a parancsmagot.
 
 ```powershell
 $recurrences = Get-AdlJobRecurrence -Account $adla
@@ -377,7 +377,7 @@ Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recu
 ```
 
 > [!NOTE]
-> Ha a feltöltési vagy letöltési folyamat megszakad, a parancsmag újbóli ``-Resume`` futtatásával próbálkozhat a művelet folytatásával.
+> Ha a feltöltési vagy letöltési folyamat megszakad, a parancsmag újbóli futtatásával próbálkozhat a művelet folytatásával ``-Resume`` .
 
 ## <a name="manage-the-u-sql-catalog"></a>Az U-SQL-katalógus kezelése
 
@@ -557,5 +557,5 @@ Azure-erőforráscsoport-sablont is használhat a következő minta használatá
 
 ## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
-* A Data Lake Analytics használatának első lépései az[Azure parancssori](data-lake-analytics-get-started-cli.md) felületének [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | 
-* Azure Data Lake Analytics kezelése [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) használatával 
+* A Data Lake Analytics használatának első lépései az [Azure portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [Azure parancssori](data-lake-analytics-get-started-cli.md) felületének Azure Portal Azure PowerShell
+* Azure Data Lake Analytics kezelése [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md) használatával 

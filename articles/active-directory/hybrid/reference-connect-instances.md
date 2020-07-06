@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66298819"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: a példányokra vonatkozó különleges szempontok
@@ -64,7 +64,7 @@ A következő kézi konfigurációs lépések segítségével biztosítható, ho
 
 1. Indítsa el a Azure AD Connect telepítést.
 2. Ha megjelenik az első olyan oldal, amelyben el kellene fogadnia a végfelhasználói licencszerződést, ne folytassa a telepítést, de ne hagyja a telepítő varázslót.
-3. Indítsa el a regeditt, `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` és módosítsa a `4`beállításkulcsot az értékre.
+3. Indítsa el a regeditt, és módosítsa a beállításkulcsot az `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` értékre `4` .
 4. Lépjen vissza a Azure AD Connect telepítővarázsló, fogadja el a végfelhasználói licencszerződést, és folytassa a következővel:. A telepítés során győződjön meg arról, hogy az **Egyéni konfiguráció** telepítési útvonalát (és nem az expressz telepítést) használja, majd a szokásos módon folytassa a telepítést.
 
 ## <a name="next-steps"></a>További lépések

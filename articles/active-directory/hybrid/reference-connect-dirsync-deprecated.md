@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60381178"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>A Microsoft Azure Active Directory Sync és az Azure Active Directory Sync frissítése
@@ -44,7 +44,7 @@ A Azure AD Connect a következő: az rSync és a Azure AD-szinkronizáló utódj
 ## <a name="how-to-transition-to-azure-ad-connect"></a>Áttérés Azure AD Connectre
 Ha a (z)-et futtatja, kétféleképpen frissítheti a szolgáltatást: helyben történő frissítés és párhuzamos üzembe helyezés. A legtöbb ügyfél számára ajánlott helyben történő frissítés, és ha a legutóbbi operációs rendszer, és kevesebb mint 50 000 objektum van. Más esetekben javasolt egy párhuzamos üzembe helyezést végezni, ahol a rendszer áthelyezi az rSync konfigurációját egy Azure AD Connect rendszert futtató új kiszolgálóra.
 
-| Megoldás | Forgatókönyv |
+| Megoldás | Eset |
 | --- | --- |
 | [Frissítés a DirSync szolgáltatásról](how-to-dirsync-upgrade-get-started.md) |<li>Ha már fut egy már meglévő, az rSync-kiszolgálóval.</li> |
 | [Frissítés Azure AD-szinkronizálóról](how-to-upgrade-previous-version.md) |<li>Ha Azure AD-szinkronizáló.</li> |
@@ -57,7 +57,7 @@ Ha szeretné megtekinteni, hogyan végezheti el a helyi frissítést a (z) Azure
 
 ## <a name="faq"></a>GYIK
 **K: e-mailben értesítést kaptam az Azure-csapattól és/vagy az Office 365 Message Centertől, de a kapcsolatot használom.**  
-Az értesítést a 1,0-es Build-számú Azure AD Connect használó ügyfeleknek is elküldték. \*. 0 (pre-1,1 kiadás használatával). A Microsoft azt javasolja, hogy az ügyfelek a Azure AD Connect kiadásaiban maradjanak naprakészek. Az 1,1-es verzióban bevezetett [automatikus frissítési](how-to-connect-install-automatic-upgrade.md) funkció megkönnyíti a Azure ad Connect telepítésének legújabb verzióját.
+Az értesítést a 1,0-es Build-számú Azure AD Connect használó ügyfeleknek is elküldték \* . 0 (pre-1,1 kiadás használata). A Microsoft azt javasolja, hogy az ügyfelek a Azure AD Connect kiadásaiban maradjanak naprakészek. Az 1,1-es verzióban bevezetett [automatikus frissítési](how-to-connect-install-automatic-upgrade.md) funkció megkönnyíti a Azure ad Connect telepítésének legújabb verzióját.
 
 **K: az rSync/Azure AD-szinkronizáló a 2017 április 13-án abbahagyja a munkát?**  
 Az rSync/Azure AD-szinkronizáló 2017. április 13-án továbbra is működni fog.  Az Azure AD azonban már nem fogadja el a kommunikációt az rSync/Azure AD-szinkronizálótól a 2017. december 31-ig.

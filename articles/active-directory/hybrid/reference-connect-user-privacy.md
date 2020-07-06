@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60455784"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Felhasználói adatvédelem és Azure AD Connect 
@@ -48,10 +48,10 @@ Azure AD Connect ügyfeleknek a következő irányelveket kell használniuk a fe
 Egy személy adatait a rendszer automatikusan eltávolítja a Azure AD Connect-adatbázisból, ha az adott személy adatait eltávolítja a forrásból, ahonnan származik. Nem szükséges, hogy a rendszergazdák GDPR a megfelelő lépéseket.  Szükség van azonban arra, hogy a Azure AD Connect-adatait legalább két naponként szinkronizálja az adatforrással.
 
 ## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>A Azure AD Connect telepítési naplófájl mappa tartalmának törlése
-Rendszeresen vizsgálja meg és törölje a **c:\programdata\aadconnect** mappa tartalmát – kivéve a **PersistedState. XML** fájlt. Ez a fájl fenntartja az Azure-beli kapcsolat előző telepítésének állapotát, és a frissítés telepítésének végrehajtásakor használatos. Ez a fájl nem tartalmaz egy személy adatait, és nem törölhető.
+Rendszeresen vizsgálja meg és törölje a **c:\programdata\aadconnect** mappa tartalmát – kivéve a **PersistedState.Xml** fájlt. Ez a fájl fenntartja az Azure-beli kapcsolat előző telepítésének állapotát, és a frissítés telepítésének végrehajtásakor használatos. Ez a fájl nem tartalmaz egy személy adatait, és nem törölhető.
 
 >[!IMPORTANT]
->Ne törölje a PersistedState. xml fájlt.  Ez a fájl nem tartalmaz felhasználói adatokat, és fenntartja az előző telepítés állapotát.
+>Ne törölje a PersistedState.xml fájlt.  Ez a fájl nem tartalmaz felhasználói adatokat, és fenntartja az előző telepítés állapotát.
 
 Ezeket a fájlokat áttekintheti és törölheti a Windows Intéző használatával, vagy a szükséges műveletek elvégzéséhez a következőhöz hasonló parancsfájlt használhat:
 

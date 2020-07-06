@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65950899"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitási megoldás identitási követelményeinek meghatározása
@@ -29,7 +29,7 @@ A hibrid identitás megoldásának első lépéseként meg kell határozni a meg
 
 Ezeket a kulcsfontosságú szempontokat kell megismernie, hogy megértse, mi a követelmény most, és mi a vállalat tervei a jövőben. Ha nem látja el a hibrid identitások kialakítására vonatkozó hosszú távú stratégiát, akkor előfordulhat, hogy a megoldás nem lesz skálázható, mivel az üzleti igények növekedésének és változásának megléte. Az alábbi ábra egy hibrid identitás-architektúra és a felhasználók számára kinyitott munkaterhelések példáját mutatja be. Ez csak egy példa az összes olyan új lehetőségre, amely egy szilárd hibrid identitási stratégia használatával feloldható és elérhető. 
 
-A hibrid identitás-architektúra ![hibrid identitás-architektúrájának részét képező összetevők](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+A hibrid identitás-architektúra hibrid identitás-architektúrájának részét képező összetevők ![](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Üzleti igények meghatározása
 Minden vállalat különböző követelményekkel fog rendelkezni, még akkor is, ha ezek a vállalatok ugyanahhoz az iparághoz tartoznak, a valós üzleti követelmények eltérőek lehetnek. Továbbra is kihasználhatja az iparág ajánlott eljárásait, de végső soron a vállalat üzleti igényei alapján határozhatja meg a hibrid identitás kialakításának követelményeit. 
@@ -110,6 +110,6 @@ Meg kell vizsgálnia a felhasználói követelményeket is. Ez az értékelés f
 ## <a name="next-steps"></a>További lépések
 [Címtár-szinkronizálási követelmények meghatározása](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 [Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
 

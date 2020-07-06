@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: a0d272a01a6969f702ff4eedf05660833ba1f531
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61463712"
 ---
 # <a name="h264-multiple-bitrate-16x9-sd"></a>H264 Multiple Bitrate 16x9 SD
-`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási beállításkészleteket. A `preset name` (z) segítségével megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A `Media Encoder Standard` kódoló által támogatott összes előre definiált név listájának megtekintéséhez tekintse meg a [Media Encoder standard feladat-előállítók](media-services-mes-presets-overview.md)című témakört.  
+`Media Encoder Standard`meghatározza a kódolási feladatok létrehozásakor használható kódolási beállításkészleteket. A (z) segítségével `preset name` megadhatja, hogy melyik formátumban szeretné kódolni a médiafájlt. Vagy létrehozhat egy saját JSON-vagy XML-alapú előkészletet (UTF-8 vagy UTF-16 kódolás használatával). Ezután átadja az egyéni beállításkészletet a kódolónak. A kódoló által támogatott összes előre definiált név listájának `Media Encoder Standard` megtekintéséhez tekintse meg a [Media Encoder standard feladat-előállítók](media-services-mes-presets-overview.md)című témakört.  
   
  Ez a témakör az `H264 Multiple Bitrate 16x9 SD` előre definiált XML-és JSON-formátumban jeleníti meg.  
   
  Ez a beállításkészlet 5 GOP-ra igazított MP4-fájlt hoz létre, amely 1900 kbps és 400 kbps között, valamint sztereó AAC hangon érhető el. A profil, a bitráta, a mintavételezési sebesség és az előre definiált beállítások részletes ismertetését az alábbi XML-vagy JSON-kód alapján ellenőrizheti. Az ezen alapbeállításokban található egyes elemek, valamint az egyes elemek érvényes értékeinek magyarázata a [Media Encoder standard séma](media-services-mes-schema.md) témakörben található.  
   
 > [!NOTE]
->  A `Width` rétegek közötti és `Height` értékek módosításakor ügyeljen arra, hogy a méretarány konzisztens maradjon. Például: 1920 × 1080, 1280x720, 1080x576, 640 x 360. Nem használhat méretarányok (például: 1280x720, 720x 480, 640 x 360) keverékét.  
+>  A `Width` `Height` rétegek közötti és értékek módosításakor ügyeljen arra, hogy a méretarány konzisztens maradjon. Például: 1920 × 1080, 1280x720, 1080x576, 640 x 360. Nem használhat méretarányok (például: 1280x720, 720x 480, 640 x 360) keverékét.  
   
  XML  
   

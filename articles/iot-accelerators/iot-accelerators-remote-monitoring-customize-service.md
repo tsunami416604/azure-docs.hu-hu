@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447046"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsított webes felhasználói felületéhez
@@ -45,25 +45,25 @@ Egy szolgáltatás webes felhasználói felülethez való hozzáadásához hozz�
 
 Az első lépésekhez az **src/walkthrough/Services** mappa tartalmazza azokat a fájlokat, amelyek egyszerű szolgáltatást definiálnak:
 
-**exampleService. js**
+**exampleService.js**
 
 [!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
 
 A szolgáltatások megvalósításával kapcsolatos további tudnivalókért tekintse meg [a hiányzó reaktív programozás bevezetését](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
-**Model/exampleModels. js**
+**modell/exampleModels.js**
 
 [!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
 
-Másolja a **exampleService. js fájlt** a **src/Services** mappába, és másolja a **exampleModels. js fájlt** az **src/Services/models** mappába.
+Másolja **exampleService.js** a **src/Services** mappába, és másolja **exampleModels.js** a **src/Services/models** mappába.
 
-Frissítse az **index. js** fájlt a **src/Services** mappában az új szolgáltatás exportálásához:
+Az új szolgáltatás exportálásához frissítse az **index.js** fájlt a **src/Services** mappában:
 
 ```js
 export * from './exampleService';
 ```
 
-Frissítse az **index. js** fájlt az **src/Services/models** mappában az új modell exportálásához:
+Frissítse az **index.js** fájlt az **src/Services/models** mappában az új modell exportálásához:
 
 ```js
 export * from './exampleModels';
@@ -73,17 +73,17 @@ export * from './exampleModels';
 
 Az első lépésekhez az **src/walkthrough/Store/szűkítős** mappa egy minta-csökkentőt tartalmaz:
 
-**exampleReducer. js**
+**exampleReducer.js**
 
 [!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
 
-Másolja a **exampleReducer. js fájlt** az **src/Store/szűkítős** mappába.
+Másolja **exampleReducer.js** a **src/Store/szűkítős** mappába.
 
 Ha többet szeretne megtudni a csökkentő és az **Epics**szolgáltatásról, tekintse meg a következőt: [Redux-megfigyelhető](https://redux-observable.js.org/).
 
 ### <a name="configure-the-middleware"></a>A köztes middleware konfigurálása
 
-A middleware konfigurálásához adja hozzá a szűkítőt a **rootReducer. js** fájlhoz az **src/Store** mappában:
+A middleware konfigurálásához adja hozzá a szűkítőt a **rootReducer.js** fájlhoz az **src/Store** mappában:
 
 ```js
 import { reducer as exampleReducer } from './reducers/exampleReducer';
@@ -97,7 +97,7 @@ const rootReducer = combineReducers({
 });
 ```
 
-Adja hozzá az Epics-t a **rootEpics. js** fájlhoz az **src/Store** mappában:
+Adja hozzá az Epics-t a **rootEpics.js** fájlhoz az **src/Store** mappában:
 
 ```js
 import { epics as exampleEpics } from './reducers/exampleReducer';

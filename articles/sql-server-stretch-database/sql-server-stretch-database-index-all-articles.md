@@ -1,6 +1,6 @@
 ---
 title: A SQL Server Stretch Database Service összes témaköre | Microsoft Docs
-description: A (z) SQL Server Stretch Database nevű Azure https://azure.microsoft.com/documentation/articles/-szolgáltatás összes témakörének táblázata, címe és leírása.
+description: A (z) SQL Server Stretch Database nevű Azure-szolgáltatás összes témakörének táblázata https://azure.microsoft.com/documentation/articles/ , címe és leírása.
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
@@ -14,16 +14,16 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66003022"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Az Azure SQL Server Stretch Database Service összes témaköre
 Ez a témakör felsorolja az Azure **SQL Server stretch Database** szolgáltatásával kapcsolatos összes témakört. A kulcsszavakat a **CTRL + F**billentyűkombinációval keresheti meg, és megkeresheti az aktuális érdeklődéshez kapcsolódó témaköröket.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 | &nbsp; | Cím | Leírás |
 | ---:|:--- |:--- |
 | 1 |[Stretch Database adatbázisok és táblák azonosítása Stretch Database Advisor futtatásával](sql-server-stretch-database-identify-databases.md) |Megtudhatja, hogyan azonosíthatók a Stretch Database számára jelölt adatbázisok és táblák. |
@@ -31,7 +31,7 @@ Ez a témakör felsorolja az Azure **SQL Server stretch Database** szolgáltatá
 | 3 |[Stretch Database áttekintése](sql-server-stretch-database-overview.md) |Ismerje meg, hogy a Stretch Database hogyan telepíti át a ritkán használt adatokat átlátható módon és biztonságosan a Microsoft Azure felhőbe. |
 | 4 |[Első lépések: az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatása](sql-server-stretch-database-wizard.md) |Ebből a cikkből megtanulhatja, hogyan konfigurálhatja adatbázisait a Stretch Database-zel való használatra az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatásával. |
 
-## <a name="enable"></a>Bekapcsolás
+## <a name="enable"></a>Engedélyezés
 | &nbsp; | Cím | Leírás |
 | ---:|:--- |:--- |
 | 5 |[Enable Stretch Database for a database (A Stretch Database használatának engedélyezése adatbázisokon)](sql-server-stretch-database-enable-database.md) |Megtudhatja, hogyan konfigurálhat egy adatbázist a Stretch Databasehoz. |
@@ -55,6 +55,6 @@ Ez a témakör felsorolja az Azure **SQL Server stretch Database** szolgáltatá
 ## <a name="backup-and-recovery"></a>Biztonsági másolat és helyreállítás
 | &nbsp; | Cím | Leírás |
 | ---:|:--- |:--- |
-| 14 |[Backup Stretch-enabled databases (A Stretch szolgáltatást használó adatbázisok biztonsági mentése)](sql-server-stretch-database-backup.md) |Ismerje meg, hogyan készíthet biztonsági\-másolatot a stretch enabled adatbázisairól. |
-| 15 |[Stretch-kompatibilis adatbázisok visszaállítása](sql-server-stretch-database-restore.md) |Ismerje meg, hogyan állíthatja\-vissza a stretch enabled-adatbázisokat. |
+| 14 |[Backup Stretch-enabled databases (A Stretch szolgáltatást használó adatbázisok biztonsági mentése)](sql-server-stretch-database-backup.md) |Ismerje meg, hogyan készíthet biztonsági másolatot a stretch \- enabled adatbázisairól. |
+| 15 |[Stretch-kompatibilis adatbázisok visszaállítása](sql-server-stretch-database-restore.md) |Ismerje meg, hogyan állíthatja vissza a stretch \- enabled-adatbázisokat. |
 

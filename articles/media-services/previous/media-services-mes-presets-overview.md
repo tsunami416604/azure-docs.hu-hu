@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61463403"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Minta-előállítók a Media Encoder Standardhoz (MES)
@@ -29,7 +29,7 @@ ms.locfileid: "61463403"
 Media Services teljes mértékben támogatja az előre beállított összes érték testreszabását az adott kódolási igények és követelmények kielégítése érdekében. Ha testre kell szabnia egy kódolási beállításkészletet, az ebben a szakaszban ismertetett Rendszerkészletek egyikével kell kezdenie az egyéni konfiguráció sablonját. Az ezen alapbeállításokban található egyes elemek, valamint az egyes elemek érvényes értékeinek magyarázata a [Media Encoder standard séma](media-services-mes-schema.md) témakörben található.  
   
 > [!NOTE]
->  Ha 4k-kódoláshoz készletet használ, szerezze be a `S3` fenntartott egység típusát. További információ: [a kódolás skálázása](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Ha 4k-kódoláshoz készletet használ, szerezze `S3` be a fenntartott egység típusát. További információ: [a kódolás skálázása](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
 
 #### <a name="video-rotation-default-setting-in-presets"></a>A videó elforgatásának alapértelmezett beállítása az alapbeállításokban:
 Media Encoder Standard használatakor a videó forgatása alapértelmezés szerint engedélyezve van. Ha a videó rögzített módban van rögzítve egy mobileszközön, akkor ezek a készletek a kódolás előtt elforgatják a tájkép módba.

@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60780821"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Egyéni gyorsítótárazás az Azure API Managementben
-Az Azure API Management Service beépített támogatást nyújt a [http-válaszok gyorsítótárazásához](api-management-howto-cache.md) az erőforrás URL-címe alapján, kulcsként. A kulcs a `vary-by` tulajdonságok használatával módosítható a kérelem fejlécében. Ez a teljes HTTP-válaszok gyorsítótárazásakor hasznos (más néven a reprezentációk), de néha hasznos lehet egy ábrázolás egy részének gyorsítótárazására. Az új [cache-lookup-Value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) és [cache-Store-Value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) szabályzatok lehetővé teszik tetszőleges adatmennyiségek tárolását és lekérését a házirend-definíciók között. Ez a funkció a korábban bevezetett [küldési kérelmekre](/azure/api-management/api-management-advanced-policies#SendRequest) vonatkozó szabályzat értékét is hozzáadja, mivel mostantól a külső szolgáltatásoktól származó válaszokat is gyorsítótárazhatja.
+Az Azure API Management Service beépített támogatást nyújt a [http-válaszok gyorsítótárazásához](api-management-howto-cache.md) az erőforrás URL-címe alapján, kulcsként. A kulcs a tulajdonságok használatával módosítható a kérelem fejlécében `vary-by` . Ez a teljes HTTP-válaszok gyorsítótárazásakor hasznos (más néven a reprezentációk), de néha hasznos lehet egy ábrázolás egy részének gyorsítótárazására. Az új [cache-lookup-Value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) és [cache-Store-Value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) szabályzatok lehetővé teszik tetszőleges adatmennyiségek tárolását és lekérését a házirend-definíciók között. Ez a funkció a korábban bevezetett [küldési kérelmekre](/azure/api-management/api-management-advanced-policies#SendRequest) vonatkozó szabályzat értékét is hozzáadja, mivel mostantól a külső szolgáltatásoktól származó válaszokat is gyorsítótárazhatja.
 
 ## <a name="architecture"></a>Architektúra
 API Management a szolgáltatás egy megosztott, bérlői adatgyorsítótárat használ, így ha több egységre is kiterjed, továbbra is hozzáférhet ugyanahhoz a gyorsítótárazott információhoz. Ha azonban többrégiós telepítéssel dolgozik, az egyes régiókban külön gyorsítótárak találhatók. Fontos, hogy a gyorsítótárat ne kezelje adattárként, mert az egyetlen adat forrása. Ha ezt tette, és később úgy döntött, hogy kihasználja a többrégiós telepítést, akkor az utazást használó felhasználók nem férhetnek hozzá a gyorsítótárazott adathoz.
@@ -43,13 +43,13 @@ Vegye figyelembe a következő JSON-választ egy háttér-API-ból.
 }  
 ```
 
-És a másodlagos erőforrás `/userprofile/{userid}` , amely a következőképpen néz ki:
+És a másodlagos erőforrás, `/userprofile/{userid}` amely a következőképpen néz ki:
 
 ```json
 { "username" : "Bob Smith", "Status" : "Gold" }
 ```
 
-A megfelelő felhasználói adatok meghatározásához API Managementnek azonosítania kell, hogy kik a végfelhasználók. Ez a mechanizmus a megvalósítástól függ. Példaként egy `Subject` `JWT` jogkivonat jogcímet használok. 
+A megfelelő felhasználói adatok meghatározásához API Managementnek azonosítania kell, hogy kik a végfelhasználók. Ez a mechanizmus a megvalósítástól függ. Példaként `Subject` egy jogkivonat jogcímet használok `JWT` . 
 
 ```xml
 <set-variable
@@ -92,7 +92,7 @@ Ha a `userprofile` környezeti változó nem létezik, akkor API Management meg 
 </send-request>
 ```
 
-`enduserid` API Management a használatával hozza létre a felhasználói profil erőforrás URL-címét. Miután API Management a választ, lekéri a törzs szövegét a válaszból, és visszatárolja azt egy környezeti változóban.
+API Management a használatával hozza `enduserid` létre a felhasználói profil erőforrás URL-címét. Miután API Management a választ, lekéri a törzs szövegét a válaszból, és visszatárolja azt egy környezeti változóban.
 
 ```xml
 <set-variable
@@ -184,7 +184,7 @@ Ugyanez a töredék-gyorsítótárazás is végezhető a háttér-webkiszolgál�
 ## <a name="transparent-versioning"></a>Transzparens verziószámozás
 Általános gyakorlat, hogy egy API több különböző implementációs verzióját egyszerre kell támogatni. Például a különböző környezetek (fejlesztési, tesztelési, üzemi stb.) támogatásához vagy az API régebbi verzióinak támogatásához, hogy időt adjon az API-fogyasztók számára az újabb verzióra való áttérésre. 
 
-Az egyik módszer a kezeléshez, ahelyett, hogy az ügyfél-fejlesztőknek meg `/v1/customers` kellene `/v2/customers` változtatniuk az URL-címekről a-re, hogy a fogyasztó profiljában tárolt adatokban tárolják az API-t, és a megfelelő háttérbeli URL-címet hívják meg. Ha meg szeretné határozni, hogy egy adott ügyfélnek milyen helyes háttér-URL-címet kell hívnia, néhány konfigurációs adatot le kell kérdezni. Ennek a konfigurációs adatnak a gyorsítótárazásával API Management csökkentheti a keresési teljesítményre vonatkozó bírságot.
+Az egyik módszer a kezeléshez, ahelyett, hogy az ügyfél-fejlesztőknek meg kellene változtatniuk az URL-címekről a-re, `/v1/customers` `/v2/customers` hogy a fogyasztó profiljában tárolt adatokban tárolják az API-t, és a megfelelő háttérbeli URL-címet hívják meg. Ha meg szeretné határozni, hogy egy adott ügyfélnek milyen helyes háttér-URL-címet kell hívnia, néhány konfigurációs adatot le kell kérdezni. Ennek a konfigurációs adatnak a gyorsítótárazásával API Management csökkentheti a keresési teljesítményre vonatkozó bírságot.
 
 Az első lépés a kívánt verzió konfigurálásához használt azonosító meghatározása. Ebben a példában úgy döntöttem, hogy hozzárendelem a verziót a termék-előfizetési kulcshoz. 
 

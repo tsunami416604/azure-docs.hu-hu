@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3331db51f4d141cf142d1bd0578043ca6681f3cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61454499"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>A málna PI-eszköz csatlakoztatása a távoli figyelési megoldáshoz (C)
@@ -75,7 +75,7 @@ Nyissa meg a **remote_monitoring. c** fájlt a **Samples/Solutions/remote_monito
 
 A következő lépések azt ismertetik, hogyan lehet a *CMAK* használatával felépíteni az ügyfélalkalmazás alkalmazást. A távoli figyelési ügyfélalkalmazás az SDK létrehozási folyamatának részeként készült.
 
-1. Szerkessze a **remote_monitoring. c** fájlt úgy `<connectionstring>` , hogy a lecserélje a útmutató elején megjegyzett eszköz-kapcsolódási karakterláncot, amikor hozzáad egy eszközt a megoldás-gyorsító eszközhöz.
+1. Szerkessze a **remote_monitoring. c** fájlt úgy, hogy a lecserélje `<connectionstring>` a útmutató elején megjegyzett eszköz-kapcsolódási karakterláncot, amikor hozzáad egy eszközt a megoldás-gyorsító eszközhöz.
 
 1. Navigáljon az [Azure IoT C SDK adattár](https://github.com/Azure/azure-iot-sdk-c) -tárház klónozott példányának gyökeréhez, és futtassa a következő parancsokat az ügyfélalkalmazás létrehozásához:
 

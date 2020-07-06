@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60246321"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése
@@ -105,7 +105,7 @@ Az attribútum folyamataiban van egy beállítás, amely meghatározza, hogy a t
 
 **Egyesítés** és **MergeCaseInsensitive**is. Ezek a beállítások lehetővé teszik különböző forrásokból származó értékek egyesítését. Használhatja például a tag vagy a proxyAddresses attribútum egyesítését több különböző erdőből. Ha ezt a beállítást használja, az objektum hatókörében lévő összes szinkronizálási szabálynak ugyanazt az egyesítési típust kell használnia. Nem határozhat meg **frissítést** egyetlen összekötőről, és **egyesítheti** azt egy másikból. Ha megpróbálja, hibaüzenetet kap.
 
-Az **Egyesítés** és a **MergeCaseInsensitive** közötti különbség a duplikált attribútumok értékének feldolgozása. A Szinkronizáló motor ellenőrzi, hogy az ismétlődő értékek nincsenek-e beszúrva a TARGET attribútumba. A **MergeCaseInsensitive**esetében a duplikált értékek csak akkor jelennek meg, ha nem jelennek meg. Például nem láthatja a "SMTP:bob@contoso.com" és "smtp:bob@contoso.com" kifejezést a TARGET attribútumban. Az **Egyesítés** csak a pontos értékeket és a több értéket vizsgálja, ahol ebben az esetben csak a különbség áll fenn.
+Az **Egyesítés** és a **MergeCaseInsensitive** közötti különbség a duplikált attribútumok értékének feldolgozása. A Szinkronizáló motor ellenőrzi, hogy az ismétlődő értékek nincsenek-e beszúrva a TARGET attribútumba. A **MergeCaseInsensitive**esetében a duplikált értékek csak akkor jelennek meg, ha nem jelennek meg. Például nem láthatja SMTP:bob@contoso.com a "" és "" kifejezést smtp:bob@contoso.com a TARGET attribútumban. Az **Egyesítés** csak a pontos értékeket és a több értéket vizsgálja, ahol ebben az esetben csak a különbség áll fenn.
 
 A **replace** kapcsoló ugyanaz, mint a **frissítés**, de nem használja.
 

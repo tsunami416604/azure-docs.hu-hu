@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64685321"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>HDInsight-alkalmazás közzététele az Azure Marketplace-en
@@ -31,7 +31,7 @@ Ha egyéni alkalmazást szeretne elküldeni a piactéren, először [hozzon lét
 Regisztrálnia kell a fejlesztői fiókját is. További információkért lásd: [ajánlat közzététele az Azure piactéren](../marketplace/marketplace-publishers-guide.md) , és [hozzon létre egy Microsoft fejlesztői fiókot](../marketplace/marketplace-publishers-guide.md).
 
 ## <a name="define-the-application"></a>Az alkalmazás megadása
-Két lépés vesz részt az alkalmazások piactéren való közzétételében. Először Definiáljon egy *createUiDef. JSON* fájlt. A createUiDef. JSON fájl jelzi, hogy az alkalmazás mely fürtökkel kompatibilis. Ezután tegye közzé a sablont a Azure Portal. Íme egy példa a createUiDef. JSON fájlra:
+Két lépés vesz részt az alkalmazások piactéren való közzétételében. Először Definiáljon egy *createUiDef.jst a* fájlhoz. A createUiDef.jsfájl azt jelzi, hogy az alkalmazás mely fürtökkel kompatibilis. Ezután tegye közzé a sablont a Azure Portal. Íme egy minta createUiDef.jsa következő fájlon:
 
 ```json
 {
@@ -76,8 +76,8 @@ A telepítési parancsfájlnak a következő jellemzőkkel kell rendelkeznie:
 ## <a name="package-the-application"></a>Az alkalmazás becsomagolása
 Hozzon létre egy. zip fájlt, amely tartalmazza a HDInsight-alkalmazás telepítéséhez szükséges összes fájlt. Az alkalmazás közzétételéhez használja a. zip fájlt. A. zip fájl a következő fájlokat tartalmazza:
 
-* createUiDefinition. JSON
-* mainTemplate. JSON (minta esetén lásd: [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).)
+* createUiDefinition.jsbekapcsolva
+* mainTemplate.json (a minta esetében lásd: [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).)
 * Az összes szükséges parancsfájl
 
 > [!NOTE]  
@@ -91,8 +91,8 @@ HDInsight-alkalmazás közzététele:
 3. Adjon meg egy címet, majd válassza **az új megoldás sablon létrehozása**lehetőséget.
 4. Ha még nem regisztrálta a szervezetét, válassza **a Fejlesztői központ fiók létrehozása lehetőséget, és csatlakozzon az Azure-programhoz**.  További információt a [Microsoft fejlesztői fiók létrehozása](../marketplace/marketplace-publishers-guide.md)című témakörben talál.
 5. **A kezdéshez válassza az egyes topológiák megadása**lehetőséget. A megoldási sablon a "Parent" az összes topológiája számára. Egy ajánlat vagy megoldás sablonjában több topológiát is meghatározhat. Ha egy ajánlat átmeneti állapotba kerül, a rendszer minden topológiával leküldi. 
-6. Adja meg a topológia nevét, majd válassza a **+** elemet.
-7. Adjon meg egy új verziót, majd válassza **+** a elemet.
+6. Adja meg a topológia nevét, majd válassza a elemet **+** .
+7. Adjon meg egy új verziót, majd válassza a elemet **+** .
 8. Töltse fel az alkalmazás csomagolásakor létrehozott. zip fájlt.  
 9. Válassza a **tanúsítvány kérése**lehetőséget. A Microsoft minősítési csapata áttekinti a fájlokat, és tanúsítja a topológiát.
 

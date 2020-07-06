@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60947226"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
@@ -119,7 +119,7 @@ Virtuális gépek manuális hozzáadása:
 
     f. **DR egyes működéseinek időtartama (nap)**
 
-    g. **Operációs rendszer típusa**
+    : **Operációs rendszer típusa**
 
     h. **Adatredundancia**
 
@@ -167,7 +167,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Támogatott pénznemek
 A Site Recovery Deployment Planner az alábbi pénznemek bármelyikének használatával létre tudja hozni a költségjelentést.
 
-|Currency (Pénznem)|Name (Név)||Currency (Pénznem)|Name (Név)||Currency (Pénznem)|Name (Név)|
+|Currency (Pénznem)|Name||Currency (Pénznem)|Name||Currency (Pénznem)|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentin peso ($)||AUD|Ausztrál dollár ($)||BRL|Brazil real (R$)|
 |CAD|Kanadai dollár ($)||CHF|Svájci frank (CHF)||DKK|Dán korona (kr)|

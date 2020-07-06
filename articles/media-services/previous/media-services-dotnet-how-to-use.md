@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64724115"
 ---
 # <a name="media-services-development-with-net"></a>Media Services fejlesztés .NET-tel 
@@ -57,13 +57,13 @@ Azt is megteheti, hogy letölti a legújabb Media Services .NET SDK-biteket a Gi
    
     4. A projekt módosult, és a Media Services .NET SDK-bővítményekre, Media Services .NET SDK-ra és más függő szerelvényekre hivatkozik.
 4. A tisztább fejlesztési környezet elősegítése érdekében érdemes lehet engedélyezni a NuGet-csomagok visszaállítását. További információ: NuGet- [csomag visszaállítása "](https://docs.nuget.org/consume/package-restore).
-5. Adjon hozzá egy hivatkozást a **System. Configuration** szerelvényhez. Ez a szerelvény tartalmazza a System. Configurationt. A konfigurációs fájlok eléréséhez használt **ConfigurationManager** osztály (például app. config).
+5. Adjon hozzá egy hivatkozást **System.Configszülő** szerelvényhez. Ez a szerelvény a System.Configszülő tartalmazza. A konfigurációs fájlok eléréséhez használt **ConfigurationManager** osztály (például App.config).
    
     1. Hivatkozások hozzáadásához a hivatkozások kezelése párbeszédpanelen kattintson a jobb gombbal a projekt nevére a Megoldáskezelő. Ezután kattintson a **Hozzáadás**, majd a **hivatkozás...** elemre.
    
     2. Megjelenik a hivatkozások kezelése párbeszédpanel.
-    3. A .NET-keretrendszer szerelvények területen keresse meg és válassza ki a System. Configuration szerelvényt, majd kattintson **az OK gombra**.
-6. Nyissa meg az app. config fájlt, és adjon hozzá egy **appSettings** szakaszt a fájlhoz. Adja meg a Media Services API-hoz való kapcsolódáshoz szükséges értékeket. További információ: [hozzáférés a Azure Media Services API-hoz az Azure ad-hitelesítéssel](media-services-use-aad-auth-to-access-ams-api.md). 
+    3. A .NET-keretrendszer szerelvények területen keresse meg és válassza ki a System.Configszülő szerelvényt, majd kattintson az **OK gombra**.
+6. Nyissa meg a App.config fájlt, és adjon hozzá egy **appSettings** szakaszt a fájlhoz. Adja meg a Media Services API-hoz való kapcsolódáshoz szükséges értékeket. További információ: [hozzáférés a Azure Media Services API-hoz az Azure ad-hitelesítéssel](media-services-use-aad-auth-to-access-ams-api.md). 
 
     Állítsa be a kapcsolódáshoz szükséges értékeket az **egyszerű szolgáltatásnév** hitelesítési módszerének használatával.
 
@@ -79,7 +79,7 @@ Azt is megteheti, hogy letölti a legújabb Media Services .NET SDK-biteket a Gi
                 </configuration>
         ```
 
-7. Adja hozzá a **System. Configuration** hivatkozást a projekthez.
+7. Adja hozzá az **System.Configszülő** -hivatkozást a projekthez.
 8. Írja felül a meglévő **using** utasításokat a program.cs fájl elején a következő kóddal:
 
     ```csharp      

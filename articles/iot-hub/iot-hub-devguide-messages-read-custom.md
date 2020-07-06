@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61244344"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Az eszközről a felhőbe irányuló üzenetekhez tartozó üzenetek és egyéni végpontok használata
@@ -23,7 +23,7 @@ IoT Hub [üzenet-útválasztás](iot-hub-devguide-routing-query-syntax.md) lehet
 
 | Tulajdonság      | Leírás |
 | ------------- | ----------- |
-| **Név**      | A lekérdezést azonosító egyedi név. |
+| **Name (Név)**      | A lekérdezést azonosító egyedi név. |
 | **Forrás**    | Annak az adatfolyamnak a forrása, amelyre a folyamat vonatkozik. Például az eszköz telemetria. |
 | **Állapot** | Az üzenet alkalmazás tulajdonságai, a rendszer tulajdonságai, az üzenet törzse, az eszköz két címkéje és az eszköz Twin tulajdonságai között futtatott útválasztási lekérdezés lekérdezési kifejezése annak megállapításához, hogy az megfelel-e a végpontnak. A lekérdezések létrehozásával kapcsolatos további információkért tekintse meg az [üzenet-útválasztási lekérdezés szintaxisa](iot-hub-devguide-routing-query-syntax.md) című témakört. |
 | **Végpont**  | Annak a végpontnak a neve, ahol a IoT Hub a lekérdezésnek megfelelő üzeneteket küld. Azt javasoljuk, hogy válasszon egy végpontot abban a régióban, ahol az IoT hub található. |

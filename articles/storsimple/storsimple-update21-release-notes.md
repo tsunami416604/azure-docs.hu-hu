@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60531060"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 sorozat Update 2,2 kibocsátási megjegyzések
@@ -56,7 +56,7 @@ Az alábbi táblázat a 2,2-es és a 2,1-es frissítésekben rögzített problé
 | 4 |Pillanatkép létrehozása |A növekményes Pillanatképek létrehozásával kapcsolatos problémák merültek fel a nagy mennyiségű és minimális adatváltozás nélküli forgatókönyvekben. Ezek a problémák ebben a kiadásban vannak kijavítva. |Igen |Igen |
 | 5 |Openstack-hitelesítés |Ha a Openstack-t a felhőalapú szolgáltatóként használja, akkor a felhasználó a hitelesítéshez kapcsolódóan nem gyakori hibába ütközött, ahol a JSON-elemző összeomlást eredményezett. Ez a hiba ebben a kiadásban van kijavítva. |Igen |Nem |
 | 6 |Gazdagép-oldali másolat |A szoftver korábbi verzióiban a ODX-időzítéssel kapcsolatos ritka hibákat észlelt a rendszer az adatok egyik kötetről egy másik kötetre való másolása során. Ez egy vezérlő feladatátvételét eredményezheti, és a rendszer valószínűleg helyreállítási módba lép. Ez a hiba ebben a kiadásban van kijavítva. |Igen |Nem |
-| 7 |Windows Management Instrumentation (WMI) |A szoftver korábbi verzióiban a webproxy meghibásodásának számos példánya volt a "\<Managementexception hiba> szolgáltató betöltési hibája" kivétellel. Ez a hiba a WMI-memóriavesztés számára lett kiváltva, és már kijavítva van. |Igen |Nem |
+| 7 |Windows Management Instrumentation (WMI) |A szoftver korábbi verzióiban a webproxy meghibásodásának számos példánya volt a " \<ManagementException> szolgáltató betöltési hibája" kivétellel. Ez a hiba a WMI-memóriavesztés számára lett kiváltva, és már kijavítva van. |Igen |Nem |
 | 8 |Frissítés |Bizonyos ritka esetekben a szoftver korábbi verzióiban a felhasználó "CisPowershellHcsscripterror" kapott a frissítések vizsgálatának vagy telepítésének megkísérlésekor. Ez a probléma ebben a kiadásban van kijavítva. |Igen |Igen |
 | 9 |Támogatási csomag |Ebben a kiadásban javult a támogatási csomag összegyűjtésének és feltöltésének módja. |Igen |Igen |
 

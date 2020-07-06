@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60629757"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Rendellenes ismétlődő feladat hibaelhárítása
@@ -33,7 +33,7 @@ Ha egy ismétlődő feladattal kapcsolatos probléma elhárításához kapcsoló
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>1. eset: az ismétlődő feladatokhoz tartozó URL-cím
 
-Az **eszközök** > **Data Lake** > a**feladatok nézet**használatával beillesztheti a feladatok URL-címét a Visual Studióban a feladatok nézet megnyitásához. Válassza a **kapcsolódó feladatok megtekintése** elemet a kapcsolódó feladat nézet megnyitásához.
+Az **eszközök**  >  **Data Lake**  >  a**feladatok nézet**használatával beillesztheti a feladatok URL-címét a Visual Studióban a feladatok nézet megnyitásához. Válassza a **kapcsolódó feladatok megtekintése** elemet a kapcsolódó feladat nézet megnyitásához.
 
 ![Kapcsolódó feladatok hivatkozásának megtekintése Data Lake Analytics eszközökben](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  

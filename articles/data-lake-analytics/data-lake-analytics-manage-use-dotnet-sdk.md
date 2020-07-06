@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60617707"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Az Azure Data Lake Analytics kezelése – .NET-alkalmazás
@@ -220,7 +220,7 @@ if (adlaClient.Account.Exists(rg, adla))
 A Data Lake Analytics jelenleg a következő adatforrásokat támogatja:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage-fiók](../storage/common/storage-introduction.md)
+* [Azure Storage-tárfiók neve](../storage/common/storage-introduction.md)
 
 ### <a name="link-to-an-azure-storage-account"></a>Hivatkozás Azure Storage-fiókra
 
