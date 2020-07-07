@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eba47dede77f6d8dd19bde99a94de3ff5900f99
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 97448bb99af3a451fbb59e446fa47aa7f871b845
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732801"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800230"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
 
@@ -89,16 +89,16 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban a **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő formátumok egyikében:
 
-    ||
-    |-|
-    | `https://<Instance ID>.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na1.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na2.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs`|
+    ```https
+    https://<Instance ID>.NetSuite.com/saml2/acs
+    https://<Instance ID>.na1.NetSuite.com/saml2/acs
+    https://<Instance ID>.na2.NetSuite.com/saml2/acs
+    https://<Instance ID>.sandbox.NetSuite.com/saml2/acs
+    https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs
+    https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs
+    ```
 
-    * Az értéket a NetSuite konfigurációs szakaszban találja meg, amelyet később az oktatóanyagban, a NetSuite-konfiguráció alatt, a 8. lépésben ismertetünk. ** < `Instance ID` ** Itt megtalálja a pontos tartományt (például system.na0.netsuite.com ebben az esetben).
+    * Az **<`Instance ID`>** értéket a NetSuite konfigurációs szakaszban találja meg, amelyet később az oktatóanyagban, a NetSuite-konfiguráció alatt, a 8. lépésben ismertetünk. Itt megtalálja a pontos tartományt (például system.na0.netsuite.com ebben az esetben).
 
         ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/domain-value.png)
 
@@ -111,7 +111,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. A fentieken kívül a NetSuite alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum |
+    | Name | Forrás attribútum |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -130,16 +130,16 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
 1. A **felhasználó** tulajdonságai ablaktáblán hajtsa végre az alábbi lépéseket:
 
    a. A név mezőbe írja be a **B. Simon** **nevet** .  
-   b. A **Felhasználónév** mezőbe írja be a username@companydomain.extension (például B.Simon@contoso.com) nevet.  
+   b. A **Felhasználónév** mezőbe írja be a username@companydomain.extension (például B.Simon@contoso.com ) nevet.  
    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.  
-   d. Kattintson a **Létrehozás** gombra.
+   d. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -166,7 +166,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
 1. Nyisson meg egy új fület a böngészőben, és jelentkezzen be a NetSuite vállalati webhelyre rendszergazdaként.
 
-2. A felső navigációs sávon válassza a **beállítás**lehetőséget, majd válassza a **vállalat** > **engedélyezése funkciók**lehetőséget.
+2. A felső navigációs sávon válassza a **beállítás**lehetőséget, majd válassza a **vállalat**  >  **engedélyezése funkciók**lehetőséget.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-setupsaml.png)
 
@@ -200,7 +200,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     c. Válassza a **Küldés** lehetőséget.
 
-9. A NetSuite felső navigációs sávban válassza a **beállítás**, majd a **vállalati** > **vállalati adatok**elemet.
+9. A NetSuite felső navigációs sávban válassza a **beállítás**, majd a **vállalati**  >  **vállalati adatok**elemet.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-com.png)
 
@@ -232,7 +232,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/ns-sso.png)
 
-    g. Válassza az **SAML egyszeri bejelentkezés**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+    : Válassza az **SAML egyszeri bejelentkezés**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 
     h. Kattintson a **Mentés** gombra.
 
@@ -264,7 +264,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen kiválasztja a NetSuite csempét, akkor automatikusan be kell jelentkeznie arra a NetSuite-ra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)

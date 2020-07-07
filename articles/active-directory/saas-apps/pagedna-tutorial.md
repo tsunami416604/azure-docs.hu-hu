@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 34e496ea9d2a89894951856a19854bff18f20a8b
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68227466"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Oktatóanyag: Azure Active Directory integráció a PageDNA
 
@@ -110,21 +110,19 @@ Az Azure AD egyszeri bejelentkezés PageDNA való konfigurálásához hajtsa vé
 
     1. A **bejelentkezési URL** -cím mezőben adjon meg egy URL-címet a következő minták egyikének használatával:
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>` |
-        | `https://<your domain>` |
-        | `https://<your domain>/<your site>` |
-        | `https://www.nationsprint.com/<your site>` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>
+        https://<your domain>
+        https://<your domain>/<your site>
+        https://www.nationsprint.com/<your site>
+        ```
 
     1. Az **azonosító (entitás azonosítója)** mezőben adja meg az URL-címet a következő minták egyikének használatával:
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
-        | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>/saml2ep.cgi
+        https://www.nationsprint.com/<your site>/saml2ep.cgi
+        ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez forduljon a [PageDNA támogatási csapatához](mailto:success@pagedna.com). A Azure Portal **alapszintű SAML-konfiguráció** paneljén látható mintázatokat is megtekintheti.
@@ -149,7 +147,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a PageDNA oldalon, küldj
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**   > **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**    >  **felhasználók**  >  **minden felhasználó**lehetőséget.
 
     ![A felhasználók és a "minden felhasználó" lehetőség](common/users.png)
 
@@ -163,17 +161,17 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon\@\<yourcompanydomain> értéket.\< bővítmény>**. Például **BrittaSimon\@contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon \@ \<yourcompanydomain> . \<extension> **. Például **BrittaSimon \@ contoso.com**.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban az Azure egyszeri bejelentkezés használatára engedélyezi a felhasználó számára, hogy Britta hozzáférést biztosít a PageDNA.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás** > **PageDNA**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **PageDNA**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -205,7 +203,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor kiválasztja a **PageDNA** lehetőséget a saját alkalmazások portálján, automatikusan be kell jelentkeznie a PageDNA-előfizetésbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a saját alkalmazások portálján: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Az SaaS-alkalmazások Azure Active Directory-vel való integrálására szolgáló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

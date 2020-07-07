@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: e7233ea2d9d49d9a030f11f45e8aeba3fb0927c2
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 8b9e65ed634243e60808e91d621cfe8c912b914e
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608845"
+ms.locfileid: "85799972"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Oktatóanyag: Azure Active Directory integráció a dokumentációval
 
@@ -107,10 +107,10 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-        ```https
-        https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn
-        https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn
-        ```
+    ```http
+    https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn
+    https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn
+    ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`Dossier/<CLIENTNAME>`
 
@@ -119,10 +119,10 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-        ```https
-        https://<SUBDOMAIN>.dossiersystems.com/azuresso
-        https://dossier.<CLIENTDOMAINNAME>/azuresso
-        ```
+    ```http
+    https://<SUBDOMAIN>.dossiersystems.com/azuresso
+    https://dossier.<CLIENTDOMAINNAME>/azuresso
+    ```
 
 
     > [!NOTE]

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92f0895cbad547dbbb4ab040e69f1963c95df425
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 4690269775d68b23fd7b7d8c14b94c6188832934
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607497"
+ms.locfileid: "85799232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Oktatóanyag: Azure Active Directory integráció a Cerner Central-nal
 
@@ -109,17 +109,17 @@ Az Azure AD egyszeri bejelentkezés a Cerner Central használatával történő 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-        ```https
-        https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata
-        https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata
-        ```
+    ```http
+    https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata
+    https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-        ```https
-        https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso
-        https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso
-        ```
+    ```http
+    https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso
+    https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot a [cerner központi ügyfél-támogatási csapatával](mailto:SISupport@cbre.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.

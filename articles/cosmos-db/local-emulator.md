@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 227e60486f0a6712b0d29de47983bad737481bd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800545"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -42,7 +42,7 @@ Mivel az Azure Cosmos Emulator a helyi fejlesztői munkaállomáson futó, emul�
 * Ha az Azure Cosmos Emulatort használja, alapértelmezés szerint legfeljebb 25 rögzített méretű tárolót hozhat létre (csak Azure Cosmos DB SDK-k használatával támogatott), vagy 5 korlátlan tárolót az Azure Cosmos Emulator használatával. Az érték módosításáról további információért lásd: [A PartitionCount érték beállítása](#set-partitioncount).
 * Az emulátor támogatja a maximális azonosító tulajdonság 254 karakteres méretét.
 
-## <a name="system-requirements"></a>Rendszerkövetelmények
+## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 Az Azure Cosmos Emulator az alábbi hardver-és szoftver-követelményekkel rendelkezik:
 
@@ -233,7 +233,9 @@ A telepítési helyről a parancssor segítségével elindíthatja és leállít
 
 ### <a name="command-line-syntax"></a>Parancssori szintaxis
 
-    Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+```
 
 A beállítások listájának megtekintéséhez írja be a `Microsoft.Azure.Cosmos.Emulator.exe /?` parancsot a parancssorba.
 
@@ -418,7 +420,7 @@ Az interaktív rendszerhéj bezárása az emulátor elindítása után leállít
 
 Az Adatkezelő megnyitásához nyissa meg a következő URL-címet a böngészőben. Az emulátor végpontja a fent látható válaszüzenetben van megadva.
 
-    https://<emulator endpoint provided in response>/_explorer/index.html
+** \: https // ** \<emulator endpoint provided in response> **/_explorer/index.html**
 
 Ha a .NET-ügyfélalkalmazás Linux Docker-tárolón fut, és ha egy gazdagépen futtatja az Azure Cosmos emulatort, kövesse az alábbi, Linux rendszerű szakaszt a tanúsítvány Linux Docker-tárolóba való importálásához.
 

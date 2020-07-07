@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f77f00870af7b9d1788d96391264bdf9b4ee73c
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b3c8062bf40e8c97e93f237237dcd7c6923d59dd
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607667"
+ms.locfileid: "85799642"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Oktatóanyag: a Carbonite-végpontok biztonsági mentésének integrálása Azure Active Directory
 
@@ -84,28 +84,28 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
-        ```https
-        https://red-us.mysecuredatavault.com
-        https://red-apac.mysecuredatavault.com
-        https://red-fr.mysecuredatavault.com
-        https://red-emea.mysecuredatavault.com
-        https://kamino.mysecuredatavault.com
-        ```
+    ```http
+    https://red-us.mysecuredatavault.com
+    https://red-apac.mysecuredatavault.com
+    https://red-fr.mysecuredatavault.com
+    https://red-emea.mysecuredatavault.com
+    https://kamino.mysecuredatavault.com
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
-        ```https
-        https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx
-        https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx
-        https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx
-        https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx
-        ```
+    ```http
+    https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx
+    ```
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
-    ```https
+    ```http
     https://red-us.mysecuredatavault.com/
     https://red-apac.mysecuredatavault.com/
     https://red-fr.mysecuredatavault.com/

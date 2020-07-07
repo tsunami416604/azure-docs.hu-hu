@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: c1ee9d301d983404c23f4c710ea771599942df49
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 17dc6ef4b1c86e0ae0301783c2c524062e85fb5a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606834"
+ms.locfileid: "85799230"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Oktatóanyag: Azure Active Directory integráció a Form.com
 
@@ -111,10 +111,10 @@ Az Azure AD egyszeri bejelentkezés Form.com való konfigurálásához hajtsa v�
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-        ```https
-        https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action
-        https://<subdomain>.form.com/Member/UserAccount/SAML2.action
-        ```
+    ```http
+    https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action
+    https://<subdomain>.form.com/Member/UserAccount/SAML2.action
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek lekéréséhez forduljon a Form.com ügyfélszolgálati [csapatához](https://form.com/about/company/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.

@@ -1,6 +1,6 @@
 ---
-title: Kettős hitelesítő adatok rotációs oktatóanyaga
-description: Ebből az oktatóanyagból megtudhatja, hogyan automatizálható egy titkos kód elforgatása a kettős hitelesítő adatokat használó erőforrásokhoz.
+title: A két hitelesítő adatokkal rendelkező erőforrások rotációs oktatóanyaga
+description: Ebből az oktatóanyagból megtudhatja, hogyan automatizálható a titkos kód elforgatása olyan erőforrásokhoz, amelyek két hitelesítési hitelesítő adatot használnak.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 9ab8a35808f94c04c1d57cd18a8d45b5a59c5160
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: ba9ff0ead1131b091aa1a5ece2ecf94d2319a968
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85486976"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800697"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-dual-credential-authentication"></a>Egy titok elforgatásának automatizálása kettős hitelesítő adatok hitelesítését használó erőforrásokhoz
+# <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>A titkos kulcs rotációjának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
 Az Azure-szolgáltatásokhoz való hitelesítés legjobb módja egy [felügyelt identitás](../general/managed-identity.md)használata, de vannak olyan helyzetek, amikor ez nem lehetséges. Ezekben az esetekben a rendszer hozzáférési kulcsokat vagy jelszavakat használ. A hozzáférési kulcsokat és jelszavakat gyakran el kell forgatni.
 
-Ez az oktatóanyag bemutatja, hogyan automatizálható az adatbázisok és a kettős hitelesítő adatokat használó szolgáltatások titkainak rendszeres elforgatása. Ebben az oktatóanyagban az Azure Storage-fiók kulcsait elforgatja Azure Key Vault a titkokat Azure Event Grid értesítés által aktivált függvény használatával. :
+Ez az oktatóanyag bemutatja, hogyan automatizálható a titkok rendszeres elforgatása olyan adatbázisokhoz és szolgáltatásokhoz, amelyek két hitelesítési hitelesítő adatot használnak. Ebben az oktatóanyagban az Azure Storage-fiók kulcsait elforgatja Azure Key Vault a titkokat Azure Event Grid értesítés által aktivált függvény használatával. :
 
 > [!NOTE]
 > A Storage-fiókok kulcsai automatikusan kezelhetők Key Vault a Storage-fiók delegált hozzáférésének közös hozzáférési aláírási jogkivonatokkal való ellátásával. Vannak olyan szolgáltatások, amelyekhez hozzáférési kulccsal rendelkező Storage-fiók kapcsolati sztringre van szükség, és ez a megoldás ajánlott
@@ -47,7 +47,7 @@ Ha nem rendelkezik meglévő Key Vault-és Storage-fiókkal, akkor az alábbi te
 
 1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget. Nevezze el a csoport **akvrotation** , és kattintson **az OK**gombra.
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
-1. **Létrehozás** kiválasztása
+1. Kattintson a **Létrehozás** elemre.
 
     ![Erőforráscsoport létrehozása](../media/secrets/rotation-dual/dual-rotation-1.png)
 
@@ -91,7 +91,7 @@ A Function app rotációs funkciója megköveteli ezeket az összetevőket és k
 1. A **titok neve**mezőbe írja be a titkos kulcs nevét, ahol a hozzáférési kulcsok tárolása történik
 1. A tárház **URL-címében**írja be a következőt: függvény kód GitHub helye ( **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** )
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
-1. **Létrehozás** kiválasztása
+1. Kattintson a **Létrehozás** elemre.
 
    ![Felülvizsgálat + létrehozás](../media/secrets/rotation-dual/dual-rotation-2.png)
 
@@ -165,7 +165,7 @@ A meglévő függvények elforgatásához további Storage-fiókok kulcsainak ho
 1. A **Függvényalkalmazás neve**mezőbe írja be a Function alkalmazás nevét.
 1. A **titok neve**mezőbe írja be a titkos kulcs nevét, ahol a hozzáférési kulcsok tárolása történik
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
-1. **Létrehozás** kiválasztása
+1. Kattintson a **Létrehozás** elemre.
 
    ![Felülvizsgálat + létrehozás](../media/secrets/rotation-dual/dual-rotation-7.png)
 
@@ -203,10 +203,10 @@ az storage account keys list -n akvrotationstorage
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>Elérhető Key Vault kettős hitelesítő adatok elforgatási funkciói
 
-- [Storage-fiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
+- [Tárfiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](../general/event-grid-overview.md)
 - Útmutató: az [első függvény létrehozása a Azure Portalban](../../azure-functions/functions-create-first-azure-function.md)
 - Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](../general/event-grid-logicapps.md)

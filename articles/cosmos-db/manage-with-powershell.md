@@ -8,10 +8,10 @@ ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 1e43cc48a6c4684326a152adedabcd00a44657a6
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390839"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
@@ -762,7 +762,7 @@ Remove-AzResourceLock `
     -LockName $lockName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Minden PowerShell-minta](powershell-samples.md)
 * [Azure Cosmos-fiók kezelése](how-to-manage-database-account.md)

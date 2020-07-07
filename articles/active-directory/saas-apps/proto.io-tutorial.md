@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b499c8311e3b8acb1a239acc196ae158692b8716
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: db770e513599aa5da43ffa25463994d887536494
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765572"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-protoio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Proto.io
 
@@ -101,11 +101,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a Proto.io alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name |  |  Forrás attribútum|
-    | ---------------| --------------- | --------- |
-    | e-mail | | User. mail |
-    | fname | | User. givenName |
-    | Vnév mezőnevet kívánjuk | | felhasználó. vezetéknév |
+    | Name | Forrás attribútum|
+    | --------------- | --------- |
+    | e-mail | User. mail |
+    | fname | User. givenName |
+    | Vnév mezőnevet kívánjuk | felhasználó. vezetéknév |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 

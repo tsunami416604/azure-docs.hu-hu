@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 808b2d964bb39af6b410a84563717102ebece454
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad80956cf7d6324487da5d0fabc2e93a5b4bf52f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67094109"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Oktatóanyag: Azure Active Directory integráció a Predictix Pricing szolgáltatással
 
@@ -57,7 +57,7 @@ A Predictix díjszabásának az Azure AD-be való integrálásának beállítás
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
+2. Lépjen a **vállalati alkalmazások**  >  **minden alkalmazás**:
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -111,11 +111,10 @@ Ha az Azure AD egyszeri bejelentkezést a Predictix díjszabásával szeretné k
 
     1. Az **azonosító (entitás azonosítója)** mezőben adjon meg egy URL-címet ebben a mintában:
 
-        | |
-        |--|
-        | `https://<companyname-pricing>.predictix.com` |
-        | `https://<companyname-pricing>.dev.predictix.com` |
-        | |
+        ```https
+        https://<companyname-pricing>.predictix.com
+        https://<companyname-pricing>.dev.predictix.com
+        ```
 
     > [!NOTE]
     > Ezek az értékek helyőrzők. A tényleges bejelentkezési URL-címet és azonosítót kell használnia. Az értékek lekéréséhez lépjen kapcsolatba a [Predictix Price Reporting támogatási csapatával](https://www.infor.com/company/customer-center/) . A Azure Portal az **alapszintű SAML-konfiguráció** párbeszédpanelen látható mintázatokat is megtekintheti.
@@ -156,11 +155,11 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be **BrittaSimon@\<yourcompanydomain>\< . bővítmény>**. (Például: BrittaSimon@contoso.com.)
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
 
     1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -198,7 +197,7 @@ Most az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési pa
 
 Ha a hozzáférési panelen kiválasztja a Predictix díjszabási csempét, akkor automatikusan be kell jelentkeznie arra a Predictix-jelentési példányra, amelyhez be kell állítania az SSO-t. További információ: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

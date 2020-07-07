@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1cc89beb1e704428fdb4e10868e72e837804d3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765548"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799894"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a hub Plannervel
 
@@ -43,8 +43,8 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A hub Planner támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-* A hub Planner konfigurálása után kényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását is biztosítja. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A hub Planner támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
+* A hub Planner konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-hub-planner-from-the-gallery"></a>Hub Planner hozzáadása a katalógusból
 
@@ -85,9 +85,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.hubplanner.com`
 
-    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.hubplanner.com/sso/metadata`
+    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://app.hubplanner.com/sso/metadata`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.hubplanner.com/sso/callback`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek megszerzéséhez forduljon a [hub Planner ügyfél-támogatási csapatához](mailto:hello@hubplanner.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -133,9 +133,29 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 Ha az egyszeri bejelentkezést szeretné konfigurálni a **hub Planner** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [hub Planner támogatási csapatának](mailto:hello@hubplanner.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
+### <a name="install-the-extension-in-hub-planner"></a>A bővítmény telepítése a hub Plannerben
+
+Az egyszeri bejelentkezés funkció engedélyezéséhez először engedélyeznie kell a bővítményt. A fiók tulajdonosaként vagy ezzel egyenértékű engedélyekkel hajtsa végre a következő lépéseket:
+
+1. Válassza a **Beállítások lehetőséget**.
+1. Az oldalsó menüben válassza a bővítmények **kezelése**bővítmények  >  **hozzáadása/eltávolítása**lehetőséget.
+1. Keresse meg az egyszeri bejelentkezés bővítményét, és vegyen fel vagy próbálkozzon ingyen.
+1. Ha a rendszer kéri, fogadja el a feltételeket és kikötéseket, majd válassza a **Hozzáadás most**lehetőséget.
+
+### <a name="enable-sso"></a>Egyszeri bejelentkezés engedélyezése
+
+A bővítmény engedélyezése után engedélyeznie kell az egyszeri bejelentkezést a fiókjához. 
+
+1. Válassza a **Beállítások lehetőséget**.
+1. Az oldalsó menüben válassza a **hitelesítés**lehetőséget.
+1. Válassza az **egyszeri bejelentkezés (SSO)** lehetőséget.
+1. Adja meg a további hitelesítési adatokat az alábbi ábrán látható módon, majd kattintson a **Mentés**gombra.
+
+![Az SSO-beállítások képernyőképe](media/hub-planner-tutorial/sso-settings.png)
+
 ### <a name="create-hub-planner-test-user"></a>Hub Planner tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a hub Plannerben. A [hub Planner támogatási csapatának](mailto:hello@hubplanner.com) használata a felhasználók a hub Planner platformon való hozzáadásához. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ha más felhasználókat szeretne felvenni, válassza az **Settings**  >  **erőforrások kezelése** lehetőséget, és adja hozzá a felhasználókat innen. Ügyeljen arra, hogy hozzáadja az e-mail-címét, és meghívja őket. A meghívást követően a rendszer e-mailt küld, és az SSO-n keresztül tud belépni. 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

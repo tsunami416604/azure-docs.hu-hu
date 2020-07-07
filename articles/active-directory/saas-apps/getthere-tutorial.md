@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d8ce37da0992ab3ac2c02f9c48c9c79ee40ae8
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 45fc683bb894fdafae7f88e112971d1c8378e50b
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608675"
+ms.locfileid: "85799875"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-getthere"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GetThere
 
@@ -87,19 +87,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet:
 
-        ```https
-        getthere.com
-        http://idp.getthere.com
-        ```
+    ```http
+    getthere.com
+    http://idp.getthere.com
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az alábbi URL-címek egyikét:
 
-        ```https
-        https://wx1.getthere.net/login/saml/post.act
-        https://gtx2-gcte2.getthere.net/login/saml/post.act
-        https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act
-        https://wx1.getthere.net/login/saml/ssoaavalidate.act
-        ```
+    ```http
+    https://wx1.getthere.net/login/saml/post.act
+    https://gtx2-gcte2.getthere.net/login/saml/post.act
+    https://gtx2-gcte2.getthere.net/login/saml/ssoaasvalidate.act
+    https://wx1.getthere.net/login/saml/ssoaavalidate.act
+    ```
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 

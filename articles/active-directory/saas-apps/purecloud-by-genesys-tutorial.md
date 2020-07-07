@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0433b7287fc00da09fcf303fbcb8d74bf4e3b196
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78897784"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800111"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a PureCloud-mel a Genesys használatával
 
@@ -87,35 +87,35 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, köv
 
     a. Az **azonosító** mezőben adja meg a régiójának megfelelő URL-címet:
 
-    | |
-    |--|
-    | `https://login.mypurecloud.com/saml` |
-    | `https://login.mypurecloud.de/saml` |
-    | `https://login.mypurecloud.jp/saml` |
-    | `https://login.mypurecloud.ie/saml` |
-    | `https://login.mypurecloud.au/saml` |
+    ```http
+    https://login.mypurecloud.com/saml
+    https://login.mypurecloud.de/saml
+    https://login.mypurecloud.jp/saml
+    https://login.mypurecloud.ie/saml
+    https://login.mypurecloud.au/saml
+    ```
 
     b. A **Válasz URL-címe** mezőbe írja be a régiójának megfelelő URL-címet:
 
-    | |
-    |--|
-    | `https://login.mypurecloud.com/saml` |
-    | `https://login.mypurecloud.de/saml` |
-    | `https://login.mypurecloud.jp/saml` |
-    | `https://login.mypurecloud.ie/saml` |
-    | `https://login.mypurecloud.com.au/saml`|
+    ```http
+    https://login.mypurecloud.com/saml
+    https://login.mypurecloud.de/saml
+    https://login.mypurecloud.jp/saml
+    https://login.mypurecloud.ie/saml
+    https://login.mypurecloud.com.au/saml
+    ```
 
 1. Válassza a **további URL-címek beállítása** lehetőséget, majd a következő lépéssel konfigurálja az alkalmazást **SP** -ben kezdeményezett módban:
 
     A **bejelentkezési URL-cím** mezőbe írja be a régiójának megfelelő URL-címet:
     
-    | |
-    |--|
-    | `https://login.mypurecloud.com` |
-    | `https://login.mypurecloud.de` |
-    | `https://login.mypurecloud.jp` |
-    | `https://login.mypurecloud.ie` |
-    | `https://login.mypurecloud.com.au` |
+    ```http
+    https://login.mypurecloud.com
+    https://login.mypurecloud.de
+    https://login.mypurecloud.jp
+    https://login.mypurecloud.ie
+    https://login.mypurecloud.com.au
+    ```
 
 1. A Genesys-alkalmazás által használt PureCloud egy adott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvétel az alapértelmezett attribútumok listáját jeleníti meg:
 
@@ -123,7 +123,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, köv
 
 1. Emellett a Genesys alkalmazás által készített PureCloud néhány további attribútumot vár az SAML-válaszban, ahogy az a következő táblázatban látható. Ezek az attribútumok előre is fel vannak töltve, de szükség szerint áttekinthetők.
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ---------------| --------------- |
     | E-mail | User. userPrincipalName |
     | OrganizationName | `Your organization name` |
@@ -144,9 +144,9 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a felhasználónevet a következő formátumban: username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőben adja meg a felhasználónevet a következő formátumban: username@companydomain.extension . Példa: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -212,9 +212,9 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Pu
 
     a. A **teljes név** mezőben adja meg a felhasználó nevét. Például: **B. Simon**.
 
-    b. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét. Például: **b. simon\@contoso.com**.
+    b. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét. Például: **b. simon \@ contoso.com**.
 
-    c. Kattintson a **Létrehozás** gombra.
+    c. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -222,7 +222,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen kiválasztja a **PureCloud by Genesys** csempét, akkor automatikusan be kell jelentkeznie a PureCloud Genesys-fiókkal, amelyet az egyszeri bejelentkezés beállításához állított be. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure AD-vel való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

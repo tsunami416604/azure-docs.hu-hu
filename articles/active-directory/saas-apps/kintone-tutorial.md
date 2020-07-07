@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 453c1f19945c309e4bcc224b55c2b359b6194789
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b473502f740717fb0426d09261c1f1107144d047
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605395"
+ms.locfileid: "85799837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Oktatóanyag: Azure Active Directory integráció a Kintone
 
@@ -109,10 +109,10 @@ Az Azure AD egyszeri bejelentkezés Kintone való konfigurálásához hajtsa vé
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-        ```https
-        https://<companyname>.cybozu.com
-        https://<companyname>.kintone.com
-        ```
+    ```http
+    https://<companyname>.cybozu.com
+    https://<companyname>.kintone.com
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Kintone ügyfélszolgálati [csapatához](https://www.kintone.com/contact/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.

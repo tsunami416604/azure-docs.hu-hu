@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc5ae5532acdd66e091891c55e3cebb79cb3d227
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 9e3931baa8bab6f21d0edfefd17b95f7ecf3f7be
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608606"
+ms.locfileid: "85799819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a KnowledgeOwl
 
@@ -86,34 +86,34 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-        ```https
-        https://app.knowledgeowl.com/sp        
-        https://app.knowledgeowl.com/sp/id/<unique ID>
-        ```
+    ```http
+    https://app.knowledgeowl.com/sp
+    https://app.knowledgeowl.com/sp/id/<unique ID>
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-        ```https
-        https://subdomain.knowledgeowl.com/help/saml-login
-        https://subdomain.knowledgeowl.com/docs/saml-login
-        https://subdomain.knowledgeowl.com/home/saml-login
-        https://privatedomain.com/help/saml-login
-        https://privatedomain.com/docs/saml-login
-        https://privatedomain.com/home/saml-login
-        ```
+    ```http
+    https://subdomain.knowledgeowl.com/help/saml-login
+    https://subdomain.knowledgeowl.com/docs/saml-login
+    https://subdomain.knowledgeowl.com/home/saml-login
+    https://privatedomain.com/help/saml-login
+    https://privatedomain.com/docs/saml-login
+    https://privatedomain.com/home/saml-login
+    ```
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-        ```https
-        https://subdomain.knowledgeowl.com/help/saml-login
-        https://subdomain.knowledgeowl.com/docs/saml-login
-        https://subdomain.knowledgeowl.com/home/saml-login
-        https://privatedomain.com/help/saml-login
-        https://privatedomain.com/docs/saml-login
-        https://privatedomain.com/home/saml-login
-        ```
+    ```http
+    https://subdomain.knowledgeowl.com/help/saml-login
+    https://subdomain.knowledgeowl.com/docs/saml-login
+    https://subdomain.knowledgeowl.com/home/saml-login
+    https://privatedomain.com/help/saml-login
+    https://privatedomain.com/docs/saml-login
+    https://privatedomain.com/home/saml-login
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. A tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján frissítenie kell ezeket az értékeket, amelyeket az oktatóanyag későbbi részében ismertetünk.

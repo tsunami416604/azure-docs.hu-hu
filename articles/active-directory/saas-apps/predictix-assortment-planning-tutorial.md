@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: bc3ea2f6fddc233a69d96c0c885ab310ed1e77c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be1aa932e246992bd5826ac502ab2ac5b8d52ddf
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67094153"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Oktatóanyag: Azure Active Directory integráció a Predictix-választék tervezésével
 
@@ -56,7 +56,7 @@ A Predictix-szortiment Azure AD-be való integrálásának beállításához hoz
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
+2. Lépjen a **vállalati alkalmazások**  >  **minden alkalmazás**:
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -106,19 +106,17 @@ Az Azure AD egyszeri bejelentkezés Predictix-szortimenttel való konfigurálás
 
     1. A **bejelentkezési URL** -cím mezőben adjon meg egy URL-címet ebben a mintában:
 
-       | |
-        |--|
-        | `https://<sub-domain>.ap.predictix.com/sso/request`|
-        | `https://<sub-domain>.dev.ap.predictix.com/`|
-        | |
+        ```https
+        https://<sub-domain>.ap.predictix.com/sso/request
+        https://<sub-domain>.dev.ap.predictix.com/
+        ```
 
     1. Az **azonosító (entitás azonosítója)** mezőben adjon meg egy URL-címet ebben a mintában:
 
-        | |
-        |--|
-        | `https://<sub-domain>.ap.predictix.com`|
-        | `https://<sub-domain>.dev.ap.predictix.com`|
-        | |
+        ```https
+        https://<sub-domain>.ap.predictix.com
+        https://<sub-domain>.dev.ap.predictix.com
+        ```
 
     > [!NOTE]
     > Ezek az értékek helyőrzők. A tényleges bejelentkezési URL-címet és azonosítót kell használnia. Az értékek lekéréséhez lépjen kapcsolatba a [Predictix-választék tervezési támogatási csapatával](https://www.infor.com/support) . A Azure Portal az **alapszintű SAML-konfiguráció** párbeszédpanelen látható mintázatokat is megtekintheti.
@@ -159,11 +157,11 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be **BrittaSimon@\<yourcompanydomain>\< . bővítmény>**. (Például: BrittaSimon@contoso.com.)
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
 
     1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -204,7 +202,7 @@ Most az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési pa
 
 Amikor kiválasztja a Predictix-választék tervezése csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Predictix-kiválasztási tervezési példányba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

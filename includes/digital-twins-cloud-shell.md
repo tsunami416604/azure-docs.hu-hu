@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 4aa016294f0ef3bd26f7f3ef6fa374e9367b672d
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85805502"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -29,16 +29,33 @@ Ha első alkalommal használta ezt az előfizetést az Azure digitális Twins sz
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-Ezután adja hozzá az [**Azure CLI-hez készült Microsoft Azure IoT-bővítményt**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) a Cloud Shellhoz, hogy engedélyezze a parancsokat az Azure Digital Twins és más IoT-szolgáltatások használatával való interakcióhoz. Ezzel a paranccsal adhatja hozzá a bővítményt:
+Ezután adja hozzá az [**Azure CLI-hez készült Microsoft Azure IoT-bővítményt**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) a Cloud Shellhoz, hogy engedélyezze a parancsokat az Azure Digital Twins és más IoT-szolgáltatások használatával való interakcióhoz. 
 
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
+Először futtassa ezt a parancsot a már telepített bővítmények listájának megtekintéséhez.
 
-Ha korábban már telepítette a bővítményt, a kimenetben az "Azure-IOT" bővítmény már telepítve van. " Ha ez történik, futtassa a következőt, és győződjön meg arról, hogy rendelkezik a legújabb frissítéssel: 
+```azurecli-interactive
+az extension list
+```
+
+A kimenetben keresse meg az `"name"` egyes listaelemek mezőjét, és tekintse meg a bővítmények nevét.
+
+A kimenet használatával határozza meg, hogy a következő parancsok melyike fusson a bővítmény telepítéséhez (több is futtatható).
+* Ha a lista a `azure-iot` következőket tartalmazza: már rendelkezik a kiterjesztéssel. A parancs futtatásával győződjön meg arról, hogy rendelkezik a legújabb frissítéssel:
 
    ```azurecli-interactive
    az extension update --name azure-iot
+   ```
+
+* Ha a lista **nem** tartalmazza a következőt `azure-iot` : telepítenie kell a bővítményt. Használja ezt a parancsot:
+
+    ```azurecli-interactive
+    az extension add --name azure-iot
+    ```
+
+* Ha a lista tartalmazza a `azure-iot-cli-ext` következőt: Ez a bővítmény örökölt verziója. Egyszerre csak egy bővítményt kell telepíteni, ezért el kell távolítania az örökölt bővítményt. Használja ezt a parancsot:
+
+   ```azurecli-interactive
+   az extension remove --name azure-cli-iot-ext
    ```
 
 Most már készen áll az Azure Digital Twins-vel való együttműködésre a Cloud Shell.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 128c4d1699e6e243a5c1c1573892efa516adade1
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160194"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800817"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Oktatóanyag: Azure Active Directory integráció a periszkóp-szolgáltatásokkal
 
@@ -107,10 +107,10 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következő URL-címeket:
     
-    | |
-    |--|
-    | `https://app.periscopedata.com/` |
-    | `https://app.periscopedata.com/app/<SITENAME>` |
+    ```https
+    https://app.periscopedata.com/
+    https://app.periscopedata.com/app/<SITENAME>
+    ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.periscopedata.com/<SITENAME>/sso`
 
@@ -125,7 +125,7 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
 1. Egy másik böngészőablakban jelentkezzen be a periszkóp-be rendszergazdaként.
 
-2. Nyissa meg a fogaskerék menüt a bal alsó sarokban, és nyissa meg a **Számlázási** > **Biztonság** menüt, és hajtsa végre az alábbi lépéseket. Csak a rendszergazdák férhetnek hozzá ezekhez a beállításokhoz.
+2. Nyissa meg a fogaskerék menüt a bal alsó sarokban, és nyissa meg a **Számlázási**  >  **Biztonság** menüt, és hajtsa végre az alábbi lépéseket. Csak a rendszergazdák férhetnek hozzá ezekhez a beállításokhoz.
 
     ![Periszkóp adatok konfigurálása](./media/periscope-data-tutorial/configure01.png)
 
@@ -141,7 +141,7 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
     f. Keresse meg az XML-fájl első címkéjét, másolja ki a **entityID** értékét, és illessze be a **kiállító** szövegmezőbe.
 
-    g. Keresse meg az SAML protokollt használó **IDPSSODescriptor** címkét. A szakaszon belül keresse meg a címke- **leírót** a **use = aláírással**. másolja a **x509** értékét, és illessze be a **tanúsítvány** szövegmezőbe.
+    : Keresse meg az SAML protokollt használó **IDPSSODescriptor** címkét. A szakaszon belül keresse meg a címke- **leírót** a **use = aláírással**. másolja a **x509** értékét, és illessze be a **tanúsítvány** szövegmezőbe.
 
     h. A több szóközzel rendelkező helyek kiválaszthatják az alapértelmezett helyet az **alapértelmezett szóköz** legördülő listából. Ez lesz az a hely, amelyet új felhasználók adnak hozzá, amikor első alkalommal jelentkeznek be a periszkóp-ba, és a Active Directory egyszeri bejelentkezéssel vannak kiépítve.
 
@@ -167,12 +167,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -220,7 +220,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a pe
 
     b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    c. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon\@contoso.com**-e-mail-címét.
+    c. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com**-e-mail-címét.
 
     d. Kattintson a **Hozzáadás**gombra.
 

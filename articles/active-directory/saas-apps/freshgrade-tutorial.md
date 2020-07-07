@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 9c7a6716bbc4b297973c8bfb0305434ee08a4730
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b2bceac127645717947d1da712d1e3699a04bee0
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606375"
+ms.locfileid: "85799207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Oktatóanyag: Azure Active Directory integráció a FreshGrade
 
@@ -107,17 +107,17 @@ Az Azure AD egyszeri bejelentkezés FreshGrade való konfigurálásához hajtsa 
 
      a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minták használatával:
 
-        ```https        
-        https://<subdomain>.freshgrade.com/login
-        https://<subdomain>.onboarding.freshgrade.com/login
-        ```
+    ```http       
+    https://<subdomain>.freshgrade.com/login
+    https://<subdomain>.onboarding.freshgrade.com/login
+    ```
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minták használatával:
     
-        ```https
-        https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>
-        https://login.freshgrade.com:443/saml/metadata/alias/<instancename>
-        ```
+    ```http
+    https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>
+    https://login.freshgrade.com:443/saml/metadata/alias/<instancename>
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a FreshGrade ügyfélszolgálati [csapatához](mailto:support@freshgrade.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85318624"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Oktatóanyag: a ASP.NET-alkalmazás üzembe helyezése és Azure SQL Database kód használata az Azure DevOps Starter használatával
@@ -33,8 +33,8 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
-> * Kapcsolódás Azure SQL Databasehoz 
-> * Az erőforrások eltávolítása
+> * Kapcsolódás az Azure SQL Database-hez 
+> * Erőforrások felszabadítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -140,7 +140,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. A kiadás befejezése után frissítse az alkalmazást a módosítások ellenőrzéséhez.
 
-## <a name="connect-to-azure-sql-database"></a>Kapcsolódás Azure SQL Databasehoz
+## <a name="connect-to-azure-sql-database"></a>Kapcsolódás az Azure SQL Database-hez
 
 A Azure SQL Databasehoz való kapcsolódáshoz megfelelő engedélyekkel kell rendelkeznie.
 
@@ -163,7 +163,7 @@ A Azure SQL Databasehoz való kapcsolódáshoz megfelelő engedélyekkel kell re
    > [!NOTE]
    > Ha megváltoztatja a jelszavát az SQL-bejelentkezéshez, a kiadási folyamat változóban módosítania kell a jelszót a [CD-folyamat vizsgálata](#examine-the-cd-pipeline) című részben leírtak szerint.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rájuk szükség, törölheti Azure SQL Database és az ebben az oktatóanyagban létrehozott kapcsolódó erőforrásokat is. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 
@@ -184,8 +184,8 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
-> * Kapcsolódás Azure SQL Databasehoz 
-> * Az erőforrások eltávolítása
+> * Kapcsolódás az Azure SQL Database-hez 
+> * Erőforrások felszabadítása
 
 A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 

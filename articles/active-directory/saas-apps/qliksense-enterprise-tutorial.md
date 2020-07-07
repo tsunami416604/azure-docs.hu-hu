@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec9349d8ed330a00a64922a44f99910f9eeeb0df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a2d4799966e070f7c50c39c350456b594664c9a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136448"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800670"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Oktatóanyag: a Qlik Sense Enterprise integrálása a Azure Active Directory
 
@@ -87,11 +87,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-    | |
-    |--|
-    | `https://<Fully Qualified Domain Name>.qlikpoc.com`|
-    | `https://<Fully Qualified Domain Name>.qliksense.com`|
-    | |
+    ```http
+    https://<Fully Qualified Domain Name>.qlikpoc.com
+    https://<Fully Qualified Domain Name>.qliksense.com
+    ```
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
@@ -112,9 +111,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -143,7 +142,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     ![QlikSense][qs24]
 
-    a. Nyissa meg a FederationMetaData. xml fájlt, amelyet a Azure Portal egy szövegszerkesztőben töltött le.
+    a. Nyissa meg a FederationMetaData.xml fájlt, amelyet Azure Portal egy szövegszerkesztőben töltött le.
 
     b. Keresse meg a **securitytokenservicetype**értéket.  Négy bejegyzés létezik (két pár nyitó és záró elem címkéje).
 
@@ -191,9 +190,9 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     e. Az **SAML-identitásszolgáltató metaadatai** az **összevonási metaadatok szerkesztése az Azure ad-konfiguráció** szakaszban korábban szerkesztett fájl.  **A identitásszolgáltató-metaadatok feltöltése előtt módosítani kell a fájlt** , hogy el lehessen távolítani az adatokat az Azure ad és a Qlik Sense Server közötti megfelelő működés biztosítása érdekében.  **Ha a fájlt még szerkeszteni szeretné, tekintse meg a fenti utasításokat.**  Ha a fájlt szerkesztették, kattintson a Tallózás gombra, és válassza ki a szerkesztett metaadat-fájlt, hogy feltöltse a virtuális proxy konfigurációba.
 
-    f. Adja meg a **userid** Azure ad által az Qlik Sense-KISZOLGÁLÓNAK küldött SAML-attribútumhoz tartozó attribútum nevét vagy sémájának hivatkozását.  A séma-hivatkozási információk az Azure app screens szolgáltatásban a konfiguráció után érhetők el.  A Name attribútum használatához írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`a következőt:.
+    f. Adja meg a **userid** Azure ad által az Qlik Sense-KISZOLGÁLÓNAK küldött SAML-attribútumhoz tartozó attribútum nevét vagy sémájának hivatkozását.  A séma-hivatkozási információk az Azure app screens szolgáltatásban a konfiguráció után érhetők el.  A Name attribútum használatához írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
-    g. Adja meg a **felhasználói könyvtár** értékét, amely a felhasználókhoz lesz csatolva, amikor az Azure ad-n keresztül hitelesítik magukat a Qlik Sense Serveren.  A hardcoded értékeket **szögletes zárójelek ([]**) szerint kell megadni.  Az Azure AD SAML-kijelentésben eljuttatott attribútumok használatához a szövegmezőben szögletes zárójelek **nélkül** adja meg az attribútum nevét.
+    : Adja meg a **felhasználói könyvtár** értékét, amely a felhasználókhoz lesz csatolva, amikor az Azure ad-n keresztül hitelesítik magukat a Qlik Sense Serveren.  A hardcoded értékeket **szögletes zárójelek ([]**) szerint kell megadni.  Az Azure AD SAML-kijelentésben eljuttatott attribútumok használatához a szövegmezőben szögletes zárójelek **nélkül** adja meg az attribútum nevét.
 
     h. Az **SAML-aláírási algoritmus** beállítja a szolgáltató (ebben az esetben a Qlik Sense Server) tanúsítványának aláírását a virtuális proxy konfigurációjában.  Ha a Qlik Sense Server a Microsoft Enhanced RSA és AES titkosítási szolgáltató használatával generált megbízható tanúsítványt használ, módosítsa az SAML-aláírási algoritmust az **SHA-256**értékre.
 
@@ -259,7 +258,7 @@ A Qlik Sense Enterprise az igény szerinti **üzembe**helyezést is támogatja, 
 
 Amikor kiválasztja a Qlik Sense Enterprise csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Qlik Sense Enterprise-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

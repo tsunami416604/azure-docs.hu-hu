@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 439a904c4e70a6e7e9633757c6d89fd3ce0a3a90
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 46a421ca9ab8efc69775966504fa393be9efba04
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608738"
+ms.locfileid: "85799921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Oktatóanyag: Azure Active Directory integráció a zűrzavar
 
@@ -111,18 +111,18 @@ Az Azure AD egyszeri bejelentkezés zűrzavar való konfigurálásához hajtsa v
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet:
 
-        ```https
-        https://login.huddle.net
-        https://login.huddle.com
-        ```
+    ```http
+    https://login.huddle.net
+    https://login.huddle.com
+    ```
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:
 
-        ```https
-        https://login.huddle.net/saml/browser-sso
-        https://login.huddle.com/saml/browser-sso
-        https://login.huddle.com/saml/idp-initiated-sso
-        ```
+    ```http
+    https://login.huddle.net/saml/browser-sso
+    https://login.huddle.com/saml/browser-sso
+    https://login.huddle.com/saml/idp-initiated-sso
+    ```
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -130,127 +130,127 @@ Az Azure AD egyszeri bejelentkezés zűrzavar való konfigurálásához hajtsa v
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-        ```https
-        https://<customsubdomain>.huddle.com
-        https://us.huddle.com
+    ```http
+    https://<customsubdomain>.huddle.com
+    https://us.huddle.com
         ```
 
     > [!NOTE]
-    > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [zűrzavar](https://huddle.zendesk.com) ügyfélszolgálatával.
+    > The Sign-on URL value is not real. Update this value with the actual Sign-On URL. Contact [Huddle Client support team](https://huddle.zendesk.com) to get this value.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-7. A **zűrzavar beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+7. On the **Set up Huddle** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    a. Login URL
 
-    b. Azure ad-azonosító
+    b. Azure Ad Identifier
 
-    c. Kijelentkezési URL-cím
+    c. Logout URL
 
-### <a name="configure-huddle-single-sign-on"></a>Zűrzavar egyszeri bejelentkezés konfigurálása
+### Configure Huddle Single Sign-On
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **zűrzavar** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [zűrzavar támogatási csapatához](https://huddle.zendesk.com/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+To configure single sign-on on **Huddle** side, you need to send the downloaded **Certificate (Base64)** and appropriate copied URLs from Azure portal to [Huddle support team](https://huddle.zendesk.com/). They set this setting to have the SAML SSO connection set properly on both sides.
 
 > [!NOTE]
-> Az egyszeri bejelentkezést a zűrzavar-támogatási csapatnak kell engedélyeznie. A konfiguráció befejezését követően értesítést kap.
+> Single sign-on needs to be enabled by the Huddle support team. You get a notification when the configuration has been completed.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### Create an Azure AD test user
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Select **New user** at the top of the screen.
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+3. In the User properties, perform the following steps.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
-    Például: BrittaSimon@contoso.com
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    For example, BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Click **Create**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### Assign the Azure AD test user
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a zűrzavar hozzáférésének biztosításával.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Huddle.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **zűrzavar**lehetőséget.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Huddle**.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **zűrzavar**lehetőséget.
+2. In the applications list, select **Huddle**.
 
-    ![Az zűrzavar hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![The Huddle link in the Applications list](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. In the menu on the left, select **Users and groups**.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-huddle-test-user"></a>Zűrzavar-tesztelési felhasználó létrehozása
+### Create Huddle test user
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a zűrzavar, a zűrzavar kell kiépíteni őket. Zűrzavar esetén a kiépítés manuális feladat.
+To enable Azure AD users to log in to Huddle, they must be provisioned into Huddle. In the case of Huddle, provisioning is a manual task.
 
-**A felhasználók üzembe helyezésének konfigurálásához hajtsa végre a következő lépéseket:**
+**To configure user provisioning, perform the following steps:**
 
-1. Jelentkezzen be a **zűrzavar** vállalati webhelyre rendszergazdaként.
+1. Log in to your **Huddle** company site as administrator.
 
-2. Kattintson a **munkaterület**elemre.
+2. Click **Workspace**.
 
-3. Kattintson a **személyek \> meghívása személyek**elemre.
+3. Click **People \> Invite People**.
 
     ![People](./media/huddle-tutorial/ic787838.png "People")
 
-4. Az **új meghívás létrehozása** szakaszban hajtsa végre a következő lépéseket:
+4. In the **Create a new invitation** section, perform the following steps:
   
-    ![Új meghívás](./media/huddle-tutorial/ic787839.png "Új meghívás")
+    ![New Invitation](./media/huddle-tutorial/ic787839.png "New Invitation")
   
-    a. A **csapat választása a személyek összekapcsolására** listából válassza a **csapat**lehetőséget.
+    a. In the **Choose a team to invite people to join** list, select **team**.
 
-    b. Írja be annak az érvényes Azure AD-fióknak az **e-mail-címét** , amelyet be szeretne állítani az **e-mail-cím megadásához a szövegmezőbe behívni kívánt személyek** számára.
+    b. Type the **Email Address** of a valid Azure AD account you want to provision in to **Enter email address for people you'd like to invite** textbox.
 
-    c. Kattintson a **meghívás**gombra.
+    c. Click **Invite**.
 
     > [!NOTE]
-    > Az Azure AD-fiók tulajdonosa egy e-mailt fog kapni, amely tartalmazza a fiók megerősítését, mielőtt az aktívvá válna.
+    > The Azure AD account holder will receive an email including a link to confirm the account before it becomes active.
 
 > [!NOTE]
-> Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a zűrzavar által biztosított zűrzavar felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
+> You can use any other Huddle user account creation tools or APIs provided by Huddle to provision Azure AD user accounts.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### Test single sign-on
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Ha a hozzáférési panelen a zűrzavar csempére kattint, automatikusan be kell jelentkeznie arra a zűrzavar, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Huddle tile in the Access Panel, you should be automatically signed in to the Huddle for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## Additional Resources
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
