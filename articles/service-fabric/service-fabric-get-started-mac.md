@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
 ms.openlocfilehash: c7e2d556c4fb8bebc0b75bdf9d4c209c27f86971
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193394"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
@@ -48,7 +48,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     
     >[!NOTE]
     >
-    >A démon közvetlenül a Docker-ben való módosítása ajánlott, mert a Daemon. JSON fájl helye változhat a gép és a gép között. Például: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >A démon közvetlenül a Docker-ben való módosítása ajánlott, mert a daemon.jsfájljának helye a gép és a gép között is változhat. Például: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
@@ -101,7 +101,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. A fürt eltarthat egy kis ideig. Ha fut, a következő parancs használatával megtekintheti a naplókat, vagy az irányítópultra ugorhat a fürtök állapotának `http://localhost:19080`megtekintéséhez:
+5. A fürt eltarthat egy kis ideig. Ha fut, a következő parancs használatával megtekintheti a naplókat, vagy az irányítópultra ugorhat a fürtök állapotának megtekintéséhez `http://localhost:19080` :
 
     ```bash 
     docker logs sftestcluster
@@ -166,7 +166,7 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel S
     ```
 
     > [!IMPORTANT]
-    > Előfordulhat, hogy `brew cask install java` a jelenlegi verziói a JDK újabb verzióját telepítik.
+    > Előfordulhat, hogy a jelenlegi verziói a `brew cask install java` JDK újabb verzióját telepítik.
     > Ügyeljen arra, hogy a JDK 8 telepítse.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Alkalmazás telepítése Mac gépen a terminálból

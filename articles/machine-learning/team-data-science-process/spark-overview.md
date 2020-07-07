@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 64caa1228cd073358bef496721c22b17554031d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189283"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Az adatelemzés áttekintése az Azure HDInsight Spark használatával
@@ -108,7 +108,7 @@ A New York-i taxi Trip-adatok körülbelül 20 GB tömörített, vesszővel tago
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Ezeket a fájlokat a 0,1%-os mintát vettük, és az\_utazási adatok és\_az utazási viteldíjak CVS-fájljai egyetlen adatkészletbe lettek használva, amely az útmutató bemeneti adatkészlete. Az utazáshoz\_és az utazási\_viteldíjhoz való csatlakozás egyedi kulcsa a következő mezőkből áll: emlékérem\_, Hack-\_licenc és a pickup DateTime. Az adatkészlet minden rekordja a következő attribútumokat tartalmazza, amelyek a New York-i taxis utakat jelképezik:
+Ezeket a fájlokat a 0,1%-os mintát vettük, és az utazási \_ adatok és az utazási \_ viteldíjak CVS-fájljai egyetlen adatkészletbe lettek használva, amely az útmutató bemeneti adatkészlete. Az utazáshoz és az utazási viteldíjhoz való csatlakozás egyedi kulcsa \_ a következő \_ mezőkből áll: emlékérem, Hack- \_ licenc és a pickup \_ DateTime. Az adatkészlet minden rekordja a következő attribútumokat tartalmazza, amelyek a New York-i taxis utakat jelképezik:
 
 | Mező | Rövid leírás |
 | --- | --- |
@@ -141,11 +141,11 @@ Ezeket a fájlokat a 0,1%-os mintát vettük, és az\_utazási adatok és\_az ut
 | tip_class |Tipp osztály (0: $0, 1: $0-5, 2: $6-10, 3: $11-20, 4: > $20) |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Kód végrehajtása Jupyter-jegyzetfüzetből a Spark-fürtön
-A Jupyter Notebook a Azure Portal indítható el. Keresse meg a Spark-fürtöt az irányítópulton, és kattintson rá a fürt felügyeleti oldalának megadásához. A Spark-fürthöz társított jegyzetfüzet megnyitásához kattintson a **fürt irányítópultok** -> **Jupyter notebook**elemre.
+A Jupyter Notebook a Azure Portal indítható el. Keresse meg a Spark-fürtöt az irányítópulton, és kattintson rá a fürt felügyeleti oldalának megadásához. A Spark-fürthöz társított jegyzetfüzet megnyitásához kattintson a **fürt irányítópultok**  ->  **Jupyter notebook**elemre.
 
 ![Fürt irányítópultok](./media/spark-overview/spark-jupyter-on-portal.png)
 
-Tallózással is megkeresheti a Jupyter ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** -jegyzetfüzetek elérését. Cserélje le az URL CLUSTERNAME részét a saját fürt nevére. A jegyzetfüzetek eléréséhez szüksége lesz a rendszergazdai fiók jelszavára.
+Tallózással is megkeresheti ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** a Jupyter-jegyzetfüzetek elérését. Cserélje le az URL CLUSTERNAME részét a saját fürt nevére. A jegyzetfüzetek eléréséhez szüksége lesz a rendszergazdai fiók jelszavára.
 
 ![Jupyter-jegyzetfüzetek tallózása](./media/spark-overview/spark-jupyter-notebook.png)
 
@@ -164,7 +164,7 @@ Ezután:
 
 * A jegyzetfüzetre kattintva tekintse meg a kódot.
 * Hajtsa végre az egyes cellákat a **SHIFT**billentyű lenyomásával.
-* A teljes jegyzetfüzet futtatásához kattintson a **cella** -> **futtatása**elemre.
+* A teljes jegyzetfüzet futtatásához kattintson a **cella**  ->  **futtatása**elemre.
 * Használja a lekérdezések automatikus vizualizációját.
 
 > [!TIP]

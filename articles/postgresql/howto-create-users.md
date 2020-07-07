@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80384347"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Felhasználók létrehozása Azure Database for PostgreSQL – egyetlen kiszolgálón
@@ -58,7 +58,7 @@ A kiszolgáló-rendszergazdai felhasználói fiókkal további felhasználókat 
 
 2. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz használja a rendszergazdai fiókot és a jelszót. Használja az előnyben részesített ügyfélprogramot, például pgAdmin vagy psql.
 
-3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző `<db_user>` értékét a kívánt új felhasználónévre, és adja meg `<newdb>` a helyőrző értékét a saját adatbázisának nevével. Cserélje le a helyőrző jelszavát a saját erős jelszavára.
+3. Szerkessze és futtassa a következő SQL-kódot. Cserélje le a helyőrző értékét a `<db_user>` kívánt új felhasználónévre, és adja meg a helyőrző értékét a `<newdb>` saját adatbázisának nevével. Cserélje le a helyőrző jelszavát a saját erős jelszavára.
 
    Ez az SQL Code-szintaxis egy új, testdb nevű adatbázist hoz létre, például a következő célokra:. Ezután létrehoz egy új felhasználót a PostgreSQL szolgáltatásban, és csatlakozási jogosultságokat biztosít az új adatbázishoz az adott felhasználó számára.
 

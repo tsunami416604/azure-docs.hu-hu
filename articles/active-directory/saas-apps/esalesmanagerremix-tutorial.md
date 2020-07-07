@@ -17,10 +17,10 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202396"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integrálása az E Sales Manager remixekkel
@@ -65,7 +65,7 @@ Az Azure AD és az E Sales Manager Remix integrálásának konfigurálásához a
 
     ![A Azure Active Directory gomb][1]
 
-1. Válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![A "vállalati alkalmazások" ablak][2]
     
@@ -101,9 +101,9 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
 
     ![E Sales Manager Remix tartomány és URL-címek egyszeri bejelentkezési adatai](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. A **bejelentkezési URL** -cím mezőbe írja be az URL-címet a következő formátumban: *https://\<Server-based-URL>/\<sub-domain>/esales-PC*.
+    a. A **bejelentkezési URL-cím** mezőbe írja be az URL-címet a következő formátumban: *https:// \<Server-Based-URL> / \<sub-domain> /esales-PC*.
 
-    b. Az **azonosító** mezőbe írja be az URL-címet a következő formátumban: *https://\<Server-based-URL>/\<sub-domain>/*.
+    b. Az **azonosító** mezőbe írja be az URL-címet a következő formátumban: *https:// \<Server-Based-URL> / \<sub-domain> / *.
 
     c. Jegyezze fel az **azonosító** értékét az oktatóanyag későbbi részében való használatra.
     
@@ -120,7 +120,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
 
     Megnyílik az **attribútum szerkesztése** ablak.
 
-1. Másolja a **névtér** és a **név** értékét. Adja meg az értéket a minta * \<névterében>\</Name>*, és mentse azt az oktatóanyag későbbi használatához.
+1. Másolja a **névtér** és a **név** értékét. Állítson elő értéket a mintában *\<Namespace>/\<Name>* , és mentse az oktatóanyag későbbi részében való használatra.
 
     ![Az attribútum szerkesztése ablak](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -142,7 +142,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
 
     ![A "felügyeleti menü" parancs](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. A bal oldali ablaktáblán válassza a **Rendszerbeállítások** > **együttműködés a külső rendszerrel**lehetőséget.
+1. A bal oldali ablaktáblán válassza a **Rendszerbeállítások**  >  **együttműködés a külső rendszerrel**lehetőséget.
 
     ![A "System Settings" és a "együttműködés a külső rendszerrel" hivatkozás](./media/esalesmanagerremix-tutorial/configure5.png)
     
@@ -158,7 +158,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
     
     b. Az **együttműködési elem** szakasz legördülő listájában válassza az **e-mail**lehetőséget.
 
-    c. Az **együttműködési elem** mezőben illessze be a korábban a Azure Portalból másolt jogcím értékét (azaz **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**).
+    c. Az **együttműködési elem** mezőben illessze be a korábban a Azure Portalból másolt jogcím értékét (azaz **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** ).
 
     d. A **kiállító (entitás azonosítója)** mezőben illessze be azt az azonosító értéket, amelyet korábban a Azure Portal **E Sales Manager Remix tartománya és URL-címei** szakaszban másolt.
 
@@ -166,12 +166,12 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
 
     f. Az **ID Provider bejelentkezési URL-címe** mezőbe illessze be az SAML egyszeri bejelentkezési szolgáltatás URL-címét, amelyet korábban a Azure Portal másolt.
 
-    g. Az **Identity Provider kijelentkezési URL-címe** mezőben illessze be a korábban a Azure Portalban másolt kijelentkezési URL-értéket.
+    : Az **Identity Provider kijelentkezési URL-címe** mezőben illessze be a korábban a Azure Portalban másolt kijelentkezési URL-értéket.
 
     h. Válassza a **beállítás kész**lehetőséget.
 
 > [!TIP]
-> Az alkalmazás beállítása során az előző utasítások tömör változatát olvashatja a [Azure Portal](https://portal.azure.com). Miután hozzáadta az alkalmazást a **Active Directory** > **Enterprise Applications** szakaszban, válassza az **egyszeri bejelentkezés** fület, majd nyissa meg a beágyazott dokumentációt a **konfiguráció** szakaszban alul. További információ a beágyazott dokumentációs szolgáltatásról: az [Azure ad Embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Az alkalmazás beállítása során az előző utasítások tömör változatát olvashatja a [Azure Portal](https://portal.azure.com). Miután hozzáadta az alkalmazást a **Active Directory**  >  **Enterprise Applications** szakaszban, válassza az **egyszeri bejelentkezés** fület, majd nyissa meg a beágyazott dokumentációt a **konfiguráció** szakaszban alul. További információ a beágyazott dokumentációs szolgáltatásról: az [Azure ad Embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
@@ -184,7 +184,7 @@ Ebben a szakaszban a Azure Portal a következő módon hozza létre a Britta Sim
 
     ![A Azure Active Directory hivatkozás](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. Az aktuális felhasználók listájának megjelenítéséhez válassza a **felhasználók és csoportok** > **minden felhasználó**lehetőséget.
+1. Az aktuális felhasználók listájának megjelenítéséhez válassza a **felhasználók és csoportok**  >  **minden felhasználó**lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
@@ -204,7 +204,7 @@ Ebben a szakaszban a Azure Portal a következő módon hozza létre a Britta Sim
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Válassza a **Létrehozás** lehetőséget.
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E Sales Manager Remix tesztelési felhasználó létrehozása
 
@@ -214,7 +214,7 @@ Ebben a szakaszban a Azure Portal a következő módon hozza létre a Britta Sim
 
     ![E Sales Manager Remix-konfiguráció](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. Válassza ki **a vállalati beállítások** > **karbantartását a részlegek és alkalmazottak számára**, majd válassza a **regisztrált alkalmazottak**lehetőséget.
+1. Válassza ki **a vállalati beállítások**  >  **karbantartását a részlegek és alkalmazottak számára**, majd válassza a **regisztrált alkalmazottak**lehetőséget.
 
     ![Az "alkalmazottak regisztrálva" lap](./media/esalesmanagerremix-tutorial/user1.png)
 
@@ -240,7 +240,7 @@ Ebben a szakaszban az E Sales Manager Remixekhez való hozzáférés biztosítá
 
 ![A felhasználói szerepkör kiosztása][200] 
 
-1. A Azure Portal nyissa meg az **alkalmazások** nézetet, nyissa meg a **címtár** nézetet, majd válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. A Azure Portal nyissa meg az **alkalmazások** nézetet, nyissa meg a **címtár** nézetet, majd válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 
     ![A "Nagyvállalati alkalmazások" és az "összes alkalmazás" hivatkozás][201] 
 
@@ -270,7 +270,7 @@ Amikor kiválasztja az E Sales Manager Remix csempét a hozzáférési panelen, 
 
 További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Az SaaS-alkalmazások Azure Active Directory-vel való integrálását ismertető oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

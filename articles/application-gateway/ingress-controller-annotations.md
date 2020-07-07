@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335829"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Jegyzetek Application Gateway bejövő adatkezelőhöz 
@@ -22,7 +22,7 @@ A Kubernetes bejövő erőforrások tetszőleges kulcs/érték párokkal is szer
 
 ## <a name="list-of-supported-annotations"></a>Támogatott jegyzetek listája
 
-A AGIC által megfigyelt bejövő erőforrásokhoz a következővel **must be annotated** kell szerepelnie: `kubernetes.io/ingress.class: azure/application-gateway`. Ezt követően a AGIC a kérdéses bejövő erőforrással fog működni.
+A AGIC által megfigyelt bejövő erőforrásokhoz a következővel **must be annotated** kell szerepelnie: `kubernetes.io/ingress.class: azure/application-gateway` . Ezt követően a AGIC a kérdéses bejövő erőforrással fog működni.
 
 | Jegyzet kulcsa | Érték típusa | Alapértelmezett érték | Megengedett értékek
 | -- | -- | -- | -- |
@@ -65,14 +65,14 @@ spec:
           serviceName: go-server-service
           servicePort: 80
 ```
-A fenti példában egy megjegyzéssel ellátott bejövő erőforrás `go-server-ingress-bkprefix` van definiálva. `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` A jegyzet azt jelzi, hogy az Application Gateway létrehoz egy HTTP-beállítást, amelynek elérési útja felülbírálja az `/hello` elérési utat `/test/`.
+A fenti példában egy megjegyzéssel ellátott bejövő erőforrás van definiálva `go-server-ingress-bkprefix` `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` . A jegyzet azt jelzi, hogy az Application Gateway létrehoz egy HTTP-beállítást, amelynek elérési útja felülbírálja az elérési utat `/hello` `/test/` .
 
 > [!NOTE] 
 > A fenti példában csak egy szabály van definiálva. A jegyzetek azonban a teljes beléptetési erőforrásra alkalmazhatók, így ha egy felhasználó több szabályt is definiált, a háttérbeli elérési út előtagját a megadott elérési utakhoz kell beállítani. Így ha egy felhasználó eltérő elérési úttal rendelkező szabályokat szeretne (még ugyanahhoz a szolgáltatáshoz is), különböző bejövő erőforrásokat kell megadnia.
 
 ## <a name="tls-redirect"></a>TLS-átirányítás
 
-A [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) konfigurálható a http-URL-címek automatikus átirányítására a https-partnerek számára. Ha ez a jegyzet jelen van, és a TLS megfelelően van konfigurálva, a Kubernetes bejövő vezérlő egy [útválasztási szabályt hoz létre egy átirányítási konfigurációval](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) , és alkalmazza a módosításokat a Application Gateway. A létrehozott átirányítás HTTP `301 Moved Permanently`lesz.
+A [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) konfigurálható a http-URL-címek automatikus átirányítására a https-partnerek számára. Ha ez a jegyzet jelen van, és a TLS megfelelően van konfigurálva, a Kubernetes bejövő vezérlő egy [útválasztási szabályt hoz létre egy átirányítási konfigurációval](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) , és alkalmazza a módosításokat a Application Gateway. A létrehozott átirányítás HTTP lesz `301 Moved Permanently` .
 
 ### <a name="usage"></a>Használat
 
@@ -206,8 +206,8 @@ spec:
 Ez a jegyzet lehetővé teszi számunkra, hogy a végpontot a Application Gateway magánhálózati IP-címén tegye elérhetővé.
 
 > [!NOTE]
-> * Application Gateway nem támogatja több IP-cím használatát ugyanazon a porton (például: 80/443). Ha a (z) `appgw.ingress.kubernetes.io/use-private-ip: "false"` és `appgw.ingress.kubernetes.io/use-private-ip: "true"` a `HTTP` (z) AGIC bemenően beáramlik, akkor a Application Gateway frissítése sikertelen lesz.
-> * A magánhálózati IP-címmel nem rendelkező Application Gateway figyelmen kívül lesz `appgw.ingress.kubernetes.io/use-private-ip: "true"` hagyva a Ingresses. Ez a vezérlő naplóiban jelenik meg, és a ingresses `NoPrivateIP` figyelmeztetéssel beáramlik az eseményekbe.
+> * Application Gateway nem támogatja több IP-cím használatát ugyanazon a porton (például: 80/443). Ha a (z) és a (z) AGIC bemenően beáramlik, `appgw.ingress.kubernetes.io/use-private-ip: "false"` `appgw.ingress.kubernetes.io/use-private-ip: "true"` akkor a `HTTP` Application Gateway frissítése sikertelen lesz.
+> * A magánhálózati IP-címmel nem rendelkező Application Gateway `appgw.ingress.kubernetes.io/use-private-ip: "true"` figyelmen kívül lesz hagyva a Ingresses. Ez a vezérlő naplóiban jelenik meg, és a ingresses figyelmeztetéssel beáramlik az eseményekbe `NoPrivateIP` .
 
 
 ### <a name="usage"></a>Használat
@@ -237,10 +237,10 @@ spec:
 
 ## <a name="backend-protocol"></a>Háttérbeli protokoll
 
-Ez a jegyzet lehetővé teszi, hogy megadjuk azt a protokollt, amelyet Application Gateway a hüvelyekkel való kommunikáció során használnia kell. Támogatott protokollok: `http`,`https`
+Ez a jegyzet lehetővé teszi, hogy megadjuk azt a protokollt, amelyet Application Gateway a hüvelyekkel való kommunikáció során használnia kell. Támogatott protokollok: `http` ,`https`
 
 > [!NOTE]
-> * Míg az önaláírt tanúsítványokat a Application Gateway támogatja, a AGIC jelenleg csak akkor `https` támogatja, ha a hüvelyek egy jól ismert hitelesítésszolgáltató által aláírt tanúsítványt használnak.
+> * Míg az önaláírt tanúsítványokat a Application Gateway támogatja, a AGIC jelenleg csak akkor támogatja, `https` Ha a hüvelyek egy jól ismert hitelesítésszolgáltató által aláírt tanúsítványt használnak.
 > * Ügyeljen arra, hogy ne használja a 80-es portot a HTTPS és a 443-es porton a Hüvelyeken HTTP használatával.
 
 ### <a name="usage"></a>Használat

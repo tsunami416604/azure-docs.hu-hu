@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
 ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058445"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Távoli asztali szolgáltatások vagy rendszergazdai jelszavának alaphelyzetbe állítása Windows rendszerű virtuális gépen
@@ -77,14 +77,14 @@ Először is győződjön meg arról, hogy a [legújabb PowerShell-modul telepí
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**A Távoli asztali szolgáltatások konfigurációjának alaphelyzetbe állítása**
 
-1. Állítsa vissza a virtuális gép távoli elérését a [set-AzVMAccessExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) parancsmaggal. A következő példa alaphelyzetbe állítja a nevű `myVMAccess` hozzáférési bővítményt az `myVM` `myResourceGroup` erőforráscsoport nevű virtuális gépen:
+1. Állítsa vissza a virtuális gép távoli elérését a [set-AzVMAccessExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) parancsmaggal. A következő példa alaphelyzetbe állítja a nevű hozzáférési bővítményt az `myVMAccess` erőforráscsoport nevű virtuális gépen `myVM` `myResourceGroup` :
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
     ```
 
     > [!TIP]
-    > Egy virtuális gépnek csak egyetlen VM-hozzáférési ügynöke lehet. A virtuális gép hozzáférési ügynökének tulajdonságainak beállításához használja `-ForceRerun` a következőt:. A használatakor `-ForceRerun`győződjön meg arról, hogy ugyanazt a nevet használja a virtuálisgép-hozzáférési ügynökhöz, amelyet az előző parancsokban használt.
+    > Egy virtuális gépnek csak egyetlen VM-hozzáférési ügynöke lehet. A virtuális gép hozzáférési ügynökének tulajdonságainak beállításához használja a következőt: `-ForceRerun` . A használatakor `-ForceRerun` Győződjön meg arról, hogy ugyanazt a nevet használja a virtuálisgép-hozzáférési ügynökhöz, amelyet az előző parancsokban használt.
 
 1. Ha továbbra sem tud távolról kapcsolódni a virtuális géphez, tekintse meg a [Windows-alapú Azure-beli virtuális gépek távoli asztal kapcsolatainak hibaelhárításával foglalkozó](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)témakört. Ha elveszíti a Windows tartományvezérlőhöz való kapcsolódást, vissza kell állítania a tartományvezérlő biztonsági másolatából.
 

@@ -13,10 +13,10 @@ ms.date: 04/02/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72025935"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Az IBM&T fejlesztési és tesztelési környezet telepítése az Azure-ban
@@ -62,11 +62,11 @@ Ez a cikk bemutatja, hogyan állíthatja be a Z fejlesztési és tesztelési kö
 
 3. Szerezze be a virtuális gép **Áttekintés** paneljén látható SSH hitelesítő adatokat a **kapcsolat** gomb használatával. Válassza az **SSH** fület, és másolja az SSH-bejelentkezési parancsot a vágólapra.
 
-4. Jelentkezzen be egy [bash-rendszerhéjba](/azure/cloud-shell/quickstart) a helyi számítógépről, és illessze be a parancsot. Az **SSH\<-felhasználói\>\@\<azonosító\>IP-címe**lesz. Ha a rendszer kéri a hitelesítő adatok megadását, adja meg őket a saját kezdőkönyvtár kapcsolatának létrehozásához.
+4. Jelentkezzen be egy [bash-rendszerhéjba](/azure/cloud-shell/quickstart) a helyi számítógépről, és illessze be a parancsot. Ez az **SSH \<user id\> \@ \<IP Address\> **formában jelenik meg. Ha a rendszer kéri a hitelesítő adatok megadását, adja meg őket a saját kezdőkönyvtár kapcsolatának létrehozásához.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>A telepítési fájl másolása a kiszolgálóra
 
-A webkiszolgáló telepítési fájlja a **ZDT\_install\_EE\_v 12.0.0.1. tgz**. Ez az IBM által biztosított adathordozó részét képezi. Ezt a fájlt fel kell töltenie Ubuntu rendszerű virtuális gépre.
+A webkiszolgáló telepítési fájlja a **ZDT \_ install \_ EE \_ v 12.0.0.1. tgz**. Ez az IBM által biztosított adathordozó részét képezi. Ezt a fájlt fel kell töltenie Ubuntu rendszerű virtuális gépre.
 
 1. A parancssorban adja meg a következő parancsot, hogy minden naprakész legyen az újonnan létrehozott rendszerképben:
 
@@ -91,7 +91,7 @@ A webkiszolgáló telepítési fájlja a **ZDT\_install\_EE\_v 12.0.0.1. tgz**. 
 
 ## <a name="install-the-enterprise-edition"></a>Az Enterprise Edition telepítése
 
-1. Nyissa meg a ZDT könyvtárat, és bontsa\_ki\_a\_ZDT install EE v 12.0.0.1. tgz fájlt a következő parancsokkal:
+1. Nyissa meg a ZDT könyvtárat, és bontsa ki a ZDT \_ install \_ EE \_ v 12.0.0.1. tgz fájlt a következő parancsokkal:
 
     ```
     cd ZDT

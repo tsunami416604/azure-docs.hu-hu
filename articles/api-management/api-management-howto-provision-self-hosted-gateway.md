@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203131"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Saját üzemeltetésű átjáró kiépítése az Azure API Management
@@ -40,7 +40,7 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
 4. Igény szerint megadhatja az átjáró erőforrásának **leírását** .
 5. Ha szeretné, az **+** **API** -k területen jelölje be az adott átjáró erőforráshoz tartozó API-k egy vagy többhöz való hozzárendelését.
 > [!IMPORTANT]
-> Alapértelmezés szerint a meglévő API-k egyike sem lesz társítva az új átjáró erőforráshoz. Ezért az új átjárón keresztül történő meghívására tett kísérletek a `404 Resource Not Found` válaszokat is eredményezik.
+> Alapértelmezés szerint a meglévő API-k egyike sem lesz társítva az új átjáró erőforráshoz. Ezért az új átjárón keresztül történő meghívására tett kísérletek a válaszokat is eredményezik `404 Resource Not Found` .
 
 6. Kattintson a **Hozzáadás** parancsra.
 

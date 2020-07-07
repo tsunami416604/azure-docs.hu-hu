@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418065"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
@@ -54,7 +54,7 @@ Az SAP Business Warehouse-összekötő használatához a következőket kell ten
 
 >[!TIP]
 >A SAP BW kapcsolódási problémáinak megoldásához ügyeljen a következőre:
->- A NetWeaver RFC SDK-ból kinyert összes függőségi könyvtár a%windir%\System32 mappában található. Általában a icudt34. dll, a icuin34. dll, a icuuc34. dll, a libicudecnumber. dll, a librfc32. dll, a libsapucum. dll, a sapcrypto. dll, a sapcryto_old. dll, a sapnwrfc. dll.
+>- A NetWeaver RFC SDK-ból kinyert összes függőségi könyvtár a%windir%\System32 mappában található. Általában icudt34.dll, icuin34.dll, icuuc34.dll, libicudecnumber.dll, librfc32.dll, libsapucum.dll, sapcrypto.dll, sapcryto_old.dll, sapnwrfc.dll.
 >- Az SAP-kiszolgálóhoz való csatlakozáshoz használt szükséges portok engedélyezve vannak a saját üzemeltetésű IR-gépen, amely általában a 3300-es és a 3201-es port.
 
 ## <a name="getting-started"></a>Első lépések
@@ -69,7 +69,7 @@ Az SAP Business Warehouse (BW) társított szolgáltatása a következő tulajdo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **SapBw** | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapBw** | Igen |
 | kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | Igen |
 | systemNumber | A SAP BWrendszer rendszerszáma.<br/>Engedélyezett érték: két számjegyből álló decimális szám karakterláncként megadva. | Igen |
 | ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren.<br/>Engedélyezett érték: a háromjegyű decimális szám karakterláncként van megadva. | Igen |
@@ -77,7 +77,7 @@ Az SAP Business Warehouse (BW) társított szolgáltatása a következő tulajdo
 | jelszó | A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -108,7 +108,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok SAP BWból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **SapBwCube**értékre. A RelationalTable típusú SAP BW adatkészlet esetében nem támogatottak a típus-specifikus tulajdonságok.
 
-**Például**
+**Példa:**
 
 ```json
 {
@@ -125,7 +125,7 @@ Az adatok SAP BWból való másolásához állítsa az adatkészlet Type (típus
 }
 ```
 
-Ha a beírt adatkészletet használta `RelationalTable` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+Ha `RelationalTable` a beírt adatkészletet használta, a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
@@ -137,10 +137,10 @@ Az adatok SAP BWból történő másolásához a másolási tevékenység **forr
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapBwSource** | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapBwSource** | Igen |
 | lekérdezés | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | Igen |
 
-**Például**
+**Példa:**
 
 ```json
 "activities":[
@@ -172,7 +172,7 @@ Az adatok SAP BWból történő másolásához a másolási tevékenység **forr
 ]
 ```
 
-Ha a beírt forrást használta `RelationalSource` , a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
+Ha `RelationalSource` a beírt forrást használta, a rendszer továbbra is támogatja a-t, míg a rendszer azt javasolja, hogy az új továbbítást használja.
 
 ## <a name="data-type-mapping-for-sap-bw"></a>SAP BW adattípusának leképezése
 

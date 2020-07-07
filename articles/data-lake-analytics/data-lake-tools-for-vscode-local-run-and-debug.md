@@ -10,10 +10,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
 ms.openlocfilehash: e51b5640163546c673a1b0f61da47ccd992f27ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72030032"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>A U-SQL és a hibakeresés helyi futtatása a Visual Studio Code-ban
@@ -32,11 +32,11 @@ A Azure Data Lake Tools for Visual Studio csak Windows-telepítések támogatjá
 
    ![A függőségi csomagok megkeresése](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
 
-   2,1 a **BuildTools**telepítéséhez kattintson a visualcppbuildtools_full. exe fájlra a LocalRunDependency mappában, majd kövesse a varázsló utasításait.   
+   2,1 a **BuildTools**telepítéséhez kattintson a visualcppbuildtools_full.exe elemre a LocalRunDependency mappában, majd kövesse a varázsló utasításait.   
 
     ![A BuildTools telepítése](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2,2 a **Win10SDK 10240**telepítéséhez kattintson a sdksetup. exe fájlra a LocalRunDependency/Win10SDK_10.0.10240 _2 mappában, majd kövesse a varázsló utasításait.  
+   2,2 a **Win10SDK 10240**telepítéséhez kattintson a LocalRunDependency/Win10SDK_10.0.10240 _2 mappában található sdksetup.exe elemre, majd kövesse a varázsló utasításait.  
 
     ![A Win10SDK 10240 telepítése](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
@@ -59,8 +59,8 @@ Az első alkalommal használja az **ADL: helyi futtatási csomag letöltése** l
    ![Data Lake eszközök a Visual Studio Code-hoz válassza a helyi lehetőséget](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
 5. Miután elküldte a feladatot, megtekintheti a Küldés részleteit. A Küldés részleteinek megtekintéséhez válassza a **jobUrl** lehetőséget a **kimenet** ablakban. A beküldési állapotot a cmd konzolon is megtekintheti. Ha többet szeretne megtudni a feladatok részleteiről, írja be a **7-es** értéket a cmd konzolon.
 
-   ![Data Lake eszközök Visual Studio Code helyi Futtatás kimeneti](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
-   ![Data Lake eszközök a Visual Studio Code helyi Futtatás cmd-állapotához](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
+   ![Data Lake eszközök Visual Studio Code helyi Futtatás kimeneti ](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
+    ![ Data Lake eszközök a Visual Studio Code helyi Futtatás cmd-állapotához](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
 
 
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Helyi hibakeresés elindítása a U-SQL-feladatokhoz  

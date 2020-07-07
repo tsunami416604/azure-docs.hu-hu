@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: 527d2d8cb8086ed6b5e87417e2bc80dd52aa6e63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188412"
 ---
 # <a name="troubleshoot-resource-creation-failures-in-azure-hdinsight"></a>Erőforrás-létrehozási hibák elhárítása az Azure HDInsight
@@ -35,7 +35,7 @@ A kvóta növelésének kéréséhez kövesse az alábbi lépéseket:
 
 1. Lépjen a [Azure Portalra](https://portal.azure.com), és válassza a **Súgó + támogatás**lehetőséget.
 
-1. Válassza az **új támogatási kérelem**lehetőséget.
+1. Válassza az **Új támogatási kérelem** lehetőséget.
 
 1. Az **új támogatási kérés** lap **alapok** lapján adja meg a következő információkat:
 

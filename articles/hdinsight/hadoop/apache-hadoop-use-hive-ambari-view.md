@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192680"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-nézet használata Apache Hadooppal a HDInsightban
@@ -29,7 +29,7 @@ Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](.
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt.  Útmutatásért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters) . A fürt új portál nézetben nyílik meg.
 
-1. A **fürt irányítópultok**területen válassza a **Ambari nézetek**elemet. Amikor a rendszer kéri a hitelesítést, használja a fürt létrehozásakor `admin`megadott bejelentkezési (alapértelmezett) fióknevet és jelszót. Azt is `https://CLUSTERNAME.azurehdinsight.net/#/main/views` megnyithatja a böngészőben, ahol `CLUSTERNAME` a a fürt neve.
+1. A **fürt irányítópultok**területen válassza a **Ambari nézetek**elemet. Amikor a rendszer kéri a hitelesítést, használja a fürt `admin` létrehozásakor megadott bejelentkezési (alapértelmezett) fióknevet és jelszót. Azt is megnyithatja a böngészőben, ahol a a `https://CLUSTERNAME.azurehdinsight.net/#/main/views` `CLUSTERNAME` fürt neve.
 
 1. A nézetek listájában válassza a __struktúra nézet__lehetőséget.
 
@@ -115,7 +115,7 @@ A **lekérdezés** lapon igény szerint mentheti a lekérdezéseket. A lekérdez
 ![Apache Hive nézetek mentett lekérdezések lap](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> A mentett lekérdezések az alapértelmezett fürtöt tárolóban tárolódnak. A mentett lekérdezéseket az elérési út `/user/<username>/hive/scripts`alatt találja. Ezeket egyszerű szöveges `.hql` fájlként tárolja a rendszer.
+> A mentett lekérdezések az alapértelmezett fürtöt tárolóban tárolódnak. A mentett lekérdezéseket az elérési út alatt találja `/user/<username>/hive/scripts` . Ezeket egyszerű szöveges fájlként tárolja a rendszer `.hql` .
 >
 > Ha törli a fürtöt, de megtartja a tárolót, használhat olyan segédprogramot, mint a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) vagy a Data Lake Storage Explorer (az [Azure Portalról](https://portal.azure.com)) a lekérdezések lekéréséhez.
 

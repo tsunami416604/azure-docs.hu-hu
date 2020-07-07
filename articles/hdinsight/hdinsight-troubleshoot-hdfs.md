@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190680"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Az Apache Hadoop HDFS hibaelhárítása az Azure HDInsighttal
@@ -27,7 +27,7 @@ A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtö
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-1. A parancssorban a szó szerint `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` használja a következő parancsot:
+1. A parancssorban a szó szerint használja `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` a következő parancsot:
 
     ```output
     hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -37,7 +37,7 @@ A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtö
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. A forráskódból használja az URI `hdfs://mycluster/` -t a szó szoros értelmében, ahogy az alábbi példában is látható:
+2. A forráskódból használja az URI- `hdfs://mycluster/` t a szó szoros értelmében, ahogy az alábbi példában is látható:
 
     ```Java
     import java.io.IOException;
@@ -62,7 +62,7 @@ A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtö
     }
     ```
 
-3. Futtassa a lefordított. jar-fájlt (például egy nevű `java-unit-tests-1.0.jar`fájlt) a HDInsight-fürtön a következő paranccsal:
+3. Futtassa a lefordított. jar-fájlt (például egy nevű fájlt `java-unit-tests-1.0.jar` ) a HDInsight-fürtön a következő paranccsal:
 
     ```apache
     hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -76,7 +76,7 @@ A helyi HDFS a parancssorból és az alkalmazás kódjából a HDInsight-fürtö
 
 ### <a name="issue"></a>Probléma
 
-Ha a ( `hadoop` z `hdfs dfs` ) vagy a (z) parancsot a HBase-fürtön lévő ~ 12 GB vagy nagyobb méretű fájlok írására használja, a következő hibaüzenet jelenhet meg:
+Ha a (z) vagy a (z) `hadoop` `hdfs dfs` parancsot a HBase-fürtön lévő ~ 12 GB vagy nagyobb méretű fájlok írására használja, a következő hibaüzenet jelenhet meg:
 
 ```error
 ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
@@ -102,21 +102,21 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 ### <a name="cause"></a>Ok
 
-Az Azure Storage-ba való íráskor a HDInsight-fürtök HBase alapértelmezett értéke 256 KB. Habár HBase API-k vagy REST API-k esetében is működik, hibaüzenetet eredményez a `hadoop` vagy `hdfs dfs` a parancssori segédeszközök használatakor.
+Az Azure Storage-ba való íráskor a HDInsight-fürtök HBase alapértelmezett értéke 256 KB. Habár HBase API-k vagy REST API-k esetében is működik, hibaüzenetet eredményez a `hadoop` vagy a `hdfs dfs` parancssori segédeszközök használatakor.
 
 ### <a name="resolution"></a>Megoldás:
 
-Nagyobb `fs.azure.write.request.size` blokk méretének megadásához használja a következőt:. Ezt a módosítást használhatja használati alapon a `-D` (z) paraméter használatával. A következő parancs egy példa erre a paraméterre a `hadoop` parancs használatával:
+`fs.azure.write.request.size`Nagyobb blokk méretének megadásához használja a következőt:. Ezt a módosítást használhatja használati alapon a (z `-D` ) paraméter használatával. A következő parancs egy példa erre a paraméterre a `hadoop` parancs használatával:
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 ```
 
-Az Apache Ambari használatával `fs.azure.write.request.size` globálisan is növelheti az értékét. Az alábbi lépéseket követve módosíthatja a Ambari webes felhasználói felületének értékét:
+Az `fs.azure.write.request.size` Apache Ambari használatával globálisan is növelheti az értékét. Az alábbi lépéseket követve módosíthatja a Ambari webes felhasználói felületének értékét:
 
-1. A böngészőben nyissa meg a Ambari webes felhasználói felületét a fürthöz. Az URL- `https://CLUSTERNAME.azurehdinsight.net`cím a `CLUSTERNAME` (z), ahol a a fürt neve. Ha a rendszer kéri, adja meg a fürthöz tartozó rendszergazdai nevet és jelszót.
+1. A böngészőben nyissa meg a Ambari webes felhasználói felületét a fürthöz. Az URL-cím a (z `https://CLUSTERNAME.azurehdinsight.net` ), ahol a a `CLUSTERNAME` fürt neve. Ha a rendszer kéri, adja meg a fürthöz tartozó rendszergazdai nevet és jelszót.
 2. A képernyő bal oldalán válassza a **HDFS**lehetőséget, majd válassza a **konfigurációk** fület.
-3. A **szűrő...** mezőbe írja be a `fs.azure.write.request.size`értéket.
+3. A **szűrő...** mezőbe írja be a értéket `fs.azure.write.request.size` .
 4. Módosítsa a 262144 (256 KB) értéket az új értékre. Például 4194304 (4 MB).
 
     ![Az érték Ambari webes felhasználói felületén keresztüli módosításának képe](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)

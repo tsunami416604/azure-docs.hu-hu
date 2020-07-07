@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4665666fe56c208b2437a7051bbf9201383365f8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254886"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962135"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: csevegési hely létrehozása a Signaler szolgáltatás használatával
 
@@ -45,14 +45,16 @@ Ebben a szakaszban a [.net Core parancssori felület (CLI)](https://docs.microso
 
 2. Az új mappában futtassa a következő parancsot a projekt létrehozásához:
 
-        dotnet new mvc
+    ```dotnetcli
+    dotnet new mvc
+    ```
 
 
 ## <a name="add-secret-manager-to-the-project"></a>A Secret Manager hozzáadása a projekthez
 
 Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/security/app-secrets) adja hozzá a projekthez. A Secret Manager eszköz bizalmas adatokat tárol a projekt fáján kívüli fejlesztési munkához. Ez a módszer segít megelőzni az alkalmazás titkos kódjának véletlen megosztását a forráskódban.
 
-1. Nyissa meg a *.csproj* fájlt. Adjon hozzá egy `DotNetCliToolReference` elemet a *Microsoft.Extensions.SecretManager.Tools* belefoglalásához. Vegyen fel `UserSecretsId` egy elemet is, ahogy az a következő kódban látható a *csevegő. csproj*, és mentse a fájlt.
+1. Nyissa meg a *.csproj* fájlt. Adjon hozzá egy `DotNetCliToolReference` elemet a *Microsoft.Extensions.SecretManager.Tools* belefoglalásához. Vegyen fel egy `UserSecretsId` elemet is, ahogy az a következő kódban látható a *csevegő. csproj*, és mentse a fájlt.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -72,13 +74,17 @@ Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Az Azure SignalR hozzáadása a webalkalmazáshoz
 
-1. Adja hozzá a `Microsoft.Azure.SignalR` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
+1. Adja hozzá a NuGet- `Microsoft.Azure.SignalR` csomagra mutató hivatkozást a következő parancs futtatásával:
 
-        dotnet add package Microsoft.Azure.SignalR
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.SignalR
+    ```
 
 2. Futtassa a következő parancsot a projekt csomagjainak visszaállításához:
 
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
+    ```
 
 3. Adjon hozzá egy *Azure:SignalR:ConnectionString* nevű titkos kódot a Secret Managerhez. 
 
@@ -86,7 +92,7 @@ Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet
 
     Ezt a parancsot a *. csproj* fájllal megegyező könyvtárba kell futtatnia.
 
-    ```
+    ```dotnetcli
     dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
@@ -105,9 +111,9 @@ Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet
     }
     ```
 
-    Ha nem küldi el `AddAzureSignalR()`a paramétert a rendszernek, ez a kód a jelző szolgáltatás erőforrás-kapcsolódási karakterláncának alapértelmezett konfigurációs kulcsát használja. Az alapértelmezett konfigurációs kulcs az *Azure: signaler: ConnectionString*.
+    Ha nem küldi el a paramétert a rendszernek `AddAzureSignalR()` , ez a kód a jelző szolgáltatás erőforrás-kapcsolódási karakterláncának alapértelmezett konfigurációs kulcsát használja. Az alapértelmezett konfigurációs kulcs az *Azure: signaler: ConnectionString*.
 
-5. A *Startup.cs*-ben is frissítse `Configure` a metódust úgy, hogy `app.UseStaticFiles()` lecseréli a hívást a következő kódra, és elmenti a fájlt a csak ASP.net Core 2 értékre.
+5. A *Startup.cs*-ben is frissítse a `Configure` metódust úgy, hogy lecseréli a hívást a `app.UseStaticFiles()` következő kódra, és elmenti a fájlt a csak ASP.net Core 2 értékre.
 
     ```csharp
     app.UseFileServer();
@@ -167,11 +173,11 @@ Mindkét módszer a `Clients` ASP.net Core a signaler SDK által biztosított fe
 
 ### <a name="add-the-client-interface-for-the-web-app"></a>Az ügyfél felületének hozzáadása a webalkalmazáshoz
 
-A csevegő alkalmazás ügyfél-felhasználói felülete HTML-és JavaScript-fájlokból áll, amelyek egy *index. html* nevű fájlba kerülnek a *wwwroot* könyvtárban.
+A csevegő alkalmazás ügyfél-felhasználói felülete HTML és JavaScript formátumú lesz egy *index.html* nevű fájlban a *wwwroot* könyvtárban.
 
-Másolja az *index. html* fájlt, a *CSS* mappát és a *Scripts* mappát a [Samples adattár](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) *wwwroot* mappájából. Illessze be őket a projekt *wwwroot* mappájába.
+Másolja a *index.html* fájlt, a *CSS* mappát és a *Scripts* mappát a [Samples adattár](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) *wwwroot* mappájából. Illessze be őket a projekt *wwwroot* mappájába.
 
-Az *index. html*fő kódja: 
+*index.html*fő kódja: 
 
 ```javascript
 var connection = new signalR.HubConnectionBuilder()
@@ -187,7 +193,7 @@ connection.start()
     });
 ```    
 
-Az *index. html* -ben található `HubConnectionBuilder.build()` kód az Azure signaler-erőforráshoz való http-kapcsolódást tesz szükségessé.
+A *index.html* -ben található kód az `HubConnectionBuilder.build()` Azure signaler-erőforráshoz való http-kapcsolódást kezdeményez.
 
 Ha a kapcsolat sikeresen létrejött, át lesz adva a `bindConnectionMessage` számára, amely eseménykezelőket ad a bejövő tartalomhoz, amely le lesz küldve az ügyfélnek. 
 
@@ -199,7 +205,7 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
 
 1. Hozzon létre egy *Tulajdonságok* nevű mappát a projektben.
 
-2. Adjon hozzá egy *launchSettings. JSON* nevű új fájlt a mappához a következő tartalommal, és mentse a fájlt.
+2. Adjon hozzá egy *launchSettings.js* nevű új fájlt a mappához a következő tartalommal, és mentse a fájlt.
 
     ```json
     {
@@ -224,27 +230,33 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
 
 1. Ha az alkalmazást a a .NET Core parancssori felülete használatával szeretné felépíteni, futtassa a következő parancsot a parancs-rendszerhéjban:
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 2. A létrehozás sikeres befejeződése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     Az alkalmazás az 5000-as porton, a fejlesztői futtatókörnyezeti profilban konfigurált módon lesz helyileg üzemeltetve:
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Development
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.    
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Development
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+    Application started. Press Ctrl+C to shut down.    
+    ```
 
-3. Nyisson meg két böngészőablakot. A böngészőben nyissa meg a `http://localhost:5000`következőt:. A rendszer kéri, hogy adja meg a nevét. Adja meg az ügyfél nevét mindkét ügyfél számára, és tesztelje az üzenetek tartalmát mindkét ügyfél között a **Küldés** gomb használatával.
+3. Nyisson meg két böngészőablakot. A böngészőben nyissa meg a következőt: `http://localhost:5000` . A rendszer kéri, hogy adja meg a nevét. Adja meg az ügyfél nevét mindkét ügyfél számára, és tesztelje az üzenetek tartalmát mindkét ügyfél között a **Küldés** gomb használatával.
 
     ![Példa Azure-beli szignáló csoport csevegésére](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha továbbra is a következő oktatóanyagot használja, megtarthatja az ebben a rövid útmutatóban létrehozott erőforrásokat, és újból felhasználhatja őket.
 

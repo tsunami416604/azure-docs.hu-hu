@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348787"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurálása – gyakori kérdések
@@ -103,11 +103,11 @@ A standard szintről az ingyenes szintre nem lehet visszaminősíteni egy áruh�
 
 Az ingyenes szinten lévő konfigurációs áruházak napi 1 000 kérésre korlátozódnak. A standard csomag konfigurációs tárolói átmeneti szabályozást tapasztalhatnak, ha a kérések száma óránként meghaladja a 20 000 kérést.
 
-Ha egy tároló eléri a korlátot, a 429-as HTTP-állapotkódot fogja visszaadni az összes, az adott időszak lejárta után benyújtott kérelemnél. A `retry-after-ms` válasz fejléce egy javasolt várakozási időt (ezredmásodpercben) tartalmaz a kérelem újrapróbálkozása előtt.
+Ha egy tároló eléri a korlátot, a 429-as HTTP-állapotkódot fogja visszaadni az összes, az adott időszak lejárta után benyújtott kérelemnél. A `retry-after-ms` Válasz fejléce egy javasolt várakozási időt (ezredmásodpercben) tartalmaz a kérelem újrapróbálkozása előtt.
 
 Ha az alkalmazás rendszeresen megtapasztalja a 429-es HTTP-állapotkódot, érdemes lehet újratervezni, hogy csökkentse a kérelmek számát. További információ: az [alkalmazás konfigurálására tett kérelmek csökkentése](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Az alkalmazás megkapja a 429-es HTTP-állapotkódot. Hogy miért?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Az alkalmazás megkapja a 429-es HTTP-állapotkódot. Miért?
 
 A 429-es HTTP-állapotkód a következő esetekben fog megjelenni:
 

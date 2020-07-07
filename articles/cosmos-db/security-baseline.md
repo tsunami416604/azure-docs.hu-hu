@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195247"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB Azure biztonsági alapterve
@@ -131,7 +131,7 @@ További információ a szolgáltatási címkék használatáról:https://docs.m
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
-**Útmutató**: hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. DocumentDB" és a "Microsoft. Network" névterekben, hogy egyéni szabályzatokat hozzon létre a Azure Cosmos DB példányok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Használhatja a Azure Cosmos DB beépített szabályzat-definícióját is, például:
+**Útmutató**: hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft.DocumentDB" és a "Microsoft. Network" névterekben, hogy egyéni házirendeket hozzon létre az Azure Cosmos DB példányok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Használhatja a Azure Cosmos DB beépített szabályzat-definícióját is, például:
 
 - A Cosmos DB-fiókok komplex veszélyforrások elleni védelmének üzembe helyezése
 
@@ -294,7 +294,7 @@ Emellett a Azure Cosmos DB egyes műveletei Azure Active Directory és fiók-spe
 
 A szerepköralapú hozzáférés-vezérlés ismertetése a Azure Cosmos DBban:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
-Saját egyéni szerepkörök létrehozása Azure Cosmos DB műveletek használatával (Microsoft. DocumentDB névtér):https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
+Saját egyéni szerepkörök létrehozása Azure Cosmos DB műveletek használatával (Microsoft.DocumentDB névtér):https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
 Új szerepkör létrehozása a Azure Active Directoryban:https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
@@ -504,7 +504,7 @@ Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
-**Útmutató**: a Azure Cosmos db összes kapcsolata HTTPS-támogatással. A Azure Cosmos DB a TLS 1.2-es verzióját is támogatja. Egy minimális TLS-verzió kiszolgálóoldali kikényszeríthető. Ehhez vegye fel a kapcsolatot [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).
+**Útmutató**: a Azure Cosmos db összes kapcsolata HTTPS-támogatással. A Azure Cosmos DB a TLS 1.2-es verzióját is támogatja. Egy minimális TLS-verzió kiszolgálóoldali kikényszeríthető. Ehhez vegye fel a kapcsolatot [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) .
 
 A Cosmos DB biztonság áttekintése:https://docs.microsoft.com/azure/cosmos-db/database-security
 
@@ -518,7 +518,7 @@ A Cosmos DB biztonság áttekintése:https://docs.microsoft.com/azure/cosmos-db/
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-Azure Cosmos DB-adatindexek indexelése https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&ampaz Azure Cognitive Search:; BC =/Azure/Cosmos-db/breadcrumb/TOC.JSON
+Azure Cosmos DB-adatindexek indexelése az Azure Cognitive Search: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp ; BC =/azure/cosmos-db/breadcrumb/toc.jsbe
 
 Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -786,7 +786,7 @@ A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való ho
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató**: a Cosmos db példányok szabványos biztonsági konfigurációinak meghatározása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. DocumentDB" névtérben egyéni szabályzatok létrehozásához a Cosmos DB példányok konfigurációjának naplózásához vagy érvényesítéséhez. Használhatja a Azure Cosmos DB beépített szabályzat-definícióját is, például:
+**Útmutató**: a Cosmos db példányok szabványos biztonsági konfigurációinak meghatározása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft.DocumentDB" névtérben egyéni szabályzatok létrehozásához az Cosmos DB példányok konfigurációjának naplózásához vagy érvényesítéséhez. Használhatja a Azure Cosmos DB beépített szabályzat-definícióját is, például:
 
 - A Cosmos DB-fiókok komplex veszélyforrások elleni védelmének üzembe helyezése
 
@@ -850,7 +850,7 @@ Az Azure Repos dokumentációja: https://docs.microsoft.com/azure/devops/repos/i
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: rendszerkonfiguráció-felügyeleti eszközök telepítése
 
-**Útmutató**: Azure Policy aliasok használata a "Microsoft. DocumentDB" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
+**Útmutató**: a "Microsoft.DocumentDB" névtérben található Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre a riasztáshoz, a naplózáshoz és a rendszerkonfigurációk kényszerítéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
 Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -868,7 +868,7 @@ Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/gove
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: az Azure-szolgáltatások automatizált konfigurációs figyelésének megvalósítása
 
-**Útmutató**: Azure Policy aliasok használata a "Microsoft. DocumentDB" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszer-konfigurációk kényszerítéséhez. A Azure Cosmos DB-példányok és a kapcsolódó erőforrások konfigurációjának automatikus érvényesítéséhez használja a Azure Policy [audit], [megtagadás] és [üzembe helyezés ha nem létezik] lehetőséget. 
+**Útmutató**: a "Microsoft.DocumentDB" névtérben található Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre a riasztáshoz, a naplózáshoz és a rendszerkonfigurációk kényszerítéséhez. A Azure Cosmos DB-példányok és a kapcsolódó erőforrások konfigurációjának automatikus érvényesítéséhez használja a Azure Policy [audit], [megtagadás] és [üzembe helyezés ha nem létezik] lehetőséget. 
 
 Azure Policy konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

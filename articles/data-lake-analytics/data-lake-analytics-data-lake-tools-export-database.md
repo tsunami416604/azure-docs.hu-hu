@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71315793"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL-adatbázis exportálása
@@ -51,7 +51,7 @@ Ebben a lépésben ellenőrizheti a kijelölt objektumokat az **objektum export�
 
 Az exportálási cél egyéb beállításait is megadhatja. A konfigurációs leírások az alábbi táblázatban láthatók:
 
-|Configuration|Leírás|
+|Konfiguráció|Leírás|
 |-------------|-----------|
 |Cél neve|Ez a név jelzi, hogy hová szeretné menteni az exportált adatbázis erőforrásait. Ilyenek például a szerelvények, a további fájlok és a mintaadatok. A rendszer létrehoz egy ilyen nevű mappát a helyi adatgyökér mappában.|
 |Projekt könyvtára|Ez az elérési út határozza meg, hogy hová szeretné menteni az exportált U-SQL-szkriptet. Ezen a helyen minden adatbázis-objektum definíciója mentve lesz.|
