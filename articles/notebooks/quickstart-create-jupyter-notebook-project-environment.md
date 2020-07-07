@@ -4,18 +4,18 @@ description: Hozzon létre egy új projektet Azure Notebooks előzetes verzióba
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 03935b9672c25db11b91733fac1c63f1f5978b87
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c5f73b73b4bab99e07874c2d16d47da69f8026ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559749"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832899"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Rövid útmutató: projekt létrehozása egyéni környezettel Azure Notebooks előzetes verzióban
 
-A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adatfájlok, a dokumentáció, a képek stb. gyűjteménye, valamint egy olyan környezet, amely meghatározott telepítési parancsokkal konfigurálható. Ha a projektet a projekttel együtt határozza meg, akkor bárki, aki a projektet a saját Azure Notebooks-fiókjába klónozott, minden olyan információval rendelkezik, amelyre szükségük van a szükséges környezet újbóli létrehozásához.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adatfájlok, a dokumentáció, a képek stb. gyűjteménye, valamint egy olyan környezet, amely meghatározott telepítési parancsokkal konfigurálható. Ha a projektet a projekttel együtt határozza meg, akkor bárki, aki a projektet a saját Azure Notebooks-fiókjába klónozott, minden olyan információval rendelkezik, amelyre szükségük van a szükséges környezet újbóli létrehozásához.
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
@@ -54,7 +54,7 @@ A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adat
 
    | Művelet | Leírás |
    | --- | --- |
-   | Követelmények. txt | A Python-projektek a függőségeket a követelmények. txt fájlban határozzák meg. Ha ezt a lehetőséget választja, válassza ki a megfelelő fájlt a projekt fájljának listájából, és válassza ki a Python-verziót is a megjelenő további legördülő listában. Ha szükséges, a **Mégse** gombra kattintva térjen vissza a projekthez, töltse fel vagy hozza létre a fájlt, majd térjen vissza a **projekt beállításai**  >  **környezet** lapra, és hozzon létre egy új lépést. Ezzel a lépéssel automatikusan futtat egy jegyzetfüzetet a projektben.`pip install -r <file>` |
+   | Requirements.txt | A Python-projektek requirements.txt fájlban határozzák meg a függőségeiket. Ha ezt a lehetőséget választja, válassza ki a megfelelő fájlt a projekt fájljának listájából, és válassza ki a Python-verziót is a megjelenő további legördülő listában. Ha szükséges, a **Mégse** gombra kattintva térjen vissza a projekthez, töltse fel vagy hozza létre a fájlt, majd térjen vissza a **projekt beállításai**  >  **környezet** lapra, és hozzon létre egy új lépést. Ezzel a lépéssel automatikusan futtat egy jegyzetfüzetet a projektben.`pip install -r <file>` |
    | Rendszerhéj-parancsfájl | A használatával egy bash rendszerhéj-parancsfájlt (jellemzően egy *. sh* kiterjesztésű fájlt) jelezhet, amely a környezet inicializálásához futtatni kívánt parancsokat tartalmazza. |
    | Environment. YML | A környezetek kezelésére szolgáló Conda használó Python-projekt egy Environment *. YML* fájlt használ a függőségek leírására. Ha ezt a lehetőséget választja, válassza ki a megfelelő fájlt a projekt fájl listájából. |
 
@@ -67,10 +67,10 @@ A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adat
 
 1. A környezet teszteléséhez hozzon létre és futtasson egy új jegyzetfüzetet, majd hozzon létre egy kódot tartalmazó cellát olyan utasításokkal, amelyek a környezetben lévő csomagtól függenek, például egy Python- `import` utasítás használatával. Ha az utasítás sikeres, a szükséges csomag telepítése sikeresen megtörtént a környezetben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Projektek kezelése és konfigurálása Azure Notebooks](configure-manage-azure-notebooks-projects.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Jupyter-jegyzetfüzet futtatásának létrehozása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)
+> [Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

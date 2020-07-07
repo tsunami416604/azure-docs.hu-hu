@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d6b445d1e795cfb34452f48bfb5ed375f6a284e1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85385042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806850"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása
 
@@ -51,8 +51,8 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 1. A **címtár létrehozása** lapon adja meg a következőket:
 
-   - **Szervezet neve** – adja meg a szervezet nevét.
-   - **Kezdeti tartománynév** – adja meg a tartománynevet. Alapértelmezés szerint ez a név a *. onmicrosoft.com*utótaggal van hozzáfűzve. Ezt később is megváltoztathatja, ha hozzáad egy olyan tartománynevet, amelyet a szervezet már használ, például: "contoso.com".
+   - **Szervezet neve** – adja meg a Azure ad B2C bérlő nevét.
+   - **Kezdeti tartománynév** – adja meg a Azure ad B2C-bérlő tartománynevét.
    - **Ország vagy régió** – válassza ki az országot vagy régiót a listából. Ezt a kijelölést később nem lehet módosítani.
    - **Előfizetés** – válassza ki az előfizetését a listából.
    - **Erőforráscsoport** – válasszon ki egy erőforráscsoportot, amely a bérlőt fogja tartalmazni. Vagy válassza az **új létrehozása**lehetőséget, adja meg az erőforráscsoport **nevét** , válassza ki az **erőforráscsoport helyét**, majd kattintson **az OK gombra**.
@@ -89,7 +89,7 @@ Ezt a műveletet csak egyszer kell végrehajtania. Mielőtt elvégzi ezeket a l�
 
     ![Azure AD B2C, Kedvencek menü, Microsoft Azure Portal](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

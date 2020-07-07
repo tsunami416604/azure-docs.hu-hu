@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57f412f93d9dbe2d9967c5cbc7dc50b1ee8bd61f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73177020"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Oktatóanyag: Azure Active Directory integráció a Picturepark
 
@@ -109,12 +109,11 @@ Az Azure AD egyszeri bejelentkezés Picturepark való konfigurálásához hajtsa
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    |  |
-    |--|
-    | `https://<companyname>.current-picturepark.com`|
-    | `https://<companyname>.picturepark.com`|
-    | `https://<companyname>.next-picturepark.com`|
-    | |
+    ```http
+        https://<companyname>.current-picturepark.com
+        https://<companyname>.picturepark.com
+        https://<companyname>.next-picturepark.com
+    ```
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Picturepark ügyfélszolgálati [csapatához](https://picturepark.com/company/picturepark-customer-support) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -166,9 +165,9 @@ Az Azure AD egyszeri bejelentkezés Picturepark való konfigurálásához hajtsa
 
 5. Kattintson a **JoinDefaultUsersGroup**elemre.
 
-6. Ha a **jogcím** szövegmezőben az **EmailAddress** attribútumot szeretné beállítani `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` , írja be a következőt:, majd kattintson a **Mentés**gombra.
+6. Ha a **jogcím** szövegmezőben az **EmailAddress** attribútumot szeretné beállítani, írja be a következőt:, `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` majd kattintson a **Mentés**gombra.
 
-      ![Konfiguráció](./media/picturepark-tutorial/ic795065.png "Konfiguráció")
+      ![Konfigurálás](./media/picturepark-tutorial/ic795065.png "Konfiguráció")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -188,11 +187,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -240,7 +239,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Picturepark, a Picture
    
     ![Felhasználó létrehozása](./media/picturepark-tutorial/ic795069.png "Felhasználó létrehozása")
    
-    a. Az **E-mail cím** szövegmezőbe írja be a felhasználó `BrittaSimon@contoso.com` **e-mail-címét** .  
+    a. Az **E-mail cím** szövegmezőbe írja be a felhasználó **e-mail-címét** `BrittaSimon@contoso.com` .  
    
     b. **A jelszó és** **Jelszó megerősítése** szövegmezőbe írja be a BrittaSimon **jelszavát** . 
    
@@ -252,13 +251,13 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Picturepark, a Picture
    
     f. Az **ország** szövegmezőben válassza ki a felhasználó **országát/régióját** .
   
-    g. A **zip** szövegmezőbe írja be a város **irányítószámát** .
+    : A **zip** szövegmezőbe írja be a város **irányítószámát** .
    
     h. A **City (város** ) szövegmezőbe írja be a felhasználó **városának nevét** .
 
     i. Válasszon **nyelvet**.
    
-    j. Kattintson a **Létrehozás**gombra.
+    j. Kattintson a **Létrehozás** lehetőségre.
 
 >[!NOTE]
 >Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a Picturepark által biztosított Picturepark felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.

@@ -3,14 +3,16 @@ title: Jupyter-jegyzetfüzet-projekt exportálása a Azure Notebooks előzetes v
 description: Jupyter-jegyzetfüzet-projekt gyors exportálása.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: 31e32a6ebb39429078c7c6747bc6b10f177699ac
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: ad37db7e9bdb1251a3e62bd567960979f556b489
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802700"
+ms.locfileid: "85832032"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Gyors útmutató: Jupyter notebook-projekt exportálása Azure Notebooks előzetes verzióban
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Ebben a rövid útmutatóban egy Azure Notebooks projektet fog letölteni más Jupyter notebook-megoldásokban való használatra. 
 
@@ -18,8 +20,6 @@ Ebben a rövid útmutatóban egy Azure Notebooks projektet fog letölteni más J
 Egy meglévő Azure Notebooks-projekt.
 
 ## <a name="export-an-azure-notebooks-project"></a>Azure Notebooks projekt exportálása
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksra](quickstart-sign-in-azure-notebooks.md).
 
@@ -38,24 +38,14 @@ A projektfájlok letöltése után más Jupyter Notebook-megoldásokkal is haszn
 - [Azure Lab Services](#use-azure-lab-services)
 - [GitHub](#use-github)
 
-## <a name="download-the-requirements-file-used-by-azure-notebooks"></a>Az Azure Notebooks által használt követelmények fájl letöltése
+## <a name="create-an-environment-for-notebooks"></a>Környezet létrehozása jegyzetfüzetekhez
 
-Ha olyan környezetet szeretne létrehozni, amely megfelel a Azure Notebooks előzetes verziójának, használhatja a GitHubon elérhető **AzureNotebooksRequirements.txt** fájlt.
+Ha olyan környezetet szeretne létrehozni, amely megfelel a Azure Notebooks előzetes verziójának, használhatja a GitHubban megadott parancsfájlt.
 
-1. Navigáljon a Azure Notebooks [GitHub-adattárhoz](https://github.com/microsoft/AzureNotebooks) , vagy [közvetlenül is hozzáférhet a fájlhoz](https://aka.ms/aznbrequirementstxt).
-1. Töltse le a Azure Notebooks-környezethez tartozó csomagok függőségeit tartalmazó **AzureNotebooksRequirements.txt** fájlt. 
-1. A parancssorban navigáljon a projektekhez használni kívánt könyvtárra, és használja a követelmények fájlt a megfelelő csomagok telepítéséhez.
+1. Navigáljon a Azure Notebooks [GitHub-adattárhoz](https://github.com/microsoft/AzureNotebooks) , vagy [közvetlenül hozzáférhessen a környezeti mappához](https://aka.ms/aznbrequirementstxt).
+1. A parancssorban navigáljon a projektekhez használni kívánt címtárhoz.
+1. Töltse le a környezeti mappa tartalmát, és kövesse a README utasításait a Azure Notebooks csomag függőségeinek telepítéséhez.
 
-    > [!Note]
-    > Habár nem szükséges, általában létre kell hoznia egy új virtuális környezetet a csomagok telepítéséhez az alább látható módon.
-
-    ```bash
-    cd your-project-dir
-    python -m venv .venv
-    python -m pip install -r AzureNotebooksRequirements.txt
-    ```
-
-További információ a követelmények fájljairól: [pip docs]( https://pip.pypa.io/en/stable/user_guide/#requirements-files).
 
 ## <a name="use-notebooks-in-visual-studio-code"></a>Jegyzetfüzetek használata a Visual Studio Code-ban
 
@@ -65,7 +55,7 @@ A [vs Code](https://code.visualstudio.com/) egy ingyenes Kódszerkesztő, amelye
 
 A projektfájlok [letöltése](#export-an-azure-notebooks-project) után a vs Code használatával használhatja őket. A VS Code és a Jupyter notebookok használatával kapcsolatos útmutatásért lásd: [Jupyter notebookok használata a Visual Studio Code-ban](https://code.visualstudio.com/docs/python/jupyter-support) és [adatelemzésben a Visual Studio Code-](https://code.visualstudio.com/docs/python/data-science-tutorial) oktatóanyagokban.
 
-A Visual Studio Code [Azure Notebooks követelményeivel](#download-the-requirements-file-used-by-azure-notebooks) is felhasználhatja a Azure Notebooks előzetes verziójával egyező környezetet.
+A Visual Studio Code-ban a [Azure Notebooks környezeti parancsfájllal](#create-an-environment-for-notebooks) is létrehozható egy olyan környezet, amely megfelel a Azure Notebooks előzetes verziójának.
 
 ## <a name="use-notebooks-in-visual-studio-codespaces"></a>Jegyzetfüzetek használata a Visual Studio Codespaces
 
@@ -107,3 +97,11 @@ A GitHub lehetővé teszi a jegyzetfüzetek (és más fájlok) tárolását, a n
 1. [Töltse le](#export-an-azure-notebooks-project) a Project-fájlokat.
 1. [Hozzon létre egy GitHub-tárházat](https://help.github.com/github/getting-started-with-github/create-a-repo) a jegyzetfüzetek tárolásához. 
 1. [Adja hozzá a fájljait](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository) a tárházhoz.
+
+## <a name="next-steps"></a>További lépések
+
+- [Tudnivalók a Pythonról a Visual Studio Code-ban](https://code.visualstudio.com/docs/python/python-tutorial)
+- [Tudnivalók a Azure Machine Learning-és Jupyter-jegyzetfüzetekről](../machine-learning/how-to-run-jupyter-notebooks.md)
+- [Tudnivalók a Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)
+- [Tudnivalók a Azure Lab Services](https://azure.microsoft.com/services/lab-services/)
+- [Tudnivalók a GitHubról](https://help.github.com/github/getting-started-with-github/)

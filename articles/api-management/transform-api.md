@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6b446fe83ad37dfe9edbe55fcb1b5b42aa578274
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851251"
 ---
 # <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme
 
@@ -26,7 +26,7 @@ Az oktatóanyag bemutatja, hogyan alakíthatja át úgy az API-kat, hogy azok ne
 
 Ez az oktatóanyag továbbá ismerteti, milyen könnyű védelmet biztosítani a háttérbeli API-k számára a hívásszám korlátjának konfigurálásával az Azure API Management segítségével. Korlátozhatja például az API hívásainak számát, hogy a fejlesztők ne vegyék túlzottan igénybe. További információt az [API Management-szabályzatokkal kapcsolatos](api-management-policies.md) cikkben olvashat.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -82,8 +82,10 @@ Az eredeti válasznak így kell kinéznie:
 
 7. Módosítsa a **\<outbound>** kódot úgy, hogy az alábbihoz hasonló legyen:
 
-       <set-header name="X-Powered-By" exists-action="delete" />
-       <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
+   <set-header name="X-Powered-By" exists-action="delete" />
+   <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
 
    ![Házirendek](./media/transform-api/set-policy.png)
 
@@ -129,31 +131,35 @@ Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k
 6.  A jobb oldali ablak **Hozzáférés-korlátozási szabályzatok** területén kattintson a **+ Hívások számának korlátozása kulcsonként** elemre.
 7.  Módosítsa a **ráta-limit-by-Key** kódot (a **\<inbound\>** elemben) a következő kódra:
 
-        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
+    <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
 
 ## <a name="test-the-transformations"></a>Az átalakítások tesztelése
 
 Jelenleg, ha a kódszerkesztőben megtekinti a kódot, a szabályzatok így néznek ki:
 
-    <policies>
-        <inbound>
-            <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
-            <base />
-        </inbound>
-        <backend>
-            <base />
-        </backend>
-        <outbound>
-            <set-header name="X-Powered-By" exists-action="delete" />
-            <set-header name="X-AspNet-Version" exists-action="delete" />
-            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
-            <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
-            <base />
-        </outbound>
-        <on-error>
-            <base />
-        </on-error>
-    </policies>
+   ```
+   <policies>
+      <inbound>
+        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+        <base />
+      </inbound>
+      <backend>
+        <base />
+      </backend>
+      <outbound>
+        <set-header name="X-Powered-By" exists-action="delete" />
+        <set-header name="X-AspNet-Version" exists-action="delete" />
+        <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
+        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+        <base />
+      </outbound>
+      <on-error>
+        <base />
+      </on-error>
+   </policies>
+   ```
 
 A szakasz további részében teszteljük a szabályzatátalakításokat, amelyeket beállítottunk.
 

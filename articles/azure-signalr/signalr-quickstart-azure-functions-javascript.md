@@ -7,12 +7,12 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e947864633bf66005a39c89e7d81aef0c96c93e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77083196"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85829584"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Gyors útmutató: csevegési helyiség létrehozása Azure Functions és a Signaler szolgáltatással a JavaScript használatával
 
@@ -23,10 +23,10 @@ Az Azure Signaler szolgáltatással egyszerűen adhat hozzá valós idejű funkc
 - Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/)
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), 2-es vagy újabb verzió. Az Azure Function apps helyi futtatására szolgál.
-- [Node. js](https://nodejs.org/en/download/), 10-es verzió. x
+- [Node.js](https://nodejs.org/en/download/), 10-es verzió. x
 
    > [!NOTE]
-   > A példáknak a Node. js más verzióival kell dolgozniuk, további információért lásd a [Azure functions Runtime Versions dokumentációját](../azure-functions/functions-versions.md#languages) .
+   > A példáknak a Node.js más verzióival is működniük kell, további információért lásd: [Azure functions Runtime Versions dokumentációja](../azure-functions/functions-versions.md#languages) .
 
 > [!NOTE]
 > Ez a rövid útmutató macOS, Windows vagy Linux rendszeren is futtatható.
@@ -79,4 +79,4 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
-> [Az Azure Functions üzembe helyezése VS Code-dal](/azure/javascript/tutorial-vscode-serverless-node-01)
+> [Az Azure Functions üzembe helyezése VS Code-dal](/azure/developer/javascript/tutorial-vscode-serverless-node-01)

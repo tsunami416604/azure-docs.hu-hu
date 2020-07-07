@@ -3,14 +3,16 @@ title: Jupyter-jegyzetfüzet klónozása a GitHubról Azure Notebooks előzetes 
 description: Gyorsan klónozott Jupyter notebookot egy GitHub-adattárból, és futtathatja a Azure Notebooks-fiókjában.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064597"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833086"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Gyors útmutató: jegyzetfüzet klónozása Azure Notebooks előzetes verzióban
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Ebben a rövid útmutatóban a GitHubban tárolt Jupyter-jegyzetfüzetet egy Azure Notebooks fiókba másolja. 
 
@@ -19,11 +21,9 @@ A GitHub-adattárak tároló-és verziókövetés biztosítanak a Jupyter-jegyze
 Mivel a Azure Notebooks klón a felhőben van, megoszthatja azokat közreműködők használatával, akiknek nem kell helyi másolatot készíteniük vagy Jupyter telepíteniük a számítógépükre. Azt is megteheti, hogy egy jegyzetfüzetet egyszerűen egy saját projekt kiindulási pontjaként vagy adatfájlok beszerzéséhez használ. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Nincs.
+Nincsenek.
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Azure Cognitive Services-jegyzetfüzetek klónozása
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksra](quickstart-sign-in-azure-notebooks.md).
 
@@ -37,7 +37,7 @@ Nincs.
 
 1. A megjelenő **GitHub-tárház feltöltése** lapon adja meg vagy állítsa be a következő adatokat, majd válassza az **Importálás**lehetőséget:
 
-   - **GitHub-adattár**: Microsoft/kognitív-szolgáltatások – jegyzetfüzetek (ez a név a Jupyter notebookokat az Azure Cognitive Services- [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)on).
+   - **GitHub-adattár**: Microsoft/kognitív-szolgáltatások – jegyzetfüzetek (ez a név a Jupyter notebookokat az Azure Cognitive Services-on [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) ).
    - **Rekurzív klónozás**: (törölve)
    - **Projekt neve**: Cognitive Services klón
    - **Projekt azonosítója**: kognitív – szolgáltatások – klón
@@ -63,7 +63,7 @@ Nincs.
 
     ![A GitHubról klónozott Jupyter notebook futtatása](media/quickstarts/clone-notebook-result.png)
 
-1. Ha végzett a jegyzetfüzet futtatásával **, válassza a** > **Bezárás és a leállítása** lehetőséget a jegyzetfüzet és a böngészőablak bezárásához.
+1. Ha végzett a jegyzetfüzet futtatásával **, válassza**  >  a**Bezárás és a leállítása** lehetőséget a jegyzetfüzet és a böngészőablak bezárásához.
 
 1. Ha egy egyéni jegyzetfüzetet szeretne megosztani a projektben, kattintson a jobb gombbal a jegyzetfüzetre, és válassza a **hivatkozás másolása** lehetőséget (billentyűparancs: y):
 

@@ -1,6 +1,6 @@
 ---
 title: Rövid útmutató – Telemetria küldése az Azure IoT Hubra | Microsoft Docs
-description: Ebben a rövid útmutatóban egy minta Xamarin űrlapos alkalmazást futtat, amely szimulált telemetria küld egy IoT hubhoz, és beolvassa a telemetria a felhőben történő feldolgozáshoz a IoT hub-ból.
+description: Ebben a rövid útmutatóban egy minta Xamarin. Forms-alkalmazást futtat, amely szimulált telemetria küld egy IoT hubhoz, és beolvassa a telemetria a IoT hub-ból a felhőben történő feldolgozásra.
 author: cmaneu
 manager: philmea
 ms.author: chmaneu
@@ -10,21 +10,21 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-ms.date: 05/20/2020
-ms.openlocfilehash: d2292a65ef25f6450d6810b50366daa622b92bc8
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.date: 07/01/2020
+ms.openlocfilehash: 4178ee38ca179f179824a13130121b997f4f5f14
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802717"
+ms.locfileid: "85807816"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-xamarin-forms"></a>Gyors útmutató: telemetria küldése az eszközről egy IoT hubhoz (Xamarin űrlap)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-xamarinforms"></a>Gyors útmutató: telemetria küldése az eszközről egy IoT-hubhoz (Xamarin. Forms)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű telemetria betöltését egy IoT-eszközről a felhőbe tárolás vagy feldolgozás céljából. Ebben a cikkben telemetriát küld egy szimulált eszközalkalmazástól az IoT Hubra. Ezután megtekintheti az adatokat egy háttéralkalmazásból.
 
-Ez a cikk egy előre megírt Xamarin Forms alkalmazást használ a telemetria és egy CLI-segédprogram elküldéséhez, hogy beolvassa a telemetria a IoT Hubból.
+Ez a cikk egy előre megírt Xamarin. Forms alkalmazást használ a telemetria és egy CLI-segédprogram elküldéséhez, hogy beolvassa a telemetria a IoT Hubból.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -35,7 +35,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 - A mintakód letöltése az [Azure-minták](https://github.com/Azure-Samples/azure-iot-samples-xamarin/archive/master.zip) oldalról
 
-- A [Visual Studio 2019](https://visualstudio.microsoft.com/) vagy [Visual Studio for Mac](https://visualstudio.microsoft.com/) legújabb verziója, a Xamarin Forms eszközkészlettel. Ez a rövid útmutató a Visual Studio 16.6.0 lett tesztelve.
+- A [Visual Studio 2019](https://visualstudio.microsoft.com/) legújabb verziója vagy [Visual Studio for Mac](https://visualstudio.microsoft.com/) a Xamarin. Forms eszközzel. Ez a rövid útmutató a Visual Studio 16.6.0 lett tesztelve.
 
 - Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az ebben a rövid útmutatóban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -114,9 +114,9 @@ A következő képernyőfelvételen látható, hogy milyen típusú telemetria l
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy IoT hubot állít be, regisztrált egy eszközt, szimulált telemetria küldtünk a központba egy Xamarin űrlapos alkalmazásból, és beolvasta a telemetria a központból. 
+Ebben a rövid útmutatóban egy IoT hubot állít be, regisztrált egy eszközt, szimulált telemetria küldtünk a központba egy Xamarin. Forms alkalmazásból, és beolvasta a telemetria a központból. 
 
 Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
 

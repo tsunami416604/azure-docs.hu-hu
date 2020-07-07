@@ -7,12 +7,12 @@ ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 38efc86d1bdc185f39d3ea502a64d0f3cf7edcc0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 1befd0cc85044097a64b5988e6f763ce89ca3ec9
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849716"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Támogatási kérés létrehozása a Cloudyn számára
 
@@ -38,7 +38,7 @@ A támogatási kérés a létrehozása után a bekerül a támogatási üzenetso
 
 Ha szeretne létrehozni egy számlázási támogatási jegyet a Cost Management számára, a **Probléma típusa** alatt válassza az **Azure Cost Management** lehetőséget.
 
-A jelentett incidens állapotát megtekintheti az [Összes támogatási kérés](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests) területen.
+A jelentett incidens állapotát megtekintheti az [Összes támogatási kérés](../../azure-portal/supportability/how-to-manage-azure-support-request.md#view-support-requests) területen.
 
 Ha a Cloudyn régebbi verzióját használja, és nem rendelkezik Azure-fiókkal, akkor a következő helyen hozhat létre egy támogatási kérést: https://support.microsoft.com/oas/default.aspx?prid=16451.
 

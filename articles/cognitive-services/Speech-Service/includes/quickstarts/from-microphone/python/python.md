@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 3613d190ef079d0e477d42b426a224d8e4dda7e6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f26f0ab6da398dcdee307f89b27cca780d08af85
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400721"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85838758"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,9 @@ Hozzon létre egy *Quickstart.py* nevű fájlt, és illessze be a következő Py
 
 ## <a name="build-and-run-app"></a>Alkalmazás létrehozása és futtatása
 
-Most már készen áll az alkalmazás tesztelésére és a beszédfelismerési funkció a beszédfelismerési szolgáltatással történő ellenőrzésére.
+Most már készen áll a beszédfelismerés tesztelésére a beszédfelismerési szolgáltatás használatával. 
+
+Ha a macOS rendszeren fut, és ez az első olyan Python-alkalmazás, amely mikrofont használ, valószínűleg terminál-hozzáférést kell biztosítania a mikrofonhoz. Nyissa meg a **Rendszerbeállítások** elemet, és válassza a **biztonsági & adatvédelem**lehetőséget. Ezután válassza az **Adatvédelem** lehetőséget, és keresse meg a kívánt **mikrofont** a listában. Végül válassza a **terminál** és a mentés lehetőséget. 
 
 1. **Indítsa el az alkalmazást** – a parancssorból írja be a következőt:
     ```bash
@@ -45,4 +47,3 @@ Most már készen áll az alkalmazás tesztelésére és a beszédfelismerési f
 ## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
-

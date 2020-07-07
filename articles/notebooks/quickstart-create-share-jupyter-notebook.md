@@ -4,14 +4,16 @@ description: Gyorsan létrehozhat és futtathat Jupyter notebookot Azure Noteboo
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 01d1035f794287e679b6ebc84fa9498b184b4791
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561093"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832100"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Rövid útmutató: jegyzetfüzet létrehozása és megosztása Azure Notebooks előzetes verzióban
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Ebben a rövid útmutatóban egy Jupyter-jegyzetfüzetet hoz létre és futtat Azure Notebookson, majd megoszthatja a jegyzetfüzetet másokkal. A Jupyter segítségével egyszerűen egyesítheti a Markdown szövegét, a végrehajtható kódokat, az állandó adattípusokat, a grafikát és a vizualizációkat egy megosztható vászonon, a notebookon. Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához.
 
@@ -19,8 +21,6 @@ Ebben a rövid útmutatóban egy Jupyter-jegyzetfüzetet hoz létre és futtat A
 Nincsenek.
 
 ## <a name="create-a-new-project-and-notebook"></a>Új projekt és jegyzetfüzet létrehozása
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. Lépjen a [Azure Notebooks webhelyre https://notebooks.azure.com) (](https://notebooks.azure.com) és jelentkezzen be. Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksra](quickstart-sign-in-azure-notebooks.md).
 
@@ -103,7 +103,7 @@ A projekt lapon a **megosztás** menüt is használhatja egy hivatkozás beszerz
 
 ![Projekt megosztási parancsa](media/quickstarts/share-project-command.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

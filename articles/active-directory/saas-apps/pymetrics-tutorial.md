@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f10bf6a0487ea53bf4e05d0d2d389e2a275e83a
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: ea300148f421577e6f3ace961d06127fc9f2b536
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765524"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801172"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pymetrics"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a pymetrics
 
@@ -102,11 +102,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a pymetrics alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name |  |  Forrás attribútum|
-    | ---------------| --------------- | --------- |
-    | UserFirstName | | User. givenName |
-    | UserLastName | | felhasználó. vezetéknév |
-    | UserEmail | | User. userPrincipalName |
+    | Name | Forrás attribútum|
+    | --------------- | --------- |
+    | UserFirstName | User. givenName |
+    | UserLastName | felhasználó. vezetéknév |
+    | UserEmail | User. userPrincipalName |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 

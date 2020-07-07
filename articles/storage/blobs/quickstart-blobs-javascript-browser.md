@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d486b8ffc921a5ca2f38bef912ba6dc46ecec40
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83634084"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833417"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -23,7 +23,7 @@ Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van 
 [API-referenciák dokumentációja](/javascript/api/@azure/storage-blob)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-blob)  |  [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 > [!NOTE]
-> A korábbi SDK-verzió használatának megkezdéséhez lásd [: gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val a Node. js-ben](storage-quickstart-blobs-nodejs-legacy.md).
+> A korábbi SDK-verzió használatának megkezdéséhez lásd [: gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val Node.js](storage-quickstart-blobs-nodejs-legacy.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -101,7 +101,7 @@ A Blob service SAS URL-címének beszerzéséhez kövesse az alábbi lépéseket
 
 A helyi számítógépen hozzon létre egy új, *Azure-Blobok-js-Browser* nevű mappát, és nyissa meg a Visual Studio Code-ban.
 
-Válassza a **> terminál megtekintése** lehetőséget, hogy a konzol ablakát a Visual Studio Code-ban nyissa meg. Futtassa a következő Node. js Package Manager (NPM) parancsot a terminál ablakban egy [Package. JSON](https://docs.npmjs.com/files/package.json) fájl létrehozásához.
+Válassza a **> terminál megtekintése** lehetőséget, hogy a konzol ablakát a Visual Studio Code-ban nyissa meg. Futtassa a következő Node.js Package Manager (NPM) parancsot a terminál ablakban egy [package.js](https://docs.npmjs.com/files/package.json) létrehozásához a fájlon.
 
 ```console
 npm init -y
@@ -115,7 +115,7 @@ npm install --save @azure/storage-blob
 
 #### <a name="bundle-the-azure-blob-storage-client-library"></a>Az Azure Blob Storage ügyféloldali kódtára
 
-Ha az Azure SDK-kódtárat egy webhelyen szeretné használni, alakítsa át a kódot a böngészőben való működésre. Ezt egy köteg nevű eszköz használatával teheti meg. A csomagban a [Node. js](https://nodejs.org) -konvenciók használatával írt JavaScript-kód a böngészők által értelmezhető formátumba konvertálható. Ez a rövid útmutató a [csomagok](https://parceljs.org/) kötegét használja.
+Ha az Azure SDK-kódtárat egy webhelyen szeretné használni, alakítsa át a kódot a böngészőben való működésre. Ezt egy köteg nevű eszköz használatával teheti meg. A csomagban [Node.js](https://nodejs.org) konvenciók alapján írt JavaScript-kód szerepel, és a böngészők által értelmezhető formátumra alakítja át. Ez a rövid útmutató a [csomagok](https://parceljs.org/) kötegét használja.
 
 Telepítse a csomagot a következő parancs futtatásával `npm` a terminál ablakban:
 
@@ -123,11 +123,11 @@ Telepítse a csomagot a következő parancs futtatásával `npm` a terminál abl
 npm install -g parcel-bundler
 ```
 
-A Visual Studio Code-ban nyissa meg a *Package. JSON* fájlt, és adja hozzá a `browserlist` `license` és a `dependencies` bejegyzéseket. Ez `browserlist` a három népszerű böngésző legújabb verzióját célozza meg. A teljes *Package. JSON* fájlnak most így kell kinéznie:
+A Visual Studio Code-ban nyissa meg a *package.js* fájlt, és adja hozzá a `browserlist` `license` és a `dependencies` bejegyzéseket. Ez `browserlist` a három népszerű böngésző legújabb verzióját célozza meg. A fájl teljes *package.jsának* ekkor a következőképpen kell kinéznie:
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/package.json" highlight="12-16":::
 
-Mentse a *Package. JSON* fájlt.
+Mentse a *package.js* fájlt.
 
 ### <a name="import-the-azure-blob-storage-client-library"></a>Az Azure Blob Storage ügyféloldali kódtár importálása
 
@@ -135,7 +135,7 @@ Az Azure SDK-kódtárak JavaScripten belüli használatához importálja a `@azu
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_ImportLibrary":::
 
-Mentse a fájlt *index. js* néven az *Azure-Blob-js-Browser* könyvtárba.
+Mentse a fájlt *index.jsként* az *Azure-Blob-js-Browser* könyvtárba.
 
 ### <a name="implement-the-html-page"></a>A HTML-oldal implementálása
 
@@ -143,7 +143,7 @@ Hozzon létre egy új fájlt a Visual Studio Code-ban, és adja hozzá a követk
 
 :::code language="html" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.html":::
 
-Mentse a fájlt *index. html* néven az *Azure-Blobs-js-Browser* mappába.
+Mentse a fájlt *index.html* néven az *Azure-Blob-js-Browser* mappában.
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -157,15 +157,15 @@ A példában szereplő kód bemutatja, hogyan hajthatja végre a következő fel
 * [Blobok feltöltése](#upload-blobs)
 * [Blobok törlése](#delete-blobs)
 
-A kód futtatása után az összes kódrészletet hozzáadja az *index. js* fájlhoz.
+A kódot akkor fogja futtatni, ha az összes kódrészletet hozzáadja a *index.js* fájlhoz.
 
 ### <a name="declare-fields-for-ui-elements"></a>A felhasználói felületi elemek mezőinek deklarálása
 
-Adja hozzá az alábbi kódot az *index. js* fájl végéhez.
+Adja hozzá a következő kódot a *index.js* fájl végéhez.
 
 :::code language="JavaScript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_DeclareVariables":::
 
-Mentse az *index. js* fájlt.
+Mentse a *index.js* fájlt.
 
 Ez a kód minden HTML-elemhez deklarálja a mezőket, és végrehajt egy `reportStatus` függvényt a kimenet megjelenítéséhez.
 
@@ -173,61 +173,61 @@ A következő részekben adja hozzá a JavaScript-kód minden új blokkját az e
 
 ### <a name="add-your-storage-account-info"></a>A Storage-fiók adatainak hozzáadása
 
-Kód hozzáadása a Storage-fiók eléréséhez. Cserélje le a helyőrzőt a korábban létrehozott Blob service SAS URL-címére. Adja hozzá az alábbi kódot az *index. js* fájl végéhez.
+Kód hozzáadása a Storage-fiók eléréséhez. Cserélje le a helyőrzőt a korábban létrehozott Blob service SAS URL-címére. Adja hozzá a következő kódot a *index.js* fájl végéhez.
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_StorageAcctInfo":::
 
-Mentse az *index. js* fájlt.
+Mentse a *index.js* fájlt.
 
 ### <a name="create-client-objects"></a>Ügyfélobjektumok létrehozása
 
-Hozzon létre [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) és [ContainerClient](/javascript/api/@azure/storage-blob/containerclient) objektumokat az Azure Blob Storage szolgáltatással való interakcióhoz. Adja hozzá az alábbi kódot az *index. js* fájl végéhez.
+Hozzon létre [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) és [ContainerClient](/javascript/api/@azure/storage-blob/containerclient) objektumokat az Azure Blob Storage szolgáltatással való interakcióhoz. Adja hozzá a következő kódot a *index.js* fájl végéhez.
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_CreateClientObjects":::
 
-Mentse az *index. js* fájlt.
+Mentse a *index.js* fájlt.
 
 ### <a name="create-and-delete-a-storage-container"></a>Tároló létrehozása és törlése
 
-Hozza létre és törölje a tárolót, ha rákattint a megfelelő gombra a weblapon. Adja hozzá az alábbi kódot az *index. js* fájl végéhez.
+Hozza létre és törölje a tárolót, ha rákattint a megfelelő gombra a weblapon. Adja hozzá a következő kódot a *index.js* fájl végéhez.
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_CreateDeleteContainer":::
 
-Mentse az *index. js* fájlt.
+Mentse a *index.js* fájlt.
 
 ### <a name="list-blobs"></a>Blobok listázása
 
-A tárolási tároló tartalmának listázása a **fájlok listázása** gombra kattintva. Adja hozzá az alábbi kódot az *index. js* fájl végéhez.
+A tárolási tároló tartalmának listázása a **fájlok listázása** gombra kattintva. Adja hozzá a következő kódot a *index.js* fájl végéhez.
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_ListBlobs":::
 
-Mentse az *index. js* fájlt.
+Mentse a *index.js* fájlt.
 
 Ez a kód meghívja a [ContainerClient. listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) függvényt, majd egy iteráció használatával kéri le a visszaadott [blobelemet](/javascript/api/@azure/storage-blob/blobitem) nevét. Mindegyiknél `BlobItem` frissíti a **fájlok** listáját a [Name (név](/javascript/api/@azure/storage-blob/blobitem#name) ) tulajdonság értékével.
 
 ### <a name="upload-blobs"></a>Blobok feltöltése
 
-Töltse fel a fájlokat a Storage-tárolóba, amikor rákattint a **fájlok kiválasztása és feltöltése** gombra. Adja hozzá az alábbi kódot az *index. js* fájl végéhez.
+Töltse fel a fájlokat a Storage-tárolóba, amikor rákattint a **fájlok kiválasztása és feltöltése** gombra. Adja hozzá a következő kódot a *index.js* fájl végéhez.
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_UploadBlobs":::
 
-Mentse az *index. js* fájlt.
+Mentse a *index.js* fájlt.
 
 Ez a kód csatlakoztatja a **fájlok kiválasztása és feltöltése** gombot a rejtett `file-input` elemhez. A Button `click` esemény elindítja a fájl bemeneti `click` eseményét, és megjeleníti a fájl-választót. Miután kiválasztotta a fájlokat, és bezárta a párbeszédpanelt, az `input` esemény bekövetkezik, és `uploadFiles` meghívja a függvényt. Ez a függvény létrehoz egy [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) objektumot, majd meghívja a csak böngészőalapú [uploadBrowserData](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) függvényt minden kiválasztott fájlhoz. Minden hívás egy értéket ad vissza `Promise` . Mindegyiket `Promise` hozzáadjuk egy listához, hogy azok egyszerre is megtekinthetők legyenek, így a fájlok párhuzamosan lesznek feltöltve.
 
 ### <a name="delete-blobs"></a>Blobok törlése
 
-Ha a **kijelölt fájlok törlése** gombra kattint, törölje a fájlokat a tároló-tárolóból. Adja hozzá az alábbi kódot az *index. js* fájl végéhez.
+Ha a **kijelölt fájlok törlése** gombra kattint, törölje a fájlokat a tároló-tárolóból. Adja hozzá a következő kódot a *index.js* fájl végéhez.
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_DeleteBlobs":::
 
-Mentse az *index. js* fájlt.
+Mentse a *index.js* fájlt.
 
 Ez a kód meghívja a [ContainerClient. deleteBlob](/javascript/api/@azure/storage-blob/containerclient#deleteblob-string--blobdeleteoptions-) függvényt, hogy eltávolítsa a listában kijelölt összes fájlt. Ezután meghívja a `listFiles` korábban bemutatott függvényt a **fájlok** listájának tartalmának frissítéséhez.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A kód a Visual Studio Code debuggerben való futtatásához konfigurálja a *Launch. JSON* fájlt a böngészőjében.
+Ha a kódot a Visual Studio Code debuggerben szeretné futtatni, konfigurálja a *launch.jst* a böngészőben.
 
 ### <a name="configure-the-debugger"></a>A hibakereső konfigurálása
 
@@ -236,11 +236,11 @@ A hibakereső bővítmény beállítása a Visual Studio Code-ban:
 1. Válassza a **futtatás > konfiguráció hozzáadása** lehetőséget
 2. Válassza ki a **Edge**, a **Chrome**vagy a **Firefox**elemet attól függően, hogy melyik bővítményt telepítette a korábbi [Előfeltételek](#prerequisites) szakaszban.
 
-Az új konfiguráció hozzáadásával létrehoz egy *Launch. JSON* fájlt, és megnyithatja azt a szerkesztőben. Módosítsa a *Launch. JSON* fájlt úgy, hogy az az `url` `http://localhost:1234/index.html` alábbi módon jelenjen meg:
+Új konfiguráció hozzáadásával létrejön egy *launch.jsa* fájlban, és megnyitható a szerkesztőben. Módosítsa a fájl *launch.jsét* úgy, hogy az az `url` `http://localhost:1234/index.html` itt látható érték legyen:
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/.vscode/launch.json" highlight="11":::
 
-A frissítés után mentse a *Launch. JSON* fájlt. Ez a konfiguráció közli a Visual Studio Code-val, hogy melyik böngésző nyílik meg, és melyik URL-címet kell betölteni.
+A frissítés után mentse a *launch.js* fájlt. Ez a konfiguráció közli a Visual Studio Code-val, hogy melyik böngésző nyílik meg, és melyik URL-címet kell betölteni.
 
 ### <a name="launch-the-web-server"></a>A webkiszolgáló elindítása
 
@@ -250,15 +250,15 @@ A helyi fejlesztési webkiszolgáló elindításához válassza a **megtekintés
 parcel index.html
 ```
 
-A csomag becsomagolja a kódot, és elindít egy helyi fejlesztési kiszolgálót az oldalára `http://localhost:1234/index.html` . Az *index. js* -ben végrehajtott módosításokat a rendszer automatikusan felépíti és megjeleníti a fejlesztői kiszolgálón, valahányszor menti a fájlt.
+A csomag becsomagolja a kódot, és elindít egy helyi fejlesztési kiszolgálót az oldalára `http://localhost:1234/index.html` . A *index.js* végzett módosítások automatikusan a fejlesztői kiszolgálón lesznek felépítve, és a fájl mentésekor is megjelennek.
 
-Ha olyan üzenetet kap, amely szerint a 1234-es **konfigurált portot nem lehet használni**, a parancs futtatásával módosíthatja a portot `parcel -p <port#> index.html` . A *Launch. JSON* fájlban frissítse a portot az URL-cím útvonalán a megfeleltetéshez.
+Ha olyan üzenetet kap, amely szerint a 1234-es **konfigurált portot nem lehet használni**, a parancs futtatásával módosíthatja a portot `parcel -p <port#> index.html` . A fájl *launch.js* az URL-cím mezőben módosítsa a megfelelő portot.
 
 ### <a name="start-debugging"></a>Hibakeresés indítása
 
 Futtassa az oldalt a hibakeresőben, és Ismerje meg, hogyan működik a blob Storage. Ha bármilyen hiba fordul elő, a weblap **állapot** ablaktáblája megjeleníti a kapott hibaüzenetet.
 
-Ha meg szeretné nyitni az *index. html fájlt* a böngészőben a Visual Studio Code Debugger csatolt fájljában, válassza a **Futtatás > a hibakeresés elindítása** vagy az F5 billentyű lenyomása a Visual Studio Code-ban lehetőséget.
+Ha meg szeretné nyitni *index.html* -t a böngészőben a Visual Studio Code Debugger csatolt használatával, válassza a **Futtatás > a hibakeresés indítása** vagy az F5 billentyű lenyomása a Visual Studio Code-ban lehetőséget.
 
 ### <a name="use-the-web-app"></a>A webalkalmazás használata
 
@@ -271,7 +271,7 @@ A [Azure Portal](https://portal.azure.com)a következő lépésekkel ELLENŐRIZH
 
 #### <a name="step-2---upload-a-blob-to-the-container"></a>2. lépés – blob feltöltése a tárolóba
 
-1. A helyi számítógépen hozzon létre és mentsen egy tesztoldalt, például a *test. txt*fájlt.
+1. A helyi számítógépen hozzon létre és mentsen egy tesztoldalt, például *test.txt*.
 2. A webalkalmazásban kattintson a **kiválasztás és a fájlok feltöltése**elemre.
 3. Keresse meg a teszt fájlt, majd kattintson a **Megnyitás**gombra. Az állapot azt jelzi, hogy a fájl fel lett töltve, és a rendszer beolvasta a fájlok listáját.
 4. A Azure Portal válassza ki a korábban létrehozott új tároló nevét. Ellenőrizze, hogy megjelenik-e a teszt fájl.
@@ -285,7 +285,7 @@ A [Azure Portal](https://portal.azure.com)a következő lépésekkel ELLENŐRIZH
 #### <a name="step-4---delete-the-container"></a>4. lépés – a tároló törlése
 
 1. A webalkalmazásban válassza a **tároló törlése**lehetőséget. Az állapot azt jelzi, hogy a tárolót törölték.
-2. A Azure Portal válassza ki a ** \< fiók nevét \> | Tárolók** hivatkozás a portál ablaktábla bal felső részén.
+2. A Azure Portal válassza ki a ** \<account-name\> | Tárolók** hivatkozás a portál ablaktábla bal felső részén.
 3. Válassza a **frissítés**lehetőséget. Az új tároló eltűnik.
 4. A webalkalmazás bezárásához.
 
@@ -295,14 +295,14 @@ Kattintson a **terminál** konzolra a Visual Studio Code-ban, és nyomja le a CT
 
 A rövid útmutató során létrehozott erőforrások törléséhez nyissa meg a [Azure Portal](https://portal.azure.com) , és törölje az [Előfeltételek](#prerequisites) szakaszban létrehozott erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, listázhat és törölhet blobokat a JavaScript használatával. Azt is megtanulta, hogyan hozhat létre és törölhet egy blob Storage-tárolót.
 
 Az oktatóanyagok, minták, rövid útmutatók és egyéb dokumentációk a következő címen találhatók:
 
 > [!div class="nextstepaction"]
-> [Azure a JavaScripthez – dokumentáció](/azure/javascript/)
+> [Azure a JavaScripthez – dokumentáció](/azure/developer/javascript/)
 
 * További információért lásd az [Azure Blob Storage ügyféloldali kódtárat a javascripthez](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)című témakört.
 * Ha szeretné megtekinteni a blob Storage-beli példákat, folytassa az [Azure Blob Storage ügyféloldali kódtár V12 JavaScript-mintáit](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples).

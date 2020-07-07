@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: c25de9a41678af7391fc271b1dc3413c332ce8b6
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479266"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830349"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Átirányítási URI-k használata az iOS és a macOS rendszerhez készült Microsoft Authentication Library használatával
 
@@ -36,14 +36,16 @@ Előfordulhat azonban, hogy módosítania kell az átirányítási URI-t a speci
 
 Ahhoz, hogy a Microsoft Identity platform megossza a jogkivonatokat az alkalmazások között, minden alkalmazásnak ugyanazzal az ügyfél-AZONOSÍTÓval vagy alkalmazás-AZONOSÍTÓval kell rendelkeznie. Ez az egyedi azonosító, amely akkor érhető el, ha az alkalmazást a portálon regisztrálta (nem pedig az Apple-alkalmazásban regisztrálva lévő alkalmazáscsomag-azonosítót).
 
-Az átirányítási URI-azonosítóknak különbözőeknek kell lenniük az egyes iOS-alkalmazások esetében. Ez lehetővé teszi, hogy a Microsoft Identity szolgáltatás egyedi módon azonosítsa az alkalmazás-AZONOSÍTÓval rendelkező különböző alkalmazásokat. Mindegyik alkalmazás több átirányítási URI-t is regisztrál a Azure Portalban. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Példa:
+Az átirányítási URI-azonosítóknak különbözőeknek kell lenniük az egyes iOS-alkalmazások esetében. Ez lehetővé teszi, hogy a Microsoft Identity szolgáltatás egyedi módon azonosítsa az alkalmazás-AZONOSÍTÓval rendelkező különböző alkalmazásokat. Mindegyik alkalmazás több átirányítási URI-t is regisztrál a Azure Portalban. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Például:
 
 A következő alkalmazás-regisztráció a Azure Portalban:
 
-    Client ID: ABCDE-12345 (this is a single client ID)
-    RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
+* Ügyfél-azonosító: `ABCDE-12345` (ez egyetlen ügyfél-azonosító)
+* RedirectUris: `msauth.com.contoso.app1://auth` , `msauth.com.contoso.app2://auth` ,`msauth.com.contoso.app3://auth`
 
-A App1 átirányítási `msauth.com.contoso.app1://auth` App2 használ a `msauth.com.contoso.app2://auth` App3 használatával`msauth.com.contoso.app1://auth`
+A App1 átirányítást használ `msauth.com.contoso.app1://auth` . \
+A App2 használja `msauth.com.contoso.app2://auth` . \
+A App3 használja `msauth.com.contoso.app1://auth` .
 
 ### <a name="migrating-from-adal-to-msal"></a>Migrálás a ADAL-ből a MSAL-be
 
@@ -70,7 +72,6 @@ Ha olyan kódot telepít át, amely az Azure AD hitelesítési függvénytárat 
         </dict>
     </array>
     ```
-    
 
 A MSAL ellenőrzi, hogy az átirányítási URI megfelelően van-e regisztrálva, és ha nem, hibaüzenetet ad vissza.
     
@@ -78,7 +79,7 @@ A MSAL ellenőrzi, hogy az átirányítási URI megfelelően van-e regisztrálva
 
 ## <a name="use-a-custom-redirect-uri"></a>Egyéni átirányítási URI használata
 
-Ha egyéni átirányítási URI-t szeretne használni, adja át a `redirectUri` paramétert, `MSALPublicClientApplicationConfig` és adja át az objektumot az `MSALPublicClientApplication` objektum inicializálásakor. Ha az átirányítási URI-azonosító érvénytelen, az inicializálás visszaadja `nil` és beállítja a `redirectURIError` További információkat.  Példa:
+Ha egyéni átirányítási URI-t szeretne használni, adja át a `redirectUri` paramétert, `MSALPublicClientApplicationConfig` és adja át az objektumot az `MSALPublicClientApplication` objektum inicializálásakor. Ha az átirányítási URI-azonosító érvénytelen, az inicializálás visszaadja `nil` és beállítja a `redirectURIError` További információkat.  Például:
 
 Objective-C:
 

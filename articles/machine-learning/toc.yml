@@ -335,9 +335,6 @@
         - name: Távoli számítógépcélok használata
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
-        - name: Gépi tanulási feladatok meghatározása
-          displayName: 'machine learning, task type, automl'
-          href: how-to-define-task-type.md
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 420d9b48013f5f6debe588667fe1cc0390517e66
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7cabe5b0564ec63335800a999bebec67ec970587
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856780"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: .NET Core-alkalmazás létrehozása az alkalmazás konfigurációjával
 
@@ -27,7 +27,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. A következő kulcs-érték párok hozzáadásához válassza a **Configuration Explorer** > **create** > **Key-Value** elemet:
+6. **Configuration Explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create**Key-Value** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -51,7 +51,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Adja hozzá a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
+1. Adja hozzá a NuGet- `Microsoft.Extensions.Configuration.AzureAppConfiguration` csomagra mutató hivatkozást a következő parancs futtatásával:
 
     ```dotnetcli
     dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
@@ -70,7 +70,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-4. Frissítse a `Main` metódust az alkalmazás konfigurációjának használatára a `builder.AddAzureAppConfiguration()` metódus meghívásával.
+4. Frissítse a `Main` metódust az alkalmazás konfigurációjának használatára a metódus meghívásával `builder.AddAzureAppConfiguration()` .
 
     ```csharp
     static void Main(string[] args)
@@ -99,7 +99,9 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
     Ha macOS vagy Linux rendszert használ, futtassa a következő parancsot:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
     A módosítás érvénybe léptetéséhez indítsa újra a parancssort. Nyomtassa ki a környezeti változó értékét annak ellenőrzéséhez, hogy megfelelően van-e beállítva.
 
@@ -115,7 +117,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
     dotnet run
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

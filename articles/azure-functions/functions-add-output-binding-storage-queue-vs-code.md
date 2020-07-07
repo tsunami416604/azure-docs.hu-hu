@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 68d1e4e7fdf50ef3ec228b7e7ca4e620a47afb05
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d41c018e07f792fd0af4027229449d8352aa6c55
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849977"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Functions összekötése az Azure Storage-ba a Visual Studio Code használatával
 
@@ -38,14 +38,14 @@ Ez a cikk azt feltételezi, hogy már bejelentkezett az Azure-előfizetésbe a V
 
 ## <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
 
-Az [előző](functions-create-first-function-vs-code.md)rövid útmutatóban létrehozott egy Function alkalmazást az Azure-ban a szükséges Storage-fiókkal együtt. A fiókhoz tartozó kapcsolatok karakterlánca biztonságosan tárolódik az Azure-beli alkalmazás beállításaiban. Ebben a cikkben egy fiókba írja az üzeneteket egy tárolási várólistába. Ha a funkciót helyileg futtatja, a Storage-fiókhoz való csatlakozáshoz le kell töltenie az Alkalmazásbeállítások a local. Settings. JSON fájlra. 
+Az [előző](functions-create-first-function-vs-code.md)rövid útmutatóban létrehozott egy Function alkalmazást az Azure-ban a szükséges Storage-fiókkal együtt. A fiókhoz tartozó kapcsolatok karakterlánca biztonságosan tárolódik az Azure-beli alkalmazás beállításaiban. Ebben a cikkben egy fiókba írja az üzeneteket egy tárolási várólistába. Ha a funkciót helyileg futtatja, a Storage-fiókhoz való csatlakozáshoz le kell töltenie az alkalmazás beállításait a fájl local.settings.js. 
 
 1. Nyomja le az F1 billentyűt a parancs palettájának megnyitásához, majd keresse meg és futtassa a parancsot `Azure Functions: Download Remote Settings....` . 
 
 1. Válassza ki az előző cikkben létrehozott Function alkalmazást. A meglévő helyi beállítások felülírásához válassza az **Igen** lehetőséget. 
 
     > [!IMPORTANT]  
-    > Mivel titkokat tartalmaz, a local. Settings. JSON fájl soha nem lesz közzétéve, és ki van zárva a verziókövetés alól.
+    > Mivel titkokat tartalmaz, a fájl local.settings.jssoha nem kerül közzétételre, és ki van zárva a verziókövetés alól.
 
 1. Másolja ki az értéket `AzureWebJobsStorage` , amely a Storage-fiókhoz tartozó kapcsolatok karakterlánc-értékének kulcsa. Ezzel a kapcsolattal ellenőrizheti, hogy a kimeneti kötés a várt módon működik-e.
 
@@ -57,7 +57,7 @@ Mivel a várólista-tároló kimeneti kötését használja, a projekt futtatás
 
 A projekt a [bővítmények](functions-bindings-register.md#extension-bundles)használatára lett konfigurálva, amely automatikusan telepíti a bővítmények előre meghatározott készletét. 
 
-A bővítmény-csomagok használata engedélyezve van a gazdagép. JSON fájlban a projekt gyökérkönyvtárában, amely a következőképpen jelenik meg:
+A bővítmény-csomagok használata engedélyezve van a projekt gyökérkönyvtárában lévő host.jsfájlban, amely a következőképpen jelenik meg:
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -68,7 +68,7 @@ A bővítmény-csomagok használata engedélyezve van a gazdagép. JSON fájlban
 A HTTP-és időzítő-eseményindítók kivételével a kötések kiterjesztési csomagként vannak implementálva. Futtassa a következő [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a terminál ablakban a tárolási bővítmény csomagjának a projekthez való hozzáadásához.
 
 ```bash
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 ```
 
 ::: zone-end
@@ -77,7 +77,7 @@ Most hozzáadhatja a tárolási kimeneti kötést a projekthez.
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
-A functions esetében minden típusú kötéshez a `direction` , `type` , és a `name` function. JSON fájlban definiált egyedi azonosító szükséges. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
+A functions szolgáltatásban minden típusú kötéshez a, `direction` `type` , és egyedi `name` érték szükséges a fájl function.js. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
@@ -207,7 +207,7 @@ E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának
 
 [!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Most már többet is megtudhat a függvények a Visual Studio Code használatával történő fejlesztéséről:
 

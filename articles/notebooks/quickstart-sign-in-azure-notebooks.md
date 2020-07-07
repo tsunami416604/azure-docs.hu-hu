@@ -3,18 +3,18 @@ title: Bejelentkezés Azure Notebooks előzetes verzióra
 description: Gyorsan bejelentkezhet Azure Notebooks előzetes verzióra, és beállíthat egy felhasználói azonosítót, amely lehetővé teszi a mentett projektek elérését és a jegyzetfüzetek másokkal való megosztását.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: b6572a7c0b965b2b72916db577b47eff4f1921c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75647016"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830417"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Gyors útmutató: bejelentkezés és felhasználói azonosító beállítása Azure Notebooks előzetes verzióhoz
 
-Habár bármikor megtekintheti Azure Notebooks bejelentkezés nélkül, be kell jelentkeznie a jegyzetfüzetek futtatásához, a mentett projektekhez és jegyzetfüzetekhez való hozzáféréshez, valamint a notebookok megosztásához.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Habár bármikor megtekintheti Azure Notebooks bejelentkezés nélkül, be kell jelentkeznie a jegyzetfüzetek futtatásához, a mentett projektekhez és jegyzetfüzetekhez való hozzáféréshez, valamint a notebookok megosztásához.
 
 ## <a name="sign-in"></a>Bejelentkezés
 

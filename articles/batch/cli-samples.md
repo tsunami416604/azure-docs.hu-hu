@@ -1,30 +1,23 @@
 ---
-title: Azure CLI-példák
-description: Azure CLI-példák Azure Batch szolgáltatáshoz. Megtudhatja, hogyan hozhat létre batch-fiókot, és hogyan adhat hozzá alkalmazásokat.
+title: Azure CLI-példák az Azure Batch szolgáltatáshoz
+description: Megtudhatja, hogyan hozhat létre batch-fiókot, és hogyan adhat hozzá egy alkalmazást az Azure CLI használatával.
 ms.topic: sample
-ms.date: 01/29/2018
+ms.date: 07/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 59fc944024e2d51b16193db01ff06f2d434ad1e7
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ff18043f4d411a70be7ad7f4d373d7c6a8b0e4e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725754"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832270"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Azure CLI-példák az Azure Batch szolgáltatáshoz
 
-A következő táblázat hivatkozásokat tartalmaz az Azure Batch szolgáltatással kapcsolatos Azure CLI-példákra.
+Az alábbi példák bemutatják, hogyan használható a Batch az Azure CLI használatával.
 
-|  |  |
-|---|---|
-|**Batch-fiók létrehozása**||
-| [Batch-fiók létrehozása Batch szolgáltatás módban](./scripts/batch-cli-sample-create-account.md) | Létrehoz egy Batch-fiókot az alapértelmezett módban, és hozzárendeli egy tárfiókhoz. |
-| [Batch-fiók létrehozása felhasználói előfizetési módban](./scripts/batch-cli-sample-create-user-subscription-account.md) | Létrehoz egy Batch-fiókot felhasználói előfizetési módban. |
-|**Alkalmazás hozzáadása**||
-| [Alkalmazás hozzáadása egy Batch-fiókhoz](./scripts/batch-cli-sample-add-application.md) | Hozzáad egy alkalmazást és feltölti a csomagolt bináris fájlokat.|
-|**Számítási csomópontok készleteinek létrehozása és kezelése**||
-| [Linux-készlet létrehozása és kezelése](./scripts/batch-cli-sample-manage-linux-pool.md) | Bemutatja a Linux-készletek létrehozását, átméretezését és kezelését. |
-| [Windows-készlet létrehozása és kezelése](./scripts/batch-cli-sample-manage-windows-pool.md) | Bemutatja a Windows-készletek létrehozását, átméretezését és kezelését. |
-|**Feladatok és tevékenységek futtatása**||
-| [Feladatok és tevékenységek futtatása a Batch-csel](./scripts/batch-cli-sample-run-job.md) | Bemutatja a feladatok futtatását és a tevékenységek hozzáadását. |
-
+- [Hozzon létre egy batch-fiókot alapértelmezett módban, és társítsa azt egy Storage-fiókkal](./scripts/batch-cli-sample-create-account.md)
+- [Batch-fiók létrehozása felhasználói előfizetési módban](./scripts/batch-cli-sample-create-user-subscription-account.md)
+- [Alkalmazás hozzáadása batch-fiókhoz és csomagolt bináris fájlok feltöltése](./scripts/batch-cli-sample-add-application.md)
+- [Linux-készlet létrehozása és kezelése](./scripts/batch-cli-sample-manage-linux-pool.md)
+- [Windows-készlet létrehozása és kezelése](./scripts/batch-cli-sample-manage-windows-pool.md)
+- [Feladatok és tevékenységek futtatása a Batch-csel](./scripts/batch-cli-sample-run-job.md)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684216"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833181"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
 ## <a name="overview"></a>Áttekintés
@@ -89,9 +89,11 @@ A Traffic Manager-pingeknek a WAF-ról az alkalmazásához történő továbbít
 ![Website Translations][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Az App Service Environment környezet felé irányuló forgalom biztonságossá tétele hálózati biztonsági csoportok (NSG-k) használatával
-Kövesse a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) utasításait, így megtudhatja, hogyan korlátozza a WAF-ból az App Service Environment környezetébe irányuló forgalmát, csak a felhőszolgáltatás VIP-címét használva. Itt látható egy PowerShell-példaparancs arra, hogyan lehet ezt a feladatot elvégezni a 80-as TCP-porton.
+Kövesse a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) utasításait, így megtudhatja, hogyan korlátozza a WAF-ból az App Service Environment környezetébe irányuló forgalmát, csak a felhőszolgáltatás VIP-címét használva. Íme egy PowerShell-parancs a feladat végrehajtásához a 80-es TCP-porton.
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 Cserélje le a SourceAddressPrefix részt a WAF felhőszolgáltatásának virtuális IP-címére (VIP-jére).
 

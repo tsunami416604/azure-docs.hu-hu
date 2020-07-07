@@ -4,22 +4,22 @@ description: Megtudhatja, hogyan hozhat létre és futtathat Jupyter jegyzetfüz
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e677fca9291bb5247071c3970b7db3f36a6bdceb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561753"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834131"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása Python-val
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Ez az oktatóanyag végigvezeti a Azure Notebooks használatának folyamatán, amely egy teljes Jupyter jegyzetfüzetet hoz létre, amely egyszerű lineáris regressziót mutat be. Az oktatóanyag során megismerheti a Jupyter notebook felhasználói felületét, amely magában foglalja a különböző cellák létrehozását, a cellák futtatását és a jegyzetfüzet megjelenítését diavetítésként.
 
 Az elkészült jegyzetfüzet a [GitHub-Azure Notebooks mintákon](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)érhető el. Ez az oktatóanyag azonban egy új projekttel és egy üres jegyzetfüzettel kezdődik, így a lépésről lépésre megtekintheti a folyamatot.
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
-
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Project-jegyzetfüzet létrehozása néhány mintaadatok
@@ -51,26 +51,26 @@ Az oktatóanyag a következőket ismerteti:
 
 ## <a name="create-the-data-file"></a>Az adatfájl létrehozása
 
-A jegyzetfüzetben létrehozott lineáris regressziós modell a projekt egy *cricket_chirps. csv*nevű fájljának adatait hívja meg. Ezt a fájlt a [GitHub-Azure Notebooks mintákból](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)is létrehozhatja, vagy közvetlenül is beírhatja az adatokat. A következő szakaszok mindkét megközelítést ismertetik.
+A jegyzetfüzetben létrehozott lineáris regressziós modell a projekt egy *cricket_chirps.csv*nevű fájljának adatait hívja meg. Ezt a fájlt a [GitHub-Azure Notebooks mintákból](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)is létrehozhatja, vagy közvetlenül is beírhatja az adatokat. A következő szakaszok mindkét megközelítést ismertetik.
 
 ### <a name="upload-the-data-file"></a>Az adatfájl feltöltése
 
 1. A Azure Notebooks a projekt irányítópultján válassza a **feltöltés**  >  **URL-** címről lehetőséget.
-1. Az előugró ablakban adja meg a következő URL-címet a fájl **URL-címében** , és *cricket_chirps. csv* fájlt a **fájlnév**mezőben, majd válassza a **kész**lehetőséget.
+1. Az előugró ablakban adja meg a következő URL-címet a **fájl URL-címében** , és *cricket_chirps.csv* a **fájlnév**mezőben, majd válassza a **kész**lehetőséget.
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
     ```
 
-1. A *cricket_chirps. csv* fájlnak ekkor meg kell jelennie a projekt fájllista:
+1. A *cricket_chirps.csv* fájlnak ekkor meg kell jelennie a projekt fájllista:
 
     ![Az újonnan létrehozott CSV-fájl, amely a projektfájlok listájában látható](media/tutorial/csv-file-in-project.png)
 
 ### <a name="create-a-file-from-scratch"></a>Hozzon létre egy fájlt a semmiből
 
 1. Azure Notebooks a projekt irányítópultján válassza az **+ új**  >  **üres fájl** elemet.
-1. Megjelenik egy mező a projekt fájljának listájában. Adja meg *cricket_chirps. csv* fájlt, és nyomja le az ENTER billentyűt.
-1. Kattintson a jobb gombbal a *cricket_chirps. csv* fájlra, majd válassza a **fájl szerkesztése**lehetőséget.
+1. Megjelenik egy mező a projekt fájljának listájában. Írja be *cricket_chirps.csv* , majd nyomja le az ENTER billentyűt.
+1. Kattintson a jobb gombbal a *cricket_chirps.csv* elemre, és válassza a **fájl szerkesztése**lehetőséget.
 1. A megjelenő szerkesztőben adja meg a következő adatértékeket:
 
     ```csv
@@ -111,12 +111,12 @@ A notebookon belül mindig használhat olyan parancsokat, mint a `!pip install` 
 
 1. A projekt irányítópultján válassza a **projekt beállításai**lehetőséget.
 1. A megjelenő előugró ablakban válassza a **környezet** lapot, majd válassza a **+ Hozzáadás**lehetőséget.
-1. Az első legördülő vezérlőben (a műveletben) a **környezet beállítása lépésnél**válassza a **követelmények. txt**elemet.
-1. A második legördülő vezérlőben (a fájl neve) válassza a *követelmények. txt* (a létrehozott fájl) elemet.
+1. Az első legördülő menüben (a művelet) a **környezet beállítása lépésnél**válassza a **Requirements.txt**lehetőséget.
+1. A második legördülő menüben (a fájl neve) válassza a *requirements.txt* (a létrehozott fájl) lehetőséget.
 1. A harmadik legördülő vezérlőben (a Python verziója) válassza a **python 3,6**-es verzióját.
 1. Kattintson a **Mentés** gombra.
 
-![A Project Settings környezet lapja a követelmények. txt fájlt határozza meg](media/tutorial/tutorial-requirements-txt.png)
+![A Project Settings környezet lapja requirements.txt fájlt ad meg](media/tutorial/tutorial-requirements-txt.png)
 
 Ezzel a beállítással a projektben futtatott összes jegyzetfüzet olyan környezetben fog futni, ahol a csomagok telepítve vannak.
 
@@ -127,7 +127,7 @@ Ha az adatfájl készen áll, és a Project Environment beállította, most már
 1. A projekt irányítópultján válassza az **+ új**  >  **Jegyzetfüzet**elemet.
 1. Az előugró ablakban adja meg a *lineáris regressziós példát – Cricket csiripel. ipynb* az **elem neveként**válassza a **Python 3,6** lehetőséget a nyelvhez, majd válassza az **új**lehetőséget.
 1. Miután az új jegyzetfüzet megjelenik a fájl listán, válassza ki a jegyzetfüzet elindításához. Automatikusan megnyílik egy új böngésző lap.
-1. Mivel a környezeti beállításokban szerepel a *követelmények. txt* fájl, a "Várakozás a tároló előkészítésének befejezésére" üzenet jelenik meg. Az **OK** gombra kattintva lezárhatja az üzenetet, és folytathatja a munkát a jegyzetfüzetben; a kód cellái azonban nem futtathatók, amíg a környezet teljesen be nem fejeződik.
+1. Mivel a környezeti beállításokban *requirements.txt* fájl található, a "Várakozás a tároló előkészítésének befejezésére" üzenet jelenik meg. Az **OK** gombra kattintva lezárhatja az üzenetet, és folytathatja a munkát a jegyzetfüzetben; a kód cellái azonban nem futtathatók, amíg a környezet teljesen be nem fejeződik.
 1. A jegyzetfüzet az Jupyter felületen egyetlen üres kóddal jelenik meg alapértelmezettként.
 
     [![Azure Notebooks új jegyzetfüzetének kezdeti nézete](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
@@ -421,7 +421,7 @@ További információ: Jupyter- [Jegyzetfüzet hibakeresése](https://code.visua
 
 Lásd még: a [Visual Studio Code-Jupyter támogatása](https://code.visualstudio.com/docs/python/jupyter-support) a Visual Studio Code további szolgáltatásaihoz a Jupyter notebookokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
 

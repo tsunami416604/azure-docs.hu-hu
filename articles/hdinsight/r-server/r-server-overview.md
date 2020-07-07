@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 1dd716a279f7a09e7d9152ee34ff5c7bdac201dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8d164dd50ac190d2bc14fea70cde20bfdb89361
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188242"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849909"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Mi az az Azure HDInsight a ML-szolgáltatások?
 
@@ -23,7 +23,7 @@ A HDInsight ML-szolgáltatásai az R-alapú elemzések legújabb képességeit b
 
 A peremhálózati csomópont kényelmes helyet biztosít a fürthöz való kapcsolódáshoz és az R-parancsfájlok futtatásához. A peremhálózati csomópont lehetővé teszi a skálázás párhuzamosan elosztott funkcióinak futtatását a kiszolgáló magjai között. Azokat a fürt csomópontjain is futtathatja, ha a méretezőt a Hadoop Térkép használatával csökkenti. Apache Spark számítási környezeteket is használhat.
 
-Az elemzésből eredő modellek vagy előrejelzések a helyszíni használatra tölthetők le. Más is lehetnek `operationalized` az Azure-ban. Különösen a [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net)és a [Web Service](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)használatával.
+Az elemzésből eredő modellek vagy előrejelzések a helyszíni használatra tölthetők le. Más is lehetnek `operationalized` Az Azure-ban. Különösen a [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net)és a [Web Service](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)használatával.
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Ismerkedés a HDInsight által nyújtott ML-szolgáltatásokkal
 
@@ -84,7 +84,7 @@ Az R-szkriptek a 8000-es és a nyílt forráskódú R-csomagok bármelyikét has
 
 ## <a name="operationalize-a-model"></a>`Operationalize`egy modell
 
-`operationalize` Az adatmodellezés befejezése után az Azure-ból vagy a helyszíni környezetből származó új adatokra vonatkozó előrejelzéseket készíthet. Ez a folyamat pontozásként ismert. A pontozás a HDInsight, Azure Machine Learning és a helyszínen is elvégezhető.
+Az adatmodellezés befejezése után `operationalize` Az Azure-ból vagy a helyszíni környezetből származó új adatokra vonatkozó előrejelzéseket készíthet. Ez a folyamat pontozásként ismert. A pontozás a HDInsight, Azure Machine Learning és a helyszínen is elvégezhető.
 
 ### <a name="score-in-hdinsight"></a>Pontszám a HDInsight
 
@@ -92,7 +92,7 @@ A HDInsight való kiértékeléséhez írjon egy R-függvényt. A függvény meg
 
 ### <a name="score-in-azure-machine-learning-aml"></a>Pontszám Azure Machine Learning (pénzmosás)
 
-A Azure Machine Learning használatának értékeléséhez használja a [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) néven ismert nyílt forráskódú Azure Machine learning R-csomagot a modell Azure-webszolgáltatásként való közzétételéhez. A kényelem érdekében ez a csomag előre telepítve van a peremhálózati csomóponton. Ezután használja a Azure Machine Learning található létesítményeket a webszolgáltatás felhasználói felületének létrehozásához, majd a pontozáshoz szükség szerint hívja meg a webszolgáltatást. Ezután alakítsa át a skálázási modell objektumait egyenértékű, nyílt forráskódú modell-objektumokra a webszolgáltatással való használatra. Ehhez az átalakításhoz használjon skálázhatósági kényszerítési `as.randomForest()` funkciókat, például az Ensemble-alapú modellekhez.
+A Azure Machine Learning használatának értékeléséhez használja a [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) néven ismert nyílt forráskódú Azure Machine learning R-csomagot a modell Azure-webszolgáltatásként való közzétételéhez. A kényelem érdekében ez a csomag előre telepítve van a peremhálózati csomóponton. Ezután használja a Azure Machine Learning található létesítményeket a webszolgáltatás felhasználói felületének létrehozásához, majd a pontozáshoz szükség szerint hívja meg a webszolgáltatást. Ezután alakítsa át a skálázási modell objektumait egyenértékű, nyílt forráskódú modell-objektumokra a webszolgáltatással való használatra. Ehhez az átalakításhoz használjon skálázhatósági kényszerítési funkciókat, például `as.randomForest()` az Ensemble-alapú modellekhez.
 
 ### <a name="score-on-premises"></a>Helyszíni pontozás
 
@@ -114,7 +114,9 @@ A MapReduce-feladatok futtatásakor a rendelkezésre álló memória és a ML sz
 
 A rendelkezésre álló memória ML-szolgáltatásokhoz a Hadoop kapcsolók használatával módosítható a **RxHadoopMR**-hívásban:
 
-    hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
+```r
+hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"
+```
 
 ### <a name="scale-your-cluster"></a>A fürt méretezése
 

@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 35435bd318596ffd0a46e5d272565358c092bc03
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1f0541cd3ae7cf2c78d3cd2bf6844fed930e7968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562694"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833147"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -75,10 +75,10 @@ Azure Cosmos DB-kapcsolat hozzáadásához hozzon létre egy **TableService** ob
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
-```  
+```
 
 ## <a name="create-a-table"></a>Tábla létrehozása
-Az alábbi kód egy **TableService** objektumot hoz létre, amelyet egy új tábla létrehozásához használ. 
+Az alábbi kód egy **TableService** objektumot hoz létre, amelyet egy új tábla létrehozásához használ.
 
 ```javascript
 var tableSvc = azure.createTableService();
@@ -364,7 +364,7 @@ dc.table.queryEntities(tableName,
 
 Ha megvizsgálja a `continuationToken` objektumot, olyan tulajdonságokat fog találni, mint például a `nextPartitionKey`, `nextRowKey` és `targetLocation`, amelyeket az eredmények közti iterációhoz használhat.
 
-A és a együtt is használható `top` `continuationToken` az oldalméret beállításához. 
+A és a együtt is használható `top` `continuationToken` az oldalméret beállításához.
 
 ## <a name="work-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok használata
 A közös hozzáférésű jogosultságkódokkal (Shared access signatures, SAS) biztonságos és részletes hozzáférést biztosíthat a táblákhoz anélkül, hogy megadná Storage-fiókjának nevét vagy kulcsait. Az SAS-t gyakran használják az adatokhoz való korlátozott hozzáférés biztosítására, például arra, hogy a mobilalkalmazások hozzáférhessenek a lekérdezésrekordokhoz.
@@ -393,7 +393,7 @@ var host = tableSvc.host;
 
 Vegye figyelembe, hogy a gazdagép adatait is meg kell adnia, mivel szükség van rájuk, ha az SAS tulajdonosa megkísérel hozzáférni a táblához.
 
-Ezután az ügyfélalkalmazás az SAS-t használja a **TableServiceWithSAS** metódussal, hogy műveleteket hajtson végre a táblán. A következő példa csatlakozik a táblához, és végrehajt egy lekérdezést. Lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával](../storage/common/storage-sas-overview.md) a tableSAS formátumához. 
+Ezután az ügyfélalkalmazás az SAS-t használja a **TableServiceWithSAS** metódussal, hogy műveleteket hajtson végre a táblán. A következő példa csatlakozik a táblához, és végrehajt egy lekérdezést. Lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával](../storage/common/storage-sas-overview.md) a tableSAS formátumához.
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
@@ -458,6 +458,6 @@ További információkért lásd a következő forrásanyagokat.
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) adattár a GitHubon.
-* [Azure for Node.js-fejlesztők](https://docs.microsoft.com/azure/javascript/)
+* [Azure for Node.js-fejlesztők](https://docs.microsoft.com/azure/developer/javascript/)
 * [Node.js-webalkalmazás létrehozása az Azure-ban](../app-service/app-service-web-get-started-nodejs.md)
 * [Node.js-alkalmazás létrehozása és telepítése egy Azure-felhőszolgáltatásban](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (a Windows PowerShell használatával)

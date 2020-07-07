@@ -3,18 +3,18 @@ title: Minta Jupyter-jegyzetfüzetek Azure Notebooks előzetes verzióhoz
 description: A minták nagyszerű megoldást nyújtanak az ingyenes Azure Notebooks Cloud Services szolgáltatásban futó Jupyter-jegyzetfüzetek megtapasztalása érdekében.
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75646313"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833995"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Minta-jegyzetfüzetek felderítése és használata Azure Notebooks előzetes verzióban
 
-Az Internet számos érdekes és hasznos Jupyter-jegyzetfüzetet tartalmaz, amelyeket egyszerűen beépíthet Azure Notebooksba. Ez a cikk a jelentős példák listáját tartalmazza.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Az Internet számos érdekes és hasznos Jupyter-jegyzetfüzetet tartalmaz, amelyeket egyszerűen beépíthet Azure Notebooksba. Ez a cikk a jelentős példák listáját tartalmazza.
 
 Miután azonosította a megtekinteni kívánt jegyzetfüzeteket, néhány részletet érdemes megismernie:
 
