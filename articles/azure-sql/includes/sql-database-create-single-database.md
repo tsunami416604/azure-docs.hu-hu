@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
 ms.openlocfilehash: ad6e444f9672fbe521e9c6963649d250830154d8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84046137"
 ---
 Ebben a lépésben létrehoz egy [logikai SQL-kiszolgálót](../database/logical-servers.md) és egy AdventureWorksLT-mintát használó [önálló adatbázist](../database/single-database-overview.md) . Az adatbázist Azure Portal menük és képernyők használatával, vagy az Azure Cloud Shell Azure CLI-vagy PowerShell-parancsfájllal is létrehozhatja.
@@ -28,7 +28,7 @@ Erőforráscsoport, kiszolgáló és önálló adatbázis létrehozása a Azure 
    ![Hozzáadás az Azure SQL-hez](./media/sql-database-create-single-database/sqldbportal.png)
 
 1. Az **SQL központi telepítési lehetőség kiválasztása** lapon válassza az **SQL-adatbázisok** csempét az **Erőforrás típusa**területen található **önálló adatbázis** elemre. A különböző adatbázisokkal kapcsolatos további információkat a **Részletek megjelenítése**lehetőség kiválasztásával tekintheti meg.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    ![Önálló adatbázis létrehozása](./media/sql-database-create-single-database/create-single-database.png)
 
@@ -41,7 +41,7 @@ Erőforráscsoport, kiszolgáló és önálló adatbázis létrehozása a Azure 
    - **Password (jelszó**): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
    - **Hely**: legördülő lista, válasszon egy helyet, például **(USA) az USA keleti**régióját.
 
-   Kattintson az **OK** gombra.
+   Válassza az **OK** lehetőséget.
 
    ![Új kiszolgáló](./media/sql-database-create-single-database/new-server.png)
 

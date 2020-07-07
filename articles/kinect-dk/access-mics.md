@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, szenzor, SDK, mikrofon, hozzáférési mikrofon, MIC-információ
 ms.openlocfilehash: f2e604d39bc191af095e009c50f3a93e0d695657
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85277602"
 ---
 # <a name="access-azure-kinect-dk-microphone-input-data"></a>Azure Kinect DK mikrofon bemeneti adatok elérése
