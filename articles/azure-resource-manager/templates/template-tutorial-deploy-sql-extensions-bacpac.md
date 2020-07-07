@@ -5,12 +5,11 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: 2bc160418df7cb2d68f474da541f8f81ebb819fc
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250332"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054763"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása ARM-sablonokkal
 
@@ -112,8 +111,8 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
 
     A sablonban két erőforrás van definiálva:
 
-   * `Microsoft.Sql/servers`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
-   * `Microsoft.SQL.servers/databases`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.Sql/servers`. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.sql/servers).
+   * `Microsoft.SQL.servers/databases`. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.sql/servers/databases).
 
         A Testreszabás előtt hasznos lehet a sablon alapvető megismerése.
 1. Válassza a **fájl**  >  **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre *azuredeploy.js*a következő néven:.
@@ -194,7 +193,7 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
 
         ![Sablon SQL Database bővítménnyel](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-        További információ az erőforrás-definícióról: [SQL Database-bővítmény referenciája](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). A következők a fontosabb elemek:
+        További információ az erőforrás-definícióról: [SQL Database-bővítmény referenciája](/azure/templates/microsoft.sql/servers/databases/extensions). A következők a fontosabb elemek:
 
         * **dependsOn**: az adatbázis létrehozása után létre kell hozni a bővítmény erőforrását.
         * **storageKeyType**: adja meg a használandó tárolási kulcs típusát. Az értéke `StorageAccessKey` vagy `SharedAccessKey` lehet. Ebben `StorageAccessKey` az oktatóanyagban használható.

@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fef2d7e3afb0cdda3c3c3e2506b39ba542e0760
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
-ms.translationtype: MT
+ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956882"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026831"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai
 
@@ -79,7 +78,7 @@ A Akamai EAA-alkalmazás beállítása külön történik az Azure AD-portálon.
 
 • Egyéni HITELESÍTÉSSZOLGÁLTATÓI házirendeket is meghatározhat
 
-• Minden alkalmazás a 0365 Waffle és a myApps.microsoft.com panelen jelenik meg.
+• Minden alkalmazás képviselteti magát a O365 Waffle és a myApps.microsoft.com panelen.
 
 **Hátrányok**:
 

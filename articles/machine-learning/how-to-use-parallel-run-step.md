@@ -11,12 +11,11 @@ ms.author: tracych
 author: tracychms
 ms.date: 06/23/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: ae79a4f7264224f29db4ede0944ae079130b6394
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362611"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023363"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,9 +111,6 @@ Ezt a lépést módosíthatja úgy, hogy a blob-tárolóra mutasson, ha a, a és
 from azureml.core import Datastore
 from azureml.core import Workspace
 
-# Load workspace authorization details from config.json
-ws = Workspace.from_config()
-
 mnist_blob = Datastore.register_azure_blob_container(ws, 
                       datastore_name="mnist_datastore", 
                       container_name="sampledata", 
@@ -140,8 +136,6 @@ További információ a Azure Machine Learning adatkészletekről: [adatkészlet
 
 ```python
 from azureml.core.dataset import Dataset
-
-mnist_ds_name = 'mnist_sample_data'
 
 path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
@@ -218,6 +212,7 @@ A parancsfájlnak két függvényt *kell tartalmaznia* :
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
+%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -311,12 +306,14 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 A (z),,,, és as értékeket megadhatja, `mini_batch_size` `node_count` így a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor beállíthatja a paraméterek értékeit. Ebben a példában a és a PipelineParameter használja `mini_batch_size` , `Process_count_per_node` és ezeket az értékeket fogja módosítani, ha később újra elküld egy futtatást. 
 
+Ez a példa feltételezi, hogy a `digit_identification.py` korábban tárgyalt parancsfájlt használja. Ha saját parancsfájlt használ, `source_directory` ennek megfelelően módosítsa a és a `entry_script` paramétereket.
+
 ```python
 from azureml.pipeline.core import PipelineParameter
 from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
-    source_directory=scripts_folder,
+    source_directory='.',
     entry_script="digit_identification.py",
     mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
@@ -384,9 +381,8 @@ pipeline_run.wait_for_completion(show_output=True)
 Mivel a bemeneteket és több konfigurálást hajtott végre `PipelineParameter` , újra elküldheti a Batch-következtetést egy másik adatkészlet-bemenettel, és a paraméterek finomhangolását anélkül, hogy teljesen új folyamatot kellene létrehoznia. Ugyanazt az adattárolót fogja használni, de csak egyetlen rendszerképet használ adatbemenetként.
 
 ```python
-path_on_datastore = mnist_data.path('mnist/0.png')
+path_on_datastore = mnist_blob.path('mnist/0.png')
 single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-single_image_ds._ensure_saved(ws)
 
 pipeline_run_2 = experiment.submit(pipeline, 
                                    pipeline_parameters={"mnist_param": single_image_ds, 

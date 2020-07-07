@@ -7,12 +7,11 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bf200a8c7da6910f9d844c9b72e926e8103df6bc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391791"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027884"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Kódolás az Azure Digital Twins API-kkal
 
@@ -285,6 +284,7 @@ Vegyen fel egy új `using` utasítást a tetején, mivel szüksége lesz a beép
 
 ```csharp
 using System.Text.Json;
+using Azure.DigitalTwins.Core.Serialization;
 ```
 
 Ezután adja hozzá a következő kódot a metódus végéhez a `Main` modell alapján három digitális ikrek létrehozásához és inicializálásához.
@@ -315,7 +315,7 @@ Figyelje meg, hogy az ikrek létrehozásakor a második alkalommal nem fordul el
 
 Ezután létrehozhat **kapcsolatokat** a létrehozott ikrek között, és összekapcsolhatja őket egy **különálló gráfban**. A [két gráf](concepts-twins-graph.md) a teljes környezet ábrázolására szolgál.
 
-Kapcsolatok létrehozásához vegyen fel egy utasítást a `using` kapcsolati alaptípushoz az SDK-ban:
+Kapcsolatok létrehozásához vegyen fel egy utasítást a `using` kapcsolati alaptípushoz az SDK-ban: Ha már hozzá van adva, hagyja ki ezt a lehetőséget.
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
@@ -528,7 +528,7 @@ namespace minimal
     }
 }
 ```
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
  
 Az oktatóanyagban használt példány újra felhasználható a következő oktatóanyagban, [oktatóanyag: az alapokat egy minta ügyfélalkalmazás segítségével tárja fel](tutorial-command-line-app.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított Azure digitális Twins-példányt.
  
@@ -553,7 +553,7 @@ az ad app delete --id <your-application-ID>
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

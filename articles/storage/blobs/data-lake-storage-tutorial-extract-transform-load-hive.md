@@ -8,23 +8,22 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014910"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045297"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight használatával
 
-Ebben az oktatóanyagban egy ETL-műveletet hajt végre: adatok kinyerése, átalakítása és betöltése. Létrehoz egy nyers CSV-adatfájlt, importálja egy Azure HDInsight-fürtbe, átalakítja Apache Hive, és betölti egy Azure SQL Database-be az Apache Sqoop.
+Ebben az oktatóanyagban egy ETL-műveletet hajt végre: adatok kinyerése, átalakítása és betöltése. Létrehoz egy nyers CSV-adatfájlt, importálja egy Azure HDInsight-fürtbe, átalakítja Apache Hiveával, és betölti Azure SQL Database az Apache Sqoop.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az adatok kinyerése és feltöltése egy HDInsight-fürtbe.
 > * Az adatátalakítás Apache Hive használatával.
-> * Az Azure SQL Database-be az Sqoop használatával tölthető be az adatai.
+> * A Sqoop használatával töltse be az Azure SQL Database az adataiba.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
@@ -38,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
     Lásd: gyors üzembe helyezés [Apache Hadoop és Apache Hive az Azure HDInsight az Azure Portal használatával](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL Database**: Azure SQL Database-t használ célként megadott adattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](../../sql-database/sql-database-get-started.md) ismertető cikket.
+* **Azure SQL Database**: a Azure SQL Databaset használja célként szolgáló adattárként. Ha nem rendelkezik SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Database a Azure Portal](../../sql-database/sql-database-get-started.md).
 
 * **Azure CLI**: Ha még nem telepítette az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört.
 
@@ -224,7 +223,7 @@ A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy
 
 ## <a name="create-a-sql-database-table"></a>SQL Database-tábla létrehozása
 
-Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére. A kiszolgáló nevének megkereséséhez hajtsa végre a következő lépéseket.
+Ehhez a művelethez SQL Database-kiszolgáló nevét kell megadnia. A kiszolgáló nevének megkereséséhez hajtsa végre a következő lépéseket.
 
 1. Lépjen a [Azure Portal](https://portal.azure.com).
 
@@ -300,7 +299,7 @@ Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére
 
 ## <a name="export-and-load-the-data"></a>Az adatexportálás és-betöltés
 
-Az előző részekben a helyről másolta az átalakított adatterületet `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . Ebben a szakaszban a Sqoop használatával exportálja az adatait az `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL Database-ben létrehozott táblába.
+Az előző részekben a helyről másolta az átalakított adatterületet `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . Ebben a szakaszban a Sqoop használatával exportálja az adatait a `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL Databaseban létrehozott táblába.
 
 1. A következő paranccsal ellenőrizze, hogy a Sqoop látja-e az SQL-adatbázist:
 

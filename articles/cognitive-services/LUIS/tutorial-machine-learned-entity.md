@@ -3,12 +3,11 @@ title: 'Oktatóanyag: strukturált adatok kinyerése gépi tanulási entitással
 description: A gépi tanulási entitás használatával kinyerheti a strukturált adatok teljes körű kinyerését. A kinyerési pontosság növeléséhez adja hozzá az alentitásokat a szolgáltatásokhoz.
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611016"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045603"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Oktatóanyag: strukturált adatok kinyerése a felhasználóktól a gépi tanulási entitásokkal Language Understanding (LUIS)
 
@@ -108,7 +107,7 @@ Ismert méretek listájának hozzáadása esetén az ügyfélalkalmazás felisme
 
 1. Válassza az **entitások** lehetőséget a bal oldali menüben, majd válassza a **+ Létrehozás**elemet.
 
-1. Állítsa be az entitás nevét úgy, hogy az az `SizeListentity` `SizePhraselist` előző szakaszban létrehozotthoz képest könnyen azonosítható legyen.
+1. Állítsa be az entitás nevét a (z) értékre, `SizeListentity` és állítsa be a típust a **listára** , hogy könnyen azonosítható legyen az `SizePhraselist` előző szakaszban létrehozotthoz képest.
 
 1. Adja hozzá az ügyfélalkalmazás által várt méreteket: `Small` , `Medium` , `Large` , `XLarge` majd adja hozzá a szinonimákat. A szinonimáknak azokat a kifejezéseket kell megadniuk, amelyeknek a felhasználó belép a csevegési robotba. A rendszer kinyeri az entitást egy lista entitással, ha pontosan egyezik a normalizált értékkel vagy szinonimákkal.
 

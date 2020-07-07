@@ -7,22 +7,21 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f0b6e66a0d3a78a62fe105a175a7a519d0b37ccd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: afeac24a5d3c21fce120512813d68c49a505c6c1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733415"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024604"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
 
 Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP és a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Ezt a felügyelt tartományt ugyanazzal a Távoli kiszolgálófelügyelet eszközei (RSAT) felügyelheti, mint a helyszíni Active Directory tartományi szolgáltatások tartománnyal. Mivel az Azure AD DS felügyelt szolgáltatás, bizonyos adminisztratív feladatok nem hajthatók végre, például a távoli asztal protokoll (RDP) használata a tartományvezérlőkre való kapcsolódáshoz.
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows Server rendszerű virtuális gépet az Azure-ban, és hogyan telepítheti az Azure AD DS felügyelt tartomány felügyeletéhez szükséges eszközöket.
+Ez az oktatóanyag bemutatja, hogyan konfigurálhat egy Windows Server rendszerű virtuális gépet az Azure-ban, és hogyan telepítheti az Azure AD DS felügyelt tartományának felügyeletéhez szükséges eszközöket.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A felügyelt tartományokban elérhető felügyeleti feladatok ismertetése
@@ -75,7 +74,7 @@ A felügyelt tartomány le van zárva, így nincs jogosultsága bizonyos rendsze
 
 ## <a name="sign-in-to-the-windows-server-vm"></a>Bejelentkezés a Windows Server rendszerű virtuális gépre
 
-Az előző oktatóanyagban egy Windows Server rendszerű virtuális gép lett létrehozva, és csatlakozott a felügyelt tartományhoz. Ezzel a virtuális géppel telepítheti a felügyeleti eszközöket. Ha szükséges, [kövesse az oktatóanyag lépéseit a Windows Server rendszerű virtuális gépek felügyelt tartományhoz való létrehozásához és csatlakoztatásához][create-join-windows-vm].
+Az előző oktatóanyagban egy Windows Server rendszerű virtuális gép lett létrehozva, és csatlakozott a felügyelt tartományhoz. A felügyeleti eszközök telepítéséhez használja a virtuális gépet. Ha szükséges, [kövesse az oktatóanyag lépéseit a Windows Server rendszerű virtuális gépek felügyelt tartományhoz való létrehozásához és csatlakoztatásához][create-join-windows-vm].
 
 > [!NOTE]
 > Ebben az oktatóanyagban egy Windows Server rendszerű virtuális gépet használ az Azure-ban, amely a felügyelt tartományhoz csatlakozik. A felügyelt tartományhoz csatlakoztatott Windows-ügyfelet, például a Windows 10 rendszert is használhatja.
@@ -97,7 +96,7 @@ Ha szükséges, engedélyezze a webböngésző számára az előugró ablak megn
 
 ## <a name="install-active-directory-administrative-tools"></a>Active Directory felügyeleti eszközök telepítése
 
-A felügyelt tartományokat ugyanazokkal a felügyeleti eszközökkel felügyeli, mint a helyszíni AD DS környezetekben, például a Active Directory felügyeleti központ (ADAC) vagy az AD PowerShell használatával. Ezek az eszközök a Windows Serveren és az ügyfélszámítógépeken is telepíthetők a Távoli kiszolgálófelügyelet eszközei (RSAT) szolgáltatás részeként. A *HRE DC-rendszergazdák* csoport tagjai ezt követően távolról felügyelhetik a felügyelt tartományokat a felügyelt tartományhoz csatlakoztatott számítógépekről a következő ad felügyeleti eszközök használatával.
+A felügyelt tartományokban ugyanazokat a felügyeleti eszközöket használja, mint a helyszíni AD DS-környezeteket, például a Active Directory felügyeleti központ (ADAC) vagy az AD PowerShellt. Ezek az eszközök a Windows Serveren és az ügyfélszámítógépeken is telepíthetők a Távoli kiszolgálófelügyelet eszközei (RSAT) szolgáltatás részeként. A *HRE DC-rendszergazdák* csoport tagjai ezt követően távolról felügyelhetik a felügyelt tartományokat a felügyelt tartományhoz csatlakoztatott számítógépekről a következő ad felügyeleti eszközök használatával.
 
 A Active Directory felügyeleti eszközök tartományhoz csatlakoztatott virtuális gépekre való telepítéséhez hajtsa végre a következő lépéseket:
 
@@ -125,7 +124,7 @@ Ha a felügyeleti eszközök telepítve vannak, lássuk, hogyan használhatja ő
     ![A kiszolgálóra telepített felügyeleti eszközök listája](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Válassza a **Active Directory felügyeleti központ**lehetőséget.
-1. A felügyelt tartomány megismeréséhez válassza ki a tartománynevet a bal oldali ablaktáblán, például *aaddscontoso.com*. A *AADDC számítógépek* és a *AADDC-felhasználók* nevű tárolók a lista elejére kerülnek.
+1. A felügyelt tartomány megismeréséhez válassza ki a tartománynevet a bal oldali ablaktáblán, például *aaddscontoso*. A *AADDC számítógépek* és a *AADDC-felhasználók* nevű tárolók a lista elejére kerülnek.
 
     ![A felügyelt tartományhoz elérhető tárolók listázása](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 
@@ -135,7 +134,7 @@ Ha a felügyeleti eszközök telepítve vannak, lássuk, hogyan használhatja ő
 
     ![Az Azure AD DS tartományi felhasználók listájának megtekintése a Active Directory felügyeleti központ](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
-1. A felügyelt tartományhoz csatlakoztatott számítógépek megtekintéséhez válassza a **AADDC Computers** tárolót. Megjelenik egy bejegyzés az aktuális virtuális géphez (például *myVM*). A felügyelt tartományhoz csatlakoztatott összes számítógép számítógépfiókja ebben a *AADDC* -tárolóban tárolódik.
+1. A felügyelt tartományhoz csatlakoztatott számítógépek megtekintéséhez válassza a **AADDC Computers** tárolót. Megjelenik egy bejegyzés az aktuális virtuális géphez (például *myVM*). A felügyelt tartományhoz csatlakoztatott összes eszköz számítógépfiókja a *AADDC Computers* tárolóban történik.
 
 Az általános Active Directory felügyeleti központ műveletek, például a felhasználói fiók jelszavának alaphelyzetbe állítása vagy a csoporttagság kezelése elérhető. Ezek a műveletek csak a felügyelt tartományba közvetlenül létrehozott felhasználók és csoportok esetében működnek. Az azonosító adatok csak az Azure AD- *ről* az Azure AD DS-ra szinkronizálhatók. Az Azure AD DSról az Azure AD-re nem írható vissza. Az Azure AD-ből szinkronizált felhasználók jelszavait vagy a felügyelt csoporttagság nem módosítható, és a módosítások szinkronizálva lesznek.
 
@@ -150,7 +149,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A Active Directory felügyeleti eszközök telepítése Windows Server rendszerű virtuális gépen
 > * Általános feladatok elvégzése a Active Directory felügyeleti központ használatával
 
-A felügyelt tartományhoz való biztonságos interakcióhoz engedélyezze a Secure Lightweight Directory Access Protocol (LDAPs) szolgáltatást.
+A felügyelt tartományának más alkalmazásokból való biztonságos kezeléséhez engedélyezze a Secure Lightweight Directory Access Protocol (LDAPs) szolgáltatást.
 
 > [!div class="nextstepaction"]
 > [Biztonságos LDAP konfigurálása a felügyelt tartományhoz](tutorial-configure-ldaps.md)

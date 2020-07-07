@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebbb73b6fc4e2a934c7c4235cfcdc39b8fa81b60
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
-ms.translationtype: MT
+ms.openlocfilehash: cd71789d6c2fb54007f3d6623ba8d14f98383b5a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126323"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027647"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Shopify Plus szolgáltatással
 
@@ -139,11 +138,31 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-shopify-plus-sso"></a>Shopify és egyszeri bejelentkezés konfigurálása
 
-Ha az egyszeri bejelentkezést a **Shopify Plus** oldalon szeretné konfigurálni, az **alkalmazás-összevonási metaadatok URL-címét** is el kell küldenie a [Shopify Plus támogatási csapatnak](mailto:plus-user-management@shopify.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+A teljes lépések megtekintéséhez tekintse meg az [SAML-integrációk beállításával kapcsolatos Shopify dokumentációját](https://help.shopify.com/en/manual/shopify-plus/saml).
+
+Ha az egyszeri bejelentkezést az **Shopify plusz** oldalon szeretné konfigurálni, másolja az **alkalmazás-összevonási metaadatok URL-címét** a Azure Active Directoryból. Ezután jelentkezzen be a [szervezeti rendszergazdába](https://shopify.plus) , és lépjen a **felhasználók**  >  **biztonsága**elemre. Válassza a **konfiguráció beállítása**lehetőséget, majd illessze be az alkalmazás-összevonási metaadatok URL-címét az **Identity Provider metaadatok URL-címe** szakaszba. A lépés befejezéséhez válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="create-shopify-plus-test-user"></a>Shopify és tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Shopify Plusban. Működjön együtt a [Shopify Plus támogatási csapatával](mailto:plus-user-management@shopify.com) , és vegye fel a felhasználókat a Shopify Plus platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Shopify Plusban. Térjen vissza a **felhasználók** szakaszhoz, és adjon hozzá egy felhasználót az e-mail-cím és az engedélyek megadásával. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+
+### <a name="enforce-saml-authentication"></a>SAML-hitelesítés betartatása
+
+> [!NOTE]
+> Javasoljuk, hogy az integrációt az egyes felhasználók használatával széles körben alkalmazza.
+
+Egyéni felhasználók:
+1. Nyissa meg a Shopify egy egyéni felhasználó lapját, és egy Azure AD által felügyelt e-mail-tartománnyal és a Shopify Plus-ben ellenőrzött.
+1. Az SAML hitelesítés szakaszban válassza a **Szerkesztés**lehetőséget, válassza a **kötelező**lehetőséget, majd kattintson a **Mentés**gombra.
+1. Ellenőrizze, hogy a felhasználó sikeresen be tud-e jelentkezni a identitásszolgáltató által kezdeményezett és az SP által kezdeményezett folyamatokon keresztül.
+
+Egy e-mail tartományba tartozó összes felhasználó esetén:
+1. Térjen vissza a **Biztonság** lapra.
+1. Válassza ki az SAML hitelesítési beállításhoz **szükséges** értéket. Ez az SAML-t az e-mail-tartománnyal rendelkező összes felhasználóra kikényszeríti az Shopify Plus-ben.
+1. Kattintson a **Mentés** gombra.
+
+> [!IMPORTANT]
+> Az SAML engedélyezése az e-mail-tartomány összes felhasználója számára hatással van az alkalmazást használó összes felhasználóra. A felhasználók nem tudnak bejelentkezni a szokásos bejelentkezési oldalára. Csak Azure Active Directoryon keresztül férhetnek hozzá az alkalmazáshoz. A Shopify nem biztosít olyan biztonsági mentési bejelentkezési URL-címet, amelyen a felhasználók bejelentkezhetnek a normál felhasználónevével és jelszavával. Ha szükséges, az SAML kikapcsolásához forduljon a Shopify támogatási szolgálatához.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -155,7 +174,7 @@ Ha a hozzáférési panelen a Shopify plusz csempére kattint, automatikusan be 
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

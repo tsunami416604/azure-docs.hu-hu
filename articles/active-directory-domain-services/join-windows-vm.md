@@ -7,20 +7,19 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ac7af2f4500f6702dcacad546b0985e41159dc6e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734673"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024927"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: Windows Server rendszerű virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
 
 Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Az Azure AD DS felügyelt tartománya lehetővé teszi a tartományhoz való csatlakozást és a felügyeletet az Azure-beli virtuális gépekhez (VM). Ez az oktatóanyag bemutatja, hogyan hozhat létre Windows Server rendszerű virtuális gépet, majd hogyan csatlakozhat hozzá egy felügyelt tartományhoz.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Windows Server rendszerű virtuális gép létrehozása
@@ -72,7 +71,7 @@ Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne
     | Felhasználónév             | Adjon meg egy felhasználónevet a virtuális gépen létrehozandó helyi rendszergazdai fiókhoz, például: *Azureus* |
     | Jelszó             | Adja meg és erősítse meg a virtuális gépen a helyi rendszergazda számára létrehozott biztonságos jelszót. Ne határozzon meg tartományi felhasználói fiók hitelesítő adatait. |
 
-1. Alapértelmezés szerint az Azure-ban létrehozott virtuális gépek az RDP használatával érhetők el az internetről. Ha az RDP engedélyezve van, előfordulhat, hogy az automatikus bejelentkezési támadások valószínűleg megtörténnek, ami letilthatja az olyan fiókokat, amelyek közös névvel rendelkeznek *, mint például a rendszergazda vagy a* *rendszergazda* , több sikertelen bejelentkezési kísérlet miatt.
+1. Alapértelmezés szerint az Azure-ban létrehozott virtuális gépek az RDP használatával érhetők el az internetről. Ha az RDP engedélyezve van, az automatikus bejelentkezési támadások valószínűleg megtörténnek, ami letilthatja a fiókok közös névvel való használatát, *például a rendszergazda vagy a* *rendszergazdai* fiókokat, több sikertelen bejelentkezési kísérlet miatt.
 
     Az RDP-t csak szükség esetén kell engedélyezni, és az engedélyezett IP-címtartományok körére korlátozódik. Ez a konfiguráció segít javítani a virtuális gép biztonságát, és csökkenti a lehetséges támadási területét. Vagy létrehozhat és használhat egy olyan Azure Bastion-gazdagépet, amely csak a TLS-en keresztül Azure Portal hozzáférést. Az oktatóanyag következő lépéseként egy Azure Bastion-gazdagépet használ a virtuális géphez való biztonságos kapcsolódáshoz.
 
@@ -110,7 +109,7 @@ Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne
 
 1. Az alhálózat létrehozása eltarthat néhány másodpercig. A létrehozás után válassza az X- *et* az alhálózat ablak bezárásához.
 1. A **hálózatkezelés** ablaktáblán a virtuális gép létrehozásához válassza ki a létrehozott alhálózatot a legördülő menüből, például a *felügyelet*lehetőséget. Győződjön meg arról, hogy a megfelelő alhálózatot választja, és ne telepítse a virtuális gépet a felügyelt tartományhoz tartozó alhálózatba.
-1. A **nyilvános IP-címek**esetében válassza a *nincs* lehetőséget a legördülő menüből, ahogy az Azure Bastion használatával csatlakozik a felügyelethez, és nincs szükség nyilvános IP-cím hozzárendelésére.
+1. A **nyilvános IP-címek**esetében válassza a *nincs* lehetőséget a legördülő menüből. Ahogy az oktatóanyagban az Azure Bastion használatával csatlakozik a felügyelethez, nincs szüksége a virtuális géphez hozzárendelt nyilvános IP-címekre.
 1. Hagyja meg a többi beállítást alapértelmezett értékként, majd válassza a **felügyelet**lehetőséget.
 1. Állítsa *ki*a **rendszerindítási diagnosztikát** . Hagyja meg a többi beállítást alapértelmezett értékként, majd válassza a **felülvizsgálat + létrehozás**lehetőséget.
 1. Tekintse át a virtuális gép beállításait, majd kattintson a **Létrehozás**gombra.
@@ -121,7 +120,7 @@ A virtuális gép létrehozása néhány percet vesz igénybe. A Azure Portal az
 
 ## <a name="connect-to-the-windows-server-vm"></a>Kapcsolódás a Windows Server rendszerű virtuális géphez
 
-A virtuális gépekhez való biztonságos kapcsolódáshoz használjon egy Azure Bastion-gazdagépet. Az Azure Bastion használatával felügyelt gazdagép települ a virtuális hálózatba, és webes RDP-vagy SSH-kapcsolatokat biztosít a virtuális gépekhez. A virtuális gépekhez nincs szükség nyilvános IP-címekre, és nem kell megnyitnia a hálózati biztonsági csoport szabályait a külső távoli forgalomhoz. A virtuális gépekhez a webböngészőből származó Azure Portal használatával csatlakozhat.
+A virtuális gépekhez való biztonságos kapcsolódáshoz használjon egy Azure Bastion-gazdagépet. Az Azure Bastion használatával felügyelt gazdagép települ a virtuális hálózatba, és webes RDP-vagy SSH-kapcsolatokat biztosít a virtuális gépekhez. A virtuális gépekhez nincs szükség nyilvános IP-címekre, és nem kell megnyitnia a hálózati biztonsági csoport szabályait a külső távoli forgalomhoz. A virtuális gépekhez a webböngészőből származó Azure Portal használatával csatlakozhat. Ha szükséges, [hozzon létre egy Azure Bastion-gazdagépet][azure-bastion].
 
 Ha egy megerősített gazdagépet szeretne használni a virtuális géphez való kapcsolódáshoz, hajtsa végre a következő lépéseket:
 
@@ -152,7 +151,9 @@ A létrehozott virtuális géppel és az Azure Bastion használatával létrehoz
 
     ![A felügyelt tartomány meghatározása a csatlakozáshoz](./media/join-windows-vm/join-domain.png)
 
-1. Adja meg a tartományhoz való csatlakozáshoz szükséges tartományi hitelesítő adatokat. Használja a felügyelt tartomány részét képező felhasználó hitelesítő adatait. A fióknak a felügyelt tartományhoz vagy az Azure AD-bérlőhöz kell tartoznia – az Azure AD-bérlőhöz társított külső könyvtárak fiókjai nem tudnak megfelelően hitelesíteni a tartományhoz való csatlakozás során. A fiók hitelesítő adatai a következő módszerek egyikével adhatók meg:
+1. Adja meg a tartományhoz való csatlakozáshoz szükséges tartományi hitelesítő adatokat. Adja meg a felügyelt tartomány részét képező felhasználó hitelesítő adatait. A fióknak a felügyelt tartományhoz vagy az Azure AD-bérlőhöz kell tartoznia – az Azure AD-bérlőhöz társított külső könyvtárak fiókjai nem tudnak megfelelően hitelesíteni a tartományhoz való csatlakozás során.
+
+    A fiók hitelesítő adatai a következő módszerek egyikével adhatók meg:
 
     * **UPN formátuma** (ajánlott) – Itt adhatja meg az Azure ad-ben konfigurált felhasználói fiókhoz tartozó egyszerű felhasználónév (UPN) utótagot. Például a felhasználó *CONTOSOADMIN* UPN-utótagja lenne `contosoadmin@aaddscontoso.onmicrosoft.com` . Létezik néhány gyakori felhasználási eset, ha az UPN formátuma megbízhatóan használható a tartományba való bejelentkezéshez a *sAMAccountName* formátum helyett:
         * Ha a felhasználó UPN-előtagja hosszú (például *deehasareallylongname*), akkor előfordulhat, hogy a *sAMAccountName* automatikusan létrejön.
@@ -174,13 +175,13 @@ A létrehozott virtuális géppel és az Azure Bastion használatával létrehoz
 >
 > Ha tartományhoz szeretne csatlakozni egy virtuális géphez a csatlakoztatása nélkül, és manuálisan konfigurálja a kapcsolatot, használhatja a [set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell parancsmagot.
 
-A Windows Server rendszerű virtuális gép újraindítása után a felügyelt tartományban alkalmazott házirendeket a rendszer leküldi a virtuális géphez. Most már bejelentkezhet a Windows Server rendszerű virtuális gépre is a megfelelő tartományi hitelesítő adatok használatával.
+A Windows Server rendszerű virtuális gép újraindítása után a felügyelt tartományban alkalmazott házirendeket a rendszer leküldi a virtuális gépre. Most már bejelentkezhet a Windows Server rendszerű virtuális gépre is a megfelelő tartományi hitelesítő adatok használatával.
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A következő oktatóanyagban ezt a Windows Server-alapú virtuális gépet használja a felügyelt tartomány felügyeletét lehetővé teszi a felügyeleti eszközök telepítéséhez. Ha nem szeretné folytatni az oktatóanyag-sorozatot, tekintse át a következő karbantartási lépéseket a [virtuális gép törléséhez](#delete-the-vm). Ellenkező esetben [folytassa a következő oktatóanyaggal](#next-steps).
 
-### <a name="un-join-the-vm-from-the-managed-domain"></a>A virtuális gép csatlakoztatása a felügyelt tartományból
+### <a name="unjoin-the-vm-from-the-managed-domain"></a>A virtuális gép csatlakoztatása a felügyelt tartományból
 
 Ha el szeretné távolítani a virtuális gépet a felügyelt tartományból, kövesse újra a lépéseket a [virtuális gép tartományhoz való csatlakoztatásához](#join-the-vm-to-the-managed-domain). A felügyelt tartományhoz való csatlakozás helyett válassza a munkacsoporthoz való csatlakozást, például az alapértelmezett *munkacsoportot*. A virtuális gép újraindítása után a rendszer eltávolítja a számítógép-objektumot a felügyelt tartományból.
 

@@ -7,18 +7,19 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 60248d1326d872734a49a93a689625cf2603f929
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: 995ca20ed264d78e93e04a6f54e4f691ec551e84
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601700"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024859"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
-A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartománysal való kommunikációhoz a Lightweight Directory Access Protocol (LDAP) használatos. Alapértelmezés szerint az LDAP-forgalom nincs titkosítva, ami biztonsági szempontból fontos a sok környezetben. Az Azure AD DS használatával a felügyelt tartományt biztonságos Lightweight Directory Access Protocol (LDAPs) használatára állíthatja be. A biztonságos LDAP használata esetén a rendszer titkosítja a forgalmat. Secure LDAP más néven LDAP SSL (SSL)/Transport Layer Security (TLS) protokollon keresztül.
+A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartománysal való kommunikációhoz a Lightweight Directory Access Protocol (LDAP) használatos. Alapértelmezés szerint az LDAP-forgalom nincs titkosítva, ami biztonsági szempontból fontos a sok környezetben.
+
+Az Azure AD DS használatával a felügyelt tartományt biztonságos Lightweight Directory Access Protocol (LDAPs) használatára állíthatja be. A biztonságos LDAP használata esetén a rendszer titkosítja a forgalmat. Secure LDAP más néven LDAP SSL (SSL)/Transport Layer Security (TLS) protokollon keresztül.
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat LDAPs-t egy Azure AD DS felügyelt tartományhoz.
 
@@ -68,7 +69,11 @@ A kért vagy létrehozott tanúsítványnak meg kell felelnie az alábbi követe
 * **Kulcshasználat** – a tanúsítványt a *digitális aláírásokhoz* és a *kulcsfontosságú titkosítási*kell konfigurálni.
 * **Tanúsítvány célja** – a tanúsítványnak érvényesnek kell lennie a TLS-kiszolgáló hitelesítéséhez.
 
-Több eszköz áll rendelkezésre az önaláírt tanúsítványok, például az OpenSSL, a MakeCert, a [New-SelfSignedCertificate][New-SelfSignedCertificate] parancsmag stb. létrehozásához. Ebben az oktatóanyagban hozzunk létre egy önaláírt tanúsítványt a biztonságos LDAP-hez a [New-SelfSignedCertificate][New-SelfSignedCertificate] parancsmag használatával. Nyisson meg egy PowerShell-ablakot **rendszergazdaként** , és futtassa a következő parancsokat. Cserélje le a *$dnsName* változót a saját felügyelt tartománya által használt DNS-névre, például *aaddscontoso.com*:
+Több eszköz áll rendelkezésre az önaláírt tanúsítványok, például az OpenSSL, a MakeCert, a [New-SelfSignedCertificate][New-SelfSignedCertificate] parancsmag stb. létrehozásához.
+
+Ebben az oktatóanyagban hozzunk létre egy önaláírt tanúsítványt a biztonságos LDAP-hez a [New-SelfSignedCertificate][New-SelfSignedCertificate] parancsmag használatával.
+
+Nyisson meg egy PowerShell-ablakot **rendszergazdaként** , és futtassa a következő parancsokat. Cserélje le a *$dnsName* változót a saját felügyelt tartománya által használt DNS-névre, például *aaddscontoso.com*:
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -108,7 +113,9 @@ A biztonságos LDAP használatához a hálózati forgalom a nyilvános kulcsokra
     * Ez a nyilvános kulcs a biztonságos LDAP-forgalom *titkosítására* szolgál. A nyilvános kulcs terjeszthető az ügyfélszámítógépekre.
     * A titkos kulcs nélküli tanúsítványok a-t használják *. CER* -fájlformátum.
 
-Ez a két kulcs, a *privát* és a *nyilvános* kulcs, győződjön meg arról, hogy csak a megfelelő számítógépek tudnak kommunikálni egymással. Ha nyilvános HITELESÍTÉSSZOLGÁLTATÓT vagy vállalati HITELESÍTÉSSZOLGÁLTATÓT használ, akkor a titkos kulcsot tartalmazó tanúsítvánnyal rendelkezik, amely felügyelt tartományra is alkalmazható. A nyilvános kulcsot már ismerni és megbízhatónak kell tekinteni az ügyfélszámítógépek számára. Ebben az oktatóanyagban létrehozott egy önaláírt tanúsítványt a titkos kulccsal, ezért exportálnia kell a megfelelő magán-és nyilvános összetevőket.
+Ez a két kulcs, a *privát* és a *nyilvános* kulcs, győződjön meg arról, hogy csak a megfelelő számítógépek tudnak kommunikálni egymással. Ha nyilvános HITELESÍTÉSSZOLGÁLTATÓT vagy vállalati HITELESÍTÉSSZOLGÁLTATÓT használ, akkor a titkos kulcsot tartalmazó tanúsítvánnyal rendelkezik, amely felügyelt tartományra is alkalmazható. A nyilvános kulcsot már ismerni és megbízhatónak kell tekinteni az ügyfélszámítógépek számára.
+
+Ebben az oktatóanyagban létrehozott egy önaláírt tanúsítványt a titkos kulccsal, ezért exportálnia kell a megfelelő magán-és nyilvános összetevőket.
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Tanúsítvány exportálása az Azure AD DS
 
@@ -148,7 +155,9 @@ Ahhoz, hogy az előző lépésben létrehozott digitális tanúsítványt a fel�
 
 ### <a name="export-a-certificate-for-client-computers"></a>Tanúsítvány exportálása ügyfélszámítógépek számára
 
-Az ügyfélszámítógépeknek megbízhatóan kell megbízniuk a biztonságos LDAP-tanúsítvány kiállítójának, hogy LDAPs használatával lehessen csatlakozni a felügyelt tartományhoz. Az ügyfélszámítógépeknek tanúsítványra van szükségük ahhoz, hogy sikeresen titkosítsák az Azure AD DS által visszafejtett adataikat. Ha nyilvános HITELESÍTÉSSZOLGÁLTATÓT használ, a számítógépnek automatikusan meg kell bíznia ezeket a tanúsítvány-kiállítók számára, és rendelkeznie kell egy megfelelő tanúsítvánnyal. Ebben az oktatóanyagban önaláírt tanúsítványt használ, és létrehozott egy tanúsítványt, amely tartalmazza a titkos kulcsot az előző lépésben. Most exportálja, majd telepítse az önaláírt tanúsítványt a megbízható tanúsítványtárolóba az ügyfélszámítógépen:
+Az ügyfélszámítógépeknek megbízhatóan kell megbízniuk a biztonságos LDAP-tanúsítvány kiállítójának, hogy LDAPs használatával lehessen csatlakozni a felügyelt tartományhoz. Az ügyfélszámítógépeknek tanúsítványra van szükségük ahhoz, hogy sikeresen titkosítsák az Azure AD DS által visszafejtett adataikat. Ha nyilvános HITELESÍTÉSSZOLGÁLTATÓT használ, a számítógépnek automatikusan meg kell bíznia ezeket a tanúsítvány-kiállítók számára, és rendelkeznie kell egy megfelelő tanúsítvánnyal.
+
+Ebben az oktatóanyagban önaláírt tanúsítványt használ, és létrehozott egy tanúsítványt, amely tartalmazza a titkos kulcsot az előző lépésben. Most exportálja, majd telepítse az önaláírt tanúsítványt a megbízható tanúsítványtárolóba az ügyfélszámítógépen:
 
 1. Lépjen vissza az MMC a *tanúsítványok (helyi számítógép) > személyes > tanúsítványok* tárolóba. Megjelenik az előző lépésben létrehozott önaláírt tanúsítvány, például *aaddscontoso.com*. Kattintson a jobb gombbal a tanúsítványra, majd válassza az **összes feladat > exportálás..** . lehetőséget.
 1. A **Tanúsítvány exportálása varázslóban**válassza a **tovább**lehetőséget.
@@ -186,7 +195,10 @@ A titkos kulcsot tartalmazó és exportált digitális tanúsítvánnyal, valami
 
 1. Válassza ki a mappa ikont a mellett **. PFX-fájl biztonságos LDAP-tanúsítvánnyal**. Tallózással keresse meg a elérési útját *. PFX* -fájl, majd válassza ki a titkos kulcsot tartalmazó előző lépésben létrehozott tanúsítványt.
 
-    Ahogy azt a tanúsítványra vonatkozó követelmények előző szakasza is jelezte, nem használhat tanúsítványokat nyilvános HITELESÍTÉSSZOLGÁLTATÓTÓL az alapértelmezett *. onmicrosoft.com* tartománnyal. A Microsoft tulajdonosa a *. onmicrosoft.com* tartomány, így a nyilvános hitelesítésszolgáltatók nem bocsátanak ki tanúsítványt. Győződjön meg arról, hogy a tanúsítvány megfelelő formátumú. Ha nem, az Azure platform tanúsítvány-ellenőrzési hibákat hoz létre a biztonságos LDAP engedélyezésekor.
+    > [!IMPORTANT]
+    > Ahogy azt a tanúsítványra vonatkozó követelmények előző szakasza is jelezte, nem használhat tanúsítványokat nyilvános HITELESÍTÉSSZOLGÁLTATÓTÓL az alapértelmezett *. onmicrosoft.com* tartománnyal. A Microsoft tulajdonosa a *. onmicrosoft.com* tartomány, így a nyilvános hitelesítésszolgáltatók nem bocsátanak ki tanúsítványt.
+    >
+    > Győződjön meg arról, hogy a tanúsítvány megfelelő formátumú. Ha nem, az Azure platform tanúsítvány-ellenőrzési hibákat hoz létre a biztonságos LDAP engedélyezésekor.
 
 1. Adja meg a **visszafejteni kívánt jelszót. **Az előző lépésben beállított pfx-fájl, ha a tanúsítványt exportálták *. PFX* -fájl.
 1. A biztonságos LDAP engedélyezéséhez válassza a **Mentés** lehetőséget.
@@ -195,7 +207,9 @@ A titkos kulcsot tartalmazó és exportált digitális tanúsítvánnyal, valami
 
 Megjelenik egy értesítés arról, hogy a biztonságos LDAP konfigurálva van a felügyelt tartományhoz. A felügyelt tartomány többi beállítása addig nem módosítható, amíg a művelet be nem fejeződik.
 
-A felügyelt tartomány biztonságos LDAP-szolgáltatásának engedélyezése néhány percet vesz igénybe. Ha az Ön által megadott biztonságos LDAP-tanúsítvány nem felel meg a szükséges feltételeknek, a felügyelt tartomány biztonságos LDAP-hitelesítésének művelete meghiúsul. A hiba gyakori oka, hogy a tartománynév helytelen, vagy a tanúsítvány hamarosan lejár, vagy már lejárt. Újra létrehozhatja a tanúsítványt érvényes paraméterekkel, majd engedélyezheti a biztonságos LDAP használatát a frissített tanúsítvánnyal.
+A felügyelt tartomány biztonságos LDAP-szolgáltatásának engedélyezése néhány percet vesz igénybe. Ha az Ön által megadott biztonságos LDAP-tanúsítvány nem felel meg a szükséges feltételeknek, a felügyelt tartomány biztonságos LDAP-hitelesítésének művelete meghiúsul.
+
+A hiba gyakori oka, hogy a tartománynév helytelen, vagy a tanúsítvány hamarosan lejár, vagy már lejárt. Újra létrehozhatja a tanúsítványt érvényes paraméterekkel, majd engedélyezheti a biztonságos LDAP használatát a frissített tanúsítvánnyal.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Biztonságos LDAP-hozzáférés zárolása az interneten keresztül
 
@@ -264,12 +278,12 @@ A felügyelt tartományban tárolt objektumok megtekintéséhez:
 
 Egy adott tároló közvetlen lekérdezéséhez a **nézet > fa** menüjében megadhat egy **BaseDN** , például *ou = AADDC-felhasználók, DC = AADDSCONTOSO, DC = com* vagy *ou = AADDC számítógépek, DC = AADDSCONTOSO, DC = com*. További információ a lekérdezések formázásáról és létrehozásáról: az [LDAP-lekérdezés alapjai][ldap-query-basics].
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a számítógép helyi gazdagépek fájljához hozzáadott egy DNS-bejegyzést az oktatóanyag kapcsolatának teszteléséhez, távolítsa el ezt a bejegyzést, és adjon hozzá egy formális rekordot a DNS-zónához. Ha el szeretné távolítani a bejegyzést a helyi gazdagépek fájljából, hajtsa végre a következő lépéseket:
 
 1. A helyi gépen nyissa meg a *jegyzettömböt* rendszergazdaként
-1. Tallózással keresse meg és nyissa meg a *C:\Windows\System32\drivers\etc* fájlt.
+1. Tallózással keresse meg és nyissa meg a *C:\Windows\System32\drivers\etc\hosts* fájlt.
 1. Törölje a hozzáadott rekordhoz tartozó sort, például:`168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>További lépések

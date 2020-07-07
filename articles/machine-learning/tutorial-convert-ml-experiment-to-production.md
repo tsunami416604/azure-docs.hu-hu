@@ -5,15 +5,15 @@ description: Állítsa be a gépi tanulási kísérleti jegyzetfüzeteket éles 
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 25ff9bdb2c4ec1b3367c522c497fad9cfb0ba588
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.openlocfilehash: eabd4ceced77e90646169d80d08338c81af96e2f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558314"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025641"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Oktatóanyag: ML-kísérletek konvertálása éles Python-kódra
 
@@ -21,7 +21,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan alakíthatja át a Juptyer-jegyze
 
 A Machine learning-projektek kísérletezést igényelnek, ahol a hipotézisek olyan agilis eszközökkel vannak tesztelve, mint a valós adathalmazok használatával Jupyter Notebook. Miután a modell készen áll az éles üzemre, a modell kódját egy üzemi programkódba kell helyezni. Bizonyos esetekben a modell kódját át kell alakítani Python-szkriptekre az üzemi programkódba való adattárházba való helyezéshez. Ez az oktatóanyag a kísérletezési kódok Python-szkriptekre való exportálásának ajánlott módszerét ismerteti.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Nem nélkülözhetetlen kód tisztítása
@@ -521,7 +521,7 @@ def test_train_model():
     np.testing.assert_almost_equal(preds, [9.93939393939394, 9.03030303030303])
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megértette, hogyan alakíthat át kísérletből termelési kódra, tekintse meg a következő hivatkozásokat a további tudnivalókhoz és a következő lépésekhez:
 

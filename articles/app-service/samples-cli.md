@@ -4,14 +4,13 @@ description: Tekintse meg az Azure CLI-mintákat néhány gyakori App Service fo
 tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
-ms.date: 12/12/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: ce10c0e95d77103f386174c7bd0ffd56adff871b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254497"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054542"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-minták a Azure App Servicehoz
 
@@ -25,7 +24,8 @@ A következő táblázat az Azure CLI használatával létrehozott bash parancsf
 | [Hozzon létre egy alkalmazást a GitHubról történő folyamatos üzembe helyezéssel](./scripts/cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service alkalmazást folyamatos közzétételsel a saját GitHub-adattárból. |
 | [Alkalmazás létrehozása és kód üzembe helyezése helyi git-tárházból](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy App Service alkalmazást, és beállítja a kód leküldését egy helyi git-adattárból. |
 | [Alkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben](./scripts/cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy App Service alkalmazást egy üzembe helyezési ponttal az átmeneti kód változásaihoz. |
-| [ASP.NET Core-alkalmazás létrehozása Docker-tárolóban](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service alkalmazást Linux rendszeren, és betölt egy Docker-rendszerképet a Docker hub-ból. |
+| [ASP.NET Core-alkalmazás létrehozása Docker-tárolóban](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy App Service alkalmazást Linux rendszeren, és betölt egy Docker-rendszerképet a Docker hub-ból. |
+| [Alkalmazás létrehozása és közzététele privát végponttal](./scripts/cli-deploy-privateendpoint.md?toc=%2fcli%2fazure%2ftoc.json) | Létrehoz egy App Service alkalmazást és egy privát végpontot |
 |**Alkalmazás konfigurálása**||
 | [Egyéni tartomány leképezése egy alkalmazásra](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service alkalmazást, és egyéni tartománynevet rendel hozzá. |
 | [Egyéni TLS/SSL-tanúsítvány kötése egy alkalmazáshoz](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy App Service alkalmazást, és egy egyéni tartománynév TLS/SSL-tanúsítványát köti hozzá. |

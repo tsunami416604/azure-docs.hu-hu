@@ -7,22 +7,23 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 1e3b94208c3ead6e7ed4e15dac7c32b50025064a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733806"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024774"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: virtuális hálózatkezelés konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
-A felhasználókhoz és az alkalmazásokhoz való kapcsolódás biztosításához egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományt telepítenek egy Azure-beli virtuális hálózati alhálózatba. Ezt a virtuális hálózati alhálózatot csak az Azure platform által biztosított felügyelt tartományi erőforrásokhoz lehet használni. Ha saját virtuális gépeket és alkalmazásokat hoz létre, azok nem telepíthetők ugyanabba a virtuális hálózati alhálózatba. Ehelyett hozzon létre és helyezzen üzembe alkalmazásokat egy különálló virtuális hálózati alhálózatban, vagy egy különálló virtuális hálózatban, amely az Azure AD DS Virtual Network szolgáltatáshoz tartozik.
+A felhasználókhoz és az alkalmazásokhoz való kapcsolódás biztosításához egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományt telepítenek egy Azure-beli virtuális hálózati alhálózatba. Ezt a virtuális hálózati alhálózatot csak az Azure platform által biztosított felügyelt tartományi erőforrásokhoz lehet használni.
+
+Ha saját virtuális gépeket és alkalmazásokat hoz létre, azok nem telepíthetők ugyanabba a virtuális hálózati alhálózatba. Ehelyett hozzon létre és helyezzen üzembe alkalmazásokat egy különálló virtuális hálózati alhálózatban, vagy egy különálló virtuális hálózatban, amely az Azure AD DS Virtual Network szolgáltatáshoz tartozik.
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat dedikált virtuális hálózati alhálózatokat, illetve hogyan végezheti el egy másik hálózat társítását az Azure AD DS felügyelt tartomány virtuális hálózatához.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A tartományhoz csatlakoztatott erőforrások virtuális hálózati csatlakozási lehetőségeinek megismerése az Azure AD DS
@@ -39,7 +40,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
-* Az Azure AD DS engedélyezéséhez *globális rendszergazdai* jogosultságok szükségesek az Azure ad-bérlőben.
+* Az Azure AD DS konfigurálásához *globális rendszergazdai* jogosultságok szükségesek az Azure ad-bérlőben.
 * Az Azure-előfizetésben *közreműködő* jogosultságokkal kell rendelkeznie a szükséges Azure AD DS-erőforrások létrehozásához.
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, az első oktatóanyag [egy Azure Active Directory Domain Services felügyelt tartományt hoz létre és konfigurál][create-azure-ad-ds-instance].
@@ -54,16 +55,20 @@ Az előző oktatóanyagban egy felügyelt tartomány lett létrehozva, amely a v
 
 Ha olyan virtuális gépeket hoz létre és futtat, amelyeknek a felügyelt tartományt kell használniuk, meg kell adni a hálózati kapcsolatot. Ez a hálózati kapcsolat az alábbi módszerek egyikével biztosítható:
 
-* Hozzon létre egy további virtuális hálózati alhálózatot az alapértelmezett felügyelt tartomány virtuális hálózatában. Ez a további alhálózat a virtuális gépek létrehozásához és összekapcsolásához.
+* Hozzon létre egy további virtuális hálózati alhálózatot a felügyelt tartomány virtuális hálózatában. Ez a további alhálózat a virtuális gépek létrehozásához és összekapcsolásához.
     * Mivel a virtuális gépek ugyanahhoz a virtuális hálózathoz tartoznak, automatikusan elvégezhetik a névfeloldást, és kommunikálhatnak az Azure AD DS tartományvezérlőkkel.
 * Konfigurálja az Azure Virtual Network-társítást a felügyelt tartomány virtuális hálózatáról egy vagy több különálló virtuális hálózatra. Ezek a különálló virtuális hálózatok a virtuális gépek létrehozásához és összekapcsolásához szükségesek.
     * A virtuális hálózati társítás konfigurálásakor a DNS-beállításokat is konfigurálnia kell, hogy a névfeloldást visszaállítsa az Azure AD DS tartományvezérlők használatára.
 
-Általában csak az egyik hálózati kapcsolati lehetőség használható. A választási lehetőségek gyakran az Azure-erőforrások elkülönítésére szolgálnak. Ha az Azure AD DS és a csatlakoztatott virtuális gépeket egyetlen erőforrás-csoportként szeretné kezelni, létrehozhat egy további virtuális hálózati alhálózatot a virtuális gépekhez. Ha el szeretné különíteni az Azure AD DS és a csatlakoztatott virtuális gépek felügyeletét, használhatja a Virtual Network-társat. Azt is megteheti, hogy virtuális hálózati társítást használ a meglévő virtuális hálózathoz csatlakoztatott Azure-környezetben meglévő virtuális gépekhez való kapcsolódás biztosításához.
+Általában csak az egyik hálózati kapcsolati lehetőség használható. A választási lehetőségek gyakran az Azure-erőforrások elkülönítésére szolgálnak.
+
+* Ha az Azure AD DS és a csatlakoztatott virtuális gépeket egyetlen erőforrás-csoportként szeretné kezelni, létrehozhat egy további virtuális hálózati alhálózatot a virtuális gépekhez.
+* Ha el szeretné különíteni az Azure AD DS és a csatlakoztatott virtuális gépek felügyeletét, használhatja a Virtual Network-társat.
+    * Azt is megteheti, hogy virtuális hálózati társítást használ a meglévő virtuális hálózathoz csatlakoztatott Azure-környezetben meglévő virtuális gépekhez való kapcsolódás biztosításához.
 
 Ebben az oktatóanyagban csak egy ilyen virtuális hálózati kapcsolati beállítást kell konfigurálnia.
 
-A virtuális hálózat megtervezésével és konfigurálásával kapcsolatos további információkért lásd: [hálózatkezelési megfontolások Azure Active Directory Domain Services] [hálózati megfontolások].
+A virtuális hálózat megtervezésével és konfigurálásával kapcsolatos további információkért lásd: [Azure Active Directory Domain Services hálózati szempontjai][network-considerations].
 
 ## <a name="create-a-virtual-network-subnet"></a>Virtuális hálózati alhálózat létrehozása
 
@@ -95,7 +100,9 @@ Ha olyan virtuális gépet hoz létre, amelynek a felügyelt tartományt kell ha
 
 Lehet, hogy rendelkezik egy meglévő Azure-beli virtuális hálózattal a virtuális gépekhez, vagy külön szeretné megtartani a felügyelt tartományhoz tartozó virtuális hálózatot. A felügyelt tartomány használatához más virtuális hálózatokban lévő virtuális gépeknek az Azure AD DS-tartományvezérlőkkel való kommunikációra van szükségük. Ez a kapcsolat az Azure Virtual Network-peering használatával biztosítható.
 
-Az Azure Virtual Network-társítással két virtuális hálózat kapcsolódik egymáshoz, anélkül, hogy virtuális magánhálózati (VPN) eszközt kellene használnia. A hálózati társítás lehetővé teszi a virtuális hálózatok gyors összekapcsolását és az Azure-környezet forgalmának meghatározását. A társítással kapcsolatos további információkért lásd: az [Azure Virtual Network társközi áttekintése][peering-overview].
+Az Azure Virtual Network-társítással két virtuális hálózat kapcsolódik egymáshoz, anélkül, hogy virtuális magánhálózati (VPN) eszközt kellene használnia. A hálózati társítás lehetővé teszi a virtuális hálózatok gyors összekapcsolását és az Azure-környezet forgalmának meghatározását.
+
+A társítással kapcsolatos további információkért lásd: az [Azure Virtual Network társközi áttekintése][peering-overview].
 
 Ha a virtuális hálózatot a felügyelt tartományhoz tartozó virtuális hálózatra szeretné irányítani, hajtsa végre a következő lépéseket:
 
@@ -121,7 +128,7 @@ Mielőtt a virtuális hálózatban lévő virtuális gépek használhatják a fe
 
 ### <a name="configure-dns-servers-in-the-peered-virtual-network"></a>DNS-kiszolgálók konfigurálása a társ virtuális hálózaton
 
-A virtuális gépek és alkalmazások a felügyelt tartományhoz való sikeres kommunikációhoz a DNS-beállításokat frissíteni kell. Az Azure AD DS tartományvezérlők IP-címeinek a társ virtuális hálózaton lévő DNS-kiszolgálóként kell konfigurálni. A tartományvezérlőket kétféleképpen lehet DNS-kiszolgálóként konfigurálni a társ virtuális hálózathoz:
+A virtuális gépek és alkalmazások a felügyelt tartományhoz való sikeres kommunikációhoz a DNS-beállításokat frissíteni kell. Az Azure AD DS tartományvezérlők IP-címeit a társ virtuális hálózaton lévő DNS-kiszolgálóknak kell konfigurálni. A tartományvezérlőket kétféleképpen lehet DNS-kiszolgálóként konfigurálni a társ virtuális hálózathoz:
 
 * Konfigurálja az Azure-beli virtuális hálózati DNS-kiszolgálókat az Azure AD DS tartományvezérlők használatára.
 * Konfigurálja a meglévő DNS-kiszolgálót a használt virtuális hálózaton, hogy feltételes DNS-továbbítást használjon a felügyelt tartományra irányuló közvetlen lekérdezésekhez. Ezek a lépések a jelenleg használt DNS-kiszolgálótól függően változnak.
@@ -159,3 +166,4 @@ A felügyelt tartomány működés közbeni megtekintéséhez hozzon létre egy 
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
 [peering-overview]: ../virtual-network/virtual-network-peering-overview.md
+[network-considerations]: network-considerations.md

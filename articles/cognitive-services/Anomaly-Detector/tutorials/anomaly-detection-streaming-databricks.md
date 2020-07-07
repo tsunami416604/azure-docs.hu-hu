@@ -11,12 +11,11 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
+ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918926"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027856"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával
 
@@ -41,7 +40,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!Note]
 > * Ez az oktatóanyag bemutatja, hogyan lehet megvalósítani a rendellenesség-Kiderítő API ajánlott [megoldási architektúráját](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) .
-> * Ez az oktatóanyag nem hajtható végre ingyenes próbaverzióval az anomália-érzékelő API-hoz, vagy Azure Databricks. 
+> * Ez az oktatóanyag nem hajtható végre ingyenes szintű ( `F0` ) előfizetéssel a rendellenesség-Kiderítő API-hoz vagy Azure Databrickshoz. 
 
 Ha még nem rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/free/) , hozzon létre egyet.
 
@@ -161,7 +160,7 @@ Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API]
 
 4. A **Létrehozás** párbeszédpanelen adja meg az alábbi értékeket:
 
-    |Érték |Leírás  |
+    |Érték |Description  |
     |---------|---------|
     |Name     | Az anomália-detektor erőforrásának neve.        |
     |Előfizetés     | Az az Azure-előfizetés, amelyhez az erőforrás társítva lesz.        |

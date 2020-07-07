@@ -8,12 +8,11 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: c2972d13b25d167c2144c4f66e36822e85e29690
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320998"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045450"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Oktatóanyag: az Azure SQL-adatainak indexelése a .NET SDK használatával
 
@@ -242,7 +241,7 @@ Az oktatóanyaghoz tartozó mintakód ellenőrzi a meglévő objektumokat, és t
 
 A portál segítségével indexeket, indexelő fájlokat és adatforrásokat is törölhet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
 
@@ -253,4 +252,4 @@ A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport h
 Most, hogy már ismeri a SQL Database indexelés alapjait, ismerkedjen meg közelebbről az indexelő konfigurációjában.
 
 > [!div class="nextstepaction"]
-> [SQL Database-indexelő konfigurálása](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+> [SQL Database indexelő konfigurálása](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

@@ -4,18 +4,17 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67179197"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050492"
 ---
 ## <a name="c-program-example"></a>C# program – példa
 
-A cikk következő fejezetei egy C#-programot mutatnak be, amely a ADO.NET használatával Transact-SQL-(T-SQL-) utasításokat küld az SQL Database-nek. A C# program a következő műveleteket mutatja be:
+A cikk következő fejezetei egy C#-programot jelentenek, amely a ADO.NET használatával Transact-SQL-(T-SQL-) utasítások küldését SQL Database. A C# program a következő műveleteket mutatja be:
 
-- [Kapcsolódás az SQL Database-hez a ADO.NET használatával](#cs_1_connect)
+- [Kapcsolódás SQL Database a ADO.NET használatával](#cs_1_connect)
 - [Metódusok, amelyek T-SQL-utasításokat adnak vissza](#cs_2_return)
     - Táblázatok létrehozása
     - Táblázatok feltöltése adatokkal
@@ -31,13 +30,13 @@ Az ERD megjeleníti a két tábla közötti kapcsolatot. Az **tabEmployee. Depar
 ![Külső kulcsot bemutató ERD](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> Lehetősége van arra, hogy a T-SQL-T úgy szerkessze `#` , hogy a tábla neveit adja hozzá, amely ideiglenes táblákként hozza létre őket a *tempdb*-ben. Ez bemutató célokra hasznos, ha nincs elérhető tesztelési adatbázis. A rendszer nem kényszeríti ki a külső kulcsokra mutató hivatkozásokat a használat során, és az ideiglenes táblák automatikusan törlődnek, ha a Kapcsolódás a program futtatása után befejeződik.
+> Lehetősége van arra, hogy a T-SQL-T úgy szerkessze, hogy a `#` tábla neveit adja hozzá, amely ideiglenes táblákként hozza létre őket a *tempdb*-ben. Ez bemutató célokra hasznos, ha nincs elérhető tesztelési adatbázis. A rendszer nem kényszeríti ki a külső kulcsokra mutató hivatkozásokat a használat során, és az ideiglenes táblák automatikusan törlődnek, ha a Kapcsolódás a program futtatása után befejeződik.
 
 ### <a name="to-compile-and-run"></a>Fordítás és Futtatás
 
 A C# program logikailag egy. cs fájl, és fizikailag több kódrészletre van osztva, hogy az egyes blokkok könnyebben érthetőek legyenek. A program fordításához és futtatásához hajtsa végre a következő lépéseket:
 
-1. C#-projekt létrehozása a Visual Studióban. A projekt típusának *konzolnak*kell lennie, amely a **sablonok** > **Visual C#** > **Windows asztali** > **konzol alkalmazás (.NET-keretrendszer)** területen található.
+1. C#-projekt létrehozása a Visual Studióban. A projekt típusának *konzolnak*kell lennie, amely a **sablonok**  >  **Visual C#**  >  **Windows asztali**  >  **konzol alkalmazás (.NET-keretrendszer)** területen található.
 
 1. A fájl *program.cs*cserélje le a kód kezdő sorait a következő lépésekre:
 
@@ -48,9 +47,9 @@ A C# program logikailag egy. cs fájl, és fizikailag több kódrészletre van o
         - *CB. DataSource*
         - *CB. UserID*
         - *CB. Jelszó*
-        - *CB. InitialCatalog*
+        - *cb.InitialCatalog*
 
-1. Győződjön meg arról, hogy az Assembly *rendszer. az adat. dll* hivatkozik. Az ellenőrzéshez bontsa ki a **hivatkozások** csomópontot a **megoldáskezelő** ablaktáblán.
+1. Ellenőrizze, hogy a szerelvény *System.Data.dll* hivatkozik-e. Az ellenőrzéshez bontsa ki a **hivatkozások** csomópontot a **megoldáskezelő** ablaktáblán.
 
 1. A program a Visual studióból való létrehozásához és futtatásához kattintson a **Start** gombra. A jelentés kimenete egy program ablakában jelenik meg, bár a GUID értékek a tesztek futtatása során változnak.
 
@@ -82,7 +81,7 @@ A C# program logikailag egy. cs fájl, és fizikailag több kódrészletre van o
 
 <a name="cs_1_connect"/>
 
-### <a name="connect-to-sql-database-using-adonet"></a>Kapcsolódás az SQL Database-hez a ADO.NET használatával
+### <a name="connect-to-sql-database-using-adonet"></a>Kapcsolódás SQL Database a ADO.NET használatával
 
 ```csharp
 using System;

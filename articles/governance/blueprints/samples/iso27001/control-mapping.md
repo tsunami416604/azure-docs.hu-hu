@@ -3,12 +3,11 @@ title: ISO 27001 tervrajz – minta vezérlők
 description: Az ISO 27001 tervrajzi minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1f4998a84d7079b55e2668a43b7e7359429d54d8
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
+ms.openlocfilehash: 013a871b52a9e81d7051c3b148c258cecc139070
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919208"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044668"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Az ISO 27001 tervrajzi minta vezérlésének leképezése
 
@@ -28,7 +27,7 @@ Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti 
 
 ## <a name="a821-classification-of-information"></a>A. 8.2.1 besorolása
 
-Az Azure [SQL sebezhetőség-értékelő szolgáltatása](/azure/sql-database/sql-vulnerability-assessment) segít felderíteni az adatbázisaiban tárolt bizalmas adatokat, és javaslatokat is tartalmaz az adatok besorolására. Ez a terv egy [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá az SQL sebezhetőség-értékelési vizsgálat során azonosított sebezhetőségek ellenőrzéséhez.
+Az Azure [SQL sebezhetőség-értékelő szolgáltatása](../../../../azure-sql/database/sql-vulnerability-assessment.md) segít felderíteni az adatbázisaiban tárolt bizalmas adatokat, és javaslatokat is tartalmaz az adatok besorolására. Ez a terv egy [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá az SQL sebezhetőség-értékelési vizsgálat során azonosított sebezhetőségek ellenőrzéséhez.
 
 - \[Előzetes verzió \] : az SQL sebezhetőségi felmérés eredményeinek figyelése Azure Security Center
 

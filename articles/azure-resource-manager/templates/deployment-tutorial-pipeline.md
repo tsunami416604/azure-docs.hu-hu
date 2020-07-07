@@ -4,12 +4,11 @@ description: Megtudhatja, hogyan hozhat létre, tesztelheti és telepítheti Azu
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 55fd66a002584a5181eacebc84cbd1b732510120
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731934"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055749"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
 
@@ -29,7 +28,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Azure-folyamat létrehozása
 > * A folyamat központi telepítésének ellenőrzése
 > * A sablon frissítése és újbóli üzembe helyezése
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
@@ -37,9 +36,9 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* **Egy GitHub-fiók**, amelyben felhasználhatja a sablonok tárházának létrehozását. Ha még nem rendelkezik ilyennel, [létrehozhat egyet ingyen](https://github.com). További információ a GitHub-adattárak használatáról: [GitHub-adattárak létrehozása](/azure/devops/pipelines/repos/github).
+* **Egy GitHub-fiók**, amelyben felhasználhatja a sablonok tárházának létrehozását. Ha még nem rendelkezik fiókkal, [ingyen létrehozhat egyet](https://github.com). További információ a GitHub-adattárak használatáról: [GitHub-adattárak létrehozása](/azure/devops/pipelines/repos/github).
 * **Telepítse a git**-t. Ez az oktatóanyag-utasítás a *git bash* vagy a *git Shell*használatát ismerteti. Útmutatásért lásd: a [git telepítése]( https://www.atlassian.com/git/tutorials/install-git).
-* **Egy Azure DevOps-szervezet**. Ha még nem rendelkezik ilyennel, létrehozhat egyet ingyen. Lásd: [szervezet vagy projekt gyűjtemény létrehozása]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* **Egy Azure DevOps-szervezet**. Ha még nem rendelkezik fiókkal, ingyen létrehozhat egyet. Lásd: [szervezet vagy projekt gyűjtemény létrehozása](/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 * választható **Visual Studio Code a Resource Manager-eszközök bővítménnyel**. További információ: [Azure Resource Manager sablonok létrehozása a Visual Studio Code használatával](use-vs-code-to-create-template.md).
 
 ## <a name="prepare-a-github-repository"></a>GitHub-adattár előkészítése
@@ -57,7 +56,7 @@ Ha nem rendelkezik GitHub-fiókkal, tekintse meg az [Előfeltételek](#prerequis
 
 1. Válassza az **új**, zöld gomb lehetőséget.
 1. A **tárház neve**mezőbe írja be az adattár nevét.  Például: **AzureRmPipeline-repo**. Ne felejtse el lecserélni bármelyik **AzureRmPipeline** a projekt nevével. Az oktatóanyagban a **nyilvános** vagy a **magánjellegű** lehetőség közül választhat. Majd válassza a **Tárház létrehozása**lehetőséget.
-1. Írja le az URL-címet. Az adattár URL- **`https://github.com/[YourAccountName]/[YourRepositoryName]`** címe a következő:.
+1. Írja le az URL-címet. Az adattár URL-címe a következő: **`https://github.com/[YourAccountName]/[YourRepositoryName]`** .
 
 Ezt a tárházat *távoli tárháznak*nevezzük. Ugyanannak a projektnek minden fejlesztője klónozott saját *helyi tárházát*, és egyesítheti a változtatásokat a távoli tárházban.
 
@@ -90,11 +89,11 @@ A rendszer a mappa nevét és a fájlneveket is használja, mivel azok a folyama
 
 ### <a name="push-the-template-to-the-remote-repository"></a>A sablon leküldése a távoli tárházba
 
-A azuredeploy. JSON hozzá lett adva a helyi tárházhoz. Ezután töltse fel a sablont a távoli tárházba.
+A azuredeploy.jsbekerült a helyi tárházba. Ezután töltse fel a sablont a távoli tárházba.
 
 1. Ha nincs megnyitva, nyissa meg a *git-rendszerhéj* vagy a *git bash*eszközt.
 1. Módosítsa a könyvtárat a helyi tárház CreateWebApp mappájába.
-1. Ellenőrizze, hogy a **azuredeploy. JSON** fájl a mappában található-e.
+1. Ellenőrizze, hogy a fájl **azuredeploy.js** a mappában van-e.
 1. Futtassa az alábbi parancsot:
 
     ```bash
@@ -104,8 +103,8 @@ A azuredeploy. JSON hozzá lett adva a helyi tárházhoz. Ezután töltse fel a 
     ```
 
     Előfordulhat, hogy figyelmeztetést kap a LF-ről. Figyelmen kívül hagyhatja a figyelmeztetést. a **Master** a Master ág.  Általában létre kell hoznia egy ágat az egyes frissítésekhez. Az oktatóanyag leegyszerűsítése érdekében közvetlenül a Master ágat használja.
-1. Tallózással keresse meg a GitHub-tárházat egy böngészőben.  Az URL- **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** cím:. Ekkor megjelenik a **CreateWebApp** mappa, valamint a mappában található három fájl.
-1. A sablon megnyitásához válassza a **linkedStorageAccount. JSON** fájlt.
+1. Tallózással keresse meg a GitHub-tárházat egy böngészőben.  Az URL-cím: **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** . Ekkor megjelenik a **CreateWebApp** mappa, valamint a mappában található három fájl.
+1. A sablon megnyitásához válassza **alinkedStorageAccount.json** lehetőséget.
 1. Kattintson a **RAW** gombra. Az URL-cím a **RAW.githubusercontent.com**-vel kezdődik.
 1. Másolja az URL-címet.  Ezt az értéket kell megadnia, amikor az oktatóanyag későbbi részében konfigurálja a folyamatot.
 
@@ -127,7 +126,7 @@ A következő eljárás folytatásához szükség van egy DevOps-szervezetre.  H
     * **Verziókövetés**: válassza a **git**lehetőséget. Előfordulhat, hogy a **speciális** elemre kell bontania a **verziókövetés**megjelenítéséhez.
 
     Használja az alapértelmezett értéket a többi tulajdonsághoz.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Hozzon létre egy olyan szolgáltatási kapcsolódást, amely a projektek Azure-ba való telepítésére szolgál.
 
@@ -174,7 +173,7 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
     * **Erőforráscsoport**: adjon meg egy új erőforráscsoport-nevet. Például: **AzureRmPipeline-RG**.
     * **Hely**: válassza ki az erőforráscsoport helyét, például az **USA középső**régióját.
     * **Sablon helye**: válassza a **társított**összetevő elemet, ami azt jelenti, hogy a feladat közvetlenül a csatlakoztatott tárházból keresi a sablonfájlt.
-    * **Sablon**: írja be a **CreateWebApp/azuredeploy. JSON**fájlt. Ha módosította a mappa nevét és a fájl nevét, módosítania kell ezt az értéket.
+    * **Sablon**: írja be **a CreateWebApp/azuredeploy.js**értéket. Ha módosította a mappa nevét és a fájl nevét, módosítania kell ezt az értéket.
     * **Sablon paraméterei**: hagyja üresen ezt a mezőt. A paraméterek értékét a * * sablon felülbírálása paraméterben adhatja meg.
     * **overrideParameters**: ENTER **-projektnév [EnterAProjectName]-linkedTemplateUri [EnterTheLinkedTemplateURL]**. Cserélje le a projekt nevét és a csatolt sablon URL-címét. A csatolt sablon URL-címe a [GitHub-Tárház létrehozása](#create-a-github-repository)végén írt leírás.
     * **Üzembe helyezési mód**: válassza a **növekményes**lehetőséget.
@@ -182,7 +181,7 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 
     ![Azure DevOps Azure-folyamatok Azure Resource Managerának lépései](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
     További információ a feladatról: az [Azure-erőforráscsoport üzembe helyezési feladata](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)és [Azure Resource Manager sablon központi telepítési feladata](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 
@@ -207,7 +206,7 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 
 Amikor frissíti a sablont, és leküldi a módosításokat a távoli tárházba, a folyamat automatikusan frissíti az erőforrásokat, a Storage-fiókot ebben az esetben.
 
-1. Nyissa meg a **linkedStorageAccount. JSON** fájlt a helyi adattárból a Visual Studio Code-ban vagy bármely szövegszerkesztőben.
+1. Nyissa meg **linkedStorageAccount.jsa** helyi adattárból a Visual Studio Code-ban vagy bármely szövegszerkesztőben.
 1. Frissítse a **Tárfióktípus** **defaultValue** értékét **Standard_GRSra**. Tekintse meg a következő képernyőképet:
 
     ![Azure-DevOps Azure-YAML frissítésének Azure Resource Manager](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-update-yml.png)
@@ -224,11 +223,11 @@ Amikor frissíti a sablont, és leküldi a módosításokat a távoli tárházba
 
     Az első parancs (lekéréses) szinkronizálja a helyi tárházat a távoli adattárral. A folyamat YAML-fájlja csak a távoli tárházhoz lett hozzáadva. A lekéréses parancs futtatása letölti a YAML fájl egy példányát a helyi ágra.
 
-    A negyedik parancs (leküldés) feltölti a módosított linkedStorageAccount. JSON fájlt a távoli tárházba. A távoli tárház főágának frissítése után a folyamat újra bekerül.
+    A negyedik parancs (leküldés) feltölti az átdolgozott linkedStorageAccount.jsfájlt a távoli tárházba. A távoli tárház főágának frissítése után a folyamat újra bekerül.
 
 A módosítások ellenőrzéséhez ellenőrizze a Storage-fiók replikáció tulajdonságát.  Lásd: [a központi telepítés ellenőrzése](#verify-the-deployment).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 

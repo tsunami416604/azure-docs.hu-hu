@@ -5,12 +5,11 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79472996"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054491"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Oktatóanyag: Azure által felügyelt alkalmazások közzététele a piactéren
 
@@ -44,7 +43,7 @@ A felügyelt alkalmazásra vonatkozó ajánlat a közzétevőtől származó ter
 
 1. Jelentkezzen be a [Felhőpartnerportálra](https://cloudpartner.azure.com/).
 
-1. A bal oldali navigációs ablaktáblán válassza az **+ új ajánlat** > **Azure-alkalmazások**lehetőséget.
+1. A bal oldali navigációs ablaktáblán válassza az **+ új ajánlat**  >  **Azure-alkalmazások**lehetőséget.
 
 1. Az **Editor** (Szerkesztő) nézetben láthatja a szükséges űrlapokat. Az egyes űrlapokat a cikk alábbi részei ismertetik.
 
@@ -70,7 +69,7 @@ Az SKU egy ajánlat legkisebb megvásárolható egysége. Az SKU-kat ugyanazon a
 
 Az SKU-k a fő ajánlat alatt jelennek meg a piactéren. Saját megvásárolható entitásként jelennek meg az Azure Portalon.
 
-1. Válassza az **SKU** > **új SKU**elemet.
+1. Válassza az **SKU**  >  **új SKU**elemet.
 
 1. Adjon meg egy értéket az **SKU ID** (SKU-azonosító) mezőben. Az SKU-azonosító egy adott SKU egyedi azonosítója az ajánlaton belül. Az azonosító a termék URL-címeiben, a Resource Manager-sablonokban és a számlázási jelentésekben látható. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakterből állhat. Miután egy ajánlat elérhetővé válik, ezt a mezőt zárolja a rendszer. Több SKU-val is rendelkezhet egy ajánlaton belül. Minden közzétenni kívánt rendszerkép esetében külön SKU-t kell megadni.
 
@@ -96,7 +95,7 @@ Az SKU-k a fő ajánlat alatt jelennek meg a piactéren. Saját megvásárolhat�
    * **Testreszabhatja az engedélyezett ügyfelek műveleteit?**: válassza az **Igen** lehetőséget annak megadásához, hogy a felhasználók milyen műveleteket hajthatnak végre a felügyelt erőforrásokon.
    * **Engedélyezett felhasználói műveletek**: Ha az előző beállításnál az **Igen** lehetőséget választja, megadhatja, hogy mely műveletek legyenek engedélyezve a felhasználók számára az [Azure-erőforrások megtagadási hozzárendeléseinek](../../role-based-access-control/deny-assignments.md)használatával.
 
-     Az elérhető műveletekért lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md). Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását `Microsoft.Compute/virtualMachines/restart/action` , adja hozzá az engedélyezett műveleteket. A `*/read` művelet automatikusan engedélyezve van, így nincs szükség a beállítás belefoglalására.
+     Az elérhető műveletekért lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md). Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását, adja hozzá `Microsoft.Compute/virtualMachines/restart/action` az engedélyezett műveleteket. A `*/read` művelet automatikusan engedélyezve van, így nincs szükség a beállítás belefoglalására.
    * **PrincipalId** (Résztvevő-azonosító): Ez a tulajdonság egy olyan felhasználó, felhasználócsoport vagy alkalmazás Azure Active Directory- (Azure AD-) azonosítója, amely az ügyfél előfizetésén belüli erőforrásokhoz kap hozzáférést. A Role Definition (Szerepkör-definíció) az engedélyeket ismerteti.
    * **Role Definition** (Szerepkör-definíció): Ez a tulajdonság a beépített szerepkör-alapú hozzáférés-vezérlési (RBAC) szerepkörök listája, amelyet az Azure AD biztosít. Kiválaszthatja az erőforrásoknak az ügyfél nevében történő felügyeletéhez leginkább megfelelőbb szerepkört.
    * **Szabályzatbeállítások**: Alkalmazzon egy [Azure-szabályzatot](../../governance/policy/overview.md) a felügyelt alkalmazásokra az üzembe helyezett megoldások megfelelőségi követelményeinek megadásához. Válassza ki az alkalmazandó szabályzatokat az elérhető lehetőségek közül. **Szabályzatparaméterek** esetén adjon meg egy JSON-sztringet a paraméter értékeivel. A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](../../governance/policy/samples/index.md).
@@ -172,6 +171,6 @@ Miután az összes szakaszt kitöltötte, válassza a **Publish** (Közzététel
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ arról, hogy mi történik a **Közzététel**gombra kattintás után: [Azure-alkalmazási ajánlat közzététele](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+* További információ arról, hogy mi történik a **Közzététel**gombra kattintás után: [Azure-alkalmazási ajánlat közzététele](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
 * A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
 * A szolgáltatáskatalógusban elérhető felügyelt alkalmazások közzétételével kapcsolatban tekintse meg a [szolgáltatáskatalógusban elérhető felügyelt alkalmazások létrehozását és közzétételét](publish-service-catalog-app.md) ismertető témakört.

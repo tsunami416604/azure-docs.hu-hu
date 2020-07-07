@@ -10,12 +10,11 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2ac68f1cab6958c0fc79fa6518c61417e75c0a70
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
-ms.translationtype: MT
+ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480609"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043002"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -105,15 +104,17 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 A kimenet így néz ki:
 
-    StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
-    ServiceBusRuleId   :
-    StorageAccountName :
-        Logs
-        Enabled           : True
-        Category          : AuditEvent
-        RetentionPolicy
-        Enabled : False
-        Days    : 0
+```output
+StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccountContosoKeyVaultLogs
+ServiceBusRuleId   :
+StorageAccountName :
+    Logs
+    Enabled           : True
+    Category          : AuditEvent
+    RetentionPolicy
+    Enabled : False
+    Days    : 0
+```
 
 Ez a kimenet megerősíti, hogy a naplózás már engedélyezve van a kulcstartóban, és az adatokat a Storage-fiókjába menti.
 
@@ -188,7 +189,7 @@ A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
 Mivel ugyanazt a Storage-fiókot használhatja több erőforráshoz tartozó naplók összegyűjtésére, a blob nevében lévő teljes erőforrás-azonosító hasznos lehet, ha csak a szükséges blobokat szeretné elérni vagy letölteni. Előtte azonban nézzük meg, hogyan tölthető le az összes blob.
 
-Hozzon létre egy mappát a Blobok letöltéséhez. Példa:
+Hozzon létre egy mappát a Blobok letöltéséhez. Például:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -208,7 +209,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 Ha ezt a második parancsot futtatja, a **/** Blobok neveiben szereplő határolójel teljes mappastruktúrát hoz létre a célmappában. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
@@ -263,7 +264,7 @@ Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Nézzük me
 
 A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | **idő** |Dátum és idő (UTC). |
 | **resourceId** |Azure Resource Manager erőforrás-azonosító. Key Vault naplók esetében ez mindig a Key Vault erőforrás-azonosító. |
@@ -279,7 +280,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **identitás** |Az REST API kérelemben bemutatott jogkivonat identitása. Ez általában a "felhasználó", "a" szolgáltatásnév "vagy" felhasználó + appId "kombinációja, amely egy Azure PowerShell-parancsmagból származó kérelem esetében van. |
 | **Tulajdonságok** |A művelettől (**operationName**) függően változó információk. A legtöbb esetben ez a mező tartalmazza az ügyfél adatait (az ügyfél által átadott felhasználói ügynök sztringjét), a pontos REST API kérelem URI-JÁT és a HTTP-állapotkódot. Emellett, ha egy objektum egy kérelem eredményeképpen lett visszaadva (például a Key **create** vagy a **VaultGet**), a kulcs URI-ját ("id"), a tároló URI-JÁT vagy a titkos azonosítót is tartalmazza. |
 
-A **OperationName** *ObjectVerb* formátumban vannak. Példa:
+A **OperationName** *ObjectVerb* formátumban vannak. Például:
 
 * A Key Vault összes műveletének `Vault<action>` formátuma, például `VaultGet` és `VaultCreate` .
 * Az összes kulcsfontosságú művelet `Key<action>` formátuma, például `KeySign` és `KeyList` .
@@ -317,7 +318,7 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | **SecretList** |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Az Azure Monitor-naplók használata
+## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor naplók használata
 
 Azure Monitor naplók Key Vault megoldásával áttekintheti Key Vault **AuditEvent** naplóit. Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat. 
 

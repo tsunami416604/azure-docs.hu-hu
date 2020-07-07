@@ -6,12 +6,11 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 227e60486f0a6712b0d29de47983bad737481bd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800545"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028249"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -64,9 +63,11 @@ Letöltheti és telepítheti az Azure Cosmos Emulatort a [Microsoft letöltőkö
 
 Az Azure Cosmos Emulator elindításához kattintson a Start gombra, vagy nyomja le a Windows billentyűt. Kezdje el beírni az **Azure Cosmos emulatort**, és válassza ki az emulátort az alkalmazások listájából.
 
-![Kattintson a Start gombra, vagy nyomja le a Windows billentyűt, kezdje beírni * * az Azure Cosmos Emulator * * parancsot, és válassza ki az emulátort az alkalmazások listájából.](./media/local-emulator/database-local-emulator-start.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="Kattintson a Start gombra, vagy nyomja le a Windows billentyűt, kezdje el beírni az Azure Cosmos Emulatort, és válassza ki az emulátort az alkalmazások listájából.":::
 
-Amikor fut az emulátor, egy ikont lát a Windows tálca értesítési területén. ![A helyi emulátor Azure Cosmos DB értesítése](./media/local-emulator/database-local-emulator-taskbar.png)
+Amikor fut az emulátor, egy ikont lát a Windows tálca értesítési területén. 
+
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="A helyi emulátor Azure Cosmos DB értesítése":::
 
 Az Azure Cosmos Emulator alapértelmezés szerint a helyi gépen ("localhost") fut a 8081-es porton.
 
@@ -222,7 +223,7 @@ A .NET-nyelvek és a futtatókörnyezet a Windows tanúsítványtárolóval csat
 
 A Windows tanúsítványtárolóval nem integrálható nyelvekkel és futtatókörnyezetekkel használni kívánt tanúsítvány beszerzéséhez a Windows tanúsítványkezelővel kell exportálnia azt. Indítsa el a certlm. msc futtatásával, vagy kövesse az [Azure Cosmos Emulator-tanúsítványok exportálása](./local-emulator-export-ssl-certificates.md)című lépésről lépésre vonatkozó utasításokat. Amikor fut a tanúsítványkezelő, nyissa meg a személyes tanúsítványokat az alább látható módon, és exportálja a tanúsítványt a „DocumentDBEmulatorCertificate” rövid névvel BASE-64 kódolású X.509 (.cer) fájlként.
 
-![Azure Cosmos DB helyi emulátor TLS/SSL-tanúsítvány](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-ssl_certificate.png" alt-text="Azure Cosmos DB helyi emulátor TLS/SSL-tanúsítvány":::
 
 Az X.509 tanúsítvány a Java tanúsítványtárolóba importálható a [Tanúsítvány hozzáadása a Java hitelesítésszolgáltató tanúsítványtárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című cikkben lévő utasításokkal. Miután importálta a tanúsítványt a tanúsítványtárolóba, az SQL-hez és a Azure Cosmos DB API-MongoDB tartozó ügyfelek képesek lesznek csatlakozni az Azure Cosmos Emulatorhoz.
 
@@ -470,7 +471,7 @@ Ha Linux rendszeren dolgozik, a .NET-továbbítókat az OpenSSL-ben végezheti e
    update-ca-certificates
    ```
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
 Ha Mac gépen dolgozik, kövesse az alábbi lépéseket:
 

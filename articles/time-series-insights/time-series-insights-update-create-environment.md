@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ccb9c7aff6eb59c4883bc3218e205fb7877e86e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 08649a537ac8f9de5f444ca3e4fe5ed509910294
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618372"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045841"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights előzetes verziójú környezet beállítása
 
@@ -107,7 +106,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights elő
    | Paraméter | Műveletek |
    | --- | --- |
    | **Létrehoz egy eseményforrás?** | Válassza az **Igen** lehetőséget.|
-   | **Név** | Adjon meg egyedi értéket az eseményforrás neveként. |
+   | **Name (Név)** | Adjon meg egyedi értéket az eseményforrás neveként. |
    | **Forrás típusa** | Válassza a **IoT hub**lehetőséget. |
    | **Válasszon hubot** | Válassza a **meglévő kiválasztása**lehetőséget. |
    | **Előfizetés** | Válassza ki az eszköz-szimulátorhoz használt előfizetést. |
@@ -120,7 +119,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre Azure Time Series Insights elő
 
    [![Konfigurálja a létrehozott IoT hubot eseményforrásként.](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     [![Tekintse át a + létrehozás oldalt a létrehozás gombbal.](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
@@ -158,7 +157,7 @@ Most, hogy üzembe helyezte a Time Series Insights környezetét, megkezdheti az
 
     | Paraméter | Műveletek |
     | --- | --- |
-    | **Név** | Adjon egyedi nevet a szimulátornak. |
+    | **Name (Név)** | Adjon egyedi nevet a szimulátornak. |
     | **Leírás** | Adjon meg egy definíciót. |
     | **Szimuláció időtartama** | **Határozatlan ideig történő futtatásra**van beállítva. |
     | **Eszközmodell** | Kattintson **az + eszköz típusának hozzáadása** elemre. <br />**Név**: adjon meg egy **liftet**. <br />**Mennyiség**: írja be a **3**értéket. <br /> Hagyja meg a fennmaradó alapértelmezett értékeket |
@@ -204,7 +203,7 @@ Ebben a szakaszban az idősorozat-adatokra vonatkozó alapszintű elemzéseket a
 
 ## <a name="define-and-apply-a-model"></a>Modell meghatározása és alkalmazása
 
-Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elvégzéséhez a típusokat, hierarchiákat és példányokat kell meghatároznia. Ha többet szeretne megtudni az adatmodellezésről, olvassa el a [Time Series modellt](./time-series-insights-update-tsm.md).
+Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elvégzéséhez a típusokat, hierarchiákat és példányokat kell meghatároznia. Ha többet szeretne megtudni az adatmodellezésről, olvassa el a [Time Series modellt](./concepts-model-overview.md).
 
 1. A Explorerben válassza a **modell** fület:
 
@@ -216,7 +215,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     | Paraméter | Műveletek |
     | --- | ---|
-    | **Név** | **Lift** megadása |
+    | **Name (Név)** | **Lift** megadása |
     | **Leírás** | Adja meg a **lift típus definícióját** |
 
 1. Ezután válassza a **változók** lapot. 
@@ -225,8 +224,8 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     | Paraméter | Műveletek |
     | --- | --- |
-    | **Név** | Adja meg az **AVG hőmérsékletet**. |
-    | **Típusú** | **Numerikus** elem kiválasztása |
+    | **Name (Név)** | Adja meg az **AVG hőmérsékletet**. |
+    | **Altípus** | **Numerikus** elem kiválasztása |
     | **Érték** | Válasszon az előre beállított listából: válassza a **hőmérséklet (Double)** lehetőséget. <br /> Megjegyzés: Előfordulhat, hogy a rendszer automatikusan kitölti az **értéket** , miután Azure Time Series Insights előnézet elkezdi fogadni az eseményeket.|
     | **Összesítési művelet** | Bontsa ki a **Speciális beállítások elemet**. <br /> Válassza az **AVG**elemet. |
 
@@ -234,8 +233,8 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     | Paraméter | Műveletek |
     | --- | --- |
-    | **Név** | Adja meg az **AVG Vibration**értéket. |
-    | **Típusú** | **Numerikus** elem kiválasztása |
+    | **Name (Név)** | Adja meg az **AVG Vibration**értéket. |
+    | **Altípus** | **Numerikus** elem kiválasztása |
     | **Érték** | Válasszon az előre beállított listából: válassza a **vibráció (dupla)** lehetőséget. <br /> Megjegyzés: Előfordulhat, hogy a rendszer automatikusan kitölti az **értéket** , miután Azure Time Series Insights előnézet elkezdi fogadni az eseményeket.|
     | **Összesítési művelet** | Bontsa ki a **Speciális beállítások elemet**. <br /> Válassza az **AVG**elemet. |
 
@@ -243,10 +242,10 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     | Paraméter | Műveletek |
     | --- | --- |
-    | **Név** | Adja meg a **padlót**. |
-    | **Típusú** | **Kategorikus** kijelölése |
+    | **Name (Név)** | Adja meg a **padlót**. |
+    | **Altípus** | **Kategorikus** kijelölése |
     | **Érték** | Válasszon az előre beállított lehetőség közül: válassza a **padló (Double)** lehetőséget. <br /> Megjegyzés: Előfordulhat, hogy a rendszer automatikusan kitölti az **értéket** , miután Azure Time Series Insights előnézet elkezdi fogadni az eseményeket.|
-    | **Kategóriák** | <span style="text-decoration: underline">Feliratok </span>   -  <span style="text-decoration: underline">értékei</span> <br /> Alsó: 1, 2, 3, 4 <br /> Középső: 5, 6, 7, 8, 9 <br /> Felső: 10, 11, 12, 13, 14, 15 |
+    | **Kategóriák** | <span style="text-decoration: underline">Címke</span>   -  <span style="text-decoration: underline">Értékek</span> <br /> Alsó: 1, 2, 3, 4 <br /> Középső: 5, 6, 7, 8, 9 <br /> Felső: 10, 11, 12, 13, 14, 15 |
     | **Alapértelmezett kategória** | **Ismeretlen** megadása |
 
     [![Adja meg a típus változóit.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
@@ -263,7 +262,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
    | Paraméter | Műveletek |
    | --- | ---|
-   | **Név** | Adja meg a **hely hierarchiáját**. |
+   | **Name (Név)** | Adja meg a **hely hierarchiáját**. |
    |**Szintek**| Adja meg az **országot** az első szint neveként <br> Válassza a **+ szint hozzáadása** lehetőséget <br> Adja meg a második szint **városát** , majd válassza a **+ szint hozzáadása** elemet. <br> A harmadik és utolsó szint neveként adja meg a **Building** nevet |
 
    Kattintson a **Mentés** gombra.
@@ -275,7 +274,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
     | Paraméter | Műveletek |
     | --- | --- |
     | **Típus** | Válassza a **lift**lehetőséget. |
-    | **Név** | **1. felvonó** megadása|
+    | **Name (Név)** | **1. felvonó** megadása|
     | **Leírás** | Adja meg **az 1. felvonó példányát** |
 
     Lépjen a **példány mezőire** , és adja meg a következő értékeket:
@@ -296,7 +295,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
     | Paraméter | Műveletek |
     | --- | --- |
     | **Típus** | Válassza a **lift**lehetőséget. |
-    | **Név** | **2. felvonó** megadása|
+    | **Name (Név)** | **2. felvonó** megadása|
     | **Leírás** | **A 2. felvonóhoz tartozó példány** megadása |
     | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
     | **Ország** | **USA** megadása |
@@ -308,7 +307,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
     | Paraméter | Műveletek |
     | --- | --- |
     | **Típus** | Válassza a **lift**lehetőséget. |
-    | **Név** | **3. felvonó** megadása|
+    | **Name (Név)** | **3. felvonó** megadása|
     | **Leírás** | **A 3. felvonóhoz tartozó példány** megadása |
     | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
     | **Ország** | **USA** megadása |
@@ -329,7 +328,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     [![A 2. felvonó és a hierarchia megjelenítése.](media/v2-update-provision/iot-solution-accelerator-elevator-two.png)](media/v2-update-provision/iot-solution-accelerator-elevator-two.png#lightbox)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásokat:
 
@@ -349,15 +348,15 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 Most, hogy már tudja, hogyan hozhat létre saját Azure Time Series Insights előnézeti környezetet, további információt olvashat a Azure Time Series Insights főbb fogalmakról.
 
-További információ a Azure Time Series Insights Storage-konfigurációról:
+További információ a Azure Time Series Insights betöltéséről:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights előnézet tároló és bejövő forgalom](./time-series-insights-update-storage-ingress.md)
+> [Azure Time Series Insights adatfeldolgozás áttekintése](./concepts-ingestion-overview.md)
 
 További információ a Time Series-modellekről:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights előzetes verziójú adatmodellezés](./time-series-insights-update-tsm.md)
+> [Azure Time Series Insights előzetes verziójú adatmodellezés](./concepts-model-overview.md)
 
 További információ a környezet összekapcsolásáról Power BI
 
