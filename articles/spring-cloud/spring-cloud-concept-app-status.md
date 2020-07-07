@@ -1,5 +1,5 @@
 ---
-title: Az alkalmazás állapotának megértése az Azure Spring Cloud-ban
+title: Az Azure Spring Cloud alkalmazásállapotainak ismertetése
 description: Az alkalmazások állapotának kategóriáinak megismerése az Azure Spring Cloud-ban
 author: MikeDodaro
 ms.service: spring-cloud
@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.openlocfilehash: 70a9e6392e21422d7513197fbf7a1a75e1f6ab8f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82569003"
 ---
-# <a name="understanding-app-status-in-azure-spring-cloud"></a>Az alkalmazás állapotának megértése az Azure Spring Cloud-ban
+# <a name="understanding-app-status-in-azure-spring-cloud"></a>Az Azure Spring Cloud alkalmazásállapotainak ismertetése
 
 Az Azure Spring Cloud felhasználói felülete információkat nyújt a futó alkalmazások állapotáról.  Az előfizetésben található minden erőforráscsoport esetében van **egy alkalmazási lehetőség,** amely az alkalmazások típusának általános állapotát jeleníti meg.  Minden egyes alkalmazás-típus esetében megjelenik az **alkalmazás példányai**.
 
@@ -29,20 +29,20 @@ Egy alkalmazás típusának általános állapotának megtekintéséhez válassz
 
 **A központi telepítés állapota a következő értékek egyike lehet:**
 
-| Felsorolás | Meghatározás |
+| Enumeráció | Definíció |
 |:--:|:----------------:|
 | Fut | A központi telepítésnek futnia kell. |
 | Leállítva | A központi telepítést le kell állítani. |
 
 **A kiépítési állapot csak a parancssori felületről érhető el.  A jelentés az alábbi értékek egyike:**
 
-| Felsorolás | Meghatározás |
+| Enumeráció | Definíció |
 |:--:|:----------------:|
 | Létrehozás | Az erőforrás létrehozása. |
 | Frissítése | Az erőforrás frissítése folyamatban van. |
 | Sikeres | A rendszer sikeresen biztosította az erőforrásokat, és üzembe helyezi a bináris fájlt. |
 | Sikertelen | Nem sikerült elérni a *sikeres* célt. |
-| Törlése | Az erőforrás törlése folyamatban van. Ez megakadályozza a műveletet, és az erőforrás nem érhető el ebben az állapotban. |
+| Törlés | Az erőforrás törlése folyamatban van. Ez megakadályozza a műveletet, és az erőforrás nem érhető el ebben az állapotban. |
 
 ## <a name="app-instances-status"></a>Alkalmazás példányainak állapota
 
@@ -54,7 +54,7 @@ Egy telepített alkalmazás adott példányának állapotának megtekintéséhez
 
 **A példány állapota a következő értékek egyike:**
 
-| Felsorolás | Meghatározás |
+| Enumeráció | Definíció |
 |:--:|:----------------:|
 | Indítás | A bináris fájl sikeresen telepítve lett az adott példányon. A jar-fájl indítása sikertelen lehet, mert a jar nem futtatható megfelelően. |
 | Fut | A példány működik. |
@@ -63,12 +63,12 @@ Egy telepített alkalmazás adott példányának állapotának megtekintéséhez
 
 **A példány felderítési állapota a következő értékek egyike lesz:**
 
-| Felsorolás | Meghatározás |
+| Enumeráció | Definíció |
 |:--:|:----------------:|
 | FEL | Az alkalmazás-példány regisztrálva van az Eureka-ban, és készen áll a forgalom fogadására |
 | OUT_OF_SERVICE | Az alkalmazás példánya regisztrálva van az Eureka-ban, és képes fogadni a forgalmat. a forgalom azonban szándékosan leáll. |
 | LE | Az alkalmazás példánya nincs regisztrálva az Eureka-ben, vagy regisztrálva van, de nem tud forgalmat fogadni. |
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez](spring-cloud-tutorial-prepare-app-deployment.md)

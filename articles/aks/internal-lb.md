@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790609"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Belső terheléselosztó használata az Azure Kubernetes szolgáltatással (ak)
@@ -23,13 +23,13 @@ Ha korlátozni szeretné az alkalmazásaihoz való hozzáférést az Azure Kuber
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 Ha meglévő alhálózatot vagy erőforráscsoportot használ, a (z) alhálózati erőforrás-kezelőhöz a hálózati erőforrások kezeléséhez engedély szükséges. Általában rendelje hozzá a *hálózati közreműködő* szerepkört az egyszerű szolgáltatáshoz a delegált erőforrásokon. Egyszerű szolgáltatásnév helyett használhatja a rendszerhez rendelt felügyelt identitást az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md). Az engedélyekkel kapcsolatos további információkért lásd: [AK-hozzáférés delegálása más Azure-erőforrásokhoz][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>Hozzon létre egy belső terheléselosztót
 
-Belső terheléselosztó létrehozásához hozzon létre egy nevű `internal-lb.yaml` szolgáltatási jegyzékfájlt a szolgáltatás típusa *terheléselosztó* és az *Azure-Load-Balancer – belső* jegyzettel az alábbi példában látható módon:
+Belső terheléselosztó létrehozásához hozzon létre egy nevű szolgáltatási jegyzékfájlt `internal-lb.yaml` a szolgáltatás típusa *terheléselosztó* és az *Azure-Load-Balancer – belső* jegyzettel az alábbi példában látható módon:
 
 ```yaml
 apiVersion: v1
@@ -54,7 +54,7 @@ kubectl apply -f internal-lb.yaml
 
 Az Azure Load Balancer a csomópont-erőforráscsoporthoz jön létre, és ugyanahhoz a virtuális hálózathoz csatlakozik, mint az AK-fürt.
 
-A szolgáltatás részleteinek megtekintésekor a belső terheléselosztó IP-címe megjelenik a *külső IP-* oszlopban. Ebben a kontextusban a *külső* a terheléselosztó külső felületével kapcsolatos, nem pedig nyilvános, külső IP-címet kap. Előfordulhat, hogy az IP-cím egy percet vagy kettőt is igénybe vehet, hogy a * \<függőben lévő\> * belső IP-címekre váltson, ahogy az az alábbi példában is látható:
+A szolgáltatás részleteinek megtekintésekor a belső terheléselosztó IP-címe megjelenik a *külső IP-* oszlopban. Ebben a kontextusban a *külső* a terheléselosztó külső felületével kapcsolatos, nem pedig nyilvános, külső IP-címet kap. Előfordulhat, hogy az IP-cím egy percet vagy kettőt is igénybe vehet *\<pending\>* egy tényleges belső IP-címről, ahogy az az alábbi példában is látható:
 
 ```
 $ kubectl get service internal-app
@@ -106,7 +106,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Előfordulhat, hogy a *hálózati közreműködő* szerepkört egy olyan erőforráscsoporthoz kell megadnia, ahol az Azure-beli virtuális hálózati erőforrásokat üzembe helyezi. Tekintse meg a szolgáltatásnevet az [az AK show][az-aks-show]paranccsal, `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`például:. Szerepkör-hozzárendelés létrehozásához használja az az [role-hozzárendelés létrehozása][az-role-assignment-create] parancsot.
+> Előfordulhat, hogy a *hálózati közreműködő* szerepkört egy olyan erőforráscsoporthoz kell megadnia, ahol az Azure-beli virtuális hálózati erőforrásokat üzembe helyezi. Tekintse meg a szolgáltatásnevet az [az AK show][az-aks-show]paranccsal, például: `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"` . Szerepkör-hozzárendelés létrehozásához használja az az [role-hozzárendelés létrehozása][az-role-assignment-create] parancsot.
 
 ## <a name="specify-a-different-subnet"></a>Válasszon másik alhálózatot
 
@@ -132,7 +132,7 @@ spec:
 
 Ha a belső terheléselosztó által használt összes szolgáltatás törlődik, akkor a terheléselosztó is törlődik.
 
-Közvetlenül is törölhet egy szolgáltatást, mint bármely Kubernetes-erőforrást, például a `kubectl delete service internal-app`(z)-t, amely a mögöttes Azure Load balancert is törli.
+Közvetlenül is törölhet egy szolgáltatást, mint bármely Kubernetes-erőforrást, például a (z `kubectl delete service internal-app` )-t, amely a mögöttes Azure Load balancert is törli.
 
 ## <a name="next-steps"></a>További lépések
 

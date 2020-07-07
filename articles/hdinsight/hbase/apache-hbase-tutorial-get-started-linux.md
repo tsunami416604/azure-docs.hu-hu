@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a601d54ebda074a25a988ac2a115f6418dd5c7ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81390263"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958361"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: az Apache HBase használata az Azure HDInsight
 
@@ -75,13 +75,13 @@ A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja
 
 **A Hbase-rendszerhéj használata**
 
-1. Használja `ssh` a parancsot a HBase-fürthöz való kapcsolódáshoz. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a fürt nevét, majd beírja a következő parancsot:
+1. Használja a `ssh` parancsot a HBase-fürthöz való kapcsolódáshoz. Szerkessze az alábbi parancsot úgy, hogy lecseréli a `CLUSTERNAME` fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. A `hbase shell` parancs használatával indítsa el a HBase interaktív rendszerhéját. Adja meg az alábbi parancsot az SSH-kapcsolatban:
+1. `hbase shell`A parancs használatával indítsa el a HBase interaktív rendszerhéját. Adja meg az alábbi parancsot az SSH-kapcsolatban:
 
     ```bash
     hbase shell
@@ -93,13 +93,13 @@ A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja
     create 'Contacts', 'Personal', 'Office'
     ```
 
-1. Használja `list` a parancsot a HBase összes táblájának listázásához. Írja be a következő parancsot:
+1. Használja a `list` parancsot a HBase összes táblájának listázásához. Írja be a következő parancsot:
 
     ```hbase
     list
     ```
 
-1. A `put` parancs használatával szúrhat be értékeket egy adott oszlop megadott sorában egy adott táblába. Adja meg a következő parancsokat:
+1. A `put` parancs használatával szúrhat be értékeket egy adott oszlop megadott sorában egy adott táblába. Írja be a következő parancsokat:
 
     ```hbaseshell
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -108,7 +108,7 @@ A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-1. A `scan` tábla adatvizsgálatához és visszaküldéséhez használja a `Contacts` parancsot. Írja be a következő parancsot:
+1. `scan`A tábla adatvizsgálatához és visszaküldéséhez használja a parancsot `Contacts` . Írja be a következő parancsot:
 
     ```hbase
     scan 'Contacts'
@@ -116,17 +116,17 @@ A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja
 
     ![HDInsight Apache Hadoop HBase-rendszerhéj](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
 
-1. Egy `get` sor tartalmának lekéréséhez használja a parancsot. Írja be a következő parancsot:
+1. `get`Egy sor tartalmának lekéréséhez használja a parancsot. Írja be a következő parancsot:
 
     ```hbaseshell
     get 'Contacts', '1000'
     ```
 
-    A `scan` parancs használatával hasonló eredmények jelennek meg, mert csak egy sor van.
+    A parancs használatával hasonló eredmények jelennek `scan` meg, mert csak egy sor van.
 
     A HBase táblázatos sémával kapcsolatos további információkért lásd: [Bevezetés az Apache HBase Schema design](http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf)használatába. További Hbase-parancsokért lásd: [Apache HBase reference guide](https://hbase.apache.org/book.html#quickstart) (Apache HBase referencia-útmutató).
 
-1. A `exit` HBase interaktív rendszerhéj leállításához használja a parancsot. Írja be a következő parancsot:
+1. `exit`A HBase interaktív rendszerhéj leállításához használja a parancsot. Írja be a következő parancsot:
 
     ```hbaseshell
     exit
@@ -138,22 +138,31 @@ A HBase több módszert tartalmaz az adatok táblába töltéséhez.  További i
 
 Egy minta adatfájl található a következő nyilvános blobtárolóban található: `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt`.  Az adatfájl tartalma a következő:
 
-    8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
-    16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
-    4324    Karl Xie         508-555-0163    230-555-0193    4912 La Vuelta
-    16891   Jonn Jackson     674-555-0110    230-555-0194    40 Ellis St.
-    3273    Miguel Miller    397-555-0155    230-555-0195    6696 Anchor Drive
-    3588    Osa Agbonile     592-555-0152    230-555-0196    1873 Lion Circle
-    10272   Julia Lee        870-555-0110    230-555-0197    3148 Rose Street
-    4868    Jose Hayes       599-555-0171    230-555-0198    793 Crawford Street
-    4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
-    16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
+`8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
+
+`16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz`
+
+`4324    Karl Xie         508-555-0163    230-555-0193    4912 La Vuelta`
+
+`16891   Jonn Jackson     674-555-0110    230-555-0194    40 Ellis St.`
+
+`3273    Miguel Miller    397-555-0155    230-555-0195    6696 Anchor Drive`
+
+`3588    Osa Agbonile     592-555-0152    230-555-0196    1873 Lion Circle`
+
+`10272   Julia Lee        870-555-0110    230-555-0197    3148 Rose Street`
+
+`4868    Jose Hayes       599-555-0171    230-555-0198    793 Crawford Street`
+
+`4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.`
+
+`16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive`
 
 Igény szerint létrehozhat egy szövegfájlt, és feltöltheti a fájlt a saját tárfiókjába. Az utasításokért lásd: [adatok feltöltése Apache Hadoop feladatokhoz a HDInsight-ben](../hdinsight-upload-data.md).
 
 Ez az eljárás az `Contacts` utolsó eljárás során létrehozott HBase táblát használja.
 
-1. Az Open SSH-kapcsolatban futtassa a következő parancsot az adatfájl adatfájlt storefiles való átalakításához, és tárolja a által `Dimporttsv.bulk.output`megadott relatív elérési utat.
+1. Az Open SSH-kapcsolatban futtassa a következő parancsot az adatfájl adatfájlt storefiles való átalakításához, és tárolja a által megadott relatív elérési utat `Dimporttsv.bulk.output` .
 
     ```bash
     hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name,Personal:Phone,Office:Phone,Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
@@ -165,7 +174,7 @@ Ez az eljárás az `Contacts` utolsó eljárás során létrehozott HBase tábl�
     hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
     ```
 
-3. Megnyithatja a HBase-rendszerhéjt, és `scan` a parancs használatával listázhatja a tábla tartalmát.
+3. Megnyithatja a HBase-rendszerhéjt, és a `scan` parancs használatával listázhatja a tábla tartalmát.
 
 ## <a name="use-apache-hive-to-query-apache-hbase"></a>Az Apache HBase lekérdezése Apache Hive használatával
 
@@ -194,15 +203,15 @@ A HBase-táblákban lévő adatlekérdezéseket [Apache Hive](https://hive.apach
     SELECT count(rowkey) AS rk_count FROM hbasecontacts;
     ```
 
-1. A Beeline kilépéséhez `!exit`használja a következőt:.
+1. A Beeline kilépéséhez használja a következőt: `!exit` .
 
-1. Az SSH-kapcsolatok kilépéséhez `exit`használja a következőt:.
+1. Az SSH-kapcsolatok kilépéséhez használja a következőt: `exit` .
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>HBase REST API-k használata Curl használatával
 
 A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgálónak.
 
-1. Az egyszerű használat érdekében állítsa be a környezeti változót. Szerkessze az alábbi parancsokat úgy `MYPASSWORD` , hogy lecseréli a fürt bejelentkezési jelszavát. Cserélje `MYCLUSTERNAME` le a nevet a HBase-fürt nevére. Ezután adja meg a parancsokat.
+1. Az egyszerű használat érdekében állítsa be a környezeti változót. Szerkessze az alábbi parancsokat úgy, hogy lecseréli `MYPASSWORD` a fürt bejelentkezési jelszavát. Cserélje le a `MYCLUSTERNAME` nevet a HBase-fürt nevére. Ezután adja meg a parancsokat.
 
     ```bash
     export password='MYPASSWORD'
@@ -262,14 +271,14 @@ További információ a HBase REST-ről: [Apache HBase Reference Guide](https://
 > A HBase nem támogatja a Thriftet a HDInsightban.
 >
 > Amikor a Curl vagy más REST kommunikációt használ a WebHCattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája felhasználónevének és jelszavának megadásával. A fürtnevet a kérések a kiszolgálóhoz küldéséhez használt egységes erőforrás-azonosító (URI) részeként is használnia kell.
-> 
->   
->        curl -u <UserName>:<Password> \
->        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
->   
->    A következőhöz hasonló választ kell kapnia:
->   
->        {"status":"ok","version":"v1"}
+>
+> `curl -u <UserName>:<Password> \`
+>
+> `-G https://<ClusterName>.azurehdinsight.net/templeton/v1/status`
+>
+> A következőhöz hasonló választ kell kapnia:
+>
+> `{"status":"ok","version":"v1"}`
 
 ## <a name="check-cluster-status"></a>A fürt állapotának ellenőrzése
 
@@ -277,7 +286,7 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 
 **A HBase mesterfelületének elérése**
 
-1. Jelentkezzen be a Ambari webes felhasználói `https://CLUSTERNAME.azurehdinsight.net` felületére, ahol `CLUSTERNAME` a a HBase-fürt neve.
+1. Jelentkezzen be a Ambari webes felhasználói felületére, ahol a a `https://CLUSTERNAME.azurehdinsight.net` `CLUSTERNAME` HBase-fürt neve.
 
 1. A bal oldali menüben válassza a **HBase** lehetőséget.
 
@@ -293,9 +302,9 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
    - feladatok
    - szoftverattribútumok
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat. Használhatja a HBase parancsot `disable 'Contacts'`. Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-fürtöt a következő lépésekkel:
+Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat. Használhatja a HBase parancsot `disable 'Contacts'` . Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-fürtöt a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.

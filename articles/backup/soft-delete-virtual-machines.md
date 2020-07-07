@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan teszi biztonságosabbá a biztonsági mentések
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: ba00b235ea70bcc2dabbd5a91a3f7003f9bbed49
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82765772"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>A virtuális gépekhez tartozó Soft delete
@@ -61,7 +61,7 @@ A Soft delete jelenleg az USA nyugati középső régiójában támogatott Kelet
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>Soft Delete a virtuális gépekhez Azure PowerShell használatával
 
 > [!IMPORTANT]
-> Az az. Recoveryservices szolgáltatónál verzió, amely az Azure PS használatával történő Soft-delete használatát igényli, min 2.2.0. A ```Install-Module -Name Az.RecoveryServices -Force``` legújabb verziójának beszerzéséhez használja a következőt:.
+> Az az. Recoveryservices szolgáltatónál verzió, amely az Azure PS használatával történő Soft-delete használatát igényli, min 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```A legújabb verziójának beszerzéséhez használja a következőt:.
 
 A fentiekben leírtak szerint a lépések sorrendjének Azure Portal a Azure PowerShell is.
 

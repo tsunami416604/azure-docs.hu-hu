@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 47ddad70b4764fedefb50b93de2b7f078cf9fd27
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82732903"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for MariaDB számítási erőforrások számára fenntartott kapacitással
@@ -55,7 +55,7 @@ A következő táblázat a kötelező mezőket ismerteti.
 | Régió | Az Azure Database for MariaDB fenntartott kapacitás foglalása által érintett Azure-régió.
 | Központi telepítés típusa | Az a Azure Database for MariaDB erőforrástípus, amelyre a foglalást megvásárolni szeretné.
 | Teljesítményszint | A Azure Database for MariaDB-kiszolgálók szolgáltatási szintje.
-| Időtartam | Egy év
+| Kifejezés | Egy év
 | Mennyiség | A Azure Database for MariaDB fenntartott kapacitás foglalása keretében megvásárolt számítási erőforrások mennyisége. A mennyiség a kiválasztott Azure-régióban és a lefoglalt teljesítményszint virtuális mag, és a számlázási kedvezményt kapja. Ha például olyan Azure Database for MariaDB-kiszolgálókat futtat, amelyeken az USA keleti régiójában az Gen5 16 virtuális mag teljes számítási kapacitása fut, akkor az összes kiszolgáló előnyének maximalizálása érdekében a 16-as mennyiséget kell megadnia.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése

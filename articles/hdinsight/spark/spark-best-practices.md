@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562338"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark irányelvek
@@ -62,8 +62,8 @@ Ez a cikk a Apache Spark Azure HDInsight való használatának különböző ir�
 
 | Beállítás | Dokumentumok |
 |---|---|
-| 2. generációs Data Lake Storage | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
-| 1. generációs Data Lake Storage | [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-store.md) |
+| Data Lake Storage Gen2 | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+| Data Lake Storage Gen1 | [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-store.md) |
 | Azure Blob Storage | [Az Azure Storage és az Azure HDInsight-fürtök együttes használata](../hdinsight-hadoop-use-blob-storage.md) |
 
 ## <a name="next-steps"></a>További lépések

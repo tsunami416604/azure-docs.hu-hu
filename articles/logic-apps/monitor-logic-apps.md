@@ -7,13 +7,13 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82732002"
 ---
-# <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>A Futtatás állapotának figyelése, az aktiválási előzmények áttekintése és a Azure Logic Apps riasztások beállítása
+# <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Futtatási állapot monitorozása, triggerelőzmények áttekintése és riasztások beállítása az Azure Logic Appshez
 
 [A logikai alkalmazás létrehozása és futtatása](../logic-apps/quickstart-create-first-logic-app-workflow.md)után megtekintheti a logikai alkalmazás futtatási állapotát, [futtathatja az előzményeket](#review-runs-history), az [aktiválási előzményeket](#review-trigger-history)és a teljesítményt. Ha értesítéseket szeretne kapni a hibákról vagy egyéb lehetséges problémákról, állítson be [riasztásokat](#add-azure-alerts). Létrehozhat például egy olyan riasztást, amely észleli a következőt: "Ha ötnél több futtatása meghiúsul egy órán belül."
 
@@ -30,7 +30,7 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
 
 1. A [Azure Portalban](https://portal.azure.com)keresse meg és nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-   A logikai alkalmazás megkereséséhez írja be `logic apps`a következőt a fő Azure-Keresés mezőbe, majd válassza a **Logic apps**lehetőséget.
+   A logikai alkalmazás megkereséséhez írja be a következőt a fő Azure-Keresés mezőbe, `logic apps` majd válassza a **Logic apps**lehetőséget.
 
    ![A "Logic Apps" szolgáltatás megkeresése és kiválasztása](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -46,7 +46,7 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
 
    Egy logikai alkalmazás futtatásának lehetséges állapota:
 
-   | status | Leírás |
+   | Állapot | Leírás |
    |--------|-------------|
    | **Lemondva** | A munkafolyamat futott, de megszakítási kérelmet kapott |
    | **Sikertelen** | Legalább egy művelet meghiúsult, és a munkafolyamatban nem lettek beállítva újabb műveletek a hiba kezelésére. |
@@ -90,13 +90,13 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
 
 <a name="review-trigger-history"></a>
 
-## <a name="review-trigger-history"></a>Triggerek előzményeinek áttekintése
+## <a name="review-trigger-history"></a>Triggerelőzmények áttekintése
 
 Az egyes logikai alkalmazások futtatása triggerrel kezdődik. Az aktiválási előzmények felsorolja az összes olyan triggert, amelyet a logikai alkalmazás elkészített, valamint az egyes triggerekhez tartozó bemenetekkel és kimenetekkel kapcsolatos információkat.
 
 1. A [Azure Portalban](https://portal.azure.com)keresse meg és nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-   A logikai alkalmazás megkereséséhez írja be `logic apps`a következőt a fő Azure-Keresés mezőbe, majd válassza a **Logic apps**lehetőséget.
+   A logikai alkalmazás megkereséséhez írja be a következőt a fő Azure-Keresés mezőbe, `logic apps` majd válassza a **Logic apps**lehetőséget.
 
    ![A "Logic Apps" szolgáltatás megkeresése és kiválasztása](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -116,7 +116,7 @@ Az egyes logikai alkalmazások futtatása triggerrel kezdődik. Az aktiválási 
 
    Itt láthatók az triggerek lehetséges állapotai:
 
-   | status | Leírás |
+   | Állapot | Leírás |
    |--------|-------------|
    | **Sikertelen** | Hiba történt. A sikertelen triggerek által generált hibaüzenetek áttekintéséhez válassza ki az aktiválási kísérletet, és válassza a **kimenetek**lehetőséget. Előfordulhat például, hogy olyan bemeneteket talál, amelyek nem érvényesek. |
    | **Kimarad** | A trigger ellenőrizte a végpontot, de nem talált semmilyen adatsort. |
@@ -140,7 +140,7 @@ Az egyes logikai alkalmazások futtatása triggerrel kezdődik. Az aktiválási 
 
 Ha a logikai alkalmazáshoz meghatározott mérőszámok alapján vagy túllépte a riasztásokat, állítson be [riasztásokat a Azure monitorban](../azure-monitor/platform/alerts-overview.md). Ismerje meg [Az Azure mérőszámait](../monitoring-and-diagnostics/monitoring-overview-metrics.md). Ha [Azure monitor](../log-analytics/log-analytics-overview.md)használata nélkül szeretné beállítani a riasztásokat, kövesse az alábbi lépéseket.
 
-1. A logikai alkalmazás menüjében, a **figyelés**területen válassza a **riasztások** > **új riasztási szabály**lehetőséget.
+1. A logikai alkalmazás menüjében, a **figyelés**területen válassza a **riasztások**  >  **új riasztási szabály**lehetőséget.
 
    ![Riasztás hozzáadása a logikai alkalmazáshoz](./media/monitor-logic-apps/add-new-alert-rule.png)
 
@@ -162,7 +162,7 @@ Ha a logikai alkalmazáshoz meghatározott mérőszámok alapján vagy túllépt
 
    1. Az **összesítés típusa**beállításnál válassza a **darabszám**lehetőséget.
 
-   1. A **küszöbérték**mezőben adja meg `1`a következőt:.
+   1. A **küszöbérték**mezőben adja meg a következőt: `1` .
 
    1. A **feltétel előnézet**területen ellenőrizze, hogy a feltétel helyesnek tűnik-e.
 

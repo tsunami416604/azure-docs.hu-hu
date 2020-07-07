@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
 ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562396"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway használati esetei
@@ -69,7 +69,7 @@ Az alábbi lépéseket követve másolja az adatok Data Box és töltse fel az A
 2. [A Data Box beállítása](/azure/databox/data-box-deploy-set-up).
 3. [Adatmásolás Data Box SMB-n keresztül](/azure/databox/data-box-deploy-copy-data).
 4. [A Data Box visszaadása, az adatok feltöltése az Azure](/azure/databox/data-box-deploy-picked-up)-ba.
-5. Miután az adatok feltöltése az Azure-ba befejeződött, az összes adattal az Azure Storage-tárolókban kell lennie. A Data Box Storage-fiókjában nyissa meg a blob (és file) tárolót, és győződjön meg arról, hogy az összes fájl másolása megtörtént. Jegyezze fel a tároló nevét, mert később ezt a nevet fogja használni. A következő képernyőképen például a növekményes `databox` átvitelhez a tárolót fogja használni.
+5. Miután az adatok feltöltése az Azure-ba befejeződött, az összes adattal az Azure Storage-tárolókban kell lennie. A Data Box Storage-fiókjában nyissa meg a blob (és file) tárolót, és győződjön meg arról, hogy az összes fájl másolása megtörtént. Jegyezze fel a tároló nevét, mert később ezt a nevet fogja használni. A következő képernyőképen például a `databox` növekményes átvitelhez a tárolót fogja használni.
 
     ![Adattároló Data Box](media/data-box-gateway-use-cases/data-container1.png)
 

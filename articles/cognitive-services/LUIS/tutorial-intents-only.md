@@ -3,18 +3,18 @@ title: 'Oktatóanyag: a szándékok előrejelzése – LUIS'
 description: Hozzon létre egy egyéni alkalmazást, amely előrejelzést készít egy felhasználó szándékáról az oktatóanyag teljes szövege alapján.
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588944"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959859"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához
 
 Ebben az oktatóanyagban egy egyéni alkalmazást hoz létre, amely megjósolja a felhasználó szándékát a Kimondás (szöveg) alapján.
 
-**Az oktatóanyag a következőket ismerteti:**
+**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
 > * Új alkalmazás létrehozása
@@ -32,7 +32,7 @@ Az alkalmazás célja a társalgási, természetes nyelvű szöveg szándékána
 
 Ezek különféle **szándékokként** vannak csoportosítva.
 
-|Szándék|Cél|
+|Szándék|Szerep|
 |--|--|
 |`ModifyOrder`|Határozza meg a felhasználó pizzájának sorrendjét.|
 |`Greeting`|Kezdje el a bot-beszélgetést.|
@@ -113,9 +113,8 @@ A Kimondás besorolásához a szándéknak példákat kell besorolnia a felhaszn
 
     `get a medium vegetarian pizza for delivery`
 
-    Ez nem pontosan ugyanaz, mint a Kimondás, ezért jó tesztet talál, hogy a LUIS megtudja, mit kell megjósolni ezzel a szándékkal.
-
-    Az utolsó lekérdezésisztring-paraméter a `query`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `OrderPizza` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként.
+  
+    A lekérdezési karakterlánc paraméter értéke `query` , a rendszer az URI-ban adja át a Kimondás **lekérdezését** . A kimondott szöveg nem egyezik meg egyik kimondott példaszöveggel sem, Ennek jó tesztnek kell lennie annak ellenőrzéséhez, hogy a LUIS megtanulja és megjósolja-e a `OrderPizza` legfontosabb pontozási szándékot.
 
     ```JSON
     {

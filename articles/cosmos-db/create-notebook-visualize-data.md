@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115278"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961098"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez
 
@@ -235,7 +235,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
 
    A kimenet a világ térképét jeleníti meg különböző színekkel. A világosabb színek a legalacsonyabb bevételsel rendelkező országokat és régiókat jelölik.
 
-   ![Országok/régiók bevételi Térkép vizualizációja](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Országok/régiók bevételi Térkép vizualizációja":::
 
 1. Lássuk egy másik esetet az adatvizualizációhoz. A WebsiteData-tároló olyan felhasználókat tartalmaz, akik megtekintett egy tételt, hozzáadták őket a kosárhoz, és megvásárolták az adott tételt. Nézzük meg a megvásárolt elemek konverziós arányát. Futtassa az alábbi kódot egy új cellában az egyes elemek konverziós arányának megjelenítéséhez:
 

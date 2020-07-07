@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3d0a054e587a8f067be33913b05d2962b970fb1a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b02455c153c6205b87a64a388d5588c3c431e0c9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321613"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963512"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Gyors útmutató: eszköz-képesség modell használata IoT Plug and Play előnézeti eszköz (Windows) létrehozásához
 
@@ -36,7 +36,7 @@ Az alábbi lépéseket követve telepítheti a VS Code bővítmény-csomaghoz k�
 
 1. A VS Code-ban válassza a **kiterjesztések** lapot.
 1. Keresse meg az **Azure IoT-eszközöket**.
-1. Válassza az **Install** (Telepítés) lehetőséget.
+1. Válassza a **Telepítés** gombot.
 
 ### <a name="install-the-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése
 
@@ -78,7 +78,7 @@ Ebben a rövid útmutatóban a [Vcpkg](https://github.com/microsoft/vcpkg) Libra
 1. Az Azure IoT C Device SDK Vcpkg telepítése:
 
     ```cmd
-    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use-prov-client]
     ```
 
 ## <a name="author-your-model"></a>A modell szerzője
@@ -87,7 +87,7 @@ Ebben a rövid útmutatóban egy meglévő minta-eszköz képesség modellt és 
 
 1. Hozzon létre egy `pnp_app` mappát a helyi meghajtón. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
 
-1. Töltse le az [eszköz képességeinek modelljét és a felületi minta fájljait](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/SampleDevice.model.json) és a [felületét](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/EnvironmentalSensor.interface.json) , és mentse a fájlokat a `pnp_app` mappába.
+1. Töltse le az [eszköz képességeinek modelljét](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/SampleDevice.capabilitymodel.json) és a [felületi mintákat](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensor.interface.json) , és mentse őket a `pnp_app` mappába.
 
     > [!TIP]
     > Egy fájl GitHubról való letöltéséhez navigáljon a fájlhoz, kattintson a jobb gombbal a **RAW**elemre, majd válassza a **hivatkozás mentése másként**lehetőséget.

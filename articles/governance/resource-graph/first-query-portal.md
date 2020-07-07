@@ -3,12 +3,12 @@ title: 'Rövid útmutató: az első portál lekérdezése'
 description: Ebben a rövid útmutatóban a következő lépésekkel futtathatja első lekérdezését Azure Portal az Azure Resource Graph Explorer használatával.
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 1e506ee1b1c610381f300323f80c38eb6bf67caa
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148038"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958807"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
 
@@ -90,11 +90,11 @@ A Resource Graph-lekérdezések példáinak megadásához, valamint arról, hogy
 
 - [Resource Graph Explorer – minta irányítópult #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [![Példa a minta irányítópultjának képének #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  :::image type="content" source="./media/arge-sample1-small.png" alt-text="Példa a minta irányítópultjának képének #1" lightbox="./media/arge-sample1-large.png":::
 
 - [Resource Graph Explorer – minta irányítópult #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [![Példa a minta irányítópultjának képének #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Példa a minta irányítópultjának képének #2" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > A fenti példában látható irányítópultok és diagramok az Azure-környezettől függően eltérőek.
@@ -117,7 +117,7 @@ Ha el szeretné távolítani a minta erőforrás-gráf irányítópultokat a Azu
 
 1. Válassza a **Törlés** lehetőséget az irányítópult tetején található irányítópult menüjében, majd kattintson **az OK gombra** a megerősítéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban az Azure Resource Graph Explorer használatával futtatta az első lekérdezést, és megvizsgálta az irányítópulton megjelenő példákat. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

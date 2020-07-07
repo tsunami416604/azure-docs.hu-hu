@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 8028b1f301a3c7fb4ca39c8920824091a4065118
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: ccbafcfcbf13809b84883352c5a31835c6988d51
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261953"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962696"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Azure Cosmos DB SQL API-t használó Java-alkalmazás létrehozása és a hírcsatorna-feldolgozó módosítása
 
@@ -57,7 +57,7 @@ mvn clean package
 
 1. Első lépésként Azure Cosmos DB fiókkal kell rendelkeznie. Nyissa meg a **Azure Portal** a böngészőben, lépjen a Azure Cosmos db-fiókra, és a bal oldali ablaktáblán navigáljon **adatkezelő**.
 
-    ![Azure Cosmos DB fiók](media/create-sql-api-java-changefeed/cosmos_account_empty.JPG)
+   :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_empty.JPG" alt-text="Azure Cosmos DB fiók":::
 
 1. Futtassa az alkalmazást a terminálon a következő parancs használatával:
 
@@ -77,9 +77,7 @@ mvn clean package
     * **InventoryContainer-pktype** – az elemre irányuló lekérdezésekre optimalizált leltári rekord anyagilag látható nézete```type```
     * **InventoryContainer – bérletek** – a változási hírcsatornára mindig a bérletek tárolója szükséges. a bérletek nyomon követik az alkalmazás előrehaladását a változási hírcsatorna olvasásakor.
 
-
-    ![Üres tárolók](media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG)
-
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Üres tárolók":::
 
 1. A terminálban ekkor megjelenik egy üzenet
 
@@ -97,7 +95,7 @@ mvn clean package
 
     Térjen vissza a böngészőben a Azure Portal Adatkezelő. A **InventoryContainer-bérletek** tárolóban kattintson az **elemek elemre** a tartalmának megtekintéséhez. Látni fogja, hogy a változási hírcsatorna processzora feltöltte a címbérleti tárolót, azaz a processzor a ```SampleHost_1``` **InventoryContainer**egyes partícióinak bérletét rendelte hozzá a feldolgozóhoz.
 
-    ![Bérletek](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Bérletek":::
 
 1. Nyomja le ismét az ENTER billentyűt a terminálon. Ekkor a rendszer 10 dokumentumot szúr be a **InventoryContainerba**. Minden dokumentum beszúrása JSON-ként jelenik meg a változási hírcsatornában. a következő visszahívási kód kezeli ezeket az eseményeket úgy, hogy a JSON-dokumentumokat egy anyagbeli nézetbe tükrözi:
 
@@ -107,15 +105,15 @@ mvn clean package
 
 1. 5 10sec futtatásának engedélyezése a kód számára. Ezután térjen vissza a Azure Portal Adatkezelő, és navigáljon a **InventoryContainer > elemekhez**. Látnia kell, hogy a rendszer beszúrja az elemeket a leltári tárolóba; Jegyezze fel a partíciós kulcsot ( ```id``` ).
 
-    ![Hírcsatorna-tároló](media/create-sql-api-java-changefeed/cosmos_items.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Hírcsatorna-tároló":::
 
 1. Most Adatkezelő navigáljon a **InventoryContainer-pktype > elemekhez**. Ez az anyagbeli nézet – az ebben a tárolóban lévő elemek tükrözött **InventoryContainer** , mert programozott módon szúrták be a hírcsatorna módosításával. Jegyezze fel a partíciós kulcsot ( ```type``` ). Így ez az anyagbeli nézet a lekérdezési szűrésre van optimalizálva ```type``` , ami nem hatékony a **InventoryContainer** , mert particionálva van ```id``` .
 
-    ![Tényleges táblán alapuló nézet](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Anyagelszámolású nézet":::
 
 1. A **InventoryContainer** és a **InventoryContainer-pktype** dokumentumból csak egyetlen hívást fogunk törölni ```upsertItem()``` . Először tekintse meg Azure Portal Adatkezelő. Töröljük azt a dokumentumot, amelynek ```/type == "plums"``` ; a következő piros színnel van Bekerítve:
 
-    ![Tényleges táblán alapuló nézet](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Anyagelszámolású nézet":::
 
     Nyomja meg ismét az ENTER billentyűt a függvény meghívásához ```deleteDocument()``` a példában szereplő kódban. Ez a függvény az alább látható módon upsert a dokumentum egy új verzióját ```/ttl == 5``` , amely a dokumentumot élettartam (TTL) értékre állítja a 5Sec. 
     

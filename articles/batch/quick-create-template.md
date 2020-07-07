@@ -4,12 +4,12 @@ description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladato
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 1e3becaa8a71fbb0f3c7baea97b57a03722a99cc
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5f26aeead41fa1ffcebefdeaabae84490dfdae2b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262684"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959823"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Gyors útmutató: batch-fiók létrehozása Azure Resource Manager sablon használatával
 
@@ -33,8 +33,8 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
 
 Két Azure-erőforrás van definiálva a sablonban:
 
-- [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): létrehoz egy Storage-fiókot.
-- [Microsoft.BatCH/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts): létrehoz egy batch-fiókot.
+- [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): létrehoz egy Storage-fiókot.
+- [Microsoft.BatCH/batchAccounts](/azure/templates/microsoft.batch/batchaccounts): létrehoz egy batch-fiókot.
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 

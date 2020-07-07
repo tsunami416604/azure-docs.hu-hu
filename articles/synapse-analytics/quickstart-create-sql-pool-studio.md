@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: da034479f110607e878a0ed26b9d487e41438e16
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f93eb55b888c58ad111bd67b2011ba9c996b16bb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666287"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960265"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása (előzetes verzió) a szinapszis Studio használatával
 
@@ -41,7 +41,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 1. A munkaterületek listájából írja be a megnyitni kívánt munkaterület nevét (vagy annak egy részét). Ebben a példában egy **contosoanalytics**nevű munkaterületet fogunk használni.
 ![A contoso nevet tartalmazó szinapszis-munkaterületek listázása.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
-## <a name="launch-synapse-studio"></a>A szinapszis Studio elindítása
+## <a name="launch-synapse-studio"></a>A Synapse Studio indítása
 
 1. A munkaterület áttekintés területén válassza a **szinapszis Studio elindítása** lehetőséget, hogy megnyissa azt a helyet, ahol az SQL-készlet létre lesz hozva. Írja be a szolgáltatás nevét vagy az erőforrás nevét közvetlenül a keresősávba.
 ![Azure Portal szinapszis-munkaterület áttekintése](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
@@ -98,6 +98,6 @@ Ha törölni szeretné az SQL-készletet, tegye a következőket:
  ![Megerősítő párbeszédpanel a kiválasztott SQL-készlet törléséhez.](media/quickstart-create-sql-pool/create-sql-pool-studio-29.png)
 1. Ha a folyamat sikeresen befejeződik, az SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 - Tekintse meg a rövid útmutató [: Apache Spark jegyzetfüzet létrehozása](quickstart-apache-spark-notebook.md)című témakört.
 - Lásd [: gyors útmutató: SZINAPSZIS SQL-készlet létrehozása a Azure Portal használatával](quickstart-create-sql-pool-portal.md).

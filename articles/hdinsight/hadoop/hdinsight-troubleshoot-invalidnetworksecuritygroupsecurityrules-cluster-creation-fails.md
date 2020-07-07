@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
 ms.openlocfilehash: 2cf4859d3bf4c34fff4cb076eec11bcd2d81e4ab
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780776"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>Forgatókönyv: InvalidNetworkSecurityGroupSecurityRules – a fürt létrehozása nem sikerül az Azure HDInsight
@@ -20,7 +20,7 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 ## <a name="issue"></a>Probléma
 
-Az alhálózattal `InvalidNetworkSecurityGroupSecurityRules` konfigurált hálózati biztonsági csoport biztonsági szabályaihoz hasonló leírással kapott hibakód nem teszi lehetővé a szükséges bejövő és/vagy kimenő kapcsolatokat.
+Az `InvalidNetworkSecurityGroupSecurityRules` alhálózattal konfigurált hálózati biztonsági csoport biztonsági szabályaihoz hasonló leírással kapott hibakód nem teszi lehetővé a szükséges bejövő és/vagy kimenő kapcsolatokat.
 
 ## <a name="cause"></a>Ok
 

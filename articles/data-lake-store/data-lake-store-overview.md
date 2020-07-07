@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
 ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508554"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Mi az Azure Data Lake Storage Gen1?
@@ -58,7 +58,7 @@ Data Lake Storage Gen1 tárolók alapvetően mappák és fájlok. A tárolt adat
 
 A Data Lake Storage Gen1 a Azure Active Directory (Azure AD) használatával hitelesítő és hozzáférés-vezérlési listákat (ACL-eket) használ az adataihoz való hozzáférés kezeléséhez.
 
-| Szolgáltatás | Description |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | Hitelesítés |A Data Lake Storage Gen1 az Azure AD-val integrálható az identitás-és hozzáférés-kezeléshez a Data Lake Storage Gen1 tárolt összes adattal. Az integráció miatt Data Lake Storage Gen1 az összes Azure AD-szolgáltatás előnyeit, többek között a többtényezős hitelesítést, a feltételes hozzáférést, a szerepköralapú hozzáférés-vezérlést, az alkalmazások használatának figyelését, a biztonsági monitorozást és a riasztásokat, és így tovább. A Data Lake Storage Gen1 támogatja a OAuth 2,0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [Data Lake Storage Gen1 hitelesítés](data-lakes-store-authentication-using-azure-active-directory.md).|
 | Hozzáférés-vezérlés |Data Lake Storage Gen1 hozzáférés-vezérlést biztosít a WebHDFS protokoll által elérhető POSIX stílusú engedélyek támogatásával. Engedélyezheti a hozzáférés-vezérlési listákat a gyökérkönyvtárban, az almappákban és az egyes fájlokban. További információ arról, hogy az ACL-ek hogyan működnek a Data Lake Storage Gen1 kontextusában: [Data Lake Storage Gen1 hozzáférés-vezérlése](data-lake-store-access-control.md). |
@@ -80,7 +80,7 @@ A Data Lake Storage Gen1 a Hadoop-környezetekben elérhető fájlrendszer Azure
 
 Az adatai Data Lake Storage Gen1 használatával érhetők el `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net` . További információ a Data Lake Storage Gen1 lévő adatok eléréséről: [a tárolt adatok tulajdonságainak megtekintése](data-lake-store-get-started-portal.md#properties).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Data Lake Storage Gen1 használatának első lépései a Azure Portal](data-lake-store-get-started-portal.md)
 - [A Data Lake Storage Gen1 használatának első lépései a .NET SDK-val](data-lake-store-get-started-net-sdk.md)

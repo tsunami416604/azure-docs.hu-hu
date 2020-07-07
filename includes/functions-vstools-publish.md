@@ -9,10 +9,10 @@ ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: db6f5927e1cbdb3527014ccbb277c7ec20b02600
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84231556"
 ---
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.

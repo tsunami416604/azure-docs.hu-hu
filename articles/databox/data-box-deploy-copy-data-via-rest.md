@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: REST API-k használata a blob Storage-ba való másoláshoz'
+title: 'Oktatóanyag: másolás a blob Storage-ba REST API-kon keresztül'
 titleSuffix: Azure Data Box
 description: Megtudhatja, hogyan másolhat adatok a Azure Data Box blob Storage-ba REST API-k használatával
 services: databox
@@ -7,16 +7,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/09/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: aa59d2dea4456b977afee92103fa66d6afe9bf31
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 50c4daabe3dc980937f52db7e56cd778890b84d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219144"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960680"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API-kon keresztül  
+# <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Oktatóanyag: REST API-k használata adatok másolásához Azure Data Box blob Storage-ba  
 
 Ez az oktatóanyag a REST API-kon keresztül *http* -vagy *https*-kapcsolaton keresztüli Azure Data Box blob Storage-hoz való kapcsolódás eljárásait ismerteti. A csatlakozás után az Data Box blob Storage-ba való másolásához szükséges lépések, valamint a Data Box a szállításra való előkészítésének lépései is le vannak írva.
 
@@ -32,11 +32,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Azure Data Box beállítása](data-box-deploy-set-up.md).
+1. Az [ Az Azure Data Box beállítása](data-box-deploy-set-up.md) című oktatóanyagot.
 2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú.
 3. Áttekintette [Data Box blob Storage rendszerkövetelményeit](data-box-system-requirements-rest.md) , és ismeri az API-k, SDK-k és eszközök támogatott verzióit.
 4. Olyan gazdagéphez fér hozzá, amely a Data Boxba másolni kívánt adattal rendelkezik. A gazdaszámítógépen:
-    * Futtasson egy [támogatott operációs rendszert](data-box-system-requirements.md).
+    * egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
     * egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha egy 10 GbE-kapcsolat nem érhető el, a rendszer egy 1 GbE adatkapcsolatot használ, de a másolási sebesség hatással lesz rá.
 5. [Töltse le a AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) a gazdagépen. A AzCopy használatával másolhatja át az adatait Azure Data Box blob Storage-ba a gazdagép számítógépről.
 
@@ -153,7 +153,7 @@ Ha csatlakozott a Data Box blob Storage-hoz, a következő lépés az Adatmásol
 * Ha az Data Box által feltöltött adatok párhuzamosan fel vannak töltve a Data Boxon kívül más alkalmazásokkal, ez a feladatok feltöltésével és az adatok sérülésével járhat.
 
 > [!IMPORTANT]
-> Győződjön meg róla, hogy karbantartja a forrásadatok másolatát, amíg meg nem erősíti, hogy a Data Box átvitte az adatait az Azure Storage szolgáltatásba.
+> Gondoskodjon róla, hogy megtartja a forrásadatok egy másolatát addig, amíg ellenőrizheti, hogy a Data Box valóban átvitte-e az adatokat az Azure Storage-ba.
 
 Ebben az oktatóanyagban a AzCopy az Adatmásolás Data Box blob Storage-ba való másolására szolgál. A Azure Storage Explorer is használhatja (ha a GUI-alapú eszköz) vagy a partner szoftverét az adatmásoláshoz.
 
@@ -186,15 +186,19 @@ A AzCopy használatával feltöltheti a mappában lévő összes fájlt a blob S
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 Cserélje le a `<key>` billentyűt a fiók kulcsára. A fiók kulcsának beszerzéséhez a Azure Portal nyissa meg a Storage-fiókját. Lépjen a **beállítások > hozzáférési kulcsok**elemre, válasszon ki egy kulcsot, és illessze be a AzCopy parancsba.
 
@@ -209,16 +213,21 @@ A AzCopy használatával tölthet fel fájlokat a legutóbbi módosítási idej�
 Ha csak azokat az erőforrásokat szeretné átmásolni a forrásból, amelyek nem léteznek a célhelyen, adja meg az `--exclude-older` és az `--exclude-newer` (Linux), vagy az `/XO` és az `/XN` (Windows) paramétereket az AzCopy-parancsban. Az AzCopy az időbélyegek alapján csak a frissített adatokat tölti fel.
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 Ha a csatlakozás vagy a másolás művelet során hibák léptek fel, tekintse meg a [Data Box blob Storage problémáinak elhárítása](data-box-troubleshoot-rest.md)című témakört.
 

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580564"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>A TLS konfigurálása Azure Database for PostgreSQL-nagy kapacitású (Citus)
@@ -26,17 +26,17 @@ Hasonlóképpen, a "kapcsolati karakterláncok" beállításokban előre defini�
 Néhány alkalmazás-keretrendszer, amely a PostgreSQL-t használja az adatbázis-szolgáltatásaihoz, alapértelmezés szerint nem engedélyezi a TLS-t a telepítés során. Ha a PostgreSQL-kiszolgáló kikényszeríti a TLS-kapcsolatokat, de az alkalmazás nincs konfigurálva a TLS-hez, előfordulhat, hogy az alkalmazás nem tud csatlakozni az adatbázis-kiszolgálóhoz. A TLS-kapcsolatok engedélyezésével kapcsolatos információkért tekintse meg az alkalmazás dokumentációját.
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>A TLS-kapcsolat tanúsítvány-ellenőrzését igénylő alkalmazások
-Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl (. cer) alapján létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. A Azure Database for PostgreSQL-nagy kapacitású (Citus) szolgáltatáshoz való kapcsolódáshoz szükséges tanúsítvány a https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pemkövetkező helyen található:. Töltse le a tanúsítványfájl, és mentse a kívánt helyre.
+Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl (. cer) alapján létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. A Azure Database for PostgreSQL-nagy kapacitású (Citus) szolgáltatáshoz való kapcsolódáshoz szükséges tanúsítvány a következő helyen található: https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem . Töltse le a tanúsítványfájl, és mentse a kívánt helyre.
 
 ### <a name="connect-using-psql"></a>Összekapcsolás a psql használatával
-Az alábbi példa bemutatja, hogyan csatlakozhat a nagy kapacitású (Citus) koordinátor-csomóponthoz a psql parancssori segédprogram használatával. A TLS `sslmode=verify-full` -tanúsítvány ellenőrzésének érvényesítéséhez használja a kapcsolódási karakterlánc beállítást. Adja át a helyi tanúsítványfájl elérési útját a `sslrootcert` paraméternek.
+Az alábbi példa bemutatja, hogyan csatlakozhat a nagy kapacitású (Citus) koordinátor-csomóponthoz a psql parancssori segédprogram használatával. A `sslmode=verify-full` TLS-tanúsítvány ellenőrzésének érvényesítéséhez használja a kapcsolódási karakterlánc beállítást. Adja át a helyi tanúsítványfájl elérési útját a `sslrootcert` paraméternek.
 
 Az alábbi példa a psql-kapcsolatok karakterláncát mutatja be:
 ```
 psql "sslmode=verify-full sslrootcert=DigiCertGlobalRootCA.crt.pem host=mydemoserver.postgres.database.azure.com dbname=citus user=citus password=your_pass"
 ```
 > [!TIP]
-> Ellenőrizze, hogy az átadott `sslrootcert` érték megegyezik-e a mentett tanúsítvány elérési útjával.
+> Ellenőrizze, hogy az átadott érték megegyezik-e a `sslrootcert` mentett tanúsítvány elérési útjával.
 
 ## <a name="next-steps"></a>További lépések
 [A Azure Database for PostgreSQL-nagy kapacitású (Citus) tűzfalszabályok](concepts-hyperscale-firewall-rules.md)további biztonságának fokozása.

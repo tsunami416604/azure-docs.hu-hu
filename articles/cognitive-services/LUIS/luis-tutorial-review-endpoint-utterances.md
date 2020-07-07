@@ -3,13 +3,13 @@ title: 'Oktatóanyag: a végpont hosszúságú kimondott szöveg áttekintése �
 description: Ebben az oktatóanyagban a Luis nem biztos, hogy a Luis HTTP-végponton keresztül kapott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejleszti az alkalmazások előrejelzéseit. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.date: 07/02/2020
+ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445924"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959030"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: a nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
 Ebben az oktatóanyagban a Luis HTTPS-végponton keresztül fogadott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejlesztheti az alkalmazás-előrejelzéseket, hogy a LUIS nem biztos benne. Tekintse át a végpontok hosszúságú kimondott szöveg az ütemezett LUIS-karbantartás rendszeres részeként.
@@ -35,11 +35,16 @@ A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavítha
 
 ## <a name="download-json-file-for-app"></a>Alkalmazáshoz tartozó JSON-fájl letöltése
 
-Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true).
+Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true).
 
 ## <a name="import-json-file-for-app"></a>JSON-fájl importálása az alkalmazáshoz
 
-[!INCLUDE [Import app steps](includes/import-app-steps.md)]
+
+1. A [Luis portál](https://www.luis.ai) **saját alkalmazások** lapján válassza az **+ új alkalmazás a beszélgetéshez**, majd az **Importálás JSON-ként**lehetőséget. Keresse meg az előző lépésben mentett JSON-fájlt. Nem kell módosítania az alkalmazás nevét. Válassza a **kész** lehetőséget
+
+1. Válassza **Build** a létrehozás **, majd a szándékok** lehetőséget, hogy megtekintse a Luis-alkalmazás fő építőelemeit.
+
+    :::image type="content" source="media/luis-tutorial-review-endpoint-utterances/initial-intents-in-app.png" alt-text="Váltás a verziók lapról a szándékok lapra.":::
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Az alkalmazás betanítása az entitás módosításának alkalmazására
 
@@ -77,15 +82,11 @@ Tekintse át a végpont hosszúságú kimondott szöveg a megfelelően igazítot
 
 1. A portál **Létrehozás** szakaszában válassza a bal oldali navigációs sávon a **végpont hosszúságú kimondott szöveg áttekintése** elemet. A lista az **ApplyForJob** szándék szerint van szűrve.
 
-    > [!div class="mx-imgBorder"]
-    > ![A bal oldali navigációs menüben található Végponti kimondott szövegek áttekintése gomb képernyőképe](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="A bal oldali navigációs sávon a végpontok hosszúságú kimondott szöveg áttekintése gomb képernyőképe.":::
 
-    Ez a Kimondás `I'm looking for a job with Natural Language Processing` nem megfelelő szándékú.
+    Ez a Kimondás `I'm looking for a job with Natural Language Processing` nem a megfelelő szándékú, _GetJobInformation_. A két szándékban a feladatok neveinek és műveleteinek hasonlósága miatt _ApplyForJob_ .
 
-1.  A Kimondás igazításához a teljes sorban válassza ki a megfelelő **igazított szándékot** `GetJobInformation` . A jelölőnégyzet bejelölésével adja hozzá a megváltozott kiírást az alkalmazáshoz.
-
-    > [!div class="mx-imgBorder"]
-    > ![A bal oldali navigációs menüben található Végponti kimondott szövegek áttekintése gomb képernyőképe](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+1.  A Kimondás igazításához válassza ki a megfelelő **igazított szándékot** `GetJobInformation` . A jelölőnégyzet bejelölésével adja hozzá a megváltozott kiírást az alkalmazáshoz.
 
     Tekintse át a további hosszúságú kimondott szöveg ebben a szándékban, és szükség szerint javítsa ki az igazított szándékot. Ebben az oktatóanyagban a kezdeti lemondás tábla segítségével tekintheti meg az igazított szándékot.
 
@@ -110,37 +111,37 @@ Ha ellenőrizni szeretné, hogy a megfelelően igazított példa hosszúságú k
             "topIntent": "GetJobInformation",
             "intents": {
                 "GetJobInformation": {
-                    "score": 0.903607249
-                },
-                "EmployeeFeedback": {
-                    "score": 0.0312187821
+                    "score": 0.901367366
                 },
                 "ApplyForJob": {
-                    "score": 0.0230276529
+                    "score": 0.0307973567
+                },
+                "EmployeeFeedback": {
+                    "score": 0.0296942145
                 },
                 "MoveEmployee": {
-                    "score": 0.008322801
-                },
-                "Utilities.Stop": {
-                    "score": 0.004480808
+                    "score": 0.00739785144
                 },
                 "FindForm": {
-                    "score": 0.00425248267
+                    "score": 0.00449316856
+                },
+                "Utilities.Stop": {
+                    "score": 0.00417657848
                 },
                 "Utilities.StartOver": {
-                    "score": 0.004224336
+                    "score": 0.00407167152
                 },
                 "Utilities.Help": {
-                    "score": 0.00373591436
+                    "score": 0.003662492
                 },
                 "None": {
-                    "score": 0.0034621188
+                    "score": 0.00335733569
                 },
                 "Utilities.Cancel": {
-                    "score": 0.00230977475
+                    "score": 0.002225436
                 },
                 "Utilities.Confirm": {
-                    "score": 0.00112078607
+                    "score": 0.00107437756
                 }
             },
             "entities": {
@@ -156,7 +157,7 @@ Ha ellenőrizni szeretné, hogy a megfelelően igazított példa hosszúságú k
                                 "timex": "PRESENT_REF",
                                 "resolution": [
                                     {
-                                        "value": "2019-12-05 23:23:53"
+                                        "value": "2020-07-02 21:45:50"
                                     }
                                 ]
                             }
@@ -215,7 +216,7 @@ Felmerülhet a kérdés, hogy miért ne adhatna hozzá további példaként szol
 ## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Miért szerepel a felső szándék a kimondott szövegek listáján?
 Néhány végponti kimondott szöveg magas előrejelzési pontszámmal szerepel az áttekintési listán. Ezeknek a kimondott szövegeknek az áttekintésére és ellenőrzésére ugyanúgy szükség van. Azért szerepelnek a listán, mert a következő legnagyobb pontszámú szándék a legfelső szándék pontszámához túl közeli pontszámmal rendelkezik. Körülbelül 15%-os különbséget szeretne az első két szándék között.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 

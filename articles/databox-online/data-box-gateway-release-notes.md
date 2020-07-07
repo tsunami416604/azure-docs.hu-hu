@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 1a8a9840cc6e1f3627c5fbd30e0b7432db0f16e4
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561050"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway általános elérhetőségi kibocsátási megjegyzések
@@ -42,7 +42,7 @@ A következő táblázat összefoglalja az Data Box Gateway futó kiadásának i
 
 | Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
-| **1.** |Fájltípusok | A következő fájltípusok nem támogatottak: karakterek, fájlok, szoftvercsatornák, csövek és szimbolikus hivatkozások.  |Ezeknek a fájloknak a másolása az NFS-megosztáson létrehozott, 0 hosszúságú fájlokat eredményez. Ezek a fájlok hibás állapotban maradnak, és a *error. xml fájlban*is szerepelnek. <br> A címtárakra mutató szimbolikus hivatkozások azt eredményezik, hogy a címtárak soha nem jelennek meg offline állapotban. Ennek eredményeképpen előfordulhat, hogy nem látja a szürke keresztet azon könyvtárakon, amelyek jelzik, hogy a címtárak offline állapotban vannak, és az összes kapcsolódó tartalmat teljesen feltöltötte az Azure-ba. |
+| **1.** |Fájltípusok | A következő fájltípusok nem támogatottak: karakterek, fájlok, szoftvercsatornák, csövek és szimbolikus hivatkozások.  |Ezeknek a fájloknak a másolása az NFS-megosztáson létrehozott, 0 hosszúságú fájlokat eredményez. Ezek a fájlok hibás állapotban maradnak, és *error.xmlban *is szerepelnek. <br> A címtárakra mutató szimbolikus hivatkozások azt eredményezik, hogy a címtárak soha nem jelennek meg offline állapotban. Ennek eredményeképpen előfordulhat, hogy nem látja a szürke keresztet azon könyvtárakon, amelyek jelzik, hogy a címtárak offline állapotban vannak, és az összes kapcsolódó tartalmat teljesen feltöltötte az Azure-ba. |
 | **2.** |Törlés | A jelen kiadás hibája miatt, ha egy NFS-megosztást törölnek, akkor előfordulhat, hogy nem törli a megosztást. A megosztás állapota a *törlést*fogja megjeleníteni.  |Ez csak akkor fordul elő, ha a megosztás nem támogatott fájlnevet használ. |
 | **3.** |Másolás | Az adatmásolási hiba a következő hibával meghiúsul: a kért műveletet nem lehetett befejezni a fájlrendszer korlátozása miatt.  |A 128 KB-nál nagyobb fájlmérethez társított alternatív adatfolyam (ADS) nem támogatott.   |
 

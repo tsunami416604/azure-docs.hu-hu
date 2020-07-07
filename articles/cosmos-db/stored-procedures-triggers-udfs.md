@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509669"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
@@ -59,14 +59,14 @@ A tárolt eljárások egy Azure Cosmos-tárolóhoz vannak társítva, és a tár
 
 ### <a name="commit-and-rollback"></a>Véglegesítés és visszaállítás
 
-A tranzakciók natív módon vannak integrálva a Azure Cosmos DB JavaScript programozási modellbe. JavaScript-függvényen belül az összes művelet automatikusan egyetlen tranzakció alá lesz csomagolva. Ha egy tárolt eljárás JavaScript-logikája kivétel nélkül fejeződik be, a tranzakción belüli összes művelet véglegesítve lesz az adatbázisban. Az olyan `BEGIN TRANSACTION` utasítások `COMMIT TRANSACTION` , mint a és a (a kapcsolatok adatbázisaiban ismertek) implicitek Azure Cosmos db. Ha a szkript alól kivételek vannak, a Azure Cosmos DB JavaScript futtatókörnyezet visszaállítja a teljes tranzakciót. Ilyen esetben a kivételek a Azure Cosmos DBban ténylegesen egyenértékűek `ROLLBACK TRANSACTION` .
+A tranzakciók natív módon vannak integrálva a Azure Cosmos DB JavaScript programozási modellbe. JavaScript-függvényen belül az összes művelet automatikusan egyetlen tranzakció alá lesz csomagolva. Ha egy tárolt eljárás JavaScript-logikája kivétel nélkül fejeződik be, a tranzakción belüli összes művelet véglegesítve lesz az adatbázisban. Az olyan utasítások, mint a `BEGIN TRANSACTION` és a `COMMIT TRANSACTION` (a kapcsolatok adatbázisaiban ismertek) implicitek Azure Cosmos db. Ha a szkript alól kivételek vannak, a Azure Cosmos DB JavaScript futtatókörnyezet visszaállítja a teljes tranzakciót. Ilyen esetben a kivételek a Azure Cosmos DBban ténylegesen egyenértékűek `ROLLBACK TRANSACTION` .
 
 ### <a name="data-consistency"></a>Adatkonzisztencia
 
 A tárolt eljárásokat és eseményindítókat mindig az Azure Cosmos-tároló elsődleges replikáján hajtja végre a rendszer. Ez a funkció biztosítja, hogy a tárolt eljárásokból beolvasott adatok [erős konzisztenciát](consistency-levels-tradeoffs.md)biztosítanak. A felhasználó által definiált függvényeket használó lekérdezések az elsődleges vagy bármely másodlagos replikán hajthatók végre. A tárolt eljárások és eseményindítók a tranzakciós írások támogatásához szükségesek. a csak olvasási logikát az [Azure Cosmos db SQL API SDK](sql-api-dotnet-samples.md)-k használatával lehet legjobban megvalósítani az alkalmazás-és a lekérdezésekben, az adatbázis átviteli sebességének csökkentése érdekében. 
 
 > [!TIP]
-> Előfordulhat, hogy a tárolt eljáráson vagy triggeren belül végrehajtott lekérdezések nem látják az azonos parancsfájl-tranzakció által létrehozott elemek módosításait. Ez az utasítás az SQL-lekérdezésekre, például `getContent().getCollection.queryDocuments()`a-re, valamint az integrált nyelvi lekérdezésekre `getContext().getCollection().filter()`is vonatkozik, például:.
+> Előfordulhat, hogy a tárolt eljáráson vagy triggeren belül végrehajtott lekérdezések nem látják az azonos parancsfájl-tranzakció által létrehozott elemek módosításait. Ez az utasítás az SQL-lekérdezésekre, például a-re, valamint az `getContent().getCollection.queryDocuments()` integrált nyelvi lekérdezésekre is vonatkozik, például: `getContext().getCollection().filter()` .
 
 ## <a name="bounded-execution"></a>Kötött végrehajtás
 
@@ -76,13 +76,13 @@ Gondoskodhat arról, hogy a JavaScript-függvények az adott időkorláton belü
 
 A JavaScript-függvények [kiosztott átviteli kapacitásra](request-units.md)is vonatkoznak. A JavaScript-függvények egy rövid időn belül nagy mennyiségű kérést használhatnak, és a kiosztott átviteli kapacitásra vonatkozó korlát elérésekor a díjszabás korlátozott lehet. Fontos megjegyezni, hogy a szkriptek az adatbázis-műveletek végrehajtásával töltött átviteli sebesség mellett további átviteli sebességet is felhasználnak, bár ezek az adatbázis-műveletek valamivel kevésbé költségesek, mint az ügyféltől származó azonos műveletek végrehajtása.
 
-## <a name="triggers"></a>Eseményindítók
+## <a name="triggers"></a>Triggerek
 
 Az Azure Cosmos DB az eseményindítók két típusát támogatja:
 
 ### <a name="pre-triggers"></a>Előzetes eseményindítók
 
-Az Azure Cosmos DB olyan eseményindítókat nyújt, amelyek egy Azure Cosmos-elemen végzett művelet végrehajtásával indíthatók. Meghatározhat például egy előzetes eseményindítót, amikor elemet hoz létre. Ebben az esetben az előzetes eseményindító az elem létrehozása előtt fut. Az előzetes eseményindítóknak nem lehetnek bemeneti paramétereik. Szükség esetén a kérésobjektummal frissíthető a dokumentum törzse az eredeti kéréshez képest. Az eseményindítók regisztrálásakor a felhasználók meghatározhatják azokat a műveleteket, amelyekkel futhatnak. Ha egy triggert a- `TriggerOperation.Create`vel hoztak létre, akkor az trigger használata nem engedélyezett a csere műveletben. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
+Az Azure Cosmos DB olyan eseményindítókat nyújt, amelyek egy Azure Cosmos-elemen végzett művelet végrehajtásával indíthatók. Meghatározhat például egy előzetes eseményindítót, amikor elemet hoz létre. Ebben az esetben az előzetes eseményindító az elem létrehozása előtt fut. Az előzetes eseményindítóknak nem lehetnek bemeneti paramétereik. Szükség esetén a kérésobjektummal frissíthető a dokumentum törzse az eredeti kéréshez képest. Az eseményindítók regisztrálásakor a felhasználók meghatározhatják azokat a műveleteket, amelyekkel futhatnak. Ha egy eseményindító a `TriggerOperation.Create` művelettel lett létrehozva, az azt jelenti, hogy az eseményindító nem használható csere műveletben. Példákat az [Eseményindítók írása](how-to-write-stored-procedures-triggers-udfs.md#triggers) című cikkben talál.
 
 ### <a name="post-triggers"></a>Utólagos eseményindítók
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580667"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights előzetes verzió használati esetei
@@ -30,7 +30,7 @@ Ez a cikk a következő kérdésekre ad választ:
 
 A következő szakaszokban ismertetjük a használati forgatókönyvek áttekintését.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Azure Time Series Insights egy teljes körű, szolgáltatásként nyújtott platformot kínál. A szolgáltatás a kifejezetten környezetfüggő, idősorozat-optimalizált IoT adatok gyűjtésére, feldolgozására, tárolására, elemzésére és lekérdezésére szolgál. A Time Series Insights ideális megoldás az alkalmi adatfeltárásra és az operatív elemzésre. A Time Series Insights egy egyedileg bővíthető, testreszabott szolgáltatás, amely megfelel az ipari IoT üzemelő példányok széles körű igényeinek.
 
@@ -60,7 +60,7 @@ A Time Series Insightsban tárolt adatkezelés három fő módja van:
 
   * További információ az URL-címek és az új felhasználói felület megosztásáról: [a Azure Time Series Insights Preview Explorerben](time-series-insights-update-explorer.md)tekintheti meg az adatmegjelenítést.
 
-* A harmadik módszer a hatékony API-k használata a Time Series Insights tárolt adatlekérdezéshez. Time Series Insights rendelkezik olyan időbeli operátorokkal `from`, `to`mint `first`a, `last`, és. Olyan összesítésekkel és átalakításokkal rendelkezik, mint `average`a `min`, `max` `split by` `order by`,,, és `DateHistogram`. Emellett olyan szűrési operátorokat is `has`tartalmaz `in`, `and`mint `or`a `greater than`,, `REGEX`,, és. Ezek az operátorok lehetővé teszik, hogy az alárendelt alkalmazások gyorsan megtalálják az adataikban érdekes trendeket és mintákat. Felhasználhatja a betöltött vizualizációk kitöltését a rendellenességek észlelésére.
+* A harmadik módszer a hatékony API-k használata a Time Series Insights tárolt adatlekérdezéshez. Time Series Insights rendelkezik olyan időbeli operátorokkal, mint a,, `from` `to` `first` és `last` . Olyan összesítésekkel és átalakításokkal rendelkezik, mint a,,,, `average` `min` `max` `split by` `order by` és `DateHistogram` . Emellett olyan szűrési operátorokat is tartalmaz, mint a,,,, `has` `in` `and` `or` `greater than` és `REGEX` . Ezek az operátorok lehetővé teszik, hogy az alárendelt alkalmazások gyorsan megtalálják az adataikban érdekes trendeket és mintákat. Felhasználhatja a betöltött vizualizációk kitöltését a rendellenességek észlelésére.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Operatív elemzés és a vezetési folyamat hatékonysága
 
