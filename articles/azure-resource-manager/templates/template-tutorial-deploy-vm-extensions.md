@@ -5,12 +5,11 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 06d948b44064f029e00a2ef089077e9b55246545
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d44fb593cda60c8cc556ffeb5cb3b36163c6bcc3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184962"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057891"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Oktatóanyag: virtuálisgép-bővítmények üzembe helyezése ARM-sablonokkal
 
@@ -53,7 +52,7 @@ Ha úgy dönt, hogy közzéteszi a fájlt a saját helyén, az `fileUri` oktató
 
 Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
-1. A Visual Studio Code-ban válassza a **fájl** > **megnyitott**fájl elemet.
+1. A Visual Studio Code-ban válassza a **fájl**  >  **megnyitott**fájl elemet.
 1. Illessze be a következő URL-címet a **fájlnév** mezőbe:
 
     ```url
@@ -72,7 +71,7 @@ Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon
 
      A Testreszabás előtt hasznos lehet a sablon alapvető megismerése.
 
-1. Mentse a fájl másolatát a helyi számítógépre a *azuredeploy. JSON* néven a **fájl** > **Mentés másként lehetőség**kiválasztásával.
+1. Mentse a fájl egy példányát a helyi számítógépre *azuredeploy.jsa* következő néven: a **fájl**  >  **Mentés másként lehetőség**kiválasztásával.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
@@ -102,7 +101,7 @@ Adjon hozzá a meglévő sablonhoz egy virtuális gépi bővítmény erőforrás
 }
 ```
 
-Az erőforrás-definícióval kapcsolatos további információkért tekintse meg a [bővítmények referenciáját](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). A következők a fontosabb elemek:
+Az erőforrás-definícióval kapcsolatos további információkért tekintse meg a [bővítmények referenciáját](/azure/templates/microsoft.compute/virtualmachines/extensions). A következők a fontosabb elemek:
 
 * **name**: Mivel a bővítményerőforrás a virtuális gép objektum gyermekerőforrása, a nevének tartalmaznia kell a virtuális gép nevének előtagját. Lásd: [a gyermek erőforrások nevének és típusának beállítása](child-resource-name-type.md).
 * **dependsOn**: hozza létre a bővítmény erőforrást a virtuális gép létrehozása után.
@@ -115,7 +114,7 @@ A beágyazott parancsfájl használatához távolítsa el a **fileUris**, és fr
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
 ```
 
-Ez a beágyazott parancsfájl frissíti a Iisstart. html tartalmát is.
+Ez a beágyazott parancsfájl frissíti a iisstart.html tartalmát is.
 
 Meg kell nyitnia a HTTP-portot is, hogy el tudja érni a webkiszolgálót.
 
@@ -152,7 +151,7 @@ Illessze be az IP-címet egy webböngészőbe. Megnyílik az alapértelmezett In
 
 ![A Internet Information Services kezdőlapja](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az üzembe helyezett Azure-erőforrásokra, törölje azokat az erőforráscsoport törlésével.
 

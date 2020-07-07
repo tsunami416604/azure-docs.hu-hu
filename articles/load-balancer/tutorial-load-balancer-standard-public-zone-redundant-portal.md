@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 9a490550bf6652186c80268d4a99bff931897fcd
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344186"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057007"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terhelésének elosuztása a rendelkezésre állási zónák között az Azure Portallal
 
@@ -39,7 +38,7 @@ A rendelkezésre állási zónák a Standard Load Balancerrel való használatá
 
 Igény szerint az oktatóanyag az [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) használatával is elvégezhető.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -78,9 +77,9 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 | **\<resource-group-name>**  | myResourceGroupLBAZ (meglévő erőforráscsoport kiválasztása) |
 | **\<virtual-network-name>** | myVNet          |
 | **\<region-name>**          | Nyugat-Európa      |
-| **\<IPv4-address-space>**   | 10.0.0.0 \ 16          |
+| **\<IPv4-address-space>**   | 10.0.0.0/16          |
 | **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.0.0.0 \ 24          |
+| **\<subnet-address-range>** | 10.0.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -229,10 +228,10 @@ A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossz
 
 Ha meg szeretné tekinteni, hogy hogyan osztja el a terheléselosztó a zónák között elosztott virtuális gépek között a forgalmat, kényszerítheti a webböngésző frissítését.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki a terheléselosztót tartalmazó erőforráscsoportot, és kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [standard Load Balancerról](load-balancer-standard-overview.md).

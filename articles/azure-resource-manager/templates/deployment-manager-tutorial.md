@@ -5,12 +5,11 @@ author: mumian
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ad79721b88f886426d658ed6ee89c4969e1f1baa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75471987"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056888"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (nyilvános előzetes verzió)
 
@@ -36,11 +35,11 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablonok üzembe helyezése
 > * A telepítés ellenőrzése
 > * Az újabb verzió üzembe helyezése
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 
 További források:
 
-* Az [Azure telepítéskezelő REST API referenciája](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* Az [Azure telepítéskezelő REST API referenciája](/rest/api/deploymentmanager/).
 * [Oktatóanyag: az állapot-ellenőrzési szolgáltatás használata az Azure telepítéskezelőban](./deployment-manager-tutorial-health-check.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
@@ -52,7 +51,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * Némi gyakorlat az [Azure Resource Manager-sablonok](overview.md) kialakításában.
-* Azure PowerShell. További információért lásd [az Azure PowerShell használatának első lépéseit](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Azure PowerShell. További információért lásd [az Azure PowerShell használatának első lépéseit](/powershell/azure/get-started-azureps).
 * Deployment Manager-parancsmagok. Az előzetes verziójú parancsmagok telepítéséhez a PowerShellGet legújabb verziójára lesz szüksége. A legújabb verzió beszerzéséről lásd [a PowerShellGet telepítését](/powershell/scripting/gallery/installing-psget) ismertető cikket. A PowerShellGet telepítése után zárja be a PowerShell-ablakot. Nyisson meg egy új, emelt szintű PowerShell-ablakot, és használja a következő parancsot:
 
     ```powershell
@@ -105,7 +104,7 @@ A két verzió (1.0.0.0 és 1.0.0.1) a [változatok üzembe helyezését](#deplo
 
     ![Azure Deployment Manager oktatóanyag – webalkalmazás-létrehozási sablon](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
-    A sablon egy telepítőcsomagot hív meg, amely a webalkalmazás fájljait tartalmazza. Ebben az oktatóanyagban a tömörített csomag csak az index. html fájlt tartalmazza.
+    A sablon egy telepítőcsomagot hív meg, amely a webalkalmazás fájljait tartalmazza. Ebben az oktatóanyagban a tömörített csomag csak index.html-fájlt tartalmaz.
 3. Nyissa meg a következő fájlt: **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**.
 
     ![Azure Deployment Manager-oktatóanyag – webalkalmazás-létrehozási sablon paraméterei, containerRoot](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
@@ -427,7 +426,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
 ## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg a [Azure Portal](https://portal.azure.com).
 2. Tallózással keresse meg az újonnan létrehozott webalkalmazásokat a bevezetés üzembe helyezése során létrehozott új erőforráscsoportok alatt.
 3. Nyissa meg a webalkalmazást egy webböngészőben. Ellenőrizze a helyet és a verziót az index.html fájlban.
 
@@ -440,16 +439,16 @@ Ha új verzió (1.0.0.1) érhető el a webalkalmazáshoz, az alábbi eljárássa
 3. Helyezze újra üzembe a bevezetést [a sablonok üzembe helyezését](#deploy-the-rollout-template) ismertető szakasz utasításai szerint.
 4. Ellenőrizze a telepítést [a vonatkozó szakaszban](#verify-the-deployment) foglaltak szerint. A weblap most az 1.0.0.1-es verziót mutatja.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
 1. A Azure Portal válassza ki a bal oldali menüből az **erőforráscsoportot** .
 2. A **Szűrés név alapján** mezővel szűkítse a keresést az oktatóanyagban létrehozott erőforráscsoportokra. 3–4 erőforrásnak kell lennie:
 
-    * projektnév>RG: a telepítéskezelő erőforrásait tartalmazza. ** &lt;**
-    * projektnév>ServiceWUSrg: a ServiceWUS által definiált erőforrásokat tartalmazza. ** &lt;**
-    * projektnév>ServiceEUSrg: a ServiceEUS által definiált erőforrásokat tartalmazza. ** &lt;**
+    * ** &lt; projektnév>RG**: a telepítéskezelő erőforrásait tartalmazza.
+    * ** &lt; projektnév>ServiceWUSrg**: a ServiceWUS által definiált erőforrásokat tartalmazza.
+    * ** &lt; projektnév>ServiceEUSrg**: a ServiceEUS által definiált erőforrásokat tartalmazza.
     * A felhasználó által meghatározott felügyelt identitás erőforráscsoportja.
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.

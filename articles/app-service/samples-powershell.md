@@ -4,14 +4,13 @@ description: Azure PowerShell mintákat talál néhány gyakori App Service forg
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-ms.date: 03/08/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: 51693ad4d233ea180607bc7358a0847e23688099
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254480"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057908"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>PowerShell-minták a Azure App Servicehoz
 
@@ -25,6 +24,7 @@ Az alábbi táblázat a Azure PowerShell használatával létrehozott PowerShell
 | [Alkalmazás létrehozása és kód üzembe helyezése FTP-vel](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és fájlokat tölt fel egy helyi könyvtárból FTP használatával. |
 | [Alkalmazás létrehozása és kód üzembe helyezése helyi git-tárházból](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást, és beállítja a kód leküldését egy helyi git-adattárból. |
 | [Alkalmazás létrehozása és kód üzembe helyezése átmeneti környezetben](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást egy üzembe helyezési ponttal az átmeneti kód változásaihoz. |
+|  [Alkalmazás létrehozása és az alkalmazás közzététele privát végponttal](./scripts/powershell-deploy-private-endpoint.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Létrehoz egy App Service alkalmazást egy privát végponttal. |
 |**Alkalmazás konfigurálása**||
 | [Egyéni tartomány leképezése egy alkalmazásra](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, és egyéni tartománynevet rendel hozzá. |
 | [Egyéni TLS/SSL-tanúsítvány kötése egy alkalmazáshoz](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy App Service alkalmazást, és egy egyéni tartománynév TLS/SSL-tanúsítványát köti hozzá. |
