@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212397"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs-regisztrációk tömeges exportálása és importálása
@@ -115,7 +115,7 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-A bemeneti és a kimeneti URL-címeken kívül ez a példa `NotificationHubJob` egy objektumot tartalmazó `JobType` objektumot hoz létre, amely a következő típusok egyike lehet:
+A bemeneti és a kimeneti URL-címeken kívül ez a példa egy objektumot `NotificationHubJob` tartalmazó objektumot hoz létre `JobType` , amely a következő típusok egyike lehet:
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
@@ -128,7 +128,7 @@ A feladatok elvégzése után a kimeneti könyvtár következő fájljainak megt
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-Ezek a fájlok tartalmazzák a Batch sikeres és sikertelen műveleteinek listáját. A fájlformátum `.cvs`, amelyben minden sorban szerepel az eredeti bemeneti fájl sorszáma, valamint a művelet kimenete (általában a létrehozott vagy frissített regisztráció leírása).
+Ezek a fájlok tartalmazzák a Batch sikeres és sikertelen műveleteinek listáját. A fájlformátum `.cvs` , amelyben minden sorban szerepel az eredeti bemeneti fájl sorszáma, valamint a művelet kimenete (általában a létrehozott vagy frissített regisztráció leírása).
 
 ### <a name="full-sample-code"></a>Teljes mintakód
 Az alábbi mintakód egy értesítési központba importálja a regisztrációkat.

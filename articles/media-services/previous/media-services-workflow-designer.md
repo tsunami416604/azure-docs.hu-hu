@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
 ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72801955"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel  
@@ -37,7 +37,7 @@ A létrehozhatók például a következők:
 Ez az eszköz a [közzétett munkafolyamatok](media-services-workflow-designer.md#existing_workflows)bármelyikének módosítására is használható. 
 
 > [!NOTE]
-> A Munkafolyamat-tervező eszköz másolatának beszerzéséhez vegye fel mepd@microsoft.coma kapcsolatot a következővel:.
+> A Munkafolyamat-tervező eszköz másolatának beszerzéséhez vegye fel a kapcsolatot a következővel: mepd@microsoft.com .
 
 A munkafolyamat-fájl létrehozása után feltölthetők egy eszközként, majd a médiafájlok kódolására használhatók. A **Media Encoder Premium workflow** **.net**-tel való kódolásával kapcsolatos információkért lásd: [speciális kódolás a Media Encoder Premium workflow](media-services-encode-with-premium-workflow.md).
 
@@ -73,7 +73,7 @@ A 3. nap videó a következőket tartalmazza:
 
 * A munkafolyamatokban/tervrajzokon belüli parancsfájlok
 * Az aktuális kódolóval kapcsolatos korlátozások
-* Kérdések és válaszok
+* Q&A
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 

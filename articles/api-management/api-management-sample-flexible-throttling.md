@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71066753"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Speciális kérelmek szabályozása az Azure API Management
@@ -30,7 +30,7 @@ Az eddigi díjszabási képességeket a rendszer a Azure Portalban definiált ad
 ## <a name="custom-key-based-throttling"></a>Egyéni kulcs alapú szabályozás
 
 > [!NOTE]
-> A `rate-limit-by-key` és `quota-by-key` a házirendek nem érhetők el, ha az Azure API Management felhasználási szintjében van. 
+> A `rate-limit-by-key` és a `quota-by-key` házirendek nem érhetők el, ha az Azure API Management felhasználási szintjében van. 
 
 Az új [díjszabás – a korlátozási kulcsok](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) és a [kvóta-](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) ellenőrzési házirendek rugalmasabb megoldást biztosítanak a forgalom szabályozására. Ezek az új házirendek lehetővé teszik kifejezések meghatározását a forgalom nyomon követéséhez használt kulcsok azonosításához. Ennek a működésnek a példája a legkönnyebb illusztrálva. 
 
@@ -48,7 +48,7 @@ Az alábbi házirendek egyetlen ügyfél IP-címét korlátozzák percenként 10
           counter-key="@(context.Request.IpAddress)" />
 ```
 
-Ha az interneten lévő összes ügyfél egyedi IP-címet használt, akkor ez a felhasználó általi használat korlátozásának hatékony módja lehet. Azonban valószínű, hogy több felhasználó oszt meg egyetlen nyilvános IP-címet, mert az Internet NAT-eszközön keresztül fér hozzá az internethez. Ennek ellenére a nem hitelesített hozzáférést `IpAddress` engedélyező API-k esetében a legjobb megoldás lehet.
+Ha az interneten lévő összes ügyfél egyedi IP-címet használt, akkor ez a felhasználó általi használat korlátozásának hatékony módja lehet. Azonban valószínű, hogy több felhasználó oszt meg egyetlen nyilvános IP-címet, mert az Internet NAT-eszközön keresztül fér hozzá az internethez. Ennek ellenére a nem hitelesített hozzáférést engedélyező API-k esetében a `IpAddress` legjobb megoldás lehet.
 
 ## <a name="user-identity-throttling"></a>Felhasználói identitás szabályozása
 Ha egy végfelhasználó hitelesítése megtörtént, a rendszer egy szabályozási kulcsot generálhat olyan információk alapján, amelyek egyedileg azonosítják az adott felhasználót.
@@ -59,7 +59,7 @@ Ha egy végfelhasználó hitelesítése megtörtént, a rendszer egy szabályoz�
     counter-key="@(context.Request.Headers.GetValueOrDefault("Authorization","").AsJwt()?.Subject)" />
 ```
 
-Ez a példa azt mutatja be, hogyan lehet kibontani az `JWT` engedélyezési fejlécet, alakítsa át az objektumra, és a token tárgya alapján azonosítsa a felhasználót, és használja az értéket a kulcs korlátozására. Ha a felhasználói identitást a más jogcímek egyikében tárolják `JWT` , akkor ez az érték a helyén is felhasználható.
+Ez a példa azt mutatja be, hogyan lehet kibontani az engedélyezési fejlécet, alakítsa át az `JWT` objektumra, és a token tárgya alapján azonosítsa a felhasználót, és használja az értéket a kulcs korlátozására. Ha a felhasználói identitást a `JWT` más jogcímek egyikében tárolják, akkor ez az érték a helyén is felhasználható.
 
 ## <a name="combined-policies"></a>Kombinált házirendek
 Bár az új szabályozási szabályzatok nagyobb szabályozást biztosítanak, mint a meglévő szabályozási szabályzatok, a két funkció együttes használata továbbra is fennáll. A termék előfizetési kulcsának szabályozása (a hívások számának[korlátozása előfizetés alapján](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) , [használati kvóta beállítása előfizetéssel](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)) nagyszerű lehetőség arra, hogy a használati szintek alapján megszámolja az API-k bevételeit. A felhasználó általi szabályozáshoz szükséges finomabb szabályozás kiegészíthető, és meggátolja, hogy az egyik felhasználó viselkedése ne legyen egy másik felhasználói felületének romlása. 

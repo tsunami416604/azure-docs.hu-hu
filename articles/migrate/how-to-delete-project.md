@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
 ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73512729"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Migrate-projekt eltávolítása
@@ -26,7 +26,7 @@ Projekt törlése előtt:
 - Ha csatolt egy Log Analytics munkaterületet a kiszolgáló-értékelési eszközhöz a függőségek elemzéséhez, döntse el, hogy törölni kívánja-e a munkaterületet. 
     - A munkaterület nem törlődik automatikusan. Törölje manuálisan.
     - Győződjön meg arról, hogy a törlés előtt milyen munkaterület van használatban. Ugyanaz a Log Analytics munkaterület több forgatókönyv esetén is használható.
-    - A projekt törlése előtt megtalálhatja a munkaterületre mutató hivatkozást **Azure Migrate-** > Servers**Azure Migrate-Server Assessment**( **OMS munkaterület**) területen.
+    - A projekt törlése előtt megtalálhatja a munkaterületre mutató hivatkozást **Azure Migrate-** Servers  >  **Azure Migrate-Server Assessment**( **OMS munkaterület**) területen.
     - Ha törölni szeretne egy munkaterületet a projekt törlése után, keresse meg a munkaterületet a megfelelő erőforráscsoporthoz, és kövesse az [alábbi utasításokat](../azure-monitor/platform/delete-workspace.md).
 
 

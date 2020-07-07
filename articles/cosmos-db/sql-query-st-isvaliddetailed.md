@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9e640c223c2fef844b9b53e1f4afa3a5d398c8c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71349354"
 ---
 # <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB)
@@ -34,7 +34,7 @@ ST_ISVALIDDETAILED(<spatial_expr>)
   
 ## <a name="examples"></a>Példák
   
-  Az alábbi példa bemutatja, hogyan ellenőrizhető az érvényesség (részletekkel `ST_ISVALIDDETAILED`) a használatával.  
+  Az alábbi példa bemutatja, hogyan ellenőrizhető az érvényesség (részletekkel) a használatával `ST_ISVALIDDETAILED` .  
   
 ```sql
 SELECT ST_ISVALIDDETAILED({   

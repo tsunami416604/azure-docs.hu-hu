@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058200"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>A Linux rendszerű virtuális gép eszköz nevének módosításainak megoldása
@@ -67,7 +67,7 @@ Az alkalmazások a LUN-ot használják az összes csatlakoztatott lemez megtalá
         ├── lun1-part2 -> ../../../sdd2
         └── lun1-part3 -> ../../../sdd3
 
-A Linux vendég fiókból származó LUN-adatokat a vagy egy `lsscsi` hasonló eszköz használatával kéri le a rendszer:
+A Linux vendég fiókból származó LUN-adatokat a `lsscsi` vagy egy hasonló eszköz használatával kéri le a rendszer:
 
       $ sudo lsscsi
 
@@ -113,7 +113,7 @@ A vendég LUN adatait az Azure-előfizetési metaadatokkal együtt használva me
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>Fájlrendszerbeli UUID-azonosítók felderítése a blkid használatával
 
-Az alkalmazások és a parancsfájlok beolvassák az adatok kimenetét `blkid`, vagy hasonló információforrásokat a szimbolikus hivatkozások létrehozásához a/dev elérési útjában. A kimenet megjeleníti a virtuális géphez csatlakoztatott összes lemez UUID-azonosítóját, valamint a hozzájuk tartozó eszköz fájlját:
+Az alkalmazások és a parancsfájlok beolvassák az adatok kimenetét, `blkid` vagy hasonló információforrásokat a szimbolikus hivatkozások létrehozásához a/dev elérési útjában. A kimenet megjeleníti a virtuális géphez csatlakoztatott összes lemez UUID-azonosítóját, valamint a hozzájuk tartozó eszköz fájlját:
 
     $ sudo blkid -s UUID
 
@@ -134,7 +134,7 @@ Az Azure Linux-ügynök udev szabályai a/dev/disk/Azure elérési útja alatt a
 
 Az alkalmazások a hivatkozásokkal azonosítják a rendszerindító lemez eszközét és az erőforrás-(ideiglenes) lemezt. Az Azure-ban az alkalmazásoknak a/dev/disk/Azure/root-part1 vagy a/dev/disk/Azure-Resource-part1 elérési utakon kell megkeresniük a partíciók felderítéséhez.
 
-A `blkid` listából származó további partíciók egy adatlemezen találhatók. Az alkalmazások megőrzik az UUID-t ezekhez a partíciókhoz, és egy elérési utat használnak az eszköz nevének felderítéséhez futásidőben:
+A listából származó további partíciók `blkid` egy adatlemezen találhatók. Az alkalmazások megőrzik az UUID-t ezekhez a partíciókhoz, és egy elérési utat használnak az eszköz nevének felderítéséhez futásidőben:
 
     $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
@@ -148,9 +148,9 @@ Az Azure Storage legújabb szabályainak beszerzéséhez futtassa a következő 
     # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
     # sudo udevadm trigger --subsystem-match=block
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Ubuntu: az UUID használata](https://help.ubuntu.com/community/UsingUUID)
 - [Red Hat: állandó elnevezés](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)

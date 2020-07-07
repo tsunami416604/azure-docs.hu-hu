@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: a9b271b5f7d4e53dbf871d03dd43b62b9299aa53
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71309927"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL Database-projekt használata a Azure Data Lake U-SQL-adatbázis fejlesztéséhez
@@ -54,7 +54,7 @@ Egy szerelvény-objektum esetében az eszköz egy felhasználóbarát FELHASZNÁ
  
 ## <a name="build-a-u-sql-database-project"></a>U-SQL Database-projekt létrehozása
 
-A U-SQL adatbázis-projekthez tartozó Build kimenet egy U-SQL adatbázis-telepítési csomag, amelynek neve az `.usqldbpack`utótag. A `.usqldbpack` csomag egy. zip-fájl, amely tartalmazza az összes DDL-utasítást egyetlen U-SQL-parancsfájlban a **DDL** mappában, valamint az összes DLL-t és további fájlt a szerelvényekhez a **temp** mappában.
+A U-SQL adatbázis-projekthez tartozó Build kimenet egy U-SQL adatbázis-telepítési csomag, amelynek neve az utótag `.usqldbpack` . A `.usqldbpack` csomag egy. zip-fájl, amely tartalmazza az összes DDL-utasítást egyetlen U-SQL-parancsfájlban a **DDL** mappában, valamint az összes DLL-t és további fájlt a szerelvényekhez a **temp** mappában.
 
 Tudjon meg többet arról, [hogyan hozhat létre U-SQL adatbázis-projektet az MSBuild parancssorral és egy Azure DevOps Services Build feladattal](data-lake-analytics-cicd-overview.md).
 
@@ -91,7 +91,7 @@ U-SQL-adatbázist a Visual Studióban egy U-SQL adatbázis-projekten vagy egy. u
   
 ### <a name="deploy-u-sql-database-by-using-the-sdk"></a>U-SQL-adatbázis üzembe helyezése az SDK használatával
 
-`PackageDeploymentTool.exe`az U-SQL-adatbázisok üzembe helyezését megkönnyítő programozási és parancssori felületeket biztosít. Az SDK-t a [U-SQL SDK Nuget csomag](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)tartalmazza, amely a `build/runtime/PackageDeploymentTool.exe`következő helyen található:.
+`PackageDeploymentTool.exe`az U-SQL-adatbázisok üzembe helyezését megkönnyítő programozási és parancssori felületeket biztosít. Az SDK-t a [U-SQL SDK Nuget csomag](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)tartalmazza, amely a következő helyen található: `build/runtime/PackageDeploymentTool.exe` .
 
 [További információ az SDK-ról, valamint a CI/CD-folyamat beállítása az U-SQL Database-telepítéshez](data-lake-analytics-cicd-overview.md).
 

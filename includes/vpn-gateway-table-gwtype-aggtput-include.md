@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,15 +9,15 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74828945"
 ---
-|**VPN<br>-<br>átjáró létrehozása** |**SKU**   | **S2S/Virtuális hálózatok közötti kapcsolat<br>alagutak** | **P2S<br> SSTP-kapcsolatok** | **P2S<br> IKEv2/OpenVPN-kapcsolatok** | **Összesített<br>átviteli sebesség tesztje** | **BGP** | **Zóna – redundáns** |
+|**VPN- <br> átjáró <br> létrehozása** |**Termékváltozat**   | **S2S/Virtuális hálózatok közötti kapcsolat<br>alagutak** | **P2S<br> SSTP-kapcsolatok** | **P2S <br> IKEv2/OpenVPN-kapcsolatok** | **Összesített<br>átviteli sebesség tesztje** | **BGP** | **Zóna – redundáns** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
-|**Generation1**|**Basic**   | Legfeljebb 10    | Legfeljebb 128  | Nem támogatott  | 100 Mbps  | Nem támogatott| Nem |
+|**Generation1**|**Alapszintű**   | Legfeljebb 10    | Legfeljebb 128  | Nem támogatott  | 100 Mbps  | Nem támogatott| Nem |
 |**Generation1**|**VpnGw1**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 250       | 650 Mbps  | Támogatott | Nem |
 |**Generation1**|**VpnGw2**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 500       | 1 Gbps    | Támogatott | Nem |
 |**Generation1**|**VpnGw3**  | Legfeljebb 30*   | Legfeljebb 128  | Legfeljebb 1000      | 1,25 Gbps | Támogatott | Nem |
@@ -48,11 +48,11 @@ ms.locfileid: "74828945"
 
 Annak érdekében, hogy ügyfeleink megértsék az SKU-ket a különböző algoritmusok használatával, a nyilvánosan elérhető iPerf-és CTSTraffic-eszközöket használták a teljesítmény mérésére. Az alábbi táblázat az 1. generációs VpnGw tartozó teljesítménytesztek eredményeit sorolja fel. Amint láthatja, a legjobb teljesítmény akkor jelenik meg, ha a GCMAES256 algoritmust is használták az IPsec-titkosításhoz és az integritáshoz. Az AES256 használata az IPsec-titkosításhoz és a SHA256 az integritás érdekében az átlagos teljesítmény volt. Ha a DES3 az IPsec-titkosításhoz és az SHA256-hez használta a legalacsonyabb teljesítményű integritás érdekében.
 
-|**Generációs**|**SKU**   | **Használt<br>algoritmusok** | **Megfigyelt átviteli sebesség<br>** | **Másodpercenként<br>megfigyelt csomagok** |
+|**Generációs**|**Termékváltozat**   | **Használt algoritmusok <br>** | **Megfigyelt átviteli sebesség <br>** | **Másodpercenként <br> megfigyelt csomagok** |
 |---           |---       | ---                 | ---            | ---                    |
-|**Generation1**|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58 000<br>50 000<br>50 000|
+|**Generation1**|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58 000<br>50,000<br>50,000|
 |**Generation1**|**VpnGw2**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gbps<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55 000|
 |**Generation1**|**VpnGw3**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gbps<br>550 Mbps<br>120 Mbps | 105 000<br>90,000<br>60.000|
-|**Generation1**|**VpnGw1AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58 000<br>50 000<br>50 000|
+|**Generation1**|**VpnGw1AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58 000<br>50,000<br>50,000|
 |**Generation1**|**VpnGw2AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gbps<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55 000|
 |**Generation1**|**VpnGw3AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gbps<br>550 Mbps<br>120 Mbps | 105 000<br>90,000<br>60.000|

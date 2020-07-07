@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73159695"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati szabályzatainak áttekintése
@@ -89,7 +89,7 @@ Az alábbi JSON-példa egy új virtuális hálózatot és alhálózatot hoz lét
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Saját Kubernetes-fürt létrehozása az Azure-ban
 A megvalósítás használatával hálózati házirendeket biztosíthat a hüvelyek számára a saját maga által üzembe helyezett Kubernetes-fürtökön anélkül, hogy olyan eszközöket kellene használnia, mint például az ACS-motor. Ebben az esetben először telepítenie kell a CNI beépülő modult, és engedélyeznie kell azt a fürt összes virtuális gépén. Részletes információ: [A beépülő modul üzembe helyezése saját kezűleg üzembe helyezett Kubernetes-fürthöz](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
-Miután telepítette a fürtöt, futtassa a `kubectl` következő parancsot az Azure hálózati házirend *daemonset elemet* a fürtre való letöltéséhez és alkalmazásához.
+Miután telepítette a fürtöt, futtassa a következő `kubectl` parancsot az Azure hálózati házirend *daemonset elemet* a fürtre való letöltéséhez és alkalmazásához.
 
   ```
   kubectl apply -f https://raw.githubusercontent.com/Azure/acs-engine/master/parts/k8s/addons/kubernetesmasteraddons-azure-npm-daemonset.yaml

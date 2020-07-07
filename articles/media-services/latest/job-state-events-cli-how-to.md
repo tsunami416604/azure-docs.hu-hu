@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 619d40ab56715b4444d8e5649c7fb3401b3f57ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71937286"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Media Services események létrehozása és figyelése Event Grid az Azure CLI használatával
@@ -26,7 +26,7 @@ Ebben a cikkben az Azure CLI használatával fizethet elő Azure Media Services-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+- Aktív Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - A parancssori felület helyi telepítése és használata: ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
     Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) -parancs működik a Azure Cloud Shellban. Javasoljuk, hogy helyileg használja a CLI-t.
@@ -61,7 +61,7 @@ az account set --subscription mySubscriptionId
 
 A cikkre való előfizetéssel megtudhatja, hogy Event Grid mely eseményeket kívánja nyomon követni. A következő példa előfizet a létrehozott Media Services fiókra, és átadja az URL-címet az esemény-értesítés végpontja létrehozott webhelyről. 
 
-A `<event_subscription_name>` helyére írja be az esemény-előfizetés egyedi nevét. `<resource_group_name>` És `<ams_account_name>`esetében használja a Media Services fiók létrehozásakor használt értékeket. A `<endpoint_URL>`alkalmazásban adja meg a webalkalmazás URL-címét, `api/updates` és adja hozzá a Kezdőlap URL-címét. Ha a végpontot a feliratkozáskor megadta, Event Grid kezeli az események útválasztását az adott végpontra. 
+A helyére írja `<event_subscription_name>` be az esemény-előfizetés egyedi nevét. `<resource_group_name>`És esetében `<ams_account_name>` használja a Media Services fiók létrehozásakor használt értékeket. A `<endpoint_URL>` alkalmazásban adja meg a webalkalmazás URL-címét, és adja hozzá `api/updates` a Kezdőlap URL-címét. Ha a végpontot a feliratkozáskor megadta, Event Grid kezeli az események útválasztását az adott végpontra. 
 
 1. Erőforrás-azonosító lekérése
 
@@ -99,7 +99,7 @@ Most aktiváljuk az eseményeket, hogy meglássuk, hogyan osztja el a Event Grid
 
 A Media Services-fiókhoz tartozó eseményeket a kódolási feladatok futtatásával aktiválhatja. [Ezt](stream-files-dotnet-quickstart.md) a rövid útmutatót követve kódolhat egy fájlt, és megkezdheti az események küldését. 
 
-Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfizetés érvényesítési eseményét. Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A végpontnak a következőre kell beállítania `validationResponse` : `validationCode`. További információ: [Event Grid biztonság és hitelesítés](../../event-grid/security-authentication.md). Megtekintheti a webalkalmazás kódját, hogy megtudja, hogyan érvényesíti az előfizetést.
+Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfizetés érvényesítési eseményét. Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A végpontnak a következőre kell beállítania: `validationResponse` `validationCode` . További információ: [Event Grid biztonság és hitelesítés](../../event-grid/security-authentication.md). Megtekintheti a webalkalmazás kódját, hogy megtudja, hogyan érvényesíti az előfizetést.
 
 > [!TIP]
 > Az eseményadatok kibontásához kattintson a szem ikonra. Ne frissítse az oldalt, ha meg szeretné tekinteni az összes eseményt.

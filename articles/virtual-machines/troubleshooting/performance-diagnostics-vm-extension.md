@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057543"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure teljesítménydiagnosztikai virtuálisgép-bővítmény Windowsra
@@ -66,11 +66,11 @@ A következő JSON az Azure Performance Diagnostics virtuálisgép-bővítmény�
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-|   **Név**   |**Érték/példa**|       **Leírás**      |
+|   **Name (Név)**   |**Érték/példa**|       **Leírás**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|Az API verziója.
 |közzétevő|Microsoft. Azure. Performance. Diagnostics|A bővítmény közzétevői névterét.
-|type|AzurePerformanceDiagnostics|A virtuálisgép-bővítmény típusa.
+|típus|AzurePerformanceDiagnostics|A virtuálisgép-bővítmény típusa.
 |typeHandlerVersion|1.0|A bővítmény kezelőjének verziója.
 |performanceScenario|alapvető|Az a teljesítménnyel kapcsolatos forgatókönyv, amelynek az adatai rögzítésére kerül. Az érvényes értékek a következők: **alapszintű**, **vmslow**, **azurefiles**és **Custom**.
 |traceDurationInSeconds|300|A Nyomkövetések időtartama, ha a nyomkövetési beállítások bármelyike ki van választva.
@@ -233,18 +233,18 @@ A PerfInsights eszköz különböző naplókat, konfigurációkat és diagnoszti
 
 ## <a name="view-and-share-the-results"></a>Az eredmények megtekintése és megosztása
 
-A bővítmény kimenete olyan zip-fájlban található, amely fel van töltve a telepítés során megadott Storage-fiókba, és a megosztott [hozzáférési aláírások (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)használatával 30 napig meg van osztva. Ez a zip-fájl tartalmazza a diagnosztikai naplókat, valamint az eredményeket és javaslatokat tartalmazó jelentést. A kimeneti zip-fájlra mutató sas-hivatkozás a *zipfilename*_saslink. txt nevű szövegfájlban található, a mappa **\\\<C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics verziója>**. Bárki, aki rendelkezik ezzel a hivatkozással, letöltheti a zip-fájlt.
+A bővítmény kimenete olyan zip-fájlban található, amely fel van töltve a telepítés során megadott Storage-fiókba, és a megosztott [hozzáférési aláírások (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)használatával 30 napig meg van osztva. Ez a zip-fájl tartalmazza a diagnosztikai naplókat, valamint az eredményeket és javaslatokat tartalmazó jelentést. A kimeneti zip-fájlra mutató SAS-hivatkozás egy *zipfilename*_saslink.txt nevű szövegfájlban található a **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **mappa alatt. Bárki, aki rendelkezik ezzel a hivatkozással, letöltheti a zip-fájlt.
 
 Ha segítségre van szükség a támogatási szakembernek a támogatási jegyén való munkához, a Microsoft ezt az SAS-hivatkozást használja a diagnosztikai adatai letöltéséhez.
 
-A jelentés megtekintéséhez bontsa ki a zip-fájlt, és nyissa meg a **PerfInsights report. html** fájlt.
+A jelentés megtekintéséhez bontsa ki a zip-fájlt, és nyissa meg a **PerfInsights Report.html** fájlt.
 
 A zip-fájlt közvetlenül a portálról is letöltheti a bővítmény kiválasztásával.
 
 ![A teljesítmény-diagnosztika részletes állapotának képernyőképe](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> Előfordulhat, hogy a portálon megjelenő SAS-hivatkozás néha nem működik. Ezt egy helytelen formátumú URL-cím okozhatja a kódolási és a dekódolási műveletek során. Ehelyett közvetlenül a * _saslink. txt fájlból kérheti le a hivatkozást a virtuális gépről.
+> Előfordulhat, hogy a portálon megjelenő SAS-hivatkozás néha nem működik. Ezt egy helytelen formátumú URL-cím okozhatja a kódolási és a dekódolási műveletek során. Ehelyett közvetlenül a * _saslink.txt fájlból kérheti le a hivatkozást a virtuális gépről.
 
 ## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
