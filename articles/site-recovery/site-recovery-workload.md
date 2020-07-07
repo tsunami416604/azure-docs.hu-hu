@@ -4,10 +4,10 @@ description: Azokat a számítási feladatokat ismerteti, amelyeket meg lehet v�
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062844"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Információk a helyszíni alkalmazások vészhelyreállításáról
@@ -50,7 +50,7 @@ A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes repl
 | Linux (operációs rendszer és alkalmazások) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által)|
 | Dynamics AX |Igen |Igen |Igen |Igen |Igen|
 | Windows fájlkiszolgáló |Igen |Igen |Igen |Igen |Igen|
-| Citrix XenApp és XenDesktop |Igen|N/A |Igen |N/A |Igen |
+| Citrix XenApp és XenDesktop |Igen|N.A. |Igen |N.A. |Igen |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory és DNS replikálása
 

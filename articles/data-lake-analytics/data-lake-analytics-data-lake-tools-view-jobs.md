@@ -8,10 +8,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71309940"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>A feladatböngésző és a Feladat nézet használata az Azure Data Lake Analyticsben
@@ -160,7 +160,7 @@ A feladatok részletei a feladatok részletes adatait jelenítik meg, beleértve
     A feladatok U-SQL-szkriptjét a rendszer a lekérdezési tárolóban tárolja. Megtekintheti az eredeti U-SQL-parancsfájlt, és szükség esetén újra elküldheti.
 * További források
   
-    A lekérdezési tárolóban tárolt feladatok fordítási kimeneteit erőforrásokon keresztül érheti el. Például megkeresheti az "algebra. xml" fájlt, amely a feladatok Gráfjának, a regisztrált szerelvényeknek stb. megjelenítésére szolgál.
+    A lekérdezési tárolóban tárolt feladatok fordítási kimeneteit erőforrásokon keresztül érheti el. Megtalálhatja például a "algebra.xml" kifejezést, amely a feladatok Gráfjának, a regisztrált szerelvényeknek stb. megjelenítésére szolgál.
 * Csúcspont-végrehajtási nézet
   
     A csúcspontok végrehajtásának részleteit jeleníti meg. A feladatok profilja archivál minden csúcspont-végrehajtási naplót, például a teljes adatolvasási/írási, futtatókörnyezeti, állami stb. Ebben a nézetben további részleteket tudhat meg arról, hogyan futottak a feladatok. További információ: [Data Lake Tools for Visual Studio csúcs-végrehajtási nézetének használata](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733771"
 ---
 # <a name="understand-azure-deny-assignments"></a>Az Azure deny-hozzárendelések ismertetése
@@ -57,22 +57,22 @@ A megtagadási hozzárendelések a szerepkör-hozzárendelések hasonló mintáj
 > | Tulajdonság | Kötelező | Típus | Leírás |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | Igen | Sztring | A megtagadási hozzárendelés megjelenített neve. A névnek egyedinek kell lennie egy adott hatókörhöz. |
-> | `Description` | No | Sztring | A megtagadási hozzárendelés leírása. |
+> | `Description` | Nem | Sztring | A megtagadási hozzárendelés leírása. |
 > | `Permissions.Actions` | Legalább egy művelet vagy egy DataActions | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza azokat a felügyeleti műveleteket, amelyekhez a megtagadási hozzárendelés blokkolja a hozzáférést. |
-> | `Permissions.NotActions` | No | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza a megtagadási hozzárendelésből kizárandó felügyeleti műveleteket. |
+> | `Permissions.NotActions` | Nem | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza a megtagadási hozzárendelésből kizárandó felügyeleti műveleteket. |
 > | `Permissions.DataActions` | Legalább egy művelet vagy egy DataActions | Karakterlánc [] | Karakterláncok tömbje, amelyek meghatározzák azokat az adatműveleteket, amelyekhez a megtagadási hozzárendelés blokkolja a hozzáférést. |
-> | `Permissions.NotDataActions` | No | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza a megtagadási hozzárendelésből kizárandó adatműveleteket. |
-> | `Scope` | No | Sztring | Egy karakterlánc, amely megadja azt a hatókört, amelyre a megtagadási hozzárendelés vonatkozik. |
-> | `DoNotApplyToChildScopes` | No | Logikai | Meghatározza, hogy a megtagadási hozzárendelés alárendelt hatókörökre vonatkozzon-e. Az alapértelmezett érték false (hamis). |
-> | `Principals[i].Id` | Igen | Karakterlánc [] | Az Azure AD rendszerbiztonsági tag-azonosítók (felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás) tömbje, amelyre a megtagadási hozzárendelés vonatkozik. Az összes résztvevőt jelölő `00000000-0000-0000-0000-000000000000` üres GUID értékre állítva. |
-> | `Principals[i].Type` | No | Karakterlánc [] | Objektumtípusok tömbje, amelyet a rendszerbiztonsági tag [i]. id. az összes `SystemDefined` rendszerbiztonsági tag jelölésére van beállítva. |
-> | `ExcludePrincipals[i].Id` | No | Karakterlánc [] | Az Azure AD Principal-objektumazonosítók (felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás) tömbje, amelyre a megtagadási hozzárendelés nem vonatkozik. |
-> | `ExcludePrincipals[i].Type` | No | Karakterlánc [] | Az ExcludePrincipals [i]. id által jelölt objektumtípusok tömbje. |
-> | `IsSystemProtected` | No | Logikai | Megadja, hogy a megtagadási hozzárendelést az Azure hozta-e létre, és nem szerkeszthető és nem törölhető. Jelenleg minden megtagadási hozzárendelés a rendszer által védett. |
+> | `Permissions.NotDataActions` | Nem | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza a megtagadási hozzárendelésből kizárandó adatműveleteket. |
+> | `Scope` | Nem | Sztring | Egy karakterlánc, amely megadja azt a hatókört, amelyre a megtagadási hozzárendelés vonatkozik. |
+> | `DoNotApplyToChildScopes` | Nem | Logikai | Meghatározza, hogy a megtagadási hozzárendelés alárendelt hatókörökre vonatkozzon-e. Az alapértelmezett érték false (hamis). |
+> | `Principals[i].Id` | Igen | Karakterlánc [] | Az Azure AD rendszerbiztonsági tag-azonosítók (felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás) tömbje, amelyre a megtagadási hozzárendelés vonatkozik. Az összes résztvevőt jelölő üres GUID értékre állítva `00000000-0000-0000-0000-000000000000` . |
+> | `Principals[i].Type` | Nem | Karakterlánc [] | Objektumtípusok tömbje, amelyet a rendszerbiztonsági tag [i]. id. az `SystemDefined` összes rendszerbiztonsági tag jelölésére van beállítva. |
+> | `ExcludePrincipals[i].Id` | Nem | Karakterlánc [] | Az Azure AD Principal-objektumazonosítók (felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás) tömbje, amelyre a megtagadási hozzárendelés nem vonatkozik. |
+> | `ExcludePrincipals[i].Type` | Nem | Karakterlánc [] | Az ExcludePrincipals [i]. id által jelölt objektumtípusok tömbje. |
+> | `IsSystemProtected` | Nem | Logikai | Megadja, hogy a megtagadási hozzárendelést az Azure hozta-e létre, és nem szerkeszthető és nem törölhető. Jelenleg minden megtagadási hozzárendelés a rendszer által védett. |
 
 ## <a name="the-all-principals-principal"></a>Az összes rendszerbiztonsági tag
 
-A megtagadási hozzárendelések támogatásához a rendszer által definiált rendszerbiztonsági *tag lett* bevezetve. Ez a rendszerbiztonsági tag az összes felhasználót, csoportot, egyszerű szolgáltatást és felügyelt identitást jelképezi egy Azure AD-címtárban. Ha a résztvevő azonosítója nulla GUID `00000000-0000-0000-0000-000000000000` `SystemDefined`, és a rendszerbiztonsági tag, a rendszerbiztonsági tag az összes résztvevőt képviseli. Azure PowerShell kimenetben az összes rendszerbiztonsági tag a következőhöz hasonlóan néz ki:
+A megtagadási hozzárendelések támogatásához a rendszer által definiált rendszerbiztonsági *tag lett* bevezetve. Ez a rendszerbiztonsági tag az összes felhasználót, csoportot, egyszerű szolgáltatást és felügyelt identitást jelképezi egy Azure AD-címtárban. Ha a résztvevő azonosítója nulla GUID `00000000-0000-0000-0000-000000000000` , és a rendszerbiztonsági tag, a rendszerbiztonsági tag `SystemDefined` az összes résztvevőt képviseli. Azure PowerShell kimenetben az összes rendszerbiztonsági tag a következőhöz hasonlóan néz ki:
 
 ```azurepowershell
 Principals              : {
@@ -82,10 +82,10 @@ Principals              : {
                           }
 ```
 
-Az összes rendszerbiztonsági tag egyesíthető `ExcludePrincipals` az összes rendszerbiztonsági tag letiltásával, kivéve egyes felhasználók esetén. Minden rendszerbiztonsági tag a következő korlátozásokkal rendelkezik:
+Az összes rendszerbiztonsági tag egyesíthető az `ExcludePrincipals` összes rendszerbiztonsági tag letiltásával, kivéve egyes felhasználók esetén. Minden rendszerbiztonsági tag a következő korlátozásokkal rendelkezik:
 
-- Csak a alkalmazásban `Principals` használható, és nem használható a `ExcludePrincipals`alkalmazásban.
-- `Principals[i].Type`értékre kell állítani `SystemDefined`.
+- Csak a alkalmazásban használható, `Principals` és nem használható a alkalmazásban `ExcludePrincipals` .
+- `Principals[i].Type`értékre kell állítani `SystemDefined` .
 
 ## <a name="next-steps"></a>További lépések
 

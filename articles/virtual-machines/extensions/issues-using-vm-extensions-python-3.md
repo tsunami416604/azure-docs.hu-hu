@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
 ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82120781"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>A Python 3-kompatibilis Linux Azure Virtual Machines rendszerek virtuálisgép-bővítményeit használó problémák
@@ -28,18 +28,18 @@ ms.locfileid: "82120781"
 >
 > A **Python 2. x** éles környezetben való telepítése előtt vegye figyelembe a Python 2. x hosszú távú támogatásának kérdését, különösen a biztonsági frissítések fogadásának lehetőségét. Termékként, beleértve az említett bővítmények némelyikét, a **python 3,8** -támogatással való frissítéssel a Python 2. x verziójának használatát kell megszüntetnie.
 
-Egyes Linux-disztribúciók áttértek a Python 3,8-re, és `/usr/bin/python` eltávolította a teljes Python örökölt BelépésiPont. Ez az áttérés a következő feltételekkel befolyásolja az egyes virtuálisgép-bővítmények beépített, automatizált üzembe helyezését:
+Egyes Linux-disztribúciók áttértek a Python 3,8-re, és eltávolította a `/usr/bin/python` teljes Python örökölt BelépésiPont. Ez az áttérés a következő feltételekkel befolyásolja az egyes virtuálisgép-bővítmények beépített, automatizált üzembe helyezését:
 
 - A Python 3. x-támogatással továbbra is elérhető bővítmények
-- A régi `/usr/bin/python` BelépésiPont használó bővítmények
+- A régi BelépésiPont használó bővítmények `/usr/bin/python`
 
-A **Python 3. x verzióra** áttérő Linux-disztribúciós felhasználóknak biztosítaniuk `/usr/bin/python` kell a régi BelépésiPont, mielőtt a bővítményeket a virtuális gépekre telepítené. Ellenkező esetben előfordulhat, hogy a bővítmény telepítése sikertelen lesz. 
+A **Python 3. x verzióra** áttérő Linux-disztribúciós felhasználóknak biztosítaniuk kell a régi `/usr/bin/python` BelépésiPont, mielőtt a bővítményeket a virtuális gépekre telepítené. Ellenkező esetben előfordulhat, hogy a bővítmény telepítése sikertelen lesz. 
 
 - A támogatott Linux-disztribúciók közé tartozik az **Ubuntu Server 20,04 LTS** és az **Ubuntu Pro 20,04 LTS**.
 
 - Az érintett virtuálisgép-bővítmények közé tartozik a **Azure Disk Encryption**, a **log Analytics**, a virtuális gépekhez **való hozzáférés** (a jelszó-visszaállításhoz használt) és a **vendég diagnosztika** (a további teljesítményszámlálók esetében használatos).
 
-A helyben történő verziófrissítések, például az **ubuntu 18,04 LTS** -ről **Ubuntu 20,04 LTS**-re való frissítés `/usr/bin/python` , meg kell őrizni a symlinket, és nem kell tovább működniük.
+A helyben történő verziófrissítések, például az **ubuntu 18,04 LTS** -ről **Ubuntu 20,04 LTS**-re való frissítés, meg kell őrizni a `/usr/bin/python` symlinket, és nem kell tovább működniük.
 
 ## <a name="resolution"></a>Megoldás:
 

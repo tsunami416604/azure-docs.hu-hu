@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101552"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal 
@@ -55,7 +55,7 @@ További információk:
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>A Windows 10 telepítése több-bérlős üzemeltetési jogosultságokkal
-Győződjön meg arról, hogy [telepítette és konfigurálta a legújabb Azure PowerShell](/powershell/azure/overview). Miután előkészítette a VHD-t, töltse fel a virtuális merevlemezt az Azure `Add-AzVhd` Storage-fiókjába az alábbi parancsmaggal:
+Győződjön meg arról, hogy [telepítette és konfigurálta a legújabb Azure PowerShell](/powershell/azure/overview). Miután előkészítette a VHD-t, töltse fel a virtuális merevlemezt az Azure Storage-fiókjába az `Add-AzVhd` alábbi parancsmaggal:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Üzembe helyezés Azure Resource Manager sablon használatával** A Resource Manager-sablonokon belül egy további paraméter `licenseType` is megadható. További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md). Miután feltöltötte a VHD-t az Azure-ba, szerkessze a Resource Manager-sablont, hogy tartalmazza a licenc típusát a számítási szolgáltató részeként, és telepítse a sablont a szokásos módon:
+**Üzembe helyezés Azure Resource Manager sablon használatával** A Resource Manager-sablonokon belül egy további paraméter is megadható `licenseType` . További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md). Miután feltöltötte a VHD-t az Azure-ba, szerkessze a Resource Manager-sablont, hogy tartalmazza a licenc típusát a számítási szolgáltató részeként, és telepítse a sablont a szokásos módon:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -72,13 +72,13 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
     }
 ```
 
-**Üzembe helyezés a PowerShell** használatával A Windows Server rendszerű virtuális gép PowerShell használatával történő telepítésekor további paramétert is megadhat `-LicenseType`. Miután feltöltötte a VHD-t az Azure-ba, létrehoz `New-AzVM` egy virtuális gépet a használatával, és megadja a licencelés típusát a következő módon:
+**Üzembe helyezés a PowerShell** használatával A Windows Server rendszerű virtuális gép PowerShell használatával történő telepítésekor további paramétert is megadhat `-LicenseType` . Miután feltöltötte a VHD-t az Azure-ba, létrehoz egy virtuális gépet a használatával, `New-AzVM` és megadja a licencelés típusát a következő módon:
 ```powershell
 New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
 ## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Annak ellenőrzése, hogy a virtuális gép használja-e a licencelési kedvezményt
-Miután telepítette a virtuális gépet a PowerShell vagy a Resource Manager üzembe helyezési módszerével, ellenőrizze a licenc típusát `Get-AzVM` a következő módon:
+Miután telepítette a virtuális gépet a PowerShell vagy a Resource Manager üzembe helyezési módszerével, ellenőrizze a licenc típusát a `Get-AzVM` következő módon:
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```

@@ -10,10 +10,10 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 92957bd078c04a9bb7ac35f9d30f042a44e10764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100634"
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása
@@ -33,7 +33,7 @@ Pillanatkép létrehozásához hajtsa végre a következő lépéseket:
 6. Válassza ki egy Azure-adatközpont **helyét**.  
 7. A **forrásoldali lemez**lapon válassza ki a felügyelt lemezt a pillanatképhez.
 8. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . Válassza a **Standard_HDD**lehetőséget, ha a pillanatképet nagy teljesítményű lemezen kell tárolni.
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="use-powershell"></a>A PowerShell használata
 

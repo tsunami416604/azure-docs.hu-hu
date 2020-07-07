@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: glenga
 ms.openlocfilehash: a02eadcacddc91ae9d17c50efd5e573718c41a21
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67179791"
 ---
-* [Triggerek és kötések Azure Functions fogalmak](../articles/azure-functions/functions-triggers-bindings.md)  
+* [Azure Functions-eseményindítók és -kötések – fogalmak](../articles/azure-functions/functions-triggers-bindings.md)  
   Ismerje meg, hogyan integrálható a függvények más szolgáltatásokkal.  
 * [Az Azure Functions fejlesztői segédanyagai](../articles/azure-functions/functions-reference.md)  
   A függvények futtatókörnyezetével és a kódolási függvények referenciával, valamint az eseményindítók és kötések definiálásával kapcsolatos további technikai információkat nyújt.

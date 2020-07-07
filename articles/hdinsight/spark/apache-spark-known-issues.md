@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73494536"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Ismert problémák a Apache Spark-fürtön a HDInsight-on
@@ -32,7 +32,7 @@ A probléma megkerüléséhez kövesse az alábbi eljárást:
 
         yarn application –list
 
-    Az alapértelmezett feladatok neve Livy, ha a feladatok olyan interaktív Livy-munkamenettel kezdődtek, amelyben nincsenek megadva explicit nevek. A [Jupyter notebook](https://jupyter.org/)által elindított Livy-munkamenethez a feladatok neve a `remotesparkmagics_*`következővel kezdődik:.
+    Az alapértelmezett feladatok neve Livy, ha a feladatok olyan interaktív Livy-munkamenettel kezdődtek, amelyben nincsenek megadva explicit nevek. A [Jupyter notebook](https://jupyter.org/)által elindított Livy-munkamenethez a feladatok neve a következővel kezdődik: `remotesparkmagics_*` .
 
 3. Futtassa a következő parancsot a feladatok leöléséhez.
 
@@ -81,17 +81,17 @@ Ne használjon nem ASCII-karaktereket a Jupyter notebook fájlnevében. Ha a Jup
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Hiba történt a nagyobb méretű jegyzetfüzetek betöltésekor
 
-Előfordulhat, hogy a nagyobb **`Error loading notebook`** méretű jegyzetfüzetek betöltésekor hibaüzenet jelenik meg.  
+Előfordulhat, **`Error loading notebook`** hogy a nagyobb méretű jegyzetfüzetek betöltésekor hibaüzenet jelenik meg.  
 
 **Kockázatcsökkentő**
 
-Ha ezt a hibaüzenetet kapja, nem jelenti azt, hogy az adatai sérültek vagy elvesznek.  A jegyzetfüzetek még mindig a lemezen vannak `/var/lib/jupyter`a-ben, és az SSH-t a fürtbe is elérheti. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Ha ezt a hibaüzenetet kapja, nem jelenti azt, hogy az adatai sérültek vagy elvesznek.  A jegyzetfüzetek még mindig a lemezen vannak a-ben `/var/lib/jupyter` , és az SSH-t a fürtbe is elérheti. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Miután az SSH-val csatlakozott a fürthöz, a notebookot a fürtből a helyi gépre (SCP vagy megnyerő használatával) biztonsági másolatként másolhatja, hogy megakadályozza a jegyzetfüzetben található fontos adatok elvesztését. Ezután az 8001-as porton keresztül az SSH-alagúttal elérheti a átjárócsomóponthoz a Jupyter eléréséhez anélkül, hogy az átjárón kellene haladnia.  Innen törölheti a jegyzetfüzet kimenetét, és visszaállíthatja a notebook méretének minimalizálásához.
 
 Ha meg szeretné akadályozni, hogy ez a hiba a jövőben is megtörténjen, kövesse az ajánlott eljárásokat:
 
-* Fontos, hogy a jegyzetfüzet mérete kicsi legyen. A Spark-feladatok olyan kimenetét, amelyet visszaküld a Jupyter-be, megőrzi a jegyzetfüzetben.  Az ajánlott eljárás a Jupyter általánosságban, hogy ne fusson `.collect()` a nagyméretű RDD vagy dataframes; Ehelyett, ha egy RDD tartalmát szeretné megtekinteni, érdemes lehet futtatni `.take()` , vagy `.sample()` hogy a kimenete ne legyen túl nagy.
+* Fontos, hogy a jegyzetfüzet mérete kicsi legyen. A Spark-feladatok olyan kimenetét, amelyet visszaküld a Jupyter-be, megőrzi a jegyzetfüzetben.  Az ajánlott eljárás az általános Jupyter, hogy ne fusson `.collect()` a nagyméretű RDD vagy dataframes; Ehelyett ha egy RDD tartalmát szeretné megtekinteni, érdemes lehet a futtatást vagy a `.take()` `.sample()` kimenetet, hogy a kimenet ne legyen túl nagy.
 * Emellett a jegyzetfüzetek mentésekor törölje az összes kimeneti cella méretét a méret csökkentése érdekében.
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>A jegyzetfüzet kezdeti indítása a vártnál hosszabb időt vesz igénybe
@@ -115,7 +115,7 @@ Ha a Spark-fürt erőforrás-kifogyott, a Jupyter-jegyzetfüzetben található S
 
 2. Indítsa újra az elindítani próbált jegyzetfüzetet. Elegendő erőforrást kell elérhetőnek lennie ahhoz, hogy most létrehozza a munkamenetet.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 

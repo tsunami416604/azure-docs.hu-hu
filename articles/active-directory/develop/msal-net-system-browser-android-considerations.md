@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8e37d443d75dccae8704bc1ff7856e1d24131766
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652702"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>A Xamarin Android rendszerbeli böngészővel kapcsolatos szempontok a MSAL.NET használatához
@@ -64,10 +64,10 @@ A következő táblázat felsorolja a hitelesítési kompatibilitáshoz tesztelt
 
 ## <a name="known-issues"></a>Ismert problémák
 
-Ha a felhasználónak nincs böngészője engedélyezve az eszközön, a MSAL.NET `AndroidActivityNotFound` kivételt fog kiváltani.  
+Ha a felhasználónak nincs böngészője engedélyezve az eszközön, a MSAL.NET kivételt fog kiváltani `AndroidActivityNotFound` .  
   - **Enyhítés**: kérje meg a felhasználót, hogy engedélyezzen egy böngészőt az eszközön. Olyan böngészőt javasoljon, amely támogatja az egyéni lapokat.
 
-Ha a hitelesítés meghiúsul (például ha a hitelesítés a DuckDuckGo-val kezdődik), a `AuthenticationCanceled MsalClientException`MSAL.net visszaadja. 
+Ha a hitelesítés meghiúsul (például ha a hitelesítés a DuckDuckGo-val kezdődik), a MSAL.NET visszaadja `AuthenticationCanceled MsalClientException` . 
   - **Gyökérszintű probléma**: az eszközön nincs engedélyezve az egyéni lapokat támogató böngésző. A hitelesítés olyan böngészővel lett elindítva, amely nem tudta befejezni a hitelesítést. 
   - **Enyhítés**: kérje meg a felhasználót, hogy engedélyezzen egy böngészőt az eszközön. Olyan böngészőt javasoljon, amely támogatja az egyéni lapokat.
 

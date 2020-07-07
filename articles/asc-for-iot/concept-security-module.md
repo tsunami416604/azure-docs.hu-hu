@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: d598d291612c6e4f58caf77e1b213b2bc3f42820
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311447"
 ---
 # <a name="security-module"></a>Biztonsági modul
@@ -42,7 +42,7 @@ Az eszköz biztonsági tulajdonságait egy külön biztonsági modulban, a bizto
 
 Lásd: a [biztonsági modul létrehozása](quickstart-create-security-twin.md) és a [biztonsági ügynökök konfigurálása](how-to-agent-configuration.md) , amelyekből megtudhatja, hogyan hozhatja létre, testreszabhatja és konfigurálhatja a Twin-et. Tekintse meg az ikrek [modul ismertetése](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) című témakört, amely részletesebben ismerteti a IoT hub-ben az ikrek koncepcióját.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [A IoT Azure Security Center áttekintése](overview.md)
 - [Biztonsági ügynökök üzembe helyezése](how-to-deploy-agent.md)

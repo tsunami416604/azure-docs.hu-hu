@@ -10,15 +10,15 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72248587"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Munkafolyamat elküldése Microsoft Genomics számára tárfiókkulcs helyett SAS használatával 
 
-Ez a cikk bemutatja, hogyan küldhet munkafolyamatot a Microsoft Genomics szolgáltatásnak egy olyan config. txt fájllal, amely [megosztott hozzáférési aláírásokat (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) tartalmaz a Storage-fiók kulcsainak használata helyett. Ez a funkció hasznos lehet, ha biztonsági aggályokat vet fel, ha a tárfiókkulcs látható a config.txt fájlban. 
+Ez a cikk bemutatja, hogyan küldhet munkafolyamatot a Microsoft Genomics szolgáltatásnak egy olyan config.txt-fájllal, amely [megosztott hozzáférési aláírásokat (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) tartalmaz a Storage-fiók kulcsainak használata helyett. Ez a funkció hasznos lehet, ha biztonsági aggályokat vet fel, ha a tárfiókkulcs látható a config.txt fájlban. 
 
 Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Ha sikeresen elküldött egy munkafolyamatot a megadott mintaadatok használatával, készen áll a cikk folytatására. 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf2ccd93a94036c6ab5b6224456cd1f5a13239c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77619321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855008"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása .NET-keretrendszerbeli alkalmazáshoz
 
@@ -37,20 +37,20 @@ A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **funkció-kezelő** > **+ Hozzáadás** elemet a szolgáltatáshoz `Beta`tartozó jelző hozzáadásához.
+6. Válassza a **funkció-kezelő**  >  **+ Hozzáadás** elemet a szolgáltatáshoz tartozó jelző hozzáadásához `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![A szolgáltatás jelölő engedélyezése Beta néven](media/add-beta-feature-flag.png)
 
-    Most `label` hagyja meg a nem definiált lehetőséget.
+    `label`Most hagyja meg a nem definiált lehetőséget.
 
 ## <a name="create-a-net-console-app"></a>.NET-konzol alkalmazás létrehozása
 
-1. Indítsa el a Visual studiót, és válassza a **fájl** > **új** > **projekt**lehetőséget.
+1. Indítsa el a Visual studiót, és válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
 
 1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
-1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.net-keretrendszer 4,8** vagy újabb lehetőséget. Kattintson a **Létrehozás**gombra.
+1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.net-keretrendszer 4,8** vagy újabb lehetőséget. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
@@ -71,7 +71,7 @@ A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a 
     using Microsoft.FeatureManagement;
     ```
 
-1. Frissítse a `Main` metódust az alkalmazás-konfigurációhoz való kapcsolódáshoz `UseFeatureFlags` , és adja meg a beállítást, hogy lekérje a szolgáltatás jelzőit. Ekkor megjelenik egy üzenet, ha `Beta` a funkció jelzője engedélyezve van.
+1. Frissítse a `Main` metódust az alkalmazás-konfigurációhoz való kapcsolódáshoz, és adja meg a beállítást, hogy `UseFeatureFlags` lekérje a szolgáltatás jelzőit. Ekkor megjelenik egy üzenet, ha a `Beta` funkció jelzője engedélyezve van.
 
     ```csharp
         public static async Task Main(string[] args)
@@ -105,11 +105,15 @@ A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a 
 
 1. Állítson be egy **ConnectionString** nevű környezeti változót az alkalmazás konfigurációs tárolójának kapcsolati karakterláncára. Ha Windows-parancssort használ, futtassa a következő parancsot:
 
+    ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Ha a Windows PowerShellt használja, futtassa a következő parancsot:
 
+    ```powershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
 1. Indítsa újra a Visual studiót, hogy a módosítás érvénybe lépjen. 
 
@@ -117,7 +121,7 @@ A .NET-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert a 
 
     ![Az alkalmazás és a funkció jelzője engedélyezve](./media/quickstarts/dotnet-app-feature-flag.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

@@ -1,18 +1,18 @@
 ---
-title: 'Kubernetes fejlesztői terület létrehozása: Visual Studio Code & Node. js'
+title: 'Kubernetes fejlesztői terület létrehozása: Visual Studio Code & Node.js'
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy Node. js-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
+description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy Node.js-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: 6571e23c3ca9b67d4db3c9c7bcea1e4a3b80e4c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ee8ec8eb78ccb8a7405fd00654ee00ebba8b7c1
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854986"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: a Visual Studio Code és a Node. js az Azure dev Spaces szolgáltatással
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: Visual Studio Code és Node.js az Azure dev Spaces szolgáltatással
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
@@ -75,7 +75,7 @@ A fürt létrehozása néhány percet vesz igénybe.
    ```
 
 > [!IMPORTANT]
-> Ha létezik, az Azure dev Spaces konfigurációs `azds` folyamata eltávolítja a névteret a fürtben.
+> Ha létezik, az Azure dev Spaces konfigurációs folyamata eltávolítja a `azds` névteret a fürtben.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>Kubernetes-hibakeresés VS Code-hoz
 A VS Code-ot használó .NET Core- és Node.js-felhasználók számára számos funkció érhető el, mint például a Kubernetes-hibakeresés.
@@ -138,12 +138,12 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Azonosítsa a szolgáltatáshoz tartozó nyilvános URL-címet a `up` parancs kimenetében. A-ben `.azds.io`végződik. A fenti példában a nyilvános URL-cím: `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+Azonosítsa a szolgáltatáshoz tartozó nyilvános URL-címet a parancs kimenetében `up` . A-ben végződik `.azds.io` . A fenti példában a nyilvános URL-cím: `http://webfrontend.1234567890abcdef1234.eus.azds.io/` .
 
 A webalkalmazás megjelenítéséhez nyissa meg a nyilvános URL-címet egy böngészőben. A figyelmeztetés `stdout` és `stderr` a kimenet a *azds nyomkövetési* terminál ablakba is áramlik a webalkalmazással való interakció során. A HTTP-kérések nyomkövetési információit is megtekintheti, ahogy azok a rendszeren haladnak át. Így könnyebben nyomon követheti az összetett több szolgáltatásra irányuló hívásokat a fejlesztés során. A dev Spaces által hozzáadott kiépítés biztosítja ezt a kérelmek nyomon követését.
 
 > [!Note]
-> A nyilvános URL-címen kívül használhatja a konzol kimenetében megjelenő alternatív `http://localhost:<portnumber>` URL-címet is. Ha a localhost URL-címet használja, úgy tűnhet, mintha a tároló helyileg fut, de valójában az Azure-ban fut. Az Azure dev Spaces Kubernetes *-port továbbítási* funkciója használatával képezi le a localhost PORTOT az AK-ban futó tárolóhoz. Ez megkönnyíti a szolgáltatással való interakciót a helyi gépről.
+> A nyilvános URL-címen kívül használhatja a `http://localhost:<portnumber>` konzol kimenetében megjelenő alternatív URL-címet is. Ha a localhost URL-címet használja, úgy tűnhet, mintha a tároló helyileg fut, de valójában az Azure-ban fut. Az Azure dev Spaces Kubernetes *-port továbbítási* funkciója használatával képezi le a localhost PORTOT az AK-ban futó tárolóhoz. Ez megkönnyíti a szolgáltatással való interakciót a helyi gépről.
 
 ### <a name="update-a-content-file"></a>Tartalomfájlok frissítése
 Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.
@@ -164,7 +164,7 @@ Nyissa meg a webalkalmazást egy mobileszközön a webfrontend nyilvános URL-c�
 
 A hiba kiküszöbölésére hozzáadunk egy `viewport` metacímkét:
 1. Nyissa meg a `./public/index.html` fájlt.
-1. Adjon hozzá `viewport` egy meta címkét a `head` [6. sorban](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6)megjelenő meglévő elemben:
+1. Adjon hozzá egy `viewport` META címkét a `head` [6. sorban](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6)megjelenő meglévő elemben:
 
     ```html
     <head>
@@ -232,13 +232,13 @@ Az `up` parancshoz hasonlóan a hibakeresés indításakor a kód szinkronizálv
 
 ![](media/common/vscode-status-bar-url.png)
 
-Állítson be egy töréspontot egy kiszolgálóoldali kódon belül, például a `app.get('/api'...` [ `server.js`13. sorában ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
+Állítson be egy töréspontot egy kiszolgálóoldali kódon belül, például a `app.get('/api'...` [13 `server.js` . sorában ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
 
-    ```javascript
-    app.get('/api', function (req, res) {
-        res.send('Hello from webfrontend');
-    });
-    ```
+```javascript
+app.get('/api', function (req, res) {
+    res.send('Hello from webfrontend');
+});
+```
 
 Frissítse a böngésző oldalát, vagy nyomja meg az *újbóli* elolvasása gombot, és a töréspontot kell megadnia, és képesnek kell lennie a kód beléptetésére.
 

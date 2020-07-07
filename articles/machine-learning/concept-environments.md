@@ -10,10 +10,10 @@ ms.author: trbye
 author: trevorbye
 ms.date: 03/18/2020
 ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80064191"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Mik azok a Azure Machine Learning környezetek?
@@ -21,12 +21,12 @@ ms.locfileid: "80064191"
 
 Azure Machine Learning környezetek megadja a Python-csomagokat, a környezeti változókat és a szoftver beállításait a képzés és a pontozási szkriptek köré. A futtatási időpontokat (Python, Spark vagy Docker) is megadják. A környezetek a Machine Learning munkaterületen belül felügyelt és verzióval rendelkező entitások, amelyek lehetővé teszik a reprodukálható, auditálható és hordozható gépi tanulási munkafolyamatok különböző számítási célokból való átirányítását.
 
-A helyi számítási feladatokhoz a következőket használhatja `Environment` :
+A helyi számítási feladatokhoz a `Environment` következőket használhatja:
 * Fejlessze a betanítási szkriptet.
 * Használja ugyanazt a környezetet Azure Machine Learning számítási feladatokhoz a Modelles képzések esetében.
 * Telepítse a modellt ugyanazzal a környezettel.
 
-A következő ábra azt szemlélteti, hogyan használható egyetlen `Environment` objektum a futtatási konfigurációban, a képzéshez, valamint a következtetésekhez és a központi telepítési konfigurációhoz a webszolgáltatás üzembe helyezéséhez.
+A következő ábra azt szemlélteti, hogyan használható egyetlen objektum a `Environment` futtatási konfigurációban, a képzéshez, valamint a következtetésekhez és a központi telepítési konfigurációhoz a webszolgáltatás üzembe helyezéséhez.
 
 ![A Machine learning-munkafolyamatban található környezet ábrája](./media/concept-environments/ml-environment.png)
 
@@ -36,7 +36,7 @@ A környezetek széles körben három kategóriára oszthatók: a *kurátor*, a 
 
 A Azure Machine Learning által biztosított, és a munkaterületen alapértelmezés szerint elérhetővé tett környezetek. Python-csomagok és-beállítások gyűjteményeit tartalmazzák, amelyek segítségével megkezdheti a különböző gépi tanulási keretrendszerek használatának megkezdését. 
 
-A felhasználó által felügyelt környezetekben Ön felelős a környezet beállításához és minden olyan csomag telepítéséhez, amelyet a képzési parancsfájlnak szüksége van a számítási célra. A Conda nem vizsgálja a környezetet, vagy semmit sem telepít Önnek. Ha saját környezetét határozza meg, akkor a verziót `azureml-defaults` `>= 1.0.45` pip-függőségként kell listáznia. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
+A felhasználó által felügyelt környezetekben Ön felelős a környezet beállításához és minden olyan csomag telepítéséhez, amelyet a képzési parancsfájlnak szüksége van a számítási célra. A Conda nem vizsgálja a környezetet, vagy semmit sem telepít Önnek. Ha saját környezetét határozza meg, akkor a `azureml-defaults` verziót pip-függőségként kell listáznia `>= 1.0.45` . Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
 
 A rendszer által felügyelt környezeteket akkor használja, ha azt szeretné, hogy a [Conda](https://conda.io/docs/) kezelje a Python-környezetet és a parancsfájlok függőségeit. A szolgáltatás alapértelmezés szerint ezt a típusú környezetet feltételezi, mert a távoli számítási célok nem manuálisan konfigurálhatók.
 
@@ -44,7 +44,7 @@ A rendszer által felügyelt környezeteket akkor használja, ha azt szeretné, 
 
 Környezeteket a használatával hozhat létre:
 
-* Új `Environment` objektumok definiálása egy kurátori környezet használatával vagy a saját függőségeinek definiálásával.
+* Új objektumok definiálása `Environment` egy kurátori környezet használatával vagy a saját függőségeinek definiálásával.
 * Meglévő `Environment` objektumok használata a munkaterületről. Ez a megközelítés lehetővé teszi az egységességet és a reprodukálhatóságot a függőségekkel.
 * Importálás meglévő anaconda-környezet definícióból.
 * A Azure Machine Learning parancssori felület használata
@@ -93,9 +93,9 @@ Tekintse meg a következő ábrát, amely három környezeti definíciót mutat 
 ![A környezeti gyorsítótárazás diagramja Docker-rendszerképekként](./media/concept-environments/environment-caching.png)
 
 >[!IMPORTANT]
-> Ha például olyan környezetet hoz létre, amely nem rögzített csomag-függőséggel rendelkezik ```numpy```, például a környezet a _környezet létrehozásakor_telepített csomag verziószámát fogja használni. Emellett a megfelelő definícióval rendelkező jövőbeli környezetek továbbra is a régi verziót használják. 
+> Ha például olyan környezetet hoz létre, amely nem rögzített csomag-függőséggel rendelkezik, például a környezet a ```numpy``` _környezet létrehozásakor_telepített csomag verziószámát fogja használni. Emellett a megfelelő definícióval rendelkező jövőbeli környezetek továbbra is a régi verziót használják. 
 
-A csomag frissítéséhez meg kell adnia egy verziószámot a rendszerkép újraépítésének kényszerítéséhez ```numpy==1.18.1```, például:. Vegye figyelembe, hogy az új függőségek, beleértve a beágyazottkat is, telepítve lesznek, amelyek megszakítják a korábban működő forgatókönyvet.
+A csomag frissítéséhez meg kell adnia egy verziószámot a rendszerkép újraépítésének kényszerítéséhez, például: ```numpy==1.18.1``` . Vegye figyelembe, hogy az új függőségek, beleértve a beágyazottkat is, telepítve lesznek, amelyek megszakítják a korábban működő forgatókönyvet.
 
 > [!WARNING]
 >  A [környezet. a Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) metódus újraépíti a gyorsítótárazott rendszerképet, amely a nem rögzített csomagok frissítésének lehetséges mellékhatása, valamint az adott gyorsítótárazott rendszerképnek megfelelő összes környezeti definíció esetén a reprodukálhatóság megszakítása.

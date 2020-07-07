@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360520"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Oktatóanyag: alapszintű Active Directory környezet
@@ -199,7 +199,7 @@ Most létre kell hoznia egy Azure AD-bérlőt, hogy szinkronizálni tudja a felh
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. Válassza ki a **plusz ikont (+)** és keresse meg az **Azure Active Directoryt**.
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
-4. Kattintson a **Létrehozás** gombra.</br>
+4. Válassza a **Létrehozás** lehetőséget.</br>
 ![Létrehozás](media/tutorial-single-forest/create1.png)</br>
 5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután kattintson a **Létrehozás** elemre. Ezzel létrejön a címtár.
 6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.

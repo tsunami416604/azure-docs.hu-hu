@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
 ms.openlocfilehash: 75fa2071f2ad54292e1cff6856de2091b74d3187
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101535"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>WinRM-hozzáférés beállítása Virtual Machineshoz Azure Resource Manager
@@ -76,7 +76,7 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
 A Microsoft. számítási erőforrás-szolgáltatónak a virtuális gép üzembe helyezése során a Key Vaulton belüli titok URL-címét kell tartalmaznia. Ez lehetővé teszi, hogy a Microsoft. számítási erőforrás-szolgáltató letöltse a titkot, és létrehozza a megfelelő tanúsítványt a virtuális gépen.
 
 > [!NOTE]
-> A titok URL-címének is szerepelnie kell a verzióban. Egy példaként szolgáló URL-cím a\/következőhöz hasonlít: https:/contosovault.Vault.Azure.net:443/Secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> A titok URL-címének is szerepelnie kell a verzióban. Egy példaként szolgáló URL-cím a következőhöz hasonlít: https: \/ /contosovault.Vault.Azure.net:443/Secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Sablonok
 A sablon URL-címére mutató hivatkozást az alábbi kód használatával érheti el

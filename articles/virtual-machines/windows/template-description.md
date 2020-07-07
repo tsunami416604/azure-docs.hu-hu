@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100532"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager sablonban található virtuális gépek
@@ -404,7 +404,7 @@ Bár a [bővítmények](extensions-features.md) különálló erőforrások, a v
 
 Ez a kiterjesztési erőforrás a storageName változót és a diagnosztikai változókat használja az értékek megadásához. Ha módosítani szeretné a bővítmény által összegyűjtött adatokat, további teljesítményszámlálókat adhat hozzá a wadperfcounters változóhoz. Azt is megteheti, hogy a diagnosztikai adatait egy másik Storage-fiókba helyezi, mint ahol a virtuális gépek lemezeit tárolja.
 
-Számos bővítmény telepíthető egy virtuális gépre, de a leghasznosabb valószínűleg az [Egyéni szkriptek bővítménye](extensions-customscript.md). A példában egy Start. ps1 nevű PowerShell-szkript fut az összes virtuális gépen az első indításkor:
+Számos bővítmény telepíthető egy virtuális gépre, de a leghasznosabb valószínűleg az [Egyéni szkriptek bővítménye](extensions-customscript.md). A példában egy start.ps1 nevű PowerShell-szkript fut az egyes virtuális gépeken, amikor először indul el:
 
 ```json
 {
@@ -431,7 +431,7 @@ Számos bővítmény telepíthető egy virtuális gépre, de a leghasznosabb val
 }
 ```
 
-A Start. ps1 parancsfájl számos konfigurációs feladatot képes végrehajtani. A példában szereplő virtuális gépekhez hozzáadott adatlemezek például nem lettek inicializálva; az inicializáláshoz egyéni szkriptet is használhat. Ha több indítási feladattal rendelkezik, a Start. ps1 fájllal hívhat meg más PowerShell-parancsfájlokat az Azure Storage szolgáltatásban. A példa a PowerShellt használja, de bármilyen, a használt operációs rendszeren elérhető parancsfájl-módszert használhat.
+A start.ps1 szkript számos konfigurációs feladatot képes végrehajtani. A példában szereplő virtuális gépekhez hozzáadott adatlemezek például nem lettek inicializálva; az inicializáláshoz egyéni szkriptet is használhat. Ha több indítási feladattal rendelkezik, a start.ps1 fájllal hívhat meg más PowerShell-parancsfájlokat az Azure Storage szolgáltatásban. A példa a PowerShellt használja, de bármilyen, a használt operációs rendszeren elérhető parancsfájl-módszert használhat.
 
 A telepített bővítmények állapotát a portál bővítmények beállításainál tekintheti meg:
 

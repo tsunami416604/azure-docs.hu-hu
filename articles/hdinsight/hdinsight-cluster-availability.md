@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
 ms.openlocfilehash: 4b26128b794a6a667edc578f56ad0bc9fb8303a7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691152"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>A fürt rendelkezésre állásának figyelése az Apache Ambari az Azure HDInsight
@@ -23,7 +23,7 @@ Ez a cikk azt mutatja be, hogyan használható a Ambari a fürt figyelésére, v
 
 ## <a name="dashboard"></a>Irányítópult
 
-A Ambari irányítópultja a következő Azure Portal a HDInsight áttekintésének **fürt irányítópultok** szakaszában a **Ambari Kezdőlap** hivatkozásra kattintva érhető el. Azt is megteheti, hogy egy böngészőben navigál `https://CLUSTERNAME.azurehdinsight.net` , ahol a CLUSTERNAME a fürt neve.
+A Ambari irányítópultja a következő Azure Portal a HDInsight áttekintésének **fürt irányítópultok** szakaszában a **Ambari Kezdőlap** hivatkozásra kattintva érhető el. Azt is megteheti, hogy egy böngészőben navigál, `https://CLUSTERNAME.azurehdinsight.net` ahol a CLUSTERNAME a fürt neve.
 
 ![HDInsight erőforrás-portál nézet](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
 
@@ -80,7 +80,7 @@ A Ambari-riasztásokhoz e-mail-értesítéseket is konfigurálhat. Ehhez a **ria
 
 ![Ambari – értesítések kezelése művelet](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Ekkor megnyílik a riasztási értesítések kezelésére szolgáló párbeszédpanel. **+** Kattintson a párbeszédpanel alján található elemre, és töltse ki a kötelező mezőket az e-mail-kiszolgáló Ambari biztosításához, amelyről e-maileket szeretne küldeni.
+Ekkor megnyílik a riasztási értesítések kezelésére szolgáló párbeszédpanel. Kattintson a **+** párbeszédpanel alján található elemre, és töltse ki a kötelező mezőket az e-mail-kiszolgáló Ambari biztosításához, amelyről e-maileket szeretne küldeni.
 
 > [!TIP]
 > A Ambari e-mail-értesítéseinek beállítása jó módszer lehet a riasztások egy helyen való fogadására sok HDInsight-fürt kezelésekor.
@@ -88,6 +88,6 @@ Ekkor megnyílik a riasztási értesítések kezelésére szolgáló párbeszéd
 ## <a name="next-steps"></a>További lépések
 
 - [Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben](hdinsight-high-availability-linux.md)
-- [Fürt rendelkezésre állása – Azure Monitor naplók](./cluster-availability-monitor-logs.md)
+- [Fürt rendelkezésre állása – Azure Monitor-naplók](./cluster-availability-monitor-logs.md)
 - [Az Azure Monitor-naplók használata](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [Az Apache Ambari e-mail-értesítései](apache-ambari-email.md)

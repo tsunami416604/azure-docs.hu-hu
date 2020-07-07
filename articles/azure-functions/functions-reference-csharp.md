@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: a5497300f6b0cbf3a073681bac41adc583d869ef
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733396"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# parancsfájl (. CSX) fejlesztői referenciája
@@ -24,7 +24,7 @@ Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői �
 
 ## <a name="how-csx-works"></a>A. CSX működése
 
-A Azure Functions C# parancsfájl-felülete a [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction)-ra épül. Az adat a C#-függvénybe kerül a metódus argumentumai segítségével. Az argumentumok neve egy fájlban `function.json` van megadva, és előre definiált nevek vannak az olyan dolgokhoz való hozzáféréshez, mint a Function Logger és a lemondási tokenek.
+A Azure Functions C# parancsfájl-felülete a [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction)-ra épül. Az adat a C#-függvénybe kerül a metódus argumentumai segítségével. Az argumentumok neve egy fájlban van megadva `function.json` , és előre definiált nevek vannak az olyan dolgokhoz való hozzáféréshez, mint a Function Logger és a lemondási tokenek.
 
 A *. CSX* formátum lehetővé teszi, hogy kevesebb "kiírást" írjon be, és csak C#-függvényre koncentráljon. A névtér és az osztály összes elemének becsomagolása helyett csak egy `Run` metódust adjon meg. A szokásos módon adja meg a fájl elején található szerelvény-hivatkozásokat és névtereket.
 
@@ -49,13 +49,13 @@ FunctionsProject
  | - bin
 ```
 
-Létezik egy megosztott [Host. JSON](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Mindegyik függvényhez saját kódlap (. CSX) és kötési konfigurációs fájl (function. JSON) tartozik.
+Van egy megosztott [host.jsa](functions-host-json.md) fájlban, amely a Function alkalmazás konfigurálására használható. Mindegyik függvényhez tartozik egy saját kódlap (. CSX) és egy kötési konfigurációs fájl (function.js).
 
-A függvények futtatókörnyezetének [2. x vagy újabb](functions-versions.md) verziójában szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak definiálva, a `bin` mappában lévő tényleges függvénytár-fájlokkal. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
+A függvények futtatókörnyezetének [2. x vagy újabb](functions-versions.md) verziójában szükséges kötési kiterjesztések a fájlban vannak definiálva `extensions.csproj` , a mappában lévő tényleges függvénytár-fájlokkal `bin` . Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
 ## <a name="binding-to-arguments"></a>Argumentumok kötése
 
-A bemeneti vagy kimeneti adatok C# script Function paraméterhez vannak kötve a `name` *function. JSON* konfigurációs fájl tulajdonsága segítségével. A következő példa egy *function. JSON* fájlt mutat be, és a. CSX fájlt egy üzenetsor által aktivált függvényhez *futtatja* . A várólista-üzenetből érkező adatok fogadására szolgáló paraméter `myQueueItem` neve, mert ez a `name` tulajdonság értéke.
+A bemeneti vagy kimeneti adatok egy C# parancsfájl-függvény paraméteréhez vannak kötve a `name` konfigurációs fájl *function.js* tulajdonságán keresztül. Az alábbi példa egy *function.jst* mutat be a fájlra, és *futtatja a. CSX* fájlt egy üzenetsor által aktivált függvényhez. A várólista-üzenetből érkező adatok fogadására szolgáló paraméter neve `myQueueItem` , mert ez a tulajdonság értéke `name` .
 
 ```json
 {
@@ -116,7 +116,7 @@ A POCO osztálynak minden tulajdonsághoz meg kell adni egy leolvasót és egy b
 
 ## <a name="reusing-csx-code"></a>A. CSX kód újrafelhasználása
 
-A *Run. CSX* fájl más *. CSX* fájljaiban definiált osztályokat és metódusokat is használhat. Ehhez használja `#load` a *Run. CSX* fájlban található utasításokat. `MyLogger` A következő példában egy nevű naplózási rutin van megosztva a *myLogger. CSX* -ben, és be kell tölteni a `#load` *Run. CSX* -be az direktíva használatával:
+A *Run. CSX* fájl más *. CSX* fájljaiban definiált osztályokat és metódusokat is használhat. Ehhez használja `#load` a *Run. CSX* fájlban található utasításokat. A következő példában egy nevű naplózási rutin `MyLogger` van megosztva a *myLogger. CSX* -ben, és be kell tölteni a *Run. CSX* -be az `#load` direktíva használatával:
 
 Példa a *Run. CSX*:
 
@@ -141,7 +141,7 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-A Shared *. CSX* fájl használata gyakori minta, ha a függvények között a Poco objektum használatával erősen szeretné beírni a függvényeket. A következő egyszerűsített példában egy HTTP-trigger és egy várólista-trigger megoszt egy nevű `Order` poco-objektumot, hogy erősen írja be a megrendelési adatkészletet:
+A Shared *. CSX* fájl használata gyakori minta, ha a függvények között a Poco objektum használatával erősen szeretné beírni a függvényeket. A következő egyszerűsített példában egy HTTP-trigger és egy várólista-trigger megoszt egy nevű POCO-objektumot, `Order` hogy erősen írja be a megrendelési adatkészletet:
 
 Példa a *Run. CSX* http-triggerre:
 
@@ -218,15 +218,15 @@ Az `#load` irányelv csak. *cs* fájlokkal használható *. CSX* -fájlokkal mű
 
 ## <a name="binding-to-method-return-value"></a>Kötés a metódus visszatérési értékéhez
 
-A metódus visszatérési értékét egy kimeneti kötéshez használhatja a *function. JSON*nevű név `$return` használatával. Példákat az [Eseményindítók és kötések](./functions-bindings-return-value.md)című témakörben talál.
+A kimeneti kötések esetében a metódus visszatérési értéke a `$return` *function.json*értékének használatával használható. Példákat az [Eseményindítók és kötések](./functions-bindings-return-value.md)című témakörben talál.
 
-Csak akkor használja a visszaadott értéket, ha egy sikeres függvény végrehajtása mindig visszatérési értéket ad eredményül a kimeneti kötésnek. Ellenkező esetben használja `ICollector` a `IAsyncCollector`vagy a beállítást, ahogy az a következő szakaszban látható.
+Csak akkor használja a visszaadott értéket, ha egy sikeres függvény végrehajtása mindig visszatérési értéket ad eredményül a kimeneti kötésnek. Ellenkező esetben használja `ICollector` `IAsyncCollector` a vagy a beállítást, ahogy az a következő szakaszban látható.
 
 ## <a name="writing-multiple-output-values"></a>Több kimeneti érték írása
 
-Ha több értéket szeretne írni egy kimeneti kötésbe, vagy ha egy sikeres függvény meghívása nem eredményez semmit a kimeneti kötéshez, használja a vagy [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) a típust. Ezek a típusok olyan írásvédett gyűjtemények, amelyek a metódus befejeződése után a kimeneti kötésbe íródnak.
+Ha több értéket szeretne írni egy kimeneti kötésbe, vagy ha egy sikeres függvény meghívása nem eredményez semmit a kimeneti kötéshez, használja a vagy a [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) típust. Ezek a típusok olyan írásvédett gyűjtemények, amelyek a metódus befejeződése után a kimeneti kötésbe íródnak.
 
-Ez a példa több üzenetsor-üzenetet ír ugyanabba a `ICollector`várólistába a következő használatával:
+Ez a példa több üzenetsor-üzenetet ír ugyanabba a várólistába a következő használatával `ICollector` :
 
 ```csharp
 public static void Run(ICollector<string> myQueue, ILogger log)
@@ -238,7 +238,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>Naplózás
 
-Ha a kimeneti adatokat a C#-ban szeretné naplózni, adjon meg egy [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot. Azt javasoljuk, hogy nevezze el `log`. Ne használja `Console.Write` a Azure functions.
+Ha a kimeneti adatokat a C#-ban szeretné naplózni, adjon meg egy [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot. Azt javasoljuk, hogy nevezze el `log` . Ne használja `Console.Write` a Azure functions.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -248,7 +248,7 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> További információ a helyett `TraceWriter`használható újabb naplózási keretrendszerről: [naplók írása a C# függvényekben](functions-monitoring.md#write-logs-in-c-functions) a **figyelő Azure functions** cikkben.
+> További információ a helyett használható újabb naplózási keretrendszerről `TraceWriter` : [naplók írása a C# függvényekben](functions-monitoring.md#write-logs-in-c-functions) a **figyelő Azure functions** cikkben.
 
 ## <a name="async"></a>Aszinkron
 
@@ -264,7 +264,7 @@ public async static Task ProcessQueueMessageAsync(
 }
 ```
 
-Aszinkron függvényekben `out` nem használhatók paraméterek. Kimeneti kötések esetén használja helyette a [függvény visszatérési értékét](#binding-to-method-return-value) vagy egy [gyűjtő objektumot](#writing-multiple-output-values) .
+`out`Aszinkron függvényekben nem használhatók paraméterek. Kimeneti kötések esetén használja helyette a [függvény visszatérési értékét](#binding-to-method-return-value) vagy egy [gyűjtő objektumot](#writing-multiple-output-values) .
 
 ## <a name="cancellation-tokens"></a>Visszavonási tokenek
 
@@ -346,7 +346,7 @@ A Azure Functions üzemeltetési környezet automatikusan hozzáadja a következ
 * `System.Web.Http`
 * `System.Net.Http.Formatting`
 
-Az alábbi szerelvényeket egyszerű névvel (például `#r "AssemblyName"`) lehet hivatkozni:
+Az alábbi szerelvényeket egyszerű névvel (például) lehet hivatkozni `#r "AssemblyName"` :
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -359,15 +359,15 @@ Az alábbi szerelvényeket egyszerű névvel (például `#r "AssemblyName"`) leh
 
 Ha egyéni szerelvényre szeretne hivatkozni, használhatja a *megosztott* szerelvényt vagy egy *privát* szerelvényt:
 
-* A megosztott szerelvények a Function alkalmazás összes funkciója között megoszthatók. Egy egyéni szerelvényre való hivatkozáshoz töltse fel a szerelvényt egy `bin` nevű mappába a [Function App Root mappában](functions-reference.md#folder-structure) (wwwroot).
+* A megosztott szerelvények a Function alkalmazás összes funkciója között megoszthatók. Egy egyéni szerelvényre való hivatkozáshoz töltse fel a szerelvényt egy nevű mappába a `bin` [Function App Root mappában](functions-reference.md#folder-structure) (wwwroot).
 
-* A privát szerelvények egy adott függvény környezetének részét képezik, és támogatják a különböző verziók egymáshoz való betöltését. A magánhálózati szerelvényeket fel kell tölteni a `bin` függvény könyvtára egy mappájába. Hivatkozzon a szerelvényekre a fájlnév használatával, például: `#r "MyAssembly.dll"`.
+* A privát szerelvények egy adott függvény környezetének részét képezik, és támogatják a különböző verziók egymáshoz való betöltését. A magánhálózati szerelvényeket fel kell tölteni a `bin` függvény könyvtára egy mappájába. Hivatkozzon a szerelvényekre a fájlnév használatával, például: `#r "MyAssembly.dll"` .
 
 A fájlok a függvény mappájába való feltöltésével kapcsolatos további információkért lásd a [csomagkezelő](#using-nuget-packages)című szakaszt.
 
 ### <a name="watched-directories"></a>Figyelt könyvtárak
 
-A függvény parancsfájlját tartalmazó könyvtár automatikusan figyeli a szerelvények módosításait. Ha más címtárakban szeretné megtekinteni a szerelvények változásait `watchDirectories` , adja hozzá őket a [Host. JSON](functions-host-json.md)fájl listájához.
+A függvény parancsfájlját tartalmazó könyvtár automatikusan figyeli a szerelvények módosításait. Ha más címtárakban szeretné megtekinteni a szerelvények változásait, adja hozzá őket a `watchDirectories` [host.json](functions-host-json.md)található listához.
 
 ## <a name="using-nuget-packages"></a>NuGet-csomagok használata
 Ha a NuGet-csomagokat 2. x vagy újabb C#-függvényben szeretné használni, töltsön fel egy *function. Proj* fájlt a függvény mappájába a Function alkalmazás fájlrendszerében. Íme egy példa *function. Proj* fájl, amely a *Microsoft. ProjectOxford. Face* Version *1.1.0*-re mutató hivatkozást tartalmaz:
@@ -384,12 +384,12 @@ Ha a NuGet-csomagokat 2. x vagy újabb C#-függvényben szeretné használni, t�
 </Project>
 ```
 
-Ha egyéni NuGet-hírcsatornát szeretne használni, a függvényalkalmazás gyökérkönyvtárában található *NuGet. config* fájlban lévő hírcsatornát kell megadnia. További információ: a [NuGet viselkedésének konfigurálása](/nuget/consume-packages/configuring-nuget-behavior).
+Ha egyéni NuGet-hírcsatornát szeretne használni, a függvényalkalmazás gyökerében lévő *Nuget.Config* fájlban lévő hírcsatornát kell megadnia. További információ: a [NuGet viselkedésének konfigurálása](/nuget/consume-packages/configuring-nuget-behavior).
 
 > [!NOTE]
-> 1. x C#-függvények esetén a NuGet-csomagokat a *function. Proj* fájl helyett egy *Project. JSON* fájllal hivatkozunk.
+> 1. x C# függvények esetén a NuGet-csomagokat egy *project.js* fájlra hivatkozzák a *function. Proj* fájl helyett.
 
-1. x függvények esetén Ehelyett használjon *Project. JSON* fájlt. Példa a *Project. JSON* fájlra:
+1. x függvények esetén használjon egy *project.js* fájl helyett. Példa *project.js* fájlra:
 
 ```json
 {
@@ -423,7 +423,7 @@ Ha egyéni NuGet-hírcsatornát szeretne használni, a függvényalkalmazás gy�
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-Környezeti változó vagy Alkalmazásbeállítások értékének beszerzéséhez használja `System.Environment.GetEnvironmentVariable`a (z) értéket a következő példában látható módon:
+Környezeti változó vagy Alkalmazásbeállítások értékének beszerzéséhez használja a (z) értéket `System.Environment.GetEnvironmentVariable` a következő példában látható módon:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -444,12 +444,12 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>Kötés futásidőben
 
-C#-és egyéb .NET-nyelveken a *function. JSON*fájlban található [*deklaratív*](https://en.wikipedia.org/wiki/Declarative_programming) [kötések helyett kötelező kötési mintát](https://en.wikipedia.org/wiki/Imperative_programming) is használhat. A kényszerített kötés akkor hasznos, ha a kötési paramétereket nem a tervezési idő, hanem futásidőben kell kiszámítani. Ezzel a mintával a függvény kódjában a támogatott bemeneti és kimeneti kötésekhez köthető.
+C#-és egyéb .NET-nyelveken a [kötelező kötési mintát](https://en.wikipedia.org/wiki/Imperative_programming) használhatja a *function.json*-ban található [*deklaratív*](https://en.wikipedia.org/wiki/Declarative_programming) kötésekkel szemben. A kényszerített kötés akkor hasznos, ha a kötési paramétereket nem a tervezési idő, hanem futásidőben kell kiszámítani. Ezzel a mintával a függvény kódjában a támogatott bemeneti és kimeneti kötésekhez köthető.
 
 A következő módon adjon meg egy kötelező kötést:
 
-- **Ne tartalmazzon bejegyzést** a *function. JSON* fájlban a kívánt kényszerített kötésekhez.
-- Adjon meg egy bemeneti [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) paramétert [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)vagy.
+- A kívánt kényszerített kötések esetében **ne** adjon *megfunction.js* bejegyzést.
+- Adjon meg egy bemeneti paramétert [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) vagy [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs) .
 - Az adatkötés végrehajtásához használja a következő C#-mintát.
 
 ```cs
@@ -459,7 +459,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`a a kötést definiáló .NET- `T` attribútum, amely az adott kötési típus által támogatott bemeneti vagy kimeneti típus. `T`nem lehet `out` paraméter típusa (például `out JObject`). Például a Mobile Apps tábla kimeneti kötése [hat kimeneti típust](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)támogat, de csak a [\<ICollector T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) a esetében `T`használható.
+`BindingTypeAttribute`a a kötést definiáló .NET-attribútum, amely az `T` adott kötési típus által támogatott bemeneti vagy kimeneti típus. `T`nem lehet `out` paraméter típusa (például `out JObject` ). A Mobile Apps tábla kimeneti kötése például [hat kimeneti típust](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)támogat, de csak a [ \<T> ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) -t vagy a-t használhatja [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) `T` .
 
 ### <a name="single-attribute-example"></a>Példa egyetlen attribútumra
 
@@ -482,7 +482,7 @@ A [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Mic
 
 ### <a name="multiple-attribute-example"></a>Több attribútum – példa
 
-Az előző példában beolvassa a Function alkalmazás fő Storage `AzureWebJobsStorage`-fiókjának (azaz) az alkalmazás beállítását. A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömbbe való átadásával adhat meg egyéni alkalmazás- `BindAsync<T>()`beállítást. Használjon `Binder` paramétert, nem `IBinder`.  Például:
+Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának (azaz) az alkalmazás beállítását `AzureWebJobsStorage` . A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömbbe való átadásával adhat meg egyéni alkalmazás-beállítást `BindAsync<T>()` . Használjon `Binder` paramétert, nem `IBinder` .  Például:
 
 ```cs
 using Microsoft.Azure.WebJobs;

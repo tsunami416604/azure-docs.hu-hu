@@ -9,15 +9,15 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82106287"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Azure Logic Apps EDIFACT-üzeneteinek dekódolása a Enterprise Integration Pack
 
-Az EDIFACT-összekötő dekódolásával érvényesítheti az EDI és a Partner-specifikus tulajdonságokat, megoszthatja a tranzakciók készleteit, vagy megőrizheti a teljes módosításokat, és visszaigazolhatja a feldolgozott tranzakciókat. Az összekötő használatához hozzá kell adnia az összekötőt egy meglévő triggerhez a logikai alkalmazásban.
+Az EDIFACT-üzenet dekódolása összekötővel ellenőrizheti az EDI-t és a partnerspecifikus tulajdonságokat, feloszthatja az üzenetváltásokat tranzakciókészletekre, vagy megőrizheti a teljes üzenetváltásokat, és nyugtázásokat hozhat létre a feldolgozott tranzakciókhoz. Az összekötő használatához hozzá kell adnia az összekötőt egy meglévő triggerhez a logikai alkalmazásban.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -65,7 +65,7 @@ Az alábbi elemek szükségesek:
 
     ![EDIFACT-üzenet kiválasztása a dekódoláshoz](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
-## <a name="edifact-decoder-details"></a>EDIFACT-dekóder részletei
+## <a name="edifact-decoder-details"></a>EDIFACT-dekódoló részletei
 
 A dekódolási EDIFACT-összekötő a következő feladatokat hajtja végre: 
 
@@ -84,13 +84,13 @@ A dekódolási EDIFACT-összekötő a következő feladatokat hajtja végre:
   * Ellenőrzi a tranzakciónapló-vezérlő számát az adott csoportban lévő más tranzakciónapló-vezérlők számával.
 * Feldarabolja a csomópontot a tranzakciós készletekbe, vagy megőrzi a teljes adatcsomópontot:
   * Csomópont felosztása tranzakciónaplóként – a tranzakciók felfüggesztése a következő hiba miatt: felosztás tranzakciós készletekre, és az egyes tranzakciótípusok elemzése. 
-  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg `badMessages`, amelyek nem tudják érvényesíteni az ellenőrzést, `goodMessages`és a fennmaradó tranzakciókat a következőre küldi:.
+  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni az ellenőrzést `badMessages` , és a fennmaradó tranzakciókat a következőre küldi: `goodMessages` .
   * Csomópont felosztása tranzakciótípusokként – adatcsere felfüggesztése a következő hiba miatt: a rendszer elosztja a csomópontot a tranzakciónaplók között, és elemzi az egyes tranzakciós készleteket. 
-  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja `badMessages`a következőre:.
+  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja a következőre: `badMessages` .
   * Adatcsere megőrzése – tranzakciók felfüggesztése hiba esetén: őrizze meg a cserét, és dolgozza fel a teljes batchd-adatcserét. 
-  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg `badMessages`, amelyek nem tudják érvényesíteni az ellenőrzést, `goodMessages`és a fennmaradó tranzakciókat a következőre küldi:.
+  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni az ellenőrzést `badMessages` , és a fennmaradó tranzakciókat a következőre küldi: `goodMessages` .
   * Adatcsere megőrzése – az adatcsere felfüggesztése hiba esetén: őrizze meg a cserét, és dolgozza fel a teljes batchd-adatcserét. 
-  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja `badMessages`a következőre:.
+  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja a következőre: `badMessages` .
 * Létrehoz egy technikai (vezérlő) és/vagy funkcionális visszaigazolást (ha be van állítva).
   * A technikai nyugtázás vagy a CONTRL ACK a teljes fogadott adatcsere szintaktikai vizsgálatának eredményét jelenti.
   * A funkcionális nyugták elfogadják vagy elutasítja a fogadott adatcserét vagy csoportot

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: glenga
 ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82735300"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
@@ -51,15 +51,15 @@ Néhány kulcsfontosságú fogalom fontos, hogy megértsük, hogyan működnek a
 Az eseményindítók módosításakor a functions infrastruktúrájának tisztában kell lennie a változásokkal. A szinkronizálás számos üzembe helyezési technológia esetében automatikusan megtörténik. Bizonyos esetekben azonban manuálisan kell szinkronizálnia az eseményindítókat. Ha a frissítéseket egy külső csomag URL-címére, a helyi git-ra, a felhő-szinkronizálásra vagy az FTP-re hivatkozva telepíti, manuálisan kell szinkronizálnia az eseményindítókat. Az eseményindítók szinkronizálása háromféleképpen végezhető el:
 
 * Indítsa újra a Function alkalmazást a Azure Portal
-* HTTP POST- `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` kérés küldése a [főkulcs](functions-bindings-http-webhook-trigger.md#authorization-keys)használatára.
-* HTTP POST-kérelem küldése a `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`következőnek:. Cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra, az erőforráscsoport nevére és a függvény alkalmazásának nevére.
+* HTTP POST-kérés küldése `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` a [főkulcs](functions-bindings-http-webhook-trigger.md#authorization-keys)használatára.
+* HTTP POST-kérelem küldése a következőnek: `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01` . Cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra, az erőforráscsoport nevére és a függvény alkalmazásának nevére.
 
 ### <a name="remote-build"></a>Távoli Build
 
 A Azure Functions automatikusan képes a zip-telepítések után kapott programkódra épülő buildek végrehajtására. Ezek a buildek némileg eltérően működnek attól függően, hogy az alkalmazás Windows vagy Linux rendszeren fut-e. A távoli buildek nem hajthatók végre, ha egy alkalmazás már a [csomag](run-functions-from-deployment-package.md) módból való futtatásra van beállítva. A távoli Build használatának megismeréséhez navigáljon a [zip üzembe helyezéshez](#zip-deploy).
 
 > [!NOTE]
-> Ha problémák merülnek fel a távoli buildtel kapcsolatban, annak oka az lehet, hogy az alkalmazást a szolgáltatás elérhetővé tétele előtt hozták létre (2019. augusztus 1.). Próbáljon meg új Function alkalmazást létrehozni vagy futtatni `az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>` a Function alkalmazás frissítéséhez. A parancs végrehajtása két próbálkozást is igénybe vehet.
+> Ha problémák merülnek fel a távoli buildtel kapcsolatban, annak oka az lehet, hogy az alkalmazást a szolgáltatás elérhetővé tétele előtt hozták létre (2019. augusztus 1.). Próbáljon meg új Function alkalmazást létrehozni vagy futtatni a `az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>` Function alkalmazás frissítéséhez. A parancs végrehajtása két próbálkozást is igénybe vehet.
 
 #### <a name="remote-build-on-windows"></a>Távoli Build Windows rendszeren
 
@@ -94,7 +94,7 @@ A következő üzembe helyezési módszerek érhetők el Azure Functionsban.
 
 Külső csomag URL-címével hivatkozhat a Function alkalmazást tartalmazó távoli csomag (. zip) fájlra. A fájl a megadott URL-címről töltődik le, és az alkalmazás [csomag](run-functions-from-deployment-package.md) módban fut.
 
->__Használat:__ Adja `WEBSITE_RUN_FROM_PACKAGE` hozzá az alkalmazás beállításait. A beállítás értékének URL-címnek kell lennie (a futtatni kívánt adott csomagfájl helye). A beállításokat a [portálon](functions-how-to-use-azure-function-app-settings.md#settings) vagy [Az Azure CLI használatával](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)is hozzáadhatja. 
+>__Használat:__ Adja hozzá `WEBSITE_RUN_FROM_PACKAGE` az alkalmazás beállításait. A beállítás értékének URL-címnek kell lennie (a futtatni kívánt adott csomagfájl helye). A beállításokat a [portálon](functions-how-to-use-azure-function-app-settings.md#settings) vagy [Az Azure CLI használatával](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)is hozzáadhatja. 
 >
 >Ha az Azure Blob Storage-t használja, használjon egy [közös hozzáférési aláírással (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) rendelkező privát tárolót, amely lehetővé teszi a funkciók elérését a csomaghoz. Az alkalmazás újraindításakor a rendszer lekéri a tartalom egy példányát. A hivatkozásnak érvényesnek kell lennie az alkalmazás élettartamára.
 
@@ -106,7 +106,7 @@ A zip-telepítés használatával leküldheti a Function alkalmazást az Azure-b
 
 >__Használat:__ Üzembe helyezéséhez használja kedvenc ügyfélprogramját: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)vagy a parancssorból a [Azure functions Core Tools](functions-run-local.md#project-file-deployment)használatával. Ezek az eszközök alapértelmezés szerint a zip-telepítést használják, és [a csomagból futnak](run-functions-from-deployment-package.md). A Core Tools és a Visual Studio Code bővítmény lehetővé teszi a [távoli buildek](#remote-build) telepítését a Linux rendszeren való üzembe helyezéskor. Ha a. zip-fájlt manuálisan szeretné telepíteni a Function alkalmazásba, kövesse az [üzembe helyezés a. zip fájlból vagy URL-címről](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)című témakör utasításait.
 
->Ha a zip-telepítés használatával végzi a telepítést, beállíthatja, hogy az alkalmazás [csomagból fusson](run-functions-from-deployment-package.md). A csomagból való futtatáshoz állítsa `WEBSITE_RUN_FROM_PACKAGE` az Alkalmazásbeállítás értéket a `1`következőre:. A zip-telepítést javasoljuk. Gyorsabb betöltési időt eredményez az alkalmazások számára, és ez az alapértelmezett a VS Code, a Visual Studio és az Azure CLI számára. 
+>Ha a zip-telepítés használatával végzi a telepítést, beállíthatja, hogy az alkalmazás [csomagból fusson](run-functions-from-deployment-package.md). A csomagból való futtatáshoz állítsa az Alkalmazásbeállítás értéket a következőre: `WEBSITE_RUN_FROM_PACKAGE` `1` . A zip-telepítést javasoljuk. Gyorsabb betöltési időt eredményez az alkalmazások számára, és ez az alapértelmezett a VS Code, a Visual Studio és az Azure CLI számára. 
 
 >__Mikor érdemes használni:__ A zip-telepítés a Azure Functions ajánlott központi telepítési technológiája.
 
@@ -129,7 +129,7 @@ A web Deploy csomagokat és üzembe helyezi a Windows-alkalmazásait bármely II
 
 >__Használat:__ [A Visual Studio Tools for Azure functions](functions-create-your-first-function-visual-studio.md)használata. Törölje a **Futtatás a csomagfájl alapján (ajánlott)** jelölőnégyzet jelölését.
 >
->Letöltheti továbbá a [web Deploy 3,6](https://www.iis.net/downloads/microsoft/web-deploy) -et `MSDeploy.exe` , és közvetlenül is meghívhatja.
+>Letöltheti továbbá a [web Deploy 3,6](https://www.iis.net/downloads/microsoft/web-deploy) -et, és közvetlenül is meghívhatja `MSDeploy.exe` .
 
 >__Mikor érdemes használni:__ A web Deploy támogatott, és nem tartalmaz problémát, de az előnyben részesített mechanizmus a [zip üzembe helyezése a csomaggal engedélyezett futtatással](#zip-deploy). További információt a [Visual Studio fejlesztői útmutatójában](functions-develop-vs.md#publish-to-azure)talál.
 
@@ -169,7 +169,7 @@ Az FTP használatával közvetlenül átviheti a fájlokat a Azure Functionsba.
 
 A portálon alapuló szerkesztőben közvetlenül szerkesztheti a Function alkalmazásban található fájlokat (lényegében a módosítások mentésekor minden alkalommal üzembe helyezheti őket).
 
->__Használat:__ Ahhoz, hogy szerkeszteni tudja a függvényeket a Azure Portalban, létre kell hoznia [a függvényeket a portálon](functions-create-first-azure-function.md). Az igazság egyetlen forrásainak megtartása érdekében bármely más üzembe helyezési módszer használatával a függvény csak olvasható, és nem teszi lehetővé a portál folyamatos szerkesztését. Ha vissza szeretne térni olyan állapotba, amelyben szerkesztheti a fájljait a Azure Portalban, manuálisan is visszakapcsolhatja a szerkesztési `Read/Write` módot, és eltávolíthatja a telepítéshez kapcsolódó alkalmazás `WEBSITE_RUN_FROM_PACKAGE`-beállításokat (például). 
+>__Használat:__ Ahhoz, hogy szerkeszteni tudja a függvényeket a Azure Portalban, létre kell hoznia [a függvényeket a portálon](functions-create-first-azure-function.md). Az igazság egyetlen forrásainak megtartása érdekében bármely más üzembe helyezési módszer használatával a függvény csak olvasható, és nem teszi lehetővé a portál folyamatos szerkesztését. Ha vissza szeretne térni olyan állapotba, amelyben szerkesztheti a fájljait a Azure Portalban, manuálisan is visszakapcsolhatja a szerkesztési módot, `Read/Write` és eltávolíthatja a telepítéshez kapcsolódó alkalmazás-beállításokat (például `WEBSITE_RUN_FROM_PACKAGE` ). 
 
 >__Mikor érdemes használni:__ A portál jó módszer a Azure Functions megkezdésére. Az intenzívebb fejlesztési munka érdekében javasoljuk, hogy a következő ügyféleszközök egyikét használja:
 >
@@ -188,7 +188,7 @@ A következő táblázat a portál szerkesztését támogató operációs rendsz
 | JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (előzetes verzió) | | | | | | |
 | PowerShell (előzetes verzió) |✔|✔|✔| | | |
-| Írógéppel (node. js) | | | | | | |
+| Írógéppel (Node.js) | | | | | | |
 
 <sup>*</sup>A portál szerkesztése csak a HTTP-és időzítő-eseményindítók esetében engedélyezett a Linux-és prémium szintű és dedikált csomagok használatával.
 

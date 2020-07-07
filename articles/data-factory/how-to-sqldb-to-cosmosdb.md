@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
 ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691904"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Normalizált adatbázis-séma migrálása Azure SQL Databaseról Azure CosmosDB-re normalizált tárolóba
@@ -23,7 +23,7 @@ Az SQL-sémákat általában harmadik normál formában modellezik, így a norma
 
 A Azure Data Factory használatával egy olyan folyamatot hozunk létre, amely egyetlen leképezési adatfolyamot használ két Azure SQL Database normalizált táblázatból való olvasásra, amely elsődleges és külső kulcsokat tartalmaz az entitási kapcsolatként. Az ADF egyetlen streambe fogja csatlakoztatni ezeket a táblákat az adatáramlási Spark motorral, összegyűjti a csatlakoztatott sorokat tömbökbe, és egyéni, tisztított dokumentumokat hoz létre az új Azure CosmosDB-tárolóba való beszúráshoz.
 
-Ez az útmutató egy új, "Orders" nevű tárolót hoz létre, amely a ```SalesOrderHeader``` standard ```SalesOrderDetail``` SQL Server AdventureWorks-mintaadatbázis és a táblákat fogja használni. Ezek a táblák a által ```SalesOrderID```összekapcsolt értékesítési tranzakciókat jelölik. Mindegyik egyedi részlet rekord saját elsődleges kulccsal rendelkezik ```SalesOrderDetailID```. A fejléc és a részletek közötti kapcsolat ```1:M```. Csatoljuk ```SalesOrderID``` az ADF-ben, majd minden kapcsolódó részletes rekordot egy "detail" nevű tömbbe kell bemutatnia.
+Ez az útmutató egy új, "Orders" nevű tárolót hoz létre, amely a ```SalesOrderHeader``` ```SalesOrderDetail``` standard SQL Server AdventureWorks-mintaadatbázis és a táblákat fogja használni. Ezek a táblák a által összekapcsolt értékesítési tranzakciókat jelölik ```SalesOrderID``` . Mindegyik egyedi részlet rekord saját elsődleges kulccsal rendelkezik ```SalesOrderDetailID``` . A fejléc és a részletek közötti kapcsolat ```1:M``` . Csatoljuk ```SalesOrderID``` Az ADF-ben, majd minden kapcsolódó részletes rekordot egy "detail" nevű tömbbe kell bemutatnia.
 
 Az útmutatóhoz tartozó reprezentatív SQL-lekérdezés a következő:
 
@@ -56,19 +56,19 @@ Az eredményül kapott CosmosDB-tároló egyetlen dokumentumba ágyazza be a bel
 
 ![Adatfolyam-gráf](media/data-flow/cosmosb1.png)
 
-5. Adja meg a "SourceOrderDetails" forrását. Adatkészlet esetén hozzon létre egy új Azure SQL Database adatkészletet, ```SalesOrderDetail``` amely a táblára mutat.
+5. Adja meg a "SourceOrderDetails" forrását. Adatkészlet esetén hozzon létre egy új Azure SQL Database adatkészletet, amely a ```SalesOrderDetail``` táblára mutat.
 
-6. Adja meg a "SourceOrderHeader" forrását. Adatkészlet esetén hozzon létre egy új Azure SQL Database adatkészletet, ```SalesOrderHeader``` amely a táblára mutat.
+6. Adja meg a "SourceOrderHeader" forrását. Adatkészlet esetén hozzon létre egy új Azure SQL Database adatkészletet, amely a ```SalesOrderHeader``` táblára mutat.
 
-7. A felső forrásnál adjon hozzá egy származtatott oszlopot a "SourceOrderDetails" után. Hívja meg az új "TypeCast" átalakítást. Az ```UnitPrice``` oszlopot fel kell kerekíteni, és egy dupla adattípusba kell CosmosDB. Állítsa be a képletet ```toDouble(round(UnitPrice,2))```a következőre:.
+7. A felső forrásnál adjon hozzá egy származtatott oszlopot a "SourceOrderDetails" után. Hívja meg az új "TypeCast" átalakítást. Az oszlopot fel kell kerekíteni ```UnitPrice``` , és egy dupla adattípusba kell CosmosDB. Állítsa be a képletet a következőre: ```toDouble(round(UnitPrice,2))``` .
 
-8. Adjon hozzá egy másik származtatott oszlopot, és hívja meg a "MakeStruct" kifejezést. Itt hozunk létre egy hierarchikus struktúrát, amely az értékeket a részletek táblából fogja tárolni. Ne feledje, hogy a ```M:1``` részletek a fejléchez való kapcsolat. Nevezze el az új ```orderdetailsstruct``` struktúrát, és hozza létre a hierarchiát úgy, hogy az egyes aloszlopokat a bejövő oszlop nevére állítsa be:
+8. Adjon hozzá egy másik származtatott oszlopot, és hívja meg a "MakeStruct" kifejezést. Itt hozunk létre egy hierarchikus struktúrát, amely az értékeket a részletek táblából fogja tárolni. Ne feledje, hogy a részletek a ```M:1``` fejléchez való kapcsolat. Nevezze el az új struktúrát, ```orderdetailsstruct``` és hozza létre a hierarchiát úgy, hogy az egyes aloszlopokat a bejövő oszlop nevére állítsa be:
 
 ![Struktúra létrehozása](media/data-flow/cosmosb9.png)
 
-9. Most nyissa meg a Sales header forrását. Vegyen fel egy JOIN transzformációt. A jobb oldali válassza a "MakeStruct" lehetőséget. Ne állítsa belső illesztésre, és válassza ```SalesOrderID``` az illesztési feltétel mindkét oldalát.
+9. Most nyissa meg a Sales header forrását. Vegyen fel egy JOIN transzformációt. A jobb oldali válassza a "MakeStruct" lehetőséget. Ne állítsa belső illesztésre, és válassza az ```SalesOrderID``` illesztési feltétel mindkét oldalát.
 
-10. Kattintson a hozzáadott új illesztés adatelőnézet fülére, hogy az eredmények megjelenjenek ebben a pontban. Ekkor meg kell jelennie az összes, a részletsorok összes sorához csatolt fejlécnek. Ennek az az oka, hogy az illesztés a ```SalesOrderID```alkalmazásból lett létrehozva. Ezután egyesítjük a részleteket a közös sorokból a részletek struktúrába, és összesítjük a közös sorokat.
+10. Kattintson a hozzáadott új illesztés adatelőnézet fülére, hogy az eredmények megjelenjenek ebben a pontban. Ekkor meg kell jelennie az összes, a részletsorok összes sorához csatolt fejlécnek. Ennek az az oka, hogy az illesztés a alkalmazásból lett létrehozva ```SalesOrderID``` . Ezután egyesítjük a részleteket a közös sorokból a részletek struktúrába, és összesítjük a közös sorokat.
 
 ![Csatlakozás](media/data-flow/cosmosb4.png)
 
@@ -78,11 +78,11 @@ Az eredményül kapott CosmosDB-tároló egyetlen dokumentumba ágyazza be a bel
 
 ![Oszlop súroló](media/data-flow/cosmosb5.png)
 
-13. Most nézzük meg újra a pénznem oszlopot, ezúttal ```TotalDue```. Mint a 7. lépésben, a képletet állítsa a következőre ```toDouble(round(TotalDue,2))```:.
+13. Most nézzük meg újra a pénznem oszlopot, ezúttal ```TotalDue``` . Mint a 7. lépésben, a képletet állítsa a következőre: ```toDouble(round(TotalDue,2))``` .
 
-14. A sorokat a közös kulcs ```SalesOrderID```szerinti csoportosítással fogjuk denormalizálni. Adjon hozzá egy összesített átalakítást, és állítsa be ```SalesOrderID```a csoportot a következőre:.
+14. A sorokat a közös kulcs szerinti csoportosítással fogjuk denormalizálni ```SalesOrderID``` . Adjon hozzá egy összesített átalakítást, és állítsa be a csoportot a következőre: ```SalesOrderID``` .
 
-15. Az aggregált képletben adjon hozzá egy új, "Részletek" nevű oszlopot, és használja ezt a képletet a korábban létrehozott struktúra értékeinek ```orderdetailsstruct```összegyűjtéséhez ```collect(orderdetailsstruct)```:.
+15. Az aggregált képletben adjon hozzá egy új, "Részletek" nevű oszlopot, és használja ezt a képletet a korábban létrehozott struktúra értékeinek összegyűjtéséhez ```orderdetailsstruct``` : ```collect(orderdetailsstruct)``` .
 
 16. Az összesített átalakítás csak az aggregált vagy a Group By képletek részét képező oszlopokat fogja kiadni. Ezért a Sales (értékesítés) fejlécből is meg kell adnia az oszlopokat. Ehhez adjon hozzá egy, az azonos összesített átalakításban szereplő oszlop mintát. Ez a minta a kimenet összes többi oszlopát is tartalmazza:
 

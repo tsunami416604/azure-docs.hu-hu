@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652698"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>A Univerzális Windows-platform és a MSAL.NET használatának szempontjai
 A MSAL.NET-t (UWP) Univerzális Windows-platform használó alkalmazások fejlesztőinek figyelembe kell venniük a jelen cikkben ismertetett fogalmakat.
 
 ## <a name="the-usecorporatenetwork-property"></a>A UseCorporateNetwork tulajdonság
-A Windows-futtatókörnyezet (WinRT) platformon a `PublicClientApplication` logikai tulajdonság `UseCorporateNetwork`szerepel. Ez a tulajdonság lehetővé teszi a Windows 8,1 alkalmazások és UWP alkalmazások számára az integrált Windows-hitelesítés (IWA) előnyeit, ha a felhasználó olyan fiókba van bejelentkezve, amely összevont Azure Active Directory (Azure AD) Bérlővel rendelkezik. Az operációs rendszerbe bejelentkezett felhasználók használhatnak egyszeri bejelentkezést (SSO) is. A tulajdonság beállításakor `UseCorporateNetwork` a MSAL.net egy webes hitelesítési közvetítőt (WAB) használ.
+A Windows-futtatókörnyezet (WinRT) platformon `PublicClientApplication` a logikai tulajdonság szerepel `UseCorporateNetwork` . Ez a tulajdonság lehetővé teszi a Windows 8,1 alkalmazások és UWP alkalmazások számára az integrált Windows-hitelesítés (IWA) előnyeit, ha a felhasználó olyan fiókba van bejelentkezve, amely összevont Azure Active Directory (Azure AD) Bérlővel rendelkezik. Az operációs rendszerbe bejelentkezett felhasználók használhatnak egyszeri bejelentkezést (SSO) is. A tulajdonság beállításakor a `UseCorporateNetwork` MSAL.net egy webes hitelesítési közvetítőt (WAB) használ.
 
 > [!IMPORTANT]
 > Ha a `UseCorporateNetwork` tulajdonságot igaz értékre állítja, feltételezi, hogy az alkalmazás fejlesztője engedélyezte a IWA az alkalmazásban. A IWA engedélyezése:

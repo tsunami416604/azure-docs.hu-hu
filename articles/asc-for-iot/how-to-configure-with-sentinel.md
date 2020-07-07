@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: fe8e4c1b08f96e5f6b2fc7649f7a4361616b7c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311319"
 ---
 # <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel-preview"></a>Az adatok összekapcsolásának Azure Security Center a IoT-ből az Azure Sentinelbe (előzetes verzió)
@@ -52,7 +52,7 @@ Azure Security Center riasztások összekapcsolását a IoT, és közvetlenül a
 1. A jobb oldali ablaktábla alján kattintson az **összekötő lap megnyitása**lehetőségre.
 1. Kattintson a **Kapcsolódás**lehetőségre minden olyan IoT hub-előfizetés mellett, amelynek a riasztásait és az eszközök riasztásait az Azure Sentinel szolgáltatásba kívánja továbbítani.
     - Ha a IoT Azure Security Center nincs engedélyezve ezen a központban, egy figyelmeztető üzenet jelenik meg. Kattintson az **Engedélyezés** hivatkozásra a szolgáltatás elindításához és engedélyezéséhez.
-1. Eldöntheti, hogy szeretné-e, hogy a riasztások Azure Security Center IoT az incidensek automatikus előállítását az Azure Sentinelben. Az **incidensek létrehozása**területen válassza az **Engedélyezés** lehetőséget, ha engedélyezni szeretné, hogy a szabály automatikusan hozzon létre incidenseket a generált riasztásokból.  Ez a szabály az **Analytics** > **aktív** szabályok területén módosítható vagy módosítható.
+1. Eldöntheti, hogy szeretné-e, hogy a riasztások Azure Security Center IoT az incidensek automatikus előállítását az Azure Sentinelben. Az **incidensek létrehozása**területen válassza az **Engedélyezés** lehetőséget, ha engedélyezni szeretné, hogy a szabály automatikusan hozzon létre incidenseket a generált riasztásokból.  Ez a szabály az **Analytics**  >  **aktív** szabályok területén módosítható vagy módosítható.
 
 > [!NOTE]
 >A kapcsolatok módosítása után akár 10 másodpercig is eltarthat a központ listájának frissítése.
@@ -61,7 +61,7 @@ Azure Security Center riasztások összekapcsolását a IoT, és közvetlenül a
 
 A Log Analytics megfelelő sémájának használata a IoT-riasztások Azure Security Center megjelenítéséhez:
 
-1. Nyissa meg a **naplók** > **SecurityInsights** > **SecurityAlert**, vagy keressen rá a **SecurityAlert**kifejezésre.
+1. Nyissa meg a **naplók**  >  **SecurityInsights**  >  **SecurityAlert**, vagy keressen rá a **SecurityAlert**kifejezésre.
 1. A szűréssel csak a következő kql szűrővel rendelkező IoT által generált riasztások Azure Security Center látható:
 
 ```kusto

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74e1dc68aba4ba294bccca6da278d3e30e51f056
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360453"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Kifejezések írása a Azure Active Directory attribútum-hozzárendelésekhez
@@ -65,7 +65,7 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 |[Bal](#left)|A Left függvény egy karakterlánctól balra megadott számú karaktert ad vissza.|
 |[Közepes](#mid) |A forrás értékének egy alsztringjét adja vissza. Az alsztringek olyan karakterláncok, amelyek csak néhány karaktert tartalmaznak a forrás sztringből.|
 |[NormalizeDiacritics](#normalizediacritics)|Egy karakterlánc-argumentumot igényel. A karakterláncot adja vissza, de bármilyen diakritikus karakterrel egyenértékű, nem diakritikus karakterrel helyettesíthető.|
-|[Nem](#not) |Megfordítja a **forrás**logikai értékét. Ha a **forrás** értéke "*true*" (igaz), a "*false*" értéket adja vissza. Ellenkező esetben az "*igaz*" értéket adja vissza.| 
+|[Not](#not) |Megfordítja a **forrás**logikai értékét. Ha a **forrás** értéke "*true*" (igaz), a "*false*" értéket adja vissza. Ellenkező esetben az "*igaz*" értéket adja vissza.| 
 |[RemoveDuplicates](#removeduplicates)|A RemoveDuplicates függvény többértékű karakterláncot használ, és minden érték egyedi.| 
 |[Csere](#replace) |Egy karakterláncon belüli értékeket cserél le. | 
 |[SelectUniqueValue](#selectuniquevalue)|Legalább két argumentumot igényel, amelyek a kifejezések használatával definiált egyedi érték-létrehozási szabályok. A függvény kiértékeli az egyes szabályokat, majd ellenőrzi az egyediséghez generált értéket a cél alkalmazásban vagy könyvtárban.| 
@@ -87,7 +87,7 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
    | **utótag** |Kötelező |Sztring |A forrás érték végéhez hozzáfűzni kívánt karakterlánc. |
@@ -110,7 +110,7 @@ Ez a függvény mindkét paramétert a bináris ábrázolásra konvertálja, és
 
 Más szóval a 0 értéket adja vissza minden esetben, kivéve, ha mindkét paraméternek megfelelő bitek értéke 1.
 
-**Például**  
+**Példa:**  
  
  `BitAnd(&HF, &HF7)`</br>
  A 7 értéket adja vissza, mert a hexadecimális "F" és "F7" kifejezés kiértékelése erre az értékre történik.
@@ -127,7 +127,7 @@ A CBool függvény egy logikai értéket ad vissza a kiértékelt kifejezés ala
 **Megjegyzéseket tartalmazó**  
 Ha a kifejezés kiértékelése nem nulla értékű, akkor a CBool igaz értéket ad vissza, máskülönben hamis értéket ad vissza.
 
-**Például**  
+**Példa:**  
 `CBool([attrib1] = [attrib2])`  
 
 Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rendelkezik.
@@ -159,7 +159,7 @@ Egész számokból álló tömb értékét konvertálja az egyenértékű karakt
 **Szintaxis**  
 `str ConvertToBase64(str source)`
 
-**Például**  
+**Példa:**  
 `ConvertToBase64("Hello world!")`  
 A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 
@@ -174,7 +174,7 @@ A ConvertToUTF8Hex függvény egy karakterláncot UTF8 hexadecimális kódolás�
 **Megjegyzéseket tartalmazó**  
 A függvény kimeneti formátumát a Azure Active Directory használja DN-attribútum formátumként.
 
-**Például**  
+**Példa:**  
 `ConvertToUTF8Hex("Hello world!")`  
 48656C6C6F20776F726C6421 visszaadása
 
@@ -198,7 +198,7 @@ A CStr függvény karakterlánc típusú adattípusra konvertál.
 
 * Value: numerikus érték, hivatkozási attribútum vagy logikai érték lehet.
 
-**Például**  
+**Példa:**  
 `CStr([dn])`  
 Visszatérhet a "CN = Joe, DC = contoso, DC = com" értékre.
 
@@ -210,7 +210,7 @@ A DateFromNum függvény egy értéket AD meg az AD dátumformátum dátum és i
 **Szintaxis**  
 `dt DateFromNum(num value)`
 
-**Például**  
+**Példa:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 A 2012-01-01 23:00:00-et jelölő DateTime értéket ad vissza.
@@ -226,7 +226,7 @@ A DNComponent függvény a megadott DN-összetevő értékét adja vissza balró
 * DN: az értelmezni kívánt hivatkozási attribútum
 * ComponentNumber: a DN által visszaadott összetevő
 
-**Például**  
+**Példa:**  
 `DNComponent(CRef([dn]),1)`  
 Ha a DN a következő: "CN = Joe, ou =...", visszaadja a következőt: Joe
 
@@ -238,7 +238,7 @@ A Error függvény egyéni hiba visszaküldésére szolgál.
 **Szintaxis**  
 `void Error(str ErrorMessage)`
 
-**Például**  
+**Példa:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 Ha a accountName attribútum nem található, hibát jelez az objektumon.
 
@@ -250,7 +250,7 @@ Ha a accountName attribútum nem található, hibát jelez az objektumon.
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
    | **inputFormat** |Kötelező |Sztring |A forrás értékének várt formátuma. Támogatott formátumok: [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) . |
@@ -276,7 +276,7 @@ Az IIF függvény a lehetséges értékek egy halmazát adja vissza egy megadott
 * valueIfTrue: Ha a feltétel igaz értéket ad vissza, a visszaadott érték.
 * valueIfFalse: Ha a feltétel hamis értéket ad vissza, a visszaadott érték.
 
-**Például**  
+**Példa:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Ha a felhasználó egy gyakornok, a a "t-" értékkel rendelkező felhasználó aliasát adja vissza, a másik pedig a felhasználó aliasát adja vissza.
 
@@ -299,7 +299,7 @@ A beosztási függvény megkeresi egy karakterláncban szereplő alsztring első
 **Megjegyzéseket tartalmazó**  
 Azt a pozíciót adja vissza, ahol az alkarakterlánc található vagy 0, ha nem található.
 
-**Például**  
+**Példa:**  
 `InStr("The quick brown fox","quick")`  
 Evalues – 5
 
@@ -317,7 +317,7 @@ Ha a kifejezés értéke null, akkor a IsNull függvény Igaz értéket ad vissz
 **Megjegyzéseket tartalmazó**  
 Attribútum esetén a null értéket az attribútum hiánya fejezi ki.
 
-**Például**  
+**Példa:**  
 `IsNull([displayName])`  
 Igaz értéket ad vissza, ha az attribútum nem szerepel a CS vagy az MV-ban.
 
@@ -333,7 +333,7 @@ Ha a kifejezés null értékű vagy üres karakterlánc, akkor a IsNullOrEmpty f
 Egy attribútum esetében ez igaz értékre értékeli, ha az attribútum hiányzik vagy létezik, de egy üres karakterlánc.  
 A függvény inverzének neve IsPresent.
 
-**Például**  
+**Példa:**  
 `IsNullOrEmpty([displayName])`  
 Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlánc a CS vagy az MV.
 
@@ -348,7 +348,7 @@ Ha a kifejezés olyan karakterláncot ad vissza, amely nem null értékű, és n
 **Megjegyzéseket tartalmazó**  
 A függvény inverzének neve IsNullOrEmpty.
 
-**Például**  
+**Példa:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
@@ -367,7 +367,7 @@ Az Item függvény a tartalmaz függvénnyel együtt használható, mivel az ut�
 
 Hibát jelez, ha az index tartományon kívül esik.
 
-**Például**  
+**Példa:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Az elsődleges e-mail-címet adja vissza.
 
@@ -392,7 +392,7 @@ Ha a forrásadatok egyike egy többértékű attribútum, akkor az adott attrib�
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **elválasztó** |Kötelező |Sztring |A forrásadatok elválasztására szolgáló karakterlánc, amely egyetlen sztringbe van fűzve. Lehet "", ha nem kötelező elválasztó. |
    | **source1 ... sourceN** |Kötelező, változó – ennyiszer |Sztring |A egyesíteni kívánt karakterlánc-értékek. |
@@ -417,7 +417,7 @@ A karakterlánc első numChars karaktert tartalmazó karakterlánc:
 
 Ha a sztring kevesebb karaktert tartalmaz a numChars megadott számnál, akkor a rendszer a karakterlánctal megegyező karakterláncot (azaz az 1. paraméterben szereplő összes karaktert tartalmazza) adja vissza.
 
-**Például**  
+**Példa:**  
 `Left("John Doe", 3)`  
 Visszatérési érték `Joh` .
 
@@ -429,7 +429,7 @@ Visszatérési érték `Joh` .
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring |Az attribútum neve általában. |
    | **Start** |Kötelező |egész szám |Az index a **forrás** sztringben, ahol az alsztringnek el kell indulnia. A karakterlánc első karakterének indexe 1, a második karakter pedig a 2. indexet fogja tartalmazni. |
@@ -443,7 +443,7 @@ Visszatérési érték `Joh` .
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring | Általában utónév vagy vezetéknév attribútum. |
 
@@ -455,7 +455,7 @@ Visszatérési érték `Joh` .
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Logikai karakterlánc |A várt **források** értéke "true" vagy "false". |
 
@@ -467,7 +467,7 @@ A RemoveDuplicates függvény többértékű karakterláncot használ, és minde
 **Szintaxis**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**Például**  
+**Példa:**  
 `RemoveDuplicates([proxyAddresses])`  
 Egy megtisztított proxyAddress attribútumot ad vissza, amelyben az összes duplikált érték el lett távolítva.
 
@@ -497,7 +497,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring |Az attribútum neve általában a **forrásoldali** objektumban. |
    | **oldValue** |Választható |Sztring |A **forrásban** vagy **sablonban**cserélni kívánt érték. |
@@ -522,7 +522,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **uniqueValueRule1 ... uniqueValueRuleN** |Legalább 2 szükséges, nincs felső korlát |Sztring | A kiértékelni kívánt egyedi érték-létrehozási szabályok listája. |
 
@@ -535,7 +535,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-  | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+  | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
   |--- | --- | --- | --- |
   | **AppRoleAssignments** |Kötelező |Sztring |**[appRoleAssignments]** objektum. |
 
@@ -547,7 +547,7 @@ Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől 
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
    | **elválasztókarakter** |Kötelező |Sztring |Meghatározza a karakterlánc felosztására szolgáló karaktert (példa: ",") |
@@ -568,7 +568,7 @@ A StringFromSid függvény egy olyan byte tömböt alakít át, amely biztonság
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
 
@@ -580,7 +580,7 @@ A StringFromSid függvény egy olyan byte tömböt alakít át, amely biztonság
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring |Az ellenőrzési **forrás** értéke. |
    | **defaultValue** |Választható |Sztring |Az alapértelmezett érték, amelyet akkor kell használni, ha a forrás nem felel meg a kulcsoknak. Üres karakterlánc ("") lehet. |
@@ -595,7 +595,7 @@ A StringFromSid függvény egy olyan byte tömböt alakít át, amely biztonság
 
 **Paraméterek**<br> 
 
-   | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+   | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
    | --- | --- | --- | --- |
    | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumból |
    | **kulturális környezet** |Választható |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
@@ -609,7 +609,7 @@ A StringFromSid függvény egy olyan byte tömböt alakít át, amely biztonság
 
 **Paraméterek**<br> 
 
-  | Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+  | Name | Szükséges/ismétlődő | Típus | Megjegyzések |
   | --- | --- | --- | --- |
   | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
   | **kulturális környezet** |Választható |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
@@ -623,7 +623,7 @@ A Trim függvény eltávolítja a kezdő és záró szóközöket egy karakterl�
 **Szintaxis**  
 `str Trim(str value)`  
 
-**Például**  
+**Példa:**  
 `Trim(" Test ")`  
 A "test" értéket adja vissza.
 
@@ -650,7 +650,7 @@ A rendszer az elválasztó karakterek egyikével elválasztott karakterláncban 
 
 Ha a karakterlánc kevesebb, mint szám szót tartalmaz, vagy a sztring nem tartalmaz határolójelekkel azonosított szavakat, akkor a rendszer üres karakterláncot ad vissza.
 
-**Például**  
+**Példa:**  
 `Word("The quick brown fox",3," ")`  
 A "barna" értéket adja vissza.
 

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d522d8dd20fb8e1e781f0b13ccdbc4fd98f1727c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ebc3cf8e131efbd8d315942c42325c3720586ae
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80321806"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85853188"
 ---
 > [!NOTE]
-> Ez a cikk az Azure IoT-bővítmény `azure-iot`legújabb verzióját használja, amelynek neve. Az örökölt verzió `azure-iot-cli-ext`neve . Egyszerre csak egy verziót kell telepíteni. A paranccsal `az extension list` ellenőrizheti a jelenleg telepített bővítményeket.
+> Ez a cikk a nevű Azure IoT bővítmény legújabb verzióját használja `azure-iot` . Az örökölt verzió neve `azure-cli-iot-ext` . Egyszerre csak egy verziót kell telepíteni. A parancsot használhatja a `az extension list` jelenleg telepített bővítmények érvényesítéséhez.
 >
-> A `az extension remove --name azure-cli-iot-ext` bővítmény örökölt verziójának eltávolításához használható.
+> A paranccsal `az extension remove --name azure-cli-iot-ext` távolíthatja el a bővítmény örökölt verzióját.
 >
-> A `az extension add --name azure-iot` bővítmény új verziójának hozzáadásához használható. 
+> A `az extension add --name azure-iot` bővítmény új verziójának hozzáadásához használja a következőt:. 
 >
-> A telepített bővítmények megtekintéséhez használja `az extension list`a használatát.
+> A telepített bővítmények megtekintéséhez használja a következőt: `az extension list` .
 >
