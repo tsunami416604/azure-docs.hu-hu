@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80396405"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
@@ -68,7 +68,7 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
     Ha ezt a beállítást választja, a biztonsági mentés konzisztencia-ellenőrzése a DPM-kiszolgálón fog futni, hogy elkerülje az **eseutil** parancsnak az Exchange-kiszolgálón való futtatásával generált I/O-forgalmat.
 
    > [!NOTE]
-   > A beállítás használatához át kell másolnia az ESE. dll és az Eseutil. exe fájlokat a C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin könyvtárba a DPM-kiszolgálón. Ellenkező esetben a rendszer a következő hibát váltja ki:  
+   > A beállítás használatához át kell másolnia a Ese.dll és Eseutil.exe fájlokat a C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin könyvtárba a DPM-kiszolgálón. Ellenkező esetben a rendszer a következő hibát váltja ki:  
    > ![Eseutil-hiba](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >

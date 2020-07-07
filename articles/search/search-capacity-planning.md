@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546258"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Kapacitás módosítása az Azure-ban Cognitive Search
@@ -86,10 +86,10 @@ A standard és a Storage-alapú optimalizált keresési szolgáltatások a 36-SU
 | **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replika** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 replika** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
-| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
-| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
-| **12 replika** |12 SU |24 SU |36 SU |N/A |N/A |N/A |
+| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |N.A. |
+| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |N.A. |
+| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |N.A. |
+| **12 replika** |12 SU |24 SU |36 SU |N.A. |N.A. |N.A. |
 
 Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhelyén találja. További információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/search/).
 

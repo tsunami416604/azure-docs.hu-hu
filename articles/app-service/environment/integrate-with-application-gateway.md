@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80476890"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Az ILB App Service Environment és az Azure Application Gateway integrációja #
@@ -40,7 +40,7 @@ Ahhoz, hogy a Application Gateway integrálása a ILB App Service Environment, a
 * Egy ILB App Service Environment.
 * A ILB App Service Environment futó alkalmazás.
 * A ILB App Service Environmentban az alkalmazáshoz használandó Internet-útválasztós tartománynév.
-* A ILB App Service Environment által használt ILB-címe. Ez az információ a app Service Environment-portál **Beállítások** > **IP-címei**területen található:
+* A ILB App Service Environment által használt ILB-címe. Ez az információ a app Service Environment-portál **Beállítások**  >  **IP-címei**területen található:
 
     ![A ILB által használt IP-címek példáinak listája App Service Environment][9]
     
@@ -56,7 +56,7 @@ Nem helyezheti el az átjárót abban az alhálózatban, amelyet a ILB App Servi
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések ##
 
-1. A Azure Portal lépjen az **új** > **hálózati** > **Application Gateway**elemre.
+1. A Azure Portal lépjen az **új**  >  **hálózati**  >  **Application Gateway**elemre.
 
 2. Az **alapok** területén:
 

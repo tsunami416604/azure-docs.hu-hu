@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550252"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Megosztott eszköz mód iOS-eszközökhöz
@@ -45,7 +45,7 @@ Megosztott eszköz üzemmódú alkalmazás létrehozásához a fejlesztők és a
 
 1. [**Csak a nyilvános előzetes**verzióban szükséges] A [felhőalapú eszköz rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) szerepkörrel rendelkező felhasználónak el kell indítania a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md) , és csatlakoztatnia kell az eszközét a szervezethez.
 
-    A szervezeti szerepkörök tagságának konfigurálása a Azure Portal: **Azure Active Directory** > **szerepkörök és rendszergazdák** > **Felhőbeli eszköz rendszergazdája**
+    A szervezeti szerepkörök tagságának konfigurálása a Azure Portal: **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **Felhőbeli eszköz rendszergazdája**
 
 A következő fejezetek segítséget nyújtanak az alkalmazás frissítésében a megosztott eszközök üzemmódjának támogatásához.
 
@@ -90,7 +90,7 @@ A felhasználó változásakor győződjön meg arról, hogy az előző felhaszn
 
 A megosztott eszköz mód észlelése fontos az alkalmazás számára. Számos alkalmazáshoz szükség van a felhasználói élmény (UX) módosítására, ha az alkalmazás egy megosztott eszközön van használatban. Előfordulhat például, hogy az alkalmazás "regisztráció" funkcióval rendelkezik, amely nem felel meg a Firstline-feldolgozók számára, mert valószínűleg már van fiókja. Ha megosztott eszköz módban van, további biztonságot is hozzáadhat az alkalmazás adatkezeléséhez.
 
-A alkalmazásban található `getDeviceInformationWithParameters:completionBlock:` API `MSALPublicClientApplication` -val megállapíthatja, hogy egy eszköz megosztott eszköz módban fut-e.
+A alkalmazásban található `getDeviceInformationWithParameters:completionBlock:` API-val `MSALPublicClientApplication` megállapíthatja, hogy egy eszköz megosztott eszköz módban fut-e.
 
 A következő kódrészletek példákat mutatnak az `getDeviceInformationWithParameters:completionBlock:` API használatára.
 
@@ -180,7 +180,7 @@ A következő kód eltávolítja a bejelentkezett fiókot, és törli a gyorsít
 > [!NOTE]
 > A következő lépés csak a nyilvános előzetes verzióban szükséges.
 
-Ebben a nyilvános előzetes verzióban az [Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul](apple-sso-plugin.md) csak az alkalmazások állapotát törli. A Safari böngésző nem törli az állapotot. Javasoljuk, hogy manuálisan törölje a böngésző-munkamenetet annak biztosításához, hogy a felhasználói állapot nyomkövetése ne maradjon hátra. A cookie-k törléséhez az alább látható opcionális `signoutFromBrowser` tulajdonságot használhatja. Ez azt eredményezi, hogy a böngésző röviden elindít az eszközön.
+Ebben a nyilvános előzetes verzióban az [Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul](apple-sso-plugin.md) csak az alkalmazások állapotát törli. A Safari böngésző nem törli az állapotot. Javasoljuk, hogy manuálisan törölje a böngésző-munkamenetet annak biztosításához, hogy a felhasználói állapot nyomkövetése ne maradjon hátra. A `signoutFromBrowser` cookie-k törléséhez az alább látható opcionális tulajdonságot használhatja. Ez azt eredményezi, hogy a böngésző röviden elindít az eszközön.
 
 #### <a name="swift"></a>Swift
 

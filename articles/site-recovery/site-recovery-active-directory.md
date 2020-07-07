@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 2cf4f22be2a4407d73fcc7bb340fad647c8aa145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546519"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Vész-helyreállítás beállítása a Active Directory és a DNS-hez
@@ -104,11 +104,11 @@ Ha feladatátvételi tesztet kezdeményez, ne adja meg az összes tartományvez�
 
 A Windows Server 2012-től kezdve a [további óvintézkedések Active Directory tartományi szolgáltatásokba (AD DS) épülnek](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Ezek a védelmi intézkedések segítenek a virtualizált tartományvezérlők védelmében a frissítési sorszám (USN) visszaállításakor, ha az alapul szolgáló hypervisor platform támogatja a virtuális gépek **GenerationID**. Az Azure támogatja a **virtuális gépek GenerationID**. Emiatt a Windows Server 2012-es vagy újabb verzióit futtató tartományvezérlők az Azure Virtual Machines szolgáltatásban rendelkeznek ezekkel a további garanciákkal.
 
-A **virtuális gép GenerationID** alaphelyzetbe állításakor a AD DS adatbázis **InvocationID** értékét is alaphelyzetbe állítja. Emellett a rendszer elveti a relatív azonosító (RID) készletet, és `SYSVOL` a mappa nem mérvadóként van megjelölve. További információ: [Bevezetés a Active Directory tartományi szolgáltatások virtualizációba](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) és a [elosztott fájlrendszer replikáció biztonságos virtualizálása (DFSR)](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671).
+A **virtuális gép GenerationID** alaphelyzetbe állításakor a AD DS adatbázis **InvocationID** értékét is alaphelyzetbe állítja. Emellett a rendszer elveti a relatív azonosító (RID) készletet, és a `SYSVOL` mappa nem mérvadóként van megjelölve. További információ: [Bevezetés a Active Directory tartományi szolgáltatások virtualizációba](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) és a [elosztott fájlrendszer replikáció biztonságos virtualizálása (DFSR)](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671).
 
 Az Azure-ba való feladatátvétel a **VM-GenerationID** alaphelyzetbe állítását okozhatja. A **VM-GenerationID** alaphelyzetbe állítása további óvintézkedéseket indít, amikor a tartományvezérlő virtuális gépe elindul az Azure-ban. Ez jelentős késleltetést eredményezhet a tartományvezérlő virtuális gépre való bejelentkezéshez.
 
-Mivel ez a tartományvezérlő csak feladatátvételi tesztben használatos, a virtualizációs védelem nem szükséges. Annak biztosítása érdekében, hogy a tartományvezérlő virtuális gép **GenerationID** értéke ne változzon, a helyszíni tartományvezérlőn a következők `DWORD` értékét módosíthatja: **4**
+Mivel ez a tartományvezérlő csak feladatátvételi tesztben használatos, a virtualizációs védelem nem szükséges. Annak biztosítása érdekében, hogy a tartományvezérlő virtuális gép **GenerationID** értéke ne változzon, a helyszíni tartományvezérlőn a következők értékét módosíthatja `DWORD` : **4**
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
@@ -124,7 +124,7 @@ Ha a virtualizálási garanciákat egy feladatátvételi teszt után indítja el
 
   :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Meghívási azonosító változása":::
 
-- `SYSVOL`a mappa `NETLOGON` és a megosztások nem érhetők el.
+- `SYSVOL`a mappa és a `NETLOGON` megosztások nem érhetők el.
 
   :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL mappa megosztása":::
 
@@ -139,7 +139,7 @@ Ha a virtualizálási garanciákat egy feladatátvételi teszt után indítja el
 > [!IMPORTANT]
 > Az ebben a szakaszban leírt konfigurációk némelyike nem szabványos vagy Alapértelmezett tartományvezérlői konfiguráció. Ha nem szeretné, hogy ezek a módosítások egy éles tartományvezérlőn legyenek, létrehozhat egy Site Recovery-feladatátvételi teszthez dedikált tartományvezérlőt. A módosításokat csak erre a dedikált tartományvezérlőre végezze.
 
-1. A parancssorban futtassa a következő parancsot annak vizsgálatához, hogy `SYSVOL` a mappa `NETLOGON` és a mappa meg van-e osztva:
+1. A parancssorban futtassa a következő parancsot annak vizsgálatához, hogy a `SYSVOL` mappa és `NETLOGON` a mappa meg van-e osztva:
 
     `NET SHARE`
 
@@ -181,7 +181,7 @@ Ha az előző feltételek teljesülnek, valószínű, hogy a tartományvezérlő
 
 Ha a tartományvezérlőt és a DNs-t ugyanazon a virtuális gépen futtatja, akkor kihagyhatja ezt az eljárást.
 
-Ha a DNS nem ugyanazon a virtuális gépen található, mint a tartományvezérlő, létre kell hoznia egy DNS virtuális gépet a feladatátvételi teszthez. Használhatja a friss DNS-kiszolgálót, és létrehozhatja az összes szükséges zónát. Ha például a Active Directory tartománya `contoso.com`, létrehozhat egy nevű `contoso.com`DNS-zónát. A Active Directorynak megfelelő bejegyzéseket a következőképpen kell frissíteni a DNS-ben:
+Ha a DNS nem ugyanazon a virtuális gépen található, mint a tartományvezérlő, létre kell hoznia egy DNS virtuális gépet a feladatátvételi teszthez. Használhatja a friss DNS-kiszolgálót, és létrehozhatja az összes szükséges zónát. Ha például a Active Directory tartománya `contoso.com` , létrehozhat egy nevű DNS-zónát `contoso.com` . A Active Directorynak megfelelő bejegyzéseket a következőképpen kell frissíteni a DNS-ben:
 
 1. Győződjön meg arról, hogy ezek a beállítások érvényben vannak, mielőtt a helyreállítási tervben szereplő bármely más virtuális gép elindul:
 

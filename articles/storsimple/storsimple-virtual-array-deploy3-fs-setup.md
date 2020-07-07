@@ -16,16 +16,16 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 16a5e0bb3e50e3a90951572e8d2847d379c1b114
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80297651"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – beállítás fájlkiszolgáló használatával Azure Portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -70,7 +70,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
 6. Az **eszközbeállítások** lapon:
    
    1. Rendeljen egyedi **nevet** az eszközhöz. Ez a név 1-15 karakterből állhat, és tartalmazhat betűt, számot és kötőjelet.
-   2. Kattintson a létrehozandó eszköz **típusának** **fájlkiszolgáló** ikonjára ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) . A fájlkiszolgálók lehetővé teszik a megosztott mappák létrehozását.
+   2. Kattintson a **File server** ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) létrehozandó eszköz **típusának** fájlkiszolgáló ikonjára. A fájlkiszolgálók lehetővé teszik a megosztott mappák létrehozását.
    3. Mivel az eszköz egy fájlkiszolgáló, csatlakoztatnia kell az eszközt egy tartományhoz. Adja meg a **tartománynevet**.
    4. Kattintson az **Alkalmaz** gombra.
 7. Ekkor megjelenik egy párbeszédpanel. Adja meg a tartománya hitelesítő adatait a megadott formátumban. Kattintson a pipa ikonra. A tartományi hitelesítő adatok ellenőrzése megtörtént. Hibaüzenet jelenik meg, ha a hitelesítő adatok helytelenek.
@@ -90,7 +90,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
    
    A **webproxy** oldalon:
    
-   1. Adja meg a **webproxy URL** -címét a következő formátumban: *&lt;http://host-IP&gt;-cím vagy FQDN:P ORT száma*. Vegye figyelembe, hogy a HTTPS URL-címek nem támogatottak.
+   1. Adja meg a **webproxy URL** -címét a következő formátumban: *http:// &lt; Host-IP-cím vagy FQDN &gt; :P ORT száma*. Vegye figyelembe, hogy a HTTPS URL-címek nem támogatottak.
    2. A **hitelesítést** a **Basic** vagy a **none**értékre kell beállítani.
    3. Ha hitelesítést használ, meg kell adnia egy **felhasználónevet** és egy **jelszót**is.
    4. Kattintson az **Alkalmaz** gombra. Ez a művelet érvényesíti és alkalmazza a konfigurált webproxy-beállításokat.
@@ -110,7 +110,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
     2. Ha az első eszköz regisztrálva van ezzel a szolgáltatással, akkor a **szolgáltatás adattitkosítási kulcsa**jelenik meg. Másolja ki ezt a kulcsot, és mentse egy biztonságos helyre. Erre a kulcsra a szolgáltatás regisztrációs kulcsának használatakor van szükség további eszközök regisztrálásához a StorSimple Eszközkezelő szolgáltatással. 
        
        Ha nem ez az első eszköz, amelyet a szolgáltatással regisztrál, meg kell adnia a szolgáltatás adattitkosítási kulcsát. További információt a [szolgáltatás adattitkosítási kulcsának](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) beszerzése a helyi webes felhasználói felületen című témakörben talál.
-    3. Kattintson a **regisztrálás**gombra. Ekkor a rendszer újraindítja az eszközt. Előfordulhat, hogy várnia kell 2-3 percet, mielőtt az eszköz regisztrálása sikeresen megtörtént. Az eszköz újraindítása után megnyílik a bejelentkezési oldal.
+    3. Kattintson a **Regisztrálás** parancsra. Ekkor a rendszer újraindítja az eszközt. Előfordulhat, hogy várnia kell 2-3 percet, mielőtt az eszköz regisztrálása sikeresen megtörtént. Az eszköz újraindítása után megnyílik a bejelentkezési oldal.
        
        ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
 12. Lépjen vissza az Azure Portalra. Nyissa meg az **összes erőforrást**, keresse meg a StorSimple Eszközkezelő szolgáltatását.
@@ -185,7 +185,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az [Azure P
    3. A megosztás **típusa** . A típus lehet **Lépcsőzetes** vagy **helyileg rögzített**, és az alapértelmezett. Helyi garanciákat, kis késést és nagyobb teljesítményt igénylő munkaterhelések esetén válasszon egy **helyileg rögzített** megosztást. Az összes többi adattal kapcsolatban válasszon egy **Lépcsőzetes** megosztást.
       A helyileg rögzített megosztások sűrűn vannak kiépítve, és biztosítja, hogy a megosztáson lévő elsődleges adatmennyiség helyi szinten maradjon az eszközön, és ne kerüljön a felhőbe. A többrészes megosztást a rendszer dinamikusan kiépíti. Többplatformos megosztás létrehozásakor a terület 10%-a a helyi szinten lett kiépítve, a terület 90%-a pedig a felhőben van kiépítve. Ha például 1 TB-os kötetet telepített, a 100 GB a helyi térben marad, és a 900 GB-ot a felhőben fogja használni az adatszintek esetében. Ez pedig azt jelenti, hogy ha elfogyott az eszközön lévő összes helyi terület, nem lehet kiépíteni egy rétegű megosztást.
    
-   4. Az **alapértelmezett teljes engedélyek beállítása** mezőben rendelje hozzá az engedélyeket a felhasználóhoz, vagy a megosztáshoz hozzáférő csoportot. Adja meg a felhasználó vagy a felhasználói csoport nevét *john\@contoso.com* formátumban. Azt javasoljuk, hogy egy felhasználói csoportot használjon (egyetlen felhasználó helyett), hogy a rendszergazdai jogosultságok hozzáférjenek a megosztásokhoz. A hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
+   4. Az **alapértelmezett teljes engedélyek beállítása** mezőben rendelje hozzá az engedélyeket a felhasználóhoz, vagy a megosztáshoz hozzáférő csoportot. Adja meg a felhasználó vagy a felhasználói csoport nevét *john \@ contoso.com* formátumban. Azt javasoljuk, hogy egy felhasználói csoportot használjon (egyetlen felhasználó helyett), hogy a rendszergazdai jogosultságok hozzáférjenek a megosztásokhoz. A hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
    
    5. A megosztás létrehozásához kattintson a **Hozzáadás** gombra. 
     
@@ -203,7 +203,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az [Azure P
 Ekkor csatlakoznia kell egy vagy több, az előző lépésben létrehozott megosztáshoz. Hajtsa végre ezeket a lépéseket a StorSimple virtuális tömbhöz csatlakoztatott Windows Server-gazdagépen.
 
 #### <a name="to-connect-to-the-share"></a>A megosztáshoz való kapcsolódáshoz
-1. Nyomja ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) meg az + R billentyűt. A Futtatás ablakban adja meg az elérési út *&#92;&#92;&lt;fájlkiszolgáló&gt; nevét* , és cserélje le a fájlkiszolgáló *nevét* a fájlkiszolgálón hozzárendelt eszköz nevére. Kattintson az **OK** gombra.
+1. Nyomja meg az ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R billentyűt. A Futtatás ablakban adja meg az elérési út *&#92;&#92;&lt; fájlkiszolgáló &gt; nevét* , és cserélje le a fájlkiszolgáló *nevét* a fájlkiszolgálón hozzárendelt eszköz nevére. Kattintson az **OK** gombra.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. Ekkor megnyílik a fájlkezelő. A létrehozott megosztásoknak meg kell jelenniük mappaként. Válasszon ki és duplán kattintva nyisson meg egy megosztást (mappát) a tartalma megtekintéséhez.

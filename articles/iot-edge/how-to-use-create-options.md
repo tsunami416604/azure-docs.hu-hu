@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550343"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>Tároló-létrehozási beállítások konfigurálása IoT Edge modulokhoz
@@ -52,15 +52,15 @@ A IoT Edge üzembe helyezési jegyzékfájl a JSON formátummal formázott létr
 
 Ez a edgeHub-példa a **HostConfig. PortBindings** paraméter használatával képezi le a tárolón lévő, a gazdagépen lévő portokra mutató portot.
 
-Ha a Visual studióhoz vagy a Visual Studio Code-hoz készült Azure IoT Tools-bővítményeket használja, a **telepítési. template. JSON** fájlban megírhatja a létrehozási beállításokat JSON formátumban. Ezután, amikor a bővítmény használatával felépíti a IoT Edge-megoldást, vagy létrehozza a telepítési jegyzéket, a JSON-t a IoT Edge futtatókörnyezet által várt formátumban fogja stringify. Például:
+Ha a Visual studióhoz vagy a Visual Studio Code-hoz készült Azure IoT Tools-bővítményeket használja, a fájl **deployment.template.jsban** megírhatja a létrehozási beállításokat JSON formátumban. Ezután, amikor a bővítmény használatával felépíti a IoT Edge-megoldást, vagy létrehozza a telepítési jegyzéket, a JSON-t a IoT Edge futtatókörnyezet által várt formátumban fogja stringify. Például:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-A létrehozási beállítások írásához egy tippet kell használni `docker inspect` a parancs használatával. A fejlesztési folyamat részeként futtassa a modult helyileg a használatával `docker run <container name>`. Ha a modul a kívánt módon működik, futtassa a parancsot `docker inspect <container name>`. Ez a parancs JSON formátumban jeleníti meg a modul részleteit. Keresse meg a konfigurált paramétereket, és másolja a JSON-t. Például:
+A létrehozási beállítások írásához egy tippet kell használni a `docker inspect` parancs használatával. A fejlesztési folyamat részeként futtassa a modult helyileg a használatával `docker run <container name>` . Ha a modul a kívánt módon működik, futtassa a parancsot `docker inspect <container name>` . Ez a parancs JSON formátumban jeleníti meg a modul részleteit. Keresse meg a konfigurált paramétereket, és másolja a JSON-t. Például:
 
-[![A Docker vizsgálatának eredményei](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) edgeHub](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![A Docker vizsgálatának eredményei edgeHub ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png)](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
 ## <a name="common-scenarios"></a>Gyakori helyzetek
 
@@ -75,11 +75,11 @@ A tároló-létrehozási lehetőségek számos forgatókönyvet tesznek lehetőv
 Ha a modulnak a IoT Edge-megoldáson kívüli szolgáltatással kell kommunikálnia, és nem használja az üzenet-útválasztást, akkor egy gazda portot kell leképeznie egy modul-portra.
 
 >[!TIP]
->Ez a port-hozzárendelés nem szükséges a modul – modul típusú kommunikációhoz ugyanazon az eszközön. Ha A modulnak le kell kérdezni egy, a B modulban üzemeltetett API-t, a port leképezése nélkül is megteheti. A B modulnak ki kell mutatnia egy portot a Docker, például `EXPOSE 8080`:. Ezután az A modul lekérdezheti az API-t a B modul neve alapján `http://ModuleB:8080/api`, például:.
+>Ez a port-hozzárendelés nem szükséges a modul – modul típusú kommunikációhoz ugyanazon az eszközön. Ha A modulnak le kell kérdezni egy, a B modulban üzemeltetett API-t, a port leképezése nélkül is megteheti. A B modulnak ki kell mutatnia egy portot a Docker, például: `EXPOSE 8080` . Ezután az A modul lekérdezheti az API-t a B modul neve alapján, például: `http://ModuleB:8080/api` .
 
 Először győződjön meg arról, hogy a modulon belüli port elérhető a kapcsolatok figyelése érdekében. Ezt a Docker teheti [elérhetővé teheti utasítás használatával](https://docs.docker.com/engine/reference/builder/#expose) . Például: `EXPOSE 8080`. Ha nincs megadva, a közzétett utasítás alapértelmezett értéke a TCP protokoll, vagy megadhatja az UDP-t.
 
-Ezután használja a [Docker-tároló létrehozási beállításainak](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) **HostConfig** csoportjában található **PortBindings** beállítást a modulban lévő, a gazdagépen lévő porthoz tartozó port leképezéséhez. Ha például az 8080-es portot a modulon belül közzétette, és azt szeretné leképezni a gazdagép-eszköz 80-es portjához, a template. JSON fájl létrehozási beállításai a következő példához hasonlóan néznek ki:
+Ezután használja a [Docker-tároló létrehozási beállításainak](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) **HostConfig** csoportjában található **PortBindings** beállítást a modulban lévő, a gazdagépen lévő porthoz tartozó port leképezéséhez. Ha például a modulban közzétette a 8080-es portot, és szeretné leképezni a gazdagép-eszköz 80-es portját, a fájl template.jsa létrehozás lehetőség a következő példához hasonlóan fog kinézni:
 
 ```json
 "createOptions": {
@@ -109,7 +109,7 @@ Deklarálhatja, hogy a gazdagép erőforrásai mekkora részét használhatják 
 * **MemorySwap**: teljes memória korlátja (memória + felcserélés). Például 536870912 bájt = 512 MB
 * **CpuPeriod**: a CPU-időszak hossza a másodpercenként. Az alapértelmezett érték 100000, így például a 25000 értéke korlátozza a tárolót a CPU-erőforrások 25%-ában.
 
-A template. JSON formátumban ezek az értékek a következő példához hasonlóan néznek ki:
+A template.jsformátum esetében ezek az értékek a következő példához hasonlóan néznek ki:
 
 ```json
 "createOptions": {

@@ -8,10 +8,10 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80477685"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service-környezet hálózati megfontolásai #
@@ -43,7 +43,7 @@ Ha rendelkezik ILB-bevezetéssel, akkor a ILB címe a HTTP/S, az FTP/S, a web De
 A bevezetéshez használt alhálózat mérete nem módosítható a bevezetési pont telepítése után.  A kiegészítő csomag az egyes infrastruktúra-szerepkörökhöz, valamint az egyes elkülönített App Service-példányokhoz tartozó címeket használ.  Emellett az Azure Networking minden létrehozott alhálózat esetében öt címet használ.  Egy App Service csomaggal nem rendelkező betekintő szolgáltató 12 címet fog használni az alkalmazások létrehozása előtt.  Ha ez egy ILB, akkor 13 címet fog használni, mielőtt létrehoz egy alkalmazást a kiegészítőben. A bevezetési folyamat felskálázása során az infrastruktúra-szerepköröket az App Service-csomag példányainak 15 és 20 többszöröse adja hozzá.
 
    > [!NOTE]
-   > Semmi más nem lehet az alhálózatban, de a központilag. Ügyeljen arra, hogy olyan címtartományt válasszon, amely lehetővé teszi a jövőbeli növekedést. Ez a beállítás később nem módosítható. A 256- `/24` es címmel rendelkező méretet javasoljuk.
+   > Semmi más nem lehet az alhálózatban, de a központilag. Ügyeljen arra, hogy olyan címtartományt válasszon, amely lehetővé teszi a jövőbeli növekedést. Ez a beállítás később nem módosítható. A `/24` 256-es címmel rendelkező méretet javasoljuk.
 
 Vertikális fel-vagy leskálázáskor a rendszer hozzáadja a megfelelő méretű új szerepköröket, majd a számítási feladatokat áttelepíti a jelenlegi méretről a célként megadott méretre. Az eredeti virtuális gépek csak a munkaterhelések áttelepítését követően törlődtek. Ha 100 ASP-példánnyal rendelkező beléptetési ponttal rendelkezett, akkor a virtuális gépek számának megduplázására van szükség.  Ezért javasoljuk, hogy a "/24" használatát az esetlegesen szükséges módosítások elfogadásához használja.  
 
@@ -114,7 +114,7 @@ A központilag működő működési függőségek mellett a portál felületén
 -   Kudu
 -   Bővítmények
 -   Process Explorer
--   Konzol
+-   Console
 
 Ha ILB-beadást használ, az SCM-hely nem érhető el a VNet kívülről. Bizonyos funkciók nem fognak működni az alkalmazás-portálon, mert hozzáférést igényelnek egy alkalmazás SCM-helyéhez. A portál használata helyett közvetlenül is csatlakozhat az SCM-webhelyhez. 
 
@@ -177,9 +177,9 @@ A bejövő és kimenő követelmények figyelembe vételével a NSG az ebben a p
 
 ![Bejövő biztonsági szabály][4]
 
-Az alapértelmezett szabályok lehetővé teszik, hogy a VNet lévő IP-címek a beadási alhálózattal beszéljenek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven nyilvános virtuális IP-cím kommunikáljon a közcélú hálózattal. Az alapértelmezett szabályok megtekintéséhez válassza a **Hozzáadás** ikon melletti **alapértelmezett szabályok** elemet. Ha az alapértelmezett szabályok előtt elutasítja az összes többi szabályt, meggátolja a virtuális IP-címek és a közszolgáltatások közötti forgalmat. A VNet belülről érkező forgalom elkerüléséhez adja hozzá a saját szabályt a bejövő adatok engedélyezéséhez. A AzureLoadBalancer egyenlő forrást kell használnia, amelynek a rendeltetése **a és** a **\*** portszáma. Mivel a NSG-szabály a beadási alhálózatra van alkalmazva, nem kell konkrétnak lennie a célhelyen.
+Az alapértelmezett szabályok lehetővé teszik, hogy a VNet lévő IP-címek a beadási alhálózattal beszéljenek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven nyilvános virtuális IP-cím kommunikáljon a közcélú hálózattal. Az alapértelmezett szabályok megtekintéséhez válassza a **Hozzáadás** ikon melletti **alapértelmezett szabályok** elemet. Ha az alapértelmezett szabályok előtt elutasítja az összes többi szabályt, meggátolja a virtuális IP-címek és a közszolgáltatások közötti forgalmat. A VNet belülről érkező forgalom elkerüléséhez adja hozzá a saját szabályt a bejövő adatok engedélyezéséhez. A AzureLoadBalancer egyenlő forrást kell használnia, amelynek a rendeltetése **a és a** portszáma **\*** . Mivel a NSG-szabály a beadási alhálózatra van alkalmazva, nem kell konkrétnak lennie a célhelyen.
 
-Ha IP-címet rendelt hozzá az alkalmazáshoz, győződjön meg róla, hogy megnyitotta a portok megtartását. A portok megtekintéséhez válassza ki **app Service Environment** > **IP-címeket**.  
+Ha IP-címet rendelt hozzá az alkalmazáshoz, győződjön meg róla, hogy megnyitotta a portok megtartását. A portok megtekintéséhez válassza ki **app Service Environment**  >  **IP-címeket**.  
 
 A következő kimenő szabályokban látható összes elemre az utolsó elem kivételével szükség van. Lehetővé teszik a jelen cikk korábbi részében említett, a kiszolgált kapcsolatokhoz való hálózati hozzáférést. Ha letiltja valamelyiket, a kiegészítő szolgáltatás leáll. A lista utolsó eleme lehetővé teszi, hogy a beadás a VNet más erőforrásaival kommunikáljon.
 
@@ -194,11 +194,11 @@ A kényszerített bújtatás akkor történik, amikor útvonalakat állít be a 
 Amikor létrehoz egy bevezetőt a portálon, az útválasztási táblázatokat is létrehozjuk a központból létrehozott alhálózaton.  Ezek az útvonalak egyszerűen csak azt mondják, hogy közvetlenül az internetre küldi a kimenő forgalmat.  
 Ha ugyanazt az útvonalat manuálisan szeretné létrehozni, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az Azure Portalt. Válassza a **hálózati** > **útválasztási táblák**lehetőséget.
+1. Nyissa meg az Azure Portalt. Válassza a **hálózati**  >  **útválasztási táblák**lehetőséget.
 
 2. Hozzon létre egy új útválasztási táblázatot a VNet megegyező régióban.
 
-3. Az útválasztási táblázat felhasználói felületén válassza az **útvonalak** > **Hozzáadás**lehetőséget.
+3. Az útválasztási táblázat felhasználói felületén válassza az **útvonalak**  >  **Hozzáadás**lehetőséget.
 
 4. Állítsa a **következő ugrás típusát** az **Internet** értékre, a **címnek** pedig **0.0.0.0/0**értékre. Kattintson a **Mentés** gombra.
 

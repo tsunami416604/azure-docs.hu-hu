@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80586976"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive az átjáró részletes ismertetése és ajánlott eljárásai
@@ -30,9 +30,9 @@ Az alábbi ábrán egy durva ábrán látható, hogy az átjáró hogyan nyújt 
 
 Az átjárónak a HDInsight-fürtök előtt történő elhelyezésének indítéka a szolgáltatások felderítésére és a felhasználói hitelesítésre szolgáló felület biztosítása. Az átjáró által biztosított hitelesítési mechanizmusok különösen az ESP-kompatibilis fürtök esetében fontosak.
 
-A szolgáltatások felderítése esetében az átjáró előnye, hogy a fürtben lévő minden egyes összetevő az átjáró webhelye ( `clustername.azurehdinsight.net/hive2`) alatt lévő különböző végpontként érhető el, szemben számos `host:port` párosítással.
+A szolgáltatások felderítése esetében az átjáró előnye, hogy a fürtben lévő minden egyes összetevő az átjáró webhelye () alatt lévő különböző végpontként érhető el `clustername.azurehdinsight.net/hive2` , szemben számos `host:port` párosítással.
 
-A hitelesítéshez az átjáró lehetővé teszi a felhasználók számára, hogy `username:password` hitelesítő adatokat használjanak. Az ESP-kompatibilis fürtök esetében ez a hitelesítő adat a felhasználó tartományának felhasználónevét és jelszavát fogja használni. Az átjárón keresztüli HDInsight-fürtök hitelesítéséhez nem szükséges, hogy az ügyfél Kerberos jegyet szerezzen. Mivel az átjáró fogadja `username:password` a hitelesítő adatokat, és beolvassa a felhasználó Kerberos-jegyét a felhasználó nevében, a biztonságos kapcsolatok bármely ügyfél-gazdagépről elérhetik az átjárót, beleértve a különböző AA-DDS tartományokhoz csatlakozó ügyfeleket, mint az (ESP) fürtöt.
+A hitelesítéshez az átjáró lehetővé teszi a felhasználók számára, hogy `username:password` hitelesítő adatokat használjanak. Az ESP-kompatibilis fürtök esetében ez a hitelesítő adat a felhasználó tartományának felhasználónevét és jelszavát fogja használni. Az átjárón keresztüli HDInsight-fürtök hitelesítéséhez nem szükséges, hogy az ügyfél Kerberos jegyet szerezzen. Mivel az átjáró fogadja a `username:password` hitelesítő adatokat, és beolvassa a felhasználó Kerberos-jegyét a felhasználó nevében, a biztonságos kapcsolatok bármely ügyfél-gazdagépről elérhetik az átjárót, beleértve a különböző AA-DDS tartományokhoz csatlakozó ügyfeleket, mint az (ESP) fürtöt.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -54,7 +54,7 @@ Az Enterprise Security Pack-kompatibilis fürtökön a megfelelően összetett A
 
 A fenti viselkedés részeként több helyszín áll rendelkezésre a teljesítménybeli problémák enyhítésére és megismerésére. Ha a lekérdezés teljesítményének romlását tapasztalja a HDInsight-átjárón keresztül, használja a következő feladatlistát:
 
-* Nagyméretű **választó** lekérdezések futtatásakor használja a **limit** záradékot. A **limit** záradék csökkenti az ügyfél gazdagépének jelentett összes sort. A **limit** záradék csak az eredmény generálására vonatkozik, és nem módosítja a lekérdezési tervet. Ha a **limit** záradékot szeretné alkalmazni a lekérdezési tervre, `hive.limit.optimize.enable`használja a konfigurációt. A **korlát** kombinálható egy eltolással az argumentumok **x, y korlátjának**használatával.
+* Nagyméretű **választó** lekérdezések futtatásakor használja a **limit** záradékot. A **limit** záradék csökkenti az ügyfél gazdagépének jelentett összes sort. A **limit** záradék csak az eredmény generálására vonatkozik, és nem módosítja a lekérdezési tervet. Ha a **limit** záradékot szeretné alkalmazni a lekérdezési tervre, használja a konfigurációt `hive.limit.optimize.enable` . A **korlát** kombinálható egy eltolással az argumentumok **x, y korlátjának**használatával.
 
 * Adja meg az oszlopok érdeklődését a **Select lekérdezések** futtatásakor a **Select \* **parancs használata helyett. Kevesebb oszlop kiválasztásával csökkentheti az olvasott adatmennyiséget.
 
@@ -72,11 +72,11 @@ A fenti viselkedés részeként több helyszín áll rendelkezésre a teljesítm
 
 * Az interaktív munkaterhelések futtatásakor érdemes Apache Hive LLAP használni, mivel a LLAP zökkenőmentesebb élményt biztosíthat a lekérdezési eredmények gyors visszaadásához
 
-* Érdemes lehet növelni a kaptár Metaadattár szolgáltatás számára elérhető szálak számát a használatával `hive.server2.thrift.max.worker.threads`. Ez a beállítás különösen akkor fontos, ha nagy számú egyidejű felhasználó küld lekérdezést a fürtnek
+* Érdemes lehet növelni a kaptár Metaadattár szolgáltatás számára elérhető szálak számát a használatával `hive.server2.thrift.max.worker.threads` . Ez a beállítás különösen akkor fontos, ha nagy számú egyidejű felhasználó küld lekérdezést a fürtnek
 
 * Csökkentse az átjáró bármely külső eszközről való eléréséhez használt újrapróbálkozások számát. Ha több újrapróbálkozás van használatban, érdemes lehet egy exponenciális visszalépési újrapróbálkozási szabályzatot alkalmazni.
 
-* Érdemes lehet a tömörítési struktúrát `hive.exec.compress.output` a `hive.exec.compress.intermediate`konfigurációk és a használatával engedélyezni.
+* Érdemes lehet a tömörítési struktúrát a konfigurációk és a használatával engedélyezni `hive.exec.compress.output` `hive.exec.compress.intermediate` .
 
 ## <a name="next-steps"></a>További lépések
 

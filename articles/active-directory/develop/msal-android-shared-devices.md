@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550265"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Megosztott eszköz mód Android-eszközökhöz
@@ -35,8 +35,8 @@ A megosztott eszköz mód az eszköz Microsoft Identity-beli felügyeletét is b
 
 Megosztott eszköz üzemmódú alkalmazás létrehozásához a fejlesztők és a felhőalapú eszközök rendszergazdái együttesen működnek:
 
-- A fejlesztők egyfiókos alkalmazást írnak (a több fiókból álló alkalmazások nem támogatottak a megosztott eszköz módban) `"shared_device_mode_supported": true` , hozzáadhatók az alkalmazás konfigurációjához, és kódot írhatnak az olyan dolgok kezelésére, mint például a megosztott eszközök kijelentkezése.
-- Az eszközök rendszergazdái az eszköz megosztását a hitelesítő alkalmazás telepítésével, valamint a hitelesítő alkalmazás használatával a megosztott módba állításával készíti el. A [hitelesítő alkalmazás](../user-help/user-help-auth-app-overview.md)használatával csak a [Cloud Device rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) szerepkörrel rendelkező felhasználók helyezhetnek el egy eszközt megosztott módba. A Azure Portal a (z) **Azure Active Directory** > **szerepkörök és rendszergazdák** > **felhőalapú eszköz rendszergazdája**segítségével konfigurálhatja a szervezeti szerepkörök tagságát.
+- A fejlesztők egyfiókos alkalmazást írnak (a több fiókból álló alkalmazások nem támogatottak a megosztott eszköz módban), hozzáadhatók `"shared_device_mode_supported": true` az alkalmazás konfigurációjához, és kódot írhatnak az olyan dolgok kezelésére, mint például a megosztott eszközök kijelentkezése.
+- Az eszközök rendszergazdái az eszköz megosztását a hitelesítő alkalmazás telepítésével, valamint a hitelesítő alkalmazás használatával a megosztott módba állításával készíti el. A [hitelesítő alkalmazás](../user-help/user-help-auth-app-overview.md)használatával csak a [Cloud Device rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) szerepkörrel rendelkező felhasználók helyezhetnek el egy eszközt megosztott módba. A Azure Portal a (z) **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **felhőalapú eszköz rendszergazdája**segítségével konfigurálhatja a szervezeti szerepkörök tagságát.
 
  Ez a cikk elsősorban a fejlesztőknek szól.
 
@@ -55,7 +55,7 @@ A Microsoft Authentication Library SDK (MSAL) használatával írt alkalmazások
 
 Az alkalmazás a személyes eszközökön és a megosztott eszközökön való futtatás támogatásához is felépíthető. Ha az alkalmazás jelenleg több fiókot támogat, és a megosztott eszköz módot szeretné támogatni, adja hozzá az egyfiókos mód támogatását.
 
-Azt is megteheti, hogy az alkalmazás attól függően módosítja a viselkedését, hogy milyen típusú eszközön fut. A `ISingleAccountPublicClientApplication.isSharedDevice()` használatával meghatározhatja, hogy mikor fusson egyfiókos módban.
+Azt is megteheti, hogy az alkalmazás attól függően módosítja a viselkedését, hogy milyen típusú eszközön fut. `ISingleAccountPublicClientApplication.isSharedDevice()`A használatával meghatározhatja, hogy mikor fusson egyfiókos módban.
 
 Két különböző interfész látható, amely az alkalmazás által használt eszköz típusát jelöli. Ha alkalmazás-példányt kér a MSAL alkalmazás-előállítótól, a rendszer automatikusan megadja a megfelelő alkalmazásobjektum-objektumot.
 
@@ -63,7 +63,7 @@ A következő objektummodell szemlélteti a kapott objektum típusát, valamint 
 
 ![nyilvános ügyfélalkalmazás öröklési modellje](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
 
-Az `PublicClientApplication` objektum beolvasása után be kell állítania a megfelelő felületet. A következő kód több fiók üzemmódot vagy egyfiókos üzemmódot keres, és megfelelő módon veti fel az Application objektumot:
+Az objektum beolvasása után be kell állítania a megfelelő felületet `PublicClientApplication` . A következő kód több fiók üzemmódot vagy egyfiókos üzemmódot keres, és megfelelő módon veti fel az Application objektumot:
 
 ```java
 private IPublicClientApplication mApplication;

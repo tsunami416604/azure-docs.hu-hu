@@ -14,10 +14,10 @@ ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80584534"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
@@ -26,7 +26,7 @@ Ez a témakör a OData-lekérdezési lehetőségeket és a tördelési támogat�
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-* A `Datetime` típusú entitások tulajdonságai mindig UTC formátumban jelennek meg.
+* A típusú entitások tulajdonságai `Datetime` mindig UTC formátumban jelennek meg.
 * A lekérdezési karakterláncban található üres területnek URL-kódolással kell rendelkeznie, mielőtt elküld egy kérést.
 
 ## <a name="comparison-operators"></a>Összehasonlító operátorok
@@ -45,11 +45,11 @@ Tartomány operátorai:
 - `ge`: Ellenőrizze, hogy a mező értéke *nagyobb-e, vagy egyenlő-* e az állandó értékkel.
 - `le`: Megvizsgálhatja, hogy egy mező *kisebb vagy egyenlő-e, mint* egy konstans érték.
 
-## <a name="filter"></a>Szűrés
+## <a name="filter"></a>Szűrő
 
-A `$filter` használatával OData szűrő paramétert adhat meg, amely csak azokat az objektumokat keresi meg, amelyekre kíváncsi.
+A használatával `$filter` OData szűrő paramétert adhat meg, amely csak azokat az objektumokat keresi meg, amelyekre kíváncsi.
 
-A következő REST-példa szűrők egy `alternateId` eszköz értékén:
+A következő REST-példa szűrők `alternateId` egy eszköz értékén:
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
@@ -64,17 +64,17 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Rendezési sorrend
 
-Ezzel `$orderby` a paranccsal rendezheti a visszaadott objektumokat a megadott paraméterrel. Például:  
+Ezzel a paranccsal `$orderby` rendezheti a visszaadott objektumokat a megadott paraméterrel. Például:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Az eredmények növekvő vagy csökkenő sorrendbe rendezéséhez fűzze hozzá a mezőt `asc` vagy `desc` a nevet a mezőhöz szóközzel elválasztva. Például: `$orderby properties/created desc`.
+Az eredmények növekvő vagy csökkenő sorrendbe rendezéséhez fűzze hozzá a `asc` mezőt vagy a `desc` nevet a mezőhöz szóközzel elválasztva. Példa: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Token kihagyása
 
-Ha egy lekérdezés válasza sok elemet tartalmaz, a szolgáltatás a `$skiptoken` következő`@odata.nextLink`oldalának beolvasásához használt () értéket adja vissza. A teljes eredményhalmaz használatával használhatja a lapot.
+Ha egy lekérdezés válasza sok elemet tartalmaz, a szolgáltatás a `$skiptoken` `@odata.nextLink` következő oldalának beolvasásához használt () értéket adja vissza. A teljes eredményhalmaz használatával használhatja a lapot.
 
 A Media Services V3 esetében nem konfigurálható az oldalméret. Az oldalméret az entitás típusától függően változik. Olvassa el a részleteket követő egyes szakaszokat.
 
@@ -85,7 +85,7 @@ Ha entitásokat hoznak létre vagy törölnek a gyűjteményen belüli lapozás 
 >
 > Az `nextLink` érték csak akkor jelenik meg, ha az entitások több oldala is van.
 
-Vegye figyelembe az alábbi példát, `$skiptoken` ahol a használatban van. Ügyeljen rá, hogy a *amstestaccount* cserélje le a fiók nevére, és állítsa be az *API-Version* értéket a legújabb verzióra.
+Vegye figyelembe az alábbi példát, ahol a `$skiptoken` használatban van. Ügyeljen rá, hogy a *amstestaccount* cserélje le a fiók nevére, és állítsa be az *API-Version* értéket a legújabb verzióra.
 
 Ha a következőhöz hasonló eszközök listáját kéri:
 
@@ -156,27 +156,27 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rendezési beállításokat különböző entitásokra:
 
-|Entitás neve|Tulajdonság neve|Szűrés|Rendelés|
+|Entitás neve|Tulajdonság neve|Szűrő|Rendelés|
 |---|---|---|---|
-|[Eszközök](https://docs.microsoft.com/rest/api/media/assets/)|név|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
+|[Objektumok](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
 ||Properties. alternateId |`eq`||
 ||Properties. assetId |`eq`||
 ||tulajdonságok. létrehozva| `eq`, `gt`, `lt`| `asc` és `desc`|
-|[Tartalmi kulcs házirendjei](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|név|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+|[Tartalomkulcsszabályok](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. létrehozva    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. Leírás    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||Properties. policyId|`eq`, `ne`||
-|[Feladatok](https://docs.microsoft.com/rest/api/media/jobs)| név  | `eq`            | `asc` és `desc`|
+|[Feladatok](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` és `desc`|
 ||tulajdonságok. állapot        | `eq`, `ne`        |                         |
 ||tulajdonságok. létrehozva      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 ||Properties. lastModified | `gt`, `ge`, `lt`, `le` | `asc` és `desc`| 
-|[Folyamatos átviteli lokátorok](https://docs.microsoft.com/rest/api/media/streaminglocators)|név|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+|[Streameléskeresők](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. létrehozva    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. végső Befejezés    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-|[Folyamatos átviteli házirendek](https://docs.microsoft.com/rest/api/media/streamingpolicies)|név|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+|[Streamelési szabályzatok](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
 ||tulajdonságok. létrehozva    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-|[Átalakítások](https://docs.microsoft.com/rest/api/media/transforms)| név | `eq`            | `asc` és `desc`|
+|[Átalakítások](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` és `desc`|
 || tulajdonságok. létrehozva      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 || Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 

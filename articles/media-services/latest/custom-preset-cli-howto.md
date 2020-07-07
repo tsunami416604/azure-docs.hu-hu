@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382953"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Kódolás egyéni átalakítással – Azure CLI
@@ -42,9 +42,9 @@ Egyéni beállításkészletek létrehozásakor a következő szempontokat kell 
 
 Az alábbi példa egy új átalakító kérelem törzsét határozza meg. Definiáljuk azokat a kimeneteket, amelyeket a rendszer a transzformáció használatakor szeretne generálni.
 
-Ebben a példában először adunk hozzá egy AacAudio réteget a hangkódoláshoz, és két H264Video réteget a videó kódolásához. A videó rétegekben címkéket rendelünk hozzá, hogy használhatók legyenek a kimeneti fájlnevekben. Ezután azt szeretnénk, hogy a kimenet bélyegképeket is tartalmazzon. Az alábbi példában a bemeneti videó felbontásának 50%-ában, valamint három időbélyeggel ({25%, 50%, 75}) adjuk meg a képeket PNG formátumban. Végül megadjuk a kimeneti fájlok formátumát – az egyiket a videó + hang, a másik pedig a miniatűrökhöz. Mivel több H264Layers is rendelkezünk, olyan makrókat kell használnia, amelyek egyedi neveket hoznak létre rétegként. Használhatunk egy vagy `{Bitrate}` egy `{Label}` makrót is, a példa az előzőt mutatja.
+Ebben a példában először adunk hozzá egy AacAudio réteget a hangkódoláshoz, és két H264Video réteget a videó kódolásához. A videó rétegekben címkéket rendelünk hozzá, hogy használhatók legyenek a kimeneti fájlnevekben. Ezután azt szeretnénk, hogy a kimenet bélyegképeket is tartalmazzon. Az alábbi példában a bemeneti videó felbontásának 50%-ában, valamint három időbélyeggel ({25%, 50%, 75}) adjuk meg a képeket PNG formátumban. Végül megadjuk a kimeneti fájlok formátumát – az egyiket a videó + hang, a másik pedig a miniatűrökhöz. Mivel több H264Layers is rendelkezünk, olyan makrókat kell használnia, amelyek egyedi neveket hoznak létre rétegként. Használhatunk egy vagy egy `{Label}` `{Bitrate}` makrót is, a példa az előzőt mutatja.
 
-Ezt a transzformációt egy fájlba fogjuk menteni. Ebben a példában a fájlt `customPreset.json`nevezjük.
+Ezt a transzformációt egy fájlba fogjuk menteni. Ebben a példában a fájlt nevezjük `customPreset.json` .
 
 ```json
 {
@@ -126,7 +126,7 @@ Ezt a transzformációt egy fájlba fogjuk menteni. Ebben a példában a fájlt 
 
 ## <a name="create-a-new-transform"></a>Új átalakítás létrehozása  
 
-Ebben a példában egy olyan **átalakítót** hozunk létre, amely a korábban definiált egyéni beállításkészlet alapján lett létrehozva. Átalakítás létrehozásakor először ellenőrizze, hogy már létezik-e. Ha az átalakítás létezik, használja újra. A következő `show` parancs visszaadja `customTransformName` az átalakítást, ha létezik:
+Ebben a példában egy olyan **átalakítót** hozunk létre, amely a korábban definiált egyéni beállításkészlet alapján lett létrehozva. Átalakítás létrehozásakor először ellenőrizze, hogy már létezik-e. Ha az átalakítás létezik, használja újra. A következő `show` parancs visszaadja az `customTransformName` átalakítást, ha létezik:
 
 ```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
@@ -140,6 +140,6 @@ az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName
 
 Ahhoz Media Services, hogy az átalakítást a megadott videóra vagy hangra alkalmazza, el kell küldenie egy feladatot az átalakítás alatt. Ha egy teljes példát mutat be, amely bemutatja, hogyan küldhet el egy feladatot egy átalakítás alatt, tekintse meg a gyors útmutató [: Stream video Files – Azure CLI](stream-files-cli-quickstart.md)című témakört.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [Azure CLI](/cli/azure/ams)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80388899"
 ---
 # <a name="about-migration"></a>A migrálás ismertetése
@@ -20,7 +20,7 @@ ms.locfileid: "80388899"
 Ebből a cikkből megtudhatja, hogyan segíti a [Azure site Recovery](site-recovery-overview.md) szolgáltatás a gépek áttelepítését. 
 
 > [!TIP]
-> A virtuális gépek és kiszolgálók Azure-ba való áttelepítéséhez most a Azure Migrate szolgáltatást kell használnia a Azure Site Recovery szolgáltatás helyett. [További információ](../migrate/migrate-services-overview.md).
+> A virtuális gépek és kiszolgálók Azure-ba való áttelepítéséhez most a Azure Migrate szolgáltatást kell használnia a Azure Site Recovery szolgáltatás helyett. [További információk](../migrate/migrate-services-overview.md).
 
 
 A Site Recovery használatával áttelepíthetők:
@@ -30,7 +30,7 @@ A Site Recovery használatával áttelepíthetők:
 - **AWS áttelepítése**: AWS Windows-példányok áttelepítése Azure IaaS virtuális gépekre. 
 
 > [!NOTE]
-> Mostantól áttelepítheti a helyszínről az Azure-ba a Azure Migrate szolgáltatás használatával. [További információ](../migrate/migrate-overview.md).
+> Mostantól áttelepítheti a helyszínről az Azure-ba a Azure Migrate szolgáltatás használatával. [További információk](../migrate/migrate-overview.md).
 
 ## <a name="what-do-we-mean-by-migration"></a>Mit értünk áttelepítés alatt?
 
@@ -40,7 +40,7 @@ A helyszíni és az Azure-beli virtuális gépek vész-helyreállítási Site Re
 - Az áttelepítés során a helyszíni gépeket az Azure-ba, vagy egy másodlagos régióba replikálja az Azure-ba. Ezután a virtuális gép az elsődleges helyről a másodlagosra kerül, és befejezi az áttelepítési folyamatot. Nincs szükség feladat-visszavételre.  
 
 
-## <a name="migration-scenarios"></a> Áttelepítési forgatókönyvek
+## <a name="migration-scenarios"></a>Migrálási forgatókönyvek
 
 **Forgatókönyv** | **Részletek**
 --- | ---

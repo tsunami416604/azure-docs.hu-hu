@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80297713"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-es sorozatú szoftverek, magas rendelkezésre állás és hálózati követelmények
@@ -70,9 +70,9 @@ A StorSimple-eszköz egy zárolt eszköz. A tűzfalon azonban meg kell nyitni a 
 | UDP 53 (DNS) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet alapú DNS-kiszolgálót használ. |
 | UDP 123 (NTP) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet-alapú NTP-kiszolgálót használ. |
 | TCP 9354 |Ki |WAN |Igen |A StorSimple eszköz a kimenő portot használja a StorSimple Eszközkezelő szolgáltatással való kommunikációhoz. |
-| 3260 (iSCSI) |A |LAN |Nem |Ez a port az iSCSI-kapcsolaton keresztüli adateléréshez használatos. |
-| 5985 |A |LAN |Nem |A StorSimple Snapshot Manager a bejövő portot használja a StorSimple eszközzel való kommunikációhoz.<br>Ezt a portot akkor is használja a rendszer, amikor távolról csatlakozik a Windows PowerShell StorSimple-bővítménye HTTP-n keresztül. |
-| 5986 |A |LAN |Nem |Ezt a portot akkor használja a rendszer, amikor távolról csatlakozik Windows PowerShell StorSimple-bővítménye HTTPS-kapcsolaton keresztül. |
+| 3260 (iSCSI) |In |LAN |Nem |Ez a port az iSCSI-kapcsolaton keresztüli adateléréshez használatos. |
+| 5985 |In |LAN |Nem |A StorSimple Snapshot Manager a bejövő portot használja a StorSimple eszközzel való kommunikációhoz.<br>Ezt a portot akkor is használja a rendszer, amikor távolról csatlakozik a Windows PowerShell StorSimple-bővítménye HTTP-n keresztül. |
+| 5986 |In |LAN |Nem |Ezt a portot akkor használja a rendszer, amikor távolról csatlakozik Windows PowerShell StorSimple-bővítménye HTTPS-kapcsolaton keresztül. |
 
 <sup>1</sup> nem szükséges bejövő portot megnyitni a nyilvános interneten.
 
@@ -122,7 +122,7 @@ Javasoljuk, hogy a legtöbb esetben a StorSimple rögzített IP-címek alapján 
 
 Az útválasztási metrika társítva van az interfészekhez és az átjáróhoz, amely az adatokat a megadott hálózatokra irányítja. Az útválasztási metrikát az útválasztási protokoll használja az adott célhelyhez tartozó legjobb elérési út kiszámításához, ha több elérési út is létezik ugyanarra a célhelyre. Minél alacsonyabb az útválasztási metrika, annál magasabb a preferencia.
 
-A StorSimple kontextusában, ha több hálózati adapter és átjáró van konfigurálva a forgalom továbbítására, az útválasztási mérőszámok lejátszásra kerülnek, hogy meghatározzák azt a relatív sorrendet, amelyben a rendszer használni fogja a csatolókat. A felhasználó nem módosíthatja az útválasztási metrikákat. A `Get-HcsRoutingTable` parancsmag segítségével azonban kinyomtathatja az útválasztási táblázatot (és metrikákat) a StorSimple-eszközön. További információ a Get-HcsRoutingTable parancsmagról a [StorSimple-telepítés hibaelhárítása című](storsimple-troubleshoot-deployment.md)témakörben.
+A StorSimple kontextusában, ha több hálózati adapter és átjáró van konfigurálva a forgalom továbbítására, az útválasztási mérőszámok lejátszásra kerülnek, hogy meghatározzák azt a relatív sorrendet, amelyben a rendszer használni fogja a csatolókat. A felhasználó nem módosíthatja az útválasztási metrikákat. A parancsmag segítségével azonban `Get-HcsRoutingTable` kinyomtathatja az útválasztási táblázatot (és metrikákat) a StorSimple-eszközön. További információ a Get-HcsRoutingTable parancsmagról a [StorSimple-telepítés hibaelhárítása című](storsimple-troubleshoot-deployment.md)témakörben.
 
 A 2. frissítéshez és újabb verziókhoz használt útválasztási metrikai algoritmust a következő módon lehet megmagyarázni.
 
@@ -233,7 +233,7 @@ A StorSimple-eszköz 8600-es verziójában az elsődleges ház mellett egy kiter
 * Győződjön meg arról, hogy mind a EBOD, mind az SAS-kábelek, mind a merevlemez-meghajtók mindig telepítve vannak.
 * Ha egy EBOD-bekerítés-vezérlő modul meghibásodik, azonnal kérjen cserét.
 * Ha egy EBOD ház-vezérlő modul meghibásodik, győződjön meg arról, hogy a másik vezérlő modul aktív, mielőtt lecseréli a hibás modult. Ha ellenőrizni szeretné, hogy a vezérlő aktív-e, nyissa [meg az eszközön az aktív vezérlőt](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
-* Egy EBOD-vezérlő modul cseréje során a StorSimple Eszközkezelő szolgáltatásban folyamatosan figyeli az összetevő állapotát a **figyelési** > **hardver állapotával**.
+* Egy EBOD-vezérlő modul cseréje során a StorSimple Eszközkezelő szolgáltatásban folyamatosan figyeli az összetevő állapotát a **figyelési**  >  **hardver állapotával**.
 * Ha egy SAS-kábel meghibásodása vagy pótlása szükséges (Microsoft ügyfélszolgálata kell vennie az ilyen meghatározáshoz), ügyeljen arra, hogy csak a cserét igénylő SAS-kábelt távolítsa el.
 * Ne egyidejűleg távolítsa el mindkét SAS-kábelt a rendszerből.
 

@@ -1,20 +1,20 @@
 ---
-title: CreateUiDefinition. JSON fájl a portál ablaktáblához
+title: CreateUiDefinition.jsa fájl a portálon panel
 description: Útmutatás a Azure Portal felhasználói felületi definícióinak létrehozásához. Azure Managed Applications definiálásakor használatos.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: 2956c76f5bec353639b39228b982db21b6932deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294892"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition.json az Azure-beli felügyelt példány létrehozási felületéhez
 
-Ez a dokumentum bemutatja a **createUiDefinition. JSON** fájl alapvető fogalmait, amelyeket Azure Portal használ a felhasználói felület definiálásához a felügyelt alkalmazások létrehozásakor.
+Ez a dokumentum bemutatja a **createUiDefinition.jsazon** alapvető fogalmait, amelyeket a Azure Portal a felhasználói felület definiálására használ a felügyelt alkalmazások létrehozásakor.
 
 A sablon a következő
 
@@ -38,17 +38,17 @@ A CreateUiDefinition mindig három tulajdonságot tartalmaz:
 * version
 * paraméterek
 
-A kezelőnek mindig a `Microsoft.Azure.CreateUIDef`-nek kell lennie, és `0.1.2-preview`a legújabb támogatott verzió a.
+A kezelőnek mindig a-nek kell lennie `Microsoft.Azure.CreateUIDef` , és a legújabb támogatott verzió a `0.1.2-preview` .
 
-A Parameters tulajdonság sémája a megadott kezelő és verzió kombinációjából függ. A felügyelt alkalmazások esetében a támogatott tulajdonságok `basics`a `steps`következők: `outputs`, és. Az alapértékek és a lépések tulajdonságai a Azure Portal megjeleníteni kívánt [elemeket](create-uidefinition-elements.md) , például a szövegmezőket és a legördülő listákat tartalmazzák. A kimenet tulajdonság a megadott elemek kimeneti értékének leképezésére szolgál a Azure Resource Manager telepítési sablon paramétereinek.
+A Parameters tulajdonság sémája a megadott kezelő és verzió kombinációjából függ. A felügyelt alkalmazások esetében a támogatott tulajdonságok a következők:, `basics` `steps` és `outputs` . Az alapértékek és a lépések tulajdonságai a Azure Portal megjeleníteni kívánt [elemeket](create-uidefinition-elements.md) , például a szövegmezőket és a legördülő listákat tartalmazzák. A kimenet tulajdonság a megadott elemek kimeneti értékének leképezésére szolgál a Azure Resource Manager telepítési sablon paramétereinek.
 
-Beleértve `$schema` a javasolt, de nem kötelező. Ha `version` meg van adva, a értékének meg kell egyeznie `$schema` az URI-n belüli verzióval.
+Beleértve `$schema` a javasolt, de nem kötelező. Ha meg van adva, a értékének `version` meg kell egyeznie az URI-n belüli verzióval `$schema` .
 
 A createUiDefinition létrehozásához JSON-szerkesztőt használhat, majd a [createUiDefinition-homokozóban](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) tesztelheti azt. A homokozóval kapcsolatos további információkért lásd: [Azure Managed Applications-portál felületének tesztelése](test-createuidefinition.md).
 
 ## <a name="basics"></a>Alapvető beállítások
 
-Az alapismeretek az első lépés, amikor a Azure Portal elemzi a fájlt. A-ben `basics`megadott elemek megjelenítésén kívül a portál befecskendezi az elemeket a felhasználók számára az előfizetés, az erőforráscsoport és a telepítés helyének kiválasztásához. Ha lehetséges, a központi telepítésre vonatkozó paramétereket lekérdező elemek, például a fürt vagy a rendszergazdai hitelesítő adatok neve, ebben a lépésben kell megjelenniük.
+Az alapismeretek az első lépés, amikor a Azure Portal elemzi a fájlt. A-ben megadott elemek megjelenítésén kívül `basics` a portál befecskendezi az elemeket a felhasználók számára az előfizetés, az erőforráscsoport és a telepítés helyének kiválasztásához. Ha lehetséges, a központi telepítésre vonatkozó paramétereket lekérdező elemek, például a fürt vagy a rendszergazdai hitelesítő adatok neve, ebben a lépésben kell megjelenniük.
 
 ## <a name="steps"></a>Lépések
 
@@ -56,9 +56,9 @@ A Steps (lépések) tulajdonsága nulla vagy több további lépést is tartalma
 
 ## <a name="outputs"></a>Kimenetek
 
-A Azure Portal a `outputs` tulajdonság használatával képezi le `basics` az elemeket `steps` a és a Azure Resource Manager központi telepítési sablon paraméterei között. A szótár kulcsai a sablon paramétereinek nevei, és az értékek a hivatkozott elemek kimeneti objektumainak tulajdonságai.
+A Azure Portal a `outputs` tulajdonság használatával képezi le az elemeket a `basics` és a `steps` Azure Resource Manager központi telepítési sablon paraméterei között. A szótár kulcsai a sablon paramétereinek nevei, és az értékek a hivatkozott elemek kimeneti objektumainak tulajdonságai.
 
-A felügyelt alkalmazás-erőforrás nevének megadásához meg kell adnia egy `applicationResourceName` nevű értéket a kimenetek tulajdonságban. Ha nem állítja be ezt az értéket, az alkalmazás hozzárendel egy GUID azonosítót a névhez. A felhasználói felületen olyan szövegmezőt is hozzáadhat, amely a felhasználótól származó nevet kér.
+A felügyelt alkalmazás-erőforrás nevének megadásához meg kell adnia egy nevű értéket `applicationResourceName` a kimenetek tulajdonságban. Ha nem állítja be ezt az értéket, az alkalmazás hozzárendel egy GUID azonosítót a névhez. A felhasználói felületen olyan szövegmezőt is hozzáadhat, amely a felhasználótól származó nevet kér.
 
 ```json
 "outputs": {
@@ -91,11 +91,11 @@ A CreateUiDefinition [funkciói](create-uidefinition-functions.md) az elemek bem
 
 ## <a name="next-steps"></a>További lépések
 
-A createUiDefinition. JSON fájlnak is van egy egyszerű sémája. A valódi mélysége az összes támogatott elemtől és függvénytől származik. Ezeket az elemeket részletesebben a következő helyen ismertetjük:
+Maga a fájl createUiDefinition.jsegy egyszerű sémával rendelkezik. A valódi mélysége az összes támogatott elemtől és függvénytől származik. Ezeket az elemeket részletesebben a következő helyen ismertetjük:
 
 - [Elemek](create-uidefinition-elements.md)
 - [Functions](create-uidefinition-functions.md)
 
-A createUiDefinition aktuális JSON-sémája itt érhető el `https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json`:.
+A createUiDefinition aktuális JSON-sémája itt érhető el: `https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json` .
 
-Példa felhasználói felületre: [createUiDefinition. JSON](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json).
+Példa felhasználói felületre: [createUiDefinition.js](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json).

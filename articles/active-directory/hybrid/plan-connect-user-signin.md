@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331264"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Felhasználói bejelentkezési beállítások Azure AD Connect
@@ -112,7 +112,7 @@ További információ: az [Azure ad harmadik féltől származó összevonási k
 ### <a name="understanding-user-principal-name"></a>Az egyszerű felhasználónevek ismertetése
 Active Directory az alapértelmezett egyszerű felhasználónév (UPN) utótag annak a tartománynak a DNS-neve, amelyben a felhasználói fiókot létrehozták. A legtöbb esetben ez az a tartománynév, amely az interneten vállalati tartományként van regisztrálva. Azonban Active Directory tartományok és megbízhatósági kapcsolatok használatával további UPN-utótagokat adhat hozzá.
 
-A felhasználó UPN-je formátuma username@domain. Például egy "contoso.com" nevű Active Directory tartományhoz a János nevű felhasználó rendelkezhet az UPN-vel (john@contoso.com""). A felhasználó egyszerű felhasználóneve a 822-es RFC-dokumentumon alapul. Bár az UPN és az e-mail ugyanazzal a formátummal rendelkezik, előfordulhat, hogy a felhasználó UPN-értéke nem egyezik meg a felhasználó e-mail-címével.
+A felhasználó UPN-je formátuma username@domain . Például egy "contoso.com" nevű Active Directory tartományhoz a János nevű felhasználó rendelkezhet az UPN-vel ( john@contoso.com ""). A felhasználó egyszerű felhasználóneve a 822-es RFC-dokumentumon alapul. Bár az UPN és az e-mail ugyanazzal a formátummal rendelkezik, előfordulhat, hogy a felhasználó UPN-értéke nem egyezik meg a felhasználó e-mail-címével.
 
 ### <a name="user-principal-name-in-azure-ad"></a>Egyszerű felhasználónév az Azure AD-ben
 A Azure AD Connect varázsló a userPrincipalName attribútumot használja, vagy lehetővé teszi, hogy az Azure AD-ben a helyszínen használt egyszerű felhasználónevet (egyéni telepítésben) adja meg. Ez az az érték, amelyet a rendszer az Azure AD-be való bejelentkezéshez használ. Ha a userPrincipalName attribútum értéke nem felel meg egy ellenőrzött tartománynak az Azure AD-ben, akkor az Azure AD lecseréli egy alapértelmezett. onmicrosoft.com értékre.
@@ -126,7 +126,7 @@ Az Azure AD bejelentkezési élmény attól függ, hogy az Azure AD képes-e az 
 Azure AD Connect listázza a tartományokhoz definiált UPN-utótagokat, és az Azure AD-ben megpróbálják egyeztetni őket egy egyéni tartománnyal. Ezt követően segítséget nyújt a szükséges műveletek elvégzéséhez.
 Az Azure AD bejelentkezési oldala felsorolja a helyszíni Active Directoryhoz definiált UPN-utótagokat, és megjeleníti a megfelelő állapotot az egyes utótagok alapján. Az állapot értéke a következők egyike lehet:
 
-| Állapot | Leírás | Beavatkozás szükséges |
+| Állam | Leírás | Beavatkozás szükséges |
 |:--- |:--- |:--- |
 | Ellenőrzött |Azure AD Connect talált egy megfelelő ellenőrzött tartományt az Azure AD-ben. A tartomány összes felhasználója a helyszíni hitelesítő adataival jelentkezhet be. |Nincs szükség beavatkozásra. |
 | Nincs ellenőrizve |Azure AD Connect a megfelelő egyéni tartományt találta az Azure AD-ben, de nem ellenőrzi. A tartomány felhasználóinak UPN-utótagja a szinkronizálás után az alapértelmezett. onmicrosoft.com utótagra változik, ha a tartomány nincs ellenőrizve. | [Ellenőrizze az egyéni tartományt az Azure AD-ben.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
@@ -151,15 +151,15 @@ Határozottan javasoljuk, hogy tartsa meg az alapértelmezett attribútumot a us
 #### <a name="different-custom-domain-states-and-their-effect-on-the-azure-sign-in-experience"></a>Különböző egyéni tartományi állapotok és azok hatása az Azure bejelentkezési felületére
 Nagyon fontos tisztában lenni az Azure AD-címtárban lévő egyéni tartományi állapotok és a helyszínen definiált UPN-utótagok közötti kapcsolattal. Ismerkedjen meg a lehetséges Azure-bejelentkezési élményekkel, amikor Azure AD Connect használatával állítja be a szinkronizálást.
 
-A következő információk alapján feltételezzük, hogy az UPN-utótag contoso.com van szó, amelyet a helyszíni címtárban használ az egyszerű felhasználónév részeként – például user@contoso.com.
+A következő információk alapján feltételezzük, hogy az UPN-utótag contoso.com van szó, amelyet a helyszíni címtárban használ az egyszerű felhasználónév részeként – például user@contoso.com .
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Expressz beállítások/jelszó kivonatának szinkronizálása
 
 | Állapot | A felhasználói Azure bejelentkezési felületének hatása |
 |:---:|:--- |
-| Nincs hozzáadva |Ebben az esetben a contoso.com egyéni tartománya nem lett hozzáadva az Azure AD-címtárban. Azok a felhasználók, akik az utótaggal @contoso.com rendelkeznek a helyszíni UPN-vel, nem fogják tudni használni a helyszíni UPN-t az Azure-ba való bejelentkezéshez. Ehelyett egy új UPN-t kell használniuk, amelyet az Azure AD az alapértelmezett Azure AD-címtár utótagjának hozzáadásával biztosít számukra. Ha például a felhasználókat az Azure AD-címtár azurecontoso.onmicrosoft.com szinkronizálja, akkor a helyszíni felhasználó user@contoso.com számára a rendszer UPN-t kap. user@azurecontoso.onmicrosoft.com |
+| Nincs hozzáadva |Ebben az esetben a contoso.com egyéni tartománya nem lett hozzáadva az Azure AD-címtárban. Azok a felhasználók, akik az utótaggal rendelkeznek a helyszíni UPN-vel, @contoso.com nem fogják tudni használni a helyszíni UPN-t az Azure-ba való bejelentkezéshez. Ehelyett egy új UPN-t kell használniuk, amelyet az Azure AD az alapértelmezett Azure AD-címtár utótagjának hozzáadásával biztosít számukra. Ha például a felhasználókat az Azure AD-címtár azurecontoso.onmicrosoft.com szinkronizálja, akkor a helyszíni felhasználó számára a rendszer UPN-t user@contoso.com kap user@azurecontoso.onmicrosoft.com . |
 | Nincs ellenőrizve |Ebben az esetben az Azure AD-címtárban hozzáadott egyéni tartomány contoso.com. Azonban még nincs ellenőrizve. Ha a felhasználókat a tartomány ellenőrzése nélkül szinkronizálja, akkor a felhasználók az Azure AD-ben egy új UPN-t kapnak, akárcsak a "nincs hozzáadott" forgatókönyvben. |
-| Ellenőrzött |Ebben az esetben az UPN-utótaghoz az Azure AD-ben már hozzáadott és ellenőrzött egyéni tartományi contoso.com van. A felhasználók az Azure AD-vel való szinkronizálás után használhatják a helyszíni egyszerű felhasználónevet user@contoso.com, például az Azure-ba való bejelentkezéshez. |
+| Ellenőrzött |Ebben az esetben az UPN-utótaghoz az Azure AD-ben már hozzáadott és ellenőrzött egyéni tartományi contoso.com van. A felhasználók az Azure AD-vel való szinkronizálás után használhatják a helyszíni egyszerű felhasználónevet, például az Azure-ba való user@contoso.com bejelentkezéshez. |
 
 ###### <a name="ad-fs-federation"></a>AD FS-összevonás
 Nem hozható létre összevonás az alapértelmezett. onmicrosoft.com tartománnyal az Azure AD-ben vagy egy nem ellenőrzött egyéni tartományban az Azure AD-ben. Ha a Azure AD Connect varázslót futtatja, ha nem ellenőrzött tartományt választ a alkalmazással való összevonás létrehozásához, akkor Azure AD Connect megkérdezi a szükséges rekordokat, amelyek létrehozásához a DNS-t futtatja a tartomány számára. További információ: [az összevonás számára kijelölt Azure ad-tartomány ellenőrzése](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation).
@@ -168,7 +168,7 @@ Ha a felhasználói bejelentkezés lehetőséget választotta a **ad FSval való
 
 | Állapot | A felhasználói Azure bejelentkezési felületének hatása |
 |:---:|:--- |
-| Nincs hozzáadva |Ebben az esetben Azure AD Connect nem talált egyező egyéni tartományt az UPN-utótag contoso.com az Azure AD-címtárban. Egyéni tartományi contoso.com kell hozzáadnia, ha a felhasználóknak a helyszíni UPN-sel (például user@contoso.com) AD FS használatával kell bejelentkezniük. |
+| Nincs hozzáadva |Ebben az esetben Azure AD Connect nem talált egyező egyéni tartományt az UPN-utótag contoso.com az Azure AD-címtárban. Egyéni tartományi contoso.com kell hozzáadnia, ha a felhasználóknak a helyszíni UPN-sel (például) AD FS használatával kell bejelentkezniük user@contoso.com . |
 | Nincs ellenőrizve |Ebben az esetben Azure AD Connect megkéri a megfelelő részleteket arról, hogyan ellenőrizheti a tartományt egy későbbi időpontban. |
 | Ellenőrzött |Ebben az esetben további művelet nélkül megtekintheti a konfigurációt. |
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80298336"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
@@ -117,13 +117,13 @@ Az Log Analytics-átjárónak a Azure Portalból való lekéréséhez kövesse a
 vagy 
 
 1. A munkaterület panel **Beállítások**területén válassza a **Speciális beállítások**lehetőséget.
-1. Lépjen a **csatlakoztatott források** > **Windows-kiszolgálók** elemre, és válassza a **log Analytics-átjáró letöltése**lehetőséget.
+1. Lépjen a **csatlakoztatott források**  >  **Windows-kiszolgálók** elemre, és válassza a **log Analytics-átjáró letöltése**lehetőséget.
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Log Analytics átjáró telepítése a telepítővarázsló használatával
 
 Ha az átjárót a telepítővarázsló segítségével szeretné telepíteni, kövesse az alábbi lépéseket. 
 
-1. A célmappában kattintson duplán a **log Analytics Gateway. msi**fájlra.
+1. A célmappában kattintson duplán a **Log Analytics gateway.msi**elemre.
 1. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 
    ![A Kezdőlap képernyőképe az átjáró telepítővarázslója](./media/gateway/gateway-wizard01.png)
@@ -136,7 +136,7 @@ Ha az átjárót a telepítővarázsló segítségével szeretné telepíteni, k
 
    b. Ha az átjárót telepítő kiszolgálónak proxyn keresztül kell kommunikálnia, adja meg azt a proxy-címeket, ahová az átjárónak csatlakoznia kell. Adja meg például a következőt: `http://myorgname.corp.contoso.com:80`.  Ha ezt a mezőt üresen hagyja, akkor az átjáró közvetlenül csatlakozik az internethez.  Ha a proxykiszolgáló hitelesítést igényel, adjon meg egy felhasználónevet és egy jelszót.
 
-   c. Kattintson a **Tovább** gombra.
+   c. Válassza a **Tovább** lehetőséget.
 
    ![Az átjáró-proxy konfigurációjának képernyőképe](./media/gateway/gateway-wizard02.png)
 
@@ -260,17 +260,17 @@ Az integráció konfigurálásához frissítse a rendszerproxy konfigurációjá
 
    `netsh winhttp set proxy <proxy>:<port>`
 
-Az Log Analytics-integráció befejezése után távolítsa el a változást a `netsh winhttp reset proxy`futtatásával. Ezután az operatív konzolon a **proxykiszolgáló konfigurálása** lehetőséggel adja meg az log Analytics átjárókiszolgáló megadását. 
+Az Log Analytics-integráció befejezése után távolítsa el a változást a futtatásával `netsh winhttp reset proxy` . Ezután az operatív konzolon a **proxykiszolgáló konfigurálása** lehetőséggel adja meg az log Analytics átjárókiszolgáló megadását. 
 
 1. A Operations Manager-konzol **Operations Management Suite**területén válassza a **Csatlakozás**lehetőséget, majd válassza a **proxykiszolgáló konfigurálása**lehetőséget.
 
    ![Képernyőkép a Operations Managerről, amely a proxykiszolgáló konfigurálását mutatja be](./media/gateway/scom01.png)
 
-1. Válassza a **proxykiszolgáló használata az Operations Management Suite eléréséhez** lehetőséget, majd adja meg a terheléselosztó log Analytics átjáró-kiszolgálójának vagy virtuális IP-címének IP-címét. Ügyeljen arra, hogy az előtaggal `http://`kezdődjön.
+1. Válassza a **proxykiszolgáló használata az Operations Management Suite eléréséhez** lehetőséget, majd adja meg a terheléselosztó log Analytics átjáró-kiszolgálójának vagy virtuális IP-címének IP-címét. Ügyeljen arra, hogy az előtaggal kezdődjön `http://` .
 
    ![Képernyőkép a Operations Managerről, amely a proxykiszolgáló címeit jeleníti meg](./media/gateway/scom02.png)
 
-1. Válassza a **Finish** (Befejezés) elemet. A Operations Manager felügyeleti csoport úgy van konfigurálva, hogy az átjáró-kiszolgálón keresztül kommunikáljon a Log Analytics szolgáltatással.
+1. Válassza a **Befejezés** gombot. A Operations Manager felügyeleti csoport úgy van konfigurálva, hogy az átjáró-kiszolgálón keresztül kommunikáljon a Log Analytics szolgáltatással.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Operations Manager konfigurálása, ahol az egyes ügynökök proxykiszolgálót használnak
 
@@ -285,10 +285,10 @@ Adott kiszolgálók vagy csoportok konfigurálása a Log Analytics átjárókisz
 1. Nyissa meg a Operations Manager konzolt, és válassza ki a **szerzői műveletek** munkaterületet.  
 1. A szerzői műveletek munkaterületen válassza a **szabályok**lehetőséget. 
 1. A Operations Manager eszköztáron kattintson a **hatókör** gombra. Ha a gomb nem érhető el, győződjön meg róla, hogy a **figyelés** ablaktáblán egy objektumot, nem pedig mappát jelölt ki. A **hatókör felügyeleti csomag objektumai** párbeszédpanel megjeleníti a közös megcélzott osztályok, csoportok vagy objektumok listáját. 
-1. A **Keresés** mezőben adja meg a **állapotfigyelő szolgáltatás** , majd válassza ki a listából. Kattintson az **OK** gombra.  
+1. A **Keresés** mezőben adja meg a **állapotfigyelő szolgáltatás** , majd válassza ki a listából. Válassza az **OK** lehetőséget.  
 1. Keresse meg az **Advisor proxy beállítási szabályát**. 
 1. A Operations Manager eszköztáron válassza a felülbírálások **elemet, majd a** **Rule\For felülbírálása a következő osztály egy adott objektumához: állapotfigyelő szolgáltatás** és válasszon ki egy objektumot a listából.  Vagy hozzon létre egy egyéni csoportot, amely tartalmazza azon kiszolgálók állapotfigyelő szolgáltatási objektumát, amelyekre alkalmazni kívánja ezt a felülbírálást. Ezután alkalmazza a felülbírálást az egyéni csoportra.
-1. A **felülbírálás tulajdonságai** párbeszédpanelen vegyen fel egy pipát a **felülbírálás** oszlopban a **WebProxyAddress** paraméter mellett.  A **felülbírálás értéke** mezőben adja meg az log Analytics átjárókiszolgáló URL-címét. Ügyeljen arra, hogy az előtaggal `http://`kezdődjön.  
+1. A **felülbírálás tulajdonságai** párbeszédpanelen vegyen fel egy pipát a **felülbírálás** oszlopban a **WebProxyAddress** paraméter mellett.  A **felülbírálás értéke** mezőben adja meg az log Analytics átjárókiszolgáló URL-címét. Ügyeljen arra, hogy az előtaggal kezdődjön `http://` .  
 
     >[!NOTE]
     > Nincs szükség a szabály engedélyezésére. A Microsoft System Center Advisor biztonságos referenciájának felülbírálási felügyeleti csomagja a Microsoft System Center Advisor figyelési kiszolgáló csoportra irányuló felülbírálással már automatikusan felügyelhető.
@@ -327,7 +327,7 @@ A Log Analytics átjáró konfigurációs beállításainak frissítéséhez par
 
 A 3. lépésben szereplő hiba azt jelenti, hogy a modult nem importálták. A hiba akkor fordulhat elő, ha a PowerShell nem találja a modult. A modult a OMS-átjáró telepítési útvonalán találja: *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*.
 
-| **Parancsmag** | **Paraméterek** | **Leírás** | **Például** |
+| **Parancsmag** | **Paraméterek** | **Leírás** | **Példa** |
 | --- | --- | --- | --- |  
 | `Get-OMSGatewayConfig` |Kulcs |A szolgáltatás konfigurációjának beolvasása |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |Kulcs (kötelező) <br> Érték |A szolgáltatás konfigurációjának módosítása |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
@@ -370,7 +370,7 @@ A következő táblázat a Log Analytics átjáró eseményeinek esemény-azonos
 
 A következő táblázat a Log Analytics átjáró számára elérhető teljesítményszámlálókat mutatja be. A teljesítményszámlálók hozzáadásához használja a Teljesítményfigyelőt.
 
-| **Név** | **Leírás** |
+| **Name (Név)** | **Leírás** |
 | --- | --- |
 | Átjáró/aktív ügyfélkapcsolat Log Analytics |Az aktív ügyfél-hálózati (TCP-) kapcsolatok száma |
 | Log Analytics átjáró/hibák száma |Hibák száma |

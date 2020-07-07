@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: a4d761abf54682ed0263922d0a118debc9eccf0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334351"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Térkép stílusának beállítása a Azure Maps Android SDK-val
@@ -27,7 +27,7 @@ A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Andro
 
 ## <a name="set-map-style-in-the-layout"></a>Térkép stílusának beállítása az elrendezésben
 
-A tevékenység osztályának elrendezési fájljában megadhat egy térképi stílust. Szerkessze a **res > elrendezést > activity_main. xml fájlban**, így a következőképpen néz ki:
+A tevékenység osztályának elrendezési fájljában megadhat egy térképi stílust. Módosítsa a **res > elrendezést > activity_main.xml**, így az alábbihoz hasonló:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -59,7 +59,7 @@ A `mapcontrol_style` fenti attribútum a leképezési stílust **grayscale_darkr
 
 ## <a name="set-map-style-in-the-activity-class"></a>Térkép stílusának beállítása a tevékenység osztályban
 
-A Térkép stílusa beállítható a tevékenység osztályban. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára. Ez a kód **satellite_road_labelsre**állítja be a leképezési stílust.
+A Térkép stílusa beállítható a tevékenység osztályban. Másolja az alábbi kódrészletet az osztály **onCreate ()** metódusára `MainActivity.java` . Ez a kód **satellite_road_labelsre**állítja be a leképezési stílust.
 
 ```Java
 mapControl.onReady(map -> {

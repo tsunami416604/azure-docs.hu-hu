@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80298821"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
@@ -95,9 +95,9 @@ A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni
 | TCP 443 (HTTPS) |Ki |WAN |Igen |A kimenő port a felhőben tárolt adatok elérésére szolgál. <br></br>A kimenő webes proxy a felhasználó által konfigurálható. |
 | UDP 53 (DNS) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet alapú DNS-kiszolgálót használ. <br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezését végzi, javasoljuk a helyi DNS-kiszolgáló használatát. |
 | UDP 123 (NTP) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet-alapú NTP-kiszolgálót használ.<br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezését javasolja, javasoljuk, hogy az időt szinkronizálja Active Directory tartományvezérlőkkel. |
-| TCP 80 (HTTP) |A |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. <br></br> Vegye figyelembe, hogy a helyi felhasználói felület HTTP protokollon keresztüli elérése automatikusan a HTTPS-re lesz átirányítva. |
-| TCP 443 (HTTPS) |A |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. |
-| TCP 3260 (iSCSI) |A |LAN |Nem |Ez a port az iSCSI-kapcsolaton keresztüli adateléréshez használatos. |
+| TCP 80 (HTTP) |In |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. <br></br> Vegye figyelembe, hogy a helyi felhasználói felület HTTP protokollon keresztüli elérése automatikusan a HTTPS-re lesz átirányítva. |
+| TCP 443 (HTTPS) |In |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. |
+| TCP 3260 (iSCSI) |In |LAN |Nem |Ez a port az iSCSI-kapcsolaton keresztüli adateléréshez használatos. |
 
 <sup>1</sup> nem szükséges bejövő portot megnyitni a nyilvános interneten.
 

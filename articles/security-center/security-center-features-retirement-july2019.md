@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80583216"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Security Center szolgáltatások kivonása (július 2019)
@@ -53,7 +53,7 @@ Kivontuk a munkaterület kijelölésekor megjelenő események irányítópultot
 
 Javasoljuk, hogy az Azure Log Analytics natív funkcióinak használatával megtekinthesse a jelentős eseményeket a munkaterületeken.
 
-Ha Security Centerban egyéni jelentős eseményeket hozott létre, azok elérhetővé válnak. A log Analytics területen lépjen a **munkaterület** > **mentett keresések**kiválasztása elemre. Az adatai nem vesznek el vagy nem módosulnak. A natív jelentős események a Log Analytics azonos képernyőjén is elérhetők.
+Ha Security Centerban egyéni jelentős eseményeket hozott létre, azok elérhetővé válnak. A log Analytics területen lépjen a **munkaterület**  >  **mentett keresések**kiválasztása elemre. Az adatai nem vesznek el vagy nem módosulnak. A natív jelentős események a Log Analytics azonos képernyőjén is elérhetők.
 
 ![Munkaterület által mentett keresések][3]
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582674"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
@@ -26,9 +26,9 @@ Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezz�
 
 **Adatfolyam-kereső**létrehozásakor meg kell adnia egy **eszköz** nevét és egy **streaming Policy** -nevet. További információkért tekintse át a következők témaköröket:
 
-* [Eszközök](assets-concept.md)
-* [Streamelési szabályok](streaming-policy-concept.md)
-* [Tartalomkulcsszabályok](content-key-policy-concept.md)
+* [Objektumok](assets-concept.md)
+* [Folyamatos átviteli házirendek](streaming-policy-concept.md)
+* [Tartalmi kulcs házirendjei](content-key-policy-concept.md)
 
 Megadhatja a kezdő és a záró időpontot is a folyamatos átviteli lokátorban, így a felhasználó csak a következő időpontok közötti tartalmat fogja lejátszani (például 5/1/2019 – 5/5/2019).  
 
@@ -98,11 +98,11 @@ A következő műveletek végrehajtásával lekérheti a streaming-keresőket a 
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
-* [Eszközök](assets-concept.md)
-* [Streamelési szabályok](streaming-policy-concept.md)
-* [Tartalomkulcsszabályok](content-key-policy-concept.md)
+* [Objektumok](assets-concept.md)
+* [Folyamatos átviteli házirendek](streaming-policy-concept.md)
+* [Tartalmi kulcs házirendjei](content-key-policy-concept.md)
 * [Oktatóanyag: videók feltöltése, kódolása és továbbítása a .NET-tel](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>További lépések

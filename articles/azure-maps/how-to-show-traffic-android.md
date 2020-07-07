@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335379"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Forgalmi adatok megjelenítése a térképen Azure Maps Android SDK használatával
@@ -25,7 +25,7 @@ Ahhoz, hogy megjelenjen a forgalom a térképen, [Azure-fiókot kell létrehozni
 
 ## <a name="incidents-traffic-data"></a>Incidensek forgalmi adatok 
 
-A következő könyvtárakat kell importálnia a híváshoz `setTraffic` , `incidents`és:
+A következő könyvtárakat kell importálnia a híváshoz `setTraffic` , és `incidents` :
 
 ```java
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
@@ -44,14 +44,14 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ## <a name="flow-traffic-data"></a>Flow forgalmi adatok
 
-Először importálnia kell a következő könyvtárakat a `setTraffic` meghívásához `flow`és:
+Először importálnia kell a következő könyvtárakat a meghívásához `setTraffic` és `flow` :
 
 ```java
 import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-Az alábbi kódrészlettel állíthatja be a forgalmi folyamatra vonatkozó adatokat. Az előző szakaszban szereplő kódhoz hasonlóan a metódus visszatérési értékét `flow` is átadjuk a `setTraffic` metódusnak. Négy érték adható át `flow`, és minden érték `flow` a megfelelő értéket adja vissza. A visszatérési értéke `flow` a következő argumentumként lesz átadva: `setTraffic`. A következő négy értéknél tekintse meg az alábbi táblázatot:
+Az alábbi kódrészlettel állíthatja be a forgalmi folyamatra vonatkozó adatokat. Az előző szakaszban szereplő kódhoz hasonlóan a metódus visszatérési értékét is átadjuk a `flow` `setTraffic` metódusnak. Négy érték adható át `flow` , és minden érték `flow` a megfelelő értéket adja vissza. A visszatérési értéke a következő `flow` argumentumként lesz átadva: `setTraffic` . A következő négy értéknél tekintse meg az alábbi táblázatot:
 
 | | |
 | :-- | :-- |
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 Egy adott szolgáltatás incidensének beszerzéséhez használhatja az alábbi kódot. Ha egy szolgáltatásra kattint, a kód logikája ellenőrzi az incidenseket, és létrehoz egy üzenetet az incidensről. Egy üzenet jelenik meg a képernyő alján a részletekkel.
 
-1. Először szerkesztenie kell a **res > elrendezést > activity_main. XML fájlból**, hogy az alábbihoz hasonlóan néz ki. A, `mapcontrol_centerLat` `mapcontrol_centerLng`a és `mapcontrol_zoom` a értékeket a kívánt értékekre cserélheti. Visszahívás: a nagyítási szint 0 és 22 közötti érték. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik.
+1. Először szerkesztenie kell a **res > elrendezést > activity_main.xml**, hogy az alábbihoz hasonlóan néz ki. A `mapcontrol_centerLat` , a és a `mapcontrol_centerLng` értékeket a `mapcontrol_zoom` kívánt értékekre cserélheti. Visszahívás: a nagyítási szint 0 és 22 közötti érték. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -221,7 +221,7 @@ Egy adott szolgáltatás incidensének beszerzéséhez használhatja az alábbi 
    }
    ```
 
-3. Miután beépíti a fenti kódot az alkalmazásba, rákattinthat egy szolgáltatásra, és megtekintheti a forgalmi incidensek részleteit. A szélesség, a hosszúság és a **activity_main. XML** fájlban használt nagyítási szint értékeitől függően az alábbi képhez hasonló eredmények jelennek meg:
+3. Miután beépíti a fenti kódot az alkalmazásba, rákattinthat egy szolgáltatásra, és megtekintheti a forgalmi incidensek részleteit. A szélesség, a hosszúság és a **activity_main.xml** fájlban használt nagyítási szint értékeitől függően az alábbi képhez hasonló eredmények jelennek meg:
 
    <center>
 

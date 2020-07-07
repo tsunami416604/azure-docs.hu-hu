@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333361"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
@@ -69,7 +69,7 @@ A következő táblázat példákat mutat be az adattípusokra:
 | **Adattípus** | **Mezők** |
 | --- | --- |
 | Riasztás |Riasztás neve, riasztás leírása, Basemanagedentityid azonosító eltérése, probléma azonosítója, IsMonitorAlert, RuleId, ResolutionState, prioritás, súlyosság, kategória, tulajdonos, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
-| Configuration |Vevőkód, ügynökazonosító, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
+| Konfiguráció |Vevőkód, ügynökazonosító, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
 | Esemény |Napszállta, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, közzétevő neve, FullNumber, szám, kategória, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Megjegyzés:** Ha egyéni mezőkkel rendelkező eseményeket ír a Windows-eseménynaplóba, Log Analytics gyűjti őket. |
 | Metaadatok |Basemanagedentityid azonosító eltérése, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, Ip_cím, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP-cím, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, egyszerű név, OffsetInMinuteFromGreenwichTime |
 | Teljesítmény |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |

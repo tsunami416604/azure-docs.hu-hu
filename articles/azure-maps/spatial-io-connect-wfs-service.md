@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334205"
 ---
-# <a name="connect-to-a-wfs-service"></a>Kapcsolódás WFS szolgáltatáshoz
+# <a name="connect-to-a-wfs-service"></a>Kapcsolódás WFS-szolgáltatáshoz
 
 A webszolgáltatások (WFS) egy webszolgáltatás, amely a Nyílt térinformatikai konzorcium (OGC) által definiált, szabványosított API-k segítségével kérdezi le a térbeli adatainak lekérdezését. A `WfsClient` térbeli IO modulban található osztály lehetővé teszi a fejlesztők számára a WFS-szolgáltatásokhoz való kapcsolódást és a szolgáltatás adatainak lekérdezését.
 
-Az `WfsClient` osztály a következő funkciókat támogatja:
+Az osztály a következő funkciókat támogatja `WfsClient` :
 
-- Támogatott verziók: `1.0.0`, `1.1.0`és`2.0.0`
-- Támogatott szűrési operátorok: bináris összehasonlítás, logika, matematikai, érték és `bbox`.
-- A kérelmek csak a `HTTP GET` használatával készültek.
+- Támogatott verziók: `1.0.0` , `1.1.0` és`2.0.0`
+- Támogatott szűrési operátorok: bináris összehasonlítás, logika, matematikai, érték és `bbox` .
+- A kérelmek csak a használatával készültek `HTTP GET` .
 - Támogatott műveletek:
 
     | | |
@@ -40,7 +40,7 @@ A következő kód lekérdez egy WFS szolgáltatást, és megjeleníti a visszaa
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Egyszerű WFS példa' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>egyszerű WFS példáját</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Egyszerű WFS példa' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>egyszerű WFS példáját</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="supported-filters"></a>Támogatott szűrők
@@ -82,7 +82,7 @@ A következő kód a különböző szűrők használatát mutatja be a WFS-ügyf
 
 <br/>
 
-<iframe height='500' scrolling='no' title= 'Példák a WFS szűrésére' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>WFS-szűrési példákat</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title= 'Példák a WFS szűrésére' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>WFS-szűrési példákat</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="wfs-service-explorer"></a>WFS Service Explorer
@@ -91,10 +91,10 @@ A következő kód a WFS-ügyfelet használja a WFS szolgáltatások megismerés
 
 <br/>
 
-<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS Service Explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a Pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS Service explorert</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>-on.
+<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS Service Explorer' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a Pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS Service explorert</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>-on.
 </iframe>
 
-A nem CORS engedélyezett végpontokon üzemeltetett WFS-szolgáltatások eléréséhez a CORS-kompatibilis proxy szolgáltatás átadható `proxyService` a WFS-ügyfél számára az alábbi ábrán látható módon. 
+A nem CORS engedélyezett végpontokon üzemeltetett WFS-szolgáltatások eléréséhez a CORS-kompatibilis proxy szolgáltatás átadható a `proxyService` WFS-ügyfél számára az alábbi ábrán látható módon. 
 
 ```JavaScript
 //Create the WFS client to access the service and use the proxy service settings
@@ -117,7 +117,7 @@ További információ a cikkben használt osztályokról és módszerekről:
 Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
-> [Alapvető műveletek kihasználása](spatial-io-core-operations.md)
+> [Alapvető műveletek előnyeinek kihasználása](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Támogatott adatformátum részletei](spatial-io-supported-data-format-details.md)
+> [Támogatott adatformátumokra vonatkozó részletek](spatial-io-supported-data-format-details.md)

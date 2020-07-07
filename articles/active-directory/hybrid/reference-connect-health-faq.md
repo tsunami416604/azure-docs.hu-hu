@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331084"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health gyakori kérdések
@@ -107,7 +107,7 @@ További információ a [http-proxy állapot-ügynökökhöz való konfigurálá
 
 Ha proxyt kell konfigurálnia az ügynök regisztrálása során, előfordulhat, hogy előzőleg módosítania kell az Internet Explorer-proxy beállításait.
 
-1. Nyissa meg az Internet Explorer > **Beállítások** > **Internetbeállítások** > **kapcsolatok** > **LAN-beállítások**lehetőséget.
+1. Nyissa meg az Internet Explorer > **Beállítások**  >  **Internetbeállítások**  >  **kapcsolatok**  >  **LAN-beállítások**lehetőséget.
 2. Válassza **a proxykiszolgáló használata a LAN**-hoz lehetőséget.
 3. Válassza a **speciális** lehetőséget, ha különböző proxy portokkal rendelkezik a http és a https/Secure szolgáltatáshoz.
 
@@ -192,7 +192,7 @@ A <i>Get-MsolDirSyncProvisioningError</i> csak az rsync kiépítési hibáit fog
 
 **K: Miért nem jönnek létre az ADFS-naplózások?**
 
-Használja a <i>Get-AdfsProperties-AuditLevel PowerShell-</i> parancsmagot annak biztosítására, hogy a naplók nem letiltott állapotban legyenek. További információ az [ADFS-naplókkal](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)kapcsolatban. Figyelje meg, hogy vannak-e leküldve speciális naplózási beállítások az ADFS-kiszolgálón. a Auditpol. exe fájl módosításai felül lesznek írva (esemény, ha az alkalmazás létrehozva nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirendet, hogy naplózza az alkalmazás által generált hibákat és sikereket.
+Használja a <i>Get-AdfsProperties-AuditLevel PowerShell-</i> parancsmagot annak biztosítására, hogy a naplók nem letiltott állapotban legyenek. További információ az [ADFS-naplókkal](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)kapcsolatban. Figyelje meg, hogy vannak-e olyan speciális naplózási beállítások, amelyeket az ADFS-kiszolgálóra leküldtek, auditpol.exe felülírja a módosításokat (esemény, ha az alkalmazás létrehozva nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirendet, hogy naplózza az alkalmazás által generált hibákat és sikereket.
 
 **K: Mikor kerül sor az ügynök tanúsítványának automatikus megújítására a lejárat előtt?**
 Az ügynök minősítése a lejárat napja előtt **6 hónappal** automatikusan megújul. Ha nem újítják meg, gondoskodjon arról, hogy az ügynök hálózati kapcsolatai stabilak legyenek. A probléma megoldásához indítsa újra az ügynök szolgáltatásait, vagy frissítsen a legújabb verzióra.

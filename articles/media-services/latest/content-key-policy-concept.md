@@ -13,10 +13,10 @@ ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80585998"
 ---
 # <a name="content-key-policies"></a>Tartalomkulcsszabályok
@@ -47,7 +47,7 @@ A tartalmi kulcs házirendjét általában a [folyamatos átviteli lokátorhoz](
 
 ## <a name="example"></a>Példa
 
-A kulcs eléréséhez használja `GetPolicyPropertiesWithSecretsAsync`a alkalmazást, ahogy az az [aláíró kulcs beolvasása a meglévő házirendből](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) című példa mutatja.
+A kulcs eléréséhez használja a alkalmazást `GetPolicyPropertiesWithSecretsAsync` , ahogy az az [aláíró kulcs beolvasása a meglévő házirendből](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) című példa mutatja.
 
 ## <a name="filtering-ordering-paging"></a>Szűrés, rendezés, lapozás
 
@@ -55,7 +55,7 @@ Lásd: [Media Services entitások szűrése, rendezése és lapozása](entities-
 
 ## <a name="additional-notes"></a>További megjegyzések
 
-* A `Datetime` típusú tartalmi kulcsokra vonatkozó házirendek tulajdonságai mindig UTC formátumban jelennek meg.
+* A típusú tartalmi kulcsokra vonatkozó házirendek tulajdonságai `Datetime` mindig UTC formátumban jelennek meg.
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="next-steps"></a>További lépések

@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335555"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps fiók kezelése
 
 A Azure Maps fiókját a Azure Portal segítségével kezelheti. A fiók létrehozása után az API-kat a webhelyén vagy a mobil alkalmazásban is megvalósíthatja.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-new-account"></a>Új fiók létrehozása
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 2. Válassza az Azure Portal bal felső sarkában található **Erőforrás létrehozása** lehetőséget.
 
-3. Keresse meg és válassza ki a **Maps**elemet. Ezután válassza a **Létrehozás**lehetőséget.
+3. Keresse meg és válassza ki a **Maps**elemet. Ezután kattintson a **Létrehozás** elemre.
 
 4. Adja meg az új fiók adatait.
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335594"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Alakzat hozzáadása térképhez Azure Maps Android SDK használatával
@@ -28,7 +28,7 @@ A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Andro
 
 Az alábbi lépésekkel adhat hozzá sort a térképhez egy vonal **réteg**használatával.
 
-1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy a következőképpen néz ki:
+1. Módosítsa a **res > elrendezést > activity_main.xml** így néz ki az alábbiak közül:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ Az alábbi lépésekkel adhat hozzá sort a térképhez egy vonal **réteg**hasz
     </FrameLayout>
     ```
 
-2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára.
+2. Másolja az alábbi kódrészletet az osztály **onCreate ()** metódusára `MainActivity.java` .
 
     ```Java
     mapControl.onReady(map -> {
@@ -78,7 +78,7 @@ Az alábbi lépésekkel adhat hozzá sort a térképhez egy vonal **réteg**hasz
     
     A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy adatforrás-objektumot a **DataSource** osztály használatával, és hozzáadja azt a térképhez. Ezután létrehozza a **pont** objektumainak listáját. A rendszer létrehoz egy **LineString** a pontok listájából, és hozzáadja az adatforráshoz. A **sorok** a térképen egy adatforrásba burkolt vonali objektumokat jelenítenek meg. Ekkor létrejön egy sor réteg, és hozzá lesz adva az adatforrás.
 
-    Miután hozzáadta a fenti kódrészletet, `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
+    Miután hozzáadta a fenti kódrészletet, a `MainActivity.java` következőhöz hasonlóan kell kinéznie:
     
     ```Java
     package com.example.myapplication;
@@ -185,7 +185,7 @@ Ha most futtatja az alkalmazást, látnia kell egy vonalat a térképen az aláb
 
 A **sokszög réteg** lehetővé teszi a sokszög területének megjelenítését a térképre. Az alábbi lépéseket követve hozzáadhat egy sokszöget a térképhez.
 
-1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy a következőképpen néz ki:
+1. Módosítsa a **res > elrendezést > activity_main.xml** így néz ki az alábbiak közül:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +208,7 @@ A **sokszög réteg** lehetővé teszi a sokszög területének megjelenítésé
     </FrameLayout>
     ```
 
-2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára.
+2. Másolja az alábbi kódrészletet az osztály **onCreate ()** metódusára `MainActivity.java` .
 
     ```Java
     mapControl.onReady(map -> {
@@ -240,7 +240,7 @@ A **sokszög réteg** lehetővé teszi a sokszög területének megjelenítésé
 
     A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy adatforrás-objektumot a **DataSource** osztály használatával, és hozzáadja azt a térképhez. Ekkor létrejön egy **sokszög** -objektum a **pont** objektumainak listájából, és az adatforráshoz kerül. A **sokszög réteg** a térképen lévő adatforrásba burkolt adatfeliratokat jeleníti meg. Ezután létrehoz egy sokszög réteget a sokszög terület megjelenítéséhez, és hozzáadja az adatforrást. A **sortörések** egy adatforrásba burkolt vonalas objektumokat jelenítenek meg. A kódrészlet utolsó része egy sor réteget hoz létre a sokszög körvonalának megjelenítéséhez és az adatforrás hozzáadásához.
 
-    Miután hozzáadta a fenti kódrészletet, `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
+    Miután hozzáadta a fenti kódrészletet, a `MainActivity.java` következőhöz hasonlóan kell kinéznie:
 
     ```Java
     package com.example.myapplication;

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293950"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötője
@@ -153,7 +153,7 @@ Azt javasoljuk, hogy használjon külön alhálózatot az összes olyan virtuál
 > [!NOTE]
 > Ha lehetséges, távolítsa el az összes virtuálisgép-bővítményt, mert a lemezek virtuális gépről való leválasztása hosszú futtatókörnyezetet eredményezhet.
 
-Győződjön meg arról, \<hogy a felhasználó hanasid \<>adm, sapsid>adm és Group sapsys létezik a célszámítógépen ugyanazzal az azonosítóval és GID-mel, vagy használja az LDAP-t. Engedélyezze és indítsa el az NFS-kiszolgálót azon a virtuális gépeken, amelyeket az SAP NetWeaver (A) SCS futtatásához kíván használni.
+Győződjön meg arról, hogy a felhasználói \<hanasid> adm, \<sapsid> adm és csoport sapsys létezik a célszámítógépen UGYANAZZAL az azonosítóval és GID-mel, vagy használja az LDAP-t. Engedélyezze és indítsa el az NFS-kiszolgálót azon a virtuális gépeken, amelyeket az SAP NetWeaver (A) SCS futtatásához kíván használni.
 
 ### <a name="manual-deployment"></a>Manuális üzembe helyezés
 
@@ -163,7 +163,7 @@ Az SAP-láma az SAP-gazdagép ügynökével kommunikál a virtuális géppel. Ha
 
 Hozzon létre egy új virtuális gépet a [2343511]-es SAP-megjegyzésben felsorolt támogatott operációs rendszerek egyikével. További IP-konfigurációk hozzáadása az SAP-példányokhoz. Minden példánynak legalább az IP-címen kell lennie, és virtuális állomásnév használatával kell telepíteni.
 
-Az SAP NetWeaver ASCS-példány lemezeket igényel\<a/sapmnt/SAPSID>\<, a/usr/SAP/SAPSID>, a\</usr/SAP/Trans és a/usr/SAP/SAPSID>adm számára. Az SAP NetWeaver alkalmazás-kiszolgálóknak nincs szükségük további lemezekre. Az SAP-példánnyal kapcsolatos összes információt a ASCS kell tárolni, és az NFS-en keresztül kell exportálni. Ellenkező esetben az SAP láma használatával jelenleg nem lehet további alkalmazásokat hozzáadni.
+Az SAP NetWeaver ASCS-példány lemezeket igényel a/sapmnt/ \<SAPSID> , a/usr/SAP/ \<SAPSID> , a/usr/SAP/Trans és a/usr/SAP/ \<sapsid> adm számára. Az SAP NetWeaver alkalmazás-kiszolgálóknak nincs szükségük további lemezekre. Az SAP-példánnyal kapcsolatos összes információt a ASCS kell tárolni, és az NFS-en keresztül kell exportálni. Ellenkező esetben az SAP láma használatával jelenleg nem lehet további alkalmazásokat hozzáadni.
 
 ![SAP NetWeaver ASCS Linux rendszeren](media/lama/sap-lama-ascs-app-linux.png)
 
@@ -212,7 +212,7 @@ Az összetevők a sablon üzembe helyezéséhez szükségesek. A sablon elérhet
 
 A sablonok a következő paraméterekkel rendelkeznek:
 
-* sapSystemId: az SAP rendszerazonosító. A lemez elrendezésének létrehozásához használatos (például/usr/SAP/\<sapsid>).
+* sapSystemId: az SAP rendszerazonosító. A rendszer a lemez elrendezésének (például/usr/SAP/) létrehozásához használatos \<sapsid> .
 
 * Számítógépnév: az új virtuális gép számítógépnevét. Ezt a paramétert az SAP láma is használja. Ha ezt a sablont használja egy új virtuális gép a rendszermásolat részeként való kiépítéséhez, az SAP láma megvárja, amíg a gazdagép nem érhető el a számítógépnévvel.
 
@@ -276,7 +276,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 Futtassa a SWPM, és használja a *ah1-ASCs* a *ASCs-példány állomásneve*számára.
 
-![Linux][Logo_Linux] Linux  
+![Linux ][Logo_Linux] Linux  
 Adja hozzá a következő profil paramétert az SAP Host Agent-profilhoz, amely a/usr/SAP/hostctrl/exe/host_profile található. További információ: SAP Note [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -319,7 +319,7 @@ A NetApp-fiókban a kapacitási készlet meghatározza az egyes készletekhez ta
 
 ![SAP láma NetApp Capacity-készlet létrehozva ](media/lama/sap-lama-capacitypool-list.png)
 
-Az NFS-kötetek már meghatározhatók. Mivel az egyik készletben több rendszer számára is lesznek kötetek, az önmagát magyarázó elnevezési sémát kell kiválasztani. A SID hozzáadása segít a kapcsolódó kötetek csoportosításában. A ASCS és az as példány esetében a következő csatlakoztatásokra van szükség: */sapmnt/\<SID\>*, */usr/SAP/\<SID\>* és *\</Home/SID\>adm*. Opcionálisan */usr/SAP/Trans* van szükség a központi átviteli könyvtárhoz, amelyet legalább egy tájkép összes rendszere használ.
+Az NFS-kötetek már meghatározhatók. Mivel az egyik készletben több rendszer számára is lesznek kötetek, az önmagát magyarázó elnevezési sémát kell kiválasztani. A SID hozzáadása segít a kapcsolódó kötetek csoportosításában. A ASCS és az as példány esetében a következő csatlakoztatásokra van szükség: */sapmnt/ \<SID\> *, */usr/SAP/ \<SID\> *és */Home/ \<sid\> adm*. Opcionálisan */usr/SAP/Trans* van szükség a központi átviteli könyvtárhoz, amelyet legalább egy tájkép összes rendszere használ.
 
 > [!NOTE]
 > A BÉTAVERZIÓs fázisban a kötetek nevének egyedinek kell lennie az előfizetésen belül.
@@ -366,7 +366,7 @@ A sikeres telepítést követően a rendszert az SAP LaMan belül kell felderít
 
 A csatlakoztatási pontoknak a következőhöz hasonlóan kell kinézniük a ASCS és az AS példányhoz:
 
-![A láma ](media/lama/sap-lama-ascs.png) SAP láma csatlakoztatási pontjai (ez egy példa. Az IP-címek és az exportálási útvonal eltér a korábban használttól)
+![A láma SAP láma csatlakoztatási pontjai ](media/lama/sap-lama-ascs.png) (ez egy példa. Az IP-címek és az exportálási útvonal eltér a korábban használttól)
 
 
 #### <a name="install-sap-hana"></a>Az SAP HANA telepítése
@@ -480,12 +480,12 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
     com. SAP. NW. LM. ACI. monitor. API. Validation. RuntimeValidationException: kivétel a (z) RuntimeHDBConnectionValidator AZONOSÍTÓJÚ validatorban (érvényesítés: "VALIDATION_HDB_USERSTORE"): a hdbuserstore nem olvasható be.  
     A HANA userstore nem a megfelelő helyen található
   * Megoldás  
-    Győződjön meg arról, hogy a/usr/sap/AH1/hdbclient/install/installation.ini helyes
+    Ellenőrizze, hogy helyesek-e a/usr/sap/AH1/hdbclient/install/installation.ini
 
 ### <a name="errors-and-warnings-during-a-system-copy"></a>Hibák és figyelmeztetések a rendszermásolás során
 
 * Hiba történt a rendszer-üzembe helyezési lépés érvényesítésekor
-  * Okozza: com. SAP. NW. LM. ACI. Engine. Base. API. util. Exception. HAOperationException hívás '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-db-o szint = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u rendszer-p Hook-R ' | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-db-o szint = 0\;állapot = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-r-T dev_lvminfo-u rendszer-p Hook-r
+  * Okozta: com. SAP. NW. LM. ACI. motor. Base. API. util. Exception. HAOperationException hívása: "/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m" HN1-f 50-h HN1-db-o szint = 0 \; állapot = 5 \; port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u rendszer-p Hook-r ' |/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-db-o szint = 0 \; állapot = 5 \; port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u rendszer-p Hook-r
   * Megoldás  
     Készítsen biztonsági másolatot az összes adatbázisról a forrás HANA-rendszeren
 
@@ -497,21 +497,21 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
 ### <a name="errors-and-warnings-during-a-system-clone"></a>Hibák és figyelmeztetések a rendszer klónozásakor
 
 * Hiba történt, amikor a rendszer megpróbálta regisztrálni a példány-ügynököt az alkalmazáskiszolgáló vagy a ASCS- *példány kényszerített regisztrálási és indítási példány-ügynöke* számára.
-  * Hiba történt a példány-ügynök regisztrálására tett kísérlet során. (RemoteException: "nem sikerült betölteni a példány adatait a (\\z)" AS1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0 "profilból\\: nem lehet hozzáférni a (z)" AS1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0 "profilhoz: nincs ilyen fájl vagy könyvtár.")
+  * Hiba történt a példány-ügynök regisztrálására tett kísérlet során. (RemoteException: "nem sikerült betölteni a példány adatait a (z)" \\ as1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0 "profilból: nem lehet hozzáférni a (z \\ )" AS1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0 "profilhoz: nincs ilyen fájl vagy könyvtár.")
   * Megoldás  
    Győződjön meg arról, hogy a ASCS/SCS sapmnt-megosztásának teljes hozzáférése van a SAP_AS1_GlobalAdmin
 
 * Hiba a lépésben az *indítási védelem engedélyezése a klónozáshoz*
-  * Nem sikerült megnyitni a (\\z) "AS1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0" fájlt, ok: nincs ilyen fájl vagy könyvtár
+  * Nem sikerült megnyitni a (z) " \\ as1-ascs\sapmnt\as1\sys\profile\ AS1_D00_as1-di-0" fájlt, ok: nincs ilyen fájl vagy könyvtár
   * Megoldás  
     Az alkalmazáskiszolgáló számítógépfiókja írási hozzáféréssel kell rendelkeznie a profilhoz
 
 ### <a name="errors-and-warnings-during-create-system-replication"></a>Hibák és figyelmeztetések a rendszerreplikáció létrehozása során
 
 * Kivétel a rendszerreplikáció létrehozása lehetőségre való kattintáskor
-  * Okozza: com. SAP. NW. LM. ACI. Engine. Base. API. util. Exception. HAOperationException hívás '/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-db-o szint = 0\;status = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u rendszer-p Hook-R ' | /usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-db-o szint = 0\;állapot = 5\;port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-r-T dev_lvminfo-u rendszer-p Hook-r
+  * Okozta: com. SAP. NW. LM. ACI. motor. Base. API. util. Exception. HAOperationException hívása: "/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m" HN1-f 50-h HN1-db-o szint = 0 \; állapot = 5 \; port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u rendszer-p Hook-r ' |/usr/SAP/hostctrl/exe/sapacext-a ShowHanaBackups-m HN1-f 50-h HN1-db-o szint = 0 \; állapot = 5 \; port = 35013 PF =/usr/SAP/hostctrl/exe/Host_profile-R-T dev_lvminfo-u rendszer-p Hook-r
   * Megoldás  
-    Tesztelés, ha a sapacext végrehajtható>`<hanasid` adm-ként
+    Tesztelés, ha a sapacext végrehajtható `<hanasid`>adm-ként
 
 * Hiba, ha a teljes másolás nincs engedélyezve a tárolási lépésben
   * Hiba történt az elérési út IStorageCopyData. storageVolumeCopyList: 1 és mező targetStorageSystemId tartozó környezeti attribútum üzenetének jelentésekor.
@@ -533,7 +533,7 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Hibák és figyelmeztetések az alkalmazáskiszolgáló telepítésekor
 
 * Hiba történt a SAPinst lépés végrehajtásakor: getProfileDir
-  * Hiba: (a következő lépés által jelentett utolsó hiba: megfogott ESAPinstException a következő lépésben: "| NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir "hibát jelzett: a csomópont \\\as1-ascs\sapmnt\AS1\SYS\profile nem létezik. A probléma megoldásához interaktív módban indítsa el a SAPinst.
+  * Hiba: (a következő lépés által jelentett utolsó hiba: megfogott ESAPinstException a következő lépésben: "| NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir "hibát jelzett: a csomópont \\ \as1-ascs\sapmnt\AS1\SYS\profile nem létezik. A probléma megoldásához interaktív módban indítsa el a SAPinst.
   * Megoldás  
     Győződjön meg arról, hogy a SWPM olyan felhasználóval fut, amely hozzáfér a profilhoz. Ez a felhasználó konfigurálható az alkalmazáskiszolgáló telepítővarázslója
 
@@ -545,17 +545,17 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
     A probléma megkerüléséhez állítsa be a profil paramétert OS_UNICODE = UC értéket az SAP-rendszer alapértelmezett profiljába.
 
 * Hiba történt a SAPinst lépés végrehajtásakor: dCheckGivenServer
-  * Hiba történt a SAPinst lépés végrehajtásakor: dCheckGivenServer "version =" 1.0 "hiba: (a következő lépés által jelentett \<utolsó hiba: p> a telepítést a felhasználó megszakította. \</p>
+  * Hiba történt a SAPinst lépés végrehajtásakor: dCheckGivenServer "version =" 1.0 "hiba: (a lépés által jelentett utolsó hiba: a \<p> telepítést a felhasználó megszakította. \</p>
   * Megoldás  
     Győződjön meg arról, hogy a SWPM olyan felhasználóval fut, amely hozzáfér a profilhoz. Ez a felhasználó konfigurálható az alkalmazáskiszolgáló telepítővarázslója
 
 * Hiba történt a SAPinst lépés végrehajtásakor: checkClient
-  * Hiba történt a SAPinst lépés végrehajtásakor: checkClient "version =" 1.0 "hiba: (a következő lépés által jelentett \<utolsó hiba: p> a telepítést a felhasználó megszakította. \</p>)
+  * Hiba történt a SAPinst lépés végrehajtásakor: checkClient "version =" 1.0 "hiba: (a lépés által jelentett utolsó hiba: a \<p> telepítést a felhasználó megszakította. \</p>)
   * Megoldás  
     Győződjön meg arról, hogy az SQL Server Microsoft ODBC-illesztőprogramja telepítve van azon a virtuális gépen, amelyre telepíteni kívánja az alkalmazáskiszolgáló szolgáltatást
 
 * Hiba történt a SAPinst lépés végrehajtásakor: copyScripts
-  * A lépés által jelentett utolsó hiba: a rendszerhívás sikertelen. Részletek: a (z) (\ Bas/Bas/749_REL/bc_749_REL AS1) fájlban található "fopenU"\\rendszerhívás végrehajtásakor a (z) "AS1-ASCs/SAPMNT/NTAMD64/sys/exe/UC/strdbs//src/ins/sapinst/impl/src/syslib/filesystem/syxxcfstrm2.cpp. 494 cmd  
+  * A lépés által jelentett utolsó hiba: a rendszerhívás sikertelen. Részletek: a (z) (\ Bas/Bas/749_REL/bc_749_REL AS1) fájlban található "fopenU" rendszerhívás végrehajtásakor a (z) " \\ AS1-ASCs/sapmnt/NTAMD64/sys/exe/UC/strdbs//src/ins/sapinst/Impl/src/syslib/filesystem/syxxcfstrm2.cpp. 494 cmd  
   CThrThread. cpp: 85: CThrThread:: threadFunction ()  
   CSiServiceSet. cpp: 63: CSiServiceSet:: executeService ()  
   CSiStepExecute. cpp: 913: CSiStepExecute:: Execute ()  
@@ -567,7 +567,7 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
   syxxcfile. cpp: 233: CSyFileImpl:: openStream (ISyFile:: eFileOpenMode)  
   syxxcfstrm. cpp: 29: CSyFileStreamImpl:: CSyFileStreamImpl (CSyFileStream *, iastring, ISyFile:: eFileOpenMode)  
   syxxcfstrm. cpp: 265: CSyFileStreamImpl:: Open ()  
-  syxxcfstrm2. cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath & \\\ aw1-ASCs/SAPMNT/AW1/sys/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
+  syxxcfstrm2. cpp: 58: CSyFileStream2Impl:: CSyFileStream2Impl (const CSyPath & \\ \ aw1-ASCs/sapmnt/aw1/sys/exe/UC/NTAMD64/strdbs. cmd, 0x4)  
   syxxcfstrm2. cpp: 456: CSyFileStream2Impl:: Open ()
   * Megoldás  
     Győződjön meg arról, hogy a SWPM olyan felhasználóval fut, amely hozzáfér a profilhoz. Ez a felhasználó konfigurálható az alkalmazáskiszolgáló telepítővarázslója

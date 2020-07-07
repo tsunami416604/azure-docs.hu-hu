@@ -15,10 +15,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
 ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295443"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>A Media Services API és a REST hozzáférése Azure AD-hitelesítéssel
@@ -49,7 +49,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
+- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Hozzon létre egy Azure Media Services fiókot a Azure Portal használatával](media-services-portal-create-account.md).
 - Tekintse át a [hozzáférés Azure Media Services API-t az Azure ad-hitelesítés áttekintésével foglalkozó](media-services-use-aad-auth-to-access-ams-api.md) cikkben.
 - Telepítse a [Poster](https://www.getpostman.com/) Rest-ügyfelet, hogy végrehajtsa a cikkben látható REST API-kat. 
@@ -64,7 +64,7 @@ Media Services API eléréséhez a következő adatpontokat kell összegyűjteni
 
 |Beállítás|Példa|Leírás|
 |---|-------|-----|
-|Azure Active Directory bérlői tartomány|microsoft.onmicrosoft.com|Az Azure AD-t biztonságos jogkivonat-szolgáltatás (STS) végpontja hozza létre a következő <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>formátumban:. Az Azure AD JWT bocsát ki az erőforrásokhoz (hozzáférési token) való hozzáféréshez.|
+|Azure Active Directory bérlői tartomány|microsoft.onmicrosoft.com|Az Azure AD-t biztonságos jogkivonat-szolgáltatás (STS) végpontja hozza létre a következő formátumban: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> . Az Azure AD JWT bocsát ki az erőforrásokhoz (hozzáférési token) való hozzáféréshez.|
 |REST API-végpont|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Ez az a végpont, amelyen az alkalmazás összes Media Services REST API hívása történik.|
 |Ügyfél-azonosító (alkalmazás azonosítója)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD-alkalmazás (ügyfél) azonosítója. A hozzáférési jogkivonat beszerzéséhez az ügyfél-azonosító szükséges. |
 |Titkos ügyfélkulcs|+ mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Azure AD-alkalmazás kulcsai (ügyfél titka). A hozzáférési jogkivonat beszerzéséhez az ügyfél titkos kulcsa szükséges.|
@@ -115,7 +115,7 @@ Az információk beszerzéséhez kövesse az alábbi lépéseket:
 
    ![API-hozzáférés](./media/connect-with-rest/connect-with-rest03.png)
 
-Az AD-kapcsolódási paraméterekhez értékeket adhat hozzá a web. config vagy az app. config fájlhoz, hogy később használhassa a kódot.
+Az AD-kapcsolódási paraméterekhez értékeket adhat hozzá a web.config vagy app.config fájlhoz, hogy később használhassa a kódot.
 
 > [!IMPORTANT]
 > Az **ügyfél kulcsa** fontos titok, és megfelelő védelemmel kell rendelkeznie egy kulcstartóban vagy éles környezetben.

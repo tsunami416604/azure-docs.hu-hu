@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422610"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Távoli eszközök használata az Azure-beli virtuális gépekkel kapcsolatos problémák elhárításához
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!NOTE]
 >* A parancsot egy olyan számítógépen kell futtatni, amely ugyanabban a virtuális hálózatban található.
->* A DIP vagy a HostName használható a számítógép \<> lecserélésére.
+>* A DIP vagy a HostName is használható \<computer> .
 >* A-s paraméter gondoskodik arról, hogy a parancs a rendszerfiók (rendszergazdai engedély) használatával legyen meghívva.
 >* A PsExec a 135-es és 445-es TCP-portot használja. Ennek eredményeképpen a két portot meg kell nyitni a tűzfalon.
 
@@ -212,9 +212,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >
 >RDFE virtuális gépek esetén olyan végponttal kell rendelkeznie, amely rendelkezik 5986-es privát porttal és egy nyilvános porttal. Azt is meg kell nyitnia, hogy a nyilvános port a NSG.
 
-1. Az ugyanazon a virtuális hálózaton lévő másik virtuális gépről nyissa meg a Beállításszerkesztőt (Regedit. exe).
+1. Ugyanazon a virtuális hálózaton lévő másik virtuális gépről nyissa meg a Beállításszerkesztőt (regedit.exe).
 
-2. Válassza a **fájl** > **összekötése hálózati beállításjegyzék**lehetőséget.
+2. Válassza a **fájl**  >  **összekötése hálózati beállításjegyzék**lehetőséget.
 
    ![Rendszerleíróadatbázis-szerkesztő](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 

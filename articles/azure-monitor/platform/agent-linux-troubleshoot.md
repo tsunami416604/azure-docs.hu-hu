@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80520743"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
@@ -23,11 +23,11 @@ Ha a fenti lépések egyike sem működik, a következő támogatási csatornák
 * Az Azure-támogatási szerződéssel rendelkező ügyfelek támogatási kérelmet is megnyithatnak [a Azure Portal](https://manage.windowsazure.com/?getsupport=true).
 * A kisegítő problémák diagnosztizálásával kapcsolatos [hibaelhárítási útmutatót](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md).
 * Fájl [GitHub-probléma](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
-* Látogasson el a Log Analytics visszajelzési oldalra, és tekintse át az elküldött ötleteket és hibákat [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) , vagy egy újat.  
+* Látogasson el a Log Analytics visszajelzési oldalra, és tekintse át az elküldött ötleteket és hibákat, [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) vagy egy újat.  
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>Fontos naplózási helyszínek és a log Collector eszköz
 
- Fájl | Útvonal
+ Fájl | Elérési út
  ---- | -----
  A Linux-naplófájl Log Analytics ügynöke | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Log Analytics ügynök konfigurációs naplófájlja | `/var/opt/microsoft/omsconfig/omsconfig.log`
@@ -48,20 +48,20 @@ Ha a fenti lépések egyike sem működik, a következő támogatási csatornák
 
 ## <a name="installation-error-codes"></a>Telepítési hibakódok
 
-| Hibakód | Jelentés |
+| Hibakód | Értelmezés |
 | --- | --- |
 | NOT_DEFINED | Mivel a szükséges függőségek nincsenek telepítve, a auoms naplózott beépülő modul nem lesz telepítve. | Sikertelen volt a auoms telepítése, a csomag naplózása megtörtént. |
 | 2 | Érvénytelen beállítás van megadva a rendszerhéj-csomagban. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` használatra |
 | 3 | A rendszerhéj-csomagban nincs megadva lehetőség. Futtatás `sudo sh ./omsagent-*.universal*.sh --help` a használathoz. |
 | 4 | Érvénytelen a csomag típusa vagy a proxybeállítások érvénytelenek; omsagent –*rpm*. sh csomagok csak rpm-alapú rendszereken telepíthetők, és a omsagent-*deb*. sh csomagok csak a Debian-alapú rendszereken telepíthetők. Javasoljuk, hogy a [legújabb kiadásban](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)használja az univerzális telepítőt. Tekintse át a proxybeállítások ellenőrzését is. |
-| 5 | A rendszerhéj-csomagot root-ként kell végrehajtani, vagy 403 hiba történt az előkészítés során. Futtassa a parancsot a `sudo`használatával. |
+| 5 | A rendszerhéj-csomagot root-ként kell végrehajtani, vagy 403 hiba történt az előkészítés során. Futtassa a parancsot a használatával `sudo` . |
 | 6 | Érvénytelen a csomag architektúrája, vagy hiba történt a bevezetéskor visszaadott 200-es hiba miatt. a omsagent-*x64.sh csomagok csak 64 bites rendszerekre telepíthetők, és a omsagent-* x86.sh csomagok csak 32 bites rendszereken telepíthetők. Töltse le a megfelelő csomagot az architektúrához a [legújabb kiadásban](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Nem sikerült telepíteni a OMS-csomagot. Tekintse át a parancs kimenetét a gyökérszintű hiba miatt. |
 | 19 | Nem sikerült telepíteni a a "a" csomagot. Tekintse át a parancs kimenetét a gyökérszintű hiba miatt. |
 | 20 | Az SCX-csomag telepítése nem sikerült. Tekintse át a parancs kimenetét a gyökérszintű hiba miatt. |
 | 21 | A szolgáltatói készletek telepítése nem sikerült. Tekintse át a parancs kimenetét a gyökérszintű hiba miatt. |
 | 22 | Nem sikerült telepíteni a csomagban lévő csomagot. A hiba okát a parancs kimenetében tekintheti meg |
-| 23 | Már telepítve van az SCX-vagy a-adatcsomag. A `--upgrade` rendszerhéj `--install` -csomag telepítése helyett használja a parancsot. |
+| 23 | Már telepítve van az SCX-vagy a-adatcsomag. `--upgrade` `--install` A rendszerhéj-csomag telepítése helyett használja a parancsot. |
 | 30 | Belső kötegi hiba. A kimenetből származó részleteket tartalmazó [GitHub-probléma](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) . |
 | 55 | Nem támogatott OpenSSL-verzió, vagy nem lehet kapcsolódni Azure Monitor vagy a dpkg-hoz zárolt vagy hiányzó curl program. |
 | 61 | Hiányzik a Python ctypes könyvtára. Telepítse a Python ctypes könyvtárat vagy csomagot (Python-ctypes). |
@@ -72,7 +72,7 @@ Ha a fenti lépések egyike sem működik, a következő támogatási csatornák
 
 ## <a name="onboarding-error-codes"></a>Bevezetési hibakódok
 
-| Hibakód | Jelentés |
+| Hibakód | Értelmezés |
 | --- | --- |
 | 2 | A omsadmin parancsfájl érvénytelen beállítást adott meg. Futtatás `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` a használathoz. |
 | 3 | A omsadmin parancsfájlhoz megadott konfiguráció érvénytelen. Futtatás `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` a használathoz. |
@@ -85,13 +85,13 @@ Ha a fenti lépések egyike sem működik, a következő támogatási csatornák
 | 31 | Hiba történt az ügynök AZONOSÍTÓjának létrehozásakor. A kimenetből származó részleteket tartalmazó [GitHub-probléma](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) . |
 | 32 | Hiba történt a tanúsítványok létrehozásakor. A részletekért tekintse meg a omsadmin parancsfájl teljes kimenetét. |
 | 33 | Hiba történt a omsconfig metaconfiguration létrehozásakor. A kimenetből származó részleteket tartalmazó [GitHub-probléma](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) . |
-| 34 | A Metaconfiguration létrehozási parancsfájlja nincs jelen. Próbálja megismételni `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key>`a bevezetést. |
+| 34 | A Metaconfiguration létrehozási parancsfájlja nincs jelen. Próbálja megismételni a bevezetést `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key>` . |
 
 ## <a name="enable-debug-logging"></a>Hibakeresési naplózás engedélyezése
 ### <a name="oms-output-plugin-debug"></a>OMS kimeneti beépülő modul hibakeresése
- A speciálisan lehetővé teszi a beépülő modulok naplózási szintjeinek megadását, így különböző naplózási szinteket adhat meg a bemenetekhez és kimenetekhez. Ha más naplózási szintet szeretne megadni a OMS kimenetéhez, szerkessze az általános `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`ügynök konfigurációját a következő helyen:.  
+ A speciálisan lehetővé teszi a beépülő modulok naplózási szintjeinek megadását, így különböző naplózási szinteket adhat meg a bemenetekhez és kimenetekhez. Ha más naplózási szintet szeretne megadni a OMS kimenetéhez, szerkessze az általános ügynök konfigurációját a következő helyen: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` .  
 
- A OMS kimeneti beépülő modulban a konfigurációs fájl vége előtt módosítsa a `log_level` tulajdonságot a következőre `info` `debug`:
+ A OMS kimeneti beépülő modulban a konfigurációs fájl vége előtt módosítsa a `log_level` tulajdonságot a következőre `info` `debug` :
 
  ```
  <match oms.** docker.**>
@@ -119,9 +119,9 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 ```
 
 ### <a name="verbose-output"></a>Részletes kimenet
-A OMS kimeneti beépülő modul használata helyett közvetlenül `stdout`a (log Analytics ügynök for Linux-naplófájlban látható) adatokat is kiállíthatja.
+A OMS kimeneti beépülő modul használata helyett közvetlenül a `stdout` (log Analytics ügynök for Linux-naplófájlban látható) adatokat is kiállíthatja.
 
-A Log Analytics általános ügynök konfigurációs fájljában a `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`(z) lapon adja `#` meg a OMS kimeneti beépülő modulját az egyes sorok elé:
+A Log Analytics általános ügynök konfigurációs fájljában a (z) lapon `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` adja meg a OMS kimeneti beépülő modulját az `#` egyes sorok elé:
 
 ```
 #<match oms.** docker.**>
@@ -138,7 +138,7 @@ A Log Analytics általános ügynök konfigurációs fájljában a `/etc/opt/mic
 #</match>
 ```
 
-A kimeneti beépülő modul alatt törölje `#` a következő szakasz megjegyzését az egyes sorok előtt:
+A kimeneti beépülő modul alatt törölje a következő szakasz megjegyzését az `#` egyes sorok előtt:
 
 ```
 <match **>
@@ -153,7 +153,7 @@ A kimeneti beépülő modul alatt törölje `#` a következő szakasz megjegyzé
 * Az adatközpontban nem szerepel a Azure Monitor és az Azure Automation szolgáltatás végpontja 
 
 ### <a name="resolution"></a>Megoldás:
-1. A következő parancs `-v` futtatásával Azure monitor a Linuxra log Analytics-ügynökkel. Lehetővé teszi az ügynök részletes kimenetét, amely a proxyn keresztül csatlakozik a Azure Monitor. 
+1. A következő parancs futtatásával Azure Monitor a Linuxra Log Analytics-ügynökkel `-v` . Lehetővé teszi az ügynök részletes kimenetét, amely a proxyn keresztül csatlakozik a Azure Monitor. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. Tekintse át a [Proxybeállítások frissítése](agent-manage.md#update-proxy-settings) szakaszt, és ellenőrizze, hogy megfelelően konfigurálta-e az ügynököt egy proxykiszolgálón keresztül történő kommunikációhoz.    
@@ -214,7 +214,7 @@ A teljesítménnyel kapcsolatos hibák nem minden időben történnek, és nagyo
 1. Ellenőrizze, hogy sikeres volt-e a bevezetési Azure Monitor a következő fájl létezésének ellenőrzésével:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Újratelepítés a `omsadmin.sh` parancssori utasítások használatával
 3. Ha proxyt használ, tekintse meg a korábban megadott proxy-feloldási lépéseket.
-4. Bizonyos esetekben, ha a Linux rendszerhez készült Log Analytics-ügynök nem tud kommunikálni a szolgáltatással, az ügynökön lévő adat a teljes puffer méretére, amely 50 MB. Az ügynököt újra kell indítani a következő parancs futtatásával: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
+4. Bizonyos esetekben, ha a Linux rendszerhez készült Log Analytics-ügynök nem tud kommunikálni a szolgáltatással, az ügynökön lévő adat a teljes puffer méretére, amely 50 MB. Az ügynököt újra kell indítani a következő parancs futtatásával: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` . 
 
     >[!NOTE]
     >Ezt a problémát az Agent 1.1.0-28-as és újabb verzióiban rögzítették.
@@ -229,13 +229,13 @@ A teljesítménnyel kapcsolatos hibák nem minden időben történnek, és nagyo
 
 ### <a name="resolution"></a>Megoldás:
 * Ellenőrizze, hogy a syslog Log Analytics munkaterületén található konfiguráció rendelkezik-e az összes szolgáltatással és a megfelelő naplózási szinttel. [A syslog-gyűjtemény konfigurálásának áttekintése a Azure Portal](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)
-* Ellenőrizze, hogy a natív syslog üzenetküldési`rsyslog`démonok (, `syslog-ng`) képesek-e fogadni a továbbított üzeneteket
+* Ellenőrizze, hogy a natív syslog üzenetküldési démonok ( `rsyslog` , `syslog-ng` ) képesek-e fogadni a továbbított üzeneteket
 * Ellenőrizze a tűzfal beállításait a syslog-kiszolgálón, hogy az üzenetek ne legyenek letiltva.
 * Syslog-üzenet szimulálása Log Analytics parancs használatával `logger`
   * `logger -p local0.err "This is my test message"`
 
 ## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>Probléma: a rendszer a omsagent-naplófájlban már használatban lévő errno-címeket fogadja
-Ha a omsagent `[error]: unexpected error error_class=Errno::EADDRINUSE error=#<Errno::EADDRINUSE: Address already in use - bind(2) for "127.0.0.1" port 25224>` . log naplófájlban látható.
+Ha `[error]: unexpected error error_class=Errno::EADDRINUSE error=#<Errno::EADDRINUSE: Address already in use - bind(2) for "127.0.0.1" port 25224>` a omsagent. log naplófájlban látható.
 
 ### <a name="probable-causes"></a>Lehetséges okok
 Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analytics linuxos virtuálisgép-bővítménnyel együtt települ, és ugyanazt a portot használja a syslog-adatgyűjtéshez, mint a omsagent.
@@ -249,10 +249,10 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
     sed -i -e 's/25224/25229/' /etc/opt/microsoft/omsagent/LAD/conf/omsagent.d/syslog.conf
     ```
 
-    Ezután szerkesztenie kell a helyes `rsyslogd` vagy `syslog_ng` a konfigurációs fájlt, és módosítania kell a Lad-hez kapcsolódó konfigurációt, hogy az a 25229-es portra írjon.
+    Ezután szerkesztenie kell a helyes `rsyslogd` vagy a `syslog_ng` konfigurációs fájlt, és módosítania kell a Lad-hez kapcsolódó konfigurációt, hogy az a 25229-es portra írjon.
 
-2. Ha a virtuális gép fut `rsyslogd`, a módosítandó fájl a következő: `/etc/rsyslog.d/95-omsagent.conf` (ha létezik, más `/etc/rsyslog`). Ha a virtuális gép fut `syslog_ng`, a módosítandó fájl a következő: `/etc/syslog-ng/syslog-ng.conf`.
-3. Indítsa újra `sudo /opt/microsoft/omsagent/bin/service_control restart`a omsagent.
+2. Ha a virtuális gép fut `rsyslogd` , a módosítandó fájl a `/etc/rsyslog.d/95-omsagent.conf` következő: (ha létezik, más `/etc/rsyslog` ). Ha a virtuális gép fut `syslog_ng` , a módosítandó fájl a következő: `/etc/syslog-ng/syslog-ng.conf` .
+3. Indítsa újra a omsagent `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 4. Indítsa újra a syslog szolgáltatást.
 
 ## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Probléma: a omsagent nem távolítható el a kiürítési beállítás használatával.
@@ -264,7 +264,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 
 ### <a name="resolution"></a>Megoldás:
 1. Távolítsa el a Linux diagnosztikai bővítményt (LAD).
-2. Távolítsa el a Linux diagnosztikai bővítmény fájljait a gépről, ha azok a következő helyen `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` találhatók `/var/opt/microsoft/omsagent/LAD/`: és.
+2. Távolítsa el a Linux diagnosztikai bővítmény fájljait a gépről, ha azok a következő helyen találhatók: `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` és `/var/opt/microsoft/omsagent/LAD/` .
 
 ## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Probléma: a Nagios-adatértékek nem láthatók 
 
@@ -274,7 +274,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 
 ### <a name="resolution"></a>Megoldás:
 1. Adja hozzá a omsagent-felhasználót a Nagios-fájl olvasásához a következő [utasítások](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)követésével.
-2. A Linux rendszerhez készült általános konfigurációs fájljának Log Analytics `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`ügynökében ellenőrizze **, hogy a** Nagios forrása és a szűrő sincs-e megadva.
+2. A Linux rendszerhez készült általános konfigurációs fájljának Log Analytics ügynökében `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` ellenőrizze **both** , hogy a Nagios forrása és a szűrő sincs-e megadva.
 
     ```
     <source>
@@ -302,25 +302,25 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 
 ### <a name="resolution"></a>Megoldás:
 1. Telepítse az összes függőséget, például a naplózott csomagot.
-2. Ellenőrizze, hogy sikerült-e bevezetést Azure Monitor a következő fájl létezésének ellenőrzésével: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`.  Ha nem, akkor a omsadmin.sh parancssori [utasítások](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)használatával.
+2. Ellenőrizze, hogy sikerült-e bevezetést Azure Monitor a következő fájl létezésének ellenőrzésével: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` .  Ha nem, akkor a omsadmin.sh parancssori [utasítások](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)használatával.
 4. Ha proxyt használ, ellenőrizze a fenti proxy-hibaelhárítási lépéseket.
-5. Bizonyos Azure-beli terjesztési rendszerek esetében a nem indul el a virtuális gép újraindítása után. Ez azt eredményezi, hogy nem fog megjelenni a megoldással kapcsolatos változáskövetési vagy UpdateManagement. A megkerülő megoldás az, ha a következőt használja `sudo /opt/omi/bin/service_control restart`:
+5. Bizonyos Azure-beli terjesztési rendszerek esetében a nem indul el a virtuális gép újraindítása után. Ez azt eredményezi, hogy nem fog megjelenni a megoldással kapcsolatos változáskövetési vagy UpdateManagement. A megkerülő megoldás az, ha a következőt `sudo /opt/omi/bin/service_control restart` használja:
 6. Azt követően, hogy az új verzióra történő frissítés után a rendszer manuálisan újraindította a-csomagot, manuálisan kell újraindítani a Log Analytics-ügynök működésének folytatásához. Erre a lépésre akkor van szükség, ha a rendszer nem indítja el automatikusan a következő adatdisztribúciókat: Futtassa `sudo /opt/omi/bin/service_control restart` újra a következőt:.
-7. Ha a DSC-erőforrás *osztály nem található* a omsconfig. log naplófájlban, `sudo /opt/omi/bin/service_control restart`futtassa a következőt:.
-8. Bizonyos esetekben, ha a Linux Log Analytics-ügynöke nem tud kommunikálni Azure Monitor, az ügynökön lévő adat a teljes puffer méretére lesz mentve: 50 MB. Az ügynököt újra kell indítani a következő parancs `/opt/microsoft/omsagent/bin/service_control restart`futtatásával.
+7. Ha a DSC-erőforrás *osztály nem található* a omsconfig. log naplófájlban, futtassa a következőt: `sudo /opt/omi/bin/service_control restart` .
+8. Bizonyos esetekben, ha a Linux Log Analytics-ügynöke nem tud kommunikálni Azure Monitor, az ügynökön lévő adat a teljes puffer méretére lesz mentve: 50 MB. Az ügynököt újra kell indítani a következő parancs futtatásával `/opt/microsoft/omsagent/bin/service_control restart` .
 
     >[!NOTE]
     >Ezt a problémát az ügynök 1.1.0-28-as vagy újabb verziójában rögzítették
     >
 
-* Ha `omsconfig.log` a naplófájl nem jelzi, hogy `PerformRequiredConfigurationChecks` a műveletek rendszeresen futnak a rendszeren, előfordulhat, hogy probléma van a cron-feladatokkal vagy szolgáltatással. Győződjön meg arról, hogy a `/etc/cron.d/OMSConsistencyInvoker`cron-feladatot a alatt található. Ha szükséges, futtassa a következő parancsokat a cron-feladatok létrehozásához:
+* Ha a `omsconfig.log` naplófájl nem jelzi, hogy a `PerformRequiredConfigurationChecks` műveletek rendszeresen futnak a rendszeren, előfordulhat, hogy probléma van a cron-feladatokkal vagy szolgáltatással. Győződjön meg arról, hogy a cron-feladatot a alatt található `/etc/cron.d/OMSConsistencyInvoker` . Ha szükséges, futtassa a következő parancsokat a cron-feladatok létrehozásához:
 
     ```
     mkdir -p /etc/cron.d/
     echo "*/15 * * * * omsagent /opt/omi/bin/OMSConsistencyInvoker >/dev/null 2>&1" | sudo tee /etc/cron.d/OMSConsistencyInvoker
     ```
 
-    Győződjön meg arról is, hogy a cron szolgáltatás fut. A-t `service cron status` a Debian, az Ubuntu, a SUSE `service crond status` vagy a RHEL, a CentOS Oracle Linux használatával is használhatja a szolgáltatás állapotának vizsgálatához. Ha a szolgáltatás nem létezik, telepítheti a bináris fájlokat, és elindíthatja a szolgáltatást a következő paranccsal:
+    Győződjön meg arról is, hogy a cron szolgáltatás fut. A- `service cron status` t a Debian, az Ubuntu, a SUSE vagy `service crond status` a RHEL, a CentOS Oracle Linux használatával is használhatja a szolgáltatás állapotának vizsgálatához. Ha a szolgáltatás nem létezik, telepítheti a bináris fájlokat, és elindíthatja a szolgáltatást a következő paranccsal:
 
     **Ubuntu/Debian**
 
@@ -366,12 +366,12 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 * A portálon módosult beállítások nem lettek alkalmazva
 
 ### <a name="resolution"></a>Megoldás:
-**Háttér:** `omsconfig` a Linux-konfigurációs ügynök log Analytics ügynöke, amely öt percenként keresi az új portál-oldali konfigurációt. Ezt a konfigurációt a rendszer a/etc/opt/Microsoft/omsagent/conf/omsagent.conf. címen található linuxos konfigurációs fájlok Log Analytics ügynökére alkalmazza.
+**Háttér:** `omsconfig` a Linux-alapú konfigurációs ügynök Log Analytics ügynöke, amely öt percenként keresi az új portál-oldali konfigurációt. Ezt a konfigurációt a rendszer a/etc/opt/Microsoft/omsagent/conf/omsagent.conf. címen található linuxos konfigurációs fájlok Log Analytics ügynökére alkalmazza.
 
 * Bizonyos esetekben előfordulhat, hogy a linuxos konfigurációs ügynök Log Analytics ügynöke nem tud kommunikálni a portál konfigurációs szolgáltatásával, ami a legújabb konfigurációt nem alkalmazza.
-  1. A vagy `rpm -qi omsconfig`a `omsconfig` futtatásával `dpkg --list omsconfig` győződjön meg arról, hogy az ügynök telepítve van.  Ha nincs telepítve, telepítse újra a Linux rendszerhez készült Log Analytics-ügynök legújabb verzióját.
+  1. A vagy a futtatásával győződjön meg arról, hogy az `omsconfig` ügynök telepítve van `dpkg --list omsconfig` `rpm -qi omsconfig` .  Ha nincs telepítve, telepítse újra a Linux rendszerhez készült Log Analytics-ügynök legújabb verzióját.
 
-  2. A következő parancs `omsconfig` `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`futtatásával győződjön meg arról, hogy az ügynök tud kommunikálni Azure Monitorval. Ez a parancs visszaadja az ügynök által a szolgáltatástól kapott konfigurációt, beleértve a syslog-beállításokat, a Linux-teljesítményszámlálókat és az egyéni naplókat. Ha a parancs végrehajtása sikertelen, futtassa a következő `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`parancsot. Ez a parancs arra kényszeríti a omsconfig-ügynököt, hogy beszéljen Azure Monitor és beolvassa a legújabb konfigurációt.
+  2. A következő parancs futtatásával győződjön meg arról, hogy az `omsconfig` ügynök tud kommunikálni Azure Monitorval `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` . Ez a parancs visszaadja az ügynök által a szolgáltatástól kapott konfigurációt, beleértve a syslog-beállításokat, a Linux-teljesítményszámlálókat és az egyéni naplókat. Ha a parancs végrehajtása sikertelen, futtassa a következő parancsot `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'` . Ez a parancs arra kényszeríti a omsconfig-ügynököt, hogy beszéljen Azure Monitor és beolvassa a legújabb konfigurációt.
 
 ## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Probléma: nem jelenik meg egyéni naplózási érték 
 
@@ -379,25 +379,25 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 * A Azure Monitor bevezetése nem sikerült.
 * A beállítás **a következő konfigurációt alkalmazza a Linux-kiszolgálókra,** nem lett kiválasztva.
 * a omsconfig nem vette át a legújabb egyéni naplózási konfigurációt a szolgáltatásból.
-* A Linux-felhasználók `omsagent` log Analytics ügynöke nem tud hozzáférni az egyéni naplóhoz engedélyek miatt vagy nem található.  A következő hibák jelenhetnek meg:
+* A Linux-felhasználók Log Analytics ügynöke nem `omsagent` tud hozzáférni az egyéni naplóhoz engedélyek miatt vagy nem található.  A következő hibák jelenhetnek meg:
  * `[DATETIME] [warn]: file not found. Continuing without tailing it.`
  * `[DATETIME] [error]: file not accessible by omsagent.`
 * Ismert probléma az Log Analytics Agent for Linux 1.1.0-217-es verziójában rögzített versenyhelyzet esetében
 
 ### <a name="resolution"></a>Megoldás:
-1. Ellenőrizze, hogy a bevezetési Azure Monitor sikeres volt-e a következő fájl `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`létezésének ellenőrzésével:. Ha nem, a következők egyike:  
+1. Ellenőrizze, hogy a bevezetési Azure Monitor sikeres volt-e a következő fájl létezésének ellenőrzésével: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` . Ha nem, a következők egyike:  
 
   1. A omsadmin.sh parancssori utasítások használatával történő [újratelepítésre](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line).
   2. A Azure Portal **Speciális beállítások** területén ellenőrizze, hogy engedélyezve van-e a **következő konfiguráció alkalmazása a Linux-kiszolgálókon** beállítás.  
 
-2. A következő parancs `omsconfig` `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`futtatásával győződjön meg arról, hogy az ügynök tud kommunikálni Azure Monitorval.  Ez a parancs visszaadja az ügynök által a szolgáltatástól kapott konfigurációt, beleértve a syslog-beállításokat, a Linux-teljesítményszámlálókat és az egyéni naplókat. Ha a parancs végrehajtása sikertelen, futtassa a következő `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`parancsot. Ez a parancs arra kényszeríti a omsconfig-ügynököt, hogy beszéljen Azure Monitor és beolvassa a legújabb konfigurációt.
+2. A következő parancs futtatásával győződjön meg arról, hogy az `omsconfig` ügynök tud kommunikálni Azure Monitorval `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` .  Ez a parancs visszaadja az ügynök által a szolgáltatástól kapott konfigurációt, beleértve a syslog-beállításokat, a Linux-teljesítményszámlálókat és az egyéni naplókat. Ha a parancs végrehajtása sikertelen, futtassa a következő parancsot `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'` . Ez a parancs arra kényszeríti a omsconfig-ügynököt, hogy beszéljen Azure Monitor és beolvassa a legújabb konfigurációt.
 
-**Háttér:** A rendszerjogosultságú felhasználóként futó Linux- `root`log Analytics ügynök helyett az ügynök `omsagent` felhasználóként fut. A legtöbb esetben a felhasználóknak explicit engedélyeket kell adni ahhoz, hogy bizonyos fájlokat el lehessen olvasni. Ha engedélyt szeretne `omsagent` adni a felhasználónak, futtassa a következő parancsokat:
+**Háttér:** A rendszerjogosultságú felhasználóként futó Linux-Log Analytics ügynök helyett `root` az ügynök `omsagent` felhasználóként fut. A legtöbb esetben a felhasználóknak explicit engedélyeket kell adni ahhoz, hogy bizonyos fájlokat el lehessen olvasni. Ha engedélyt szeretne adni a `omsagent` felhasználónak, futtassa a következő parancsokat:
 
 1. A `omsagent` felhasználó hozzáadása adott csoporthoz`sudo usermod -a -G <GROUPNAME> <USERNAME>`
 2. Univerzális olvasási hozzáférés biztosítása a szükséges fájlhoz`sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
-A Race feltétellel kapcsolatos ismert probléma a 1.1.0-217-nél korábbi Linux-verzió Log Analytics ügynöke. A legújabb ügynök frissítése után futtassa a következő parancsot a kimeneti beépülő modul `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`legújabb verziójának beszerzéséhez.
+A Race feltétellel kapcsolatos ismert probléma a 1.1.0-217-nél korábbi Linux-verzió Log Analytics ügynöke. A legújabb ügynök frissítése után futtassa a következő parancsot a kimeneti beépülő modul legújabb verziójának beszerzéséhez `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` .
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Probléma: új munkaterületre próbál újra bejelentkezni
 Amikor egy ügynököt egy új munkaterületre próbál újra bevezetni, a Log Analytics-ügynök konfigurációját a telepítés előtt meg kell tisztítani. Ha törölni szeretné a régi konfigurációt az ügynöktől, futtassa a rendszerhéj-csomagot a következővel:`--purge`
@@ -411,7 +411,7 @@ Vagy
 sudo sh ./onboard_agent.sh --purge
 ```
 
-A következő lehetőség használatával folytathatja a `--purge` bevezetést
+A következő lehetőség használatával folytathatja a bevezetést `--purge`
 
 ## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Log Analytics ügynök bővítményét a Azure Portal hibás állapottal van megjelölve: a kiépítés sikertelen volt.
 
@@ -423,7 +423,7 @@ A következő lehetőség használatával folytathatja a `--purge` bevezetést
 A probléma megoldásához hajtsa végre az alábbi lépéseket.
 1. Távolítsa el a bővítményt a Azure Portalból.
 2. Telepítse az ügynököt az [utasításokat](../../azure-monitor/learn/quick-collect-linux-computer.md)követve.
-3. Indítsa újra az ügynököt a következő parancs futtatásával: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+3. Indítsa újra az ügynököt a következő parancs futtatásával: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 * Várjon néhány percet, és a kiépítés állapota **sikeresen kiépítve**értékre változik.
 
 
@@ -443,4 +443,4 @@ A probléma megoldásához hajtsa végre az alábbi lépéseket.
     wget https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.2-124/omsagent-1.4.2-124.universal.x64.sh
     ```
 
-3. A csomagokat a végrehajtásával `sudo sh ./omsagent-*.universal.x64.sh --upgrade`frissítheti.
+3. A csomagokat a végrehajtásával frissítheti `sudo sh ./omsagent-*.universal.x64.sh --upgrade` .

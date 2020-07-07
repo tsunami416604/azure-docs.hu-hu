@@ -14,10 +14,10 @@ ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582202"
 ---
 # <a name="manage-assets"></a>Eszközök kezelése
@@ -43,9 +43,9 @@ A fejlesztés megkezdése előtt tekintse át a következőt:
 
 Miután a digitális fájlokat feltöltötte a Storage-ba, és egy objektumhoz társítva van, a Media Services kódolás, a folyamatos átvitel és a tartalom elemzése munkafolyamatokban is használhatók. Az egyik gyakori Media Services munkafolyamat egy fájl feltöltése, kódolása és továbbítása. Ez a szakasz az általános lépéseket ismerteti.
 
-1. Hozzon létre egy új „bemeneti” adategységet a Media Services v3 API használatával. Ez a művelet létrehoz egy tárolót a Media Services-fiókjához társított tárfiókban. Az API a tároló nevét adja vissza (például: `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
+1. Hozzon létre egy új „bemeneti” adategységet a Media Services v3 API használatával. Ez a művelet létrehoz egy tárolót a Media Services-fiókjához társított tárfiókban. Az API a tároló nevét adja vissza (például: `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"` ).
 
-    Ha már rendelkezik egy eszközhöz társítandó blob-tárolóval, megadhatja a tároló nevét az eszköz létrehozásakor. A Media Services jelenleg csak a tároló gyökerében található blobokat támogatja, a fájlnévben elérési utat tartalmazó blobokat nem. Ennélfogva egy „input.mp4” nevű fájlt tartalmazó tároló használható lesz. Azonban a "videos/Inputs/input. mp4" fájlnévvel rendelkező tároló nem fog működni.
+    Ha már rendelkezik egy eszközhöz társítandó blob-tárolóval, megadhatja a tároló nevét az eszköz létrehozásakor. A Media Services jelenleg csak a tároló gyökerében található blobokat támogatja, a fájlnévben elérési utat tartalmazó blobokat nem. Ennélfogva egy „input.mp4” nevű fájlt tartalmazó tároló használható lesz. Azonban a "videos/Inputs/input.mp4" fájlnévvel rendelkező tároló nem fog működni.
 
     Az Azure CLI-vel közvetlenül feltölthet bármilyen tárfiókba és tárolóba, amelyhez jogosultsággal rendelkezik az előfizetésében.
 
@@ -58,7 +58,7 @@ Miután a digitális fájlokat feltöltötte a Storage-ba, és egy objektumhoz t
 
     A Media Services API segítségével [kilistázhatja az adategység-tárolók URL-címét](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
 
-    A **AssetContainerSas. listContainerSas** a [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) beállított `expiryTime`ListContainerSasInput paramétert veszi igénybe. Az időt < 24 órára kell beállítani.
+    A **AssetContainerSas. listContainerSas** a beállított [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) paramétert veszi igénybe `expiryTime` . Az időt < 24 órára kell beállítani.
 
     A [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) több sas URL-címet ad vissza, mivel minden egyes Storage-fiókhoz két Storage-fiók kulcsa van. A Storage-fiók két kulccsal rendelkezik, mert segít a Storage-fiókok kulcsainak feladatátvételében és zökkenőmentes elforgatásában. Az első SAS URL-cím az első Storage-fiók kulcsa, a második SAS URL-cím pedig a második kulcsot jelöli.
 3. Az Azure Storage API-jait vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t) használva tölthet fel fájlokat az Asset tárolóba.
@@ -100,7 +100,7 @@ curl -X PUT \
  Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
 ```
 
-### <a name="see-also"></a>Lásd még
+### <a name="see-also"></a>További információ
 
 * [Feladathoz tartozó bevitel létrehozása helyi fájlból](job-input-from-local-file-how-to.md)
 * [Feladathoz tartozó bemenet létrehozása HTTPS URL-címről](job-input-from-http-how-to.md)
