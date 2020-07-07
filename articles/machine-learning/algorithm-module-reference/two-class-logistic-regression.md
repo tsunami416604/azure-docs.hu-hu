@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137620"
 ---
 # <a name="two-class-logistic-regression-module"></a>Kétosztályos logisztikai regressziós modul
@@ -55,7 +55,7 @@ Előfordulhat például, hogy a Label (címke) oszlop [szavazott], és az "igen"
   
     -   Ezzel szemben az L2 regularizációs a nem ritka adatértékekhez ajánlott.  
   
-     Ez az algoritmus az L1 és az L2 regularizációs értékek lineáris kombinációját támogatja: Ez a <code>x = L1</code> ( <code>y = L2</code>z) <code>ax + by = c</code> , ha és, majd meghatározza a regularizációs kifejezések lineáris hosszát.  
+     Ez az algoritmus az L1 és az L2 regularizációs értékek lineáris kombinációját támogatja: Ez a (z), ha <code>x = L1</code> és <code>y = L2</code> , majd <code>ax + by = c</code> meghatározza a regularizációs kifejezések lineáris hosszát.  
   
     > [!NOTE]
     >  Többet szeretne megtudni az L1 és az L2 regularizációs? A következő cikk azt ismerteti, hogy az L1 és az L2 regularizációs miben különböznek, és hogy azok hogyan befolyásolják a modell-kialakítást, a logisztikai regressziós és neurális hálózati modellek esetében pedig: [L1 és L2 regularizációs Machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  

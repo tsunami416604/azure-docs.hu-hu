@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82117569"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>A kapcsolódó SQL-adattípusok modellezése importáláshoz és indexeléshez az Azure-ban Cognitive Search
@@ -84,7 +84,7 @@ A megoldás a helyiség részleteit beágyazott JSON-ként rögzíti, majd besz�
     GO
     ```
 
-2. Hozzon létre egy nézetet, amely a fölérendelt tábla összes mezőjéből áll (`SELECT * from dbo.Hotels$`), egy új *szobák* mező hozzáadásával, amely egy beágyazott lekérdezés kimenetét tartalmazza. A **for JSON Auto** záradék a `SELECT * from dbo.Rooms$` kimenet JSON-ként való felépítéséhez. 
+2. Hozzon létre egy nézetet, amely a fölérendelt tábla összes mezőjéből áll ( `SELECT * from dbo.Hotels$` ), egy új *szobák* mező hozzáadásával, amely egy beágyazott lekérdezés kimenetét tartalmazza. A **for JSON Auto** záradék a `SELECT * from dbo.Rooms$` kimenet JSON-ként való felépítéséhez. 
 
      ```sql
    CREATE VIEW [dbo].[HotelRooms]
@@ -100,7 +100,7 @@ A megoldás a helyiség részleteit beágyazott JSON-ként rögzíti, majd besz�
 
    ![HotelSzobak nézet](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms nézet")
 
-1. A `SELECT * FROM dbo.HotelRooms` sor beolvasásához futtassa a parancsot. Ez a lekérdezés 50 sort ad vissza, amely egy-egy helyen, a hozzá tartozó információval pedig JSON-gyűjteményként van társítva. 
+1. `SELECT * FROM dbo.HotelRooms`A sor beolvasásához futtassa a parancsot. Ez a lekérdezés 50 sort ad vissza, amely egy-egy helyen, a hozzá tartozó információval pedig JSON-gyűjteményként van társítva. 
 
    ![Sorhalmaz a HotelSzobak nézetből](media/index-sql-relational-data/hotelrooms-rowset.png "Sorhalmaz a HotelSzobak nézetből")
 

@@ -9,15 +9,15 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82106525"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps EDIFACT-üzeneteinek kódolása Enterprise Integration Pack
 
-Az EDIFACT kódolása lehetőséggel ellenőrizheti az EDI-és a Partner-specifikus tulajdonságokat, létrehozhat egy XML-dokumentumot az egyes tranzakciótípusok számára, és kérheti a technikai nyugtázás, a funkcionális nyugtázás vagy mindkettő megadását.
+Az EDIFACT-üzenet kódolása összekötővel ellenőrizheti az EDI-t és a partnerspecifikus tulajdonságokat, létrehozhat egy XML-dokumentumot az egyes tranzakciótípusokhoz, és igényelhet műszaki nyugtázást, funkcionális nyugtázást vagy mindkettőt.
 Az összekötő használatához hozzá kell adnia az összekötőt egy meglévő triggerhez a logikai alkalmazásban.
 
 ## <a name="before-you-start"></a>Előkészületek
@@ -74,7 +74,7 @@ Ha úgy dönt, hogy identitások alapján kódolja a EDIFACT-üzeneteket, adja m
 
 ![Adja meg a küldő és a fogadó identitását, és válassza ki a kódolni kívánt XML-üzenetet.](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
-## <a name="edifact-encode-details"></a>EDIFACT-Kódolás részletei
+## <a name="edifact-encode-details"></a>Az EDIFACT-kódolás részletei
 
 A kódolás EDIFACT-összekötő a következő feladatokat hajtja végre: 
 

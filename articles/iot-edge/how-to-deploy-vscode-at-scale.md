@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134363"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>IoT Edge modulok méretezése a Visual Studio Code használatával
@@ -145,9 +145,9 @@ A címkéket a Twin eszközön konfigurálja. Íme egy példa a címkével rende
 }
 ```
 
-Ez az eszköz egy központi telepítést fog kapni, ha a központi telepítéshez tartozó cél feltétel olyan kifejezést tartalmaz, amely megfelel a címke értékeinek `tag.location.building = '20'`(például) valamelyikének.
+Ez az eszköz egy központi telepítést fog kapni, ha a központi telepítéshez tartozó cél feltétel olyan kifejezést tartalmaz, amely megfelel a címke értékeinek (például) valamelyikének `tag.location.building = '20'` .
 
-Ha egy adott eszközt szeretne megcélozni a címkétől vagy más értéktől függetlenül, csak az `deviceId` értéket kell megadnia a cél feltételhez.
+Ha egy adott eszközt szeretne megcélozni a címkétől vagy más értéktől függetlenül, csak az értéket kell megadnia a `deviceId` cél feltételhez.
 
 Íme néhány példa:
 
@@ -164,7 +164,7 @@ A részletekért tekintse meg a [cél feltételt](module-deployment-monitoring.m
 
 A címkék konfigurálásához a Visual Studio Code-ban a Twin eszközt is szerkesztheti. A **nézet** menüben válassza ki a **Command paletta** elemet, és futtassa a **IoT Edge: az eszközök kettős szerkesztése** parancsot. Válassza ki IoT Edge eszközét, és megjelenik az eszköz dupla.
 
-Ebben a példában nincsenek definiálva címkék. Cserélje le az aktuális üres `"tags": {}` szakaszt a saját címkék definíciójában.
+Ebben a példában nincsenek definiálva címkék. Cserélje le az aktuális üres szakaszt a `"tags": {}` saját címkék definíciójában.
 
 ```json
 {
@@ -220,10 +220,10 @@ Miután konfigurálta az üzembe helyezési jegyzéket és a konfigurált címk�
 
    A paraméterek értékeinek megadása:
 
-  | Paraméter | Description |
+  | Paraméter | Leírás |
   | --- | --- |
-  | Központi telepítés azonosítója | Az IoT hub-ban létrehozandó központi telepítés neve. Adja meg az üzembe helyezést egy egyedi névvel, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő `& ^ [ ] { } \ | " < > /`érvénytelen karaktereket:. |
-  | Cél feltétel | Adja meg a cél feltételt annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel.A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával.Például: `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
+  | Központi telepítés azonosítója | Az IoT hub-ban létrehozandó központi telepítés neve. Adja meg az üzembe helyezést egy egyedi névvel, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /` . |
+  | Cél feltétel | Adja meg a cél feltételt annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel.A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával.Például: `tags.environment='test' and properties.reported.devicemodel='4000x'` . |
   | Prioritás |  Pozitív egész szám. Ha két vagy több üzemelő példány ugyanarra az eszközre van célozva, akkor a prioritáshoz tartozó legmagasabb numerikus értékkel rendelkező üzemelő példány érvényes lesz. |
 
   A prioritás meghatározása után a terminálnak az alábbi ábrához hasonló kimenetet kell megjelenítenie:

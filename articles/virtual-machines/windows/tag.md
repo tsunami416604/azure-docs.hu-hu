@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 ms.openlocfilehash: 6ecf0f047fe353d94ca901118d1f434e33e9c8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100566"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Windows rendszerű virtuális gép címkézése az Azure-ban
@@ -39,7 +39,7 @@ Ha a virtuális gép már tartalmaz címkéket, akkor az összes címkét látni
 
 Ha a PowerShell használatával szeretne címkéket felvenni, használja a `Set-AzResource` parancsot. Megjegyzés a címkék PowerShell használatával történő frissítésekor a címkék teljes egészében frissülnek. Tehát ha olyan erőforráshoz ad hozzá egy címkét, amely már rendelkezik címkékkel, akkor meg kell adnia az erőforráson elhelyezni kívánt címkéket is. Az alábbi példa bemutatja, hogyan adhat hozzá további címkéket egy erőforráshoz a PowerShell-parancsmagok használatával.
 
-Ez az első parancsmag állítja be a *MyTestVM* -ra helyezett összes címkét a *$Tags* változóra `Get-AzResource` a `Tags` és tulajdonság használatával.
+Ez az első parancsmag állítja be a *MyTestVM* -ra helyezett összes címkét a *$Tags* változóra a `Get-AzResource` és tulajdonság használatával `Tags` .
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
@@ -56,7 +56,7 @@ A második parancs az adott változó címkéit jeleníti meg.
     Environment   Production
 ```
 
-A harmadik parancs egy további címkét szúr be a *$Tags* változóba. Figyelje **+=** meg, hogy a használatával fűzze hozzá az új kulcs/érték párokat a *$Tags* listához.
+A harmadik parancs egy további címkét szúr be a *$Tags* változóba. Figyelje meg, hogy a használatával **+=** fűzze hozzá az új kulcs/érték párokat a *$Tags* listához.
 
         PS C:\> $tags += @{Location="MyLocation"}
 

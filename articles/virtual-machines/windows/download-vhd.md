@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/13/2019
 ms.author: cynthn
 ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085365"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Windows rendszerű virtuális merevlemez letöltése az Azure-ból
@@ -29,7 +29,7 @@ Ha a virtuális merevlemezt képként szeretné használni más virtuális gépe
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. [Kapcsolódjon a virtuális géphez](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 3. A virtuális gépen nyissa meg rendszergazdaként a parancssorablakot.
-4. Módosítsa a könyvtárat a *%WINDIR%\system32\sysprep* , és futtassa a Sysprep. exe fájlt.
+4. Módosítsa a könyvtárat *%WINDIR%\system32\sysprep* , és futtassa sysprep.exe.
 5. A rendszer-előkészítő eszköz párbeszédpanelen jelölje be a rendszerindítási folyamat **(OOBE) megadása**jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** van kiválasztva.
 6. A leállítási beállítások területen válassza a **Leállítás**lehetőséget, majd kattintson **az OK**gombra. 
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128716"
 ---
 # <a name="api-management-policies"></a>API Management házirendek
@@ -36,7 +36,7 @@ Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást t
     -   [Használati kvóta beállítása előfizetéssel](api-management-access-restriction-policies.md#SetUsageQuota) – lehetővé teszi, hogy előfizetések alapján kikényszerítse a megújítható vagy az élettartam szerinti hívások mennyiségét és/vagy sávszélesség-kvótáját.  
     -   [Használati kvóta beállítása kulccsal](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – lehetővé teszi a megújítható vagy élettartamos hívások mennyiségi és/vagy sávszélesség-kvótájának kikényszeríthető kulcs alapján.  
     -   [JWT ellenőrzése](api-management-access-restriction-policies.md#ValidateJWT) – egy adott http-fejlécből vagy egy megadott lekérdezési paraméterből kinyert JWT létezését és érvényességét kényszeríti ki.  
--   [Speciális házirendek](api-management-advanced-policies.md#AdvancedPolicies)  
+-   [Speciális szabályzatok](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [Vezérlési folyamat](api-management-advanced-policies.md#choose) – a rendszer a logikai kifejezések kiértékelése alapján feltételesen alkalmazza a házirend-utasításokat.  
     -   [Továbbítási kérelem](api-management-advanced-policies.md#ForwardRequest) – továbbítja a kérést a háttér-szolgáltatásnak.
     -   [Egyidejűség korlátozása](api-management-advanced-policies.md#LimitConcurrency) – megakadályozza, hogy a befoglalt szabályzatok a megadott számú kérelemnél több időpontban legyenek végrehajtva.

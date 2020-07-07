@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: cynthn
 ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82099886"
 ---
 # <a name="resize-a-windows-vm"></a>Windows rendszerű virtuális gép átméretezése
@@ -25,7 +25,7 @@ Ha a virtuális gép Premium Storaget használ, győződjön meg arról, hogy a 
 
 ## <a name="use-the-portal"></a>A portál használata
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg a [Azure Portal](https://portal.azure.com).
 1. Nyissa meg a virtuális gép lapját.
 1. A bal oldali menüben válassza a **méret**lehetőséget.
 1. Válasszon új méretet az elérhető méretek listájából, majd válassza az **átméretezés**lehetőséget.
@@ -56,7 +56,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-Ha a kívánt méret nem szerepel a felsorolásban, futtassa a következő parancsokat a virtuális gép felszabadításához, méretezze át, majd indítsa újra a virtuális gépet. Cserélje le ** \<a newVMsize>** a kívánt méretre.
+Ha a kívánt méret nem szerepel a felsorolásban, futtassa a következő parancsokat a virtuális gép felszabadításához, méretezze át, majd indítsa újra a virtuális gépet. Cserélje le **\<newVMsize>** a helyére a kívánt méretet.
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force

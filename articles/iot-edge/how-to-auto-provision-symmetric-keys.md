@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c6c2067526850ba972f002dc40bbd5d4cb24c9ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131011"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>IoT Edge-eszköz létrehozása és kiépítése a szimmetrikus kulcs igazolásával
@@ -43,7 +43,7 @@ Miután futtatta az eszköz kiépítési szolgáltatását, másolja az **azonos
 
 Az egyes eszközök azonosításához egyedi regisztrációs azonosítót kell megadni. Az eszköz MAC-címe, sorozatszáma vagy bármely egyedi adata használható.
 
-Ebben a példában egy MAC-címe és sorozatszáma kombinációját használjuk, amely a következő karakterláncot képezi a regisztrációs AZONOSÍTÓhoz: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`.
+Ebben a példában egy MAC-címe és sorozatszáma kombinációját használjuk, amely a következő karakterláncot képezi a regisztrációs AZONOSÍTÓhoz: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6` .
 
 Hozzon létre egy egyedi regisztrációs azonosítót az eszközhöz. Az érvényes karakterek a kisbetűs alfanumerikus és kötőjel ("-").
 
@@ -185,7 +185,7 @@ provisioning:
       symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-Cserélje le a `<SCOPE_ID>`, `<REGISTRATION_ID>`és `<SYMMETRIC_KEY>` a helyőrző értékét a korábban összegyűjtött adatokra. Győződjön meg arról, hogy a **kiépítés:** sor nem tartalmaz korábbi szóközt, és a beágyazott elemek két szóközzel vannak behúzva.
+Cserélje le a, és a helyőrző értékét `<SCOPE_ID>` `<REGISTRATION_ID>` `<SYMMETRIC_KEY>` a korábban összegyűjtött adatokra. Győződjön meg arról, hogy a **kiépítés:** sor nem tartalmaz korábbi szóközt, és a beágyazott elemek két szóközzel vannak behúzva.
 
 ### <a name="windows-device"></a>Windows-eszköz
 
@@ -204,9 +204,9 @@ A IoT Edge Windows rendszeren való telepítésével kapcsolatos további inform
 
 1. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítását kérik. Ha igen, indítsa újra az eszközt. Ha az eszköz elkészült, futtassa újra a PowerShellt rendszergazdaként.
 
-1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezés szerint a Windows-tárolók manuális üzembe helyezését választja, kivéve `-Dps` , ha a jelzőt használja az automatikus kiépítés használatára.
+1. Az **inicializálás-IoTEdge** parancs konfigurálja a IoT Edge futtatókörnyezetet a gépen. A parancs alapértelmezés szerint a Windows-tárolók manuális üzembe helyezését választja, kivéve, ha a `-Dps` jelzőt használja az automatikus kiépítés használatára.
 
-   Cserélje le a `{scope_id}`, `{registration_id}`és `{symmetric_key}` a helyőrző értékét a korábban összegyűjtött adatokra.
+   Cserélje le a, és a helyőrző értékét `{scope_id}` `{registration_id}` `{symmetric_key}` a korábban összegyűjtött adatokra.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

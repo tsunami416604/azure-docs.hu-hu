@@ -10,10 +10,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128022"
 ---
 # <a name="security-controls-for-azure-storage"></a>Az Azure Storage biztonsági vezérlői
@@ -28,7 +28,7 @@ Ez a cikk az Azure Storage-ba beépített biztonsági vezérlőket dokumentálja
 |---|---|--|
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen |  |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Lásd: [Storage Service encryption az ügyfél által felügyelt kulcsokkal Azure Key Vaultban](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
-| Oszlop szintű titkosítás (Azure Data Services)| N/A |  |
+| Oszlop szintű titkosítás (Azure Data Services)| N.A. |  |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | A szabványos HTTPS/TLS-mechanizmusok támogatása.  A felhasználók a szolgáltatásba való továbbítás előtt is titkosítani tudják az adatokat. |
 | Titkosított API-hívások| Igen |  |
 
@@ -38,9 +38,9 @@ Ez a cikk az Azure Storage-ba beépített biztonsági vezérlőket dokumentálja
 |---|---|--|
 | Szolgáltatás végpontjának támogatása| Igen |  |
 | Szolgáltatás-címkék támogatása| Igen | Az Azure Storage által támogatott szolgáltatási címkékkel kapcsolatos további információkért lásd: az [Azure-szolgáltatások címkéi – áttekintés](../../virtual-network/service-tags-overview.md) . |
-| VNet-befecskendezés támogatása| N/A |  |
+| VNet-befecskendezés támogatása| N.A. |  |
 | Hálózati elkülönítés és tűzfal-támogatás| Igen | |
-| Kényszerített bújtatás támogatása| N/A |  |
+| Kényszerített bújtatás támogatása| N.A. |  |
 
 ## <a name="monitoring--logging"></a>& naplózás figyelése
 

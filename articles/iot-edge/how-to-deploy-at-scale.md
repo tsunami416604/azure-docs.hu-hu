@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134415"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>IoT Edge modulok méretezése a Azure Portal használatával
@@ -55,7 +55,7 @@ Az üzemelő példány létrehozásának öt lépése van. A következő szakasz
 
 ### <a name="step-1-name-and-label"></a>1. lépés: név és címke
 
-1. Adja meg az üzembe helyezést egy egyedi névvel, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő `& ^ [ ] { } \ | " < > /`érvénytelen karaktereket:.
+1. Adja meg az üzembe helyezést egy egyedi névvel, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /` .
 1. A központi telepítések nyomon követéséhez kulcs-érték párokkal adhat hozzá címkéket. Például: **HostPlatform** és **Linux**, vagy **Version** és **3.0.1**.
 1. Válassza a **Next (tovább): modulok** elemet a második lépésre lépéshez.
 
@@ -115,7 +115,7 @@ Ha Azure Stream Analytics-modult szeretne hozzáadni, kövesse az alábbi lépé
 
 Miután hozzáadta a modult egy központi telepítéshez, kiválaszthatja a nevét, és megnyithatja a **IoT Edge modul frissítése** lapot. Ezen az oldalon szerkesztheti a modul beállításait, a környezeti változókat, a létrehozási beállításokat és a modult. Ha hozzáadta a modult a piactéren, előfordulhat, hogy már rendelkezik a paraméterekkel.
 
-Ha többrétegű központi telepítést hoz létre, akkor lehet, hogy olyan modult konfigurál, amely az ugyanazon eszközöket célzó más központi telepítések között található. Ha a modult a többi verzió felülírása nélkül szeretné frissíteni, nyissa meg a **modul Twin Settings** fület. hozzon létre egy új **Module Twin tulajdonságot** , amely egy alszakaszhoz tartozó egyedi névvel `properties.desired.settings`rendelkezik, például a különálló modul kívánt tulajdonságai között. Ha csak a `properties.desired` mezőben adja meg a tulajdonságokat, akkor a rendszer felülírja az alacsonyabb prioritású központi telepítésekben definiált modul kívánt tulajdonságait.
+Ha többrétegű központi telepítést hoz létre, akkor lehet, hogy olyan modult konfigurál, amely az ugyanazon eszközöket célzó más központi telepítések között található. Ha a modult a többi verzió felülírása nélkül szeretné frissíteni, nyissa meg a **modul Twin Settings** fület. hozzon létre egy új **Module Twin tulajdonságot** , amely egy alszakaszhoz tartozó egyedi névvel rendelkezik, például a különálló modul kívánt tulajdonságai között `properties.desired.settings` . Ha csak a mezőben adja meg a tulajdonságokat `properties.desired` , akkor a rendszer felülírja az alacsonyabb prioritású központi telepítésekben definiált modul kívánt tulajdonságait.
 
 ![A modul Twin tulajdonságának beállítása rétegzett központi telepítéshez](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -125,7 +125,7 @@ Miután konfigurálta az összes modult a központi telepítéshez, válassza a 
 
 ### <a name="step-3-routes"></a>3. lépés: útvonalak
 
-Az útvonalak határozzák meg, hogy a modulok hogyan kommunikáljanak egymással egy központi telepítésen belül. Alapértelmezés szerint a varázsló egy **felsőbb rétegbeli** útvonalat ad meg, amely a **/messages/\* -ből a $upstreamba**van definiálva, ami azt jelenti, hogy bármely modulból származó üzenet kimenete a IoT hubhoz érkezik.  
+Az útvonalak határozzák meg, hogy a modulok hogyan kommunikáljanak egymással egy központi telepítésen belül. Alapértelmezés szerint a varázsló egy **felsőbb rétegbeli** útvonalat ad meg, amely a **/messages/-ből a \* $upstreamba**van definiálva, ami azt jelenti, hogy bármely modulból származó üzenet kimenete a IoT hubhoz érkezik.  
 
 Adja hozzá vagy frissítse az útvonalakat a [deklarált útvonalak](module-composition.md#declare-routes)információi alapján, majd kattintson a **tovább** gombra a felülvizsgálati szakasz folytatásához.
 

@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet folyamatos integrációt beállítani az Az
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084651"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sablonok integrálása az Azure-folyamatokkal
@@ -16,7 +16,7 @@ A Visual Studio Azure erőforráscsoport-projektet biztosít Azure Resource Mana
 
 A sablonok Azure-folyamatokkal való üzembe helyezésének két módja van:
 
-* **Azure PowerShell parancsfájlt futtató feladat hozzáadása**. Ennek a beállításnak az az előnye, hogy a fejlesztési életciklus teljes egészében biztosítja a konzisztenciát, mivel ugyanazt a parancsfájlt használja, mint a Visual Studio projektben (Deploy-AzureResourceGroup. ps1). A parancsfájl a projektből egy olyan Storage-fiókra mutat, amelyet a Resource Manager elérhet. Az összetevők olyan elemek a projektben, mint például a csatolt sablonok, a parancsfájlok és az alkalmazás bináris fájljai. Ezt követően a parancsfájl üzembe helyezi a sablont.
+* **Azure PowerShell parancsfájlt futtató feladat hozzáadása**. Ennek a beállításnak az az előnye, hogy a teljes fejlesztési életciklus során a konzisztencia biztosítható, mivel a Visual Studio-projektben (Deploy-AzureResourceGroup.ps1) található parancsfájlt használja. A parancsfájl a projektből egy olyan Storage-fiókra mutat, amelyet a Resource Manager elérhet. Az összetevők olyan elemek a projektben, mint például a csatolt sablonok, a parancsfájlok és az alkalmazás bináris fájljai. Ezt követően a parancsfájl üzembe helyezi a sablont.
 
 * Feladatok **hozzáadása a feladatok másolásához és üzembe helyezéséhez**. Ez a beállítás kényelmes alternatívát kínál a projekt parancsfájlhoz. A folyamat két feladatot konfigurál. Egy feladat az összetevők és a másik tevékenység fázisában telepíti a sablont.
 
@@ -72,21 +72,21 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-A feladat `AzurePowerShell@3`beállításakor a folyamat a AzureRM modulból származó parancsokat használ a kapcsolatok hitelesítéséhez. Alapértelmezés szerint a Visual Studio-projektben a PowerShell-szkript a AzureRM modult használja. Ha frissítette a szkriptet az az [modul](/powershell/azure/new-azureps-module-az)használatára, állítsa a feladatot a következőre: `AzurePowerShell@4`.
+A feladat beállításakor `AzurePowerShell@3` a folyamat a AzureRM modulból származó parancsokat használ a kapcsolatok hitelesítéséhez. Alapértelmezés szerint a Visual Studio-projektben a PowerShell-szkript a AzureRM modult használja. Ha frissítette a szkriptet az az [modul](/powershell/azure/new-azureps-module-az)használatára, állítsa a feladatot a következőre: `AzurePowerShell@4` .
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-A `azureSubscription`(z) esetében adja meg a létrehozott szolgáltatási kapcsolatok nevét.
+A (z) esetében `azureSubscription` adja meg a létrehozott szolgáltatási kapcsolatok nevét.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-A `scriptPath`esetében adja meg a folyamat fájljának relatív elérési útját a parancsfájlnak. A tárházban megtekintheti az elérési utat.
+A esetében `scriptPath` adja meg a folyamat fájljának relatív elérési útját a parancsfájlnak. A tárházban megtekintheti az elérési utat.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -154,13 +154,13 @@ Az alábbi YAML az [Azure file Copy feladatot](/azure/devops/pipelines/tasks/dep
     sasTokenTimeOutInMinutes: '240'
 ```
 
-A feladat több részből áll, hogy átvizsgálja a környezetét. A `SourcePath` az összetevők helyét jelzi a folyamat fájljához viszonyítva. Ebben a példában a fájlok egy nevű `AzureResourceGroup1` mappában találhatók, amely a projekt neve volt.
+A feladat több részből áll, hogy átvizsgálja a környezetét. A az összetevők `SourcePath` helyét jelzi a folyamat fájljához viszonyítva. Ebben a példában a fájlok egy nevű mappában találhatók, `AzureResourceGroup1` amely a projekt neve volt.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-A `azureSubscription`(z) esetében adja meg a létrehozott szolgáltatási kapcsolatok nevét.
+A (z) esetében `azureSubscription` adja meg a létrehozott szolgáltatási kapcsolatok nevét.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -194,7 +194,7 @@ A következő YAML a [Azure Resource Manager sablon telepítési feladatát](htt
 
 A feladat több részből áll, hogy átvizsgálja a környezetét.
 
-- `deploymentScope`: Válassza ki az üzembe helyezés hatókörét a következő `Management Group`lehetőségek `Subscription` közül `Resource Group`: és. Ebben az útmutatóban használhatja az **erőforráscsoportot** . További információ a hatókörökről: [telepítési hatókörök](deploy-rest.md#deployment-scope).
+- `deploymentScope`: Válassza ki az üzembe helyezés hatókörét a következő lehetőségek közül: `Management Group` `Subscription` és `Resource Group` . Ebben az útmutatóban használhatja az **erőforráscsoportot** . További információ a hatókörökről: [telepítési hatókörök](deploy-rest.md#deployment-scope).
 
 - `ConnectedServiceName`: Adja meg a létrehozott szolgáltatási kapcsolatok nevét.
 
@@ -204,14 +204,14 @@ A feladat több részből áll, hogy átvizsgálja a környezetét.
 
 - `subscriptionName`: Adja meg a cél előfizetés-AZONOSÍTÓját. Ez a tulajdonság csak az erőforráscsoport központi telepítési hatókörére és az előfizetés központi telepítési hatókörére vonatkozik.
 
-- `resourceGroupName`és `location`: adja meg a telepíteni kívánt erőforráscsoport nevét és helyét. A feladat akkor hozza létre az erőforráscsoportot, ha az nem létezik.
+- `resourceGroupName`és `location` : adja meg a telepíteni kívánt erőforráscsoport nevét és helyét. A feladat akkor hozza létre az erőforráscsoportot, ha az nem létezik.
 
     ```yaml
     resourceGroupName: '<resource-group-name>'
     location: '<location>'
     ```
 
-Az üzembe helyezési feladat egy nevű `WebSite.json` sablonra és egy webhely. Parameters. JSON nevű paraméterre hivatkozik. Használja a sablon és a paraméter fájljainak nevét.
+A központi telepítési feladat egy nevű sablonra `WebSite.json` és egy WebSite.parameters.jsnevű Parameters fájlra hivatkozik. Használja a sablon és a paraméter fájljainak nevét.
 
 Most, hogy megértette, hogyan hozhatja létre a feladatokat, nézzük végig a folyamat szerkesztésének lépéseit.
 

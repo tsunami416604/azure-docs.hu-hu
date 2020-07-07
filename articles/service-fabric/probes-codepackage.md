@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137586"
 ---
 # <a name="liveness-probe"></a>Élő mintavétel
@@ -40,15 +40,15 @@ Emellett Service Fabric a következő mintavételi [állapot-jelentéseket][heal
 
 * `OK`: A mintavétel sikeres a **successThreshold**-ben beállított értéknél.
 
-* `Error`: A mintavételi **failureCount** ==  **failureThreshold**a tároló újraindítása előtt.
+* `Error`: A mintavételi **failureCount**  ==   **failureThreshold**a tároló újraindítása előtt.
 
 * `Warning`: 
-    * A mintavétel meghiúsul, és a **failureCount** < **failureThreshold**. Ez az állapotjelentés addig marad, amíg a **failureCount** el nem éri a **FailureThreshold** vagy a **successThreshold**értékben beállított értéket.
+    * A mintavétel meghiúsul, és a **failureCount**  <  **failureThreshold**. Ez az állapotjelentés addig marad, amíg a **failureCount** el nem éri a **FailureThreshold** vagy a **successThreshold**értékben beállított értéket.
     * A hiba után a figyelmeztetés továbbra is a frissített egymást követő sikeres sikereket követően marad.
 
 ## <a name="specifying-a-liveness-probe"></a>Az élő mintavétel meghatározása
 
-A mintavételt a ApplicationManifest. xml fájlban adhatja meg a **ServiceManifestImport**alatt.
+A mintavételt a **ServiceManifestImport**alatti ApplicationManifest.xml fájlban adhatja meg.
 
 A mintavétel a következők bármelyikéhez tartozhat:
 

@@ -9,17 +9,17 @@ ms.date: 07/31/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: 66ce267581d4748ea51a3dcbd7caa61907115cc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131156"
 ---
 # <a name="common-questions-about-site-recovery-monitoring"></a>Site Recovery figyelésével kapcsolatos gyakori kérdések
 
 Ez a cikk az Azure [site Recovery](site-recovery-overview.md)figyelésével kapcsolatos gyakori kérdésekre ad választ, a beépített site Recovery monitorozás és a Azure Monitor (log Analytics) használatával.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="how-is-the-rpo-value-logged-different-from-the-latest-available-recovery-point"></a>Miben különbözik a RPO érték a legutóbbi elérhető helyreállítási ponttól?
 

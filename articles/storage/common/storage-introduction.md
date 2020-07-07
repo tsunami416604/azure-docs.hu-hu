@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133781"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Az alapszintű Azure Storage szolgáltatás bemutatása
@@ -23,7 +23,7 @@ Az Azure Storage platform a Microsoft felhőalapú tárolási megoldása a moder
 - **Biztonságos.** Az Azure Storage-fiókba írt összes adathalmazt a szolgáltatás titkosítja. Az Azure Storage használatával részletesen szabályozhatja, hogy ki férhet hozzá az adatokhoz.
 - **Méretezhető.** Az Azure Storage nagymértékben skálázható, hogy megfeleljen a mai alkalmazások adattárolási és teljesítménybeli igényeinek.
 - **Felügyelt.** Az Azure kezeli a hardveres karbantartást, a frissítéseket és a kritikus problémákat.
-- **Hozzáférhető.** Az Azure Storage tárterületen lévő adatok a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül. A Microsoft számos nyelven biztosít ügyféloldali kódtárakat az Azure Storage-hoz, többek között a .NET, a Java, a Node. js, a Python, a PHP, a Ruby, a Go és mások számára, valamint egy érett REST API. Az Azure Storage támogatja az Azure PowerShell és az Azure CLI szkriptjeit. Az Azure Portal és az Azure Storage Explorer emellett egyszerű vizuális megoldásokat nyújt az adatok használatához.  
+- **Hozzáférhető.** Az Azure Storage tárterületen lévő adatok a világon bárhonnan elérhetők HTTP- vagy HTTPS-kapcsolaton keresztül. A Microsoft számos nyelven biztosít ügyféloldali kódtárakat az Azure Storage-hoz, többek között a .NET, a Java, a Node.js, a Python, a PHP, a Ruby, a Go és mások számára, valamint egy érett REST API. Az Azure Storage támogatja az Azure PowerShell és az Azure CLI szkriptjeit. Az Azure Portal és az Azure Storage Explorer emellett egyszerű vizuális megoldásokat nyújt az adatok használatához.  
 
 ## <a name="core-storage-services"></a>Alapszintű tárolási szolgáltatások
 
@@ -46,7 +46,7 @@ A következő táblázat összehasonlítja a fájlokat, a blobokat, a lemezeket,
 | **Azure Files** |A teljes körűen felügyelt felhőalapú fájlmegosztást biztosít, amely bárhonnan elérhető az iparági szabványnak megfelelő SMB protokollon keresztül.<br><br>Azure-fájlmegosztást csatlakoztathat a felhőből vagy a helyszíni Windows, Linux és macOS rendszerű környezetekről. | Olyan alkalmazást szeretne átemelni és átállítani a felhőbe, amely már a natív fájlrendszer API-kat használja az Azure-ban futó más alkalmazások közötti adatmegosztáshoz.<br/><br/>Szeretné cserélni vagy kiegészíteni a helyszíni fájlkiszolgálók vagy NAS-eszközöket.<br><br> Olyan fejlesztési és hibakeresési eszközöket szeretne tárolni, amelyeknek számos virtuális gépről kell elérniük. |
 | **Azure Blobs** | Lehetővé teszi a strukturálatlan adatmennyiségek tárolását és elérését a blokkos Blobok nagy méretekben.<br/><br/>A [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) is támogatja a vállalati Big Data elemzési megoldásokhoz. | Azt szeretné, hogy az alkalmazás támogassa a folyamatos átvitelt és a véletlenszerű hozzáférési forgatókönyveket.<br/><br/>Bárhonnan elérhetővé szeretné tenni az alkalmazásadatok elérését.<br/><br/>Az Azure-ban szeretne létrehozni egy vállalati adattavat, és big data elemzést hajt végre. |
 | **Azure Disks** | Lehetővé teszi az adatok tartós tárolását és elérését egy csatlakoztatott virtuális merevlemezről. | A natív fájlrendszerű API-kat használó alkalmazások "átemelése" és "eltolása" szükséges az állandó lemezekre való olvasáshoz és az adatíráshoz.<br/><br/>Olyan adatok tárolására van szükség, amelyek nem szükségesek azon a virtuális gépen kívülről való hozzáféréshez, amelyhez a lemez csatlakoztatva van. |
-| **Azure Queues** | Lehetővé teszi az alkalmazások összetevői közötti aszinkron üzenetsor-kezelést. | El szeretné választani az alkalmazás-összetevőket, és aszinkron üzenetküldést használ a közöttük való kommunikációhoz.<br><br>A Queue Storage és a Service Bus Queues használata esetén a következő témakörben talál útmutatást: [Storage Queues and Service Bus Queues – összehasonlítás és kontrasztos](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted). |
+| **Azure-üzenetsorok** | Lehetővé teszi az alkalmazások összetevői közötti aszinkron üzenetsor-kezelést. | El szeretné választani az alkalmazás-összetevőket, és aszinkron üzenetküldést használ a közöttük való kommunikációhoz.<br><br>A Queue Storage és a Service Bus Queues használata esetén a következő témakörben talál útmutatást: [Storage Queues and Service Bus Queues – összehasonlítás és kontrasztos](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted). |
 | **Azure-táblák** | Lehetővé teszi a strukturált NoSQL-alapú adattárolást a felhőben, amely egy kulcs/attribútum-tárolót biztosít a séma nélküli kialakításhoz. | Rugalmas adatkészleteket szeretne tárolni, például a webalkalmazásokhoz, a címjegyzékekhez, az eszköz adataihoz vagy a szolgáltatás által igényelt más típusú metaadatokhoz tartozó felhasználói adatokat. <br/><br/>Ha a Table Storage és a Azure Cosmos DB Table API használatát ismerteti, tekintse meg a [fejlesztés a Azure Cosmos DB Table API és az Azure Table Storage](../../cosmos-db/table-support.md)szolgáltatással című témakört. |
 
 ## <a name="blob-storage"></a>Blob Storage
@@ -150,7 +150,7 @@ A Storage-fiókokban lévő erőforrásokat bármilyen, HTTP/HTTPS-kérelmeket e
 - [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [Azure Storage ügyféloldali kódtára a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [Azure Storage ügyféloldali kódtár Java/Android rendszerhez](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [Azure Storage ügyféloldali kódtár a Node. js-hez](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
+- [Azure Storage ügyféloldali kódtár a Node.jshoz](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [Az Azure Storage ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-storage-python)
 - [Az Azure Storage ügyféloldali kódtára a PHP-hez](https://github.com/Azure/azure-storage-php)
 - [Azure Storage ügyféloldali kódtár a Rubyhoz](https://github.com/Azure/azure-storage-ruby)

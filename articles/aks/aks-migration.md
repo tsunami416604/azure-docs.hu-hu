@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82129104"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
@@ -94,7 +94,7 @@ További információ: Azure- [előfizetés és-szolgáltatási korlátok](https
 
 Ha az alkalmazás nem tudja kezelni az állásidőt, a magas rendelkezésre állású áttelepítési forgatókönyvekhez ajánlott eljárásokat kell követnie.  Az összetett üzletmenet folytonosságának megtervezése, a vész-helyreállítás és a hasznos üzemidő maximalizálása a jelen dokumentum hatókörén kívül esik.  További információ az [üzletmenet folytonosságával és a vész-helyreállítással kapcsolatos ajánlott eljárásokról az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) .
 
-Összetett alkalmazások esetében általában az idő múlásával, nem pedig egyszerre kell áttérnie. Ez azt jelenti, hogy a régi és az új környezetnek kommunikálnia kell a hálózaton keresztül. Előfordulhat, hogy a `ClusterIP` korábban a kommunikációhoz használt szolgáltatásokat be `LoadBalancer` kell állítani, és megfelelő védelemmel kell elvégezniük.
+Összetett alkalmazások esetében általában az idő múlásával, nem pedig egyszerre kell áttérnie. Ez azt jelenti, hogy a régi és az új környezetnek kommunikálnia kell a hálózaton keresztül. Előfordulhat, hogy a korábban a `ClusterIP` kommunikációhoz használt szolgáltatásokat be kell állítani, `LoadBalancer` és megfelelő védelemmel kell elvégezniük.
 
 Az áttelepítés befejezéséhez az ügyfeleket az AK-on futó új szolgáltatásokra kell irányítani. Javasoljuk, hogy a forgalom átirányításához frissítse a DNS-t úgy, hogy az AK-fürt előtt található Load Balancer mutasson.
 
@@ -158,9 +158,9 @@ Egyes nyílt forráskódú eszközök segítségével felügyelt lemezeket hozha
 
 ### <a name="deployment-of-your-cluster-configuration"></a>A fürt konfigurációjának üzembe helyezése
 
-Javasoljuk, hogy a meglévő folyamatos integrációs (CI) és a folyamatos kézbesítés (CD) folyamat használatával helyezzen üzembe egy ismert, jó konfigurációt az AK-ban. Az Azure-folyamatok segítségével alkalmazásokat hozhat [létre és helyezhet üzembe az AK](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)-ban. A meglévő üzembe helyezési feladatok klónozásával `kubeconfig` ellenőrizze, hogy az új AK-fürtre mutat-e.
+Javasoljuk, hogy a meglévő folyamatos integrációs (CI) és a folyamatos kézbesítés (CD) folyamat használatával helyezzen üzembe egy ismert, jó konfigurációt az AK-ban. Az Azure-folyamatok segítségével alkalmazásokat hozhat [létre és helyezhet üzembe az AK](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)-ban. A meglévő üzembe helyezési feladatok klónozásával ellenőrizze, hogy `kubeconfig` az új AK-fürtre mutat-e.
 
-Ha ez nem lehetséges, exportálja az erőforrás-definíciókat a meglévő Kubernetes-fürtből, majd alkalmazza őket az AK-ra. Az objektumok exportálására használható `kubectl` .
+Ha ez nem lehetséges, exportálja az erőforrás-definíciókat a meglévő Kubernetes-fürtből, majd alkalmazza őket az AK-ra. `kubectl`Az objektumok exportálására használható.
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml

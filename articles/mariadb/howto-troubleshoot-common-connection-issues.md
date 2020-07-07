@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101450"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Az Azure Database for MariaDB-hez való csatlakozás hibáinak elhárítása
@@ -47,7 +47,7 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MariaDBhoz,
 
 * Tűzfal-konfiguráció: a Azure Database for MariaDB-kiszolgáló vagy az ügyféloldali tűzfal blokkolja a kapcsolatokat.
 * Hálózati újrakonfigurálás az ügyféloldali oldalon: új IP-cím vagy proxykiszolgáló lett hozzáadva.
-* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva * \@* , például a kiszolgáló neve a (z) vagy a felhasználónévben lévő kiszolgálónév-utótaggal.
+* Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) vagy a felhasználónévben lévő * \@ kiszolgálónév* -utótaggal.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 
