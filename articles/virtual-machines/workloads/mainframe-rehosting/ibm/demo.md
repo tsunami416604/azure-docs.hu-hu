@@ -13,10 +13,9 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68841385"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM&T v1-ben
@@ -83,7 +82,7 @@ Most, hogy már rendelkezik a csomaggal, fel kell töltenie őket a virtuális g
 6. Kezdeményezzen feltöltést az Ön által létrehozott Azure-beli virtuálisgép-könyvtárba, amely a&T-T tartalmazó rendszerkép-tárterület lesz.
 
     > [!NOTE]
-    > Győződjön meg arról, hogy a **ADCDTOOLS. Az XML** a **Home/MYUSERID/ZDT/adcd/nov2017** könyvtárba való feltöltés részét képezi. Erre később még szüksége lesz.
+    > Győződjön meg arról, hogy **ADCDTOOLS.XML** szerepel a **Home/MyUserID/ZDT/adcd/nov2017** könyvtárba való feltöltésben. Erre később még szüksége lesz.
 
 7. Várjon, amíg feltölti a fájlokat, ami az Azure-hoz való kapcsolódástól függően hosszabb időt is igénybe vehet.
 
@@ -105,7 +104,7 @@ A következő lépés, hogy a&T-T konfigurálja a feltöltött csomag (ok) haszn
         /opt/ibm/zDT/bin/startServer
     ```
 2. Jegyezze fel a parancs URL-címét, és használja ezt az URL-címet a webkiszolgáló eléréséhez. A következőhöz hasonlóan néz ki:
-     > https://(a virtuális gép neve vagy IP-címe): 9443/ZDTMC/index. html
+     > https://(a virtuális gép neve vagy IP-címe): 9443/ZDTMC/index.html
      >
      > Ne feledje, hogy a webes elérés a 9443-es portot használja. Ezzel a szolgáltatással jelentkezhet be a webkiszolgálóra. A **zdtadmin** felhasználói azonosítója&T, a jelszó pedig **jelszó**.
 
@@ -186,7 +185,7 @@ A lemezkép most már üzembe helyezhető, és készen áll arra, hogy csatlakoz
 
 Gratulálunk! Mostantól egy IBM mainframe-környezetet futtat az Azure-ban.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudjon meg többet
 
 - [Mainframe-áttelepítés: mítoszok és tények](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2-pureScale az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)

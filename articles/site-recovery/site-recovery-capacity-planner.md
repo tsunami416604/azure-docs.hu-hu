@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73936049"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>A Hyper-V virtuális gép vész-helyreállítási kapacitásának megtervezése 
@@ -61,7 +60,7 @@ Az eszközt két módban is futtathatja:
 
    e. Azon **órák száma, amelyekben a virtuális gépek kezdeti replikálása szükséges** , és a **virtuális gépek száma kezdeti replikálási kötegben**, a kezdeti replikációs követelmények kiszámításához használt beállítások megadása. Site Recovery telepítésekor a rendszer feltölti a teljes kezdeti adatkészletet.
 
-   ![Bemenetek](./media/site-recovery-capacity-planner/inputs.png)
+   ![Bevitelek](./media/site-recovery-capacity-planner/inputs.png)
 
 4. A forrás-környezet értékeinek megadása után a megjelenített kimenet a következőket tartalmazza:
 
@@ -101,7 +100,7 @@ Az eszközt két módban is futtathatja:
 
    f. A **lemez kapacitása kihasználtsága (%)** mezőben határozza meg az átlagos kihasználtságot.
 
-   g. A **napi adatváltozási arány (%)** értéknél a forráskiszolgáló napi adatváltozási arányát kell megadni.
+   : A **napi adatváltozási arány (%)** értéknél a forráskiszolgáló napi adatváltozási arányát kell megadni.
 
    h. Az **Azure-beli virtuális gép méretének leképezése**mezőben adja meg a leképezni kívánt Azure-beli virtuális gép méretét. Ha ezt manuálisan nem szeretné elvégezni, válassza a **számítási IaaS virtuális gépek**lehetőséget. Ha a manuális beállítást adja meg, majd kiválasztja a **számítási IaaS virtuális gépek**lehetőséget, előfordulhat, hogy a manuális beállítás felül van írva. A számítási folyamat automatikusan azonosítja az Azure-beli virtuális gépek méretének legmegfelelőbb egyezését.
 

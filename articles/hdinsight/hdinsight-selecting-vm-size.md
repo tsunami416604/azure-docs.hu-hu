@@ -10,10 +10,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73682212"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>A virtuális gép megfelelő méretének kiválasztása az Azure HDInsight-fürthöz
@@ -38,7 +37,7 @@ A virtuális gép méretét és típusát a CPU feldolgozási teljesítmény, a 
 
 Az Azure-beli virtuálisgép-családok különböző használati esetekre vannak optimalizálva. Az alábbi táblázatban megtalálja a legnépszerűbb használati eseteket és a nekik megfelelő virtuálisgép-családokat.
 
-| Típus                     | Méretek           |    Leírás       |
+| Típus                     | Méretek           |    Description       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Belépési szint](../virtual-machines/linux/sizes-general.md)          | A, Av2  | A CPU-teljesítmény és a memória-konfigurációk a legmegfelelőbbek a belépési szintű munkaterhelésekhez, például a fejlesztéshez és a teszteléshez. Ezek gazdaságos, és alacsony díjszabású lehetőséget biztosítanak az Azure megkezdésére. |
 | [Általános célú](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Kiegyensúlyozott processzor-memória arány. Ideális választások a teszteléshez és a fejlesztéshez, a kicsi és közepes adatbázisokhoz, illetve az alacsony és közepes forgalmú webkiszolgálókhoz. |
@@ -55,10 +54,10 @@ A következő táblázat a Fsv2-sorozatú virtuális gépekkel létrehozható f�
 
 | Fürt típusa | Verzió | Munkavégző csomópont | Fő csomópont | Zookeeper csomópont |
 |---|---|---|---|---|
-| Spark | Összes | F4 és újabb verziók | nem | nem |
-| Hadoop | Összes | F4 és újabb verziók | nem | nem |
-| Kafka | Összes | F4 és újabb verziók | nem | nem |
-| HBase | Összes | F4 és újabb verziók | nem | nem |
+| Spark | Mind | F4 és újabb verziók | nem | nem |
+| Hadoop | Mind | F4 és újabb verziók | nem | nem |
+| Kafka | Mind | F4 és újabb verziók | nem | nem |
+| HBase | Mind | F4 és újabb verziók | nem | nem |
 | LLAP | tiltva | nem | nem | nem |
 | Storm | tiltva | nem | nem | nem |
 | ML szolgáltatás | CSAK A HDI 3,6 | F4 és újabb verziók | nem | nem |

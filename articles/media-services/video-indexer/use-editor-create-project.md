@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73839170"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Projektek létrehozása a Video Indexer Editor használatával
@@ -57,7 +56,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy projektet a semmiből, és hogyan 
 
     ![Szűrés](./media/video-indexer-view-edit/visual-text.png)
 
-    Több szűrőt is megadhat a lekérdezéshez. Szűrők hozzáadásához és eltávolításához használja a **+** / **-** gombokat. Az összes szűrő eltávolításához használja a **Szűrők törlése** lehetőséget.
+    Több szűrőt is megadhat a lekérdezéshez. **+** / **-** Szűrők hozzáadásához és eltávolításához használja a gombokat. Az összes szűrő eltávolításához használja a **Szűrők törlése** lehetőséget.
 1. Videók hozzáadásához jelölje ki őket, majd válassza a **Hozzáadás**lehetőséget.
 1. Most megjelenik az összes kiválasztott videó. Ezek a videók, amelyekről a projekthez tartozó klipeket fogja kiválasztani.
 
@@ -96,7 +95,7 @@ Ha az egyes videók jobb oldalán lévő lefelé mutató nyílra kattint, akkor 
 > [!TIP]
 > A klipek kiválasztása és sorrendbe állítása közben megtekintheti a videót az oldal jobb oldalán lévő lejátszóban. 
 
-![Előzetes verzió](./media/video-indexer-view-edit/preview.png)
+![Előnézet](./media/video-indexer-view-edit/preview.png)
 
 Ne felejtse el menteni a projektet, amikor módosításokat végez a **projekt mentése**gombra kattintva. 
 

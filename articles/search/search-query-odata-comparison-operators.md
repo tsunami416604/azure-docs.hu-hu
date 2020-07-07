@@ -20,13 +20,12 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113225"
 ---
-# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData összehasonlító operátorok az Azure- `eq`ban `ne`Cognitive Search `gt`- `lt`, `ge`,,, és`le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData összehasonlító operátorok az Azure-ban Cognitive Search- `eq` ,,,, `ne` `gt` `lt` `ge` és`le`
 
 Az Azure Cognitive Search [OData-szűrési kifejezésének](query-odata-filter-orderby-syntax.md) legalapvetőbb művelete egy mező egy adott értékkel való összevetése. Az összehasonlítás két típusa lehetséges – egyenlőség-összehasonlítás és tartomány-összehasonlítás. A következő operátorok segítségével hasonlíthatja össze a mezőket egy állandó értékkel:
 
@@ -45,9 +44,9 @@ Tartomány operátorai:
 A tartomány-operátorokat a [logikai operátorokkal](search-query-odata-logical-operators.md) együtt használva ellenőrizheti, hogy egy adott mező bizonyos tartományon belül van-e. Tekintse meg a jelen cikk későbbi részében található [példákat](#examples) .
 
 > [!NOTE]
-> Ha szeretné, az állandó értéket az operátor bal oldalán, a mező nevét pedig a jobb oldalon helyezheti el. A tartomány-operátorok esetében az összehasonlítás jelentése fordított. Ha például az állandó érték a bal oldalon van, akkor teszteli, hogy az állandó érték nagyobb-e, `gt` mint a mező. Az összehasonlító operátorok segítségével összehasonlíthatja a függvények eredményét, például `geo.distance`egy értéket is. Olyan logikai függvények esetében `search.ismatch`, mint például a, az `true` eredmény `false` vagy a választható érték összevetése.
+> Ha szeretné, az állandó értéket az operátor bal oldalán, a mező nevét pedig a jobb oldalon helyezheti el. A tartomány-operátorok esetében az összehasonlítás jelentése fordított. Ha például az állandó érték a bal oldalon van, `gt` akkor teszteli, hogy az állandó érték nagyobb-e, mint a mező. Az összehasonlító operátorok segítségével összehasonlíthatja a függvények eredményét, például `geo.distance` egy értéket is. Olyan logikai függvények esetében, mint például `search.ismatch` a, az eredmény vagy a választható érték összevetése `true` `false` .
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) az összehasonlító operátorokat használó OData-kifejezések nyelvtanát határozzák meg.
 
@@ -75,32 +74,32 @@ Az összehasonlító kifejezések két formája létezik. Az egyetlen különbs�
 
 ## <a name="data-types-for-comparisons"></a>Összehasonlítások adattípusai
 
-Az összehasonlító operátorok mindkét oldalán lévő adattípusoknak kompatibilisnek kell lenniük. Ha például a bal oldali mező típusa `Edm.DateTimeOffset`, akkor a jobb oldalon dátum-idő állandónak kell lennie. A numerikus adattípusok rugalmasabbak. Bármilyen numerikus típus változóit és függvényeit összehasonlíthatja bármilyen más numerikus típussal, néhány korlátozással, az alábbi táblázatban leírtak szerint.
+Az összehasonlító operátorok mindkét oldalán lévő adattípusoknak kompatibilisnek kell lenniük. Ha például a bal oldali mező típusa `Edm.DateTimeOffset` , akkor a jobb oldalon dátum-idő állandónak kell lennie. A numerikus adattípusok rugalmasabbak. Bármilyen numerikus típus változóit és függvényeit összehasonlíthatja bármilyen más numerikus típussal, néhány korlátozással, az alábbi táblázatban leírtak szerint.
 
 | Változó vagy függvény típusa | Konstans értéktípus | Korlátozások |
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | Az összehasonlításra a [következő speciális szabályok `NaN` vonatkoznak:](#special-case-nan) |
-| `Edm.Double` | `Edm.Int64` | A konstans a értékre lett konvertálva `Edm.Double`, ami a nagy mennyiségű értékek pontosságának elvesztését eredményezi |
-| `Edm.Double` | `Edm.Int32` | n/a |
-| `Edm.Int64` | `Edm.Double` | A `NaN`, `-INF`, vagy `INF` nem engedélyezett összehasonlítások |
-| `Edm.Int64` | `Edm.Int64` | n/a |
+| `Edm.Double` | `Edm.Int64` | A konstans a értékre lett konvertálva `Edm.Double` , ami a nagy mennyiségű értékek pontosságának elvesztését eredményezi |
+| `Edm.Double` | `Edm.Int32` | n.a. |
+| `Edm.Int64` | `Edm.Double` | A `NaN` , `-INF` , vagy `INF` nem engedélyezett összehasonlítások |
+| `Edm.Int64` | `Edm.Int64` | n.a. |
 | `Edm.Int64` | `Edm.Int32` | A konstans konvertálása az `Edm.Int64` összehasonlítás előtt történik |
-| `Edm.Int32` | `Edm.Double` | A `NaN`, `-INF`, vagy `INF` nem engedélyezett összehasonlítások |
-| `Edm.Int32` | `Edm.Int64` | n/a |
-| `Edm.Int32` | `Edm.Int32` | n/a |
+| `Edm.Int32` | `Edm.Double` | A `NaN` , `-INF` , vagy `INF` nem engedélyezett összehasonlítások |
+| `Edm.Int32` | `Edm.Int64` | n.a. |
+| `Edm.Int32` | `Edm.Int32` | n.a. |
 
-A nem engedélyezett összehasonlításokhoz, például a típusú `Edm.Int64` `NaN`mezők összehasonlításához az Azure Cognitive Search REST API "http 400: hibás kérés" hibaüzenetet ad vissza.
+A nem engedélyezett összehasonlításokhoz, például a típusú mezők összehasonlításához `Edm.Int64` `NaN` az Azure Cognitive Search REST API "http 400: hibás kérés" hibaüzenetet ad vissza.
 
 > [!IMPORTANT]
 > Bár a numerikus típusok összehasonlítása rugalmas, javasoljuk, hogy az összehasonlításokat a szűrőkben is érdemes megírni, hogy az állandó érték ugyanolyan adattípusú legyen, mint a változó vagy a függvény, amelyhez a rendszer hasonlít. Ez különösen akkor fontos, ha a lebegőpontos és az egész értékeket keverik, ahol a pontosságot elveszítő implicit konverziók lehetségesek.
 
 <a name="special-case-nan"></a>
 
-### <a name="special-cases-for-null-and-nan"></a>A és a `null` speciális esetei`NaN`
+### <a name="special-cases-for-null-and-nan"></a>A és a speciális esetei `null``NaN`
 
-Az összehasonlító operátorok használatakor fontos megjegyezni, hogy az Azure Cognitive Search összes nem gyűjteményes mezője potenciálisan lehet `null`. A következő táblázat az összehasonlítási kifejezés összes lehetséges eredményét tartalmazza, ahol mindkét oldal lehet `null`:
+Az összehasonlító operátorok használatakor fontos megjegyezni, hogy az Azure Cognitive Search összes nem gyűjteményes mezője potenciálisan lehet `null` . A következő táblázat az összehasonlítási kifejezés összes lehetséges eredményét tartalmazza, ahol mindkét oldal lehet `null` :
 
-| Művelet | Eredmény, ha csak a mező vagy a változó szerepel`null` | Eredmény, ha csak az állandó érték van`null` | Eredmény, ha a mező vagy a változó és az állandó is`null` |
+| Operátor | Eredmény, ha csak a mező vagy a változó szerepel`null` | Eredmény, ha csak az állandó érték van`null` | Eredmény, ha a mező vagy a változó és az állandó is`null` |
 | --- | --- | --- | --- |
 | `gt` | `false` | HTTP 400: hibás kérelem hiba | HTTP 400: hibás kérelem hiba |
 | `lt` | `false` | HTTP 400: hibás kérelem hiba | HTTP 400: hibás kérelem hiba |
@@ -109,11 +108,11 @@ Az összehasonlító operátorok használatakor fontos megjegyezni, hogy az Azur
 | `eq` | `false` | `false` | `true` |
 | `ne` | `true` | `true` | `false` |
 
-Összefoglalva `null` , csak önmagával egyenlő, és nem lehet kisebb vagy nagyobb, mint bármely más érték.
+Összefoglalva, `null` csak önmagával egyenlő, és nem lehet kisebb vagy nagyobb, mint bármely más érték.
 
-Ha az indexnek vannak típusú `Edm.Double` mezői, és értékeket `NaN` tölt fel ezekre a mezőkre, akkor a szűrők írásakor el kell végeznie a fiók használatát. Az Azure Cognitive Search az értékek kezelésére `NaN` az IEEE 754 szabványt valósítja meg, az ilyen értékekkel való összehasonlítás pedig nem nyilvánvaló eredményeket eredményez, ahogy az alábbi táblázatban is látható.
+Ha az indexnek vannak típusú mezői `Edm.Double` , és értékeket tölt fel `NaN` ezekre a mezőkre, akkor a szűrők írásakor el kell végeznie a fiók használatát. Az Azure Cognitive Search az értékek kezelésére az IEEE 754 szabványt valósítja meg `NaN` , az ilyen értékekkel való összehasonlítás pedig nem nyilvánvaló eredményeket eredményez, ahogy az alábbi táblázatban is látható.
 
-| Művelet | Eredmény, ha legalább egy operandus`NaN` |
+| Operátor | Eredmény, ha legalább egy operandus`NaN` |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |
@@ -122,31 +121,31 @@ Ha az indexnek vannak típusú `Edm.Double` mezői, és értékeket `NaN` tölt 
 | `eq` | `false` |
 | `ne` | `true` |
 
-Összefoglalva `NaN` , nem egyenlő egyetlen értékkel sem, beleértve a saját magát is.
+Összefoglalva, `NaN` nem egyenlő egyetlen értékkel sem, beleértve a saját magát is.
 
 ### <a name="comparing-geo-spatial-data"></a>Geo-térbeli adatainak összehasonlítása
 
-Egy típusú `Edm.GeographyPoint` mező nem hasonlítható össze állandó értékkel, de használhatja a `geo.distance` függvényt is. Ez a függvény egy típusú `Edm.Double`értéket ad vissza, így összehasonlíthatja azt egy numerikus konstanssal, hogy az állandó geo-térbeli koordináták távolsága alapján szűrje azt. Tekintse meg az alábbi [példákat](#examples) .
+Egy típusú mező nem hasonlítható össze `Edm.GeographyPoint` állandó értékkel, de használhatja a `geo.distance` függvényt is. Ez a függvény egy típusú értéket ad vissza `Edm.Double` , így összehasonlíthatja azt egy numerikus konstanssal, hogy az állandó geo-térbeli koordináták távolsága alapján szűrje azt. Tekintse meg az alábbi [példákat](#examples) .
 
 ### <a name="comparing-string-data"></a>Karakterlánc-adatértékek összehasonlítása
 
-A karakterláncok összehasonlítható a szűrőkben a és `eq` `ne` a operátorok pontos egyezéséhez. Ezek az összehasonlítások megkülönböztetik a kis-és nagybetűket.
+A karakterláncok összehasonlítható a szűrőkben a `eq` és a `ne` operátorok pontos egyezéséhez. Ezek az összehasonlítások megkülönböztetik a kis-és nagybetűket.
 
 ## <a name="examples"></a>Példák
 
-Olyan dokumentumok egyeztetése `Rating` , amelyekben a mező 3 és 5 közötti, beleértve a következőket:
+Olyan dokumentumok egyeztetése, amelyekben a `Rating` mező 3 és 5 közötti, beleértve a következőket:
 
     Rating ge 3 and Rating le 5
 
-Olyan dokumentumok egyeztetése `Location` , amelyekben a mező kevesebb, mint 2 kilométer a megadott szélességi és hosszúsági fok:
+Olyan dokumentumok egyeztetése, amelyekben a `Location` mező kevesebb, mint 2 kilométer a megadott szélességi és hosszúsági fok:
 
     geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
 
-Olyan dokumentumok egyeztetése `LastRenovationDate` , amelyekben a mező értéke nagyobb vagy egyenlő, mint 2015, éjfélkor UTC:
+Olyan dokumentumok egyeztetése, amelyekben a `LastRenovationDate` mező értéke nagyobb vagy egyenlő, mint 2015, éjfélkor UTC:
 
     LastRenovationDate ge 2015-01-01T00:00:00.000Z
 
-Olyan dokumentumok egyeztetése `Details/Sku` , amelyek nem `null`a mező:
+Olyan dokumentumok egyeztetése `Details/Sku` , amelyek nem a mező `null` :
 
     Details/Sku ne null
 

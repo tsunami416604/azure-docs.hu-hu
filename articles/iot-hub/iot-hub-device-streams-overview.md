@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
 ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890460"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub eszköz streamek (előzetes verzió)
@@ -82,7 +81,7 @@ Az eszköz és a szolgáltatás összes oldalának képesnek kell lennie TLS-kom
 
 !["Eszköz stream-végpontok"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-Másik lehetőségként a végpontok adatait az Azure CLI-vel is lekérheti a hub Properties (Tulajdonságok) `property.hostname` szakasza, pontosabban és `property.deviceStreams` kulcsaival.
+Másik lehetőségként a végpontok adatait az Azure CLI-vel is lekérheti a hub Properties (Tulajdonságok) szakasza, pontosabban `property.hostname` és `property.deviceStreams` kulcsaival.
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
@@ -106,7 +105,7 @@ A kimenet az összes végpont JSON-objektuma, amelyet a hub eszközének és szo
 
 A cikk elején említettek szerint az eszköz kimenő kapcsolatokat hoz létre IoT Hub streaming-végponthoz az adatfolyamok kezdeményezése során. Az eszközön vagy a hálózatán lévő tűzfalaknak engedélyeznie kell a kimenő kapcsolatot a folyamatos átviteli átjáróval az 443-as porton keresztül (vegye figyelembe, hogy a kommunikáció a TLS protokollal titkosított WebSocket-kapcsolaton keresztül történik).
 
-Az eszköz folyamatos átviteli végpontjának állomásneve az Azure IoT Hub portálon, az Áttekintés lapon található. !["eszköz stream-végpontok"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+Az eszköz folyamatos átviteli végpontjának állomásneve az Azure IoT Hub portálon, az Áttekintés lapon található. ![ " Eszköz stream-végpontok "](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
 Azt is megteheti, hogy az Azure CLI használatával is megkeresi ezeket az információkat:
 
@@ -132,7 +131,7 @@ Kövesse az alábbi lépéseket a IoT Hub Device stream-tevékenységekhez tarto
 
     !["Az eszköz stream-naplóinak engedélyezése"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
 
-3. Most már elérheti az eszköz stream-naplóit a IoT Hub portáljának *naplók* lapján. Az eszköz stream-tevékenység naplói megjelennek a `AzureDiagnostics` táblázatban, és `Category=DeviceStreams`rendelkeznek.
+3. Most már elérheti az eszköz stream-naplóit a IoT Hub portáljának *naplók* lapján. Az eszköz stream-tevékenység naplói megjelennek a `AzureDiagnostics` táblázatban, és rendelkeznek `Category=DeviceStreams` .
 
    Ahogy az alább látható, a megcélzott eszköz identitása és a művelet eredménye is elérhető a naplókban.
 
@@ -168,7 +167,7 @@ Az ECHO példák:
 
 * [C# szolgáltatás-és szolgáltatási program](quickstart-device-streams-echo-csharp.md)
 
-* [Node. js-szolgáltatás program](quickstart-device-streams-echo-nodejs.md)
+* [Node.js szolgáltatási program](quickstart-device-streams-echo-nodejs.md)
 
 * [C eszköz program](quickstart-device-streams-echo-c.md)
 
@@ -190,7 +189,7 @@ A telepítő két *helyi proxykiszolgálót* használ az alábbi ábrán láthat
 
 4. A szolgáltatás helyi proxyja egy kijelölt porton figyeli a felhasználótól érkező új SSH-kapcsolatokat (a példában használt 2222-as portot), de ez más elérhető portra is konfigurálható. A felhasználó az SSH-ügyfelet a helyi helyi proxy portra mutat a localhost-on.
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
 * A fenti lépések teljes körű bújtatást végeznek az SSH-ügyfél (a jobb oldalon) és az SSH démon között (a bal oldalon). Ennek a végpontok közötti kapcsolatnak egy része a forgalom továbbítását jelenti egy IoT Hub.
 
@@ -204,7 +203,7 @@ Az alábbi hivatkozásokra kattintva megtudhatja, hogyan futtathatja a helyi pro
 
 * [C# szolgáltatás-és szolgáltatási program](quickstart-device-streams-proxy-csharp.md)
 
-* [Node. js-szolgáltatás program](quickstart-device-streams-proxy-nodejs.md)
+* [Node.js szolgáltatási program](quickstart-device-streams-proxy-nodejs.md)
 
 * [C eszköz program](quickstart-device-streams-proxy-c.md)
 

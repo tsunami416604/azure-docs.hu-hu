@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70860324"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>A Azure Cloud Shell ablak használata
@@ -48,7 +47,7 @@ Kattintson a Beállítások ikonra az ablak bal felső részén, majd vigye a ku
 Kattintson a fájlok feltöltése/letöltése ikonra az ablak bal felső részén, majd válassza a feltöltés vagy a letöltés lehetőséget.  
 ![Fájlok feltöltése/letöltése](media/using-the-shell-window/uploaddownload.png)
 * Fájlok feltöltéséhez az előugró ablakban keresse meg a fájlt a helyi számítógépen, válassza ki a kívánt fájlt, majd kattintson a Megnyitás gombra.  A rendszer feltölti a fájlt a `/home/user` könyvtárba.
-* Fájl letöltéséhez adja meg a fájl teljes elérési útját az előugró ablakban (azaz alapvetően a könyvtár alatt található `/home/user` elérési utat, amely alapértelmezés szerint megjelenik), majd kattintson a "Letöltés" gombra.  
+* Fájl letöltéséhez adja meg a fájl teljes elérési útját az előugró ablakban (azaz alapvetően a könyvtár alatt található elérési utat `/home/user` , amely alapértelmezés szerint megjelenik), majd kattintson a "Letöltés" gombra.  
 > [!NOTE] 
 > A fájlok és a fájlelérési utak kis-és nagybetűket Cloud Shell. A fájl elérési útjában ellenőrizze a burkolatot.
 
@@ -84,7 +83,7 @@ Az Cloud Shell ablak átméretezéséhez kattintson és húzza az eszköztár fe
 A terminál szövegének áthelyezéséhez görgessen az egérrel vagy az érintőpadba.
 
 ## <a name="exit-command"></a>Kilépés parancs
-A `exit` Futtatás megszakítja az aktív munkamenetet. Ez a viselkedés alapértelmezés szerint 20 percen belül, interakció nélkül történik.
+`exit`A Futtatás megszakítja az aktív munkamenetet. Ez a viselkedés alapértelmezés szerint 20 percen belül, interakció nélkül történik.
 
 ## <a name="next-steps"></a>További lépések
 

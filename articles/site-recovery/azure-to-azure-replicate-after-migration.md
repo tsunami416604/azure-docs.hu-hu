@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74159112"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Az Azure-beli virtuális gépek vészhelyreállításának beállítása Azure-ba történő migrálás után 
@@ -45,7 +44,7 @@ Ha a 9.7.0.0-nál korábbi Site Recovery mobilitási szolgáltatás verzióját 
 #### <a name="validate-the-installation"></a>A telepítés ellenőrzése
 Az ügynök telepítésének ellenőrzését:
 
-1. Az Azure-beli virtuális gépen a C:\WindowsAzure\Packages mappában látnia kell az WaAppAgent. exe fájlt.
+1. Az Azure-beli virtuális gépen, a C:\WindowsAzure\Packages mappában megjelenik a WaAppAgent.exe fájl.
 2. Kattintson a jobb gombbal a fájlra, majd a **Tulajdonságok**területen válassza a **részletek** lapot.
 3. Ellenőrizze, hogy a **termék verziója** mezőben a 2.6.1198.718 vagy a magasabb érték látható-e.
 

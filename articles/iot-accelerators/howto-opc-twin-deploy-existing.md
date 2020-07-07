@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73824121"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Az OPC Twin üzembe helyezése egy meglévő projektben
@@ -52,7 +51,7 @@ cd azure-iiot-components
 
    A kimenet tartalmazza a nyilvános végpont URL-címét. 
 
-3. Miután a szkript sikeresen befejeződik, válassza ki, hogy szeretné-e `.env` menteni a fájlt.  A `.env` környezeti fájlra akkor van szükség, ha olyan eszközökkel szeretne csatlakozni a Felhőbeli végponthoz, mint például a konzol, vagy a fejlesztéshez és a hibakereséshez telepítse a modulokat.
+3. Miután a szkript sikeresen befejeződik, válassza ki, hogy szeretné-e menteni a `.env` fájlt.  A környezeti fájlra akkor van szükség, `.env` Ha olyan eszközökkel szeretne csatlakozni a Felhőbeli végponthoz, mint például a konzol, vagy a fejlesztéshez és a hibakereséshez telepítse a modulokat.
 
 ## <a name="troubleshooting-deployment-failures"></a>Telepítési hibák elhárítása
 

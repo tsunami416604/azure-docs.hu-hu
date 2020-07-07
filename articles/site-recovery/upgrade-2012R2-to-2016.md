@@ -9,10 +9,9 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
 ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73954405"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>A Windows Server Server/System Center 2012 R2 VMM frissítése a Windows Serverre/VMM 2016 
@@ -42,10 +41,10 @@ A frissítés előtt vegye figyelembe a következőket:
 
 - Ha a System Center 2012 R2 VMM használja, 
 
-    - Keresse meg az adatbázis adatait a VMM: **VMM-konzol** -> **beállításai** -> **általános** -> **adatbázis-kapcsolatok**
+    - Keresse meg az adatbázis adatait a VMM: **VMM-konzol**  ->  **beállításai**  ->  **általános**  ->  **adatbázis-kapcsolatok**
     - A System Center Virtual Machine Manager ügynök szolgáltatáshoz használt szolgáltatásfiókok keresése
     - Győződjön meg arról, hogy rendelkezik a VMM-adatbázis biztonsági másolatával.
-    - Jegyezze fel az érintett SCVMM-kiszolgálók adatbázisának nevét. Ezt úgy teheti meg, hogy a **VMM-konzol** -> **beállításai** -> **általános** -> **adatbázis-kapcsolatban** navigál
+    - Jegyezze fel az érintett SCVMM-kiszolgálók adatbázisának nevét. Ezt úgy teheti meg, hogy a **VMM-konzol**  ->  **beállításai**  ->  **általános**  ->  **adatbázis-kapcsolatban** navigál
     - Jegyezze fel az elsődleges és a helyreállítási VMM-kiszolgálók VMM-AZONOSÍTÓját. A VMM azonosítója a "HKLM: \ SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup" beállításjegyzékből érhető el.
     - Győződjön meg arról, hogy a fürthöz hozzáadott új SCVMMs ugyanazokkal a névvel rendelkezik, mint korábban. 
 
@@ -75,7 +74,7 @@ A Windows Server 2012 R2 rendszerű gazdagépek frissítése előtt frissítenie
 
 1.  Az ASR-szolgáltató eltávolításához navigáljon a Vezérlőpult – > programok – > programok és szolgáltatások – >Microsoft Azure Site Recovery, és kattintson az Eltávolítás elemre.
 2. [A SCVMM adatbázisának megőrzése és az operációs rendszer frissítése](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. A **Programok eltávolítása**területen válassza a **VMM** > **Eltávolítás**elemet. b. Válassza a **szolgáltatások eltávolítása**lehetőséget, majd válassza a V**mm felügyeleti kiszolgáló és a VMM-konzol**elemet. c. Az **adatbázis beállításai**területen válassza az **adatbázis megőrzése**lehetőséget. d. Tekintse át az összegzést, és kattintson az **Eltávolítás**gombra.
+3. A **Programok eltávolítása**területen válassza a **VMM**  >  **Eltávolítás**elemet. b. Válassza a **szolgáltatások eltávolítása**lehetőséget, majd válassza a V**mm felügyeleti kiszolgáló és a VMM-konzol**elemet. c. Az **adatbázis beállításai**területen válassza az **adatbázis megőrzése**lehetőséget. d. Tekintse át az összegzést, és kattintson az **Eltávolítás**gombra.
 
 4. [A VMM 2016 telepítése](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Indítsa el a SCVMM, és tekintse meg az egyes állomások állapotát a **hálók** lapon. a legutóbbi állapot beszerzéséhez kattintson a **frissítés** gombra. A "figyelmet igényel" állapotnak kell megjelennie. 

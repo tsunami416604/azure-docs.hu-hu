@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74157664"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Teljesítménnyel kapcsolatos útmutatás az Azure SignalR Service-hez
@@ -122,14 +121,14 @@ Ne *lépje* túl a következő két táblázat Kiemelt értékeit.
 
 |       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok                       | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok                       | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | **Bejövő sávszélesség** | **2 MBps**    | **4 MBps**    | **10 MBps**   | **20 MBps**    | **40 MBps**    | **100 MBps**   | **200 MBps**    |
 | Kimenő sávszélesség | 2 MBps   | 4 MBps   | 10 MBps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 
 |     Adás             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50 000  | 100 000 |
+| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50,000  | 100.000 |
 | Bejövő sávszélesség  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps    |
 | **Kimenő sávszélesség** | **4 MBps**    | **8 MBps**    | **20 MBps**    | **40 MBps**    | **80 MBps**    | **200 MBps**    | **400 MBps**   |
 
@@ -159,7 +158,7 @@ Az alábbi táblázat a **szórás**valós használati eseteit mutatja be. Az ü
 
 | Adás  | Üzenet mérete | Bejövő üzenetek másodpercenként | Kapcsolatok | Küldési időközök |
 |---|---------------------|--------------------------|-------------|-------------------------|
-| 1 | 20 KB                | 1                        | 100 000     | 5 MP                      |
+| 1 | 20 KB                | 1                        | 100.000     | 5 MP                      |
 | 2 | 256 KB               | 1                        | 8,000       | 5 MP                      |
 
 A következő képlet az előző képlet alapján könnyen következtethető ki:
@@ -168,7 +167,7 @@ A következő képlet az előző képlet alapján könnyen következtethető ki:
 outboundConnections = outboundBandwidth * sendInterval / messageSize
 ```
 
-A Unit100 esetében a maximális kimenő sávszélesség 400 MB az előző táblából. A 20 KB-os üzenet mérete esetén a kimenő kapcsolatok maximális száma 400 MB \* 5/20 KB = 100 000, amely megfelel a valós értéknek.
+A Unit100 esetében a maximális kimenő sávszélesség 400 MB az előző táblából. A 20 KB-os üzenet mérete esetén a kimenő kapcsolatok maximális száma 400 MB \* 5/20 kb = 100 000, amely megfelel a valós értéknek.
 
 ##### <a name="mixed-use-cases"></a>Vegyes használati esetek
 
@@ -213,8 +212,8 @@ Az **echo** működése meghatározza, hogy a bejövő sávszélesség maximáli
 
 |       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok                       | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
-| Bejövő/kimenő üzenetek másodpercenként | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok                       | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
+| Bejövő/kimenő üzenetek másodpercenként | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | Bejövő/kimenő sávszélesség | 2 MBps   | 4 MBps   | 10 MBps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 Ebben a használati esetben minden ügyfél meghívja az App Serverben definiált hubot. A hub csak meghívja az eredeti ügyféloldali oldalon definiált metódust. Ez a hub az **echo**legkönnyűebb központja.
@@ -231,7 +230,7 @@ Még ennél az egyszerű Központnál is, az alkalmazás-kiszolgáló forgalmi n
 
 |    Echo          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -249,9 +248,9 @@ A következő táblázat összefoglalja a maximális ügyfélkapcsolatokat, a be
 
 |     Adás             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50 000  | 100 000 |
+| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50,000  | 100.000 |
 | Bejövő üzenetek másodpercenként  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Kimenő üzenetek másodpercenként | 2000 | 4,000 | 10,000 | 20000 | 40,000 | 100 000 | 200,000 |
+| Kimenő üzenetek másodpercenként | 2000 | 4,000 | 10,000 | 20000 | 40,000 | 100.000 | 200,000 |
 | Bejövő sávszélesség  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     |
 | Kimenő sávszélesség | 4 MBps   | 8 MBps   | 20 MBps   | 40 MBps   | 80 MBps   | 200 MBps   | 400 MBps   |
 
@@ -259,7 +258,7 @@ Az üzeneteket követő műsorszolgáltatási ügyfelek nem több mint négynél
 
 |   Adás      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -287,7 +286,7 @@ Az útválasztási díj jelentős számú, mert az üzenetek sok kis csoportba k
 
 |   Küldés kis csoportba     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
-| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50 000 | 100 000
+| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50,000 | 100.000
 | Csoport tagjainak száma        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
 | Csoportok száma               | 100   | 200   | 500    | 1,000  | 2000  | 5000  | 10,000 
 | Bejövő üzenetek másodpercenként  | 200   | 400   | 1,000  | 2500  | 4,000  | 7 000  | 7 000   |
@@ -299,7 +298,7 @@ Számos ügyfélkapcsolat meghívja a központot, így az alkalmazáskiszolgál�
 
 |  Küldés kis csoportba   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -311,19 +310,19 @@ A **Big csoportba való küldéshez**a kimenő sávszélesség a szűk keresztme
 
 |    Küldés a Big Group-ba      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50 000  | 100 000
+| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50,000  | 100.000
 | Csoport tagjainak száma        | 100   | 200   | 500    | 1,000  | 2000  | 5000   | 10,000 
 | Csoportok száma               | 10    | 10    | 10     | 10     | 10     | 10      | 10
 | Bejövő üzenetek másodpercenként  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
 | Bejövő sávszélesség  | 80 KBps   | 40 KBps   | 40 KBps    | 20 KBps    | 40 KBps    | 40 KBps     | 40 KBps     |
-| Kimenő üzenetek másodpercenként | 2000 | 4,000 | 10,000 | 20000 | 40,000 | 100 000 | 200,000 |
+| Kimenő üzenetek másodpercenként | 2000 | 4,000 | 10,000 | 20000 | 40,000 | 100.000 | 200,000 |
 | Kimenő sávszélesség | 8 MBps    | 8 MBps    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
 A küldési kapcsolatok száma nem haladja meg a 40-ot. Az alkalmazás-kiszolgáló terhelése kicsi, ezért a javasolt számú webalkalmazás kicsi.
 
 |  Küldés a Big Group-ba  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -345,7 +344,7 @@ A következő táblázat egy statisztikai összefoglaló a **Küldés a kapcsol�
 
 |   Küldés a kapcsolódásba   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
-| Kapcsolatok                        | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000          | 100 000         |
+| Kapcsolatok                        | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000          | 100.000         |
 | Bejövő/kimenő üzenetek másodpercenként | 1,000 | 2000 | 5000 | 8,000  | 9000  | 20000 | 20000 |
 | Bejövő/kimenő sávszélesség | 2 MBps    | 4 MBps    | 10 MBps   | 16 MBps    | 18 MBps    | 40 MBps       | 40 MBps       |
 
@@ -353,7 +352,7 @@ Ez a használati eset nagy terhelést igényel az App Server oldalán. Tekintse 
 
 |  Küldés a kapcsolódásba  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -369,21 +368,21 @@ A következő táblázat a ASP.NET Signaler **echo**által javasolt webalkalmaz�
 
 |   Echo           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 A következő táblázat a ASP.NET Signaler- **szóráshoz**javasolt webalkalmazások számának áttekintését tartalmazza.
 
 |  Adás       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 A következő táblázat a ASP.NET-szignáló számára javasolt webalkalmazások számának a **kis csoportba való küldését**ismerteti.
 
 |  Küldés kis csoportba     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50 000 | 100 000 |
+| Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Kiszolgáló nélküli mód
@@ -397,9 +396,9 @@ Az összes ügyfél létrehozza a WebSocket-kapcsolatokat az Azure Signaler szol
 
 |   Közvetítés REST API     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50 000  | 100 000 |
+| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50,000  | 100.000 |
 | Bejövő üzenetek másodpercenként  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Kimenő üzenetek másodpercenként | 2000 | 4,000 | 10,000 | 20000 | 40,000 | 100 000 | 200,000 |
+| Kimenő üzenetek másodpercenként | 2000 | 4,000 | 10,000 | 20000 | 40,000 | 100.000 | 200,000 |
 | Bejövő sávszélesség  | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     | 4 KBps     | 4 KBps      | 4 KBps      |
 | Kimenő sávszélesség | 4 MBps    | 8 MBps    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
@@ -408,7 +407,7 @@ A teljesítményteszt az összes ügyfélhez hozzárendeli a felhasználóneveke
 
 |   Küldés a felhasználónak a REST API | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50 000  | 100 000 |
+| Kapcsolatok               | 1,000 | 2000 | 5000  | 10,000 | 20000 | 50,000  | 100.000 |
 | Bejövő üzenetek másodpercenként  | 300   | 600   | 900    | 1 300  | 2000  | 10,000  | 18000  |
 | Kimenő üzenetek másodpercenként | 300   | 600   | 900    | 1 300  | 2000  | 10,000  | 18000 |
 | Bejövő sávszélesség  | 600 KBps  | 1,2 MBps  | 1,8 MBps   | 2,6 MBps   | 4 MBps     | 10 MBps     | 36 MBps    |

@@ -10,10 +10,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74112262"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Blobok indexelése több keresési dokumentum létrehozásához
@@ -29,7 +28,7 @@ Ha nincs megadva elemzési mód, és ha nincs explicit leképezés az Azure-beli
 
 A fent felsorolt elemzési módok bármelyikének használatakor az egyik blob a "sok" keresési dokumentumra mutat, így a dokumentum kulcsa kizárólag a blob metaadatainak alapján használható. Ennek a korlátozásnak a leküzdéséhez az Azure Cognitive Search képes a blobokból kinyert egyes entitások "egy a többhöz" dokumentum-kulcsának generálására. Ez a tulajdonság neve `AzureSearch_DocumentKey` , és hozzá lesz adva a blobból kinyert egyes entitásokhoz. Ennek a tulajdonságnak az értéke garantáltan egyedi a _Blobok közötti_ egyes entitások esetében, és az entitások külön keresési dokumentumokként jelennek meg.
 
-Alapértelmezés szerint, ha nincs megadva explicit mező a Key index mezőhöz, a a `AzureSearch_DocumentKey` leképezése a `base64Encode` mező leképezése függvény használatával történik.
+Alapértelmezés szerint, ha nincs megadva explicit mező a Key index mezőhöz, a a leképezése a `AzureSearch_DocumentKey` `base64Encode` mező leképezése függvény használatával történik.
 
 ## <a name="example"></a>Példa
 Tegyük fel, hogy az index definíciója a következő mezőkkel rendelkezik:
@@ -40,17 +39,17 @@ Tegyük fel, hogy az index definíciója a következő mezőkkel rendelkezik:
 
 És a blob-tároló Blobokkal rendelkezik a következő szerkezettel:
 
-_Blob1. JSON_
+_Blob1.jsbekapcsolva_
 
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
 
-_Blob2. JSON_
+_Blob2.jsbekapcsolva_
 
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
 
-Amikor létrehoz egy indexelő, és a **parsingMode** úgy `jsonLines` állítja be, hogy a kulcs mezőhöz tartozó explicit mező-hozzárendelések megadása nélkül történjen, a következő leképezést a rendszer implicit módon alkalmazza.
+Amikor létrehoz egy indexelő, és a **parsingMode** úgy állítja be `jsonLines` , hogy a kulcs mezőhöz tartozó explicit mező-hozzárendelések megadása nélkül történjen, a következő leképezést a rendszer implicit módon alkalmazza.
     
     {
         "sourceFieldName" : "AzureSearch_DocumentKey",
@@ -71,19 +70,19 @@ Ez a beállítás azt eredményezi, hogy az Azure Cognitive Search index a köve
 
 Ha ugyanazt az index-definíciót szeretné, mint az előző példában, tegyük fel, hogy a blob-tároló blobokat tartalmaz a következő szerkezettel:
 
-_Blob1. JSON_
+_Blob1.jsbekapcsolva_
 
     recordid, temperature, pressure, timestamp
     1, 100, 100,"2019-02-13T00:00:00Z" 
     2, 33, 30,"2019-02-14T00:00:00Z" 
 
-_Blob2. JSON_
+_Blob2.jsbekapcsolva_
 
     recordid, temperature, pressure, timestamp
     1, 1, 1,"2018-01-12T00:00:00Z" 
     2, 120, 3,"2013-05-11T00:00:00Z" 
 
-Ha a `delimitedText` **parsingMode**-vel hoz létre indexelő, természetesnek tűnhet, hogy egy mező-leképezési függvényt állítson be a kulcs mezőhöz a következőképpen:
+Ha a parsingMode-vel hoz létre indexelő `delimitedText` **parsingMode**, természetesnek tűnhet, hogy egy mező-leképezési függvényt állítson be a kulcs mezőhöz a következőképpen:
 
     {
         "sourceFieldName" : "recordid",
@@ -95,12 +94,12 @@ Ez a leképezés azonban _nem_ eredményez 4 olyan dokumentumot, amely megjeleni
 Ha explicit mező-hozzárendelést szeretne beállítani, győződjön meg arról, hogy a _sourceField_ különbözik az egyes entitások **minden blobban**.
 
 > [!NOTE]
-> A kinyert `AzureSearch_DocumentKey` entitások egyediségének biztosításához használt megközelítés változhat, ezért nem szabad az alkalmazás igényeinek megfelelően használni.
+> A `AzureSearch_DocumentKey` kinyert entitások egyediségének biztosításához használt megközelítés változhat, ezért nem szabad az alkalmazás igényeinek megfelelően használni.
 
 ## <a name="next-steps"></a>További lépések
 
 Ha még nem ismeri a blob-indexelés alapszintű szerkezetét és munkafolyamatát, először tekintse át az Azure [blob Storage indexelését az azure Cognitive Search](search-howto-index-json-blobs.md) . A különböző blob-tartalomtípusok elemzési módjaival kapcsolatos további információkért tekintse át a következő cikkeket.
 
 > [!div class="nextstepaction"]
-> [A CSV-Blobok](search-howto-index-csv-blobs.md)
-> indexelése[JSON-Blobok indexelése](search-howto-index-json-blobs.md)
+> [CSV-Blobok](search-howto-index-csv-blobs.md) 
+>  indexelése [JSON-Blobok indexelése](search-howto-index-json-blobs.md)

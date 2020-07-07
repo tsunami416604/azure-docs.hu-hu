@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74082602"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>A másodlagos helyszíni helyre replikált Hyper-V virtuális gépek feladatátvétele és feladatátvétele
@@ -52,7 +51,7 @@ A Hyper-V virtuális gépekhez rendszeres vagy tervezett feladatátvételt is fu
   Ez az eljárás a rendszeres feladatátvétel futtatását ismerteti.
 
 
-1. A **Beállítások** > **replikált elemek** elemnél kattintson a virtuális gépre > **feladatátvételre**.
+1. A **Beállítások**  >  **replikált elemek** elemnél kattintson a virtuális gépre > **feladatátvételre**.
 1. Válassza a **gép leállítása a feladatátvétel** megkezdése előtt lehetőséget, ha azt szeretné, hogy a feladatátvétel elindítása előtt a site Recovery megkísérelje leállítani a forrás virtuális gépek leállítását. A Site Recovery a feladatátvétel elindítása előtt a másodlagos helyre még nem elküldett helyszíni adatokat is megpróbálja szinkronizálni. Vegye figyelembe, hogy a feladatátvétel akkor is folytatódik, ha a Leállítás sikertelen. A feladatátvételi folyamat a **feladatok** lapon követhető.
 2. Ekkor látnia kell a virtuális gépet a másodlagos VMM-felhőben.
 3. A virtuális gép ellenőrzése után **véglegesítse** a feladatátvételt. Ez törli az összes rendelkezésre álló helyreállítási pontot.

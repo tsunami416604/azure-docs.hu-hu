@@ -20,17 +20,16 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113104"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData $select szintaxis az Azure-ban Cognitive Search
 
  A [OData **$Select** paraméter](query-odata-filter-orderby-syntax.md) használatával kiválaszthatja, hogy mely mezők szerepeljenek az Azure Cognitive Search keresési eredményei között. Ez a cikk részletesen ismerteti **$Select** szintaxisát. A keresési eredmények megjelenítésével kapcsolatos további általános információkért lásd: a keresési eredmények **$Select** használata [Az Azure-ban Cognitive Search](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 A **$Select** paraméter határozza meg, hogy az egyes dokumentumok mely mezői lesznek visszaadva a lekérdezési eredményhalmaz alapján. A következő EBNF ([bővített Naur-űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a **$Select** paraméter nyelvtanát határozza meg:
 
@@ -52,16 +51,16 @@ Az interaktív szintaxis diagram is elérhető:
 
 A **$Select** paraméter két formában jön:
 
-1. Egyetlen csillag (`*`), amely azt jelzi, hogy az összes beolvasható mezőt vissza kell adni, vagy
+1. Egyetlen csillag ( `*` ), amely azt jelzi, hogy az összes beolvasható mezőt vissza kell adni, vagy
 1. A mezők elérési útjának vesszővel tagolt listája, amely azonosítja a visszaadott mezőket.
 
 A második űrlap használatakor csak lekérhető mezőket adhat meg a listában.
 
-Ha az almezők explicit módon való megadása nélkül listáz egy összetett mezőt, az összes beolvasható almező belekerül a lekérdezési eredményhalmazba. Tegyük fel például, hogy az indexnek van `Address` egy mezője a, `Street` `City`a és `Country` az almező, amely minden lekérdezhető. Ha `Address` **$selectban**adja meg, a lekérdezés eredménye mindhárom almezőt tartalmazni fogja.
+Ha az almezők explicit módon való megadása nélkül listáz egy összetett mezőt, az összes beolvasható almező belekerül a lekérdezési eredményhalmazba. Tegyük fel például, hogy az indexnek van egy `Address` mezője a `Street` , a `City` és az `Country` Almező, amely minden lekérdezhető. Ha `Address` **$selectban**adja meg, a lekérdezés eredménye mindhárom almezőt tartalmazni fogja.
 
 ## <a name="examples"></a>Példák
 
-Adja meg `HotelId`a `HotelName`, és `Rating` a legfelső szintű mezőket az eredmények között, valamint az `City` almezőjét: `Address`
+Adja `HotelId` meg a, `HotelName` és a `Rating` legfelső szintű mezőket az eredmények között, valamint az `City` almezőjét `Address` :
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +77,7 @@ Egy példa eredménye a következőképpen néz ki:
 }
 ```
 
-Adja meg `HotelName` az `Address`eredmények legfelső szintű mezőjét, valamint az összes almezőjét, valamint a `Type` `BaseRate` `Rooms` gyűjtemény minden objektumának és almezőjét:
+Adja `HotelName` meg az eredmények legfelső szintű mezőjét, valamint az összes almezőjét, valamint `Address` a `Type` `BaseRate` gyűjtemény minden objektumának és almezőjét `Rooms` :
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 

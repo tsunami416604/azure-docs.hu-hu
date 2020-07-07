@@ -15,15 +15,14 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 6f1f5f55348069dbfe11b4d5857d93f8ba8c9b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74033958"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Transzparens adattitkosítás (TDE) engedélyezése az Azure-beli Stretch Database (Transact-SQL)
 > [!div class="op_single_selector"]
-> * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
+> * [Azure Portalra](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
@@ -66,7 +65,7 @@ FROM
     sys.databases;
 ```
 
-Egy titkosított adatbázist ```1``` jelez, ```0``` amely egy nem titkosított adatbázist jelez.
+Egy ```1``` titkosított adatbázist jelez, amely ```0``` egy nem titkosított adatbázist jelez.
 
 <!--Anchors-->
 [Transzparens adattitkosítás (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx

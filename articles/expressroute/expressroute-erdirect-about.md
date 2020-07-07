@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
 ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083606"
 ---
 # <a name="about-expressroute-direct"></a>Az ExpressRoute Direct ismertetése
@@ -26,7 +25,7 @@ A közvetlen ExpressRoute által biztosított főbb funkciók közé tartoznak a
 
 ## <a name="onboard-to-expressroute-direct"></a>Közvetlen ExpressRoute
 
-A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. A regisztráláshoz küldjön egy e- <ExpressRouteDirect@microsoft.com> mailt az előfizetés-azonosítójával, beleértve az alábbi adatokat:
+A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. A regisztráláshoz küldjön egy e-mailt az <ExpressRouteDirect@microsoft.com> előfizetés-azonosítójával, beleértve az alábbi adatokat:
 
 * A **ExpressRoute Directtel** elérni kívánt forgatókönyvek
 * Hely beállításai – az összes hely teljes listájáért tekintse meg a [partnerek és](expressroute-locations-providers.md) a társítási helyek elemet.
@@ -39,7 +38,7 @@ A ExpressRoute Direct használata előtt először regisztrálnia kell az előfi
 | --- | --- |
 | Szolgáltatók használatával lehetővé teszi a gyors bevezetést és a meglévő infrastruktúrához való csatlakozást | 100 Gbps/10 GB/s infrastruktúra és az összes réteg teljes felügyeletét igényli
 | Integrálható több száz szolgáltatóval, többek között az Ethernettel és a MPLS | Közvetlen/dedikált kapacitás a szabályozott iparágak és a nagy adatfeldolgozás számára |
-| Áramköri SKU-i 50 Mbps és 10 GB/s között | Az ügyfél a következő áramköri SKU kombinációját választhatja a 100 GB/s ExpressRoute Direct-on: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 GB/s</li><li>100 Gbit/s</li></ul> Az ügyfél a következő áramköri SKU kombinációját választhatja 10 GB/s ExpressRoute Direct-on:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| Áramköri SKU-i 50 Mbps és 10 GB/s között | Az ügyfél a következő áramköri SKU kombinációját választhatja a 100 GB/s ExpressRoute Direct-on: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> Az ügyfél a következő áramköri SKU kombinációját választhatja 10 GB/s ExpressRoute Direct-on:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 | Egyetlen bérlőre optimalizált | Egyetlen bérlőre optimalizált több üzleti egységgel és több munkahelyi környezettel
 
 ## <a name="expressroute-direct-circuits"></a>Közvetlen ExpressRoute áramkörök
@@ -57,7 +56,7 @@ A ExpressRoute Direct a nagyméretű adatfeldolgozási forgatókönyveket támog
 | **100 GB/s ExpressRoute Direct** | **10 GB/s ExpressRoute Direct** | 
 | --- | --- |
 | **Előfizetett sávszélesség**: 200 GB/s | **Előfizetett sávszélesség**: 20 GB/s |
-| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 GB/s</li><li>100 Gbit/s</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 

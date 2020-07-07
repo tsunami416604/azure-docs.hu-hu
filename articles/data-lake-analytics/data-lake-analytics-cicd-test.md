@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 08/30/2019
 ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70913966"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>A Azure Data Lake Analytics kód tesztelése
@@ -41,7 +40,7 @@ U-SQL-parancsfájlok tesztelésekor be kell írnia a bemeneti fájlokat. A teszt
 
 ![A Visual Studio Data Lake eszközei – a Project test-adatforrás konfigurálása](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
-Ha a U- `Initialize()` SQL test SDK-ban hívja meg az illesztőfelületet, a rendszer létrehoz egy ideiglenes helyi adatgyökér-mappát a teszt projekt munkakönyvtárában. Az U-SQL-parancsfájl tesztelési eseteinek futtatása előtt a rendszer a teszt adatforrás mappában található összes fájlt és mappát átmásolja az ideiglenes helyi adatgyökér mappába. A teszt adatmappa elérési útjának pontosvesszővel való felosztásával további tesztelési adatforrás-mappákat is hozzáadhat.
+Ha a `Initialize()` U-SQL test SDK-ban hívja meg az illesztőfelületet, a rendszer létrehoz egy ideiglenes helyi adatgyökér-mappát a teszt projekt munkakönyvtárában. Az U-SQL-parancsfájl tesztelési eseteinek futtatása előtt a rendszer a teszt adatforrás mappában található összes fájlt és mappát átmásolja az ideiglenes helyi adatgyökér mappába. A teszt adatmappa elérési útjának pontosvesszővel való felosztásával további tesztelési adatforrás-mappákat is hozzáadhat.
 
 ### <a name="manage-the-database-environment-for-testing"></a>Az adatbázis-környezet kezelése teszteléshez
 
@@ -55,7 +54,7 @@ Az `Run()` illesztőfelület a feladatok végrehajtási eredményét adja vissza
 
 ### <a name="run-test-cases-in-visual-studio"></a>Tesztelési esetek futtatása a Visual Studióban
 
-A U-SQL-szkriptek tesztelésére szolgáló projekt egy C# egység tesztelési keretrendszerre épül. A projekt összeállítása után válassza a**Windows** > **test Explorer** **tesztelése** > elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása**lehetőséget.
+A U-SQL-szkriptek tesztelésére szolgáló projekt egy C# egység tesztelési keretrendszerre épül. A projekt összeállítása után válassza a **Test**  >  **Windows**  >  **test Explorer**tesztelése elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása**lehetőséget.
 
 ## <a name="test-c-udos"></a>C# Udo tesztelése
 
@@ -108,7 +107,7 @@ A UDO függvények meghívása után a séma és a sorhalmaz értékének ellen�
 
 ### <a name="run-test-cases-in-visual-studio"></a>Tesztelési esetek futtatása a Visual Studióban
 
-A projekt összeállítása után válassza a**Windows** > **test Explorer** **tesztelése** > elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása**lehetőséget.
+A projekt összeállítása után válassza a **Test**  >  **Windows**  >  **test Explorer**tesztelése elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása**lehetőséget.
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Tesztelési esetek futtatása az Azure-folyamatokban<a name="run-test-cases-in-azure-devops"></a>
 
@@ -116,7 +115,7 @@ Az **U-SQL-parancsfájlok tesztelési projektjei** és a **c# Udo tesztelési pr
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>U-SQL-tesztelési esetek futtatása az Azure-folyamatokban
 
-U-SQL-teszt esetén győződjön meg arról, hogy `CPPSDK` betölti a felépített számítógépet, majd `CPPSDK` adja át `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`az elérési utat a következőnek:.
+U-SQL-teszt esetén győződjön meg arról, hogy betölti a `CPPSDK` felépített számítógépet, majd adja át az `CPPSDK` elérési utat a következőnek: `USqlScriptTestRunner(cppSdkFolderFullPath: @"")` .
 
 #### <a name="what-is-cppsdk"></a>Mi az a CPPSDK?
 
@@ -132,7 +131,7 @@ Az Azure-folyamatokban a CPPSDK függőség előkészítésének leggyakoribb m�
 
 1. Zip-fájl, amely tartalmazza a CPPSDK-kódtárakat.
 
-1. Keresse meg a. zip-fájlt a verziókövetés rendszerébe. A. zip fájl gondoskodik arról, hogy a CPPSDK mappa minden könyvtárában bejelentkezzen, hogy a fájlok ne `.gitignore` legyenek figyelmen kívül hagyva egy fájl miatt.
+1. Keresse meg a. zip-fájlt a verziókövetés rendszerébe. A. zip fájl gondoskodik arról, hogy a CPPSDK mappa minden könyvtárában bejelentkezzen, hogy a fájlok ne legyenek figyelmen kívül hagyva egy `.gitignore` fájl miatt.
 
 1. Bontsa ki a. zip fájlt a Build folyamatban.
 

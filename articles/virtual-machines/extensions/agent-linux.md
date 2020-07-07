@@ -16,10 +16,9 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74073851"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Az Azure Linux-ügynök megismerése és használata
@@ -48,7 +47,7 @@ A Microsoft Azure Linux-ügynök (waagent) kezeli a Linux & a FreeBSD kiépíté
   * Biztosítja a hálózati adapter nevének stabilitását
 * **Kernel**
   
-  * Virtuális NUMA konfigurálása (kernel <`2.6.37`letiltása)
+  * Virtuális NUMA konfigurálása (kernel <letiltása `2.6.37` )
   * A Hyper-V entrópia használata a/dev/Random
   * SCSI-időtúllépések konfigurálása a gyökérszintű eszközhöz (amely távoli lehet)
 * **Diagnosztika**
@@ -131,7 +130,7 @@ A speciális telepítési lehetőségekről, például a forrásról vagy az egy
 * démon: futtassa a waagent démonként a platformmal való interakció kezeléséhez. Ez az argumentum a waagent init parancsfájl waagent van megadva.
 * indítás: waagent futtatása háttérbeli folyamatként
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 A konfigurációs fájl (/etc/waagent.conf) szabályozza a waagent műveleteit. A következő példában egy minta konfigurációs fájl látható:
 
     ```
@@ -170,7 +169,7 @@ Default: y
 Ez lehetővé teszi, hogy a felhasználó engedélyezze vagy tiltsa le az ügynök kiépítési funkcióit. Az érvényes értékek: "y" vagy "n". Ha a kiépítés le van tiltva, a rendszer megőrzi az SSH-gazdagépet és a felhasználói kulcsokat a rendszerképben, és figyelmen kívül hagyja az Azure üzembe helyezési API-ban megadott konfigurációkat.
 
 > [!NOTE]
-> A `Provisioning.Enabled` paraméter alapértelmezés szerint "n" értékre van beállítva az Ubuntu Felhőbeli rendszerképeken, amelyek az üzembe helyezéshez a Cloud-init szolgáltatást használják.
+> A `Provisioning.Enabled` paraméter alapértelmezés szerint "n" értékre van beállítva az Ubuntu Felhőbeli Rendszerképeken, amelyek az üzembe helyezéshez a Cloud-init szolgáltatást használják.
 > 
 > 
 
@@ -195,7 +194,7 @@ Az új kulcspár titkosítási típusa a kiépítési. SshHostKeyPairType bejegy
 Type: String  
 Default: rsa
 ```
-Ez beállítható egy olyan titkosítási algoritmus típusára, amelyet a virtuális gépen futó SSH démon támogat. A jellemzően támogatott értékek a következők: "RSA", "DSA" és "ECDSA". a Windows rendszeren a "Putty. exe" nem támogatja a "ECDSA". Ha tehát a Windows rendszeren lévő Putty. exe fájlt szeretné használni a Linux rendszerű telepítéshez való kapcsolódáshoz, használja az "RSA" vagy a "DSA" kifejezést.
+Ez beállítható egy olyan titkosítási algoritmus típusára, amelyet a virtuális gépen futó SSH démon támogat. A jellemzően támogatott értékek a következők: "RSA", "DSA" és "ECDSA". A Windows "putty.exe" nem támogatja a "ECDSA". Ha tehát a Windows rendszerű számítógépeken szeretné putty.exe használni a Linux-telepítést, használja az "RSA" vagy a "DSA" kifejezést.
 
 **Kiépítés. MonitorHostName:**  
 ```
@@ -211,7 +210,7 @@ Default: n
 ```
 Ha be van állítva, a waagent dekódolja a Base64-CustomData.
 
-**Kiépítés. ExecuteCustomData**  
+**Provisioning.ExecuteCustomData**  
 ```
 Type: Boolean  
 Default: n

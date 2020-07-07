@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68879556"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Az Azure Data Catalog hibaelhárítása
@@ -21,7 +20,7 @@ Ez a cikk a Azure Data Catalog erőforrásaival kapcsolatos gyakori hibaelhárí
 
 Azure Data Catalog használatakor a következő funkciók korlátozottak:
 
-- A **vendég szerepkörrel** rendelkező fiókok nem támogatottak. Azure Data Catalog felhasználóinak nem adhat hozzá vendég fiókokat, és a vendég felhasználók nem használhatják a portált a következő címen: [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com).
+- A **vendég szerepkörrel** rendelkező fiókok nem támogatottak. Azure Data Catalog felhasználóinak nem adhat hozzá vendég fiókokat, és a vendég felhasználók nem használhatják a portált a következő címen: [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com) .
 
 - Azure Data Catalog-erőforrások létrehozása Azure Resource Manager sablonokkal vagy Azure PowerShell parancsok használatával nem támogatott.
 

@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73666969"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával
@@ -87,7 +86,7 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 
 <table>
 <tr>
-    <th align="left">Állapot</th><th align="left">Alállapotot</th><th align="left">Leírás</th>
+    <th align="left">Állapot</th><th align="left">Alállapotot</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>A szelet futtatásához szükséges idő.</td>
@@ -105,7 +104,7 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 <td>ActivityResume</td><td>A tevékenység szüneteltetve van, és a tevékenység folytatása előtt nem futtathatók a szeletek.</td>
 </tr>
 <tr>
-<td>Retry</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
+<td>Ismét</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
 </tr>
 <tr>
 <td>Ellenőrzés</td><td>Az érvényesítés még nincs elindítva.</td>
@@ -290,7 +289,7 @@ Abban az esetben, ha a szelet házirend-meghibásodás miatt sikertelen volt (p�
 ### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 A hibákat a **set-AzDataFactorySliceStatus** parancsmag használatával futtathatja újra. A parancsmag szintaxisát és egyéb részleteit lásd a [set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) témakörben.
 
-**Például**
+**Példa:**
 
 A következő példa a "DAWikiAggregatedData" tábla összes szeletének állapotát a "Waiting" értékre állítja a "WikiADF" Azure-beli adat-előállítóban.
 

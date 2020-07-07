@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74084556"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>vész-helyreállítás beállítása többrétegű Citrix-XenApp és XenDesktop-telepítéshez
@@ -56,9 +55,9 @@ Ebben a cikkben a vSphere 6,0/System Center VMM 2012 R2 által felügyelt VMware
 
 **Forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-ba**
 --- | --- | ---
-**Hyper-V** | Nincs a hatókörben | Igen
-**VMware** | Nincs a hatókörben | Igen
-**Fizikai kiszolgáló** | Nincs a hatókörben | Igen
+**Hyper-V** | Nincs a hatókörben | Yes
+**VMware** | Nincs a hatókörben | Yes
+**Fizikai kiszolgáló** | Nincs a hatókörben | Yes
 
 ### <a name="versions"></a>Verziók
 Az ügyfelek a Hyper-V-n vagy VMware-en vagy fizikai kiszolgálókon futó Virtual Machines XenApp-összetevőket telepíthetnek. Azure Site Recovery az Azure-ban fizikai és virtuális üzemelő példányok is védhetők.

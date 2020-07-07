@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083991"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Több-bérlős támogatás a VMware vész-helyreállításhoz az Azure-ban a CSP használatával – áttekintés
@@ -120,7 +119,7 @@ Ha a vész-helyreállítási műveleteket csak feladatátvételre szeretné korl
 
 1. A Azure Portal a korábban létrehozott tárolóban regisztrálja a vCenter-kiszolgálót a konfigurációs kiszolgálón a létrehozott vCenter-fiók használatával.
 2. Fejezze be az "infrastruktúra előkészítése" folyamatot Site Recovery a szokásos folyamat során.
-3. A virtuális gépek most már készen állnak a replikálásra. Győződjön meg arról, hogy csak a bérlő virtuális gépei jelennek meg a **replikálás** > **területen válassza a virtuális gépek lehetőséget**.
+3. A virtuális gépek most már készen állnak a replikálásra. Győződjön meg arról, hogy csak a bérlő virtuális gépei jelennek meg a **replikálás**  >  **területen válassza a virtuális gépek lehetőséget**.
 
 ## <a name="dedicated-hosting-solution"></a>Dedikált üzemeltetési megoldás
 

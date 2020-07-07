@@ -4,10 +4,9 @@ description: Ismerkedjen meg a Azure Backup Server új szolgáltatásaival. Ez a
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172380"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
@@ -36,7 +35,7 @@ A Backup Server v2 vagy újabb verziója fogadja a tárolási köteteket. Kötet
 
 A Backup Server v2 vagy újabb verziókkal, a lemezes tárolással rendelkező kötetek használatával kezelheti a tárhely feletti irányítást. Egy kötet lehet egyetlen lemez. Ha azonban később szeretné bővíteni a tárterületet, hozzon létre egy kötetet a tárolóhelyek használatával létrehozott lemezből. Ez segíthet, ha ki szeretné bővíteni a kötetet a biztonsági mentési tárolóban. Ez a szakasz ajánlott eljárásokat tartalmaz a kötet létrehozásához ezzel a telepítővel.
 
-1. A Kiszolgálókezelőben válassza a **fájl-és tárolási szolgáltatások** > **kötetek** > **tárolási készletek**elemet. A **fizikai lemezek**területen válassza az **új tárolási készlet**lehetőséget.
+1. A Kiszolgálókezelőben válassza a **fájl-és tárolási szolgáltatások**  >  **kötetek**  >  **tárolási készletek**elemet. A **fizikai lemezek**területen válassza az **új tárolási készlet**lehetőséget.
 
     ![Új tárolási készlet létrehozása](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -119,7 +118,7 @@ Ha az örökölt tárolót a Backup Serverrel szeretné használni, lehetséges,
 
 Lemezterület növelése:
 
-1. A felügyeleti konzol válassza a **felügyeleti** > **Disk Storage** > **Hozzáadás**elemet.
+1. A felügyeleti konzol válassza a **felügyeleti**  >  **Disk Storage**  >  **Hozzáadás**elemet.
 
     ![Disk Storage hozzáadása párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 

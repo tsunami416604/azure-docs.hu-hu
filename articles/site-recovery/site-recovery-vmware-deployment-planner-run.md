@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73953285"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítás Deployment Planner futtatása
@@ -65,7 +64,7 @@ Ha megvan azon virtuális gépek listája, amelyekről profilt szeretne készít
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| Paraméter neve | Leírás |
+| Paraméter neve | Description |
 |---|---|
 | -Művelet | StartProfiling |
 | -Kiszolgáló | Azon vCenter-kiszolgáló vagy vSphere ESXi-gazdagép teljes tartományneve vagy IP-címe, amelynek virtuális gépeiről profilt szeretne készíteni.|
@@ -95,7 +94,7 @@ Alapértelmezés szerint az eszköz a profilhoz van konfigurálva, és a jelent�
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Az alapértelmezett beállítások mellett ahhoz, hogy a profil 1500 virtuális géppel dolgozzon, két VMList.txt fájlt kell létrehozni. Az egyiken 1000, a másikon pedig 500 virtuális gépnek kell szerepelnie. Futtassa a Azure Site Recovery Deployment Planner két példányát, egyet a VMList1. txt fájllal és a VMList2. txt fájllal. Mindkét VMList virtuális gépeinek esetében ugyanazt a könyvtárútvonalat is használhatja a profilkészítési adatok tárolásához.
+Az alapértelmezett beállítások mellett ahhoz, hogy a profil 1500 virtuális géppel dolgozzon, két VMList.txt fájlt kell létrehozni. Az egyiken 1000, a másikon pedig 500 virtuális gépnek kell szerepelnie. Futtassa a Azure Site Recovery Deployment Planner két példányát, amelyek közül az egyiket VMList1.txt és más VMList2.txt. Mindkét VMList virtuális gépeinek esetében ugyanazt a könyvtárútvonalat is használhatja a profilkészítési adatok tárolásához.
 
 Tapasztalatunk szerint a hardverkonfigurációtól, és különösen a jelentést generáló eszközt futtató kiszolgáló RAM-méretétől függően a művelet elegendő memória hiányában megszakadhat. Megfelelő hardveres feltételek mellett a MaxVMsSupported esetében bármilyen nagyobb értéket meg lehet adni.  
 
@@ -145,7 +144,7 @@ A profilkészítés befejezése után futtathatja az eszközt jelentéskészít�
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|Paraméter neve | Leírás |
+|Paraméter neve | Description |
 |-|-|
 | -Művelet | Jelentés készítése |
 | -Kiszolgáló |  Annak a vCenter- vagy vSphere-kiszolgálónak a teljes tartományneve vagy IP-címe, ahol azon virtuális gépek találhatók, amelyekről profilt készített, és amelyekről most jelentést szeretne készíteni. (Használja a profilkészítéskor használt nevet vagy IP-címet.) Ügyeljen arra, hogy ha vCenter-kiszolgálót használt a profilkészítés során, akkor nem használhat vSphere-kiszolgálót a jelentéskészítéshez, és fordítva.|
@@ -257,7 +256,7 @@ Nyisson meg egy parancssori konzolt, és keresse meg a Site Recovery üzembehely
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|Paraméter neve | Leírás |
+|Paraméter neve | Description |
 |-|-|
 | -Művelet | Átviteli sebesség lekérdezése |
 |-Virtualization|Itt adhatja meg a virtualizálás típusát (VMware vagy Hyper-V).|

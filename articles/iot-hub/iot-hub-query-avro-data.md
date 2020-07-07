@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73605619"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Avro-adatbázis lekérdezése Azure Data Lake Analytics használatával
@@ -56,7 +55,7 @@ Ebben a szakaszban lekérdezi a Avro, és exportálja azt egy CSV-fájlba az Azu
 
 6. A Visual Studióban hozzon létre egy U-SQL-projektet.
 
-   ! U-SQL-projekt létrehozása] (./Media/IOT-hub-Query-Avro-Data/Query-Avro-Data-6.png)
+   ! U-SQL-projekt létrehozása] (./Media/IOT-hub-Query-Avro-Data/query-avro-data-6.png)
 
 7. Illessze be a következő parancsfájl tartalmát az újonnan létrehozott fájlba. Módosítsa a három kiemelt szakaszt: a Data Lake Analytics fiókját, a hozzá tartozó DLL-fájl elérési útját és a Storage-fiók helyes elérési útját.
 
@@ -163,7 +162,7 @@ Ebben a szakaszban lekérdezi a Avro, és exportálja azt egy CSV-fájlba az Azu
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-    A kimenet megjeleníti a `SELECT` parancs egyes elemeinek oszlopát.
+    A kimenet megjeleníti a parancs egyes elemeinek oszlopát `SELECT` .
 
     ![Az egyes elemek oszlopait ábrázoló kimenet](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 

@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73889857"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Az Azure biztonsági bevált eljárásai és mintái
@@ -30,11 +29,11 @@ Az ajánlott eljárások az informatikai szakemberek számára készült erőfor
 
 * [Azure-beli határbiztonság – ajánlott eljárások](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Azure-beli adatbázis-biztonság – ajánlott eljárások](database-best-practices.md)
-* [Az Azure-Adatbiztonság és-titkosítás ajánlott eljárásai](data-encryption-best-practices.md)
-* [Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások](identity-management-best-practices.md)
-* [Ajánlott Azure-hálózati biztonsági eljárások](network-best-practices.md)
+* [Az Azure adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárásai](data-encryption-best-practices.md)
+* [Az Azure-beli identitáskezelés és hozzáférés-vezérlés ajánlott biztonsági eljárásai](identity-management-best-practices.md)
+* [Ajánlott Azure-beli hálózatbiztonsági eljárások](network-best-practices.md)
 * [Azure-beli üzemeltetési biztonság – ajánlott eljárások](operational-best-practices.md)
-* [Azure PaaS – ajánlott eljárások](paas-deployments.md)
+* [Azure Pásti – ajánlott eljárások](paas-deployments.md)
 * [Az Azure Service Fabric ajánlott biztonsági eljárásai](service-fabric-best-practices.md)
 * [Azure-beli virtuális gépek biztonsága – ajánlott eljárások](iaas.md)
 * [Biztonságos hibrid hálózati architektúra megvalósítása az Azure-ban](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73648440"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Az U-SQL és a Spark adatformátumai közötti különbségek ismertetése
@@ -43,7 +42,7 @@ Az átalakítást követően a [Azure Data Lake Storage Gen1 fájlban tárolt ad
 - Adatszemantika fájlok másolásakor a másolás a bájt szintjén történik. Így ugyanazokat az adatfájlokat kell megadnia a [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) fiókban. Vegye figyelembe azonban, hogy a Spark más karaktereket is értelmez. Előfordulhat például, hogy egy CSV-fájlban eltérő alapértelmezett értéket használ a sorok elválasztója számára.
     Emellett, ha a beírt adatok másolása (táblákból) történik, akkor a parketta és a Spark különböző pontossággal és méretezéssel rendelkezhet néhány beírt értéknél (például lebegőpontos), és a null értékeket különbözőképpen is kezelheti. Például a U-SQL C# szemantikai értékkel rendelkezik a null értékek esetében, míg a Spark három értékű logikát tartalmaz a null értékekhez.
 
-- Az adatszervezet (particionálás) U-SQL-táblák két szintű particionálást biztosítanak. A külső szint (`PARTITIONED BY`) értéke és leképezése elsősorban a kaptár/Spark particionálási sémában, a mappa-hierarchiák használatával. Biztosítania kell, hogy a null értékek a megfelelő mappába legyenek leképezve. A U-SQL`DISTRIBUTED BY`belső szintje 4 terjesztési sémát kínál: ciklikus multiplexelés, tartomány, kivonat és közvetlen kivonat.
+- Az adatszervezet (particionálás) U-SQL-táblák két szintű particionálást biztosítanak. A külső szint ( `PARTITIONED BY` ) értéke és leképezése elsősorban a kaptár/Spark particionálási sémában, a mappa-hierarchiák használatával. Biztosítania kell, hogy a null értékek a megfelelő mappába legyenek leképezve. A `DISTRIBUTED BY` U-SQL belső szintje 4 terjesztési sémát kínál: ciklikus multiplexelés, tartomány, kivonat és közvetlen kivonat.
     A kaptár/Spark táblák csak az U-SQL-nél eltérő kivonatoló függvényt használnak az érték particionálásához vagy a kivonatoló particionáláshoz. Ha a U-SQL-tábla adatait adja meg, valószínűleg csak a Spark érték particionálásához lesz képes leképezni, és a végső Spark-lekérdezésektől függően szükség lehet az adatelrendezés további finomhangolására.
 
 ## <a name="next-steps"></a>További lépések

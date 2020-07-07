@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888867"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT fejlesztői készlet-eszköz csatlakoztatása a távoli figyelési megoldáshoz
@@ -36,7 +35,7 @@ A távoli figyelési minta megnyitása a VS Code-ban:
 
 1. Győződjön meg arról, hogy a IoT fejlesztői készlet nem a számítógépe. Először indítsa el a VS Code-ot, majd kapcsolja össze a fejlesztői készlet a számítógéppel.
 
-1. Kattintson `F1` a parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: Megnyitás példák..**. lehetőséget. Ezután válassza a **IoT fejlesztői készlet** lehetőséget.
+1. Kattintson a `F1` parancs palettájának megnyitásához, írja be a parancsot, majd válassza az **Azure IoT Device Workbench: Megnyitás példák..**. lehetőséget. Ezután válassza a **IoT fejlesztői készlet** lehetőséget.
 
 1. Keresse meg a **távoli figyelést** , és kattintson a **minta megnyitása**lehetőségre. Megnyílik egy új VS Code ablak, amely a projekt mappáját mutatja:
 
@@ -51,7 +50,7 @@ IoT Hub eszköz kapcsolódási karakterláncának konfigurálása a fejlesztői 
     * Tartsa lenyomva **A**gombot.
     * Az **Alaphelyzetbe állítás** gomb leküldése és felszabadítása
 
-1. A képernyőn megjelenik a fejlesztői készlet azonosítója és `Configuration`a.
+1. A képernyőn megjelenik a fejlesztői készlet azonosítója és a `Configuration` .
 
     ![IoT fejlesztői készlet-konfigurációs mód](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
@@ -63,7 +62,7 @@ IoT Hub eszköz kapcsolódási karakterláncának konfigurálása a fejlesztői 
 
 Az eszköz kódjának létrehozása és feltöltése:
 
-1. Nyomja `F1` meg a parancs palettájának megnyitásához írja be a parancsot, majd válassza az **Azure IoT Device Workbench: az eszköz feltöltési kódja**:
+1. Nyomja meg `F1` a parancs palettájának megnyitásához írja be a parancsot, majd válassza az **Azure IoT Device Workbench: az eszköz feltöltési kódja**:
 
 1. A VS Code lefordítja és feltölti a kódot a fejlesztői készlet-eszközre:
 
@@ -109,7 +108,7 @@ A fejlesztői készlet-LED-ek egyikének színének módosításához használja
 
     ![IoT fejlesztői készlet piros LED](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-devkit-led.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha tovább kíván lépni a további oktatóanyagokra, ne kapcsolja ki a távoli monitorozási megoldásgyorsítót.
 

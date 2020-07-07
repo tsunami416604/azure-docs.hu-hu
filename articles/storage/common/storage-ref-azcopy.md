@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74038092"
 ---
 # <a name="azcopy"></a>azcopy
@@ -21,9 +20,9 @@ A AzCopy olyan parancssori eszköz, amely az Azure Storage-ba és az-ba helyezi 
 
 ## <a name="synopsis"></a>Áttekintés
 
-A parancsok általános formátuma: `azcopy [command] [arguments] --[flag-name]=[flag-value]`.
+A parancsok általános formátuma: `azcopy [command] [arguments] --[flag-name]=[flag-value]` .
 
-Ha problémákat szeretne jelenteni, vagy többet szeretne megtudni az eszközről [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy), tekintse meg a következő témakört:.
+Ha problémákat szeretne jelenteni, vagy többet szeretne megtudni az eszközről, tekintse meg a következő témakört: [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy) .
 
 ## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
 

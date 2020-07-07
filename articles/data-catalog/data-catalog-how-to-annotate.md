@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68950266"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Adatforrások megjegyzése Azure Data Catalogban
@@ -34,10 +33,10 @@ Ezen perspektívák mindegyike értékes, és Data Catalog egy közösségi megk
 ## <a name="different-types-of-annotations"></a>Különböző típusú jegyzetek
 Data Catalog a következő típusú megjegyzéseket támogatja:
 
-| Jegyzet | Megjegyzések |
+| Jegyzet | Jegyzetek |
 | --- | --- |
 | Felhasználóbarát név |A felhasználóbarát nevek az adategység szintjén adhatók meg, hogy az adategységek könnyebben érthetőek legyenek. A felhasználóbarát nevek akkor hasznosak, ha az alapul szolgáló objektumnév Crypter, rövidített vagy más módon nem értelmezhető a felhasználók számára. |
-| Leírás |A leírásokat az adategységek és az attribútumok/oszlopok szintjein lehet megadni. A leírások olyan rövid szöveges megjegyzések, amelyek leírják a felhasználó perspektíváját az adategységen vagy annak használatával. |
+| Description |A leírásokat az adategységek és az attribútumok/oszlopok szintjein lehet megadni. A leírások olyan rövid szöveges megjegyzések, amelyek leírják a felhasználó perspektíváját az adategységen vagy annak használatával. |
 | Címkék (felhasználói címkék) |A címkéket az adategység és az attribútum/oszlop szintjein lehet megadni. A felhasználói címkék felhasználó által definiált címkék, amelyek az adategységek vagy attribútumok kategorizálására használhatók. |
 | Címkék (Szószedet-címkék) |A címkéket az adategység és az attribútum/oszlop szintjein lehet megadni. A Szószedet címkék központilag definiált szószedeti kifejezések, amelyek segítségével kategorizálhatja az adategységeket és az attribútumokat egy közös üzleti besorolással. További információk: [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Az irányított címkézéshez használt üzleti szószedet összeállítása) |
 | Szakértők |Szakértőket az adategység szintjén lehet megadni. A szakértők olyan felhasználókat vagy csoportokat azonosítanak az adathoz, amelyek szakértői perspektívával rendelkeznek, és a regisztrált adatforrásokat felderítő felhasználók és a meglévő megjegyzések által nem válaszoló kérdésekre is kiszolgálják. |

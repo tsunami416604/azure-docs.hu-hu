@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73889347"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights használata az eszköz-szimulációs megoldás-gyorsító által eljuttatott telemetria megjelenítéséhez
@@ -21,7 +20,7 @@ Az eszköz-szimulációs megoldás gyorsítása lehetővé teszi a szimulált es
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelen útmutató lépéseinek követéséhez aktív Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+A jelen útmutató lépéseinek követéséhez aktív Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 A útmutató lépései azt feltételezik, hogy telepítette az eszköz szimulációs megoldásának gyorssegédét az Azure-előfizetéséhez. Ha még nem telepítette a megoldás-gyorsító eszközt, kövesse a [felhőalapú eszköz-szimulációs megoldás üzembe helyezése és futtatása](quickstart-device-simulation-deploy.md) című rövid útmutatót.
 
@@ -57,7 +56,7 @@ A [Azure Time Series Insights](../../articles/time-series-insights/time-series-i
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Válassza **az erőforrás** > **létrehozása eszközök internetes hálózata** > **Time Series Insights**:
+1. Válassza **az erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **Time Series Insights**:
 
     ![Új Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
@@ -77,7 +76,7 @@ A [Azure Time Series Insights](../../articles/time-series-insights/time-series-i
     > [!NOTE]
     > Ha hozzáadja a Time Series Insights környezetet ugyanahhoz az erőforráscsoporthoz, mint a megoldás-gyorsító, azt jelenti, hogy törli a megoldás-gyorsító törlését.
 
-1. Kattintson a **Létrehozás**gombra. A környezet létrehozása több percet is igénybe vehet.
+1. Kattintson a **Létrehozás** lehetőségre. A környezet létrehozása több percet is igénybe vehet.
 
 ## <a name="create-event-source"></a>Eseményforrás létrehozása
 
@@ -110,7 +109,7 @@ Hozzon létre egy új eseményforrás az IoT hubhoz való kapcsolódáshoz. Hasz
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 > [!NOTE]
 > [További felhasználóknak is hozzáférést biztosíthat](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) a Time Series Insights Explorerrel.
@@ -151,7 +150,7 @@ A Time Series Insights Explorer egy webalkalmazás, amelyet a telemetria megjele
 
     ![Time Series Insights Explorer perspektívája](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. Kattintson **+** ide egy új lekérdezés perspektívához való hozzáadásához:
+1. Kattintson ide **+** egy új lekérdezés perspektívához való hozzáadásához:
 
     ![Time Series Insights Explorer lekérdezés hozzáadása](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 
@@ -163,7 +162,7 @@ A Time Series Insights Explorer egy webalkalmazás, amelyet a telemetria megjele
 
     ![Time Series Insights Explorer irányítópult](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-dashboard.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy további felfedezést szeretne, hagyja üzembe a megoldás-gyorsító telepítését.
 

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
 ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74076704"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Vészhelyzeti helyreállítás tervezése ExpressRoute-alapú privát partnerekkel
@@ -104,7 +103,7 @@ Tekintsük át a következő ábrán látható példát. A példában a contoso 
 
 A vész-helyreállítási felépítésének módja hatással van arra, hogy a régiók közötti (terület1/region2-location2/location1-) forgalom hogyan legyen átirányítva. Vegyünk két különböző katasztrófa-architektúrát, amely eltérő módon irányítja a régiók közötti forgalmat.
 
-### <a name="scenario-1"></a>1. példa
+### <a name="scenario-1"></a>1\. példa
 
 Az első forgatókönyvben tervezze meg a vész-helyreállítást úgy, hogy az Azure-régió és a helyszíni hálózat közötti összes forgalom stabil állapotban legyen a helyi ExpressRoute áramkörön. Ha a helyi ExpressRoute áramkör meghibásodik, a rendszer a távoli ExpressRoute áramkört használja az Azure és a helyszíni hálózat közötti összes adatforgalomhoz.
 
@@ -116,7 +115,7 @@ Az virtuális hálózatok befolyásolhatja a forgatókönyvet a kapcsolódási s
 
 [![8]][8]
 
-### <a name="scenario-2"></a>2. példa
+### <a name="scenario-2"></a>2\. példa
 
 A 2. forgatókönyv a következő ábrán látható. A diagramon a zöld vonalak a VNet1 és a helyszíni hálózatok közötti forgalom elérési útját jelölik. A kék vonalak a VNet2 és a helyszíni hálózatok közötti forgalom elérési útját jelölik. Az állandó állapotú (a diagramon található folytonos vonalakban) a virtuális hálózatok és a helyszíni helyszínek közötti forgalom a legtöbb esetben a Microsoft gerincen keresztül zajlik, és a helyszíni helyszínek közötti kapcsolaton keresztül zajlik a ExpressRoute.
 

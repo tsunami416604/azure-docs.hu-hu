@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74132966"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Támogatási mátrix Hyper-V virtuális gépek másodlagos helyre történő vészhelyreállításához
@@ -51,16 +50,16 @@ Csak a következő tárterülettel rendelkező Linux rendszerű gépek replikál
 
 ## <a name="network-configuration---hostguest-vm"></a>Hálózati konfiguráció – gazdagép/vendég virtuális gép
 
-**Configuration** | **Támogatott**  
+**Konfigurálás** | **Támogatott**  
 --- | --- 
-Gazdagép – hálózati adapterek összevonása | Igen 
-Gazdagép – VLAN | Igen 
-Gazdagép – IPv4 | Igen 
-Gazdagép – IPv6 | Nem 
-Vendég virtuális hálózati adapterek összevonása | Nem
-Vendég virtuális gép – IPv4 | Igen
-Vendég virtuális gép – IPv6 | Nem
-Vendég virtuális gép – Windows/Linux – statikus IP-cím | Igen
+Gazdagép – hálózati adapterek összevonása | Yes 
+Gazdagép – VLAN | Yes 
+Gazdagép – IPv4 | Yes 
+Gazdagép – IPv6 | No 
+Vendég virtuális hálózati adapterek összevonása | No
+Vendég virtuális gép – IPv4 | Yes
+Vendég virtuális gép – IPv6 | No
+Vendég virtuális gép – Windows/Linux – statikus IP-cím | Yes
 Vendég virtuális gép – több hálózati adapter | Igen
 
 
@@ -70,37 +69,37 @@ Vendég virtuális gép – több hálózati adapter | Igen
 
 **Storage (gazdagép)** | **Támogatott**
 --- | --- 
-NFS | N/A
-SMB 3.0 |  Igen
-SAN (ISCSI) | Igen
-Több elérési út (MPIO) | Igen
+NFS | N.A.
+SMB 3.0 |  Yes
+SAN (ISCSI) | Yes
+Több elérési út (MPIO) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Vendég vagy fizikai kiszolgáló tárterülete
 
-**Configuration** | **Támogatott**
+**Konfigurálás** | **Támogatott**
 --- | --- | 
-VMDK |  N/A
+VMDK |  N.A.
 VHD/VHDX | Igen (legfeljebb 16 lemez)
-2. generációs VM | Igen
-Megosztott fürtözött lemez | Nem
-Titkosított lemez | Nem
-UEFI| N/A
-NFS | Nem
-SMB 3.0 | Nem
-RDM | N/A
-Lemez > 1 TB | Igen
-Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen
-Tárolóhelyek | Igen
-Lemez gyors hozzáadása/eltávolítása | Nem
-Lemez kizárása | Igen
-Több elérési út (MPIO) | Igen
+2. generációs VM | Yes
+Megosztott fürtözött lemez | No
+Titkosított lemez | No
+UEFI| N.A.
+NFS | No
+SMB 3.0 | No
+RDM | N.A.
+Lemez > 1 TB | Yes
+Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Yes
+Tárolóhelyek | Yes
+Lemez gyors hozzáadása/eltávolítása | No
+Lemez kizárása | Yes
+Több elérési út (MPIO) | Yes
 
 ## <a name="vaults"></a>Tárolók
 
 **Művelet** | **Támogatott**
 --- | --- 
-Tárolók áthelyezése az erőforráscsoportok között (vagy az előfizetések között) |  Nem
-Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | Nem
+Tárolók áthelyezése az erőforráscsoportok között (vagy az előfizetések között) |  No
+Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | No
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery szolgáltató
 

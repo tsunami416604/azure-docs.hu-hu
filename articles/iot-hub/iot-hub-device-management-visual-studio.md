@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73953187"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>A Cloud Explorer használata az Azure-hoz készült Visual Studio IoT Hub-eszközök kezeléséhez
@@ -59,7 +58,7 @@ A Visual Studio 2017-es verziójának Cloud Explorer összetevője csak az eszk�
 
 ## <a name="sign-in-to-access-your-hub"></a>Bejelentkezés a hub eléréséhez
 
-1. A Visual Studióban kattintson a**Cloud** Explorer **megtekintése** > elemre a Cloud Explorer megnyitásához.
+1. A Visual Studióban kattintson a Cloud Explorer **megtekintése**elemre  >  **Cloud Explorer** a Cloud Explorer megnyitásához.
 
 1. Az előfizetések megjelenítéséhez válassza az Account Management (Fiókkezelés) ikont.
 
@@ -89,9 +88,9 @@ Az eszközök kettős szerkesztéséhez hajtsa végre a következő lépéseket:
 
 1. Kattintson a jobb gombbal az eszközre, és válassza az **eszközök dupla szerkesztése**lehetőséget.
 
-   Megnyílik egy **Azure-IOT-Device-Twin. JSON** fájl, amely az eszköz Twin tartalmának tartalmát nyitja meg.
+   Megnyílik egy **azure-iot-device-twin.jsa** fájlon, amely az eszköz iker tartalmát nyitja meg.
 
-1. Végezze el a **címkék** vagy tulajdonságok szerkesztését **. a kívánt** mezők az **Azure-IOT-Device-Twin. JSON** fájlba kerülnek.
+1. Szerkessze a **címkéket** vagy **tulajdonságokat. a kívánt** mezőket a fájl **azure-iot-device-twin.js** .
 
 1. Nyomja le a **CTRL + S** billentyűkombinációt az eszköz dupla frissítéséhez.
 

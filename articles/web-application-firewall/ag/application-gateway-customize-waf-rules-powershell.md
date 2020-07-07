@@ -9,10 +9,9 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74048513"
 ---
 # <a name="customize-web-application-firewall-rules-using-powershell"></a>Webalkalmazási tűzfalszabályok testreszabása a PowerShell használatával
@@ -85,7 +84,7 @@ OWASP (Ver. 3.0):
 
 ## <a name="disable-rules"></a>Szabályok letiltása
 
-A következő példa letiltja a `911011` szabályokat `911012` és az Application Gateway-t:
+A következő példa letiltja a szabályokat `911011` és az `911012` Application Gateway-t:
 
 ```powershell
 $disabledrules=New-AzApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-911-METHOD-ENFORCEMENT -Rules 911011,911012

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74122191"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Feladatátvétel és javítás a Redis készült Azure cache-hez
@@ -65,7 +64,7 @@ Ha feladatátvétel történik, a standard és a prémium gyorsítótárnak az e
 
 Az ügyfélalkalmazás által látott hibák száma attól függ, hogy a feladatátvétel során hány művelet van függőben a kapcsolatban. Az összes olyan kapcsolat, amely a kapcsolat lezárt csomópontján keresztül van átirányítva, hibaüzeneteket fog látni. Számos ügyfél-függvénytár különböző típusú hibákat tud eldobni a kapcsolatok megszakításakor, beleértve az időtúllépési kivételeket, a csatlakozási kivételeket vagy a szoftvercsatorna kivételeit. A kivételek száma és típusa attól függ, hogy hol található a kód elérési útja, amikor a gyorsítótár lezárja a kapcsolatait. Például egy olyan művelet, amely kérelmet küld, de nem kapott választ, ha a feladatátvétel során időtúllépési kivételt tapasztalhat. A lezárt kapcsolatok objektumon lévő új kérések a kapcsolatok kivételeit kapják, amíg az újracsatlakoztatás sikeresen megtörténik.
 
-A legtöbb ügyfél-függvénytár megpróbál újracsatlakozni a gyorsítótárhoz, ha erre van konfigurálva. Az előre nem látható hibák azonban esetenként nem állíthatók helyre a függvénytár-objektumokat. Ha a hibák hosszabb ideig tartanak, mint az előre beállított időtartam, a rendszer újból létrehozza a kapcsolatok objektumát. A Microsoft.NET és más objektumorientált nyelveken az alkalmazás újraindítása nélkül, [\<lusta T\> minta](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)használatával lehet újból létrehozni a kapcsolatokat.
+A legtöbb ügyfél-függvénytár megpróbál újracsatlakozni a gyorsítótárhoz, ha erre van konfigurálva. Az előre nem látható hibák azonban esetenként nem állíthatók helyre a függvénytár-objektumokat. Ha a hibák hosszabb ideig tartanak, mint az előre beállított időtartam, a rendszer újból létrehozza a kapcsolatok objektumát. A Microsoft.NET és más objektumorientált nyelveken a kapcsolatok újraindítása nélkül, [lusta \<T\> minta](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)használatával lehet újból létrehozni a kapcsolatokat.
 
 ### <a name="how-do-i-make-my-application-resilient"></a>Hogyan rugalmasan tehetem az alkalmazást?
 
