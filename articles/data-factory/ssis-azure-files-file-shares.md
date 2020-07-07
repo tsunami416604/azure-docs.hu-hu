@@ -9,10 +9,10 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 36660854b9a7ae13431545392ef551694b48e97c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628912"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Fájlok megnyitása és mentése a helyszínen és az Azure-ban az Azure-ban üzembe helyezett SSIS-csomagokkal
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan nyithatók meg és menthetők a fájlok a helysz
 
 ## <a name="save-temporary-files"></a>Ideiglenes fájlok mentése
 
-Ha az ideiglenes fájlokat egyetlen csomag végrehajtása során kell tárolnia és feldolgoznia, a csomagok használhatják a Azure-SSIS Integration Runtime-csomópontok aktuális`.`munkakönyvtárát`%TEMP%`() vagy ideiglenes mappáját ().
+Ha az ideiglenes fájlokat egyetlen csomag végrehajtása során kell tárolnia és feldolgoznia, a csomagok használhatják a Azure-SSIS Integration Runtime-csomópontok aktuális munkakönyvtárát ( `.` ) vagy ideiglenes mappáját () `%TEMP%` .
 
 ## <a name="use-on-premises-file-shares"></a>Helyszíni fájlmegosztás használata
 
@@ -37,7 +37,7 @@ Ha a helyi fájlrendszert használó csomagokat a SSIS az Azure-ban szeretné ha
 
 4. A Windows-hitelesítést használó hozzáférési hitelesítő adatok beállításával összekapcsolhatja a Azure-SSIS IR az ugyanazon a virtuális hálózaton belüli helyi fájlmegosztás használatával. További információ: [Kapcsolódás adatokhoz és fájlmegosztáshoz Windows-hitelesítéssel](ssis-azure-connect-with-windows-auth.md).
 
-5. Frissítse a csomagok helyi fájlelérési útvonalait a helyszíni fájlmegosztás felé mutató UNC elérési utakra. Például frissítsen `C:\abc.txt` a `\\<on-prem-server-name>\<share-name>\abc.txt`következőre:.
+5. Frissítse a csomagok helyi fájlelérési útvonalait a helyszíni fájlmegosztás felé mutató UNC elérési utakra. Például frissítsen a következőre: `C:\abc.txt` `\\<on-prem-server-name>\<share-name>\abc.txt` .
 
 ## <a name="use-azure-file-shares"></a>Azure-fájlmegosztás használata
 
@@ -47,7 +47,7 @@ Ha helyi fájlrendszereket használó csomagokat SSIS az Azure-ban, akkor a köv
 
 2. A Windows-hitelesítést használó hozzáférési hitelesítő adatok beállításával Azure Files Azure-SSIS IR összekapcsolásához. További információ: [Kapcsolódás adatokhoz és fájlmegosztáshoz Windows-hitelesítéssel](ssis-azure-connect-with-windows-auth.md).
 
-3. Frissítse a csomagok helyi fájlelérési útvonalait az Azure Filesra mutató UNC elérési utakra. Például frissítsen `C:\abc.txt` a `\\<storage-account-name>.file.core.windows.net\<share-name>\abc.txt`következőre:.
+3. Frissítse a csomagok helyi fájlelérési útvonalait az Azure Filesra mutató UNC elérési utakra. Például frissítsen a következőre: `C:\abc.txt` `\\<storage-account-name>.file.core.windows.net\<share-name>\abc.txt` .
 
 ## <a name="next-steps"></a>További lépések
 

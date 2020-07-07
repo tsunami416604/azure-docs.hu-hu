@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652672"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>A Xamarin Android és a MSAL.NET használatának szempontjai
@@ -33,7 +33,7 @@ var authResult = AcquireTokenInteractive(scopes)
  .ExecuteAsync();
 ```
 
-A MSAL 4,2-es és újabb verzióiban ezt a funkciót a (z) `PublicClientApplication`szintjén is megadhatja. Ehhez visszahívás használata:
+A MSAL 4,2-es és újabb verzióiban ezt a funkciót a (z) szintjén is megadhatja `PublicClientApplication` . Ehhez visszahívás használata:
 
 ```csharp
 // Requires MSAL.NET 4.2 or later
@@ -43,7 +43,7 @@ var pca = PublicClientApplicationBuilder
   .Build();
 ```
 
-Ha a [CurrentActivityPlugin](https://github.com/jamesmontemagno/CurrentActivityPlugin)-t használja, `PublicClientApplication` a Builder-kód a következő példához hasonlóan néz ki.
+Ha a [CurrentActivityPlugin](https://github.com/jamesmontemagno/CurrentActivityPlugin)-t használja, a `PublicClientApplication` Builder-kód a következő példához hasonlóan néz ki.
 
 ```csharp
 // Requires MSAL.NET 4.2 or later
@@ -54,9 +54,9 @@ var pca = PublicClientApplicationBuilder
 ```
 
 ## <a name="ensure-that-control-returns-to-msal"></a>Győződjön meg arról, hogy a vezérlő visszaadja a MSAL 
-Ha a hitelesítési folyamat interaktív része lejár, győződjön meg arról, hogy a vezérlő visszakerül a MSAL. Az Android rendszeren írja felül `OnActivityResult` a metódust `Activity`. Ezután hívja meg `SetAuthenticationContinuationEventArgs` a `AuthenticationContinuationHelper` MSAL osztály metódusát. 
+Ha a hitelesítési folyamat interaktív része lejár, győződjön meg arról, hogy a vezérlő visszakerül a MSAL. Az Android rendszeren írja felül a `OnActivityResult` metódust `Activity` . Ezután hívja meg a `SetAuthenticationContinuationEventArgs` `AuthenticationContinuationHelper` MSAL osztály metódusát. 
 
-Például:
+Íme egy példa:
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -73,7 +73,7 @@ protected override void OnActivityResult(int requestCode,
 Ez a sor biztosítja, hogy a vezérlő visszaadja a MSAL a hitelesítési folyamat interaktív részének végén.
 
 ## <a name="update-the-android-manifest"></a>Az Android-jegyzékfájl frissítése
-A *AndroidManifest. XML* fájlnak a következő értékeket kell tartalmaznia:
+A *AndroidManifest.xml* fájlnak a következő értékeket kell tartalmaznia:
 
 <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
 ```
@@ -90,9 +90,9 @@ A *AndroidManifest. XML* fájlnak a következő értékeket kell tartalmaznia:
  </activity>
 ```
 
-Helyettesítse be a Azure Portalban regisztrált csomag nevét az `android:host=` értékhez. Helyettesítse be a Azure Portalban regisztrált kulcs kivonatát az `android:path=` értékhez. Az aláírási kivonat *nem* lehet URL-kódolású. Győződjön meg arról, hogy a kezdő`/`perjel () megjelenik az aláírás kivonatának elején.
+Helyettesítse be a Azure Portalban regisztrált csomag nevét az `android:host=` értékhez. Helyettesítse be a Azure Portalban regisztrált kulcs kivonatát az `android:path=` értékhez. Az aláírási kivonat *nem* lehet URL-kódolású. Győződjön meg arról, hogy a kezdő perjel ( `/` ) megjelenik az aláírás kivonatának elején.
 
-Azt is megteheti, [hogy a tevékenységet kód helyett programkódban hozza létre a](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) *AndroidManifest. XML*manuális szerkesztésével. A tevékenység kódban való létrehozásához először hozzon létre egy osztályt, `Activity` amely tartalmazza az `IntentFilter` attribútumot és az attribútumot. 
+Azt is megteheti, [hogy a tevékenységet programkódban hozza létre](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) ahelyett, hogy manuálisan szerkeszti a *AndroidManifest.xml*. A tevékenység kódban való létrehozásához először hozzon létre egy osztályt, amely tartalmazza az `Activity` attribútumot és az `IntentFilter` attribútumot. 
 
 Az alábbi példa egy olyan osztályra mutat, amely az XML-fájl értékeit jelöli:
 
@@ -109,7 +109,7 @@ Az alábbi példa egy olyan osztályra mutat, amely az XML-fájl értékeit jel�
 
 ### <a name="xamarinforms-43x-manifest"></a>Xamarin. Forms 4.3. X jegyzékfájl
 
-A Xamarin. Forms 4.3. x olyan kódot generál `package` , amely `com.companyname.{appName}` az attribútumot a *AndroidManifest. xml fájlban*állítja be. Ha a as `DataScheme` - `msal{client_id}`t használja, érdemes lehet módosítani az értéket, hogy az megfeleljen a `MainActivity.cs` névtér értékének.
+A Xamarin. Forms 4.3. x olyan kódot állít elő, amely az attribútumotAndroidManifest.xmlértékre állítja be `package` `com.companyname.{appName}` . * * Ha a `DataScheme` as-t használja `msal{client_id}` , érdemes lehet módosítani az értéket, hogy az megfeleljen a névtér értékének `MainActivity.cs` .
 
 ## <a name="use-the-embedded-web-view-optional"></a>A beágyazott webes nézet használata (nem kötelező)
 
@@ -140,12 +140,12 @@ A Build-problémák elhárítása:
 - Győződjön meg arról, hogy a Xamarin. Android. support. v4 automatikusan frissítve lett a 25.4.0.2 verzióra. Ha szükséges, frissítsen a verzió 25.4.0.2.
 - Győződjön meg arról, hogy az összes Xamarin. Android. support csomagok cél verziója 25.4.0.2.
 - Törölje vagy építse újra az alkalmazást.
-- A Visual Studióban próbálja meg beállítani a párhuzamos projektek maximális számát 1 értékre. Ehhez válassza a **Beállítások** > **projektek és megoldások** > **Létrehozás és Futtatás** > **maximális száma párhuzamos projektek**buildek lehetőséget.
-- Ha a parancssorból épít, és a parancs a parancsot használja `/m`, próbálja meg eltávolítani az elemet a parancsból.
+- A Visual Studióban próbálja meg beállítani a párhuzamos projektek maximális számát 1 értékre. Ehhez válassza a **Beállítások**  >  **projektek és megoldások**  >  **Létrehozás és Futtatás**  >  **maximális száma párhuzamos projektek**buildek lehetőséget.
+- Ha a parancssorból épít, és a parancs a parancsot használja `/m` , próbálja meg eltávolítani az elemet a parancsból.
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>Hiba: a AuthenticationContinuationHelper név nem létezik az aktuális környezetben.
 
-Ha egy hiba azt jelzi `AuthenticationContinuationHelper` , hogy az aktuális környezetben nem létezik, előfordulhat, hogy a Visual Studio hibásan frissítette az Android. csproj * fájlt. Előfordulhat, hogy a * \<HintPath>* fájl elérési útja nem megfelelően tartalmaz *netstandard13* a *monoandroid90*helyett.
+Ha egy hiba azt jelzi, hogy `AuthenticationContinuationHelper` az aktuális környezetben nem létezik, előfordulhat, hogy a Visual Studio hibásan frissítette az Android. csproj * fájlt. Előfordulhat, hogy a *\<HintPath>* fájl elérési útja nem megfelelően tartalmaz *netstandard13* a *monoandroid90*helyett.
 
 Ez a példa a fájl helyes elérési útját tartalmazza:
 

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: a2c2a1d817dbe88bebc36f66b441e609b5faea2a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629354"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C-hez készült Azure IoT eszközoldali SDK
@@ -42,7 +42,7 @@ A kódtárak legújabb verziója az adattár **fő** ágában található:
 
   ![A tárház főágának képernyőképe](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
-* Az SDK alapvető implementációja a **\_iothub Client** mappában található, amely a legalacsonyabb API-réteg megvalósítását tartalmazza az SDK-ban: a **iothubclientről** könyvtár. A **iothubclientről** -függvénytár olyan API-kat tartalmaz, amelyek a nyers üzenetküldést implementálják az üzenetek küldéséhez IoT hub és az üzenetek fogadásához IoT hubról. Ennek a könyvtárnak a használatakor Ön felelős az üzenetek szerializálásának végrehajtásáért, de a IoT Hubkel folytatott kommunikáció egyéb adatai is kezelhetők.
+* Az SDK alapvető implementációja a **iothub \_ Client** mappában található, amely a legalacsonyabb API-réteg megvalósítását tartalmazza az SDK-ban: a **iothubclientről** könyvtár. A **iothubclientről** -függvénytár olyan API-kat tartalmaz, amelyek a nyers üzenetküldést implementálják az üzenetek küldéséhez IoT hub és az üzenetek fogadásához IoT hubról. Ennek a könyvtárnak a használatakor Ön felelős az üzenetek szerializálásának végrehajtásáért, de a IoT Hubkel folytatott kommunikáció egyéb adatai is kezelhetők.
 
 * A **szerializáló** mappa olyan segítő függvényeket és mintákat tartalmaz, amelyek bemutatják, hogyan szerializálhatja az adatokat, mielőtt elküldené az Azure-IoT hub az ügyféloldali kódtár használatával. A szerializáló használata nem kötelező, és kényelmi szolgáltatásként van megadva. A **szerializáló** könyvtár használatához meg kell határoznia azt a modellt, amely megadja a IoT hub küldendő adatok és a tőle érkező üzenetek fogadását. A modell meghatározása után az SDK egy API-felületet biztosít, amely lehetővé teszi az eszközről a felhőbe és a felhőből az eszközre irányuló üzenetek egyszerű használatát anélkül, hogy a szerializálás részleteit kellene aggódnia. A könyvtár más nyílt forráskódú könyvtáraktól függ, amelyek olyan protokollok használatával implementálják a továbbítást, mint például a MQTT és a AMQP.
 
@@ -96,7 +96,7 @@ Ha nem ismeri az Eszközkezelő eszközt, az alábbi eljárás azt ismerteti, ho
 
 1. Adja meg az **IoT hub a kapcsolatok karakterláncát** az első mezőben, majd kattintson a **frissítés**gombra. Ez a lépés úgy konfigurálja az eszközt, hogy az képes legyen kommunikálni IoT Hubokkal. 
 
-A **kapcsolati karakterlánc** a **IoT hub Service** > **Settings** > **Shared Access Policy** > **iothubowner**alatt található.
+A **kapcsolati karakterlánc** a **IoT hub Service**  >  **Settings**  >  **Shared Access Policy**  >  **iothubowner**alatt található.
 
 1. Ha a IoT Hub kapcsolódási karakterlánc konfigurálva van, kattintson a **kezelés** fülre:
 
@@ -114,7 +114,7 @@ Ezen a lapon kezelheti az IoT hub-ban regisztrált eszközöket.
 
 1. Ha a **kiválasztott eszközhöz a kapcsolódási karakterlánc másolása**lehetőséget választja, a rendszer az eszköz kapcsolódási karakterláncát másolja a vágólapra. Őrizze meg az eszköz-kapcsolatok karakterláncának másolatát. A következő szakaszokban ismertetett minta alkalmazások futtatásakor szüksége lesz rá.
 
-A fenti lépések elvégzése után már készen áll egy kód futtatására. A legtöbb minta állandó a fő forrásfájl tetején, amely lehetővé teszi a kapcsolati karakterlánc megadását. Például a **\_iothub_client minták\_iothub_convenience_sample** alkalmazás megfelelő sora a következőképpen jelenik meg.
+A fenti lépések elvégzése után már készen áll egy kód futtatására. A legtöbb minta állandó a fő forrásfájl tetején, amely lehetővé teszi a kapcsolati karakterlánc megadását. Például a **iothub_client \_ minták \_ iothub_convenience_sample** alkalmazás megfelelő sora a következőképpen jelenik meg.
 
 ```c
 static const char* connectionString = "[device connection string]";
@@ -122,9 +122,9 @@ static const char* connectionString = "[device connection string]";
 
 ## <a name="use-the-iothubclient-library"></a>A Iothubclientről-könyvtár használata
 
-A **iothub\_Client** mappában az [Azure-IOT-SDK-c](https://github.com/azure/azure-iot-sdk-c) tárházban található egy **minta** nevű mappa, amely egy **iothub\_-ügyfél\_minta\_mqtt**nevű alkalmazást tartalmaz.
+A **iothub \_ Client** mappában az [Azure-IOT-SDK-c](https://github.com/azure/azure-iot-sdk-c) tárházban található egy **minta** nevű mappa, amely egy **iothub- \_ ügyfél \_ minta \_ mqtt**nevű alkalmazást tartalmaz.
 
-A **\_iothub_client minta\_iothub_convenience_sample** alkalmazás Windows-verziója a következő Visual Studio-megoldást tartalmazza:
+A **iothub_client \_ minta \_ iothub_convenience_sample** alkalmazás Windows-verziója a következő Visual Studio-megoldást tartalmazza:
 
   ![Visual Studio Megoldáskezelő](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
@@ -140,14 +140,14 @@ Ez a megoldás egyetlen projektet tartalmaz. Ebben a megoldásban négy NuGet-cs
 
 Ha az SDK-val dolgozik, mindig szüksége lesz a **Microsoft. Azure. C. SharedUtility** csomagra. Ez a példa a MQTT protokollt használja, ezért a **Microsoft. Azure. umqtt** és a **Microsoft. Azure. IoTHub. MqttTransport** csomagokat kell megadnia (a AMQP és a https-vel egyenértékű csomagok vannak). Mivel a minta a **iothubclientről** könyvtárat használja, a megoldásban szerepelnie kell a **Microsoft. Azure. IoTHub. iothubclientről** csomagnak is.
 
-A minta alkalmazás megvalósítását a **iothub_client\_Samples\_iothub_convenience_sample** forrásfájlban találja.
+A minta alkalmazás megvalósítását a **iothub_client \_ samples \_ iothub_convenience_sample** forrásfájlban találja.
 
 A következő lépésekkel megtudhatja, hogy mi szükséges a **iothubclientről** -könyvtár használatához.
 
 ### <a name="initialize-the-library"></a>A könyvtár inicializálása
 
 > [!NOTE]
-> A kódtárak használatának megkezdése előtt előfordulhat, hogy valamilyen platform-specifikus inicializálást kell végrehajtania. Ha például Linux rendszeren szeretné használni a AMQP-t, inicializálnia kell az OpenSSL könyvtárat. A [GitHub-tárházban](https://github.com/Azure/azure-iot-sdk-c) lévő minták meghívja a segédprogram-funkció **\_platformjának inicializálását** , amikor az ügyfél elindul, és meghívja a **\_platform deinit** függvényt a kilépés előtt. Ezek a függvények a platform. h fejléc fájljában vannak deklarálva. Vizsgálja meg ezen függvények definícióit a [tárházban](https://github.com/Azure/azure-iot-sdk-c) a cél platformon annak megállapításához, hogy szükség van-e a platform-specifikus inicializálási kódokra az ügyfélen.
+> A kódtárak használatának megkezdése előtt előfordulhat, hogy valamilyen platform-specifikus inicializálást kell végrehajtania. Ha például Linux rendszeren szeretné használni a AMQP-t, inicializálnia kell az OpenSSL könyvtárat. A [GitHub-tárházban](https://github.com/Azure/azure-iot-sdk-c) lévő minták meghívja a segédprogram-funkció **platformjának \_ inicializálását** , amikor az ügyfél elindul, és meghívja a **platform \_ deinit** függvényt a kilépés előtt. Ezek a függvények a platform. h fejléc fájljában vannak deklarálva. Vizsgálja meg ezen függvények definícióit a [tárházban](https://github.com/Azure/azure-iot-sdk-c) a cél platformon annak megállapításához, hogy szükség van-e a platform-specifikus inicializálási kódokra az ügyfélen.
 
 A kódtárak használatának megkezdéséhez először le kell foglalni egy IoT Hub-ügyfél leíróját:
 
@@ -164,7 +164,7 @@ else
 
 Átadja az Eszközkezelő eszköztől a függvénynek beszerzett eszköz-kapcsolódási karakterlánc másolatát. A használni kívánt kommunikációs protokollt is kijelöli. Ez a példa MQTT használ, de a AMQP és a HTTPS is lehetőség.
 
-Ha érvényes **IOTHUB\_-ügyfél\_-leíróval**rendelkezik, megkezdheti az API-k meghívását, hogy üzeneteket küldjön és fogadjon IoT hub.
+Ha érvényes **IOTHUB-ügyfél- \_ \_ leíróval**rendelkezik, megkezdheti az API-k meghívását, hogy üzeneteket küldjön és fogadjon IoT hub.
 
 ### <a name="send-messages"></a>Üzenetek küldése
 
@@ -227,7 +227,7 @@ static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, v
 }
 ```
 
-Figyelje meg, hogy a **IoTHubMessage\_Destroy** függvény hívása az üzenettel együtt történik. Ez a függvény felszabadítja az üzenet létrehozásakor lefoglalt erőforrásokat.
+Figyelje meg, hogy a **IoTHubMessage \_ Destroy** függvény hívása az üzenettel együtt történik. Ez a függvény felszabadítja az üzenet létrehozásakor lefoglalt erőforrásokat.
 
 ### <a name="receive-messages"></a>Üzenetek fogadása
 
@@ -317,7 +317,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-Az üzenet beolvasásához használja a **IoTHubMessage\_GetByteArray** függvényt, amely ebben a példában egy karakterlánc.
+Az üzenet beolvasásához használja a **IoTHubMessage \_ GetByteArray** függvényt, amely ebben a példában egy karakterlánc.
 
 ### <a name="uninitialize-the-library"></a>A könyvtár inicializálásának megszüntetése
 
@@ -327,7 +327,7 @@ Ha végzett az események küldésével és az üzenetek fogadásával, a IoT-k�
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
-Ez a hívás felszabadítja a **iothubclientről\_CreateFromConnectionString** függvény által korábban lefoglalt erőforrásokat.
+Ez a hívás felszabadítja a **iothubclientről \_ CreateFromConnectionString** függvény által korábban lefoglalt erőforrásokat.
 
 Amint láthatja, egyszerűen küldhet és fogadhat üzeneteket a **iothubclientről** -könyvtárral. A könyvtár kezeli a IoT Hubokkal folytatott kommunikáció részleteit, beleértve a fejlesztő szemszögéből (a fejlesztő szempontjából ez egy egyszerű konfigurációs lehetőség).
 
@@ -337,7 +337,7 @@ A **iothubclientről** -függvénytár emellett precízen szabályozza az eszkö
 
 A **szerializáló** könyvtára elméletileg a **iothubclientről** könyvtár tetején található az SDK-ban. A **iothubclientről** könyvtárat használja az IoT hub-vel való kommunikációhoz, de olyan modellezési képességeket biztosít, amelyek megszüntetik a fejlesztőtől az üzenetek szerializálásával járó terheket. Egy példa szemlélteti, hogyan működik ez a könyvtár.
 
-Az [Azure-IOT-SDK-c tárház](https://github.com/Azure/azure-iot-sdk-c) **szerializáló** mappájában egy **minta** mappa található, amely egy **simplesample\_mqtt**nevű alkalmazást tartalmaz. A minta Windows-verziója a következő Visual Studio-megoldást tartalmazza:
+Az [Azure-IOT-SDK-c tárház](https://github.com/Azure/azure-iot-sdk-c) **szerializáló** mappájában egy **minta** mappa található, amely egy **simplesample \_ mqtt**nevű alkalmazást tartalmaz. A minta Windows-verziója a következő Visual Studio-megoldást tartalmazza:
 
   ![Visual Studio-megoldás a mqtt-minta számára](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
@@ -354,7 +354,7 @@ Akárcsak az előző mintában, ez több NuGet-csomagot is tartalmaz:
 
 Az előző mintában a csomagok többsége látható, de a **Microsoft. Azure. IoTHub. szerializáló** új. Ez a csomag a **szerializáló** függvénytár használata esetén szükséges.
 
-A minta alkalmazás megvalósítását a **iothub_client\_Samples\_iothub_convenience_sample** fájlban találja.
+A minta alkalmazás megvalósítását a **iothub_client \_ samples \_ iothub_convenience_sample** fájlban találja.
 
 A következő szakasz végigvezeti a minta főbb részein.
 
@@ -389,13 +389,13 @@ else
 ...
 ```
 
-A **szerializáló\_init** függvény hívása egy egyszeri hívás, amely inicializálja az alapul szolgáló könyvtárat. Ezután hívja meg az **iothubclientről\_\_ll CreateFromConnectionString** függvényt, amely megegyezik az **iothubclientről** -mintával megegyező API-val. Ez a hívás beállítja az eszköz kapcsolati karakterláncát (ez a hívás a használni kívánt protokollt is kiválasztja). Ez a példa az MQTT-t használja átvitelként, de a AMQP vagy a HTTPS protokollt is használhatja.
+A **szerializáló \_ init** függvény hívása egy egyszeri hívás, amely inicializálja az alapul szolgáló könyvtárat. Ezután hívja meg az **iothubclientről \_ ll \_ CreateFromConnectionString** függvényt, amely megegyezik az **iothubclientről** -mintával megegyező API-val. Ez a hívás beállítja az eszköz kapcsolati karakterláncát (ez a hívás a használni kívánt protokollt is kiválasztja). Ez a példa az MQTT-t használja átvitelként, de a AMQP vagy a HTTPS protokollt is használhatja.
 
-Végül hívja meg a **modell\_\_létrehozása példány** -függvényt. A **WeatherStation** a modell névtere, a **ContosoAnemometer** pedig a modell neve. A modell példányának létrehozása után megkezdheti az üzenetek küldését és fogadását. Fontos azonban megérteni, hogy mi a modell.
+Végül hívja meg a ** \_ modell létrehozása \_ példány** -függvényt. A **WeatherStation** a modell névtere, a **ContosoAnemometer** pedig a modell neve. A modell példányának létrehozása után megkezdheti az üzenetek küldését és fogadását. Fontos azonban megérteni, hogy mi a modell.
 
 ### <a name="define-the-model"></a>A modell meghatározása
 
-A **szerializáló** függvénytár egyik modellje határozza meg, hogy az eszköz mely üzeneteket küldhet IoT hubnak és az üzeneteknek, amelyeket a modellezési nyelvben *, az* általa fogadott üzenetekben lehet elküldeni. A modelleket C-makrók használatával definiálhatja a **iothub_client\_Samples\_iothub_convenience_sample** Sample alkalmazásban:
+A **szerializáló** függvénytár egyik modellje határozza meg, hogy az eszköz mely üzeneteket küldhet IoT hubnak és az üzeneteknek, amelyeket a modellezési nyelvben *, az* általa fogadott üzenetekben lehet elküldeni. A modelleket C-makrók használatával definiálhatja a **iothub_client \_ samples \_ iothub_convenience_sample** Sample alkalmazásban:
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);
@@ -411,7 +411,7 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-A névtér és a **végpontok\_** **megkezdése\_** makrók a modell névterét is elvégzik argumentumként. A rendszer azt várta, hogy ezek a makrók a modell vagy modellek definícióját, valamint a modellek által használt adatstruktúrákat határozzák meg.
+A névtér és a **végpontok \_ ** **megkezdése \_ ** makrók a modell névterét is elvégzik argumentumként. A rendszer azt várta, hogy ezek a makrók a modell vagy modellek definícióját, valamint a modellek által használt adatstruktúrákat határozzák meg.
 
 Ebben a példában a **ContosoAnemometer**nevű egyetlen modell létezik. Ez a modell két adatot határoz meg, amelyeket az eszköz el tud küldeni a IoT Hub: **DeviceID** és a **Szélsebesség**. Emellett három olyan műveletet (üzenetet) is meghatároz, amelyet az eszköz fogadni tud: **TurnFanOn**, **TurnFanOff**és **SetAirResistance**. Minden adatelem rendelkezik egy típussal, és mindegyik művelethez tartozik egy név (és opcionálisan egy paraméter is).
 
@@ -469,7 +469,7 @@ static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsign
 }
 ```
 
-Az **\_iothubclientről ll\_SendEventAsync** második – utolsó paramétere az adat sikeres elküldésekor meghívott visszahívási függvényre mutató hivatkozás. Itt látható a visszahívási függvény a mintában:
+Az **iothubclientről \_ ll \_ SendEventAsync** második – utolsó paramétere az adat sikeres elküldésekor meghívott visszahívási függvényre mutató hivatkozás. Itt látható a visszahívási függvény a mintában:
 
 ```c
 void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
@@ -482,7 +482,7 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCal
 }
 ```
 
-A második paraméter a felhasználói környezet mutatója; Ugyanez a mutató lett átadva az **\_iothubclientről ll\_SendEventAsync**. Ebben az esetben a környezet egy egyszerű számláló, de bármit is szeretne.
+A második paraméter a felhasználói környezet mutatója; Ugyanez a mutató lett átadva az **iothubclientről \_ ll \_ SendEventAsync**. Ebben az esetben a környezet egy egyszerű számláló, de bármit is szeretne.
 
 Ennyi az eszközről a felhőbe irányuló üzenetek küldése. Az egyetlen dolog, ami az üzenetek fogadására marad.
 
@@ -539,7 +539,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-Ez a kód nem szabványos – ez minden megoldás esetében azonos. Ez a függvény fogadja az üzenetet, és gondoskodik arról, hogyan irányítja át a megfelelő függvénynek a **végrehajtás\_** meghívásával paranccsal. Az ebben a pontban meghívott függvény a modell műveleteinek meghatározásából függ.
+Ez a kód nem szabványos – ez minden megoldás esetében azonos. Ez a függvény fogadja az üzenetet, és gondoskodik arról, hogyan irányítja át a megfelelő függvénynek a végrehajtás meghívásával ** \_ paranccsal**. Az ebben a pontban meghívott függvény a modell műveleteinek meghatározásából függ.
 
 Amikor megad egy műveletet a modellben, meg kell valósítania egy olyan függvényt, amely akkor lesz meghívva, amikor az eszköz megkapja a megfelelő üzenetet. Ha például a modell meghatározza ezt a műveletet:
 

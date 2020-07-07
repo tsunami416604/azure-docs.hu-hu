@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628793"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
@@ -48,7 +48,7 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 ## <a name="enable-local-cache-in-app-service"></a>Helyi gyorsítótár engedélyezése a App Serviceban
 A helyi gyorsítótárat a fenntartott Alkalmazásbeállítások együttes használatával konfigurálhatja. Az Alkalmazásbeállítások a következő módszerekkel konfigurálhatók:
 
-* [Azure Portal](#Configure-Local-Cache-Portal)
+* [Azure Portalra](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Helyi gyorsítótár konfigurálása a Azure Portal használatával
@@ -83,12 +83,12 @@ A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti az alkalmaz
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>A méret beállítás módosítása a helyi gyorsítótárban
-Alapértelmezés szerint a helyi gyorsítótár mérete **1 GB**. Ebbe beletartozik a/site másolt és a/siteextensions mappa, valamint a helyileg létrehozott naplók és adatmappák. A korlát növeléséhez használja az alkalmazás beállítását `WEBSITE_LOCAL_CACHE_SIZEINMB`. Az alkalmazások mérete legfeljebb **2 GB** (2000 MB) lehet. Vegye figyelembe, hogy a méret növekedésével hosszabb időt vesz igénybe a helyi gyorsítótár betöltése.
+Alapértelmezés szerint a helyi gyorsítótár mérete **1 GB**. Ebbe beletartozik a/site másolt és a/siteextensions mappa, valamint a helyileg létrehozott naplók és adatmappák. A korlát növeléséhez használja az alkalmazás beállítását `WEBSITE_LOCAL_CACHE_SIZEINMB` . Az alkalmazások mérete legfeljebb **2 GB** (2000 MB) lehet. Vegye figyelembe, hogy a méret növekedésével hosszabb időt vesz igénybe a helyi gyorsítótár betöltése.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Ajánlott eljárások App Service helyi gyorsítótár használatához
 Javasoljuk, hogy a helyi gyorsítótárat az [átmeneti környezetek](../app-service/deploy-staging-slots.md) szolgáltatással együtt használja.
 
-* Adja hozzá a *Sticky* app `WEBSITE_LOCAL_CACHE_OPTION` beállítást az `Always` **éles** tárolóhely értékével. Ha használja `WEBSITE_LOCAL_CACHE_SIZEINMB`a-t, az éles tárolóhelyként is hozzáadja az értéket.
+* Adja hozzá a *Sticky* app beállítást az `WEBSITE_LOCAL_CACHE_OPTION` `Always` **éles** tárolóhely értékével. Ha használja a `WEBSITE_LOCAL_CACHE_SIZEINMB` -t, az éles tárolóhelyként is hozzáadja az értéket.
 * Hozzon létre egy **átmeneti** tárolóhelyet, és tegye közzé az átmeneti tárolóhelyen. Általában nem úgy állítja be az átmeneti tárolóhelyet, hogy a helyi gyorsítótárat használja, hogy zökkenőmentes Build-üzembe helyezés-tesztelési életciklust engedélyezzen az átmeneti tároláshoz, ha az üzemi tárolóhelyhez tartozó helyi gyorsítótár előnyeit kapja.
 * Tesztelje a webhelyet az átmeneti tárolóhelyen.  
 * Ha elkészült, állítson ki egy [swap-műveletet](../app-service/deploy-staging-slots.md#Swap) az átmeneti és az üzemi tárolóhelyek között.  
@@ -100,9 +100,9 @@ Javasoljuk, hogy a helyi gyorsítótárat az [átmeneti környezetek](../app-ser
 Ha az alkalmazásnak nagy teljesítményű, megbízható tartalom-tárolóra van szüksége, a nem használja a Content Store-t a kritikus adatokat futásidőben, és a teljes méretnél kevesebb, mint 2 GB-ot, a válasz igen. A/site és a/siteextensions mappák teljes méretének lekéréséhez használhatja az "Azure Web Apps lemezhasználat" nevű helyet.
 
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Honnan tudhatom meg, hogy a webhelyem a helyi gyorsítótár használatára váltott-e?
-Ha az átmeneti környezetekben a helyi gyorsítótár szolgáltatást használja, a swap művelet nem fejeződik be, amíg a helyi gyorsítótár be nem fejeződik. Ha ellenőrizni szeretné, hogy a hely a helyi gyorsítótáron fut-e, ellenőrizze a munkavégző `WEBSITE_LOCALCACHE_READY`folyamat környezeti változóját. A [munkavégző folyamat környezeti változójának](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) lapján található utasítások segítségével több példányon is elérheti a munkavégző folyamat környezeti változóját.  
+Ha az átmeneti környezetekben a helyi gyorsítótár szolgáltatást használja, a swap művelet nem fejeződik be, amíg a helyi gyorsítótár be nem fejeződik. Ha ellenőrizni szeretné, hogy a hely a helyi gyorsítótáron fut-e, ellenőrizze a munkavégző folyamat környezeti változóját `WEBSITE_LOCALCACHE_READY` . A [munkavégző folyamat környezeti változójának](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) lapján található utasítások segítségével több példányon is elérheti a munkavégző folyamat környezeti változóját.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Most közzétettem az új módosításokat, de az alkalmazásom úgy tűnik, hogy nem rendelkezik velük. Hogy miért?
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Most közzétettem az új módosításokat, de az alkalmazásom úgy tűnik, hogy nem rendelkezik velük. Miért?
 Ha az alkalmazás helyi gyorsítótárat használ, a legújabb módosítások beszerzéséhez újra kell indítania a helyet. Nem kívánja közzétenni a módosításokat egy éles helyen? Tekintse meg a tárolóhelyek beállításait az előző ajánlott eljárások szakaszban.
 
 ### <a name="where-are-my-logs"></a>Hol találhatók a naplók?
