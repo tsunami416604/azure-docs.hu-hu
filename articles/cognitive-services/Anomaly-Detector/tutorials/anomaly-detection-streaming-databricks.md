@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78402668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918926"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: az adatátviteli rendellenességek észlelése Azure Databricks használatával
 
@@ -61,7 +61,7 @@ A névtér és az Event hub létrehozásával kapcsolatos információkért teki
 
 Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Portal](https://portal.azure.com/)használatával.
 
-1. A Azure Portal válassza az **erőforrás** > létrehozása**elemzési** > **Azure Databricks**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Azure Databricks**lehetőséget.
 
     ![Databricks Azure Portal](../media/tutorials/azure-databricks-on-portal.png "Databricks Azure Portal")
 
@@ -72,11 +72,11 @@ Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Port
     |---------|---------|
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
-    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../../azure-resource-manager/management/overview.md). |
+    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport olyan tároló, amely egy adott Azure-megoldás kapcsolódó erőforrásait tartalmazza. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../../azure-resource-manager/management/overview.md). |
     |**Hely**     | Válassza ki az **USA 2. keleti** régióját vagy egy másik elérhető régiót. Tekintse meg a [régiók számára elérhető Azure-szolgáltatások](https://azure.microsoft.com/regions/services/) elérhetőségét.        |
     |**Díjszabási csomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. Ne válassza a **próbaverzió**lehetőséget. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-    Kattintson a **Létrehozás** gombra.
+    Válassza a **Létrehozás** lehetőséget.
 
 4. A munkaterület létrehozása eltarthat néhány percig. 
 
@@ -96,7 +96,7 @@ Ebben a szakaszban egy Azure Databricks munkaterületet hoz létre a [Azure Port
 
    * Adjon egy nevet a fürtnek.
    * Ehhez a cikkhez hozzon létre egy **5,2** futtatókörnyezettel rendelkező fürtöt. Ne válassza a **5,3** futtatókörnyezetet.
-   * Győződjön meg arról, hogy a **megszakítás perc \_ \_ inaktivitás után** jelölőnégyzet be van jelölve. Adja meg a fürt megszakításához szükséges időtartamot (percben), ha a fürt nincs használatban.
+   * Győződjön meg arról, hogy a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzet be van jelölve. Adja meg a fürt megszakításához szükséges időtartamot (percben), ha a fürt nincs használatban.
 
      Válassza a **Fürt létrehozása** lehetőséget. 
 4. A fürt létrehozása több percet vesz igénybe. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
@@ -123,7 +123,7 @@ Mentse a Twitter-alkalmazáshoz lekért értékeket. Az oktatóanyag későbbi r
 
 Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitter API-k segítségével. Ezenkívül az [Apache Spark Event Hubs-összekötő](https://github.com/Azure/azure-event-hubs-spark) segítségével adatokat olvashat be és írhat az Azure Event Hubsba. Ha az API-kat a fürt részeként kívánja használni, adja hozzá azokat kódtárként az Azure Databrickshez, majd társítsa a Spark-fürthöz. Az alábbi utasítások azt mutatják be, hogyan adhatók hozzá a kódtárak a **megosztott** mappához a munkaterületen.
 
-1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben válassza a könyvtár **létrehozása** > **Library**lehetőséget.
+1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben válassza a könyvtár **létrehozása**lehetőséget  >  **Library**.
 
    ![Kódtár hozzáadása párbeszédpanel](../media/tutorials/databricks-add-library-option.png "Kódtár hozzáadása párbeszédpanel")
 
@@ -134,7 +134,7 @@ Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitt
 
      ![Maven-koordináták megadása](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Maven-koordináták megadása")
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
 4. Válassza ki a mappát, amelyhez hozzáadta a kódtárat, majd válassza ki a kódtár nevét.
 
@@ -155,7 +155,7 @@ Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API]
 
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 
-3. Az Azure Marketplace területen válassza az **AI + Machine learning** > az**összes** > **Cognitive Services – több** > **anomália-detektor**elemet. Vagy használhatja ezt a [hivatkozást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) , ha közvetlenül a **Létrehozás** párbeszédpanelt nyitja meg.
+3. Az Azure Marketplace területen válassza az **AI + Machine learning**az  >  **összes**  >  **Cognitive Services – több**  >  **anomália-detektor**elemet. Vagy használhatja ezt a [hivatkozást](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) , ha közvetlenül a **Létrehozás** párbeszédpanelt nyitja meg.
 
     ![Rendellenesség-Kiderítő erőforrás létrehozása](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Rendellenesség-Kiderítő erőforrás létrehozása")
 
@@ -163,14 +163,14 @@ Ebben az oktatóanyagban az [Azure Cognitive Services anomália-érzékelő API]
 
     |Érték |Leírás  |
     |---------|---------|
-    |Name (Név)     | Az anomália-detektor erőforrásának neve.        |
+    |Name     | Az anomália-detektor erőforrásának neve.        |
     |Előfizetés     | Az az Azure-előfizetés, amelyhez az erőforrás társítva lesz.        |
     |Hely     | Egy Azure-beli hely.        |
     |Tarifacsomag     | A szolgáltatás díjszabási szintje. További információ az anomália-detektor díjszabásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
     |Erőforráscsoport     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne kijelölni.        |
 
 
-     Kattintson a **Létrehozás** gombra.
+     Válassza a **Létrehozás** lehetőséget.
 
 5. Az erőforrás létrehozása után az **Áttekintés** lapon másolja és mentse a **végpont** URL-címét a képernyőképen látható módon. Ezután válassza a **hozzáférési kulcsok megjelenítése**lehetőséget.
 
@@ -195,7 +195,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 
     ![Jegyzetfüzet létrehozása a Databricks-ben](../media/tutorials/databricks-notebook-details.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
-    Kattintson a **Létrehozás** gombra.
+    Válassza a **Létrehozás** lehetőséget.
 
 3. Az **AnalyzeTweetsFromEventHub** jegyzetfüzet létrehozásához ismételje meg ezeket a lépéseket.
 
@@ -300,6 +300,7 @@ pool.shutdown()
 
 A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie. A kimenetben szereplő minden egyes esemény az időbélyegek és a Event Hubsba betöltött "Like" s szám kombinációja.
 
+```output
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
     Sent event: {"timestamp":"2019-04-24T09:38:48.000Z","favorite":1}
@@ -318,6 +319,7 @@ A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancso
 
     ...
     ...
+```
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweetek beolvasása az Event Hubsról
 
@@ -423,16 +425,18 @@ object AnomalyDetector extends Serializable {
 
 A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie.
 
-    import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
-    import java.net.URL
-    import java.sql.Timestamp
-    import com.google.gson.{Gson, GsonBuilder, JsonParser}
-    import javax.net.ssl.HttpsURLConnection
-    defined class Point
-    defined class Series
-    defined class AnomalySingleResponse
-    defined class AnomalyBatchResponse
-    defined object AnomalyDetector
+```scala
+import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
+import java.net.URL
+import java.sql.Timestamp
+import com.google.gson.{Gson, GsonBuilder, JsonParser}
+import javax.net.ssl.HttpsURLConnection
+defined class Point
+defined class Series
+defined class AnomalySingleResponse
+defined class AnomalyBatchResponse
+defined object AnomalyDetector
+```
 
 Ezután készítse elő az összesítési függvényt a jövőbeli használatra.
 ```scala
@@ -495,11 +499,13 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancsot. A következő kódrészlethez hasonló kimenetnek kell megjelennie.
 
-    import org.apache.spark.sql.Row
-    import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
-    import org.apache.spark.sql.types.{StructType, TimestampType, FloatType, MapType, BooleanType, DataType}
-    import scala.collection.immutable.ListMap
-    defined class AnomalyDetectorAggregationFunction
+```scala
+import org.apache.spark.sql.Row
+import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
+import org.apache.spark.sql.types.{StructType, TimestampType, FloatType, MapType, BooleanType, DataType}
+import scala.collection.immutable.ListMap
+defined class AnomalyDetectorAggregationFunction
+```
 
 Ezután töltse be az Event hub adatait az anomáliák észleléséhez. Cserélje le a helyőrzőt a korábban létrehozott Azure-Event Hubs értékeire.
 
@@ -674,13 +680,13 @@ Eredmény az alábbiak szerint:
 Ennyi az egész! A Azure Databricks használatával sikeresen továbbította az adatátvitelt az Azure Event Hubsba, a stream-adatmennyiséget az Event Hubs-összekötő használatával használta fel, majd közel valós időben futtatta az adatátviteli rendellenességek észlelését.
 Habár ebben az oktatóanyagban a részletesség óránként történik, bármikor módosíthatja a részletességet, hogy megfeleljen a szükséges követelményeknek. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez a Azure Databricks munkaterületen válassza a **fürtök** lehetőséget a bal oldali ablaktáblán. A leállítani kívánt fürtnél vigye az egérmutatót a **műveletek** **oszlopban található három** pont fölé, majd válassza a Leállítás ikont, majd válassza a **megerősítés**lehetőséget.
 
 ![Databricks-fürt leállítása](../media/tutorials/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás perc \_ \_ inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>További lépések
 

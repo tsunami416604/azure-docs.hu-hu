@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 05/29/2018
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 90777b8303f2d31168e489c8e2a7ca3a779a11e6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 11207dceb29c779c081c140ee8cd362d8a217acf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856741"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Az Azure-beli virtuálisgép-méretezési csoportokkal végzett automatikus skálázás áttekintése
 Az Azure virtuálisgép-méretezési csoport automatikusan növelheti vagy csökkentheti az alkalmazást futtató virtuálisgép-példányok számát. Ez az automatizált és rugalmas viselkedés csökkenti a felügyeleti terhelést az alkalmazás teljesítményének monitorozásához és optimalizálásához. Olyan szabályokat hozhat létre, amelyek meghatározzák a pozitív felhasználói élmény elfogadható teljesítményét. Ha ezek a meghatározott küszöbértékek teljesülnek, az automatikusan méretezhető szabályok végrehajtják a méretezési csoport kapacitásának módosítását. Az eseményeket úgy is ütemezhet, hogy rögzített időpontokban automatikusan növelje vagy csökkentse a méretezési csoport kapacitását. Ez a cikk áttekintést nyújt arról, hogy mely teljesítménymutatók érhetők el, és hogy milyen műveletek hajthatók végre.
@@ -33,7 +33,7 @@ Létrehozhat olyan autoskálázási szabályokat, amelyek a virtuálisgép-péld
 
 A gazdagépalapú mérőszámokat használó automatikus méretezési szabályok a következő eszközökkel hozhatók létre:
 
-- [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure Portalra](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure-sablon](tutorial-autoscale-template.md)
@@ -81,11 +81,11 @@ Amikor egy adott metrika figyelésére hoz létre autoskálázási szabályokat,
 
 Az autoskálázási szabályok akkor aktiválódnak, ha a metrikák összevetése a megadott küszöbértékkel történik a következő operátorok egyikével:
 
-| Művelet                 |
+| Operátor                 |
 |--------------------------|
 | Nagyobb, mint             |
 | Nagyobb vagy egyenlő |
-| Kisebb mint                |
+| Kisebb, mint                |
 | Kisebb vagy egyenlő    |
 | Egyenlő                 |
 | Nem egyenlő             |
@@ -128,7 +128,7 @@ Az alábbi példák olyan forgatókönyveket mutatnak be, amelyek hasznosak lehe
 - Ha marketing-, előléptetési vagy üdülési értékesítésre van szükség, automatikusan méretezheti a virtuálisgép-példányok számát a várt ügyfél-igény előtt. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi eszközök egyikével hozhat létre olyan autoskálázási szabályokat, amelyek gazdagép-alapú metrikákat használnak:
 
 - [Azure PowerShell](tutorial-autoscale-powershell.md)

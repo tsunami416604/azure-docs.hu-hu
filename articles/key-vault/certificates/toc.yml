@@ -20,6 +20,8 @@
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+    - name: Key Vault-kódminták
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
 - name: Oktatóanyagok
   items:
     - name: Tanúsítvány importálása
@@ -36,10 +38,6 @@
       href: create-certificate.md
     - name: Tanúsítvány-aláírási kérelem létrehozása
       href: create-certificate-signing-request.md
-- name: Példák
-  items:
-    - name: Key Vault-kódminták
-      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
 - name: Útmutatók
   items:
     - name: A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval

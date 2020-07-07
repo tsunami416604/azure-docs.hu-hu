@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9135873b61abf5a5ebd0d9c4d7f52ae314ee12
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 8fef2d7e3afb0cdda3c3c3e2506b39ba542e0760
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675377"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956882"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai
 
@@ -40,7 +40,7 @@ Az alábbi ábrán az látható, hogy a Akamai EAA hogyan illeszkedik a szélese
 
 ### <a name="key-authentication-scenarios"></a>Legfontosabb hitelesítési forgatókönyvek
 
-A modern hitelesítési protokollok (például az Open ID csatlakozás, az SAML és a WS-Fed) natív integrációs támogatása Azure Active Directory mellett a Akamai EAA az Azure AD-vel való belső és külső hozzáféréshez is kiterjeszti a biztonságos hozzáférést a régi alapú hitelesítési alkalmazásokhoz, így lehetővé teszi a modern forgatókönyvek (pl. jelszó nélküli hozzáférés) használatát az alkalmazások számára. Az érintett műveletek közé tartoznak az alábbiak:
+A modern hitelesítési protokollok (például az Open ID csatlakozás, az SAML és a WS-Fed) natív integrációs támogatása Azure Active Directory mellett a Akamai EAA az Azure AD-vel való belső és külső hozzáféréshez is kiterjeszti a biztonságos hozzáférést a régi alapú hitelesítési alkalmazásokhoz, így lehetővé teszi a modern forgatókönyvek (pl. jelszó nélküli hozzáférés) használatát az alkalmazások számára. Ide tartoznak az alábbiak:
 
 * Fejléc alapú hitelesítési alkalmazások
 * Távoli asztal
@@ -102,7 +102,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 #### <a name="important"></a>Fontos
 
-Az alábbiakban felsorolt összes beállítás megegyezik az **1** . és a 2. **forgatókönyvvel**. A **2. integrációs forgatókönyv** esetén a Akamai EAA-ban egyéni identitásszolgáltató állít be, és az URL tulajdonságot módosítani kell, hogy az alkalmazás URL-címére mutasson.
+Az alábbiakban felsorolt összes beállítás megegyezik az **1** . és a 2. **forgatókönyvvel**. A **2. integrációs forgatókönyv** esetében egyéni identitásszolgáltató kell beállítania a Akamai EAA-ban, és az URL-tulajdonságot módosítani kell, hogy az alkalmazás URL-címére mutasson.
 
 ![Fontos](./media/header-akamai-tutorial/important.png)
 

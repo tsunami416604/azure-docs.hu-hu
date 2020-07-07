@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921940"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
 
@@ -60,11 +60,11 @@ Bing Custom Search-példány létrehozása:
 
 Ha adott webhelyekről vagy URL-címekről származó eredményeket szeretne figyelembe venni, adja hozzá a címeket az **Active** (Aktív) laphoz.
 
-1.       A **Configuration** (Konfiguráció) oldalon kattintson az **Active** (Aktív) lapra, és adja meg a keresésbe belefoglalni kívánt egy vagy több webhely URL-címét.
+1. A **Configuration** (Konfiguráció) oldalon kattintson az **Active** (Aktív) lapra, és adja meg a keresésbe belefoglalni kívánt egy vagy több webhely URL-címét.
 
     ![A Definíciószerkesztő aktív lapjának képernyőképe](../media/customSrchEditor.png)
 
-2.       Ha meg kíván győződni arról, hogy a példány visszaad eredményeket, akkor adjon meg egy lekérdezést a jobb oldalon található előnézet panelen. A Bing csak az általa indexelt nyilvános webhelyekről jelenít meg eredményeket.
+2. Ha meg kíván győződni arról, hogy a példány visszaad eredményeket, akkor adjon meg egy lekérdezést a jobb oldalon található előnézet panelen. A Bing csak az általa indexelt nyilvános webhelyekről jelenít meg eredményeket.
 
 ## <a name="add-blocked-entries"></a>Blokkolt bejegyzések hozzáadása
 

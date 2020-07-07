@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f5d0e9a851c41fa88461ed790ad3fe4e89d0fa21
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563257"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957137"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -53,22 +53,24 @@ Az űrlap-felismerő olyan modellt is tartalmaz, amely a Egyesült Államok &mda
 
 Az űrlap-felismerő a szöveg és a tábla szerkezetét is kinyerheti (a szöveghez társított sorok és oszlopok száma) a nagy felbontású optikai karakterfelismerés (OCR) használatával.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Egy rövid útmutató segítségével megkezdheti az űrlapok adatainak kinyerését. Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
 
-* Egyéni – modell betanítása az űrlapokra
-  * Betanítás címkék nélkül
-    * [Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával](quickstarts/curl-train-extract.md)
-    * [Gyors útmutató: űrlap-felismerő modell betanítása és adatok kinyerése a REST API és a Python használatával](quickstarts/python-train-extract.md)
-  * Tanítás címkékkel
-    * [Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával](quickstarts/label-tool.md)
-    * [Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával](quickstarts/python-labeled-data.md)
-* Előre elkészített visszaigazolások – adatok kinyerése az USA értékesítési bevételeiből
-  * [Gyors útmutató: bevételezési adatok kinyerése a cURL használatával](quickstarts/curl-receipts.md)
-  * [Gyors útmutató: bevételezési adatok kinyerése a Python használatával](quickstarts/python-receipts.md)
-* Elrendezés – szöveg és tábla szerkezetének kinyerése űrlapokból
-  * [Gyors útmutató: elrendezési adatok kinyerése a Python használatával](quickstarts/python-layout.md)
+* [Ügyféloldali kódtár](./quickstarts/client-library.md) gyors üzembe helyezése (minden nyelv, több forgatókönyv)
+* Webes felhasználói felület rövid útmutatói
+  * [Vonat címkékkel – minta címkézési eszköz](quickstarts/label-tool.md)
+* REST-útmutató
+  * Egyéni modellek betanítása és űrlapadatok kinyerése
+    * [Vonat címkék nélkül – cURL](quickstarts/curl-train-extract.md)
+    * [Betanítás címkék nélkül – Python](quickstarts/python-train-extract.md)
+    * [Betanítás címkékkel – Python](quickstarts/python-labeled-data.md)
+  * Adatok kinyerése az USA értékesítési bevételeiből
+    * [Bevételezési adatok kinyerése – cURL](quickstarts/curl-receipts.md)
+    * [Bevételezési adatok kinyerése – Python](quickstarts/python-receipts.md)
+  * Szöveg és táblázat struktúrájának kinyerése űrlapokból
+    * [Elrendezési adatok kinyerése – Python](quickstarts/python-layout.md)
+
 
 ### <a name="review-the-rest-apis"></a>A REST API-k áttekintése
 
