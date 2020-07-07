@@ -8,10 +8,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82127872"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Azure Cognitive Search-naplók és-metrikák megjelenítése Power BI
@@ -33,7 +33,7 @@ A Power BI template app **Azure Cognitive Search: a naplók és a metrikák elem
     1. Keresse meg az **archívumot egy Storage-fiókban**, adja meg a Storage-fiók adatait, és keresse meg a **OperationLogs** és a **AllMetrics**
 
         ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. **Mentés** kiválasztása
+    1. Válassza a **Mentés** lehetőséget.
 
 1. A naplózás engedélyezése után a keresési szolgáltatással megkezdheti a naplók és mérőszámok generálását. Akár egy óráig is eltarthat, amíg a tárolók megjelennek a blob Storage-ban ezekkel a naplókkal. Ekkor megjelenik egy elemzések – **naplók – operationlogs** tároló a forgalmi naplók és az elemzések – **mérőszámok – pt1m** tároló a metrikák számára.
 
@@ -100,6 +100,6 @@ Ha úgy találja, hogy az adatai nem láthatók, kövesse az alábbi hibaelhár�
 ## <a name="next-steps"></a>További lépések
 [További információ az Azure Cognitive Search](https://docs.microsoft.com/azure/search/)
 
-[A Power BI bemutatása](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
+[Mi az a Power BI?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
 
 [A Power BI szolgáltatás alapfogalmai tervezők számára](https://docs.microsoft.com/power-bi/service-basic-concepts)

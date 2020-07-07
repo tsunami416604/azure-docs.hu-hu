@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80067091"
 ---
 # <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics és Azure Machine Learning Studio (klasszikus)
@@ -55,19 +55,19 @@ A cikkben bemutatott feladatok végrehajtásához a következő műveleteket kel
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Storage-tároló létrehozása és a CSV-bemeneti fájl feltöltése
 Ebben a lépésben bármilyen CSV-fájlt használhat, például a GitHubról elérhetőt.
 
-1. A Azure Portal kattintson az **erőforrás** > létrehozása**Storage** > -**fiók**elemre.
+1. A Azure Portal kattintson az **erőforrás létrehozása**  >  **Storage**-  >  **fiók**elemre.
 
-2. Adja meg a nevet`samldemo` (a példában). A név csak kisbetűket és számokat használhat, és egyedinek kell lennie az Azure-ban. 
+2. Adja meg a nevet ( `samldemo` a példában). A név csak kisbetűket és számokat használhat, és egyedinek kell lennie az Azure-ban. 
 
 3. Válasszon egy meglévő erőforráscsoportot, és válasszon helyet. A helyhez azt javasoljuk, hogy az oktatóanyagban létrehozott összes erőforrás ugyanazt a helyet használja.
 
     ![adja meg a Storage-fiók adatait](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-4. A Azure Portal válassza ki a Storage-fiókot. A Storage-fiók **panelen kattintson a tárolók** elemre, majd kattintson a ** + &nbsp;tároló** elemre a blob Storage létrehozásához.
+4. A Azure Portal válassza ki a Storage-fiókot. A Storage-fiók **panelen kattintson a tárolók** elemre, majd kattintson a ** + &nbsp; tároló** elemre a blob Storage létrehozásához.
 
     ![BLOB Storage-tároló létrehozása a bevitelhez](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. Adja meg a tároló nevét (`azuresamldemoblob` a példában), és ellenőrizze, hogy a **hozzáférési típus** a **blob**értékre van-e állítva. Ha végzett, kattintson az **OK** gombra.
+5. Adja meg a tároló nevét ( `azuresamldemoblob` a példában), és ellenőrizze, hogy a **hozzáférési típus** a **blob**értékre van-e állítva. Ha végzett, kattintson az **OK** gombra.
 
     ![BLOB-tároló részleteinek megadása](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
@@ -77,7 +77,7 @@ Ebben a lépésben bármilyen CSV-fájlt használhat, például a GitHubról el�
 
     ![Tároló "feltöltés" gombja](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. A **blob feltöltése** panelen töltse fel a korábban letöltött **sampleinput. csv** fájlt. A **blob típusa**beállításnál válassza a **blob blokkolása** lehetőséget, és állítsa a blokk méretét 4 MB-ra, ami elegendő ehhez az oktatóanyaghoz.
+8. A **blob feltöltése** panelen töltse fel a korábban letöltött **sampleinput.csv** fájlt. A **blob típusa**beállításnál válassza a **blob blokkolása** lehetőséget, és állítsa a blokk méretét 4 MB-ra, ami elegendő ehhez az oktatóanyaghoz.
 
 9. Kattintson a panel alján található **feltöltés** gombra.
 
@@ -122,9 +122,9 @@ Most létrehozhat egy Stream Analytics feladatot, amely a blob Storage-ban lév�
 
 1. Lépjen a [Azure Portal](https://portal.azure.com).  
 
-2. Kattintson **az erőforrás** > **létrehozása eszközök internetes hálózata** > **stream Analytics feladatokra**. 
+2. Kattintson **az erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **stream Analytics feladatokra**. 
 
-3. Nevezze el a `azure-sa-ml-demo`feladatot, adjon meg egy előfizetést, adjon meg egy meglévő erőforráscsoportot, vagy hozzon létre egy újat, és válassza ki a feladatokhoz tartozó helyet.
+3. Nevezze el a feladatot `azure-sa-ml-demo` , adjon meg egy előfizetést, adjon meg egy meglévő erőforráscsoportot, vagy hozzon létre egy újat, és válassza ki a feladatokhoz tartozó helyet.
 
    ![új Stream Analytics feladatokhoz tartozó beállítások megadása](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
@@ -134,7 +134,7 @@ A feladatot a rendszer a blob Storage-ba korábban feltöltött CSV-fájlból ol
 
 1. A feladatnak a létrehozása után a feladatok paneljén, **a feladatok panelen** kattintson a **bemenetek** lehetőségre.    
 
-2. A **bemenetek** panelen kattintson a **stream bemeneti** >**blob Storage** hozzáadása elemre.
+2. A **bemenetek** panelen kattintson a **stream bemeneti**  > **blob Storage** hozzáadása elemre.
 
 3. Töltse ki a **blob Storage** panelt a következő értékekkel:
 
@@ -142,8 +142,8 @@ A feladatot a rendszer a blob Storage-ba korábban feltöltött CSV-fájlból ol
    |Mező  |Érték  |
    |---------|---------|
    |**Bemeneti alias** | Használja a nevet `datainput` , és válassza a **blob Storage kiválasztása az előfizetésből** lehetőséget.       |
-   |**Tárfiók**  |  Válassza ki a korábban létrehozott tárfiókot.  |
-   |**Tároló**  | Válassza ki a korábban létrehozott tárolót`azuresamldemoblob`()        |
+   |**Storage-fiók**  |  Válassza ki a korábban létrehozott tárfiókot.  |
+   |**Tároló**  | Válassza ki a korábban létrehozott tárolót ( `azuresamldemoblob` )        |
    |**Eseményszerializációs formátum**  |  **CSV** kiválasztása       |
 
    ![Új Stream Analytics-feladathoz tartozó beállítások](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
@@ -155,15 +155,15 @@ A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet b
 
 1. A feladatok paneljén a **feladatok topológiájában** kattintson a **kimenetek** lehetőségre.  
 
-2. A **kimenetek** panelen kattintson a blob **Add** >**Storage**hozzáadása elemre, majd adjon hozzá egy kimenetet az `datamloutput`aliashoz. 
+2. A **kimenetek** panelen kattintson a **Add**  > **blob Storage**hozzáadása elemre, majd adjon hozzá egy kimenetet az aliashoz `datamloutput` . 
 
 3. Töltse ki a **blob Storage** panelt a következő értékekkel:
 
    |Mező  |Érték  |
    |---------|---------|
    |**Kimeneti alias** | Használja a nevet `datamloutput` , és válassza a **blob Storage kiválasztása az előfizetésből** lehetőséget.       |
-   |**Tárfiók**  |  Válassza ki a korábban létrehozott tárfiókot.  |
-   |**Tároló**  | Válassza ki a korábban létrehozott tárolót`azuresamldemoblob`()        |
+   |**Storage-fiók**  |  Válassza ki a korábban létrehozott tárfiókot.  |
+   |**Tároló**  | Válassza ki a korábban létrehozott tárolót ( `azuresamldemoblob` )        |
    |**Eseményszerializációs formátum**  |  **CSV** kiválasztása       |
 
    ![Új Stream Analytics feladatok kimenetének beállításai](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
@@ -172,20 +172,20 @@ A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet b
 
 
 ### <a name="add-the-machine-learning-function"></a>A Machine Learning függvény hozzáadása 
-Korábban egy Machine Learning modellt tett közzé egy webszolgáltatásban. Ebben az esetben a stream Analysis-feladatok futtatásakor a rendszer az összes minta tweetet elküldi a webszolgáltatásnak az érzelmek elemzéséhez. A Machine learning webszolgáltatása egy érzelem (`positive`, `neutral`, vagy `negative`) értéket ad vissza, és a csiripelés valószínűsége pozitív. 
+Korábban egy Machine Learning modellt tett közzé egy webszolgáltatásban. Ebben az esetben a stream Analysis-feladatok futtatásakor a rendszer az összes minta tweetet elküldi a webszolgáltatásnak az érzelmek elemzéséhez. A Machine Learning webszolgáltatása egy érzelem ( `positive` , `neutral` , vagy) értéket ad vissza, és a `negative` csiripelés valószínűsége pozitív. 
 
 Az oktatóanyag ezen szakaszában definiál egy függvényt a stream Analysis feladatban. A függvény meghívható úgy, hogy csipogt küldjön a webszolgáltatásnak, és visszakapja a választ. 
 
 1. Győződjön meg arról, hogy rendelkezik az Excel-munkafüzetben korábban letöltött webszolgáltatás URL-címével és API-kulcsával.
 
-2. Navigáljon a feladathoz > **functions** > **+** > **AzureML** hozzáadása
+2. Navigáljon a feladathoz > **functions**  >  **+**  >  **AzureML** hozzáadása
 
 3. Töltse ki a **Azure Machine learning függvény** panelt a következő értékekkel:
 
    |Mező  |Érték  |
    |---------|---------|
    | **Függvény aliasa** | Használja a nevet `sentiment` , majd válassza a **Azure Machine learning-függvény beállításainak megadása manuálisan** lehetőséget, amely megadja az URL-cím és a kulcs megadásának lehetőségét.      |
-   | **URL**| Illessze be a webszolgáltatás URL-címét.|
+   | **URL-cím**| Illessze be a webszolgáltatás URL-címét.|
    |**Kulcs** | Illessze be az API-kulcsot. |
   
    ![Machine Learning függvény Stream Analytics feladathoz való hozzáadásának beállításai](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
@@ -213,7 +213,7 @@ Stream Analytics egy deklaratív, SQL-alapú lekérdezést használ a bevitel vi
     FROM sentiment  
     ```    
 
-    A lekérdezés a korábban`sentiment`létrehozott függvényt hívja meg, hogy a bemenet minden tweetén elvégezze a hangulat elemzését. 
+    A lekérdezés a korábban létrehozott függvényt hívja `sentiment` meg, hogy a bemenet minden tweetén elvégezze a hangulat elemzését. 
 
 4. Kattintson a **Mentés** gombra a lekérdezés mentéséhez.
 
@@ -235,7 +235,7 @@ Most már elindíthatja a Stream Analytics feladatot.
 
 2. Ha olyan eszközzel rendelkezik, amelyet általában a blob Storage tartalmának vizsgálatára használ, az eszköz használatával vizsgálja meg a `azuresamldemoblob` tárolót. Másik lehetőségként hajtsa végre a következő lépéseket a Azure Portalban:
 
-    1. A portálon keresse meg a `samldemo` Storage-fiókot, és a fiókon belül keresse `azuresamldemoblob` meg a tárolót. A tárolóban két fájl látható: Ez a fájl tartalmazza a minta tweeteket és a Stream Analytics feladatokból létrehozott CSV-fájlt.
+    1. A portálon keresse meg a `samldemo` Storage-fiókot, és a fiókon belül keresse meg a `azuresamldemoblob` tárolót. A tárolóban két fájl látható: Ez a fájl tartalmazza a minta tweeteket és a Stream Analytics feladatokból létrehozott CSV-fájlt.
     2. Kattintson a jobb gombbal a létrehozott fájlra, majd válassza a **Letöltés**lehetőséget. 
 
    ![CSV-feladatok kimenetének letöltése a blob Storage-ból](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  

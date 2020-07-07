@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82116281"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Szűrés nyelv alapján az Azure-ban Cognitive Search 
@@ -21,7 +21,7 @@ A többnyelvű keresőalkalmazás egyik kulcsfontosságú követelménye, hogy a
 
 A kérelemben szereplő lekérdezési paraméterek a keresési művelet hatókörére vonatkoznak, majd levágja azokat a mezőket, amelyek nem biztosítanak tartalmat a kézbesíteni kívánt keresési felülettel.
 
-| Paraméterek | Cél |
+| Paraméterek | Szerep |
 |-----------|--------------|
 | **searchFields** | A teljes szöveges keresést a megnevezett mezők listájára korlátozza. |
 | **$select** | Levágja a választ, hogy csak a megadott mezőket foglalja bele. Alapértelmezés szerint a rendszer az összes beolvasható mezőt visszaadja. A **$Select** paraméterrel kiválaszthatja, hogy melyeket kell visszaadnia. |
@@ -60,7 +60,7 @@ parameters =
 > [!Note]
 > Bár a lekérdezésnek nincs $filter argumentuma, ez a használati eset erősen kapcsolódik a szűrési fogalmakhoz, ezért szűrési forgatókönyvként jelenik meg.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [Szűrők az Azure Cognitive Search](search-filters.md)
 + [Nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support)

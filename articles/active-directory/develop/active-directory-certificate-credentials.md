@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82690288"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
@@ -46,7 +46,7 @@ A Microsoft Identity platform az állítás kiszámításához használhatja a s
 | `iss` | Kiállító: a client_id (az ügyfélszolgáltatás alkalmazásspecifikus azonosítója) |
 | `jti` | GUID: a JWT azonosítója |
 | `nbf` | Nem előtte: az a dátum, amely előtt a jogkivonat nem használható. Az idő a (z) január 1-től 1970 (1970-01-01T0:0: 0Z) UTC szerint, a jogkivonat kiállításának időpontjáig. |
-| `sub` | Tárgy: a esetében `iss`a (z) client_id (az ÜGYFÉLSZOLGÁLTATÁS alkalmazásspecifikus azonosítója) |
+| `sub` | Tárgy: a esetében `iss` a (z) client_id (az ügyfélszolgáltatás ALKALMAZÁSSPECIFIKUS azonosítója) |
 
 ### <a name="signature"></a>Aláírás
 
@@ -104,7 +104,7 @@ A tanúsítvány birtokában a következőket kell kiszámítani:
 - `$base64Thumbprint`, amely a tanúsítvány kivonatának Base64 kódolása
 - `$base64Value`, amely a tanúsítvány nyers adatmennyiségének Base64-kódolása
 
-Meg kell adnia egy GUID azonosítót is a kulcs azonosításához az alkalmazás jegyzékfájljában (`$keyId`).
+Meg kell adnia egy GUID azonosítót is a kulcs azonosításához az alkalmazás jegyzékfájljában ( `$keyId` ).
 
 Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 1. Válassza ki a **jegyzékfájlt** az alkalmazás jegyzékfájljának megnyitásához.
@@ -128,6 +128,6 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 ## <a name="code-sample"></a>Kódminta
 
 > [!NOTE]
-> A X5T fejlécét úgy kell kiszámítani, hogy a tanúsítvány kivonatával konvertálja egy Base 64 sztringre. A C#-ban végrehajtandó kód `System.Convert.ToBase64String(cert.GetCertHash());`.
+> A X5T fejlécét úgy kell kiszámítani, hogy a tanúsítvány kivonatával konvertálja egy Base 64 sztringre. A C#-ban végrehajtandó kód `System.Convert.ToBase64String(cert.GetCertHash());` .
 
 A [.net Core Daemon Console alkalmazás a Microsoft Identity platformmal való használata](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) azt mutatja be, hogyan használja az alkalmazás a saját hitelesítő adatait a hitelesítéshez. Azt is bemutatja, hogyan [hozhat létre önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) a `New-SelfSignedCertificate` PowerShell-parancs használatával. Emellett kihasználhatja a tanúsítványok létrehozását és az [alkalmazás-létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) használatát is, így kiszámíthatja az ujjlenyomatot, és így tovább.

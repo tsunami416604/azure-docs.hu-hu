@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383043"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Azure Kubernetes szolgáltatás használata a HDInsight-mel való Apache Kafka
 
-Ismerje meg, hogyan használhatja az Azure Kubernetes szolgáltatást (ak) a HDInsight-fürtön lévő [Apache Kafka](https://kafka.apache.org/) használatával. A jelen dokumentumban szereplő lépések az AK-ban üzemeltetett Node. js-alkalmazást használják a Kafka-kapcsolat ellenőrzéséhez. Ez az alkalmazás a [Kafka-Node](https://www.npmjs.com/package/kafka-node) csomagot használja a Kafka-vel való kommunikációhoz. A [socket.IO](https://socket.io/) használja az eseményvezérelt üzenetküldéshez a böngésző-ügyfél és az AK-ban üzemeltetett háttér között.
+Ismerje meg, hogyan használhatja az Azure Kubernetes szolgáltatást (ak) a HDInsight-fürtön lévő [Apache Kafka](https://kafka.apache.org/) használatával. A jelen dokumentumban ismertetett lépések egy, az AK-ban üzemeltetett Node.js alkalmazást használnak a Kafka-kapcsolat ellenőrzéséhez. Ez az alkalmazás a [Kafka-Node](https://www.npmjs.com/package/kafka-node) csomagot használja a Kafka-vel való kommunikációhoz. A [socket.IO](https://socket.io/) használja az eseményvezérelt üzenetküldéshez a böngésző-ügyfél és az AK-ban üzemeltetett háttér között.
 
 Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott streamelési platform streamadatfolyamatok és -alkalmazások létrehozásához. Az Azure Kubernetes szolgáltatás kezeli az üzemeltetett Kubernetes-környezetet, és gyorsan és egyszerűen üzembe helyezi a tároló alkalmazásokat. Az Azure Virtual Network használatával összekapcsolhatók a két szolgáltatás.
 
@@ -73,7 +73,7 @@ Ha még nem rendelkezik AK-fürttel, az alábbi dokumentumok egyikével megtudha
 
 ### <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
 
-1. Virtuális hálózat HDInsight való létrehozásához navigáljon a __+ erőforrás__ > létrehozása__hálózatkezelés__ > __virtuális hálózat__elemre.
+1. Virtuális hálózat HDInsight való létrehozásához navigáljon a __+ erőforrás létrehozása__  >  __hálózatkezelés__  >  __virtuális hálózat__elemre.
 
 1. Hozza létre a hálózatot a következő irányelvek alapján bizonyos tulajdonságok esetében:
 
@@ -92,9 +92,9 @@ Ha még nem rendelkezik AK-fürttel, az alábbi dokumentumok egyikével megtudha
 
     |Tulajdonság |Érték |
     |---|---|
-    |A \<vn> neve a távoli virtuális hálózatnak|Adjon meg egy egyedi nevet ehhez a társ-konfigurációhoz.|
+    |A végpont neve a \<this VN> távoli virtuális hálózatba|Adjon meg egy egyedi nevet ehhez a társ-konfigurációhoz.|
     |Virtuális hálózat|Válassza ki a virtuális hálózatot az **AK-fürthöz**.|
-    |Az \<ak vn> és \<a vn közötti társítás neve>|Adjon meg egy egyedi nevet.|
+    |\<AKS VN>A társítás neve\<this VN>|Adjon meg egy egyedi nevet.|
 
     Hagyja meg az összes többi mezőt az alapértelmezett értéknél, majd kattintson az __OK__ gombra a társítás konfigurálásához.
 
@@ -118,7 +118,7 @@ A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek he
 
     ![Apache Ambari Services-konfiguráció](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
-4. A __Kafka-env__ konfiguráció megkereséséhez írja `kafka-env` be a jobb felső sarokban található __szűrő__ mezőt.
+4. A __Kafka-env__ konfiguráció megkereséséhez írja be a `kafka-env` jobb felső sarokban található __szűrő__ mezőt.
 
     ![Kafka-konfiguráció, Kafka-env](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
@@ -132,9 +132,9 @@ A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek he
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. A Kafka által figyelt felület konfigurálásához írja be `listeners` a jobb felső sarokban található __szűrő__ mezőt.
+6. A Kafka által figyelt felület konfigurálásához írja be a `listeners` jobb felső sarokban található __szűrő__ mezőt.
 
-7. Ha úgy szeretné beállítani a Kafka-t, hogy az összes hálózati adaptert __listeners__ figyelje, módosítsa a `PLAINTEXT://0.0.0.0:9092`figyelők mező értékét a következőre:.
+7. Ha úgy szeretné beállítani a Kafka-t, hogy az összes hálózati adaptert figyelje, módosítsa a __figyelők__ mező értékét a következőre: `PLAINTEXT://0.0.0.0:9092` .
 
 8. A konfigurációs módosítások mentéséhez használja a Save ( __Mentés__ ) gombot. Adjon meg egy szöveges üzenetet, amely leírja a módosításokat. A módosítások mentése után válassza __az OK gombot__ .
 
@@ -156,23 +156,23 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
 
 1. Hozzon létre egy Kafka-témakört, amelyet a teszt alkalmazás használ. A Kafka-témakörök létrehozásával kapcsolatos információkért tekintse meg a [Apache Kafka-fürt létrehozása](apache-kafka-get-started.md) című dokumentumot.
 
-2. Töltse le a példa alkalmazást [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test)a alkalmazásból.
+2. Töltse le a példa alkalmazást a alkalmazásból [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) .
 
-3. Szerkessze `index.js` a fájlt, és módosítsa a következő sorokat:
+3. Szerkessze a `index.js` fájlt, és módosítsa a következő sorokat:
 
-    * `var topic = 'mytopic'`: Cserélje `mytopic` le az alkalmazást az alkalmazás által használt Kafka-témakör nevére.
-    * `var brokerHost = '176.16.0.13:9092`: Cserélje `176.16.0.13` le a t a fürt egyik Broker-gazdagépének belső IP-címére.
+    * `var topic = 'mytopic'`: Cserélje le az `mytopic` alkalmazást az alkalmazás által használt Kafka-témakör nevére.
+    * `var brokerHost = '176.16.0.13:9092`: Cserélje le a `176.16.0.13` t a fürt egyik Broker-gazdagépének belső IP-címére.
 
-        A fürtben található Broker-gazdagépek (workernodes) belső IP-címének megkereséséhez tekintse meg az [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) dokumentumot. Válassza ki az egyik olyan bejegyzés IP-címét, amelyben a tartománynév kezdődik `wn`.
+        A fürtben található Broker-gazdagépek (workernodes) belső IP-címének megkereséséhez tekintse meg az [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) dokumentumot. Válassza ki az egyik olyan bejegyzés IP-címét, amelyben a tartománynév kezdődik `wn` .
 
-4. A `src` címtár egyik parancssorában telepítse a függőségeket, és a Docker használatával hozzon létre egy rendszerképet az üzembe helyezéshez:
+4. A címtár egyik parancssorában `src` telepítse a függőségeket, és a Docker használatával hozzon létre egy rendszerképet az üzembe helyezéshez:
 
     ```bash
     docker build -t kafka-aks-test .
     ```
 
     > [!NOTE]  
-    > Az alkalmazás által igényelt csomagokat a rendszer a tárházba ellenőrzi, így nem kell a `npm` segédprogramot használnia a telepítéshez.
+    > Az alkalmazás által igényelt csomagokat a rendszer a tárházba ellenőrzi, így nem kell a segédprogramot használnia a `npm` telepítéshez.
 
 5. Jelentkezzen be a Azure Container Registryba (ACR), és keresse meg a lekéréséhez nevét:
 
@@ -184,7 +184,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
     > [!NOTE]  
     > Ha nem ismeri a Azure Container Registry nevét, vagy nem tudja, hogy az Azure CLI használatával működjön együtt az Azure Kubernetes szolgáltatással, tekintse meg az [AK-oktatóanyagokat](../../aks/tutorial-kubernetes-prepare-app.md).
 
-6. Címkézze fel a `kafka-aks-test` helyi rendszerképet az ACR lekéréséhez. Adja hozzá `:v1` a végéhez a rendszerkép verziószámát is:
+6. Címkézze fel a helyi `kafka-aks-test` rendszerképet az ACR lekéréséhez. Adja hozzá a `:v1` végéhez a rendszerkép verziószámát is:
 
     ```bash
     docker tag kafka-aks-test <acrLoginServer>/kafka-aks-test:v1
@@ -198,7 +198,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
 
     A művelet végrehajtása több percet is igénybe vehet.
 
-8. Szerkessze a Kubernetes jegyzékfájlját`kafka-aks-test.yaml`(), `microsoft` és cserélje le a 4. lépésben beolvasott ACR-lekéréséhez.
+8. Szerkessze a Kubernetes jegyzékfájlját ( `kafka-aks-test.yaml` ), és cserélje le a `microsoft` 4. lépésben beolvasott ACR-lekéréséhez.
 
 9. Az alábbi paranccsal telepítheti az Alkalmazásbeállítások a jegyzékből:
 
@@ -206,7 +206,7 @@ Ezen a ponton a Kafka és az Azure Kubernetes szolgáltatás kommunikál a Kieme
     kubectl create -f kafka-aks-test.yaml
     ```
 
-10. Az alkalmazás figyeléséhez `EXTERNAL-IP` használja a következő parancsot:
+10. Az alkalmazás figyeléséhez használja a következő parancsot `EXTERNAL-IP` :
 
     ```bash
     kubectl get service kafka-aks-test --watch

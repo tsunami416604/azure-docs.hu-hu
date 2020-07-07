@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80065196"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség (előzetes verzió)
@@ -185,8 +185,8 @@ A **Speciális beállítások** megadásával az **átjáró** lapon megtekinthe
 
 Figyelési tulajdonság | Leírás
 :------------------ | :---------- 
-Name (Név) | Az átjáróhoz társított logikai átjáró és csomópontok neve.  
-status | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz. 
+Name | Az átjáróhoz társított logikai átjáró és csomópontok neve.  
+Állapot | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz. 
 Verzió | Megjeleníti a logikai átjáró és az egyes átjáró-csomópontok verzióját. A logikai átjáró verziószáma a csoport csomópontjainak többsége alapján van meghatározva. Ha a logikai átjáró beállításában különböző verziójú csomópontok vannak, akkor csak a logikai átjáróval megegyező verziószámmal rendelkező csomópontok működnek. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul). 
 Igénybe vehető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép. 
 Processzorhasználat | Egy átjáró-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép. 
@@ -200,7 +200,7 @@ Szerepkör | A szerepköröknek két típusa van: Diszpécser és feldolgozó. M
 
 Az alábbi táblázat egy **átjáró-csomópont**lehetséges állapotát tartalmazza: 
 
-status  | Megjegyzések/forgatókönyvek
+Állapot  | Megjegyzések/forgatókönyvek
 :------- | :------------------
 Online | Data Factory szolgáltatáshoz csatlakoztatott csomópont.
 Offline | A csomópont offline állapotban van.
@@ -211,7 +211,7 @@ Inaktív | A csomópont más többségi csomópontok konfigurációjától elté
 
 A következő táblázat a **logikai átjáró**lehetséges állapotait tartalmazza. Az átjáró állapota az átjáró csomópontjainak állapotától függ. 
 
-status | Megjegyzések
+Állapot | Megjegyzések
 :----- | :-------
 Regisztráció szükséges | Ehhez a logikai átjáróhoz még nincs regisztrálva csomópont
 Online | Az átjáró-csomópontok online állapotban vannak
@@ -238,15 +238,15 @@ Ha a rendelkezésre álló memória és a CPU nem jól működik, de az üresjá
 
 ## <a name="known-issuesbreaking-changes"></a>Ismert problémák/feltörési változások
 
-- Jelenleg legfeljebb négy fizikai átjáró csomópontja lehet egyetlen logikai átjáróhoz. Ha a teljesítmény szempontjából négynél több csomópontra van szüksége, küldjön e- [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com)mailt a címre.
+- Jelenleg legfeljebb négy fizikai átjáró csomópontja lehet egyetlen logikai átjáróhoz. Ha a teljesítmény szempontjából négynél több csomópontra van szüksége, küldjön e-mailt a címre [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com) .
 - Nem regisztrálhat újra egy átjáró-csomópontot egy másik logikai átjáró hitelesítési kulcsával az aktuális logikai átjáróról való váltáshoz. Az újraregisztráláshoz távolítsa el az átjárót a csomópontból, telepítse újra az átjárót, és regisztrálja a másik logikai átjáró hitelesítési kulcsával. 
-- Ha a HTTP-proxy szükséges az összes átjáró-csomóponthoz, állítsa a proxyt a diahost. exe. config és a diawp. exe. config fájlban, és a Kiszolgálókezelő használatával győződjön meg arról, hogy az összes csomópont ugyanazzal a diahost. exe. config és diawip. exe. config fájllal rendelkezik. Részletekért lásd: [Proxybeállítások konfigurálása](data-factory-data-management-gateway.md#configure-proxy-server-settings) szakasz. 
+- Ha a HTTP-proxy szükséges az összes átjáró-csomóponthoz, állítsa a proxyt diahost.exe.config és diawp.exe.config, és a Kiszolgálókezelő használatával győződjön meg arról, hogy az összes csomópont azonos diahost.exe.config és diawip.exe.config. Részletekért lásd: [Proxybeállítások konfigurálása](data-factory-data-management-gateway.md#configure-proxy-server-settings) szakasz. 
 - Ha módosítani szeretné a csomópontok közötti kommunikáció titkosítási módját az átjáró Configuration Manager, törölje a portál összes csomópontját, kivéve egyet. Ezután adja hozzá a csomópontokat a titkosítási mód módosítása után.
 - Ha úgy dönt, hogy titkosítja a csomópontok közötti kommunikációs csatornát, használjon hivatalos TLS-tanúsítványt. Az önaláírt tanúsítvány kapcsolódási problémákat okozhat, mivel előfordulhat, hogy az azonos tanúsítvány nem megbízható a többi gépen lévő hitelesítésszolgáltatók listájában. 
 - Átjáró-csomópontot nem regisztrálhat logikai átjáróra, ha a csomópont verziója alacsonyabb, mint a logikai átjáró verziója. Törölje a logikai átjáró összes csomópontját a portálról, így regisztrálhat egy alacsonyabb verziójú csomópontot (visszalépés). Ha egy logikai átjáró összes csomópontját törli, manuálisan telepítse és regisztrálja az új csomópontokat a logikai átjárón. Ebben az esetben az expressz telepítés nem támogatott.
 - Az expressz telepítővel nem lehet csomópontokat telepíteni egy meglévő logikai átjáróra, amely továbbra is Felhőbeli hitelesítő adatokat használ. Megtekintheti a hitelesítő adatok tárolási helyét az átjáró Configuration Manager a beállítások lapon.
 - Az expressz telepítővel nem lehet csomópontokat telepíteni egy meglévő logikai átjáróra, amelyen engedélyezve van a csomópontok közötti titkosítás. A titkosítási mód beállítása magában foglalja a tanúsítványok manuális hozzáadását, az expressz telepítés nem több lehetőség. 
-- A helyszíni környezetből származó fájlok esetében ne használja \\a localhost vagy a C:\files-t, mert előfordulhat, hogy a localhost vagy a helyi meghajtó nem érhető el az összes csomóponton keresztül. Ehelyett használja \\a ServerName\files a fájlok helyének megadásához.
+- A helyszíni környezetből származó fájlok esetében ne használja a localhost vagy a C:\files-t, mert előfordulhat, hogy a \\ localhost vagy a helyi meghajtó nem érhető el az összes csomóponton keresztül. Ehelyett használja \\ a ServerName\files a fájlok helyének megadásához.
 
 
 ## <a name="rolling-back-from-the-preview"></a>Visszaállítás az előzetes verzióról 

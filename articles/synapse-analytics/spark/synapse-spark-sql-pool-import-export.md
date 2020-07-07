@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 515fd9bfedc5bc5d3cefda2a357c351f515fb5f5
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ebf948fdb1df76cb7bcb03ee5d85f581d856524f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194671"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918723"
 ---
-# <a name="introduction"></a>Introduction (Bevezetés)
+# <a name="introduction"></a>Bevezetés
 
 Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz az Azure szinapszisban az adatoknak a Spark-készletek (előzetes verzió) és az SQL-készletek közötti hatékony átvitelét szolgálja. Az Azure szinapszis Apache Spark a szinapszis SQL-összekötő csak az SQL-készleteken működik, az SQL igény szerint nem működik.
 
@@ -30,7 +30,7 @@ Az Azure szinapszis Apache Spark Pool to szinapszis SQL Connector a Apache Spark
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Hitelesítés az Azure szinapszis Analyticsben
 
-A rendszerek közötti hitelesítés zökkenőmentesen elérhető az Azure szinapszis Analytics szolgáltatásban. Létezik egy jogkivonat-szolgáltatás, amely összekapcsolja a Azure Active Directory-mel a Storage-fiók vagy az adatraktár-kiszolgáló eléréséhez szükséges biztonsági jogkivonatok beszerzéséhez. 
+A rendszerek közötti hitelesítés zökkenőmentesen elérhető az Azure szinapszis Analytics szolgáltatásban. Létezik egy jogkivonat-szolgáltatás, amely összekapcsolja a Azure Active Directory-mel a Storage-fiók vagy az adatraktár-kiszolgáló eléréséhez szükséges biztonsági jogkivonatok beszerzéséhez.
 
 Emiatt nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az összekötő API-ban, ha a HRE-Auth konfigurálva van a Storage-fiókban és az adatraktár-kiszolgálón. Ha nem, akkor megadható az SQL-hitelesítés. További részleteket a [használati](#usage) szakaszban talál.
 
@@ -40,19 +40,27 @@ Emiatt nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az öss
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Db_exporter** szerepkört kell megadnia abban az adatbázisban/SQL-készletben, amelybe be kívánja vinni az adatátvitelt.
+- **Db_exporter** szerepkör tagjának kell lennie abban az adatbázisban/SQL-készletben, amelybe be kívánja vinni az adatátvitelt.
+- A Storage blob adatközreműködői szerepkör tagjának kell lennie az alapértelmezett Storage-fiókban.
 
-Felhasználók létrehozásához kapcsolódjon az adatbázishoz, és kövesse az alábbi példákat:
+Felhasználók létrehozásához kapcsolódjon az SQL-készlet adatbázisához, és kövesse az alábbi példákat:
 
 ```sql
+--SQL User
 CREATE USER Mary FROM LOGIN Mary;
+
+--Azure Active Directory User
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 Szerepkör társítása:
 
 ```sql
+--SQL User
 EXEC sp_addrolemember 'db_exporter', 'Mary';
+
+--Azure Active Directory User
+EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 ```
 
 ## <a name="usage"></a>Használat
@@ -72,7 +80,7 @@ Az importálási utasítások nem szükségesek, ezeket a rendszer előre import
 #### <a name="read-api"></a>API olvasása
 
 ```scala
-val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
+val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
 A fenti API a belső (felügyelt) és az SQL-készletben található külső táblák esetében is működik.
@@ -80,17 +88,51 @@ A fenti API a belső (felügyelt) és az SQL-készletben található külső tá
 #### <a name="write-api"></a>API írása
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-ahol a TableType konstans lehet. belső vagy állandó. külső
+Az írási API létrehozza a táblát az SQL-készletben, majd meghívja a albase-et az adatok betöltéséhez.  A tábla nem létezhet az SQL-készletben, és a rendszer hibaüzenetet küld, amely szerint a "már létezik, és az objektum neve."
+
+TableType-értékek
+
+- Állandók. belső felügyelt tábla az SQL-készletben
+- Konstansok. külső külső tábla az SQL-készletben
+
+SQL-készlet által felügyelt tábla
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
-A Storage és a SQL Server hitelesítése befejeződött
+SQL Pool – külső tábla
+
+SQL-készlet külső táblájába való íráshoz egy külső adatforrást és egy külső FÁJLFORMÁTUMot kell létrehozni az SQL-készleten.  További információért olvassa el a [külső adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és az SQL-készlet külső [fájlformátumainak](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) létrehozása című témakört.  Az alábbiakban a külső adatforrás és a külső fájlformátumok SQL-készletben való létrehozására mutatunk példákat.
+
+```sql
+--For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+CREATE EXTERNAL DATA SOURCE <DataSourceName>
+WITH
+  ( LOCATION = 'abfss://...' ,
+    TYPE = HADOOP
+  ) ;
+
+CREATE EXTERNAL FILE FORMAT <FileFormatName>
+WITH (  
+    FORMAT_TYPE = PARQUET,  
+    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'  
+);
+```
+
+A külső HITELESÍTŐADAT-objektum nem szükséges, ha Azure Active Directory átmenő hitelesítést használ a Storage-fiókhoz.  Győződjön meg arról, hogy a Storage-fiókban a "Storage blob adatközreműködői" szerepkör tagja.
+
+```scala
+
+df.write.
+    option(Constants.DATA_SOURCE, <DataSourceName>).
+    option(Constants.FILE_FORMAT, <FileFormatName>).
+    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+
+```
 
 ### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Ha a munkaterületen kívüli SQL-készletbe vagy-adatbázisba küldi át az adatátvitelt
 
@@ -114,8 +156,8 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-sql-auth-instead-of-aad"></a>SQL-hitelesítés használata a HRE helyett
@@ -127,8 +169,8 @@ Az összekötő jelenleg nem támogatja a jogkivonat-alapú hitelesítést a mun
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
@@ -136,10 +178,10 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-the-pyspark-connector"></a>Az PySpark-összekötő használata
@@ -166,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 Hasonlóképpen, az olvasási forgatókönyvben olvassa el az adataikat a Scala használatával, majd írja be egy ideiglenes táblába, és használja a Spark SQL-et a PySpark-ben, hogy lekérdezze a temp táblát egy dataframe.
 
-## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>A DW-összekötő használatának engedélyezése más felhasználók számára a munkaterületen
+## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Az Azure szinapszis Apache Spark használatának engedélyezése más felhasználók számára a munkaterületen található, az SQL-összekötők számára
 
 A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a blob-adattulajdonost, hogy mások ne tudják módosítani a hiányzó engedélyeket. Ellenőrizze, hogy a felhasználó rendelkezik-e hozzáféréssel a munkaterülethez és a jegyzetfüzetek futtatásához szükséges engedélyekhez.
 
@@ -178,7 +220,7 @@ A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a b
 
 - A következő ACL-eket kell megadnia a mappa struktúrájához:
 
-| Mappa | / | szinapszis | munkaterületek  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+| Mappa | / | szinapszis | munkaterületek  | \<workspacename> | sparkpools | \<sparkpoolname>  | sparkpoolinstances  |
 |--|--|--|--|--|--|--|--|
 | Hozzáférési engedélyek | --X | --X | --X | --X | --X | --X | – WX |
 | Alapértelmezett engedélyek | ---| ---| ---| ---| ---| ---| ---|

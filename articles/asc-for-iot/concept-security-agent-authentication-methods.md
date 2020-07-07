@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0d9d51292c3cae9634af917819b558cdfd2fa04b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311516"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerei
@@ -77,7 +77,7 @@ Az üzembe helyezést követően a hitelesítési módszerek módosításához s
 
 ### <a name="c-based-security-agent"></a>C#-alapú biztonsági ügynök
 
-Szerkessze a _Authentication. config_ fájlt a következő paraméterekkel:
+Szerkessze _Authentication.config_ a következő paraméterekkel:
 
 ```xml
 <Authentication>
@@ -92,7 +92,7 @@ Szerkessze a _Authentication. config_ fájlt a következő paraméterekkel:
 
 ### <a name="c-based-security-agent"></a>C-alapú biztonsági ügynök
 
-Szerkessze a _LocalConfiguration. JSON_ fájlt a következő paraméterekkel:
+Szerkessze _LocalConfiguration.jsa_ következő paraméterekkel:
 
 ```json
 "Authentication" : {
@@ -104,7 +104,7 @@ Szerkessze a _LocalConfiguration. JSON_ fájlt a következő paraméterekkel:
 }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Biztonsági ügynökök áttekintése](security-agent-architecture.md)
 - [Biztonsági ügynök telepítése](how-to-deploy-agent.md)

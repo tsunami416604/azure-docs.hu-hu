@@ -4,10 +4,10 @@ description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekk
 ms.date: 03/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383593"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
@@ -24,7 +24,7 @@ A zárolási módokat azonban nem lehet az Azure-tervezeteken kívül módosíta
 
 A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforrások négy állapottal rendelkeznek: **nincs zárolva**, **csak olvasható**, **nem szerkeszthető/** nem törölhető, vagy **nem törölhető**. Az egyes összetevők típusa **nem zárolt** állapotban lehet. Az alábbi táblázat egy erőforrás állapotának meghatározására használható:
 
-|Mód|Összetevő típusú erőforrástípus|Állapot|Leírás|
+|Mód|Összetevő típusú erőforrástípus|Állam|Leírás|
 |-|-|-|-|
 |Ne legyen zárolás|*|Nincs zárolva|Az Azure-tervrajzok nem védik az erőforrásokat. Ezt az állapotot az **írásvédett** erőforráshoz hozzáadott erőforrások, vagy az erőforráscsoport-összetevő **nem törölhető** a terv-hozzárendelésen kívül is használják.|
 |Csak olvasási engedély|Erőforráscsoport|Nem lehet szerkeszteni/törölni|Az erőforráscsoport írásvédett, és az erőforráscsoport címkéi nem módosíthatók. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
@@ -47,7 +47,7 @@ Ha a tervet egy előfizetés helyett egy felügyeleti csoporthoz szeretné rende
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
 ```
 
-A által `{assignmentMG}` definiált felügyeleti csoportnak a felügyeleti csoport hierarchiájában kell lennie, vagy ugyanabba a felügyeleti csoportba kell tartoznia, ahol a terv definícióját menti.
+A által definiált felügyeleti csoportnak `{assignmentMG}` a felügyeleti csoport hierarchiájában kell lennie, vagy ugyanabba a felügyeleti csoportba kell tartoznia, ahol a terv definícióját menti.
 
 A terv-hozzárendelés kérelem törzse a következőképpen néz ki:
 
@@ -177,7 +177,7 @@ Hasonlóan ahhoz, hogy kizárja a [rendszerbiztonsági tag](#exclude-a-principal
 },
 ```
 
-Míg a **excludedPrincipals** explicitnek kell lennie, a **excludedActions** - `*` bejegyzések a RBAC műveletek helyettesítő karaktereit is használhatják.
+Míg a **excludedPrincipals** explicitnek kell lennie, a **excludedActions** -bejegyzések a `*` RBAC műveletek helyettesítő karaktereit is használhatják.
 
 ## <a name="next-steps"></a>További lépések
 

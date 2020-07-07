@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan frissítheti az Azure Service Fabric önálló 
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790643"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Önálló Service Fabric-fürt frissítése és frissítése
@@ -21,7 +21,7 @@ Beállíthatja úgy a fürtöt, hogy a Microsoft által kiadott automatikus hál
 
 ## <a name="customize-configuration-settings"></a>Konfigurációs beállítások testreszabása
 
-A *ClusterConfig. JSON* fájlban számos különböző [konfigurációs beállítás](service-fabric-cluster-manifest.md) állítható be, például a fürt és a csomópont tulajdonságainak megbízhatósági szintje.  További információért olvassa el [az önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md)című témakört.  Számos más, fejlettebb beállítások is testreszabhatók.  További információkért olvassa el [Service Fabric a fürt hálójának beállításait](service-fabric-cluster-fabric-settings.md).
+Számos különböző [konfigurációs beállítás](service-fabric-cluster-manifest.md) beállítható a fájl *ClusterConfig.jsban* , például a fürt és a csomópont tulajdonságainak megbízhatósági szintje.  További információért olvassa el [az önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md)című témakört.  Számos más, fejlettebb beállítások is testreszabhatók.  További információkért olvassa el [Service Fabric a fürt hálójának beállításait](service-fabric-cluster-fabric-settings.md).
 
 ## <a name="define-node-properties"></a>Csomópont tulajdonságainak megadása
 Előfordulhat, hogy bizonyos számítási feladatok csak bizonyos típusú csomópontokon futnak a fürtben. Előfordulhat például, hogy egyes számítási feladatok GPU vagy SSD-ket igényelnek, míg mások esetleg nem. A fürt minden egyes csomópont-típusához hozzáadhat egyéni csomópont-tulajdonságokat a fürtcsomópontok számára. Az elhelyezési megkötések az egyes szolgáltatásokhoz csatolt utasítások, amelyek egy vagy több csomópont-tulajdonságot választanak ki. Az elhelyezési megkötések határozzák meg a szolgáltatások futtatásának helyét.

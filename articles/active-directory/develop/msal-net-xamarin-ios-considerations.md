@@ -14,16 +14,16 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 7125559dd39e1626634dae7c45b0744bfff57d8c
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652655"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>A Xamarin iOS és a MSAL.NET használatának szempontjai
 Ha a .NET-hez készült Microsoft Authentication Library (MSAL.NET) szolgáltatást használja a Xamarin iOS-ben, akkor a következőket kell tennie: 
 
-- Felülbírálja és implementálja `OpenUrl` a `AppDelegate`függvényt a alkalmazásban.
+- Felülbírálja és implementálja a `OpenUrl` függvényt a alkalmazásban `AppDelegate` .
 - Kulcstartó-csoportok engedélyezése.
 - Engedélyezze a jogkivonat-gyorsítótár megosztását.
 - Kulcstartó-hozzáférés engedélyezése.
@@ -31,7 +31,7 @@ Ha a .NET-hez készült Microsoft Authentication Library (MSAL.NET) szolgáltat�
 
 ## <a name="implement-openurl"></a>OpenUrl megvalósítása
 
-A `OpenUrl` `FormsApplicationDelegate` származtatott osztály és a hívás `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`metódusának felülbírálása. Például:
+A `OpenUrl` `FormsApplicationDelegate` származtatott osztály és a hívás metódusának felülbírálása `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` . Íme egy példa:
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -49,7 +49,7 @@ Hajtsa végre a következő feladatokat is:
 
 ### <a name="enable-keychain-access"></a>Kulcstartó-hozzáférés engedélyezése
 
-A kulcstartó-hozzáférés engedélyezéséhez győződjön meg arról, hogy az alkalmazás rendelkezik kulcstartó-hozzáférési csoporttal. A kulcstartó-hozzáférési csoportot beállíthatja úgy, hogy az `WithIosKeychainSecurityGroup()` API használatával hozza létre az alkalmazást.
+A kulcstartó-hozzáférés engedélyezéséhez győződjön meg arról, hogy az alkalmazás rendelkezik kulcstartó-hozzáférési csoporttal. A kulcstartó-hozzáférési csoportot beállíthatja úgy, hogy az API használatával hozza létre az alkalmazást `WithIosKeychainSecurityGroup()` .
 
 A gyorsítótár és az egyszeri bejelentkezés (SSO) kihasználása érdekében állítsa a kulcstartó-hozzáférési csoportot az összes alkalmazás azonos értékére.
 
@@ -72,7 +72,7 @@ Engedélyezze a kulcstartó-hozzáférést is a `Entitlements.plist` fájlban. H
 </dict>
 ```
 
-Ha az `WithIosKeychainSecurityGroup()` API-t használja, a MSAL automatikusan hozzáfűzi a biztonsági csoportot az alkalmazás *Team ID* (`AppIdentifierPrefix`) végéhez. A MSAL hozzáadja a biztonsági csoportot, mert amikor az alkalmazást a Xcode-ben hozza létre, az ugyanaz lesz. Ezért a `Entitlements.plist` fájl jogosultságait a kulcstartó-hozzáférési csoport elé kell `$(AppIdentifierPrefix)` foglalni.
+Ha az `WithIosKeychainSecurityGroup()` API-t használja, a MSAL automatikusan hozzáfűzi a biztonsági csoportot az alkalmazás *Team ID* () végéhez `AppIdentifierPrefix` . A MSAL hozzáadja a biztonsági csoportot, mert amikor az alkalmazást a Xcode-ben hozza létre, az ugyanaz lesz. Ezért a fájl jogosultságait a kulcstartó- `Entitlements.plist` `$(AppIdentifierPrefix)` hozzáférési csoport elé kell foglalni.
 
 További információ: [iOS-jogosultságok dokumentációja](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). 
 
@@ -84,12 +84,12 @@ A jogkivonat-gyorsítótár megosztásával engedélyezheti az egyszeri bejelent
 
 A gyorsítótár megosztásának engedélyezéséhez a `WithIosKeychainSecurityGroup()` metódus használatával állítsa be a kulcstartó-hozzáférési csoportot az összes olyan alkalmazásban, amely ugyanazt a gyorsítótárat használja. A cikkben szereplő első példa azt mutatja be, hogyan használható a metódus.
 
-A cikk korábbi szakaszaiban megtudta, hogy a `$(AppIdentifierPrefix)` MSAL az `WithIosKeychainSecurityGroup()` API használatakor is felhasználja. A MSAL hozzáadja ezt az elemet, mert `AppIdentifierPrefix` a csoport azonosítója biztosítja, hogy csak az azonos közzétevő által készített alkalmazások tudják megosztani a kulcstartó-hozzáférést.
+A cikk korábbi szakaszaiban megtudta, hogy `$(AppIdentifierPrefix)` a MSAL az API használatakor is felhasználja `WithIosKeychainSecurityGroup()` . A MSAL hozzáadja ezt az elemet, mert a csoport azonosítója `AppIdentifierPrefix` biztosítja, hogy csak az azonos közzétevő által készített alkalmazások tudják megosztani a kulcstartó-hozzáférést.
 
 > [!NOTE]
 > A `KeychainSecurityGroup` tulajdonság elavult.
 > 
-> A MSAL 2. x verziótól kezdődően a fejlesztők a `TeamId` `KeychainSecurityGroup` tulajdonság használatakor kénytelenek voltak belefoglalni az előtagot. A MSAL 2.7. x verziótól kezdődően azonban az új `iOSKeychainSecurityGroup` tulajdonság használatakor a MSAL az előtagot `TeamId` a futtatókörnyezet során oldja fel. Ha ezt a tulajdonságot használja, ne adja `TeamId` meg az előtagot az értékben. Az előtag megadása nem kötelező.
+> A MSAL 2. x verziótól kezdődően a fejlesztők a tulajdonság használatakor kénytelenek voltak belefoglalni az `TeamId` előtagot `KeychainSecurityGroup` . A MSAL 2.7. x verziótól kezdődően azonban az új tulajdonság használatakor a `iOSKeychainSecurityGroup` MSAL az `TeamId` előtagot a futtatókörnyezet során oldja fel. Ha ezt a tulajdonságot használja, ne adja meg az `TeamId` előtagot az értékben. Az előtag megadása nem kötelező.
 >
 > Mivel a `KeychainSecurityGroup` tulajdonság elavult, használja a `iOSKeychainSecurityGroup` tulajdonságot.
 

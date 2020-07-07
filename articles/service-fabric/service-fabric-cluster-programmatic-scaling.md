@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82787124"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric-fürt programozott méretezése 
@@ -24,12 +24,12 @@ A szolgáltatásnak a skálázás kezelésére való írásának egyik kihívás
 
 Egy egyszerű szolgáltatásnév a következő lépésekkel hozható létre:
 
-1. Jelentkezzen be az Azure CLI-`az login`be () felhasználóként a virtuálisgép-méretezési csoport eléréséhez
+1. Jelentkezzen be az Azure CLI-be ( `az login` ) felhasználóként a virtuálisgép-méretezési csoport eléréséhez
 2. Egyszerű szolgáltatásnév létrehozása`az ad sp create-for-rbac`
     1. Jegyezze fel a appId (más néven "ügyfél-azonosító"), a nevet, a jelszót és a bérlőt későbbi használatra.
     2. Szüksége lesz az előfizetés-AZONOSÍTÓra is, amely megtekinthető a használatával`az account list`
 
-A Fluent számítási függvénytár a következőképpen tud bejelentkezni ezekkel a hitelesítő adatokkal (vegye figyelembe, hogy a `IAzure` [Microsoft. Azure. Management. Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) csomagban található alapvető Fluent típusú Azure-típusok):
+A Fluent számítási függvénytár a következőképpen tud bejelentkezni ezekkel a hitelesítő adatokkal (vegye figyelembe, hogy `IAzure` a [Microsoft. Azure. Management. Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) csomagban található alapvető Fluent típusú Azure-típusok):
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -48,7 +48,7 @@ else
 }
 ```
 
-A bejelentkezést követően a méretezési csoport példányainak száma lekérdezhető a használatával `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`.
+A bejelentkezést követően a méretezési csoport példányainak száma lekérdezhető a használatával `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity` .
 
 ## <a name="scaling-out"></a>Méretezés
 A Fluent Azure számítási SDK használatával a példányok csak néhány hívással adhatók hozzá a virtuálisgép-méretezési csoportokhoz.
@@ -59,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Másik lehetőségként a virtuálisgép-méretezési csoport mérete is kezelhetők PowerShell-parancsmagokkal. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)lekérheti a virtuálisgép-méretezési Csoport objektumát. Az aktuális kapacitás a `.sku.capacity` tulajdonságon keresztül érhető el. Miután módosította a kapacitást a kívánt értékre, az Azure-ban található virtuálisgép-méretezési csoport [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) frissíthető a paranccsal.
+Másik lehetőségként a virtuálisgép-méretezési csoport mérete is kezelhetők PowerShell-parancsmagokkal. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)lekérheti a virtuálisgép-méretezési Csoport objektumát. Az aktuális kapacitás a tulajdonságon keresztül érhető el `.sku.capacity` . Miután módosította a kapacitást a kívánt értékre, az Azure-ban található virtuálisgép-méretezési csoport frissíthető a [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) paranccsal.
 
 Amikor manuálisan ad hozzá egy csomópontot, a méretezési csoport példányainak hozzáadásához minden szükséges, ami egy új Service Fabric csomópont elindításához szükséges, mivel a méretezési csoport sablonja olyan bővítményeket tartalmaz, amelyek automatikusan csatlakoznak az új példányokhoz a Service Fabric-fürthöz. 
 
@@ -84,7 +84,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-A csomópont eltávolítását követően inaktiválható és eltávolítható a korábbi `FabricClient` példány és a `IAzure` példány használatával.
+A csomópont eltávolítását követően inaktiválható és eltávolítható a `FabricClient` korábbi példány és a `IAzure` példány használatával.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);

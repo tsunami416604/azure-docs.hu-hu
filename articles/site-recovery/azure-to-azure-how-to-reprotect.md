@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82738065"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Az Azure-beli virtuális gépek ismételt védetté váltása az elsődleges régióba
@@ -29,7 +29,7 @@ Ha az Azure-beli virtuális gépeket az egyik régióból a másikba [Azure site
 
 ## <a name="reprotect-a-vm"></a>Virtuális gép újravédése
 
-1. A tárolóban**replikált elemek**területen kattintson a jobb gombbal a feladatátvételen átadott virtuális gépre, majd **válassza az** **ismételt védelem**lehetőséget. >  Az ismételt védelem irányának másodlagosról elsődlegesre kell mutatnia.
+1. A **tárolóban**  >  **replikált elemek**területen kattintson a jobb gombbal a feladatátvételen átadott virtuális gépre, majd válassza az **ismételt védelem**lehetőséget. Az ismételt védelem irányának másodlagosról elsődlegesre kell mutatnia.
 
    ![Ismételt védelme](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
@@ -58,7 +58,7 @@ Az ismételt védelem során a cél virtuális gép alábbi tulajdonságait szab
 Alapértelmezés szerint a következők történnek:
 
 1. A rendszer létrehoz egy gyorsítótárbeli Storage-fiókot abban a régióban, ahol a feladatátvételen átesett virtuális gép fut.
-1. Ha a célként megadott Storage-fiók (az elsődleges régióban található eredeti Storage-fiók) nem létezik, a rendszer létrehoz egy újat. A hozzárendelt Storage-fiók neve a másodlagos virtuális gép által használt Storage-fiók neve, a (z `asr`) utótaggal.
+1. Ha a célként megadott Storage-fiók (az elsődleges régióban található eredeti Storage-fiók) nem létezik, a rendszer létrehoz egy újat. A hozzárendelt Storage-fiók neve a másodlagos virtuális gép által használt Storage-fiók neve, a (z `asr` ) utótaggal.
 1. Ha a virtuális gép felügyelt lemezeket használ, a replika felügyelt lemezeket az elsődleges régióban hozza létre a rendszer a másodlagos virtuális gép lemezéről replikált adatok tárolásához.
 1. Ha a cél rendelkezésre állási csoport nem létezik, akkor a rendszer egy újat hoz létre az újravédelemi feladatok részeként, ha szükséges. Ha testreszabta az ismételt védelmi beállításokat, a rendszer a kiválasztott készletet használja.
 

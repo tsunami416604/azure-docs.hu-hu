@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131244"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Naplózás naplózása Azure Database for PostgreSQL – egyetlen kiszolgáló
@@ -30,7 +30,7 @@ Azt is megteheti, hogy az összes naplót be szeretné állítani Azure Monitor 
 
 A pgAudit engedélyezése nagy mennyiségű naplót eredményez a kiszolgálón, ami hatással van a teljesítményre és a naplózási tárkapacitásra. Javasoljuk, hogy használjon Azure Monitor naplókat, amelyek hosszú távú tárolási lehetőségeket, valamint elemzési és riasztási funkciókat biztosítanak. Javasoljuk a standard naplózás kikapcsolását, hogy a további naplózás ne rontsa a teljesítményt:
 
-   1. Állítsa a paramétert `logging_collector` kikapcsolt értékre. 
+   1. Állítsa a paramétert `logging_collector` KIkapcsolt értékre. 
    2. A módosítás alkalmazásához indítsa újra a kiszolgálót.
 
 Ha meg szeretné tudni, hogyan állíthatja be az Azure Storage-ba való naplózást, Event Hubs vagy Azure Monitor naplókat, tekintse meg a [kiszolgáló naplói című cikk](concepts-server-logs.md)erőforrás-naplók című szakaszát.
@@ -53,7 +53,7 @@ A [Azure Portal](https://portal.azure.com)használata:
       ```
 
 > [!TIP]
-> Ha hibaüzenet jelenik meg, ellenőrizze, hogy a Mentés `shared_preload_libraries`után újraindította-e a kiszolgálót.
+> Ha hibaüzenet jelenik meg, ellenőrizze, hogy a mentés után újraindította-e a kiszolgálót `shared_preload_libraries` .
 
 ## <a name="pgaudit-settings"></a>pgAudit-beállítások
 
@@ -65,25 +65,25 @@ a pgAudit lehetővé teszi a munkamenet vagy az objektum naplózási naplózás�
 A [pgAudit telepítése](#installing-pgaudit)után a paramétereket a naplózás megkezdéséhez is konfigurálhatja. Az [pgAudit dokumentációja](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) az egyes paraméterek definícióját tartalmazza. Először tesztelje a paramétereket, és győződjön meg róla, hogy a várt működést tapasztalja.
 
 > [!NOTE]
-> Ha `pgaudit.log_client` a be értékre állítja, a rendszer átirányítja a naplókat egy ügyfél-folyamatba (például psql) a fájlba való írás helyett. Ezt a beállítást általában javasolt letiltva hagyni. <br> <br>
-> `pgaudit.log_level`csak akkor engedélyezett, `pgaudit.log_client` ha be van kapcsolva.
+> Ha a be értékre állítja, a `pgaudit.log_client` rendszer átirányítja a naplókat egy ügyfél-folyamatba (például psql) a fájlba való írás helyett. Ezt a beállítást általában javasolt letiltva hagyni. <br> <br>
+> `pgaudit.log_level`csak akkor engedélyezett, ha `pgaudit.log_client` be van kapcsolva.
 
 > [!NOTE]
 > A Azure Database for PostgreSQLban `pgaudit.log` nem állítható be `-` (mínusz) az pgAudit dokumentációjában leírtak szerint. Az összes kötelező utasítási osztályt (olvasás, írás stb.) külön-külön kell megadni.
 
 ### <a name="audit-log-format"></a>Auditnapló formátuma
-Az egyes naplózási bejegyzéseket a `AUDIT:` rendszer a naplósor elejéhez közel jelzi. A bejegyzés további részének formátuma a [pgAudit dokumentációjában](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)található.
+Az egyes naplózási bejegyzéseket a rendszer a `AUDIT:` naplósor elejéhez közel jelzi. A bejegyzés további részének formátuma a [pgAudit dokumentációjában](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)található.
 
-Ha más mezőkre van szüksége a naplózási követelmények kielégítéséhez, használja a postgres `log_line_prefix`paramétert. `log_line_prefix`egy olyan karakterlánc, amely minden postgres elején kimenetként szerepel. A következő `log_line_prefix` beállítás például az időbélyeget, a felhasználónevet, az adatbázis nevét és a folyamat azonosítóját tartalmazza:
+Ha más mezőkre van szüksége a naplózási követelmények kielégítéséhez, használja a postgres paramétert `log_line_prefix` . `log_line_prefix`egy olyan karakterlánc, amely minden postgres elején kimenetként szerepel. A következő beállítás például az `log_line_prefix` időbélyeget, a felhasználónevet, az adatbázis nevét és a folyamat azonosítóját tartalmazza:
 
 ```
 t=%m u=%u db=%d pid=[%p]:
 ```
 
-További információ `log_line_prefix`a [PostgreSQL dokumentációjában](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)található.
+További információ `log_line_prefix` a [PostgreSQL dokumentációjában](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)található.
 
 ### <a name="getting-started"></a>Első lépések
-A gyors kezdéshez állítsa `pgaudit.log` a következőt: `WRITE`, majd nyissa meg a naplókat a kimenet áttekintéséhez. 
+A gyors kezdéshez állítsa a következőt: `pgaudit.log` `WRITE` , majd nyissa meg a naplókat a kimenet áttekintéséhez. 
 
 ## <a name="viewing-audit-logs"></a>Naplók megtekintése
 Ha. log fájlokat használ, a rendszer a naplókat a PostgreSQL-hibákkal megegyező fájlban fogja tartalmazni. A naplófájlokat az Azure [Portalról](howto-configure-server-logs-in-portal.md) vagy a [parancssori](howto-configure-server-logs-using-cli.md)felületről töltheti le. 

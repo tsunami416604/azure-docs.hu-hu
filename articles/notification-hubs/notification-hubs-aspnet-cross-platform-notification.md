@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 10/02/2019
 ms.openlocfilehash: fc3cec348517244c8a7f54d2d3d17298c58e4262
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127052"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Platformfüggetlen értesítések küldése az Azure Notification Hubs
@@ -43,7 +43,7 @@ Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatá
 
 1. A Visual Studióban **megoldáskezelő**bontsa ki a **vezérlők** mappát, majd nyissa meg a *RegisterController.cs* fájlt.
 
-1. Keresse meg a kód blokkját a `Put` metódusban, amely új regisztrációt hoz létre, majd `switch` cserélje le a tartalmat a következő kódra:
+1. Keresse meg a kód blokkját a `Put` metódusban, amely új regisztrációt hoz létre, majd cserélje le a `switch` tartalmat a következő kódra:
 
     ```csharp
     switch (deviceUpdate.Platform)

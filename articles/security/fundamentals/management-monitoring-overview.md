@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73162744"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági felügyeletének és figyelésének áttekintése
@@ -32,7 +32,7 @@ A szerepköralapú Access Control (RBAC) részletes hozzáférés-kezelést bizt
 További információ:
 
 * [Active Directory csapat blogja a RBAC-on](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/role-assignments-portal.md)
+* [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Kártevőirtó
 

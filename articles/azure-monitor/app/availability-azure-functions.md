@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
 ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791109"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
@@ -45,7 +45,7 @@ Másolja az alábbi kódot a Run. CSX fájlba (Ezzel felülírja a már meglév�
 >![Az Azure-függvény Run. CSX Azure Portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> A használni kívánt végpont címe: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Kivéve, ha az erőforrás olyan régióban található, mint Azure Government vagy az Azure China, ahol ebben az esetben az [alapértelmezett végpontok felülbírálásával](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) és a régió megfelelő telemetria-csatornájának végpontjának megadásával foglalkozó cikkben tájékozódhat.
+> A használni kívánt végpont címe: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Kivéve, ha az erőforrás olyan régióban található, mint Azure Government vagy az Azure China, ahol ebben az esetben az [alapértelmezett végpontok felülbírálásával](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) és a régió megfelelő telemetria-csatornájának végpontjának megadásával foglalkozó cikkben tájékozódhat.
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -160,7 +160,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 Az összes működésének ellenőrzéséhez tekintse meg a diagramot a Application Insights erőforrás rendelkezésre állás lapján.
 
 > [!NOTE]
-> Ha a saját üzleti logikáját implementálta a runAvailabilityTest. CSX-ben, akkor a sikeres eredményeket fogja látni, például az alábbi képernyőképeken, ha nem, akkor a sikertelen találatok jelennek meg. A-ben `TrackAvailability()` létrehozott tesztek a teszt neve mellett **egyéniként** jelennek meg.
+> Ha a saját üzleti logikáját implementálta a runAvailabilityTest. CSX-ben, akkor a sikeres eredményeket fogja látni, például az alábbi képernyőképeken, ha nem, akkor a sikertelen találatok jelennek meg. A-ben létrehozott tesztek a `TrackAvailability()` teszt neve mellett **egyéniként** jelennek meg.
 
 >[!div class="mx-imgBorder"]
 >![Rendelkezésre állás lap sikeres eredményekkel](media/availability-azure-functions/availability-custom.png)
