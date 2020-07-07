@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
 ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82183116"
 ---
 # <a name="balancing-of-subclustered-metrics"></a>Alfürtözött mérőszámok kiegyensúlyozása
@@ -103,7 +103,7 @@ A Resource Manager alfürtözéssel kapcsolatos viselkedését az alábbi konfig
 * SubclusteringEnabled – a paraméter azt határozza meg, hogy a Resource Manager a terheléselosztás során figyelembe veszi-e az alfürtözést. Ha ez a paraméter ki van kapcsolva, az erőforrás-kezelő figyelmen kívül hagyja az alfürtözést, és megpróbál optimális egyensúlyt elérni globális szinten. A paraméter alapértelmezett értéke hamis.
 * SubclusteringReportingPolicy – azt határozza meg, hogy a Resource Manager hogyan fogja kibocsátani a hierarchikus és a részlegesen átfedésben lévő alfürthöz tartozó állapotjelentést. A nulla érték azt jelenti, hogy az alfürttel kapcsolatos állapot-jelentések ki vannak kapcsolva, az "1" érték azt jelenti, hogy a rendszer figyelmeztetési állapotra vonatkozó jelentéseket készít az alrendszerek optimális alfürtözési helyzetéhez, és a "2" értéke "OK" állapotú jelentéseket fog készíteni. A paraméter alapértelmezett értéke "1".
 
-ClusterManifest. XML:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -112,7 +112,7 @@ ClusterManifest. XML:
         </Section>
 ```
 
-a ClusterConfig. JSON használatával önálló üzemelő példányokhoz vagy a template. JSON az Azure által üzemeltetett fürtökhöz:
+Önálló üzemelő példányokhoz vagy az Azure által üzemeltetett fürtökhöz Template.jsClusterConfig.json keresztül:
 
 ```json
 "fabricSettings": [

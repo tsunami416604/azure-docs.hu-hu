@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11c9d66f891e8f5d53fc2a965e75f095417d20d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184010"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: ADSyncTools PowerShell-hivatkozás
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="confirm-adsynctoolsadmoduleloaded"></a>Megerősítés – ADSyncToolsADModuleLoaded
 
@@ -99,7 +99,7 @@ Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -123,7 +123,7 @@ Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <S
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="export-adsynctoolsconsistencyguidmigration"></a>Exportálás – ADSyncToolsConsistencyGuidMigration
 
@@ -302,7 +302,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
@@ -320,7 +320,7 @@ Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -389,7 +389,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
@@ -436,7 +436,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="get-adsynctoolsobjectguid"></a>Get-ADSyncToolsObjectGuid
 
@@ -483,7 +483,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
@@ -530,7 +530,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
 
@@ -553,7 +553,7 @@ A függvény lekérdezi a HRE csatlakozási előzményeit, és exportálja az ö
 #Required Parameters
 ```
 
-$sourcePath = Read-Host-prompt "adja meg a naplófájl elérési útját a következő\<fájlnévnél\>:" # "Source_Path" $OutputPath = Read-Host-prompt "adja meg a fájl elérési\<útját (fájlnév:" # "Out_Path\>"
+$sourcePath = Read-Host-prompt "adja meg a naplófájl elérési útját a következő névvel: fájlnév" # " \<Source_Path\> " $outputPath = Read-Host-prompt "adja meg a fájl elérési útját a" # "fájlnévnél \<Out_Path\>
  
  Get-ADSyncToolsUsersSourceAnchorChanged-sourcePath $sourcePath-outputPath $outputPath
 
@@ -596,7 +596,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="import-adsynctoolsimmutableidmigration"></a>Importálás – ADSyncToolsImmutableIdMigration
 
@@ -659,7 +659,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 
 ## <a name="invoke-adsyncdatabasequery"></a>Meghívás – AdSyncDatabaseQuery
@@ -678,7 +678,7 @@ Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] 
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -719,7 +719,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="remove-adsynctoolsexpiredcertificates"></a>Remove-ADSyncToolsExpiredCertificates
 
@@ -804,7 +804,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="repair-adsynctoolsautoupgradestate"></a>Javítás – ADSyncToolsAutoUpgradeState
 
@@ -848,7 +848,7 @@ Resolve-ADSyncHostAddress [[-hostName] <String>]
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -958,7 +958,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="test-adsyncnetworkport"></a>Teszt – ADSyncNetworkPort
 
@@ -976,7 +976,7 @@ Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
 
 ### <a name="examples"></a>PÉLDÁK
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -1105,7 +1105,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipcredentials"></a>-SkipCredentials
-A nyomon követett \> ad-objektumok típusai * = minden objektumtípus
+A nyomon követett AD-objektumok típusai \> * = minden objektumtípus
 
 ```yaml
 Type: SwitchParameter
@@ -1137,7 +1137,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="trace-adsynctoolsldapquery"></a>Nyomkövetés – ADSyncToolsLdapQuery
 
@@ -1230,7 +1230,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 ## <a name="update-adsynctoolsconsistencyguidmigration"></a>Frissítés – ADSyncToolsConsistencyGuidMigration
 
@@ -1354,4 +1354,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
-További információ: about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176821"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Tartalom közzététele a Azure Portal  
@@ -70,10 +70,10 @@ Egy lokátor lejárati dátumának frissítéséhez használja a [REST API](http
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Az objektum portál segítségével történő közzététele
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Válassza a **Beállítások** > **eszközök**elemet. Válassza ki a közzétenni kívánt objektumot.
+2. Válassza a **Beállítások**  >  **eszközök**elemet. Válassza ki a közzétenni kívánt objektumot.
 3. Válassza ki a **Közzététel** gombot.
 4. Válassza ki a lokátor típusát.
-5. Válassza a **Hozzáadás** lehetőséget.
+5. Válassza a **Hozzáadás** elemet.
    
     ![A videó közzététele](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

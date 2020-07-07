@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 694cc83ffce20a8744d7452a8f6d67c9ce23641c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187228"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni panel hozzáadása az irányítópulthoz a távoli figyelési megoldás gyorsító webes FELÜLETén
@@ -43,13 +43,13 @@ Ha panelt szeretne felvenni a webes felhasználói felületre, fel kell vennie a
 
 A kezdéshez az **src/walkthrough/Components/Pages/Dashboard/panelek/examplePanel** mappa tartalmazza a panelt definiáló fájlokat, beleértve a következőket:
 
-**examplePanel. js**
+**examplePanel.js**
 
 [!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
 Másolja a **src/walkthrough/Components/Pages/Dashboard/panelek/examplePanel** mappát a **src/Components/Pages/Dashboard/Panels** mappába.
 
-Adja hozzá a következő exportálást a **src/walkthrough/Components/Pages/Dashboard/panelek/index. js** fájlba:
+Adja hozzá a következő exportálást a **src/walkthrough/Components/Pages/Dashboard/panelek/index.js** fájlba:
 
 ```js
 export * from './examplePanel';
@@ -57,7 +57,7 @@ export * from './examplePanel';
 
 ### <a name="add-the-panel-to-the-dashboard"></a>A panel hozzáadása az irányítópulthoz
 
-A panel hozzáadásához módosítsa a **src/Components/Pages/Dashboard/Dashboard. js fájlt** .
+A panel hozzáadásához módosítsa a **src/Components/Pages/Dashboard/dashboard.js** elemet.
 
 Adja hozzá a példa panelt a panelekből származó importálások listájához:
 
@@ -90,7 +90,7 @@ Ha a webes felhasználói felület még nem fut helyileg, futtassa a következő
 npm start
 ```
 
-Az előző parancs helyileg futtatja a felhasználói `http://localhost:3000/dashboard`felületet. Az új panel megtekintéséhez navigáljon az **irányítópult** lapra.
+Az előző parancs helyileg futtatja a felhasználói felületet `http://localhost:3000/dashboard` . Az új panel megtekintéséhez navigáljon az **irányítópult** lapra.
 
 ## <a name="next-steps"></a>További lépések
 

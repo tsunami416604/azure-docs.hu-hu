@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188157"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
@@ -36,9 +36,9 @@ Használja a fürt legjobb Spark-verzióját.  A HDInsight szolgáltatás a Spar
 
 Apache Spark három rendszerkonfigurációs hellyel rendelkezik:
 
-* A Spark-tulajdonságok vezérlik a legtöbb alkalmazás-paramétert, `SparkConf` és egy objektum vagy Java-rendszertulajdonság használatával állíthatók be.
-* A környezeti változók az egyes csomópontokon futtatott `conf/spark-env.sh` parancsfájlokon keresztül, például az IP-cím beállítására használhatók.
-* A naplózás a használatával `log4j.properties`konfigurálható.
+* A Spark-tulajdonságok vezérlik a legtöbb alkalmazás-paramétert, és egy `SparkConf` objektum vagy Java-rendszertulajdonság használatával állíthatók be.
+* A környezeti változók az egyes csomópontokon futtatott parancsfájlokon keresztül, például az IP-cím beállítására használhatók `conf/spark-env.sh` .
+* A naplózás a használatával konfigurálható `log4j.properties` .
 
 A Spark egy adott verziójának kiválasztásakor a fürt tartalmazza az alapértelmezett konfigurációs beállításokat.  Az alapértelmezett Spark-konfigurációs értékeket egyéni Spark-konfigurációs fájl használatával módosíthatja.  Erre mutat példát az alábbi ábra.
 
@@ -60,7 +60,7 @@ A fürtön a teljesítmény optimalizálása előtt ellenőrizze, hogy az aktuá
 
 Megjelenik az Apache Ambari webes KEZELŐFELÜLETe, amely a fő fürterőforrás-használati metrikák irányítópultját jeleníti meg.  A Ambari-irányítópulton a Apache Spark konfiguráció és más telepített szolgáltatások láthatók. Az irányítópult tartalmaz egy **konfigurációs előzmények** lapot, ahol megtekintheti a telepített szolgáltatások információit, beleértve a Sparkot.
 
-A Apache Spark konfigurációs értékeinek megtekintéséhez válassza a konfiguráció **előzményei**lehetőséget, majd válassza a **Spark2**lehetőséget.  Válassza a **konfigurációk** fület, majd a szolgáltatás `Spark` listában válassza `Spark2`a (vagy a verziótól függően) hivatkozást.  Ekkor megjelenik a fürthöz tartozó konfigurációs értékek listája:
+A Apache Spark konfigurációs értékeinek megtekintéséhez válassza a konfiguráció **előzményei**lehetőséget, majd válassza a **Spark2**lehetőséget.  Válassza a **konfigurációk** fület, majd a `Spark` szolgáltatás listában válassza a (vagy a `Spark2` verziótól függően) hivatkozást.  Ekkor megjelenik a fürthöz tartozó konfigurációs értékek listája:
 
 ![Spark-konfigurációk](./media/apache-spark-settings/spark-configurations.png)
 
@@ -85,7 +85,7 @@ A következő ábrán a legfontosabb Spark-objektumok láthatók: az illesztőpr
 
 A Spark-feladatok a feldolgozói erőforrásokat, különösen a memóriát használják, ezért gyakori a Spark-konfigurációs értékek beállítása a feldolgozó csomópont-végrehajtók számára.
 
-Három fő paraméter, amelyet gyakran a Spark-konfigurációk hangolására módosítanak az `spark.executor.instances`alkalmazási `spark.executor.cores`követelmények javítása `spark.executor.memory`érdekében, és. A végrehajtó egy Spark-alkalmazáshoz indított folyamat. Egy végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladataiért. A munkavégző csomópontok és a feldolgozó csomópontok mérete határozza meg a végrehajtók számát és a végrehajtó méretét. Ezeket az értékeket a rendszer `spark-defaults.conf` a fürt fő csomópontjain tárolja.  Ezeket az értékeket egy futó fürtben is szerkesztheti, ha az **Egyéni Spark-** alapértékek lehetőséget választja a Ambari webes felhasználói felületén.  A módosítások elvégzése után a felhasználói felület az összes érintett szolgáltatás **újraindítását** kéri.
+Három fő paraméter, amelyet gyakran a Spark-konfigurációk hangolására módosítanak az alkalmazási követelmények javítása érdekében, `spark.executor.instances` `spark.executor.cores` és `spark.executor.memory` . A végrehajtó egy Spark-alkalmazáshoz indított folyamat. Egy végrehajtó fut a munkavégző csomóponton, és felelős az alkalmazás feladataiért. A munkavégző csomópontok és a feldolgozó csomópontok mérete határozza meg a végrehajtók számát és a végrehajtó méretét. Ezeket az értékeket a rendszer a `spark-defaults.conf` fürt fő csomópontjain tárolja.  Ezeket az értékeket egy futó fürtben is szerkesztheti, ha az **Egyéni Spark-** alapértékek lehetőséget választja a Ambari webes felhasználói felületén.  A módosítások elvégzése után a felhasználói felület az összes érintett szolgáltatás **újraindítását** kéri.
 
 > [!NOTE]  
 > Ez a három konfigurációs paraméter konfigurálható a fürt szintjén (a fürtön futó összes alkalmazás esetében), valamint az egyes alkalmazásokhoz is.
@@ -112,7 +112,7 @@ Az alábbi lista a fő Spark-végrehajtó memória paramétereit mutatja be.
 
 |Paraméter |Leírás|
 |---|---|
-|Spark. végrehajtó. Memory|Meghatározza a végrehajtó számára elérhető memória teljes mennyiségét.|
+|spark.executor. Memory|Meghatározza a végrehajtó számára elérhető memória teljes mennyiségét.|
 |Spark. Storage. memoryFraction|(alapértelmezett ~ 60%) a megőrzött RDD tárolására rendelkezésre álló memória mennyiségét határozza meg.|
 |Spark. shuffle. memoryFraction|(alapértelmezett ~ 20%) meghatározza a shuffle számára fenntartott memória mennyiségét.|
 |Spark. Storage. unrollFraction és Spark. Storage. safetyFraction|(összesen ~ 30%-a teljes memória) – ezeket az értékeket a Spark belsőleg használja, és nem módosítható.|

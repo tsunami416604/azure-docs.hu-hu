@@ -1,6 +1,6 @@
 ---
 title: A témakör automatikus létrehozásának engedélyezése Apache Kafkaban – Azure HDInsight
-description: Megtudhatja, hogyan konfigurálhat Apache Kafka a HDInsight-ben a témakörök automatikus létrehozásához. A Kafka konfigurálása a Ambari- `auto.create.topics.enable` n keresztül True értékre állítható be. Vagy a fürt létrehozásakor PowerShell vagy Resource Manager-sablonok használatával.
+description: Megtudhatja, hogyan konfigurálhat Apache Kafka a HDInsight-ben a témakörök automatikus létrehozásához. A Kafka konfigurálása a `auto.create.topics.enable` Ambari-n keresztül True értékre állítható be. Vagy a fürt létrehozásakor PowerShell vagy Resource Manager-sablonok használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: 88dc3e4d761f9b4df63dfa07a24298398f7b0187
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82231271"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>A HDInsight Apache Kafka konfigurálása a témakörök automatikus létrehozásához
@@ -29,7 +29,7 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
     ![A portál képe, amelyen a fürt irányítópultja ki van választva](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-    Ha a rendszer kéri, végezzen hitelesítést a fürt bejelentkezési (rendszergazdai) hitelesítő adataival. Ehelyett közvetlenül is csatlakozhat a Amabri, ahonnan a `https://CLUSTERNAME.azurehdinsight.net/` a `CLUSTERNAME` Kafka-fürt neve.
+    Ha a rendszer kéri, végezzen hitelesítést a fürt bejelentkezési (rendszergazdai) hitelesítő adataival. Ehelyett közvetlenül is csatlakozhat a Amabri, ahonnan `https://CLUSTERNAME.azurehdinsight.net/` a a `CLUSTERNAME` Kafka-fürt neve.
 
 1. Válassza ki a Kafka szolgáltatást a lap bal oldalán található listából.
 
@@ -39,13 +39,13 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
     ![Apache Ambari szolgáltatás – konfigurációk lap](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-1. A szűrő mezőbe írja be a értékét `auto.create`.
+1. A szűrő mezőbe írja be a értékét `auto.create` .
 
     ![Apache Ambari keresési szűrő mező](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Ezzel a beállítással kiszűrheti a tulajdonságok listáját `auto.create.topics.enable` , és megjelenítheti a beállítást.
+    Ezzel a beállítással kiszűrheti a tulajdonságok listáját, és megjelenítheti a `auto.create.topics.enable` beállítást.
 
-1. Módosítsa a értéket a `auto.create.topics.enable` értékre `true`, majd válassza a **Mentés**lehetőséget. Vegyen fel egy megjegyzést, majd válassza a **Mentés** újra lehetőséget.
+1. Módosítsa a értéket a értékre `auto.create.topics.enable` `true` , majd válassza a **Mentés**lehetőséget. Vegyen fel egy megjegyzést, majd válassza a **Mentés** újra lehetőséget.
 
     ![Az Auto. Create. témák. Enable bejegyzés képe](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
@@ -58,7 +58,7 @@ Ha engedélyezni szeretné az automatikus témakör létrehozását egy meglév�
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
-Amikor egy Azure Resource Manager sablonnal hoz létre egy Kafka-fürtöt, közvetlenül is `auto.create.topics.enable` beállíthatja azt a alkalmazásban `kafka-broker`. A következő JSON-kódrészlet bemutatja, hogyan állíthatja be ezt az `true`értéket:
+Amikor egy Azure Resource Manager sablonnal hoz létre egy Kafka-fürtöt, közvetlenül is beállíthatja azt a alkalmazásban `auto.create.topics.enable` `kafka-broker` . A következő JSON-kódrészlet bemutatja, hogyan állíthatja be ezt az értéket `true` :
 
 ```json
 "clusterDefinition": {

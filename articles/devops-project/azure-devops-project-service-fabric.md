@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: ce35f3af38b98f43ebbd0d3f42136ab8358b19a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233720"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Oktatóanyag: ASP.NET Core-alkalmazás üzembe helyezése az Azure-Service Fabric az Azure DevOps Starter használatával
@@ -33,7 +33,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * A Git módosításainak véglegesítése és automatikus üzembe helyezés az Azure-ban
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -121,7 +121,7 @@ A DevOps Starter automatikusan létrehozza és konfigurálja a szükséges lép�
 
 Most már készen áll az alkalmazásban lévő csapattal való együttműködésre egy CI/CD-folyamat használatával, amely automatikusan üzembe helyezi a legújabb munkát a webhelyén. A git-tárház minden módosítása elindít egy buildet, és a kiadás üzembe helyezi az Azure-ban végzett módosításokat. Kövesse az ebben a szakaszban leírt eljárást, vagy használjon másik technikát a tárház változásainak érvényesítéséhez. Megteheti például, hogy a git-tárházat a kedvenc eszközén vagy IDE helyezi, majd leküldi a módosításokat a tárházban.
 
-1. Az Azure DevOps menüjében válassza a **kódlap** > **lehetőséget, majd**nyissa meg a tárházat.
+1. Az Azure DevOps menüjében válassza a **kódlap**lehetőséget  >  **Files**, majd nyissa meg a tárházat.
 
 1. Nyissa meg a *Views\Home* könyvtárat, válassza az *index. cshtml* fájl melletti három pontot (...), majd válassza a **Szerkesztés**lehetőséget.
 
@@ -132,7 +132,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. A kiadás befejezése után frissítse az alkalmazást a módosítások ellenőrzéséhez.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rá szükség, törölheti az Azure Service Fabric-fürtöt és az ebben az oktatóanyagban létrehozott kapcsolódó erőforrásokat. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 
@@ -153,7 +153,7 @@ A csapat igényeihez igazodva módosíthatja az Azure CI-/CD-folyamatot. Ezt a C
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 
 A Service Fabric és a szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg a következőt:
 

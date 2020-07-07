@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 5abc3395152e03520eaff14b02d150892abf0e22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184214"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok feldolgozása és elemzése Apache Hive használatával az Azure HDInsight
@@ -56,7 +56,7 @@ Megtudhatja, hogyan dolgozhatja fel és elemezheti JavaScript Object Notation (J
 }
 ```
 
-A fájl a következő címen érhető `wasb://processjson@hditutorialdata.blob.core.windows.net/`el:. Az Azure Blob Storage és a HDInsight használatával kapcsolatos további információkért lásd: [HDFS-kompatibilis Azure Blob Storage használata a HDInsight-ben való Apache Hadoop](../hdinsight-hadoop-use-blob-storage.md). A fájlt átmásolhatja a fürt alapértelmezett tárolójába.
+A fájl a következő címen érhető el: `wasb://processjson@hditutorialdata.blob.core.windows.net/` . Az Azure Blob Storage és a HDInsight használatával kapcsolatos további információkért lásd: [HDFS-kompatibilis Azure Blob Storage használata a HDInsight-ben való Apache Hadoop](../hdinsight-hadoop-use-blob-storage.md). A fájlt átmásolhatja a fürt alapértelmezett tárolójába.
 
 Ebben a cikkben a Apache Hive-konzolt használja. A kaptár-konzol megnyitásával kapcsolatos utasításokért lásd: az [Apache Ambari kaptár nézet használata a HDInsight-ben való Apache Hadoop](apache-hadoop-use-hive-ambari-view.md).
 
@@ -86,7 +86,7 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-A nyers JSON-fájl a következő `wasb://processjson@hditutorialdata.blob.core.windows.net/`helyen található:. A **StudentsRaw** struktúra tábla a nem LAPÍTOTT nyers JSON-dokumentumra mutat.
+A nyers JSON-fájl a következő helyen található: `wasb://processjson@hditutorialdata.blob.core.windows.net/` . A **StudentsRaw** struktúra tábla a nem LAPÍTOTT nyers JSON-dokumentumra mutat.
 
 A **StudentsOneLine** -struktúra tábla a **/JSON/Students/** elérési útja alatt tárolja az HDInsight alapértelmezett fájlrendszerében tárolt értékeket.
 
@@ -127,7 +127,7 @@ A következő kimenet jelenik meg, amikor futtatja ezt a lekérdezést a konzol 
 A get_json_object UDF korlátai vannak:
 
 * Mivel a lekérdezés egyes mezői a lekérdezés újraelemzését igénylik, hatással vannak a teljesítményre.
-* **A\_Get JSON_OBJECT ()** függvény egy tömb karakterlánc-ábrázolását adja vissza. Ahhoz, hogy a tömböt egy struktúra-tömbre konvertálja, reguláris kifejezésekkel kell helyettesítenie a szögletes zárójeleket ([) és a "]"), majd meg kell hívnia a felosztást a tömb beszerzéséhez.
+* **Get \_ A JSON_OBJECT ()** függvény egy tömb karakterlánc-ábrázolását adja vissza. Ahhoz, hogy a tömböt egy struktúra-tömbre konvertálja, reguláris kifejezésekkel kell helyettesítenie a szögletes zárójeleket ([) és a "]"), majd meg kell hívnia a felosztást a tömb beszerzéséhez.
 
 Az átalakítás oka, hogy a kaptár wiki a **json_tuple**használatát javasolja.  
 
@@ -146,7 +146,7 @@ A szkript kimenete a kaptár-konzolon:
 
 ![Apache Hive JSON-lekérdezés eredményei](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-Az `json_tuple` UDF az [oldalirányú nézet](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) szintaxisát használja a kaptárban, amely\_lehetővé teszi, hogy a JSON-rekord hozzon létre egy virtuális táblázatot úgy, hogy a UDT függvényt alkalmazza az eredeti tábla minden egyes sorára. Az összetett JSON-okból az **oldalirányú nézet**ismételt használata miatt túlságosan nehézkesek lesznek. Emellett a **JSON_TUPLE** nem tudja kezelni a beágyazott JSON-ket.
+Az `json_tuple` UDF az [oldalirányú nézet](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) szintaxisát használja a kaptárban, amely lehetővé teszi, hogy a JSON- \_ rekord hozzon létre egy virtuális táblázatot úgy, hogy a UDT függvényt alkalmazza az eredeti tábla minden egyes sorára. Az összetett JSON-okból az **oldalirányú nézet**ismételt használata miatt túlságosan nehézkesek lesznek. Emellett a **JSON_TUPLE** nem tudja kezelni a beágyazott JSON-ket.
 
 ### <a name="use-a-custom-serde"></a>Egyéni SerDe használata
 

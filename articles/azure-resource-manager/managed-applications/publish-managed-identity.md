@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508129"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Felügyelt identitással rendelkező Azure felügyelt alkalmazás
@@ -46,11 +46,11 @@ Felügyelt identitással rendelkező felügyelt alkalmazás létrehozásához to
 }
 ```
 
-A felügyelt alkalmazások két gyakori módon hozhatók létre az **Identity**: [CreateUIDefinition. JSON](./create-uidefinition-overview.md) és [Azure Resource Manager sablonokkal](../templates/template-syntax.md). Egyszerű, egyszeri létrehozási forgatókönyvek esetén a CreateUIDefinition-t a felügyelt identitás engedélyezésére kell használni, mivel ez gazdagabb élményt nyújt. Ha azonban olyan speciális vagy összetett rendszereket használ, amelyek automatizált vagy több felügyelt alkalmazás-telepítést igényelnek, a sablonok használhatók.
+A felügyelt alkalmazások két gyakori módon hozhatók létre az **Identity**: [CreateUIDefinition.json és a](./create-uidefinition-overview.md) [Azure Resource Manager sablonokkal](../templates/template-syntax.md). Egyszerű, egyszeri létrehozási forgatókönyvek esetén a CreateUIDefinition-t a felügyelt identitás engedélyezésére kell használni, mivel ez gazdagabb élményt nyújt. Ha azonban olyan speciális vagy összetett rendszereket használ, amelyek automatizált vagy több felügyelt alkalmazás-telepítést igényelnek, a sablonok használhatók.
 
 ### <a name="using-createuidefinition"></a>A CreateUIDefinition használata
 
-A felügyelt alkalmazások a [CreateUIDefinition. JSON](./create-uidefinition-overview.md)használatával konfigurálhatók felügyelt identitással. A [kimenetek szakaszban](./create-uidefinition-overview.md#outputs)a kulcs `managedIdentity` használható a felügyelt alkalmazás sablonjának Identity tulajdonságának felülbírálására. A mintául szolgáló minta lehetővé teszi a **rendszer által hozzárendelt** identitást a felügyelt alkalmazásban. A CreateUIDefinition elemek használatával összetettebb identitási objektumok hozhatók létre, amelyekkel megkérheti a fogyasztótól a bemeneteket. Ezek a bemenetek a **felhasználó által hozzárendelt identitással**rendelkező felügyelt alkalmazások létrehozására használhatók.
+A felügyelt alkalmazások a [CreateUIDefinition.json](./create-uidefinition-overview.md)keresztül konfigurálhatók a felügyelt identitással. A [kimenetek szakaszban](./create-uidefinition-overview.md#outputs)a kulcs használható a `managedIdentity` felügyelt alkalmazás sablonjának Identity tulajdonságának felülbírálására. A mintául szolgáló minta lehetővé teszi a **rendszer által hozzárendelt** identitást a felügyelt alkalmazásban. A CreateUIDefinition elemek használatával összetettebb identitási objektumok hozhatók létre, amelyekkel megkérheti a fogyasztótól a bemeneteket. Ezek a bemenetek a **felhasználó által hozzárendelt identitással**rendelkező felügyelt alkalmazások létrehozására használhatók.
 
 ```json
 "outputs": {
@@ -260,7 +260,7 @@ A felügyelt alkalmazás meglévő erőforrásokhoz való központi telepítés�
 }
 ```
 
-Ez a CreateUIDefinition. JSON létrehoz egy olyan felhasználói élményt, amely két mezővel rendelkezik. Az első mező lehetővé teszi, hogy a felhasználó beírja a felügyelt alkalmazás üzembe helyezéséhez kapcsolódó erőforráshoz tartozó Azure Resource ID-t. A második a **felhasználó által hozzárendelt identitás** Azure-erőforrás-azonosítójának megadása, amely hozzáfér a kapcsolódó Azure-erőforráshoz. A generált élmény a következőképpen fog kinézni:
+Ez a CreateUIDefinition.jsa létrehoz egy felhasználói élményt, amely két mezővel rendelkezik. Az első mező lehetővé teszi, hogy a felhasználó beírja a felügyelt alkalmazás üzembe helyezéséhez kapcsolódó erőforráshoz tartozó Azure Resource ID-t. A második a **felhasználó által hozzárendelt identitás** Azure-erőforrás-azonosítójának megadása, amely hozzáfér a kapcsolódó Azure-erőforráshoz. A generált élmény a következőképpen fog kinézni:
 
 ![Minta CreateUIDefinition két bemenettel: egy hálózati adapter erőforrás-azonosítója és egy felhasználó által hozzárendelt identitás erőforrás-azonosítója](./media/publish-managed-identity/network-interface-cuid.png)
 
@@ -310,7 +310,7 @@ A felügyelt alkalmazáscsomag létrehozása után a felügyelt alkalmazás a Az
 
 ## <a name="accessing-the-managed-identity-token"></a>A felügyelt identitás jogkivonatának elérése
 
-A felügyelt alkalmazás jogkivonata mostantól a közzétevő bérlője `listTokens` által elérhető API-n keresztül érhető el. Egy példa a kérelemre a következőhöz hasonló lehet:
+A felügyelt alkalmazás jogkivonata mostantól a közzétevő bérlője által elérhető API-n keresztül érhető el `listTokens` . Egy példa a kérelemre a következőhöz hasonló lehet:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -327,7 +327,7 @@ Kérelem törzsének paraméterei:
 
 Paraméter | Kötelező | Leírás
 ---|---|---
-authorizationAudience | *nem* | A célként megadott erőforráshoz tartozó alkalmazás-azonosító URI-ja. A kiállított jogkivonat `aud` (célközönség) jogcíme is. Az alapértelmezett érték: "https://management.azure.com/"
+authorizationAudience | *nem* | A célként megadott erőforráshoz tartozó alkalmazás-azonosító URI-ja. `aud`A kiállított jogkivonat (célközönség) jogcíme is. Az alapértelmezett érték: " https://management.azure.com/ "
 userAssignedIdentities | *nem* | A felhasználó által hozzárendelt felügyelt identitások listája a jogkivonat lekéréséhez. Ha nincs megadva, `listTokens` a visszaadja a rendszer által hozzárendelt felügyelt identitás jogkivonatát.
 
 
@@ -352,7 +352,7 @@ Content-Type: application/json
 }
 ```
 
-A válasz a `value` tulajdonság alá tartozó jogkivonatok tömbjét fogja tartalmazni:
+A válasz a tulajdonság alá tartozó jogkivonatok tömbjét fogja tartalmazni `value` :
 
 Paraméter | Leírás
 ---|---
@@ -360,7 +360,7 @@ access_token | A kért hozzáférési jogkivonat.
 expires_in | Azon másodpercek száma, ameddig a hozzáférési jogkivonat érvényes lesz.
 expires_on | A TimeSpan, amikor lejár a hozzáférési jogkivonat. Ez a szám az alapkorszakból másodpercben kifejezve jelenik meg.
 not_before | A TimeSpan, amikor a hozzáférési jogkivonat érvénybe lép. Ez a szám az alapkorszakból másodpercben kifejezve jelenik meg.
-authorizationAudience | A `aud` hozzáférési jogkivonat kérése a (célközönség) számára. Ez megegyezik a `listTokens` kérelemben megadott értékkel.
+authorizationAudience | A `aud` hozzáférési jogkivonat kérése a (célközönség) számára. Ez megegyezik a kérelemben megadott értékkel `listTokens` .
 resourceId | A kiállított jogkivonat Azure-erőforrás-azonosítója. Ez vagy a felügyelt alkalmazás azonosítója vagy a felhasználó által hozzárendelt azonosító.
 token_type | A jogkivonat típusa.
 

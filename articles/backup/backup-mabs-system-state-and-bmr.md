@@ -4,10 +4,10 @@ description: A Azure Backup Server használatával biztonsági mentést készít
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192365"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Rendszerállapot biztonsági mentése és visszaállítása operációs rendszer nélküli számítógépre Azure Backup Server
@@ -43,18 +43,18 @@ Az alábbi táblázat összefoglalja, hogy a biztonsági mentést és helyreáll
 
 ## <a name="how-system-state-backup-works"></a>A rendszerállapot biztonsági mentésének működése
 
-Rendszerállapot biztonsági mentésének futtatásakor a Backup kiszolgáló a Windows Server biztonsági másolatával kommunikál a kiszolgáló rendszerállapotának biztonsági másolatának kéréséhez. Alapértelmezés szerint a Backup Server és a Windows Server biztonsági másolat a legnagyobb rendelkezésre álló szabad területtel rendelkező meghajtót használja. A meghajtóval kapcsolatos információkat a rendszer a *PSDataSourceConfig. XML* fájlba menti.
+Rendszerállapot biztonsági mentésének futtatásakor a Backup kiszolgáló a Windows Server biztonsági másolatával kommunikál a kiszolgáló rendszerállapotának biztonsági másolatának kéréséhez. Alapértelmezés szerint a Backup Server és a Windows Server biztonsági másolat a legnagyobb rendelkezésre álló szabad területtel rendelkező meghajtót használja. A meghajtóval kapcsolatos információkat a rendszer a *PSDataSourceConfig.xml* fájlba menti.
 
 Testreszabhatja azt a meghajtót, amelyet a Backup Server használ a rendszerállapot biztonsági mentéséhez:
 
 1. A védett kiszolgálón lépjen a *C:\Program Files\Microsoft adatvédelem Manager\MABS\Datasources*.
-1. Nyissa meg szerkesztésre a *PSDataSourceConfig. XML* fájlt.
-1. Módosítsa a \<meghajtóbetűjel\> FilesToProtect értékét.
+1. Nyissa meg a *PSDataSourceConfig.xml* fájlt szerkesztésre.
+1. Módosítsa a meghajtó betűjeléhez tartozó \<FilesToProtect\> értéket.
 1. Mentse és zárja be a fájlt.
 
 Ha a védelmi csoport úgy van beállítva, hogy megvédje a számítógép rendszerállapotát, akkor futtasson egy konzisztencia-ellenőrzést. Ha riasztás jön létre, válassza a **védelmi csoport módosítása** lehetőséget a riasztásban, majd hajtsa végre a lapokat a varázslóban. Ezután futtasson egy újabb konzisztencia-ellenőrzést.
 
-Ha a védelmi kiszolgáló egy fürtben található, akkor lehet, hogy a legnagyobb szabad területtel rendelkező meghajtóként van kiválasztva a fürt meghajtója. Ha a meghajtó tulajdonosa egy másik csomópontra vált, és a rendszerállapot biztonsági mentése fut, akkor a meghajtó nem érhető el, és a biztonsági mentés sikertelen lesz. Ebben az esetben módosítsa a *PSDataSourceConfig. xml fájlt* úgy, hogy egy helyi meghajtóra mutasson.
+Ha a védelmi kiszolgáló egy fürtben található, akkor lehet, hogy a legnagyobb szabad területtel rendelkező meghajtóként van kiválasztva a fürt meghajtója. Ha a meghajtó tulajdonosa egy másik csomópontra vált, és a rendszerállapot biztonsági mentése fut, akkor a meghajtó nem érhető el, és a biztonsági mentés sikertelen lesz. Ebben az esetben módosítsa *PSDataSourceConfig.xml* úgy, hogy helyi meghajtóra mutasson.
 
 Ezután Windows Server biztonsági másolat létrehoz egy *WindowsImageBackup* nevű mappát a visszaállítási mappa gyökerében. Ahogy Windows Server biztonsági másolat létrehozza a biztonsági másolatot, a rendszer az összes adatterületet ebbe a mappába helyezi. A biztonsági mentés befejezésekor a rendszer átviszi a fájlt a biztonsági mentési kiszolgáló számítógépére. Tekintse meg az alábbi információkat:
 
@@ -109,7 +109,7 @@ A biztonsági mentés befejezésekor a rendszer átviszi a fájlt a biztonsági 
 
 Rendszerállapot biztonsági mentése és operációs rendszer nélküli számítógép:
 
-1. A Create új védelmi csoport varázsló megnyitásához a biztonsági mentési kiszolgáló felügyeleti konzol válassza a **védelmi** > **műveletek** > **védelmi csoport létrehozása**lehetőséget.
+1. A Create új védelmi csoport varázsló megnyitásához a biztonsági mentési kiszolgáló felügyeleti konzol válassza a **védelmi**  >  **műveletek**  >  **védelmi csoport létrehozása**lehetőséget.
 
 1. A **védelmi csoport típusának kiválasztása** lapon válassza a **kiszolgálók**lehetőséget, majd kattintson a **tovább**gombra.
 
@@ -203,7 +203,7 @@ A System visszaállítása:
 
 1. A **rendszer-helyreállítási beállítások** lapon válassza a **számítógép visszaállítása a korábban létrehozott rendszerkép használatával**lehetőséget.
 
-1. A rendszerkép **biztonsági mentésének kiválasztása** **lapon válassza** > a rendszerkép**speciális** > **keresése a hálózaton rendszerképekhez**lehetőséget. Ha megjelenik egy figyelmeztetés, válassza az **Igen**lehetőséget. Lépjen a megosztás elérési útjára, adja meg a hitelesítő adatokat, majd válassza ki a helyreállítási pontot. A rendszer megkeresi az adott helyreállítási pontban elérhető biztonsági másolatokat. Válassza ki a használni kívánt helyreállítási pontot.
+1. A rendszerkép **biztonsági mentésének kiválasztása** lapon válassza a rendszerkép **Select a system image**  >  **speciális**  >  **keresése a hálózaton rendszerképekhez**lehetőséget. Ha megjelenik egy figyelmeztetés, válassza az **Igen**lehetőséget. Lépjen a megosztás elérési útjára, adja meg a hitelesítő adatokat, majd válassza ki a helyreállítási pontot. A rendszer megkeresi az adott helyreállítási pontban elérhető biztonsági másolatokat. Válassza ki a használni kívánt helyreállítási pontot.
 
 1. A **biztonsági másolat visszaállítási módjának kiválasztása** lapon válassza a **lemezek formázása és újraparticionálása**elemet. A következő lapon ellenőrizze a beállításokat.
 
@@ -233,7 +233,7 @@ A helyreállítás futtatása a biztonsági mentési kiszolgálón:
 
 Windows Server biztonsági másolat futtatása:
 
-1. Válassza ki a**következőt****a kiszolgáló** > **helyreállítása** >  **műveletekkel** > .
+1. Válassza **Actions**ki  >  **Recover**  >  **a**  >  **következőt**a kiszolgáló helyreállítása műveletekkel.
 
 1. Válasszon **másik kiszolgálót**, válassza a **hely típusának megadása** lapot, majd kattintson a **távoli megosztott mappa**lehetőségre. Adja meg a helyreállítási pontot tartalmazó mappa elérési útját.
 

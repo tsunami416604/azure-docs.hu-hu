@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82161481"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Egyéni jelentések automatizálása Azure Application Insights-beli adatkezeléssel
@@ -91,11 +91,11 @@ availabilityResults
 
    ![A Function Settings képernyőképe](./media/automate-custom-reports/scheduled-digest.png)
 
-6. Válassza ki a **függvényalkalmazás** > **platform funkcióinak** > **konfigurációját**.
+6. Válassza ki a **függvényalkalmazás**  >  **platform funkcióinak**  >  **konfigurációját**.
 
     ![Az Azure Function alkalmazás beállításainak képernyőképe](./media/automate-custom-reports/config.png)
 
-7. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel ``AI_APP_ID`` ``AI_APP_KEY``, és. ``SendGridAPI`` Kattintson a **Mentés** gombra.
+7. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel, ``AI_APP_ID`` ``AI_APP_KEY`` és ``SendGridAPI`` . Kattintson a **Mentés** gombra.
 
      ![Function Integration Interface – képernyőfelvétel](./media/automate-custom-reports/app-settings.png)
     
@@ -136,7 +136,7 @@ Ezek a lépések csak akkor érvényesek, ha még nem rendelkezik konfigurált S
 
      ![A beállítások API-kulcs képernyőképe](./media/automate-custom-reports/sendgrid-manage.png)
 
-3. Ekkor elindul a SendGrid webhelye. Válassza a **Beállítások** > **API-kulcsok**elemet.
+3. Ekkor elindul a SendGrid webhelye. Válassza a **Beállítások**  >  **API-kulcsok**elemet.
 
      ![API-kulcs alkalmazásának létrehozása és megtekintése képernyőkép](./media/automate-custom-reports/function-app-15.png)
 

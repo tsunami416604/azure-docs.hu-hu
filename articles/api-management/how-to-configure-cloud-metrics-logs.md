@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205130"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Felhőalapú metrikák és naplók konfigurálása az Azure API Management saját üzemeltetésű átjáróhoz
@@ -32,7 +32,7 @@ A szolgáltatás engedélyezhető vagy letiltható az `telemetry.metrics.cloud` 
 
 | Mező  | Alapértelmezett | Leírás |
 | ------------- | ------------- | ------------- |
-| telemetria. Metrics. Cloud  | `true` | Engedélyezi a Azure Monitor való naplózást. Az érték lehet `true` `false`. |
+| telemetria. Metrics. Cloud  | `true` | Engedélyezi a Azure Monitor való naplózást. Az érték lehet `true` `false` . |
 
 
 Íme egy példa konfiguráció:
@@ -49,7 +49,7 @@ A szolgáltatás engedélyezhető vagy letiltható az `telemetry.metrics.cloud` 
 
 A saját üzemeltetésű átjáró jelenleg a következő metrikákat bocsátja Azure Monitor:
 
-| Metrika  | Leírás |
+| Metric  | Leírás |
 | ------------- | ------------- |
 | Kérelmek  | API-kérelmek száma az adott időszakban |
 | Az átjáró kéréseinek időtartama | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |

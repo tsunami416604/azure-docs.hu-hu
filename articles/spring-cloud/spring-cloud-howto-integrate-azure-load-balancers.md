@@ -7,13 +7,13 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: 7022c4587b425168fc5bd2182ed65c281633aabf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82177080"
 ---
-# <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Az Azure Spring Cloud integrálása az Azure Load Balance-megoldásokkal
+# <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Az Azure Spring Cloud és az Azure Load Balancer-megoldások integrálása
 
 Az Azure Spring Cloud támogatja a szolgáltatásait az Azure-ban.  A növekvő vállalkozások több adatközpontot is igényelhetnek az Azure Spring Cloud több példányának felügyeletével.
 
@@ -40,7 +40,7 @@ Végpontok hozzáadása a Traffic Managerben:
 1.  Minden Azure Spring Cloud nyilvános végpont teljes tartományneve (FQDN).
 1. Kattintson az **OK** gombra.
 
-    ![Traffic Manager 1](media/spring-cloud-load-balancers/traffic-manager-1.png) ![Traffic Manager 2](media/spring-cloud-load-balancers/traffic-manager-2.png)
+    ![Traffic Manager 1 ](media/spring-cloud-load-balancers/traffic-manager-1.png) ![ Traffic Manager 2](media/spring-cloud-load-balancers/traffic-manager-2.png)
 
 ### <a name="configure-custom-domain"></a>Egyéni tartomány konfigurálása
 A konfiguráció befejezése:

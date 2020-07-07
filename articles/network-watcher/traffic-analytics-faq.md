@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189045"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics gyakori kérdések
@@ -331,24 +331,24 @@ A földrajzi Térkép oldal két fő szakaszt tartalmaz:
     
 - Alapértelmezés szerint a szalagcím földrajzi Térkép oldalán a kijelölés az "Azure DCs" szűrő.
 - Másik szűrőre való áthelyezéshez használja a `Tab` vagy a `Right arrow` kulcsot. A visszafelé mozgatáshoz használja a `Shift+Tab` vagy a `Left arrow` kulcsot. A navigáció továbbítása balról jobbra történik, majd felülről lefelé haladva.
-- Nyomja `Enter` meg vagy `Down` a nyílbillentyűt a kiválasztott szűrő alkalmazásához. A szűrők kiválasztása és központi telepítése alapján a Térkép szakasz egy vagy több csomópontja ki van emelve.
-- A szalagcím és a Térkép közötti váltáshoz `Ctrl+F6`nyomja meg a gombot.
+- Nyomja meg `Enter` vagy a `Down` nyílbillentyűt a kiválasztott szűrő alkalmazásához. A szűrők kiválasztása és központi telepítése alapján a Térkép szakasz egy vagy több csomópontja ki van emelve.
+- A szalagcím és a Térkép közötti váltáshoz nyomja meg a gombot `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-map"></a>Navigálás a térképen a billentyűzeten
     
-- Miután kiválasztott egy szűrőt a szalagcímre, és megnyomta `Ctrl+F6`a gombot, a fókusz az egyik kiemelt csomópontra (**Azure Datacenter** vagy **ország/régió**) kerül át a Térkép nézetben.
-- A térképen található többi kijelölt csomópontra való áthelyezéshez használja a `Tab` vagy a `Right arrow` kulcsot a továbbítási mozgáshoz. Használja `Shift+Tab` a vagy `Left arrow` a billentyűt a visszafelé mozgatáshoz.
-- A Térkép bármelyik Kiemelt csomópontjának kiválasztásához használja a `Enter` vagy `Down arrow` a kulcsot.
-- Az ilyen csomópontok kiválasztásakor a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mezőben**lévő lezárt gombra lép. A **Box** nézeten belüli további áthelyezéshez használja `Right arrow` a `Left arrow` és a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A `Enter` gomb megnyomásakor a fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
-- Amikor megnyomja `Tab` a fókuszt a **tájékoztatási eszköz mezőben**, a fókusz a kijelölt csomóponttal megegyező kontinensen lévő végpontokra kerül át. A és `Right arrow` `Left arrow` a kulcsok használatával áthelyezheti ezeket a végpontokat.
-- Ha át szeretne térni más folyamat-végpontokra vagy kontinens- `Tab` fürtökre, használja `Shift+Tab` a továbbítási mozgáshoz és a visszafelé mozgatáshoz.
-- Ha a fókusz a **kontinensen lévő fürtökön**található `Enter` , `Down` a vagy a nyílbillentyűk használatával kiemelheti a kontinensen belüli fürtben található végpontokat. Ha a végpontokon és a Bezárás gombra kattint a kontinens fürtjének információs mezőjében, használja a vagy `Right arrow` `Left arrow` a kulcsot a továbbításhoz és a visszafelé mozgáshoz. Bármelyik végponton használhatja `Shift+L` a kapcsolót a kiválasztott csomópontról a végpontra való váltáshoz. Az újbóli `Shift+L` megnyomásával átléphet a kiválasztott végpontra.
+- Miután kiválasztott egy szűrőt a szalagcímre, és megnyomta a gombot `Ctrl+F6` , a fókusz az egyik kiemelt csomópontra (**Azure Datacenter** vagy **ország/régió**) kerül át a Térkép nézetben.
+- A térképen található többi kijelölt csomópontra való áthelyezéshez használja a `Tab` vagy a `Right arrow` kulcsot a továbbítási mozgáshoz. Használja `Shift+Tab` a vagy a `Left arrow` billentyűt a visszafelé mozgatáshoz.
+- A Térkép bármelyik Kiemelt csomópontjának kiválasztásához használja a `Enter` vagy a `Down arrow` kulcsot.
+- Az ilyen csomópontok kiválasztásakor a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mezőben**lévő lezárt gombra lép. A **Box** nézeten belüli további áthelyezéshez használja a `Right arrow` és `Left arrow` a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
+- Amikor megnyomja a `Tab` fókuszt a **tájékoztatási eszköz mezőben**, a fókusz a kijelölt csomóponttal megegyező kontinensen lévő végpontokra kerül át. A `Right arrow` és a `Left arrow` kulcsok használatával áthelyezheti ezeket a végpontokat.
+- Ha át szeretne térni más folyamat-végpontokra vagy kontinens-fürtökre, használja `Tab` a továbbítási mozgáshoz és `Shift+Tab` a visszafelé mozgatáshoz.
+- Ha a fókusz a **kontinensen lévő fürtökön**található, a `Enter` vagy a `Down` nyílbillentyűk használatával kiemelheti a kontinensen belüli fürtben található végpontokat. Ha a végpontokon és a Bezárás gombra kattint a kontinens fürtjének információs mezőjében, használja a vagy a `Right arrow` `Left arrow` kulcsot a továbbításhoz és a visszafelé mozgáshoz. Bármelyik végponton használhatja a `Shift+L` kapcsolót a kiválasztott csomópontról a végpontra való váltáshoz. `Shift+L`Az újbóli megnyomásával átléphet a kiválasztott végpontra.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Billentyűzet-navigáció bármely fázisban
     
 - `Esc`a kibontott kijelölés összecsukása.
-- A `Up arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint `Esc`a. A `Down arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint `Enter`a.
-- A `Shift+Plus` nagyításhoz és `Shift+Minus` a kicsinyítéshez használja a következőt:.
+- A `Up arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Esc` . A `Down arrow` kulcs ugyanazokat a műveleteket hajtja végre, mint a `Enter` .
+- A nagyításhoz és a kicsinyítéshez használja a `Shift+Plus` következőt: `Shift+Minus` .
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Hogyan lehet navigálni a virtuális hálózati topológia nézetben a billentyűzet használatával?
 
@@ -361,15 +361,15 @@ A virtuális hálózatok topológiájának lapja két fő szakaszt tartalmaz:
     
 - Alapértelmezés szerint a szalagcímhez tartozó Virtual Networks topológia lapon a "Connected virtuális hálózatok" szűrő van kiválasztva.
 - Másik szűrőre való áthelyezéshez használja a `Tab` kulcsot a továbbításhoz. A visszalépéshez használja a `Shift+Tab` kulcsot. A navigáció továbbítása balról jobbra történik, majd felülről lefelé haladva.
-- Nyomja `Enter` meg a gombot a kiválasztott szűrő alkalmazásához. A szűrő kiválasztása és központi telepítése alapján a rendszer kiemel egy vagy több csomópontot (virtuális hálózatot) a topológia szakaszban.
-- A szalagcím és a topológia közötti váltáshoz nyomja meg a `Ctrl+F6`gombot.
+- Nyomja meg a gombot `Enter` a kiválasztott szűrő alkalmazásához. A szűrő kiválasztása és központi telepítése alapján a rendszer kiemel egy vagy több csomópontot (virtuális hálózatot) a topológia szakaszban.
+- A szalagcím és a topológia közötti váltáshoz nyomja meg a gombot `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Billentyűzetes Navigálás a topológián
     
-- Miután kiválasztott egy szűrőt a szalagcímen, és megnyomta `Ctrl+F6`a gombot, a fókusz a topológia nézet egyik kiemelt csomópontjára (**VNet**) kerül.
-- A topológia nézet más kiemelt csomópontjaira való áthelyezéshez használja a `Shift+Right arrow` kulcsot a továbbítási mozgáshoz. 
-- A Kiemelt csomópontokon a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mező** **További részletek** gombjára lép. A **Box** nézetben való további mozgáshoz használja a és `Right arrow` `Left arrow` a kulcsokat a továbbításhoz és a visszafelé való mozgáshoz. A `Enter` gomb megnyomásakor a fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
-- Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával megtekintheti az `Shift+Left arrow` összes kapcsolatát. A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .
+- Miután kiválasztott egy szűrőt a szalagcímen, és megnyomta a gombot `Ctrl+F6` , a fókusz a topológia nézet egyik kiemelt csomópontjára (**VNet**) kerül.
+- A topológia nézet más kiemelt csomópontjaira való áthelyezéshez használja a kulcsot a `Shift+Right arrow` továbbítási mozgáshoz. 
+- A Kiemelt csomópontokon a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mező** **További részletek** gombjára lép. A **Box** nézetben való további mozgáshoz használja a `Right arrow` és a `Left arrow` kulcsokat a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
+- Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával megtekintheti az összes kapcsolatát `Shift+Left arrow` . A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Hogyan lehet navigálni a billentyűzettel az alhálózati topológia nézetben?
@@ -383,13 +383,13 @@ A virtuális alhálózatok topológiája lap két fő szakaszt tartalmaz:
     
 - Alapértelmezés szerint a szalagcímhez tartozó virtuális alhálózatok topológiájának kijelölése az "alhálózat" szűrő.
 - Másik szűrőre való áthelyezéshez használja a `Tab` kulcsot a továbbításhoz. A visszalépéshez használja a `Shift+Tab` kulcsot. A navigáció továbbítása balról jobbra történik, majd felülről lefelé haladva.
-- Nyomja `Enter` meg a gombot a kiválasztott szűrő alkalmazásához. A szűrők kiválasztása és központi telepítése alapján a rendszer kiemel egy vagy több csomópontot (alhálózatot) a topológia szakaszban.
-- A szalagcím és a topológia közötti váltáshoz nyomja meg a `Ctrl+F6`gombot.
+- Nyomja meg a gombot `Enter` a kiválasztott szűrő alkalmazásához. A szűrők kiválasztása és központi telepítése alapján a rendszer kiemel egy vagy több csomópontot (alhálózatot) a topológia szakaszban.
+- A szalagcím és a topológia közötti váltáshoz nyomja meg a gombot `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Billentyűzetes Navigálás a topológián
     
-- Miután kiválasztott egy szűrőt a szalagcímen, és megnyomta `Ctrl+F6`a gombot, a fókusz a topológia nézet egyik kijelölt csomópontjára (**alhálózata**) helyezi át.
-- A topológia nézet más kiemelt csomópontjaira való áthelyezéshez használja a `Shift+Right arrow` kulcsot a továbbítási mozgáshoz. 
-- A Kiemelt csomópontokon a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mező** **További részletek** gombjára lép. A **Box** nézeten belüli további áthelyezéshez használja `Right arrow` a `Left arrow` és a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A `Enter` gomb megnyomásakor a fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
-- Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával `Shift+Left arrow` megtekintheti az összes kapcsolatát, egyet pedig eggyel. A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .    
+- Miután kiválasztott egy szűrőt a szalagcímen, és megnyomta a gombot `Ctrl+F6` , a fókusz a topológia nézet egyik kijelölt csomópontjára (**alhálózata**) helyezi át.
+- A topológia nézet más kiemelt csomópontjaira való áthelyezéshez használja a kulcsot a `Shift+Right arrow` továbbítási mozgáshoz. 
+- A Kiemelt csomópontokon a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mező** **További részletek** gombjára lép. A **Box** nézeten belüli további áthelyezéshez használja a `Right arrow` és `Left arrow` a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
+- Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával megtekintheti az összes kapcsolatát, egyet pedig eggyel `Shift+Left arrow` . A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .    
 

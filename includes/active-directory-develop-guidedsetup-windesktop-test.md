@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,10 +15,10 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181535"
 ---
 ## <a name="test-your-code"></a>A kód tesztelése
@@ -39,7 +39,7 @@ Amikor először jelentkezik be az alkalmazásba, a rendszer arra kéri, hogy en
 
 ### <a name="view-application-results"></a>Alkalmazás eredményeinek megtekintése
 
-A bejelentkezést követően meg kell jelennie a Microsoft Graph API-nak a hívás által visszaadott felhasználói profil adatainak. Az eredmények az **API-hívás eredményei** mezőben jelennek meg. A jogkivonat `AcquireTokenInteractive` **információ** mezőjében a vagy `AcquireTokenSilent` a hívásakor beszerzett jogkivonatra vonatkozó alapszintű információk láthatók. Az eredmények a következő tulajdonságokat tartalmazzák:
+A bejelentkezést követően meg kell jelennie a Microsoft Graph API-nak a hívás által visszaadott felhasználói profil adatainak. Az eredmények az **API-hívás eredményei** mezőben jelennek meg. A jogkivonat információ mezőjében a vagy a hívásakor beszerzett jogkivonatra vonatkozó alapszintű információk `AcquireTokenInteractive` `AcquireTokenSilent` láthatók. **Token Info** Az eredmények a következő tulajdonságokat tartalmazzák:
 
 |Tulajdonság  |Formátum  |Leírás |
 |---------|---------|---------|

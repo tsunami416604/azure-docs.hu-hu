@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 4672a92ceba5dc52c717f76a705d0fa508ab41fd
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82515468"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL adattitkosításának ellenőrzése
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogy az adattitkosítás az ügyfél által felü
 
 1. Ha szeretné ellenőrizni, hogy az ügyfél kulcsát használja-e a rendszer a titkosításhoz, kövesse az alábbi lépéseket:
 
-    * A Azure Portal navigáljon a **Azure Key Vault** -> **kulcsaihoz**
+    * A Azure Portal navigáljon a **Azure Key Vault**  ->  **kulcsaihoz**
     * Válassza ki a kiszolgáló titkosításához használt kulcsot.
     * Állítsa **a kulcs állapotát** a **nem**értékre.
   

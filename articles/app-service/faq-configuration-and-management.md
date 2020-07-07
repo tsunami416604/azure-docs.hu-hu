@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160000"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
@@ -105,7 +105,7 @@ A biztonsági mentési hiba gyakori oka az, hogy egyes fájlokat az alkalmazás 
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Hogyan eltávolítani a HTTP-válasz fejlécét?
 
-Ha el szeretné távolítani a fejléceket a HTTP-válaszból, frissítse a webhely web. config fájlját. További információ: a [szabványos kiszolgálók fejlécének eltávolítása az Azure-webhelyeken](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
+Ha el szeretné távolítani a fejléceket a HTTP-válaszból, frissítse a hely web.config fájlját. További információ: a [szabványos kiszolgálók fejlécének eltávolítása az Azure-webhelyeken](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service megfelel a PCI standard 3,0-es és 3,1-es verziójának?
 
@@ -125,7 +125,7 @@ További információ az üzembe helyezési pontok használatáról: [átmeneti 
 
 Webjobs-naplók áttekintése:
 
-1. Jelentkezzen be a **kudu webhelyére** (`https://*yourwebsitename*.scm.azurewebsites.net`).
+1. Jelentkezzen be a **kudu webhelyére** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
 2. Válassza ki a Webjobs.
 3. Válassza a **kimenet váltása** gombot.
 4. A kimeneti fájl letöltéséhez válassza a **letöltési** hivatkozást.
@@ -147,7 +147,7 @@ A kivételt az a hibridkapcsolat-kezelő, amely azóta megoldódott. Ügyeljen r
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Hogyan adjon hozzá egy URL-átírási szabályt?
 
-URL-re vonatkozó Újraírási szabály hozzáadásához hozzon létre egy web. config fájlt a megfelelő konfigurációs bejegyzésekkel a **wwwroot** mappában. További információt az [Azure app Services: az URL-cím újraírásának ismertetése](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)című témakörben talál.
+URL-re vonatkozó Újraírási szabály hozzáadásához hozzon létre egy web.config fájlt a megfelelő konfigurációs bejegyzésekkel a **wwwroot** mappában. További információt az [Azure app Services: az URL-cím újraírásának ismertetése](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)című témakörben talál.
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Hogyan a bejövő forgalom vezérlését App Servicere?
 
@@ -302,7 +302,7 @@ Ha a feltételek egyike sem teljesül, és a probléma továbbra is fennáll, k�
 
 ## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>Hogyan bekapcsolja a saját tartalom HTTP-tömörítését?
 
-A statikus és a dinamikus tartalomtípusok tömörítésének bekapcsolásához adja hozzá a következő kódot az Application-Level web. config fájlhoz:
+A statikus és a dinamikus tartalomtípusok tömörítésének bekapcsolásához adja hozzá a következő kódot az alkalmazás szintű web.config fájlhoz:
 
 ```xml
 <system.webServer>

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195128"
 ---
 # <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>A HDInsight Azure Data Lake Storage Gen2 áttekintése
@@ -63,7 +63,7 @@ Az URI-séma SSL-titkosítású hozzáférést biztosít.
 
 `<PATH>`a fájl vagy a könyvtár HDFS elérési útja.
 
-Ha a és `<FILE_SYSTEM_NAME>` `<ACCOUNT_NAME>` a nem értéket adja meg, a rendszer az alapértelmezett fájlrendszert használja. Az alapértelmezett fájlrendszer fájljaihoz használjon relatív elérési útvonalat vagy abszolút elérési utat. Például a `hadoop-mapreduce-examples.jar` HDInsight-fürtökhöz tartozó fájl a következő elérési utak egyikének használatával hívható meg:
+Ha `<FILE_SYSTEM_NAME>` a és a `<ACCOUNT_NAME>` nem értéket adja meg, a rendszer az alapértelmezett fájlrendszert használja. Az alapértelmezett fájlrendszer fájljaihoz használjon relatív elérési útvonalat vagy abszolút elérési utat. Például a `hadoop-mapreduce-examples.jar` HDInsight-fürtökhöz tartozó fájl a következő elérési utak egyikének használatával hívható meg:
 
 ```
 abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -71,7 +71,7 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 ```
 
 > [!NOTE]
-> A fájlnév a 2,1 `hadoop-examples.jar` -es és a 1,6-es HDInsight-verzióban található. Ha a HDInsight-en kívül található fájlokkal dolgozik, a legtöbb segédprogram nem ismeri fel a ABFS formátumát, hanem egy alapszintű elérésiút-formátumot vár `example/jars/hadoop-mapreduce-examples.jar`, például:.
+> A fájlnév a 2,1-es `hadoop-examples.jar` és a 1,6-es HDInsight-verzióban található. Ha a HDInsight-en kívül található fájlokkal dolgozik, a legtöbb segédprogram nem ismeri fel a ABFS formátumát, hanem egy alapszintű elérésiút-formátumot vár, például: `example/jars/hadoop-mapreduce-examples.jar` .
 
 További információ: [a Azure Data Lake Storage GEN2 URI használata](../storage/blobs/data-lake-storage-introduction-abfs-uri.md).
 

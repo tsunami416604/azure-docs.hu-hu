@@ -4,10 +4,10 @@ description: Alkalmazások teljesítményének figyelése bármilyen környezetb
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508037"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>A JVM-argumentumok konfigurálása a Java önálló ügynöke Azure Monitor Application Insights
@@ -20,7 +20,7 @@ ms.locfileid: "82508037"
 
 ## <a name="spring-boot"></a>Spring Boot
 
-Adja hozzá a JVM `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` ARG `-jar`-t valahol, például:
+Adja hozzá a JVM ARG `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` -t valahol `-jar` , például:
 
 ```
 java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
@@ -28,13 +28,13 @@ java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.
 
 ## <a name="spring-boot-via-docker-entry-point"></a>Spring boot a Docker belépési pontján keresztül
 
-Ha az *exec* űrlapot használja, adja hozzá `"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"` a paramétert a paraméterhez a paraméter előtt `"-jar"` (például:).
+Ha az *exec* űrlapot használja, adja hozzá a paramétert a paraméterhez a paraméter `"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"` előtt `"-jar"` (például:).
 
 ```
 ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar", "-jar", "<myapp.jar>"]
 ```
 
-Ha a *rendszerhéj* -űrlapot használja, adja hozzá a JVM ARG `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar`-t valahol, például:
+Ha a *rendszerhéj* -űrlapot használja, adja hozzá a JVM ARG `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` -t valahol `-jar` , például:
 
 ```
 ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
@@ -44,7 +44,7 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -
 
 ### <a name="tomcat-installed-via-apt-get-or-yum"></a>Tomcat telepítve a `apt-get` vagy a használatával`yum`
 
-Ha a Tomcat-t `apt-get` a `yum`vagy a használatával telepítette, akkor `/etc/tomcat8/tomcat8.conf`rendelkeznie kell egy fájllal.  Adja hozzá ezt a sort a fájl végéhez:
+Ha a Tomcat-t a vagy a használatával telepítette `apt-get` `yum` , akkor rendelkeznie kell egy fájllal `/etc/tomcat8/tomcat8.conf` .  Adja hozzá ezt a sort a fájl végéhez:
 
 ```
 JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
@@ -52,20 +52,20 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW
 
 ### <a name="tomcat-installed-via-download-and-unzip"></a>A Tomcat a letöltés és a kicsomagolás használatával lett telepítve
 
-Ha a Tomcat-t a [https://tomcat.apache.org](https://tomcat.apache.org)letöltésével és kicsomagolásával telepítette, akkor `<tomcat>/bin/catalina.sh`rendelkeznie kell egy fájllal.  Hozzon létre egy új fájlt a nevű `<tomcat>/bin/setenv.sh` könyvtárban a következő tartalommal:
+Ha a Tomcat-t a letöltésével és kicsomagolásával telepítette [https://tomcat.apache.org](https://tomcat.apache.org) , akkor rendelkeznie kell egy fájllal `<tomcat>/bin/catalina.sh` .  Hozzon létre egy új fájlt a nevű könyvtárban a `<tomcat>/bin/setenv.sh` következő tartalommal:
 
 ```
 CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
 ```
 
-Ha a fájl `<tomcat>/bin/setenv.sh` már létezik, módosítsa a fájlt, és adja `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` hozzá `CATALINA_OPTS`a következőt:.
+Ha a fájl `<tomcat>/bin/setenv.sh` már létezik, módosítsa a fájlt, és adja hozzá a következőt: `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `CATALINA_OPTS` .
 
 
 ## <a name="tomcat-8-windows"></a>Tomcat 8 (Windows)
 
 ### <a name="running-tomcat-from-the-command-line"></a>A Tomcat futtatása a parancssorból
 
-Keresse meg a `<tomcat>/bin/catalina.bat`fájlt.  Hozzon létre egy új fájlt a nevű `<tomcat>/bin/setenv.bat` könyvtárban a következő tartalommal:
+Keresse meg a fájlt `<tomcat>/bin/catalina.bat` .  Hozzon létre egy új fájlt a nevű könyvtárban a `<tomcat>/bin/setenv.bat` következő tartalommal:
 
 ```
 set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar
@@ -77,18 +77,18 @@ Az idézőjelek nem szükségesek, de ha be szeretné vonni őket, a megfelelő 
 set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
 ```
 
-Ha a fájl `<tomcat>/bin/setenv.bat` már létezik, csak módosítsa a fájlt, és `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` adja `CATALINA_OPTS`hozzá a következőt:.
+Ha a fájl `<tomcat>/bin/setenv.bat` már létezik, csak módosítsa a fájlt, és adja hozzá a következőt: `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `CATALINA_OPTS` .
 
 ### <a name="running-tomcat-as-a-windows-service"></a>A Tomcat futtatása Windows-szolgáltatásként
 
-Keresse meg a `<tomcat>/bin/tomcat8w.exe`fájlt.  Futtassa ezt a végrehajtható fájlt `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` , és `Java Options` adja hozzá `Java` a parancsot a lapon.
+Keresse meg a fájlt `<tomcat>/bin/tomcat8w.exe` .  Futtassa ezt a végrehajtható fájlt, és adja hozzá a parancsot a `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `Java Options` `Java` lapon.
 
 
 ## <a name="jboss-eap-7"></a>JBoss EAP 7
 
 ### <a name="standalone-server"></a>Önálló kiszolgáló
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` a fájl `JAVA_OPTS` `JBOSS_HOME/bin/standalone.conf` meglévő környezeti változóhoz (Linux) vagy `JBOSS_HOME/bin/standalone.conf.bat` (Windows):
+Hozzáadás a `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` fájl meglévő `JAVA_OPTS` környezeti változóhoz `JBOSS_HOME/bin/standalone.conf` (Linux) vagy `JBOSS_HOME/bin/standalone.conf.bat` (Windows):
 
 ```java    ...
     JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar</b> -Xms1303m -Xmx1303m ..."
@@ -97,7 +97,7 @@ Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` a f
 
 ### <a name="domain-server"></a>Tartományi kiszolgáló
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` a meglévőhöz `jvm-options` a `JBOSS_HOME/domain/configuration/host.xml`következőben:
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` a meglévőhöz a `jvm-options` következőben `JBOSS_HOME/domain/configuration/host.xml` :
 
 ```xml
 ...
@@ -116,7 +116,7 @@ Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` a m
 ...
 ```
 
-Ha több felügyelt kiszolgálót futtat egyetlen gazdagépen, akkor mindegyikhez `applicationinsights.agent.id` `system-properties` `server`hozzá kell adnia a következőhöz:
+Ha több felügyelt kiszolgálót futtat egyetlen gazdagépen, akkor mindegyikhez hozzá kell adnia `applicationinsights.agent.id` a `system-properties` következőhöz `server` :
 
 ```xml
 ...
@@ -138,7 +138,7 @@ Ha több felügyelt kiszolgálót futtat egyetlen gazdagépen, akkor mindegyikhe
 ...
 ```
 
-A megadott `applicationinsights.agent.id` értéknek egyedinek kell lennie. A rendszer a applicationinsights könyvtárában létrehoz egy alkönyvtárat, mivel minden JVM-folyamathoz saját helyi applicationinsights-konfiguráció és helyi applicationinsights-naplófájl szükséges. Ha a központi gyűjtőnek jelent jelentést, a `applicationinsights.properties` fájlt a több felügyelt kiszolgáló is megosztja, ezért a megadott `applicationinsights.agent.id` érték szükséges a megosztott fájl `agent.id` beállításainak felülbírálásához. `applicationinsights.agent.rollup.id`Hasonlóképpen megadható a kiszolgálón, `system-properties` ha a `agent.rollup.id` beállítást egy felügyelt kiszolgálón kell felülbírálni.
+A megadott `applicationinsights.agent.id` értéknek egyedinek kell lennie. A rendszer a applicationinsights könyvtárában létrehoz egy alkönyvtárat, mivel minden JVM-folyamathoz saját helyi applicationinsights-konfiguráció és helyi applicationinsights-naplófájl szükséges. Ha a központi gyűjtőnek jelent jelentést, a `applicationinsights.properties` fájlt a több felügyelt kiszolgáló is megosztja, ezért a megadott érték `applicationinsights.agent.id` szükséges a `agent.id` megosztott fájl beállításainak felülbírálásához. `applicationinsights.agent.rollup.id`Hasonlóképpen megadható a kiszolgálón, `system-properties` Ha a `agent.rollup.id` beállítást egy felügyelt kiszolgálón kell felülbírálni.
 
 
 ## <a name="jetty-9"></a>3. Jetty
@@ -153,7 +153,7 @@ Sorok hozzáadása a következőhöz`start.ini`
 
 ## <a name="payara-5"></a>5. Payara
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` a meglévőhöz `jvm-options` a `glassfish/domains/domain1/config/domain.xml`következőben:
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` a meglévőhöz a `jvm-options` következőben `glassfish/domains/domain1/config/domain.xml` :
 
 ```xml
 ...
@@ -183,7 +183,7 @@ Ezután mentse és indítsa újra az alkalmazást.
 
 ## <a name="openliberty-18"></a>OpenLiberty 18
 
-Hozzon létre egy `jvm.options` új fájlt a kiszolgáló könyvtárában ( `<openliberty>/usr/servers/defaultServer`például), és adja hozzá a következő sort:
+Hozzon létre egy új fájlt `jvm.options` a kiszolgáló könyvtárában (például `<openliberty>/usr/servers/defaultServer` ), és adja hozzá a következő sort:
 ```
 -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar
 ```

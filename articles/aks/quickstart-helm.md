@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
 ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82169568"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Gyors útmutató: fejlesztés az Azure Kubernetes Service-ben (ak) a Helmtal
@@ -94,7 +94,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
-Ez a rövid útmutató [egy példa Node. js-alkalmazást használ az Azure dev Spaces minta adattárból][example-nodejs]. Klónozott az alkalmazást a GitHubról, és navigáljon a `dev-spaces/samples/nodejs/getting-started/webfrontend` címtárhoz.
+Ez a rövid útmutató [egy példát Node.js alkalmazást használ az Azure dev Spaces minta adattárból][example-nodejs]. Klónozott az alkalmazást a GitHubról, és navigáljon a `dev-spaces/samples/nodejs/getting-started/webfrontend` címtárhoz.
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -138,7 +138,7 @@ docker push <acrLoginServer>/webfrontend:v1
 
 ## <a name="create-your-helm-chart"></a>A Helm-diagram létrehozása
 
-A Helm-diagramot a `helm create` parancs használatával hozhatja ki.
+A Helm-diagramot a parancs használatával hozhatja ki `helm create` .
 
 ```console
 helm create webfrontend
@@ -198,7 +198,7 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Nyissa meg az alkalmazás terheléselosztó eszközét egy böngészőben a `<EXTERNAL-IP>` használatával, és tekintse meg a minta alkalmazást.
+Nyissa meg az alkalmazás terheléselosztó eszközét egy böngészőben a használatával `<EXTERNAL-IP>` , és tekintse meg a minta alkalmazást.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 

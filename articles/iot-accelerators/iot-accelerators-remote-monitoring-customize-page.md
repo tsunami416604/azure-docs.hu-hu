@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: c90f4166bf88a8df18a93e84903c93461b904d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187262"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni lap hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületéhez
@@ -51,11 +51,11 @@ Ha egy oldalt szeretne felvenni a webes felhasználói felületre, fel kell venn
 
 Az első lépésekhez az **src/walkthrough/Components/Pages/basicPage** mappa négy olyan fájlt tartalmaz, amelyek egy egyszerű lapot határoznak meg:
 
-**basicPage. Container. js**
+**basicPage.container.js**
 
 [!code-javascript[Page container source](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.container.js?name=container "Page container source")]
 
-**basicPage. js**
+**basicPage.js**
 
 [!code-javascript[Basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.js?name=page "Basic page")]
 
@@ -63,7 +63,7 @@ Az első lépésekhez az **src/walkthrough/Components/Pages/basicPage** mappa n�
 
 [!code-javascript[Page styling](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.scss?name=styles "Page styling")]
 
-**basicPage. test. js**
+**basicPage.test.js**
 
 [!code-javascript[Test code for basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.test.js?name=test "Test code for basic page")]
 
@@ -73,7 +73,7 @@ Hozzon létre egy új mappát **src/Components/Pages/example** , és másolja ez
 
 Az új oldal webes felhasználói felületen való hozzáadásához hajtsa végre a következő módosításokat a meglévő fájlokon:
 
-1. Adja hozzá az új oldal tárolót a **src/Components/Pages/index. js** fájlhoz:
+1. Adja hozzá az új oldal tárolót a **src/Components/Pages/index.js** fájlhoz:
 
     ```js
     export * from './example/basicPage.container';
@@ -81,7 +81,7 @@ Az új oldal webes felhasználói felületen való hozzáadásához hajtsa végr
 
 1. Választható  Adjon hozzá egy SVG-ikont az új laphoz. További információ: [WebUI/src/Utilities/readme. MD](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/utilities/README.md). Meglévő SVG-fájlt is használhat.
 
-1. Adja hozzá az oldal nevét a translations ( **nyilvános/helyi)/en/translations. JSON**fájlhoz. A webes felhasználói felület [i18next](https://www.i18next.com/) használ a honosításhoz.
+1. Adja hozzá az oldal nevét a fordítási fájlhoz, a **nyilvános/területi beállítások/en/translations.jsa**következőn:. A webes felhasználói felület [i18next](https://www.i18next.com/) használ a honosításhoz.
 
     ```json
     "tabs": {
@@ -89,7 +89,7 @@ Az új oldal webes felhasználói felületen való hozzáadásához hajtsa végr
     },
     ```
 
-1. Nyissa meg a legfelső szintű alkalmazás lapját meghatározó **src/Components/app. js** fájlt. Adja hozzá az új lapot az Importálások listájához:
+1. Nyissa meg a legfelső szintű alkalmazás lapját meghatározó **src/Components/app.js** fájlt. Adja hozzá az új lapot az Importálások listájához:
 
     ```javascript
     // Page Components
@@ -99,7 +99,7 @@ Az új oldal webes felhasználói felületen való hozzáadásához hajtsa végr
     } from './pages';
     ```
 
-1. Ugyanebben a fájlban adja hozzá az új lapot a `pagesConfig` tömbhöz. Állítsa be `to` az útvonalhoz tartozó címeket, HIVATKOZZON az SVG ikonjára és a korábban hozzáadott fordításokra `component` , majd állítsa be a lapot a következő tárolóra:
+1. Ugyanebben a fájlban adja hozzá az új lapot a `pagesConfig` tömbhöz. Állítsa be az `to` útvonalhoz tartozó címeket, hivatkozzon az SVG ikonjára és a korábban hozzáadott fordításokra, majd állítsa be a `component` lapot a következő tárolóra:
 
     ```js
     const pagesConfig = [
@@ -115,7 +115,7 @@ Az új oldal webes felhasználói felületen való hozzáadásához hajtsa végr
     ];
     ```
 
-1. Adja hozzá az új navigációs elemeket `crumbsConfig` a tömbhöz:
+1. Adja hozzá az új navigációs elemeket a `crumbsConfig` tömbhöz:
 
     ```js
     const crumbsConfig = [
@@ -142,7 +142,7 @@ npm install
 npm start
 ```
 
-Az előző parancs helyileg futtatja a felhasználói `http://localhost:3000/dashboard`felületet.
+Az előző parancs helyileg futtatja a felhasználói felületet `http://localhost:3000/dashboard` .
 
 A webes felhasználói felület helyi példányának a megoldás-gyorsító üzembe helyezett példányához való csatlakoztatása nélkül az irányítópulton hibaüzenetek jelennek meg. Ezek a hibák nem érintik az új oldal tesztelésének lehetőségét.
 

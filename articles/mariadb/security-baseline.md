@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 2d78a7e0eaed27fec7f813fa3e6bffaffe5a6540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186169"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure Database for MariaDB Azure biztonsági alapterve
@@ -118,7 +118,7 @@ Komplex veszélyforrások elleni védelem konfigurálása Azure Database for Mar
 **Útmutató**: a Azure Database for MariaDB példányokhoz hozzáférést igénylő erőforrásokhoz használjon virtuális hálózati szolgáltatás címkéit a hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlés definiálásához. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatási címke nevének (például: SQL) megadásával. WestUs) a szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 Megjegyzés: Azure Database for MariaDB a "Microsoft. SQL" szolgáltatás címkéjét használja.
 
-A szolgáltatás-címkék https://docs.microsoft.com/azure/virtual-network/service-tags-overview használatával kapcsolatos további információkért tekintse meg a Azure Database for MariaDB szolgáltatás használati címkéjének használatát ismertető témakört:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
+A szolgáltatás-címkék használatával kapcsolatos további információkért tekintse meg a https://docs.microsoft.com/azure/virtual-network/service-tags-overview Azure Database for MariaDB szolgáltatás használati címkéjének használatát ismertető témakört:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
 
 
 
@@ -190,7 +190,7 @@ Az Azure-Tevékenységnaplók eseményeinek megtekintése és beolvasása: https
 **Útmutató**: a diagnosztikai beállítások és a kiszolgálói naplók engedélyezése, valamint a naplók beolvasása a Azure Database for MariaDB példányai által generált biztonsági adatokat összesítve. A Azure Monitoron belül Log Analytics munkaterület (ek) használatával kérdezheti le és végezheti el az elemzéseket, és használhatja az Azure Storage-fiókokat a hosszú távú/archiválási tároláshoz. Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 A Azure Database for MariaDB kiszolgáló naplófájljainak konfigurálása és elérése:https://docs.microsoft.com/azure/mariadb/concepts-server-logs
 
-Naplózási naplók konfigurálása és elérése Azure Database for MariaDB: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal az Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Naplózási naplók konfigurálása és elérése Azure Database for MariaDB: az https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Azure Sentinel előkészítése:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 
 
@@ -202,7 +202,7 @@ Naplózási naplók konfigurálása és elérése Azure Database for MariaDB: ht
 
 **Útmutató**: a diagnosztikai beállítások engedélyezése a Azure Database for MariaDB példányokon a naplózási, biztonsági és diagnosztikai naplókhoz való hozzáféréshez. Győződjön meg arról, hogy kifejezetten engedélyezi a MariaDB-naplót. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek. Engedélyezheti az Azure-műveletnapló diagnosztikai beállításait is, és elküldheti a naplókat ugyanarra a Log Analytics munkaterületre vagy Storage-fiókba.
 
-Azure Database for MariaDB kiszolgáló naplófájljainak konfigurálása és elérése: https://docs.microsoft.com/azure/mariadb/concepts-server-logs a Azure Database for MariaDB https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal naplózási naplóinak konfigurálása és elérése: az Azure-beli tevékenység naplójának diagnosztikai beállításainak konfigurálása:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Azure Database for MariaDB kiszolgáló naplófájljainak konfigurálása és elérése: a https://docs.microsoft.com/azure/mariadb/concepts-server-logs Azure Database for MariaDB naplózási naplóinak konfigurálása és elérése: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Az Azure-beli tevékenység naplójának diagnosztikai beállításainak konfigurálása:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 
 
@@ -222,7 +222,7 @@ Azure Database for MariaDB kiszolgáló naplófájljainak konfigurálása és el
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
 **Útmutató**: a Azure monitoron belül a Azure Database for MariaDB-naplók tárolására szolgáló log Analytics munkaterülethez a szervezet megfelelőségi szabályainak megfelelően állítsa be a megőrzési időszakot. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
-Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period : erőforrás-naplók tárolása Azure Storage-fiókban:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period erőforrás-naplók tárolása Azure Storage-fiókban:https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
 
 
@@ -896,7 +896,7 @@ Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:https
 
 A Azure Database for MariaDB-kiszolgáló elérésére használt Azure App Service-on futó Azure-Virtual Machines vagy webalkalmazások esetén a Managed Service Identity a Azure Key Vault a Azure Database for MariaDB kiszolgáló hitelesítő adatainak tárolására és lekérésére használható.  Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
 
-Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását Azure Active Directoryban (AD). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül. Felügyelt identitások konfigurálása: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm. Integráció az Azure felügyelt identitásokkal: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity.
+Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását Azure Active Directoryban (AD). A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül. Felügyelt identitások konfigurálása: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm . Integráció az Azure felügyelt identitásokkal: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity .
 
 
 

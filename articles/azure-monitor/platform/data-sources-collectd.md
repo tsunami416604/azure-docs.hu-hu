@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186424"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Adatgyűjtés a Linux-ügynököktől a Azure Monitor-ban gyűjtött adatokból
@@ -45,12 +45,12 @@ Emellett, ha a 5,5 előtt összegyűjtött verziót használ, a következő konf
        </URL>
     </Plugin>
 
-A gyűjtött konfiguráció az alapértelmezett`write_http` beépülő modullal küldi el a teljesítmény-metrikai adatokat az 26000-as porton keresztül a Linux-ügynök log Analytics. 
+A gyűjtött konfiguráció az alapértelmezett `write_http` beépülő modullal küldi el a teljesítmény-metrikai adatokat az 26000-as porton keresztül a Linux-ügynök log Analytics. 
 
 > [!NOTE]
 > Ha szükséges, a port egy egyéni által megadott portra is konfigurálható.
 
-A Linux rendszerhez készült Log Analytics-ügynök az 26000-es portot is figyeli a begyűjtött metrikák esetében, majd átalakítja őket Azure Monitor séma-metrikára. A Linux-konfiguráció `collectd.conf`log Analytics ügynöke a következő:
+A Linux rendszerhez készült Log Analytics-ügynök az 26000-es portot is figyeli a begyűjtött metrikák esetében, majd átalakítja őket Azure Monitor séma-metrikára. A Linux-konfiguráció Log Analytics ügynöke a következő: `collectd.conf`
 
     <source>
       type http
@@ -70,7 +70,7 @@ A Linux rendszerhez készült Log Analytics-ügynök az 26000-es portot is figye
 - Log Analytics ügynök a Linux v 1.1.0-217-es vagy újabb verzióhoz szükséges a begyűjtött metrika-gyűjteményhez.
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 Az alábbi alapszintű lépések a begyűjtött adatok gyűjtésének konfigurálására szolgálnak Azure Monitorban.
 
 1. Konfigurálja a begyűjtött adatokat a Linux Log Analytics-ügynöknek a write_http beépülő modullal való adatküldéshez.  
@@ -79,7 +79,7 @@ Az alábbi alapszintű lépések a begyűjtött adatok gyűjtésének konfigurá
 
 ### <a name="configure-collectd-to-forward-data"></a>A begyűjtött adatok továbbításának beállítása 
 
-1. A gyűjtött adatoknak a Linux `oms.conf` rendszerhez készült log Analytics-ügynökbe való átirányításához hozzá kell adni a gyűjtött konfigurációs könyvtárhoz. A fájl célja a számítógép linuxos disztribúciója.
+1. A gyűjtött adatoknak a Linux rendszerhez készült Log Analytics-ügynökbe való átirányításához `oms.conf` hozzá kell adni a gyűjtött konfigurációs könyvtárhoz. A fájl célja a számítógép linuxos disztribúciója.
 
     Ha a gyűjtött konfigurációs könyvtár a/etc/collectd.d/-ben található:
 
@@ -90,7 +90,7 @@ Az alábbi alapszintű lépések a begyűjtött adatok gyűjtésének konfigurá
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >A 5,5 előtti összegyűjtött verziók esetében módosítania kell a címkéket a fent látható `oms.conf` módon.
+    >A 5,5 előtti összegyűjtött verziók esetében módosítania kell a címkéket a `oms.conf` fent látható módon.
     >
 
 2. Másolja a Collected. conf fájlt a kívánt munkaterület omsagent-konfigurációs könyvtárába.

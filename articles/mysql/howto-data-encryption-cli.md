@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 3c33fdb114356af7707c1aae2eddefd81bf10b9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185829"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure Database for MySQL adattitkosítás az Azure CLI használatával
@@ -132,7 +132,7 @@ Ez a Azure Resource Manager sablon létrehoz egy Azure Database for MySQL-kiszol
 ### <a name="for-an-existing-server"></a>Meglévő kiszolgáló esetén
 Emellett Azure Resource Manager-sablonokkal is engedélyezheti az adattitkosítást a meglévő Azure Database for MySQL-kiszolgálókon.
 
-* Adja meg a korábban a tulajdonságok objektum alatt `Uri` másolt Azure Key Vault kulcs erőforrás-azonosítóját.
+* Adja meg a korábban a tulajdonságok objektum alatt másolt Azure Key Vault kulcs erőforrás-AZONOSÍTÓját `Uri` .
 
 * Használja az *2020-01-01-Preview API-* verziót.
 

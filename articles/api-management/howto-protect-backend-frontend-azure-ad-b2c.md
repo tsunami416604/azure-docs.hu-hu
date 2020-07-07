@@ -15,10 +15,10 @@ ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
 ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202876"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Az OAuth 2,0, a Azure Active Directory B2C és az Azure API Management által védett SPA-háttérrendszer
@@ -68,7 +68,7 @@ Nyissa meg a Azure AD B2C panelt a portálon, és hajtsa végre a következő l�
    * Választható A API Management fejlesztői portálon (kivéve, ha az Azure API Managementt a felhasználási szinten futtatja, további információ a forgatókönyvről később).
 1. Állítsa be a WebApp/web API-t mind a 3 alkalmazáshoz, és állítsa az "implicit flow engedélyezése" beállítást Igen értékre csak a előtér-ügyfél számára.
 1. Most állítsa be az alkalmazás-azonosító URI-JÁT, válassza ki a létrehozni kívánt szolgáltatás egyedi és releváns elemét.
-1. A válasz URL-címeihez helyőrzőket használhat https://localhost, például az URL-eket később frissíti.
+1. A válasz URL-címeihez helyőrzőket használhat, például az https://localhost URL-eket később frissíti.
 1. Kattintson a Létrehozás elemre, majd ismételje meg a 2-5. lépést a fenti három alkalmazásnál, rögzítse a AppID URI-JÁT, a nevet és az alkalmazás AZONOSÍTÓját, hogy az a későbbiekben mindhárom alkalmazást használja.
 1. Nyissa meg a API Management fejlesztői portál alkalmazást az alkalmazások listájából, és válassza a *kulcsok* fület (általános), majd kattintson a kulcs generálása elemre egy hitelesítési kulcs létrehozásához.
 1. A Save (Mentés) gombra való kattintás után rögzítse a kulcsot valahol a későbbi használat érdekében – vegye figyelembe, hogy ez a hely az egyetlen lehetőség a kulcs megtekintésére és másolására.
@@ -148,12 +148,12 @@ Nyissa meg a Azure AD B2C panelt a portálon, és hajtsa végre a következő l�
 5. Váltson vissza a HttpTrigger1 lapra, kattintson a "függvény URL-címének beolvasása" elemre, majd másolja ki a megjelenő URL-címet.
 
    > [!NOTE]
-   > Az imént létrehozott kötések egyszerűen csak azt mondják, hogy a függvények válaszolnak a névtelen http GET kérelmekre az imént másolt URL-címre. (`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`) Most már van egy méretezhető, kiszolgáló nélküli HTTPS API-je, amely képes egy nagyon egyszerű hasznos adat visszaküldésére.
+   > Az imént létrehozott kötések egyszerűen csak azt mondják, hogy a függvények válaszolnak a névtelen http GET kérelmekre az imént másolt URL-címre. ( `https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey` ) Most már van egy méretezhető, kiszolgáló nélküli HTTPS API-je, amely képes egy nagyon egyszerű hasznos adat visszaküldésére.
    > Most már tesztelheti ezt az API-t egy webböngészőből a fenti URL-cím használatával, és a? Code = Secret részét is megadhatja az URL-címben, és igazolhatja, hogy a Azure Functions 401 hibát ad vissza.
 
 ## <a name="configure-and-secure-the-function-api"></a>A Function API konfigurálása és biztonságossá tétele
 1. A Function alkalmazás két további területét kell konfigurálni (hitelesítési és hálózati korlátozásokat).
-1. Először konfigurálja a hitelesítést/engedélyezést, ezért kattintson a Function alkalmazás nevére (a &lt;Z&gt; functions ikon mellett) az Áttekintés oldal megjelenítéséhez.
+1. Először konfigurálja a hitelesítést/engedélyezést, ezért kattintson a Function alkalmazás nevére (a &lt; Z &gt; functions ikon mellett) az Áttekintés oldal megjelenítéséhez.
 1. Ezután válassza a "platform szolgáltatások" fület, és válassza a "hitelesítés/engedélyezés" lehetőséget.
 1. Kapcsolja be a App Service hitelesítési funkciót.
 1. A "hitelesítő szolgáltatók" területen válassza a "Azure Active Directory" lehetőséget, és válassza a "speciális" lehetőséget a felügyeleti mód kapcsolóból.
@@ -257,9 +257,9 @@ A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha e
 1. Nyissa meg a Azure AD B2C panelt, és navigáljon az alkalmazás regisztrálásához a fejlesztői portálon
 1. Állítsa be a "válasz URL-címe" bejegyzést arra a megjegyzett értékre, amelyet a API Management korábbi hitelesítési kód engedélyezésének redirect_uri konfigurált.
 
-   Most, hogy a OAuth 2,0 felhasználói hitelesítés engedélyezve van a `Echo API`-ben, a fejlesztői konzol a felhasználó számára hozzáférési jogkivonatot szerez be az API meghívása előtt.
+   Most, hogy a OAuth 2,0 felhasználói hitelesítés engedélyezve van a `Echo API` -ben, a fejlesztői konzol a felhasználó számára hozzáférési jogkivonatot szerez be az API meghívása előtt.
 
-1. Tallózással keresse meg a fejlesztői `Echo API` portálon található bármelyik műveletet, és válassza a **kipróbálás** lehetőséget a fejlesztői konzol létrehozásához.
+1. Tallózással keresse meg a `Echo API` fejlesztői portálon található bármelyik műveletet, és válassza a **kipróbálás** lehetőséget a fejlesztői konzol létrehozásához.
 1. Jegyezze fel, hogy az **engedélyezési** szakasz egy új eleme, amely az imént hozzáadott engedélyezési kiszolgálónak felel meg.
 1. Válassza az engedélyezési **kód** lehetőséget az engedélyezés legördülő listából, és a rendszer felszólítja, hogy jelentkezzen be az Azure ad-bérlőbe. Ha már bejelentkezett a fiókkal, előfordulhat, hogy a rendszer nem kérdezi le.
 1. A sikeres bejelentkezés után a rendszer egy `Authorization: Bearer` fejlécet ad hozzá a kérelemhez, amely a Azure ad B2C Base64-kódolású hozzáférési jogkivonattal rendelkezik. 
@@ -283,7 +283,7 @@ A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha e
 ## <a name="build-the-javascript-spa-to-consume-the-api"></a>A JavaScript SPA felépítése az API használatára
 1. Nyissa meg a Storage-fiókok panelt a Azure Portal 
 1. Válassza ki a létrehozott fiókot, és válassza a "statikus webhely" panelt a beállítások szakaszban (ha nem jelenik meg a "statikus webhely" beállítás, ellenőrizze, hogy létrehozott-e v2-fiókot).
-1. Állítsa a statikus web hosting szolgáltatást "enabled" értékre, és állítsa az index dokumentum nevét az "index. html" értékre, majd kattintson a Save (Mentés) gombra.
+1. Állítsa a statikus web hosting szolgáltatást "engedélyezve" értékre, és állítsa az index dokumentum nevét "index.html" értékre, majd kattintson a Save (Mentés) gombra.
 1. Jegyezze fel az elsődleges végpont tartalmát, mivel ez a hely, ahol a előtér-helyet üzemeltetni fogja. 
 
    > [!NOTE]
@@ -291,7 +291,7 @@ A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha e
 
 ## <a name="upload-the-js-spa-sample"></a>A JS SPA-minta feltöltése
 1. Továbbra is a Storage-fiók panelen jelölje ki a "Blobok" panelt a blob szolgáltatás szakaszban, majd kattintson a jobb oldali ablaktáblán megjelenő $web tárolóra.
-1. Mentse az alábbi kódot egy, a gépen helyileg található fájlba index. html néven, majd töltse fel a fájl index. html fájlt a $web tárolóba.
+1. Mentse az alábbi kódot egy, a gépen helyileg található fájlba index.html néven, majd töltse fel a index.html fájlt a $web tárolóba.
 
    ```html
    <!doctype html>
@@ -415,7 +415,7 @@ A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha e
 
 ## <a name="configure-the-js-spa-for-azure-ad-b2c"></a>A JS SPA konfigurálása Azure AD B2Choz
 1. Most már tudjuk, hol vannak: az SPA-t konfigurálhatja a megfelelő API Management API-címnek és a megfelelő Azure AD B2C alkalmazás-/ügyfél-azonosítóknak megfelelően.
-1. Lépjen vissza a Azure Portal Storage panelre, és kattintson az index. html elemre, majd válassza a "blob szerkesztése" lehetőséget. 
+1. Lépjen vissza a Azure Portal Storage panelre, és kattintson a index.html elemre, majd válassza a "blob szerkesztése" lehetőséget. 
 1. Frissítse az Auth részleteit úgy, hogy az megfeleljen a B2C-ben korábban regisztrált előtér-alkalmazásnak, és azt, hogy az "b2cScopes" értékek az API-háttérhez tartoznak.
 1. A webApi kulcs és az API URL-címe az API-művelet API Management teszt paneljén található.
 1. Hozzon létre egy APIM-előfizetési kulcsot fejléc szerint a API Management vissza a API Management panelre, majd válassza az "előfizetések" lehetőséget, és kattintson az "előfizetés hozzáadása" gombra, majd mentse a rekordot. A létrehozott sor melletti három pontra (...) kattintva megjelenítheti a kulcsokat, így az elsődleges kulcs másolását is lehetővé teszi.

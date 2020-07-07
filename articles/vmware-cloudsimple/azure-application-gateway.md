@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185693"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>Az Azure Application Gateway használata VMware virtuális gépekkel a CloudSimple privát felhőalapú környezetében
@@ -71,7 +71,7 @@ Az erre vonatkozó részletes utasítások az [Application Gateway létrehozása
 
 1. Hozzon létre egy virtuális hálózatot az előfizetésben és az erőforráscsoporthoz.
 2. Hozzon létre egy alhálózatot (amelyet dedikált alhálózatként kíván használni) a virtuális hálózaton belül.
-3. Hozzon létre egy szabványos Application Gateway (opcionálisan engedélyezze a WAF): a Azure Portal kezdőlapon kattintson az **erőforrás** > **hálózatkezelés** > **Application Gateway** elemre a lap bal felső részén. Válassza ki a szabványos SKU-t és méretet, és adja meg az Azure-előfizetést, az erőforráscsoport és a hely adatait. Ha szükséges, hozzon létre egy új nyilvános IP-címet az Application Gateway számára, és adja meg a virtuális hálózat és az Application Gateway dedikált alhálózata adatait.
+3. Hozzon létre egy szabványos Application Gateway (opcionálisan engedélyezze a WAF): a Azure Portal kezdőlapon kattintson az **erőforrás**  >  **hálózatkezelés**  >  **Application Gateway** elemre a lap bal felső részén. Válassza ki a szabványos SKU-t és méretet, és adja meg az Azure-előfizetést, az erőforráscsoport és a hely adatait. Ha szükséges, hozzon létre egy új nyilvános IP-címet az Application Gateway számára, és adja meg a virtuális hálózat és az Application Gateway dedikált alhálózata adatait.
 4. Vegyen fel egy háttér-készletet a virtuális gépekkel, és adja hozzá az Application gatewayhez.
 
 ## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. webkiszolgálós virtuálisgép-készlet létrehozása és konfigurálása a saját felhőben

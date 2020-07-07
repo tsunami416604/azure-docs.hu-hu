@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
 ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232853"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes felületével
@@ -29,7 +29,7 @@ Az [Apache Ambari](https://ambari.apache.org) egy könnyen használható webes f
 
 ## <a name="connectivity"></a>Kapcsolatok
 
-A Ambari webes felhasználói felülete a HDInsight `https://CLUSTERNAME.azurehdinsight.net`-fürtön érhető el `CLUSTERNAME` , ahol a a fürt neve.
+A Ambari webes felhasználói felülete a HDInsight-fürtön érhető el `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
 > [!IMPORTANT]  
 > A HDInsight Ambari-hez való csatlakozáshoz HTTPS szükséges. Ha a rendszer a hitelesítésre kéri, használja a fürt létrehozásakor megadott rendszergazdai fiók nevét és jelszavát. Ha a rendszer nem kéri a hitelesítő adatok megadását, ellenőrizze a hálózati beállításokat, és győződjön meg arról, hogy az ügyfél és az Azure HDInsight-fürtök között nincs kapcsolati probléma.
@@ -49,7 +49,7 @@ Amikor megnyílik az oldal, jegyezze fel a felső sávot. Ez a sáv a következ�
 
 ![Apache Ambari-irányítópult – áttekintés](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Elem |Leírás |
+|Item |Leírás |
 |---|---|
 |Ambari embléma|Megnyitja az irányítópultot, amely a fürt figyelésére használható.|
 |Fürt neve # Ops|A folyamatban lévő Ambari-műveletek számát jeleníti meg. A fürt nevének kiválasztásakor vagy az **# Ops** megjeleníti a háttérben futó műveletek listáját.|
@@ -153,7 +153,7 @@ A **gazdagépek** lapon a fürtben található összes gazdagép szerepel. A gaz
 
 2. A **műveletek** menüben válassza ki a végrehajtani kívánt műveletet:
 
-    |Elem |Leírás |
+    |Item |Leírás |
     |---|---|
     |Az összes összetevő elindítása|Indítsa el az összes összetevőt a gazdagépen.|
     |Az összes összetevő leállítása|Állítsa le az összes összetevőt a gazdagépen.|

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Cosmos DB-alapú Node. js-alkalmazások üzembe helyezése az Azure DevOps Starter használatával'
-description: Az Azure DevOps Starter megkönnyíti az Azure-ban való ismerkedést. A DevOps Starter segítségével néhány gyors lépéssel üzembe helyezheti a Node. js-alkalmazást, amelyet Azure Cosmos DB a Windows-webalkalmazáshoz.
+title: 'Oktatóanyag: Azure Cosmos DB-alapú Node.js-alkalmazások üzembe helyezése az Azure DevOps Starter használatával'
+description: Az Azure DevOps Starter megkönnyíti az Azure-ban való ismerkedést. A DevOps Starter segítségével néhány gyors lépéssel üzembe helyezheti Node.js alkalmazást, amely Azure Cosmos DB a Windows-webalkalmazáshoz.
 ms.author: mlearned
 ms.manager: gwallace
 ms.prod: devops
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 07579cf22738e195e3e4ae7a2aa18ffeb885bbe2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233249"
 ---
-# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Azure Cosmos DB-alapú Node. js-alkalmazások üzembe helyezése a DevOps Starter használatával
+# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Azure Cosmos DB-alapú Node.js-alkalmazások üzembe helyezése a DevOps Starter használatával
 
 Az Azure DevOps Starter zökkenőmentesen használható élményt nyújt, amellyel folyamatos integrációs (CI) és folyamatos üzembe helyezési (CD) folyamatokat hozhat létre az Azure-ban. Ezt a meglévő kód-és git-tárház (repó) használatával, vagy egy minta alkalmazás kiválasztásával teheti meg.
 
@@ -28,7 +28,7 @@ A DevOps Starter is:
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * A DevOps Starter használata egy Azure Cosmos DB által működtetett Node. js-alkalmazás üzembe helyezéséhez
+> * A DevOps Starter használata egy Node.js-alkalmazás üzembe helyezéséhez Azure Cosmos DB
 > * Azure-DevOps és Azure-előfizetés konfigurálása
 > * Azure Cosmos DB vizsgálata
 > * A CI-folyamat vizsgálata
@@ -40,7 +40,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Szüksége van egy Azure-előfizetésre, amelyet ingyenesen kaphat a [Visual Studio dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) használatával.
 
-## <a name="use-devops-starter-to-deploy-nodejs-app"></a>Node. js-alkalmazás üzembe helyezése a DevOps Starter használatával
+## <a name="use-devops-starter-to-deploy-nodejs-app"></a>Node.js alkalmazás üzembe helyezése a DevOps Starter használatával
 
 A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Starter Azure-erőforrásokat is létrehoz, például Azure Cosmos DB, Application Insights, App Service és App Service terveket az Ön által választott Azure-előfizetésben.
 
@@ -50,13 +50,13 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
     ![A DevOps Starter irányítópultja](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Válassza ki a **Node. js** -t futtatókörnyezetként, majd kattintson a **tovább**gombra. Az **alkalmazás-keretrendszer kiválasztása**területen válassza az **Express. js**elemet.
+1. Válassza a **Node.js** lehetőséget futtatókörnyezetként, majd kattintson a **tovább**gombra. Az **alkalmazás-keretrendszer kiválasztása**területen válassza a **Express.js**lehetőséget.
 
 1. Engedélyezze az **adatbázis hozzáadása** a **Cosmos DBhoz**szakaszt, majd kattintson a **tovább**gombra.
 
     ![Adatbázis hozzáadása](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Az Azure DevOps Starter különböző alkalmazás-keretrendszereket támogat, például az **Express. js**-t, a **Node. js-alkalmazást**és a **Sail. js**-t. Ebben az oktatóanyagban az **Express. js**-t használjuk.
+    Az Azure DevOps Starter különböző alkalmazás-keretrendszereket támogat, mint például a **Express.js**, a **minta Node.js alkalmazás**és a **Sail.js**. Ebben az oktatóanyagban a **Express.jst **használjuk.
 
 1. Válasszon ki egy Azure-szolgáltatást az alkalmazás telepítéséhez, majd kattintson a **tovább**gombra. A lehetőségek közé tartozik a Windows Web App, az Azure Kubernetes Service és az Azure Web App for Containers. Ebben az oktatóanyagban a **Windows Web APPT**használjuk.
 
@@ -72,7 +72,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Lépjen ki az Azure-beli konfigurációs területen, majd válassza a **kész**lehetőséget.
 
-1. A folyamat néhány perc múlva befejeződik. Egy minta Node. js-alkalmazás egy git-tárházban van beállítva az Azure DevOps-szervezetben. Ezt követően Azure Cosmos DB, App Service, App Service a terv és Application Insights erőforrások jönnek létre, valamint egy CI/CD-folyamat. Az alkalmazást ezután üzembe helyezi az Azure-ban.
+1. A folyamat néhány perc múlva befejeződik. Egy minta Node.js alkalmazás egy git-tárházban van beállítva az Azure DevOps-szervezetben. Ezt követően Azure Cosmos DB, App Service, App Service a terv és Application Insights erőforrások jönnek létre, valamint egy CI/CD-folyamat. Az alkalmazást ezután üzembe helyezi az Azure-ban.
 
    Az összes folyamat befejezése után az Azure DevOps Starter irányítópultja megjelenik a Azure Portalban. A DevOps Starter-irányítópultot közvetlenül a Azure Portal **összes erőforrásáról** is megtekintheti.
 
@@ -149,7 +149,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
      Néhány másodperc elteltével a buildek az Azure DevOps-ben kezdődnek, és a kiadásokat a rendszer a módosítások üzembe helyezésével hajtja végre. Figyelje a Build állapotát a DevOps Starter irányítópultján vagy a böngészőben az Azure DevOps-szervezettel.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Törölje a létrehozott kapcsolódó erőforrásokat, ha már nincs rá szüksége. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
@@ -158,13 +158,13 @@ Törölje a létrehozott kapcsolódó erőforrásokat, ha már nincs rá szüks�
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A DevOps Starter használata egy Azure Cosmos DB által működtetett Node. js-alkalmazás üzembe helyezéséhez
+> * A DevOps Starter használata egy Node.js-alkalmazás üzembe helyezéséhez Azure Cosmos DB
 > * Azure-DevOps és Azure-előfizetés konfigurálása 
 > * Azure Cosmos DB vizsgálata
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
-> * Az erőforrások eltávolítása
+> * Erőforrások felszabadítása
 
 További információkat és további lépéseket a [többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) című témakörben talál.
 
