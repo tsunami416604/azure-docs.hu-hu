@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: b8d47b69b4aba14c86fb09176b662aee7d5482d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335520"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
@@ -37,7 +37,7 @@ A cikkben ismertetett eljárások elvégzéséhez először létre kell hoznia e
 > [!Note]
 > Az ebben a szakaszban szereplő eljáráshoz Azure Maps-fiók szükséges a S0 vagy S1 díjszabási szinten.
 
-A Azure Maps fiók S0 szintje csak a `pins` paraméter egyetlen példányát támogatja. Ez lehetővé teszi, hogy legfeljebb öt pushpins jelenítse meg az URL-kérelemben megadott egyéni rendszerkép használatával.
+A Azure Maps fiók S0 szintje csak a paraméter egyetlen példányát támogatja `pins` . Ez lehetővé teszi, hogy legfeljebb öt pushpins jelenítse meg az URL-kérelemben megadott egyéni rendszerkép használatával.
 
 A pushpins címkékkel és egyéni képpel történő megjelenítéséhez hajtsa végre a következő lépéseket:
 
@@ -70,7 +70,7 @@ Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https:
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. A **Paraméterek** lapon adja meg a következő kulcs/érték párokat, amelyek a post kérelem URL-címéhez használatosak. Cserélje le `subscription-key` az értéket a Azure Maps előfizetési kulcsára.
+2. A **Paraméterek** lapon adja meg a következő kulcs/érték párokat, amelyek a post kérelem URL-címéhez használatosak. Cserélje le az `subscription-key` értéket a Azure Maps előfizetési kulcsára.
     
     ![A Poster kulcs/érték paraméterei](./media/how-to-render-custom-data/postman-key-vals.png)
 
@@ -156,7 +156,7 @@ Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https:
    }
    ```
 
-7. Használja az `udId` adatfeltöltő API által fogadott értéket a funkciók megjelenítéséhez a térképen. Ehhez nyisson meg egy új fület az előző szakaszban létrehozott gyűjteményben. Jelölje be a HTTP lekérése metódust a szerkesztő lapon, cserélje le az {előfizetés-Key} és {udId} értéket az értékekkel, és írja be ezt az URL-címet a GET kérelem elvégzéséhez:
+7. Használja az `udId` Adatfeltöltő API által fogadott értéket a funkciók megjelenítéséhez a térképen. Ehhez nyisson meg egy új fület az előző szakaszban létrehozott gyűjteményben. Jelölje be a HTTP lekérése metódust a szerkesztő lapon, cserélje le az {előfizetés-Key} és {udId} értéket az értékekkel, és írja be ezt az URL-címet a GET kérelem elvégzéséhez:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -192,7 +192,7 @@ A sokszög megjelenését a [path paraméterrel](https://docs.microsoft.com/rest
 > Az ebben a szakaszban ismertetett eljáráshoz egy Azure Maps fiókra van szükség az S1 díjszabási szinten.
 
 
-A PIN-kódok megjelenését a stílus-módosítók hozzáadásával módosíthatja. Ha például a pushpins és a hozzájuk tartozó címkéket nagyobb vagy kisebb értékre `sc` szeretné tenni, használja a "skála stílusa" módosítót. Ez a módosító egy nullánál nagyobb értéket vesz fel. Az 1 érték a standard skála. Az 1 értéknél nagyobb értékek esetén a PIN-kód nagyobb lesz, és az 1-nél kisebb értékek kisebbek lesznek. A stílus-módosítókkal kapcsolatos további információkért lásd a [statikus képszolgáltatás elérési útja paramétereit](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+A PIN-kódok megjelenését a stílus-módosítók hozzáadásával módosíthatja. Ha például a pushpins és a hozzájuk tartozó címkéket nagyobb vagy kisebb értékre szeretné tenni, használja a `sc` "skála stílusa" módosítót. Ez a módosító egy nullánál nagyobb értéket vesz fel. Az 1 érték a standard skála. Az 1 értéknél nagyobb értékek esetén a PIN-kód nagyobb lesz, és az 1-nél kisebb értékek kisebbek lesznek. A stílus-módosítókkal kapcsolatos további információkért lásd a [statikus képszolgáltatás elérési útja paramétereit](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 A kör-és pushpins egyéni címkékkel történő megjelenítéséhez kövesse az alábbi lépéseket:
@@ -207,7 +207,7 @@ A kör-és pushpins egyéni címkékkel történő megjelenítéséhez kövesse 
 
     ![Kör megjelenítése egyéni pushpins](./media/how-to-render-custom-data/circle-custom-pins.png)
 
-2. Ha módosítani szeretné a pushpins színét az utolsó lépéssel, módosítsa a "co" stílus-módosítót. Nézze meg `pins=default|la15+50|al0.66|lc003C62|co002D62|`, hogy az aktuális szín #002D62ként lesz megadva a CSS-ben. Tegyük fel, hogy módosítani szeretné #41d42ara. Írja be az új színértéket a "co" megadása után, a következőhöz hasonló módon: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Új GET-kérés készítése:
+2. Ha módosítani szeretné a pushpins színét az utolsó lépéssel, módosítsa a "co" stílus-módosítót. Nézze meg `pins=default|la15+50|al0.66|lc003C62|co002D62|` , hogy az aktuális szín #002D62ként lesz megadva a CSS-ben. Tegyük fel, hogy módosítani szeretné #41d42ara. Írja be az új színértéket a "co" megadása után, a következőhöz hasonló módon: `pins=default|la15+50|al0.66|lc003C62|co41D42A|` . Új GET-kérés készítése:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}

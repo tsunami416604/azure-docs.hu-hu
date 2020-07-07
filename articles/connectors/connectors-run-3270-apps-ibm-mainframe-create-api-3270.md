@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80371105"
 ---
-# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>A 3270-es képernyő-vezérelt alkalmazások integrálása az Azure-ba a Azure Logic Apps és az IBM 3270 Connector használatával
+# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>A 3270-es képernyő-vezérelt, IBM-nagyszámítógépeken elérhető alkalmazások integrálása az Azure-ral az Azure Logic Apps és az IBM 3270-összekötő használatával
 
 > [!NOTE]
 > Ez az összekötő [*nyilvános előzetes*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el. 
 
-Az Azure Logic Apps és az IBM 3270-összekötővel elérheti és futtathatja azokat az IBM mainframe-alkalmazásokat, amelyeket általában az 3270 Emulator screens használatával érhet el. Így a Azure Logic Apps használatával automatizált munkafolyamatokat hozhat létre az Azure-ban, a Microsoft-ban és más alkalmazásokban, szolgáltatásokban és rendszerekben az IBM mainframe-alkalmazásaiban. Az összekötő az IBM nagyszámítógépekkel kommunikál az TN3270 protokoll használatával, és a Azure Government és az Azure China 21Vianet kivételével minden Azure Logic Apps régióban elérhető. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
+Az Azure Logic Appsszel és az IBM 3270-összekötővel elérheti és futtathatja azokat az IBM-nagyszámítógépeken elérhető alkalmazásokat, amelyeket általában a 3270-emulátor képernyőin keresztül vezérelhet. Így az IBM-nagyszámítógépeken elérhető alkalmazásokat az Azure-, Microsoft- és egyéb alkalmazásokba, szolgáltatásokba és rendszerekbe integrálhatja, ha automatizált munkafolyamatokat hoz létre az Azure Logic Apps segítségével. Az összekötő TN3270 típusú protokoll használatával kommunikál az IBM-nagyszámítógépekkel, és minden Azure Logic Apps-régióban elérhető, az Azure Government és az Azure China 21Vianet kivételével. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 Ez a cikk az 3270-összekötő használatára vonatkozó szempontokat ismerteti: 
 
@@ -81,7 +81,7 @@ A 3270 képernyő-vezérelt alkalmazásokban a képernyők és az adatok mezői 
 
 * **Navigáció**: ebben a módban megadhatja azt a tervet vagy elérési utat, amely segítségével navigálhat a mainframe-alkalmazás képernyőjén az adott feladathoz.
 
-* **Metódusok**: ebben a módban megadhatja a metódust (például `GetBalance`), amely a képernyő navigációs útvonalát írja le. Az egyes képernyőkön lévő mezőket is kiválaszthatja, amelyek a metódus Bemeneti és kimeneti paraméterei lesznek.
+* **Metódusok**: ebben a módban megadhatja a metódust (például `GetBalance` ), amely a képernyő navigációs útvonalát írja le. Az egyes képernyőkön lévő mezőket is kiválaszthatja, amelyek a metódus Bemeneti és kimeneti paraméterei lesznek.
 
 ### <a name="unsupported-elements"></a>Nem támogatott elemek
 
@@ -151,7 +151,7 @@ További információért lásd a jelen témakör későbbi, [példaként szolg�
 
 ## <a name="define-navigation-plans"></a>Navigációs csomagok meghatározása
 
-Ebben a módban megadhatja a folyamatot vagy a lépéseket a mainframe-alkalmazás képernyőjén az adott feladathoz való navigáláshoz. Előfordulhat például, hogy az alkalmazásnak egynél több elérési útja van, ahol az egyik útvonal a megfelelő eredményt állítja elő, míg a másik elérési út hibát eredményez. Minden egyes képernyőn meg kell adni a következő képernyőre való áttéréshez szükséges billentyűleütéseket, például: `CICSPROD <enter>`.
+Ebben a módban megadhatja a folyamatot vagy a lépéseket a mainframe-alkalmazás képernyőjén az adott feladathoz való navigáláshoz. Előfordulhat például, hogy az alkalmazásnak egynél több elérési útja van, ahol az egyik útvonal a megfelelő eredményt állítja elő, míg a másik elérési út hibát eredményez. Minden egyes képernyőn meg kell adni a következő képernyőre való áttéréshez szükséges billentyűleütéseket, például: `CICSPROD <enter>` .
 
 > [!TIP]
 > Ha több olyan feladatot dolgoz fel, amelyek ugyanazt a csatlakoztatási és leválasztási képernyőt használják, a kialakítási eszköz speciális kapcsolódási és leválasztási tervet biztosít. A csomagok meghatározásakor felveheti őket a navigációs terv elejére és végére.
@@ -292,7 +292,7 @@ Ebben a módban a navigációs tervhez társított metódust kell megadnia. Mind
    |---------------|-----------------|
    | **Adattípus** | Bájt, dátum és idő, decimális, int, Long, Short, string |
    | **Mező kitöltésének technikája** | A paraméterek ezeket a kitöltési típusokat támogatják, ha szükséges, üres értékekkel töltik fel őket: <p><p>- **Típus**: írja be a karaktereket egymás után a mezőbe. <p>- **Fill (kitöltés**): cserélje le a mező tartalmát a karakterekre, és ha szükséges, üres értékeket kell kitöltenie. <p>- **EraseEofType**: törölje a mezőt, majd írja be egymás után a karaktereket a mezőbe. |
-   | **Formázó sztring** | Egyes paraméterek adattípusai formázó karakterláncot használnak, amely tájékoztatja az 3270-összekötőt, és a képernyőn lévő szöveg konvertálása .NET-adattípusba: <p><p>- **Dátum**és idő: a DateTime Format sztring a [.net egyéni dátum-és időformátum-karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)követi. A dátum `06/30/2019` például a Format karakterláncot `MM/dd/yyyy`használja. <p>- **Decimális**: a decimális formátum karakterlánca a [Cobol Picture záradékot](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)használja. A szám `100.35` például a Format karakterláncot `999V99`használja. |
+   | **Formázó sztring** | Egyes paraméterek adattípusai formázó karakterláncot használnak, amely tájékoztatja az 3270-összekötőt, és a képernyőn lévő szöveg konvertálása .NET-adattípusba: <p><p>- **Dátum**és idő: a DateTime Format sztring a [.net egyéni dátum-és időformátum-karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)követi. A dátum például a `06/30/2019` Format karakterláncot használja `MM/dd/yyyy` . <p>- **Decimális**: a decimális formátum karakterlánca a [Cobol Picture záradékot](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)használja. A szám például `100.35` a Format karakterláncot használja `999V99` . |
    |||
 
 ## <a name="save-and-view-metadata"></a>Metaadatok mentése és megtekintése
@@ -354,7 +354,7 @@ Ha befejezi ezeket a lépéseket, használhatja a logikai alkalmazásban létreh
    ![3270 művelet kiválasztása](./media/connectors-create-api-3270/select-3270-action.png)
 
    A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
-   Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. Ha még nem létezik kapcsolatok, adja meg a szükséges adatokat a kapcsolatban, és válassza a **Létrehozás**lehetőséget.
 

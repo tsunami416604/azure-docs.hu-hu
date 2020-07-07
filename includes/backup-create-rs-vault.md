@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 2509bdae01fc9de5511dcd67eb95bf0d13d5cf39
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c0f717e26534151585a51badf4bb1fe1ba58eb00
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391152"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970525"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -59,3 +59,6 @@ Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket.
     A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az **értesítéseket** a portál jobb felső sarkában található értesítések területről. A tároló létrehozása után a Recovery Services-tárolók listájában látható. Ha nem látja a tárolót, válassza a **frissítés**lehetőséget.
 
      ![A Backup-tárolók listájának frissítése](./media/backup-create-rs-vault/refresh-button.png)
+
+>[!IMPORTANT]
+> Javasoljuk, hogy a biztonsági mentések konfigurálása előtt tekintse át a **tárolási replikálási típus** és a **biztonsági beállítások** alapértelmezett beállításait. További információt a [tárolási redundancia beállítása](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) című szakaszban talál.

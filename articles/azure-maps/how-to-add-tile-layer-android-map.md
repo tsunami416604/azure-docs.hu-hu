@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335565"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
@@ -23,18 +23,18 @@ Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a képeket
 
 * X, Y, nagyítási jelölés – a nagyítási szint alapján az x az oszlop, az Y pedig a csempén lévő csempe sor pozíciója.
 * Quadkey jelölés – x, y és nagyítási információ egyetlen karakterlánc-értékre, amely egy csempe egyedi azonosítója.
-* A határolókerethoz tartozó határoló mező koordinátáit a [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms)által gyakran `{west},{south},{east},{north}` használt formátumú rendszerképek megadására lehet használni.
+* A határolókerethoz tartozó határoló mező koordinátáit a `{west},{south},{east},{north}` [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms)által gyakran használt formátumú rendszerképek megadására lehet használni.
 
 > [!TIP]
 > A TileLayer nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére a térképen. Nem csak a csempe réteg hozható létre egy képből, de a vektoros adatok csempe rétegként is megjeleníthető. A vektoros adattároló rétegként való megjelenítésével a Térkép vezérlőelemnek csak be kell töltenie a csempéket, ami sokkal kisebb lehet a fájlméretnél, mint az általuk képviselt adatmennyiség. Ezt a technikát sokan használják, akiknek több millió sornyi adatsort kell megjeleníteniük a térképen.
 
 A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonhoz, amely a következő paramétereket használja: 
 
-* `{x}`-A csempe X pozíciója A és `{y}` a `{z}`is szükséges.
-* `{y}`-A csempe Y pozíciója A és `{x}` a `{z}`is szükséges.
-* `{z}`– A csempe nagyítási szintje A és `{x}` a `{y}`is szükséges.
+* `{x}`-A csempe X pozíciója `{y}`A és a is szükséges `{z}` .
+* `{y}`-A csempe Y pozíciója `{x}`A és a is szükséges `{z}` .
+* `{z}`– A csempe nagyítási szintje `{x}`A és a is szükséges `{y}` .
 * `{quadkey}`– Csempe quadkey-azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
-* `{bbox-epsg-3857}`– Egy határolókeret karakterlánca, amely a EPSG `{west},{south},{east},{north}` 3857 térbeli hivatkozási rendszer formátumát jelöli.
+* `{bbox-epsg-3857}`– Egy határolókeret karakterlánca, amely a `{west},{south},{east},{north}` EPSG 3857 térbeli hivatkozási rendszer formátumát jelöli.
 * `{subdomain}`– A altartomány értékeinek helyőrzője, ha meg van adva az altartomány értéke.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -48,7 +48,7 @@ A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Andro
 
 Az alábbi lépéseket követve hozzáadhat egy csempe réteget a térképhez.
 
-1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy a következőképpen néz ki:
+1. Módosítsa a **res > elrendezést > activity_main.xml** így néz ki az alábbiak közül:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Az alábbi lépéseket követve hozzáadhat egy csempe réteget a térképhez.
     </FrameLayout>
     ```
 
-2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára.
+2. Másolja az alábbi kódrészletet az osztály **onCreate ()** metódusára `MainActivity.java` .
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ Az alábbi lépéseket követve hozzáadhat egy csempe réteget a térképhez.
     });
     ```
     
-    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy `TileLayer` objektumot, és átadja egy formázott **XYZ** csempe URL- `tileUrl` címét a lehetőséghez. A réteg opacitása úgy van beállítva, `0.8` hogy a csempe szolgáltatás által használt csempék 256 képpont csempék legyenek, ez az információ átkerül `tileSize` a lehetőségbe. Ezután a csempe réteget a Maps Layer Manager továbbítja.
+    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy `TileLayer` objektumot, és átadja egy formázott **XYZ** csempe URL-címét a `tileUrl` lehetőséghez. A réteg opacitása úgy van beállítva, hogy `0.8` a csempe szolgáltatás által használt csempék 256 képpont csempék legyenek, ez az információ átkerül a `tileSize` lehetőségbe. Ezután a csempe réteget a Maps Layer Manager továbbítja.
 
-    Miután hozzáadta a fenti kódrészletet, `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
+    Miután hozzáadta a fenti kódrészletet, a `MainActivity.java` következőhöz hasonlóan kell kinéznie:
     
     ```Java
     package com.example.myapplication;

@@ -9,10 +9,10 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b6f0f77da639bceaea680f015dad5c0d3d6dbda6
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465076"
 ---
 Ha privát végpontot szeretne létrehozni a Storage-fiókhoz, először meg kell adnia egy hivatkozást a Storage-fiókjára, valamint azt a virtuális hálózati alhálózatot, amelyhez hozzá szeretné adni a magánhálózati végpontot. Cserélje le a,, `<storage-account-resource-group-name>` ,, `<storage-account-name>` és az `<vnet-resource-group-name>` `<vnet-name>` `<vnet-subnet-name>` alábbit:

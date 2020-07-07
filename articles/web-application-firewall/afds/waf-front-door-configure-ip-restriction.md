@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80336074"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>IP-korlátozási szabály konfigurálása az Azure-hoz készült webalkalmazási tűzfallal
@@ -31,13 +31,13 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 ### <a name="create-a-waf-policy"></a>WAF szabályzat létrehozása
 
 1. A Azure Portal válassza az **erőforrás létrehozása**elemet, írja be a **webalkalmazási tűzfal** kifejezést a keresőmezőbe, majd válassza a **webalkalmazási tűzfal (WAF)** lehetőséget.
-2. Kattintson a **Létrehozás** gombra.
+2. Válassza a **Létrehozás** lehetőséget.
 3. A **WAF házirend létrehozása** lapon a következő értékekkel fejezheti be az **alapok** lapot:
    
    |Beállítás  |Érték  |
    |---------|---------|
    |Házirend a következőhöz:     |Globális WAF (bejárati ajtó)|
-   |Előfizetés     |Válassza ki előfizetését.|
+   |Előfizetés     |Az előfizetés kiválasztása|
    |Erőforráscsoport     |Válassza ki azt az erőforráscsoportot, amelyben a bejárati ajtó található.|
    |Házirend neve     |Adja meg a szabályzat nevét|
    |Házirend állapota     |Engedélyezve|
@@ -53,7 +53,7 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
    |Beállítás  |Érték  |
    |---------|---------|
    |Egyéni szabály neve     |FdWafCustRule|
-   |status     |Engedélyezve|
+   |Állapot     |Engedélyezve|
    |Szabály típusa     |Match|
    |Prioritás    |100|
    |Egyezés típusa     |IP-cím|
@@ -64,7 +64,7 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Egyéni szabály":::
 
-   Válassza a **Hozzáadás** lehetőséget.
+   Válassza a **Hozzáadás** elemet.
 6. Válassza a **Tovább: társítás**lehetőséget.
 7. Válassza a előtér- **gazda hozzáadása**lehetőséget.
 8. A előtér- **gazdagéphez**válassza ki a előtér-gazdagépet, és válassza a **Hozzáadás**lehetőséget.
@@ -87,8 +87,8 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 Mielőtt megkezdené az IP-korlátozási szabályzat konfigurálását, állítsa be a CLI-környezetet, és hozzon létre egy Azure-beli bejárati profilt.
 
 #### <a name="set-up-the-azure-cli-environment"></a>Az Azure CLI-környezet beállítása
-1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli)-t, vagy használja a Azure Cloud shell. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Válassza ki az alábbi CLI-parancsok **kipróbálása** gombot, majd jelentkezzen be az Azure-fiókjába a megnyíló Cloud Shell-munkamenetben. A munkamenet elindítása után adja meg `az extension add --name front-door` az Azure bejárati ajtó bővítményét.
- 2. Ha a parancssori felületet a Bashben helyileg használja, jelentkezzen be az Azure- `az login`ba a használatával.
+1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli)-t, vagy használja a Azure Cloud shell. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Válassza ki az alábbi CLI-parancsok **kipróbálása** gombot, majd jelentkezzen be az Azure-fiókjába a megnyíló Cloud Shell-munkamenetben. A munkamenet elindítása után adja meg `az extension add --name front-door` Az Azure bejárati ajtó bővítményét.
+ 2. Ha a parancssori felületet a Bashben helyileg használja, jelentkezzen be az Azure-ba a használatával `az login` .
 
 #### <a name="create-an-azure-front-door-profile"></a>Azure-beli előtérben lévő profil létrehozása
 Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmutatóban ismertetett utasításokat követve, a gyors [rendelkezésre állású globális webalkalmazások létrehozásához](../../frontdoor/quickstart-create-front-door.md).
@@ -212,7 +212,7 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 ### <a name="configure-a-waf-policy"></a>WAF házirend konfigurálása
-Keresse meg az Azure-beli bejárati profilt tartalmazó erőforráscsoport nevét a használatával `Get-AzResourceGroup`. Ezután konfigurálja a WAF szabályzatot az IP-szabállyal a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)használatával.
+Keresse meg az Azure-beli bejárati profilt tartalmazó erőforráscsoport nevét a használatával `Get-AzResourceGroup` . Ezután konfigurálja a WAF szabályzatot az IP-szabállyal a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)használatával.
 
 ```azurepowershell
   $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `

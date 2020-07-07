@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80349802"
 ---
 # <a name="query-ingested-telemetry-data"></a>Feldolgozott telemetria-adatok lekérdezése
@@ -42,7 +42,7 @@ Kövesse a következő lépéseket a betöltött érzékelő telemetria-adatok l
 > [!NOTE]
 > Az érdekelt érzékelő objektum **azonosítója** és **sensorModelId** .
 
-2. Hozzon végre egy GET/{ID}/SensorModel API-t a **sensorModelId** az 1. lépésben feljegyzett módon. Az "érzékelő modell" az érzékelőből származó betöltött telemetria kapcsolatos összes metaadatot és részletet tartalmaz. Például az érzékelő **modell** objektumon belül az érzékelő **mértéke** az érzékelő által küldött és a milyen típusokra és egységekre vonatkozó adatokkal rendelkezik. Például:
+2. Hozzon végre egy GET/{ID}/SensorModel API-t a **sensorModelId** az 1. lépésben feljegyzett módon. Az "érzékelő modell" az érzékelőből származó betöltött telemetria kapcsolatos összes metaadatot és részletet tartalmaz. Például az érzékelő **modell** objektumon belül az érzékelő **mértéke** az érzékelő által küldött és a milyen típusokra és egységekre vonatkozó adatokkal rendelkezik. Példa:
 
   ```json
   {
@@ -115,7 +115,7 @@ A rendszer telemetria-adatkérést fogad egy EventHub, majd feldolgozza és lek�
 
 Kövesse az alábbi lépéseket az ÁME-beli adatmegjelenítéshez:
 
-1. Nyissa meg az **Azure Portal** > **FarmBeats DataHub erőforráscsoportot** > válassza a **Time Series Insights** Environment (ÁME-XXXX) > **adatelérési házirendek**lehetőséget. Felhasználó hozzáadása olvasó vagy közreműködői hozzáféréssel.
+1. Nyissa meg az **Azure Portal**  >  **FarmBeats DataHub erőforráscsoportot** > válassza a **Time Series Insights** Environment (ÁME-XXXX) > **adatelérési házirendek**lehetőséget. Felhasználó hozzáadása olvasó vagy közreműködői hozzáféréssel.
 2. Nyissa meg **Time Series Insights** környezet **Áttekintés** lapját (ÁME-XXXX), és válassza ki a **Time Series Insights Explorer URL-címét**. Most már láthatóvá teheti a betöltött telemetria.
 
 A telemetria tárolása, lekérdezése és megjelenítése mellett az ÁME is lehetővé teszi az integrációt egy Power BI irányítópulton. További információ: [itt]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)

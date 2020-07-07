@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335656"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps helymeghatározáshoz lefedettsége
@@ -25,7 +25,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 * **Utca szintű** – a címek a címet tartalmazó utca szélességi/hosszúsági koordinátáihoz vannak feloldva. Lehetséges, hogy a házszám nem dolgozható fel.
 * A **városi szintű** nevek támogatottak.
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 | Ország/régió                                       | Címzési pontok | Házszámok | Utca szintje | Városi szint | Érdekes pontok |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
@@ -212,7 +212,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Ukrajna                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Egyesült Királyság                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Üzbegisztán                                          |                 |                |              |      ✓     |          ✓         |
-| Vatikáni Városállam                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Vatikán                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika

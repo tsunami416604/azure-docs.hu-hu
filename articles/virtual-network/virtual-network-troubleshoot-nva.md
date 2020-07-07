@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
 ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71056835"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Hálózati virtuális berendezések problémái az Azure-ban
@@ -135,7 +135,7 @@ Rögzítse egyidejű hálózati nyomkövetést a forrásoldali virtuális gépen
 
    sudo tcpdump-S0-i ETH0-X-w vmtrace. Cap
 
-2. Használjon **PsPing** vagy **nmap** -t a forrás virtuális gépről a cél virtuális gépre (például `PsPing 10.0.0.4:80` : `Nmap -p 80 10.0.0.4`vagy).
+2. Használjon **PsPing** vagy **nmap** -t a forrás virtuális gépről a cél virtuális gépre (például: `PsPing 10.0.0.4:80` vagy `Nmap -p 80 10.0.0.4` ).
 3. Nyissa meg a hálózati nyomkövetést a cél virtuális gépről [Hálózatfigyelő](https://www.microsoft.com/download/details.aspx?id=4865) vagy tcpdump használatával. Alkalmazzon megjelenítési szűrőt a **PsPing** vagy **nmap** -t futtató forrás virtuális gép IP-címére, például `IPv4.address==10.0.0.4 (Windows netmon)` vagy `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux).
 
 ### <a name="analyze-traces"></a>Nyomkövetések elemzése

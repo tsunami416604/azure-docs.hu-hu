@@ -1,5 +1,5 @@
 ---
-title: Key Vault integrálása az DigiCert-hitelesítésszolgáltatóval
+title: A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
 description: Key Vault integrálása az DigiCert-hitelesítésszolgáltatóval
 services: key-vault
 author: msmbaldwin
@@ -10,14 +10,14 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d6cb8d386efbcdaf053f0740d955b249c0e636b4
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84908230"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964498"
 ---
-# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault integrálása az DigiCert-hitelesítésszolgáltatóval
+# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
 
 A Azure Key Vault lehetővé teszi a hálózat digitális tanúsítványainak üzembe helyezését, kezelését és telepítését, valamint az alkalmazások biztonságos kommunikációjának engedélyezését. A digitális tanúsítvány egy elektronikus hitelesítő adat, amely igazolja az identitást egy elektronikus tranzakcióban. 
 
@@ -57,7 +57,7 @@ A fenti információknak a DigiCert CertCentral-fiókból való összegyűjtése
  ![Tanúsítvány tulajdonságai](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  A hitelesítésszolgáltató **létrehozása** képernyőn válassza a következő értékeket:
     -   **Név**: azonosítható kiállítói név hozzáadása. Példa DigicertCA
-    -   **Biztosítás**: válassza a DigiCert lehetőséget a menüből.
+    -   **Szolgáltató**: válassza a DigiCert lehetőséget a menüből.
     -   **Fiókazonosító**: adja meg a DigiCert CertCentral-FIÓKjának azonosítóját
     -   **Fiók jelszava**: adja meg a DigiCert CertCentral-fiókjában létrehozott API-kulcsot
     -   **Szervezet azonosítója**: adja meg a DigiCert CertCentral-fiókból összegyűjtött OrgID 

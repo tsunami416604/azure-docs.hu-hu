@@ -3,20 +3,20 @@ title: 'Rövid útmutató: terv létrehozása a portálon'
 description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az összetevők létrehozásához, definiálásához és üzembe helyezéséhez a Azure Portalon keresztül.
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aac4e13ca0da73f8b7915ea6655343d5cf0b94cb
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381892"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970977"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rövid útmutató: terv meghatározása és hozzárendelése a portálon
 
-Ha megtudhatja, hogyan hozhat létre és rendelhet hozzá tervrajzokat, meghatározhatja az újrafelhasználható és gyorsan telepíthető konfigurációk fejlesztését Azure Resource Manager sablonok, szabályzatok, biztonság és egyebek alapján. Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-tervezeteket a tervrajzok létrehozásához, közzétételéhez és a szervezeten belüli hozzárendeléséhez kapcsolódó gyakori feladatok elvégzéséhez. Ezek a feladatok a következők:
+Ha megtudhatja, hogyan hozhat létre és rendelhet hozzá tervrajzokat, meghatározhatja az újrafelhasználható és gyorsan telepíthető konfigurációk fejlesztését Azure Resource Manager sablonok (ARM-sablonok), a házirendek, a biztonság és egyebek alapján. Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-tervezeteket a tervrajzok létrehozásához, közzétételéhez és a szervezeten belüli hozzárendeléséhez kapcsolódó gyakori feladatok elvégzéséhez. Ezek a feladatok a következők:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
 ## <a name="create-a-blueprint"></a>Terv létrehozása
 
@@ -85,8 +85,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    1. Válassza ki **Azure Resource Manager sablont** az összetevő **típusához**, állítsa be az összetevő **megjelenítendő nevét** a **StorageAccount**értékre, és hagyja üresen a **leírást** .
 
-   1. A szerkesztőmező **Sablon** lapján illessze be az alábbi Resource Manager-sablont.
-      A sablon beillesztése után válassza a parameters ( **Paraméterek** ) fület, és figyelje meg, hogy a rendszer a sablon paramétereinek **tárfióktípus** és **helyét** észlelte. Minden paraméter automatikusan észlelhető és fel lett töltve, de dinamikus paraméterként van konfigurálva.
+   1. A szerkesztő mezőben a **sablon** lapon illessze be a következő ARM-sablont. A sablon beillesztése után válassza a parameters ( **Paraméterek** ) fület, és figyelje meg, hogy a rendszer a sablon paramétereinek **tárfióktípus** és **helyét** észlelte. Minden paraméter automatikusan észlelhető és fel lett töltve, de dinamikus paraméterként van konfigurálva.
 
       > [!IMPORTANT]
       > Ha importálja a sablont, győződjön meg arról, hogy a fájl csak JSON formátumú, és nem tartalmaz HTML-kódot. Ha egy GitHub URL-címére mutat, győződjön meg arról, hogy a **nyers** elemet választotta a tiszta JSON-fájl beszerzéséhez, és nem a githubon megjelenítendő HTML-kódot. Ha az importált sablon nem tiszta JSON, hiba történik.
@@ -140,7 +139,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
       }
       ```
 
-   1. Törölje a jelölést a **tárfióktípus** jelölőnégyzetből, és vegye figyelembe, hogy a legördülő lista csak a Resource Manager-sablonban szereplő értékeket tartalmazza a **allowedValues**területen. Jelölje be a jelölőnégyzetet, ha vissza szeretne állítani egy dinamikus paramétert.
+   1. Törölje a **tárfióktípus** jelölőnégyzet jelölését, és vegye figyelembe, hogy a legördülő lista csak az ARM-sablonban szereplő értékeket tartalmazza a **allowedValues**alatt. Jelölje be a jelölőnégyzetet, ha vissza szeretne állítani egy dinamikus paramétert.
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
@@ -249,7 +248,7 @@ A terv közzététele után hozzárendelhető egy előfizetéshez. Rendelje hozz
    > Minden olyan összetevő esetében, amelyet az erőforráscsoport alatt hozzáadott a terv meghatározása során, a rendszer behúzza az összetevőt úgy, hogy az a-vel üzembe helyezni kívánt erőforráscsoporthoz vagy objektumhoz legyen igazítva.
    > Azok az összetevők, amelyek nem rendelkeznek paraméterekkel, vagy nincsenek definiálva paraméterek a hozzárendeléshez, csak a környezetfüggő információkra vannak felsorolva.
 
-1. A Azure Resource Manager sablon **StorageAccount**válassza a **Standard_GRS** lehetőséget a **tárfióktípus** paraméternél.
+1. Az ARM-sablon **StorageAccount**válassza a **Standard_GRS** lehetőséget a **tárfióktípus** paraméternél.
 
 1. Olvassa el az oldal alján található információs mezőt, majd válassza a **hozzárendelés**lehetőséget.
 
@@ -270,7 +269,7 @@ Most, hogy a terv hozzá lett rendelve egy előfizetéshez, ellenőrizze az üze
 
 1. A **terv-hozzárendelés** lapon ellenőrizze, hogy az összes összetevő telepítése sikeres volt-e, és hogy nem történt-e hiba a telepítés során. Ha hiba történt, tekintse meg a [tervekkel kapcsolatos hibaelhárítási](./troubleshoot/general.md) lépéseket, amelyek alapján megállapíthatja, hogy mi volt a probléma.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 ### <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 

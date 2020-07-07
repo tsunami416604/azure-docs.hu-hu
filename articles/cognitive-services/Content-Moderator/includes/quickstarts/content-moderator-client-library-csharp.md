@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 24319fe80130c1ac116c8423e1d82a5bc08b4b20
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3245b4d0ce164acd8fcd367597dcbddc9436c782
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84124309"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965917"
 ---
 Ismerkedjen meg a .NET-hez készült Content Moderator ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Content Moderator egy olyan kognitív szolgáltatás, amely potenciálisan sértő, kockázatos vagy egyéb módon nemkívánatos anyagokra ellenőrzi a szöveget, a képeket és a videó tartalmát. Ha ilyen anyagot talál, a szolgáltatás megfelelő címkéket (jelölőket) alkalmaz a tartalomra. Az alkalmazás ezután képes kezelni a megjelölt tartalmat, hogy megfeleljen a szabályozásoknak, vagy megőrizze a kívánt környezetet a felhasználók számára.
 
@@ -123,7 +123,7 @@ A következő kód egy Content Moderator ügyfelet használ egy szöveg szövegt
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_text_vars)]
 
-Ezután a projekt gyökerében adjon hozzá egy *TextFile. txt* fájlt. Adja hozzá saját szövegét a fájlhoz, vagy használja a következő mintaszöveg:
+Ezután a projekt gyökerében adjon hozzá egy *TextFile.txt* fájlt. Adja hozzá saját szövegét a fájlhoz, vagy használja a következő mintaszöveg:
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
@@ -151,7 +151,7 @@ Adja meg a bemeneti és kimeneti fájlokat:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
-Ezután hozza létre a bemeneti fájlt ( *ImageFiles. txt*) a projekt gyökérkönyvtárában. Ebben a fájlban hozzá kell adnia a lemezképek URL-címeit az &mdash; egyes sorokon egy URL-cím elemzéséhez. A következő minta lemezképeket használhatja:
+Ezután hozza létre a bemeneti fájlt *ImageFiles.txt*a projekt gyökerében. Ebben a fájlban hozzá kell adnia a lemezképek URL-címeit az &mdash; egyes sorokon egy URL-cím elemzéséhez. A következő minta lemezképeket használhatja:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -160,7 +160,7 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Adja át a bemeneti és kimeneti fájljait a metódus következő metódusának hívására `Main` . Ezt a metódust egy későbbi lépésben kell megadnia.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
 
 ### <a name="define-helper-class"></a>Segítő osztály definiálása
 

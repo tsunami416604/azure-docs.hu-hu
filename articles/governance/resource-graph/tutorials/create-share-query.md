@@ -1,18 +1,18 @@
 ---
 title: 'Oktatóanyag: lekérdezések kezelése Azure Portalban'
 description: Ebben az oktatóanyagban létrehoz egy Resource Graph-lekérdezést, és megosztja az új lekérdezést a Azure Portal többi részével.
-ms.date: 05/20/2020
+ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148021"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970586"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása a Azure Portal
 
-Az Azure Resource Graph Explorer lehetővé teszi, hogy közvetlenül a Azure Portal mentse az erőforrás-gráf lekérdezéseit. Kétféle lekérdezés létezik: _magán_ -és _megosztott_. A rendszer a Azure Portal beállításokban menti a privát lekérdezést. Míg a megosztott lekérdezés olyan Resource Manager-erőforrás, amely szerepköralapú hozzáférés-vezérléssel (RBAC) felügyelhető és erőforrás-zárolásokkal védett. Mindkét típusú lekérdezés titkosítva van a nyugalmi állapotban.
+Az Azure Resource Graph Explorer lehetővé teszi, hogy közvetlenül a Azure Portal mentse az erőforrás-gráf lekérdezéseit. Kétféle lekérdezés létezik: _magán_ -és _megosztott_. A rendszer a Azure Portal beállításokban menti a privát lekérdezést. Míg a megosztott lekérdezés olyan Azure Resource Manager erőforrás, amely szerepköralapú hozzáférés-vezérléssel (RBAC) felügyelhető és erőforrás-zárolásokkal védett. Mindkét típusú lekérdezés titkosítva van a nyugalmi állapotban.
 
 A lekérdezéseknek a Azure Portalban való mentésével megtakaríthatja a kedvenc vagy gyakran használt lekérdezések keresésének időpontját. A lekérdezések megosztásakor segít a csapatnak megvalósítani a konzisztencia és a hatékonyság célkitűzéseit az ismétlődéssel.
 
@@ -45,7 +45,6 @@ A privát lekérdezések csak az őket létrehozó fiók számára érhetők el 
    Válassza a **lekérdezés futtatása** lehetőséget a lekérdezés eredményeinek megtekintéséhez az alsó ablaktáblán.
 
    A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-os).
-
 
 1. Válassza a **Mentés** vagy a **Mentés másként**lehetőséget, írja be a **virtuális gépek száma operációs rendszer** szerint a nevet, hagyja a típust **privát lekérdezésként**, majd kattintson **a Mentés gombra** a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**.
 
@@ -80,8 +79,7 @@ Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource M
 
 1. Válassza a **Mentés** vagy **a Mentés másként**lehetőséget.
 
-   
-   ![Az új lekérdezés mentése a Save (Mentés) gomb használatával](../media/create-share-query/save-shared-query-buttons.png)
+   :::image type="content" source="../media/create-share-query/save-shared-query-buttons.png" alt-text="Az új lekérdezés mentése a Save (Mentés) gomb használatával" border="false":::
 
 1. A **lekérdezés mentése** ablaktáblán adja meg a **virtuális gépek száma operációs rendszer szerint** a nevet.
 
@@ -91,7 +89,7 @@ Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource M
 
 1. Kattintson a Save ( **Mentés** ) gombra a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**. Az erőforrás **-gráf-lekérdezések** erőforráscsoport első használatakor a Mentés a vártnál hosszabb időt vesz igénybe, mert az erőforráscsoport létrejön.
    
-   ![Az új lekérdezés mentése megosztott lekérdezésként](../media/create-share-query/save-shared-query-window.png)
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Az új lekérdezés mentése megosztott lekérdezésként" border="false":::
 
    > [!NOTE] 
    > Ha meg szeretné adni egy meglévő erőforráscsoport nevét, akkor törölheti a **Közzététel az erőforrás-gráf-lekérdezések erőforráscsoporthoz** jelölőnégyzetet. A lekérdezések alapértelmezett megnevezett erőforráscsoport használatával könnyebben derítheti fel a megosztott lekérdezéseket. Emellett nyilvánvalóvá teszi az erőforráscsoport célját. A meglévő engedélyek alapján azonban dönthet úgy, hogy egy meglévő erőforráscsoportot választ ki biztonsági okokból.
@@ -100,7 +98,7 @@ Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource M
 
 1. Válassza **a lekérdezés megnyitása**lehetőséget. Ellenőrizze, hogy a típus a **megosztott lekérdezésre** van-e beállítva, és hogy az **előfizetés** és az **erőforráscsoport** kombinációja egyezik-e a lekérdezés mentésekor. A mentett **darabszámú virtuális gépek operációsrendszer** -elem alapján most megjelenik a **lekérdezés neve** listában. Válassza ki a mentett lekérdezés cím hivatkozását egy új lapra való betöltéshez a lekérdezés nevével. Megosztott lekérdezésként megjelenít egy ikont a cím melletti lapon, és megoszthatja azt.
 
-   ![A megosztott lekérdezés ikonjának megjelenítése](../media/create-share-query/show-saved-shared-query.png)
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="A megosztott lekérdezés ikonjának megjelenítése" border="false":::
 
    > [!NOTE] 
    > Ha egy mentett lekérdezés meg van nyitva, és a TAB megjeleníti a nevét, a **Save (Mentés** ) gombra kattintva frissítheti az összes végrehajtott módosítást. Új mentett lekérdezés létrehozásához válassza a **Mentés másként** lehetőséget, és folytassa, ha új lekérdezést ment.
@@ -137,6 +135,10 @@ Resources
 | project name, properties.timeModified, properties.query
 ```
 
+## <a name="run-a-shared-query"></a>Megosztott lekérdezés futtatása
+
+Az erőforrás-gráf megosztott lekérdezése a `{{shared-query-uri}}` szintaxissal (előzetes verzió) is futtatható. További információ: [megosztott lekérdezési szintaxis](../concepts/query-language.md#shared-query-syntax).
+
 ## <a name="delete-a-shared-query"></a>Megosztott lekérdezés törlése
 
 Ha már nincs szükség megosztott lekérdezésre, törölje azt. Egy megosztott lekérdezés törlésével eltávolítja a megfelelő Resource Manager-erőforrást. Minden olyan irányítópult, amelyre az eredmények diagramja be lett rögzítve, hibaüzenet jelenik meg. Ha ez a hibaüzenet jelenik meg, a **Eltávolítás az irányítópultról** gombbal törölje az irányítópultot.
@@ -151,7 +153,7 @@ A megosztott lekérdezéseket az alábbi felületeken törölheti:
 
 Ha elkészült az Oktatóanyaggal, törölje a létrehozott privát és megosztott lekérdezéseket, ha már nem szeretné őket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban privát és megosztott lekérdezéseket hozott létre. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

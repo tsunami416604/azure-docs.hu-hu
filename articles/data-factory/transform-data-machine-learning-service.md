@@ -11,10 +11,10 @@ author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
 ms.openlocfilehash: f033651eb7e52ba60cce9b74941a4ef0eb376d2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419000"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning folyamatok végrehajtása Azure Data Factory
@@ -27,7 +27,7 @@ Az alábbi videó a szolgáltatás hat perces bevezetését és bemutatóját ta
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -52,8 +52,8 @@ Az alábbi videó a szolgáltatás hat perces bevezetését és bemutatóját ta
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A folyamatban szereplő tevékenység neve | Sztring | Igen
-type | A tevékenység típusa "AzureMLExecutePipeline". | Sztring | Igen
+name | A folyamatban szereplő tevékenység neve | Sztring | Igen
+típus | A tevékenység típusa "AzureMLExecutePipeline". | Sztring | Igen
 linkedServiceName | Társított szolgáltatás Azure Machine Learning | Társított szolgáltatás leírása | Igen
 mlPipelineId | A közzétett Azure Machine Learning folyamat azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen
 experimentName | A Machine Learning folyamat futtatási kísérletének neve | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
@@ -61,7 +61,7 @@ mlPipelineParameters | A közzétett Azure Machine Learning folyamat-végpontnak
 mlParentRunId | A szülő Azure Machine Learning folyamat futtatási azonosítója | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
 continueOnStepFailure | Annak megadása, hogy folytatja-e a Machine Learning folyamat más lépéseinek végrehajtását, ha egy lépés meghiúsul | logikai | Nem
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:
 
 * [Adatfolyam-tevékenység végrehajtása](control-flow-execute-data-flow-activity.md)

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428107"
 ---
 # <a name="best-practices-for-long-running-operations"></a>Ajánlott eljárások a hosszú ideig futó műveletekhez
@@ -18,7 +18,7 @@ ms.locfileid: "81428107"
 Azure Analysis Services a *csomópont* egy olyan gazdagép virtuális gépet jelöl, amelyben a kiszolgálói erőforrás fut. Bizonyos műveletek, például a hosszan futó lekérdezések, a frissítési műveletek és a lekérdezési Felskálázási szinkronizálás meghiúsulhat, ha egy kiszolgálói erőforrás egy másik csomópontra kerül át. A forgatókönyv gyakori hibaüzenetei a következők:
 
 - "Hiba történt egy hosszú ideig futó XMLA-kérelem keresése közben. Előfordulhat, hogy a kérést a szolgáltatás frissítése vagy a kiszolgáló újraindítása megszakította. "
-- A (z) "<guid><database>" azonosítójú feladat a (z) "" modellhez tartozó szolgáltatási hiba miatt megszakadt, a következő üzenettel: "a frissítési kérelem megszakítása, mivel a frissítés nélkül elakadt. Ez egy belső szolgáltatási probléma. Ha a probléma többször is előfordul, küldje el újra a feladatot, vagy küldjön egy jegyet a segítségre. "
+- A (z) "" AZONOSÍTÓJÚ feladat a <guid> (z) "" modellhez tartozó <database> szolgáltatási hiba miatt megszakadt, a következő üzenettel: "a frissítési kérelem megszakítása, mivel a frissítés nélkül elakadt. Ez egy belső szolgáltatási probléma. Ha a probléma többször is előfordul, küldje el újra a feladatot, vagy küldjön egy jegyet a segítségre. "
 
 Számos oka lehet annak, hogy a hosszan futó műveletek megszakadnak. Például az Azure-ban, például a következő frissítésekkel: 
 - Operációs rendszer javításai 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189462"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>A Azure Cloud Shell korlátozásának hibaelhárítása &
@@ -31,8 +31,8 @@ A Azure Cloud Shell hibaelhárítási hibáinak ismert megoldásai a következő
 
 ### <a name="error-running-azuread-cmdlets-in-powershell"></a>Hiba a AzureAD-parancsmagok PowerShellben való futtatásakor
 
-- **Részletek**: Ha a AzureAD-parancsmagokat ( `Get-AzureADUser` például Cloud Shell) futtatja, a következő hibaüzenet `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`jelenhet meg:. 
-- **Megoldás**: futtassa a `Connect-AzureAD` parancsmagot. Korábban Cloud Shell a parancsmagot automatikusan futtatta a PowerShell indításakor. A kezdési idő felgyorsításához a parancsmag már nem fut automatikusan. Az előző viselkedés visszaállítását úgy is elvégezheti `Connect-AzureAD` , ha hozzáadja a $profile fájlhoz a PowerShellben.
+- **Részletek**: Ha a AzureAD-parancsmagokat (például `Get-AzureADUser` Cloud Shell) futtatja, a következő hibaüzenet jelenhet meg: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` . 
+- **Megoldás**: futtassa a `Connect-AzureAD` parancsmagot. Korábban Cloud Shell a parancsmagot automatikusan futtatta a PowerShell indításakor. A kezdési idő felgyorsításához a parancsmag már nem fut automatikusan. Az előző viselkedés visszaállítását úgy is elvégezheti, ha hozzáadja `Connect-AzureAD` a $profile fájlhoz a PowerShellben.
 
 ### <a name="early-timeouts-in-firefox"></a>Korai időtúllépés a Firefoxban
 
@@ -41,8 +41,8 @@ A Azure Cloud Shell hibaelhárítási hibáinak ismert megoldásai a következő
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Cloud Shell letiltása zárolt hálózati környezetben
 
-- **Részletek**: a rendszergazdák letilthatják a Cloud Shell hozzáférését a felhasználók számára. Cloud Shell hozzáfér a `ux.console.azure.com` tartományhoz, amely megtagadható, leállíthatja a Cloud Shell entrypoints való hozzáférést, beleértve a Portal.Azure.com, a shell.Azure.com, a Visual Studio Code Azure-fiók bővítményét és a docs.microsoft.com. Az Egyesült államokbeli kormányzati felhőben a BelépésiPont `ux.console.azure.us`; nincs megfelelő shell.azure.us.
-- **Megoldás**: a hálózati `ux.console.azure.com` beállításokon `ux.console.azure.us` keresztüli hozzáférés korlátozása a környezethez. A Cloud Shell ikon továbbra is szerepel a Azure Portalban, de nem fog sikeresen csatlakozni a szolgáltatáshoz.
+- **Részletek**: a rendszergazdák letilthatják a Cloud Shell hozzáférését a felhasználók számára. Cloud Shell hozzáfér a `ux.console.azure.com` tartományhoz, amely megtagadható, leállíthatja a Cloud Shell entrypoints való hozzáférést, beleértve a Portal.Azure.com, a shell.Azure.com, a Visual Studio Code Azure-fiók bővítményét és a docs.microsoft.com. Az Egyesült államokbeli kormányzati felhőben a BelépésiPont a `ux.console.azure.us` megfelelő shell.Azure.us.
+- **Megoldás**: `ux.console.azure.com` `ux.console.azure.us` a hálózati beállításokon keresztüli hozzáférés korlátozása a környezethez. A Cloud Shell ikon továbbra is szerepel a Azure Portalban, de nem fog sikeresen csatlakozni a szolgáltatáshoz.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Tárolási párbeszédpanel – hiba: 403 RequestDisallowedByPolicy
 
@@ -81,12 +81,12 @@ A Azure Cloud Shell hibaelhárítási hibáinak ismert megoldásai a következő
 > Az Azure-beli virtuális gépeknek nyilvános IP-címmel kell rendelkezniük.
 
 - **Részletek**: a Rendszerfelügyeleti webszolgáltatások alapértelmezett Windows tűzfal-beállításai miatt a felhasználó a következő hibát tapasztalhatja:`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Megoldás**: futtassa `Enable-AzVMPSRemoting` a parancsot a PowerShell távoli eljáráshívás összes aspektusának engedélyezéséhez a célszámítógépen.
+- **Megoldás**: futtassa a parancsot a `Enable-AzVMPSRemoting` PowerShell távoli eljáráshívás összes aspektusának engedélyezéséhez a célszámítógépen.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir`nem frissíti az eredményt az Azure Drive-ban
 
 - **Részletek**: alapértelmezés szerint a felhasználói élmény optimalizálása érdekében a `dir` rendszer gyorsítótárazza az eredményeket az Azure Drive-ban.
-- **Megoldás**: egy Azure-erőforrás létrehozása, frissítése vagy eltávolítása után futtassa a `dir -force` parancsot az eredmények Azure-meghajtón való frissítéséhez.
+- **Megoldás**: egy Azure-erőforrás létrehozása, frissítése vagy eltávolítása után futtassa a parancsot az `dir -force` eredmények Azure-meghajtón való frissítéséhez.
 
 ## <a name="general-limitations"></a>Általános korlátozások
 
@@ -102,9 +102,9 @@ Cloud Shell ingyenes szolgáltatásként érhető el, és az Azure-környezet ko
 
 A Cloud Shell-munkamenetet biztosító számítógép ideiglenes, és újraindul, miután a munkamenet 20 percig inaktív. Cloud Shell szükség van egy Azure-fájlmegosztás csatlakoztatására. Ennek eredményeképpen az előfizetésnek képesnek kell lennie a tárolási erőforrások beállítására a Cloud Shell eléréséhez. További szempontok a következők:
 
-- A csatlakoztatott tárolóval csak a `clouddrive` könyvtárban lévő módosítások maradnak meg. A bash-ben `$HOME` a könyvtárat is megőrzi a rendszer.
+- A csatlakoztatott tárolóval csak a könyvtárban lévő módosítások `clouddrive` maradnak meg. A bash-ben a `$HOME` könyvtárat is megőrzi a rendszer.
 - Az Azure-fájlmegosztást csak a [hozzárendelt régióból](persisting-shell-storage.md#mount-a-new-clouddrive)lehet csatlakoztatni.
-  - A Bashben futtassa `env` a parancsot, hogy megkeresse a régióját `ACC_LOCATION`.
+  - A Bashben futtassa a parancsot, `env` hogy megkeresse a régióját `ACC_LOCATION` .
 - A Azure Files csak a helyileg redundáns tárolást és a földrajzilag redundáns tárolási fiókokat támogatja.
 
 ### <a name="browser-support"></a>Böngészőtámogatás
@@ -128,7 +128,7 @@ A Cloud Shell interaktív használati esetekhez készült. Ennek eredményeképp
 
 ### <a name="user-permissions"></a>Felhasználói engedélyek
 
-Az engedélyek a sudo-hozzáférés nélküli normál felhasználóként vannak beállítva. A címtáron kívüli telepítések nem maradnak meg `$Home` .
+Az engedélyek a sudo-hozzáférés nélküli normál felhasználóként vannak beállítva. A címtáron kívüli telepítések `$Home` nem maradnak meg.
 
 ## <a name="bash-limitations"></a>Bash-korlátozások
 
@@ -140,15 +140,15 @@ Legyen körültekintő, ha szerkeszti a. bashrc, így váratlan hibákat okozhat
 
 ### <a name="preview-version-of-azuread-module"></a>A AzureAD modul előzetes verziója
 
-`AzureAD.Standard.Preview`Jelenleg a .NET Standard-alapú modul előzetes verziója érhető el. Ez a modul ugyanazokat a funkciókat `AzureAD`biztosítja, mint a.
+Jelenleg `AzureAD.Standard.Preview` a .NET Standard-alapú modul előzetes verziója érhető el. Ez a modul ugyanazokat a funkciókat biztosítja, mint a `AzureAD` .
 
 ### <a name="sqlserver-module-functionality"></a>`SqlServer`modul funkciói
 
-A `SqlServer` Cloud Shell részét képező modul csak a PowerShell Core támogatásának előzetes kiadását támogatja. Különösen `Invoke-SqlCmd` a még nem érhető el.
+A `SqlServer` Cloud Shell részét képező modul csak a PowerShell Core támogatásának előzetes kiadását támogatja. Különösen a `Invoke-SqlCmd` még nem érhető el.
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Alapértelmezett fájl helye az Azure Drive-ból való létrehozáskor
 
-A PowerShell-parancsmagok használatával a felhasználók nem hozhatnak létre fájlokat az Azure meghajtón. Ha a felhasználók más eszközökkel, például a Vim vagy a `$HOME` Nano eszközzel hoznak létre új fájlokat, a rendszer alapértelmezés szerint menti a fájlokat.
+A PowerShell-parancsmagok használatával a felhasználók nem hozhatnak létre fájlokat az Azure meghajtón. Ha a felhasználók más eszközökkel, például a Vim vagy a nano eszközzel hoznak létre új fájlokat, a rendszer alapértelmezés szerint menti a fájlokat `$HOME` .
 
 ### <a name="tab-completion-can-throw-psreadline-exception"></a>A TAB befejezési PSReadline kivételt okozhat
 
@@ -156,11 +156,11 @@ Ha a felhasználó PSReadline-EditMode az Emacs értékre van beállítva, a fel
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Nagy közök a folyamatjelző sáv megjelenítése után
 
-Ha egy parancs vagy felhasználói művelet folyamatjelző sávot jelenít meg, a `Azure:` meghajtón a lap befejezése után a kurzor nem megfelelően van beállítva, és egy hézag jelenik meg, ahol a folyamatjelző sáv korábban volt.
+Ha egy parancs vagy felhasználói művelet folyamatjelző sávot jelenít meg, a meghajtón a lap befejezése `Azure:` után a kurzor nem megfelelően van beállítva, és egy hézag jelenik meg, ahol a folyamatjelző sáv korábban volt.
 
 ### <a name="random-characters-appear-inline"></a>A véletlenszerű karakterek beágyazottként jelennek meg
 
-A kurzor pozíciójának sorszáma például `5;13R`megjelenhet a felhasználói bevitelben. A karaktereket manuálisan is eltávolíthatja.
+A kurzor pozíciójának sorszáma például `5;13R` megjelenhet a felhasználói bevitelben. A karaktereket manuálisan is eltávolíthatja.
 
 ## <a name="personal-data-in-cloud-shell"></a>Személyes adatCloud Shell
 

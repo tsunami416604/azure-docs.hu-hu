@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419323"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása Azure SQL Data Warehouseba és onnan a Azure Data Factory használatával
@@ -70,7 +70,7 @@ A következő táblázat a Azure SQL Data Warehouse társított szolgáltatásho
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDW** |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDW** |Igen |
 | connectionString |A connectionString tulajdonsághoz Azure SQL Data Warehouse-példányhoz való kapcsolódáshoz szükséges adatok megadása. Csak az alapszintű hitelesítés támogatott. |Igen |
 
 > [!IMPORTANT]
@@ -169,7 +169,7 @@ A **[Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase
 * Ha a forrásadatok az **Azure blobban vagy a Azure Data Lake Storeban**vannak, és a formátum kompatibilis a következővel, akkor közvetlenül is másolhatja a Azure SQL Data Warehouset a albase használatával. A részleteket lásd: a **[közvetlen másolás a Base használatával](#direct-copy-using-polybase)** .
 * Ha a forrás adattárat és a formátumot eredetileg nem a Base támogatja, használhatja a **[szakaszos másolást a albase szolgáltatás használatával](#staged-copy-using-polybase)** . Emellett jobb átviteli sebességet is biztosít, ha automatikusan konvertálja az adatok alap-kompatibilis formátumba, és az adatok tárolása az Azure Blob Storage-ban történik. Ezután betölti az adatSQL Data Warehouseba.
 
-Állítsa a `allowPolyBase` tulajdonságot **true (igaz** ) értékre, ahogy az alábbi példában látható, hogy a Azure Data Factory, hogy az adatok Azure SQL Data Warehouseba való másolásához használja a "Base" Ha a allowPolyBase értéke TRUE (igaz) értékre van állítva, akkor a tulajdonság `polyBaseSettings` csoport segítségével megadhatja a tulajdonságok csoportot. a polyBaseSettings használatával használható tulajdonságokkal kapcsolatos részletekért tekintse meg a [SqlDWSink](#sqldwsink) szakaszt.
+Állítsa a `allowPolyBase` tulajdonságot **true (igaz** ) értékre, ahogy az alábbi példában látható, hogy a Azure Data Factory, hogy az adatok Azure SQL Data Warehouseba való másolásához használja a "Base" Ha a allowPolyBase értéke TRUE (igaz) értékre van állítva, akkor a tulajdonság csoport segítségével megadhatja a tulajdonságok `polyBaseSettings` csoportot. a polyBaseSettings használatával használható tulajdonságokkal kapcsolatos részletekért tekintse meg a [SqlDWSink](#sqldwsink) szakaszt.
 
 ```JSON
 "sink": {
@@ -194,12 +194,12 @@ SQL Data Warehouse a közvetlenül támogatja az Azure blobot és Azure Data Lak
 Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállításokat, és automatikusan visszakerül a BULKINSERT mechanizmusra az adatáthelyezéshez.
 
 1. A **forráshoz társított szolgáltatás** típusa: **AzureStorage** vagy **AzureDataLakeStore az egyszerű szolgáltatás hitelesítésével**.
-2. A **bemeneti adatkészlet** a következő típusú: **AzureBlob** vagy **AzureDataLakeStore**, és a tulajdonságok `type` területen a **OrcFormat**, a **ParquetFormat**vagy a **Szövegformátum** érték szerepel a következő konfigurációkkal:
+2. A **bemeneti adatkészlet** a következő típusú: **AzureBlob** vagy **AzureDataLakeStore**, és a tulajdonságok területen a `type` **OrcFormat**, a **ParquetFormat**vagy a **Szövegformátum** érték szerepel a következő konfigurációkkal:
 
    1. `rowDelimiter`csak **\n**lehet.
    2. `nullValue`**üres karakterláncra** ("") van beállítva, vagy `treatEmptyAsNull` **igaz**értékre van állítva.
    3. `encodingName`értéke **UTF-8**, amely az **alapértelmezett** érték.
-   4. `escapeChar``firstRowAsHeader`, `quoteChar`,, és `skipLineCount` nincsenek megadva.
+   4. `escapeChar`,,, `quoteChar` `firstRowAsHeader` és `skipLineCount` nincsenek megadva.
    5. `compression`nem lehet **tömörítés**, **gzip**vagy **deflate**.
 
       ```JSON
@@ -219,9 +219,9 @@ Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállít
       },
       ```
 
-3. Nincs `skipHeaderLineCount` beállítás a **BlobSource** vagy a **AzureDataLakeStore** alatt a folyamat másolási tevékenységéhez.
-4. A folyamat másolási tevékenységéhez nem `sliceIdentifierColumnName` tartozik beállítás a **SqlDWSink** alatt. (A Base garantálja, hogy minden adat frissítve lett, vagy egyetlen futtatásban sem frissül. Az **ismételhetőség**elérése érdekében használhatja `sqlWriterCleanupScript`a következőt:).
-5. `columnMapping` Nincs használatban a társított másolási tevékenységben.
+3. Nincs beállítás a `skipHeaderLineCount` **BlobSource** vagy a **AzureDataLakeStore** alatt a folyamat másolási tevékenységéhez.
+4. A `sliceIdentifierColumnName` folyamat másolási tevékenységéhez nem tartozik beállítás a **SqlDWSink** alatt. (A Base garantálja, hogy minden adat frissítve lett, vagy egyetlen futtatásban sem frissül. Az **ismételhetőség**elérése érdekében használhatja a `sqlWriterCleanupScript` következőt:).
+5. Nincs `columnMapping` használatban a társított másolási tevékenységben.
 
 ### <a name="staged-copy-using-polybase"></a>Előkészített másolás a Base használatával
 Ha a forrásadatok nem felelnek meg az előző szakaszban bemutatott feltételeknek, engedélyezheti az adatok másolását egy átmeneti Azure-Blob Storage használatával (nem lehet Premium Storage). Ebben az esetben a Azure Data Factory automatikusan elvégzi az adatok átalakítását, hogy megfeleljenek az adatformátumra vonatkozó követelményeknek, majd az adatok SQL Data Warehouseba való betöltéséhez használja a albase-et, és végül törölje a temp-adatokból a blob Storage-ból. Az adatok átmeneti Azure-blobon keresztül történő másolásával kapcsolatos részletekért tekintse meg a [szakaszos másolást](data-factory-copy-activity-performance.md#staged-copy) .
@@ -230,7 +230,7 @@ Ha a forrásadatok nem felelnek meg az előző szakaszban bemutatott feltételek
 > Ha a helyszíni adattárban lévő adatok másolása a (z) és a (z) Azure SQL Data Warehouse használatával történik, ha a adatkezelés-átjáró verziója 2,4, a JRE (Java Runtime Environment) a forrásadatok megfelelő formátumba való átalakításához szükséges. Javasoljuk, hogy az ilyen függőség elkerülése érdekében frissítse az átjárót a legújabb verzióra.
 >
 
-A szolgáltatás használatához hozzon létre egy [Azure Storage-beli társított szolgáltatást](data-factory-azure-blob-connector.md#azure-storage-linked-service) , amely az ideiglenes blob Storage-t tartalmazó Azure Storage-fiókra hivatkozik, majd adja meg a `enableStaging` és `stagingSettings` a tulajdonságokat a másolási tevékenységhez, ahogy az a következő kódban is látható:
+A szolgáltatás használatához hozzon létre egy [Azure Storage-beli társított szolgáltatást](data-factory-azure-blob-connector.md#azure-storage-linked-service) , amely az ideiglenes blob Storage-t tartalmazó Azure Storage-fiókra hivatkozik, majd adja meg a `enableStaging` és a tulajdonságokat a `stagingSettings` másolási tevékenységhez, ahogy az a következő kódban is látható:
 
 ```json
 "activities":[
@@ -273,7 +273,7 @@ A lehető legjobb átviteli sebesség eléréséhez vegye fontolóra, hogy nagyo
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>Táblanév Azure SQL Data Warehouse
 A következő táblázat példákat mutat be arra, hogyan határozhatja meg a **Táblanév** tulajdonságot az adatkészlet JSON-ban a séma és a tábla különböző kombinációi esetében.
 
-| ADATBÁZIS-séma | Tábla neve | Táblanév JSON-tulajdonság |
+| ADATBÁZIS-séma | Table name (Táblázat neve) | Táblanév JSON-tulajdonság |
 | --- | --- | --- |
 | dbo |Sajáttábla |Sajáttábla vagy dbo. Sajáttábla vagy [dbo]. Sajáttábla |
 | dbo1 |Sajáttábla |dbo1. Sajáttábla vagy [dbo1]. Sajáttábla |
@@ -317,7 +317,7 @@ Data Factory létrehozza a tárolóban található táblát a forrás adattárba
 | Dátum | Dátum |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Time | Time |
+| Idő | Idő |
 | DateTimeOffset | DateTimeOffset |
 | Idő adattípusúra | Idő adattípusúra |
 | Szöveg | Varchar (legfeljebb 8000) |
@@ -362,7 +362,7 @@ A leképezés megegyezik a [ADO.net Adattípusának SQL Server-leképezésével]
 | ntext |Karakterlánc, char [] |
 | numerikus |Decimal |
 | nvarchar |Karakterlánc, char [] |
-| valós szám |Egyirányú |
+| valós szám |Egyszeres |
 | ROWVERSION |Bájt [] |
 | idő adattípusúra |DateTime |
 | smallint |Int16 |

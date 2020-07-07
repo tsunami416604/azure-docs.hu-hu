@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
 ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188535"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure Desired State Configuration-bővítménykezelő bemutatása
@@ -59,7 +59,7 @@ Ha a bővítményt első alkalommal hívja meg, a a következő logika használa
 - Ha a **wmfVersion** tulajdonság meg van adva, a WMF verziója telepítve van, kivéve, ha ez a verzió nem kompatibilis a virtuális gép operációs rendszerével.
 - Ha nem ad meg **wmfVersion** -tulajdonságot, a rendszer a WMF legújabb verzióját telepíti.
 
-A WMF telepítéséhez újraindítás szükséges. Az újraindítás után a bővítmény letölti a **modulesUrl** tulajdonságban megadott. zip fájlt, ha meg van adva. Ha ez a hely az Azure Blob Storage-ban található, megadhat egy SAS-tokent a **sasToken** tulajdonságban a fájl eléréséhez. Miután letöltötte és kicsomagolta a. zip fájlt, a **configurationFunction** -ben definiált konfigurációs függvény egy. mof ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) fájl létrehozásához fut. A bővítmény ezután a `Start-DscConfiguration -Force` generált. MOF fájllal fut. A bővítmény rögzíti a kimenetet, és az Azure status channelbe írja azt.
+A WMF telepítéséhez újraindítás szükséges. Az újraindítás után a bővítmény letölti a **modulesUrl** tulajdonságban megadott. zip fájlt, ha meg van adva. Ha ez a hely az Azure Blob Storage-ban található, megadhat egy SAS-tokent a **sasToken** tulajdonságban a fájl eléréséhez. Miután letöltötte és kicsomagolta a. zip fájlt, a **configurationFunction** -ben definiált konfigurációs függvény egy. mof ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) fájl létrehozásához fut. A bővítmény Ezután `Start-DscConfiguration -Force` a generált. MOF fájllal fut. A bővítmény rögzíti a kimenetet, és az Azure status channelbe írja azt.
 
 ### <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
@@ -82,7 +82,7 @@ Ezek az információk megtekinthetők a Azure Portalban, vagy használhatja a Po
 
 A csomópont-konfiguráció neveként ellenőrizze, hogy a csomópont konfigurációja létezik-e az Azure-beli állapot konfigurációjában.  Ha nem, akkor a bővítmény üzembe helyezése hibát ad vissza.  Győződjön meg arról is, hogy a *csomópont-konfiguráció* nevét használja, és nem a konfigurációt.
 A konfiguráció egy olyan parancsfájlban van definiálva, amely [a csomópont-konfiguráció (MOF-fájl) fordítására](https://docs.microsoft.com/azure/automation/automation-dsc-compile)szolgál.
-A név mindig a konfiguráció `.` , majd egy adott számítógépnév és `localhost` egy adott számítógép neve lesz.
+A név mindig a konfiguráció, majd egy `.` `localhost` adott számítógépnév és egy adott számítógép neve lesz.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>DSC-bővítmény Resource Manager-sablonokban
 
@@ -115,7 +115,7 @@ A Resource Manager DSC bővítmény parancsmagokkal kapcsolatos fontos informác
 
 Az Azure DSC bővítmény a DSC-konfigurációs dokumentumokat használva közvetlenül konfigurálhatja az Azure-beli virtuális gépeket az üzembe helyezés során. Ez a lépés nem regisztrálja a csomópontot az Automation szolgáltatásban. A *csomópont nincs központilag* felügyelve.
 
-Az alábbi példa egy konfiguráció egyszerű példáját mutatja be. Mentse a konfigurációt helyileg iisInstall. ps1 néven.
+Az alábbi példa egy konfiguráció egyszerű példáját mutatja be. Mentse a konfigurációt helyileg iisInstall.ps1.
 
 ```powershell
 configuration IISInstall
@@ -131,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-A következő parancsok a iisInstall. ps1 parancsfájlt helyezik a megadott virtuális gépre. A parancsok a konfigurációt is végrehajtják, majd visszaküldik a jelentést az állapotról.
+A következő parancsok a megadott virtuális gépen helyezik el a iisInstall.ps1 szkriptet. A parancsok a konfigurációt is végrehajtják, majd visszaküldik a jelentést az állapotról.
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -184,7 +184,7 @@ A portál a következő adatokat gyűjti össze:
 
 - **Konfigurációs modulok vagy szkriptek**: Ez a mező kötelező (az űrlap nem frissült az [alapértelmezett konfigurációs parancsfájl](#default-configuration-script)esetében). A konfigurációs moduloknak és parancsfájloknak olyan. ps1 fájlra van szükségük, amely tartalmaz egy. ps1 konfigurációs parancsfájllal rendelkező. ps1 parancsfájlt vagy. zip fájlt. Ha. zip fájlt használ, az összes függő erőforrást szerepelnie kell a. zip modul mappáiban. A. zip-fájlt a Azure PowerShell SDK-ban található **publish-AzureVMDscConfiguration-OutputArchivePath** parancsmag használatával hozhatja létre. A rendszer feltölti a. zip-fájlt a felhasználói blob Storage-ba, és egy SAS-token védi.
 
-- **Modul – a konfiguráció minősített neve**: több konfigurációs függvényt is hozzáadhat egy. ps1 fájlban. Adja meg a Configuration. ps1 parancsfájl \\ nevét, majd a konfigurációs függvény nevét. Ha például a. ps1 parancsfájl neve Configuration. ps1, és a konfiguráció **IisInstall**, a **Configuration. ps1\IisInstall**nevet adja meg.
+- **Modul – a konfiguráció minősített neve**: több konfigurációs függvényt is hozzáadhat egy. ps1 fájlban. Adja meg a Configuration. ps1 parancsfájl nevét, majd a \\ konfigurációs függvény nevét. Ha például a. ps1 parancsfájl neve configuration.ps1, és a konfiguráció **IisInstall**, adja meg **configuration.ps1 \iisinstall**.
 
 - **Konfigurációs argumentumok**: Ha a konfigurációs függvény argumentumokat fogad, adja meg őket a következő formátumban: **argumentName1 = érték1, argumentName2 = érték2**. Ez a formátum a PowerShell-parancsmagok vagy a Resource Manager-sablonok által elfogadott konfigurációs argumentumok eltérő formátuma.
 

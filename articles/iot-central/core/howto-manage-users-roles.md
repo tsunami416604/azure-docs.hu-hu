@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80365502"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Felhasználók és szerepkörök kezelése a IoT Central alkalmazásban
@@ -72,7 +72,7 @@ Az alkalmazást létrehozó felhasználó automatikusan hozzá lesz rendelve a *
 
 A **Builder** szerepkör felhasználói kezelhetik az alkalmazás minden részét, de nem módosíthatják a felügyeletet vagy a folyamatos adatexportálási lapokat.
 
-### <a name="operator"></a>Művelet
+### <a name="operator"></a>Operátor
 
 A **kezelői** szerepkörben lévő felhasználók az eszköz állapotát és állapotát tudják figyelni. Nem módosíthatják az eszközök sablonjait, vagy felügyelhetik az alkalmazást. Az operátorok hozzáadhatnak és törölhetnek eszközöket, kezelhetik az eszközök készleteit, és futtathatják az elemzéseket és a feladatokat. 
 
@@ -93,7 +93,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Eszköz sablonjának engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None     |
 | Kezelés | Nézet <br/> Egyéb függőségek: eszközök példányainak megtekintése  |
@@ -101,7 +101,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Eszköz-példány engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait |
 | Frissítés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait és az eszközök csoportjait  |
@@ -112,7 +112,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Eszközök csoportjai engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése |
 | Frissítés | Nézet <br/> Egyéb függőségek: az eszközök sablonjainak és az eszközök példányainak megtekintése   |
@@ -122,7 +122,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Eszköz kapcsolati kezelési engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Példány olvasása | None <br/> Egyéb függőségek: eszköz-sablonok, eszközcsoport, eszköz-példányok megtekintése |
 | Példány kezelése | None |
@@ -132,7 +132,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Feladatok engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
 | Frissítés | Nézet <br/> Egyéb függőségek: megtekintheti az eszközök sablonjait, az eszköz példányait és az eszközök csoportjait |
@@ -143,7 +143,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Szabályok engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
 | Frissítés | Nézet <br/> Egyéb függőségek: eszközök sablonjainak megtekintése |
@@ -155,7 +155,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Alkalmazásbeállítások engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None     |
 | Frissítés | Nézet   |
@@ -165,7 +165,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Alkalmazásspecifikus sablon exportálási engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None     |
 | Exportálás | Nézet <br/> Egyéb függőségek: eszközbeállítások, eszközök példányai, eszközcsoport, irányítópultok, adatexportálás, védjegyezés, Súgó hivatkozások, egyéni szerepkörök, szabályok |
@@ -173,7 +173,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Számlázási engedélyek**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Kezelés | None     |
 | Teljes hozzáférés | Kezelés |
@@ -182,7 +182,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Egyéni szerepkörök engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None |
 | Frissítés | Nézet |
@@ -192,7 +192,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Felhasználói kezelési engedélyek**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
 | Hozzáadás | Nézet <br/> Egyéb függőségek: egyéni szerepkörök megtekintése |
@@ -206,7 +206,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Alkalmazás-irányítópult engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None     |
 | Frissítés | Nézet   |
@@ -216,7 +216,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Személyes irányítópultok engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None     |
 | Frissítés | Nézet   |
@@ -226,7 +226,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **A branding, a favicon és a Colors engedélyek**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None     |
 | Frissítés | Nézet   |
@@ -234,7 +234,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Súgó hivatkozásainak engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None     |
 | Frissítés | Nézet   |
@@ -244,7 +244,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **Adatexportálási engedélyek**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None     |
 | Frissítés | Nézet   |
@@ -254,7 +254,7 @@ Egyéni szerepkör meghatározásakor kiválaszthatja, hogy a felhasználó mily
 
 **API-jogkivonat engedélyei**
 
-| Name (Név) | Függőségek |
+| Name | Függőségek |
 | ---- | -------- |
 | Nézet | None     |
 | Létrehozás | Nézet   |

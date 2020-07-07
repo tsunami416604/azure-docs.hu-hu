@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 852c48d03b3cce785fa87a40afebe37818d91fa6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9365a71d7e5bab86b5c1d58a32510b9c5c5f15d1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118236"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964532"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: Node.js-alkalmazás létrehozása Azure Cosmos DB Gremlin API-fiók használatával
 
@@ -160,7 +160,7 @@ Ez a konzol alkalmazás a nyílt forráskódú [Gremlin Node.js](https://www.npm
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   ![„Kulcsok” panel az Azure Portalon](./media/create-graph-nodejs/keys.png)
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure Portal kulcsok panel":::
 
 4. A config.database és a config.collection értékéhez adja meg az adatbázis és a gráf (tároló) nevét. 
 
