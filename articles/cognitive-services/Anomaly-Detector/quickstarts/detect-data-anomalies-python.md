@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 06/30/2020
 ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: fd632e267e087c6489567c51e731d81cf9511ccb
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 81145dd6409bf93195f6b805ed260d945e7738f2
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606700"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982033"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália-detektor REST API és a Python használatával
 
@@ -31,16 +31,16 @@ Ezzel a rövid útmutatóval megkezdheti a anomáliák-Kiderítő API két észl
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
+    - Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
+    Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 - [Python 2. x vagy 3. x](https://www.python.org/downloads/)
-- Anomália-detektor kulcsa és végpontja
 - A Pythonhoz készült [kérelmek kódtára](https://pypi.org/project/requests/)
 
 - Idősorozat-adatpontokat tartalmazó JSON-fájl. A rövid útmutatóhoz tartozó példa a [githubon](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)érhető el.
 
-### <a name="create-an-anomaly-detector-resource"></a>Anomália-detektor erőforrásának létrehozása
-
-[!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
-
+[!INCLUDE [anomaly-detector-environment-variables](../includes/environment-variables.md)]
 
 ## <a name="create-a-new-application"></a>Új alkalmazás létrehozása
 

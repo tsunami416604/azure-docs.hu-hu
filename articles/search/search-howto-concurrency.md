@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792219"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Az egyidejűség kezelése az Azure-ban Cognitive Search
@@ -20,7 +20,7 @@ ms.locfileid: "72792219"
 Az Azure Cognitive Search-erőforrások, például az indexek és az adatforrások kezelésekor fontos az erőforrások biztonságos frissítése, különösen, ha az erőforrások elérése az alkalmazás különböző összetevőivel párhuzamosan történik. Ha két ügyfél egyidejűleg frissít egy erőforrást koordináció nélkül, a verseny feltételei lehetségesek. Ennek megelőzése érdekében az Azure Cognitive Search *optimista párhuzamossági modellt*kínál. Az erőforráson nincsenek zárolások. Ehelyett minden olyan erőforráshoz ETag van, amely azonosítja az erőforrás verzióját, így a véletlen felülírást megakadályozó adatfeldolgozási kérések elvégezhető.
 
 > [!Tip]
-> A [mintául szolgáló C#-megoldás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) fogalmi kódja azt ismerteti, hogyan működik a Egyidejűség-vezérlés az Azure Cognitive Searchban. A kód olyan feltételeket hoz létre, amelyek a Egyidejűség vezérlését hívják meg. Az [alábbi kódrészlet](#samplecode) beolvasása valószínűleg elegendő a legtöbb fejlesztő számára, de ha futtatni szeretné, szerkessze a appSettings. JSON fájlt a szolgáltatás nevének és a felügyeleti API-kulcsnak a hozzáadásához. A szolgáltatás URL- `http://myservice.search.windows.net`címe a szolgáltatás neve. `myservice`
+> A [mintául szolgáló C#-megoldás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) fogalmi kódja azt ismerteti, hogyan működik a Egyidejűség-vezérlés az Azure Cognitive Searchban. A kód olyan feltételeket hoz létre, amelyek a Egyidejűség vezérlését hívják meg. Az [alábbi kódrészlet](#samplecode) beolvasása valószínűleg elegendő a legtöbb fejlesztő számára, de ha futtatni szeretné, szerkessze appsettings.jsa szolgáltatást a szolgáltatás nevének és a felügyeleti API-kulcsnak a hozzáadásához. A szolgáltatás URL-címe `http://myservice.search.windows.net` a szolgáltatás neve `myservice` .
 
 ## <a name="how-it-works"></a>Működés
 
@@ -214,8 +214,8 @@ A következő minták egyikének módosításával Etagek vagy AccessCondition o
 + [REST API minta a GitHubon](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [.Net SDK minta a githubon](https://github.com/Azure-Samples/search-dotnet-getting-started). Ez a megoldás tartalmazza a cikkben bemutatott kódot tartalmazó "DotNetEtagsExplainer" projektet.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
-[Gyakori HTTP-kérelem és válasz-fejlécek](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[http-állapotkódok](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[indexelési műveletei (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Gyakori HTTP-kérelem és válasz-fejlécek](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
+ [Http-állapotkódok](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 
+ [Indexelési műveletek (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

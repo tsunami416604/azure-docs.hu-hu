@@ -14,17 +14,17 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72298807"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Blob Storage-hez és a Visual Studióhoz kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk azt ismerteti, hogyan kezdheti meg az Azure Blob Storaget az Azure Storage-fiók létrehozása után, ha a Visual Studio Cloud Services-projekthez **csatlakoztatott szolgáltatások hozzáadása** párbeszédablakot használja. Bemutatjuk, hogyan férhet hozzá és hozhat létre blob-tárolókat, és hogyan végezhet el olyan gyakori feladatokat, mint például a Blobok feltöltése, listázása és letöltése. A mintákat C\# nyelven írták, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
+Ez a cikk azt ismerteti, hogyan kezdheti meg az Azure Blob Storaget az Azure Storage-fiók létrehozása után, ha a Visual Studio Cloud Services-projekthez **csatlakoztatott szolgáltatások hozzáadása** párbeszédablakot használja. Bemutatjuk, hogyan férhet hozzá és hozhat létre blob-tárolókat, és hogyan végezhet el olyan gyakori feladatokat, mint például a Blobok feltöltése, listázása és letöltése. A mintákat C nyelven írták \# , és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
 
 Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására szolgál, amelyek HTTP-vagy HTTPS-kapcsolaton keresztül bárhonnan elérhetők a világon. Egyetlen blob lehet bármilyen méretű. A Blobok olyan dolgok, mint például a képek, a hang-és videofájlok, a nyers adatok és a dokumentumok fájljai.
 

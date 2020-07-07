@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432085"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vaultra vonatkozó szabályozási irányelvek
@@ -39,7 +39,7 @@ A Key Vault eredetileg a [Azure Key Vault szolgáltatás korlátaiban](service-l
 1. Ha az alkalmazás több olyan csomópontot tartalmaz, amelyeknek ugyanazokat a titkos kulcsokat kell beolvasniuk, akkor érdemes kipróbálni a mintázatot, ahol az egyik entitás beolvassa a titkos kulcsot a Key Vaultból, és kiveszi a rajongókat az összes csomópontra.   Csak a memóriában gyorsítótárazza a beolvasott titkokat.
 Ha úgy látja, hogy a fentiek továbbra sem felelnek meg az igényeinek, töltse ki az alábbi táblázatot, és vegye fel velünk a kapcsolatot, és határozza meg, hogy milyen további kapacitás vehető fel (példa csak szemléltető célokra).
 
-| Tár neve | Tár régiója | Objektumtípus (titok, kulcs vagy tanúsítvány) | Művelet (ek) * | Kulcs típusa | Kulcs hossza vagy görbéje | HSM-kulcs?| Stabil állapot RPS szükséges | Az RPS-csúcs szükséges |
+| Tároló neve | Tár régiója | Objektumtípus (titok, kulcs vagy tanúsítvány) | Művelet (ek) * | Kulcs típusa | Kulcs hossza vagy görbéje | HSM-kulcs?| Stabil állapot RPS szükséges | Az RPS-csúcs szükséges |
 |--|--|--|--|--|--|--|--|--|
 | https://mykeyvault.vault.azure.net/ | | Kulcs | Előjel | EC | P-256 | Nem | 200 | 1000 |
 
@@ -96,7 +96,7 @@ A 429-as HTTP-hibakódon kezdje el az ügyfél szabályozását egy exponenciál
 
 Ezen a ponton nem kell lekérdezni a HTTP 429-Response kódokat.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 A Microsoft Cloud szabályozásának mélyebb tájolását lásd: [szabályozási minta](https://docs.microsoft.com/azure/architecture/patterns/throttling).
 

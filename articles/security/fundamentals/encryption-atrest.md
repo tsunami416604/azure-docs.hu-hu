@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454679"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-beli adatok titkosítása – Rest
@@ -261,21 +261,21 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 |                                  |                    | **Titkosítási modell és kulcskezelő** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Kiszolgálóoldali szolgáltatás által felügyelt kulcs használata**     | **Ügyfél által felügyelt kulcs kiszolgálóoldali használata**             | **Ügyfél által felügyelt kulcs ügyféloldali használata**      |
-| **AI és Machine Learning**      |                    |                    |                    |
+| **Mesterséges intelligencia és gépi tanulás**      |                    |                    |                    |
 | Azure Cognitive Search           | Igen                | Igen                | -                  |
 | Azure Cognitive Services         | Igen                | Igen                | -                  |
 | Azure Machine Learning           | Igen                | Igen                | -                  |
 | Azure Machine Learning Studio    | Igen                | Előzetes verzió, RSA 2048 bites | -               |
-| Tartalommoderátor                | Igen                | Igen                | -                  |
-| Arcfelismerés                             | Igen                | Igen                | -                  |
+| Content Moderator                | Igen                | Igen                | -                  |
+| Face                             | Igen                | Igen                | -                  |
 | Language Understanding           | Igen                | Igen                | -                  |
 | Personalizer                     | Igen                | Igen                | -                  |
 | QnA Maker                        | Igen                | Igen                | -                  |
 | Beszédszolgáltatások                  | Igen                | Igen                | -                  |
-| Fordítói szöveg                  | Igen                | Igen                | -                  |
+| Translator Text                  | Igen                | Igen                | -                  |
 | Power BI                         | Igen                | Előzetes verzió, RSA 2048 bites | -                  |
 | **Elemzés**                    |                    |                    |                    |
-| Azure Stream Analytics           | Igen                | N/A\*            | -                  |
+| Azure Stream Analytics           | Igen                | N.A.\*            | -                  |
 | Event Hubs                       | Igen                | Igen, az összes RSA-hossz. | -                  |
 | Functions                        | Igen                | Igen, az összes RSA-hossz. | -                  |
 | Azure Analysis Services          | Igen                | -                  | -                  |
@@ -288,10 +288,10 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | Azure Data Lake Store            | Igen                | Igen, RSA 2048-bit  | -                  |
 | **Containers**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Igen                | Igen                | -                  |
-| Tárolópéldányok              | Igen                | Igen                | -                  |
+| Container Instances              | Igen                | Igen                | -                  |
 | Container Registry               | Igen                | Igen                | -                  |
-| **Compute**                      |                    |                    |                    |
-| Virtuális gépek                 | Igen                | Igen, RSA 2048-bit  | -                  |
+| **Számítás**                      |                    |                    |                    |
+| Virtual Machines                 | Igen                | Igen, RSA 2048-bit  | -                  |
 | Virtuálisgép-méretezési csoport        | Igen                | Igen, RSA 2048-bit  | -                  |
 | SAP HANA                         | Igen                | Igen, RSA 2048-bit  | -                  |
 | App Service                      | Igen                | igen\*\*            | -                  |
@@ -313,7 +313,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | Table Storage                    | Igen                | Igen                | Igen                |
 | Azure Cosmos DB                  | Igen                | Igen                | -                  |
 | Azure Databricks                 | Igen                | Igen                | -                  |
-| Azure Database Migration Service | Igen                | N/A\*              | -                  |
+| Azure Database Migration Service | Igen                | N.A.\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Igen                | -                  | Igen                |
 | Azure Repos                      | Igen                | -                  | Igen                |
@@ -327,7 +327,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | **IoT szolgáltatások**                 |                    |                    |                    |
 | IoT Hub                          | Igen                | Igen                | Igen                |
 | IoT Hub Device Provisioning      | Igen                | Igen                | -                  |
-| **Felügyelet és irányítás**    |                    |                    |                    |
+| **Felügyelet és cégirányítás**    |                    |                    |                    |
 | Azure Site Recovery              | Igen                | -                  | -                  |
 | Azure Migrate                    | Igen                | Igen                | -                  |
 | **Média**                        |                    |                    |                    |
@@ -346,7 +346,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 | File Sync                         | Igen                | Igen, RSA 2048-bit  | -                  |
 | Queue Storage                    | Igen                | Igen                | Igen                |
 | Avere vFXT                       | Igen                | -                  | -                  |
-| Azure Cache for Redis            | Igen                | N/A\*              | -                  |
+| Azure Cache for Redis            | Igen                | N.A.\*              | -                  |
 | Azure NetApp Files               | Igen                | Igen                | -                  |
 | Archive Storage                  | Igen                | Igen, RSA 2048-bit  | -                  |
 | StorSimple                       | Igen                | Igen, RSA 2048-bit  | Igen                |

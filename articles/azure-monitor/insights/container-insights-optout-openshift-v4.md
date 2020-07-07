@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan állíthatja le az Azure Red Hat-Op
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82196438"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>Az Azure-és Red Hat OpenShift v4-fürt figyelésének leállítása
@@ -45,7 +45,7 @@ Miután engedélyezte az Azure Red Hat-OpenShift és a Red Hat OpenShift 4. x ve
     NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
     ```
 
-A konfiguráció módosítása több percet is igénybe vehet. Mivel a Helm a törlése után is nyomon követi a kiadásokat, naplózhatja a fürt előzményeit, és visszavonhatja a kiadás törlését `helm rollback`is.
+A konfiguráció módosítása több percet is igénybe vehet. Mivel a Helm a törlése után is nyomon követi a kiadásokat, naplózhatja a fürt előzményeit, és visszavonhatja a kiadás törlését is `helm rollback` .
 
 ## <a name="next-steps"></a>További lépések
 

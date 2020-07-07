@@ -14,10 +14,10 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c146640112190fe08bb1b3b806c95a2854da9083
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85604454"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Prémium szintű Azure Active Directory-kiadások – Regisztráció
@@ -69,7 +69,7 @@ Ha új Azure AD licenccsomaggal regisztrált, akkor a vásárlás után kapott v
 
     - **bejelentkezés.** Ezt a hivatkozást válassza, ha rendelkezik meglévő bérlővel, majd a meglévő rendszergazdai fiókjával jelentkezzen be. Globális rendszergazdának kell lennie azon a bérlőn, amelyen a licencek aktiválva vannak.
 
-    - **Regisztráció.** Ezt a hivatkozást válassza, ha új Azure AD-bérlőt szeretne aktiválni a licenccsomaghoz a **Fiókprofil létrehozása** párbeszédpanel megnyitásával.
+    - **feliratkozni.** Ezt a hivatkozást válassza, ha új Azure AD-bérlőt szeretne aktiválni a licenccsomaghoz a **Fiókprofil létrehozása** párbeszédpanel megnyitásával.
 
         ![Fiók profiljának létrehozása lap minta információval](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 

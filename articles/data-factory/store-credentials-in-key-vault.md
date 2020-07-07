@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81451686"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása Azure Key Vaultban
@@ -44,12 +44,12 @@ Azure Key Vault társított szolgáltatás a következő tulajdonságokat támog
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **AzureKeyVault**. | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzureKeyVault**. | Igen |
 | baseUrl | A Azure Key Vault URL-cím megadása. | Igen |
 
 **Szerzői felhasználói felület használata:**
 
-Válassza a **kapcsolatok** -> **társított szolgáltatások** -> **új**lehetőséget. Az új társított szolgáltatásban keresse meg és válassza ki a "Azure Key Vault" elemet:
+Válassza a **kapcsolatok**  ->  **társított szolgáltatások**  ->  **új**lehetőséget. Az új társított szolgáltatásban keresse meg és válassza ki a "Azure Key Vault" elemet:
 
 ![Keresés Azure Key Vault](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -77,7 +77,7 @@ A következő tulajdonságok támogatottak, ha olyan mezőt konfigurál a társ�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A mező Type (típus) tulajdonságát a következőre kell beállítani: **AzureKeyVaultSecret**. | Igen |
+| típus | A mező Type (típus) tulajdonságát a következőre kell beállítani: **AzureKeyVaultSecret**. | Igen |
 | secretName | A titok neve Azure Key Vaultban. | Igen |
 | Titkoskulcsverziója | A titok verziója Azure Key Vaultban.<br/>Ha nincs megadva, mindig a titkos kulcs legújabb verzióját használja.<br/>Ha meg van adva, a rendszer az adott verzióra ragaszkodik.| Nem |
 | áruház | Egy Azure Key Vault társított szolgáltatásra hivatkozik, amelyet a hitelesítő adatok tárolására használ. | Igen |

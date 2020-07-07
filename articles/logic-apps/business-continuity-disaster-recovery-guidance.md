@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437705"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Üzletmenet-folytonosság és vész-helyreállítási Azure Logic Apps
@@ -234,7 +234,7 @@ Az azonos adat ismételt olvasásának elkerülése érdekében a logikai alkalm
 
 * A kiszolgálóval, szolgáltatással vagy rendszerszintű állapottal dolgozó logikai alkalmazások a kiszolgálón, a szolgáltatáson vagy a rendszeroldalon lévő tulajdonságértékeket vagy beállításokat használják.
 
-  Például egy olyan lekérdezés-alapú trigger, amely az adatbázisból egy sort olvas, megköveteli, hogy a sorban `isRead` legyen `FALSE`egy oszlop, amely a következőre van beállítva:. Minden alkalommal, amikor az trigger beolvas egy sort, a logikai alkalmazás frissíti a sort úgy `isRead` , hogy `FALSE` az `TRUE`oszlopot a verzióról a értékre módosítja.
+  Például egy olyan lekérdezés-alapú trigger, amely az adatbázisból egy sort olvas, megköveteli, hogy a sorban `isRead` legyen egy oszlop, amely a következőre van beállítva: `FALSE` . Minden alkalommal, amikor az trigger beolvas egy sort, a logikai alkalmazás frissíti a sort úgy, hogy az oszlopot a verzióról a `isRead` `FALSE` értékre módosítja `TRUE` .
 
   Ez a kiszolgálóoldali megközelítés hasonlóan működik Service Bus várólistákhoz vagy olyan témakörökhöz, amelyekben üzenetsor-kezelő szemantika található, ahol egy trigger képes olvasni és zárolni egy üzenetet, miközben a logikai alkalmazás feldolgozza az üzenetet. Amikor a logikai alkalmazás befejezi a feldolgozást, az trigger törli az üzenetet a sorból vagy a témakörből.
 
@@ -341,7 +341,7 @@ Beállíthat naplózást a logikai alkalmazás futtatásához, és elküldheti a
 
 * Ha ezeket az adatokat az Azure Log Analytics használatával szeretné használni, az adatokat az elsődleges és a másodlagos hely számára is elérhetővé teheti, ha beállítja a logikai alkalmazás **diagnosztikai beállításait** , és több log Analytics munkaterületre küldi az adatokat. További információ: [Azure monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Appshoz](../logic-apps/monitor-logic-apps-log-analytics.md).
 
-* Ha az Azure Storage-ba vagy az Azure Event Hubsba kívánja elküldeni az adatküldés célját, a Geo-redundancia beállításával mind az elsődleges, mind a másodlagos helyen elérhetővé teheti az adatgyűjtést. További információval a következő cikkek szolgálnak:<p>
+* Ha az Azure Storage-ba vagy az Azure Event Hubsba kívánja elküldeni az adatküldés célját, a Geo-redundancia beállításával mind az elsődleges, mind a másodlagos helyen elérhetővé teheti az adatgyűjtést. További információért lásd a következő cikkeket:<p>
 
   * [Azure Blob Storage vész-helyreállítási és-fiók feladatátvétele](../storage/common/storage-disaster-recovery-guidance.md)
   * [Azure Event Hubs geo – vész-helyreállítás](../event-hubs/event-hubs-geo-dr.md)

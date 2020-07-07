@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 75f8c1f77a372d3b9b9e9a5582927f24b99fe9ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190214"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsighton futó Apache Spark-feladatok hibakeresése
 
 Ebből a cikkből megtudhatja, hogyan követheti nyomon és hibakereséssel Apache Spark HDInsight-fürtökön futó feladatokat. Hibakeresés a Apache Hadoop a fonal felhasználói felületén, a Spark felhasználói felületen és a Spark-előzmények kiszolgálóján keresztül. Egy Spark-feladatot a Spark-fürttel elérhető jegyzetfüzettel indíthat el, **gépi tanulás: az élelmiszer-ellenőrzési adatok prediktív elemzése a MLLib használatával**. A következő lépésekkel követheti nyomon a más megközelítéssel elküldött alkalmazásokat, például a **Spark-submitt**.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     ![Azure Portal a fonal felhasználói felületének indítása](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületének elindításához válassza a **Ambari Kezdőlap** lehetőséget a **fürt irányítópultok**területen. A Ambari felhasználói felületén navigáljon a **fonalak** > **gyors hivatkozásai** > az Active Resource Manager > **Resource Manager felhasználói felületén**.
+   > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületének elindításához válassza a **Ambari Kezdőlap** lehetőséget a **fürt irányítópultok**területen. A Ambari felhasználói felületén navigáljon a **fonalak**  >  **gyors hivatkozásai** > az Active Resource Manager > **Resource Manager felhasználói felületén**.
 
 2. Mivel a Spark-feladatot a Jupyter notebookok használatával indította el, az alkalmazás neve **remotesparkmagics** (a jegyzetfüzetek által elindított összes alkalmazás neve). A feladattal kapcsolatos további információk megtekintéséhez válassza ki az alkalmazás AZONOSÍTÓját az alkalmazás nevében. Ez a művelet elindítja az alkalmazás nézetét.
 
@@ -98,13 +98,13 @@ A feladatok elvégzése után a rendszer megőrzi a feladattal kapcsolatos infor
     ![Azure Portal a Spark-előzmények kiszolgálójának elindítása](./media/apache-spark-job-debugging/launch-spark-history-server.png "A Spark History Kiszolgáló1 elindítása")
 
    > [!TIP]  
-   > Azt is megteheti, hogy a Spark History Server felhasználói felületét is elindítja a Ambari felhasználói felületén. A Ambari felhasználói felületének elindításához az Áttekintés panelen válassza a **Ambari Kezdőlap** elemet a **fürt irányítópultok**területen. A Ambari felhasználói felületén navigáljon a **Spark2** > **Quick Links** > **Spark2 History Server felhasználói felületéhez**.
+   > Azt is megteheti, hogy a Spark History Server felhasználói felületét is elindítja a Ambari felhasználói felületén. A Ambari felhasználói felületének elindításához az Áttekintés panelen válassza a **Ambari Kezdőlap** elemet a **fürt irányítópultok**területen. A Ambari felhasználói felületén navigáljon a **Spark2**  >  **Quick Links**  >  **Spark2 History Server felhasználói felületéhez**.
 
 2. Megjelenik a felsorolt összes befejezett alkalmazás. Válassza ki az alkalmazás AZONOSÍTÓját, hogy további információkat adjon meg egy alkalmazásban.
 
     ![A Spark History Server által befejezett alkalmazások](./media/apache-spark-job-debugging/view-completed-applications.png "A Spark History Kiszolgáló2 elindítása")
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)
 * [Apache Spark feladatok hibakeresése kiterjesztett Spark History Server használatával](apache-azure-spark-history-server.md)

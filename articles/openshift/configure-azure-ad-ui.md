@@ -9,10 +9,10 @@ ms.author: asabbour
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
 ms.openlocfilehash: 6b6248aac35c22b9ffd2cd95df41e84986356259
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205312"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Active Directory hitelesítés konfigurálása Azure Red Hat OpenShift 4 fürthöz (portál)
@@ -58,7 +58,7 @@ A következő választható jogcímeket használhatja:
 * Módosítsa az Azure AD által a jogkivonatokban visszaadott jogcímek viselkedését.
 * Egyéni jogcímek hozzáadása és elérése az alkalmazáshoz.
 
-A OpenShift a `email` jogcím használatára konfigurálja, és visszatérhet `upn` a következőre: az előnyben részesített Felhasználónév beállításához adja hozzá `upn` a Azure Active Directory által visszaadott azonosító jogkivonat részét.
+A OpenShift a jogcím használatára konfigurálja, `email` és visszatérhet a következőre `upn` : az előnyben részesített Felhasználónév beállításához adja hozzá a `upn` Azure Active Directory által visszaadott azonosító jogkivonat részét.
 
 Navigáljon a **jogkivonat-konfiguráció (előzetes verzió)** elemre, és kattintson az **opcionális jogcím hozzáadása**lehetőségre. Válassza az **azonosító** lehetőséget, majd jelölje be az **e-mail** és **UPN** jogcímek.
 
@@ -72,7 +72,7 @@ A [felhasználók és csoportok alkalmazáshoz való hozzárendeléséhez](https
 
 ## <a name="configure-openshift-openid-authentication"></a>OpenShift OpenID-hitelesítés konfigurálása
 
-A `kubeadmin` hitelesítő adatok beolvasása. Futtassa a következő parancsot a `kubeadmin` felhasználó jelszavának megkereséséhez.
+A `kubeadmin` hitelesítő adatok beolvasása. Futtassa a következő parancsot a felhasználó jelszavának megkereséséhez `kubeadmin` .
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -80,7 +80,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-Az alábbi példa kimenetében látható, hogy a jelszó `kubeadminPassword`a következő lesz:.
+Az alábbi példa kimenetében látható, hogy a jelszó a következő lesz: `kubeadminPassword` .
 
 ```json
 {
@@ -98,14 +98,14 @@ A fürt konzoljának URL-címét a következő parancs futtatásával érheti el
     --query "consoleProfile.url" -o tsv
 ```
 
-Indítsa el a konzol URL-címét egy böngészőben, és `kubeadmin` jelentkezzen be a hitelesítő adatok használatával.
+Indítsa el a konzol URL-címét egy böngészőben, és jelentkezzen be a `kubeadmin` hitelesítő adatok használatával.
 
 Lépjen az **Adminisztráció**elemre, kattintson a **fürt beállításai**elemre, majd válassza a **globális konfiguráció** fület. görgessen a **OAuth**elemre.
 
 Görgessen le a **Hozzáadás** lehetőség kiválasztásához az **Identity Providers** területen, majd válassza az **OpenID Connect**elemet.
 ![Válassza az OpenID Connect lehetőséget az identitás-szolgáltatók legördülő listából](media/aro4-oauth-idpdrop.png)
 
-Adja meg a nevet **HRE**, az **ügyfél-azonosítóként** az **alkalmazás-azonosítóként** és az **ügyfél titkos kulcsaként**. A **kiállító URL-címe** a következőképpen van formázva: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. Cserélje le a helyőrzőt a korábban lekért bérlői AZONOSÍTÓra.
+Adja meg a nevet **HRE**, az **ügyfél-azonosítóként** az **alkalmazás-azonosítóként** és az **ügyfél titkos kulcsaként**. A **kiállító URL-címe** a következőképpen van formázva: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Cserélje le a helyőrzőt a korábban lekért bérlői AZONOSÍTÓra.
 
 ![Adja meg a OAuth részleteit](media/aro4-oauth-idp-1.png)
 

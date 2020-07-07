@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992560"
 ---
 # <a name="advanced-filtering"></a>Speciális szűrés
@@ -50,12 +50,12 @@ A Event Grid jelenleg nem támogatja a szűrést az értékek tömbje számára.
 
 ## <a name="and-or-not-semantics"></a>ÉS-vagy-nem szemantika
 
-Figyelje meg, hogy a korábban `AdvancedFilters` megadott JSON-példában egy tömb. Minden `AdvancedFilter` tömb elemet `AND` feltételként gondoljon.
+Figyelje meg, hogy a korábban megadott JSON-példában `AdvancedFilters` egy tömb. Minden `AdvancedFilter` tömb elemet `AND` feltételként gondoljon.
 
-A több értéket támogató `NumberIn`operátorok (például `NumberNotIn` `StringIn`,, stb.) esetében minden érték `OR` feltételként lesz kezelve. Tehát a `StringBeginsWith("a", "b", "c")` minden olyan karakterlánc-értéknek megfelel, amely a `a` vagy `b` a `c`vagy a karakterrel kezdődik.
+A több értéket támogató operátorok (például,, `NumberIn` `NumberNotIn` `StringIn` stb.) esetében minden érték `OR` feltételként lesz kezelve. Tehát a `StringBeginsWith("a", "b", "c")` minden olyan karakterlánc-értéknek megfelel, amely a vagy a vagy a karakterrel kezdődik `a` `b` `c` .
 
 > [!CAUTION]
-> A nem operátorok `NumberNotIn` , `StringNotIn` és a `Values` mezőben megadott értékeken a és a feltételek szerint viselkednek.
+> A nem operátorok, `NumberNotIn` és a `StringNotIn` mezőben megadott értékeken a és a feltételek szerint viselkednek `Values` .
 >
 > Ezzel a művelettel a szűrő fogadja az összes szűrőt, és legyőzze a szűrés célját.
 
@@ -71,13 +71,13 @@ Az összes karakterlánc-összehasonlítás a kis-és nagybetűk megkülönbözt
 
 A `Key` tulajdonság lehet egy jól ismert legfelső szintű tulajdonság, vagy lehet egy több pontot tartalmazó JSON-útvonal, ahol minden egyes pont egy beágyazott JSON-objektumra mutat.
 
-Event Grid nem rendelkezik speciális jelentéssel a kulcsban szereplő `$` karakterhez, a JSONPath-specifikációtól eltérően.
+Event Grid nem rendelkezik speciális jelentéssel a `$` kulcsban szereplő karakterhez, a JSONPath-specifikációtól eltérően.
 
 ### <a name="event-grid-schema"></a>Event Grid-séma
 
 A Event Grid sémában lévő eseményekhez:
 
-* ID (Azonosító)
+* ID
 * Témakör
 * Tárgy
 * EventType

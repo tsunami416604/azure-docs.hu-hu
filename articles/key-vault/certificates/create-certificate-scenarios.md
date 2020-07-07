@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430967"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Tanúsítvány-létrehozás monitorozása és kezelése
@@ -36,7 +36,7 @@ A cikkben ismertetett forgatókönyvek/műveletek a következők:
 
 ## <a name="request-a-kv-certificate-with-a-supported-issuer"></a>Egy támogatott kiállítóval rendelkező KV-tanúsítvány igénylése 
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
@@ -79,7 +79,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ## <a name="get-pending-request---request-status-is-inprogress"></a>Kérelem függőben lévő kérelmének állapota "Inprogress"
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -115,7 +115,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ### <a name="request"></a>Kérés
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -147,7 +147,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ### <a name="request"></a>Kérés
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -185,7 +185,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 ## <a name="get-pending-request---pending-request-status-is-deleted-or-overwritten"></a>Függőben lévő kérelem beolvasása – függőben lévő kérelem állapota "törölve" vagy "átírt"
 Egy függő objektumot törölheti vagy felülírhat egy létrehozási/importálási művelet, ha az állapota nem "Inprogress".
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -223,7 +223,7 @@ Ha egy függőben lévő kérelem állapota "Inprogress", a létrehozás (és az
 > [!NOTE]
 > A függőben lévő objektumok törlésével előfordulhat, hogy nem szakítja meg a x509-tanúsítványkérelmet a szolgáltatónál.
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
@@ -260,7 +260,7 @@ Az egyesítés nem engedélyezett, ha a függőben lévő objektum egy kiállít
 
 Ha a x509-tanúsítvány létrehozására irányuló kérelem valamilyen okból meghiúsul vagy leáll, és ha sávon kívüli x509-tanúsítványt kérhet le, a rendszer egyesítő műveletet hajthat végre a KV-os tanúsítvány végrehajtásához.
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
 
@@ -289,7 +289,7 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 ## <a name="request-a-cancellation-while-the-pending-request-status-is-inprogress"></a>Lemondás kérése, ha a függőben lévő kérelem állapota "Inprogress"
 Csak törlésre lehet szükség. Egy kérelem vagy nem törölhető. Ha egy kérelem nem "folyamatban", a rendszer 400 (hibás kérelem) http-állapotot ad vissza.
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |JAVÍTÁS|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -329,7 +329,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 > [!NOTE]
 > A függőben lévő objektum törlése lehet, hogy nem szakítja meg a x509-tanúsítványkérelmet a szolgáltatóval.
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
@@ -359,7 +359,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 ## <a name="create-a-kv-certificate-manually"></a>KV-tanúsítvány manuális létrehozása
 Létrehozhat egy tetszőleges HITELESÍTÉSSZOLGÁLTATÓval kiadott tanúsítványt egy manuális létrehozási folyamat segítségével. Állítsa a kiállító nevét "Unknown" értékre, vagy ne adja meg a kiállító mezőt.
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
@@ -399,7 +399,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ## <a name="merge-when-a-pending-request-is-created---manual-certificate-creation"></a>Egyesítés egy függőben lévő kérelem létrehozásakor – manuális tanúsítvány létrehozása
 
-|Módszer|Kérés URI-ja|
+|Metódus|Kérés URI-ja|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending/merge?api-version={api-version}`|
 
@@ -414,7 +414,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |Elem neve|Kötelező|Típus|Verzió|Leírás|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Igen|tömb|\<Bevezetés a> verzióra|X509-tanúsítványlánc alap 64 sztring tömbként.|
+|x5c|Igen|tömb|\<introducing version>|X509-tanúsítványlánc alap 64 sztring tömbként.|
 
 ### <a name="response"></a>Válasz
 

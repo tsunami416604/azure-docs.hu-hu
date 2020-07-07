@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
 ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84688281"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Az Azure Virtual Network NAT-kapcsolat hibáinak megoldása
@@ -77,7 +77,7 @@ Egy új TCP-kapcsolat létrehozása minden HTTP-művelethez (más néven "Atomic
 
 _**Megoldás:**_ A kimenő kapcsolatok méretezése az alábbiak szerint történik:
 
-| Forgatókönyv | Bizonyíték |Kezelés |
+| Eset | Bizonyíték |Kezelés |
 |---|---|---|
 | A SNAT-portok és a SNAT-portok kimerülése a magas kihasználtságú időszakok során tapasztalható. | A (z) Azure Monitor SNAT-kapcsolatok [metrikájának](nat-metrics.md) "sikertelen" kategóriája az idő és a magas csatlakozási kötet esetében átmeneti vagy állandó hibákat mutat be.  | Állapítsa meg, hogy adhat-e további nyilvános IP-cím erőforrásokat vagy nyilvános IP-előtag-erőforrásokat. Ez a Hozzáadás legfeljebb 16 IP-címet tesz lehetővé a NAT-átjáró számára. Ez a Hozzáadás további leltárt nyújt a rendelkezésre álló SNAT-portok (64 000/IP-címek) számára, és lehetővé teszi a forgatókönyv további skálázását.|
 | Már 16 IP-címet adott meg, és továbbra is SNAT a portok kimerülése. | További IP-cím hozzáadására tett kísérlet sikertelen. Az IP-címek teljes száma a nyilvános IP-címek erőforrásaiból vagy a nyilvános IP-előtag erőforrásaiból összesen meghaladja a 16 értéket. | Terjessze az alkalmazási környezetet több alhálózatra, és adjon meg egy NAT Gateway-erőforrást az egyes alhálózatokhoz.  A tervezési minta (ok) újraértékelése az előző [útmutatás](#design-patterns)alapján optimalizálható. |

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431292"
 ---
 # <a name="runtocompletion"></a>Futtatás befejezésig
@@ -22,7 +22,7 @@ A cikk folytatása előtt javasoljuk, hogy ismerkedjen meg a [Service Fabric alk
 > A RunToCompletion szemantikai használata jelenleg nem támogatott a [Reliable Services][reliable-services-link] programozási modellel írt szolgáltatások esetében.
  
 ## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion szemantika és specifikáció
-A RunToCompletion szemantikai **ExecutionPolicy** [a ServiceManifest importálásakor][application-and-service-manifests-link]is megadhatók. A megadott házirendet a rendszer a ServiceManifest alkotó összes CodePackages örökli. A következő ApplicationManifest. XML kódrészlet példaként szolgál.
+A RunToCompletion szemantikai **ExecutionPolicy** [a ServiceManifest importálásakor][application-and-service-manifests-link]is megadhatók. A megadott házirendet a rendszer a ServiceManifest alkotó összes CodePackages örökli. A következő ApplicationManifest.xml kódrészlet példaként szolgál.
 
 ```xml
 <ServiceManifestImport>
@@ -47,7 +47,7 @@ Nézzük meg a teljes példát a RunToCompletion szemantika használatával.
 >
 > Ez a példa mcr.microsoft.com/windows/nanoserver:1809 hivatkozik. A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. További információ: a [Windows-tároló verziójának kompatibilitása](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-A következő ServiceManifest. XML olyan szervizcsomagot ír le, amely két CodePackages tartalmaz, amelyek tárolókat jelölnek. A *RunToCompletionCodePackage1* csak egy üzenetet naplóz az **StdOut** -ba, és kilép. A *RunToCompletionCodePackage2* egy ideig Pingeli a visszacsatolási címeket, majd a **0**, **1** vagy **2**kilépési kóddal kilép.
+Az alábbi ServiceManifest.xml a tárolókat jelképező két CodePackages álló szervizcsomagot ismerteti. A *RunToCompletionCodePackage1* csak egy üzenetet naplóz az **StdOut** -ba, és kilép. A *RunToCompletionCodePackage2* egy ideig Pingeli a visszacsatolási címeket, majd a **0**, **1** vagy **2**kilépési kóddal kilép.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ A következő ServiceManifest. XML olyan szervizcsomagot ír le, amely két Code
 </ServiceManifest>
 ```
 
-A következő ApplicationManifest. XML a fent ismertetett ServiceManifest. XML fájlon alapuló alkalmazást ismertet. Meghatározza a **OnFailure**újraindítási szabályzatával rendelkező *WindowsRunToCompletionServicePackage* **RunToCompletion** **ExecutionPolicy** . A *WindowsRunToCompletionServicePackage*aktiválása után a rendszer megkezdi az összetevők CodePackages. Az első aktiváláskor a *RunToCompletionCodePackage1* sikeresen ki kell lépnie. A *RunToCompletionCodePackage2* azonban sikertelen lehet **(nullától eltérő kilépési kóddal)**, ebben az esetben a rendszer újraindul, mert az újraindítási szabályzat **OnFailure**.
+A következő ApplicationManifest.xml a fent tárgyalt ServiceManifest.xml alapján ismerteti az alkalmazást. Meghatározza a **OnFailure**újraindítási szabályzatával rendelkező *WindowsRunToCompletionServicePackage* **RunToCompletion** **ExecutionPolicy** . A *WindowsRunToCompletionServicePackage*aktiválása után a rendszer megkezdi az összetevők CodePackages. Az első aktiváláskor a *RunToCompletionCodePackage1* sikeresen ki kell lépnie. A *RunToCompletionCodePackage2* azonban sikertelen lehet **(nullától eltérő kilépési kóddal)**, ebben az esetben a rendszer újraindul, mert az újraindítási szabályzat **OnFailure**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

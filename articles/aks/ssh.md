@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 70ebcb1f340ba28cf80ad3e24a464aad5584b3a4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82207156"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>SSH-n keresztüli csatlakozás az Azure Kubernetes Service- (AKS-) fürtcsomópontokhoz karbantartás és hibaelhárítás céljából
@@ -25,7 +25,7 @@ Alapértelmezés szerint az SSH-kulcsok beszerzése vagy létrehozása, majd hoz
 
 A cikk azt is feltételezi, hogy van egy SSH-kulcsa. Az SSH [-kulcs MacOS vagy Linux][ssh-nix] vagy [Windows rendszerű][ssh-windows]használatával is létrehozható. Ha a kulcspár létrehozásához a PuTTY Gen-t használja, mentse a kulcspárt egy OpenSSH formátumban az alapértelmezett Putty titkos kulcs formátuma (. PPK fájl) helyett.
 
-Szüksége lesz az Azure CLI 2.0.64 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.64 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Virtuálisgép-méretezési csoport-alapú AK-fürtök konfigurálása SSH-hozzáféréshez
 
@@ -138,7 +138,7 @@ aks-nodepool1-79590246-0  10.240.0.4
 
 Egy AK-csomóponthoz való SSH-kapcsolatok létrehozásához egy segítő Pod-t kell futtatnia az AK-fürtben. Ez a segítő Pod SSH-hozzáférést biztosít a fürthöz, majd az SSH-csomópont további elérését. A segítő Pod létrehozásához és használatához hajtsa végre a következő lépéseket:
 
-1. Futtasson `debian` egy tároló-rendszerképet, és csatolja hozzá a terminál-munkamenetet. Ezzel a tárolóval létrehozhat egy SSH-munkamenetet az AK-fürt bármely csomópontjának használatával:
+1. Futtasson egy `debian` tároló-rendszerképet, és csatolja hozzá a terminál-munkamenetet. Ezzel a tárolóval létrehozhat egy SSH-munkamenetet az AK-fürt bármely csomópontjának használatával:
 
     ```console
     kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
@@ -149,7 +149,7 @@ Egy AK-csomóponthoz való SSH-kapcsolatok létrehozásához egy segítő Pod-t 
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Ha a terminál-munkamenet csatlakozik a tárolóhoz, telepítsen egy SSH- `apt-get`ügyfelet a következő használatával:
+1. Ha a terminál-munkamenet csatlakozik a tárolóhoz, telepítsen egy SSH-ügyfelet a következő használatával `apt-get` :
 
     ```console
     apt-get update && apt-get install openssh-client -y
@@ -194,7 +194,7 @@ Egy AK-csomóponthoz való SSH-kapcsolatok létrehozásához egy segítő Pod-t 
 
 ## <a name="remove-ssh-access"></a>SSH-hozzáférés eltávolítása
 
-Ha elkészült, `exit` az SSH-munkamenetet `exit` , majd az interaktív tároló munkamenetét. A tároló-munkamenet bezárásakor a rendszer törli az AK-fürtről az SSH-hozzáféréshez használt Pod-hozzáférést.
+Ha elkészült, `exit` az SSH-munkamenetet, majd `exit` az interaktív tároló munkamenetét. A tároló-munkamenet bezárásakor a rendszer törli az AK-fürtről az SSH-hozzáféréshez használt Pod-hozzáférést.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,13 +9,13 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450140"
 ---
-# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>A B2B-üzenetek biztonságának növelése tanúsítványok használatával
+# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>A B2B-üzenetek biztonságának fokozása tanúsítványokkal
 
 Ha továbbra is meg kell őriznie a B2B-kommunikációt, a vállalati integrációs alkalmazásokban, különösen a Logic Appsben növelheti a B2B-kommunikáció biztonságát, ha tanúsítványokat ad hozzá az integrációs fiókjához. A tanúsítványok olyan digitális dokumentumok, amelyek az elektronikus kommunikáció résztvevői identitásait ellenőrizzék, és segítenek a kommunikációban az alábbi módokon:
 
@@ -46,7 +46,7 @@ Ha olyan logikai alkalmazásokban szeretne *nyilvános tanúsítványt* használ
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
-   | **Név** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "publicCert". | 
+   | **Name (Név)** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "publicCert". | 
    | **Tanúsítvány típusa** | Nyilvános | A tanúsítvány típusa |
    | **Tanúsítvány** | <*tanúsítvány-fájl neve*> | A feltölteni kívánt tanúsítványfájl megkereséséhez és kiválasztásához válassza a **tanúsítvány** mező melletti mappa ikont. |
    ||||
@@ -85,7 +85,7 @@ Miután definiálta a tulajdonságokat a létrehozott [szerződésekben](logic-a
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
-   | **Név** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "privateCert". | 
+   | **Name (Név)** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "privateCert". | 
    | **Tanúsítvány típusa** | Privát | A tanúsítvány típusa |
    | **Tanúsítvány** | <*tanúsítvány-fájl neve*> | A feltölteni kívánt tanúsítványfájl megkereséséhez és kiválasztásához válassza a **tanúsítvány** mező melletti mappa ikont. Ha kulcstartót használ a titkos kulcshoz, a feltöltött fájl lesz a nyilvános tanúsítvány. | 
    | **Erőforráscsoport** | <*integráció – fiók – erőforrás-csoport*> | Az integrációs fiókhoz tartozó erőforráscsoport, amely ebben a példában a "MyResourceGroup". | 
